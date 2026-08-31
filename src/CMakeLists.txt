@@ -69,6 +69,9 @@ qt_add_executable(GameHQ
     integration/IntegrationService.cpp integration/IntegrationService.h
     integration/IntegrationClient.cpp integration/IntegrationClient.h
     input/MouseHookDevice.cpp input/MouseHookDevice.h
+    input/MouseMonitorPolicy.h
+    input/PerfTrace.cpp input/PerfTrace.h
+    input/EventLoopStallMonitor.cpp input/EventLoopStallMonitor.h
     input/InputEngine.cpp input/InputEngine.h
     notify/NotificationCenter.cpp notify/NotificationCenter.h
     overlay/ForegroundAcquirer.cpp overlay/ForegroundAcquirer.h

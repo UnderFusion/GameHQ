@@ -49,6 +49,7 @@ gamehq_add_test(tst_xinputidentity
     "${CMAKE_SOURCE_DIR}/src/input/XInputDevice.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ControllerIdentity.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/PerfTrace.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp")
 
 gamehq_add_test(tst_sonyreportlayout
@@ -230,6 +231,14 @@ gamehq_add_test(tst_hotkeyreentrancy
     tst_hotkeyreentrancy.cpp
     "${CMAKE_SOURCE_DIR}/src/input/HotkeyManager.cpp")
 target_link_libraries(tst_hotkeyreentrancy PRIVATE user32)
+
+# Lazy mouse-hook activation (GitHub stutter report): hook only while a mouse
+# binding/capture needs it, idempotent lifecycle on a dedicated thread, held
+# buttons released on stop. Installs a real WH_MOUSE_LL, skips if refused.
+gamehq_add_test(tst_mousehooklazy
+    tst_mousehooklazy.cpp
+    "${CMAKE_SOURCE_DIR}/src/input/MouseHookDevice.cpp")
+target_link_libraries(tst_mousehooklazy PRIVATE user32)
 
 gamehq_add_test(tst_configmanager
     tst_configmanager.cpp

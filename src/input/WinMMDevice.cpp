@@ -1,8 +1,10 @@
 #include "input/WinMMDevice.h"
 
+#include "input/PerfTrace.h"
 #include "input/StickNav.h"
 
 #include <QDebug>
+#include <QElapsedTimer>
 #include <QTimer>
 
 #include <windows.h>
@@ -93,15 +95,20 @@ WinMMDevice::WinMMDevice(QObject* parent)
     connect(m_rescanTimer, &QTimer::timeout, this, &WinMMDevice::rescan);
 }
 
-WinMMDevice::~WinMMDevice() = default;
+WinMMDevice::~WinMMDevice()
+{
+    if (m_scanThread.joinable())
+        m_scanThread.join();
+}
 
 bool WinMMDevice::start()
 {
+    // Discovery is asynchronous, so the connect verdict lands one event-loop
+    // turn later at the earliest; the safety-net timer runs until then and
+    // applyScanResult() stops it on success.
+    qInfo() << "Gamepad: WinMM scanning for joysticks in the background";
+    m_rescanTimer->start();
     rescan();
-    if (!m_connected) {
-        qInfo() << "Gamepad: WinMM no joystick present — waiting for device changes";
-        m_rescanTimer->start();
-    }
     return true;
 }
 
@@ -126,9 +133,31 @@ ControlId::DeviceProfile WinMMDevice::profile() const
 
 void WinMMDevice::rescan()
 {
-    if (m_connected)
+    if (m_connected || m_scanInFlight)
         return;
 
+    // The sweep asks the driver stack about up to 16 mostly absent devices —
+    // measured at 161 ms on a real machine, far too slow for the GUI thread.
+    // The safety-net timer and all state stay on this thread; only the
+    // joyGetNumDevs/joyGetPosEx/joyGetDevCaps work runs on the worker.
+    m_scanInFlight = true;
+    if (m_scanThread.joinable())
+        m_scanThread.join();   // the previous worker already posted its result
+    m_scanThread = std::thread([this] {
+        const ScanResult result = scanSlots();
+        // Queued metacall onto the owning thread. The destructor joins this
+        // worker, so `this` outlives the call; a metacall posted to an
+        // object that is destroyed before delivery is discarded by Qt.
+        QMetaObject::invokeMethod(
+            this, [this, result] { applyScanResult(result); }, Qt::QueuedConnection);
+    });
+}
+
+WinMMDevice::ScanResult WinMMDevice::scanSlots()
+{
+    ScanResult result;
+    QElapsedTimer pass;
+    pass.start();
     const UINT numDevs = joyGetNumDevs();
     for (UINT id = 0; id < numDevs && id < kMaxSlots; ++id) {
         JOYINFOEX info{};
@@ -143,36 +172,50 @@ void WinMMDevice::rescan()
         // Xbox-style pads put Back/Start at 6/7. joyGetDevCaps exposes the
         // vendor/product id, so pick the mapping from that.
         JOYCAPSW caps{};
-        quint32 mid = 0, pid = 0;
         if (joyGetDevCapsW(id, &caps, sizeof(caps)) == JOYERR_NOERROR) {
-            mid = caps.wMid;
-            pid = caps.wPid;
+            result.mid = caps.wMid;
+            result.pid = caps.wPid;
         }
-
-        // The WinMM view of an XInput pad is NOT filtered out here: VID:PID
-        // names a model, not a physical endpoint, so suppressing on it could
-        // hide a legacy-only pad that shares its model with an XInput one.
-        // The mirrored event stream is harmless — backend arbitration drops
-        // cross-backend presses inside the duplicate window at birth
-        // (InputEngine::onControlPressed + heldPressSurvives).
-
-        m_activeId = id;
-        m_connected = true;
-        m_prevButtons = 0;
-
-        m_ds4Layout = (mid == 0x054C)
-            || (mid == 0x11FF && pid == 0x0847)
-            || (mid == 0x3670 && pid == 0x0902);
-        m_vendorId = mid;
-        m_productId = pid;
-        qInfo() << "Gamepad: WinMM joystick connected (JOYSTICKID" << (id + 1)
-                << ") VID" << Qt::hex << mid << "PID" << pid << Qt::dec
-                << (m_ds4Layout ? "— Sony button layout" : "— Xbox button layout");
-        m_rescanTimer->stop();
-        m_pollTimer->start();
-        emit connected(true);
-        return;
+        result.found = true;
+        result.id = id;
+        break;
     }
+    result.elapsedUs = pass.nsecsElapsed() / 1000;
+    return result;
+}
+
+void WinMMDevice::applyScanResult(const ScanResult& result)
+{
+    m_scanInFlight = false;
+    // Off the GUI thread the sweep duration is diagnostic only — report it
+    // when clearly pathological, not at the GUI-blocking threshold (a
+    // joystick-less machine sweeps every 2 s and must not fill the log).
+    PerfTrace::reportSlow("WinMM background device rescan", result.elapsedUs, 500000);
+    if (m_connected || !result.found)
+        return;
+
+    // The WinMM view of an XInput pad is NOT filtered out here: VID:PID
+    // names a model, not a physical endpoint, so suppressing on it could
+    // hide a legacy-only pad that shares its model with an XInput one.
+    // The mirrored event stream is harmless — backend arbitration drops
+    // cross-backend presses inside the duplicate window at birth
+    // (InputEngine::onControlPressed + heldPressSurvives).
+
+    m_activeId = result.id;
+    m_connected = true;
+    m_prevButtons = 0;
+
+    m_ds4Layout = (result.mid == 0x054C)
+        || (result.mid == 0x11FF && result.pid == 0x0847)
+        || (result.mid == 0x3670 && result.pid == 0x0902);
+    m_vendorId = result.mid;
+    m_productId = result.pid;
+    qInfo() << "Gamepad: WinMM joystick connected (JOYSTICKID" << (result.id + 1)
+            << ") VID" << Qt::hex << result.mid << "PID" << result.pid << Qt::dec
+            << (m_ds4Layout ? "— Sony button layout" : "— Xbox button layout");
+    m_rescanTimer->stop();
+    m_pollTimer->start();
+    emit connected(true);
 }
 
 void WinMMDevice::poll()
@@ -184,7 +227,10 @@ void WinMMDevice::poll()
     info.dwSize = sizeof(info);
     info.dwFlags = JOY_RETURNALL;
 
+    QElapsedTimer call;
+    call.start();
     const MMRESULT result = joyGetPosEx(m_activeId, &info);
+    PerfTrace::reportSlow("WinMM joyGetPosEx poll", call.nsecsElapsed() / 1000);
 
     if (result == JOYERR_UNPLUGGED) {
         disconnectActive();

@@ -2,9 +2,11 @@
 
 #include "input/ControllerIdentity.h"
 #include "input/InputDiagnostics.h"
+#include "input/PerfTrace.h"
 #include "input/StickNav.h"
 
 #include <QDebug>
+#include <QElapsedTimer>
 #include <QTimer>
 
 #include <windows.h>
@@ -116,6 +118,10 @@ void XInputDevice::rescan()
     if (!m_getState)
         return;
 
+    // Probing empty slots is the documented slow path of XInputGetState
+    // (device enumeration under the hood) — measure it, don't guess.
+    QElapsedTimer pass;
+    pass.start();
     for (int slot = 0; slot < 4; ++slot) {
         if (m_connected[slot])
             continue;
@@ -123,6 +129,7 @@ void XInputDevice::rescan()
         if (m_getState(static_cast<DWORD>(slot), &state) == ERROR_SUCCESS)
             setSlotState(slot, mapButtons(state.Gamepad), true);
     }
+    PerfTrace::reportSlow("XInput empty-slot rescan", pass.nsecsElapsed() / 1000);
 }
 
 void XInputDevice::poll()
@@ -130,6 +137,8 @@ void XInputDevice::poll()
     if (!m_getState)
         return;
 
+    QElapsedTimer pass;
+    pass.start();
     for (int slot = 0; slot < 4; ++slot) {
         if (!m_connected[slot])
             continue;
@@ -153,6 +162,7 @@ void XInputDevice::poll()
             setSlotState(slot, mapButtons(state.Gamepad), true);
         }
     }
+    PerfTrace::reportSlow("XInput connected-slot poll", pass.nsecsElapsed() / 1000);
 }
 
 void XInputDevice::setSlotState(int slot, quint32 buttons, bool connected)

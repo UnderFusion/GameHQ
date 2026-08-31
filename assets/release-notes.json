@@ -1,26 +1,46 @@
 {
-    "version":  "0.7.5",
-    "date":  "2026-08-07",
+    "version":  "0.7.6",
+    "date":  "2026-08-31",
     "sections":  [
-                     {
-                         "title":  "Added",
-                         "items":  [
-                                       "The full About release-notes view now lists recent version links across the top, with the newest selected by default (0.7.5). The current-version summary stays compact, while users who skipped 0.7.3 or 0.7.4 can read those changes offline without leaving GameHQ.",
-                                       "The desktop update banner is now a compact notification that opens the update-aware release dialog (0.7.5). Available updates open directly on the complete changelog with Update, Remind me later and Skip version actions at the top, plus version links for the new, current and recent releases."
-                                   ]
-                     },
                      {
                          "title":  "Fixed",
                          "items":  [
-                                       "The compact About view now shows Skip version for a real available update without evaluating a removed preview-only helper (0.7.5), preventing a QML runtime warning and restoring the intended skip action.",
-                                       "Closing a gallery video or another desktop dialog no longer leaves controller navigation without a visible focus indicator (0.7.5). Focus returns through GameHQ's verified native foreground path, waits until the main window is active, and targets the active Settings panel instead of the hidden gallery grid.",
-                                       "Custom Global controller gestures remain active when a Desktop or Overlay binding uses the same button (0.7.5). Primary-scope trigger ownership now suppresses only contextual fallbacks, never Global tap, hold or multi-tap actions when the engine represents the fallback scope as Global.",
-                                       "Pressing Cross during video playback now toggles Play/Pause exactly once (0.7.5). Playback now owns the button for its entire press cycle, so the Desktop Confirm tap can no longer resume the clip on release and holding the button cannot enter Bulk Select behind the lightbox.",
-                                       "DualSense Share and PS buttons no longer stop responding after the first press (0.7.5). When Sony Raw Input delivered a press and the preferred GameInput mirror arrived while the button was held, the capability router silently transferred ownership of the held control to GameInput; the Sony release was then rejected, the control stayed logically held forever, and every later press — including standard buttons routed the same way — was swallowed as a duplicate. The router now uses press-cycle ownership: the first accepted press owns the cycle, mirrored presses only join it as participants (never a second action, never an ownership transfer), any participant\u0027s release closes the cycle exactly once, and a release with no open cycle is explicitly ignored. Dead-owner safe releases and lifecycle resets are preserved. Regression tests cover repeated Share/PS handoff cycles for both Capture and Guide at router and provider-integration level."
+                                       "Fixed an input path that could cause system-wide mouse stuttering or brief freezes while GameHQ was running. Global Mouse Back/Forward/Middle monitoring is now installed only while a mouse binding exists or mouse-binding capture requires it.",
+                                       "When global mouse monitoring is required, the Windows low-level mouse hook now runs on a dedicated worker thread instead of the interface thread. Hook start/stop and rapid-restart handling were also hardened so held buttons are released cleanly and stale queued input cannot survive across hook lifetimes.",
+                                       "WinMM joystick discovery no longer performs potentially slow device scans on the interface thread, preventing periodic GameHQ interface stalls on systems where discovery is slow."
+                                   ]
+                     },
+                     {
+                         "title":  "Diagnostics / Reliability",
+                         "items":  [
+                                       "Added lightweight, rate-limited performance diagnostics for slow XInput and WinMM operations and interface event-loop stalls. Any remaining hitch should now leave useful Perf: evidence in gamehq.log."
                                    ]
                      }
                  ],
     "history":  [
+                    {
+                        "version":  "0.7.5",
+                        "date":  "2026-08-07",
+                        "sections":  [
+                                         {
+                                             "title":  "Added",
+                                             "items":  [
+                                                           "The full About release-notes view now lists recent version links across the top, with the newest selected by default (0.7.5). The current-version summary stays compact, while users who skipped 0.7.3 or 0.7.4 can read those changes offline without leaving GameHQ.",
+                                                           "The desktop update banner is now a compact notification that opens the update-aware release dialog (0.7.5). Available updates open directly on the complete changelog with Update, Remind me later and Skip version actions at the top, plus version links for the new, current and recent releases."
+                                                       ]
+                                         },
+                                         {
+                                             "title":  "Fixed",
+                                             "items":  [
+                                                           "The compact About view now shows Skip version for a real available update without evaluating a removed preview-only helper (0.7.5), preventing a QML runtime warning and restoring the intended skip action.",
+                                                           "Closing a gallery video or another desktop dialog no longer leaves controller navigation without a visible focus indicator (0.7.5). Focus returns through GameHQ\u0027s verified native foreground path, waits until the main window is active, and targets the active Settings panel instead of the hidden gallery grid.",
+                                                           "Custom Global controller gestures remain active when a Desktop or Overlay binding uses the same button (0.7.5). Primary-scope trigger ownership now suppresses only contextual fallbacks, never Global tap, hold or multi-tap actions when the engine represents the fallback scope as Global.",
+                                                           "Pressing Cross during video playback now toggles Play/Pause exactly once (0.7.5). Playback now owns the button for its entire press cycle, so the Desktop Confirm tap can no longer resume the clip on release and holding the button cannot enter Bulk Select behind the lightbox.",
+                                                           "DualSense Share and PS buttons no longer stop responding after the first press (0.7.5). When Sony Raw Input delivered a press and the preferred GameInput mirror arrived while the button was held, the capability router silently transferred ownership of the held control to GameInput; the Sony release was then rejected, the control stayed logically held forever, and every later press â€” including standard buttons routed the same way â€” was swallowed as a duplicate. The router now uses press-cycle ownership: the first accepted press owns the cycle, mirrored presses only join it as participants (never a second action, never an ownership transfer), any participant\u0027s release closes the cycle exactly once, and a release with no open cycle is explicitly ignored. Dead-owner safe releases and lifecycle resets are preserved. Regression tests cover repeated Share/PS handoff cycles for both Capture and Guide at router and provider-integration level."
+                                                       ]
+                                         }
+                                     ]
+                    },
                     {
                         "version":  "0.7.4",
                         "date":  "2026-08-07",
@@ -53,7 +73,7 @@
                                                            "Modern controller foundation. A GameInput pipeline adds dedicated Share/Capture identities, extra-button discovery, wireless and hot-plug handling, and a safe legacy fallback. Individual controller models remain unverified until hardware-tested.",
                                                            "Controller-first interface. Settings and other scrollable screens now support reliable pad navigation, automatic follow-scroll, right-stick scrolling, and visible scrollbars. Dialogs trap the pad cursor, Cross activates, Circle backs out.",
                                                            "PS-button desktop shortcut. Hold PS for two seconds to bring GameHQ forward; hold it again to hide GameHQ and return focus to the previous game or application.",
-                                                           "Major input hardening. Duplicate actions, lost presses, high-polling controller slowdown, and crashes caused by reentrant dispatch are prevented — including the overlay show/hide loop that could exhaust Window Manager handles."
+                                                           "Major input hardening. Duplicate actions, lost presses, high-polling controller slowdown, and crashes caused by reentrant dispatch are prevented â€” including the overlay show/hide loop that could exhaust Window Manager handles."
                                                        ]
                                          },
                                          {
@@ -62,16 +82,16 @@
                                                            "Hold the PS button for 2 seconds to summon the GameHQ window over the game that has focus - hold again to hide it and hand focus back. Exposed as a new bindable action (\"Show / Hide GameHQ Window\"); the PS overlay toggle consequently moved from press to tap, so a hold no longer opens the overlay on the way.",
                                                            "Button combinations. A controller action can be assigned to two buttons: hold the first, press the second. Several combinations can share the same first button, and the buttons keep their normal jobs when the combination is not completed.",
                                                            "Triple tap, alongside single and double tap. Tapping three times runs the triple-tap action only.",
-                                                           "Edit Assignment dialog. One dialog shows the whole assignment — single button or combination, how it is pressed, and how long a hold takes. Recording a button is an explicit step, so the controller keeps navigating the dialog until you ask it to listen.",
-                                                           "Gesture timing in Settings → Input now also exposes the multi-tap interval and the combination window, with plain-words explanations of when an action has to wait for one of them.",
+                                                           "Edit Assignment dialog. One dialog shows the whole assignment â€” single button or combination, how it is pressed, and how long a hold takes. Recording a button is an explicit step, so the controller keeps navigating the dialog until you ask it to listen.",
+                                                           "Gesture timing in Settings â†’ Input now also exposes the multi-tap interval and the combination window, with plain-words explanations of when an action has to wait for one of them.",
                                                            "Right-stick scrolling on the desktop window - works like a mouse wheel wherever a view can scroll: the gallery grid, Settings pages, the assignment editor, Help, and the release notes. Exposed as bindable \"Scroll Up\"/\"Scroll Down\" actions (Sony and XInput backends).",
                                                            "Pad selection always stays on screen: the gallery grid, the sidebar games list, and the Settings options panel automatically scroll to follow the pad cursor.",
                                                            "Cross-provider controller integration. Sony Raw Input, GameInput, XInput, WinMM, and the selective Raw HID fallback now report into one shared physical-controller registry and route Share/Guide presses through one shared router, so a single physical press can never execute twice through two provider pipelines. Bindings saved for \"this controller\" fire regardless of which provider delivers the edge and survive reconnects.",
                                                            "The selective Raw HID fallback is now a real input producer: a bound button on a gamepad-class HID device no backend drives is decoded from its own HID report descriptor and executes its assigned action. Devices without bound buttons keep the zero-cost ignored path.",
                                                            "GameInput groundwork: GameHQ pins GameInput 3.5.262, ships the MIT-licensed header and loader in-tree, and a small probe verifies the runtime - bundled, installed system-wide, or absent, in which case existing controller support simply keeps working.",
                                                            "The complete GameInput v3 standard-control map (including L3/R3 stick clicks, C/Z face buttons, and the four paddles); buttons whose reported label names a standard control are excluded from \"Extra Button N\" enumeration so one physical button cannot appear under two identities.",
-                                                           "Settings → Input shows a \"Controller button layout changed\" row with \"Review buttons\" (3-second probe) and \"Confirm current layout\", so extra buttons can be re-enabled after a firmware or mode change instead of staying silently disabled.",
-                                                           "\"Identify a controller button\" in Settings → Input: press any button within 3 seconds and GameHQ records what actually arrived - including buttons it does not recognize - so unsupported controllers can be mapped from a report instead of guesswork.",
+                                                           "Settings â†’ Input shows a \"Controller button layout changed\" row with \"Review buttons\" (3-second probe) and \"Confirm current layout\", so extra buttons can be re-enabled after a firmware or mode change instead of staying silently disabled.",
+                                                           "\"Identify a controller button\" in Settings â†’ Input: press any button within 3 seconds and GameHQ records what actually arrived - including buttons it does not recognize - so unsupported controllers can be mapped from a report instead of guesswork.",
                                                            "Controller diagnostics in the copied summary: active backend and every switch, each device Windows offered with its classification, measured event rates, the last inputs received, whether the overlay actually took focus, whether a pad is hidden by HidHide, whether the previous session ended unexpectedly, plus gesture timing, current assignments, the last recognized patterns, and whether the Guide/PS button has ever reached GameHQ this session. Serial numbers and full device paths are never included.",
                                                            "A design document for Exclusive Controller Mode - the feature that would stop games from receiving input while the overlay is open. It is not implemented; the document records why, and what a future implementation would have to guarantee."
                                                        ]
@@ -79,7 +99,7 @@
                                          {
                                              "title":  "Changed",
                                              "items":  [
-                                                           "Scrollable sections show a themed scrollbar whenever the content overflows - not only while scrolling — so it is obvious a section scrolls before the first move.",
+                                                           "Scrollable sections show a themed scrollbar whenever the content overflows - not only while scrolling â€” so it is obvious a section scrolls before the first move.",
                                                            "Conflict handling explains instead of refusing. A genuine clash - two things that would fire at once - offers Replace, Choose another, or Cancel. Assignments that only *look* like clashes are kept and explained: a tap and a hold sharing one button, an assignment active only while a clip is playing, and a duplicate with no effect each get their own note. Assigning the same action to two different keys is no longer reported as a conflict.",
                                                            "Controller gestures now count taps instead of hard-coding \"double tap\"; every existing assignment keeps working exactly as before.",
                                                            "The hold threshold in Settings is now the single source of truth for how long \"hold\" means; built-in hold bindings follow it instead of keeping a copy.",
