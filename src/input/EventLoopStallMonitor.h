@@ -3,7 +3,7 @@
 #include <QObject>
 
 // Cheap GUI event-loop stall detector (GitHub stutter report follow-up). A
-// coarse heartbeat timer measures its own lateness: a beat arriving well
+// coarse heartbeat timer measures its own lateness: a beat arriving ≥ 50 ms
 // after its interval means the main thread was busy or blocked that long,
 // and everything it services — queued events, timers, and formerly the
 // WH_MOUSE_LL mouse hook — waited too. Stalls are logged with the same

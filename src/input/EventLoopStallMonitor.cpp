@@ -6,9 +6,11 @@
 namespace {
 constexpr int kBeatMs = 250;
 // A beat this late means the main thread stopped serving events long enough
-// to be felt — Windows' low-level-hook timeout budget is a few hundred ms,
-// so 100 ms is where main-thread stalls start turning into visible jank.
-constexpr qint64 kStallThresholdMs = 100;
+// to be felt: 16 ms is one lost 60 Hz frame, 30–80 ms is the "mouse hitches"
+// range users actually report. 50 ms catches those without logging every
+// dropped frame; the rate limit keeps a chronically busy loop to one line
+// per quiet window.
+constexpr qint64 kStallThresholdMs = 50;
 constexpr qint64 kReportQuietMs = 2000;
 }
 

@@ -1,6 +1,7 @@
 #include "input/MouseHookDevice.h"
 #include "input/MouseMonitorPolicy.h"
 
+#include <QCoreApplication>
 #include <QSignalSpy>
 #include <QTest>
 
@@ -87,6 +88,66 @@ private slots:
         QTRY_COMPARE(released.count(), 1);
         QCOMPARE(released.constFirst().constFirst().toString(),
                  MouseHookDevice::ButtonBack);
+    }
+
+    // The stop→restart race an isRunning() check cannot close: a press
+    // queued (cross-thread) under hook lifetime N arrives only after the
+    // hook stopped AND restarted, when isRunning() is true again. The
+    // generation stamp must expose it as stale; a fresh press in the new
+    // lifetime must still match.
+    void staleQueuedPressAcrossRestartIsRejected()
+    {
+        MouseHookDevice device;
+        if (!device.start())
+            QSKIP("WH_MOUSE_LL install refused in this session");
+
+        QString lastCode;
+        int lastGeneration = -1;
+        int deliveries = 0;
+        connect(&device, &MouseHookDevice::buttonPressed, &device,
+                [&](const QString& code, int generation) {
+                    lastCode = code;
+                    lastGeneration = generation;
+                    ++deliveries;
+                },
+                Qt::QueuedConnection);   // same delivery shape as hook-thread emits
+
+        device.simulateEventForTest(WM_XBUTTONDOWN,
+                                    static_cast<DWORD>(XBUTTON1) << 16);
+        device.stop();
+        QVERIFY(device.start());   // restart before the queued press lands
+
+        QCoreApplication::processEvents();
+        QCOMPARE(deliveries, 1);
+        QCOMPARE(lastCode, MouseHookDevice::ButtonBack);
+        // The receiver contract (InputEngine): a press whose generation is
+        // not current is from a previous hook lifetime — reject it.
+        QVERIFY(lastGeneration != device.generation());
+
+        // A genuine press in the new lifetime carries the current stamp.
+        device.simulateEventForTest(WM_XBUTTONDOWN,
+                                    static_cast<DWORD>(XBUTTON1) << 16);
+        QCoreApplication::processEvents();
+        QCOMPARE(deliveries, 2);
+        QCOMPARE(lastGeneration, device.generation());
+
+        device.stop();
+    }
+
+    void rapidStartStopCyclesStayHealthy()
+    {
+        MouseHookDevice device;
+        if (!device.start())
+            QSKIP("WH_MOUSE_LL install refused in this session");
+        device.stop();
+        // Bounded by the suite timeout: any deadlock, leaked thread or
+        // failed re-install surfaces as a hang or a false start() here.
+        for (int i = 0; i < 25; ++i) {
+            QVERIFY(device.start());
+            QVERIFY(device.isRunning());
+            device.stop();
+            QVERIFY(!device.isRunning());
+        }
     }
 
     void balancedPressReleaseLeavesNothingHeld()

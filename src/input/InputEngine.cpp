@@ -118,11 +118,14 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 [this](const QString& actionId) { dispatchAction(actionId); });
     }
     connect(m_mouse.get(), &MouseHookDevice::buttonPressed, this,
-            [this](const QString& code) {
+            [this](const QString& code, int generation) {
                 // A press queued from the hook thread can arrive after the
-                // hook was stopped and its held buttons were released — acting
-                // on it would arm a gesture no release will ever end.
-                if (!m_mouse->isRunning())
+                // hook was stopped — or stopped AND restarted, which an
+                // isRunning() check would wrongly accept. Anything from a
+                // previous hook lifetime is dropped: its release was never
+                // captured, so acting on it would arm a gesture no release
+                // will ever end.
+                if (generation != m_mouse->generation())
                     return;
                 QString label = code;
                 if (code == MouseHookDevice::ButtonBack) label = QStringLiteral("Mouse Back");
@@ -134,7 +137,10 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                                  primaryScope(), fallbackScope());
             });
     connect(m_mouse.get(), &MouseHookDevice::buttonReleased, this,
-            [this](const QString& code) {
+            [this](const QString& code, int) {
+                // Releases process regardless of generation: releasing an
+                // unpressed control is a safe no-op, dropping a real one
+                // risks a stuck control.
                 m_runtime->release(QStringLiteral("mouse"), {}, code);
                 if (code == m_repeatTrigger)
                     stopNavRepeat();

@@ -27,6 +27,7 @@ bool MouseHookDevice::start()
         return false;
     }
     s_instance = this;
+    ++m_generation;   // new hook lifetime; bumped before the worker exists
 
     // The install verdict comes from the worker thread: SetWindowsHookEx must
     // run on the thread whose message loop will service the hook.
@@ -55,14 +56,17 @@ void MouseHookDevice::stop()
     m_thread = std::thread();
     m_threadId = 0;
     m_running = false;
+    const int endedGeneration = m_generation;
+    ++m_generation;   // events stamped with endedGeneration are stale from here on
     if (s_instance == this)
         s_instance = nullptr;
     qInfo() << "MouseHook: hook removed (no mouse binding or capture needs it)";
 
     // Release anything still logically held. Emitted from the caller's
     // thread, so InputEngine's handlers run synchronously here — a press
-    // queued from the worker thread but not yet delivered is dropped by the
-    // isRunning() guard on the receiving side, so no press can outlive its
+    // queued from the worker thread but not yet delivered carries the ended
+    // generation and is dropped by the receiver's generation guard, even if
+    // it only arrives after a later restart, so no press can outlive its
     // release.
     QSet<QString> held;
     {
@@ -70,7 +74,7 @@ void MouseHookDevice::stop()
         held.swap(m_pressed);
     }
     for (const QString& code : held)
-        emit buttonReleased(code);
+        emit buttonReleased(code, endedGeneration);
 }
 
 void MouseHookDevice::hookThreadMain(std::promise<bool>& installed)
@@ -138,9 +142,9 @@ void MouseHookDevice::trackAndEmit(const QString& code, bool pressed)
             m_pressed.remove(code);
     }
     if (pressed)
-        emit buttonPressed(code);
+        emit buttonPressed(code, m_generation);
     else
-        emit buttonReleased(code);
+        emit buttonReleased(code, m_generation);
 }
 
 void MouseHookDevice::simulateEventForTest(WPARAM message, DWORD mouseData)

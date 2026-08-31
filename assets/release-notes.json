@@ -6,7 +6,8 @@
                          "title":  "Fixed",
                          "items":  [
                                        "GameHQ no longer installs a global low-level mouse hook unless a Mouse Back/Forward/Middle binding exists or is being captured (0.7.6). This removes a reported cause of system-wide mouse stutter that persisted while GameHQ was running, even idle in the background.",
-                                       "When mouse-button bindings are in use, their global hook now runs on a dedicated input thread instead of the interface thread (0.7.6), so a busy application frame can no longer delay mouse event delivery for the whole system. Removing the last mouse binding while its button is held now releases it cleanly."
+                                       "When mouse-button bindings are in use, their global hook now runs on a dedicated input thread instead of the interface thread (0.7.6), so a busy application frame can no longer delay mouse event delivery for the whole system. Removing the last mouse binding while its button is held now releases it cleanly.",
+                                       "Controller discovery through the legacy Windows joystick interface no longer runs on the interface thread (0.7.6). The scan was measured blocking the application for 161 ms and repeats every 2 seconds on systems without such a controller; it now runs in the background, removing a periodic freeze."
                                    ]
                      },
                      {

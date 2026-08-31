@@ -15,12 +15,19 @@ All notable public releases of GameHQ are documented here. The format follows
 - When the mouse hook is needed, it now runs on a dedicated thread instead of
   the GUI thread (0.7.6), so a busy application frame can no longer delay
   system-wide mouse event delivery. Removing the last mouse binding while a
-  bound button is held releases it cleanly.
+  bound button is held releases it cleanly, and hook events carry a lifetime
+  stamp so a press queued across a hook stop/restart can never register as a
+  stuck input.
+- The WinMM joystick discovery sweep no longer runs on the GUI thread
+  (0.7.6). It was measured blocking the interface for 161 ms per sweep — and
+  repeats every 2 seconds on machines where no WinMM joystick is present.
+  The sweep now runs on a background worker; timers, state and signals stay
+  on the owning thread.
 
 ### Added
 
 - Performance diagnostics in the log (0.7.6): slow XInput/WinMM poll or rescan
-  calls (> 2 ms) and GUI event-loop stalls (≥ 100 ms) are reported with a
+  calls (> 2 ms) and GUI event-loop stalls (≥ 50 ms) are reported with a
   shared `Perf:` prefix, rate-limited, so stutter reports can be correlated
   with their cause from a single log.
 

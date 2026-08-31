@@ -52,6 +52,16 @@ public:
 
     bool isRunning() const { return m_running; }
 
+    // Hook lifetime stamp, incremented on every start() AND stop(). Queued
+    // cross-thread delivery means a press emitted under one hook lifetime
+    // can physically arrive after a stop — or after a stop AND a restart, at
+    // which point an isRunning() check would wrongly accept it. Receivers
+    // must drop any press whose generation is not the current one; its
+    // release was never captured, so acting on it means a stuck control.
+    // Releases are processed regardless of generation: releasing an
+    // unpressed control is a safe no-op, dropping a real release is not.
+    int generation() const { return m_generation; }
+
     // Test seam: feeds one hook event through the real parsing/tracking path
     // (tst_mousehooklazy). `mouseData` is the MSLLHOOKSTRUCT field, so
     // XBUTTON1/XBUTTON2 go in the high word.
@@ -59,9 +69,10 @@ public:
 
 signals:
     // Emitted from the worker thread; cross-thread connections deliver them
-    // queued on the receiver's (GUI) thread.
-    void buttonPressed(const QString& code);
-    void buttonReleased(const QString& code);
+    // queued on the receiver's (GUI) thread. `generation` stamps the hook
+    // lifetime the event belongs to — see generation().
+    void buttonPressed(const QString& code, int generation);
+    void buttonReleased(const QString& code, int generation);
 
 private:
     static LRESULT CALLBACK lowLevelProc(int nCode, WPARAM wParam, LPARAM lParam);
@@ -72,6 +83,11 @@ private:
     std::thread m_thread;
     DWORD m_threadId = 0;      // worker thread id, target for the WM_QUIT stop signal
     bool m_running = false;    // owned by the caller's (GUI) thread
+    // Written on the caller's thread only while the worker is NOT running
+    // (start() bumps it before spawning, stop() after joining), so the
+    // worker reads a stable value with thread-creation/join ordering — no
+    // atomics needed.
+    int m_generation = 0;
 
     // Buttons currently down, tracked so stop() can release them logically.
     // Written on the worker thread, drained on the GUI thread in stop().
