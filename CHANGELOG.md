@@ -6,6 +6,24 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- GameHQ no longer installs a global low-level mouse hook unless a mouse
+  binding actually exists or a mouse binding is being captured (0.7.6). For
+  users without Mouse Back/Forward/Middle bindings — including the reported
+  system-wide mouse stutter case — no hook is installed at all.
+- When the mouse hook is needed, it now runs on a dedicated thread instead of
+  the GUI thread (0.7.6), so a busy application frame can no longer delay
+  system-wide mouse event delivery. Removing the last mouse binding while a
+  bound button is held releases it cleanly.
+
+### Added
+
+- Performance diagnostics in the log (0.7.6): slow XInput/WinMM poll or rescan
+  calls (> 2 ms) and GUI event-loop stalls (≥ 100 ms) are reported with a
+  shared `Perf:` prefix, rate-limited, so stutter reports can be correlated
+  with their cause from a single log.
+
 ## [0.7.5] - 2026-08-07
 
 ### Added

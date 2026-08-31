@@ -1,8 +1,10 @@
 #include "input/WinMMDevice.h"
 
+#include "input/PerfTrace.h"
 #include "input/StickNav.h"
 
 #include <QDebug>
+#include <QElapsedTimer>
 #include <QTimer>
 
 #include <windows.h>
@@ -129,6 +131,11 @@ void WinMMDevice::rescan()
     if (m_connected)
         return;
 
+    // Sweeping up to 16 slots asks the driver stack about absent devices —
+    // the classic multi-ms offender. Measured so a slow driver shows up in
+    // the log instead of only in the user's mouse feel.
+    QElapsedTimer pass;
+    pass.start();
     const UINT numDevs = joyGetNumDevs();
     for (UINT id = 0; id < numDevs && id < kMaxSlots; ++id) {
         JOYINFOEX info{};
@@ -171,8 +178,10 @@ void WinMMDevice::rescan()
         m_rescanTimer->stop();
         m_pollTimer->start();
         emit connected(true);
+        PerfTrace::reportSlow("WinMM device rescan", pass.nsecsElapsed() / 1000);
         return;
     }
+    PerfTrace::reportSlow("WinMM device rescan", pass.nsecsElapsed() / 1000);
 }
 
 void WinMMDevice::poll()
@@ -184,7 +193,10 @@ void WinMMDevice::poll()
     info.dwSize = sizeof(info);
     info.dwFlags = JOY_RETURNALL;
 
+    QElapsedTimer call;
+    call.start();
     const MMRESULT result = joyGetPosEx(m_activeId, &info);
+    PerfTrace::reportSlow("WinMM joyGetPosEx poll", call.nsecsElapsed() / 1000);
 
     if (result == JOYERR_UNPLUGGED) {
         disconnectActive();

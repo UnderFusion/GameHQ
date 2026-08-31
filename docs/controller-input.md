@@ -229,6 +229,15 @@ When a controller's extra-button layout signature changes (firmware update, mode
 
 In the main app gallery, Select mode uses the standard batch-action mapping: **Cross** toggles the focused capture, **Triangle** selects/deselects all visible captures, **Square** opens the delete confirmation, and **Circle** exits Select mode or cancels the confirmation. The destructive delete is always confirmed through `ConfirmDialog`.
 
+## Mouse extra buttons (lazy global hook, 0.7.6)
+
+Mouse Back/Forward/Middle (`mouse.button4`/`mouse.button5`/`mouse.middle`) are observed through a global `WH_MOUSE_LL` hook (`MouseHookDevice`) that passes every event through unmodified. Two rules keep it harmless (GitHub stutter report — an always-on hook owned by the GUI thread made every main-thread stall a system-wide mouse stall):
+
+- **Lazy activation** (`MouseMonitorPolicy`, `InputEngine::syncMouseMonitoring`): the hook is installed only while at least one `mouse`-group binding exists, or while the binding editor is capturing on the mouse group (a first mouse binding must be observable before any exists). Synced on start, on every binding reload and on every editor state change; users without mouse bindings never get a hook at all. Stopping the hook logically releases any still-held mouse button, so a binding removed mid-hold cannot leave a hold gesture armed; a press queued across the stop is dropped by an `isRunning()` guard so it can never outlive its synthesized release.
+- **Dedicated hook thread**: Windows delivers every `WH_MOUSE_LL` callback synchronously to the installing thread and the system pointer waits on it, so the hook lives on its own worker thread that does nothing but sleep in `GetMessage()`. Normal thread priority — the thread is idle whenever the hook is. `start()`/`stop()` are idempotent (`tst_mousehooklazy`).
+
+Diagnostics for the remaining suspects ship alongside: `PerfTrace::reportSlow` logs any XInput/WinMM poll or rescan pass above 2 ms (rate-limited, `Perf:` prefix), and `EventLoopStallMonitor` logs GUI event-loop stalls ≥ 100 ms the same way, so one user log shows whether hitches, slow backend calls and main-thread stalls line up.
+
 ## Keyboard fallback (global hotkeys, `RegisterHotKey`)
 
 `Ctrl+Shift+S` screenshot · `Ctrl+Shift+E` save replay · `Ctrl+Shift+G` overlay toggle. The replay buffer itself has no hotkey — it auto-arms while a game is focused (`replay.auto`, Settings → Replay).

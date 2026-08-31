@@ -153,6 +153,12 @@ signals:
 private:
     void migrateLegacyHoldSetting();
     void applyGestureTiming();
+    // Lazy mouse monitoring: the global WH_MOUSE_LL hook is installed only
+    // while a mouse binding or an active mouse capture can consume it (see
+    // MouseMonitorPolicy). Synced on start, on every binding reload and on
+    // every binding-editor state change.
+    bool needsMouseMonitoring() const;
+    void syncMouseMonitoring();
     QString m_lastTimingDescription;
 
     void onControlPressed(const QString& controlId, int family,
@@ -300,6 +306,7 @@ private:
     };
     PendingPress m_pending;
     int m_pendingGeneration = 0;   // cancels a superseded confirmation timer
+    bool m_started = false;        // gates mouse monitoring until start()
     bool m_sonyConnected = false;
     bool m_xinputConnected = false;
     bool m_winmmConnected = false;

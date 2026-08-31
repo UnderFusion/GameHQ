@@ -11,8 +11,10 @@
 #include "input/Gamepad.h"
 #include "input/HidCloakMonitor.h"
 #include "input/HotkeyManager.h"
+#include "input/EventLoopStallMonitor.h"
 #include "input/InputDiagnostics.h"
 #include "input/MouseHookDevice.h"
+#include "input/MouseMonitorPolicy.h"
 #include "input/WinMMDevice.h"
 #include "input/XInputDevice.h"
 #include "input/SelectiveRawHidFallback.h"
@@ -117,6 +119,11 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
     }
     connect(m_mouse.get(), &MouseHookDevice::buttonPressed, this,
             [this](const QString& code) {
+                // A press queued from the hook thread can arrive after the
+                // hook was stopped and its held buttons were released — acting
+                // on it would arm a gesture no release will ever end.
+                if (!m_mouse->isRunning())
+                    return;
                 QString label = code;
                 if (code == MouseHookDevice::ButtonBack) label = QStringLiteral("Mouse Back");
                 else if (code == MouseHookDevice::ButtonForward) label = QStringLiteral("Mouse Forward");
@@ -132,6 +139,14 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 if (code == m_repeatTrigger)
                     stopNavRepeat();
             });
+    // Capturing a first mouse binding must see the buttons before any mouse
+    // binding exists, so the hook follows the editor's capture state too.
+    connect(m_bindingEditor.get(), &BindingEditorModel::captureChanged,
+            this, &InputEngine::syncMouseMonitoring);
+    connect(m_bindingEditor.get(), &BindingEditorModel::editorChanged,
+            this, &InputEngine::syncMouseMonitoring);
+    connect(m_bindingEditor.get(), &BindingEditorModel::deviceGroupChanged,
+            this, &InputEngine::syncMouseMonitoring);
 
     auto sonyPad = std::make_unique<DualSenseDevice>();
     m_sonyPad = sonyPad.get();
@@ -334,16 +349,20 @@ void InputEngine::start()
 {
     if (m_db)
         m_db->seedDefaultBindings();
+    m_started = true;   // reloadBindings() below syncs the mouse hook state
     reloadBindings();
-    m_mouse->start();
     for (const auto& pad : m_pads)
         pad->start();
     m_gameInput->start();
+    // Diagnostics only: reports main-thread stalls into the log so user
+    // reports can correlate input hitches with slow backend calls (PerfTrace).
+    new EventLoopStallMonitor(this);
 }
 
 void InputEngine::reloadBindings()
 {
     m_runtime->reload();
+    syncMouseMonitoring();
     ModernInput::SelectiveRawHidFallback::instance().setBoundControls(
         ModernInput::persistedRawHidControls(*m_runtime, m_db));
     if (!m_hotkeys)
@@ -377,6 +396,25 @@ void InputEngine::reloadBindings()
                 m_hotkeys->clearBindingSlot(action.id, slot);
         }
     }
+}
+
+bool InputEngine::needsMouseMonitoring() const
+{
+    return MouseMonitorPolicy::needed(
+        !m_runtime->effectiveBindings(QStringLiteral("mouse")).isEmpty(),
+        m_bindingEditor->deviceGroup(),
+        m_bindingEditor->captureActive(),
+        m_bindingEditor->editorCaptureStep());
+}
+
+void InputEngine::syncMouseMonitoring()
+{
+    if (!m_started)
+        return;
+    if (needsMouseMonitoring())
+        m_mouse->start();
+    else
+        m_mouse->stop();   // releases anything still held through buttonReleased
 }
 
 bool InputEngine::handleKeyPressed(int key, int modifiers, bool autoRepeat)
