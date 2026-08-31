@@ -5,15 +5,15 @@
                      {
                          "title":  "Fixed",
                          "items":  [
-                                       "GameHQ no longer installs a global low-level mouse hook unless a Mouse Back/Forward/Middle binding exists or is being captured (0.7.6). This removes a reported cause of system-wide mouse stutter that persisted while GameHQ was running, even idle in the background.",
-                                       "When mouse-button bindings are in use, their global hook now runs on a dedicated input thread instead of the interface thread (0.7.6), so a busy application frame can no longer delay mouse event delivery for the whole system. Removing the last mouse binding while its button is held now releases it cleanly.",
-                                       "Controller discovery through the legacy Windows joystick interface no longer runs on the interface thread (0.7.6). The scan was measured blocking the application for 161 ms and repeats every 2 seconds on systems without such a controller; it now runs in the background, removing a periodic freeze."
+                                       "Fixed an input path that could cause system-wide mouse stuttering or brief freezes while GameHQ was running. Global Mouse Back/Forward/Middle monitoring is now installed only while a mouse binding exists or mouse-binding capture requires it.",
+                                       "When global mouse monitoring is required, the Windows low-level mouse hook now runs on a dedicated worker thread instead of the interface thread. Hook start/stop and rapid-restart handling were also hardened so held buttons are released cleanly and stale queued input cannot survive across hook lifetimes.",
+                                       "WinMM joystick discovery no longer performs potentially slow device scans on the interface thread, preventing periodic GameHQ interface stalls on systems where discovery is slow."
                                    ]
                      },
                      {
-                         "title":  "Added",
+                         "title":  "Diagnostics / Reliability",
                          "items":  [
-                                       "Performance diagnostics in the log (0.7.6): unusually slow controller polling calls and interface-thread stalls are recorded with a shared Perf: prefix, so stutter reports can be correlated with their cause from a single log."
+                                       "Added lightweight, rate-limited performance diagnostics for slow XInput and WinMM operations and interface event-loop stalls. Any remaining hitch should now leave useful Perf: evidence in gamehq.log."
                                    ]
                      }
                  ],

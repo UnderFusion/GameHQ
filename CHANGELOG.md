@@ -6,30 +6,27 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.6] - 2026-08-31
+
 ### Fixed
 
-- GameHQ no longer installs a global low-level mouse hook unless a mouse
-  binding actually exists or a mouse binding is being captured (0.7.6). For
-  users without Mouse Back/Forward/Middle bindings — including the reported
-  system-wide mouse stutter case — no hook is installed at all.
-- When the mouse hook is needed, it now runs on a dedicated thread instead of
-  the GUI thread (0.7.6), so a busy application frame can no longer delay
-  system-wide mouse event delivery. Removing the last mouse binding while a
-  bound button is held releases it cleanly, and hook events carry a lifetime
-  stamp so a press queued across a hook stop/restart can never register as a
-  stuck input.
-- The WinMM joystick discovery sweep no longer runs on the GUI thread
-  (0.7.6). It was measured blocking the interface for 161 ms per sweep — and
-  repeats every 2 seconds on machines where no WinMM joystick is present.
-  The sweep now runs on a background worker; timers, state and signals stay
-  on the owning thread.
+- Fixed an input path that could cause system-wide mouse stuttering or brief
+  freezes while GameHQ was running. Global Mouse Back/Forward/Middle monitoring
+  is now installed only while a mouse binding exists or mouse-binding capture
+  requires it.
+- When global mouse monitoring is required, the Windows low-level mouse hook
+  now runs on a dedicated worker thread instead of the GUI thread. Hook
+  start/stop and rapid-restart handling were also hardened so held buttons are
+  released cleanly and stale queued input cannot survive across hook lifetimes.
+- WinMM joystick discovery no longer performs potentially slow device scans on
+  the GUI thread, preventing periodic GameHQ interface stalls on systems where
+  discovery is slow.
 
 ### Added
 
-- Performance diagnostics in the log (0.7.6): slow XInput/WinMM poll or rescan
-  calls (> 2 ms) and GUI event-loop stalls (≥ 50 ms) are reported with a
-  shared `Perf:` prefix, rate-limited, so stutter reports can be correlated
-  with their cause from a single log.
+- Added lightweight, rate-limited performance diagnostics for slow XInput and
+  WinMM operations and GUI event-loop stalls. Any remaining hitch should now
+  leave useful `Perf:` evidence in `gamehq.log`.
 
 ## [0.7.5] - 2026-08-07
 
