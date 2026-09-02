@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gamehq.local/schema/locale.schema.json",
+  "title": "GameHQ locale registry (locales.json)",
+  "description": "Schema for i18n/locales.json, the single locale registry. Validates tags, aliases, tiers, states, direction, fallback and catalog mapping so a malformed entry fails the build instead of surfacing a raw tag at runtime.",
+  "type": "object",
+  "required": ["schema_version", "source_language", "default_locale", "locales", "aliases", "tiers"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": 1 },
+    "source_language": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-[A-Z]{2}|-[0-9]{3})?$"
+    },
+    "default_locale": { "type": "string" },
+    "locales": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/locale" }
+    },
+    "aliases": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "tiers": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[0-9]$" },
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "definitions": {
+    "locale": {
+      "type": "object",
+      "required": ["tag", "names", "tier", "state", "direction", "fallback"],
+      "additionalProperties": false,
+      "properties": {
+        "tag": {
+          "type": "string",
+          "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3,4})?(-[A-Z]{2}|-[0-9]{3})?$"
+        },
+        "names": {
+          "type": "object",
+          "required": ["native", "english"],
+          "additionalProperties": false,
+          "properties": {
+            "native": { "type": "string", "minLength": 1 },
+            "english": { "type": "string", "minLength": 1 }
+          }
+        },
+        "aliases": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "tier": { "type": "integer", "minimum": 0, "maximum": 2 },
+        "state": {
+          "enum": ["enabled", "disabled", "reserve", "internal"]
+        },
+        "direction": { "enum": ["ltr", "rtl"] },
+        "fallback": { "type": ["string", "null"] },
+        "qt_catalog": { "type": "string" },
+        "inno_language": { "type": ["string", "null"] },
+        "inno_message_file": { "type": ["string", "null"] },
+        "completeness_policy": {
+          "type": "string",
+          "enum": ["source_and_complete", "complete_at_release", "never_embed"]
+        }
+      }
+    }
+  }
+}

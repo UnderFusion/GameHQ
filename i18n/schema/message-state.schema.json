@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gamehq.local/schema/message-state.schema.json",
+  "title": "GameHQ message-state manifest",
+  "description": "Schema for the per-message-ID extraction/state manifest (i18n/messages.json). Tracks the English source hash, context, placeholders, plural requirement and review state so a stale or incomplete translation is caught by validation rather than reaching the UI.",
+  "type": "object",
+  "required": ["schema_version", "messages"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": 1 },
+    "messages": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/message"
+      }
+    }
+  },
+  "definitions": {
+    "message": {
+      "type": "object",
+      "required": ["source", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "source": { "type": "string" },
+        "source_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40,64}$"
+        },
+        "context": { "type": "string" },
+        "comment": { "type": "string" },
+        "placeholders": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "plural": {
+          "type": "object",
+          "required": ["required", "forms"],
+          "additionalProperties": false,
+          "properties": {
+            "required": { "type": "boolean" },
+            "forms": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "markup": {
+          "type": "object",
+          "required": ["rich"],
+          "additionalProperties": false,
+          "properties": {
+            "rich": { "type": "boolean" }
+          }
+        },
+        "status": {
+          "enum": ["new", "draft", "review", "approved", "suspended"]
+        },
+        "glossary": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "provenance": {
+          "type": "object",
+          "required": ["author"],
+          "additionalProperties": false,
+          "properties": {
+            "author": { "type": "string" },
+            "origin_file": { "type": "string" },
+            "last_update": { "type": "string", "format": "date-time" }
+          }
+        }
+      }
+    }
+  }
+}
