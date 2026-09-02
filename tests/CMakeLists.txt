@@ -6,6 +6,7 @@
 # own exe. That keeps the tests honest about their dependencies: if a unit needs
 # half the app to build, it is not pure logic and does not belong here.
 find_package(Qt6 REQUIRED COMPONENTS Test)
+find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
 
 function(gamehq_add_test name)
     add_executable(${name} ${ARGN})
@@ -635,3 +636,12 @@ qt_add_resources(tst_liveretranslation "live_retranslation_fixtures"
 )
 set_tests_properties(tst_liveretranslation PROPERTIES
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+
+# The catalog synchronizer is an explicit developer tool. This fixture test
+# proves stable extraction/catalog bytes and check-mode failure without touching
+# production source or translation catalogs.
+add_test(NAME tst_i18nsync
+    COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_SOURCE_DIR}/tools/i18n/test_sync.py"
+        --lupdate "$<TARGET_FILE:Qt6::lupdate>")
+set_tests_properties(tst_i18nsync PROPERTIES TIMEOUT 120)

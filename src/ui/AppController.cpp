@@ -99,6 +99,7 @@ AppController::~AppController() = default;
 
 QString AppController::releaseNotesTitle() const
 {
+    //% "Release notes"
     return qtTrId("gamehq.release_notes.title");
 }
 

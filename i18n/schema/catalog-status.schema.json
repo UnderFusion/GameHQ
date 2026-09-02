@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gamehq.local/schema/catalog-status.schema.json",
+  "title": "GameHQ catalog synchronization status",
+  "type": "object",
+  "required": ["$schema", "schema_version", "source_manifest", "locales"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": 1 },
+    "source_manifest": { "type": "string", "minLength": 1 },
+    "locales": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/status" }
+    }
+  },
+  "definitions": {
+    "id_list": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^gamehq(\\.[a-z0-9][a-z0-9_-]*)+$" }
+    },
+    "status": {
+      "type": "object",
+      "required": ["catalog", "missing", "stale", "obsolete", "unchanged"],
+      "additionalProperties": false,
+      "properties": {
+        "catalog": { "type": "string", "minLength": 1 },
+        "missing": { "$ref": "#/definitions/id_list" },
+        "stale": { "$ref": "#/definitions/id_list" },
+        "obsolete": { "$ref": "#/definitions/id_list" },
+        "unchanged": { "$ref": "#/definitions/id_list" }
+      }
+    }
+  }
+}

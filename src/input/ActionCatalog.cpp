@@ -111,6 +111,7 @@ void ActionCatalog::retranslate()
     auto& actions = buildCatalog();
     for (Action& action : actions) {
         if (action.id == QLatin1String("global.screenshot")) {
+            //% "Screenshot"
             action.label = qtTrId("gamehq.action.screenshot.label");
             return;
         }

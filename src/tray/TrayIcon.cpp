@@ -159,5 +159,6 @@ QString TrayIcon::openGalleryText() const
 void TrayIcon::retranslate()
 {
     if (m_openAction)
+        //% "Open Gallery"
         m_openAction->setText(qtTrId("gamehq.tray.open_gallery"));
 }

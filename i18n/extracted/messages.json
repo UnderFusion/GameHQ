@@ -1,0 +1,67 @@
+{
+  "$schema": "../schema/extracted-messages.schema.json",
+  "schema_version": 1,
+  "source_language": "en-US",
+  "messages": [
+    {
+      "id": "gamehq.about.full_release_notes",
+      "source": "See full release notes",
+      "context": "ID",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 585
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "source_hash": "084ba9702181f88aea42f83b1e0dcb293cdb1fd69de2b6ca31b4af31a623bafd"
+    },
+    {
+      "id": "gamehq.action.screenshot.label",
+      "source": "Screenshot",
+      "context": "ID",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 115
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "source_hash": "029320ad166c1807cd70230b908d6552a5f4bc8054449a58856a31a2c765c5c4"
+    },
+    {
+      "id": "gamehq.release_notes.title",
+      "source": "Release notes",
+      "context": "ID",
+      "locations": [
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 103
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "source_hash": "1254829bd9996472de64de2e8c130a27d2a3841c0209bfeefcad382cd3609ace"
+    },
+    {
+      "id": "gamehq.tray.open_gallery",
+      "source": "Open Gallery",
+      "context": "ID",
+      "locations": [
+        {
+          "file": "src/tray/TrayIcon.cpp",
+          "line": 163
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "source_hash": "f1d0fccd75d36350f59be812a42743165887b4ed591c70271bcde0ea581c6308"
+    }
+  ]
+}

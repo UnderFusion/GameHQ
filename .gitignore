@@ -54,6 +54,9 @@ spike/**/*.exe
 
 # Local toolchain + build
 tools/*
+!tools/i18n/
+!tools/i18n/**
+tools/i18n/__pycache__/
 !tools/manual-validation/
 !tools/manual-validation/**
 !tools/release-manifest/

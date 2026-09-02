@@ -1,0 +1,19 @@
+{
+  "$schema": "../schema/catalog-status.schema.json",
+  "schema_version": 1,
+  "source_manifest": "i18n/extracted/messages.json",
+  "locales": {
+    "en-US": {
+      "catalog": "i18n/app/gamehq_en_US.ts",
+      "missing": [],
+      "stale": [],
+      "obsolete": [],
+      "unchanged": [
+        "gamehq.about.full_release_notes",
+        "gamehq.action.screenshot.label",
+        "gamehq.release_notes.title",
+        "gamehq.tray.open_gallery"
+      ]
+    }
+  }
+}

@@ -581,6 +581,7 @@ FocusScope {
 
                         TextLink {
                             id: releaseNotesLink
+                            //% "See full release notes"
                             label: qsTrId("gamehq.about.full_release_notes")
                             suffix: "›"
                             onClicked: root.openReleaseNotes()
