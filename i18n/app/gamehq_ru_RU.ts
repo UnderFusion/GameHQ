@@ -92,10 +92,41 @@
       <translation>Возвращайся .</translation>
     </message>
     <message id="gamehq.action.cancel">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="622"></location>
+      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="19"></location>
+      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="25"></location>
+      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="14"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="161"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="194"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="532"></location>
       <source>Cancel</source>
       <translation>Отменить</translation>
+    </message>
+    <message id="gamehq.action.delete">
+      <location filename="src/ui/qml/Main.qml" line="1049"></location>
+      <location filename="src/ui/qml/Main.qml" line="1065"></location>
+      <location filename="src/ui/qml/Main.qml" line="1097"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="464"></location>
+      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
+      <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="16"></location>
+      <source>Delete</source>
+      <translation>Удалить</translation>
+    </message>
+    <message id="gamehq.action.deselect_all">
+      <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="54"></location>
+      <source>Deselect all</source>
+      <translation>Отменить отбор</translation>
+    </message>
+    <message id="gamehq.action.dismiss">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="180"></location>
+      <source>Dismiss</source>
+      <translation>Отпустите .</translation>
+    </message>
+    <message id="gamehq.action.done">
+      <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="87"></location>
+      <source>Done</source>
+      <translation>Сделано</translation>
     </message>
     <message id="gamehq.action.download">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="207"></location>
@@ -107,23 +138,81 @@
       <source>Not now</source>
       <translation>Не сейчас .</translation>
     </message>
+    <message id="gamehq.action.record">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="294"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="370"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="434"></location>
+      <source>Record</source>
+      <translation>Запись</translation>
+    </message>
+    <message id="gamehq.action.remove">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="145"></location>
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="108"></location>
+      <source>Remove</source>
+      <translation>Удалить</translation>
+    </message>
+    <message id="gamehq.action.replace">
+      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="21"></location>
+      <source>Replace</source>
+      <translation>Заменить</translation>
+    </message>
+    <message id="gamehq.action.restore">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="108"></location>
+      <source>Restore</source>
+      <translation>Восстановить</translation>
+    </message>
+    <message id="gamehq.action.restore_defaults">
+      <location filename="src/ui/qml/SettingsView.qml" line="493"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="510"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="524"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="217"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="392"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="681"></location>
+      <source>Restore defaults</source>
+      <translation>Восстановить параметры по умолчанию</translation>
+    </message>
+    <message id="gamehq.action.revert">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="111"></location>
+      <source>Revert</source>
+      <translation>Возвращаться</translation>
+    </message>
+    <message id="gamehq.action.save">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="628"></location>
+      <source>Save</source>
+      <translation>Сохранить</translation>
+    </message>
     <message id="gamehq.action.screenshot.label">
       <location filename="src/input/ActionCatalog.cpp" line="115"></location>
       <source>Screenshot</source>
       <translation type="unfinished"></translation>
     </message>
+    <message id="gamehq.action.select_all">
+      <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="57"></location>
+      <source>Select all</source>
+      <translation>Выберите все</translation>
+    </message>
+    <message id="gamehq.action.stop">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="287"></location>
+      <source>Stop</source>
+      <translation>- Прекрати !</translation>
+    </message>
     <message id="gamehq.common.action.change">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="291"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="367"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="431"></location>
       <location filename="src/ui/qml/components/SettingsPathRow.qml" line="27"></location>
       <source>Change</source>
       <translation>Изменение</translation>
     </message>
     <message id="gamehq.common.action.close">
       <location filename="src/ui/qml/components/DialogCloseButton.qml" line="9"></location>
+      <location filename="src/ui/qml/components/HelpDialog.qml" line="118"></location>
       <source>Close</source>
       <translation>Закрой .</translation>
     </message>
     <message id="gamehq.common.action.open">
       <location filename="src/ui/qml/components/SettingsPathRow.qml" line="34"></location>
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="102"></location>
       <source>Open</source>
       <translation>Открыто</translation>
     </message>
@@ -131,6 +220,83 @@
       <location filename="src/ui/qml/components/SettingsPathRow.qml" line="21"></location>
       <source>Use default</source>
       <translation>Использовать по умолчанию</translation>
+    </message>
+    <message id="gamehq.dialog.confirm.default_title">
+      <location filename="src/ui/qml/components/ConfirmDialog.qml" line="11"></location>
+      <source>Are you sure?</source>
+      <translation>- Ты уверена? - Да.</translation>
+    </message>
+    <message id="gamehq.duration.decimal_seconds">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="268"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="270"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="272"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="274"></location>
+      <source>%1 seconds</source>
+      <translation>%1 секунды</translation>
+    </message>
+    <message id="gamehq.duration.milliseconds">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="289"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="291"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="308"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="310"></location>
+      <source>%1 ms</source>
+      <translation>%1 мс</translation>
+    </message>
+    <message id="gamehq.duration.milliseconds.fast">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="287"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="306"></location>
+      <source>%1 ms (fast)</source>
+      <translation>%1 мс (быстрый)</translation>
+    </message>
+    <message id="gamehq.duration.milliseconds.relaxed">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="293"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="312"></location>
+      <source>%1 ms (relaxed)</source>
+      <translation>%1 мс (расслабленный)</translation>
+    </message>
+    <message id="gamehq.duration.minutes" numerus="yes">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="59"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="61"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="63"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="65"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="67"></location>
+      <source>%n minute(s)</source>
+      <translation>
+        <numerusform>%n минута</numerusform>
+        <numerusform>%n минуты</numerusform>
+        <numerusform>%n минут</numerusform>
+      </translation>
+    </message>
+    <message id="gamehq.duration.seconds" numerus="yes">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="57"></location>
+      <source>%n second(s)</source>
+      <translation>
+        <numerusform>%n секунда</numerusform>
+        <numerusform>%n секунды</numerusform>
+        <numerusform>%n секунд</numerusform>
+      </translation>
+    </message>
+    <message id="gamehq.duration.seconds_short">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="533"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="535"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="537"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="539"></location>
+      <source>%1 s</source>
+      <translation>%1 s</translation>
+    </message>
+    <message id="gamehq.format.fps">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="87"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="89"></location>
+      <source>%1 fps</source>
+      <translation>%1 fps</translation>
+    </message>
+    <message id="gamehq.format.megabits_per_second">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="114"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="116"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="120"></location>
+      <source>%1 Mbps</source>
+      <translation>%1 Мбит / с</translation>
     </message>
     <message id="gamehq.format.size.bytes">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="41"></location>
@@ -147,6 +313,558 @@
       <source>%1 MB</source>
       <translation>%1 МБ</translation>
     </message>
+    <message id="gamehq.format.version_short">
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="118"></location>
+      <source>v%1</source>
+      <translation>v%1</translation>
+    </message>
+    <message id="gamehq.gallery.action.add_folder">
+      <location filename="src/ui/qml/components/DesktopEmptyState.qml" line="31"></location>
+      <source>Add folder…</source>
+      <translation>Добавить папку...</translation>
+    </message>
+    <message id="gamehq.gallery.action.bulk_select">
+      <location filename="src/ui/qml/Main.qml" line="1099"></location>
+      <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
+      <source>Bulk select</source>
+      <translation>Выбор оптового</translation>
+    </message>
+    <message id="gamehq.gallery.action.show_in_folder">
+      <location filename="src/ui/qml/Main.qml" line="1095"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="14"></location>
+      <source>Show in folder</source>
+      <translation>Показывать в папке</translation>
+    </message>
+    <message id="gamehq.gallery.capture_caption">
+      <location filename="src/ui/qml/components/CaptureTile.qml" line="180"></location>
+      <location filename="src/ui/qml/components/Lightbox.qml" line="202"></location>
+      <source>%1 · %2</source>
+      <translation>%1 · %2</translation>
+    </message>
+    <message id="gamehq.gallery.delete_capture.message">
+      <location filename="src/ui/qml/Main.qml" line="1038"></location>
+      <source>%1 · %2
+This permanently deletes the file.</source>
+      <translation>%1 · %2
+Файл будет удалён без возможности восстановления.</translation>
+    </message>
+    <message id="gamehq.gallery.delete_capture.title">
+      <location filename="src/ui/qml/Main.qml" line="1047"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="462"></location>
+      <source>Delete capture?</source>
+      <translation>Удалить запись?</translation>
+    </message>
+    <message id="gamehq.gallery.delete_selected.message" numerus="yes">
+      <location filename="src/ui/qml/Main.qml" line="380"></location>
+      <source>%n capture will be permanently deleted.
+This cannot be undone.</source>
+      <translation>
+        <numerusform>%n файл будет удалён безвозвратно.
+Это действие нельзя отменить.</numerusform>
+        <numerusform>%n файла будут удалены безвозвратно.
+Это действие нельзя отменить.</numerusform>
+        <numerusform>%n файлов будут удалены безвозвратно.
+Это действие нельзя отменить.</numerusform>
+      </translation>
+    </message>
+    <message id="gamehq.gallery.delete_selected.title">
+      <location filename="src/ui/qml/Main.qml" line="1063"></location>
+      <source>Delete selected captures?</source>
+      <translation>Удалить выбранные записи?</translation>
+    </message>
+    <message id="gamehq.gallery.empty.description">
+      <location filename="src/ui/qml/components/DesktopEmptyState.qml" line="21"></location>
+      <source>No captures yet — add a folder to watch.</source>
+      <translation>Пока нет записей  добавить папку для просмотра.</translation>
+    </message>
+    <message id="gamehq.gallery.hint.browse.gamepad">
+      <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="46"></location>
+      <source>Cross — open | Triangle — favorite | Square — menu | L1 — sidebar | PS — overlay</source>
+      <translation>Кросс  открыть ∙ Треугольник  фаворит ∙ Квадрат  меню ∙ L1  боковая панель ∙ PS  наложение</translation>
+    </message>
+    <message id="gamehq.gallery.hint.browse.keyboard">
+      <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="49"></location>
+      <source>Enter — open | F — favorite | E — show in folder | Ctrl+Shift+G — overlay</source>
+      <translation>Введите  открыть ∙ Ф  любимый ∙ И  показать в папке ∙ Ctrl+Shift+G  наложение</translation>
+    </message>
+    <message id="gamehq.gallery.hint.bulk.gamepad">
+      <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="39"></location>
+      <source>Cross — select | Triangle — all | Square — delete | Circle — done</source>
+      <translation>Кросс  выберите ∙ Треугольник  все ∙ Квадрат  удалите ∙ Круг  готов</translation>
+    </message>
+    <message id="gamehq.gallery.hint.bulk.keyboard">
+      <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="42"></location>
+      <source>Enter/Space — select | Ctrl+A — all | Delete — delete | Esc — done</source>
+      <translation>Введите/пробел  выберите ∙ Ctrl+A  все ∙ Удалить  удалить ∙ Esc  готово</translation>
+    </message>
+    <message id="gamehq.gallery.hint.sidebar.gamepad">
+      <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="31"></location>
+      <source>D-pad ↑↓ — pick | Cross — select | R1 — back to grid</source>
+      <translation>D-pad ↑↓  выбирать ∙ ∙ Крос  выбирать ∙ R1  обратно в сетку</translation>
+    </message>
+    <message id="gamehq.gallery.hint.sidebar.keyboard">
+      <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="34"></location>
+      <source>↑↓ — pick | Enter — select | Esc — back to grid</source>
+      <translation>↑ ↓  выбирать ∙  вводить  выбирать ∙ Esc  возвращаться в сетку</translation>
+    </message>
+    <message id="gamehq.gallery.selection.count" numerus="yes">
+      <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="26"></location>
+      <source>%n selected</source>
+      <translation>
+        <numerusform>%n выбран</numerusform>
+        <numerusform>%n выбрано</numerusform>
+        <numerusform>%n выбрано</numerusform>
+      </translation>
+    </message>
+    <message id="gamehq.gallery.viewer.window_title">
+      <location filename="src/ui/qml/components/Lightbox.qml" line="19"></location>
+      <source>%1 Viewer</source>
+      <translation>Просмотрщик %1</translation>
+    </message>
+    <message id="gamehq.help.binding.select_mode">
+      <location filename="src/ui/qml/HelpView.qml" line="86"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="232"></location>
+      <source>Select mode</source>
+      <translation>Выбрать режим</translation>
+    </message>
+    <message id="gamehq.help.feature.gallery.description">
+      <location filename="src/ui/qml/HelpView.qml" line="318"></location>
+      <source>All captures in one grid — filter by category or game. Grid navigation works with keyboard, mouse, and controller.</source>
+      <translation>Все снимки в одной сетке  фильтр по категориям или играм.</translation>
+    </message>
+    <message id="gamehq.help.feature.gallery.title">
+      <location filename="src/ui/qml/HelpView.qml" line="316"></location>
+      <source>Gallery</source>
+      <translation>Галерея</translation>
+    </message>
+    <message id="gamehq.help.feature.lightbox.description">
+      <location filename="src/ui/qml/HelpView.qml" line="330"></location>
+      <source>Full-screen viewer for screenshots and videos. Opens from both the main window and the overlay.</source>
+      <translation>Полноэкранный просмотрщик для скриншотов и видео.</translation>
+    </message>
+    <message id="gamehq.help.feature.lightbox.title">
+      <location filename="src/ui/qml/HelpView.qml" line="328"></location>
+      <source>Lightbox</source>
+      <translation>Световой ящик</translation>
+    </message>
+    <message id="gamehq.help.feature.overlay.description">
+      <location filename="src/ui/qml/HelpView.qml" line="324"></location>
+      <source>Transparent fullscreen HUD. View and manage captures from inside a game without alt-tabbing. Includes its own gallery grid, lightbox, and toast notifications.</source>
+      <translation>Прозрачный HUD с полным экраном. Просмотр и управление снимками изнутри игры без альтернативных вкладки. Включает собственную сетку галереи, лайтбоксы и уведомления о тостах.</translation>
+    </message>
+    <message id="gamehq.help.feature.overlay.title">
+      <location filename="src/ui/qml/HelpView.qml" line="322"></location>
+      <source>Overlay</source>
+      <translation>Наложение</translation>
+    </message>
+    <message id="gamehq.help.feature.replay.description">
+      <location filename="src/ui/qml/HelpView.qml" line="306"></location>
+      <source>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
+      <translation>Всегда включенный автоматически. Записывает на заднем плане, пока игра в фокусе. Нажмите Share (или Ctrl+Shift+E), чтобы сохранить последние несколько секунд в виде клипа. Включите или выключите запись всегда включенной в Настройках → Повторное воспроизведение.</translation>
+    </message>
+    <message id="gamehq.help.feature.replay.title">
+      <location filename="src/ui/qml/HelpView.qml" line="304"></location>
+      <source>Replay buffer</source>
+      <translation>Буфер повторного воспроизведения</translation>
+    </message>
+    <message id="gamehq.help.feature.screenshots.description">
+      <location filename="src/ui/qml/HelpView.qml" line="312"></location>
+      <source>GDI grab of the active game window. PNG saved to your captures folder with instant shutter feedback.</source>
+      <translation>GDI захватить активный окно игры. PNG сохранен в папке захвата с мгновенной обратной связи затвора.</translation>
+    </message>
+    <message id="gamehq.help.feature.screenshots.title">
+      <location filename="src/ui/qml/HelpView.qml" line="310"></location>
+      <source>Screenshots</source>
+      <translation>Скриншоты</translation>
+    </message>
+    <message id="gamehq.help.feature.watched_folders.description">
+      <location filename="src/ui/qml/HelpView.qml" line="336"></location>
+      <source>Add any folder (Game Bar, Steam, NVIDIA ShadowPlay) — %1 scans it for new captures automatically.</source>
+      <translation>Добавить любую папку (Game Bar, Steam, NVIDIA ShadowPlay)  %1 сканирует ее на новые запечатки автоматически.</translation>
+    </message>
+    <message id="gamehq.help.feature.watched_folders.title">
+      <location filename="src/ui/qml/HelpView.qml" line="334"></location>
+      <source>Watched folders</source>
+      <translation>Смотрите папки</translation>
+    </message>
+    <message id="gamehq.help.features">
+      <location filename="src/ui/qml/HelpView.qml" line="280"></location>
+      <source>Features</source>
+      <translation>Особенности</translation>
+    </message>
+    <message id="gamehq.help.gamepad.button_combination">
+      <location filename="src/ui/qml/HelpView.qml" line="185"></location>
+      <source>Button combination</source>
+      <translation>Комбинация кнопок</translation>
+    </message>
+    <message id="gamehq.help.gamepad.button_combination_action">
+      <location filename="src/ui/qml/HelpView.qml" line="187"></location>
+      <source>Press the ordered pair within the configured combination window</source>
+      <translation>Нажмите на упорядоченную пару в окне настройки комбинации</translation>
+    </message>
+    <message id="gamehq.help.gamepad.circle">
+      <location filename="src/ui/qml/HelpView.qml" line="214"></location>
+      <source>Circle</source>
+      <translation>Круг</translation>
+    </message>
+    <message id="gamehq.help.gamepad.circle_action">
+      <location filename="src/ui/qml/HelpView.qml" line="216"></location>
+      <source>Back / close overlay</source>
+      <translation>Задние / близкие перекрытия</translation>
+    </message>
+    <message id="gamehq.help.gamepad.cross">
+      <location filename="src/ui/qml/HelpView.qml" line="208"></location>
+      <source>Cross</source>
+      <translation>Крест</translation>
+    </message>
+    <message id="gamehq.help.gamepad.cross_action">
+      <location filename="src/ui/qml/HelpView.qml" line="210"></location>
+      <source>Open selected capture / confirm</source>
+      <translation>Открыть выбранное захват / подтвердить</translation>
+    </message>
+    <message id="gamehq.help.gamepad.navigation_controls">
+      <location filename="src/ui/qml/HelpView.qml" line="202"></location>
+      <source>D-pad / Left Stick</source>
+      <translation>Д-пакет / левая палка</translation>
+    </message>
+    <message id="gamehq.help.gamepad.ps_button">
+      <location filename="src/ui/qml/HelpView.qml" line="191"></location>
+      <source>PS button</source>
+      <translation>Кнопка PS</translation>
+    </message>
+    <message id="gamehq.help.gamepad.select_mode">
+      <location filename="src/ui/qml/HelpView.qml" line="234"></location>
+      <source>Cross toggles, Triangle selects all, Square deletes, Circle exits</source>
+      <translation>Переключается на перекресток, треугольник выбирает все, квадрат удаляет, круг выходит</translation>
+    </message>
+    <message id="gamehq.help.gamepad.share_hold">
+      <location filename="src/ui/qml/HelpView.qml" line="173"></location>
+      <source>Share (hold)</source>
+      <translation>Доля (держание)</translation>
+    </message>
+    <message id="gamehq.help.gamepad.share_hold_action">
+      <location filename="src/ui/qml/HelpView.qml" line="175"></location>
+      <source>Save replay clip; hold consumes the tap</source>
+      <translation>Сохранить клип повторного воспроизведения; выдержка потребляет кнопку</translation>
+    </message>
+    <message id="gamehq.help.gamepad.share_multi_tap">
+      <location filename="src/ui/qml/HelpView.qml" line="179"></location>
+      <source>Share (2× / 3×)</source>
+      <translation>Разделение (2× / 3×)</translation>
+    </message>
+    <message id="gamehq.help.gamepad.share_multi_tap_action">
+      <location filename="src/ui/qml/HelpView.qml" line="181"></location>
+      <source>Exact double/triple tap; lower counts wait only for the configured interval</source>
+      <translation>Точное двойное/тройное нажатие; меньшее количество ждет только на настроенный интервал</translation>
+    </message>
+    <message id="gamehq.help.gamepad.square">
+      <location filename="src/ui/qml/HelpView.qml" line="220"></location>
+      <source>Square</source>
+      <translation>Квадрат</translation>
+    </message>
+    <message id="gamehq.help.gamepad.square_action">
+      <location filename="src/ui/qml/HelpView.qml" line="222"></location>
+      <source>Action menu (Show in folder / Delete)</source>
+      <translation>Меню действий (показать в папке / удалить)</translation>
+    </message>
+    <message id="gamehq.help.gamepad.switch_panel">
+      <location filename="src/ui/qml/HelpView.qml" line="198"></location>
+      <source>Switch panel: sidebar ↔ grid (app) / flip captures (overlay)</source>
+      <translation>Панель переключателя: боковая панель  сетка (приложение) / переключатель (наложение)</translation>
+    </message>
+    <message id="gamehq.help.gamepad.system_share_action">
+      <location filename="src/ui/qml/HelpView.qml" line="169"></location>
+      <source>Take screenshot; distinct from Xbox View / Back</source>
+      <translation>Снимок экрана; отличается от Xbox View / Back</translation>
+    </message>
+    <message id="gamehq.help.gamepad.system_share_tap">
+      <location filename="src/ui/qml/HelpView.qml" line="167"></location>
+      <source>System Share (tap)</source>
+      <translation>Система совместного использования (нажмите)</translation>
+    </message>
+    <message id="gamehq.help.gamepad.triangle">
+      <location filename="src/ui/qml/HelpView.qml" line="226"></location>
+      <source>Triangle</source>
+      <translation>Треугольник</translation>
+    </message>
+    <message id="gamehq.help.gamepad_shortcuts">
+      <location filename="src/ui/qml/HelpView.qml" line="143"></location>
+      <source>DualSense / gamepad</source>
+      <translation>Двойной сенс / игровой планшет</translation>
+    </message>
+    <message id="gamehq.help.keyboard.open_capture">
+      <location filename="src/ui/qml/HelpView.qml" line="82"></location>
+      <source>Open selected capture</source>
+      <translation>Открыть выбранный забор</translation>
+    </message>
+    <message id="gamehq.help.keyboard.open_overlay">
+      <location filename="src/ui/qml/HelpView.qml" line="67"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="193"></location>
+      <source>Open / close overlay</source>
+      <translation>Открыть / закрыть перекрытие</translation>
+    </message>
+    <message id="gamehq.help.keyboard.save_replay">
+      <location filename="src/ui/qml/HelpView.qml" line="77"></location>
+      <source>Save last N seconds as clip</source>
+      <translation>Сохранить последние N секунд как клип</translation>
+    </message>
+    <message id="gamehq.help.keyboard.select_mode">
+      <location filename="src/ui/qml/HelpView.qml" line="88"></location>
+      <source>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</source>
+      <translation>Введите / Пространство переключает, Ctrl+A выбирает все, Удалить удаляет выбранное</translation>
+    </message>
+    <message id="gamehq.help.keyboard.show_in_explorer">
+      <location filename="src/ui/qml/HelpView.qml" line="98"></location>
+      <source>Show selected in Explorer</source>
+      <translation>Выбрано в Explorer</translation>
+    </message>
+    <message id="gamehq.help.keyboard.take_screenshot">
+      <location filename="src/ui/qml/HelpView.qml" line="72"></location>
+      <source>Take screenshot</source>
+      <translation>Сделай снимок экрана</translation>
+    </message>
+    <message id="gamehq.help.keyboard.toggle_favorite">
+      <location filename="src/ui/qml/HelpView.qml" line="93"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="228"></location>
+      <source>Favorite / unfavorite selected</source>
+      <translation>Выбранный фаворит / не фаворит</translation>
+    </message>
+    <message id="gamehq.help.keyboard_shortcuts">
+      <location filename="src/ui/qml/HelpView.qml" line="42"></location>
+      <source>Keyboard shortcuts</source>
+      <translation>Кнопка клавиатуры</translation>
+    </message>
+    <message id="gamehq.help.navigate_gallery">
+      <location filename="src/ui/qml/HelpView.qml" line="103"></location>
+      <location filename="src/ui/qml/HelpView.qml" line="204"></location>
+      <source>Navigate gallery grid</source>
+      <translation>Навигация по галерее</translation>
+    </message>
+    <message id="gamehq.help.open_controller_guide">
+      <location filename="src/ui/qml/HelpView.qml" line="266"></location>
+      <source>Open the controller compatibility guide</source>
+      <translation>Открыть руководство по совместимости контроллеров</translation>
+    </message>
+    <message id="gamehq.input.assignment.capture_active">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="227"></location>
+      <source>Controller capture active · Dialog navigation is paused</source>
+      <translation>Запись контроллера активна · Диалог на навигации приостановлен</translation>
+    </message>
+    <message id="gamehq.input.assignment.combination_gesture">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="505"></location>
+      <source>Press · fixed for combinations</source>
+      <translation>Пресс · фиксированный для комбинаций</translation>
+    </message>
+    <message id="gamehq.input.assignment.default_duration">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="531"></location>
+      <source>Default</source>
+      <translation>По умолчанию</translation>
+    </message>
+    <message id="gamehq.input.assignment.detected">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="346"></location>
+      <source>%1 detected</source>
+      <translation>%1 обнаружено</translation>
+    </message>
+    <message id="gamehq.input.assignment.first_button">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="314"></location>
+      <source>First button</source>
+      <translation>Первая кнопка</translation>
+    </message>
+    <message id="gamehq.input.assignment.gesture">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="459"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="489"></location>
+      <source>Gesture</source>
+      <translation>Жестовый жест</translation>
+    </message>
+    <message id="gamehq.input.assignment.hold_duration">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="521"></location>
+      <source>Hold duration</source>
+      <translation>Продолжительность ожидания</translation>
+    </message>
+    <message id="gamehq.input.assignment.listening_button">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="269"></location>
+      <source>Listening… Press a controller button</source>
+      <translation>Нажмите кнопку управления.</translation>
+    </message>
+    <message id="gamehq.input.assignment.listening_first">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="341"></location>
+      <source>Listening… Hold the first button</source>
+      <translation>Придерживайте первую кнопку.</translation>
+    </message>
+    <message id="gamehq.input.assignment.listening_second">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="406"></location>
+      <source>Listening… Press the second button</source>
+      <translation>Нажмите на вторую кнопку.</translation>
+    </message>
+    <message id="gamehq.input.assignment.not_set">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="274"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="352"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="415"></location>
+      <source>Not set</source>
+      <translation>Не установлен</translation>
+    </message>
+    <message id="gamehq.input.assignment.notice.attention">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="584"></location>
+      <source>Assignment needs attention</source>
+      <translation>Назначение требует внимания</translation>
+    </message>
+    <message id="gamehq.input.assignment.notice.compatibility">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="592"></location>
+      <source>Compatibility change required</source>
+      <translation>Требуется изменение совместимости</translation>
+    </message>
+    <message id="gamehq.input.assignment.notice.default">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="595"></location>
+      <source>Assignment note</source>
+      <translation>Заявка на назначение</translation>
+    </message>
+    <message id="gamehq.input.assignment.notice.not_verified">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="588"></location>
+      <source>Button not verified this session</source>
+      <translation>Кнопка не проверена в этом сеансе</translation>
+    </message>
+    <message id="gamehq.input.assignment.pattern">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="196"></location>
+      <source>Pattern</source>
+      <translation>Образец</translation>
+    </message>
+    <message id="gamehq.input.assignment.pattern.combination">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="208"></location>
+      <source>Combination</source>
+      <translation>Сочетание</translation>
+    </message>
+    <message id="gamehq.input.assignment.pattern.single">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="206"></location>
+      <source>Single button</source>
+      <translation>Однокнопка</translation>
+    </message>
+    <message id="gamehq.input.assignment.scope_slot">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="181"></location>
+      <source>%1 · Slot %2</source>
+      <translation>%1 · Слот %2</translation>
+    </message>
+    <message id="gamehq.input.assignment.second_button">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="379"></location>
+      <source>Second button</source>
+      <translation>Вторая кнопка</translation>
+    </message>
+    <message id="gamehq.input.assignment.waiting_first">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="412"></location>
+      <source>Waiting for first button</source>
+      <translation>Ждем первой кнопки</translation>
+    </message>
+    <message id="gamehq.input.binding_card.add">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="251"></location>
+      <source>Add  ›</source>
+      <translation>Добавить ›</translation>
+    </message>
+    <message id="gamehq.input.binding_card.add_accessible">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="192"></location>
+      <source>Add %1 assignment</source>
+      <translation>Добавить задание %1</translation>
+    </message>
+    <message id="gamehq.input.binding_card.add_input">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="211"></location>
+      <source>+ Add input</source>
+      <translation>+ Добавить вход</translation>
+    </message>
+    <message id="gamehq.input.binding_card.add_status_accessible">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="188"></location>
+      <source>Add %1 assignment, status %2</source>
+      <translation>Добавить задание %1, статус %2</translation>
+    </message>
+    <message id="gamehq.input.binding_card.edit">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="248"></location>
+      <source>Edit  ›</source>
+      <translation>Изменить ›</translation>
+    </message>
+    <message id="gamehq.input.binding_card.edit_accessible">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="183"></location>
+      <source>Edit %1 assignment: %2, %3</source>
+      <translation>Изменить назначение %1: %2, %3</translation>
+    </message>
+    <message id="gamehq.input.binding_card.edit_status_accessible">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="177"></location>
+      <source>Edit %1 assignment: %2, %3, status %4</source>
+      <translation>Изменить задание %1: %2, %3, статус %4</translation>
+    </message>
+    <message id="gamehq.input.binding_card.heading">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="55"></location>
+      <source>%1 assignment</source>
+      <translation>%1</translation>
+    </message>
+    <message id="gamehq.input.binding_card.remove_accessible">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="138"></location>
+      <source>Remove %1 assignment</source>
+      <translation>Удалить задание %1</translation>
+    </message>
+    <message id="gamehq.input.binding_card.restore_accessible">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="95"></location>
+      <source>Restore %1 assignment</source>
+      <translation>Восстановить назначение %1</translation>
+    </message>
+    <message id="gamehq.input.binding_card.revert_accessible">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="98"></location>
+      <source>Revert %1 assignment</source>
+      <translation>Отменить изменение назначения %1</translation>
+    </message>
+    <message id="gamehq.input.binding_card.unassigned">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="208"></location>
+      <source>Unassigned</source>
+      <translation>Не назначенный</translation>
+    </message>
+    <message id="gamehq.input.choose_another">
+      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="17"></location>
+      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="23"></location>
+      <source>Choose another</source>
+      <translation>Выберите другую .</translation>
+    </message>
+    <message id="gamehq.input.compatibility.convert">
+      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="15"></location>
+      <source>Convert &amp; add</source>
+      <translation>Преобразовать &amp; добавить</translation>
+    </message>
+    <message id="gamehq.input.compatibility.title">
+      <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="12"></location>
+      <source>Make these assignments compatible?</source>
+      <translation>Сделать эти задания совместимыми?</translation>
+    </message>
+    <message id="gamehq.input.conflict.title">
+      <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="18"></location>
+      <source>These assignments conflict</source>
+      <translation>Эти задания противоречат</translation>
+    </message>
+    <message id="gamehq.input.gesture.double_tap">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="473"></location>
+      <source>Double tap</source>
+      <translation>Двойной клик</translation>
+    </message>
+    <message id="gamehq.input.gesture.hold">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="477"></location>
+      <source>Hold</source>
+      <translation>Подождите .</translation>
+    </message>
+    <message id="gamehq.input.gesture.press">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="469"></location>
+      <source>Press</source>
+      <translation>Нажимать</translation>
+    </message>
+    <message id="gamehq.input.gesture.tap">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="471"></location>
+      <source>Tap</source>
+      <translation>Нажмите</translation>
+    </message>
+    <message id="gamehq.input.gesture.triple_tap">
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="475"></location>
+      <source>Triple tap</source>
+      <translation>Трижды нажмите</translation>
+    </message>
+    <message id="gamehq.library.folder_dialog.title">
+      <location filename="src/ui/qml/Main.qml" line="1020"></location>
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
+      <source>Choose a folder to watch</source>
+      <translation>Выберите папку для просмотра</translation>
+    </message>
     <message id="gamehq.navigation.about">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="143"></location>
       <source>About</source>
@@ -154,46 +872,55 @@
     </message>
     <message id="gamehq.navigation.category.all">
       <location filename="src/ui/qml/Main.qml" line="151"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="11"></location>
       <source>All</source>
       <translation>Все</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
       <location filename="src/ui/qml/Main.qml" line="159"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="19"></location>
       <source>Clips</source>
       <translation>Клипсы</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
       <location filename="src/ui/qml/Main.qml" line="155"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="15"></location>
       <source>Favorites</source>
       <translation>Любимые</translation>
     </message>
     <message id="gamehq.navigation.category.game">
       <location filename="src/ui/qml/Main.qml" line="161"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="21"></location>
       <source>Game</source>
       <translation>Игра</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
       <location filename="src/ui/qml/Main.qml" line="163"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
       <source>Game favorites</source>
       <translation>Любимые игры</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
       <location filename="src/ui/qml/Main.qml" line="153"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="13"></location>
       <source>Recent</source>
       <translation>Недавние</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
       <location filename="src/ui/qml/Main.qml" line="157"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="17"></location>
       <source>Screenshots</source>
       <translation>Скриншоты</translation>
     </message>
     <message id="gamehq.navigation.games">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="88"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="54"></location>
       <source>Games</source>
       <translation>Игры</translation>
     </message>
     <message id="gamehq.navigation.help">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="131"></location>
+      <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
       <source>Help</source>
       <translation>Помощь</translation>
     </message>
@@ -206,6 +933,51 @@
       <location filename="src/ui/qml/ToastWindow.qml" line="17"></location>
       <source>%1 Notifications</source>
       <translation>%1 Уведомления</translation>
+    </message>
+    <message id="gamehq.overlay.capture_actions">
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="55"></location>
+      <source>Capture actions</source>
+      <translation>Записывать действия</translation>
+    </message>
+    <message id="gamehq.overlay.focus_warning">
+      <location filename="src/ui/qml/OverlayWindow.qml" line="98"></location>
+      <source>The game still has focus and may react to controller input</source>
+      <translation>Игра все еще имеет фокус и может реагировать на вход контроллера</translation>
+    </message>
+    <message id="gamehq.overlay.hint.browse.gamepad">
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="34"></location>
+      <source>L1/R1 — captures | D-pad Up/Down — categories/games | Cross — open | Triangle — favorite | Square — menu | Circle — back to game</source>
+      <translation>L1/R1  захватывает ∙ D-pad Вверх/вниз ∙ категории/игры ∙ Кросс  открыт ∙ Треугольник  фаворит ∙ Квадрат  меню ∙ Круг ∙ возвращение к игре</translation>
+    </message>
+    <message id="gamehq.overlay.hint.browse.keyboard">
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>
+      <source>Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
+      <translation>Лево/Право  захватывает ∙ Вверх/вниз ∙ Категории/игры ∙ Введите ∙ Открыть ∙ Ф ∙ Любимое ∙ М ∙ Меню ∙ Выйти ∙ Возвращаться в игру</translation>
+    </message>
+    <message id="gamehq.overlay.hint.menu.gamepad">
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="19"></location>
+      <source>D-pad Up/Down — choose | Cross — confirm | Circle — close menu</source>
+      <translation>D-папка Вверх/вниз  выбирать ∙ Перекрестить ∙ подтвердить ∙ Кружить ∙ закрыть меню</translation>
+    </message>
+    <message id="gamehq.overlay.hint.menu.keyboard">
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="22"></location>
+      <source>Up/Down — choose | Enter — confirm | Esc/Backspace — close menu</source>
+      <translation>Вверх/вниз  выбирать ∙ Введите  подтвердите ∙ Esc/Backspace  закрыть меню</translation>
+    </message>
+    <message id="gamehq.overlay.hint.video.gamepad">
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="27"></location>
+      <source>D-pad Left/Right — scrub | Cross — play/pause | Circle — back to captures</source>
+      <translation>D-пакет Лево/Право  протирать ∙ Кросс  играть/пауза ∙ Кружок  возвращаться к захвату</translation>
+    </message>
+    <message id="gamehq.overlay.hint.video.keyboard">
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="30"></location>
+      <source>Left/Right — scrub clip | Enter — play/pause | Esc/Backspace — back to captures</source>
+      <translation>Лево/право  клип очистки ∙ Введите  воспроизведение/пауза ∙ Esc/Backspace  обратно к захвату</translation>
+    </message>
+    <message id="gamehq.overlay.window_title">
+      <location filename="src/ui/qml/OverlayWindow.qml" line="28"></location>
+      <source>%1 Overlay</source>
+      <translation>%1 Наложение</translation>
     </message>
     <message id="gamehq.release_notes.title">
       <location filename="src/ui/AppController.cpp" line="103"></location>
@@ -328,6 +1100,387 @@
       <source>Website</source>
       <translation>Сайт</translation>
     </message>
+    <message id="gamehq.settings.advanced.description">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="12"></location>
+      <source>Review system health, open diagnostic resources, and recover settings.</source>
+      <translation>Проверьте состояние системы, открыть диагностические ресурсы и восстановить настройки.</translation>
+    </message>
+    <message id="gamehq.settings.advanced.diagnostics.copy.description">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="121"></location>
+      <source>Version, profile mode, and managed paths.</source>
+      <translation>Версия, режим профиля и управляемые пути.</translation>
+    </message>
+    <message id="gamehq.settings.advanced.diagnostics.copy.title">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="119"></location>
+      <source>Copy diagnostic summary</source>
+      <translation>Копировать диагностическое резюме</translation>
+    </message>
+    <message id="gamehq.settings.advanced.diagnostics.description">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="110"></location>
+      <source>Collect support information or refresh hardware status without changing settings.</source>
+      <translation>Собирать информацию о поддержке или обновлять состояние оборудования без изменения настроек.</translation>
+    </message>
+    <message id="gamehq.settings.advanced.diagnostics.eyebrow">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="106"></location>
+      <source>Diagnostics</source>
+      <translation>Диагностика</translation>
+    </message>
+    <message id="gamehq.settings.advanced.diagnostics.import.description">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="138"></location>
+      <source>Validate, stage, and import a fresh portable profile.</source>
+      <translation>Проверьте, поставьте и импортируйте новый портативный профиль.</translation>
+    </message>
+    <message id="gamehq.settings.advanced.diagnostics.import.title">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="136"></location>
+      <source>Import portable profile</source>
+      <translation>Импорт портативного профиля</translation>
+    </message>
+    <message id="gamehq.settings.advanced.diagnostics.refresh.description">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="129"></location>
+      <source>Recheck HDR and capture capabilities.</source>
+      <translation>Перепроверьте HDR и возможности захвата.</translation>
+    </message>
+    <message id="gamehq.settings.advanced.diagnostics.refresh.title">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="127"></location>
+      <source>Refresh display status</source>
+      <translation>Обновление состояния отображения</translation>
+    </message>
+    <message id="gamehq.settings.advanced.diagnostics.title">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="108"></location>
+      <source>Tools</source>
+      <translation>Инструменты</translation>
+    </message>
+    <message id="gamehq.settings.advanced.hdr.active">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="56"></location>
+      <source>HDR active</source>
+      <translation>HDR активный</translation>
+    </message>
+    <message id="gamehq.settings.advanced.hdr.description">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="152"></location>
+      <source>Technical adapter and fallback details are available when troubleshooting capture output.</source>
+      <translation>Технические подробности адаптера и резервного устройства доступны при устранении неполадок выхода захвата.</translation>
+    </message>
+    <message id="gamehq.settings.advanced.hdr.disclosure">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="155"></location>
+      <source>Technical HDR details</source>
+      <translation>Технические детали HDR</translation>
+    </message>
+    <message id="gamehq.settings.advanced.hdr.eyebrow">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="146"></location>
+      <source>Display capture</source>
+      <translation>Запись на дисплее</translation>
+    </message>
+    <message id="gamehq.settings.advanced.hdr.inactive">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="58"></location>
+      <source>HDR inactive</source>
+      <translation>HDR неактивный</translation>
+    </message>
+    <message id="gamehq.settings.advanced.hdr.title">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="148"></location>
+      <source>HDR details</source>
+      <translation>Подробности HDR</translation>
+    </message>
+    <message id="gamehq.settings.advanced.overview.description">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="37"></location>
+      <source>A concise view of the environment GameHQ is currently using.</source>
+      <translation>Краткий обзор среды, которую использует GameHQ.</translation>
+    </message>
+    <message id="gamehq.settings.advanced.overview.eyebrow">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="33"></location>
+      <source>Overview</source>
+      <translation>Обзор</translation>
+    </message>
+    <message id="gamehq.settings.advanced.overview.storage">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="65"></location>
+      <source>Storage</source>
+      <translation>Хранение</translation>
+    </message>
+    <message id="gamehq.settings.advanced.overview.system">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="42"></location>
+      <source>System</source>
+      <translation>Система</translation>
+    </message>
+    <message id="gamehq.settings.advanced.overview.title">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="35"></location>
+      <source>System status</source>
+      <translation>Состояние системы</translation>
+    </message>
+    <message id="gamehq.settings.advanced.overview.version">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="73"></location>
+      <source>Version</source>
+      <translation>Версия</translation>
+    </message>
+    <message id="gamehq.settings.advanced.portable_folder.title">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="274"></location>
+      <source>Select the GameHQ portable folder</source>
+      <translation>Выберите портативную папку GameHQ</translation>
+    </message>
+    <message id="gamehq.settings.advanced.profile.installed">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="49"></location>
+      <source>Installed profile</source>
+      <translation>Установленный профиль</translation>
+    </message>
+    <message id="gamehq.settings.advanced.profile.portable">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="47"></location>
+      <source>Portable profile</source>
+      <translation>Переносной профиль</translation>
+    </message>
+    <message id="gamehq.settings.advanced.recovery.all.action">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="261"></location>
+      <source>Restore all</source>
+      <translation>Восстановить все</translation>
+    </message>
+    <message id="gamehq.settings.advanced.recovery.all.description">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="257"></location>
+      <source>Return every configuration category to its default values.</source>
+      <translation>Верните каждую категорию конфигурации к ее значениям по умолчанию.</translation>
+    </message>
+    <message id="gamehq.settings.advanced.recovery.all.label">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="255"></location>
+      <source>Restore all settings</source>
+      <translation>Восстановить все настройки</translation>
+    </message>
+    <message id="gamehq.settings.advanced.recovery.category.description">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="213"></location>
+      <source>Return only the selected category to its defaults.</source>
+      <translation>Вернуть только выбранную категорию на свои параметры по умолчанию.</translation>
+    </message>
+    <message id="gamehq.settings.advanced.recovery.category.label">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="211"></location>
+      <source>Restore one category</source>
+      <translation>Восстановить одну категорию</translation>
+    </message>
+    <message id="gamehq.settings.advanced.recovery.description">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="205"></location>
+      <source>Restoring settings never deletes captures, favorites, watched media, or database records.</source>
+      <translation>Восстановление настроек никогда не удаляет записи, любимые, просмотренные медиа или записи базы данных.</translation>
+    </message>
+    <message id="gamehq.settings.advanced.recovery.eyebrow">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="200"></location>
+      <source>Recovery</source>
+      <translation>Восстановление</translation>
+    </message>
+    <message id="gamehq.settings.advanced.recovery.feedback">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="235"></location>
+      <source>Feedback</source>
+      <translation>Отзывы</translation>
+    </message>
+    <message id="gamehq.settings.advanced.recovery.input.action">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="247"></location>
+      <source>Restore input</source>
+      <translation>Восстановить вход</translation>
+    </message>
+    <message id="gamehq.settings.advanced.recovery.input.description">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="244"></location>
+      <source>Return controller, keyboard, and mouse overrides to built-in defaults.</source>
+      <translation>Возвращение контроллера, клавиатуры и мыши на встроенные параметры.</translation>
+    </message>
+    <message id="gamehq.settings.advanced.recovery.input.label">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="242"></location>
+      <source>Restore input bindings</source>
+      <translation>Восстановить входные связки</translation>
+    </message>
+    <message id="gamehq.settings.advanced.recovery.options">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="208"></location>
+      <source>Restore options</source>
+      <translation>Восстановление опций</translation>
+    </message>
+    <message id="gamehq.settings.advanced.recovery.title">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="202"></location>
+      <source>Restore</source>
+      <translation>Восстановить</translation>
+    </message>
+    <message id="gamehq.settings.advanced.resources.data">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="97"></location>
+      <source>Data folder</source>
+      <translation>Папка данных</translation>
+    </message>
+    <message id="gamehq.settings.advanced.resources.description">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="88"></location>
+      <source>Open GameHQ-owned folders used for logs, configuration, database, and support data.</source>
+      <translation>Открыть папки, принадлежащие GameHQ, используемые для журналов, конфигурации, базы данных и данных поддержки.</translation>
+    </message>
+    <message id="gamehq.settings.advanced.resources.eyebrow">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="84"></location>
+      <source>Resources</source>
+      <translation>Средства</translation>
+    </message>
+    <message id="gamehq.settings.advanced.resources.logs">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="91"></location>
+      <source>Logs folder</source>
+      <translation>Папка журналов</translation>
+    </message>
+    <message id="gamehq.settings.advanced.resources.title">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="86"></location>
+      <source>Locations</source>
+      <translation>Местонахождение</translation>
+    </message>
+    <message id="gamehq.settings.advanced.status.healthy">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="67"></location>
+      <source>Healthy</source>
+      <translation>Здоровая</translation>
+    </message>
+    <message id="gamehq.settings.advanced.status.ready">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="44"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="623"></location>
+      <source>Ready</source>
+      <translation>Готовы?</translation>
+    </message>
+    <message id="gamehq.settings.advanced.storage.available">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="69"></location>
+      <source>Managed folders available</source>
+      <translation>Доступные управляемые папки</translation>
+    </message>
+    <message id="gamehq.settings.advanced.version.current">
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="76"></location>
+      <source>Current installation</source>
+      <translation>Текущая установка</translation>
+    </message>
+    <message id="gamehq.settings.capture.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="12"></location>
+      <source>Choose when, how, and where GameHQ saves screenshots.</source>
+      <translation>Выберите, когда, как и где GameHQ сохраняет скриншоты.</translation>
+    </message>
+    <message id="gamehq.settings.capture.feedback.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="95"></location>
+      <source>Combined with the master switches on the Notifications &amp; Sound page.</source>
+      <translation>Используется вместе с главными переключателями на странице «Уведомления &amp; звук».</translation>
+    </message>
+    <message id="gamehq.settings.capture.feedback.eyebrow">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="91"></location>
+      <source>Feedback</source>
+      <translation>Отзывы</translation>
+    </message>
+    <message id="gamehq.settings.capture.feedback.notification">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="103"></location>
+      <source>Screenshot notification</source>
+      <translation>Уведомление о снимке экрана</translation>
+    </message>
+    <message id="gamehq.settings.capture.feedback.sound">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="98"></location>
+      <source>Screenshot sound</source>
+      <translation>Звук скриншота</translation>
+    </message>
+    <message id="gamehq.settings.capture.feedback.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="93"></location>
+      <source>After a screenshot</source>
+      <translation>После скриншота</translation>
+    </message>
+    <message id="gamehq.settings.capture.image.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="57"></location>
+      <source>PNG is lossless; JPEG trades some quality for smaller files.</source>
+      <translation>PNG без потерь; JPEG обменивается некоторым качеством на более мелкие файлы.</translation>
+    </message>
+    <message id="gamehq.settings.capture.image.eyebrow">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="53"></location>
+      <source>Image</source>
+      <translation>Изображение</translation>
+    </message>
+    <message id="gamehq.settings.capture.image.format">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="60"></location>
+      <source>Format</source>
+      <translation>Формат</translation>
+    </message>
+    <message id="gamehq.settings.capture.image.jpeg">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="69"></location>
+      <source>JPEG (smaller files)</source>
+      <translation>JPEG (меньшие файлы)</translation>
+    </message>
+    <message id="gamehq.settings.capture.image.jpeg_quality">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="75"></location>
+      <source>JPEG quality</source>
+      <translation>Качество JPEG</translation>
+    </message>
+    <message id="gamehq.settings.capture.image.png">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="67"></location>
+      <source>PNG (lossless)</source>
+      <translation>PNG (без потерь)</translation>
+    </message>
+    <message id="gamehq.settings.capture.image.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="55"></location>
+      <source>Format and quality</source>
+      <translation>Формат и качество</translation>
+    </message>
+    <message id="gamehq.settings.capture.mode.always">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="45"></location>
+      <source>Always</source>
+      <translation>Всегда</translation>
+    </message>
+    <message id="gamehq.settings.capture.mode.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="30"></location>
+      <source>Control when screenshots and replay recording are allowed.</source>
+      <translation>Контроль, когда разрешены снимки экрана и запись повторного воспроизведения.</translation>
+    </message>
+    <message id="gamehq.settings.capture.mode.eyebrow">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="26"></location>
+      <source>Capture mode</source>
+      <translation>Режим захвата</translation>
+    </message>
+    <message id="gamehq.settings.capture.mode.label">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="33"></location>
+      <source>Capture mode</source>
+      <translation>Режим захвата</translation>
+    </message>
+    <message id="gamehq.settings.capture.mode.only_in_games">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="41"></location>
+      <source>Only in games</source>
+      <translation>Только в играх</translation>
+    </message>
+    <message id="gamehq.settings.capture.mode.row_description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="35"></location>
+      <source>Only in games is the safest default for global shortcuts.</source>
+      <translation>Только в играх самый безопасный по умолчанию для глобальных ярлыков.</translation>
+    </message>
+    <message id="gamehq.settings.capture.mode.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="28"></location>
+      <source>When to capture</source>
+      <translation>Когда поймать</translation>
+    </message>
+    <message id="gamehq.settings.capture.mode.whitelist">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="43"></location>
+      <source>Whitelisted games</source>
+      <translation>Игры в белом списке</translation>
+    </message>
+    <message id="gamehq.settings.capture.storage.choose_clips">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="160"></location>
+      <source>Choose the clips folder</source>
+      <translation>Выберите папку клипов</translation>
+    </message>
+    <message id="gamehq.settings.capture.storage.choose_screenshots">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="153"></location>
+      <source>Choose the screenshots folder</source>
+      <translation>Выберите папку скриншотов</translation>
+    </message>
+    <message id="gamehq.settings.capture.storage.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="114"></location>
+      <source>Changing a location never moves or deletes existing media.</source>
+      <translation>Изменение местоположения никогда не перемещает или не удаляет существующие медиа.</translation>
+    </message>
+    <message id="gamehq.settings.capture.storage.eyebrow">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="110"></location>
+      <source>Storage</source>
+      <translation>Хранение</translation>
+    </message>
+    <message id="gamehq.settings.capture.storage.replay_clips">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="129"></location>
+      <source>Replay clips</source>
+      <translation>Повторные клипы</translation>
+    </message>
+    <message id="gamehq.settings.capture.storage.screenshots">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="118"></location>
+      <source>Screenshots</source>
+      <translation>Скриншоты</translation>
+    </message>
+    <message id="gamehq.settings.capture.storage.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="112"></location>
+      <source>Where captures are saved</source>
+      <translation>Место сохранения улова</translation>
+    </message>
+    <message id="gamehq.settings.capture.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="10"></location>
+      <source>Capture</source>
+      <translation>Поймать</translation>
+    </message>
     <message id="gamehq.settings.category.about">
       <location filename="src/ui/qml/SettingsView.qml" line="27"></location>
       <source>About</source>
@@ -335,21 +1488,27 @@
     </message>
     <message id="gamehq.settings.category.advanced">
       <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="10"></location>
       <source>Advanced</source>
       <translation>Продвинутый</translation>
     </message>
     <message id="gamehq.settings.category.capture">
       <location filename="src/ui/qml/SettingsView.qml" line="15"></location>
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="53"></location>
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="223"></location>
       <source>Capture</source>
       <translation>Поймать</translation>
     </message>
     <message id="gamehq.settings.category.general">
       <location filename="src/ui/qml/SettingsView.qml" line="13"></location>
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="217"></location>
       <source>General</source>
       <translation>Общие</translation>
     </message>
     <message id="gamehq.settings.category.input">
       <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="244"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="9"></location>
       <source>Input</source>
       <translation>Ввод</translation>
     </message>
@@ -365,6 +1524,7 @@
     </message>
     <message id="gamehq.settings.category.replay">
       <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
+      <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="229"></location>
       <source>Replay</source>
       <translation>Повторить</translation>
     </message>
@@ -382,6 +1542,131 @@
       <location filename="src/ui/qml/components/SettingsDisclosure.qml" line="58"></location>
       <source>Show</source>
       <translation>Показать</translation>
+    </message>
+    <message id="gamehq.settings.feedback.audio.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="47"></location>
+      <source>Set the master sound switch, volume, and event-specific feedback.</source>
+      <translation>Настройте главный переключатель звука, громкость и обратную связь.</translation>
+    </message>
+    <message id="gamehq.settings.feedback.audio.enabled.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="53"></location>
+      <source>Play navigation and action feedback sounds.</source>
+      <translation>Воспроизведите звуки навигации и обратной связи.</translation>
+    </message>
+    <message id="gamehq.settings.feedback.audio.enabled.label">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="51"></location>
+      <source>UI sounds</source>
+      <translation>Звуки пользовательского интерфейса</translation>
+    </message>
+    <message id="gamehq.settings.feedback.audio.eyebrow">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="43"></location>
+      <source>Audio feedback</source>
+      <translation>Аудиоотзывы</translation>
+    </message>
+    <message id="gamehq.settings.feedback.audio.replay">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="74"></location>
+      <source>Replay saved sound</source>
+      <translation>Повторить сохраненный звук</translation>
+    </message>
+    <message id="gamehq.settings.feedback.audio.screenshot">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
+      <source>Screenshot sound</source>
+      <translation>Звук скриншота</translation>
+    </message>
+    <message id="gamehq.settings.feedback.audio.title">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="45"></location>
+      <source>Sound</source>
+      <translation>Звук</translation>
+    </message>
+    <message id="gamehq.settings.feedback.audio.volume">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="58"></location>
+      <source>Volume</source>
+      <translation>Объем</translation>
+    </message>
+    <message id="gamehq.settings.feedback.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="9"></location>
+      <source>Choose how GameHQ confirms captures, clips, and navigation.</source>
+      <translation>Выберите, как GameHQ подтверждает записи, клипы и навигацию.</translation>
+    </message>
+    <message id="gamehq.settings.feedback.preview.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
+      <source>Confirm notifications and sound without creating a capture.</source>
+      <translation>Подтвердите уведомления и звук без создания захвата.</translation>
+    </message>
+    <message id="gamehq.settings.feedback.preview.eyebrow">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
+      <source>Preview</source>
+      <translation>Предварительный просмотр</translation>
+    </message>
+    <message id="gamehq.settings.feedback.preview.label">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="90"></location>
+      <source>Preview feedback</source>
+      <translation>Предварительная обратная связь</translation>
+    </message>
+    <message id="gamehq.settings.feedback.preview.notification">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
+      <source>Show test notification</source>
+      <translation>Показать уведомление о испытании</translation>
+    </message>
+    <message id="gamehq.settings.feedback.preview.notification_body">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="101"></location>
+      <source>Notifications are working.</source>
+      <translation>Уведомления работают.</translation>
+    </message>
+    <message id="gamehq.settings.feedback.preview.notification_title">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="99"></location>
+      <source>%1 notification</source>
+      <translation>Уведомление %1</translation>
+    </message>
+    <message id="gamehq.settings.feedback.preview.sound">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="107"></location>
+      <source>Play test sound</source>
+      <translation>Проиграть звуки испытаний</translation>
+    </message>
+    <message id="gamehq.settings.feedback.preview.title">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="84"></location>
+      <source>Test the current feedback settings</source>
+      <translation>Проверьте текущие настройки обратной связи</translation>
+    </message>
+    <message id="gamehq.settings.feedback.title">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="7"></location>
+      <source>Notifications &amp; Sound</source>
+      <translation>Уведомления &amp; звук</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="17"></location>
+      <source>Control the result cards shown after capture and replay actions.</source>
+      <translation>Контролируйте результаты карт, показанные после захвата и повторного действия.</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.enabled.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="23"></location>
+      <source>Master switch for capture and replay result cards.</source>
+      <translation>Главный переключатель для захвата и повторного просмотра карт результатов.</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.enabled.label">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="21"></location>
+      <source>Show notifications</source>
+      <translation>Показывать уведомления</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.eyebrow">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="13"></location>
+      <source>Visual feedback</source>
+      <translation>Визуальная обратная связь</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.replay">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="35"></location>
+      <source>Replay saved</source>
+      <translation>Перезагрузка сохранена</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.screenshot">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="29"></location>
+      <source>Screenshot captured</source>
+      <translation>Снимок экрана</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.title">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="15"></location>
+      <source>Notifications</source>
+      <translation>Уведомления</translation>
     </message>
     <message id="gamehq.settings.general.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="9"></location>
@@ -498,6 +1783,429 @@
       <source>General</source>
       <translation>Общие</translation>
     </message>
+    <message id="gamehq.settings.input.bindings.action_description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="380"></location>
+      <source>%1 · %2</source>
+      <translation>%1 · %2</translation>
+    </message>
+    <message id="gamehq.settings.input.bindings.assignment_heading">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="421"></location>
+      <source>Input assignments</source>
+      <translation>Назначение ввода</translation>
+    </message>
+    <message id="gamehq.settings.input.bindings.assignment_hint">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="430"></location>
+      <source>Both slots can be active. Select one to edit.</source>
+      <translation>Оба слота могут быть активны. Выберите один для редактирования.</translation>
+    </message>
+    <message id="gamehq.settings.input.bindings.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="325"></location>
+      <source>Primary and secondary slots are independent. Contexts can reuse the same input safely.</source>
+      <translation>Первичные и вторичные слоты независимы друг от друга. Контексты могут безопасно повторно использовать один и тот же вход.</translation>
+    </message>
+    <message id="gamehq.settings.input.bindings.eyebrow">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="321"></location>
+      <source>Bindings</source>
+      <translation>Связки</translation>
+    </message>
+    <message id="gamehq.settings.input.bindings.fixed">
+      <location filename="src/ui/qml/components/BindingCard.qml" line="244"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="455"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="472"></location>
+      <source>Fixed</source>
+      <translation>Установлено</translation>
+    </message>
+    <message id="gamehq.settings.input.bindings.primary">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="449"></location>
+      <source>Primary</source>
+      <translation>Первичный</translation>
+    </message>
+    <message id="gamehq.settings.input.bindings.secondary">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="466"></location>
+      <source>Secondary</source>
+      <translation>Вторичные</translation>
+    </message>
+    <message id="gamehq.settings.input.bindings.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="323"></location>
+      <source>Assignments</source>
+      <translation>Назначение</translation>
+    </message>
+    <message id="gamehq.settings.input.capture.waiting">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="517"></location>
+      <source>Waiting for input</source>
+      <translation>Ждем ввода</translation>
+    </message>
+    <message id="gamehq.settings.input.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="11"></location>
+      <source>Configure controller, keyboard, and mouse shortcuts without changing navigation behavior.</source>
+      <translation>Настройте контроллер, клавиатуру и ярлыки мыши без изменения навигационного поведения.</translation>
+    </message>
+    <message id="gamehq.settings.input.devices.controller">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="46"></location>
+      <source>Controller</source>
+      <translation>Контроллер</translation>
+    </message>
+    <message id="gamehq.settings.input.devices.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="28"></location>
+      <source>Choose a device type, then select either assignment slot to capture a new input.</source>
+      <translation>Выберите тип устройства, затем выберите любой слот назначения для захвата нового ввода.</translation>
+    </message>
+    <message id="gamehq.settings.input.devices.eyebrow">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="24"></location>
+      <source>Devices</source>
+      <translation>Устройства</translation>
+    </message>
+    <message id="gamehq.settings.input.devices.keyboard">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="48"></location>
+      <source>Keyboard</source>
+      <translation>Клавиатура</translation>
+    </message>
+    <message id="gamehq.settings.input.devices.keyboard_description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="37"></location>
+      <source>Focused shortcuts and global key combinations</source>
+      <translation>Целенаправленные ярлыки и глобальные комбинации ключей</translation>
+    </message>
+    <message id="gamehq.settings.input.devices.mouse">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="50"></location>
+      <source>Mouse</source>
+      <translation>Мышь</translation>
+    </message>
+    <message id="gamehq.settings.input.devices.mouse_description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="40"></location>
+      <source>Middle, Back, and Forward mouse buttons</source>
+      <translation>Кнопки мыши "Средний", "Назад" и "Вперед"</translation>
+    </message>
+    <message id="gamehq.settings.input.devices.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="26"></location>
+      <source>Input devices</source>
+      <translation>Устройства ввода</translation>
+    </message>
+    <message id="gamehq.settings.input.devices.type">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="31"></location>
+      <source>Device type</source>
+      <translation>Тип устройства</translation>
+    </message>
+    <message id="gamehq.settings.input.gestures.combination_window">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="299"></location>
+      <source>Combination window</source>
+      <translation>Комбинационное окно</translation>
+    </message>
+    <message id="gamehq.settings.input.gestures.combination_window_description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="301"></location>
+      <source>How long the first button of a combination waits for the second one.</source>
+      <translation>Сколько времени первая кнопка комбинации ждет вторую.</translation>
+    </message>
+    <message id="gamehq.settings.input.gestures.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="258"></location>
+      <source>How long GameHQ waits before it decides what a button press meant.</source>
+      <translation>Сколько времени GameHQ ждет, прежде чем решить, что означает нажатие кнопки.</translation>
+    </message>
+    <message id="gamehq.settings.input.gestures.eyebrow">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="254"></location>
+      <source>Gestures</source>
+      <translation>Жестовые движения</translation>
+    </message>
+    <message id="gamehq.settings.input.gestures.hold_time">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="261"></location>
+      <source>Hold time</source>
+      <translation>Время ожидания</translation>
+    </message>
+    <message id="gamehq.settings.input.gestures.hold_time_description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="263"></location>
+      <source>How long a button must be held for a hold action. A completed hold consumes the tap.</source>
+      <translation>Сколько времени нужно удерживать кнопку для действия задержки.</translation>
+    </message>
+    <message id="gamehq.settings.input.gestures.multi_tap">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="280"></location>
+      <source>Multi-tap interval</source>
+      <translation>Интервал многократного нажатия</translation>
+    </message>
+    <message id="gamehq.settings.input.gestures.multi_tap_description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="282"></location>
+      <source>How long a single tap waits when the same button also has a double or triple tap.</source>
+      <translation>Сколько времени ждет одно нажатие, когда на ту же кнопку также нажимают два или три.</translation>
+    </message>
+    <message id="gamehq.settings.input.gestures.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="256"></location>
+      <source>Gesture timing</source>
+      <translation>Время действия жестов</translation>
+    </message>
+    <message id="gamehq.settings.input.hidden.eyebrow">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="90"></location>
+      <source>Attention</source>
+      <translation>Внимание!</translation>
+    </message>
+    <message id="gamehq.settings.input.hidden.fix">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
+      <source>Fix automatically</source>
+      <translation>Поправить автоматически</translation>
+    </message>
+    <message id="gamehq.settings.input.hidden.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="92"></location>
+      <source>Controller hidden</source>
+      <translation>Контроллер скрыт</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.auto">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="586"></location>
+      <source>Auto</source>
+      <translation>Автомобиль</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.device_layout_changed">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="597"></location>
+      <source>%1 button layout changed</source>
+      <translation>Раскладка кнопок %1 изменена</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.eyebrow">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="569"></location>
+      <source>Modern controllers</source>
+      <translation>Современные контроллеры</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.guide.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
+      <source>View versus true Share, probe results, reconnects, gestures, and combinations</source>
+      <translation>Просмотр против истинного Обмен, результаты исследования, повторное подключение, жесты и комбинации</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.guide.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="645"></location>
+      <source>Controller compatibility guide</source>
+      <translation>Руководство по совместимости контроллеров</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.layout_warning">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="574"></location>
+      <source>A controller layout changed. Review its extra-button assignments before using them.</source>
+      <translation>Пересматривайте дополнительные кнопки перед использованием.</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.legacy_fallback">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="620"></location>
+      <source>Legacy fallback</source>
+      <translation>Возвратная помощь по наследству</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.off">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="588"></location>
+      <source>Off</source>
+      <translation>Выключено</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.report.copy">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="637"></location>
+      <source>Copy report</source>
+      <translation>Копировать отчет</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.report.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="634"></location>
+      <source>Copies anonymous identity, providers, Share/Guide availability, extra buttons, and layout state—never serials or full device paths.</source>
+      <translation>Копирует анонимную личность, провайдеров, доступность Share/Guide, дополнительные кнопки и состояние макетаникогда серийные номера или полные пути устройств.</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.report.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="632"></location>
+      <source>Compatibility report</source>
+      <translation>Доклад о совместимости</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.review_buttons">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="601"></location>
+      <source>Review buttons</source>
+      <translation>Кнопки обзора</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.runtime">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="614"></location>
+      <source>GameInput runtime</source>
+      <translation>Время запуска игры</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.support.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="581"></location>
+      <source>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</source>
+      <translation>Автоматическое использование локального GameInput с безопасным отключением устаревших поставщиков.</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.support.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="579"></location>
+      <source>Modern controller support</source>
+      <translation>Поддержка современного контроллера</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="571"></location>
+      <source>GameInput support</source>
+      <translation>Поддержка ввода игры</translation>
+    </message>
+    <message id="gamehq.settings.input.modern.use_current_layout">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="607"></location>
+      <source>Use current layout</source>
+      <translation>Использовать текущий макет</translation>
+    </message>
+    <message id="gamehq.settings.input.profile.all_controllers">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="72"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="80"></location>
+      <source>All controllers</source>
+      <translation>Все контроллеры</translation>
+    </message>
+    <message id="gamehq.settings.input.profile.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="58"></location>
+      <source>Controller profile</source>
+      <translation>Профиль контроллера</translation>
+    </message>
+    <message id="gamehq.settings.input.profile.shared_description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="65"></location>
+      <source>Position-based assignments work across PlayStation, Xbox, Nintendo, and generic pads.</source>
+      <translation>Назначения на основе позиции работают на PlayStation, Xbox, Nintendo и общих планшетах.</translation>
+    </message>
+    <message id="gamehq.settings.input.profile.specific_description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="62"></location>
+      <source>Changes apply only to %1.</source>
+      <translation>Изменения применяются только к %1.</translation>
+    </message>
+    <message id="gamehq.settings.input.profile.this_controller">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="76"></location>
+      <source>This controller</source>
+      <translation>Этот контроллер</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.compatibility">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="125"></location>
+      <source>Compatibility</source>
+      <translation>Совместимость</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.compatibility_title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="150"></location>
+      <source>Assignment conversion required</source>
+      <translation>Требуется конвертация назначения</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.context">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="122"></location>
+      <source>Context</source>
+      <translation>Контекст</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.context_title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="147"></location>
+      <source>This button changes meaning</source>
+      <translation>Эта кнопка меняет значение</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.duplicate">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="137"></location>
+      <source>Duplicate</source>
+      <translation>Двойной</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.duplicate_title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="162"></location>
+      <source>Already assigned</source>
+      <translation>Уже назначено</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.in_use">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="131"></location>
+      <source>In use</source>
+      <translation>В эксплуатации</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.in_use_title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="156"></location>
+      <source>Shortcut already taken</source>
+      <translation>Уже пройден короткий путь .</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.not_available">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="128"></location>
+      <source>Not available</source>
+      <translation>Недоступно</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.not_reported_title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="153"></location>
+      <source>Button not reported</source>
+      <translation>Кнопка не зарегистрирована</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.not_saved">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="134"></location>
+      <source>Not saved</source>
+      <translation>Не сохранено</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.not_saved_title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="159"></location>
+      <source>Could not save this binding</source>
+      <translation>Не удалось сохранить связь</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.shared_button">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="140"></location>
+      <source>Shared button</source>
+      <translation>Кнопка совместного использования</translation>
+    </message>
+    <message id="gamehq.settings.input.relation.shared_button_title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="165"></location>
+      <source>One button, several gestures</source>
+      <translation>Одна кнопка, несколько жестов</translation>
+    </message>
+    <message id="gamehq.settings.input.restore_all.message">
+      <location filename="src/ui/qml/SettingsView.qml" line="508"></location>
+      <source>All controller, keyboard, and mouse overrides return to their built-in defaults.</source>
+      <translation>Все переключатели контроллера, клавиатуры и мыши возвращаются к встроенным параметрам.</translation>
+    </message>
+    <message id="gamehq.settings.input.restore_all.title">
+      <location filename="src/ui/qml/SettingsView.qml" line="506"></location>
+      <source>Restore all input bindings?</source>
+      <translation>Восстановить все входные связи?</translation>
+    </message>
+    <message id="gamehq.settings.input.restore_displayed.message">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="679"></location>
+      <source>Only the currently displayed device/profile overrides will be removed.</source>
+      <translation>Удаляются только отображаемые устройства/профили.</translation>
+    </message>
+    <message id="gamehq.settings.input.restore_displayed.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="677"></location>
+      <source>Restore displayed bindings?</source>
+      <translation>Восстановить отображаемые связки?</translation>
+    </message>
+    <message id="gamehq.settings.input.test.adopt_bindings">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="225"></location>
+      <source>Adopt per-slot bindings</source>
+      <translation>Принять по-слоту</translation>
+    </message>
+    <message id="gamehq.settings.input.test.adopt_bindings_description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="227"></location>
+      <source>Copy bindings saved for any controller in this slot to this specific controller. The originals are kept.</source>
+      <translation>Копируйте запись, сохраненную для любого контроллера в этом слоте, на этот конкретный контроллер.</translation>
+    </message>
+    <message id="gamehq.settings.input.test.copy_to_controller">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="230"></location>
+      <source>Copy to this controller</source>
+      <translation>Копировать на этот контроллер</translation>
+    </message>
+    <message id="gamehq.settings.input.test.eyebrow">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="189"></location>
+      <source>Profile</source>
+      <translation>Профиль</translation>
+    </message>
+    <message id="gamehq.settings.input.test.identify_button">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="237"></location>
+      <source>Identify a controller button</source>
+      <translation>Определите кнопку контроллера</translation>
+    </message>
+    <message id="gamehq.settings.input.test.last_input">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="195"></location>
+      <source>Last input</source>
+      <translation>Последний ввод</translation>
+    </message>
+    <message id="gamehq.settings.input.test.probe_description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="241"></location>
+      <source>Records the next 3 seconds of raw button changes — including buttons GameHQ does not recognize — into the diagnostics you can copy from Advanced.</source>
+      <translation>Записывает следующие 3 секунды необработанных изменений кнопок  включая кнопки, которые GameHQ не распознает  в диагностику, которую вы можете скопировать из Advanced.</translation>
+    </message>
+    <message id="gamehq.settings.input.test.restore_displayed">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="206"></location>
+      <source>Restore displayed bindings</source>
+      <translation>Восстановить отображаемые связки</translation>
+    </message>
+    <message id="gamehq.settings.input.test.restore_shared_description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="213"></location>
+      <source>Remove overrides for the selected device type and shared profile.</source>
+      <translation>Удалить замены для выбранного типа устройства и общих профилей.</translation>
+    </message>
+    <message id="gamehq.settings.input.test.restore_specific_description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="210"></location>
+      <source>Remove overrides for this controller only.</source>
+      <translation>Удалить зашифровки только для этого контроллера.</translation>
+    </message>
+    <message id="gamehq.settings.input.test.start_probe">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="244"></location>
+      <source>Start 3-second probe</source>
+      <translation>Начать 3-секундный зонд</translation>
+    </message>
+    <message id="gamehq.settings.input.test.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="191"></location>
+      <source>Test and restore</source>
+      <translation>Испытание и восстановление</translation>
+    </message>
     <message id="gamehq.settings.language.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="17"></location>
       <source>Choose the language GameHQ uses.</source>
@@ -527,6 +2235,310 @@
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="15"></location>
       <source>Interface language</source>
       <translation>Язык интерфейса</translation>
+    </message>
+    <message id="gamehq.settings.library.description">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="11"></location>
+      <source>Review every folder GameHQ manages or scans for media.</source>
+      <translation>Проверьте все папки, которыми управляет GameHQ или сканируйте на наличие медиа.</translation>
+    </message>
+    <message id="gamehq.settings.library.imports.add">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="85"></location>
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="120"></location>
+      <source>Add watched folder</source>
+      <translation>Добавить просмотренную папку</translation>
+    </message>
+    <message id="gamehq.settings.library.imports.count" numerus="yes">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="72"></location>
+      <source>%n watched folder(s)</source>
+      <translation>
+        <numerusform>%n отслеживаемая папка</numerusform>
+        <numerusform>%n отслеживаемые папки</numerusform>
+        <numerusform>%n отслеживаемых папок</numerusform>
+      </translation>
+    </message>
+    <message id="gamehq.settings.library.imports.description">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="74"></location>
+      <source>External folders are scanned read-only and never become GameHQ output locations.</source>
+      <translation>Внешние папки сканируются только для чтения и никогда не становятся выходной локацией GameHQ.</translation>
+    </message>
+    <message id="gamehq.settings.library.imports.empty.description">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="82"></location>
+      <source>Add folders created by Steam, OBS, Xbox Game Bar, or another capture tool.</source>
+      <translation>Добавить папки, созданные с помощью Steam, OBS, Xbox Game Bar или другого инструмента захвата.</translation>
+    </message>
+    <message id="gamehq.settings.library.imports.empty.title">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="80"></location>
+      <source>No watched folders yet</source>
+      <translation>Пока не просмотрели папки</translation>
+    </message>
+    <message id="gamehq.settings.library.imports.eyebrow">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="68"></location>
+      <source>Imports</source>
+      <translation>Импорт</translation>
+    </message>
+    <message id="gamehq.settings.library.imports.folder">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="97"></location>
+      <source>Watched folder</source>
+      <translation>Просмотренная папка</translation>
+    </message>
+    <message id="gamehq.settings.library.imports.title">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="70"></location>
+      <source>Watched folders</source>
+      <translation>Смотрите папки</translation>
+    </message>
+    <message id="gamehq.settings.library.rescan">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="15"></location>
+      <source>Rescan now</source>
+      <translation>Пересканируйте сейчас</translation>
+    </message>
+    <message id="gamehq.settings.library.scan.added" numerus="yes">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="139"></location>
+      <source>%n new capture(s) added</source>
+      <translation>
+        <numerusform>%n новый файл добавлен</numerusform>
+        <numerusform>%n новых файла добавлено</numerusform>
+        <numerusform>%n новых файлов добавлено</numerusform>
+      </translation>
+    </message>
+    <message id="gamehq.settings.library.scan.description">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="143"></location>
+      <source>Rescan checks current, previous, and watched locations for media missing from the library.</source>
+      <translation>Rescan проверяет текущие, предыдущие и просмотренные места на отсутствующие в библиотеке медиа.</translation>
+    </message>
+    <message id="gamehq.settings.library.scan.eyebrow">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="128"></location>
+      <source>Last scan</source>
+      <translation>Последний сканер</translation>
+    </message>
+    <message id="gamehq.settings.library.scan.not_scanned">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="132"></location>
+      <source>Not scanned this session</source>
+      <translation>Не сканировано в этом сеансе</translation>
+    </message>
+    <message id="gamehq.settings.library.scan.up_to_date">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="136"></location>
+      <source>Library is up to date</source>
+      <translation>Библиотека обновлена</translation>
+    </message>
+    <message id="gamehq.settings.library.storage.active_count">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="34"></location>
+      <source>2 active</source>
+      <translation>2 активные</translation>
+    </message>
+    <message id="gamehq.settings.library.storage.description">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="36"></location>
+      <source>Current output folders and earlier roots remain scanned so past media stays visible.</source>
+      <translation>Текущие выходной папки и более ранние корни остаются сканированными, поэтому прошлые медиа остаются видимыми.</translation>
+    </message>
+    <message id="gamehq.settings.library.storage.eyebrow">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="30"></location>
+      <source>Storage</source>
+      <translation>Хранение</translation>
+    </message>
+    <message id="gamehq.settings.library.storage.previous_location">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="58"></location>
+      <source>Previous location</source>
+      <translation>Предыдущее местонахождение</translation>
+    </message>
+    <message id="gamehq.settings.library.storage.replay_clips">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="46"></location>
+      <source>Replay clips</source>
+      <translation>Повторные клипы</translation>
+    </message>
+    <message id="gamehq.settings.library.storage.screenshots">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="40"></location>
+      <source>Screenshots</source>
+      <translation>Скриншоты</translation>
+    </message>
+    <message id="gamehq.settings.library.storage.title">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="32"></location>
+      <source>Managed locations</source>
+      <translation>Управляемые места</translation>
+    </message>
+    <message id="gamehq.settings.library.title">
+      <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="9"></location>
+      <source>Library</source>
+      <translation>Библиотека</translation>
+    </message>
+    <message id="gamehq.settings.portable_import.confirm">
+      <location filename="src/ui/qml/SettingsView.qml" line="473"></location>
+      <source>Import and restart</source>
+      <translation>Импорт и перезапуск</translation>
+    </message>
+    <message id="gamehq.settings.portable_import.failed">
+      <location filename="src/ui/qml/SettingsView.qml" line="478"></location>
+      <source>Portable import failed</source>
+      <translation>Неудачный импорт</translation>
+    </message>
+    <message id="gamehq.settings.portable_import.message">
+      <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
+      <source>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
+      <translation>Только недавно установленный профиль принимается. Переносные записи остаются на месте, источник никогда не изменяется, и GameHQ перезагружается, чтобы завершить импорт.</translation>
+    </message>
+    <message id="gamehq.settings.portable_import.title">
+      <location filename="src/ui/qml/SettingsView.qml" line="469"></location>
+      <source>Import this portable profile?</source>
+      <translation>Импортировать этот портативный профиль?</translation>
+    </message>
+    <message id="gamehq.settings.replay.buffer.description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="41"></location>
+      <source>Recording changes restart an active buffer so new values apply immediately.</source>
+      <translation>Запись изменений перезапускает активный буфер, так что новые значения применяются немедленно.</translation>
+    </message>
+    <message id="gamehq.settings.replay.buffer.enabled.description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="46"></location>
+      <source>Record a rolling buffer whenever an eligible game is active.</source>
+      <translation>Записывать буфер, когда активная игра подлежит отмене.</translation>
+    </message>
+    <message id="gamehq.settings.replay.buffer.enabled.label">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="44"></location>
+      <source>Automatic buffer</source>
+      <translation>Автоматический буфер</translation>
+    </message>
+    <message id="gamehq.settings.replay.buffer.eyebrow">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="37"></location>
+      <source>Buffer</source>
+      <translation>Буфер</translation>
+    </message>
+    <message id="gamehq.settings.replay.buffer.length">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="51"></location>
+      <source>Replay length</source>
+      <translation>Продолжительность повторного просмотра</translation>
+    </message>
+    <message id="gamehq.settings.replay.buffer.title">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="39"></location>
+      <source>Automatic recording</source>
+      <translation>Автоматическая запись</translation>
+    </message>
+    <message id="gamehq.settings.replay.description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="9"></location>
+      <source>Manage the rolling buffer used for instant replay clips.</source>
+      <translation>Управление буфером, используемым для мгновенного воспроизведения клипов.</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.bitrate">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="107"></location>
+      <source>Video bitrate</source>
+      <translation>Битрейт видео</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.bitrate_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="109"></location>
+      <source>Higher values improve motion detail but use more storage and encoder bandwidth.</source>
+      <translation>Более высокие значения улучшают детали движения, но используют больше места для хранения и ширину полосы кодера.</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="79"></location>
+      <source>Balance motion detail, resolution, storage use, and encoder load.</source>
+      <translation>Балансируйте детали движения, разрешение, использование хранилища и нагрузку кодера.</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.eyebrow">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="75"></location>
+      <source>Encoding</source>
+      <translation>Кодирование</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.frame_rate">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="82"></location>
+      <source>Frame rate</source>
+      <translation>Скорость кадров</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.resolution">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="95"></location>
+      <source>Resolution</source>
+      <translation>Резолюция</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.system_audio.description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="128"></location>
+      <source>Include desktop audio in newly recorded replay segments.</source>
+      <translation>Включите аудио на рабочем столе в недавно записанные сегменты повторного воспроизведения.</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.system_audio.label">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="126"></location>
+      <source>System audio</source>
+      <translation>Система аудио</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.title">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="77"></location>
+      <source>Recording quality</source>
+      <translation>Качество записи</translation>
+    </message>
+    <message id="gamehq.settings.replay.feedback.description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="140"></location>
+      <source>Saved replays go to %1. Failures always notify you.</source>
+      <translation>Сохраненные повторения переходят в %1.</translation>
+    </message>
+    <message id="gamehq.settings.replay.feedback.eyebrow">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="136"></location>
+      <source>Feedback</source>
+      <translation>Отзывы</translation>
+    </message>
+    <message id="gamehq.settings.replay.feedback.notification">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="148"></location>
+      <source>Clip saved notification</source>
+      <translation>Уведомление о сохранении клипа</translation>
+    </message>
+    <message id="gamehq.settings.replay.feedback.sound">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="143"></location>
+      <source>Clip saved sound</source>
+      <translation>Звук , сохраненный в клипе</translation>
+    </message>
+    <message id="gamehq.settings.replay.feedback.title">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="138"></location>
+      <source>After saving a clip</source>
+      <translation>После сохранения клипа</translation>
+    </message>
+    <message id="gamehq.settings.replay.status.active_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="28"></location>
+      <source>Recording %1; the temporary ring is written only when you save a replay.</source>
+      <translation>Запись %1; временное кольцо записывается только при сохранении повторного воспроизведения.</translation>
+    </message>
+    <message id="gamehq.settings.replay.status.eyebrow">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="13"></location>
+      <source>Current status</source>
+      <translation>Современное состояние</translation>
+    </message>
+    <message id="gamehq.settings.replay.status.idle">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="23"></location>
+      <source>Idle</source>
+      <translation>Неработающий</translation>
+    </message>
+    <message id="gamehq.settings.replay.status.idle_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="31"></location>
+      <source>Not recording. The buffer arms automatically when an eligible game is active.</source>
+      <translation>Буфер автоматически активируется, когда игра активна.</translation>
+    </message>
+    <message id="gamehq.settings.replay.status.recording">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="20"></location>
+      <source>Recording</source>
+      <translation>Запись</translation>
+    </message>
+    <message id="gamehq.settings.replay.status.title">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="15"></location>
+      <source>Replay buffer</source>
+      <translation>Буфер повторного воспроизведения</translation>
+    </message>
+    <message id="gamehq.settings.replay.title">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="7"></location>
+      <source>Replay</source>
+      <translation>Повторное воспроизведение</translation>
+    </message>
+    <message id="gamehq.settings.restore_all.message">
+      <location filename="src/ui/qml/SettingsView.qml" line="491"></location>
+      <source>Window preferences, capture behavior, replay options, notifications, and sound settings return to defaults. Captures and library data are not deleted.</source>
+      <translation>Настройки окна, поведение захвата, опции повторного воспроизведения, уведомления и звуковые настройки возвращаются к по умолчанию.</translation>
+    </message>
+    <message id="gamehq.settings.restore_all.title">
+      <location filename="src/ui/qml/SettingsView.qml" line="489"></location>
+      <source>Restore all settings?</source>
+      <translation>Восстановить все настройки?</translation>
+    </message>
+    <message id="gamehq.settings.restore_category.message">
+      <location filename="src/ui/qml/SettingsView.qml" line="522"></location>
+      <source>%1 options return to defaults. Captures and library data are not deleted.</source>
+      <translation>Опции %1 возвращаются на по умолчанию.</translation>
+    </message>
+    <message id="gamehq.settings.restore_category.title">
+      <location filename="src/ui/qml/SettingsView.qml" line="520"></location>
+      <source>Restore %1 settings?</source>
+      <translation>Восстановить настройки %1?</translation>
     </message>
     <message id="gamehq.settings.theme.blue.description">
       <location filename="src/ui/qml/themes/Skin.qml" line="22"></location>

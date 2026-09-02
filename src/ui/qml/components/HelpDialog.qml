@@ -92,7 +92,8 @@ FocusScope {
 
                 Text {
                     Layout.fillWidth: true
-                    text: "Help"
+                    //% "Help"
+                    text: qsTrId("gamehq.navigation.help")
                     color: Theme.text
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontDisplay
@@ -113,7 +114,8 @@ FocusScope {
 
             AccentButton {
                 id: closeButton
-                label: "Close"
+                //% "Close"
+                label: qsTrId("gamehq.common.action.close")
                 icon: "×"
                 borderColor: Theme.borderLight
                 labelColor: Theme.textMuted

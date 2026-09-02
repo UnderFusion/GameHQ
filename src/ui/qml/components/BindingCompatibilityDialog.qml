@@ -8,11 +8,15 @@ import "../helpers/PadNav.js" as PadNav
 FocusScope {
     id: root
 
-    property string title: "Make these assignments compatible?"
+    //% "Make these assignments compatible?"
+    property string title: qsTrId("gamehq.input.compatibility.title")
     property string message: ""
-    property string convertLabel: "Convert & add"
-    property string retryLabel: "Choose another"
-    property string cancelLabel: "Cancel"
+    //% "Convert & add"
+    property string convertLabel: qsTrId("gamehq.input.compatibility.convert")
+    //% "Choose another"
+    property string retryLabel: qsTrId("gamehq.input.choose_another")
+    //% "Cancel"
+    property string cancelLabel: qsTrId("gamehq.action.cancel")
 
     signal converted()
     signal retried()

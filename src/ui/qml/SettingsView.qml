@@ -29,6 +29,16 @@ Item {
     property int currentCategory: Math.max(0, Math.min(categories.length - 1,
         Number(app.config("ui.settings_category", 0))))
 
+    function categoryLabel(category) {
+        const categoryIndex = ({
+            "General": 0,
+            "Capture": 1,
+            "Replay": 2,
+            "Notifications & Sound": 5
+        })[category]
+        return categoryIndex === undefined ? category : categories[categoryIndex].label
+    }
+
     function selectCategory(index, focusButton) {
         const next = Math.max(0, Math.min(categories.length - 1, index))
         currentCategory = next
@@ -455,13 +465,17 @@ Item {
         property url folderUrl
         anchors.fill: parent
         z: 100
-        title: "Import this portable profile?"
-        message: "Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import."
-        confirmLabel: "Import and restart"
+        //% "Import this portable profile?"
+        title: qsTrId("gamehq.settings.portable_import.title")
+        //% "Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import."
+        message: qsTrId("gamehq.settings.portable_import.message")
+        //% "Import and restart"
+        confirmLabel: qsTrId("gamehq.settings.portable_import.confirm")
         onConfirmed: {
             const error = app.beginPortableImport(folderUrl)
             if (error !== "") {
-                notifications.post("Portable import failed", error, "", "error")
+                //% "Portable import failed"
+                notifications.post(qsTrId("gamehq.settings.portable_import.failed"), error, "", "error")
                 sounds.play("error")
             }
         }
@@ -471,9 +485,12 @@ Item {
         id: resetAllDialog
         anchors.fill: parent
         z: 100
-        title: "Restore all settings?"
-        message: "Window preferences, capture behavior, replay options, notifications, and sound settings return to defaults. Captures and library data are not deleted."
-        confirmLabel: "Restore defaults"
+        //% "Restore all settings?"
+        title: qsTrId("gamehq.settings.restore_all.title")
+        //% "Window preferences, capture behavior, replay options, notifications, and sound settings return to defaults. Captures and library data are not deleted."
+        message: qsTrId("gamehq.settings.restore_all.message")
+        //% "Restore defaults"
+        confirmLabel: qsTrId("gamehq.action.restore_defaults")
         onConfirmed: {
             app.resetAllConfig()
             root.currentCategory = 0
@@ -485,9 +502,12 @@ Item {
         id: resetInputDialog
         anchors.fill: parent
         z: 100
-        title: "Restore all input bindings?"
-        message: "All controller, keyboard, and mouse overrides return to their built-in defaults."
-        confirmLabel: "Restore defaults"
+        //% "Restore all input bindings?"
+        title: qsTrId("gamehq.settings.input.restore_all.title")
+        //% "All controller, keyboard, and mouse overrides return to their built-in defaults."
+        message: qsTrId("gamehq.settings.input.restore_all.message")
+        //% "Restore defaults"
+        confirmLabel: qsTrId("gamehq.action.restore_defaults")
         onConfirmed: { input.bindingEditor.resetAllBindings(); sounds.play("confirm") }
     }
 
@@ -496,9 +516,12 @@ Item {
         property string category: ""
         anchors.fill: parent
         z: 100
-        title: "Restore " + category + " settings?"
-        message: category + " options return to defaults. Captures and library data are not deleted."
-        confirmLabel: "Restore defaults"
+        //% "Restore %1 settings?"
+        title: qsTrId("gamehq.settings.restore_category.title").arg(root.categoryLabel(category))
+        //% "%1 options return to defaults. Captures and library data are not deleted."
+        message: qsTrId("gamehq.settings.restore_category.message").arg(root.categoryLabel(category))
+        //% "Restore defaults"
+        confirmLabel: qsTrId("gamehq.action.restore_defaults")
         onConfirmed: {
             app.resetCategory(restoreCategoryDialog.category)
             sounds.play("confirm")

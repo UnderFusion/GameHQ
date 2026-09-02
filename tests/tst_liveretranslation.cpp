@@ -16,6 +16,10 @@ namespace
 struct ExpectedSurfaceText
 {
     QString qml;
+    QString overlay;
+    QString input;
+    QString gallery;
+    QString dialog;
     QString tray;
     QString model;
     QString releaseNotes;
@@ -25,14 +29,23 @@ ExpectedSurfaceText expectedFor(const QString &language)
 {
     if (language == QLatin1String("pl-PL")) {
         return {QStringLiteral("Zobacz pełne informacje o wydaniu"),
+                QStringLiteral("Gra nadal ma fokus i może reagować na sterowanie kontrolerem"),
+                QStringLiteral("Urządzenia wejściowe"), QStringLiteral("Wybór wielu"),
+                QStringLiteral("Usunąć zrzut?"),
                 QStringLiteral("Otwórz galerię"), QStringLiteral("Zrzut ekranu"),
                 QStringLiteral("Informacje o wydaniu")};
     }
     if (language == QLatin1String("zh-Hans")) {
-        return {QStringLiteral("查看完整发行说明"), QStringLiteral("打开图库"),
+        return {QStringLiteral("查看完整发行说明"),
+                QStringLiteral("游戏仍处于焦点状态，可能会响应控制器输入"),
+                QStringLiteral("输入设备"), QStringLiteral("批量选择"),
+                QStringLiteral("删除捕获内容？"), QStringLiteral("打开图库"),
                 QStringLiteral("屏幕截图"), QStringLiteral("发行说明")};
     }
-    return {QStringLiteral("View full release notes"), QStringLiteral("Open Gallery"),
+    return {QStringLiteral("View full release notes"),
+            QStringLiteral("The game still has focus and may react to controller input"),
+            QStringLiteral("Input devices"), QStringLiteral("Bulk select"),
+            QStringLiteral("Delete capture?"), QStringLiteral("Open Gallery"),
             QStringLiteral("Screenshot"), QStringLiteral("Release notes")};
 }
 }
@@ -60,7 +73,13 @@ void LiveRetranslationTest::repeatedSwitchesRefreshEveryRepresentativeSurfaceAto
     QQmlComponent component(&engine);
     component.setData(R"(
         import QtQml
-        QtObject { property string label: qsTrId("gamehq.about.full_release_notes") }
+        QtObject {
+            property string label: qsTrId("gamehq.about.full_release_notes")
+            property string overlay: qsTrId("gamehq.overlay.focus_warning")
+            property string input: qsTrId("gamehq.settings.input.devices.title")
+            property string gallery: qsTrId("gamehq.gallery.action.bulk_select")
+            property string dialog: qsTrId("gamehq.gallery.delete_capture.title")
+        }
     )", QUrl());
     std::unique_ptr<QObject> qmlObject(component.create());
     QVERIFY2(qmlObject, qPrintable(component.errorString()));
@@ -88,6 +107,10 @@ void LiveRetranslationTest::repeatedSwitchesRefreshEveryRepresentativeSurfaceAto
         const ExpectedSurfaceText expected = expectedFor(language);
         QCOMPARE(manager.effectiveLanguage(), language);
         QCOMPARE(qmlObject->property("label").toString(), expected.qml);
+        QCOMPARE(qmlObject->property("overlay").toString(), expected.overlay);
+        QCOMPARE(qmlObject->property("input").toString(), expected.input);
+        QCOMPARE(qmlObject->property("gallery").toString(), expected.gallery);
+        QCOMPARE(qmlObject->property("dialog").toString(), expected.dialog);
         QCOMPARE(tray.openGalleryText(), expected.tray);
         const auto *action = ActionCatalog::find(QStringLiteral("global.screenshot"));
         QVERIFY(action);

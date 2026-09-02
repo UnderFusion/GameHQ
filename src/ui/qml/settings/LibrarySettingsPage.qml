@@ -5,11 +5,14 @@ import "../components"
 
 SettingsPage {
     id: root
-    pageTitle: "Library"
-    pageDescription: "Review every folder GameHQ manages or scans for media."
+    //% "Library"
+    pageTitle: qsTrId("gamehq.settings.library.title")
+    //% "Review every folder GameHQ manages or scans for media."
+    pageDescription: qsTrId("gamehq.settings.library.description")
     pageAction: Component {
         AccentButton {
-            label: "Rescan now"
+        //% "Rescan now"
+        label: qsTrId("gamehq.settings.library.rescan")
             quiet: true
             onClicked: {
                 app.rescan()
@@ -23,18 +26,24 @@ SettingsPage {
     }
 
     SettingsSection {
-        eyebrow: "Storage"
-        title: "Managed locations"
-        badge: "2 active"
-        description: "Current output folders and earlier roots remain scanned so past media stays visible."
+        //% "Storage"
+        eyebrow: qsTrId("gamehq.settings.library.storage.eyebrow")
+        //% "Managed locations"
+        title: qsTrId("gamehq.settings.library.storage.title")
+        //% "2 active"
+        badge: qsTrId("gamehq.settings.library.storage.active_count")
+        //% "Current output folders and earlier roots remain scanned so past media stays visible."
+        description: qsTrId("gamehq.settings.library.storage.description")
 
         SettingsPathRow {
-            label: "Screenshots"
+            //% "Screenshots"
+            label: qsTrId("gamehq.settings.library.storage.screenshots")
             path: app.screenshotsRoot
             onOpenRequested: root.openFolder(app.screenshotsRoot)
         }
         SettingsPathRow {
-            label: "Replay clips"
+            //% "Replay clips"
+            label: qsTrId("gamehq.settings.library.storage.replay_clips")
             path: app.clipsRoot
             onOpenRequested: root.openFolder(app.clipsRoot)
         }
@@ -45,7 +54,8 @@ SettingsPage {
             })
             delegate: SettingsPathRow {
                 required property string modelData
-                label: "Previous location"
+                //% "Previous location"
+                label: qsTrId("gamehq.settings.library.storage.previous_location")
                 path: modelData
                 showDivider: index < app.managedRoots.length - 1
                 onOpenRequested: root.openFolder(modelData)
@@ -54,18 +64,25 @@ SettingsPage {
     }
 
     SettingsSection {
-        eyebrow: "Imports"
-        title: "Watched folders"
-        badge: app.watchedFolders.length + (app.watchedFolders.length === 1 ? " folder" : " folders")
-        description: "External folders are scanned read-only and never become GameHQ output locations."
+        //% "Imports"
+        eyebrow: qsTrId("gamehq.settings.library.imports.eyebrow")
+        //% "Watched folders"
+        title: qsTrId("gamehq.settings.library.imports.title")
+        //% "%n watched folder(s)"
+        badge: qsTrId("gamehq.settings.library.imports.count", app.watchedFolders.length)
+        //% "External folders are scanned read-only and never become GameHQ output locations."
+        description: qsTrId("gamehq.settings.library.imports.description")
 
         SettingsEmptyState {
             visible: app.watchedFolders.length === 0
             icon: "\uFF0B"
-            title: "No watched folders yet"
-            description: "Add folders created by Steam, OBS, Xbox Game Bar, or another capture tool."
+            //% "No watched folders yet"
+            title: qsTrId("gamehq.settings.library.imports.empty.title")
+            //% "Add folders created by Steam, OBS, Xbox Game Bar, or another capture tool."
+            description: qsTrId("gamehq.settings.library.imports.empty.description")
             AccentButton {
-                label: "Add watched folder"
+                //% "Add watched folder"
+                label: qsTrId("gamehq.settings.library.imports.add")
                 primary: true
                 onClicked: watchedFolderDialog.open()
             }
@@ -76,16 +93,19 @@ SettingsPage {
             delegate: SettingsRow {
                 required property string modelData
                 icon: "\u25A4"
-                label: "Watched folder"
+                //% "Watched folder"
+                label: qsTrId("gamehq.settings.library.imports.folder")
                 description: modelData
                 controlWidth: Theme.s48 * 5
                 AccentButton {
-                    label: "Open"
+                    //% "Open"
+                    label: qsTrId("gamehq.common.action.open")
                     quiet: true
                     onClicked: root.openFolder(modelData)
                 }
                 AccentButton {
-                    label: "Remove"
+                    //% "Remove"
+                    label: qsTrId("gamehq.action.remove")
                     quiet: true
                     labelColor: Theme.danger
                     borderColor: Theme.danger
@@ -96,25 +116,37 @@ SettingsPage {
 
         AccentButton {
             visible: app.watchedFolders.length > 0
-            label: "Add watched folder"
+            //% "Add watched folder"
+            label: qsTrId("gamehq.settings.library.imports.add")
             quiet: true
             onClicked: watchedFolderDialog.open()
         }
     }
 
     SettingsSection {
-        eyebrow: "Last scan"
-        title: app.lastScanAvailable
-               ? (app.lastScanAdded === 0 ? "Library is up to date"
-                                          : app.lastScanAdded + " new capture(s) added")
-               : "Not scanned this session"
+        //% "Last scan"
+        eyebrow: qsTrId("gamehq.settings.library.scan.eyebrow")
+        title: {
+            if (!app.lastScanAvailable) {
+                //% "Not scanned this session"
+                return qsTrId("gamehq.settings.library.scan.not_scanned")
+            }
+            if (app.lastScanAdded === 0) {
+                //% "Library is up to date"
+                return qsTrId("gamehq.settings.library.scan.up_to_date")
+            }
+            //% "%n new capture(s) added"
+            return qsTrId("gamehq.settings.library.scan.added", app.lastScanAdded)
+        }
         variant: "compact"
-        description: "Rescan checks current, previous, and watched locations for media missing from the library."
+        //% "Rescan checks current, previous, and watched locations for media missing from the library."
+        description: qsTrId("gamehq.settings.library.scan.description")
     }
 
     FolderDialog {
         id: watchedFolderDialog
-        title: "Choose a folder to watch"
+        //% "Choose a folder to watch"
+        title: qsTrId("gamehq.library.folder_dialog.title")
         onAccepted: app.addWatchedFolder(selectedFolder)
     }
 }

@@ -53,7 +53,8 @@ QHash<QString, CatalogEntry> readTsCatalog(const QString &path, QString *error)
                 entry.source = xml.readElementText();
             } else if (xml.name() == u"translation") {
                 entry.unfinished = xml.attributes().value(u"type") == u"unfinished";
-                entry.translation = xml.readElementText();
+                entry.translation = xml.readElementText(
+                    QXmlStreamReader::IncludeChildElements);
             }
         }
         if (!id.isEmpty())
@@ -110,6 +111,30 @@ QStringList p4OneSourceFiles()
     return files;
 }
 
+QStringList productionQmlFiles()
+{
+    const QString qmlRoot = QStringLiteral(GAMEHQ_SOURCE_DIR "/src/ui/qml");
+    QStringList files;
+    QDirIterator iterator(qmlRoot, {QStringLiteral("*.qml")}, QDir::Files,
+                          QDirIterator::Subdirectories);
+    while (iterator.hasNext())
+        files.append(iterator.next());
+    files.sort();
+    return files;
+}
+
+QStringList launchCatalogs()
+{
+    return {
+        QStringLiteral("gamehq_en_US.ts"), QStringLiteral("gamehq_zh_Hans.ts"),
+        QStringLiteral("gamehq_ru_RU.ts"), QStringLiteral("gamehq_es_ES.ts"),
+        QStringLiteral("gamehq_pt_BR.ts"), QStringLiteral("gamehq_de_DE.ts"),
+        QStringLiteral("gamehq_ja_JP.ts"), QStringLiteral("gamehq_fr_FR.ts"),
+        QStringLiteral("gamehq_pl_PL.ts"), QStringLiteral("gamehq_ko_KR.ts"),
+        QStringLiteral("gamehq_zh_Hant.ts"), QStringLiteral("gamehq_tr_TR.ts"),
+    };
+}
+
 QSet<QString> translationIdsIn(const QStringList &paths)
 {
     const QRegularExpression pattern(
@@ -160,6 +185,8 @@ private slots:
     void languageSelectorUsesRegistryAndAtomicManagerPath();
     void migratedP4OneIdsCoverEveryLaunchLocale();
     void migratedP4OneFilesHaveNoHardcodedUserText();
+    void migratedProductionQmlIdsCoverEveryLaunchLocale();
+    void productionQmlHasNoHardcodedUserText();
 };
 
 void LocalizationCatalogTest::productionEnglishCatalogCoversActiveIds()
@@ -233,17 +260,10 @@ void LocalizationCatalogTest::languageSelectorUsesRegistryAndAtomicManagerPath()
 void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
 {
     const QSet<QString> ids = translationIdsIn(p4OneSourceFiles());
-    QCOMPARE(ids.size(), 195);
-    const QStringList catalogs{
-        QStringLiteral("gamehq_en_US.ts"), QStringLiteral("gamehq_zh_Hans.ts"),
-        QStringLiteral("gamehq_ru_RU.ts"), QStringLiteral("gamehq_es_ES.ts"),
-        QStringLiteral("gamehq_pt_BR.ts"), QStringLiteral("gamehq_de_DE.ts"),
-        QStringLiteral("gamehq_ja_JP.ts"), QStringLiteral("gamehq_fr_FR.ts"),
-        QStringLiteral("gamehq_pl_PL.ts"), QStringLiteral("gamehq_ko_KR.ts"),
-        QStringLiteral("gamehq_zh_Hant.ts"), QStringLiteral("gamehq_tr_TR.ts"),
-    };
-
-    for (const QString &catalogName : catalogs) {
+    // Main.qml and SettingsView.qml are shared with p4-2 and now contribute
+    // 19 additional feature/dialog IDs to this source-file set.
+    QCOMPARE(ids.size(), 214);
+    for (const QString &catalogName : launchCatalogs()) {
         QString error;
         const auto catalog = readTsCatalog(
             QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
@@ -260,6 +280,67 @@ void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
                      qPrintable(catalogName + QStringLiteral(" exposed ") + id));
         }
     }
+}
+
+void LocalizationCatalogTest::migratedProductionQmlIdsCoverEveryLaunchLocale()
+{
+    const QSet<QString> ids = translationIdsIn(productionQmlFiles());
+    QCOMPARE(ids.size(), 576);
+
+    for (const QString &catalogName : launchCatalogs()) {
+        QString error;
+        const auto catalog = readTsCatalog(
+            QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
+        QVERIFY2(error.isEmpty(), qPrintable(catalogName + QStringLiteral(": ") + error));
+        for (const QString &id : ids) {
+            QVERIFY2(catalog.contains(id),
+                     qPrintable(catalogName + QStringLiteral(" missing ") + id));
+            const auto &entry = catalog[id];
+            QVERIFY2(!entry.unfinished,
+                     qPrintable(catalogName + QStringLiteral(" unfinished ") + id));
+            QVERIFY2(!entry.translation.trimmed().isEmpty(),
+                     qPrintable(catalogName + QStringLiteral(" empty ") + id));
+            QVERIFY2(!entry.translation.startsWith(QStringLiteral("gamehq.")),
+                     qPrintable(catalogName + QStringLiteral(" exposed ") + id));
+        }
+    }
+}
+
+void LocalizationCatalogTest::productionQmlHasNoHardcodedUserText()
+{
+    const QRegularExpression assignment(
+        QStringLiteral("(?:^|[{:;,])\\s*(?:pageTitle|pageDescription|eyebrow|title|label|"
+                       "description|status|badge|placeholderText|Accessible\\.name|text|"
+                       "message|cancelLabel|confirmLabel|replaceLabel|retryLabel|"
+                       "convertLabel|act|heading|desc|binding)\\s*:\\s*"
+                       "\"([^\"]*)\""));
+    const QRegularExpression alphabetic(QStringLiteral("[A-Za-z]"));
+    const QRegularExpression color(QStringLiteral("^#[0-9A-Fa-f]+$"));
+    const QRegularExpression escapedGlyph(QStringLiteral("^(?:\\\\u[0-9A-Fa-f]{4})+$"));
+    const QRegularExpression stableUiToken(
+        QStringLiteral("^(?:X|Alt\\+Shift\\+G|Ctrl\\+Shift\\+[SE]|Enter|F|E|"
+                       "W / A / S / D|L1 / R1|(?:70|80|90|100)%|(?:720|1080)p|4K)$"));
+
+    QStringList failures;
+    for (const QString &path : productionQmlFiles()) {
+        QFile file(path);
+        QVERIFY2(file.open(QIODevice::ReadOnly), qPrintable(path));
+        const QStringList lines = QString::fromUtf8(file.readAll()).split(u'\n');
+        for (qsizetype index = 0; index < lines.size(); ++index) {
+            auto matches = assignment.globalMatch(lines[index]);
+            while (matches.hasNext()) {
+                const QString literal = matches.next().captured(1).trimmed();
+                if (!literal.contains(alphabetic) || color.match(literal).hasMatch()
+                    || escapedGlyph.match(literal).hasMatch()
+                    || stableUiToken.match(literal).hasMatch()) {
+                    continue;
+                }
+                failures.append(QStringLiteral("%1:%2: %3")
+                                    .arg(path).arg(index + 1).arg(literal));
+            }
+        }
+    }
+    QVERIFY2(failures.isEmpty(), qPrintable(failures.join(u'\n')));
 }
 
 void LocalizationCatalogTest::migratedP4OneFilesHaveNoHardcodedUserText()

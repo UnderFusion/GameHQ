@@ -176,7 +176,8 @@ Item {
         anchors.top: card.bottom
         anchors.topMargin: Theme.s8
         width: parent.width
-        text: root.gameName + " · " + root.dateText
+            //% "%1 · %2"
+            text: qsTrId("gamehq.gallery.capture_caption").arg(root.gameName).arg(root.dateText)
         color: Theme.textMuted
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontCaption

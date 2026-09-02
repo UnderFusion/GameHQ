@@ -6,8 +6,10 @@ import "../components"
 
 SettingsPage {
     id: root
-    pageTitle: "Capture"
-    pageDescription: "Choose when, how, and where GameHQ saves screenshots."
+    //% "Capture"
+    pageTitle: qsTrId("gamehq.settings.capture.title")
+    //% "Choose when, how, and where GameHQ saves screenshots."
+    pageDescription: qsTrId("gamehq.settings.capture.description")
     property string locationError: ""
 
     function finishLocationChange(error) {
@@ -20,42 +22,57 @@ SettingsPage {
     }
 
     SettingsSection {
-        eyebrow: "Capture mode"
-        title: "When to capture"
-        description: "Control when screenshots and replay recording are allowed."
+        //% "Capture mode"
+        eyebrow: qsTrId("gamehq.settings.capture.mode.eyebrow")
+        //% "When to capture"
+        title: qsTrId("gamehq.settings.capture.mode.title")
+        //% "Control when screenshots and replay recording are allowed."
+        description: qsTrId("gamehq.settings.capture.mode.description")
         SettingsRow {
-            label: "Capture mode"
-            description: "Only in games is the safest default for global shortcuts."
+            //% "Capture mode"
+            label: qsTrId("gamehq.settings.capture.mode.label")
+            //% "Only in games is the safest default for global shortcuts."
+            description: qsTrId("gamehq.settings.capture.mode.row_description")
             SettingsCombo {
                 configKey: "capture.mode"
                 defaultValue: "only_in_games"
                 options: [
-                    { label: "Only in games", value: "only_in_games" },
-                    { label: "Whitelisted games", value: "whitelist" },
-                    { label: "Always", value: "always" }
+                    //% "Only in games"
+                    { label: qsTrId("gamehq.settings.capture.mode.only_in_games"), value: "only_in_games" },
+                    //% "Whitelisted games"
+                    { label: qsTrId("gamehq.settings.capture.mode.whitelist"), value: "whitelist" },
+                    //% "Always"
+                    { label: qsTrId("gamehq.settings.capture.mode.always"), value: "always" }
                 ]
             }
         }
     }
 
     SettingsSection {
-        eyebrow: "Image"
-        title: "Format and quality"
-        description: "PNG is lossless; JPEG trades some quality for smaller files."
+        //% "Image"
+        eyebrow: qsTrId("gamehq.settings.capture.image.eyebrow")
+        //% "Format and quality"
+        title: qsTrId("gamehq.settings.capture.image.title")
+        //% "PNG is lossless; JPEG trades some quality for smaller files."
+        description: qsTrId("gamehq.settings.capture.image.description")
         SettingsRow {
-            label: "Format"
+            //% "Format"
+            label: qsTrId("gamehq.settings.capture.image.format")
             SettingsCombo {
                 id: formatCombo
                 configKey: "capture.screenshot_format"
                 defaultValue: "png"
                 options: [
-                    { label: "PNG (lossless)", value: "png" },
-                    { label: "JPEG (smaller files)", value: "jpg" }
+                    //% "PNG (lossless)"
+                    { label: qsTrId("gamehq.settings.capture.image.png"), value: "png" },
+                    //% "JPEG (smaller files)"
+                    { label: qsTrId("gamehq.settings.capture.image.jpeg"), value: "jpg" }
                 ]
             }
         }
         SettingsRow {
-            label: "JPEG quality"
+            //% "JPEG quality"
+            label: qsTrId("gamehq.settings.capture.image.jpeg_quality")
             visible: formatCombo.currentIndex >= 0
                      && formatCombo.options[formatCombo.currentIndex].value === "jpg"
             SettingsCombo {
@@ -70,26 +87,35 @@ SettingsPage {
     }
 
     SettingsSection {
-        eyebrow: "Feedback"
-        title: "After a screenshot"
-        description: "Combined with the master switches on the Notifications & Sound page."
+        //% "Feedback"
+        eyebrow: qsTrId("gamehq.settings.capture.feedback.eyebrow")
+        //% "After a screenshot"
+        title: qsTrId("gamehq.settings.capture.feedback.title")
+        //% "Combined with the master switches on the Notifications & Sound page."
+        description: qsTrId("gamehq.settings.capture.feedback.description")
         SettingsRow {
-            label: "Screenshot sound"
+            //% "Screenshot sound"
+            label: qsTrId("gamehq.settings.capture.feedback.sound")
             SettingsToggle { configKey: "capture.screenshot_sound"; defaultValue: true }
         }
         SettingsRow {
-            label: "Screenshot notification"
+            //% "Screenshot notification"
+            label: qsTrId("gamehq.settings.capture.feedback.notification")
             SettingsToggle { configKey: "capture.screenshot_notify"; defaultValue: true }
         }
     }
 
     SettingsSection {
-        eyebrow: "Storage"
-        title: "Where captures are saved"
-        description: "Changing a location never moves or deletes existing media."
+        //% "Storage"
+        eyebrow: qsTrId("gamehq.settings.capture.storage.eyebrow")
+        //% "Where captures are saved"
+        title: qsTrId("gamehq.settings.capture.storage.title")
+        //% "Changing a location never moves or deletes existing media."
+        description: qsTrId("gamehq.settings.capture.storage.description")
 
         SettingsPathRow {
-            label: "Screenshots"
+            //% "Screenshots"
+            label: qsTrId("gamehq.settings.capture.storage.screenshots")
             path: app.screenshotsRoot
             showChange: true
             showReset: app.screenshotsRoot !== app.capturesRoot
@@ -99,7 +125,8 @@ SettingsPage {
         }
 
         SettingsPathRow {
-            label: "Replay clips"
+            //% "Replay clips"
+            label: qsTrId("gamehq.settings.capture.storage.replay_clips")
             path: app.clipsRoot
             showChange: true
             showReset: app.clipsRoot !== app.capturesRoot
@@ -122,13 +149,15 @@ SettingsPage {
 
     FolderDialog {
         id: screenshotFolderDialog
-        title: "Choose the screenshots folder"
+        //% "Choose the screenshots folder"
+        title: qsTrId("gamehq.settings.capture.storage.choose_screenshots")
         onAccepted: root.finishLocationChange(app.setCaptureRoot("screenshots", selectedFolder))
     }
 
     FolderDialog {
         id: clipFolderDialog
-        title: "Choose the clips folder"
+        //% "Choose the clips folder"
+        title: qsTrId("gamehq.settings.capture.storage.choose_clips")
         onAccepted: root.finishLocationChange(app.setCaptureRoot("clips", selectedFolder))
     }
 }

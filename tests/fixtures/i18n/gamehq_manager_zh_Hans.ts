@@ -23,5 +23,21 @@
       <source>Open Gallery</source>
       <translation>打开图库</translation>
     </message>
+    <message id="gamehq.overlay.focus_warning">
+      <source>The game still has focus and may react to controller input</source>
+      <translation>游戏仍处于焦点状态，可能会响应控制器输入</translation>
+    </message>
+    <message id="gamehq.settings.input.devices.title">
+      <source>Input devices</source>
+      <translation>输入设备</translation>
+    </message>
+    <message id="gamehq.gallery.action.bulk_select">
+      <source>Bulk select</source>
+      <translation>批量选择</translation>
+    </message>
+    <message id="gamehq.gallery.delete_capture.title">
+      <source>Delete capture?</source>
+      <translation>删除捕获内容？</translation>
+    </message>
   </context>
 </TS>

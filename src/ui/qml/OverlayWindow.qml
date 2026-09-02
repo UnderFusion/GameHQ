@@ -24,7 +24,8 @@ Window {
     objectName: "gamehqOverlay"
     visible: false
     color: "transparent"
-    title: Brand.name + " Overlay"
+    //% "%1 Overlay"
+    title: qsTrId("gamehq.overlay.window_title").arg(Brand.name)
 
     // The window is created once and only shown/hidden afterward, so its
     // properties persist across toggles. Reset the action-menu state on
@@ -93,7 +94,8 @@ Window {
         Text {
             id: focusWarningText
             anchors.centerIn: parent
-            text: "The game still has focus and may react to controller input"
+            //% "The game still has focus and may react to controller input"
+            text: qsTrId("gamehq.overlay.focus_warning")
             color: Theme.warning
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontCaption
@@ -456,8 +458,10 @@ Window {
         id: deleteDialog
         anchors.fill: parent
         z: 200
-        title: "Delete capture?"
-        confirmLabel: "Delete"
+        //% "Delete capture?"
+        title: qsTrId("gamehq.gallery.delete_capture.title")
+        //% "Delete"
+        confirmLabel: qsTrId("gamehq.action.delete")
         onConfirmed: {
             sounds.play("confirm")
             if (overlayWindow.pendingDeleteRow >= 0)

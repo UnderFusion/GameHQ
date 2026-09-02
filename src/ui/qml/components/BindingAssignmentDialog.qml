@@ -174,9 +174,13 @@ FocusScope {
                 }
                 Text {
                     Layout.fillWidth: true
-                    text: root.model
-                          ? root.model.editorScopeLabel + " · Slot " + root.model.editorSlot
-                          : ""
+                    text: {
+                        if (!root.model)
+                            return ""
+                        //% "%1 · Slot %2"
+                        return qsTrId("gamehq.input.assignment.scope_slot")
+                            .arg(root.model.editorScopeLabel).arg(root.model.editorSlot)
+                    }
                     color: Theme.textMuted
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontCaption
@@ -188,7 +192,8 @@ FocusScope {
                     visible: root.model && root.model.editorCombinationAvailable
 
                     Text {
-                        text: "Pattern"
+                        //% "Pattern"
+                        text: qsTrId("gamehq.input.assignment.pattern")
                         color: Theme.textMuted
                         font.family: Theme.fontFamily
                         font.pixelSize: Theme.fontCaption
@@ -197,8 +202,10 @@ FocusScope {
                         Layout.fillWidth: true
                         currentValue: root.combination ? "combination" : "single"
                         options: [
-                            { label: "Single button", value: "single" },
-                            { label: "Combination", value: "combination" }
+                            //% "Single button"
+                            { label: qsTrId("gamehq.input.assignment.pattern.single"), value: "single" },
+                            //% "Combination"
+                            { label: qsTrId("gamehq.input.assignment.pattern.combination"), value: "combination" }
                         ]
                         onActivated: function(value) { root.model.setEditorTriggerKind(value) }
                     }
@@ -216,7 +223,8 @@ FocusScope {
                     Text {
                         id: captureModeText
                         anchors.centerIn: parent
-                        text: "CONTROLLER CAPTURE ACTIVE · Dialog navigation is paused"
+                        //% "Controller capture active · Dialog navigation is paused"
+                        text: qsTrId("gamehq.input.assignment.capture_active").toUpperCase()
                         color: Theme.accent
                         font.family: Theme.fontFamily
                         font.pixelSize: Theme.fontCaption
@@ -232,7 +240,8 @@ FocusScope {
                     visible: !root.combination
 
                     Text {
-                        text: "Input"
+                        //% "Input"
+                        text: qsTrId("gamehq.settings.category.input")
                         color: Theme.textMuted
                         font.family: Theme.fontFamily
                         font.pixelSize: Theme.fontCaption
@@ -254,10 +263,16 @@ FocusScope {
                             Text {
                                 Layout.fillWidth: true
                                 Layout.minimumWidth: 0
-                                text: root.capturing
-                                      ? "Listening… Press a controller button"
-                                      : root.model && root.model.editorFirstControlLabel !== ""
-                                        ? root.model.editorFirstControlLabel : "Not set"
+                                text: {
+                                    if (root.capturing) {
+                                        //% "Listening… Press a controller button"
+                                        return qsTrId("gamehq.input.assignment.listening_button")
+                                    }
+                                    if (root.model && root.model.editorFirstControlLabel !== "")
+                                        return root.model.editorFirstControlLabel
+                                    //% "Not set"
+                                    return qsTrId("gamehq.input.assignment.not_set")
+                                }
                                 color: root.capturing ? Theme.accent : Theme.text
                                 font.family: Theme.fontFamily
                                 font.pixelSize: Theme.fontBody
@@ -266,9 +281,18 @@ FocusScope {
                             }
                             AccentButton {
                                 quiet: true
-                                label: root.capturing ? "Stop"
-                                      : root.model && root.model.editorFirstControlLabel !== ""
-                                        ? "Change" : "Record"
+                                label: {
+                                    if (root.capturing) {
+                                        //% "Stop"
+                                        return qsTrId("gamehq.action.stop")
+                                    }
+                                    if (root.model && root.model.editorFirstControlLabel !== "") {
+                                        //% "Change"
+                                        return qsTrId("gamehq.common.action.change")
+                                    }
+                                    //% "Record"
+                                    return qsTrId("gamehq.action.record")
+                                }
                                 onClicked: {
                                     if (root.capturing) root.model.cancelTriggerCapture()
                                     else root.model.beginTriggerCapture(1)
@@ -286,7 +310,8 @@ FocusScope {
                     visible: root.combination
 
                     Text {
-                        text: "First button"
+                        //% "First button"
+                        text: qsTrId("gamehq.input.assignment.first_button")
                         color: Theme.textMuted
                         font.family: Theme.fontFamily
                         font.pixelSize: Theme.fontCaption
@@ -310,12 +335,22 @@ FocusScope {
                             Text {
                                 Layout.fillWidth: true
                                 Layout.minimumWidth: 0
-                                text: root.model && root.model.editorCaptureStep === "first"
-                                      ? "Listening… Hold the first button"
-                                      : root.model && root.model.editorFirstControlLabel !== ""
-                                        ? root.model.editorFirstControlLabel
-                                          + (root.model.editorCaptureStep === "second" ? " detected" : "")
-                                        : "Not set"
+                                text: {
+                                    if (root.model && root.model.editorCaptureStep === "first") {
+                                        //% "Listening… Hold the first button"
+                                        return qsTrId("gamehq.input.assignment.listening_first")
+                                    }
+                                    if (root.model && root.model.editorFirstControlLabel !== "") {
+                                        if (root.model.editorCaptureStep === "second") {
+                                            //% "%1 detected"
+                                            return qsTrId("gamehq.input.assignment.detected")
+                                                .arg(root.model.editorFirstControlLabel)
+                                        }
+                                        return root.model.editorFirstControlLabel
+                                    }
+                                    //% "Not set"
+                                    return qsTrId("gamehq.input.assignment.not_set")
+                                }
                                 color: root.model && root.model.editorCaptureStep === "first"
                                        ? Theme.accent : Theme.text
                                 font.family: Theme.fontFamily
@@ -326,15 +361,22 @@ FocusScope {
                             AccentButton {
                                 visible: !root.capturing
                                 quiet: true
-                                label: root.model && root.model.editorFirstControlLabel !== ""
-                                       ? "Change" : "Record"
+                                label: {
+                                    if (root.model && root.model.editorFirstControlLabel !== "") {
+                                        //% "Change"
+                                        return qsTrId("gamehq.common.action.change")
+                                    }
+                                    //% "Record"
+                                    return qsTrId("gamehq.action.record")
+                                }
                                 onClicked: root.model.beginTriggerCapture(1)
                             }
                         }
                     }
 
                     Text {
-                        text: "Second button"
+                        //% "Second button"
+                        text: qsTrId("gamehq.input.assignment.second_button")
                         color: Theme.textMuted
                         font.family: Theme.fontFamily
                         font.pixelSize: Theme.fontCaption
@@ -358,12 +400,20 @@ FocusScope {
                             Text {
                                 Layout.fillWidth: true
                                 Layout.minimumWidth: 0
-                                text: root.model && root.model.editorCaptureStep === "second"
-                                      ? "Listening… Press the second button"
-                                      : root.model && root.model.editorSecondControlLabel !== ""
-                                        ? root.model.editorSecondControlLabel
-                                        : root.model && root.model.editorFirstControlLabel === ""
-                                          ? "Waiting for first button" : "Not set"
+                                text: {
+                                    if (root.model && root.model.editorCaptureStep === "second") {
+                                        //% "Listening… Press the second button"
+                                        return qsTrId("gamehq.input.assignment.listening_second")
+                                    }
+                                    if (root.model && root.model.editorSecondControlLabel !== "")
+                                        return root.model.editorSecondControlLabel
+                                    if (root.model && root.model.editorFirstControlLabel === "") {
+                                        //% "Waiting for first button"
+                                        return qsTrId("gamehq.input.assignment.waiting_first")
+                                    }
+                                    //% "Not set"
+                                    return qsTrId("gamehq.input.assignment.not_set")
+                                }
                                 color: root.model && root.model.editorCaptureStep === "second"
                                        ? Theme.accent : Theme.text
                                 font.family: Theme.fontFamily
@@ -375,8 +425,14 @@ FocusScope {
                                 visible: !root.capturing
                                 quiet: true
                                 enabled: root.model && root.model.editorFirstControlLabel !== ""
-                                label: root.model && root.model.editorSecondControlLabel !== ""
-                                       ? "Change" : "Record"
+                                label: {
+                                    if (root.model && root.model.editorSecondControlLabel !== "") {
+                                        //% "Change"
+                                        return qsTrId("gamehq.common.action.change")
+                                    }
+                                    //% "Record"
+                                    return qsTrId("gamehq.action.record")
+                                }
                                 onClicked: root.model.beginTriggerCapture(2)
                             }
                         }
@@ -399,7 +455,8 @@ FocusScope {
                     visible: root.model && !root.model.editorGestureLocked
 
                     Text {
-                        text: "Gesture"
+                        //% "Gesture"
+                        text: qsTrId("gamehq.input.assignment.gesture")
                         color: Theme.textMuted
                         font.family: Theme.fontFamily
                         font.pixelSize: Theme.fontCaption
@@ -408,11 +465,16 @@ FocusScope {
                         Layout.fillWidth: true
                         currentValue: root.gestureValue()
                         options: [
-                            { label: "Press", value: "press:1" },
-                            { label: "Tap", value: "tap:1" },
-                            { label: "Double tap", value: "tap:2" },
-                            { label: "Triple tap", value: "tap:3" },
-                            { label: "Hold", value: "hold:1" }
+                            //% "Press"
+                            { label: qsTrId("gamehq.input.gesture.press"), value: "press:1" },
+                            //% "Tap"
+                            { label: qsTrId("gamehq.input.gesture.tap"), value: "tap:1" },
+                            //% "Double tap"
+                            { label: qsTrId("gamehq.input.gesture.double_tap"), value: "tap:2" },
+                            //% "Triple tap"
+                            { label: qsTrId("gamehq.input.gesture.triple_tap"), value: "tap:3" },
+                            //% "Hold"
+                            { label: qsTrId("gamehq.input.gesture.hold"), value: "hold:1" }
                         ]
                         onActivated: function(value) { root.selectGesture(value) }
                     }
@@ -423,7 +485,8 @@ FocusScope {
                     visible: root.model && root.model.editorGestureLocked
                     spacing: Theme.s8
                     Text {
-                        text: "Gesture"
+                        //% "Gesture"
+                        text: qsTrId("gamehq.input.assignment.gesture")
                         color: Theme.textMuted
                         font.family: Theme.fontFamily
                         font.pixelSize: Theme.fontCaption
@@ -438,7 +501,8 @@ FocusScope {
                         Text {
                             id: lockedGestureText
                             anchors.centerIn: parent
-                            text: "Press · fixed for combinations"
+                            //% "Press · fixed for combinations"
+                            text: qsTrId("gamehq.input.assignment.combination_gesture")
                             color: Theme.textMuted
                             font.family: Theme.fontFamily
                             font.pixelSize: Theme.fontCaption
@@ -453,7 +517,8 @@ FocusScope {
                     visible: root.model && root.model.editorGestureKind === "hold"
 
                     Text {
-                        text: "Hold duration"
+                        //% "Hold duration"
+                        text: qsTrId("gamehq.input.assignment.hold_duration")
                         color: Theme.textMuted
                         font.family: Theme.fontFamily
                         font.pixelSize: Theme.fontCaption
@@ -462,11 +527,16 @@ FocusScope {
                         Layout.fillWidth: true
                         currentValue: root.model ? String(root.model.editorHoldMs) : "0"
                         options: [
-                            { label: "Default", value: "0" },
-                            { label: "1.0 s", value: "1000" },
-                            { label: "1.5 s", value: "1500" },
-                            { label: "2.0 s", value: "2000" },
-                            { label: "3.0 s", value: "3000" }
+                            //% "Default"
+                            { label: qsTrId("gamehq.input.assignment.default_duration"), value: "0" },
+                            //% "%1 s"
+                            { label: qsTrId("gamehq.duration.seconds_short").arg("1.0"), value: "1000" },
+                            //% "%1 s"
+                            { label: qsTrId("gamehq.duration.seconds_short").arg("1.5"), value: "1500" },
+                            //% "%1 s"
+                            { label: qsTrId("gamehq.duration.seconds_short").arg("2.0"), value: "2000" },
+                            //% "%1 s"
+                            { label: qsTrId("gamehq.duration.seconds_short").arg("3.0"), value: "3000" }
                         ]
                         onActivated: function(value) {
                             root.model.setEditorGesture("hold", 1, Number(value))
@@ -508,11 +578,22 @@ FocusScope {
                             spacing: Theme.s4
                             Text {
                                 Layout.fillWidth: true
-                                text: root.noticeDanger ? "Assignment needs attention"
-                                      : root.noticeKind === "unsupported_input"
-                                        ? "Button not verified this session"
-                                      : root.noticeKind === "conversion_required"
-                                        ? "Compatibility change required" : "Assignment note"
+                                text: {
+                                    if (root.noticeDanger) {
+                                        //% "Assignment needs attention"
+                                        return qsTrId("gamehq.input.assignment.notice.attention")
+                                    }
+                                    if (root.noticeKind === "unsupported_input") {
+                                        //% "Button not verified this session"
+                                        return qsTrId("gamehq.input.assignment.notice.not_verified")
+                                    }
+                                    if (root.noticeKind === "conversion_required") {
+                                        //% "Compatibility change required"
+                                        return qsTrId("gamehq.input.assignment.notice.compatibility")
+                                    }
+                                    //% "Assignment note"
+                                    return qsTrId("gamehq.input.assignment.notice.default")
+                                }
                                 color: root.noticeDanger ? Theme.danger
                                      : root.noticeWarning ? Theme.warning : Theme.text
                                 font.family: Theme.fontFamily
@@ -537,12 +618,14 @@ FocusScope {
                     spacing: Theme.s12
                     Item { Layout.fillWidth: true }
                     AccentButton {
-                        label: "Cancel"
+                        //% "Cancel"
+                        label: qsTrId("gamehq.action.cancel")
                         onClicked: root.model.closeAssignmentEditor()
                     }
                     AccentButton {
                         primary: true
-                        label: "Save"
+                        //% "Save"
+                        label: qsTrId("gamehq.action.save")
                         enabled: root.model && root.model.editorCanSave
                         onClicked: root.model.saveAssignment()
                     }

@@ -6,8 +6,10 @@ import "../components"
 
 SettingsPage {
     id: root
-    pageTitle: "Advanced"
-    pageDescription: "Review system health, open diagnostic resources, and recover settings."
+    //% "Advanced"
+    pageTitle: qsTrId("gamehq.settings.category.advanced")
+    //% "Review system health, open diagnostic resources, and recover settings."
+    pageDescription: qsTrId("gamehq.settings.advanced.description")
 
     signal restoreAllRequested()
     signal restoreCategoryRequested(string category)
@@ -27,34 +29,72 @@ SettingsPage {
     }
 
     SettingsSection {
-        eyebrow: "Overview"
-        title: "System status"
-        description: "A concise view of the environment GameHQ is currently using."
+        //% "Overview"
+        eyebrow: qsTrId("gamehq.settings.advanced.overview.eyebrow")
+        //% "System status"
+        title: qsTrId("gamehq.settings.advanced.overview.title")
+        //% "A concise view of the environment GameHQ is currently using."
+        description: qsTrId("gamehq.settings.advanced.overview.description")
         SettingsStatusStrip {
             items: [
-                { label: "System", value: "Ready", detail: app.portableMode ? "Portable profile" : "Installed profile" },
-                { label: "Capture",
-                  value: app.hdrDisplayActive ? "HDR Active" : "HDR Inactive",
+                {
+                  //% "System"
+                  label: qsTrId("gamehq.settings.advanced.overview.system"),
+                  //% "Ready"
+                  value: qsTrId("gamehq.settings.advanced.status.ready"),
+                  detail: app.portableMode
+                      //% "Portable profile"
+                      ? qsTrId("gamehq.settings.advanced.profile.portable")
+                      //% "Installed profile"
+                      : qsTrId("gamehq.settings.advanced.profile.installed")
+                },
+                {
+                  //% "Capture"
+                  label: qsTrId("gamehq.settings.category.capture"),
+                  value: app.hdrDisplayActive
+                      //% "HDR active"
+                      ? qsTrId("gamehq.settings.advanced.hdr.active")
+                      //% "HDR inactive"
+                      : qsTrId("gamehq.settings.advanced.hdr.inactive"),
                   detail: app.hdrStatusText,
                   tone: app.hdrStatusText.toLowerCase().indexOf("unavailable") >= 0
-                        ? "warning" : app.hdrDisplayActive ? "accent" : "danger" },
-                { label: "Storage", value: "Healthy", detail: "Managed folders available" },
-                { label: "Version", value: app.version, detail: "Current installation" }
+                        ? "warning" : app.hdrDisplayActive ? "accent" : "danger"
+                },
+                {
+                  //% "Storage"
+                  label: qsTrId("gamehq.settings.advanced.overview.storage"),
+                  //% "Healthy"
+                  value: qsTrId("gamehq.settings.advanced.status.healthy"),
+                  //% "Managed folders available"
+                  detail: qsTrId("gamehq.settings.advanced.storage.available")
+                },
+                {
+                  //% "Version"
+                  label: qsTrId("gamehq.settings.advanced.overview.version"),
+                  value: app.version,
+                  //% "Current installation"
+                  detail: qsTrId("gamehq.settings.advanced.version.current")
+                }
             ]
         }
     }
 
     SettingsSection {
-        eyebrow: "Resources"
-        title: "Locations"
-        description: "Open GameHQ-owned folders used for logs, configuration, database, and support data."
+        //% "Resources"
+        eyebrow: qsTrId("gamehq.settings.advanced.resources.eyebrow")
+        //% "Locations"
+        title: qsTrId("gamehq.settings.advanced.resources.title")
+        //% "Open GameHQ-owned folders used for logs, configuration, database, and support data."
+        description: qsTrId("gamehq.settings.advanced.resources.description")
         SettingsPathRow {
-            label: "Logs folder"
+            //% "Logs folder"
+            label: qsTrId("gamehq.settings.advanced.resources.logs")
             path: app.logsRoot
             onOpenRequested: app.openLogsFolder()
         }
         SettingsPathRow {
-            label: "Data folder"
+            //% "Data folder"
+            label: qsTrId("gamehq.settings.advanced.resources.data")
             path: app.dataRoot
             showDivider: false
             onOpenRequested: app.openDataFolder()
@@ -62,9 +102,12 @@ SettingsPage {
     }
 
     SettingsSection {
-        eyebrow: "Diagnostics"
-        title: "Tools"
-        description: "Collect support information or refresh hardware status without changing settings."
+        //% "Diagnostics"
+        eyebrow: qsTrId("gamehq.settings.advanced.diagnostics.eyebrow")
+        //% "Tools"
+        title: qsTrId("gamehq.settings.advanced.diagnostics.title")
+        //% "Collect support information or refresh hardware status without changing settings."
+        description: qsTrId("gamehq.settings.advanced.diagnostics.description")
         GridLayout {
             Layout.fillWidth: true
             columns: width < 720 ? 1 : 2
@@ -72,34 +115,44 @@ SettingsPage {
             rowSpacing: Theme.s8
             SettingsActionTile {
                 icon: "\u2398"
-                title: "Copy diagnostic summary"
-                description: "Version, profile mode, and managed paths."
+                //% "Copy diagnostic summary"
+                title: qsTrId("gamehq.settings.advanced.diagnostics.copy.title")
+                //% "Version, profile mode, and managed paths."
+                description: qsTrId("gamehq.settings.advanced.diagnostics.copy.description")
                 onClicked: { app.copyDiagnosticSummary(); sounds.play("confirm") }
             }
             SettingsActionTile {
                 icon: "\u21BB"
-                title: "Refresh display status"
-                description: "Recheck HDR and capture capabilities."
+                //% "Refresh display status"
+                title: qsTrId("gamehq.settings.advanced.diagnostics.refresh.title")
+                //% "Recheck HDR and capture capabilities."
+                description: qsTrId("gamehq.settings.advanced.diagnostics.refresh.description")
                 onClicked: app.refreshHdrStatus()
             }
             SettingsActionTile {
                 visible: !app.portableMode
                 icon: "\u21E5"
-                title: "Import portable profile"
-                description: "Validate, stage, and import a fresh portable profile."
+                //% "Import portable profile"
+                title: qsTrId("gamehq.settings.advanced.diagnostics.import.title")
+                //% "Validate, stage, and import a fresh portable profile."
+                description: qsTrId("gamehq.settings.advanced.diagnostics.import.description")
                 onClicked: portableFolderDialog.open()
             }
         }
     }
 
     SettingsSection {
-        eyebrow: "Display capture"
-        title: "HDR details"
+        //% "Display capture"
+        eyebrow: qsTrId("gamehq.settings.advanced.hdr.eyebrow")
+        //% "HDR details"
+        title: qsTrId("gamehq.settings.advanced.hdr.title")
         status: app.hdrStatusText
         statusColor: app.hdrDisplayActive ? Theme.accent : Theme.danger
-        description: "Technical adapter and fallback details are available when troubleshooting capture output."
+        //% "Technical adapter and fallback details are available when troubleshooting capture output."
+        description: qsTrId("gamehq.settings.advanced.hdr.description")
         SettingsDisclosure {
-            label: "Technical HDR details"
+            //% "Technical HDR details"
+            label: qsTrId("gamehq.settings.advanced.hdr.disclosure")
             Repeater {
                 model: root.hdrDetailItems()
                 delegate: RowLayout {
@@ -143,33 +196,69 @@ SettingsPage {
     }
 
     SettingsSection {
-        eyebrow: "Recovery"
-        title: "Restore"
+        //% "Recovery"
+        eyebrow: qsTrId("gamehq.settings.advanced.recovery.eyebrow")
+        //% "Restore"
+        title: qsTrId("gamehq.settings.advanced.recovery.title")
         variant: "compact"
-        description: "Restoring settings never deletes captures, favorites, watched media, or database records."
+        //% "Restoring settings never deletes captures, favorites, watched media, or database records."
+        description: qsTrId("gamehq.settings.advanced.recovery.description")
         SettingsDisclosure {
-            label: "Restore options"
+            //% "Restore options"
+            label: qsTrId("gamehq.settings.advanced.recovery.options")
             SettingsRow {
-                label: "Restore one category"
-                description: "Return only the selected category to its defaults."
+                //% "Restore one category"
+                label: qsTrId("gamehq.settings.advanced.recovery.category.label")
+                //% "Return only the selected category to its defaults."
+                description: qsTrId("gamehq.settings.advanced.recovery.category.description")
                 controlWidth: Theme.s48 * 9
-                AccentButton { label: "General"; quiet: true; onClicked: root.restoreCategoryRequested("General") }
-                AccentButton { label: "Capture"; quiet: true; onClicked: root.restoreCategoryRequested("Capture") }
-                AccentButton { label: "Replay"; quiet: true; onClicked: root.restoreCategoryRequested("Replay") }
-                AccentButton { label: "Feedback"; quiet: true; onClicked: root.restoreCategoryRequested("Notifications & Sound") }
+                AccentButton {
+                    //% "General"
+                    label: qsTrId("gamehq.settings.category.general")
+                    quiet: true
+                    onClicked: root.restoreCategoryRequested("General")
+                }
+                AccentButton {
+                    //% "Capture"
+                    label: qsTrId("gamehq.settings.category.capture")
+                    quiet: true
+                    onClicked: root.restoreCategoryRequested("Capture")
+                }
+                AccentButton {
+                    //% "Replay"
+                    label: qsTrId("gamehq.settings.category.replay")
+                    quiet: true
+                    onClicked: root.restoreCategoryRequested("Replay")
+                }
+                AccentButton {
+                    //% "Feedback"
+                    label: qsTrId("gamehq.settings.advanced.recovery.feedback")
+                    quiet: true
+                    onClicked: root.restoreCategoryRequested("Notifications & Sound")
+                }
             }
             SettingsRow {
-                label: "Restore input bindings"
-                description: "Return controller, keyboard, and mouse overrides to built-in defaults."
-                AccentButton { label: "Restore input"; quiet: true; onClicked: root.restoreInputRequested() }
+                //% "Restore input bindings"
+                label: qsTrId("gamehq.settings.advanced.recovery.input.label")
+                //% "Return controller, keyboard, and mouse overrides to built-in defaults."
+                description: qsTrId("gamehq.settings.advanced.recovery.input.description")
+                AccentButton {
+                    //% "Restore input"
+                    label: qsTrId("gamehq.settings.advanced.recovery.input.action")
+                    quiet: true
+                    onClicked: root.restoreInputRequested()
+                }
             }
             SettingsRow {
                 tone: "danger"
-                label: "Restore all settings"
-                description: "Return every configuration category to its default values."
+                //% "Restore all settings"
+                label: qsTrId("gamehq.settings.advanced.recovery.all.label")
+                //% "Return every configuration category to its default values."
+                description: qsTrId("gamehq.settings.advanced.recovery.all.description")
                 showDivider: false
                 AccentButton {
-                    label: "Restore all"
+                    //% "Restore all"
+                    label: qsTrId("gamehq.settings.advanced.recovery.all.action")
                     quiet: true
                     labelColor: Theme.danger
                     borderColor: Theme.danger
@@ -181,7 +270,8 @@ SettingsPage {
 
     FolderDialog {
         id: portableFolderDialog
-        title: "Select the GameHQ portable folder"
+        //% "Select the GameHQ portable folder"
+        title: qsTrId("gamehq.settings.advanced.portable_folder.title")
         onAccepted: root.importPortableRequested(selectedFolder)
     }
 }

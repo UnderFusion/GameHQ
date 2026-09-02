@@ -51,7 +51,9 @@ Rectangle {
             Text {
                 Layout.fillWidth: true
                 Layout.leftMargin: Theme.s8
-                text: root.slotLabel.toUpperCase() + " ASSIGNMENT"
+                //% "%1 assignment"
+                text: qsTrId("gamehq.input.binding_card.heading")
+                    .arg(root.slotLabel).toUpperCase()
                 color: Theme.textFaint
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.fontCaption
@@ -87,14 +89,27 @@ Rectangle {
                 Layout.preferredWidth: resetText.implicitWidth + Theme.s16
                 Layout.preferredHeight: Theme.s24
                 focusPolicy: Qt.StrongFocus
-                Accessible.name: (root.changeState === "removed" ? "Restore " : "Revert ")
-                                 + root.slotLabel.toLowerCase() + " assignment"
+                Accessible.name: {
+                    if (root.changeState === "removed") {
+                        //% "Restore %1 assignment"
+                        return qsTrId("gamehq.input.binding_card.restore_accessible").arg(root.slotLabel)
+                    }
+                    //% "Revert %1 assignment"
+                    return qsTrId("gamehq.input.binding_card.revert_accessible").arg(root.slotLabel)
+                }
                 Accessible.role: Accessible.Button
                 onClicked: root.resetRequested()
 
                 contentItem: Text {
                     id: resetText
-                    text: root.changeState === "removed" ? "Restore" : "Revert"
+                    text: {
+                        if (root.changeState === "removed") {
+                            //% "Restore"
+                            return qsTrId("gamehq.action.restore")
+                        }
+                        //% "Revert"
+                        return qsTrId("gamehq.action.revert")
+                    }
                     color: resetButton.activeFocus || resetButton.hovered
                            ? Theme.accent : Theme.textMuted
                     font.family: Theme.fontFamily
@@ -119,13 +134,15 @@ Rectangle {
                 Layout.preferredWidth: removeText.implicitWidth + Theme.s16
                 Layout.preferredHeight: Theme.s24
                 focusPolicy: Qt.StrongFocus
-                Accessible.name: "Remove " + root.slotLabel.toLowerCase() + " assignment"
+                //% "Remove %1 assignment"
+                Accessible.name: qsTrId("gamehq.input.binding_card.remove_accessible").arg(root.slotLabel)
                 Accessible.role: Accessible.Button
                 onClicked: root.clearRequested()
 
                 contentItem: Text {
                     id: removeText
-                    text: "Remove"
+                    //% "Remove"
+                    text: qsTrId("gamehq.action.remove")
                     color: clearButton.activeFocus || clearButton.hovered
                            ? Theme.danger : Theme.textMuted
                     font.family: Theme.fontFamily
@@ -154,11 +171,26 @@ Rectangle {
             focusPolicy: root.editable ? Qt.StrongFocus : Qt.NoFocus
             leftPadding: Theme.s8
             rightPadding: Theme.s8
-            Accessible.name: (root.assigned
-                              ? "Edit " + root.slotLabel.toLowerCase() + " assignment: "
-                                + root.triggerLabel + ", " + root.badgeLabel
-                              : "Add " + root.slotLabel.toLowerCase() + " assignment")
-                             + (root.statusLabel !== "" ? ", status " + root.statusLabel : "")
+            Accessible.name: {
+                if (root.assigned && root.statusLabel !== "") {
+                    //% "Edit %1 assignment: %2, %3, status %4"
+                    return qsTrId("gamehq.input.binding_card.edit_status_accessible")
+                        .arg(root.slotLabel).arg(root.triggerLabel)
+                        .arg(root.badgeLabel).arg(root.statusLabel)
+                }
+                if (root.assigned) {
+                    //% "Edit %1 assignment: %2, %3"
+                    return qsTrId("gamehq.input.binding_card.edit_accessible")
+                        .arg(root.slotLabel).arg(root.triggerLabel).arg(root.badgeLabel)
+                }
+                if (root.statusLabel !== "") {
+                    //% "Add %1 assignment, status %2"
+                    return qsTrId("gamehq.input.binding_card.add_status_accessible")
+                        .arg(root.slotLabel).arg(root.statusLabel)
+                }
+                //% "Add %1 assignment"
+                return qsTrId("gamehq.input.binding_card.add_accessible").arg(root.slotLabel)
+            }
             Accessible.role: Accessible.Button
             onClicked: root.editRequested()
 
@@ -168,8 +200,16 @@ Rectangle {
                 Text {
                     Layout.fillWidth: true
                     Layout.minimumWidth: 0
-                    text: root.assigned ? root.triggerLabel
-                                        : root.changeState === "removed" ? "Unassigned" : "+ Add input"
+                    text: {
+                        if (root.assigned)
+                            return root.triggerLabel
+                        if (root.changeState === "removed") {
+                            //% "Unassigned"
+                            return qsTrId("gamehq.input.binding_card.unassigned")
+                        }
+                        //% "+ Add input"
+                        return qsTrId("gamehq.input.binding_card.add_input")
+                    }
                     color: root.assigned ? Theme.text : Theme.textMuted
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontBody
@@ -198,7 +238,18 @@ Rectangle {
                 }
 
                 Text {
-                    text: root.editable ? (root.assigned ? "EDIT  \u203a" : "ADD  \u203a") : "FIXED"
+                    text: {
+                        if (!root.editable) {
+                            //% "Fixed"
+                            return qsTrId("gamehq.settings.input.bindings.fixed").toUpperCase()
+                        }
+                        if (root.assigned) {
+                            //% "Edit  ›"
+                            return qsTrId("gamehq.input.binding_card.edit").toUpperCase()
+                        }
+                        //% "Add  ›"
+                        return qsTrId("gamehq.input.binding_card.add").toUpperCase()
+                    }
                     color: valueField.activeFocus || valueField.hovered
                            ? Theme.accent : Theme.textMuted
                     font.family: Theme.fontFamily

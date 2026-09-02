@@ -14,11 +14,15 @@ import "../helpers/PadNav.js" as PadNav
 Item {
     id: root
 
-    property string title: "These assignments conflict"
+    //% "These assignments conflict"
+    property string title: qsTrId("gamehq.input.conflict.title")
     property string message: ""
-    property string replaceLabel: "Replace"
-    property string retryLabel: "Choose another"
-    property string cancelLabel: "Cancel"
+    //% "Replace"
+    property string replaceLabel: qsTrId("gamehq.action.replace")
+    //% "Choose another"
+    property string retryLabel: qsTrId("gamehq.input.choose_another")
+    //% "Cancel"
+    property string cancelLabel: qsTrId("gamehq.action.cancel")
 
     signal replaced()
     signal retried()

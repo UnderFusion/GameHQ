@@ -38,7 +38,8 @@ Item {
     ColumnLayout {
         spacing: Theme.s8
         Text {
-            text: "KEYBOARD SHORTCUTS"
+            //% "Keyboard shortcuts"
+            text: qsTrId("gamehq.help.keyboard_shortcuts").toUpperCase()
             color: Theme.textFaint
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontCaption
@@ -60,14 +61,47 @@ Item {
 
                 Repeater {
                     model: [
-                        { binding: "Alt+Shift+G", act: "Open / close overlay" },
-                        { binding: "Ctrl+Shift+S", act: "Take screenshot" },
-                        { binding: "Ctrl+Shift+E", act: "Save last N seconds as clip" },
-                        { binding: "Enter",        act: "Open selected capture" },
-                        { binding: "Select mode",   act: "Enter / Space toggles, Ctrl+A selects all, Delete removes selected" },
-                        { binding: "F",            act: "Favourite / unfavourite selected" },
-                        { binding: "E",            act: "Show selected in Explorer" },
-                        { binding: "W / A / S / D",act: "Navigate gallery grid" }
+                        {
+                            binding: "Alt+Shift+G",
+                            //% "Open / close overlay"
+                            act: qsTrId("gamehq.help.keyboard.open_overlay")
+                        },
+                        {
+                            binding: "Ctrl+Shift+S",
+                            //% "Take screenshot"
+                            act: qsTrId("gamehq.help.keyboard.take_screenshot")
+                        },
+                        {
+                            binding: "Ctrl+Shift+E",
+                            //% "Save last N seconds as clip"
+                            act: qsTrId("gamehq.help.keyboard.save_replay")
+                        },
+                        {
+                            binding: "Enter",
+                            //% "Open selected capture"
+                            act: qsTrId("gamehq.help.keyboard.open_capture")
+                        },
+                        {
+                            //% "Select mode"
+                            binding: qsTrId("gamehq.help.binding.select_mode"),
+                            //% "Enter / Space toggles, Ctrl+A selects all, Delete removes selected"
+                            act: qsTrId("gamehq.help.keyboard.select_mode")
+                        },
+                        {
+                            binding: "F",
+                            //% "Favorite / unfavorite selected"
+                            act: qsTrId("gamehq.help.keyboard.toggle_favorite")
+                        },
+                        {
+                            binding: "E",
+                            //% "Show selected in Explorer"
+                            act: qsTrId("gamehq.help.keyboard.show_in_explorer")
+                        },
+                        {
+                            binding: "W / A / S / D",
+                            //% "Navigate gallery grid"
+                            act: qsTrId("gamehq.help.navigate_gallery")
+                        }
                     ]
                     delegate: RowLayout {
                         Layout.fillWidth: true
@@ -105,7 +139,8 @@ Item {
         spacing: Theme.s8
         Layout.fillWidth: true
         Text {
-            text: "DUALSENSE / GAMEPAD"
+            //% "DualSense / gamepad"
+            text: qsTrId("gamehq.help.gamepad_shortcuts").toUpperCase()
             color: Theme.textFaint
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontCaption
@@ -127,18 +162,77 @@ Item {
 
                 Repeater {
                     model: [
-                        { binding: "System Share (tap)", act: "Take screenshot; distinct from Xbox View / Back" },
-                        { binding: "Share (hold)",     act: "Save replay clip; hold consumes the tap" },
-                        { binding: "Share (2× / 3×)",  act: "Exact double/triple tap; lower counts wait only for the configured interval" },
-                        { binding: "Button combination",act: "Press the ordered pair within the configured combination window" },
-                        { binding: "PS button",        act: "Open / close overlay" },
-                        { binding: "L1 / R1",          act: "Switch panel: sidebar ↔ grid (app) / flip captures (overlay)" },
-                        { binding: "D-pad / Left Stick",act: "Navigate gallery grid" },
-                        { binding: "Cross",            act: "Open selected capture / confirm" },
-                        { binding: "Circle",           act: "Back / close overlay" },
-                        { binding: "Square",           act: "Action menu (Show in folder / Delete)" },
-                        { binding: "Triangle",         act: "Favourite / unfavourite selected" },
-                        { binding: "Select mode",      act: "Cross toggles, Triangle selects all, Square deletes, Circle exits" }
+                        {
+                            //% "System Share (tap)"
+                            binding: qsTrId("gamehq.help.gamepad.system_share_tap"),
+                            //% "Take screenshot; distinct from Xbox View / Back"
+                            act: qsTrId("gamehq.help.gamepad.system_share_action")
+                        },
+                        {
+                            //% "Share (hold)"
+                            binding: qsTrId("gamehq.help.gamepad.share_hold"),
+                            //% "Save replay clip; hold consumes the tap"
+                            act: qsTrId("gamehq.help.gamepad.share_hold_action")
+                        },
+                        {
+                            //% "Share (2× / 3×)"
+                            binding: qsTrId("gamehq.help.gamepad.share_multi_tap"),
+                            //% "Exact double/triple tap; lower counts wait only for the configured interval"
+                            act: qsTrId("gamehq.help.gamepad.share_multi_tap_action")
+                        },
+                        {
+                            //% "Button combination"
+                            binding: qsTrId("gamehq.help.gamepad.button_combination"),
+                            //% "Press the ordered pair within the configured combination window"
+                            act: qsTrId("gamehq.help.gamepad.button_combination_action")
+                        },
+                        {
+                            //% "PS button"
+                            binding: qsTrId("gamehq.help.gamepad.ps_button"),
+                            //% "Open / close overlay"
+                            act: qsTrId("gamehq.help.keyboard.open_overlay")
+                        },
+                        {
+                            binding: "L1 / R1",
+                            //% "Switch panel: sidebar ↔ grid (app) / flip captures (overlay)"
+                            act: qsTrId("gamehq.help.gamepad.switch_panel")
+                        },
+                        {
+                            //% "D-pad / Left Stick"
+                            binding: qsTrId("gamehq.help.gamepad.navigation_controls"),
+                            //% "Navigate gallery grid"
+                            act: qsTrId("gamehq.help.navigate_gallery")
+                        },
+                        {
+                            //% "Cross"
+                            binding: qsTrId("gamehq.help.gamepad.cross"),
+                            //% "Open selected capture / confirm"
+                            act: qsTrId("gamehq.help.gamepad.cross_action")
+                        },
+                        {
+                            //% "Circle"
+                            binding: qsTrId("gamehq.help.gamepad.circle"),
+                            //% "Back / close overlay"
+                            act: qsTrId("gamehq.help.gamepad.circle_action")
+                        },
+                        {
+                            //% "Square"
+                            binding: qsTrId("gamehq.help.gamepad.square"),
+                            //% "Action menu (Show in folder / Delete)"
+                            act: qsTrId("gamehq.help.gamepad.square_action")
+                        },
+                        {
+                            //% "Triangle"
+                            binding: qsTrId("gamehq.help.gamepad.triangle"),
+                            //% "Favorite / unfavorite selected"
+                            act: qsTrId("gamehq.help.keyboard.toggle_favorite")
+                        },
+                        {
+                            //% "Select mode"
+                            binding: qsTrId("gamehq.help.binding.select_mode"),
+                            //% "Cross toggles, Triangle selects all, Square deletes, Circle exits"
+                            act: qsTrId("gamehq.help.gamepad.select_mode")
+                        }
                     ]
                     delegate: RowLayout {
                         Layout.fillWidth: true
@@ -168,7 +262,8 @@ Item {
                     }
                 }
                 TextLink {
-                    label: "Open the controller compatibility guide"
+                    //% "Open the controller compatibility guide"
+                    label: qsTrId("gamehq.help.open_controller_guide")
                     suffix: "↗"
                     onClicked: Qt.openUrlExternally(Brand.repositoryUrl + "/blob/dev/docs/controller-compatibility.md")
                 }
@@ -181,7 +276,8 @@ Item {
         spacing: Theme.s8
         Layout.fillWidth: true
         Text {
-            text: "FEATURES"
+            //% "Features"
+            text: qsTrId("gamehq.help.features").toUpperCase()
             color: Theme.textFaint
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontCaption
@@ -203,12 +299,42 @@ Item {
 
                 Repeater {
                     model: [
-                        { heading: "Replay buffer",  desc: "Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay." },
-                        { heading: "Screenshots",    desc: "GDI grab of the active game window. PNG saved to your captures folder with instant shutter feedback." },
-                        { heading: "Gallery",        desc: "All captures in one grid — filter by category or game. Grid navigation works with keyboard, mouse, and controller." },
-                        { heading: "Overlay",        desc: "Transparent fullscreen HUD. View and manage captures from inside a game without alt-tabbing. Includes its own gallery grid, lightbox, and toast notifications." },
-                        { heading: "Lightbox",       desc: "Full-screen viewer for screenshots and videos. Opens from both the main window and the overlay." },
-                        { heading: "Watched folders",desc: "Add any folder (Game Bar, Steam, NVIDIA ShadowPlay) — " + Brand.name + " scans it for new captures automatically." }
+                        {
+                            //% "Replay buffer"
+                            heading: qsTrId("gamehq.help.feature.replay.title"),
+                            //% "Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay."
+                            desc: qsTrId("gamehq.help.feature.replay.description")
+                        },
+                        {
+                            //% "Screenshots"
+                            heading: qsTrId("gamehq.help.feature.screenshots.title"),
+                            //% "GDI grab of the active game window. PNG saved to your captures folder with instant shutter feedback."
+                            desc: qsTrId("gamehq.help.feature.screenshots.description")
+                        },
+                        {
+                            //% "Gallery"
+                            heading: qsTrId("gamehq.help.feature.gallery.title"),
+                            //% "All captures in one grid — filter by category or game. Grid navigation works with keyboard, mouse, and controller."
+                            desc: qsTrId("gamehq.help.feature.gallery.description")
+                        },
+                        {
+                            //% "Overlay"
+                            heading: qsTrId("gamehq.help.feature.overlay.title"),
+                            //% "Transparent fullscreen HUD. View and manage captures from inside a game without alt-tabbing. Includes its own gallery grid, lightbox, and toast notifications."
+                            desc: qsTrId("gamehq.help.feature.overlay.description")
+                        },
+                        {
+                            //% "Lightbox"
+                            heading: qsTrId("gamehq.help.feature.lightbox.title"),
+                            //% "Full-screen viewer for screenshots and videos. Opens from both the main window and the overlay."
+                            desc: qsTrId("gamehq.help.feature.lightbox.description")
+                        },
+                        {
+                            //% "Watched folders"
+                            heading: qsTrId("gamehq.help.feature.watched_folders.title"),
+                            //% "Add any folder (Game Bar, Steam, NVIDIA ShadowPlay) — %1 scans it for new captures automatically."
+                            desc: qsTrId("gamehq.help.feature.watched_folders.description").arg(Brand.name)
+                        }
                     ]
                     delegate: ColumnLayout {
                         Layout.fillWidth: true

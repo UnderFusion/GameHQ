@@ -15,7 +15,8 @@ Window {
     visible: false
     flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
     color: "transparent"
-    title: Brand.name + " Viewer"
+    //% "%1 Viewer"
+    title: qsTrId("gamehq.gallery.viewer.window_title").arg(Brand.name)
 
     property var galleryModel
     property var parentWindow
@@ -197,7 +198,10 @@ Window {
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: -Theme.s24
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: (root.current.gameName || "") + " · " + (root.current.dateText || "")
+                //% "%1 · %2"
+                text: qsTrId("gamehq.gallery.capture_caption")
+                    .arg(root.current.gameName || "")
+                    .arg(root.current.dateText || "")
                 color: Theme.textMuted
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.fontCaption

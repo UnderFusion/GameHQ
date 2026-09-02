@@ -27,5 +27,21 @@
       <source>Open Gallery</source>
       <translation>Open Gallery</translation>
     </message>
+    <message id="gamehq.overlay.focus_warning">
+      <source>The game still has focus and may react to controller input</source>
+      <translation>The game still has focus and may react to controller input</translation>
+    </message>
+    <message id="gamehq.settings.input.devices.title">
+      <source>Input devices</source>
+      <translation>Input devices</translation>
+    </message>
+    <message id="gamehq.gallery.action.bulk_select">
+      <source>Bulk select</source>
+      <translation>Bulk select</translation>
+    </message>
+    <message id="gamehq.gallery.delete_capture.title">
+      <source>Delete capture?</source>
+      <translation>Delete capture?</translation>
+    </message>
   </context>
 </TS>

@@ -376,8 +376,8 @@ ApplicationWindow {
         var n = window.bulkCount()
         if (n === 0)
             return
-        bulkDeleteDialog.message = n + " capture" + (n === 1 ? "" : "s")
-            + " will be permanently deleted.\nThis cannot be undone."
+        //% "%n capture will be permanently deleted.\nThis cannot be undone."
+        bulkDeleteDialog.message = qsTrId("gamehq.gallery.delete_selected.message", n)
         bulkDeleteDialog.open()
     }
 
@@ -947,12 +947,12 @@ ApplicationWindow {
             DesktopGalleryHeader {
                 titleText: {
                     if (app.currentGameAvailable && app.gameId === app.currentGameId && app.category === "favorites")
-                        return "Game Favourites"
+                        return window.sidebarCategoryLabels["game_favorites"]
                     if (app.gameId >= 0) {
                         for (const g of app.games)
                             if (g.id === app.gameId) return g.name
                     }
-                    return app.category.charAt(0).toUpperCase() + app.category.slice(1)
+                    return window.sidebarCategoryLabels[app.category] || app.category
                 }
                 bulkMode: window.bulkMode
                 bulkCount: window.bulkCount()
@@ -1016,7 +1016,8 @@ ApplicationWindow {
 
     FolderDialog {
         id: folderDialog
-        title: "Choose a folder to watch"
+        //% "Choose a folder to watch"
+        title: qsTrId("gamehq.library.folder_dialog.title")
         onAccepted: app.addWatchedFolder(selectedFolder)
     }
 
@@ -1033,7 +1034,8 @@ ApplicationWindow {
 
     function askDelete(row, name, date) {
         window.pendingDeleteRow = row
-        deleteDialog.message = name + " · " + date + "\nThis permanently deletes the file."
+        //% "%1 · %2\nThis permanently deletes the file."
+        deleteDialog.message = qsTrId("gamehq.gallery.delete_capture.message").arg(name).arg(date)
         deleteDialog.open()
     }
 
@@ -1041,8 +1043,10 @@ ApplicationWindow {
         id: deleteDialog
         anchors.fill: parent
         z: 100
-        title: "Delete capture?"
-        confirmLabel: "Delete"
+        //% "Delete capture?"
+        title: qsTrId("gamehq.gallery.delete_capture.title")
+        //% "Delete"
+        confirmLabel: qsTrId("gamehq.action.delete")
         onConfirmed: {
             sounds.play("confirm")
             app.deleteCapture(window.pendingDeleteRow)
@@ -1055,8 +1059,10 @@ ApplicationWindow {
         id: bulkDeleteDialog
         anchors.fill: parent
         z: 100
-        title: "Delete selected captures?"
-        confirmLabel: "Delete"
+        //% "Delete selected captures?"
+        title: qsTrId("gamehq.gallery.delete_selected.title")
+        //% "Delete"
+        confirmLabel: qsTrId("gamehq.action.delete")
         onConfirmed: window.bulkConfirmDelete()
     }
 
@@ -1084,7 +1090,14 @@ ApplicationWindow {
         id: padMenu
         // Bulk select is desktop-only, so it is added here rather than in the
         // shared component. padMenuConfirm() maps these by index.
-        entries: ["Show in folder", "Delete", "Bulk select"]
+        entries: [
+            //% "Show in folder"
+            qsTrId("gamehq.gallery.action.show_in_folder"),
+            //% "Delete"
+            qsTrId("gamehq.action.delete"),
+            //% "Bulk select"
+            qsTrId("gamehq.gallery.action.bulk_select")
+        ]
         open: window.menuOpen
         currentIndex: window.menuIndex
         onCloseRequested: window.menuOpen = false

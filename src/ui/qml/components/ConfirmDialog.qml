@@ -7,10 +7,13 @@ import "../helpers/PadNav.js" as PadNav
 Item {
     id: root
 
-    property string title: "Are you sure?"
+    //% "Are you sure?"
+    property string title: qsTrId("gamehq.dialog.confirm.default_title")
     property string message: ""
-    property string cancelLabel: "Cancel"
-    property string confirmLabel: "Delete"
+    //% "Cancel"
+    property string cancelLabel: qsTrId("gamehq.action.cancel")
+    //% "Delete"
+    property string confirmLabel: qsTrId("gamehq.action.delete")
     signal confirmed()
     signal canceled()
 

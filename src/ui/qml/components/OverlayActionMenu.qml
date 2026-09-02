@@ -9,7 +9,12 @@ Item {
     // The desktop and the overlay share this menu but do not offer the same
     // actions — bulk selection is a desktop-only mode — so the caller owns the
     // list. Index order is the caller's contract with its own confirm handler.
-    property var entries: ["Show in folder", "Delete"]
+    property var entries: [
+        //% "Show in folder"
+        qsTrId("gamehq.gallery.action.show_in_folder"),
+        //% "Delete"
+        qsTrId("gamehq.action.delete")
+    ]
 
     signal closeRequested()
     signal itemHovered(int index)
@@ -46,7 +51,8 @@ Item {
             spacing: Theme.s8
 
             Text {
-                text: "Capture actions"
+            //% "Capture actions"
+            text: qsTrId("gamehq.overlay.capture_actions")
                 color: Theme.text
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.fontH3

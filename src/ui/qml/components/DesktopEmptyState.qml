@@ -17,7 +17,8 @@ Column {
     }
 
     Text {
-        text: "No captures yet \u2014 add a folder to watch."
+        //% "No captures yet — add a folder to watch."
+        text: qsTrId("gamehq.gallery.empty.description")
         color: Theme.textMuted
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontBody
@@ -26,7 +27,8 @@ Column {
     AccentButton {
         anchors.horizontalCenter: parent.horizontalCenter
         primary: true
-        label: "Add folder\u2026"
+        //% "Add folder…"
+        label: qsTrId("gamehq.gallery.action.add_folder")
         onClicked: root.addFolderRequested()
     }
 }

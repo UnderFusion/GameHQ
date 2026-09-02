@@ -6,6 +6,22 @@ Rectangle {
 
     property var categories: []
     property int sidebarIndex: 0
+    readonly property var categoryLabels: ({
+        //% "All"
+        "all": qsTrId("gamehq.navigation.category.all"),
+        //% "Recent"
+        "recent": qsTrId("gamehq.navigation.category.recent"),
+        //% "Favorites"
+        "favorites": qsTrId("gamehq.navigation.category.favorites"),
+        //% "Screenshots"
+        "screenshots": qsTrId("gamehq.navigation.category.screenshots"),
+        //% "Clips"
+        "clips": qsTrId("gamehq.navigation.category.clips"),
+        //% "Game"
+        "game": qsTrId("gamehq.navigation.category.game"),
+        //% "Game favorites"
+        "game_favorites": qsTrId("gamehq.navigation.category.game_favorites")
+    })
 
     signal entrySelected(int index)
 
@@ -26,7 +42,7 @@ Rectangle {
             model: root.categories
             delegate: SidebarItem {
                 width: parent.width
-                label: modelData.label
+                label: root.categoryLabels[modelData.key] || modelData.label
                 glyph: modelData.glyph
                 active: root.sidebarIndex === index
                 onClicked: root.entrySelected(index)
@@ -34,7 +50,8 @@ Rectangle {
         }
 
         Text {
-            text: "GAMES"
+            //% "Games"
+            text: qsTrId("gamehq.navigation.games").toUpperCase()
             color: Theme.textFaint
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontCaption
@@ -97,7 +114,8 @@ Rectangle {
             Text {
                 id: brandVersion
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "v" + app.version
+                //% "v%1"
+                text: qsTrId("gamehq.format.version_short").arg(app.version)
                 color: Theme.textFaint
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.fontCaption

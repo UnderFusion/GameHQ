@@ -13,17 +13,28 @@ Text {
 
     text: {
         const pad = root.usingGamepad
-        if (root.menuOpen)
-            return pad
-                ? "D-pad Up/Down - choose | Cross - confirm | Circle - close menu"
-                : "Up/Down - choose | Enter - confirm | Esc/Backspace - close menu"
-        if (root.videoFocused)
-            return pad
-                ? "D-pad Left/Right - scrub | Cross - play/pause | Circle - back to captures"
-                : "Left/Right - scrub clip | Enter - play/pause | Esc/Backspace - back to captures"
-        return pad
-            ? "L1/R1 - captures | D-pad Up/Down - categories/games | Cross - open | Triangle - favorite | Square - menu | Circle - back to game"
-            : "Left/Right - captures | Up/Down - categories/games | Enter - open | F - favorite | M - menu | Esc - back to game"
+        if (root.menuOpen) {
+            if (pad) {
+                //% "D-pad Up/Down — choose | Cross — confirm | Circle — close menu"
+                return qsTrId("gamehq.overlay.hint.menu.gamepad")
+            }
+            //% "Up/Down — choose | Enter — confirm | Esc/Backspace — close menu"
+            return qsTrId("gamehq.overlay.hint.menu.keyboard")
+        }
+        if (root.videoFocused) {
+            if (pad) {
+                //% "D-pad Left/Right — scrub | Cross — play/pause | Circle — back to captures"
+                return qsTrId("gamehq.overlay.hint.video.gamepad")
+            }
+            //% "Left/Right — scrub clip | Enter — play/pause | Esc/Backspace — back to captures"
+            return qsTrId("gamehq.overlay.hint.video.keyboard")
+        }
+        if (pad) {
+            //% "L1/R1 — captures | D-pad Up/Down — categories/games | Cross — open | Triangle — favorite | Square — menu | Circle — back to game"
+            return qsTrId("gamehq.overlay.hint.browse.gamepad")
+        }
+        //% "Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game"
+        return qsTrId("gamehq.overlay.hint.browse.keyboard")
     }
     color: Theme.textMuted
     font.family: Theme.fontFamily
