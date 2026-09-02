@@ -20,6 +20,27 @@ Bug reports, documentation improvements, and focused pull requests are welcome.
    `fix(input): preserve secondary binding after reset`.
 4. Verify a clean build and launch before opening a pull request.
 
+### Localization closure for UI changes
+
+Any new or changed user-visible QML, C++, installer, or release-note text must use a
+stable `gamehq.*` ID and close its localization delta in the same feature change:
+
+1. Run `tools/i18n/sync.ps1` to update the extraction manifest and preserve removed
+   messages as obsolete catalog history.
+2. Run `tools/i18n/verify.ps1 -UpdateState` to reconcile structural and trust state.
+3. Run `tools/i18n/check-diff.ps1 -BaseRef <merge-base>` to create the exact per-locale
+   workset under `out/i18n/change-workset.json`.
+4. Translate only the queued IDs through an authorized offline developer workflow,
+   validate every response with `tools/i18n/protocol.ps1`, and update catalogs/state.
+5. Repeat synchronization and verification, then rerun the diff check. Exit code 0 is
+   required before the feature slice is localization-complete.
+
+Unchanged IDs are not queued. Removed IDs stay obsolete until a separate cleanup. A
+feature may be temporarily incomplete during development, but it cannot close while an
+enabled locale has a missing, stale, structurally invalid, or old-source-bound affected
+message. The check makes no network or model call and is not a substitute for later CI
+and release gates.
+
 Pull requests should explain the behavior change, why it is needed, and how it
 was validated. Avoid committing build output, runtime databases, logs, captures,
 toolchains, or editor-specific files.

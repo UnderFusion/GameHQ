@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gamehq.local/schema/translation-workset.schema.json",
+  "title": "GameHQ incremental translation workset",
+  "type": "object",
+  "required": ["$schema", "schema_version", "base", "source_manifest", "delta_id", "delta", "locales"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": 1 },
+    "base": { "type": "string", "minLength": 1 },
+    "source_manifest": { "type": "string", "minLength": 1 },
+    "delta_id": { "type": "string", "pattern": "^[0-9a-f]{16}$" },
+    "delta": {
+      "type": "object",
+      "required": ["added", "changed", "removed", "unchanged"],
+      "additionalProperties": false,
+      "properties": {
+        "added": { "$ref": "#/definitions/id_list" },
+        "changed": { "$ref": "#/definitions/id_list" },
+        "removed": { "$ref": "#/definitions/id_list" },
+        "unchanged": { "$ref": "#/definitions/id_list" }
+      }
+    },
+    "locales": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/locale" }
+    }
+  },
+  "definitions": {
+    "id_list": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^gamehq(\\.[a-z0-9][a-z0-9_-]*)+$" }
+    },
+    "locale": {
+      "type": "object",
+      "required": ["complete", "required", "queue", "response_validated"],
+      "additionalProperties": false,
+      "properties": {
+        "complete": { "$ref": "#/definitions/id_list" },
+        "required": { "$ref": "#/definitions/id_list" },
+        "queue": {
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "translation-queue.schema.json" }
+          ]
+        },
+        "response_validated": { "type": "boolean" }
+      }
+    }
+  }
+}

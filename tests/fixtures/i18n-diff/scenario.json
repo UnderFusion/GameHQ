@@ -1,0 +1,47 @@
+{
+  "base": [
+    {
+      "id": "gamehq.fixture.changed",
+      "source": "Open %1 in GameHQ",
+      "context": "Fixture action label."
+    },
+    {
+      "id": "gamehq.fixture.removed",
+      "source": "Removed action",
+      "context": "Fixture obsolete label."
+    },
+    {
+      "id": "gamehq.fixture.unchanged",
+      "source": "Keep this label",
+      "context": "Fixture stable label."
+    }
+  ],
+  "current": [
+    {
+      "id": "gamehq.fixture.added",
+      "source": "Add %1 to GameHQ",
+      "context": "Fixture new action label."
+    },
+    {
+      "id": "gamehq.fixture.changed",
+      "source": "Launch %1 in GameHQ",
+      "context": "Fixture action label."
+    },
+    {
+      "id": "gamehq.fixture.unchanged",
+      "source": "Keep this label",
+      "context": "Fixture stable label."
+    }
+  ],
+  "translations": {
+    "de-DE": {
+      "gamehq.fixture.added": ["%1 zu GameHQ hinzufügen"],
+      "gamehq.fixture.changed": ["%1 in GameHQ starten"],
+      "gamehq.fixture.unchanged": ["Diese Bezeichnung beibehalten"]
+    },
+    "pl-PL": {
+      "gamehq.fixture.changed": ["Otwórz %1 w GameHQ"],
+      "gamehq.fixture.unchanged": ["Zachowaj tę etykietę"]
+    }
+  }
+}

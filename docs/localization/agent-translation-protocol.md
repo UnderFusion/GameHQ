@@ -54,3 +54,17 @@ review; identical input produces identical bytes.
 Protocol validation does not generate translations, update TS catalogs, promote trust
 state, enforce per-change policy, or implement CI release gates. Those are separate,
 explicit workflows.
+
+## Agent feature-closure rule
+
+For any implementation item that adds or changes user-visible QML, C++, installer, or
+release-note text, the implementing agent must run synchronization, trust-state
+verification, and `tools/i18n/check-diff.ps1` against the change base. Work only on the
+exact per-locale IDs emitted by that check and validate structured responses through this
+protocol.
+
+The item may remain in progress while affected translations are pending, but it must not
+be marked complete while an enabled locale reports an affected ID as missing, stale,
+structurally invalid, or bound to an older English source hash. Unchanged IDs and obsolete
+history are outside the workset. Local checks make no model or network call; later CI and
+release gates remain independently authoritative.
