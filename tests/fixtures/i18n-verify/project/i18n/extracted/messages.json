@@ -1,0 +1,67 @@
+{
+  "$schema": "../schema/extracted-messages.schema.json",
+  "schema_version": 1,
+  "source_language": "en-US",
+  "messages": [
+    {
+      "id": "gamehq.fixture.changed",
+      "source": "New source",
+      "context": "Fixture",
+      "domain": "application",
+      "locations": [{ "file": "src/fixture.cpp", "line": 10 }],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bf04f6b1c20e2adceb3f39754c2bb86d7c4fdd5c529d0f7f38c0e21ccab9f42c"
+    },
+    {
+      "id": "gamehq.fixture.files",
+      "source": "%n files",
+      "context": "Fixture",
+      "domain": "application",
+      "locations": [{ "file": "src/fixture.cpp", "line": 20 }],
+      "plural": true,
+      "placeholders": ["%n"],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4a6a6624a1f390ac91a91c4023202bafffb40c2c853317e87ba12601d6d6ab8c"
+    },
+    {
+      "id": "gamehq.fixture.markup",
+      "source": "<b>Open</b> GameHQ",
+      "context": "Fixture",
+      "domain": "application",
+      "locations": [{ "file": "src/fixture.cpp", "line": 30 }],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": ["<b>", "</b>"],
+      "protected_tokens": ["GameHQ"],
+      "source_hash": "167176f27de140c024a859d751dfd62430c8b1d1cb5c8e9be800ce257d2c3b96"
+    },
+    {
+      "id": "gamehq.fixture.new",
+      "source": "New message",
+      "context": "Fixture",
+      "domain": "application",
+      "locations": [{ "file": "src/fixture.cpp", "line": 40 }],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "55187a0ed14e0790a97ab70ccf71879e21bc731c8269c6a67c468ccc079793b0"
+    },
+    {
+      "id": "gamehq.fixture.unchanged",
+      "source": "Open %1 in GameHQ",
+      "context": "Fixture",
+      "domain": "application",
+      "locations": [{ "file": "src/fixture.cpp", "line": 50 }],
+      "plural": false,
+      "placeholders": ["%1"],
+      "markup_signature": [],
+      "protected_tokens": ["GameHQ"],
+      "source_hash": "d2c859ac67ff2b458bacd268f1f88babd2579349cee97cf6ac6a9e0dd7d9e7f6"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "../schema/message-state.schema.json",
+  "schema_version": 2,
+  "source_manifest": "i18n/extracted/messages.json",
+  "locales": {
+    "pl-PL": {
+      "catalog": "i18n/app/gamehq_pl_PL.ts",
+      "catalog_present": true,
+      "enabled": true,
+      "messages": {
+        "gamehq.fixture.changed": {
+          "domain": "application",
+          "source_hash": "fc41312d0ca33490a909bc15f499c895a87c6be7108c4297a96714f94b99917e",
+          "translation_hash": "5430d82f159f509b7fbf31182ce4f312803dd8adf84e22b93a6b42882b9f5c90",
+          "status": "human_reviewed",
+          "provenance": { "kind": "human", "actor": "fixture-reviewer" },
+          "updated_at": "2026-09-01T12:00:00Z"
+        },
+        "gamehq.fixture.files": {
+          "domain": "application",
+          "source_hash": "4a6a6624a1f390ac91a91c4023202bafffb40c2c853317e87ba12601d6d6ab8c",
+          "translation_hash": "e6793f6ed76baa7deee7557a3f1ff23ef30bc75a86b5826b918ae33682a29a0a",
+          "status": "machine_verified",
+          "provenance": { "kind": "machine", "actor": "fixture-agent" },
+          "updated_at": "2026-09-01T12:00:00Z"
+        },
+        "gamehq.fixture.markup": {
+          "domain": "application",
+          "source_hash": "167176f27de140c024a859d751dfd62430c8b1d1cb5c8e9be800ce257d2c3b96",
+          "translation_hash": "840ad77f8062acbd92a51ef4fc554f47c9915204b426811acc6bcbebf9f32732",
+          "status": "human_reviewed",
+          "provenance": { "kind": "human", "actor": "fixture-reviewer" },
+          "updated_at": "2026-09-01T12:00:00Z"
+        },
+        "gamehq.fixture.removed": {
+          "domain": "application",
+          "source_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "translation_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "status": "human_reviewed",
+          "provenance": { "kind": "human", "actor": "fixture-reviewer" },
+          "updated_at": "2026-09-01T12:00:00Z"
+        },
+        "gamehq.fixture.unchanged": {
+          "domain": "application",
+          "source_hash": "d2c859ac67ff2b458bacd268f1f88babd2579349cee97cf6ac6a9e0dd7d9e7f6",
+          "translation_hash": "62fb2a67fd9709a09acc8378668a81ad2e6fe47ba13f2237d250c1ce7bf84481",
+          "status": "human_reviewed",
+          "provenance": { "kind": "human", "actor": "fixture-reviewer" },
+          "updated_at": "2026-09-01T12:00:00Z"
+        }
+      },
+      "completeness": {
+        "application": { "total": 5, "current": 5, "missing": [], "stale": [] },
+        "installer": { "total": 0, "current": 0, "missing": [], "stale": [] },
+        "release_notes": { "total": 0, "current": 0, "missing": [], "stale": [] }
+      }
+    }
+  }
+}

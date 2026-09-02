@@ -1,69 +1,82 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://gamehq.local/schema/message-state.schema.json",
-  "title": "GameHQ message-state manifest",
-  "description": "Schema for the per-message-ID extraction/state manifest (i18n/messages.json). Tracks the English source hash, context, placeholders, plural requirement and review state so a stale or incomplete translation is caught by validation rather than reaching the UI.",
+  "title": "GameHQ translation state",
   "type": "object",
-  "required": ["schema_version", "messages"],
+  "required": ["$schema", "schema_version", "source_manifest", "locales"],
   "additionalProperties": false,
   "properties": {
-    "schema_version": { "const": 1 },
-    "messages": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": 2 },
+    "source_manifest": { "type": "string", "minLength": 1 },
+    "locales": {
       "type": "object",
-      "additionalProperties": {
-        "$ref": "#/definitions/message"
-      }
+      "additionalProperties": { "$ref": "#/definitions/locale" }
     }
   },
   "definitions": {
-    "message": {
+    "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "id_list": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^gamehq(\\.[a-z0-9][a-z0-9_-]*)+$" }
+    },
+    "provenance": {
       "type": "object",
-      "required": ["source", "status"],
+      "required": ["kind", "actor"],
       "additionalProperties": false,
       "properties": {
-        "source": { "type": "string" },
-        "source_hash": {
-          "type": "string",
-          "pattern": "^[0-9a-f]{40,64}$"
-        },
-        "context": { "type": "string" },
-        "comment": { "type": "string" },
-        "placeholders": {
-          "type": "array",
-          "items": { "type": "string" }
-        },
-        "plural": {
-          "type": "object",
-          "required": ["required", "forms"],
-          "additionalProperties": false,
-          "properties": {
-            "required": { "type": "boolean" },
-            "forms": { "type": "integer", "minimum": 1 }
-          }
-        },
-        "markup": {
-          "type": "object",
-          "required": ["rich"],
-          "additionalProperties": false,
-          "properties": {
-            "rich": { "type": "boolean" }
-          }
+        "kind": { "enum": ["none", "source", "unknown", "machine", "human", "inherited"] },
+        "actor": { "type": ["string", "null"] }
+      }
+    },
+    "message": {
+      "type": "object",
+      "required": ["domain", "source_hash", "translation_hash", "status", "provenance", "updated_at"],
+      "additionalProperties": false,
+      "properties": {
+        "domain": { "enum": ["application", "installer", "release_notes"] },
+        "source_hash": { "$ref": "#/definitions/hash" },
+        "translation_hash": {
+          "anyOf": [{ "$ref": "#/definitions/hash" }, { "type": "null" }]
         },
         "status": {
-          "enum": ["new", "draft", "review", "approved", "suspended"]
+          "enum": ["missing", "machine_translated", "machine_verified", "human_reviewed", "stale", "intentionally_inherited"]
         },
-        "glossary": {
-          "type": "array",
-          "items": { "type": "string" }
-        },
-        "provenance": {
+        "provenance": { "$ref": "#/definitions/provenance" },
+        "updated_at": { "type": ["string", "null"], "format": "date-time" }
+      }
+    },
+    "domain_completeness": {
+      "type": "object",
+      "required": ["total", "current", "missing", "stale"],
+      "additionalProperties": false,
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "current": { "type": "integer", "minimum": 0 },
+        "missing": { "$ref": "#/definitions/id_list" },
+        "stale": { "$ref": "#/definitions/id_list" }
+      }
+    },
+    "locale": {
+      "type": "object",
+      "required": ["catalog", "catalog_present", "enabled", "messages", "completeness"],
+      "additionalProperties": false,
+      "properties": {
+        "catalog": { "type": "string", "minLength": 1 },
+        "catalog_present": { "type": "boolean" },
+        "enabled": { "type": "boolean" },
+        "messages": {
           "type": "object",
-          "required": ["author"],
+          "additionalProperties": { "$ref": "#/definitions/message" }
+        },
+        "completeness": {
+          "type": "object",
+          "required": ["application", "installer", "release_notes"],
           "additionalProperties": false,
           "properties": {
-            "author": { "type": "string" },
-            "origin_file": { "type": "string" },
-            "last_update": { "type": "string", "format": "date-time" }
+            "application": { "$ref": "#/definitions/domain_completeness" },
+            "installer": { "$ref": "#/definitions/domain_completeness" },
+            "release_notes": { "$ref": "#/definitions/domain_completeness" }
           }
         }
       }

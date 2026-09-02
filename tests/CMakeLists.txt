@@ -645,3 +645,8 @@ add_test(NAME tst_i18nsync
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_sync.py"
         --lupdate "$<TARGET_FILE:Qt6::lupdate>")
 set_tests_properties(tst_i18nsync PROPERTIES TIMEOUT 120)
+
+add_test(NAME tst_i18nverify
+    COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_SOURCE_DIR}/tools/i18n/test_verify.py")
+set_tests_properties(tst_i18nverify PROPERTIES TIMEOUT 120)

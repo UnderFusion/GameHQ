@@ -78,8 +78,12 @@ class SyncTest(unittest.TestCase):
         self.assertTrue(files["plural"])
         self.assertEqual(["%n"], files["placeholders"])
         self.assertEqual(["<b>", "</b>"], files["markup_signature"])
+        self.assertEqual("application", files["domain"])
+        self.assertEqual([], files["protected_tokens"])
         self.assertEqual(
-            hashlib.sha256(files["source"].encode("utf-8")).hexdigest(),
+            hashlib.sha256(
+                f"{files['context']}\0{files['source']}".encode("utf-8")
+            ).hexdigest(),
             files["source_hash"],
         )
 

@@ -1,0 +1,1370 @@
+{
+  "$schema": "../schema/message-state.schema.json",
+  "schema_version": 2,
+  "source_manifest": "i18n/extracted/messages.json",
+  "locales": {
+    "ar-XB": {
+      "catalog": "i18n/app/gamehq_ar_XB.ts",
+      "catalog_present": false,
+      "enabled": false,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "cs-CZ": {
+      "catalog": "i18n/app/gamehq_cs_CZ.ts",
+      "catalog_present": false,
+      "enabled": false,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "de-DE": {
+      "catalog": "i18n/app/gamehq_de_DE.ts",
+      "catalog_present": false,
+      "enabled": true,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "en-US": {
+      "catalog": "i18n/app/gamehq_en_US.ts",
+      "catalog_present": true,
+      "enabled": true,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": "f310b41e41b1188aed2fb5c072b907e028a6839eb3b08005e51a4a1f1a732420",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": "de6c20f788fd444bab6fdb260c8e875f70f007369222c012ad1be91ad1d42408",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": "06b65951550efb2569c9075798694bbf76d6bbb0f717988530433cbf0335bb64",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": "652b7fe607878c987b535486f9d4b1b90584ab7f4b5851c616f16ce478e4e8a8",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 4,
+          "missing": [],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "es-419": {
+      "catalog": "i18n/app/gamehq_es_419.ts",
+      "catalog_present": false,
+      "enabled": false,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "es-ES": {
+      "catalog": "i18n/app/gamehq_es_ES.ts",
+      "catalog_present": false,
+      "enabled": true,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "fr-FR": {
+      "catalog": "i18n/app/gamehq_fr_FR.ts",
+      "catalog_present": false,
+      "enabled": true,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "it-IT": {
+      "catalog": "i18n/app/gamehq_it_IT.ts",
+      "catalog_present": false,
+      "enabled": false,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "ja-JP": {
+      "catalog": "i18n/app/gamehq_ja_JP.ts",
+      "catalog_present": false,
+      "enabled": true,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "ko-KR": {
+      "catalog": "i18n/app/gamehq_ko_KR.ts",
+      "catalog_present": false,
+      "enabled": true,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "pl-PL": {
+      "catalog": "i18n/app/gamehq_pl_PL.ts",
+      "catalog_present": false,
+      "enabled": true,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "pt-BR": {
+      "catalog": "i18n/app/gamehq_pt_BR.ts",
+      "catalog_present": false,
+      "enabled": true,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "ru-RU": {
+      "catalog": "i18n/app/gamehq_ru_RU.ts",
+      "catalog_present": false,
+      "enabled": true,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "th-TH": {
+      "catalog": "i18n/app/gamehq_th_TH.ts",
+      "catalog_present": false,
+      "enabled": false,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "tr-TR": {
+      "catalog": "i18n/app/gamehq_tr_TR.ts",
+      "catalog_present": false,
+      "enabled": true,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "uk-UA": {
+      "catalog": "i18n/app/gamehq_uk_UA.ts",
+      "catalog_present": false,
+      "enabled": false,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "zh-Hans": {
+      "catalog": "i18n/app/gamehq_zh_Hans.ts",
+      "catalog_present": false,
+      "enabled": true,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    },
+    "zh-Hant": {
+      "catalog": "i18n/app/gamehq_zh_Hant.ts",
+      "catalog_present": false,
+      "enabled": true,
+      "messages": {
+        "gamehq.about.full_release_notes": {
+          "domain": "application",
+          "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.action.screenshot.label": {
+          "domain": "application",
+          "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.release_notes.title": {
+          "domain": "application",
+          "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.tray.open_gallery": {
+          "domain": "application",
+          "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        }
+      },
+      "completeness": {
+        "application": {
+          "total": 4,
+          "current": 0,
+          "missing": [
+            "gamehq.about.full_release_notes",
+            "gamehq.action.screenshot.label",
+            "gamehq.release_notes.title",
+            "gamehq.tray.open_gallery"
+          ],
+          "stale": []
+        },
+        "installer": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        },
+        "release_notes": {
+          "total": 0,
+          "current": 0,
+          "missing": [],
+          "stale": []
+        }
+      }
+    }
+  }
+}

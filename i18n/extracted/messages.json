@@ -7,6 +7,7 @@
       "id": "gamehq.about.full_release_notes",
       "source": "See full release notes",
       "context": "ID",
+      "domain": "application",
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
@@ -16,12 +17,14 @@
       "plural": false,
       "placeholders": [],
       "markup_signature": [],
-      "source_hash": "084ba9702181f88aea42f83b1e0dcb293cdb1fd69de2b6ca31b4af31a623bafd"
+      "protected_tokens": [],
+      "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7"
     },
     {
       "id": "gamehq.action.screenshot.label",
       "source": "Screenshot",
       "context": "ID",
+      "domain": "application",
       "locations": [
         {
           "file": "src/input/ActionCatalog.cpp",
@@ -31,12 +34,14 @@
       "plural": false,
       "placeholders": [],
       "markup_signature": [],
-      "source_hash": "029320ad166c1807cd70230b908d6552a5f4bc8054449a58856a31a2c765c5c4"
+      "protected_tokens": [],
+      "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b"
     },
     {
       "id": "gamehq.release_notes.title",
       "source": "Release notes",
       "context": "ID",
+      "domain": "application",
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
@@ -46,12 +51,14 @@
       "plural": false,
       "placeholders": [],
       "markup_signature": [],
-      "source_hash": "1254829bd9996472de64de2e8c130a27d2a3841c0209bfeefcad382cd3609ace"
+      "protected_tokens": [],
+      "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f"
     },
     {
       "id": "gamehq.tray.open_gallery",
       "source": "Open Gallery",
       "context": "ID",
+      "domain": "application",
       "locations": [
         {
           "file": "src/tray/TrayIcon.cpp",
@@ -61,7 +68,8 @@
       "plural": false,
       "placeholders": [],
       "markup_signature": [],
-      "source_hash": "f1d0fccd75d36350f59be812a42743165887b4ed591c70271bcde0ea581c6308"
+      "protected_tokens": [],
+      "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8"
     }
   ]
 }

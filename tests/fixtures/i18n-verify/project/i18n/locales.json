@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source_language": "en-US",
+  "locales": [
+    {
+      "tag": "en-US",
+      "state": "enabled",
+      "fallback": null,
+      "qt_catalog": "gamehq_en_US",
+      "completeness_policy": "source_and_complete"
+    },
+    {
+      "tag": "pl-PL",
+      "state": "enabled",
+      "fallback": "en-US",
+      "qt_catalog": "gamehq_pl_PL",
+      "completeness_policy": "complete_at_release"
+    }
+  ]
+}

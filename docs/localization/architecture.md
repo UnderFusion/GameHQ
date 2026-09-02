@@ -118,18 +118,19 @@ token.
 
 ## 5. Translation states and message-state manifest
 
-`i18n/messages.json` (validated by `message-state.schema.json`) keys per message ID the
-English source, a `source_hash` (SHA of the source text + context), `context`, translator
-`comment`, `placeholders`, `plural` requirement, `markup` flag, translation `status`,
-applicable `glossary` terms, and `provenance` (author, origin file, last-update).
+`i18n/state/translations.json` (validated by `message-state.schema.json`) keys each locale
+and active message ID to source and translation hashes, domain, status, provenance, and
+last translation time. TS catalogs remain the translation payload; the sidecar records
+whether that payload is still trusted for the current English source and context.
 
 Statuses:
 
-- `new` — extracted, no translation yet.
-- `draft` — translation present but unreviewed.
-- `review` — needs linguist review.
-- `approved` — reviewed and accepted.
-- `suspended` — intentionally withheld; inherits fallback.
+- `missing` — no translation payload exists.
+- `machine_translated` — machine output exists but has not been promoted by the verification workflow.
+- `machine_verified` — machine output passed deterministic structural verification.
+- `human_reviewed` — a human reviewed and accepted the current payload.
+- `stale` — the English source, context, or translation payload differs from recorded hashes.
+- `intentionally_inherited` — a non-release locale explicitly uses its registered fallback.
 
 The `source_hash` proves whether the English source changed since a translation was made; a
 finished `.ts`/`.qm` entry alone is never trusted to prove the source is unchanged.

@@ -25,6 +25,20 @@ ID_CALL = re.compile(
 SOURCE_COMMENT = re.compile(r'^\s*//%\s*("(?:\\.|[^"\\])*")\s*$')
 PLACEHOLDER = re.compile(r"%(?:L?\d+|n)")
 MARKUP = re.compile(r"<\s*(/?)\s*([A-Za-z][\w:-]*)(?:\s[^>]*)?(/?)\s*>")
+PROTECTED_LITERALS = (
+    "GameHQUpdater.exe",
+    "GameHQ.exe",
+    "GNU GPL v3",
+    "GameHQ",
+    "underfusion",
+)
+PROTECTED_PATTERNS = (
+    re.compile(r"https?://[^\s<>\"']+"),
+    re.compile(r"\b[A-Za-z0-9_.-]+\.exe\b", re.IGNORECASE),
+    re.compile(r"(?<![\w-])--[a-z0-9][a-z0-9-]*\b"),
+    re.compile(r"\b(?:HKCU|HKLM|HKEY_CURRENT_USER|HKEY_LOCAL_MACHINE)\\[^\s,;]+", re.IGNORECASE),
+    re.compile(r"\b(?:[a-z][a-z0-9_-]*\.){2,}[a-z0-9_-]+\b"),
+)
 
 
 class SyncError(RuntimeError):
@@ -142,6 +156,28 @@ def markup_signature(source: str) -> list[str]:
     return signature
 
 
+def protected_tokens(source: str) -> list[str]:
+    tokens: list[str] = []
+    for literal in PROTECTED_LITERALS:
+        bounded = re.compile(rf"(?<![\w]){re.escape(literal)}(?![\w])")
+        tokens.extend(literal for _ in bounded.finditer(source))
+    for pattern in PROTECTED_PATTERNS:
+        tokens.extend(match.group(0).rstrip(".,;:!?)") for match in pattern.finditer(source))
+    return sorted(tokens)
+
+
+def message_domain(message_id: str) -> str:
+    if message_id.startswith("gamehq.installer."):
+        return "installer"
+    if message_id.startswith("gamehq.release_notes.content."):
+        return "release_notes"
+    return "application"
+
+
+def message_source_hash(source: str, context: str) -> str:
+    return hashlib.sha256(f"{context}\0{source}".encode("utf-8")).hexdigest()
+
+
 def build_manifest(
     scanned: dict[str, dict[str, object]], extracted: dict[str, dict[str, object]]
 ) -> dict[str, object]:
@@ -163,6 +199,7 @@ def build_manifest(
                 f"ID '{message_id}' source differs between //% comment and lupdate output"
             )
         contexts = sorted(str(value) for value in qt_message["contexts"] if value)
+        context = contexts[0] if contexts else "ID"
         locations = sorted(
             scanned[message_id]["locations"],
             key=lambda value: (str(value["file"]), int(value["line"])),
@@ -170,12 +207,14 @@ def build_manifest(
         messages.append({
             "id": message_id,
             "source": source,
-            "context": contexts[0] if contexts else "ID",
+            "context": context,
+            "domain": message_domain(message_id),
             "locations": locations,
             "plural": bool(qt_message["plural"]),
             "placeholders": sorted(set(PLACEHOLDER.findall(source))),
             "markup_signature": markup_signature(source),
-            "source_hash": hashlib.sha256(source.encode("utf-8")).hexdigest(),
+            "protected_tokens": protected_tokens(source),
+            "source_hash": message_source_hash(source, context),
         })
     manifest: dict[str, object] = {
         "$schema": "../schema/extracted-messages.schema.json",
@@ -195,8 +234,8 @@ def validate_manifest(manifest: dict[str, object]) -> None:
         raise SyncError("generated extraction manifest messages must be an array")
     previous = ""
     required = {
-        "id", "source", "context", "locations", "plural", "placeholders",
-        "markup_signature", "source_hash",
+        "id", "source", "context", "domain", "locations", "plural",
+        "placeholders", "markup_signature", "protected_tokens", "source_hash",
     }
     for message in messages:
         if not isinstance(message, dict) or set(message) != required:
@@ -207,6 +246,8 @@ def validate_manifest(manifest: dict[str, object]) -> None:
         if message_id <= previous:
             raise SyncError("generated extraction messages are not uniquely sorted")
         previous = message_id
+        if message["domain"] not in {"application", "installer", "release_notes"}:
+            raise SyncError(f"generated domain is invalid for '{message_id}'")
         if not re.fullmatch(r"[0-9a-f]{64}", str(message["source_hash"])):
             raise SyncError(f"generated source hash is invalid for '{message_id}'")
 
