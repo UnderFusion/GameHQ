@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../i18n/schema/translation-queue.schema.json",
+  "protocol_version": 1,
+  "batch_id": "fixture-pl-001",
+  "source_locale": "en-US",
+  "target_locale": "pl-PL",
+  "locale": {
+    "direction": "ltr",
+    "fallback": "en-US"
+  },
+  "glossary_version": 1,
+  "style_version": 1,
+  "units": [
+    {
+      "id": "gamehq.fixture.open",
+      "source": "Open %1 in GameHQ",
+      "source_hash": "42ad9a0edaf962d12890d10def5b04d3ee7f30e25a4fbefcb937c088061d2728",
+      "context": "Action label in the library context.",
+      "location_hint": "Library game context menu",
+      "domain": "application",
+      "plural": false,
+      "placeholders": ["%1"],
+      "markup_signature": [],
+      "accelerator_count": 0,
+      "protected_tokens": ["GameHQ"],
+      "prior_translation": null,
+      "prior_status": "missing"
+    }
+  ]
+}

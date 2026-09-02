@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gamehq.local/schema/translation-glossary.schema.json",
+  "title": "GameHQ translation glossary",
+  "type": "object",
+  "required": ["$schema", "schema_version", "source_language", "protected_literals", "protected_categories", "terminology"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": 1 },
+    "source_language": { "const": "en-US" },
+    "protected_literals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["term", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "term": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "protected_categories": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "terminology": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source", "meaning", "instruction"],
+        "additionalProperties": false,
+        "properties": {
+          "source": { "type": "string", "minLength": 1 },
+          "meaning": { "type": "string", "minLength": 1 },
+          "instruction": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

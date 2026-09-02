@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../i18n/schema/translation-response.schema.json",
+  "protocol_version": 1,
+  "batch_id": "fixture-pl-001",
+  "source_locale": "en-US",
+  "target_locale": "pl-PL",
+  "units": [
+    {
+      "id": "gamehq.fixture.open",
+      "source_hash": "42ad9a0edaf962d12890d10def5b04d3ee7f30e25a4fbefcb937c088061d2728",
+      "translation": ["Otwórz %1 w GameHQ"],
+      "translation_hash": "cacfd2aa665a0fb3fb02884bdcf5e08f9f54839b94893ffff592e630369ffa11",
+      "status": "machine_translated",
+      "provenance": {
+        "kind": "machine",
+        "actor": "fixture-provider/fixture-model"
+      }
+    }
+  ]
+}

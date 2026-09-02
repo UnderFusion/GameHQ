@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gamehq.local/schema/translation-queue.schema.json",
+  "title": "GameHQ bounded translation queue",
+  "type": "object",
+  "required": ["$schema", "protocol_version", "batch_id", "source_locale", "target_locale", "locale", "glossary_version", "style_version", "units"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "protocol_version": { "const": 1 },
+    "batch_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+    "source_locale": { "const": "en-US" },
+    "target_locale": { "type": "string", "minLength": 2 },
+    "locale": {
+      "type": "object",
+      "required": ["direction", "fallback"],
+      "additionalProperties": false,
+      "properties": {
+        "direction": { "enum": ["ltr", "rtl"] },
+        "fallback": { "type": ["string", "null"] }
+      }
+    },
+    "glossary_version": { "type": "integer", "minimum": 1 },
+    "style_version": { "type": "integer", "minimum": 1 },
+    "units": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/unit" }
+    }
+  },
+  "definitions": {
+    "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "translation": {
+      "anyOf": [
+        { "type": "null" },
+        { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      ]
+    },
+    "unit": {
+      "type": "object",
+      "required": ["id", "source", "source_hash", "context", "location_hint", "domain", "plural", "placeholders", "markup_signature", "accelerator_count", "protected_tokens", "prior_translation", "prior_status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^gamehq(\\.[a-z0-9][a-z0-9_-]*)+$" },
+        "source": { "type": "string", "minLength": 1 },
+        "source_hash": { "$ref": "#/definitions/hash" },
+        "context": { "type": "string", "minLength": 1 },
+        "location_hint": { "type": "string", "minLength": 1 },
+        "domain": { "enum": ["application", "installer", "release_notes"] },
+        "plural": { "type": "boolean" },
+        "placeholders": { "type": "array", "items": { "type": "string", "pattern": "^%(L?[0-9]+|n)$" } },
+        "markup_signature": { "type": "array", "items": { "type": "string" } },
+        "accelerator_count": { "type": "integer", "minimum": 0 },
+        "protected_tokens": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "prior_translation": { "$ref": "#/definitions/translation" },
+        "prior_status": { "enum": ["missing", "machine_translated", "machine_verified", "human_reviewed", "stale", "intentionally_inherited"] }
+      }
+    }
+  }
+}

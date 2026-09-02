@@ -1,0 +1,13 @@
+{
+  "$schema": "../schema/locale-style.schema.json",
+  "schema_version": 1,
+  "locale": "fr-FR",
+  "source_language": "en-US",
+  "tone": "Use concise, neutral French with consistent polite or impersonal phrasing.",
+  "capitalization": "Use sentence case and French capitalization rules, including headings.",
+  "button_labels": "Use short conventional infinitive action labels without final periods.",
+  "technical_terms": "Prefer established French software terminology and preserve glossary tokens.",
+  "punctuation": "Apply French punctuation spacing while preserving syntax tokens and accelerators.",
+  "units": "Use metric conventions, comma decimals where applicable, and nonbreaking unit spacing.",
+  "natural_language": "Prefer idiomatic metropolitan French over literal English structure."
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "../schema/locale-style.schema.json",
+  "schema_version": 1,
+  "locale": "ru-RU",
+  "source_language": "en-US",
+  "tone": "Use neutral, concise Russian with polite impersonal software phrasing.",
+  "capitalization": "Use sentence case and Russian capitalization rules, not English title case.",
+  "button_labels": "Use short conventional action labels, normally infinitives, without final periods.",
+  "technical_terms": "Use established Russian software terms and preserve glossary tokens exactly.",
+  "punctuation": "Use Russian quotation and punctuation rules while preserving accelerators and syntax.",
+  "units": "Use metric conventions, comma decimals where locale formatting applies, and nonbreaking unit spacing.",
+  "natural_language": "Choose idiomatic Russian syntax and avoid calques from English."
+}

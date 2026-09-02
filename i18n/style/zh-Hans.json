@@ -1,0 +1,13 @@
+{
+  "$schema": "../schema/locale-style.schema.json",
+  "schema_version": 1,
+  "locale": "zh-Hans",
+  "source_language": "en-US",
+  "tone": "Use concise, neutral Simplified Chinese suitable for a desktop utility.",
+  "capitalization": "Do not imitate English capitalization; retain capitals only in protected Latin terms.",
+  "button_labels": "Use familiar short action verbs and omit unnecessary subjects or punctuation.",
+  "technical_terms": "Prefer established Mainland Chinese software terminology and preserve glossary tokens.",
+  "punctuation": "Use full-width Chinese punctuation in sentences while preserving syntax tokens and accelerators.",
+  "units": "Keep values and unit meaning unchanged, with conventional Chinese spacing.",
+  "natural_language": "Reorder clauses naturally for Chinese and avoid word-for-word English structure."
+}

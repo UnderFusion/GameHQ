@@ -1,0 +1,13 @@
+{
+  "$schema": "../schema/locale-style.schema.json",
+  "schema_version": 1,
+  "locale": "tr-TR",
+  "source_language": "en-US",
+  "tone": "Use concise, neutral Turkish with consistent direct software phrasing.",
+  "capitalization": "Use sentence case and Turkish dotted and dotless I rules correctly.",
+  "button_labels": "Use short conventional action labels and omit final periods.",
+  "technical_terms": "Use established Turkish software terms and preserve glossary tokens.",
+  "punctuation": "Apply Turkish punctuation conventions without changing accelerators or syntax.",
+  "units": "Use metric conventions, comma decimals where applicable, and conventional spacing.",
+  "natural_language": "Use idiomatic Turkish suffixing and word order rather than English calques."
+}

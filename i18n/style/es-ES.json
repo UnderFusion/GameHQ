@@ -1,0 +1,13 @@
+{
+  "$schema": "../schema/locale-style.schema.json",
+  "schema_version": 1,
+  "locale": "es-ES",
+  "source_language": "en-US",
+  "tone": "Use concise, neutral European Spanish and address the user consistently without slang.",
+  "capitalization": "Use sentence case and Spanish capitalization rules for UI labels.",
+  "button_labels": "Use short infinitive or imperative actions consistently and omit final periods.",
+  "technical_terms": "Prefer established Spanish software terminology and preserve glossary tokens.",
+  "punctuation": "Use Spanish punctuation conventions while keeping placeholders and accelerators intact.",
+  "units": "Use metric conventions and locale-appropriate decimal formatting when requested by context.",
+  "natural_language": "Prefer natural European Spanish over literal English word order."
+}

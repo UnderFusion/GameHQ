@@ -1,0 +1,13 @@
+{
+  "$schema": "../schema/locale-style.schema.json",
+  "schema_version": 1,
+  "locale": "pt-BR",
+  "source_language": "en-US",
+  "tone": "Use clear, approachable Brazilian Portuguese with consistent neutral address.",
+  "capitalization": "Use sentence case and Brazilian Portuguese capitalization conventions.",
+  "button_labels": "Use concise familiar action verbs and omit terminal punctuation.",
+  "technical_terms": "Use established Brazilian software terms and preserve glossary tokens verbatim.",
+  "punctuation": "Apply Brazilian punctuation conventions without changing accelerators or syntax tokens.",
+  "units": "Use metric conventions and Brazilian decimal formatting when context requests formatting.",
+  "natural_language": "Use idiomatic Brazilian Portuguese rather than European variants or literal calques."
+}

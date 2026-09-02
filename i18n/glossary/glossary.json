@@ -1,0 +1,25 @@
+{
+  "$schema": "../schema/translation-glossary.schema.json",
+  "schema_version": 1,
+  "source_language": "en-US",
+  "protected_literals": [
+    { "term": "GameHQ", "reason": "Product brand" },
+    { "term": "underfusion", "reason": "Publisher identity" },
+    { "term": "GNU GPL v3", "reason": "License name" },
+    { "term": "GameHQ.exe", "reason": "Executable filename" },
+    { "term": "GameHQUpdater.exe", "reason": "Executable filename" }
+  ],
+  "protected_categories": [
+    "Game titles and all user-provided names",
+    "Executable, file, and registry paths",
+    "URLs, ports, protocol names, and command-line switches",
+    "Registry keys, config keys, action IDs, control IDs, and device IDs",
+    "Version strings, chord syntax, and protocol keys"
+  ],
+  "terminology": [
+    { "source": "Gallery", "meaning": "The GameHQ screenshot gallery", "instruction": "Use the natural established UI noun for a media gallery." },
+    { "source": "Release notes", "meaning": "The version change summary", "instruction": "Use the standard software term in the target locale." },
+    { "source": "System language", "meaning": "Automatic selection from operating-system language preferences", "instruction": "Translate as an automatic OS-derived language choice, not a language named System." },
+    { "source": "Portable mode", "meaning": "A package that stores settings beside the application", "instruction": "Use the conventional local software term; do not imply a mobile device." }
+  ]
+}

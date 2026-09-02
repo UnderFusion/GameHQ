@@ -650,3 +650,8 @@ add_test(NAME tst_i18nverify
     COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_verify.py")
 set_tests_properties(tst_i18nverify PROPERTIES TIMEOUT 120)
+
+add_test(NAME tst_i18nprotocol
+    COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_SOURCE_DIR}/tools/i18n/test_protocol.py")
+set_tests_properties(tst_i18nprotocol PROPERTIES TIMEOUT 120)

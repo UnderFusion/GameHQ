@@ -1,0 +1,13 @@
+{
+  "$schema": "../schema/locale-style.schema.json",
+  "schema_version": 1,
+  "locale": "pl-PL",
+  "source_language": "en-US",
+  "tone": "Use clear, concise Polish with neutral impersonal software phrasing.",
+  "capitalization": "Use sentence case and Polish capitalization rules, not English title case.",
+  "button_labels": "Use short conventional infinitive action labels without final periods.",
+  "technical_terms": "Use established Polish software terms and preserve glossary tokens verbatim.",
+  "punctuation": "Use Polish quotation and punctuation conventions while retaining accelerators.",
+  "units": "Use metric conventions, comma decimals where applicable, and proper unit spacing.",
+  "natural_language": "Use idiomatic Polish syntax and avoid literal English calques."
+}
