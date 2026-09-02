@@ -11,6 +11,8 @@
 #include "input/InputDiagnostics.h"
 #include "input/InputEngine.h"
 #include "integration/IntegrationService.h"
+#include "localization/LanguageManager.h"
+#include "localization/LocaleRegistry.h"
 #include "games/GameDetector.h"
 #include "core/UpdateMaintenance.h"
 #include "notify/NotificationCenter.h"
@@ -119,6 +121,22 @@ bool App::init()
                        "could not be read or preserved";
         return false;
     }
+
+    // Localization must be stable before any user-visible model, tray action,
+    // notification, or QML component is constructed. LanguageManager is the
+    // only owner of installed translators for the process lifetime.
+    m_localeRegistry = std::make_unique<LocaleRegistry>();
+    QString localeError;
+    if (!m_localeRegistry->load(QStringLiteral(":/i18n/locales.json"), &localeError)) {
+        qCritical() << "Localization manifest is invalid:" << localeError;
+        return false;
+    }
+    m_languageManager = std::make_unique<LanguageManager>(m_localeRegistry.get());
+    if (!m_languageManager->initialize(QStringLiteral("system"), {}, &localeError)) {
+        qCritical() << "Localization could not initialize:" << localeError;
+        return false;
+    }
+
     m_locations = std::make_unique<CaptureLocations>(m_config.get());
     m_startup = std::make_unique<StartupManager>();
     const bool startupEnabled = m_config->value(ConfigKeys::StartupEnabled, false).toBool();
@@ -423,6 +441,8 @@ bool App::init()
     m_engine.rootContext()->setContextProperty(QStringLiteral("input"), m_input.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("updates"), m_updates.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("notifications"), m_notify.get());
+    m_engine.rootContext()->setContextProperty(QStringLiteral("languageManager"),
+                                               m_languageManager.get());
     m_engine.loadFromModule("GameHQ", "Main");
     if (m_engine.rootObjects().isEmpty()) {
         qCritical() << "Failed to load QML root — aborting startup";

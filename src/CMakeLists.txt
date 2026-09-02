@@ -68,6 +68,8 @@ qt_add_executable(GameHQ
     integration/ExternalGameContext.cpp integration/ExternalGameContext.h
     integration/IntegrationService.cpp integration/IntegrationService.h
     integration/IntegrationClient.cpp integration/IntegrationClient.h
+    localization/LocaleRegistry.cpp localization/LocaleRegistry.h
+    localization/LanguageManager.cpp localization/LanguageManager.h
     input/MouseHookDevice.cpp input/MouseHookDevice.h
     input/MouseMonitorPolicy.h
     input/PerfTrace.cpp input/PerfTrace.h
@@ -208,6 +210,12 @@ qt_add_translations(GameHQ
     RESOURCE_PREFIX "/i18n"
     LUPDATE_OPTIONS -no-obsolete
     LRELEASE_OPTIONS -idbased
+)
+
+qt_add_resources(GameHQ "localization_manifest"
+    PREFIX "/i18n"
+    BASE "${CMAKE_SOURCE_DIR}/i18n"
+    FILES "${CMAKE_SOURCE_DIR}/i18n/locales.json"
 )
 
 qt_add_resources(GameHQ "icons"

@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "source_language": "en-US",
+  "default_locale": "en-US",
+  "locales": [
+    {
+      "tag": "en-US",
+      "names": { "native": "English", "english": "English" },
+      "aliases": ["en"],
+      "tier": 1,
+      "state": "enabled",
+      "direction": "ltr",
+      "fallback": null,
+      "qt_catalog": "gamehq_manager_en_US"
+    },
+    {
+      "tag": "pl-PL",
+      "names": { "native": "Polski", "english": "Polish" },
+      "aliases": ["pl"],
+      "tier": 1,
+      "state": "enabled",
+      "direction": "ltr",
+      "fallback": "en-US",
+      "qt_catalog": "gamehq_manager_pl_PL"
+    },
+    {
+      "tag": "de-DE",
+      "names": { "native": "Deutsch", "english": "German" },
+      "aliases": ["de"],
+      "tier": 1,
+      "state": "enabled",
+      "direction": "ltr",
+      "fallback": "en-US",
+      "qt_catalog": "missing_de_DE"
+    },
+    {
+      "tag": "fr-FR",
+      "names": { "native": "Français", "english": "French" },
+      "aliases": ["fr"],
+      "tier": 1,
+      "state": "enabled",
+      "direction": "ltr",
+      "fallback": "en-US",
+      "qt_catalog": "corrupt"
+    },
+    {
+      "tag": "zh-Hans",
+      "names": { "native": "简体中文", "english": "Chinese (Simplified)" },
+      "aliases": ["zh", "zh-CN", "zh-SG"],
+      "tier": 1,
+      "state": "enabled",
+      "direction": "ltr",
+      "fallback": "en-US",
+      "qt_catalog": "missing_zh_Hans"
+    },
+    {
+      "tag": "zh-Hant",
+      "names": { "native": "繁體中文", "english": "Chinese (Traditional)" },
+      "aliases": ["zh-TW", "zh-HK"],
+      "tier": 1,
+      "state": "enabled",
+      "direction": "ltr",
+      "fallback": "en-US",
+      "qt_catalog": "missing_zh_Hant"
+    },
+    {
+      "tag": "es-419",
+      "names": { "native": "Español", "english": "Spanish (Latin America)" },
+      "aliases": ["es-MX"],
+      "tier": 2,
+      "state": "disabled",
+      "direction": "ltr",
+      "fallback": "en-US",
+      "qt_catalog": "missing_es_419"
+    },
+    {
+      "tag": "ar-XB",
+      "names": { "native": "RTL Pseudo", "english": "RTL Pseudo-locale" },
+      "aliases": [],
+      "tier": 0,
+      "state": "internal",
+      "direction": "rtl",
+      "fallback": "en-US",
+      "qt_catalog": "missing_ar_XB"
+    }
+  ],
+  "aliases": {
+    "en": "en-US",
+    "pl": "pl-PL",
+    "de": "de-DE",
+    "fr": "fr-FR",
+    "zh": "zh-Hans",
+    "zh-CN": "zh-Hans",
+    "zh-SG": "zh-Hans",
+    "zh-TW": "zh-Hant",
+    "zh-HK": "zh-Hant",
+    "es-MX": "es-419"
+  },
+  "tiers": {
+    "1": "Enabled test locales",
+    "2": "Disabled test locales",
+    "0": "Internal test locales"
+  }
+}

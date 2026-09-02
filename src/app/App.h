@@ -4,6 +4,8 @@
 #include <memory>
 
 class ConfigManager;
+class LocaleRegistry;
+class LanguageManager;
 class CaptureLocations;
 class StartupManager;
 class CaptureDatabase;
@@ -46,6 +48,8 @@ private:
     void toggleDesktopWindow();
 
     std::unique_ptr<ConfigManager> m_config;
+    std::unique_ptr<LocaleRegistry> m_localeRegistry;
+    std::unique_ptr<LanguageManager> m_languageManager;
     std::unique_ptr<CaptureLocations> m_locations;
     std::unique_ptr<StartupManager> m_startup;
     std::unique_ptr<CaptureDatabase> m_db;

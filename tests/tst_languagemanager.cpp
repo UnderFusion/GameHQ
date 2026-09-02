@@ -1,0 +1,168 @@
+#include <QtTest>
+
+#include "localization/LanguageManager.h"
+#include "localization/LocaleRegistry.h"
+
+#include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QSignalSpy>
+
+namespace {
+
+constexpr auto kLocalizedId = "gamehq.test.manager.localized.message";
+constexpr auto kFallbackId = "gamehq.test.manager.fallback.message";
+
+QByteArray fixtureManifest()
+{
+    QFile file(QStringLiteral(":/i18n/locales-test.json"));
+    return file.open(QIODevice::ReadOnly) ? file.readAll() : QByteArray();
+}
+
+QStringList availableTags(const LocaleRegistry &registry)
+{
+    QStringList tags;
+    for (const QVariant &value : registry.availableLanguages())
+        tags.append(value.toMap().value(QStringLiteral("tag")).toString());
+    return tags;
+}
+
+} // namespace
+
+class LanguageManagerTest : public QObject
+{
+    Q_OBJECT
+
+private slots:
+    void productionManifestIsValid();
+    void aliasesAndFallbacksResolveDeterministically();
+    void malformedAndInconsistentManifestsAreRejected();
+    void systemAndExplicitLanguagesLoadCatalogs();
+    void targetMissFallsBackToEnglish();
+    void missingAndCorruptTargetCatalogsFallBackToEnglish();
+    void missingSourceCatalogIsFatal();
+};
+
+void LanguageManagerTest::productionManifestIsValid()
+{
+    LocaleRegistry registry(false);
+    QString error;
+    QVERIFY2(registry.load(QStringLiteral(":/i18n/locales.json"), &error), qPrintable(error));
+    QCOMPARE(registry.sourceLanguage(), QStringLiteral("en-US"));
+    const QStringList tags = availableTags(registry);
+    QCOMPARE(tags.size(), 12);
+    QVERIFY(tags.contains(QStringLiteral("en-US")));
+    QVERIFY(tags.contains(QStringLiteral("pl-PL")));
+    QVERIFY(!tags.contains(QStringLiteral("th-TH")));
+    QVERIFY(!tags.contains(QStringLiteral("cs-CZ")));
+    QVERIFY(!tags.contains(QStringLiteral("ar-XB")));
+}
+
+void LanguageManagerTest::aliasesAndFallbacksResolveDeterministically()
+{
+    LocaleRegistry registry(false);
+    QString error;
+    QVERIFY2(registry.loadData(fixtureManifest(), &error), qPrintable(error));
+    QCOMPARE(registry.canonicalTag(QStringLiteral("pl_PL")), QStringLiteral("pl-PL"));
+    QCOMPARE(registry.canonicalTag(QStringLiteral("pl-CA")), QStringLiteral("pl-PL"));
+    QCOMPARE(registry.canonicalTag(QStringLiteral("zh_CN")), QStringLiteral("zh-Hans"));
+    QCOMPARE(registry.canonicalTag(QStringLiteral("zh-HK")), QStringLiteral("zh-Hant"));
+    QCOMPARE(registry.canonicalTag(QStringLiteral("zh-Hant-TW")), QStringLiteral("zh-Hant"));
+    QCOMPARE(registry.canonicalTag(QStringLiteral("zh-Hans-CN")), QStringLiteral("zh-Hans"));
+    QCOMPARE(registry.resolveAvailable(QStringLiteral("es-MX")), QStringLiteral("en-US"));
+    QCOMPARE(registry.resolveAvailable(QStringLiteral("xx-YY")), QStringLiteral("en-US"));
+}
+
+void LanguageManagerTest::malformedAndInconsistentManifestsAreRejected()
+{
+    LocaleRegistry registry(false);
+    QString error;
+    QVERIFY(!registry.loadData(QByteArrayLiteral("{not-json"), &error));
+    QVERIFY(!error.isEmpty());
+
+    QJsonDocument document = QJsonDocument::fromJson(fixtureManifest());
+    QJsonObject root = document.object();
+    QJsonObject aliases = root.value(QStringLiteral("aliases")).toObject();
+    aliases.insert(QStringLiteral("pl"), QStringLiteral("en-US"));
+    root.insert(QStringLiteral("aliases"), aliases);
+    QVERIFY(!registry.loadData(QJsonDocument(root).toJson(), &error));
+    QVERIFY(error.contains(QStringLiteral("inconsistent")));
+}
+
+void LanguageManagerTest::systemAndExplicitLanguagesLoadCatalogs()
+{
+    LocaleRegistry registry(false);
+    QString error;
+    QVERIFY2(registry.loadData(fixtureManifest(), &error), qPrintable(error));
+    LanguageManager manager(&registry);
+    QSignalSpy languageSpy(&manager, &LanguageManager::languageChanged);
+    QSignalSpy revisionSpy(&manager, &LanguageManager::translationRevisionChanged);
+
+    QVERIFY2(manager.initialize(QStringLiteral("system"),
+                                {QStringLiteral("es-MX"), QStringLiteral("pl-PL")}, &error),
+             qPrintable(error));
+    QCOMPARE(manager.requestedLanguage(), QStringLiteral("system"));
+    QCOMPARE(manager.effectiveLanguage(), QStringLiteral("pl-PL"));
+    QCOMPARE(manager.localeName(), QStringLiteral("pl-PL"));
+    QCOMPARE(manager.layoutDirection(), Qt::LeftToRight);
+    QCOMPARE(qtTrId(kLocalizedId), QStringLiteral("Menedżer po polsku"));
+    QVERIFY(!qtTrId(kLocalizedId).startsWith(QStringLiteral("gamehq.")));
+    QCOMPARE(languageSpy.size(), 1);
+    QCOMPARE(revisionSpy.size(), 1);
+
+    manager.setRequestedLanguage(QStringLiteral("en"));
+    QCOMPARE(manager.requestedLanguage(), QStringLiteral("en-US"));
+    QCOMPARE(manager.effectiveLanguage(), QStringLiteral("en-US"));
+    QCOMPARE(qtTrId(kLocalizedId), QStringLiteral("Manager English"));
+    QCOMPARE(manager.translationRevision(), 2);
+}
+
+void LanguageManagerTest::targetMissFallsBackToEnglish()
+{
+    LocaleRegistry registry(false);
+    QString error;
+    QVERIFY2(registry.loadData(fixtureManifest(), &error), qPrintable(error));
+    LanguageManager manager(&registry);
+    QVERIFY2(manager.initialize(QStringLiteral("pl-PL"), {}, &error), qPrintable(error));
+    QCOMPARE(qtTrId(kFallbackId), QStringLiteral("Manager fallback"));
+    QVERIFY(!qtTrId(kFallbackId).startsWith(QStringLiteral("gamehq.")));
+}
+
+void LanguageManagerTest::missingAndCorruptTargetCatalogsFallBackToEnglish()
+{
+    for (const QString &requested : {QStringLiteral("de-DE"), QStringLiteral("fr-FR")}) {
+        LocaleRegistry registry(false);
+        QString error;
+        QVERIFY2(registry.loadData(fixtureManifest(), &error), qPrintable(error));
+        LanguageManager manager(&registry);
+        QSignalSpy failureSpy(&manager, &LanguageManager::catalogLoadFailed);
+        QVERIFY2(manager.initialize(requested, {}, &error), qPrintable(error));
+        QCOMPARE(manager.requestedLanguage(), requested);
+        QCOMPARE(manager.effectiveLanguage(), QStringLiteral("en-US"));
+        QCOMPARE(qtTrId(kLocalizedId), QStringLiteral("Manager English"));
+        QCOMPARE(failureSpy.size(), 1);
+    }
+}
+
+void LanguageManagerTest::missingSourceCatalogIsFatal()
+{
+    QJsonDocument document = QJsonDocument::fromJson(fixtureManifest());
+    QJsonObject root = document.object();
+    QJsonArray locales = root.value(QStringLiteral("locales")).toArray();
+    QJsonObject source = locales.at(0).toObject();
+    source.insert(QStringLiteral("qt_catalog"), QStringLiteral("missing_source"));
+    locales.replace(0, source);
+    root.insert(QStringLiteral("locales"), locales);
+
+    LocaleRegistry registry(false);
+    QString error;
+    QVERIFY2(registry.loadData(QJsonDocument(root).toJson(), &error), qPrintable(error));
+    LanguageManager manager(&registry);
+    QVERIFY(!manager.initialize(QStringLiteral("en-US"), {}, &error));
+    QVERIFY(error.contains(QStringLiteral("Source catalog")));
+    QCOMPARE(manager.translationRevision(), 0);
+}
+
+QTEST_GUILESS_MAIN(LanguageManagerTest)
+#include "tst_languagemanager.moc"
