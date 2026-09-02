@@ -97,6 +97,16 @@ AppController::AppController(CaptureDatabase* db, CaptureScanner* scanner,
 
 AppController::~AppController() = default;
 
+QString AppController::releaseNotesTitle() const
+{
+    return qtTrId("gamehq.release_notes.title");
+}
+
+void AppController::retranslate()
+{
+    emit translationsChanged();
+}
+
 void AppController::requestDesktopFocus()
 {
     emit desktopFocusRequested();

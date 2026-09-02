@@ -25,6 +25,7 @@ class AppController : public QObject
     Q_OBJECT
     Q_PROPERTY(GalleryModel* gallery READ gallery CONSTANT)
     Q_PROPERTY(QString version READ version CONSTANT)
+    Q_PROPERTY(QString releaseNotesTitle READ releaseNotesTitle NOTIFY translationsChanged)
     Q_PROPERTY(QString releaseNotesVersion READ releaseNotesVersion CONSTANT)
     Q_PROPERTY(QVariantList releaseNotesSections READ releaseNotesSections CONSTANT)
     Q_PROPERTY(QVariantList releaseNotesReleases READ releaseNotesReleases CONSTANT)
@@ -61,6 +62,7 @@ public:
 
     GalleryModel* gallery() const { return m_gallery; }
     QString version() const;
+    QString releaseNotesTitle() const;
     QString releaseNotesVersion() const { return m_releaseNotes.version(); }
     QVariantList releaseNotesSections() const { return m_releaseNotes.sections(); }
     QVariantList releaseNotesReleases() const { return m_releaseNotes.releases(); }
@@ -150,6 +152,7 @@ public:
     void updateForegroundGame(const QString& gameName, const QString& executablePath);
     // FramePumpService::recordingStateChanged — drives the Replay Settings buffer-state row.
     void updateReplayBufferState(bool active, const QString& gameName);
+    void retranslate();
 
     // config.json access (flat dotted keys, see ConfigManager); setConfig saves.
     Q_INVOKABLE QVariant config(const QString& key, const QVariant& fallback) const;
@@ -174,6 +177,7 @@ signals:
     void replayBufferStateChanged();
     void lastScanChanged();
     void hdrStatusChanged();
+    void translationsChanged();
     // Emitted only after a previously-probed display changes HDR/topology state.
     void hdrDisplayConfigurationChanged();
     void desktopFocusRequested();

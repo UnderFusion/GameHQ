@@ -163,6 +163,9 @@ public:
     void setControllerProfile(const ControlId::DeviceProfile& profile);
     void setLastFiredAction(const QString& actionId);
 
+public slots:
+    void retranslate();
+
 signals:
     void editorChanged();
     void deviceGroupChanged();

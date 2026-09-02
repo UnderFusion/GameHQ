@@ -7,5 +7,21 @@
       <source>Manager English</source>
       <translation>Menedżer po polsku</translation>
     </message>
+    <message id="gamehq.about.full_release_notes">
+      <source>See full release notes</source>
+      <translation>Zobacz pełne informacje o wydaniu</translation>
+    </message>
+    <message id="gamehq.action.screenshot.label">
+      <source>Screenshot</source>
+      <translation>Zrzut ekranu</translation>
+    </message>
+    <message id="gamehq.release_notes.title">
+      <source>Release notes</source>
+      <translation>Informacje o wydaniu</translation>
+    </message>
+    <message id="gamehq.tray.open_gallery">
+      <source>Open Gallery</source>
+      <translation>Otwórz galerię</translation>
+    </message>
   </context>
 </TS>

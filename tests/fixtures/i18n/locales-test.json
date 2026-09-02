@@ -51,7 +51,7 @@
       "state": "enabled",
       "direction": "ltr",
       "fallback": "en-US",
-      "qt_catalog": "missing_zh_Hans"
+      "qt_catalog": "gamehq_manager_zh_Hans"
     },
     {
       "tag": "zh-Hant",

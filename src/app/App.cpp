@@ -8,6 +8,7 @@
 #include "config/ConfigManager.h"
 #include "diagnostics/Logger.h"
 #include "input/HotkeyManager.h"
+#include "input/ActionCatalog.h"
 #include "input/InputDiagnostics.h"
 #include "input/InputEngine.h"
 #include "integration/IntegrationService.h"
@@ -146,6 +147,9 @@ bool App::init()
         return false;
     }
     m_languagePreference->bind(m_languageManager.get());
+    ActionCatalog::retranslate();
+    connect(m_languageManager.get(), &LanguageManager::retranslationRequested,
+            this, [] { ActionCatalog::retranslate(); });
 
     m_locations = std::make_unique<CaptureLocations>(m_config.get());
     m_startup = std::make_unique<StartupManager>();
@@ -168,6 +172,8 @@ bool App::init()
     m_controller = std::make_unique<AppController>(m_db.get(), m_scanner.get(),
                                                    m_gallery.get(), m_overlayGallery.get(),
                                                    m_config.get(), m_locations.get(), m_startup.get());
+    connect(m_languageManager.get(), &LanguageManager::retranslationRequested,
+            m_controller.get(), &AppController::retranslate);
 
     // Ordering contract for everything below: the service lambdas capture `this`
     // and dereference members that are constructed further down (m_sounds at the
@@ -266,6 +272,8 @@ bool App::init()
             m_framePump.get(), &FramePumpService::restartBuffer);
 
     m_tray = std::make_unique<TrayIcon>();
+    connect(m_languageManager.get(), &LanguageManager::retranslationRequested,
+            m_tray.get(), &TrayIcon::retranslate);
     connect(m_tray.get(), &TrayIcon::openGalleryRequested, this, &App::showWindow);
     connect(m_tray.get(), &TrayIcon::rescanRequested,
             m_controller.get(), &AppController::rescan);
@@ -424,6 +432,8 @@ bool App::init()
 
     // Controller input (0.3): DualSense Share tap/hold + PS, keyboard hotkey stays.
     m_input = std::make_unique<InputEngine>(m_config.get(), m_db.get(), m_hotkeys.get());
+    connect(m_languageManager.get(), &LanguageManager::retranslationRequested,
+            m_input.get(), &InputEngine::retranslate);
     connect(m_input.get(), &InputEngine::overlayToggleRequested,
             m_overlay.get(), &OverlayManager::toggle);
     // Hold PS (2 s): summon/dismiss the desktop window with real OS focus.
@@ -444,6 +454,7 @@ bool App::init()
         m_input->setOverlayVisible(m_overlay->isVisible());
     });
 
+    m_languageManager->setQmlRetranslateCallback([this] { m_engine.retranslate(); });
     m_engine.rootContext()->setContextProperty(QStringLiteral("app"), m_controller.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlayGallery"), m_overlayGallery.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlay"), m_overlay.get());

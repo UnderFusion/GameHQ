@@ -1,11 +1,13 @@
 #include "input/ActionCatalog.h"
 
+#include <QCoreApplication>
+
 namespace {
 
-const QVector<ActionCatalog::Action>& buildCatalog()
+QVector<ActionCatalog::Action>& buildCatalog()
 {
     using Scope = ActionCatalog::Scope;
-    static const QVector<ActionCatalog::Action> actions = {
+    static QVector<ActionCatalog::Action> actions = {
         // Global — always active, independent of overlay/desktop/playback state.
         { QStringLiteral("global.screenshot"),     Scope::Global,   QStringLiteral("Screenshot"),
           QStringLiteral("Capture a screenshot of the current game."), true },
@@ -102,4 +104,15 @@ const ActionCatalog::Action* ActionCatalog::find(const QString& id)
             return &action;
     }
     return nullptr;
+}
+
+void ActionCatalog::retranslate()
+{
+    auto& actions = buildCatalog();
+    for (Action& action : actions) {
+        if (action.id == QLatin1String("global.screenshot")) {
+            action.label = qtTrId("gamehq.action.screenshot.label");
+            return;
+        }
+    }
 }

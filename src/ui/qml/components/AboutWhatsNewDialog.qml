@@ -487,7 +487,7 @@ FocusScope {
                 }
                 Text {
                     Layout.fillWidth: true
-                    text: root.hasUpdateRelease() ? "New version available" : "Release notes"
+                    text: root.hasUpdateRelease() ? "New version available" : app.releaseNotesTitle
                     horizontalAlignment: Text.AlignHCenter
                     color: Theme.text
                     font.family: Theme.fontFamily
@@ -581,7 +581,7 @@ FocusScope {
 
                         TextLink {
                             id: releaseNotesLink
-                            label: "See full release notes"
+                            label: qsTrId("gamehq.about.full_release_notes")
                             suffix: "›"
                             onClicked: root.openReleaseNotes()
                         }

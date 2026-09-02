@@ -346,6 +346,11 @@ InputEngine::~InputEngine()
         m_gameInput->shutdown();
 }
 
+void InputEngine::retranslate()
+{
+    m_bindingEditor->retranslate();
+}
+
 QObject* InputEngine::bindingEditor() const
 {
     return m_bindingEditor.get();

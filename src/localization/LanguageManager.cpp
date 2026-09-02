@@ -4,6 +4,7 @@
 #include <QCoreApplication>
 #include <QLocale>
 #include <QTranslator>
+#include <utility>
 
 LanguageManager::LanguageManager(LocaleRegistry *registry, QObject *parent)
     : QObject(parent)
@@ -48,6 +49,11 @@ void LanguageManager::setRequestedLanguage(const QString &requestedLanguage)
         emit catalogLoadFailed(requestedLanguage, error);
 }
 
+void LanguageManager::setQmlRetranslateCallback(std::function<void()> callback)
+{
+    m_qmlRetranslate = std::move(callback);
+}
+
 bool LanguageManager::apply(const QString &requestedLanguage,
                             const QStringList &systemUiLanguages, QString *error)
 {
@@ -66,35 +72,68 @@ bool LanguageManager::apply(const QString &requestedLanguage,
         return false;
     }
 
-    auto sourceTranslator = std::make_unique<QTranslator>();
-    const QString sourcePath = catalogPath(sourceLanguage);
-    if (sourcePath.isEmpty() || !sourceTranslator->load(sourcePath)) {
-        if (error)
-            *error = QStringLiteral("Source catalog is missing or corrupt: %1").arg(sourcePath);
-        return false;
+    const bool initializing = !m_sourceTranslator;
+    std::unique_ptr<QTranslator> sourceTranslator;
+    if (initializing) {
+        sourceTranslator = std::make_unique<QTranslator>();
+        const QString sourcePath = catalogPath(sourceLanguage);
+        if (sourcePath.isEmpty() || !sourceTranslator->load(sourcePath)) {
+            if (error) {
+                *error = QStringLiteral("Source catalog is missing or corrupt: %1")
+                             .arg(sourcePath);
+            }
+            return false;
+        }
     }
 
-    std::unique_ptr<QTranslator> activeTranslator;
+    std::unique_ptr<QTranslator> replacementTranslator;
     if (effective != sourceLanguage) {
-        activeTranslator = std::make_unique<QTranslator>();
+        replacementTranslator = std::make_unique<QTranslator>();
         const QString activePath = catalogPath(effective);
-        if (activePath.isEmpty() || !activeTranslator->load(activePath)) {
-            emit catalogLoadFailed(effective,
-                                   QStringLiteral("Catalog is missing or corrupt: %1")
-                                       .arg(activePath));
-            activeTranslator.reset();
+        if (activePath.isEmpty() || !replacementTranslator->load(activePath)) {
+            const QString reason = QStringLiteral("Catalog is missing or corrupt: %1")
+                                       .arg(activePath);
+            if (!initializing) {
+                if (error)
+                    *error = reason;
+                return false;
+            }
+            emit catalogLoadFailed(effective, reason);
+            replacementTranslator.reset();
             effective = sourceLanguage;
         }
     }
 
     const bool requestedChanged = normalizedRequested != m_requestedLanguage;
     const bool effectiveChanged = effective != m_effectiveLanguage;
-    uninstallTranslators();
-    m_sourceTranslator = std::move(sourceTranslator);
-    m_activeTranslator = std::move(activeTranslator);
-    QCoreApplication::installTranslator(m_sourceTranslator.get());
+
+    if (initializing) {
+        if (!QCoreApplication::installTranslator(sourceTranslator.get())) {
+            if (error)
+                *error = QStringLiteral("Source catalog could not be installed");
+            return false;
+        }
+        if (replacementTranslator
+            && !QCoreApplication::installTranslator(replacementTranslator.get())) {
+            QCoreApplication::removeTranslator(sourceTranslator.get());
+            if (error)
+                *error = QStringLiteral("Requested catalog could not be installed");
+            return false;
+        }
+        m_sourceTranslator = std::move(sourceTranslator);
+    } else if (replacementTranslator
+               && !QCoreApplication::installTranslator(replacementTranslator.get())) {
+        if (error)
+            *error = QStringLiteral("Requested catalog could not be installed");
+        return false;
+    }
+
+    // The replacement is installed above the previous target first. Removing
+    // the old translator therefore never exposes a source/target mixture, and
+    // a failed load or install leaves the complete previous stack untouched.
     if (m_activeTranslator)
-        QCoreApplication::installTranslator(m_activeTranslator.get());
+        QCoreApplication::removeTranslator(m_activeTranslator.get());
+    m_activeTranslator = std::move(replacementTranslator);
     QLocale::setDefault(QLocale(effective));
 
     m_requestedLanguage = normalizedRequested;
@@ -107,6 +146,9 @@ bool LanguageManager::apply(const QString &requestedLanguage,
     if (effectiveChanged)
         emit languageChanged();
     emit translationRevisionChanged();
+    emit retranslationRequested();
+    if (m_qmlRetranslate)
+        m_qmlRetranslate();
     return true;
 }
 

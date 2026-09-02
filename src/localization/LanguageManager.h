@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QStringList>
 #include <QVariantList>
+#include <functional>
 #include <memory>
 
 class LocaleRegistry;
@@ -32,6 +33,7 @@ public:
     QString localeName() const { return m_effectiveLanguage; }
     Qt::LayoutDirection layoutDirection() const;
     int translationRevision() const { return m_translationRevision; }
+    void setQmlRetranslateCallback(std::function<void()> callback);
 
 public slots:
     void setRequestedLanguage(const QString &requestedLanguage);
@@ -40,6 +42,7 @@ signals:
     void requestedLanguageChanged();
     void languageChanged();
     void translationRevisionChanged();
+    void retranslationRequested();
     void catalogLoadFailed(const QString &language, const QString &reason);
 
 private:
@@ -55,4 +58,5 @@ private:
     int m_translationRevision = 0;
     std::unique_ptr<QTranslator> m_sourceTranslator;
     std::unique_ptr<QTranslator> m_activeTranslator;
+    std::function<void()> m_qmlRetranslate;
 };

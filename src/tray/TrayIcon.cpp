@@ -2,6 +2,7 @@
 #include "Brand.h"
 
 #include <QAction>
+#include <QCoreApplication>
 #include <QIcon>
 #include <QMenu>
 #include <QPainter>
@@ -99,7 +100,7 @@ void drawExit(QPainter& p)
 
 }  // namespace
 
-TrayIcon::TrayIcon(QObject* parent)
+TrayIcon::TrayIcon(QObject* parent, bool show)
     : QObject(parent)
     , m_tray(new QSystemTrayIcon(this))
     , m_menu(new QMenu)
@@ -108,8 +109,8 @@ TrayIcon::TrayIcon(QObject* parent)
     // Windows light/dark setting the same way the menu text does.
     const QColor ink = m_menu->palette().color(QPalette::WindowText);
 
-    QAction* open = m_menu->addAction(makeGlyph(ink, drawGallery), tr("Open Gallery"));
-    connect(open, &QAction::triggered, this, &TrayIcon::openGalleryRequested);
+    m_openAction = m_menu->addAction(makeGlyph(ink, drawGallery), QString());
+    connect(m_openAction, &QAction::triggered, this, &TrayIcon::openGalleryRequested);
 
     QAction* rescan = m_menu->addAction(makeGlyph(ink, drawRescan), tr("Rescan Captures"));
     connect(rescan, &QAction::triggered, this, &TrayIcon::rescanRequested);
@@ -134,7 +135,9 @@ TrayIcon::TrayIcon(QObject* parent)
                     || reason == QSystemTrayIcon::DoubleClick)
                     emit openGalleryRequested();
             });
-    m_tray->show();
+    retranslate();
+    if (show)
+        m_tray->show();
 }
 
 TrayIcon::~TrayIcon()
@@ -146,4 +149,15 @@ void TrayIcon::showNotification(const QString& title, const QString& body)
 {
     if (QSystemTrayIcon::supportsMessages())
         m_tray->showMessage(title, body, QIcon(QStringLiteral(":/icons/gamehq.ico")), 3000);
+}
+
+QString TrayIcon::openGalleryText() const
+{
+    return m_openAction ? m_openAction->text() : QString();
+}
+
+void TrayIcon::retranslate()
+{
+    if (m_openAction)
+        m_openAction->setText(qtTrId("gamehq.tray.open_gallery"));
 }

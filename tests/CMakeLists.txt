@@ -609,3 +609,29 @@ qt_add_resources(tst_languagepreference "language_preference_fixtures"
     BASE "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n"
     FILES "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/locales-test.json"
 )
+
+gamehq_add_test(tst_liveretranslation
+    tst_liveretranslation.cpp
+    "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp"
+    "${CMAKE_SOURCE_DIR}/src/localization/LanguageManager.cpp"
+    "${CMAKE_SOURCE_DIR}/src/tray/TrayIcon.cpp")
+target_link_libraries(tst_liveretranslation PRIVATE Qt6::Quick Qt6::Widgets)
+target_compile_definitions(tst_liveretranslation PRIVATE
+    GAMEHQ_VERSION="${GAMEHQ_VERSION_FULL}")
+qt_add_translations(tst_liveretranslation
+    TS_FILES
+        "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_en_US.ts"
+        "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_pl_PL.ts"
+        "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_zh_Hans.ts"
+    RESOURCE_PREFIX "/i18n"
+    LUPDATE_OPTIONS -no-obsolete
+    LRELEASE_OPTIONS -idbased
+)
+qt_add_resources(tst_liveretranslation "live_retranslation_fixtures"
+    PREFIX "/i18n"
+    BASE "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n"
+    FILES "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/locales-test.json"
+)
+set_tests_properties(tst_liveretranslation PROPERTIES
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")

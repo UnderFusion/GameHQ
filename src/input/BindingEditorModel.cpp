@@ -214,6 +214,11 @@ void BindingEditorModel::rebuildRows()
     emit rowsChanged();
 }
 
+void BindingEditorModel::retranslate()
+{
+    rebuildRows();
+}
+
 void BindingEditorModel::beginCapture(const QString& actionId, int slot)
 {
     const auto* action = ActionCatalog::find(actionId);

@@ -92,6 +92,7 @@ public:
     Q_INVOKABLE void confirmModernControllerLayout(const QString& logicalId);
 
 public slots:
+    void retranslate();
     void setOverlayVisible(bool visible);
     // Desktop gallery window's OS focus state (Main.qml binds this to
     // window.active). Pad navigation only reaches the desktop window while
