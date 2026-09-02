@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "baseline": {
+    "branch": "dev",
+    "commit": "02a092158b19afc2435c6287227b19af1f61cc35",
+    "version": "0.7.6",
+    "checked": true
+  },
+  "translation_infrastructure": {
+    "status": "absent",
+    "qt_catalogs": [],
+    "qm_files": [],
+    "translator_installation": null,
+    "extraction_target": null,
+    "locale_override": null,
+    "language_change_handler": null
+  },
+  "translation_contract": {
+    "strategy": "id_based",
+    "qml_lookup": "qsTrId()",
+    "cpp_lookup": "qtTrId() / context-localized ID extraction",
+    "embedded_en_us": "complete en-US catalog embedded at build",
+    "raw_message_exposure": "no raw gamehq.* message identifiers exposed",
+    "source_format": "#% source-based .ts"
+  },
+  "classifications": [
+    "application_ui",
+    "installer",
+    "release_note",
+    "generated_artifact",
+    "log_only_diagnostic",
+    "developer_only_text",
+    "user_content"
+  ],
+  "surfaces": [
+    {
+      "id": "qml-shell",
+      "classification": "application_ui",
+      "checked": true,
+      "runtime_owner": "QQmlApplicationEngine desktop, overlay, settings, dialogs, and notifications",
+      "files": ["src/ui/qml/Main.qml", "src/ui/qml/OverlayWindow.qml", "src/ui/qml/ToastWindow.qml", "src/ui/qml/SettingsView.qml", "src/ui/qml/HelpView.qml", "src/ui/qml/components/**", "src/ui/qml/settings/**", "src/ui/qml/helpers/SidebarCategories.js"],
+      "extraction": "Extract visible property literals and Accessible.name values with Qt lupdate after wrapping them in qsTrId() (ID-based).",
+      "migration": "Use qsTrId() with a complete embedded en-US catalog and replace cached JavaScript label objects with a retranslate-aware lookup keyed by message ID.",
+      "acceptance_coverage": ["catalog source allowlist covers every QML UI file", "desktop, overlay, settings, dialog, toast, and accessibility smoke checks", "live language change refreshes visible and accessible labels"],
+      "flags": ["constant_qml", "cached_javascript", "accessibility", "placeholders"]
+    },
+    {
+      "id": "qml-theme-labels",
+      "classification": "application_ui",
+      "checked": true,
+      "runtime_owner": "Theme picker and QML skin registry",
+      "files": ["src/ui/qml/Theme.qml", "src/ui/qml/themes/*.qml"],
+      "extraction": "Extract visible skin labels and blurbs only.",
+      "migration": "Translate display strings while preserving skin IDs, font families, style names, colors, and texture values.",
+      "acceptance_coverage": ["every skin display label changes", "persisted skin identifiers remain unchanged"],
+      "flags": ["constant_qml", "stable_identifiers"]
+    },
+    {
+      "id": "native-shell",
+      "classification": "application_ui",
+      "checked": true,
+      "runtime_owner": "App, system tray, and notification center",
+      "files": ["src/app/App.cpp", "src/tray/TrayIcon.cpp", "src/notify/NotificationCenter.cpp", "src/ui/qml/ToastWindow.qml"],
+      "extraction": "Extract remaining visible QStringLiteral values (replacing legacy QObject tr() with ID-based qtTrId()).",
+      "migration": "Rebuild cached tray actions and recalculate translated notification templates and timestamps on language change.",
+      "acceptance_coverage": ["tray labels switch live", "toast and quarantine notifications switch live", "timestamp locale follows app locale"],
+      "flags": ["cached_native_ui", "placeholders", "locale_formatting"]
+    },
+    {
+      "id": "input-editor",
+      "classification": "application_ui",
+      "checked": true,
+      "runtime_owner": "Input engine and binding editor model",
+      "files": ["src/input/ActionCatalog.cpp", "src/input/BindingEditorModel.cpp", "src/input/BindingPattern.cpp", "src/input/BindingRelation.cpp", "src/input/ControlId.cpp", "src/input/ExtraButtonCatalog.cpp", "src/input/HotkeyManager.cpp", "src/input/InputEngine.cpp"],
+      "extraction": "Extract action labels/descriptions, gesture labels, prompts, validation errors, controller states, and control display names.",
+      "migration": "Resolve display text after translator installation or on demand; preserve action IDs, control codes, device IDs, and chord syntax.",
+      "acceptance_coverage": ["catalog coverage for all bindable actions", "controller-family label tests", "placeholder parity", "live editor refresh"],
+      "flags": ["static_initialization", "cached_catalog", "placeholders", "stable_identifiers", "user_content"]
+    },
+    {
+      "id": "capture-gallery",
+      "classification": "application_ui",
+      "checked": true,
+      "runtime_owner": "AppController, gallery model, capture library, and user-facing capture signals",
+      "files": ["src/ui/AppController.cpp", "src/ui/GalleryModel.cpp", "src/ui/CaptureLibraryService.cpp", "src/capture/ScreenshotService.cpp", "src/capture/FramePumpService.cpp", "src/capture/HdrCapabilities.cpp"],
+      "extraction": "Extract status and failure text that reaches QML or notifications; exclude internal telemetry and log-only diagnostics.",
+      "migration": "Translate at the UI boundary and use the selected locale for display dates, counts, and numeric HDR summaries.",
+      "acceptance_coverage": ["gallery date tests", "capture failure notification tests", "HDR and fallback status checks"],
+      "flags": ["locale_formatting", "placeholders", "user_content", "log_boundary"]
+    },
+    {
+      "id": "update-client",
+      "classification": "application_ui",
+      "checked": true,
+      "runtime_owner": "UpdateService and update dialog",
+      "files": ["src/updates/UpdateService.cpp", "src/updates/UpdateDownloader.cpp", "src/updates/UpdateInstaller.cpp", "src/updates/UpdatePreflight.cpp", "src/updates/GitHubReleaseSource.cpp", "src/ui/qml/components/AboutWhatsNewDialog.qml", "src/ui/qml/components/UpdateBanner.qml"],
+      "extraction": "Extract statuses and failures exposed through UpdateService properties and QML chrome.",
+      "migration": "Translate stable templates at the UI boundary, preserve technical details, and format dates with the active locale.",
+      "acceptance_coverage": ["state-name coverage", "download/trust/preflight failure matrix", "helper-handoff failure checks", "localized cooldown timestamp"],
+      "flags": ["placeholders", "locale_formatting", "remote_content", "technical_detail"]
+    },
+    {
+      "id": "startup-launcher",
+      "classification": "application_ui",
+      "checked": true,
+      "runtime_owner": "Qt process startup and native Win32 package launcher",
+      "files": ["src/main.cpp", "src/launcher/LauncherMain.cpp"],
+      "extraction": "Extract pre-engine Qt dialogs and define a separate Win32 resource or locale lookup for launcher MessageBoxW strings.",
+      "migration": "Load language configuration, resolve the effective locale, then install the translator/QLocale before any user-visible model, menu, notification, dialog, or QML is constructed; localize the non-Qt launcher independently.",
+      "acceptance_coverage": ["portable-import startup failure tests", "deep-path/missing-app/update-active launcher dialog tests"],
+      "flags": ["pre_translator_initialization", "separate_process", "win32_resource"]
+    },
+    {
+      "id": "installer",
+      "classification": "installer",
+      "checked": true,
+      "runtime_owner": "Inno Setup installer and uninstaller",
+      "files": ["packaging/GameHQ.iss"],
+      "extraction": "Use Inno language files and CustomMessages for wizard, task, run, maintenance, and uninstall strings.",
+      "migration": "Add [Languages], move custom English text into locale resources, and pass the chosen language to first launch.",
+      "acceptance_coverage": ["clean install", "upgrade", "running application", "active or stale update", "uninstall", "silent exit-code invariance"],
+      "flags": ["separate_process", "placeholders", "installer_tokens"]
+    },
+    {
+      "id": "release-notes-offline",
+      "classification": "release_note",
+      "checked": true,
+      "runtime_owner": "Bundled ReleaseNotes parser and About/What's New dialog",
+      "files": ["assets/release-notes.json", "src/app/ReleaseNotes.cpp", "src/ui/qml/components/AboutWhatsNewDialog.qml"],
+      "extraction": "Treat section titles and items as locale-authored structured content, not Qt source strings.",
+      "migration": "Ship schema-identical locale assets with explicit fallback; preserve versions, dates, URLs, and supported markup.",
+      "acceptance_coverage": ["schema validation", "locale parity", "offline fallback", "styled-text escaping"],
+      "flags": ["rich_text", "structured_content", "fallback", "protected_tokens"]
+    },
+    {
+      "id": "release-notes-online",
+      "classification": "release_note",
+      "checked": true,
+      "runtime_owner": "GitHub release source, UpdateService, and About/What's New dialog",
+      "files": ["src/updates/GitHubReleaseSource.cpp", "src/updates/ReleaseCatalog.cpp", "src/updates/UpdateService.cpp", "src/ui/qml/components/AboutWhatsNewDialog.qml"],
+      "extraction": "Select locale-authored remote note content; do not machine-translate arbitrary server text at runtime.",
+      "migration": "Define locale selection and explicit fallback while retaining current markdown sanitization and bounds.",
+      "acceptance_coverage": ["online/offline parity", "missing-locale fallback", "untrusted markup escaping", "version selection"],
+      "flags": ["rich_text", "remote_content", "fallback", "protected_tokens"]
+    },
+    {
+      "id": "playnite-ui",
+      "classification": "application_ui",
+      "checked": true,
+      "runtime_owner": "Separate C# and WPF Playnite plugin",
+      "files": ["integrations/playnite/src/GameHQ.Playnite/Settings/GameHQIntegrationSettingsView.xaml", "integrations/playnite/src/GameHQ.Playnite/Settings/GameHQIntegrationSettingsViewModel.cs", "integrations/playnite/src/GameHQ.Playnite/GameHQPlugin.cs", "integrations/playnite/src/GameHQ.Playnite/extension.yaml", "integrations/playnite/src/GameHQ.Playnite/Localization/README.md"],
+      "extraction": "Use Playnite localization dictionaries for XAML, view-model values, dialogs, validation, menu items, and metadata.",
+      "migration": "Keep plugin localization independent from Qt catalogs and exclude generated obj files.",
+      "acceptance_coverage": ["settings view", "connection states", "dialogs and validation", "main menu item", "metadata"],
+      "flags": ["separate_toolchain", "cached_view_model", "wpf_placeholders", "literal_ampersand"]
+    },
+    {
+      "id": "updater-helper",
+      "classification": "log_only_diagnostic",
+      "checked": true,
+      "runtime_owner": "Detached GameHQUpdater helper and recovery transaction",
+      "files": ["src/updater/**", "src/core/UpdaterHandshake.*", "src/core/UpdateMaintenance.*"],
+      "extraction": "Exclude console, updater.log, transaction phases, mode names, and exit diagnostics from translation catalogs.",
+      "migration": "Map displayable failures to translated app templates while keeping helper protocol text English and stable.",
+      "acceptance_coverage": ["helper output snapshot", "transaction and exit-code invariance", "localized main-app mapping"],
+      "flags": ["separate_process", "protocol_stability", "log_only"]
+    },
+    {
+      "id": "packaging-ci",
+      "classification": "developer_only_text",
+      "checked": true,
+      "runtime_owner": "Maintainer scripts, CI, and tests",
+      "files": ["packaging/*.ps1", ".github/workflows/**", "tests/**", "integrations/playnite/tests/**"],
+      "extraction": "Exclude script output, thrown validation errors, workflow labels, and fixture assertions.",
+      "migration": "Keep English for stable automation and support triage.",
+      "acceptance_coverage": ["catalog path denylist", "no runtime catalog references"],
+      "flags": ["developer_only", "ci_stability"]
+    },
+    {
+      "id": "packaged-docs",
+      "classification": "generated_artifact",
+      "checked": true,
+      "runtime_owner": "Release and distribution documentation",
+      "files": ["CHANGELOG.md", "packaging/RELEASE_TEMPLATE.md", "packaging/README-dist.txt", "integrations/playnite/CHANGELOG.md", "integrations/playnite/README.md"],
+      "extraction": "Exclude from runtime catalogs.",
+      "migration": "Keep English unless a separate documentation-localization scope is approved.",
+      "acceptance_coverage": ["packaging inventory confirms exclusion"],
+      "flags": ["generated_artifact", "out_of_runtime_scope"]
+    },
+    {
+      "id": "user-content",
+      "classification": "user_content",
+      "checked": true,
+      "runtime_owner": "Gallery, integration, input, notifications, and error composition",
+      "files": ["src/games/**", "src/storage/**", "src/integration/**", "src/ui/GalleryModel.cpp", "src/input/InputEngine.cpp", "integrations/playnite/src/GameHQ.Playnite/**"],
+      "extraction": "Exclude game names, device names, file and executable paths, capture names, process names, and server-provided technical details.",
+      "migration": "Interpolate content verbatim into numbered translated templates.",
+      "acceptance_coverage": ["user text remains byte-equivalent", "placeholder ordering works across locales", "paths remain actionable"],
+      "flags": ["never_translate", "placeholders", "privacy"]
+    },
+    {
+      "id": "stable-tokens",
+      "classification": "developer_only_text",
+      "checked": true,
+      "runtime_owner": "Brand, configuration, persistence, routing, and integration protocols",
+      "files": ["src/config/Brand.h.in", "src/ui/qml/Brand.qml", "src/config/ConfigKeys.h", "src/config/SettingsCategories.h", "src/input/ActionCatalog.cpp", "src/input/ControlId.h", "src/integration/IntegrationProtocol.h", "packaging/GameHQ.iss"],
+      "extraction": "Exclude brand values, URLs, executable names, registry paths, config keys, action/control IDs, protocol keys, and persisted category keys.",
+      "migration": "Translate only adjacent display labels and document protected tokens for validators.",
+      "acceptance_coverage": ["protected-token parity", "config and binding round trips", "protocol compatibility"],
+      "flags": ["never_translate", "brand", "urls", "stable_identifiers"]
+    },
+    {
+      "id": "locale-formatting",
+      "classification": "application_ui",
+      "checked": true,
+      "runtime_owner": "Gallery, notifications, release notes, update scheduling, and QML count/date labels",
+      "files": ["src/ui/GalleryModel.cpp", "src/app/App.cpp", "src/app/ReleaseNotes.cpp", "src/updates/UpdateService.cpp", "src/ui/qml/**"],
+      "extraction": "Inventory date/time/number templates separately from translatable prose.",
+      "migration": "Use the selected app QLocale and numerus entries for count-dependent text.",
+      "acceptance_coverage": ["fixed-clock locale matrix", "number formatting", "future numerus enforcement", "no C/system locale drift"],
+      "flags": ["locale_formatting", "plurals_missing", "placeholders"]
+    },
+    {
+      "id": "logs-and-telemetry",
+      "classification": "log_only_diagnostic",
+      "checked": true,
+      "runtime_owner": "Diagnostics and subsystem logging",
+      "files": ["src/diagnostics/**", "src/capture/**", "src/input/**", "src/gameinput/**", "src/updates/**", "src/updater/**", "src/core/**"],
+      "extraction": "Exclude qInfo, qWarning, qCritical, stdout, stderr, and persisted diagnostic text unless the same value is explicitly exposed to UI.",
+      "migration": "Keep logs English and translate only a separate UI template at the presentation boundary.",
+      "acceptance_coverage": ["catalog excludes logging calls", "support log text remains stable", "dual-use values are explicitly classified"],
+      "flags": ["log_only", "support_triage"]
+    }
+  ],
+  "global_findings": {
+    "static_or_cached": ["ActionCatalog data", "controller label catalogs", "TrayIcon QMenu/QAction labels", "SidebarCategories.js labels", "Playnite view-model state strings"],
+    "plurals": "No Qt numerus usage exists in the baseline.",
+    "placeholders": ["Qt %1/%2", "Inno [name/ver] and %n newline token", "WPF StringFormat {0}"],
+    "rich_text": ["AboutWhatsNewDialog.qml Text.StyledText with explicit escaping"],
+    "mnemonics": "No current Qt or Inno mnemonic contract; Playnite contains a literal ampersand in Convert & add.",
+    "protected_tokens": ["GameHQ", "underfusion", "GNU GPL v3", "GitHub URLs", "GameHQ.exe", "GameHQUpdater.exe", "registry paths", "config keys", "action IDs", "control IDs", "protocol keys"],
+    "never_translate_user_content": ["game names", "device names", "file paths", "executable paths", "capture names", "process names", "remote technical details"]
+  }
+}
