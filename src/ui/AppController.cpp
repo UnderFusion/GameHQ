@@ -9,6 +9,7 @@
 #include "core/ProcessIdentity.h"
 #include "diagnostics/Logger.h"
 #include "input/InputDiagnostics.h"
+#include "localization/NativeText.h"
 #include "storage/CaptureDatabase.h"
 #include "storage/CaptureScanner.h"
 #include "ui/CaptureLibraryService.h"
@@ -174,27 +175,47 @@ void AppController::openLogsFolder()
 QString AppController::beginPortableImport(const QUrl& folderUrl)
 {
     if (portableMode())
-        return QStringLiteral("Portable profiles can only be imported by an installed copy of GameHQ.");
+        return NativeText::get(
+            //: Validation error shown in Settings before starting portable-profile import.
+            //% "Portable profiles can only be imported by an installed copy of GameHQ."
+            QT_TRID_NOOP("gamehq.error.portable_import.installed_copy_required"),
+            "Portable profiles can only be imported by an installed copy of GameHQ.");
     if (!folderUrl.isLocalFile())
-        return QStringLiteral("Select a local GameHQ portable folder.");
+        return NativeText::get(
+            //: Validation error shown in Settings before starting portable-profile import.
+            //% "Select a local GameHQ portable folder."
+            QT_TRID_NOOP("gamehq.error.portable_import.local_folder_required"),
+            "Select a local GameHQ portable folder.");
     const QString source = QDir::cleanPath(folderUrl.toLocalFile());
     if (!QFileInfo(source + QStringLiteral("/portable.flag")).isFile()
         || !QFileInfo(source + QStringLiteral("/GameHQ.exe")).isFile()
         || !QFileInfo(source + QStringLiteral("/gamehq-data")).isDir())
-        return QStringLiteral("The selected folder is not a GameHQ portable package.");
+        return NativeText::get(
+            //: Validation error shown in Settings before starting portable-profile import.
+            //% "The selected folder is not a GameHQ portable package."
+            QT_TRID_NOOP("gamehq.error.portable_import.package_invalid"),
+            "The selected folder is not a GameHQ portable package.");
 
     // Identify this process by more than its id: the importer refuses to start
     // until it can prove *this* instance has exited, and a bare id can name a
     // different program once Windows recycles it.
     const QString identity = ProcessIdentity::currentToken();
     if (identity.isEmpty())
-        return QStringLiteral("GameHQ could not identify its own process for the import.");
+        return NativeText::get(
+            //: Portable-profile import launch failure shown in Settings.
+            //% "GameHQ could not identify its own process for the import."
+            QT_TRID_NOOP("gamehq.error.portable_import.process_identity_failed"),
+            "GameHQ could not identify its own process for the import.");
     const QStringList arguments {
         QStringLiteral("--import-portable"), source,
         QStringLiteral("--wait-for-pid"), identity
     };
     if (!QProcess::startDetached(QCoreApplication::applicationFilePath(), arguments))
-        return QStringLiteral("GameHQ could not start the portable import process.");
+        return NativeText::get(
+            //: Portable-profile import launch failure shown in Settings.
+            //% "GameHQ could not start the portable import process."
+            QT_TRID_NOOP("gamehq.error.portable_import.process_start_failed"),
+            "GameHQ could not start the portable import process.");
     QCoreApplication::quit();
     return {};
 }
@@ -288,9 +309,17 @@ QString AppController::setCaptureRoot(const QString& kindValue, const QUrl& fold
 {
     CaptureLocations::Kind kind;
     if (!parseCaptureKind(kindValue, kind))
-        return QStringLiteral("The capture type is invalid.");
+        return NativeText::get(
+            //: Internal capture-location validation failure shown in Settings.
+            //% "The capture type is invalid."
+            QT_TRID_NOOP("gamehq.error.capture_location.type_invalid"),
+            "The capture type is invalid.");
     if (!folderUrl.isLocalFile())
-        return QStringLiteral("Choose a local folder.");
+        return NativeText::get(
+            //: Capture-location validation error shown in Settings.
+            //% "Choose a local folder."
+            QT_TRID_NOOP("gamehq.error.capture_location.local_folder_required"),
+            "Choose a local folder.");
 
     QString error;
     if (!m_locations->setBaseRoot(kind, folderUrl.toLocalFile(), &error))
@@ -303,7 +332,10 @@ QString AppController::resetCaptureRoot(const QString& kindValue)
 {
     CaptureLocations::Kind kind;
     if (!parseCaptureKind(kindValue, kind))
-        return QStringLiteral("The capture type is invalid.");
+        return NativeText::get(
+            //% "The capture type is invalid."
+            QT_TRID_NOOP("gamehq.error.capture_location.type_invalid"),
+            "The capture type is invalid.");
 
     QString error;
     if (!m_locations->resetBaseRoot(kind, &error))

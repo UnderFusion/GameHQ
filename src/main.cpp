@@ -16,6 +16,8 @@
 #include "config/PortableProfileImporter.h"
 #include "input/HidCloakMonitor.h"
 #include "integration/IntegrationClient.h"
+#include "localization/NativeText.h"
+#include "localization/StartupLocalization.h"
 #include "core/ApplicationMutex.h"
 #include "core/ProcessIdentity.h"
 #include "core/UpdateMaintenance.h"
@@ -75,7 +77,11 @@ bool waitForParentProcess(const QStringList& arguments, QString& error)
     if (at < 0)
         return true;
     if (at + 1 >= arguments.size()) {
-        error = QStringLiteral("The portable import parent-process argument is incomplete.");
+        error = NativeText::get(
+            //: Portable-profile import error shown before the main application starts.
+            //% "The portable import parent-process argument is incomplete."
+            QT_TRID_NOOP("gamehq.startup.portable_import.parent_argument_incomplete"),
+            "The portable import parent-process argument is incomplete.");
         return false;
     }
     // The token carries the parent's creation time, so a recycled process id
@@ -85,16 +91,31 @@ bool waitForParentProcess(const QStringList& arguments, QString& error)
     case ProcessIdentity::WaitOutcome::Exited:
         return true;
     case ProcessIdentity::WaitOutcome::StillRunning:
-        error = QStringLiteral("The running GameHQ instance did not close in time.");
+        error = NativeText::get(
+            //: Portable-profile import error shown before the main application starts.
+            //% "The running GameHQ instance did not close in time."
+            QT_TRID_NOOP("gamehq.startup.portable_import.parent_still_running"),
+            "The running GameHQ instance did not close in time.");
         return false;
     case ProcessIdentity::WaitOutcome::Unverifiable:
-        error = QStringLiteral("GameHQ could not confirm that the previous instance has closed.");
+        error = NativeText::get(
+            //: Portable-profile import error shown before the main application starts.
+            //% "GameHQ could not confirm that the previous instance has closed."
+            QT_TRID_NOOP("gamehq.startup.portable_import.parent_unverifiable"),
+            "GameHQ could not confirm that the previous instance has closed.");
         return false;
     case ProcessIdentity::WaitOutcome::Malformed:
-        error = QStringLiteral("The portable import parent-process identifier is invalid.");
+        error = NativeText::get(
+            //: Portable-profile import error shown before the main application starts.
+            //% "The portable import parent-process identifier is invalid."
+            QT_TRID_NOOP("gamehq.startup.portable_import.parent_identifier_invalid"),
+            "The portable import parent-process identifier is invalid.");
         return false;
     }
-    error = QStringLiteral("The portable import parent-process identifier is invalid.");
+    error = NativeText::get(
+        //% "The portable import parent-process identifier is invalid."
+        QT_TRID_NOOP("gamehq.startup.portable_import.parent_identifier_invalid"),
+        "The portable import parent-process identifier is invalid.");
     return false;
 }
 }
@@ -139,6 +160,14 @@ int main(int argc, char* argv[])
     // crisp raster instead of relying on the SVG icon engine at odd sizes.
     QApplication::setWindowIcon(QIcon(QStringLiteral(":/icons/gamehq.ico")));
 
+    // Portable-profile import can fail before App loads the persisted language.
+    // Resolve the system locale here so every native startup dialog is translated;
+    // NativeText still supplies English if the embedded catalogs cannot be read.
+    StartupLocalization startupLocalization;
+    QString startupLocalizationError;
+    if (!startupLocalization.initialize(&startupLocalizationError))
+        qWarning().noquote() << "Startup localization unavailable:" << startupLocalizationError;
+
     bool postUpdateValidation = false;
     QString postUpdateVersion;
     QString postUpdateToken;
@@ -148,9 +177,17 @@ int main(int argc, char* argv[])
     if (importAt >= 0) {
         QString importError;
         if (importAt + 1 >= arguments.size())
-            importError = QStringLiteral("The portable import source folder is missing.");
+            importError = NativeText::get(
+                //: Portable-profile import error shown before the main application starts.
+                //% "The portable import source folder is missing."
+                QT_TRID_NOOP("gamehq.startup.portable_import.source_missing"),
+                "The portable import source folder is missing.");
         else if (Paths::isPortable())
-            importError = QStringLiteral("Run portable import from an installed copy of GameHQ.");
+            importError = NativeText::get(
+                //: Portable-profile import error shown before the main application starts.
+                //% "Run portable import from an installed copy of GameHQ."
+                QT_TRID_NOOP("gamehq.startup.portable_import.installed_copy_required"),
+                "Run portable import from an installed copy of GameHQ.");
         else if (waitForParentProcess(arguments, importError)) {
             // The import replaces the whole data folder, so nothing else may
             // hold it. The parent has provably exited by now, so take the same
@@ -158,7 +195,10 @@ int main(int argc, char* argv[])
             // used to run before any instance gate at all.
             QLockFile importLock(QDir::tempPath() + QStringLiteral("/gamehq.lock"));
             if (!importLock.tryLock(1000)) {
-                importError = QStringLiteral(
+                importError = NativeText::get(
+                    //: Portable-profile import error shown before the main application starts.
+                    //% "Another GameHQ instance is running, so the portable import cannot start."
+                    QT_TRID_NOOP("gamehq.startup.portable_import.instance_running"),
                     "Another GameHQ instance is running, so the portable import cannot start.");
             } else {
                 PortableProfileImporter::Result result;
@@ -174,7 +214,14 @@ int main(int argc, char* argv[])
                 qCritical().noquote() << importError;
                 return 7;
             }
-            QMessageBox::critical(nullptr, QStringLiteral("Portable import failed"), importError);
+            QMessageBox::critical(
+                nullptr,
+                NativeText::get(
+                    //: Title of the native portable-profile import failure dialog.
+                    //% "Portable import failed"
+                    QT_TRID_NOOP("gamehq.startup.portable_import.failed_title"),
+                    "Portable import failed"),
+                importError);
             return 7;
         }
         if (arguments.contains(QStringLiteral("--import-portable-only")))

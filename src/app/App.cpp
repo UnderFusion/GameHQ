@@ -15,6 +15,7 @@
 #include "localization/LanguageManager.h"
 #include "localization/LanguagePreference.h"
 #include "localization/LocaleRegistry.h"
+#include "localization/NativeText.h"
 #include "games/GameDetector.h"
 #include "core/UpdateMaintenance.h"
 #include "notify/NotificationCenter.h"
@@ -35,9 +36,18 @@
 #include <QDateTime>
 #include <QFile>
 #include <QGuiApplication>
+#include <QLocale>
 #include <QQmlContext>
 #include <QQuickWindow>
 #include <QTimer>
+
+namespace
+{
+QString notificationTimestamp()
+{
+    return QLocale().toString(QDateTime::currentDateTime(), QLocale::ShortFormat);
+}
+}
 
 App::App(QObject* parent)
     : QObject(parent)
@@ -201,9 +211,14 @@ bool App::init()
                 m_controller->commitCapture(path, QStringLiteral("screenshot"), game, exePath);
                 if (m_config->value(ConfigKeys::NotificationsEnabled, true).toBool()
                     && m_config->value(ConfigKeys::CaptureScreenshotNotify, true).toBool()) {
-                    const QString when = QDateTime::currentDateTime().toString(QStringLiteral("d MMM yyyy, HH:mm"));
-                    m_notify->post(tr("Screenshot saved"), game, path,
-                                   QStringLiteral("success"), when, false);
+                    m_notify->post(
+                        NativeText::get(
+                            //: Title of the notification shown after a screenshot is saved.
+                            //% "Screenshot saved"
+                            QT_TRID_NOOP("gamehq.notification.screenshot_saved.title"),
+                            "Screenshot saved"),
+                        game, path,
+                        QStringLiteral("success"), notificationTimestamp(), false);
                 }
             });
     connect(m_screenshots.get(), &ScreenshotService::skipped, this,
@@ -244,18 +259,33 @@ bool App::init()
                     m_sounds->play(QStringLiteral("replay_saved"));
                 if (m_config->value(ConfigKeys::NotificationsEnabled, true).toBool()
                     && m_config->value(ConfigKeys::ReplayClipNotify, true).toBool()) {
-                    const QString when = QDateTime::currentDateTime().toString(QStringLiteral("d MMM yyyy, HH:mm"));
-                    m_notify->post(tr("Replay saved"), game, thumb,
-                                   QStringLiteral("success"), when, true);
+                    m_notify->post(
+                        NativeText::get(
+                            //: Title of the notification shown after a replay clip is saved.
+                            //% "Replay saved"
+                            QT_TRID_NOOP("gamehq.notification.replay_saved.title"),
+                            "Replay saved"),
+                        game, thumb, QStringLiteral("success"), notificationTimestamp(), true);
                 }
             });
     connect(m_framePump.get(), &FramePumpService::clipFailed, this,
             [this](const QString& game, const QString& reason) {
                 m_sounds->play(QStringLiteral("error"));
                 if (m_config->value(ConfigKeys::NotificationsEnabled, true).toBool()) {
-                    const QString when = QDateTime::currentDateTime().toString(QStringLiteral("d MMM yyyy, HH:mm"));
-                    m_notify->post(tr("Replay failed"), reason.isEmpty() ? game : reason,
-                                   QString(), QStringLiteral("error"), when, false);
+                    const QString body = reason.isEmpty()
+                        ? game
+                        : NativeText::get(
+                              //: Replay failure detail; %1 is the unchanged technical reason.
+                              //% "Reason: %1"
+                              QT_TRID_NOOP("gamehq.notification.replay_failed.reason"),
+                              "Reason: %1").arg(reason);
+                    m_notify->post(
+                        NativeText::get(
+                            //: Title of the notification shown when saving a replay clip fails.
+                            //% "Replay failed"
+                            QT_TRID_NOOP("gamehq.notification.replay_failed.title"),
+                            "Replay failed"),
+                        body, QString(), QStringLiteral("error"), notificationTimestamp(), false);
                 }
             });
     connect(m_framePump.get(), &FramePumpService::foregroundGameDetected,
@@ -287,11 +317,19 @@ bool App::init()
     if (!m_configQuarantinedPath.isEmpty()) {
         // One non-blocking notice, not a startup loop: the settings are already
         // back at their defaults and the old file is still on disk.
-        m_notify->post(tr("Settings could not be read"),
-                       tr("GameHQ started with default settings. Your previous settings file was "
-                          "kept so nothing was lost."),
+        m_notify->post(
+                       NativeText::get(
+                           //: Title of the warning shown after an unreadable settings file is quarantined.
+                           //% "Settings could not be read"
+                           QT_TRID_NOOP("gamehq.notification.settings_quarantined.title"),
+                           "Settings could not be read"),
+                       NativeText::get(
+                           //: Body of the warning shown after an unreadable settings file is quarantined.
+                           //% "GameHQ started with default settings. Your previous settings file was kept so nothing was lost."
+                           QT_TRID_NOOP("gamehq.notification.settings_quarantined.body"),
+                           "GameHQ started with default settings. Your previous settings file was kept so nothing was lost."),
                        m_configQuarantinedPath, QStringLiteral("warning"),
-                       QDateTime::currentDateTime().toString(QStringLiteral("d MMM yyyy, HH:mm")),
+                       notificationTimestamp(),
                        false);
     }
     m_updates = std::make_unique<UpdateService>(QStringLiteral("underfusion"), QStringLiteral("GameHQ"),
@@ -376,7 +414,12 @@ bool App::init()
             error = QString::fromStdString(maintenanceError);
             m_screenshots->cancelUpdatePreparation();
             m_framePump->cancelUpdatePreparation();
-            m_updates->cancelPreparation(error);
+            m_updates->cancelPreparation(
+                NativeText::get(
+                    //: Update failure detail; %1 is the unchanged maintenance subsystem reason.
+                    //% "GameHQ could not begin update maintenance: %1"
+                    QT_TRID_NOOP("gamehq.error.update.maintenance_handoff_failed"),
+                    "GameHQ could not begin update maintenance: %1").arg(error));
             qWarning() << "Update maintenance handoff failed:" << error;
             return;
         }
@@ -397,7 +440,10 @@ bool App::init()
     connect(m_updatePreparationTimer, &QTimer::timeout, this, [this] {
         m_screenshots->cancelUpdatePreparation();
         m_framePump->cancelUpdatePreparation();
-        m_updates->cancelPreparation(QStringLiteral(
+        m_updates->cancelPreparation(NativeText::get(
+            //: Update installation error shown when active capture work cannot stop safely.
+            //% "The update was cancelled because capture work did not finish safely in time."
+            QT_TRID_NOOP("gamehq.error.update.capture_quiescence_timeout"),
             "The update was cancelled because capture work did not finish safely in time."));
         qWarning() << "Update preparation timed out; update cancelled without stopping capture work";
     });

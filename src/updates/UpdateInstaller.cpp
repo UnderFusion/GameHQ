@@ -1,6 +1,7 @@
 #include "updates/UpdateInstaller.h"
 #include "updates/UpdateDownloader.h"
 #include "core/UpdaterHandshake.h"
+#include "localization/NativeText.h"
 
 #include <QCoreApplication>
 #include <QDir>
@@ -24,7 +25,11 @@ bool prepareTransaction(const QString &packageRoot, const QString &dataDir,
 {
     error.clear();
     if (!verified.isValid()) {
-        error = QStringLiteral("The verified update metadata is incomplete.");
+        error = NativeText::get(
+            //: Update installer handoff validation failure.
+            //% "The verified update metadata is incomplete."
+            QT_TRID_NOOP("gamehq.error.update.install.metadata_incomplete"),
+            "The verified update metadata is incomplete.");
         return false;
     }
     const QString version = verified.version;
@@ -43,28 +48,48 @@ bool prepareTransaction(const QString &packageRoot, const QString &dataDir,
     const QString manifest = QDir::cleanPath(QFileInfo(verified.manifestPath).absoluteFilePath());
     const QString signature = QDir::cleanPath(QFileInfo(verified.signaturePath).absoluteFilePath());
     if (!insideDownloads(package) || !insideDownloads(manifest) || !insideDownloads(signature)) {
-        error = QStringLiteral("The verified update package is outside GameHQ's staging directory.");
+        error = NativeText::get(
+            //: Update installer handoff validation failure.
+            //% "The verified update package is outside GameHQ's staging directory."
+            QT_TRID_NOOP("gamehq.error.update.install.package_outside_staging"),
+            "The verified update package is outside GameHQ's staging directory.");
         return false;
     }
     if (!QRegularExpression(QStringLiteral(R"(^\d+\.\d+\.\d+$)")).match(version).hasMatch()
         || sha256.size() != QCryptographicHash::hashLength(QCryptographicHash::Sha256)) {
-        error = QStringLiteral("The verified update metadata is invalid.");
+        error = NativeText::get(
+            //: Update installer handoff validation failure.
+            //% "The verified update metadata is invalid."
+            QT_TRID_NOOP("gamehq.error.update.install.metadata_invalid"),
+            "The verified update metadata is invalid.");
         return false;
     }
     if (QFileInfo(package).fileName() != verified.artifactName
         || QFileInfo(package).size() != verified.artifactSize) {
-        error = QStringLiteral("The staged package no longer matches the signed manifest.");
+        error = NativeText::get(
+            //: Update installer handoff integrity failure.
+            //% "The staged package no longer matches the signed manifest."
+            QT_TRID_NOOP("gamehq.error.update.install.manifest_mismatch"),
+            "The staged package no longer matches the signed manifest.");
         return false;
     }
     QByteArray actual;
     QString verifyError;
     if (!UpdateDownloader::verifyFile(package, sha256, actual, verifyError)) {
-        error = QStringLiteral("The update package changed before installation: %1").arg(verifyError);
+        error = NativeText::get(
+            //: Update installer handoff integrity failure; %1 is the unchanged verification detail.
+            //% "The update package changed before installation: %1"
+            QT_TRID_NOOP("gamehq.error.update.install.package_changed"),
+            "The update package changed before installation: %1").arg(verifyError);
         return false;
     }
     const QString update = QDir(root).filePath(QStringLiteral(".update"));
     if (!QDir().mkpath(update)) {
-        error = QStringLiteral("GameHQ could not create the update transaction directory.");
+        error = NativeText::get(
+            //: Update installer handoff filesystem failure.
+            //% "GameHQ could not create the update transaction directory."
+            QT_TRID_NOOP("gamehq.error.update.install.transaction_directory_failed"),
+            "GameHQ could not create the update transaction directory.");
         return false;
     }
     // Pin the transaction to this exact process, not just to its id: Windows
@@ -75,13 +100,20 @@ bool prepareTransaction(const QString &packageRoot, const QString &dataDir,
     FILETIME kernel{};
     FILETIME user{};
     if (!GetProcessTimes(GetCurrentProcess(), &created, &exited, &kernel, &user)) {
-        error = QStringLiteral("GameHQ could not identify its own process for the update.");
+        error = NativeText::get(
+            //: Update installer handoff process validation failure.
+            //% "GameHQ could not identify its own process for the update."
+            QT_TRID_NOOP("gamehq.error.update.install.process_identity_failed"),
+            "GameHQ could not identify its own process for the update.");
         return false;
     }
     const quint64 creationTime = (static_cast<quint64>(created.dwHighDateTime) << 32)
         | created.dwLowDateTime;
     if (creationTime == 0 || creationTime > static_cast<quint64>(std::numeric_limits<qint64>::max())) {
-        error = QStringLiteral("GameHQ could not identify its own process for the update.");
+        error = NativeText::get(
+            //% "GameHQ could not identify its own process for the update."
+            QT_TRID_NOOP("gamehq.error.update.install.process_identity_failed"),
+            "GameHQ could not identify its own process for the update.");
         return false;
     }
 
@@ -115,7 +147,11 @@ bool prepareTransaction(const QString &packageRoot, const QString &dataDir,
     QSaveFile output(transactionPath);
     const QByteArray json = QJsonDocument(object).toJson(QJsonDocument::Compact);
     if (!output.open(QIODevice::WriteOnly) || output.write(json) != json.size() || !output.commit()) {
-        error = QStringLiteral("GameHQ could not publish the update transaction.");
+        error = NativeText::get(
+            //: Update installer handoff filesystem failure.
+            //% "GameHQ could not publish the update transaction."
+            QT_TRID_NOOP("gamehq.error.update.install.transaction_publish_failed"),
+            "GameHQ could not publish the update transaction.");
         return false;
     }
     return true;
@@ -127,7 +163,11 @@ bool launchPrepared(const QString &packageRoot, const QString &transactionPath,
     const QString root = QFileInfo(packageRoot).absoluteFilePath();
     const QString helper = QDir(root).filePath(QStringLiteral("GameHQUpdater.exe"));
     if (!QFileInfo(helper).isFile() || !QFileInfo(helper).isExecutable()) {
-        error = QStringLiteral("GameHQUpdater.exe is missing or cannot run.");
+        error = NativeText::get(
+            //: Update installer handoff executable failure; %1 is the unchanged executable name.
+            //% "%1 is missing or cannot run."
+            QT_TRID_NOOP("gamehq.error.update.install.helper_missing"),
+            "%1 is missing or cannot run.").arg(QStringLiteral("GameHQUpdater.exe"));
         return false;
     }
     // Create the READY event before the helper starts so its SetEvent can
@@ -137,7 +177,11 @@ bool launchPrepared(const QString &packageRoot, const QString &transactionPath,
         handshake::readyEventNameFor(transactionPath.toStdWString());
     HANDLE ready = CreateEventW(nullptr, TRUE, FALSE, readyName.c_str());
     if (!ready) {
-        error = QStringLiteral("GameHQ could not prepare the updater handshake.");
+        error = NativeText::get(
+            //: Update installer handoff process failure.
+            //% "GameHQ could not prepare the updater handshake."
+            QT_TRID_NOOP("gamehq.error.update.install.handshake_failed"),
+            "GameHQ could not prepare the updater handshake.");
         return false;
     }
     qint64 processId = 0;
@@ -145,7 +189,11 @@ bool launchPrepared(const QString &packageRoot, const QString &transactionPath,
                                  { QStringLiteral("--apply"), transactionPath },
                                  root, &processId) || processId <= 0) {
         CloseHandle(ready);
-        error = QStringLiteral("GameHQ could not start the updater helper.");
+        error = NativeText::get(
+            //: Update installer handoff process failure.
+            //% "GameHQ could not start the updater helper."
+            QT_TRID_NOOP("gamehq.error.update.install.helper_start_failed"),
+            "GameHQ could not start the updater helper.");
         return false;
     }
     HANDLE helperProcess = OpenProcess(SYNCHRONIZE, FALSE, static_cast<DWORD>(processId));
@@ -158,8 +206,16 @@ bool launchPrepared(const QString &packageRoot, const QString &transactionPath,
     if (result == WAIT_OBJECT_0)
         return true;
     error = result == WAIT_OBJECT_0 + 1
-        ? QStringLiteral("The updater helper rejected the update before it became ready.")
-        : QStringLiteral("The updater helper did not confirm it is ready in time.");
+        ? NativeText::get(
+              //: Update installer handoff process failure.
+              //% "The updater helper rejected the update before it became ready."
+              QT_TRID_NOOP("gamehq.error.update.install.helper_rejected"),
+              "The updater helper rejected the update before it became ready.")
+        : NativeText::get(
+              //: Update installer handoff timeout.
+              //% "The updater helper did not confirm it is ready in time."
+              QT_TRID_NOOP("gamehq.error.update.install.helper_timeout"),
+              "The updater helper did not confirm it is ready in time.");
     return false;
 }
 }

@@ -280,6 +280,662 @@
       <source>%1 s</source>
       <translation>%1 s</translation>
     </message>
+    <message id="gamehq.error.capture_location.create_failed">
+      <location filename="src/config/CaptureLocations.cpp" line="126"></location>
+      <source>The selected folder could not be created.</source>
+      <translation>선택된 폴더는 생성되지 않았습니다.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.folder_invalid">
+      <location filename="src/config/CaptureLocations.cpp" line="110"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="118"></location>
+      <source>The selected folder is invalid.</source>
+      <translation>선택된 폴더가 유효하지 않습니다.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.local_folder_required">
+      <location filename="src/ui/AppController.cpp" line="321"></location>
+      <source>Choose a local folder.</source>
+      <translation>로컬 폴더를 선택하세요.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.not_writable">
+      <location filename="src/config/CaptureLocations.cpp" line="136"></location>
+      <source>The selected folder is not writable.</source>
+      <translation>선택된 폴더는 쓸 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.restore_default_failed">
+      <location filename="src/config/CaptureLocations.cpp" line="202"></location>
+      <source>GameHQ could not restore the default folder.</source>
+      <translation>GameHQ 기본 폴더 복원 안 되었습니다.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.save_failed">
+      <location filename="src/config/CaptureLocations.cpp" line="175"></location>
+      <source>GameHQ could not save the selected folder.</source>
+      <translation>GameHQ 선택된 폴더를 저장할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.type_invalid">
+      <location filename="src/ui/AppController.cpp" line="315"></location>
+      <location filename="src/ui/AppController.cpp" line="337"></location>
+      <source>The capture type is invalid.</source>
+      <translation>캡처 타입은 유효하지 않습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.backup_missing">
+      <location filename="src/config/PortableProfileImporter.cpp" line="303"></location>
+      <source>The interrupted portable-import backup is missing.</source>
+      <translation>중단된 휴대용 수입 백업이 없어졌어요</translation>
+    </message>
+    <message id="gamehq.error.portable_import.capture_history_value_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="391"></location>
+      <source>Capture-root history contains a non-string value.</source>
+      <translation>캡처 루트 역사에는 문자열이 아닌 값이 있습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.commit_staged_file_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
+      <source>Cannot commit staged %1.</source>
+      <translation>무대를 설정할 수 없습니다 %1- 그래</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_malformed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="343"></location>
+      <source>The portable config.json is malformed.</source>
+      <translation>포터블 config.json은 변형되어 있습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_path_unsupported">
+      <location filename="src/config/PortableProfileImporter.cpp" line="417"></location>
+      <source>Unsupported portable path in config key %1.</source>
+      <translation>구성 키에서 지원되지 않는 휴대 경로 %1- 그래</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_read_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="333"></location>
+      <source>Cannot read the portable config.json.</source>
+      <translation>포터블 config.json을 읽을 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_value_not_array">
+      <location filename="src/config/PortableProfileImporter.cpp" line="382"></location>
+      <source>%1 must be an array.</source>
+      <translation>%1 그 배열이 아닐까요?</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_value_not_string">
+      <location filename="src/config/PortableProfileImporter.cpp" line="364"></location>
+      <source>%1 must be a string.</source>
+      <translation>%1 끈이 아닐까</translation>
+    </message>
+    <message id="gamehq.error.portable_import.data_directory_escapes_package">
+      <location filename="src/config/PortableProfileImporter.cpp" line="893"></location>
+      <source>The portable data directory escapes the selected package root.</source>
+      <translation>휴대용 데이터 디렉토리는 선택된 패키지 루트에서 탈출합니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_foreign_key_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="833"></location>
+      <source>The staged database failed its foreign-key check.</source>
+      <translation>스테이지 데이터베이스가 외국 키 검사를 실패했습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_integrity_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="822"></location>
+      <source>The staged database failed its integrity check.</source>
+      <translation>스테이지화된 데이터베이스의 무결성 검사는 실패했습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_missing">
+      <location filename="src/config/PortableProfileImporter.cpp" line="915"></location>
+      <source>The portable profile has no gamehq.db.</source>
+      <translation>휴대용 프로필에는 gamehq.db가 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_open_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="749"></location>
+      <source>The staged portable database cannot be opened: %1</source>
+      <translation>스테이지화된 휴대용 데이터베이스를 열 수 없습니다. %1</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_operation_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="28"></location>
+      <source>A portable-profile database operation failed: %1</source>
+      <translation>휴대용 프로필 데이터베이스 작업이 실패했습니다. %1</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_path_unsupported">
+      <location filename="src/config/PortableProfileImporter.cpp" line="801"></location>
+      <source>Unsupported portable path in database setting %1.</source>
+      <translation>데이터베이스 설정에서 지원되지 않는 휴대 경로 %1- 그래</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_schema_read_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="757"></location>
+      <source>The portable database schema cannot be read.</source>
+      <translation>휴대용 데이터베이스 스키마를 읽을 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_schema_unsupported">
+      <location filename="src/config/PortableProfileImporter.cpp" line="763"></location>
+      <source>The portable database schema is unsupported.</source>
+      <translation>휴대용 데이터베이스 스키마는 지원되지 않습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_stage_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="987"></location>
+      <source>The portable database cannot be staged.</source>
+      <translation>휴대용 데이터베이스는 무대에 올릴 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_transaction_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="769"></location>
+      <source>The portable database transaction cannot begin.</source>
+      <translation>휴대용 데이터베이스 트랜잭션 시작되지 않습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_backup_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="1038"></location>
+      <source>The empty installed profile cannot be backed up for import.</source>
+      <translation>빈 설치 프로필은 수입을 위해 백업할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_config_not_default">
+      <location filename="src/config/PortableProfileImporter.cpp" line="501"></location>
+      <source>The installed profile has non-default configuration.</source>
+      <translation>설치된 프로파일은 기본이 아닌 구성을 가지고 있습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_contains_link">
+      <location filename="src/config/PortableProfileImporter.cpp" line="459"></location>
+      <source>The installed profile contains a symbolic link or junction: %1.</source>
+      <translation>설치된 프로파일에는 상징적인 링크 또는 접점이 있습니다. %1- 그래</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_data_unsupported">
+      <location filename="src/config/PortableProfileImporter.cpp" line="482"></location>
+      <source>The installed profile contains unsupported data: %1.</source>
+      <translation>설치된 프로파일은 지원되지 않는 데이터를 포함합니다. %1- 그래</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_database_inspection_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="520"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="542"></location>
+      <source>The installed database cannot be inspected.</source>
+      <translation>설치된 데이터베이스를 검사할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_file_exists">
+      <location filename="src/config/PortableProfileImporter.cpp" line="469"></location>
+      <source>The installed profile already has its own %1.</source>
+      <translation>설치된 프로필은 이미 자신의 %1- 그래</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_not_empty">
+      <location filename="src/config/PortableProfileImporter.cpp" line="553"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="567"></location>
+      <source>The installed profile is not empty.</source>
+      <translation>설치된 프로파일은 비어 있지 않습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_restore_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="292"></location>
+      <source>The interrupted portable import could not restore its destination backup.</source>
+      <translation>중단된 휴대용 수입은 목적지 백업을 복원할 수 없었습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_root_link">
+      <location filename="src/config/PortableProfileImporter.cpp" line="432"></location>
+      <source>The installed profile root must not be a symbolic link or junction.</source>
+      <translation>설치된 프로필 루트는 상징적인 링크 또는 교차점이 될 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.game_path_scheme_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="604"></location>
+      <source>A game executable path incorrectly uses portable:/.</source>
+      <translation>게임 실행 경로는 잘못 휴대:/을 사용합니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.hash_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="159"></location>
+      <source>Cannot hash %1.</source>
+      <translation>해시 할 수 없습니다 %1- 그래</translation>
+    </message>
+    <message id="gamehq.error.portable_import.installed_copy_required">
+      <location filename="src/ui/AppController.cpp" line="181"></location>
+      <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
+      <translation>휴대용 프로파일은 설치된 GameHQ- 그래</translation>
+    </message>
+    <message id="gamehq.error.portable_import.journal_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="263"></location>
+      <source>The interrupted portable-import journal is invalid.</source>
+      <translation>중단된 휴대용 수입 저널은 유효하지 않습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.journal_malformed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="242"></location>
+      <source>The interrupted portable-import journal is malformed.</source>
+      <translation>중단된 휴대용 수입 저널은 변형되어 있습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.journal_read_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="231"></location>
+      <source>The interrupted portable-import journal cannot be read.</source>
+      <translation>중단된 휴대용 수입 저널을 읽을 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.journal_remove_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="315"></location>
+      <source>The recovered portable-import journal could not be removed.</source>
+      <translation>복구된 휴대용 수입 저널은 제거할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.local_folder_required">
+      <location filename="src/ui/AppController.cpp" line="187"></location>
+      <source>Select a local GameHQ portable folder.</source>
+      <translation>로컬을 선택 GameHQ 휴대용 폴더</translation>
+    </message>
+    <message id="gamehq.error.portable_import.package_invalid">
+      <location filename="src/ui/AppController.cpp" line="196"></location>
+      <source>The selected folder is not a GameHQ portable package.</source>
+      <translation>선택된 폴더는 GameHQ 휴대용 패키지</translation>
+    </message>
+    <message id="gamehq.error.portable_import.package_root_canonicalize_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="56"></location>
+      <source>The portable package root cannot be canonicalized.</source>
+      <translation>휴대용 패키지 루트는 정규화 할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.path_escapes_package">
+      <location filename="src/config/PortableProfileImporter.cpp" line="73"></location>
+      <source>A portable path escapes the selected package root.</source>
+      <translation>휴대용 경로는 선택된 패키지 루트에서 탈출합니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.path_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="106"></location>
+      <source>A portable:/ path is empty or absolute.</source>
+      <translation>휴대용:/ 경로는 비어 있거나 절대적입니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.path_scheme_required">
+      <location filename="src/config/PortableProfileImporter.cpp" line="93"></location>
+      <source>Imported paths must be absolute or use portable:/.</source>
+      <translation>수입 경로는 절대적이거나 휴대용을 사용해야 합니다:/</translation>
+    </message>
+    <message id="gamehq.error.portable_import.portable_path_escapes_package">
+      <location filename="src/config/PortableProfileImporter.cpp" line="117"></location>
+      <source>A portable:/ path escapes the selected package root.</source>
+      <translation>휴대용:/ 경로는 선택된 패키지 루트에서 탈출합니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.process_identity_failed">
+      <location filename="src/ui/AppController.cpp" line="207"></location>
+      <source>GameHQ could not identify its own process for the import.</source>
+      <translation>GameHQ 수입을 위한 자체 프로세스를 식별할 수 없었습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.process_start_failed">
+      <location filename="src/ui/AppController.cpp" line="217"></location>
+      <source>GameHQ could not start the portable import process.</source>
+      <translation>GameHQ 휴대용 수입 프로세스를 시작하지 못했습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.publish_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="1062"></location>
+      <source>The staged profile cannot be published.</source>
+      <translation>단계화된 프로필은 공개할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.published_destination_missing">
+      <location filename="src/config/PortableProfileImporter.cpp" line="279"></location>
+      <source>The published portable-import destination is missing.</source>
+      <translation>게시된 휴대용 수입 목적지가 없어졌습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.recovery_remove_directory_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="203"></location>
+      <source>Portable-import recovery could not remove a transaction directory.</source>
+      <translation>포터블 수입 복구가 트랜잭션 디렉토리를 제거할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.recovery_required">
+      <location filename="src/config/PortableProfileImporter.cpp" line="973"></location>
+      <source>%1 Recovery required: %2</source>
+      <translation>%1 복구가 필요합니다: %2</translation>
+    </message>
+    <message id="gamehq.error.portable_import.rollback_restore_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="961"></location>
+      <source>The installed profile backup could not be restored.</source>
+      <translation>설치된 프로필 백업은 복원되지 않았습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.sound_file_missing">
+      <location filename="src/config/PortableProfileImporter.cpp" line="706"></location>
+      <source>A referenced portable sound file is missing.</source>
+      <translation>소음파일이 없어졌어요</translation>
+    </message>
+    <message id="gamehq.error.portable_import.sound_file_stage_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="718"></location>
+      <source>A referenced sound file could not be staged.</source>
+      <translation>참조된 사운드 파일은 무대에 올릴 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.source_changed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="1012"></location>
+      <source>The portable source changed during import.</source>
+      <translation>휴대용 소스는 수입 중에 변경되었습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.source_destination_overlap">
+      <location filename="src/config/PortableProfileImporter.cpp" line="901"></location>
+      <source>Source and destination profiles must be separate.</source>
+      <translation>소스 프로필과 목적 프로필은 분리되어야 합니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.source_package_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="884"></location>
+      <source>Select a valid GameHQ portable package root.</source>
+      <translation>유효한 것을 선택 GameHQ 포터블 패킷 루트</translation>
+    </message>
+    <message id="gamehq.error.portable_import.source_read_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="150"></location>
+      <source>Cannot read %1 for source verification.</source>
+      <translation>소스 확인을 위해 %1을(를) 읽을 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.stage_file_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="173"></location>
+      <source>Cannot stage %1.</source>
+      <translation>무대가 안 됩니다. %1- 그래</translation>
+    </message>
+    <message id="gamehq.error.portable_import.staging_directory_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="939"></location>
+      <source>The import staging directory cannot be created.</source>
+      <translation>이입 단계 디렉토리가 생성되지 않습니다.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.transaction_running">
+      <location filename="src/config/PortableProfileImporter.cpp" line="872"></location>
+      <source>Another portable-profile import is already running.</source>
+      <translation>또 다른 휴대용 프로파일 수입이 이미 실행중입니다.</translation>
+    </message>
+    <message id="gamehq.error.update.capture_quiescence_timeout">
+      <location filename="src/app/App.cpp" line="446"></location>
+      <source>The update was cancelled because capture work did not finish safely in time.</source>
+      <translation>업데이트는 적시에 안전하게 완료되지 않았기 때문에 취소되었습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.check_failed">
+      <location filename="src/updates/UpdateService.cpp" line="334"></location>
+      <source>Update check failed: %1</source>
+      <translation>업데이트 확인 실패: %1</translation>
+    </message>
+    <message id="gamehq.error.update.check_rate_limited">
+      <location filename="src/updates/UpdateService.cpp" line="123"></location>
+      <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
+      <translation>GitHub에서 업데이트 확인을 일시적으로 제한했습니다. GameHQ 는 나중에 다시 시도합니다.</translation>
+    </message>
+    <message id="gamehq.error.update.check_rate_limited_until">
+      <location filename="src/updates/UpdateService.cpp" line="117"></location>
+      <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
+      <translation>GitHub에서 업데이트 확인을 일시적으로 제한했습니다. GameHQ 는 %1 이후 다시 시도합니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.checksum_calculation_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="523"></location>
+      <source>GameHQ could not calculate the update checksum.</source>
+      <translation>GameHQ 업데이트 체크섬을 계산할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.checksum_entry_count">
+      <location filename="src/updates/UpdateDownloader.cpp" line="477"></location>
+      <source>The update checksum file must contain exactly one entry.</source>
+      <translation>업데이트 체크섬 파일은 정확히 한 항목을 포함해야 합니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.checksum_format_invalid">
+      <location filename="src/updates/UpdateDownloader.cpp" line="489"></location>
+      <source>The update checksum file has an invalid format.</source>
+      <translation>업데이트 체크섬 파일은 유효하지 않은 형식을 가지고 있습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.checksum_package_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="498"></location>
+      <source>The update checksum names a different package.</source>
+      <translation>업데이트 체크섬은 다른 패키지를 지명합니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.evidence_incomplete">
+      <location filename="src/updates/UpdateDownloader.cpp" line="324"></location>
+      <source>The verified update evidence is incomplete.</source>
+      <translation>확인된 업데이트 증거는 불완전합니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.flush_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="212"></location>
+      <source>GameHQ could not flush the update download to disk.</source>
+      <translation>GameHQ 업데이트 다운로드 디스크에 플러시 할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.http_status">
+      <location filename="src/updates/UpdateDownloader.cpp" line="257"></location>
+      <source>Update download failed with HTTP status %1.</source>
+      <translation>HTTP 상태에서 업데이트 다운로드가 실패 %1- 그래</translation>
+    </message>
+    <message id="gamehq.error.update.download.https_required">
+      <location filename="src/updates/UpdateDownloader.cpp" line="80"></location>
+      <source>The update download must use HTTPS.</source>
+      <translation>업데이트 다운로드는 HTTPS를 사용해야 합니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.insecure_redirect">
+      <location filename="src/updates/UpdateDownloader.cpp" line="240"></location>
+      <source>The update download redirected away from HTTPS.</source>
+      <translation>업데이트 다운로드가 HTTPS에서 이동했습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.manifest_hash_malformed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="301"></location>
+      <source>The signed manifest artifact hash is malformed.</source>
+      <translation>서명된 유물 해시표가 변형됐습니다</translation>
+    </message>
+    <message id="gamehq.error.update.download.manifest_length_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="313"></location>
+      <source>The update package length did not match the signed manifest.</source>
+      <translation>업데이트 패키지의 길이가 서명된 매니페스트와 일치하지 않았습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.manifest_read_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="346"></location>
+      <source>GameHQ could not read the downloaded release manifest.</source>
+      <translation>GameHQ 다운로드된 공개 선언서를 읽을 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.manifest_version_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="396"></location>
+      <source>The signed manifest describes a different version than the release.</source>
+      <translation>서명된 선언서는 공개된 것과 다른 버전을 설명합니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.network_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="248"></location>
+      <source>Update download failed: %1</source>
+      <translation>업데이트 다운로드 실패: %1</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_name_invalid">
+      <location filename="src/updates/UpdateDownloader.cpp" line="71"></location>
+      <source>The update package name is invalid.</source>
+      <translation>업데이트 패키지 이름이 유효하지 않습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_name_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="415"></location>
+      <source>The signed manifest names a different update package.</source>
+      <translation>서명된 선언서는 다른 업데이트 패키지를 지명합니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_not_authorised">
+      <location filename="src/updates/UpdateDownloader.cpp" line="405"></location>
+      <source>The signed manifest does not authorise an update package.</source>
+      <translation>서명된 선언서는 업데이트 패키지를 허용하지 않습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_read_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="514"></location>
+      <source>GameHQ could not read the downloaded update package.</source>
+      <translation>GameHQ 다운로드된 업데이트 패키지를 읽을 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_size_invalid">
+      <location filename="src/updates/UpdateDownloader.cpp" line="96"></location>
+      <source>The update package size is missing or exceeds the safety limit.</source>
+      <translation>업데이트 패키지 크기가 없어지거나 안전 한도를 초과합니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.partial_create_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="150"></location>
+      <source>GameHQ could not create the partial update file.</source>
+      <translation>GameHQ 부분 업데이트 파일을 만들 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.publish_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="222"></location>
+      <source>GameHQ could not publish the completed update download.</source>
+      <translation>GameHQ 완료된 업데이트 다운로드를 게시할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.release_size_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="265"></location>
+      <source>The update download size did not match the release metadata.</source>
+      <translation>업데이트 다운로드 크기는 릴리스 메타 데이터와 일치하지 않았습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.sha256_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="532"></location>
+      <source>The update package failed SHA-256 verification and was rejected.</source>
+      <translation>업데이트 패키지는 SHA-256 검증이 실패하여 거부되었습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.signature_noncanonical">
+      <location filename="src/updates/UpdateDownloader.cpp" line="454"></location>
+      <source>The release signature is not in its canonical form.</source>
+      <translation>석방 서명에는 정규 형태가 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.signature_read_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="357"></location>
+      <source>GameHQ could not read the downloaded release signature.</source>
+      <translation>GameHQ 다운로드된 릴리스 서명 읽지 못했습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.signature_untrusted">
+      <location filename="src/updates/UpdateDownloader.cpp" line="387"></location>
+      <source>This release is not authorised by a trusted signature: %1</source>
+      <translation>이 공개는 신뢰할 수 있는 서명으로 승인되지 않습니다: %1</translation>
+    </message>
+    <message id="gamehq.error.update.download.signed_manifest_missing">
+      <location filename="src/updates/UpdateDownloader.cpp" line="88"></location>
+      <source>This release has no signed manifest, so it cannot be installed.</source>
+      <translation>이 버전은 서명된 설명서가 없으므로 설치할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.signed_size_invalid">
+      <location filename="src/updates/UpdateDownloader.cpp" line="423"></location>
+      <source>The signed update package size is out of range.</source>
+      <translation>서명된 업데이트 패키지 크기가 범위를 벗어났습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.size_limit_exceeded">
+      <location filename="src/updates/UpdateDownloader.cpp" line="190"></location>
+      <source>The update download exceeded its safety size limit.</source>
+      <translation>업데이트 다운로드가 안전 크기 한계를 초과했습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.staging_create_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="104"></location>
+      <source>GameHQ could not create the update staging directory.</source>
+      <translation>GameHQ 업데이트 스테이징 디렉토리를 만들 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.download.trust_state_read_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="375"></location>
+      <source>GameHQ could not read its release trust state: %1</source>
+      <translation>GameHQ 공개 신뢰 상태를 읽을 수 없습니다: %1</translation>
+    </message>
+    <message id="gamehq.error.update.download.trust_state_write_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="434"></location>
+      <source>GameHQ could not record the release trust state: %1</source>
+      <translation>GameHQ 공개 신뢰 상태를 기록할 수 없습니다: %1</translation>
+    </message>
+    <message id="gamehq.error.update.download.write_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="198"></location>
+      <source>GameHQ could not write the update download to disk.</source>
+      <translation>GameHQ 디스크에 업데이트 다운로드를 기록할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.install.handshake_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="183"></location>
+      <source>GameHQ could not prepare the updater handshake.</source>
+      <translation>GameHQ 업데이트 하우스을 준비할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.install.helper_missing">
+      <location filename="src/updates/UpdateInstaller.cpp" line="169"></location>
+      <source>%1 is missing or cannot run.</source>
+      <oldsource>GameHQUpdater.exe is missing or cannot run.</oldsource>
+      <translation>%1이(가) 없거나 실행할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.install.helper_rejected">
+      <location filename="src/updates/UpdateInstaller.cpp" line="212"></location>
+      <source>The updater helper rejected the update before it became ready.</source>
+      <translation>업데이트 보조자는 업데이트가 준비되기 전에 업데이트를 거부했습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.install.helper_start_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="195"></location>
+      <source>GameHQ could not start the updater helper.</source>
+      <translation>GameHQ 업데이트 보조기 시작이 안되네요.</translation>
+    </message>
+    <message id="gamehq.error.update.install.helper_timeout">
+      <location filename="src/updates/UpdateInstaller.cpp" line="217"></location>
+      <source>The updater helper did not confirm it is ready in time.</source>
+      <translation>업데이트 보조자는 시간이 지남에 따라 준비가 되었는지 확인하지 못했습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.install.manifest_mismatch">
+      <location filename="src/updates/UpdateInstaller.cpp" line="72"></location>
+      <source>The staged package no longer matches the signed manifest.</source>
+      <translation>단계화된 패키지는 더 이상 서명된 매니페스트와 일치하지 않습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.install.metadata_incomplete">
+      <location filename="src/updates/UpdateInstaller.cpp" line="31"></location>
+      <source>The verified update metadata is incomplete.</source>
+      <translation>확인된 업데이트 메타데이터는 불완전합니다.</translation>
+    </message>
+    <message id="gamehq.error.update.install.metadata_invalid">
+      <location filename="src/updates/UpdateInstaller.cpp" line="63"></location>
+      <source>The verified update metadata is invalid.</source>
+      <translation>확인된 업데이트 메타데이터는 유효하지 않습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.install.package_changed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="82"></location>
+      <source>The update package changed before installation: %1</source>
+      <translation>설치 전에 업데이트 패키지가 변경되었습니다. %1</translation>
+    </message>
+    <message id="gamehq.error.update.install.package_outside_staging">
+      <location filename="src/updates/UpdateInstaller.cpp" line="54"></location>
+      <source>The verified update package is outside GameHQ's staging directory.</source>
+      <translation>확인된 업데이트 패키지가 밖에 있습니다. GameHQ'조직장'입니다.</translation>
+    </message>
+    <message id="gamehq.error.update.install.process_identity_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="106"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="115"></location>
+      <source>GameHQ could not identify its own process for the update.</source>
+      <translation>GameHQ 업데이트를 위한 자체 프로세스를 식별할 수 없었습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.install.transaction_directory_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="91"></location>
+      <source>GameHQ could not create the update transaction directory.</source>
+      <translation>GameHQ 업데이트 트랜잭션 디렉토리를 만들 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.install.transaction_publish_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="153"></location>
+      <source>GameHQ could not publish the update transaction.</source>
+      <translation>GameHQ 업데이트 트랜잭션을 게시할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.maintenance_handoff_failed">
+      <location filename="src/app/App.cpp" line="421"></location>
+      <source>GameHQ could not begin update maintenance: %1</source>
+      <translation>GameHQ 업데이트 유지보수 시작되지 않았습니다: %1</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.disk_space_insufficient">
+      <location filename="src/updates/UpdatePreflight.cpp" line="119"></location>
+      <source>There is not enough free space for download, staging and rollback backup.</source>
+      <translation>다운로드, 스테이지화 및 롤백 백업에 충분한 공간이 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.filesystem_unsupported">
+      <location filename="src/updates/UpdatePreflight.cpp" line="69"></location>
+      <source>Automatic updating currently requires NTFS or ReFS; use the release page on this drive.</source>
+      <translation>자동 업데이트는 현재 NTFS 또는 ReFS가 필요합니다. 이 드라이브의 릴리스 페이지를 사용하세요.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.network_share">
+      <location filename="src/updates/UpdatePreflight.cpp" line="21"></location>
+      <source>Automatic updating is not supported from a network share. Use the release page instead.</source>
+      <translation>네트워크 공유에서 자동 업데이트는 지원되지 않습니다. 대신 릴리스 페이지를 사용하세요.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.package_incomplete">
+      <location filename="src/updates/UpdatePreflight.cpp" line="41"></location>
+      <source>Automatic updating is available only in a complete packaged GameHQ installation.</source>
+      <translation>자동 업데이트는 전체 패키지에서만 사용할 수 있습니다. GameHQ 설치</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.path_too_long">
+      <location filename="src/updates/UpdatePreflight.cpp" line="29"></location>
+      <source>This installation path is too long for safe automatic replacement. Use a shorter local path.</source>
+      <translation>이 설치 경로는 안전 자동 교체에 너무 길다. 더 짧은 로컬 경로를 사용.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.recovery_pending">
+      <location filename="src/updates/UpdatePreflight.cpp" line="51"></location>
+      <source>A previous update must finish recovery before another update can start.</source>
+      <translation>이전 업데이트가 다른 업데이트가 시작되기 전에 복구 작업을 완료해야 합니다.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.staging_create_failed">
+      <location filename="src/updates/UpdatePreflight.cpp" line="77"></location>
+      <source>GameHQ cannot create its update staging directory here.</source>
+      <translation>GameHQ 여기서 업데이트 스테이지 디렉토리를 만들 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.volume_not_writable">
+      <location filename="src/updates/UpdatePreflight.cpp" line="60"></location>
+      <source>The GameHQ installation is not on a writable local volume.</source>
+      <translation>이 GameHQ 설치가 적기 가능한 로컬 볼륨에 있지 않습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.write_failed">
+      <location filename="src/updates/UpdatePreflight.cpp" line="88"></location>
+      <source>GameHQ cannot safely write update files in this installation.</source>
+      <translation>GameHQ 이 설치에서 업데이트 파일을 안전하게 쓸 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.release_changed">
+      <location filename="src/updates/UpdateService.cpp" line="225"></location>
+      <source>The release changed after download. Check again before installing.</source>
+      <translation>다운로드 후 버전이 변경되었습니다. 설치 전에 다시 확인합니다.</translation>
+    </message>
+    <message id="gamehq.error.update.release_withdrawn">
+      <location filename="src/updates/UpdateService.cpp" line="282"></location>
+      <source>The downloaded release was withdrawn before installation.</source>
+      <translation>다운로드된 버전은 설치 전에 철회되었습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.revalidation_failed">
+      <location filename="src/updates/UpdateService.cpp" line="326"></location>
+      <source>The release could not be revalidated: %1</source>
+      <translation>면허가 연장되지 않았습니다. %1</translation>
+    </message>
+    <message id="gamehq.error.update.revalidation_not_fresh">
+      <location filename="src/updates/UpdateService.cpp" line="254"></location>
+      <source>The release could not be freshly revalidated before installation.</source>
+      <translation>설치 전에 새로 유효성을 갱신할 수 없었습니다.</translation>
+    </message>
+    <message id="gamehq.error.update.revalidation_rate_limited">
+      <location filename="src/updates/UpdateService.cpp" line="304"></location>
+      <source>GitHub could not revalidate this release before installation. Try again later.</source>
+      <translation>GitHub에서 이 릴리스를 설치 전에 재확인할 수 없습니다. 나중에 다시 시도해 보세요.</translation>
+    </message>
     <message id="gamehq.format.fps">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="87"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="89"></location>
@@ -919,6 +1575,36 @@ This cannot be undone.</source>
       <source>Settings</source>
       <translation>설정</translation>
     </message>
+    <message id="gamehq.notification.replay_failed.reason">
+      <location filename="src/app/App.cpp" line="280"></location>
+      <source>Reason: %1</source>
+      <translation>원인: %1</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.title">
+      <location filename="src/app/App.cpp" line="286"></location>
+      <source>Replay failed</source>
+      <translation>재생 실패</translation>
+    </message>
+    <message id="gamehq.notification.replay_saved.title">
+      <location filename="src/app/App.cpp" line="266"></location>
+      <source>Replay saved</source>
+      <translation>재생 저장</translation>
+    </message>
+    <message id="gamehq.notification.screenshot_saved.title">
+      <location filename="src/app/App.cpp" line="218"></location>
+      <source>Screenshot saved</source>
+      <translation>화면 촬영 저장</translation>
+    </message>
+    <message id="gamehq.notification.settings_quarantined.body">
+      <location filename="src/app/App.cpp" line="329"></location>
+      <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
+      <translation>GameHQ 가 기본 설정으로 시작되었습니다. 이전 설정 파일은 그대로 보관되어 데이터가 손실되지 않았습니다.</translation>
+    </message>
+    <message id="gamehq.notification.settings_quarantined.title">
+      <location filename="src/app/App.cpp" line="324"></location>
+      <source>Settings could not be read</source>
+      <translation>설정 읽기 실패</translation>
+    </message>
     <message id="gamehq.notifications.window_title">
       <location filename="src/ui/qml/ToastWindow.qml" line="17"></location>
       <source>%1 Notifications</source>
@@ -970,7 +1656,7 @@ This cannot be undone.</source>
       <translation>%1 덮개</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="103"></location>
+      <location filename="src/ui/AppController.cpp" line="104"></location>
       <source>Release notes</source>
       <translation type="unfinished"></translation>
     </message>
@@ -2646,6 +3332,47 @@ This cannot be undone.</source>
       <location filename="src/ui/qml/themes/SynthwaveSkin.qml" line="6"></location>
       <source>Synthwave</source>
       <translation>Synthwave</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.failed_title">
+      <location filename="src/main.cpp" line="222"></location>
+      <source>Portable import failed</source>
+      <translation>휴대용 프로필 가져오기 실패</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.installed_copy_required">
+      <location filename="src/main.cpp" line="189"></location>
+      <source>Run portable import from an installed copy of GameHQ.</source>
+      <translation>설치된 복사본에서 휴대용 수입을 실행 GameHQ- 그래</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.instance_running">
+      <location filename="src/main.cpp" line="201"></location>
+      <source>Another GameHQ instance is running, so the portable import cannot start.</source>
+      <translation>또 다른 GameHQ 인스턴스가 실행중이므로, 휴대용 수입이 시작되지 않습니다.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.parent_argument_incomplete">
+      <location filename="src/main.cpp" line="83"></location>
+      <source>The portable import parent-process argument is incomplete.</source>
+      <translation>포터블 이포트 부모 프로세스 문구는 불완전합니다.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.parent_identifier_invalid">
+      <location filename="src/main.cpp" line="111"></location>
+      <location filename="src/main.cpp" line="117"></location>
+      <source>The portable import parent-process identifier is invalid.</source>
+      <translation>포터블 이포트 부모 프로세스 식별자는 유효하지 않습니다.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.parent_still_running">
+      <location filename="src/main.cpp" line="97"></location>
+      <source>The running GameHQ instance did not close in time.</source>
+      <translation>달리는 GameHQ 사건은 제때 종료되지 않았습니다.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.parent_unverifiable">
+      <location filename="src/main.cpp" line="104"></location>
+      <source>GameHQ could not confirm that the previous instance has closed.</source>
+      <translation>GameHQ 전심 사건의 종결을 확인하지 못했습니다.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.source_missing">
+      <location filename="src/main.cpp" line="183"></location>
+      <source>The portable import source folder is missing.</source>
+      <translation>휴대용 수입 소스 폴더가 없어졌습니다.</translation>
     </message>
     <message id="gamehq.tray.open_gallery">
       <location filename="src/tray/TrayIcon.cpp" line="163"></location>

@@ -569,7 +569,8 @@ qt_add_translations(tst_localizationcatalog
 gamehq_add_test(tst_languagemanager
     tst_languagemanager.cpp
     "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp"
-    "${CMAKE_SOURCE_DIR}/src/localization/LanguageManager.cpp")
+    "${CMAKE_SOURCE_DIR}/src/localization/LanguageManager.cpp"
+    "${CMAKE_SOURCE_DIR}/src/localization/StartupLocalization.cpp")
 qt_add_translations(tst_languagemanager
     TS_FILES
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_en_US.ts"

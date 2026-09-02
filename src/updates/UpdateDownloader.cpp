@@ -1,6 +1,7 @@
 #include "updates/UpdateDownloader.h"
 
 #include "security/ReleaseManifest.h"
+#include "localization/NativeText.h"
 
 #include <QCryptographicHash>
 #include <QDir>
@@ -64,24 +65,44 @@ void UpdateDownloader::start(const ReleaseInfo &release)
     m_manifestPath.clear();
     m_signaturePath.clear();
     if (release.zipName.isEmpty() || QFileInfo(release.zipName).fileName() != release.zipName) {
-        fail(QStringLiteral("The update package name is invalid."));
+        fail(NativeText::get(
+            //: Update download validation failure.
+            //% "The update package name is invalid."
+            QT_TRID_NOOP("gamehq.error.update.download.package_name_invalid"),
+            "The update package name is invalid."));
         return;
     }
     if (!isHttps(QUrl(release.zipUrl)) || !isHttps(QUrl(release.manifestUrl))
         || !isHttps(QUrl(release.signatureUrl))) {
-        fail(QStringLiteral("The update download must use HTTPS."));
+        fail(NativeText::get(
+            //: Update download transport validation failure.
+            //% "The update download must use HTTPS."
+            QT_TRID_NOOP("gamehq.error.update.download.https_required"),
+            "The update download must use HTTPS."));
         return;
     }
     if (release.manifestUrl.isEmpty() || release.signatureUrl.isEmpty()) {
-        fail(QStringLiteral("This release has no signed manifest, so it cannot be installed."));
+        fail(NativeText::get(
+            //: Update release validation failure.
+            //% "This release has no signed manifest, so it cannot be installed."
+            QT_TRID_NOOP("gamehq.error.update.download.signed_manifest_missing"),
+            "This release has no signed manifest, so it cannot be installed."));
         return;
     }
     if (release.zipSize <= 0 || release.zipSize > kMaximumPackageBytes) {
-        fail(QStringLiteral("The update package size is missing or exceeds the safety limit."));
+        fail(NativeText::get(
+            //: Update package metadata validation failure.
+            //% "The update package size is missing or exceeds the safety limit."
+            QT_TRID_NOOP("gamehq.error.update.download.package_size_invalid"),
+            "The update package size is missing or exceeds the safety limit."));
         return;
     }
     if (!QDir().mkpath(m_stagingRoot)) {
-        fail(QStringLiteral("GameHQ could not create the update staging directory."));
+        fail(NativeText::get(
+            //: Update download filesystem failure.
+            //% "GameHQ could not create the update staging directory."
+            QT_TRID_NOOP("gamehq.error.update.download.staging_create_failed"),
+            "GameHQ could not create the update staging directory."));
         return;
     }
 
@@ -123,7 +144,11 @@ void UpdateDownloader::beginTransfer(Transfer transfer, const QUrl &url,
 
     m_output.setFileName(finalPath + QStringLiteral(".partial"));
     if (!m_output.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-        fail(QStringLiteral("GameHQ could not create the partial update file."));
+        fail(NativeText::get(
+            //: Update download filesystem failure.
+            //% "GameHQ could not create the partial update file."
+            QT_TRID_NOOP("gamehq.error.update.download.partial_create_failed"),
+            "GameHQ could not create the partial update file."));
         return;
     }
 
@@ -159,11 +184,19 @@ bool UpdateDownloader::consumeAvailableData()
     if (chunk.isEmpty())
         return true;
     if (m_receivedBytes > m_maximumBytes - chunk.size()) {
-        fail(QStringLiteral("The update download exceeded its safety size limit."));
+        fail(NativeText::get(
+            //: Update download size validation failure.
+            //% "The update download exceeded its safety size limit."
+            QT_TRID_NOOP("gamehq.error.update.download.size_limit_exceeded"),
+            "The update download exceeded its safety size limit."));
         return false;
     }
     if (m_output.write(chunk) != chunk.size()) {
-        fail(QStringLiteral("GameHQ could not write the update download to disk."));
+        fail(NativeText::get(
+            //: Update download filesystem failure.
+            //% "GameHQ could not write the update download to disk."
+            QT_TRID_NOOP("gamehq.error.update.download.write_failed"),
+            "GameHQ could not write the update download to disk."));
         return false;
     }
     m_receivedBytes += chunk.size();
@@ -173,13 +206,21 @@ bool UpdateDownloader::consumeAvailableData()
 bool UpdateDownloader::publishPartial()
 {
     if (!m_output.flush()) {
-        fail(QStringLiteral("GameHQ could not flush the update download to disk."));
+        fail(NativeText::get(
+            //: Update download filesystem failure.
+            //% "GameHQ could not flush the update download to disk."
+            QT_TRID_NOOP("gamehq.error.update.download.flush_failed"),
+            "GameHQ could not flush the update download to disk."));
         return false;
     }
     m_output.close();
     QFile::remove(m_finalPath);
     if (!QFile::rename(m_finalPath + QStringLiteral(".partial"), m_finalPath)) {
-        fail(QStringLiteral("GameHQ could not publish the completed update download."));
+        fail(NativeText::get(
+            //: Update download filesystem failure.
+            //% "GameHQ could not publish the completed update download."
+            QT_TRID_NOOP("gamehq.error.update.download.publish_failed"),
+            "GameHQ could not publish the completed update download."));
         return false;
     }
     return true;
@@ -193,20 +234,36 @@ void UpdateDownloader::finishTransfer()
     if (!consumeAvailableData())
         return;
     if (!isHttps(reply->url())) {
-        fail(QStringLiteral("The update download redirected away from HTTPS."));
+        fail(NativeText::get(
+            //: Update download transport validation failure.
+            //% "The update download redirected away from HTTPS."
+            QT_TRID_NOOP("gamehq.error.update.download.insecure_redirect"),
+            "The update download redirected away from HTTPS."));
         return;
     }
     if (reply->error() != QNetworkReply::NoError) {
-        fail(QStringLiteral("Update download failed: %1").arg(reply->errorString()));
+        fail(NativeText::get(
+            //: Update download failure; %1 is the unchanged network error detail.
+            //% "Update download failed: %1"
+            QT_TRID_NOOP("gamehq.error.update.download.network_failed"),
+            "Update download failed: %1").arg(reply->errorString()));
         return;
     }
     const int status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
     if (status < 200 || status >= 300) {
-        fail(QStringLiteral("Update download failed with HTTP status %1.").arg(status));
+        fail(NativeText::get(
+            //: Update download failure; %1 is the numeric HTTP status code.
+            //% "Update download failed with HTTP status %1."
+            QT_TRID_NOOP("gamehq.error.update.download.http_status"),
+            "Update download failed with HTTP status %1.").arg(status));
         return;
     }
     if (m_expectedBytes > 0 && m_receivedBytes != m_expectedBytes) {
-        fail(QStringLiteral("The update download size did not match the release metadata."));
+        fail(NativeText::get(
+            //: Update download integrity failure.
+            //% "The update download size did not match the release metadata."
+            QT_TRID_NOOP("gamehq.error.update.download.release_size_mismatch"),
+            "The update download size did not match the release metadata."));
         return;
     }
 
@@ -238,7 +295,11 @@ void UpdateDownloader::finishTransfer()
     const QByteArray expectedDigest = QByteArray::fromHex(m_verified.artifactSha256.toLatin1());
     QByteArray actualDigest;
     if (expectedDigest.size() != QCryptographicHash::hashLength(QCryptographicHash::Sha256)) {
-        fail(QStringLiteral("The signed manifest artifact hash is malformed."));
+        fail(NativeText::get(
+            //: Signed update manifest validation failure.
+            //% "The signed manifest artifact hash is malformed."
+            QT_TRID_NOOP("gamehq.error.update.download.manifest_hash_malformed"),
+            "The signed manifest artifact hash is malformed."));
         return;
     }
     if (!verifyFile(m_packagePath, expectedDigest, actualDigest, error)) {
@@ -246,14 +307,22 @@ void UpdateDownloader::finishTransfer()
         return;
     }
     if (completedBytes != m_verified.artifactSize) {
-        fail(QStringLiteral("The update package length did not match the signed manifest."));
+        fail(NativeText::get(
+            //: Signed update package integrity failure.
+            //% "The update package length did not match the signed manifest."
+            QT_TRID_NOOP("gamehq.error.update.download.manifest_length_mismatch"),
+            "The update package length did not match the signed manifest."));
         return;
     }
 
     m_verified.packagePath = m_packagePath;
     m_verified.packageSha256 = actualDigest;
     if (!m_verified.isValid()) {
-        fail(QStringLiteral("The verified update evidence is incomplete."));
+        fail(NativeText::get(
+            //: Verified update metadata validation failure.
+            //% "The verified update evidence is incomplete."
+            QT_TRID_NOOP("gamehq.error.update.download.evidence_incomplete"),
+            "The verified update evidence is incomplete."));
         return;
     }
 
@@ -271,14 +340,22 @@ bool UpdateDownloader::acceptVerifiedManifest()
     const std::vector<std::uint8_t> manifestBytes = readAllBytes(
         m_manifestPath, static_cast<qint64>(release_manifest::kMaximumManifestBytes), ok);
     if (!ok) {
-        fail(QStringLiteral("GameHQ could not read the downloaded release manifest."));
+        fail(NativeText::get(
+            //: Signed update manifest filesystem failure.
+            //% "GameHQ could not read the downloaded release manifest."
+            QT_TRID_NOOP("gamehq.error.update.download.manifest_read_failed"),
+            "GameHQ could not read the downloaded release manifest."));
         return false;
     }
     bool signatureOk = false;
     const std::vector<std::uint8_t> signatureBytes = readAllBytes(
         m_signaturePath, static_cast<qint64>(release_manifest::kMaximumSignatureBytes), signatureOk);
     if (!signatureOk) {
-        fail(QStringLiteral("GameHQ could not read the downloaded release signature."));
+        fail(NativeText::get(
+            //: Signed update manifest filesystem failure.
+            //% "GameHQ could not read the downloaded release signature."
+            QT_TRID_NOOP("gamehq.error.update.download.signature_read_failed"),
+            "GameHQ could not read the downloaded release signature."));
         return false;
     }
     const std::string signatureText(reinterpret_cast<const char *>(signatureBytes.data()),
@@ -292,7 +369,11 @@ bool UpdateDownloader::acceptVerifiedManifest()
                                           previous, stateError)) {
         // Corrupt state fails closed and needs an explicit recovery rather than
         // a silent reset to zero.
-        fail(QStringLiteral("GameHQ could not read its release trust state: %1")
+        fail(NativeText::get(
+                 //: Release trust failure; %1 is the unchanged technical detail.
+                 //% "GameHQ could not read its release trust state: %1"
+                 QT_TRID_NOOP("gamehq.error.update.download.trust_state_read_failed"),
+                 "GameHQ could not read its release trust state: %1")
                  .arg(QString::fromStdString(stateError)));
         return false;
     }
@@ -300,34 +381,58 @@ bool UpdateDownloader::acceptVerifiedManifest()
     release_manifest::AcceptedRelease accepted;
     std::string error;
     if (!release_manifest::verifyAndParse(manifestBytes, signatureText, &previous, accepted, error)) {
-        fail(QStringLiteral("This release is not authorised by a trusted signature: %1")
+        fail(NativeText::get(
+                 //: Release signature failure; %1 is the unchanged verification detail.
+                 //% "This release is not authorised by a trusted signature: %1"
+                 QT_TRID_NOOP("gamehq.error.update.download.signature_untrusted"),
+                 "This release is not authorised by a trusted signature: %1")
                  .arg(QString::fromStdString(error)));
         return false;
     }
     if (QString::fromStdString(accepted.manifest.version) != m_release.version) {
-        fail(QStringLiteral("The signed manifest describes a different version than the release."));
+        fail(NativeText::get(
+            //: Signed update manifest validation failure.
+            //% "The signed manifest describes a different version than the release."
+            QT_TRID_NOOP("gamehq.error.update.download.manifest_version_mismatch"),
+            "The signed manifest describes a different version than the release."));
         return false;
     }
     const release_manifest::Artifact *update = accepted.manifest.artifactOfKind("update");
     if (!update) {
-        fail(QStringLiteral("The signed manifest does not authorise an update package."));
+        fail(NativeText::get(
+            //: Signed update manifest validation failure.
+            //% "The signed manifest does not authorise an update package."
+            QT_TRID_NOOP("gamehq.error.update.download.package_not_authorised"),
+            "The signed manifest does not authorise an update package."));
         return false;
     }
     // Bind the GitHub asset to the signed record by exact name. A release that
     // renamed or swapped the archive can no longer be installed.
     if (QString::fromStdString(update->fileName) != m_release.zipName) {
-        fail(QStringLiteral("The signed manifest names a different update package."));
+        fail(NativeText::get(
+            //: Signed update manifest validation failure.
+            //% "The signed manifest names a different update package."
+            QT_TRID_NOOP("gamehq.error.update.download.package_name_mismatch"),
+            "The signed manifest names a different update package."));
         return false;
     }
     if (update->size == 0 || update->size > static_cast<std::uint64_t>(kMaximumPackageBytes)) {
-        fail(QStringLiteral("The signed update package size is out of range."));
+        fail(NativeText::get(
+            //: Signed update manifest validation failure.
+            //% "The signed update package size is out of range."
+            QT_TRID_NOOP("gamehq.error.update.download.signed_size_invalid"),
+            "The signed update package size is out of range."));
         return false;
     }
 
     if (!release_trust::storeSequenceStateAtomically(
             std::filesystem::path(m_trustStatePath.toStdWString()),
             {accepted.manifest.releaseSequence, accepted.manifestSha256}, stateError)) {
-        fail(QStringLiteral("GameHQ could not record the release trust state: %1")
+        fail(NativeText::get(
+                 //: Release trust persistence failure; %1 is the unchanged technical detail.
+                 //% "GameHQ could not record the release trust state: %1"
+                 QT_TRID_NOOP("gamehq.error.update.download.trust_state_write_failed"),
+                 "GameHQ could not record the release trust state: %1")
                  .arg(QString::fromStdString(stateError)));
         return false;
     }
@@ -343,7 +448,11 @@ bool UpdateDownloader::acceptVerifiedManifest()
     m_verified.artifactSha256 = QString::fromStdString(update->sha256);
     std::string canonicalSignature;
     if (!release_manifest::normalizeSignatureText(signatureText, canonicalSignature)) {
-        fail(QStringLiteral("The release signature is not in its canonical form."));
+        fail(NativeText::get(
+            //: Release signature validation failure.
+            //% "The release signature is not in its canonical form."
+            QT_TRID_NOOP("gamehq.error.update.download.signature_noncanonical"),
+            "The release signature is not in its canonical form."));
         return false;
     }
     m_verified.signature = QString::fromStdString(canonicalSignature);
@@ -362,7 +471,11 @@ bool UpdateDownloader::parseChecksum(const QByteArray &contents, const QString &
             lines.push_back(line);
     }
     if (lines.size() != 1) {
-        errorOut = QStringLiteral("The update checksum file must contain exactly one entry.");
+        errorOut = NativeText::get(
+            //: Update checksum validation failure.
+            //% "The update checksum file must contain exactly one entry."
+            QT_TRID_NOOP("gamehq.error.update.download.checksum_entry_count"),
+            "The update checksum file must contain exactly one entry.");
         return false;
     }
 
@@ -370,12 +483,20 @@ bool UpdateDownloader::parseChecksum(const QByteArray &contents, const QString &
         QStringLiteral("^([0-9A-Fa-f]{64})(?:[\\t ]+\\*?(.+))?$"));
     const QRegularExpressionMatch match = pattern.match(QString::fromLatin1(lines.front()));
     if (!match.hasMatch()) {
-        errorOut = QStringLiteral("The update checksum file has an invalid format.");
+        errorOut = NativeText::get(
+            //: Update checksum validation failure.
+            //% "The update checksum file has an invalid format."
+            QT_TRID_NOOP("gamehq.error.update.download.checksum_format_invalid"),
+            "The update checksum file has an invalid format.");
         return false;
     }
     const QString namedFile = match.captured(2).trimmed();
     if (!namedFile.isEmpty() && namedFile != expectedFileName) {
-        errorOut = QStringLiteral("The update checksum names a different package.");
+        errorOut = NativeText::get(
+            //: Update checksum validation failure.
+            //% "The update checksum names a different package."
+            QT_TRID_NOOP("gamehq.error.update.download.checksum_package_mismatch"),
+            "The update checksum names a different package.");
         return false;
     }
     digestOut = QByteArray::fromHex(match.captured(1).toLatin1());
@@ -387,17 +508,29 @@ bool UpdateDownloader::verifyFile(const QString &path, const QByteArray &expecte
 {
     QFile file(path);
     if (!file.open(QIODevice::ReadOnly)) {
-        errorOut = QStringLiteral("GameHQ could not read the downloaded update package.");
+        errorOut = NativeText::get(
+            //: Update package filesystem failure.
+            //% "GameHQ could not read the downloaded update package."
+            QT_TRID_NOOP("gamehq.error.update.download.package_read_failed"),
+            "GameHQ could not read the downloaded update package.");
         return false;
     }
     QCryptographicHash hash(QCryptographicHash::Sha256);
     if (!hash.addData(&file)) {
-        errorOut = QStringLiteral("GameHQ could not calculate the update checksum.");
+        errorOut = NativeText::get(
+            //: Update package integrity-check failure.
+            //% "GameHQ could not calculate the update checksum."
+            QT_TRID_NOOP("gamehq.error.update.download.checksum_calculation_failed"),
+            "GameHQ could not calculate the update checksum.");
         return false;
     }
     actualDigestOut = hash.result();
     if (actualDigestOut != expectedDigest) {
-        errorOut = QStringLiteral("The update package failed SHA-256 verification and was rejected.");
+        errorOut = NativeText::get(
+            //: Update package integrity-check failure.
+            //% "The update package failed SHA-256 verification and was rejected."
+            QT_TRID_NOOP("gamehq.error.update.download.sha256_mismatch"),
+            "The update package failed SHA-256 verification and was rejected.");
         return false;
     }
     return true;

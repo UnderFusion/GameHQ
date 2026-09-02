@@ -280,6 +280,662 @@
       <source>%1 s</source>
       <translation>%1 秒</translation>
     </message>
+    <message id="gamehq.error.capture_location.create_failed">
+      <location filename="src/config/CaptureLocations.cpp" line="126"></location>
+      <source>The selected folder could not be created.</source>
+      <translation>選取的資料無法創建.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.folder_invalid">
+      <location filename="src/config/CaptureLocations.cpp" line="110"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="118"></location>
+      <source>The selected folder is invalid.</source>
+      <translation>已選取的資料是不有效的.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.local_folder_required">
+      <location filename="src/ui/AppController.cpp" line="321"></location>
+      <source>Choose a local folder.</source>
+      <translation>選擇本地資料.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.not_writable">
+      <location filename="src/config/CaptureLocations.cpp" line="136"></location>
+      <source>The selected folder is not writable.</source>
+      <translation>選定的資料無法寫.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.restore_default_failed">
+      <location filename="src/config/CaptureLocations.cpp" line="202"></location>
+      <source>GameHQ could not restore the default folder.</source>
+      <translation>GameHQ 無法恢復預設文件.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.save_failed">
+      <location filename="src/config/CaptureLocations.cpp" line="175"></location>
+      <source>GameHQ could not save the selected folder.</source>
+      <translation>GameHQ 無法保存所選資料.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.type_invalid">
+      <location filename="src/ui/AppController.cpp" line="315"></location>
+      <location filename="src/ui/AppController.cpp" line="337"></location>
+      <source>The capture type is invalid.</source>
+      <translation>捕捉類型是沒有效力的.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.backup_missing">
+      <location filename="src/config/PortableProfileImporter.cpp" line="303"></location>
+      <source>The interrupted portable-import backup is missing.</source>
+      <translation>已被中斷的便携式輸入備份沒有.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.capture_history_value_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="391"></location>
+      <source>Capture-root history contains a non-string value.</source>
+      <translation>捕捉根歷史包含非字符串值.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.commit_staged_file_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
+      <source>Cannot commit staged %1.</source>
+      <translation>沒有可進行. %1我們都知道.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_malformed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="343"></location>
+      <source>The portable config.json is malformed.</source>
+      <translation>隨身 config.json 沒有整形.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_path_unsupported">
+      <location filename="src/config/PortableProfileImporter.cpp" line="417"></location>
+      <source>Unsupported portable path in config key %1.</source>
+      <translation>在設定鍵中不支持可移植路徑 %1我們都知道.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_read_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="333"></location>
+      <source>Cannot read the portable config.json.</source>
+      <translation>無法閱讀可移植的 config.json.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_value_not_array">
+      <location filename="src/config/PortableProfileImporter.cpp" line="382"></location>
+      <source>%1 must be an array.</source>
+      <translation>%1 這應該是一個數據組.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_value_not_string">
+      <location filename="src/config/PortableProfileImporter.cpp" line="364"></location>
+      <source>%1 must be a string.</source>
+      <translation>%1 這一定是個串.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.data_directory_escapes_package">
+      <location filename="src/config/PortableProfileImporter.cpp" line="893"></location>
+      <source>The portable data directory escapes the selected package root.</source>
+      <translation>隨身資料目錄逃離所選的包根.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_foreign_key_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="833"></location>
+      <source>The staged database failed its foreign-key check.</source>
+      <translation>沒有任何證據顯示,</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_integrity_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="822"></location>
+      <source>The staged database failed its integrity check.</source>
+      <translation>沒有任何證據顯示,</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_missing">
+      <location filename="src/config/PortableProfileImporter.cpp" line="915"></location>
+      <source>The portable profile has no gamehq.db.</source>
+      <translation>隨身帳號沒有 gamehq.db.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_open_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="749"></location>
+      <source>The staged portable database cannot be opened: %1</source>
+      <translation>沒有打開分階段可移植資料庫: %1</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_operation_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="28"></location>
+      <source>A portable-profile database operation failed: %1</source>
+      <translation>移動型資料庫操作失敗: %1</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_path_unsupported">
+      <location filename="src/config/PortableProfileImporter.cpp" line="801"></location>
+      <source>Unsupported portable path in database setting %1.</source>
+      <translation>在資料庫設定中不支持可移植路徑 %1我們都知道.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_schema_read_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="757"></location>
+      <source>The portable database schema cannot be read.</source>
+      <translation>移動式資料庫圖表無法閱讀.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_schema_unsupported">
+      <location filename="src/config/PortableProfileImporter.cpp" line="763"></location>
+      <source>The portable database schema is unsupported.</source>
+      <translation>移動式資料庫模式不支持.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_stage_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="987"></location>
+      <source>The portable database cannot be staged.</source>
+      <translation>隨身數據庫無法進行.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_transaction_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="769"></location>
+      <source>The portable database transaction cannot begin.</source>
+      <translation>移動資料庫交易無法開始.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_backup_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="1038"></location>
+      <source>The empty installed profile cannot be backed up for import.</source>
+      <translation>沒有任何可供輸入的儲存檔.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_config_not_default">
+      <location filename="src/config/PortableProfileImporter.cpp" line="501"></location>
+      <source>The installed profile has non-default configuration.</source>
+      <translation>已安裝的配置是非預設設定的.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_contains_link">
+      <location filename="src/config/PortableProfileImporter.cpp" line="459"></location>
+      <source>The installed profile contains a symbolic link or junction: %1.</source>
+      <translation>裝置的配置文件包含一個象徵性的連結或接口: %1我們都知道.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_data_unsupported">
+      <location filename="src/config/PortableProfileImporter.cpp" line="482"></location>
+      <source>The installed profile contains unsupported data: %1.</source>
+      <translation>已安裝的檔案包含不支援的資料: %1我們都知道.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_database_inspection_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="520"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="542"></location>
+      <source>The installed database cannot be inspected.</source>
+      <translation>沒有任何資料庫可供查詢.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_file_exists">
+      <location filename="src/config/PortableProfileImporter.cpp" line="469"></location>
+      <source>The installed profile already has its own %1.</source>
+      <translation>已安裝的帳號已有自己的帳號 %1我們都知道.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_not_empty">
+      <location filename="src/config/PortableProfileImporter.cpp" line="553"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="567"></location>
+      <source>The installed profile is not empty.</source>
+      <translation>已安裝的配置文件並非空的.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_restore_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="292"></location>
+      <source>The interrupted portable import could not restore its destination backup.</source>
+      <translation>已中斷的可移植輸入無法恢復其目的地備份.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_root_link">
+      <location filename="src/config/PortableProfileImporter.cpp" line="432"></location>
+      <source>The installed profile root must not be a symbolic link or junction.</source>
+      <translation>裝置的標誌根不能是象徵性的連結或接口.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.game_path_scheme_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="604"></location>
+      <source>A game executable path incorrectly uses portable:/.</source>
+      <translation>遊戲可執行路徑使用可移植:/.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.hash_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="159"></location>
+      <source>Cannot hash %1.</source>
+      <translation>沒有 %1我們都知道.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.installed_copy_required">
+      <location filename="src/ui/AppController.cpp" line="181"></location>
+      <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
+      <translation>只有安裝了"使用者"的副本才能輸入便携型材, GameHQ 我們都知道.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.journal_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="263"></location>
+      <source>The interrupted portable-import journal is invalid.</source>
+      <translation>已被中斷的可移植輸入日志是無效的.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.journal_malformed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="242"></location>
+      <source>The interrupted portable-import journal is malformed.</source>
+      <translation>已被中斷的隨身輸入日誌有缺陷.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.journal_read_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="231"></location>
+      <source>The interrupted portable-import journal cannot be read.</source>
+      <translation>暫停的隨身輸入日誌無法閱讀.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.journal_remove_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="315"></location>
+      <source>The recovered portable-import journal could not be removed.</source>
+      <translation>已恢復的可移植輸入日志無法移除.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.local_folder_required">
+      <location filename="src/ui/AppController.cpp" line="187"></location>
+      <source>Select a local GameHQ portable folder.</source>
+      <translation>選擇本地 GameHQ 隨身文件.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.package_invalid">
+      <location filename="src/ui/AppController.cpp" line="196"></location>
+      <source>The selected folder is not a GameHQ portable package.</source>
+      <translation>已選取的資料不是一個 GameHQ 隨身包裝.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.package_root_canonicalize_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="56"></location>
+      <source>The portable package root cannot be canonicalized.</source>
+      <translation>隨身包根無法成為聖典.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.path_escapes_package">
+      <location filename="src/config/PortableProfileImporter.cpp" line="73"></location>
+      <source>A portable path escapes the selected package root.</source>
+      <translation>移動路徑逃離所選的包根.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.path_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="106"></location>
+      <source>A portable:/ path is empty or absolute.</source>
+      <translation>隨身:/路徑是空的或絕對的.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.path_scheme_required">
+      <location filename="src/config/PortableProfileImporter.cpp" line="93"></location>
+      <source>Imported paths must be absolute or use portable:/.</source>
+      <translation>輸入路徑必須是絕對或使用可移植:/.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.portable_path_escapes_package">
+      <location filename="src/config/PortableProfileImporter.cpp" line="117"></location>
+      <source>A portable:/ path escapes the selected package root.</source>
+      <translation>便携式:/路径逃离所选的包根.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.process_identity_failed">
+      <location filename="src/ui/AppController.cpp" line="207"></location>
+      <source>GameHQ could not identify its own process for the import.</source>
+      <translation>GameHQ 沒有辦法識別自己的進口工藝.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.process_start_failed">
+      <location filename="src/ui/AppController.cpp" line="217"></location>
+      <source>GameHQ could not start the portable import process.</source>
+      <translation>GameHQ 無法啟動可移植輸入流程.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.publish_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="1062"></location>
+      <source>The staged profile cannot be published.</source>
+      <translation>沒有任何可能的.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.published_destination_missing">
+      <location filename="src/config/PortableProfileImporter.cpp" line="279"></location>
+      <source>The published portable-import destination is missing.</source>
+      <translation>沒有顯示出載的隨身輸入目的地.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.recovery_remove_directory_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="203"></location>
+      <source>Portable-import recovery could not remove a transaction directory.</source>
+      <translation>移動輸入恢復無法移除交易目錄.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.recovery_required">
+      <location filename="src/config/PortableProfileImporter.cpp" line="973"></location>
+      <source>%1 Recovery required: %2</source>
+      <translation>%1 需要復原：%2</translation>
+    </message>
+    <message id="gamehq.error.portable_import.rollback_restore_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="961"></location>
+      <source>The installed profile backup could not be restored.</source>
+      <translation>沒有恢復安裝的檔案.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.sound_file_missing">
+      <location filename="src/config/PortableProfileImporter.cpp" line="706"></location>
+      <source>A referenced portable sound file is missing.</source>
+      <translation>沒有所引用的可移植音頻檔案.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.sound_file_stage_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="718"></location>
+      <source>A referenced sound file could not be staged.</source>
+      <translation>沒有可能進行引用的音頻檔.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.source_changed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="1012"></location>
+      <source>The portable source changed during import.</source>
+      <translation>隨機源在進口過程中改變.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.source_destination_overlap">
+      <location filename="src/config/PortableProfileImporter.cpp" line="901"></location>
+      <source>Source and destination profiles must be separate.</source>
+      <translation>來源和目的地必須分開.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.source_package_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="884"></location>
+      <source>Select a valid GameHQ portable package root.</source>
+      <translation>選擇有效的 GameHQ 隨身包根.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.source_read_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="150"></location>
+      <source>Cannot read %1 for source verification.</source>
+      <translation>無法讀取 %1 以驗證來源。</translation>
+    </message>
+    <message id="gamehq.error.portable_import.stage_file_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="173"></location>
+      <source>Cannot stage %1.</source>
+      <translation>沒有可能進行 %1我們都知道.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.staging_directory_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="939"></location>
+      <source>The import staging directory cannot be created.</source>
+      <translation>輸入階段目錄無法建立.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.transaction_running">
+      <location filename="src/config/PortableProfileImporter.cpp" line="872"></location>
+      <source>Another portable-profile import is already running.</source>
+      <translation>另一個便携式配置文件輸入已經運行.</translation>
+    </message>
+    <message id="gamehq.error.update.capture_quiescence_timeout">
+      <location filename="src/app/App.cpp" line="446"></location>
+      <source>The update was cancelled because capture work did not finish safely in time.</source>
+      <translation>更新已取消, 因為捕捉工作未及時完成.</translation>
+    </message>
+    <message id="gamehq.error.update.check_failed">
+      <location filename="src/updates/UpdateService.cpp" line="334"></location>
+      <source>Update check failed: %1</source>
+      <translation>更新檢查失敗: %1</translation>
+    </message>
+    <message id="gamehq.error.update.check_rate_limited">
+      <location filename="src/updates/UpdateService.cpp" line="123"></location>
+      <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
+      <translation>GitHub 暫時限制了更新檢查。GameHQ 將稍後重試。</translation>
+    </message>
+    <message id="gamehq.error.update.check_rate_limited_until">
+      <location filename="src/updates/UpdateService.cpp" line="117"></location>
+      <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
+      <translation>GitHub 暫時限制了更新檢查。GameHQ 將在 %1 後重試。</translation>
+    </message>
+    <message id="gamehq.error.update.download.checksum_calculation_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="523"></location>
+      <source>GameHQ could not calculate the update checksum.</source>
+      <translation>GameHQ 沒有計算更新的檢查總數.</translation>
+    </message>
+    <message id="gamehq.error.update.download.checksum_entry_count">
+      <location filename="src/updates/UpdateDownloader.cpp" line="477"></location>
+      <source>The update checksum file must contain exactly one entry.</source>
+      <translation>更新檢查總數檔必須包含一個輸入.</translation>
+    </message>
+    <message id="gamehq.error.update.download.checksum_format_invalid">
+      <location filename="src/updates/UpdateDownloader.cpp" line="489"></location>
+      <source>The update checksum file has an invalid format.</source>
+      <translation>更新檢查總數檔案沒有有效格式.</translation>
+    </message>
+    <message id="gamehq.error.update.download.checksum_package_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="498"></location>
+      <source>The update checksum names a different package.</source>
+      <translation>更新檢查總數命名不同的包.</translation>
+    </message>
+    <message id="gamehq.error.update.download.evidence_incomplete">
+      <location filename="src/updates/UpdateDownloader.cpp" line="324"></location>
+      <source>The verified update evidence is incomplete.</source>
+      <translation>已驗證的更新證據不完整.</translation>
+    </message>
+    <message id="gamehq.error.update.download.flush_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="212"></location>
+      <source>GameHQ could not flush the update download to disk.</source>
+      <translation>GameHQ 無法將更新下載到磁盤上.</translation>
+    </message>
+    <message id="gamehq.error.update.download.http_status">
+      <location filename="src/updates/UpdateDownloader.cpp" line="257"></location>
+      <source>Update download failed with HTTP status %1.</source>
+      <translation>更新下載失敗 %1我們都知道.</translation>
+    </message>
+    <message id="gamehq.error.update.download.https_required">
+      <location filename="src/updates/UpdateDownloader.cpp" line="80"></location>
+      <source>The update download must use HTTPS.</source>
+      <translation>更新下載必須使用HTTPS.</translation>
+    </message>
+    <message id="gamehq.error.update.download.insecure_redirect">
+      <location filename="src/updates/UpdateDownloader.cpp" line="240"></location>
+      <source>The update download redirected away from HTTPS.</source>
+      <translation>更新下載已從HTTPS轉移.</translation>
+    </message>
+    <message id="gamehq.error.update.download.manifest_hash_malformed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="301"></location>
+      <source>The signed manifest artifact hash is malformed.</source>
+      <translation>已簽署的文物哈希是有缺陷的.</translation>
+    </message>
+    <message id="gamehq.error.update.download.manifest_length_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="313"></location>
+      <source>The update package length did not match the signed manifest.</source>
+      <translation>更新包的長度與簽名明示不符.</translation>
+    </message>
+    <message id="gamehq.error.update.download.manifest_read_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="346"></location>
+      <source>GameHQ could not read the downloaded release manifest.</source>
+      <translation>GameHQ 沒有讀取下載的釋放宣言.</translation>
+    </message>
+    <message id="gamehq.error.update.download.manifest_version_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="396"></location>
+      <source>The signed manifest describes a different version than the release.</source>
+      <translation>沒有任何證據顯示,</translation>
+    </message>
+    <message id="gamehq.error.update.download.network_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="248"></location>
+      <source>Update download failed: %1</source>
+      <translation>更新下載失敗: %1</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_name_invalid">
+      <location filename="src/updates/UpdateDownloader.cpp" line="71"></location>
+      <source>The update package name is invalid.</source>
+      <translation>更新包名稱是不準的.</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_name_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="415"></location>
+      <source>The signed manifest names a different update package.</source>
+      <translation>簽名明示表中命名的是不同的更新包.</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_not_authorised">
+      <location filename="src/updates/UpdateDownloader.cpp" line="405"></location>
+      <source>The signed manifest does not authorise an update package.</source>
+      <translation>沒有任何證據顯示該國的國家,</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_read_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="514"></location>
+      <source>GameHQ could not read the downloaded update package.</source>
+      <translation>GameHQ 沒有讀取下載的更新包.</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_size_invalid">
+      <location filename="src/updates/UpdateDownloader.cpp" line="96"></location>
+      <source>The update package size is missing or exceeds the safety limit.</source>
+      <translation>更新包沒有或超過安全限值.</translation>
+    </message>
+    <message id="gamehq.error.update.download.partial_create_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="150"></location>
+      <source>GameHQ could not create the partial update file.</source>
+      <translation>GameHQ 無法創建部分更新檔.</translation>
+    </message>
+    <message id="gamehq.error.update.download.publish_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="222"></location>
+      <source>GameHQ could not publish the completed update download.</source>
+      <translation>GameHQ 沒有發表完整的更新下載.</translation>
+    </message>
+    <message id="gamehq.error.update.download.release_size_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="265"></location>
+      <source>The update download size did not match the release metadata.</source>
+      <translation>更新下載大小與發行元數據不一致.</translation>
+    </message>
+    <message id="gamehq.error.update.download.sha256_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="532"></location>
+      <source>The update package failed SHA-256 verification and was rejected.</source>
+      <translation>更新包未通過SHA-256驗證,因此被拒絕.</translation>
+    </message>
+    <message id="gamehq.error.update.download.signature_noncanonical">
+      <location filename="src/updates/UpdateDownloader.cpp" line="454"></location>
+      <source>The release signature is not in its canonical form.</source>
+      <translation>這項法律並不符合法律.</translation>
+    </message>
+    <message id="gamehq.error.update.download.signature_read_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="357"></location>
+      <source>GameHQ could not read the downloaded release signature.</source>
+      <translation>GameHQ 沒有讀取下載的發行簽名.</translation>
+    </message>
+    <message id="gamehq.error.update.download.signature_untrusted">
+      <location filename="src/updates/UpdateDownloader.cpp" line="387"></location>
+      <source>This release is not authorised by a trusted signature: %1</source>
+      <translation>這項釋放並未通過可信簽名授權: %1</translation>
+    </message>
+    <message id="gamehq.error.update.download.signed_manifest_missing">
+      <location filename="src/updates/UpdateDownloader.cpp" line="88"></location>
+      <source>This release has no signed manifest, so it cannot be installed.</source>
+      <translation>這種版本沒有簽名的明顯,</translation>
+    </message>
+    <message id="gamehq.error.update.download.signed_size_invalid">
+      <location filename="src/updates/UpdateDownloader.cpp" line="423"></location>
+      <source>The signed update package size is out of range.</source>
+      <translation>已簽署的更新包尺寸已超出範圍.</translation>
+    </message>
+    <message id="gamehq.error.update.download.size_limit_exceeded">
+      <location filename="src/updates/UpdateDownloader.cpp" line="190"></location>
+      <source>The update download exceeded its safety size limit.</source>
+      <translation>更新下載超過安全尺寸限制.</translation>
+    </message>
+    <message id="gamehq.error.update.download.staging_create_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="104"></location>
+      <source>GameHQ could not create the update staging directory.</source>
+      <translation>GameHQ 沒有創建更新階段目錄.</translation>
+    </message>
+    <message id="gamehq.error.update.download.trust_state_read_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="375"></location>
+      <source>GameHQ could not read its release trust state: %1</source>
+      <translation>GameHQ 無法閱讀其發行信任狀態: %1</translation>
+    </message>
+    <message id="gamehq.error.update.download.trust_state_write_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="434"></location>
+      <source>GameHQ could not record the release trust state: %1</source>
+      <translation>GameHQ 無法記錄發行信任狀態: %1</translation>
+    </message>
+    <message id="gamehq.error.update.download.write_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="198"></location>
+      <source>GameHQ could not write the update download to disk.</source>
+      <translation>GameHQ 無法將更新下載寫入磁盤.</translation>
+    </message>
+    <message id="gamehq.error.update.install.handshake_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="183"></location>
+      <source>GameHQ could not prepare the updater handshake.</source>
+      <translation>GameHQ 沒有準備更新手握.</translation>
+    </message>
+    <message id="gamehq.error.update.install.helper_missing">
+      <location filename="src/updates/UpdateInstaller.cpp" line="169"></location>
+      <source>%1 is missing or cannot run.</source>
+      <oldsource>GameHQUpdater.exe is missing or cannot run.</oldsource>
+      <translation>缺少 %1 或無法執行。</translation>
+    </message>
+    <message id="gamehq.error.update.install.helper_rejected">
+      <location filename="src/updates/UpdateInstaller.cpp" line="212"></location>
+      <source>The updater helper rejected the update before it became ready.</source>
+      <translation>更新者輔助器在更新準備好之前拒絕了更新.</translation>
+    </message>
+    <message id="gamehq.error.update.install.helper_start_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="195"></location>
+      <source>GameHQ could not start the updater helper.</source>
+      <translation>GameHQ 更新輔助器無法啟動.</translation>
+    </message>
+    <message id="gamehq.error.update.install.helper_timeout">
+      <location filename="src/updates/UpdateInstaller.cpp" line="217"></location>
+      <source>The updater helper did not confirm it is ready in time.</source>
+      <translation>更新輔助器未能及時確認是否已準備好.</translation>
+    </message>
+    <message id="gamehq.error.update.install.manifest_mismatch">
+      <location filename="src/updates/UpdateInstaller.cpp" line="72"></location>
+      <source>The staged package no longer matches the signed manifest.</source>
+      <translation>已沒有任何證據顯示,</translation>
+    </message>
+    <message id="gamehq.error.update.install.metadata_incomplete">
+      <location filename="src/updates/UpdateInstaller.cpp" line="31"></location>
+      <source>The verified update metadata is incomplete.</source>
+      <translation>已驗證的更新元數據不完整.</translation>
+    </message>
+    <message id="gamehq.error.update.install.metadata_invalid">
+      <location filename="src/updates/UpdateInstaller.cpp" line="63"></location>
+      <source>The verified update metadata is invalid.</source>
+      <translation>已驗證的更新元數據是不有效的.</translation>
+    </message>
+    <message id="gamehq.error.update.install.package_changed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="82"></location>
+      <source>The update package changed before installation: %1</source>
+      <translation>更新包在安裝前更改: %1</translation>
+    </message>
+    <message id="gamehq.error.update.install.package_outside_staging">
+      <location filename="src/updates/UpdateInstaller.cpp" line="54"></location>
+      <source>The verified update package is outside GameHQ's staging directory.</source>
+      <translation>已驗證的更新包已在外面 GameHQ 該組織的目錄.</translation>
+    </message>
+    <message id="gamehq.error.update.install.process_identity_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="106"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="115"></location>
+      <source>GameHQ could not identify its own process for the update.</source>
+      <translation>GameHQ 沒有找到更新的過程.</translation>
+    </message>
+    <message id="gamehq.error.update.install.transaction_directory_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="91"></location>
+      <source>GameHQ could not create the update transaction directory.</source>
+      <translation>GameHQ 無法建立更新交易目錄.</translation>
+    </message>
+    <message id="gamehq.error.update.install.transaction_publish_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="153"></location>
+      <source>GameHQ could not publish the update transaction.</source>
+      <translation>GameHQ 沒有發表更新交易.</translation>
+    </message>
+    <message id="gamehq.error.update.maintenance_handoff_failed">
+      <location filename="src/app/App.cpp" line="421"></location>
+      <source>GameHQ could not begin update maintenance: %1</source>
+      <translation>GameHQ 更新維護無法開始: %1</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.disk_space_insufficient">
+      <location filename="src/updates/UpdatePreflight.cpp" line="119"></location>
+      <source>There is not enough free space for download, staging and rollback backup.</source>
+      <translation>沒有足夠的空位下載,進行和倒退備份.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.filesystem_unsupported">
+      <location filename="src/updates/UpdatePreflight.cpp" line="69"></location>
+      <source>Automatic updating currently requires NTFS or ReFS; use the release page on this drive.</source>
+      <translation>自動更新目前需要NTFS或ReFS; 使用此驅動器的發行頁面.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.network_share">
+      <location filename="src/updates/UpdatePreflight.cpp" line="21"></location>
+      <source>Automatic updating is not supported from a network share. Use the release page instead.</source>
+      <translation>自动更新並不支持網路共享.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.package_incomplete">
+      <location filename="src/updates/UpdatePreflight.cpp" line="41"></location>
+      <source>Automatic updating is available only in a complete packaged GameHQ installation.</source>
+      <translation>自動更新只提供完整包裝. GameHQ 設置</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.path_too_long">
+      <location filename="src/updates/UpdatePreflight.cpp" line="29"></location>
+      <source>This installation path is too long for safe automatic replacement. Use a shorter local path.</source>
+      <translation>這條安裝路徑太長, 沒有安全的自動更換.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.recovery_pending">
+      <location filename="src/updates/UpdatePreflight.cpp" line="51"></location>
+      <source>A previous update must finish recovery before another update can start.</source>
+      <translation>之前的更新必須完成恢復,</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.staging_create_failed">
+      <location filename="src/updates/UpdatePreflight.cpp" line="77"></location>
+      <source>GameHQ cannot create its update staging directory here.</source>
+      <translation>GameHQ 這裡無法建立更新的階段目錄.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.volume_not_writable">
+      <location filename="src/updates/UpdatePreflight.cpp" line="60"></location>
+      <source>The GameHQ installation is not on a writable local volume.</source>
+      <translation>沒有任何 GameHQ 裝置並非可寫本地卷.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.write_failed">
+      <location filename="src/updates/UpdatePreflight.cpp" line="88"></location>
+      <source>GameHQ cannot safely write update files in this installation.</source>
+      <translation>GameHQ 這種情況下,</translation>
+    </message>
+    <message id="gamehq.error.update.release_changed">
+      <location filename="src/updates/UpdateService.cpp" line="225"></location>
+      <source>The release changed after download. Check again before installing.</source>
+      <translation>版本在下載後有所變化.</translation>
+    </message>
+    <message id="gamehq.error.update.release_withdrawn">
+      <location filename="src/updates/UpdateService.cpp" line="282"></location>
+      <source>The downloaded release was withdrawn before installation.</source>
+      <translation>已在安裝之前撤回下載版本.</translation>
+    </message>
+    <message id="gamehq.error.update.revalidation_failed">
+      <location filename="src/updates/UpdateService.cpp" line="326"></location>
+      <source>The release could not be revalidated: %1</source>
+      <translation>沒有辦法延續釋放: %1</translation>
+    </message>
+    <message id="gamehq.error.update.revalidation_not_fresh">
+      <location filename="src/updates/UpdateService.cpp" line="254"></location>
+      <source>The release could not be freshly revalidated before installation.</source>
+      <translation>沒有任何可能在安裝之前重新恢復許可.</translation>
+    </message>
+    <message id="gamehq.error.update.revalidation_rate_limited">
+      <location filename="src/updates/UpdateService.cpp" line="304"></location>
+      <source>GitHub could not revalidate this release before installation. Try again later.</source>
+      <translation>GitHub無法在安裝之前重新驗證此版本.</translation>
+    </message>
     <message id="gamehq.format.fps">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="87"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="89"></location>
@@ -919,6 +1575,36 @@ This cannot be undone.</source>
       <source>Settings</source>
       <translation>設定方式</translation>
     </message>
+    <message id="gamehq.notification.replay_failed.reason">
+      <location filename="src/app/App.cpp" line="280"></location>
+      <source>Reason: %1</source>
+      <translation>原因：%1</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.title">
+      <location filename="src/app/App.cpp" line="286"></location>
+      <source>Replay failed</source>
+      <translation>播放失敗</translation>
+    </message>
+    <message id="gamehq.notification.replay_saved.title">
+      <location filename="src/app/App.cpp" line="266"></location>
+      <source>Replay saved</source>
+      <translation>重播已保存</translation>
+    </message>
+    <message id="gamehq.notification.screenshot_saved.title">
+      <location filename="src/app/App.cpp" line="218"></location>
+      <source>Screenshot saved</source>
+      <translation>屏幕截圖保存</translation>
+    </message>
+    <message id="gamehq.notification.settings_quarantined.body">
+      <location filename="src/app/App.cpp" line="329"></location>
+      <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
+      <translation>GameHQ 已使用預設設定啟動。系統保留了先前的設定檔，因此沒有遺失任何內容。</translation>
+    </message>
+    <message id="gamehq.notification.settings_quarantined.title">
+      <location filename="src/app/App.cpp" line="324"></location>
+      <source>Settings could not be read</source>
+      <translation>設定無法閱讀</translation>
+    </message>
     <message id="gamehq.notifications.window_title">
       <location filename="src/ui/qml/ToastWindow.qml" line="17"></location>
       <source>%1 Notifications</source>
@@ -970,7 +1656,7 @@ This cannot be undone.</source>
       <translation>%1 覆蓋層</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="103"></location>
+      <location filename="src/ui/AppController.cpp" line="104"></location>
       <source>Release notes</source>
       <translation type="unfinished"></translation>
     </message>
@@ -2646,6 +3332,47 @@ This cannot be undone.</source>
       <location filename="src/ui/qml/themes/SynthwaveSkin.qml" line="6"></location>
       <source>Synthwave</source>
       <translation>Synthwave</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.failed_title">
+      <location filename="src/main.cpp" line="222"></location>
+      <source>Portable import failed</source>
+      <translation>可攜式設定檔匯入失敗</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.installed_copy_required">
+      <location filename="src/main.cpp" line="189"></location>
+      <source>Run portable import from an installed copy of GameHQ.</source>
+      <translation>執行可移植輸入從安裝的副本 GameHQ 我們都知道.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.instance_running">
+      <location filename="src/main.cpp" line="201"></location>
+      <source>Another GameHQ instance is running, so the portable import cannot start.</source>
+      <translation>另一個 GameHQ 這樣便可開始移植.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.parent_argument_incomplete">
+      <location filename="src/main.cpp" line="83"></location>
+      <source>The portable import parent-process argument is incomplete.</source>
+      <translation>移動性輸入父进程引數不完整.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.parent_identifier_invalid">
+      <location filename="src/main.cpp" line="111"></location>
+      <location filename="src/main.cpp" line="117"></location>
+      <source>The portable import parent-process identifier is invalid.</source>
+      <translation>隨身輸入父进程識別碼是不有效的.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.parent_still_running">
+      <location filename="src/main.cpp" line="97"></location>
+      <source>The running GameHQ instance did not close in time.</source>
+      <translation>跑步活動 GameHQ 這場案件未及時結束.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.parent_unverifiable">
+      <location filename="src/main.cpp" line="104"></location>
+      <source>GameHQ could not confirm that the previous instance has closed.</source>
+      <translation>GameHQ 沒有證實前一案已結束.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.source_missing">
+      <location filename="src/main.cpp" line="183"></location>
+      <source>The portable import source folder is missing.</source>
+      <translation>隨身輸入源文件沒有.</translation>
     </message>
     <message id="gamehq.tray.open_gallery">
       <location filename="src/tray/TrayIcon.cpp" line="163"></location>

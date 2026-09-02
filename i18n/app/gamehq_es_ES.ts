@@ -282,6 +282,662 @@
       <source>%1 s</source>
       <translation>%1 s</translation>
     </message>
+    <message id="gamehq.error.capture_location.create_failed">
+      <location filename="src/config/CaptureLocations.cpp" line="126"></location>
+      <source>The selected folder could not be created.</source>
+      <translation>No se pudo crear la carpeta seleccionada.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.folder_invalid">
+      <location filename="src/config/CaptureLocations.cpp" line="110"></location>
+      <location filename="src/config/CaptureLocations.cpp" line="118"></location>
+      <source>The selected folder is invalid.</source>
+      <translation>La carpeta seleccionada no es válida.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.local_folder_required">
+      <location filename="src/ui/AppController.cpp" line="321"></location>
+      <source>Choose a local folder.</source>
+      <translation>Elige una carpeta local.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.not_writable">
+      <location filename="src/config/CaptureLocations.cpp" line="136"></location>
+      <source>The selected folder is not writable.</source>
+      <translation>La carpeta seleccionada no se puede escribir.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.restore_default_failed">
+      <location filename="src/config/CaptureLocations.cpp" line="202"></location>
+      <source>GameHQ could not restore the default folder.</source>
+      <translation>GameHQ No se pudo restaurar la carpeta predeterminada.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.save_failed">
+      <location filename="src/config/CaptureLocations.cpp" line="175"></location>
+      <source>GameHQ could not save the selected folder.</source>
+      <translation>GameHQ No se pudo guardar la carpeta seleccionada.</translation>
+    </message>
+    <message id="gamehq.error.capture_location.type_invalid">
+      <location filename="src/ui/AppController.cpp" line="315"></location>
+      <location filename="src/ui/AppController.cpp" line="337"></location>
+      <source>The capture type is invalid.</source>
+      <translation>El tipo de captura no es válido.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.backup_missing">
+      <location filename="src/config/PortableProfileImporter.cpp" line="303"></location>
+      <source>The interrupted portable-import backup is missing.</source>
+      <translation>La copia de seguridad de importación portátil interrumpida está desaparecida.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.capture_history_value_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="391"></location>
+      <source>Capture-root history contains a non-string value.</source>
+      <translation>El historial de captura de raíz contiene un valor no de cadena.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.commit_staged_file_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
+      <source>Cannot commit staged %1.</source>
+      <translation>No se puede comprometer la etapa %1- ¿ Qué ?</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_malformed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="343"></location>
+      <source>The portable config.json is malformed.</source>
+      <translation>El config.json portátil está malformado.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_path_unsupported">
+      <location filename="src/config/PortableProfileImporter.cpp" line="417"></location>
+      <source>Unsupported portable path in config key %1.</source>
+      <translation>Ruta portátil no soportada en la tecla de configuración %1- ¿ Qué ?</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_read_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="333"></location>
+      <source>Cannot read the portable config.json.</source>
+      <translation>No se puede leer el config.json portátil.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_value_not_array">
+      <location filename="src/config/PortableProfileImporter.cpp" line="382"></location>
+      <source>%1 must be an array.</source>
+      <translation>%1 Debe ser una matriz.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.config_value_not_string">
+      <location filename="src/config/PortableProfileImporter.cpp" line="364"></location>
+      <source>%1 must be a string.</source>
+      <translation>%1 Debe ser una cuerda.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.data_directory_escapes_package">
+      <location filename="src/config/PortableProfileImporter.cpp" line="893"></location>
+      <source>The portable data directory escapes the selected package root.</source>
+      <translation>El directorio de datos portátil escapa de la raíz del paquete seleccionado.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_foreign_key_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="833"></location>
+      <source>The staged database failed its foreign-key check.</source>
+      <translation>La base de datos escenificada falló en su verificación de llave extranjera.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_integrity_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="822"></location>
+      <source>The staged database failed its integrity check.</source>
+      <translation>La base de datos escenificada no logró su comprobación de integridad.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_missing">
+      <location filename="src/config/PortableProfileImporter.cpp" line="915"></location>
+      <source>The portable profile has no gamehq.db.</source>
+      <translation>El perfil portátil no tiene gamehq.db.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_open_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="749"></location>
+      <source>The staged portable database cannot be opened: %1</source>
+      <translation>No se puede abrir la base de datos portátil escalonada: %1</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_operation_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="28"></location>
+      <source>A portable-profile database operation failed: %1</source>
+      <translation>Una operación de base de datos de perfil portátil falló: %1</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_path_unsupported">
+      <location filename="src/config/PortableProfileImporter.cpp" line="801"></location>
+      <source>Unsupported portable path in database setting %1.</source>
+      <translation>Pista portátil no compatible en la configuración de la base de datos %1- ¿ Qué ?</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_schema_read_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="757"></location>
+      <source>The portable database schema cannot be read.</source>
+      <translation>No se puede leer el esquema de la base de datos portátil.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_schema_unsupported">
+      <location filename="src/config/PortableProfileImporter.cpp" line="763"></location>
+      <source>The portable database schema is unsupported.</source>
+      <translation>El esquema de base de datos portátil no es compatible.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_stage_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="987"></location>
+      <source>The portable database cannot be staged.</source>
+      <translation>La base de datos portátil no puede ser puesta en escena.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.database_transaction_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="769"></location>
+      <source>The portable database transaction cannot begin.</source>
+      <translation>La transacción de base de datos portátil no puede comenzar.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_backup_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="1038"></location>
+      <source>The empty installed profile cannot be backed up for import.</source>
+      <translation>El perfil instalado vacío no puede ser copiado de seguridad para la importación.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_config_not_default">
+      <location filename="src/config/PortableProfileImporter.cpp" line="501"></location>
+      <source>The installed profile has non-default configuration.</source>
+      <translation>El perfil instalado tiene una configuración no predeterminada.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_contains_link">
+      <location filename="src/config/PortableProfileImporter.cpp" line="459"></location>
+      <source>The installed profile contains a symbolic link or junction: %1.</source>
+      <translation>El perfil instalado contiene un enlace o un cruce simbólico: %1- ¿ Qué ?</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_data_unsupported">
+      <location filename="src/config/PortableProfileImporter.cpp" line="482"></location>
+      <source>The installed profile contains unsupported data: %1.</source>
+      <translation>El perfil instalado contiene datos no compatibles: %1- ¿ Qué ?</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_database_inspection_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="520"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="542"></location>
+      <source>The installed database cannot be inspected.</source>
+      <translation>No se puede inspeccionar la base de datos instalada.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_file_exists">
+      <location filename="src/config/PortableProfileImporter.cpp" line="469"></location>
+      <source>The installed profile already has its own %1.</source>
+      <translation>El perfil instalado ya tiene su propio %1- ¿ Qué ?</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_not_empty">
+      <location filename="src/config/PortableProfileImporter.cpp" line="553"></location>
+      <location filename="src/config/PortableProfileImporter.cpp" line="567"></location>
+      <source>The installed profile is not empty.</source>
+      <translation>El perfil instalado no está vacío.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_restore_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="292"></location>
+      <source>The interrupted portable import could not restore its destination backup.</source>
+      <translation>La importación portátil interrumpida no pudo restaurar su copia de seguridad de destino.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.destination_root_link">
+      <location filename="src/config/PortableProfileImporter.cpp" line="432"></location>
+      <source>The installed profile root must not be a symbolic link or junction.</source>
+      <translation>La raíz del perfil instalado no debe ser un eslabón o un enlace simbólico.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.game_path_scheme_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="604"></location>
+      <source>A game executable path incorrectly uses portable:/.</source>
+      <translation>Una ruta ejecutable de juego utiliza incorrectamente portable:/.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.hash_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="159"></location>
+      <source>Cannot hash %1.</source>
+      <translation>No puede hacer hash %1- ¿ Qué ?</translation>
+    </message>
+    <message id="gamehq.error.portable_import.installed_copy_required">
+      <location filename="src/ui/AppController.cpp" line="181"></location>
+      <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
+      <translation>Los perfiles portátiles sólo pueden importarse con una copia instalada de GameHQ- ¿ Qué ?</translation>
+    </message>
+    <message id="gamehq.error.portable_import.journal_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="263"></location>
+      <source>The interrupted portable-import journal is invalid.</source>
+      <translation>El diario de importación portátil interrumpido es inválido.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.journal_malformed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="242"></location>
+      <source>The interrupted portable-import journal is malformed.</source>
+      <translation>El diario de importación portátil interrumpido está malformado.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.journal_read_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="231"></location>
+      <source>The interrupted portable-import journal cannot be read.</source>
+      <translation>No se puede leer el diario de importación portátil interrumpido.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.journal_remove_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="315"></location>
+      <source>The recovered portable-import journal could not be removed.</source>
+      <translation>No se pudo eliminar el diario de importación portátil recuperado.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.local_folder_required">
+      <location filename="src/ui/AppController.cpp" line="187"></location>
+      <source>Select a local GameHQ portable folder.</source>
+      <translation>Seleccione un GameHQ carpeta portátil.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.package_invalid">
+      <location filename="src/ui/AppController.cpp" line="196"></location>
+      <source>The selected folder is not a GameHQ portable package.</source>
+      <translation>La carpeta seleccionada no es una GameHQ paquete portátil.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.package_root_canonicalize_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="56"></location>
+      <source>The portable package root cannot be canonicalized.</source>
+      <translation>El paquete portátil raíz no puede ser canonizado.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.path_escapes_package">
+      <location filename="src/config/PortableProfileImporter.cpp" line="73"></location>
+      <source>A portable path escapes the selected package root.</source>
+      <translation>Una ruta portátil escapa de la raíz del paquete seleccionado.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.path_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="106"></location>
+      <source>A portable:/ path is empty or absolute.</source>
+      <translation>Una ruta portátil:/ está vacía o absoluta.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.path_scheme_required">
+      <location filename="src/config/PortableProfileImporter.cpp" line="93"></location>
+      <source>Imported paths must be absolute or use portable:/.</source>
+      <translation>Las rutas importadas deben ser absolutas o utilizar portable:/.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.portable_path_escapes_package">
+      <location filename="src/config/PortableProfileImporter.cpp" line="117"></location>
+      <source>A portable:/ path escapes the selected package root.</source>
+      <translation>Una ruta portátil:/ escapa de la raíz del paquete seleccionado.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.process_identity_failed">
+      <location filename="src/ui/AppController.cpp" line="207"></location>
+      <source>GameHQ could not identify its own process for the import.</source>
+      <translation>GameHQ No pudo identificar su propio proceso para la importación.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.process_start_failed">
+      <location filename="src/ui/AppController.cpp" line="217"></location>
+      <source>GameHQ could not start the portable import process.</source>
+      <translation>GameHQ No se pudo iniciar el proceso de importación portátil.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.publish_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="1062"></location>
+      <source>The staged profile cannot be published.</source>
+      <translation>El perfil escalonado no puede publicarse.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.published_destination_missing">
+      <location filename="src/config/PortableProfileImporter.cpp" line="279"></location>
+      <source>The published portable-import destination is missing.</source>
+      <translation>El destino de importación portátil publicado no está disponible.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.recovery_remove_directory_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="203"></location>
+      <source>Portable-import recovery could not remove a transaction directory.</source>
+      <translation>La recuperación de importación portátil no pudo eliminar un directorio de transacciones.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.recovery_required">
+      <location filename="src/config/PortableProfileImporter.cpp" line="973"></location>
+      <source>%1 Recovery required: %2</source>
+      <translation>%1 Se requiere recuperación: %2</translation>
+    </message>
+    <message id="gamehq.error.portable_import.rollback_restore_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="961"></location>
+      <source>The installed profile backup could not be restored.</source>
+      <translation>No se pudo restaurar la copia de seguridad del perfil instalado.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.sound_file_missing">
+      <location filename="src/config/PortableProfileImporter.cpp" line="706"></location>
+      <source>A referenced portable sound file is missing.</source>
+      <translation>Falta un archivo de sonido portátil con referencia.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.sound_file_stage_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="718"></location>
+      <source>A referenced sound file could not be staged.</source>
+      <translation>No se pudo poner en escena un archivo de sonido con referencia.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.source_changed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="1012"></location>
+      <source>The portable source changed during import.</source>
+      <translation>La fuente portátil cambió durante la importación.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.source_destination_overlap">
+      <location filename="src/config/PortableProfileImporter.cpp" line="901"></location>
+      <source>Source and destination profiles must be separate.</source>
+      <translation>Los perfiles de origen y destino deben estar separados.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.source_package_invalid">
+      <location filename="src/config/PortableProfileImporter.cpp" line="884"></location>
+      <source>Select a valid GameHQ portable package root.</source>
+      <translation>Seleccione una GameHQ el paquete portátil root.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.source_read_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="150"></location>
+      <source>Cannot read %1 for source verification.</source>
+      <translation>No se puede leer %1 para verificar el origen.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.stage_file_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="173"></location>
+      <source>Cannot stage %1.</source>
+      <translation>No puede entrar en escena %1- ¿ Qué ?</translation>
+    </message>
+    <message id="gamehq.error.portable_import.staging_directory_failed">
+      <location filename="src/config/PortableProfileImporter.cpp" line="939"></location>
+      <source>The import staging directory cannot be created.</source>
+      <translation>No se puede crear el directorio de importación.</translation>
+    </message>
+    <message id="gamehq.error.portable_import.transaction_running">
+      <location filename="src/config/PortableProfileImporter.cpp" line="872"></location>
+      <source>Another portable-profile import is already running.</source>
+      <translation>Otra importación de perfil portátil ya está en ejecución.</translation>
+    </message>
+    <message id="gamehq.error.update.capture_quiescence_timeout">
+      <location filename="src/app/App.cpp" line="446"></location>
+      <source>The update was cancelled because capture work did not finish safely in time.</source>
+      <translation>La actualización fue cancelada porque el trabajo de captura no terminó a tiempo.</translation>
+    </message>
+    <message id="gamehq.error.update.check_failed">
+      <location filename="src/updates/UpdateService.cpp" line="334"></location>
+      <source>Update check failed: %1</source>
+      <translation>No se ha podido verificar la actualización: %1</translation>
+    </message>
+    <message id="gamehq.error.update.check_rate_limited">
+      <location filename="src/updates/UpdateService.cpp" line="123"></location>
+      <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
+      <translation>GitHub ha limitado temporalmente las comprobaciones de actualizaciones. GameHQ volverá a intentarlo más tarde.</translation>
+    </message>
+    <message id="gamehq.error.update.check_rate_limited_until">
+      <location filename="src/updates/UpdateService.cpp" line="117"></location>
+      <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
+      <translation>GitHub ha limitado temporalmente las comprobaciones de actualizaciones. GameHQ volverá a intentarlo después de %1.</translation>
+    </message>
+    <message id="gamehq.error.update.download.checksum_calculation_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="523"></location>
+      <source>GameHQ could not calculate the update checksum.</source>
+      <translation>GameHQ No se pudo calcular la suma de comprobación de actualización.</translation>
+    </message>
+    <message id="gamehq.error.update.download.checksum_entry_count">
+      <location filename="src/updates/UpdateDownloader.cpp" line="477"></location>
+      <source>The update checksum file must contain exactly one entry.</source>
+      <translation>El archivo de suma de comprobación de actualización debe contener exactamente una entrada.</translation>
+    </message>
+    <message id="gamehq.error.update.download.checksum_format_invalid">
+      <location filename="src/updates/UpdateDownloader.cpp" line="489"></location>
+      <source>The update checksum file has an invalid format.</source>
+      <translation>El archivo de suma de comprobación de actualización tiene un formato no válido.</translation>
+    </message>
+    <message id="gamehq.error.update.download.checksum_package_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="498"></location>
+      <source>The update checksum names a different package.</source>
+      <translation>La suma de comprobación de actualización nombra un paquete diferente.</translation>
+    </message>
+    <message id="gamehq.error.update.download.evidence_incomplete">
+      <location filename="src/updates/UpdateDownloader.cpp" line="324"></location>
+      <source>The verified update evidence is incomplete.</source>
+      <translation>La evidencia de actualización verificada es incompleta.</translation>
+    </message>
+    <message id="gamehq.error.update.download.flush_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="212"></location>
+      <source>GameHQ could not flush the update download to disk.</source>
+      <translation>GameHQ No se pudo descargar la actualización al disco.</translation>
+    </message>
+    <message id="gamehq.error.update.download.http_status">
+      <location filename="src/updates/UpdateDownloader.cpp" line="257"></location>
+      <source>Update download failed with HTTP status %1.</source>
+      <translation>No se descarga la actualización con estado HTTP %1- ¿ Qué ?</translation>
+    </message>
+    <message id="gamehq.error.update.download.https_required">
+      <location filename="src/updates/UpdateDownloader.cpp" line="80"></location>
+      <source>The update download must use HTTPS.</source>
+      <translation>La descarga de actualizaciones debe utilizar HTTPS.</translation>
+    </message>
+    <message id="gamehq.error.update.download.insecure_redirect">
+      <location filename="src/updates/UpdateDownloader.cpp" line="240"></location>
+      <source>The update download redirected away from HTTPS.</source>
+      <translation>La actualización descargada se redirigió lejos de HTTPS.</translation>
+    </message>
+    <message id="gamehq.error.update.download.manifest_hash_malformed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="301"></location>
+      <source>The signed manifest artifact hash is malformed.</source>
+      <translation>El hash del manifiesto del artefacto está malformado.</translation>
+    </message>
+    <message id="gamehq.error.update.download.manifest_length_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="313"></location>
+      <source>The update package length did not match the signed manifest.</source>
+      <translation>La longitud del paquete de actualización no coincide con el manifiesto firmado.</translation>
+    </message>
+    <message id="gamehq.error.update.download.manifest_read_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="346"></location>
+      <source>GameHQ could not read the downloaded release manifest.</source>
+      <translation>GameHQ No pude leer el manifiesto de liberación descargado.</translation>
+    </message>
+    <message id="gamehq.error.update.download.manifest_version_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="396"></location>
+      <source>The signed manifest describes a different version than the release.</source>
+      <translation>El manifiesto firmado describe una versión diferente a la liberación.</translation>
+    </message>
+    <message id="gamehq.error.update.download.network_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="248"></location>
+      <source>Update download failed: %1</source>
+      <translation>No se descarga la actualización: %1</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_name_invalid">
+      <location filename="src/updates/UpdateDownloader.cpp" line="71"></location>
+      <source>The update package name is invalid.</source>
+      <translation>El nombre del paquete de actualización no es válido.</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_name_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="415"></location>
+      <source>The signed manifest names a different update package.</source>
+      <translation>El manifiesto firmado nombra un paquete de actualización diferente.</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_not_authorised">
+      <location filename="src/updates/UpdateDownloader.cpp" line="405"></location>
+      <source>The signed manifest does not authorise an update package.</source>
+      <translation>El manifiesto firmado no autoriza un paquete de actualización.</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_read_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="514"></location>
+      <source>GameHQ could not read the downloaded update package.</source>
+      <translation>GameHQ No se pudo leer el paquete de actualización descargado.</translation>
+    </message>
+    <message id="gamehq.error.update.download.package_size_invalid">
+      <location filename="src/updates/UpdateDownloader.cpp" line="96"></location>
+      <source>The update package size is missing or exceeds the safety limit.</source>
+      <translation>El tamaño del paquete de actualización no está disponible o excede el límite de seguridad.</translation>
+    </message>
+    <message id="gamehq.error.update.download.partial_create_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="150"></location>
+      <source>GameHQ could not create the partial update file.</source>
+      <translation>GameHQ No se pudo crear el archivo de actualización parcial.</translation>
+    </message>
+    <message id="gamehq.error.update.download.publish_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="222"></location>
+      <source>GameHQ could not publish the completed update download.</source>
+      <translation>GameHQ No se pudo publicar la descarga de actualización completada.</translation>
+    </message>
+    <message id="gamehq.error.update.download.release_size_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="265"></location>
+      <source>The update download size did not match the release metadata.</source>
+      <translation>El tamaño de la actualización no coincide con los metadatos de la versión.</translation>
+    </message>
+    <message id="gamehq.error.update.download.sha256_mismatch">
+      <location filename="src/updates/UpdateDownloader.cpp" line="532"></location>
+      <source>The update package failed SHA-256 verification and was rejected.</source>
+      <translation>El paquete de actualización no logró la verificación SHA-256 y fue rechazado.</translation>
+    </message>
+    <message id="gamehq.error.update.download.signature_noncanonical">
+      <location filename="src/updates/UpdateDownloader.cpp" line="454"></location>
+      <source>The release signature is not in its canonical form.</source>
+      <translation>La firma de liberación no está en su forma canónica.</translation>
+    </message>
+    <message id="gamehq.error.update.download.signature_read_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="357"></location>
+      <source>GameHQ could not read the downloaded release signature.</source>
+      <translation>GameHQ No se pudo leer la firma de la versión descargada.</translation>
+    </message>
+    <message id="gamehq.error.update.download.signature_untrusted">
+      <location filename="src/updates/UpdateDownloader.cpp" line="387"></location>
+      <source>This release is not authorised by a trusted signature: %1</source>
+      <translation>Esta liberación no está autorizada por una firma de confianza: %1</translation>
+    </message>
+    <message id="gamehq.error.update.download.signed_manifest_missing">
+      <location filename="src/updates/UpdateDownloader.cpp" line="88"></location>
+      <source>This release has no signed manifest, so it cannot be installed.</source>
+      <translation>Esta versión no tiene un manifiesto firmado, por lo que no se puede instalar.</translation>
+    </message>
+    <message id="gamehq.error.update.download.signed_size_invalid">
+      <location filename="src/updates/UpdateDownloader.cpp" line="423"></location>
+      <source>The signed update package size is out of range.</source>
+      <translation>El paquete de actualización firmado está fuera de su rango.</translation>
+    </message>
+    <message id="gamehq.error.update.download.size_limit_exceeded">
+      <location filename="src/updates/UpdateDownloader.cpp" line="190"></location>
+      <source>The update download exceeded its safety size limit.</source>
+      <translation>La descarga de la actualización excedió su límite de tamaño de seguridad.</translation>
+    </message>
+    <message id="gamehq.error.update.download.staging_create_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="104"></location>
+      <source>GameHQ could not create the update staging directory.</source>
+      <translation>GameHQ No se pudo crear el directorio de actualización.</translation>
+    </message>
+    <message id="gamehq.error.update.download.trust_state_read_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="375"></location>
+      <source>GameHQ could not read its release trust state: %1</source>
+      <translation>GameHQ No se pudo leer su estado de confianza de liberación: %1</translation>
+    </message>
+    <message id="gamehq.error.update.download.trust_state_write_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="434"></location>
+      <source>GameHQ could not record the release trust state: %1</source>
+      <translation>GameHQ No se pudo registrar el estado de confianza de la liberación: %1</translation>
+    </message>
+    <message id="gamehq.error.update.download.write_failed">
+      <location filename="src/updates/UpdateDownloader.cpp" line="198"></location>
+      <source>GameHQ could not write the update download to disk.</source>
+      <translation>GameHQ No se pudo escribir la actualización descargada en disco.</translation>
+    </message>
+    <message id="gamehq.error.update.install.handshake_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="183"></location>
+      <source>GameHQ could not prepare the updater handshake.</source>
+      <translation>GameHQ No pude preparar el apretón de manos de actualización.</translation>
+    </message>
+    <message id="gamehq.error.update.install.helper_missing">
+      <location filename="src/updates/UpdateInstaller.cpp" line="169"></location>
+      <source>%1 is missing or cannot run.</source>
+      <oldsource>GameHQUpdater.exe is missing or cannot run.</oldsource>
+      <translation>%1 falta o no se puede ejecutar.</translation>
+    </message>
+    <message id="gamehq.error.update.install.helper_rejected">
+      <location filename="src/updates/UpdateInstaller.cpp" line="212"></location>
+      <source>The updater helper rejected the update before it became ready.</source>
+      <translation>El ayudante de actualización rechazó la actualización antes de que estuviera lista.</translation>
+    </message>
+    <message id="gamehq.error.update.install.helper_start_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="195"></location>
+      <source>GameHQ could not start the updater helper.</source>
+      <translation>GameHQ No se pudo iniciar el ayudante de actualización.</translation>
+    </message>
+    <message id="gamehq.error.update.install.helper_timeout">
+      <location filename="src/updates/UpdateInstaller.cpp" line="217"></location>
+      <source>The updater helper did not confirm it is ready in time.</source>
+      <translation>El ayudante de actualización no confirmó que está listo a tiempo.</translation>
+    </message>
+    <message id="gamehq.error.update.install.manifest_mismatch">
+      <location filename="src/updates/UpdateInstaller.cpp" line="72"></location>
+      <source>The staged package no longer matches the signed manifest.</source>
+      <translation>El paquete escalonado ya no coincide con el manifiesto firmado.</translation>
+    </message>
+    <message id="gamehq.error.update.install.metadata_incomplete">
+      <location filename="src/updates/UpdateInstaller.cpp" line="31"></location>
+      <source>The verified update metadata is incomplete.</source>
+      <translation>Los metadatos de actualización verificados están incompletos.</translation>
+    </message>
+    <message id="gamehq.error.update.install.metadata_invalid">
+      <location filename="src/updates/UpdateInstaller.cpp" line="63"></location>
+      <source>The verified update metadata is invalid.</source>
+      <translation>Los metadatos de actualización verificados no son válidos.</translation>
+    </message>
+    <message id="gamehq.error.update.install.package_changed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="82"></location>
+      <source>The update package changed before installation: %1</source>
+      <translation>El paquete de actualización cambió antes de la instalación: %1</translation>
+    </message>
+    <message id="gamehq.error.update.install.package_outside_staging">
+      <location filename="src/updates/UpdateInstaller.cpp" line="54"></location>
+      <source>The verified update package is outside GameHQ's staging directory.</source>
+      <translation>El paquete de actualización verificado está fuera GameHQ Es el directorio de puesta en escena.</translation>
+    </message>
+    <message id="gamehq.error.update.install.process_identity_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="106"></location>
+      <location filename="src/updates/UpdateInstaller.cpp" line="115"></location>
+      <source>GameHQ could not identify its own process for the update.</source>
+      <translation>GameHQ No pudo identificar su propio proceso para la actualización.</translation>
+    </message>
+    <message id="gamehq.error.update.install.transaction_directory_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="91"></location>
+      <source>GameHQ could not create the update transaction directory.</source>
+      <translation>GameHQ No se pudo crear el directorio de transacciones de actualización.</translation>
+    </message>
+    <message id="gamehq.error.update.install.transaction_publish_failed">
+      <location filename="src/updates/UpdateInstaller.cpp" line="153"></location>
+      <source>GameHQ could not publish the update transaction.</source>
+      <translation>GameHQ No se pudo publicar la transacción de actualización.</translation>
+    </message>
+    <message id="gamehq.error.update.maintenance_handoff_failed">
+      <location filename="src/app/App.cpp" line="421"></location>
+      <source>GameHQ could not begin update maintenance: %1</source>
+      <translation>GameHQ No se pudo iniciar el mantenimiento de actualización: %1</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.disk_space_insufficient">
+      <location filename="src/updates/UpdatePreflight.cpp" line="119"></location>
+      <source>There is not enough free space for download, staging and rollback backup.</source>
+      <translation>No hay suficiente espacio libre para descargar, organizar y hacer copia de seguridad.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.filesystem_unsupported">
+      <location filename="src/updates/UpdatePreflight.cpp" line="69"></location>
+      <source>Automatic updating currently requires NTFS or ReFS; use the release page on this drive.</source>
+      <translation>La actualización automática actualmente requiere NTFS o ReFS; use la página de liberación en esta unidad.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.network_share">
+      <location filename="src/updates/UpdatePreflight.cpp" line="21"></location>
+      <source>Automatic updating is not supported from a network share. Use the release page instead.</source>
+      <translation>La actualización automática no es compatible con un uso compartido de red. Utilice la página de versión.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.package_incomplete">
+      <location filename="src/updates/UpdatePreflight.cpp" line="41"></location>
+      <source>Automatic updating is available only in a complete packaged GameHQ installation.</source>
+      <translation>La actualización automática está disponible sólo en un paquete completo GameHQ instalación.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.path_too_long">
+      <location filename="src/updates/UpdatePreflight.cpp" line="29"></location>
+      <source>This installation path is too long for safe automatic replacement. Use a shorter local path.</source>
+      <translation>Esta ruta de instalación es demasiado larga para un reemplazo automático seguro.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.recovery_pending">
+      <location filename="src/updates/UpdatePreflight.cpp" line="51"></location>
+      <source>A previous update must finish recovery before another update can start.</source>
+      <translation>Una actualización anterior debe terminar la recuperación antes de que pueda comenzar otra actualización.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.staging_create_failed">
+      <location filename="src/updates/UpdatePreflight.cpp" line="77"></location>
+      <source>GameHQ cannot create its update staging directory here.</source>
+      <translation>GameHQ No puedo crear su directorio de actualización aquí.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.volume_not_writable">
+      <location filename="src/updates/UpdatePreflight.cpp" line="60"></location>
+      <source>The GameHQ installation is not on a writable local volume.</source>
+      <translation>El GameHQ la instalación no se encuentra en un volumen local grabable.</translation>
+    </message>
+    <message id="gamehq.error.update.preflight.write_failed">
+      <location filename="src/updates/UpdatePreflight.cpp" line="88"></location>
+      <source>GameHQ cannot safely write update files in this installation.</source>
+      <translation>GameHQ No se pueden escribir con seguridad los archivos de actualización en esta instalación.</translation>
+    </message>
+    <message id="gamehq.error.update.release_changed">
+      <location filename="src/updates/UpdateService.cpp" line="225"></location>
+      <source>The release changed after download. Check again before installing.</source>
+      <translation>La versión cambió después de la descarga. Revisa antes de instalar.</translation>
+    </message>
+    <message id="gamehq.error.update.release_withdrawn">
+      <location filename="src/updates/UpdateService.cpp" line="282"></location>
+      <source>The downloaded release was withdrawn before installation.</source>
+      <translation>La versión descargada fue retirada antes de la instalación.</translation>
+    </message>
+    <message id="gamehq.error.update.revalidation_failed">
+      <location filename="src/updates/UpdateService.cpp" line="326"></location>
+      <source>The release could not be revalidated: %1</source>
+      <translation>No se pudo revalidar la autorización: %1</translation>
+    </message>
+    <message id="gamehq.error.update.revalidation_not_fresh">
+      <location filename="src/updates/UpdateService.cpp" line="254"></location>
+      <source>The release could not be freshly revalidated before installation.</source>
+      <translation>No se pudo revalidar la autorización antes de su instalación.</translation>
+    </message>
+    <message id="gamehq.error.update.revalidation_rate_limited">
+      <location filename="src/updates/UpdateService.cpp" line="304"></location>
+      <source>GitHub could not revalidate this release before installation. Try again later.</source>
+      <translation>GitHub no pudo revalidar esta versión antes de la instalación. Pruebe de nuevo más tarde.</translation>
+    </message>
     <message id="gamehq.format.fps">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="87"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="89"></location>
@@ -924,6 +1580,36 @@ Esta acción no se puede deshacer.</numerusform>
       <source>Settings</source>
       <translation>Configuración</translation>
     </message>
+    <message id="gamehq.notification.replay_failed.reason">
+      <location filename="src/app/App.cpp" line="280"></location>
+      <source>Reason: %1</source>
+      <translation>Motivo: %1</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.title">
+      <location filename="src/app/App.cpp" line="286"></location>
+      <source>Replay failed</source>
+      <translation>Fallo de repetición</translation>
+    </message>
+    <message id="gamehq.notification.replay_saved.title">
+      <location filename="src/app/App.cpp" line="266"></location>
+      <source>Replay saved</source>
+      <translation>Repetición guardada</translation>
+    </message>
+    <message id="gamehq.notification.screenshot_saved.title">
+      <location filename="src/app/App.cpp" line="218"></location>
+      <source>Screenshot saved</source>
+      <translation>Captura de pantalla guardada</translation>
+    </message>
+    <message id="gamehq.notification.settings_quarantined.body">
+      <location filename="src/app/App.cpp" line="329"></location>
+      <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
+      <translation>GameHQ se inició con la configuración predeterminada. Se conservó el archivo de configuración anterior para que no se perdiera nada.</translation>
+    </message>
+    <message id="gamehq.notification.settings_quarantined.title">
+      <location filename="src/app/App.cpp" line="324"></location>
+      <source>Settings could not be read</source>
+      <translation>No se pudieron leer las configuraciones</translation>
+    </message>
     <message id="gamehq.notifications.window_title">
       <location filename="src/ui/qml/ToastWindow.qml" line="17"></location>
       <source>%1 Notifications</source>
@@ -975,7 +1661,7 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Superposición %1</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="103"></location>
+      <location filename="src/ui/AppController.cpp" line="104"></location>
       <source>Release notes</source>
       <translation type="unfinished"></translation>
     </message>
@@ -2653,6 +3339,47 @@ Esta acción no se puede deshacer.</numerusform>
       <location filename="src/ui/qml/themes/SynthwaveSkin.qml" line="6"></location>
       <source>Synthwave</source>
       <translation>Synthwave</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.failed_title">
+      <location filename="src/main.cpp" line="222"></location>
+      <source>Portable import failed</source>
+      <translation>Error al importar el perfil portátil</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.installed_copy_required">
+      <location filename="src/main.cpp" line="189"></location>
+      <source>Run portable import from an installed copy of GameHQ.</source>
+      <translation>Ejecutar la importación portátil desde una copia instalada de GameHQ- ¿ Qué ?</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.instance_running">
+      <location filename="src/main.cpp" line="201"></location>
+      <source>Another GameHQ instance is running, so the portable import cannot start.</source>
+      <translation>Otro GameHQ La instancia está en ejecución, por lo que la importación portátil no puede comenzar.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.parent_argument_incomplete">
+      <location filename="src/main.cpp" line="83"></location>
+      <source>The portable import parent-process argument is incomplete.</source>
+      <translation>El argumento de proceso padre de importación portátil es incompleto.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.parent_identifier_invalid">
+      <location filename="src/main.cpp" line="111"></location>
+      <location filename="src/main.cpp" line="117"></location>
+      <source>The portable import parent-process identifier is invalid.</source>
+      <translation>El identificador del proceso padre de importación portátil no es válido.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.parent_still_running">
+      <location filename="src/main.cpp" line="97"></location>
+      <source>The running GameHQ instance did not close in time.</source>
+      <translation>El correr GameHQ El caso no se cerró a tiempo.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.parent_unverifiable">
+      <location filename="src/main.cpp" line="104"></location>
+      <source>GameHQ could not confirm that the previous instance has closed.</source>
+      <translation>GameHQ No pudo confirmar que la instancia anterior se ha cerrado.</translation>
+    </message>
+    <message id="gamehq.startup.portable_import.source_missing">
+      <location filename="src/main.cpp" line="183"></location>
+      <source>The portable import source folder is missing.</source>
+      <translation>La carpeta de origen de importación portátil está ausente.</translation>
     </message>
     <message id="gamehq.tray.open_gallery">
       <location filename="src/tray/TrayIcon.cpp" line="163"></location>

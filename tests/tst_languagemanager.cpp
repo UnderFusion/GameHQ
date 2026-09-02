@@ -1,7 +1,9 @@
 #include <QtTest>
 
 #include "localization/LanguageManager.h"
+#include "localization/NativeText.h"
 #include "localization/LocaleRegistry.h"
+#include "localization/StartupLocalization.h"
 
 #include <QFile>
 #include <QJsonArray>
@@ -42,6 +44,7 @@ private slots:
     void targetMissFallsBackToEnglish();
     void missingAndCorruptTargetCatalogsFallBackToEnglish();
     void missingSourceCatalogIsFatal();
+    void startupBootstrapTranslatesBeforeAppInitialization();
 };
 
 void LanguageManagerTest::productionManifestIsValid()
@@ -162,6 +165,34 @@ void LanguageManagerTest::missingSourceCatalogIsFatal()
     QVERIFY(!manager.initialize(QStringLiteral("en-US"), {}, &error));
     QVERIFY(error.contains(QStringLiteral("Source catalog")));
     QCOMPARE(manager.translationRevision(), 0);
+}
+
+void LanguageManagerTest::startupBootstrapTranslatesBeforeAppInitialization()
+{
+    constexpr auto titleId = "gamehq.startup.portable_import.failed_title";
+    constexpr auto detailId = "gamehq.notification.replay_failed.reason";
+
+    QCOMPARE(NativeText::get(titleId, "Portable import failed"),
+             QStringLiteral("Portable import failed"));
+
+    {
+        StartupLocalization startup;
+        QString error;
+        QVERIFY2(startup.initialize(QStringLiteral(":/i18n/locales-test.json"),
+                                    {QStringLiteral("pl-PL")}, &error),
+                 qPrintable(error));
+        QCOMPARE(NativeText::get(titleId, "Portable import failed"),
+                 QStringLiteral("Import profilu przenośnego nie powiódł się"));
+        QCOMPARE(NativeText::get(detailId, "Reason: %1").arg(QStringLiteral("DXGI 0x887A")),
+                 QStringLiteral("Powód: DXGI 0x887A"));
+    }
+
+    StartupLocalization unavailable;
+    QString error;
+    QVERIFY(!unavailable.initialize(QStringLiteral(":/i18n/missing-locales.json"), {}, &error));
+    QVERIFY(!error.isEmpty());
+    QCOMPARE(NativeText::get(titleId, "Portable import failed"),
+             QStringLiteral("Portable import failed"));
 }
 
 QTEST_GUILESS_MAIN(LanguageManagerTest)

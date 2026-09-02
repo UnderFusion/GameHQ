@@ -39,5 +39,13 @@
       <source>Delete capture?</source>
       <translation>Usunąć zrzut?</translation>
     </message>
+    <message id="gamehq.startup.portable_import.failed_title">
+      <source>Portable import failed</source>
+      <translation>Import profilu przenośnego nie powiódł się</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason">
+      <source>Reason: %1</source>
+      <translation>Powód: %1</translation>
+    </message>
   </context>
 </TS>

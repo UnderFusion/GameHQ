@@ -976,6 +976,2351 @@
       "source_hash": "9d51851bd3439d66dae01b8ec218159f1ae5df6b4782dde3c28c8de9aabf3f14"
     },
     {
+      "id": "gamehq.error.capture_location.create_failed",
+      "source": "The selected folder could not be created.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/CaptureLocations.cpp",
+          "line": 126
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8bd1f17745d5e5cfcdd0e11caa215e8d1097bdbb415741d312db7eccc42b227a"
+    },
+    {
+      "id": "gamehq.error.capture_location.folder_invalid",
+      "source": "The selected folder is invalid.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/CaptureLocations.cpp",
+          "line": 110
+        },
+        {
+          "file": "src/config/CaptureLocations.cpp",
+          "line": 118
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "43c62413c219fa3273ff56012327efe629ab32b35a7ae42f0059307490e2ad63"
+    },
+    {
+      "id": "gamehq.error.capture_location.local_folder_required",
+      "source": "Choose a local folder.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 321
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "303e7ba209db93b1c330fbe93e897670e66a7191cd6a7bd3a7cc5fa4e51134a5"
+    },
+    {
+      "id": "gamehq.error.capture_location.not_writable",
+      "source": "The selected folder is not writable.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/CaptureLocations.cpp",
+          "line": 136
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "43f9e94ef35aebecfe85454cf4e3afcfad423eff9a90c07188c161f76f55b981"
+    },
+    {
+      "id": "gamehq.error.capture_location.restore_default_failed",
+      "source": "GameHQ could not restore the default folder.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/CaptureLocations.cpp",
+          "line": 202
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "b3c7ad5a75fe25ca99e0abcfab8e49b6812b0395d2a813293d0d6741585560e0"
+    },
+    {
+      "id": "gamehq.error.capture_location.save_failed",
+      "source": "GameHQ could not save the selected folder.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/CaptureLocations.cpp",
+          "line": 175
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "f2732e94303d5b0e1f9a62f39112036000aae400f63846b254583e4352d7856a"
+    },
+    {
+      "id": "gamehq.error.capture_location.type_invalid",
+      "source": "The capture type is invalid.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 315
+        },
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 337
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5635e2877e45be9c99462fda1eb7f7d115546186d1c9fbafe6e58d4548516b70"
+    },
+    {
+      "id": "gamehq.error.portable_import.backup_missing",
+      "source": "The interrupted portable-import backup is missing.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 303
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9654bd564b7a9377faff329282c1bef2bf3f422364e5a71d55928039537700dc"
+    },
+    {
+      "id": "gamehq.error.portable_import.capture_history_value_invalid",
+      "source": "Capture-root history contains a non-string value.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 391
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b7ffa481f1cdad09b55495525cff9f66bdd2442aba8577832dcd8db77660920f"
+    },
+    {
+      "id": "gamehq.error.portable_import.commit_staged_file_failed",
+      "source": "Cannot commit staged %1.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 182
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f"
+    },
+    {
+      "id": "gamehq.error.portable_import.config_malformed",
+      "source": "The portable config.json is malformed.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 343
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5232d1139943da81656368e5646d32695b8b7b4ef1545d30e56deea70114f4a0"
+    },
+    {
+      "id": "gamehq.error.portable_import.config_path_unsupported",
+      "source": "Unsupported portable path in config key %1.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 417
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "adfa9991ed8ffed2bcb7eb9bc16ac81c38645c977e5395c004ed33a64edfe783"
+    },
+    {
+      "id": "gamehq.error.portable_import.config_read_failed",
+      "source": "Cannot read the portable config.json.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 333
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "fbe260f02a35e392647ff07bcb656b8e06f56ae5b67c5c00e782e56095d2f824"
+    },
+    {
+      "id": "gamehq.error.portable_import.config_value_not_array",
+      "source": "%1 must be an array.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 382
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9a6c4610527cacb7caede3acc4eafd0bf957feeb5937f9e32776dc68fa2fc1b6"
+    },
+    {
+      "id": "gamehq.error.portable_import.config_value_not_string",
+      "source": "%1 must be a string.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 364
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6e6b78f1a1f807cf1717c6a86a782959d4dab3b3b7d2742a30c7e887da56a21b"
+    },
+    {
+      "id": "gamehq.error.portable_import.data_directory_escapes_package",
+      "source": "The portable data directory escapes the selected package root.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 893
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9bda15b881b168badde44c04a6aecd5e28c9243260be4d2adec3ab202c316e56"
+    },
+    {
+      "id": "gamehq.error.portable_import.database_foreign_key_failed",
+      "source": "The staged database failed its foreign-key check.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 833
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6721f171c91854503e17c40e208414eeb388c79b20581e7d80114f06b3f76dce"
+    },
+    {
+      "id": "gamehq.error.portable_import.database_integrity_failed",
+      "source": "The staged database failed its integrity check.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 822
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "dcc9a0cdd48f6ad7e80d225058085ff05fb2b6ca16bf1911c7bfedafee0f98a3"
+    },
+    {
+      "id": "gamehq.error.portable_import.database_missing",
+      "source": "The portable profile has no gamehq.db.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 915
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7fd37c80a5bc1610036ff52c13f3b28e807dd38017718a3771ba6c8999d9ea38"
+    },
+    {
+      "id": "gamehq.error.portable_import.database_open_failed",
+      "source": "The staged portable database cannot be opened: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 749
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "170352591808191dae527b2d85fd0461492c68552abb78e2ac18c825ff2b8c7d"
+    },
+    {
+      "id": "gamehq.error.portable_import.database_operation_failed",
+      "source": "A portable-profile database operation failed: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 28
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "737f3f5015c9c2f8eebdf22c8245fa3f3acf22d34b8666fc26755432ecd81f6f"
+    },
+    {
+      "id": "gamehq.error.portable_import.database_path_unsupported",
+      "source": "Unsupported portable path in database setting %1.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 801
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9bbdceb36557c880d003bc6a250c4f59e526ae6e866f179f61d6246baff8d1b5"
+    },
+    {
+      "id": "gamehq.error.portable_import.database_schema_read_failed",
+      "source": "The portable database schema cannot be read.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 757
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5de322a0a87c41759039922d23ab4e39fd4465904296e72eec1dc03f2b6e4670"
+    },
+    {
+      "id": "gamehq.error.portable_import.database_schema_unsupported",
+      "source": "The portable database schema is unsupported.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 763
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f67648759fed276f653348fa39660534c0fee48ede25158be595d1bb34c05df2"
+    },
+    {
+      "id": "gamehq.error.portable_import.database_stage_failed",
+      "source": "The portable database cannot be staged.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 987
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d80711b94786e6688d1d76fc32e1e3f7bdf3db99ed40adbe12ad0bd1c1ddc629"
+    },
+    {
+      "id": "gamehq.error.portable_import.database_transaction_failed",
+      "source": "The portable database transaction cannot begin.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 769
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7a42ef9e450acc5d3b8ebccb003112d100370cdace0b27df90bcf25bd5af7fec"
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_backup_failed",
+      "source": "The empty installed profile cannot be backed up for import.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 1038
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f47127958df23a58be48bf4d1111cb0ee7aac50148359216319f7afeb463c18c"
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_config_not_default",
+      "source": "The installed profile has non-default configuration.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 501
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3c5684f2cfa08b16bb005056f2a6bd86d95ba431204057ec435cbd77aa483e57"
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_contains_link",
+      "source": "The installed profile contains a symbolic link or junction: %1.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 459
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4063d615a55b2a7d57d451df91b16d9c31f9302e1bea2741f5e5bc851d3a50b5"
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_data_unsupported",
+      "source": "The installed profile contains unsupported data: %1.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 482
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a350742328ab0ab98d3ed681145732fb9b6655cd798bf52e65834dfbd18f2cbc"
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_database_inspection_failed",
+      "source": "The installed database cannot be inspected.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 520
+        },
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 542
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f84f360d3ce3b365fb38263b2c27518731b424e3828cf91d11c0134aa4e3e2e5"
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_file_exists",
+      "source": "The installed profile already has its own %1.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 469
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4bebe6d9d7f7fd7442f7104b8c77eab7956d1febc56ed0060f9b7f11b5d91966"
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_not_empty",
+      "source": "The installed profile is not empty.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 553
+        },
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 567
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "03cdf35dcc43941cf7747846d2c4aec3fa944e96396b4a5badb98df26f1231b7"
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_restore_failed",
+      "source": "The interrupted portable import could not restore its destination backup.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 292
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1f1c14dc85b304502767b9811b41030627040a1f2a1a240bb6120e10ba316eed"
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_root_link",
+      "source": "The installed profile root must not be a symbolic link or junction.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 432
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "45c0d5376edc6d8bd3de17599c4879c87a51b5572642afd3331d75fe5939987f"
+    },
+    {
+      "id": "gamehq.error.portable_import.game_path_scheme_invalid",
+      "source": "A game executable path incorrectly uses portable:/.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 604
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5a4d5fc72727fdfc4d92f803cb3afa4a786c63b0f2cf7804339776f40769b42a"
+    },
+    {
+      "id": "gamehq.error.portable_import.hash_failed",
+      "source": "Cannot hash %1.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 159
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "421624b982ee983690c195cc024d854f17d73ef58456b0d8d702a2b474722b53"
+    },
+    {
+      "id": "gamehq.error.portable_import.installed_copy_required",
+      "source": "Portable profiles can only be imported by an installed copy of GameHQ.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 181
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "0dba63208cb43bc28a86511c32a4de853601f1ddbbcef954446521724a3c9e05"
+    },
+    {
+      "id": "gamehq.error.portable_import.journal_invalid",
+      "source": "The interrupted portable-import journal is invalid.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 263
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6bac32b3c722a627fa58397d42ab852b15f086951e1e641f27fc8d38cead4f55"
+    },
+    {
+      "id": "gamehq.error.portable_import.journal_malformed",
+      "source": "The interrupted portable-import journal is malformed.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 242
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0f391fb30c5a6a0bf12c0885e4cbaedfdebbfb7400a8c44bd5847bbaecd6bba1"
+    },
+    {
+      "id": "gamehq.error.portable_import.journal_read_failed",
+      "source": "The interrupted portable-import journal cannot be read.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 231
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "cec5e18744c1e0c33a03d89cd10373029d3875b3ac6aa12822ee8f880593bd52"
+    },
+    {
+      "id": "gamehq.error.portable_import.journal_remove_failed",
+      "source": "The recovered portable-import journal could not be removed.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 315
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c1db5d23774770f490ef9d657a1becc8859e7e15650fb8ffc17a6e444ba5ef33"
+    },
+    {
+      "id": "gamehq.error.portable_import.local_folder_required",
+      "source": "Select a local GameHQ portable folder.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 187
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02"
+    },
+    {
+      "id": "gamehq.error.portable_import.package_invalid",
+      "source": "The selected folder is not a GameHQ portable package.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 196
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "1571f20c3af9614f85fadd28fbc9b678a39d46c4b37abe72623d22948afac7a5"
+    },
+    {
+      "id": "gamehq.error.portable_import.package_root_canonicalize_failed",
+      "source": "The portable package root cannot be canonicalized.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 56
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c380b24e6cba95e7a9d8d6efccaefd3ac290c67ceacf61da9366a934962262eb"
+    },
+    {
+      "id": "gamehq.error.portable_import.path_escapes_package",
+      "source": "A portable path escapes the selected package root.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 73
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "184e118b4e3222b5979692c23349f23ef082e458982d6045d75c9e69fdd49ae7"
+    },
+    {
+      "id": "gamehq.error.portable_import.path_invalid",
+      "source": "A portable:/ path is empty or absolute.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 106
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "84392735ede4691a7a50b9837414854623ea87b7aa20913893e3f62d9bb39746"
+    },
+    {
+      "id": "gamehq.error.portable_import.path_scheme_required",
+      "source": "Imported paths must be absolute or use portable:/.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 93
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1e116ec4ea46651920fd47107da388dbe7afc205bfa67145d07d62c65f15c25c"
+    },
+    {
+      "id": "gamehq.error.portable_import.portable_path_escapes_package",
+      "source": "A portable:/ path escapes the selected package root.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 117
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "99d469825a4fc5d588faffffc74ace0a3ffbd541b61796f6468f652c79f576fb"
+    },
+    {
+      "id": "gamehq.error.portable_import.process_identity_failed",
+      "source": "GameHQ could not identify its own process for the import.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 207
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "9c8968987a0b1a0a56c99f79bed21adc97b2ed5f3b500e1b062b43b6a41f9135"
+    },
+    {
+      "id": "gamehq.error.portable_import.process_start_failed",
+      "source": "GameHQ could not start the portable import process.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 217
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "66c004093f52f58648fba2ee6e62561204b1c10391be2802967e028b9e69afd5"
+    },
+    {
+      "id": "gamehq.error.portable_import.publish_failed",
+      "source": "The staged profile cannot be published.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 1062
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b6c6ae1a7a333f722ae233735f5bc89fd10aa1e1d8a56b51725178dac7eab8d3"
+    },
+    {
+      "id": "gamehq.error.portable_import.published_destination_missing",
+      "source": "The published portable-import destination is missing.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 279
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8fd38bcc13c8193238846d35cb870e62547f0b841879c6ce02e7b85f66647362"
+    },
+    {
+      "id": "gamehq.error.portable_import.recovery_remove_directory_failed",
+      "source": "Portable-import recovery could not remove a transaction directory.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 203
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d42071f533a4ee90f1ac33e8d3a7387d9d60840c7e8f4326155e94447a4689ae"
+    },
+    {
+      "id": "gamehq.error.portable_import.recovery_required",
+      "source": "%1 Recovery required: %2",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 973
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a9c4a1fbd4a688208dcd722f17c889de7ac6b20f7a61be4dcbbc0e9ce22326f9"
+    },
+    {
+      "id": "gamehq.error.portable_import.rollback_restore_failed",
+      "source": "The installed profile backup could not be restored.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 961
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "054af6e0e9cd9a0f82e7081c3b9c70289180693d90757ca5241bb69c0cf46745"
+    },
+    {
+      "id": "gamehq.error.portable_import.sound_file_missing",
+      "source": "A referenced portable sound file is missing.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 706
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "37a4ddb164f00eacd5888b9e16b76aae95e0752ff705a76aa320c41f588bb0a1"
+    },
+    {
+      "id": "gamehq.error.portable_import.sound_file_stage_failed",
+      "source": "A referenced sound file could not be staged.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 718
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "30d2eab48ef7de814b26f6b9333213baa3832c4fe325f17a9e0a9aaae44f11dc"
+    },
+    {
+      "id": "gamehq.error.portable_import.source_changed",
+      "source": "The portable source changed during import.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 1012
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7c2495b1b8eb0268bafed00c1aee18748872fcaf3cac46aa2867ba40c77ee946"
+    },
+    {
+      "id": "gamehq.error.portable_import.source_destination_overlap",
+      "source": "Source and destination profiles must be separate.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 901
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "511a38896c2ab4aa927bd4e29c2c353c456d27d084254662d1ef60dbb47bdd36"
+    },
+    {
+      "id": "gamehq.error.portable_import.source_package_invalid",
+      "source": "Select a valid GameHQ portable package root.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 884
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "3117378d9bf1a04de86d9da5e2a123e8c13e26bc77d4f3cbca5819893ac46bcb"
+    },
+    {
+      "id": "gamehq.error.portable_import.source_read_failed",
+      "source": "Cannot read %1 for source verification.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 150
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7f3a831852203b83ee8abdbf0281810f7abb4eb8c08f7fcf7e1275b794f3063a"
+    },
+    {
+      "id": "gamehq.error.portable_import.stage_file_failed",
+      "source": "Cannot stage %1.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 173
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0b9939db8a6a8f3a361b961f026706a881c7791a061968119241d76072311359"
+    },
+    {
+      "id": "gamehq.error.portable_import.staging_directory_failed",
+      "source": "The import staging directory cannot be created.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 939
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6f13336c6c31a81df0ce0ad0c8edc83db866788ba389c1baf0f50fe0186f4959"
+    },
+    {
+      "id": "gamehq.error.portable_import.transaction_running",
+      "source": "Another portable-profile import is already running.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/config/PortableProfileImporter.cpp",
+          "line": 872
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3a297bd8e1a72c210b758d5fbdc331642c8a6ccce1edf99568fb361a250cfa14"
+    },
+    {
+      "id": "gamehq.error.update.capture_quiescence_timeout",
+      "source": "The update was cancelled because capture work did not finish safely in time.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 446
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad"
+    },
+    {
+      "id": "gamehq.error.update.check_failed",
+      "source": "Update check failed: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateService.cpp",
+          "line": 334
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1f1d3614544718c8d437512426d50ee7cb8224148cdefe365451e59d75188e59"
+    },
+    {
+      "id": "gamehq.error.update.check_rate_limited",
+      "source": "GitHub temporarily limited update checks. GameHQ will try again later.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateService.cpp",
+          "line": 123
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "2f8663a046e15f7ac2c67b10252670acd58570796837e54f532274f4d8aaf434"
+    },
+    {
+      "id": "gamehq.error.update.check_rate_limited_until",
+      "source": "GitHub temporarily limited update checks. GameHQ will try again after %1.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateService.cpp",
+          "line": 117
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "b493f0ea572430a6c0709444796f9b535d6767ce764c5579aeaad30f5c534722"
+    },
+    {
+      "id": "gamehq.error.update.download.checksum_calculation_failed",
+      "source": "GameHQ could not calculate the update checksum.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 523
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "1a984a5c0af09eb8a1b2a9dbf7766174d8d5b4a762db768a01fe65a66afbc387"
+    },
+    {
+      "id": "gamehq.error.update.download.checksum_entry_count",
+      "source": "The update checksum file must contain exactly one entry.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 477
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3b856dcad4f862c56e2e6d48f67842947499f8dbd1136289081a1fdbcf24db67"
+    },
+    {
+      "id": "gamehq.error.update.download.checksum_format_invalid",
+      "source": "The update checksum file has an invalid format.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 489
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1559203ce6154ebc30a4ccc11bb45dc49c84c756f150ae563f508780b103ab84"
+    },
+    {
+      "id": "gamehq.error.update.download.checksum_package_mismatch",
+      "source": "The update checksum names a different package.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 498
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ffdd71373f8919be4bde50d992b5aa10aa52538a49b44df723e2e552bc2703af"
+    },
+    {
+      "id": "gamehq.error.update.download.evidence_incomplete",
+      "source": "The verified update evidence is incomplete.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 324
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "33f1b906fa29328748433ffcfe6d1edec60db4a1646ec733b68f72fe174cd0d4"
+    },
+    {
+      "id": "gamehq.error.update.download.flush_failed",
+      "source": "GameHQ could not flush the update download to disk.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 212
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "7ee68c4c1725a63847f1abe4e1fc4413f53b9749ae60ad80cfb10749bac99f03"
+    },
+    {
+      "id": "gamehq.error.update.download.http_status",
+      "source": "Update download failed with HTTP status %1.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 257
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3411e4233278dca85d868d6ec7980f8718743f9be5a185135b981a320c7f226c"
+    },
+    {
+      "id": "gamehq.error.update.download.https_required",
+      "source": "The update download must use HTTPS.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 80
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8034051e08deb753bac2e24a7194e0e07d49a9aa70122fcca23e2ab0bb2cabf8"
+    },
+    {
+      "id": "gamehq.error.update.download.insecure_redirect",
+      "source": "The update download redirected away from HTTPS.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 240
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "22790a495b684deb55766d64f472ab039a08a98cebdf2b1be0a20669aec7b2dc"
+    },
+    {
+      "id": "gamehq.error.update.download.manifest_hash_malformed",
+      "source": "The signed manifest artifact hash is malformed.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 301
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "375037b655beb86a91787341cfe99a9c5007086aaef226f226caa1e7ba62c772"
+    },
+    {
+      "id": "gamehq.error.update.download.manifest_length_mismatch",
+      "source": "The update package length did not match the signed manifest.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 313
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4720067887a0bae4753ff3a55d427bfd688e81451da65a61fb636bcae806dcca"
+    },
+    {
+      "id": "gamehq.error.update.download.manifest_read_failed",
+      "source": "GameHQ could not read the downloaded release manifest.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 346
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "762cd5278514d5d8a00b0f1d0f55f5259002ad75aef50df5f8bde7e0e513ff2f"
+    },
+    {
+      "id": "gamehq.error.update.download.manifest_version_mismatch",
+      "source": "The signed manifest describes a different version than the release.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 396
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a8c9f28ac70d51df7db1b2aecfed86215e16f14fee5493971eda27de072434e6"
+    },
+    {
+      "id": "gamehq.error.update.download.network_failed",
+      "source": "Update download failed: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 248
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "afbc32c45ebafe11b1ad1d66321d0ace1f81728f4ef0eaef60df29699ac9f9b9"
+    },
+    {
+      "id": "gamehq.error.update.download.package_name_invalid",
+      "source": "The update package name is invalid.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 71
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "05ccad234bdee8ab9744fdd4fa58c4aedf2e8b1a620cd9e5506fd17082401f49"
+    },
+    {
+      "id": "gamehq.error.update.download.package_name_mismatch",
+      "source": "The signed manifest names a different update package.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 415
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "07c7d9c4ba9170c9ebb87a511185b363e849ab7d5485463d13f1170bde82dca6"
+    },
+    {
+      "id": "gamehq.error.update.download.package_not_authorised",
+      "source": "The signed manifest does not authorise an update package.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 405
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83"
+    },
+    {
+      "id": "gamehq.error.update.download.package_read_failed",
+      "source": "GameHQ could not read the downloaded update package.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 514
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "ff2d6962279052171fa84d318ad57e09490538c8eba467e84ab679b1bdbfb2b7"
+    },
+    {
+      "id": "gamehq.error.update.download.package_size_invalid",
+      "source": "The update package size is missing or exceeds the safety limit.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 96
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b76c2b271669c8a81f04c7a2a5273348171b7207830b6e9127fb5f4a5ab06e41"
+    },
+    {
+      "id": "gamehq.error.update.download.partial_create_failed",
+      "source": "GameHQ could not create the partial update file.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 150
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "61d3f05277bbe0dd09eac523a72dbc496793f361c26eba1e26b6377cc15572ca"
+    },
+    {
+      "id": "gamehq.error.update.download.publish_failed",
+      "source": "GameHQ could not publish the completed update download.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 222
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "63366f423a0224aceb141f4942efdc5d4ec1f84e79670af62e118623686ec3f6"
+    },
+    {
+      "id": "gamehq.error.update.download.release_size_mismatch",
+      "source": "The update download size did not match the release metadata.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 265
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a89591e13d93207ba804318f78cf42eb1feac0d659808cdbe872cdb2ee9589e5"
+    },
+    {
+      "id": "gamehq.error.update.download.sha256_mismatch",
+      "source": "The update package failed SHA-256 verification and was rejected.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 532
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "cb6a94eaa40ba002537bb1cd7b5983b2c5e53e70c70145f49f7612c7475988b6"
+    },
+    {
+      "id": "gamehq.error.update.download.signature_noncanonical",
+      "source": "The release signature is not in its canonical form.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 454
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d4ae3d8573a457c59adc11212a717ef21a7c022f1c3f4af1b8ae4ace4e102acf"
+    },
+    {
+      "id": "gamehq.error.update.download.signature_read_failed",
+      "source": "GameHQ could not read the downloaded release signature.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 357
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "df6b2ff10fb4d55ef13a99ebca768f4b85b6eabe651ff36c87dff5d1c2c0b33b"
+    },
+    {
+      "id": "gamehq.error.update.download.signature_untrusted",
+      "source": "This release is not authorised by a trusted signature: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 387
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f"
+    },
+    {
+      "id": "gamehq.error.update.download.signed_manifest_missing",
+      "source": "This release has no signed manifest, so it cannot be installed.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 88
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "af40a8d783ffc5cef88441415bb437828c0c5a798534f757eb4fcc847c32596d"
+    },
+    {
+      "id": "gamehq.error.update.download.signed_size_invalid",
+      "source": "The signed update package size is out of range.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 423
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "74579a213a3d427450f5d45875b58bfc71106e38ec7201de7ba9024ad964c418"
+    },
+    {
+      "id": "gamehq.error.update.download.size_limit_exceeded",
+      "source": "The update download exceeded its safety size limit.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 190
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "51159c8e571af48c1ba21d327a701b2c5fd5e4f922f7ad10f5edde22526eda5d"
+    },
+    {
+      "id": "gamehq.error.update.download.staging_create_failed",
+      "source": "GameHQ could not create the update staging directory.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 104
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "9a795fc8ed6f0bc7acd213f3000ec81b74e1fdbb76576e95be195f3fc14c8b70"
+    },
+    {
+      "id": "gamehq.error.update.download.trust_state_read_failed",
+      "source": "GameHQ could not read its release trust state: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 375
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "cac0c4c1386cdeb4120563de1604c12c5be5187377402775cb55d6c932ab9724"
+    },
+    {
+      "id": "gamehq.error.update.download.trust_state_write_failed",
+      "source": "GameHQ could not record the release trust state: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 434
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "b08edc5c1effd82aaf119c60e92ad3292093c4b1a40d25c981421ffc4371d65e"
+    },
+    {
+      "id": "gamehq.error.update.download.write_failed",
+      "source": "GameHQ could not write the update download to disk.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateDownloader.cpp",
+          "line": 198
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "683c931249733f21d255ec0e35a64e67adeb6296648f289d9b33d12d49a959fa"
+    },
+    {
+      "id": "gamehq.error.update.install.handshake_failed",
+      "source": "GameHQ could not prepare the updater handshake.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 183
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "082f4d7cba3bd690a8c8a1b8f8a50408a97ba151219717a2636b69721ca7cc61"
+    },
+    {
+      "id": "gamehq.error.update.install.helper_missing",
+      "source": "%1 is missing or cannot run.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 169
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0e4cd149a311229800a8fd8cd9372634113c5b9c650c148c4c0787e5758ac60f"
+    },
+    {
+      "id": "gamehq.error.update.install.helper_rejected",
+      "source": "The updater helper rejected the update before it became ready.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 212
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bd39a8881f5667003262ee54c78f7d00f51b085e64b8109a6573f9328f3fbca7"
+    },
+    {
+      "id": "gamehq.error.update.install.helper_start_failed",
+      "source": "GameHQ could not start the updater helper.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 195
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "a177598823b0028bbf197fca2f1b6ae9d58220b80e807650e7fb89f66dbf41d4"
+    },
+    {
+      "id": "gamehq.error.update.install.helper_timeout",
+      "source": "The updater helper did not confirm it is ready in time.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 217
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "67f1457617b92ba0a25dd78820040b8a1fea89a98a3898905f5cba6018930d8c"
+    },
+    {
+      "id": "gamehq.error.update.install.manifest_mismatch",
+      "source": "The staged package no longer matches the signed manifest.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 72
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6fb4d8afb376995aed5a55d3e7909f11add5a819546680b96259f37b77a466a8"
+    },
+    {
+      "id": "gamehq.error.update.install.metadata_incomplete",
+      "source": "The verified update metadata is incomplete.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 31
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4158148c4fb314ad49c819b86c87ad3be3c1251f4b5aa22672eb80b60cb727a8"
+    },
+    {
+      "id": "gamehq.error.update.install.metadata_invalid",
+      "source": "The verified update metadata is invalid.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 63
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d825dba8f46c2c83f77b5897e18da2cb3c36b986f4ac0d90ebe24a1361928542"
+    },
+    {
+      "id": "gamehq.error.update.install.package_changed",
+      "source": "The update package changed before installation: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 82
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "cc0c31f3301e77fb8ebd851f96838c8428693af9cdaf1a9882be063c2232f829"
+    },
+    {
+      "id": "gamehq.error.update.install.package_outside_staging",
+      "source": "The verified update package is outside GameHQ's staging directory.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 54
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "37424f70db62c47dadc2824ac0edccdb257cbb198ca4658528159cea5f406299"
+    },
+    {
+      "id": "gamehq.error.update.install.process_identity_failed",
+      "source": "GameHQ could not identify its own process for the update.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 106
+        },
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 115
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "5720d506e9752d5168a3d1551c913ad02b6ab80e2a8ec86662410fc11199f411"
+    },
+    {
+      "id": "gamehq.error.update.install.transaction_directory_failed",
+      "source": "GameHQ could not create the update transaction directory.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 91
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "7b2460a00b367549f4c333a25b236ec692c93e3570f3106a9147dfe66eb8d644"
+    },
+    {
+      "id": "gamehq.error.update.install.transaction_publish_failed",
+      "source": "GameHQ could not publish the update transaction.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateInstaller.cpp",
+          "line": 153
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "124295695accc8b2ad91101eee908a84f25954f0a5ff86af6316bf1a84d694ba"
+    },
+    {
+      "id": "gamehq.error.update.maintenance_handoff_failed",
+      "source": "GameHQ could not begin update maintenance: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 421
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "d13a77a909956618b777ac6e562156e518bbb69b6f5871e95d9ee9dca8f4737b"
+    },
+    {
+      "id": "gamehq.error.update.preflight.disk_space_insufficient",
+      "source": "There is not enough free space for download, staging and rollback backup.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdatePreflight.cpp",
+          "line": 119
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3acc4ab8340afc93b3fda45e79561f630695c51144a6ffd3782fe7f0422dbfb7"
+    },
+    {
+      "id": "gamehq.error.update.preflight.filesystem_unsupported",
+      "source": "Automatic updating currently requires NTFS or ReFS; use the release page on this drive.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdatePreflight.cpp",
+          "line": 69
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "02bd87bdb3180e369aaeb09fd4e873d691ec4366066deef80b50181ec37c1dfb"
+    },
+    {
+      "id": "gamehq.error.update.preflight.network_share",
+      "source": "Automatic updating is not supported from a network share. Use the release page instead.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdatePreflight.cpp",
+          "line": 21
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "95d8b2bce33d64d58a6b47ea055ad263246b27eb9b49919cdcc6fcc5f0ad7019"
+    },
+    {
+      "id": "gamehq.error.update.preflight.package_incomplete",
+      "source": "Automatic updating is available only in a complete packaged GameHQ installation.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdatePreflight.cpp",
+          "line": 41
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "300483571770c86974f2a2f2f52acfc09f68e1a21cceaade755d21752031ec31"
+    },
+    {
+      "id": "gamehq.error.update.preflight.path_too_long",
+      "source": "This installation path is too long for safe automatic replacement. Use a shorter local path.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdatePreflight.cpp",
+          "line": 29
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "08153b7a1d3a08fb0916144a90edcf05bc9535ac0f17d46121d5259100ebf71d"
+    },
+    {
+      "id": "gamehq.error.update.preflight.recovery_pending",
+      "source": "A previous update must finish recovery before another update can start.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdatePreflight.cpp",
+          "line": 51
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f44f82a56f3a632d1ca020507b692fe94e6b180da1b09b3c694dac7b203a8957"
+    },
+    {
+      "id": "gamehq.error.update.preflight.staging_create_failed",
+      "source": "GameHQ cannot create its update staging directory here.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdatePreflight.cpp",
+          "line": 77
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "c610b299d449e28fde2c81f201741f9db00a26f26663a062bcc4b63bf2ee9042"
+    },
+    {
+      "id": "gamehq.error.update.preflight.volume_not_writable",
+      "source": "The GameHQ installation is not on a writable local volume.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdatePreflight.cpp",
+          "line": 60
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "4762afa9f0e74459ea76967d9d1784b068c94e22787d1236f6b15d0e6135feaf"
+    },
+    {
+      "id": "gamehq.error.update.preflight.write_failed",
+      "source": "GameHQ cannot safely write update files in this installation.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdatePreflight.cpp",
+          "line": 88
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "40359832a38259225189b8292cd76cd79cf43c28cdc78e53d80f88c8694fe3e5"
+    },
+    {
+      "id": "gamehq.error.update.release_changed",
+      "source": "The release changed after download. Check again before installing.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateService.cpp",
+          "line": 225
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a8aee8ecc20060b3bf7c33846ce008daa511f96baea038f3988a6917ccd97ba5"
+    },
+    {
+      "id": "gamehq.error.update.release_withdrawn",
+      "source": "The downloaded release was withdrawn before installation.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateService.cpp",
+          "line": 282
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5cb774998107a699e3795f3b9723a4d0a415bf530bde3eebe24a104e20122de9"
+    },
+    {
+      "id": "gamehq.error.update.revalidation_failed",
+      "source": "The release could not be revalidated: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateService.cpp",
+          "line": 326
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "fe836b1e26daab41302e49072a29411438fb7157172b2b5af8b11ec012b6d2e0"
+    },
+    {
+      "id": "gamehq.error.update.revalidation_not_fresh",
+      "source": "The release could not be freshly revalidated before installation.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateService.cpp",
+          "line": 254
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5cc46c75c05e5b74f698fecf30ce229194725c4bd872c031664df9967a93baa8"
+    },
+    {
+      "id": "gamehq.error.update.revalidation_rate_limited",
+      "source": "GitHub could not revalidate this release before installation. Try again later.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/updates/UpdateService.cpp",
+          "line": 304
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b5127e242b03938846daa698fc1c48851bf57954c4082769f4760294a1490aba"
+    },
+    {
       "id": "gamehq.format.fps",
       "source": "%1 fps",
       "context": "ID",
@@ -3190,6 +5535,112 @@
       "source_hash": "6264d1c9f07783289ab12c97c4ac107bcdde9f7a57672af7b493f964a5c7c95c"
     },
     {
+      "id": "gamehq.notification.replay_failed.reason",
+      "source": "Reason: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 280
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a5cadb8e899f7085ce4c5d89a59153e9260d60a119c1cb944889bfda65a3de2d"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.title",
+      "source": "Replay failed",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 286
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "24027af1461f776395f7cb1b22b0fbd39e73873acf6d2c67aeff45a8590528a2"
+    },
+    {
+      "id": "gamehq.notification.replay_saved.title",
+      "source": "Replay saved",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 266
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "51884f334bd43b288a81f4d1380315616704f3104e581b63941881a6f406cdd4"
+    },
+    {
+      "id": "gamehq.notification.screenshot_saved.title",
+      "source": "Screenshot saved",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 218
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1af428084c0f9ec0675945efff01910d599ea64c5f35a42ba7e23cc5015ce702"
+    },
+    {
+      "id": "gamehq.notification.settings_quarantined.body",
+      "source": "GameHQ started with default settings. Your previous settings file was kept so nothing was lost.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 329
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "827bad6a8e7fc94ea5c4f6b7993ff178eb0dc445e6468ab83c68caa3d37d6df8"
+    },
+    {
+      "id": "gamehq.notification.settings_quarantined.title",
+      "source": "Settings could not be read",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 324
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c1df9e7b183b26b477a5ec92c3cc871804461f3dceaf1c724992bb57e1569645"
+    },
+    {
       "id": "gamehq.notifications.window_title",
       "source": "%1 Notifications",
       "context": "ID",
@@ -3371,7 +5822,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 103
+          "line": 104
         }
       ],
       "plural": false,
@@ -9127,6 +11578,154 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "e4465a7a62708098793af1d3a7289dd5c471ee2485c38cc7716a26f842c675d3"
+    },
+    {
+      "id": "gamehq.startup.portable_import.failed_title",
+      "source": "Portable import failed",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/main.cpp",
+          "line": 222
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c"
+    },
+    {
+      "id": "gamehq.startup.portable_import.installed_copy_required",
+      "source": "Run portable import from an installed copy of GameHQ.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/main.cpp",
+          "line": 189
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "c90f31cf83b21c34b096a33d70a4088d81046f85398e16f83f80a02c8d222733"
+    },
+    {
+      "id": "gamehq.startup.portable_import.instance_running",
+      "source": "Another GameHQ instance is running, so the portable import cannot start.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/main.cpp",
+          "line": 201
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "280a50554f8e522d5f1686b1bf8f7dbdb86d173d282b34b4cd7fea368dcffa35"
+    },
+    {
+      "id": "gamehq.startup.portable_import.parent_argument_incomplete",
+      "source": "The portable import parent-process argument is incomplete.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/main.cpp",
+          "line": 83
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3ebe51cb74261af811d2450b8d4bac9d72658cc6616044a2cf912a563cd3e2a0"
+    },
+    {
+      "id": "gamehq.startup.portable_import.parent_identifier_invalid",
+      "source": "The portable import parent-process identifier is invalid.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/main.cpp",
+          "line": 111
+        },
+        {
+          "file": "src/main.cpp",
+          "line": 117
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d76729985586952694fdc2c977dbc7c063741e48e65fa486c78949fa5fc55dd2"
+    },
+    {
+      "id": "gamehq.startup.portable_import.parent_still_running",
+      "source": "The running GameHQ instance did not close in time.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/main.cpp",
+          "line": 97
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "394d9daccf90f33597f5de97db5f8727a49af6240025e8744e28f1d0b47bd749"
+    },
+    {
+      "id": "gamehq.startup.portable_import.parent_unverifiable",
+      "source": "GameHQ could not confirm that the previous instance has closed.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/main.cpp",
+          "line": 104
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "4e6d297428ea923c1e16b0a236c951140242d95ff6a6afcd1556f68b38f638ff"
+    },
+    {
+      "id": "gamehq.startup.portable_import.source_missing",
+      "source": "The portable import source folder is missing.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/main.cpp",
+          "line": 183
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "eda8d7dc2647a8cdbb3c20288b0159797791c01e67938d9f4da5c2e97e142c9b"
     },
     {
       "id": "gamehq.tray.open_gallery",

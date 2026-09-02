@@ -43,5 +43,13 @@
       <source>Delete capture?</source>
       <translation>Delete capture?</translation>
     </message>
+    <message id="gamehq.startup.portable_import.failed_title">
+      <source>Portable import failed</source>
+      <translation>Portable import failed</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason">
+      <source>Reason: %1</source>
+      <translation>Reason: %1</translation>
+    </message>
   </context>
 </TS>

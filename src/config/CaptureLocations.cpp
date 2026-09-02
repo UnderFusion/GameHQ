@@ -4,6 +4,7 @@
 #include "config/ConfigManager.h"
 #include "config/Paths.h"
 #include "core/GameIdentity.h"
+#include "localization/NativeText.h"
 
 #include <QDir>
 #include <QFileInfo>
@@ -103,22 +104,37 @@ bool CaptureLocations::setBaseRoot(Kind kind, const QString& path, QString* erro
 {
     const QString trimmed = path.trimmed();
     if (trimmed.isEmpty()) {
-        if (error) *error = QStringLiteral("The selected folder is invalid.");
+        if (error) *error = NativeText::get(
+            //: Capture-location validation error shown in Settings.
+            //% "The selected folder is invalid."
+            QT_TRID_NOOP("gamehq.error.capture_location.folder_invalid"),
+            "The selected folder is invalid.");
         return false;
     }
     const QString clean = Paths::fromStoredPath(trimmed);
     if (clean.isEmpty() || clean == QStringLiteral(".")) {
-        if (error) *error = QStringLiteral("The selected folder is invalid.");
+        if (error) *error = NativeText::get(
+            //% "The selected folder is invalid."
+            QT_TRID_NOOP("gamehq.error.capture_location.folder_invalid"),
+            "The selected folder is invalid.");
         return false;
     }
     if (!QDir().mkpath(clean)) {
-        if (error) *error = QStringLiteral("The selected folder could not be created.");
+        if (error) *error = NativeText::get(
+            //: Capture-location filesystem error shown in Settings.
+            //% "The selected folder could not be created."
+            QT_TRID_NOOP("gamehq.error.capture_location.create_failed"),
+            "The selected folder could not be created.");
         return false;
     }
     QTemporaryFile probe(clean + QStringLiteral("/.gamehq-write-test-XXXXXX.tmp"));
     probe.setAutoRemove(true);
     if (!probe.open()) {
-        if (error) *error = QStringLiteral("The selected folder is not writable.");
+        if (error) *error = NativeText::get(
+            //: Capture-location filesystem error shown in Settings.
+            //% "The selected folder is not writable."
+            QT_TRID_NOOP("gamehq.error.capture_location.not_writable"),
+            "The selected folder is not writable.");
         return false;
     }
     probe.close();
@@ -153,7 +169,11 @@ bool CaptureLocations::setBaseRoot(Kind kind, const QString& path, QString* erro
         m_config->resetValue(kRootHistory);
     else
         m_config->setValue(kRootHistory, previousHistory);
-    if (error) *error = QStringLiteral("GameHQ could not save the selected folder.");
+    if (error) *error = NativeText::get(
+        //: Capture-location persistence error shown in Settings.
+        //% "GameHQ could not save the selected folder."
+        QT_TRID_NOOP("gamehq.error.capture_location.save_failed"),
+        "GameHQ could not save the selected folder.");
     return false;
 }
 
@@ -176,7 +196,11 @@ bool CaptureLocations::resetBaseRoot(Kind kind, QString* error)
         m_config->resetValue(kRootHistory);
     else
         m_config->setValue(kRootHistory, previousHistory);
-    if (error) *error = QStringLiteral("GameHQ could not restore the default folder.");
+    if (error) *error = NativeText::get(
+        //: Capture-location persistence error shown in Settings.
+        //% "GameHQ could not restore the default folder."
+        QT_TRID_NOOP("gamehq.error.capture_location.restore_default_failed"),
+        "GameHQ could not restore the default folder.");
     return false;
 }
 

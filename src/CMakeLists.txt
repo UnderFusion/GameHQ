@@ -71,6 +71,8 @@ qt_add_executable(GameHQ
     localization/LocaleRegistry.cpp localization/LocaleRegistry.h
     localization/LanguageManager.cpp localization/LanguageManager.h
     localization/LanguagePreference.cpp localization/LanguagePreference.h
+    localization/NativeText.h
+    localization/StartupLocalization.cpp localization/StartupLocalization.h
     input/MouseHookDevice.cpp input/MouseHookDevice.h
     input/MouseMonitorPolicy.h
     input/PerfTrace.cpp input/PerfTrace.h

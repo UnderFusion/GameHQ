@@ -123,6 +123,22 @@ QStringList productionQmlFiles()
     return files;
 }
 
+QStringList p4ThreeSourceFiles()
+{
+    const QString root = QStringLiteral(GAMEHQ_SOURCE_DIR "/src/");
+    return {
+        root + QStringLiteral("main.cpp"),
+        root + QStringLiteral("app/App.cpp"),
+        root + QStringLiteral("ui/AppController.cpp"),
+        root + QStringLiteral("config/CaptureLocations.cpp"),
+        root + QStringLiteral("config/PortableProfileImporter.cpp"),
+        root + QStringLiteral("updates/UpdateService.cpp"),
+        root + QStringLiteral("updates/UpdatePreflight.cpp"),
+        root + QStringLiteral("updates/UpdateDownloader.cpp"),
+        root + QStringLiteral("updates/UpdateInstaller.cpp"),
+    };
+}
+
 QStringList launchCatalogs()
 {
     return {
@@ -187,6 +203,8 @@ private slots:
     void migratedP4OneFilesHaveNoHardcodedUserText();
     void migratedProductionQmlIdsCoverEveryLaunchLocale();
     void productionQmlHasNoHardcodedUserText();
+    void migratedP4ThreeCppIdsCoverEveryLaunchLocale();
+    void migratedP4ThreeCppHasNoHardcodedErrorAssignments();
 };
 
 void LocalizationCatalogTest::productionEnglishCatalogCoversActiveIds()
@@ -304,6 +322,59 @@ void LocalizationCatalogTest::migratedProductionQmlIdsCoverEveryLaunchLocale()
                      qPrintable(catalogName + QStringLiteral(" exposed ") + id));
         }
     }
+}
+
+void LocalizationCatalogTest::migratedP4ThreeCppIdsCoverEveryLaunchLocale()
+{
+    QSet<QString> ids;
+    for (const QString &id : translationIdsIn(p4ThreeSourceFiles())) {
+        if (id.startsWith(QStringLiteral("gamehq.error."))
+            || id.startsWith(QStringLiteral("gamehq.notification."))
+            || id.startsWith(QStringLiteral("gamehq.startup."))) {
+            ids.insert(id);
+        }
+    }
+    QCOMPARE(ids.size(), 144);
+
+    for (const QString &catalogName : launchCatalogs()) {
+        QString error;
+        const auto catalog = readTsCatalog(
+            QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
+        QVERIFY2(error.isEmpty(), qPrintable(catalogName + QStringLiteral(": ") + error));
+        for (const QString &id : ids) {
+            QVERIFY2(catalog.contains(id),
+                     qPrintable(catalogName + QStringLiteral(" missing ") + id));
+            const auto &entry = catalog[id];
+            QVERIFY2(!entry.unfinished,
+                     qPrintable(catalogName + QStringLiteral(" unfinished ") + id));
+            QVERIFY2(!entry.translation.trimmed().isEmpty(),
+                     qPrintable(catalogName + QStringLiteral(" empty ") + id));
+            QVERIFY2(!entry.translation.startsWith(QStringLiteral("gamehq.")),
+                     qPrintable(catalogName + QStringLiteral(" exposed ") + id));
+        }
+    }
+}
+
+void LocalizationCatalogTest::migratedP4ThreeCppHasNoHardcodedErrorAssignments()
+{
+    const QRegularExpression hardcoded(
+        QStringLiteral("(?:\\berror(?:Out)?|\\bm_errorText|\\brollbackError)\\s*=\\s*"
+                       "QStringLiteral\\(\\\"|\\bfail\\(QStringLiteral\\(\\\"|"
+                       "\\bcancelPreparation\\(QStringLiteral\\(\\\"|\\btr\\(\\\""));
+    QStringList failures;
+    for (const QString &path : p4ThreeSourceFiles()) {
+        QFile file(path);
+        QVERIFY2(file.open(QIODevice::ReadOnly), qPrintable(path));
+        const QStringList lines = QString::fromUtf8(file.readAll()).split(u'\n');
+        for (qsizetype index = 0; index < lines.size(); ++index) {
+            const QString line = lines[index];
+            if (line.contains(QStringLiteral("Injected ")))
+                continue;
+            if (hardcoded.match(line).hasMatch())
+                failures.append(QStringLiteral("%1:%2: %3").arg(path).arg(index + 1).arg(line.trimmed()));
+        }
+    }
+    QVERIFY2(failures.isEmpty(), qPrintable(failures.join(u'\n')));
 }
 
 void LocalizationCatalogTest::productionQmlHasNoHardcodedUserText()

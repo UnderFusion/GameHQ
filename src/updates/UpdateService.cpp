@@ -5,6 +5,7 @@
 #include "updates/VersionNumber.h"
 #include "updates/UpdatePreflight.h"
 #include "updates/UpdateSchedule.h"
+#include "localization/NativeText.h"
 
 #include <QDesktopServices>
 #include <QDir>
@@ -110,9 +111,17 @@ void UpdateService::setNextAllowedCheck(const QDateTime &when)
 QString UpdateService::cooldownMessage() const
 {
     return m_nextAllowedCheck.isValid()
-        ? QStringLiteral("GitHub temporarily limited update checks. GameHQ will try again after %1.")
+        ? NativeText::get(
+              //: Update-check cooldown message; %1 is a locale-formatted date and time.
+              //% "GitHub temporarily limited update checks. GameHQ will try again after %1."
+              QT_TRID_NOOP("gamehq.error.update.check_rate_limited_until"),
+              "GitHub temporarily limited update checks. GameHQ will try again after %1.")
               .arg(QLocale().toString(m_nextAllowedCheck.toLocalTime(), QLocale::ShortFormat))
-        : QStringLiteral("GitHub temporarily limited update checks. GameHQ will try again later.");
+        : NativeText::get(
+              //: Update-check cooldown message when the retry time is unavailable.
+              //% "GitHub temporarily limited update checks. GameHQ will try again later."
+              QT_TRID_NOOP("gamehq.error.update.check_rate_limited"),
+              "GitHub temporarily limited update checks. GameHQ will try again later.");
 }
 
 void UpdateService::checkNow()
@@ -210,7 +219,11 @@ void UpdateService::onSucceeded(const ReleaseInfo &release, const QString &etag)
             && release.checksumUrl == m_release->checksumUrl
             && release.zipSize == m_release->zipSize;
         if (!unchanged) {
-            m_errorText = QStringLiteral("The release changed after download. Check again before installing.");
+            m_errorText = NativeText::get(
+                //: Update error shown when fresh release metadata differs from the downloaded release.
+                //% "The release changed after download. Check again before installing."
+                QT_TRID_NOOP("gamehq.error.update.release_changed"),
+                "The release changed after download. Check again before installing.");
             Q_EMIT errorChanged();
             if (incomplete) {
                 setState(fallbackAfterCheck());
@@ -235,7 +248,11 @@ void UpdateService::onUnchanged(const QString & /*etag*/)
 {
     if (m_revalidatingInstall) {
         m_revalidatingInstall = false;
-        cancelPreparation(QStringLiteral("The release could not be freshly revalidated before installation."));
+        cancelPreparation(NativeText::get(
+            //: Update error shown when the server cannot freshly validate the downloaded release.
+            //% "The release could not be freshly revalidated before installation."
+            QT_TRID_NOOP("gamehq.error.update.revalidation_not_fresh"),
+            "The release could not be freshly revalidated before installation."));
         return;
     }
     // "Nothing changed" is only an answer when there is a cached result it can
@@ -259,7 +276,11 @@ void UpdateService::onNotFound()
 {
     if (m_revalidatingInstall) {
         m_revalidatingInstall = false;
-        cancelPreparation(QStringLiteral("The downloaded release was withdrawn before installation."));
+        cancelPreparation(NativeText::get(
+            //: Update error shown when a downloaded release no longer exists online.
+            //% "The downloaded release was withdrawn before installation."
+            QT_TRID_NOOP("gamehq.error.update.release_withdrawn"),
+            "The downloaded release was withdrawn before installation."));
         return;
     }
     setNextAllowedCheck({});   // GitHub answered, so any cooldown is over
@@ -277,7 +298,11 @@ void UpdateService::onRateLimited(qint64 resetEpochSeconds)
         : QDateTime();
     if (m_revalidatingInstall) {
         m_revalidatingInstall = false;
-        cancelPreparation(QStringLiteral("GitHub could not revalidate this release before installation. Try again later."));
+        cancelPreparation(NativeText::get(
+            //: Update error shown when GitHub rate-limits the final installation check.
+            //% "GitHub could not revalidate this release before installation. Try again later."
+            QT_TRID_NOOP("gamehq.error.update.revalidation_rate_limited"),
+            "GitHub could not revalidate this release before installation. Try again later."));
         return;
     }
     qWarning() << "UpdateService: GitHub rate-limited the update check, resets at" << resetAt;
@@ -295,11 +320,19 @@ void UpdateService::onFailed(const QString &errorText)
 {
     if (m_revalidatingInstall) {
         m_revalidatingInstall = false;
-        cancelPreparation(QStringLiteral("The release could not be revalidated: %1").arg(errorText));
+        cancelPreparation(NativeText::get(
+            //: Update error; %1 is the unchanged network or server detail.
+            //% "The release could not be revalidated: %1"
+            QT_TRID_NOOP("gamehq.error.update.revalidation_failed"),
+            "The release could not be revalidated: %1").arg(errorText));
         return;
     }
     qWarning() << "UpdateService: check failed:" << errorText;
-    m_errorText = errorText;
+    m_errorText = NativeText::get(
+        //: Update-check error; %1 is the unchanged network or server detail.
+        //% "Update check failed: %1"
+        QT_TRID_NOOP("gamehq.error.update.check_failed"),
+        "Update check failed: %1").arg(errorText);
     Q_EMIT errorChanged();
     // A failed check never disturbs a known-good result; only report Failed
     // when there is nothing good to fall back to.
