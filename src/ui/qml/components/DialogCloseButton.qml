@@ -5,6 +5,10 @@ import GameHQ
 Rectangle {
     id: root
 
+    //% "Close"
+    Accessible.name: qsTrId("gamehq.common.action.close")
+    Accessible.role: Accessible.Button
+
     signal clicked()
 
     implicitWidth: 44

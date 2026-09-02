@@ -1,8 +1,10 @@
 // The Dracula palette: purple-grey base with candy-saturated accents. High
 // contrast and playful where Nord is muted.
 Skin {
-    label: "Dracula"
-    blurb: "Purple-grey base with bright candy accents."
+    //% "Dracula"
+    label: qsTrId("gamehq.settings.theme.dracula.label")
+    //% "Purple-grey base with bright candy accents."
+    blurb: qsTrId("gamehq.settings.theme.dracula.description")
 
     bg0:        "#21222C"
     bg1:        "#282A36"

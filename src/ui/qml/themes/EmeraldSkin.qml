@@ -1,8 +1,10 @@
 // Fluent-flavored: charcoal surfaces, one confident green, rounded tiles and
 // short snappy transitions. Where Midnight glides, this one responds.
 Skin {
-    label: "Emerald"
-    blurb: "Charcoal and green, with quick Fluent-style responses."
+    //% "Emerald"
+    label: qsTrId("gamehq.settings.theme.emerald.label")
+    //% "Charcoal and green, with quick Fluent-style responses."
+    blurb: qsTrId("gamehq.settings.theme.emerald.description")
 
     bg0:        "#0E0E0E"
     bg1:        "#141414"

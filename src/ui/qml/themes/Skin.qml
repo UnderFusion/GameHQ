@@ -15,9 +15,11 @@ import QtQuick
 // See docs/design-system.md §0.
 QtObject {
     // ── Identity ──────────────────────────────────────────────────
-    property string label: "Blue"
+    //% "Blue"
+    property string label: qsTrId("gamehq.settings.theme.blue.label")
     // One line, shown under the Settings picker.
-    property string blurb: "Deep navy surfaces with violet-to-blue accents."
+    //% "Deep navy surfaces with violet-to-blue accents."
+    property string blurb: qsTrId("gamehq.settings.theme.blue.description")
 
     // ── Surfaces ──────────────────────────────────────────────────
     property color bg0:        "#0B0F20"

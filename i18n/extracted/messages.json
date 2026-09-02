@@ -4,21 +4,364 @@
   "source_language": "en-US",
   "messages": [
     {
-      "id": "gamehq.about.full_release_notes",
-      "source": "See full release notes",
+      "id": "gamehq.about.enjoying_gamehq",
+      "source": "Enjoying GameHQ?",
       "context": "ID",
       "domain": "application",
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 585
+          "line": 811
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "26949d3d5a563ac300b2683d3d3fdbc2a35b59e0a087dbca07e72762dc2df4ea"
+    },
+    {
+      "id": "gamehq.about.full_release_notes",
+      "source": "View full release notes",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 678
         }
       ],
       "plural": false,
       "placeholders": [],
       "markup_signature": [],
       "protected_tokens": [],
-      "source_hash": "9f5a3b9f10ece3e25c817ecc84d150c003b0ceb37f832285a65e1706427c4bf7"
+      "source_hash": "5374e300140d9f0a406fd8b070663c161b3c348ac0443b25a9fd8a1df76b78a4"
+    },
+    {
+      "id": "gamehq.about.github",
+      "source": "GitHub",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 770
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "952e887b30a3894e1a2dfb7115a99880be5cac1f5eb514154976c2615a78862f"
+    },
+    {
+      "id": "gamehq.about.license",
+      "source": "License",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 782
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6181b58e38716a215fc2d772c6ef9dd8e0fdff8e453e5ed214c73cc45fc5fb81"
+    },
+    {
+      "id": "gamehq.about.mode.installed",
+      "source": "Installed",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 520
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4b367816ef33f5824d0c22f14a727c7df90d703c9564f5db84989e9a82d952ea"
+    },
+    {
+      "id": "gamehq.about.mode.portable",
+      "source": "Portable",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 517
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0ff0fcc1e2da9b0bf8c893123edd5565e9f37791b6fbdbd439534bf5101bce06"
+    },
+    {
+      "id": "gamehq.about.more_improvements",
+      "source": "Plus more improvements and fixes.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 668
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "19c13543b6c598ae52ce6d787aa410502db74e38ce6683d280d36eb2e00e0baa"
+    },
+    {
+      "id": "gamehq.about.product_description",
+      "source": "A controller-friendly screenshot, replay, and media gallery for PC games.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 623
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "aa9b19cffaa783832dc62f3f8208d13e6e6855a46b0c86f957c32a85a274c37e"
+    },
+    {
+      "id": "gamehq.about.product_updated",
+      "source": "%1 updated",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 483
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2a074ea41839444055c6f3bedec6130ef84f20b5532a152e123c1c188113dc71"
+    },
+    {
+      "id": "gamehq.about.project_links",
+      "source": "PROJECT LINKS",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 754
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0f29b5b2b3f763a6863be47b709eff065a08cf6aed659e1f0ef5f7c31f78a401"
+    },
+    {
+      "id": "gamehq.about.quick_actions",
+      "source": "QUICK ACTIONS",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 699
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1ec747caca002392bf3a24ef6a02c1abaa7b690b51d28249ea9fb1e27c63968e"
+    },
+    {
+      "id": "gamehq.about.report_issue",
+      "source": "Report issue",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 776
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "02654d60a4967ff1bdc47cd8530dfed9e5a4b31f086fe6e2b86ca568c0954fd0"
+    },
+    {
+      "id": "gamehq.about.star_description",
+      "source": "A GitHub star helps more players discover the project.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 820
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3e0bba5637158a27fb8032103fe1abd7d3cd63dee4a56c20f7f8c7889e15186b"
+    },
+    {
+      "id": "gamehq.about.star_on_github",
+      "source": "Star on GitHub",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 831
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "44c99df956a472847ce68635cfbec8bb0db87b49411e76ea3b01f823cc5158cf"
+    },
+    {
+      "id": "gamehq.about.version",
+      "source": "Version %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 498
+        },
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 860
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 17
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "06bfa6f0722cc6a83b2d102c26a9a02a9832f01b16195743999135b0e61949b6"
+    },
+    {
+      "id": "gamehq.about.whats_new_in",
+      "source": "WHAT'S NEW IN %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 633
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "34660157de7b0cf25dfcbc1fdff840f11ccaa81cfa838282af3c3d9b8a249ec6"
+    },
+    {
+      "id": "gamehq.action.back",
+      "source": "Back",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 569
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6a57466137d7c992297dbdf7fb041ebc6ca6ea18ada04e6bcb7e8802ba42d47c"
+    },
+    {
+      "id": "gamehq.action.cancel",
+      "source": "Cancel",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 161
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 194
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "597d48c0a9ec64525a7008bb046eb5e5a97b6ac1a1dfb81d2c1fd164d0024839"
+    },
+    {
+      "id": "gamehq.action.download",
+      "source": "Download",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 207
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "cb3d736679797aa92af00b7e9a74cc2b017f6afbca3b50af0116a3708523c700"
+    },
+    {
+      "id": "gamehq.action.not_now",
+      "source": "Not now",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 174
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d7c7fbf0813e5567728669782d07e1fd1e3e526b8cc09ef8b617cb89b309931a"
     },
     {
       "id": "gamehq.action.screenshot.label",
@@ -38,6 +381,337 @@
       "source_hash": "59988ce861c987d408d1b2850fb7ec905fa22571219c8f0ee053c8eedaaaaf4b"
     },
     {
+      "id": "gamehq.common.action.change",
+      "source": "Change",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/SettingsPathRow.qml",
+          "line": 27
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4329cf43131ab1da0d33c7b09605fe2075281f55a1db38838a523b35cc19e202"
+    },
+    {
+      "id": "gamehq.common.action.close",
+      "source": "Close",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/DialogCloseButton.qml",
+          "line": 9
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ef942900eb24e0c15f68d8a5184d08d04a998f4344933fe7feb8db846f22fd78"
+    },
+    {
+      "id": "gamehq.common.action.open",
+      "source": "Open",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/SettingsPathRow.qml",
+          "line": 34
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1d56688dc3f43bf63c62471c15310340ac294e3e3cb1a2af3cabe2de9cc16af9"
+    },
+    {
+      "id": "gamehq.common.action.use_default",
+      "source": "Use default",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/SettingsPathRow.qml",
+          "line": 21
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "976c0e41df00ac1ae3fca2f5958515a9876f1e7ef1b942533228b04248b73ac4"
+    },
+    {
+      "id": "gamehq.format.size.bytes",
+      "source": "%1 B",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 41
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f5c1ba48c287225872ef621d74da4db9a32d60980faa309530d47cf9f8941eef"
+    },
+    {
+      "id": "gamehq.format.size.kilobytes",
+      "source": "%1 KB",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 38
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "64416dc818347d243bcd90b9fdf66c67ec8804a1ab8ca0333e335ba3cd4e3c42"
+    },
+    {
+      "id": "gamehq.format.size.megabytes",
+      "source": "%1 MB",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 34
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0ae56e2b926381dd1ea434eafeb4ec5900ac14bdbbc26c092c4b443360612d7f"
+    },
+    {
+      "id": "gamehq.navigation.about",
+      "source": "About",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/DesktopSidebar.qml",
+          "line": 143
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3ec5df0c56abdfb1c952840601ddac58376bd3d2f70bc5acf2c63fabfe8c0fc2"
+    },
+    {
+      "id": "gamehq.navigation.category.all",
+      "source": "All",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/Main.qml",
+          "line": 151
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "120d85ecb99d0cc14c50129ba8951d1a69332ea72c413641e44b8513d810c646"
+    },
+    {
+      "id": "gamehq.navigation.category.clips",
+      "source": "Clips",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/Main.qml",
+          "line": 159
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "84d6bada5fc06694835824e285a5dcc1dac6d4954097fdda50c6fcd6603c5cb3"
+    },
+    {
+      "id": "gamehq.navigation.category.favorites",
+      "source": "Favorites",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/Main.qml",
+          "line": 155
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bb97c8a6aad3a02b0e8688633b6a4dfa2b93e1091eba76a76394d7c1eddefd8e"
+    },
+    {
+      "id": "gamehq.navigation.category.game",
+      "source": "Game",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/Main.qml",
+          "line": 161
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4f7089ab3e887256fb9e4df5f4a5befba8b08c0652ad8771bef1abb421844e23"
+    },
+    {
+      "id": "gamehq.navigation.category.game_favorites",
+      "source": "Game favorites",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/Main.qml",
+          "line": 163
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2a858b8a3742af57529cf867c8b1e40c632638e5dd6f6b65faff05223a234edc"
+    },
+    {
+      "id": "gamehq.navigation.category.recent",
+      "source": "Recent",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/Main.qml",
+          "line": 153
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "891dd17febe97fbe4dca469be030be1a32c4cb836c87b6c88331fd5d2a651860"
+    },
+    {
+      "id": "gamehq.navigation.category.screenshots",
+      "source": "Screenshots",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/Main.qml",
+          "line": 157
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "113704fa1f2848c9a11659f5056c4a62d40ca521edb625276cb4280fb9d9702c"
+    },
+    {
+      "id": "gamehq.navigation.games",
+      "source": "Games",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/DesktopSidebar.qml",
+          "line": 88
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "068d54db7700efc207534b91d10ad96e9393ae1af2c10bface847aec99edca88"
+    },
+    {
+      "id": "gamehq.navigation.help",
+      "source": "Help",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/DesktopSidebar.qml",
+          "line": 131
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8634ffd9f8f9de7ce5a77ceae18984973ce40788ec54230e5c11caa332040950"
+    },
+    {
+      "id": "gamehq.navigation.settings",
+      "source": "Settings",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/DesktopSidebar.qml",
+          "line": 121
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6264d1c9f07783289ab12c97c4ac107bcdde9f7a57672af7b493f964a5c7c95c"
+    },
+    {
+      "id": "gamehq.notifications.window_title",
+      "source": "%1 Notifications",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/ToastWindow.qml",
+          "line": 17
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "666bf9ff43e2219003616dcc1355b7a80f73d792bf880b261d60c7b8cac24f94"
+    },
+    {
       "id": "gamehq.release_notes.title",
       "source": "Release notes",
       "context": "ID",
@@ -55,6 +729,1517 @@
       "source_hash": "c7fba891dbf84cf108b6602af540c1b2424b1b0f0024c7e8b028efc5de9c8b3f"
     },
     {
+      "id": "gamehq.settings.about.application.eyebrow",
+      "source": "Application",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 14
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f892096cdfd1d7044cb4be862433d09e0e3c6a6bc413eb54fcde3fcaf1e6a875"
+    },
+    {
+      "id": "gamehq.settings.about.community.eyebrow",
+      "source": "Community",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 288
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "03c8306167609fd2cda55b6f77dc9aeb2c56052dcbd302c8d646ce3353d0943e"
+    },
+    {
+      "id": "gamehq.settings.about.description",
+      "source": "Version, update status, project resources, and ways to help.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 10
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a43396aedd3e20e6d97af6f1bf617a4d43913198937afa6f587fa6e797052dae"
+    },
+    {
+      "id": "gamehq.settings.about.github_source",
+      "source": "Source on GitHub",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 250
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9fe6f8db6b3917e39d0ef1598f4b158448a72464bedc4248fc13f3aa3e5f654f"
+    },
+    {
+      "id": "gamehq.settings.about.license",
+      "source": "GNU GPL v3 License",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 279
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GNU GPL v3"
+      ],
+      "source_hash": "5f7f9e2ea548a64b85c0b694feac4a3485cac7adec32bc2b8b0fb0a173d840c9"
+    },
+    {
+      "id": "gamehq.settings.about.license_summary",
+      "source": "Free and open source under the GNU GPL version 3.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 55
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d9c7f7b2e719c57d1eadc9e0a3e91f7c5df6751b1e3ee5e7081ec0fe5751b6fc"
+    },
+    {
+      "id": "gamehq.settings.about.maintenance.eyebrow",
+      "source": "Maintenance",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 66
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bb751608dd7863d4a96a3554b5f989c28b671d54a243f92fce84fbb23d9f03c5"
+    },
+    {
+      "id": "gamehq.settings.about.open_source.eyebrow",
+      "source": "Open source",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 235
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b1848980341b3dcbbd967127d1ef6a967defcc9a2abc95ba4fb8ec23468ec912"
+    },
+    {
+      "id": "gamehq.settings.about.profile.installed",
+      "source": "Installed profile",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 24
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3d816379b12866f42edb52f91f341b0307b7452976e2d410b3164fd6ebf3c116"
+    },
+    {
+      "id": "gamehq.settings.about.profile.portable",
+      "source": "Portable profile",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 21
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "597e68311aeae55784e3b1565b1624e330716b63ac4bf0506ff2aec4591eb3f2"
+    },
+    {
+      "id": "gamehq.settings.about.project.description",
+      "source": "Open official GameHQ resources in your default browser.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 239
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "e94f1e97f70be24b64042c1284839084e6ab44fab37c8e3642e5d504554235d9"
+    },
+    {
+      "id": "gamehq.settings.about.project.title",
+      "source": "Project",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 237
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "48152247d0898f0daa835f2663f548a41dcd57072be24b3b5ebd65e9d8716e3c"
+    },
+    {
+      "id": "gamehq.settings.about.ready",
+      "source": "GameHQ is ready",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 46
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "af641133517f201d314030cb2ff51e78b101e1149b695154e1fa64d80b78a8c3"
+    },
+    {
+      "id": "gamehq.settings.about.releases",
+      "source": "Releases",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 257
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2d3b5626852ade12708d6ac7a03a53fdae1d56663f2efc650c9d3f8e88917673"
+    },
+    {
+      "id": "gamehq.settings.about.report_issue",
+      "source": "Report an issue",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 264
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "eedee1599beeaabc29a2963adcacd0f75736b3b2a7a92d1da03e965a2523464e"
+    },
+    {
+      "id": "gamehq.settings.about.security_privacy",
+      "source": "Security & privacy",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 788
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 271
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "18126ee492809fb7be731afab4094c7bf76b95bb05f7bb290a6e64b032f45933"
+    },
+    {
+      "id": "gamehq.settings.about.security_privacy.description",
+      "source": "Verification, local data, network use, and private reporting",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 273
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2c9efece673b42cbbfe976b65381886dd2b25ccac53474c68afeeb71480c6302"
+    },
+    {
+      "id": "gamehq.settings.about.support.description",
+      "source": "Enjoying %1? A GitHub star helps more players discover the project.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 293
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "409d150d1b5720a671a52939ca995844bf8278e8c1fd4a4fa280f91e23cd64a7"
+    },
+    {
+      "id": "gamehq.settings.about.support.star_on_github",
+      "source": "Star %1 on GitHub",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 296
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "702eaa6b769672064f8adacc8fc0ff4587c40c6f26f39422f523aee49493a061"
+    },
+    {
+      "id": "gamehq.settings.about.support.title",
+      "source": "Support the project",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 290
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5a8745d9fad134ea6a1536bc9d38441729e706ad6a25882bd45fe7ec3aeb1c17"
+    },
+    {
+      "id": "gamehq.settings.about.title",
+      "source": "About",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 8
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3ec5df0c56abdfb1c952840601ddac58376bd3d2f70bc5acf2c63fabfe8c0fc2"
+    },
+    {
+      "id": "gamehq.settings.about.updates.title",
+      "source": "Updates",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 68
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "fa5b5fc8ff77f9c732e820af80a3e36c4bd554ddabff11e41ac7a66c8ea344f6"
+    },
+    {
+      "id": "gamehq.settings.about.website",
+      "source": "Website",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 243
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0d46eb72a0b054f9d7cc19ce8499fa91c8f20ed7f23592d8cd43f93cf118a832"
+    },
+    {
+      "id": "gamehq.settings.category.about",
+      "source": "About",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/SettingsView.qml",
+          "line": 27
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3ec5df0c56abdfb1c952840601ddac58376bd3d2f70bc5acf2c63fabfe8c0fc2"
+    },
+    {
+      "id": "gamehq.settings.category.advanced",
+      "source": "Advanced",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/SettingsView.qml",
+          "line": 25
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7e36e81c13077a15050d8959a08888cebb85436d9f38c4983248f4b5d3645682"
+    },
+    {
+      "id": "gamehq.settings.category.capture",
+      "source": "Capture",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/SettingsView.qml",
+          "line": 15
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d8d907d3b322523fc3a3579c75a86d3646291cca3ac22c40af32ea4cb739c1a2"
+    },
+    {
+      "id": "gamehq.settings.category.general",
+      "source": "General",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/SettingsView.qml",
+          "line": 13
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "452f3f59dfdc58a47cb75313ea6bd4a292371b61aeabb5367931188eac9d9ca3"
+    },
+    {
+      "id": "gamehq.settings.category.input",
+      "source": "Input",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/SettingsView.qml",
+          "line": 19
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4c6b0764d90401d4dd6fde0cc67810e61b0822d48d37566ea5d7465ff5d3ff87"
+    },
+    {
+      "id": "gamehq.settings.category.library",
+      "source": "Library",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/SettingsView.qml",
+          "line": 21
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "026254669fe977ae596dde3ac09961f2e509ddc2965eff456f40e22e2e6fbaa4"
+    },
+    {
+      "id": "gamehq.settings.category.notifications_sound",
+      "source": "Notifications & sound",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/SettingsView.qml",
+          "line": 23
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f636ac0ac5e5c21eac43c047d576484ce4f4c181000570437428194a6beb04f3"
+    },
+    {
+      "id": "gamehq.settings.category.replay",
+      "source": "Replay",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/SettingsView.qml",
+          "line": 17
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f3d7bd7f93375c01ab2fa0f817fdc4055c6d8e8ad28530570e4a59bd9b76d3aa"
+    },
+    {
+      "id": "gamehq.settings.disclosure.default",
+      "source": "View technical details",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/SettingsDisclosure.qml",
+          "line": 9
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ece0ffe0987bd7f78b29ea60031d04db3a7e19f52dc2055b8856945880ad15d3"
+    },
+    {
+      "id": "gamehq.settings.disclosure.hide",
+      "source": "Hide",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/SettingsDisclosure.qml",
+          "line": 55
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "89d077385359ff325aedb743be13a49a6b7cb04821107ad5f690585b9d2844ca"
+    },
+    {
+      "id": "gamehq.settings.disclosure.show",
+      "source": "Show",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/SettingsDisclosure.qml",
+          "line": 58
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f07e5c76029895cb384cc673232fd8899a283dc571ea199e30f5d8441f6eca60"
+    },
+    {
+      "id": "gamehq.settings.general.description",
+      "source": "Appearance, startup, and window behavior.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 9
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "138c5ead4f41d3cc71746821c3afe3af6c85512e70419891816a3eadcba64ee7"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.close_to_tray.description",
+      "source": "Keep capture and replay services running; when disabled, Close exits %1.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 133
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "68f429b366721607c85cca5e2c9f09f0802bbea1ff7731f6919ef5a2b20e8b8b"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.close_to_tray.label",
+      "source": "Close to tray",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 131
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9334fc7c1fe12f4fd17d4d773bd6d41f3b15013b154fd7278661ad620eab830c"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.description",
+      "source": "Choose what happens when the main window is minimized or closed.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 121
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c2987bc1a6eb8cdeb633f94ba6be97d1164266576acc923cbd662221aa09058d"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.eyebrow",
+      "source": "Desktop",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 117
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "aca34c8bb3c40ba524b060ef2b4041b733232c25574d88a7f4f08f4d31401d03"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.minimize_to_tray.description",
+      "source": "Minimizing the window sends it straight to the tray instead of the taskbar.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 126
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9a480fa474d922e7a1dfe1c961e4ee05fe75351fff7305a52f266fcebb1eb948"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.minimize_to_tray.label",
+      "source": "Minimize to tray",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 124
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "cc5e0498d57df823788223175f21985108c71964c785cede6c866f7c29f9b2ab"
+    },
+    {
+      "id": "gamehq.settings.general.desktop.title",
+      "source": "Window and tray behavior",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 119
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bb3f44f11a0571085861963c02d53cbe2bf6c8666924378de1438a9e966bbae5"
+    },
+    {
+      "id": "gamehq.settings.general.overlay_dimming.description",
+      "source": "How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 81
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b"
+    },
+    {
+      "id": "gamehq.settings.general.overlay_dimming.label",
+      "source": "Overlay dimming",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 79
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "85a4f2ecbd5686af12f6171d551b163c289026c58520c9be890b2e9016f410ec"
+    },
+    {
+      "id": "gamehq.settings.general.personalization.description",
+      "source": "Choose the visual style and in-game overlay strength.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 52
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9951605273d5a1ba8894bb4975f9d2d0f6bdb1f921d95f8899303d3a072ad61b"
+    },
+    {
+      "id": "gamehq.settings.general.personalization.eyebrow",
+      "source": "Personalization",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 48
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c0e3c2db0c702879f68b8e4b91317997c9cce3e3bdf6d5dfa6dc6afdd9213c20"
+    },
+    {
+      "id": "gamehq.settings.general.personalization.title",
+      "source": "Look and feel",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 50
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7be257106acde99e899a53e7c8f2958123c2ec674f17837420d9f86e1da74625"
+    },
+    {
+      "id": "gamehq.settings.general.startup.description",
+      "source": "Choose whether GameHQ follows your Windows sign-in and opens quietly.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 98
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16"
+    },
+    {
+      "id": "gamehq.settings.general.startup.eyebrow",
+      "source": "Startup",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 94
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d4ab0d36d1e106e09e2147f8486e036ef63986b23cc15b5ae70ef3477bd8f45b"
+    },
+    {
+      "id": "gamehq.settings.general.startup.minimized.description",
+      "source": "Launch directly in the system tray without opening the main window.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 110
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2c083ed9e97de3d516e1c1a8acbfe346b0d7fdcd8e25dd5a5e6efda264f815a5"
+    },
+    {
+      "id": "gamehq.settings.general.startup.minimized.label",
+      "source": "Launch minimized",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 108
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8d5694533b797df9185609894eaf9a8b682ea5d7b55a7b20eac1dc7af8061f64"
+    },
+    {
+      "id": "gamehq.settings.general.startup.title",
+      "source": "How %1 starts",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 96
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "04ce91fdd9a62fadc37564a9a268b8d35328245f6278378ba162eb50452ca49c"
+    },
+    {
+      "id": "gamehq.settings.general.startup.windows.description",
+      "source": "Register %1 for the current Windows user; no administrator access is required.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 103
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4c245c74cd4722d0097b98cbfd113fbef562f4eeeb0ffb5c4b957545bee394a7"
+    },
+    {
+      "id": "gamehq.settings.general.startup.windows.label",
+      "source": "Start with Windows",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 101
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6a75a39b22ddc89340571fce99cc45f4df48da52660aa0f2a5875a846c9a94e8"
+    },
+    {
+      "id": "gamehq.settings.general.theme.fallback",
+      "source": "Choose how %1 looks.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 67
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8a30d0759e430783eec1dd38a6e58c05b7dbb9b5072d3fffc7aa0cc2b96018e4"
+    },
+    {
+      "id": "gamehq.settings.general.theme.label",
+      "source": "Theme",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 56
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "db81c98f21c4619b9b4d5d6c8a6c86001304d50c7d542a42e5a5a42909ed692e"
+    },
+    {
+      "id": "gamehq.settings.general.title",
+      "source": "General",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 7
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "452f3f59dfdc58a47cb75313ea6bd4a292371b61aeabb5367931188eac9d9ca3"
+    },
+    {
+      "id": "gamehq.settings.language.description",
+      "source": "Choose the language GameHQ uses.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 17
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "d3bce0ade3e1a0482b34683ca52776e5b129fcf1c0ab0d24c8032731119ddb97"
+    },
+    {
+      "id": "gamehq.settings.language.eyebrow",
+      "source": "Language",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 13
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4435f034be8d1c139243f3e2f7850c575bcb2465e81ed095acb17a1bfe0739f2"
+    },
+    {
+      "id": "gamehq.settings.language.label",
+      "source": "Display language",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 21
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "97f309ddded8b89ef7b65f3742728782fa1b8ead064f9d2b89fc4ad7e2ff924c"
+    },
+    {
+      "id": "gamehq.settings.language.row_description",
+      "source": "Changes apply immediately throughout GameHQ.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 23
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "f97f0e1af3ebfe3a00a41165b23a577e046e8a648c5bbeb60a7520767a2067f5"
+    },
+    {
+      "id": "gamehq.settings.language.system",
+      "source": "System language",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 31
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ba1c89cba728c63ffe2febf5c4ef47837f63476cf9f2918fa6d0b3b9fa803de0"
+    },
+    {
+      "id": "gamehq.settings.language.title",
+      "source": "Interface language",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 15
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "482632e3ca011fdd94119156e2ae156aadd84977be41c382a1ddae5b67e02dce"
+    },
+    {
+      "id": "gamehq.settings.theme.blue.description",
+      "source": "Deep navy surfaces with violet-to-blue accents.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/Skin.qml",
+          "line": 22
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f0938fcd8bc7d4f92a07c4c36f164a06cd0dec6e75af8de12d2b676d2f95405c"
+    },
+    {
+      "id": "gamehq.settings.theme.blue.label",
+      "source": "Blue",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/DarkSkin.qml",
+          "line": 6
+        },
+        {
+          "file": "src/ui/qml/themes/Skin.qml",
+          "line": 19
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f41adb21f6949990c8a20978ef23f65102a9c2aa8d478a3be3fae24aa1d945ae"
+    },
+    {
+      "id": "gamehq.settings.theme.carbon.description",
+      "source": "Layered neutral greys and one bright blue. Minimal to a fault.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/CarbonSkin.qml",
+          "line": 7
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b"
+    },
+    {
+      "id": "gamehq.settings.theme.carbon.label",
+      "source": "Carbon",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/CarbonSkin.qml",
+          "line": 5
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4124305ba82f2bd7fd21986b756b5eb09845787bea896bacdbf4ebb33193764e"
+    },
+    {
+      "id": "gamehq.settings.theme.cobalt.description",
+      "source": "Soft greys, indigo accent, pill-round and very fast.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/CobaltSkin.qml",
+          "line": 7
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f"
+    },
+    {
+      "id": "gamehq.settings.theme.cobalt.label",
+      "source": "Cobalt",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/CobaltSkin.qml",
+          "line": 5
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "677f9b8502d922d0f0c7219a07df4ceeac9850021cce617c3617637afbd23bb4"
+    },
+    {
+      "id": "gamehq.settings.theme.dracula.description",
+      "source": "Purple-grey base with bright candy accents.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/DraculaSkin.qml",
+          "line": 7
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172"
+    },
+    {
+      "id": "gamehq.settings.theme.dracula.label",
+      "source": "Dracula",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/DraculaSkin.qml",
+          "line": 5
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a528d97dcc18cf950a66b421eafdfb2ed3749597d712ce3a7e0d500c8cf27b55"
+    },
+    {
+      "id": "gamehq.settings.theme.emerald.description",
+      "source": "Charcoal and green, with quick Fluent-style responses.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/EmeraldSkin.qml",
+          "line": 7
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a1c78e7e95a597dfbc178c603c5996a15bdece9a5697f71369e46b3e7819c958"
+    },
+    {
+      "id": "gamehq.settings.theme.emerald.label",
+      "source": "Emerald",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/EmeraldSkin.qml",
+          "line": 5
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2d6ae8e76712643af6655233debb5e60007533b2c013c1f064f118489839f815"
+    },
+    {
+      "id": "gamehq.settings.theme.gruvbox.description",
+      "source": "Warm retro-terminal browns and cream, in monospace.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/GruvboxSkin.qml",
+          "line": 8
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "13748240fc2a5a7a7c1dc9b5a42af46412e19d06ba841f832b172ff5bdd789c5"
+    },
+    {
+      "id": "gamehq.settings.theme.gruvbox.label",
+      "source": "Gruvbox",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/GruvboxSkin.qml",
+          "line": 6
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ed78a6c46c4994c60e7b6a15996262765f2ac627311ec1fc94feda842729add5"
+    },
+    {
+      "id": "gamehq.settings.theme.harbor.description",
+      "source": "Flat blue-grey with squared edges. Chrome gets out of the way.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/HarborSkin.qml",
+          "line": 8
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a"
+    },
+    {
+      "id": "gamehq.settings.theme.harbor.label",
+      "source": "Harbor",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/HarborSkin.qml",
+          "line": 6
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "54a1da2aa408ee01f295e2d3c3c69632ad55b340e2f6d359b12aba609d7047a8"
+    },
+    {
+      "id": "gamehq.settings.theme.high_contrast.label",
+      "source": "High contrast",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/HighContrastSkin.qml",
+          "line": 10
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a271c069578de94367199f772a08776013701fb8be8d1163e6517f6c21439611"
+    },
+    {
+      "id": "gamehq.settings.theme.light.label",
+      "source": "Light",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/LightSkin.qml",
+          "line": 9
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a7d696f1e5099dcd296db53842636dfface71da0e34f936ab589eabe1a8acf3f"
+    },
+    {
+      "id": "gamehq.settings.theme.midnight.description",
+      "source": "Near-black with soft blue washes and slow, cinematic motion.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/MidnightSkin.qml",
+          "line": 9
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f78052d1f632dda3e69a773868aa92cdc5901577867d61b9efd64fd203a4e41f"
+    },
+    {
+      "id": "gamehq.settings.theme.midnight.label",
+      "source": "Midnight",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/MidnightSkin.qml",
+          "line": 7
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b9e7df50a0bf8808a57c79e54e76984e807fe8aca3c1c9f9f2aebcfc992ae0cc"
+    },
+    {
+      "id": "gamehq.settings.theme.nord.description",
+      "source": "Desaturated arctic blue-greys. Calm and low-contrast.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/NordSkin.qml",
+          "line": 7
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481"
+    },
+    {
+      "id": "gamehq.settings.theme.nord.label",
+      "source": "Nord",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/NordSkin.qml",
+          "line": 5
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "75229d573d3306e7448630ff47d96953fb4a3983cd2d9a48991e48a7b22eec60"
+    },
+    {
+      "id": "gamehq.settings.theme.obsidian.description",
+      "source": "Near-black glass lit by a cool blue bloom. The default.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/ObsidianSkin.qml",
+          "line": 19
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1a4c9e3ca438f4fc6ae8a5156cf82ac308e983ecfafb540861afaed8caad1914"
+    },
+    {
+      "id": "gamehq.settings.theme.obsidian.label",
+      "source": "Obsidian",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/ObsidianSkin.qml",
+          "line": 17
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c0a7877d5ce27182ad7630e3cabaa62f081f5569e0a0e8f299c8b7252b754b9b"
+    },
+    {
+      "id": "gamehq.settings.theme.synthwave.description",
+      "source": "Neon magenta and cyan over a violet horizon, with scanlines.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/SynthwaveSkin.qml",
+          "line": 8
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "e9a4c5e8eb1627b73b1fc327e8fd809a418094b073afa4df85e5b67abce22066"
+    },
+    {
+      "id": "gamehq.settings.theme.synthwave.label",
+      "source": "Synthwave",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/themes/SynthwaveSkin.qml",
+          "line": 6
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "e4465a7a62708098793af1d3a7289dd5c471ee2485c38cc7716a26f842c675d3"
+    },
+    {
       "id": "gamehq.tray.open_gallery",
       "source": "Open Gallery",
       "context": "ID",
@@ -70,6 +2255,1302 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8"
+    },
+    {
+      "id": "gamehq.update.applying_and_restarting",
+      "source": "GameHQ is applying the update and will restart.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 182
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "dc32ba775800e036d414e1b1d2d323aa8b0c1354c67e89e8dbc32c08be7db83d"
+    },
+    {
+      "id": "gamehq.update.available_version_short",
+      "source": "%1 available",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 125
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "281cdb697f931477cf94d36fae2ffa0baf52c25c24be465156c4939f99e1be21"
+    },
+    {
+      "id": "gamehq.update.banner.available",
+      "source": "%1 %2 is available",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 64
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "09258463f935b98cff439aab256f3af47f314a4735d551ff381ad3b70157ffc2"
+    },
+    {
+      "id": "gamehq.update.banner.download_verified",
+      "source": "Download verified and ready to install.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 75
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "965e03fcc196f05020dd7d7e879c774e1602794f464b7d99b1d32c04e4d250fe"
+    },
+    {
+      "id": "gamehq.update.banner.downloading",
+      "source": "Downloading %1 %2",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 48
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "932ba1cf145dbaa921dd856509bde7fccce2ec3822f87389560e6ae2d86dd407"
+    },
+    {
+      "id": "gamehq.update.banner.installing",
+      "source": "Installing %1 %2",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 58
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "daa2c19b6117170ca977191f81675d7242c6b8e2279bf7fd18bdab0374e04ed8"
+    },
+    {
+      "id": "gamehq.update.banner.needs_attention",
+      "source": "The update needs attention",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 61
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "79aab7ffb3e7df8fd093aeadfcd0a86bc1d980b5895b8e5a07eff4a5c3d496ed"
+    },
+    {
+      "id": "gamehq.update.banner.open_details",
+      "source": "Open the update details to continue.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 85
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "19d1260eb59819ab72a02e13fe3781632534b40b00262014b8ae7aeb70181006"
+    },
+    {
+      "id": "gamehq.update.banner.preparing",
+      "source": "Preparing %1 %2",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 55
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ba73ce1b166f5f8a3de6429e191c3f8ac9e5af177de7d2ed647109d7969a1c9b"
+    },
+    {
+      "id": "gamehq.update.banner.ready",
+      "source": "%1 %2 is ready",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 51
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ae2ef84674659aac84d61709af034d1a05a83d00eb9005d0dee1a23155084e6b"
+    },
+    {
+      "id": "gamehq.update.banner.restart_when_finished",
+      "source": "GameHQ will restart when installation finishes.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 82
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "bcf23f028457a31931de6bc938b07931d1befb1ed06043e340240c26db0020e4"
+    },
+    {
+      "id": "gamehq.update.banner.waiting_for_capture",
+      "source": "Waiting for capture work to finish safely.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 79
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "edf3c7c1656c71bb18f1d20920aabf1f77563364e5be90c2d9f27885a613b9b0"
+    },
+    {
+      "id": "gamehq.update.beta_download",
+      "source": "Beta update download",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 165
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b75bee706bfaa7ad66750bde74b77314de96d44c758a3bc775fa7371bc295e8f"
+    },
+    {
+      "id": "gamehq.update.bundled_with_version",
+      "source": "Bundled with GameHQ %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 145
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "9f3f9d76327b04f96e528c11dc860effb26137d528825edf02f1e2a9ab05e1c7"
+    },
+    {
+      "id": "gamehq.update.cancel_download",
+      "source": "Cancel download",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 216
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c422b61ebef656e5ed4d721d1c9bd0ba9b4650acf073a830237cfc4f7f53051a"
+    },
+    {
+      "id": "gamehq.update.check.label",
+      "source": "Check for updates",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 236
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 121
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c70eb41d40e3e244cca7b90c09d09592318e64db60e65e1c1c9975e98dd16f49"
+    },
+    {
+      "id": "gamehq.update.check_again",
+      "source": "Check again",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 230
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 201
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7cec1f586201c89cd06e95c1cee08333d06ec42f528608deafd435ef2149d557"
+    },
+    {
+      "id": "gamehq.update.check_automatically.description",
+      "source": "At most once every 24 hours, in the background.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 116
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "02f2317b7b433ab63cbecb6977ee472aadaba15f62154dae81ba520cd0c9dc8d"
+    },
+    {
+      "id": "gamehq.update.check_automatically.label",
+      "source": "Check automatically",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 114
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4fe48e495bd50b014e5438c05d8c80b7dc2baff886d963457ea7dc29d25e2bb7"
+    },
+    {
+      "id": "gamehq.update.check_failed",
+      "source": "Update check failed",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 171
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2198623c5a3a605590fdb7958e74434edd227f5e0d5880f5f6fb64c908466d08"
+    },
+    {
+      "id": "gamehq.update.check_now",
+      "source": "Check now",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 138
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5079cf6b2c10db41b4dd7dbd582d6b4330d1ce8f8937b35fa4327baac1c6ebdf"
+    },
+    {
+      "id": "gamehq.update.checking",
+      "source": "Checking...",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 210
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 135
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8ef359ece1bfc2820712b681e37ad78b39ddebe590666bf573a6c512d466e6e5"
+    },
+    {
+      "id": "gamehq.update.checking_for_updates",
+      "source": "Checking for updates...",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 80
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bf6a02f4f805e3cd2c3af0569eafc9ab3475c009fe681494a79b9732e7773146"
+    },
+    {
+      "id": "gamehq.update.checking_for_updates_short",
+      "source": "Checking for updates",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 152
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a848f411d6736fa9e8a38640ff8fa715837b34acd37080e36611427db3188d0e"
+    },
+    {
+      "id": "gamehq.update.choose_install_time",
+      "source": "Choose when to install %1 %2.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 902
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "58928f3c33d41c1127379faf666cc37bb3502209c812ea83e620c391910ff659"
+    },
+    {
+      "id": "gamehq.update.download_progress",
+      "source": "Download progress",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 154
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2d9437a39ad19512ebb7bb7d0604623bf62f3e864e46406c2f3f279d24b18c80"
+    },
+    {
+      "id": "gamehq.update.download_verified_version",
+      "source": "GameHQ %1 is downloaded and SHA-256 verified.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 93
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "f46de0b809757dd0abdad9a26e9f565656c919d736048fc2a97f2c6114bf7696"
+    },
+    {
+      "id": "gamehq.update.download_version",
+      "source": "Download update %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 213
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9c5a2eb827f123b5d887a172ef943ddba3e6315660baa9921eaef2fb69face90"
+    },
+    {
+      "id": "gamehq.update.downloading_percent",
+      "source": "Downloading %1%",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 158
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "355465e8f4c785166f0375646d9c6ab63299e6013d6e14d66532211065927e51"
+    },
+    {
+      "id": "gamehq.update.downloading_version_progress",
+      "source": "Downloading GameHQ %1... %2%",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 88
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "e43d172c0536a02c6e93589eab192d4c33d7caf46ad1bac66c35b61342154d4a"
+    },
+    {
+      "id": "gamehq.update.github_check_description",
+      "source": "GameHQ can check GitHub for newer stable releases.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 110
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "f8aaa2286eb86d747c53821f3551a702beda536ec1b3e2671309c9e068cf99d6"
+    },
+    {
+      "id": "gamehq.update.install_and_restart",
+      "source": "Install and restart",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 219
+        },
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 164
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 197
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad"
+    },
+    {
+      "id": "gamehq.update.installed_version",
+      "source": "Installed: %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 128
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9565f0009ac5a7780a4972de3cff1ed3161e49d3951a1d96ac369a875b3d9fc4"
+    },
+    {
+      "id": "gamehq.update.installing",
+      "source": "Installing",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 168
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 162
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "23ec2048844e3b929da3cb62bfab0760260e4546adf6f4f83312fe732389b27b"
+    },
+    {
+      "id": "gamehq.update.installing_progress",
+      "source": "Installing...",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 226
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "e2d6b15e943fafcc4ea27181a6d78e2349bf19e4b429c2a326e276f8d3ce0b2e"
+    },
+    {
+      "id": "gamehq.update.installing_version",
+      "source": "Installing GameHQ %1...",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 101
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "918be4b572cc2dce0c46fe7cc736dc3673c79b0a75e50ffed4bf632d81f92890"
+    },
+    {
+      "id": "gamehq.update.last_checked",
+      "source": "Last checked %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 202
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1431c224978aa73dce4d1ab2a0ce26d5371d1d555556402eb24b7b153e5129a8"
+    },
+    {
+      "id": "gamehq.update.new_version_available",
+      "source": "New version available",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 577
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3241c9ddea153f4df11bc7bf783d48fbc1b5ab537f352455d975f6c5cc3ba852"
+    },
+    {
+      "id": "gamehq.update.not_checked_description",
+      "source": "Updates have not been checked yet",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 199
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "87e9a424f3b899f78ec22fe2fac137501bda155c2d1274c73221d1f9bf154e40"
+    },
+    {
+      "id": "gamehq.update.not_checked_yet",
+      "source": "Not checked yet",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 181
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "258a6c0a46bd1976bd924c53fa570dfabd748ee7652304c47084cefe6cae904a"
+    },
+    {
+      "id": "gamehq.update.preparing",
+      "source": "Preparing...",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 223
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2ef88a2d2fa5ceb217b32a1ec0df55212dd31b6f3bb010dc3477e5f3de6dab2e"
+    },
+    {
+      "id": "gamehq.update.preparing_to_install",
+      "source": "Preparing to install",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 165
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9ef3d8409ffae229957d35437c34f5723d9961b04777da19c8ece509a6a094cb"
+    },
+    {
+      "id": "gamehq.update.preparing_version",
+      "source": "Getting ready to install GameHQ %1...",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 97
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "5fbfbc6ea4e7cd69eb1b88fd47c326b895bfe985818778e09931b8a1fc3f80ad"
+    },
+    {
+      "id": "gamehq.update.progress_percent",
+      "source": "%1% complete",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 72
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 172
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "afc64439f8e8b21bd11a0aa81c8cfd5ddeee8c92780abc4047b075b65269de43"
+    },
+    {
+      "id": "gamehq.update.published_on",
+      "source": "Published %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 136
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8bb5c8ce949bc0cb9d4f8f7f02dc61f0a806ef6cb6881e9906983a8514b95677"
+    },
+    {
+      "id": "gamehq.update.ready_to_install",
+      "source": "Ready to install",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 161
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 157
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "662cfdc05ac4ad0d6867d8a6a71a7310b979c28181d4a9c4e4b6129628afb9e1"
+    },
+    {
+      "id": "gamehq.update.released_on",
+      "source": "Released %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 142
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ecb13b1d85c23bdea89cf943152c76adcd2098737cbd213c086879b39c2bc481"
+    },
+    {
+      "id": "gamehq.update.remind_later",
+      "source": "Remind me later",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 927
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "20ac30255dde4ea258d7c3f00c7d78af60a936bfdb1c238c314f98f3babf883c"
+    },
+    {
+      "id": "gamehq.update.restart_to_apply",
+      "source": "GameHQ will restart to apply the update.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 175
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "ab0fcd3d9d7633f02378ab7c6e982a8da29e7e361f027b3895f2864a38dc8022"
+    },
+    {
+      "id": "gamehq.update.retry_download",
+      "source": "Retry download",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 233
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 204
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "58ecc648a987876e184743665c468b57ec6809b5b0d678f6a18c8391ea55c76c"
+    },
+    {
+      "id": "gamehq.update.see_whats_new",
+      "source": "See what's new",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 148
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "99956114baeae401ef1088b036dc86afaa428cb0397d24df26e07e9d86bc7bd0"
+    },
+    {
+      "id": "gamehq.update.settings",
+      "source": "Update settings",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 722
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "e456131565b4696343168e24479029ac59f65bd774d35ef30b8628a883314db7"
+    },
+    {
+      "id": "gamehq.update.sha256_limit_warning",
+      "source": "SHA-256 detects corruption, but not a compromised GitHub account.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 185
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4edb33bfe4031b77c25b7414970a7ebcb0a79f46607108be23889851f33a49b9"
+    },
+    {
+      "id": "gamehq.update.skip_this_version",
+      "source": "Skip this version",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 941
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "cdd76863c30bb78c6aadf50193cd5d1ffc291a34a69dc427881423e63ce92d0a"
+    },
+    {
+      "id": "gamehq.update.skip_version",
+      "source": "Skip version %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 732
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7f19a7feebf64362934bf0bb85abe1c436db3acd2d1cbe14f8f454d5ede316db"
+    },
+    {
+      "id": "gamehq.update.status.available",
+      "source": "Available",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 116
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 72
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "cd7d3b881ec64303dc56871a13d50a29ff58b2ab82c97d8bde3c6c44cf5a7870"
+    },
+    {
+      "id": "gamehq.update.status.current",
+      "source": "Current",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 120
+        },
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 75
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a2587f01fe4e650d2068c5a328dab63bc3edfab063b075446750c80d00fc23f1"
+    },
+    {
+      "id": "gamehq.update.status.previous",
+      "source": "Previous",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 123
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "31ec66fa1276c67ab9b36ba0292094a20dd260b57b30ff4854d687115866b2dc"
+    },
+    {
+      "id": "gamehq.update.status.update_available",
+      "source": "Update available",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 155
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1da8c8bc8b419e8fd502ede1a6ce0a57a67304fd2da6ecaf1060cf5e826d99e1"
+    },
+    {
+      "id": "gamehq.update.suffix.available",
+      "source": "(Available)",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 48
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "cd3c301317ca2e90f999f8acbe39dddd4ec0757ab48b73323f45696431ea62ad"
+    },
+    {
+      "id": "gamehq.update.suffix.current",
+      "source": "(Current)",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 53
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bc3193f2aca226f84c23e1f6cd089c840b812a8557af240bc9455cb626a9a6f1"
+    },
+    {
+      "id": "gamehq.update.up_to_date",
+      "source": "Up to date",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 174
+        },
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 178
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5db108406f7295b7c2e8183341f28fb82e6ff23683d0f2cbdc75c3daebbd6275"
+    },
+    {
+      "id": "gamehq.update.up_to_date_last_checked",
+      "source": "Up to date, last checked %1",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 106
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b7dffd318162913ce3360fe8e7e744c14e5615f7f61fd025cde298396d764ff1"
+    },
+    {
+      "id": "gamehq.update.version_available",
+      "source": "GameHQ %1 is available",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 43
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "8cf5df322e7ae6023d74cbd654939b91a882ab2fd4e2f58ff367bc1bc7b3d745"
+    },
+    {
+      "id": "gamehq.update.version_available_sentence",
+      "source": "GameHQ %1 is available.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 84
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "cdbe2ffc3d9dc507d7d1612cac8d04e8bbb53fff19e92474afdf183639bdb9f4"
+    },
+    {
+      "id": "gamehq.update.versions",
+      "source": "VERSIONS",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 958
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3fe11c38051834421ff64e486a8dc894d9352d0dd149896c58579f8d84da0e0e"
+    },
+    {
+      "id": "gamehq.update.view_release_notes",
+      "source": "View release notes",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 226
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8f45229f4047cee08381ab95ab6309013db7197cf130a1559ba87ff73aaa16b6"
+    },
+    {
+      "id": "gamehq.update.view_update",
+      "source": "View update",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 151
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "103cf246f18e7bef742c3c44acf61b24d2eded0025be11939308187c8ce7ce7e"
+    },
+    {
+      "id": "gamehq.update.waiting_for_capture",
+      "source": "Waiting for capture work to finish safely...",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/AboutSettingsPage.qml",
+          "line": 179
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "cad430a0d27fa6d56b1686cc483fde3fc27e68b7a4128f2b6e2cd2026e76e9ce"
     }
   ]
 }

@@ -146,7 +146,30 @@ ApplicationWindow {
     // backs out, Triangle favorites, Square opens the action menu.
     // Pad input only reaches here while this window has real OS focus (see
     // onActiveChanged below) — never steals the pad from a focused game.
+    readonly property var sidebarCategoryLabels: ({
+        //% "All"
+        "all": qsTrId("gamehq.navigation.category.all"),
+        //% "Recent"
+        "recent": qsTrId("gamehq.navigation.category.recent"),
+        //% "Favorites"
+        "favorites": qsTrId("gamehq.navigation.category.favorites"),
+        //% "Screenshots"
+        "screenshots": qsTrId("gamehq.navigation.category.screenshots"),
+        //% "Clips"
+        "clips": qsTrId("gamehq.navigation.category.clips"),
+        //% "Game"
+        "game": qsTrId("gamehq.navigation.category.game"),
+        //% "Game favorites"
+        "game_favorites": qsTrId("gamehq.navigation.category.game_favorites")
+    })
     property var sidebarCategories: SidebarCategories.categories(app.currentGameAvailable)
+        .map(function (category) {
+            return {
+                key: category.key,
+                label: window.sidebarCategoryLabels[category.key],
+                glyph: category.glyph
+            }
+        })
     property bool menuOpen: false
     property int menuIndex: 0
     property bool bulkMode: false

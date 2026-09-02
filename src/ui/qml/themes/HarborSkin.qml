@@ -2,8 +2,10 @@
 // almost no rounding — chrome recedes so the capture art carries the screen.
 // Condensed geometric type for legibility at couch distance.
 Skin {
-    label: "Harbor"
-    blurb: "Flat blue-grey with squared edges. Chrome gets out of the way."
+    //% "Harbor"
+    label: qsTrId("gamehq.settings.theme.harbor.label")
+    //% "Flat blue-grey with squared edges. Chrome gets out of the way."
+    blurb: qsTrId("gamehq.settings.theme.harbor.description")
 
     bg0:        "#171A21"
     bg1:        "#1B2838"

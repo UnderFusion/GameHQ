@@ -1,8 +1,10 @@
 // Chat-app ergonomics: soft neutral greys, a saturated indigo, very generous
 // rounding and fast micro-interactions. The snappiest skin in the set.
 Skin {
-    label: "Cobalt"
-    blurb: "Soft greys, indigo accent, pill-round and very fast."
+    //% "Cobalt"
+    label: qsTrId("gamehq.settings.theme.cobalt.label")
+    //% "Soft greys, indigo accent, pill-round and very fast."
+    blurb: qsTrId("gamehq.settings.theme.cobalt.description")
 
     bg0:        "#1E1F22"
     bg1:        "#232428"

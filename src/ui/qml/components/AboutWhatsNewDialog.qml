@@ -32,15 +32,25 @@ FocusScope {
     function releaseEntries() {
         const entries = []
         if (hasUpdateRelease())
-            entries.push({ version: updateVersion(), suffix: "(Available)",
+            entries.push({ version: updateVersion(), suffix: availableSuffix(),
                            isUpdate: true, bundledIndex: -1 })
         const releases = bundledReleases()
         for (let index = 0; index < releases.length; ++index) {
             entries.push({ version: releases[index].version,
-                           suffix: index === 0 ? "(Current)" : "",
+                           suffix: index === 0 ? currentSuffix() : "",
                            isUpdate: false, bundledIndex: index })
         }
         return entries
+    }
+
+    function availableSuffix() {
+        //% "(Available)"
+        return qsTrId("gamehq.update.suffix.available")
+    }
+
+    function currentSuffix() {
+        //% "(Current)"
+        return qsTrId("gamehq.update.suffix.current")
     }
 
     function selectedUsesRemoteNotes() {
@@ -101,9 +111,16 @@ FocusScope {
     }
 
     function releaseBadgeText() {
-        if (hasUpdateRelease() && updateReleaseSelected)
-            return "Available"
-        return bundledReleaseIndex === 0 ? "Current" : "Previous"
+        if (hasUpdateRelease() && updateReleaseSelected) {
+            //% "Available"
+            return qsTrId("gamehq.update.status.available")
+        }
+        if (bundledReleaseIndex === 0) {
+            //% "Current"
+            return qsTrId("gamehq.update.status.current")
+        }
+        //% "Previous"
+        return qsTrId("gamehq.update.status.previous")
     }
 
     function releaseBadgeColor() {
@@ -114,24 +131,54 @@ FocusScope {
 
     function selectedReleaseFooter() {
         if (updateReleaseSelected && hasUpdateRelease()
-                && updates.publishedAt.getTime() > 0)
-            return "Published " + Qt.formatDate(updates.publishedAt, "d MMM yyyy")
+                && updates.publishedAt.getTime() > 0) {
+            //% "Published %1"
+            return qsTrId("gamehq.update.published_on")
+                    .arg(Qt.formatDate(updates.publishedAt, "d MMM yyyy"))
+        }
         const release = selectedBundledRelease()
-        return release.date ? "Released " + release.date : "Bundled with GameHQ " + app.version
+        if (release.date) {
+            //% "Released %1"
+            return qsTrId("gamehq.update.released_on").arg(release.date)
+        }
+        //% "Bundled with GameHQ %1"
+        return qsTrId("gamehq.update.bundled_with_version").arg(app.version)
     }
 
     function statusText() {
         switch (updates.stateName) {
-        case "Checking": return "Checking for updates"
-        case "UpdateAvailable": return "Update available"
-        case "Downloading": return "Downloading " + updates.progress + "%"
-        case "ReadyToInstall": return "Ready to install"
+        case "Checking":
+            //% "Checking for updates"
+            return qsTrId("gamehq.update.checking_for_updates_short")
+        case "UpdateAvailable":
+            //% "Update available"
+            return qsTrId("gamehq.update.status.update_available")
+        case "Downloading":
+            //% "Downloading %1%"
+            return qsTrId("gamehq.update.downloading_percent").arg(updates.progress)
+        case "ReadyToInstall":
+            //% "Ready to install"
+            return qsTrId("gamehq.update.ready_to_install")
         case "PreparingForUpdate":
-        case "Quiescent": return "Preparing to install"
-        case "Installing": return "Installing"
-        case "Failed": return "Update check failed"
-        case "UpToDate": return "Up to date"
-        default: return updates.lastChecked.getTime() > 0 ? "Up to date" : "Not checked yet"
+        case "Quiescent":
+            //% "Preparing to install"
+            return qsTrId("gamehq.update.preparing_to_install")
+        case "Installing":
+            //% "Installing"
+            return qsTrId("gamehq.update.installing")
+        case "Failed":
+            //% "Update check failed"
+            return qsTrId("gamehq.update.check_failed")
+        case "UpToDate":
+            //% "Up to date"
+            return qsTrId("gamehq.update.up_to_date")
+        default:
+            if (updates.lastChecked.getTime() > 0) {
+                //% "Up to date"
+                return qsTrId("gamehq.update.up_to_date")
+            }
+            //% "Not checked yet"
+            return qsTrId("gamehq.update.not_checked_yet")
         }
     }
 
@@ -147,22 +194,46 @@ FocusScope {
     }
 
     function lastCheckedText() {
-        if (updates.lastChecked.getTime() <= 0)
-            return "Updates have not been checked yet"
-        return "Last checked " + Qt.formatDateTime(updates.lastChecked, "d MMM yyyy, HH:mm")
+        if (updates.lastChecked.getTime() <= 0) {
+            //% "Updates have not been checked yet"
+            return qsTrId("gamehq.update.not_checked_description")
+        }
+        //% "Last checked %1"
+        return qsTrId("gamehq.update.last_checked")
+                .arg(Qt.formatDateTime(updates.lastChecked, "d MMM yyyy, HH:mm"))
     }
 
     function primaryLabel() {
         switch (updates.stateName) {
-        case "Checking": return "Checking..."
-        case "UpdateAvailable": return "Download update " + updates.latestVersion
-        case "Downloading": return "Cancel download"
-        case "ReadyToInstall": return "Install and restart"
+        case "Checking":
+            //% "Checking..."
+            return qsTrId("gamehq.update.checking")
+        case "UpdateAvailable":
+            //% "Download update %1"
+            return qsTrId("gamehq.update.download_version").arg(updates.latestVersion)
+        case "Downloading":
+            //% "Cancel download"
+            return qsTrId("gamehq.update.cancel_download")
+        case "ReadyToInstall":
+            //% "Install and restart"
+            return qsTrId("gamehq.update.install_and_restart")
         case "PreparingForUpdate":
-        case "Quiescent": return "Preparing..."
-        case "Installing": return "Installing..."
-        case "Failed": return updates.failedDuringCheck ? "Check again" : "Retry download"
-        default: return "Check for updates"
+        case "Quiescent":
+            //% "Preparing..."
+            return qsTrId("gamehq.update.preparing")
+        case "Installing":
+            //% "Installing..."
+            return qsTrId("gamehq.update.installing_progress")
+        case "Failed":
+            if (updates.failedDuringCheck) {
+                //% "Check again"
+                return qsTrId("gamehq.update.check_again")
+            }
+            //% "Retry download"
+            return qsTrId("gamehq.update.retry_download")
+        default:
+            //% "Check for updates"
+            return qsTrId("gamehq.update.check.label")
         }
     }
 
@@ -406,9 +477,13 @@ FocusScope {
                     spacing: Theme.s4
 
                     Text {
-                        text: root.postUpdateGreeting
-                              ? Brand.name + " updated"
-                              : Brand.name
+                        text: {
+                            if (root.postUpdateGreeting) {
+                                //% "%1 updated"
+                                return qsTrId("gamehq.about.product_updated").arg(Brand.name)
+                            }
+                            return Brand.name
+                        }
                         color: Theme.text
                         font.family: Theme.fontFamily
                         font.pixelSize: Theme.fontTitle
@@ -419,7 +494,8 @@ FocusScope {
                         spacing: Theme.s8
 
                         Text {
-                            text: "Version " + app.version
+                            //% "Version %1"
+                            text: qsTrId("gamehq.about.version").arg(app.version)
                             color: Theme.textMuted
                             font.family: Theme.fontFamily
                             font.pixelSize: Theme.fontBody
@@ -435,7 +511,14 @@ FocusScope {
                             Text {
                                 id: modeText
                                 anchors.centerIn: parent
-                                text: app.portableMode ? "Portable" : "Installed"
+                                text: {
+                                    if (app.portableMode) {
+                                        //% "Portable"
+                                        return qsTrId("gamehq.about.mode.portable")
+                                    }
+                                    //% "Installed"
+                                    return qsTrId("gamehq.about.mode.installed")
+                                }
                                 color: Theme.textMuted
                                 font.family: Theme.fontFamily
                                 font.pixelSize: Theme.fontCaption
@@ -482,12 +565,19 @@ FocusScope {
                 TextLink {
                     id: backLink
                     visible: !root.hasUpdateRelease()
-                    label: "‹  Back"
+                    //% "Back"
+                    label: "‹  " + qsTrId("gamehq.action.back")
                     onClicked: root.closeReleaseNotes()
                 }
                 Text {
                     Layout.fillWidth: true
-                    text: root.hasUpdateRelease() ? "New version available" : app.releaseNotesTitle
+                    text: {
+                        if (root.hasUpdateRelease()) {
+                            //% "New version available"
+                            return qsTrId("gamehq.update.new_version_available")
+                        }
+                        return app.releaseNotesTitle
+                    }
                     horizontalAlignment: Text.AlignHCenter
                     color: Theme.text
                     font.family: Theme.fontFamily
@@ -529,7 +619,8 @@ FocusScope {
 
                         Text {
                             Layout.fillWidth: true
-                            text: "A controller-friendly screenshot, replay, and media gallery for PC games."
+                            //% "A controller-friendly screenshot, replay, and media gallery for PC games."
+                            text: qsTrId("gamehq.about.product_description")
                             textFormat: Text.PlainText
                             color: Theme.textMuted
                             font.family: Theme.fontFamily
@@ -538,7 +629,8 @@ FocusScope {
                         }
 
                         Text {
-                            text: "WHAT'S NEW IN " + root.displayedVersion()
+                            //% "WHAT'S NEW IN %1"
+                            text: qsTrId("gamehq.about.whats_new_in").arg(root.displayedVersion())
                             color: Theme.textFaint
                             font.family: Theme.fontFamily
                             font.pixelSize: Theme.fontCaption
@@ -572,7 +664,8 @@ FocusScope {
 
                         Text {
                             Layout.fillWidth: true
-                            text: "Plus more improvements and fixes."
+                            //% "Plus more improvements and fixes."
+                            text: qsTrId("gamehq.about.more_improvements")
                             textFormat: Text.PlainText
                             color: Theme.textFaint
                             font.family: Theme.fontFamily
@@ -581,7 +674,7 @@ FocusScope {
 
                         TextLink {
                             id: releaseNotesLink
-                            //% "See full release notes"
+                            //% "View full release notes"
                             label: qsTrId("gamehq.about.full_release_notes")
                             suffix: "›"
                             onClicked: root.openReleaseNotes()
@@ -602,7 +695,8 @@ FocusScope {
                                 spacing: Theme.s8
 
                                 Text {
-                                    text: "QUICK ACTIONS"
+                                    //% "QUICK ACTIONS"
+                                    text: qsTrId("gamehq.about.quick_actions")
                                     color: Theme.textFaint
                                     font.family: Theme.fontFamily
                                     font.pixelSize: Theme.fontCaption
@@ -624,7 +718,8 @@ FocusScope {
                                     AccentButton {
                                         id: settingsButton
                                         Layout.fillWidth: true
-                                        label: "Update settings"
+                                        //% "Update settings"
+                                        label: qsTrId("gamehq.update.settings")
                                         onClicked: root.updateSettingsRequested()
                                     }
                                 }
@@ -633,7 +728,8 @@ FocusScope {
                                     id: skipVersionLink
                                     visible: root.hasUpdateRelease()
                                              && updates.stateName === "UpdateAvailable"
-                                    label: "Skip version " + root.updateVersion()
+                                    //% "Skip version %1"
+                                    label: qsTrId("gamehq.update.skip_version").arg(root.updateVersion())
                                     onClicked: {
                                         updates.skipVersion()
                                         root.close()
@@ -654,7 +750,8 @@ FocusScope {
                         }
 
                         Text {
-                            text: "PROJECT LINKS"
+                            //% "PROJECT LINKS"
+                            text: qsTrId("gamehq.about.project_links")
                             color: Theme.textFaint
                             font.family: Theme.fontFamily
                             font.pixelSize: Theme.fontCaption
@@ -669,22 +766,26 @@ FocusScope {
 
                             TextLink {
                                 id: githubLink
-                                label: "GitHub"
+                                //% "GitHub"
+                                label: qsTrId("gamehq.about.github")
                                 onClicked: Qt.openUrlExternally(Brand.repositoryUrl)
                             }
                             TextLink {
                                 id: issueLink
-                                label: "Report issue"
+                                //% "Report issue"
+                                label: qsTrId("gamehq.about.report_issue")
                                 onClicked: Qt.openUrlExternally(Brand.issuesUrl)
                             }
                             TextLink {
                                 id: licenseLink
-                                label: "License"
+                                //% "License"
+                                label: qsTrId("gamehq.about.license")
                                 onClicked: Qt.openUrlExternally(Brand.licenseUrl)
                             }
                             TextLink {
                                 id: securityLink
-                                label: "Security & privacy"
+                                //% "Security & privacy"
+                                label: qsTrId("gamehq.settings.about.security_privacy")
                                 onClicked: Qt.openUrlExternally(Brand.securityUrl)
                             }
                         }
@@ -706,7 +807,8 @@ FocusScope {
                                     spacing: Theme.s4
                                     Text {
                                         Layout.fillWidth: true
-                                        text: "Enjoying GameHQ?"
+                                        //% "Enjoying GameHQ?"
+                                        text: qsTrId("gamehq.about.enjoying_gamehq")
                                         color: Theme.text
                                         font.family: Theme.fontFamily
                                         font.pixelSize: Theme.fontBody
@@ -714,7 +816,8 @@ FocusScope {
                                     }
                                     Text {
                                         Layout.fillWidth: true
-                                        text: "A GitHub star helps more players discover the project."
+                                        //% "A GitHub star helps more players discover the project."
+                                        text: qsTrId("gamehq.about.star_description")
                                         color: Theme.textFaint
                                         font.family: Theme.fontFamily
                                         font.pixelSize: Theme.fontCaption
@@ -724,7 +827,8 @@ FocusScope {
 
                                 AccentButton {
                                     id: starButton
-                                    label: "Star on GitHub"
+                                    //% "Star on GitHub"
+                                    label: qsTrId("gamehq.about.star_on_github")
                                     onClicked: Qt.openUrlExternally(Brand.repositoryUrl)
                                 }
                             }
@@ -752,7 +856,8 @@ FocusScope {
                             Layout.fillWidth: true
                             Text {
                                 Layout.fillWidth: true
-                                text: "Version " + root.displayedVersion()
+                                //% "Version %1"
+                                text: qsTrId("gamehq.about.version").arg(root.displayedVersion())
                                 color: Theme.text
                                 font.family: Theme.fontFamily
                                 font.pixelSize: Theme.fontTitle
@@ -793,7 +898,9 @@ FocusScope {
 
                                 Text {
                                     Layout.fillWidth: true
-                                    text: "Choose when to install " + Brand.name + " " + root.updateVersion() + "."
+                                    //% "Choose when to install %1 %2."
+                                    text: qsTrId("gamehq.update.choose_install_time")
+                                            .arg(Brand.name).arg(root.updateVersion())
                                     color: Theme.textMuted
                                     font.family: Theme.fontFamily
                                     font.pixelSize: Theme.fontCaption
@@ -816,7 +923,8 @@ FocusScope {
                                     AccentButton {
                                         id: remindLaterAction
                                         Layout.fillWidth: true
-                                        label: "Remind me later"
+                                        //% "Remind me later"
+                                        label: qsTrId("gamehq.update.remind_later")
                                         visible: updates.stateName === "UpdateAvailable"
                                                  || updates.stateName === "Failed"
                                         onClicked: {
@@ -829,7 +937,8 @@ FocusScope {
                                         id: skipUpdateAction
                                         Layout.fillWidth: true
                                         visible: updates.stateName === "UpdateAvailable"
-                                        label: "Skip this version"
+                                        //% "Skip this version"
+                                        label: qsTrId("gamehq.update.skip_this_version")
                                         onClicked: {
                                             updates.skipVersion()
                                             root.close()
@@ -845,7 +954,8 @@ FocusScope {
                             spacing: Theme.s8
 
                             Text {
-                                text: "VERSIONS"
+                                //% "VERSIONS"
+                                text: qsTrId("gamehq.update.versions")
                                 color: Theme.textFaint
                                 font.family: Theme.fontFamily
                                 font.pixelSize: Theme.fontCaption

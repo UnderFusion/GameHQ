@@ -5,7 +5,8 @@
 // chrome (badge/tile buttons/pulse) and focusGlow. Those sit over captures, not
 // over app surfaces, so they stay dark here too.
 Skin {
-    label: "Light"
+    //% "Light"
+    label: qsTrId("gamehq.settings.theme.light.label")
 
     // Surfaces — bg0 is the page, surface is the raised card.
     bg0:        "#F4F6FB"

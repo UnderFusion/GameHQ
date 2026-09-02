@@ -1,8 +1,10 @@
 // Storefront-minimal: layered neutral greys, one bright blue, barely any
 // borders. The quietest skin here — closest to "no theme at all".
 Skin {
-    label: "Carbon"
-    blurb: "Layered neutral greys and one bright blue. Minimal to a fault."
+    //% "Carbon"
+    label: qsTrId("gamehq.settings.theme.carbon.label")
+    //% "Layered neutral greys and one bright blue. Minimal to a fault."
+    blurb: qsTrId("gamehq.settings.theme.carbon.description")
 
     bg0:        "#121212"
     bg1:        "#1B1B1B"

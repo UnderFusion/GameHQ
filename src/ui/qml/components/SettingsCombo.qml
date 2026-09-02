@@ -16,6 +16,7 @@ QC.ComboBox {
     property var options: []
     property string configKey: ""
     property var defaultValue: undefined
+    signal valueCommitted(var value)
 
     model: options
     textRole: "label"
@@ -27,6 +28,7 @@ QC.ComboBox {
         currentIndex = index
         if (configKey.length > 0)
             app.setConfig(configKey, options[index].value)
+        valueCommitted(options[index].value)
     }
 
     function refresh() {
@@ -54,6 +56,8 @@ QC.ComboBox {
     }
     onVisibleChanged: if (!visible) padHighlight = -1
     Component.onCompleted: refresh()
+    onOptionsChanged: refresh()
+    onDefaultValueChanged: refresh()
     onActivated: commit(currentIndex)
 
     Connections {

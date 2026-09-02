@@ -6,7 +6,8 @@
 // dark skin's textFaint is decorative, and decorative is exactly what this skin
 // is not for.
 Skin {
-    label: "High contrast"
+    //% "High contrast"
+    label: qsTrId("gamehq.settings.theme.high_contrast.label")
 
     bg0:        "#000000"
     bg1:        "#0A0A0A"

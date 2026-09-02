@@ -12,8 +12,8 @@
       <translation>Manager fallback</translation>
     </message>
     <message id="gamehq.about.full_release_notes">
-      <source>See full release notes</source>
-      <translation>See full release notes</translation>
+      <source>View full release notes</source>
+      <translation>View full release notes</translation>
     </message>
     <message id="gamehq.action.screenshot.label">
       <source>Screenshot</source>

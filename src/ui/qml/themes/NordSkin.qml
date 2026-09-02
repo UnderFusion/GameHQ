@@ -1,8 +1,10 @@
 // The Nord palette: desaturated arctic blue-greys with frost accents. Calm and
 // low-contrast by design — the restful counterweight to Synthwave.
 Skin {
-    label: "Nord"
-    blurb: "Desaturated arctic blue-greys. Calm and low-contrast."
+    //% "Nord"
+    label: qsTrId("gamehq.settings.theme.nord.label")
+    //% "Desaturated arctic blue-greys. Calm and low-contrast."
+    blurb: qsTrId("gamehq.settings.theme.nord.description")
 
     bg0:        "#2E3440"
     bg1:        "#3B4252"

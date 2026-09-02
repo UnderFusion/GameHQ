@@ -2,8 +2,10 @@
 // earth accents. Monospaced type completes the vintage-console feel — the only
 // skin here that is warm rather than cool.
 Skin {
-    label: "Gruvbox"
-    blurb: "Warm retro-terminal browns and cream, in monospace."
+    //% "Gruvbox"
+    label: qsTrId("gamehq.settings.theme.gruvbox.label")
+    //% "Warm retro-terminal browns and cream, in monospace."
+    blurb: qsTrId("gamehq.settings.theme.gruvbox.description")
 
     bg0:        "#1D2021"
     bg1:        "#282828"

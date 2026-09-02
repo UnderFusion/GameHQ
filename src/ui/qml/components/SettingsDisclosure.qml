@@ -5,7 +5,8 @@ import GameHQ
 
 ColumnLayout {
     id: root
-    property string label: "View technical details"
+    //% "View technical details"
+    property string label: qsTrId("gamehq.settings.disclosure.default")
     property bool expanded: false
     default property alias contentData: details.data
     Layout.fillWidth: true
@@ -48,7 +49,14 @@ ColumnLayout {
             }
 
             Text {
-                text: root.expanded ? "Hide" : "Show"
+                text: {
+                    if (root.expanded) {
+                        //% "Hide"
+                        return qsTrId("gamehq.settings.disclosure.hide")
+                    }
+                    //% "Show"
+                    return qsTrId("gamehq.settings.disclosure.show")
+                }
                 color: Theme.textMuted
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.fontCaption

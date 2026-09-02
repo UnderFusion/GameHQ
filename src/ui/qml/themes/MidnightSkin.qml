@@ -3,8 +3,10 @@
 // a pronounced focus lift. The most "cinematic" skin — deliberately unhurried
 // where Cobalt and Emerald are snappy.
 Skin {
-    label: "Midnight"
-    blurb: "Near-black with soft blue washes and slow, cinematic motion."
+    //% "Midnight"
+    label: qsTrId("gamehq.settings.theme.midnight.label")
+    //% "Near-black with soft blue washes and slow, cinematic motion."
+    blurb: qsTrId("gamehq.settings.theme.midnight.description")
 
     bg0:        "#04060F"
     bg1:        "#0A1024"

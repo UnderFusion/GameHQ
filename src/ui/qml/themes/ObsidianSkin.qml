@@ -13,8 +13,10 @@ import QtQuick
 // Type is Segoe UI: humanist, and present on every Win10/11 box, so it never
 // falls back to something unintended.
 Skin {
-    label: "Obsidian"
-    blurb: "Near-black glass lit by a cool blue bloom. The default."
+    //% "Obsidian"
+    label: qsTrId("gamehq.settings.theme.obsidian.label")
+    //% "Near-black glass lit by a cool blue bloom. The default."
+    blurb: qsTrId("gamehq.settings.theme.obsidian.description")
 
     bg0:        "#08090C"
     bg1:        "#101318"

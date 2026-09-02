@@ -2,8 +2,10 @@
 // scanlines across the backdrop, and bloom on everything focused. Sharp edges —
 // neon reads as neon on hard corners, not soft ones.
 Skin {
-    label: "Synthwave"
-    blurb: "Neon magenta and cyan over a violet horizon, with scanlines."
+    //% "Synthwave"
+    label: qsTrId("gamehq.settings.theme.synthwave.label")
+    //% "Neon magenta and cyan over a violet horizon, with scanlines."
+    blurb: qsTrId("gamehq.settings.theme.synthwave.description")
 
     bg0:        "#01012B"
     bg1:        "#0B0430"

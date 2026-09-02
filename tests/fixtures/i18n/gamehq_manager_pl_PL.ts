@@ -8,7 +8,7 @@
       <translation>Menedżer po polsku</translation>
     </message>
     <message id="gamehq.about.full_release_notes">
-      <source>See full release notes</source>
+      <source>View full release notes</source>
       <translation>Zobacz pełne informacje o wydaniu</translation>
     </message>
     <message id="gamehq.action.screenshot.label">

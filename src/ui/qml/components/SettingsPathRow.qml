@@ -17,18 +17,21 @@ SettingsRow {
 
     TextLink {
         visible: root.showReset
-        label: "Use default"
+        //% "Use default"
+        label: qsTrId("gamehq.common.action.use_default")
         onClicked: root.resetRequested()
     }
     AccentButton {
         visible: root.showChange
-        label: "Change"
+        //% "Change"
+        label: qsTrId("gamehq.common.action.change")
         quiet: true
         onClicked: root.changeRequested()
     }
     AccentButton {
         visible: root.showOpen
-        label: "Open"
+        //% "Open"
+        label: qsTrId("gamehq.common.action.open")
         quiet: true
         onClicked: root.openRequested()
     }

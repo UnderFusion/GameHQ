@@ -205,6 +205,17 @@ qt_add_qml_module(GameHQ
 # lrelease for tracked TS inputs, then embed the generated QM under :/i18n.
 set(gamehq_app_ts_files
     "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_en_US.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_zh_Hans.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_ru_RU.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_es_ES.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_pt_BR.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_de_DE.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_ja_JP.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_fr_FR.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_pl_PL.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_ko_KR.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_zh_Hant.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_tr_TR.ts"
 )
 qt_add_translations(GameHQ
     TS_FILES ${gamehq_app_ts_files}

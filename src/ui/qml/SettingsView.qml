@@ -9,14 +9,22 @@ Item {
     signal closeRequested()
 
     property var categories: [
-        { label: "General", icon: "\u2699", description: "Appearance, startup, and windows." },
-        { label: "Capture", icon: "\u25A3", description: "Screenshot behavior and storage." },
-        { label: "Replay", icon: "\u21BA", description: "Rolling buffer and clip quality." },
-        { label: "Input", icon: "\u2328", description: "Shortcuts, devices, and bindings." },
-        { label: "Library", icon: "\u25A4", description: "Managed and watched folders." },
-        { label: "Notifications & Sound", icon: "\u266B", description: "Visual and audio feedback." },
-        { label: "Advanced", icon: "\u2261", description: "Diagnostics, HDR, and recovery." },
-        { label: "About", icon: "\u24D8", description: "Version, updates, and project links." }
+        //% "General"
+        { label: qsTrId("gamehq.settings.category.general"), icon: "\u2699" },
+        //% "Capture"
+        { label: qsTrId("gamehq.settings.category.capture"), icon: "\u25A3" },
+        //% "Replay"
+        { label: qsTrId("gamehq.settings.category.replay"), icon: "\u21BA" },
+        //% "Input"
+        { label: qsTrId("gamehq.settings.category.input"), icon: "\u2328" },
+        //% "Library"
+        { label: qsTrId("gamehq.settings.category.library"), icon: "\u25A4" },
+        //% "Notifications & sound"
+        { label: qsTrId("gamehq.settings.category.notifications_sound"), icon: "\u266B" },
+        //% "Advanced"
+        { label: qsTrId("gamehq.settings.category.advanced"), icon: "\u2261" },
+        //% "About"
+        { label: qsTrId("gamehq.settings.category.about"), icon: "\u24D8" }
     ]
     property int currentCategory: Math.max(0, Math.min(categories.length - 1,
         Number(app.config("ui.settings_category", 0))))

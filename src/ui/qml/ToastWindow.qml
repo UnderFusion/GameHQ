@@ -13,7 +13,8 @@ Window {
     height: 700
     visible: false
     color: "transparent"
-    title: Brand.name + " Notifications"
+    //% "%1 Notifications"
+    title: qsTrId("gamehq.notifications.window_title").arg(Brand.name)
 
     ListModel { id: toastModel }
 

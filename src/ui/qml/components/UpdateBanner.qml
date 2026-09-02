@@ -29,34 +29,60 @@ Rectangle {
     }
 
     function formattedSize(bytes) {
-        if (bytes >= 1024 * 1024)
-            return (bytes / (1024 * 1024)).toFixed(1) + " MB"
-        if (bytes >= 1024)
-            return Math.round(bytes / 1024) + " KB"
-        return bytes + " B"
+        if (bytes >= 1024 * 1024) {
+            //% "%1 MB"
+            return qsTrId("gamehq.format.size.megabytes").arg((bytes / (1024 * 1024)).toFixed(1))
+        }
+        if (bytes >= 1024) {
+            //% "%1 KB"
+            return qsTrId("gamehq.format.size.kilobytes").arg(Math.round(bytes / 1024))
+        }
+        //% "%1 B"
+        return qsTrId("gamehq.format.size.bytes").arg(bytes)
     }
 
     function titleText() {
         switch (updates.stateName) {
-        case "Downloading": return "Downloading " + Brand.name + " " + updates.latestVersion
-        case "ReadyToInstall": return Brand.name + " " + updates.latestVersion + " is ready"
+        case "Downloading":
+            //% "Downloading %1 %2"
+            return qsTrId("gamehq.update.banner.downloading").arg(Brand.name).arg(updates.latestVersion)
+        case "ReadyToInstall":
+            //% "%1 %2 is ready"
+            return qsTrId("gamehq.update.banner.ready").arg(Brand.name).arg(updates.latestVersion)
         case "PreparingForUpdate":
-        case "Quiescent": return "Preparing " + Brand.name + " " + updates.latestVersion
-        case "Installing": return "Installing " + Brand.name + " " + updates.latestVersion
-        case "Failed": return "The update needs attention"
-        default: return Brand.name + " " + updates.latestVersion + " is available"
+        case "Quiescent":
+            //% "Preparing %1 %2"
+            return qsTrId("gamehq.update.banner.preparing").arg(Brand.name).arg(updates.latestVersion)
+        case "Installing":
+            //% "Installing %1 %2"
+            return qsTrId("gamehq.update.banner.installing").arg(Brand.name).arg(updates.latestVersion)
+        case "Failed":
+            //% "The update needs attention"
+            return qsTrId("gamehq.update.banner.needs_attention")
+        default:
+            //% "%1 %2 is available"
+            return qsTrId("gamehq.update.banner.available").arg(Brand.name).arg(updates.latestVersion)
         }
     }
 
     function detailText() {
         switch (updates.stateName) {
-        case "Downloading": return updates.progress + "% complete"
-        case "ReadyToInstall": return "Download verified and ready to install."
+        case "Downloading":
+            //% "%1% complete"
+            return qsTrId("gamehq.update.progress_percent").arg(updates.progress)
+        case "ReadyToInstall":
+            //% "Download verified and ready to install."
+            return qsTrId("gamehq.update.banner.download_verified")
         case "PreparingForUpdate":
-        case "Quiescent": return "Waiting for capture work to finish safely."
-        case "Installing": return "GameHQ will restart when installation finishes."
+        case "Quiescent":
+            //% "Waiting for capture work to finish safely."
+            return qsTrId("gamehq.update.banner.waiting_for_capture")
+        case "Installing":
+            //% "GameHQ will restart when installation finishes."
+            return qsTrId("gamehq.update.banner.restart_when_finished")
         case "Failed": return updates.errorText !== "" ? updates.errorText
-                                                         : "Open the update details to continue."
+                                                         //% "Open the update details to continue."
+                                                         : qsTrId("gamehq.update.banner.open_details")
         default:
             return [Qt.formatDate(updates.publishedAt, "d MMM yyyy"),
                     updates.size > 0 ? root.formattedSize(updates.size) : ""]
@@ -116,13 +142,27 @@ Rectangle {
         AccentButton {
             visible: ["UpdateAvailable", "Downloading", "ReadyToInstall", "Failed"]
                      .includes(updates.stateName)
-            label: updates.stateName === "UpdateAvailable" ? "See what's new" : "View update"
+            label: {
+                if (updates.stateName === "UpdateAvailable") {
+                    //% "See what's new"
+                    return qsTrId("gamehq.update.see_whats_new")
+                }
+                //% "View update"
+                return qsTrId("gamehq.update.view_update")
+            }
             primary: updates.stateName === "UpdateAvailable"
             onClicked: root.detailsRequested()
         }
         AccentButton {
             visible: updates.stateName === "Downloading" || updates.stateName === "ReadyToInstall"
-            label: updates.stateName === "Downloading" ? "Cancel" : "Install and restart"
+            label: {
+                if (updates.stateName === "Downloading") {
+                    //% "Cancel"
+                    return qsTrId("gamehq.action.cancel")
+                }
+                //% "Install and restart"
+                return qsTrId("gamehq.update.install_and_restart")
+            }
             primary: updates.stateName === "ReadyToInstall"
             onClicked: updates.stateName === "Downloading"
                        ? updates.cancelDownload() : updates.installAndRestart()
@@ -130,7 +170,8 @@ Rectangle {
         AccentButton {
             visible: updates.stateName === "UpdateAvailable" || updates.stateName === "Failed"
                      || updates.stateName === "ReadyToInstall"
-            label: "Not now"
+            //% "Not now"
+            label: qsTrId("gamehq.action.not_now")
             onClicked: root.dismissed = true
         }
     }

@@ -84,7 +84,8 @@ Rectangle {
         }
 
         Text {
-            text: "GAMES"
+            //% "Games"
+            text: qsTrId("gamehq.navigation.games").toUpperCase()
             color: Theme.textFaint
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontCaption
@@ -116,7 +117,8 @@ Rectangle {
 
         SidebarItem {
             Layout.fillWidth: true
-            label: "Settings"
+            //% "Settings"
+            label: qsTrId("gamehq.navigation.settings")
             glyph: "\u2699"
             active: root.settingsOpen
             sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.categories.length + app.games.length
@@ -125,7 +127,8 @@ Rectangle {
 
         SidebarItem {
             Layout.fillWidth: true
-            label: "Help"
+            //% "Help"
+            label: qsTrId("gamehq.navigation.help")
             glyph: "?"
             active: root.helpOpen
             sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.categories.length + app.games.length + 1
@@ -136,7 +139,8 @@ Rectangle {
             id: aboutRow
             Layout.fillWidth: true
             Layout.bottomMargin: Theme.s4
-            label: "About"
+            //% "About"
+            label: qsTrId("gamehq.navigation.about")
             glyph: "\u24d8"
             trailingText: "v" + app.version
             trailingGlyph: root.updateAvailable || root.aboutUnread ? "\u25cf" : ""

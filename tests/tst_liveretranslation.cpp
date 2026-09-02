@@ -32,7 +32,7 @@ ExpectedSurfaceText expectedFor(const QString &language)
         return {QStringLiteral("查看完整发行说明"), QStringLiteral("打开图库"),
                 QStringLiteral("屏幕截图"), QStringLiteral("发行说明")};
     }
-    return {QStringLiteral("See full release notes"), QStringLiteral("Open Gallery"),
+    return {QStringLiteral("View full release notes"), QStringLiteral("Open Gallery"),
             QStringLiteral("Screenshot"), QStringLiteral("Release notes")};
 }
 }
