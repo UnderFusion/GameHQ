@@ -196,6 +196,20 @@ qt_add_qml_module(GameHQ
         ui/qml/settings/AboutSettingsPage.qml
     )
 
+# Keep catalog extraction developer-driven: update_translations/GameHQ_lupdate
+# are explicit targets and are never dependencies of an ordinary app build.
+# Normal builds only run lrelease for the tracked TS inputs, then embed the
+# generated QM atomically in the executable under :/i18n.
+set(gamehq_app_ts_files
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_en_US.ts"
+)
+qt_add_translations(GameHQ
+    TS_FILES ${gamehq_app_ts_files}
+    RESOURCE_PREFIX "/i18n"
+    LUPDATE_OPTIONS -no-obsolete
+    LRELEASE_OPTIONS -idbased
+)
+
 qt_add_resources(GameHQ "icons"
     PREFIX "/icons"
     BASE "${CMAKE_SOURCE_DIR}/assets/icons"

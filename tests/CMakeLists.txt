@@ -549,3 +549,18 @@ target_link_libraries(tst_updatertransaction PRIVATE miniz bcrypt Qt6::Sql gameh
 set_tests_properties(tst_updatertransaction tst_updateinstaller PROPERTIES TIMEOUT 600)
 set_tests_properties(tst_integrationservice tst_integrationclient
                      tst_portableprofileimporter PROPERTIES TIMEOUT 300)
+
+# Synthetic IDs live only in this test target. They exercise the same ID-based
+# lrelease/resource path as production without polluting the en-US app catalog.
+gamehq_add_test(tst_localizationcatalog
+    tst_localizationcatalog.cpp)
+target_compile_definitions(tst_localizationcatalog PRIVATE
+    GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
+qt_add_translations(tst_localizationcatalog
+    TS_FILES
+        "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_test_en_US.ts"
+        "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_test_pl_PL.ts"
+    RESOURCE_PREFIX "/i18n"
+    LUPDATE_OPTIONS -no-obsolete
+    LRELEASE_OPTIONS -idbased
+)
