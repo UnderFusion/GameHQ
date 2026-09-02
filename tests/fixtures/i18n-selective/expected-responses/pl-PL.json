@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../i18n/schema/translation-response.schema.json",
+  "protocol_version": 1,
+  "batch_id": "change-542ffffd54e6f504.pl-pl",
+  "source_locale": "en-US",
+  "target_locale": "pl-PL",
+  "units": [
+    {
+      "id": "gamehq.fixture.captures",
+      "source_hash": "36c94b083110c1d9b42aa6d28b1f9d5065a9ad0f2e7f12d8337b2df7d7e2d5cd",
+      "translation": [
+        "<b>%n zrzut zapisany w GameHQ</b>",
+        "<b>%n zrzuty zapisane w GameHQ</b>",
+        "<b>%n zrzutów zapisanych w GameHQ</b>"
+      ],
+      "translation_hash": "9b69850dfa4efc50c5c04cf5d51369e8d5cd2ecc1b5266bc1deaaeb1c8d48639",
+      "status": "machine_translated",
+      "provenance": {
+        "kind": "machine",
+        "actor": "fixture-agent/pl-PL"
+      }
+    },
+    {
+      "id": "gamehq.fixture.launch",
+      "source_hash": "493ba454810ce756b2da553a1d22214a5f923188cb237006b70efac31e39d94d",
+      "translation": ["Uruchom %1 w GameHQ"],
+      "translation_hash": "d09a2bd90d564dbc78cfc74151b77cc8dc152f913310f54345a133f619255b65",
+      "status": "machine_translated",
+      "provenance": {
+        "kind": "machine",
+        "actor": "fixture-agent/pl-PL"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../../i18n/schema/translation-response.schema.json",
+  "protocol_version": 1,
+  "batch_id": "change-542ffffd54e6f504.zh-hans",
+  "source_locale": "en-US",
+  "target_locale": "zh-Hans",
+  "units": [
+    {
+      "id": "gamehq.fixture.captures",
+      "source_hash": "36c94b083110c1d9b42aa6d28b1f9d5065a9ad0f2e7f12d8337b2df7d7e2d5cd",
+      "translation": ["<b>已将 %n 个截图保存到 GameHQ</b>"],
+      "translation_hash": "0f27e4a648bb4b13aff12543b5b244f0467744f393f827c78fd3b47194c3f7b0",
+      "status": "machine_translated",
+      "provenance": {
+        "kind": "machine",
+        "actor": "fixture-agent/zh-Hans"
+      }
+    },
+    {
+      "id": "gamehq.fixture.launch",
+      "source_hash": "493ba454810ce756b2da553a1d22214a5f923188cb237006b70efac31e39d94d",
+      "translation": ["在 GameHQ 中启动 %1"],
+      "translation_hash": "85ba152a79526434789bc6a933764775932e1c908ca09eabb0c68fc18e794a62",
+      "status": "machine_translated",
+      "provenance": {
+        "kind": "machine",
+        "actor": "fixture-agent/zh-Hans"
+      }
+    }
+  ]
+}

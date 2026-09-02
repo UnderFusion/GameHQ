@@ -35,6 +35,12 @@ Each unit declares `machine_translated`, an opaque provider-neutral provenance a
 the deterministic SHA-256 translation hash. The protocol validator rejects the entire
 response atomically if any unit fails. It never partially applies a response.
 
+After review, `tools/i18n/apply-response.ps1` accepts one complete response directory for
+the workset and a recorded ISO-8601 completion time. It validates every locale and unit
+before writing, updates only queued TS translation nodes, records source/hash/provenance
+state, and rejects worksets whose prior state has changed. Missing, extra, invalid, or
+stale responses cause no catalog or state write.
+
 ## Required preservation
 
 - Preserve the exact placeholder multiset, including `%n`, `%1`, and `%L1` distinctions.

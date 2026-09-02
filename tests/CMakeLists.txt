@@ -660,3 +660,9 @@ add_test(NAME tst_i18ndiff
     COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_check_diff.py")
 set_tests_properties(tst_i18ndiff PROPERTIES TIMEOUT 120)
+
+add_test(NAME tst_i18nselective
+    COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_SOURCE_DIR}/tools/i18n/test_selective_translation.py"
+        --lupdate "$<TARGET_FILE:Qt6::lupdate>")
+set_tests_properties(tst_i18nselective PROPERTIES TIMEOUT 120)
