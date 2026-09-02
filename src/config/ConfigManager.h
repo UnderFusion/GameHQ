@@ -27,6 +27,7 @@ public:
     QString quarantinedPath() const { return m_quarantinedPath; }
 
     QVariant value(const QString& key, const QVariant& fallback = {}) const;
+    bool hasExplicitValue(const QString& key) const;
     void setValue(const QString& key, const QVariant& value);
     QVariant defaultValue(const QString& key, const QVariant& fallback = {}) const;
     bool isDefault(const QString& key) const;
@@ -41,6 +42,7 @@ signals:
 private:
     QString m_quarantinedPath;
     static QJsonObject defaults();
+    static bool preservesExplicitDefault(const QString& key);
 
     QString m_filePath;
     QJsonObject m_overrides;

@@ -55,6 +55,7 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::TrayCloseToTray,         true },
         { ConfigKeys::TrayMinimizeToTray,      false },
         { ConfigKeys::NotificationsEnabled,    true },
+        { ConfigKeys::UiLanguage,              "system" },
         { ConfigKeys::ThemeActiveSkin,         "obsidian" },
         { ConfigKeys::ThemeOverlayScrimStrength, 100 },   // percent, 25-150
         { ConfigKeys::UpdatesCheckAutomatically, true },
@@ -84,7 +85,8 @@ bool ConfigManager::load()
     const QJsonObject loaded = doc.object();
     const QJsonObject builtIns = defaults();
     for (auto it = loaded.begin(); it != loaded.end(); ++it) {
-        if (builtIns.contains(it.key()) && builtIns.value(it.key()) == it.value())
+        if (builtIns.contains(it.key()) && builtIns.value(it.key()) == it.value()
+            && !preservesExplicitDefault(it.key()))
             continue;
         m_overrides.insert(it.key(), it.value());
     }
@@ -142,14 +144,26 @@ QVariant ConfigManager::value(const QString& key, const QVariant& fallback) cons
     return defaultValue(key, fallback);
 }
 
+bool ConfigManager::hasExplicitValue(const QString& key) const
+{
+    return m_overrides.contains(key);
+}
+
+bool ConfigManager::preservesExplicitDefault(const QString& key)
+{
+    return key == ConfigKeys::UiLanguage;
+}
+
 void ConfigManager::setValue(const QString& key, const QVariant& value)
 {
-    if (this->value(key) == value)
+    if (this->value(key) == value
+        && (m_overrides.contains(key) || !preservesExplicitDefault(key)))
         return;
 
     const QJsonValue jsonValue = QJsonValue::fromVariant(value);
     const QJsonObject builtIns = defaults();
-    if (builtIns.contains(key) && builtIns.value(key) == jsonValue)
+    if (builtIns.contains(key) && builtIns.value(key) == jsonValue
+        && !preservesExplicitDefault(key))
         m_overrides.remove(key);
     else
         m_overrides.insert(key, jsonValue);

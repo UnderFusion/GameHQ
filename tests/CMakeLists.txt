@@ -589,3 +589,23 @@ qt_add_resources(tst_languagemanager "production_locale_manifest"
     BASE "${CMAKE_SOURCE_DIR}/i18n"
     FILES "${CMAKE_SOURCE_DIR}/i18n/locales.json"
 )
+
+gamehq_add_test(tst_languagepreference
+    tst_languagepreference.cpp
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
+    "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp"
+    "${CMAKE_SOURCE_DIR}/src/localization/LanguageManager.cpp"
+    "${CMAKE_SOURCE_DIR}/src/localization/LanguagePreference.cpp")
+qt_add_translations(tst_languagepreference
+    TS_FILES
+        "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_en_US.ts"
+        "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_pl_PL.ts"
+    RESOURCE_PREFIX "/i18n"
+    LUPDATE_OPTIONS -no-obsolete
+    LRELEASE_OPTIONS -idbased
+)
+qt_add_resources(tst_languagepreference "language_preference_fixtures"
+    PREFIX "/i18n"
+    BASE "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n"
+    FILES "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/locales-test.json"
+)

@@ -56,6 +56,10 @@ inline constexpr QLatin1StringView TrayCloseToTray{ "tray.close_to_tray" };
 inline constexpr QLatin1StringView TrayMinimizeToTray{ "tray.minimize_to_tray" };
 inline constexpr QLatin1StringView NotificationsEnabled{ "notifications.enabled" };
 
+// ui.* — application presentation preferences. The explicit value "system"
+// is retained so first-run bootstrap can distinguish it from an absent key.
+inline constexpr QLatin1StringView UiLanguage{ "ui.language" };
+
 // theme.* — appearance. Read by the QML Theme singleton, which resolves an
 // unknown value back to Obsidian rather than leaving the app unpainted.
 inline constexpr QLatin1StringView ThemeActiveSkin{ "theme.active_skin" };  // see Theme.skinOrder (QML); default obsidian
@@ -104,6 +108,7 @@ inline constexpr QLatin1StringView Startup{ "startup" };
 inline constexpr QLatin1StringView Sounds{ "sounds" };
 inline constexpr QLatin1StringView Tray{ "tray" };
 inline constexpr QLatin1StringView Notifications{ "notifications" };
+inline constexpr QLatin1StringView Ui{ "ui" };
 inline constexpr QLatin1StringView Input{ "input" };
 inline constexpr QLatin1StringView Audio{ "audio" };
 inline constexpr QLatin1StringView Theme{ "theme" };

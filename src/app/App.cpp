@@ -12,6 +12,7 @@
 #include "input/InputEngine.h"
 #include "integration/IntegrationService.h"
 #include "localization/LanguageManager.h"
+#include "localization/LanguagePreference.h"
 #include "localization/LocaleRegistry.h"
 #include "games/GameDetector.h"
 #include "core/UpdateMaintenance.h"
@@ -132,10 +133,19 @@ bool App::init()
         return false;
     }
     m_languageManager = std::make_unique<LanguageManager>(m_localeRegistry.get());
-    if (!m_languageManager->initialize(QStringLiteral("system"), {}, &localeError)) {
+    m_languagePreference = std::make_unique<LanguagePreference>(m_config.get(),
+                                                                m_localeRegistry.get());
+    RegistryLanguageBootstrapStore bootstrapStore;
+    QString bootstrapWarning;
+    const QString requestedLanguage = m_languagePreference->initialLanguage(
+        bootstrapStore, Paths::isPortable(), &bootstrapWarning);
+    if (!bootstrapWarning.isEmpty())
+        qWarning() << "Localization bootstrap:" << bootstrapWarning;
+    if (!m_languageManager->initialize(requestedLanguage, {}, &localeError)) {
         qCritical() << "Localization could not initialize:" << localeError;
         return false;
     }
+    m_languagePreference->bind(m_languageManager.get());
 
     m_locations = std::make_unique<CaptureLocations>(m_config.get());
     m_startup = std::make_unique<StartupManager>();

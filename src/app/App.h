@@ -6,6 +6,7 @@
 class ConfigManager;
 class LocaleRegistry;
 class LanguageManager;
+class LanguagePreference;
 class CaptureLocations;
 class StartupManager;
 class CaptureDatabase;
@@ -50,6 +51,7 @@ private:
     std::unique_ptr<ConfigManager> m_config;
     std::unique_ptr<LocaleRegistry> m_localeRegistry;
     std::unique_ptr<LanguageManager> m_languageManager;
+    std::unique_ptr<LanguagePreference> m_languagePreference;
     std::unique_ptr<CaptureLocations> m_locations;
     std::unique_ptr<StartupManager> m_startup;
     std::unique_ptr<CaptureDatabase> m_db;
