@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "source_locale": "en-US",
+  "fallback_locale": "en-US",
+  "quality_reference": {
+    "locale": "pl-PL",
+    "policy": "docs/localization/contextual-translation-quality.md",
+    "style": "i18n/style/pl-PL.json",
+    "instruction": "Translate the message intent and UI role naturally; never translate isolated words or English syntax mechanically."
+  },
+  "classified_nonlocalized": [
+    {
+      "location": "[Setup].VersionInfoDescription",
+      "literal": "GameHQ for Windows Setup",
+      "classification": "English-by-policy",
+      "rationale": "A single locale-neutral executable owns one Windows version-resource description before installer language selection."
+    }
+  ],
+  "protected_identity": [
+    {
+      "literal": "GameHQ",
+      "locations": ["AppName", "AppVerName", "VersionInfoProductName", "DefaultGroupName", "shortcut name"],
+      "rationale": "Product and shortcut identity is a protected brand, not English UI copy."
+    },
+    {
+      "literal": "underfusion",
+      "locations": ["VersionInfoCompany", "AppPublisher"],
+      "rationale": "Publisher identity is protected."
+    },
+    {
+      "literal": "GameHQ.exe",
+      "locations": ["UninstallDisplayIcon", "Files", "Icons", "Run", "Pascal paths"],
+      "rationale": "Executable names and paths are protected identifiers."
+    },
+    {
+      "literal": "GameHQUpdater.exe",
+      "locations": ["Pascal paths"],
+      "rationale": "Executable names and paths are protected identifiers."
+    }
+  ],
+  "required_consumers": [
+    { "key": "GameHQWelcomeTitle", "location": "[Messages].WelcomeLabel1", "needle": "WelcomeLabel1={cm:GameHQWelcomeTitle}" },
+    { "key": "GameHQWelcomeBody", "location": "[Messages].WelcomeLabel2", "needle": "WelcomeLabel2={cm:GameHQWelcomeBody}" },
+    { "key": "GameHQDesktopShortcut", "location": "[Tasks].desktopicon.Description", "needle": "Description: \"{cm:GameHQDesktopShortcut}\"" },
+    { "key": "GameHQAdditionalShortcuts", "location": "[Tasks].desktopicon.GroupDescription", "needle": "GroupDescription: \"{cm:GameHQAdditionalShortcuts}\"" },
+    { "key": "GameHQLaunch", "location": "[Run].Description", "needle": "Description: \"{cm:GameHQLaunch}\"" },
+    { "key": "GameHQStageDetail", "location": "MaintenanceBlockReason stage formatting", "needle": "CustomMessage('GameHQStageDetail')" },
+    { "key": "GameHQUpdateActive", "location": "MaintenanceBlockReason active update", "needle": "CustomMessage('GameHQUpdateActive')" },
+    { "key": "GameHQUpdateStale", "location": "MaintenanceBlockReason stale recovery", "needle": "CustomMessage('GameHQUpdateStale')" },
+    { "key": "GameHQNothingRemoved", "location": "MaintenanceBlockReason preservation detail", "needle": "CustomMessage('GameHQNothingRemoved')" },
+    { "key": "GameHQSetupAppRunning", "location": "PrepareToInstall application-running failure", "needle": "CustomMessage('GameHQSetupAppRunning')" },
+    { "key": "GameHQUninstallAppRunning", "location": "InitializeUninstall application-running failure", "needle": "CustomMessage('GameHQUninstallAppRunning')" }
+  ],
+  "messages": [
+    {
+      "key": "GameHQWelcomeTitle",
+      "source": "Welcome to GameHQ",
+      "surface_type": "heading",
+      "context": "First page of the Setup wizard.",
+      "protected_tokens": ["GameHQ"]
+    },
+    {
+      "key": "GameHQWelcomeBody",
+      "source": "Setup will install [name/ver] on this computer.%n%nClose GameHQ before continuing.",
+      "surface_type": "explanation",
+      "context": "Setup welcome-page explanation; [name/ver] is an Inno message placeholder and %n%n is a paragraph break.",
+      "protected_tokens": ["GameHQ"]
+    },
+    {
+      "key": "GameHQDesktopShortcut",
+      "source": "Create a desktop shortcut",
+      "surface_type": "task_label",
+      "context": "Optional unchecked Setup task.",
+      "protected_tokens": []
+    },
+    {
+      "key": "GameHQAdditionalShortcuts",
+      "source": "Additional shortcuts:",
+      "surface_type": "group_label",
+      "context": "Heading above optional shortcut tasks.",
+      "protected_tokens": []
+    },
+    {
+      "key": "GameHQLaunch",
+      "source": "Launch GameHQ",
+      "surface_type": "action_label",
+      "context": "Optional action on the final Setup page.",
+      "protected_tokens": ["GameHQ"]
+    },
+    {
+      "key": "GameHQStageDetail",
+      "source": " (stage: %1)",
+      "surface_type": "diagnostic_detail",
+      "context": "Optional transaction-stage suffix; %1 is an internal phase value and must remain unchanged.",
+      "protected_tokens": []
+    },
+    {
+      "key": "GameHQUpdateActive",
+      "source": "A GameHQ update is running%1. Let it finish, then try again.",
+      "surface_type": "error",
+      "context": "Setup or Uninstall refusal while an update transaction is active; %1 is the optional localized stage suffix.",
+      "protected_tokens": ["GameHQ"]
+    },
+    {
+      "key": "GameHQUpdateStale",
+      "source": "A previous GameHQ update did not finish%1. Start GameHQ once so it can recover, then try again.",
+      "surface_type": "error",
+      "context": "Setup or Uninstall recovery instruction for a stale transaction; %1 is the optional localized stage suffix.",
+      "protected_tokens": ["GameHQ"]
+    },
+    {
+      "key": "GameHQNothingRemoved",
+      "source": "Nothing has been removed - your installation is still there.",
+      "surface_type": "reassurance",
+      "context": "Second line of the stale-update recovery message.",
+      "protected_tokens": []
+    },
+    {
+      "key": "GameHQSetupAppRunning",
+      "source": "GameHQ is running. Close it normally - including in any other Windows session - then run Setup again.",
+      "surface_type": "error",
+      "context": "Setup refusal while GameHQ is active locally or in another Windows session.",
+      "protected_tokens": ["GameHQ", "Windows"]
+    },
+    {
+      "key": "GameHQUninstallAppRunning",
+      "source": "GameHQ is running. Close it normally - including in any other Windows session - before uninstalling.",
+      "surface_type": "error",
+      "context": "Uninstall refusal while GameHQ is active locally or in another Windows session.",
+      "protected_tokens": ["GameHQ", "Windows"]
+    }
+  ],
+  "translations": {
+    "en-US": {
+      "GameHQWelcomeTitle": "Welcome to GameHQ",
+      "GameHQWelcomeBody": "Setup will install [name/ver] on this computer.%n%nClose GameHQ before continuing.",
+      "GameHQDesktopShortcut": "Create a desktop shortcut",
+      "GameHQAdditionalShortcuts": "Additional shortcuts:",
+      "GameHQLaunch": "Launch GameHQ",
+      "GameHQStageDetail": " (stage: %1)",
+      "GameHQUpdateActive": "A GameHQ update is running%1. Let it finish, then try again.",
+      "GameHQUpdateStale": "A previous GameHQ update did not finish%1. Start GameHQ once so it can recover, then try again.",
+      "GameHQNothingRemoved": "Nothing has been removed - your installation is still there.",
+      "GameHQSetupAppRunning": "GameHQ is running. Close it normally - including in any other Windows session - then run Setup again.",
+      "GameHQUninstallAppRunning": "GameHQ is running. Close it normally - including in any other Windows session - before uninstalling."
+    },
+    "zh-Hans": {
+      "GameHQWelcomeTitle": "欢迎使用 GameHQ",
+      "GameHQWelcomeBody": "安装程序将在此计算机上安装 [name/ver]。%n%n继续前请关闭 GameHQ。",
+      "GameHQDesktopShortcut": "创建桌面快捷方式",
+      "GameHQAdditionalShortcuts": "其他快捷方式：",
+      "GameHQLaunch": "启动 GameHQ",
+      "GameHQStageDetail": "（阶段：%1）",
+      "GameHQUpdateActive": "GameHQ 正在更新%1。请等待更新完成，然后重试。",
+      "GameHQUpdateStale": "上一次 GameHQ 更新未完成%1。请启动一次 GameHQ 以完成恢复，然后重试。",
+      "GameHQNothingRemoved": "未删除任何内容，您的安装仍然完整保留。",
+      "GameHQSetupAppRunning": "GameHQ 正在运行。请正常关闭它（包括其他 Windows 会话中运行的实例），然后重新运行安装程序。",
+      "GameHQUninstallAppRunning": "GameHQ 正在运行。请正常关闭它（包括其他 Windows 会话中运行的实例），然后再卸载。"
+    },
+    "ru-RU": {
+      "GameHQWelcomeTitle": "Добро пожаловать в GameHQ",
+      "GameHQWelcomeBody": "Программа установки установит [name/ver] на этот компьютер.%n%nПеред продолжением закройте GameHQ.",
+      "GameHQDesktopShortcut": "Создать ярлык на рабочем столе",
+      "GameHQAdditionalShortcuts": "Дополнительные ярлыки:",
+      "GameHQLaunch": "Запустить GameHQ",
+      "GameHQStageDetail": " (этап: %1)",
+      "GameHQUpdateActive": "Выполняется обновление GameHQ%1. Дождитесь его завершения и повторите попытку.",
+      "GameHQUpdateStale": "Предыдущее обновление GameHQ не завершилось%1. Запустите GameHQ один раз для восстановления, затем повторите попытку.",
+      "GameHQNothingRemoved": "Ничего не удалено — установленная копия по-прежнему на месте.",
+      "GameHQSetupAppRunning": "GameHQ сейчас работает. Закройте программу обычным способом, в том числе в любом другом сеансе Windows, затем снова запустите программу установки.",
+      "GameHQUninstallAppRunning": "GameHQ сейчас работает. Перед удалением закройте программу обычным способом, в том числе в любом другом сеансе Windows."
+    },
+    "es-ES": {
+      "GameHQWelcomeTitle": "Te damos la bienvenida a GameHQ",
+      "GameHQWelcomeBody": "El programa de instalación instalará [name/ver] en este equipo.%n%nCierre GameHQ antes de continuar.",
+      "GameHQDesktopShortcut": "Crear un acceso directo en el escritorio",
+      "GameHQAdditionalShortcuts": "Accesos directos adicionales:",
+      "GameHQLaunch": "Iniciar GameHQ",
+      "GameHQStageDetail": " (fase: %1)",
+      "GameHQUpdateActive": "Hay una actualización de GameHQ en curso%1. Espere a que termine y vuelva a intentarlo.",
+      "GameHQUpdateStale": "Una actualización anterior de GameHQ no finalizó%1. Inicie GameHQ una vez para permitir la recuperación y vuelva a intentarlo.",
+      "GameHQNothingRemoved": "No se ha eliminado nada; la instalación sigue intacta.",
+      "GameHQSetupAppRunning": "GameHQ está en ejecución. Ciérrelo de la forma habitual, también en cualquier otra sesión de Windows, y vuelva a ejecutar el programa de instalación.",
+      "GameHQUninstallAppRunning": "GameHQ está en ejecución. Antes de desinstalarlo, ciérrelo de la forma habitual, también en cualquier otra sesión de Windows."
+    },
+    "pt-BR": {
+      "GameHQWelcomeTitle": "Bem-vindo ao GameHQ",
+      "GameHQWelcomeBody": "O instalador instalará [name/ver] neste computador.%n%nFeche o GameHQ antes de continuar.",
+      "GameHQDesktopShortcut": "Criar um atalho na área de trabalho",
+      "GameHQAdditionalShortcuts": "Atalhos adicionais:",
+      "GameHQLaunch": "Iniciar o GameHQ",
+      "GameHQStageDetail": " (etapa: %1)",
+      "GameHQUpdateActive": "Uma atualização do GameHQ está em andamento%1. Aguarde a conclusão e tente novamente.",
+      "GameHQUpdateStale": "Uma atualização anterior do GameHQ não foi concluída%1. Inicie o GameHQ uma vez para permitir a recuperação e tente novamente.",
+      "GameHQNothingRemoved": "Nada foi removido — sua instalação continua intacta.",
+      "GameHQSetupAppRunning": "O GameHQ está em execução. Feche-o normalmente, inclusive em qualquer outra sessão do Windows, e execute o instalador novamente.",
+      "GameHQUninstallAppRunning": "O GameHQ está em execução. Antes de desinstalar, feche-o normalmente, inclusive em qualquer outra sessão do Windows."
+    },
+    "de-DE": {
+      "GameHQWelcomeTitle": "Willkommen bei GameHQ",
+      "GameHQWelcomeBody": "Setup installiert [name/ver] auf diesem Computer.%n%nBeenden Sie GameHQ, bevor Sie fortfahren.",
+      "GameHQDesktopShortcut": "Desktopverknüpfung erstellen",
+      "GameHQAdditionalShortcuts": "Weitere Verknüpfungen:",
+      "GameHQLaunch": "GameHQ starten",
+      "GameHQStageDetail": " (Phase: %1)",
+      "GameHQUpdateActive": "Ein GameHQ-Update wird ausgeführt%1. Warten Sie, bis es abgeschlossen ist, und versuchen Sie es erneut.",
+      "GameHQUpdateStale": "Ein vorheriges GameHQ-Update wurde nicht abgeschlossen%1. Starten Sie GameHQ einmal zur Wiederherstellung und versuchen Sie es danach erneut.",
+      "GameHQNothingRemoved": "Es wurde nichts entfernt – Ihre Installation ist weiterhin vorhanden.",
+      "GameHQSetupAppRunning": "GameHQ wird ausgeführt. Beenden Sie es ordnungsgemäß – auch in jeder anderen Windows-Sitzung – und führen Sie Setup anschließend erneut aus.",
+      "GameHQUninstallAppRunning": "GameHQ wird ausgeführt. Beenden Sie es vor der Deinstallation ordnungsgemäß – auch in jeder anderen Windows-Sitzung."
+    },
+    "ja-JP": {
+      "GameHQWelcomeTitle": "GameHQ へようこそ",
+      "GameHQWelcomeBody": "セットアップはこのコンピューターに [name/ver] をインストールします。%n%n続行する前に GameHQ を終了してください。",
+      "GameHQDesktopShortcut": "デスクトップにショートカットを作成する",
+      "GameHQAdditionalShortcuts": "追加のショートカット：",
+      "GameHQLaunch": "GameHQ を起動する",
+      "GameHQStageDetail": "（段階：%1）",
+      "GameHQUpdateActive": "GameHQ の更新を実行しています%1。完了するまで待ってから、もう一度お試しください。",
+      "GameHQUpdateStale": "以前の GameHQ の更新が完了していません%1。GameHQ を一度起動して復旧を完了させてから、もう一度お試しください。",
+      "GameHQNothingRemoved": "何も削除されていません。インストール済みの内容はそのまま残っています。",
+      "GameHQSetupAppRunning": "GameHQ が実行中です。別の Windows セッションで実行している場合も含め、通常の方法で終了してからセットアップをもう一度実行してください。",
+      "GameHQUninstallAppRunning": "GameHQ が実行中です。別の Windows セッションで実行している場合も含め、通常の方法で終了してからアンインストールしてください。"
+    },
+    "fr-FR": {
+      "GameHQWelcomeTitle": "Bienvenue dans GameHQ",
+      "GameHQWelcomeBody": "Le programme d’installation va installer [name/ver] sur cet ordinateur.%n%nFermez GameHQ avant de continuer.",
+      "GameHQDesktopShortcut": "Créer un raccourci sur le Bureau",
+      "GameHQAdditionalShortcuts": "Raccourcis supplémentaires :",
+      "GameHQLaunch": "Lancer GameHQ",
+      "GameHQStageDetail": " (étape : %1)",
+      "GameHQUpdateActive": "Une mise à jour de GameHQ est en cours%1. Attendez qu’elle se termine, puis réessayez.",
+      "GameHQUpdateStale": "Une précédente mise à jour de GameHQ ne s’est pas terminée%1. Lancez GameHQ une fois pour permettre la récupération, puis réessayez.",
+      "GameHQNothingRemoved": "Aucun élément n’a été supprimé : votre installation est toujours présente.",
+      "GameHQSetupAppRunning": "GameHQ est en cours d’exécution. Fermez-le normalement, y compris dans toute autre session Windows, puis relancez le programme d’installation.",
+      "GameHQUninstallAppRunning": "GameHQ est en cours d’exécution. Fermez-le normalement, y compris dans toute autre session Windows, avant de le désinstaller."
+    },
+    "pl-PL": {
+      "GameHQWelcomeTitle": "Witamy w GameHQ",
+      "GameHQWelcomeBody": "Instalator zainstaluje [name/ver] na tym komputerze.%n%nPrzed kontynuowaniem zamknij GameHQ.",
+      "GameHQDesktopShortcut": "Utwórz skrót na pulpicie",
+      "GameHQAdditionalShortcuts": "Dodatkowe skróty:",
+      "GameHQLaunch": "Uruchom GameHQ",
+      "GameHQStageDetail": " (etap: %1)",
+      "GameHQUpdateActive": "Trwa aktualizacja GameHQ%1. Poczekaj na jej zakończenie i spróbuj ponownie.",
+      "GameHQUpdateStale": "Poprzednia aktualizacja GameHQ nie została ukończona%1. Uruchom GameHQ, aby dokończyć odzyskiwanie, a następnie spróbuj ponownie.",
+      "GameHQNothingRemoved": "Nic nie zostało usunięte — instalacja pozostała nienaruszona.",
+      "GameHQSetupAppRunning": "GameHQ jest uruchomiony. Zamknij go w zwykły sposób — również w każdej innej sesji Windows — a następnie ponownie uruchom instalator.",
+      "GameHQUninstallAppRunning": "GameHQ jest uruchomiony. Przed odinstalowaniem zamknij go w zwykły sposób — również w każdej innej sesji Windows."
+    },
+    "ko-KR": {
+      "GameHQWelcomeTitle": "GameHQ에 오신 것을 환영합니다",
+      "GameHQWelcomeBody": "설치 프로그램이 이 컴퓨터에 [name/ver] 설치를 진행합니다.%n%n계속하기 전에 GameHQ를 종료하세요.",
+      "GameHQDesktopShortcut": "바탕 화면 바로 가기 만들기",
+      "GameHQAdditionalShortcuts": "추가 바로 가기:",
+      "GameHQLaunch": "GameHQ 실행",
+      "GameHQStageDetail": " (단계: %1)",
+      "GameHQUpdateActive": "GameHQ 업데이트가 진행 중입니다%1. 완료될 때까지 기다린 후 다시 시도하세요.",
+      "GameHQUpdateStale": "이전 GameHQ 업데이트가 완료되지 않았습니다%1. 복구를 마치려면 GameHQ를 한 번 실행한 후 다시 시도하세요.",
+      "GameHQNothingRemoved": "삭제된 항목은 없습니다. 기존 설치는 그대로 유지됩니다.",
+      "GameHQSetupAppRunning": "GameHQ가 실행 중입니다. 다른 Windows 세션에서 실행 중인 경우도 포함하여 정상적으로 종료한 후 설치 프로그램을 다시 실행하세요.",
+      "GameHQUninstallAppRunning": "GameHQ가 실행 중입니다. 다른 Windows 세션에서 실행 중인 경우도 포함하여 정상적으로 종료한 후 제거하세요."
+    },
+    "zh-Hant": {
+      "GameHQWelcomeTitle": "歡迎使用 GameHQ",
+      "GameHQWelcomeBody": "安裝程式將在此電腦上安裝 [name/ver]。%n%n繼續前請關閉 GameHQ。",
+      "GameHQDesktopShortcut": "建立桌面捷徑",
+      "GameHQAdditionalShortcuts": "其他捷徑：",
+      "GameHQLaunch": "啟動 GameHQ",
+      "GameHQStageDetail": "（階段：%1）",
+      "GameHQUpdateActive": "GameHQ 正在更新%1。請等待更新完成，然後再試一次。",
+      "GameHQUpdateStale": "上一次 GameHQ 更新未完成%1。請啟動一次 GameHQ 以完成復原，然後再試一次。",
+      "GameHQNothingRemoved": "未刪除任何內容，您的安裝仍完整保留。",
+      "GameHQSetupAppRunning": "GameHQ 正在執行。請正常關閉它（包括其他 Windows 工作階段中執行的執行個體），然後重新執行安裝程式。",
+      "GameHQUninstallAppRunning": "GameHQ 正在執行。請正常關閉它（包括其他 Windows 工作階段中執行的執行個體），然後再解除安裝。"
+    },
+    "tr-TR": {
+      "GameHQWelcomeTitle": "GameHQ'ya hoş geldiniz",
+      "GameHQWelcomeBody": "Kurulum, [name/ver] sürümünü bu bilgisayara yükleyecek.%n%nDevam etmeden önce GameHQ uygulamasını kapatın.",
+      "GameHQDesktopShortcut": "Masaüstü kısayolu oluştur",
+      "GameHQAdditionalShortcuts": "Ek kısayollar:",
+      "GameHQLaunch": "GameHQ'yu başlat",
+      "GameHQStageDetail": " (aşama: %1)",
+      "GameHQUpdateActive": "GameHQ güncellemesi çalışıyor%1. Tamamlanmasını bekleyip yeniden deneyin.",
+      "GameHQUpdateStale": "Önceki GameHQ güncellemesi tamamlanmadı%1. Kurtarma işleminin tamamlanması için GameHQ'yu bir kez başlatıp yeniden deneyin.",
+      "GameHQNothingRemoved": "Hiçbir şey kaldırılmadı; kurulumunuz olduğu gibi duruyor.",
+      "GameHQSetupAppRunning": "GameHQ çalışıyor. Diğer Windows oturumlarında çalışan örnekler de dahil olmak üzere uygulamayı normal şekilde kapatın, ardından Kurulumu yeniden çalıştırın.",
+      "GameHQUninstallAppRunning": "GameHQ çalışıyor. Kaldırmadan önce diğer Windows oturumlarında çalışan örnekler de dahil olmak üzere uygulamayı normal şekilde kapatın."
+    },
+    "th-TH": {
+      "GameHQWelcomeTitle": "ยินดีต้อนรับสู่ GameHQ",
+      "GameHQWelcomeBody": "โปรแกรมติดตั้งจะติดตั้ง [name/ver] ลงในคอมพิวเตอร์เครื่องนี้%n%nปิด GameHQ ก่อนดำเนินการต่อ",
+      "GameHQDesktopShortcut": "สร้างทางลัดบนเดสก์ท็อป",
+      "GameHQAdditionalShortcuts": "ทางลัดเพิ่มเติม:",
+      "GameHQLaunch": "เปิด GameHQ",
+      "GameHQStageDetail": " (ขั้นตอน: %1)",
+      "GameHQUpdateActive": "กำลังอัปเดต GameHQ%1 โปรดรอให้เสร็จแล้วลองอีกครั้ง",
+      "GameHQUpdateStale": "การอัปเดต GameHQ ครั้งก่อนยังไม่เสร็จ%1 เปิด GameHQ หนึ่งครั้งเพื่อให้ระบบกู้คืน แล้วลองอีกครั้ง",
+      "GameHQNothingRemoved": "ยังไม่มีการลบสิ่งใด การติดตั้งของคุณยังคงอยู่",
+      "GameHQSetupAppRunning": "GameHQ กำลังทำงาน ปิดโปรแกรมตามปกติ รวมถึงโปรแกรมที่ทำงานอยู่ในเซสชัน Windows อื่น แล้วเรียกใช้โปรแกรมติดตั้งอีกครั้ง",
+      "GameHQUninstallAppRunning": "GameHQ กำลังทำงาน ปิดโปรแกรมตามปกติ รวมถึงโปรแกรมที่ทำงานอยู่ในเซสชัน Windows อื่น ก่อนถอนการติดตั้ง"
+    },
+    "es-419": {
+      "GameHQWelcomeTitle": "Te damos la bienvenida a GameHQ",
+      "GameHQWelcomeBody": "El instalador instalará [name/ver] en este equipo.%n%nCierre GameHQ antes de continuar.",
+      "GameHQDesktopShortcut": "Crear un acceso directo en el escritorio",
+      "GameHQAdditionalShortcuts": "Accesos directos adicionales:",
+      "GameHQLaunch": "Iniciar GameHQ",
+      "GameHQStageDetail": " (fase: %1)",
+      "GameHQUpdateActive": "Hay una actualización de GameHQ en curso%1. Espere a que termine e inténtelo de nuevo.",
+      "GameHQUpdateStale": "Una actualización anterior de GameHQ no se completó%1. Inicie GameHQ una vez para permitir la recuperación e inténtelo de nuevo.",
+      "GameHQNothingRemoved": "No se eliminó nada; la instalación sigue intacta.",
+      "GameHQSetupAppRunning": "GameHQ está en ejecución. Ciérrelo normalmente, incluso en cualquier otra sesión de Windows, y vuelva a ejecutar el instalador.",
+      "GameHQUninstallAppRunning": "GameHQ está en ejecución. Antes de desinstalarlo, ciérrelo normalmente, incluso en cualquier otra sesión de Windows."
+    },
+    "uk-UA": {
+      "GameHQWelcomeTitle": "Ласкаво просимо до GameHQ",
+      "GameHQWelcomeBody": "Програма інсталяції встановить [name/ver] на цей комп’ютер.%n%nПеред продовженням закрийте GameHQ.",
+      "GameHQDesktopShortcut": "Створити ярлик на робочому столі",
+      "GameHQAdditionalShortcuts": "Додаткові ярлики:",
+      "GameHQLaunch": "Запустити GameHQ",
+      "GameHQStageDetail": " (етап: %1)",
+      "GameHQUpdateActive": "Триває оновлення GameHQ%1. Дочекайтеся завершення й повторіть спробу.",
+      "GameHQUpdateStale": "Попереднє оновлення GameHQ не завершилося%1. Запустіть GameHQ один раз для відновлення, а потім повторіть спробу.",
+      "GameHQNothingRemoved": "Нічого не видалено — установлена копія лишилася без змін.",
+      "GameHQSetupAppRunning": "GameHQ запущено. Завершіть роботу програми звичайним способом, зокрема в будь-якому іншому сеансі Windows, а потім знову запустіть програму інсталяції.",
+      "GameHQUninstallAppRunning": "GameHQ запущено. Перед видаленням завершіть роботу програми звичайним способом, зокрема в будь-якому іншому сеансі Windows."
+    },
+    "it-IT": {
+      "GameHQWelcomeTitle": "Benvenuto in GameHQ",
+      "GameHQWelcomeBody": "Il programma di installazione installerà [name/ver] in questo computer.%n%nChiudi GameHQ prima di continuare.",
+      "GameHQDesktopShortcut": "Crea un collegamento sul desktop",
+      "GameHQAdditionalShortcuts": "Collegamenti aggiuntivi:",
+      "GameHQLaunch": "Avvia GameHQ",
+      "GameHQStageDetail": " (fase: %1)",
+      "GameHQUpdateActive": "È in corso un aggiornamento di GameHQ%1. Attendi che termini, quindi riprova.",
+      "GameHQUpdateStale": "Un precedente aggiornamento di GameHQ non è stato completato%1. Avvia GameHQ una volta per consentire il ripristino, quindi riprova.",
+      "GameHQNothingRemoved": "Non è stato rimosso nulla: l’installazione è ancora intatta.",
+      "GameHQSetupAppRunning": "GameHQ è in esecuzione. Chiudilo normalmente, anche in qualsiasi altra sessione di Windows, quindi esegui nuovamente il programma di installazione.",
+      "GameHQUninstallAppRunning": "GameHQ è in esecuzione. Prima di disinstallarlo, chiudilo normalmente, anche in qualsiasi altra sessione di Windows."
+    }
+  }
+}

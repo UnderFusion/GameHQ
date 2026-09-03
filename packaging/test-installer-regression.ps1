@@ -178,14 +178,13 @@ function Stop-TestMutex {
     $script:activeMutexJob = $null
     $deadline = [DateTime]::UtcNow.AddSeconds(5)
     while ($true) {
-        $created = $false
-        $probe = [System.Threading.Mutex]::new($true, $script:activeMutexName, [ref]$created)
-        if ($created) {
-            $probe.ReleaseMutex()
+        try {
+            $probe = [System.Threading.Mutex]::OpenExisting($script:activeMutexName)
             $probe.Dispose()
+        }
+        catch [System.Threading.WaitHandleCannotBeOpenedException] {
             break
         }
-        $probe.Dispose()
         if ([DateTime]::UtcNow -ge $deadline) {
             throw "Timed out waiting for test mutex $($script:activeMutexName) to disappear."
         }
@@ -193,6 +192,10 @@ function Stop-TestMutex {
     }
     $script:activeMutexName = $null
     $script:activeMutexStop = $null
+    # Antivirus and the just-finished Setup process can briefly retain an image
+    # handle after the named mutex is gone. Let the production file-lock guard
+    # settle so the following scenario tests its intended blocker.
+    Start-Sleep -Milliseconds 1000
 }
 
 $rootPrefix = $root.TrimEnd('\') + '\'

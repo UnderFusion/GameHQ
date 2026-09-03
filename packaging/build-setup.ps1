@@ -21,10 +21,18 @@ $localeManifest = Join-Path $root 'i18n\locales.json'
 $languageInclude = Join-Path $PSScriptRoot 'generated\InnoLanguages.iss'
 $languageGenerator = Join-Path $root 'tools\i18n\generate_inno_languages.py'
 $languageAudit = Join-Path $root 'tools\i18n\test_inno_languages.py'
+$customMessageManifest = Join-Path $PSScriptRoot 'i18n\custom-messages.json'
+$customMessageInclude = Join-Path $PSScriptRoot 'generated\InnoCustomMessages.iss'
+$customMessageGenerator = Join-Path $root 'tools\i18n\generate_inno_custom_messages.py'
+$customMessageAudit = Join-Path $root 'tools\i18n\test_inno_custom_messages.py'
 & $python $languageGenerator --manifest $localeManifest --output $languageInclude --check
 if ($LASTEXITCODE -ne 0) { throw 'Generated Inno language mapping is stale.' }
 & $python $languageAudit --compiler-root (Split-Path -Parent $compiler) --require-compiler
 if ($LASTEXITCODE -ne 0) { throw 'Pinned Inno language qualification failed.' }
+& $python $customMessageGenerator --locales $localeManifest --messages $customMessageManifest --output $customMessageInclude --check
+if ($LASTEXITCODE -ne 0) { throw 'Generated Inno CustomMessages are stale.' }
+& $python $customMessageAudit
+if ($LASTEXITCODE -ne 0) { throw 'Inno CustomMessages qualification failed.' }
 foreach ($required in @('GameHQ.exe', 'GameHQUpdater.exe', 'app\GameHQ.exe')) {
     if (-not (Test-Path -LiteralPath (Join-Path $payloadRoot $required) -PathType Leaf)) {
         throw "Neutral payload is missing $required; run packaging/make-dist.ps1 first."

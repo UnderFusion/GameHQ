@@ -142,8 +142,10 @@ def main() -> int:
     script = (ROOT / "packaging" / "GameHQ.iss").read_text(encoding="utf-8")
     if '#include "generated\\InnoLanguages.iss"' not in script:
         fail("GameHQ.iss does not consume the generated language mapping")
-    if "WelcomeLabel1=Welcome to GameHQ" not in script:
-        fail("p5-1 must not translate GameHQ-specific installer messages")
+    if '#include "generated\\InnoCustomMessages.iss"' not in script:
+        fail("GameHQ.iss does not consume generated custom messages")
+    if "WelcomeLabel1={cm:GameHQWelcomeTitle}" not in script:
+        fail("GameHQ welcome text does not use CustomMessages")
     build_script = (ROOT / "packaging" / "build-setup.ps1").read_text(encoding="utf-8")
     for marker in ("generate_inno_languages.py", "test_inno_languages.py", "--require-compiler"):
         if marker not in build_script:

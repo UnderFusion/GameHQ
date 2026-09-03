@@ -77,8 +77,10 @@ AllowNoIcons=yes
 #include "generated\InnoLanguages.iss"
 
 [Messages]
-WelcomeLabel1=Welcome to GameHQ
-WelcomeLabel2=Setup will install [name/ver] on this computer.%n%nClose GameHQ before continuing.
+WelcomeLabel1={cm:GameHQWelcomeTitle}
+WelcomeLabel2={cm:GameHQWelcomeBody}
+
+#include "generated\InnoCustomMessages.iss"
 
 [Files]
 Source: "{#PayloadRoot}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
@@ -88,7 +90,7 @@ Name: "{group}\GameHQ"; Filename: "{app}\GameHQ.exe"
 Name: "{autodesktop}\GameHQ"; Filename: "{app}\GameHQ.exe"; Tasks: desktopicon
 
 [Tasks]
-Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Additional shortcuts:"; Flags: unchecked
+Name: "desktopicon"; Description: "{cm:GameHQDesktopShortcut}"; GroupDescription: "{cm:GameHQAdditionalShortcuts}"; Flags: unchecked
 
 [Registry]
 Root: HKCU; Subkey: "{#ProductRegistryKey}"; ValueType: string; ValueName: "InstallLocation"; ValueData: "{app}"
@@ -97,7 +99,7 @@ Root: HKCU; Subkey: "{#AppPathRegistryKey}"; ValueType: string; ValueName: ""; V
 Root: HKCU; Subkey: "{#AppPathRegistryKey}"; ValueType: string; ValueName: "Path"; ValueData: "{app}"
 
 [Run]
-Filename: "{app}\GameHQ.exe"; Description: "Launch GameHQ"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\GameHQ.exe"; Description: "{cm:GameHQLaunch}"; Flags: nowait postinstall skipifsilent
 
 [Code]
 const
@@ -223,15 +225,13 @@ begin
 
   Detail := '';
   if Phase <> '' then
-    Detail := ' (stage: ' + Phase + ')';
+    Detail := FmtMessage(CustomMessage('GameHQStageDetail'), [Phase]);
 
   if State = MaintenanceActive then
-    Result := 'A GameHQ update is running' + Detail
-              + '. Let it finish, then try again.'
+    Result := FmtMessage(CustomMessage('GameHQUpdateActive'), [Detail])
   else
-    Result := 'A previous GameHQ update did not finish' + Detail
-              + '. Start GameHQ once so it can recover, then try again.'
-              + #13#10 + 'Nothing has been removed - your installation is still there.';
+    Result := FmtMessage(CustomMessage('GameHQUpdateStale'), [Detail])
+              + #13#10 + CustomMessage('GameHQNothingRemoved');
 end;
 
 function PrepareToInstall(var NeedsRestart: Boolean): String;
@@ -243,8 +243,7 @@ begin
   if ApplicationIsRunning(AppDir) then
   begin
     FailSilent(ExitAppRunning);
-    Result := 'GameHQ is running. Close it normally - including in any other '
-              + 'Windows session - then run Setup again.';
+    Result := CustomMessage('GameHQSetupAppRunning');
     Exit;
   end;
   Result := MaintenanceBlockReason(AppDir);
@@ -266,8 +265,7 @@ begin
   begin
     if UninstallSilent then
       ExitProcess(ExitAppRunning);
-    MsgBox('GameHQ is running. Close it normally - including in any other '
-           + 'Windows session - before uninstalling.', mbError, MB_OK);
+    MsgBox(CustomMessage('GameHQUninstallAppRunning'), mbError, MB_OK);
     Result := False;
     Exit;
   end;
