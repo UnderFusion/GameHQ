@@ -433,6 +433,13 @@ def command_verify(root: Path, args: argparse.Namespace) -> int:
         if not style_is_authored(root, tag):
             print(f"style guide is missing or unreviewed for production locale {tag}")
             failures += 1
+    # Pre-release content readiness: the designated launch release must have
+    # sixteen valid reviewed documents. Its final date is not checked here.
+    code, message = run_tool(
+        [str(TOOLS / "generate_release_notes.py"), "--launch-status"],
+        "localization-launch content")
+    print(message)
+    failures += 1 if code != 0 else 0
     if failures:
         fail(f"{failures} localization check(s) failed")
     print("all localization checks passed offline")
@@ -480,11 +487,10 @@ def command_package(root: Path, args: argparse.Namespace) -> int:
     )
     print(message)
     failures += 1 if code != 0 else 0
-    # The designated localization-launch release is a release gate of its own:
-    # it needs an owner-assigned date and sixteen reviewed documents.
+    # Final release readiness additionally needs the owner's date and approval.
     code, message = run_tool(
-        [str(TOOLS / "generate_release_notes.py"), "--check", "--launch-status"],
-        "localization-launch gate")
+        [str(TOOLS / "generate_release_notes.py"), "--check", "--release-ready"],
+        "localization-launch release gate")
     print(message)
     failures += 1 if code != 0 else 0
     if failures:

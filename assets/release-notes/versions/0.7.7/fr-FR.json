@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.7",
+  "locale": "fr-FR",
+  "date": null,
+  "mode": "localized",
+  "source_integrity": "sha256:2b7ecadff921abadf742e825c9c94000457ef063da2560cd38094c0d38bbc46f",
+  "sections": [
+    {
+      "id": "added",
+      "title": "Ajouts",
+      "items": [
+        {
+          "id": "added-01",
+          "text": "GameHQ est désormais disponible en seize langues d'interface. Au premier démarrage, il suit la langue de Windows, et vous pouvez en choisir une autre dans les paramètres."
+        },
+        {
+          "id": "added-02",
+          "text": "Le changement de langue s'applique immédiatement à toute l'application, y compris la superposition et le menu de la zone de notification, sans redémarrer GameHQ. Votre choix est mémorisé."
+        },
+        {
+          "id": "added-03",
+          "text": "Le programme d'installation s'exécute maintenant dans votre langue et transmet ce choix au premier démarrage de GameHQ, si bien que l'installateur et l'application ne se contredisent plus."
+        },
+        {
+          "id": "added-04",
+          "text": "L'extension Playnite et les boîtes de dialogue d'erreur du lanceur sont également localisées."
+        },
+        {
+          "id": "added-05",
+          "text": "Les nouveautés s'affichent dans votre langue dès qu'une version traduite de ces notes existe. Sinon, c'est le texte anglais complet qui est affiché, jamais un mélange de plusieurs langues."
+        }
+      ]
+    },
+    {
+      "id": "changed",
+      "title": "Modifications",
+      "items": [
+        {
+          "id": "changed-01",
+          "text": "Les dates, les nombres et les décomptes suivent désormais la langue sélectionnée plutôt que le réglage du système."
+        }
+      ]
+    },
+    {
+      "id": "known-limitations",
+      "title": "Limitations connues",
+      "items": [
+        {
+          "id": "known-limitations-01",
+          "text": "Douze langues sont livrées avec des textes d'interface traduits. L'italien, l'espagnol d'Amérique latine, le thaï et l'ukrainien peuvent déjà être sélectionnés et affichent pour l'instant le texte anglais complet."
+        }
+      ]
+    }
+  ]
+}

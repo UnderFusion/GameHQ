@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.7",
+  "locale": "zh-Hans",
+  "date": null,
+  "mode": "localized",
+  "source_integrity": "sha256:2b7ecadff921abadf742e825c9c94000457ef063da2560cd38094c0d38bbc46f",
+  "sections": [
+    {
+      "id": "added",
+      "title": "新增",
+      "items": [
+        {
+          "id": "added-01",
+          "text": "GameHQ 现已提供十六种界面语言。首次启动时会跟随 Windows 的语言，你也可以在设置中另选一种。"
+        },
+        {
+          "id": "added-02",
+          "text": "切换语言会立即应用于整个应用程序，包括叠加层和通知区域菜单，无需重启 GameHQ。你的选择会被记住。"
+        },
+        {
+          "id": "added-03",
+          "text": "安装程序现在会以你的语言运行，并把该选择传递给 GameHQ 的首次启动，安装程序与应用程序不会再各说各话。"
+        },
+        {
+          "id": "added-04",
+          "text": "Playnite 扩展和启动器的错误对话框同样已本地化。"
+        },
+        {
+          "id": "added-05",
+          "text": "只要这些说明存在对应的译文，更新内容就会以你的语言显示；如果没有译文，则显示完整的英文文本，而不会中英混杂。"
+        }
+      ]
+    },
+    {
+      "id": "changed",
+      "title": "变更",
+      "items": [
+        {
+          "id": "changed-01",
+          "text": "日期、数字和数量现在跟随所选语言，而不是系统默认设置。"
+        }
+      ]
+    },
+    {
+      "id": "known-limitations",
+      "title": "已知限制",
+      "items": [
+        {
+          "id": "known-limitations-01",
+          "text": "十二种语言已随附翻译好的界面文本。意大利语、拉丁美洲西班牙语、泰语和乌克兰语已可选择，目前显示完整的英文文本。"
+        }
+      ]
+    }
+  ]
+}

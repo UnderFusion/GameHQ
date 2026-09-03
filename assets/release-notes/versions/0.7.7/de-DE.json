@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.7",
+  "locale": "de-DE",
+  "date": null,
+  "mode": "localized",
+  "source_integrity": "sha256:2b7ecadff921abadf742e825c9c94000457ef063da2560cd38094c0d38bbc46f",
+  "sections": [
+    {
+      "id": "added",
+      "title": "Neu",
+      "items": [
+        {
+          "id": "added-01",
+          "text": "GameHQ ist jetzt in sechzehn Oberflächensprachen verfügbar. Beim ersten Start richtet sich GameHQ nach Ihrer Windows-Sprache, und in den Einstellungen können Sie eine andere auswählen."
+        },
+        {
+          "id": "added-02",
+          "text": "Ein Sprachwechsel wirkt sofort in der gesamten Anwendung, einschließlich Overlay und Infobereichsmenü, ohne GameHQ neu zu starten. Ihre Auswahl wird gespeichert."
+        },
+        {
+          "id": "added-03",
+          "text": "Setup läuft jetzt in Ihrer Sprache und übergibt diese Auswahl an den ersten Start von GameHQ, sodass Installationsprogramm und Anwendung nicht mehr auseinanderlaufen."
+        },
+        {
+          "id": "added-04",
+          "text": "Auch die Playnite-Erweiterung und die Fehlerdialoge des Starters sind lokalisiert."
+        },
+        {
+          "id": "added-05",
+          "text": "Neuerungen werden in Ihrer Sprache angezeigt, sobald eine übersetzte Fassung dieser Hinweise vorliegt. Andernfalls erscheint stattdessen der vollständige englische Text, niemals eine Mischung aus mehreren Sprachen."
+        }
+      ]
+    },
+    {
+      "id": "changed",
+      "title": "Geändert",
+      "items": [
+        {
+          "id": "changed-01",
+          "text": "Datums-, Zahlen- und Mengenangaben richten sich jetzt nach der ausgewählten Sprache statt nach der Systemvorgabe."
+        }
+      ]
+    },
+    {
+      "id": "known-limitations",
+      "title": "Bekannte Einschränkungen",
+      "items": [
+        {
+          "id": "known-limitations-01",
+          "text": "Zwölf Sprachen werden mit übersetzten Oberflächentexten ausgeliefert. Italienisch, lateinamerikanisches Spanisch, Thailändisch und Ukrainisch lassen sich bereits auswählen und zeigen derzeit den vollständigen englischen Text."
+        }
+      ]
+    }
+  ]
+}

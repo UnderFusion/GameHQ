@@ -49,15 +49,23 @@ is rejected outright. A designated release is **not** a released version, so it
 never enters `releases`, the generated bundles, the publication artifacts, or
 the runtime index.
 
-Report how far the designated release is from being publishable:
+A designated version may already carry complete draft documents under
+`versions/<version>/`. Those documents keep `"date": null` too: a draft with a
+date is rejected, and a released document without one is rejected. Drafting,
+translating, reviewing and validating therefore never wait for the release date.
+
+Content readiness and release readiness are separate gates:
 
 ```powershell
-python tools/i18n/generate_release_notes.py --launch-status
+python tools/i18n/generate_release_notes.py --launch-status   # content readiness
+python tools/i18n/generate_release_notes.py --release-ready   # final release readiness
 ```
 
-It lists every real blocker - the missing owner date, the missing authoritative
-English document, and each missing locale document - and exits non-zero until
-all of them are cleared. `tools/i18n/locale.ps1 package` runs the same gate.
+`--launch-status` passes once all sixteen documents exist, validate, and are
+reviewed translations rather than English fallback. `--release-ready` also
+requires the owner's final date and explicit release authorization, so it keeps
+failing until the owner acts. `tools/i18n/locale.ps1 verify` runs the content
+gate; `tools/i18n/locale.ps1 package` runs the release gate.
 
 Generate all offline bundles:
 

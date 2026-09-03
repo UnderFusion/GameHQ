@@ -16,7 +16,8 @@
         "schema_version": { "const": 2 },
         "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
         "locale": { "type": "string" },
-        "date": { "type": "string", "format": "date" }
+        "date": { "oneOf": [{ "type": "string", "format": "date" }, { "type": "null" }],
+                  "description": "Null only while the document belongs to a designated but unreleased launch version." }
       }
     },
     "sections": {

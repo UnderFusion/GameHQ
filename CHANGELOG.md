@@ -6,6 +6,35 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+Draft for the designated localization-launch release 0.7.7. The final release
+date is assigned by the project owner and is deliberately not recorded yet.
+
+### Added
+
+- GameHQ is now available in sixteen interface languages. It follows your
+  Windows language the first time it starts, and you can pick a different one in
+  Settings.
+- Changing the language takes effect immediately across the application,
+  including the overlay and the tray menu, without restarting GameHQ. Your
+  choice is remembered.
+- Setup now runs in your language and passes that choice to GameHQ's first
+  launch, so the installer and the application no longer disagree.
+- The Playnite extension and the launcher's error dialogs are localized as well.
+- What's New is shown in your language whenever a translated version of those
+  notes exists. When it does not, the complete English text is shown instead,
+  never a mixture of languages.
+
+### Changed
+
+- Dates, numbers and item counts now follow the selected language instead of the
+  system default.
+
+### Known limitations
+
+- Twelve languages ship with translated interface text. Italian, Latin American
+  Spanish, Thai and Ukrainian can already be selected and currently show the
+  complete English text.
+
 ## [0.7.6] - 2026-08-31
 
 ### Fixed

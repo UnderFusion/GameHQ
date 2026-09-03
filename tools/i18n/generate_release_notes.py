@@ -163,8 +163,20 @@ def source_integrity(document: dict[str, Any]) -> str:
     return "sha256:" + hashlib.sha256(canonical).hexdigest()
 
 
+def validate_document_date(value: Any, expected: str | None, label: str) -> Any:
+    """A draft document of a designated launch version keeps its date null until
+    the owner assigns one. Released documents always carry a real ISO date."""
+    if expected is None:
+        if value is not None:
+            fail(f"{label}: a draft launch document must keep its date null")
+        return None
+    if validate_date(value, label) != expected:
+        fail(f"{label}: date mismatch")
+    return value
+
+
 def validate_english_document(
-    document: dict[str, Any], version: str, expected_date: str, label: str
+    document: dict[str, Any], version: str, expected_date: str | None, label: str
 ) -> dict[str, Any]:
     if set(document) != ENGLISH_FIELDS:
         fail(f"{label}: English document fields do not match schema version 2")
@@ -174,8 +186,7 @@ def validate_english_document(
         fail(f"{label}: locale/tag mismatch")
     if document.get("version") != version:
         fail(f"{label}: version mismatch")
-    if validate_date(document.get("date"), label) != expected_date:
-        fail(f"{label}: date mismatch")
+    validate_document_date(document.get("date"), expected_date, label)
     validate_sections(document.get("sections"), label)
     return document
 
@@ -198,8 +209,7 @@ def validate_locale_document(
         fail(f"{label}: locale/tag mismatch")
     if document.get("version") != english["version"]:
         fail(f"{label}: version mismatch")
-    if validate_date(document.get("date"), label) != english["date"]:
-        fail(f"{label}: date mismatch")
+    validate_document_date(document.get("date"), english["date"], label)
     if document.get("source_integrity") != source_integrity(english):
         fail(f"{label}: stale source-integrity metadata")
     mode = document.get("mode")
@@ -304,24 +314,64 @@ def validate_launch(
 def launch_readiness(
     source_root: Path, manifest: dict[str, Any], locales: list[str]
 ) -> dict[str, Any]:
-    """Report, without inventing anything, how far the designated launch release
-    is from being publishable."""
+    """Report launch readiness without inventing anything.
+
+    Content readiness and release readiness are deliberately separate. Draft
+    documents of a designated version are authored, reviewed and validated long
+    before the owner assigns the final date; only the date and the owner's
+    approval decide release readiness.
+    """
     launch = manifest.get("localization_launch")
     if launch is None:
-        return {"designated": False, "blockers": ["no localization-launch release is designated"]}
+        return {"designated": False,
+                "content_blockers": ["no localization-launch release is designated"],
+                "release_blockers": ["no localization-launch release is designated"]}
     version_root = source_root / "versions" / launch["version"]
-    english = version_root / "en-US.json"
-    documents = {
-        locale: (version_root / f"{locale}.json").is_file() for locale in locales
-    }
-    blockers: list[str] = []
-    if launch["date"] is None:
-        blockers.append("the owner has not assigned the final release date")
-    if not english.is_file():
-        blockers.append("the authoritative English launch document does not exist")
-    missing = sorted(locale for locale, present in documents.items() if not present)
+    english_path = version_root / "en-US.json"
+    documents: dict[str, str] = {}
+    content_blockers: list[str] = []
+    english: dict[str, Any] | None = None
+    expected_date = launch["date"] if launch["status"] == "released" else None
+    if not english_path.is_file():
+        content_blockers.append("the authoritative English launch document does not exist")
+    else:
+        try:
+            english = validate_english_document(
+                read_json(english_path), launch["version"], expected_date, str(english_path))
+            documents["en-US"] = "authored"
+        except ReleaseNotesError as error:
+            content_blockers.append(f"the English launch document is invalid: {error}")
+    for locale in locales:
+        if locale == "en-US":
+            continue
+        path = version_root / f"{locale}.json"
+        if not path.is_file():
+            documents[locale] = "missing"
+            continue
+        if english is None:
+            documents[locale] = "unverified"
+            continue
+        try:
+            document = validate_locale_document(read_json(path), locale, english, str(path))
+        except ReleaseNotesError as error:
+            documents[locale] = "invalid"
+            content_blockers.append(f"{locale}: {error}")
+            continue
+        documents[locale] = document["mode"]
+    missing = sorted(locale for locale, state in documents.items() if state == "missing")
     if missing:
-        blockers.append(f"{len(missing)} locale document(s) are missing: {', '.join(missing)}")
+        content_blockers.append(
+            f"{len(missing)} locale document(s) are missing: {', '.join(missing)}")
+    fallbacks = sorted(locale for locale, state in documents.items() if state == "fallback")
+    if fallbacks:
+        content_blockers.append(
+            "the launch release requires reviewed translations, not English fallback: "
+            + ", ".join(fallbacks))
+    release_blockers = list(content_blockers)
+    if launch["date"] is None:
+        release_blockers.append("the owner has not assigned the final release date")
+    if launch["status"] != "released":
+        release_blockers.append("the owner has not authorized the release")
     return {
         "designated": True,
         "version": launch["version"],
@@ -330,8 +380,10 @@ def launch_readiness(
         "localization_policy": launch["localization_policy"],
         "designated_by": launch["designated_by"],
         "documents": documents,
-        "blockers": blockers,
-        "publishable": not blockers,
+        "content_blockers": content_blockers,
+        "release_blockers": release_blockers,
+        "content_ready": not content_blockers,
+        "release_ready": not release_blockers,
     }
 
 
@@ -573,13 +625,15 @@ def main() -> int:
     parser.add_argument("--bootstrap-from", type=Path)
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--launch-status", action="store_true",
-                        help="report designated-launch readiness and gate on it")
+                        help="report designated-launch readiness and gate on content readiness")
+    parser.add_argument("--release-ready", action="store_true",
+                        help="additionally gate on the owner's final date and approval")
     args = parser.parse_args()
     if args.bootstrap_from:
         bootstrap_legacy(args.bootstrap_from, args.source_root)
     generate_all(args.source_root, args.output_root, args.check)
     print("Release-note generation passed (16 deterministic locale bundles, schema v2)")
-    if not args.launch_status:
+    if not (args.launch_status or args.release_ready):
         return 0
     manifest, locales, _ = load_contract(args.source_root)
     readiness = launch_readiness(args.source_root, manifest, locales)
@@ -589,11 +643,18 @@ def main() -> int:
     print(f"Localization-launch release {readiness['version']} "
           f"({readiness['status']}, designated by {readiness['designated_by']})")
     print(f"  final release date: {readiness['date'] or 'not assigned by the owner'}")
-    ready = sum(1 for present in readiness["documents"].values() if present)
-    print(f"  reviewed locale documents: {ready}/{len(readiness['documents'])}")
-    for blocker in readiness["blockers"]:
-        print(f"  blocker: {blocker}")
-    return 0 if readiness["publishable"] else 1
+    reviewed = sum(1 for state in readiness["documents"].values()
+                   if state in {"authored", "localized"})
+    print(f"  reviewed locale documents: {reviewed}/{len(locales)}")
+    print(f"  content ready: {'yes' if readiness['content_ready'] else 'no'}")
+    for blocker in readiness["content_blockers"]:
+        print(f"  content blocker: {blocker}")
+    if not args.release_ready:
+        return 0 if readiness["content_ready"] else 1
+    print(f"  release ready: {'yes' if readiness['release_ready'] else 'no'}")
+    for blocker in readiness["release_blockers"]:
+        print(f"  release blocker: {blocker}")
+    return 0 if readiness["release_ready"] else 1
 
 
 if __name__ == "__main__":

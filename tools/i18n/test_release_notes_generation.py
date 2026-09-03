@@ -126,18 +126,61 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         self.assertNotIn(launch["version"],
                          {release["version"] for release in manifest["releases"]})
 
-    def test_launch_readiness_reports_the_real_blockers_without_inventing_data(self) -> None:
+    def test_launch_content_is_ready_while_the_release_stays_owner_gated(self) -> None:
         manifest, locales, _ = GEN.load_contract(SOURCE_ROOT)
         readiness = GEN.launch_readiness(SOURCE_ROOT, manifest, locales)
         self.assertTrue(readiness["designated"])
-        self.assertFalse(readiness["publishable"])
         self.assertIsNone(readiness["date"])
+        # Sixteen reviewed documents exist, so the content is ready...
         self.assertEqual(16, len(readiness["documents"]))
-        self.assertFalse(any(readiness["documents"].values()))
-        joined = " | ".join(readiness["blockers"])
+        self.assertEqual({"authored", "localized"}, set(readiness["documents"].values()))
+        self.assertTrue(readiness["content_ready"])
+        self.assertEqual([], readiness["content_blockers"])
+        # ...but the owner still gates the actual release.
+        self.assertFalse(readiness["release_ready"])
+        joined = " | ".join(readiness["release_blockers"])
         self.assertIn("final release date", joined)
-        self.assertIn("English launch document", joined)
-        self.assertIn("16 locale document(s) are missing", joined)
+        self.assertIn("authorized the release", joined)
+
+    def test_every_launch_document_is_a_reviewed_translation(self) -> None:
+        manifest, locales, _ = GEN.load_contract(SOURCE_ROOT)
+        version = manifest["localization_launch"]["version"]
+        root = SOURCE_ROOT / "versions" / version
+        english = GEN.read_json(root / "en-US.json")
+        self.assertIsNone(english["date"])
+        structure = GEN.structure_ids(english)
+        english_text = {item["text"] for section in english["sections"]
+                        for item in section["items"]}
+        for locale in locales:
+            if locale == "en-US":
+                continue
+            with self.subTest(locale=locale):
+                document = GEN.read_json(root / f"{locale}.json")
+                self.assertEqual("localized", document["mode"])
+                self.assertIsNone(document["date"])
+                self.assertEqual(structure, GEN.structure_ids(document))
+                self.assertEqual(GEN.source_integrity(english), document["source_integrity"])
+                texts = [item["text"] for section in document["sections"]
+                         for item in section["items"]]
+                # A reviewed translation, never the English text copied over.
+                self.assertFalse(english_text & set(texts), locale)
+                joined = " ".join(texts)
+                for protected in ("GameHQ", "Playnite", "Windows"):
+                    self.assertIn(protected, joined, f"{locale} lost {protected}")
+
+    def test_a_draft_launch_document_must_keep_a_null_date(self) -> None:
+        manifest, locales, _ = GEN.load_contract(SOURCE_ROOT)
+        version = manifest["localization_launch"]["version"]
+        english = GEN.read_json(SOURCE_ROOT / "versions" / version / "en-US.json")
+        with self.assertRaises(GEN.ReleaseNotesError):
+            GEN.validate_english_document({**english, "date": "2026-09-30"}, version, None, "draft")
+        localized = GEN.read_json(SOURCE_ROOT / "versions" / version / "pl-PL.json")
+        with self.assertRaises(GEN.ReleaseNotesError):
+            GEN.validate_locale_document({**localized, "date": "2026-09-30"},
+                                         "pl-PL", english, "draft")
+        # A released document still requires a real ISO date.
+        with self.assertRaises(GEN.ReleaseNotesError):
+            GEN.validate_english_document(english, version, "2026-09-30", "released")
 
     def test_a_designated_launch_release_never_reaches_generated_artifacts(self) -> None:
         version = GEN.read_json(SOURCE_ROOT / "manifest.json")["localization_launch"]["version"]

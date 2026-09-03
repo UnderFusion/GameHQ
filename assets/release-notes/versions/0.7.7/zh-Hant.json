@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.7",
+  "locale": "zh-Hant",
+  "date": null,
+  "mode": "localized",
+  "source_integrity": "sha256:2b7ecadff921abadf742e825c9c94000457ef063da2560cd38094c0d38bbc46f",
+  "sections": [
+    {
+      "id": "added",
+      "title": "新增",
+      "items": [
+        {
+          "id": "added-01",
+          "text": "GameHQ 現已提供十六種介面語言。首次啟動時會跟隨 Windows 的語言，你也可以在設定中另選一種。"
+        },
+        {
+          "id": "added-02",
+          "text": "切換語言會立即套用到整個應用程式，包括覆蓋層與通知區功能表，不需要重新啟動 GameHQ。你的選擇會被記住。"
+        },
+        {
+          "id": "added-03",
+          "text": "安裝程式現在會以你的語言執行，並將該選擇傳遞給 GameHQ 的首次啟動，安裝程式與應用程式不會再各說各話。"
+        },
+        {
+          "id": "added-04",
+          "text": "Playnite 擴充功能與啟動器的錯誤對話方塊同樣已在地化。"
+        },
+        {
+          "id": "added-05",
+          "text": "只要這些說明有對應的譯文，更新內容就會以你的語言顯示；若沒有譯文，則顯示完整的英文文字，而不會中英夾雜。"
+        }
+      ]
+    },
+    {
+      "id": "changed",
+      "title": "變更",
+      "items": [
+        {
+          "id": "changed-01",
+          "text": "日期、數字與數量現在會跟隨所選語言，而不是系統預設值。"
+        }
+      ]
+    },
+    {
+      "id": "known-limitations",
+      "title": "已知限制",
+      "items": [
+        {
+          "id": "known-limitations-01",
+          "text": "十二種語言已隨附翻譯完成的介面文字。義大利文、拉丁美洲西班牙文、泰文與烏克蘭文已可選擇，目前顯示完整的英文文字。"
+        }
+      ]
+    }
+  ]
+}

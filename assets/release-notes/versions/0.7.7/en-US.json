@@ -1,0 +1,55 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.7",
+  "locale": "en-US",
+  "date": null,
+  "sections": [
+    {
+      "id": "added",
+      "title": "Added",
+      "items": [
+        {
+          "id": "added-01",
+          "text": "GameHQ is now available in sixteen interface languages. It follows your Windows language the first time it starts, and you can pick a different one in Settings."
+        },
+        {
+          "id": "added-02",
+          "text": "Changing the language takes effect immediately across the application, including the overlay and the tray menu, without restarting GameHQ. Your choice is remembered."
+        },
+        {
+          "id": "added-03",
+          "text": "Setup now runs in your language and passes that choice to GameHQ's first launch, so the installer and the application no longer disagree."
+        },
+        {
+          "id": "added-04",
+          "text": "The Playnite extension and the launcher's error dialogs are localized as well."
+        },
+        {
+          "id": "added-05",
+          "text": "What's New is shown in your language whenever a translated version of those notes exists. When it does not, the complete English text is shown instead, never a mixture of languages."
+        }
+      ]
+    },
+    {
+      "id": "changed",
+      "title": "Changed",
+      "items": [
+        {
+          "id": "changed-01",
+          "text": "Dates, numbers and item counts now follow the selected language instead of the system default."
+        }
+      ]
+    },
+    {
+      "id": "known-limitations",
+      "title": "Known limitations",
+      "items": [
+        {
+          "id": "known-limitations-01",
+          "text": "Twelve languages ship with translated interface text. Italian, Latin American Spanish, Thai and Ukrainian can already be selected and currently show the complete English text."
+        }
+      ]
+    }
+  ]
+}

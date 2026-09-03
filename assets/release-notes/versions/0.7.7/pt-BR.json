@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.7",
+  "locale": "pt-BR",
+  "date": null,
+  "mode": "localized",
+  "source_integrity": "sha256:2b7ecadff921abadf742e825c9c94000457ef063da2560cd38094c0d38bbc46f",
+  "sections": [
+    {
+      "id": "added",
+      "title": "Novidades",
+      "items": [
+        {
+          "id": "added-01",
+          "text": "O GameHQ agora está disponível em dezesseis idiomas de interface. Na primeira execução ele segue o idioma do Windows, e você pode escolher outro nas configurações."
+        },
+        {
+          "id": "added-02",
+          "text": "A troca de idioma passa a valer imediatamente em todo o aplicativo, incluindo a sobreposição e o menu da área de notificação, sem reiniciar o GameHQ. Sua escolha fica salva."
+        },
+        {
+          "id": "added-03",
+          "text": "O instalador agora é executado no seu idioma e repassa essa escolha para a primeira execução do GameHQ, de modo que instalador e aplicativo não divergem mais."
+        },
+        {
+          "id": "added-04",
+          "text": "A extensão do Playnite e as caixas de diálogo de erro do inicializador também estão localizadas."
+        },
+        {
+          "id": "added-05",
+          "text": "As novidades aparecem no seu idioma sempre que existir uma versão traduzida destas notas. Quando não existir, o texto completo em inglês é exibido, nunca uma mistura de idiomas."
+        }
+      ]
+    },
+    {
+      "id": "changed",
+      "title": "Alterações",
+      "items": [
+        {
+          "id": "changed-01",
+          "text": "Datas, números e contagens agora seguem o idioma selecionado em vez da configuração do sistema."
+        }
+      ]
+    },
+    {
+      "id": "known-limitations",
+      "title": "Limitações conhecidas",
+      "items": [
+        {
+          "id": "known-limitations-01",
+          "text": "Doze idiomas já vêm com os textos de interface traduzidos. Italiano, espanhol latino-americano, tailandês e ucraniano já podem ser selecionados e por enquanto exibem o texto completo em inglês."
+        }
+      ]
+    }
+  ]
+}

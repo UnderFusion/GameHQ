@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.7",
+  "locale": "tr-TR",
+  "date": null,
+  "mode": "localized",
+  "source_integrity": "sha256:2b7ecadff921abadf742e825c9c94000457ef063da2560cd38094c0d38bbc46f",
+  "sections": [
+    {
+      "id": "added",
+      "title": "Eklenenler",
+      "items": [
+        {
+          "id": "added-01",
+          "text": "GameHQ artık on altı arayüz dilinde kullanılabiliyor. İlk açılışta Windows dilinizi izler, ayarlardan başka bir dil seçebilirsiniz."
+        },
+        {
+          "id": "added-02",
+          "text": "Dil değişikliği, GameHQ'yu yeniden başlatmadan kaplama ve bildirim alanı menüsü dahil uygulamanın tamamında anında geçerli olur. Seçiminiz hatırlanır."
+        },
+        {
+          "id": "added-03",
+          "text": "Kurulum artık sizin dilinizde çalışıyor ve bu seçimi GameHQ'nun ilk açılışına aktarıyor; böylece kurulum ile uygulama artık birbiriyle çelişmiyor."
+        },
+        {
+          "id": "added-04",
+          "text": "Playnite eklentisi ve başlatıcının hata pencereleri de yerelleştirildi."
+        },
+        {
+          "id": "added-05",
+          "text": "Yenilikler, bu notların çevrilmiş bir sürümü bulunduğunda kendi dilinizde gösterilir. Bulunmadığında ise diller karışmadan İngilizce metnin tamamı gösterilir."
+        }
+      ]
+    },
+    {
+      "id": "changed",
+      "title": "Değişiklikler",
+      "items": [
+        {
+          "id": "changed-01",
+          "text": "Tarihler, sayılar ve öğe sayıları artık sistem ayarı yerine seçilen dili izliyor."
+        }
+      ]
+    },
+    {
+      "id": "known-limitations",
+      "title": "Bilinen sınırlamalar",
+      "items": [
+        {
+          "id": "known-limitations-01",
+          "text": "On iki dil çevrilmiş arayüz metinleriyle geliyor. İtalyanca, Latin Amerika İspanyolcası, Tayca ve Ukraynaca şimdiden seçilebiliyor ve şu anda İngilizce metnin tamamını gösteriyor."
+        }
+      ]
+    }
+  ]
+}

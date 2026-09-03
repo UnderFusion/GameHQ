@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.7",
+  "locale": "es-ES",
+  "date": null,
+  "mode": "localized",
+  "source_integrity": "sha256:2b7ecadff921abadf742e825c9c94000457ef063da2560cd38094c0d38bbc46f",
+  "sections": [
+    {
+      "id": "added",
+      "title": "Novedades",
+      "items": [
+        {
+          "id": "added-01",
+          "text": "GameHQ ya está disponible en dieciséis idiomas de interfaz. Al iniciarse por primera vez sigue el idioma de Windows, y puedes elegir otro en la configuración."
+        },
+        {
+          "id": "added-02",
+          "text": "El cambio de idioma se aplica de inmediato en toda la aplicación, incluidas la superposición y el menú del área de notificación, sin reiniciar GameHQ. Tu elección se recuerda."
+        },
+        {
+          "id": "added-03",
+          "text": "El instalador ahora se ejecuta en tu idioma y traslada esa elección al primer inicio de GameHQ, de modo que el instalador y la aplicación ya no se contradicen."
+        },
+        {
+          "id": "added-04",
+          "text": "La extensión de Playnite y los diálogos de error del lanzador también están localizados."
+        },
+        {
+          "id": "added-05",
+          "text": "Las novedades se muestran en tu idioma siempre que exista una versión traducida de estas notas. Cuando no existe, se muestra el texto completo en inglés, nunca una mezcla de idiomas."
+        }
+      ]
+    },
+    {
+      "id": "changed",
+      "title": "Cambios",
+      "items": [
+        {
+          "id": "changed-01",
+          "text": "Las fechas, los números y los recuentos siguen ahora el idioma seleccionado en lugar de la configuración del sistema."
+        }
+      ]
+    },
+    {
+      "id": "known-limitations",
+      "title": "Limitaciones conocidas",
+      "items": [
+        {
+          "id": "known-limitations-01",
+          "text": "Doce idiomas incluyen textos de interfaz traducidos. El italiano, el español de Latinoamérica, el tailandés y el ucraniano ya se pueden seleccionar y por ahora muestran el texto completo en inglés."
+        }
+      ]
+    }
+  ]
+}

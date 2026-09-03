@@ -185,9 +185,10 @@ result.
 
 `package` reports, per locale, whether it is release-eligible and what is
 missing, then runs the release completeness gate and the localization-launch
-gate. The launch gate holds the owner's designated launch release: it fails
-while the owner has not assigned the final ISO date or while any of the sixteen
-reviewed launch documents is missing. The designation itself lives in
+gate. `verify` checks launch **content** readiness, which passes once all
+sixteen reviewed launch documents exist and validate. `package` checks final
+**release** readiness, which additionally requires the owner's final ISO date
+and explicit release authorization, so it keeps failing until the owner acts. The designation itself lives in
 `assets/release-notes/manifest.json` and is documented in that folder's README. A reserve, disabled, or
 retired locale is reported as not release-eligible rather than silently skipped.
 

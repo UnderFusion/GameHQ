@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.7",
+  "locale": "pl-PL",
+  "date": null,
+  "mode": "localized",
+  "source_integrity": "sha256:2b7ecadff921abadf742e825c9c94000457ef063da2560cd38094c0d38bbc46f",
+  "sections": [
+    {
+      "id": "added",
+      "title": "Dodano",
+      "items": [
+        {
+          "id": "added-01",
+          "text": "GameHQ jest teraz dostępny w szesnastu językach interfejsu. Przy pierwszym uruchomieniu podąża za językiem systemu Windows, a inny możesz wybrać w ustawieniach."
+        },
+        {
+          "id": "added-02",
+          "text": "Zmiana języka działa natychmiast w całej aplikacji, łącznie z nakładką i menu w obszarze powiadomień, bez ponownego uruchamiania GameHQ. Twój wybór zostaje zapamiętany."
+        },
+        {
+          "id": "added-03",
+          "text": "Instalator działa teraz w Twoim języku i przekazuje ten wybór do pierwszego uruchomienia GameHQ, dzięki czemu instalator i aplikacja nie są już rozbieżne."
+        },
+        {
+          "id": "added-04",
+          "text": "Rozszerzenie Playnite oraz okna błędów programu uruchamiającego również zostały przetłumaczone."
+        },
+        {
+          "id": "added-05",
+          "text": "Nowości są pokazywane w Twoim języku zawsze, gdy istnieje przetłumaczona wersja tych informacji. Gdy jej nie ma, wyświetlany jest pełny tekst angielski, nigdy mieszanka języków."
+        }
+      ]
+    },
+    {
+      "id": "changed",
+      "title": "Zmieniono",
+      "items": [
+        {
+          "id": "changed-01",
+          "text": "Daty, liczby i liczebniki podążają teraz za wybranym językiem, a nie za ustawieniem systemowym."
+        }
+      ]
+    },
+    {
+      "id": "known-limitations",
+      "title": "Znane ograniczenia",
+      "items": [
+        {
+          "id": "known-limitations-01",
+          "text": "Dwanaście języków zawiera przetłumaczone teksty interfejsu. Włoski, hiszpański latynoamerykański, tajski i ukraiński można już wybrać, a na razie wyświetlają pełny tekst angielski."
+        }
+      ]
+    }
+  ]
+}
