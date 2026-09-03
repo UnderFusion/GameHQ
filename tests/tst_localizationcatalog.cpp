@@ -226,7 +226,7 @@ private slots:
     void targetMissFallsBackToEnglish();
     void publicIdsNeverReachTheRenderedText();
     void languageSelectorUsesRegistryAndAtomicManagerPath();
-    void promotedLaunchCatalogsAreSynchronizedAndFallBackToEnglish();
+    void promotedLaunchCatalogsAreSynchronizedAndTranslated();
     void migratedP4OneIdsCoverEveryLaunchLocale();
     void migratedP4OneFilesHaveNoHardcodedUserText();
     void migratedProductionQmlIdsCoverEveryLaunchLocale();
@@ -308,7 +308,7 @@ void LocalizationCatalogTest::languageSelectorUsesRegistryAndAtomicManagerPath()
     QVERIFY(comboSource.contains(QStringLiteral("onDefaultValueChanged: refresh()")));
 }
 
-void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndFallBackToEnglish()
+void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndTranslated()
 {
     QString error;
     const auto english = readTsCatalog(
@@ -324,17 +324,8 @@ void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndFallBackTo
         for (const QString& id : activeIds) {
             QVERIFY2(catalog.contains(id), qPrintable(catalogName + QStringLiteral(" missing ") + id));
             QCOMPARE(catalog[id].source, english[id].source);
-            const bool sidebarFooterId = id == QLatin1String("gamehq.navigation.about")
-                                         || id == QLatin1String("gamehq.navigation.support_gamehq");
-            if (sidebarFooterId) {
-                QVERIFY2(!catalog[id].unfinished && !catalog[id].translation.trimmed().isEmpty(),
-                         qPrintable(catalogName + QStringLiteral(" incomplete sidebar footer: ") + id));
-            } else {
-                QVERIFY2(catalog[id].unfinished,
-                         qPrintable(catalogName + QStringLiteral(" must await selective translation: ") + id));
-                QVERIFY2(catalog[id].translation.trimmed().isEmpty(),
-                         qPrintable(catalogName + QStringLiteral(" contains an unreviewed translation: ") + id));
-            }
+            QVERIFY2(!catalog[id].unfinished && !catalog[id].translation.trimmed().isEmpty(),
+                     qPrintable(catalogName + QStringLiteral(" incomplete production entry: ") + id));
         }
     }
 
@@ -348,7 +339,14 @@ void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndFallBackTo
         QVERIFY2(target.load(QStringLiteral(":/i18n/%1.qm").arg(resourceName)),
                  qPrintable(resourceName));
         QVERIFY(QCoreApplication::installTranslator(&target));
-        QCOMPARE(qtTrId("gamehq.action.save"), QStringLiteral("Save"));
+        QString error;
+        const auto catalog = readTsCatalog(
+            QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
+        QVERIFY2(error.isEmpty(), qPrintable(error));
+        for (const char *id : {"gamehq.action.save", "gamehq.navigation.about",
+                               "gamehq.navigation.support_gamehq"}) {
+            QCOMPARE(qtTrId(id), catalog[QString::fromLatin1(id)].translation);
+        }
         QCoreApplication::removeTranslator(&target);
     }
     QCoreApplication::removeTranslator(&source);

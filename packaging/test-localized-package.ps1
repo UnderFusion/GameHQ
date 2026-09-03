@@ -66,8 +66,26 @@ $embedded = Get-Content -LiteralPath $embeddedReportPath -Raw -Encoding UTF8 | C
 Assert-True ($embedded.production_locale_count -eq 16) 'Packaged app does not expose exactly sixteen production locales.'
 Assert-True ($embedded.catalog_count -eq 16) 'Packaged app does not contain sixteen valid Qt catalogs.'
 Assert-True ($embedded.release_note_bundle_count -eq 16) 'Packaged app does not contain sixteen verified release-note bundles.'
+Assert-True ($embedded.runtime_locale_count -eq 16) 'Packaged app did not runtime-test all sixteen locales.'
 Assert-True (-not [bool]$embedded.update_authorization_input) `
     'Localized presentation metadata must not be an update authorization input.'
+$runtimeLocales = @($embedded.locales | Where-Object {
+    $_.requested_locale -ceq $_.locale -and
+    $_.effective_locale -ceq $_.locale -and
+    $_.live_switch -and $_.repeated_switch -and $_.system_resolution -and
+    $_.persistence_restart -and $_.installer_handoff_consumed -and
+    $_.whole_document_notes -and $_.qml_retranslations -ge 4
+})
+Assert-True ($runtimeLocales.Count -eq 16) `
+    'Packaged runtime selection, switching, system resolution, or release-note evidence is incomplete.'
+foreach ($locale in $runtimeLocales) {
+    Assert-True (-not [string]::IsNullOrWhiteSpace([string]$locale.about)) `
+        "$($locale.locale) has no packaged About translation."
+    Assert-True (-not [string]::IsNullOrWhiteSpace([string]$locale.support_gamehq)) `
+        "$($locale.locale) has no packaged Support GameHQ translation."
+    Assert-True (-not [string]::IsNullOrWhiteSpace([string]$locale.formatted_date)) `
+        "$($locale.locale) has no locale-formatted date evidence."
+}
 $representatives = @($embedded.locales | Where-Object representative_smoke | ForEach-Object locale)
 Assert-True (($representatives -join '|') -ceq 'en-US|pl-PL|zh-Hant|th-TH') `
     "Representative packaged locale probes differ: $($representatives -join ', ')."
@@ -100,9 +118,12 @@ $report = [ordered]@{
     production_locale_count = 16
     catalog_count = 16
     release_note_bundle_count = 16
+    runtime_locale_count = 16
     representative_locales = $representatives
     whole_document_fallback_locale = 'pl-PL'
     update_authorization_input = $false
+    external_browser_opened = $false
+    locales = @($embedded.locales)
     payload_application = [ordered]@{
         path = 'app/GameHQ.exe'
         size = $payloadApp.Length

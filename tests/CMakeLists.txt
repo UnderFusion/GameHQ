@@ -744,6 +744,13 @@ add_test(NAME tst_package_localization
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_package_localization.py")
 set_tests_properties(tst_package_localization PROPERTIES TIMEOUT 60)
 
+# p8-2: deterministic merger for the per-locale runtime/package/installer
+# evidence. The full artifact matrix is driven by the PowerShell entry point.
+add_test(NAME tst_multilingualacceptancereport
+    COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_SOURCE_DIR}/tools/i18n/test_multilingual_acceptance_report.py")
+set_tests_properties(tst_multilingualacceptancereport PROPERTIES TIMEOUT 60)
+
 add_test(NAME tst_i18nprotocol
     COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_protocol.py")

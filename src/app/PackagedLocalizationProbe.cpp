@@ -1,18 +1,46 @@
 #include "app/PackagedLocalizationProbe.h"
 
 #include "app/ReleaseNotes.h"
+#include "config/ConfigManager.h"
+#include "localization/LanguageManager.h"
+#include "localization/LanguagePreference.h"
 #include "localization/LocaleRegistry.h"
 
+#include <QDateTime>
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QSaveFile>
 #include <QSet>
+#include <QTemporaryDir>
 #include <QTranslator>
 #include <QVariantMap>
+#include <utility>
 
 namespace {
+
+class ProbeBootstrapStore final : public LanguageBootstrapStore
+{
+public:
+    explicit ProbeBootstrapStore(QString language = {}, bool present = true)
+        : m_language(std::move(language)), m_present(present)
+    {
+    }
+
+    bool hasValue() const override { return m_present; }
+    QString value() const override { return m_language; }
+    bool removeValue() override
+    {
+        m_present = false;
+        return true;
+    }
+    bool present() const { return m_present; }
+
+private:
+    QString m_language;
+    bool m_present = false;
+};
 
 bool fail(QString *error, const QString &message)
 {
@@ -92,6 +120,8 @@ bool PackagedLocalizationProbe::run(const QString &reportPath, QString *error)
     if (actual != productionLocales())
         return fail(error, QStringLiteral("Packaged production-locale order or membership differs."));
 
+    QString sourceAbout;
+    QString sourceSupport;
     for (const QString &locale : productionLocales()) {
         const QString catalog = registry.catalogName(locale);
         const QString catalogPath = QStringLiteral(":/i18n/%1.qm").arg(catalog);
@@ -105,6 +135,81 @@ bool PackagedLocalizationProbe::run(const QString &reportPath, QString *error)
         if (!translator.load(catalogPath))
             return fail(error, QStringLiteral("Invalid embedded Qt catalog for %1.").arg(locale));
 
+        QTemporaryDir profile;
+        if (!profile.isValid())
+            return fail(error, QStringLiteral("Cannot create isolated profile for %1.").arg(locale));
+        const QString configPath = profile.filePath(QStringLiteral("config.json"));
+        ConfigManager config(configPath);
+        if (!config.load())
+            return fail(error, QStringLiteral("Cannot initialize isolated profile for %1.").arg(locale));
+        ProbeBootstrapStore bootstrap(locale);
+        LanguagePreference preference(&config, &registry);
+        const QString initialLanguage = preference.initialLanguage(bootstrap, false);
+        if (initialLanguage != locale || bootstrap.present())
+            return fail(error, QStringLiteral("Installer handoff consumption failed for %1.").arg(locale));
+
+        LanguageManager manager(&registry);
+        int qmlRetranslates = 0;
+        manager.setQmlRetranslateCallback([&qmlRetranslates] { ++qmlRetranslates; });
+        QString languageError;
+        if (!manager.initialize(initialLanguage, {locale}, &languageError)
+            || manager.requestedLanguage() != locale
+            || manager.effectiveLanguage() != locale) {
+            return fail(error, QStringLiteral("Packaged runtime language selection failed for %1: %2")
+                                   .arg(locale, languageError));
+        }
+        const QString about = qtTrId("gamehq.navigation.about");
+        const QString support = qtTrId("gamehq.navigation.support_gamehq");
+        if (about.isEmpty() || support.isEmpty()
+            || about.startsWith(QStringLiteral("gamehq."))
+            || support.startsWith(QStringLiteral("gamehq."))) {
+            return fail(error, QStringLiteral("Raw or missing sidebar footer text for %1.")
+                                   .arg(locale));
+        }
+        if (locale == QStringLiteral("en-US")) {
+            sourceAbout = about;
+            sourceSupport = support;
+        } else if (about == sourceAbout || support == sourceSupport) {
+            return fail(error, QStringLiteral("Unexpected English sidebar footer fallback for %1.")
+                                   .arg(locale));
+        }
+
+        const QDateTime sample(QDate(2026, 9, 3), QTime(14, 5), QTimeZone::UTC);
+        const QString renderedDate = manager.formatDate(sample);
+        const QString expectedDate = QLocale(locale).toString(
+            sample.toLocalTime().date(), QLocale::ShortFormat);
+        if (renderedDate != expectedDate)
+            return fail(error, QStringLiteral("Locale date formatting failed for %1.").arg(locale));
+
+        for (int cycle = 0; cycle < 3; ++cycle) {
+            manager.setRequestedLanguage(QStringLiteral("en-US"));
+            if (manager.effectiveLanguage() != QStringLiteral("en-US")) {
+                return fail(error, QStringLiteral("Intermediate English switch failed for %1.")
+                                       .arg(locale));
+            }
+            manager.setRequestedLanguage(locale);
+            if (manager.effectiveLanguage() != locale
+                || qtTrId("gamehq.navigation.about") != about
+                || qtTrId("gamehq.navigation.support_gamehq") != support) {
+                return fail(error, QStringLiteral("Repeated switch retained stale text for %1.")
+                                       .arg(locale));
+            }
+        }
+        manager.setRequestedLanguage(QStringLiteral("system"));
+        if (manager.requestedLanguage() != QStringLiteral("system")
+            || manager.effectiveLanguage() != locale) {
+            return fail(error, QStringLiteral("System locale resolution failed for %1.").arg(locale));
+        }
+        preference.bind(&manager);
+        manager.setRequestedLanguage(locale);
+        ConfigManager restartedConfig(configPath);
+        if (!restartedConfig.load())
+            return fail(error, QStringLiteral("Cannot reload isolated profile for %1.").arg(locale));
+        ProbeBootstrapStore consumed({}, false);
+        LanguagePreference restarted(&restartedConfig, &registry);
+        if (restarted.initialLanguage(consumed, false) != locale)
+            return fail(error, QStringLiteral("Persisted locale did not survive restart for %1.").arg(locale));
+
         QString notesError;
         const ReleaseNotes notes = ReleaseNotes::loadBundled(locale, registry, &notesError);
         if (!notes.isValid() || notes.locale() != locale || notes.releases().isEmpty())
@@ -116,10 +221,22 @@ bool PackagedLocalizationProbe::run(const QString &reportPath, QString *error)
 
         localeEvidence.append(QJsonObject{
             {QStringLiteral("locale"), locale},
+            {QStringLiteral("requested_locale"), locale},
+            {QStringLiteral("effective_locale"), locale},
             {QStringLiteral("catalog"), catalog},
             {QStringLiteral("catalog_bytes"), catalogBytes},
+            {QStringLiteral("about"), about},
+            {QStringLiteral("support_gamehq"), support},
+            {QStringLiteral("formatted_date"), renderedDate},
+            {QStringLiteral("live_switch"), true},
+            {QStringLiteral("repeated_switch"), true},
+            {QStringLiteral("system_resolution"), true},
+            {QStringLiteral("persistence_restart"), true},
+            {QStringLiteral("installer_handoff_consumed"), true},
+            {QStringLiteral("qml_retranslations"), qmlRetranslates},
             {QStringLiteral("release_count"), notes.releases().size()},
             {QStringLiteral("fallback_documents"), fallbackDocuments},
+            {QStringLiteral("whole_document_notes"), true},
             {QStringLiteral("representative_smoke"), representatives.contains(locale)}});
     }
 
@@ -144,6 +261,8 @@ bool PackagedLocalizationProbe::run(const QString &reportPath, QString *error)
         {QStringLiteral("catalog_count"), productionLocales().size()},
         {QStringLiteral("release_note_bundle_count"), productionLocales().size()},
         {QStringLiteral("source_locale"), registry.sourceLanguage()},
+        {QStringLiteral("runtime_locale_count"), productionLocales().size()},
+        {QStringLiteral("external_browser_opened"), false},
         {QStringLiteral("update_authorization_input"), false},
         {QStringLiteral("locales"), localeEvidence}};
     QSaveFile output(reportPath);

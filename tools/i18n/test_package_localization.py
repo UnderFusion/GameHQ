@@ -32,13 +32,32 @@ class PackageLocalizationTest(unittest.TestCase):
             "production_locale_count -eq 16",
             "catalog_count -eq 16",
             "release_note_bundle_count -eq 16",
+            "runtime_locale_count -eq 16",
+            "persistence_restart",
+            "installer_handoff_consumed",
             "Get-ZipEntryEvidence $portable 'app/GameHQ.exe'",
             "Get-ZipEntryEvidence $update 'app/GameHQ.exe'",
             "does not match the localization-verified payload application bytes",
             "contains loose localization data",
             "update_authorization_input = $false",
+            "external_browser_opened = $false",
         ):
             self.assertIn(required, validator)
+
+    def test_packaged_probe_exercises_each_runtime_locale_without_browser_dispatch(self) -> None:
+        probe = (ROOT / "src/app/PackagedLocalizationProbe.cpp").read_text(encoding="utf-8")
+        for required in (
+            "LanguagePreference preference",
+            "manager.initialize(initialLanguage, {locale}",
+            'qtTrId("gamehq.navigation.about")',
+            'qtTrId("gamehq.navigation.support_gamehq")',
+            'manager.setRequestedLanguage(QStringLiteral("system"))',
+            'manager.setRequestedLanguage(QStringLiteral("en-US"))',
+            'ReleaseNotes::loadBundled(locale',
+            'QStringLiteral("persistence_restart"), true',
+            'QStringLiteral("external_browser_opened"), false',
+        ):
+            self.assertIn(required, probe)
 
     def test_release_and_installer_paths_require_artifact_probe(self) -> None:
         release = (ROOT / "packaging/validate-release.ps1").read_text(encoding="utf-8")
