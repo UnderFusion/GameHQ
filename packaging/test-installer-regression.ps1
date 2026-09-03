@@ -89,12 +89,15 @@ function Invoke-Program {
 }
 
 function Invoke-TestSetup {
-    param([string]$Language, [string]$Name, [int]$ExpectedExit)
+    param([string]$Language = '', [string]$Name, [int]$ExpectedExit)
     $log = Join-Path $logRoot "$Name.log"
     $arguments = @(
         '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', '/SP-', '/NOICONS',
-        "/DIR=$installRoot", "/LANG=$Language", "/LOG=$log"
+        "/DIR=$installRoot", "/LOG=$log"
     )
+    if (-not [string]::IsNullOrWhiteSpace($Language)) {
+        $arguments += "/LANG=$Language"
+    }
     $exitCode = Invoke-Program -FilePath $script:fixtureSetup -Arguments $arguments
     Assert-Equal $exitCode $ExpectedExit "$Name Setup exit code"
 }
@@ -260,11 +263,14 @@ try {
     }
 
     $criticalLanguages = @(
-        @{ Name = 'chinesesimp'; Label = 'fresh-zh-Hans' },
-        @{ Name = 'chinesetrad'; Label = 'upgrade-zh-Hant' },
-        @{ Name = 'brazilianportuguese'; Label = 'upgrade-pt-BR' },
-        @{ Name = 'spanish'; Label = 'upgrade-es-ES' },
-        @{ Name = 'spanishlatinamerica'; Label = 'upgrade-es-419' }
+        @{ Name = 'english'; Label = 'fresh-en-US'; Locale = 'en-US' },
+        @{ Name = 'polish'; Label = 'upgrade-pl-PL'; Locale = 'pl-PL' },
+        @{ Name = 'chinesesimp'; Label = 'upgrade-zh-Hans'; Locale = 'zh-Hans' },
+        @{ Name = 'chinesetrad'; Label = 'upgrade-zh-Hant'; Locale = 'zh-Hant' },
+        @{ Name = 'russian'; Label = 'upgrade-ru-RU'; Locale = 'ru-RU' },
+        @{ Name = 'thai'; Label = 'upgrade-th-TH'; Locale = 'th-TH' },
+        @{ Name = 'spanishlatinamerica'; Label = 'upgrade-es-419'; Locale = 'es-419' },
+        @{ Name = 'german'; Label = 'upgrade-de-DE-long-text'; Locale = 'de-DE' }
     )
     foreach ($language in $criticalLanguages) {
         Invoke-TestSetup -Language $language.Name -Name $language.Label -ExpectedExit 0
@@ -272,7 +278,7 @@ try {
         Assert-Equal (Get-RegistryValue $testUninstallSubKey 'DisplayVersion') $version "$($language.Label) display version"
         Assert-True ([string](Get-RegistryValue $testUninstallSubKey 'Inno Setup: Setup Version')).StartsWith($toolchain.Version) "$($language.Label) did not record Inno $($toolchain.Version)."
         Add-Pass "$($language.Label) installed or upgraded and retained its distinct installer language"
-        if ($language.Label -eq 'fresh-zh-Hans') {
+        if ($language.Label -eq 'fresh-en-US') {
             Assert-True (Test-Path -LiteralPath (Join-Path $installRoot 'GameHQ.exe') -PathType Leaf) 'Fresh install omitted the launcher.'
             Assert-True (Test-Path -LiteralPath (Join-Path $installRoot 'GameHQUpdater.exe') -PathType Leaf) 'Fresh install omitted the updater.'
             Assert-True (Test-Path -LiteralPath (Join-Path $installRoot 'app\GameHQ.exe') -PathType Leaf) 'Fresh install omitted the application.'
@@ -282,6 +288,11 @@ try {
             Add-Pass 'fresh install created the expected launcher, updater, and application layout'
         }
     }
+
+    Invoke-TestSetup -Name 'upgrade-previous-language-reuse' -ExpectedExit 0
+    Assert-Equal (Get-RegistryValue $testUninstallSubKey 'Inno Setup: Language') 'german' `
+        'Upgrade without /LANG did not reuse the previous installer language'
+    Add-Pass 'upgrade without explicit selection reuses the previous installer language'
 
     Assert-Equal (Get-RegistryValue $testProductSubKey 'InstallLocation') $installRoot 'Product InstallLocation'
     Assert-Equal (Get-RegistryValue $testProductSubKey 'Version') $version 'Product Version'
@@ -348,7 +359,10 @@ try {
         compiler_version = $toolchain.Version
         compiler_architecture = $toolchain.Architecture
         application_version = $version
-        critical_languages = @($criticalLanguages.Name)
+        critical_languages = @($criticalLanguages | ForEach-Object {
+            [ordered]@{ locale = $_.Locale; installer_language = $_.Name; scenario = $_.Label }
+        })
+        previous_language_reuse = 'german'
         checks_passed = $passes.Count
         checks = @($passes)
     }
