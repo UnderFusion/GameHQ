@@ -1,12 +1,14 @@
 {
   "$schema": "../schema/locale-style.schema.json",
-  "schema_version": 1,
+  "schema_version": 2,
   "locale": "ko-KR",
   "source_language": "en-US",
   "tone": "Use concise, polite neutral Korean with one consistent software speech level.",
   "capitalization": "Do not imitate English capitalization; retain protected Latin terms exactly.",
   "button_labels": "Use short conventional Korean action labels with consistent endings.",
+  "ui_roles": "Keep labels compact, buttons action-led, tooltips explanatory, and warnings or errors as natural complete messages.",
   "technical_terms": "Use established Korean software terminology and preserve glossary tokens.",
+  "contextual_terminology": "Choose ambiguous terms from the feature, stable ID, surface type, and neighboring strings instead of applying one borrowed or translated form globally.",
   "punctuation": "Use Korean punctuation and spacing while preserving placeholders and accelerators.",
   "units": "Preserve numeric meaning and use conventional Korean value-unit spacing.",
   "natural_language": "Use natural Korean order and omit subjects where context makes them clear."

@@ -1,0 +1,15 @@
+{
+  "$schema": "../schema/locale-style.schema.json",
+  "schema_version": 2,
+  "locale": "uk-UA",
+  "source_language": "en-US",
+  "tone": "Use clear, concise, neutral Ukrainian suitable for a desktop utility.",
+  "capitalization": "Use Ukrainian sentence case and capitalization rules rather than English title case.",
+  "button_labels": "Use short conventional Ukrainian action labels with consistent verb forms and no final periods.",
+  "ui_roles": "Keep labels concise, buttons action-oriented, tooltips explanatory, and warnings or errors as natural complete sentences.",
+  "technical_terms": "Use established Ukrainian software terminology, avoid Russian calques, and preserve protected products, APIs, abbreviations, and identifiers.",
+  "contextual_terminology": "Resolve ambiguous terms from the feature, stable ID, surface type, and neighboring strings rather than enforcing one translation globally.",
+  "punctuation": "Use Ukrainian quotation and punctuation conventions while preserving syntax tokens and accelerators.",
+  "units": "Preserve numeric meaning and use locale-appropriate decimal and unit spacing.",
+  "natural_language": "Use idiomatic Ukrainian syntax and avoid literal English structure or imported Russian phrasing."
+}

@@ -1,25 +1,150 @@
 {
   "$schema": "../schema/translation-glossary.schema.json",
-  "schema_version": 1,
+  "schema_version": 2,
   "source_language": "en-US",
   "protected_literals": [
     { "term": "GameHQ", "reason": "Product brand" },
     { "term": "underfusion", "reason": "Publisher identity" },
     { "term": "GNU GPL v3", "reason": "License name" },
     { "term": "GameHQ.exe", "reason": "Executable filename" },
-    { "term": "GameHQUpdater.exe", "reason": "Executable filename" }
+    { "term": "GameHQUpdater.exe", "reason": "Executable filename" },
+    { "term": "GameInput", "reason": "Microsoft input API name" },
+    { "term": "XInput", "reason": "Microsoft input API name" },
+    { "term": "DualSense", "reason": "Sony controller product name" },
+    { "term": "HDR", "reason": "Established display technology initialism" },
+    { "term": "FPS", "reason": "Established frames-per-second initialism" }
   ],
   "protected_categories": [
     "Game titles and all user-provided names",
     "Executable, file, and registry paths",
     "URLs, ports, protocol names, and command-line switches",
     "Registry keys, config keys, action IDs, control IDs, and device IDs",
-    "Version strings, chord syntax, and protocol keys"
+    "Version strings, chord syntax, protocol keys, and command names",
+    "Product, brand, API, framework, and hardware names unless an approved localized name exists"
   ],
   "terminology": [
-    { "source": "Gallery", "meaning": "The GameHQ screenshot gallery", "instruction": "Use the natural established UI noun for a media gallery." },
-    { "source": "Release notes", "meaning": "The version change summary", "instruction": "Use the standard software term in the target locale." },
-    { "source": "System language", "meaning": "Automatic selection from operating-system language preferences", "instruction": "Translate as an automatic OS-derived language choice, not a language named System." },
-    { "source": "Portable mode", "meaning": "A package that stores settings beside the application", "instruction": "Use the conventional local software term; do not imply a mobile device." }
+    {
+      "source": "Input",
+      "meaning": "Information or control activity entering the application",
+      "instruction": "Choose the target term from the feature and grammatical role; never impose one global equivalent.",
+      "contexts": [
+        { "when": "A keyboard, mouse, or controller control is assigned to an action", "meaning": "A physical control or control assignment", "instruction": "Use the locale's natural control or assignment term, not data-entry terminology." },
+        { "when": "A device or API supplies events", "meaning": "Incoming device activity or data", "instruction": "Use established technical input terminology and preserve protected API names." },
+        { "when": "Input appears in a configuration or recovery label", "meaning": "The application's control configuration", "instruction": "Name the control settings naturally and preserve the label or action role." }
+      ]
+    },
+    {
+      "source": "Binding",
+      "meaning": "A mapping between an action and one or more controls",
+      "instruction": "Translate as a control assignment or mapping, not physical fastening.",
+      "contexts": [
+        { "when": "A settings label names a binding", "meaning": "The saved action-to-control assignment", "instruction": "Use a concise established settings noun." },
+        { "when": "An action creates, replaces, or removes a binding", "meaning": "Changing an assignment", "instruction": "Use a short action verb appropriate for a button or menu command." }
+      ]
+    },
+    {
+      "source": "Capture",
+      "meaning": "Either recorded media, recording activity, or temporary control detection",
+      "instruction": "Resolve the meaning from the domain and never reuse the media-recording term for binding detection.",
+      "contexts": [
+        { "when": "Gallery, storage, deletion, or favorites refer to a capture noun", "meaning": "A saved screenshot or video item", "instruction": "Use the locale's inclusive natural media-item term." },
+        { "when": "Screenshot or replay features capture media", "meaning": "Recording or saving visual media", "instruction": "Use the established screenshot or recording verb for the exact feature." },
+        { "when": "The binding dialog captures a key, button, or shortcut", "meaning": "Listening for the next control", "instruction": "Translate as waiting for or detecting a control, not recording media." }
+      ]
+    },
+    {
+      "source": "Frame",
+      "meaning": "One still image in a video or a rendering boundary",
+      "instruction": "Select the established technical sense from playback or rendering context.",
+      "contexts": [
+        { "when": "Playback saves or displays a frame", "meaning": "One video image", "instruction": "Use the conventional audiovisual term." },
+        { "when": "Rendering, timing, or FPS describes frames", "meaning": "A rendered image and its timing", "instruction": "Use established graphics terminology and preserve FPS." }
+      ]
+    },
+    {
+      "source": "Focus",
+      "meaning": "The window or control currently receiving interaction",
+      "instruction": "Translate as UI or window focus, never mental concentration.",
+      "contexts": [
+        { "when": "A warning says the game has focus", "meaning": "The game is the active input-receiving window", "instruction": "Prefer a natural active-window sentence when literal focus terminology is awkward." },
+        { "when": "A control receives keyboard focus", "meaning": "The selected UI control receives keyboard events", "instruction": "Use the locale's standard accessibility and UI term." }
+      ]
+    },
+    {
+      "source": "Slot",
+      "meaning": "A numbered position available for a control assignment",
+      "instruction": "Name the assignment position naturally; do not preserve English merely because slot is technical-sounding.",
+      "contexts": [
+        { "when": "Binding assignment prompts include Slot %1", "meaning": "One numbered binding position", "instruction": "Preserve the placeholder and use a concise position term." }
+      ]
+    },
+    {
+      "source": "Buffer",
+      "meaning": "Temporary retained data whose purpose is defined by the feature",
+      "instruction": "Keep the technical buffer concept but qualify it by its actual purpose.",
+      "contexts": [
+        { "when": "Replay buffer retains recent gameplay", "meaning": "Rolling recent gameplay retained for instant replay", "instruction": "Do not translate it as a playback cache." },
+        { "when": "Diagnostics discuss memory or transfer buffering", "meaning": "Temporary technical storage", "instruction": "Use established computing terminology." }
+      ]
+    },
+    {
+      "source": "Clip",
+      "meaning": "A saved short video segment",
+      "instruction": "Use the established audiovisual noun, not clipboard or cutting terminology.",
+      "contexts": [
+        { "when": "Gallery, replay, storage, or playback refers to clips", "meaning": "Saved video items", "instruction": "Keep labels concise and descriptions natural." }
+      ]
+    },
+    {
+      "source": "Overlay",
+      "meaning": "GameHQ's in-game interface layer shown above a game",
+      "instruction": "Use the established in-game UI term consistently; do not translate it as a generic physical surface.",
+      "contexts": [
+        { "when": "A heading or label names the feature", "meaning": "The in-game GameHQ layer", "instruction": "Use a concise feature noun." },
+        { "when": "An action shows, hides, opens, or closes the overlay", "meaning": "Changing visibility of the in-game layer", "instruction": "Use a natural action verb and preserve the control's UI role." }
+      ]
+    },
+    {
+      "source": "Replay",
+      "meaning": "GameHQ's rolling instant-replay recording feature or media produced by it",
+      "instruction": "Distinguish the feature, its buffer, saved clips, and ordinary playback.",
+      "contexts": [
+        { "when": "Replay names the feature or saved action", "meaning": "Instant replay recording", "instruction": "Use the locale's established gaming or recording term." },
+        { "when": "Replay modifies buffer or clip", "meaning": "Data or media produced by instant replay", "instruction": "Translate the compound by meaning, not English noun order." },
+        { "when": "Playback controls play existing media", "meaning": "Ordinary media playback", "instruction": "Do not reuse the instant-replay feature term automatically." }
+      ]
+    },
+    {
+      "source": "Gallery",
+      "meaning": "The GameHQ screenshot and video browser",
+      "instruction": "Use the natural established UI noun for a media gallery.",
+      "contexts": [
+        { "when": "A title, navigation scope, or description names Gallery", "meaning": "The media-browsing feature", "instruction": "Use one concise, consistent feature noun." }
+      ]
+    },
+    {
+      "source": "Release notes",
+      "meaning": "The version change summary",
+      "instruction": "Use the standard software term in the target locale.",
+      "contexts": [
+        { "when": "The UI or publication names version changes", "meaning": "A structured summary of changes in a release", "instruction": "Use established software-release terminology." }
+      ]
+    },
+    {
+      "source": "System language",
+      "meaning": "Automatic selection from operating-system language preferences",
+      "instruction": "Translate as an automatic OS-derived language choice, not a language named System.",
+      "contexts": [
+        { "when": "The language selector offers System language", "meaning": "Follow operating-system language preferences", "instruction": "Use a concise selector label that communicates automatic selection." }
+      ]
+    },
+    {
+      "source": "Portable mode",
+      "meaning": "A package that stores settings beside the application",
+      "instruction": "Use the conventional local software term; do not imply a mobile device.",
+      "contexts": [
+        { "when": "Settings, startup, or documentation describe portable mode", "meaning": "Self-contained configuration beside the executable", "instruction": "Use established desktop-software terminology." }
+      ]
+    }
   ]
 }

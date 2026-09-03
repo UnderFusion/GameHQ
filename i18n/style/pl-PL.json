@@ -1,12 +1,14 @@
 {
   "$schema": "../schema/locale-style.schema.json",
-  "schema_version": 1,
+  "schema_version": 2,
   "locale": "pl-PL",
   "source_language": "en-US",
   "tone": "Use clear, concise Polish with neutral impersonal software phrasing.",
   "capitalization": "Use sentence case and Polish capitalization rules, not English title case.",
   "button_labels": "Use short conventional infinitive action labels without final periods.",
+  "ui_roles": "Keep menu and setting labels as concise noun phrases, buttons as infinitive actions, tooltips explanatory, and errors as natural complete sentences.",
   "technical_terms": "Use established Polish software terms and preserve glossary tokens verbatim.",
+  "contextual_terminology": "Resolve ambiguous terms from feature context: input may mean sterowanie, sygnał, or wejście; binding means przypisanie; capture varies by media or control detection; overlay is nakładka; replay is not automatically odtwarzanie.",
   "punctuation": "Use Polish quotation and punctuation conventions while retaining accelerators.",
   "units": "Use metric conventions, comma decimals where applicable, and proper unit spacing.",
   "natural_language": "Use idiomatic Polish syntax and avoid literal English calques."

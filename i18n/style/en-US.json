@@ -1,12 +1,14 @@
 {
   "$schema": "../schema/locale-style.schema.json",
-  "schema_version": 1,
+  "schema_version": 2,
   "locale": "en-US",
   "source_language": "en-US",
   "tone": "Clear, concise, friendly US software language; avoid slang and marketing hype.",
   "capitalization": "Use sentence case for labels and headings unless a proper name requires capitals.",
   "button_labels": "Use short imperative verbs and omit terminal punctuation.",
+  "ui_roles": "Keep labels concise, buttons action-oriented, tooltips explanatory, warnings direct, and errors complete natural sentences.",
   "technical_terms": "Follow the approved glossary and preserve every protected token verbatim.",
+  "contextual_terminology": "Choose each ambiguous term from its stable ID, feature context, surface type, and neighboring strings; do not enforce one global wording.",
   "punctuation": "Use US punctuation and quotation conventions; preserve required accelerators.",
   "units": "Preserve numeric meaning; use established US UI formatting only when context requests it.",
   "natural_language": "Prefer idiomatic, direct wording over literal or source-order phrasing."

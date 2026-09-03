@@ -22,8 +22,16 @@ placeholder metadata, markup and accelerator constraints, protected tokens, and 
 translation when the unit is stale. Units are sorted by ID.
 
 The target locale metadata is copied from `i18n/locales.json`. The referenced glossary and
-`i18n/style/<locale>.json` guide are mandatory inputs. Natural wording is preferred over
-literal word order, but meaning and all structural constraints must remain unchanged.
+`i18n/style/<locale>.json` guide are mandatory inputs. Translate the message's meaning and
+UI function in its supplied context; never translate isolated words or copy English word
+order blindly. Meaning and every structural constraint must remain unchanged.
+
+The stable ID, developer context, UI location, neighboring strings, and surface type decide
+which glossary sense applies. A menu label remains a concise label, a button remains an
+action, a tooltip remains an explanation, and an error remains a natural sentence. An
+ambiguous source term can therefore have different correct translations in different UI
+contexts. The glossary records explicit senses for `input`, `binding`, `capture`, `frame`,
+`focus`, `slot`, `buffer`, `clip`, `overlay`, `replay`, and `gallery`.
 
 ## Response contract
 
@@ -48,7 +56,15 @@ stale responses cause no catalog or state write.
 - Preserve markup structure, Markdown delimiters, accelerator count, and line-break tokens.
 - Copy every protected token exactly, including brands, executables, paths, URLs, switches,
   config or registry keys, action/control IDs, protocol keys, and user-provided names.
+- Keep established technical names such as `GameInput`, `XInput`, `DualSense`, `HDR`, and
+  `FPS` unchanged. Translate surrounding explanations naturally; protection never licenses
+  leaving an entire sentence in English.
 - Emit valid UTF-8 text normalized to NFC, without control characters or mojibake.
+
+Structural validity is necessary but not linguistic acceptance. A response can preserve
+placeholders, hashes, and markup yet still fail for literal phrasing, the wrong technical
+sense, inconsistent terminology, lost tone, an incorrect grammatical form, or a changed UI
+role. Those defects must be resolved in contextual linguistic QA before release.
 
 ## Validation and failure
 

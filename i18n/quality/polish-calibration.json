@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "locale": "pl-PL",
+  "source_locale": "en-US",
+  "purpose": "Representative contextual calibration; not an application-wide retranslation.",
+  "samples": [
+    {
+      "id": "gamehq.help.feature.overlay.title",
+      "source": "Overlay",
+      "observed": "Powierzchnia",
+      "recommendation": "Nakładka",
+      "ui_location": "Help feature heading",
+      "surface_type": "heading",
+      "decision": "correct",
+      "reason": "The feature is an in-game UI layer; the observed word means a physical surface."
+    },
+    {
+      "id": "gamehq.action.global.toggle_overlay.label",
+      "source": "Toggle Overlay",
+      "observed": "Przełącz nakładkę",
+      "recommendation": "Pokaż/ukryj nakładkę",
+      "ui_location": "Global action label",
+      "surface_type": "action_label",
+      "decision": "correct",
+      "reason": "The label should state the visible action instead of mirroring the technical verb toggle."
+    },
+    {
+      "id": "gamehq.help.feature.replay.title",
+      "source": "Replay buffer",
+      "observed": "Bufor odtwarzania",
+      "recommendation": "Bufor powtórek",
+      "ui_location": "Help feature heading",
+      "surface_type": "heading",
+      "decision": "correct",
+      "reason": "This buffer retains recent gameplay for instant replay; it is not a playback buffer."
+    },
+    {
+      "id": "gamehq.action.global.save_replay.description",
+      "source": "Save the rolling replay buffer as a clip.",
+      "observed": "Zapisz bufor odtwarzania jako klip.",
+      "recommendation": "Zapisz zawartość bufora powtórek jako klip.",
+      "ui_location": "Global action explanation",
+      "surface_type": "description",
+      "decision": "correct",
+      "reason": "The sentence must express saving the buffer contents and use the replay-feature sense."
+    },
+    {
+      "id": "gamehq.input.assignment.capture_active",
+      "source": "Controller capture active · Dialog navigation is paused",
+      "observed": "Aktywne przechwytywanie kontrolera · Nawigacja dialogu jest wstrzymana",
+      "recommendation": "Oczekiwanie na sterowanie z kontrolera · Nawigacja w oknie jest wstrzymana",
+      "ui_location": "Binding assignment status",
+      "surface_type": "status",
+      "decision": "correct",
+      "reason": "Capture means listening for a control here, not recording a controller."
+    },
+    {
+      "id": "gamehq.input.binding_card.add_input",
+      "source": "+ Add input",
+      "observed": "+ Dodaj wpis",
+      "recommendation": "+ Dodaj sterowanie",
+      "ui_location": "Binding card button",
+      "surface_type": "button",
+      "decision": "correct",
+      "reason": "Input is a keyboard, mouse, or controller control; wpis means a generic entry."
+    },
+    {
+      "id": "gamehq.input.model.capture.keyboard",
+      "source": "Press a key or shortcut for %1 · Slot %2",
+      "observed": "Naciśnij klawisz lub skrót %1 · Włóczno %2",
+      "recommendation": "Naciśnij klawisz lub skrót dla %1 · Miejsce %2",
+      "ui_location": "Keyboard binding capture prompt",
+      "surface_type": "instruction",
+      "decision": "correct",
+      "reason": "The prompt must preserve %1 and %2 while naming the numbered assignment position naturally."
+    },
+    {
+      "id": "gamehq.overlay.focus_warning",
+      "source": "The game still has focus and may react to controller input",
+      "observed": "Gra nadal ma skupienie i może reagować na wprowadzanie kontrolera",
+      "recommendation": "Gra nadal jest aktywnym oknem i może reagować na kontroler",
+      "ui_location": "Overlay focus warning",
+      "surface_type": "warning",
+      "decision": "correct",
+      "reason": "Focus is active-window ownership and input is controller activity, not concentration or data entry."
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.input.action",
+      "source": "Restore input",
+      "observed": "Przywrócenie wejścia",
+      "recommendation": "Przywróć sterowanie",
+      "ui_location": "Advanced recovery button",
+      "surface_type": "button",
+      "decision": "correct",
+      "reason": "A button requires an action form and input means the control configuration in this context."
+    },
+    {
+      "id": "gamehq.settings.capture.storage.replay_clips",
+      "source": "Replay clips",
+      "observed": "Odtwarzanie klipów",
+      "recommendation": "Klipy z powtórek",
+      "ui_location": "Capture storage label",
+      "surface_type": "label",
+      "decision": "correct",
+      "reason": "The label names saved instant-replay clips, not the action of playing clips."
+    },
+    {
+      "id": "gamehq.action.playback.frame_grab.label",
+      "source": "Save Frame",
+      "observed": "Zapisz klatkę",
+      "recommendation": "Zapisz klatkę",
+      "ui_location": "Playback action label",
+      "surface_type": "action_label",
+      "decision": "accept",
+      "reason": "Frame correctly means one video image and the concise action form is preserved."
+    },
+    {
+      "id": "gamehq.help.feature.gallery.title",
+      "source": "Gallery",
+      "observed": "Galeria",
+      "recommendation": "Galeria",
+      "ui_location": "Help feature heading",
+      "surface_type": "heading",
+      "decision": "accept",
+      "reason": "The established media-browser noun is natural and contextually correct."
+    },
+    {
+      "id": "gamehq.navigation.category.clips",
+      "source": "Clips",
+      "observed": "Klipy",
+      "recommendation": "Klipy",
+      "ui_location": "Gallery navigation category",
+      "surface_type": "label",
+      "decision": "accept",
+      "reason": "The established short media term preserves the label role."
+    }
+  ]
+}

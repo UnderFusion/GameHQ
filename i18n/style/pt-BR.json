@@ -1,12 +1,14 @@
 {
   "$schema": "../schema/locale-style.schema.json",
-  "schema_version": 1,
+  "schema_version": 2,
   "locale": "pt-BR",
   "source_language": "en-US",
   "tone": "Use clear, approachable Brazilian Portuguese with consistent neutral address.",
   "capitalization": "Use sentence case and Brazilian Portuguese capitalization conventions.",
   "button_labels": "Use concise familiar action verbs and omit terminal punctuation.",
+  "ui_roles": "Keep labels concise, buttons action-oriented, tooltips explanatory, and warnings or errors as natural complete sentences.",
   "technical_terms": "Use established Brazilian software terms and preserve glossary tokens verbatim.",
+  "contextual_terminology": "Resolve ambiguous terms from the feature, stable ID, surface type, and neighboring strings instead of enforcing one translation globally.",
   "punctuation": "Apply Brazilian punctuation conventions without changing accelerators or syntax tokens.",
   "units": "Use metric conventions and Brazilian decimal formatting when context requests formatting.",
   "natural_language": "Use idiomatic Brazilian Portuguese rather than European variants or literal calques."

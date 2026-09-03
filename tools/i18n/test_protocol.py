@@ -10,6 +10,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 
 
 REPOSITORY = Path(__file__).resolve().parents[2]
@@ -19,6 +20,13 @@ sys.path.insert(0, str(REPOSITORY / "tools" / "i18n"))
 import protocol  # noqa: E402
 import sync as extraction  # noqa: E402
 import verify  # noqa: E402
+
+
+LAUNCH_LOCALES = {
+    "en-US", "zh-Hans", "ru-RU", "es-ES", "pt-BR", "de-DE", "ja-JP",
+    "fr-FR", "pl-PL", "ko-KR", "zh-Hant", "tr-TR", "th-TH", "es-419",
+    "uk-UA", "it-IT",
+}
 
 
 class ProtocolTest(unittest.TestCase):
@@ -131,17 +139,52 @@ class ProtocolTest(unittest.TestCase):
         result = self.run_protocol(queue=queue, response=response, expected=2)
         self.assertIn("markup signature differs", result.stderr)
 
-    def test_every_tier_one_locale_has_a_valid_style_guide(self) -> None:
+    def test_every_launch_locale_has_contextual_style_guidance(self) -> None:
         registry = json.loads((REPOSITORY / "i18n" / "locales.json").read_text(encoding="utf-8"))
-        tier_one = sorted(
-            locale["tag"] for locale in registry["locales"] if locale["tier"] == 1
-        )
-        self.assertEqual(12, len(tier_one))
-        for tag in tier_one:
+        portfolio = {
+            locale["tag"] for locale in registry["locales"] if locale["tier"] in {1, 2}
+        }
+        self.assertEqual(LAUNCH_LOCALES, portfolio)
+        for tag in sorted(LAUNCH_LOCALES):
             with self.subTest(locale=tag):
                 glossary, style = protocol.load_policy(REPOSITORY, tag)
-                self.assertEqual(1, glossary["schema_version"])
+                self.assertEqual(2, glossary["schema_version"])
+                self.assertEqual(2, style["schema_version"])
                 self.assertEqual(tag, style["locale"])
+                self.assertGreater(len(style["ui_roles"]), 40)
+                self.assertGreater(len(style["contextual_terminology"]), 60)
+
+    def test_contextual_glossary_and_polish_calibration_are_complete(self) -> None:
+        glossary, _ = protocol.load_policy(REPOSITORY, "pl-PL")
+        protected = {entry["term"] for entry in glossary["protected_literals"]}
+        self.assertTrue({"GameInput", "XInput", "DualSense", "HDR", "FPS"} <= protected)
+
+        required_terms = {
+            "Input", "Binding", "Capture", "Frame", "Focus", "Slot", "Buffer",
+            "Clip", "Overlay", "Replay", "Gallery",
+        }
+        terminology = {entry["source"]: entry for entry in glossary["terminology"]}
+        self.assertTrue(required_terms <= set(terminology))
+        for term in required_terms:
+            self.assertGreaterEqual(len(terminology[term]["contexts"]), 1, term)
+
+        audit = json.loads(
+            (REPOSITORY / "i18n" / "quality" / "polish-calibration.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual("pl-PL", audit["locale"])
+        samples = audit["samples"]
+        self.assertGreaterEqual(len(samples), 12)
+        self.assertEqual(len(samples), len({sample["id"] for sample in samples}))
+        self.assertEqual({"accept", "correct"}, {sample["decision"] for sample in samples})
+        self.assertGreaterEqual(len({sample["surface_type"] for sample in samples}), 6)
+
+        catalog = ET.parse(REPOSITORY / "i18n" / "app" / "gamehq_pl_PL.ts")
+        sources = {
+            message.get("id"): message.findtext("source")
+            for message in catalog.findall(".//message")
+        }
+        for sample in samples:
+            self.assertEqual(sample["source"], sources.get(sample["id"]), sample["id"])
 
 
 if __name__ == "__main__":

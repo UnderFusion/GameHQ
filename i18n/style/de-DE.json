@@ -1,12 +1,14 @@
 {
   "$schema": "../schema/locale-style.schema.json",
-  "schema_version": 1,
+  "schema_version": 2,
   "locale": "de-DE",
   "source_language": "en-US",
   "tone": "Use concise, neutral German with consistent polite or impersonal software phrasing.",
   "capitalization": "Follow German noun capitalization and use sentence case for labels.",
   "button_labels": "Use short conventional action labels and omit final periods.",
+  "ui_roles": "Keep labels concise, buttons action-oriented, tooltips explanatory, and warnings or errors as natural complete sentences.",
   "technical_terms": "Prefer established German software terms and preserve glossary tokens.",
+  "contextual_terminology": "Resolve ambiguous terms from the feature, stable ID, surface type, and neighboring strings; avoid literal English compounds when natural German differs.",
   "punctuation": "Use German quotation and punctuation rules while preserving accelerators.",
   "units": "Use metric conventions, comma decimals where applicable, and conventional unit spacing.",
   "natural_language": "Restructure compounds and clauses naturally instead of copying English order."

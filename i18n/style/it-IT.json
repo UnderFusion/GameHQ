@@ -1,0 +1,15 @@
+{
+  "$schema": "../schema/locale-style.schema.json",
+  "schema_version": 2,
+  "locale": "it-IT",
+  "source_language": "en-US",
+  "tone": "Use clear, concise, neutral Italian suitable for a desktop utility.",
+  "capitalization": "Use Italian sentence case and capitalization rules rather than English title case.",
+  "button_labels": "Use short consistent infinitive or imperative action labels without final periods.",
+  "ui_roles": "Keep labels concise, buttons action-oriented, tooltips explanatory, and warnings or errors as natural complete sentences.",
+  "technical_terms": "Use established Italian software terminology and preserve protected products, APIs, abbreviations, and identifiers verbatim.",
+  "contextual_terminology": "Resolve ambiguous terms from the feature, stable ID, surface type, and neighboring strings; avoid unnecessary English and literal calques.",
+  "punctuation": "Use Italian punctuation conventions while preserving syntax tokens and accelerators.",
+  "units": "Preserve numeric meaning and use locale-appropriate decimal and unit spacing.",
+  "natural_language": "Prefer idiomatic Italian phrasing and natural information order over English source structure."
+}

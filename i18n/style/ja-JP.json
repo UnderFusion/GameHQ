@@ -1,12 +1,14 @@
 {
   "$schema": "../schema/locale-style.schema.json",
-  "schema_version": 1,
+  "schema_version": 2,
   "locale": "ja-JP",
   "source_language": "en-US",
   "tone": "Use concise, polite neutral Japanese appropriate for desktop software.",
   "capitalization": "Do not imitate English capitalization; retain protected Latin spelling exactly.",
   "button_labels": "Use short conventional Japanese action labels with consistent verb forms.",
+  "ui_roles": "Keep labels compact, buttons action-led, tooltips explanatory, and warnings or errors as natural complete messages.",
   "technical_terms": "Use established Japanese software terms and preserve glossary tokens.",
+  "contextual_terminology": "Choose ambiguous terms from the feature, stable ID, surface type, and neighboring strings rather than applying one borrowed or translated form globally.",
   "punctuation": "Use Japanese punctuation naturally while preserving placeholders and accelerators.",
   "units": "Preserve numeric meaning and use conventional Japanese spacing for values and units.",
   "natural_language": "Choose natural Japanese information order and omit subjects where idiomatic."

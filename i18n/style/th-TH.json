@@ -1,0 +1,15 @@
+{
+  "$schema": "../schema/locale-style.schema.json",
+  "schema_version": 2,
+  "locale": "th-TH",
+  "source_language": "en-US",
+  "tone": "Use clear, concise, neutral Thai suitable for a desktop utility; avoid unnecessary pronouns and polite particles.",
+  "capitalization": "Do not imitate English capitalization; preserve capitalization only inside protected Latin terms.",
+  "button_labels": "Use short familiar Thai action verbs without sentence-ending punctuation.",
+  "ui_roles": "Keep labels compact, buttons action-led, tooltips explanatory, and warnings or errors as natural complete messages.",
+  "technical_terms": "Use established Thai software terminology and preserve protected products, APIs, abbreviations, and identifiers verbatim.",
+  "contextual_terminology": "Choose ambiguous terms from the feature, stable ID, surface type, and neighboring strings; do not transliterate English automatically.",
+  "punctuation": "Use natural Thai spacing and punctuation while preserving syntax tokens, placeholders, and accelerators.",
+  "units": "Keep values and unit meaning unchanged and use conventional Thai spacing around Latin units.",
+  "natural_language": "Use idiomatic Thai clause order and avoid word-for-word English structure."
+}

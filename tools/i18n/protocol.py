@@ -104,16 +104,19 @@ def load_policy(root: Path, target_locale: str) -> tuple[dict[str, object], dict
     })
     require_fields("style", style, {
         "$schema", "schema_version", "locale", "source_language", "tone",
-        "capitalization", "button_labels", "technical_terms", "punctuation", "units",
-        "natural_language",
+        "capitalization", "button_labels", "ui_roles", "technical_terms",
+        "contextual_terminology", "punctuation", "units", "natural_language",
     })
-    if glossary.get("schema_version") != 1 or glossary.get("source_language") != "en-US":
+    if glossary.get("schema_version") != 2 or glossary.get("source_language") != "en-US":
         raise ProtocolError("glossary: unsupported version or source language")
-    if style.get("schema_version") != 1 or style.get("source_language") != "en-US":
+    if style.get("schema_version") != 2 or style.get("source_language") != "en-US":
         raise ProtocolError("style: unsupported version or source language")
     if style.get("locale") != target_locale:
         raise ProtocolError(f"style: locale does not match target_locale {target_locale}")
-    for field in ("tone", "capitalization", "button_labels", "technical_terms", "punctuation", "units", "natural_language"):
+    for field in (
+        "tone", "capitalization", "button_labels", "ui_roles", "technical_terms",
+        "contextual_terminology", "punctuation", "units", "natural_language",
+    ):
         require_string(f"style.{field}", style.get(field))
     literals = glossary.get("protected_literals")
     if not isinstance(literals, list) or not literals:
@@ -137,10 +140,20 @@ def load_policy(root: Path, target_locale: str) -> tuple[dict[str, object], dict
             raise ProtocolError(f"glossary.terminology[{index}] must be an object")
         require_fields(
             f"glossary.terminology[{index}]", term,
-            {"source", "meaning", "instruction"},
+            {"source", "meaning", "instruction", "contexts"},
         )
         for field in ("source", "meaning", "instruction"):
             require_string(f"glossary.terminology[{index}].{field}", term.get(field))
+        contexts = term.get("contexts")
+        if not isinstance(contexts, list) or not contexts:
+            raise ProtocolError(f"glossary.terminology[{index}].contexts must be a non-empty array")
+        for context_index, context in enumerate(contexts):
+            label = f"glossary.terminology[{index}].contexts[{context_index}]"
+            if not isinstance(context, dict):
+                raise ProtocolError(f"{label} must be an object")
+            require_fields(label, context, {"when", "meaning", "instruction"})
+            for field in ("when", "meaning", "instruction"):
+                require_string(f"{label}.{field}", context.get(field))
     return glossary, style
 
 

@@ -1,0 +1,15 @@
+{
+  "$schema": "../schema/locale-style.schema.json",
+  "schema_version": 2,
+  "locale": "es-419",
+  "source_language": "en-US",
+  "tone": "Use clear, concise, neutral Latin American Spanish without country-specific slang or Iberian forms.",
+  "capitalization": "Use Spanish sentence case and capitalization rules rather than English title case.",
+  "button_labels": "Use short consistent infinitive or imperative actions without final periods.",
+  "ui_roles": "Keep labels concise, buttons action-oriented, tooltips explanatory, and warnings or errors as natural complete sentences.",
+  "technical_terms": "Use broadly understood Latin American software terminology and preserve protected products, APIs, abbreviations, and identifiers.",
+  "contextual_terminology": "Resolve ambiguous terms from the feature, stable ID, surface type, and neighboring strings; avoid both literal calques and region-specific wording.",
+  "punctuation": "Use standard Spanish punctuation and question marks while preserving syntax tokens and accelerators.",
+  "units": "Preserve numeric meaning and use locale-appropriate decimal and unit spacing.",
+  "natural_language": "Prefer idiomatic region-neutral Spanish over English word order or European-Spanish defaults."
+}
