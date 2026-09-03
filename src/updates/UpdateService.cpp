@@ -1,5 +1,4 @@
 #include "updates/UpdateService.h"
-#include "app/ReleaseNotes.h"
 #include "updates/GitHubReleaseSource.h"
 #include "updates/UpdateDownloader.h"
 #include "updates/VersionNumber.h"
@@ -16,7 +15,7 @@
 
 QVariantList UpdateService::noteBlocks() const
 {
-    return m_release ? ReleaseNotes::blocksFromMarkdown(m_release->notes) : QVariantList{};
+    return {};
 }
 
 UpdateService::UpdateService(QString owner, QString repo, QString installedVersion,

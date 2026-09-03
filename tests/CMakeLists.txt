@@ -265,7 +265,11 @@ gamehq_add_test(tst_versionnumber
 
 gamehq_add_test(tst_releasenotes
     tst_releasenotes.cpp
-    "${CMAKE_SOURCE_DIR}/src/app/ReleaseNotes.cpp")
+    "${CMAKE_SOURCE_DIR}/src/app/ReleaseNotes.cpp"
+    "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp")
+target_compile_definitions(tst_releasenotes PRIVATE
+    GAMEHQ_RELEASE_NOTES_GENERATED_DIR="${CMAKE_SOURCE_DIR}/assets/release-notes/generated"
+    GAMEHQ_LOCALE_MANIFEST_FILE="${CMAKE_SOURCE_DIR}/i18n/locales.json")
 
 gamehq_add_test(tst_releasetrust tst_releasetrust.cpp)
 target_link_libraries(tst_releasetrust PRIVATE gamehq_release_trust)

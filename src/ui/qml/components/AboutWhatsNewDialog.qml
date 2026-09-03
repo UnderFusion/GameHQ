@@ -258,7 +258,7 @@ FocusScope {
 
     function summaryItems() {
         const result = []
-        if (hasUpdateRelease() && updates.noteBlocks.length > 0) {
+        if (hasUpdateRelease()) {
             for (const block of updates.noteBlocks) {
                 if (block.kind === "heading")
                     continue
@@ -266,15 +266,15 @@ FocusScope {
                 if (result.length === 3)
                     break
             }
-        } else {
-            const sections = app.releaseNotesSections || []
-            for (const section of sections) {
-                const items = section.items || []
-                for (const item of items) {
-                    result.push(item)
-                    if (result.length === 3)
-                        return result
-                }
+            return result
+        }
+        const sections = app.releaseNotesSections || []
+        for (const section of sections) {
+            const items = section.items || []
+            for (const item of items) {
+                result.push(item)
+                if (result.length === 3)
+                    return result
             }
         }
         return result

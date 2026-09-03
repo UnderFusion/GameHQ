@@ -34,6 +34,7 @@ public:
     QString localeName() const { return m_effectiveLanguage; }
     Qt::LayoutDirection layoutDirection() const;
     int translationRevision() const { return m_translationRevision; }
+    const LocaleRegistry *localeRegistry() const { return m_registry; }
     void setQmlRetranslateCallback(std::function<void()> callback);
 
     Q_INVOKABLE QString formatInteger(qint64 value) const;

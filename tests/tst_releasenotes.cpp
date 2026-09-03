@@ -1,7 +1,85 @@
 #include "app/ReleaseNotes.h"
+#include "localization/LocaleRegistry.h"
 
+#include <QCryptographicHash>
+#include <QFile>
+#include <QHash>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QSet>
 #include <QTest>
+
+namespace
+{
+struct BundleFixture
+{
+    LocaleRegistry registry{false};
+    QByteArray index;
+    QHash<QString, QByteArray> bundles;
+
+    bool load(QString *error)
+    {
+        if (!registry.load(QStringLiteral(GAMEHQ_LOCALE_MANIFEST_FILE), error))
+            return false;
+        QFile indexFile(QStringLiteral(GAMEHQ_RELEASE_NOTES_GENERATED_DIR)
+                        + QStringLiteral("/release-notes.index.json"));
+        if (!indexFile.open(QIODevice::ReadOnly)) {
+            *error = indexFile.errorString();
+            return false;
+        }
+        index = indexFile.readAll();
+        const QJsonArray entries = QJsonDocument::fromJson(index).object()
+                                       .value(QStringLiteral("bundles")).toArray();
+        for (const QJsonValue &value : entries) {
+            const QString filename = value.toObject().value(QStringLiteral("filename")).toString();
+            QFile file(QStringLiteral(GAMEHQ_RELEASE_NOTES_GENERATED_DIR)
+                       + QLatin1Char('/') + filename);
+            if (!file.open(QIODevice::ReadOnly)) {
+                *error = file.errorString();
+                return false;
+            }
+            bundles.insert(filename, file.readAll());
+        }
+        return true;
+    }
+
+    ReleaseNotes notes(const QString &locale, QString *error = nullptr) const
+    {
+        return ReleaseNotes::loadVerifiedBundle(
+            index, locale, registry,
+            [this](const QString &filename) { return bundles.value(filename); }, error);
+    }
+
+    void replaceBundle(const QString &locale, const QJsonObject &bundle)
+    {
+        const QString filename = QStringLiteral("release-notes.%1.json").arg(locale);
+        const QByteArray bytes = QJsonDocument(bundle).toJson(QJsonDocument::Indented);
+        bundles[filename] = bytes;
+        QJsonObject indexRoot = QJsonDocument::fromJson(index).object();
+        QJsonArray entries = indexRoot.value(QStringLiteral("bundles")).toArray();
+        for (qsizetype i = 0; i < entries.size(); ++i) {
+            QJsonObject entry = entries.at(i).toObject();
+            if (entry.value(QStringLiteral("locale")).toString() != locale)
+                continue;
+            entry.insert(QStringLiteral("size"), bytes.size());
+            entry.insert(QStringLiteral("sha256"), QString::fromLatin1(
+                QCryptographicHash::hash(bytes, QCryptographicHash::Sha256).toHex()));
+            entries.replace(i, entry);
+        }
+        indexRoot.insert(QStringLiteral("bundles"), entries);
+        index = QJsonDocument(indexRoot).toJson(QJsonDocument::Indented);
+    }
+};
+
+QStringList availableTags(const LocaleRegistry &registry)
+{
+    QStringList result;
+    for (const QVariant &entry : registry.availableLanguages())
+        result.append(entry.toMap().value(QStringLiteral("tag")).toString());
+    return result;
+}
+}
 
 class ReleaseNotesTest : public QObject
 {
@@ -15,6 +93,11 @@ private slots:
     void rejectsInvalidVersion();
     void rejectsDuplicateReleaseVersions();
     void rejectsOversizedDocuments();
+    void loadsEveryCanonicalLocaleBundle();
+    void resolvesAliasesAndReloadsWithoutStaleLocaleState();
+    void fallsBackWhollyForMissingOrInvalidLocalizedBundles();
+    void rejectsWrongBundleIdentitySizeHashAndStructure();
+    void localeDatesAndOfflineHistorySurviveSwitches();
     void structuresGitHubMarkdownWithoutActiveContent();
 };
 
@@ -120,6 +203,167 @@ void ReleaseNotesTest::rejectsOversizedDocuments()
     }
     json += R"(]}]})";
     QVERIFY(!ReleaseNotes::fromJson(json).isValid());
+}
+
+void ReleaseNotesTest::loadsEveryCanonicalLocaleBundle()
+{
+    BundleFixture fixture;
+    QString error;
+    QVERIFY2(fixture.load(&error), qPrintable(error));
+    const QStringList tags = availableTags(fixture.registry);
+    QCOMPARE(tags.size(), 16);
+    for (const QString &tag : tags) {
+        const ReleaseNotes notes = fixture.notes(tag, &error);
+        QVERIFY2(notes.isValid(), qPrintable(tag + QStringLiteral(": ") + error));
+        QCOMPARE(notes.locale(), tag);
+        QCOMPARE(notes.version(), QStringLiteral("0.7.6"));
+        QCOMPARE(notes.releases().size(), 4);
+    }
+}
+
+void ReleaseNotesTest::resolvesAliasesAndReloadsWithoutStaleLocaleState()
+{
+    BundleFixture fixture;
+    QString error;
+    QVERIFY2(fixture.load(&error), qPrintable(error));
+    const QList<QPair<QString, QString>> switches{
+        {QStringLiteral("en-US"), QStringLiteral("en-US")},
+        {QStringLiteral("pl"), QStringLiteral("pl-PL")},
+        {QStringLiteral("zh-TW"), QStringLiteral("zh-Hant")},
+        {QStringLiteral("th"), QStringLiteral("th-TH")},
+        {fixture.registry.resolveSystem({QStringLiteral("de-DE")}), QStringLiteral("de-DE")},
+    };
+    for (const auto &[requested, expected] : switches) {
+        const ReleaseNotes notes = fixture.notes(requested, &error);
+        QVERIFY2(notes.isValid(), qPrintable(error));
+        QCOMPARE(notes.locale(), expected);
+    }
+    QCOMPARE(fixture.notes(QStringLiteral("es-MX")).locale(), QStringLiteral("es-419"));
+    QCOMPARE(fixture.notes(QStringLiteral("pt")).locale(), QStringLiteral("pt-BR"));
+}
+
+void ReleaseNotesTest::fallsBackWhollyForMissingOrInvalidLocalizedBundles()
+{
+    BundleFixture fixture;
+    QString error;
+    QVERIFY2(fixture.load(&error), qPrintable(error));
+    const QVariantList english = fixture.notes(QStringLiteral("en-US")).releases();
+
+    fixture.bundles.remove(QStringLiteral("release-notes.pl-PL.json"));
+    ReleaseNotes fallback = fixture.notes(QStringLiteral("pl-PL"), &error);
+    QVERIFY2(fallback.isValid(), qPrintable(error));
+    QCOMPARE(fallback.locale(), QStringLiteral("en-US"));
+    QCOMPARE(fallback.releases(), english);
+
+    fallback = fixture.notes(QStringLiteral("not-a-locale"), &error);
+    QVERIFY2(fallback.isValid(), qPrintable(error));
+    QCOMPARE(fallback.locale(), QStringLiteral("en-US"));
+    QCOMPARE(fallback.releases(), english);
+}
+
+void ReleaseNotesTest::rejectsWrongBundleIdentitySizeHashAndStructure()
+{
+    BundleFixture original;
+    QString error;
+    QVERIFY2(original.load(&error), qPrintable(error));
+    const QVariantList english = original.notes(QStringLiteral("en-US")).releases();
+    const QString filename = QStringLiteral("release-notes.pl-PL.json");
+
+    BundleFixture wrongSize;
+    QVERIFY2(wrongSize.load(&error), qPrintable(error));
+    QJsonObject sizeIndex = QJsonDocument::fromJson(wrongSize.index).object();
+    QJsonArray sizeEntries = sizeIndex.value(QStringLiteral("bundles")).toArray();
+    for (qsizetype i = 0; i < sizeEntries.size(); ++i) {
+        QJsonObject entry = sizeEntries.at(i).toObject();
+        if (entry.value(QStringLiteral("locale")).toString() == QStringLiteral("pl-PL")) {
+            entry.insert(QStringLiteral("size"), entry.value(QStringLiteral("size")).toInt() + 1);
+            sizeEntries.replace(i, entry);
+        }
+    }
+    sizeIndex.insert(QStringLiteral("bundles"), sizeEntries);
+    wrongSize.index = QJsonDocument(sizeIndex).toJson();
+    QCOMPARE(wrongSize.notes(QStringLiteral("pl-PL"), &error).releases(), english);
+
+    BundleFixture wrongHash;
+    QVERIFY2(wrongHash.load(&error), qPrintable(error));
+    QJsonObject hashIndex = QJsonDocument::fromJson(wrongHash.index).object();
+    QJsonArray hashEntries = hashIndex.value(QStringLiteral("bundles")).toArray();
+    for (qsizetype i = 0; i < hashEntries.size(); ++i) {
+        QJsonObject entry = hashEntries.at(i).toObject();
+        if (entry.value(QStringLiteral("locale")).toString() == QStringLiteral("pl-PL")) {
+            entry.insert(QStringLiteral("sha256"), QString(64, QLatin1Char('0')));
+            hashEntries.replace(i, entry);
+        }
+    }
+    hashIndex.insert(QStringLiteral("bundles"), hashEntries);
+    wrongHash.index = QJsonDocument(hashIndex).toJson();
+    QCOMPARE(wrongHash.notes(QStringLiteral("pl-PL"), &error).releases(), english);
+
+    const auto verifyMutatedBundleFallsBack = [&](auto mutate) {
+        BundleFixture fixture;
+        QVERIFY2(fixture.load(&error), qPrintable(error));
+        QJsonObject bundle = QJsonDocument::fromJson(fixture.bundles.value(filename)).object();
+        mutate(bundle);
+        fixture.replaceBundle(QStringLiteral("pl-PL"), bundle);
+        const ReleaseNotes fallback = fixture.notes(QStringLiteral("pl-PL"), &error);
+        QVERIFY2(fallback.isValid(), qPrintable(error));
+        QCOMPARE(fallback.locale(), QStringLiteral("en-US"));
+        QCOMPARE(fallback.releases(), english);
+    };
+
+    verifyMutatedBundleFallsBack([](QJsonObject &bundle) {
+        QJsonObject metadata = bundle.value(QStringLiteral("_meta")).toObject();
+        metadata.insert(QStringLiteral("schema_version"), 1);
+        bundle.insert(QStringLiteral("_meta"), metadata);
+    });
+    verifyMutatedBundleFallsBack([](QJsonObject &bundle) {
+        bundle.insert(QStringLiteral("version"), QStringLiteral("9.9.9"));
+    });
+    verifyMutatedBundleFallsBack([](QJsonObject &bundle) {
+        QJsonObject metadata = bundle.value(QStringLiteral("_meta")).toObject();
+        metadata.insert(QStringLiteral("requested_locale"), QStringLiteral("de-DE"));
+        bundle.insert(QStringLiteral("_meta"), metadata);
+    });
+    verifyMutatedBundleFallsBack([](QJsonObject &bundle) {
+        QJsonArray sections = bundle.value(QStringLiteral("sections")).toArray();
+        QJsonObject section = sections.first().toObject();
+        section.remove(QStringLiteral("items"));
+        sections.replace(0, section);
+        bundle.insert(QStringLiteral("sections"), sections);
+    });
+    verifyMutatedBundleFallsBack([](QJsonObject &bundle) {
+        QJsonArray sections = bundle.value(QStringLiteral("sections")).toArray();
+        QJsonObject section = sections.first().toObject();
+        QJsonArray items = section.value(QStringLiteral("items")).toArray();
+        items.replace(0, QStringLiteral("CZĘŚCIOWE POLSKIE POLE"));
+        section.insert(QStringLiteral("items"), items);
+        sections.replace(0, section);
+        bundle.insert(QStringLiteral("sections"), sections);
+        QJsonObject metadata = bundle.value(QStringLiteral("_meta")).toObject();
+        QJsonArray documents = metadata.value(QStringLiteral("documents")).toArray();
+        QJsonObject document = documents.first().toObject();
+        document.insert(QStringLiteral("source_integrity"), QStringLiteral("sha256:")
+                        + QString(64, QLatin1Char('0')));
+        documents.replace(0, document);
+        metadata.insert(QStringLiteral("documents"), documents);
+        bundle.insert(QStringLiteral("_meta"), metadata);
+    });
+}
+
+void ReleaseNotesTest::localeDatesAndOfflineHistorySurviveSwitches()
+{
+    BundleFixture fixture;
+    QString error;
+    QVERIFY2(fixture.load(&error), qPrintable(error));
+    QSet<QString> dates;
+    for (const QString &tag : {QStringLiteral("en-US"), QStringLiteral("pl-PL"),
+                               QStringLiteral("zh-Hant"), QStringLiteral("th-TH")}) {
+        const ReleaseNotes notes = fixture.notes(tag, &error);
+        QVERIFY2(notes.isValid(), qPrintable(error));
+        QCOMPARE(notes.releases().size(), 4);
+        dates.insert(notes.releases().first().toMap().value(QStringLiteral("date")).toString());
+    }
+    QVERIFY(dates.size() >= 3);
 }
 
 void ReleaseNotesTest::structuresGitHubMarkdownWithoutActiveContent()

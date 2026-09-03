@@ -27,6 +27,9 @@ class UpdateService : public QObject
     Q_PROPERTY(QString installedVersion READ installedVersion CONSTANT)
     Q_PROPERTY(QString latestVersion READ latestVersion NOTIFY releaseChanged)
     Q_PROPERTY(QString releaseName READ releaseName NOTIFY releaseChanged)
+    // Raw GitHub body text is discovery metadata, not a verified localized
+    // presentation source. Keep these compatibility properties empty so it
+    // cannot bypass the compiled release-note bundle policy.
     Q_PROPERTY(QString notes READ notes NOTIFY releaseChanged)
     Q_PROPERTY(QVariantList noteBlocks READ noteBlocks NOTIFY releaseChanged)
     Q_PROPERTY(QString releaseUrl READ releaseUrl NOTIFY releaseChanged)
@@ -69,7 +72,7 @@ public:
     QString installedVersion() const { return m_installedVersion; }
     QString latestVersion() const { return m_release ? m_release->version : QString(); }
     QString releaseName() const { return m_release ? m_release->name : QString(); }
-    QString notes() const { return m_release ? m_release->notes : QString(); }
+    QString notes() const { return {}; }
     QVariantList noteBlocks() const;
     QString releaseUrl() const { return m_release ? m_release->webUrl : QString(); }
     qint64 size() const { return m_release ? m_release->zipSize : 0; }

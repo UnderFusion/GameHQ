@@ -32,3 +32,7 @@ Verify byte-for-byte freshness without writing:
 ```powershell
 python tools/i18n/generate_release_notes.py --check
 ```
+
+Generation also writes `generated/release-notes.index.json`. The application
+uses its exact locale filenames, byte sizes, SHA-256 hashes, current version,
+and per-document source integrity before presenting any bundle.

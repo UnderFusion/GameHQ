@@ -375,15 +375,46 @@ def build_bundle(
 def generate_all(source_root: Path, output_root: Path, check: bool = False) -> None:
     _, locales, releases = load_contract(source_root)
     strict_validate_locales(source_root, locales, releases)
+    bundle_records: list[dict[str, Any]] = []
     for locale in locales:
-        path = output_root / f"release-notes.{locale}.json"
+        filename = f"release-notes.{locale}.json"
+        path = output_root / filename
         expected = json_bytes(build_bundle(source_root, locale, locales, releases))
+        bundle_records.append({
+            "locale": locale,
+            "filename": filename,
+            "size": len(expected),
+            "sha256": hashlib.sha256(expected).hexdigest(),
+        })
         if check:
             if not path.is_file() or path.read_bytes() != expected:
                 fail(f"{path}: generated release-note bundle is stale")
         else:
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(expected)
+    index = {
+        "schema_version": SCHEMA_VERSION,
+        "source_locale": "en-US",
+        "current_version": releases[0][0]["version"],
+        "history_limit": MAX_HISTORY,
+        "documents": [
+            {
+                "version": release["version"],
+                "date": release["date"],
+                "source_integrity": release["source_integrity"],
+            }
+            for release, _ in releases
+        ],
+        "bundles": bundle_records,
+    }
+    index_path = output_root / "release-notes.index.json"
+    expected_index = json_bytes(index)
+    if check:
+        if not index_path.is_file() or index_path.read_bytes() != expected_index:
+            fail(f"{index_path}: generated release-note index is stale")
+    else:
+        index_path.parent.mkdir(parents=True, exist_ok=True)
+        index_path.write_bytes(expected_index)
 
 
 def slug(value: str) -> str:

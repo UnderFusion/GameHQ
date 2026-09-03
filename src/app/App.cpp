@@ -176,7 +176,8 @@ bool App::init()
     m_overlayGallery = std::make_unique<GalleryModel>(m_db.get());
     m_controller = std::make_unique<AppController>(m_db.get(), m_scanner.get(),
                                                    m_gallery.get(), m_overlayGallery.get(),
-                                                   m_config.get(), m_locations.get(), m_startup.get());
+                                                   m_config.get(), m_locations.get(), m_startup.get(),
+                                                   m_languageManager.get());
     connect(m_languageManager.get(), &LanguageManager::retranslationRequested,
             m_controller.get(), &AppController::retranslate);
     connect(m_languageManager.get(), &LanguageManager::retranslationRequested,

@@ -10,6 +10,7 @@
 #include "diagnostics/Logger.h"
 #include "input/InputDiagnostics.h"
 #include "localization/NativeText.h"
+#include "localization/LanguageManager.h"
 #include "storage/CaptureDatabase.h"
 #include "storage/CaptureScanner.h"
 #include "ui/CaptureLibraryService.h"
@@ -64,7 +65,7 @@ bool isReplayBufferParamKey(const QString& key)
 AppController::AppController(CaptureDatabase* db, CaptureScanner* scanner,
                              GalleryModel* gallery, GalleryModel* overlayGallery,
                              ConfigManager* config, CaptureLocations* locations,
-                             StartupManager* startup,
+                             StartupManager* startup, LanguageManager* languageManager,
                              QObject* parent)
     : QObject(parent)
     , m_db(db)
@@ -74,11 +75,18 @@ AppController::AppController(CaptureDatabase* db, CaptureScanner* scanner,
     , m_config(config)
     , m_locations(locations)
     , m_startup(startup)
+    , m_languageManager(languageManager)
     , m_captureLibrary(std::make_unique<CaptureLibraryService>(db, gallery, overlayGallery))
     , m_currentGame(std::make_unique<CurrentGameService>(db))
     , m_settings(std::make_unique<SettingsRouter>(startup, locations))
-    , m_releaseNotes(ReleaseNotes::loadBundled())
 {
+    Q_ASSERT(m_languageManager);
+    QString releaseNotesError;
+    m_releaseNotes = ReleaseNotes::loadBundled(
+        m_languageManager->effectiveLanguage(), *m_languageManager->localeRegistry(),
+        &releaseNotesError);
+    if (!releaseNotesError.isEmpty())
+        qWarning() << "Release notes:" << releaseNotesError;
     connect(m_config, &ConfigManager::valueChanged,
             this, &AppController::configChanged);
     connect(m_config, &ConfigManager::groupReset,
@@ -106,7 +114,11 @@ QString AppController::releaseNotesTitle() const
 
 void AppController::retranslate()
 {
-    m_releaseNotes = ReleaseNotes::loadBundled();
+    QString error;
+    m_releaseNotes = ReleaseNotes::loadBundled(
+        m_languageManager->effectiveLanguage(), *m_languageManager->localeRegistry(), &error);
+    if (!error.isEmpty())
+        qWarning() << "Release notes:" << error;
     emit translationsChanged();
 }
 

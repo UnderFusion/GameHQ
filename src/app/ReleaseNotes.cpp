@@ -1,5 +1,7 @@
 #include "app/ReleaseNotes.h"
+#include "localization/LocaleRegistry.h"
 
+#include <QCryptographicHash>
 #include <QDate>
 #include <QDebug>
 #include <QFile>
@@ -10,6 +12,7 @@
 #include <QRegularExpression>
 #include <QSet>
 #include <QVariantMap>
+#include <optional>
 
 namespace
 {
@@ -21,11 +24,232 @@ constexpr int kMaxItemLength = 1200;
 constexpr int kMaxMarkdownLength = 64 * 1024;
 constexpr int kMaxMarkdownBlocks = 128;
 constexpr int kMaxMarkdownBlockLength = 2000;
+constexpr int kBundleSchemaVersion = 2;
+constexpr int kExpectedProductionLocales = 16;
+
+struct BundleEntry
+{
+    QString locale;
+    QString filename;
+    qint64 size = 0;
+    QByteArray sha256;
+};
+
+struct DocumentEntry
+{
+    QString version;
+    QString date;
+    QString sourceIntegrity;
+};
+
+struct BundleIndex
+{
+    QString sourceLocale;
+    QString currentVersion;
+    QList<DocumentEntry> documents;
+    QList<BundleEntry> bundles;
+};
 
 void setError(QString* error, const QString& value)
 {
     if (error)
         *error = value;
+}
+
+bool exactKeys(const QJsonObject &object, std::initializer_list<QString> keys)
+{
+    if (object.size() != static_cast<qsizetype>(keys.size()))
+        return false;
+    for (const QString &key : keys) {
+        if (!object.contains(key))
+            return false;
+    }
+    return true;
+}
+
+bool validVersion(const QString &value)
+{
+    static const QRegularExpression pattern(QStringLiteral(R"(^\d+\.\d+\.\d+$)"));
+    return pattern.match(value).hasMatch();
+}
+
+bool validIsoDate(const QString &value)
+{
+    static const QRegularExpression pattern(QStringLiteral(R"(^\d{4}-\d{2}-\d{2}$)"));
+    return pattern.match(value).hasMatch() && QDate::fromString(value, Qt::ISODate).isValid();
+}
+
+bool validSourceIntegrity(const QString &value)
+{
+    static const QRegularExpression pattern(QStringLiteral(R"(^sha256:[0-9a-f]{64}$)"));
+    return pattern.match(value).hasMatch();
+}
+
+std::optional<BundleIndex> parseBundleIndex(const QByteArray &json,
+                                            const LocaleRegistry &registry,
+                                            QString *error)
+{
+    QJsonParseError parseError{};
+    const QJsonDocument parsed = QJsonDocument::fromJson(json, &parseError);
+    if (parseError.error != QJsonParseError::NoError || !parsed.isObject()) {
+        setError(error, QStringLiteral("Release-note bundle index is invalid JSON."));
+        return std::nullopt;
+    }
+    const QJsonObject root = parsed.object();
+    if (!exactKeys(root, {QStringLiteral("schema_version"),
+                          QStringLiteral("source_locale"),
+                          QStringLiteral("current_version"),
+                          QStringLiteral("history_limit"),
+                          QStringLiteral("documents"),
+                          QStringLiteral("bundles")})
+        || root.value(QStringLiteral("schema_version")).toInt(-1) != kBundleSchemaVersion
+        || root.value(QStringLiteral("source_locale")).toString() != registry.sourceLanguage()
+        || !validVersion(root.value(QStringLiteral("current_version")).toString())
+        || root.value(QStringLiteral("history_limit")).toInt(-1) != kMaxHistoricalReleases
+        || !root.value(QStringLiteral("documents")).isArray()
+        || !root.value(QStringLiteral("bundles")).isArray()) {
+        setError(error, QStringLiteral("Release-note bundle index metadata is invalid."));
+        return std::nullopt;
+    }
+
+    BundleIndex result;
+    result.sourceLocale = root.value(QStringLiteral("source_locale")).toString();
+    result.currentVersion = root.value(QStringLiteral("current_version")).toString();
+    QSet<QString> versions;
+    for (const QJsonValue &value : root.value(QStringLiteral("documents")).toArray()) {
+        if (!value.isObject()) {
+            setError(error, QStringLiteral("Release-note document index is malformed."));
+            return std::nullopt;
+        }
+        const QJsonObject object = value.toObject();
+        const QString version = object.value(QStringLiteral("version")).toString();
+        const QString date = object.value(QStringLiteral("date")).toString();
+        const QString integrity = object.value(QStringLiteral("source_integrity")).toString();
+        if (!exactKeys(object, {QStringLiteral("version"), QStringLiteral("date"),
+                                QStringLiteral("source_integrity")})
+            || !validVersion(version) || !validIsoDate(date)
+            || !validSourceIntegrity(integrity) || versions.contains(version)) {
+            setError(error, QStringLiteral("Release-note document index is malformed."));
+            return std::nullopt;
+        }
+        versions.insert(version);
+        result.documents.append({version, date, integrity});
+    }
+    if (result.documents.isEmpty()
+        || result.documents.size() > kMaxHistoricalReleases + 1
+        || result.documents.first().version != result.currentVersion) {
+        setError(error, QStringLiteral("Release-note document order or history limit is invalid."));
+        return std::nullopt;
+    }
+
+    QSet<QString> locales;
+    for (const QJsonValue &value : root.value(QStringLiteral("bundles")).toArray()) {
+        if (!value.isObject()) {
+            setError(error, QStringLiteral("Release-note bundle record is malformed."));
+            return std::nullopt;
+        }
+        const QJsonObject object = value.toObject();
+        const QString locale = object.value(QStringLiteral("locale")).toString();
+        const QString filename = object.value(QStringLiteral("filename")).toString();
+        const QString hash = object.value(QStringLiteral("sha256")).toString();
+        const qint64 size = object.value(QStringLiteral("size")).toInteger(-1);
+        const QString canonical = registry.canonicalTag(locale);
+        if (!exactKeys(object, {QStringLiteral("locale"), QStringLiteral("filename"),
+                                QStringLiteral("size"), QStringLiteral("sha256")})
+            || canonical != locale || !registry.isAvailable(locale)
+            || locale == QStringLiteral("en-XA") || locale == QStringLiteral("ar-XB")
+            || locales.contains(locale)
+            || filename != QStringLiteral("release-notes.%1.json").arg(locale)
+            || size <= 0 || size > 1024 * 1024
+            || !QRegularExpression(QStringLiteral(R"(^[0-9a-f]{64}$)"))
+                    .match(hash).hasMatch()) {
+            setError(error, QStringLiteral("Release-note bundle record is malformed."));
+            return std::nullopt;
+        }
+        locales.insert(locale);
+        result.bundles.append({locale, filename, size, hash.toLatin1()});
+    }
+    if (result.bundles.size() != kExpectedProductionLocales
+        || !locales.contains(result.sourceLocale)) {
+        setError(error, QStringLiteral("Release-note index must cover sixteen production locales."));
+        return std::nullopt;
+    }
+    return result;
+}
+
+const BundleEntry *findBundle(const BundleIndex &index, const QString &locale)
+{
+    for (const BundleEntry &entry : index.bundles) {
+        if (entry.locale == locale)
+            return &entry;
+    }
+    return nullptr;
+}
+
+bool validateBundleMetadata(const QJsonObject &root, const QString &locale,
+                            const BundleIndex &index, const ReleaseNotes &notes,
+                            QString *error)
+{
+    const QJsonObject metadata = root.value(QStringLiteral("_meta")).toObject();
+    if (!exactKeys(metadata, {QStringLiteral("schema_version"),
+                              QStringLiteral("requested_locale"),
+                              QStringLiteral("source_locale"),
+                              QStringLiteral("documents")})
+        || metadata.value(QStringLiteral("schema_version")).toInt(-1) != kBundleSchemaVersion
+        || metadata.value(QStringLiteral("requested_locale")).toString() != locale
+        || metadata.value(QStringLiteral("source_locale")).toString() != index.sourceLocale
+        || !metadata.value(QStringLiteral("documents")).isArray()
+        || notes.version() != index.currentVersion) {
+        setError(error, QStringLiteral("Release-note bundle identity metadata is invalid."));
+        return false;
+    }
+
+    QList<QJsonObject> releases{root};
+    const QJsonValue historyValue = root.value(QStringLiteral("history"));
+    if (!historyValue.isArray()) {
+        setError(error, QStringLiteral("Release-note bundle history is missing."));
+        return false;
+    }
+    for (const QJsonValue &value : historyValue.toArray()) {
+        if (!value.isObject()) {
+            setError(error, QStringLiteral("Release-note bundle history is malformed."));
+            return false;
+        }
+        releases.append(value.toObject());
+    }
+    const QJsonArray documentMetadata = metadata.value(QStringLiteral("documents")).toArray();
+    if (releases.size() != index.documents.size()
+        || documentMetadata.size() != index.documents.size()
+        || notes.releases().size() != index.documents.size()) {
+        setError(error, QStringLiteral("Release-note bundle structure does not match its index."));
+        return false;
+    }
+    for (qsizetype i = 0; i < index.documents.size(); ++i) {
+        const DocumentEntry &expected = index.documents.at(i);
+        const QJsonObject release = releases.at(i);
+        const QJsonObject document = documentMetadata.at(i).toObject();
+        const QString resolvedLocale = document.value(QStringLiteral("resolved_locale")).toString();
+        const bool fallback = document.value(QStringLiteral("fallback")).toBool();
+        const QJsonValue fallbackReason = document.value(QStringLiteral("fallback_reason"));
+        if (!exactKeys(document, {QStringLiteral("version"),
+                                  QStringLiteral("source_integrity"),
+                                  QStringLiteral("resolved_locale"),
+                                  QStringLiteral("fallback"),
+                                  QStringLiteral("fallback_reason")})
+            || release.value(QStringLiteral("version")).toString() != expected.version
+            || release.value(QStringLiteral("date")).toString() != expected.date
+            || document.value(QStringLiteral("version")).toString() != expected.version
+            || document.value(QStringLiteral("source_integrity")).toString()
+                != expected.sourceIntegrity
+            || (resolvedLocale != locale && resolvedLocale != index.sourceLocale)
+            || fallback != (resolvedLocale != locale)
+            || (fallback && !fallbackReason.isString())
+            || (!fallback && !fallbackReason.isNull())) {
+            setError(error, QStringLiteral("Release-note bundle document integrity is invalid."));
+            return false;
+        }
+    }
+    return true;
 }
 
 bool parseSections(const QJsonValue& sectionsValue, QVariantList* parsedSections,
@@ -214,6 +438,7 @@ ReleaseNotes ReleaseNotes::fromJson(const QByteArray& json, const QLocale& local
     }
 
     result.m_version = currentRelease.value(QStringLiteral("version")).toString();
+    result.m_locale = locale.bcp47Name();
     result.m_sections = currentRelease.value(QStringLiteral("sections")).toList();
     result.m_releases = releases;
     setError(error, {});
@@ -233,6 +458,100 @@ ReleaseNotes ReleaseNotes::loadBundled()
     if (!notes.isValid())
         qWarning("Could not parse bundled release notes: %s", qPrintable(error));
     return notes;
+}
+
+ReleaseNotes ReleaseNotes::loadBundled(const QString &requestedLocale,
+                                       const LocaleRegistry &registry,
+                                       QString *error)
+{
+    QFile indexFile(QStringLiteral(":/release-notes/generated/release-notes.index.json"));
+    if (!indexFile.open(QIODevice::ReadOnly)) {
+        setError(error, QStringLiteral("Could not open the release-note bundle index."));
+        return {};
+    }
+    const BundleReader reader = [](const QString &filename) {
+        QFile file(QStringLiteral(":/release-notes/generated/%1").arg(filename));
+        return file.open(QIODevice::ReadOnly) ? file.readAll() : QByteArray{};
+    };
+    return loadVerifiedBundle(indexFile.readAll(), requestedLocale, registry, reader, error);
+}
+
+ReleaseNotes ReleaseNotes::loadVerifiedBundle(const QByteArray &indexJson,
+                                              const QString &requestedLocale,
+                                              const LocaleRegistry &registry,
+                                              const BundleReader &reader,
+                                              QString *error)
+{
+    QString indexError;
+    const std::optional<BundleIndex> index = parseBundleIndex(indexJson, registry, &indexError);
+    if (!index) {
+        setError(error, indexError);
+        return {};
+    }
+    QString canonical = registry.resolveAvailable(requestedLocale);
+    if (canonical.isEmpty())
+        canonical = index->sourceLocale;
+
+    const auto load = [&](const QString &locale, QString *loadError) -> ReleaseNotes {
+        ReleaseNotes result;
+        const BundleEntry *entry = findBundle(*index, locale);
+        if (!entry) {
+            setError(loadError, QStringLiteral("Release-note bundle is not indexed for %1.")
+                                    .arg(locale));
+            return result;
+        }
+        const QByteArray data = reader(entry->filename);
+        if (data.size() != entry->size) {
+            setError(loadError, QStringLiteral("Release-note bundle size mismatch for %1.")
+                                    .arg(locale));
+            return result;
+        }
+        const QByteArray actualHash = QCryptographicHash::hash(
+            data, QCryptographicHash::Sha256).toHex();
+        if (actualHash != entry->sha256) {
+            setError(loadError, QStringLiteral("Release-note bundle hash mismatch for %1.")
+                                    .arg(locale));
+            return result;
+        }
+
+        QJsonParseError parseError{};
+        const QJsonDocument parsed = QJsonDocument::fromJson(data, &parseError);
+        if (parseError.error != QJsonParseError::NoError || !parsed.isObject()) {
+            setError(loadError, QStringLiteral("Release-note bundle JSON is invalid for %1.")
+                                    .arg(locale));
+            return result;
+        }
+        result = fromJson(data, QLocale(locale), loadError);
+        if (!result.isValid()
+            || !validateBundleMetadata(parsed.object(), locale, *index, result, loadError)) {
+            return {};
+        }
+        result.m_locale = locale;
+        setError(loadError, {});
+        return result;
+    };
+
+    QString localizedError;
+    ReleaseNotes localized = load(canonical, &localizedError);
+    if (localized.isValid()) {
+        setError(error, {});
+        return localized;
+    }
+    if (canonical == index->sourceLocale) {
+        setError(error, localizedError);
+        return {};
+    }
+
+    QString fallbackError;
+    ReleaseNotes fallback = load(index->sourceLocale, &fallbackError);
+    if (!fallback.isValid()) {
+        setError(error, QStringLiteral("%1 English fallback also failed: %2")
+                            .arg(localizedError, fallbackError));
+        return {};
+    }
+    setError(error, QStringLiteral("%1 Loaded complete en-US fallback.")
+                        .arg(localizedError));
+    return fallback;
 }
 
 QVariantList ReleaseNotes::blocksFromMarkdown(const QString& markdown)

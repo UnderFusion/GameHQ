@@ -273,6 +273,30 @@ qt_add_resources(GameHQ "release_notes"
     FILES "${CMAKE_SOURCE_DIR}/assets/release-notes.json"
 )
 
+set(GAMEHQ_LOCALIZED_RELEASE_NOTES
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.index.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.de-DE.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.en-US.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.es-419.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.es-ES.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.fr-FR.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.it-IT.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.ja-JP.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.ko-KR.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.pl-PL.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.pt-BR.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.ru-RU.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.th-TH.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.tr-TR.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.uk-UA.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.zh-Hans.json"
+    "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.zh-Hant.json")
+qt_add_resources(GameHQ "localized_release_notes"
+    PREFIX "/release-notes/generated"
+    BASE "${CMAKE_SOURCE_DIR}/assets/release-notes/generated"
+    FILES ${GAMEHQ_LOCALIZED_RELEASE_NOTES}
+)
+
 target_include_directories(GameHQ PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_BINARY_DIR}/generated

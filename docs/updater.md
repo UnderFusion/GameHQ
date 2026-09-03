@@ -180,9 +180,15 @@ identical after any update, successful or rolled back.
    restores the backup and restarts the previous version.
 7. **Post-update greeting** — when the desktop window next becomes active, the
    user sees the About / What's New modal once. Current-version notes come from
-   bundled `assets/release-notes.json`, work offline, and are marked read through
+   the integrity-checked locale bundle indexed under
+   `assets/release-notes/generated/`, work offline, and are marked read through
    `internal.ui.whats_new_seen_version` when the modal closes. The modal is never
-   created in the game overlay.
+   created in the game overlay. The effective application locale selects the
+   complete bundle and a missing or invalid localized bundle falls back wholly
+   to verified `en-US`; fields are never mixed. GitHub release-body Markdown is
+   discovery metadata and is not rendered as trusted localized notes. Release
+   notes are presentation-only: signed manifest and artifact evidence remain
+   the sole inputs to download and installation authorization.
 
 ## Implementation stages
 

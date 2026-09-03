@@ -58,7 +58,8 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
                 {path.stem for path in version_root.glob("*.json")},
             )
         self.assertEqual(
-            {f"release-notes.{locale}.json" for locale in self.locales},
+            {f"release-notes.{locale}.json" for locale in self.locales}
+            | {"release-notes.index.json"},
             {path.name for path in OUTPUT_ROOT.glob("*.json")},
         )
 

@@ -13,6 +13,7 @@ class CaptureLibraryService;
 class CaptureLocations;
 class ConfigManager;
 class CurrentGameService;
+class LanguageManager;
 class ScreenshotService;
 class SettingsRouter;
 class StartupManager;
@@ -27,6 +28,7 @@ class AppController : public QObject
     Q_PROPERTY(QString version READ version CONSTANT)
     Q_PROPERTY(QString releaseNotesTitle READ releaseNotesTitle NOTIFY translationsChanged)
     Q_PROPERTY(QString releaseNotesVersion READ releaseNotesVersion NOTIFY translationsChanged)
+    Q_PROPERTY(QString releaseNotesLocale READ releaseNotesLocale NOTIFY translationsChanged)
     Q_PROPERTY(QVariantList releaseNotesSections READ releaseNotesSections NOTIFY translationsChanged)
     Q_PROPERTY(QVariantList releaseNotesReleases READ releaseNotesReleases NOTIFY translationsChanged)
     Q_PROPERTY(QVariantList games READ games NOTIFY gamesChanged)
@@ -56,7 +58,7 @@ public:
     AppController(CaptureDatabase* db, CaptureScanner* scanner,
                   GalleryModel* gallery, GalleryModel* overlayGallery,
                   ConfigManager* config, CaptureLocations* locations,
-                  StartupManager* startup,
+                  StartupManager* startup, LanguageManager* languageManager,
                   QObject* parent = nullptr);
     ~AppController() override;
 
@@ -64,6 +66,7 @@ public:
     QString version() const;
     QString releaseNotesTitle() const;
     QString releaseNotesVersion() const { return m_releaseNotes.version(); }
+    QString releaseNotesLocale() const { return m_releaseNotes.locale(); }
     QVariantList releaseNotesSections() const { return m_releaseNotes.sections(); }
     QVariantList releaseNotesReleases() const { return m_releaseNotes.releases(); }
     QVariantList games() const;
@@ -192,6 +195,7 @@ private:
     ConfigManager* m_config;
     CaptureLocations* m_locations;
     StartupManager* m_startup;
+    LanguageManager* m_languageManager;
     ScreenshotService* m_screenshots = nullptr;   // owned by App; set post-construction
     std::unique_ptr<CaptureLibraryService> m_captureLibrary;
     std::unique_ptr<CurrentGameService> m_currentGame;
