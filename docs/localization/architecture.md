@@ -71,16 +71,17 @@ Each entry carries: BCP-47 `tag`, native and English `names`, `aliases`, `tier`,
 mapping, and a `completeness_policy`. The `aliases` map resolves any detected system tag to
 its canonical locale.
 
-Tiers (owner-approved, `p1-2`):
+Launch portfolio (owner-approved, `p1-2`):
 
-- **Tier 1** (launch, 12): `en-US`, `zh-Hans`, `ru-RU`, `es-ES`, `pt-BR`, `de-DE`, `ja-JP`,
-  `fr-FR`, `pl-PL`, `ko-KR`, `zh-Hant`, `tr-TR`.
-- **Tier 2** (follow-up, 4): `th-TH`, `es-419`, `uk-UA`, `it-IT`.
-- **Reserve**: `cs-CZ` is the first reserve; further additions are community-demand driven,
-  never global-population-only (GameHQ is a Windows PC-gaming utility).
+- **Production launch locales** (16): `en-US`, `zh-Hans`, `ru-RU`, `es-ES`, `pt-BR`,
+  `de-DE`, `ja-JP`, `fr-FR`, `pl-PL`, `ko-KR`, `zh-Hant`, `tr-TR`, `th-TH`, `es-419`,
+  `uk-UA`, and `it-IT`.
+- **Reserve**: `cs-CZ` is the first reserve; further additions require an explicit owner
+  decision and acceptance scope.
 
-The portfolio is a Steam-hardware-survey proxy, not measured GameHQ usage, so tiers are
-data-driven and revision requires no code branching—editing the registry is enough.
+The `tier: 1` registry value means launch-required. `tier: 2` is retained only as a schema
+slot for future owner-approved expansion and has no current locale. Portfolio revisions
+require no code branching because runtime and build mappings derive from the registry.
 
 **RTL**: Arabic and Hebrew are not ordinary add-on locales. Build direction metadata and the
 `ar-XB` RTL pseudo-locale now; enable either language only after a dedicated RTL production
@@ -91,8 +92,9 @@ in a generated development registry only (see section 8).
 
 - **`en-US` is the canonical source language and the final fallback.** Every active public
   `gamehq.*` ID must have a complete, embedded `en-US` entry. This is release-fail-closed.
-- Aliases: `zh-CN`/`zh-SG`/`zh` → `zh-Hans`; `zh-TW`/`zh-HK` → `zh-Hant`; `es-MX`/`es-AR`/
-  `es-CL` → `es-419`; generic `en` → `en-US`. Unknown or empty tags resolve to `en-US`.
+- Aliases: `zh-CN`/`zh-SG`/`zh` → `zh-Hans`; `zh-TW`/`zh-HK` → `zh-Hant`; regional
+  Latin American Spanish tags → `es-419`; generic `en` → `en-US`. Unknown or empty tags
+  resolve to `en-US`.
 - **Fallback is whole-message or whole-document, never field-level mixing.** A message is
   either fully present in the active locale or fully inherited from its fallback chain; a
   partially-translated message is treated as missing and inherits entirely.
@@ -141,8 +143,8 @@ finished `.ts`/`.qm` entry alone is never trusted to prove the source is unchang
 Release validation fails the build when any of these is true:
 
 - `en-US` catalog is missing any active public `gamehq.*` ID (raw-ID escape gate).
-- Any enabled production locale (Tier 1, and Tier 2 once enabled) is below **100% non-obsolete,
-  non-stale** coverage of active IDs.
+- Any of the sixteen enabled production locales is below **100% non-obsolete, non-stale**
+  coverage of active IDs.
 - Any entry breaks placeholder parity, plural-form validity, markup parity, or UTF-8 validity.
 - Any protected/do-not-translate token was altered.
 - Any raw `gamehq.*` ID can reach a user-facing surface at runtime.

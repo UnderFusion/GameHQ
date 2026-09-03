@@ -570,6 +570,11 @@ qt_add_translations(tst_localizationcatalog
     TS_FILES
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_test_en_US.ts"
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_test_pl_PL.ts"
+        "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_en_US.ts"
+        "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_th_TH.ts"
+        "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_es_419.ts"
+        "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_uk_UA.ts"
+        "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_it_IT.ts"
     RESOURCE_PREFIX "/i18n"
     LUPDATE_OPTIONS -no-obsolete
     LRELEASE_OPTIONS -idbased
@@ -582,6 +587,13 @@ add_test(NAME tst_auxiliarysurfaceaudit
             "${CMAKE_SOURCE_DIR}/tools/i18n/test_auxiliary_surfaces.py")
 set_tests_properties(tst_auxiliarysurfaceaudit PROPERTIES TIMEOUT 30)
 
+# t4 / LANG-04J: the production registry, synchronized fallback catalogs,
+# generated state, resources, aliases, and pseudo-locale boundary stay aligned.
+add_test(NAME tst_launchportfolio
+    COMMAND "${Python3_EXECUTABLE}"
+            "${CMAKE_SOURCE_DIR}/tools/i18n/test_launch_portfolio.py")
+set_tests_properties(tst_launchportfolio PROPERTIES TIMEOUT 30)
+
 gamehq_add_test(tst_languagemanager
     tst_languagemanager.cpp
     "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp"
@@ -593,6 +605,11 @@ qt_add_translations(tst_languagemanager
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_de_DE.ts"
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_pl_PL.ts"
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_zh_Hans.ts"
+        "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_en_US.ts"
+        "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_th_TH.ts"
+        "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_es_419.ts"
+        "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_uk_UA.ts"
+        "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_it_IT.ts"
     RESOURCE_PREFIX "/i18n"
     LUPDATE_OPTIONS -no-obsolete
     LRELEASE_OPTIONS -idbased

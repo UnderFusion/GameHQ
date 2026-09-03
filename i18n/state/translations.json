@@ -28311,8 +28311,8 @@
     },
     "es-419": {
       "catalog": "i18n/app/gamehq_es_419.ts",
-      "catalog_present": false,
-      "enabled": false,
+      "catalog_present": true,
+      "enabled": true,
       "messages": {
         "gamehq.about.enjoying_gamehq": {
           "domain": "application",
@@ -56621,8 +56621,8 @@
     },
     "it-IT": {
       "catalog": "i18n/app/gamehq_it_IT.ts",
-      "catalog_present": false,
-      "enabled": false,
+      "catalog_present": true,
+      "enabled": true,
       "messages": {
         "gamehq.about.enjoying_gamehq": {
           "domain": "application",
@@ -112414,8 +112414,8 @@
     },
     "th-TH": {
       "catalog": "i18n/app/gamehq_th_TH.ts",
-      "catalog_present": false,
-      "enabled": false,
+      "catalog_present": true,
+      "enabled": true,
       "messages": {
         "gamehq.about.enjoying_gamehq": {
           "domain": "application",
@@ -131563,8 +131563,8 @@
     },
     "uk-UA": {
       "catalog": "i18n/app/gamehq_uk_UA.ts",
-      "catalog_present": false,
-      "enabled": false,
+      "catalog_present": true,
+      "enabled": true,
       "messages": {
         "gamehq.about.enjoying_gamehq": {
           "domain": "application",

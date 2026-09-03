@@ -38,6 +38,7 @@ class LanguageManagerTest : public QObject
 
 private slots:
     void productionManifestIsValid();
+    void promotedLaunchLocalesSwitchWithEnglishFallback();
     void aliasesAndFallbacksResolveDeterministically();
     void malformedAndInconsistentManifestsAreRejected();
     void systemAndExplicitLanguagesLoadCatalogs();
@@ -55,10 +56,15 @@ void LanguageManagerTest::productionManifestIsValid()
     QVERIFY2(registry.load(QStringLiteral(":/i18n/locales.json"), &error), qPrintable(error));
     QCOMPARE(registry.sourceLanguage(), QStringLiteral("en-US"));
     const QStringList tags = availableTags(registry);
-    QCOMPARE(tags.size(), 12);
+    QCOMPARE(tags.size(), 16);
     QVERIFY(tags.contains(QStringLiteral("en-US")));
     QVERIFY(tags.contains(QStringLiteral("pl-PL")));
-    QVERIFY(!tags.contains(QStringLiteral("th-TH")));
+    QVERIFY(tags.contains(QStringLiteral("th-TH")));
+    QVERIFY(tags.contains(QStringLiteral("es-419")));
+    QVERIFY(tags.contains(QStringLiteral("uk-UA")));
+    QVERIFY(tags.contains(QStringLiteral("it-IT")));
+    QCOMPARE(registry.canonicalTag(QStringLiteral("es-MX")), QStringLiteral("es-419"));
+    QCOMPARE(registry.canonicalTag(QStringLiteral("es-CO")), QStringLiteral("es-419"));
     QVERIFY(!tags.contains(QStringLiteral("cs-CZ")));
     QVERIFY(!tags.contains(QStringLiteral("en-XA")));
     QVERIFY(!tags.contains(QStringLiteral("ar-XB")));
@@ -66,6 +72,24 @@ void LanguageManagerTest::productionManifestIsValid()
     QVERIFY(registry.catalogName(QStringLiteral("ar-XB")).isEmpty());
     QCOMPARE(registry.resolveAvailable(QStringLiteral("en-XA")), QStringLiteral("en-US"));
     QCOMPARE(registry.resolveAvailable(QStringLiteral("ar-XB")), QStringLiteral("en-US"));
+}
+
+void LanguageManagerTest::promotedLaunchLocalesSwitchWithEnglishFallback()
+{
+    LocaleRegistry registry(false);
+    QString error;
+    QVERIFY2(registry.load(QStringLiteral(":/i18n/locales.json"), &error), qPrintable(error));
+    LanguageManager manager(&registry);
+    QVERIFY2(manager.initialize(QStringLiteral("en-US"), {}, &error), qPrintable(error));
+
+    for (const QString& tag : {QStringLiteral("th-TH"), QStringLiteral("es-419"),
+                               QStringLiteral("uk-UA"), QStringLiteral("it-IT")}) {
+        manager.setRequestedLanguage(tag);
+        QCOMPARE(manager.requestedLanguage(), tag);
+        QCOMPARE(manager.effectiveLanguage(), tag);
+        QCOMPARE(QLocale().name().replace(QLatin1Char('_'), QLatin1Char('-')), tag);
+        QCOMPARE(qtTrId("gamehq.action.save"), QStringLiteral("Save"));
+    }
 }
 
 void LanguageManagerTest::aliasesAndFallbacksResolveDeterministically()

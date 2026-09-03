@@ -151,7 +151,7 @@ QStringList p4FourSourceFiles()
     };
 }
 
-QStringList launchCatalogs()
+QStringList translatedCatalogs()
 {
     return {
         QStringLiteral("gamehq_en_US.ts"), QStringLiteral("gamehq_zh_Hans.ts"),
@@ -160,6 +160,14 @@ QStringList launchCatalogs()
         QStringLiteral("gamehq_ja_JP.ts"), QStringLiteral("gamehq_fr_FR.ts"),
         QStringLiteral("gamehq_pl_PL.ts"), QStringLiteral("gamehq_ko_KR.ts"),
         QStringLiteral("gamehq_zh_Hant.ts"), QStringLiteral("gamehq_tr_TR.ts"),
+    };
+}
+
+QStringList promotedLaunchCatalogs()
+{
+    return {
+        QStringLiteral("gamehq_th_TH.ts"), QStringLiteral("gamehq_es_419.ts"),
+        QStringLiteral("gamehq_uk_UA.ts"), QStringLiteral("gamehq_it_IT.ts"),
     };
 }
 
@@ -211,6 +219,7 @@ private slots:
     void targetMissFallsBackToEnglish();
     void publicIdsNeverReachTheRenderedText();
     void languageSelectorUsesRegistryAndAtomicManagerPath();
+    void promotedLaunchCatalogsAreSynchronizedAndFallBackToEnglish();
     void migratedP4OneIdsCoverEveryLaunchLocale();
     void migratedP4OneFilesHaveNoHardcodedUserText();
     void migratedProductionQmlIdsCoverEveryLaunchLocale();
@@ -291,13 +300,52 @@ void LocalizationCatalogTest::languageSelectorUsesRegistryAndAtomicManagerPath()
     QVERIFY(comboSource.contains(QStringLiteral("onDefaultValueChanged: refresh()")));
 }
 
+void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndFallBackToEnglish()
+{
+    QString error;
+    const auto english = readTsCatalog(
+        QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/gamehq_en_US.ts"), &error);
+    QVERIFY2(error.isEmpty(), qPrintable(error));
+    const QSet<QString> activeIds = activeProductionIds();
+
+    for (const QString& catalogName : promotedLaunchCatalogs()) {
+        const auto catalog = readTsCatalog(
+            QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
+        QVERIFY2(error.isEmpty(), qPrintable(catalogName + QStringLiteral(": ") + error));
+        QCOMPARE(catalog.size(), english.size());
+        for (const QString& id : activeIds) {
+            QVERIFY2(catalog.contains(id), qPrintable(catalogName + QStringLiteral(" missing ") + id));
+            QCOMPARE(catalog[id].source, english[id].source);
+            QVERIFY2(catalog[id].unfinished,
+                     qPrintable(catalogName + QStringLiteral(" must await selective translation: ") + id));
+            QVERIFY2(catalog[id].translation.trimmed().isEmpty(),
+                     qPrintable(catalogName + QStringLiteral(" contains an unreviewed translation: ") + id));
+        }
+    }
+
+    QTranslator source;
+    QVERIFY(source.load(QStringLiteral(":/i18n/gamehq_en_US.qm")));
+    QVERIFY(QCoreApplication::installTranslator(&source));
+    for (const QString& catalogName : promotedLaunchCatalogs()) {
+        QString resourceName = catalogName;
+        resourceName.chop(3);
+        QTranslator target;
+        QVERIFY2(target.load(QStringLiteral(":/i18n/%1.qm").arg(resourceName)),
+                 qPrintable(resourceName));
+        QVERIFY(QCoreApplication::installTranslator(&target));
+        QCOMPARE(qtTrId("gamehq.action.save"), QStringLiteral("Save"));
+        QCoreApplication::removeTranslator(&target);
+    }
+    QCoreApplication::removeTranslator(&source);
+}
+
 void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
 {
     const QSet<QString> ids = translationIdsIn(p4OneSourceFiles());
     // Main.qml and SettingsView.qml are shared with p4-2 and now contribute
     // 19 additional feature/dialog IDs to this source-file set.
     QCOMPARE(ids.size(), 217);
-    for (const QString &catalogName : launchCatalogs()) {
+    for (const QString &catalogName : translatedCatalogs()) {
         QString error;
         const auto catalog = readTsCatalog(
             QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
@@ -321,7 +369,7 @@ void LocalizationCatalogTest::migratedProductionQmlIdsCoverEveryLaunchLocale()
     const QSet<QString> ids = translationIdsIn(productionQmlFiles());
     QCOMPARE(ids.size(), 581);
 
-    for (const QString &catalogName : launchCatalogs()) {
+    for (const QString &catalogName : translatedCatalogs()) {
         QString error;
         const auto catalog = readTsCatalog(
             QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
@@ -352,7 +400,7 @@ void LocalizationCatalogTest::migratedP4ThreeCppIdsCoverEveryLaunchLocale()
     }
     QCOMPARE(ids.size(), 144);
 
-    for (const QString &catalogName : launchCatalogs()) {
+    for (const QString &catalogName : translatedCatalogs()) {
         QString error;
         const auto catalog = readTsCatalog(
             QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
@@ -407,7 +455,7 @@ void LocalizationCatalogTest::migratedP4FourNativeIdsCoverEveryLaunchLocale()
     }
     QCOMPARE(ids.size(), 100);
 
-    for (const QString& catalogName : launchCatalogs()) {
+    for (const QString& catalogName : translatedCatalogs()) {
         QString error;
         const auto catalog = readTsCatalog(
             QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
@@ -469,7 +517,7 @@ void LocalizationCatalogTest::p4FiveFormattingIdsCoverEveryLaunchLocale()
         QStringLiteral("gamehq.update.release_metadata"),
     };
     const QRegularExpression placeholders(QStringLiteral("%(?:n|[1-9][0-9]*)"));
-    for (const QString& catalogName : launchCatalogs()) {
+    for (const QString& catalogName : translatedCatalogs()) {
         QString error;
         const auto catalog = readTsCatalog(
             QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);

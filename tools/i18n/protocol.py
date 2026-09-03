@@ -90,7 +90,7 @@ def load_locale(root: Path, target_locale: str) -> dict[str, object]:
     for value in locales:
         if isinstance(value, dict) and value.get("tag") == target_locale:
             if value.get("tier") != 1 or value.get("state") != "enabled":
-                raise ProtocolError(f"target_locale {target_locale} is not an enabled Tier 1 locale")
+                raise ProtocolError(f"target_locale {target_locale} is not an enabled launch locale")
             return value
     raise ProtocolError(f"target_locale {target_locale} is absent from the locale registry")
 

@@ -49,7 +49,7 @@ void PseudoLocalesTest::productionAndDevelopmentBoundariesAreDistinct()
     LocaleRegistry production(false);
     QString error;
     QVERIFY2(production.loadData(productionFile.readAll(), &error), qPrintable(error));
-    QCOMPARE(availableTags(production).size(), 12);
+    QCOMPARE(availableTags(production).size(), 16);
     QVERIFY(production.catalogName(QStringLiteral("en-XA")).isEmpty());
     QVERIFY(production.catalogName(QStringLiteral("ar-XB")).isEmpty());
     QCOMPARE(production.resolveAvailable(QStringLiteral("en-XA")), QStringLiteral("en-US"));
@@ -59,7 +59,7 @@ void PseudoLocalesTest::productionAndDevelopmentBoundariesAreDistinct()
     QVERIFY2(development.load(QStringLiteral(":/pseudo-i18n/locales.json"), &error),
              qPrintable(error));
     const QStringList tags = availableTags(development);
-    QCOMPARE(tags.size(), 14);
+    QCOMPARE(tags.size(), 18);
     QVERIFY(tags.contains(QStringLiteral("en-XA")));
     QVERIFY(tags.contains(QStringLiteral("ar-XB")));
     QCOMPARE(development.layoutDirection(QStringLiteral("en-XA")), Qt::LeftToRight);

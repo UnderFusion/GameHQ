@@ -218,6 +218,10 @@ set(gamehq_app_ts_files
     "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_ko_KR.ts"
     "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_zh_Hant.ts"
     "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_tr_TR.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_th_TH.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_es_419.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_uk_UA.ts"
+    "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_it_IT.ts"
 )
 if(GAMEHQ_ENABLE_PSEUDO_LOCALES)
     list(APPEND gamehq_app_ts_files

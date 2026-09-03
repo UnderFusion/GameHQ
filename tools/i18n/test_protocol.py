@@ -142,7 +142,8 @@ class ProtocolTest(unittest.TestCase):
     def test_every_launch_locale_has_contextual_style_guidance(self) -> None:
         registry = json.loads((REPOSITORY / "i18n" / "locales.json").read_text(encoding="utf-8"))
         portfolio = {
-            locale["tag"] for locale in registry["locales"] if locale["tier"] in {1, 2}
+            locale["tag"] for locale in registry["locales"]
+            if locale["tier"] == 1 and locale["state"] == "enabled"
         }
         self.assertEqual(LAUNCH_LOCALES, portfolio)
         for tag in sorted(LAUNCH_LOCALES):
