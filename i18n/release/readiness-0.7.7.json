@@ -20,11 +20,11 @@
     },
     {
       "path": "i18n/extracted/messages.json",
-      "sha256": "ed9e935af48d04f440cc50e9d51dec8228171e3bdab29ebe77be6bad7e357ea9"
+      "sha256": "1e45149917adc1ae90460e11c8fbace5631dfef67b5239be5bce299871996e3c"
     },
     {
       "path": "i18n/app/gamehq_en_US.ts",
-      "sha256": "16c5334215775c8cee3cd1c7a60f98d92e76cdf883f815bfafac13494d82c923"
+      "sha256": "25d77b5a388cd38759b4c2d432c80d22cc72bd3fff7bc47d1d7516dba35b7a01"
     },
     {
       "path": "assets/release-notes/manifest.json",
@@ -43,8 +43,12 @@
       "sha256": "717f9da93b8edbd3f479f949b0569beb0e4696d1c77bc9a16ba67d49dabdc478"
     },
     {
+      "path": "i18n/quality/reviews/en-US.json",
+      "sha256": "73342c6bfe737494bc33f8be320b951e924dc2e76e95197b884b7f05d99b71bb"
+    },
+    {
       "path": "i18n/quality/reviews/pl-PL.json",
-      "sha256": "51b159ef84e278c19a4f1e88fbbe1865dbbfcda9ff351756e15e45b9145dc817"
+      "sha256": "b45e2b51211127008f82642b202df4ea532c510510530a8fd77d52e94ced856e"
     }
   ],
   "portfolio": {
@@ -149,7 +153,7 @@
   "locales": {
     "en-US": {
       "catalog": "i18n/app/gamehq_en_US.ts",
-      "catalog_sha256": "16c5334215775c8cee3cd1c7a60f98d92e76cdf883f815bfafac13494d82c923",
+      "catalog_sha256": "25d77b5a388cd38759b4c2d432c80d22cc72bd3fff7bc47d1d7516dba35b7a01",
       "style": {
         "path": "i18n/style/en-US.json",
         "sha256": "4075827c08a2c7de24f351a34f1b08dbc9e0836f74093111a18523efe1a104d8"
@@ -191,14 +195,17 @@
         }
       ],
       "linguistic_qa": {
-        "state": "pending",
+        "state": "contextually_reviewed",
         "authority": "p8-3",
-        "artifact": null
+        "artifact": {
+          "path": "i18n/quality/reviews/en-US.json",
+          "sha256": "73342c6bfe737494bc33f8be320b951e924dc2e76e95197b884b7f05d99b71bb"
+        }
       }
     },
     "zh-Hans": {
       "catalog": "i18n/app/gamehq_zh_Hans.ts",
-      "catalog_sha256": "6b7fcbf64e558a69001f755c95ea51bb3bdcf6f03240e54d697fa90c3efd45b2",
+      "catalog_sha256": "65198ddad230bd7cbd2c662ee5cd353e21380e8e70123df37fac4b295d5449b0",
       "style": {
         "path": "i18n/style/zh-Hans.json",
         "sha256": "cf0a5653a103b4d3bdb378ecf6805fa0ccc5e89dd9d2d10e9426553cddab6322"
@@ -208,7 +215,8 @@
         "sha256": "126e2831b39d4b645c03fe66c0e8726773adff26741cbda392de671edfd92025"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831
@@ -247,7 +255,7 @@
     },
     "ru-RU": {
       "catalog": "i18n/app/gamehq_ru_RU.ts",
-      "catalog_sha256": "a4656fb19cdd4e3d729cfdab2103cd252e0fcd8f7a01038b486dc01bc6c72d5f",
+      "catalog_sha256": "9cd493e18c290b927cbaa80a18b3ecb72f269008dfb769bf8b702c5b7949b81f",
       "style": {
         "path": "i18n/style/ru-RU.json",
         "sha256": "9f2397dfc4effcd004a28fab6e8857a541d4e9dbb5ee79a89bbe6fe6338f8368"
@@ -257,7 +265,8 @@
         "sha256": "3413ddf28c8ab85ba767aa0dadc23c5fdc8718d5364753754cab6eb18f3c699e"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831
@@ -296,7 +305,7 @@
     },
     "es-ES": {
       "catalog": "i18n/app/gamehq_es_ES.ts",
-      "catalog_sha256": "3548d6b9b3bf106420aced6ae868a6fcd9cf7069c7e7a1f9da37be525beaa2a1",
+      "catalog_sha256": "dd2864ff342b1de15f877b12ec40a517efb3bc02f1a64a038900b5cbfd496c6d",
       "style": {
         "path": "i18n/style/es-ES.json",
         "sha256": "96d5e424333e5adee3378474302a3eeb38ecaa5b5d5e19f46381a25f17f508ac"
@@ -306,7 +315,8 @@
         "sha256": "4ccee07d7709d73e107a91f8d77f2896f663b2e4ee00f19d9ef91793a295b7d3"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831
@@ -345,7 +355,7 @@
     },
     "pt-BR": {
       "catalog": "i18n/app/gamehq_pt_BR.ts",
-      "catalog_sha256": "8b9eb608025780ce6f2800fafcdc7868e28cc1d5f4d05ee2e9c75f665bf4a102",
+      "catalog_sha256": "2caa960c4cb5ea5ef8d60d8ee56b8ded6db111e81c22cf25ed1904f014cb874b",
       "style": {
         "path": "i18n/style/pt-BR.json",
         "sha256": "115b88366bc47a0d0a6c223efda5c7475667287680478e158ba1dd9d4adc4a6c"
@@ -355,7 +365,8 @@
         "sha256": "94f136c70af288daadf3655074690e100f43916e0c2e904f60e2cf40090bfc09"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831
@@ -394,7 +405,7 @@
     },
     "de-DE": {
       "catalog": "i18n/app/gamehq_de_DE.ts",
-      "catalog_sha256": "27134abaf9798b5b59b708a71035220fafd7b6c9de0ad713526242e3b27407cb",
+      "catalog_sha256": "3bb68c512082f7b682a140adb9721fb23c7ebbb995dbe34e9ac1a95b93686db0",
       "style": {
         "path": "i18n/style/de-DE.json",
         "sha256": "0f7fad40f92ec8bd2e59abf3ea5e26b45d38b28c31de9c6718968442022df2c8"
@@ -404,7 +415,8 @@
         "sha256": "517aca4d46e0d035f35d56264dba00ec5592455ea7bfff1435edb85240531054"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831
@@ -443,7 +455,7 @@
     },
     "ja-JP": {
       "catalog": "i18n/app/gamehq_ja_JP.ts",
-      "catalog_sha256": "8cf8c928a4ff4addd67270dd10fb0a1825698c0894bba5ecc1480256703182cd",
+      "catalog_sha256": "48e4e3cd46899b3e4923bf0090490a80601fd0889b25e53a5a8dd90a7964f452",
       "style": {
         "path": "i18n/style/ja-JP.json",
         "sha256": "61efe55273dd5ec089c2c017cfc0b8a392f062efbe84a25c529a442af2ab0cfb"
@@ -453,7 +465,8 @@
         "sha256": "40b112c5a3f9f461eeb9c79fe2bc662f03398cbe524c0a03593c0c72e6b88aba"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831
@@ -492,7 +505,7 @@
     },
     "fr-FR": {
       "catalog": "i18n/app/gamehq_fr_FR.ts",
-      "catalog_sha256": "f4aac154fb8283cad5b36a28260a179dd648de2557a3c8e607733ad7a38d6491",
+      "catalog_sha256": "2eb5cc2196d816350c42581e2819146bc9f204a67e8dc152501241b3c30a3cd4",
       "style": {
         "path": "i18n/style/fr-FR.json",
         "sha256": "2775de1c1b4193639e94f1e6c6b675edbed85955366cd2c513de5e7d3ba484a3"
@@ -502,7 +515,8 @@
         "sha256": "037036efc0164578843c0f769d29a3701c8651a3d50485707c9ec2f57d88a234"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831
@@ -541,7 +555,7 @@
     },
     "pl-PL": {
       "catalog": "i18n/app/gamehq_pl_PL.ts",
-      "catalog_sha256": "b95df4b90667cdc0a2023cccf2e23dbf4bc2960200451ba84dfac40a34cefa3c",
+      "catalog_sha256": "50ae6fccced3b13916de0d95c4018c9a9aad45d059db1fd489b1ecf0e4e3645b",
       "style": {
         "path": "i18n/style/pl-PL.json",
         "sha256": "18bdb3c57631723aa73fa9683aacb133c55fda7db262fb38c9ddc0e49e294bc9"
@@ -587,13 +601,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/pl-PL.json",
-          "sha256": "51b159ef84e278c19a4f1e88fbbe1865dbbfcda9ff351756e15e45b9145dc817"
+          "sha256": "b45e2b51211127008f82642b202df4ea532c510510530a8fd77d52e94ced856e"
         }
       }
     },
     "ko-KR": {
       "catalog": "i18n/app/gamehq_ko_KR.ts",
-      "catalog_sha256": "418130b4ccf62a614499ba3bdcd368fe954be415a72bfbdac7071770e52eba92",
+      "catalog_sha256": "a2b3e6fe004e4d8c9e13dc6ae6eb771adbdbe5c0f56ab2f8a190f4c31a9db4b5",
       "style": {
         "path": "i18n/style/ko-KR.json",
         "sha256": "4e12ca071bab30d036ee21f881632f44ba0dc0a3e3de2c194e5dd9cfff8123c5"
@@ -603,7 +617,8 @@
         "sha256": "4dd3d2b3f0f09979fbe51e5d9830ada96b5e39c43aee8bfcad90a04b3c290caa"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831
@@ -642,7 +657,7 @@
     },
     "zh-Hant": {
       "catalog": "i18n/app/gamehq_zh_Hant.ts",
-      "catalog_sha256": "2f0d4387337f31bff47f40b5f249a97abe7a19c72ef38e58480b8e37e228d66f",
+      "catalog_sha256": "f78f20b9a81b414982cd32c358bb78f77cea3e4c7f2ce0252f45bfabc57e6fb9",
       "style": {
         "path": "i18n/style/zh-Hant.json",
         "sha256": "808fdddc4f8c4626ff8ff937b3f4b13a1de3f302b45232e04eb1f735928300af"
@@ -652,7 +667,8 @@
         "sha256": "fd90124d02028ffc27a174b4cca2f443e6020548e4fe76d7d4016b890f7dd036"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831
@@ -691,7 +707,7 @@
     },
     "tr-TR": {
       "catalog": "i18n/app/gamehq_tr_TR.ts",
-      "catalog_sha256": "71a3e50db5f818e0fd6037567f9ebe947167049a5eb221edbc5deaa3c615936b",
+      "catalog_sha256": "c5380edb672c2d666eb57e55974273111fea3dc8a625540d767fb565b5e15814",
       "style": {
         "path": "i18n/style/tr-TR.json",
         "sha256": "ddad44821be551437c3f145272f2b017dfb4a691381c79967212046b2197125e"
@@ -701,7 +717,8 @@
         "sha256": "4c70becd9bc8c9827dacf6126efcd0ae80c0e8d5796ffc65714b97484163d8a6"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831
@@ -740,7 +757,7 @@
     },
     "th-TH": {
       "catalog": "i18n/app/gamehq_th_TH.ts",
-      "catalog_sha256": "66da3536f03ccca26b19627afcd149ac2ddb00554d9a481afff8a8b2e71a5777",
+      "catalog_sha256": "140bb90e5d309331807b9f1f51669a8515f8a59b872ac891804542fcaa4afa0e",
       "style": {
         "path": "i18n/style/th-TH.json",
         "sha256": "2591afc7390871aa3d1eb60ec3128966636a24682d45ddb7fff7ec77e9e3a932"
@@ -750,7 +767,8 @@
         "sha256": "538a920270a4818b142238b05f7b4318354a2366e3930649f7674bd6fdfcfc98"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831
@@ -789,7 +807,7 @@
     },
     "es-419": {
       "catalog": "i18n/app/gamehq_es_419.ts",
-      "catalog_sha256": "b1f1fecd83c70f8448b370929e7dc5feecbee81f79f06d4b9966f3f5640877a2",
+      "catalog_sha256": "2b8bfa555cb312e70cb1de668e86606a40f9160fba703b26ad9ab073bd4ea472",
       "style": {
         "path": "i18n/style/es-419.json",
         "sha256": "4ef9023de484774b802561ae6d3589b658819339856830cf6482528d4f7c4972"
@@ -799,7 +817,8 @@
         "sha256": "70fbfec881265aa84f24806d8bdf4e70bf388dbc1d1038227acbc90bba4ad690"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831
@@ -838,7 +857,7 @@
     },
     "uk-UA": {
       "catalog": "i18n/app/gamehq_uk_UA.ts",
-      "catalog_sha256": "28b24902eb8aeff0d12adc6e6a45c4a3d180bc3e185402212fa7c1bf007c338b",
+      "catalog_sha256": "3277e465c2037d3d4e03489171065ba12c8dae1763dc0d72653881537934fe3f",
       "style": {
         "path": "i18n/style/uk-UA.json",
         "sha256": "f939be147dba51a1dc29929a40fba2b660137dcf87c727c2adde63b90e8d94d1"
@@ -848,7 +867,8 @@
         "sha256": "7d3c32cb099d019a5a28f94c6a44c54b2a7533de10760e20f7f9a9d908b809a7"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831
@@ -887,7 +907,7 @@
     },
     "it-IT": {
       "catalog": "i18n/app/gamehq_it_IT.ts",
-      "catalog_sha256": "25e9f7048f5a2263f59d0e90e2c09de9457f5219cc9a0a7d2259227614fa0d72",
+      "catalog_sha256": "96b3da2c4d1e20daaed3f4e45d1e5ff1bac299e479bf02010578d8d3d20c3104",
       "style": {
         "path": "i18n/style/it-IT.json",
         "sha256": "7c7c8a574e56bad0e18d2cb1e6049ac3299a79f8fee9746dabcf8f763dab7fd9"
@@ -897,7 +917,8 @@
         "sha256": "0aa332b82dfa45ef3d75d538c85b3dac519805895d35bb4e666306777959675b"
       },
       "translation_state_counts": {
-        "machine_translated": 831
+        "machine_translated": 811,
+        "stale": 20
       },
       "provenance_counts": {
         "machine": 831

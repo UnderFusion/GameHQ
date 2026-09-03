@@ -3,7 +3,7 @@
 Skin {
     //% "Carbon"
     label: qsTrId("gamehq.settings.theme.carbon.label")
-    //% "Layered neutral greys and one bright blue. Minimal to a fault."
+    //% "Layered neutral grays and one bright blue. Minimal to a fault."
     blurb: qsTrId("gamehq.settings.theme.carbon.description")
 
     bg0:        "#121212"

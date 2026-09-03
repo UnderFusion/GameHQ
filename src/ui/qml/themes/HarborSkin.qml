@@ -4,7 +4,7 @@
 Skin {
     //% "Harbor"
     label: qsTrId("gamehq.settings.theme.harbor.label")
-    //% "Flat blue-grey with squared edges. Chrome gets out of the way."
+    //% "Flat blue-gray with squared edges. Chrome gets out of the way."
     blurb: qsTrId("gamehq.settings.theme.harbor.description")
 
     bg0:        "#171A21"

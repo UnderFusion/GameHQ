@@ -679,8 +679,9 @@
     </message>
     <message id="gamehq.error.portable_import.commit_staged_file_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
-      <source>Cannot commit staged %1.</source>
-      <translation>무대를 설정할 수 없습니다 %1- 그래</translation>
+      <source>Cannot commit staged file %1.</source>
+      <oldsource>Cannot commit staged %1.</oldsource>
+      <translation type="unfinished">무대를 설정할 수 없습니다 %1- 그래</translation>
     </message>
     <message id="gamehq.error.portable_import.config_malformed">
       <location filename="src/config/PortableProfileImporter.cpp" line="343"></location>
@@ -846,8 +847,9 @@
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
       <location filename="src/ui/AppController.cpp" line="200"></location>
-      <source>Select a local GameHQ portable folder.</source>
-      <translation>로컬을 선택 GameHQ 휴대용 폴더</translation>
+      <source>Select a local folder containing portable GameHQ.</source>
+      <oldsource>Select a local GameHQ portable folder.</oldsource>
+      <translation type="unfinished">로컬을 선택 GameHQ 휴대용 폴더</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
       <location filename="src/ui/AppController.cpp" line="209"></location>
@@ -961,8 +963,9 @@
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
       <location filename="src/app/App.cpp" line="446"></location>
-      <source>The update was cancelled because capture work did not finish safely in time.</source>
-      <translation>업데이트는 적시에 안전하게 완료되지 않았기 때문에 취소되었습니다.</translation>
+      <source>The update was canceled because capture work did not finish safely in time.</source>
+      <oldsource>The update was cancelled because capture work did not finish safely in time.</oldsource>
+      <translation type="unfinished">업데이트는 적시에 안전하게 완료되지 않았기 때문에 취소되었습니다.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
       <location filename="src/updates/UpdateService.cpp" line="333"></location>
@@ -1061,8 +1064,9 @@
     </message>
     <message id="gamehq.error.update.download.package_not_authorised">
       <location filename="src/updates/UpdateDownloader.cpp" line="405"></location>
-      <source>The signed manifest does not authorise an update package.</source>
-      <translation>서명된 선언서는 업데이트 패키지를 허용하지 않습니다.</translation>
+      <source>The signed manifest does not authorize an update package.</source>
+      <oldsource>The signed manifest does not authorise an update package.</oldsource>
+      <translation type="unfinished">서명된 선언서는 업데이트 패키지를 허용하지 않습니다.</translation>
     </message>
     <message id="gamehq.error.update.download.package_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="514"></location>
@@ -1106,8 +1110,9 @@
     </message>
     <message id="gamehq.error.update.download.signature_untrusted">
       <location filename="src/updates/UpdateDownloader.cpp" line="387"></location>
-      <source>This release is not authorised by a trusted signature: %1</source>
-      <translation>이 공개는 신뢰할 수 있는 서명으로 승인되지 않습니다: %1</translation>
+      <source>This release is not authorized by a trusted signature: %1</source>
+      <oldsource>This release is not authorised by a trusted signature: %1</oldsource>
+      <translation type="unfinished">이 공개는 신뢰할 수 있는 서명으로 승인되지 않습니다: %1</translation>
     </message>
     <message id="gamehq.error.update.download.signed_manifest_missing">
       <location filename="src/updates/UpdateDownloader.cpp" line="88"></location>
@@ -1486,8 +1491,9 @@ This cannot be undone.</source>
     </message>
     <message id="gamehq.help.feature.replay.description">
       <location filename="src/ui/qml/HelpView.qml" line="306"></location>
-      <source>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
-      <translation>항상 자동으로 켜져 있다. 게임이 초점 상태에서 백그라운드에서 기록한다. 마지막 몇 초를 클립으로 저장하기 위해 공유 (또는 Ctrl+Shift+E) 를 누르고 있다. 설정 → 재생에서 항상 녹화를 켜거나 끄.</translation>
+      <source>When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
+      <oldsource>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</oldsource>
+      <translation type="unfinished">항상 자동으로 켜져 있다. 게임이 초점 상태에서 백그라운드에서 기록한다. 마지막 몇 초를 클립으로 저장하기 위해 공유 (또는 Ctrl+Shift+E) 를 누르고 있다. 설정 → 재생에서 항상 녹화를 켜거나 끄.</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
       <location filename="src/ui/qml/HelpView.qml" line="304"></location>
@@ -1496,8 +1502,9 @@ This cannot be undone.</source>
     </message>
     <message id="gamehq.help.feature.screenshots.description">
       <location filename="src/ui/qml/HelpView.qml" line="312"></location>
-      <source>GDI grab of the active game window. PNG saved to your captures folder with instant shutter feedback.</source>
-      <translation>GDI가 활성 게임 창을 잡습니다. PNG는 즉시 셔터 피드백으로 캡처 폴더에 저장됩니다.</translation>
+      <source>Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.</source>
+      <oldsource>GameHQ captures the active game window through GDI, saves a PNG to your captures folder, and confirms the screenshot immediately.</oldsource>
+      <translation type="unfinished">GDI가 활성 게임 창을 잡습니다. PNG는 즉시 셔터 피드백으로 캡처 폴더에 저장됩니다.</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
       <location filename="src/ui/qml/HelpView.qml" line="310"></location>
@@ -1637,8 +1644,9 @@ This cannot be undone.</source>
     </message>
     <message id="gamehq.help.keyboard.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="88"></location>
-      <source>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</source>
-      <translation>입력 / 공간 턴, Ctrl+A 모든 것을 선택, 삭제 제거 선택</translation>
+      <source>Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items</source>
+      <oldsource>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</oldsource>
+      <translation type="unfinished">입력 / 공간 턴, Ctrl+A 모든 것을 선택, 삭제 제거 선택</translation>
     </message>
     <message id="gamehq.help.keyboard.show_in_explorer">
       <location filename="src/ui/qml/HelpView.qml" line="98"></location>
@@ -1752,8 +1760,9 @@ This cannot be undone.</source>
     </message>
     <message id="gamehq.input.assignment.pattern">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="197"></location>
-      <source>Pattern</source>
-      <translation>패턴</translation>
+      <source>Type</source>
+      <oldsource>Pattern</oldsource>
+      <translation type="unfinished">패턴</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.combination">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="209"></location>
@@ -2036,6 +2045,8 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>보고 싶은 폴더를 선택</translation>
     </message>
     <message id="gamehq.navigation.about">
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="162"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="194"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="143"></location>
       <source>About</source>
       <translation>정보</translation>
@@ -2100,6 +2111,8 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>설정</translation>
     </message>
     <message id="gamehq.navigation.support_gamehq">
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="164"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="196"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="178"></location>
       <source>Support GameHQ</source>
       <translation>GameHQ 후원하기</translation>
@@ -2800,8 +2813,9 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.feedback.preview.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
-      <source>Confirm notifications and sound without creating a capture.</source>
-      <translation>캡처 없이 알림과 소리를 확인합니다.</translation>
+      <source>Preview notifications and sounds without creating a capture.</source>
+      <oldsource>Confirm notifications and sound without creating a capture.</oldsource>
+      <translation type="unfinished">캡처 없이 알림과 소리를 확인합니다.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
@@ -2920,8 +2934,9 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.general.overlay_dimming.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="81"></location>
-      <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible.</source>
-      <translation>게임 내의 오버레이가 그 뒤의 게임을 얼마나 강하게 어둡게 하는가. 100%는 테마 자체의 어둡기; 더 낮은 것은 게임의 더 많은 부분을 가시적으로 유지합니다.</translation>
+      <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
+      <oldsource>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible.</oldsource>
+      <translation type="unfinished">게임 내의 오버레이가 그 뒤의 게임을 얼마나 강하게 어둡게 하는가. 100%는 테마 자체의 어둡기; 더 낮은 것은 게임의 더 많은 부분을 가시적으로 유지합니다.</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="79"></location>
@@ -2945,8 +2960,9 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.general.startup.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
-      <source>Choose whether GameHQ follows your Windows sign-in and opens quietly.</source>
-      <translation>GameHQ 가 Windows 로그인 시 시작되고 조용히 열리도록 할지 선택하세요.</translation>
+      <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
+      <oldsource>Choose whether GameHQ follows your Windows sign-in and opens quietly.</oldsource>
+      <translation type="unfinished">GameHQ 가 Windows 로그인 시 시작되고 조용히 열리도록 할지 선택하세요.</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="94"></location>
@@ -3172,8 +3188,9 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
-      <source>View versus true Share, probe results, reconnects, gestures, and combinations</source>
-      <translation>true 대 view 공유, 탐사 결과, 재연결, 동작, 조합</translation>
+      <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
+      <oldsource>View versus true Share, probe results, reconnects, gestures, and combinations</oldsource>
+      <translation type="unfinished">true 대 view 공유, 탐사 결과, 재연결, 동작, 조합</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="645"></location>
@@ -3222,8 +3239,9 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.input.modern.support.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="581"></location>
-      <source>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</source>
-      <translation>자동으로 안전한 레거시 재구제를 가진 앱 로컬 게임 입력 기능을 사용합니다.</translation>
+      <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
+      <oldsource>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</oldsource>
+      <translation type="unfinished">자동으로 안전한 레거시 재구제를 가진 앱 로컬 게임 입력 기능을 사용합니다.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="579"></location>
@@ -3578,8 +3596,9 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.portable_import.message">
       <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
-      <source>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
-      <translation>새로 설치된 프로필만 허용됩니다. 휴대용 캡처는 그대로 유지되며, 소스는 결코 수정되지 않으며 GameHQ 는 수입을 완료하기 위해 다시 시작합니다.</translation>
+      <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
+      <oldsource>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</oldsource>
+      <translation type="unfinished">새로 설치된 프로필만 허용됩니다. 휴대용 캡처는 그대로 유지되며, 소스는 결코 수정되지 않으며 GameHQ 는 수입을 완료하기 위해 다시 시작합니다.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
       <location filename="src/ui/qml/SettingsView.qml" line="469"></location>
@@ -3759,8 +3778,9 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.theme.carbon.description">
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="7"></location>
-      <source>Layered neutral greys and one bright blue. Minimal to a fault.</source>
-      <translation>중성 회색과 밝은 파란색으로</translation>
+      <source>Layered neutral grays and one bright blue. Minimal to a fault.</source>
+      <oldsource>Layered neutral greys and one bright blue. Minimal to a fault.</oldsource>
+      <translation type="unfinished">중성 회색과 밝은 파란색으로</translation>
     </message>
     <message id="gamehq.settings.theme.carbon.label">
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="5"></location>
@@ -3769,8 +3789,9 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.theme.cobalt.description">
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="7"></location>
-      <source>Soft greys, indigo accent, pill-round and very fast.</source>
-      <translation>부드러운 회색, 인디고 억양, 알약 둥글고 매우 빠르다.</translation>
+      <source>Soft grays, an indigo accent, pill-shaped controls, and quick transitions.</source>
+      <oldsource>Soft greys, indigo accent, pill-round and very fast.</oldsource>
+      <translation type="unfinished">부드러운 회색, 인디고 억양, 알약 둥글고 매우 빠르다.</translation>
     </message>
     <message id="gamehq.settings.theme.cobalt.label">
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="5"></location>
@@ -3779,8 +3800,9 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.theme.dracula.description">
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="7"></location>
-      <source>Purple-grey base with bright candy accents.</source>
-      <translation>보라색 회색 밑바닥에 밝은 사탕 색조가 있습니다.</translation>
+      <source>Purple-gray base with bright candy accents.</source>
+      <oldsource>Purple-grey base with bright candy accents.</oldsource>
+      <translation type="unfinished">보라색 회색 밑바닥에 밝은 사탕 색조가 있습니다.</translation>
     </message>
     <message id="gamehq.settings.theme.dracula.label">
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="5"></location>
@@ -3809,8 +3831,9 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.theme.harbor.description">
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="8"></location>
-      <source>Flat blue-grey with squared edges. Chrome gets out of the way.</source>
-      <translation>평평한 파란색 회색이고 가장자리는 정사각형입니다. 크롬이 길에서 벗어납니다.</translation>
+      <source>Flat blue-gray with squared edges. Chrome gets out of the way.</source>
+      <oldsource>Flat blue-grey with squared edges. Chrome gets out of the way.</oldsource>
+      <translation type="unfinished">평평한 파란색 회색이고 가장자리는 정사각형입니다. 크롬이 길에서 벗어납니다.</translation>
     </message>
     <message id="gamehq.settings.theme.harbor.label">
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="6"></location>
@@ -3839,8 +3862,9 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.theme.nord.description">
       <location filename="src/ui/qml/themes/NordSkin.qml" line="7"></location>
-      <source>Desaturated arctic blue-greys. Calm and low-contrast.</source>
-      <translation>불포화된 북극 푸른 회색, 차분하고 낮은 대조성</translation>
+      <source>Desaturated arctic blue-grays. Calm and low-contrast.</source>
+      <oldsource>Desaturated arctic blue-greys. Calm and low-contrast.</oldsource>
+      <translation type="unfinished">불포화된 북극 푸른 회색, 차분하고 낮은 대조성</translation>
     </message>
     <message id="gamehq.settings.theme.nord.label">
       <location filename="src/ui/qml/themes/NordSkin.qml" line="5"></location>

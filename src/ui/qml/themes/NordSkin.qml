@@ -3,7 +3,7 @@
 Skin {
     //% "Nord"
     label: qsTrId("gamehq.settings.theme.nord.label")
-    //% "Desaturated arctic blue-greys. Calm and low-contrast."
+    //% "Desaturated arctic blue-grays. Calm and low-contrast."
     blurb: qsTrId("gamehq.settings.theme.nord.description")
 
     bg0:        "#2E3440"

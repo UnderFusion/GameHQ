@@ -84,7 +84,7 @@ Item {
                         {
                             //% "Select mode"
                             binding: qsTrId("gamehq.help.binding.select_mode"),
-                            //% "Enter / Space toggles, Ctrl+A selects all, Delete removes selected"
+                            //% "Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items"
                             act: qsTrId("gamehq.help.keyboard.select_mode")
                         },
                         {
@@ -302,13 +302,13 @@ Item {
                         {
                             //% "Replay buffer"
                             heading: qsTrId("gamehq.help.feature.replay.title"),
-                            //% "Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay."
+                            //% "When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay."
                             desc: qsTrId("gamehq.help.feature.replay.description")
                         },
                         {
                             //% "Screenshots"
                             heading: qsTrId("gamehq.help.feature.screenshots.title"),
-                            //% "GDI grab of the active game window. PNG saved to your captures folder with instant shutter feedback."
+                            //% "Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback."
                             desc: qsTrId("gamehq.help.feature.screenshots.description")
                         },
                         {

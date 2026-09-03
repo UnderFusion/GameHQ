@@ -193,7 +193,7 @@ FocusScope {
                     visible: root.model && root.model.editorCombinationAvailable
 
                     Text {
-                        //% "Pattern"
+                        //% "Type"
                         text: qsTrId("gamehq.input.assignment.pattern")
                         color: Theme.textMuted
                         font.family: Theme.fontFamily

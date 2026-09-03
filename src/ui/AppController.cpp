@@ -196,9 +196,9 @@ QString AppController::beginPortableImport(const QUrl& folderUrl)
     if (!folderUrl.isLocalFile())
         return NativeText::get(
             //: Validation error shown in Settings before starting portable-profile import.
-            //% "Select a local GameHQ portable folder."
+            //% "Select a local folder containing portable GameHQ."
             QT_TRID_NOOP("gamehq.error.portable_import.local_folder_required"),
-            "Select a local GameHQ portable folder.");
+            "Select a local folder containing portable GameHQ.");
     const QString source = QDir::cleanPath(folderUrl.toLocalFile());
     if (!QFileInfo(source + QStringLiteral("/portable.flag")).isFile()
         || !QFileInfo(source + QStringLiteral("/GameHQ.exe")).isFile()

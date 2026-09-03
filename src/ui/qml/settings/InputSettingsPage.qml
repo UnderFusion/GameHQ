@@ -577,7 +577,7 @@ SettingsPage {
         SettingsRow {
             //% "Modern controller support"
             label: qsTrId("gamehq.settings.input.modern.support.label")
-            //% "Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers."
+            //% "Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput."
             description: qsTrId("gamehq.settings.input.modern.support.description")
             SettingsCombo {
                 configKey: "input.modern_controller_support"; defaultValue: "auto"
@@ -643,7 +643,7 @@ SettingsPage {
             icon: "?"
             //% "Controller compatibility guide"
             label: qsTrId("gamehq.settings.input.modern.guide.label")
-            //% "View versus true Share, probe results, reconnects, gestures, and combinations"
+            //% "Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations."
             description: qsTrId("gamehq.settings.input.modern.guide.description")
             showDivider: false
             onClicked: Qt.openUrlExternally(Brand.repositoryUrl + "/blob/dev/docs/controller-compatibility.md")

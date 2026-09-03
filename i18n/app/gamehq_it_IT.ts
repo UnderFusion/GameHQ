@@ -680,8 +680,9 @@
     </message>
     <message id="gamehq.error.portable_import.commit_staged_file_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
-      <source>Cannot commit staged %1.</source>
-      <translation>Non si può commettere in scena %1.</translation>
+      <source>Cannot commit staged file %1.</source>
+      <oldsource>Cannot commit staged %1.</oldsource>
+      <translation type="unfinished">Non si può commettere in scena %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_malformed">
       <location filename="src/config/PortableProfileImporter.cpp" line="343"></location>
@@ -847,8 +848,9 @@
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
       <location filename="src/ui/AppController.cpp" line="200"></location>
-      <source>Select a local GameHQ portable folder.</source>
-      <translation>Seleziona un locale GameHQ cartella portatile.</translation>
+      <source>Select a local folder containing portable GameHQ.</source>
+      <oldsource>Select a local GameHQ portable folder.</oldsource>
+      <translation type="unfinished">Seleziona un locale GameHQ cartella portatile.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
       <location filename="src/ui/AppController.cpp" line="209"></location>
@@ -962,8 +964,9 @@
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
       <location filename="src/app/App.cpp" line="446"></location>
-      <source>The update was cancelled because capture work did not finish safely in time.</source>
-      <translation>L'aggiornamento è stato cancellato perché il lavoro di cattura non ha finito in modo sicuro in tempo.</translation>
+      <source>The update was canceled because capture work did not finish safely in time.</source>
+      <oldsource>The update was cancelled because capture work did not finish safely in time.</oldsource>
+      <translation type="unfinished">L'aggiornamento è stato cancellato perché il lavoro di cattura non ha finito in modo sicuro in tempo.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
       <location filename="src/updates/UpdateService.cpp" line="333"></location>
@@ -1062,8 +1065,9 @@
     </message>
     <message id="gamehq.error.update.download.package_not_authorised">
       <location filename="src/updates/UpdateDownloader.cpp" line="405"></location>
-      <source>The signed manifest does not authorise an update package.</source>
-      <translation>Il manifesto firmato non autorizza un pacchetto di aggiornamento.</translation>
+      <source>The signed manifest does not authorize an update package.</source>
+      <oldsource>The signed manifest does not authorise an update package.</oldsource>
+      <translation type="unfinished">Il manifesto firmato non autorizza un pacchetto di aggiornamento.</translation>
     </message>
     <message id="gamehq.error.update.download.package_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="514"></location>
@@ -1107,8 +1111,9 @@
     </message>
     <message id="gamehq.error.update.download.signature_untrusted">
       <location filename="src/updates/UpdateDownloader.cpp" line="387"></location>
-      <source>This release is not authorised by a trusted signature: %1</source>
-      <translation>Questa pubblicazione non è autorizzata da una firma di fiducia: %1</translation>
+      <source>This release is not authorized by a trusted signature: %1</source>
+      <oldsource>This release is not authorised by a trusted signature: %1</oldsource>
+      <translation type="unfinished">Questa pubblicazione non è autorizzata da una firma di fiducia: %1</translation>
     </message>
     <message id="gamehq.error.update.download.signed_manifest_missing">
       <location filename="src/updates/UpdateDownloader.cpp" line="88"></location>
@@ -1489,8 +1494,9 @@ Questo non può essere annullato.</numerusform>
     </message>
     <message id="gamehq.help.feature.replay.description">
       <location filename="src/ui/qml/HelpView.qml" line="306"></location>
-      <source>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
-      <translation>Tenere Condividere (o Ctrl+Shift+E) per salvare gli ultimi secondi come clip. Girare sempre su registrazione o disattivare in Impostazioni → Replay.</translation>
+      <source>When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
+      <oldsource>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</oldsource>
+      <translation type="unfinished">Tenere Condividere (o Ctrl+Shift+E) per salvare gli ultimi secondi come clip. Girare sempre su registrazione o disattivare in Impostazioni → Replay.</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
       <location filename="src/ui/qml/HelpView.qml" line="304"></location>
@@ -1499,8 +1505,9 @@ Questo non può essere annullato.</numerusform>
     </message>
     <message id="gamehq.help.feature.screenshots.description">
       <location filename="src/ui/qml/HelpView.qml" line="312"></location>
-      <source>GDI grab of the active game window. PNG saved to your captures folder with instant shutter feedback.</source>
-      <translation>GDI afferrare la finestra di gioco attiva. PNG salvato alla cartella di cattura con feedback dell'otturatore istantaneo.</translation>
+      <source>Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.</source>
+      <oldsource>GameHQ captures the active game window through GDI, saves a PNG to your captures folder, and confirms the screenshot immediately.</oldsource>
+      <translation type="unfinished">GDI afferrare la finestra di gioco attiva. PNG salvato alla cartella di cattura con feedback dell'otturatore istantaneo.</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
       <location filename="src/ui/qml/HelpView.qml" line="310"></location>
@@ -1640,8 +1647,9 @@ Questo non può essere annullato.</numerusform>
     </message>
     <message id="gamehq.help.keyboard.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="88"></location>
-      <source>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</source>
-      <translation>Invio / Toggles spazio, Ctrl + A seleziona tutto, Elimina rimuove selezionate</translation>
+      <source>Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items</source>
+      <oldsource>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</oldsource>
+      <translation type="unfinished">Invio / Toggles spazio, Ctrl + A seleziona tutto, Elimina rimuove selezionate</translation>
     </message>
     <message id="gamehq.help.keyboard.show_in_explorer">
       <location filename="src/ui/qml/HelpView.qml" line="98"></location>
@@ -1755,8 +1763,9 @@ Questo non può essere annullato.</numerusform>
     </message>
     <message id="gamehq.input.assignment.pattern">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="197"></location>
-      <source>Pattern</source>
-      <translation>Modello</translation>
+      <source>Type</source>
+      <oldsource>Pattern</oldsource>
+      <translation type="unfinished">Modello</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.combination">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="209"></location>
@@ -2039,6 +2048,8 @@ Per usare %1 per %3, GameHQ deve cambiare %2 da Press a Single tap.
       <translation>Scegli una cartella da guardare</translation>
     </message>
     <message id="gamehq.navigation.about">
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="162"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="194"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="143"></location>
       <source>About</source>
       <translation>Informazioni</translation>
@@ -2103,6 +2114,8 @@ Per usare %1 per %3, GameHQ deve cambiare %2 da Press a Single tap.
       <translation>Impostazioni impostazioni</translation>
     </message>
     <message id="gamehq.navigation.support_gamehq">
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="164"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="196"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="178"></location>
       <source>Support GameHQ</source>
       <translation>Sostieni GameHQ</translation>
@@ -2803,8 +2816,9 @@ Per usare %1 per %3, GameHQ deve cambiare %2 da Press a Single tap.
     </message>
     <message id="gamehq.settings.feedback.preview.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
-      <source>Confirm notifications and sound without creating a capture.</source>
-      <translation>Confermare le notifiche e il suono senza creare una cattura.</translation>
+      <source>Preview notifications and sounds without creating a capture.</source>
+      <oldsource>Confirm notifications and sound without creating a capture.</oldsource>
+      <translation type="unfinished">Confermare le notifiche e il suono senza creare una cattura.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
@@ -2923,8 +2937,9 @@ Per usare %1 per %3, GameHQ deve cambiare %2 da Press a Single tap.
     </message>
     <message id="gamehq.settings.general.overlay_dimming.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="81"></location>
-      <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible.</source>
-      <translation>Quanto fortemente l'overlay in-game oscura il gioco dietro di esso. 100% è il proprio dimming del tema; più basso mantiene più del gioco visibile.</translation>
+      <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
+      <oldsource>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible.</oldsource>
+      <translation type="unfinished">Quanto fortemente l'overlay in-game oscura il gioco dietro di esso. 100% è il proprio dimming del tema; più basso mantiene più del gioco visibile.</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="79"></location>
@@ -2948,8 +2963,9 @@ Per usare %1 per %3, GameHQ deve cambiare %2 da Press a Single tap.
     </message>
     <message id="gamehq.settings.general.startup.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
-      <source>Choose whether GameHQ follows your Windows sign-in and opens quietly.</source>
-      <translation>Scegliere se GameHQ segue il vostro Windows sign-in e si apre tranquillamente.</translation>
+      <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
+      <oldsource>Choose whether GameHQ follows your Windows sign-in and opens quietly.</oldsource>
+      <translation type="unfinished">Scegliere se GameHQ segue il vostro Windows sign-in e si apre tranquillamente.</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="94"></location>
@@ -3175,8 +3191,9 @@ Per usare %1 per %3, GameHQ deve cambiare %2 da Press a Single tap.
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
-      <source>View versus true Share, probe results, reconnects, gestures, and combinations</source>
-      <translation>Condividi, risultati della sonda, ricollegamenti, gesti e combinazioni</translation>
+      <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
+      <oldsource>View versus true Share, probe results, reconnects, gestures, and combinations</oldsource>
+      <translation type="unfinished">Condividi, risultati della sonda, ricollegamenti, gesti e combinazioni</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="645"></location>
@@ -3225,8 +3242,9 @@ Per usare %1 per %3, GameHQ deve cambiare %2 da Press a Single tap.
     </message>
     <message id="gamehq.settings.input.modern.support.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="581"></location>
-      <source>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</source>
-      <translation>Auto utilizza app-local GameInput con il fallback legacy sicuro; Off mantiene solo i fornitori legacy.</translation>
+      <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
+      <oldsource>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</oldsource>
+      <translation type="unfinished">Auto utilizza app-local GameInput con il fallback legacy sicuro; Off mantiene solo i fornitori legacy.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="579"></location>
@@ -3583,8 +3601,9 @@ Per usare %1 per %3, GameHQ deve cambiare %2 da Press a Single tap.
     </message>
     <message id="gamehq.settings.portable_import.message">
       <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
-      <source>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
-      <translation>Solo un profilo fresco installato è accettato. GameHQ riavvia per completare l'importazione.</translation>
+      <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
+      <oldsource>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</oldsource>
+      <translation type="unfinished">Solo un profilo fresco installato è accettato. GameHQ riavvia per completare l'importazione.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
       <location filename="src/ui/qml/SettingsView.qml" line="469"></location>
@@ -3764,8 +3783,9 @@ Per usare %1 per %3, GameHQ deve cambiare %2 da Press a Single tap.
     </message>
     <message id="gamehq.settings.theme.carbon.description">
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="7"></location>
-      <source>Layered neutral greys and one bright blue. Minimal to a fault.</source>
-      <translation>Grigio neutro stratificato e un blu brillante. Minimale a un difetto.</translation>
+      <source>Layered neutral grays and one bright blue. Minimal to a fault.</source>
+      <oldsource>Layered neutral greys and one bright blue. Minimal to a fault.</oldsource>
+      <translation type="unfinished">Grigio neutro stratificato e un blu brillante. Minimale a un difetto.</translation>
     </message>
     <message id="gamehq.settings.theme.carbon.label">
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="5"></location>
@@ -3774,8 +3794,9 @@ Per usare %1 per %3, GameHQ deve cambiare %2 da Press a Single tap.
     </message>
     <message id="gamehq.settings.theme.cobalt.description">
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="7"></location>
-      <source>Soft greys, indigo accent, pill-round and very fast.</source>
-      <translation>Grigio morbido, accento indigo, pillola-round e molto veloce.</translation>
+      <source>Soft grays, an indigo accent, pill-shaped controls, and quick transitions.</source>
+      <oldsource>Soft greys, indigo accent, pill-round and very fast.</oldsource>
+      <translation type="unfinished">Grigio morbido, accento indigo, pillola-round e molto veloce.</translation>
     </message>
     <message id="gamehq.settings.theme.cobalt.label">
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="5"></location>
@@ -3784,8 +3805,9 @@ Per usare %1 per %3, GameHQ deve cambiare %2 da Press a Single tap.
     </message>
     <message id="gamehq.settings.theme.dracula.description">
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="7"></location>
-      <source>Purple-grey base with bright candy accents.</source>
-      <translation>Base viola-grigio con accenti di caramelle brillanti.</translation>
+      <source>Purple-gray base with bright candy accents.</source>
+      <oldsource>Purple-grey base with bright candy accents.</oldsource>
+      <translation type="unfinished">Base viola-grigio con accenti di caramelle brillanti.</translation>
     </message>
     <message id="gamehq.settings.theme.dracula.label">
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="5"></location>
@@ -3814,8 +3836,9 @@ Per usare %1 per %3, GameHQ deve cambiare %2 da Press a Single tap.
     </message>
     <message id="gamehq.settings.theme.harbor.description">
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="8"></location>
-      <source>Flat blue-grey with squared edges. Chrome gets out of the way.</source>
-      <translation>Piatto blu-grigio con bordi squadrati. Chrome esce dalla strada.</translation>
+      <source>Flat blue-gray with squared edges. Chrome gets out of the way.</source>
+      <oldsource>Flat blue-grey with squared edges. Chrome gets out of the way.</oldsource>
+      <translation type="unfinished">Piatto blu-grigio con bordi squadrati. Chrome esce dalla strada.</translation>
     </message>
     <message id="gamehq.settings.theme.harbor.label">
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="6"></location>
@@ -3844,8 +3867,9 @@ Per usare %1 per %3, GameHQ deve cambiare %2 da Press a Single tap.
     </message>
     <message id="gamehq.settings.theme.nord.description">
       <location filename="src/ui/qml/themes/NordSkin.qml" line="7"></location>
-      <source>Desaturated arctic blue-greys. Calm and low-contrast.</source>
-      <translation>Blu-grigio arctico saturi. Calma e basso contrasto.</translation>
+      <source>Desaturated arctic blue-grays. Calm and low-contrast.</source>
+      <oldsource>Desaturated arctic blue-greys. Calm and low-contrast.</oldsource>
+      <translation type="unfinished">Blu-grigio arctico saturi. Calma e basso contrasto.</translation>
     </message>
     <message id="gamehq.settings.theme.nord.label">
       <location filename="src/ui/qml/themes/NordSkin.qml" line="5"></location>

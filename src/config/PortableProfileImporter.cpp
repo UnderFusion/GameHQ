@@ -178,9 +178,9 @@ bool writeJson(const QString& path, const QJsonObject& object, QString& error)
     if (file.write(bytes) != bytes.size() || !file.commit()) {
         error = NativeText::get(
             //: Portable-profile import filesystem failure; %1 is an unchanged file name.
-            //% "Cannot commit staged %1."
+            //% "Cannot commit staged file %1."
             QT_TRID_NOOP("gamehq.error.portable_import.commit_staged_file_failed"),
-            "Cannot commit staged %1.").arg(QFileInfo(path).fileName());
+            "Cannot commit staged file %1.").arg(QFileInfo(path).fileName());
         return false;
     }
     return true;

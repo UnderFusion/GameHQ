@@ -383,9 +383,9 @@ bool UpdateDownloader::acceptVerifiedManifest()
     if (!release_manifest::verifyAndParse(manifestBytes, signatureText, &previous, accepted, error)) {
         fail(NativeText::get(
                  //: Release signature failure; %1 is the unchanged verification detail.
-                 //% "This release is not authorised by a trusted signature: %1"
+                 //% "This release is not authorized by a trusted signature: %1"
                  QT_TRID_NOOP("gamehq.error.update.download.signature_untrusted"),
-                 "This release is not authorised by a trusted signature: %1")
+                 "This release is not authorized by a trusted signature: %1")
                  .arg(QString::fromStdString(error)));
         return false;
     }
@@ -401,9 +401,9 @@ bool UpdateDownloader::acceptVerifiedManifest()
     if (!update) {
         fail(NativeText::get(
             //: Signed update manifest validation failure.
-            //% "The signed manifest does not authorise an update package."
+            //% "The signed manifest does not authorize an update package."
             QT_TRID_NOOP("gamehq.error.update.download.package_not_authorised"),
-            "The signed manifest does not authorise an update package."));
+            "The signed manifest does not authorize an update package."));
         return false;
     }
     // Bind the GitHub asset to the signed record by exact name. A release that

@@ -158,7 +158,9 @@ bool PackagedLocalizationProbe::run(const QString &reportPath, QString *error)
             return fail(error, QStringLiteral("Packaged runtime language selection failed for %1: %2")
                                    .arg(locale, languageError));
         }
+        //% "About"
         const QString about = qtTrId("gamehq.navigation.about");
+        //% "Support GameHQ"
         const QString support = qtTrId("gamehq.navigation.support_gamehq");
         if (about.isEmpty() || support.isEmpty()
             || about.startsWith(QStringLiteral("gamehq."))
@@ -188,9 +190,13 @@ bool PackagedLocalizationProbe::run(const QString &reportPath, QString *error)
                                        .arg(locale));
             }
             manager.setRequestedLanguage(locale);
+            //% "About"
+            const QString switchedAbout = qtTrId("gamehq.navigation.about");
+            //% "Support GameHQ"
+            const QString switchedSupport = qtTrId("gamehq.navigation.support_gamehq");
             if (manager.effectiveLanguage() != locale
-                || qtTrId("gamehq.navigation.about") != about
-                || qtTrId("gamehq.navigation.support_gamehq") != support) {
+                || switchedAbout != about
+                || switchedSupport != support) {
                 return fail(error, QStringLiteral("Repeated switch retained stale text for %1.")
                                        .arg(locale));
             }

@@ -3,7 +3,7 @@
 Skin {
     //% "Cobalt"
     label: qsTrId("gamehq.settings.theme.cobalt.label")
-    //% "Soft greys, indigo accent, pill-round and very fast."
+    //% "Soft grays, an indigo accent, pill-shaped controls, and quick transitions."
     blurb: qsTrId("gamehq.settings.theme.cobalt.description")
 
     bg0:        "#1E1F22"

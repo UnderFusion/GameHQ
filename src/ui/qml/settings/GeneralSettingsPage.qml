@@ -77,7 +77,7 @@ SettingsPage {
         SettingsRow {
             //% "Overlay dimming"
             label: qsTrId("gamehq.settings.general.overlay_dimming.label")
-            //% "How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible."
+            //% "How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible."
             description: qsTrId("gamehq.settings.general.overlay_dimming.description")
             SettingsSlider {
                 configKey: "theme.overlay_scrim_strength"
@@ -94,7 +94,7 @@ SettingsPage {
         eyebrow: qsTrId("gamehq.settings.general.startup.eyebrow")
         //% "How %1 starts"
         title: qsTrId("gamehq.settings.general.startup.title").arg(Brand.name)
-        //% "Choose whether GameHQ follows your Windows sign-in and opens quietly."
+        //% "Choose whether GameHQ starts when you sign in to Windows and opens quietly."
         description: qsTrId("gamehq.settings.general.startup.description")
         SettingsRow {
             //% "Start with Windows"

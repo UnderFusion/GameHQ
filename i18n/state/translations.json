@@ -1385,7 +1385,7 @@
         },
         "gamehq.error.portable_import.commit_staged_file_failed": {
           "domain": "application",
-          "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
+          "source_hash": "bc68f092be2da5606117c4c819f2281e85f561c2509da5caedbc2b2bc458be93",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -1748,7 +1748,7 @@
         },
         "gamehq.error.portable_import.local_folder_required": {
           "domain": "application",
-          "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
+          "source_hash": "fe6f0d290986e06ccc270db9e18571d4abc8f612c519c8ca74171b3d65aa50a1",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -2001,7 +2001,7 @@
         },
         "gamehq.error.update.capture_quiescence_timeout": {
           "domain": "application",
-          "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
+          "source_hash": "2c86b23ae3ce4b9cb92e1f2f6679382b868c4aa8569efb1b849c0265c2ae5759",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -2221,7 +2221,7 @@
         },
         "gamehq.error.update.download.package_not_authorised": {
           "domain": "application",
-          "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
+          "source_hash": "fe4b276e533f85f21c722cce267949ad687a87ed5fb57b92251cd4c2d3ea9a53",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -2320,7 +2320,7 @@
         },
         "gamehq.error.update.download.signature_untrusted": {
           "domain": "application",
-          "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
+          "source_hash": "c6349c776b57329e91fc4d0b01437e116d8e498d55dbc1994e81b2aa621296fa",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -3112,7 +3112,7 @@
         },
         "gamehq.help.feature.replay.description": {
           "domain": "application",
-          "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
+          "source_hash": "6dd2f2b26272a4621082d69fccdd693ab23937cf9f40b521e6cfe7b2ac3320e1",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -3134,7 +3134,7 @@
         },
         "gamehq.help.feature.screenshots.description": {
           "domain": "application",
-          "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
+          "source_hash": "602c3a6cc283b5c9a7700fe7c5a1c81a5dbadddf315056786f564e6fa6d7b9a8",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -3442,7 +3442,7 @@
         },
         "gamehq.help.keyboard.select_mode": {
           "domain": "application",
-          "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
+          "source_hash": "98193fbb3e46356f00a0883feffcfdd00985ddb185a343f2e2dfcbc97a905cad",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -3684,7 +3684,7 @@
         },
         "gamehq.input.assignment.pattern": {
           "domain": "application",
-          "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
+          "source_hash": "f1f049eaaaef76636bf921b0d4ee3abf0005c440d6199ad9b5a1b12cff76075e",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -5895,7 +5895,7 @@
         },
         "gamehq.settings.feedback.preview.description": {
           "domain": "application",
-          "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
+          "source_hash": "10b476758bf7ccc1518bc5cd8d968a00c538f63bec63abc1e130a7312fe7b169",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -6159,7 +6159,7 @@
         },
         "gamehq.settings.general.overlay_dimming.description": {
           "domain": "application",
-          "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
+          "source_hash": "e05bf20e681354c990b3cfafdef766992f4e1891703da73c84b8aa15582e2219",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -6214,7 +6214,7 @@
         },
         "gamehq.settings.general.startup.description": {
           "domain": "application",
-          "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
+          "source_hash": "f5ec1437197695395063620b3a5ec85128c2bc1202215a884280d83bfac8271e",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -6709,7 +6709,7 @@
         },
         "gamehq.settings.input.modern.guide.description": {
           "domain": "application",
-          "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
+          "source_hash": "cd55817fde3aac98596217abeca5cb738e32dfa703ae472b6f5238e7f77db421",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -6819,7 +6819,7 @@
         },
         "gamehq.settings.input.modern.support.description": {
           "domain": "application",
-          "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
+          "source_hash": "15875e6a1d3400e930c324c83acb0cdacb3658f24f6690a031002d08f01a2fce",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -7589,7 +7589,7 @@
         },
         "gamehq.settings.portable_import.message": {
           "domain": "application",
-          "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
+          "source_hash": "5eacf210aca54af84f4efc739e778d2bf087b767bdcfa8278b1403deb136ceb9",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -7985,7 +7985,7 @@
         },
         "gamehq.settings.theme.carbon.description": {
           "domain": "application",
-          "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
+          "source_hash": "5ca1b4026502c5e5affe9be8ec27c42f65d7cc0bdd8335863b7abb7dc3a80bf0",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -8007,7 +8007,7 @@
         },
         "gamehq.settings.theme.cobalt.description": {
           "domain": "application",
-          "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
+          "source_hash": "16ab41c3df28f03249bbbc7fa562e9ad1e4e8d5e4a358bb34b1ba401f6134ae1",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -8029,7 +8029,7 @@
         },
         "gamehq.settings.theme.dracula.description": {
           "domain": "application",
-          "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
+          "source_hash": "c1dad34f303ea70115dd6709fde19cb660bde2471550ede28a6a707c25e6afec",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -8095,7 +8095,7 @@
         },
         "gamehq.settings.theme.harbor.description": {
           "domain": "application",
-          "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
+          "source_hash": "62e11d61e969971c1f7e9e448dfd5b80adf56b3ef9ccce63cd0e793725c889c7",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -8161,7 +8161,7 @@
         },
         "gamehq.settings.theme.nord.description": {
           "domain": "application",
-          "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
+          "source_hash": "fc04cbd8af0530ea2c33b9541e4fe167b91120c228a6d79ac0e80755bc7ab183",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -11387,7 +11387,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "d701e3cbd6dc27b57d3d199e386e16f4252556cca65939bd51c15405a8a744ad",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -11750,7 +11750,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "5f7f61f5272957821c8b6d222580789c62a2dcce40b965edf1a881bfce91fa72",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -12003,7 +12003,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "0cd7ee8bf50747f9a7fc5f5b7ed08ccb2d7a087f2703ef7c5102b87ecb99707f",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -12223,7 +12223,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "8212d1d6d46c1a91851d7478e214bc22c00a70be4bff8f27d512af2bedd33950",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -12322,7 +12322,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "65dc07744a501ade822075a9d91f8fad2ee6e1d27a6c93ce9e091d74cd4e28ec",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -13114,7 +13114,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "c9c276fc11415b356ecf7698cf881f989a6b23aeec5e180b88eaeb749135d897",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -13136,7 +13136,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "57c587ae394ef76590be55f9455520c4f577c023d98b99ec49997e076ea67e88",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -13444,7 +13444,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "87a39eaf4c513b9ee1ba97b9cef748736f6bde979a6eb94fb99181d58e1e7eb3",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -13686,7 +13686,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "22498ab2cf711b2cdb450dde225c281bf7199bf221af72885caa03987ba2af79",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -15897,7 +15897,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "b2ea772beee473e8f6722e051a432df2e2d3eac723f82c95b1b12a829c1bbae5",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -16161,7 +16161,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "51ba5b213d87be5560be650334c4303406bd59291695125caa74819b43ae1b9d",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -16216,7 +16216,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "82b19a6008bc4607a5ba573179a5f0071327106139ce3b424b53153c3e401765",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -16711,7 +16711,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "d343ea78ccb86f06026cebccc7566bea06a95f8d22c55b1c8aa454b2d29aaa99",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -16821,7 +16821,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "288fdfa463d89ce64cc2883d9115ce7473d8a602667a6bd85fad0fc330e7f6c9",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -17591,7 +17591,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "a4fec7fe5564da6f91217dcf5bc744c13121cb378085e25cf6b08554c841cade",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -17987,7 +17987,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "710281ac23c344b05bf1a613cec75b12d1421a16f907ab5ea4e6e621734ab304",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -18009,7 +18009,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "117bb93fd232224fa98e0545b211dfe0d20e4e99fe03cd1dc20edebeefb9ea67",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -18031,7 +18031,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "3c34208ee4bdad8d5f87c3db1fd0232a3a676a0d99fe0f9352959c868f44685d",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -18097,7 +18097,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "cbbe78d06cb8017576a6aa6954bd28072d945effdb2092fcc17cd2473a4f5b31",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -18163,7 +18163,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "5dc7d5194fc1323f292654a78f91cd2f23d1a29d14258f779ceb47fed2c43915",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -19153,9 +19153,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,
@@ -20553,8 +20574,8 @@
         },
         "gamehq.error.portable_import.commit_staged_file_failed": {
           "domain": "application",
-          "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
-          "translation_hash": "c80dfaeb691419227158ae3970cad18acb72e883101f7a07b2d3ad369ebd59fe",
+          "source_hash": "bc68f092be2da5606117c4c819f2281e85f561c2509da5caedbc2b2bc458be93",
+          "translation_hash": "54c2deb6529b618ec16a7700523449080cc5081ce0576f2a6986e583b7cbd7ed",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -20916,8 +20937,8 @@
         },
         "gamehq.error.portable_import.local_folder_required": {
           "domain": "application",
-          "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
-          "translation_hash": "5ec60b07a0a90dd0af6c1e0ccf6902063dd1b8de8be891715ef4a82259974223",
+          "source_hash": "fe6f0d290986e06ccc270db9e18571d4abc8f612c519c8ca74171b3d65aa50a1",
+          "translation_hash": "1e2a2439facf203bf7e1abfa82b3d7c6f202a14d76c7a2abf3916aea0597a995",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -21169,8 +21190,8 @@
         },
         "gamehq.error.update.capture_quiescence_timeout": {
           "domain": "application",
-          "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
-          "translation_hash": "9c71e667e9941285c6f5a7fd456d13289462091dbc514f2d7187987fa7c1f75d",
+          "source_hash": "2c86b23ae3ce4b9cb92e1f2f6679382b868c4aa8569efb1b849c0265c2ae5759",
+          "translation_hash": "4b4f31c29608e0c53ed61d3aa5fff260f683fc19967fcdde330d09dd6e93d1ed",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -21389,8 +21410,8 @@
         },
         "gamehq.error.update.download.package_not_authorised": {
           "domain": "application",
-          "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
-          "translation_hash": "a9077031231d555d5760549dfed6329131f6c89ad26af2ee62b7515036dfaf94",
+          "source_hash": "fe4b276e533f85f21c722cce267949ad687a87ed5fb57b92251cd4c2d3ea9a53",
+          "translation_hash": "2257d650e7da325ad32e7d1cdc1bb92155b6c1ec1f2e06a22fdbd5b674bf1a74",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -21488,8 +21509,8 @@
         },
         "gamehq.error.update.download.signature_untrusted": {
           "domain": "application",
-          "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
-          "translation_hash": "262a51b2fe21e54d8db24d21c03f14c473cbb90e3adff4d95f9174181c144b36",
+          "source_hash": "c6349c776b57329e91fc4d0b01437e116d8e498d55dbc1994e81b2aa621296fa",
+          "translation_hash": "a478266e2c80d0123c25f44d3d1a42c798cf7a86ad7fdb73662e0da20ad9a0b9",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -22280,8 +22301,8 @@
         },
         "gamehq.help.feature.replay.description": {
           "domain": "application",
-          "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
-          "translation_hash": "260902ba2c759b06afa690dd47a0e074d89ef78e65f0401e935d72338a94b2e8",
+          "source_hash": "6dd2f2b26272a4621082d69fccdd693ab23937cf9f40b521e6cfe7b2ac3320e1",
+          "translation_hash": "46a1d12592fcde4c4c18baaeb46e20faec5d14bb87d5b09bae9eea59f0feac93",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -22302,8 +22323,8 @@
         },
         "gamehq.help.feature.screenshots.description": {
           "domain": "application",
-          "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
-          "translation_hash": "856cc69a8971017640c2b3a6068c3d25fa3a5e58a73941a6fd27d44b632a152e",
+          "source_hash": "602c3a6cc283b5c9a7700fe7c5a1c81a5dbadddf315056786f564e6fa6d7b9a8",
+          "translation_hash": "7761481ce5a0ccd9c7a38e3a1b26858d457edc4d1710f2887938e6a42da92b40",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -22610,8 +22631,8 @@
         },
         "gamehq.help.keyboard.select_mode": {
           "domain": "application",
-          "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
-          "translation_hash": "1fb788eb65180a49baffbd9f2732a69e28162da3bf5c84604260f195020b74dd",
+          "source_hash": "98193fbb3e46356f00a0883feffcfdd00985ddb185a343f2e2dfcbc97a905cad",
+          "translation_hash": "1e0000bc8d6f14994927cd4a9bbf252d66bb638bafc5fe6c38e482820187e0a5",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -22852,8 +22873,8 @@
         },
         "gamehq.input.assignment.pattern": {
           "domain": "application",
-          "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
-          "translation_hash": "6f0fb82e081a28921ee9b9ea1e66cf8acc3efa154103f6edb6202f30dc712ab6",
+          "source_hash": "f1f049eaaaef76636bf921b0d4ee3abf0005c440d6199ad9b5a1b12cff76075e",
+          "translation_hash": "0ef3d97416c57c9c96fb7999cd1c11df68fdb9756d891dae2f37048efdffd818",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -25063,8 +25084,8 @@
         },
         "gamehq.settings.feedback.preview.description": {
           "domain": "application",
-          "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
-          "translation_hash": "9107b8afab555eb4ea0e9405f2503aa1b6dc1174c39c3257cb04310a9b6e42de",
+          "source_hash": "10b476758bf7ccc1518bc5cd8d968a00c538f63bec63abc1e130a7312fe7b169",
+          "translation_hash": "89cd3d679cea505d1059c122079b7d0ea48a7d232c995e59d1703800e4e4d095",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -25327,8 +25348,8 @@
         },
         "gamehq.settings.general.overlay_dimming.description": {
           "domain": "application",
-          "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
-          "translation_hash": "0248f7d36a19b5d7a89793eff0308d0aedca5b847eb239711608276ce7c0c771",
+          "source_hash": "e05bf20e681354c990b3cfafdef766992f4e1891703da73c84b8aa15582e2219",
+          "translation_hash": "3b46bb9070c2fcada41d2e241cac7e18a9dc5996ca5c8c42d287704d497bb915",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -25382,8 +25403,8 @@
         },
         "gamehq.settings.general.startup.description": {
           "domain": "application",
-          "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
-          "translation_hash": "2c4a4c436eecda64361b1e5f244e08cea48c7640f3933b78901acb16002d9259",
+          "source_hash": "f5ec1437197695395063620b3a5ec85128c2bc1202215a884280d83bfac8271e",
+          "translation_hash": "d4a807ccdc1172f79406839ea651811a73bc60f6830432a0b535fa3fd5fba4be",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -25877,8 +25898,8 @@
         },
         "gamehq.settings.input.modern.guide.description": {
           "domain": "application",
-          "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
-          "translation_hash": "0a5827c84def4500d171a98d97ae8e99861a89330fdf99951ca18a15c18d085b",
+          "source_hash": "cd55817fde3aac98596217abeca5cb738e32dfa703ae472b6f5238e7f77db421",
+          "translation_hash": "f617f49016e6b59c273580d0268ff1b1282c8acc496af6596cb5192e5cc53257",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -25987,8 +26008,8 @@
         },
         "gamehq.settings.input.modern.support.description": {
           "domain": "application",
-          "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
-          "translation_hash": "03a90488501cedf6b873928863f2e00f2e7f62e9e0ae189ae5574b37ed9f093b",
+          "source_hash": "15875e6a1d3400e930c324c83acb0cdacb3658f24f6690a031002d08f01a2fce",
+          "translation_hash": "0deda3965cee0002a103bdb5bf1b87e37b499c43eaa709e000618a0f97fe3aba",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -26757,8 +26778,8 @@
         },
         "gamehq.settings.portable_import.message": {
           "domain": "application",
-          "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
-          "translation_hash": "992b21f8353c6866e24edd895ef63ff8a7f69c0fbe00fe3e581fd26d68f9b197",
+          "source_hash": "5eacf210aca54af84f4efc739e778d2bf087b767bdcfa8278b1403deb136ceb9",
+          "translation_hash": "6762ad78d77309c52159be0529a2e37edbd145cc6b8bd0ad32f1b6a9ce9628ad",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -27153,8 +27174,8 @@
         },
         "gamehq.settings.theme.carbon.description": {
           "domain": "application",
-          "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
-          "translation_hash": "35ed881239a0879938aeb17b2b71acdd37f48f4e8794db24328b3cf855e40788",
+          "source_hash": "5ca1b4026502c5e5affe9be8ec27c42f65d7cc0bdd8335863b7abb7dc3a80bf0",
+          "translation_hash": "99a96baf4bab2eb9698904e5a8cf0db10e54662ca6c5687662614ad7916a4ecf",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -27175,8 +27196,8 @@
         },
         "gamehq.settings.theme.cobalt.description": {
           "domain": "application",
-          "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
-          "translation_hash": "c89d2c486c32a9a2571466c31f7505c4e5e310a4d7ceb2fd8e852058b7015f5a",
+          "source_hash": "16ab41c3df28f03249bbbc7fa562e9ad1e4e8d5e4a358bb34b1ba401f6134ae1",
+          "translation_hash": "fc744444dda9afa9538726446f76e583f329f1461c36480ad2a658df6894d414",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -27197,8 +27218,8 @@
         },
         "gamehq.settings.theme.dracula.description": {
           "domain": "application",
-          "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
-          "translation_hash": "6180f0adb5d10f412645b5725c9cf28d7055c31823eccab83bb3295993311796",
+          "source_hash": "c1dad34f303ea70115dd6709fde19cb660bde2471550ede28a6a707c25e6afec",
+          "translation_hash": "21959433ca599e5cd64d282924e16276f57aa5851ba87de1fd2a5343d1d5d3a4",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -27263,8 +27284,8 @@
         },
         "gamehq.settings.theme.harbor.description": {
           "domain": "application",
-          "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
-          "translation_hash": "ea6050138c7d269b7a4612b7f9640727e5d0e25b904f1f2a328ead175af7089c",
+          "source_hash": "62e11d61e969971c1f7e9e448dfd5b80adf56b3ef9ccce63cd0e793725c889c7",
+          "translation_hash": "0d679e36e5723372bc10bca78b1e2b4556abdf726c60cae8aac847897e0a3af3",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -27329,8 +27350,8 @@
         },
         "gamehq.settings.theme.nord.description": {
           "domain": "application",
-          "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
-          "translation_hash": "6153db1f431bc102352ba5cfa892087106b8e4bb6d0c14f22fcab66caf9299f7",
+          "source_hash": "fc04cbd8af0530ea2c33b9541e4fe167b91120c228a6d79ac0e80755bc7ab183",
+          "translation_hash": "2c7db78f865441ad74659de0a4f9896d73226bc6af0a73516bfea793ec25b1bf",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -29723,7 +29744,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "85f7008d0d4d8522e177b834dc1e7db61f69921162b97c6e812e01ea6e03af10",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -30086,7 +30107,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "6527503779cbc7f976cad4704279d2588828afe6c9fba2da9fa29a90c3362162",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -30339,7 +30360,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "dd61ae4a7f27d65b6316a1be825d1b5b0ed480d96c82700aed77bcf8ab49dcb8",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -30559,7 +30580,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "3b05069ece251c5a17406b61f4d5f69ae3074c99e4f5948059c851db83f60316",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -30658,7 +30679,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "d0612223f762a8d8367ff2447750a4bf0a9e2381bec2de75c6e0957a10330aca",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -31450,7 +31471,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "104febaed974942b6898858bff72831a4526a08e101b26df60f206ccba322c3f",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -31472,7 +31493,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "3b9d3aaa2960cb6e1f6ea8bb410c9e88f5f675841c0253b4300e4c7f71403c3c",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -31780,7 +31801,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "a72eced2b6204da3b2d021f4a21f196e106341bf7ef541c56a61ad786c762882",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -32022,7 +32043,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "b86a2d117b06f2f594ab9019b90badc0841bb8ab54c1f5f0377461d230d77311",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -34233,7 +34254,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "6e712c417c76b89d3b414df2b8543195cebd7329608169b3692eb4754625a981",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -34497,7 +34518,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "a4ad45d3d6844bc3cda6009ccfb3c60b3c7231292dc4076c3bd06f9b00679014",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -34552,7 +34573,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "b982d67b5ae7f3376984672bdd70c35a2a47f069113de1ad781adca07dfe5715",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -35047,7 +35068,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "6433314a9619ba71372e65a882b563da7ef29c4f543714f9f292df3d21e7fe12",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -35157,7 +35178,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "2a7c2293e929b75979e55b654c021ed844e6d33811b786102091958ac1929955",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -35927,7 +35948,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "5d7cbeeda657db6a246c446bf55cfc136ebcdd5884ba21daed54f390f562444d",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -36323,7 +36344,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "9960c402ee8cb93f7b393733d627cd3bf2a4a90c75421ed67529dc238baf0d48",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -36345,7 +36366,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "e875824c9b3e02b5d58e9e4667a286d13ea4e8479634b1e9ac06449d6fcc4a81",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -36367,7 +36388,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "3f298cf022dd01b8eca0947e76d5bb9b12c43e77a2dad9bea97bda6989c9d65c",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -36433,7 +36454,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "cbbafb879071aec8e34bbb7793ab8ea0619815c2758c3e41b9bc763019c21b63",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -36499,7 +36520,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "bf186d08b1adbc77c071043e814dcabdf45aa90b12f945b9ce92bfdcb542c589",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -37489,9 +37510,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,
@@ -38891,7 +38933,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "2c907fe1dbb77005073c7fc946c35ae14de92545f143f96d2d96f1503f460ed0",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -39254,7 +39296,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "cca54735610803cd66cd6f8e1d62a4e867b5752327348ca2ddc85502b83de2cf",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -39507,7 +39549,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "67f452eb0d7b67c1cb5d0b9765e217b9e00a6954a0bbf619185618687f842438",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -39727,7 +39769,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "3b05069ece251c5a17406b61f4d5f69ae3074c99e4f5948059c851db83f60316",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -39826,7 +39868,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "d0612223f762a8d8367ff2447750a4bf0a9e2381bec2de75c6e0957a10330aca",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -40618,7 +40660,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "098d6b949cdaa231e5f34fc11b9baf9cb7f4ff89216502f33f87abee03a92cde",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -40640,7 +40682,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "f5e309f0c0f15dc49fed8ae9dbdbc634a06970a8a1e85337f689d1509f34f073",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -40948,7 +40990,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "87f8a5b6e6440b87dfcb3efc685894aee6e446092ac54a9401065a56930f5de6",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -41190,7 +41232,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "b86a2d117b06f2f594ab9019b90badc0841bb8ab54c1f5f0377461d230d77311",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -43401,7 +43443,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "0b6ec6852a3101ba839964347e755358078cfd3db3445a749ac3d2ff7cace6e5",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -43665,7 +43707,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "0553330ad76e935adbcf2eb78b79ea52e338bd8d01368b45fa9c09a87bbf002c",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -43720,7 +43762,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "79d770dc2e9192c058ba115c798d70c37195217c327c6d622f72002cde00ac6e",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -44215,7 +44257,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "f8ba8c9a33dad2be3b422c203e7cd673c417c1ea2ae57eaac16dda45bcbec2db",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -44325,7 +44367,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "5c1d792b2da161e125f0ba9e456ede3dbded55f096deaeac4f84f2fb77838581",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -45095,7 +45137,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "69207a7be5a75b49a9f4689ab62c38fb75e1bd7826d5ffbefb157ae7032c4db5",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -45491,7 +45533,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "4e3c654105026785fc618c8af331005d2ce1c5c7bcae046a339de07e993b71d2",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -45513,7 +45555,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "f90c159e6d6624e32c87d69f844ca8ab827b791ba4442fb04d485f4bf5f52751",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -45535,7 +45577,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "27e32d7aa527f21b3c1ad9054e928538b502c45f399f1cad1f944d3d5a99f9db",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -45601,7 +45643,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "d26858bf906288ea58e81d4d0ea240ce8f74582723bd101164c9b5706922ce51",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -45667,7 +45709,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "c733a3297d0d8eb7fdd254ae93b571d587a7453b0ae7c089f70d624033fe67c2",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -46657,9 +46699,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,
@@ -48059,7 +48122,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "cb222995764b9938e5fca25df937a6f798ec7f39a82cefb5fb50162c72249148",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -48422,7 +48485,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "2217b5ceb891453fe13b977d41279fb9780febf35c9d92853318f1ef8a76949a",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -48675,7 +48738,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "baa4589c1362b6350bcd897a006d8032058bb14b193f6f56e2853e5bddfa8028",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -48895,7 +48958,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "b76cdc65bd3ea5db58cfd2efe814572cf0410558eb86ff9249e2ef374061bded",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -48994,7 +49057,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "b4658fb8494110e0d2e716569b038b59f19965ba7eccc99b269e1421a669e098",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -49786,7 +49849,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "18237705ef5cf839b1b4eaad65ff77a386d7a74c3c25ad71cf5427c1e06cf694",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -49808,7 +49871,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "e6b1ed0aeb94704bfcba1c2225fd7d98cd107281eda63aed6e48e6b9bc35ab6e",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -50116,7 +50179,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "6d9e3d5888a57dab8b8118d77180978eb76418cc9fc0a35d957f4e29f68deb37",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -50358,7 +50421,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "2231872e68967a1aa159fc4318d0e2882a7a04ed17780d530f1e7202593cdb90",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -52569,7 +52632,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "310b0b600a1694d41fa0e6801d7df5fd73ba8b2efc28df5512723bb97a2fa032",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -52833,7 +52896,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "992e373bc28653fbdd9f6d2f35fd979adc0fdf86d36b5ad545705b3caab59fb2",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -52888,7 +52951,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "b1359f37c2ceaccec5c2e17b364776905febda039f41f455b41bbc8de3490e58",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -53383,7 +53446,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "d9b30df8ce0d789175fd8465249dc5345fdf2b149dba623e7b3f7ef8a70f21b9",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -53493,7 +53556,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "1d9fb31828cd9891f7a29f3d526d00ad48265cf45ff3e0295fc09d8d1f4674f1",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -54263,7 +54326,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "2075c55af8223f012eedcf65b024ba061467492ecd1cc22fed13a266723466ff",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -54659,7 +54722,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "5d296814dffb76953ca7a0b5a269458e5e92a62aeb3750edd4aa5331993120ab",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -54681,7 +54744,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "69a3fbd12ad859eaa8c4037f46a9cb3b34e66c6d0510f61d5db353c68193d5be",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -54703,7 +54766,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "6132a1b106615c8c98e3346a71459ba8df8905a41b34b7e1440240c69d29d231",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -54769,7 +54832,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "35385101ec3e1b414b868d8a55f902be0cb1ce2f0f4e188ab32ed7bd5cb2a159",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -54835,7 +54898,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "75766b25b9107607f182e16af912be3ddfe2d3c0ca8f25af9ba11af522c6fcf2",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -55825,9 +55888,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,
@@ -57227,7 +57311,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "4acb3a925c21cf7236180fc943dd6944742ce59aff95d462cc534c6d98663427",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -57590,7 +57674,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "f4da5695b22e7d1c92ca2045f7fec7c505ad11a4ea9460f92c1fef462d36a492",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -57843,7 +57927,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "be01fcff4a76600459d2ae2f63808100f08761ff527f8c687c4f2dae596313c6",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -58063,7 +58147,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "f03e76bfb0db3b37913e1172d491b0ebf90989ca0f95466c206e3d2fd4c05582",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -58162,7 +58246,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "2e730c8b7829e3fe4ab15cafaf15f086f23bceda4749cedd806eab1871ca8600",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -58954,7 +59038,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "1eb58c2cf8e153b83df17be745e74dc5597a511753c7bf4ac8729e60d86b68a1",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -58976,7 +59060,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "cb59d07bfde75c54c816dadc8ed9a6f0fbfafad1b7b3c56e2c75958ad59fb5dd",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -59284,7 +59368,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "7ea45f2335d9499ba9cc304b70ce022f322233e7cab4a38a5e32e1a8f48a068f",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -59526,7 +59610,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "a5623df8bb1a34d29899a20a284fc15a1db778e120a6a26aec42cf2e12b812cb",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -61737,7 +61821,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "798f86aa66936fbb64e8ec9f64ae8abd42f9b4d56d1cb29d10feeb763e3299e7",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -62001,7 +62085,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "b716a6a67fce67a0d83cb7ecb4cde8ce28200bc12ed1cccd2efeb5f883b95f77",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -62056,7 +62140,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "2716edaee13793e7464f64001b356b938ce2f86ec72cd6d46d9ad6bc88549037",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -62551,7 +62635,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "f6aa97e61c7048b660f71a353acf361f91d4802915360095ecee08a101ba0874",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -62661,7 +62745,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "91a087cc8848a2d327849bff092475c1e31b7da98c93360b82591a8cf8ab6a6c",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -63431,7 +63515,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "d9c2fc712ca499c699646986dc1e63a3c5b0c6735aa2ea3800aad68d96bbac1e",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -63827,7 +63911,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "d2984b8d97d8a3165acb23d9a9f3bf3398bbda803acc7c9b5be7f13171af8c78",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -63849,7 +63933,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "057332990ba5589a853bbd957f8803809a048f5f0de44c6cb30c262e0b25e793",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -63871,7 +63955,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "01dcd3b3ead8c080827b8d56dee9947fa5cfbdc97922c73212206f0a3f1cd26e",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -63937,7 +64021,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "3eff21ba271eeb15cac84ec3f4133f323dc09ec31d5c324134a269cbc59481b9",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -64003,7 +64087,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "351ab2d73d45c8ad29a757712db331a1b71bb5642215fc5f258062a5792ef6f2",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.0/p8-1",
             "kind": "machine"
@@ -64993,9 +65077,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,
@@ -66395,7 +66500,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "11b2adbb76f23a5ce0692b14f0e415e32e4bd26991b09577173b48ea20354beb",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -66758,7 +66863,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "e316e7d09b674669ca062bbb6507e2432c7eea753cb66aa3c322b5de01540def",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -67011,7 +67116,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "9805ca695ae1884a196e767a079ea15eaa3618fbb691d5d5afa04e50f8996fe9",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -67231,7 +67336,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "96b23c88ccebaecfb9631bb552ba833b78158a8c68658fe28421aeda73b66621",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -67330,7 +67435,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "9cf0fb784276a3c3dc7d7cc71a59a63ef1962e6523f73c9c9af26e3aed482edc",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -68122,7 +68227,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "0dd7a07bb4ec14ccece91b4bfba6f631296933b39aeac37b0626d45b391b9d0e",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -68144,7 +68249,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "e5974e8dbe10c2193b4733293ef00eb7ee6e26f9d5c2c8a888f0c92620d37963",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -68452,7 +68557,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "099e5903a4cbf2065d1d5ef916561a2e5716b69f8d06e2b442e0fb4bf903d38a",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -68694,7 +68799,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "099c862601d2b8f34f4ee1d653d0573d335519adef3d308554d9cabd95f5ee35",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -70905,7 +71010,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "1ef03ac72acb30d71a89360724e6deb2eccb19539cc8850ef8c097b48601171a",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -71169,7 +71274,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "1153aa537d60069688885eb1ed44b739118d2688ddb0af2147dfb3e1e3c41e7c",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -71224,7 +71329,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "1afe2f8bb5b1e8fbfe7f99fb07e5d6ea5323648a326042ce4fd4321c0effc714",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -71719,7 +71824,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "f62c7199f4b8bf9e0635e8e53787019c0abd340cf794ec56b12a4b36db0e49ca",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -71829,7 +71934,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "086c5f2b336f70e69957627938f19e9698ec1ffe29ac7e037cf3988fde084833",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -72599,7 +72704,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "d3d092879eadfa210c2ee915ce25b76a8db3559b20d4473253a2596f69f2f20d",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -72995,7 +73100,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "78e167a6b1d58ed9c06df2c1a93b40d5066a1f9849e2ff9fbf67031c0846ad3b",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -73017,7 +73122,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "1b0ed5592ac425a7b20597f189fa551d08ae76dfcfae0797a4cdd61f0cd6ccc9",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -73039,7 +73144,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "68c74550a7ee54307ed63f3d5ff13d7c6422bbf7e1c75d081e0c28d78e7ce18c",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -73105,7 +73210,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "0313a1cd1f5887654dd4a4ae979ae016f53c47cc8e836455fba4d0f2c2c59dd5",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -73171,7 +73276,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "2709d216f22a3f7191cc61ccae08ed52c831313de4cd7c58b7f344bbc9073350",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -74161,9 +74266,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,
@@ -75563,7 +75689,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "0ca5e92d017bc42894074773d91d57dd7fcc670b160a2537ea2398f84829e7ec",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -75926,7 +76052,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "3a1855961d2ab4a5c553d391b23f492cdd6693b262b65a31bca54b767ba44611",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -76179,7 +76305,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "837e666af0fa0a7ed9f2b155692d6a1b0a4b5dd39d89401f1f20c6ec8c9c1b5f",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -76399,7 +76525,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "5503377e2c8e18a8ef46cb63b1e089aec870fe912c784ed5af668701eb11133d",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -76498,7 +76624,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "f8cdbae1145621cecf90a71acc662f7aeae4f0e19c48f79afef72bc3dce465d7",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -77290,7 +77416,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "0abd4323a985bf535f8745068193122327ef689ebea48b1fccbc1422b8ab6e57",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -77312,7 +77438,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "893097a948ad6dca425a0c879992d71783be5386b01274cbedc4660178b27d36",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -77620,7 +77746,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "041e56bce8d292a521bd33e075f43616e9ec41be685ade2d6371660704fe164f",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -77862,7 +77988,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "2a5e41d01eb1c76edc774f8036df03c13dbca77f8b6ca3b37f809bddec82be3e",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -80073,7 +80199,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "984505637434303b32517f00b815c5b539791c6fb2ad133c278dc33567e6b2e2",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -80337,7 +80463,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "c4118b9e2fe459bb464f8d8d7e15e3fb346327e3ee64f9112275e2967a7918ef",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -80392,7 +80518,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "c43504ea692469a6a1ef47c33710e7ada9932ce7e7a9005d64fd88afaaf1c76b",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -80887,7 +81013,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "ccc6306c712a54d6bc2244d5113f58c1b5b0e454bcc9834599a3c05fd0d4366e",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -80997,7 +81123,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "9a9e035a0ebd22d6c627623a7b2449fd9c59bdfde648f7d2a9ff30ad79779181",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -81767,7 +81893,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "e1cdfc728a1cd683dedb0415ff83b7eedc2c63fb6ef77b0597214aab1d7b2c6e",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -82163,7 +82289,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "6f9b06fe13a8006b2f33118a3cfbf8cff19791008095b469939e073f74edbbef",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -82185,7 +82311,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "53167310ef9b99905c27910f00e6551beb78b2eabb04fe02ebbcd936c7d230cb",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -82207,7 +82333,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "0a10456bf78a5259bfb74eaec6ac5e2c90d0775378e1c7892e3048e357abb2df",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -82273,7 +82399,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "ba64b31c196cbf8d75fbe2ab927082334ab8799830662f9c1961f0d1a635eb54",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -82339,7 +82465,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "92489a02d332f17ec3b6cc5e3a3063a55027e9d02abf642d5501b10456184d04",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -83329,9 +83455,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,
@@ -84729,14 +84876,14 @@
         },
         "gamehq.error.portable_import.commit_staged_file_failed": {
           "domain": "application",
-          "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
+          "source_hash": "bc68f092be2da5606117c4c819f2281e85f561c2509da5caedbc2b2bc458be93",
           "translation_hash": "57cfb2bbd0a38137d967c0b4fb0a931307a818822cb99d0e60fa0ff496e3d27b",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "gpt-5-independent-review-recovery"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-04T00:30:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.error.portable_import.config_malformed": {
           "domain": "application",
@@ -85092,14 +85239,14 @@
         },
         "gamehq.error.portable_import.local_folder_required": {
           "domain": "application",
-          "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
+          "source_hash": "fe6f0d290986e06ccc270db9e18571d4abc8f612c519c8ca74171b3d65aa50a1",
           "translation_hash": "4192c74dbc3f36f785716cd31b9d47b29e30f822b19c4591087cba3e1e7bd3f3",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "gpt-5-independent-review-recovery"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-04T00:30:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.error.portable_import.package_invalid": {
           "domain": "application",
@@ -85345,14 +85492,14 @@
         },
         "gamehq.error.update.capture_quiescence_timeout": {
           "domain": "application",
-          "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
+          "source_hash": "2c86b23ae3ce4b9cb92e1f2f6679382b868c4aa8569efb1b849c0265c2ae5759",
           "translation_hash": "c1ffbb0ebd11a663da59d65690a0f00e1beb33d845d5c8849c24238e17e7f0e0",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-pl-review"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-03T22:45:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.error.update.check_failed": {
           "domain": "application",
@@ -85565,14 +85712,14 @@
         },
         "gamehq.error.update.download.package_not_authorised": {
           "domain": "application",
-          "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
+          "source_hash": "fe4b276e533f85f21c722cce267949ad687a87ed5fb57b92251cd4c2d3ea9a53",
           "translation_hash": "0c1c6951edf6835eac483b892a831c9ea7e57ebf84a64733889b9700c03c95a1",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-pl-review"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-03T22:45:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.error.update.download.package_read_failed": {
           "domain": "application",
@@ -85664,14 +85811,14 @@
         },
         "gamehq.error.update.download.signature_untrusted": {
           "domain": "application",
-          "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
+          "source_hash": "c6349c776b57329e91fc4d0b01437e116d8e498d55dbc1994e81b2aa621296fa",
           "translation_hash": "5ef927db11499c81d6db0a7a90620a8a11caa0991d92bf1f87f921cb39f7d341",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-pl-review"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-03T22:45:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.error.update.download.signed_manifest_missing": {
           "domain": "application",
@@ -86456,14 +86603,14 @@
         },
         "gamehq.help.feature.replay.description": {
           "domain": "application",
-          "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
+          "source_hash": "6dd2f2b26272a4621082d69fccdd693ab23937cf9f40b521e6cfe7b2ac3320e1",
           "translation_hash": "91ba8c1a3b926302f9d27704f2689fee27b44a759b1c505ab1628cda8b4f57cb",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "gpt-5-independent-review-second-pass"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-04T01:15:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.help.feature.replay.title": {
           "domain": "application",
@@ -86478,14 +86625,14 @@
         },
         "gamehq.help.feature.screenshots.description": {
           "domain": "application",
-          "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
+          "source_hash": "602c3a6cc283b5c9a7700fe7c5a1c81a5dbadddf315056786f564e6fa6d7b9a8",
           "translation_hash": "40df3cf0694565cb023163fd5e7a5548af59d033dcb48351298001e35ec24387",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "gpt-5-independent-review-recovery"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-04T00:30:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.help.feature.screenshots.title": {
           "domain": "application",
@@ -86786,14 +86933,14 @@
         },
         "gamehq.help.keyboard.select_mode": {
           "domain": "application",
-          "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
+          "source_hash": "98193fbb3e46356f00a0883feffcfdd00985ddb185a343f2e2dfcbc97a905cad",
           "translation_hash": "69bbb4aa26e13edc5b934fbde4a2bd204cba79bb89f24e894c75e3957bb08c49",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "gpt-5-independent-review-recovery"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-04T00:30:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.help.keyboard.show_in_explorer": {
           "domain": "application",
@@ -87028,14 +87175,14 @@
         },
         "gamehq.input.assignment.pattern": {
           "domain": "application",
-          "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
+          "source_hash": "f1f049eaaaef76636bf921b0d4ee3abf0005c440d6199ad9b5a1b12cff76075e",
           "translation_hash": "a5eae3602f6e82648299f12012234f7c7899e305f8f260f9aef23a30ace27862",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "gpt-5-independent-review-recovery"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-04T00:30:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.input.assignment.pattern.combination": {
           "domain": "application",
@@ -89239,14 +89386,14 @@
         },
         "gamehq.settings.feedback.preview.description": {
           "domain": "application",
-          "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
+          "source_hash": "10b476758bf7ccc1518bc5cd8d968a00c538f63bec63abc1e130a7312fe7b169",
           "translation_hash": "15233f57eb6fffa9d7e9fade3fd4e0af38f205bff1a9ca07b643ba8430577ff2",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-pl-review"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-03T22:45:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.settings.feedback.preview.eyebrow": {
           "domain": "application",
@@ -89503,14 +89650,14 @@
         },
         "gamehq.settings.general.overlay_dimming.description": {
           "domain": "application",
-          "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
+          "source_hash": "e05bf20e681354c990b3cfafdef766992f4e1891703da73c84b8aa15582e2219",
           "translation_hash": "ff309b9ee2e8b74b763aee55ee130bc3057bae3f39cea94b991a275e1318d155",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-pl-review"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-03T22:45:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.settings.general.overlay_dimming.label": {
           "domain": "application",
@@ -89558,14 +89705,14 @@
         },
         "gamehq.settings.general.startup.description": {
           "domain": "application",
-          "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
+          "source_hash": "f5ec1437197695395063620b3a5ec85128c2bc1202215a884280d83bfac8271e",
           "translation_hash": "7e286f3d210b0b77a1cd96d945b156f4cae14ae077e8a264119dbd5a4a0506dc",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-pl-review"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-03T22:45:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.settings.general.startup.eyebrow": {
           "domain": "application",
@@ -90053,14 +90200,14 @@
         },
         "gamehq.settings.input.modern.guide.description": {
           "domain": "application",
-          "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
+          "source_hash": "cd55817fde3aac98596217abeca5cb738e32dfa703ae472b6f5238e7f77db421",
           "translation_hash": "d64a97bb349b866997191bf23a64359565a15798aef652fa1a9500053f1f3c3e",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "gpt-5-independent-review-recovery"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-04T00:30:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.settings.input.modern.guide.label": {
           "domain": "application",
@@ -90163,14 +90310,14 @@
         },
         "gamehq.settings.input.modern.support.description": {
           "domain": "application",
-          "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
+          "source_hash": "15875e6a1d3400e930c324c83acb0cdacb3658f24f6690a031002d08f01a2fce",
           "translation_hash": "820d9ba15bc29525001474168e4d9f5d11db4e2f23278ece82edb1459087585b",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "gpt-5-independent-review-recovery"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-04T00:30:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.settings.input.modern.support.label": {
           "domain": "application",
@@ -90933,14 +91080,14 @@
         },
         "gamehq.settings.portable_import.message": {
           "domain": "application",
-          "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
+          "source_hash": "5eacf210aca54af84f4efc739e778d2bf087b767bdcfa8278b1403deb136ceb9",
           "translation_hash": "3410e625bc11a479b208bd7b9e7582b121da45352e8152ef69cc1d554b3d6e5f",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "gpt-5-independent-review-recovery"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-04T00:30:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.settings.portable_import.title": {
           "domain": "application",
@@ -91329,14 +91476,14 @@
         },
         "gamehq.settings.theme.carbon.description": {
           "domain": "application",
-          "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
+          "source_hash": "5ca1b4026502c5e5affe9be8ec27c42f65d7cc0bdd8335863b7abb7dc3a80bf0",
           "translation_hash": "d5676b210f86a954b4577b4bee1b09a0a05523762bf10babf1ccabdbd692cd92",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-pl-review"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-03T22:45:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.settings.theme.carbon.label": {
           "domain": "application",
@@ -91351,14 +91498,14 @@
         },
         "gamehq.settings.theme.cobalt.description": {
           "domain": "application",
-          "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
+          "source_hash": "16ab41c3df28f03249bbbc7fa562e9ad1e4e8d5e4a358bb34b1ba401f6134ae1",
           "translation_hash": "8902de33627e375e2bc6b637ff1435a093640993b01c6aec64d02f6bd9324b0b",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-pl-review"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-03T22:45:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.settings.theme.cobalt.label": {
           "domain": "application",
@@ -91373,14 +91520,14 @@
         },
         "gamehq.settings.theme.dracula.description": {
           "domain": "application",
-          "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
+          "source_hash": "c1dad34f303ea70115dd6709fde19cb660bde2471550ede28a6a707c25e6afec",
           "translation_hash": "2c403222117a54f5adda3af831035c00ce07a60335f0e25a5a27c7b91e05a538",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-pl-review"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-03T22:45:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.settings.theme.dracula.label": {
           "domain": "application",
@@ -91439,14 +91586,14 @@
         },
         "gamehq.settings.theme.harbor.description": {
           "domain": "application",
-          "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
+          "source_hash": "62e11d61e969971c1f7e9e448dfd5b80adf56b3ef9ccce63cd0e793725c889c7",
           "translation_hash": "313cda1d3864bd3cc75f9e1dd00126ee481c253765c65cf4d0ac361b8fef0668",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-pl-review"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-03T22:45:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.settings.theme.harbor.label": {
           "domain": "application",
@@ -91505,14 +91652,14 @@
         },
         "gamehq.settings.theme.nord.description": {
           "domain": "application",
-          "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
+          "source_hash": "fc04cbd8af0530ea2c33b9541e4fe167b91120c228a6d79ac0e80755bc7ab183",
           "translation_hash": "06b29d417d592c5d16c7c5829dfcdb72edf2427eff894e6079ec47a22c793a3f",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-pl-review"
+            "actor": "codex-gpt-5-contextual-pl-review-source-reconciliation"
           },
-          "updated_at": "2026-09-03T22:45:00Z"
+          "updated_at": "2026-09-03T23:24:50Z"
         },
         "gamehq.settings.theme.nord.label": {
           "domain": "application",
@@ -93899,7 +94046,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "3b28afcb71727ee0f28c692be0b4d579d6fde306f48bd48d1c8463b750ce3ea5",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -94262,7 +94409,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "eb79cb2557991cecdc5d9b8f794200f3f6ac513ff912b598c4d1934ea6e5b2d8",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -94515,7 +94662,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "148ba69baec970776ea1b306fab231343ca22fca02d6313842d28bc3ff27b88d",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -94735,7 +94882,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "00108486a0e54152427c106994c6e3f3572b00e72083f3149065530ef2003cd4",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -94834,7 +94981,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "09d541412a09ab1467c1faa0df816838322b8e222b226416ad580ab00e06750b",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -95626,7 +95773,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "9285dec69b4999b70a866d316fcf9201040ab909b641cf7b4397851724d458df",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -95648,7 +95795,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "4b380e688f6c02c69f8f7a5cc75ed7b519d2ddb2a5ebe3887b16415c5450209c",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -95956,7 +96103,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "278f86155d1f7409bcd4ff1540efeae90dd8bf30b0135b61ecdaaf395d1ac466",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -96198,7 +96345,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "6255d67d6ac8452db3c736a525c711096abcc1cbb11a08e56ce1e21a3b2a0e36",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -98409,7 +98556,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "4842d4c31c038e9e9da46858ee29dd0ec9df1647fa246d4398fa93af7f1aaa25",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -98673,7 +98820,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "eca70481d017ec541e032a69a3253b82d60ea1ff1664483436bd3a3e9827208c",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -98728,7 +98875,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "5610f0b10f2ea8d4894927eea693faafcf53aba70b4212c057646314a125187a",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -99223,7 +99370,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "a95af09cf2d7031c19b84be574264a2207968ddf12857c11c3ecdca9ddf09443",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -99333,7 +99480,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "01b72c6d8baf19b26608b25fea400c297ab217f62598d891bb6cdba755eb431c",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -100103,7 +100250,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "516786d07b2e3e04aae00c746967b0b1930d598020ff63e133ac1121fb4d9aa1",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -100499,7 +100646,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "3ce4bca02fb59f795a46901be6809e3afae289958114cc376ece48a1432f59b7",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -100521,7 +100668,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "e7b7a36cd7aebab9b257331915cd4f2ee39bd178f6c7a5510e264bb9a62771e6",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -100543,7 +100690,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "2d6a86fbf6ff1e1cc56fd7713417f362ffd25eaa835e56cdd196fa4a7cb90151",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -100609,7 +100756,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "16007b28b42c306821223112b3443626b7d35c443d68c3766621dcd991e9e584",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -100675,7 +100822,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "a23db62b77c8ce6d8807ba1b80e8bf3eb81d3f8ce2c9a6bd0c7d3413c78f4fe9",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -101665,9 +101812,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,
@@ -103067,7 +103235,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "fd8c4f8c7e13b1ac66bdf79c99602e9a1f832106ce961bebee0143d9207d9e55",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -103430,7 +103598,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "69d015cd83f32388e8e5e25119a4b4c6c8457dfba722b490c03a513a17c0f2cf",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -103683,7 +103851,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "ed6a96c382f95dbfa6c73603f380d7a24da788975801699b3240fbcfa571a271",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -103903,7 +104071,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "8c1c2ff5d8ff6203aac0c7cea8ba2d7fecf7b95c480a6d96e2ad7d6966937949",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -104002,7 +104170,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "13997fa780a5a87e384214d1ac7d518cdc0c5c6e1bb5ada39609d540437466c3",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -104794,7 +104962,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "ac3a523ed06d483061db0a5495e8f545afdf7346186e45a9fc6fdb499cd13571",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -104816,7 +104984,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "07d0738a6b6b4b5fa32886f12629743c4fbee4adeda58e26f90b6302e89f30a6",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -105124,7 +105292,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "a9f3869c940f5c7a7859e653e412f5a9771aee84f31e55fc00c6e0c34f18db05",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -105366,7 +105534,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "c68e801806106aa0d87341df19e43c0dfe60d2d7bd0bf40c2eab280b2c79cfc8",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -107577,7 +107745,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "ba16f46fbc9b09ad55574261a8c71a5aa0b95fea49e2d7b135b1b53ddfbef136",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -107841,7 +108009,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "0a4b2d2f48c47ce61b42e40bfe5263f967f93a3577525b8455f1577dc20e7bf4",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -107896,7 +108064,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "2d5a4ab6c82d303dd1b499c7b93c02797a6119fc7bc4725a2acb055311c0a29b",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -108391,7 +108559,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "fd28aca3126f931724dbec60cc3cea9c135664af54010c55e2bfcb7e6f2da128",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -108501,7 +108669,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "847b4198975d9c566d0c803cf0f0a32c737541e088fcb20ee987750a8862a46b",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -109271,7 +109439,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "172d38fb863650abfd204e683a7de64a1be683561193f8c03218fdce200c3313",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -109667,7 +109835,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "fb464491d1855ed4d19d633dcdcb1478c85f7af63e7236bd022acc353c5b6dee",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -109689,7 +109857,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "c6771b67f36e31221c75e9bb047fbac1f6ea62aa35dce37f367c679822ff195f",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -109711,7 +109879,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "f50dfd30ad6af7a32727fca8ced6fba15e6535dd661175ceca4719d54b4798a5",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -109777,7 +109945,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "99d4fcf9d963ddb379b6ad686c8b1a669a61404f88e5d7a2c4c2ff3db95a50e5",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -109843,7 +110011,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "af3a2927543d6efbff9adeea76c9474e9eb065e223628d89ed39593789d4acde",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -110833,9 +111001,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,
@@ -112235,7 +112424,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "7b433ba43da983e44420483c7956a68f9faf9d0086a02a5f48079f812fc5b0b5",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -112598,7 +112787,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "4dcd98f4997c01c808a57b5cc5bed93f337a0afb6bdba6064717bbf2499464f4",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -112851,7 +113040,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "420b03d784204530088c661a7094dbbf4d8079515ab590ab3a0ebc4c4f9ea0a3",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -113071,7 +113260,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "d279065a06448f24a744bbe0d30b7406af913d6d9260589ab9c9af1ea52b9574",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -113170,7 +113359,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "a1099b3da10084ac4189a57626e048f2b57650ef8e9a645abd59ad061cd4be5a",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -113962,7 +114151,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "fe86455421aca48483ac59ca2e794b6243557a1f0f0b176c2ee0be9fbf55a199",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -113984,7 +114173,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "0d98f06023d9c08cf2b75ab7f94545eaaa69eb4137f1a6c8b84816b6d4440ab9",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -114292,7 +114481,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "645a412be3d9e43bb31a3c1d29c1f60450bf44eee5ba3622c0cd424c8cbffbfa",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -114534,7 +114723,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "204cdd179242f870a26acb7d91940e3223f191e43d3c3aae7837f9fafccce1e1",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -116745,7 +116934,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "9efdcf2c632a11f3616e1e820dcba0def6deb3cb1c0db685923956eb64e812ce",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -117009,7 +117198,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "902fbee1b093d83d320ba656b415ce46d4fa271709de7e6c1a5f50a5c23bbc97",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -117064,7 +117253,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "608d3093e92273a82a2a5db4416f0d2446a6a29da893b9f82875aac117c6ee55",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -117559,7 +117748,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "9271426e62dc933da4a293c534b2ddc555fccac6482b8ed8bf317da9ec6aea21",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -117669,7 +117858,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "7cc6f7eeab1a0c4ff166ce877b003c110cc3ff6fffe7c6a4900028708ba5d807",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -118439,7 +118628,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "f91653cea9499bd30ee29272bd91a20717633cdcc7a461c735cd16251567088a",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -118835,7 +119024,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "6642f43a1e48bce6a5f9c9183e0f788616177cadd4417ba3bf87bf482c0cf239",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -118857,7 +119046,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "69eddaf2c8b34ad616253585c13d6f0fe8333d35cfe2c7a7f69a7ba1437ee25d",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -118879,7 +119068,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "f4d0c4632129f7c43607b8886fff3631dc97222a452a4e7909dd501016ec091b",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -118945,7 +119134,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "07f25f47c693385834e5a2a6123f6aff81a86c0b9500848c9dbd519ffa2b31d0",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -119011,7 +119200,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "6451e8959f5d24a83daa42c08011d373bd603df77dc97d0c2165888e0b1f5d24",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.9/p8-1",
             "kind": "machine"
@@ -120001,9 +120190,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,
@@ -121403,7 +121613,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "90ad9570e5972c638299474f6ff24ddefa020477240b3f0f621f0b24f6ab767a",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -121766,7 +121976,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "b52504d6561cac02c0e6bd8e23d894a8597b4b4000f9ed034aeaa73386f55ece",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -122019,7 +122229,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "4f2ce15ab56d5ea3a3eda3268c3356c853c0d03220f4eda5bb31d5ffd21d7489",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -122239,7 +122449,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "eb16cc8b3dc0f58456d1a850c6e210da4aee4db2173e58670be8d7db7e2fb235",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -122338,7 +122548,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "4fcd8fa4563bb596a546911837825067b2397cadfab803d25b528b55dfa2e3fe",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -123130,7 +123340,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "a75c0f23b71747741ce27a9739053487d607d94ecd8ad1cae4624b8c101772ed",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -123152,7 +123362,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "ed4799ea35ee7874a7e7bbe6a3f0690b0224c4d872bff3eb2f576b403c92d8f1",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -123460,7 +123670,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "959868f15220f2d1bc3848a7c35792609ccf68542ac9e4f180903ec23a73531a",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -123702,7 +123912,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "1eead605c8e8e7debb416cdbab3a71ea1d53816f9504a0ecb7055db74ef5589c",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -125913,7 +126123,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "c4c57e2c10ce65cb2edc2bdcc695d516adfa8808c432291fbf61106113968e29",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -126177,7 +126387,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "bd0a2dedf11b14d4badf0e9c95f737af0b7705b2f53e58b154afba339e967b0b",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -126232,7 +126442,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "87d0121146dc109c6259881423a6bee3fb56c07b0278ecb4b2a8175481728e7c",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -126727,7 +126937,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "fab0fb19bf3881214cb3b022f6b52372fdc722cd8271f10b5e9936cbe2f1fcf7",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -126837,7 +127047,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "57187396252bd923b6b0608ea2f4f0a1490e7d15ed35277420dc240c249091c9",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -127607,7 +127817,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "43f82922b8d6ef1a937744a2a832ac2d177121ba505d791f856b3455bbe20143",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -128003,7 +128213,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "5d1a0ccd05eb6bfba7b58dbed3470fbc25f358a08f6cb5023f35b413986e7ec2",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -128025,7 +128235,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "f5ac9fb76ec09a742f180ce8c4e9360bb5596c81149e4751a9f6bed5143ded01",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -128047,7 +128257,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "fc3592f71f42e41d8915b66f2a13c71df274cab88cba0b2b0c3c486a9c179da6",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -128113,7 +128323,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "c025f8bb860ab247dd53d0c00a8a9595b94584fde267d19dc4504b8ae507555b",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -128179,7 +128389,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "a934d07fe3cab9dc09917ebd68a877f28a67846f17ac45448c232ed4796ff666",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -129169,9 +129379,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,
@@ -130571,7 +130802,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "de7809d61450bab6196482d38d7d7208689fc533b6b518abf48aa5c6bc401958",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -130934,7 +131165,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "9a3cf997720355537ee21303b174ac93a0d8dd2552ced529cca6c9e939917d64",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -131187,7 +131418,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "cd0c0cf4240f153ce4631fefc716c50f4abe7e53c532a951e53e9ce22b87bffe",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -131407,7 +131638,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "d64d3fcf6025145c85c94157c5c829a8a7a005983364418eeb8ad2ef69acdad8",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -131506,7 +131737,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "0d3c7f89c8b026a57a4e680523bedf246efa8e992ed30cd7f3c23372990a105d",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -132298,7 +132529,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "c2be36cf2246122b210b7e0c8a86b5a42715d3e9ff55d249c8488023dde9f3d3",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -132320,7 +132551,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "0e21c4d00891ee7b5047cc0aa02fd80f30420a23703cf162ffd1b4b2bd5feffa",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -132628,7 +132859,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "255cc7fdc54ddb129b43d0b2aedbccf9bdedd5ca1fbedee6d3a931519ffc0c7e",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -132870,7 +133101,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "6f446102a14531c6c250c3be735f57c23ac873c88ea563d39932b3505e3c2d61",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -135081,7 +135312,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "1eb0bbe63c0781483fc0e0bfd2433d533b60144bfc140345400d7c240575b606",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -135345,7 +135576,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "5ea3f55b8f2fc79b6c7d366c3d28a2b388c5fb92c574935acb031de0f3543401",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -135400,7 +135631,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "a391277137c44ef0542226a7bb732bd3b2dc1e3b65e6ac0d7f34dbb83be59443",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -135895,7 +136126,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "c7314a75319fe44ad329742f8c77a56f7c17cd495e6d10d0a42a9eb39d6a3ee8",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -136005,7 +136236,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "7f43afae806d779ef9f70f0eb19363ca44e7d5eff6aa356ef1e92db8c50ad4cb",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -136775,7 +137006,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "2c7174dbc74af7ac1b71e7f9717d62dd78c53097d9eb981f83bdce789f6f539d",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -137171,7 +137402,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "e2438c0811cfb57a292982bc7ab4930a81259aded84a8632619f2c6700a470dc",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -137193,7 +137424,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "e3b77b3f98f029979d769e62a10f892a7991f26954ceb405e17b9485046a51b2",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -137215,7 +137446,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "38b9d421d1f562b1317bc5eb7b451d2ea18e46a7a6f78acb1d6759697124d390",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -137281,7 +137512,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "d2753875f443c22d6349b1fb809621a0c748e64284442bcdf94fad26421e28db",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -137347,7 +137578,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "ec189c76d252e79544a0bddc1a6b893faa75812bebe1d99154b9a82ab60e550f",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "actor": "argos-translate-1.4/p8-1",
             "kind": "machine"
@@ -138337,9 +138568,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,
@@ -139739,7 +139991,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "f1345f9fd073a1ac61c68d2554aa971e09610d89dc00b6225bfd7387114f7df8",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -140102,7 +140354,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "383eb55522cc1ac70c4324d9560ed588114b0de6f618d36b14fe68739dab7a6a",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -140355,7 +140607,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "d31730a4c46d3c929ec0e861130001cd22daa369e8d5f009f4eea58ada455899",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -140575,7 +140827,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "07ae05900f4bc426cba6e8e8c50a76cf654db61523a5d28d07edafb5511a921b",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -140674,7 +140926,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "f98818b09f952c981f56620140e67f8ea226861db0c6653eae5c9c0da2734112",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -141466,7 +141718,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "05563d77379360238be92488d77f79a8a0dda097aaabe3156c17f991e87abe10",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -141488,7 +141740,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "382ea51f38375b335c168acefe3700cbd0e4b8d7251ef75c760beb2b5c75fe38",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -141796,7 +142048,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "8b7b3b2889a20b08ddbc032d6e37782d9bdf0f054c655db80a9c68c6e3da3c47",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -142038,7 +142290,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "8b6308145fcae3b08baee8021469b80277cd07b521488841e5db69ea6f25904e",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -144249,7 +144501,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "7c9433771058c37eb2a5bc1b57226648652d45e1caec69979d1b0c3c1ae91b27",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -144513,7 +144765,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "87f3f46316f9395dc1315f4a6e090cf24f01946675692e27fcb8762bf85fb20a",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -144568,7 +144820,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "51ac4393511033b72bc1396cf1d303a6d897d0da7436f89f1c00d1577c73742e",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -145063,7 +145315,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "18dd0f11a1e2bb7c469b321245e2b006e0edd6effc43439f4b68c884fbe02507",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -145173,7 +145425,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "afa1350b4c096df18156510d503cb5537e82ab7f73cb53d2556e07d0e4d9b4b5",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -145943,7 +146195,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "316346a4b23c0555fd5e754f6aa0097c660441052b277df34ba0d33a7964ead8",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -146339,7 +146591,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "49c9753396dea4a3c01b9f9770502a70f452adf8da805e7a30bf4128a468d370",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -146361,7 +146613,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "df4d5b9ab424b464097d34dc2f7d5b8f75bd33131b128537a7d54a103fae4712",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -146383,7 +146635,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "9559728234fa7f01095d5e3bc3ae5a54a1f31153c4e8be49a652c891e0eb6f3c",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -146449,7 +146701,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "aa09bde4b21b6a7c0e3205d6b6acc8f642acf90791010d3496c2d297ab180e95",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -146515,7 +146767,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "4435f68b607ed859f11b7e5d6dd62bb522f6e0515754165db404c83773853aa3",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -147505,9 +147757,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,
@@ -148907,7 +149180,7 @@
           "domain": "application",
           "source_hash": "484c38561ca41acb4bd76019c16b550ac144d670305608d39259015f12b0aa9f",
           "translation_hash": "171b5613b62fc76742a05d3293b098688a7a227347b1e5970f837825ce6ad37b",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -149270,7 +149543,7 @@
           "domain": "application",
           "source_hash": "bb77199121b602761b9244f3aa5a241f8818a0c6b52d6577552ac96973fd2f02",
           "translation_hash": "a2c4b387a899a0d718af9e875f5144431462b8ec8216f97bdc3fc16b3101cf90",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -149523,7 +149796,7 @@
           "domain": "application",
           "source_hash": "ed9705bddb60c415a3c6983d6c8b1dfd7819c750d99ad9e096f756b019af94ad",
           "translation_hash": "985eb30de14fb6019db15daa071555a80b1506b6a54bc76b9f797ab40aa76a49",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -149743,7 +150016,7 @@
           "domain": "application",
           "source_hash": "2c3252b740335ff38ac65fd2fb41d7fb6a34b06f797617f18c4a02eb30e54c83",
           "translation_hash": "3264654b23c5013874c403bb80f8fe6ead023f19dc3ef997ccc04b0fe089df47",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -149842,7 +150115,7 @@
           "domain": "application",
           "source_hash": "c0927e5c556ac1a365524c1154d8994a11469b50dd46dd4a62c0bebfe207579f",
           "translation_hash": "91278a022ee8af6b1ba634892727ade8da01cff1ff30a8ffe623870d2baeb930",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -150634,7 +150907,7 @@
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
           "translation_hash": "d9e749490e969321672d61f52b21a7314da550aa905c5fe16b377207105458c0",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -150656,7 +150929,7 @@
           "domain": "application",
           "source_hash": "0fe0f1e4b01cf2656067d9a9ab80afeed5a5c3f797f758736bd71216f3224d24",
           "translation_hash": "92907688528477e58aa843fdfa535322481dfa79e9982edbcfe660d77fd4e534",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -150964,7 +151237,7 @@
           "domain": "application",
           "source_hash": "d4fa6f5b5ab83800cc3f153635a466c057b18025e288f813821d92b06083a1d5",
           "translation_hash": "7bc0d3c81d2cdae63ed0009f7d5571169e49b3749da30eeab53ba47db7ea9aa5",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -151206,7 +151479,7 @@
           "domain": "application",
           "source_hash": "98fa2ffae1609e19222cbd01959351df981e72ea6c6efe035df76819c4dd0002",
           "translation_hash": "9b8873736fc7a880d65d19e736ff61e0895d173f0bbbcdad2ad6fc4f56180904",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -153417,7 +153690,7 @@
           "domain": "application",
           "source_hash": "7e945f0daa8a3bd491ef8f4872bcdced5ef43fcb0ef70e594dae795776ec057a",
           "translation_hash": "54360d8302820dac4245d208567fafd15ff2927a0772eefe189b93b5985f8887",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -153681,7 +153954,7 @@
           "domain": "application",
           "source_hash": "e121b9ef49dbb548af55b334e6af16f5291e2796430ebdc64740c08b32461a8b",
           "translation_hash": "8b6beee1fa73162e02bbd3c315d3fc5ff2c0968c6ef059695318acd0f9160f32",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -153736,7 +154009,7 @@
           "domain": "application",
           "source_hash": "287d0308294cc0ff6b65a8776572898d6c85438ec24d93b60c5c69705065ca16",
           "translation_hash": "d433ddf9cb10c1edbbc54f8dd49d664dbff2b433026b8d4da15b649045bc9de2",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -154231,7 +154504,7 @@
           "domain": "application",
           "source_hash": "ae3e04c874f77a0d71c9f3e558a60c01da54629621a7a9007a775f79ad94a356",
           "translation_hash": "06027e16a8fde4f1dadce97e92ac3f452bc65eaaf0c7471520c3735f4a41aee9",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -154341,7 +154614,7 @@
           "domain": "application",
           "source_hash": "133fee7a52dd10559275c5903635ce235a57ef55275bc355fba623046b440cba",
           "translation_hash": "62260d0251a89e6a42a9d5cd7e0a35df1313df84af36b931f8541030a92a2f11",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -155111,7 +155384,7 @@
           "domain": "application",
           "source_hash": "6e6d0c784f8ed583eaea4b42de0ee6de17a02cb759665b99e776982a3f9f4e1d",
           "translation_hash": "6b71116da937e2f12d6a4fe7c30154c1fa1fc059b1c7107f1c9a9df8c4213822",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -155507,7 +155780,7 @@
           "domain": "application",
           "source_hash": "94389f5d69c8636c842f17032074ee17af279d8255942d8dc3dad377a2c5a23b",
           "translation_hash": "a6f9b68b43b9b3c6c0138037eba016a6d0e03d358a6ada5db4e6024e45b8c260",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -155529,7 +155802,7 @@
           "domain": "application",
           "source_hash": "298f353d79d1fac93ae752ffe087bc1999cf031388ae32eb6c3a1ade5436998f",
           "translation_hash": "a100e573785412ea0a12fe4f6455ef92fda41193796609ef54a8c212880c193f",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -155551,7 +155824,7 @@
           "domain": "application",
           "source_hash": "7de0162a60f384c930f43a6214b2c23f3fc79dd92bbc20a9238a58f95ab34172",
           "translation_hash": "69d3a45b002fa7af6896b0df71c0393ebba73cba6d9937f19c4e6f537c98b446",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -155617,7 +155890,7 @@
           "domain": "application",
           "source_hash": "3300da49a4530d91bd8f9e4ba6a73ff246cd77ed0ad0a1b9fb48a82afd81440a",
           "translation_hash": "fb6fbd143ccf1be2058ca4c4782dc7450dd31beff5393dc4d036af890c6a143c",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -155683,7 +155956,7 @@
           "domain": "application",
           "source_hash": "70b56604046fc9c55f7d26d1d6e955667b1ef2611264d0190b284f20edebe481",
           "translation_hash": "e80a37234455602e1dd5c2b5731b654439abf5e26304ceba905eedb7042d990f",
-          "status": "machine_translated",
+          "status": "stale",
           "provenance": {
             "kind": "machine",
             "actor": "codex-nllb-1.3b-reviewed"
@@ -156673,9 +156946,30 @@
       "completeness": {
         "application": {
           "total": 831,
-          "current": 831,
+          "current": 811,
           "missing": [],
-          "stale": []
+          "stale": [
+            "gamehq.error.portable_import.commit_staged_file_failed",
+            "gamehq.error.portable_import.local_folder_required",
+            "gamehq.error.update.capture_quiescence_timeout",
+            "gamehq.error.update.download.package_not_authorised",
+            "gamehq.error.update.download.signature_untrusted",
+            "gamehq.help.feature.replay.description",
+            "gamehq.help.feature.screenshots.description",
+            "gamehq.help.keyboard.select_mode",
+            "gamehq.input.assignment.pattern",
+            "gamehq.settings.feedback.preview.description",
+            "gamehq.settings.general.overlay_dimming.description",
+            "gamehq.settings.general.startup.description",
+            "gamehq.settings.input.modern.guide.description",
+            "gamehq.settings.input.modern.support.description",
+            "gamehq.settings.portable_import.message",
+            "gamehq.settings.theme.carbon.description",
+            "gamehq.settings.theme.cobalt.description",
+            "gamehq.settings.theme.dracula.description",
+            "gamehq.settings.theme.harbor.description",
+            "gamehq.settings.theme.nord.description"
+          ]
         },
         "installer": {
           "total": 0,

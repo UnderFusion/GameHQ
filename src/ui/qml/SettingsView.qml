@@ -467,7 +467,7 @@ Item {
         z: 100
         //% "Import this portable profile?"
         title: qsTrId("gamehq.settings.portable_import.title")
-        //% "Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import."
+        //% "Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import."
         message: qsTrId("gamehq.settings.portable_import.message")
         //% "Import and restart"
         confirmLabel: qsTrId("gamehq.settings.portable_import.confirm")

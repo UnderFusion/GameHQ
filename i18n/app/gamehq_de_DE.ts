@@ -681,8 +681,9 @@
     </message>
     <message id="gamehq.error.portable_import.commit_staged_file_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
-      <source>Cannot commit staged %1.</source>
-      <translation>Kann nicht inszeniert werden %1- Ich weiß .</translation>
+      <source>Cannot commit staged file %1.</source>
+      <oldsource>Cannot commit staged %1.</oldsource>
+      <translation type="unfinished">Kann nicht inszeniert werden %1- Ich weiß .</translation>
     </message>
     <message id="gamehq.error.portable_import.config_malformed">
       <location filename="src/config/PortableProfileImporter.cpp" line="343"></location>
@@ -848,8 +849,9 @@
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
       <location filename="src/ui/AppController.cpp" line="200"></location>
-      <source>Select a local GameHQ portable folder.</source>
-      <translation>Wählen Sie ein lokales GameHQ - Ein tragbarer Ordner.</translation>
+      <source>Select a local folder containing portable GameHQ.</source>
+      <oldsource>Select a local GameHQ portable folder.</oldsource>
+      <translation type="unfinished">Wählen Sie ein lokales GameHQ - Ein tragbarer Ordner.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
       <location filename="src/ui/AppController.cpp" line="209"></location>
@@ -963,8 +965,9 @@
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
       <location filename="src/app/App.cpp" line="446"></location>
-      <source>The update was cancelled because capture work did not finish safely in time.</source>
-      <translation>Das Update wurde abgesagt, weil die Aufnahme nicht rechtzeitig abgeschlossen wurde.</translation>
+      <source>The update was canceled because capture work did not finish safely in time.</source>
+      <oldsource>The update was cancelled because capture work did not finish safely in time.</oldsource>
+      <translation type="unfinished">Das Update wurde abgesagt, weil die Aufnahme nicht rechtzeitig abgeschlossen wurde.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
       <location filename="src/updates/UpdateService.cpp" line="333"></location>
@@ -1063,8 +1066,9 @@
     </message>
     <message id="gamehq.error.update.download.package_not_authorised">
       <location filename="src/updates/UpdateDownloader.cpp" line="405"></location>
-      <source>The signed manifest does not authorise an update package.</source>
-      <translation>Das unterschriebene Manifest erlaubt kein Aktualisierungspaket.</translation>
+      <source>The signed manifest does not authorize an update package.</source>
+      <oldsource>The signed manifest does not authorise an update package.</oldsource>
+      <translation type="unfinished">Das unterschriebene Manifest erlaubt kein Aktualisierungspaket.</translation>
     </message>
     <message id="gamehq.error.update.download.package_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="514"></location>
@@ -1108,8 +1112,9 @@
     </message>
     <message id="gamehq.error.update.download.signature_untrusted">
       <location filename="src/updates/UpdateDownloader.cpp" line="387"></location>
-      <source>This release is not authorised by a trusted signature: %1</source>
-      <translation>Diese Freigabe ist nicht durch eine vertrauenswürdige Signatur autorisiert: %1</translation>
+      <source>This release is not authorized by a trusted signature: %1</source>
+      <oldsource>This release is not authorised by a trusted signature: %1</oldsource>
+      <translation type="unfinished">Diese Freigabe ist nicht durch eine vertrauenswürdige Signatur autorisiert: %1</translation>
     </message>
     <message id="gamehq.error.update.download.signed_manifest_missing">
       <location filename="src/updates/UpdateDownloader.cpp" line="88"></location>
@@ -1491,8 +1496,9 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     </message>
     <message id="gamehq.help.feature.replay.description">
       <location filename="src/ui/qml/HelpView.qml" line="306"></location>
-      <source>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
-      <translation>Immer eingeschaltet. Aufzeichnungen im Hintergrund, während ein Spiel im Fokus ist. Halten Sie die Last-Share-Taste (oder Ctrl+Shift+E) gedrückt, um die letzten Sekunden als Clip zu speichern. Schalten Sie die Aufnahme immer eingeschaltet in Einstellungen → Wiederholung ein oder aus.</translation>
+      <source>When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
+      <oldsource>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</oldsource>
+      <translation type="unfinished">Immer eingeschaltet. Aufzeichnungen im Hintergrund, während ein Spiel im Fokus ist. Halten Sie die Last-Share-Taste (oder Ctrl+Shift+E) gedrückt, um die letzten Sekunden als Clip zu speichern. Schalten Sie die Aufnahme immer eingeschaltet in Einstellungen → Wiederholung ein oder aus.</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
       <location filename="src/ui/qml/HelpView.qml" line="304"></location>
@@ -1501,8 +1507,9 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     </message>
     <message id="gamehq.help.feature.screenshots.description">
       <location filename="src/ui/qml/HelpView.qml" line="312"></location>
-      <source>GDI grab of the active game window. PNG saved to your captures folder with instant shutter feedback.</source>
-      <translation>GDI-Grab des aktiven Spielfensters. PNG gespeichert in Ihrem Aufnahmen-Ordner mit sofortigem Verschlussfeedback.</translation>
+      <source>Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.</source>
+      <oldsource>GameHQ captures the active game window through GDI, saves a PNG to your captures folder, and confirms the screenshot immediately.</oldsource>
+      <translation type="unfinished">GDI-Grab des aktiven Spielfensters. PNG gespeichert in Ihrem Aufnahmen-Ordner mit sofortigem Verschlussfeedback.</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
       <location filename="src/ui/qml/HelpView.qml" line="310"></location>
@@ -1642,8 +1649,9 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     </message>
     <message id="gamehq.help.keyboard.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="88"></location>
-      <source>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</source>
-      <translation>Einfügen / Platz wechselt, Ctrl+A wählt alle aus, Löschen entfernt ausgewählt</translation>
+      <source>Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items</source>
+      <oldsource>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</oldsource>
+      <translation type="unfinished">Einfügen / Platz wechselt, Ctrl+A wählt alle aus, Löschen entfernt ausgewählt</translation>
     </message>
     <message id="gamehq.help.keyboard.show_in_explorer">
       <location filename="src/ui/qml/HelpView.qml" line="98"></location>
@@ -1757,8 +1765,9 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     </message>
     <message id="gamehq.input.assignment.pattern">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="197"></location>
-      <source>Pattern</source>
-      <translation>Muster</translation>
+      <source>Type</source>
+      <oldsource>Pattern</oldsource>
+      <translation type="unfinished">Muster</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.combination">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="209"></location>
@@ -2041,6 +2050,8 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>Wählen Sie einen Ordner aus , den Sie ansehen möchten</translation>
     </message>
     <message id="gamehq.navigation.about">
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="162"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="194"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="143"></location>
       <source>About</source>
       <translation>Über</translation>
@@ -2105,6 +2116,8 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>Einstellungen</translation>
     </message>
     <message id="gamehq.navigation.support_gamehq">
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="164"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="196"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="178"></location>
       <source>Support GameHQ</source>
       <translation>GameHQ unterstützen</translation>
@@ -2805,8 +2818,9 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     </message>
     <message id="gamehq.settings.feedback.preview.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
-      <source>Confirm notifications and sound without creating a capture.</source>
-      <translation>Bestätigen Sie Benachrichtigungen und Sound ohne Erstellung einer Aufnahme.</translation>
+      <source>Preview notifications and sounds without creating a capture.</source>
+      <oldsource>Confirm notifications and sound without creating a capture.</oldsource>
+      <translation type="unfinished">Bestätigen Sie Benachrichtigungen und Sound ohne Erstellung einer Aufnahme.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
@@ -2925,8 +2939,9 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     </message>
     <message id="gamehq.settings.general.overlay_dimming.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="81"></location>
-      <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible.</source>
-      <translation>Wie stark die In-Game-Overlay das Spiel dahinter verdunkelt. 100% ist die eigene Dimming des Themas; niedriger hält mehr des Spiels sichtbar.</translation>
+      <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
+      <oldsource>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible.</oldsource>
+      <translation type="unfinished">Wie stark die In-Game-Overlay das Spiel dahinter verdunkelt. 100% ist die eigene Dimming des Themas; niedriger hält mehr des Spiels sichtbar.</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="79"></location>
@@ -2950,8 +2965,9 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     </message>
     <message id="gamehq.settings.general.startup.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
-      <source>Choose whether GameHQ follows your Windows sign-in and opens quietly.</source>
-      <translation>Wählen Sie aus, ob GameHQ Ihrer Windows Anmeldung folgt und leise geöffnet wird.</translation>
+      <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
+      <oldsource>Choose whether GameHQ follows your Windows sign-in and opens quietly.</oldsource>
+      <translation type="unfinished">Wählen Sie aus, ob GameHQ Ihrer Windows Anmeldung folgt und leise geöffnet wird.</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="94"></location>
@@ -3177,8 +3193,9 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
-      <source>View versus true Share, probe results, reconnects, gestures, and combinations</source>
-      <translation>Anzeige gegen wahr Teilen, Sondenergebnisse, Wiederverbindungen, Gesten und Kombinationen</translation>
+      <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
+      <oldsource>View versus true Share, probe results, reconnects, gestures, and combinations</oldsource>
+      <translation type="unfinished">Anzeige gegen wahr Teilen, Sondenergebnisse, Wiederverbindungen, Gesten und Kombinationen</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="645"></location>
@@ -3227,8 +3244,9 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     </message>
     <message id="gamehq.settings.input.modern.support.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="581"></location>
-      <source>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</source>
-      <translation>Auto verwendet App-local GameInput mit sicherem Legacy-Fallback; ausschaltet nur die Legacy-Anbieter.</translation>
+      <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
+      <oldsource>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</oldsource>
+      <translation type="unfinished">Auto verwendet App-local GameInput mit sicherem Legacy-Fallback; ausschaltet nur die Legacy-Anbieter.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="579"></location>
@@ -3585,8 +3603,9 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     </message>
     <message id="gamehq.settings.portable_import.message">
       <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
-      <source>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
-      <translation>Nur ein frisch installiertes Profil wird akzeptiert. Portable Aufnahmen bleiben, wo sie sind, die Quelle wird nie geändert, und GameHQ wird neu gestartet, um den Import abzuschließen.</translation>
+      <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
+      <oldsource>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</oldsource>
+      <translation type="unfinished">Nur ein frisch installiertes Profil wird akzeptiert. Portable Aufnahmen bleiben, wo sie sind, die Quelle wird nie geändert, und GameHQ wird neu gestartet, um den Import abzuschließen.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
       <location filename="src/ui/qml/SettingsView.qml" line="469"></location>
@@ -3766,8 +3785,9 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     </message>
     <message id="gamehq.settings.theme.carbon.description">
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="7"></location>
-      <source>Layered neutral greys and one bright blue. Minimal to a fault.</source>
-      <translation>Neutrale Grautöne und ein hellblaues.</translation>
+      <source>Layered neutral grays and one bright blue. Minimal to a fault.</source>
+      <oldsource>Layered neutral greys and one bright blue. Minimal to a fault.</oldsource>
+      <translation type="unfinished">Neutrale Grautöne und ein hellblaues.</translation>
     </message>
     <message id="gamehq.settings.theme.carbon.label">
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="5"></location>
@@ -3776,8 +3796,9 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     </message>
     <message id="gamehq.settings.theme.cobalt.description">
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="7"></location>
-      <source>Soft greys, indigo accent, pill-round and very fast.</source>
-      <translation>Weiches Grau, Indigo-Akzent, pillenrund und sehr schnell.</translation>
+      <source>Soft grays, an indigo accent, pill-shaped controls, and quick transitions.</source>
+      <oldsource>Soft greys, indigo accent, pill-round and very fast.</oldsource>
+      <translation type="unfinished">Weiches Grau, Indigo-Akzent, pillenrund und sehr schnell.</translation>
     </message>
     <message id="gamehq.settings.theme.cobalt.label">
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="5"></location>
@@ -3786,8 +3807,9 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     </message>
     <message id="gamehq.settings.theme.dracula.description">
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="7"></location>
-      <source>Purple-grey base with bright candy accents.</source>
-      <translation>Lila-graue Basis mit leuchtenden Süßigkeiten.</translation>
+      <source>Purple-gray base with bright candy accents.</source>
+      <oldsource>Purple-grey base with bright candy accents.</oldsource>
+      <translation type="unfinished">Lila-graue Basis mit leuchtenden Süßigkeiten.</translation>
     </message>
     <message id="gamehq.settings.theme.dracula.label">
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="5"></location>
@@ -3816,8 +3838,9 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     </message>
     <message id="gamehq.settings.theme.harbor.description">
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="8"></location>
-      <source>Flat blue-grey with squared edges. Chrome gets out of the way.</source>
-      <translation>Flach blaugrau mit quadratischen Kanten.</translation>
+      <source>Flat blue-gray with squared edges. Chrome gets out of the way.</source>
+      <oldsource>Flat blue-grey with squared edges. Chrome gets out of the way.</oldsource>
+      <translation type="unfinished">Flach blaugrau mit quadratischen Kanten.</translation>
     </message>
     <message id="gamehq.settings.theme.harbor.label">
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="6"></location>
@@ -3846,8 +3869,9 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     </message>
     <message id="gamehq.settings.theme.nord.description">
       <location filename="src/ui/qml/themes/NordSkin.qml" line="7"></location>
-      <source>Desaturated arctic blue-greys. Calm and low-contrast.</source>
-      <translation>Ungesättigtes arktisches Blaugrau, ruhig und kontrastlos.</translation>
+      <source>Desaturated arctic blue-grays. Calm and low-contrast.</source>
+      <oldsource>Desaturated arctic blue-greys. Calm and low-contrast.</oldsource>
+      <translation type="unfinished">Ungesättigtes arktisches Blaugrau, ruhig und kontrastlos.</translation>
     </message>
     <message id="gamehq.settings.theme.nord.label">
       <location filename="src/ui/qml/themes/NordSkin.qml" line="5"></location>

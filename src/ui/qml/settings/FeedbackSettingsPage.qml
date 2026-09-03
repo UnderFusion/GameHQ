@@ -83,7 +83,7 @@ SettingsPage {
         //% "Test the current feedback settings"
         title: qsTrId("gamehq.settings.feedback.preview.title")
         variant: "compact"
-        //% "Confirm notifications and sound without creating a capture."
+        //% "Preview notifications and sounds without creating a capture."
         description: qsTrId("gamehq.settings.feedback.preview.description")
         SettingsRow {
             //% "Preview feedback"

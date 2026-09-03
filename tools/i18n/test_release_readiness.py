@@ -55,9 +55,10 @@ class ReleaseReadinessTest(unittest.TestCase):
             self.assertEqual(expected_ids, [entry["id"] for entry in value["required_surfaces"]], locale)
             self.assertTrue(all(entry["catalog_translation_hash"]
                                 for entry in value["required_surfaces"]), locale)
-            if locale == "pl-PL":
+            review_path = ROOT / f"i18n/quality/reviews/{locale}.json"
+            if review_path.is_file():
                 self.assertEqual("contextually_reviewed", value["linguistic_qa"]["state"])
-                self.assertEqual("i18n/quality/reviews/pl-PL.json",
+                self.assertEqual(f"i18n/quality/reviews/{locale}.json",
                                  value["linguistic_qa"]["artifact"]["path"])
             else:
                 self.assertEqual(

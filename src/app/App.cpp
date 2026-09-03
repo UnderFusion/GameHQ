@@ -442,9 +442,9 @@ bool App::init()
         m_framePump->cancelUpdatePreparation();
         m_updates->cancelPreparation(NativeText::get(
             //: Update installation error shown when active capture work cannot stop safely.
-            //% "The update was cancelled because capture work did not finish safely in time."
+            //% "The update was canceled because capture work did not finish safely in time."
             QT_TRID_NOOP("gamehq.error.update.capture_quiescence_timeout"),
-            "The update was cancelled because capture work did not finish safely in time."));
+            "The update was canceled because capture work did not finish safely in time."));
         qWarning() << "Update preparation timed out; update cancelled without stopping capture work";
     });
     auto maybeAutoCheckForUpdate = [this] {

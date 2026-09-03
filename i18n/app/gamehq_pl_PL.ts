@@ -683,7 +683,7 @@
     </message>
     <message id="gamehq.error.portable_import.commit_staged_file_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
-      <source>Cannot commit staged %1.</source>
+      <source>Cannot commit staged file %1.</source>
       <translation>Nie można zatwierdzić przygotowanego pliku %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_malformed">
@@ -850,7 +850,7 @@
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
       <location filename="src/ui/AppController.cpp" line="200"></location>
-      <source>Select a local GameHQ portable folder.</source>
+      <source>Select a local folder containing portable GameHQ.</source>
       <translation>Wybierz lokalny folder przenośnej wersji GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
@@ -965,7 +965,7 @@
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
       <location filename="src/app/App.cpp" line="446"></location>
-      <source>The update was cancelled because capture work did not finish safely in time.</source>
+      <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Aktualizacja została anulowana, ponieważ operacje przechwytywania nie zakończyły się bezpiecznie na czas.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
@@ -1065,7 +1065,7 @@
     </message>
     <message id="gamehq.error.update.download.package_not_authorised">
       <location filename="src/updates/UpdateDownloader.cpp" line="405"></location>
-      <source>The signed manifest does not authorise an update package.</source>
+      <source>The signed manifest does not authorize an update package.</source>
       <translation>Podpisany manifest nie autoryzuje żadnego pakietu aktualizacji.</translation>
     </message>
     <message id="gamehq.error.update.download.package_read_failed">
@@ -1110,7 +1110,7 @@
     </message>
     <message id="gamehq.error.update.download.signature_untrusted">
       <location filename="src/updates/UpdateDownloader.cpp" line="387"></location>
-      <source>This release is not authorised by a trusted signature: %1</source>
+      <source>This release is not authorized by a trusted signature: %1</source>
       <translation>To wydanie nie zostało autoryzowane zaufanym podpisem: %1</translation>
     </message>
     <message id="gamehq.error.update.download.signed_manifest_missing">
@@ -1496,7 +1496,7 @@ Tej operacji nie można cofnąć.</numerusform>
     </message>
     <message id="gamehq.help.feature.replay.description">
       <location filename="src/ui/qml/HelpView.qml" line="306"></location>
-      <source>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
+      <source>When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
       <translation>Bufor działa stale i uzbraja się automatycznie. Nagrywa w tle, gdy okno gry jest aktywne. Przytrzymaj Share (lub Ctrl+Shift+E), aby zapisać kilka ostatnich sekund jako klip. Stałe nagrywanie możesz włączyć lub wyłączyć w Ustawieniach → Powtórki.</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
@@ -1506,7 +1506,7 @@ Tej operacji nie można cofnąć.</numerusform>
     </message>
     <message id="gamehq.help.feature.screenshots.description">
       <location filename="src/ui/qml/HelpView.qml" line="312"></location>
-      <source>GDI grab of the active game window. PNG saved to your captures folder with instant shutter feedback.</source>
+      <source>Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.</source>
       <translation>Aktywne okno gry jest przechwytywane przez GDI. Plik PNG trafia do folderu zrzutów ekranu, a wykonanie zrzutu jest od razu sygnalizowane.</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
@@ -1647,7 +1647,7 @@ Tej operacji nie można cofnąć.</numerusform>
     </message>
     <message id="gamehq.help.keyboard.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="88"></location>
-      <source>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</source>
+      <source>Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items</source>
       <translation>Enter / Spacja przełącza zaznaczenie, Ctrl+A zaznacza wszystko, Delete usuwa zaznaczone.</translation>
     </message>
     <message id="gamehq.help.keyboard.show_in_explorer">
@@ -1762,7 +1762,7 @@ Tej operacji nie można cofnąć.</numerusform>
     </message>
     <message id="gamehq.input.assignment.pattern">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="197"></location>
-      <source>Pattern</source>
+      <source>Type</source>
       <translation>Typ</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.combination">
@@ -2046,6 +2046,8 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
       <translation>Wybierz folder do obserwowania</translation>
     </message>
     <message id="gamehq.navigation.about">
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="162"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="194"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="143"></location>
       <source>About</source>
       <translation>Info</translation>
@@ -2110,6 +2112,8 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
       <translation>Ustawienia</translation>
     </message>
     <message id="gamehq.navigation.support_gamehq">
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="164"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="196"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="178"></location>
       <source>Support GameHQ</source>
       <translation>Wesprzyj GameHQ</translation>
@@ -2810,7 +2814,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.settings.feedback.preview.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
-      <source>Confirm notifications and sound without creating a capture.</source>
+      <source>Preview notifications and sounds without creating a capture.</source>
       <translation>Sprawdź powiadomienia i dźwięki bez tworzenia materiału.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
@@ -2930,7 +2934,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.settings.general.overlay_dimming.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="81"></location>
-      <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible.</source>
+      <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
       <translation>Określ, jak mocno nakładka przyciemnia grę w tle. 100% oznacza przyciemnienie zdefiniowane przez motyw; niższa wartość pozostawia grę lepiej widoczną.</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
@@ -2955,7 +2959,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.settings.general.startup.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
-      <source>Choose whether GameHQ follows your Windows sign-in and opens quietly.</source>
+      <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
       <translation>Wybierz, czy GameHQ ma uruchamiać się po zalogowaniu do Windows i pozostawać w tle.</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
@@ -3182,7 +3186,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
-      <source>View versus true Share, probe results, reconnects, gestures, and combinations</source>
+      <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
       <translation>Różnica między przyciskiem View a prawdziwym przyciskiem Share, wyniki testu, ponowne połączenia, gesty i kombinacje.</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
@@ -3232,7 +3236,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.settings.input.modern.support.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="581"></location>
-      <source>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</source>
+      <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
       <translation>Tryb Auto używa lokalnego modułu GameInput z bezpiecznym awaryjnym przełączeniem na starsze mechanizmy obsługi; tryb Wyłączony korzysta wyłącznie ze starszych mechanizmów obsługi.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
@@ -3592,7 +3596,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.settings.portable_import.message">
       <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
-      <source>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
+      <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
       <translation>Import jest możliwy tylko do czystego profilu instalacyjnego. Materiały profilu przenośnego pozostają na miejscu, źródło nie jest modyfikowane, a GameHQ uruchamia się ponownie, aby dokończyć import.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
@@ -3773,7 +3777,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.settings.theme.carbon.description">
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="7"></location>
-      <source>Layered neutral greys and one bright blue. Minimal to a fault.</source>
+      <source>Layered neutral grays and one bright blue. Minimal to a fault.</source>
       <translation>Warstwowe neutralne szarości i pojedynczy jasnoniebieski akcent. Bezkompromisowy minimalizm.</translation>
     </message>
     <message id="gamehq.settings.theme.carbon.label">
@@ -3783,7 +3787,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.settings.theme.cobalt.description">
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="7"></location>
-      <source>Soft greys, indigo accent, pill-round and very fast.</source>
+      <source>Soft grays, an indigo accent, pill-shaped controls, and quick transitions.</source>
       <translation>Miękkie szarości, akcent w kolorze indygo, mocno zaokrąglone elementy i bardzo szybkie animacje.</translation>
     </message>
     <message id="gamehq.settings.theme.cobalt.label">
@@ -3793,7 +3797,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.settings.theme.dracula.description">
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="7"></location>
-      <source>Purple-grey base with bright candy accents.</source>
+      <source>Purple-gray base with bright candy accents.</source>
       <translation>Fioletowoszare tło z jaskrawymi, cukierkowymi akcentami.</translation>
     </message>
     <message id="gamehq.settings.theme.dracula.label">
@@ -3823,7 +3827,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.settings.theme.harbor.description">
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="8"></location>
-      <source>Flat blue-grey with squared edges. Chrome gets out of the way.</source>
+      <source>Flat blue-gray with squared edges. Chrome gets out of the way.</source>
       <translation>Płaskie odcienie niebieskiego i szarości z prostokątnymi krawędziami. Interfejs pozostaje dyskretny.</translation>
     </message>
     <message id="gamehq.settings.theme.harbor.label">
@@ -3853,7 +3857,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.settings.theme.nord.description">
       <location filename="src/ui/qml/themes/NordSkin.qml" line="7"></location>
-      <source>Desaturated arctic blue-greys. Calm and low-contrast.</source>
+      <source>Desaturated arctic blue-grays. Calm and low-contrast.</source>
       <translation>Przygaszone arktyczne błękity i szarości. Spokojny, niski kontrast.</translation>
     </message>
     <message id="gamehq.settings.theme.nord.label">

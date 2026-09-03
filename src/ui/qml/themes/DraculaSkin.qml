@@ -3,7 +3,7 @@
 Skin {
     //% "Dracula"
     label: qsTrId("gamehq.settings.theme.dracula.label")
-    //% "Purple-grey base with bright candy accents."
+    //% "Purple-gray base with bright candy accents."
     blurb: qsTrId("gamehq.settings.theme.dracula.description")
 
     bg0:        "#21222C"
