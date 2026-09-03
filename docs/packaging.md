@@ -115,6 +115,16 @@ registry, and mutex identifiers, then exercises fresh install, upgrade,
 maintenance refusal, silent exits, uninstall, and critical locale selection
 without modifying an existing GameHQ installation.
 
+The installer-to-application language handoff is generated from
+`i18n/locales.json`. On a genuinely fresh installed profile, Setup writes the
+semantic locale to the per-user `BootstrapLanguage` registry value and records
+`BootstrapLanguageOffered`. The application validates and persists the value
+once, then removes only `BootstrapLanguage`; the marker prevents later upgrades
+or reinstalls from recreating it. Existing profiles and explicit `system`
+preferences win, while portable targets never receive bootstrap state. Setup
+never edits `config.json`. `test-installer-bootstrap.ps1` exercises all sixteen
+mappings and the one-shot precedence rules using isolated registry/profile data.
+
 Setup targets x64-compatible Windows 10 1903 or newer and installs per-user
 without elevation. It publishes the complete version, publisher, support,
 updates and uninstall-icon metadata. It never force-closes GameHQ or restarts

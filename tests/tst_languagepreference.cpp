@@ -7,8 +7,10 @@
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QSettings>
 #include <QTemporaryDir>
 #include <QTest>
+#include <QUuid>
 #include <memory>
 
 class FakeBootstrapStore final : public LanguageBootstrapStore
@@ -104,6 +106,35 @@ private slots:
                  QStringLiteral("pl-PL"));
         QVERIFY(!bootstrap.present());
         QCOMPARE(bootstrap.removals, 1);
+    }
+
+    void registryProducerConsumerRoundTripIsOneShot()
+    {
+        const QString registryPath = QStringLiteral(
+            "HKEY_CURRENT_USER\\Software\\underfusion\\GameHQ-LanguagePreferenceTests-")
+            + QUuid::createUuid().toString(QUuid::WithoutBraces);
+        QSettings registry(registryPath, QSettings::NativeFormat);
+        registry.setValue(QStringLiteral("BootstrapLanguage"), QStringLiteral("pl_PL"));
+        registry.setValue(QStringLiteral("BootstrapLanguageOffered"), 1);
+        registry.sync();
+        QCOMPARE(registry.status(), QSettings::NoError);
+
+        auto locales = this->registry();
+        ConfigManager config(configPath());
+        QVERIFY(config.load());
+        RegistryLanguageBootstrapStore bootstrap(registryPath);
+        LanguagePreference preference(&config, locales.get());
+
+        QCOMPARE(preference.initialLanguage(bootstrap, false), QStringLiteral("pl-PL"));
+        QCOMPARE(savedConfig().value(ConfigKeys::UiLanguage).toString(),
+                 QStringLiteral("pl-PL"));
+        registry.sync();
+        QVERIFY(!registry.contains(QStringLiteral("BootstrapLanguage")));
+        QCOMPARE(registry.value(QStringLiteral("BootstrapLanguageOffered")).toInt(), 1);
+
+        registry.clear();
+        registry.sync();
+        QCOMPARE(registry.status(), QSettings::NoError);
     }
 
     void existingExplicitPreferenceWins()

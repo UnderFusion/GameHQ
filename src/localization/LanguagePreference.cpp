@@ -15,8 +15,9 @@ constexpr auto kBootstrapValue = "BootstrapLanguage";
 constexpr auto kSystemLanguage = "system";
 }
 
-RegistryLanguageBootstrapStore::RegistryLanguageBootstrapStore()
-    : m_settings(QString::fromLatin1(kRegistryPath), QSettings::NativeFormat)
+RegistryLanguageBootstrapStore::RegistryLanguageBootstrapStore(const QString &registryPath)
+    : m_settings(registryPath.isEmpty() ? QString::fromLatin1(kRegistryPath) : registryPath,
+                 QSettings::NativeFormat)
 {
 }
 

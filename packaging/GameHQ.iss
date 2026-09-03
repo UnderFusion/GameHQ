@@ -36,6 +36,9 @@
 #ifndef UpdaterMutexValue
   #define UpdaterMutexValue "Local\GameHQUpdaterActive"
 #endif
+#ifndef BootstrapProfileRelativePath
+  #define BootstrapProfileRelativePath "GameHQ\config.json"
+#endif
 
 [Setup]
 AppId={{#InstallerAppId}
@@ -112,11 +115,76 @@ const
   { Same window as the staleAfter default in maintenance::inspect. }
   MaintenanceStaleAfterSecs = 300;
 
+var
+  BootstrapWasOffered: Boolean;
+  BootstrapHadValue: Boolean;
+  BootstrapExistingInstall: Boolean;
+  BootstrapExistingProfile: Boolean;
+
 procedure GetSystemTimeAsFileTime(var FileTime: TFileTime);
   external 'GetSystemTimeAsFileTime@kernel32.dll stdcall';
 
 procedure ExitProcess(ExitCode: Integer);
   external 'ExitProcess@kernel32.dll stdcall';
+
+#include "generated\InnoLanguageBootstrap.iss"
+
+function InitializeSetup: Boolean;
+begin
+  Result := True;
+  BootstrapWasOffered := RegValueExists(HKCU, '{#ProductRegistryKey}',
+    'BootstrapLanguageOffered');
+  BootstrapHadValue := RegValueExists(HKCU, '{#ProductRegistryKey}',
+    'BootstrapLanguage');
+  BootstrapExistingInstall :=
+    RegValueExists(HKCU, '{#ProductRegistryKey}', 'InstallLocation') or
+    RegValueExists(HKCU, '{#ProductRegistryKey}', 'Version');
+  BootstrapExistingProfile := FileExists(
+    ExpandConstant('{userappdata}\{#BootstrapProfileRelativePath}'));
+end;
+
+procedure FinalizeLanguageBootstrap;
+var
+  AppLocale: String;
+begin
+  { A portable profile owns its locale entirely inside the package. }
+  if FileExists(ExpandConstant('{app}\portable.flag')) then
+    Exit;
+
+  { A pending first-launch value survives upgrades. Once the app consumes it,
+    the marker remains and Setup must never recreate the value. }
+  if BootstrapWasOffered then
+    Exit;
+
+  { Pre-existing installs/profiles predate the marker, while a bare value is
+    stale or foreign state. Suppress the offer and discard only that stale
+    value; never inspect or edit config.json. }
+  if BootstrapExistingInstall or BootstrapExistingProfile or BootstrapHadValue then
+  begin
+    if BootstrapHadValue and
+       not RegDeleteValue(HKCU, '{#ProductRegistryKey}', 'BootstrapLanguage') then
+      Log('Could not discard stale BootstrapLanguage; the app will validate it.');
+    if not RegWriteDWordValue(HKCU, '{#ProductRegistryKey}',
+       'BootstrapLanguageOffered', 1) then
+      Log('Could not record that the installer language offer was suppressed.');
+    Exit;
+  end;
+
+  AppLocale := CanonicalLocaleForInstallerLanguage(ActiveLanguage);
+  if (AppLocale <> '') and
+     not RegWriteStringValue(HKCU, '{#ProductRegistryKey}',
+       'BootstrapLanguage', AppLocale) then
+    Log('Could not write BootstrapLanguage; the app will use its normal fallback.');
+  if not RegWriteDWordValue(HKCU, '{#ProductRegistryKey}',
+     'BootstrapLanguageOffered', 1) then
+    Log('Could not record that the installer language was offered.');
+end;
+
+procedure CurStepChanged(CurStep: TSetupStep);
+begin
+  if CurStep = ssPostInstall then
+    FinalizeLanguageBootstrap;
+end;
 
 procedure FailSilent(ExitCode: Integer);
 begin

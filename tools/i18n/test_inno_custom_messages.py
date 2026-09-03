@@ -156,8 +156,11 @@ def validate_repository(message_manifest: dict, locale_manifest: dict, locales: 
     include = '#include "generated\\InnoCustomMessages.iss"'
     if include not in script:
         fail("GameHQ.iss does not include generated CustomMessages")
-    if "ActiveLanguage" in script:
-        fail("GameHQ.iss contains forbidden locale branching")
+    allowed_active_language = "CanonicalLocaleForInstallerLanguage(ActiveLanguage)"
+    if script.count(allowed_active_language) != 1 or "ActiveLanguage" in script.replace(
+        allowed_active_language, ""
+    ):
+        fail("GameHQ.iss contains forbidden handwritten locale branching")
     for consumer in message_manifest["required_consumers"]:
         if script.count(consumer["needle"]) != 1:
             fail(f"{consumer['location']} does not consume {consumer['key']} exactly once")

@@ -103,6 +103,13 @@ in a generated development registry only (see section 8).
   the text itself falls back, and vice-versa is not permitted to drift: formatting follows
   the locale that owns the displayed string.
 
+The installed first-launch handoff follows the same registry. Setup maps its selected Inno
+language to the canonical semantic tag through a generated table and offers that value once.
+The application validates it through `LocaleRegistry`, persists it only when `ui.language`
+is absent, and clears the transient value. A retained offer marker prevents upgrades or
+reinstalls from replaying it; existing profiles, explicit `system`, and portable mode always
+win. Setup reads neither the preference value nor the contents of `config.json`.
+
 ## 4. Glossary and do-not-translate policy
 
 Brand, identifiers, and technical protocol names are **never translated**. The do-not-translate

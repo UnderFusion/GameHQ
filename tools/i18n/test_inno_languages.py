@@ -139,15 +139,41 @@ def main() -> int:
     if generated.count('Name: "') != 16:
         fail("generated [Languages] section does not contain sixteen entries")
 
+    bootstrap_path = ROOT / "packaging" / "generated" / "InnoLanguageBootstrap.iss"
+    bootstrap = bootstrap_path.read_text(encoding="utf-8")
+    if bootstrap != generator.render_bootstrap(locale_manifest):
+        fail("generated Inno application-locale bootstrap mapping is stale")
+    mapped = dict(
+        re.findall(
+            r"CompareText\(Language, '([^']+)'\) = 0 then\s+Result := '([^']+)'",
+            bootstrap,
+        )
+    )
+    expected_mapping = {
+        locale["inno_language"]: locale["inno_app_locale"]
+        for locale in locales.values()
+    }
+    if mapped != expected_mapping:
+        fail("installer-to-application locale mapping is incomplete or ambiguous")
+    if "en-XA" in bootstrap or "ar-XB" in bootstrap:
+        fail("pseudo-locales leaked into the installer bootstrap mapping")
+
     script = (ROOT / "packaging" / "GameHQ.iss").read_text(encoding="utf-8")
     if '#include "generated\\InnoLanguages.iss"' not in script:
         fail("GameHQ.iss does not consume the generated language mapping")
+    if '#include "generated\\InnoLanguageBootstrap.iss"' not in script:
+        fail("GameHQ.iss does not consume the generated application-locale mapping")
     if '#include "generated\\InnoCustomMessages.iss"' not in script:
         fail("GameHQ.iss does not consume generated custom messages")
     if "WelcomeLabel1={cm:GameHQWelcomeTitle}" not in script:
         fail("GameHQ welcome text does not use CustomMessages")
     build_script = (ROOT / "packaging" / "build-setup.ps1").read_text(encoding="utf-8")
-    for marker in ("generate_inno_languages.py", "test_inno_languages.py", "--require-compiler"):
+    for marker in (
+        "generate_inno_languages.py",
+        "InnoLanguageBootstrap.iss",
+        "test_inno_languages.py",
+        "--require-compiler",
+    ):
         if marker not in build_script:
             fail(f"installer build does not enforce {marker}")
 

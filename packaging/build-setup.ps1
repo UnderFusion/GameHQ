@@ -19,16 +19,21 @@ if (-not (Test-Path -LiteralPath $compiler -PathType Leaf)) {
 $python = (Get-Command python -ErrorAction Stop).Source
 $localeManifest = Join-Path $root 'i18n\locales.json'
 $languageInclude = Join-Path $PSScriptRoot 'generated\InnoLanguages.iss'
+$languageBootstrapInclude = Join-Path $PSScriptRoot 'generated\InnoLanguageBootstrap.iss'
 $languageGenerator = Join-Path $root 'tools\i18n\generate_inno_languages.py'
 $languageAudit = Join-Path $root 'tools\i18n\test_inno_languages.py'
+$languageBootstrapAudit = Join-Path $root 'tools\i18n\test_inno_bootstrap.py'
 $customMessageManifest = Join-Path $PSScriptRoot 'i18n\custom-messages.json'
 $customMessageInclude = Join-Path $PSScriptRoot 'generated\InnoCustomMessages.iss'
 $customMessageGenerator = Join-Path $root 'tools\i18n\generate_inno_custom_messages.py'
 $customMessageAudit = Join-Path $root 'tools\i18n\test_inno_custom_messages.py'
-& $python $languageGenerator --manifest $localeManifest --output $languageInclude --check
+& $python $languageGenerator --manifest $localeManifest --output $languageInclude `
+    --bootstrap-output $languageBootstrapInclude --check
 if ($LASTEXITCODE -ne 0) { throw 'Generated Inno language mapping is stale.' }
 & $python $languageAudit --compiler-root (Split-Path -Parent $compiler) --require-compiler
 if ($LASTEXITCODE -ne 0) { throw 'Pinned Inno language qualification failed.' }
+& $python $languageBootstrapAudit
+if ($LASTEXITCODE -ne 0) { throw 'Installer language bootstrap qualification failed.' }
 & $python $customMessageGenerator --locales $localeManifest --messages $customMessageManifest --output $customMessageInclude --check
 if ($LASTEXITCODE -ne 0) { throw 'Generated Inno CustomMessages are stale.' }
 & $python $customMessageAudit

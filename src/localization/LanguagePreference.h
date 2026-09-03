@@ -17,12 +17,12 @@ public:
     virtual bool removeValue() = 0;
 };
 
-// One-time installer-to-application handoff. The installer side is added in a
-// later plan item; this class only reads and clears its narrowly scoped value.
+// One-time installer-to-application handoff. Setup writes only this narrowly
+// scoped value; the application validates, persists, and clears it.
 class RegistryLanguageBootstrapStore final : public LanguageBootstrapStore
 {
 public:
-    RegistryLanguageBootstrapStore();
+    explicit RegistryLanguageBootstrapStore(const QString &registryPath = {});
 
     bool hasValue() const override;
     QString value() const override;
