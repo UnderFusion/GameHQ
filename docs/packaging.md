@@ -110,13 +110,20 @@ Authenticode signer, and installs it in portable mode below `tools/`.
 payload. No web bootstrapper, service, scheduled task, Defender exclusion, or
 automatic HidHide elevation is part of Setup.
 
+`test-installer-regression.ps1` compiles the same script with isolated AppId,
+registry, and mutex identifiers, then exercises fresh install, upgrade,
+maintenance refusal, silent exits, uninstall, and critical locale selection
+without modifying an existing GameHQ installation.
+
 Setup targets x64-compatible Windows 10 1903 or newer and installs per-user
 without elevation. It publishes the complete version, publisher, support,
 updates and uninstall-icon metadata. It never force-closes GameHQ or restarts
 it through Restart Manager. Silent automation treats all nonzero Inno codes as
-failure. GameHQ reserves code `20` for a running application and `21` for an
-active update/recovery transaction; trust and payload gates are added by their
-owning release task. The accepted GameHQ process holds
+failure. Silent Setup reserves code `20` for a running application and `21` for
+an active update/recovery transaction. Inno's cloned Uninstall process exposes
+only success (`0`) versus a nonzero refusal/failure; callers must not infer a
+specific reason from its nonzero value. Trust and payload gates are added by
+their owning release task. The accepted GameHQ process holds
 `Local\GameHQApplicationActive` for its whole lifetime. Setup and Uninstall use
 the matching Inno `AppMutex`, never ask Restart Manager to terminate the
 process, and require a normal user-initiated shutdown before replacing files.

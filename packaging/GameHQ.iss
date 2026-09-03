@@ -16,6 +16,26 @@
 #ifndef SetupBaseName
   #error SetupBaseName is required
 #endif
+; Release builds use these defaults. The focused installer regression harness
+; overrides them to keep its HKCU keys and mutexes isolated from a real install.
+#ifndef ProductRegistryKey
+  #define ProductRegistryKey "Software\underfusion\GameHQ"
+#endif
+#ifndef AppPathRegistryKey
+  #define AppPathRegistryKey "Software\Microsoft\Windows\CurrentVersion\App Paths\GameHQ.exe"
+#endif
+#ifndef RunRegistryKey
+  #define RunRegistryKey "Software\Microsoft\Windows\CurrentVersion\Run"
+#endif
+#ifndef RunRegistryValue
+  #define RunRegistryValue "GameHQ"
+#endif
+#ifndef ApplicationMutexValue
+  #define ApplicationMutexValue "Local\GameHQApplicationActive"
+#endif
+#ifndef UpdaterMutexValue
+  #define UpdaterMutexValue "Local\GameHQUpdaterActive"
+#endif
 
 [Setup]
 AppId={{#InstallerAppId}
@@ -71,10 +91,10 @@ Name: "{autodesktop}\GameHQ"; Filename: "{app}\GameHQ.exe"; Tasks: desktopicon
 Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Additional shortcuts:"; Flags: unchecked
 
 [Registry]
-Root: HKCU; Subkey: "Software\underfusion\GameHQ"; ValueType: string; ValueName: "InstallLocation"; ValueData: "{app}"
-Root: HKCU; Subkey: "Software\underfusion\GameHQ"; ValueType: string; ValueName: "Version"; ValueData: "{#AppVersion}"
-Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\App Paths\GameHQ.exe"; ValueType: string; ValueName: ""; ValueData: "{app}\GameHQ.exe"
-Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\App Paths\GameHQ.exe"; ValueType: string; ValueName: "Path"; ValueData: "{app}"
+Root: HKCU; Subkey: "{#ProductRegistryKey}"; ValueType: string; ValueName: "InstallLocation"; ValueData: "{app}"
+Root: HKCU; Subkey: "{#ProductRegistryKey}"; ValueType: string; ValueName: "Version"; ValueData: "{#AppVersion}"
+Root: HKCU; Subkey: "{#AppPathRegistryKey}"; ValueType: string; ValueName: ""; ValueData: "{app}\GameHQ.exe"
+Root: HKCU; Subkey: "{#AppPathRegistryKey}"; ValueType: string; ValueName: "Path"; ValueData: "{app}"
 
 [Run]
 Filename: "{app}\GameHQ.exe"; Description: "Launch GameHQ"; Flags: nowait postinstall skipifsilent
@@ -109,7 +129,7 @@ begin
   if WizardSilent then
     Result := ''
   else
-    Result := 'Local\GameHQApplicationActive';
+    Result := '{#ApplicationMutexValue}';
 end;
 
 { The app and updater mutexes are per-session (Local\), so a copy of GameHQ
@@ -133,7 +153,7 @@ end;
 
 function ApplicationIsRunning(const AppDir: String): Boolean;
 begin
-  Result := CheckForMutexes('Local\GameHQApplicationActive')
+  Result := CheckForMutexes('{#ApplicationMutexValue}')
             or FileIsInUse(AppDir + '\app\GameHQ.exe')
             or FileIsInUse(AppDir + '\GameHQUpdater.exe');
 end;
@@ -174,7 +194,7 @@ begin
     Exit;   { finished work waiting to be cleaned up }
 
   Result := MaintenanceActive;
-  if CheckForMutexes('Local\GameHQUpdaterActive') then
+  if CheckForMutexes('{#UpdaterMutexValue}') then
     Exit;
 
   if FindFirst(Marker, FindRec) then
@@ -233,7 +253,9 @@ begin
 end;
 
 { Uninstall used to check only the application mutex, so it would happily
-  delete an installation out from under a running update. }
+  delete an installation out from under a running update. Inno's outer
+  uninstaller exposes only zero versus nonzero even when this inner clone exits
+  with a reserved reason code. }
 function InitializeUninstall: Boolean;
 var
   AppDir, Reason: String;
@@ -293,9 +315,9 @@ var
   Value: String;
   ProductKey, AppPathKey, RunKey: String;
 begin
-  ProductKey := 'Software\underfusion\GameHQ';
-  AppPathKey := 'Software\Microsoft\Windows\CurrentVersion\App Paths\GameHQ.exe';
-  RunKey := 'Software\Microsoft\Windows\CurrentVersion\Run';
+  ProductKey := '{#ProductRegistryKey}';
+  AppPathKey := '{#AppPathRegistryKey}';
+  RunKey := '{#RunRegistryKey}';
 
   if RegQueryStringValue(HKCU, ProductKey, 'InstallLocation', Value) and
      (CompareText(RemoveBackslashUnlessRoot(Value),
@@ -315,9 +337,9 @@ begin
     RegDeleteKeyIfEmpty(HKCU, AppPathKey);
   end;
 
-  if RegQueryStringValue(HKCU, RunKey, 'GameHQ', Value) and
+  if RegQueryStringValue(HKCU, RunKey, '{#RunRegistryValue}', Value) and
      CommandTargetsThisInstall(Value) then
-    RegDeleteValue(HKCU, RunKey, 'GameHQ');
+    RegDeleteValue(HKCU, RunKey, '{#RunRegistryValue}');
 end;
 
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);

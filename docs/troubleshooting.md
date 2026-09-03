@@ -18,8 +18,10 @@ https://github.com/underfusion/GameHQ/security/advisories/new.
 
 Close GameHQ normally from its tray menu and let active capture or clip work
 finish. Setup and Uninstall deliberately do not force-close the application.
-For silent automation, exit code `20` means the application mutex is active;
-exit code `21` means an updater or recovery transaction is active.
+For silent Setup automation, exit code `20` means the application mutex is
+active; exit code `21` means an updater or recovery transaction is active.
+Inno Uninstall reports only success (`0`) or a nonzero refusal/failure, so
+automation must not assign a specific cause to its nonzero value.
 
 ## A controller is hidden by HidHide
 

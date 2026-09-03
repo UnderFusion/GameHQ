@@ -5,6 +5,9 @@ SmartScreen setting, Smart App Control state, result, and screenshot filename.
 
 ## Automated or script-assisted mechanics
 
+- Run `packaging/test-installer-regression.ps1 -SetupPath <setup.exe>` for the
+  isolated fresh-install, upgrade, silent failure, recovery, locale-selection,
+  and uninstall baseline before the remaining clean-VM observations.
 - Install without elevation and into a custom directory.
 - Confirm Start Menu/Desktop shortcuts and uninstall registry metadata.
 - Upgrade an older Setup, reinstall, uninstall, and verify AppData/Captures remain.
