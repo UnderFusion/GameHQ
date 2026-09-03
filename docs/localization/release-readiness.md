@@ -51,7 +51,7 @@ Every translation or correction event must retain:
 - the bounded workflow or reviewer method and an opaque actor label;
 - translation and review states as separate facts;
 - an ISO-8601 timestamp when an event changes translated content or review
-  state;
+  state. Agent contextual review is recorded separately from human review;
 - the correction ledger reference when prior translated content changes.
 
 Actor labels identify a reproducible workflow, not a person or conversation.
@@ -74,10 +74,12 @@ Application and installer translation corrections are append-only records in
 - the current English source hash;
 - the previous and corrected translation hashes;
 - the reason, method, actor, timestamp, and commit;
-- either `pending_linguistic_qa` or `linguistically_accepted` review state.
+- `pending_linguistic_qa`, `contextually_reviewed`, or
+  `linguistically_accepted` review state.
 
-The validator checks the corrected hash against the current catalog. A record
-cannot claim `linguistically_accepted` unless its method is
+The validator checks the corrected hash against the current catalog. Agent
+review uses `agent_contextual_review` and remains distinguishable from human
+review. A record cannot claim `linguistically_accepted` unless its method is
 `human_contextual_review`; machine or structural checks cannot promote it.
 The Polish `gamehq.navigation.about` repair is the first concrete ledger entry.
 

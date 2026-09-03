@@ -13,6 +13,8 @@ import re
 import sys
 import xml.etree.ElementTree as ET
 
+import linguistic_qa
+
 
 ROOT = Path(__file__).resolve().parents[2]
 PRODUCTION_COUNT = 16
@@ -147,8 +149,13 @@ def validate_corrections(
         catalog_path = root / str(locale_entries[locale]["catalog"])
         if entry["after_translation_hash"] != catalog_translation_hash(catalog_path, message_id):
             raise ReadinessError(f"{label}: after hash does not match the current catalog")
-        if entry["review_state"] not in {"pending_linguistic_qa", "linguistically_accepted"}:
+        if entry["review_state"] not in {
+            "pending_linguistic_qa", "contextually_reviewed", "linguistically_accepted"
+        }:
             raise ReadinessError(f"{label}: invalid review state")
+        if entry["review_state"] == "contextually_reviewed" \
+                and entry["method"] != "agent_contextual_review":
+            raise ReadinessError(f"{label}: agent contextual review requires its explicit method")
         if entry["review_state"] == "linguistically_accepted" \
                 and entry["method"] != "human_contextual_review":
             raise ReadinessError(f"{label}: only human contextual review may record acceptance")
@@ -214,6 +221,19 @@ def build_evidence(root: Path) -> dict[str, object]:
                                 if isinstance(value, dict))
         provenance_counts = Counter(str(value.get("provenance", {}).get("kind"))
                                     for value in messages.values() if isinstance(value, dict))
+        review_path = root / f"i18n/quality/reviews/{tag}.json"
+        if review_path.is_file():
+            try:
+                review = linguistic_qa.validate_review(root, review_path)
+            except linguistic_qa.ReviewError as error:
+                raise ReadinessError(f"{tag}: invalid linguistic review: {error}") from error
+            qa = {
+                "state": str(review["review"]["state"]),
+                "authority": "p8-3",
+                "artifact": file_evidence(root, review_path.relative_to(root).as_posix()),
+            }
+        else:
+            qa = {"state": "pending", "authority": "p8-3", "artifact": None}
         locale_entries[tag] = {
             "catalog": catalog,
             "catalog_sha256": file_evidence(root, catalog)["sha256"],
@@ -223,7 +243,7 @@ def build_evidence(root: Path) -> dict[str, object]:
             "translation_state_counts": dict(sorted(status_counts.items())),
             "provenance_counts": dict(sorted(provenance_counts.items())),
             "required_surfaces": required,
-            "linguistic_qa": {"state": "pending", "authority": "p8-3", "artifact": None},
+            "linguistic_qa": qa,
         }
     validate_corrections(corrections, root, production_tags, extracted, locale_entries)
     evidence = {
@@ -245,7 +265,9 @@ def build_evidence(root: Path) -> dict[str, object]:
             file_evidence(root, "assets/release-notes/manifest.json"),
             file_evidence(root, f"assets/release-notes/versions/{version}/en-US.json"),
             file_evidence(root, "i18n/release/corrections.json"),
-        ],
+        ] + [file_evidence(root, f"i18n/quality/reviews/{tag}.json")
+             for tag in production_tags
+             if (root / f"i18n/quality/reviews/{tag}.json").is_file()],
         "portfolio": {
             "production_locales": production_tags,
             "development_only": list(PSEUDO_LOCALES),

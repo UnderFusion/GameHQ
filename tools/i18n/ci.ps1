@@ -40,6 +40,7 @@ $pythonChecks = @(
     @{ Label = 'auxiliary runtime and resource boundaries'; Script = 'test_auxiliary_surfaces.py' },
     @{ Label = 'CI wiring and stale-output regression'; Script = 'test_ci.py' }
     @{ Label = 'release-readiness governance and correction fixtures'; Script = 'test_release_readiness.py' }
+    @{ Label = 'contextual linguistic-review evidence'; Script = 'test_linguistic_qa.py' }
 )
 foreach ($check in $pythonChecks) {
     Invoke-Checked $check.Label $python @((Join-Path $PSScriptRoot $check.Script))

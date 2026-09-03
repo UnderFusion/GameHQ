@@ -130,9 +130,11 @@
           "required": ["state", "authority", "artifact"],
           "additionalProperties": false,
           "properties": {
-            "state": { "const": "pending" },
+            "state": { "enum": ["pending", "contextually_reviewed"] },
             "authority": { "const": "p8-3" },
-            "artifact": { "type": "null" }
+            "artifact": {
+              "anyOf": [{ "type": "null" }, { "$ref": "#/definitions/file" }]
+            }
           }
         }
       }

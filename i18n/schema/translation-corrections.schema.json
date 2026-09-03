@@ -34,7 +34,7 @@
         "method": { "type": "string", "minLength": 1 },
         "actor": { "type": "string", "minLength": 1 },
         "review_state": {
-          "enum": ["pending_linguistic_qa", "linguistically_accepted"]
+          "enum": ["pending_linguistic_qa", "contextually_reviewed", "linguistically_accepted"]
         },
         "recorded_at": { "type": "string", "format": "date-time" },
         "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" }

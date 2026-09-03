@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gamehq.local/schema/linguistic-review.schema.json",
+  "title": "GameHQ contextual linguistic review evidence",
+  "type": "object",
+  "required": [
+    "$schema", "schema_version", "locale", "source_locale", "candidate",
+    "review", "baseline", "reviewed", "coverage", "corrections", "surfaces",
+    "terminology_decisions", "calibration_rules", "unresolved"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": 1 },
+    "locale": { "type": "string", "minLength": 2 },
+    "source_locale": { "const": "en-US" },
+    "candidate": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "review": {
+      "type": "object",
+      "required": ["state", "authority", "reviewer_kind", "actor", "method", "draft_provider", "privacy", "recorded_at"],
+      "additionalProperties": false,
+      "properties": {
+        "state": { "const": "contextually_reviewed" },
+        "authority": { "const": "p8-3" },
+        "reviewer_kind": { "const": "agent" },
+        "actor": { "type": "string", "minLength": 1 },
+        "method": { "const": "complete_source_location_context_review" },
+        "draft_provider": { "type": "string", "minLength": 1 },
+        "privacy": { "const": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents" },
+        "recorded_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "baseline": { "$ref": "#/definitions/file" },
+    "reviewed": {
+      "allOf": [
+        { "$ref": "#/definitions/file" },
+        {
+          "type": "object",
+          "required": ["message_count"],
+          "properties": { "message_count": { "const": 831 } }
+        }
+      ]
+    },
+    "coverage": {
+      "type": "array", "minItems": 831, "maxItems": 831,
+      "items": {
+        "type": "object",
+        "required": ["id", "source_hash", "translation_hash", "locations", "decision"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^gamehq(\\.[a-z0-9][a-z0-9_-]*)+$" },
+          "source_hash": { "$ref": "#/definitions/hash" },
+          "translation_hash": { "$ref": "#/definitions/hash" },
+          "locations": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+          "decision": { "enum": ["accepted", "corrected"] }
+        }
+      }
+    },
+    "corrections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "surface", "before", "after", "category", "reason", "terminology_decision"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "surface": { "enum": ["application", "installer", "playnite", "release_notes"] },
+          "before": {}, "after": {},
+          "category": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 },
+          "terminology_decision": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "surfaces": {
+      "type": "array", "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["surface", "path", "sha256", "reviewed_units"],
+        "additionalProperties": false,
+        "properties": {
+          "surface": { "enum": ["application", "installer", "playnite", "release_notes"] },
+          "path": { "type": "string", "minLength": 1 },
+          "sha256": { "$ref": "#/definitions/hash" },
+          "reviewed_units": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "terminology_decisions": { "type": "array", "minItems": 8, "items": { "type": "string", "minLength": 1 } },
+    "calibration_rules": { "type": "array", "minItems": 5, "items": { "type": "string", "minLength": 1 } },
+    "unresolved": { "type": "array", "maxItems": 0 }
+  },
+  "definitions": {
+    "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "file": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/definitions/hash" }
+      }
+    }
+  }
+}

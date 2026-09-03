@@ -245,8 +245,8 @@
       "GameHQUpdateActive": "Trwa aktualizacja GameHQ%1. Poczekaj na jej zakończenie i spróbuj ponownie.",
       "GameHQUpdateStale": "Poprzednia aktualizacja GameHQ nie została ukończona%1. Uruchom GameHQ, aby dokończyć odzyskiwanie, a następnie spróbuj ponownie.",
       "GameHQNothingRemoved": "Nic nie zostało usunięte — instalacja pozostała nienaruszona.",
-      "GameHQSetupAppRunning": "GameHQ jest uruchomiony. Zamknij go w zwykły sposób — również w każdej innej sesji Windows — a następnie ponownie uruchom instalator.",
-      "GameHQUninstallAppRunning": "GameHQ jest uruchomiony. Przed odinstalowaniem zamknij go w zwykły sposób — również w każdej innej sesji Windows."
+      "GameHQSetupAppRunning": "GameHQ jest uruchomiony. Zamknij go normalnie — również w każdej innej sesji systemu Windows — a następnie ponownie uruchom instalator.",
+      "GameHQUninstallAppRunning": "GameHQ jest uruchomiony. Przed odinstalowaniem zamknij go normalnie — również w każdej innej sesji systemu Windows."
     },
     "ko-KR": {
       "GameHQWelcomeTitle": "GameHQ에 오신 것을 환영합니다",

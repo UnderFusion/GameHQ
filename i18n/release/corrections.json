@@ -10,10 +10,10 @@
       "before_translation_hash": "b3484084f938e66ea072788edd8d4b7bc50e5fc4db81d8a06dd1d18069fe3957",
       "after_translation_hash": "d687a0f6ab2e7148abf04ebe49deb929f9a7e98bfab84aa9240a876da14a546f",
       "reason": "Replace the malformed migrated sidebar label with the owner-requested compact Polish label.",
-      "method": "contextual_agent_review",
-      "actor": "codex-gpt-5-t23",
-      "review_state": "pending_linguistic_qa",
-      "recorded_at": "2026-09-03T20:27:42Z",
+      "method": "agent_contextual_review",
+      "actor": "codex-gpt-5-contextual-pl-review",
+      "review_state": "contextually_reviewed",
+      "recorded_at": "2026-09-03T22:45:00Z",
       "commit": "80603ff05ddc6b878869c99175c87067b9f82d30"
     }
   ]

@@ -372,10 +372,10 @@ def command_review(root: Path, args: argparse.Namespace) -> int:
         print(f"  provenance {kind}: {provenance[kind]}")
     print(f"  style guide authored: {style_is_authored(root, args.tag)}")
     print(f"  release-eligible: {entry.get('state') == 'enabled' and entry.get('tier') == 1}")
-    print("Generation never marks a message reviewed; only a human_reviewed provenance does.")
-    reviewed = counts.get("human_reviewed", 0)
+    print("Generation never marks a message reviewed; only contextual or human review does.")
+    reviewed = counts.get("contextually_reviewed", 0) + counts.get("human_reviewed", 0)
     total = sum(counts.values())
-    print(f"  human-reviewed coverage: {reviewed}/{total}")
+    print(f"  contextually-reviewed coverage: {reviewed}/{total}")
     return 0
 
 

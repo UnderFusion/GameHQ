@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
   <sys:String x:Key="LOCGameHQIntegrationName">Integracja GameHQ</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationSubtitle">Wtyczka towarzysząca dla Playnite</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationSubtitle">Wtyczka uzupełniająca do Playnite</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSectionConnection">Połączenie</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationConnectionDescription">Przekazuje oddzielnej aplikacji GameHQ informację o uruchomionej grze. GameHQ musi być zainstalowany osobno — ta wtyczka go nie pobiera ani nie instaluje.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationGameHQLocation">Lokalizacja GameHQ</sys:String>
@@ -23,10 +23,10 @@
   <sys:String x:Key="LOCGameHQIntegrationLogHint">Komunikaty wtyczki są zapisywane w głównym dzienniku Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLastErrorFormat">Ostatni błąd: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSectionAbout">O tej integracji</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ otrzymuje nazwę gry uruchomionej w Playnite, dzięki czemu wykrywanie i organizacja zrzutów są bardziej niezawodne. Nie nagrywa rozgrywki, nie wysyła danych ani niczego nie instaluje. GameHQ działa również bez Playnite.</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ otrzymuje nazwę gry uruchomionej w Playnite, dzięki czemu wykrywanie i organizowanie materiałów są bardziej niezawodne. Nie nagrywa rozgrywki, nie wysyła danych ani niczego nie instaluje. GameHQ działa również bez Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationNotConnected">(brak połączenia)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationGameHQNotFound">Nie znaleziono GameHQ na tym komputerze.</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationLocateHint">Zainstaluj GameHQ, a następnie użyj opcji „Znajdź GameHQ.exe...”, jeśli nadal nie zostanie wykryty.</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationLocateHint">Zainstaluj GameHQ, a jeśli nadal nie zostanie wykryty, użyj opcji „Znajdź GameHQ.exe...”.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSelectedManually">Wybrano ręcznie</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationDetectedAutomatically">Wykryto automatycznie</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationChangeLocation">Zmień lokalizację...</sys:String>
@@ -34,7 +34,7 @@
   <sys:String x:Key="LOCGameHQIntegrationProtocolCompatibleFormat">v{0} (zgodny)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationUnknown">(nieznany)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationNone">(brak)</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationInvalidInstallMessage">Ta lokalizacja nie wygląda na instalację GameHQ (oczekiwano obok pliku „app\GameHQ.exe”).</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationInvalidInstallMessage">Ta lokalizacja nie wygląda na instalację GameHQ (obok powinien znajdować się plik „app\GameHQ.exe”).</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationConfigurationPathMissing">Playnite nie podał ścieżki konfiguracji.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationCouldNotOpenFormat">Nie można otworzyć {0}: {1}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationTesting">Testowanie...</sys:String>

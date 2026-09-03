@@ -13,23 +13,23 @@
       "items": [
         {
           "id": "added-01",
-          "text": "GameHQ jest teraz dostępny w szesnastu językach interfejsu. Przy pierwszym uruchomieniu podąża za językiem systemu Windows, a inny możesz wybrać w ustawieniach."
+          "text": "GameHQ obsługuje teraz szesnaście języków interfejsu. Przy pierwszym uruchomieniu wybiera język na podstawie ustawień Windows; później możesz zmienić go w ustawieniach."
         },
         {
           "id": "added-02",
-          "text": "Zmiana języka działa natychmiast w całej aplikacji, łącznie z nakładką i menu w obszarze powiadomień, bez ponownego uruchamiania GameHQ. Twój wybór zostaje zapamiętany."
+          "text": "Zmiana języka działa natychmiast w całej aplikacji, w tym w nakładce i menu obszaru powiadomień, bez ponownego uruchamiania GameHQ. Wybrane ustawienie zostaje zapamiętane."
         },
         {
           "id": "added-03",
-          "text": "Instalator działa teraz w Twoim języku i przekazuje ten wybór do pierwszego uruchomienia GameHQ, dzięki czemu instalator i aplikacja nie są już rozbieżne."
+          "text": "Instalator jest teraz dostępny w wybranym języku i przekazuje ten wybór do pierwszego uruchomienia GameHQ, dzięki czemu używa tego samego języka co aplikacja."
         },
         {
           "id": "added-04",
-          "text": "Rozszerzenie Playnite oraz okna błędów programu uruchamiającego również zostały przetłumaczone."
+          "text": "Rozszerzenie Playnite i okna błędów programu uruchamiającego również są dostępne w wielu językach."
         },
         {
           "id": "added-05",
-          "text": "Nowości są pokazywane w Twoim języku zawsze, gdy istnieje przetłumaczona wersja tych informacji. Gdy jej nie ma, wyświetlany jest pełny tekst angielski, nigdy mieszanka języków."
+          "text": "Informacje o nowościach są wyświetlane w wybranym języku, gdy istnieje ich pełne tłumaczenie. W przeciwnym razie pojawia się cały tekst angielski — nigdy mieszanka języków."
         }
       ]
     },
@@ -39,7 +39,7 @@
       "items": [
         {
           "id": "changed-01",
-          "text": "Daty, liczby i liczebniki podążają teraz za wybranym językiem, a nie za ustawieniem systemowym."
+          "text": "Daty, liczby i formy liczebników są teraz zgodne z wybranym językiem, a nie z domyślnym ustawieniem systemu."
         }
       ]
     },

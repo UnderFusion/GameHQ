@@ -29,7 +29,8 @@ RESPONSE_UNIT_FIELDS = {
     "id", "source_hash", "translation", "translation_hash", "status", "provenance",
 }
 PRIOR_STATUSES = {
-    "missing", "machine_translated", "machine_verified", "human_reviewed", "stale",
+    "missing", "machine_translated", "machine_verified", "contextually_reviewed",
+    "human_reviewed", "stale",
     "intentionally_inherited",
 }
 

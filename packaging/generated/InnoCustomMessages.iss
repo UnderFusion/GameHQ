@@ -130,8 +130,8 @@ polish.GameHQStageDetail= (etap: %1)
 polish.GameHQUpdateActive=Trwa aktualizacja GameHQ%1. Poczekaj na jej zakończenie i spróbuj ponownie.
 polish.GameHQUpdateStale=Poprzednia aktualizacja GameHQ nie została ukończona%1. Uruchom GameHQ, aby dokończyć odzyskiwanie, a następnie spróbuj ponownie.
 polish.GameHQNothingRemoved=Nic nie zostało usunięte — instalacja pozostała nienaruszona.
-polish.GameHQSetupAppRunning=GameHQ jest uruchomiony. Zamknij go w zwykły sposób — również w każdej innej sesji Windows — a następnie ponownie uruchom instalator.
-polish.GameHQUninstallAppRunning=GameHQ jest uruchomiony. Przed odinstalowaniem zamknij go w zwykły sposób — również w każdej innej sesji Windows.
+polish.GameHQSetupAppRunning=GameHQ jest uruchomiony. Zamknij go normalnie — również w każdej innej sesji systemu Windows — a następnie ponownie uruchom instalator.
+polish.GameHQUninstallAppRunning=GameHQ jest uruchomiony. Przed odinstalowaniem zamknij go normalnie — również w każdej innej sesji systemu Windows.
 
 ; locale=ko-KR; fallback=en-US
 korean.GameHQWelcomeTitle=GameHQ에 오신 것을 환영합니다

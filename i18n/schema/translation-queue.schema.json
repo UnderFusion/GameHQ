@@ -53,7 +53,7 @@
         "accelerator_count": { "type": "integer", "minimum": 0 },
         "protected_tokens": { "type": "array", "items": { "type": "string", "minLength": 1 } },
         "prior_translation": { "$ref": "#/definitions/translation" },
-        "prior_status": { "enum": ["missing", "machine_translated", "machine_verified", "human_reviewed", "stale", "intentionally_inherited"] }
+        "prior_status": { "enum": ["missing", "machine_translated", "machine_verified", "contextually_reviewed", "human_reviewed", "stale", "intentionally_inherited"] }
       }
     }
   }

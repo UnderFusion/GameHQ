@@ -25,7 +25,7 @@
       "required": ["kind", "actor"],
       "additionalProperties": false,
       "properties": {
-        "kind": { "enum": ["none", "source", "unknown", "machine", "human", "inherited"] },
+        "kind": { "enum": ["none", "source", "unknown", "machine", "agent", "human", "inherited"] },
         "actor": { "type": ["string", "null"] }
       }
     },
@@ -40,7 +40,7 @@
           "anyOf": [{ "$ref": "#/definitions/hash" }, { "type": "null" }]
         },
         "status": {
-          "enum": ["missing", "machine_translated", "machine_verified", "human_reviewed", "stale", "intentionally_inherited"]
+          "enum": ["missing", "machine_translated", "machine_verified", "contextually_reviewed", "human_reviewed", "stale", "intentionally_inherited"]
         },
         "provenance": { "$ref": "#/definitions/provenance" },
         "updated_at": { "type": ["string", "null"], "format": "date-time" }

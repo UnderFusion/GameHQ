@@ -109,6 +109,26 @@ class VerifyTest(unittest.TestCase):
         result = self.run_verify("--release", expected=1)
         self.assertIn("enabled locale pl-PL/application is incomplete (3/5)", result.stderr)
 
+    def test_agent_contextual_review_state_is_preserved_and_validated(self) -> None:
+        self.run_verify("--update-state")
+        state = self.read_state()
+        entry = state["locales"]["pl-PL"]["messages"]["gamehq.fixture.unchanged"]
+        entry["status"] = "contextually_reviewed"
+        entry["provenance"] = {"kind": "agent", "actor": "fixture-context-review"}
+        entry["updated_at"] = "2026-09-03T22:45:00Z"
+        self.state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
+        self.run_verify("--update-state")
+        self.assertEqual(
+            "contextually_reviewed",
+            self.read_state()["locales"]["pl-PL"]["messages"]
+            ["gamehq.fixture.unchanged"]["status"],
+        )
+
+        entry["provenance"] = {"kind": "machine", "actor": "fixture"}
+        self.state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
+        result = self.run_verify(expected=2)
+        self.assertIn("contextual state lacks agent provenance", result.stderr)
+
     def test_structural_violations_fail_without_mutating_state(self) -> None:
         def missing_placeholder() -> None:
             self.edit_translation("gamehq.fixture.unchanged", "Otworz w GameHQ")

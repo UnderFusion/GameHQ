@@ -48,17 +48,22 @@ class ReleaseReadinessTest(unittest.TestCase):
         self.assertEqual("not_requested", self.evidence["candidate"]["release_authorization"])
         self.assertEqual("prohibited", self.evidence["candidate"]["publication_state"])
 
-    def test_every_locale_carries_sidebar_and_pending_qa_evidence(self) -> None:
+    def test_every_locale_carries_sidebar_and_truthful_qa_evidence(self) -> None:
         expected_ids = list(readiness.REQUIRED_SURFACES)
         self.assertEqual(16, len(self.evidence["locales"]))
         for locale, value in self.evidence["locales"].items():
             self.assertEqual(expected_ids, [entry["id"] for entry in value["required_surfaces"]], locale)
             self.assertTrue(all(entry["catalog_translation_hash"]
                                 for entry in value["required_surfaces"]), locale)
-            self.assertEqual(
-                {"state": "pending", "authority": "p8-3", "artifact": None},
-                value["linguistic_qa"], locale,
-            )
+            if locale == "pl-PL":
+                self.assertEqual("contextually_reviewed", value["linguistic_qa"]["state"])
+                self.assertEqual("i18n/quality/reviews/pl-PL.json",
+                                 value["linguistic_qa"]["artifact"]["path"])
+            else:
+                self.assertEqual(
+                    {"state": "pending", "authority": "p8-3", "artifact": None},
+                    value["linguistic_qa"], locale,
+                )
 
     def test_correction_ledger_rejects_unscoped_private_or_false_acceptance(self) -> None:
         corrections = readiness.read_json(ROOT / "i18n/release/corrections.json")
@@ -69,7 +74,7 @@ class ReleaseReadinessTest(unittest.TestCase):
         entry = corrections["entries"][0]
         self.assertEqual("pl-PL", entry["locale"])
         self.assertEqual("gamehq.navigation.about", entry["message_id"])
-        self.assertEqual("pending_linguistic_qa", entry["review_state"])
+        self.assertEqual("contextually_reviewed", entry["review_state"])
 
         mutations = []
         unsupported = copy.deepcopy(corrections)
@@ -84,6 +89,9 @@ class ReleaseReadinessTest(unittest.TestCase):
         false_acceptance = copy.deepcopy(corrections)
         false_acceptance["entries"][0]["review_state"] = "linguistically_accepted"
         mutations.append((false_acceptance, "only human contextual review"))
+        false_context = copy.deepcopy(corrections)
+        false_context["entries"][0]["method"] = "machine_verification"
+        mutations.append((false_context, "explicit method"))
         for document, diagnostic in mutations:
             with self.subTest(diagnostic=diagnostic):
                 with self.assertRaisesRegex(readiness.ReadinessError, diagnostic):

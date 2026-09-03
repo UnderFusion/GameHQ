@@ -22,6 +22,7 @@ STATUSES = {
     "missing",
     "machine_translated",
     "machine_verified",
+    "contextually_reviewed",
     "human_reviewed",
     "stale",
     "intentionally_inherited",
@@ -29,10 +30,13 @@ STATUSES = {
 CURRENT_STATUSES = {
     "machine_translated",
     "machine_verified",
+    "contextually_reviewed",
     "human_reviewed",
     "intentionally_inherited",
 }
-PROVENANCE_KINDS = {"none", "source", "unknown", "machine", "human", "inherited"}
+PROVENANCE_KINDS = {
+    "none", "source", "unknown", "machine", "agent", "human", "inherited"
+}
 HASH_PATTERN = re.compile(r"^[0-9a-f]{64}$")
 PLURAL_FORMS = {
     "ar": 6,
@@ -350,6 +354,8 @@ def validate_state_entry(label: str, entry: dict[str, object], source_locale: bo
         raise VerificationError(f"{label}: translated status requires a translation hash")
     if status.startswith("machine_") and (kind != "machine" or updated is None):
         raise VerificationError(f"{label}: machine state lacks machine provenance or timestamp")
+    if status == "contextually_reviewed" and (kind != "agent" or updated is None):
+        raise VerificationError(f"{label}: contextual state lacks agent provenance or timestamp")
     if status == "human_reviewed" and not source_locale and (kind != "human" or updated is None):
         raise VerificationError(f"{label}: reviewed state lacks human provenance or timestamp")
 
