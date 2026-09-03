@@ -60,6 +60,19 @@
         "qt_catalog": { "type": "string" },
         "inno_language": { "type": ["string", "null"] },
         "inno_message_file": { "type": ["string", "null"] },
+        "inno_language_name": { "type": ["string", "null"] },
+        "inno_language_id": {
+          "type": ["string", "null"],
+          "pattern": "^\\$[0-9A-Fa-f]{4}$"
+        },
+        "inno_app_locale": { "type": ["string", "null"] },
+        "inno_order": { "type": ["integer", "null"], "minimum": 0 },
+        "inno_source_kind": {
+          "type": ["string", "null"],
+          "enum": ["compiler-default", "compiler-bundled", "vendored-pinned", "source-locale-fallback", null]
+        },
+        "inno_source_locale": { "type": ["string", "null"] },
+        "inno_fallback_locale": { "type": ["string", "null"] },
         "completeness_policy": {
           "type": "string",
           "enum": ["source_and_complete", "complete_at_release", "never_embed"]

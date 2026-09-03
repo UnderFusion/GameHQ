@@ -7,6 +7,10 @@ $toolchain = Import-PowerShellDataFile (Join-Path $PSScriptRoot 'inno-toolchain.
 $installRoot = Join-Path $root "tools\InnoSetup\$($toolchain.Version)"
 $compiler = Join-Path $installRoot 'ISCC.exe'
 if (Test-Path -LiteralPath $compiler -PathType Leaf) {
+    $compilerHash = (Get-FileHash -LiteralPath $compiler -Algorithm SHA256).Hash.ToLowerInvariant()
+    if ($compilerHash -ne $toolchain.CompilerSha256) {
+        throw "Pinned Inno Setup compiler checksum mismatch: $compilerHash"
+    }
     Write-Host "[inno] ready: $compiler"
     return
 }
@@ -37,5 +41,9 @@ $process = Start-Process -FilePath $installer -ArgumentList $arguments `
     -WindowStyle Hidden -Wait -PassThru
 if ($process.ExitCode -ne 0 -or -not (Test-Path -LiteralPath $compiler -PathType Leaf)) {
     throw "Inno Setup portable bootstrap failed with exit code $($process.ExitCode)."
+}
+$compilerHash = (Get-FileHash -LiteralPath $compiler -Algorithm SHA256).Hash.ToLowerInvariant()
+if ($compilerHash -ne $toolchain.CompilerSha256) {
+    throw "Pinned Inno Setup compiler checksum mismatch after install: $compilerHash"
 }
 Write-Host "[inno] installed $($toolchain.Version): $compiler"

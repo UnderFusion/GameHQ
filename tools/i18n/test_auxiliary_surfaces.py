@@ -178,8 +178,15 @@ def main() -> int:
             fail(f"Playnite user-facing marker changed or disappeared: {marker}")
 
     installer = (ROOT / "packaging" / "GameHQ.iss").read_text(encoding="utf-8")
-    if "[Messages]" not in installer or "[Languages]" in installer:
-        fail("installer localization state changed; update its deferred classification")
+    installer_languages = (
+        ROOT / "packaging" / "generated" / "InnoLanguages.iss"
+    ).read_text(encoding="utf-8")
+    if (
+        "[Messages]" not in installer
+        or '#include "generated\\InnoLanguages.iss"' not in installer
+        or installer_languages.count('Name: "') != 16
+    ):
+        fail("installer language mapping changed; update its boundary classification")
 
     print(f"auxiliary localization audit passed ({len(boundaries)} boundaries)")
     return 0

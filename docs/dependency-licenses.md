@@ -25,7 +25,7 @@ and must never receive the GameHQ publisher signature.
 
 | Component | Version / form | License basis | Evidence and obligation | Result |
 |---|---|---|---|---|
-| Inno Setup | 6.7.3 build tool and generated Setup/uninstaller | Permissive Inno Setup license | Tool archive hash and publisher are pinned; exact license copied to `licenses/Inno-Setup.txt`. Generated binaries retain Inno identification. | License-compatible |
+| Inno Setup | 7.1.0 x64 build tool and generated Setup/uninstaller | Permissive Inno Setup license | Tool archive, compiler, language-resource hashes, and publisher are pinned; exact license copied to `licenses/Inno-Setup.txt`. Generated binaries retain Inno identification. | License-compatible |
 | Playnite SDK | 6.16.0 compile-only reference | MIT | `ExcludeAssets=runtime`; host supplies the SDK/runtime. | Compatible, not shipped |
 | Bouncy Castle C# | 2.6.2 shipped DLL | MIT-style | NuGet lock hash is pinned and the full notice is included inside every `.pext`. | Compatible |
 | .NET Framework reference assemblies | 1.0.3 build-only | Microsoft package terms | `PrivateAssets=all`; not shipped. | Build-only |

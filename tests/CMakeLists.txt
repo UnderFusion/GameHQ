@@ -605,6 +605,11 @@ add_test(NAME tst_launchportfolio
             "${CMAKE_SOURCE_DIR}/tools/i18n/test_launch_portfolio.py")
 set_tests_properties(tst_launchportfolio PROPERTIES TIMEOUT 30)
 
+add_test(NAME tst_innolanguages
+    COMMAND "${Python3_EXECUTABLE}"
+            "${CMAKE_SOURCE_DIR}/tools/i18n/test_inno_languages.py")
+set_tests_properties(tst_innolanguages PROPERTIES TIMEOUT 30)
+
 gamehq_add_test(tst_languagemanager
     tst_languagemanager.cpp
     "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp"

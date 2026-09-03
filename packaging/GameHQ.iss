@@ -54,6 +54,8 @@ DisableProgramGroupPage=yes
 DisableWelcomePage=no
 AllowNoIcons=yes
 
+#include "generated\InnoLanguages.iss"
+
 [Messages]
 WelcomeLabel1=Welcome to GameHQ
 WelcomeLabel2=Setup will install [name/ver] on this computer.%n%nClose GameHQ before continuing.

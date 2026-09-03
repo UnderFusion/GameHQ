@@ -16,6 +16,15 @@ $compiler = Join-Path $root "tools\InnoSetup\$($toolchain.Version)\ISCC.exe"
 if (-not (Test-Path -LiteralPath $compiler -PathType Leaf)) {
     & (Join-Path $PSScriptRoot 'bootstrap-inno.ps1')
 }
+$python = (Get-Command python -ErrorAction Stop).Source
+$localeManifest = Join-Path $root 'i18n\locales.json'
+$languageInclude = Join-Path $PSScriptRoot 'generated\InnoLanguages.iss'
+$languageGenerator = Join-Path $root 'tools\i18n\generate_inno_languages.py'
+$languageAudit = Join-Path $root 'tools\i18n\test_inno_languages.py'
+& $python $languageGenerator --manifest $localeManifest --output $languageInclude --check
+if ($LASTEXITCODE -ne 0) { throw 'Generated Inno language mapping is stale.' }
+& $python $languageAudit --compiler-root (Split-Path -Parent $compiler) --require-compiler
+if ($LASTEXITCODE -ne 0) { throw 'Pinned Inno language qualification failed.' }
 foreach ($required in @('GameHQ.exe', 'GameHQUpdater.exe', 'app\GameHQ.exe')) {
     if (-not (Test-Path -LiteralPath (Join-Path $payloadRoot $required) -PathType Leaf)) {
         throw "Neutral payload is missing $required; run packaging/make-dist.ps1 first."

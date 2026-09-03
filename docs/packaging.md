@@ -104,7 +104,7 @@ gamehq-release.sig
 
 The installer compiler is pinned separately in
 `packaging/inno-toolchain.psd1`. `bootstrap-inno.ps1` downloads the immutable
-official Inno Setup 6.7.3 release, verifies both its SHA-256 and expected
+official Inno Setup 7.1.0 x64 release, verifies both its SHA-256 and expected
 Authenticode signer, and installs it in portable mode below `tools/`.
 `build-setup.ps1` compiles the full offline Setup exclusively from the neutral
 payload. No web bootstrapper, service, scheduled task, Defender exclusion, or

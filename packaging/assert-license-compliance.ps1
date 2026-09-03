@@ -42,7 +42,7 @@ Require-Match (Join-Path $root 'docs\licensing.md') 'GameHQ-<version>-source\.zi
 Require-Match (Join-Path $root 'docs\integration-protocol.md') 'SPDX-License-Identifier:\s*MIT' 'protocol SPDX marker'
 Require-Match (Join-Path $root 'CMakeLists.txt') 'miniz/archive/refs/tags/3\.1\.2\.tar\.gz' 'miniz 3.1.2 pin'
 Require-Match (Join-Path $root 'CMakeLists.txt') 'monocypher-4\.0\.3\.tar\.gz' 'Monocypher 4.0.3 pin'
-Require-Match (Join-Path $root 'packaging\inno-toolchain.psd1') "Version\s*=\s*'6\.7\.3'" 'Inno Setup 6.7.3 pin'
+Require-Match (Join-Path $root 'packaging\inno-toolchain.psd1') "Version\s*=\s*'7\.1\.0'" 'Inno Setup 7.1.0 pin'
 Require-Match (Join-Path $root 'integrations\playnite\src\GameHQ.Playnite\GameHQ.Playnite.csproj') 'BouncyCastle\.Cryptography"\s+Version="2\.6\.2"' 'Bouncy Castle 2.6.2 pin'
 Require-Match (Join-Path $root 'integrations\playnite\src\GameHQ.Playnite\GameHQ.Playnite.csproj') 'PlayniteSDK"\s+Version="6\.16\.0"' 'Playnite SDK 6.16.0 pin'
 

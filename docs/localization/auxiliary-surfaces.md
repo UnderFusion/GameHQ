@@ -15,7 +15,7 @@ The only permitted classifications are `localized now`, `developer/log-only`,
 | `playnite-plugin-runtime` | .NET Framework 4.6.2/WPF, built by MSBuild and shipped as `GameHQ.Playnite.dll` plus `extension.yaml` in a `.pext` | Settings, menu, dialogs, validation, states, and diagnostics consume Playnite's active UI locale; static manifest name remains a protected product name | Sixteen Playnite XAML dictionaries, `DynamicResource`, and `ResourceProvider.GetString`; package-local `en_US.xaml` is complete fallback | `localized now` |
 | `win32-launcher` | Static C++/Win32 `GameHQLauncher`, shipped as package-root `GameHQ.exe` | Five failure dialogs read the existing persisted `ui.language`, then use Windows preferred UI languages when no supported preference is available | Sixteen embedded Win32 `STRINGTABLE` blocks selected with `LoadStringW`; missing locales or keys fall back completely to en-US | `localized now` |
 | `updater-helper-process` | Static C++ console `GameHQUpdater`, shipped as `app/GameHQUpdater.exe` | Normal launches are detached; stdout/stderr, usage, trace, and log text are diagnostic only, with no locale input | No localization mechanism; stable English output remains the fallback while the Qt app translates mapped failures | `developer/log-only` |
-| `inno-installer` | Inno Setup script, shipped as standalone Setup and Uninstall executables | Wizard, task, error, maintenance, and uninstall text are visible; Inno owns language selection and `p5-3` owns first-launch handoff | Official `.isl` files plus `CustomMessages`; English remains complete fallback | `deferred follow-up` |
+| `inno-installer` | Inno Setup script, shipped as standalone Setup and Uninstall executables | A manifest-generated mapping exposes all sixteen launch locales; Inno owns selection and `p5-3` owns first-launch handoff | Pinned 7.1.0 x64 bundled `.isl` files and explicit source fallbacks; GameHQ-specific messages remain for `p5-2` | `deferred follow-up` |
 | `gameinput-runtime-probe` | Standalone C++ console probe, never shipped as an app dependency | Developer/validation console output only; no locale input | None; stable English diagnostics | `developer/log-only` |
 | `release-manifest-tool` | .NET 8 console signing/verification tool for maintainers | Developer and release-automation output only; no locale input | None; stable English diagnostics | `developer/log-only` |
 | `automation-scripts` | PowerShell, Python, and GitHub Actions under `packaging/`, `integrations/playnite/packaging/`, `tools/`, and `.github/workflows/` | Developer, CI, packaging, i18n, media-inspection, and manual-validation output only; no locale input | None; stable English command output and errors | `developer/log-only` |
@@ -25,9 +25,9 @@ The only permitted classifications are `localized now`, `developer/log-only`,
 
 ### `inno-installer`
 
-- Owner: existing `p5-1` through `p5-4 / LANG-05` items.
-- Scope: qualify the Inno toolchain, add language entries and custom messages,
-  hand off first-launch locale, and automate installer acceptance.
+- Owner: existing `p5-2` through `p5-4 / LANG-05` items.
+- Scope: translate custom messages, hand off the selected first-launch locale,
+  and automate installer acceptance; `p5-1` completed the sixteen-locale mapping.
 - Acceptance: Tier 1 clean-install, upgrade, error, uninstall, and silent-mode
   scenarios pass without changing the app's established language on upgrade.
 

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "toolchain": {
+    "version": "7.1.0",
+    "architecture": "x64",
+    "release_url": "https://github.com/jrsoftware/issrc/releases/tag/is-7_1_0",
+    "archive_url": "https://github.com/jrsoftware/issrc/releases/download/is-7_1_0/innosetup-7.1.0-x64.exe",
+    "archive_sha256": "0362a383ed217d4c4239b5933866dd96d3eb2102737da92f80f6057a4b40df2f",
+    "compiler_sha256": "d06ebd38f38e3cee60a3c50cc45bd449d77e0bc6a5cabc607ea9886808e4de1a",
+    "license_file": "licenses/Inno-Setup.txt"
+  },
+  "bundled_resources": {
+    "Default.isl": "b95385bf66ad61f40de6a8d2bbda3ada4d45bc7b0db1fa218a417e776be514fc",
+    "Languages/ChineseSimplified.isl": "e0b0b350e2245f3c5e65586dfe43d574f6e7f06f2261149aba284954b3fc9a8d",
+    "Languages/ChineseTraditional.isl": "031684fc769259291fd563338b5abe20b7753c88ab5a2976b83a80788deb8455",
+    "Languages/Russian.isl": "0def13d0a979bd3d062ef7ce960264df17f908fb62af46bb81970e2abee53919",
+    "Languages/Spanish.isl": "cb071274c70d7de4b774b306c6750edef7e8b662f71bb551333a7ed84c5a2634",
+    "Languages/BrazilianPortuguese.isl": "d7718875674948a77b607041c262f481fe97735b0ad6bfcb1771d93e086ca1b2",
+    "Languages/German.isl": "36090e2ad4895d0f59c4716925a9739ecc9fb4fa2a7c0dc066ffcfb953d6ed59",
+    "Languages/Japanese.isl": "4b5b3343eaf1a04c768979e92648e9080b2d0888f187c7a4300cc7ac89b2fc22",
+    "Languages/French.isl": "5dd8367b662b7f250bbfb6859e32a5ff98ac98a677bc1211f635d287e23cb801",
+    "Languages/Polish.isl": "15f719b42c5fda5a4798b92ad38d090372e1d27c9658278148c7506a3d1f8191",
+    "Languages/Korean.isl": "69a2490857007ce3ceac35b84598bbefd3e1027b9ca912c2157e891a2af2e86c",
+    "Languages/Turkish.isl": "430f1c78382f4024c1254bbeeff5e1205fedd770c656cff984b3cb4d435cd838",
+    "Languages/Thai.isl": "57ac6d49ac482c17edf1259b995077aa250f6c1b777e6f2b21e5d498c6584f66",
+    "Languages/Ukrainian.isl": "c8ae082e671796bd399245e42fe3def7cb1c28d15270c6bd75c52f9fa62bcd1b",
+    "Languages/Italian.isl": "2d66fa2d8c707512b0bcb9364cd9199145c76607d847f195679f95fbbfcd82f4"
+  },
+  "vendored_resources": []
+}
