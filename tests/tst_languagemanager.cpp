@@ -60,7 +60,12 @@ void LanguageManagerTest::productionManifestIsValid()
     QVERIFY(tags.contains(QStringLiteral("pl-PL")));
     QVERIFY(!tags.contains(QStringLiteral("th-TH")));
     QVERIFY(!tags.contains(QStringLiteral("cs-CZ")));
+    QVERIFY(!tags.contains(QStringLiteral("en-XA")));
     QVERIFY(!tags.contains(QStringLiteral("ar-XB")));
+    QVERIFY(registry.catalogName(QStringLiteral("en-XA")).isEmpty());
+    QVERIFY(registry.catalogName(QStringLiteral("ar-XB")).isEmpty());
+    QCOMPARE(registry.resolveAvailable(QStringLiteral("en-XA")), QStringLiteral("en-US"));
+    QCOMPARE(registry.resolveAvailable(QStringLiteral("ar-XB")), QStringLiteral("en-US"));
 }
 
 void LanguageManagerTest::aliasesAndFallbacksResolveDeterministically()

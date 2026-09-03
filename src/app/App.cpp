@@ -147,6 +147,10 @@ bool App::init()
         qCritical() << "Localization could not initialize:" << localeError;
         return false;
     }
+    QGuiApplication::setLayoutDirection(m_languageManager->layoutDirection());
+    connect(m_languageManager.get(), &LanguageManager::languageChanged, this, [this] {
+        QGuiApplication::setLayoutDirection(m_languageManager->layoutDirection());
+    });
     m_languagePreference->bind(m_languageManager.get());
     ActionCatalog::retranslate();
     connect(m_languageManager.get(), &LanguageManager::retranslationRequested,

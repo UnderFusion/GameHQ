@@ -74,6 +74,7 @@ jobs:
           cmake -S . -B out -G Ninja `
             -DCMAKE_BUILD_TYPE=Release `
             -DGAMEHQ_BUILD_TESTS=ON `
+            -DGAMEHQ_ENABLE_PSEUDO_LOCALES=OFF `
             -DGAMEHQ_RELEASE_TRUST_TEST_KEYS=ON `
             "-DCMAKE_PREFIX_PATH=$qt" `
             "-DCMAKE_C_COMPILER=$mingw\gcc.exe" `

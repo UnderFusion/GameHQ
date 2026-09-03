@@ -1,5 +1,5 @@
 {
-  "$comment": "Single locale registry for GameHQ. This is the only source of truth for locale tags, aliases, tier, state, direction, fallback and catalog mapping. Approved by owner 2026-09-02 (plan item p1-2). Do not replicate locale metadata in code; read from this registry at build and runtime.",
+  "$comment": "Production locale registry for GameHQ. Development pseudo-locales are generated into the build tree and never packaged from this manifest.",
   "schema_version": 1,
   "source_language": "en-US",
   "default_locale": "en-US",
@@ -224,19 +224,6 @@
       "inno_language": null,
       "inno_message_file": null,
       "completeness_policy": "complete_at_release"
-    },
-    {
-      "tag": "ar-XB",
-      "names": { "native": "RTL Pseudo", "english": "RTL Pseudo-locale" },
-      "aliases": [],
-      "tier": 0,
-      "state": "internal",
-      "direction": "rtl",
-      "fallback": "en-US",
-      "qt_catalog": "gamehq_ar_XB",
-      "inno_language": null,
-      "inno_message_file": null,
-      "completeness_policy": "never_embed"
     }
   ],
   "aliases": {
@@ -267,6 +254,6 @@
   "tiers": {
     "1": "Launch locales. Enabled, complete at release, selectable in app and installer.",
     "2": "Follow-up locales. Registered now, translated after the first localized release.",
-    "0": "Reserve and internal locales. cs-CZ is the first reserve; ar-XB is the RTL pseudo-locale and is never embedded in production."
+    "0": "Reserve locales. cs-CZ is the first reserve."
   }
 }

@@ -55,7 +55,7 @@ Rectangle {
             }
         }
         Text {
-            text: "\u203A"
+            text: languageManager.layoutDirection === Qt.RightToLeft ? "\u2039" : "\u203A"
             color: Theme.textFaint
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontH3

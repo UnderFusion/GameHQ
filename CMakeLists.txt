@@ -53,6 +53,33 @@ set(_gamehq_test_key_default OFF)
 if(GAMEHQ_BUILD_TESTS)
     set(_gamehq_test_key_default ON)
 endif()
+option(GAMEHQ_ENABLE_PSEUDO_LOCALES
+    "Expose development-only en-XA and ar-XB pseudo-locales"
+    OFF)
+
+# Pseudo catalogs and their internal registry exist only in the build tree.
+# Production targets never embed or package them unless explicitly opted in.
+if(GAMEHQ_BUILD_TESTS OR GAMEHQ_ENABLE_PSEUDO_LOCALES)
+    find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
+    set(GAMEHQ_PSEUDO_I18N_DIR "${CMAKE_BINARY_DIR}/pseudo-i18n")
+    set(GAMEHQ_PSEUDO_MANIFEST "${GAMEHQ_PSEUDO_I18N_DIR}/locales.json")
+    set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/i18n/generate_pseudo.py"
+        "${CMAKE_CURRENT_SOURCE_DIR}/i18n/locales.json"
+        "${CMAKE_CURRENT_SOURCE_DIR}/i18n/app/gamehq_en_US.ts"
+        "${CMAKE_CURRENT_SOURCE_DIR}/i18n/extracted/messages.json")
+    execute_process(
+        COMMAND "${Python3_EXECUTABLE}"
+            "${CMAKE_CURRENT_SOURCE_DIR}/tools/i18n/generate_pseudo.py"
+            --root "${CMAKE_CURRENT_SOURCE_DIR}"
+            --output-dir "${GAMEHQ_PSEUDO_I18N_DIR}"
+            --manifest-output "${GAMEHQ_PSEUDO_MANIFEST}"
+        RESULT_VARIABLE GAMEHQ_PSEUDO_GENERATION_RESULT
+        ERROR_VARIABLE GAMEHQ_PSEUDO_GENERATION_ERROR)
+    if(NOT GAMEHQ_PSEUDO_GENERATION_RESULT EQUAL 0)
+        message(FATAL_ERROR "Pseudo-locale generation failed: ${GAMEHQ_PSEUDO_GENERATION_ERROR}")
+    endif()
+endif()
 option(GAMEHQ_RELEASE_TRUST_TEST_KEYS
     "Compile the TEST-ONLY release signing key into the trust table"
     ${_gamehq_test_key_default})

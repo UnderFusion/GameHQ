@@ -84,7 +84,8 @@ data-driven and revision requires no code branching—editing the registry is en
 
 **RTL**: Arabic and Hebrew are not ordinary add-on locales. Build direction metadata and the
 `ar-XB` RTL pseudo-locale now; enable either language only after a dedicated RTL production
-acceptance phase.
+acceptance phase. The pseudo-locales themselves are **not** part of this registry — they live
+in a generated development registry only (see section 8).
 
 ## 3. Source language and fallback
 
@@ -154,3 +155,45 @@ surface inventory's boundary decisions.
 The surface inventory (`p1-1`) assigns each runtime surface an owner and a migration route.
 This contract does not re-litigate those boundaries; it fixes the identifiers, the registry,
 fallback, glossary, states, and gates that every later migration item (`p2`+) depends on.
+
+## 8. Development pseudo-locales
+
+Two pseudo-locales exist to expose expansion, direction, and leakage defects before real
+translations arrive (plan item `p4-6`). They are **development-only** and are generated into
+the build tree; neither the production registry, the release resources, the installer, nor
+the public language selector can ever see them.
+
+| Tag | Direction | Purpose |
+| --- | --- | --- |
+| `en-XA` | ltr | Accented, delimited, ~35–40 % expansion — finds clipping and truncation. |
+| `ar-XB` | rtl | Mirrored delimiters, reversed accented words inside an RTL isolate — finds direction and bidi assumptions. |
+
+**Generation.** `tools/i18n/generate_pseudo.py` derives both catalogs deterministically from
+`i18n/app/gamehq_en_US.ts` plus the protected-token metadata in `i18n/extracted/messages.json`,
+and writes a development copy of the locale registry next to them. Output goes to
+`<build>/pseudo-i18n/` only; nothing is written back into `i18n/`. Placeholders (`%1`, `%n`,
+`%L1`), markup, URLs, filesystem paths, keyboard shortcuts, version numbers, technical acronyms,
+and every glossary/do-not-translate token are copied through untouched. Plural messages keep
+valid form counts (2 for `en-XA`, 6 for `ar-XB`).
+
+**Boundary.** The `GAMEHQ_ENABLE_PSEUDO_LOCALES` CMake option defaults to `OFF`. Only with it
+`ON` are the pseudo catalogs added to the `GameHQ` target and the generated development registry
+substituted for `i18n/locales.json` in the embedded resources. `start.bat` sets it `ON`;
+CI beta builds, `packaging/validate-source.ps1`, and every release configuration leave it `OFF`.
+A test build (`GAMEHQ_BUILD_TESTS=ON`) generates the catalogs for the test targets but still does
+not embed them into the application.
+
+**Checks.** `tools/i18n/test_pseudo.py` (CTest `tst_i18npseudo`) proves determinism, catalog
+completeness, token/placeholder/plural invariance, the measured expansion band, and that the
+production manifest and every non-developer build configuration exclude the pseudo tags.
+`tests/tst_pseudolocales.cpp` (CTest `tst_pseudolocales`) proves the production/development
+registry split, runtime selection and layout direction, that dense representative surfaces
+(settings, cards, dialogs, update and release-note text, tray labels, error messages) neither
+truncate nor overflow under expansion and mirroring, that no raw `gamehq.*` ID reaches a label,
+and that semantic chevrons/arrows mirror while physical glyphs such as the `<<` / `>>` media
+controls do not.
+
+**Directional icons.** Semantic direction (back/forward chevrons, "next" arrows) is mirrored
+through `languageManager.layoutDirection`; physical or brand glyphs (media transport, controller
+button icons) are left alone. Window roots opt into `LayoutMirroring.enabled` with
+`childrenInherit: true`, and `QGuiApplication::setLayoutDirection` follows the active locale.

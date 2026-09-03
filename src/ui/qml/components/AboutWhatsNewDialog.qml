@@ -569,7 +569,8 @@ FocusScope {
                     id: backLink
                     visible: !root.hasUpdateRelease()
                     //% "%1  Back"
-                    label: qsTrId("gamehq.action.back_with_marker").arg("‹")
+                    label: qsTrId("gamehq.action.back_with_marker").arg(
+                               languageManager.layoutDirection === Qt.RightToLeft ? "›" : "‹")
                     //% "Back"
                     Accessible.name: qsTrId("gamehq.action.back")
                     onClicked: root.closeReleaseNotes()

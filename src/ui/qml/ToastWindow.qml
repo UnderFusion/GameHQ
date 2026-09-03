@@ -8,6 +8,8 @@ import "components"
 // on dismiss; hides the window once the stack is empty.
 Window {
     id: win
+    LayoutMirroring.enabled: languageManager.layoutDirection === Qt.RightToLeft
+    LayoutMirroring.childrenInherit: true
     objectName: "gamehqToasts"
     width: 520
     height: 700

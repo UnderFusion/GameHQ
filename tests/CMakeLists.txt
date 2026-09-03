@@ -603,6 +603,26 @@ qt_add_resources(tst_languagemanager "production_locale_manifest"
     FILES "${CMAKE_SOURCE_DIR}/i18n/locales.json"
 )
 
+gamehq_add_test(tst_pseudolocales
+    tst_pseudolocales.cpp
+    "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp"
+    "${CMAKE_SOURCE_DIR}/src/localization/LanguageManager.cpp")
+target_link_libraries(tst_pseudolocales PRIVATE Qt6::Gui Qt6::Quick)
+target_compile_definitions(tst_pseudolocales PRIVATE
+    GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
+qt_add_translations(tst_pseudolocales
+    TS_FILES
+        "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_en_US.ts"
+        "${GAMEHQ_PSEUDO_I18N_DIR}/gamehq_en_XA.ts"
+        "${GAMEHQ_PSEUDO_I18N_DIR}/gamehq_ar_XB.ts"
+    RESOURCE_PREFIX "/i18n"
+    LUPDATE_OPTIONS -no-obsolete
+    LRELEASE_OPTIONS -idbased)
+qt_add_resources(tst_pseudolocales "pseudo_locale_manifest"
+    PREFIX "/pseudo-i18n"
+    BASE "${GAMEHQ_PSEUDO_I18N_DIR}"
+    FILES "${GAMEHQ_PSEUDO_MANIFEST}")
+
 gamehq_add_test(tst_languagepreference
     tst_languagepreference.cpp
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
@@ -657,6 +677,11 @@ add_test(NAME tst_i18nsync
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_sync.py"
         --lupdate "$<TARGET_FILE:Qt6::lupdate>")
 set_tests_properties(tst_i18nsync PROPERTIES TIMEOUT 120)
+
+add_test(NAME tst_i18npseudo
+    COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_SOURCE_DIR}/tools/i18n/test_pseudo.py")
+set_tests_properties(tst_i18npseudo PROPERTIES TIMEOUT 120)
 
 add_test(NAME tst_i18nverify
     COMMAND "${Python3_EXECUTABLE}"

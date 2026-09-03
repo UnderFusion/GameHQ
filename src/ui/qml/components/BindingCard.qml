@@ -8,6 +8,12 @@ import GameHQ
 Rectangle {
     id: root
 
+    function directionalActionLabel(value) {
+        const upper = value.toUpperCase()
+        return languageManager.layoutDirection === Qt.RightToLeft
+                ? upper.replace(/›/g, "‹").replace(/→/g, "←") : upper
+    }
+
     property string slotLabel: ""
     property string triggerLabel: ""
     property string badgeLabel: ""
@@ -245,10 +251,10 @@ Rectangle {
                         }
                         if (root.assigned) {
                             //% "Edit  ›"
-                            return qsTrId("gamehq.input.binding_card.edit").toUpperCase()
+                            return root.directionalActionLabel(qsTrId("gamehq.input.binding_card.edit"))
                         }
                         //% "Add  ›"
-                        return qsTrId("gamehq.input.binding_card.add").toUpperCase()
+                        return root.directionalActionLabel(qsTrId("gamehq.input.binding_card.add"))
                     }
                     color: valueField.activeFocus || valueField.hovered
                            ? Theme.accent : Theme.textMuted

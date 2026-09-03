@@ -11,7 +11,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 816
+          "line": 817
         }
       ],
       "plural": false,
@@ -30,7 +30,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 683
+          "line": 684
         }
       ],
       "plural": false,
@@ -47,7 +47,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 775
+          "line": 776
         }
       ],
       "plural": false,
@@ -64,7 +64,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 787
+          "line": 788
         }
       ],
       "plural": false,
@@ -115,7 +115,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 673
+          "line": 674
         }
       ],
       "plural": false,
@@ -132,7 +132,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 628
+          "line": 629
         }
       ],
       "plural": false,
@@ -168,7 +168,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 759
+          "line": 760
         }
       ],
       "plural": false,
@@ -185,7 +185,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 704
+          "line": 705
         }
       ],
       "plural": false,
@@ -202,7 +202,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 781
+          "line": 782
         }
       ],
       "plural": false,
@@ -219,7 +219,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 825
+          "line": 826
         }
       ],
       "plural": false,
@@ -236,7 +236,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 836
+          "line": 837
         }
       ],
       "plural": false,
@@ -257,7 +257,7 @@
         },
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 865
+          "line": 866
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
@@ -280,7 +280,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 638
+          "line": 639
         }
       ],
       "plural": false,
@@ -299,7 +299,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 574
+          "line": 575
         }
       ],
       "plural": false,
@@ -376,19 +376,19 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1049
+          "line": 1051
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1065
+          "line": 1067
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1097
+          "line": 1099
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 464
+          "line": 466
         },
         {
           "file": "src/ui/qml/components/ConfirmDialog.qml",
@@ -1704,7 +1704,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 145
+          "line": 151
         },
         {
           "file": "src/ui/qml/settings/LibrarySettingsPage.qml",
@@ -1742,7 +1742,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 108
+          "line": 114
         }
       ],
       "plural": false,
@@ -1796,7 +1796,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 111
+          "line": 117
         }
       ],
       "plural": false,
@@ -3345,7 +3345,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 441
+          "line": 445
         }
       ],
       "plural": false,
@@ -4255,7 +4255,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 416
+          "line": 420
         }
       ],
       "plural": false,
@@ -4690,7 +4690,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1099
+          "line": 1101
         },
         {
           "file": "src/ui/qml/components/DesktopGalleryHeader.qml",
@@ -4711,7 +4711,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1095
+          "line": 1097
         },
         {
           "file": "src/ui/qml/components/OverlayActionMenu.qml",
@@ -4756,7 +4756,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1038
+          "line": 1040
         }
       ],
       "plural": false,
@@ -4776,11 +4776,11 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1047
+          "line": 1049
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 462
+          "line": 464
         }
       ],
       "plural": false,
@@ -4797,7 +4797,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 380
+          "line": 382
         }
       ],
       "plural": true,
@@ -4816,7 +4816,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1063
+          "line": 1065
         }
       ],
       "plural": false,
@@ -6215,7 +6215,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 251
+          "line": 257
         }
       ],
       "plural": false,
@@ -6232,7 +6232,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 192
+          "line": 198
         }
       ],
       "plural": false,
@@ -6251,7 +6251,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 211
+          "line": 217
         }
       ],
       "plural": false,
@@ -6268,7 +6268,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 188
+          "line": 194
         }
       ],
       "plural": false,
@@ -6288,7 +6288,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 248
+          "line": 254
         }
       ],
       "plural": false,
@@ -6305,7 +6305,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 183
+          "line": 189
         }
       ],
       "plural": false,
@@ -6326,7 +6326,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 177
+          "line": 183
         }
       ],
       "plural": false,
@@ -6348,7 +6348,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 55
+          "line": 61
         }
       ],
       "plural": false,
@@ -6367,7 +6367,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 138
+          "line": 144
         }
       ],
       "plural": false,
@@ -6386,7 +6386,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 95
+          "line": 101
         }
       ],
       "plural": false,
@@ -6405,7 +6405,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 98
+          "line": 104
         }
       ],
       "plural": false,
@@ -6424,7 +6424,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 208
+          "line": 214
         }
       ],
       "plural": false,
@@ -7083,7 +7083,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1020
+          "line": 1022
         },
         {
           "file": "src/ui/qml/settings/LibrarySettingsPage.qml",
@@ -7121,7 +7121,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 151
+          "line": 153
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7142,7 +7142,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 159
+          "line": 161
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7163,7 +7163,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 155
+          "line": 157
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7184,7 +7184,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 161
+          "line": 163
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7205,7 +7205,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 163
+          "line": 165
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7226,7 +7226,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 153
+          "line": 155
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7247,7 +7247,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 157
+          "line": 159
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7327,7 +7327,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 275
+          "line": 279
         }
       ],
       "plural": false,
@@ -7346,7 +7346,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 281
+          "line": 285
         }
       ],
       "plural": false,
@@ -7363,7 +7363,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 261
+          "line": 265
         }
       ],
       "plural": false,
@@ -7380,7 +7380,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 213
+          "line": 217
         }
       ],
       "plural": false,
@@ -7397,7 +7397,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 324
+          "line": 328
         }
       ],
       "plural": false,
@@ -7416,7 +7416,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 319
+          "line": 323
         }
       ],
       "plural": false,
@@ -7433,7 +7433,7 @@
       "locations": [
         {
           "file": "src/ui/qml/ToastWindow.qml",
-          "line": 17
+          "line": 19
         }
       ],
       "plural": false,
@@ -7469,7 +7469,7 @@
       "locations": [
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 98
+          "line": 100
         }
       ],
       "plural": false,
@@ -7588,7 +7588,7 @@
       "locations": [
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 28
+          "line": 30
         }
       ],
       "plural": false,
@@ -7905,7 +7905,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 793
+          "line": 794
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
@@ -10486,7 +10486,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingCard.qml",
-          "line": 244
+          "line": 250
         },
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
@@ -14070,7 +14070,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 907
+          "line": 908
         }
       ],
       "plural": false,
@@ -14349,7 +14349,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 582
+          "line": 583
         }
       ],
       "plural": false,
@@ -14557,7 +14557,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 932
+          "line": 933
         }
       ],
       "plural": false,
@@ -14631,7 +14631,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 727
+          "line": 728
         }
       ],
       "plural": false,
@@ -14665,7 +14665,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 946
+          "line": 947
         }
       ],
       "plural": false,
@@ -14682,7 +14682,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 737
+          "line": 738
         }
       ],
       "plural": false,
@@ -14893,7 +14893,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 963
+          "line": 964
         }
       ],
       "plural": false,

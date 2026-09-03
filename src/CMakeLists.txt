@@ -219,16 +219,26 @@ set(gamehq_app_ts_files
     "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_zh_Hant.ts"
     "${CMAKE_SOURCE_DIR}/i18n/app/gamehq_tr_TR.ts"
 )
+if(GAMEHQ_ENABLE_PSEUDO_LOCALES)
+    list(APPEND gamehq_app_ts_files
+        "${GAMEHQ_PSEUDO_I18N_DIR}/gamehq_en_XA.ts"
+        "${GAMEHQ_PSEUDO_I18N_DIR}/gamehq_ar_XB.ts")
+endif()
 qt_add_translations(GameHQ
     TS_FILES ${gamehq_app_ts_files}
     RESOURCE_PREFIX "/i18n"
     LRELEASE_OPTIONS -idbased
 )
 
+set(gamehq_locale_manifest "${CMAKE_SOURCE_DIR}/i18n/locales.json")
+if(GAMEHQ_ENABLE_PSEUDO_LOCALES)
+    set(gamehq_locale_manifest "${GAMEHQ_PSEUDO_MANIFEST}")
+endif()
+get_filename_component(gamehq_locale_manifest_dir "${gamehq_locale_manifest}" DIRECTORY)
 qt_add_resources(GameHQ "localization_manifest"
     PREFIX "/i18n"
-    BASE "${CMAKE_SOURCE_DIR}/i18n"
-    FILES "${CMAKE_SOURCE_DIR}/i18n/locales.json"
+    BASE "${gamehq_locale_manifest_dir}"
+    FILES "${gamehq_locale_manifest}"
 )
 
 qt_add_resources(GameHQ "icons"

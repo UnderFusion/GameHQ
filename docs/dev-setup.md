@@ -40,6 +40,12 @@ tools\cmake\bin\cmake.exe -S . -B out -G Ninja -DCMAKE_BUILD_TYPE=Debug ^
 tools\cmake\bin\cmake.exe --build out
 ```
 
+Pseudo-locales are off in this configuration. Add
+`-DGAMEHQ_ENABLE_PSEUDO_LOCALES=ON` to expose the development-only `en-XA` and
+`ar-XB` locales in the language selector; `start.bat` already does. Release and
+CI configurations must leave it off (see
+[localization/architecture.md](localization/architecture.md) section 8).
+
 ## Assemble runtime and run
 
 The real executable needs its Qt libraries, plugins, and QML imports in one
@@ -68,6 +74,11 @@ tools/cmake/bin/cmake.exe -S . -B out -DGAMEHQ_BUILD_TESTS=ON
 tools/cmake/bin/cmake.exe --build out
 tools/cmake/bin/ctest.exe --test-dir out --output-on-failure
 ```
+
+Enabling tests also generates the pseudo-locale catalogs into
+`out/pseudo-i18n/` for `tst_pseudolocales` and `tst_i18npseudo`. They are used by
+the test targets only and are still not embedded into `GameHQ.exe` unless
+`-DGAMEHQ_ENABLE_PSEUDO_LOCALES=ON` is passed as well.
 
 `ctest` prepends the Qt runtime directory to each test's `PATH` itself
 (`ENVIRONMENT_MODIFICATION` in `tests/CMakeLists.txt`), so the command above

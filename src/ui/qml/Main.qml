@@ -11,6 +11,8 @@ import "helpers/SidebarCategories.js" as SidebarCategories
 // thin display type, sidebar → grid → preview.
 ApplicationWindow {
     id: window
+    LayoutMirroring.enabled: languageManager.layoutDirection === Qt.RightToLeft
+    LayoutMirroring.childrenInherit: true
     visible: !app.startMinimized
     width: app ? app.config("ui.window_width", 1280) : 1280
     height: app ? app.config("ui.window_height", 760) : 760

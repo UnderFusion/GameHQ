@@ -59,7 +59,7 @@ try {
         & $cmake -S $sourceRoot -B $buildRoot -G Ninja `
             "-DCMAKE_MAKE_PROGRAM=$ninja" "-DCMAKE_C_COMPILER=$cCompiler" `
             "-DCMAKE_CXX_COMPILER=$cxxCompiler" "-DCMAKE_PREFIX_PATH=$qtPrefix" `
-            -DCMAKE_BUILD_TYPE=Release
+            -DCMAKE_BUILD_TYPE=Release -DGAMEHQ_ENABLE_PSEUDO_LOCALES=OFF
         if ($LASTEXITCODE -ne 0) { throw 'Source archive did not configure.' }
         & $cmake --build $buildRoot --parallel 2
         if ($LASTEXITCODE -ne 0) { throw 'Source archive did not build.' }

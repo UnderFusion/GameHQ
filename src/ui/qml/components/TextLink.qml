@@ -12,6 +12,12 @@ Item {
     property bool selected: false
     signal clicked()
 
+    function mirroredSuffix(value) {
+        if (languageManager.layoutDirection !== Qt.RightToLeft)
+            return value
+        return value.replace(/›/g, "‹").replace(/→/g, "←")
+    }
+
     implicitWidth: linkRow.implicitWidth
     implicitHeight: 30
     Layout.preferredWidth: implicitWidth
@@ -37,7 +43,7 @@ Item {
 
         Text {
             visible: root.suffix !== ""
-            text: root.suffix
+            text: root.mirroredSuffix(root.suffix)
             color: root.suffixColor
             font.family: Theme.fontFamily
             font.pixelSize: root.suffixFontSize

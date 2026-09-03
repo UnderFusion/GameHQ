@@ -22,11 +22,14 @@ if not exist "out\build.ninja" set "NEED_CONFIG=1"
 if exist "out\CMakeCache.txt" (
     findstr /L /C:"CMAKE_HOME_DIRECTORY:INTERNAL=%CD:\=/%" "out\CMakeCache.txt" >nul 2>&1
     if errorlevel 1 set "NEED_CONFIG=1"
+    findstr /L /C:"GAMEHQ_ENABLE_PSEUDO_LOCALES:BOOL=ON" "out\CMakeCache.txt" >nul 2>&1
+    if errorlevel 1 set "NEED_CONFIG=1"
 )
 
 if "%NEED_CONFIG%"=="1" (
     echo [GameHQ] Configuring the developer build tree in out\...
     "%CMAKE%" -S . -B out --fresh -G Ninja -DCMAKE_BUILD_TYPE=Debug ^
+      -DGAMEHQ_ENABLE_PSEUDO_LOCALES=ON ^
       "-DCMAKE_PREFIX_PATH=%QT%" ^
       "-DCMAKE_C_COMPILER=%MINGW%\gcc.exe" ^
       "-DCMAKE_CXX_COMPILER=%MINGW%\g++.exe" ^

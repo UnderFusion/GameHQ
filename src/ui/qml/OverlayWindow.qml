@@ -21,6 +21,8 @@ import "helpers/SidebarCategories.js" as SidebarCategories
 // modal state is the action menu (Square/M).
 Window {
     id: overlayWindow
+    LayoutMirroring.enabled: languageManager.layoutDirection === Qt.RightToLeft
+    LayoutMirroring.childrenInherit: true
     objectName: "gamehqOverlay"
     visible: false
     color: "transparent"

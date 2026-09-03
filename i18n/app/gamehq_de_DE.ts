@@ -4,23 +4,23 @@
   <context>
     <name>GameHQ</name>
     <message id="gamehq.about.enjoying_gamehq">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="816"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="817"></location>
       <source>Enjoying GameHQ?</source>
       <translation>Genießen Sie GameHQ?</translation>
     </message>
     <message id="gamehq.about.full_release_notes">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="683"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="684"></location>
       <source>View full release notes</source>
       <oldsource>See full release notes</oldsource>
       <translation>Siehe vollständige Veröffentlichungsnotizen</translation>
     </message>
     <message id="gamehq.about.github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="775"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="776"></location>
       <source>GitHub</source>
       <translation>GitHub</translation>
     </message>
     <message id="gamehq.about.license">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="787"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="788"></location>
       <source>License</source>
       <translation>Zulassung</translation>
     </message>
@@ -35,12 +35,12 @@
       <translation>Träger</translation>
     </message>
     <message id="gamehq.about.more_improvements">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="673"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="674"></location>
       <source>Plus more improvements and fixes.</source>
       <translation>Plus weitere Verbesserungen und Korrekturen.</translation>
     </message>
     <message id="gamehq.about.product_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="628"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="629"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
       <translation>Ein kontrollerfreundlicher Screenshot, Wiedergabe und Mediengalerie für PC-Spiele.</translation>
     </message>
@@ -50,44 +50,44 @@
       <translation>%1 aktualisiert</translation>
     </message>
     <message id="gamehq.about.project_links">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="759"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="760"></location>
       <source>PROJECT LINKS</source>
       <translation>Projektverknüpfungen</translation>
     </message>
     <message id="gamehq.about.quick_actions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="704"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="705"></location>
       <source>QUICK ACTIONS</source>
       <translation>Schnelle Maßnahmen</translation>
     </message>
     <message id="gamehq.about.report_issue">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="781"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="782"></location>
       <source>Report issue</source>
       <translation>Ausgabe des Berichts</translation>
     </message>
     <message id="gamehq.about.star_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="825"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="826"></location>
       <source>A GitHub star helps more players discover the project.</source>
       <translation>Ein GitHub Stern hilft mehr Spielern, das Projekt zu entdecken.</translation>
     </message>
     <message id="gamehq.about.star_on_github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="836"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="837"></location>
       <source>Star on GitHub</source>
       <translation>Stern auf GitHub</translation>
     </message>
     <message id="gamehq.about.version">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="499"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="865"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="866"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="17"></location>
       <source>Version %1</source>
       <translation>Version %1</translation>
     </message>
     <message id="gamehq.about.whats_new_in">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="638"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="639"></location>
       <source>WHAT'S NEW IN %1</source>
       <translation>Was ist neu in %1</translation>
     </message>
     <message id="gamehq.action.back">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="574"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="575"></location>
       <source>Back</source>
       <translation>Zurück .</translation>
     </message>
@@ -108,10 +108,10 @@
       <translation>Absagen</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1049"></location>
-      <location filename="src/ui/qml/Main.qml" line="1065"></location>
-      <location filename="src/ui/qml/Main.qml" line="1097"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="464"></location>
+      <location filename="src/ui/qml/Main.qml" line="1051"></location>
+      <location filename="src/ui/qml/Main.qml" line="1067"></location>
+      <location filename="src/ui/qml/Main.qml" line="1099"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="466"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="16"></location>
@@ -496,7 +496,7 @@
       <translation>Aufzeichnung</translation>
     </message>
     <message id="gamehq.action.remove">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="145"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="151"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="108"></location>
       <source>Remove</source>
       <translation>Entfernen</translation>
@@ -507,7 +507,7 @@
       <translation>Ersetzen</translation>
     </message>
     <message id="gamehq.action.restore">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="108"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="114"></location>
       <source>Restore</source>
       <translation>Wiederherstellen</translation>
     </message>
@@ -522,7 +522,7 @@
       <translation>Wiederherstellen von Standardvorgaben</translation>
     </message>
     <message id="gamehq.action.revert">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="111"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="117"></location>
       <source>Revert</source>
       <translation>Zurückkehren</translation>
     </message>
@@ -962,7 +962,7 @@
       <translation>Ein weiterer portable Profil-Import läuft bereits.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="441"></location>
+      <location filename="src/app/App.cpp" line="445"></location>
       <source>The update was cancelled because capture work did not finish safely in time.</source>
       <translation>Das Update wurde abgesagt, weil die Aufnahme nicht rechtzeitig abgeschlossen wurde.</translation>
     </message>
@@ -1214,7 +1214,7 @@
       <translation>GameHQ konnte die Aktualisierungs-Transaktion nicht veröffentlichen.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="416"></location>
+      <location filename="src/app/App.cpp" line="420"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ Es konnte keine Wartung der Aktualisierung begonnen werden: %1</translation>
     </message>
@@ -1333,13 +1333,13 @@
       <translation>Fügen Sie den Ordner hinzu...</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1099"></location>
+      <location filename="src/ui/qml/Main.qml" line="1101"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Massenwahl</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1095"></location>
+      <location filename="src/ui/qml/Main.qml" line="1097"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="14"></location>
       <source>Show in folder</source>
       <translation>In einem Ordner anzeigen</translation>
@@ -1351,20 +1351,20 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1038"></location>
+      <location filename="src/ui/qml/Main.qml" line="1040"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 Dadurch wird die Datei dauerhaft gelöscht.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1047"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="462"></location>
+      <location filename="src/ui/qml/Main.qml" line="1049"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="464"></location>
       <source>Delete capture?</source>
       <translation>Entfernen Sie das Aufnehmen?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="380"></location>
+      <location filename="src/ui/qml/Main.qml" line="382"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
@@ -1375,7 +1375,7 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1063"></location>
+      <location filename="src/ui/qml/Main.qml" line="1065"></location>
       <source>Delete selected captures?</source>
       <translation>Ausgewählte Aufnahmen löschen?</translation>
     </message>
@@ -1785,62 +1785,62 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
       <translation>Warten auf den ersten Knopf</translation>
     </message>
     <message id="gamehq.input.binding_card.add">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="251"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="257"></location>
       <source>Add  ›</source>
       <translation>Hinzufügen ›</translation>
     </message>
     <message id="gamehq.input.binding_card.add_accessible">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="192"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="198"></location>
       <source>Add %1 assignment</source>
       <translation>Zuordnung %1 hinzufügen</translation>
     </message>
     <message id="gamehq.input.binding_card.add_input">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="211"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="217"></location>
       <source>+ Add input</source>
       <translation>+ Eingabe hinzufügen</translation>
     </message>
     <message id="gamehq.input.binding_card.add_status_accessible">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="188"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="194"></location>
       <source>Add %1 assignment, status %2</source>
       <translation>Zufügen von Zuordnung %1, Status %2</translation>
     </message>
     <message id="gamehq.input.binding_card.edit">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="248"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="254"></location>
       <source>Edit  ›</source>
       <translation>Bearbeiten ›</translation>
     </message>
     <message id="gamehq.input.binding_card.edit_accessible">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="183"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="189"></location>
       <source>Edit %1 assignment: %2, %3</source>
       <translation>Zuweisung %1 bearbeiten: %2, %3</translation>
     </message>
     <message id="gamehq.input.binding_card.edit_status_accessible">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="177"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="183"></location>
       <source>Edit %1 assignment: %2, %3, status %4</source>
       <translation>Bearbeiten Sie %1 Zuordnung: %2, %3, Status %4</translation>
     </message>
     <message id="gamehq.input.binding_card.heading">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="55"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="61"></location>
       <source>%1 assignment</source>
       <translation>Zuordnung %1</translation>
     </message>
     <message id="gamehq.input.binding_card.remove_accessible">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="138"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="144"></location>
       <source>Remove %1 assignment</source>
       <translation>Zuordnung %1 entfernen</translation>
     </message>
     <message id="gamehq.input.binding_card.restore_accessible">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="95"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="101"></location>
       <source>Restore %1 assignment</source>
       <translation>%1-Zuweisung wiederherstellen</translation>
     </message>
     <message id="gamehq.input.binding_card.revert_accessible">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="98"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="104"></location>
       <source>Revert %1 assignment</source>
       <translation>Änderung an der %1-Zuweisung rückgängig machen</translation>
     </message>
     <message id="gamehq.input.binding_card.unassigned">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="208"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="214"></location>
       <source>Unassigned</source>
       <translation>Nicht zugeteilt</translation>
     </message>
@@ -2034,7 +2034,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>%1 wird gemeinsam verwendet: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1020"></location>
+      <location filename="src/ui/qml/Main.qml" line="1022"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Wählen Sie einen Ordner aus , den Sie ansehen möchten</translation>
@@ -2045,43 +2045,43 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>Über</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="151"></location>
+      <location filename="src/ui/qml/Main.qml" line="153"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="11"></location>
       <source>All</source>
       <translation>Alle</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="159"></location>
+      <location filename="src/ui/qml/Main.qml" line="161"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="19"></location>
       <source>Clips</source>
       <translation>Klemmen</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="155"></location>
+      <location filename="src/ui/qml/Main.qml" line="157"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="15"></location>
       <source>Favorites</source>
       <translation>Geliebte</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="161"></location>
+      <location filename="src/ui/qml/Main.qml" line="163"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="21"></location>
       <source>Game</source>
       <translation>Spiel</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="163"></location>
+      <location filename="src/ui/qml/Main.qml" line="165"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
       <source>Game favorites</source>
       <translation>Lieblingsspiele</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="153"></location>
+      <location filename="src/ui/qml/Main.qml" line="155"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="13"></location>
       <source>Recent</source>
       <translation>Vor kurzem</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="157"></location>
+      <location filename="src/ui/qml/Main.qml" line="159"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="17"></location>
       <source>Screenshots</source>
       <translation>Bildschirmaufnahmen</translation>
@@ -2104,37 +2104,37 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>Einstellungen</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="275"></location>
+      <location filename="src/app/App.cpp" line="279"></location>
       <source>Reason: %1</source>
       <translation>Grund: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="281"></location>
+      <location filename="src/app/App.cpp" line="285"></location>
       <source>Replay failed</source>
       <translation>Wiederholung fehlgeschlagen</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="261"></location>
+      <location filename="src/app/App.cpp" line="265"></location>
       <source>Replay saved</source>
       <translation>Wiederholung gespeichert</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="213"></location>
+      <location filename="src/app/App.cpp" line="217"></location>
       <source>Screenshot saved</source>
       <translation>Screenshot gespeichert</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="324"></location>
+      <location filename="src/app/App.cpp" line="328"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ wurde mit den Standardeinstellungen gestartet. Ihre vorherige Einstellungsdatei wurde beibehalten, sodass nichts verloren ging.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="319"></location>
+      <location filename="src/app/App.cpp" line="323"></location>
       <source>Settings could not be read</source>
       <translation>Einstellungen nicht gelesen werden können</translation>
     </message>
     <message id="gamehq.notifications.window_title">
-      <location filename="src/ui/qml/ToastWindow.qml" line="17"></location>
+      <location filename="src/ui/qml/ToastWindow.qml" line="19"></location>
       <source>%1 Notifications</source>
       <translation>%1 Benachrichtigungen</translation>
     </message>
@@ -2144,7 +2144,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>Aktionen erfassen</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="98"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="100"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>Das Spiel hat noch Fokus und kann auf Controller-Eingaben reagieren</translation>
     </message>
@@ -2179,7 +2179,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>Links/Recht  Scrub-Clip ∙ Eingabe  Wiedergabe/Pause ∙ Esc/Backspace  zurück zu den Aufnahmen</translation>
     </message>
     <message id="gamehq.overlay.window_title">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="28"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="30"></location>
       <source>%1 Overlay</source>
       <translation>Überlagerung %1</translation>
     </message>
@@ -2269,7 +2269,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>Meldung eines Problems</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="793"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="794"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
       <source>Security &amp; privacy</source>
       <translation>Sicherheit &amp; Datenschutz</translation>
@@ -3018,7 +3018,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>Verbindungen</translation>
     </message>
     <message id="gamehq.settings.input.bindings.fixed">
-      <location filename="src/ui/qml/components/BindingCard.qml" line="244"></location>
+      <location filename="src/ui/qml/components/BindingCard.qml" line="250"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="455"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="472"></location>
       <source>Fixed</source>
@@ -4058,7 +4058,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>Überprüfung der Aktualisierungen</translation>
     </message>
     <message id="gamehq.update.choose_install_time">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="907"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="908"></location>
       <source>Choose when to install %1 %2.</source>
       <translation>Wählen Sie, wann %1 %2 installiert werden soll.</translation>
     </message>
@@ -4131,7 +4131,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>%1  %2</translation>
     </message>
     <message id="gamehq.update.new_version_available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="582"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="583"></location>
       <source>New version available</source>
       <translation>Neue Version verfügbar</translation>
     </message>
@@ -4188,7 +4188,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>Freigegeben %1</translation>
     </message>
     <message id="gamehq.update.remind_later">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="932"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="933"></location>
       <source>Remind me later</source>
       <translation>Erinnere mich später daran.</translation>
     </message>
@@ -4209,7 +4209,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>Mal sehen, was neu ist.</translation>
     </message>
     <message id="gamehq.update.settings">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="727"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="728"></location>
       <source>Update settings</source>
       <translation>Aktualisierungseinstellungen</translation>
     </message>
@@ -4219,12 +4219,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>SHA-256 erkennt Korruption, aber kein kompromittiertes GitHub-Konto.</translation>
     </message>
     <message id="gamehq.update.skip_this_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="946"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="947"></location>
       <source>Skip this version</source>
       <translation>Überspringen Sie diese Version</translation>
     </message>
     <message id="gamehq.update.skip_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="737"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="738"></location>
       <source>Skip version %1</source>
       <translation>Überspringen Sie die Version %1</translation>
     </message>
@@ -4282,7 +4282,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>GameHQ %1 ist verfügbar.</translation>
     </message>
     <message id="gamehq.update.versions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="963"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="964"></location>
       <source>VERSIONS</source>
       <translation>Versionen</translation>
     </message>
