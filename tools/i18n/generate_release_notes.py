@@ -26,8 +26,13 @@ ID = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 PSEUDO_LOCALES = {"en-XA", "ar-XB"}
 MANIFEST_FIELDS = {
     "$schema", "schema_version", "source_locale", "history_limit",
-    "production_locales", "releases",
+    "production_locales", "releases", "localization_launch",
 }
+# The owner designates the localization-launch release by version. Its final
+# date stays null until the owner assigns it, so the date is a release gate and
+# never something this tool may invent.
+LAUNCH_FIELDS = {"version", "date", "status", "localization_policy", "designated_by"}
+LAUNCH_STATUSES = {"designated", "released"}
 RELEASE_FIELDS = {
     "version", "date", "status", "localization_policy", "source_integrity",
     "original_source_integrity", "correction",
@@ -262,7 +267,72 @@ def validate_manifest(
             validate_date(correction["corrected_at"], f"{label}.correction")
         elif correction is not None:
             fail(f"{label}: correction metadata exists without a source correction")
+    validate_launch(manifest, releases)
     return releases
+
+
+def validate_launch(
+    manifest: dict[str, Any], releases: list[dict[str, Any]]
+) -> dict[str, Any] | None:
+    launch = manifest.get("localization_launch")
+    if launch is None:
+        return None
+    if not isinstance(launch, dict) or set(launch) != LAUNCH_FIELDS:
+        fail("localization_launch fields do not match schema version 2")
+    version = launch.get("version")
+    version_key(version)
+    if launch.get("status") not in LAUNCH_STATUSES:
+        fail("localization_launch has an unsupported status")
+    if launch.get("localization_policy") != "complete":
+        fail("the localization-launch release must require all sixteen locales")
+    if not isinstance(launch.get("designated_by"), str) or not launch["designated_by"].strip():
+        fail("localization_launch must record who designated it")
+    if any(release["version"] == version for release in releases):
+        fail(f"localization-launch version {version} is already a released version")
+    if version_key(version) <= version_key(releases[0]["version"]):
+        fail("the localization-launch release must be newer than every released version")
+    date = launch.get("date")
+    if launch["status"] == "designated":
+        if date is not None:
+            fail("a designated localization-launch release must keep its date null "
+                 "until the owner assigns it")
+    else:
+        validate_date(date, "localization_launch")
+    return launch
+
+
+def launch_readiness(
+    source_root: Path, manifest: dict[str, Any], locales: list[str]
+) -> dict[str, Any]:
+    """Report, without inventing anything, how far the designated launch release
+    is from being publishable."""
+    launch = manifest.get("localization_launch")
+    if launch is None:
+        return {"designated": False, "blockers": ["no localization-launch release is designated"]}
+    version_root = source_root / "versions" / launch["version"]
+    english = version_root / "en-US.json"
+    documents = {
+        locale: (version_root / f"{locale}.json").is_file() for locale in locales
+    }
+    blockers: list[str] = []
+    if launch["date"] is None:
+        blockers.append("the owner has not assigned the final release date")
+    if not english.is_file():
+        blockers.append("the authoritative English launch document does not exist")
+    missing = sorted(locale for locale, present in documents.items() if not present)
+    if missing:
+        blockers.append(f"{len(missing)} locale document(s) are missing: {', '.join(missing)}")
+    return {
+        "designated": True,
+        "version": launch["version"],
+        "date": launch["date"],
+        "status": launch["status"],
+        "localization_policy": launch["localization_policy"],
+        "designated_by": launch["designated_by"],
+        "documents": documents,
+        "blockers": blockers,
+        "publishable": not blockers,
+    }
 
 
 def load_contract(source_root: Path) -> tuple[dict[str, Any], list[str], list[tuple[dict[str, Any], dict[str, Any]]]]:
@@ -502,12 +572,28 @@ def main() -> int:
                         default=ROOT / "assets" / "release-notes" / "generated")
     parser.add_argument("--bootstrap-from", type=Path)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--launch-status", action="store_true",
+                        help="report designated-launch readiness and gate on it")
     args = parser.parse_args()
     if args.bootstrap_from:
         bootstrap_legacy(args.bootstrap_from, args.source_root)
     generate_all(args.source_root, args.output_root, args.check)
     print("Release-note generation passed (16 deterministic locale bundles, schema v2)")
-    return 0
+    if not args.launch_status:
+        return 0
+    manifest, locales, _ = load_contract(args.source_root)
+    readiness = launch_readiness(args.source_root, manifest, locales)
+    if not readiness["designated"]:
+        print("No localization-launch release is designated.")
+        return 1
+    print(f"Localization-launch release {readiness['version']} "
+          f"({readiness['status']}, designated by {readiness['designated_by']})")
+    print(f"  final release date: {readiness['date'] or 'not assigned by the owner'}")
+    ready = sum(1 for present in readiness["documents"].values() if present)
+    print(f"  reviewed locale documents: {ready}/{len(readiness['documents'])}")
+    for blocker in readiness["blockers"]:
+        print(f"  blocker: {blocker}")
+    return 0 if readiness["publishable"] else 1
 
 
 if __name__ == "__main__":

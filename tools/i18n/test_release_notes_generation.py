@@ -115,6 +115,67 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         readme = (SOURCE_ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("has been retired", readme)
 
+    def test_owner_designated_launch_release_is_recorded_without_a_date(self) -> None:
+        manifest = GEN.read_json(SOURCE_ROOT / "manifest.json")
+        launch = manifest["localization_launch"]
+        self.assertEqual("0.7.7", launch["version"])
+        self.assertIsNone(launch["date"])
+        self.assertEqual("designated", launch["status"])
+        self.assertEqual("complete", launch["localization_policy"])
+        self.assertTrue(launch["designated_by"].strip())
+        self.assertNotIn(launch["version"],
+                         {release["version"] for release in manifest["releases"]})
+
+    def test_launch_readiness_reports_the_real_blockers_without_inventing_data(self) -> None:
+        manifest, locales, _ = GEN.load_contract(SOURCE_ROOT)
+        readiness = GEN.launch_readiness(SOURCE_ROOT, manifest, locales)
+        self.assertTrue(readiness["designated"])
+        self.assertFalse(readiness["publishable"])
+        self.assertIsNone(readiness["date"])
+        self.assertEqual(16, len(readiness["documents"]))
+        self.assertFalse(any(readiness["documents"].values()))
+        joined = " | ".join(readiness["blockers"])
+        self.assertIn("final release date", joined)
+        self.assertIn("English launch document", joined)
+        self.assertIn("16 locale document(s) are missing", joined)
+
+    def test_a_designated_launch_release_never_reaches_generated_artifacts(self) -> None:
+        version = GEN.read_json(SOURCE_ROOT / "manifest.json")["localization_launch"]["version"]
+        for path in sorted(OUTPUT_ROOT.glob("*.json")):
+            self.assertNotIn(version, path.read_text(encoding="utf-8"), path.name)
+        publication = SOURCE_ROOT / "publication"
+        self.assertFalse((publication / version).exists())
+        for path in sorted(publication.rglob("*")):
+            if path.is_file():
+                self.assertNotIn(version, path.read_text(encoding="utf-8"), str(path))
+        index = GEN.read_json(OUTPUT_ROOT / "release-notes.index.json")
+        self.assertNotEqual(version, index["current_version"])
+        self.assertNotIn(version, {document["version"] for document in index["documents"]})
+
+    def test_invalid_launch_designations_are_rejected(self) -> None:
+        manifest, _, releases = GEN.load_contract(SOURCE_ROOT)
+        base = manifest["localization_launch"]
+        released = [release for release, _ in releases]
+        cases = {
+            "date": {**base, "date": "2026-09-30"},
+            "status": {**base, "status": "shipped"},
+            "policy": {**base, "localization_policy": "fallback-allowed"},
+            "designator": {**base, "designated_by": "  "},
+            "duplicate": {**base, "version": released[0]["version"]},
+            "older": {**base, "version": "0.7.2"},
+            "fields": {key: value for key, value in base.items() if key != "designated_by"},
+        }
+        for name, launch in cases.items():
+            with self.subTest(case=name):
+                with self.assertRaises(GEN.ReleaseNotesError):
+                    GEN.validate_launch({"localization_launch": launch}, released)
+        # A released launch designation must carry a real ISO date.
+        released_launch = {**base, "status": "released", "date": "2026-09-30"}
+        self.assertEqual(released_launch,
+                         GEN.validate_launch({"localization_launch": released_launch}, released))
+        with self.assertRaises(GEN.ReleaseNotesError):
+            GEN.validate_launch({"localization_launch": {**base, "status": "released"}}, released)
+
     def test_generation_is_byte_deterministic(self) -> None:
         with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:
             first_root = Path(first)

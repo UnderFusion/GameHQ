@@ -21,6 +21,13 @@
     "uk-UA",
     "it-IT"
   ],
+  "localization_launch": {
+    "version": "0.7.7",
+    "date": null,
+    "status": "designated",
+    "localization_policy": "complete",
+    "designated_by": "owner"
+  },
   "releases": [
     {
       "version": "0.7.6",

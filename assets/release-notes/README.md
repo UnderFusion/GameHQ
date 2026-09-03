@@ -27,6 +27,38 @@ is the byte-frozen record of the released 0.7.3-0.7.6 English history that was
 migrated off it; `tools/i18n/test_release_notes_generation.py` proves the
 versioned source still reproduces it exactly.
 
+## Localization-launch designation
+
+`manifest.json` carries a `localization_launch` object recording the owner's
+designation of the first release that must ship complete translations for all
+sixteen production locales:
+
+```json
+"localization_launch": {
+  "version": "0.7.7",
+  "date": null,
+  "status": "designated",
+  "localization_policy": "complete",
+  "designated_by": "owner"
+}
+```
+
+The version is fixed. The final ISO date stays `null` until the owner assigns
+it, and no tool may invent one: while `status` is `designated`, a non-null date
+is rejected outright. A designated release is **not** a released version, so it
+never enters `releases`, the generated bundles, the publication artifacts, or
+the runtime index.
+
+Report how far the designated release is from being publishable:
+
+```powershell
+python tools/i18n/generate_release_notes.py --launch-status
+```
+
+It lists every real blocker - the missing owner date, the missing authoritative
+English document, and each missing locale document - and exits non-zero until
+all of them are cleared. `tools/i18n/locale.ps1 package` runs the same gate.
+
 Generate all offline bundles:
 
 ```powershell

@@ -184,7 +184,11 @@ entirely offline and is deterministic: the same tree always produces the same
 result.
 
 `package` reports, per locale, whether it is release-eligible and what is
-missing, then runs the release completeness gate. A reserve, disabled, or
+missing, then runs the release completeness gate and the localization-launch
+gate. The launch gate holds the owner's designated launch release: it fails
+while the owner has not assigned the final ISO date or while any of the sixteen
+reviewed launch documents is missing. The designation itself lives in
+`assets/release-notes/manifest.json` and is documented in that folder's README. A reserve, disabled, or
 retired locale is reported as not release-eligible rather than silently skipped.
 
 `verify`, `update`, and `package` inspect generated repository surfaces, so they

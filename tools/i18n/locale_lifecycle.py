@@ -480,6 +480,13 @@ def command_package(root: Path, args: argparse.Namespace) -> int:
     )
     print(message)
     failures += 1 if code != 0 else 0
+    # The designated localization-launch release is a release gate of its own:
+    # it needs an owner-assigned date and sixteen reviewed documents.
+    code, message = run_tool(
+        [str(TOOLS / "generate_release_notes.py"), "--check", "--launch-status"],
+        "localization-launch gate")
+    print(message)
+    failures += 1 if code != 0 else 0
     if failures:
         fail(f"{failures} locale(s) are not ready to package")
     return 0
