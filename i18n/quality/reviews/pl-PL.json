@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "google-mobile-draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T00:30:00Z"
+    "recorded_at": "2026-09-04T01:15:00Z"
   },
   "baseline": {
     "path": "git:3f34ee863a94b02ff249d7eff8ac953529d8a6cf:i18n/app/gamehq_pl_PL.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_pl_PL.ts",
-    "sha256": "df1c1207f40efac78fdbff12431bf90dd99d0ab41a9299fedb9ad1bcfd6e5b8e",
+    "sha256": "b95df4b90667cdc0a2023cccf2e23dbf4bc2960200451ba84dfac40a34cefa3c",
     "message_count": 831
   },
   "coverage": [
@@ -2622,7 +2622,7 @@
     {
       "id": "gamehq.help.feature.replay.description",
       "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
-      "translation_hash": "c91f8fa157406f72f177dba10014159095273cb6107a233762d28a4d3804b87a",
+      "translation_hash": "91ba8c1a3b926302f9d27704f2689fee27b44a759b1c505ab1628cda8b4f57cb",
       "locations": [
         "src/ui/qml/HelpView.qml:306"
       ],
@@ -2658,7 +2658,7 @@
     {
       "id": "gamehq.help.feature.watched_folders.description",
       "source_hash": "743b2c2fa245fa697ed7cd9d5718b98727e9e5f3ec7e4f637a5ba56e8e53f5be",
-      "translation_hash": "97de08d6c0cb55980de703a163e921185e67bf38724255976b9da8880ccc3b55",
+      "translation_hash": "077cec0ae54079c8d36500082f09a114236feb50b0c19b6b00155d75545e063b",
       "locations": [
         "src/ui/qml/HelpView.qml:336"
       ],
@@ -5745,7 +5745,7 @@
     {
       "id": "gamehq.settings.input.profile.shared_description",
       "source_hash": "39cffff2e21fb06b843b097ca995ee2e855141e6e2e9756352cabcde297dd17d",
-      "translation_hash": "39b83c84ad2db5d09d8a93f7cc67987f64871a7ed5ea92d5997e2668aabde58b",
+      "translation_hash": "0567d56c384dadd3a333445c137711153d7f082c6da94b757cab7dddb61f58e3",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:65"
       ],
@@ -10806,14 +10806,14 @@
       "id": "gamehq.help.feature.replay.description",
       "surface": "application",
       "before": [
-        "Zawsze włączony automatycznie. Nagrywanie w tle podczas gdy gra jest w ostrzeżeniu. Przytrzymaj Share (lub Ctrl+Shift+E), aby zapisać ostatnie kilka sekund jako klip. Włącz lub wyłącz nagrywanie zawsze w ustawieniach → Odtwarzanie."
-      ],
-      "after": [
         "Zawsze aktywny i gotowy do nagrywania. Nagrywa w tle, gdy okno gry jest aktywne. W Ustawieniach → Powtórki ustaw długość powtórki na 15–300 sekund."
       ],
-      "category": "independent_reviewer_correction",
-      "reason": "Independent full-catalog reviewer required this correction for natural Polish, correct UI role, consistent terminology, or precise technical/safety meaning.",
-      "terminology_decision": "The independent reviewer wording supersedes the initial t5 wording and preserves the specified UI or technical meaning."
+      "after": [
+        "Bufor działa stale i uzbraja się automatycznie. Nagrywa w tle, gdy okno gry jest aktywne. Przytrzymaj Share (lub Ctrl+Shift+E), aby zapisać kilka ostatnich sekund jako klip. Stałe nagrywanie możesz włączyć lub wyłączyć w Ustawieniach → Powtórki."
+      ],
+      "category": "independent_reviewer_second_pass_correction",
+      "reason": "Second-pass reviewer correction restores the source instructions to hold Share or Ctrl+Shift+E and toggle always-on recording.",
+      "terminology_decision": "Translate always-on auto-armed as a continuously active, automatically armed buffer and preserve both save and settings instructions."
     },
     {
       "id": "gamehq.help.feature.replay.title",
@@ -10858,14 +10858,14 @@
       "id": "gamehq.help.feature.watched_folders.description",
       "surface": "application",
       "before": [
-        "Dodaj dowolny folder (Game Bar, Steam, NVIDIA ShadowPlay)  %1 automatycznie skanuje go pod kątem nowych zdjęć."
-      ],
-      "after": [
         "Wskaż dowolny folder zrzutów ekranu, a %1 będzie automatycznie skanować go w poszukiwaniu nowych materiałów. Idealne rozwiązanie dla narzędzi zewnętrznych."
       ],
-      "category": "independent_reviewer_correction",
-      "reason": "Independent full-catalog reviewer required this correction for natural Polish, correct UI role, consistent terminology, or precise technical/safety meaning.",
-      "terminology_decision": "The independent reviewer wording supersedes the initial t5 wording and preserves the specified UI or technical meaning."
+      "after": [
+        "Dodaj dowolny folder (Game Bar, Steam, NVIDIA ShadowPlay), a %1 będzie automatycznie skanować go w poszukiwaniu nowych materiałów."
+      ],
+      "category": "independent_reviewer_second_pass_correction",
+      "reason": "Second-pass reviewer correction restores any-folder scope and the explicit Game Bar, Steam, and NVIDIA ShadowPlay examples.",
+      "terminology_decision": "Watched folders remain arbitrary capture sources; preserve the named integrations and the %1 application placeholder."
     },
     {
       "id": "gamehq.help.feature.watched_folders.title",
@@ -14095,14 +14095,14 @@
       "id": "gamehq.settings.input.profile.shared_description",
       "surface": "application",
       "before": [
-        "Zadania oparte na pozycji działają na PlayStation, Xbox, Nintendo i ogólnych podkładach."
-      ],
-      "after": [
         "Ten profil jest używany przez kontrolery bez własnych nadpisań. Zmiany tutaj będą stosowane na innych standardowych kontrolerach."
       ],
-      "category": "independent_reviewer_correction",
-      "reason": "Independent full-catalog reviewer required this correction for natural Polish, correct UI role, consistent terminology, or precise technical/safety meaning.",
-      "terminology_decision": "The independent reviewer wording supersedes the initial t5 wording and preserves the specified UI or technical meaning."
+      "after": [
+        "Przypisania oparte na położeniu przycisków działają na kontrolerach PlayStation, Xbox, Nintendo i innych standardowych padach."
+      ],
+      "category": "canonical_meaning_restoration",
+      "reason": "Restores the canonical meaning: position-based assignments work across the named controller families and standard pads.",
+      "terminology_decision": "Use przypisania oparte na położeniu przycisków for position-based assignments and pady for generic pads in this context."
     },
     {
       "id": "gamehq.settings.input.profile.specific_description",
@@ -16246,7 +16246,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_pl_PL.ts",
-      "sha256": "df1c1207f40efac78fdbff12431bf90dd99d0ab41a9299fedb9ad1bcfd6e5b8e",
+      "sha256": "b95df4b90667cdc0a2023cccf2e23dbf4bc2960200451ba84dfac40a34cefa3c",
       "reviewed_units": 831
     },
     {

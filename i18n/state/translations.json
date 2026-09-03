@@ -86457,13 +86457,13 @@
         "gamehq.help.feature.replay.description": {
           "domain": "application",
           "source_hash": "ceee81e4e2ddade15e3a4c8213c083498f9b2aaf73a3c9c33d84ce6f1b3389c4",
-          "translation_hash": "c91f8fa157406f72f177dba10014159095273cb6107a233762d28a4d3804b87a",
+          "translation_hash": "91ba8c1a3b926302f9d27704f2689fee27b44a759b1c505ab1628cda8b4f57cb",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "gpt-5-independent-review-recovery"
+            "actor": "gpt-5-independent-review-second-pass"
           },
-          "updated_at": "2026-09-04T00:30:00Z"
+          "updated_at": "2026-09-04T01:15:00Z"
         },
         "gamehq.help.feature.replay.title": {
           "domain": "application",
@@ -86501,13 +86501,13 @@
         "gamehq.help.feature.watched_folders.description": {
           "domain": "application",
           "source_hash": "743b2c2fa245fa697ed7cd9d5718b98727e9e5f3ec7e4f637a5ba56e8e53f5be",
-          "translation_hash": "97de08d6c0cb55980de703a163e921185e67bf38724255976b9da8880ccc3b55",
+          "translation_hash": "077cec0ae54079c8d36500082f09a114236feb50b0c19b6b00155d75545e063b",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "gpt-5-independent-review-recovery"
+            "actor": "gpt-5-independent-review-second-pass"
           },
-          "updated_at": "2026-09-04T00:30:00Z"
+          "updated_at": "2026-09-04T01:15:00Z"
         },
         "gamehq.help.feature.watched_folders.title": {
           "domain": "application",
@@ -90230,13 +90230,13 @@
         "gamehq.settings.input.profile.shared_description": {
           "domain": "application",
           "source_hash": "39cffff2e21fb06b843b097ca995ee2e855141e6e2e9756352cabcde297dd17d",
-          "translation_hash": "39b83c84ad2db5d09d8a93f7cc67987f64871a7ed5ea92d5997e2668aabde58b",
+          "translation_hash": "0567d56c384dadd3a333445c137711153d7f082c6da94b757cab7dddb61f58e3",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "gpt-5-independent-review-recovery"
+            "actor": "gpt-5-independent-review-second-pass"
           },
-          "updated_at": "2026-09-04T00:30:00Z"
+          "updated_at": "2026-09-04T01:15:00Z"
         },
         "gamehq.settings.input.profile.specific_description": {
           "domain": "application",

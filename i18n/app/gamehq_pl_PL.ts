@@ -1497,7 +1497,7 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.help.feature.replay.description">
       <location filename="src/ui/qml/HelpView.qml" line="306"></location>
       <source>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
-      <translation>Zawsze aktywny i gotowy do nagrywania. Nagrywa w tle, gdy okno gry jest aktywne. W Ustawieniach → Powtórki ustaw długość powtórki na 15–300 sekund.</translation>
+      <translation>Bufor działa stale i uzbraja się automatycznie. Nagrywa w tle, gdy okno gry jest aktywne. Przytrzymaj Share (lub Ctrl+Shift+E), aby zapisać kilka ostatnich sekund jako klip. Stałe nagrywanie możesz włączyć lub wyłączyć w Ustawieniach → Powtórki.</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
       <location filename="src/ui/qml/HelpView.qml" line="304"></location>
@@ -1517,7 +1517,7 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.help.feature.watched_folders.description">
       <location filename="src/ui/qml/HelpView.qml" line="336"></location>
       <source>Add any folder (Game Bar, Steam, NVIDIA ShadowPlay) — %1 scans it for new captures automatically.</source>
-      <translation>Wskaż dowolny folder zrzutów ekranu, a %1 będzie automatycznie skanować go w poszukiwaniu nowych materiałów. Idealne rozwiązanie dla narzędzi zewnętrznych.</translation>
+      <translation>Dodaj dowolny folder (Game Bar, Steam, NVIDIA ShadowPlay), a %1 będzie automatycznie skanować go w poszukiwaniu nowych materiałów.</translation>
     </message>
     <message id="gamehq.help.feature.watched_folders.title">
       <location filename="src/ui/qml/HelpView.qml" line="334"></location>
@@ -3264,7 +3264,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.input.profile.shared_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="65"></location>
       <source>Position-based assignments work across PlayStation, Xbox, Nintendo, and generic pads.</source>
-      <translation>Ten profil jest używany przez kontrolery bez własnych nadpisań. Zmiany tutaj będą stosowane na innych standardowych kontrolerach.</translation>
+      <translation>Przypisania oparte na położeniu przycisków działają na kontrolerach PlayStation, Xbox, Nintendo i innych standardowych padach.</translation>
     </message>
     <message id="gamehq.settings.input.profile.specific_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="62"></location>
