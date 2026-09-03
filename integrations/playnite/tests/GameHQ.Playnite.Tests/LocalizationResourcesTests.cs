@@ -35,6 +35,7 @@ public sealed class LocalizationResourcesTests
         var mapped = map.RootElement.GetProperty("locales").EnumerateArray()
             .ToDictionary(locale => locale.GetProperty("gamehq").GetString()!, locale => locale);
 
+        Assert.Equal(16, enabled.Count);
         Assert.Equal(enabled.Keys.OrderBy(value => value), mapped.Keys.OrderBy(value => value));
         var expectedNames = new Dictionary<string, string>
         {
@@ -49,7 +50,11 @@ public sealed class LocalizationResourcesTests
             ["pl-PL"] = "pl_PL.xaml",
             ["ko-KR"] = "ko_KR.xaml",
             ["zh-Hant"] = "zh_TW.xaml",
-            ["tr-TR"] = "tr_TR.xaml"
+            ["tr-TR"] = "tr_TR.xaml",
+            ["th-TH"] = "th_TH.xaml",
+            ["es-419"] = "es_MX.xaml",
+            ["uk-UA"] = "uk_UA.xaml",
+            ["it-IT"] = "it_IT.xaml"
         };
 
         foreach (var (tag, mapping) in mapped)
@@ -65,10 +70,14 @@ public sealed class LocalizationResourcesTests
                     .Select(alias => alias.GetString()).OrderBy(value => value));
         }
 
-        var deferred = map.RootElement.GetProperty("deferred_tier_2").EnumerateArray()
-            .Select(tag => tag.GetString()).OrderBy(value => value).ToArray();
-        Assert.Equal(new[] { "es-419", "it-IT", "th-TH", "uk-UA" }, deferred);
-        Assert.DoesNotContain(mapped.Keys, tag => deferred.Contains(tag));
+        var unavailable = map.RootElement.GetProperty("playnite_10_host_unavailable")
+            .EnumerateArray().ToDictionary(
+                locale => locale.GetProperty("gamehq").GetString()!, locale => locale);
+        Assert.Equal(new[] { "es-419", "th-TH" }, unavailable.Keys.OrderBy(value => value));
+        Assert.Equal("es_MX", unavailable["es-419"].GetProperty("playnite").GetString());
+        Assert.Equal("th_TH", unavailable["th-TH"].GetProperty("playnite").GetString());
+        Assert.All(unavailable.Values,
+            locale => Assert.Equal("en_US", locale.GetProperty("fallback").GetString()));
         Assert.Equal(
             expectedNames.Values.OrderBy(value => value),
             Directory.EnumerateFiles(LocalizationDirectory, "*.xaml")
@@ -76,7 +85,7 @@ public sealed class LocalizationResourcesTests
     }
 
     [Fact]
-    public void EveryTierOneResourceIsCompleteAndStructurallySafe()
+    public void EveryLaunchResourceIsCompleteAndStructurallySafe()
     {
         var english = ReadDictionary("en_US.xaml");
         Assert.Equal(52, english.Count);
@@ -154,9 +163,23 @@ public sealed class LocalizationResourcesTests
             Regex.Matches(source, Prefix + @"[A-Za-z0-9]+")
                 .Select(match => match.Value).Distinct().OrderBy(key => key));
 
-        var manifest = File.ReadAllText(Path.Combine(Output, "Audit", "extension.yaml"));
-        Assert.Contains("Name: GameHQ Integration", manifest, StringComparison.Ordinal);
-        Assert.DoesNotContain("Name: LOC", manifest, StringComparison.Ordinal);
+        var extensionManifest = File.ReadAllText(Path.Combine(Output, "Audit", "extension.yaml"));
+        Assert.Contains("Name: GameHQ Integration", extensionManifest, StringComparison.Ordinal);
+        Assert.DoesNotContain("Name: LOC", extensionManifest, StringComparison.Ordinal);
+
+        var addonManifest = File.ReadAllText(Path.Combine(Output, "Audit", "AddonManifest.yaml"));
+        Assert.Contains("ShortDescription: Launch GameHQ with Playnite games", addonManifest,
+                        StringComparison.Ordinal);
+        Assert.DoesNotContain("LOCGameHQ", addonManifest, StringComparison.Ordinal);
+
+        var installerManifest = File.ReadAllText(Path.Combine(Output, "Audit", "InstallerManifest.yaml"));
+        Assert.Contains("Changelog:", installerManifest, StringComparison.Ordinal);
+        Assert.DoesNotContain("LOCGameHQ", installerManifest, StringComparison.Ordinal);
+
+        var repositoryHelp = File.ReadAllText(Path.Combine(Output, "Audit", "README.md"));
+        Assert.Contains("GameHQ Integration (Playnite plugin)", repositoryHelp,
+                        StringComparison.Ordinal);
+        Assert.DoesNotContain("LOCGameHQ", repositoryHelp, StringComparison.Ordinal);
     }
 
     [Fact]

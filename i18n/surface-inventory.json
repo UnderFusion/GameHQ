@@ -39,10 +39,10 @@
       "packaging_boundary": "GameHQ.Playnite.dll plus extension.yaml in integrations/playnite/dist/GameHQ_Playnite_Integration_*.pext",
       "user_visible": true,
       "locale_source": "Playnite's active UI locale through DynamicResource and ResourceProvider.GetString",
-      "native_mechanism": "Twelve package-local Playnite XAML resource dictionaries plus a C# English fallback loader, never Qt .qm catalogs",
+      "native_mechanism": "Sixteen package-local Playnite XAML resource dictionaries plus a C# English fallback loader, never Qt .qm catalogs",
       "fallback": "Complete packaged en_US.xaml dictionary when the active locale, resource, or key is unavailable",
       "classification": "localized now",
-      "rationale": "Tier 1 settings, menu, validation, dialogs, status text, and diagnostics now follow Playnite's host language",
+      "rationale": "Launch-locale settings, menu, validation, dialogs, status text, and diagnostics follow Playnite's host language",
       "coverage": ["integrations/playnite/src/GameHQ.Playnite/**"],
       "build_manifests": ["integrations/playnite/src/GameHQ.Playnite/GameHQ.Playnite.csproj"]
     },
@@ -260,7 +260,7 @@
       "files": ["integrations/playnite/src/GameHQ.Playnite/Settings/GameHQIntegrationSettingsView.xaml", "integrations/playnite/src/GameHQ.Playnite/Settings/GameHQIntegrationSettingsViewModel.cs", "integrations/playnite/src/GameHQ.Playnite/GameHQPlugin.cs", "integrations/playnite/src/GameHQ.Playnite/extension.yaml", "integrations/playnite/src/GameHQ.Playnite/Localization/README.md"],
       "extraction": "Use Playnite localization dictionaries for XAML, view-model values, dialogs, validation, menu items, and metadata.",
       "migration": "Localized through package-local Playnite dictionaries, DynamicResource, and ResourceProvider with complete en-US fallback; Qt catalogs remain excluded.",
-      "acceptance_coverage": ["12 Tier 1 resources", "settings view", "connection states", "dialogs and validation", "main menu item", "diagnostics", "package inclusion"],
+      "acceptance_coverage": ["16 production resources", "settings view", "connection states", "dialogs and validation", "main menu item", "diagnostics", "package inclusion"],
       "flags": ["separate_toolchain", "cached_view_model", "wpf_placeholders", "literal_ampersand"]
     },
     {

@@ -53,6 +53,12 @@
           Link="Audit\GameHQ.Playnite.csproj" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\src\GameHQ.Playnite\extension.yaml"
           Link="Audit\extension.yaml" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\AddonManifest.yaml"
+          Link="Audit\AddonManifest.yaml" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\InstallerManifest.yaml"
+          Link="Audit\InstallerManifest.yaml" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\README.md"
+          Link="Audit\README.md" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\packaging\package.ps1"
           Link="Audit\package.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
