@@ -1,4 +1,5 @@
 #pragma once
+#include <QDateTime>
 #include <QObject>
 #include <QString>
 
@@ -20,13 +21,12 @@ public:
 
     // kind: "success" | "info" | "error" (tints the accent bar).
     // imagePath: optional local file path for a thumbnail ("" = text only).
-    // whenText: optional "d MMM yyyy, HH:mm", shown under the game name in a
-    // smaller font.
+    // when: optional event time, formatted by QML using the effective locale.
     // isVideo: shows a play badge over the thumbnail (imagePath is a clip frame).
     Q_INVOKABLE void post(const QString& title, const QString& body = {},
                           const QString& imagePath = {},
                           const QString& kind = QStringLiteral("info"),
-                          const QString& whenText = {},
+                          const QDateTime& when = {},
                           bool isVideo = false);
 
     Q_INVOKABLE void hideWindow();   // QML calls this once the stack empties
@@ -34,7 +34,7 @@ public:
 signals:
     void posted(const QString& title, const QString& body,
                 const QString& imageUrl, const QString& kind,
-                const QString& whenText, bool isVideo);
+                const QDateTime& when, bool isVideo);
 
 private:
     bool ensureLoaded();

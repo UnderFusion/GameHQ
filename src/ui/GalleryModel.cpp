@@ -1,7 +1,14 @@
 #include "ui/GalleryModel.h"
 
 #include <QDateTime>
+#include <QLocale>
 #include <QUrl>
+
+QString GalleryModel::formattedDate(const QString& isoDate)
+{
+    const QDateTime dateTime = QDateTime::fromString(isoDate, Qt::ISODate).toLocalTime();
+    return dateTime.isValid() ? QLocale().toString(dateTime, QLocale::ShortFormat) : isoDate;
+}
 
 GalleryModel::GalleryModel(CaptureDatabase* db, QObject* parent)
     : QAbstractListModel(parent)
@@ -25,10 +32,7 @@ QVariant GalleryModel::data(const QModelIndex& index, int role) const
     case FileUrlRole:   return QUrl::fromLocalFile(r.filePath);
     case TypeRole:      return r.type;
     case GameNameRole:  return r.gameName;
-    case DateTextRole: {
-        const QDateTime dt = QDateTime::fromString(r.createdAt, Qt::ISODate).toLocalTime();
-        return dt.isValid() ? dt.toString(QStringLiteral("d MMM yyyy, HH:mm")) : r.createdAt;
-    }
+    case DateTextRole:  return formattedDate(r.createdAt);
     case FavoriteRole:  return r.isFavorite;
     case ThumbnailRole: return r.thumbnailPath;
     case SourceRole:    return r.source;
@@ -65,6 +69,12 @@ void GalleryModel::refresh()
     endResetModel();
 }
 
+void GalleryModel::retranslate()
+{
+    if (!m_items.isEmpty())
+        emit dataChanged(index(0), index(m_items.size() - 1), { DateTextRole });
+}
+
 void GalleryModel::toggleFavorite(int row)
 {
     if (row < 0 || row >= m_items.size())
@@ -92,13 +102,12 @@ QVariantMap GalleryModel::get(int row) const
     const CaptureRecord* r = record(row);
     if (!r)
         return {};
-    const QDateTime dt = QDateTime::fromString(r->createdAt, Qt::ISODate).toLocalTime();
     return {
         { QStringLiteral("filePath"),    r->filePath },
         { QStringLiteral("fileUrl"),     QUrl::fromLocalFile(r->filePath) },
         { QStringLiteral("captureType"), r->type },
         { QStringLiteral("gameName"),    r->gameName },
-        { QStringLiteral("dateText"),    dt.isValid() ? dt.toString(QStringLiteral("d MMM yyyy, HH:mm")) : r->createdAt },
+        { QStringLiteral("dateText"),    formattedDate(r->createdAt) },
         { QStringLiteral("favorite"),    r->isFavorite },
         { QStringLiteral("thumbnail"),   r->thumbnailPath },
     };

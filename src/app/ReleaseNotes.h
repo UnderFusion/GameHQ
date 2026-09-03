@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QByteArray>
+#include <QLocale>
 #include <QString>
 #include <QVariantList>
 
@@ -10,6 +11,8 @@ class ReleaseNotes
 {
 public:
     static ReleaseNotes fromJson(const QByteArray& json, QString* error = nullptr);
+    static ReleaseNotes fromJson(const QByteArray& json, const QLocale& locale,
+                                 QString* error = nullptr);
     static ReleaseNotes loadBundled();
     // Converts the small, untrusted Markdown subset used by GitHub release
     // bodies into plain structured data for QML. No HTML, links, or images

@@ -179,7 +179,8 @@ FocusScope {
                             return ""
                         //% "%1 · Slot %2"
                         return qsTrId("gamehq.input.assignment.scope_slot")
-                            .arg(root.model.editorScopeLabel).arg(root.model.editorSlot)
+                            .arg(root.model.editorScopeLabel)
+                            .arg(languageManager.formatInteger(root.model.editorSlot))
                     }
                     color: Theme.textMuted
                     font.family: Theme.fontFamily
@@ -530,13 +531,13 @@ FocusScope {
                             //% "Default"
                             { label: qsTrId("gamehq.input.assignment.default_duration"), value: "0" },
                             //% "%1 s"
-                            { label: qsTrId("gamehq.duration.seconds_short").arg("1.0"), value: "1000" },
+                            { label: qsTrId("gamehq.duration.seconds_short").arg(languageManager.formatDecimal(1.0, 1)), value: "1000" },
                             //% "%1 s"
-                            { label: qsTrId("gamehq.duration.seconds_short").arg("1.5"), value: "1500" },
+                            { label: qsTrId("gamehq.duration.seconds_short").arg(languageManager.formatDecimal(1.5, 1)), value: "1500" },
                             //% "%1 s"
-                            { label: qsTrId("gamehq.duration.seconds_short").arg("2.0"), value: "2000" },
+                            { label: qsTrId("gamehq.duration.seconds_short").arg(languageManager.formatDecimal(2.0, 1)), value: "2000" },
                             //% "%1 s"
-                            { label: qsTrId("gamehq.duration.seconds_short").arg("3.0"), value: "3000" }
+                            { label: qsTrId("gamehq.duration.seconds_short").arg(languageManager.formatDecimal(3.0, 1)), value: "3000" }
                         ]
                         onActivated: function(value) {
                             root.model.setEditorGesture("hold", 1, Number(value))

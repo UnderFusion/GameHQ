@@ -15,7 +15,12 @@ Row {
     property alias to: slider.to
     property alias stepSize: slider.stepSize
     // Renders the current value next to the track; override for other units.
-    property var formatValue: function (v) { return Math.round(v) + "%" }
+    property var formatValue: function (v) {
+        languageManager.translationRevision
+        //% "%1%"
+        return qsTrId("gamehq.format.percent")
+                .arg(languageManager.formatInteger(Math.round(v)))
+    }
 
     spacing: Theme.s12
 

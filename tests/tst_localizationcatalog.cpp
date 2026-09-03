@@ -219,6 +219,8 @@ private slots:
     void migratedP4ThreeCppHasNoHardcodedErrorAssignments();
     void migratedP4FourNativeIdsCoverEveryLaunchLocale();
     void p4FourCachedPresentationIsIdDriven();
+    void p4FiveFormattingIdsCoverEveryLaunchLocale();
+    void p4FiveFormattingUsesLocaleAwareSafeBoundaries();
 };
 
 void LocalizationCatalogTest::productionEnglishCatalogCoversActiveIds()
@@ -294,7 +296,7 @@ void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
     const QSet<QString> ids = translationIdsIn(p4OneSourceFiles());
     // Main.qml and SettingsView.qml are shared with p4-2 and now contribute
     // 19 additional feature/dialog IDs to this source-file set.
-    QCOMPARE(ids.size(), 214);
+    QCOMPARE(ids.size(), 217);
     for (const QString &catalogName : launchCatalogs()) {
         QString error;
         const auto catalog = readTsCatalog(
@@ -317,7 +319,7 @@ void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
 void LocalizationCatalogTest::migratedProductionQmlIdsCoverEveryLaunchLocale()
 {
     const QSet<QString> ids = translationIdsIn(productionQmlFiles());
-    QCOMPARE(ids.size(), 576);
+    QCOMPARE(ids.size(), 581);
 
     for (const QString &catalogName : launchCatalogs()) {
         QString error;
@@ -446,6 +448,96 @@ void LocalizationCatalogTest::p4FourCachedPresentationIsIdDriven()
     QVERIFY(!editorHeader.contains(
         QStringLiteral("m_lastFiredAction = QStringLiteral(\"No action fired yet\")")));
     QVERIFY(!controller.contains(QStringLiteral("return QStringLiteral(\"Not checked yet\")")));
+}
+
+void LocalizationCatalogTest::p4FiveFormattingIdsCoverEveryLaunchLocale()
+{
+    const QSet<QString> ids{
+        QStringLiteral("gamehq.action.back_with_marker"),
+        QStringLiteral("gamehq.format.percent"),
+        QStringLiteral("gamehq.input.compatibility.convert_press"),
+        QStringLiteral("gamehq.input.compatibility.convert_press_with_wait"),
+        QStringLiteral("gamehq.input.conflict.already_assigned"),
+        QStringLiteral("gamehq.input.conflict.press_timed"),
+        QStringLiteral("gamehq.input.relation.chord_start_delay"),
+        QStringLiteral("gamehq.input.relation.context_override"),
+        QStringLiteral("gamehq.input.relation.higher_tap_delay"),
+        QStringLiteral("gamehq.input.relation.redundant"),
+        QStringLiteral("gamehq.input.relation.shared_gesture"),
+        QStringLiteral("gamehq.player.position_duration"),
+        QStringLiteral("gamehq.update.last_checked_with_marker"),
+        QStringLiteral("gamehq.update.release_metadata"),
+    };
+    const QRegularExpression placeholders(QStringLiteral("%(?:n|[1-9][0-9]*)"));
+    for (const QString& catalogName : launchCatalogs()) {
+        QString error;
+        const auto catalog = readTsCatalog(
+            QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
+        QVERIFY2(error.isEmpty(), qPrintable(catalogName + QStringLiteral(": ") + error));
+        for (const QString& id : ids) {
+            QVERIFY2(catalog.contains(id), qPrintable(catalogName + QStringLiteral(" missing ") + id));
+            const CatalogEntry& entry = catalog[id];
+            QVERIFY2(!entry.unfinished && !entry.translation.trimmed().isEmpty(),
+                     qPrintable(catalogName + QStringLiteral(" incomplete ") + id));
+            QSet<QString> sourceTokens;
+            QSet<QString> targetTokens;
+            auto sourceMatches = placeholders.globalMatch(entry.source);
+            while (sourceMatches.hasNext())
+                sourceTokens.insert(sourceMatches.next().captured());
+            auto targetMatches = placeholders.globalMatch(entry.translation);
+            while (targetMatches.hasNext())
+                targetTokens.insert(targetMatches.next().captured());
+            QCOMPARE(targetTokens, sourceTokens);
+        }
+        for (const QString& pluralId : {
+                 QStringLiteral("gamehq.duration.minutes"),
+                 QStringLiteral("gamehq.duration.seconds"),
+                 QStringLiteral("gamehq.settings.library.imports.count"),
+                 QStringLiteral("gamehq.settings.library.scan.added")}) {
+            QVERIFY2(catalog.contains(pluralId), qPrintable(catalogName + QStringLiteral(" missing ") + pluralId));
+            const CatalogEntry& plural = catalog[pluralId];
+            QVERIFY2(!plural.unfinished && plural.translation.contains(QStringLiteral("%n")),
+                     qPrintable(catalogName + QStringLiteral(" invalid plural ") + pluralId));
+            QVERIFY2(!plural.translation.contains(QStringLiteral("(s)")),
+                     qPrintable(catalogName + QStringLiteral(" English plural shortcut ") + pluralId));
+        }
+    }
+}
+
+void LocalizationCatalogTest::p4FiveFormattingUsesLocaleAwareSafeBoundaries()
+{
+    const auto readSource = [](const QString& relative) {
+        QFile file(QStringLiteral(GAMEHQ_SOURCE_DIR "/src/") + relative);
+        if (!file.open(QIODevice::ReadOnly))
+            return QString();
+        return QString::fromUtf8(file.readAll());
+    };
+
+    const QString releaseNotes = readSource(QStringLiteral("app/ReleaseNotes.cpp"));
+    const QString gallery = readSource(QStringLiteral("ui/GalleryModel.cpp"));
+    const QString app = readSource(QStringLiteral("app/App.cpp"));
+    const QString toast = readSource(QStringLiteral("ui/qml/components/Toast.qml"));
+    const QString about = readSource(QStringLiteral("ui/qml/components/AboutWhatsNewDialog.qml"));
+    const QString updateBanner = readSource(QStringLiteral("ui/qml/components/UpdateBanner.qml"));
+    const QString player = readSource(QStringLiteral("ui/qml/components/PlayerControls.qml"));
+    const QString binding = readSource(QStringLiteral("input/BindingEditorModel.cpp"));
+
+    QVERIFY(!releaseNotes.contains(QStringLiteral("QLocale::c()")));
+    QVERIFY(releaseNotes.contains(QStringLiteral("QLocale::ShortFormat")));
+    QVERIFY(gallery.contains(QStringLiteral("QLocale().toString(dateTime, QLocale::ShortFormat)")));
+    QVERIFY(app.contains(QStringLiteral("m_gallery.get(), &GalleryModel::retranslate")));
+    QVERIFY(app.contains(QStringLiteral("m_overlayGallery.get(), &GalleryModel::retranslate")));
+    QVERIFY(toast.contains(QStringLiteral("languageManager.formatDateTime(root.when)")));
+    QVERIFY(!about.contains(QStringLiteral("Qt.formatDate(")));
+    QVERIFY(!about.contains(QStringLiteral("Qt.formatDateTime(")));
+    QVERIFY(about.contains(QStringLiteral("escapedStyledText(block.lead)")));
+    QVERIFY(!about.contains(QStringLiteral("<a href=")));
+    QVERIFY(!updateBanner.contains(QStringLiteral(".toFixed(")));
+    QVERIFY(!updateBanner.contains(QStringLiteral(".join(\" · \"")));
+    QVERIFY(player.contains(QStringLiteral("gamehq.player.position_duration")));
+    QVERIFY(!player.contains(QStringLiteral("+ \" / \" +")));
+    QVERIFY(binding.contains(QStringLiteral("gamehq.input.compatibility.convert_press_with_wait")));
+    QVERIFY(!binding.contains(QStringLiteral("QString consequence")));
 }
 
 void LocalizationCatalogTest::productionQmlHasNoHardcodedUserText()

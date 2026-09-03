@@ -84,9 +84,9 @@ SettingsPage {
                 configKey: "replay.fps"; defaultValue: 30
                 options: [
                     //% "%1 fps"
-                    { label: qsTrId("gamehq.format.fps").arg(30), value: 30 },
+                    { label: qsTrId("gamehq.format.fps").arg(languageManager.formatInteger(30)), value: 30 },
                     //% "%1 fps"
-                    { label: qsTrId("gamehq.format.fps").arg(60), value: 60 }
+                    { label: qsTrId("gamehq.format.fps").arg(languageManager.formatInteger(60)), value: 60 }
                 ]
             }
         }
@@ -111,13 +111,13 @@ SettingsPage {
                 configKey: "replay.bitrate_mbps"; defaultValue: 14
                 options: [
                     //% "%1 Mbps"
-                    { label: qsTrId("gamehq.format.megabits_per_second").arg(8), value: 8 },
+                    { label: qsTrId("gamehq.format.megabits_per_second").arg(languageManager.formatInteger(8)), value: 8 },
                     //% "%1 Mbps"
-                    { label: qsTrId("gamehq.format.megabits_per_second").arg(14), value: 14 },
+                    { label: qsTrId("gamehq.format.megabits_per_second").arg(languageManager.formatInteger(14)), value: 14 },
                     //% "%1 Mbps"
-                    { label: qsTrId("gamehq.format.megabits_per_second").arg(20), value: 20 },
+                    { label: qsTrId("gamehq.format.megabits_per_second").arg(languageManager.formatInteger(20)), value: 20 },
                     //% "%1 Mbps"
-                    { label: qsTrId("gamehq.format.megabits_per_second").arg(35), value: 35 }
+                    { label: qsTrId("gamehq.format.megabits_per_second").arg(languageManager.formatInteger(35)), value: 35 }
                 ]
             }
         }

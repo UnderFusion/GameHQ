@@ -84,7 +84,8 @@ bool parseSections(const QJsonValue& sectionsValue, QVariantList* parsedSections
     return true;
 }
 
-bool parseRelease(const QJsonObject& object, QVariantMap* parsedRelease, QString* error)
+bool parseRelease(const QJsonObject& object, const QLocale& locale,
+                  QVariantMap* parsedRelease, QString* error)
 {
     const QString version = object.value(QStringLiteral("version")).toString().trimmed();
     static const QRegularExpression versionPattern(QStringLiteral(R"(^\d+\.\d+\.\d+$)"));
@@ -106,7 +107,7 @@ bool parseRelease(const QJsonObject& object, QVariantMap* parsedRelease, QString
             setError(error, QStringLiteral("Release notes contain an invalid date."));
             return false;
         }
-        displayDate = QLocale::c().toString(date, QStringLiteral("d MMM yyyy"));
+        displayDate = locale.toString(date, QLocale::ShortFormat);
     }
 
     *parsedRelease = {
@@ -165,6 +166,12 @@ QVariantMap markdownBlock(const QString& kind, const QString& rawText)
 
 ReleaseNotes ReleaseNotes::fromJson(const QByteArray& json, QString* error)
 {
+    return fromJson(json, QLocale(), error);
+}
+
+ReleaseNotes ReleaseNotes::fromJson(const QByteArray& json, const QLocale& locale,
+                                    QString* error)
+{
     ReleaseNotes result;
     QJsonParseError parseError;
     const QJsonDocument document = QJsonDocument::fromJson(json, &parseError);
@@ -175,7 +182,7 @@ ReleaseNotes ReleaseNotes::fromJson(const QByteArray& json, QString* error)
 
     const QJsonObject root = document.object();
     QVariantMap currentRelease;
-    if (!parseRelease(root, &currentRelease, error))
+    if (!parseRelease(root, locale, &currentRelease, error))
         return result;
 
     QVariantList releases{currentRelease};
@@ -193,7 +200,7 @@ ReleaseNotes ReleaseNotes::fromJson(const QByteArray& json, QString* error)
                 return {};
             }
             QVariantMap historicalRelease;
-            if (!parseRelease(historicalValue.toObject(), &historicalRelease, error))
+            if (!parseRelease(historicalValue.toObject(), locale, &historicalRelease, error))
                 return {};
             const QString historicalVersion =
                 historicalRelease.value(QStringLiteral("version")).toString();

@@ -43,12 +43,8 @@ Item {
     }
 
     function formatTime(ms) {
-        if (!ms || ms < 0)
-            ms = 0
-        const total = Math.floor(ms / 1000)
-        const minutes = Math.floor(total / 60)
-        const seconds = total % 60
-        return minutes + ":" + (seconds < 10 ? "0" : "") + seconds
+        languageManager.translationRevision
+        return languageManager.formatDuration(ms || 0)
     }
 
     readonly property real progress: {
@@ -234,8 +230,10 @@ Item {
 
             Text {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: root.formatTime(root.player ? root.player.position : 0)
-                      + " / " + root.formatTime(root.player ? root.player.duration : 0)
+                //% "%1 / %2"
+                text: qsTrId("gamehq.player.position_duration")
+                        .arg(root.formatTime(root.player ? root.player.position : 0))
+                        .arg(root.formatTime(root.player ? root.player.duration : 0))
                 color: Theme.textMuted
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.fontCaption

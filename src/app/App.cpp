@@ -36,18 +36,9 @@
 #include <QDateTime>
 #include <QFile>
 #include <QGuiApplication>
-#include <QLocale>
 #include <QQmlContext>
 #include <QQuickWindow>
 #include <QTimer>
-
-namespace
-{
-QString notificationTimestamp()
-{
-    return QLocale().toString(QDateTime::currentDateTime(), QLocale::ShortFormat);
-}
-}
 
 App::App(QObject* parent)
     : QObject(parent)
@@ -184,6 +175,10 @@ bool App::init()
                                                    m_config.get(), m_locations.get(), m_startup.get());
     connect(m_languageManager.get(), &LanguageManager::retranslationRequested,
             m_controller.get(), &AppController::retranslate);
+    connect(m_languageManager.get(), &LanguageManager::retranslationRequested,
+            m_gallery.get(), &GalleryModel::retranslate);
+    connect(m_languageManager.get(), &LanguageManager::retranslationRequested,
+            m_overlayGallery.get(), &GalleryModel::retranslate);
 
     // Ordering contract for everything below: the service lambdas capture `this`
     // and dereference members that are constructed further down (m_sounds at the
@@ -218,7 +213,7 @@ bool App::init()
                             QT_TRID_NOOP("gamehq.notification.screenshot_saved.title"),
                             "Screenshot saved"),
                         game, path,
-                        QStringLiteral("success"), notificationTimestamp(), false);
+                        QStringLiteral("success"), QDateTime::currentDateTime(), false);
                 }
             });
     connect(m_screenshots.get(), &ScreenshotService::skipped, this,
@@ -265,7 +260,7 @@ bool App::init()
                             //% "Replay saved"
                             QT_TRID_NOOP("gamehq.notification.replay_saved.title"),
                             "Replay saved"),
-                        game, thumb, QStringLiteral("success"), notificationTimestamp(), true);
+                        game, thumb, QStringLiteral("success"), QDateTime::currentDateTime(), true);
                 }
             });
     connect(m_framePump.get(), &FramePumpService::clipFailed, this,
@@ -285,7 +280,7 @@ bool App::init()
                             //% "Replay failed"
                             QT_TRID_NOOP("gamehq.notification.replay_failed.title"),
                             "Replay failed"),
-                        body, QString(), QStringLiteral("error"), notificationTimestamp(), false);
+                        body, QString(), QStringLiteral("error"), QDateTime::currentDateTime(), false);
                 }
             });
     connect(m_framePump.get(), &FramePumpService::foregroundGameDetected,
@@ -329,7 +324,7 @@ bool App::init()
                            QT_TRID_NOOP("gamehq.notification.settings_quarantined.body"),
                            "GameHQ started with default settings. Your previous settings file was kept so nothing was lost."),
                        m_configQuarantinedPath, QStringLiteral("warning"),
-                       notificationTimestamp(),
+                       QDateTime::currentDateTime(),
                        false);
     }
     m_updates = std::make_unique<UpdateService>(QStringLiteral("underfusion"), QStringLiteral("GameHQ"),

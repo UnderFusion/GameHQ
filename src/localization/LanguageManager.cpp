@@ -4,6 +4,7 @@
 #include <QCoreApplication>
 #include <QLocale>
 #include <QTranslator>
+#include <algorithm>
 #include <utility>
 
 LanguageManager::LanguageManager(LocaleRegistry *registry, QObject *parent)
@@ -160,4 +161,43 @@ QVariantList LanguageManager::availableLanguages() const
 Qt::LayoutDirection LanguageManager::layoutDirection() const
 {
     return m_registry->layoutDirection(m_effectiveLanguage);
+}
+
+QString LanguageManager::formatInteger(qint64 value) const
+{
+    return QLocale().toString(value);
+}
+
+QString LanguageManager::formatDecimal(double value, int precision) const
+{
+    return QLocale().toString(value, 'f', std::max(0, precision));
+}
+
+QString LanguageManager::formatDate(const QDateTime &value) const
+{
+    return value.isValid() ? QLocale().toString(value.toLocalTime().date(), QLocale::ShortFormat)
+                           : QString();
+}
+
+QString LanguageManager::formatDateTime(const QDateTime &value) const
+{
+    return value.isValid() ? QLocale().toString(value.toLocalTime(), QLocale::ShortFormat)
+                           : QString();
+}
+
+QString LanguageManager::formatDuration(qint64 milliseconds) const
+{
+    const qint64 totalSeconds = std::max<qint64>(0, milliseconds) / 1000;
+    const qint64 minutes = totalSeconds / 60;
+    const qint64 seconds = totalSeconds % 60;
+    const QLocale locale;
+    const QString zeroDigit = locale.zeroDigit();
+    const QString secondsText = locale.toString(seconds).rightJustified(
+        2, zeroDigit.isEmpty() ? u'0' : zeroDigit.front());
+    return QStringLiteral("%1:%2").arg(locale.toString(minutes), secondsText);
+}
+
+QString LanguageManager::formatList(const QStringList &values) const
+{
+    return QLocale().createSeparatedList(values);
 }

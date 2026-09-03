@@ -7,6 +7,7 @@
 #include <QList>
 #include <QPointer>
 #include <QQmlComponent>
+#include <QQmlContext>
 #include <QQmlEngine>
 #include <QSignalSpy>
 #include <QTest>
@@ -95,6 +96,7 @@ void LiveRetranslationTest::repeatedSwitchesRefreshEveryRepresentativeSurfaceAto
     QVERIFY2(manager.initialize(QStringLiteral("en-US"), {}, &error), qPrintable(error));
 
     QQmlEngine engine;
+    engine.rootContext()->setContextProperty(QStringLiteral("languageManager"), &manager);
     QQmlComponent component(&engine);
     component.setData(R"(
         import QtQml
@@ -104,6 +106,14 @@ void LiveRetranslationTest::repeatedSwitchesRefreshEveryRepresentativeSurfaceAto
             property string input: qsTrId("gamehq.settings.input.devices.title")
             property string gallery: qsTrId("gamehq.gallery.action.bulk_select")
             property string dialog: qsTrId("gamehq.gallery.delete_capture.title")
+            property string decimal: {
+                languageManager.translationRevision
+                return languageManager.formatDecimal(1234.5, 1)
+            }
+            property string fileSize: qsTrId("gamehq.format.size.megabytes")
+                                      .arg(languageManager.formatDecimal(1.5, 1))
+            property string oneMinute: qsTrId("gamehq.duration.minutes", 1)
+            property string fiveMinutes: qsTrId("gamehq.duration.minutes", 5)
         }
     )", QUrl());
     std::unique_ptr<QObject> qmlObject(component.create());
@@ -157,6 +167,13 @@ void LiveRetranslationTest::repeatedSwitchesRefreshEveryRepresentativeSurfaceAto
         QCOMPARE(qmlObject->property("input").toString(), expected.input);
         QCOMPARE(qmlObject->property("gallery").toString(), expected.gallery);
         QCOMPARE(qmlObject->property("dialog").toString(), expected.dialog);
+        const QLocale locale(language);
+        QCOMPARE(qmlObject->property("decimal").toString(),
+                 locale.toString(1234.5, 'f', 1));
+        QCOMPARE(qmlObject->property("fileSize").toString(),
+                 QStringLiteral("%1 MB").arg(locale.toString(1.5, 'f', 1)));
+        QVERIFY(!qmlObject->property("oneMinute").toString().contains(QStringLiteral("(s)")));
+        QVERIFY(!qmlObject->property("fiveMinutes").toString().contains(QStringLiteral("(s)")));
         QCOMPARE(tray.openGalleryText(), expected.tray);
         QCOMPARE(tray.actionForId(QStringLiteral("rescan"))->text(), native.at(0));
         QCOMPARE(tray.actionForId(QStringLiteral("screenshot"))->text(), native.at(1));

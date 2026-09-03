@@ -265,13 +265,13 @@ SettingsPage {
                 configKey: "input.default_hold_ms"; defaultValue: 2000
                 options: [
                     //% "%1 seconds"
-                    { label: qsTrId("gamehq.duration.decimal_seconds").arg("1.0"), value: 1000 },
+                    { label: qsTrId("gamehq.duration.decimal_seconds").arg(languageManager.formatDecimal(1.0, 1)), value: 1000 },
                     //% "%1 seconds"
-                    { label: qsTrId("gamehq.duration.decimal_seconds").arg("1.5"), value: 1500 },
+                    { label: qsTrId("gamehq.duration.decimal_seconds").arg(languageManager.formatDecimal(1.5, 1)), value: 1500 },
                     //% "%1 seconds"
-                    { label: qsTrId("gamehq.duration.decimal_seconds").arg("2.0"), value: 2000 },
+                    { label: qsTrId("gamehq.duration.decimal_seconds").arg(languageManager.formatDecimal(2.0, 1)), value: 2000 },
                     //% "%1 seconds"
-                    { label: qsTrId("gamehq.duration.decimal_seconds").arg("3.0"), value: 3000 }
+                    { label: qsTrId("gamehq.duration.decimal_seconds").arg(languageManager.formatDecimal(3.0, 1)), value: 3000 }
                 ]
             }
         }
@@ -284,13 +284,13 @@ SettingsPage {
                 configKey: "input.multi_tap_interval_ms"; defaultValue: 300
                 options: [
                     //% "%1 ms (fast)"
-                    { label: qsTrId("gamehq.duration.milliseconds.fast").arg(200), value: 200 },
+                    { label: qsTrId("gamehq.duration.milliseconds.fast").arg(languageManager.formatInteger(200)), value: 200 },
                     //% "%1 ms"
-                    { label: qsTrId("gamehq.duration.milliseconds").arg(300), value: 300 },
+                    { label: qsTrId("gamehq.duration.milliseconds").arg(languageManager.formatInteger(300)), value: 300 },
                     //% "%1 ms"
-                    { label: qsTrId("gamehq.duration.milliseconds").arg(400), value: 400 },
+                    { label: qsTrId("gamehq.duration.milliseconds").arg(languageManager.formatInteger(400)), value: 400 },
                     //% "%1 ms (relaxed)"
-                    { label: qsTrId("gamehq.duration.milliseconds.relaxed").arg(500), value: 500 }
+                    { label: qsTrId("gamehq.duration.milliseconds.relaxed").arg(languageManager.formatInteger(500)), value: 500 }
                 ]
             }
         }
@@ -303,13 +303,13 @@ SettingsPage {
                 configKey: "input.chord_window_ms"; defaultValue: 300
                 options: [
                     //% "%1 ms (fast)"
-                    { label: qsTrId("gamehq.duration.milliseconds.fast").arg(200), value: 200 },
+                    { label: qsTrId("gamehq.duration.milliseconds.fast").arg(languageManager.formatInteger(200)), value: 200 },
                     //% "%1 ms"
-                    { label: qsTrId("gamehq.duration.milliseconds").arg(300), value: 300 },
+                    { label: qsTrId("gamehq.duration.milliseconds").arg(languageManager.formatInteger(300)), value: 300 },
                     //% "%1 ms"
-                    { label: qsTrId("gamehq.duration.milliseconds").arg(400), value: 400 },
+                    { label: qsTrId("gamehq.duration.milliseconds").arg(languageManager.formatInteger(400)), value: 400 },
                     //% "%1 ms (relaxed)"
-                    { label: qsTrId("gamehq.duration.milliseconds.relaxed").arg(500), value: 500 }
+                    { label: qsTrId("gamehq.duration.milliseconds.relaxed").arg(languageManager.formatInteger(500)), value: 500 }
                 ]
             }
         }

@@ -109,6 +109,16 @@ class SyncTest(unittest.TestCase):
         self.assertEqual("vanished", removed.get("type"))
         self.assertIn("Usunieta wiadomosc", "".join(removed.itertext()))
 
+        english_root = ET.parse(self.root / "i18n" / "app" / "gamehq_en_US.ts").getroot()
+        english_plural = english_root.find(
+            ".//message[@id='gamehq.fixture.files']/translation"
+        )
+        self.assertIsNotNone(english_plural)
+        self.assertEqual(
+            ["<b>%n file</b>", "<b>%n files</b>"],
+            ["".join(form.itertext()) for form in english_plural.findall("numerusform")],
+        )
+
     def test_check_detects_divergence_without_writing_outputs(self) -> None:
         self.run_sync()
         before = snapshot(self.root / "i18n")

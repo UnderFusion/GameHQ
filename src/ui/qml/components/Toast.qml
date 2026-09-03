@@ -10,7 +10,7 @@ Item {
     property string title
     property string body: ""
     property string imageUrl: ""
-    property string whenText: ""      // e.g. "7 Jul 2026, 22:08" — shown under the game name
+    property date when                // formatted on demand so live locale changes update the toast
     property bool isVideo: false      // show the play badge over the thumbnail
     property string kind: "info"      // success | info | error
     property int lifespan: 3600
@@ -108,8 +108,11 @@ Item {
                 }
                 Text {
                     width: parent.width
-                    visible: root.whenText !== ""
-                    text: root.whenText
+                    visible: !isNaN(root.when.getTime()) && root.when.getTime() > 0
+                    text: {
+                        languageManager.translationRevision
+                        return languageManager.formatDateTime(root.when)
+                    }
                     color: Theme.textFaint
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontCaption

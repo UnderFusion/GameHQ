@@ -31,7 +31,7 @@
       "state": "enabled",
       "direction": "ltr",
       "fallback": "en-US",
-      "qt_catalog": "missing_de_DE"
+      "qt_catalog": "gamehq_manager_de_DE"
     },
     {
       "tag": "fr-FR",

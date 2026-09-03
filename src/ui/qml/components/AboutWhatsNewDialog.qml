@@ -134,7 +134,7 @@ FocusScope {
                 && updates.publishedAt.getTime() > 0) {
             //% "Published %1"
             return qsTrId("gamehq.update.published_on")
-                    .arg(Qt.formatDate(updates.publishedAt, "d MMM yyyy"))
+                    .arg(languageManager.formatDate(updates.publishedAt))
         }
         const release = selectedBundledRelease()
         if (release.date) {
@@ -155,7 +155,8 @@ FocusScope {
             return qsTrId("gamehq.update.status.update_available")
         case "Downloading":
             //% "Downloading %1%"
-            return qsTrId("gamehq.update.downloading_percent").arg(updates.progress)
+            return qsTrId("gamehq.update.downloading_percent")
+                    .arg(languageManager.formatInteger(updates.progress))
         case "ReadyToInstall":
             //% "Ready to install"
             return qsTrId("gamehq.update.ready_to_install")
@@ -200,7 +201,7 @@ FocusScope {
         }
         //% "Last checked %1"
         return qsTrId("gamehq.update.last_checked")
-                .arg(Qt.formatDateTime(updates.lastChecked, "d MMM yyyy, HH:mm"))
+                .arg(languageManager.formatDateTime(updates.lastChecked))
     }
 
     function primaryLabel() {
@@ -549,7 +550,9 @@ FocusScope {
                 }
                 Text {
                     Layout.fillWidth: true
-                    text: "·  " + root.lastCheckedText()
+                    //% "%1  %2"
+                    text: qsTrId("gamehq.update.last_checked_with_marker")
+                            .arg("·").arg(root.lastCheckedText())
                     color: Theme.textFaint
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontCaption
@@ -565,8 +568,10 @@ FocusScope {
                 TextLink {
                     id: backLink
                     visible: !root.hasUpdateRelease()
+                    //% "%1  Back"
+                    label: qsTrId("gamehq.action.back_with_marker").arg("‹")
                     //% "Back"
-                    label: "‹  " + qsTrId("gamehq.action.back")
+                    Accessible.name: qsTrId("gamehq.action.back")
                     onClicked: root.closeReleaseNotes()
                 }
                 Text {

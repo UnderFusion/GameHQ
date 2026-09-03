@@ -11,7 +11,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 811
+          "line": 816
         }
       ],
       "plural": false,
@@ -30,7 +30,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 678
+          "line": 683
         }
       ],
       "plural": false,
@@ -47,7 +47,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 770
+          "line": 775
         }
       ],
       "plural": false,
@@ -64,7 +64,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 782
+          "line": 787
         }
       ],
       "plural": false,
@@ -81,7 +81,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 520
+          "line": 521
         }
       ],
       "plural": false,
@@ -98,7 +98,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 517
+          "line": 518
         }
       ],
       "plural": false,
@@ -115,7 +115,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 668
+          "line": 673
         }
       ],
       "plural": false,
@@ -132,7 +132,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 623
+          "line": 628
         }
       ],
       "plural": false,
@@ -149,7 +149,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 483
+          "line": 484
         }
       ],
       "plural": false,
@@ -168,7 +168,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 754
+          "line": 759
         }
       ],
       "plural": false,
@@ -185,7 +185,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 699
+          "line": 704
         }
       ],
       "plural": false,
@@ -202,7 +202,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 776
+          "line": 781
         }
       ],
       "plural": false,
@@ -219,7 +219,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 820
+          "line": 825
         }
       ],
       "plural": false,
@@ -236,7 +236,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 831
+          "line": 836
         }
       ],
       "plural": false,
@@ -253,11 +253,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 498
+          "line": 499
         },
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 860
+          "line": 865
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
@@ -280,7 +280,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 633
+          "line": 638
         }
       ],
       "plural": false,
@@ -299,7 +299,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 569
+          "line": 574
         }
       ],
       "plural": false,
@@ -309,6 +309,25 @@
       "source_hash": "6a57466137d7c992297dbdf7fb041ebc6ca6ea18ada04e6bcb7e8802ba42d47c"
     },
     {
+      "id": "gamehq.action.back_with_marker",
+      "source": "%1  Back",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 572
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "86a949b914fd9909d961e8461b402b161909798eac6f9faa51560f8cffdebb28"
+    },
+    {
       "id": "gamehq.action.cancel",
       "source": "Cancel",
       "context": "ID",
@@ -316,7 +335,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 622
+          "line": 623
         },
         {
           "file": "src/ui/qml/components/BindingCompatibilityDialog.qml",
@@ -332,11 +351,11 @@
         },
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 161
+          "line": 169
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 194
+          "line": 196
         },
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
@@ -993,7 +1012,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 207
+          "line": 209
         }
       ],
       "plural": false,
@@ -1133,7 +1152,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 174
+          "line": 182
         }
       ],
       "plural": false,
@@ -1660,15 +1679,15 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 294
+          "line": 295
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 370
+          "line": 371
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 434
+          "line": 435
         }
       ],
       "plural": false,
@@ -1794,7 +1813,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 628
+          "line": 629
         }
       ],
       "plural": false,
@@ -1845,7 +1864,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 287
+          "line": 288
         }
       ],
       "plural": false,
@@ -1862,15 +1881,15 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 291
+          "line": 292
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 367
+          "line": 368
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 431
+          "line": 432
         },
         {
           "file": "src/ui/qml/components/SettingsPathRow.qml",
@@ -2129,19 +2148,19 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 533
+          "line": 534
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 535
+          "line": 536
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 537
+          "line": 538
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 539
+          "line": 540
         }
       ],
       "plural": false,
@@ -2198,7 +2217,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 340
+          "line": 341
         }
       ],
       "plural": false,
@@ -2270,11 +2289,11 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 334
+          "line": 335
         },
         {
           "file": "src/ui/AppController.cpp",
-          "line": 356
+          "line": 357
         }
       ],
       "plural": false,
@@ -2831,7 +2850,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 181
+          "line": 182
         }
       ],
       "plural": false,
@@ -2918,7 +2937,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 187
+          "line": 188
         }
       ],
       "plural": false,
@@ -2937,7 +2956,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 196
+          "line": 197
         }
       ],
       "plural": false,
@@ -3041,7 +3060,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 207
+          "line": 208
         }
       ],
       "plural": false,
@@ -3060,7 +3079,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 217
+          "line": 218
         }
       ],
       "plural": false,
@@ -3326,7 +3345,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 446
+          "line": 441
         }
       ],
       "plural": false,
@@ -4236,7 +4255,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 421
+          "line": 416
         }
       ],
       "plural": false,
@@ -4552,6 +4571,25 @@
       "source_hash": "d515621e4a8842a15fd8688186c3c7b30f3349c15e04ddfec46a926448c15717"
     },
     {
+      "id": "gamehq.format.percent",
+      "source": "%1%",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/SettingsSlider.qml",
+          "line": 21
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a2c620cf0213a58bc11552ccd8d541f054716a3b88d538f98ff017d7f3a8feb5"
+    },
+    {
       "id": "gamehq.format.size.bytes",
       "source": "%1 B",
       "context": "ID",
@@ -4559,7 +4597,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 41
+          "line": 44
         }
       ],
       "plural": false,
@@ -4578,7 +4616,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 38
+          "line": 40
         }
       ],
       "plural": false,
@@ -4597,7 +4635,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 34
+          "line": 35
         }
       ],
       "plural": false,
@@ -4952,7 +4990,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 322
+          "line": 323
         }
       ],
       "plural": false,
@@ -4969,7 +5007,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 308
+          "line": 309
         }
       ],
       "plural": false,
@@ -4986,7 +5024,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 313
+          "line": 314
         }
       ],
       "plural": false,
@@ -5003,7 +5041,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 302
+          "line": 303
         }
       ],
       "plural": false,
@@ -5020,7 +5058,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 296
+          "line": 297
         }
       ],
       "plural": false,
@@ -5803,7 +5841,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 227
+          "line": 228
         }
       ],
       "plural": false,
@@ -5820,7 +5858,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 505
+          "line": 506
         }
       ],
       "plural": false,
@@ -5837,7 +5875,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 531
+          "line": 532
         }
       ],
       "plural": false,
@@ -5854,7 +5892,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 346
+          "line": 347
         }
       ],
       "plural": false,
@@ -5873,7 +5911,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 314
+          "line": 315
         }
       ],
       "plural": false,
@@ -5890,11 +5928,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 459
+          "line": 460
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 489
+          "line": 490
         }
       ],
       "plural": false,
@@ -5911,7 +5949,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 521
+          "line": 522
         }
       ],
       "plural": false,
@@ -5928,7 +5966,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 269
+          "line": 270
         }
       ],
       "plural": false,
@@ -5945,7 +5983,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 341
+          "line": 342
         }
       ],
       "plural": false,
@@ -5962,7 +6000,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 406
+          "line": 407
         }
       ],
       "plural": false,
@@ -5979,15 +6017,15 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 274
+          "line": 275
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 352
+          "line": 353
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 415
+          "line": 416
         }
       ],
       "plural": false,
@@ -6004,7 +6042,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 584
+          "line": 585
         }
       ],
       "plural": false,
@@ -6021,7 +6059,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 592
+          "line": 593
         }
       ],
       "plural": false,
@@ -6038,7 +6076,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 595
+          "line": 596
         }
       ],
       "plural": false,
@@ -6055,7 +6093,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 588
+          "line": 589
         }
       ],
       "plural": false,
@@ -6072,7 +6110,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 196
+          "line": 197
         }
       ],
       "plural": false,
@@ -6089,7 +6127,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 208
+          "line": 209
         }
       ],
       "plural": false,
@@ -6106,7 +6144,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 206
+          "line": 207
         }
       ],
       "plural": false,
@@ -6143,7 +6181,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 379
+          "line": 380
         }
       ],
       "plural": false,
@@ -6160,7 +6198,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 412
+          "line": 413
         }
       ],
       "plural": false,
@@ -6434,6 +6472,53 @@
       "source_hash": "e1b507c2bb5b5df99cb60ede84b8ebcc0676f3c599bfedba3e8e1ac3d823f770"
     },
     {
+      "id": "gamehq.input.compatibility.convert_press",
+      "source": "%1 currently activates %2 immediately when the button is pressed.\n\nTo also use %1 for %3, GameHQ must change %2 from Press to Single tap.\n\n%2 will then activate after the button is released.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 482
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2",
+        "%3"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "1efa74b7651bdfc190b75ddebd5a0d9fe62027affde25c79c9c72ce12ca821c8"
+    },
+    {
+      "id": "gamehq.input.compatibility.convert_press_with_wait",
+      "source": "%1 currently activates %2 immediately when the button is pressed.\n\nTo also use %1 for %3, GameHQ must change %2 from Press to Single tap.\n\n%2 will then activate after the button is released and may wait up to %4 ms to rule out the %3 action.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 474
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2",
+        "%3",
+        "%4"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "f94a8cac5dbdb662da80333135303809ab4e29dd56bddf5ea5a1b1f13c1f7773"
+    },
+    {
       "id": "gamehq.input.compatibility.title",
       "source": "Make these assignments compatible?",
       "context": "ID",
@@ -6449,6 +6534,48 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "e98b39c7a8d6007534f4401518844f7f4231bbd5b4d9f3ef0f49a79b00b36685"
+    },
+    {
+      "id": "gamehq.input.conflict.already_assigned",
+      "source": "%1 · %2 is already assigned to %3 in this context.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 458
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2",
+        "%3"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d9e0c5d2d70ffd1c281aa2fc628b0f89dddb2d6cb6db34b5caa7f35c8e79db34"
+    },
+    {
+      "id": "gamehq.input.conflict.press_timed",
+      "source": "%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 451
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2",
+        "%3"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a8089c1fe9cdd1230a9aea28e095996ee4f10c45f25757ddd4aaed7085d88579"
     },
     {
       "id": "gamehq.input.conflict.title",
@@ -6479,7 +6606,7 @@
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 473
+          "line": 474
         }
       ],
       "plural": false,
@@ -6500,7 +6627,7 @@
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 477
+          "line": 478
         }
       ],
       "plural": false,
@@ -6525,7 +6652,7 @@
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 469
+          "line": 470
         }
       ],
       "plural": false,
@@ -6546,7 +6673,7 @@
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 471
+          "line": 472
         }
       ],
       "plural": false,
@@ -6567,7 +6694,7 @@
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 475
+          "line": 476
         }
       ],
       "plural": false,
@@ -6584,7 +6711,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 300
+          "line": 301
         }
       ],
       "plural": false,
@@ -6605,7 +6732,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 307
+          "line": 308
         }
       ],
       "plural": false,
@@ -6625,7 +6752,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 314
+          "line": 315
         }
       ],
       "plural": false,
@@ -6645,7 +6772,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 178
+          "line": 179
         }
       ],
       "plural": false,
@@ -6662,7 +6789,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 184
+          "line": 185
         }
       ],
       "plural": false,
@@ -6679,7 +6806,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 189
+          "line": 190
         }
       ],
       "plural": false,
@@ -6698,7 +6825,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 962
+          "line": 985
         }
       ],
       "plural": false,
@@ -6715,7 +6842,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 141
+          "line": 142
         }
       ],
       "plural": false,
@@ -6732,7 +6859,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 133
+          "line": 134
         }
       ],
       "plural": false,
@@ -6749,7 +6876,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 137
+          "line": 138
         }
       ],
       "plural": false,
@@ -6766,7 +6893,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 145
+          "line": 146
         }
       ],
       "plural": false,
@@ -6783,7 +6910,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 70
+          "line": 71
         }
       ],
       "plural": false,
@@ -6800,7 +6927,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 75
+          "line": 76
         }
       ],
       "plural": false,
@@ -6817,7 +6944,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 80
+          "line": 81
         }
       ],
       "plural": false,
@@ -6834,11 +6961,11 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 165
+          "line": 166
         },
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 241
+          "line": 242
         }
       ],
       "plural": false,
@@ -6846,6 +6973,107 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "860a7dcadf71485758249b5e4c8cc8262e9e8daffa7fdb8ed481f06b134ebab1"
+    },
+    {
+      "id": "gamehq.input.relation.chord_start_delay",
+      "source": "This action waits up to %1 ms because this button starts a combination.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingRelation.cpp",
+          "line": 240
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2a8592a0f4be84a854ed262449009ae711a6c98d7ac4865449436db763552e52"
+    },
+    {
+      "id": "gamehq.input.relation.context_override",
+      "source": "%1 replaces %2 while %3 is active. Both are saved.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 580
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2",
+        "%3"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "da02d51063bb43f52d3c0245aeeb6e22bca35e34eb285c8aba19b9453dc2ed61"
+    },
+    {
+      "id": "gamehq.input.relation.higher_tap_delay",
+      "source": "This action waits up to %1 ms because the same button also has an assignment that needs more taps.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingRelation.cpp",
+          "line": 233
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0a05f06521afe984dd87b21dd494825cdc88b39efc44c801e9be7581cb0899dd"
+    },
+    {
+      "id": "gamehq.input.relation.redundant",
+      "source": "%1 already does the same thing here. The duplicate has no effect.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 589
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "acd59a352b19da2589e5b0885a10a219688111b771def160b0a0deb87589c1b3"
+    },
+    {
+      "id": "gamehq.input.relation.shared_gesture",
+      "source": "%1 is shared: %2 = %3, %4 = %5.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 596
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2",
+        "%3",
+        "%4",
+        "%5"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bee4d09137f959609f88f83f87afa8dd56b7a3b8d11299dd567624eb307abb0f"
     },
     {
       "id": "gamehq.library.folder_dialog.title",
@@ -7099,7 +7327,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 280
+          "line": 275
         }
       ],
       "plural": false,
@@ -7118,7 +7346,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 286
+          "line": 281
         }
       ],
       "plural": false,
@@ -7135,7 +7363,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 266
+          "line": 261
         }
       ],
       "plural": false,
@@ -7152,7 +7380,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 218
+          "line": 213
         }
       ],
       "plural": false,
@@ -7169,7 +7397,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 329
+          "line": 324
         }
       ],
       "plural": false,
@@ -7188,7 +7416,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 324
+          "line": 319
         }
       ],
       "plural": false,
@@ -7372,6 +7600,26 @@
       "source_hash": "4c9020e0a7b8565fdd14e14848cb30a3ef0f3b860c6a8bed7456e2b33dd0f318"
     },
     {
+      "id": "gamehq.player.position_duration",
+      "source": "%1 / %2",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/PlayerControls.qml",
+          "line": 234
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "29d6f302af415e5c7247786e0df72e6fcda073fca5fc0d39affc4a3449071cd1"
+    },
+    {
       "id": "gamehq.release_notes.title",
       "source": "Release notes",
       "context": "ID",
@@ -7413,7 +7661,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 288
+          "line": 290
         }
       ],
       "plural": false,
@@ -7447,7 +7695,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 250
+          "line": 252
         }
       ],
       "plural": false,
@@ -7464,7 +7712,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 279
+          "line": 281
         }
       ],
       "plural": false,
@@ -7517,7 +7765,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 235
+          "line": 237
         }
       ],
       "plural": false,
@@ -7568,7 +7816,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 239
+          "line": 241
         }
       ],
       "plural": false,
@@ -7587,7 +7835,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 237
+          "line": 239
         }
       ],
       "plural": false,
@@ -7623,7 +7871,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 257
+          "line": 259
         }
       ],
       "plural": false,
@@ -7640,7 +7888,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 264
+          "line": 266
         }
       ],
       "plural": false,
@@ -7657,11 +7905,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 788
+          "line": 793
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 271
+          "line": 273
         }
       ],
       "plural": false,
@@ -7678,7 +7926,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 273
+          "line": 275
         }
       ],
       "plural": false,
@@ -7695,7 +7943,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 293
+          "line": 295
         }
       ],
       "plural": false,
@@ -7714,7 +7962,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 296
+          "line": 298
         }
       ],
       "plural": false,
@@ -7733,7 +7981,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 290
+          "line": 292
         }
       ],
       "plural": false,
@@ -7784,7 +8032,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 243
+          "line": 245
         }
       ],
       "plural": false,
@@ -9193,7 +9441,7 @@
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
-          "line": 244
+          "line": 245
         },
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
@@ -13377,7 +13625,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 182
+          "line": 184
         }
       ],
       "plural": false,
@@ -13396,7 +13644,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 125
+          "line": 126
         }
       ],
       "plural": false,
@@ -13415,7 +13663,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 64
+          "line": 67
         }
       ],
       "plural": false,
@@ -13435,7 +13683,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 75
+          "line": 79
         }
       ],
       "plural": false,
@@ -13452,7 +13700,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 48
+          "line": 51
         }
       ],
       "plural": false,
@@ -13472,7 +13720,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 58
+          "line": 61
         }
       ],
       "plural": false,
@@ -13492,7 +13740,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 61
+          "line": 64
         }
       ],
       "plural": false,
@@ -13509,7 +13757,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 85
+          "line": 89
         }
       ],
       "plural": false,
@@ -13526,7 +13774,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 55
+          "line": 58
         }
       ],
       "plural": false,
@@ -13546,7 +13794,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 51
+          "line": 54
         }
       ],
       "plural": false,
@@ -13566,7 +13814,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 82
+          "line": 86
         }
       ],
       "plural": false,
@@ -13585,7 +13833,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 79
+          "line": 83
         }
       ],
       "plural": false,
@@ -13602,7 +13850,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 165
+          "line": 166
         }
       ],
       "plural": false,
@@ -13640,7 +13888,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 216
+          "line": 217
         }
       ],
       "plural": false,
@@ -13657,11 +13905,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 236
+          "line": 237
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 121
+          "line": 122
         }
       ],
       "plural": false,
@@ -13678,11 +13926,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 230
+          "line": 231
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 201
+          "line": 203
         }
       ],
       "plural": false,
@@ -13699,7 +13947,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 116
+          "line": 117
         }
       ],
       "plural": false,
@@ -13716,7 +13964,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 114
+          "line": 115
         }
       ],
       "plural": false,
@@ -13733,7 +13981,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 171
+          "line": 172
         }
       ],
       "plural": false,
@@ -13750,7 +13998,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 138
+          "line": 139
         }
       ],
       "plural": false,
@@ -13767,11 +14015,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 210
+          "line": 211
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 135
+          "line": 136
         }
       ],
       "plural": false,
@@ -13822,7 +14070,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 902
+          "line": 907
         }
       ],
       "plural": false,
@@ -13842,7 +14090,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 154
+          "line": 155
         }
       ],
       "plural": false,
@@ -13859,7 +14107,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 93
+          "line": 94
         }
       ],
       "plural": false,
@@ -13880,7 +14128,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 213
+          "line": 214
         }
       ],
       "plural": false,
@@ -13940,7 +14188,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 110
+          "line": 111
         }
       ],
       "plural": false,
@@ -13959,15 +14207,15 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 219
+          "line": 220
         },
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 164
+          "line": 172
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 197
+          "line": 199
         }
       ],
       "plural": false,
@@ -13984,7 +14232,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 128
+          "line": 129
         }
       ],
       "plural": false,
@@ -14003,11 +14251,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 168
+          "line": 169
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 162
+          "line": 163
         }
       ],
       "plural": false,
@@ -14024,7 +14272,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 226
+          "line": 227
         }
       ],
       "plural": false,
@@ -14041,7 +14289,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 101
+          "line": 102
         }
       ],
       "plural": false,
@@ -14062,7 +14310,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 202
+          "line": 203
         }
       ],
       "plural": false,
@@ -14074,6 +14322,26 @@
       "source_hash": "1431c224978aa73dce4d1ab2a0ce26d5371d1d555556402eb24b7b153e5129a8"
     },
     {
+      "id": "gamehq.update.last_checked_with_marker",
+      "source": "%1  %2",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
+          "line": 554
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "592b08b3449c6d0f920051d8fc50cddea9ce9aa1192b3d3b8ea82ba398f7dfcd"
+    },
+    {
       "id": "gamehq.update.new_version_available",
       "source": "New version available",
       "context": "ID",
@@ -14081,7 +14349,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 577
+          "line": 582
         }
       ],
       "plural": false,
@@ -14098,7 +14366,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 199
+          "line": 200
         }
       ],
       "plural": false,
@@ -14115,7 +14383,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 181
+          "line": 182
         }
       ],
       "plural": false,
@@ -14132,7 +14400,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 223
+          "line": 224
         }
       ],
       "plural": false,
@@ -14149,7 +14417,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 165
+          "line": 166
         }
       ],
       "plural": false,
@@ -14166,7 +14434,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 97
+          "line": 98
         }
       ],
       "plural": false,
@@ -14187,11 +14455,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 72
+          "line": 75
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 172
+          "line": 173
         }
       ],
       "plural": false,
@@ -14229,11 +14497,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 161
+          "line": 162
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 157
+          "line": 158
         }
       ],
       "plural": false,
@@ -14241,6 +14509,26 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "662cfdc05ac4ad0d6867d8a6a71a7310b979c28181d4a9c4e4b6129628afb9e1"
+    },
+    {
+      "id": "gamehq.update.release_metadata",
+      "source": "%1 · %2",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/UpdateBanner.qml",
+          "line": 95
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "badcb83617f95ae25dad09632c73d3401a28cca5a4d56b18aea9588a27fbf5aa"
     },
     {
       "id": "gamehq.update.released_on",
@@ -14269,7 +14557,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 927
+          "line": 932
         }
       ],
       "plural": false,
@@ -14286,7 +14574,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 175
+          "line": 177
         }
       ],
       "plural": false,
@@ -14305,11 +14593,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 233
+          "line": 234
         },
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 204
+          "line": 206
         }
       ],
       "plural": false,
@@ -14326,7 +14614,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 148
+          "line": 156
         }
       ],
       "plural": false,
@@ -14343,7 +14631,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 722
+          "line": 727
         }
       ],
       "plural": false,
@@ -14360,7 +14648,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 185
+          "line": 187
         }
       ],
       "plural": false,
@@ -14377,7 +14665,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 941
+          "line": 946
         }
       ],
       "plural": false,
@@ -14394,7 +14682,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 732
+          "line": 737
         }
       ],
       "plural": false,
@@ -14523,11 +14811,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 174
+          "line": 175
         },
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 178
+          "line": 179
         }
       ],
       "plural": false,
@@ -14544,7 +14832,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 106
+          "line": 107
         }
       ],
       "plural": false,
@@ -14605,7 +14893,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/AboutWhatsNewDialog.qml",
-          "line": 958
+          "line": 963
         }
       ],
       "plural": false,
@@ -14622,7 +14910,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 226
+          "line": 228
         }
       ],
       "plural": false,
@@ -14639,7 +14927,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
-          "line": 151
+          "line": 159
         }
       ],
       "plural": false,
@@ -14656,7 +14944,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/AboutSettingsPage.qml",
-          "line": 179
+          "line": 181
         }
       ],
       "plural": false,

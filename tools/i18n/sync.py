@@ -313,6 +313,17 @@ def set_source_translation(translation: ET.Element, source: str, plural: bool) -
         translation.text = source
 
 
+def has_complete_source_plural(translation: ET.Element, source: str) -> bool:
+    forms = translation.findall("numerusform")
+    source_placeholders = sorted(set(PLACEHOLDER.findall(source)))
+    return len(forms) >= 2 and all(
+        (text := "".join(form.itertext()).strip())
+        and sorted(set(PLACEHOLDER.findall(text))) == source_placeholders
+        and markup_signature(text) == markup_signature(source)
+        for form in forms
+    )
+
+
 def sort_catalog(root: ET.Element) -> None:
     contexts = list(root.findall("context"))
     for context in contexts:
@@ -374,7 +385,8 @@ def synchronize_catalog(
             current_source = message.findtext("source", default="")
             source = str(extracted["source"])
             translation = ensure_child(message, "translation")
-            if current_source != source:
+            source_changed = current_source != source
+            if source_changed:
                 source_element = ensure_child(message, "source")
                 old_source = message.find("oldsource")
                 if old_source is None:
@@ -395,7 +407,9 @@ def synchronize_catalog(
                 old_source = message.find("oldsource")
                 if old_source is not None:
                     message.remove(old_source)
-                set_source_translation(translation, source, bool(extracted["plural"]))
+                if (not extracted["plural"] or source_changed
+                        or not has_complete_source_plural(translation, source)):
+                    set_source_translation(translation, source, bool(extracted["plural"]))
             elif translation.get("type") in {"vanished", "obsolete"}:
                 if translation_text(translation):
                     translation.attrib.pop("type", None)

@@ -86,7 +86,8 @@ SettingsPage {
             if (updates.stateName === "Downloading") {
                 //% "Downloading GameHQ %1... %2%"
                 return qsTrId("gamehq.update.downloading_version_progress")
-                        .arg(updates.latestVersion).arg(updates.progress)
+                        .arg(updates.latestVersion)
+                        .arg(languageManager.formatInteger(updates.progress))
             }
             if (updates.stateName === "ReadyToInstall") {
                 //% "GameHQ %1 is downloaded and SHA-256 verified."
@@ -104,7 +105,7 @@ SettingsPage {
             if (updates.lastChecked.getTime() > 0) {
                 //% "Up to date, last checked %1"
                 return qsTrId("gamehq.update.up_to_date_last_checked")
-                        .arg(Qt.formatDateTime(updates.lastChecked, "d MMM yyyy, HH:mm"))
+                        .arg(languageManager.formatDateTime(updates.lastChecked))
             }
             //% "GameHQ can check GitHub for newer stable releases."
             return qsTrId("gamehq.update.github_check_description")
@@ -169,7 +170,8 @@ SettingsPage {
                 switch (updates.stateName) {
                 case "Downloading":
                     //% "%1% complete"
-                    return qsTrId("gamehq.update.progress_percent").arg(updates.progress)
+                    return qsTrId("gamehq.update.progress_percent")
+                            .arg(languageManager.formatInteger(updates.progress))
                 case "ReadyToInstall":
                     //% "GameHQ will restart to apply the update."
                     return qsTrId("gamehq.update.restart_to_apply")

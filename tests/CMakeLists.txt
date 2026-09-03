@@ -583,7 +583,9 @@ gamehq_add_test(tst_languagemanager
 qt_add_translations(tst_languagemanager
     TS_FILES
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_en_US.ts"
+        "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_de_DE.ts"
         "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_pl_PL.ts"
+        "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/i18n/gamehq_manager_zh_Hans.ts"
     RESOURCE_PREFIX "/i18n"
     LUPDATE_OPTIONS -no-obsolete
     LRELEASE_OPTIONS -idbased

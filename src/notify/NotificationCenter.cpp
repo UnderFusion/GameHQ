@@ -69,7 +69,7 @@ void NotificationCenter::positionAndShow()
 
 void NotificationCenter::post(const QString& title, const QString& body,
                               const QString& imagePath, const QString& kind,
-                              const QString& whenText, bool isVideo)
+                              const QDateTime& when, bool isVideo)
 {
     if (!ensureLoaded())
         return;
@@ -77,7 +77,7 @@ void NotificationCenter::post(const QString& title, const QString& body,
     const QString url = imagePath.isEmpty()
         ? QString()
         : QUrl::fromLocalFile(imagePath).toString();
-    emit posted(title, body, url, kind, whenText, isVideo);
+    emit posted(title, body, url, kind, when, isVideo);
     qInfo() << "Notification:" << kind << title << body;
 }
 

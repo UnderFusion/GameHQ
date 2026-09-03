@@ -29,10 +29,10 @@ Window {
 
     Connections {
         target: notifications
-        function onPosted(title, body, imageUrl, kind, whenText, isVideo) {
+        function onPosted(title, body, imageUrl, kind, when, isVideo) {
             toastModel.append({ "title": title, "body": body,
                                 "imageUrl": imageUrl, "kind": kind,
-                                "whenText": whenText, "isVideo": isVideo })
+                                "when": when, "isVideo": isVideo })
         }
     }
 
@@ -56,7 +56,7 @@ Window {
                 body: model.body
                 imageUrl: model.imageUrl
                 kind: model.kind
-                whenText: model.whenText
+                when: model.when
                 isVideo: model.isVideo
                 onDismissed: win.dismissToast(index)
             }

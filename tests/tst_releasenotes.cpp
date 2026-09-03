@@ -1,5 +1,6 @@
 #include "app/ReleaseNotes.h"
 
+#include <QSet>
 #include <QTest>
 
 class ReleaseNotesTest : public QObject
@@ -9,6 +10,7 @@ class ReleaseNotesTest : public QObject
 private slots:
     void parsesStructuredPlainText();
     void parsesHistoricalReleases();
+    void formatsDatesForTheEffectiveLocale();
     void rejectsNonStringItems();
     void rejectsInvalidVersion();
     void rejectsDuplicateReleaseVersions();
@@ -21,7 +23,7 @@ void ReleaseNotesTest::parsesStructuredPlainText()
     const ReleaseNotes notes = ReleaseNotes::fromJson(R"({
         "version":"1.2.3",
         "sections":[{"title":"Added","items":["First item","Second item"]}]
-    })");
+    })", QLocale(QStringLiteral("en-US")));
 
     QVERIFY(notes.isValid());
     QCOMPARE(notes.version(), QStringLiteral("1.2.3"));
@@ -43,14 +45,38 @@ void ReleaseNotesTest::parsesHistoricalReleases()
             "date":"2026-08-05",
             "sections":[{"title":"Added","items":["Earlier item"]}]
         }]
-    })");
+    })", QLocale(QStringLiteral("en-US")));
 
     QVERIFY(notes.isValid());
     QCOMPARE(notes.releases().size(), 2);
     const QVariantMap earlier = notes.releases().at(1).toMap();
     QCOMPARE(earlier.value(QStringLiteral("version")).toString(), QStringLiteral("1.2.2"));
-    QCOMPARE(earlier.value(QStringLiteral("date")).toString(), QStringLiteral("5 Aug 2026"));
+    QCOMPARE(earlier.value(QStringLiteral("date")).toString(),
+             QLocale(QStringLiteral("en-US")).toString(QDate(2026, 8, 5),
+                                                        QLocale::ShortFormat));
     QCOMPARE(earlier.value(QStringLiteral("sections")).toList().size(), 1);
+}
+
+void ReleaseNotesTest::formatsDatesForTheEffectiveLocale()
+{
+    const QByteArray json = R"({
+        "version":"1.2.3",
+        "date":"2026-09-03",
+        "sections":[{"title":"Fixed","items":["Item"]}]
+    })";
+    QStringList renderedDates;
+    for (const QString& tag : {QStringLiteral("en-US"), QStringLiteral("pl-PL"),
+                               QStringLiteral("zh-Hans"), QStringLiteral("de-DE")}) {
+        const QLocale locale(tag);
+        const ReleaseNotes notes = ReleaseNotes::fromJson(json, locale);
+        QVERIFY(notes.isValid());
+        const QString rendered = notes.releases().first().toMap()
+                                     .value(QStringLiteral("date")).toString();
+        QCOMPARE(rendered, locale.toString(QDate(2026, 9, 3), QLocale::ShortFormat));
+        renderedDates.append(rendered);
+    }
+    const QSet<QString> distinctDates(renderedDates.cbegin(), renderedDates.cend());
+    QVERIFY(distinctDates.size() >= 3);
 }
 
 void ReleaseNotesTest::rejectsNonStringItems()

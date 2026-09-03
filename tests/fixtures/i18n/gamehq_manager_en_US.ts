@@ -87,5 +87,13 @@
       <source>Press a controller button for %1 · Slot %2 · %3</source>
       <translation>Press a controller button for %1 · Slot %2 · %3</translation>
     </message>
+    <message id="gamehq.duration.minutes" numerus="yes">
+      <source>%n minute(s)</source>
+      <translation><numerusform>%n minute</numerusform><numerusform>%n minutes</numerusform></translation>
+    </message>
+    <message id="gamehq.format.size.megabytes">
+      <source>%1 MB</source>
+      <translation>%1 MB</translation>
+    </message>
   </context>
 </TS>

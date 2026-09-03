@@ -106,6 +106,7 @@ QString AppController::releaseNotesTitle() const
 
 void AppController::retranslate()
 {
+    m_releaseNotes = ReleaseNotes::loadBundled();
     emit translationsChanged();
 }
 

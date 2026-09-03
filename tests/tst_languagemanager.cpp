@@ -45,6 +45,7 @@ private slots:
     void missingAndCorruptTargetCatalogsFallBackToEnglish();
     void missingSourceCatalogIsFatal();
     void startupBootstrapTranslatesBeforeAppInitialization();
+    void localeSensitiveFormattingAndPluralsFollowLiveSwitches();
 };
 
 void LanguageManagerTest::productionManifestIsValid()
@@ -134,7 +135,7 @@ void LanguageManagerTest::targetMissFallsBackToEnglish()
 
 void LanguageManagerTest::missingAndCorruptTargetCatalogsFallBackToEnglish()
 {
-    for (const QString &requested : {QStringLiteral("de-DE"), QStringLiteral("fr-FR")}) {
+    for (const QString &requested : {QStringLiteral("zh-Hant"), QStringLiteral("fr-FR")}) {
         LocaleRegistry registry(false);
         QString error;
         QVERIFY2(registry.loadData(fixtureManifest(), &error), qPrintable(error));
@@ -193,6 +194,48 @@ void LanguageManagerTest::startupBootstrapTranslatesBeforeAppInitialization()
     QVERIFY(!error.isEmpty());
     QCOMPARE(NativeText::get(titleId, "Portable import failed"),
              QStringLiteral("Portable import failed"));
+}
+
+void LanguageManagerTest::localeSensitiveFormattingAndPluralsFollowLiveSwitches()
+{
+    LocaleRegistry registry(false);
+    QString error;
+    QVERIFY2(registry.loadData(fixtureManifest(), &error), qPrintable(error));
+    LanguageManager manager(&registry);
+    QVERIFY2(manager.initialize(QStringLiteral("en-US"), {}, &error), qPrintable(error));
+
+    const QDateTime sample(QDate(2026, 9, 3), QTime(14, 5), QTimeZone::LocalTime);
+    const auto verify = [&](const QString& tag) {
+        const QLocale expected(tag);
+        QCOMPARE(manager.effectiveLanguage(), tag);
+        QCOMPARE(manager.formatInteger(1234567), expected.toString(1234567LL));
+        QCOMPARE(manager.formatDecimal(1234.5, 1), expected.toString(1234.5, 'f', 1));
+        QCOMPARE(manager.formatDate(sample),
+                 expected.toString(sample.toLocalTime().date(), QLocale::ShortFormat));
+        QCOMPARE(manager.formatDateTime(sample),
+                 expected.toString(sample.toLocalTime(), QLocale::ShortFormat));
+        const QString zeroDigit = expected.zeroDigit();
+        QCOMPARE(manager.formatDuration(754000),
+                 QStringLiteral("%1:%2").arg(expected.toString(12),
+                                              expected.toString(34).rightJustified(
+                                                  2, zeroDigit.isEmpty() ? u'0'
+                                                                         : zeroDigit.front())));
+        const QStringList items{QStringLiteral("Alpha"), QStringLiteral("Beta"),
+                                QStringLiteral("Gamma")};
+        QCOMPARE(manager.formatList(items), expected.createSeparatedList(items));
+        QCOMPARE(qtTrId("gamehq.format.size.megabytes")
+                     .arg(manager.formatDecimal(1.5, 1)),
+                 QStringLiteral("%1 MB").arg(expected.toString(1.5, 'f', 1)));
+        QVERIFY(!qtTrId("gamehq.duration.minutes", 1).contains(QStringLiteral("(s)")));
+        QVERIFY(!qtTrId("gamehq.duration.minutes", 5).contains(QStringLiteral("(s)")));
+    };
+
+    verify(QStringLiteral("en-US"));
+    for (const QString& tag : {QStringLiteral("pl-PL"), QStringLiteral("zh-Hans"),
+                               QStringLiteral("de-DE"), QStringLiteral("en-US")}) {
+        manager.setRequestedLanguage(tag);
+        verify(tag);
+    }
 }
 
 QTEST_GUILESS_MAIN(LanguageManagerTest)

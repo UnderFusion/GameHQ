@@ -29,16 +29,19 @@ Rectangle {
     }
 
     function formattedSize(bytes) {
+        languageManager.translationRevision
         if (bytes >= 1024 * 1024) {
             //% "%1 MB"
-            return qsTrId("gamehq.format.size.megabytes").arg((bytes / (1024 * 1024)).toFixed(1))
+            return qsTrId("gamehq.format.size.megabytes")
+                    .arg(languageManager.formatDecimal(bytes / (1024 * 1024), 1))
         }
         if (bytes >= 1024) {
             //% "%1 KB"
-            return qsTrId("gamehq.format.size.kilobytes").arg(Math.round(bytes / 1024))
+            return qsTrId("gamehq.format.size.kilobytes")
+                    .arg(languageManager.formatInteger(Math.round(bytes / 1024)))
         }
         //% "%1 B"
-        return qsTrId("gamehq.format.size.bytes").arg(bytes)
+        return qsTrId("gamehq.format.size.bytes").arg(languageManager.formatInteger(bytes))
     }
 
     function titleText() {
@@ -69,7 +72,8 @@ Rectangle {
         switch (updates.stateName) {
         case "Downloading":
             //% "%1% complete"
-            return qsTrId("gamehq.update.progress_percent").arg(updates.progress)
+            return qsTrId("gamehq.update.progress_percent")
+                    .arg(languageManager.formatInteger(updates.progress))
         case "ReadyToInstall":
             //% "Download verified and ready to install."
             return qsTrId("gamehq.update.banner.download_verified")
@@ -84,9 +88,13 @@ Rectangle {
                                                          //% "Open the update details to continue."
                                                          : qsTrId("gamehq.update.banner.open_details")
         default:
-            return [Qt.formatDate(updates.publishedAt, "d MMM yyyy"),
-                    updates.size > 0 ? root.formattedSize(updates.size) : ""]
-                   .filter(value => value !== "").join(" \u00b7 ")
+            const date = languageManager.formatDate(updates.publishedAt)
+            const size = updates.size > 0 ? root.formattedSize(updates.size) : ""
+            if (date !== "" && size !== "") {
+                //% "%1 · %2"
+                return qsTrId("gamehq.update.release_metadata").arg(date).arg(size)
+            }
+            return date !== "" ? date : size
         }
     }
 

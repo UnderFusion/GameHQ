@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QObject>
+#include <QDateTime>
 #include <QStringList>
 #include <QVariantList>
 #include <functional>
@@ -34,6 +35,13 @@ public:
     Qt::LayoutDirection layoutDirection() const;
     int translationRevision() const { return m_translationRevision; }
     void setQmlRetranslateCallback(std::function<void()> callback);
+
+    Q_INVOKABLE QString formatInteger(qint64 value) const;
+    Q_INVOKABLE QString formatDecimal(double value, int precision = 1) const;
+    Q_INVOKABLE QString formatDate(const QDateTime &value) const;
+    Q_INVOKABLE QString formatDateTime(const QDateTime &value) const;
+    Q_INVOKABLE QString formatDuration(qint64 milliseconds) const;
+    Q_INVOKABLE QString formatList(const QStringList &values) const;
 
 public slots:
     void setRequestedLanguage(const QString &requestedLanguage);

@@ -1,6 +1,9 @@
 #include "input/BindingRelation.h"
 
 #include "input/ContextOverrideCatalog.h"
+#include "localization/NativeText.h"
+
+#include <QLocale>
 
 namespace {
 
@@ -224,13 +227,19 @@ QString BindingRelation::noticeText(Notice notice, int chordWindowMs, int multiT
 {
     switch (notice) {
     case Notice::HigherTapCountDelay:
-        return QStringLiteral("This action waits up to %1 ms because the same button also "
-                              "has an assignment that needs more taps.")
-            .arg(multiTapIntervalMs);
+        return NativeText::get(
+            //: Binding notice; %1 is a locale-formatted millisecond count.
+            //% "This action waits up to %1 ms because the same button also has an assignment that needs more taps."
+            QT_TRID_NOOP("gamehq.input.relation.higher_tap_delay"),
+            "This action waits up to %1 ms because the same button also has an assignment that needs more taps.")
+            .arg(QLocale().toString(multiTapIntervalMs));
     case Notice::ChordStartDelay:
-        return QStringLiteral("This action waits up to %1 ms because this button starts "
-                              "a combination.")
-            .arg(chordWindowMs);
+        return NativeText::get(
+            //: Binding notice; %1 is a locale-formatted millisecond count.
+            //% "This action waits up to %1 ms because this button starts a combination."
+            QT_TRID_NOOP("gamehq.input.relation.chord_start_delay"),
+            "This action waits up to %1 ms because this button starts a combination.")
+            .arg(QLocale().toString(chordWindowMs));
     case Notice::None:
         break;
     }

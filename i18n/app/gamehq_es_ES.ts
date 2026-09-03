@@ -4,100 +4,105 @@
   <context>
     <name>GameHQ</name>
     <message id="gamehq.about.enjoying_gamehq">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="811"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="816"></location>
       <source>Enjoying GameHQ?</source>
       <translation>¿Estás disfrutando de GameHQ?</translation>
     </message>
     <message id="gamehq.about.full_release_notes">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="678"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="683"></location>
       <source>View full release notes</source>
       <oldsource>See full release notes</oldsource>
       <translation>Ver las notas completas</translation>
     </message>
     <message id="gamehq.about.github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="770"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="775"></location>
       <source>GitHub</source>
       <translation>GitHub</translation>
     </message>
     <message id="gamehq.about.license">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="782"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="787"></location>
       <source>License</source>
       <translation>Licencia</translation>
     </message>
     <message id="gamehq.about.mode.installed">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="520"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="521"></location>
       <source>Installed</source>
       <translation>Instalado</translation>
     </message>
     <message id="gamehq.about.mode.portable">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="517"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="518"></location>
       <source>Portable</source>
       <translation>Portable</translation>
     </message>
     <message id="gamehq.about.more_improvements">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="668"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="673"></location>
       <source>Plus more improvements and fixes.</source>
       <translation>Más mejoras y correcciones.</translation>
     </message>
     <message id="gamehq.about.product_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="623"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="628"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
       <translation>Una captura de pantalla, reproducción y galería de medios amigable con el controlador para los juegos PC.</translation>
     </message>
     <message id="gamehq.about.product_updated">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="483"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="484"></location>
       <source>%1 updated</source>
       <translation>%1 actualizado</translation>
     </message>
     <message id="gamehq.about.project_links">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="754"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="759"></location>
       <source>PROJECT LINKS</source>
       <translation>Enlaces del proyecto</translation>
     </message>
     <message id="gamehq.about.quick_actions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="699"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="704"></location>
       <source>QUICK ACTIONS</source>
       <translation>Acciones rápidas</translation>
     </message>
     <message id="gamehq.about.report_issue">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="776"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="781"></location>
       <source>Report issue</source>
       <translation>Emisión del informe</translation>
     </message>
     <message id="gamehq.about.star_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="820"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="825"></location>
       <source>A GitHub star helps more players discover the project.</source>
       <translation>Una estrella GitHub ayuda a más jugadores a descubrir el proyecto.</translation>
     </message>
     <message id="gamehq.about.star_on_github">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="831"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="836"></location>
       <source>Star on GitHub</source>
       <translation>Estrella en GitHub</translation>
     </message>
     <message id="gamehq.about.version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="498"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="860"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="499"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="865"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="17"></location>
       <source>Version %1</source>
       <translation>Versión %1</translation>
     </message>
     <message id="gamehq.about.whats_new_in">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="633"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="638"></location>
       <source>WHAT'S NEW IN %1</source>
       <translation>Qué hay de nuevo en %1</translation>
     </message>
     <message id="gamehq.action.back">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="569"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="574"></location>
       <source>Back</source>
       <translation>De vuelta .</translation>
     </message>
+    <message id="gamehq.action.back_with_marker">
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="572"></location>
+      <source>%1  Back</source>
+      <translation>%1  Atrás</translation>
+    </message>
     <message id="gamehq.action.cancel">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="622"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="623"></location>
       <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="19"></location>
       <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="25"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="14"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="161"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="194"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="532"></location>
       <source>Cancel</source>
       <translation>Cancelación</translation>
@@ -289,7 +294,7 @@
       <translation>Ya está.</translation>
     </message>
     <message id="gamehq.action.download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="207"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="209"></location>
       <source>Download</source>
       <translation>Descargar</translation>
     </message>
@@ -329,7 +334,7 @@
       <translation>Mostrar u ocultar la superposición</translation>
     </message>
     <message id="gamehq.action.not_now">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="174"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="182"></location>
       <source>Not now</source>
       <translation>No ahora.</translation>
     </message>
@@ -484,9 +489,9 @@
       <translation>Busque el futuro</translation>
     </message>
     <message id="gamehq.action.record">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="294"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="370"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="434"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="295"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="371"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="435"></location>
       <source>Record</source>
       <translation>Registro</translation>
     </message>
@@ -522,7 +527,7 @@
       <translation>Regresar</translation>
     </message>
     <message id="gamehq.action.save">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="628"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="629"></location>
       <source>Save</source>
       <translation>Salvar</translation>
     </message>
@@ -537,14 +542,14 @@
       <translation>Seleccionar todos</translation>
     </message>
     <message id="gamehq.action.stop">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="287"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="288"></location>
       <source>Stop</source>
       <translation>No lo hagas.</translation>
     </message>
     <message id="gamehq.common.action.change">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="291"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="367"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="431"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="292"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="368"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="432"></location>
       <location filename="src/ui/qml/components/SettingsPathRow.qml" line="27"></location>
       <source>Change</source>
       <translation>Cambio</translation>
@@ -620,10 +625,10 @@
       </translation>
     </message>
     <message id="gamehq.duration.seconds_short">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="533"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="535"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="537"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="539"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="534"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="536"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="538"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="540"></location>
       <source>%1 s</source>
       <translation>%1 s</translation>
     </message>
@@ -639,7 +644,7 @@
       <translation>La carpeta seleccionada no es válida.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="340"></location>
+      <location filename="src/ui/AppController.cpp" line="341"></location>
       <source>Choose a local folder.</source>
       <translation>Elige una carpeta local.</translation>
     </message>
@@ -659,8 +664,8 @@
       <translation>GameHQ No se pudo guardar la carpeta seleccionada.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="334"></location>
-      <location filename="src/ui/AppController.cpp" line="356"></location>
+      <location filename="src/ui/AppController.cpp" line="335"></location>
+      <location filename="src/ui/AppController.cpp" line="357"></location>
       <source>The capture type is invalid.</source>
       <translation>El tipo de captura no es válido.</translation>
     </message>
@@ -817,7 +822,7 @@
       <translation>No puede hacer hash %1- ¿ Qué ?</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="181"></location>
+      <location filename="src/ui/AppController.cpp" line="182"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>Los perfiles portátiles sólo pueden importarse con una copia instalada de GameHQ- ¿ Qué ?</translation>
     </message>
@@ -842,12 +847,12 @@
       <translation>No se pudo eliminar el diario de importación portátil recuperado.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="187"></location>
+      <location filename="src/ui/AppController.cpp" line="188"></location>
       <source>Select a local GameHQ portable folder.</source>
       <translation>Seleccione un GameHQ carpeta portátil.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="196"></location>
+      <location filename="src/ui/AppController.cpp" line="197"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>La carpeta seleccionada no es una GameHQ paquete portátil.</translation>
     </message>
@@ -877,12 +882,12 @@
       <translation>Una ruta portátil:/ escapa de la raíz del paquete seleccionado.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="207"></location>
+      <location filename="src/ui/AppController.cpp" line="208"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ No pudo identificar su propio proceso para la importación.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="217"></location>
+      <location filename="src/ui/AppController.cpp" line="218"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ No se pudo iniciar el proceso de importación portátil.</translation>
     </message>
@@ -957,7 +962,7 @@
       <translation>Otra importación de perfil portátil ya está en ejecución.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="446"></location>
+      <location filename="src/app/App.cpp" line="441"></location>
       <source>The update was cancelled because capture work did not finish safely in time.</source>
       <translation>La actualización fue cancelada porque el trabajo de captura no terminó a tiempo.</translation>
     </message>
@@ -1209,7 +1214,7 @@
       <translation>GameHQ No se pudo publicar la transacción de actualización.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="421"></location>
+      <location filename="src/app/App.cpp" line="416"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ No se pudo iniciar el mantenimiento de actualización: %1</translation>
     </message>
@@ -1297,18 +1302,23 @@
       <source>%1 Mbps</source>
       <translation>%1 Mbps</translation>
     </message>
+    <message id="gamehq.format.percent">
+      <location filename="src/ui/qml/components/SettingsSlider.qml" line="21"></location>
+      <source>%1%</source>
+      <translation>%1 %</translation>
+    </message>
     <message id="gamehq.format.size.bytes">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="41"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="44"></location>
       <source>%1 B</source>
       <translation>%1 B</translation>
     </message>
     <message id="gamehq.format.size.kilobytes">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="38"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="40"></location>
       <source>%1 KB</source>
       <translation>%1 KB</translation>
     </message>
     <message id="gamehq.format.size.megabytes">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="34"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="35"></location>
       <source>%1 MB</source>
       <translation>%1 MB</translation>
     </message>
@@ -1418,27 +1428,27 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Vehedor %1</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="322"></location>
+      <location filename="src/ui/AppController.cpp" line="323"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Compruebe el estado HDR actual de cada pantalla.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="308"></location>
+      <location filename="src/ui/AppController.cpp" line="309"></location>
       <source>Windows HDR is active</source>
       <translation>El HDR de Windows está activo</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="313"></location>
+      <location filename="src/ui/AppController.cpp" line="314"></location>
       <source>Windows HDR is inactive</source>
       <translation>El HDR de Windows está inactivo</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="302"></location>
+      <location filename="src/ui/AppController.cpp" line="303"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>No hay visualizaciones reportadas por el controlador gráfico</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="296"></location>
+      <location filename="src/ui/AppController.cpp" line="297"></location>
       <source>Not checked yet</source>
       <translation>No se ha comprobado todavía</translation>
     </message>
@@ -1667,95 +1677,95 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Abrir la guía de compatibilidad del controlador</translation>
     </message>
     <message id="gamehq.input.assignment.capture_active">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="227"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="228"></location>
       <source>Controller capture active · Dialog navigation is paused</source>
       <translation>Captura del controlador activa · Navegación de diálogo en pausa</translation>
     </message>
     <message id="gamehq.input.assignment.combination_gesture">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="505"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="506"></location>
       <source>Press · fixed for combinations</source>
       <translation>Prensa fija para las combinaciones</translation>
     </message>
     <message id="gamehq.input.assignment.default_duration">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="531"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="532"></location>
       <source>Default</source>
       <translation>El valor de la función</translation>
     </message>
     <message id="gamehq.input.assignment.detected">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="346"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="347"></location>
       <source>%1 detected</source>
       <translation>%1 detectado</translation>
     </message>
     <message id="gamehq.input.assignment.first_button">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="314"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="315"></location>
       <source>First button</source>
       <translation>El primer botón</translation>
     </message>
     <message id="gamehq.input.assignment.gesture">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="459"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="489"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="460"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="490"></location>
       <source>Gesture</source>
       <translation>El gesto</translation>
     </message>
     <message id="gamehq.input.assignment.hold_duration">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="521"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="522"></location>
       <source>Hold duration</source>
       <translation>Duración de retención</translation>
     </message>
     <message id="gamehq.input.assignment.listening_button">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="269"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="270"></location>
       <source>Listening… Press a controller button</source>
       <translation>Escuchando... presiona un botón del mando</translation>
     </message>
     <message id="gamehq.input.assignment.listening_first">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="341"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="342"></location>
       <source>Listening… Hold the first button</source>
       <translation>Escuchando... mantenga presionado el primer botón</translation>
     </message>
     <message id="gamehq.input.assignment.listening_second">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="406"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="407"></location>
       <source>Listening… Press the second button</source>
       <translation>Escuchando... presiona el segundo botón</translation>
     </message>
     <message id="gamehq.input.assignment.not_set">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="274"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="352"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="415"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="275"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="353"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="416"></location>
       <source>Not set</source>
       <translation>No está fijado</translation>
     </message>
     <message id="gamehq.input.assignment.notice.attention">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="584"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="585"></location>
       <source>Assignment needs attention</source>
       <translation>La asignación necesita atención</translation>
     </message>
     <message id="gamehq.input.assignment.notice.compatibility">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="592"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="593"></location>
       <source>Compatibility change required</source>
       <translation>Se requiere un cambio de compatibilidad</translation>
     </message>
     <message id="gamehq.input.assignment.notice.default">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="595"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="596"></location>
       <source>Assignment note</source>
       <translation>Nota de asignación</translation>
     </message>
     <message id="gamehq.input.assignment.notice.not_verified">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="588"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="589"></location>
       <source>Button not verified this session</source>
       <translation>Botón no verificado en esta sesión</translation>
     </message>
     <message id="gamehq.input.assignment.pattern">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="196"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="197"></location>
       <source>Pattern</source>
       <translation>Patrón</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.combination">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="208"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="209"></location>
       <source>Combination</source>
       <translation>Combinación</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.single">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="206"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="207"></location>
       <source>Single button</source>
       <translation>Botón único</translation>
     </message>
@@ -1765,12 +1775,12 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>%1 · Rastreamiento %2</translation>
     </message>
     <message id="gamehq.input.assignment.second_button">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="379"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="380"></location>
       <source>Second button</source>
       <translation>El segundo botón</translation>
     </message>
     <message id="gamehq.input.assignment.waiting_first">
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="412"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="413"></location>
       <source>Waiting for first button</source>
       <translation>Esperando el primer botón</translation>
     </message>
@@ -1845,10 +1855,46 @@ Esta acción no se puede deshacer.</numerusform>
       <source>Convert &amp; add</source>
       <translation>Convertir &amp; añadir</translation>
     </message>
+    <message id="gamehq.input.compatibility.convert_press">
+      <location filename="src/input/BindingEditorModel.cpp" line="482"></location>
+      <source>%1 currently activates %2 immediately when the button is pressed.
+
+To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
+
+%2 will then activate after the button is released.</source>
+      <translation>%1 activa actualmente %2 de inmediato al pulsar el botón.
+
+Para usar también %1 con %3, GameHQ debe cambiar %2 de Pulsación a Toque único.
+
+%2 se activará al soltar el botón.</translation>
+    </message>
+    <message id="gamehq.input.compatibility.convert_press_with_wait">
+      <location filename="src/input/BindingEditorModel.cpp" line="474"></location>
+      <source>%1 currently activates %2 immediately when the button is pressed.
+
+To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
+
+%2 will then activate after the button is released and may wait up to %4 ms to rule out the %3 action.</source>
+      <translation>%1 activa actualmente %2 de inmediato al pulsar el botón.
+
+Para usar también %1 con %3, GameHQ debe cambiar %2 de Pulsación a Toque único.
+
+%2 se activará al soltar el botón y puede esperar hasta %4 ms para descartar la acción %3.</translation>
+    </message>
     <message id="gamehq.input.compatibility.title">
       <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="12"></location>
       <source>Make these assignments compatible?</source>
       <translation>¿Hacer que estas tareas sean compatibles?</translation>
+    </message>
+    <message id="gamehq.input.conflict.already_assigned">
+      <location filename="src/input/BindingEditorModel.cpp" line="458"></location>
+      <source>%1 · %2 is already assigned to %3 in this context.</source>
+      <translation>%1 · %2 ya está asignado a %3 en este contexto.</translation>
+    </message>
+    <message id="gamehq.input.conflict.press_timed">
+      <location filename="src/input/BindingEditorModel.cpp" line="451"></location>
+      <source>%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.</source>
+      <translation>%1 usa Pulsación para %2. En este contexto no se puede distinguir de %3 sin cambiar su comportamiento al pulsar el botón.</translation>
     </message>
     <message id="gamehq.input.conflict.title">
       <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="18"></location>
@@ -1857,110 +1903,135 @@ Esta acción no se puede deshacer.</numerusform>
     </message>
     <message id="gamehq.input.gesture.double_tap">
       <location filename="src/input/BindingPattern.cpp" line="106"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="473"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="474"></location>
       <source>Double tap</source>
       <translation>Golpe doble</translation>
     </message>
     <message id="gamehq.input.gesture.hold">
       <location filename="src/input/BindingPattern.cpp" line="121"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="477"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="478"></location>
       <source>Hold</source>
       <translation>- ¿ Qué ?</translation>
     </message>
     <message id="gamehq.input.gesture.press">
       <location filename="src/input/BindingPattern.cpp" line="101"></location>
       <location filename="src/input/BindingPattern.cpp" line="125"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="469"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="470"></location>
       <source>Press</source>
       <translation>Presione</translation>
     </message>
     <message id="gamehq.input.gesture.tap">
       <location filename="src/input/BindingPattern.cpp" line="117"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="471"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="472"></location>
       <source>Tap</source>
       <translation>Toque</translation>
     </message>
     <message id="gamehq.input.gesture.triple_tap">
       <location filename="src/input/BindingPattern.cpp" line="112"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="475"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="476"></location>
       <source>Triple tap</source>
       <translation>Golpear tres veces</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
-      <location filename="src/input/BindingEditorModel.cpp" line="300"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="301"></location>
       <source>Press a controller button for %1 · Slot %2 · %3</source>
       <translation>Pulsa un botón del mando para %1 · Ranura %2 · %3</translation>
     </message>
     <message id="gamehq.input.model.capture.keyboard">
-      <location filename="src/input/BindingEditorModel.cpp" line="307"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="308"></location>
       <source>Press a key or shortcut for %1 · Slot %2</source>
       <translation>Presione una tecla o un acceso directo para %1 · Las ranuras %2</translation>
     </message>
     <message id="gamehq.input.model.capture.mouse">
-      <location filename="src/input/BindingEditorModel.cpp" line="314"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="315"></location>
       <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
       <translation>Presione el botón del ratón medio, Atrás o Avanzar para %1 · Las ranuras %2</translation>
     </message>
     <message id="gamehq.input.model.combination">
-      <location filename="src/input/BindingEditorModel.cpp" line="178"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="179"></location>
       <source>Combination</source>
       <translation>Combinación</translation>
     </message>
     <message id="gamehq.input.model.hold_default">
-      <location filename="src/input/BindingEditorModel.cpp" line="184"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="185"></location>
       <source>Hold · Default</source>
       <translation>Mantener en espera</translation>
     </message>
     <message id="gamehq.input.model.hold_seconds">
-      <location filename="src/input/BindingEditorModel.cpp" line="189"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
       <source>Hold · %1 s</source>
       <translation>Espera un segundo . %1 S</translation>
     </message>
     <message id="gamehq.input.model.no_action_fired">
-      <location filename="src/input/BindingEditorModel.cpp" line="962"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="985"></location>
       <source>No action fired yet</source>
       <translation>No se ha disparado todavía.</translation>
     </message>
     <message id="gamehq.input.model.scope.gallery">
-      <location filename="src/input/BindingEditorModel.cpp" line="141"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="142"></location>
       <source>Gallery</source>
       <translation>Galería</translation>
     </message>
     <message id="gamehq.input.model.scope.global">
-      <location filename="src/input/BindingEditorModel.cpp" line="133"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="134"></location>
       <source>Global</source>
       <translation>El mundo</translation>
     </message>
     <message id="gamehq.input.model.scope.overlay">
-      <location filename="src/input/BindingEditorModel.cpp" line="137"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="138"></location>
       <source>Overlay</source>
       <translation>Superposición</translation>
     </message>
     <message id="gamehq.input.model.scope.playback">
-      <location filename="src/input/BindingEditorModel.cpp" line="145"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="146"></location>
       <source>Playback</source>
       <translation>Reproducción</translation>
     </message>
     <message id="gamehq.input.model.status.added">
-      <location filename="src/input/BindingEditorModel.cpp" line="70"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="71"></location>
       <source>Added</source>
       <translation>Añadido</translation>
     </message>
     <message id="gamehq.input.model.status.modified">
-      <location filename="src/input/BindingEditorModel.cpp" line="75"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="76"></location>
       <source>Modified</source>
       <translation>Modificado</translation>
     </message>
     <message id="gamehq.input.model.status.removed">
-      <location filename="src/input/BindingEditorModel.cpp" line="80"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="81"></location>
       <source>Removed</source>
       <translation>Se ha eliminado</translation>
     </message>
     <message id="gamehq.input.model.unassigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="165"></location>
-      <location filename="src/input/BindingEditorModel.cpp" line="241"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="166"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="242"></location>
       <source>Unassigned</source>
       <translation>No asignado</translation>
+    </message>
+    <message id="gamehq.input.relation.chord_start_delay">
+      <location filename="src/input/BindingRelation.cpp" line="240"></location>
+      <source>This action waits up to %1 ms because this button starts a combination.</source>
+      <translation>Esta acción espera hasta %1 ms porque este botón inicia una combinación.</translation>
+    </message>
+    <message id="gamehq.input.relation.context_override">
+      <location filename="src/input/BindingEditorModel.cpp" line="580"></location>
+      <source>%1 replaces %2 while %3 is active. Both are saved.</source>
+      <translation>%1 reemplaza a %2 mientras %3 está activo. Ambas asignaciones se guardan.</translation>
+    </message>
+    <message id="gamehq.input.relation.higher_tap_delay">
+      <location filename="src/input/BindingRelation.cpp" line="233"></location>
+      <source>This action waits up to %1 ms because the same button also has an assignment that needs more taps.</source>
+      <translation>Esta acción espera hasta %1 ms porque el mismo botón también tiene una asignación que requiere más toques.</translation>
+    </message>
+    <message id="gamehq.input.relation.redundant">
+      <location filename="src/input/BindingEditorModel.cpp" line="589"></location>
+      <source>%1 already does the same thing here. The duplicate has no effect.</source>
+      <translation>%1 ya hace lo mismo aquí. El duplicado no tiene efecto.</translation>
+    </message>
+    <message id="gamehq.input.relation.shared_gesture">
+      <location filename="src/input/BindingEditorModel.cpp" line="596"></location>
+      <source>%1 is shared: %2 = %3, %4 = %5.</source>
+      <translation>%1 se comparte: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
       <location filename="src/ui/qml/Main.qml" line="1020"></location>
@@ -2033,32 +2104,32 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Configuración</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="280"></location>
+      <location filename="src/app/App.cpp" line="275"></location>
       <source>Reason: %1</source>
       <translation>Motivo: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="286"></location>
+      <location filename="src/app/App.cpp" line="281"></location>
       <source>Replay failed</source>
       <translation>Fallo de repetición</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="266"></location>
+      <location filename="src/app/App.cpp" line="261"></location>
       <source>Replay saved</source>
       <translation>Repetición guardada</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="218"></location>
+      <location filename="src/app/App.cpp" line="213"></location>
       <source>Screenshot saved</source>
       <translation>Captura de pantalla guardada</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="329"></location>
+      <location filename="src/app/App.cpp" line="324"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ se inició con la configuración predeterminada. Se conservó el archivo de configuración anterior para que no se perdiera nada.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="324"></location>
+      <location filename="src/app/App.cpp" line="319"></location>
       <source>Settings could not be read</source>
       <translation>No se pudieron leer las configuraciones</translation>
     </message>
@@ -2112,6 +2183,11 @@ Esta acción no se puede deshacer.</numerusform>
       <source>%1 Overlay</source>
       <translation>Superposición %1</translation>
     </message>
+    <message id="gamehq.player.position_duration">
+      <location filename="src/ui/qml/components/PlayerControls.qml" line="234"></location>
+      <source>%1 / %2</source>
+      <translation>%1 / %2</translation>
+    </message>
     <message id="gamehq.release_notes.title">
       <location filename="src/ui/AppController.cpp" line="104"></location>
       <source>Release notes</source>
@@ -2123,7 +2199,7 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Aplicación</translation>
     </message>
     <message id="gamehq.settings.about.community.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="288"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="290"></location>
       <source>Community</source>
       <translation>Comunidad</translation>
     </message>
@@ -2133,12 +2209,12 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Versión, estado de actualización, recursos del proyecto y formas de ayudar.</translation>
     </message>
     <message id="gamehq.settings.about.github_source">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="250"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="252"></location>
       <source>Source on GitHub</source>
       <translation>Fuente en GitHub</translation>
     </message>
     <message id="gamehq.settings.about.license">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="279"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="281"></location>
       <source>GNU GPL v3 License</source>
       <translation>Licencia GNU GPL v3</translation>
     </message>
@@ -2153,7 +2229,7 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Mantenimiento</translation>
     </message>
     <message id="gamehq.settings.about.open_source.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="235"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="237"></location>
       <source>Open source</source>
       <translation>Fuente abierta</translation>
     </message>
@@ -2168,12 +2244,12 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Perfil portátil</translation>
     </message>
     <message id="gamehq.settings.about.project.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="239"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="241"></location>
       <source>Open official GameHQ resources in your default browser.</source>
       <translation>Abra los recursos oficiales de GameHQ en su navegador predeterminado.</translation>
     </message>
     <message id="gamehq.settings.about.project.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="237"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="239"></location>
       <source>Project</source>
       <translation>Proyecto</translation>
     </message>
@@ -2183,38 +2259,38 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>GameHQ está listo</translation>
     </message>
     <message id="gamehq.settings.about.releases">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="257"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="259"></location>
       <source>Releases</source>
       <translation>Liberaciones</translation>
     </message>
     <message id="gamehq.settings.about.report_issue">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="264"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="266"></location>
       <source>Report an issue</source>
       <translation>Informe de un problema</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="788"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="271"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="793"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
       <source>Security &amp; privacy</source>
       <translation>Seguridad &amp; privacidad</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="275"></location>
       <source>Verification, local data, network use, and private reporting</source>
       <translation>Verificación, datos locales, uso de la red y notificación privada</translation>
     </message>
     <message id="gamehq.settings.about.support.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="293"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="295"></location>
       <source>Enjoying %1? A GitHub star helps more players discover the project.</source>
       <translation>¿Te gusta %1? Una estrella en GitHub ayuda a que más jugadores descubran el proyecto.</translation>
     </message>
     <message id="gamehq.settings.about.support.star_on_github">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="296"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="298"></location>
       <source>Star %1 on GitHub</source>
       <translation>Estrella %1 en GitHub</translation>
     </message>
     <message id="gamehq.settings.about.support.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="290"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="292"></location>
       <source>Support the project</source>
       <translation>Apoyar el proyecto</translation>
     </message>
@@ -2229,7 +2305,7 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Actualizaciones</translation>
     </message>
     <message id="gamehq.settings.about.website">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="243"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
       <source>Website</source>
       <translation>Página web</translation>
     </message>
@@ -2640,7 +2716,7 @@ Esta acción no se puede deshacer.</numerusform>
     </message>
     <message id="gamehq.settings.category.input">
       <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
-      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="244"></location>
+      <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="245"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="9"></location>
       <source>Input</source>
       <translation>Ingreso</translation>
@@ -3859,67 +3935,67 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Hacer captura de pantalla</translation>
     </message>
     <message id="gamehq.update.applying_and_restarting">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="182"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="184"></location>
       <source>GameHQ is applying the update and will restart.</source>
       <translation>GameHQ está aplicando la actualización y se reiniciará.</translation>
     </message>
     <message id="gamehq.update.available_version_short">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="125"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="126"></location>
       <source>%1 available</source>
       <translation>%1 disponible</translation>
     </message>
     <message id="gamehq.update.banner.available">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="64"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="67"></location>
       <source>%1 %2 is available</source>
       <translation>%1 %2 está disponible</translation>
     </message>
     <message id="gamehq.update.banner.download_verified">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="75"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="79"></location>
       <source>Download verified and ready to install.</source>
       <translation>Descarga verificada y lista para instalar.</translation>
     </message>
     <message id="gamehq.update.banner.downloading">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="48"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="51"></location>
       <source>Downloading %1 %2</source>
       <translation>Descargando %1 %2</translation>
     </message>
     <message id="gamehq.update.banner.installing">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="58"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="61"></location>
       <source>Installing %1 %2</source>
       <translation>Instalando %1 %2</translation>
     </message>
     <message id="gamehq.update.banner.needs_attention">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="61"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="64"></location>
       <source>The update needs attention</source>
       <translation>La actualización necesita atención</translation>
     </message>
     <message id="gamehq.update.banner.open_details">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="85"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="89"></location>
       <source>Open the update details to continue.</source>
       <translation>Abre los detalles de actualización para continuar.</translation>
     </message>
     <message id="gamehq.update.banner.preparing">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="55"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="58"></location>
       <source>Preparing %1 %2</source>
       <translation>Preparando %1 %2</translation>
     </message>
     <message id="gamehq.update.banner.ready">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="51"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="54"></location>
       <source>%1 %2 is ready</source>
       <translation>%1 %2 está listo</translation>
     </message>
     <message id="gamehq.update.banner.restart_when_finished">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="82"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="86"></location>
       <source>GameHQ will restart when installation finishes.</source>
       <translation>GameHQ se reiniciará cuando termine la instalación.</translation>
     </message>
     <message id="gamehq.update.banner.waiting_for_capture">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="79"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="83"></location>
       <source>Waiting for capture work to finish safely.</source>
       <translation>Esperando a que el trabajo de captura termine con seguridad.</translation>
     </message>
     <message id="gamehq.update.beta_download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="165"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="166"></location>
       <source>Beta update download</source>
       <translation>Descarga de la actualización beta</translation>
     </message>
@@ -3929,45 +4005,45 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Incluido con GameHQ %1</translation>
     </message>
     <message id="gamehq.update.cancel_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="216"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="217"></location>
       <source>Cancel download</source>
       <translation>Cancelar la descarga</translation>
     </message>
     <message id="gamehq.update.check.label">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="236"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="121"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="237"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="122"></location>
       <source>Check for updates</source>
       <translation>Compruebe las actualizaciones</translation>
     </message>
     <message id="gamehq.update.check_again">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="230"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="201"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="231"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
       <source>Check again</source>
       <translation>Compruebe de nuevo</translation>
     </message>
     <message id="gamehq.update.check_automatically.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="116"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="117"></location>
       <source>At most once every 24 hours, in the background.</source>
       <translation>No más de una vez cada 24 horas, en segundo plano.</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="114"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="115"></location>
       <source>Check automatically</source>
       <translation>Comprobar automáticamente</translation>
     </message>
     <message id="gamehq.update.check_failed">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="171"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="172"></location>
       <source>Update check failed</source>
       <translation>Verificación de actualización falló</translation>
     </message>
     <message id="gamehq.update.check_now">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="139"></location>
       <source>Check now</source>
       <translation>Comprueba ahora.</translation>
     </message>
     <message id="gamehq.update.checking">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="210"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="135"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="211"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="136"></location>
       <source>Checking...</source>
       <translation>Estoy comprobando...</translation>
     </message>
@@ -3982,22 +4058,22 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Verificación de las actualizaciones</translation>
     </message>
     <message id="gamehq.update.choose_install_time">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="902"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="907"></location>
       <source>Choose when to install %1 %2.</source>
       <translation>Elige cuándo instalar %1 %2.</translation>
     </message>
     <message id="gamehq.update.download_progress">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="154"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="155"></location>
       <source>Download progress</source>
       <translation>Descargar el progreso</translation>
     </message>
     <message id="gamehq.update.download_verified_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="93"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="94"></location>
       <source>GameHQ %1 is downloaded and SHA-256 verified.</source>
       <translation>GameHQ %1 se ha descargado y verificado con SHA-256.</translation>
     </message>
     <message id="gamehq.update.download_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="213"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="214"></location>
       <source>Download update %1</source>
       <translation>Descarga la actualización %1</translation>
     </message>
@@ -4012,76 +4088,81 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Descargando GameHQ %1... %2%</translation>
     </message>
     <message id="gamehq.update.github_check_description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="110"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="111"></location>
       <source>GameHQ can check GitHub for newer stable releases.</source>
       <translation>GameHQ puede comprobar GitHub para nuevas versiones estables.</translation>
     </message>
     <message id="gamehq.update.install_and_restart">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="219"></location>
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="164"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="197"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="220"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="172"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="199"></location>
       <source>Install and restart</source>
       <translation>Instalar y reiniciar</translation>
     </message>
     <message id="gamehq.update.installed_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="128"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="129"></location>
       <source>Installed: %1</source>
       <translation>Instalado: %1</translation>
     </message>
     <message id="gamehq.update.installing">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="168"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="162"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="169"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="163"></location>
       <source>Installing</source>
       <translation>Instalación</translation>
     </message>
     <message id="gamehq.update.installing_progress">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="226"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="227"></location>
       <source>Installing...</source>
       <translation>Estoy instalando...</translation>
     </message>
     <message id="gamehq.update.installing_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="101"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="102"></location>
       <source>Installing GameHQ %1...</source>
       <translation>Instalando GameHQ %1...</translation>
     </message>
     <message id="gamehq.update.last_checked">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="202"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="203"></location>
       <source>Last checked %1</source>
       <translation>Última vez verificado %1</translation>
     </message>
+    <message id="gamehq.update.last_checked_with_marker">
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="554"></location>
+      <source>%1  %2</source>
+      <translation>%1  %2</translation>
+    </message>
     <message id="gamehq.update.new_version_available">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="577"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="582"></location>
       <source>New version available</source>
       <translation>Nueva versión disponible</translation>
     </message>
     <message id="gamehq.update.not_checked_description">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="199"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="200"></location>
       <source>Updates have not been checked yet</source>
       <translation>Las actualizaciones aún no se han comprobado</translation>
     </message>
     <message id="gamehq.update.not_checked_yet">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="181"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="182"></location>
       <source>Not checked yet</source>
       <translation>Aún no comprobado</translation>
     </message>
     <message id="gamehq.update.preparing">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="223"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="224"></location>
       <source>Preparing...</source>
       <translation>Me estoy preparando...</translation>
     </message>
     <message id="gamehq.update.preparing_to_install">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="165"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="166"></location>
       <source>Preparing to install</source>
       <translation>Preparando la instalación</translation>
     </message>
     <message id="gamehq.update.preparing_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="97"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="98"></location>
       <source>Getting ready to install GameHQ %1...</source>
       <translation>Preparando la instalación de GameHQ %1...</translation>
     </message>
     <message id="gamehq.update.progress_percent">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="72"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="172"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="75"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="173"></location>
       <source>%1% complete</source>
       <translation>%1% completo</translation>
     </message>
@@ -4091,10 +4172,15 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Publicado en %1</translation>
     </message>
     <message id="gamehq.update.ready_to_install">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="161"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="157"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="162"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="158"></location>
       <source>Ready to install</source>
       <translation>Listo para instalar</translation>
+    </message>
+    <message id="gamehq.update.release_metadata">
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="95"></location>
+      <source>%1 · %2</source>
+      <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.update.released_on">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="142"></location>
@@ -4102,43 +4188,43 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>Se ha liberado %1</translation>
     </message>
     <message id="gamehq.update.remind_later">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="927"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="932"></location>
       <source>Remind me later</source>
       <translation>Recuérdame después .</translation>
     </message>
     <message id="gamehq.update.restart_to_apply">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="175"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
       <source>GameHQ will restart to apply the update.</source>
       <translation>GameHQ se reiniciará para aplicar la actualización.</translation>
     </message>
     <message id="gamehq.update.retry_download">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="233"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="204"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="234"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="206"></location>
       <source>Retry download</source>
       <translation>Vuelva a intentar la descarga</translation>
     </message>
     <message id="gamehq.update.see_whats_new">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="148"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="156"></location>
       <source>See what's new</source>
       <translation>Ver qué hay de nuevo</translation>
     </message>
     <message id="gamehq.update.settings">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="722"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="727"></location>
       <source>Update settings</source>
       <translation>Configuración de actualización</translation>
     </message>
     <message id="gamehq.update.sha256_limit_warning">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="185"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="187"></location>
       <source>SHA-256 detects corruption, but not a compromised GitHub account.</source>
       <translation>SHA-256 detecta corrupción, pero no una cuenta GitHub comprometida.</translation>
     </message>
     <message id="gamehq.update.skip_this_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="941"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="946"></location>
       <source>Skip this version</source>
       <translation>Salta esta versión</translation>
     </message>
     <message id="gamehq.update.skip_version">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="732"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="737"></location>
       <source>Skip version %1</source>
       <translation>Salta la versión %1</translation>
     </message>
@@ -4175,13 +4261,13 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>(Actualmente)</translation>
     </message>
     <message id="gamehq.update.up_to_date">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="174"></location>
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="178"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="175"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="179"></location>
       <source>Up to date</source>
       <translation>Actualizado</translation>
     </message>
     <message id="gamehq.update.up_to_date_last_checked">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="106"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="107"></location>
       <source>Up to date, last checked %1</source>
       <translation>Actualizado, verificado por última vez %1</translation>
     </message>
@@ -4196,22 +4282,22 @@ Esta acción no se puede deshacer.</numerusform>
       <translation>GameHQ %1 está disponible.</translation>
     </message>
     <message id="gamehq.update.versions">
-      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="958"></location>
+      <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="963"></location>
       <source>VERSIONS</source>
       <translation>Las versiones</translation>
     </message>
     <message id="gamehq.update.view_release_notes">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="226"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="228"></location>
       <source>View release notes</source>
       <translation>Ver las notas de liberación</translation>
     </message>
     <message id="gamehq.update.view_update">
-      <location filename="src/ui/qml/components/UpdateBanner.qml" line="151"></location>
+      <location filename="src/ui/qml/components/UpdateBanner.qml" line="159"></location>
       <source>View update</source>
       <translation>Ver actualización</translation>
     </message>
     <message id="gamehq.update.waiting_for_capture">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="179"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
       <source>Waiting for capture work to finish safely...</source>
       <translation>Esperando a que el trabajo de captura termine con seguridad...</translation>
     </message>

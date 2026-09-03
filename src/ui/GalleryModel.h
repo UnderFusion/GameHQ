@@ -33,6 +33,7 @@ public:
     // from QML instead of through AppController.
     Q_INVOKABLE void setFilter(const QString& category, int gameId = -1);
     Q_INVOKABLE void refresh();
+    Q_INVOKABLE void retranslate();
     Q_INVOKABLE void toggleFavorite(int row);
     const CaptureRecord* record(int row) const;
 
@@ -48,6 +49,7 @@ signals:
     void filterChanged();
 
 private:
+    static QString formattedDate(const QString& isoDate);
     CaptureDatabase* m_db;
     QString m_category = QStringLiteral("all");
     int m_gameId = -1;

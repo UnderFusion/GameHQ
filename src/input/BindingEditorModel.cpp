@@ -8,6 +8,7 @@
 #include "storage/CaptureDatabase.h"
 
 #include <QHash>
+#include <QLocale>
 #include <QSet>
 #include <QVariantMap>
 #include <utility>
@@ -444,11 +445,18 @@ QString BindingEditorModel::conflictMessageFor(
         || partnerGesture.kind == GestureSpec::Kind::Press) {
         const QString timed = targetGesture.kind == GestureSpec::Kind::Press
             ? partnerGesture.label() : targetGesture.label();
-        return QStringLiteral("%1 uses Press for %2. It cannot be distinguished from %3 "
-                              "in this context without changing its button-down behavior.")
+        return NativeText::get(
+            //: Binding conflict; %1 is the control, %2 the existing action, and %3 the requested gesture.
+            //% "%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior."
+            QT_TRID_NOOP("gamehq.input.conflict.press_timed"),
+            "%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.")
             .arg(displayLabel, otherLabel, timed);
     }
-    return QStringLiteral("%1 · %2 is already assigned to %3 in this context.")
+    return NativeText::get(
+        //: Binding conflict; %1 is the control, %2 the gesture, and %3 the existing action.
+        //% "%1 · %2 is already assigned to %3 in this context."
+        QT_TRID_NOOP("gamehq.input.conflict.already_assigned"),
+        "%1 · %2 is already assigned to %3 in this context.")
         .arg(displayLabel, targetGesture.label(), otherLabel);
 }
 
@@ -459,18 +467,21 @@ QString BindingEditorModel::compatibilityMessageFor(
     const QString existingLabel = existingAction ? existingAction->label
                                                   : change.conversionSource.actionId;
     const GestureSpec requested = change.target.gesture();
-    QString consequence = QStringLiteral("%1 will then activate after the button is released")
-                              .arg(existingLabel);
     if (requested.kind == GestureSpec::Kind::Tap && requested.tapCount >= 2) {
-        consequence += QStringLiteral(" and may wait up to %1 ms to rule out the %2 action")
-                           .arg(m_runtime->timing().multiTapIntervalMs)
-                           .arg(requested.label());
+        return NativeText::get(
+            //: Full binding-compatibility explanation; %1 control, %2 existing action, %3 gesture, %4 locale-formatted milliseconds.
+            //% "%1 currently activates %2 immediately when the button is pressed.\n\nTo also use %1 for %3, GameHQ must change %2 from Press to Single tap.\n\n%2 will then activate after the button is released and may wait up to %4 ms to rule out the %3 action."
+            QT_TRID_NOOP("gamehq.input.compatibility.convert_press_with_wait"),
+            "%1 currently activates %2 immediately when the button is pressed.\n\nTo also use %1 for %3, GameHQ must change %2 from Press to Single tap.\n\n%2 will then activate after the button is released and may wait up to %4 ms to rule out the %3 action.")
+            .arg(displayLabel, existingLabel, requested.label(),
+                 QLocale().toString(m_runtime->timing().multiTapIntervalMs));
     }
-    consequence += QLatin1Char('.');
-    return QStringLiteral(
-        "%1 currently activates %2 immediately when the button is pressed.\n\n"
-        "To also use %1 for %3, GameHQ must change %2 from Press to Single tap.\n\n%4")
-        .arg(displayLabel, existingLabel, requested.label(), consequence);
+    return NativeText::get(
+        //: Full binding-compatibility explanation; %1 control, %2 existing action, %3 gesture.
+        //% "%1 currently activates %2 immediately when the button is pressed.\n\nTo also use %1 for %3, GameHQ must change %2 from Press to Single tap.\n\n%2 will then activate after the button is released."
+        QT_TRID_NOOP("gamehq.input.compatibility.convert_press"),
+        "%1 currently activates %2 immediately when the button is pressed.\n\nTo also use %1 for %3, GameHQ must change %2 from Press to Single tap.\n\n%2 will then activate after the button is released.")
+        .arg(displayLabel, existingLabel, requested.label());
 }
 
 bool BindingEditorModel::captureInput(const QString& deviceGroup, const QString& triggerCode,
@@ -563,15 +574,27 @@ QString BindingEditorModel::noticeTextFor(BindingRelation::Kind kind,
     switch (kind) {
     case BindingRelation::Kind::ContextOverride:
         // Saved, but the user should know one of the two only runs in context.
-        return QStringLiteral("%1 replaces %2 while %3 is active. Both are saved.")
+        return NativeText::get(
+            //: Non-blocking binding notice; %1 and %2 are actions and %3 is the active scope.
+            //% "%1 replaces %2 while %3 is active. Both are saved."
+            QT_TRID_NOOP("gamehq.input.relation.context_override"),
+            "%1 replaces %2 while %3 is active. Both are saved.")
             .arg(targetAction->label, partnerAction->label,
                  scopeLabel(targetAction->scope == ActionCatalog::Scope::Global
                                 ? partnerAction->scope : targetAction->scope));
     case BindingRelation::Kind::Redundant:
-        return QStringLiteral("%1 already does the same thing here. The duplicate has no effect.")
+        return NativeText::get(
+            //: Non-blocking binding notice; %1 is the existing action.
+            //% "%1 already does the same thing here. The duplicate has no effect."
+            QT_TRID_NOOP("gamehq.input.relation.redundant"),
+            "%1 already does the same thing here. The duplicate has no effect.")
             .arg(partnerAction->label);
     case BindingRelation::Kind::SharedGesture:
-        return QStringLiteral("%1 is shared: %2 = %3, %4 = %5.")
+        return NativeText::get(
+            //: Non-blocking binding notice; %1 control, %2/%4 gestures, %3/%5 actions.
+            //% "%1 is shared: %2 = %3, %4 = %5."
+            QT_TRID_NOOP("gamehq.input.relation.shared_gesture"),
+            "%1 is shared: %2 = %3, %4 = %5.")
             .arg(displayLabel,
                  gestureLabel(target), targetAction->label,
                  gestureLabel(partner), partnerAction->label);
