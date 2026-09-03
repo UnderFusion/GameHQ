@@ -1,0 +1,529 @@
+{
+  "schema_version": 1,
+  "kind": "release-publication",
+  "version": "0.7.6",
+  "date": "2026-08-31",
+  "source_locale": "en-US",
+  "default_locale": "en-US",
+  "localization_policy": "fallback-allowed",
+  "release_source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+  "release_body": {
+    "filename": "RELEASE_BODY.md",
+    "size": 3226,
+    "sha256": "b48454ce7be53d3f6e5926b3ee1a988ae2147e4371e36bfb6fd7231100a9cb33"
+  },
+  "assets": [
+    {
+      "canonical_locale": "en-US",
+      "requested_locale": "en-US",
+      "effective_locale": "en-US",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "English (United States)",
+      "language_native_name": "English",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.en-US.md",
+      "size": 1005,
+      "sha256": "114e0b5e26f95272f2f4c4dad4a556e85d56f526080dbf6b0b84c3d30ec728a3",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hans",
+      "requested_locale": "zh-Hans",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Simplified)",
+      "language_native_name": "简体中文",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.zh-Hans.md",
+      "size": 1195,
+      "sha256": "6a2ff032d02ab1ecd543cf5ce510fc99f3fb54c3c4e4347a85416033a7e14c30",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ru-RU",
+      "requested_locale": "ru-RU",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Russian",
+      "language_native_name": "Русский",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.ru-RU.md",
+      "size": 1182,
+      "sha256": "e980ee8b29c88625d5c73c83db6b3fb9015893b74c14914d068da0ca6588723b",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-ES",
+      "requested_locale": "es-ES",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish",
+      "language_native_name": "Español",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.es-ES.md",
+      "size": 1182,
+      "sha256": "698347d8a9734ee4cf06991092ee2b35c5e95034adc5dbef79c004ce65eb86a5",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pt-BR",
+      "requested_locale": "pt-BR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Portuguese (Brazil)",
+      "language_native_name": "Português (Brasil)",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.pt-BR.md",
+      "size": 1194,
+      "sha256": "3786a222825b69cf70d9a8cadf6c3f1dd5e1eda1d990fe5001460b4b298e92c2",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "de-DE",
+      "requested_locale": "de-DE",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "German",
+      "language_native_name": "Deutsch",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.de-DE.md",
+      "size": 1181,
+      "sha256": "d13c02dc41b5aacb2f33c9669462b41bb73f5172b3c6b0d6ca6d5d9fed3d1605",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ja-JP",
+      "requested_locale": "ja-JP",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Japanese",
+      "language_native_name": "日本語",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.ja-JP.md",
+      "size": 1183,
+      "sha256": "1627192cd3941b206c6e59a617d1e5242854a491edd5f1e983006ac5d66a4842",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "fr-FR",
+      "requested_locale": "fr-FR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "French",
+      "language_native_name": "Français",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.fr-FR.md",
+      "size": 1181,
+      "sha256": "039c42885d69c5951fdedcc2e4827085e0925a1cea2ff4e5afffdf1dcd267cc5",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pl-PL",
+      "requested_locale": "pl-PL",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Polish",
+      "language_native_name": "Polski",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.pl-PL.md",
+      "size": 1181,
+      "sha256": "73140333e382180634250d56c4952acf63efbad59caaec79e17a89f5db9fe7a3",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ko-KR",
+      "requested_locale": "ko-KR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Korean",
+      "language_native_name": "한국어",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.ko-KR.md",
+      "size": 1181,
+      "sha256": "301cd2247cfe78dd14a2cb8dcb8548795cfd813e0b0b5744493059929eaf9be5",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hant",
+      "requested_locale": "zh-Hant",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Traditional)",
+      "language_native_name": "繁體中文",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.zh-Hant.md",
+      "size": 1196,
+      "sha256": "c922dfd3f6ea495ba20063b051ea899c4378f98e2b03478c3293f23cd7de03c6",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "tr-TR",
+      "requested_locale": "tr-TR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Turkish",
+      "language_native_name": "Türkçe",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.tr-TR.md",
+      "size": 1182,
+      "sha256": "849ab6d3b78b0c75f79de51dadbf2ae9d39b552b2c984a64da496a3dff2dc64f",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "th-TH",
+      "requested_locale": "th-TH",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Thai",
+      "language_native_name": "ไทย",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.th-TH.md",
+      "size": 1179,
+      "sha256": "e8061725c54e4123a29a41696df7fc3f5dc547797a2c08b734e08873631a3e14",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-419",
+      "requested_locale": "es-419",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish (Latin America)",
+      "language_native_name": "Español (Latinoamérica)",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.es-419.md",
+      "size": 1198,
+      "sha256": "7b03495b1702bf1793d80877b250450ec564a5442c78527e37aa39813447d6d7",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "uk-UA",
+      "requested_locale": "uk-UA",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Ukrainian",
+      "language_native_name": "Українська",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.uk-UA.md",
+      "size": 1184,
+      "sha256": "42ba336088091edfa03973f9390d557a17260dc82da7a2bedb25bf85c7ba575a",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "it-IT",
+      "requested_locale": "it-IT",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Italian",
+      "language_native_name": "Italiano",
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "filename": "release-notes.it-IT.md",
+      "size": 1182,
+      "sha256": "55fef83fbe7b708d231462c51dd49125b4b8e6f072d85216a58a78a230d59252",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03"
+          ]
+        },
+        {
+          "section_id": "diagnostics-reliability",
+          "item_ids": [
+            "diagnostics-reliability-01"
+          ]
+        }
+      ]
+    }
+  ]
+}

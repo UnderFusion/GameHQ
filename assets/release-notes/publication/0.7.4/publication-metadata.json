@@ -1,0 +1,545 @@
+{
+  "schema_version": 1,
+  "kind": "release-publication",
+  "version": "0.7.4",
+  "date": "2026-08-07",
+  "source_locale": "en-US",
+  "default_locale": "en-US",
+  "localization_policy": "fallback-allowed",
+  "release_source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+  "release_body": {
+    "filename": "RELEASE_BODY.md",
+    "size": 3093,
+    "sha256": "edb6fc4390f2c99e09c8c60151761b2977b52b1c268d44f5eb98d4afbb6237ce"
+  },
+  "assets": [
+    {
+      "canonical_locale": "en-US",
+      "requested_locale": "en-US",
+      "effective_locale": "en-US",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "English (United States)",
+      "language_native_name": "English",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.en-US.md",
+      "size": 872,
+      "sha256": "4b4e5d71d7cf022bbd1c44c72d7feb5040c3f71c217e160150efeb61f3a94921",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hans",
+      "requested_locale": "zh-Hans",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Simplified)",
+      "language_native_name": "简体中文",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.zh-Hans.md",
+      "size": 1062,
+      "sha256": "8bdd87cbe95361e269b3dbe2371a4949a2c84f94fc10c37c537475432bed4af6",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ru-RU",
+      "requested_locale": "ru-RU",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Russian",
+      "language_native_name": "Русский",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.ru-RU.md",
+      "size": 1049,
+      "sha256": "60674e3f7783854d0dcb2cc294c2c3864901c02b7df7d44ced905a82968a8a7e",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-ES",
+      "requested_locale": "es-ES",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish",
+      "language_native_name": "Español",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.es-ES.md",
+      "size": 1049,
+      "sha256": "66effc68c0bfc94fc24c8401ad4b1cb7280ee8b6a5dbc023ecab2d43e2e01f64",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pt-BR",
+      "requested_locale": "pt-BR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Portuguese (Brazil)",
+      "language_native_name": "Português (Brasil)",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.pt-BR.md",
+      "size": 1061,
+      "sha256": "6d4a19f2271ff5808f06b50d85a2b59804877e3c4f2ea917a5ca025a57a036bc",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "de-DE",
+      "requested_locale": "de-DE",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "German",
+      "language_native_name": "Deutsch",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.de-DE.md",
+      "size": 1048,
+      "sha256": "ffad3ae7067a46ee570f5c181f45fac3249fd0cf0269d8ad01649bfe7c2922f8",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ja-JP",
+      "requested_locale": "ja-JP",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Japanese",
+      "language_native_name": "日本語",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.ja-JP.md",
+      "size": 1050,
+      "sha256": "04ad0836a9996a5c22f018fa688859a6851854721654e6d83d36012c5d2cbc4b",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "fr-FR",
+      "requested_locale": "fr-FR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "French",
+      "language_native_name": "Français",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.fr-FR.md",
+      "size": 1048,
+      "sha256": "93179eab505b0a1b27e8430c83457b3fbd9aa60b6a9e8b0690d6016d282cacef",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pl-PL",
+      "requested_locale": "pl-PL",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Polish",
+      "language_native_name": "Polski",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.pl-PL.md",
+      "size": 1048,
+      "sha256": "5269d5c35a6e9f86ae1a14e0b1d2907ae1ed5db4ff7e46495a62f67ced474cec",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ko-KR",
+      "requested_locale": "ko-KR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Korean",
+      "language_native_name": "한국어",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.ko-KR.md",
+      "size": 1048,
+      "sha256": "90d609a6e33efd28b3536fac4045c339a6744a4bcf3563a6ac24a01e42093679",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hant",
+      "requested_locale": "zh-Hant",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Traditional)",
+      "language_native_name": "繁體中文",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.zh-Hant.md",
+      "size": 1063,
+      "sha256": "6b0207891cb5d2e7d3e33a6fe0aea621d7458101c4563c4bbd3e5fcd9afe9ba4",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "tr-TR",
+      "requested_locale": "tr-TR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Turkish",
+      "language_native_name": "Türkçe",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.tr-TR.md",
+      "size": 1049,
+      "sha256": "b733e79c17266e356f647ad013d8b828debe9dd668bedda67f66ec2e92a2156c",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "th-TH",
+      "requested_locale": "th-TH",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Thai",
+      "language_native_name": "ไทย",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.th-TH.md",
+      "size": 1046,
+      "sha256": "ab3675703db884d0aa0310b9b6406e230ad26bb0bfeb1dc1ac4c525d2ed9e617",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-419",
+      "requested_locale": "es-419",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish (Latin America)",
+      "language_native_name": "Español (Latinoamérica)",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.es-419.md",
+      "size": 1065,
+      "sha256": "c5fc9e58a7ce2ed2468e5670a98b157e1f6533f894cd77a174a3d4c7ff0d8fb2",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "uk-UA",
+      "requested_locale": "uk-UA",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Ukrainian",
+      "language_native_name": "Українська",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.uk-UA.md",
+      "size": 1051,
+      "sha256": "e6b3d2a59b29e7532869df3a9bc1256f013b39cb9ea43226f2e06b40e995bc4a",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "it-IT",
+      "requested_locale": "it-IT",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Italian",
+      "language_native_name": "Italiano",
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "filename": "release-notes.it-IT.md",
+      "size": 1049,
+      "sha256": "66fc280cfc04c45fc0a2af7d61da930503bc24f10afefc9bc84950166e0c98af",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "structure": [
+        {
+          "section_id": "what-s-new",
+          "item_ids": [
+            "what-s-new-01",
+            "what-s-new-02",
+            "what-s-new-03",
+            "what-s-new-04"
+          ]
+        },
+        {
+          "section_id": "notes",
+          "item_ids": [
+            "notes-01"
+          ]
+        }
+      ]
+    }
+  ]
+}

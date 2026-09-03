@@ -747,3 +747,16 @@ add_test(NAME tst_i18nselective
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_selective_translation.py"
         --lupdate "$<TARGET_FILE:Qt6::lupdate>")
 set_tests_properties(tst_i18nselective PROPERTIES TIMEOUT 120)
+
+# p6-1: the versioned release-note source contract and its generated bundles.
+add_test(NAME tst_i18nreleasenotes
+    COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_SOURCE_DIR}/tools/i18n/test_release_notes_generation.py")
+set_tests_properties(tst_i18nreleasenotes PROPERTIES TIMEOUT 120)
+
+# p6-4: publication documents are deterministic outputs of the same source and
+# never an authoring source or an update-trust input.
+add_test(NAME tst_i18npublication
+    COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_SOURCE_DIR}/tools/i18n/test_release_publication.py")
+set_tests_properties(tst_i18npublication PROPERTIES TIMEOUT 120)

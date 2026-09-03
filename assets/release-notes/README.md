@@ -36,3 +36,32 @@ python tools/i18n/generate_release_notes.py --check
 Generation also writes `generated/release-notes.index.json`. The application
 uses its exact locale filenames, byte sizes, SHA-256 hashes, current version,
 and per-document source integrity before presenting any bundle.
+
+## Publication artifacts
+
+`publication/<version>/` holds the offline GitHub-release artifacts for every
+released version. They are **outputs only**: never edit them, never treat them
+as an authoring source, and never use them as an update-authorization,
+signature, version-selection, download, or installation input.
+
+```powershell
+python tools/i18n/generate_release_publication.py
+python tools/i18n/generate_release_publication.py --check
+python tools/i18n/generate_release_publication.py --version 0.7.6
+```
+
+Each version directory contains:
+
+- `release-notes.<locale>.md` for all sixteen production locales;
+- `RELEASE_BODY.md`, the concise English release body plus an index of the
+  locale assets;
+- `publication-metadata.json`, listing per asset the canonical, requested, and
+  effective locale, the fallback state and reason, the version, date, filename,
+  byte size, SHA-256, the release source integrity, and the stable section and
+  item IDs.
+
+A document renders from exactly one source document, so it is never part
+translated and part English. Where a version has no reviewed translation, the
+locale asset is still emitted, carries the complete English text, and states in
+English that it is the original English release note. `CHANGELOG.md` remains the
+authored English cumulative record and is never generated from these artifacts.

@@ -1,0 +1,1489 @@
+{
+  "schema_version": 1,
+  "kind": "release-publication",
+  "version": "0.7.3",
+  "date": "2026-08-05",
+  "source_locale": "en-US",
+  "default_locale": "en-US",
+  "localization_policy": "fallback-allowed",
+  "release_source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+  "release_body": {
+    "filename": "RELEASE_BODY.md",
+    "size": 14598,
+    "sha256": "d94bd80bfacdbc20830d0f2055750994e61f1e3ebb15faab0e28f01343b87953"
+  },
+  "assets": [
+    {
+      "canonical_locale": "en-US",
+      "requested_locale": "en-US",
+      "effective_locale": "en-US",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "English (United States)",
+      "language_native_name": "English",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.en-US.md",
+      "size": 12377,
+      "sha256": "f654a826b0ed5468d730c184ff67658066056ad3498362166d8eb8527d819f02",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hans",
+      "requested_locale": "zh-Hans",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Simplified)",
+      "language_native_name": "简体中文",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.zh-Hans.md",
+      "size": 12567,
+      "sha256": "476cfcc75bc057193948cb1857bce9190920bb1bec72ff551d06799562325144",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ru-RU",
+      "requested_locale": "ru-RU",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Russian",
+      "language_native_name": "Русский",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.ru-RU.md",
+      "size": 12554,
+      "sha256": "d9dff4201f72c949c42e3d34dcfb75c745b0e90c7d86b1544da055cddea33e17",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-ES",
+      "requested_locale": "es-ES",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish",
+      "language_native_name": "Español",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.es-ES.md",
+      "size": 12554,
+      "sha256": "1b0534ace851f89d83ffb26b754a031b799b8a7902a7a71ce14dff12ce679abd",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pt-BR",
+      "requested_locale": "pt-BR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Portuguese (Brazil)",
+      "language_native_name": "Português (Brasil)",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.pt-BR.md",
+      "size": 12566,
+      "sha256": "ef033f47f6e41db75d29c0aad0f3908b1ba95156744fc6085fa8c2abd9488ae0",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "de-DE",
+      "requested_locale": "de-DE",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "German",
+      "language_native_name": "Deutsch",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.de-DE.md",
+      "size": 12553,
+      "sha256": "64b35be5abb03a68e85e61acb22ae88854004f2b6ac6915519bcaa15df8c9f78",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ja-JP",
+      "requested_locale": "ja-JP",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Japanese",
+      "language_native_name": "日本語",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.ja-JP.md",
+      "size": 12555,
+      "sha256": "10707e70912fe9b46a7b46114a3a5131d374b425b0d8b2581fcd99dfc911a60d",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "fr-FR",
+      "requested_locale": "fr-FR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "French",
+      "language_native_name": "Français",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.fr-FR.md",
+      "size": 12553,
+      "sha256": "132512a6603c3d812d9a6d333a5515fee6749402f45f0d43509348a9074bc33f",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pl-PL",
+      "requested_locale": "pl-PL",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Polish",
+      "language_native_name": "Polski",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.pl-PL.md",
+      "size": 12553,
+      "sha256": "068c314c0f661c7e3038e48af961f9719f870507dc830fa9c981de72dd571cb4",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ko-KR",
+      "requested_locale": "ko-KR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Korean",
+      "language_native_name": "한국어",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.ko-KR.md",
+      "size": 12553,
+      "sha256": "1d2eb5f64e5da0e5c9f3cf65024c98db6e3a60724dc725b2fc5eef548a4d7394",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hant",
+      "requested_locale": "zh-Hant",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Traditional)",
+      "language_native_name": "繁體中文",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.zh-Hant.md",
+      "size": 12568,
+      "sha256": "2b19737ebac4f2ddf33de7fa5c104909106c033e41ed48129ed0773411096b18",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "tr-TR",
+      "requested_locale": "tr-TR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Turkish",
+      "language_native_name": "Türkçe",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.tr-TR.md",
+      "size": 12554,
+      "sha256": "a2a61ed659478b31c6122d14c89c9c6fdb4db665d2283708a59431d246531721",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "th-TH",
+      "requested_locale": "th-TH",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Thai",
+      "language_native_name": "ไทย",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.th-TH.md",
+      "size": 12551,
+      "sha256": "0d801a29bc16510b3f953f303b5420307e0fee41add43edcbc4938c44abd3498",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-419",
+      "requested_locale": "es-419",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish (Latin America)",
+      "language_native_name": "Español (Latinoamérica)",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.es-419.md",
+      "size": 12570,
+      "sha256": "9b4e4275379475914d4f394c5d47e9b16d4a621d699f90e3509bf90972465665",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "uk-UA",
+      "requested_locale": "uk-UA",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Ukrainian",
+      "language_native_name": "Українська",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.uk-UA.md",
+      "size": 12556,
+      "sha256": "77aa75e77bb51fc962c1b103d87a3e2b31903b373251e644f677810528d9aab1",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "it-IT",
+      "requested_locale": "it-IT",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Italian",
+      "language_native_name": "Italiano",
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "filename": "release-notes.it-IT.md",
+      "size": 12554,
+      "sha256": "ffabbd30347b66b309964d87e442178d753f247d2ed517ff8da1a80078eb12f9",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "structure": [
+        {
+          "section_id": "highlights",
+          "item_ids": [
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "added",
+          "item_ids": [
+            "added-01",
+            "added-02",
+            "added-03",
+            "added-04",
+            "added-05",
+            "added-06",
+            "added-07",
+            "added-08",
+            "added-09",
+            "added-10",
+            "added-11",
+            "added-12",
+            "added-13",
+            "added-14",
+            "added-15"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-01",
+            "changed-02",
+            "changed-03",
+            "changed-04",
+            "changed-05",
+            "changed-06"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-01",
+            "fixed-02",
+            "fixed-03",
+            "fixed-04",
+            "fixed-05",
+            "fixed-06",
+            "fixed-07",
+            "fixed-08",
+            "fixed-09",
+            "fixed-10",
+            "fixed-11",
+            "fixed-12",
+            "fixed-13",
+            "fixed-14",
+            "fixed-15",
+            "fixed-16",
+            "fixed-17",
+            "fixed-18",
+            "fixed-19",
+            "fixed-20"
+          ]
+        },
+        {
+          "section_id": "reliability",
+          "item_ids": [
+            "reliability-01",
+            "reliability-02",
+            "reliability-03"
+          ]
+        }
+      ]
+    }
+  ]
+}
