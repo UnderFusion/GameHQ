@@ -4653,6 +4653,10 @@
       "domain": "application",
       "locations": [
         {
+          "file": "src/ui/qml/components/DesktopSidebar.qml",
+          "line": 158
+        },
+        {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
           "line": 118
         }
@@ -7268,7 +7272,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 88
+          "line": 89
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7289,7 +7293,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 131
+          "line": 132
         },
         {
           "file": "src/ui/qml/components/HelpDialog.qml",
@@ -7310,7 +7314,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 121
+          "line": 122
         }
       ],
       "plural": false,
@@ -7318,6 +7322,25 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "6264d1c9f07783289ab12c97c4ac107bcdde9f7a57672af7b493f964a5c7c95c"
+    },
+    {
+      "id": "gamehq.navigation.support_gamehq",
+      "source": "Support GameHQ",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/DesktopSidebar.qml",
+          "line": 178
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "89af8f5819b4816cd95d8dfb847a1efecb676a0403b9190776e093ee6452bb78"
     },
     {
       "id": "gamehq.notification.replay_failed.reason",
@@ -13392,7 +13415,7 @@
       "locations": [
         {
           "file": "src/main.cpp",
-          "line": 222
+          "line": 238
         }
       ],
       "plural": false,
@@ -13409,7 +13432,7 @@
       "locations": [
         {
           "file": "src/main.cpp",
-          "line": 189
+          "line": 205
         }
       ],
       "plural": false,
@@ -13428,7 +13451,7 @@
       "locations": [
         {
           "file": "src/main.cpp",
-          "line": 201
+          "line": 217
         }
       ],
       "plural": false,
@@ -13447,7 +13470,7 @@
       "locations": [
         {
           "file": "src/main.cpp",
-          "line": 83
+          "line": 85
         }
       ],
       "plural": false,
@@ -13464,11 +13487,11 @@
       "locations": [
         {
           "file": "src/main.cpp",
-          "line": 111
+          "line": 113
         },
         {
           "file": "src/main.cpp",
-          "line": 117
+          "line": 119
         }
       ],
       "plural": false,
@@ -13485,7 +13508,7 @@
       "locations": [
         {
           "file": "src/main.cpp",
-          "line": 97
+          "line": 99
         }
       ],
       "plural": false,
@@ -13504,7 +13527,7 @@
       "locations": [
         {
           "file": "src/main.cpp",
-          "line": 104
+          "line": 106
         }
       ],
       "plural": false,
@@ -13523,7 +13546,7 @@
       "locations": [
         {
           "file": "src/main.cpp",
-          "line": 183
+          "line": 199
         }
       ],
       "plural": false,

@@ -408,6 +408,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -1245,6 +1246,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -2069,7 +2071,6 @@
         "gamehq.input.relation.redundant",
         "gamehq.input.relation.shared_gesture",
         "gamehq.library.folder_dialog.title",
-        "gamehq.navigation.about",
         "gamehq.navigation.category.all",
         "gamehq.navigation.category.clips",
         "gamehq.navigation.category.favorites",
@@ -2516,7 +2517,10 @@
       ],
       "stale": [],
       "obsolete": [],
-      "unchanged": []
+      "unchanged": [
+        "gamehq.navigation.about",
+        "gamehq.navigation.support_gamehq"
+      ]
     },
     "es-ES": {
       "catalog": "i18n/app/gamehq_es_ES.ts",
@@ -2923,6 +2927,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -3762,6 +3767,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -4585,7 +4591,6 @@
         "gamehq.input.relation.redundant",
         "gamehq.input.relation.shared_gesture",
         "gamehq.library.folder_dialog.title",
-        "gamehq.navigation.about",
         "gamehq.navigation.category.all",
         "gamehq.navigation.category.clips",
         "gamehq.navigation.category.favorites",
@@ -5032,7 +5037,10 @@
       ],
       "stale": [],
       "obsolete": [],
-      "unchanged": []
+      "unchanged": [
+        "gamehq.navigation.about",
+        "gamehq.navigation.support_gamehq"
+      ]
     },
     "ja-JP": {
       "catalog": "i18n/app/gamehq_ja_JP.ts",
@@ -5439,6 +5447,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -6278,6 +6287,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -7117,6 +7127,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -7956,6 +7967,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -8795,6 +8807,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -9618,7 +9631,6 @@
         "gamehq.input.relation.redundant",
         "gamehq.input.relation.shared_gesture",
         "gamehq.library.folder_dialog.title",
-        "gamehq.navigation.about",
         "gamehq.navigation.category.all",
         "gamehq.navigation.category.clips",
         "gamehq.navigation.category.favorites",
@@ -10065,7 +10077,10 @@
       ],
       "stale": [],
       "obsolete": [],
-      "unchanged": []
+      "unchanged": [
+        "gamehq.navigation.about",
+        "gamehq.navigation.support_gamehq"
+      ]
     },
     "tr-TR": {
       "catalog": "i18n/app/gamehq_tr_TR.ts",
@@ -10472,6 +10487,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -11295,7 +11311,6 @@
         "gamehq.input.relation.redundant",
         "gamehq.input.relation.shared_gesture",
         "gamehq.library.folder_dialog.title",
-        "gamehq.navigation.about",
         "gamehq.navigation.category.all",
         "gamehq.navigation.category.clips",
         "gamehq.navigation.category.favorites",
@@ -11742,7 +11757,10 @@
       ],
       "stale": [],
       "obsolete": [],
-      "unchanged": []
+      "unchanged": [
+        "gamehq.navigation.about",
+        "gamehq.navigation.support_gamehq"
+      ]
     },
     "zh-Hans": {
       "catalog": "i18n/app/gamehq_zh_Hans.ts",
@@ -12149,6 +12167,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -12988,6 +13007,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",

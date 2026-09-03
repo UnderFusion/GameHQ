@@ -1323,6 +1323,7 @@
       <translation>%1 MB</translation>
     </message>
     <message id="gamehq.format.version_short">
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="158"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="118"></location>
       <source>v%1</source>
       <translation>v%1</translation>
@@ -2087,21 +2088,26 @@ Para também usar %1 com %3, o GameHQ precisa mudar %2 de Pressionar para Toque 
       <translation>Capturas de tela</translation>
     </message>
     <message id="gamehq.navigation.games">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="88"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="89"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="54"></location>
       <source>Games</source>
       <translation>Jogos</translation>
     </message>
     <message id="gamehq.navigation.help">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="131"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="132"></location>
       <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
       <source>Help</source>
       <translation>Ajuda</translation>
     </message>
     <message id="gamehq.navigation.settings">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="121"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="122"></location>
       <source>Settings</source>
       <translation>Configurações</translation>
+    </message>
+    <message id="gamehq.navigation.support_gamehq">
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="178"></location>
+      <source>Support GameHQ</source>
+      <translation>Apoie o GameHQ</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
       <location filename="src/app/App.cpp" line="280"></location>
@@ -3869,43 +3875,43 @@ Para também usar %1 com %3, o GameHQ precisa mudar %2 de Pressionar para Toque 
       <translation>Synthwave</translation>
     </message>
     <message id="gamehq.startup.portable_import.failed_title">
-      <location filename="src/main.cpp" line="222"></location>
+      <location filename="src/main.cpp" line="238"></location>
       <source>Portable import failed</source>
       <translation>Falha ao importar o perfil portátil</translation>
     </message>
     <message id="gamehq.startup.portable_import.installed_copy_required">
-      <location filename="src/main.cpp" line="189"></location>
+      <location filename="src/main.cpp" line="205"></location>
       <source>Run portable import from an installed copy of GameHQ.</source>
       <translation>Execute a importação portátil a partir de uma cópia instalada do GameHQ- Não .</translation>
     </message>
     <message id="gamehq.startup.portable_import.instance_running">
-      <location filename="src/main.cpp" line="201"></location>
+      <location filename="src/main.cpp" line="217"></location>
       <source>Another GameHQ instance is running, so the portable import cannot start.</source>
       <translation>Outro GameHQ A instância está a ser executada, por isso a importação portátil não pode ser iniciada.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_argument_incomplete">
-      <location filename="src/main.cpp" line="83"></location>
+      <location filename="src/main.cpp" line="85"></location>
       <source>The portable import parent-process argument is incomplete.</source>
       <translation>O argumento de importar portavel é incompleto.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_identifier_invalid">
-      <location filename="src/main.cpp" line="111"></location>
-      <location filename="src/main.cpp" line="117"></location>
+      <location filename="src/main.cpp" line="113"></location>
+      <location filename="src/main.cpp" line="119"></location>
       <source>The portable import parent-process identifier is invalid.</source>
       <translation>O identificador do processo pai de importação portátil é inválido.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_still_running">
-      <location filename="src/main.cpp" line="97"></location>
+      <location filename="src/main.cpp" line="99"></location>
       <source>The running GameHQ instance did not close in time.</source>
       <translation>A corrida GameHQ O caso não se encerrou a tempo.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_unverifiable">
-      <location filename="src/main.cpp" line="104"></location>
+      <location filename="src/main.cpp" line="106"></location>
       <source>GameHQ could not confirm that the previous instance has closed.</source>
       <translation>GameHQ Não conseguiu confirmar que a instância anterior foi encerrada.</translation>
     </message>
     <message id="gamehq.startup.portable_import.source_missing">
-      <location filename="src/main.cpp" line="183"></location>
+      <location filename="src/main.cpp" line="199"></location>
       <source>The portable import source folder is missing.</source>
       <translation>A pasta de origem de importação está faltando.</translation>
     </message>

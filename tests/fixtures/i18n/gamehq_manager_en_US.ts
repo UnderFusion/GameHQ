@@ -15,6 +15,10 @@
       <source>View full release notes</source>
       <translation>View full release notes</translation>
     </message>
+    <message id="gamehq.navigation.support_gamehq">
+      <source>Support GameHQ</source>
+      <translation>Support GameHQ</translation>
+    </message>
     <message id="gamehq.action.screenshot.label">
       <source>Screenshot</source>
       <translation>Screenshot</translation>

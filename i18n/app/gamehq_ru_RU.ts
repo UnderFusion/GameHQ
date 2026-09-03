@@ -1325,6 +1325,7 @@
       <translation>%1 МБ</translation>
     </message>
     <message id="gamehq.format.version_short">
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="158"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="118"></location>
       <source>v%1</source>
       <translation>v%1</translation>
@@ -2047,7 +2048,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.navigation.about">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="143"></location>
       <source>About</source>
-      <translation>О</translation>
+      <translation>О программе</translation>
     </message>
     <message id="gamehq.navigation.category.all">
       <location filename="src/ui/qml/Main.qml" line="153"></location>
@@ -2092,21 +2093,26 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Скриншоты</translation>
     </message>
     <message id="gamehq.navigation.games">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="88"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="89"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="54"></location>
       <source>Games</source>
       <translation>Игры</translation>
     </message>
     <message id="gamehq.navigation.help">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="131"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="132"></location>
       <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
       <source>Help</source>
       <translation>Помощь</translation>
     </message>
     <message id="gamehq.navigation.settings">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="121"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="122"></location>
       <source>Settings</source>
       <translation>Настройки</translation>
+    </message>
+    <message id="gamehq.navigation.support_gamehq">
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="178"></location>
+      <source>Support GameHQ</source>
+      <translation>Поддержать GameHQ</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
       <location filename="src/app/App.cpp" line="280"></location>
@@ -3876,43 +3882,43 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Synthwave</translation>
     </message>
     <message id="gamehq.startup.portable_import.failed_title">
-      <location filename="src/main.cpp" line="222"></location>
+      <location filename="src/main.cpp" line="238"></location>
       <source>Portable import failed</source>
       <translation>Не удалось импортировать переносной профиль</translation>
     </message>
     <message id="gamehq.startup.portable_import.installed_copy_required">
-      <location filename="src/main.cpp" line="189"></location>
+      <location filename="src/main.cpp" line="205"></location>
       <source>Run portable import from an installed copy of GameHQ.</source>
       <translation>Запустить портативный импорт с установленной копии GameHQ- Я не знаю .</translation>
     </message>
     <message id="gamehq.startup.portable_import.instance_running">
-      <location filename="src/main.cpp" line="201"></location>
+      <location filename="src/main.cpp" line="217"></location>
       <source>Another GameHQ instance is running, so the portable import cannot start.</source>
       <translation>Еще один GameHQ Инстанция запускается, поэтому портативный импорт не может быть запущен.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_argument_incomplete">
-      <location filename="src/main.cpp" line="83"></location>
+      <location filename="src/main.cpp" line="85"></location>
       <source>The portable import parent-process argument is incomplete.</source>
       <translation>Аргумент переносного импорта родительского процесса неполный.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_identifier_invalid">
-      <location filename="src/main.cpp" line="111"></location>
-      <location filename="src/main.cpp" line="117"></location>
+      <location filename="src/main.cpp" line="113"></location>
+      <location filename="src/main.cpp" line="119"></location>
       <source>The portable import parent-process identifier is invalid.</source>
       <translation>Идентификатор переносного импорта родительского процесса недействителен.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_still_running">
-      <location filename="src/main.cpp" line="97"></location>
+      <location filename="src/main.cpp" line="99"></location>
       <source>The running GameHQ instance did not close in time.</source>
       <translation>Бег GameHQ Случай не закрылся вовремя.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_unverifiable">
-      <location filename="src/main.cpp" line="104"></location>
+      <location filename="src/main.cpp" line="106"></location>
       <source>GameHQ could not confirm that the previous instance has closed.</source>
       <translation>GameHQ Не смог подтвердить, что предыдущая инстанция закрыта.</translation>
     </message>
     <message id="gamehq.startup.portable_import.source_missing">
-      <location filename="src/main.cpp" line="183"></location>
+      <location filename="src/main.cpp" line="199"></location>
       <source>The portable import source folder is missing.</source>
       <translation>Портативная папка источника импорта отсутствует.</translation>
     </message>

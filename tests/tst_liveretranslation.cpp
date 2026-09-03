@@ -106,6 +106,7 @@ void LiveRetranslationTest::repeatedSwitchesRefreshEveryRepresentativeSurfaceAto
             property string input: qsTrId("gamehq.settings.input.devices.title")
             property string gallery: qsTrId("gamehq.gallery.action.bulk_select")
             property string dialog: qsTrId("gamehq.gallery.delete_capture.title")
+            property string support: qsTrId("gamehq.navigation.support_gamehq")
             property string decimal: {
                 languageManager.translationRevision
                 return languageManager.formatDecimal(1234.5, 1)
@@ -167,6 +168,12 @@ void LiveRetranslationTest::repeatedSwitchesRefreshEveryRepresentativeSurfaceAto
         QCOMPARE(qmlObject->property("input").toString(), expected.input);
         QCOMPARE(qmlObject->property("gallery").toString(), expected.gallery);
         QCOMPARE(qmlObject->property("dialog").toString(), expected.dialog);
+        const QString expectedSupport = language == QLatin1String("pl-PL")
+                                            ? QStringLiteral("Wesprzyj GameHQ")
+                                        : language == QLatin1String("zh-Hans")
+                                            ? QStringLiteral("支持 GameHQ")
+                                            : QStringLiteral("Support GameHQ");
+        QCOMPARE(qmlObject->property("support").toString(), expectedSupport);
         const QLocale locale(language);
         QCOMPARE(qmlObject->property("decimal").toString(),
                  locale.toString(1234.5, 'f', 1));

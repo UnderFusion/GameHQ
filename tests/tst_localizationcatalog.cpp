@@ -171,6 +171,13 @@ QStringList promotedLaunchCatalogs()
     };
 }
 
+QStringList allLaunchCatalogs()
+{
+    QStringList catalogs = translatedCatalogs();
+    catalogs.append(promotedLaunchCatalogs());
+    return catalogs;
+}
+
 QSet<QString> translationIdsIn(const QStringList &paths)
 {
     const QRegularExpression pattern(
@@ -230,6 +237,7 @@ private slots:
     void p4FourCachedPresentationIsIdDriven();
     void p4FiveFormattingIdsCoverEveryLaunchLocale();
     void p4FiveFormattingUsesLocaleAwareSafeBoundaries();
+    void sidebarFooterStringsAndExternalLinkAreReleaseReady();
 };
 
 void LocalizationCatalogTest::productionEnglishCatalogCoversActiveIds()
@@ -316,10 +324,17 @@ void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndFallBackTo
         for (const QString& id : activeIds) {
             QVERIFY2(catalog.contains(id), qPrintable(catalogName + QStringLiteral(" missing ") + id));
             QCOMPARE(catalog[id].source, english[id].source);
-            QVERIFY2(catalog[id].unfinished,
-                     qPrintable(catalogName + QStringLiteral(" must await selective translation: ") + id));
-            QVERIFY2(catalog[id].translation.trimmed().isEmpty(),
-                     qPrintable(catalogName + QStringLiteral(" contains an unreviewed translation: ") + id));
+            const bool sidebarFooterId = id == QLatin1String("gamehq.navigation.about")
+                                         || id == QLatin1String("gamehq.navigation.support_gamehq");
+            if (sidebarFooterId) {
+                QVERIFY2(!catalog[id].unfinished && !catalog[id].translation.trimmed().isEmpty(),
+                         qPrintable(catalogName + QStringLiteral(" incomplete sidebar footer: ") + id));
+            } else {
+                QVERIFY2(catalog[id].unfinished,
+                         qPrintable(catalogName + QStringLiteral(" must await selective translation: ") + id));
+                QVERIFY2(catalog[id].translation.trimmed().isEmpty(),
+                         qPrintable(catalogName + QStringLiteral(" contains an unreviewed translation: ") + id));
+            }
         }
     }
 
@@ -342,9 +357,9 @@ void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndFallBackTo
 void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
 {
     const QSet<QString> ids = translationIdsIn(p4OneSourceFiles());
-    // Main.qml and SettingsView.qml are shared with p4-2 and now contribute
-    // 19 additional feature/dialog IDs to this source-file set.
-    QCOMPARE(ids.size(), 217);
+    // Main.qml and SettingsView.qml also contribute feature/dialog IDs owned
+    // by adjacent localization units to this shared source-file set.
+    QCOMPARE(ids.size(), 219);
     for (const QString &catalogName : translatedCatalogs()) {
         QString error;
         const auto catalog = readTsCatalog(
@@ -367,7 +382,7 @@ void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
 void LocalizationCatalogTest::migratedProductionQmlIdsCoverEveryLaunchLocale()
 {
     const QSet<QString> ids = translationIdsIn(productionQmlFiles());
-    QCOMPARE(ids.size(), 581);
+    QCOMPARE(ids.size(), 582);
 
     for (const QString &catalogName : translatedCatalogs()) {
         QString error;
@@ -586,6 +601,58 @@ void LocalizationCatalogTest::p4FiveFormattingUsesLocaleAwareSafeBoundaries()
     QVERIFY(!player.contains(QStringLiteral("+ \" / \" +")));
     QVERIFY(binding.contains(QStringLiteral("gamehq.input.compatibility.convert_press_with_wait")));
     QVERIFY(!binding.contains(QStringLiteral("QString consequence")));
+}
+
+void LocalizationCatalogTest::sidebarFooterStringsAndExternalLinkAreReleaseReady()
+{
+    const QStringList ids{QStringLiteral("gamehq.navigation.about"),
+                          QStringLiteral("gamehq.navigation.support_gamehq")};
+    for (const QString& catalogName : allLaunchCatalogs()) {
+        QString error;
+        const auto catalog = readTsCatalog(
+            QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
+        QVERIFY2(error.isEmpty(), qPrintable(catalogName + QStringLiteral(": ") + error));
+        for (const QString& id : ids) {
+            QVERIFY2(catalog.contains(id), qPrintable(catalogName + QStringLiteral(" missing ") + id));
+            const CatalogEntry& entry = catalog[id];
+            QVERIFY2(!entry.unfinished && !entry.translation.trimmed().isEmpty(),
+                     qPrintable(catalogName + QStringLiteral(" incomplete ") + id));
+        }
+    }
+
+    QString error;
+    const auto polish = readTsCatalog(
+        QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/gamehq_pl_PL.ts"), &error);
+    QVERIFY2(error.isEmpty(), qPrintable(error));
+    QCOMPARE(polish[QStringLiteral("gamehq.navigation.about")].translation,
+             QStringLiteral("Info"));
+    QCOMPARE(polish[QStringLiteral("gamehq.navigation.support_gamehq")].translation,
+             QStringLiteral("Wesprzyj GameHQ"));
+
+    QFile sidebar(QStringLiteral(GAMEHQ_SOURCE_DIR
+                                 "/src/ui/qml/components/DesktopSidebar.qml"));
+    QFile brand(QStringLiteral(GAMEHQ_SOURCE_DIR "/src/ui/qml/Brand.qml"));
+    QVERIFY(sidebar.open(QIODevice::ReadOnly));
+    QVERIFY(brand.open(QIODevice::ReadOnly));
+    const QString sidebarSource = QString::fromUtf8(sidebar.readAll());
+    const QString brandSource = QString::fromUtf8(brand.readAll());
+    const qsizetype aboutIndex = sidebarSource.indexOf(QStringLiteral("id: aboutRow"));
+    const qsizetype versionIndex = sidebarSource.indexOf(QStringLiteral("id: versionLabel"));
+    const qsizetype supportIndex = sidebarSource.indexOf(QStringLiteral("id: supportButton"));
+    QVERIFY(aboutIndex >= 0 && versionIndex > aboutIndex && supportIndex > versionIndex);
+    const QString supportSource = sidebarSource.mid(supportIndex);
+    QVERIFY(sidebarSource.contains(QStringLiteral("Layout.preferredWidth: 220")));
+    QVERIFY(supportSource.contains(QStringLiteral("Layout.fillWidth: true")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("glyph: \"\\u24d8\"")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("objectName: \"supportGameHqButton\"")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("Layout.preferredHeight: 36")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("Accessible.name: localizedLabel")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("ToolTip.text: localizedLabel")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("elide: Text.ElideRight")));
+    QVERIFY(sidebarSource.contains(
+        QStringLiteral("onClicked: root.externalUrlOpener(Brand.supportUrl)")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("Qt.openUrlExternally(url)")));
+    QCOMPARE(brandSource.count(QStringLiteral("https://ko-fi.com/underfusion")), 1);
 }
 
 void LocalizationCatalogTest::productionQmlHasNoHardcodedUserText()

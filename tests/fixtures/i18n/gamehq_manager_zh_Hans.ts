@@ -11,6 +11,10 @@
       <source>View full release notes</source>
       <translation>查看完整发行说明</translation>
     </message>
+    <message id="gamehq.navigation.support_gamehq">
+      <source>Support GameHQ</source>
+      <translation>支持 GameHQ</translation>
+    </message>
     <message id="gamehq.action.screenshot.label">
       <source>Screenshot</source>
       <translation>屏幕截图</translation>

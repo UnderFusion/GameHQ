@@ -15,4 +15,5 @@ QtObject {
     readonly property string issuesUrl: repositoryUrl + "/issues"
     readonly property string licenseUrl: repositoryUrl + "/blob/main/LICENSE"
     readonly property string securityUrl: repositoryUrl + "/blob/main/docs/security-and-privacy.md"
+    readonly property string supportUrl: "https://ko-fi.com/underfusion"
 }

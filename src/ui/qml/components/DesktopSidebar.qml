@@ -15,6 +15,7 @@ Rectangle {
     property string availableVersion: ""
     property bool sidebarFocused: false
     property int sidebarHoverIndex: 0
+    property var externalUrlOpener: function(url) { return Qt.openUrlExternally(url) }
 
     signal settingsRequested()
     signal helpRequested()
@@ -138,16 +139,84 @@ Rectangle {
         SidebarItem {
             id: aboutRow
             Layout.fillWidth: true
-            Layout.bottomMargin: Theme.s4
             //% "About"
             label: qsTrId("gamehq.navigation.about")
             glyph: "\u24d8"
-            trailingText: "v" + app.version
             trailingGlyph: root.updateAvailable || root.aboutUnread ? "\u25cf" : ""
             active: false
             sidebarHovered: root.sidebarFocused
                             && root.sidebarHoverIndex === root.categories.length + app.games.length + 2
             onClicked: root.aboutRequested()
+        }
+
+        Text {
+            id: versionLabel
+            Layout.fillWidth: true
+            Layout.leftMargin: Theme.s8
+            Layout.rightMargin: Theme.s8
+            //% "v%1"
+            text: qsTrId("gamehq.format.version_short").arg(app.version)
+            color: Theme.textFaint
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.fontCaption
+            horizontalAlignment: Text.AlignHCenter
+            elide: Text.ElideRight
+        }
+
+        Button {
+            id: supportButton
+            objectName: "supportGameHqButton"
+            Layout.fillWidth: true
+            Layout.preferredHeight: 36
+            Layout.topMargin: Theme.s4
+            Layout.bottomMargin: Theme.s4
+            leftPadding: Theme.s12
+            rightPadding: Theme.s12
+            activeFocusOnTab: true
+
+            //% "Support GameHQ"
+            readonly property string localizedLabel: qsTrId("gamehq.navigation.support_gamehq")
+            Accessible.name: localizedLabel
+            ToolTip.text: localizedLabel
+            ToolTip.visible: hovered
+            ToolTip.delay: 500
+            onClicked: root.externalUrlOpener(Brand.supportUrl)
+
+            background: Rectangle {
+                radius: Theme.radiusS
+                color: supportButton.down
+                       ? Qt.darker(Theme.danger, 1.18)
+                       : supportButton.hovered || supportButton.activeFocus
+                         ? Qt.lighter(Theme.danger, 1.08)
+                         : Theme.danger
+                border.width: supportButton.activeFocus ? 2 : 0
+                border.color: Theme.text
+            }
+
+            contentItem: Row {
+                spacing: Theme.s8
+
+                Text {
+                    id: supportGlyph
+                    text: "\u2615"
+                    color: Theme.textOnAccent
+                    font.pixelSize: Theme.fontBody
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                Text {
+                    width: Math.max(0, supportButton.availableWidth
+                                    - supportGlyph.implicitWidth - parent.spacing)
+                    text: supportButton.localizedLabel
+                    color: Theme.textOnAccent
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontCaption
+                    font.weight: Font.DemiBold
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+                }
+            }
         }
     }
 
