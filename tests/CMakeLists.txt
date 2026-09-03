@@ -761,6 +761,14 @@ add_test(NAME tst_i18npublication
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_release_publication.py")
 set_tests_properties(tst_i18npublication PROPERTIES TIMEOUT 120)
 
+# p6-5: one release-facing command verifies sources, generated bundles,
+# publication output, UTF-8 and integrity metadata without network access.
+add_test(NAME tst_releasenoteassets
+    COMMAND powershell.exe -NoProfile -ExecutionPolicy Bypass
+        -File "${CMAKE_SOURCE_DIR}/packaging/test-release-note-assets.ps1"
+        -PythonExecutable "${Python3_EXECUTABLE}")
+set_tests_properties(tst_releasenoteassets PROPERTIES TIMEOUT 180)
+
 # p7-3: the one-command locale lifecycle and its contributor guide. Every
 # mutating case runs against an isolated temporary root with a fixture locale.
 add_test(NAME tst_i18nlocalelifecycle

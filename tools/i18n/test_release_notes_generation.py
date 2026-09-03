@@ -6,10 +6,12 @@ from __future__ import annotations
 import copy
 import importlib.util
 import json
+import re
 import shutil
 import subprocess
 import tempfile
 import unittest
+from collections import Counter
 from pathlib import Path
 
 
@@ -17,6 +19,12 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCE_ROOT = ROOT / "assets" / "release-notes"
 HISTORY_FIXTURE = ROOT / "tools" / "i18n" / "fixtures" / "release-notes-history.en-US.json"
 OUTPUT_ROOT = SOURCE_ROOT / "generated"
+PUBLICATION_ROOT = SOURCE_ROOT / "publication"
+STRUCTURAL_TOKEN = re.compile(
+    r"https?://[^\s)]+|%[A-Za-z][A-Za-z0-9_]*%|"
+    r"\{[A-Za-z][A-Za-z0-9_.-]*\}|--[a-z0-9-]+|"
+    r"[A-Za-z0-9_.-]+\.(?:json|exe|zip|qm|ts|ps1)"
+)
 
 
 def load_generator():
@@ -167,6 +175,60 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
                 joined = " ".join(texts)
                 for protected in ("GameHQ", "Playnite", "Windows"):
                     self.assertIn(protected, joined, f"{locale} lost {protected}")
+
+    def test_launch_translations_preserve_structural_tokens(self) -> None:
+        manifest, locales, _ = GEN.load_contract(SOURCE_ROOT)
+        version = manifest["localization_launch"]["version"]
+        root = SOURCE_ROOT / "versions" / version
+        english = GEN.read_json(root / "en-US.json")
+        english_items = {
+            item["id"]: item["text"]
+            for section in english["sections"] for item in section["items"]
+        }
+        for locale in locales:
+            document = GEN.read_json(root / f"{locale}.json")
+            localized_items = {
+                item["id"]: item["text"]
+                for section in document["sections"] for item in section["items"]
+            }
+            self.assertEqual(english_items.keys(), localized_items.keys(), locale)
+            for item_id, source in english_items.items():
+                target = localized_items[item_id]
+                with self.subTest(locale=locale, item=item_id):
+                    self.assertEqual(Counter(STRUCTURAL_TOKEN.findall(source)),
+                                     Counter(STRUCTURAL_TOKEN.findall(target)))
+
+    def test_release_note_assets_are_strict_utf8_without_replacement_text(self) -> None:
+        roots = (SOURCE_ROOT / "versions", OUTPUT_ROOT, PUBLICATION_ROOT)
+        paths = sorted(path for root in roots for path in root.rglob("*") if path.is_file())
+        self.assertTrue(paths)
+        for path in paths:
+            with self.subTest(path=path.relative_to(ROOT).as_posix()):
+                text = path.read_bytes().decode("utf-8", errors="strict")
+                self.assertNotIn("\ufffd", text)
+
+    def test_release_note_presentation_is_not_an_update_authorization_input(self) -> None:
+        trust_roots = (ROOT / "src" / "updates", ROOT / "src" / "updater",
+                       ROOT / "tools" / "release-manifest")
+        forbidden = ("release-notes/generated", "publication-metadata",
+                     "app/ReleaseNotes.h", "loadVerifiedBundle")
+        paths = sorted(
+            path for root in trust_roots for path in root.rglob("*")
+            if path.is_file() and path.suffix in {".cpp", ".h", ".cs", ".csproj"}
+        )
+        self.assertTrue(paths)
+        for path in paths:
+            text = path.read_text(encoding="utf-8", errors="strict").replace("\\", "/")
+            with self.subTest(path=path.relative_to(ROOT).as_posix()):
+                self.assertFalse([needle for needle in forbidden if needle in text])
+
+        release_validation = (ROOT / "packaging" / "validate-release.ps1").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("test-release-note-assets.ps1", release_validation)
+        for test in ("releasenotes", "updatedownloader", "updatepreflight",
+                     "updateinstaller", "updatertransaction"):
+            self.assertIn(test, release_validation)
 
     def test_a_draft_launch_document_must_keep_a_null_date(self) -> None:
         manifest, locales, _ = GEN.load_contract(SOURCE_ROOT)

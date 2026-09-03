@@ -53,8 +53,12 @@ struct BundleFixture
 
     void replaceBundle(const QString &locale, const QJsonObject &bundle)
     {
+        replaceBundleBytes(locale, QJsonDocument(bundle).toJson(QJsonDocument::Indented));
+    }
+
+    void replaceBundleBytes(const QString &locale, const QByteArray &bytes)
+    {
         const QString filename = QStringLiteral("release-notes.%1.json").arg(locale);
-        const QByteArray bytes = QJsonDocument(bundle).toJson(QJsonDocument::Indented);
         bundles[filename] = bytes;
         QJsonObject indexRoot = QJsonDocument::fromJson(index).object();
         QJsonArray entries = indexRoot.value(QStringLiteral("bundles")).toArray();
@@ -100,6 +104,9 @@ private slots:
     void localeDatesAndOfflineHistorySurviveSwitches();
     void exposesTheFrozenReleasedHistoryWithoutTheLegacySource();
     void structuresGitHubMarkdownWithoutActiveContent();
+    void rejectsDateLessDraftDocumentsFromTheIndex();
+    void rejectsMalformedIndexRecords();
+    void fallsBackForCorruptLocalizedBytesAndFailsClosedForCorruptEnglish();
 };
 
 void ReleaseNotesTest::parsesStructuredPlainText()
@@ -438,6 +445,86 @@ GameHQ maintenance update.
     QCOMPARE(sanitized.value(QStringLiteral("text")).toString(),
              QStringLiteral("Release page and tracking image"));
     QVERIFY(!sanitized.value(QStringLiteral("text")).toString().contains(QStringLiteral("https")));
+}
+
+void ReleaseNotesTest::rejectsDateLessDraftDocumentsFromTheIndex()
+{
+    BundleFixture fixture;
+    QString error;
+    QVERIFY2(fixture.load(&error), qPrintable(error));
+
+    QJsonObject root = QJsonDocument::fromJson(fixture.index).object();
+    QJsonArray documents = root.value(QStringLiteral("documents")).toArray();
+    QJsonObject current = documents.first().toObject();
+    current.insert(QStringLiteral("date"), QJsonValue::Null);
+    documents.replace(0, current);
+    root.insert(QStringLiteral("documents"), documents);
+    fixture.index = QJsonDocument(root).toJson();
+
+    QVERIFY(!fixture.notes(QStringLiteral("en-US"), &error).isValid());
+    QVERIFY2(error.contains(QStringLiteral("document index is malformed")), qPrintable(error));
+}
+
+void ReleaseNotesTest::rejectsMalformedIndexRecords()
+{
+    const auto verifyRejected = [](auto mutate) {
+        BundleFixture fixture;
+        QString error;
+        QVERIFY2(fixture.load(&error), qPrintable(error));
+        QJsonObject root = QJsonDocument::fromJson(fixture.index).object();
+        mutate(root);
+        fixture.index = QJsonDocument(root).toJson();
+        QVERIFY(!fixture.notes(QStringLiteral("pl-PL"), &error).isValid());
+        QVERIFY2(!error.isEmpty(), "Malformed index must provide a diagnostic.");
+    };
+
+    verifyRejected([](QJsonObject &root) {
+        root.insert(QStringLiteral("schema_version"), 1);
+    });
+    verifyRejected([](QJsonObject &root) {
+        root.insert(QStringLiteral("current_version"), QStringLiteral("0.7.7"));
+    });
+    verifyRejected([](QJsonObject &root) {
+        QJsonArray documents = root.value(QStringLiteral("documents")).toArray();
+        QJsonObject duplicate = documents.at(1).toObject();
+        duplicate.insert(QStringLiteral("version"),
+                         documents.first().toObject().value(QStringLiteral("version")));
+        documents.replace(1, duplicate);
+        root.insert(QStringLiteral("documents"), documents);
+    });
+    verifyRejected([](QJsonObject &root) {
+        QJsonArray bundles = root.value(QStringLiteral("bundles")).toArray();
+        bundles.removeLast();
+        root.insert(QStringLiteral("bundles"), bundles);
+    });
+    verifyRejected([](QJsonObject &root) {
+        QJsonArray bundles = root.value(QStringLiteral("bundles")).toArray();
+        QJsonObject pseudo = bundles.first().toObject();
+        pseudo.insert(QStringLiteral("locale"), QStringLiteral("en-XA"));
+        pseudo.insert(QStringLiteral("filename"), QStringLiteral("release-notes.en-XA.json"));
+        bundles.replace(0, pseudo);
+        root.insert(QStringLiteral("bundles"), bundles);
+    });
+}
+
+void ReleaseNotesTest::fallsBackForCorruptLocalizedBytesAndFailsClosedForCorruptEnglish()
+{
+    BundleFixture fixture;
+    QString error;
+    QVERIFY2(fixture.load(&error), qPrintable(error));
+    const QVariantList english = fixture.notes(QStringLiteral("en-US")).releases();
+    const QByteArray malformed{"{\"sections\":[\"unterminated\""};
+
+    fixture.replaceBundleBytes(QStringLiteral("pl-PL"), malformed);
+    const ReleaseNotes fallback = fixture.notes(QStringLiteral("pl-PL"), &error);
+    QVERIFY2(fallback.isValid(), qPrintable(error));
+    QCOMPARE(fallback.locale(), QStringLiteral("en-US"));
+    QCOMPARE(fallback.releases(), english);
+    QVERIFY2(error.contains(QStringLiteral("complete en-US fallback")), qPrintable(error));
+
+    fixture.replaceBundleBytes(QStringLiteral("en-US"), malformed);
+    QVERIFY(!fixture.notes(QStringLiteral("pl-PL"), &error).isValid());
+    QVERIFY2(error.contains(QStringLiteral("English fallback also failed")), qPrintable(error));
 }
 
 QTEST_APPLESS_MAIN(ReleaseNotesTest)

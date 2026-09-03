@@ -15,6 +15,7 @@ $ErrorActionPreference = 'Stop'
 $root = [System.IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 & (Join-Path $PSScriptRoot 'assert-privacy.ps1') -ReleaseDirectory $ReleaseDirectory
 & (Join-Path $PSScriptRoot 'assert-license-compliance.ps1')
+& (Join-Path $PSScriptRoot 'test-release-note-assets.ps1')
 $releaseRoot = if ([System.IO.Path]::IsPathRooted($ReleaseDirectory)) {
     [System.IO.Path]::GetFullPath($ReleaseDirectory)
 } else { [System.IO.Path]::GetFullPath((Join-Path $root $ReleaseDirectory)) }
@@ -243,8 +244,8 @@ if (-not $SkipTests) {
         $command.Source
     }
     $env:PATH = (Join-Path $root 'tools\Qt\6.8.3\mingw_64\bin') + ';' + $env:PATH
-    & $ctest --test-dir (Join-Path $root 'out') -R 'tst_(updatedownloader|updatepreflight|updateinstaller|updatertransaction)' --output-on-failure
-    if ($LASTEXITCODE -ne 0) { throw 'Updater validation tests failed.' }
+    & $ctest --test-dir (Join-Path $root 'out') -R 'tst_(releasenotes|updatedownloader|updatepreflight|updateinstaller|updatertransaction)' --output-on-failure
+    if ($LASTEXITCODE -ne 0) { throw 'Release-note or updater validation tests failed.' }
 }
 $toolchain = Import-PowerShellDataFile (Join-Path $PSScriptRoot 'inno-toolchain.psd1')
 $evidencePaths = @($setup, $portableZip, $updateZip, $checksum, $sourceZip, $sourceChecksum)
