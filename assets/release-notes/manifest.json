@@ -1,0 +1,62 @@
+{
+  "$schema": "../../i18n/schema/release-notes-manifest.schema.json",
+  "schema_version": 2,
+  "source_locale": "en-US",
+  "history_limit": 12,
+  "production_locales": [
+    "en-US",
+    "zh-Hans",
+    "ru-RU",
+    "es-ES",
+    "pt-BR",
+    "de-DE",
+    "ja-JP",
+    "fr-FR",
+    "pl-PL",
+    "ko-KR",
+    "zh-Hant",
+    "tr-TR",
+    "th-TH",
+    "es-419",
+    "uk-UA",
+    "it-IT"
+  ],
+  "releases": [
+    {
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "status": "released",
+      "localization_policy": "fallback-allowed",
+      "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "original_source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
+      "correction": null
+    },
+    {
+      "version": "0.7.5",
+      "date": "2026-08-07",
+      "status": "released",
+      "localization_policy": "fallback-allowed",
+      "source_integrity": "sha256:3d2c1ddc6025e8e4935c2f404d0d24fa4dd77cf4b83e2480fdab07fb62700955",
+      "original_source_integrity": "sha256:3d2c1ddc6025e8e4935c2f404d0d24fa4dd77cf4b83e2480fdab07fb62700955",
+      "correction": null
+    },
+    {
+      "version": "0.7.4",
+      "date": "2026-08-07",
+      "status": "released",
+      "localization_policy": "fallback-allowed",
+      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "original_source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "correction": null
+    },
+    {
+      "version": "0.7.3",
+      "date": "2026-08-05",
+      "status": "released",
+      "localization_policy": "fallback-allowed",
+      "source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "original_source_integrity": "sha256:747636aa7dff530d74dc48b91129c610f9c16f84fb6060148a25ef1c95e2206f",
+      "correction": null
+    }
+  ]
+}
