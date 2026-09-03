@@ -28,11 +28,33 @@
     <Compile Include="..\..\src\GameHQ.Playnite\Protocol\PipeFraming.cs" Link="Sources\PipeFraming.cs" />
     <Compile Include="..\..\src\GameHQ.Playnite\GameHQLocator.cs" Link="Sources\GameHQLocator.cs" />
     <Compile Include="..\..\src\GameHQ.Playnite\Security\ReleaseTrust.cs" Link="Sources\ReleaseTrust.cs" />
+    <Compile Include="..\..\src\GameHQ.Playnite\Localization\PluginLocalization.cs" Link="Sources\PluginLocalization.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\..\..\tests\fixtures\release-trust\gamehq-test-vector.json"
           Link="Fixtures\gamehq-test-vector.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\src\GameHQ.Playnite\Localization\*.xaml"
+          Link="Localization\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\src\GameHQ.Playnite\Localization\locale-map.json"
+          Link="Localization\locale-map.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\..\..\i18n\locales.json"
+          Link="Registry\gamehq-locales.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\src\GameHQ.Playnite\Settings\GameHQIntegrationSettingsView.xaml"
+          Link="Audit\GameHQIntegrationSettingsView.xaml" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\src\GameHQ.Playnite\Settings\GameHQIntegrationSettingsViewModel.cs"
+          Link="Audit\GameHQIntegrationSettingsViewModel.cs" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\src\GameHQ.Playnite\GameHQPlugin.cs"
+          Link="Audit\GameHQPlugin.cs" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\src\GameHQ.Playnite\GameHQ.Playnite.csproj"
+          Link="Audit\GameHQ.Playnite.csproj" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\src\GameHQ.Playnite\extension.yaml"
+          Link="Audit\extension.yaml" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\packaging\package.ps1"
+          Link="Audit\package.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

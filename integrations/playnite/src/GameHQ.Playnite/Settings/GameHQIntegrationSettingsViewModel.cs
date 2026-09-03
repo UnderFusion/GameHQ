@@ -5,18 +5,20 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using GameHQ.Playnite.Localization;
 using GameHQ.Playnite.Protocol;
 using Playnite.SDK;
 
 namespace GameHQ.Playnite.Settings
 {
-    // Backs the settings page (plan item p5-4): connection health/testing,
+    // Backs the settings page: connection health/testing,
     // the two startup preferences, and a copyable diagnostic summary.
     // Never duplicates any setting that lives in GameHQ itself.
     public class GameHQIntegrationSettingsViewModel : ObservableObjectBase, ISettings
     {
         private readonly GameHQPlugin _plugin;
         private readonly IPlayniteAPI _api;
+        private readonly PluginLocalization _strings;
         private GameHQIntegrationSettings _editingClone;
 
         public GameHQIntegrationSettings Settings { get; set; }
@@ -30,6 +32,7 @@ namespace GameHQ.Playnite.Settings
         {
             _plugin = plugin;
             _api = api;
+            _strings = plugin.Strings;
             Settings = plugin.Settings;
 
             // StateChanged fires from IntegrationClient's background reconnect
@@ -68,7 +71,7 @@ namespace GameHQ.Playnite.Settings
 
         public string DetectedGameHQVersionText
         {
-            get { return _plugin.Client.RemoteAppVersion ?? "(not connected)"; }
+            get { return _plugin.Client.RemoteAppVersion ?? _strings.Get("LOCGameHQIntegrationNotConnected"); }
         }
 
         // The settings page used to show an empty text box bound straight to
@@ -87,7 +90,7 @@ namespace GameHQ.Playnite.Settings
 
         public string ResolvedExePathText
         {
-            get { return ResolvedExePath ?? "GameHQ was not found on this PC."; }
+            get { return ResolvedExePath ?? _strings.Get("LOCGameHQIntegrationGameHQNotFound"); }
         }
 
         public string LocationSourceText
@@ -95,16 +98,21 @@ namespace GameHQ.Playnite.Settings
             get
             {
                 if (!IsGameHQFound)
-                    return "Install GameHQ, then use \"Locate GameHQ.exe...\" if it is still not found.";
+                    return _strings.Get("LOCGameHQIntegrationLocateHint");
                 return GameHQLocator.IsValidInstall(Settings.ExePath)
-                    ? "Selected manually"
-                    : "Detected automatically";
+                    ? _strings.Get("LOCGameHQIntegrationSelectedManually")
+                    : _strings.Get("LOCGameHQIntegrationDetectedAutomatically");
             }
         }
 
         public string SelectExeButtonText
         {
-            get { return IsGameHQFound ? "Change location..." : "Locate GameHQ.exe..."; }
+            get
+            {
+                return IsGameHQFound
+                    ? _strings.Get("LOCGameHQIntegrationChangeLocation")
+                    : _strings.Get("LOCGameHQIntegrationLocateGameHQ");
+            }
         }
 
         public string ProtocolCompatibilityText
@@ -112,13 +120,20 @@ namespace GameHQ.Playnite.Settings
             get
             {
                 var selected = _plugin.Client.ProtocolSelected;
-                return selected.HasValue ? "v" + selected.Value + " (compatible)" : "(unknown)";
+                return selected.HasValue
+                    ? _strings.Format("LOCGameHQIntegrationProtocolCompatibleFormat", selected.Value)
+                    : _strings.Get("LOCGameHQIntegrationUnknown");
             }
         }
 
         public string LastErrorText
         {
-            get { return _plugin.Client.LastError ?? "(none)"; }
+            get { return _plugin.Client.LastError ?? _strings.Get("LOCGameHQIntegrationNone"); }
+        }
+
+        public string LastErrorDisplayText
+        {
+            get { return _strings.Format("LOCGameHQIntegrationLastErrorFormat", LastErrorText); }
         }
 
         public ICommand SelectExeCommand
@@ -169,8 +184,8 @@ namespace GameHQ.Playnite.Settings
             if (!GameHQLocator.IsValidInstall(path))
             {
                 _api.Dialogs.ShowErrorMessage(
-                    "That doesn't look like a GameHQ install (expected an \"app\\GameHQ.exe\" next to it).",
-                    "GameHQ Integration");
+                    _strings.Get("LOCGameHQIntegrationInvalidInstallMessage"),
+                    _strings.Get("LOCGameHQIntegrationName"));
                 return;
             }
 
@@ -196,8 +211,9 @@ namespace GameHQ.Playnite.Settings
             var configPath = _api.Paths.ConfigurationPath;
             if (string.IsNullOrEmpty(configPath))
             {
-                _api.Dialogs.ShowErrorMessage("Playnite did not report a configuration path.",
-                                              "GameHQ Integration");
+                _api.Dialogs.ShowErrorMessage(
+                    _strings.Get("LOCGameHQIntegrationConfigurationPathMissing"),
+                    _strings.Get("LOCGameHQIntegrationName"));
                 return;
             }
 
@@ -213,14 +229,15 @@ namespace GameHQ.Playnite.Settings
             }
             catch (Exception ex)
             {
-                _api.Dialogs.ShowErrorMessage("Could not open " + target + ": " + ex.Message,
-                                              "GameHQ Integration");
+                _api.Dialogs.ShowErrorMessage(
+                    _strings.Format("LOCGameHQIntegrationCouldNotOpenFormat", target, ex.Message),
+                    _strings.Get("LOCGameHQIntegrationName"));
             }
         }
 
         private void TestConnection()
         {
-            TestConnectionStatusText = "Testing...";
+            TestConnectionStatusText = _strings.Get("LOCGameHQIntegrationTesting");
             _testInFlight = true;
             _plugin.Client.TriggerReconnect();
 
@@ -241,8 +258,11 @@ namespace GameHQ.Playnite.Settings
                 // and repeating a snapshot of it here left a stale number on
                 // screen after GameHQ was restarted on a newer build.
                 var result = finalState == IntegrationConnectionState.Connected
-                    ? "Connection test succeeded."
-                    : "Test failed: " + (_plugin.Client.LastError ?? "could not reach GameHQ");
+                    ? _strings.Get("LOCGameHQIntegrationTestSucceeded")
+                    : _strings.Format(
+                        "LOCGameHQIntegrationTestFailedFormat",
+                        _plugin.Client.LastError ??
+                            _strings.Get("LOCGameHQIntegrationCouldNotReachGameHQ"));
 
                 Application.Current.Dispatcher.BeginInvoke(new Action(() =>
                 {
@@ -261,13 +281,24 @@ namespace GameHQ.Playnite.Settings
         private string BuildDiagnosticSummary()
         {
             var sb = new StringBuilder();
-            sb.AppendLine("GameHQ Integration plugin: " + PluginVersion());
-            sb.AppendLine("Playnite API version: " + _api.ApplicationInfo.ApplicationVersion);
-            sb.AppendLine("GameHQ path: " + ResolvedExePathText + " (" + LocationSourceText + ")");
-            sb.AppendLine("GameHQ version: " + DetectedGameHQVersionText);
-            sb.AppendLine("Protocol: " + ProtocolCompatibilityText);
-            sb.AppendLine("Connection state: " + ConnectionStatusText);
-            sb.AppendLine("Last error: " + LastErrorText);
+            sb.AppendLine(_strings.Format("LOCGameHQIntegrationDiagnosticsPluginFormat", PluginVersion()));
+            sb.AppendLine(_strings.Format(
+                "LOCGameHQIntegrationDiagnosticsPlayniteVersionFormat",
+                _api.ApplicationInfo.ApplicationVersion));
+            sb.AppendLine(_strings.Format(
+                "LOCGameHQIntegrationDiagnosticsGameHQPathFormat",
+                ResolvedExePathText,
+                LocationSourceText));
+            sb.AppendLine(_strings.Format(
+                "LOCGameHQIntegrationDiagnosticsGameHQVersionFormat",
+                DetectedGameHQVersionText));
+            sb.AppendLine(_strings.Format(
+                "LOCGameHQIntegrationDiagnosticsProtocolFormat",
+                ProtocolCompatibilityText));
+            sb.AppendLine(_strings.Format(
+                "LOCGameHQIntegrationDiagnosticsConnectionStateFormat",
+                ConnectionStatusText));
+            sb.AppendLine(_strings.Format("LOCGameHQIntegrationLastErrorFormat", LastErrorText));
             return sb.ToString();
         }
 
@@ -282,6 +313,7 @@ namespace GameHQ.Playnite.Settings
             OnPropertyChanged(nameof(DetectedGameHQVersionText));
             OnPropertyChanged(nameof(ProtocolCompatibilityText));
             OnPropertyChanged(nameof(LastErrorText));
+            OnPropertyChanged(nameof(LastErrorDisplayText));
             RefreshLocation();
         }
 
@@ -301,14 +333,18 @@ namespace GameHQ.Playnite.Settings
             TestConnectionStatusText = null;
         }
 
-        private static string DescribeState(IntegrationConnectionState state)
+        private string DescribeState(IntegrationConnectionState state)
         {
             switch (state)
             {
-                case IntegrationConnectionState.Connected: return "Connected";
-                case IntegrationConnectionState.Connecting: return "Connecting...";
-                case IntegrationConnectionState.Suspended: return "Waiting (GameHQ is updating)";
-                default: return "Disconnected";
+                case IntegrationConnectionState.Connected:
+                    return _strings.Get("LOCGameHQIntegrationStateConnected");
+                case IntegrationConnectionState.Connecting:
+                    return _strings.Get("LOCGameHQIntegrationStateConnecting");
+                case IntegrationConnectionState.Suspended:
+                    return _strings.Get("LOCGameHQIntegrationStateWaitingForUpdate");
+                default:
+                    return _strings.Get("LOCGameHQIntegrationStateDisconnected");
             }
         }
 
@@ -336,7 +372,7 @@ namespace GameHQ.Playnite.Settings
         {
             errors = new List<string>();
             if (!string.IsNullOrEmpty(Settings.ExePath) && !GameHQLocator.IsValidInstall(Settings.ExePath))
-                errors.Add("The selected path is not a valid GameHQ install.");
+                errors.Add(_strings.Get("LOCGameHQIntegrationInvalidSelectedPath"));
 
             return errors.Count == 0;
         }

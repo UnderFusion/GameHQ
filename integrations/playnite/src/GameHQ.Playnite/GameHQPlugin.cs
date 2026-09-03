@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
+using GameHQ.Playnite.Localization;
 using GameHQ.Playnite.Protocol;
 using GameHQ.Playnite.Settings;
 using Playnite.SDK;
@@ -18,6 +20,7 @@ namespace GameHQ.Playnite
 
         internal IntegrationClient Client { get; }
         internal GameHQIntegrationSettings Settings { get; private set; }
+        internal PluginLocalization Strings { get; }
 
         private readonly GameHQIntegrationSettingsViewModel _settingsViewModel;
         private readonly GameLifecycleForwarder _lifecycle;
@@ -28,7 +31,12 @@ namespace GameHQ.Playnite
             Properties = new GenericPluginProperties { HasSettings = true };
             Settings = LoadPluginSettings<GameHQIntegrationSettings>() ?? new GameHQIntegrationSettings();
 
-            var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            var assembly = Assembly.GetExecutingAssembly();
+            var version = assembly.GetName().Version.ToString();
+            var pluginDirectory = Path.GetDirectoryName(assembly.Location);
+            Strings = new PluginLocalization(
+                ResourceProvider.GetString,
+                Path.Combine(pluginDirectory, "Localization", "en_US.xaml"));
             Client = new IntegrationClient(version);
             _lifecycle = new GameLifecycleForwarder(api, Client);
             _settingsViewModel = new GameHQIntegrationSettingsViewModel(this, api);
@@ -108,8 +116,8 @@ namespace GameHQ.Playnite
         {
             yield return new MainMenuItem
             {
-                Description = "Open GameHQ",
-                MenuSection = "@GameHQ Integration",
+                Description = Strings.Get("LOCGameHQIntegrationOpenGameHQ"),
+                MenuSection = "@" + Strings.Get("LOCGameHQIntegrationName"),
                 Action = _ => OpenOrLaunchGameHQ()
             };
         }

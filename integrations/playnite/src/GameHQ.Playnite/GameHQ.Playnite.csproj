@@ -41,4 +41,17 @@
     <Resource Include="..\..\icon.png" Link="icon.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- Playnite 10 loads extension localization dictionaries from this exact
+         package-relative directory. Keep them as loose package content; they
+         are intentionally independent from the desktop app's Qt catalogs. -->
+    <Page Remove="Localization\*.xaml" />
+    <None Remove="Localization\*.xaml" />
+    <Content Include="Localization\*.xaml"
+             CopyToOutputDirectory="PreserveNewest" />
+    <None Remove="Localization\locale-map.json" />
+    <Content Include="Localization\locale-map.json"
+             CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,6 @@
 Id: GameHQ_Integration
+# Playnite 10 manifests do not resolve extension localization keys. Keep this
+# protected product name literal; runtime UI uses LOCGameHQIntegrationName.
 Name: GameHQ Integration
 Author: underfusion
 Version: 0.4.12

@@ -1,10 +1,16 @@
 # Localization
 
-Playnite-native localization dictionaries belong here. The plugin now has a
-settings UI, menu items, dialogs, validation, status text, and diagnostic labels
-to localize, so canonical follow-up `t1 / LANG-04H` owns that implementation.
+Playnite 10 selects extension localization from package-relative XAML resource
+dictionaries. `en_US.xaml` is the complete base/fallback dictionary, XAML views
+use `DynamicResource`, and C# resolves keys through `ResourceProvider.GetString`.
+`PluginLocalization` falls back to the packaged English dictionary if the host
+lookup fails or returns an unresolved key. No GameHQ Qt catalog is loaded.
 
-The plugin must consume Playnite's active UI locale and resource mechanism. It
-must not load GameHQ's Qt `.qm` catalogs. A complete English dictionary remains
-the final fallback and must be packaged inside the `.pext` with every enabled
-locale dictionary.
+`locale-map.json` maps the 12 enabled GameHQ Tier 1 tags to Playnite's underscore
+filenames. In particular, `zh-Hans` maps to `zh_CN` and `zh-Hant` maps to
+`zh_TW`. Playnite owns the active language; the plugin has no language setting.
+
+Tier 2 `th-TH`, `es-419`, `uk-UA`, and `it-IT` remain queued and are deliberately
+absent from the public `.pext`. The static `extension.yaml` name and add-on
+marketplace copy remain protected/independently authored metadata because the
+Playnite 10 manifest schema does not resolve extension resource keys.

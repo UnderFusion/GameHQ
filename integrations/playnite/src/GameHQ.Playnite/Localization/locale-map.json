@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source_locale": "en-US",
+  "selection_owner": "Playnite",
+  "locales": [
+    { "gamehq": "en-US", "playnite": "en_US", "resource": "en_US.xaml", "aliases": ["en"] },
+    { "gamehq": "zh-Hans", "playnite": "zh_CN", "resource": "zh_CN.xaml", "aliases": ["zh", "zh-CN", "zh-SG"] },
+    { "gamehq": "ru-RU", "playnite": "ru_RU", "resource": "ru_RU.xaml", "aliases": ["ru"] },
+    { "gamehq": "es-ES", "playnite": "es_ES", "resource": "es_ES.xaml", "aliases": ["es"] },
+    { "gamehq": "pt-BR", "playnite": "pt_BR", "resource": "pt_BR.xaml", "aliases": ["pt"] },
+    { "gamehq": "de-DE", "playnite": "de_DE", "resource": "de_DE.xaml", "aliases": ["de"] },
+    { "gamehq": "ja-JP", "playnite": "ja_JP", "resource": "ja_JP.xaml", "aliases": ["ja"] },
+    { "gamehq": "fr-FR", "playnite": "fr_FR", "resource": "fr_FR.xaml", "aliases": ["fr"] },
+    { "gamehq": "pl-PL", "playnite": "pl_PL", "resource": "pl_PL.xaml", "aliases": ["pl"] },
+    { "gamehq": "ko-KR", "playnite": "ko_KR", "resource": "ko_KR.xaml", "aliases": ["ko"] },
+    { "gamehq": "zh-Hant", "playnite": "zh_TW", "resource": "zh_TW.xaml", "aliases": ["zh-TW", "zh-HK"] },
+    { "gamehq": "tr-TR", "playnite": "tr_TR", "resource": "tr_TR.xaml", "aliases": ["tr"] }
+  ],
+  "deferred_tier_2": ["th-TH", "es-419", "uk-UA", "it-IT"]
+}

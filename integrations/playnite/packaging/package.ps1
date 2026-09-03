@@ -37,6 +37,11 @@ foreach ($file in $requiredFiles) {
     }
     Copy-Item $source $stagingDir
 }
+$localizationSource = Join-Path $publishDir "Localization"
+if (-not (Test-Path $localizationSource -PathType Container)) {
+    throw "Localization output missing: $localizationSource"
+}
+Copy-Item -LiteralPath $localizationSource -Destination $stagingDir -Recurse
 $licenseSource = Join-Path $root "LICENSES\BouncyCastle.Cryptography.txt"
 $licenseTarget = Join-Path $stagingDir "LICENSES"
 New-Item -ItemType Directory -Path $licenseTarget -Force | Out-Null
@@ -70,6 +75,10 @@ $archive = [System.IO.Compression.ZipFile]::OpenRead($pextPath)
 try {
     $entries = @($archive.Entries | ForEach-Object { $_.FullName.Replace('\', '/') } | Sort-Object)
 } finally { $archive.Dispose() }
+$expectedLocalizationEntries = @(
+    Get-ChildItem -LiteralPath $localizationSource -File |
+        ForEach-Object { "Localization/$($_.Name)" }
+)
 $expectedEntries = @(
     'BouncyCastle.Cryptography.dll',
     'extension.yaml',
@@ -77,7 +86,7 @@ $expectedEntries = @(
     'icon.png',
     'LICENSE',
     'LICENSES/BouncyCastle.Cryptography.txt'
-) | Sort-Object
+) + $expectedLocalizationEntries | Sort-Object
 if (($entries -join "`n") -ne ($expectedEntries -join "`n")) {
     throw "Packaged extension has an unexpected file set: $($entries -join ', ')"
 }

@@ -104,20 +104,20 @@
                    VerticalAlignment="Center"
                    RenderOptions.BitmapScalingMode="HighQuality" />
             <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="GameHQ Integration" FontSize="18" FontWeight="SemiBold"
+                <TextBlock Text="{DynamicResource LOCGameHQIntegrationName}" FontSize="18" FontWeight="SemiBold"
                            Foreground="White" />
-                <TextBlock Text="Playnite companion plugin" Style="{StaticResource Hint}" />
+                <TextBlock Text="{DynamicResource LOCGameHQIntegrationSubtitle}" Style="{StaticResource Hint}" />
             </StackPanel>
         </StackPanel>
 
         <Border Style="{StaticResource SectionRule}" Margin="0,14,0,18" />
 
         <!-- ============================ Connection ============================ -->
-        <TextBlock Text="Connection" Style="{StaticResource SectionTitle}" />
+        <TextBlock Text="{DynamicResource LOCGameHQIntegrationSectionConnection}" Style="{StaticResource SectionTitle}" />
         <TextBlock Style="{StaticResource Hint}" Margin="0,0,0,14"
-                   Text="Tells the separate GameHQ desktop app which game is running. GameHQ must be installed separately — this plugin never downloads or installs it." />
+                   Text="{DynamicResource LOCGameHQIntegrationConnectionDescription}" />
 
-        <TextBlock Text="GameHQ location" Foreground="White" Margin="0,0,0,4" />
+        <TextBlock Text="{DynamicResource LOCGameHQIntegrationGameHQLocation}" Foreground="White" Margin="0,0,0,4" />
         <TextBox Text="{Binding ResolvedExePathText, Mode=OneWay}"
                  Style="{StaticResource PathBubble}" Margin="0,0,0,4" />
         <TextBlock Text="{Binding LocationSourceText}" Style="{StaticResource Hint}" Margin="2,0,0,10" />
@@ -125,10 +125,10 @@
         <StackPanel Orientation="Horizontal">
             <Button Content="{Binding SelectExeButtonText}" Command="{Binding SelectExeCommand}"
                     Style="{StaticResource ToolbarButton}" />
-            <Button Content="Open folder" Command="{Binding OpenFolderCommand}"
+            <Button Content="{DynamicResource LOCGameHQIntegrationOpenFolder}" Command="{Binding OpenFolderCommand}"
                     Style="{StaticResource ToolbarButton}"
                     Visibility="{Binding IsGameHQFound, Converter={StaticResource BoolToVisibility}}" />
-            <Button Content="Download GameHQ" Command="{Binding DownloadGameHQCommand}"
+            <Button Content="{DynamicResource LOCGameHQIntegrationDownloadGameHQ}" Command="{Binding DownloadGameHQCommand}"
                     Style="{StaticResource MissingOnly}" Padding="10,4" MinHeight="28" />
         </StackPanel>
 
@@ -148,21 +148,21 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Status" Style="{StaticResource FieldLabel}" Margin="0,0,0,5" />
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{DynamicResource LOCGameHQIntegrationStatus}" Style="{StaticResource FieldLabel}" Margin="0,0,0,5" />
                     <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ConnectionStatusText}" Style="{StaticResource FieldValue}" Margin="0,0,0,5" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="GameHQ version" Style="{StaticResource FieldLabel}" Margin="0,0,0,5" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource LOCGameHQIntegrationGameHQVersion}" Style="{StaticResource FieldLabel}" Margin="0,0,0,5" />
                     <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding DetectedGameHQVersionText}" Style="{StaticResource FieldValue}" Margin="0,0,0,5" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Plugin version" Style="{StaticResource FieldLabel}" Margin="0,0,0,5" />
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{DynamicResource LOCGameHQIntegrationPluginVersion}" Style="{StaticResource FieldLabel}" Margin="0,0,0,5" />
                     <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PluginVersionText}" Style="{StaticResource FieldValue}" Margin="0,0,0,5" />
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Protocol" Style="{StaticResource FieldLabel}" />
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{DynamicResource LOCGameHQIntegrationProtocol}" Style="{StaticResource FieldLabel}" />
                     <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ProtocolCompatibilityText}" Style="{StaticResource FieldValue}" />
                 </Grid>
 
                 <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
-                    <Button Content="Test connection" Command="{Binding TestConnectionCommand}"
+                    <Button Content="{DynamicResource LOCGameHQIntegrationTestConnection}" Command="{Binding TestConnectionCommand}"
                             Style="{StaticResource ToolbarButton}" />
                     <TextBlock Text="{Binding TestConnectionStatusText}" Style="{StaticResource Hint}"
                                VerticalAlignment="Center" />
@@ -173,35 +173,35 @@
         <Border Style="{StaticResource SectionRule}" />
 
         <!-- ============================== Startup ============================= -->
-        <TextBlock Text="Startup" Style="{StaticResource SectionTitle}" />
-        <CheckBox Content="Start GameHQ together with Playnite"
+        <TextBlock Text="{DynamicResource LOCGameHQIntegrationSectionStartup}" Style="{StaticResource SectionTitle}" />
+        <CheckBox Content="{DynamicResource LOCGameHQIntegrationStartWithPlaynite}"
                   Style="{StaticResource SettingCheckBox}"
                   IsChecked="{Binding Settings.StartWithPlaynite}" />
-        <CheckBox Content="Start GameHQ when a game launches, if it is not already running"
+        <CheckBox Content="{DynamicResource LOCGameHQIntegrationStartOnGameLaunch}"
                   Style="{StaticResource SettingCheckBox}"
                   IsChecked="{Binding Settings.StartOnGameLaunchIfNotRunning}" />
 
         <Border Style="{StaticResource SectionRule}" />
 
         <!-- ============================== Support ============================= -->
-        <TextBlock Text="Support" Style="{StaticResource SectionTitle}" />
+        <TextBlock Text="{DynamicResource LOCGameHQIntegrationSectionSupport}" Style="{StaticResource SectionTitle}" />
         <WrapPanel>
-            <Button Content="Open GameHQ" Command="{Binding OpenGameHQCommand}" Style="{StaticResource ToolbarButton}" />
-            <Button Content="Open Playnite log" Command="{Binding OpenPlayniteLogCommand}" Style="{StaticResource ToolbarButton}" />
-            <Button Content="Website" Command="{Binding OpenWebsiteCommand}" Style="{StaticResource ToolbarButton}" />
-            <Button Content="Copy diagnostics" Command="{Binding CopyDiagnosticSummaryCommand}" Style="{StaticResource ToolbarButton}" />
+            <Button Content="{DynamicResource LOCGameHQIntegrationOpenGameHQ}" Command="{Binding OpenGameHQCommand}" Style="{StaticResource ToolbarButton}" />
+            <Button Content="{DynamicResource LOCGameHQIntegrationOpenPlayniteLog}" Command="{Binding OpenPlayniteLogCommand}" Style="{StaticResource ToolbarButton}" />
+            <Button Content="{DynamicResource LOCGameHQIntegrationWebsite}" Command="{Binding OpenWebsiteCommand}" Style="{StaticResource ToolbarButton}" />
+            <Button Content="{DynamicResource LOCGameHQIntegrationCopyDiagnostics}" Command="{Binding CopyDiagnosticSummaryCommand}" Style="{StaticResource ToolbarButton}" />
         </WrapPanel>
         <TextBlock Style="{StaticResource Hint}" Margin="0,8,0,0"
-                   Text="Plugin messages go to Playnite's main log." />
-        <TextBlock Text="{Binding LastErrorText, StringFormat='Last error: {0}'}"
+                   Text="{DynamicResource LOCGameHQIntegrationLogHint}" />
+        <TextBlock Text="{Binding LastErrorDisplayText}"
                    Style="{StaticResource Hint}" Margin="0,4,0,0" />
 
         <Border Style="{StaticResource SectionRule}" />
 
         <!-- ============================== About =============================== -->
-        <TextBlock Text="About this integration" Style="{StaticResource SectionTitle}" />
+        <TextBlock Text="{DynamicResource LOCGameHQIntegrationSectionAbout}" Style="{StaticResource SectionTitle}" />
         <TextBlock Style="{StaticResource Hint}"
-                   Text="GameHQ receives the name of the Playnite game you are playing, so detection and capture organisation are more reliable. It does not record gameplay, upload data, or install anything. GameHQ keeps working without Playnite." />
+                   Text="{DynamicResource LOCGameHQIntegrationAboutDescription}" />
 
     </StackPanel>
     </ScrollViewer>

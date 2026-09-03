@@ -159,7 +159,11 @@ def main() -> int:
         for pattern in ("*.cs", "*.xaml")
         for path in plugin_root.rglob(pattern)
     )
-    for marker in ('Text="GameHQ Integration"', "ShowErrorMessage(", 'Description = "Open GameHQ"'):
+    for marker in (
+        "DynamicResource LOCGameHQIntegrationName",
+        'Strings.Get("LOCGameHQIntegrationOpenGameHQ")',
+        "ShowErrorMessage(",
+    ):
         if marker not in plugin_sources:
             fail(f"Playnite user-facing marker changed or disappeared: {marker}")
 
