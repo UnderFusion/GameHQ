@@ -642,7 +642,7 @@
       <translation>Seçilen klasör geçersiz.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="341"></location>
+      <location filename="src/ui/AppController.cpp" line="353"></location>
       <source>Choose a local folder.</source>
       <translation>Yerel bir klasörü seçin.</translation>
     </message>
@@ -662,8 +662,8 @@
       <translation>GameHQ Seçilen klasörü kaydetemedi.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="335"></location>
-      <location filename="src/ui/AppController.cpp" line="357"></location>
+      <location filename="src/ui/AppController.cpp" line="347"></location>
+      <location filename="src/ui/AppController.cpp" line="369"></location>
       <source>The capture type is invalid.</source>
       <translation>Yakalama tipi geçersiz.</translation>
     </message>
@@ -820,7 +820,7 @@
       <translation>Hash yapamıyorum %1- Hayır .</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="182"></location>
+      <location filename="src/ui/AppController.cpp" line="194"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>Taşınabilir profiller sadece yüklü bir kopya ile ithal edilebilir GameHQ- Hayır .</translation>
     </message>
@@ -845,12 +845,12 @@
       <translation>Geri alınan taşınabilir ithalat günlüğü kaldırılamadı.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="188"></location>
+      <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Select a local GameHQ portable folder.</source>
       <translation>Yerel bir seçin GameHQ Portatif dosya.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="197"></location>
+      <location filename="src/ui/AppController.cpp" line="209"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>Seçilen klasör bir GameHQ Taşınabilir paket.</translation>
     </message>
@@ -880,12 +880,12 @@
       <translation>Portatif:/ yolu seçilen paket kökünden kaçıyor.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="208"></location>
+      <location filename="src/ui/AppController.cpp" line="220"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ İthalat için kendi işlemini belirleyemedi.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="218"></location>
+      <location filename="src/ui/AppController.cpp" line="230"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ taşınabilir ithalat işlemini başlatamadım.</translation>
     </message>
@@ -960,22 +960,22 @@
       <translation>Bir başka taşınabilir profilli aktarım zaten çalıştırılıyor.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="445"></location>
+      <location filename="src/app/App.cpp" line="446"></location>
       <source>The update was cancelled because capture work did not finish safely in time.</source>
       <translation>Güncelleme, yakalanma işinin zamanında güvenli bir şekilde bitmediği için iptal edildi.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="334"></location>
+      <location filename="src/updates/UpdateService.cpp" line="333"></location>
       <source>Update check failed: %1</source>
       <translation>Güncelleme kontrolü başarısız oldu: %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="123"></location>
+      <location filename="src/updates/UpdateService.cpp" line="122"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub güncelleme denetimlerini geçici olarak sınırladı. GameHQ daha sonra yeniden deneyecek.</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="117"></location>
+      <location filename="src/updates/UpdateService.cpp" line="116"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub güncelleme denetimlerini geçici olarak sınırladı. GameHQ %1 sonrasında yeniden deneyecek.</translation>
     </message>
@@ -1212,7 +1212,7 @@
       <translation>GameHQ Güncelleme işlemini yayınlayamadım.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="420"></location>
+      <location filename="src/app/App.cpp" line="421"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ Güncelleme bakımı başlatılamadı: %1</translation>
     </message>
@@ -1262,27 +1262,27 @@
       <translation>GameHQ Bu kurulumda güncelleme dosyalarını güvenli bir şekilde yazamazsınız.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="225"></location>
+      <location filename="src/updates/UpdateService.cpp" line="224"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>İndirmeden sonra sürüm değişti. Kurulmadan önce tekrar kontrol edin.</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="282"></location>
+      <location filename="src/updates/UpdateService.cpp" line="281"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>İndirilen sürüm kurulumdan önce geri çekildi.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="326"></location>
+      <location filename="src/updates/UpdateService.cpp" line="325"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>Serbest bırakma süresi uzatılamadı: %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="254"></location>
+      <location filename="src/updates/UpdateService.cpp" line="253"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>Serbest bırakma, kurulumdan önce yeni bir şekilde geçerliliğini artıramadı.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="304"></location>
+      <location filename="src/updates/UpdateService.cpp" line="303"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub, bu sürümü yüklemeden önce yeniden geçerli kılmadı. Daha sonra tekrar deneyin.</translation>
     </message>
@@ -1423,27 +1423,27 @@ Bu işlem geri alınamaz.</numerusform>
       <translation>%1 izleyici</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="323"></location>
+      <location filename="src/ui/AppController.cpp" line="335"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Her ekranın mevcut HDR durumunu kontrol edin.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="309"></location>
+      <location filename="src/ui/AppController.cpp" line="321"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR etkin</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="314"></location>
+      <location filename="src/ui/AppController.cpp" line="326"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR etkin değil</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="303"></location>
+      <location filename="src/ui/AppController.cpp" line="315"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>Grafik sürücüsü tarafından rapor edilen herhangi bir görüntü yok</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="297"></location>
+      <location filename="src/ui/AppController.cpp" line="309"></location>
       <source>Not checked yet</source>
       <translation>Henüz kontrol edilmedi.</translation>
     </message>
@@ -2099,32 +2099,32 @@ Bundan sonra %2, düğme bırakıldığında etkinleşir ve %3 eylemini elemek i
       <translation>Ayarlar</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="279"></location>
+      <location filename="src/app/App.cpp" line="280"></location>
       <source>Reason: %1</source>
       <translation>Neden: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="285"></location>
+      <location filename="src/app/App.cpp" line="286"></location>
       <source>Replay failed</source>
       <translation>Yeniden oynatma başarısız oldu</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="265"></location>
+      <location filename="src/app/App.cpp" line="266"></location>
       <source>Replay saved</source>
       <translation>Yeniden oynat kaydedildi</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="217"></location>
+      <location filename="src/app/App.cpp" line="218"></location>
       <source>Screenshot saved</source>
       <translation>Ekran görüntüsü kaydedildi</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="328"></location>
+      <location filename="src/app/App.cpp" line="329"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ varsayılan ayarlarla başlatıldı. Önceki ayarlar dosyanız saklandı, bu nedenle hiçbir şey kaybolmadı.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="323"></location>
+      <location filename="src/app/App.cpp" line="324"></location>
       <source>Settings could not be read</source>
       <translation>Ayarlar okunamadı</translation>
     </message>
@@ -2184,7 +2184,7 @@ Bundan sonra %2, düğme bırakıldığında etkinleşir ve %3 eylemini elemek i
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="104"></location>
+      <location filename="src/ui/AppController.cpp" line="112"></location>
       <source>Release notes</source>
       <translation type="unfinished"></translation>
     </message>

@@ -644,7 +644,7 @@
       <translation>Der ausgewählte Ordner ist ungültig.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="341"></location>
+      <location filename="src/ui/AppController.cpp" line="353"></location>
       <source>Choose a local folder.</source>
       <translation>Wählen Sie einen lokalen Ordner.</translation>
     </message>
@@ -664,8 +664,8 @@
       <translation>GameHQ Es konnte der ausgewählte Ordner nicht gespeichert werden.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="335"></location>
-      <location filename="src/ui/AppController.cpp" line="357"></location>
+      <location filename="src/ui/AppController.cpp" line="347"></location>
+      <location filename="src/ui/AppController.cpp" line="369"></location>
       <source>The capture type is invalid.</source>
       <translation>Der Erfassungstyp ist ungültig.</translation>
     </message>
@@ -822,7 +822,7 @@
       <translation>Kann nicht hashen %1- Ich weiß .</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="182"></location>
+      <location filename="src/ui/AppController.cpp" line="194"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>Die Portable Profile können nur mit einer installierten Kopie von GameHQ- Ich weiß .</translation>
     </message>
@@ -847,12 +847,12 @@
       <translation>Das wiederhergestellte portable Import-Journal konnte nicht entfernt werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="188"></location>
+      <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Select a local GameHQ portable folder.</source>
       <translation>Wählen Sie ein lokales GameHQ - Ein tragbarer Ordner.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="197"></location>
+      <location filename="src/ui/AppController.cpp" line="209"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>Der ausgewählte Ordner ist nicht ein GameHQ - Das ist ein tragbares Paket.</translation>
     </message>
@@ -882,12 +882,12 @@
       <translation>Ein portabler:/ Pfad entkommt der ausgewählten Paketwurzel.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="208"></location>
+      <location filename="src/ui/AppController.cpp" line="220"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ Die Kommission hat sich in der Tat nicht dazu entschlossen, ihre eigenen Verfahren für die Einfuhr zu ermitteln.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="218"></location>
+      <location filename="src/ui/AppController.cpp" line="230"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ konnte den portable Importprozess nicht starten.</translation>
     </message>
@@ -962,22 +962,22 @@
       <translation>Ein weiterer portable Profil-Import läuft bereits.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="445"></location>
+      <location filename="src/app/App.cpp" line="446"></location>
       <source>The update was cancelled because capture work did not finish safely in time.</source>
       <translation>Das Update wurde abgesagt, weil die Aufnahme nicht rechtzeitig abgeschlossen wurde.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="334"></location>
+      <location filename="src/updates/UpdateService.cpp" line="333"></location>
       <source>Update check failed: %1</source>
       <translation>Aktualisierungsprüfung fehlgeschlagen: %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="123"></location>
+      <location filename="src/updates/UpdateService.cpp" line="122"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub hat Updateprüfungen vorübergehend eingeschränkt. GameHQ versucht es später erneut.</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="117"></location>
+      <location filename="src/updates/UpdateService.cpp" line="116"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub hat Updateprüfungen vorübergehend eingeschränkt. GameHQ versucht es nach %1 erneut.</translation>
     </message>
@@ -1214,7 +1214,7 @@
       <translation>GameHQ konnte die Aktualisierungs-Transaktion nicht veröffentlichen.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="420"></location>
+      <location filename="src/app/App.cpp" line="421"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ Es konnte keine Wartung der Aktualisierung begonnen werden: %1</translation>
     </message>
@@ -1264,27 +1264,27 @@
       <translation>GameHQ kann keine Aktualisierungsdateien in dieser Installation sicher schreiben.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="225"></location>
+      <location filename="src/updates/UpdateService.cpp" line="224"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>Die Version wurde nach dem Download geändert.</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="282"></location>
+      <location filename="src/updates/UpdateService.cpp" line="281"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>Die heruntergeladene Version wurde vor der Installation zurückgezogen.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="326"></location>
+      <location filename="src/updates/UpdateService.cpp" line="325"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>Die Freigabe konnte nicht verlängert werden: %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="254"></location>
+      <location filename="src/updates/UpdateService.cpp" line="253"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>Die Freigabe konnte vor der Installation nicht erneut verlängert werden.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="304"></location>
+      <location filename="src/updates/UpdateService.cpp" line="303"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub konnte diese Version vor der Installation nicht erneut bestätigen. Versuchen Sie es später noch einmal.</translation>
     </message>
@@ -1428,27 +1428,27 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
       <translation>%1 Zuschauer</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="323"></location>
+      <location filename="src/ui/AppController.cpp" line="335"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Überprüfen Sie den aktuellen HDR-Zustand jedes Displays.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="309"></location>
+      <location filename="src/ui/AppController.cpp" line="321"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR ist aktiv</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="314"></location>
+      <location filename="src/ui/AppController.cpp" line="326"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR ist inaktiv</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="303"></location>
+      <location filename="src/ui/AppController.cpp" line="315"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>Keine Anzeigen gemeldet durch den Grafiktreiber</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="297"></location>
+      <location filename="src/ui/AppController.cpp" line="309"></location>
       <source>Not checked yet</source>
       <translation>Noch nicht überprüft</translation>
     </message>
@@ -2104,32 +2104,32 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>Einstellungen</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="279"></location>
+      <location filename="src/app/App.cpp" line="280"></location>
       <source>Reason: %1</source>
       <translation>Grund: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="285"></location>
+      <location filename="src/app/App.cpp" line="286"></location>
       <source>Replay failed</source>
       <translation>Wiederholung fehlgeschlagen</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="265"></location>
+      <location filename="src/app/App.cpp" line="266"></location>
       <source>Replay saved</source>
       <translation>Wiederholung gespeichert</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="217"></location>
+      <location filename="src/app/App.cpp" line="218"></location>
       <source>Screenshot saved</source>
       <translation>Screenshot gespeichert</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="328"></location>
+      <location filename="src/app/App.cpp" line="329"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ wurde mit den Standardeinstellungen gestartet. Ihre vorherige Einstellungsdatei wurde beibehalten, sodass nichts verloren ging.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="323"></location>
+      <location filename="src/app/App.cpp" line="324"></location>
       <source>Settings could not be read</source>
       <translation>Einstellungen nicht gelesen werden können</translation>
     </message>
@@ -2189,7 +2189,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="104"></location>
+      <location filename="src/ui/AppController.cpp" line="112"></location>
       <source>Release notes</source>
       <translation type="unfinished"></translation>
     </message>

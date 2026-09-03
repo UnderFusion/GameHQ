@@ -732,6 +732,13 @@ add_test(NAME tst_i18nverify
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_verify.py")
 set_tests_properties(tst_i18nverify PROPERTIES TIMEOUT 120)
 
+# p7-1: the checked-in CI wiring remains offline and a stale generated locale
+# fails with an artifact-specific diagnostic without rewriting the fixture.
+add_test(NAME tst_i18nci
+    COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_SOURCE_DIR}/tools/i18n/test_ci.py")
+set_tests_properties(tst_i18nci PROPERTIES TIMEOUT 60)
+
 add_test(NAME tst_i18nprotocol
     COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_protocol.py")

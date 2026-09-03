@@ -642,7 +642,7 @@
       <translation>선택된 폴더가 유효하지 않습니다.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="341"></location>
+      <location filename="src/ui/AppController.cpp" line="353"></location>
       <source>Choose a local folder.</source>
       <translation>로컬 폴더를 선택하세요.</translation>
     </message>
@@ -662,8 +662,8 @@
       <translation>GameHQ 선택된 폴더를 저장할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="335"></location>
-      <location filename="src/ui/AppController.cpp" line="357"></location>
+      <location filename="src/ui/AppController.cpp" line="347"></location>
+      <location filename="src/ui/AppController.cpp" line="369"></location>
       <source>The capture type is invalid.</source>
       <translation>캡처 타입은 유효하지 않습니다.</translation>
     </message>
@@ -820,7 +820,7 @@
       <translation>해시 할 수 없습니다 %1- 그래</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="182"></location>
+      <location filename="src/ui/AppController.cpp" line="194"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>휴대용 프로파일은 설치된 GameHQ- 그래</translation>
     </message>
@@ -845,12 +845,12 @@
       <translation>복구된 휴대용 수입 저널은 제거할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="188"></location>
+      <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Select a local GameHQ portable folder.</source>
       <translation>로컬을 선택 GameHQ 휴대용 폴더</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="197"></location>
+      <location filename="src/ui/AppController.cpp" line="209"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>선택된 폴더는 GameHQ 휴대용 패키지</translation>
     </message>
@@ -880,12 +880,12 @@
       <translation>휴대용:/ 경로는 선택된 패키지 루트에서 탈출합니다.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="208"></location>
+      <location filename="src/ui/AppController.cpp" line="220"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ 수입을 위한 자체 프로세스를 식별할 수 없었습니다.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="218"></location>
+      <location filename="src/ui/AppController.cpp" line="230"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ 휴대용 수입 프로세스를 시작하지 못했습니다.</translation>
     </message>
@@ -960,22 +960,22 @@
       <translation>또 다른 휴대용 프로파일 수입이 이미 실행중입니다.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="445"></location>
+      <location filename="src/app/App.cpp" line="446"></location>
       <source>The update was cancelled because capture work did not finish safely in time.</source>
       <translation>업데이트는 적시에 안전하게 완료되지 않았기 때문에 취소되었습니다.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="334"></location>
+      <location filename="src/updates/UpdateService.cpp" line="333"></location>
       <source>Update check failed: %1</source>
       <translation>업데이트 확인 실패: %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="123"></location>
+      <location filename="src/updates/UpdateService.cpp" line="122"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub에서 업데이트 확인을 일시적으로 제한했습니다. GameHQ 는 나중에 다시 시도합니다.</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="117"></location>
+      <location filename="src/updates/UpdateService.cpp" line="116"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub에서 업데이트 확인을 일시적으로 제한했습니다. GameHQ 는 %1 이후 다시 시도합니다.</translation>
     </message>
@@ -1212,7 +1212,7 @@
       <translation>GameHQ 업데이트 트랜잭션을 게시할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="420"></location>
+      <location filename="src/app/App.cpp" line="421"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ 업데이트 유지보수 시작되지 않았습니다: %1</translation>
     </message>
@@ -1262,27 +1262,27 @@
       <translation>GameHQ 이 설치에서 업데이트 파일을 안전하게 쓸 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="225"></location>
+      <location filename="src/updates/UpdateService.cpp" line="224"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>다운로드 후 버전이 변경되었습니다. 설치 전에 다시 확인합니다.</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="282"></location>
+      <location filename="src/updates/UpdateService.cpp" line="281"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>다운로드된 버전은 설치 전에 철회되었습니다.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="326"></location>
+      <location filename="src/updates/UpdateService.cpp" line="325"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>면허가 연장되지 않았습니다. %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="254"></location>
+      <location filename="src/updates/UpdateService.cpp" line="253"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>설치 전에 새로 유효성을 갱신할 수 없었습니다.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="304"></location>
+      <location filename="src/updates/UpdateService.cpp" line="303"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub에서 이 릴리스를 설치 전에 재확인할 수 없습니다. 나중에 다시 시도해 보세요.</translation>
     </message>
@@ -1423,27 +1423,27 @@ This cannot be undone.</source>
       <translation>%1 시청자</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="323"></location>
+      <location filename="src/ui/AppController.cpp" line="335"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>모든 디스플레이의 현재 HDR 상태를 확인하세요.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="309"></location>
+      <location filename="src/ui/AppController.cpp" line="321"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR이 활성화되어 있습니다</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="314"></location>
+      <location filename="src/ui/AppController.cpp" line="326"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR이 비활성화되어 있습니다</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="303"></location>
+      <location filename="src/ui/AppController.cpp" line="315"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>그래픽 드라이버에서 표시가 보고되지 않습니다</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="297"></location>
+      <location filename="src/ui/AppController.cpp" line="309"></location>
       <source>Not checked yet</source>
       <translation>아직 확인 안됐어요</translation>
     </message>
@@ -2099,32 +2099,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>설정</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="279"></location>
+      <location filename="src/app/App.cpp" line="280"></location>
       <source>Reason: %1</source>
       <translation>원인: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="285"></location>
+      <location filename="src/app/App.cpp" line="286"></location>
       <source>Replay failed</source>
       <translation>재생 실패</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="265"></location>
+      <location filename="src/app/App.cpp" line="266"></location>
       <source>Replay saved</source>
       <translation>재생 저장</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="217"></location>
+      <location filename="src/app/App.cpp" line="218"></location>
       <source>Screenshot saved</source>
       <translation>화면 촬영 저장</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="328"></location>
+      <location filename="src/app/App.cpp" line="329"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 가 기본 설정으로 시작되었습니다. 이전 설정 파일은 그대로 보관되어 데이터가 손실되지 않았습니다.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="323"></location>
+      <location filename="src/app/App.cpp" line="324"></location>
       <source>Settings could not be read</source>
       <translation>설정 읽기 실패</translation>
     </message>
@@ -2184,7 +2184,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="104"></location>
+      <location filename="src/ui/AppController.cpp" line="112"></location>
       <source>Release notes</source>
       <translation type="unfinished"></translation>
     </message>

@@ -16,8 +16,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  localization-fast:
+    name: Fast offline localization gate
+    runs-on: windows-2022
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Verify sixteen-locale sources and generated assets
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          & tools/i18n/ci.ps1
+
   build-and-verify:
     name: Build and verify unsigned Beta
+    needs: localization-fast
     runs-on: windows-2022
     timeout-minutes: 45
     env:
@@ -62,6 +78,14 @@ jobs:
             -O "$PWD\tools\Qt" -m qtmultimedia
           python -m aqt install-tool windows desktop tools_mingw1310 `
             -O "$PWD\tools\Qt"
+
+      - name: Verify localization extraction is current
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $true
+          $lupdate = "$PWD\tools\Qt\6.8.3\mingw_64\bin\lupdate.exe"
+          & tools/i18n/sync.ps1 -Check -LUpdate $lupdate
 
       - name: Configure and build release binaries
         shell: pwsh

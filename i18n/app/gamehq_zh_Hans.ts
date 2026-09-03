@@ -642,7 +642,7 @@
       <translation>已选的文件是不有效的.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="341"></location>
+      <location filename="src/ui/AppController.cpp" line="353"></location>
       <source>Choose a local folder.</source>
       <translation>选择一个本地文件.</translation>
     </message>
@@ -662,8 +662,8 @@
       <translation>GameHQ 不能保存所选文件.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="335"></location>
-      <location filename="src/ui/AppController.cpp" line="357"></location>
+      <location filename="src/ui/AppController.cpp" line="347"></location>
+      <location filename="src/ui/AppController.cpp" line="369"></location>
       <source>The capture type is invalid.</source>
       <translation>捕获类型是不有效的.</translation>
     </message>
@@ -820,7 +820,7 @@
       <translation>无法哈希 %1现在我们要做什么?</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="182"></location>
+      <location filename="src/ui/AppController.cpp" line="194"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>便携式配置文件只能通过安装的 GameHQ 现在我们要做什么?</translation>
     </message>
@@ -845,12 +845,12 @@
       <translation>恢复的便携式进口日志无法删除.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="188"></location>
+      <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Select a local GameHQ portable folder.</source>
       <translation>选择一个本地 GameHQ 携带式文件.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="197"></location>
+      <location filename="src/ui/AppController.cpp" line="209"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>已选的文件不是一个 GameHQ 便携式包装.</translation>
     </message>
@@ -880,12 +880,12 @@
       <translation>可移植:/路径逃离所选的包根.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="208"></location>
+      <location filename="src/ui/AppController.cpp" line="220"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ 无法确定自己的进口工艺.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="218"></location>
+      <location filename="src/ui/AppController.cpp" line="230"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ 无法启动便携式导入过程.</translation>
     </message>
@@ -960,22 +960,22 @@
       <translation>另一个便携式配置文件已经运行.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="445"></location>
+      <location filename="src/app/App.cpp" line="446"></location>
       <source>The update was cancelled because capture work did not finish safely in time.</source>
       <translation>由于捕获工作未及时完成,</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="334"></location>
+      <location filename="src/updates/UpdateService.cpp" line="333"></location>
       <source>Update check failed: %1</source>
       <translation>更新检查失败: %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="123"></location>
+      <location filename="src/updates/UpdateService.cpp" line="122"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub 暂时限制了更新检查。GameHQ 将稍后重试。</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="117"></location>
+      <location filename="src/updates/UpdateService.cpp" line="116"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub 暂时限制了更新检查。GameHQ 将在 %1 后重试。</translation>
     </message>
@@ -1212,7 +1212,7 @@
       <translation>GameHQ 无法发布更新交易.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="420"></location>
+      <location filename="src/app/App.cpp" line="421"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ 无法开始更新维护: %1</translation>
     </message>
@@ -1262,27 +1262,27 @@
       <translation>GameHQ 无法安全地在此安装中写更新文件.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="225"></location>
+      <location filename="src/updates/UpdateService.cpp" line="224"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>下载后版本发生了变化. 在安装之前再检查一次.</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="282"></location>
+      <location filename="src/updates/UpdateService.cpp" line="281"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>已下载的版本在安装之前被撤销.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="326"></location>
+      <location filename="src/updates/UpdateService.cpp" line="325"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>释放不能延长有效期: %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="254"></location>
+      <location filename="src/updates/UpdateService.cpp" line="253"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>在安装之前,释放不能重新有效.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="304"></location>
+      <location filename="src/updates/UpdateService.cpp" line="303"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub 在安装之前无法重新验证此版本.稍后再尝试.</translation>
     </message>
@@ -1423,27 +1423,27 @@ This cannot be undone.</source>
       <translation>%1 查看器</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="323"></location>
+      <location filename="src/ui/AppController.cpp" line="335"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>检查每个显示器的当前HDR状态.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="309"></location>
+      <location filename="src/ui/AppController.cpp" line="321"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR 已启用</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="314"></location>
+      <location filename="src/ui/AppController.cpp" line="326"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR 未启用</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="303"></location>
+      <location filename="src/ui/AppController.cpp" line="315"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>没有显示报告的图形驱动程序</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="297"></location>
+      <location filename="src/ui/AppController.cpp" line="309"></location>
       <source>Not checked yet</source>
       <translation>没有检查过</translation>
     </message>
@@ -2099,32 +2099,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>设置</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="279"></location>
+      <location filename="src/app/App.cpp" line="280"></location>
       <source>Reason: %1</source>
       <translation>原因：%1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="285"></location>
+      <location filename="src/app/App.cpp" line="286"></location>
       <source>Replay failed</source>
       <translation>重播失败</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="265"></location>
+      <location filename="src/app/App.cpp" line="266"></location>
       <source>Replay saved</source>
       <translation>重播保存</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="217"></location>
+      <location filename="src/app/App.cpp" line="218"></location>
       <source>Screenshot saved</source>
       <translation>屏幕截图保存</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="328"></location>
+      <location filename="src/app/App.cpp" line="329"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 已使用默认设置启动。系统保留了之前的设置文件，因此没有丢失任何内容。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="323"></location>
+      <location filename="src/app/App.cpp" line="324"></location>
       <source>Settings could not be read</source>
       <translation>设置无法读取</translation>
     </message>
@@ -2184,7 +2184,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="104"></location>
+      <location filename="src/ui/AppController.cpp" line="112"></location>
       <source>Release notes</source>
       <translation type="unfinished"></translation>
     </message>

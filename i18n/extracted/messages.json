@@ -2217,7 +2217,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 341
+          "line": 353
         }
       ],
       "plural": false,
@@ -2289,11 +2289,11 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 335
+          "line": 347
         },
         {
           "file": "src/ui/AppController.cpp",
-          "line": 357
+          "line": 369
         }
       ],
       "plural": false,
@@ -2850,7 +2850,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 182
+          "line": 194
         }
       ],
       "plural": false,
@@ -2937,7 +2937,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 188
+          "line": 200
         }
       ],
       "plural": false,
@@ -2956,7 +2956,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 197
+          "line": 209
         }
       ],
       "plural": false,
@@ -3060,7 +3060,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 208
+          "line": 220
         }
       ],
       "plural": false,
@@ -3079,7 +3079,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 218
+          "line": 230
         }
       ],
       "plural": false,
@@ -3345,7 +3345,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 445
+          "line": 446
         }
       ],
       "plural": false,
@@ -3362,7 +3362,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 334
+          "line": 333
         }
       ],
       "plural": false,
@@ -3381,7 +3381,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 123
+          "line": 122
         }
       ],
       "plural": false,
@@ -3400,7 +3400,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 117
+          "line": 116
         }
       ],
       "plural": false,
@@ -4255,7 +4255,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 420
+          "line": 421
         }
       ],
       "plural": false,
@@ -4437,7 +4437,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 225
+          "line": 224
         }
       ],
       "plural": false,
@@ -4454,7 +4454,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 282
+          "line": 281
         }
       ],
       "plural": false,
@@ -4471,7 +4471,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 326
+          "line": 325
         }
       ],
       "plural": false,
@@ -4490,7 +4490,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 254
+          "line": 253
         }
       ],
       "plural": false,
@@ -4507,7 +4507,7 @@
       "locations": [
         {
           "file": "src/updates/UpdateService.cpp",
-          "line": 304
+          "line": 303
         }
       ],
       "plural": false,
@@ -4990,7 +4990,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 323
+          "line": 335
         }
       ],
       "plural": false,
@@ -5007,7 +5007,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 309
+          "line": 321
         }
       ],
       "plural": false,
@@ -5024,7 +5024,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 314
+          "line": 326
         }
       ],
       "plural": false,
@@ -5041,7 +5041,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 303
+          "line": 315
         }
       ],
       "plural": false,
@@ -5058,7 +5058,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 297
+          "line": 309
         }
       ],
       "plural": false,
@@ -7327,7 +7327,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 279
+          "line": 280
         }
       ],
       "plural": false,
@@ -7346,7 +7346,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 285
+          "line": 286
         }
       ],
       "plural": false,
@@ -7363,7 +7363,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 265
+          "line": 266
         }
       ],
       "plural": false,
@@ -7380,7 +7380,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 217
+          "line": 218
         }
       ],
       "plural": false,
@@ -7397,7 +7397,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 328
+          "line": 329
         }
       ],
       "plural": false,
@@ -7416,7 +7416,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 323
+          "line": 324
         }
       ],
       "plural": false,
@@ -7627,7 +7627,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 104
+          "line": 112
         }
       ],
       "plural": false,
