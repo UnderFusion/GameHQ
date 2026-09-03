@@ -18,8 +18,8 @@
   <sys:String x:Key="LOCGameHQIntegrationSectionSupport">Pomoc</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationOpenGameHQ">Otwórz GameHQ</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationOpenPlayniteLog">Otwórz dziennik Playnite</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationWebsite">Witryna</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationCopyDiagnostics">Kopiuj diagnostykę</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationWebsite">Strona internetowa</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationCopyDiagnostics">Kopiuj dane diagnostyczne</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLogHint">Komunikaty wtyczki są zapisywane w głównym dzienniku Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLastErrorFormat">Ostatni błąd: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSectionAbout">O tej integracji</sys:String>

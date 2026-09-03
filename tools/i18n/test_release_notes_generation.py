@@ -83,6 +83,27 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         self.assertEqual(2, manifest_schema["properties"]["schema_version"]["const"])
         self.assertEqual(3, len(document_schema["oneOf"]))
 
+    def test_changed_launch_claim_tracks_each_locale_without_silent_translation(self) -> None:
+        launch = self.manifest["localization_launch"]
+        english = GEN.read_json(SOURCE_ROOT / "versions" / launch["version"] / "en-US.json")
+        state = GEN.validate_linguistic_state(SOURCE_ROOT, launch, self.locales, english)
+        statuses = state["units"]["known-limitations-01"]["locales"]
+        self.assertEqual("source_reviewed", statuses["en-US"])
+        self.assertEqual("contextually_reviewed", statuses["pl-PL"])
+        self.assertEqual(14, sum(value == "stale_review_pending" for value in statuses.values()))
+
+        stale = copy.deepcopy(state)
+        stale["units"]["known-limitations-01"]["source_hash"] = "0" * 64
+        temporary, root = self.temporary_sources()
+        with temporary:
+            (root / "linguistic-state.json").write_text(
+                json.dumps(stale, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+            )
+            self.assert_contract_error(
+                lambda: GEN.validate_linguistic_state(root, launch, self.locales, english),
+                "stale English source hash",
+            )
+
     def test_generated_english_reproduces_the_frozen_released_history(self) -> None:
         """The released 0.7.3-0.7.6 English history is immutable. The fixture is
         the byte-frozen record migrated off the retired assets/release-notes.json;

@@ -47,7 +47,7 @@
       "items": [
         {
           "id": "known-limitations-01",
-          "text": "Twelve languages ship with translated interface text. Italian, Latin American Spanish, Thai and Ukrainian can already be selected and currently show the complete English text."
+          "text": "All sixteen launch languages now include translated interface text. Contextual linguistic review is still required before release."
         }
       ]
     }

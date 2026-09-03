@@ -32,15 +32,19 @@
     },
     {
       "path": "assets/release-notes/versions/0.7.7/en-US.json",
-      "sha256": "4eca79edc72ddf4589aef53940a5de855c12619c9d8251582f24e830f32f9a44"
+      "sha256": "759bc401bfb26376a7cba6f95c1e121ae7bee15c83e18a109eb53a8dedb46daa"
     },
     {
       "path": "i18n/release/corrections.json",
       "sha256": "51b33f67675b56a836dbcc639f1d0eee396f6b12feca7fc3d47ed947ffd182a6"
     },
     {
+      "path": "assets/release-notes/linguistic-state.json",
+      "sha256": "717f9da93b8edbd3f479f949b0569beb0e4696d1c77bc9a16ba67d49dabdc478"
+    },
+    {
       "path": "i18n/quality/reviews/pl-PL.json",
-      "sha256": "fda0cda51cfaf23667d17e6c8ccbcb03b46d29238379fee1f38e3f39d35e2be1"
+      "sha256": "8ee391da8c66dddc77c6b8a82b3dab043c6b8803dd6a14b86796cb1c4117a578"
     }
   ],
   "portfolio": {
@@ -152,7 +156,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/en-US.json",
-        "sha256": "4eca79edc72ddf4589aef53940a5de855c12619c9d8251582f24e830f32f9a44"
+        "sha256": "759bc401bfb26376a7cba6f95c1e121ae7bee15c83e18a109eb53a8dedb46daa"
       },
       "translation_state_counts": {
         "human_reviewed": 831
@@ -201,7 +205,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/zh-Hans.json",
-        "sha256": "a27852e4fcfc5afdd87614b20bebb6f8f1fb8e46a561f903ec61f726496804a4"
+        "sha256": "126e2831b39d4b645c03fe66c0e8726773adff26741cbda392de671edfd92025"
       },
       "translation_state_counts": {
         "machine_translated": 831
@@ -250,7 +254,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/ru-RU.json",
-        "sha256": "1fc2434f924ae9d4aa434fc24ff19b3e755db2060dc03c3f5a9943c1f4c0617e"
+        "sha256": "3413ddf28c8ab85ba767aa0dadc23c5fdc8718d5364753754cab6eb18f3c699e"
       },
       "translation_state_counts": {
         "machine_translated": 831
@@ -299,7 +303,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/es-ES.json",
-        "sha256": "5a8fec9186ceb57d1ad7dd3d3909fe9d291fb52bc35ecc0c161650ec410fd0c8"
+        "sha256": "4ccee07d7709d73e107a91f8d77f2896f663b2e4ee00f19d9ef91793a295b7d3"
       },
       "translation_state_counts": {
         "machine_translated": 831
@@ -348,7 +352,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/pt-BR.json",
-        "sha256": "0e45680d995343aee94f6d10b1a958d7b531cf411a2e5f50a9828d823a5c2f1e"
+        "sha256": "94f136c70af288daadf3655074690e100f43916e0c2e904f60e2cf40090bfc09"
       },
       "translation_state_counts": {
         "machine_translated": 831
@@ -397,7 +401,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/de-DE.json",
-        "sha256": "c8a7a174d62efe0e3aaab15ed557447f0faa156126fa5f3d5f816b5d14426c60"
+        "sha256": "517aca4d46e0d035f35d56264dba00ec5592455ea7bfff1435edb85240531054"
       },
       "translation_state_counts": {
         "machine_translated": 831
@@ -446,7 +450,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/ja-JP.json",
-        "sha256": "74176588036f2cdde8bddf7201d02605a942460b6e15098a0aafdcdbaeba4370"
+        "sha256": "40b112c5a3f9f461eeb9c79fe2bc662f03398cbe524c0a03593c0c72e6b88aba"
       },
       "translation_state_counts": {
         "machine_translated": 831
@@ -495,7 +499,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/fr-FR.json",
-        "sha256": "93dc4f702a531eb006bd438b640965ad36d511791c00e0429134e5d91b8f7668"
+        "sha256": "037036efc0164578843c0f769d29a3701c8651a3d50485707c9ec2f57d88a234"
       },
       "translation_state_counts": {
         "machine_translated": 831
@@ -537,14 +541,14 @@
     },
     "pl-PL": {
       "catalog": "i18n/app/gamehq_pl_PL.ts",
-      "catalog_sha256": "ae9b4cf31be6ae53a7b25660840afd5a049ae42f0af7e4c5860e70f301759383",
+      "catalog_sha256": "df1c1207f40efac78fdbff12431bf90dd99d0ab41a9299fedb9ad1bcfd6e5b8e",
       "style": {
         "path": "i18n/style/pl-PL.json",
         "sha256": "18bdb3c57631723aa73fa9683aacb133c55fda7db262fb38c9ddc0e49e294bc9"
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/pl-PL.json",
-        "sha256": "e374f762246cbf55cb03131aab08f888fed97b5517f95662fa873bdc1047bb76"
+        "sha256": "cbbaf052228eaaacb227a6af013ba00e4a3974060d6aa8b0a5953cc10578ed55"
       },
       "translation_state_counts": {
         "contextually_reviewed": 831
@@ -583,7 +587,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/pl-PL.json",
-          "sha256": "fda0cda51cfaf23667d17e6c8ccbcb03b46d29238379fee1f38e3f39d35e2be1"
+          "sha256": "8ee391da8c66dddc77c6b8a82b3dab043c6b8803dd6a14b86796cb1c4117a578"
         }
       }
     },
@@ -596,7 +600,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/ko-KR.json",
-        "sha256": "300ce71679c8fde9421685379d043d0d85d77fc054ccc918db99af56e657a0e6"
+        "sha256": "4dd3d2b3f0f09979fbe51e5d9830ada96b5e39c43aee8bfcad90a04b3c290caa"
       },
       "translation_state_counts": {
         "machine_translated": 831
@@ -645,7 +649,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/zh-Hant.json",
-        "sha256": "00a341d7fc33bf4d915cb986a8b60bdb6d58de383f9c9eb7827bc87183427647"
+        "sha256": "fd90124d02028ffc27a174b4cca2f443e6020548e4fe76d7d4016b890f7dd036"
       },
       "translation_state_counts": {
         "machine_translated": 831
@@ -694,7 +698,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/tr-TR.json",
-        "sha256": "de07b74361c4979a9e6394d5c307a8977ca23000096970d7aa76be5a91b3e7f3"
+        "sha256": "4c70becd9bc8c9827dacf6126efcd0ae80c0e8d5796ffc65714b97484163d8a6"
       },
       "translation_state_counts": {
         "machine_translated": 831
@@ -743,7 +747,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/th-TH.json",
-        "sha256": "5b61d57bd0e5dd3ef08a2a23f3e804fd71f0fdd377ce236976d73c44474f8839"
+        "sha256": "538a920270a4818b142238b05f7b4318354a2366e3930649f7674bd6fdfcfc98"
       },
       "translation_state_counts": {
         "machine_translated": 831
@@ -792,7 +796,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/es-419.json",
-        "sha256": "0c0be2c162b6bf12eeaecad3bb209eadf4e6fa30fa04f05eb51f52591f66c34d"
+        "sha256": "70fbfec881265aa84f24806d8bdf4e70bf388dbc1d1038227acbc90bba4ad690"
       },
       "translation_state_counts": {
         "machine_translated": 831
@@ -841,7 +845,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/uk-UA.json",
-        "sha256": "cf8d7b3050d9c850df05ee21a5a3056f89f58cad65d07dd71063fe22e37ee96b"
+        "sha256": "7d3c32cb099d019a5a28f94c6a44c54b2a7533de10760e20f7f9a9d908b809a7"
       },
       "translation_state_counts": {
         "machine_translated": 831
@@ -890,7 +894,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/it-IT.json",
-        "sha256": "ebd1cb9f778b4d4d80a503b21b3c46fd3062a0cf5f634f9f91a8de9f30c2b1bd"
+        "sha256": "0aa332b82dfa45ef3d75d538c85b3dac519805895d35bb4e666306777959675b"
       },
       "translation_state_counts": {
         "machine_translated": 831

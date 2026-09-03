@@ -148,9 +148,17 @@ def validate_translation(label: str, message: dict[str, object], text: str) -> N
         raise VerificationError(f"{label}: placeholder multiset differs from English source")
     if extraction.markup_signature(text) != message["markup_signature"]:
         raise VerificationError(f"{label}: markup signature differs from English source")
-    if Counter(extraction.protected_tokens(text)) != Counter(
-        extraction.protected_tokens(source)
-    ):
+    source_tokens = Counter(extraction.protected_tokens(source))
+    translated_tokens = Counter(extraction.protected_tokens(text))
+    unexpected = translated_tokens - source_tokens
+    # A translation may name the product explicitly where the English source
+    # uses an implied subject. Other added protected values (URLs, executables,
+    # registry paths, IDs) remain forbidden, and source tokens remain exact.
+    permitted_brand_context = (
+        unexpected == Counter({"GameHQ": 1}) and source_tokens["GameHQ"] == 0
+    )
+    if any(translated_tokens[token] != count for token, count in source_tokens.items()) \
+            or (unexpected and not permitted_brand_context):
         raise VerificationError(f"{label}: protected token differs from English source")
     for token in message["protected_tokens"]:
         if text.count(str(token)) != source.count(str(token)):
@@ -162,7 +170,13 @@ def validate_translation(label: str, message: dict[str, object], text: str) -> N
         source.count("\\n"),
     ):
         raise VerificationError(f"{label}: line-break token count differs from English source")
-    if not message["markup_signature"] and accelerator_count(text) != accelerator_count(source):
+    mnemonic_surface = any(
+        not str(location.get("file", "")).endswith(".qml")
+        for location in message.get("locations", [])
+        if isinstance(location, dict)
+    )
+    if mnemonic_surface and not message["markup_signature"] \
+            and accelerator_count(text) != accelerator_count(source):
         raise VerificationError(f"{label}: accelerator marker count differs from English source")
 
 

@@ -42,7 +42,7 @@
     <message id="gamehq.about.product_description">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="629"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
-      <translation>Obsługująca kontroler galeria zrzutów ekranu, powtórek i multimediów do gier na PC.</translation>
+      <translation>Galeria zrzutów ekranu, powtórek i multimediów do gier na PC, wygodna w obsłudze kontrolerem.</translation>
     </message>
     <message id="gamehq.about.product_updated">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="484"></location>
@@ -136,12 +136,12 @@
     <message id="gamehq.action.desktop.bulk_toggle.description">
       <location filename="src/input/ActionCatalog.cpp" line="300"></location>
       <source>Enter or leave bulk selection mode.</source>
-      <translation>Wejdź lub wyjdź z trybu wyboru zbiorczego.</translation>
+      <translation>Włącz lub wyłącz tryb wyboru wielu elementów.</translation>
     </message>
     <message id="gamehq.action.desktop.bulk_toggle.label">
       <location filename="src/input/ActionCatalog.cpp" line="297"></location>
       <source>Bulk Select</source>
-      <translation>Wybór zbiorczy</translation>
+      <translation>Wybór wielu</translation>
     </message>
     <message id="gamehq.action.desktop.confirm.description">
       <location filename="src/input/ActionCatalog.cpp" line="223"></location>
@@ -196,7 +196,7 @@
     <message id="gamehq.action.desktop.navigate_right.description">
       <location filename="src/input/ActionCatalog.cpp" line="216"></location>
       <source>Move selection right in the gallery.</source>
-      <translation>Przenieś zaznaczenie w prawo w galerii.</translation>
+      <translation>Przesuń zaznaczenie w prawo w galerii.</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_right.label">
       <location filename="src/input/ActionCatalog.cpp" line="213"></location>
@@ -236,12 +236,12 @@
     <message id="gamehq.action.desktop.settings.description">
       <location filename="src/input/ActionCatalog.cpp" line="265"></location>
       <source>Open the Settings panel from anywhere in the gallery.</source>
-      <translation>Otwórz panel Ustawienia z dowolnego miejsca w galerii.</translation>
+      <translation>Otwórz panel ustawień z dowolnego miejsca w galerii.</translation>
     </message>
     <message id="gamehq.action.desktop.settings.label">
       <location filename="src/input/ActionCatalog.cpp" line="262"></location>
       <source>Open Settings</source>
-      <translation>Otwórz Ustawienia</translation>
+      <translation>Otwórz ustawienia</translation>
     </message>
     <message id="gamehq.action.desktop.tab_next.description">
       <location filename="src/input/ActionCatalog.cpp" line="258"></location>
@@ -256,7 +256,7 @@
     <message id="gamehq.action.desktop.tab_prev.description">
       <location filename="src/input/ActionCatalog.cpp" line="251"></location>
       <source>Step to the previous sidebar category.</source>
-      <translation>Przejdź do poprzedniej kategorii paska bocznego.</translation>
+      <translation>Przejdź do poprzedniej kategorii na pasku bocznym.</translation>
     </message>
     <message id="gamehq.action.desktop.tab_prev.label">
       <location filename="src/input/ActionCatalog.cpp" line="248"></location>
@@ -461,7 +461,7 @@
     <message id="gamehq.action.playback.play_pause.description">
       <location filename="src/input/ActionCatalog.cpp" line="308"></location>
       <source>Toggle playback of the focused clip.</source>
-      <translation>Przełącz odtwarzanie zaznaczonego klipu.</translation>
+      <translation>Odtwórz lub wstrzymaj zaznaczony klip.</translation>
     </message>
     <message id="gamehq.action.playback.play_pause.label">
       <location filename="src/input/ActionCatalog.cpp" line="305"></location>
@@ -569,7 +569,7 @@
     <message id="gamehq.common.action.use_default">
       <location filename="src/ui/qml/components/SettingsPathRow.qml" line="21"></location>
       <source>Use default</source>
-      <translation>Użyj domyślnych</translation>
+      <translation>Użyj domyślnego</translation>
     </message>
     <message id="gamehq.dialog.confirm.default_title">
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="11"></location>
@@ -596,7 +596,7 @@
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="287"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="306"></location>
       <source>%1 ms (fast)</source>
-      <translation>%1 ms (krótko)</translation>
+      <translation>%1 ms (krócej)</translation>
     </message>
     <message id="gamehq.duration.milliseconds.relaxed">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="293"></location>
@@ -679,12 +679,12 @@
     <message id="gamehq.error.portable_import.capture_history_value_invalid">
       <location filename="src/config/PortableProfileImporter.cpp" line="391"></location>
       <source>Capture-root history contains a non-string value.</source>
-      <translation>Historia folderów bazowych materiałów zawiera wartość, która nie jest tekstem.</translation>
+      <translation>Historia folderów bazowych przechwytywania zawiera wartość, która nie jest ciągiem znaków.</translation>
     </message>
     <message id="gamehq.error.portable_import.commit_staged_file_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
       <source>Cannot commit staged %1.</source>
-      <translation>Nie można zatwierdzić przygotowanego elementu %1.</translation>
+      <translation>Nie można zatwierdzić przygotowanego pliku %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_malformed">
       <location filename="src/config/PortableProfileImporter.cpp" line="343"></location>
@@ -699,7 +699,7 @@
     <message id="gamehq.error.portable_import.config_read_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="333"></location>
       <source>Cannot read the portable config.json.</source>
-      <translation>Nie można odczytać przenośnego config.json.</translation>
+      <translation>Nie można odczytać pliku config.json profilu przenośnego.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_value_not_array">
       <location filename="src/config/PortableProfileImporter.cpp" line="382"></location>
@@ -719,7 +719,7 @@
     <message id="gamehq.error.portable_import.database_foreign_key_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="833"></location>
       <source>The staged database failed its foreign-key check.</source>
-      <translation>Przygotowana baza danych nie przeszła kontroli klucza obcego.</translation>
+      <translation>Przygotowana baza danych nie przeszła kontroli kluczy obcych.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_integrity_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="822"></location>
@@ -734,7 +734,7 @@
     <message id="gamehq.error.portable_import.database_open_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="749"></location>
       <source>The staged portable database cannot be opened: %1</source>
-      <translation>Nie można otworzyć przygotowanej przenośnej bazy danych: %1</translation>
+      <translation>Nie można otworzyć przygotowanej bazy danych profilu przenośnego: %1</translation>
     </message>
     <message id="gamehq.error.portable_import.database_operation_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="28"></location>
@@ -831,7 +831,7 @@
     <message id="gamehq.error.portable_import.journal_invalid">
       <location filename="src/config/PortableProfileImporter.cpp" line="263"></location>
       <source>The interrupted portable-import journal is invalid.</source>
-      <translation>Przerwany dziennik importu przenośnego jest nieprawidłowy.</translation>
+      <translation>Dziennik przerwanego importu profilu przenośnego jest nieprawidłowy.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_malformed">
       <location filename="src/config/PortableProfileImporter.cpp" line="242"></location>
@@ -841,7 +841,7 @@
     <message id="gamehq.error.portable_import.journal_read_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="231"></location>
       <source>The interrupted portable-import journal cannot be read.</source>
-      <translation>Nie można odczytać przerwanego dziennika importu przenośnego.</translation>
+      <translation>Nie można odczytać dziennika przerwanego importu profilu przenośnego.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_remove_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="315"></location>
@@ -851,7 +851,7 @@
     <message id="gamehq.error.portable_import.local_folder_required">
       <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Select a local GameHQ portable folder.</source>
-      <translation>Wybierz lokalny folder przenośny GameHQ.</translation>
+      <translation>Wybierz lokalny folder przenośnej wersji GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
       <location filename="src/ui/AppController.cpp" line="209"></location>
@@ -1011,12 +1011,12 @@
     <message id="gamehq.error.update.download.flush_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="212"></location>
       <source>GameHQ could not flush the update download to disk.</source>
-      <translation>GameHQ nie mógł opróżnić bufora pobieranej aktualizacji na dysk.</translation>
+      <translation>GameHQ nie mógł wymusić zapisu pobranej aktualizacji na dysku.</translation>
     </message>
     <message id="gamehq.error.update.download.http_status">
       <location filename="src/updates/UpdateDownloader.cpp" line="257"></location>
       <source>Update download failed with HTTP status %1.</source>
-      <translation>Pobieranie aktualizacji nie powiodło się (stan HTTP: %1).</translation>
+      <translation>Pobieranie aktualizacji nie powiodło się (kod stanu HTTP: %1).</translation>
     </message>
     <message id="gamehq.error.update.download.https_required">
       <location filename="src/updates/UpdateDownloader.cpp" line="80"></location>
@@ -1121,7 +1121,7 @@
     <message id="gamehq.error.update.download.signed_size_invalid">
       <location filename="src/updates/UpdateDownloader.cpp" line="423"></location>
       <source>The signed update package size is out of range.</source>
-      <translation>Rozmiar podpisanego pakietu aktualizacji jest niedozwolony.</translation>
+      <translation>Rozmiar podpisanego pakietu aktualizacji jest poza dozwolonym zakresem.</translation>
     </message>
     <message id="gamehq.error.update.download.size_limit_exceeded">
       <location filename="src/updates/UpdateDownloader.cpp" line="190"></location>
@@ -1162,7 +1162,7 @@
     <message id="gamehq.error.update.install.helper_rejected">
       <location filename="src/updates/UpdateInstaller.cpp" line="212"></location>
       <source>The updater helper rejected the update before it became ready.</source>
-      <translation>Program pomocniczy aktualizatora odrzucił aktualizację, zanim była gotowa.</translation>
+      <translation>Program pomocniczy aktualizatora odrzucił aktualizację, zanim zgłosił gotowość.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_start_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="195"></location>
@@ -1233,7 +1233,7 @@
     <message id="gamehq.error.update.preflight.network_share">
       <location filename="src/updates/UpdatePreflight.cpp" line="21"></location>
       <source>Automatic updating is not supported from a network share. Use the release page instead.</source>
-      <translation>Aktualizacja automatyczna nie jest obsługiwana z udziału sieciowego. Pobierz aktualizację ze strony wydania.</translation>
+      <translation>Automatyczna aktualizacja nie jest obsługiwana, gdy GameHQ działa z zasobu sieciowego. Pobierz aktualizację ze strony wydania.</translation>
     </message>
     <message id="gamehq.error.update.preflight.package_incomplete">
       <location filename="src/updates/UpdatePreflight.cpp" line="41"></location>
@@ -1467,7 +1467,7 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.help.feature.gallery.description">
       <location filename="src/ui/qml/HelpView.qml" line="318"></location>
       <source>All captures in one grid — filter by category or game. Grid navigation works with keyboard, mouse, and controller.</source>
-      <translation>Wszystkie nagrania w jednej siatce — filtruj według kategorii lub gry. Nawigacja po siatce współpracuje z klawiaturą, myszą i kontrolerem.</translation>
+      <translation>Wszystkie materiały w jednej siatce — filtruj według kategorii lub gry. Po siatce można poruszać się klawiaturą, myszą i kontrolerem.</translation>
     </message>
     <message id="gamehq.help.feature.gallery.title">
       <location filename="src/ui/qml/HelpView.qml" line="316"></location>
@@ -1497,7 +1497,7 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.help.feature.replay.description">
       <location filename="src/ui/qml/HelpView.qml" line="306"></location>
       <source>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
-      <translation>Zawsze gotowy do nagrywania. Działa w tle, gdy okno gry jest aktywne. Przytrzymaj Share (lub Ctrl+Shift+E), aby zapisać kilka ostatnich sekund jako klip. Nagrywanie w tle można włączyć lub wyłączyć w Ustawieniach → Powtórki.</translation>
+      <translation>Zawsze aktywny i gotowy do nagrywania. Nagrywa w tle, gdy okno gry jest aktywne. W Ustawieniach → Powtórki ustaw długość powtórki na 15–300 sekund.</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
       <location filename="src/ui/qml/HelpView.qml" line="304"></location>
@@ -1507,7 +1507,7 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.help.feature.screenshots.description">
       <location filename="src/ui/qml/HelpView.qml" line="312"></location>
       <source>GDI grab of the active game window. PNG saved to your captures folder with instant shutter feedback.</source>
-      <translation>Przechwytuje aktywne okno gry przez GDI. Plik PNG jest zapisywany w folderze zrzutów ekranu, a wykonanie zrzutu jest natychmiast sygnalizowane.</translation>
+      <translation>Aktywne okno gry jest przechwytywane przez GDI. Plik PNG trafia do folderu zrzutów ekranu, a wykonanie zrzutu jest od razu sygnalizowane.</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
       <location filename="src/ui/qml/HelpView.qml" line="310"></location>
@@ -1517,7 +1517,7 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.help.feature.watched_folders.description">
       <location filename="src/ui/qml/HelpView.qml" line="336"></location>
       <source>Add any folder (Game Bar, Steam, NVIDIA ShadowPlay) — %1 scans it for new captures automatically.</source>
-      <translation>Dodaj dowolny folder (Game Bar, Steam, NVIDIA ShadowPlay) — %1 automatycznie wyszuka w nim nowe materiały.</translation>
+      <translation>Wskaż dowolny folder zrzutów ekranu, a %1 będzie automatycznie skanować go w poszukiwaniu nowych materiałów. Idealne rozwiązanie dla narzędzi zewnętrznych.</translation>
     </message>
     <message id="gamehq.help.feature.watched_folders.title">
       <location filename="src/ui/qml/HelpView.qml" line="334"></location>
@@ -1537,7 +1537,7 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.help.gamepad.button_combination_action">
       <location filename="src/ui/qml/HelpView.qml" line="187"></location>
       <source>Press the ordered pair within the configured combination window</source>
-      <translation>Naciśnij przyciski w ustalonej kolejności w skonfigurowanym oknie czasowym kombinacji</translation>
+      <translation>Naciśnij przyciski w ustalonej kolejności w skonfigurowanym oknie czasowym.</translation>
     </message>
     <message id="gamehq.help.gamepad.circle">
       <location filename="src/ui/qml/HelpView.qml" line="214"></location>
@@ -1572,7 +1572,7 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.help.gamepad.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="234"></location>
       <source>Cross toggles, Triangle selects all, Square deletes, Circle exits</source>
-      <translation>Krzyżyk przełącza zaznaczenie, Trójkąt zaznacza wszystko, Kwadrat usuwa, Kółko kończy</translation>
+      <translation>Krzyżyk przełącza zaznaczenie, Trójkąt zaznacza wszystko, Kwadrat usuwa, Kółko kończy tryb.</translation>
     </message>
     <message id="gamehq.help.gamepad.share_hold">
       <location filename="src/ui/qml/HelpView.qml" line="173"></location>
@@ -1592,7 +1592,7 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.help.gamepad.share_multi_tap_action">
       <location filename="src/ui/qml/HelpView.qml" line="181"></location>
       <source>Exact double/triple tap; lower counts wait only for the configured interval</source>
-      <translation>Dokładnie dwa lub trzy naciśnięcia; mniejsza liczba czeka tylko przez skonfigurowany odstęp</translation>
+      <translation>Dokładne podwójne lub potrójne naciśnięcie; przy mniejszej liczbie naciśnięć system czeka tylko przez ustawiony odstęp.</translation>
     </message>
     <message id="gamehq.help.gamepad.square">
       <location filename="src/ui/qml/HelpView.qml" line="220"></location>
@@ -1612,12 +1612,12 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.help.gamepad.system_share_action">
       <location filename="src/ui/qml/HelpView.qml" line="169"></location>
       <source>Take screenshot; distinct from Xbox View / Back</source>
-      <translation>Zrób zrzut ekranu; odróżnij od przycisku Xbox View / Back</translation>
+      <translation>Zrób zrzut ekranu; nie mylić z przyciskiem Xbox View / Back.</translation>
     </message>
     <message id="gamehq.help.gamepad.system_share_tap">
       <location filename="src/ui/qml/HelpView.qml" line="167"></location>
       <source>System Share (tap)</source>
-      <translation>Systemowy Share (naciśnięcie)</translation>
+      <translation>Systemowy przycisk Share (naciśnięcie)</translation>
     </message>
     <message id="gamehq.help.gamepad.triangle">
       <location filename="src/ui/qml/HelpView.qml" line="226"></location>
@@ -1648,7 +1648,7 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.help.keyboard.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="88"></location>
       <source>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</source>
-      <translation>Enter / Spacja przełącza, Ctrl+A wybiera wszystko, Usuń usuwa wybrane</translation>
+      <translation>Enter / Spacja przełącza zaznaczenie, Ctrl+A zaznacza wszystko, Delete usuwa zaznaczone.</translation>
     </message>
     <message id="gamehq.help.keyboard.show_in_explorer">
       <location filename="src/ui/qml/HelpView.qml" line="98"></location>
@@ -1680,12 +1680,12 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.help.open_controller_guide">
       <location filename="src/ui/qml/HelpView.qml" line="266"></location>
       <source>Open the controller compatibility guide</source>
-      <translation>Otwórz przewodnik zgodności kontrolerów</translation>
+      <translation>Otwórz przewodnik po zgodności kontrolerów</translation>
     </message>
     <message id="gamehq.input.assignment.capture_active">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="228"></location>
       <source>Controller capture active · Dialog navigation is paused</source>
-      <translation>Oczekiwanie na sterowanie z kontrolera · Nawigacja w oknie jest wstrzymana</translation>
+      <translation>Nasłuchiwanie kontrolera aktywne · Nawigacja w oknie jest wstrzymana</translation>
     </message>
     <message id="gamehq.input.assignment.combination_gesture">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="506"></location>
@@ -1748,7 +1748,7 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.input.assignment.notice.compatibility">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="593"></location>
       <source>Compatibility change required</source>
-      <translation>Wymagana zmiana zgodności</translation>
+      <translation>Wymagana zmiana dla zachowania zgodności</translation>
     </message>
     <message id="gamehq.input.assignment.notice.default">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="596"></location>
@@ -1763,7 +1763,7 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.input.assignment.pattern">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="197"></location>
       <source>Pattern</source>
-      <translation>Wzór</translation>
+      <translation>Typ</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.combination">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="209"></location>
@@ -1803,7 +1803,7 @@ Tej operacji nie można cofnąć.</numerusform>
     <message id="gamehq.input.binding_card.add_input">
       <location filename="src/ui/qml/components/BindingCard.qml" line="217"></location>
       <source>+ Add input</source>
-      <translation>+ Dodaj sterowanie</translation>
+      <translation>+ Dodaj wejście</translation>
     </message>
     <message id="gamehq.input.binding_card.add_status_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="194"></location>
@@ -2157,7 +2157,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.overlay.focus_warning">
       <location filename="src/ui/qml/OverlayWindow.qml" line="100"></location>
       <source>The game still has focus and may react to controller input</source>
-      <translation>Gra nadal jest aktywnym oknem i może reagować na kontroler</translation>
+      <translation>Okno gry nadal jest aktywne i może reagować na przyciski kontrolera.</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="34"></location>
@@ -2283,7 +2283,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="794"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
       <source>Security &amp; privacy</source>
-      <translation>Bezpieczeństwo i &amp;prywatność</translation>
+      <translation>Bezpieczeństwo i prywatność</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="275"></location>
@@ -2293,7 +2293,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.about.support.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="295"></location>
       <source>Enjoying %1? A GitHub star helps more players discover the project.</source>
-      <translation>Podoba Ci się %1? Gwiazdka GitHub pomaga większej liczbie graczy odkryć projekt.</translation>
+      <translation>Podoba Ci się %1? Gwiazdka na GitHubie pomaga większej liczbie graczy odkryć projekt.</translation>
     </message>
     <message id="gamehq.settings.about.support.star_on_github">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="298"></location>
@@ -2433,7 +2433,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.advanced.portable_folder.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="274"></location>
       <source>Select the GameHQ portable folder</source>
-      <translation>Wybierz folder przenośny GameHQ</translation>
+      <translation>Wybierz folder przenośnej wersji GameHQ</translation>
     </message>
     <message id="gamehq.settings.advanced.profile.installed">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="49"></location>
@@ -2740,7 +2740,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.category.notifications_sound">
       <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
       <source>Notifications &amp; sound</source>
-      <translation>Powiadomienia &amp; dźwięki</translation>
+      <translation>Powiadomienia i dźwięki</translation>
     </message>
     <message id="gamehq.settings.category.replay">
       <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
@@ -2771,7 +2771,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.feedback.audio.enabled.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="53"></location>
       <source>Play navigation and action feedback sounds.</source>
-      <translation>Odtwarzaj dźwięki nawigacji i sygnalizacji działania.</translation>
+      <translation>Odtwarzaj dźwięki nawigacji i potwierdzenia akcji.</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.enabled.label">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="51"></location>
@@ -2821,7 +2821,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.feedback.preview.label">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="90"></location>
       <source>Preview feedback</source>
-      <translation>Podgląd potwierdzeń</translation>
+      <translation>Podgląd powiadomień i dźwięków</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
@@ -2851,12 +2851,12 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.feedback.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="7"></location>
       <source>Notifications &amp; Sound</source>
-      <translation>Powiadomienia &amp; dźwięki</translation>
+      <translation>Powiadomienia i dźwięki</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="17"></location>
       <source>Control the result cards shown after capture and replay actions.</source>
-      <translation>Określ karty wyników wyświetlane po zrzucie ekranu lub zapisaniu powtórki.</translation>
+      <translation>Określ, czy po wykonaniu zrzutu ekranu lub zapisaniu powtórki mają być wyświetlane karty wyników.</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.enabled.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="23"></location>
@@ -2986,7 +2986,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.general.startup.windows.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="101"></location>
       <source>Start with Windows</source>
-      <translation>Uruchamiaj z Windows</translation>
+      <translation>Uruchamiaj z systemem Windows</translation>
     </message>
     <message id="gamehq.settings.general.theme.fallback">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="67"></location>
@@ -3053,7 +3053,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.input.capture.waiting">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="517"></location>
       <source>Waiting for input</source>
-      <translation>Oczekiwanie na sterowanie</translation>
+      <translation>Oczekiwanie na wejście</translation>
     </message>
     <message id="gamehq.settings.input.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="11"></location>
@@ -3068,7 +3068,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.input.devices.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="28"></location>
       <source>Choose a device type, then select either assignment slot to capture a new input.</source>
-      <translation>Wybierz typ urządzenia, a następnie jedno z miejsc przypisania, aby wykryć nowe sterowanie.</translation>
+      <translation>Wybierz typ urządzenia, a następnie jedno z miejsc przypisania, aby przypisać nowe wejście.</translation>
     </message>
     <message id="gamehq.settings.input.devices.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="24"></location>
@@ -3183,7 +3183,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.input.modern.guide.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
       <source>View versus true Share, probe results, reconnects, gestures, and combinations</source>
-      <translation>View a prawdziwy Share, wyniki testu, ponowne połączenia, gesty i kombinacje</translation>
+      <translation>Różnica między przyciskiem View a prawdziwym przyciskiem Share, wyniki testu, ponowne połączenia, gesty i kombinacje.</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="645"></location>
@@ -3198,7 +3198,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.input.modern.legacy_fallback">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="620"></location>
       <source>Legacy fallback</source>
-      <translation>Awaryjna obsługa starszych kontrolerów</translation>
+      <translation>Awaryjna obsługa starszych interfejsów</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="588"></location>
@@ -3233,7 +3233,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.input.modern.support.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="581"></location>
       <source>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</source>
-      <translation>Tryb Auto używa lokalnego modułu GameInput z bezpieczną obsługą starszych interfejsów; tryb Wyłączony pozostawia tylko starszych dostawców.</translation>
+      <translation>Tryb Auto używa lokalnego modułu GameInput z bezpiecznym awaryjnym przełączeniem na starsze mechanizmy obsługi; tryb Wyłączony korzysta wyłącznie ze starszych mechanizmów obsługi.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="579"></location>
@@ -3264,7 +3264,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.input.profile.shared_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="65"></location>
       <source>Position-based assignments work across PlayStation, Xbox, Nintendo, and generic pads.</source>
-      <translation>Przypisania oparte na pozycji działają na kontrolerach PlayStation, Xbox, Nintendo i kontrolerach ogólnych.</translation>
+      <translation>Ten profil jest używany przez kontrolery bez własnych nadpisań. Zmiany tutaj będą stosowane na innych standardowych kontrolerach.</translation>
     </message>
     <message id="gamehq.settings.input.profile.specific_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="62"></location>
@@ -3394,12 +3394,12 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.input.test.last_input">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="195"></location>
       <source>Last input</source>
-      <translation>Ostatnie sterowanie</translation>
+      <translation>Ostatnie wejście</translation>
     </message>
     <message id="gamehq.settings.input.test.probe_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="241"></location>
       <source>Records the next 3 seconds of raw button changes — including buttons GameHQ does not recognize — into the diagnostics you can copy from Advanced.</source>
-      <translation>Rejestruje kolejne 3 sekundy surowych zmian przycisków — w tym przycisków, których GameHQ nie rozpoznaje — w diagnostyce, którą możesz skopiować z poziomu Zaawansowane.</translation>
+      <translation>Rejestruje przez kolejne 3 sekundy nieprzetworzone zdarzenia przycisków — także tych, których GameHQ nie rozpoznaje — w danych diagnostycznych, które można skopiować z sekcji Zaawansowane.</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_displayed">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="206"></location>
@@ -3414,7 +3414,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.input.test.restore_specific_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="210"></location>
       <source>Remove overrides for this controller only.</source>
-      <translation>Usuń zastąpienia tylko dla tego kontrolera.</translation>
+      <translation>Usuń nadpisania tylko dla tego kontrolera.</translation>
     </message>
     <message id="gamehq.settings.input.test.start_probe">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="244"></location>
@@ -3459,7 +3459,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.library.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="11"></location>
       <source>Review every folder GameHQ manages or scans for media.</source>
-      <translation>Przejrzyj każdy folder zarządzany przez GameHQ lub skanowany w poszukiwaniu multimediów.</translation>
+      <translation>Przejrzyj każdy folder zarządzany przez GameHQ lub skanowany w poszukiwaniu materiałów.</translation>
     </message>
     <message id="gamehq.settings.library.imports.add">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="85"></location>
@@ -3593,7 +3593,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.portable_import.message">
       <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
       <source>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
-      <translation>Akceptowany jest tylko nowo zainstalowany profil. Materiały profilu przenośnego pozostają na miejscu, źródło nigdy nie jest modyfikowane, a GameHQ uruchamia się ponownie, aby dokończyć import.</translation>
+      <translation>Import jest możliwy tylko do czystego profilu instalacyjnego. Materiały profilu przenośnego pozostają na miejscu, źródło nie jest modyfikowane, a GameHQ uruchamia się ponownie, aby dokończyć import.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
       <location filename="src/ui/qml/SettingsView.qml" line="469"></location>
@@ -3608,7 +3608,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.replay.buffer.enabled.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="46"></location>
       <source>Record a rolling buffer whenever an eligible game is active.</source>
-      <translation>Nagrywaj bufor cykliczny, gdy działa obsługiwana gra.</translation>
+      <translation>Nagrywaj do bufora cyklicznego, gdy aktywna jest obsługiwana gra.</translation>
     </message>
     <message id="gamehq.settings.replay.buffer.enabled.label">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="44"></location>
@@ -3643,7 +3643,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.replay.encoding.bitrate_description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="109"></location>
       <source>Higher values improve motion detail but use more storage and encoder bandwidth.</source>
-      <translation>Wyższe wartości poprawiają szczegółowość ruchu, ale wymagają większej pamięci i przepustowości kodera.</translation>
+      <translation>Wyższe wartości poprawiają szczegółowość ruchu, ale zajmują więcej miejsca na dysku i wymagają większej przepustowości kodera.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="79"></location>
@@ -3683,7 +3683,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.replay.feedback.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="140"></location>
       <source>Saved replays go to %1. Failures always notify you.</source>
-      <translation>Zapisane powtórki trafiają do %1. Błędy są zawsze zgłaszane.</translation>
+      <translation>Zapisane powtórki trafiają do %1. O każdym błędzie otrzymasz powiadomienie.</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.eyebrow">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="136"></location>
@@ -3708,7 +3708,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.replay.status.active_description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="28"></location>
       <source>Recording %1; the temporary ring is written only when you save a replay.</source>
-      <translation>Nagrywanie %1; bufor cykliczny jest zapisywany tylko po zapisaniu powtórki.</translation>
+      <translation>Nagrywanie %1; zawartość bufora cyklicznego trafia do pliku dopiero po zapisaniu powtórki.</translation>
     </message>
     <message id="gamehq.settings.replay.status.eyebrow">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="13"></location>

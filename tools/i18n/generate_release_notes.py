@@ -163,6 +163,46 @@ def source_integrity(document: dict[str, Any]) -> str:
     return "sha256:" + hashlib.sha256(canonical).hexdigest()
 
 
+def launch_item_texts(document: dict[str, Any]) -> dict[str, str]:
+    return {
+        item["id"]: item["text"]
+        for section in document["sections"]
+        for item in section["items"]
+    }
+
+
+def validate_linguistic_state(
+    source_root: Path, launch: dict[str, Any], locales: list[str], english: dict[str, Any]
+) -> dict[str, Any]:
+    path = source_root / "linguistic-state.json"
+    state = read_json(path)
+    required = {"$schema", "schema_version", "candidate", "source_integrity", "units"}
+    if set(state) != required or state.get("schema_version") != 1:
+        fail(f"{path}: invalid linguistic-state document")
+    if state.get("candidate") != launch["version"] \
+            or state.get("source_integrity") != source_integrity(english):
+        fail(f"{path}: stale candidate or source integrity")
+    units = state.get("units")
+    if not isinstance(units, dict) or not units:
+        fail(f"{path}: affected linguistic units are required")
+    source_items = launch_item_texts(english)
+    allowed = {"source_reviewed", "contextually_reviewed", "human_reviewed", "stale_review_pending"}
+    for unit_id, unit in units.items():
+        label = f"{path}:{unit_id}"
+        if unit_id not in source_items or not isinstance(unit, dict) \
+                or set(unit) != {"source_hash", "locales"}:
+            fail(f"{label}: unknown unit or invalid state shape")
+        expected_hash = hashlib.sha256(source_items[unit_id].encode("utf-8")).hexdigest()
+        if unit["source_hash"] != expected_hash:
+            fail(f"{label}: stale English source hash")
+        states = unit.get("locales")
+        if not isinstance(states, dict) or list(states) != locales or set(states.values()) - allowed:
+            fail(f"{label}: locale portfolio or review state is invalid")
+        if states["en-US"] != "source_reviewed":
+            fail(f"{label}: English source must be source-reviewed")
+    return state
+
+
 def validate_document_date(value: Any, expected: str | None, label: str) -> Any:
     """A draft document of a designated launch version keeps its date null until
     the owner assigns one. Released documents always carry a real ISO date."""
@@ -341,6 +381,12 @@ def launch_readiness(
             documents["en-US"] = "authored"
         except ReleaseNotesError as error:
             content_blockers.append(f"the English launch document is invalid: {error}")
+    linguistic_state: dict[str, Any] | None = None
+    if english is not None:
+        try:
+            linguistic_state = validate_linguistic_state(source_root, launch, locales, english)
+        except ReleaseNotesError as error:
+            content_blockers.append(f"launch linguistic state is invalid: {error}")
     for locale in locales:
         if locale == "en-US":
             continue
@@ -380,6 +426,7 @@ def launch_readiness(
         "localization_policy": launch["localization_policy"],
         "designated_by": launch["designated_by"],
         "documents": documents,
+        "linguistic_state": linguistic_state,
         "content_blockers": content_blockers,
         "release_blockers": release_blockers,
         "content_ready": not content_blockers,

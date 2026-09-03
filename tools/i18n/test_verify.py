@@ -17,6 +17,8 @@ import xml.etree.ElementTree as ET
 REPOSITORY = Path(__file__).resolve().parents[2]
 FIXTURE = REPOSITORY / "tests" / "fixtures" / "i18n-verify" / "project"
 VERIFY = REPOSITORY / "tools" / "i18n" / "verify.py"
+sys.path.insert(0, str(VERIFY.parent))
+import verify as verification  # noqa: E402
 
 
 class VerifyTest(unittest.TestCase):
@@ -128,6 +130,30 @@ class VerifyTest(unittest.TestCase):
         self.state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
         result = self.run_verify(expected=2)
         self.assertIn("contextual state lacks agent provenance", result.stderr)
+
+    def test_contextual_product_name_may_be_added_but_other_protected_tokens_may_not(self) -> None:
+        self.run_verify("--update-state")
+        self.edit_translation("gamehq.fixture.changed", "GameHQ — Stare zrodlo")
+        self.run_verify("--update-state")
+
+        self.edit_translation("gamehq.fixture.changed", "Stare zrodlo https://example.invalid")
+        result = self.run_verify("--update-state", expected=2)
+        self.assertIn("protected token differs from English source", result.stderr)
+
+    def test_qml_conjunction_ampersand_is_not_treated_as_a_mnemonic(self) -> None:
+        message = {
+            "source": "Security & privacy", "placeholders": [],
+            "markup_signature": [], "protected_tokens": [],
+            "locations": [{"file": "src/ui/qml/Settings.qml", "line": 1}],
+        }
+        verification.validate_translation(
+            "pl-PL/gamehq.fixture.qml", message, "Bezpieczeństwo i prywatność"
+        )
+        message["locations"] = [{"file": "src/ui/Menu.cpp", "line": 1}]
+        with self.assertRaisesRegex(verification.VerificationError, "accelerator marker"):
+            verification.validate_translation(
+                "pl-PL/gamehq.fixture.menu", message, "Bezpieczeństwo i prywatność"
+            )
 
     def test_structural_violations_fail_without_mutating_state(self) -> None:
         def missing_placeholder() -> None:

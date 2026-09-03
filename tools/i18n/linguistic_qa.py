@@ -144,6 +144,11 @@ def validate_review(root: Path, artifact_path: Path) -> dict[str, object]:
         path = root / str(surface.get("path"))
         if not path.is_file() or surface.get("sha256") != sha256(path) or int(surface.get("reviewed_units", 0)) < 1:
             raise ReviewError(f"{surface.get('surface')}: stale or incomplete surface evidence")
+    note_state = read_json(root / "assets/release-notes/linguistic-state.json")
+    for unit_id, unit in note_state.get("units", {}).items():
+        locale_status = unit.get("locales", {}).get(locale) if isinstance(unit, dict) else None
+        if locale_status not in {"source_reviewed", "contextually_reviewed", "human_reviewed"}:
+            raise ReviewError(f"{locale}: release-note unit {unit_id} remains {locale_status}")
     if locale == "pl-PL" and (catalog["gamehq.navigation.about"] != ["Info"] or catalog["gamehq.navigation.support_gamehq"] != ["Wesprzyj GameHQ"]):
         raise ReviewError("Polish sidebar calibration labels changed")
     if "https://ko-fi.com/underfusion" not in (root / "src/ui/qml/Brand.qml").read_text(encoding="utf-8"):

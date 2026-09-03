@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gamehq.local/schema/release-note-linguistic-state.schema.json",
+  "title": "GameHQ launch release-note linguistic state",
+  "type": "object",
+  "required": ["$schema", "schema_version", "candidate", "source_integrity", "units"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": 1 },
+    "candidate": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "source_integrity": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "units": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["source_hash", "locales"],
+        "additionalProperties": false,
+        "properties": {
+          "source_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "locales": {
+            "type": "object", "minProperties": 16, "maxProperties": 16,
+            "additionalProperties": {
+              "enum": ["source_reviewed", "contextually_reviewed", "human_reviewed", "stale_review_pending"]
+            }
+          }
+        }
+      }
+    }
+  }
+}

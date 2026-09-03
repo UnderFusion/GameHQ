@@ -1,0 +1,29 @@
+{
+  "$schema": "../../i18n/schema/release-note-linguistic-state.schema.json",
+  "schema_version": 1,
+  "candidate": "0.7.7",
+  "source_integrity": "sha256:53e6c2224d79f1384308936775afba9233d4833d7781a3b5d48869c048a76ace",
+  "units": {
+    "known-limitations-01": {
+      "source_hash": "4b6a8b64c978ce2d9a00dbfaddcf4cae378508f470c0eed22311c9a8f6c57275",
+      "locales": {
+        "en-US": "source_reviewed",
+        "zh-Hans": "stale_review_pending",
+        "ru-RU": "stale_review_pending",
+        "es-ES": "stale_review_pending",
+        "pt-BR": "stale_review_pending",
+        "de-DE": "stale_review_pending",
+        "ja-JP": "stale_review_pending",
+        "fr-FR": "stale_review_pending",
+        "pl-PL": "contextually_reviewed",
+        "ko-KR": "stale_review_pending",
+        "zh-Hant": "stale_review_pending",
+        "tr-TR": "stale_review_pending",
+        "th-TH": "stale_review_pending",
+        "es-419": "stale_review_pending",
+        "uk-UA": "stale_review_pending",
+        "it-IT": "stale_review_pending"
+      }
+    }
+  }
+}

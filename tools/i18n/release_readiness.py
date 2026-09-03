@@ -265,6 +265,7 @@ def build_evidence(root: Path) -> dict[str, object]:
             file_evidence(root, "assets/release-notes/manifest.json"),
             file_evidence(root, f"assets/release-notes/versions/{version}/en-US.json"),
             file_evidence(root, "i18n/release/corrections.json"),
+            file_evidence(root, "assets/release-notes/linguistic-state.json"),
         ] + [file_evidence(root, f"i18n/quality/reviews/{tag}.json")
              for tag in production_tags
              if (root / f"i18n/quality/reviews/{tag}.json").is_file()],
