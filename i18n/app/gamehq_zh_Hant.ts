@@ -118,6 +118,166 @@
       <source>Deselect all</source>
       <translation>取消所有選擇</translation>
     </message>
+    <message id="gamehq.action.desktop.back.description">
+      <location filename="src/input/ActionCatalog.cpp" line="230"></location>
+      <source>Close the current gallery panel.</source>
+      <translation>關閉當前畫廊面板.</translation>
+    </message>
+    <message id="gamehq.action.desktop.back.label">
+      <location filename="src/input/ActionCatalog.cpp" line="227"></location>
+      <source>Back</source>
+      <translation>還有一點</translation>
+    </message>
+    <message id="gamehq.action.desktop.bulk_toggle.description">
+      <location filename="src/input/ActionCatalog.cpp" line="300"></location>
+      <source>Enter or leave bulk selection mode.</source>
+      <translation>進入或離開大批量選取模式.</translation>
+    </message>
+    <message id="gamehq.action.desktop.bulk_toggle.label">
+      <location filename="src/input/ActionCatalog.cpp" line="297"></location>
+      <source>Bulk Select</source>
+      <translation>批量選擇</translation>
+    </message>
+    <message id="gamehq.action.desktop.confirm.description">
+      <location filename="src/input/ActionCatalog.cpp" line="223"></location>
+      <source>Activate the selected item in the gallery.</source>
+      <translation>啟動選定的項目.</translation>
+    </message>
+    <message id="gamehq.action.desktop.confirm.label">
+      <location filename="src/input/ActionCatalog.cpp" line="220"></location>
+      <source>Confirm</source>
+      <translation>確認</translation>
+    </message>
+    <message id="gamehq.action.desktop.favorite.description">
+      <location filename="src/input/ActionCatalog.cpp" line="237"></location>
+      <source>Mark or unmark the selected capture as a favorite.</source>
+      <translation>標記或取消標記所選捕捉為最愛.</translation>
+    </message>
+    <message id="gamehq.action.desktop.favorite.label">
+      <location filename="src/input/ActionCatalog.cpp" line="234"></location>
+      <source>Toggle Favorite</source>
+      <translation>切換至好</translation>
+    </message>
+    <message id="gamehq.action.desktop.menu.description">
+      <location filename="src/input/ActionCatalog.cpp" line="244"></location>
+      <source>Open the action menu for the selected item.</source>
+      <translation>打開所選項的行動菜單.</translation>
+    </message>
+    <message id="gamehq.action.desktop.menu.label">
+      <location filename="src/input/ActionCatalog.cpp" line="241"></location>
+      <source>Open Menu</source>
+      <translation>打開菜單</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_down.description">
+      <location filename="src/input/ActionCatalog.cpp" line="202"></location>
+      <source>Move selection down in the gallery.</source>
+      <translation>移動選項到畫廊下方.</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_down.label">
+      <location filename="src/input/ActionCatalog.cpp" line="199"></location>
+      <source>Navigate Down</source>
+      <translation>移動到下方</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_left.description">
+      <location filename="src/input/ActionCatalog.cpp" line="209"></location>
+      <source>Move selection left in the gallery.</source>
+      <translation>移動選項左在畫廊.</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_left.label">
+      <location filename="src/input/ActionCatalog.cpp" line="206"></location>
+      <source>Navigate Left</source>
+      <translation>移動左邊</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_right.description">
+      <location filename="src/input/ActionCatalog.cpp" line="216"></location>
+      <source>Move selection right in the gallery.</source>
+      <translation>移動選項到畫廊.</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_right.label">
+      <location filename="src/input/ActionCatalog.cpp" line="213"></location>
+      <source>Navigate Right</source>
+      <translation>移動到右邊</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_up.description">
+      <location filename="src/input/ActionCatalog.cpp" line="195"></location>
+      <source>Move selection up in the gallery.</source>
+      <translation>移動選項到畫廊.</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_up.label">
+      <location filename="src/input/ActionCatalog.cpp" line="192"></location>
+      <source>Navigate Up</source>
+      <translation>移動到上方</translation>
+    </message>
+    <message id="gamehq.action.desktop.scroll_down.description">
+      <location filename="src/input/ActionCatalog.cpp" line="293"></location>
+      <source>Scroll the current view down without moving the selection.</source>
+      <translation>沒有移動選項, 往下滑下當前視圖.</translation>
+    </message>
+    <message id="gamehq.action.desktop.scroll_down.label">
+      <location filename="src/input/ActionCatalog.cpp" line="290"></location>
+      <source>Scroll Down</source>
+      <translation>往下滑</translation>
+    </message>
+    <message id="gamehq.action.desktop.scroll_up.description">
+      <location filename="src/input/ActionCatalog.cpp" line="286"></location>
+      <source>Scroll the current view up without moving the selection.</source>
+      <translation>沒有移動選項, 向上現在的視圖.</translation>
+    </message>
+    <message id="gamehq.action.desktop.scroll_up.label">
+      <location filename="src/input/ActionCatalog.cpp" line="283"></location>
+      <source>Scroll Up</source>
+      <translation>向上覽</translation>
+    </message>
+    <message id="gamehq.action.desktop.settings.description">
+      <location filename="src/input/ActionCatalog.cpp" line="265"></location>
+      <source>Open the Settings panel from anywhere in the gallery.</source>
+      <translation>打開設定面板,</translation>
+    </message>
+    <message id="gamehq.action.desktop.settings.label">
+      <location filename="src/input/ActionCatalog.cpp" line="262"></location>
+      <source>Open Settings</source>
+      <translation>開啟設定</translation>
+    </message>
+    <message id="gamehq.action.desktop.tab_next.description">
+      <location filename="src/input/ActionCatalog.cpp" line="258"></location>
+      <source>Step to the next sidebar category.</source>
+      <translation>接下來的邊框類別.</translation>
+    </message>
+    <message id="gamehq.action.desktop.tab_next.label">
+      <location filename="src/input/ActionCatalog.cpp" line="255"></location>
+      <source>Next Tab</source>
+      <translation>下一頁</translation>
+    </message>
+    <message id="gamehq.action.desktop.tab_prev.description">
+      <location filename="src/input/ActionCatalog.cpp" line="251"></location>
+      <source>Step to the previous sidebar category.</source>
+      <translation>進入前一頁的旁邊欄目.</translation>
+    </message>
+    <message id="gamehq.action.desktop.tab_prev.label">
+      <location filename="src/input/ActionCatalog.cpp" line="248"></location>
+      <source>Previous Tab</source>
+      <translation>上一頁</translation>
+    </message>
+    <message id="gamehq.action.desktop.zoom_in.description">
+      <location filename="src/input/ActionCatalog.cpp" line="279"></location>
+      <source>Make the gallery thumbnails larger.</source>
+      <translation>請讓畫廊的縮影更大.</translation>
+    </message>
+    <message id="gamehq.action.desktop.zoom_in.label">
+      <location filename="src/input/ActionCatalog.cpp" line="276"></location>
+      <source>Zoom In</source>
+      <translation>放大</translation>
+    </message>
+    <message id="gamehq.action.desktop.zoom_out.description">
+      <location filename="src/input/ActionCatalog.cpp" line="272"></location>
+      <source>Make the gallery thumbnails smaller.</source>
+      <translation>顯示這些照片.</translation>
+    </message>
+    <message id="gamehq.action.desktop.zoom_out.label">
+      <location filename="src/input/ActionCatalog.cpp" line="269"></location>
+      <source>Zoom Out</source>
+      <translation>縮小</translation>
+    </message>
     <message id="gamehq.action.dismiss">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="180"></location>
       <source>Dismiss</source>
@@ -133,10 +293,195 @@
       <source>Download</source>
       <translation>下載</translation>
     </message>
+    <message id="gamehq.action.global.save_replay.description">
+      <location filename="src/input/ActionCatalog.cpp" line="94"></location>
+      <source>Save the rolling replay buffer as a clip.</source>
+      <translation>保存轉播緩衝器為片段.</translation>
+    </message>
+    <message id="gamehq.action.global.save_replay.label">
+      <location filename="src/input/ActionCatalog.cpp" line="91"></location>
+      <source>Save Replay</source>
+      <translation>儲存重播</translation>
+    </message>
+    <message id="gamehq.action.global.screenshot.description">
+      <location filename="src/input/ActionCatalog.cpp" line="87"></location>
+      <source>Capture a screenshot of the current game.</source>
+      <translation>拍攝當前遊戲的畫面.</translation>
+    </message>
+    <message id="gamehq.action.global.toggle_desktop.description">
+      <location filename="src/input/ActionCatalog.cpp" line="109"></location>
+      <source>Bring the GameHQ window to the front with focus, or hide it and return to the game.</source>
+      <translation>帶來這個 GameHQ 還是隱藏它,然後回到遊戲.</translation>
+    </message>
+    <message id="gamehq.action.global.toggle_desktop.label">
+      <location filename="src/input/ActionCatalog.cpp" line="105"></location>
+      <source>Show / Hide GameHQ Window</source>
+      <translation>顯示 / 隱藏 GameHQ 視窗</translation>
+    </message>
+    <message id="gamehq.action.global.toggle_overlay.description">
+      <location filename="src/input/ActionCatalog.cpp" line="101"></location>
+      <source>Show or hide the in-game overlay.</source>
+      <translation>顯示或隱藏遊戲內的覆蓋.</translation>
+    </message>
+    <message id="gamehq.action.global.toggle_overlay.label">
+      <location filename="src/input/ActionCatalog.cpp" line="98"></location>
+      <source>Toggle Overlay</source>
+      <translation>切換遊戲內疊加層</translation>
+    </message>
     <message id="gamehq.action.not_now">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="174"></location>
       <source>Not now</source>
       <translation>不是現在</translation>
+    </message>
+    <message id="gamehq.action.overlay.back.description">
+      <location filename="src/input/ActionCatalog.cpp" line="152"></location>
+      <source>Close the current overlay panel.</source>
+      <translation>關閉目前的覆蓋面板.</translation>
+    </message>
+    <message id="gamehq.action.overlay.back.label">
+      <location filename="src/input/ActionCatalog.cpp" line="149"></location>
+      <source>Back</source>
+      <translation>還有一點</translation>
+    </message>
+    <message id="gamehq.action.overlay.confirm.description">
+      <location filename="src/input/ActionCatalog.cpp" line="145"></location>
+      <source>Activate the selected item in the overlay.</source>
+      <translation>啟動所選項在覆蓋.</translation>
+    </message>
+    <message id="gamehq.action.overlay.confirm.label">
+      <location filename="src/input/ActionCatalog.cpp" line="142"></location>
+      <source>Confirm</source>
+      <translation>確認</translation>
+    </message>
+    <message id="gamehq.action.overlay.favorite.description">
+      <location filename="src/input/ActionCatalog.cpp" line="159"></location>
+      <source>Mark or unmark the selected capture as a favorite.</source>
+      <translation>標記或取消標記所選捕捉為最愛.</translation>
+    </message>
+    <message id="gamehq.action.overlay.favorite.label">
+      <location filename="src/input/ActionCatalog.cpp" line="156"></location>
+      <source>Toggle Favorite</source>
+      <translation>切換至好</translation>
+    </message>
+    <message id="gamehq.action.overlay.game_next.description">
+      <location filename="src/input/ActionCatalog.cpp" line="187"></location>
+      <source>Step to the next game in the sidebar.</source>
+      <translation>接下來的遊戲在旁邊.</translation>
+    </message>
+    <message id="gamehq.action.overlay.game_next.label">
+      <location filename="src/input/ActionCatalog.cpp" line="184"></location>
+      <source>Next Game</source>
+      <translation>下一場遊戲</translation>
+    </message>
+    <message id="gamehq.action.overlay.game_prev.description">
+      <location filename="src/input/ActionCatalog.cpp" line="180"></location>
+      <source>Step to the previous game in the sidebar.</source>
+      <translation>步向前一場遊戲,</translation>
+    </message>
+    <message id="gamehq.action.overlay.game_prev.label">
+      <location filename="src/input/ActionCatalog.cpp" line="177"></location>
+      <source>Previous Game</source>
+      <translation>前一場遊戲</translation>
+    </message>
+    <message id="gamehq.action.overlay.menu.description">
+      <location filename="src/input/ActionCatalog.cpp" line="166"></location>
+      <source>Open the action menu for the selected item.</source>
+      <translation>打開所選項的行動菜單.</translation>
+    </message>
+    <message id="gamehq.action.overlay.menu.label">
+      <location filename="src/input/ActionCatalog.cpp" line="163"></location>
+      <source>Open Menu</source>
+      <translation>打開菜單</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_down.description">
+      <location filename="src/input/ActionCatalog.cpp" line="124"></location>
+      <source>Move selection down in the overlay.</source>
+      <translation>移動選項在覆蓋中.</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_down.label">
+      <location filename="src/input/ActionCatalog.cpp" line="121"></location>
+      <source>Navigate Down</source>
+      <translation>移動到下方</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_left.description">
+      <location filename="src/input/ActionCatalog.cpp" line="131"></location>
+      <source>Move selection left in the overlay.</source>
+      <translation>移動選項在覆蓋中左移.</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_left.label">
+      <location filename="src/input/ActionCatalog.cpp" line="128"></location>
+      <source>Navigate Left</source>
+      <translation>移動左邊</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_right.description">
+      <location filename="src/input/ActionCatalog.cpp" line="138"></location>
+      <source>Move selection right in the overlay.</source>
+      <translation>移動選項到覆蓋層.</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_right.label">
+      <location filename="src/input/ActionCatalog.cpp" line="135"></location>
+      <source>Navigate Right</source>
+      <translation>移動到右邊</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_up.description">
+      <location filename="src/input/ActionCatalog.cpp" line="117"></location>
+      <source>Move selection up in the overlay.</source>
+      <translation>移動選項在覆蓋中.</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_up.label">
+      <location filename="src/input/ActionCatalog.cpp" line="114"></location>
+      <source>Navigate Up</source>
+      <translation>移動到上方</translation>
+    </message>
+    <message id="gamehq.action.overlay.sidebar_toggle.description">
+      <location filename="src/input/ActionCatalog.cpp" line="173"></location>
+      <source>Show or hide the overlay sidebar.</source>
+      <translation>顯示或隱藏覆蓋邊框.</translation>
+    </message>
+    <message id="gamehq.action.overlay.sidebar_toggle.label">
+      <location filename="src/input/ActionCatalog.cpp" line="170"></location>
+      <source>Toggle Sidebar</source>
+      <translation>切換邊框</translation>
+    </message>
+    <message id="gamehq.action.playback.frame_grab.description">
+      <location filename="src/input/ActionCatalog.cpp" line="329"></location>
+      <source>Save the frame currently shown in the focused clip as a screenshot.</source>
+      <translation>保存目前顯示在焦點片段中的為截圖.</translation>
+    </message>
+    <message id="gamehq.action.playback.frame_grab.label">
+      <location filename="src/input/ActionCatalog.cpp" line="326"></location>
+      <source>Save Frame</source>
+      <translation>儲存目前影格</translation>
+    </message>
+    <message id="gamehq.action.playback.play_pause.description">
+      <location filename="src/input/ActionCatalog.cpp" line="308"></location>
+      <source>Toggle playback of the focused clip.</source>
+      <translation>轉換對焦片段的播放.</translation>
+    </message>
+    <message id="gamehq.action.playback.play_pause.label">
+      <location filename="src/input/ActionCatalog.cpp" line="305"></location>
+      <source>Play / Pause</source>
+      <translation>播放/暫停</translation>
+    </message>
+    <message id="gamehq.action.playback.seek_back.description">
+      <location filename="src/input/ActionCatalog.cpp" line="315"></location>
+      <source>Step the focused clip backward.</source>
+      <translation>必須要將焦點放回後面.</translation>
+    </message>
+    <message id="gamehq.action.playback.seek_back.label">
+      <location filename="src/input/ActionCatalog.cpp" line="312"></location>
+      <source>Seek Back</source>
+      <translation>尋找回來</translation>
+    </message>
+    <message id="gamehq.action.playback.seek_forward.description">
+      <location filename="src/input/ActionCatalog.cpp" line="322"></location>
+      <source>Step the focused clip forward.</source>
+      <translation>針對焦點的貼片向前移動.</translation>
+    </message>
+    <message id="gamehq.action.playback.seek_forward.label">
+      <location filename="src/input/ActionCatalog.cpp" line="319"></location>
+      <source>Seek Forward</source>
+      <translation>尋找前景</translation>
     </message>
     <message id="gamehq.action.record">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="294"></location>
@@ -182,9 +527,9 @@
       <translation>保存</translation>
     </message>
     <message id="gamehq.action.screenshot.label">
-      <location filename="src/input/ActionCatalog.cpp" line="115"></location>
+      <location filename="src/input/ActionCatalog.cpp" line="84"></location>
       <source>Screenshot</source>
-      <translation type="unfinished"></translation>
+      <translation>螢幕截圖</translation>
     </message>
     <message id="gamehq.action.select_all">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="57"></location>
@@ -292,7 +637,7 @@
       <translation>已選取的資料是不有效的.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="321"></location>
+      <location filename="src/ui/AppController.cpp" line="340"></location>
       <source>Choose a local folder.</source>
       <translation>選擇本地資料.</translation>
     </message>
@@ -312,8 +657,8 @@
       <translation>GameHQ 無法保存所選資料.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="315"></location>
-      <location filename="src/ui/AppController.cpp" line="337"></location>
+      <location filename="src/ui/AppController.cpp" line="334"></location>
+      <location filename="src/ui/AppController.cpp" line="356"></location>
       <source>The capture type is invalid.</source>
       <translation>捕捉類型是沒有效力的.</translation>
     </message>
@@ -1067,6 +1412,31 @@ This cannot be undone.</source>
       <source>%1 Viewer</source>
       <translation>%1 檢視器</translation>
     </message>
+    <message id="gamehq.hdr.detail.not_checked">
+      <location filename="src/ui/AppController.cpp" line="322"></location>
+      <source>Check the current HDR state of every display.</source>
+      <translation>檢查每個顯示器的現有高清狀態.</translation>
+    </message>
+    <message id="gamehq.hdr.status.active">
+      <location filename="src/ui/AppController.cpp" line="308"></location>
+      <source>Windows HDR is active</source>
+      <translation>Windows HDR 已啟用</translation>
+    </message>
+    <message id="gamehq.hdr.status.inactive">
+      <location filename="src/ui/AppController.cpp" line="313"></location>
+      <source>Windows HDR is inactive</source>
+      <translation>Windows HDR 未啟用</translation>
+    </message>
+    <message id="gamehq.hdr.status.no_displays">
+      <location filename="src/ui/AppController.cpp" line="302"></location>
+      <source>No displays reported by the graphics driver</source>
+      <translation>顯示器沒有顯示</translation>
+    </message>
+    <message id="gamehq.hdr.status.not_checked">
+      <location filename="src/ui/AppController.cpp" line="296"></location>
+      <source>Not checked yet</source>
+      <translation>沒有檢查過</translation>
+    </message>
     <message id="gamehq.help.binding.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="86"></location>
       <location filename="src/ui/qml/HelpView.qml" line="232"></location>
@@ -1481,29 +1851,111 @@ This cannot be undone.</source>
       <translation>這些任務相矛盾,</translation>
     </message>
     <message id="gamehq.input.gesture.double_tap">
+      <location filename="src/input/BindingPattern.cpp" line="106"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="473"></location>
       <source>Double tap</source>
       <translation>雙擊</translation>
     </message>
     <message id="gamehq.input.gesture.hold">
+      <location filename="src/input/BindingPattern.cpp" line="121"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="477"></location>
       <source>Hold</source>
       <translation>請繼續等待.</translation>
     </message>
     <message id="gamehq.input.gesture.press">
+      <location filename="src/input/BindingPattern.cpp" line="101"></location>
+      <location filename="src/input/BindingPattern.cpp" line="125"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="469"></location>
       <source>Press</source>
       <translation>按下</translation>
     </message>
     <message id="gamehq.input.gesture.tap">
+      <location filename="src/input/BindingPattern.cpp" line="117"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="471"></location>
       <source>Tap</source>
       <translation>點擊</translation>
     </message>
     <message id="gamehq.input.gesture.triple_tap">
+      <location filename="src/input/BindingPattern.cpp" line="112"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="475"></location>
       <source>Triple tap</source>
       <translation>請使用三次觸摸</translation>
+    </message>
+    <message id="gamehq.input.model.capture.controller">
+      <location filename="src/input/BindingEditorModel.cpp" line="300"></location>
+      <source>Press a controller button for %1 · Slot %2 · %3</source>
+      <translation>按下用於 %1 的控制器按鈕 · 欄位 %2 · %3</translation>
+    </message>
+    <message id="gamehq.input.model.capture.keyboard">
+      <location filename="src/input/BindingEditorModel.cpp" line="307"></location>
+      <source>Press a key or shortcut for %1 · Slot %2</source>
+      <translation>按下一個鍵或快捷方式 %1 門 %2</translation>
+    </message>
+    <message id="gamehq.input.model.capture.mouse">
+      <location filename="src/input/BindingEditorModel.cpp" line="314"></location>
+      <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
+      <translation>按下鼠標的中間,後退或前進按, %1 門 %2</translation>
+    </message>
+    <message id="gamehq.input.model.combination">
+      <location filename="src/input/BindingEditorModel.cpp" line="178"></location>
+      <source>Combination</source>
+      <translation>組合方式</translation>
+    </message>
+    <message id="gamehq.input.model.hold_default">
+      <location filename="src/input/BindingEditorModel.cpp" line="184"></location>
+      <source>Hold · Default</source>
+      <translation>預約 · 預設</translation>
+    </message>
+    <message id="gamehq.input.model.hold_seconds">
+      <location filename="src/input/BindingEditorModel.cpp" line="189"></location>
+      <source>Hold · %1 s</source>
+      <translation>在此等待 %1 沒有</translation>
+    </message>
+    <message id="gamehq.input.model.no_action_fired">
+      <location filename="src/input/BindingEditorModel.cpp" line="962"></location>
+      <source>No action fired yet</source>
+      <translation>沒有任何行動,</translation>
+    </message>
+    <message id="gamehq.input.model.scope.gallery">
+      <location filename="src/input/BindingEditorModel.cpp" line="141"></location>
+      <source>Gallery</source>
+      <translation>圖庫</translation>
+    </message>
+    <message id="gamehq.input.model.scope.global">
+      <location filename="src/input/BindingEditorModel.cpp" line="133"></location>
+      <source>Global</source>
+      <translation>全球</translation>
+    </message>
+    <message id="gamehq.input.model.scope.overlay">
+      <location filename="src/input/BindingEditorModel.cpp" line="137"></location>
+      <source>Overlay</source>
+      <translation>覆蓋</translation>
+    </message>
+    <message id="gamehq.input.model.scope.playback">
+      <location filename="src/input/BindingEditorModel.cpp" line="145"></location>
+      <source>Playback</source>
+      <translation>播放方式</translation>
+    </message>
+    <message id="gamehq.input.model.status.added">
+      <location filename="src/input/BindingEditorModel.cpp" line="70"></location>
+      <source>Added</source>
+      <translation>加入</translation>
+    </message>
+    <message id="gamehq.input.model.status.modified">
+      <location filename="src/input/BindingEditorModel.cpp" line="75"></location>
+      <source>Modified</source>
+      <translation>已修改</translation>
+    </message>
+    <message id="gamehq.input.model.status.removed">
+      <location filename="src/input/BindingEditorModel.cpp" line="80"></location>
+      <source>Removed</source>
+      <translation>已移除</translation>
+    </message>
+    <message id="gamehq.input.model.unassigned">
+      <location filename="src/input/BindingEditorModel.cpp" line="165"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="241"></location>
+      <source>Unassigned</source>
+      <translation>沒有分配</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
       <location filename="src/ui/qml/Main.qml" line="1020"></location>
@@ -3374,10 +3826,30 @@ This cannot be undone.</source>
       <source>The portable import source folder is missing.</source>
       <translation>隨身輸入源文件沒有.</translation>
     </message>
+    <message id="gamehq.tray.exit">
+      <location filename="src/tray/TrayIcon.cpp" line="200"></location>
+      <source>Exit</source>
+      <translation>結束</translation>
+    </message>
     <message id="gamehq.tray.open_gallery">
-      <location filename="src/tray/TrayIcon.cpp" line="163"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="184"></location>
       <source>Open Gallery</source>
-      <translation type="unfinished"></translation>
+      <translation>開啟圖庫</translation>
+    </message>
+    <message id="gamehq.tray.rescan_captures">
+      <location filename="src/tray/TrayIcon.cpp" line="188"></location>
+      <source>Rescan Captures</source>
+      <translation>重新掃描擷取內容</translation>
+    </message>
+    <message id="gamehq.tray.save_replay">
+      <location filename="src/tray/TrayIcon.cpp" line="196"></location>
+      <source>Save Replay</source>
+      <translation>儲存重播</translation>
+    </message>
+    <message id="gamehq.tray.take_screenshot">
+      <location filename="src/tray/TrayIcon.cpp" line="192"></location>
+      <source>Take Screenshot</source>
+      <translation>擷取螢幕畫面</translation>
     </message>
     <message id="gamehq.update.applying_and_restarting">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="182"></location>

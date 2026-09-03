@@ -118,6 +118,166 @@
       <source>Deselect all</source>
       <translation>Désactiver tout</translation>
     </message>
+    <message id="gamehq.action.desktop.back.description">
+      <location filename="src/input/ActionCatalog.cpp" line="230"></location>
+      <source>Close the current gallery panel.</source>
+      <translation>Fermez le panneau de la galerie actuelle.</translation>
+    </message>
+    <message id="gamehq.action.desktop.back.label">
+      <location filename="src/input/ActionCatalog.cpp" line="227"></location>
+      <source>Back</source>
+      <translation>Je reviens .</translation>
+    </message>
+    <message id="gamehq.action.desktop.bulk_toggle.description">
+      <location filename="src/input/ActionCatalog.cpp" line="300"></location>
+      <source>Enter or leave bulk selection mode.</source>
+      <translation>Entrer ou sortir du mode de sélection en vrac.</translation>
+    </message>
+    <message id="gamehq.action.desktop.bulk_toggle.label">
+      <location filename="src/input/ActionCatalog.cpp" line="297"></location>
+      <source>Bulk Select</source>
+      <translation>Sélectionner en masse</translation>
+    </message>
+    <message id="gamehq.action.desktop.confirm.description">
+      <location filename="src/input/ActionCatalog.cpp" line="223"></location>
+      <source>Activate the selected item in the gallery.</source>
+      <translation>Activez l'élément sélectionné dans la galerie.</translation>
+    </message>
+    <message id="gamehq.action.desktop.confirm.label">
+      <location filename="src/input/ActionCatalog.cpp" line="220"></location>
+      <source>Confirm</source>
+      <translation>- Je confirme .</translation>
+    </message>
+    <message id="gamehq.action.desktop.favorite.description">
+      <location filename="src/input/ActionCatalog.cpp" line="237"></location>
+      <source>Mark or unmark the selected capture as a favorite.</source>
+      <translation>Marquer ou désactiver la capture sélectionnée comme préférée.</translation>
+    </message>
+    <message id="gamehq.action.desktop.favorite.label">
+      <location filename="src/input/ActionCatalog.cpp" line="234"></location>
+      <source>Toggle Favorite</source>
+      <translation>Faites basculer les préférés</translation>
+    </message>
+    <message id="gamehq.action.desktop.menu.description">
+      <location filename="src/input/ActionCatalog.cpp" line="244"></location>
+      <source>Open the action menu for the selected item.</source>
+      <translation>Ouvrez le menu d'action pour l'élément sélectionné.</translation>
+    </message>
+    <message id="gamehq.action.desktop.menu.label">
+      <location filename="src/input/ActionCatalog.cpp" line="241"></location>
+      <source>Open Menu</source>
+      <translation>Menu ouvert</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_down.description">
+      <location filename="src/input/ActionCatalog.cpp" line="202"></location>
+      <source>Move selection down in the gallery.</source>
+      <translation>Déplacez la sélection en bas dans la galerie.</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_down.label">
+      <location filename="src/input/ActionCatalog.cpp" line="199"></location>
+      <source>Navigate Down</source>
+      <translation>Navigation vers le bas</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_left.description">
+      <location filename="src/input/ActionCatalog.cpp" line="209"></location>
+      <source>Move selection left in the gallery.</source>
+      <translation>Déplacez la sélection à gauche dans la galerie.</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_left.label">
+      <location filename="src/input/ActionCatalog.cpp" line="206"></location>
+      <source>Navigate Left</source>
+      <translation>Navigation à gauche</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_right.description">
+      <location filename="src/input/ActionCatalog.cpp" line="216"></location>
+      <source>Move selection right in the gallery.</source>
+      <translation>Déplacez la sélection directement dans la galerie.</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_right.label">
+      <location filename="src/input/ActionCatalog.cpp" line="213"></location>
+      <source>Navigate Right</source>
+      <translation>Navigation à droite</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_up.description">
+      <location filename="src/input/ActionCatalog.cpp" line="195"></location>
+      <source>Move selection up in the gallery.</source>
+      <translation>Mettez la sélection en haut dans la galerie.</translation>
+    </message>
+    <message id="gamehq.action.desktop.navigate_up.label">
+      <location filename="src/input/ActionCatalog.cpp" line="192"></location>
+      <source>Navigate Up</source>
+      <translation>Navigation vers le haut</translation>
+    </message>
+    <message id="gamehq.action.desktop.scroll_down.description">
+      <location filename="src/input/ActionCatalog.cpp" line="293"></location>
+      <source>Scroll the current view down without moving the selection.</source>
+      <translation>Faites défiler la vue actuelle vers le bas sans déplacer la sélection.</translation>
+    </message>
+    <message id="gamehq.action.desktop.scroll_down.label">
+      <location filename="src/input/ActionCatalog.cpp" line="290"></location>
+      <source>Scroll Down</source>
+      <translation>Faites défiler vers le bas</translation>
+    </message>
+    <message id="gamehq.action.desktop.scroll_up.description">
+      <location filename="src/input/ActionCatalog.cpp" line="286"></location>
+      <source>Scroll the current view up without moving the selection.</source>
+      <translation>Faites défiler la vue actuelle vers le haut sans déplacer la sélection.</translation>
+    </message>
+    <message id="gamehq.action.desktop.scroll_up.label">
+      <location filename="src/input/ActionCatalog.cpp" line="283"></location>
+      <source>Scroll Up</source>
+      <translation>Faites défiler vers le haut</translation>
+    </message>
+    <message id="gamehq.action.desktop.settings.description">
+      <location filename="src/input/ActionCatalog.cpp" line="265"></location>
+      <source>Open the Settings panel from anywhere in the gallery.</source>
+      <translation>Ouvrez le panneau Paramètres de n'importe où dans la galerie.</translation>
+    </message>
+    <message id="gamehq.action.desktop.settings.label">
+      <location filename="src/input/ActionCatalog.cpp" line="262"></location>
+      <source>Open Settings</source>
+      <translation>Ouvrir les paramètres</translation>
+    </message>
+    <message id="gamehq.action.desktop.tab_next.description">
+      <location filename="src/input/ActionCatalog.cpp" line="258"></location>
+      <source>Step to the next sidebar category.</source>
+      <translation>Passez à la catégorie de la barre latérale suivante.</translation>
+    </message>
+    <message id="gamehq.action.desktop.tab_next.label">
+      <location filename="src/input/ActionCatalog.cpp" line="255"></location>
+      <source>Next Tab</source>
+      <translation>Suivant onglet</translation>
+    </message>
+    <message id="gamehq.action.desktop.tab_prev.description">
+      <location filename="src/input/ActionCatalog.cpp" line="251"></location>
+      <source>Step to the previous sidebar category.</source>
+      <translation>Passez à la catégorie précédente de la barre latérale.</translation>
+    </message>
+    <message id="gamehq.action.desktop.tab_prev.label">
+      <location filename="src/input/ActionCatalog.cpp" line="248"></location>
+      <source>Previous Tab</source>
+      <translation>onglet précédent</translation>
+    </message>
+    <message id="gamehq.action.desktop.zoom_in.description">
+      <location filename="src/input/ActionCatalog.cpp" line="279"></location>
+      <source>Make the gallery thumbnails larger.</source>
+      <translation>Rendre les miniatures de la galerie plus grandes.</translation>
+    </message>
+    <message id="gamehq.action.desktop.zoom_in.label">
+      <location filename="src/input/ActionCatalog.cpp" line="276"></location>
+      <source>Zoom In</source>
+      <translation>Zoom dans</translation>
+    </message>
+    <message id="gamehq.action.desktop.zoom_out.description">
+      <location filename="src/input/ActionCatalog.cpp" line="272"></location>
+      <source>Make the gallery thumbnails smaller.</source>
+      <translation>Rendez les miniatures de la galerie plus petites.</translation>
+    </message>
+    <message id="gamehq.action.desktop.zoom_out.label">
+      <location filename="src/input/ActionCatalog.cpp" line="269"></location>
+      <source>Zoom Out</source>
+      <translation>Zoom vers le bas</translation>
+    </message>
     <message id="gamehq.action.dismiss">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="180"></location>
       <source>Dismiss</source>
@@ -133,10 +293,195 @@
       <source>Download</source>
       <translation>Télécharger</translation>
     </message>
+    <message id="gamehq.action.global.save_replay.description">
+      <location filename="src/input/ActionCatalog.cpp" line="94"></location>
+      <source>Save the rolling replay buffer as a clip.</source>
+      <translation>Enregistrez le tampon de lecture en roulement comme une vidéo.</translation>
+    </message>
+    <message id="gamehq.action.global.save_replay.label">
+      <location filename="src/input/ActionCatalog.cpp" line="91"></location>
+      <source>Save Replay</source>
+      <translation>Enregistrer la rediffusion</translation>
+    </message>
+    <message id="gamehq.action.global.screenshot.description">
+      <location filename="src/input/ActionCatalog.cpp" line="87"></location>
+      <source>Capture a screenshot of the current game.</source>
+      <translation>Prenez une capture d'écran du jeu en cours.</translation>
+    </message>
+    <message id="gamehq.action.global.toggle_desktop.description">
+      <location filename="src/input/ActionCatalog.cpp" line="109"></location>
+      <source>Bring the GameHQ window to the front with focus, or hide it and return to the game.</source>
+      <translation>Apportez le GameHQ fenêtre vers l'avant avec la mise au point, ou le cacher et revenir au jeu.</translation>
+    </message>
+    <message id="gamehq.action.global.toggle_desktop.label">
+      <location filename="src/input/ActionCatalog.cpp" line="105"></location>
+      <source>Show / Hide GameHQ Window</source>
+      <translation>Afficher / masquer la fenêtre GameHQ</translation>
+    </message>
+    <message id="gamehq.action.global.toggle_overlay.description">
+      <location filename="src/input/ActionCatalog.cpp" line="101"></location>
+      <source>Show or hide the in-game overlay.</source>
+      <translation>Montre ou cache le superposition en jeu.</translation>
+    </message>
+    <message id="gamehq.action.global.toggle_overlay.label">
+      <location filename="src/input/ActionCatalog.cpp" line="98"></location>
+      <source>Toggle Overlay</source>
+      <translation>Afficher ou masquer la superposition</translation>
+    </message>
     <message id="gamehq.action.not_now">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="174"></location>
       <source>Not now</source>
       <translation>Pas maintenant .</translation>
+    </message>
+    <message id="gamehq.action.overlay.back.description">
+      <location filename="src/input/ActionCatalog.cpp" line="152"></location>
+      <source>Close the current overlay panel.</source>
+      <translation>Fermez le panneau de superposition actuel.</translation>
+    </message>
+    <message id="gamehq.action.overlay.back.label">
+      <location filename="src/input/ActionCatalog.cpp" line="149"></location>
+      <source>Back</source>
+      <translation>Je reviens .</translation>
+    </message>
+    <message id="gamehq.action.overlay.confirm.description">
+      <location filename="src/input/ActionCatalog.cpp" line="145"></location>
+      <source>Activate the selected item in the overlay.</source>
+      <translation>Activer l'élément sélectionné dans le superposé.</translation>
+    </message>
+    <message id="gamehq.action.overlay.confirm.label">
+      <location filename="src/input/ActionCatalog.cpp" line="142"></location>
+      <source>Confirm</source>
+      <translation>- Je confirme .</translation>
+    </message>
+    <message id="gamehq.action.overlay.favorite.description">
+      <location filename="src/input/ActionCatalog.cpp" line="159"></location>
+      <source>Mark or unmark the selected capture as a favorite.</source>
+      <translation>Marquer ou désactiver la capture sélectionnée comme préférée.</translation>
+    </message>
+    <message id="gamehq.action.overlay.favorite.label">
+      <location filename="src/input/ActionCatalog.cpp" line="156"></location>
+      <source>Toggle Favorite</source>
+      <translation>Faites basculer les préférés</translation>
+    </message>
+    <message id="gamehq.action.overlay.game_next.description">
+      <location filename="src/input/ActionCatalog.cpp" line="187"></location>
+      <source>Step to the next game in the sidebar.</source>
+      <translation>Passez au prochain jeu dans la barre latérale.</translation>
+    </message>
+    <message id="gamehq.action.overlay.game_next.label">
+      <location filename="src/input/ActionCatalog.cpp" line="184"></location>
+      <source>Next Game</source>
+      <translation>Le prochain match.</translation>
+    </message>
+    <message id="gamehq.action.overlay.game_prev.description">
+      <location filename="src/input/ActionCatalog.cpp" line="180"></location>
+      <source>Step to the previous game in the sidebar.</source>
+      <translation>Passez au jeu précédent dans la barre latérale.</translation>
+    </message>
+    <message id="gamehq.action.overlay.game_prev.label">
+      <location filename="src/input/ActionCatalog.cpp" line="177"></location>
+      <source>Previous Game</source>
+      <translation>Jeu précédent</translation>
+    </message>
+    <message id="gamehq.action.overlay.menu.description">
+      <location filename="src/input/ActionCatalog.cpp" line="166"></location>
+      <source>Open the action menu for the selected item.</source>
+      <translation>Ouvrez le menu d'action pour l'élément sélectionné.</translation>
+    </message>
+    <message id="gamehq.action.overlay.menu.label">
+      <location filename="src/input/ActionCatalog.cpp" line="163"></location>
+      <source>Open Menu</source>
+      <translation>Menu ouvert</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_down.description">
+      <location filename="src/input/ActionCatalog.cpp" line="124"></location>
+      <source>Move selection down in the overlay.</source>
+      <translation>Déplacez la sélection vers le bas dans le superposition.</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_down.label">
+      <location filename="src/input/ActionCatalog.cpp" line="121"></location>
+      <source>Navigate Down</source>
+      <translation>Navigation vers le bas</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_left.description">
+      <location filename="src/input/ActionCatalog.cpp" line="131"></location>
+      <source>Move selection left in the overlay.</source>
+      <translation>Déplacez la sélection à gauche dans le superposition.</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_left.label">
+      <location filename="src/input/ActionCatalog.cpp" line="128"></location>
+      <source>Navigate Left</source>
+      <translation>Navigation à gauche</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_right.description">
+      <location filename="src/input/ActionCatalog.cpp" line="138"></location>
+      <source>Move selection right in the overlay.</source>
+      <translation>Déplacez la sélection directement dans le superposé.</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_right.label">
+      <location filename="src/input/ActionCatalog.cpp" line="135"></location>
+      <source>Navigate Right</source>
+      <translation>Navigation à droite</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_up.description">
+      <location filename="src/input/ActionCatalog.cpp" line="117"></location>
+      <source>Move selection up in the overlay.</source>
+      <translation>Déplacez la sélection vers le haut dans le superposition.</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_up.label">
+      <location filename="src/input/ActionCatalog.cpp" line="114"></location>
+      <source>Navigate Up</source>
+      <translation>Navigation vers le haut</translation>
+    </message>
+    <message id="gamehq.action.overlay.sidebar_toggle.description">
+      <location filename="src/input/ActionCatalog.cpp" line="173"></location>
+      <source>Show or hide the overlay sidebar.</source>
+      <translation>Afficher ou masquer la barre latérale de superposition.</translation>
+    </message>
+    <message id="gamehq.action.overlay.sidebar_toggle.label">
+      <location filename="src/input/ActionCatalog.cpp" line="170"></location>
+      <source>Toggle Sidebar</source>
+      <translation>Faire basculer la barre latérale</translation>
+    </message>
+    <message id="gamehq.action.playback.frame_grab.description">
+      <location filename="src/input/ActionCatalog.cpp" line="329"></location>
+      <source>Save the frame currently shown in the focused clip as a screenshot.</source>
+      <translation>Enregistrez la trame actuellement affichée dans le clip en focus sous forme de capture d'écran.</translation>
+    </message>
+    <message id="gamehq.action.playback.frame_grab.label">
+      <location filename="src/input/ActionCatalog.cpp" line="326"></location>
+      <source>Save Frame</source>
+      <translation>Enregistrer l’image</translation>
+    </message>
+    <message id="gamehq.action.playback.play_pause.description">
+      <location filename="src/input/ActionCatalog.cpp" line="308"></location>
+      <source>Toggle playback of the focused clip.</source>
+      <translation>- On peut jouer le clip.</translation>
+    </message>
+    <message id="gamehq.action.playback.play_pause.label">
+      <location filename="src/input/ActionCatalog.cpp" line="305"></location>
+      <source>Play / Pause</source>
+      <translation>Jouer / Pause</translation>
+    </message>
+    <message id="gamehq.action.playback.seek_back.description">
+      <location filename="src/input/ActionCatalog.cpp" line="315"></location>
+      <source>Step the focused clip backward.</source>
+      <translation>Passez le clip en arrière.</translation>
+    </message>
+    <message id="gamehq.action.playback.seek_back.label">
+      <location filename="src/input/ActionCatalog.cpp" line="312"></location>
+      <source>Seek Back</source>
+      <translation>Recherchez</translation>
+    </message>
+    <message id="gamehq.action.playback.seek_forward.description">
+      <location filename="src/input/ActionCatalog.cpp" line="322"></location>
+      <source>Step the focused clip forward.</source>
+      <translation>Avancez le clip.</translation>
+    </message>
+    <message id="gamehq.action.playback.seek_forward.label">
+      <location filename="src/input/ActionCatalog.cpp" line="319"></location>
+      <source>Seek Forward</source>
+      <translation>Cherchez à voir à l'avenir</translation>
     </message>
     <message id="gamehq.action.record">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="294"></location>
@@ -182,9 +527,9 @@
       <translation>Enregistrer</translation>
     </message>
     <message id="gamehq.action.screenshot.label">
-      <location filename="src/input/ActionCatalog.cpp" line="115"></location>
+      <location filename="src/input/ActionCatalog.cpp" line="84"></location>
       <source>Screenshot</source>
-      <translation type="unfinished"></translation>
+      <translation>Capture d’écran</translation>
     </message>
     <message id="gamehq.action.select_all">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="57"></location>
@@ -294,7 +639,7 @@
       <translation>Le dossier sélectionné est invalide.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="321"></location>
+      <location filename="src/ui/AppController.cpp" line="340"></location>
       <source>Choose a local folder.</source>
       <translation>Choisissez un dossier local.</translation>
     </message>
@@ -314,8 +659,8 @@
       <translation>GameHQ Impossible de sauvegarder le dossier sélectionné.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="315"></location>
-      <location filename="src/ui/AppController.cpp" line="337"></location>
+      <location filename="src/ui/AppController.cpp" line="334"></location>
+      <location filename="src/ui/AppController.cpp" line="356"></location>
       <source>The capture type is invalid.</source>
       <translation>Le type de capture est invalide.</translation>
     </message>
@@ -1072,6 +1417,31 @@ Cette action est irréversible.</numerusform>
       <source>%1 Viewer</source>
       <translation>%1 Vue</translation>
     </message>
+    <message id="gamehq.hdr.detail.not_checked">
+      <location filename="src/ui/AppController.cpp" line="322"></location>
+      <source>Check the current HDR state of every display.</source>
+      <translation>Vérifiez l'état actuel de chaque écran.</translation>
+    </message>
+    <message id="gamehq.hdr.status.active">
+      <location filename="src/ui/AppController.cpp" line="308"></location>
+      <source>Windows HDR is active</source>
+      <translation>Le HDR Windows est actif</translation>
+    </message>
+    <message id="gamehq.hdr.status.inactive">
+      <location filename="src/ui/AppController.cpp" line="313"></location>
+      <source>Windows HDR is inactive</source>
+      <translation>Le HDR Windows est inactif</translation>
+    </message>
+    <message id="gamehq.hdr.status.no_displays">
+      <location filename="src/ui/AppController.cpp" line="302"></location>
+      <source>No displays reported by the graphics driver</source>
+      <translation>Aucun affichage signalé par le pilote graphique</translation>
+    </message>
+    <message id="gamehq.hdr.status.not_checked">
+      <location filename="src/ui/AppController.cpp" line="296"></location>
+      <source>Not checked yet</source>
+      <translation>Pas encore vérifié</translation>
+    </message>
     <message id="gamehq.help.binding.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="86"></location>
       <location filename="src/ui/qml/HelpView.qml" line="232"></location>
@@ -1486,29 +1856,111 @@ Cette action est irréversible.</numerusform>
       <translation>Ces missions sont en conflit</translation>
     </message>
     <message id="gamehq.input.gesture.double_tap">
+      <location filename="src/input/BindingPattern.cpp" line="106"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="473"></location>
       <source>Double tap</source>
       <translation>Appuie deux fois</translation>
     </message>
     <message id="gamehq.input.gesture.hold">
+      <location filename="src/input/BindingPattern.cpp" line="121"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="477"></location>
       <source>Hold</source>
       <translation>Attends un peu .</translation>
     </message>
     <message id="gamehq.input.gesture.press">
+      <location filename="src/input/BindingPattern.cpp" line="101"></location>
+      <location filename="src/input/BindingPattern.cpp" line="125"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="469"></location>
       <source>Press</source>
       <translation>Appuyez sur</translation>
     </message>
     <message id="gamehq.input.gesture.tap">
+      <location filename="src/input/BindingPattern.cpp" line="117"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="471"></location>
       <source>Tap</source>
       <translation>Appuyez sur</translation>
     </message>
     <message id="gamehq.input.gesture.triple_tap">
+      <location filename="src/input/BindingPattern.cpp" line="112"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="475"></location>
       <source>Triple tap</source>
       <translation>Triple tap</translation>
+    </message>
+    <message id="gamehq.input.model.capture.controller">
+      <location filename="src/input/BindingEditorModel.cpp" line="300"></location>
+      <source>Press a controller button for %1 · Slot %2 · %3</source>
+      <translation>Appuyez sur un bouton de la manette pour %1 · Emplacement %2 · %3</translation>
+    </message>
+    <message id="gamehq.input.model.capture.keyboard">
+      <location filename="src/input/BindingEditorModel.cpp" line="307"></location>
+      <source>Press a key or shortcut for %1 · Slot %2</source>
+      <translation>Appuyez sur une touche ou un raccourci pour %1 · Fente %2</translation>
+    </message>
+    <message id="gamehq.input.model.capture.mouse">
+      <location filename="src/input/BindingEditorModel.cpp" line="314"></location>
+      <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
+      <translation>Appuyez sur le bouton du milieu, Retour ou Avance de la souris pour %1 · Fente %2</translation>
+    </message>
+    <message id="gamehq.input.model.combination">
+      <location filename="src/input/BindingEditorModel.cpp" line="178"></location>
+      <source>Combination</source>
+      <translation>Combinaison</translation>
+    </message>
+    <message id="gamehq.input.model.hold_default">
+      <location filename="src/input/BindingEditorModel.cpp" line="184"></location>
+      <source>Hold · Default</source>
+      <translation>Restez en attente</translation>
+    </message>
+    <message id="gamehq.input.model.hold_seconds">
+      <location filename="src/input/BindingEditorModel.cpp" line="189"></location>
+      <source>Hold · %1 s</source>
+      <translation>Attends un peu . %1 s</translation>
+    </message>
+    <message id="gamehq.input.model.no_action_fired">
+      <location filename="src/input/BindingEditorModel.cpp" line="962"></location>
+      <source>No action fired yet</source>
+      <translation>Aucune action n'a encore été lancée.</translation>
+    </message>
+    <message id="gamehq.input.model.scope.gallery">
+      <location filename="src/input/BindingEditorModel.cpp" line="141"></location>
+      <source>Gallery</source>
+      <translation>Galerie</translation>
+    </message>
+    <message id="gamehq.input.model.scope.global">
+      <location filename="src/input/BindingEditorModel.cpp" line="133"></location>
+      <source>Global</source>
+      <translation>Le monde</translation>
+    </message>
+    <message id="gamehq.input.model.scope.overlay">
+      <location filename="src/input/BindingEditorModel.cpp" line="137"></location>
+      <source>Overlay</source>
+      <translation>Surcharges</translation>
+    </message>
+    <message id="gamehq.input.model.scope.playback">
+      <location filename="src/input/BindingEditorModel.cpp" line="145"></location>
+      <source>Playback</source>
+      <translation>Le jeu</translation>
+    </message>
+    <message id="gamehq.input.model.status.added">
+      <location filename="src/input/BindingEditorModel.cpp" line="70"></location>
+      <source>Added</source>
+      <translation>Ajoutée</translation>
+    </message>
+    <message id="gamehq.input.model.status.modified">
+      <location filename="src/input/BindingEditorModel.cpp" line="75"></location>
+      <source>Modified</source>
+      <translation>Modifié</translation>
+    </message>
+    <message id="gamehq.input.model.status.removed">
+      <location filename="src/input/BindingEditorModel.cpp" line="80"></location>
+      <source>Removed</source>
+      <translation>Déposé</translation>
+    </message>
+    <message id="gamehq.input.model.unassigned">
+      <location filename="src/input/BindingEditorModel.cpp" line="165"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="241"></location>
+      <source>Unassigned</source>
+      <translation>Pas affecté</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
       <location filename="src/ui/qml/Main.qml" line="1020"></location>
@@ -3381,10 +3833,30 @@ Cette action est irréversible.</numerusform>
       <source>The portable import source folder is missing.</source>
       <translation>Le dossier source d'importation portable est manquant.</translation>
     </message>
+    <message id="gamehq.tray.exit">
+      <location filename="src/tray/TrayIcon.cpp" line="200"></location>
+      <source>Exit</source>
+      <translation>Quitter</translation>
+    </message>
     <message id="gamehq.tray.open_gallery">
-      <location filename="src/tray/TrayIcon.cpp" line="163"></location>
+      <location filename="src/tray/TrayIcon.cpp" line="184"></location>
       <source>Open Gallery</source>
-      <translation type="unfinished"></translation>
+      <translation>Ouvrir la galerie</translation>
+    </message>
+    <message id="gamehq.tray.rescan_captures">
+      <location filename="src/tray/TrayIcon.cpp" line="188"></location>
+      <source>Rescan Captures</source>
+      <translation>Réanalyser les captures</translation>
+    </message>
+    <message id="gamehq.tray.save_replay">
+      <location filename="src/tray/TrayIcon.cpp" line="196"></location>
+      <source>Save Replay</source>
+      <translation>Enregistrer la rediffusion</translation>
+    </message>
+    <message id="gamehq.tray.take_screenshot">
+      <location filename="src/tray/TrayIcon.cpp" line="192"></location>
+      <source>Take Screenshot</source>
+      <translation>Prendre une capture d’écran</translation>
     </message>
     <message id="gamehq.update.applying_and_restarting">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="182"></location>

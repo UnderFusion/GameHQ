@@ -4,11 +4,13 @@
 #include "tray/TrayIcon.h"
 
 #include <QAction>
+#include <QList>
 #include <QPointer>
 #include <QQmlComponent>
 #include <QQmlEngine>
 #include <QSignalSpy>
 #include <QTest>
+#include <QVector>
 #include <memory>
 
 namespace
@@ -48,6 +50,29 @@ ExpectedSurfaceText expectedFor(const QString &language)
             QStringLiteral("Delete capture?"), QStringLiteral("Open Gallery"),
             QStringLiteral("Screenshot"), QStringLiteral("Release notes")};
 }
+
+QStringList expectedNativePresentation(const QString& language)
+{
+    if (language == QLatin1String("pl-PL")) {
+        return {QStringLiteral("Skanuj zrzuty ponownie"),
+                QStringLiteral("Zrób zrzut ekranu"),
+                QStringLiteral("Zapisz powtórkę"), QStringLiteral("Wyjdź"),
+                QStringLiteral("Zrób zrzut ekranu bieżącej gry."),
+                QStringLiteral("Przejdź w górę"),
+                QStringLiteral("Przenieś zaznaczenie w górę w nakładce.")};
+    }
+    if (language == QLatin1String("zh-Hans")) {
+        return {QStringLiteral("重新扫描捕获内容"), QStringLiteral("截取屏幕截图"),
+                QStringLiteral("保存回放"), QStringLiteral("退出"),
+                QStringLiteral("捕获当前游戏的屏幕截图。"), QStringLiteral("向上导航"),
+                QStringLiteral("在覆盖层中向上移动选择。")};
+    }
+    return {QStringLiteral("Rescan Captures"), QStringLiteral("Take Screenshot"),
+            QStringLiteral("Save Replay"), QStringLiteral("Exit"),
+            QStringLiteral("Capture a screenshot of the current game."),
+            QStringLiteral("Navigate Up"),
+            QStringLiteral("Move selection up in the overlay.")};
+}
 }
 
 class LiveRetranslationTest : public QObject
@@ -86,6 +111,26 @@ void LiveRetranslationTest::repeatedSwitchesRefreshEveryRepresentativeSurfaceAto
 
     TrayIcon tray(nullptr, false);
     ActionCatalog::retranslate();
+    const int trayActionCount = tray.menuActionCount();
+    const QStringList trayIds{QStringLiteral("open_gallery"), QStringLiteral("rescan"),
+                              QStringLiteral("screenshot"), QStringLiteral("save_replay"),
+                              QStringLiteral("quit")};
+    QList<QAction*> trayActions;
+    for (const QString& id : trayIds) {
+        QAction* action = tray.actionForId(id);
+        QVERIFY2(action, qPrintable(id));
+        trayActions.append(action);
+    }
+    QVector<const ActionCatalog::Action*> actionObjects;
+    QStringList actionIds;
+    for (const auto& action : ActionCatalog::all()) {
+        actionObjects.append(&action);
+        actionIds.append(action.id);
+    }
+    QSignalSpy openSpy(&tray, &TrayIcon::openGalleryRequested);
+    QSignalSpy rescanSpy(&tray, &TrayIcon::rescanRequested);
+    QSignalSpy screenshotSpy(&tray, &TrayIcon::screenshotRequested);
+    QSignalSpy quitSpy(&tray, &TrayIcon::quitRequested);
     QStringList sequence;
     connect(&manager, &LanguageManager::requestedLanguageChanged,
             this, [&sequence] { sequence.append(QStringLiteral("requested")); });
@@ -105,6 +150,7 @@ void LiveRetranslationTest::repeatedSwitchesRefreshEveryRepresentativeSurfaceAto
 
     const auto verifySurfaces = [&](const QString &language) {
         const ExpectedSurfaceText expected = expectedFor(language);
+        const QStringList native = expectedNativePresentation(language);
         QCOMPARE(manager.effectiveLanguage(), language);
         QCOMPARE(qmlObject->property("label").toString(), expected.qml);
         QCOMPARE(qmlObject->property("overlay").toString(), expected.overlay);
@@ -112,9 +158,28 @@ void LiveRetranslationTest::repeatedSwitchesRefreshEveryRepresentativeSurfaceAto
         QCOMPARE(qmlObject->property("gallery").toString(), expected.gallery);
         QCOMPARE(qmlObject->property("dialog").toString(), expected.dialog);
         QCOMPARE(tray.openGalleryText(), expected.tray);
+        QCOMPARE(tray.actionForId(QStringLiteral("rescan"))->text(), native.at(0));
+        QCOMPARE(tray.actionForId(QStringLiteral("screenshot"))->text(), native.at(1));
+        QCOMPARE(tray.actionForId(QStringLiteral("save_replay"))->text(), native.at(2));
+        QCOMPARE(tray.actionForId(QStringLiteral("quit"))->text(), native.at(3));
+        QCOMPARE(tray.menuActionCount(), trayActionCount);
+        for (qsizetype index = 0; index < trayIds.size(); ++index)
+            QCOMPARE(tray.actionForId(trayIds.at(index)), trayActions.at(index));
+        QCOMPARE(ActionCatalog::all().size(), actionObjects.size());
+        for (qsizetype index = 0; index < actionObjects.size(); ++index) {
+            QCOMPARE(&ActionCatalog::all().at(index), actionObjects.at(index));
+            QCOMPARE(ActionCatalog::all().at(index).id, actionIds.at(index));
+            QVERIFY(!ActionCatalog::all().at(index).label.isEmpty());
+            QVERIFY(!ActionCatalog::all().at(index).description.isEmpty());
+        }
         const auto *action = ActionCatalog::find(QStringLiteral("global.screenshot"));
         QVERIFY(action);
         QCOMPARE(action->label, expected.model);
+        QCOMPARE(action->description, native.at(4));
+        const auto* overlayAction = ActionCatalog::find(QStringLiteral("overlay.navigate_up"));
+        QVERIFY(overlayAction);
+        QCOMPARE(overlayAction->label, native.at(5));
+        QCOMPARE(overlayAction->description, native.at(6));
         QCOMPARE(qtTrId("gamehq.release_notes.title"), expected.releaseNotes);
     };
     verifySurfaces(QStringLiteral("en-US"));
@@ -140,6 +205,15 @@ void LiveRetranslationTest::repeatedSwitchesRefreshEveryRepresentativeSurfaceAto
             verifySurfaces(language);
         }
     }
+
+    tray.actionForId(QStringLiteral("open_gallery"))->trigger();
+    tray.actionForId(QStringLiteral("rescan"))->trigger();
+    tray.actionForId(QStringLiteral("screenshot"))->trigger();
+    tray.actionForId(QStringLiteral("quit"))->trigger();
+    QCOMPARE(openSpy.size(), 1);
+    QCOMPARE(rescanSpy.size(), 1);
+    QCOMPARE(screenshotSpy.size(), 1);
+    QCOMPARE(quitSpy.size(), 1);
 }
 
 void LiveRetranslationTest::failedSwitchRetainsTheCompletePreviousState()
@@ -199,7 +273,7 @@ void LiveRetranslationTest::failedSwitchRetainsTheCompletePreviousState()
 
 void LiveRetranslationTest::switchingObjectsAndTranslatorStackAreReleased()
 {
-    QPointer<QAction> trayAction;
+    QList<QPointer<QAction>> trayActions;
     QPointer<QObject> qmlObject;
     {
         LocaleRegistry registry(false);
@@ -212,8 +286,12 @@ void LiveRetranslationTest::switchingObjectsAndTranslatorStackAreReleased()
         manager.setRequestedLanguage(QStringLiteral("zh-Hans"));
 
         auto tray = std::make_unique<TrayIcon>(nullptr, false);
-        trayAction = tray->openGalleryAction();
-        QVERIFY(trayAction);
+        for (const QString& id : {QStringLiteral("open_gallery"), QStringLiteral("rescan"),
+                                  QStringLiteral("screenshot"), QStringLiteral("save_replay"),
+                                  QStringLiteral("quit")}) {
+            trayActions.append(tray->actionForId(id));
+            QVERIFY(trayActions.constLast());
+        }
 
         QQmlEngine engine;
         QQmlComponent component(&engine);
@@ -223,7 +301,8 @@ void LiveRetranslationTest::switchingObjectsAndTranslatorStackAreReleased()
         qmlObject = object.get();
     }
 
-    QVERIFY(trayAction.isNull());
+    for (const QPointer<QAction>& action : trayActions)
+        QVERIFY(action.isNull());
     QVERIFY(qmlObject.isNull());
     QCOMPARE(qtTrId("gamehq.release_notes.title"),
              QStringLiteral("gamehq.release_notes.title"));

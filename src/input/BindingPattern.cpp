@@ -1,5 +1,7 @@
 #include "input/BindingPattern.h"
 
+#include "localization/NativeText.h"
+
 namespace {
 
 const QLatin1String kPress("press");
@@ -94,15 +96,33 @@ QString GestureSpec::label() const
 {
     switch (kind) {
     case Kind::Press:
-        return QStringLiteral("Press");
+        //: Name of the immediate button-down gesture in shortcut summaries.
+        //% "Press"
+        return NativeText::get(QT_TRID_NOOP("gamehq.input.gesture.press"), "Press");
     case Kind::Tap:
-        if (tapCount == 2) return QStringLiteral("Double tap");
-        if (tapCount == 3) return QStringLiteral("Triple tap");
-        return QStringLiteral("Tap");
+        if (tapCount == 2) {
+            //: Name of the two-tap gesture in shortcut summaries.
+            //% "Double tap"
+            return NativeText::get(QT_TRID_NOOP("gamehq.input.gesture.double_tap"),
+                                   "Double tap");
+        }
+        if (tapCount == 3) {
+            //: Name of the three-tap gesture in shortcut summaries.
+            //% "Triple tap"
+            return NativeText::get(QT_TRID_NOOP("gamehq.input.gesture.triple_tap"),
+                                   "Triple tap");
+        }
+        //: Name of the single-tap gesture in shortcut summaries.
+        //% "Tap"
+        return NativeText::get(QT_TRID_NOOP("gamehq.input.gesture.tap"), "Tap");
     case Kind::Hold:
-        return QStringLiteral("Hold");
+        //: Name of the held-button gesture in shortcut summaries.
+        //% "Hold"
+        return NativeText::get(QT_TRID_NOOP("gamehq.input.gesture.hold"), "Hold");
     }
-    return QStringLiteral("Press");
+    //: Name of the immediate button-down gesture in shortcut summaries.
+    //% "Press"
+    return NativeText::get(QT_TRID_NOOP("gamehq.input.gesture.press"), "Press");
 }
 
 GestureSpec::ParseResult GestureSpec::parse(const QString& activation, int tapCount, int holdMs)

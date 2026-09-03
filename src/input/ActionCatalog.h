@@ -42,7 +42,7 @@ public:
     // Returns nullptr if id is unknown.
     static const Action* find(const QString& id);
 
-    // Refreshes the representative cached label after a translator commit.
-    // Bulk action-string migration remains a later localization item.
+    // Refreshes every cached presentation field after a translator commit.
+    // Action identity, declaration order, scopes and behavior never change.
     static void retranslate();
 };

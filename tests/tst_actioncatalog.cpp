@@ -29,6 +29,8 @@ private slots:
             seen.insert(action.id);
             QVERIFY2(!action.label.isEmpty(),
                      qPrintable(QStringLiteral("%1 has no label").arg(action.id)));
+            QVERIFY2(!action.description.isEmpty(),
+                     qPrintable(QStringLiteral("%1 has no description").arg(action.id)));
         }
     }
 

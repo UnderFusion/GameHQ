@@ -11,6 +11,7 @@
 #include <QSignalSpy>
 #include <QTemporaryDir>
 #include <QTest>
+#include <QTranslator>
 #include <QVariantMap>
 
 namespace
@@ -45,6 +46,7 @@ BindingResolver::Binding bindingFor(const BindingRuntime &runtime, const QString
     }
     return {};
 }
+
 }
 
 class BindingEditorTest : public QObject
@@ -94,6 +96,70 @@ private slots:
         m_editor->setDeviceGroup(QStringLiteral("controller"));
         m_editor->setControllerProfile({});
         m_editor->setControllerSpecific(false);
+    }
+
+    void cachedPresentationRetranslatesWithoutChangingActionIdentity()
+    {
+        ActionCatalog::retranslate();
+        m_editor->retranslate();
+        const auto* screenshot = ActionCatalog::find(QStringLiteral("global.screenshot"));
+        QVERIFY(screenshot);
+        const int actionCount = ActionCatalog::all().size();
+        m_editor->setLastFiredAction(QStringLiteral("global.screenshot"));
+        m_editor->openAssignmentEditor(QStringLiteral("global.screenshot"), 1);
+        QSignalSpy rowsSpy(m_editor, &BindingEditorModel::rowsChanged);
+
+        const auto verifyLanguage = [&](const QString& catalog, const QString& label,
+                                        const QString& description, const QString& scope) {
+            QTranslator translator;
+            QVERIFY(translator.load(QStringLiteral(":/i18n/") + catalog));
+            QVERIFY(QCoreApplication::installTranslator(&translator));
+            ActionCatalog::retranslate();
+            m_editor->retranslate();
+
+            QCOMPARE(ActionCatalog::all().size(), actionCount);
+            QCOMPARE(ActionCatalog::find(QStringLiteral("global.screenshot")), screenshot);
+            QCOMPARE(screenshot->label, label);
+            QCOMPARE(screenshot->description, description);
+            const QVariantMap row = rowFor(*m_editor, QStringLiteral("global.screenshot"));
+            QCOMPARE(row.value(QStringLiteral("label")).toString(), screenshot->label);
+            QCOMPARE(row.value(QStringLiteral("description")).toString(),
+                     screenshot->description);
+            QCOMPARE(row.value(QStringLiteral("scope")).toString(), scope);
+            QCOMPARE(m_editor->editorActionLabel(), screenshot->label);
+            QCOMPARE(m_editor->editorScopeLabel(), scope);
+            QCOMPARE(m_editor->lastFiredAction(), screenshot->label);
+            QVERIFY(QCoreApplication::removeTranslator(&translator));
+        };
+
+        verifyLanguage(QStringLiteral("gamehq_manager_pl_PL.qm"),
+                       QStringLiteral("Zrzut ekranu"),
+                       QStringLiteral("Zrób zrzut ekranu bieżącej gry."),
+                       QStringLiteral("Globalny"));
+        verifyLanguage(QStringLiteral("gamehq_manager_zh_Hans.qm"),
+                       QStringLiteral("屏幕截图"),
+                       QStringLiteral("捕获当前游戏的屏幕截图。"),
+                       QStringLiteral("全局"));
+        ActionCatalog::retranslate();
+        m_editor->retranslate();
+        QCOMPARE(screenshot->label, QStringLiteral("Screenshot"));
+        QCOMPARE(m_editor->editorActionLabel(), QStringLiteral("Screenshot"));
+        QCOMPARE(m_editor->editorScopeLabel(), QStringLiteral("Global"));
+        QCOMPARE(m_editor->lastFiredAction(), QStringLiteral("Screenshot"));
+        QCOMPARE(rowsSpy.size(), 3);
+
+        m_editor->closeAssignmentEditor();
+        m_editor->beginCapture(QStringLiteral("global.screenshot"), 1);
+        QTranslator translator;
+        QVERIFY(translator.load(QStringLiteral(":/i18n/gamehq_manager_pl_PL.qm")));
+        QVERIFY(QCoreApplication::installTranslator(&translator));
+        ActionCatalog::retranslate();
+        m_editor->retranslate();
+        QVERIFY(m_editor->capturePrompt().startsWith(
+            QStringLiteral("Naciśnij przycisk kontrolera dla Zrzut ekranu")));
+        QVERIFY(QCoreApplication::removeTranslator(&translator));
+        ActionCatalog::retranslate();
+        m_editor->retranslate();
     }
 
     void editsBothSlotsPersistsAndResets()

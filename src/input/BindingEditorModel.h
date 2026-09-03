@@ -189,6 +189,8 @@ private:
 
     QString selectedProfile() const;
     void rebuildRows();
+    void refreshCapturePrompt();
+    void refreshLastFiredAction();
     PendingChange pendingChangeFor(const BindingResolver::Binding& target) const;
     bool conversionCanApply(const BindingResolver::Binding& target,
                             const BindingResolver::Binding& press,
@@ -245,7 +247,8 @@ private:
     QString m_relationKind = QStringLiteral("none");
     QString m_validationError;
     PendingChange m_pending;
-    QString m_lastFiredAction = QStringLiteral("No action fired yet");
+    QString m_lastFiredActionId;
+    QString m_lastFiredAction;
 
     bool m_editorOpen = false;
     QString m_editorActionId;

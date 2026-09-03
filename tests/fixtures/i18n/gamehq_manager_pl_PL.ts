@@ -47,5 +47,41 @@
       <source>Reason: %1</source>
       <translation>Powód: %1</translation>
     </message>
+    <message id="gamehq.action.global.screenshot.description">
+      <source>Capture a screenshot of the current game.</source>
+      <translation>Zrób zrzut ekranu bieżącej gry.</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_up.label">
+      <source>Navigate Up</source>
+      <translation>Przejdź w górę</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_up.description">
+      <source>Move selection up in the overlay.</source>
+      <translation>Przenieś zaznaczenie w górę w nakładce.</translation>
+    </message>
+    <message id="gamehq.tray.rescan_captures">
+      <source>Rescan Captures</source>
+      <translation>Skanuj zrzuty ponownie</translation>
+    </message>
+    <message id="gamehq.tray.take_screenshot">
+      <source>Take Screenshot</source>
+      <translation>Zrób zrzut ekranu</translation>
+    </message>
+    <message id="gamehq.tray.save_replay">
+      <source>Save Replay</source>
+      <translation>Zapisz powtórkę</translation>
+    </message>
+    <message id="gamehq.tray.exit">
+      <source>Exit</source>
+      <translation>Wyjdź</translation>
+    </message>
+    <message id="gamehq.input.model.scope.global">
+      <source>Global</source>
+      <translation>Globalny</translation>
+    </message>
+    <message id="gamehq.input.model.capture.controller">
+      <source>Press a controller button for %1 · Slot %2 · %3</source>
+      <translation>Naciśnij przycisk kontrolera dla %1 · Slot %2 · %3</translation>
+    </message>
   </context>
 </TS>

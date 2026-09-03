@@ -139,6 +139,18 @@ QStringList p4ThreeSourceFiles()
     };
 }
 
+QStringList p4FourSourceFiles()
+{
+    const QString root = QStringLiteral(GAMEHQ_SOURCE_DIR "/src/");
+    return {
+        root + QStringLiteral("input/ActionCatalog.cpp"),
+        root + QStringLiteral("input/BindingEditorModel.cpp"),
+        root + QStringLiteral("input/BindingPattern.cpp"),
+        root + QStringLiteral("tray/TrayIcon.cpp"),
+        root + QStringLiteral("ui/AppController.cpp"),
+    };
+}
+
 QStringList launchCatalogs()
 {
     return {
@@ -205,6 +217,8 @@ private slots:
     void productionQmlHasNoHardcodedUserText();
     void migratedP4ThreeCppIdsCoverEveryLaunchLocale();
     void migratedP4ThreeCppHasNoHardcodedErrorAssignments();
+    void migratedP4FourNativeIdsCoverEveryLaunchLocale();
+    void p4FourCachedPresentationIsIdDriven();
 };
 
 void LocalizationCatalogTest::productionEnglishCatalogCoversActiveIds()
@@ -375,6 +389,63 @@ void LocalizationCatalogTest::migratedP4ThreeCppHasNoHardcodedErrorAssignments()
         }
     }
     QVERIFY2(failures.isEmpty(), qPrintable(failures.join(u'\n')));
+}
+
+void LocalizationCatalogTest::migratedP4FourNativeIdsCoverEveryLaunchLocale()
+{
+    QSet<QString> ids;
+    for (const QString& id : translationIdsIn(p4FourSourceFiles())) {
+        if (id.startsWith(QStringLiteral("gamehq.action."))
+            || id.startsWith(QStringLiteral("gamehq.tray."))
+            || id.startsWith(QStringLiteral("gamehq.input.model."))
+            || id.startsWith(QStringLiteral("gamehq.input.gesture."))
+            || id.startsWith(QStringLiteral("gamehq.hdr."))) {
+            ids.insert(id);
+        }
+    }
+    QCOMPARE(ids.size(), 100);
+
+    for (const QString& catalogName : launchCatalogs()) {
+        QString error;
+        const auto catalog = readTsCatalog(
+            QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
+        QVERIFY2(error.isEmpty(), qPrintable(catalogName + QStringLiteral(": ") + error));
+        for (const QString& id : ids) {
+            QVERIFY2(catalog.contains(id),
+                     qPrintable(catalogName + QStringLiteral(" missing ") + id));
+            const auto& entry = catalog[id];
+            QVERIFY2(!entry.unfinished,
+                     qPrintable(catalogName + QStringLiteral(" unfinished ") + id));
+            QVERIFY2(!entry.translation.trimmed().isEmpty(),
+                     qPrintable(catalogName + QStringLiteral(" empty ") + id));
+            QVERIFY2(!entry.translation.startsWith(QStringLiteral("gamehq.")),
+                     qPrintable(catalogName + QStringLiteral(" exposed ") + id));
+        }
+    }
+}
+
+void LocalizationCatalogTest::p4FourCachedPresentationIsIdDriven()
+{
+    const auto readSource = [](const QString& relative) {
+        QFile file(QStringLiteral(GAMEHQ_SOURCE_DIR "/src/") + relative);
+        if (!file.open(QIODevice::ReadOnly))
+            return QString();
+        return QString::fromUtf8(file.readAll());
+    };
+
+    const QString actionCatalog = readSource(QStringLiteral("input/ActionCatalog.cpp"));
+    const QString tray = readSource(QStringLiteral("tray/TrayIcon.cpp"));
+    const QString editorHeader = readSource(QStringLiteral("input/BindingEditorModel.h"));
+    const QString controller = readSource(QStringLiteral("ui/AppController.cpp"));
+    QVERIFY(!actionCatalog.isEmpty());
+    QVERIFY(actionCatalog.contains(QStringLiteral("PresentationSpec")));
+    QVERIFY(!actionCatalog.contains(QStringLiteral("QStringLiteral(\"Screenshot\")")));
+    QVERIFY(!tray.contains(QStringLiteral("tr(\"")));
+    QVERIFY(tray.contains(QStringLiteral("m_rescanAction->setText")));
+    QVERIFY(tray.contains(QStringLiteral("m_quitAction->setText")));
+    QVERIFY(!editorHeader.contains(
+        QStringLiteral("m_lastFiredAction = QStringLiteral(\"No action fired yet\")")));
+    QVERIFY(!controller.contains(QStringLiteral("return QStringLiteral(\"Not checked yet\")")));
 }
 
 void LocalizationCatalogTest::productionQmlHasNoHardcodedUserText()

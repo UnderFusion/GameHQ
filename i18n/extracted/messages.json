@@ -408,6 +408,550 @@
       "source_hash": "bdeedfd30d4c31df1cc018651ae56c9d897347c613376ad24e84657799e45814"
     },
     {
+      "id": "gamehq.action.desktop.back.description",
+      "source": "Close the current gallery panel.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 230
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a9d2ea4acb6e6710e3725aee2ddbe58f23a124295cd48692efa2e7ebec46a8a5"
+    },
+    {
+      "id": "gamehq.action.desktop.back.label",
+      "source": "Back",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 227
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6a57466137d7c992297dbdf7fb041ebc6ca6ea18ada04e6bcb7e8802ba42d47c"
+    },
+    {
+      "id": "gamehq.action.desktop.bulk_toggle.description",
+      "source": "Enter or leave bulk selection mode.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 300
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "190d841401f6ffeb592adf8d30011a5382748da94741249612b1155e4862bbf4"
+    },
+    {
+      "id": "gamehq.action.desktop.bulk_toggle.label",
+      "source": "Bulk Select",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 297
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "98818cd7df73712b465627d7f3538c65ffa8a7ac6f9db494a62e84ef478269da"
+    },
+    {
+      "id": "gamehq.action.desktop.confirm.description",
+      "source": "Activate the selected item in the gallery.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 223
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a99b516a9416d483e52b9fd3be32d400d7d74fa76ef138e89c801f5c18182917"
+    },
+    {
+      "id": "gamehq.action.desktop.confirm.label",
+      "source": "Confirm",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 220
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f84b6f6ddc76f57eed8abd66a4eb670cb5f032b532ce52d4c48f05b3f4ab78e6"
+    },
+    {
+      "id": "gamehq.action.desktop.favorite.description",
+      "source": "Mark or unmark the selected capture as a favorite.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 237
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ca6a69ca029d8c244e10bee25601dc3d44f15683abe94aada5ea22d6fb5d14bc"
+    },
+    {
+      "id": "gamehq.action.desktop.favorite.label",
+      "source": "Toggle Favorite",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 234
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3fb9b539e4eaff25ac6a4985218274a9910cbd77f0845c1446c21533063f6a76"
+    },
+    {
+      "id": "gamehq.action.desktop.menu.description",
+      "source": "Open the action menu for the selected item.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 244
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d4d6813fbbdfbf57477da96a912f32429963180f415fd31212731f81d34b0945"
+    },
+    {
+      "id": "gamehq.action.desktop.menu.label",
+      "source": "Open Menu",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 241
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5bb799778c850643f7521660489dc3218db3ec10c21365e6d09aaae714da0291"
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_down.description",
+      "source": "Move selection down in the gallery.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 202
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ea54d64e7dc2a7e1ed9ed8a5669c56aaa596a524111601a3047f4e55f21af4f3"
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_down.label",
+      "source": "Navigate Down",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 199
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b1dc4221b7a6ce4af5f97baec3383b2c4d48550c64f7147117c96146d768aeb6"
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_left.description",
+      "source": "Move selection left in the gallery.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 209
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d56f9be73956c621c7a54ee39850a2ce1bfdfbe4b366a2d5675f20818167bbf7"
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_left.label",
+      "source": "Navigate Left",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 206
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0455795f036b8663ca955a32729dde1d007938386b22dc01e308d89d2dc2cfd0"
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_right.description",
+      "source": "Move selection right in the gallery.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 216
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "33844fe0f5018b8214b19c10b67b77aaf1086d206222a141f999c81d31cf6f47"
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_right.label",
+      "source": "Navigate Right",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 213
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "87f75aaff18da29d937da0a186b247214eba28cfa1fc0eec24121b5168bc9344"
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_up.description",
+      "source": "Move selection up in the gallery.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 195
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8af695bdf33062b52bb50716fdb2f2c678af490bd6e5b64acb670316a0a5e963"
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_up.label",
+      "source": "Navigate Up",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 192
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7f0b3e33e7bd87be02734261a87926c82a9ccf77c194e132c94861edb806a8bc"
+    },
+    {
+      "id": "gamehq.action.desktop.scroll_down.description",
+      "source": "Scroll the current view down without moving the selection.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 293
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9d23e6de2f8503a6e960c8be4e218e344d769f3f63ff0934153e0c0966bc137a"
+    },
+    {
+      "id": "gamehq.action.desktop.scroll_down.label",
+      "source": "Scroll Down",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 290
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "58caeb81b511dc3c8032a9bfc81ce091a52cc035df26a3d78bbde2f3e0881ffa"
+    },
+    {
+      "id": "gamehq.action.desktop.scroll_up.description",
+      "source": "Scroll the current view up without moving the selection.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 286
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "05f404971b31058ac1c26fa810897070cb3553f50a3787e1f423b147e7145366"
+    },
+    {
+      "id": "gamehq.action.desktop.scroll_up.label",
+      "source": "Scroll Up",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 283
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3b1f827d04b9f5cf0d17a0ff65d80af714635a86e1ec3d22c53276d5de2c5a08"
+    },
+    {
+      "id": "gamehq.action.desktop.settings.description",
+      "source": "Open the Settings panel from anywhere in the gallery.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 265
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "fb5f8f48fc65d82a29d1175a45076870b6728679d7cfc76b333d8b4a76c48306"
+    },
+    {
+      "id": "gamehq.action.desktop.settings.label",
+      "source": "Open Settings",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 262
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d2cfe12235e9aca93b139b0bdd7f81f3b9881c33cca2973f20f3b079a071c35a"
+    },
+    {
+      "id": "gamehq.action.desktop.tab_next.description",
+      "source": "Step to the next sidebar category.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 258
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "87b3b3f0963de068cea558f4427247c18c090d69d38e9c682fd2d96c37adc643"
+    },
+    {
+      "id": "gamehq.action.desktop.tab_next.label",
+      "source": "Next Tab",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 255
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "54d292a3e259853decd0fc122c4a4f43b7a41d4b6ec0f9e1c3ced384d9963247"
+    },
+    {
+      "id": "gamehq.action.desktop.tab_prev.description",
+      "source": "Step to the previous sidebar category.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 251
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "53a3dab06111be0f59305c705636467532a6926ead992fee9be34395839f8b72"
+    },
+    {
+      "id": "gamehq.action.desktop.tab_prev.label",
+      "source": "Previous Tab",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 248
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "21d25ef6dde13a522e52abc83935f31eb2d2ead344f45ac8f440e4ab4dea40f1"
+    },
+    {
+      "id": "gamehq.action.desktop.zoom_in.description",
+      "source": "Make the gallery thumbnails larger.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 279
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bb962d31037040050e59311579b4ec11233bed235ac7cc4cab09faf8e4e9433c"
+    },
+    {
+      "id": "gamehq.action.desktop.zoom_in.label",
+      "source": "Zoom In",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 276
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "971a6941202f956a1fca07f5140438deceba3bfdc543999066a825c1e7d27fdd"
+    },
+    {
+      "id": "gamehq.action.desktop.zoom_out.description",
+      "source": "Make the gallery thumbnails smaller.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 272
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9ef72aa224af6a4df31210d08960d4c4c6a8ceb1328ec5f366f89400f0d488df"
+    },
+    {
+      "id": "gamehq.action.desktop.zoom_out.label",
+      "source": "Zoom Out",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 269
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6ae3e6b1139ae115a39b3856347dfee65db4f84b9db751d80121b312a498aa5c"
+    },
+    {
       "id": "gamehq.action.dismiss",
       "source": "Dismiss",
       "context": "ID",
@@ -459,6 +1003,129 @@
       "source_hash": "cb3d736679797aa92af00b7e9a74cc2b017f6afbca3b50af0116a3708523c700"
     },
     {
+      "id": "gamehq.action.global.save_replay.description",
+      "source": "Save the rolling replay buffer as a clip.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 94
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "24b953828add7eb2c03b4d79ac6971eaede9ce7f4f290da4f7a5b1802a48aa59"
+    },
+    {
+      "id": "gamehq.action.global.save_replay.label",
+      "source": "Save Replay",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 91
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6f33ed88c5e0d53c493a9d6f5f61da79157b680e32bb05742a94a18d4587ea86"
+    },
+    {
+      "id": "gamehq.action.global.screenshot.description",
+      "source": "Capture a screenshot of the current game.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 87
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "686a1ac0c3db7aab7b258f853ada7335609ec3bcf122f8e3051e63a0a35ac61d"
+    },
+    {
+      "id": "gamehq.action.global.toggle_desktop.description",
+      "source": "Bring the GameHQ window to the front with focus, or hide it and return to the game.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 109
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "47f78de6d12efa5918aa5cb4f268ba472a1ec295b4462776a76ec4476ed2d9ce"
+    },
+    {
+      "id": "gamehq.action.global.toggle_desktop.label",
+      "source": "Show / Hide GameHQ Window",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 105
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "447568eff554495954898ee4153ca1856ec027fd2145a918bc0f9c3ee7e2b5f3"
+    },
+    {
+      "id": "gamehq.action.global.toggle_overlay.description",
+      "source": "Show or hide the in-game overlay.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 101
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8ed7b26f0845459cc910c0ea636bc4b7d515fe59e80d0eba4f0fd1c98477af73"
+    },
+    {
+      "id": "gamehq.action.global.toggle_overlay.label",
+      "source": "Toggle Overlay",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 98
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "527c41f8f28e3f5b04971b7e21a8ba694ad32c31c34bda4eee9ff4c09c578fd5"
+    },
+    {
       "id": "gamehq.action.not_now",
       "source": "Not now",
       "context": "ID",
@@ -474,6 +1141,516 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "d7c7fbf0813e5567728669782d07e1fd1e3e526b8cc09ef8b617cb89b309931a"
+    },
+    {
+      "id": "gamehq.action.overlay.back.description",
+      "source": "Close the current overlay panel.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 152
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bdf73163b3ff8dd53a8a6327a31c875ebdd8803ef3a3d3a78d8553e60ea402a8"
+    },
+    {
+      "id": "gamehq.action.overlay.back.label",
+      "source": "Back",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 149
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6a57466137d7c992297dbdf7fb041ebc6ca6ea18ada04e6bcb7e8802ba42d47c"
+    },
+    {
+      "id": "gamehq.action.overlay.confirm.description",
+      "source": "Activate the selected item in the overlay.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 145
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c9187c36519fb5c4119287b1e76a26ef684ea0eb0a4f6d1822d0ee287c73443a"
+    },
+    {
+      "id": "gamehq.action.overlay.confirm.label",
+      "source": "Confirm",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 142
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f84b6f6ddc76f57eed8abd66a4eb670cb5f032b532ce52d4c48f05b3f4ab78e6"
+    },
+    {
+      "id": "gamehq.action.overlay.favorite.description",
+      "source": "Mark or unmark the selected capture as a favorite.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 159
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ca6a69ca029d8c244e10bee25601dc3d44f15683abe94aada5ea22d6fb5d14bc"
+    },
+    {
+      "id": "gamehq.action.overlay.favorite.label",
+      "source": "Toggle Favorite",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 156
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3fb9b539e4eaff25ac6a4985218274a9910cbd77f0845c1446c21533063f6a76"
+    },
+    {
+      "id": "gamehq.action.overlay.game_next.description",
+      "source": "Step to the next game in the sidebar.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 187
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4ba1cda2a0edf31a3363d5b9fa8229756edf298f3142bc8ab9672c5486738d1f"
+    },
+    {
+      "id": "gamehq.action.overlay.game_next.label",
+      "source": "Next Game",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 184
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "820734db567f85fa3432d3751ac939016900d749329ebb9c0d746a245a7a8935"
+    },
+    {
+      "id": "gamehq.action.overlay.game_prev.description",
+      "source": "Step to the previous game in the sidebar.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 180
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a28c3b1d212694266453d594bd38ca140d9c3d5f896898e9416a7c82d4c58679"
+    },
+    {
+      "id": "gamehq.action.overlay.game_prev.label",
+      "source": "Previous Game",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 177
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "32ae13daa5d08af5c86250fd97f85573d94c78b2bdf408dd837d9eae87c80c55"
+    },
+    {
+      "id": "gamehq.action.overlay.menu.description",
+      "source": "Open the action menu for the selected item.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 166
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d4d6813fbbdfbf57477da96a912f32429963180f415fd31212731f81d34b0945"
+    },
+    {
+      "id": "gamehq.action.overlay.menu.label",
+      "source": "Open Menu",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 163
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5bb799778c850643f7521660489dc3218db3ec10c21365e6d09aaae714da0291"
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_down.description",
+      "source": "Move selection down in the overlay.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 124
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "18a3830f3287735c76ffcd04968473bd8c78b8b2611ab5ea3b35e44c7e0700b3"
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_down.label",
+      "source": "Navigate Down",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 121
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b1dc4221b7a6ce4af5f97baec3383b2c4d48550c64f7147117c96146d768aeb6"
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_left.description",
+      "source": "Move selection left in the overlay.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 131
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "dc527be2ef80c3da79f74c53e8b07e57d3ae00c0cafa6f462e5714b06e04c7c0"
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_left.label",
+      "source": "Navigate Left",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 128
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0455795f036b8663ca955a32729dde1d007938386b22dc01e308d89d2dc2cfd0"
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_right.description",
+      "source": "Move selection right in the overlay.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 138
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "de42affbeae80c932bd474dcd8beecb87ee1fb9881b9ae8a6b418ad815a0bd5d"
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_right.label",
+      "source": "Navigate Right",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 135
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "87f75aaff18da29d937da0a186b247214eba28cfa1fc0eec24121b5168bc9344"
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_up.description",
+      "source": "Move selection up in the overlay.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 117
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "032215322e0ee77af1aacc60f6066e59248f82c353760b3eb6f6a87c4063569f"
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_up.label",
+      "source": "Navigate Up",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 114
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7f0b3e33e7bd87be02734261a87926c82a9ccf77c194e132c94861edb806a8bc"
+    },
+    {
+      "id": "gamehq.action.overlay.sidebar_toggle.description",
+      "source": "Show or hide the overlay sidebar.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 173
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "dd206ca52158dc39419da6d0b830559ce4b303d25ef8bde19e9f937f0e86c7b8"
+    },
+    {
+      "id": "gamehq.action.overlay.sidebar_toggle.label",
+      "source": "Toggle Sidebar",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 170
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "05386d7cdd934dca6c85c240038c17b3d7151ba87602c7e1dba8fbd4382a30c1"
+    },
+    {
+      "id": "gamehq.action.playback.frame_grab.description",
+      "source": "Save the frame currently shown in the focused clip as a screenshot.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 329
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9d8dc804e64c1273bfde22e12e1cc6e7c1b166cc60ef7f489fbf28ee2e95ad20"
+    },
+    {
+      "id": "gamehq.action.playback.frame_grab.label",
+      "source": "Save Frame",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 326
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b6f7dbb7d4f35dbf90dc992fbe12398a3f7e0aa450651dd1c1871c779ae39285"
+    },
+    {
+      "id": "gamehq.action.playback.play_pause.description",
+      "source": "Toggle playback of the focused clip.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 308
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "660bb7fae051c84142b647f7ea512079823fa1304214b1e55cca7ddb6bd9d50c"
+    },
+    {
+      "id": "gamehq.action.playback.play_pause.label",
+      "source": "Play / Pause",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 305
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "00576b601525b03d937179f2623c3a817d0524ecc0afe8e204bd48d993a093c7"
+    },
+    {
+      "id": "gamehq.action.playback.seek_back.description",
+      "source": "Step the focused clip backward.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 315
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "24a2b74b86903016a83bd7fa4701448a73f8bf95c4aa4d44e170bda074b8123a"
+    },
+    {
+      "id": "gamehq.action.playback.seek_back.label",
+      "source": "Seek Back",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 312
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b7c490caba1b51822bbf8e4bafcfdd03df9f5408b686846554beb3e5c56a60dc"
+    },
+    {
+      "id": "gamehq.action.playback.seek_forward.description",
+      "source": "Step the focused clip forward.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 322
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "fcbc25d9f4e329793a6e798b5c5e3f4ef7e979f9aa2a43de0db89664aa1447ec"
+    },
+    {
+      "id": "gamehq.action.playback.seek_forward.label",
+      "source": "Seek Forward",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/ActionCatalog.cpp",
+          "line": 319
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "89497ec9a0975397aa44f2e7687be45c183dfa0ad2ae187fbbe36cf7f78f504c"
     },
     {
       "id": "gamehq.action.record",
@@ -634,7 +1811,7 @@
       "locations": [
         {
           "file": "src/input/ActionCatalog.cpp",
-          "line": 115
+          "line": 84
         }
       ],
       "plural": false,
@@ -1021,7 +2198,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 321
+          "line": 340
         }
       ],
       "plural": false,
@@ -1093,11 +2270,11 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 315
+          "line": 334
         },
         {
           "file": "src/ui/AppController.cpp",
-          "line": 337
+          "line": 356
         }
       ],
       "plural": false,
@@ -3768,6 +4945,91 @@
       "source_hash": "086603b1c7592213bbeca4b18baf09f55393bf186f60ebbb9a40ac1d076b3045"
     },
     {
+      "id": "gamehq.hdr.detail.not_checked",
+      "source": "Check the current HDR state of every display.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 322
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "81a81245e787b945c26c74fc6fd71a97ba08a192341538e51d76184fb06ddf6d"
+    },
+    {
+      "id": "gamehq.hdr.status.active",
+      "source": "Windows HDR is active",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 308
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b4c4dae3520011a75b33d74b808d42efe4ed1048aa44b8dd8f4386d7b7894982"
+    },
+    {
+      "id": "gamehq.hdr.status.inactive",
+      "source": "Windows HDR is inactive",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 313
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "52ad9eee828abfb258bf8d5af29a9188bcb9dd1e01a1240d74cfc5acfd6488a4"
+    },
+    {
+      "id": "gamehq.hdr.status.no_displays",
+      "source": "No displays reported by the graphics driver",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 302
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5dfb6924357d38b008cb9e5314f26d229b3a8de9a4494991afea448a020b3858"
+    },
+    {
+      "id": "gamehq.hdr.status.not_checked",
+      "source": "Not checked yet",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/AppController.cpp",
+          "line": 296
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "258a6c0a46bd1976bd924c53fa570dfabd748ee7652304c47084cefe6cae904a"
+    },
+    {
       "id": "gamehq.help.binding.select_mode",
       "source": "Select mode",
       "context": "ID",
@@ -5212,6 +6474,10 @@
       "domain": "application",
       "locations": [
         {
+          "file": "src/input/BindingPattern.cpp",
+          "line": 106
+        },
+        {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
           "line": 473
         }
@@ -5228,6 +6494,10 @@
       "context": "ID",
       "domain": "application",
       "locations": [
+        {
+          "file": "src/input/BindingPattern.cpp",
+          "line": 121
+        },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
           "line": 477
@@ -5246,6 +6516,14 @@
       "domain": "application",
       "locations": [
         {
+          "file": "src/input/BindingPattern.cpp",
+          "line": 101
+        },
+        {
+          "file": "src/input/BindingPattern.cpp",
+          "line": 125
+        },
+        {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
           "line": 469
         }
@@ -5262,6 +6540,10 @@
       "context": "ID",
       "domain": "application",
       "locations": [
+        {
+          "file": "src/input/BindingPattern.cpp",
+          "line": 117
+        },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
           "line": 471
@@ -5280,6 +6562,10 @@
       "domain": "application",
       "locations": [
         {
+          "file": "src/input/BindingPattern.cpp",
+          "line": 112
+        },
+        {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
           "line": 475
         }
@@ -5289,6 +6575,277 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "7321c01862585054f28be951e16d94c50a32513dd3b48a1e9f4acc973ad25e49"
+    },
+    {
+      "id": "gamehq.input.model.capture.controller",
+      "source": "Press a controller button for %1 · Slot %2 · %3",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 300
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2",
+        "%3"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "11cf3ccb8416e910635aa1583dff9e90715e4d5bfd51ae9f7f225cdb41189f8e"
+    },
+    {
+      "id": "gamehq.input.model.capture.keyboard",
+      "source": "Press a key or shortcut for %1 · Slot %2",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 307
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "da9a43d76229242c207bef748fea141d43a4b392b73313900d5763fa5de0cbe6"
+    },
+    {
+      "id": "gamehq.input.model.capture.mouse",
+      "source": "Press the middle, Back, or Forward mouse button for %1 · Slot %2",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 314
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "fba255569c8c5a30296eb267b51caba11c587696e055f3721613657ad62086e9"
+    },
+    {
+      "id": "gamehq.input.model.combination",
+      "source": "Combination",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 178
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "fbf40ff97ccc1364147870fb4931268f4cf0a0dea212beda6807141b5ba769f7"
+    },
+    {
+      "id": "gamehq.input.model.hold_default",
+      "source": "Hold · Default",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 184
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "44d2fefd028779d99c54f0d27ec4fecb0605330e3262b634e23b5ac259d4a058"
+    },
+    {
+      "id": "gamehq.input.model.hold_seconds",
+      "source": "Hold · %1 s",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 189
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ed9e3ba8bd3ec74e110e34430da28e23c5d962825e724337e60bf6a71b4edb2e"
+    },
+    {
+      "id": "gamehq.input.model.no_action_fired",
+      "source": "No action fired yet",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 962
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ea1597a0da225297979ff331e2b039a0cfde0c42eca071fbec68e4603df25ee1"
+    },
+    {
+      "id": "gamehq.input.model.scope.gallery",
+      "source": "Gallery",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 141
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "042423f3ff3852714728719b7b8998ad15c3e2261884579b68959c40574f643c"
+    },
+    {
+      "id": "gamehq.input.model.scope.global",
+      "source": "Global",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 133
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1b413be8286e6704bbf67005df27ff7e4d1c42230ebb1f3e24dd70dc0372f3db"
+    },
+    {
+      "id": "gamehq.input.model.scope.overlay",
+      "source": "Overlay",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 137
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0e2683d76be2bf7a1cc0910f66c9336ec2916322bdfa3235d4a41869c75d1aa3"
+    },
+    {
+      "id": "gamehq.input.model.scope.playback",
+      "source": "Playback",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 145
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "72b8cd126eb48f2a45b7f80b66b98b690669de69b7df3da5bcbde76e2a482de4"
+    },
+    {
+      "id": "gamehq.input.model.status.added",
+      "source": "Added",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 70
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6c2c584480e3cd360fe924198a38e33a0f761b235bfa1b23d33cb6ba9f473dbb"
+    },
+    {
+      "id": "gamehq.input.model.status.modified",
+      "source": "Modified",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 75
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4b9917cbf66260dbe7da92ad69fe11ba255c2348d57d5c77acdd3db70e38886e"
+    },
+    {
+      "id": "gamehq.input.model.status.removed",
+      "source": "Removed",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 80
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "feb93a7da74fc09ae450cc0c9c7a3db96ad51f28f4b554a11c0e46ca1cad2cea"
+    },
+    {
+      "id": "gamehq.input.model.unassigned",
+      "source": "Unassigned",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 165
+        },
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 241
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "860a7dcadf71485758249b5e4c8cc8262e9e8daffa7fdb8ed481f06b134ebab1"
     },
     {
       "id": "gamehq.library.folder_dialog.title",
@@ -11728,6 +13285,23 @@
       "source_hash": "eda8d7dc2647a8cdbb3c20288b0159797791c01e67938d9f4da5c2e97e142c9b"
     },
     {
+      "id": "gamehq.tray.exit",
+      "source": "Exit",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayIcon.cpp",
+          "line": 200
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "186ea0f12d98eae083f252f8b24eb62b0735542d870b298a705db258e0b5397a"
+    },
+    {
       "id": "gamehq.tray.open_gallery",
       "source": "Open Gallery",
       "context": "ID",
@@ -11735,7 +13309,7 @@
       "locations": [
         {
           "file": "src/tray/TrayIcon.cpp",
-          "line": 163
+          "line": 184
         }
       ],
       "plural": false,
@@ -11743,6 +13317,57 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "c8299ae24a1327c5446982fdd41247d79b7671faf67f18729e41359d0f778ce8"
+    },
+    {
+      "id": "gamehq.tray.rescan_captures",
+      "source": "Rescan Captures",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayIcon.cpp",
+          "line": 188
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0d8b9d7bb70d3dd618d0db1cc92d311f8fd432104a9bb890103afda5b96f0c7b"
+    },
+    {
+      "id": "gamehq.tray.save_replay",
+      "source": "Save Replay",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayIcon.cpp",
+          "line": 196
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6f33ed88c5e0d53c493a9d6f5f61da79157b680e32bb05742a94a18d4587ea86"
+    },
+    {
+      "id": "gamehq.tray.take_screenshot",
+      "source": "Take Screenshot",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/tray/TrayIcon.cpp",
+          "line": 192
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b4d2d96a50a5206cb63031ec9c8c292948433a8c0824884abc08eeac5928927c"
     },
     {
       "id": "gamehq.update.applying_and_restarting",

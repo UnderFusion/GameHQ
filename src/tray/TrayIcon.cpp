@@ -1,5 +1,6 @@
 #include "tray/TrayIcon.h"
 #include "Brand.h"
+#include "localization/NativeText.h"
 
 #include <QAction>
 #include <QCoreApplication>
@@ -112,18 +113,19 @@ TrayIcon::TrayIcon(QObject* parent, bool show)
     m_openAction = m_menu->addAction(makeGlyph(ink, drawGallery), QString());
     connect(m_openAction, &QAction::triggered, this, &TrayIcon::openGalleryRequested);
 
-    QAction* rescan = m_menu->addAction(makeGlyph(ink, drawRescan), tr("Rescan Captures"));
-    connect(rescan, &QAction::triggered, this, &TrayIcon::rescanRequested);
+    m_rescanAction = m_menu->addAction(makeGlyph(ink, drawRescan), QString());
+    connect(m_rescanAction, &QAction::triggered, this, &TrayIcon::rescanRequested);
 
     m_menu->addSeparator();
-    QAction* shot = m_menu->addAction(makeGlyph(ink, drawScreenshot), tr("Take Screenshot"));
-    connect(shot, &QAction::triggered, this, &TrayIcon::screenshotRequested);
+    m_screenshotAction = m_menu->addAction(makeGlyph(ink, drawScreenshot), QString());
+    connect(m_screenshotAction, &QAction::triggered, this, &TrayIcon::screenshotRequested);
     // Qt fades the icon for us in the disabled state.
-    m_menu->addAction(makeGlyph(ink, drawReplay), tr("Save Replay"))->setEnabled(false);
+    m_replayAction = m_menu->addAction(makeGlyph(ink, drawReplay), QString());
+    m_replayAction->setEnabled(false);
     m_menu->addSeparator();
 
-    QAction* quit = m_menu->addAction(makeGlyph(ink, drawExit), tr("Exit"));
-    connect(quit, &QAction::triggered, this, &TrayIcon::quitRequested);
+    m_quitAction = m_menu->addAction(makeGlyph(ink, drawExit), QString());
+    connect(m_quitAction, &QAction::triggered, this, &TrayIcon::quitRequested);
 
     m_tray->setIcon(QIcon(QStringLiteral(":/icons/gamehq.ico")));
     m_tray->setToolTip(QString::fromLatin1(Brand::Name) + QLatin1Char(' ')
@@ -156,9 +158,44 @@ QString TrayIcon::openGalleryText() const
     return m_openAction ? m_openAction->text() : QString();
 }
 
+QAction* TrayIcon::actionForId(const QString& id) const
+{
+    if (id == QLatin1String("open_gallery")) return m_openAction;
+    if (id == QLatin1String("rescan")) return m_rescanAction;
+    if (id == QLatin1String("screenshot")) return m_screenshotAction;
+    if (id == QLatin1String("save_replay")) return m_replayAction;
+    if (id == QLatin1String("quit")) return m_quitAction;
+    return nullptr;
+}
+
+int TrayIcon::menuActionCount() const
+{
+    return m_menu ? m_menu->actions().size() : 0;
+}
+
 void TrayIcon::retranslate()
 {
-    if (m_openAction)
+    if (!m_openAction)
+        return;
+
+    m_openAction->setText(NativeText::get(
+        //: Tray menu command that opens the desktop gallery.
         //% "Open Gallery"
-        m_openAction->setText(qtTrId("gamehq.tray.open_gallery"));
+        QT_TRID_NOOP("gamehq.tray.open_gallery"), "Open Gallery"));
+    m_rescanAction->setText(NativeText::get(
+        //: Tray menu command that scans capture folders again.
+        //% "Rescan Captures"
+        QT_TRID_NOOP("gamehq.tray.rescan_captures"), "Rescan Captures"));
+    m_screenshotAction->setText(NativeText::get(
+        //: Tray menu command that captures the current game image.
+        //% "Take Screenshot"
+        QT_TRID_NOOP("gamehq.tray.take_screenshot"), "Take Screenshot"));
+    m_replayAction->setText(NativeText::get(
+        //: Disabled tray menu placeholder for saving the replay buffer.
+        //% "Save Replay"
+        QT_TRID_NOOP("gamehq.tray.save_replay"), "Save Replay"));
+    m_quitAction->setText(NativeText::get(
+        //: Tray menu command that exits GameHQ.
+        //% "Exit"
+        QT_TRID_NOOP("gamehq.tray.exit"), "Exit"));
 }

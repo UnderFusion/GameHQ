@@ -18,6 +18,8 @@ public:
     void showNotification(const QString& title, const QString& body);
     QString openGalleryText() const;
     QAction* openGalleryAction() const { return m_openAction; }
+    QAction* actionForId(const QString& id) const;
+    int menuActionCount() const;
 
 public slots:
     void retranslate();
@@ -32,4 +34,8 @@ private:
     QSystemTrayIcon* m_tray;
     QMenu* m_menu;
     QAction* m_openAction = nullptr;
+    QAction* m_rescanAction = nullptr;
+    QAction* m_screenshotAction = nullptr;
+    QAction* m_replayAction = nullptr;
+    QAction* m_quitAction = nullptr;
 };

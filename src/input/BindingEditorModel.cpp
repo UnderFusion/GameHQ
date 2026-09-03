@@ -4,6 +4,7 @@
 #include "input/BindingRelation.h"
 #include "input/BindingRuntime.h"
 #include "input/ControllerIdentity.h"
+#include "localization/NativeText.h"
 #include "storage/CaptureDatabase.h"
 
 #include <QHash>
@@ -63,9 +64,21 @@ QString slotChangeState(const BindingResolver::Binding* baseline,
 
 QString statusLabel(const QString& state)
 {
-    if (state == QLatin1String("added")) return QStringLiteral("Added");
-    if (state == QLatin1String("modified")) return QStringLiteral("Modified");
-    if (state == QLatin1String("removed")) return QStringLiteral("Removed");
+    if (state == QLatin1String("added")) {
+        //: Binding-editor status for a newly assigned shortcut.
+        //% "Added"
+        return NativeText::get(QT_TRID_NOOP("gamehq.input.model.status.added"), "Added");
+    }
+    if (state == QLatin1String("modified")) {
+        //: Binding-editor status for a changed shortcut.
+        //% "Modified"
+        return NativeText::get(QT_TRID_NOOP("gamehq.input.model.status.modified"), "Modified");
+    }
+    if (state == QLatin1String("removed")) {
+        //: Binding-editor status for a removed shortcut.
+        //% "Removed"
+        return NativeText::get(QT_TRID_NOOP("gamehq.input.model.status.removed"), "Removed");
+    }
     return {};
 }
 }
@@ -77,6 +90,7 @@ BindingEditorModel::BindingEditorModel(CaptureDatabase* database, BindingRuntime
     , m_runtime(runtime)
     , m_reloadRuntime(std::move(reloadRuntime))
 {
+    refreshLastFiredAction();
     rebuildRows();
 }
 
@@ -113,10 +127,22 @@ QString BindingEditorModel::selectedProfile() const
 QString BindingEditorModel::scopeLabel(ActionCatalog::Scope scope)
 {
     switch (scope) {
-    case ActionCatalog::Scope::Global: return QStringLiteral("Global");
-    case ActionCatalog::Scope::Overlay: return QStringLiteral("Overlay");
-    case ActionCatalog::Scope::Desktop: return QStringLiteral("Gallery");
-    case ActionCatalog::Scope::Playback: return QStringLiteral("Playback");
+    case ActionCatalog::Scope::Global:
+        //: Scope label for shortcuts that work everywhere.
+        //% "Global"
+        return NativeText::get(QT_TRID_NOOP("gamehq.input.model.scope.global"), "Global");
+    case ActionCatalog::Scope::Overlay:
+        //: Scope label for shortcuts that work in the in-game overlay.
+        //% "Overlay"
+        return NativeText::get(QT_TRID_NOOP("gamehq.input.model.scope.overlay"), "Overlay");
+    case ActionCatalog::Scope::Desktop:
+        //: Scope label for shortcuts that work in the desktop gallery.
+        //% "Gallery"
+        return NativeText::get(QT_TRID_NOOP("gamehq.input.model.scope.gallery"), "Gallery");
+    case ActionCatalog::Scope::Playback:
+        //: Scope label for shortcuts that work during clip playback.
+        //% "Playback"
+        return NativeText::get(QT_TRID_NOOP("gamehq.input.model.scope.playback"), "Playback");
     }
     return {};
 }
@@ -134,7 +160,9 @@ QString BindingEditorModel::formatTrigger(const BindingResolver::Binding& bindin
 QString BindingEditorModel::formatBinding(const BindingResolver::Binding& binding) const
 {
     if (binding.triggerCode.isEmpty())
-        return QStringLiteral("Unassigned");
+        //: Binding-editor value for an empty shortcut slot.
+        //% "Unassigned"
+        return NativeText::get(QT_TRID_NOOP("gamehq.input.model.unassigned"), "Unassigned");
     QString label = formatTrigger(binding);
     const GestureSpec gesture = binding.gesture();
     if (gesture.kind != GestureSpec::Kind::Press)
@@ -145,13 +173,21 @@ QString BindingEditorModel::formatBinding(const BindingResolver::Binding& bindin
 QString BindingEditorModel::formatGestureBadge(const BindingResolver::Binding& binding)
 {
     if (binding.trigger().isChord())
-        return QStringLiteral("Combination");
+        //: Binding-editor badge for a two-button shortcut.
+        //% "Combination"
+        return NativeText::get(QT_TRID_NOOP("gamehq.input.model.combination"), "Combination");
     const GestureSpec gesture = binding.gesture();
     if (gesture.kind == GestureSpec::Kind::Hold) {
         if (gesture.holdMs == 0)
-            return QStringLiteral("Hold · Default");
+            //: Binding-editor badge for a hold shortcut using the default duration.
+            //% "Hold · Default"
+            return NativeText::get(QT_TRID_NOOP("gamehq.input.model.hold_default"),
+                                   "Hold · Default");
         const bool wholeSeconds = gesture.holdMs % 1000 == 0;
-        return QStringLiteral("Hold · %1 s")
+        //: Binding-editor badge for a hold shortcut. %1 is a duration number.
+        //% "Hold · %1 s"
+        return NativeText::get(QT_TRID_NOOP("gamehq.input.model.hold_seconds"),
+                               "Hold · %1 s")
             .arg(gesture.holdMs / 1000.0, 0, 'f', wholeSeconds ? 0 : 1);
     }
     return gesture.label();
@@ -198,7 +234,12 @@ void BindingEditorModel::rebuildRows()
             const QString changeState = slotChangeState(
                 baseline, assigned ? &binding : nullptr, local);
             actionModified = actionModified || changeState != QLatin1String("default");
-            row.insert(prefix, assigned ? formatBinding(binding) : QStringLiteral("Unassigned"));
+            row.insert(prefix, assigned ? formatBinding(binding)
+                                        : NativeText::get(
+                                              //: Binding-editor value for an empty shortcut slot.
+                                              //% "Unassigned"
+                                              QT_TRID_NOOP("gamehq.input.model.unassigned"),
+                                              "Unassigned"));
             row.insert(prefix + QStringLiteral("Assigned"), assigned);
             row.insert(prefix + QStringLiteral("Trigger"),
                        assigned ? formatTrigger(binding) : QString());
@@ -217,6 +258,17 @@ void BindingEditorModel::rebuildRows()
 void BindingEditorModel::retranslate()
 {
     rebuildRows();
+    if (m_captureActive && !m_editorOpen)
+        refreshCapturePrompt();
+    refreshLastFiredAction();
+    if (m_editorOpen) {
+        if (const auto* action = ActionCatalog::find(m_editorActionId)) {
+            m_editorActionLabel = action->label;
+            m_editorScopeLabel = scopeLabel(action->scope);
+        }
+        refreshEditorNotice();
+        emit editorChanged();
+    }
 }
 
 void BindingEditorModel::beginCapture(const QString& actionId, int slot)
@@ -227,20 +279,42 @@ void BindingEditorModel::beginCapture(const QString& actionId, int slot)
     m_captureActionId = actionId;
     m_captureSlot = slot;
     m_captureActive = true;
-    const QString device = m_deviceGroup == QLatin1String("controller") ? QStringLiteral("controller button")
-                         : m_deviceGroup == QLatin1String("keyboard") ? QStringLiteral("key or shortcut")
-                                                                      : QStringLiteral("middle, Back, or Forward mouse button");
-    m_capturePrompt = QStringLiteral("Press a %1 for %2 · Slot %3")
-                          .arg(device, action->label).arg(slot);
-    // Controllers assign a gesture, not just a button — say which one, so
-    // "capture Screenshot" reads as the Tap it will actually become. Keyboard
-    // and mouse bindings are always plain presses; no suffix there.
+    refreshCapturePrompt();
+    emit captureChanged();
+}
+
+void BindingEditorModel::refreshCapturePrompt()
+{
+    const auto* action = ActionCatalog::find(m_captureActionId);
+    if (!m_captureActive || !action) {
+        m_capturePrompt.clear();
+        return;
+    }
     if (m_deviceGroup == QLatin1String("controller")) {
         const BindingResolver::Gesture gesture =
-            m_runtime->inheritedGesture(m_deviceGroup, selectedProfile(), actionId, slot);
-        m_capturePrompt += QStringLiteral(" · %1").arg(gesture.spec().label());
+            m_runtime->inheritedGesture(m_deviceGroup, selectedProfile(),
+                                        m_captureActionId, m_captureSlot);
+        m_capturePrompt = NativeText::get(
+            //: Binding-capture prompt. %1 is an action, %2 a slot number, %3 a gesture.
+            //% "Press a controller button for %1 · Slot %2 · %3"
+            QT_TRID_NOOP("gamehq.input.model.capture.controller"),
+            "Press a controller button for %1 · Slot %2 · %3")
+            .arg(action->label).arg(m_captureSlot).arg(gesture.spec().label());
+    } else if (m_deviceGroup == QLatin1String("keyboard")) {
+        m_capturePrompt = NativeText::get(
+            //: Keyboard binding-capture prompt. %1 is an action and %2 a slot number.
+            //% "Press a key or shortcut for %1 · Slot %2"
+            QT_TRID_NOOP("gamehq.input.model.capture.keyboard"),
+            "Press a key or shortcut for %1 · Slot %2")
+            .arg(action->label).arg(m_captureSlot);
+    } else {
+        m_capturePrompt = NativeText::get(
+            //: Mouse binding-capture prompt. %1 is an action and %2 a slot number.
+            //% "Press the middle, Back, or Forward mouse button for %1 · Slot %2"
+            QT_TRID_NOOP("gamehq.input.model.capture.mouse"),
+            "Press the middle, Back, or Forward mouse button for %1 · Slot %2")
+            .arg(action->label).arg(m_captureSlot);
     }
-    emit captureChanged();
 }
 
 void BindingEditorModel::cancelCapture()
@@ -874,8 +948,20 @@ void BindingEditorModel::setControllerProfile(const ControlId::DeviceProfile& pr
 
 void BindingEditorModel::setLastFiredAction(const QString& actionId)
 {
-    const auto* action = ActionCatalog::find(actionId);
-    const QString text = action ? action->label : actionId;
+    m_lastFiredActionId = actionId;
+    refreshLastFiredAction();
+}
+
+void BindingEditorModel::refreshLastFiredAction()
+{
+    const auto* action = ActionCatalog::find(m_lastFiredActionId);
+    const QString text = m_lastFiredActionId.isEmpty()
+        ? NativeText::get(
+              //: Binding-editor status shown before any shortcut has fired.
+              //% "No action fired yet"
+              QT_TRID_NOOP("gamehq.input.model.no_action_fired"),
+                          "No action fired yet")
+        : action ? action->label : m_lastFiredActionId;
     if (m_lastFiredAction == text)
         return;
     m_lastFiredAction = text;

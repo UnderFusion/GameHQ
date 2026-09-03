@@ -290,18 +290,37 @@ bool AppController::hdrDisplayActive() const
 
 QString AppController::hdrStatusText() const
 {
-    if (!m_hdrProbed)
-        return QStringLiteral("Not checked yet");
-    if (m_hdr.outputs.isEmpty())
-        return QStringLiteral("No displays reported by the graphics driver");
-    return m_hdr.anyHdrActive ? QStringLiteral("Windows HDR is active")
-                              : QStringLiteral("Windows HDR is inactive");
+    if (!m_hdrProbed) {
+        //: HDR status before GameHQ has queried the graphics driver.
+        //% "Not checked yet"
+        return NativeText::get(QT_TRID_NOOP("gamehq.hdr.status.not_checked"),
+                               "Not checked yet");
+    }
+    if (m_hdr.outputs.isEmpty()) {
+        //: HDR status when the graphics driver reports no displays.
+        //% "No displays reported by the graphics driver"
+        return NativeText::get(QT_TRID_NOOP("gamehq.hdr.status.no_displays"),
+                               "No displays reported by the graphics driver");
+    }
+    if (m_hdr.anyHdrActive) {
+        //: HDR status when Windows HDR is active on at least one display.
+        //% "Windows HDR is active"
+        return NativeText::get(QT_TRID_NOOP("gamehq.hdr.status.active"),
+                               "Windows HDR is active");
+    }
+    //: HDR status when Windows HDR is inactive on every display.
+    //% "Windows HDR is inactive"
+    return NativeText::get(QT_TRID_NOOP("gamehq.hdr.status.inactive"),
+                           "Windows HDR is inactive");
 }
 
 QString AppController::hdrDetailText() const
 {
     if (!m_hdrProbed)
-        return QStringLiteral("Check the current HDR state of every display.");
+        //: HDR detail shown before the first graphics-driver query.
+        //% "Check the current HDR state of every display."
+        return NativeText::get(QT_TRID_NOOP("gamehq.hdr.detail.not_checked"),
+                               "Check the current HDR state of every display.");
     return m_hdr.summaryLines().join(QLatin1Char('\n'));
 }
 

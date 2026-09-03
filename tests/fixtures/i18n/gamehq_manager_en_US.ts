@@ -51,5 +51,41 @@
       <source>Reason: %1</source>
       <translation>Reason: %1</translation>
     </message>
+    <message id="gamehq.action.global.screenshot.description">
+      <source>Capture a screenshot of the current game.</source>
+      <translation>Capture a screenshot of the current game.</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_up.label">
+      <source>Navigate Up</source>
+      <translation>Navigate Up</translation>
+    </message>
+    <message id="gamehq.action.overlay.navigate_up.description">
+      <source>Move selection up in the overlay.</source>
+      <translation>Move selection up in the overlay.</translation>
+    </message>
+    <message id="gamehq.tray.rescan_captures">
+      <source>Rescan Captures</source>
+      <translation>Rescan Captures</translation>
+    </message>
+    <message id="gamehq.tray.take_screenshot">
+      <source>Take Screenshot</source>
+      <translation>Take Screenshot</translation>
+    </message>
+    <message id="gamehq.tray.save_replay">
+      <source>Save Replay</source>
+      <translation>Save Replay</translation>
+    </message>
+    <message id="gamehq.tray.exit">
+      <source>Exit</source>
+      <translation>Exit</translation>
+    </message>
+    <message id="gamehq.input.model.scope.global">
+      <source>Global</source>
+      <translation>Global</translation>
+    </message>
+    <message id="gamehq.input.model.capture.controller">
+      <source>Press a controller button for %1 · Slot %2 · %3</source>
+      <translation>Press a controller button for %1 · Slot %2 · %3</translation>
+    </message>
   </context>
 </TS>
