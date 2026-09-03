@@ -2192,7 +2192,7 @@ Bundan sonra %2, düğme bırakıldığında etkinleşir ve %3 eylemini elemek i
     <message id="gamehq.release_notes.title">
       <location filename="src/ui/AppController.cpp" line="112"></location>
       <source>Release notes</source>
-      <translation type="unfinished"></translation>
+      <translation>Sürüm notları</translation>
     </message>
     <message id="gamehq.settings.about.application.eyebrow">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="14"></location>

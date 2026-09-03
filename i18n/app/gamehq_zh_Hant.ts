@@ -2192,7 +2192,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.release_notes.title">
       <location filename="src/ui/AppController.cpp" line="112"></location>
       <source>Release notes</source>
-      <translation type="unfinished"></translation>
+      <translation>發行說明</translation>
     </message>
     <message id="gamehq.settings.about.application.eyebrow">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="14"></location>

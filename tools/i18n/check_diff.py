@@ -90,6 +90,7 @@ def queue_unit(
     message: dict[str, object],
     state: dict[str, object],
     payload: dict[str, object] | None,
+    glossary_terms: list[str],
 ) -> dict[str, object]:
     locations = message["locations"]
     location = locations[0]
@@ -106,7 +107,10 @@ def queue_unit(
         "placeholders": message["placeholders"],
         "markup_signature": message["markup_signature"],
         "accelerator_count": verify.accelerator_count(str(message["source"])),
-        "protected_tokens": message["protected_tokens"],
+        "protected_tokens": sorted(
+            set(message["protected_tokens"])
+            | {term for term in glossary_terms if term in str(message["source"])}
+        ),
         "prior_translation": prior_translation,
         "prior_status": prior_status,
     }
@@ -150,6 +154,8 @@ def build_workset(
             raise DiffCheckError(f"{tag}: enabled locale is absent from translation state")
         messages_state = locale_state["messages"]
         locale_payloads = payloads.get(tag, {})
+        glossary, style = protocol.load_policy(policy_root, tag)
+        glossary_terms = [str(value["term"]) for value in glossary["protected_literals"]]
         complete: list[str] = []
         required: list[str] = []
         units: list[dict[str, object]] = []
@@ -166,11 +172,17 @@ def build_workset(
                 complete.append(message_id)
             else:
                 required.append(message_id)
-                units.append(queue_unit(message, message_state, locale_payloads.get(message_id)))
+                units.append(
+                    queue_unit(
+                        message,
+                        message_state,
+                        locale_payloads.get(message_id),
+                        glossary_terms,
+                    )
+                )
 
         queue: dict[str, object] | None = None
         if units:
-            glossary, style = protocol.load_policy(policy_root, tag)
             queue = {
                 "$schema": "../schema/translation-queue.schema.json",
                 "protocol_version": protocol.PROTOCOL_VERSION,

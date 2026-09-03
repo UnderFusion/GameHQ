@@ -5,9 +5,7 @@
   "locales": {
     "de-DE": {
       "catalog": "i18n/app/gamehq_de_DE.ts",
-      "missing": [
-        "gamehq.release_notes.title"
-      ],
+      "missing": [],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -426,6 +424,7 @@
         "gamehq.overlay.hint.video.keyboard",
         "gamehq.overlay.window_title",
         "gamehq.player.position_duration",
+        "gamehq.release_notes.title",
         "gamehq.settings.about.application.eyebrow",
         "gamehq.settings.about.community.eyebrow",
         "gamehq.settings.about.description",
@@ -1684,7 +1683,10 @@
     },
     "es-419": {
       "catalog": "i18n/app/gamehq_es_419.ts",
-      "missing": [
+      "missing": [],
+      "stale": [],
+      "obsolete": [],
+      "unchanged": [
         "gamehq.about.enjoying_gamehq",
         "gamehq.about.full_release_notes",
         "gamehq.about.github",
@@ -2071,6 +2073,7 @@
         "gamehq.input.relation.redundant",
         "gamehq.input.relation.shared_gesture",
         "gamehq.library.folder_dialog.title",
+        "gamehq.navigation.about",
         "gamehq.navigation.category.all",
         "gamehq.navigation.category.clips",
         "gamehq.navigation.category.favorites",
@@ -2081,6 +2084,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -2514,19 +2518,11 @@
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
         "gamehq.update.waiting_for_capture"
-      ],
-      "stale": [],
-      "obsolete": [],
-      "unchanged": [
-        "gamehq.navigation.about",
-        "gamehq.navigation.support_gamehq"
       ]
     },
     "es-ES": {
       "catalog": "i18n/app/gamehq_es_ES.ts",
-      "missing": [
-        "gamehq.release_notes.title"
-      ],
+      "missing": [],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -2945,6 +2941,7 @@
         "gamehq.overlay.hint.video.keyboard",
         "gamehq.overlay.window_title",
         "gamehq.player.position_duration",
+        "gamehq.release_notes.title",
         "gamehq.settings.about.application.eyebrow",
         "gamehq.settings.about.community.eyebrow",
         "gamehq.settings.about.description",
@@ -3364,9 +3361,7 @@
     },
     "fr-FR": {
       "catalog": "i18n/app/gamehq_fr_FR.ts",
-      "missing": [
-        "gamehq.release_notes.title"
-      ],
+      "missing": [],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -3785,6 +3780,7 @@
         "gamehq.overlay.hint.video.keyboard",
         "gamehq.overlay.window_title",
         "gamehq.player.position_duration",
+        "gamehq.release_notes.title",
         "gamehq.settings.about.application.eyebrow",
         "gamehq.settings.about.community.eyebrow",
         "gamehq.settings.about.description",
@@ -4204,7 +4200,10 @@
     },
     "it-IT": {
       "catalog": "i18n/app/gamehq_it_IT.ts",
-      "missing": [
+      "missing": [],
+      "stale": [],
+      "obsolete": [],
+      "unchanged": [
         "gamehq.about.enjoying_gamehq",
         "gamehq.about.full_release_notes",
         "gamehq.about.github",
@@ -4591,6 +4590,7 @@
         "gamehq.input.relation.redundant",
         "gamehq.input.relation.shared_gesture",
         "gamehq.library.folder_dialog.title",
+        "gamehq.navigation.about",
         "gamehq.navigation.category.all",
         "gamehq.navigation.category.clips",
         "gamehq.navigation.category.favorites",
@@ -4601,6 +4601,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -5034,19 +5035,11 @@
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
         "gamehq.update.waiting_for_capture"
-      ],
-      "stale": [],
-      "obsolete": [],
-      "unchanged": [
-        "gamehq.navigation.about",
-        "gamehq.navigation.support_gamehq"
       ]
     },
     "ja-JP": {
       "catalog": "i18n/app/gamehq_ja_JP.ts",
-      "missing": [
-        "gamehq.release_notes.title"
-      ],
+      "missing": [],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -5465,6 +5458,7 @@
         "gamehq.overlay.hint.video.keyboard",
         "gamehq.overlay.window_title",
         "gamehq.player.position_duration",
+        "gamehq.release_notes.title",
         "gamehq.settings.about.application.eyebrow",
         "gamehq.settings.about.community.eyebrow",
         "gamehq.settings.about.description",
@@ -5884,9 +5878,7 @@
     },
     "ko-KR": {
       "catalog": "i18n/app/gamehq_ko_KR.ts",
-      "missing": [
-        "gamehq.release_notes.title"
-      ],
+      "missing": [],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -6305,6 +6297,7 @@
         "gamehq.overlay.hint.video.keyboard",
         "gamehq.overlay.window_title",
         "gamehq.player.position_duration",
+        "gamehq.release_notes.title",
         "gamehq.settings.about.application.eyebrow",
         "gamehq.settings.about.community.eyebrow",
         "gamehq.settings.about.description",
@@ -6724,9 +6717,7 @@
     },
     "pl-PL": {
       "catalog": "i18n/app/gamehq_pl_PL.ts",
-      "missing": [
-        "gamehq.release_notes.title"
-      ],
+      "missing": [],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -7145,6 +7136,7 @@
         "gamehq.overlay.hint.video.keyboard",
         "gamehq.overlay.window_title",
         "gamehq.player.position_duration",
+        "gamehq.release_notes.title",
         "gamehq.settings.about.application.eyebrow",
         "gamehq.settings.about.community.eyebrow",
         "gamehq.settings.about.description",
@@ -7564,9 +7556,7 @@
     },
     "pt-BR": {
       "catalog": "i18n/app/gamehq_pt_BR.ts",
-      "missing": [
-        "gamehq.release_notes.title"
-      ],
+      "missing": [],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -7985,6 +7975,7 @@
         "gamehq.overlay.hint.video.keyboard",
         "gamehq.overlay.window_title",
         "gamehq.player.position_duration",
+        "gamehq.release_notes.title",
         "gamehq.settings.about.application.eyebrow",
         "gamehq.settings.about.community.eyebrow",
         "gamehq.settings.about.description",
@@ -8404,9 +8395,7 @@
     },
     "ru-RU": {
       "catalog": "i18n/app/gamehq_ru_RU.ts",
-      "missing": [
-        "gamehq.release_notes.title"
-      ],
+      "missing": [],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -8825,6 +8814,7 @@
         "gamehq.overlay.hint.video.keyboard",
         "gamehq.overlay.window_title",
         "gamehq.player.position_duration",
+        "gamehq.release_notes.title",
         "gamehq.settings.about.application.eyebrow",
         "gamehq.settings.about.community.eyebrow",
         "gamehq.settings.about.description",
@@ -9244,7 +9234,10 @@
     },
     "th-TH": {
       "catalog": "i18n/app/gamehq_th_TH.ts",
-      "missing": [
+      "missing": [],
+      "stale": [],
+      "obsolete": [],
+      "unchanged": [
         "gamehq.about.enjoying_gamehq",
         "gamehq.about.full_release_notes",
         "gamehq.about.github",
@@ -9631,6 +9624,7 @@
         "gamehq.input.relation.redundant",
         "gamehq.input.relation.shared_gesture",
         "gamehq.library.folder_dialog.title",
+        "gamehq.navigation.about",
         "gamehq.navigation.category.all",
         "gamehq.navigation.category.clips",
         "gamehq.navigation.category.favorites",
@@ -9641,6 +9635,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -10074,19 +10069,11 @@
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
         "gamehq.update.waiting_for_capture"
-      ],
-      "stale": [],
-      "obsolete": [],
-      "unchanged": [
-        "gamehq.navigation.about",
-        "gamehq.navigation.support_gamehq"
       ]
     },
     "tr-TR": {
       "catalog": "i18n/app/gamehq_tr_TR.ts",
-      "missing": [
-        "gamehq.release_notes.title"
-      ],
+      "missing": [],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -10505,6 +10492,7 @@
         "gamehq.overlay.hint.video.keyboard",
         "gamehq.overlay.window_title",
         "gamehq.player.position_duration",
+        "gamehq.release_notes.title",
         "gamehq.settings.about.application.eyebrow",
         "gamehq.settings.about.community.eyebrow",
         "gamehq.settings.about.description",
@@ -10924,7 +10912,10 @@
     },
     "uk-UA": {
       "catalog": "i18n/app/gamehq_uk_UA.ts",
-      "missing": [
+      "missing": [],
+      "stale": [],
+      "obsolete": [],
+      "unchanged": [
         "gamehq.about.enjoying_gamehq",
         "gamehq.about.full_release_notes",
         "gamehq.about.github",
@@ -11311,6 +11302,7 @@
         "gamehq.input.relation.redundant",
         "gamehq.input.relation.shared_gesture",
         "gamehq.library.folder_dialog.title",
+        "gamehq.navigation.about",
         "gamehq.navigation.category.all",
         "gamehq.navigation.category.clips",
         "gamehq.navigation.category.favorites",
@@ -11321,6 +11313,7 @@
         "gamehq.navigation.games",
         "gamehq.navigation.help",
         "gamehq.navigation.settings",
+        "gamehq.navigation.support_gamehq",
         "gamehq.notification.replay_failed.reason",
         "gamehq.notification.replay_failed.title",
         "gamehq.notification.replay_saved.title",
@@ -11754,19 +11747,11 @@
         "gamehq.update.view_release_notes",
         "gamehq.update.view_update",
         "gamehq.update.waiting_for_capture"
-      ],
-      "stale": [],
-      "obsolete": [],
-      "unchanged": [
-        "gamehq.navigation.about",
-        "gamehq.navigation.support_gamehq"
       ]
     },
     "zh-Hans": {
       "catalog": "i18n/app/gamehq_zh_Hans.ts",
-      "missing": [
-        "gamehq.release_notes.title"
-      ],
+      "missing": [],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -12185,6 +12170,7 @@
         "gamehq.overlay.hint.video.keyboard",
         "gamehq.overlay.window_title",
         "gamehq.player.position_duration",
+        "gamehq.release_notes.title",
         "gamehq.settings.about.application.eyebrow",
         "gamehq.settings.about.community.eyebrow",
         "gamehq.settings.about.description",
@@ -12604,9 +12590,7 @@
     },
     "zh-Hant": {
       "catalog": "i18n/app/gamehq_zh_Hant.ts",
-      "missing": [
-        "gamehq.release_notes.title"
-      ],
+      "missing": [],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -13025,6 +13009,7 @@
         "gamehq.overlay.hint.video.keyboard",
         "gamehq.overlay.window_title",
         "gamehq.player.position_duration",
+        "gamehq.release_notes.title",
         "gamehq.settings.about.application.eyebrow",
         "gamehq.settings.about.community.eyebrow",
         "gamehq.settings.about.description",

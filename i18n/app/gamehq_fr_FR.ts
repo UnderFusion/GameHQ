@@ -2197,7 +2197,7 @@ Pour utiliser aussi %1 avec %3, GameHQ doit remplacer l’Appui de %2 par un App
     <message id="gamehq.release_notes.title">
       <location filename="src/ui/AppController.cpp" line="112"></location>
       <source>Release notes</source>
-      <translation type="unfinished"></translation>
+      <translation>Notes de version</translation>
     </message>
     <message id="gamehq.settings.about.application.eyebrow">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="14"></location>

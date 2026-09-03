@@ -146,6 +146,42 @@ class DiffCheckTest(unittest.TestCase):
         self.assertEqual(2, len(workset["locales"]["pl-PL"]["required"]))
         self.assertFalse(check_diff.is_complete(workset))
 
+    def test_queue_and_response_preserve_glossary_only_literals(self) -> None:
+        current = copy.deepcopy(self.current)
+        protected = message({
+            "id": "gamehq.fixture.license",
+            "source": "Check the HDR state",
+            "context": "ID",
+        })
+        current[protected["id"]] = protected
+        current = dict(sorted(current.items()))
+        state = copy.deepcopy(self.state)
+        for tag in ("de-DE", "pl-PL"):
+            state["locales"][tag]["messages"][protected["id"]] = {
+                "status": "missing",
+                "source_hash": protected["source_hash"],
+            }
+        workset = check_diff.build_workset(
+            base_label="fixture-base",
+            source_manifest="fixture-current.json",
+            base_messages=self.base,
+            current_messages=current,
+            registry=self.registry,
+            state=state,
+            payloads=self.payloads,
+            policy_root=REPOSITORY,
+        )
+        queue = workset["locales"]["pl-PL"]["queue"]
+        unit = next(value for value in queue["units"] if value["id"] == protected["id"])
+        self.assertIn("HDR", unit["protected_tokens"])
+        verify.validate_translation(
+            "fixture glossary literal", unit, "Sprawdź stan HDR"
+        )
+        with self.assertRaisesRegex(verify.VerificationError, "protected literal"):
+            verify.validate_translation(
+                "fixture glossary literal", unit, "Sprawdź stan XDR"
+            )
+
     def test_stale_response_is_rejected(self) -> None:
         workset = self.workset()
         queue = workset["locales"]["pl-PL"]["queue"]

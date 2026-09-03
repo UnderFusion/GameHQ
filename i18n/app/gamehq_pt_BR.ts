@@ -2197,7 +2197,7 @@ Para também usar %1 com %3, o GameHQ precisa mudar %2 de Pressionar para Toque 
     <message id="gamehq.release_notes.title">
       <location filename="src/ui/AppController.cpp" line="112"></location>
       <source>Release notes</source>
-      <translation type="unfinished"></translation>
+      <translation>Notas da versão</translation>
     </message>
     <message id="gamehq.settings.about.application.eyebrow">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="14"></location>

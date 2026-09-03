@@ -9,6 +9,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QMap>
 #include <QSignalSpy>
 
 namespace {
@@ -38,7 +39,7 @@ class LanguageManagerTest : public QObject
 
 private slots:
     void productionManifestIsValid();
-    void promotedLaunchLocalesSwitchWithEnglishFallback();
+    void promotedLaunchLocalesLoadCompleteCatalogs();
     void aliasesAndFallbacksResolveDeterministically();
     void malformedAndInconsistentManifestsAreRejected();
     void systemAndExplicitLanguagesLoadCatalogs();
@@ -74,7 +75,7 @@ void LanguageManagerTest::productionManifestIsValid()
     QCOMPARE(registry.resolveAvailable(QStringLiteral("ar-XB")), QStringLiteral("en-US"));
 }
 
-void LanguageManagerTest::promotedLaunchLocalesSwitchWithEnglishFallback()
+void LanguageManagerTest::promotedLaunchLocalesLoadCompleteCatalogs()
 {
     LocaleRegistry registry(false);
     QString error;
@@ -82,13 +83,19 @@ void LanguageManagerTest::promotedLaunchLocalesSwitchWithEnglishFallback()
     LanguageManager manager(&registry);
     QVERIFY2(manager.initialize(QStringLiteral("en-US"), {}, &error), qPrintable(error));
 
-    for (const QString& tag : {QStringLiteral("th-TH"), QStringLiteral("es-419"),
-                               QStringLiteral("uk-UA"), QStringLiteral("it-IT")}) {
+    const QMap<QString, QString> expectedSave{
+        {QStringLiteral("th-TH"), QStringLiteral("บันทึก")},
+        {QStringLiteral("es-419"), QStringLiteral("Guardar")},
+        {QStringLiteral("uk-UA"), QStringLiteral("Зберегти")},
+        {QStringLiteral("it-IT"), QStringLiteral("Salva")},
+    };
+    for (auto it = expectedSave.cbegin(); it != expectedSave.cend(); ++it) {
+        const QString& tag = it.key();
         manager.setRequestedLanguage(tag);
         QCOMPARE(manager.requestedLanguage(), tag);
         QCOMPARE(manager.effectiveLanguage(), tag);
         QCOMPARE(QLocale().name().replace(QLatin1Char('_'), QLatin1Char('-')), tag);
-        QCOMPARE(qtTrId("gamehq.action.save"), QStringLiteral("Save"));
+        QCOMPARE(qtTrId("gamehq.action.save"), it.value());
     }
 }
 

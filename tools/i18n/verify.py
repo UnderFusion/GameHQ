@@ -144,8 +144,15 @@ def validate_translation(label: str, message: dict[str, object], text: str) -> N
         raise VerificationError(f"{label}: placeholder multiset differs from English source")
     if extraction.markup_signature(text) != message["markup_signature"]:
         raise VerificationError(f"{label}: markup signature differs from English source")
-    if Counter(extraction.protected_tokens(text)) != Counter(message["protected_tokens"]):
+    if Counter(extraction.protected_tokens(text)) != Counter(
+        extraction.protected_tokens(source)
+    ):
         raise VerificationError(f"{label}: protected token differs from English source")
+    for token in message["protected_tokens"]:
+        if text.count(str(token)) != source.count(str(token)):
+            raise VerificationError(
+                f"{label}: protected literal {token!r} differs from English source"
+            )
     if (text.count("\n"), text.count("\\n")) != (
         source.count("\n"),
         source.count("\\n"),
