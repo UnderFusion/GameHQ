@@ -69,15 +69,27 @@ $expectedAssets = @(
     'assets/icons/generate_icon.py', 'assets/icons/icongen.cpp', 'assets/icons/icon-preview.html',
     'assets/installer/generate_installer_artwork.py',
     'assets/installer/wizard-large.png', 'assets/installer/wizard-small.png',
-    'assets/release-notes.json', 'assets/sounds/README.md', 'assets/sounds/generate_sounds.py',
+    'assets/sounds/README.md', 'assets/sounds/generate_sounds.py',
     'assets/sounds/confirm.wav', 'assets/sounds/error.wav', 'assets/sounds/favorite.wav',
     'assets/sounds/nav_tick.wav', 'assets/sounds/overlay_close.wav',
     'assets/sounds/overlay_open.wav', 'assets/sounds/replay_saved.wav',
     'assets/sounds/screenshot.wav'
 ) | Sort-Object
-$actualAssets = @(& git -C $root ls-files --cached --others --exclude-standard 'assets/**' | Sort-Object)
+$allAssets = @(& git -C $root ls-files --cached --others --exclude-standard 'assets/**')
+# The versioned release-note source, its generated bundles and its publication
+# artifacts are one reviewed first-party unit, so they are asserted by shape
+# instead of being enumerated file by file.
+$releaseNoteAssets = @($allAssets | Where-Object { $_ -like 'assets/release-notes/*' })
+$actualAssets = @($allAssets | Where-Object { $_ -notlike 'assets/release-notes/*' } | Sort-Object)
 if (($expectedAssets -join "`n") -ne ($actualAssets -join "`n")) {
     $failures.Add('asset inventory changed without dependency-license review')
+}
+if ($releaseNoteAssets.Count -lt 1) {
+    $failures.Add('versioned release-note source is missing')
+}
+$foreignReleaseNotes = @($releaseNoteAssets | Where-Object { $_ -notmatch '\.(json|md)$' })
+if ($foreignReleaseNotes.Count -gt 0) {
+    $failures.Add("non first-party release-note asset: $($foreignReleaseNotes -join ', ')")
 }
 
 if (-not $SkipPackage) {

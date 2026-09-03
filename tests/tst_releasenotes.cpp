@@ -98,6 +98,7 @@ private slots:
     void fallsBackWhollyForMissingOrInvalidLocalizedBundles();
     void rejectsWrongBundleIdentitySizeHashAndStructure();
     void localeDatesAndOfflineHistorySurviveSwitches();
+    void exposesTheFrozenReleasedHistoryWithoutTheLegacySource();
     void structuresGitHubMarkdownWithoutActiveContent();
 };
 
@@ -364,6 +365,49 @@ void ReleaseNotesTest::localeDatesAndOfflineHistorySurviveSwitches()
         dates.insert(notes.releases().first().toMap().value(QStringLiteral("date")).toString());
     }
     QVERIFY(dates.size() >= 3);
+}
+
+void ReleaseNotesTest::exposesTheFrozenReleasedHistoryWithoutTheLegacySource()
+{
+    // The retired assets/release-notes.json is gone. Every historical release it
+    // used to carry must still reach the runtime through the versioned source's
+    // generated bundles, with its version, date, section order and item text
+    // unchanged.
+    BundleFixture fixture;
+    QString error;
+    QVERIFY2(fixture.load(&error), qPrintable(error));
+    QVERIFY(!QFile::exists(QStringLiteral(":/release-notes/release-notes.json")));
+
+    const ReleaseNotes notes = fixture.notes(QStringLiteral("en-US"), &error);
+    QVERIFY2(notes.isValid(), qPrintable(error));
+    const QVariantList releases = notes.releases();
+    QCOMPARE(releases.size(), 4);
+
+    const QStringList expected{QStringLiteral("0.7.6"), QStringLiteral("0.7.5"),
+                               QStringLiteral("0.7.4"), QStringLiteral("0.7.3")};
+    for (int index = 0; index < expected.size(); ++index) {
+        const QVariantMap release = releases.at(index).toMap();
+        QCOMPARE(release.value(QStringLiteral("version")).toString(), expected.at(index));
+        QVERIFY2(!release.value(QStringLiteral("date")).toString().isEmpty(),
+                 qPrintable(expected.at(index)));
+        const QVariantList sections = release.value(QStringLiteral("sections")).toList();
+        QVERIFY2(!sections.isEmpty(), qPrintable(expected.at(index)));
+        for (const QVariant &value : sections) {
+            const QVariantMap section = value.toMap();
+            QVERIFY(!section.value(QStringLiteral("title")).toString().isEmpty());
+            QVERIFY(!section.value(QStringLiteral("items")).toList().isEmpty());
+        }
+    }
+
+    const QVariantList current = releases.first().toMap()
+                                     .value(QStringLiteral("sections")).toList();
+    QCOMPARE(current.size(), 2);
+    QCOMPARE(current.at(0).toMap().value(QStringLiteral("title")).toString(),
+             QStringLiteral("Fixed"));
+    QCOMPARE(current.at(0).toMap().value(QStringLiteral("items")).toList().size(), 3);
+    QCOMPARE(current.at(1).toMap().value(QStringLiteral("title")).toString(),
+             QStringLiteral("Diagnostics / Reliability"));
+    QCOMPARE(current.at(1).toMap().value(QStringLiteral("items")).toList().size(), 1);
 }
 
 void ReleaseNotesTest::structuresGitHubMarkdownWithoutActiveContent()

@@ -7,6 +7,7 @@ import copy
 import importlib.util
 import json
 import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -14,6 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE_ROOT = ROOT / "assets" / "release-notes"
+HISTORY_FIXTURE = ROOT / "tools" / "i18n" / "fixtures" / "release-notes-history.en-US.json"
 OUTPUT_ROOT = SOURCE_ROOT / "generated"
 
 
@@ -73,11 +75,45 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         self.assertEqual(2, manifest_schema["properties"]["schema_version"]["const"])
         self.assertEqual(3, len(document_schema["oneOf"]))
 
-    def test_generated_english_is_semantically_equivalent_to_legacy_runtime_json(self) -> None:
-        legacy = GEN.read_json(ROOT / "assets" / "release-notes.json")
+    def test_generated_english_reproduces_the_frozen_released_history(self) -> None:
+        """The released 0.7.3-0.7.6 English history is immutable. The fixture is
+        the byte-frozen record migrated off the retired assets/release-notes.json;
+        the versioned source must keep reproducing it exactly."""
+        frozen = GEN.read_json(HISTORY_FIXTURE)
         generated = GEN.read_json(OUTPUT_ROOT / "release-notes.en-US.json")
         generated.pop("_meta")
-        self.assertEqual(legacy, generated)
+        self.assertEqual(frozen, generated)
+        self.assertEqual("0.7.6", frozen["version"])
+        self.assertEqual("2026-08-31", frozen["date"])
+        self.assertEqual(["0.7.5", "0.7.4", "0.7.3"],
+                         [release["version"] for release in frozen["history"]])
+        for release in [frozen, *frozen["history"]]:
+            source = GEN.read_json(SOURCE_ROOT / "versions" / release["version"] / "en-US.json")
+            self.assertEqual(source["date"], release["date"])
+            self.assertEqual([section["title"] for section in source["sections"]],
+                             [section["title"] for section in release["sections"]])
+            for section, frozen_section in zip(source["sections"], release["sections"]):
+                self.assertEqual([item["text"] for item in section["items"]],
+                                 frozen_section["items"])
+
+    def test_the_retired_legacy_source_has_no_remaining_consumer(self) -> None:
+        """Repository-wide evidence that nothing still reads the retired file."""
+        self.assertFalse((ROOT / "assets" / "release-notes.json").exists())
+        this_file = Path(__file__).resolve().relative_to(ROOT).as_posix()
+        # Only the two guards and the source README may still name the retired
+        # file, and the README may only name it to record that it was retired.
+        documented = {this_file, "assets/release-notes/README.md",
+                      "tests/tst_releasenotes.cpp"}
+        excluded = [":!docs/plans/", ":!out/", ":!out-production/", ":!build/"]
+        for needle in ("assets/release-notes.json", ":/release-notes/release-notes.json"):
+            found = subprocess.run(
+                ["git", "grep", "-lF", needle, "--", *excluded],
+                cwd=str(ROOT), capture_output=True, text=True, encoding="utf-8",
+            )
+            hits = {line for line in found.stdout.splitlines() if line}
+            self.assertEqual(hits - documented, set(), f"{needle} still referenced")
+        readme = (SOURCE_ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("has been retired", readme)
 
     def test_generation_is_byte_deterministic(self) -> None:
         with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:

@@ -43,7 +43,7 @@ confirm the Setup/uninstaller signing scope before t46 is submitted.
 - All eight WAV files are first-party synthesis from
   `assets/sounds/generate_sounds.py`; a clean regeneration matched every
   tracked WAV by SHA-256 on 2026-07-22.
-- `assets/release-notes.json`, QML, themes, and UI copy are first-party source.
+- `assets/release-notes/`, QML, themes, and UI copy are first-party source.
 - No fonts, stock photos, sample media, AI models, voices, datasets, SDK binary
   bundles, or prompt packs are tracked as distributed assets.
 - User captures and watched-folder media are data, never release payload.

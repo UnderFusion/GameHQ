@@ -21,6 +21,12 @@ Released English sources are immutable. An explicit correction keeps
 `original_source_integrity`, updates `source_integrity`, and records `reason`,
 `approved_by`, and `corrected_at` in the manifest.
 
+This versioned source replaced the single-locale `assets/release-notes.json`,
+which has been retired. `tools/i18n/fixtures/release-notes-history.en-US.json`
+is the byte-frozen record of the released 0.7.3-0.7.6 English history that was
+migrated off it; `tools/i18n/test_release_notes_generation.py` proves the
+versioned source still reproduces it exactly.
+
 Generate all offline bundles:
 
 ```powershell

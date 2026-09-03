@@ -445,21 +445,6 @@ ReleaseNotes ReleaseNotes::fromJson(const QByteArray& json, const QLocale& local
     return result;
 }
 
-ReleaseNotes ReleaseNotes::loadBundled()
-{
-    QFile file(QStringLiteral(":/release-notes/release-notes.json"));
-    if (!file.open(QIODevice::ReadOnly)) {
-        qWarning("Could not open bundled release notes");
-        return {};
-    }
-
-    QString error;
-    ReleaseNotes notes = fromJson(file.readAll(), &error);
-    if (!notes.isValid())
-        qWarning("Could not parse bundled release notes: %s", qPrintable(error));
-    return notes;
-}
-
 ReleaseNotes ReleaseNotes::loadBundled(const QString &requestedLocale,
                                        const LocaleRegistry &registry,
                                        QString *error)

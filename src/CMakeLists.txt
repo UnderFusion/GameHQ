@@ -267,12 +267,6 @@ qt_add_resources(GameHQ "sounds"
         "${CMAKE_SOURCE_DIR}/assets/sounds/replay_saved.wav"
 )
 
-qt_add_resources(GameHQ "release_notes"
-    PREFIX "/release-notes"
-    BASE "${CMAKE_SOURCE_DIR}/assets"
-    FILES "${CMAKE_SOURCE_DIR}/assets/release-notes.json"
-)
-
 set(GAMEHQ_LOCALIZED_RELEASE_NOTES
     "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.index.json"
     "${CMAKE_SOURCE_DIR}/assets/release-notes/generated/release-notes.de-DE.json"

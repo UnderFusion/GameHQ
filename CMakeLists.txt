@@ -7,21 +7,10 @@ file(READ "${CMAKE_CURRENT_SOURCE_DIR}/VERSION" GAMEHQ_VERSION_FULL)
 string(STRIP "${GAMEHQ_VERSION_FULL}" GAMEHQ_VERSION_FULL)
 string(REGEX MATCH "^[0-9]+\\.[0-9]+\\.[0-9]+" GAMEHQ_VERSION_BASE "${GAMEHQ_VERSION_FULL}")
 
-# The compact About / What's New modal must remain useful offline. Keep its
-# bundled notes tied to VERSION at configure time so a release cannot quietly
-# ship the previous build's notes.
-set(GAMEHQ_RELEASE_NOTES_FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/release-notes.json")
-set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
-    "${GAMEHQ_RELEASE_NOTES_FILE}")
-file(READ "${GAMEHQ_RELEASE_NOTES_FILE}" GAMEHQ_RELEASE_NOTES_JSON)
-string(JSON GAMEHQ_RELEASE_NOTES_VERSION ERROR_VARIABLE GAMEHQ_RELEASE_NOTES_ERROR
-    GET "${GAMEHQ_RELEASE_NOTES_JSON}" version)
-if(GAMEHQ_RELEASE_NOTES_ERROR OR NOT GAMEHQ_RELEASE_NOTES_VERSION STREQUAL GAMEHQ_VERSION_FULL)
-    message(FATAL_ERROR
-        "assets/release-notes.json version '${GAMEHQ_RELEASE_NOTES_VERSION}' "
-        "must match VERSION '${GAMEHQ_VERSION_FULL}'")
-endif()
-
+# The compact About / What's New modal must remain useful offline. The
+# versioned release-note source and its generated bundles are the only source
+# of that text, so keep the generated index tied to VERSION at configure time
+# and a release cannot quietly ship the previous build's notes.
 set(GAMEHQ_RELEASE_NOTES_INDEX
     "${CMAKE_CURRENT_SOURCE_DIR}/assets/release-notes/generated/release-notes.index.json")
 set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS

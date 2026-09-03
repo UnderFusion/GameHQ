@@ -232,7 +232,7 @@
       "classification": "release_note",
       "checked": true,
       "runtime_owner": "Bundled ReleaseNotes parser and About/What's New dialog",
-      "files": ["assets/release-notes.json", "src/app/ReleaseNotes.cpp", "src/ui/qml/components/AboutWhatsNewDialog.qml"],
+      "files": ["assets/release-notes/versions/**", "assets/release-notes/generated/**", "src/app/ReleaseNotes.cpp", "src/ui/qml/components/AboutWhatsNewDialog.qml"],
       "extraction": "Treat section titles and items as locale-authored structured content, not Qt source strings.",
       "migration": "Ship schema-identical locale assets with explicit fallback; preserve versions, dates, URLs, and supported markup.",
       "acceptance_coverage": ["schema validation", "locale parity", "offline fallback", "styled-text escaping"],
