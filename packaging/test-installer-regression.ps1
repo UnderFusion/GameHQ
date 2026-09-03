@@ -289,6 +289,21 @@ try {
         }
     }
 
+    if ($SetupPath) {
+        $localizedAssetReport = Join-Path $workRoot 'installed-localization-assets.json'
+        $localizedAssetProbe = Start-Process -FilePath (Join-Path $installRoot 'app\GameHQ.exe') `
+            -ArgumentList @('--localization-assets-self-test', ('"' + $localizedAssetReport + '"')) `
+            -WindowStyle Hidden -Wait -PassThru
+        Assert-Equal $localizedAssetProbe.ExitCode 0 'Installed localization asset probe exit code'
+        Assert-True (Test-Path -LiteralPath $localizedAssetReport -PathType Leaf) `
+            'Installed localization asset probe did not produce its report.'
+        $localizedAssets = Get-Content -LiteralPath $localizedAssetReport -Raw -Encoding UTF8 | ConvertFrom-Json
+        Assert-Equal $localizedAssets.production_locale_count 16 'Installed production locale count'
+        Assert-Equal $localizedAssets.catalog_count 16 'Installed catalog count'
+        Assert-Equal $localizedAssets.release_note_bundle_count 16 'Installed release-note bundle count'
+        Add-Pass 'production Setup installed the same verified sixteen-locale application resources'
+    }
+
     Invoke-TestSetup -Name 'upgrade-previous-language-reuse' -ExpectedExit 0
     Assert-Equal (Get-RegistryValue $testUninstallSubKey 'Inno Setup: Language') 'german' `
         'Upgrade without /LANG did not reuse the previous installer language'

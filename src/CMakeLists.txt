@@ -1,6 +1,7 @@
 qt_add_executable(GameHQ
     main.cpp
     app/App.cpp            app/App.h
+    app/PackagedLocalizationProbe.cpp app/PackagedLocalizationProbe.h
     app/ReleaseNotes.cpp   app/ReleaseNotes.h
     app/StartupManager.cpp app/StartupManager.h
     capture/CapturePublisher.cpp capture/CapturePublisher.h

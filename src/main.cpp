@@ -1,6 +1,7 @@
 // GameHQ entry point — keep thin: hand off to App.
 // QApplication (not QGuiApplication) because QSystemTrayIcon needs Widgets.
 #include <QApplication>
+#include <QCoreApplication>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -11,6 +12,7 @@
 #include <QProcess>
 #include <QTimer>
 #include "app/App.h"
+#include "app/PackagedLocalizationProbe.h"
 #include "Brand.h"
 #include "config/Paths.h"
 #include "config/PortableProfileImporter.h"
@@ -139,6 +141,20 @@ int main(int argc, char* argv[])
         if (!release_trust::runBuiltInSelfTest(error)) {
             std::cerr << "Release trust self-test failed: " << error << '\n';
             return 6;
+        }
+        return 0;
+    }
+    if (rawCommand.find(L"--localization-assets-self-test") != std::wstring::npos) {
+        QCoreApplication probeApp(argc, argv);
+        const QStringList arguments = probeApp.arguments();
+        const qsizetype option = arguments.indexOf(QStringLiteral("--localization-assets-self-test"));
+        if (option < 0 || option + 1 >= arguments.size())
+            return 7;
+        QString error;
+        if (!PackagedLocalizationProbe::run(arguments.at(option + 1), &error)) {
+            std::cerr << "Packaged localization self-test failed: "
+                      << error.toUtf8().constData() << '\n';
+            return 8;
         }
         return 0;
     }

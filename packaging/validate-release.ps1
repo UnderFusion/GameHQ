@@ -211,6 +211,11 @@ $packagedApp = Join-Path $root 'dist\GameHQ\app\GameHQ.exe'
 $versionCheck = Start-Process -FilePath $packagedApp `
     -ArgumentList @('--assert-version', $version) -WindowStyle Hidden -Wait -PassThru
 if ($versionCheck.ExitCode -ne 0) { throw 'Packaged application version does not match VERSION.' }
+& (Join-Path $PSScriptRoot 'test-localized-package.ps1') `
+    -PayloadRoot $payloadRoot -PortableZip $portableZip -UpdateZip $updateZip
+if ($LASTEXITCODE -ne 0) { throw 'Packaged localization asset validation failed.' }
+$packageLocalizationReportPath = Join-Path $root 'out\package-localization\report.json'
+$packageLocalizationReport = Get-Content -LiteralPath $packageLocalizationReportPath -Raw -Encoding UTF8 | ConvertFrom-Json
 if ($ManifestMode -in @('test', 'production')) {
     foreach ($probe in @(
         @{ Path = $packagedApp; Arguments = @('--release-trust-self-test') },
@@ -246,6 +251,8 @@ if (-not $SkipTests) {
     $env:PATH = (Join-Path $root 'tools\Qt\6.8.3\mingw_64\bin') + ';' + $env:PATH
     & $ctest --test-dir (Join-Path $root 'out') -R 'tst_(releasenotes|updatedownloader|updatepreflight|updateinstaller|updatertransaction)' --output-on-failure
     if ($LASTEXITCODE -ne 0) { throw 'Release-note or updater validation tests failed.' }
+    & (Join-Path $PSScriptRoot 'test-installer-language-acceptance.ps1') -SetupPath $setup
+    if ($LASTEXITCODE -ne 0) { throw 'Installer localization acceptance failed.' }
 }
 $toolchain = Import-PowerShellDataFile (Join-Path $PSScriptRoot 'inno-toolchain.psd1')
 $evidencePaths = @($setup, $portableZip, $updateZip, $checksum, $sourceZip, $sourceChecksum)
@@ -312,6 +319,17 @@ $evidence = [ordered]@{
         license = 'passed'
         privacy = 'passed'
         correspondingSource = 'passed'
+    }
+    localization = [ordered]@{
+        productionLocaleCount = [int]$packageLocalizationReport.production_locale_count
+        catalogCount = [int]$packageLocalizationReport.catalog_count
+        releaseNoteBundleCount = [int]$packageLocalizationReport.release_note_bundle_count
+        representativeLocales = @($packageLocalizationReport.representative_locales)
+        wholeDocumentFallbackLocale = [string]$packageLocalizationReport.whole_document_fallback_locale
+        applicationSha256 = [string]$packageLocalizationReport.payload_application.sha256
+        updateAuthorizationInput = $false
+        packageEvidenceSha256 = (Get-FileHash -LiteralPath $packageLocalizationReportPath -Algorithm SHA256).Hash.ToLowerInvariant()
+        installerAcceptance = if ($SkipTests) { 'skipped' } else { 'passed' }
     }
     artifacts = $artifactEvidence
     authenticode = $signatures

@@ -739,6 +739,11 @@ add_test(NAME tst_i18nci
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_ci.py")
 set_tests_properties(tst_i18nci PROPERTIES TIMEOUT 60)
 
+add_test(NAME tst_package_localization
+    COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_SOURCE_DIR}/tools/i18n/test_package_localization.py")
+set_tests_properties(tst_package_localization PROPERTIES TIMEOUT 60)
+
 add_test(NAME tst_i18nprotocol
     COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_protocol.py")
