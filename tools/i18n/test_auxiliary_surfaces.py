@@ -144,9 +144,19 @@ def main() -> int:
         fail(f"unclassified auxiliary files: {omitted}")
 
     launcher = (ROOT / "src" / "launcher" / "LauncherMain.cpp").read_text(encoding="utf-8")
-    if launcher.count("fail(L\"") != 4 or launcher.count("MessageBoxW(") != 2:
+    launcher_localization = (
+        ROOT / "src" / "launcher" / "LauncherLocalization.cpp"
+    ).read_text(encoding="utf-8")
+    launcher_resources = (
+        ROOT / "src" / "launcher" / "LauncherStrings.rc"
+    ).read_text(encoding="utf-8")
+    if launcher.count("showMessage(") != 6 or launcher.count("MessageBoxW(") != 1:
         fail("launcher dialog surface changed; update the boundary inventory")
-    if "qtTrId" in launcher or "qsTrId" in launcher:
+    if "LoadStringW" not in launcher_localization:
+        fail("launcher dialogs must load native Win32 string resources")
+    if launcher_resources.count("STRINGTABLE") != 16:
+        fail("launcher must embed one STRINGTABLE for every production locale")
+    if "qtTrId" in launcher or "qsTrId" in launcher or "Qt" in launcher_localization:
         fail("the static Win32 launcher must not depend on Qt catalogs")
 
     updater = (ROOT / "src" / "updater" / "UpdaterMain.cpp").read_text(encoding="utf-8")

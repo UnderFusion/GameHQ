@@ -7,6 +7,8 @@
 #include <vector>
 
 #include "launcher/LauncherCommandLine.h"
+#include "launcher/LauncherLocalization.h"
+#include "launcher/LauncherResources.h"
 #include "launcher/UpdaterPromotion.h"
 #include "core/UpdateMaintenance.h"
 
@@ -34,13 +36,16 @@ bool modulePath(std::wstring& out)
     }
 }
 
-void fail(const wchar_t* message)
+void showMessage(HINSTANCE instance, LANGID language, unsigned int messageId, UINT icon)
 {
-    MessageBoxW(nullptr, message, L"GameHQ", MB_ICONERROR);
+    const std::wstring message = launcher::localization::loadString(instance, messageId, language);
+    const std::wstring title = launcher::localization::loadString(
+        instance, IDS_LAUNCHER_TITLE, language);
+    MessageBoxW(nullptr, message.c_str(), title.c_str(), icon);
 }
 }
 
-int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+int WINAPI WinMain(HINSTANCE instance, HINSTANCE, LPSTR, int)
 {
     std::wstring launcherPath;
     if (!modulePath(launcherPath))
@@ -49,14 +54,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
     if (slash == std::wstring::npos)
         return 1;
     const std::wstring root = launcherPath.substr(0, slash);
+    const LANGID language = launcher::localization::resolveLanguage(
+        std::filesystem::path(root));
 
     // CreateProcessW resolves its application name and working directory
     // against the classic path limit, so a root that long cannot be started at
     // all. Say so instead of failing with a generic error; automatic updating
     // refuses well before this (UpdatePreflight caps the root at 180).
     if (root.size() + wcslen(L"\\app\\GameHQ.exe") >= MAX_PATH) {
-        fail(L"GameHQ is installed too deep for Windows to start it.\n"
-             L"Move the GameHQ folder somewhere with a shorter path.");
+        showMessage(instance, language, IDS_LAUNCHER_PATH_TOO_DEEP, MB_ICONERROR);
         return 1;
     }
 
@@ -67,8 +73,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
     const maintenance::Info maintenanceState = maintenance::inspect(
         std::filesystem::path(root));
     if (!postUpdateLaunch && maintenanceState.state == maintenance::State::Active) {
-        MessageBoxW(nullptr, L"GameHQ is being updated. Please try again shortly.",
-                    L"GameHQ", MB_ICONINFORMATION);
+        showMessage(instance, language, IDS_LAUNCHER_UPDATE_ACTIVE, MB_ICONINFORMATION);
         return 0;
     }
 
@@ -79,7 +84,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
     const std::wstring exe = root + L"\\app\\GameHQ.exe";
     if (GetFileAttributesW(exe.c_str()) == INVALID_FILE_ATTRIBUTES) {
-        fail(L"app\\GameHQ.exe not found next to the launcher.");
+        showMessage(instance, language, IDS_LAUNCHER_EXE_MISSING, MB_ICONERROR);
         return 1;
     }
 
@@ -88,7 +93,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
     const std::wstring childCommandLine = launcher::buildChildCommandLine(
         exe, launcher::argumentTail(commandLine));
     if (childCommandLine.empty()) {
-        fail(L"The command line passed to GameHQ is too long for Windows.");
+        showMessage(instance, language, IDS_LAUNCHER_COMMAND_TOO_LONG, MB_ICONERROR);
         return 1;
     }
     std::vector<wchar_t> mutableCommandLine(childCommandLine.begin(), childCommandLine.end());
@@ -100,7 +105,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
     // Working dir = package root so portable.flag/data resolution stays obvious.
     if (!CreateProcessW(exe.c_str(), mutableCommandLine.data(), nullptr, nullptr, FALSE, 0,
                         nullptr, root.c_str(), &si, &pi)) {
-        fail(L"Failed to start app\\GameHQ.exe.");
+        showMessage(instance, language, IDS_LAUNCHER_START_FAILED, MB_ICONERROR);
         return 1;
     }
     CloseHandle(pi.hThread);

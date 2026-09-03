@@ -309,6 +309,8 @@ set_target_properties(GameHQ PROPERTIES
 add_executable(GameHQLauncher WIN32
     launcher/LauncherMain.cpp
     launcher/LauncherCommandLine.cpp launcher/LauncherCommandLine.h
+    launcher/LauncherLocalization.cpp launcher/LauncherLocalization.h
+    launcher/LauncherResources.h launcher/LauncherStrings.rc
     launcher/UpdaterPromotion.cpp launcher/UpdaterPromotion.h
     core/UpdateMaintenance.cpp core/UpdateMaintenance.h
     ${CMAKE_SOURCE_DIR}/assets/icons/gamehq.rc

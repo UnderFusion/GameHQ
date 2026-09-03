@@ -1,0 +1,181 @@
+#pragma code_page(65001)
+
+#include <windows.h>
+#include "LauncherResources.h"
+
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ is installed too deep for Windows to start it.\nMove the GameHQ folder somewhere with a shorter path."
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ is being updated. Please try again shortly."
+    IDS_LAUNCHER_EXE_MISSING "app\\GameHQ.exe not found next to the launcher."
+    IDS_LAUNCHER_COMMAND_TOO_LONG "The command line passed to GameHQ is too long for Windows."
+    IDS_LAUNCHER_START_FAILED "Failed to start app\\GameHQ.exe."
+    IDS_LAUNCHER_ENGLISH_FALLBACK_PROBE "English fallback probe"
+END
+
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ 的安装路径过深，Windows 无法启动它。\n请将 GameHQ 文件夹移到路径较短的位置。"
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ 正在更新，请稍后再试。"
+    IDS_LAUNCHER_EXE_MISSING "在启动器旁未找到 app\\GameHQ.exe。"
+    IDS_LAUNCHER_COMMAND_TOO_LONG "传递给 GameHQ 的命令行对 Windows 来说过长。"
+    IDS_LAUNCHER_START_FAILED "无法启动 app\\GameHQ.exe。"
+END
+
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ установлен по слишком длинному пути, поэтому Windows не может его запустить.\nПереместите папку GameHQ в каталог с более коротким путём."
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ обновляется. Повторите попытку через некоторое время."
+    IDS_LAUNCHER_EXE_MISSING "Рядом с программой запуска не найден файл app\\GameHQ.exe."
+    IDS_LAUNCHER_COMMAND_TOO_LONG "Командная строка, переданная GameHQ, слишком длинная для Windows."
+    IDS_LAUNCHER_START_FAILED "Не удалось запустить app\\GameHQ.exe."
+END
+
+LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MODERN
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ está instalado en una ruta demasiado larga para que Windows pueda iniciarlo.\nMueve la carpeta de GameHQ a una ubicación con una ruta más corta."
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ se está actualizando. Vuelve a intentarlo en unos instantes."
+    IDS_LAUNCHER_EXE_MISSING "No se encontró app\\GameHQ.exe junto al iniciador."
+    IDS_LAUNCHER_COMMAND_TOO_LONG "La línea de comandos enviada a GameHQ es demasiado larga para Windows."
+    IDS_LAUNCHER_START_FAILED "No se pudo iniciar app\\GameHQ.exe."
+END
+
+LANGUAGE LANG_PORTUGUESE, SUBLANG_PORTUGUESE_BRAZILIAN
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "O GameHQ está instalado em um caminho longo demais para ser iniciado pelo Windows.\nMova a pasta do GameHQ para um local com um caminho mais curto."
+    IDS_LAUNCHER_UPDATE_ACTIVE "O GameHQ está sendo atualizado. Tente novamente em instantes."
+    IDS_LAUNCHER_EXE_MISSING "app\\GameHQ.exe não foi encontrado ao lado do inicializador."
+    IDS_LAUNCHER_COMMAND_TOO_LONG "A linha de comando enviada ao GameHQ é longa demais para o Windows."
+    IDS_LAUNCHER_START_FAILED "Falha ao iniciar app\\GameHQ.exe."
+END
+
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ ist in einem zu langen Pfad installiert und kann deshalb von Windows nicht gestartet werden.\nVerschieben Sie den GameHQ-Ordner an einen Ort mit einem kürzeren Pfad."
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ wird gerade aktualisiert. Versuchen Sie es in Kürze erneut."
+    IDS_LAUNCHER_EXE_MISSING "app\\GameHQ.exe wurde nicht neben dem Startprogramm gefunden."
+    IDS_LAUNCHER_COMMAND_TOO_LONG "Die an GameHQ übergebene Befehlszeile ist für Windows zu lang."
+    IDS_LAUNCHER_START_FAILED "app\\GameHQ.exe konnte nicht gestartet werden."
+END
+
+LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ のインストール先が深すぎるため、Windows で起動できません。\nGameHQ フォルダーをパスの短い場所へ移動してください。"
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ を更新しています。しばらくしてからもう一度お試しください。"
+    IDS_LAUNCHER_EXE_MISSING "ランチャーの隣に app\\GameHQ.exe が見つかりません。"
+    IDS_LAUNCHER_COMMAND_TOO_LONG "GameHQ に渡されたコマンド ラインは Windows の上限を超えています。"
+    IDS_LAUNCHER_START_FAILED "app\\GameHQ.exe を起動できませんでした。"
+END
+
+LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ est installé dans un chemin trop long pour que Windows puisse le démarrer.\nDéplacez le dossier GameHQ vers un emplacement dont le chemin est plus court."
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ est en cours de mise à jour. Réessayez dans quelques instants."
+    IDS_LAUNCHER_EXE_MISSING "app\\GameHQ.exe est introuvable à côté du lanceur."
+    IDS_LAUNCHER_COMMAND_TOO_LONG "La ligne de commande transmise à GameHQ est trop longue pour Windows."
+    IDS_LAUNCHER_START_FAILED "Impossible de démarrer app\\GameHQ.exe."
+END
+
+LANGUAGE LANG_POLISH, SUBLANG_DEFAULT
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "Ścieżka instalacji GameHQ jest zbyt długa, aby system Windows mógł uruchomić program.\nPrzenieś folder GameHQ do miejsca o krótszej ścieżce."
+    IDS_LAUNCHER_UPDATE_ACTIVE "Trwa aktualizowanie GameHQ. Spróbuj ponownie za chwilę."
+    IDS_LAUNCHER_EXE_MISSING "Nie znaleziono pliku app\\GameHQ.exe obok programu uruchamiającego."
+    IDS_LAUNCHER_COMMAND_TOO_LONG "Wiersz polecenia przekazany do GameHQ jest zbyt długi dla systemu Windows."
+    IDS_LAUNCHER_START_FAILED "Nie udało się uruchomić app\\GameHQ.exe."
+END
+
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ 설치 경로가 너무 깊어 Windows에서 실행할 수 없습니다.\nGameHQ 폴더를 경로가 더 짧은 위치로 옮기세요."
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ를 업데이트하는 중입니다. 잠시 후 다시 시도하세요."
+    IDS_LAUNCHER_EXE_MISSING "런처 옆에서 app\\GameHQ.exe를 찾을 수 없습니다."
+    IDS_LAUNCHER_COMMAND_TOO_LONG "GameHQ에 전달된 명령줄이 Windows 제한보다 깁니다."
+    IDS_LAUNCHER_START_FAILED "app\\GameHQ.exe를 시작하지 못했습니다."
+END
+
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ 的安裝路徑層級過深，Windows 無法啟動。\n請將 GameHQ 資料夾移至路徑較短的位置。"
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ 正在更新，請稍後再試。"
+    IDS_LAUNCHER_EXE_MISSING "在啟動器旁找不到 app\\GameHQ.exe。"
+    IDS_LAUNCHER_COMMAND_TOO_LONG "傳遞給 GameHQ 的命令列對 Windows 而言過長。"
+    IDS_LAUNCHER_START_FAILED "無法啟動 app\\GameHQ.exe。"
+END
+
+LANGUAGE LANG_TURKISH, SUBLANG_DEFAULT
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ, Windows'un başlatamayacağı kadar uzun bir yola kurulmuş.\nGameHQ klasörünü daha kısa yollu bir konuma taşıyın."
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ güncelleniyor. Lütfen kısa süre sonra yeniden deneyin."
+    IDS_LAUNCHER_EXE_MISSING "Başlatıcının yanında app\\GameHQ.exe bulunamadı."
+    IDS_LAUNCHER_COMMAND_TOO_LONG "GameHQ'ya iletilen komut satırı Windows için çok uzun."
+    IDS_LAUNCHER_START_FAILED "app\\GameHQ.exe başlatılamadı."
+END
+
+LANGUAGE LANG_THAI, SUBLANG_DEFAULT
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ ติดตั้งอยู่ในเส้นทางที่ลึกเกินกว่าที่ Windows จะเริ่มได้\nย้ายโฟลเดอร์ GameHQ ไปยังตำแหน่งที่มีเส้นทางสั้นกว่า"
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ กำลังอัปเดต โปรดลองอีกครั้งในอีกสักครู่"
+    IDS_LAUNCHER_EXE_MISSING "ไม่พบ app\\GameHQ.exe ข้างตัวเปิดใช้"
+    IDS_LAUNCHER_COMMAND_TOO_LONG "บรรทัดคำสั่งที่ส่งไปยัง GameHQ ยาวเกินขีดจำกัดของ Windows"
+    IDS_LAUNCHER_START_FAILED "ไม่สามารถเริ่ม app\\GameHQ.exe ได้"
+END
+
+LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MEXICAN
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ está instalado en una ruta demasiado larga para que Windows pueda iniciarlo.\nMueve la carpeta de GameHQ a una ubicación con una ruta más corta."
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ se está actualizando. Inténtalo de nuevo en unos momentos."
+    IDS_LAUNCHER_EXE_MISSING "No se encontró app\\GameHQ.exe junto al iniciador."
+    IDS_LAUNCHER_COMMAND_TOO_LONG "La línea de comandos enviada a GameHQ es demasiado larga para Windows."
+    IDS_LAUNCHER_START_FAILED "No se pudo iniciar app\\GameHQ.exe."
+END
+
+LANGUAGE LANG_UKRAINIAN, SUBLANG_DEFAULT
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ інстальовано за надто довгим шляхом, тому Windows не може запустити програму.\nПеремістіть папку GameHQ до розташування з коротшим шляхом."
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ оновлюється. Спробуйте ще раз трохи згодом."
+    IDS_LAUNCHER_EXE_MISSING "Поруч із засобом запуску не знайдено app\\GameHQ.exe."
+    IDS_LAUNCHER_COMMAND_TOO_LONG "Командний рядок, переданий GameHQ, надто довгий для Windows."
+    IDS_LAUNCHER_START_FAILED "Не вдалося запустити app\\GameHQ.exe."
+END
+
+LANGUAGE LANG_ITALIAN, SUBLANG_ITALIAN
+STRINGTABLE
+BEGIN
+    IDS_LAUNCHER_TITLE "GameHQ"
+    IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ è installato in un percorso troppo lungo per essere avviato da Windows.\nSposta la cartella GameHQ in una posizione con un percorso più breve."
+    IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ è in fase di aggiornamento. Riprova tra poco."
+    IDS_LAUNCHER_EXE_MISSING "app\\GameHQ.exe non è stato trovato accanto al programma di avvio."
+    IDS_LAUNCHER_COMMAND_TOO_LONG "La riga di comando passata a GameHQ è troppo lunga per Windows."
+    IDS_LAUNCHER_START_FAILED "Impossibile avviare app\\GameHQ.exe."
+END

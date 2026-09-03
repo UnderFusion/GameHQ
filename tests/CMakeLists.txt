@@ -498,6 +498,17 @@ target_compile_definitions(tst_launchercommandline PRIVATE
     LAUNCHER_ARGECHO_FIXTURE="$<TARGET_FILE:launcher_argecho_fixture>")
 add_dependencies(tst_launchercommandline launcher_argecho_fixture)
 
+gamehq_add_test(tst_launcherlocalization
+    tst_launcherlocalization.cpp
+    "${CMAKE_SOURCE_DIR}/src/launcher/LauncherLocalization.cpp"
+    "${CMAKE_SOURCE_DIR}/src/launcher/LauncherStrings.rc")
+target_compile_definitions(tst_launcherlocalization PRIVATE
+    GAMEHQ_LOCALES_JSON="${CMAKE_SOURCE_DIR}/i18n/locales.json"
+    LAUNCHER_MAIN_SOURCE="${CMAKE_SOURCE_DIR}/src/launcher/LauncherMain.cpp"
+    LAUNCHER_RC_SOURCE="${CMAKE_SOURCE_DIR}/src/launcher/LauncherStrings.rc"
+    LAUNCHER_CMAKE_SOURCE="${CMAKE_SOURCE_DIR}/src/CMakeLists.txt"
+    LAUNCHER_PACKAGE_SOURCE="${CMAKE_SOURCE_DIR}/packaging/assemble-package.ps1")
+
 gamehq_add_test(tst_updatedownloader
     tst_updatedownloader.cpp
     "${CMAKE_SOURCE_DIR}/src/updates/UpdateDownloader.cpp")

@@ -158,6 +158,12 @@ command line Windows could not carry, or an install path too deep for
 as `--post-update` are matched as whole arguments, so a capture path containing
 that text is not mistaken for the switch.
 
+The launcher remains static and Qt-free. Its five failure dialogs use embedded
+Win32 string resources for all sixteen production locales. It reads the existing
+`ui.language` setting, applies canonical aliases, falls back through Windows UI
+preferences, and finally uses complete embedded en-US resources; it never stores
+a translated display string or depends on desktop-app localization files.
+
 ## Configure, build, and package
 
 Configure once into the developer-only `out/` tree (full toolchain command is in
