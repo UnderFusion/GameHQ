@@ -575,6 +575,13 @@ qt_add_translations(tst_localizationcatalog
     LRELEASE_OPTIONS -idbased
 )
 
+# p4-7: inventory independently packaged runtimes and developer tools, then
+# prove each one has an explicit native localization boundary.
+add_test(NAME tst_auxiliarysurfaceaudit
+    COMMAND "${Python3_EXECUTABLE}"
+            "${CMAKE_SOURCE_DIR}/tools/i18n/test_auxiliary_surfaces.py")
+set_tests_properties(tst_auxiliarysurfaceaudit PROPERTIES TIMEOUT 30)
+
 gamehq_add_test(tst_languagemanager
     tst_languagemanager.cpp
     "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp"

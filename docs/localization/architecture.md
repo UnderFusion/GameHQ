@@ -156,6 +156,14 @@ The surface inventory (`p1-1`) assigns each runtime surface an owner and a migra
 This contract does not re-litigate those boundaries; it fixes the identifiers, the registry,
 fallback, glossary, states, and gates that every later migration item (`p2`+) depends on.
 
+Auxiliary runtimes keep native resource mechanisms, as verified by `p4-7` and documented in
+`auxiliary-surfaces.md`. The Playnite plugin consumes Playnite locale resources, the static
+launcher uses Win32 string resources, and Inno Setup owns installer resources; none may load
+Qt `.qm` catalogs. The detached updater, standalone probes, release tools, and automation keep
+stable English diagnostics because they do not render application UI. A helper failure becomes
+translatable only after the main Qt process maps its state or exit semantics to a stable message
+ID. The shared locale registry and glossary coordinate tags and terminology, not resource loading.
+
 ## 8. Development pseudo-locales
 
 Two pseudo-locales exist to expose expansion, direction, and leakage defects before real
