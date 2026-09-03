@@ -6,6 +6,9 @@ glossary, translation states, and the release-quality thresholds. After this con
 adopted, agents add strings and languages against it without source-text key churn or
 feature-specific language logic.
 
+Adding, reviewing, disabling, retiring, verifying, and packaging a locale is one
+command; see [CONTRIBUTING.md](CONTRIBUTING.md) for the contributor workflow.
+
 Companion artifacts:
 
 - `i18n/locales.json` — the single locale registry (approved portfolio, plan item `p1-2`).

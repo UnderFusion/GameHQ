@@ -760,3 +760,10 @@ add_test(NAME tst_i18npublication
     COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_release_publication.py")
 set_tests_properties(tst_i18npublication PROPERTIES TIMEOUT 120)
+
+# p7-3: the one-command locale lifecycle and its contributor guide. Every
+# mutating case runs against an isolated temporary root with a fixture locale.
+add_test(NAME tst_i18nlocalelifecycle
+    COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_SOURCE_DIR}/tools/i18n/test_locale_lifecycle.py")
+set_tests_properties(tst_i18nlocalelifecycle PROPERTIES TIMEOUT 180)
