@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gamehq.local/schema/translation-corrections.schema.json",
+  "title": "GameHQ auditable translation corrections",
+  "type": "object",
+  "required": ["$schema", "schema_version", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": 1 },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/correction" }
+    }
+  },
+  "definitions": {
+    "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "correction": {
+      "type": "object",
+      "required": [
+        "correction_id", "locale", "message_id", "source_hash",
+        "before_translation_hash", "after_translation_hash", "reason", "method",
+        "actor", "review_state", "recorded_at", "commit"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "correction_id": { "type": "string", "minLength": 1 },
+        "locale": { "type": "string", "minLength": 2 },
+        "message_id": { "type": "string", "pattern": "^gamehq(\\.[a-z0-9][a-z0-9_-]*)+$" },
+        "source_hash": { "$ref": "#/definitions/hash" },
+        "before_translation_hash": { "$ref": "#/definitions/hash" },
+        "after_translation_hash": { "$ref": "#/definitions/hash" },
+        "reason": { "type": "string", "minLength": 1 },
+        "method": { "type": "string", "minLength": 1 },
+        "actor": { "type": "string", "minLength": 1 },
+        "review_state": {
+          "enum": ["pending_linguistic_qa", "linguistically_accepted"]
+        },
+        "recorded_at": { "type": "string", "format": "date-time" },
+        "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" }
+      }
+    }
+  }
+}

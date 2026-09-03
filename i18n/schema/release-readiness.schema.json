@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gamehq.local/schema/release-readiness.schema.json",
+  "title": "GameHQ localization release readiness",
+  "type": "object",
+  "required": [
+    "$schema", "schema_version", "candidate", "source_freeze", "portfolio",
+    "workflow", "provenance_contract", "correction_contract", "locales", "handoff"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": 1 },
+    "candidate": {
+      "type": "object",
+      "required": [
+        "version", "date", "designation", "repository_version",
+        "release_authorization", "publication_state"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "date": { "type": "null" },
+        "designation": { "const": "owner" },
+        "repository_version": { "type": "string", "minLength": 1 },
+        "release_authorization": { "const": "not_requested" },
+        "publication_state": { "const": "prohibited" }
+      }
+    },
+    "source_freeze": {
+      "type": "array",
+      "minItems": 7,
+      "items": { "$ref": "#/definitions/file" }
+    },
+    "portfolio": {
+      "type": "object",
+      "required": ["production_locales", "development_only", "reserve"],
+      "additionalProperties": false,
+      "properties": {
+        "production_locales": {
+          "type": "array", "minItems": 16, "maxItems": 16,
+          "uniqueItems": true, "items": { "type": "string", "minLength": 2 }
+        },
+        "development_only": { "const": ["en-XA", "ar-XB"] },
+        "reserve": { "const": ["cs-CZ"] }
+      }
+    },
+    "workflow": {
+      "type": "array", "minItems": 8, "maxItems": 8,
+      "items": {
+        "type": "object", "required": ["order", "id", "gate"],
+        "additionalProperties": false,
+        "properties": {
+          "order": { "type": "integer", "minimum": 1, "maximum": 8 },
+          "id": { "type": "string", "minLength": 1 },
+          "gate": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "provenance_contract": { "type": "object" },
+    "correction_contract": { "type": "object" },
+    "locales": {
+      "type": "object",
+      "minProperties": 16,
+      "maxProperties": 16,
+      "additionalProperties": { "$ref": "#/definitions/locale" }
+    },
+    "handoff": {
+      "type": "array", "minItems": 4, "maxItems": 4,
+      "items": {
+        "type": "object", "required": ["item", "state", "authority"],
+        "additionalProperties": false,
+        "properties": {
+          "item": { "enum": ["p8-1", "p8-2", "p8-3", "p8-4"] },
+          "state": { "const": "pending" },
+          "authority": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "file": {
+      "type": "object", "required": ["path", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/definitions/hash" }
+      }
+    },
+    "surface": {
+      "type": "object",
+      "required": [
+        "id", "source_hash", "catalog_translation_hash", "recorded_translation_hash",
+        "translation_state", "provenance", "updated_at"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^gamehq(\\.[a-z0-9][a-z0-9_-]*)+$" },
+        "source_hash": { "$ref": "#/definitions/hash" },
+        "catalog_translation_hash": { "$ref": "#/definitions/hash" },
+        "recorded_translation_hash": {
+          "anyOf": [{ "$ref": "#/definitions/hash" }, { "type": "null" }]
+        },
+        "translation_state": { "type": "string", "minLength": 1 },
+        "provenance": { "type": "object" },
+        "updated_at": { "type": ["string", "null"] }
+      }
+    },
+    "locale": {
+      "type": "object",
+      "required": [
+        "catalog", "catalog_sha256", "style", "launch_release_note",
+        "translation_state_counts", "provenance_counts", "required_surfaces", "linguistic_qa"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "catalog": { "type": "string", "minLength": 1 },
+        "catalog_sha256": { "$ref": "#/definitions/hash" },
+        "style": { "$ref": "#/definitions/file" },
+        "launch_release_note": { "$ref": "#/definitions/file" },
+        "translation_state_counts": { "type": "object" },
+        "provenance_counts": { "type": "object" },
+        "required_surfaces": {
+          "type": "array", "minItems": 2, "maxItems": 2,
+          "items": { "$ref": "#/definitions/surface" }
+        },
+        "linguistic_qa": {
+          "type": "object",
+          "required": ["state", "authority", "artifact"],
+          "additionalProperties": false,
+          "properties": {
+            "state": { "const": "pending" },
+            "authority": { "const": "p8-3" },
+            "artifact": { "type": "null" }
+          }
+        }
+      }
+    }
+  }
+}

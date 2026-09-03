@@ -23,6 +23,9 @@ Invoke-Checked 'canonical sixteen-locale state and generated surfaces' $powerShe
     '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
     (Join-Path $PSScriptRoot 'locale.ps1'), 'verify'
 )
+Invoke-Checked 'candidate localization readiness, privacy, and correction evidence' $python @(
+    (Join-Path $PSScriptRoot 'release_readiness.py'), '--check'
+)
 Invoke-Checked 'release-note sources, bundles, publication, and integrity' $powerShell @(
     '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
     (Join-Path $projectRoot 'packaging\test-release-note-assets.ps1'),
@@ -36,6 +39,7 @@ $pythonChecks = @(
     @{ Label = 'installer-to-application bootstrap mapping'; Script = 'test_inno_bootstrap.py' },
     @{ Label = 'auxiliary runtime and resource boundaries'; Script = 'test_auxiliary_surfaces.py' },
     @{ Label = 'CI wiring and stale-output regression'; Script = 'test_ci.py' }
+    @{ Label = 'release-readiness governance and correction fixtures'; Script = 'test_release_readiness.py' }
 )
 foreach ($check in $pythonChecks) {
     Invoke-Checked $check.Label $python @((Join-Path $PSScriptRoot $check.Script))

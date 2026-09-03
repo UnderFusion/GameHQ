@@ -90,3 +90,12 @@ be marked complete while an enabled locale reports an affected ID as missing, st
 structurally invalid, or bound to an older English source hash. Unchanged IDs and obsolete
 history are outside the workset. Local checks make no model or network call; later CI and
 release gates remain independently authoritative.
+
+## Release-readiness and correction handoff
+
+The ordered pre-release checklist, privacy limits, candidate source freeze, and
+append-only translation correction contract are defined in
+[release-readiness.md](release-readiness.md). That snapshot exposes pending
+linguistic work; it never turns machine or structural validity into linguistic
+acceptance. `p8-3` owns contextual acceptance and `p8-4` owns final owner release
+authorization.

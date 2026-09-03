@@ -1,0 +1,20 @@
+{
+  "$schema": "../schema/translation-corrections.schema.json",
+  "schema_version": 1,
+  "entries": [
+    {
+      "correction_id": "2026-09-03-pl-pl-navigation-about",
+      "locale": "pl-PL",
+      "message_id": "gamehq.navigation.about",
+      "source_hash": "3ec5df0c56abdfb1c952840601ddac58376bd3d2f70bc5acf2c63fabfe8c0fc2",
+      "before_translation_hash": "b3484084f938e66ea072788edd8d4b7bc50e5fc4db81d8a06dd1d18069fe3957",
+      "after_translation_hash": "d687a0f6ab2e7148abf04ebe49deb929f9a7e98bfab84aa9240a876da14a546f",
+      "reason": "Replace the malformed migrated sidebar label with the owner-requested compact Polish label.",
+      "method": "contextual_agent_review",
+      "actor": "codex-gpt-5-t23",
+      "review_state": "pending_linguistic_qa",
+      "recorded_at": "2026-09-03T20:27:42Z",
+      "commit": "80603ff05ddc6b878869c99175c87067b9f82d30"
+    }
+  ]
+}
