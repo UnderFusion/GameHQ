@@ -28424,13 +28424,13 @@
         "gamehq.about.product_description": {
           "domain": "application",
           "source_hash": "aa9b19cffaa783832dc62f3f8208d13e6e6855a46b0c86f957c32a85a274c37e",
-          "translation_hash": "64de58ea95b1a4995c40b86461553bdf3d212eb80c14a540556471d9ff293f92",
+          "translation_hash": "3e653a449fe7ec88a2efec1e2dd385de957108fb95227c088cebee07ac151b44",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.about.product_updated": {
           "domain": "application",
@@ -29579,13 +29579,13 @@
         "gamehq.duration.milliseconds.relaxed": {
           "domain": "application",
           "source_hash": "cb44226967f783a144a3951c6bc1464bfacf215f927dd1c3f83cc21f61e39451",
-          "translation_hash": "762eec7d9b8353b4f0e3b4349313dd432be54c6145dd298877e0ea74fb844310",
+          "translation_hash": "7e49b90789e7c545ded11adc2717decbc296eb7f4352069ef401c74285ca6d4b",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.duration.minutes": {
           "domain": "application",
@@ -31537,13 +31537,13 @@
         "gamehq.help.gamepad.button_combination_action": {
           "domain": "application",
           "source_hash": "77079953b20b92cc6b5beac529fac6297d65b77ec911619666d32375fa99849d",
-          "translation_hash": "543efc4860d560fe0edfb08b2299f563e83076b54862006c67c7fc32c65e5765",
+          "translation_hash": "fe5f3d5e81b9919831b2623c445ec3b84752eb1bacdf2f17a19c53dad0a1f788",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.help.gamepad.circle": {
           "domain": "application",
@@ -31636,13 +31636,13 @@
         "gamehq.help.gamepad.share_hold_action": {
           "domain": "application",
           "source_hash": "b7f393cb8c49a3541a18eeba70f2b3befff58c73dc3ae676e6df043e9292244a",
-          "translation_hash": "5a21cd22b559156e03bbd6bc646585044f40abd8d2c2ee3945a6e62117035620",
+          "translation_hash": "dedbccca2027efe7253127c4707c555d09d9075e88006856aa820c7d82db330c",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.help.gamepad.share_multi_tap": {
           "domain": "application",
@@ -31658,13 +31658,13 @@
         "gamehq.help.gamepad.share_multi_tap_action": {
           "domain": "application",
           "source_hash": "4fab9faeecf0b3a2bbb4dd563bd1fb48cd2949455ead3b610c221a7b629542ef",
-          "translation_hash": "7a3d2dc94bb653e4fe397c9d81910f6c787506f45ca720ba6fedb4f6c6a44738",
+          "translation_hash": "720bef1c220a1e86324e4c5d11760a693721796f0c7389bb6dad8d6c450c5929",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.help.gamepad.square": {
           "domain": "application",
@@ -31713,13 +31713,13 @@
         "gamehq.help.gamepad.system_share_tap": {
           "domain": "application",
           "source_hash": "4ccfa90e94cb8ad888a3928cf048bc1211a8102931ee0cecb5f926cd0a1340dc",
-          "translation_hash": "bfbf56ce8dbef6a6cbb19ee257a02edc6c34c8c8cf17d9673db58cf92d7d63bb",
+          "translation_hash": "0dbf051390ef75f23e35c7769e823f71b8e1100374574cacbb0eb261a65a305a",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.help.gamepad.triangle": {
           "domain": "application",
@@ -31867,13 +31867,13 @@
         "gamehq.input.assignment.combination_gesture": {
           "domain": "application",
           "source_hash": "ab8b252ac6daa0c5a4e9918ad5adfe1861a82e735cf44d015b8637427e08f041",
-          "translation_hash": "f703df8d1e7644c6e2791b83c7267699a735f5f6464064191d3f844d3d1a1785",
+          "translation_hash": "1924d06b521a8b468945c4a7f2ed8810a069f5d51e9158795cd5f9c534ca8047",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.input.assignment.default_duration": {
           "domain": "application",
@@ -31922,13 +31922,13 @@
         "gamehq.input.assignment.hold_duration": {
           "domain": "application",
           "source_hash": "fcdd6a27a0dd8e8c2863f610b2857c44b5cbae63db2410e01c79b53bc46ab216",
-          "translation_hash": "857bad40c40ba16a0903952aa36f8f3b57425263a9439cf33f75ad0248f6d1b5",
+          "translation_hash": "5ff9bec04c84fd5fe48406e6e2f04b0470ce9cc9fdeda96c4a5b50dfc9381b0e",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.input.assignment.listening_button": {
           "domain": "application",
@@ -32241,24 +32241,24 @@
         "gamehq.input.compatibility.convert_press": {
           "domain": "application",
           "source_hash": "1efa74b7651bdfc190b75ddebd5a0d9fe62027affde25c79c9c72ce12ca821c8",
-          "translation_hash": "09f500c23d40d047ed29742f586c3bed76166c380f0878a44f9a2f3e2482ee23",
+          "translation_hash": "a8ff9f81a92c1a3f96ac9703ece76f7725ef3d9faf0bd56c45075d428e32ab37",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.input.compatibility.convert_press_with_wait": {
           "domain": "application",
           "source_hash": "f94a8cac5dbdb662da80333135303809ab4e29dd56bddf5ea5a1b1f13c1f7773",
-          "translation_hash": "03b0abde0119fa9a4de71e7d0ec64f303c758cadeb062b2f1c6682b84284d209",
+          "translation_hash": "c369b00e93ddced4a473ccb39ef7317611b69c8165c0abadc4e51c869948ca8a",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.input.compatibility.title": {
           "domain": "application",
@@ -32285,13 +32285,13 @@
         "gamehq.input.conflict.press_timed": {
           "domain": "application",
           "source_hash": "a8089c1fe9cdd1230a9aea28e095996ee4f10c45f25757ddd4aaed7085d88579",
-          "translation_hash": "48eddf68f131157c1b5b2456d9207fab962549110f68ca282e0f2ecc6a717faf",
+          "translation_hash": "8aaee9fe18144b5c0ef8cea66b3c7793108edf8c58b9335df7692b47a1bbe2ba",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.input.conflict.title": {
           "domain": "application",
@@ -32307,57 +32307,57 @@
         "gamehq.input.gesture.double_tap": {
           "domain": "application",
           "source_hash": "cf0332cd6a24148fba42be7678412c6d692dfb774a0bc6a467e191bdc638a4f1",
-          "translation_hash": "7c0855bfcabb667b9719b28871b7d012f02a65437c57947c2209625fd3271f5b",
+          "translation_hash": "b3903395a85fd68b939f6ed9b5e04b9cf685a18ef149848eba08c9a0abf42969",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.input.gesture.hold": {
           "domain": "application",
           "source_hash": "336c712487573e89effe6b5afa1c0f57c532890b46fe06ffee36fdccf128fb0e",
-          "translation_hash": "66002bad91b823efeb9b0187d3000b1d9ce7ae40aafd40cc2d08c1aa49411615",
+          "translation_hash": "60238e8ea5336799e66a831f97ea95ed2172dc0989f00a403180676d91ac828d",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.input.gesture.press": {
           "domain": "application",
           "source_hash": "bde1c574f3331c901bbb997ea22f8d9ee54cd920382d1554ca054171c19d2559",
-          "translation_hash": "e2d8918fafe0062d75cd91644ad0c4754f763f2c98affbcec4b6be4868ae5059",
+          "translation_hash": "72d57579237ec31edfd2b48553c9e50ca931fb1e46b208a51df6535a58e5f8c5",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.input.gesture.tap": {
           "domain": "application",
           "source_hash": "48a60d2e2197297571d0d2a8a0d04bc20f162a5aaf243bfeb068b740a107df96",
-          "translation_hash": "2fa0f2675a2b3dab3cf46cc3f8568fecb1180e5353748a1983204d9e685d5284",
+          "translation_hash": "885c273701bc5a871afb3128256e8a737124fc41f905c6af4717635de39ea1bc",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.input.gesture.triple_tap": {
           "domain": "application",
           "source_hash": "7321c01862585054f28be951e16d94c50a32513dd3b48a1e9f4acc973ad25e49",
-          "translation_hash": "7b29def8bdc4d1ed766713e34e8959fbace23994f48bd5473c9542bf6bf87e91",
+          "translation_hash": "9eb14071dcf8838944bf19218c22936656962ae0071df875f96a7e3f7d0eca28",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.input.model.capture.controller": {
           "domain": "application",
@@ -32406,24 +32406,24 @@
         "gamehq.input.model.hold_default": {
           "domain": "application",
           "source_hash": "44d2fefd028779d99c54f0d27ec4fecb0605330e3262b634e23b5ac259d4a058",
-          "translation_hash": "b48a55b06f590f8332637f1e1f54d6b9988229915e67d6723bd8b7d1f9cd5441",
+          "translation_hash": "d708b55ec8b2e0c5eacd88844372a7db7bcfd9f2be66c9e1a9d173c1a1a7e3f9",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.input.model.hold_seconds": {
           "domain": "application",
           "source_hash": "ed9e3ba8bd3ec74e110e34430da28e23c5d962825e724337e60bf6a71b4edb2e",
-          "translation_hash": "383c282121278d0aef95666225637b757fc32bb975b69f9b050651b3a53f4ccb",
+          "translation_hash": "81d870c453dbf8bc7961b7f93b31af87d78f95bc6da0dd7ea5c11ec7fd3b3e70",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.input.model.no_action_fired": {
           "domain": "application",
@@ -32549,13 +32549,13 @@
         "gamehq.input.relation.higher_tap_delay": {
           "domain": "application",
           "source_hash": "0a05f06521afe984dd87b21dd494825cdc88b39efc44c801e9be7581cb0899dd",
-          "translation_hash": "f383a6cab52f5d2e0c8285ad9ac2541bab5b4b106f7f47b43e721f5b18e9d9b0",
+          "translation_hash": "c2892a38f72ac44a9316e5b57e9a4dcea13b81c0631237f4efb92f768408394c",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.input.relation.redundant": {
           "domain": "application",
@@ -34903,13 +34903,13 @@
         "gamehq.settings.input.gestures.description": {
           "domain": "application",
           "source_hash": "9a116352354d9018bcddf25cb9cb7d5ac234df7a9016b91e41f83d6d719c0f59",
-          "translation_hash": "48c3417141b23a714fc5931c1edf9d0188df1afc8dfae07276837fc59116d5d1",
+          "translation_hash": "dcc6462d962fd8c2ae2f8ee11c8200391db1ffccbfbc01f073b5b183470cac42",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.settings.input.gestures.eyebrow": {
           "domain": "application",
@@ -34925,46 +34925,46 @@
         "gamehq.settings.input.gestures.hold_time": {
           "domain": "application",
           "source_hash": "3e670e49c36879ede4ed345948e559cb21d02851bbf13c6fd96173d47ce2ddb0",
-          "translation_hash": "857bad40c40ba16a0903952aa36f8f3b57425263a9439cf33f75ad0248f6d1b5",
+          "translation_hash": "5ff9bec04c84fd5fe48406e6e2f04b0470ce9cc9fdeda96c4a5b50dfc9381b0e",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.settings.input.gestures.hold_time_description": {
           "domain": "application",
           "source_hash": "7ebeddd897b70a37d07c2965a9cd8dbdcc6b74947a7470a38ef4df7bcbec4b4f",
-          "translation_hash": "2b23b7b4c985ff44ffdfb34375a00107cb7067c1b24bda05e4505f0540abb9f6",
+          "translation_hash": "fe9677a80794d1ecc5a03a67bd6394f8c868426e79b44a2e801fab41289ebea4",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.settings.input.gestures.multi_tap": {
           "domain": "application",
           "source_hash": "2c0d6dc84e45db6fa48bb5dc18ebd412bebb00a545440fd6ebd03efa4adfab4c",
-          "translation_hash": "d584530ab5946e2a58b7a844a7bf586df3c8b81c21773c11f5aa720a2467c8ca",
+          "translation_hash": "fce80be4a3e6945c3a7a17cea20930d57248dc92e05e9d23e708019d00250f93",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.settings.input.gestures.multi_tap_description": {
           "domain": "application",
           "source_hash": "6a1e6379220934e3badf9a27c6eedf4b7d0cff3c3b60201349e2c7fcabfc9470",
-          "translation_hash": "03226e791c04b789807d72774352b627235e536fe6729d91b905e35a3adc2820",
+          "translation_hash": "b14a0b354053dff8dc03e3c312b619d5e3a36f9bbb8fca631c819578e08047b6",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-es-419"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:00:00Z"
         },
         "gamehq.settings.input.gestures.title": {
           "domain": "application",

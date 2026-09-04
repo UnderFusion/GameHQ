@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "reviewed Spanish reference adapted row by row to neutral Latin American Spanish",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T20:00:00Z"
+    "recorded_at": "2026-09-04T21:00:00Z"
   },
   "baseline": {
     "path": "git:461cb7acc0249374e6efd90d5438177a80697d20:i18n/app/gamehq_es_419.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_es_419.ts",
-    "sha256": "ec54338d62a7668f4f19f144a86e62f6597fd7f6a67b94b0a0f90f9b53a1b217",
+    "sha256": "db9c648e35be55acfaafa00ddad4c978454eebbc9a17ba475dc5b0d29dad5f4c",
     "message_count": 831
   },
   "coverage": [
@@ -90,7 +90,7 @@
     {
       "id": "gamehq.about.product_description",
       "source_hash": "aa9b19cffaa783832dc62f3f8208d13e6e6855a46b0c86f957c32a85a274c37e",
-      "translation_hash": "64de58ea95b1a4995c40b86461553bdf3d212eb80c14a540556471d9ff293f92",
+      "translation_hash": "3e653a449fe7ec88a2efec1e2dd385de957108fb95227c088cebee07ac151b44",
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:629"
       ],
@@ -1069,12 +1069,12 @@
     {
       "id": "gamehq.duration.milliseconds.relaxed",
       "source_hash": "cb44226967f783a144a3951c6bc1464bfacf215f927dd1c3f83cc21f61e39451",
-      "translation_hash": "762eec7d9b8353b4f0e3b4349313dd432be54c6145dd298877e0ea74fb844310",
+      "translation_hash": "7e49b90789e7c545ded11adc2717decbc296eb7f4352069ef401c74285ca6d4b",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:293",
         "src/ui/qml/settings/InputSettingsPage.qml:312"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.duration.minutes",
@@ -2694,7 +2694,7 @@
     {
       "id": "gamehq.help.gamepad.button_combination_action",
       "source_hash": "77079953b20b92cc6b5beac529fac6297d65b77ec911619666d32375fa99849d",
-      "translation_hash": "543efc4860d560fe0edfb08b2299f563e83076b54862006c67c7fc32c65e5765",
+      "translation_hash": "fe5f3d5e81b9919831b2623c445ec3b84752eb1bacdf2f17a19c53dad0a1f788",
       "locations": [
         "src/ui/qml/HelpView.qml:187"
       ],
@@ -2775,7 +2775,7 @@
     {
       "id": "gamehq.help.gamepad.share_hold_action",
       "source_hash": "b7f393cb8c49a3541a18eeba70f2b3befff58c73dc3ae676e6df043e9292244a",
-      "translation_hash": "5a21cd22b559156e03bbd6bc646585044f40abd8d2c2ee3945a6e62117035620",
+      "translation_hash": "dedbccca2027efe7253127c4707c555d09d9075e88006856aa820c7d82db330c",
       "locations": [
         "src/ui/qml/HelpView.qml:175"
       ],
@@ -2793,7 +2793,7 @@
     {
       "id": "gamehq.help.gamepad.share_multi_tap_action",
       "source_hash": "4fab9faeecf0b3a2bbb4dd563bd1fb48cd2949455ead3b610c221a7b629542ef",
-      "translation_hash": "7a3d2dc94bb653e4fe397c9d81910f6c787506f45ca720ba6fedb4f6c6a44738",
+      "translation_hash": "720bef1c220a1e86324e4c5d11760a693721796f0c7389bb6dad8d6c450c5929",
       "locations": [
         "src/ui/qml/HelpView.qml:181"
       ],
@@ -2838,7 +2838,7 @@
     {
       "id": "gamehq.help.gamepad.system_share_tap",
       "source_hash": "4ccfa90e94cb8ad888a3928cf048bc1211a8102931ee0cecb5f926cd0a1340dc",
-      "translation_hash": "bfbf56ce8dbef6a6cbb19ee257a02edc6c34c8c8cf17d9673db58cf92d7d63bb",
+      "translation_hash": "0dbf051390ef75f23e35c7769e823f71b8e1100374574cacbb0eb261a65a305a",
       "locations": [
         "src/ui/qml/HelpView.qml:167"
       ],
@@ -2967,7 +2967,7 @@
     {
       "id": "gamehq.input.assignment.combination_gesture",
       "source_hash": "ab8b252ac6daa0c5a4e9918ad5adfe1861a82e735cf44d015b8637427e08f041",
-      "translation_hash": "f703df8d1e7644c6e2791b83c7267699a735f5f6464064191d3f844d3d1a1785",
+      "translation_hash": "1924d06b521a8b468945c4a7f2ed8810a069f5d51e9158795cd5f9c534ca8047",
       "locations": [
         "src/ui/qml/components/BindingAssignmentDialog.qml:506"
       ],
@@ -3013,7 +3013,7 @@
     {
       "id": "gamehq.input.assignment.hold_duration",
       "source_hash": "fcdd6a27a0dd8e8c2863f610b2857c44b5cbae63db2410e01c79b53bc46ab216",
-      "translation_hash": "857bad40c40ba16a0903952aa36f8f3b57425263a9439cf33f75ad0248f6d1b5",
+      "translation_hash": "5ff9bec04c84fd5fe48406e6e2f04b0470ce9cc9fdeda96c4a5b50dfc9381b0e",
       "locations": [
         "src/ui/qml/components/BindingAssignmentDialog.qml:522"
       ],
@@ -3277,7 +3277,7 @@
     {
       "id": "gamehq.input.compatibility.convert_press",
       "source_hash": "1efa74b7651bdfc190b75ddebd5a0d9fe62027affde25c79c9c72ce12ca821c8",
-      "translation_hash": "09f500c23d40d047ed29742f586c3bed76166c380f0878a44f9a2f3e2482ee23",
+      "translation_hash": "a8ff9f81a92c1a3f96ac9703ece76f7725ef3d9faf0bd56c45075d428e32ab37",
       "locations": [
         "src/input/BindingEditorModel.cpp:482"
       ],
@@ -3286,7 +3286,7 @@
     {
       "id": "gamehq.input.compatibility.convert_press_with_wait",
       "source_hash": "f94a8cac5dbdb662da80333135303809ab4e29dd56bddf5ea5a1b1f13c1f7773",
-      "translation_hash": "03b0abde0119fa9a4de71e7d0ec64f303c758cadeb062b2f1c6682b84284d209",
+      "translation_hash": "c369b00e93ddced4a473ccb39ef7317611b69c8165c0abadc4e51c869948ca8a",
       "locations": [
         "src/input/BindingEditorModel.cpp:474"
       ],
@@ -3313,7 +3313,7 @@
     {
       "id": "gamehq.input.conflict.press_timed",
       "source_hash": "a8089c1fe9cdd1230a9aea28e095996ee4f10c45f25757ddd4aaed7085d88579",
-      "translation_hash": "48eddf68f131157c1b5b2456d9207fab962549110f68ca282e0f2ecc6a717faf",
+      "translation_hash": "8aaee9fe18144b5c0ef8cea66b3c7793108edf8c58b9335df7692b47a1bbe2ba",
       "locations": [
         "src/input/BindingEditorModel.cpp:451"
       ],
@@ -3331,7 +3331,7 @@
     {
       "id": "gamehq.input.gesture.double_tap",
       "source_hash": "cf0332cd6a24148fba42be7678412c6d692dfb774a0bc6a467e191bdc638a4f1",
-      "translation_hash": "7c0855bfcabb667b9719b28871b7d012f02a65437c57947c2209625fd3271f5b",
+      "translation_hash": "b3903395a85fd68b939f6ed9b5e04b9cf685a18ef149848eba08c9a0abf42969",
       "locations": [
         "src/input/BindingPattern.cpp:106",
         "src/ui/qml/components/BindingAssignmentDialog.qml:474"
@@ -3341,7 +3341,7 @@
     {
       "id": "gamehq.input.gesture.hold",
       "source_hash": "336c712487573e89effe6b5afa1c0f57c532890b46fe06ffee36fdccf128fb0e",
-      "translation_hash": "66002bad91b823efeb9b0187d3000b1d9ce7ae40aafd40cc2d08c1aa49411615",
+      "translation_hash": "60238e8ea5336799e66a831f97ea95ed2172dc0989f00a403180676d91ac828d",
       "locations": [
         "src/input/BindingPattern.cpp:121",
         "src/ui/qml/components/BindingAssignmentDialog.qml:478"
@@ -3351,7 +3351,7 @@
     {
       "id": "gamehq.input.gesture.press",
       "source_hash": "bde1c574f3331c901bbb997ea22f8d9ee54cd920382d1554ca054171c19d2559",
-      "translation_hash": "e2d8918fafe0062d75cd91644ad0c4754f763f2c98affbcec4b6be4868ae5059",
+      "translation_hash": "72d57579237ec31edfd2b48553c9e50ca931fb1e46b208a51df6535a58e5f8c5",
       "locations": [
         "src/input/BindingPattern.cpp:101",
         "src/input/BindingPattern.cpp:125",
@@ -3362,7 +3362,7 @@
     {
       "id": "gamehq.input.gesture.tap",
       "source_hash": "48a60d2e2197297571d0d2a8a0d04bc20f162a5aaf243bfeb068b740a107df96",
-      "translation_hash": "2fa0f2675a2b3dab3cf46cc3f8568fecb1180e5353748a1983204d9e685d5284",
+      "translation_hash": "885c273701bc5a871afb3128256e8a737124fc41f905c6af4717635de39ea1bc",
       "locations": [
         "src/input/BindingPattern.cpp:117",
         "src/ui/qml/components/BindingAssignmentDialog.qml:472"
@@ -3372,7 +3372,7 @@
     {
       "id": "gamehq.input.gesture.triple_tap",
       "source_hash": "7321c01862585054f28be951e16d94c50a32513dd3b48a1e9f4acc973ad25e49",
-      "translation_hash": "7b29def8bdc4d1ed766713e34e8959fbace23994f48bd5473c9542bf6bf87e91",
+      "translation_hash": "9eb14071dcf8838944bf19218c22936656962ae0071df875f96a7e3f7d0eca28",
       "locations": [
         "src/input/BindingPattern.cpp:112",
         "src/ui/qml/components/BindingAssignmentDialog.qml:476"
@@ -3418,7 +3418,7 @@
     {
       "id": "gamehq.input.model.hold_default",
       "source_hash": "44d2fefd028779d99c54f0d27ec4fecb0605330e3262b634e23b5ac259d4a058",
-      "translation_hash": "b48a55b06f590f8332637f1e1f54d6b9988229915e67d6723bd8b7d1f9cd5441",
+      "translation_hash": "d708b55ec8b2e0c5eacd88844372a7db7bcfd9f2be66c9e1a9d173c1a1a7e3f9",
       "locations": [
         "src/input/BindingEditorModel.cpp:185"
       ],
@@ -3427,7 +3427,7 @@
     {
       "id": "gamehq.input.model.hold_seconds",
       "source_hash": "ed9e3ba8bd3ec74e110e34430da28e23c5d962825e724337e60bf6a71b4edb2e",
-      "translation_hash": "383c282121278d0aef95666225637b757fc32bb975b69f9b050651b3a53f4ccb",
+      "translation_hash": "81d870c453dbf8bc7961b7f93b31af87d78f95bc6da0dd7ea5c11ec7fd3b3e70",
       "locations": [
         "src/input/BindingEditorModel.cpp:190"
       ],
@@ -3536,7 +3536,7 @@
     {
       "id": "gamehq.input.relation.higher_tap_delay",
       "source_hash": "0a05f06521afe984dd87b21dd494825cdc88b39efc44c801e9be7581cb0899dd",
-      "translation_hash": "f383a6cab52f5d2e0c8285ad9ac2541bab5b4b106f7f47b43e721f5b18e9d9b0",
+      "translation_hash": "c2892a38f72ac44a9316e5b57e9a4dcea13b81c0631237f4efb92f768408394c",
       "locations": [
         "src/input/BindingRelation.cpp:233"
       ],
@@ -5487,7 +5487,7 @@
     {
       "id": "gamehq.settings.input.gestures.description",
       "source_hash": "9a116352354d9018bcddf25cb9cb7d5ac234df7a9016b91e41f83d6d719c0f59",
-      "translation_hash": "48c3417141b23a714fc5931c1edf9d0188df1afc8dfae07276837fc59116d5d1",
+      "translation_hash": "dcc6462d962fd8c2ae2f8ee11c8200391db1ffccbfbc01f073b5b183470cac42",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:258"
       ],
@@ -5505,7 +5505,7 @@
     {
       "id": "gamehq.settings.input.gestures.hold_time",
       "source_hash": "3e670e49c36879ede4ed345948e559cb21d02851bbf13c6fd96173d47ce2ddb0",
-      "translation_hash": "857bad40c40ba16a0903952aa36f8f3b57425263a9439cf33f75ad0248f6d1b5",
+      "translation_hash": "5ff9bec04c84fd5fe48406e6e2f04b0470ce9cc9fdeda96c4a5b50dfc9381b0e",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:261"
       ],
@@ -5514,7 +5514,7 @@
     {
       "id": "gamehq.settings.input.gestures.hold_time_description",
       "source_hash": "7ebeddd897b70a37d07c2965a9cd8dbdcc6b74947a7470a38ef4df7bcbec4b4f",
-      "translation_hash": "2b23b7b4c985ff44ffdfb34375a00107cb7067c1b24bda05e4505f0540abb9f6",
+      "translation_hash": "fe9677a80794d1ecc5a03a67bd6394f8c868426e79b44a2e801fab41289ebea4",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:263"
       ],
@@ -5523,7 +5523,7 @@
     {
       "id": "gamehq.settings.input.gestures.multi_tap",
       "source_hash": "2c0d6dc84e45db6fa48bb5dc18ebd412bebb00a545440fd6ebd03efa4adfab4c",
-      "translation_hash": "d584530ab5946e2a58b7a844a7bf586df3c8b81c21773c11f5aa720a2467c8ca",
+      "translation_hash": "fce80be4a3e6945c3a7a17cea20930d57248dc92e05e9d23e708019d00250f93",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:280"
       ],
@@ -5532,7 +5532,7 @@
     {
       "id": "gamehq.settings.input.gestures.multi_tap_description",
       "source_hash": "6a1e6379220934e3badf9a27c6eedf4b7d0cff3c3b60201349e2c7fcabfc9470",
-      "translation_hash": "03226e791c04b789807d72774352b627235e536fe6729d91b905e35a3adc2820",
+      "translation_hash": "b14a0b354053dff8dc03e3c312b619d5e3a36f9bbb8fca631c819578e08047b6",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:282"
       ],
@@ -7648,7 +7648,7 @@
       "id": "gamehq.about.product_description",
       "surface": "application",
       "before": "Una captura de pantalla, repetición y galería de medios para juegos de PC.",
-      "after": "Una galería de capturas de pantalla, repeticiones y contenido multimedia para juegos de PC, diseñada para usarse con control.",
+      "after": "Una galería de capturas de pantalla, repeticiones y contenido multimedia para juegos de PC, pensada para usarse con un control.",
       "category": "natural_ui_register",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -8453,6 +8453,15 @@
       "category": "natural_ui_register",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
+    },
+    {
+      "id": "gamehq.duration.milliseconds.relaxed",
+      "surface": "application",
+      "category": "technical_accuracy",
+      "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
+      "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract.",
+      "before": "%1 ms (relajado)",
+      "after": "%1 ms (flexible)"
     },
     {
       "id": "gamehq.duration.minutes",
@@ -9922,7 +9931,7 @@
       "id": "gamehq.help.gamepad.button_combination_action",
       "surface": "application",
       "before": "Presione el par ordenado dentro de la ventana de combinación configurada",
-      "after": "Presiona el par ordenado dentro del intervalo configurado para combinaciones",
+      "after": "Presiona los dos botones en ese orden dentro del intervalo configurado para la combinación",
       "category": "natural_ui_register",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10003,7 +10012,7 @@
       "id": "gamehq.help.gamepad.share_hold_action",
       "surface": "application",
       "before": "Guardar clip de repetición; mantener consume el grifo",
-      "after": "Guardar clip de repetición; mantener presionado anula la presión breve",
+      "after": "Guardar clip de repetición; mantener presionado anula la pulsación breve",
       "category": "natural_ui_register",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10021,7 +10030,7 @@
       "id": "gamehq.help.gamepad.share_multi_tap_action",
       "surface": "application",
       "before": "Exacto doble/grip triple; cuenta inferior espera sólo para el intervalo configurado",
-      "after": "Presión doble o triple exacta; las secuencias con menos presiones solo esperan el intervalo configurado",
+      "after": "Doble o triple pulsación exacta; las secuencias con menos pulsaciones solo esperan el intervalo configurado",
       "category": "natural_ui_register",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10066,7 +10075,7 @@
       "id": "gamehq.help.gamepad.system_share_tap",
       "surface": "application",
       "before": "System Share (tap)",
-      "after": "Share del sistema (presión breve)",
+      "after": "Share del sistema (pulsación breve)",
       "category": "natural_ui_register",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10174,7 +10183,7 @@
       "id": "gamehq.input.assignment.combination_gesture",
       "surface": "application",
       "before": "Prensa · fija para combinaciones",
-      "after": "Presión · fija para combinaciones",
+      "after": "Pulsación · fija para combinaciones",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10210,7 +10219,7 @@
       "id": "gamehq.input.assignment.hold_duration",
       "surface": "application",
       "before": "Duración",
-      "after": "Duración de la presión prolongada",
+      "after": "Duración de la pulsación prolongada",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10417,7 +10426,7 @@
       "id": "gamehq.input.compatibility.convert_press",
       "surface": "application",
       "before": "%1 activado actualmente %2 inmediatamente cuando se presiona el botón.\n\nPara utilizar también %1 para %3, GameHQ debe cambiar %2 de prensa a solas.\n\n%2 se activará después de que el botón sea lanzado.",
-      "after": "%1 activa %2 inmediatamente al presionar el botón.\n\nPara usar también %1 para %3, GameHQ debe cambiar %2 de Presión a Presión breve.\n\nA partir de entonces, %2 se activará al soltar el botón.",
+      "after": "%1 activa %2 inmediatamente al presionar el botón.\n\nPara usar también %1 para %3, GameHQ debe cambiar %2 de Pulsación a Pulsación breve.\n\nA partir de entonces, %2 se activará al soltar el botón.",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10426,7 +10435,7 @@
       "id": "gamehq.input.compatibility.convert_press_with_wait",
       "surface": "application",
       "before": "%1 activado actualmente %2 inmediatamente cuando se presiona el botón.\n\nPara utilizar también %1 para %3, GameHQ debe cambiar %2 de prensa a solas.\n\n%2 se activará después de que el botón sea liberado y puede esperar hasta %4 para descartar %3 acción.",
-      "after": "%1 activa %2 inmediatamente al presionar el botón.\n\nPara usar también %1 para %3, GameHQ debe cambiar %2 de Presión a Presión breve.\n\nA partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta %4 ms para descartar la acción %3.",
+      "after": "%1 activa %2 inmediatamente al presionar el botón.\n\nPara usar también %1 para %3, GameHQ debe cambiar %2 de Pulsación a Pulsación breve.\n\nA partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta %4 ms para descartar la acción %3.",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10444,7 +10453,7 @@
       "id": "gamehq.input.conflict.press_timed",
       "surface": "application",
       "before": "%1 usos Prensa para %2 No puede distinguirse de %3 en este contexto sin cambiar su comportamiento de botón hacia abajo.",
-      "after": "%1 usa Presión para %2. En este contexto no puede distinguirse de %3 sin cambiar su comportamiento al presionar el botón.",
+      "after": "%1 usa Pulsación para %2. En este contexto no puede distinguirse de %3 sin cambiar su comportamiento al presionar el botón.",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10462,7 +10471,7 @@
       "id": "gamehq.input.gesture.double_tap",
       "surface": "application",
       "before": "Doble grifo",
-      "after": "Doble presión",
+      "after": "Doble pulsación",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10471,7 +10480,7 @@
       "id": "gamehq.input.gesture.hold",
       "surface": "application",
       "before": "Espera.",
-      "after": "Presión prolongada",
+      "after": "Pulsación prolongada",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10480,7 +10489,7 @@
       "id": "gamehq.input.gesture.press",
       "surface": "application",
       "before": "Prensa",
-      "after": "Presión",
+      "after": "Pulsación",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10489,7 +10498,7 @@
       "id": "gamehq.input.gesture.tap",
       "surface": "application",
       "before": "Tap",
-      "after": "Presión breve",
+      "after": "Pulsación breve",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10498,7 +10507,7 @@
       "id": "gamehq.input.gesture.triple_tap",
       "surface": "application",
       "before": "Grifo triple",
-      "after": "Triple presión",
+      "after": "Triple pulsación",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10534,7 +10543,7 @@
       "id": "gamehq.input.model.hold_default",
       "surface": "application",
       "before": "Sostenimiento · Por defecto",
-      "after": "Presión prolongada · Predeterminada",
+      "after": "Pulsación prolongada · Predeterminada",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10543,7 +10552,7 @@
       "id": "gamehq.input.model.hold_seconds",
       "surface": "application",
       "before": "Espera. %1 s",
-      "after": "Presión prolongada · %1 s",
+      "after": "Pulsación prolongada · %1 s",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -10606,7 +10615,7 @@
       "id": "gamehq.input.relation.higher_tap_delay",
       "surface": "application",
       "before": "Esta acción espera hasta %1 ms porque el mismo botón también tiene una asignación que necesita más grifos.",
-      "after": "Esta acción espera hasta %1 ms porque el mismo botón tiene otra asignación que requiere más presiones.",
+      "after": "Esta acción espera hasta %1 ms porque el mismo botón tiene otra asignación que requiere más pulsaciones.",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -11884,7 +11893,7 @@
       "id": "gamehq.settings.input.gestures.description",
       "surface": "application",
       "before": "Cuánto tiempo. GameHQ espera antes de que decida lo que significaba una pulsación de botón.",
-      "after": "Cuánto espera GameHQ antes de interpretar una presión.",
+      "after": "Cuánto espera GameHQ antes de interpretar una pulsación.",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -11902,7 +11911,7 @@
       "id": "gamehq.settings.input.gestures.hold_time",
       "surface": "application",
       "before": "Tiempo de espera",
-      "after": "Duración de la presión prolongada",
+      "after": "Duración de la pulsación prolongada",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -11911,7 +11920,7 @@
       "id": "gamehq.settings.input.gestures.hold_time_description",
       "surface": "application",
       "before": "Cuanto tiempo se debe mantener un botón para una acción de sujeción. Una sujeción completa consume el grifo.",
-      "after": "Tiempo que debe mantenerse presionado un botón para activar una presión prolongada. Al completarse, anula la presión breve.",
+      "after": "Tiempo que debe mantenerse presionado un botón para activar una pulsación prolongada. Al completarse, anula la pulsación breve.",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -11920,7 +11929,7 @@
       "id": "gamehq.settings.input.gestures.multi_tap",
       "surface": "application",
       "before": "Intervalo multitapa",
-      "after": "Intervalo de varias presiones",
+      "after": "Intervalo de varias pulsaciones",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -11929,7 +11938,7 @@
       "id": "gamehq.settings.input.gestures.multi_tap_description",
       "surface": "application",
       "before": "Cuánto tiempo espera un solo toque cuando el mismo botón también tiene un doble o triple grifo.",
-      "after": "Cuánto espera una presión breve cuando el mismo botón también tiene asignada una presión doble o triple.",
+      "after": "Cuánto espera una pulsación breve cuando el mismo botón también tiene asignada una pulsación doble o triple.",
       "category": "technical_accuracy",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -13558,6 +13567,60 @@
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
     },
     {
+      "id": "GameHQSetupAppRunning",
+      "surface": "installer",
+      "before": "GameHQ está en ejecución. Ciérrelo normalmente, incluso en cualquier otra sesión de Windows, y vuelva a ejecutar el instalador.",
+      "after": "GameHQ está en ejecución. Es necesario cerrarlo normalmente, incluso en cualquier otra sesión de Windows, antes de volver a ejecutar el instalador.",
+      "category": "natural_ui_register",
+      "reason": "Uses one neutral, impersonal register across the Latin American Spanish installer surface.",
+      "terminology_decision": "Installer instructions avoid mixing informal second person with formal imperative forms."
+    },
+    {
+      "id": "GameHQUninstallAppRunning",
+      "surface": "installer",
+      "before": "GameHQ está en ejecución. Antes de desinstalarlo, ciérrelo normalmente, incluso en cualquier otra sesión de Windows.",
+      "after": "GameHQ está en ejecución. Es necesario cerrarlo normalmente, incluso en cualquier otra sesión de Windows, antes de desinstalarlo.",
+      "category": "natural_ui_register",
+      "reason": "Uses one neutral, impersonal register across the Latin American Spanish installer surface.",
+      "terminology_decision": "Installer instructions avoid mixing informal second person with formal imperative forms."
+    },
+    {
+      "id": "GameHQUpdateActive",
+      "surface": "installer",
+      "before": "Hay una actualización de GameHQ en curso%1. Espere a que termine e inténtelo de nuevo.",
+      "after": "Hay una actualización de GameHQ en curso%1. Debe finalizar antes de volver a intentarlo.",
+      "category": "natural_ui_register",
+      "reason": "Uses one neutral, impersonal register across the Latin American Spanish installer surface.",
+      "terminology_decision": "Installer instructions avoid mixing informal second person with formal imperative forms."
+    },
+    {
+      "id": "GameHQUpdateStale",
+      "surface": "installer",
+      "before": "Una actualización anterior de GameHQ no se completó%1. Inicie GameHQ una vez para permitir la recuperación e inténtelo de nuevo.",
+      "after": "Una actualización anterior de GameHQ no se completó%1. Es necesario iniciar GameHQ una vez para permitir la recuperación y volver a intentarlo.",
+      "category": "natural_ui_register",
+      "reason": "Uses one neutral, impersonal register across the Latin American Spanish installer surface.",
+      "terminology_decision": "Installer instructions avoid mixing informal second person with formal imperative forms."
+    },
+    {
+      "id": "GameHQWelcomeBody",
+      "surface": "installer",
+      "before": "El instalador instalará [name/ver] en este equipo.%n%nCierre GameHQ antes de continuar.",
+      "after": "El instalador instalará [name/ver] en este equipo.%n%nEs necesario cerrar GameHQ antes de continuar.",
+      "category": "natural_ui_register",
+      "reason": "Uses one neutral, impersonal register across the Latin American Spanish installer surface.",
+      "terminology_decision": "Installer instructions avoid mixing informal second person with formal imperative forms."
+    },
+    {
+      "id": "GameHQWelcomeTitle",
+      "surface": "installer",
+      "before": "Te damos la bienvenida a GameHQ",
+      "after": "Instalación de GameHQ",
+      "category": "natural_ui_register",
+      "reason": "Uses one neutral, impersonal register across the Latin American Spanish installer surface.",
+      "terminology_decision": "Installer instructions avoid mixing informal second person with formal imperative forms."
+    },
+    {
       "id": "LOCGameHQIntegrationAboutDescription",
       "surface": "playnite",
       "before": "GameHQ recibe el nombre del juego que estás usando en Playnite para que la detección y la organización de capturas sean más confiables. No graba partidas, no sube datos ni instala nada. GameHQ sigue funcionando sin Playnite.",
@@ -13633,7 +13696,7 @@
       "id": "known-limitations-01",
       "surface": "release_notes",
       "before": "Doce idiomas ya traen los textos de interfaz traducidos. El italiano, el español latinoamericano, el tailandés y el ucraniano se pueden seleccionar y por ahora muestran el texto completo en inglés.",
-      "after": "Los dieciséis idiomas disponibles al iniciar GameHQ ya incluyen texto de interfaz traducido. Aún se requiere una revisión lingüística contextual antes del lanzamiento.",
+      "after": "Los dieciséis idiomas incluidos en el lanzamiento ya tienen texto de interfaz traducido. Aún se requiere una revisión lingüística contextual antes del lanzamiento.",
       "category": "natural_ui_register",
       "reason": "Uses neutral Latin American Spanish appropriate to the corrected English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the es-419 style guide, termbase, and product behavior contract."
@@ -13643,13 +13706,13 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_es_419.ts",
-      "sha256": "ec54338d62a7668f4f19f144a86e62f6597fd7f6a67b94b0a0f90f9b53a1b217",
+      "sha256": "db9c648e35be55acfaafa00ddad4c978454eebbc9a17ba475dc5b0d29dad5f4c",
       "reviewed_units": 831
     },
     {
       "surface": "installer",
       "path": "packaging/i18n/custom-messages.json",
-      "sha256": "0ae25e5fd972676d3318d3898c6a589362c3df859b4ea173445ad664bd3487ab",
+      "sha256": "c9e7eb05551aef57688347b56cb81dadc425b2468b11ac645d73852e72e84736",
       "reviewed_units": 11
     },
     {
@@ -13661,15 +13724,15 @@
     {
       "surface": "release_notes",
       "path": "assets/release-notes/versions/0.7.7/es-419.json",
-      "sha256": "9e9299dee50852efcff0f71bf90acf54360499c21461b6d186f10d4a826a8465",
+      "sha256": "585ca6d89420dcb3404f3c8a249bcd67ed4b78dec2825a5f8aa54c0a47c8a0c4",
       "reviewed_units": 10
     }
   ],
   "terminology_decisions": [
     "GameHQ, GameInput, XInput, DualSense, HDR, FPS, Steam, Playnite, GitHub, APIs, paths, keys, placeholders, and versions remain unchanged.",
     "Neutral Latin American Spanish uses control, botón, asignación, ranura, mouse, archivo, carpeta, and configuración.",
-    "Immediate Press is Presión; release-based Tap is Presión breve; Doble presión, Triple presión, and Presión prolongada remain distinct.",
-    "A completed presión prolongada suppresses the presión breve action, and lower-count sequences wait only for the configured interval.",
+    "Immediate Press is Pulsación; release-based Tap is Pulsación breve; Doble pulsación, Triple pulsación, and Pulsación prolongada remain distinct.",
+    "A completed pulsación prolongada suppresses the pulsación breve action, and lower-count sequences wait only for the configured interval.",
     "Input listening uses detectar or esperar un control and never screenshot or media-capture terminology.",
     "Captura de pantalla, captura, repetición, búfer de repetición, clip, grabación, and reproducción denote distinct media concepts.",
     "Galería, biblioteca multimedia, superposición, foco, carpeta supervisada, and ubicación de almacenamiento remain contextually distinct.",

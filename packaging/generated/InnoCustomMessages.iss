@@ -43,17 +43,17 @@ russian.GameHQSetupAppRunning=GameHQ сейчас работает. Закрой
 russian.GameHQUninstallAppRunning=GameHQ сейчас работает. Перед удалением закройте программу обычным способом, в том числе в любом другом сеансе Windows.
 
 ; locale=es-419; fallback=en-US
-spanishlatinamerica.GameHQWelcomeTitle=Te damos la bienvenida a GameHQ
-spanishlatinamerica.GameHQWelcomeBody=El instalador instalará [name/ver] en este equipo.%n%nCierre GameHQ antes de continuar.
+spanishlatinamerica.GameHQWelcomeTitle=Instalación de GameHQ
+spanishlatinamerica.GameHQWelcomeBody=El instalador instalará [name/ver] en este equipo.%n%nEs necesario cerrar GameHQ antes de continuar.
 spanishlatinamerica.GameHQDesktopShortcut=Crear un acceso directo en el escritorio
 spanishlatinamerica.GameHQAdditionalShortcuts=Accesos directos adicionales:
 spanishlatinamerica.GameHQLaunch=Iniciar GameHQ
 spanishlatinamerica.GameHQStageDetail= (fase: %1)
-spanishlatinamerica.GameHQUpdateActive=Hay una actualización de GameHQ en curso%1. Espere a que termine e inténtelo de nuevo.
-spanishlatinamerica.GameHQUpdateStale=Una actualización anterior de GameHQ no se completó%1. Inicie GameHQ una vez para permitir la recuperación e inténtelo de nuevo.
+spanishlatinamerica.GameHQUpdateActive=Hay una actualización de GameHQ en curso%1. Debe finalizar antes de volver a intentarlo.
+spanishlatinamerica.GameHQUpdateStale=Una actualización anterior de GameHQ no se completó%1. Es necesario iniciar GameHQ una vez para permitir la recuperación y volver a intentarlo.
 spanishlatinamerica.GameHQNothingRemoved=No se eliminó nada; la instalación sigue intacta.
-spanishlatinamerica.GameHQSetupAppRunning=GameHQ está en ejecución. Ciérrelo normalmente, incluso en cualquier otra sesión de Windows, y vuelva a ejecutar el instalador.
-spanishlatinamerica.GameHQUninstallAppRunning=GameHQ está en ejecución. Antes de desinstalarlo, ciérrelo normalmente, incluso en cualquier otra sesión de Windows.
+spanishlatinamerica.GameHQSetupAppRunning=GameHQ está en ejecución. Es necesario cerrarlo normalmente, incluso en cualquier otra sesión de Windows, antes de volver a ejecutar el instalador.
+spanishlatinamerica.GameHQUninstallAppRunning=GameHQ está en ejecución. Es necesario cerrarlo normalmente, incluso en cualquier otra sesión de Windows, antes de desinstalarlo.
 
 ; locale=es-ES; fallback=en-US
 spanish.GameHQWelcomeTitle=Te damos la bienvenida a GameHQ

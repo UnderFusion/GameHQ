@@ -301,17 +301,17 @@
       "GameHQUninstallAppRunning": "GameHQ กำลังทำงาน ปิดโปรแกรมตามปกติ รวมถึงโปรแกรมที่ทำงานอยู่ในเซสชัน Windows อื่น ก่อนถอนการติดตั้ง"
     },
     "es-419": {
-      "GameHQWelcomeTitle": "Te damos la bienvenida a GameHQ",
-      "GameHQWelcomeBody": "El instalador instalará [name/ver] en este equipo.%n%nCierre GameHQ antes de continuar.",
+      "GameHQWelcomeTitle": "Instalación de GameHQ",
+      "GameHQWelcomeBody": "El instalador instalará [name/ver] en este equipo.%n%nEs necesario cerrar GameHQ antes de continuar.",
       "GameHQDesktopShortcut": "Crear un acceso directo en el escritorio",
       "GameHQAdditionalShortcuts": "Accesos directos adicionales:",
       "GameHQLaunch": "Iniciar GameHQ",
       "GameHQStageDetail": " (fase: %1)",
-      "GameHQUpdateActive": "Hay una actualización de GameHQ en curso%1. Espere a que termine e inténtelo de nuevo.",
-      "GameHQUpdateStale": "Una actualización anterior de GameHQ no se completó%1. Inicie GameHQ una vez para permitir la recuperación e inténtelo de nuevo.",
+      "GameHQUpdateActive": "Hay una actualización de GameHQ en curso%1. Debe finalizar antes de volver a intentarlo.",
+      "GameHQUpdateStale": "Una actualización anterior de GameHQ no se completó%1. Es necesario iniciar GameHQ una vez para permitir la recuperación y volver a intentarlo.",
       "GameHQNothingRemoved": "No se eliminó nada; la instalación sigue intacta.",
-      "GameHQSetupAppRunning": "GameHQ está en ejecución. Ciérrelo normalmente, incluso en cualquier otra sesión de Windows, y vuelva a ejecutar el instalador.",
-      "GameHQUninstallAppRunning": "GameHQ está en ejecución. Antes de desinstalarlo, ciérrelo normalmente, incluso en cualquier otra sesión de Windows."
+      "GameHQSetupAppRunning": "GameHQ está en ejecución. Es necesario cerrarlo normalmente, incluso en cualquier otra sesión de Windows, antes de volver a ejecutar el instalador.",
+      "GameHQUninstallAppRunning": "GameHQ está en ejecución. Es necesario cerrarlo normalmente, incluso en cualquier otra sesión de Windows, antes de desinstalarlo."
     },
     "uk-UA": {
       "GameHQWelcomeTitle": "Ласкаво просимо до GameHQ",

@@ -41,7 +41,7 @@
     <message id="gamehq.about.product_description">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="629"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
-      <translation>Una galería de capturas de pantalla, repeticiones y contenido multimedia para juegos de PC, diseñada para usarse con control.</translation>
+      <translation>Una galería de capturas de pantalla, repeticiones y contenido multimedia para juegos de PC, pensada para usarse con un control.</translation>
     </message>
     <message id="gamehq.about.product_updated">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="484"></location>
@@ -601,7 +601,7 @@
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="293"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="312"></location>
       <source>%1 ms (relaxed)</source>
-      <translation>%1 ms (relajado)</translation>
+      <translation>%1 ms (flexible)</translation>
     </message>
     <message id="gamehq.duration.minutes" numerus="yes">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="59"></location>
@@ -1537,7 +1537,7 @@ Esta acción no se puede deshacer.</numerusform>
     <message id="gamehq.help.gamepad.button_combination_action">
       <location filename="src/ui/qml/HelpView.qml" line="187"></location>
       <source>Press the ordered pair within the configured combination window</source>
-      <translation>Presiona el par ordenado dentro del intervalo configurado para combinaciones</translation>
+      <translation>Presiona los dos botones en ese orden dentro del intervalo configurado para la combinación</translation>
     </message>
     <message id="gamehq.help.gamepad.circle">
       <location filename="src/ui/qml/HelpView.qml" line="214"></location>
@@ -1582,7 +1582,7 @@ Esta acción no se puede deshacer.</numerusform>
     <message id="gamehq.help.gamepad.share_hold_action">
       <location filename="src/ui/qml/HelpView.qml" line="175"></location>
       <source>Save replay clip; hold consumes the tap</source>
-      <translation>Guardar clip de repetición; mantener presionado anula la presión breve</translation>
+      <translation>Guardar clip de repetición; mantener presionado anula la pulsación breve</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap">
       <location filename="src/ui/qml/HelpView.qml" line="179"></location>
@@ -1592,7 +1592,7 @@ Esta acción no se puede deshacer.</numerusform>
     <message id="gamehq.help.gamepad.share_multi_tap_action">
       <location filename="src/ui/qml/HelpView.qml" line="181"></location>
       <source>Exact double/triple tap; lower counts wait only for the configured interval</source>
-      <translation>Presión doble o triple exacta; las secuencias con menos presiones solo esperan el intervalo configurado</translation>
+      <translation>Doble o triple pulsación exacta; las secuencias con menos pulsaciones solo esperan el intervalo configurado</translation>
     </message>
     <message id="gamehq.help.gamepad.square">
       <location filename="src/ui/qml/HelpView.qml" line="220"></location>
@@ -1617,7 +1617,7 @@ Esta acción no se puede deshacer.</numerusform>
     <message id="gamehq.help.gamepad.system_share_tap">
       <location filename="src/ui/qml/HelpView.qml" line="167"></location>
       <source>System Share (tap)</source>
-      <translation>Share del sistema (presión breve)</translation>
+      <translation>Share del sistema (pulsación breve)</translation>
     </message>
     <message id="gamehq.help.gamepad.triangle">
       <location filename="src/ui/qml/HelpView.qml" line="226"></location>
@@ -1691,7 +1691,7 @@ Esta acción no se puede deshacer.</numerusform>
     <message id="gamehq.input.assignment.combination_gesture">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="506"></location>
       <source>Press · fixed for combinations</source>
-      <translation>Presión · fija para combinaciones</translation>
+      <translation>Pulsación · fija para combinaciones</translation>
     </message>
     <message id="gamehq.input.assignment.default_duration">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="532"></location>
@@ -1717,7 +1717,7 @@ Esta acción no se puede deshacer.</numerusform>
     <message id="gamehq.input.assignment.hold_duration">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="522"></location>
       <source>Hold duration</source>
-      <translation>Duración de la presión prolongada</translation>
+      <translation>Duración de la pulsación prolongada</translation>
     </message>
     <message id="gamehq.input.assignment.listening_button">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="270"></location>
@@ -1872,7 +1872,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 %2 will then activate after the button is released.</source>
       <translation>%1 activa %2 inmediatamente al presionar el botón.
 
-Para usar también %1 para %3, GameHQ debe cambiar %2 de Presión a Presión breve.
+Para usar también %1 para %3, GameHQ debe cambiar %2 de Pulsación a Pulsación breve.
 
 A partir de entonces, %2 se activará al soltar el botón.</translation>
     </message>
@@ -1885,7 +1885,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 %2 will then activate after the button is released and may wait up to %4 ms to rule out the %3 action.</source>
       <translation>%1 activa %2 inmediatamente al presionar el botón.
 
-Para usar también %1 para %3, GameHQ debe cambiar %2 de Presión a Presión breve.
+Para usar también %1 para %3, GameHQ debe cambiar %2 de Pulsación a Pulsación breve.
 
 A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta %4 ms para descartar la acción %3.</translation>
     </message>
@@ -1902,7 +1902,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.input.conflict.press_timed">
       <location filename="src/input/BindingEditorModel.cpp" line="451"></location>
       <source>%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.</source>
-      <translation>%1 usa Presión para %2. En este contexto no puede distinguirse de %3 sin cambiar su comportamiento al presionar el botón.</translation>
+      <translation>%1 usa Pulsación para %2. En este contexto no puede distinguirse de %3 sin cambiar su comportamiento al presionar el botón.</translation>
     </message>
     <message id="gamehq.input.conflict.title">
       <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="18"></location>
@@ -1913,32 +1913,32 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <location filename="src/input/BindingPattern.cpp" line="106"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="474"></location>
       <source>Double tap</source>
-      <translation>Doble presión</translation>
+      <translation>Doble pulsación</translation>
     </message>
     <message id="gamehq.input.gesture.hold">
       <location filename="src/input/BindingPattern.cpp" line="121"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="478"></location>
       <source>Hold</source>
-      <translation>Presión prolongada</translation>
+      <translation>Pulsación prolongada</translation>
     </message>
     <message id="gamehq.input.gesture.press">
       <location filename="src/input/BindingPattern.cpp" line="101"></location>
       <location filename="src/input/BindingPattern.cpp" line="125"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="470"></location>
       <source>Press</source>
-      <translation>Presión</translation>
+      <translation>Pulsación</translation>
     </message>
     <message id="gamehq.input.gesture.tap">
       <location filename="src/input/BindingPattern.cpp" line="117"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="472"></location>
       <source>Tap</source>
-      <translation>Presión breve</translation>
+      <translation>Pulsación breve</translation>
     </message>
     <message id="gamehq.input.gesture.triple_tap">
       <location filename="src/input/BindingPattern.cpp" line="112"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="476"></location>
       <source>Triple tap</source>
-      <translation>Triple presión</translation>
+      <translation>Triple pulsación</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
       <location filename="src/input/BindingEditorModel.cpp" line="301"></location>
@@ -1963,12 +1963,12 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.input.model.hold_default">
       <location filename="src/input/BindingEditorModel.cpp" line="185"></location>
       <source>Hold · Default</source>
-      <translation>Presión prolongada · Predeterminada</translation>
+      <translation>Pulsación prolongada · Predeterminada</translation>
     </message>
     <message id="gamehq.input.model.hold_seconds">
       <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
       <source>Hold · %1 s</source>
-      <translation>Presión prolongada · %1 s</translation>
+      <translation>Pulsación prolongada · %1 s</translation>
     </message>
     <message id="gamehq.input.model.no_action_fired">
       <location filename="src/input/BindingEditorModel.cpp" line="985"></location>
@@ -2029,7 +2029,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.input.relation.higher_tap_delay">
       <location filename="src/input/BindingRelation.cpp" line="233"></location>
       <source>This action waits up to %1 ms because the same button also has an assignment that needs more taps.</source>
-      <translation>Esta acción espera hasta %1 ms porque el mismo botón tiene otra asignación que requiere más presiones.</translation>
+      <translation>Esta acción espera hasta %1 ms porque el mismo botón tiene otra asignación que requiere más pulsaciones.</translation>
     </message>
     <message id="gamehq.input.relation.redundant">
       <location filename="src/input/BindingEditorModel.cpp" line="589"></location>
@@ -3127,7 +3127,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.settings.input.gestures.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="258"></location>
       <source>How long GameHQ waits before it decides what a button press meant.</source>
-      <translation>Cuánto espera GameHQ antes de interpretar una presión.</translation>
+      <translation>Cuánto espera GameHQ antes de interpretar una pulsación.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="254"></location>
@@ -3137,22 +3137,22 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.settings.input.gestures.hold_time">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="261"></location>
       <source>Hold time</source>
-      <translation>Duración de la presión prolongada</translation>
+      <translation>Duración de la pulsación prolongada</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="263"></location>
       <source>How long a button must be held for a hold action. A completed hold consumes the tap.</source>
-      <translation>Tiempo que debe mantenerse presionado un botón para activar una presión prolongada. Al completarse, anula la presión breve.</translation>
+      <translation>Tiempo que debe mantenerse presionado un botón para activar una pulsación prolongada. Al completarse, anula la pulsación breve.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="280"></location>
       <source>Multi-tap interval</source>
-      <translation>Intervalo de varias presiones</translation>
+      <translation>Intervalo de varias pulsaciones</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="282"></location>
       <source>How long a single tap waits when the same button also has a double or triple tap.</source>
-      <translation>Cuánto espera una presión breve cuando el mismo botón también tiene asignada una presión doble o triple.</translation>
+      <translation>Cuánto espera una pulsación breve cuando el mismo botón también tiene asignada una pulsación doble o triple.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="256"></location>
