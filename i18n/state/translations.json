@@ -138671,13 +138671,13 @@
         "gamehq.about.product_description": {
           "domain": "application",
           "source_hash": "aa9b19cffaa783832dc62f3f8208d13e6e6855a46b0c86f957c32a85a274c37e",
-          "translation_hash": "59f3e5d3b28ff03cfcef60e37c130769813e49e6d8d4090c9bd81b2f300ca180",
+          "translation_hash": "94a96da67367eb0ce11414a46d0fec75da18a80bb873d60a55e373c943e860e1",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
-          "updated_at": "2026-09-04T03:10:00Z"
+          "updated_at": "2026-09-04T04:20:00Z"
         },
         "gamehq.about.product_updated": {
           "domain": "application",
@@ -138902,13 +138902,13 @@
         "gamehq.action.desktop.favorite.label": {
           "domain": "application",
           "source_hash": "3fb9b539e4eaff25ac6a4985218274a9910cbd77f0845c1446c21533063f6a76",
-          "translation_hash": "758baffed92a73ae55d92b3b91925b2b1d4184525dad6af867229cf4c1874762",
+          "translation_hash": "c97b98b5d62b97f9951c4491eb8982741b0e567891b07e48869e2bf48760a15f",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
-          "updated_at": "2026-09-04T03:10:00Z"
+          "updated_at": "2026-09-04T04:20:00Z"
         },
         "gamehq.action.desktop.menu.description": {
           "domain": "application",
@@ -139353,13 +139353,13 @@
         "gamehq.action.overlay.favorite.label": {
           "domain": "application",
           "source_hash": "3fb9b539e4eaff25ac6a4985218274a9910cbd77f0845c1446c21533063f6a76",
-          "translation_hash": "758baffed92a73ae55d92b3b91925b2b1d4184525dad6af867229cf4c1874762",
+          "translation_hash": "c97b98b5d62b97f9951c4491eb8982741b0e567891b07e48869e2bf48760a15f",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
-          "updated_at": "2026-09-04T03:10:00Z"
+          "updated_at": "2026-09-04T04:20:00Z"
         },
         "gamehq.action.overlay.game_next.description": {
           "domain": "application",
@@ -141883,13 +141883,13 @@
         "gamehq.help.gamepad.share_hold_action": {
           "domain": "application",
           "source_hash": "b7f393cb8c49a3541a18eeba70f2b3befff58c73dc3ae676e6df043e9292244a",
-          "translation_hash": "3dbf1d603f87697cd4851be3f1d5600f4cc3336fbc025d34efda0acbd5efb555",
+          "translation_hash": "2bc5c2d795a9f1b04d9063192d3a9ae961b3ba783fe217ffbdd37b2f60534c86",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
-          "updated_at": "2026-09-04T03:10:00Z"
+          "updated_at": "2026-09-04T04:20:00Z"
         },
         "gamehq.help.gamepad.share_multi_tap": {
           "domain": "application",
@@ -141960,13 +141960,13 @@
         "gamehq.help.gamepad.system_share_tap": {
           "domain": "application",
           "source_hash": "4ccfa90e94cb8ad888a3928cf048bc1211a8102931ee0cecb5f926cd0a1340dc",
-          "translation_hash": "32101edb0c3263fcf5514e0c06d8636e07471794a280324c6f6712709d44e541",
+          "translation_hash": "c024af854a21ef1da6cb49998bea14996f89696871ea114813ccd6dbd9e0b4a7",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
-          "updated_at": "2026-09-04T03:10:00Z"
+          "updated_at": "2026-09-04T04:20:00Z"
         },
         "gamehq.help.gamepad.triangle": {
           "domain": "application",
@@ -142103,13 +142103,13 @@
         "gamehq.input.assignment.capture_active": {
           "domain": "application",
           "source_hash": "774f30e4dc0f8e7821fd47f3cdb7253121cc57ddaf20eb1945fea7738f92f40e",
-          "translation_hash": "0dc087d6eda943cd7c433d69c06fff30d43cd9957fc688ca5d9303c7d9a7ef61",
+          "translation_hash": "acc3e2e5c5a1c2fbd28393ff63aec54f9dc2847964312a59eb3e1f54f96fdfb0",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
-          "updated_at": "2026-09-04T03:10:00Z"
+          "updated_at": "2026-09-04T04:20:00Z"
         },
         "gamehq.input.assignment.combination_gesture": {
           "domain": "application",
@@ -142587,13 +142587,13 @@
         "gamehq.input.gesture.tap": {
           "domain": "application",
           "source_hash": "48a60d2e2197297571d0d2a8a0d04bc20f162a5aaf243bfeb068b740a107df96",
-          "translation_hash": "0627e0e2edb111d803143874e0fe66818cf1e8c961781afee550e86b103a889c",
+          "translation_hash": "59b114aa1234ff82bc447a6dbd213681a590e1aef4a299e315d14456e25a77c3",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
-          "updated_at": "2026-09-04T03:10:00Z"
+          "updated_at": "2026-09-04T04:20:00Z"
         },
         "gamehq.input.gesture.triple_tap": {
           "domain": "application",
@@ -145183,13 +145183,13 @@
         "gamehq.settings.input.gestures.hold_time_description": {
           "domain": "application",
           "source_hash": "7ebeddd897b70a37d07c2965a9cd8dbdcc6b74947a7470a38ef4df7bcbec4b4f",
-          "translation_hash": "9be08e516d25f8ef1bced1a1350851cc444051a5b150e3ddb9144d0fef497b67",
+          "translation_hash": "da96fda0669316aba8653a755efe2c29dc2d9dc26b3284d6270509573a14b2b3",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
-          "updated_at": "2026-09-04T03:10:00Z"
+          "updated_at": "2026-09-04T04:20:00Z"
         },
         "gamehq.settings.input.gestures.multi_tap": {
           "domain": "application",
@@ -145205,13 +145205,13 @@
         "gamehq.settings.input.gestures.multi_tap_description": {
           "domain": "application",
           "source_hash": "6a1e6379220934e3badf9a27c6eedf4b7d0cff3c3b60201349e2c7fcabfc9470",
-          "translation_hash": "261ed1f697d94e8c4cdfafd55f89ac9d7fc2469ad6fa6781d280c39de44e6c4b",
+          "translation_hash": "501921c553eb76542d4329f019228fcd9b31feeacfaa25441f281b01bc3697ec",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
-          "updated_at": "2026-09-04T03:10:00Z"
+          "updated_at": "2026-09-04T04:20:00Z"
         },
         "gamehq.settings.input.gestures.title": {
           "domain": "application",

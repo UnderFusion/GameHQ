@@ -9,10 +9,10 @@
     "authority": "p8-3",
     "reviewer_kind": "agent",
     "actor": "claude-opus-5-contextual-zh-hans-review",
-    "method": "complete_source_location_context_review",
+    "method": "complete_source_location_context_review_plus_targeted_recovery",
     "draft_provider": "machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T03:10:00Z"
+    "recorded_at": "2026-09-04T04:20:00Z"
   },
   "baseline": {
     "path": "git:1b3318c37f114ac3a2096a2457e906b118cd4033:i18n/app/gamehq_zh_Hans.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_zh_Hans.ts",
-    "sha256": "2d61740115fed902a767b639f49466eb7a4a3e315a3a23db7b2057c2faf5f3fa",
+    "sha256": "5e460072ab52f9ae7048c68f3ef21b116054b2b941b3ff15e939af808701d55d",
     "message_count": 831
   },
   "coverage": [
@@ -90,7 +90,7 @@
     {
       "id": "gamehq.about.product_description",
       "source_hash": "aa9b19cffaa783832dc62f3f8208d13e6e6855a46b0c86f957c32a85a274c37e",
-      "translation_hash": "59f3e5d3b28ff03cfcef60e37c130769813e49e6d8d4090c9bd81b2f300ca180",
+      "translation_hash": "94a96da67367eb0ce11414a46d0fec75da18a80bb873d60a55e373c943e860e1",
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:629"
       ],
@@ -293,7 +293,7 @@
     {
       "id": "gamehq.action.desktop.favorite.label",
       "source_hash": "3fb9b539e4eaff25ac6a4985218274a9910cbd77f0845c1446c21533063f6a76",
-      "translation_hash": "758baffed92a73ae55d92b3b91925b2b1d4184525dad6af867229cf4c1874762",
+      "translation_hash": "c97b98b5d62b97f9951c4491eb8982741b0e567891b07e48869e2bf48760a15f",
       "locations": [
         "src/input/ActionCatalog.cpp:234"
       ],
@@ -662,7 +662,7 @@
     {
       "id": "gamehq.action.overlay.favorite.label",
       "source_hash": "3fb9b539e4eaff25ac6a4985218274a9910cbd77f0845c1446c21533063f6a76",
-      "translation_hash": "758baffed92a73ae55d92b3b91925b2b1d4184525dad6af867229cf4c1874762",
+      "translation_hash": "c97b98b5d62b97f9951c4491eb8982741b0e567891b07e48869e2bf48760a15f",
       "locations": [
         "src/input/ActionCatalog.cpp:156"
       ],
@@ -2775,7 +2775,7 @@
     {
       "id": "gamehq.help.gamepad.share_hold_action",
       "source_hash": "b7f393cb8c49a3541a18eeba70f2b3befff58c73dc3ae676e6df043e9292244a",
-      "translation_hash": "3dbf1d603f87697cd4851be3f1d5600f4cc3336fbc025d34efda0acbd5efb555",
+      "translation_hash": "2bc5c2d795a9f1b04d9063192d3a9ae961b3ba783fe217ffbdd37b2f60534c86",
       "locations": [
         "src/ui/qml/HelpView.qml:175"
       ],
@@ -2838,7 +2838,7 @@
     {
       "id": "gamehq.help.gamepad.system_share_tap",
       "source_hash": "4ccfa90e94cb8ad888a3928cf048bc1211a8102931ee0cecb5f926cd0a1340dc",
-      "translation_hash": "32101edb0c3263fcf5514e0c06d8636e07471794a280324c6f6712709d44e541",
+      "translation_hash": "c024af854a21ef1da6cb49998bea14996f89696871ea114813ccd6dbd9e0b4a7",
       "locations": [
         "src/ui/qml/HelpView.qml:167"
       ],
@@ -2958,7 +2958,7 @@
     {
       "id": "gamehq.input.assignment.capture_active",
       "source_hash": "774f30e4dc0f8e7821fd47f3cdb7253121cc57ddaf20eb1945fea7738f92f40e",
-      "translation_hash": "0dc087d6eda943cd7c433d69c06fff30d43cd9957fc688ca5d9303c7d9a7ef61",
+      "translation_hash": "acc3e2e5c5a1c2fbd28393ff63aec54f9dc2847964312a59eb3e1f54f96fdfb0",
       "locations": [
         "src/ui/qml/components/BindingAssignmentDialog.qml:228"
       ],
@@ -3362,7 +3362,7 @@
     {
       "id": "gamehq.input.gesture.tap",
       "source_hash": "48a60d2e2197297571d0d2a8a0d04bc20f162a5aaf243bfeb068b740a107df96",
-      "translation_hash": "0627e0e2edb111d803143874e0fe66818cf1e8c961781afee550e86b103a889c",
+      "translation_hash": "59b114aa1234ff82bc447a6dbd213681a590e1aef4a299e315d14456e25a77c3",
       "locations": [
         "src/input/BindingPattern.cpp:117",
         "src/ui/qml/components/BindingAssignmentDialog.qml:472"
@@ -5514,7 +5514,7 @@
     {
       "id": "gamehq.settings.input.gestures.hold_time_description",
       "source_hash": "7ebeddd897b70a37d07c2965a9cd8dbdcc6b74947a7470a38ef4df7bcbec4b4f",
-      "translation_hash": "9be08e516d25f8ef1bced1a1350851cc444051a5b150e3ddb9144d0fef497b67",
+      "translation_hash": "da96fda0669316aba8653a755efe2c29dc2d9dc26b3284d6270509573a14b2b3",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:263"
       ],
@@ -5532,7 +5532,7 @@
     {
       "id": "gamehq.settings.input.gestures.multi_tap_description",
       "source_hash": "6a1e6379220934e3badf9a27c6eedf4b7d0cff3c3b60201349e2c7fcabfc9470",
-      "translation_hash": "261ed1f697d94e8c4cdfafd55f89ac9d7fc2469ad6fa6781d280c39de44e6c4b",
+      "translation_hash": "501921c553eb76542d4329f019228fcd9b31feeacfaa25441f281b01bc3697ec",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:282"
       ],
@@ -7650,11 +7650,11 @@
         "一个控制器友好的屏幕截图,重播和媒体画廊为PC游戏."
       ],
       "after": [
-        "面向 PC 游戏的手柄友好截图、回放与媒体库。"
+        "面向 PC 游戏、支持手柄操作的截图、回放和媒体图库。"
       ],
-      "category": "ui_role_and_convention",
-      "reason": "About-dialog text was literal or mistranslated the action it offers.",
-      "terminology_decision": "GameHQ and GitHub preserved; headings shortened to Chinese UI convention."
+      "category": "library_terminology",
+      "reason": "The About description called a screenshot controller-friendly instead of saying the product supports controller operation, and it rendered media gallery as the Library term used by the Settings category.",
+      "terminology_decision": "gallery=图库, media gallery=媒体图库, library=媒体库 kept distinct."
     },
     {
       "id": "gamehq.about.product_updated",
@@ -7832,11 +7832,11 @@
         "转换至最喜欢"
       ],
       "after": [
-        "切换收藏"
+        "收藏 / 取消收藏"
       ],
       "category": "ui_role_and_convention",
-      "reason": "Action labels and descriptions were mistranslated or read as conversational sentences.",
-      "terminology_decision": "Used concise imperative control labels and fixed gallery and overlay scope wording."
+      "reason": "切换收藏 read as switching a favorites view beside surface toggles such as 切换侧边栏; the action marks or unmarks the selected capture.",
+      "terminology_decision": "Explicit 收藏 / 取消收藏 matches the help label and 播放 / 暂停 spacing."
     },
     {
       "id": "gamehq.action.desktop.menu.description",
@@ -8235,11 +8235,11 @@
         "转换至最喜欢"
       ],
       "after": [
-        "切换收藏"
+        "收藏 / 取消收藏"
       ],
       "category": "ui_role_and_convention",
-      "reason": "Action labels and descriptions were mistranslated or read as conversational sentences.",
-      "terminology_decision": "Used concise imperative control labels and fixed gallery and overlay scope wording."
+      "reason": "切换收藏 read as switching a favorites view beside surface toggles such as 切换侧边栏; the action marks or unmarks the selected capture.",
+      "terminology_decision": "Explicit 收藏 / 取消收藏 matches the help label and 播放 / 暂停 spacing."
     },
     {
       "id": "gamehq.action.overlay.game_next.description",
@@ -10744,11 +10744,11 @@
         "保存重播片段; 保持消耗的点击"
       ],
       "after": [
-        "保存回放片段；长按会占用该次轻触"
+        "保存回放片段；长按会占用该次单击"
       ],
-      "category": "help_text_completeness",
-      "reason": "Help text was truncated, repeated, or lost the described behavior.",
-      "terminology_decision": "Restored complete sentences and kept protected button and shortcut names untranslated."
+      "category": "input_assignment_terminology",
+      "reason": "Referred to the tap gesture by the superseded 轻触 name.",
+      "terminology_decision": "tap=单击, double tap=双击, triple tap=三击, hold=长按, press=按下."
     },
     {
       "id": "gamehq.help.gamepad.share_multi_tap",
@@ -10835,11 +10835,11 @@
         "系统共享 (点击)"
       ],
       "after": [
-        "系统 Share 键（轻触）"
+        "系统 Share 键（单击）"
       ],
-      "category": "help_text_completeness",
-      "reason": "Help text was truncated, repeated, or lost the described behavior.",
-      "terminology_decision": "Restored complete sentences and kept protected button and shortcut names untranslated."
+      "category": "input_assignment_terminology",
+      "reason": "Referred to the tap gesture by the superseded 轻触 name.",
+      "terminology_decision": "tap=单击, double tap=双击, triple tap=三击, hold=长按, press=按下."
     },
     {
       "id": "gamehq.help.gamepad.triangle",
@@ -10978,11 +10978,11 @@
         "控制器捕获活动 · 对话导航暂停"
       ],
       "after": [
-        "手柄捕获进行中 · 对话框导航已暂停"
+        "正在捕获手柄输入 · 对话框导航已暂停"
       ],
       "category": "input_assignment_terminology",
-      "reason": "Input assignment, gesture and binding vocabulary was literal or semantically collapsed.",
-      "terminology_decision": "Fixed terminology: binding=绑定, assignment=分配, slot=槽位, gesture=手势, hold=长按, tap=轻触, controller=手柄."
+      "reason": "Capture in the binding dialog read as capturing from the controller rather than capturing controller input, colliding with screenshot and replay capture.",
+      "terminology_decision": "In binding contexts capture=捕获输入; media capture stays 捕获内容."
     },
     {
       "id": "gamehq.input.assignment.combination_gesture",
@@ -11277,11 +11277,11 @@
         "触摸"
       ],
       "after": [
-        "轻触"
+        "单击"
       ],
       "category": "input_assignment_terminology",
-      "reason": "Input assignment, gesture and binding vocabulary was literal or semantically collapsed.",
-      "terminology_decision": "Fixed terminology: binding=绑定, assignment=分配, slot=槽位, gesture=手势, hold=长按, tap=轻触, controller=手柄."
+      "reason": "The Tap gesture was named 轻触 while its siblings are 双击 and 三击 and the compatibility dialog quotes the gesture as 单击.",
+      "terminology_decision": "tap=单击, double tap=双击, triple tap=三击, hold=长按, press=按下."
     },
     {
       "id": "gamehq.input.gesture.triple_tap",
@@ -13266,11 +13266,11 @@
         "按必须按住多少时间才能进行保持操作.完成的保持消耗了点击."
       ],
       "after": [
-        "触发长按操作需要按住按键多长时间。完成的长按会占用该次轻触。"
+        "触发长按操作需要按住按键多长时间。完成的长按会占用该次单击。"
       ],
       "category": "input_assignment_terminology",
-      "reason": "Input settings wording used data-entry or unrelated senses instead of control-assignment senses.",
-      "terminology_decision": "Fixed terminology: controller=手柄, bindings=绑定, profile=配置; GameInput, Share and View preserved."
+      "reason": "Referred to the tap gesture by the superseded 轻触 name.",
+      "terminology_decision": "tap=单击, double tap=双击, triple tap=三击, hold=长按, press=按下."
     },
     {
       "id": "gamehq.settings.input.gestures.multi_tap",
@@ -13292,11 +13292,11 @@
         "当同一按同时有双或三次点击时,单击按需要等待多长时间."
       ],
       "after": [
-        "当同一按键还设置了双击或三击时，单次轻触需要等待多长时间。"
+        "当同一按键还设置了双击或三击时，单击需要等待多长时间。"
       ],
       "category": "input_assignment_terminology",
-      "reason": "Input settings wording used data-entry or unrelated senses instead of control-assignment senses.",
-      "terminology_decision": "Fixed terminology: controller=手柄, bindings=绑定, profile=配置; GameInput, Share and View preserved."
+      "reason": "Referred to the tap gesture by the superseded 轻触 name.",
+      "terminology_decision": "tap=单击, double tap=双击, triple tap=三击, hold=长按, press=按下."
     },
     {
       "id": "gamehq.settings.input.gestures.title",
@@ -15253,7 +15253,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_zh_Hans.ts",
-      "sha256": "2d61740115fed902a767b639f49466eb7a4a3e315a3a23db7b2057c2faf5f3fa",
+      "sha256": "5e460072ab52f9ae7048c68f3ef21b116054b2b941b3ff15e939af808701d55d",
       "reviewed_units": 831
     },
     {
@@ -15284,7 +15284,10 @@
     "controller is 手柄 throughout the product, matching Mainland gaming convention rather than 控制器.",
     "Update security vocabulary is fixed: manifest is 清单, checksum is 校验和, signature is 签名, staging is 暂存, transaction is 事务, trust state is 信任状态.",
     "portable is 便携, staged is 暂存, journal is 日志, schema is 架构, folder is 文件夹, and the portable scheme prefix stays literal.",
-    "DualSense face buttons are 叉键, 圆圈键, 方块键 and 三角键; Share, View, Guide and PS stay untranslated."
+    "DualSense face buttons are 叉键, 圆圈键, 方块键 and 三角键; Share, View, Guide and PS stay untranslated.",
+    "gallery=图库 and media gallery=媒体图库 stay distinct from the Library category, which is 媒体库.",
+    "In binding and input-assignment contexts capture means capturing controller input (捕获手柄输入); screenshot, replay and media capture stay 捕获 / 捕获内容.",
+    "Gesture names: press=按下, tap=单击, double tap=双击, triple tap=三击, hold=长按."
   ],
   "calibration_rules": [
     "Review every stable ID with its English source, source location, control role and neighboring UI; schema validity is not linguistic evidence.",

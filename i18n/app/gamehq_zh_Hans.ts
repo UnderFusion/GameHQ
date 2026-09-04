@@ -41,7 +41,7 @@
     <message id="gamehq.about.product_description">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="629"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
-      <translation>面向 PC 游戏的手柄友好截图、回放与媒体库。</translation>
+      <translation>面向 PC 游戏、支持手柄操作的截图、回放和媒体图库。</translation>
     </message>
     <message id="gamehq.about.product_updated">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="484"></location>
@@ -160,7 +160,7 @@
     <message id="gamehq.action.desktop.favorite.label">
       <location filename="src/input/ActionCatalog.cpp" line="234"></location>
       <source>Toggle Favorite</source>
-      <translation>切换收藏</translation>
+      <translation>收藏 / 取消收藏</translation>
     </message>
     <message id="gamehq.action.desktop.menu.description">
       <location filename="src/input/ActionCatalog.cpp" line="244"></location>
@@ -365,7 +365,7 @@
     <message id="gamehq.action.overlay.favorite.label">
       <location filename="src/input/ActionCatalog.cpp" line="156"></location>
       <source>Toggle Favorite</source>
-      <translation>切换收藏</translation>
+      <translation>收藏 / 取消收藏</translation>
     </message>
     <message id="gamehq.action.overlay.game_next.description">
       <location filename="src/input/ActionCatalog.cpp" line="187"></location>
@@ -1570,7 +1570,7 @@ This cannot be undone.</source>
     <message id="gamehq.help.gamepad.share_hold_action">
       <location filename="src/ui/qml/HelpView.qml" line="175"></location>
       <source>Save replay clip; hold consumes the tap</source>
-      <translation>保存回放片段；长按会占用该次轻触</translation>
+      <translation>保存回放片段；长按会占用该次单击</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap">
       <location filename="src/ui/qml/HelpView.qml" line="179"></location>
@@ -1605,7 +1605,7 @@ This cannot be undone.</source>
     <message id="gamehq.help.gamepad.system_share_tap">
       <location filename="src/ui/qml/HelpView.qml" line="167"></location>
       <source>System Share (tap)</source>
-      <translation>系统 Share 键（轻触）</translation>
+      <translation>系统 Share 键（单击）</translation>
     </message>
     <message id="gamehq.help.gamepad.triangle">
       <location filename="src/ui/qml/HelpView.qml" line="226"></location>
@@ -1673,7 +1673,7 @@ This cannot be undone.</source>
     <message id="gamehq.input.assignment.capture_active">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="228"></location>
       <source>Controller capture active · Dialog navigation is paused</source>
-      <translation>手柄捕获进行中 · 对话框导航已暂停</translation>
+      <translation>正在捕获手柄输入 · 对话框导航已暂停</translation>
     </message>
     <message id="gamehq.input.assignment.combination_gesture">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="506"></location>
@@ -1918,7 +1918,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/input/BindingPattern.cpp" line="117"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="472"></location>
       <source>Tap</source>
-      <translation>轻触</translation>
+      <translation>单击</translation>
     </message>
     <message id="gamehq.input.gesture.triple_tap">
       <location filename="src/input/BindingPattern.cpp" line="112"></location>
@@ -3125,7 +3125,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.gestures.hold_time_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="263"></location>
       <source>How long a button must be held for a hold action. A completed hold consumes the tap.</source>
-      <translation>触发长按操作需要按住按键多长时间。完成的长按会占用该次轻触。</translation>
+      <translation>触发长按操作需要按住按键多长时间。完成的长按会占用该次单击。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="280"></location>
@@ -3135,7 +3135,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.gestures.multi_tap_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="282"></location>
       <source>How long a single tap waits when the same button also has a double or triple tap.</source>
-      <translation>当同一按键还设置了双击或三击时，单次轻触需要等待多长时间。</translation>
+      <translation>当同一按键还设置了双击或三击时，单击需要等待多长时间。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="256"></location>

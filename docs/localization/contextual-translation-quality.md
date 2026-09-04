@@ -48,12 +48,15 @@ valid but not usable prose, so the review fixed terminology as well as phrasing.
 The binding decisions are:
 
 - `replay` is `回放`, never `重播`; `buffer` is `缓冲区`, `clip` is `片段`, `recording` is `录制`.
-- `overlay` is `叠加层`, `gallery` is `图库`, the media `library` is `媒体库`, `sidebar` is
-  `侧边栏`, and `tray` is `托盘`.
-- A saved screenshot or video item is `捕获内容`; the act of capturing is `捕获`. Binding
-  detection never reuses the media term.
-- `binding` is `绑定`, `assignment` is `分配`, `slot` is `槽位`, `gesture` is `手势`,
-  `hold` is `长按`, `tap` is `轻触`, and `combination` is `组合`.
+- `overlay` is `叠加层`, `gallery` is `图库` and a `media gallery` is `媒体图库`, while the
+  Settings `library` category is `媒体库`; `sidebar` is `侧边栏` and `tray` is `托盘`. The
+  gallery and library terms are never interchanged.
+- A saved screenshot or video item is `捕获内容`; the act of capturing is `捕获`. In binding
+  and input-assignment surfaces capture is always `捕获手柄输入`, so it cannot be read as
+  capturing media from the controller.
+- `binding` is `绑定`, `assignment` is `分配`, `slot` is `槽位`, `gesture` is `手势`, and
+  `combination` is `组合`. Gesture names form one series: `press` is `按下`, `tap` is `单击`,
+  `double tap` is `双击`, `triple tap` is `三击`, and `hold` is `长按`.
 - `controller` is `手柄` throughout the product, matching Mainland gaming convention rather
   than the literal `控制器`.
 - Update security vocabulary is fixed: `manifest` is `清单`, `checksum` is `校验和`,
@@ -66,6 +69,15 @@ The binding decisions are:
 
 Sentences use full-width Chinese punctuation; placeholders, key names, hint separators, and
 the `portable:/` scheme keep their exact source form.
+
+A targeted recovery pass after the first review corrected nine further units. The About
+description said a screenshot was controller-friendly instead of stating that the product
+supports controller operation, and it collapsed `media gallery` into the Library term. The
+binding dialog's capture notice did not say what was being captured. Both `Toggle Favorite`
+labels read as switching a favorites view beside surface toggles such as `切换侧边栏`, so
+they now use the explicit `收藏 / 取消收藏` action. The `Tap` gesture was named `轻触` while
+its siblings were `双击` and `三击` and the compatibility dialog quoted `单击`, so the whole
+series was unified on `单击`.
 
 ## Russian calibration decisions
 
