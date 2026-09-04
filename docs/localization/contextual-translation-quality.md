@@ -187,6 +187,10 @@ The binding decisions are:
   database foreign keys are `외래 키`.
 - Portable import uses `포터블`, `준비된`, `저널`, `문자열`, `루트`, `원본`, and
   `인스턴스`; the `portable:/` scheme remains literal.
+- Korean particles attach directly to protected Latin-script names (`GameHQ가`, `GameHQ에서`),
+  while independent nouns and version tokens remain separated.
+- Internal staging `publish` operations use finalization or application terminology, never the
+  public-posting sense `게시`.
 
 Controls use concise action forms, while explanatory prose uses consistent polite Korean.
 Protected identifiers, shortcut keys, button names, paths, placeholders, and versions remain

@@ -6,7 +6,7 @@
     <message id="gamehq.about.enjoying_gamehq">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="817"></location>
       <source>Enjoying GameHQ?</source>
-      <translation>GameHQ 가 마음에 드시나요?</translation>
+      <translation>GameHQ가 마음에 드시나요?</translation>
     </message>
     <message id="gamehq.about.full_release_notes">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="684"></location>
@@ -650,12 +650,12 @@
     <message id="gamehq.error.capture_location.restore_default_failed">
       <location filename="src/config/CaptureLocations.cpp" line="202"></location>
       <source>GameHQ could not restore the default folder.</source>
-      <translation>GameHQ 에서 기본 폴더를 복원할 수 없습니다.</translation>
+      <translation>GameHQ에서 기본 폴더를 복원할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.capture_location.save_failed">
       <location filename="src/config/CaptureLocations.cpp" line="175"></location>
       <source>GameHQ could not save the selected folder.</source>
-      <translation>GameHQ 에서 선택한 폴더를 저장할 수 없습니다.</translation>
+      <translation>GameHQ에서 선택한 폴더를 저장할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
       <location filename="src/ui/AppController.cpp" line="347"></location>
@@ -845,7 +845,7 @@
       <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <oldsource>Select a local GameHQ portable folder.</oldsource>
-      <translation>포터블 GameHQ 가 포함된 로컬 폴더를 선택하세요.</translation>
+      <translation>포터블 GameHQ가 포함된 로컬 폴더를 선택하세요.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
       <location filename="src/ui/AppController.cpp" line="209"></location>
@@ -880,22 +880,22 @@
     <message id="gamehq.error.portable_import.process_identity_failed">
       <location filename="src/ui/AppController.cpp" line="220"></location>
       <source>GameHQ could not identify its own process for the import.</source>
-      <translation>GameHQ 에서 가져오기에 사용할 자체 프로세스를 식별할 수 없습니다.</translation>
+      <translation>GameHQ에서 가져오기에 사용할 자체 프로세스를 식별할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
       <location filename="src/ui/AppController.cpp" line="230"></location>
       <source>GameHQ could not start the portable import process.</source>
-      <translation>GameHQ 에서 포터블 가져오기 프로세스를 시작할 수 없습니다.</translation>
+      <translation>GameHQ에서 포터블 가져오기 프로세스를 시작할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.portable_import.publish_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="1062"></location>
       <source>The staged profile cannot be published.</source>
-      <translation>준비된 프로필을 게시할 수 없습니다.</translation>
+      <translation>준비된 프로필을 최종 위치에 반영할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.portable_import.published_destination_missing">
       <location filename="src/config/PortableProfileImporter.cpp" line="279"></location>
       <source>The published portable-import destination is missing.</source>
-      <translation>게시된 포터블 가져오기 대상이 없습니다.</translation>
+      <translation>최종 위치에 반영된 포터블 가져오기 대상이 없습니다.</translation>
     </message>
     <message id="gamehq.error.portable_import.recovery_remove_directory_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="203"></location>
@@ -971,17 +971,17 @@
     <message id="gamehq.error.update.check_rate_limited">
       <location filename="src/updates/UpdateService.cpp" line="122"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
-      <translation>GitHub에서 업데이트 확인을 일시적으로 제한했습니다. GameHQ 가 나중에 다시 시도합니다.</translation>
+      <translation>GitHub에서 업데이트 확인을 일시적으로 제한했습니다. GameHQ가 나중에 다시 시도합니다.</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
       <location filename="src/updates/UpdateService.cpp" line="116"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
-      <translation>GitHub에서 업데이트 확인을 일시적으로 제한했습니다. GameHQ 가 %1 이후에 다시 시도합니다.</translation>
+      <translation>GitHub에서 업데이트 확인을 일시적으로 제한했습니다. GameHQ가 %1 이후에 다시 시도합니다.</translation>
     </message>
     <message id="gamehq.error.update.download.checksum_calculation_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="523"></location>
       <source>GameHQ could not calculate the update checksum.</source>
-      <translation>GameHQ 에서 업데이트 체크섬을 계산할 수 없습니다.</translation>
+      <translation>GameHQ에서 업데이트 체크섬을 계산할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.download.checksum_entry_count">
       <location filename="src/updates/UpdateDownloader.cpp" line="477"></location>
@@ -1006,7 +1006,7 @@
     <message id="gamehq.error.update.download.flush_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="212"></location>
       <source>GameHQ could not flush the update download to disk.</source>
-      <translation>GameHQ 에서 업데이트 다운로드를 디스크에 완전히 기록할 수 없습니다.</translation>
+      <translation>GameHQ에서 업데이트 다운로드를 디스크에 완전히 기록할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.download.http_status">
       <location filename="src/updates/UpdateDownloader.cpp" line="257"></location>
@@ -1036,7 +1036,7 @@
     <message id="gamehq.error.update.download.manifest_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="346"></location>
       <source>GameHQ could not read the downloaded release manifest.</source>
-      <translation>GameHQ 에서 다운로드한 릴리스 매니페스트를 읽을 수 없습니다.</translation>
+      <translation>GameHQ에서 다운로드한 릴리스 매니페스트를 읽을 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.download.manifest_version_mismatch">
       <location filename="src/updates/UpdateDownloader.cpp" line="396"></location>
@@ -1067,7 +1067,7 @@
     <message id="gamehq.error.update.download.package_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="514"></location>
       <source>GameHQ could not read the downloaded update package.</source>
-      <translation>GameHQ 에서 다운로드한 업데이트 패키지를 읽을 수 없습니다.</translation>
+      <translation>GameHQ에서 다운로드한 업데이트 패키지를 읽을 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.download.package_size_invalid">
       <location filename="src/updates/UpdateDownloader.cpp" line="96"></location>
@@ -1077,12 +1077,12 @@
     <message id="gamehq.error.update.download.partial_create_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="150"></location>
       <source>GameHQ could not create the partial update file.</source>
-      <translation>GameHQ 에서 부분 업데이트 파일을 만들 수 없습니다.</translation>
+      <translation>GameHQ에서 부분 업데이트 파일을 만들 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.download.publish_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="222"></location>
       <source>GameHQ could not publish the completed update download.</source>
-      <translation>GameHQ 에서 완료된 업데이트 다운로드를 게시할 수 없습니다.</translation>
+      <translation>GameHQ에서 완료된 업데이트 다운로드를 최종 위치에 저장할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.download.release_size_mismatch">
       <location filename="src/updates/UpdateDownloader.cpp" line="265"></location>
@@ -1102,7 +1102,7 @@
     <message id="gamehq.error.update.download.signature_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="357"></location>
       <source>GameHQ could not read the downloaded release signature.</source>
-      <translation>GameHQ 에서 다운로드한 릴리스 서명을 읽을 수 없습니다.</translation>
+      <translation>GameHQ에서 다운로드한 릴리스 서명을 읽을 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.download.signature_untrusted">
       <location filename="src/updates/UpdateDownloader.cpp" line="387"></location>
@@ -1128,27 +1128,27 @@
     <message id="gamehq.error.update.download.staging_create_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="104"></location>
       <source>GameHQ could not create the update staging directory.</source>
-      <translation>GameHQ 에서 업데이트 준비 디렉터리를 만들 수 없습니다.</translation>
+      <translation>GameHQ에서 업데이트 준비 디렉터리를 만들 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.download.trust_state_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="375"></location>
       <source>GameHQ could not read its release trust state: %1</source>
-      <translation>GameHQ 에서 릴리스 신뢰 상태를 읽을 수 없습니다: %1</translation>
+      <translation>GameHQ에서 릴리스 신뢰 상태를 읽을 수 없습니다: %1</translation>
     </message>
     <message id="gamehq.error.update.download.trust_state_write_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="434"></location>
       <source>GameHQ could not record the release trust state: %1</source>
-      <translation>GameHQ 에서 릴리스 신뢰 상태를 기록할 수 없습니다: %1</translation>
+      <translation>GameHQ에서 릴리스 신뢰 상태를 기록할 수 없습니다: %1</translation>
     </message>
     <message id="gamehq.error.update.download.write_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="198"></location>
       <source>GameHQ could not write the update download to disk.</source>
-      <translation>GameHQ 에서 업데이트 다운로드를 디스크에 쓸 수 없습니다.</translation>
+      <translation>GameHQ에서 업데이트 다운로드를 디스크에 쓸 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.install.handshake_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="183"></location>
       <source>GameHQ could not prepare the updater handshake.</source>
-      <translation>GameHQ 에서 업데이터 핸드셰이크를 준비할 수 없습니다.</translation>
+      <translation>GameHQ에서 업데이터 핸드셰이크를 준비할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_missing">
       <location filename="src/updates/UpdateInstaller.cpp" line="169"></location>
@@ -1164,7 +1164,7 @@
     <message id="gamehq.error.update.install.helper_start_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="195"></location>
       <source>GameHQ could not start the updater helper.</source>
-      <translation>GameHQ 에서 업데이터 도우미를 시작할 수 없습니다.</translation>
+      <translation>GameHQ에서 업데이터 도우미를 시작할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_timeout">
       <location filename="src/updates/UpdateInstaller.cpp" line="217"></location>
@@ -1200,22 +1200,22 @@
       <location filename="src/updates/UpdateInstaller.cpp" line="106"></location>
       <location filename="src/updates/UpdateInstaller.cpp" line="115"></location>
       <source>GameHQ could not identify its own process for the update.</source>
-      <translation>GameHQ 에서 업데이트에 사용할 자체 프로세스를 식별할 수 없습니다.</translation>
+      <translation>GameHQ에서 업데이트에 사용할 자체 프로세스를 식별할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.install.transaction_directory_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="91"></location>
       <source>GameHQ could not create the update transaction directory.</source>
-      <translation>GameHQ 에서 업데이트 트랜잭션 디렉터리를 만들 수 없습니다.</translation>
+      <translation>GameHQ에서 업데이트 트랜잭션 디렉터리를 만들 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.install.transaction_publish_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="153"></location>
       <source>GameHQ could not publish the update transaction.</source>
-      <translation>GameHQ 에서 업데이트 트랜잭션을 게시할 수 없습니다.</translation>
+      <translation>GameHQ에서 업데이트 트랜잭션을 최종 상태로 반영할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
       <location filename="src/app/App.cpp" line="421"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
-      <translation>GameHQ 에서 업데이트 유지 관리 작업을 시작할 수 없습니다: %1</translation>
+      <translation>GameHQ에서 업데이트 유지 관리 작업을 시작할 수 없습니다: %1</translation>
     </message>
     <message id="gamehq.error.update.preflight.disk_space_insufficient">
       <location filename="src/updates/UpdatePreflight.cpp" line="119"></location>
@@ -1250,17 +1250,17 @@
     <message id="gamehq.error.update.preflight.staging_create_failed">
       <location filename="src/updates/UpdatePreflight.cpp" line="77"></location>
       <source>GameHQ cannot create its update staging directory here.</source>
-      <translation>GameHQ 에서 이 위치에 업데이트 준비 디렉터리를 만들 수 없습니다.</translation>
+      <translation>GameHQ에서 이 위치에 업데이트 준비 디렉터리를 만들 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.preflight.volume_not_writable">
       <location filename="src/updates/UpdatePreflight.cpp" line="60"></location>
       <source>The GameHQ installation is not on a writable local volume.</source>
-      <translation>GameHQ 가 쓰기 가능한 로컬 볼륨에 설치되어 있지 않습니다.</translation>
+      <translation>GameHQ가 쓰기 가능한 로컬 볼륨에 설치되어 있지 않습니다.</translation>
     </message>
     <message id="gamehq.error.update.preflight.write_failed">
       <location filename="src/updates/UpdatePreflight.cpp" line="88"></location>
       <source>GameHQ cannot safely write update files in this installation.</source>
-      <translation>GameHQ 에서 이 설치 위치에 업데이트 파일을 안전하게 쓸 수 없습니다.</translation>
+      <translation>GameHQ에서 이 설치 위치에 업데이트 파일을 안전하게 쓸 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
       <location filename="src/updates/UpdateService.cpp" line="224"></location>
@@ -1861,7 +1861,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 %2 will then activate after the button is released.</source>
       <translation>%1을(를) 누르면 현재 %2 동작이 즉시 실행됩니다.
 
-%1을(를) %3에도 사용하려면 GameHQ 에서 %2의 누르기를 짧게 누르기로 변경해야 합니다.
+%1을(를) %3에도 사용하려면 GameHQ에서 %2의 누르기를 짧게 누르기로 변경해야 합니다.
 
 그러면 버튼을 놓은 뒤 %2 동작이 실행됩니다.</translation>
     </message>
@@ -1874,7 +1874,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 %2 will then activate after the button is released and may wait up to %4 ms to rule out the %3 action.</source>
       <translation>%1을(를) 누르면 현재 %2 동작이 즉시 실행됩니다.
 
-%1을(를) %3에도 사용하려면 GameHQ 에서 %2의 누르기를 짧게 누르기로 변경해야 합니다.
+%1을(를) %3에도 사용하려면 GameHQ에서 %2의 누르기를 짧게 누르기로 변경해야 합니다.
 
 그러면 버튼을 놓은 뒤 %2 동작이 실행되며, %3 동작이 아닌지 확인하기 위해 최대 %4ms 동안 대기할 수 있습니다.</translation>
     </message>
@@ -2132,7 +2132,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.notification.settings_quarantined.body">
       <location filename="src/app/App.cpp" line="329"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
-      <translation>GameHQ 가 기본 설정으로 시작되었습니다. 이전 설정 파일은 그대로 보관되어 손실된 항목이 없습니다.</translation>
+      <translation>GameHQ가 기본 설정으로 시작되었습니다. 이전 설정 파일은 그대로 보관되어 손실된 항목이 없습니다.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
       <location filename="src/app/App.cpp" line="324"></location>
@@ -2398,7 +2398,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.overview.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="37"></location>
       <source>A concise view of the environment GameHQ is currently using.</source>
-      <translation>GameHQ 에서 현재 사용하는 환경을 간략하게 보여 줍니다.</translation>
+      <translation>GameHQ에서 현재 사용하는 환경을 간략하게 보여 줍니다.</translation>
     </message>
     <message id="gamehq.settings.advanced.overview.eyebrow">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="33"></location>
@@ -2554,7 +2554,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.capture.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="12"></location>
       <source>Choose when, how, and where GameHQ saves screenshots.</source>
-      <translation>GameHQ 에서 스크린샷을 저장할 시점, 방식 및 위치를 선택합니다.</translation>
+      <translation>GameHQ에서 스크린샷을 저장할 시점, 방식 및 위치를 선택합니다.</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="95"></location>
@@ -2781,7 +2781,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.feedback.audio.replay">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="74"></location>
       <source>Replay saved sound</source>
-      <translation>리플레이 저장 소리</translation>
+      <translation>리플레이 저장 알림음</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.screenshot">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
@@ -2801,7 +2801,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.feedback.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="9"></location>
       <source>Choose how GameHQ confirms captures, clips, and navigation.</source>
-      <translation>GameHQ 에서 캡처, 클립 및 탐색을 확인하는 방식을 선택합니다.</translation>
+      <translation>GameHQ에서 캡처, 클립 및 탐색을 확인하는 방식을 선택합니다.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
@@ -2954,7 +2954,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
       <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
       <oldsource>Choose whether GameHQ follows your Windows sign-in and opens quietly.</oldsource>
-      <translation>Windows 로그인 시 GameHQ 를 시작하고 기본 창을 열지 않은 채 알림 영역에서 실행할지 선택합니다.</translation>
+      <translation>Windows 로그인 시 GameHQ를 시작하고 기본 창을 열지 않은 채 알림 영역에서 실행할지 선택합니다.</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="94"></location>
@@ -3116,7 +3116,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.gestures.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="258"></location>
       <source>How long GameHQ waits before it decides what a button press meant.</source>
-      <translation>GameHQ 가 버튼 입력의 의미를 판단하기 전에 기다리는 시간을 설정합니다.</translation>
+      <translation>GameHQ가 버튼 입력의 의미를 판단하기 전에 기다리는 시간을 설정합니다.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="254"></location>
@@ -3399,7 +3399,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.test.probe_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="241"></location>
       <source>Records the next 3 seconds of raw button changes — including buttons GameHQ does not recognize — into the diagnostics you can copy from Advanced.</source>
-      <translation>다음 3초 동안 GameHQ 가 인식하지 못하는 버튼을 포함한 미가공 버튼 상태 변화를 기록하여 고급 페이지에서 복사할 수 있는 진단 정보에 추가합니다.</translation>
+      <translation>다음 3초 동안 GameHQ가 인식하지 못하는 버튼을 포함한 미가공 버튼 상태 변화를 기록하여 고급 페이지에서 복사할 수 있는 진단 정보에 추가합니다.</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_displayed">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="206"></location>
@@ -3429,7 +3429,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.language.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="17"></location>
       <source>Choose the language GameHQ uses.</source>
-      <translation>GameHQ 에서 사용할 언어를 선택합니다.</translation>
+      <translation>GameHQ에서 사용할 언어를 선택합니다.</translation>
     </message>
     <message id="gamehq.settings.language.eyebrow">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="13"></location>
@@ -3459,7 +3459,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.library.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="11"></location>
       <source>Review every folder GameHQ manages or scans for media.</source>
-      <translation>GameHQ 가 관리하거나 미디어를 검색하는 모든 폴더를 검토합니다.</translation>
+      <translation>GameHQ가 관리하거나 미디어를 검색하는 모든 폴더를 검토합니다.</translation>
     </message>
     <message id="gamehq.settings.library.imports.add">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="85"></location>
@@ -3586,7 +3586,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
       <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
       <oldsource>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</oldsource>
-      <translation>설치된 프로필이 비어 있을 때만 가져올 수 있습니다. 포터블 캡처는 원래 위치에 유지되고 원본은 변경되지 않으며, 가져오기를 완료하기 위해 GameHQ 가 다시 시작됩니다.</translation>
+      <translation>설치된 프로필이 비어 있을 때만 가져올 수 있습니다. 포터블 캡처는 원래 위치에 유지되고 원본은 변경되지 않으며, 가져오기를 완료하기 위해 GameHQ가 다시 시작됩니다.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
       <location filename="src/ui/qml/SettingsView.qml" line="469"></location>
@@ -3887,7 +3887,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.startup.portable_import.installed_copy_required">
       <location filename="src/main.cpp" line="205"></location>
       <source>Run portable import from an installed copy of GameHQ.</source>
-      <translation>설치된 GameHQ 에서 포터블 가져오기를 실행하세요.</translation>
+      <translation>설치된 GameHQ에서 포터블 가져오기를 실행하세요.</translation>
     </message>
     <message id="gamehq.startup.portable_import.instance_running">
       <location filename="src/main.cpp" line="217"></location>
@@ -3948,7 +3948,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.applying_and_restarting">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="184"></location>
       <source>GameHQ is applying the update and will restart.</source>
-      <translation>GameHQ 가 업데이트를 적용한 뒤 다시 시작합니다.</translation>
+      <translation>GameHQ가 업데이트를 적용한 뒤 다시 시작합니다.</translation>
     </message>
     <message id="gamehq.update.available_version_short">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="126"></location>
@@ -3998,7 +3998,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.banner.restart_when_finished">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="86"></location>
       <source>GameHQ will restart when installation finishes.</source>
-      <translation>설치가 완료되면 GameHQ 가 다시 시작됩니다.</translation>
+      <translation>설치가 완료되면 GameHQ가 다시 시작됩니다.</translation>
     </message>
     <message id="gamehq.update.banner.waiting_for_capture">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="83"></location>
@@ -4035,7 +4035,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.check_automatically.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="117"></location>
       <source>At most once every 24 hours, in the background.</source>
-      <translation>백그라운드에서 최대 24시간마다 한 번 확인합니다.</translation>
+      <translation>백그라운드에서 24시간에 최대 한 번 확인합니다.</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="115"></location>
@@ -4101,7 +4101,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.github_check_description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="111"></location>
       <source>GameHQ can check GitHub for newer stable releases.</source>
-      <translation>GameHQ 는 GitHub에서 최신 안정 릴리스를 확인할 수 있습니다.</translation>
+      <translation>GameHQ는 GitHub에서 최신 안정 릴리스를 확인할 수 있습니다.</translation>
     </message>
     <message id="gamehq.update.install_and_restart">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="220"></location>
@@ -4206,7 +4206,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.restart_to_apply">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
       <source>GameHQ will restart to apply the update.</source>
-      <translation>업데이트를 적용하기 위해 GameHQ 가 다시 시작됩니다.</translation>
+      <translation>업데이트를 적용하기 위해 GameHQ가 다시 시작됩니다.</translation>
     </message>
     <message id="gamehq.update.retry_download">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="234"></location>

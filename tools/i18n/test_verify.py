@@ -140,6 +140,16 @@ class VerifyTest(unittest.TestCase):
         result = self.run_verify("--update-state", expected=2)
         self.assertIn("protected token differs from English source", result.stderr)
 
+    def test_korean_particle_may_attach_to_protected_product_name(self) -> None:
+        message = {
+            "source": "GameHQ starts.", "placeholders": [],
+            "markup_signature": [], "protected_tokens": ["GameHQ"],
+            "locations": [{"file": "src/ui/qml/Settings.qml", "line": 1}],
+        }
+        verification.validate_translation(
+            "ko-KR/gamehq.fixture.korean_particle", message, "GameHQ가 시작됩니다."
+        )
+
     def test_qml_conjunction_ampersand_is_not_treated_as_a_mnemonic(self) -> None:
         message = {
             "source": "Security & privacy", "placeholders": [],

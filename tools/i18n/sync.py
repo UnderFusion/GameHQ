@@ -158,8 +158,14 @@ def markup_signature(source: str) -> list[str]:
 
 def protected_tokens(source: str) -> list[str]:
     tokens: list[str] = []
+    # Korean grammatical particles attach directly to Latin-script names. Treat
+    # that attachment as a valid right boundary so GameHQ가/GameHQ에서 preserve
+    # the protected product token without forcing incorrect visible spacing.
+    korean_particle = r"(?:에서|으로|은|는|이|가|을|를|에|와|과|로)(?=\s|[.,!?…:;)]|$)"
     for literal in PROTECTED_LITERALS:
-        bounded = re.compile(rf"(?<![\w]){re.escape(literal)}(?![\w])")
+        bounded = re.compile(
+            rf"(?<![\w]){re.escape(literal)}(?:(?![\w])|(?={korean_particle}))"
+        )
         tokens.extend(literal for _ in bounded.finditer(source))
     for pattern in PROTECTED_PATTERNS:
         tokens.extend(match.group(0).rstrip(".,;:!?)") for match in pattern.finditer(source))
