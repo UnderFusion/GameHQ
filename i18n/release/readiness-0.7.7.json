@@ -52,7 +52,7 @@
     },
     {
       "path": "i18n/quality/reviews/ru-RU.json",
-      "sha256": "63ff42553d51b85df38cff8a17c1a75db9688785f4d862f3c53cf3ceb211c14f"
+      "sha256": "5232ac3583d05b4f3cf6b8c6063effcf2eba3d0830c181f72bb800345da39151"
     },
     {
       "path": "i18n/quality/reviews/pl-PL.json",
@@ -265,7 +265,7 @@
     },
     "ru-RU": {
       "catalog": "i18n/app/gamehq_ru_RU.ts",
-      "catalog_sha256": "1ef073631645a93ffc74c4194fa8d5294f2f5342cbae7a1e03db53c547a5f044",
+      "catalog_sha256": "93b4a008f3f995158d3c685274080e0600023cff03a6103be06730e928055bf3",
       "style": {
         "path": "i18n/style/ru-RU.json",
         "sha256": "9f2397dfc4effcd004a28fab6e8857a541d4e9dbb5ee79a89bbe6fe6338f8368"
@@ -311,7 +311,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/ru-RU.json",
-          "sha256": "63ff42553d51b85df38cff8a17c1a75db9688785f4d862f3c53cf3ceb211c14f"
+          "sha256": "5232ac3583d05b4f3cf6b8c6063effcf2eba3d0830c181f72bb800345da39151"
         }
       }
     },

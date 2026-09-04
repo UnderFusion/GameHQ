@@ -160,7 +160,7 @@
     <message id="gamehq.action.desktop.favorite.label">
       <location filename="src/input/ActionCatalog.cpp" line="234"></location>
       <source>Toggle Favorite</source>
-      <translation>Переключить избранное</translation>
+      <translation>Добавить / убрать из избранного</translation>
     </message>
     <message id="gamehq.action.desktop.menu.description">
       <location filename="src/input/ActionCatalog.cpp" line="244"></location>
@@ -180,7 +180,7 @@
     <message id="gamehq.action.desktop.navigate_down.label">
       <location filename="src/input/ActionCatalog.cpp" line="199"></location>
       <source>Navigate Down</source>
-      <translation>Навигация вниз</translation>
+      <translation>Перейти вниз</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_left.description">
       <location filename="src/input/ActionCatalog.cpp" line="209"></location>
@@ -190,7 +190,7 @@
     <message id="gamehq.action.desktop.navigate_left.label">
       <location filename="src/input/ActionCatalog.cpp" line="206"></location>
       <source>Navigate Left</source>
-      <translation>Навигация влево</translation>
+      <translation>Перейти влево</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_right.description">
       <location filename="src/input/ActionCatalog.cpp" line="216"></location>
@@ -200,7 +200,7 @@
     <message id="gamehq.action.desktop.navigate_right.label">
       <location filename="src/input/ActionCatalog.cpp" line="213"></location>
       <source>Navigate Right</source>
-      <translation>Навигация направо</translation>
+      <translation>Перейти вправо</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_up.description">
       <location filename="src/input/ActionCatalog.cpp" line="195"></location>
@@ -210,7 +210,7 @@
     <message id="gamehq.action.desktop.navigate_up.label">
       <location filename="src/input/ActionCatalog.cpp" line="192"></location>
       <source>Navigate Up</source>
-      <translation>Навигация вверх</translation>
+      <translation>Перейти вверх</translation>
     </message>
     <message id="gamehq.action.desktop.scroll_down.description">
       <location filename="src/input/ActionCatalog.cpp" line="293"></location>
@@ -365,7 +365,7 @@
     <message id="gamehq.action.overlay.favorite.label">
       <location filename="src/input/ActionCatalog.cpp" line="156"></location>
       <source>Toggle Favorite</source>
-      <translation>Переключить избранное</translation>
+      <translation>Добавить / убрать из избранного</translation>
     </message>
     <message id="gamehq.action.overlay.game_next.description">
       <location filename="src/input/ActionCatalog.cpp" line="187"></location>
@@ -405,7 +405,7 @@
     <message id="gamehq.action.overlay.navigate_down.label">
       <location filename="src/input/ActionCatalog.cpp" line="121"></location>
       <source>Navigate Down</source>
-      <translation>Навигация вниз</translation>
+      <translation>Перейти вниз</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_left.description">
       <location filename="src/input/ActionCatalog.cpp" line="131"></location>
@@ -415,7 +415,7 @@
     <message id="gamehq.action.overlay.navigate_left.label">
       <location filename="src/input/ActionCatalog.cpp" line="128"></location>
       <source>Navigate Left</source>
-      <translation>Навигация влево</translation>
+      <translation>Перейти влево</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_right.description">
       <location filename="src/input/ActionCatalog.cpp" line="138"></location>
@@ -425,7 +425,7 @@
     <message id="gamehq.action.overlay.navigate_right.label">
       <location filename="src/input/ActionCatalog.cpp" line="135"></location>
       <source>Navigate Right</source>
-      <translation>Навигация направо</translation>
+      <translation>Перейти вправо</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_up.description">
       <location filename="src/input/ActionCatalog.cpp" line="117"></location>
@@ -435,7 +435,7 @@
     <message id="gamehq.action.overlay.navigate_up.label">
       <location filename="src/input/ActionCatalog.cpp" line="114"></location>
       <source>Navigate Up</source>
-      <translation>Навигация вверх</translation>
+      <translation>Перейти вверх</translation>
     </message>
     <message id="gamehq.action.overlay.sidebar_toggle.description">
       <location filename="src/input/ActionCatalog.cpp" line="173"></location>
@@ -1580,7 +1580,7 @@ This cannot be undone.</source>
     <message id="gamehq.help.gamepad.share_hold_action">
       <location filename="src/ui/qml/HelpView.qml" line="175"></location>
       <source>Save replay clip; hold consumes the tap</source>
-      <translation>Сохранить клип повтора; удержание поглощает нажатие</translation>
+      <translation>Сохранить клип повтора; удержание поглощает одиночное нажатие</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap">
       <location filename="src/ui/qml/HelpView.qml" line="179"></location>
@@ -1615,7 +1615,7 @@ This cannot be undone.</source>
     <message id="gamehq.help.gamepad.system_share_tap">
       <location filename="src/ui/qml/HelpView.qml" line="167"></location>
       <source>System Share (tap)</source>
-      <translation>Системная кнопка Share (нажатие)</translation>
+      <translation>Системная кнопка Share (одиночное нажатие)</translation>
     </message>
     <message id="gamehq.help.gamepad.triangle">
       <location filename="src/ui/qml/HelpView.qml" line="226"></location>
@@ -1683,7 +1683,7 @@ This cannot be undone.</source>
     <message id="gamehq.input.assignment.capture_active">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="228"></location>
       <source>Controller capture active · Dialog navigation is paused</source>
-      <translation>Идёт захват с геймпада · Навигация в диалоге приостановлена</translation>
+      <translation>Идёт захват ввода с геймпада · Навигация в диалоге приостановлена</translation>
     </message>
     <message id="gamehq.input.assignment.combination_gesture">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="506"></location>
@@ -1868,7 +1868,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 %2 will then activate after the button is released.</source>
       <translation>Сейчас %1 активирует %2 сразу при нажатии кнопки.
 
-Чтобы использовать %1 также для %3, GameHQ должен изменить жест %2 с «Нажатие» на «Одиночное касание».
+Чтобы использовать %1 также для %3, GameHQ должен изменить жест %2 с «Нажатие» на «Одиночное нажатие».
 
 После этого %2 будет активироваться при отпускании кнопки.</translation>
     </message>
@@ -1881,7 +1881,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 %2 will then activate after the button is released and may wait up to %4 ms to rule out the %3 action.</source>
       <translation>Сейчас %1 активирует %2 сразу при нажатии кнопки.
 
-Чтобы использовать %1 также для %3, GameHQ должен изменить жест %2 с «Нажатие» на «Одиночное касание».
+Чтобы использовать %1 также для %3, GameHQ должен изменить жест %2 с «Нажатие» на «Одиночное нажатие».
 
 После этого %2 будет активироваться при отпускании кнопки и может ждать до %4 мс, чтобы исключить действие %3.</translation>
     </message>
@@ -1909,7 +1909,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/input/BindingPattern.cpp" line="106"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="474"></location>
       <source>Double tap</source>
-      <translation>Двойное касание</translation>
+      <translation>Двойное нажатие</translation>
     </message>
     <message id="gamehq.input.gesture.hold">
       <location filename="src/input/BindingPattern.cpp" line="121"></location>
@@ -1928,13 +1928,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/input/BindingPattern.cpp" line="117"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="472"></location>
       <source>Tap</source>
-      <translation>Касание</translation>
+      <translation>Одиночное нажатие</translation>
     </message>
     <message id="gamehq.input.gesture.triple_tap">
       <location filename="src/input/BindingPattern.cpp" line="112"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="476"></location>
       <source>Triple tap</source>
-      <translation>Тройное касание</translation>
+      <translation>Тройное нажатие</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
       <location filename="src/input/BindingEditorModel.cpp" line="301"></location>
@@ -2025,7 +2025,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.input.relation.higher_tap_delay">
       <location filename="src/input/BindingRelation.cpp" line="233"></location>
       <source>This action waits up to %1 ms because the same button also has an assignment that needs more taps.</source>
-      <translation>Это действие ожидает до %1 мс, поскольку у той же кнопки есть назначение, требующее большего числа касаний.</translation>
+      <translation>Это действие ожидает до %1 мс, поскольку у той же кнопки есть назначение, требующее большего числа нажатий.</translation>
     </message>
     <message id="gamehq.input.relation.redundant">
       <location filename="src/input/BindingEditorModel.cpp" line="589"></location>
@@ -3135,7 +3135,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.gestures.hold_time_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="263"></location>
       <source>How long a button must be held for a hold action. A completed hold consumes the tap.</source>
-      <translation>Сколько нужно удерживать кнопку, чтобы сработало действие удержания. Завершённое удержание поглощает касание.</translation>
+      <translation>Сколько нужно удерживать кнопку, чтобы сработало действие удержания. Завершённое удержание поглощает одиночное нажатие.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="280"></location>
@@ -3145,7 +3145,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.gestures.multi_tap_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="282"></location>
       <source>How long a single tap waits when the same button also has a double or triple tap.</source>
-      <translation>Сколько ждёт одиночное касание, если у той же кнопки есть двойное или тройное касание.</translation>
+      <translation>Сколько ждёт одиночное нажатие, если у той же кнопки есть двойное или тройное нажатие.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="256"></location>

@@ -9,10 +9,10 @@
     "authority": "p8-3",
     "reviewer_kind": "agent",
     "actor": "claude-opus-5-contextual-ru-review",
-    "method": "complete_source_location_context_review",
+    "method": "complete_source_location_context_review_plus_targeted_recovery",
     "draft_provider": "machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T04:00:00Z"
+    "recorded_at": "2026-09-04T02:24:02Z"
   },
   "baseline": {
     "path": "git:a8fea03319ee848f365fdfe501dd521a35a5ac61:i18n/app/gamehq_ru_RU.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_ru_RU.ts",
-    "sha256": "1ef073631645a93ffc74c4194fa8d5294f2f5342cbae7a1e03db53c547a5f044",
+    "sha256": "93b4a008f3f995158d3c685274080e0600023cff03a6103be06730e928055bf3",
     "message_count": 831
   },
   "coverage": [
@@ -293,7 +293,7 @@
     {
       "id": "gamehq.action.desktop.favorite.label",
       "source_hash": "3fb9b539e4eaff25ac6a4985218274a9910cbd77f0845c1446c21533063f6a76",
-      "translation_hash": "cd78b8d29fb51af46ed365715371393fc63cd02175f44cd38cf6ecfd1e90d943",
+      "translation_hash": "f1d88960aca3024f2caf6facb3e769e094028a010ebdfe9d3b1296d3506bb6a4",
       "locations": [
         "src/input/ActionCatalog.cpp:234"
       ],
@@ -329,11 +329,11 @@
     {
       "id": "gamehq.action.desktop.navigate_down.label",
       "source_hash": "b1dc4221b7a6ce4af5f97baec3383b2c4d48550c64f7147117c96146d768aeb6",
-      "translation_hash": "8781218bfde4a642aa2eab3d8b648cd5c95c04fc04b803eb7a080c7b992cd4dc",
+      "translation_hash": "c0dbff3a809ffe7ea601a1865bde73ffdb5cf8f6759efd472e854d50bed300a7",
       "locations": [
         "src/input/ActionCatalog.cpp:199"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.action.desktop.navigate_left.description",
@@ -347,11 +347,11 @@
     {
       "id": "gamehq.action.desktop.navigate_left.label",
       "source_hash": "0455795f036b8663ca955a32729dde1d007938386b22dc01e308d89d2dc2cfd0",
-      "translation_hash": "4b37b29d5a80f03140ab71bb6b27486e5defa4532d8a40ec1542771516dfdab9",
+      "translation_hash": "2acede93dc737aa46964c69552e3d282ce5c2cddda53457b887965769c8de7bd",
       "locations": [
         "src/input/ActionCatalog.cpp:206"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.action.desktop.navigate_right.description",
@@ -365,11 +365,11 @@
     {
       "id": "gamehq.action.desktop.navigate_right.label",
       "source_hash": "87f75aaff18da29d937da0a186b247214eba28cfa1fc0eec24121b5168bc9344",
-      "translation_hash": "38fe9281a6407d5ab7b7aa66ce82b77ba263bf3f1968b6af131b18dbaf33846e",
+      "translation_hash": "692e9a590d2a8a6c02f32a874a45ef4461ff2ddfffa6b8aa5ebceea09fbe65ce",
       "locations": [
         "src/input/ActionCatalog.cpp:213"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.action.desktop.navigate_up.description",
@@ -383,11 +383,11 @@
     {
       "id": "gamehq.action.desktop.navigate_up.label",
       "source_hash": "7f0b3e33e7bd87be02734261a87926c82a9ccf77c194e132c94861edb806a8bc",
-      "translation_hash": "fdacbe13e91ca2bafad2d79d5c5edcb1706af61dd8ca1ce0759a3faf380f0193",
+      "translation_hash": "3470feac5f4fe4fa323c851ec67ec661abae80b7e4cea8e99b473d84b974f253",
       "locations": [
         "src/input/ActionCatalog.cpp:192"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.action.desktop.scroll_down.description",
@@ -662,7 +662,7 @@
     {
       "id": "gamehq.action.overlay.favorite.label",
       "source_hash": "3fb9b539e4eaff25ac6a4985218274a9910cbd77f0845c1446c21533063f6a76",
-      "translation_hash": "cd78b8d29fb51af46ed365715371393fc63cd02175f44cd38cf6ecfd1e90d943",
+      "translation_hash": "f1d88960aca3024f2caf6facb3e769e094028a010ebdfe9d3b1296d3506bb6a4",
       "locations": [
         "src/input/ActionCatalog.cpp:156"
       ],
@@ -734,11 +734,11 @@
     {
       "id": "gamehq.action.overlay.navigate_down.label",
       "source_hash": "b1dc4221b7a6ce4af5f97baec3383b2c4d48550c64f7147117c96146d768aeb6",
-      "translation_hash": "8781218bfde4a642aa2eab3d8b648cd5c95c04fc04b803eb7a080c7b992cd4dc",
+      "translation_hash": "c0dbff3a809ffe7ea601a1865bde73ffdb5cf8f6759efd472e854d50bed300a7",
       "locations": [
         "src/input/ActionCatalog.cpp:121"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.action.overlay.navigate_left.description",
@@ -752,11 +752,11 @@
     {
       "id": "gamehq.action.overlay.navigate_left.label",
       "source_hash": "0455795f036b8663ca955a32729dde1d007938386b22dc01e308d89d2dc2cfd0",
-      "translation_hash": "4b37b29d5a80f03140ab71bb6b27486e5defa4532d8a40ec1542771516dfdab9",
+      "translation_hash": "2acede93dc737aa46964c69552e3d282ce5c2cddda53457b887965769c8de7bd",
       "locations": [
         "src/input/ActionCatalog.cpp:128"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.action.overlay.navigate_right.description",
@@ -770,11 +770,11 @@
     {
       "id": "gamehq.action.overlay.navigate_right.label",
       "source_hash": "87f75aaff18da29d937da0a186b247214eba28cfa1fc0eec24121b5168bc9344",
-      "translation_hash": "38fe9281a6407d5ab7b7aa66ce82b77ba263bf3f1968b6af131b18dbaf33846e",
+      "translation_hash": "692e9a590d2a8a6c02f32a874a45ef4461ff2ddfffa6b8aa5ebceea09fbe65ce",
       "locations": [
         "src/input/ActionCatalog.cpp:135"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.action.overlay.navigate_up.description",
@@ -788,11 +788,11 @@
     {
       "id": "gamehq.action.overlay.navigate_up.label",
       "source_hash": "7f0b3e33e7bd87be02734261a87926c82a9ccf77c194e132c94861edb806a8bc",
-      "translation_hash": "fdacbe13e91ca2bafad2d79d5c5edcb1706af61dd8ca1ce0759a3faf380f0193",
+      "translation_hash": "3470feac5f4fe4fa323c851ec67ec661abae80b7e4cea8e99b473d84b974f253",
       "locations": [
         "src/input/ActionCatalog.cpp:114"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.action.overlay.sidebar_toggle.description",
@@ -2775,7 +2775,7 @@
     {
       "id": "gamehq.help.gamepad.share_hold_action",
       "source_hash": "b7f393cb8c49a3541a18eeba70f2b3befff58c73dc3ae676e6df043e9292244a",
-      "translation_hash": "1778916efe41352ac2d74b07a50d025a3402312f6817b97f3b096789a990c4a5",
+      "translation_hash": "34ec18c19f886c9cbefa1ac671d70e08729b5cfe03bf9162870d51eb3f76913a",
       "locations": [
         "src/ui/qml/HelpView.qml:175"
       ],
@@ -2838,7 +2838,7 @@
     {
       "id": "gamehq.help.gamepad.system_share_tap",
       "source_hash": "4ccfa90e94cb8ad888a3928cf048bc1211a8102931ee0cecb5f926cd0a1340dc",
-      "translation_hash": "aa96baf6722ec6e36628c7c6f0e78835d2556174cc2d9b5606c383ced6c50a64",
+      "translation_hash": "3411cc76d6c26a0d061e66cdd5ac225e616475daf0b37f2a41b2d0f3d1239ff2",
       "locations": [
         "src/ui/qml/HelpView.qml:167"
       ],
@@ -2958,7 +2958,7 @@
     {
       "id": "gamehq.input.assignment.capture_active",
       "source_hash": "774f30e4dc0f8e7821fd47f3cdb7253121cc57ddaf20eb1945fea7738f92f40e",
-      "translation_hash": "e50d0a541c1aaf963c433b0c4528460a0a88419ab4ff7d9be49391484c9a1806",
+      "translation_hash": "b72d1c08d248d59d7ba6bb58b71cc9bed9325a9cc041350034d60e4016db7b9d",
       "locations": [
         "src/ui/qml/components/BindingAssignmentDialog.qml:228"
       ],
@@ -3277,20 +3277,20 @@
     {
       "id": "gamehq.input.compatibility.convert_press",
       "source_hash": "1efa74b7651bdfc190b75ddebd5a0d9fe62027affde25c79c9c72ce12ca821c8",
-      "translation_hash": "b3126c0d0c33b640012a9d1b1720a553eca45238b16002ccd60be8d437638232",
+      "translation_hash": "323973794f0c565a60d8d55835d6be9f62dbf098efefdc504a89b2ba1efbe9ca",
       "locations": [
         "src/input/BindingEditorModel.cpp:482"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.input.compatibility.convert_press_with_wait",
       "source_hash": "f94a8cac5dbdb662da80333135303809ab4e29dd56bddf5ea5a1b1f13c1f7773",
-      "translation_hash": "f839941077169e95e5de27abf9e039d159b38309feba019865536f4bc3984cc3",
+      "translation_hash": "80e63aa8075454ca4fc27a9cd6e47bdbcc568f149523c21bc4a076728edb195e",
       "locations": [
         "src/input/BindingEditorModel.cpp:474"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.input.compatibility.title",
@@ -3331,7 +3331,7 @@
     {
       "id": "gamehq.input.gesture.double_tap",
       "source_hash": "cf0332cd6a24148fba42be7678412c6d692dfb774a0bc6a467e191bdc638a4f1",
-      "translation_hash": "92ed629238344ac29e3aae275f8c5a10f13c66031258d73c6dc689c0695728b0",
+      "translation_hash": "a3bc88193dc6ce1cc71fad4d69240ec489cfe5a3c8739f9086c19aa3f03b71c6",
       "locations": [
         "src/input/BindingPattern.cpp:106",
         "src/ui/qml/components/BindingAssignmentDialog.qml:474"
@@ -3362,7 +3362,7 @@
     {
       "id": "gamehq.input.gesture.tap",
       "source_hash": "48a60d2e2197297571d0d2a8a0d04bc20f162a5aaf243bfeb068b740a107df96",
-      "translation_hash": "7b33df24b13227ce6a2d8ab3d4e9699c1696fdc4da9f2323b71a533c98f03d78",
+      "translation_hash": "52784a1538bf5d6e078e605c299b650e72ca9eaddbae53c5bcea27bf8373d0f5",
       "locations": [
         "src/input/BindingPattern.cpp:117",
         "src/ui/qml/components/BindingAssignmentDialog.qml:472"
@@ -3372,7 +3372,7 @@
     {
       "id": "gamehq.input.gesture.triple_tap",
       "source_hash": "7321c01862585054f28be951e16d94c50a32513dd3b48a1e9f4acc973ad25e49",
-      "translation_hash": "c2923ea68fcb6236567f90b08e9bd48e107a7a4b68f4d238716b4469d3029831",
+      "translation_hash": "4c58bedb37b94a31be92331ccb5c38b9c3a1c93c3c038a20f57d361e41c34b28",
       "locations": [
         "src/input/BindingPattern.cpp:112",
         "src/ui/qml/components/BindingAssignmentDialog.qml:476"
@@ -3536,11 +3536,11 @@
     {
       "id": "gamehq.input.relation.higher_tap_delay",
       "source_hash": "0a05f06521afe984dd87b21dd494825cdc88b39efc44c801e9be7581cb0899dd",
-      "translation_hash": "84af530bdc9876a4358b67ab5efa7b0e68aebd5fab6998a0e0c8f2d238319718",
+      "translation_hash": "14abb535da5d5c8964a49619c8a51042969cc463f76ab80c9123c4d08d8b7cd8",
       "locations": [
         "src/input/BindingRelation.cpp:233"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.input.relation.redundant",
@@ -5514,7 +5514,7 @@
     {
       "id": "gamehq.settings.input.gestures.hold_time_description",
       "source_hash": "7ebeddd897b70a37d07c2965a9cd8dbdcc6b74947a7470a38ef4df7bcbec4b4f",
-      "translation_hash": "6d9101384aa5765373b5b05f1312d20f67646f85819cdc17a24cd47bc1eacdb1",
+      "translation_hash": "d0ffcde734eba77d986426608cb767bf04d9f02058308be1a02cb98a775d94a7",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:263"
       ],
@@ -5532,7 +5532,7 @@
     {
       "id": "gamehq.settings.input.gestures.multi_tap_description",
       "source_hash": "6a1e6379220934e3badf9a27c6eedf4b7d0cff3c3b60201349e2c7fcabfc9470",
-      "translation_hash": "101bd114a96c5f5296446a00d44a1452287447eeba96089fffc1ab4b348c5c5d",
+      "translation_hash": "605fccad5eea55e4dd02b5a15317453cb4854c1f7c687840958c84dc1749fd90",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:282"
       ],
@@ -7871,11 +7871,11 @@
         "Перейти на \" Любимое \""
       ],
       "after": [
-        "Переключить избранное"
+        "Добавить / убрать из избранного"
       ],
       "category": "ui_role_and_convention",
-      "reason": "Action labels and descriptions read as conversational sentences or reversed the action.",
-      "terminology_decision": "Used infinitive control labels and descriptions; corrected the reversed zoom-out label."
+      "reason": "The static toggle label sounded mechanical rather than naming the two possible favorite actions.",
+      "terminology_decision": "Use Добавить / убрать из избранного for the state-independent favorite toggle."
     },
     {
       "id": "gamehq.action.desktop.menu.description",
@@ -8248,11 +8248,11 @@
         "Перейти на \" Любимое \""
       ],
       "after": [
-        "Переключить избранное"
+        "Добавить / убрать из избранного"
       ],
       "category": "ui_role_and_convention",
-      "reason": "Action labels and descriptions read as conversational sentences or reversed the action.",
-      "terminology_decision": "Used infinitive control labels and descriptions; corrected the reversed zoom-out label."
+      "reason": "The static toggle label sounded mechanical rather than naming the two possible favorite actions.",
+      "terminology_decision": "Use Добавить / убрать из избранного for the state-independent favorite toggle."
     },
     {
       "id": "gamehq.action.overlay.game_next.description",
@@ -10371,11 +10371,11 @@
         "Сохранить клип повторного воспроизведения; выдержка потребляет кнопку"
       ],
       "after": [
-        "Сохранить клип повтора; удержание поглощает нажатие"
+        "Сохранить клип повтора; удержание поглощает одиночное нажатие"
       ],
-      "category": "help_text_completeness",
-      "reason": "Help text was truncated or translated key names such as Enter and F into Russian words.",
-      "terminology_decision": "Restored complete sentences and kept protected key, button and shortcut names untranslated."
+      "category": "input_assignment_terminology",
+      "reason": "Controller-button Tap wording described physical touch or obscured the release-based gesture semantics.",
+      "terminology_decision": "Press=Нажатие is immediate; Tap=Одиночное нажатие activates on release; Double/Triple Tap and Hold remain distinct."
     },
     {
       "id": "gamehq.help.gamepad.share_multi_tap",
@@ -10436,11 +10436,11 @@
         "Система совместного использования (нажмите)"
       ],
       "after": [
-        "Системная кнопка Share (нажатие)"
+        "Системная кнопка Share (одиночное нажатие)"
       ],
-      "category": "help_text_completeness",
-      "reason": "Help text was truncated or translated key names such as Enter and F into Russian words.",
-      "terminology_decision": "Restored complete sentences and kept protected key, button and shortcut names untranslated."
+      "category": "input_assignment_terminology",
+      "reason": "Controller-button Tap wording described physical touch or obscured the release-based gesture semantics.",
+      "terminology_decision": "Press=Нажатие is immediate; Tap=Одиночное нажатие activates on release; Double/Triple Tap and Hold remain distinct."
     },
     {
       "id": "gamehq.help.gamepad_shortcuts",
@@ -10566,11 +10566,11 @@
         "Запись контроллера активна · Диалог на навигации приостановлен"
       ],
       "after": [
-        "Идёт захват с геймпада · Навигация в диалоге приостановлена"
+        "Идёт захват ввода с геймпада · Навигация в диалоге приостановлена"
       ],
       "category": "input_assignment_terminology",
-      "reason": "Input assignment, gesture and binding vocabulary was literal or semantically collapsed.",
-      "terminology_decision": "Fixed terminology: binding is привязка, assignment is назначение, slot is слот, hold is удержание, tap is касание, press is нажатие."
+      "reason": "The binding dialog described capture from a controller rather than capture of controller input.",
+      "terminology_decision": "Binding capture is захват ввода с геймпада; media capture keeps захват in its media sense."
     },
     {
       "id": "gamehq.input.assignment.combination_gesture",
@@ -10878,11 +10878,11 @@
         "Двойной клик"
       ],
       "after": [
-        "Двойное касание"
+        "Двойное нажатие"
       ],
       "category": "input_assignment_terminology",
-      "reason": "Input assignment, gesture and binding vocabulary was literal or semantically collapsed.",
-      "terminology_decision": "Fixed terminology: binding is привязка, assignment is назначение, slot is слот, hold is удержание, tap is касание, press is нажатие."
+      "reason": "Controller-button Tap wording described physical touch or obscured the release-based gesture semantics.",
+      "terminology_decision": "Press=Нажатие is immediate; Tap=Одиночное нажатие activates on release; Double/Triple Tap and Hold remain distinct."
     },
     {
       "id": "gamehq.input.gesture.hold",
@@ -10917,11 +10917,11 @@
         "Нажмите"
       ],
       "after": [
-        "Касание"
+        "Одиночное нажатие"
       ],
       "category": "input_assignment_terminology",
-      "reason": "Input assignment, gesture and binding vocabulary was literal or semantically collapsed.",
-      "terminology_decision": "Fixed terminology: binding is привязка, assignment is назначение, slot is слот, hold is удержание, tap is касание, press is нажатие."
+      "reason": "Controller-button Tap wording described physical touch or obscured the release-based gesture semantics.",
+      "terminology_decision": "Press=Нажатие is immediate; Tap=Одиночное нажатие activates on release; Double/Triple Tap and Hold remain distinct."
     },
     {
       "id": "gamehq.input.gesture.triple_tap",
@@ -10930,11 +10930,11 @@
         "Трижды нажмите"
       ],
       "after": [
-        "Тройное касание"
+        "Тройное нажатие"
       ],
       "category": "input_assignment_terminology",
-      "reason": "Input assignment, gesture and binding vocabulary was literal or semantically collapsed.",
-      "terminology_decision": "Fixed terminology: binding is привязка, assignment is назначение, slot is слот, hold is удержание, tap is касание, press is нажатие."
+      "reason": "Controller-button Tap wording described physical touch or obscured the release-based gesture semantics.",
+      "terminology_decision": "Press=Нажатие is immediate; Tap=Одиночное нажатие activates on release; Double/Triple Tap and Hold remain distinct."
     },
     {
       "id": "gamehq.input.model.capture.controller",
@@ -12659,11 +12659,11 @@
         "Сколько времени нужно удерживать кнопку для действия задержки."
       ],
       "after": [
-        "Сколько нужно удерживать кнопку, чтобы сработало действие удержания. Завершённое удержание поглощает касание."
+        "Сколько нужно удерживать кнопку, чтобы сработало действие удержания. Завершённое удержание поглощает одиночное нажатие."
       ],
       "category": "input_assignment_terminology",
-      "reason": "Input settings wording used unrelated senses such as Auto rendered as automobile.",
-      "terminology_decision": "Fixed terminology: controller is геймпад, override is переопределение, layout is раскладка; GameInput, Share, View and Guide preserved."
+      "reason": "Controller-button Tap wording described physical touch or obscured the release-based gesture semantics.",
+      "terminology_decision": "Press=Нажатие is immediate; Tap=Одиночное нажатие activates on release; Double/Triple Tap and Hold remain distinct."
     },
     {
       "id": "gamehq.settings.input.gestures.multi_tap_description",
@@ -12672,11 +12672,11 @@
         "Сколько времени ждет одно нажатие, когда на ту же кнопку также нажимают два или три."
       ],
       "after": [
-        "Сколько ждёт одиночное касание, если у той же кнопки есть двойное или тройное касание."
+        "Сколько ждёт одиночное нажатие, если у той же кнопки есть двойное или тройное нажатие."
       ],
       "category": "input_assignment_terminology",
-      "reason": "Input settings wording used unrelated senses such as Auto rendered as automobile.",
-      "terminology_decision": "Fixed terminology: controller is геймпад, override is переопределение, layout is раскладка; GameInput, Share, View and Guide preserved."
+      "reason": "Controller-button Tap wording described physical touch or obscured the release-based gesture semantics.",
+      "terminology_decision": "Press=Нажатие is immediate; Tap=Одиночное нажатие activates on release; Double/Triple Tap and Hold remain distinct."
     },
     {
       "id": "gamehq.settings.input.gestures.title",
@@ -14360,6 +14360,149 @@
       "terminology_decision": "Distinguished Preparing, Ready and Installing states; corrected the restart-to-apply claim; version placeholders and GameHQ preserved."
     },
     {
+      "id": "gamehq.action.desktop.navigate_down.label",
+      "surface": "application",
+      "before": [
+        "Навигация вниз"
+      ],
+      "after": [
+        "Перейти вниз"
+      ],
+      "category": "ui_role_and_convention",
+      "reason": "The action-catalog label was a noun phrase instead of a concise action.",
+      "terminology_decision": "Directional action labels use Перейти plus the direction, matching the catalog's infinitive convention."
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_left.label",
+      "surface": "application",
+      "before": [
+        "Навигация влево"
+      ],
+      "after": [
+        "Перейти влево"
+      ],
+      "category": "ui_role_and_convention",
+      "reason": "The action-catalog label was a noun phrase instead of a concise action.",
+      "terminology_decision": "Directional action labels use Перейти plus the direction, matching the catalog's infinitive convention."
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_right.label",
+      "surface": "application",
+      "before": [
+        "Навигация направо"
+      ],
+      "after": [
+        "Перейти вправо"
+      ],
+      "category": "ui_role_and_convention",
+      "reason": "The action-catalog label was a noun phrase instead of a concise action.",
+      "terminology_decision": "Directional action labels use Перейти plus the direction, matching the catalog's infinitive convention."
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_up.label",
+      "surface": "application",
+      "before": [
+        "Навигация вверх"
+      ],
+      "after": [
+        "Перейти вверх"
+      ],
+      "category": "ui_role_and_convention",
+      "reason": "The action-catalog label was a noun phrase instead of a concise action.",
+      "terminology_decision": "Directional action labels use Перейти plus the direction, matching the catalog's infinitive convention."
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_down.label",
+      "surface": "application",
+      "before": [
+        "Навигация вниз"
+      ],
+      "after": [
+        "Перейти вниз"
+      ],
+      "category": "ui_role_and_convention",
+      "reason": "The action-catalog label was a noun phrase instead of a concise action.",
+      "terminology_decision": "Directional action labels use Перейти plus the direction, matching the catalog's infinitive convention."
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_left.label",
+      "surface": "application",
+      "before": [
+        "Навигация влево"
+      ],
+      "after": [
+        "Перейти влево"
+      ],
+      "category": "ui_role_and_convention",
+      "reason": "The action-catalog label was a noun phrase instead of a concise action.",
+      "terminology_decision": "Directional action labels use Перейти plus the direction, matching the catalog's infinitive convention."
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_right.label",
+      "surface": "application",
+      "before": [
+        "Навигация направо"
+      ],
+      "after": [
+        "Перейти вправо"
+      ],
+      "category": "ui_role_and_convention",
+      "reason": "The action-catalog label was a noun phrase instead of a concise action.",
+      "terminology_decision": "Directional action labels use Перейти plus the direction, matching the catalog's infinitive convention."
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_up.label",
+      "surface": "application",
+      "before": [
+        "Навигация вверх"
+      ],
+      "after": [
+        "Перейти вверх"
+      ],
+      "category": "ui_role_and_convention",
+      "reason": "The action-catalog label was a noun phrase instead of a concise action.",
+      "terminology_decision": "Directional action labels use Перейти plus the direction, matching the catalog's infinitive convention."
+    },
+    {
+      "id": "gamehq.input.compatibility.convert_press",
+      "surface": "application",
+      "before": [
+        "Сейчас %1 активирует %2 сразу при нажатии кнопки.\n\nЧтобы использовать %1 также для %3, GameHQ должен изменить жест %2 с «Нажатие» на «Одиночное касание».\n\nПосле этого %2 будет активироваться при отпускании кнопки."
+      ],
+      "after": [
+        "Сейчас %1 активирует %2 сразу при нажатии кнопки.\n\nЧтобы использовать %1 также для %3, GameHQ должен изменить жест %2 с «Нажатие» на «Одиночное нажатие».\n\nПосле этого %2 будет активироваться при отпускании кнопки."
+      ],
+      "category": "input_assignment_terminology",
+      "reason": "Controller-button Tap wording described physical touch or obscured the release-based gesture semantics.",
+      "terminology_decision": "Press=Нажатие is immediate; Tap=Одиночное нажатие activates on release; Double/Triple Tap and Hold remain distinct."
+    },
+    {
+      "id": "gamehq.input.compatibility.convert_press_with_wait",
+      "surface": "application",
+      "before": [
+        "Сейчас %1 активирует %2 сразу при нажатии кнопки.\n\nЧтобы использовать %1 также для %3, GameHQ должен изменить жест %2 с «Нажатие» на «Одиночное касание».\n\nПосле этого %2 будет активироваться при отпускании кнопки и может ждать до %4 мс, чтобы исключить действие %3."
+      ],
+      "after": [
+        "Сейчас %1 активирует %2 сразу при нажатии кнопки.\n\nЧтобы использовать %1 также для %3, GameHQ должен изменить жест %2 с «Нажатие» на «Одиночное нажатие».\n\nПосле этого %2 будет активироваться при отпускании кнопки и может ждать до %4 мс, чтобы исключить действие %3."
+      ],
+      "category": "input_assignment_terminology",
+      "reason": "Controller-button Tap wording described physical touch or obscured the release-based gesture semantics.",
+      "terminology_decision": "Press=Нажатие is immediate; Tap=Одиночное нажатие activates on release; Double/Triple Tap and Hold remain distinct."
+    },
+    {
+      "id": "gamehq.input.relation.higher_tap_delay",
+      "surface": "application",
+      "before": [
+        "Это действие ожидает до %1 мс, поскольку у той же кнопки есть назначение, требующее большего числа касаний."
+      ],
+      "after": [
+        "Это действие ожидает до %1 мс, поскольку у той же кнопки есть назначение, требующее большего числа нажатий."
+      ],
+      "category": "input_assignment_terminology",
+      "reason": "Controller-button Tap wording described physical touch or obscured the release-based gesture semantics.",
+      "terminology_decision": "Press=Нажатие is immediate; Tap=Одиночное нажатие activates on release; Double/Triple Tap and Hold remain distinct."
+    },
+    {
       "id": "LOCGameHQIntegrationAboutDescription",
       "surface": "playnite",
       "before": [
@@ -14403,7 +14546,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_ru_RU.ts",
-      "sha256": "1ef073631645a93ffc74c4194fa8d5294f2f5342cbae7a1e03db53c547a5f044",
+      "sha256": "93b4a008f3f995158d3c685274080e0600023cff03a6103be06730e928055bf3",
       "reviewed_units": 831
     },
     {
@@ -14430,12 +14573,12 @@
     "A saved screenshot or video item is запись; the act of capturing is захват, and binding detection never reuses the media term.",
     "replay is повтор, buffer is буфер, clip is клип, recording is запись.",
     "overlay is оверлей, gallery is галерея, library is библиотека, sidebar is боковая панель, tray is трей.",
-    "binding is привязка, assignment is назначение, slot is слот, gesture is жест, hold is удержание, tap is касание, press is нажатие, combination is комбинация.",
+    "binding is привязка, assignment is назначение, slot is слот, gesture is жест, hold is удержание, press is нажатие, and release-based tap is одиночное нажатие.",
     "controller is геймпад throughout the product, matching Russian gaming convention rather than контроллер.",
     "Update security vocabulary is fixed: manifest is манифест, checksum is контрольная сумма, signature is подпись, staging is подготовка, transaction is транзакция, trust state is состояние доверия.",
     "portable is портативный, staged is подготовленный, journal is журнал, schema is схема, folder is папка, and the portable scheme prefix stays literal.",
     "Key and button names such as Enter, Esc, Delete, Share, View, Guide and PS stay untranslated; DualSense face buttons are Крест, Круг, Квадрат and Треугольник.",
-    "Buttons and action descriptions use the Russian infinitive; errors and warnings stay impersonal complete sentences."
+    "Buttons and action labels use the Russian infinitive; directional actions use Перейти; errors and warnings stay impersonal complete sentences."
   ],
   "calibration_rules": [
     "Review every stable ID with its English source, source location, control role and neighboring UI; schema validity is not linguistic evidence.",
