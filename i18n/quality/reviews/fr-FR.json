@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-fr-fr-recovery",
+    "actor": "codex-gpt-5-contextual-fr-fr-final-recovery",
     "method": "complete_source_location_context_review",
     "draft_provider": "offline machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T17:30:00Z"
+    "recorded_at": "2026-09-04T18:00:00Z"
   },
   "baseline": {
     "path": "git:1fc034eb69a417a6ee6e9cc20f5892dd7a9e0e5c:i18n/app/gamehq_fr_FR.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_fr_FR.ts",
-    "sha256": "01369695b20b085d59b20613e471d679777977279719be1b28e49fe7d25df196",
+    "sha256": "7f6a9e7194d516b6a79fec8ad42ad4db679656f052d1d71f31a532ba5b5b8060",
     "message_count": 831
   },
   "coverage": [
@@ -5604,7 +5604,7 @@
     {
       "id": "gamehq.settings.input.modern.legacy_fallback",
       "source_hash": "1a191a4675093d1376be17e4650a32df7dce5d61ff893d817ddb39061ee6e43d",
-      "translation_hash": "8eb96e8261005fe2c5f4e60ae1fe71327dab48679819f42e0b5fe506e5b82cab",
+      "translation_hash": "3f3fe4c923b0dcc39da4ef7ccd603a24e1e40aa05b87ec5a53134c660cdf7f23",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:620"
       ],
@@ -5667,7 +5667,7 @@
     {
       "id": "gamehq.settings.input.modern.support.description",
       "source_hash": "15875e6a1d3400e930c324c83acb0cdacb3658f24f6690a031002d08f01a2fce",
-      "translation_hash": "7680d8fbd9bcf69d41ad90a99ba6885bb893266dc9d6d4c63f799a38a51e7191",
+      "translation_hash": "d00bd085b3e4dce81f187e43612169c1850843b3716f4de8f4374a75bb46a4ea",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:581"
       ],
@@ -12094,10 +12094,10 @@
       "id": "gamehq.settings.input.modern.legacy_fallback",
       "surface": "application",
       "before": "Retour en arrière",
-      "after": "Mode de repli pour les manettes héritées",
+      "after": "Mode de repli vers l’ancien système",
       "category": "bounded_context_recovery",
-      "reason": "Resolves the independent contextual review finding with precise, idiomatic French.",
-      "terminology_decision": "GameInput runtime is an environnement d’exécution; legacy fallback is a safe mode de repli for legacy controllers."
+      "reason": "Makes legacy modify the fallback mechanism rather than incorrectly narrowing it to legacy controller hardware.",
+      "terminology_decision": "GameInput uses a safe fallback to the legacy system; the controller hardware itself is not classified as legacy."
     },
     {
       "id": "gamehq.settings.input.modern.off",
@@ -12157,10 +12157,10 @@
       "id": "gamehq.settings.input.modern.support.description",
       "surface": "application",
       "before": "L'Auto utilise l'application GameInput locale avec une sauvegarde sécurisée des services hérités; désactivé ne garde que les fournisseurs hérités.",
-      "after": "Le mode Auto utilise l’environnement d’exécution GameInput fourni, avec un mode de repli sûr pour les manettes héritées ; Désactivé désactive GameInput.",
+      "after": "Le mode Auto utilise l’environnement d’exécution GameInput fourni, avec un repli sûr vers l’ancien système ; le mode Désactivé désactive GameInput.",
       "category": "bounded_context_recovery",
-      "reason": "Resolves the independent contextual review finding with precise, idiomatic French.",
-      "terminology_decision": "GameInput runtime is an environnement d’exécution; legacy fallback is a safe mode de repli for legacy controllers."
+      "reason": "Makes legacy modify the fallback mechanism rather than incorrectly narrowing it to legacy controller hardware.",
+      "terminology_decision": "GameInput uses a safe fallback to the legacy system; the controller hardware itself is not classified as legacy."
     },
     {
       "id": "gamehq.settings.input.modern.support.label",
@@ -13553,7 +13553,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_fr_FR.ts",
-      "sha256": "01369695b20b085d59b20613e471d679777977279719be1b28e49fe7d25df196",
+      "sha256": "7f6a9e7194d516b6a79fec8ad42ad4db679656f052d1d71f31a532ba5b5b8060",
       "reviewed_units": 831
     },
     {

@@ -3168,7 +3168,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.settings.input.modern.legacy_fallback">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="620"></location>
       <source>Legacy fallback</source>
-      <translation>Mode de repli pour les manettes héritées</translation>
+      <translation>Mode de repli vers l’ancien système</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="588"></location>
@@ -3203,7 +3203,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.settings.input.modern.support.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="581"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
-      <translation>Le mode Auto utilise l’environnement d’exécution GameInput fourni, avec un mode de repli sûr pour les manettes héritées ; Désactivé désactive GameInput.</translation>
+      <translation>Le mode Auto utilise l’environnement d’exécution GameInput fourni, avec un repli sûr vers l’ancien système ; le mode Désactivé désactive GameInput.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="579"></location>
