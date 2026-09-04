@@ -23,7 +23,7 @@
   <sys:String x:Key="LOCGameHQIntegrationLogHint">Eklenti iletileri Playnite'ın ana günlüğüne yazılır.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLastErrorFormat">Son hata: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSectionAbout">Bu entegrasyon hakkında</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ, algılama ve yakalama düzenini daha güvenilir hâle getirmek için Playnite'ta oynadığınız oyunun adını alır. Oynanışı kaydetmez, veri yüklemez veya hiçbir şey kurmaz. GameHQ, Playnite olmadan da çalışır.</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ, Playnite'ta oynadığınız oyunun adını alarak algılamayı ve çekimlerin düzenlenmesini daha güvenilir hâle getirir. Oynanışı kaydetmez, veri yüklemez veya hiçbir şey kurmaz. GameHQ, Playnite olmadan da çalışır.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationNotConnected">(bağlı değil)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationGameHQNotFound">Bu bilgisayarda GameHQ bulunamadı.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLocateHint">GameHQ'yu kurun; yine bulunamazsa “GameHQ.exe dosyasını bul...” seçeneğini kullanın.</sys:String>

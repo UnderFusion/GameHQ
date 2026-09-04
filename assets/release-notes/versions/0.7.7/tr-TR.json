@@ -17,7 +17,7 @@
         },
         {
           "id": "added-02",
-          "text": "Dil değişikliği, GameHQ'yu yeniden başlatmadan kaplama ve bildirim alanı menüsü dahil uygulamanın tamamında anında geçerli olur. Seçiminiz hatırlanır."
+          "text": "Dil değişikliği, GameHQ'yu yeniden başlatmadan oyun içi arayüz ve bildirim alanı menüsü dâhil uygulamanın tamamında anında geçerli olur. Seçiminiz hatırlanır."
         },
         {
           "id": "added-03",
@@ -49,7 +49,7 @@
       "items": [
         {
           "id": "known-limitations-01",
-          "text": "On iki dil çevrilmiş arayüz metinleriyle geliyor. İtalyanca, Latin Amerika İspanyolcası, Tayca ve Ukraynaca şimdiden seçilebiliyor ve şu anda İngilizce metnin tamamını gösteriyor."
+          "text": "Artık 16 yayın dilinin tamamında çevrilmiş arayüz metinleri bulunuyor. Her dilin bağlamsal incelemesi yayın öncesinde tamamlanmalıdır."
         }
       ]
     }
