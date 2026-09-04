@@ -9,7 +9,7 @@
       "locales": {
         "en-US": "source_reviewed",
         "zh-Hans": "contextually_reviewed",
-        "ru-RU": "stale_review_pending",
+        "ru-RU": "contextually_reviewed",
         "es-ES": "stale_review_pending",
         "pt-BR": "stale_review_pending",
         "de-DE": "stale_review_pending",

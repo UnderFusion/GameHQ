@@ -66,3 +66,33 @@ The binding decisions are:
 
 Sentences use full-width Chinese punctuation; placeholders, key names, hint separators, and
 the `portable:/` scheme keep their exact source form.
+
+## Russian calibration decisions
+
+`i18n/quality/reviews/ru-RU.json` records the complete contextual pass over the Russian
+catalog and its auxiliary surfaces. The machine draft was grammatical in places but carried
+subtitle artefacts, second-person dialogue and reversed actions, so the review fixed
+terminology and register as well as phrasing.
+
+The binding decisions are:
+
+- `replay` is `повтор`, `buffer` is `буфер`, `clip` is `клип`, `recording` is `запись`.
+- A saved screenshot or video item is `запись`; the act of capturing is `захват`. Binding
+  detection never reuses the media term.
+- `overlay` is `оверлей`, `gallery` is `галерея`, `library` is `библиотека`, `sidebar` is
+  `боковая панель`, and `tray` is `трей`.
+- `binding` is `привязка`, `assignment` is `назначение`, `slot` is `слот`, `gesture` is
+  `жест`, `hold` is `удержание`, `tap` is `касание`, and `press` is `нажатие`.
+- `controller` is `геймпад` throughout the product, matching Russian gaming convention
+  rather than the literal `контроллер`.
+- Update security vocabulary is fixed: `manifest` is `манифест`, `checksum` is
+  `контрольная сумма`, `signature` is `подпись`, `staging` is `подготовка`, `transaction`
+  is `транзакция`, and `trust state` is `состояние доверия`.
+- Portable-import vocabulary is fixed: `portable` is `портативный`, `staged` is
+  `подготовленный`, `journal` is `журнал`, and `instance` is `экземпляр`.
+- Key and button names stay untranslated. DualSense face buttons are `Крест`, `Круг`,
+  `Квадрат`, and `Треугольник`.
+
+Buttons and action-catalog descriptions use the Russian infinitive; errors and warnings stay
+impersonal complete sentences. All three plural forms are checked against the numerus source
+rather than assuming a single form.

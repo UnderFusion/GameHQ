@@ -23,7 +23,7 @@
   <sys:String x:Key="LOCGameHQIntegrationLogHint">Сообщения дополнения записываются в основной журнал Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLastErrorFormat">Последняя ошибка: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSectionAbout">Об этой интеграции</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ получает название запущенной в Playnite игры, чтобы точнее определять её и упорядочивать снимки. Приложение не записывает игровой процесс, не отправляет данные и ничего не устанавливает. GameHQ работает и без Playnite.</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ получает название запущенной в Playnite игры, чтобы точнее определять её и надёжнее упорядочивать записи. Приложение не записывает игровой процесс, не отправляет данные и ничего не устанавливает. GameHQ работает и без Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationNotConnected">(нет подключения)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationGameHQNotFound">GameHQ не найден на этом компьютере.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLocateHint">Установите GameHQ, затем выберите «Найти GameHQ.exe...», если приложение всё ещё не найдено.</sys:String>

@@ -6,13 +6,12 @@
     <message id="gamehq.about.enjoying_gamehq">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="817"></location>
       <source>Enjoying GameHQ?</source>
-      <translation>Наслаждаешься GameHQ?</translation>
+      <translation>Нравится GameHQ?</translation>
     </message>
     <message id="gamehq.about.full_release_notes">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="684"></location>
       <source>View full release notes</source>
-      <oldsource>See full release notes</oldsource>
-      <translation>Просмотр полной версии</translation>
+      <translation>Открыть полные примечания к выпуску</translation>
     </message>
     <message id="gamehq.about.github">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="776"></location>
@@ -27,27 +26,27 @@
     <message id="gamehq.about.mode.installed">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="521"></location>
       <source>Installed</source>
-      <translation>Установлено</translation>
+      <translation>Установленная</translation>
     </message>
     <message id="gamehq.about.mode.portable">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="518"></location>
       <source>Portable</source>
-      <translation>Переносные</translation>
+      <translation>Портативная</translation>
     </message>
     <message id="gamehq.about.more_improvements">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="674"></location>
       <source>Plus more improvements and fixes.</source>
-      <translation>Плюс больше улучшений и исправлений.</translation>
+      <translation>А также другие улучшения и исправления.</translation>
     </message>
     <message id="gamehq.about.product_description">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="629"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
-      <translation>Удобный для контроллера снимок экрана, воспроизведение и медиа-галерея для игр PC.</translation>
+      <translation>Снимки экрана, повторы и медиагалерея для ПК-игр с удобным управлением с геймпада.</translation>
     </message>
     <message id="gamehq.about.product_updated">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="484"></location>
       <source>%1 updated</source>
-      <translation>%1 обновлено</translation>
+      <translation>%1 обновлён</translation>
     </message>
     <message id="gamehq.about.project_links">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="760"></location>
@@ -62,17 +61,17 @@
     <message id="gamehq.about.report_issue">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="782"></location>
       <source>Report issue</source>
-      <translation>Выпуск отчета</translation>
+      <translation>Сообщить о проблеме</translation>
     </message>
     <message id="gamehq.about.star_description">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="826"></location>
       <source>A GitHub star helps more players discover the project.</source>
-      <translation>Звезда GitHub помогает большему количеству игроков открыть проект.</translation>
+      <translation>Звезда на GitHub помогает большему числу игроков найти проект.</translation>
     </message>
     <message id="gamehq.about.star_on_github">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="837"></location>
       <source>Star on GitHub</source>
-      <translation>Звезда на GitHub</translation>
+      <translation>Поставить звезду на GitHub</translation>
     </message>
     <message id="gamehq.about.version">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="499"></location>
@@ -89,7 +88,7 @@
     <message id="gamehq.action.back">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="575"></location>
       <source>Back</source>
-      <translation>Возвращайся .</translation>
+      <translation>Назад</translation>
     </message>
     <message id="gamehq.action.back_with_marker">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="572"></location>
@@ -121,52 +120,52 @@
     <message id="gamehq.action.deselect_all">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="54"></location>
       <source>Deselect all</source>
-      <translation>Отменить отбор</translation>
+      <translation>Снять выделение</translation>
     </message>
     <message id="gamehq.action.desktop.back.description">
       <location filename="src/input/ActionCatalog.cpp" line="230"></location>
       <source>Close the current gallery panel.</source>
-      <translation>Закройте текущую галерею.</translation>
+      <translation>Закрыть текущую панель галереи.</translation>
     </message>
     <message id="gamehq.action.desktop.back.label">
       <location filename="src/input/ActionCatalog.cpp" line="227"></location>
       <source>Back</source>
-      <translation>Вернулся .</translation>
+      <translation>Назад</translation>
     </message>
     <message id="gamehq.action.desktop.bulk_toggle.description">
       <location filename="src/input/ActionCatalog.cpp" line="300"></location>
       <source>Enter or leave bulk selection mode.</source>
-      <translation>Ввести или оставить режим массового выбора.</translation>
+      <translation>Войти в режим множественного выбора или выйти из него.</translation>
     </message>
     <message id="gamehq.action.desktop.bulk_toggle.label">
       <location filename="src/input/ActionCatalog.cpp" line="297"></location>
       <source>Bulk Select</source>
-      <translation>Выбор в большом количестве</translation>
+      <translation>Множественный выбор</translation>
     </message>
     <message id="gamehq.action.desktop.confirm.description">
       <location filename="src/input/ActionCatalog.cpp" line="223"></location>
       <source>Activate the selected item in the gallery.</source>
-      <translation>Активируйте выбранный элемент в галерее.</translation>
+      <translation>Активировать выбранный элемент в галерее.</translation>
     </message>
     <message id="gamehq.action.desktop.confirm.label">
       <location filename="src/input/ActionCatalog.cpp" line="220"></location>
       <source>Confirm</source>
-      <translation>Подтверждение</translation>
+      <translation>Подтвердить</translation>
     </message>
     <message id="gamehq.action.desktop.favorite.description">
       <location filename="src/input/ActionCatalog.cpp" line="237"></location>
       <source>Mark or unmark the selected capture as a favorite.</source>
-      <translation>Отметьте или отметьте выбранное видео в качестве любимого.</translation>
+      <translation>Добавить выбранную запись в избранное или убрать из него.</translation>
     </message>
     <message id="gamehq.action.desktop.favorite.label">
       <location filename="src/input/ActionCatalog.cpp" line="234"></location>
       <source>Toggle Favorite</source>
-      <translation>Перейти на " Любимое "</translation>
+      <translation>Переключить избранное</translation>
     </message>
     <message id="gamehq.action.desktop.menu.description">
       <location filename="src/input/ActionCatalog.cpp" line="244"></location>
       <source>Open the action menu for the selected item.</source>
-      <translation>Откройте меню действий для выбранного элемента.</translation>
+      <translation>Открыть меню действий для выбранного элемента.</translation>
     </message>
     <message id="gamehq.action.desktop.menu.label">
       <location filename="src/input/ActionCatalog.cpp" line="241"></location>
@@ -176,7 +175,7 @@
     <message id="gamehq.action.desktop.navigate_down.description">
       <location filename="src/input/ActionCatalog.cpp" line="202"></location>
       <source>Move selection down in the gallery.</source>
-      <translation>Переместите выбор вниз в галерею.</translation>
+      <translation>Переместить выделение вниз в галерее.</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_down.label">
       <location filename="src/input/ActionCatalog.cpp" line="199"></location>
@@ -186,7 +185,7 @@
     <message id="gamehq.action.desktop.navigate_left.description">
       <location filename="src/input/ActionCatalog.cpp" line="209"></location>
       <source>Move selection left in the gallery.</source>
-      <translation>Переместите выбор слева в галерее.</translation>
+      <translation>Переместить выделение влево в галерее.</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_left.label">
       <location filename="src/input/ActionCatalog.cpp" line="206"></location>
@@ -196,7 +195,7 @@
     <message id="gamehq.action.desktop.navigate_right.description">
       <location filename="src/input/ActionCatalog.cpp" line="216"></location>
       <source>Move selection right in the gallery.</source>
-      <translation>Переместите выбор прямо в галерею.</translation>
+      <translation>Переместить выделение вправо в галерее.</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_right.label">
       <location filename="src/input/ActionCatalog.cpp" line="213"></location>
@@ -206,7 +205,7 @@
     <message id="gamehq.action.desktop.navigate_up.description">
       <location filename="src/input/ActionCatalog.cpp" line="195"></location>
       <source>Move selection up in the gallery.</source>
-      <translation>Переместите выборку в галерею.</translation>
+      <translation>Переместить выделение вверх в галерее.</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_up.label">
       <location filename="src/input/ActionCatalog.cpp" line="192"></location>
@@ -216,27 +215,27 @@
     <message id="gamehq.action.desktop.scroll_down.description">
       <location filename="src/input/ActionCatalog.cpp" line="293"></location>
       <source>Scroll the current view down without moving the selection.</source>
-      <translation>Прокрутите текущий вид вниз, не перемещая выбор.</translation>
+      <translation>Прокрутить текущий вид вниз, не перемещая выделение.</translation>
     </message>
     <message id="gamehq.action.desktop.scroll_down.label">
       <location filename="src/input/ActionCatalog.cpp" line="290"></location>
       <source>Scroll Down</source>
-      <translation>Прокрутите вниз</translation>
+      <translation>Прокрутить вниз</translation>
     </message>
     <message id="gamehq.action.desktop.scroll_up.description">
       <location filename="src/input/ActionCatalog.cpp" line="286"></location>
       <source>Scroll the current view up without moving the selection.</source>
-      <translation>Прокрутите текущий вид вверх, не перемещая выбор.</translation>
+      <translation>Прокрутить текущий вид вверх, не перемещая выделение.</translation>
     </message>
     <message id="gamehq.action.desktop.scroll_up.label">
       <location filename="src/input/ActionCatalog.cpp" line="283"></location>
       <source>Scroll Up</source>
-      <translation>Прокрутите вверх</translation>
+      <translation>Прокрутить вверх</translation>
     </message>
     <message id="gamehq.action.desktop.settings.description">
       <location filename="src/input/ActionCatalog.cpp" line="265"></location>
       <source>Open the Settings panel from anywhere in the gallery.</source>
-      <translation>Откройте панель настроек из любой точки галереи.</translation>
+      <translation>Открыть панель настроек из любого места галереи.</translation>
     </message>
     <message id="gamehq.action.desktop.settings.label">
       <location filename="src/input/ActionCatalog.cpp" line="262"></location>
@@ -246,7 +245,7 @@
     <message id="gamehq.action.desktop.tab_next.description">
       <location filename="src/input/ActionCatalog.cpp" line="258"></location>
       <source>Step to the next sidebar category.</source>
-      <translation>Переходим к следующей категории.</translation>
+      <translation>Перейти к следующей категории на боковой панели.</translation>
     </message>
     <message id="gamehq.action.desktop.tab_next.label">
       <location filename="src/input/ActionCatalog.cpp" line="255"></location>
@@ -256,7 +255,7 @@
     <message id="gamehq.action.desktop.tab_prev.description">
       <location filename="src/input/ActionCatalog.cpp" line="251"></location>
       <source>Step to the previous sidebar category.</source>
-      <translation>Перейти к предыдущей категории боковой панели.</translation>
+      <translation>Перейти к предыдущей категории на боковой панели.</translation>
     </message>
     <message id="gamehq.action.desktop.tab_prev.label">
       <location filename="src/input/ActionCatalog.cpp" line="248"></location>
@@ -266,32 +265,32 @@
     <message id="gamehq.action.desktop.zoom_in.description">
       <location filename="src/input/ActionCatalog.cpp" line="279"></location>
       <source>Make the gallery thumbnails larger.</source>
-      <translation>Увеличьте галереи миниатюр.</translation>
+      <translation>Увеличить миниатюры в галерее.</translation>
     </message>
     <message id="gamehq.action.desktop.zoom_in.label">
       <location filename="src/input/ActionCatalog.cpp" line="276"></location>
       <source>Zoom In</source>
-      <translation>Увеличьте</translation>
+      <translation>Увеличить</translation>
     </message>
     <message id="gamehq.action.desktop.zoom_out.description">
       <location filename="src/input/ActionCatalog.cpp" line="272"></location>
       <source>Make the gallery thumbnails smaller.</source>
-      <translation>Сделайте галереи миниатюр меньше.</translation>
+      <translation>Уменьшить миниатюры в галерее.</translation>
     </message>
     <message id="gamehq.action.desktop.zoom_out.label">
       <location filename="src/input/ActionCatalog.cpp" line="269"></location>
       <source>Zoom Out</source>
-      <translation>Увеличить</translation>
+      <translation>Уменьшить</translation>
     </message>
     <message id="gamehq.action.dismiss">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="180"></location>
       <source>Dismiss</source>
-      <translation>Отпустите .</translation>
+      <translation>Скрыть</translation>
     </message>
     <message id="gamehq.action.done">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="87"></location>
       <source>Done</source>
-      <translation>Сделано</translation>
+      <translation>Готово</translation>
     </message>
     <message id="gamehq.action.download">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="209"></location>
@@ -301,7 +300,7 @@
     <message id="gamehq.action.global.save_replay.description">
       <location filename="src/input/ActionCatalog.cpp" line="94"></location>
       <source>Save the rolling replay buffer as a clip.</source>
-      <translation>Сохранить буфер повторного просмотра в виде клипа.</translation>
+      <translation>Сохранить скользящий буфер повтора как клип.</translation>
     </message>
     <message id="gamehq.action.global.save_replay.label">
       <location filename="src/input/ActionCatalog.cpp" line="91"></location>
@@ -311,12 +310,12 @@
     <message id="gamehq.action.global.screenshot.description">
       <location filename="src/input/ActionCatalog.cpp" line="87"></location>
       <source>Capture a screenshot of the current game.</source>
-      <translation>Сделайте снимок экрана текущей игры.</translation>
+      <translation>Сделать снимок экрана текущей игры.</translation>
     </message>
     <message id="gamehq.action.global.toggle_desktop.description">
       <location filename="src/input/ActionCatalog.cpp" line="109"></location>
       <source>Bring the GameHQ window to the front with focus, or hide it and return to the game.</source>
-      <translation>Принеси GameHQ окно вперед с фокусом, или спрятать его и вернуться к игре.</translation>
+      <translation>Вывести окно GameHQ на передний план и передать ему фокус либо скрыть его и вернуться в игру.</translation>
     </message>
     <message id="gamehq.action.global.toggle_desktop.label">
       <location filename="src/input/ActionCatalog.cpp" line="105"></location>
@@ -326,7 +325,7 @@
     <message id="gamehq.action.global.toggle_overlay.description">
       <location filename="src/input/ActionCatalog.cpp" line="101"></location>
       <source>Show or hide the in-game overlay.</source>
-      <translation>Показывать или скрывать накладки в игре.</translation>
+      <translation>Показать или скрыть игровой оверлей.</translation>
     </message>
     <message id="gamehq.action.global.toggle_overlay.label">
       <location filename="src/input/ActionCatalog.cpp" line="98"></location>
@@ -336,42 +335,42 @@
     <message id="gamehq.action.not_now">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="182"></location>
       <source>Not now</source>
-      <translation>Не сейчас .</translation>
+      <translation>Не сейчас</translation>
     </message>
     <message id="gamehq.action.overlay.back.description">
       <location filename="src/input/ActionCatalog.cpp" line="152"></location>
       <source>Close the current overlay panel.</source>
-      <translation>Закройте текущую панель.</translation>
+      <translation>Закрыть текущую панель оверлея.</translation>
     </message>
     <message id="gamehq.action.overlay.back.label">
       <location filename="src/input/ActionCatalog.cpp" line="149"></location>
       <source>Back</source>
-      <translation>Вернулся .</translation>
+      <translation>Назад</translation>
     </message>
     <message id="gamehq.action.overlay.confirm.description">
       <location filename="src/input/ActionCatalog.cpp" line="145"></location>
       <source>Activate the selected item in the overlay.</source>
-      <translation>Активировать выбранный элемент в наложении.</translation>
+      <translation>Активировать выбранный элемент в оверлее.</translation>
     </message>
     <message id="gamehq.action.overlay.confirm.label">
       <location filename="src/input/ActionCatalog.cpp" line="142"></location>
       <source>Confirm</source>
-      <translation>Подтверждение</translation>
+      <translation>Подтвердить</translation>
     </message>
     <message id="gamehq.action.overlay.favorite.description">
       <location filename="src/input/ActionCatalog.cpp" line="159"></location>
       <source>Mark or unmark the selected capture as a favorite.</source>
-      <translation>Отметьте или отметьте выбранное видео в качестве любимого.</translation>
+      <translation>Добавить выбранную запись в избранное или убрать из него.</translation>
     </message>
     <message id="gamehq.action.overlay.favorite.label">
       <location filename="src/input/ActionCatalog.cpp" line="156"></location>
       <source>Toggle Favorite</source>
-      <translation>Перейти на " Любимое "</translation>
+      <translation>Переключить избранное</translation>
     </message>
     <message id="gamehq.action.overlay.game_next.description">
       <location filename="src/input/ActionCatalog.cpp" line="187"></location>
       <source>Step to the next game in the sidebar.</source>
-      <translation>Переходим к следующей игре в боковой панели.</translation>
+      <translation>Перейти к следующей игре на боковой панели.</translation>
     </message>
     <message id="gamehq.action.overlay.game_next.label">
       <location filename="src/input/ActionCatalog.cpp" line="184"></location>
@@ -381,7 +380,7 @@
     <message id="gamehq.action.overlay.game_prev.description">
       <location filename="src/input/ActionCatalog.cpp" line="180"></location>
       <source>Step to the previous game in the sidebar.</source>
-      <translation>Переходим к предыдущей игре в боковой панели.</translation>
+      <translation>Перейти к предыдущей игре на боковой панели.</translation>
     </message>
     <message id="gamehq.action.overlay.game_prev.label">
       <location filename="src/input/ActionCatalog.cpp" line="177"></location>
@@ -391,7 +390,7 @@
     <message id="gamehq.action.overlay.menu.description">
       <location filename="src/input/ActionCatalog.cpp" line="166"></location>
       <source>Open the action menu for the selected item.</source>
-      <translation>Откройте меню действий для выбранного элемента.</translation>
+      <translation>Открыть меню действий для выбранного элемента.</translation>
     </message>
     <message id="gamehq.action.overlay.menu.label">
       <location filename="src/input/ActionCatalog.cpp" line="163"></location>
@@ -401,7 +400,7 @@
     <message id="gamehq.action.overlay.navigate_down.description">
       <location filename="src/input/ActionCatalog.cpp" line="124"></location>
       <source>Move selection down in the overlay.</source>
-      <translation>Переместите выбор вниз в наложении.</translation>
+      <translation>Переместить выделение вниз в оверлее.</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_down.label">
       <location filename="src/input/ActionCatalog.cpp" line="121"></location>
@@ -411,7 +410,7 @@
     <message id="gamehq.action.overlay.navigate_left.description">
       <location filename="src/input/ActionCatalog.cpp" line="131"></location>
       <source>Move selection left in the overlay.</source>
-      <translation>Переместить выбор слева в наложении.</translation>
+      <translation>Переместить выделение влево в оверлее.</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_left.label">
       <location filename="src/input/ActionCatalog.cpp" line="128"></location>
@@ -421,7 +420,7 @@
     <message id="gamehq.action.overlay.navigate_right.description">
       <location filename="src/input/ActionCatalog.cpp" line="138"></location>
       <source>Move selection right in the overlay.</source>
-      <translation>Переместите выбор прямо в наложку.</translation>
+      <translation>Переместить выделение вправо в оверлее.</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_right.label">
       <location filename="src/input/ActionCatalog.cpp" line="135"></location>
@@ -431,7 +430,7 @@
     <message id="gamehq.action.overlay.navigate_up.description">
       <location filename="src/input/ActionCatalog.cpp" line="117"></location>
       <source>Move selection up in the overlay.</source>
-      <translation>Переместите выбор вверх в наложке.</translation>
+      <translation>Переместить выделение вверх в оверлее.</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_up.label">
       <location filename="src/input/ActionCatalog.cpp" line="114"></location>
@@ -441,7 +440,7 @@
     <message id="gamehq.action.overlay.sidebar_toggle.description">
       <location filename="src/input/ActionCatalog.cpp" line="173"></location>
       <source>Show or hide the overlay sidebar.</source>
-      <translation>Показывать или скрывать боковую панель наложения.</translation>
+      <translation>Показать или скрыть боковую панель оверлея.</translation>
     </message>
     <message id="gamehq.action.overlay.sidebar_toggle.label">
       <location filename="src/input/ActionCatalog.cpp" line="170"></location>
@@ -451,7 +450,7 @@
     <message id="gamehq.action.playback.frame_grab.description">
       <location filename="src/input/ActionCatalog.cpp" line="329"></location>
       <source>Save the frame currently shown in the focused clip as a screenshot.</source>
-      <translation>Сохранить кадр, показанный в фокус-клипе, как снимок экрана.</translation>
+      <translation>Сохранить текущий кадр выбранного клипа как снимок экрана.</translation>
     </message>
     <message id="gamehq.action.playback.frame_grab.label">
       <location filename="src/input/ActionCatalog.cpp" line="326"></location>
@@ -461,45 +460,45 @@
     <message id="gamehq.action.playback.play_pause.description">
       <location filename="src/input/ActionCatalog.cpp" line="308"></location>
       <source>Toggle playback of the focused clip.</source>
-      <translation>Переместите воспроизведение сфокусированного клипа.</translation>
+      <translation>Запустить или приостановить воспроизведение выбранного клипа.</translation>
     </message>
     <message id="gamehq.action.playback.play_pause.label">
       <location filename="src/input/ActionCatalog.cpp" line="305"></location>
       <source>Play / Pause</source>
-      <translation>Играть / Пауза</translation>
+      <translation>Воспроизведение / пауза</translation>
     </message>
     <message id="gamehq.action.playback.seek_back.description">
       <location filename="src/input/ActionCatalog.cpp" line="315"></location>
       <source>Step the focused clip backward.</source>
-      <translation>Сделай шаг назад.</translation>
+      <translation>Перемотать выбранный клип на шаг назад.</translation>
     </message>
     <message id="gamehq.action.playback.seek_back.label">
       <location filename="src/input/ActionCatalog.cpp" line="312"></location>
       <source>Seek Back</source>
-      <translation>Поищите обратно</translation>
+      <translation>Перемотать назад</translation>
     </message>
     <message id="gamehq.action.playback.seek_forward.description">
       <location filename="src/input/ActionCatalog.cpp" line="322"></location>
       <source>Step the focused clip forward.</source>
-      <translation>Сделай шаг вперед.</translation>
+      <translation>Перемотать выбранный клип на шаг вперёд.</translation>
     </message>
     <message id="gamehq.action.playback.seek_forward.label">
       <location filename="src/input/ActionCatalog.cpp" line="319"></location>
       <source>Seek Forward</source>
-      <translation>Ищите будущее</translation>
+      <translation>Перемотать вперёд</translation>
     </message>
     <message id="gamehq.action.record">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="295"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="371"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="435"></location>
       <source>Record</source>
-      <translation>Запись</translation>
+      <translation>Записать</translation>
     </message>
     <message id="gamehq.action.remove">
       <location filename="src/ui/qml/components/BindingCard.qml" line="151"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="108"></location>
       <source>Remove</source>
-      <translation>Удалить</translation>
+      <translation>Убрать</translation>
     </message>
     <message id="gamehq.action.replace">
       <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="21"></location>
@@ -524,7 +523,7 @@
     <message id="gamehq.action.revert">
       <location filename="src/ui/qml/components/BindingCard.qml" line="117"></location>
       <source>Revert</source>
-      <translation>Возвращаться</translation>
+      <translation>Вернуть</translation>
     </message>
     <message id="gamehq.action.save">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="629"></location>
@@ -539,12 +538,12 @@
     <message id="gamehq.action.select_all">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="57"></location>
       <source>Select all</source>
-      <translation>Выберите все</translation>
+      <translation>Выделить всё</translation>
     </message>
     <message id="gamehq.action.stop">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="288"></location>
       <source>Stop</source>
-      <translation>- Прекрати !</translation>
+      <translation>Остановить</translation>
     </message>
     <message id="gamehq.common.action.change">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="292"></location>
@@ -552,19 +551,19 @@
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="432"></location>
       <location filename="src/ui/qml/components/SettingsPathRow.qml" line="27"></location>
       <source>Change</source>
-      <translation>Изменение</translation>
+      <translation>Изменить</translation>
     </message>
     <message id="gamehq.common.action.close">
       <location filename="src/ui/qml/components/DialogCloseButton.qml" line="9"></location>
       <location filename="src/ui/qml/components/HelpDialog.qml" line="118"></location>
       <source>Close</source>
-      <translation>Закрой .</translation>
+      <translation>Закрыть</translation>
     </message>
     <message id="gamehq.common.action.open">
       <location filename="src/ui/qml/components/SettingsPathRow.qml" line="34"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="102"></location>
       <source>Open</source>
-      <translation>Открыто</translation>
+      <translation>Открыть</translation>
     </message>
     <message id="gamehq.common.action.use_default">
       <location filename="src/ui/qml/components/SettingsPathRow.qml" line="21"></location>
@@ -574,7 +573,7 @@
     <message id="gamehq.dialog.confirm.default_title">
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="11"></location>
       <source>Are you sure?</source>
-      <translation>- Ты уверена? - Да.</translation>
+      <translation>Вы уверены?</translation>
     </message>
     <message id="gamehq.duration.decimal_seconds">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="268"></location>
@@ -596,13 +595,13 @@
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="287"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="306"></location>
       <source>%1 ms (fast)</source>
-      <translation>%1 мс (быстрый)</translation>
+      <translation>%1 мс (быстро)</translation>
     </message>
     <message id="gamehq.duration.milliseconds.relaxed">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="293"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="312"></location>
       <source>%1 ms (relaxed)</source>
-      <translation>%1 мс (расслабленный)</translation>
+      <translation>%1 мс (с запасом)</translation>
     </message>
     <message id="gamehq.duration.minutes" numerus="yes">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="59"></location>
@@ -632,7 +631,7 @@
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="538"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="540"></location>
       <source>%1 s</source>
-      <translation>%1 s</translation>
+      <translation>%1 с</translation>
     </message>
     <message id="gamehq.error.capture_location.create_failed">
       <location filename="src/config/CaptureLocations.cpp" line="126"></location>
@@ -653,17 +652,17 @@
     <message id="gamehq.error.capture_location.not_writable">
       <location filename="src/config/CaptureLocations.cpp" line="136"></location>
       <source>The selected folder is not writable.</source>
-      <translation>Выбранная папка не записывается.</translation>
+      <translation>В выбранную папку нельзя записывать.</translation>
     </message>
     <message id="gamehq.error.capture_location.restore_default_failed">
       <location filename="src/config/CaptureLocations.cpp" line="202"></location>
       <source>GameHQ could not restore the default folder.</source>
-      <translation>GameHQ Не удалось восстановить папку по умолчанию.</translation>
+      <translation>GameHQ не удалось восстановить папку по умолчанию.</translation>
     </message>
     <message id="gamehq.error.capture_location.save_failed">
       <location filename="src/config/CaptureLocations.cpp" line="175"></location>
       <source>GameHQ could not save the selected folder.</source>
-      <translation>GameHQ Не удалось сохранить выбранную папку.</translation>
+      <translation>GameHQ не удалось сохранить выбранную папку.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
       <location filename="src/ui/AppController.cpp" line="347"></location>
@@ -674,58 +673,57 @@
     <message id="gamehq.error.portable_import.backup_missing">
       <location filename="src/config/PortableProfileImporter.cpp" line="303"></location>
       <source>The interrupted portable-import backup is missing.</source>
-      <translation>Перерыв в импорте не подтверждается.</translation>
+      <translation>Резервная копия прерванного портативного импорта отсутствует.</translation>
     </message>
     <message id="gamehq.error.portable_import.capture_history_value_invalid">
       <location filename="src/config/PortableProfileImporter.cpp" line="391"></location>
       <source>Capture-root history contains a non-string value.</source>
-      <translation>История захвата корня содержит нестрочное значение.</translation>
+      <translation>История корневых папок записей содержит значение, не являющееся строкой.</translation>
     </message>
     <message id="gamehq.error.portable_import.commit_staged_file_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
       <source>Cannot commit staged file %1.</source>
-      <oldsource>Cannot commit staged %1.</oldsource>
-      <translation type="unfinished">Невозможно совершить запуск %1- Я не знаю .</translation>
+      <translation>Не удалось зафиксировать подготовленный файл %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_malformed">
       <location filename="src/config/PortableProfileImporter.cpp" line="343"></location>
       <source>The portable config.json is malformed.</source>
-      <translation>Портативный config.json деформирован.</translation>
+      <translation>Файл config.json портативной версии имеет неверный формат.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_path_unsupported">
       <location filename="src/config/PortableProfileImporter.cpp" line="417"></location>
       <source>Unsupported portable path in config key %1.</source>
-      <translation>Не поддерживаемый портативный путь в клавише конфигурации %1- Я не знаю .</translation>
+      <translation>Неподдерживаемый портативный путь в ключе конфигурации %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_read_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="333"></location>
       <source>Cannot read the portable config.json.</source>
-      <translation>Не удается прочитать портативный config.json.</translation>
+      <translation>Не удалось прочитать файл config.json портативной версии.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_value_not_array">
       <location filename="src/config/PortableProfileImporter.cpp" line="382"></location>
       <source>%1 must be an array.</source>
-      <translation>%1 Должно быть массив.</translation>
+      <translation>%1 должно быть массивом.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_value_not_string">
       <location filename="src/config/PortableProfileImporter.cpp" line="364"></location>
       <source>%1 must be a string.</source>
-      <translation>%1 Должно быть, это шнур.</translation>
+      <translation>%1 должно быть строкой.</translation>
     </message>
     <message id="gamehq.error.portable_import.data_directory_escapes_package">
       <location filename="src/config/PortableProfileImporter.cpp" line="893"></location>
       <source>The portable data directory escapes the selected package root.</source>
-      <translation>Портативный каталог данных выходит из выбранного пакета.</translation>
+      <translation>Каталог данных портативной версии выходит за пределы выбранного корня пакета.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_foreign_key_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="833"></location>
       <source>The staged database failed its foreign-key check.</source>
-      <translation>В базе данных не удалось проверить иностранный ключ.</translation>
+      <translation>Подготовленная база данных не прошла проверку внешних ключей.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_integrity_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="822"></location>
       <source>The staged database failed its integrity check.</source>
-      <translation>Сценаризованная база данных провалила проверку целостности.</translation>
+      <translation>Подготовленная база данных не прошла проверку целостности.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_missing">
       <location filename="src/config/PortableProfileImporter.cpp" line="915"></location>
@@ -735,22 +733,22 @@
     <message id="gamehq.error.portable_import.database_open_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="749"></location>
       <source>The staged portable database cannot be opened: %1</source>
-      <translation>Невозможно открыть портативную базу данных: %1</translation>
+      <translation>Не удалось открыть подготовленную портативную базу данных: %1</translation>
     </message>
     <message id="gamehq.error.portable_import.database_operation_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="28"></location>
       <source>A portable-profile database operation failed: %1</source>
-      <translation>Операция портативной базы данных провалилась: %1</translation>
+      <translation>Не удалось выполнить операцию с базой данных портативного профиля: %1</translation>
     </message>
     <message id="gamehq.error.portable_import.database_path_unsupported">
       <location filename="src/config/PortableProfileImporter.cpp" line="801"></location>
       <source>Unsupported portable path in database setting %1.</source>
-      <translation>Не поддерживаемый портативный путь в настройке базы данных %1- Я не знаю .</translation>
+      <translation>Неподдерживаемый портативный путь в параметре базы данных %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_schema_read_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="757"></location>
       <source>The portable database schema cannot be read.</source>
-      <translation>Схема портативной базы данных не может быть прочитана.</translation>
+      <translation>Не удалось прочитать схему портативной базы данных.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_schema_unsupported">
       <location filename="src/config/PortableProfileImporter.cpp" line="763"></location>
@@ -760,17 +758,17 @@
     <message id="gamehq.error.portable_import.database_stage_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="987"></location>
       <source>The portable database cannot be staged.</source>
-      <translation>Портативная база данных не может быть организована.</translation>
+      <translation>Не удалось подготовить портативную базу данных.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_transaction_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="769"></location>
       <source>The portable database transaction cannot begin.</source>
-      <translation>Транзакция портативной базы данных не может начаться.</translation>
+      <translation>Не удалось начать транзакцию портативной базы данных.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_backup_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="1038"></location>
       <source>The empty installed profile cannot be backed up for import.</source>
-      <translation>Пустой установленный профиль не может быть сохранен для импорта.</translation>
+      <translation>Не удалось создать резервную копию пустого установленного профиля для импорта.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_config_not_default">
       <location filename="src/config/PortableProfileImporter.cpp" line="501"></location>
@@ -780,23 +778,23 @@
     <message id="gamehq.error.portable_import.destination_contains_link">
       <location filename="src/config/PortableProfileImporter.cpp" line="459"></location>
       <source>The installed profile contains a symbolic link or junction: %1.</source>
-      <translation>Установленный профиль содержит символическое звено или соединение: %1- Я не знаю .</translation>
+      <translation>Установленный профиль содержит символьную ссылку или точку соединения: %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_data_unsupported">
       <location filename="src/config/PortableProfileImporter.cpp" line="482"></location>
       <source>The installed profile contains unsupported data: %1.</source>
-      <translation>Установленный профиль содержит неподдерживаемые данные: %1- Я не знаю .</translation>
+      <translation>Установленный профиль содержит неподдерживаемые данные: %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_database_inspection_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="520"></location>
       <location filename="src/config/PortableProfileImporter.cpp" line="542"></location>
       <source>The installed database cannot be inspected.</source>
-      <translation>Невозможно просмотреть установленную базу данных.</translation>
+      <translation>Не удалось проверить установленную базу данных.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_file_exists">
       <location filename="src/config/PortableProfileImporter.cpp" line="469"></location>
       <source>The installed profile already has its own %1.</source>
-      <translation>Установленный профиль уже имеет свой собственный %1- Я не знаю .</translation>
+      <translation>В установленном профиле уже есть собственный файл %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_not_empty">
       <location filename="src/config/PortableProfileImporter.cpp" line="553"></location>
@@ -807,108 +805,107 @@
     <message id="gamehq.error.portable_import.destination_restore_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="292"></location>
       <source>The interrupted portable import could not restore its destination backup.</source>
-      <translation>Перерыв в переносном импорте не смог восстановить резервную копию назначения.</translation>
+      <translation>Прерванный портативный импорт не смог восстановить резервную копию папки назначения.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_root_link">
       <location filename="src/config/PortableProfileImporter.cpp" line="432"></location>
       <source>The installed profile root must not be a symbolic link or junction.</source>
-      <translation>Установленный корень профиля не должен быть символическим звеном или соединением.</translation>
+      <translation>Корневая папка установленного профиля не должна быть символьной ссылкой или точкой соединения.</translation>
     </message>
     <message id="gamehq.error.portable_import.game_path_scheme_invalid">
       <location filename="src/config/PortableProfileImporter.cpp" line="604"></location>
       <source>A game executable path incorrectly uses portable:/.</source>
-      <translation>Игровой исполняемый путь неправильно использует портативный:/.</translation>
+      <translation>Путь к исполняемому файлу игры некорректно использует portable:/.</translation>
     </message>
     <message id="gamehq.error.portable_import.hash_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="159"></location>
       <source>Cannot hash %1.</source>
-      <translation>Не может быть хэша %1- Я не знаю .</translation>
+      <translation>Не удалось вычислить хеш для %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
       <location filename="src/ui/AppController.cpp" line="194"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
-      <translation>Переносные профили могут быть импортированы только с установленной копией GameHQ- Я не знаю .</translation>
+      <translation>Портативные профили можно импортировать только установленной копией GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_invalid">
       <location filename="src/config/PortableProfileImporter.cpp" line="263"></location>
       <source>The interrupted portable-import journal is invalid.</source>
-      <translation>Перерыв в журнале портативного импорта недействителен.</translation>
+      <translation>Журнал прерванного портативного импорта недействителен.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_malformed">
       <location filename="src/config/PortableProfileImporter.cpp" line="242"></location>
       <source>The interrupted portable-import journal is malformed.</source>
-      <translation>Переборенный портативный импортный журнал деформирован.</translation>
+      <translation>Журнал прерванного портативного импорта имеет неверный формат.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_read_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="231"></location>
       <source>The interrupted portable-import journal cannot be read.</source>
-      <translation>Невозможно прочитать прерванный портативный импортный журнал.</translation>
+      <translation>Не удалось прочитать журнал прерванного портативного импорта.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_remove_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="315"></location>
       <source>The recovered portable-import journal could not be removed.</source>
-      <translation>Восстановленный портативный импортный журнал не мог быть удален.</translation>
+      <translation>Не удалось удалить восстановленный журнал портативного импорта.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
       <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Select a local folder containing portable GameHQ.</source>
-      <oldsource>Select a local GameHQ portable folder.</oldsource>
-      <translation type="unfinished">Выберите локальный GameHQ портативная папка.</translation>
+      <translation>Выберите локальную папку с портативной версией GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
       <location filename="src/ui/AppController.cpp" line="209"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
-      <translation>Выбранная папка не является GameHQ портативный пакет.</translation>
+      <translation>Выбранная папка не является портативным пакетом GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_root_canonicalize_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="56"></location>
       <source>The portable package root cannot be canonicalized.</source>
-      <translation>Коренный пакет портативного пакета не может быть канонизирован.</translation>
+      <translation>Не удалось привести корень портативного пакета к каноническому виду.</translation>
     </message>
     <message id="gamehq.error.portable_import.path_escapes_package">
       <location filename="src/config/PortableProfileImporter.cpp" line="73"></location>
       <source>A portable path escapes the selected package root.</source>
-      <translation>Переносный путь выходит из выбранного пакета.</translation>
+      <translation>Портативный путь выходит за пределы выбранного корня пакета.</translation>
     </message>
     <message id="gamehq.error.portable_import.path_invalid">
       <location filename="src/config/PortableProfileImporter.cpp" line="106"></location>
       <source>A portable:/ path is empty or absolute.</source>
-      <translation>Путь портативного:/ пустой или абсолютный.</translation>
+      <translation>Путь portable:/ пуст или является абсолютным.</translation>
     </message>
     <message id="gamehq.error.portable_import.path_scheme_required">
       <location filename="src/config/PortableProfileImporter.cpp" line="93"></location>
       <source>Imported paths must be absolute or use portable:/.</source>
-      <translation>Импортируемые пути должны быть абсолютными или использовать портативные:/.</translation>
+      <translation>Импортируемые пути должны быть абсолютными или использовать portable:/.</translation>
     </message>
     <message id="gamehq.error.portable_import.portable_path_escapes_package">
       <location filename="src/config/PortableProfileImporter.cpp" line="117"></location>
       <source>A portable:/ path escapes the selected package root.</source>
-      <translation>Портативный:/ путь уходит из выбранного пакета.</translation>
+      <translation>Путь portable:/ выходит за пределы выбранного корня пакета.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
       <location filename="src/ui/AppController.cpp" line="220"></location>
       <source>GameHQ could not identify its own process for the import.</source>
-      <translation>GameHQ не смогла определить свой собственный процесс для импорта.</translation>
+      <translation>GameHQ не удалось определить собственный процесс для импорта.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
       <location filename="src/ui/AppController.cpp" line="230"></location>
       <source>GameHQ could not start the portable import process.</source>
-      <translation>GameHQ Не удалось запустить процесс портативного импорта.</translation>
+      <translation>GameHQ не удалось запустить процесс портативного импорта.</translation>
     </message>
     <message id="gamehq.error.portable_import.publish_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="1062"></location>
       <source>The staged profile cannot be published.</source>
-      <translation>Профиль не может быть опубликован.</translation>
+      <translation>Не удалось опубликовать подготовленный профиль.</translation>
     </message>
     <message id="gamehq.error.portable_import.published_destination_missing">
       <location filename="src/config/PortableProfileImporter.cpp" line="279"></location>
       <source>The published portable-import destination is missing.</source>
-      <translation>Недостаточно указать место назначения портативного импорта.</translation>
+      <translation>Опубликованная папка назначения портативного импорта отсутствует.</translation>
     </message>
     <message id="gamehq.error.portable_import.recovery_remove_directory_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="203"></location>
       <source>Portable-import recovery could not remove a transaction directory.</source>
-      <translation>Восстановление портативного импорта не смогло удалить каталог транзакций.</translation>
+      <translation>Восстановлению портативного импорта не удалось удалить каталог транзакции.</translation>
     </message>
     <message id="gamehq.error.portable_import.recovery_required">
       <location filename="src/config/PortableProfileImporter.cpp" line="973"></location>
@@ -923,27 +920,27 @@
     <message id="gamehq.error.portable_import.sound_file_missing">
       <location filename="src/config/PortableProfileImporter.cpp" line="706"></location>
       <source>A referenced portable sound file is missing.</source>
-      <translation>Отправленный портативный звуковой файл отсутствует.</translation>
+      <translation>Указанный портативный звуковой файл отсутствует.</translation>
     </message>
     <message id="gamehq.error.portable_import.sound_file_stage_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="718"></location>
       <source>A referenced sound file could not be staged.</source>
-      <translation>Не удалось снять ссылочный звуковой файл.</translation>
+      <translation>Не удалось подготовить указанный звуковой файл.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_changed">
       <location filename="src/config/PortableProfileImporter.cpp" line="1012"></location>
       <source>The portable source changed during import.</source>
-      <translation>Переносной источник изменился во время импорта.</translation>
+      <translation>Портативный источник изменился во время импорта.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_destination_overlap">
       <location filename="src/config/PortableProfileImporter.cpp" line="901"></location>
       <source>Source and destination profiles must be separate.</source>
-      <translation>Профили источника и места назначения должны быть отделены.</translation>
+      <translation>Профили источника и назначения должны быть разными.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_package_invalid">
       <location filename="src/config/PortableProfileImporter.cpp" line="884"></location>
       <source>Select a valid GameHQ portable package root.</source>
-      <translation>Выберите действительный GameHQ портативный пакет root.</translation>
+      <translation>Выберите корректный корень портативного пакета GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_read_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="150"></location>
@@ -953,28 +950,27 @@
     <message id="gamehq.error.portable_import.stage_file_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="173"></location>
       <source>Cannot stage %1.</source>
-      <translation>Невозможно %1- Я не знаю .</translation>
+      <translation>Не удалось подготовить %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.staging_directory_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="939"></location>
       <source>The import staging directory cannot be created.</source>
-      <translation>Невозможно создать каталог импорта.</translation>
+      <translation>Не удалось создать каталог подготовки импорта.</translation>
     </message>
     <message id="gamehq.error.portable_import.transaction_running">
       <location filename="src/config/PortableProfileImporter.cpp" line="872"></location>
       <source>Another portable-profile import is already running.</source>
-      <translation>Еще один портативный импорт уже запущен.</translation>
+      <translation>Импорт другого портативного профиля уже выполняется.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
       <location filename="src/app/App.cpp" line="446"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
-      <oldsource>The update was cancelled because capture work did not finish safely in time.</oldsource>
-      <translation type="unfinished">Обновление было отменено, потому что работа по захватам не была завершена вовремя.</translation>
+      <translation>Обновление отменено: захват не удалось безопасно завершить вовремя.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
       <location filename="src/updates/UpdateService.cpp" line="333"></location>
       <source>Update check failed: %1</source>
-      <translation>Провал проверки обновления: %1</translation>
+      <translation>Не удалось проверить обновления: %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
       <location filename="src/updates/UpdateService.cpp" line="122"></location>
@@ -989,22 +985,22 @@
     <message id="gamehq.error.update.download.checksum_calculation_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="523"></location>
       <source>GameHQ could not calculate the update checksum.</source>
-      <translation>GameHQ Не удалось вычислить контрольную сумму обновления.</translation>
+      <translation>GameHQ не удалось вычислить контрольную сумму обновления.</translation>
     </message>
     <message id="gamehq.error.update.download.checksum_entry_count">
       <location filename="src/updates/UpdateDownloader.cpp" line="477"></location>
       <source>The update checksum file must contain exactly one entry.</source>
-      <translation>Файл проверки суммы обновления должен содержать точно одну запись.</translation>
+      <translation>Файл контрольной суммы обновления должен содержать ровно одну запись.</translation>
     </message>
     <message id="gamehq.error.update.download.checksum_format_invalid">
       <location filename="src/updates/UpdateDownloader.cpp" line="489"></location>
       <source>The update checksum file has an invalid format.</source>
-      <translation>Файл проверки суммы обновления имеет недействительный формат.</translation>
+      <translation>Файл контрольной суммы обновления имеет неверный формат.</translation>
     </message>
     <message id="gamehq.error.update.download.checksum_package_mismatch">
       <location filename="src/updates/UpdateDownloader.cpp" line="498"></location>
       <source>The update checksum names a different package.</source>
-      <translation>Подведение в соответствие с контрольной суммой называет другой пакет.</translation>
+      <translation>Контрольная сумма обновления указывает на другой пакет.</translation>
     </message>
     <message id="gamehq.error.update.download.evidence_incomplete">
       <location filename="src/updates/UpdateDownloader.cpp" line="324"></location>
@@ -1014,12 +1010,12 @@
     <message id="gamehq.error.update.download.flush_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="212"></location>
       <source>GameHQ could not flush the update download to disk.</source>
-      <translation>GameHQ Не удалось переместить обновление на диск.</translation>
+      <translation>GameHQ не удалось сбросить загруженное обновление на диск.</translation>
     </message>
     <message id="gamehq.error.update.download.http_status">
       <location filename="src/updates/UpdateDownloader.cpp" line="257"></location>
       <source>Update download failed with HTTP status %1.</source>
-      <translation>Не удалось загрузить обновление со статусом HTTP %1- Я не знаю .</translation>
+      <translation>Не удалось загрузить обновление, HTTP-статус %1.</translation>
     </message>
     <message id="gamehq.error.update.download.https_required">
       <location filename="src/updates/UpdateDownloader.cpp" line="80"></location>
@@ -1029,12 +1025,12 @@
     <message id="gamehq.error.update.download.insecure_redirect">
       <location filename="src/updates/UpdateDownloader.cpp" line="240"></location>
       <source>The update download redirected away from HTTPS.</source>
-      <translation>Загрузка обновления перенаправлена от HTTPS.</translation>
+      <translation>Загрузка обновления была перенаправлена с HTTPS на незащищённый адрес.</translation>
     </message>
     <message id="gamehq.error.update.download.manifest_hash_malformed">
       <location filename="src/updates/UpdateDownloader.cpp" line="301"></location>
       <source>The signed manifest artifact hash is malformed.</source>
-      <translation>Подписанный манифест артефакта с деформацией.</translation>
+      <translation>Хеш артефакта в подписанном манифесте имеет неверный формат.</translation>
     </message>
     <message id="gamehq.error.update.download.manifest_length_mismatch">
       <location filename="src/updates/UpdateDownloader.cpp" line="313"></location>
@@ -1044,7 +1040,7 @@
     <message id="gamehq.error.update.download.manifest_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="346"></location>
       <source>GameHQ could not read the downloaded release manifest.</source>
-      <translation>GameHQ Не удалось прочитать загруженный манифест.</translation>
+      <translation>GameHQ не удалось прочитать загруженный манифест выпуска.</translation>
     </message>
     <message id="gamehq.error.update.download.manifest_version_mismatch">
       <location filename="src/updates/UpdateDownloader.cpp" line="396"></location>
@@ -1069,28 +1065,27 @@
     <message id="gamehq.error.update.download.package_not_authorised">
       <location filename="src/updates/UpdateDownloader.cpp" line="405"></location>
       <source>The signed manifest does not authorize an update package.</source>
-      <oldsource>The signed manifest does not authorise an update package.</oldsource>
-      <translation type="unfinished">Подписанный манифест не разрешает обновление пакета.</translation>
+      <translation>Подписанный манифест не разрешает ни один пакет обновления.</translation>
     </message>
     <message id="gamehq.error.update.download.package_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="514"></location>
       <source>GameHQ could not read the downloaded update package.</source>
-      <translation>GameHQ Не удалось прочитать загруженный пакет обновлений.</translation>
+      <translation>GameHQ не удалось прочитать загруженный пакет обновления.</translation>
     </message>
     <message id="gamehq.error.update.download.package_size_invalid">
       <location filename="src/updates/UpdateDownloader.cpp" line="96"></location>
       <source>The update package size is missing or exceeds the safety limit.</source>
-      <translation>Размер пакета обновления отсутствует или превышает предельный уровень безопасности.</translation>
+      <translation>Размер пакета обновления отсутствует или превышает предел безопасности.</translation>
     </message>
     <message id="gamehq.error.update.download.partial_create_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="150"></location>
       <source>GameHQ could not create the partial update file.</source>
-      <translation>GameHQ Не удалось создать файл частичного обновления.</translation>
+      <translation>GameHQ не удалось создать файл частичной загрузки обновления.</translation>
     </message>
     <message id="gamehq.error.update.download.publish_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="222"></location>
       <source>GameHQ could not publish the completed update download.</source>
-      <translation>GameHQ Не удалось опубликовать завершенную загрузку обновления.</translation>
+      <translation>GameHQ не удалось опубликовать завершённую загрузку обновления.</translation>
     </message>
     <message id="gamehq.error.update.download.release_size_mismatch">
       <location filename="src/updates/UpdateDownloader.cpp" line="265"></location>
@@ -1105,84 +1100,82 @@
     <message id="gamehq.error.update.download.signature_noncanonical">
       <location filename="src/updates/UpdateDownloader.cpp" line="454"></location>
       <source>The release signature is not in its canonical form.</source>
-      <translation>Подпись на освобождение не в своей канонической форме.</translation>
+      <translation>Подпись выпуска имеет неканоническую форму.</translation>
     </message>
     <message id="gamehq.error.update.download.signature_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="357"></location>
       <source>GameHQ could not read the downloaded release signature.</source>
-      <translation>GameHQ Не удалось прочитать подпись загруженного релиза.</translation>
+      <translation>GameHQ не удалось прочитать загруженную подпись выпуска.</translation>
     </message>
     <message id="gamehq.error.update.download.signature_untrusted">
       <location filename="src/updates/UpdateDownloader.cpp" line="387"></location>
       <source>This release is not authorized by a trusted signature: %1</source>
-      <oldsource>This release is not authorised by a trusted signature: %1</oldsource>
-      <translation type="unfinished">Это выпуск не разрешен доверенной подписью: %1</translation>
+      <translation>Этот выпуск не подтверждён доверенной подписью: %1</translation>
     </message>
     <message id="gamehq.error.update.download.signed_manifest_missing">
       <location filename="src/updates/UpdateDownloader.cpp" line="88"></location>
       <source>This release has no signed manifest, so it cannot be installed.</source>
-      <translation>Этот релиз не имеет подписанного манифеста, поэтому его нельзя установить.</translation>
+      <translation>У этого выпуска нет подписанного манифеста, поэтому его нельзя установить.</translation>
     </message>
     <message id="gamehq.error.update.download.signed_size_invalid">
       <location filename="src/updates/UpdateDownloader.cpp" line="423"></location>
       <source>The signed update package size is out of range.</source>
-      <translation>Размер подписанного пакета обновления не в пределах диапазона.</translation>
+      <translation>Размер подписанного пакета обновления выходит за допустимые пределы.</translation>
     </message>
     <message id="gamehq.error.update.download.size_limit_exceeded">
       <location filename="src/updates/UpdateDownloader.cpp" line="190"></location>
       <source>The update download exceeded its safety size limit.</source>
-      <translation>Загрузка обновления превысила свой безопасный размер.</translation>
+      <translation>Загрузка обновления превысила предел безопасного размера.</translation>
     </message>
     <message id="gamehq.error.update.download.staging_create_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="104"></location>
       <source>GameHQ could not create the update staging directory.</source>
-      <translation>GameHQ Не удалось создать каталог обновления.</translation>
+      <translation>GameHQ не удалось создать каталог подготовки обновления.</translation>
     </message>
     <message id="gamehq.error.update.download.trust_state_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="375"></location>
       <source>GameHQ could not read its release trust state: %1</source>
-      <translation>GameHQ Не удалось прочитать состояние доверия к выпуску: %1</translation>
+      <translation>GameHQ не удалось прочитать состояние доверия к выпуску: %1</translation>
     </message>
     <message id="gamehq.error.update.download.trust_state_write_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="434"></location>
       <source>GameHQ could not record the release trust state: %1</source>
-      <translation>GameHQ Не удалось записать состояние доверия к выпуску: %1</translation>
+      <translation>GameHQ не удалось записать состояние доверия к выпуску: %1</translation>
     </message>
     <message id="gamehq.error.update.download.write_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="198"></location>
       <source>GameHQ could not write the update download to disk.</source>
-      <translation>GameHQ Не удалось записать загрузку обновления на диск.</translation>
+      <translation>GameHQ не удалось записать загруженное обновление на диск.</translation>
     </message>
     <message id="gamehq.error.update.install.handshake_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="183"></location>
       <source>GameHQ could not prepare the updater handshake.</source>
-      <translation>GameHQ Не смог подготовить рукопожатие обновления.</translation>
+      <translation>GameHQ не удалось подготовить рукопожатие со службой обновления.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_missing">
       <location filename="src/updates/UpdateInstaller.cpp" line="169"></location>
       <source>%1 is missing or cannot run.</source>
-      <oldsource>GameHQUpdater.exe is missing or cannot run.</oldsource>
       <translation>%1 отсутствует или не запускается.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_rejected">
       <location filename="src/updates/UpdateInstaller.cpp" line="212"></location>
       <source>The updater helper rejected the update before it became ready.</source>
-      <translation>Помощник обновления отклонил обновление до того, как оно стало готовым.</translation>
+      <translation>Помощник обновления отклонил обновление до того, как оно было готово.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_start_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="195"></location>
       <source>GameHQ could not start the updater helper.</source>
-      <translation>GameHQ Не удалось запустить помощника обновления.</translation>
+      <translation>GameHQ не удалось запустить помощник обновления.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_timeout">
       <location filename="src/updates/UpdateInstaller.cpp" line="217"></location>
       <source>The updater helper did not confirm it is ready in time.</source>
-      <translation>Помощник по обновлению не подтвердил, что он готов вовремя.</translation>
+      <translation>Помощник обновления не подтвердил готовность вовремя.</translation>
     </message>
     <message id="gamehq.error.update.install.manifest_mismatch">
       <location filename="src/updates/UpdateInstaller.cpp" line="72"></location>
       <source>The staged package no longer matches the signed manifest.</source>
-      <translation>Поэтапный пакет больше не соответствует подписанному манифесту.</translation>
+      <translation>Подготовленный пакет больше не соответствует подписанному манифесту.</translation>
     </message>
     <message id="gamehq.error.update.install.metadata_incomplete">
       <location filename="src/updates/UpdateInstaller.cpp" line="31"></location>
@@ -1202,18 +1195,18 @@
     <message id="gamehq.error.update.install.package_outside_staging">
       <location filename="src/updates/UpdateInstaller.cpp" line="54"></location>
       <source>The verified update package is outside GameHQ's staging directory.</source>
-      <translation>Пакет обновлений уже готов. GameHQ Это каталог.</translation>
+      <translation>Проверенный пакет обновления находится за пределами каталога подготовки GameHQ.</translation>
     </message>
     <message id="gamehq.error.update.install.process_identity_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="106"></location>
       <location filename="src/updates/UpdateInstaller.cpp" line="115"></location>
       <source>GameHQ could not identify its own process for the update.</source>
-      <translation>GameHQ не смог определить свой собственный процесс для обновления.</translation>
+      <translation>GameHQ не удалось определить собственный процесс для обновления.</translation>
     </message>
     <message id="gamehq.error.update.install.transaction_directory_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="91"></location>
       <source>GameHQ could not create the update transaction directory.</source>
-      <translation>GameHQ Не удалось создать каталог обновлений.</translation>
+      <translation>GameHQ не удалось создать каталог транзакции обновления.</translation>
     </message>
     <message id="gamehq.error.update.install.transaction_publish_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="153"></location>
@@ -1223,32 +1216,32 @@
     <message id="gamehq.error.update.maintenance_handoff_failed">
       <location filename="src/app/App.cpp" line="421"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
-      <translation>GameHQ Не удалось начать обновление технического обслуживания: %1</translation>
+      <translation>GameHQ не удалось начать обслуживание обновления: %1</translation>
     </message>
     <message id="gamehq.error.update.preflight.disk_space_insufficient">
       <location filename="src/updates/UpdatePreflight.cpp" line="119"></location>
       <source>There is not enough free space for download, staging and rollback backup.</source>
-      <translation>Не хватает свободного места для загрузки, загрузки и замены.</translation>
+      <translation>Недостаточно свободного места для загрузки, подготовки и резервной копии для отката.</translation>
     </message>
     <message id="gamehq.error.update.preflight.filesystem_unsupported">
       <location filename="src/updates/UpdatePreflight.cpp" line="69"></location>
       <source>Automatic updating currently requires NTFS or ReFS; use the release page on this drive.</source>
-      <translation>Автоматическое обновление требует NTFS или ReFS; используйте страницу выпуска на этом диске.</translation>
+      <translation>Автоматическое обновление сейчас требует NTFS или ReFS; на этом диске используйте страницу выпуска.</translation>
     </message>
     <message id="gamehq.error.update.preflight.network_share">
       <location filename="src/updates/UpdatePreflight.cpp" line="21"></location>
       <source>Automatic updating is not supported from a network share. Use the release page instead.</source>
-      <translation>Автоматическое обновление не поддерживается с сетевого доступа.</translation>
+      <translation>Автоматическое обновление из сетевой папки не поддерживается. Воспользуйтесь страницей выпуска.</translation>
     </message>
     <message id="gamehq.error.update.preflight.package_incomplete">
       <location filename="src/updates/UpdatePreflight.cpp" line="41"></location>
       <source>Automatic updating is available only in a complete packaged GameHQ installation.</source>
-      <translation>Автоматическое обновление доступно только в комплектации GameHQ установка.</translation>
+      <translation>Автоматическое обновление доступно только в полной упакованной установке GameHQ.</translation>
     </message>
     <message id="gamehq.error.update.preflight.path_too_long">
       <location filename="src/updates/UpdatePreflight.cpp" line="29"></location>
       <source>This installation path is too long for safe automatic replacement. Use a shorter local path.</source>
-      <translation>Этот путь установки слишком длинный для безопасной автоматической замены.</translation>
+      <translation>Этот путь установки слишком длинный для безопасной автоматической замены. Используйте более короткий локальный путь.</translation>
     </message>
     <message id="gamehq.error.update.preflight.recovery_pending">
       <location filename="src/updates/UpdatePreflight.cpp" line="51"></location>
@@ -1258,12 +1251,12 @@
     <message id="gamehq.error.update.preflight.staging_create_failed">
       <location filename="src/updates/UpdatePreflight.cpp" line="77"></location>
       <source>GameHQ cannot create its update staging directory here.</source>
-      <translation>GameHQ не может создать свой каталог обновления здесь.</translation>
+      <translation>GameHQ не может создать здесь каталог подготовки обновления.</translation>
     </message>
     <message id="gamehq.error.update.preflight.volume_not_writable">
       <location filename="src/updates/UpdatePreflight.cpp" line="60"></location>
       <source>The GameHQ installation is not on a writable local volume.</source>
-      <translation>В GameHQ установка не на записываемом локальном объеме.</translation>
+      <translation>Установка GameHQ находится не на локальном томе с возможностью записи.</translation>
     </message>
     <message id="gamehq.error.update.preflight.write_failed">
       <location filename="src/updates/UpdatePreflight.cpp" line="88"></location>
@@ -1278,28 +1271,28 @@
     <message id="gamehq.error.update.release_withdrawn">
       <location filename="src/updates/UpdateService.cpp" line="281"></location>
       <source>The downloaded release was withdrawn before installation.</source>
-      <translation>Скачаемое издание было отозвано до установки.</translation>
+      <translation>Загруженный выпуск был отозван до установки.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
       <location filename="src/updates/UpdateService.cpp" line="325"></location>
       <source>The release could not be revalidated: %1</source>
-      <translation>Освобождение не могло быть продлено: %1</translation>
+      <translation>Не удалось повторно проверить выпуск: %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
       <location filename="src/updates/UpdateService.cpp" line="253"></location>
       <source>The release could not be freshly revalidated before installation.</source>
-      <translation>До установки разрешение не могло быть вновь подтверждено.</translation>
+      <translation>Не удалось выполнить свежую повторную проверку выпуска перед установкой.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
       <location filename="src/updates/UpdateService.cpp" line="303"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
-      <translation>GitHub не смог подтвердить это выпуск до установки. Попробуйте еще раз позже.</translation>
+      <translation>GitHub не смог повторно проверить этот выпуск перед установкой. Повторите попытку позже.</translation>
     </message>
     <message id="gamehq.format.fps">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="87"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="89"></location>
       <source>%1 fps</source>
-      <translation>%1 fps</translation>
+      <translation>%1 FPS</translation>
     </message>
     <message id="gamehq.format.megabits_per_second">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="114"></location>
@@ -1307,7 +1300,7 @@
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="118"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="120"></location>
       <source>%1 Mbps</source>
-      <translation>%1 Мбит / с</translation>
+      <translation>%1 Мбит/с</translation>
     </message>
     <message id="gamehq.format.percent">
       <location filename="src/ui/qml/components/SettingsSlider.qml" line="21"></location>
@@ -1317,7 +1310,7 @@
     <message id="gamehq.format.size.bytes">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="44"></location>
       <source>%1 B</source>
-      <translation>%1 B</translation>
+      <translation>%1 Б</translation>
     </message>
     <message id="gamehq.format.size.kilobytes">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="40"></location>
@@ -1338,19 +1331,19 @@
     <message id="gamehq.gallery.action.add_folder">
       <location filename="src/ui/qml/components/DesktopEmptyState.qml" line="31"></location>
       <source>Add folder…</source>
-      <translation>Добавить папку...</translation>
+      <translation>Добавить папку…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
       <location filename="src/ui/qml/Main.qml" line="1101"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
-      <translation>Выбор оптового</translation>
+      <translation>Множественный выбор</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
       <location filename="src/ui/qml/Main.qml" line="1097"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="14"></location>
       <source>Show in folder</source>
-      <translation>Показывать в папке</translation>
+      <translation>Показать в папке</translation>
     </message>
     <message id="gamehq.gallery.capture_caption">
       <location filename="src/ui/qml/components/CaptureTile.qml" line="180"></location>
@@ -1376,11 +1369,11 @@ This permanently deletes the file.</source>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
-        <numerusform>%n файл будет удалён безвозвратно.
+        <numerusform>%n запись будет удалена безвозвратно.
 Это действие нельзя отменить.</numerusform>
-        <numerusform>%n файла будут удалены безвозвратно.
+        <numerusform>%n записи будут удалены безвозвратно.
 Это действие нельзя отменить.</numerusform>
-        <numerusform>%n файлов будут удалены безвозвратно.
+        <numerusform>%n записей будет удалено безвозвратно.
 Это действие нельзя отменить.</numerusform>
       </translation>
     </message>
@@ -1392,37 +1385,37 @@ This cannot be undone.</source>
     <message id="gamehq.gallery.empty.description">
       <location filename="src/ui/qml/components/DesktopEmptyState.qml" line="21"></location>
       <source>No captures yet — add a folder to watch.</source>
-      <translation>Пока нет записей  добавить папку для просмотра.</translation>
+      <translation>Пока нет записей — добавьте папку для отслеживания.</translation>
     </message>
     <message id="gamehq.gallery.hint.browse.gamepad">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="46"></location>
       <source>Cross — open | Triangle — favorite | Square — menu | L1 — sidebar | PS — overlay</source>
-      <translation>Кросс  открыть ∙ Треугольник  фаворит ∙ Квадрат  меню ∙ L1  боковая панель ∙ PS  наложение</translation>
+      <translation>Крест — открыть | Треугольник — избранное | Квадрат — меню | L1 — боковая панель | PS — оверлей</translation>
     </message>
     <message id="gamehq.gallery.hint.browse.keyboard">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="49"></location>
       <source>Enter — open | F — favorite | E — show in folder | Ctrl+Shift+G — overlay</source>
-      <translation>Введите  открыть ∙ Ф  любимый ∙ И  показать в папке ∙ Ctrl+Shift+G  наложение</translation>
+      <translation>Enter — открыть | F — избранное | E — показать в папке | Ctrl+Shift+G — оверлей</translation>
     </message>
     <message id="gamehq.gallery.hint.bulk.gamepad">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="39"></location>
       <source>Cross — select | Triangle — all | Square — delete | Circle — done</source>
-      <translation>Кросс  выберите ∙ Треугольник  все ∙ Квадрат  удалите ∙ Круг  готов</translation>
+      <translation>Крест — выбрать | Треугольник — все | Квадрат — удалить | Круг — готово</translation>
     </message>
     <message id="gamehq.gallery.hint.bulk.keyboard">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="42"></location>
       <source>Enter/Space — select | Ctrl+A — all | Delete — delete | Esc — done</source>
-      <translation>Введите/пробел  выберите ∙ Ctrl+A  все ∙ Удалить  удалить ∙ Esc  готово</translation>
+      <translation>Enter/Пробел — выбрать | Ctrl+A — все | Delete — удалить | Esc — готово</translation>
     </message>
     <message id="gamehq.gallery.hint.sidebar.gamepad">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="31"></location>
       <source>D-pad ↑↓ — pick | Cross — select | R1 — back to grid</source>
-      <translation>D-pad ↑↓  выбирать ∙ ∙ Крос  выбирать ∙ R1  обратно в сетку</translation>
+      <translation>Крестовина ↑↓ — выбор | Крест — выбрать | R1 — назад к сетке</translation>
     </message>
     <message id="gamehq.gallery.hint.sidebar.keyboard">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="34"></location>
       <source>↑↓ — pick | Enter — select | Esc — back to grid</source>
-      <translation>↑ ↓  выбирать ∙  вводить  выбирать ∙ Esc  возвращаться в сетку</translation>
+      <translation>↑↓ — выбор | Enter — выбрать | Esc — назад к сетке</translation>
     </message>
     <message id="gamehq.gallery.selection.count" numerus="yes">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="26"></location>
@@ -1436,7 +1429,7 @@ This cannot be undone.</source>
     <message id="gamehq.gallery.viewer.window_title">
       <location filename="src/ui/qml/components/Lightbox.qml" line="19"></location>
       <source>%1 Viewer</source>
-      <translation>Просмотрщик %1</translation>
+      <translation>Просмотр — %1</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
       <location filename="src/ui/AppController.cpp" line="335"></location>
@@ -1456,12 +1449,12 @@ This cannot be undone.</source>
     <message id="gamehq.hdr.status.no_displays">
       <location filename="src/ui/AppController.cpp" line="315"></location>
       <source>No displays reported by the graphics driver</source>
-      <translation>Никаких отображений не сообщается графическим драйвером</translation>
+      <translation>Графический драйвер не сообщил ни об одном дисплее</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
       <location filename="src/ui/AppController.cpp" line="309"></location>
       <source>Not checked yet</source>
-      <translation>Еще не проверено</translation>
+      <translation>Ещё не проверено</translation>
     </message>
     <message id="gamehq.help.binding.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="86"></location>
@@ -1472,7 +1465,7 @@ This cannot be undone.</source>
     <message id="gamehq.help.feature.gallery.description">
       <location filename="src/ui/qml/HelpView.qml" line="318"></location>
       <source>All captures in one grid — filter by category or game. Grid navigation works with keyboard, mouse, and controller.</source>
-      <translation>Все снимки в одной сетке  фильтр по категориям или играм.</translation>
+      <translation>Все записи в одной сетке — фильтр по категории или игре. Навигация по сетке работает с клавиатурой, мышью и геймпадом.</translation>
     </message>
     <message id="gamehq.help.feature.gallery.title">
       <location filename="src/ui/qml/HelpView.qml" line="316"></location>
@@ -1482,59 +1475,57 @@ This cannot be undone.</source>
     <message id="gamehq.help.feature.lightbox.description">
       <location filename="src/ui/qml/HelpView.qml" line="330"></location>
       <source>Full-screen viewer for screenshots and videos. Opens from both the main window and the overlay.</source>
-      <translation>Полноэкранный просмотрщик для скриншотов и видео.</translation>
+      <translation>Полноэкранный просмотр снимков экрана и видео. Открывается из главного окна и из оверлея.</translation>
     </message>
     <message id="gamehq.help.feature.lightbox.title">
       <location filename="src/ui/qml/HelpView.qml" line="328"></location>
       <source>Lightbox</source>
-      <translation>Световой ящик</translation>
+      <translation>Лайтбокс</translation>
     </message>
     <message id="gamehq.help.feature.overlay.description">
       <location filename="src/ui/qml/HelpView.qml" line="324"></location>
       <source>Transparent fullscreen HUD. View and manage captures from inside a game without alt-tabbing. Includes its own gallery grid, lightbox, and toast notifications.</source>
-      <translation>Прозрачный HUD с полным экраном. Просмотр и управление снимками изнутри игры без альтернативных вкладки. Включает собственную сетку галереи, лайтбоксы и уведомления о тостах.</translation>
+      <translation>Прозрачный полноэкранный HUD. Просмотр записей и управление ими прямо в игре, без переключения окон. Включает собственную сетку галереи, лайтбокс и всплывающие уведомления.</translation>
     </message>
     <message id="gamehq.help.feature.overlay.title">
       <location filename="src/ui/qml/HelpView.qml" line="322"></location>
       <source>Overlay</source>
-      <translation>Наложение</translation>
+      <translation>Оверлей</translation>
     </message>
     <message id="gamehq.help.feature.replay.description">
       <location filename="src/ui/qml/HelpView.qml" line="306"></location>
       <source>When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
-      <oldsource>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</oldsource>
-      <translation type="unfinished">Всегда включенный автоматически. Записывает на заднем плане, пока игра в фокусе. Нажмите Share (или Ctrl+Shift+E), чтобы сохранить последние несколько секунд в виде клипа. Включите или выключите запись всегда включенной в Настройках → Повторное воспроизведение.</translation>
+      <translation>Когда функция включена, буфер повтора автоматически готов к работе и ведёт фоновую запись, пока игра в фокусе. Удерживайте Share (или Ctrl+Shift+E), чтобы сохранить последние несколько секунд как клип. Включить или выключить постоянную запись можно в разделе «Настройки → Повтор».</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
       <location filename="src/ui/qml/HelpView.qml" line="304"></location>
       <source>Replay buffer</source>
-      <translation>Буфер повторного воспроизведения</translation>
+      <translation>Буфер повтора</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.description">
       <location filename="src/ui/qml/HelpView.qml" line="312"></location>
       <source>Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.</source>
-      <oldsource>GameHQ captures the active game window through GDI, saves a PNG to your captures folder, and confirms the screenshot immediately.</oldsource>
-      <translation type="unfinished">GDI захватить активный окно игры. PNG сохранен в папке захвата с мгновенной обратной связи затвора.</translation>
+      <translation>Захватывает активное окно игры через GDI, сохраняет PNG в папку записей и сразу подтверждает снимок звуком затвора.</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
       <location filename="src/ui/qml/HelpView.qml" line="310"></location>
       <source>Screenshots</source>
-      <translation>Скриншоты</translation>
+      <translation>Снимки экрана</translation>
     </message>
     <message id="gamehq.help.feature.watched_folders.description">
       <location filename="src/ui/qml/HelpView.qml" line="336"></location>
       <source>Add any folder (Game Bar, Steam, NVIDIA ShadowPlay) — %1 scans it for new captures automatically.</source>
-      <translation>Добавить любую папку (Game Bar, Steam, NVIDIA ShadowPlay)  %1 сканирует ее на новые запечатки автоматически.</translation>
+      <translation>Добавьте любую папку (Game Bar, Steam, NVIDIA ShadowPlay) — %1 автоматически проверяет её на новые записи.</translation>
     </message>
     <message id="gamehq.help.feature.watched_folders.title">
       <location filename="src/ui/qml/HelpView.qml" line="334"></location>
       <source>Watched folders</source>
-      <translation>Смотрите папки</translation>
+      <translation>Отслеживаемые папки</translation>
     </message>
     <message id="gamehq.help.features">
       <location filename="src/ui/qml/HelpView.qml" line="280"></location>
       <source>Features</source>
-      <translation>Особенности</translation>
+      <translation>Возможности</translation>
     </message>
     <message id="gamehq.help.gamepad.button_combination">
       <location filename="src/ui/qml/HelpView.qml" line="185"></location>
@@ -1544,7 +1535,7 @@ This cannot be undone.</source>
     <message id="gamehq.help.gamepad.button_combination_action">
       <location filename="src/ui/qml/HelpView.qml" line="187"></location>
       <source>Press the ordered pair within the configured combination window</source>
-      <translation>Нажмите на упорядоченную пару в окне настройки комбинации</translation>
+      <translation>Нажмите обе кнопки по порядку в заданном окне комбинации</translation>
     </message>
     <message id="gamehq.help.gamepad.circle">
       <location filename="src/ui/qml/HelpView.qml" line="214"></location>
@@ -1554,7 +1545,7 @@ This cannot be undone.</source>
     <message id="gamehq.help.gamepad.circle_action">
       <location filename="src/ui/qml/HelpView.qml" line="216"></location>
       <source>Back / close overlay</source>
-      <translation>Задние / близкие перекрытия</translation>
+      <translation>Назад / закрыть оверлей</translation>
     </message>
     <message id="gamehq.help.gamepad.cross">
       <location filename="src/ui/qml/HelpView.qml" line="208"></location>
@@ -1564,12 +1555,12 @@ This cannot be undone.</source>
     <message id="gamehq.help.gamepad.cross_action">
       <location filename="src/ui/qml/HelpView.qml" line="210"></location>
       <source>Open selected capture / confirm</source>
-      <translation>Открыть выбранное захват / подтвердить</translation>
+      <translation>Открыть выбранную запись / подтвердить</translation>
     </message>
     <message id="gamehq.help.gamepad.navigation_controls">
       <location filename="src/ui/qml/HelpView.qml" line="202"></location>
       <source>D-pad / Left Stick</source>
-      <translation>Д-пакет / левая палка</translation>
+      <translation>Крестовина / левый стик</translation>
     </message>
     <message id="gamehq.help.gamepad.ps_button">
       <location filename="src/ui/qml/HelpView.qml" line="191"></location>
@@ -1579,27 +1570,27 @@ This cannot be undone.</source>
     <message id="gamehq.help.gamepad.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="234"></location>
       <source>Cross toggles, Triangle selects all, Square deletes, Circle exits</source>
-      <translation>Переключается на перекресток, треугольник выбирает все, квадрат удаляет, круг выходит</translation>
+      <translation>Крест переключает выбор, Треугольник выбирает всё, Квадрат удаляет, Круг выходит</translation>
     </message>
     <message id="gamehq.help.gamepad.share_hold">
       <location filename="src/ui/qml/HelpView.qml" line="173"></location>
       <source>Share (hold)</source>
-      <translation>Доля (держание)</translation>
+      <translation>Share (удержание)</translation>
     </message>
     <message id="gamehq.help.gamepad.share_hold_action">
       <location filename="src/ui/qml/HelpView.qml" line="175"></location>
       <source>Save replay clip; hold consumes the tap</source>
-      <translation>Сохранить клип повторного воспроизведения; выдержка потребляет кнопку</translation>
+      <translation>Сохранить клип повтора; удержание поглощает нажатие</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap">
       <location filename="src/ui/qml/HelpView.qml" line="179"></location>
       <source>Share (2× / 3×)</source>
-      <translation>Разделение (2× / 3×)</translation>
+      <translation>Share (2× / 3×)</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap_action">
       <location filename="src/ui/qml/HelpView.qml" line="181"></location>
       <source>Exact double/triple tap; lower counts wait only for the configured interval</source>
-      <translation>Точное двойное/тройное нажатие; меньшее количество ждет только на настроенный интервал</translation>
+      <translation>Точное двойное или тройное нажатие; меньшее число нажатий ждёт только заданный интервал</translation>
     </message>
     <message id="gamehq.help.gamepad.square">
       <location filename="src/ui/qml/HelpView.qml" line="220"></location>
@@ -1609,12 +1600,12 @@ This cannot be undone.</source>
     <message id="gamehq.help.gamepad.square_action">
       <location filename="src/ui/qml/HelpView.qml" line="222"></location>
       <source>Action menu (Show in folder / Delete)</source>
-      <translation>Меню действий (показать в папке / удалить)</translation>
+      <translation>Меню действий (Показать в папке / Удалить)</translation>
     </message>
     <message id="gamehq.help.gamepad.switch_panel">
       <location filename="src/ui/qml/HelpView.qml" line="198"></location>
       <source>Switch panel: sidebar ↔ grid (app) / flip captures (overlay)</source>
-      <translation>Панель переключателя: боковая панель  сетка (приложение) / переключатель (наложение)</translation>
+      <translation>Переключение панели: боковая панель ↔ сетка (приложение) / листать записи (оверлей)</translation>
     </message>
     <message id="gamehq.help.gamepad.system_share_action">
       <location filename="src/ui/qml/HelpView.qml" line="169"></location>
@@ -1624,7 +1615,7 @@ This cannot be undone.</source>
     <message id="gamehq.help.gamepad.system_share_tap">
       <location filename="src/ui/qml/HelpView.qml" line="167"></location>
       <source>System Share (tap)</source>
-      <translation>Система совместного использования (нажмите)</translation>
+      <translation>Системная кнопка Share (нажатие)</translation>
     </message>
     <message id="gamehq.help.gamepad.triangle">
       <location filename="src/ui/qml/HelpView.qml" line="226"></location>
@@ -1634,18 +1625,18 @@ This cannot be undone.</source>
     <message id="gamehq.help.gamepad_shortcuts">
       <location filename="src/ui/qml/HelpView.qml" line="143"></location>
       <source>DualSense / gamepad</source>
-      <translation>Двойной сенс / игровой планшет</translation>
+      <translation>DualSense / геймпад</translation>
     </message>
     <message id="gamehq.help.keyboard.open_capture">
       <location filename="src/ui/qml/HelpView.qml" line="82"></location>
       <source>Open selected capture</source>
-      <translation>Открыть выбранный забор</translation>
+      <translation>Открыть выбранную запись</translation>
     </message>
     <message id="gamehq.help.keyboard.open_overlay">
       <location filename="src/ui/qml/HelpView.qml" line="67"></location>
       <location filename="src/ui/qml/HelpView.qml" line="193"></location>
       <source>Open / close overlay</source>
-      <translation>Открыть / закрыть перекрытие</translation>
+      <translation>Открыть / закрыть оверлей</translation>
     </message>
     <message id="gamehq.help.keyboard.save_replay">
       <location filename="src/ui/qml/HelpView.qml" line="77"></location>
@@ -1655,29 +1646,28 @@ This cannot be undone.</source>
     <message id="gamehq.help.keyboard.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="88"></location>
       <source>Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items</source>
-      <oldsource>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</oldsource>
-      <translation type="unfinished">Введите / Пространство переключает, Ctrl+A выбирает все, Удалить удаляет выбранное</translation>
+      <translation>Enter / Пробел переключает выбор, Ctrl+A выбирает всё, Delete удаляет выбранные элементы</translation>
     </message>
     <message id="gamehq.help.keyboard.show_in_explorer">
       <location filename="src/ui/qml/HelpView.qml" line="98"></location>
       <source>Show selected in Explorer</source>
-      <translation>Выбрано в Explorer</translation>
+      <translation>Показать выбранное в Проводнике</translation>
     </message>
     <message id="gamehq.help.keyboard.take_screenshot">
       <location filename="src/ui/qml/HelpView.qml" line="72"></location>
       <source>Take screenshot</source>
-      <translation>Сделай снимок экрана</translation>
+      <translation>Сделать снимок экрана</translation>
     </message>
     <message id="gamehq.help.keyboard.toggle_favorite">
       <location filename="src/ui/qml/HelpView.qml" line="93"></location>
       <location filename="src/ui/qml/HelpView.qml" line="228"></location>
       <source>Favorite / unfavorite selected</source>
-      <translation>Выбранный фаворит / не фаворит</translation>
+      <translation>Добавить выбранное в избранное / убрать из него</translation>
     </message>
     <message id="gamehq.help.keyboard_shortcuts">
       <location filename="src/ui/qml/HelpView.qml" line="42"></location>
       <source>Keyboard shortcuts</source>
-      <translation>Кнопка клавиатуры</translation>
+      <translation>Сочетания клавиш</translation>
     </message>
     <message id="gamehq.help.navigate_gallery">
       <location filename="src/ui/qml/HelpView.qml" line="103"></location>
@@ -1688,17 +1678,17 @@ This cannot be undone.</source>
     <message id="gamehq.help.open_controller_guide">
       <location filename="src/ui/qml/HelpView.qml" line="266"></location>
       <source>Open the controller compatibility guide</source>
-      <translation>Открыть руководство по совместимости контроллеров</translation>
+      <translation>Открыть руководство по совместимости геймпадов</translation>
     </message>
     <message id="gamehq.input.assignment.capture_active">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="228"></location>
       <source>Controller capture active · Dialog navigation is paused</source>
-      <translation>Запись контроллера активна · Диалог на навигации приостановлен</translation>
+      <translation>Идёт захват с геймпада · Навигация в диалоге приостановлена</translation>
     </message>
     <message id="gamehq.input.assignment.combination_gesture">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="506"></location>
       <source>Press · fixed for combinations</source>
-      <translation>Пресс · фиксированный для комбинаций</translation>
+      <translation>Нажатие · фиксировано для комбинаций</translation>
     </message>
     <message id="gamehq.input.assignment.default_duration">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="532"></location>
@@ -1719,34 +1709,34 @@ This cannot be undone.</source>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="460"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="490"></location>
       <source>Gesture</source>
-      <translation>Жестовый жест</translation>
+      <translation>Жест</translation>
     </message>
     <message id="gamehq.input.assignment.hold_duration">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="522"></location>
       <source>Hold duration</source>
-      <translation>Продолжительность ожидания</translation>
+      <translation>Длительность удержания</translation>
     </message>
     <message id="gamehq.input.assignment.listening_button">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="270"></location>
       <source>Listening… Press a controller button</source>
-      <translation>Нажмите кнопку управления.</translation>
+      <translation>Ожидание… Нажмите кнопку геймпада</translation>
     </message>
     <message id="gamehq.input.assignment.listening_first">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="342"></location>
       <source>Listening… Hold the first button</source>
-      <translation>Придерживайте первую кнопку.</translation>
+      <translation>Ожидание… Удерживайте первую кнопку</translation>
     </message>
     <message id="gamehq.input.assignment.listening_second">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="407"></location>
       <source>Listening… Press the second button</source>
-      <translation>Нажмите на вторую кнопку.</translation>
+      <translation>Ожидание… Нажмите вторую кнопку</translation>
     </message>
     <message id="gamehq.input.assignment.not_set">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="275"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="353"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="416"></location>
       <source>Not set</source>
-      <translation>Не установлен</translation>
+      <translation>Не задано</translation>
     </message>
     <message id="gamehq.input.assignment.notice.attention">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="585"></location>
@@ -1761,7 +1751,7 @@ This cannot be undone.</source>
     <message id="gamehq.input.assignment.notice.default">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="596"></location>
       <source>Assignment note</source>
-      <translation>Заявка на назначение</translation>
+      <translation>Примечание к назначению</translation>
     </message>
     <message id="gamehq.input.assignment.notice.not_verified">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="589"></location>
@@ -1771,18 +1761,17 @@ This cannot be undone.</source>
     <message id="gamehq.input.assignment.pattern">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="197"></location>
       <source>Type</source>
-      <oldsource>Pattern</oldsource>
-      <translation type="unfinished">Образец</translation>
+      <translation>Тип</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.combination">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="209"></location>
       <source>Combination</source>
-      <translation>Сочетание</translation>
+      <translation>Комбинация</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.single">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="207"></location>
       <source>Single button</source>
-      <translation>Однокнопка</translation>
+      <translation>Одна кнопка</translation>
     </message>
     <message id="gamehq.input.assignment.scope_slot">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="181"></location>
@@ -1797,7 +1786,7 @@ This cannot be undone.</source>
     <message id="gamehq.input.assignment.waiting_first">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="413"></location>
       <source>Waiting for first button</source>
-      <translation>Ждем первой кнопки</translation>
+      <translation>Ожидание первой кнопки</translation>
     </message>
     <message id="gamehq.input.binding_card.add">
       <location filename="src/ui/qml/components/BindingCard.qml" line="257"></location>
@@ -1807,17 +1796,17 @@ This cannot be undone.</source>
     <message id="gamehq.input.binding_card.add_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="198"></location>
       <source>Add %1 assignment</source>
-      <translation>Добавить задание %1</translation>
+      <translation>Добавить назначение %1</translation>
     </message>
     <message id="gamehq.input.binding_card.add_input">
       <location filename="src/ui/qml/components/BindingCard.qml" line="217"></location>
       <source>+ Add input</source>
-      <translation>+ Добавить вход</translation>
+      <translation>+ Добавить ввод</translation>
     </message>
     <message id="gamehq.input.binding_card.add_status_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="194"></location>
       <source>Add %1 assignment, status %2</source>
-      <translation>Добавить задание %1, статус %2</translation>
+      <translation>Добавить назначение %1, статус %2</translation>
     </message>
     <message id="gamehq.input.binding_card.edit">
       <location filename="src/ui/qml/components/BindingCard.qml" line="254"></location>
@@ -1832,17 +1821,17 @@ This cannot be undone.</source>
     <message id="gamehq.input.binding_card.edit_status_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="183"></location>
       <source>Edit %1 assignment: %2, %3, status %4</source>
-      <translation>Изменить задание %1: %2, %3, статус %4</translation>
+      <translation>Изменить назначение %1: %2, %3, статус %4</translation>
     </message>
     <message id="gamehq.input.binding_card.heading">
       <location filename="src/ui/qml/components/BindingCard.qml" line="61"></location>
       <source>%1 assignment</source>
-      <translation>%1</translation>
+      <translation>Назначение: %1</translation>
     </message>
     <message id="gamehq.input.binding_card.remove_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="144"></location>
       <source>Remove %1 assignment</source>
-      <translation>Удалить задание %1</translation>
+      <translation>Убрать назначение %1</translation>
     </message>
     <message id="gamehq.input.binding_card.restore_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="101"></location>
@@ -1857,18 +1846,18 @@ This cannot be undone.</source>
     <message id="gamehq.input.binding_card.unassigned">
       <location filename="src/ui/qml/components/BindingCard.qml" line="214"></location>
       <source>Unassigned</source>
-      <translation>Не назначенный</translation>
+      <translation>Не назначено</translation>
     </message>
     <message id="gamehq.input.choose_another">
       <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="17"></location>
       <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="23"></location>
       <source>Choose another</source>
-      <translation>Выберите другую .</translation>
+      <translation>Выбрать другое</translation>
     </message>
     <message id="gamehq.input.compatibility.convert">
       <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="15"></location>
       <source>Convert &amp; add</source>
-      <translation>Преобразовать &amp; добавить</translation>
+      <translation>Преобразовать и добавить</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press">
       <location filename="src/input/BindingEditorModel.cpp" line="482"></location>
@@ -1899,7 +1888,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.input.compatibility.title">
       <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="12"></location>
       <source>Make these assignments compatible?</source>
-      <translation>Сделать эти задания совместимыми?</translation>
+      <translation>Сделать эти назначения совместимыми?</translation>
     </message>
     <message id="gamehq.input.conflict.already_assigned">
       <location filename="src/input/BindingEditorModel.cpp" line="458"></location>
@@ -1914,73 +1903,73 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.input.conflict.title">
       <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="18"></location>
       <source>These assignments conflict</source>
-      <translation>Эти задания противоречат</translation>
+      <translation>Эти назначения конфликтуют</translation>
     </message>
     <message id="gamehq.input.gesture.double_tap">
       <location filename="src/input/BindingPattern.cpp" line="106"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="474"></location>
       <source>Double tap</source>
-      <translation>Двойной клик</translation>
+      <translation>Двойное касание</translation>
     </message>
     <message id="gamehq.input.gesture.hold">
       <location filename="src/input/BindingPattern.cpp" line="121"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="478"></location>
       <source>Hold</source>
-      <translation>Подождите .</translation>
+      <translation>Удержание</translation>
     </message>
     <message id="gamehq.input.gesture.press">
       <location filename="src/input/BindingPattern.cpp" line="101"></location>
       <location filename="src/input/BindingPattern.cpp" line="125"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="470"></location>
       <source>Press</source>
-      <translation>Нажимать</translation>
+      <translation>Нажатие</translation>
     </message>
     <message id="gamehq.input.gesture.tap">
       <location filename="src/input/BindingPattern.cpp" line="117"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="472"></location>
       <source>Tap</source>
-      <translation>Нажмите</translation>
+      <translation>Касание</translation>
     </message>
     <message id="gamehq.input.gesture.triple_tap">
       <location filename="src/input/BindingPattern.cpp" line="112"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="476"></location>
       <source>Triple tap</source>
-      <translation>Трижды нажмите</translation>
+      <translation>Тройное касание</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
       <location filename="src/input/BindingEditorModel.cpp" line="301"></location>
       <source>Press a controller button for %1 · Slot %2 · %3</source>
-      <translation>Нажмите кнопку контроллера для %1 · Слот %2 · %3</translation>
+      <translation>Нажмите кнопку геймпада для %1 · Слот %2 · %3</translation>
     </message>
     <message id="gamehq.input.model.capture.keyboard">
       <location filename="src/input/BindingEditorModel.cpp" line="308"></location>
       <source>Press a key or shortcut for %1 · Slot %2</source>
-      <translation>Нажмите клавишу или ярлыки для %1 · Слот %2</translation>
+      <translation>Нажмите клавишу или сочетание клавиш для %1 · Слот %2</translation>
     </message>
     <message id="gamehq.input.model.capture.mouse">
       <location filename="src/input/BindingEditorModel.cpp" line="315"></location>
       <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
-      <translation>Нажмите на кнопку "Вперед" или "Назад" для %1 · Слот %2</translation>
+      <translation>Нажмите среднюю кнопку мыши, «Назад» или «Вперёд» для %1 · Слот %2</translation>
     </message>
     <message id="gamehq.input.model.combination">
       <location filename="src/input/BindingEditorModel.cpp" line="179"></location>
       <source>Combination</source>
-      <translation>Сочетание</translation>
+      <translation>Комбинация</translation>
     </message>
     <message id="gamehq.input.model.hold_default">
       <location filename="src/input/BindingEditorModel.cpp" line="185"></location>
       <source>Hold · Default</source>
-      <translation>Выдерживать · По умолчанию</translation>
+      <translation>Удержание · По умолчанию</translation>
     </message>
     <message id="gamehq.input.model.hold_seconds">
       <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
       <source>Hold · %1 s</source>
-      <translation>Подождите. %1 С</translation>
+      <translation>Удержание · %1 с</translation>
     </message>
     <message id="gamehq.input.model.no_action_fired">
       <location filename="src/input/BindingEditorModel.cpp" line="985"></location>
       <source>No action fired yet</source>
-      <translation>Пока ничего не сработало .</translation>
+      <translation>Пока не сработало ни одно действие</translation>
     </message>
     <message id="gamehq.input.model.scope.gallery">
       <location filename="src/input/BindingEditorModel.cpp" line="142"></location>
@@ -1990,17 +1979,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.input.model.scope.global">
       <location filename="src/input/BindingEditorModel.cpp" line="134"></location>
       <source>Global</source>
-      <translation>Глобальный</translation>
+      <translation>Глобально</translation>
     </message>
     <message id="gamehq.input.model.scope.overlay">
       <location filename="src/input/BindingEditorModel.cpp" line="138"></location>
       <source>Overlay</source>
-      <translation>Наложение</translation>
+      <translation>Оверлей</translation>
     </message>
     <message id="gamehq.input.model.scope.playback">
       <location filename="src/input/BindingEditorModel.cpp" line="146"></location>
       <source>Playback</source>
-      <translation>Отзыв</translation>
+      <translation>Воспроизведение</translation>
     </message>
     <message id="gamehq.input.model.status.added">
       <location filename="src/input/BindingEditorModel.cpp" line="71"></location>
@@ -2010,18 +1999,18 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.input.model.status.modified">
       <location filename="src/input/BindingEditorModel.cpp" line="76"></location>
       <source>Modified</source>
-      <translation>Измененный</translation>
+      <translation>Изменено</translation>
     </message>
     <message id="gamehq.input.model.status.removed">
       <location filename="src/input/BindingEditorModel.cpp" line="81"></location>
       <source>Removed</source>
-      <translation>Удалён</translation>
+      <translation>Убрано</translation>
     </message>
     <message id="gamehq.input.model.unassigned">
       <location filename="src/input/BindingEditorModel.cpp" line="166"></location>
       <location filename="src/input/BindingEditorModel.cpp" line="242"></location>
       <source>Unassigned</source>
-      <translation>Не назначенный</translation>
+      <translation>Не назначено</translation>
     </message>
     <message id="gamehq.input.relation.chord_start_delay">
       <location filename="src/input/BindingRelation.cpp" line="240"></location>
@@ -2052,7 +2041,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/Main.qml" line="1022"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
-      <translation>Выберите папку для просмотра</translation>
+      <translation>Выберите папку для отслеживания</translation>
     </message>
     <message id="gamehq.navigation.about">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="162"></location>
@@ -2071,13 +2060,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/Main.qml" line="161"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="19"></location>
       <source>Clips</source>
-      <translation>Клипсы</translation>
+      <translation>Клипы</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
       <location filename="src/ui/qml/Main.qml" line="157"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="15"></location>
       <source>Favorites</source>
-      <translation>Любимые</translation>
+      <translation>Избранное</translation>
     </message>
     <message id="gamehq.navigation.category.game">
       <location filename="src/ui/qml/Main.qml" line="163"></location>
@@ -2089,7 +2078,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/Main.qml" line="165"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
       <source>Game favorites</source>
-      <translation>Любимые игры</translation>
+      <translation>Избранное игры</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
       <location filename="src/ui/qml/Main.qml" line="155"></location>
@@ -2101,7 +2090,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/Main.qml" line="159"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="17"></location>
       <source>Screenshots</source>
-      <translation>Скриншоты</translation>
+      <translation>Снимки экрана</translation>
     </message>
     <message id="gamehq.navigation.games">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="89"></location>
@@ -2135,17 +2124,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.notification.replay_failed.title">
       <location filename="src/app/App.cpp" line="286"></location>
       <source>Replay failed</source>
-      <translation>Не удалось воспроизвести</translation>
+      <translation>Не удалось сохранить повтор</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
       <location filename="src/app/App.cpp" line="266"></location>
       <source>Replay saved</source>
-      <translation>Перезагрузка сохранена</translation>
+      <translation>Повтор сохранён</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
       <location filename="src/app/App.cpp" line="218"></location>
       <source>Screenshot saved</source>
-      <translation>Сохранение скриншота</translation>
+      <translation>Снимок экрана сохранён</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
       <location filename="src/app/App.cpp" line="329"></location>
@@ -2160,52 +2149,52 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.notifications.window_title">
       <location filename="src/ui/qml/ToastWindow.qml" line="19"></location>
       <source>%1 Notifications</source>
-      <translation>%1 Уведомления</translation>
+      <translation>Уведомления — %1</translation>
     </message>
     <message id="gamehq.overlay.capture_actions">
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="55"></location>
       <source>Capture actions</source>
-      <translation>Записывать действия</translation>
+      <translation>Действия с записью</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
       <location filename="src/ui/qml/OverlayWindow.qml" line="100"></location>
       <source>The game still has focus and may react to controller input</source>
-      <translation>Игра все еще имеет фокус и может реагировать на вход контроллера</translation>
+      <translation>Игра всё ещё в фокусе и может реагировать на ввод с геймпада</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="34"></location>
       <source>L1/R1 — captures | D-pad Up/Down — categories/games | Cross — open | Triangle — favorite | Square — menu | Circle — back to game</source>
-      <translation>L1/R1  захватывает ∙ D-pad Вверх/вниз ∙ категории/игры ∙ Кросс  открыт ∙ Треугольник  фаворит ∙ Квадрат  меню ∙ Круг ∙ возвращение к игре</translation>
+      <translation>L1/R1 — записи | Крестовина Вверх/Вниз — категории/игры | Крест — открыть | Треугольник — избранное | Квадрат — меню | Круг — вернуться в игру</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>
       <source>Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
-      <translation>Лево/Право  захватывает ∙ Вверх/вниз ∙ Категории/игры ∙ Введите ∙ Открыть ∙ Ф ∙ Любимое ∙ М ∙ Меню ∙ Выйти ∙ Возвращаться в игру</translation>
+      <translation>Влево/Вправо — записи | Вверх/Вниз — категории/игры | Enter — открыть | F — избранное | M — меню | Esc — вернуться в игру</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="19"></location>
       <source>D-pad Up/Down — choose | Cross — confirm | Circle — close menu</source>
-      <translation>D-папка Вверх/вниз  выбирать ∙ Перекрестить ∙ подтвердить ∙ Кружить ∙ закрыть меню</translation>
+      <translation>Крестовина Вверх/Вниз — выбор | Крест — подтвердить | Круг — закрыть меню</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="22"></location>
       <source>Up/Down — choose | Enter — confirm | Esc/Backspace — close menu</source>
-      <translation>Вверх/вниз  выбирать ∙ Введите  подтвердите ∙ Esc/Backspace  закрыть меню</translation>
+      <translation>Вверх/Вниз — выбор | Enter — подтвердить | Esc/Backspace — закрыть меню</translation>
     </message>
     <message id="gamehq.overlay.hint.video.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="27"></location>
       <source>D-pad Left/Right — scrub | Cross — play/pause | Circle — back to captures</source>
-      <translation>D-пакет Лево/Право  протирать ∙ Кросс  играть/пауза ∙ Кружок  возвращаться к захвату</translation>
+      <translation>Крестовина Влево/Вправо — перемотка | Крест — воспроизведение/пауза | Круг — назад к записям</translation>
     </message>
     <message id="gamehq.overlay.hint.video.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="30"></location>
       <source>Left/Right — scrub clip | Enter — play/pause | Esc/Backspace — back to captures</source>
-      <translation>Лево/право  клип очистки ∙ Введите  воспроизведение/пауза ∙ Esc/Backspace  обратно к захвату</translation>
+      <translation>Влево/Вправо — перемотка клипа | Enter — воспроизведение/пауза | Esc/Backspace — назад к записям</translation>
     </message>
     <message id="gamehq.overlay.window_title">
       <location filename="src/ui/qml/OverlayWindow.qml" line="30"></location>
       <source>%1 Overlay</source>
-      <translation>%1 Наложение</translation>
+      <translation>Оверлей — %1</translation>
     </message>
     <message id="gamehq.player.position_duration">
       <location filename="src/ui/qml/components/PlayerControls.qml" line="234"></location>
@@ -2220,7 +2209,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.about.application.eyebrow">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="14"></location>
       <source>Application</source>
-      <translation>Применение</translation>
+      <translation>Приложение</translation>
     </message>
     <message id="gamehq.settings.about.community.eyebrow">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="290"></location>
@@ -2235,7 +2224,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.about.github_source">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="252"></location>
       <source>Source on GitHub</source>
-      <translation>Источник на GitHub</translation>
+      <translation>Исходный код на GitHub</translation>
     </message>
     <message id="gamehq.settings.about.license">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="281"></location>
@@ -2245,12 +2234,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.about.license_summary">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="55"></location>
       <source>Free and open source under the GNU GPL version 3.</source>
-      <translation>Свободный и с открытым исходным кодом под GNU GPL версии 3.</translation>
+      <translation>Свободное ПО с открытым исходным кодом под лицензией GNU GPL версии 3.</translation>
     </message>
     <message id="gamehq.settings.about.maintenance.eyebrow">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="66"></location>
       <source>Maintenance</source>
-      <translation>Услуги по обслуживанию</translation>
+      <translation>Обслуживание</translation>
     </message>
     <message id="gamehq.settings.about.open_source.eyebrow">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="237"></location>
@@ -2296,12 +2285,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="794"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
       <source>Security &amp; privacy</source>
-      <translation>Безопасность &amp; конфиденциальность</translation>
+      <translation>Безопасность и конфиденциальность</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="275"></location>
       <source>Verification, local data, network use, and private reporting</source>
-      <translation>Проверка, локальные данные, использование сети и частная отчетность</translation>
+      <translation>Проверка, локальные данные, использование сети и приватная отправка отчётов</translation>
     </message>
     <message id="gamehq.settings.about.support.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="295"></location>
@@ -2311,17 +2300,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.about.support.star_on_github">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="298"></location>
       <source>Star %1 on GitHub</source>
-      <translation>Звезда %1 на GitHub</translation>
+      <translation>Поставить звезду %1 на GitHub</translation>
     </message>
     <message id="gamehq.settings.about.support.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="292"></location>
       <source>Support the project</source>
-      <translation>Поддержка проекта</translation>
+      <translation>Поддержать проект</translation>
     </message>
     <message id="gamehq.settings.about.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="8"></location>
       <source>About</source>
-      <translation>О</translation>
+      <translation>О программе</translation>
     </message>
     <message id="gamehq.settings.about.updates.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="68"></location>
@@ -2336,7 +2325,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="12"></location>
       <source>Review system health, open diagnostic resources, and recover settings.</source>
-      <translation>Проверьте состояние системы, открыть диагностические ресурсы и восстановить настройки.</translation>
+      <translation>Проверьте состояние системы, откройте диагностические ресурсы и восстановите настройки.</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.copy.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="121"></location>
@@ -2346,7 +2335,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.diagnostics.copy.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="119"></location>
       <source>Copy diagnostic summary</source>
-      <translation>Копировать диагностическое резюме</translation>
+      <translation>Копировать сводку диагностики</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="110"></location>
@@ -2361,7 +2350,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.diagnostics.import.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="138"></location>
       <source>Validate, stage, and import a fresh portable profile.</source>
-      <translation>Проверьте, поставьте и импортируйте новый портативный профиль.</translation>
+      <translation>Проверка, подготовка и импорт нового портативного профиля.</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.import.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="136"></location>
@@ -2376,7 +2365,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.diagnostics.refresh.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="127"></location>
       <source>Refresh display status</source>
-      <translation>Обновление состояния отображения</translation>
+      <translation>Обновить состояние дисплеев</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="108"></location>
@@ -2386,12 +2375,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.hdr.active">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="56"></location>
       <source>HDR active</source>
-      <translation>HDR активный</translation>
+      <translation>HDR включён</translation>
     </message>
     <message id="gamehq.settings.advanced.hdr.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="152"></location>
       <source>Technical adapter and fallback details are available when troubleshooting capture output.</source>
-      <translation>Технические подробности адаптера и резервного устройства доступны при устранении неполадок выхода захвата.</translation>
+      <translation>Технические сведения об адаптере и резервном режиме доступны при диагностике вывода захвата.</translation>
     </message>
     <message id="gamehq.settings.advanced.hdr.disclosure">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="155"></location>
@@ -2401,12 +2390,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.hdr.eyebrow">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="146"></location>
       <source>Display capture</source>
-      <translation>Запись на дисплее</translation>
+      <translation>Захват экрана</translation>
     </message>
     <message id="gamehq.settings.advanced.hdr.inactive">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="58"></location>
       <source>HDR inactive</source>
-      <translation>HDR неактивный</translation>
+      <translation>HDR отключён</translation>
     </message>
     <message id="gamehq.settings.advanced.hdr.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="148"></location>
@@ -2426,7 +2415,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.overview.storage">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="65"></location>
       <source>Storage</source>
-      <translation>Хранение</translation>
+      <translation>Хранилище</translation>
     </message>
     <message id="gamehq.settings.advanced.overview.system">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="42"></location>
@@ -2456,17 +2445,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.profile.portable">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="47"></location>
       <source>Portable profile</source>
-      <translation>Переносной профиль</translation>
+      <translation>Портативный профиль</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.all.action">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="261"></location>
       <source>Restore all</source>
-      <translation>Восстановить все</translation>
+      <translation>Восстановить всё</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.all.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="257"></location>
       <source>Return every configuration category to its default values.</source>
-      <translation>Верните каждую категорию конфигурации к ее значениям по умолчанию.</translation>
+      <translation>Вернуть все категории конфигурации к значениям по умолчанию.</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.all.label">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="255"></location>
@@ -2476,7 +2465,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.recovery.category.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="213"></location>
       <source>Return only the selected category to its defaults.</source>
-      <translation>Вернуть только выбранную категорию на свои параметры по умолчанию.</translation>
+      <translation>Вернуть к значениям по умолчанию только выбранную категорию.</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.category.label">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="211"></location>
@@ -2486,7 +2475,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.recovery.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="205"></location>
       <source>Restoring settings never deletes captures, favorites, watched media, or database records.</source>
-      <translation>Восстановление настроек никогда не удаляет записи, любимые, просмотренные медиа или записи базы данных.</translation>
+      <translation>Восстановление настроек никогда не удаляет записи, избранное, отслеживаемые медиафайлы и данные в базе.</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.eyebrow">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="200"></location>
@@ -2496,27 +2485,27 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.recovery.feedback">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="235"></location>
       <source>Feedback</source>
-      <translation>Отзывы</translation>
+      <translation>Обратная связь</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.input.action">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="247"></location>
       <source>Restore input</source>
-      <translation>Восстановить вход</translation>
+      <translation>Восстановить ввод</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.input.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="244"></location>
       <source>Return controller, keyboard, and mouse overrides to built-in defaults.</source>
-      <translation>Возвращение контроллера, клавиатуры и мыши на встроенные параметры.</translation>
+      <translation>Вернуть переопределения геймпада, клавиатуры и мыши к встроенным значениям по умолчанию.</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.input.label">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="242"></location>
       <source>Restore input bindings</source>
-      <translation>Восстановить входные связки</translation>
+      <translation>Восстановить привязки ввода</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.options">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="208"></location>
       <source>Restore options</source>
-      <translation>Восстановление опций</translation>
+      <translation>Параметры восстановления</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="202"></location>
@@ -2536,7 +2525,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.resources.eyebrow">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="84"></location>
       <source>Resources</source>
-      <translation>Средства</translation>
+      <translation>Ресурсы</translation>
     </message>
     <message id="gamehq.settings.advanced.resources.logs">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="91"></location>
@@ -2546,23 +2535,23 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.advanced.resources.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="86"></location>
       <source>Locations</source>
-      <translation>Местонахождение</translation>
+      <translation>Расположения</translation>
     </message>
     <message id="gamehq.settings.advanced.status.healthy">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="67"></location>
       <source>Healthy</source>
-      <translation>Здоровая</translation>
+      <translation>В норме</translation>
     </message>
     <message id="gamehq.settings.advanced.status.ready">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="44"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="623"></location>
       <source>Ready</source>
-      <translation>Готовы?</translation>
+      <translation>Готово</translation>
     </message>
     <message id="gamehq.settings.advanced.storage.available">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="69"></location>
       <source>Managed folders available</source>
-      <translation>Доступные управляемые папки</translation>
+      <translation>Управляемые папки доступны</translation>
     </message>
     <message id="gamehq.settings.advanced.version.current">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="76"></location>
@@ -2572,17 +2561,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.capture.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="12"></location>
       <source>Choose when, how, and where GameHQ saves screenshots.</source>
-      <translation>Выберите, когда, как и где GameHQ сохраняет скриншоты.</translation>
+      <translation>Выберите, когда, как и где GameHQ сохраняет снимки экрана.</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="95"></location>
       <source>Combined with the master switches on the Notifications &amp; Sound page.</source>
-      <translation>Используется вместе с главными переключателями на странице «Уведомления &amp; звук».</translation>
+      <translation>Используется вместе с главными переключателями на странице «Уведомления и звук».</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.eyebrow">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="91"></location>
       <source>Feedback</source>
-      <translation>Отзывы</translation>
+      <translation>Обратная связь</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.notification">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="103"></location>
@@ -2592,17 +2581,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.capture.feedback.sound">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="98"></location>
       <source>Screenshot sound</source>
-      <translation>Звук скриншота</translation>
+      <translation>Звук снимка экрана</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.title">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="93"></location>
       <source>After a screenshot</source>
-      <translation>После скриншота</translation>
+      <translation>После снимка экрана</translation>
     </message>
     <message id="gamehq.settings.capture.image.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="57"></location>
       <source>PNG is lossless; JPEG trades some quality for smaller files.</source>
-      <translation>PNG без потерь; JPEG обменивается некоторым качеством на более мелкие файлы.</translation>
+      <translation>PNG сохраняет качество без потерь; JPEG жертвует частью качества ради меньшего размера файлов.</translation>
     </message>
     <message id="gamehq.settings.capture.image.eyebrow">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="53"></location>
@@ -2617,7 +2606,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.capture.image.jpeg">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="69"></location>
       <source>JPEG (smaller files)</source>
-      <translation>JPEG (меньшие файлы)</translation>
+      <translation>JPEG (файлы меньше)</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg_quality">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="75"></location>
@@ -2642,7 +2631,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.capture.mode.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="30"></location>
       <source>Control when screenshots and replay recording are allowed.</source>
-      <translation>Контроль, когда разрешены снимки экрана и запись повторного воспроизведения.</translation>
+      <translation>Определяет, когда разрешены снимки экрана и запись повтора.</translation>
     </message>
     <message id="gamehq.settings.capture.mode.eyebrow">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="26"></location>
@@ -2662,12 +2651,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.capture.mode.row_description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="35"></location>
       <source>Only in games is the safest default for global shortcuts.</source>
-      <translation>Только в играх самый безопасный по умолчанию для глобальных ярлыков.</translation>
+      <translation>«Только в играх» — самый безопасный вариант по умолчанию для глобальных сочетаний клавиш.</translation>
     </message>
     <message id="gamehq.settings.capture.mode.title">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="28"></location>
       <source>When to capture</source>
-      <translation>Когда поймать</translation>
+      <translation>Когда выполнять захват</translation>
     </message>
     <message id="gamehq.settings.capture.mode.whitelist">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="43"></location>
@@ -2682,55 +2671,55 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.capture.storage.choose_screenshots">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="153"></location>
       <source>Choose the screenshots folder</source>
-      <translation>Выберите папку скриншотов</translation>
+      <translation>Выберите папку снимков экрана</translation>
     </message>
     <message id="gamehq.settings.capture.storage.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="114"></location>
       <source>Changing a location never moves or deletes existing media.</source>
-      <translation>Изменение местоположения никогда не перемещает или не удаляет существующие медиа.</translation>
+      <translation>Изменение расположения никогда не перемещает и не удаляет уже сохранённые файлы.</translation>
     </message>
     <message id="gamehq.settings.capture.storage.eyebrow">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="110"></location>
       <source>Storage</source>
-      <translation>Хранение</translation>
+      <translation>Хранилище</translation>
     </message>
     <message id="gamehq.settings.capture.storage.replay_clips">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="129"></location>
       <source>Replay clips</source>
-      <translation>Повторные клипы</translation>
+      <translation>Клипы повторов</translation>
     </message>
     <message id="gamehq.settings.capture.storage.screenshots">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="118"></location>
       <source>Screenshots</source>
-      <translation>Скриншоты</translation>
+      <translation>Снимки экрана</translation>
     </message>
     <message id="gamehq.settings.capture.storage.title">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="112"></location>
       <source>Where captures are saved</source>
-      <translation>Место сохранения улова</translation>
+      <translation>Куда сохраняются записи</translation>
     </message>
     <message id="gamehq.settings.capture.title">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="10"></location>
       <source>Capture</source>
-      <translation>Поймать</translation>
+      <translation>Захват</translation>
     </message>
     <message id="gamehq.settings.category.about">
       <location filename="src/ui/qml/SettingsView.qml" line="27"></location>
       <source>About</source>
-      <translation>О</translation>
+      <translation>О программе</translation>
     </message>
     <message id="gamehq.settings.category.advanced">
       <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="10"></location>
       <source>Advanced</source>
-      <translation>Продвинутый</translation>
+      <translation>Дополнительно</translation>
     </message>
     <message id="gamehq.settings.category.capture">
       <location filename="src/ui/qml/SettingsView.qml" line="15"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="53"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="223"></location>
       <source>Capture</source>
-      <translation>Поймать</translation>
+      <translation>Захват</translation>
     </message>
     <message id="gamehq.settings.category.general">
       <location filename="src/ui/qml/SettingsView.qml" line="13"></location>
@@ -2753,13 +2742,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.category.notifications_sound">
       <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
       <source>Notifications &amp; sound</source>
-      <translation>Уведомления &amp; звук</translation>
+      <translation>Уведомления и звук</translation>
     </message>
     <message id="gamehq.settings.category.replay">
       <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="229"></location>
       <source>Replay</source>
-      <translation>Повторить</translation>
+      <translation>Повтор</translation>
     </message>
     <message id="gamehq.settings.disclosure.default">
       <location filename="src/ui/qml/components/SettingsDisclosure.qml" line="9"></location>
@@ -2779,32 +2768,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.feedback.audio.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="47"></location>
       <source>Set the master sound switch, volume, and event-specific feedback.</source>
-      <translation>Настройте главный переключатель звука, громкость и обратную связь.</translation>
+      <translation>Настройте главный переключатель звука, громкость и звуки отдельных событий.</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.enabled.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="53"></location>
       <source>Play navigation and action feedback sounds.</source>
-      <translation>Воспроизведите звуки навигации и обратной связи.</translation>
+      <translation>Воспроизводить звуки навигации и действий.</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.enabled.label">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="51"></location>
       <source>UI sounds</source>
-      <translation>Звуки пользовательского интерфейса</translation>
+      <translation>Звуки интерфейса</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.eyebrow">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="43"></location>
       <source>Audio feedback</source>
-      <translation>Аудиоотзывы</translation>
+      <translation>Звуковая обратная связь</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.replay">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="74"></location>
       <source>Replay saved sound</source>
-      <translation>Повторить сохраненный звук</translation>
+      <translation>Звук сохранения повтора</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.screenshot">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
       <source>Screenshot sound</source>
-      <translation>Звук скриншота</translation>
+      <translation>Звук снимка экрана</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="45"></location>
@@ -2814,7 +2803,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.feedback.audio.volume">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="58"></location>
       <source>Volume</source>
-      <translation>Объем</translation>
+      <translation>Громкость</translation>
     </message>
     <message id="gamehq.settings.feedback.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="9"></location>
@@ -2824,8 +2813,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.feedback.preview.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
       <source>Preview notifications and sounds without creating a capture.</source>
-      <oldsource>Confirm notifications and sound without creating a capture.</oldsource>
-      <translation type="unfinished">Подтвердите уведомления и звук без создания захвата.</translation>
+      <translation>Предпросмотр уведомлений и звуков без создания записи.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
@@ -2835,12 +2823,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.feedback.preview.label">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="90"></location>
       <source>Preview feedback</source>
-      <translation>Предварительная обратная связь</translation>
+      <translation>Предпросмотр обратной связи</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
       <source>Show test notification</source>
-      <translation>Показать уведомление о испытании</translation>
+      <translation>Показать тестовое уведомление</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_body">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="101"></location>
@@ -2855,7 +2843,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.feedback.preview.sound">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="107"></location>
       <source>Play test sound</source>
-      <translation>Проиграть звуки испытаний</translation>
+      <translation>Воспроизвести тестовый звук</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="84"></location>
@@ -2865,17 +2853,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.feedback.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="7"></location>
       <source>Notifications &amp; Sound</source>
-      <translation>Уведомления &amp; звук</translation>
+      <translation>Уведомления и звук</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="17"></location>
       <source>Control the result cards shown after capture and replay actions.</source>
-      <translation>Контролируйте результаты карт, показанные после захвата и повторного действия.</translation>
+      <translation>Управление карточками результата, которые показываются после захвата и сохранения повтора.</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.enabled.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="23"></location>
       <source>Master switch for capture and replay result cards.</source>
-      <translation>Главный переключатель для захвата и повторного просмотра карт результатов.</translation>
+      <translation>Главный переключатель карточек результата захвата и повтора.</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.enabled.label">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="21"></location>
@@ -2890,12 +2878,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.feedback.visual.replay">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="35"></location>
       <source>Replay saved</source>
-      <translation>Перезагрузка сохранена</translation>
+      <translation>Повтор сохранён</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.screenshot">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="29"></location>
       <source>Screenshot captured</source>
-      <translation>Снимок экрана</translation>
+      <translation>Снимок экрана сделан</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="15"></location>
@@ -2910,12 +2898,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.general.desktop.close_to_tray.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="133"></location>
       <source>Keep capture and replay services running; when disabled, Close exits %1.</source>
-      <translation>Сохранить службы захвата и воспроизведения в рабочем состоянии; при отключении закрыть выходит %1.</translation>
+      <translation>Службы захвата и повтора продолжают работать; если параметр отключён, закрытие окна завершает %1.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.close_to_tray.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="131"></location>
       <source>Close to tray</source>
-      <translation>Рядом с подносом</translation>
+      <translation>Закрывать в трей</translation>
     </message>
     <message id="gamehq.settings.general.desktop.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="121"></location>
@@ -2930,33 +2918,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.general.desktop.minimize_to_tray.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="126"></location>
       <source>Minimizing the window sends it straight to the tray instead of the taskbar.</source>
-      <translation>Минимизация окна отправляет его прямо на поднос вместо панели задач.</translation>
+      <translation>При сворачивании окно уходит сразу в трей, а не на панель задач.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.minimize_to_tray.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="124"></location>
       <source>Minimize to tray</source>
-      <translation>Минимизировать на поднос</translation>
+      <translation>Сворачивать в трей</translation>
     </message>
     <message id="gamehq.settings.general.desktop.title">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="119"></location>
       <source>Window and tray behavior</source>
-      <translation>Поведение окон и поддонов</translation>
+      <translation>Поведение окна и трея</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="81"></location>
       <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
-      <oldsource>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible.</oldsource>
-      <translation type="unfinished">Насколько сильно игровое перекрытие темнит игру за ним. 100% - это собственное затемнение темы; более низкое удерживает большую часть игры.</translation>
+      <translation>Насколько сильно игровой оверлей затемняет игру под ним. 100 % — собственное затемнение темы; при меньших значениях игра остаётся виднее.</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="79"></location>
       <source>Overlay dimming</source>
-      <translation>Облегчение перекрытия</translation>
+      <translation>Затемнение оверлея</translation>
     </message>
     <message id="gamehq.settings.general.personalization.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="52"></location>
       <source>Choose the visual style and in-game overlay strength.</source>
-      <translation>Выберите визуальный стиль и силу наложения в игре.</translation>
+      <translation>Выберите визуальный стиль и силу игрового оверлея.</translation>
     </message>
     <message id="gamehq.settings.general.personalization.eyebrow">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="48"></location>
@@ -2966,33 +2953,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.general.personalization.title">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="50"></location>
       <source>Look and feel</source>
-      <translation>Посмотри и почувствуй</translation>
+      <translation>Внешний вид</translation>
     </message>
     <message id="gamehq.settings.general.startup.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
       <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
-      <oldsource>Choose whether GameHQ follows your Windows sign-in and opens quietly.</oldsource>
-      <translation type="unfinished">Выберите, следует ли GameHQ за вашим Windows и открывается ли он тихо.</translation>
+      <translation>Выберите, будет ли GameHQ запускаться при входе в Windows и открываться незаметно.</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="94"></location>
       <source>Startup</source>
-      <translation>Начало</translation>
+      <translation>Запуск</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="110"></location>
       <source>Launch directly in the system tray without opening the main window.</source>
-      <translation>Запустить непосредственно в системную панель без открытия главного окна.</translation>
+      <translation>Запускаться сразу в системном трее, не открывая главное окно.</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="108"></location>
       <source>Launch minimized</source>
-      <translation>Запуск минимизирован .</translation>
+      <translation>Запускать свёрнутым</translation>
     </message>
     <message id="gamehq.settings.general.startup.title">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="96"></location>
       <source>How %1 starts</source>
-      <translation>Как %1 начинается</translation>
+      <translation>Как запускается %1</translation>
     </message>
     <message id="gamehq.settings.general.startup.windows.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="103"></location>
@@ -3002,7 +2988,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.general.startup.windows.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="101"></location>
       <source>Start with Windows</source>
-      <translation>Начните с Windows</translation>
+      <translation>Запускать вместе с Windows</translation>
     </message>
     <message id="gamehq.settings.general.theme.fallback">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="67"></location>
@@ -3027,7 +3013,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.bindings.assignment_heading">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="421"></location>
       <source>Input assignments</source>
-      <translation>Назначение ввода</translation>
+      <translation>Назначения ввода</translation>
     </message>
     <message id="gamehq.settings.input.bindings.assignment_hint">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="430"></location>
@@ -3037,49 +3023,49 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.bindings.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="325"></location>
       <source>Primary and secondary slots are independent. Contexts can reuse the same input safely.</source>
-      <translation>Первичные и вторичные слоты независимы друг от друга. Контексты могут безопасно повторно использовать один и тот же вход.</translation>
+      <translation>Основной и дополнительный слоты независимы. Разные контексты могут безопасно использовать один и тот же ввод.</translation>
     </message>
     <message id="gamehq.settings.input.bindings.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="321"></location>
       <source>Bindings</source>
-      <translation>Связки</translation>
+      <translation>Привязки</translation>
     </message>
     <message id="gamehq.settings.input.bindings.fixed">
       <location filename="src/ui/qml/components/BindingCard.qml" line="250"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="455"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="472"></location>
       <source>Fixed</source>
-      <translation>Установлено</translation>
+      <translation>Фиксировано</translation>
     </message>
     <message id="gamehq.settings.input.bindings.primary">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="449"></location>
       <source>Primary</source>
-      <translation>Первичный</translation>
+      <translation>Основной</translation>
     </message>
     <message id="gamehq.settings.input.bindings.secondary">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="466"></location>
       <source>Secondary</source>
-      <translation>Вторичные</translation>
+      <translation>Дополнительный</translation>
     </message>
     <message id="gamehq.settings.input.bindings.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="323"></location>
       <source>Assignments</source>
-      <translation>Назначение</translation>
+      <translation>Назначения</translation>
     </message>
     <message id="gamehq.settings.input.capture.waiting">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="517"></location>
       <source>Waiting for input</source>
-      <translation>Ждем ввода</translation>
+      <translation>Ожидание ввода</translation>
     </message>
     <message id="gamehq.settings.input.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="11"></location>
       <source>Configure controller, keyboard, and mouse shortcuts without changing navigation behavior.</source>
-      <translation>Настройте контроллер, клавиатуру и ярлыки мыши без изменения навигационного поведения.</translation>
+      <translation>Настройте сочетания для геймпада, клавиатуры и мыши, не меняя поведение навигации.</translation>
     </message>
     <message id="gamehq.settings.input.devices.controller">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="46"></location>
       <source>Controller</source>
-      <translation>Контроллер</translation>
+      <translation>Геймпад</translation>
     </message>
     <message id="gamehq.settings.input.devices.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="28"></location>
@@ -3099,7 +3085,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.devices.keyboard_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="37"></location>
       <source>Focused shortcuts and global key combinations</source>
-      <translation>Целенаправленные ярлыки и глобальные комбинации ключей</translation>
+      <translation>Сочетания клавиш в фокусе и глобальные комбинации клавиш</translation>
     </message>
     <message id="gamehq.settings.input.devices.mouse">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="50"></location>
@@ -3109,7 +3095,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.devices.mouse_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="40"></location>
       <source>Middle, Back, and Forward mouse buttons</source>
-      <translation>Кнопки мыши "Средний", "Назад" и "Вперед"</translation>
+      <translation>Средняя кнопка мыши, «Назад» и «Вперёд»</translation>
     </message>
     <message id="gamehq.settings.input.devices.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="26"></location>
@@ -3124,7 +3110,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.gestures.combination_window">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="299"></location>
       <source>Combination window</source>
-      <translation>Комбинационное окно</translation>
+      <translation>Окно комбинации</translation>
     </message>
     <message id="gamehq.settings.input.gestures.combination_window_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="301"></location>
@@ -3139,17 +3125,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.gestures.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="254"></location>
       <source>Gestures</source>
-      <translation>Жестовые движения</translation>
+      <translation>Жесты</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="261"></location>
       <source>Hold time</source>
-      <translation>Время ожидания</translation>
+      <translation>Время удержания</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="263"></location>
       <source>How long a button must be held for a hold action. A completed hold consumes the tap.</source>
-      <translation>Сколько времени нужно удерживать кнопку для действия задержки.</translation>
+      <translation>Сколько нужно удерживать кнопку, чтобы сработало действие удержания. Завершённое удержание поглощает касание.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="280"></location>
@@ -3159,32 +3145,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.gestures.multi_tap_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="282"></location>
       <source>How long a single tap waits when the same button also has a double or triple tap.</source>
-      <translation>Сколько времени ждет одно нажатие, когда на ту же кнопку также нажимают два или три.</translation>
+      <translation>Сколько ждёт одиночное касание, если у той же кнопки есть двойное или тройное касание.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="256"></location>
       <source>Gesture timing</source>
-      <translation>Время действия жестов</translation>
+      <translation>Тайминг жестов</translation>
     </message>
     <message id="gamehq.settings.input.hidden.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="90"></location>
       <source>Attention</source>
-      <translation>Внимание!</translation>
+      <translation>Внимание</translation>
     </message>
     <message id="gamehq.settings.input.hidden.fix">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Fix automatically</source>
-      <translation>Поправить автоматически</translation>
+      <translation>Исправить автоматически</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="92"></location>
       <source>Controller hidden</source>
-      <translation>Контроллер скрыт</translation>
+      <translation>Геймпад скрыт</translation>
     </message>
     <message id="gamehq.settings.input.modern.auto">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="586"></location>
       <source>Auto</source>
-      <translation>Автомобиль</translation>
+      <translation>Авто</translation>
     </message>
     <message id="gamehq.settings.input.modern.device_layout_changed">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="597"></location>
@@ -3194,28 +3180,27 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.modern.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="569"></location>
       <source>Modern controllers</source>
-      <translation>Современные контроллеры</translation>
+      <translation>Современные геймпады</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
-      <oldsource>View versus true Share, probe results, reconnects, gestures, and combinations</oldsource>
-      <translation type="unfinished">Просмотр против истинного Обмен, результаты исследования, повторное подключение, жесты и комбинации</translation>
+      <translation>Узнайте о кнопках View и настоящей Share, результатах проверки, переподключениях, жестах и комбинациях.</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="645"></location>
       <source>Controller compatibility guide</source>
-      <translation>Руководство по совместимости контроллеров</translation>
+      <translation>Руководство по совместимости геймпадов</translation>
     </message>
     <message id="gamehq.settings.input.modern.layout_warning">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="574"></location>
       <source>A controller layout changed. Review its extra-button assignments before using them.</source>
-      <translation>Пересматривайте дополнительные кнопки перед использованием.</translation>
+      <translation>Раскладка геймпада изменилась. Проверьте назначения дополнительных кнопок перед использованием.</translation>
     </message>
     <message id="gamehq.settings.input.modern.legacy_fallback">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="620"></location>
       <source>Legacy fallback</source>
-      <translation>Возвратная помощь по наследству</translation>
+      <translation>Резервный устаревший режим</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="588"></location>
@@ -3230,59 +3215,58 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.modern.report.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="634"></location>
       <source>Copies anonymous identity, providers, Share/Guide availability, extra buttons, and layout state—never serials or full device paths.</source>
-      <translation>Копирует анонимную личность, провайдеров, доступность Share/Guide, дополнительные кнопки и состояние макетаникогда серийные номера или полные пути устройств.</translation>
+      <translation>Копирует анонимный идентификатор, поставщиков, доступность Share/Guide, дополнительные кнопки и состояние раскладки — но никогда серийные номера или полные пути устройств.</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="632"></location>
       <source>Compatibility report</source>
-      <translation>Доклад о совместимости</translation>
+      <translation>Отчёт о совместимости</translation>
     </message>
     <message id="gamehq.settings.input.modern.review_buttons">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="601"></location>
       <source>Review buttons</source>
-      <translation>Кнопки обзора</translation>
+      <translation>Проверить кнопки</translation>
     </message>
     <message id="gamehq.settings.input.modern.runtime">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="614"></location>
       <source>GameInput runtime</source>
-      <translation>Время запуска игры</translation>
+      <translation>Среда выполнения GameInput</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="581"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
-      <oldsource>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</oldsource>
-      <translation type="unfinished">Автоматическое использование локального GameInput с безопасным отключением устаревших поставщиков.</translation>
+      <translation>«Авто» использует встроенную среду выполнения GameInput с безопасным резервным устаревшим режимом; «Выключено» отключает GameInput.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="579"></location>
       <source>Modern controller support</source>
-      <translation>Поддержка современного контроллера</translation>
+      <translation>Поддержка современных геймпадов</translation>
     </message>
     <message id="gamehq.settings.input.modern.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="571"></location>
       <source>GameInput support</source>
-      <translation>Поддержка ввода игры</translation>
+      <translation>Поддержка GameInput</translation>
     </message>
     <message id="gamehq.settings.input.modern.use_current_layout">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="607"></location>
       <source>Use current layout</source>
-      <translation>Использовать текущий макет</translation>
+      <translation>Использовать текущую раскладку</translation>
     </message>
     <message id="gamehq.settings.input.profile.all_controllers">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="72"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="80"></location>
       <source>All controllers</source>
-      <translation>Все контроллеры</translation>
+      <translation>Все геймпады</translation>
     </message>
     <message id="gamehq.settings.input.profile.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="58"></location>
       <source>Controller profile</source>
-      <translation>Профиль контроллера</translation>
+      <translation>Профиль геймпада</translation>
     </message>
     <message id="gamehq.settings.input.profile.shared_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="65"></location>
       <source>Position-based assignments work across PlayStation, Xbox, Nintendo, and generic pads.</source>
-      <translation>Назначения на основе позиции работают на PlayStation, Xbox, Nintendo и общих планшетах.</translation>
+      <translation>Назначения по позиции кнопок работают с геймпадами PlayStation, Xbox, Nintendo и универсальными.</translation>
     </message>
     <message id="gamehq.settings.input.profile.specific_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="62"></location>
@@ -3292,7 +3276,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.profile.this_controller">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="76"></location>
       <source>This controller</source>
-      <translation>Этот контроллер</translation>
+      <translation>Этот геймпад</translation>
     </message>
     <message id="gamehq.settings.input.relation.compatibility">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="125"></location>
@@ -3317,7 +3301,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.relation.duplicate">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="137"></location>
       <source>Duplicate</source>
-      <translation>Двойной</translation>
+      <translation>Дубликат</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate_title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="162"></location>
@@ -3327,12 +3311,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.relation.in_use">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="131"></location>
       <source>In use</source>
-      <translation>В эксплуатации</translation>
+      <translation>Используется</translation>
     </message>
     <message id="gamehq.settings.input.relation.in_use_title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="156"></location>
       <source>Shortcut already taken</source>
-      <translation>Уже пройден короткий путь .</translation>
+      <translation>Сочетание уже занято</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_available">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="128"></location>
@@ -3342,7 +3326,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.relation.not_reported_title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="153"></location>
       <source>Button not reported</source>
-      <translation>Кнопка не зарегистрирована</translation>
+      <translation>Кнопка не обнаружена</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_saved">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="134"></location>
@@ -3352,12 +3336,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.relation.not_saved_title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="159"></location>
       <source>Could not save this binding</source>
-      <translation>Не удалось сохранить связь</translation>
+      <translation>Не удалось сохранить эту привязку</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="140"></location>
       <source>Shared button</source>
-      <translation>Кнопка совместного использования</translation>
+      <translation>Общая кнопка</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button_title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="165"></location>
@@ -3367,37 +3351,37 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.restore_all.message">
       <location filename="src/ui/qml/SettingsView.qml" line="508"></location>
       <source>All controller, keyboard, and mouse overrides return to their built-in defaults.</source>
-      <translation>Все переключатели контроллера, клавиатуры и мыши возвращаются к встроенным параметрам.</translation>
+      <translation>Все переопределения геймпада, клавиатуры и мыши вернутся к встроенным значениям по умолчанию.</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.title">
       <location filename="src/ui/qml/SettingsView.qml" line="506"></location>
       <source>Restore all input bindings?</source>
-      <translation>Восстановить все входные связи?</translation>
+      <translation>Восстановить все привязки ввода?</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.message">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="679"></location>
       <source>Only the currently displayed device/profile overrides will be removed.</source>
-      <translation>Удаляются только отображаемые устройства/профили.</translation>
+      <translation>Будут удалены только переопределения для показанного устройства и профиля.</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="677"></location>
       <source>Restore displayed bindings?</source>
-      <translation>Восстановить отображаемые связки?</translation>
+      <translation>Восстановить показанные привязки?</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="225"></location>
       <source>Adopt per-slot bindings</source>
-      <translation>Принять по-слоту</translation>
+      <translation>Принять привязки этого слота</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="227"></location>
       <source>Copy bindings saved for any controller in this slot to this specific controller. The originals are kept.</source>
-      <translation>Копируйте запись, сохраненную для любого контроллера в этом слоте, на этот конкретный контроллер.</translation>
+      <translation>Копирует привязки, сохранённые в этом слоте для любого геймпада, на этот конкретный геймпад. Исходные привязки сохраняются.</translation>
     </message>
     <message id="gamehq.settings.input.test.copy_to_controller">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="230"></location>
       <source>Copy to this controller</source>
-      <translation>Копировать на этот контроллер</translation>
+      <translation>Копировать на этот геймпад</translation>
     </message>
     <message id="gamehq.settings.input.test.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="189"></location>
@@ -3407,7 +3391,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.test.identify_button">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="237"></location>
       <source>Identify a controller button</source>
-      <translation>Определите кнопку контроллера</translation>
+      <translation>Определить кнопку геймпада</translation>
     </message>
     <message id="gamehq.settings.input.test.last_input">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="195"></location>
@@ -3417,32 +3401,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.test.probe_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="241"></location>
       <source>Records the next 3 seconds of raw button changes — including buttons GameHQ does not recognize — into the diagnostics you can copy from Advanced.</source>
-      <translation>Записывает следующие 3 секунды необработанных изменений кнопок  включая кнопки, которые GameHQ не распознает  в диагностику, которую вы можете скопировать из Advanced.</translation>
+      <translation>Записывает следующие 3 секунды необработанных изменений кнопок — включая кнопки, которые GameHQ не распознаёт — в диагностику, которую можно скопировать в разделе «Дополнительно».</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_displayed">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="206"></location>
       <source>Restore displayed bindings</source>
-      <translation>Восстановить отображаемые связки</translation>
+      <translation>Восстановить показанные привязки</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_shared_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="213"></location>
       <source>Remove overrides for the selected device type and shared profile.</source>
-      <translation>Удалить замены для выбранного типа устройства и общих профилей.</translation>
+      <translation>Удалить переопределения для выбранного типа устройства и общего профиля.</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_specific_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="210"></location>
       <source>Remove overrides for this controller only.</source>
-      <translation>Удалить зашифровки только для этого контроллера.</translation>
+      <translation>Удалить переопределения только для этого геймпада.</translation>
     </message>
     <message id="gamehq.settings.input.test.start_probe">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="244"></location>
       <source>Start 3-second probe</source>
-      <translation>Начать 3-секундный зонд</translation>
+      <translation>Запустить 3-секундную проверку</translation>
     </message>
     <message id="gamehq.settings.input.test.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="191"></location>
       <source>Test and restore</source>
-      <translation>Испытание и восстановление</translation>
+      <translation>Проверка и восстановление</translation>
     </message>
     <message id="gamehq.settings.language.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="17"></location>
@@ -3457,7 +3441,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.language.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="21"></location>
       <source>Display language</source>
-      <translation>Язык приложения</translation>
+      <translation>Язык отображения</translation>
     </message>
     <message id="gamehq.settings.language.row_description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="23"></location>
@@ -3477,13 +3461,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.library.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="11"></location>
       <source>Review every folder GameHQ manages or scans for media.</source>
-      <translation>Проверьте все папки, которыми управляет GameHQ или сканируйте на наличие медиа.</translation>
+      <translation>Просмотрите все папки, которыми управляет GameHQ или которые он сканирует на наличие медиафайлов.</translation>
     </message>
     <message id="gamehq.settings.library.imports.add">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="85"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="120"></location>
       <source>Add watched folder</source>
-      <translation>Добавить просмотренную папку</translation>
+      <translation>Добавить отслеживаемую папку</translation>
     </message>
     <message id="gamehq.settings.library.imports.count" numerus="yes">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="72"></location>
@@ -3497,7 +3481,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.library.imports.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="74"></location>
       <source>External folders are scanned read-only and never become GameHQ output locations.</source>
-      <translation>Внешние папки сканируются только для чтения и никогда не становятся выходной локацией GameHQ.</translation>
+      <translation>Внешние папки сканируются только для чтения и никогда не становятся папками вывода GameHQ.</translation>
     </message>
     <message id="gamehq.settings.library.imports.empty.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="82"></location>
@@ -3507,7 +3491,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.library.imports.empty.title">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="80"></location>
       <source>No watched folders yet</source>
-      <translation>Пока не просмотрели папки</translation>
+      <translation>Отслеживаемых папок пока нет</translation>
     </message>
     <message id="gamehq.settings.library.imports.eyebrow">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="68"></location>
@@ -3517,36 +3501,36 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.library.imports.folder">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="97"></location>
       <source>Watched folder</source>
-      <translation>Просмотренная папка</translation>
+      <translation>Отслеживаемая папка</translation>
     </message>
     <message id="gamehq.settings.library.imports.title">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="70"></location>
       <source>Watched folders</source>
-      <translation>Смотрите папки</translation>
+      <translation>Отслеживаемые папки</translation>
     </message>
     <message id="gamehq.settings.library.rescan">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="15"></location>
       <source>Rescan now</source>
-      <translation>Пересканируйте сейчас</translation>
+      <translation>Пересканировать сейчас</translation>
     </message>
     <message id="gamehq.settings.library.scan.added" numerus="yes">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="139"></location>
       <source>%n new capture(s) added</source>
       <translation>
-        <numerusform>%n новый файл добавлен</numerusform>
-        <numerusform>%n новых файла добавлено</numerusform>
-        <numerusform>%n новых файлов добавлено</numerusform>
+        <numerusform>Добавлена %n новая запись</numerusform>
+        <numerusform>Добавлено %n новые записи</numerusform>
+        <numerusform>Добавлено %n новых записей</numerusform>
       </translation>
     </message>
     <message id="gamehq.settings.library.scan.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="143"></location>
       <source>Rescan checks current, previous, and watched locations for media missing from the library.</source>
-      <translation>Rescan проверяет текущие, предыдущие и просмотренные места на отсутствующие в библиотеке медиа.</translation>
+      <translation>Повторное сканирование проверяет текущие, предыдущие и отслеживаемые расположения на наличие медиафайлов, которых нет в библиотеке.</translation>
     </message>
     <message id="gamehq.settings.library.scan.eyebrow">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="128"></location>
       <source>Last scan</source>
-      <translation>Последний сканер</translation>
+      <translation>Последнее сканирование</translation>
     </message>
     <message id="gamehq.settings.library.scan.not_scanned">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="132"></location>
@@ -3556,42 +3540,42 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.library.scan.up_to_date">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="136"></location>
       <source>Library is up to date</source>
-      <translation>Библиотека обновлена</translation>
+      <translation>Библиотека актуальна</translation>
     </message>
     <message id="gamehq.settings.library.storage.active_count">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="34"></location>
       <source>2 active</source>
-      <translation>2 активные</translation>
+      <translation>2 активных</translation>
     </message>
     <message id="gamehq.settings.library.storage.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="36"></location>
       <source>Current output folders and earlier roots remain scanned so past media stays visible.</source>
-      <translation>Текущие выходной папки и более ранние корни остаются сканированными, поэтому прошлые медиа остаются видимыми.</translation>
+      <translation>Текущие папки вывода и прежние корневые папки продолжают сканироваться, поэтому старые медиафайлы остаются видимыми.</translation>
     </message>
     <message id="gamehq.settings.library.storage.eyebrow">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="30"></location>
       <source>Storage</source>
-      <translation>Хранение</translation>
+      <translation>Хранилище</translation>
     </message>
     <message id="gamehq.settings.library.storage.previous_location">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="58"></location>
       <source>Previous location</source>
-      <translation>Предыдущее местонахождение</translation>
+      <translation>Предыдущее расположение</translation>
     </message>
     <message id="gamehq.settings.library.storage.replay_clips">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="46"></location>
       <source>Replay clips</source>
-      <translation>Повторные клипы</translation>
+      <translation>Клипы повторов</translation>
     </message>
     <message id="gamehq.settings.library.storage.screenshots">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="40"></location>
       <source>Screenshots</source>
-      <translation>Скриншоты</translation>
+      <translation>Снимки экрана</translation>
     </message>
     <message id="gamehq.settings.library.storage.title">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="32"></location>
       <source>Managed locations</source>
-      <translation>Управляемые места</translation>
+      <translation>Управляемые расположения</translation>
     </message>
     <message id="gamehq.settings.library.title">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="9"></location>
@@ -3606,13 +3590,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.portable_import.failed">
       <location filename="src/ui/qml/SettingsView.qml" line="478"></location>
       <source>Portable import failed</source>
-      <translation>Неудачный импорт</translation>
+      <translation>Не удалось импортировать портативный профиль</translation>
     </message>
     <message id="gamehq.settings.portable_import.message">
       <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
       <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
-      <oldsource>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</oldsource>
-      <translation type="unfinished">Только недавно установленный профиль принимается. Переносные записи остаются на месте, источник никогда не изменяется, и GameHQ перезагружается, чтобы завершить импорт.</translation>
+      <translation>Импорт возможен только в чистый установленный профиль. Портативные записи остаются на месте, источник никогда не изменяется, а GameHQ перезапускается, чтобы завершить импорт.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
       <location filename="src/ui/qml/SettingsView.qml" line="469"></location>
@@ -3622,12 +3605,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.replay.buffer.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="41"></location>
       <source>Recording changes restart an active buffer so new values apply immediately.</source>
-      <translation>Запись изменений перезапускает активный буфер, так что новые значения применяются немедленно.</translation>
+      <translation>Изменение параметров записи перезапускает активный буфер, поэтому новые значения применяются сразу.</translation>
     </message>
     <message id="gamehq.settings.replay.buffer.enabled.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="46"></location>
       <source>Record a rolling buffer whenever an eligible game is active.</source>
-      <translation>Записывать буфер, когда активная игра подлежит отмене.</translation>
+      <translation>Записывать скользящий буфер, пока активна подходящая игра.</translation>
     </message>
     <message id="gamehq.settings.replay.buffer.enabled.label">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="44"></location>
@@ -3642,7 +3625,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.replay.buffer.length">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="51"></location>
       <source>Replay length</source>
-      <translation>Продолжительность повторного просмотра</translation>
+      <translation>Длительность повтора</translation>
     </message>
     <message id="gamehq.settings.replay.buffer.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="39"></location>
@@ -3652,7 +3635,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.replay.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="9"></location>
       <source>Manage the rolling buffer used for instant replay clips.</source>
-      <translation>Управление буфером, используемым для мгновенного воспроизведения клипов.</translation>
+      <translation>Управление скользящим буфером для клипов мгновенного повтора.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.bitrate">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="107"></location>
@@ -3662,12 +3645,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.replay.encoding.bitrate_description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="109"></location>
       <source>Higher values improve motion detail but use more storage and encoder bandwidth.</source>
-      <translation>Более высокие значения улучшают детали движения, но используют больше места для хранения и ширину полосы кодера.</translation>
+      <translation>Более высокие значения улучшают детализацию движения, но требуют больше места и пропускной способности кодировщика.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="79"></location>
       <source>Balance motion detail, resolution, storage use, and encoder load.</source>
-      <translation>Балансируйте детали движения, разрешение, использование хранилища и нагрузку кодера.</translation>
+      <translation>Баланс между детализацией движения, разрешением, расходом места и нагрузкой на кодировщик.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.eyebrow">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="75"></location>
@@ -3677,22 +3660,22 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.replay.encoding.frame_rate">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="82"></location>
       <source>Frame rate</source>
-      <translation>Скорость кадров</translation>
+      <translation>Частота кадров</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.resolution">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="95"></location>
       <source>Resolution</source>
-      <translation>Резолюция</translation>
+      <translation>Разрешение</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.system_audio.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="128"></location>
       <source>Include desktop audio in newly recorded replay segments.</source>
-      <translation>Включите аудио на рабочем столе в недавно записанные сегменты повторного воспроизведения.</translation>
+      <translation>Включать звук рабочего стола в новые записанные фрагменты повтора.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.system_audio.label">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="126"></location>
       <source>System audio</source>
-      <translation>Система аудио</translation>
+      <translation>Системный звук</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="77"></location>
@@ -3702,12 +3685,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.replay.feedback.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="140"></location>
       <source>Saved replays go to %1. Failures always notify you.</source>
-      <translation>Сохраненные повторения переходят в %1.</translation>
+      <translation>Сохранённые повторы попадают в %1. Об ошибках вы получите уведомление всегда.</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.eyebrow">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="136"></location>
       <source>Feedback</source>
-      <translation>Отзывы</translation>
+      <translation>Обратная связь</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.notification">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="148"></location>
@@ -3717,7 +3700,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.replay.feedback.sound">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="143"></location>
       <source>Clip saved sound</source>
-      <translation>Звук , сохраненный в клипе</translation>
+      <translation>Звук сохранения клипа</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="138"></location>
@@ -3727,22 +3710,22 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.replay.status.active_description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="28"></location>
       <source>Recording %1; the temporary ring is written only when you save a replay.</source>
-      <translation>Запись %1; временное кольцо записывается только при сохранении повторного воспроизведения.</translation>
+      <translation>Идёт запись %1; временный кольцевой буфер сохраняется на диск только при сохранении повтора.</translation>
     </message>
     <message id="gamehq.settings.replay.status.eyebrow">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="13"></location>
       <source>Current status</source>
-      <translation>Современное состояние</translation>
+      <translation>Текущее состояние</translation>
     </message>
     <message id="gamehq.settings.replay.status.idle">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="23"></location>
       <source>Idle</source>
-      <translation>Неработающий</translation>
+      <translation>Ожидание</translation>
     </message>
     <message id="gamehq.settings.replay.status.idle_description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="31"></location>
       <source>Not recording. The buffer arms automatically when an eligible game is active.</source>
-      <translation>Буфер автоматически активируется, когда игра активна.</translation>
+      <translation>Запись не ведётся. Буфер автоматически готовится к работе, когда активна подходящая игра.</translation>
     </message>
     <message id="gamehq.settings.replay.status.recording">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="20"></location>
@@ -3752,17 +3735,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.replay.status.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="15"></location>
       <source>Replay buffer</source>
-      <translation>Буфер повторного воспроизведения</translation>
+      <translation>Буфер повтора</translation>
     </message>
     <message id="gamehq.settings.replay.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="7"></location>
       <source>Replay</source>
-      <translation>Повторное воспроизведение</translation>
+      <translation>Повтор</translation>
     </message>
     <message id="gamehq.settings.restore_all.message">
       <location filename="src/ui/qml/SettingsView.qml" line="491"></location>
       <source>Window preferences, capture behavior, replay options, notifications, and sound settings return to defaults. Captures and library data are not deleted.</source>
-      <translation>Настройки окна, поведение захвата, опции повторного воспроизведения, уведомления и звуковые настройки возвращаются к по умолчанию.</translation>
+      <translation>Настройки окна, поведение захвата, параметры повтора, уведомления и звук вернутся к значениям по умолчанию. Записи и данные библиотеки не удаляются.</translation>
     </message>
     <message id="gamehq.settings.restore_all.title">
       <location filename="src/ui/qml/SettingsView.qml" line="489"></location>
@@ -3772,7 +3755,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.restore_category.message">
       <location filename="src/ui/qml/SettingsView.qml" line="522"></location>
       <source>%1 options return to defaults. Captures and library data are not deleted.</source>
-      <translation>Опции %1 возвращаются на по умолчанию.</translation>
+      <translation>Параметры раздела «%1» вернутся к значениям по умолчанию. Записи и данные библиотеки не удаляются.</translation>
     </message>
     <message id="gamehq.settings.restore_category.title">
       <location filename="src/ui/qml/SettingsView.qml" line="520"></location>
@@ -3782,7 +3765,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.blue.description">
       <location filename="src/ui/qml/themes/Skin.qml" line="22"></location>
       <source>Deep navy surfaces with violet-to-blue accents.</source>
-      <translation>Глубокие морские поверхности с фиолетовыми-синими акцентами.</translation>
+      <translation>Глубокий тёмно-синий фон с акцентами от фиолетового к синему.</translation>
     </message>
     <message id="gamehq.settings.theme.blue.label">
       <location filename="src/ui/qml/themes/DarkSkin.qml" line="6"></location>
@@ -3793,8 +3776,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.carbon.description">
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="7"></location>
       <source>Layered neutral grays and one bright blue. Minimal to a fault.</source>
-      <oldsource>Layered neutral greys and one bright blue. Minimal to a fault.</oldsource>
-      <translation type="unfinished">Нейтральный серый и синий цвет.</translation>
+      <translation>Многослойные нейтральные серые и один яркий синий. Минимализм до предела.</translation>
     </message>
     <message id="gamehq.settings.theme.carbon.label">
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="5"></location>
@@ -3804,8 +3786,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.cobalt.description">
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="7"></location>
       <source>Soft grays, an indigo accent, pill-shaped controls, and quick transitions.</source>
-      <oldsource>Soft greys, indigo accent, pill-round and very fast.</oldsource>
-      <translation type="unfinished">Мягкий серый, индиго акцент, круглое и очень быстрый.</translation>
+      <translation>Мягкие серые тона, индиговый акцент, скруглённые элементы управления и быстрые переходы.</translation>
     </message>
     <message id="gamehq.settings.theme.cobalt.label">
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="5"></location>
@@ -3815,8 +3796,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.dracula.description">
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="7"></location>
       <source>Purple-gray base with bright candy accents.</source>
-      <oldsource>Purple-grey base with bright candy accents.</oldsource>
-      <translation type="unfinished">Фиолетово-серая основа с яркими конфетовыми акцентами.</translation>
+      <translation>Фиолетово-серая основа с яркими карамельными акцентами.</translation>
     </message>
     <message id="gamehq.settings.theme.dracula.label">
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="5"></location>
@@ -3826,7 +3806,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.emerald.description">
       <location filename="src/ui/qml/themes/EmeraldSkin.qml" line="7"></location>
       <source>Charcoal and green, with quick Fluent-style responses.</source>
-      <translation>Уголь и зеленый, с быстрыми реакциями в стиле Fluent.</translation>
+      <translation>Угольный и зелёный с быстрой отзывчивостью в стиле Fluent.</translation>
     </message>
     <message id="gamehq.settings.theme.emerald.label">
       <location filename="src/ui/qml/themes/EmeraldSkin.qml" line="5"></location>
@@ -3836,7 +3816,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.gruvbox.description">
       <location filename="src/ui/qml/themes/GruvboxSkin.qml" line="8"></location>
       <source>Warm retro-terminal browns and cream, in monospace.</source>
-      <translation>Теплые ретро-терминальные коричневые и сливочные, в монопространстве.</translation>
+      <translation>Тёплые коричневые и кремовые тона ретро-терминала, моноширинный шрифт.</translation>
     </message>
     <message id="gamehq.settings.theme.gruvbox.label">
       <location filename="src/ui/qml/themes/GruvboxSkin.qml" line="6"></location>
@@ -3846,8 +3826,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.harbor.description">
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="8"></location>
       <source>Flat blue-gray with squared edges. Chrome gets out of the way.</source>
-      <oldsource>Flat blue-grey with squared edges. Chrome gets out of the way.</oldsource>
-      <translation type="unfinished">Плоский сине-серый с квадратными краями.</translation>
+      <translation>Плоский сине-серый с прямыми углами. Интерфейс не отвлекает.</translation>
     </message>
     <message id="gamehq.settings.theme.harbor.label">
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="6"></location>
@@ -3862,7 +3841,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.light.label">
       <location filename="src/ui/qml/themes/LightSkin.qml" line="9"></location>
       <source>Light</source>
-      <translation>Свет</translation>
+      <translation>Светлая</translation>
     </message>
     <message id="gamehq.settings.theme.midnight.description">
       <location filename="src/ui/qml/themes/MidnightSkin.qml" line="9"></location>
@@ -3877,8 +3856,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.nord.description">
       <location filename="src/ui/qml/themes/NordSkin.qml" line="7"></location>
       <source>Desaturated arctic blue-grays. Calm and low-contrast.</source>
-      <oldsource>Desaturated arctic blue-greys. Calm and low-contrast.</oldsource>
-      <translation type="unfinished">Ненасыщенный арктический сине-серый, спокойный и с низким контрастом.</translation>
+      <translation>Приглушённые арктические сине-серые тона. Спокойно и малоконтрастно.</translation>
     </message>
     <message id="gamehq.settings.theme.nord.label">
       <location filename="src/ui/qml/themes/NordSkin.qml" line="5"></location>
@@ -3888,7 +3866,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.obsidian.description">
       <location filename="src/ui/qml/themes/ObsidianSkin.qml" line="19"></location>
       <source>Near-black glass lit by a cool blue bloom. The default.</source>
-      <translation>Почти черное стекло, освещенное прохладным синим цветом.</translation>
+      <translation>Почти чёрное стекло с холодным синим свечением. Тема по умолчанию.</translation>
     </message>
     <message id="gamehq.settings.theme.obsidian.label">
       <location filename="src/ui/qml/themes/ObsidianSkin.qml" line="17"></location>
@@ -3898,7 +3876,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.synthwave.description">
       <location filename="src/ui/qml/themes/SynthwaveSkin.qml" line="8"></location>
       <source>Neon magenta and cyan over a violet horizon, with scanlines.</source>
-      <translation>Неоновый мажента и сиановый над фиолетовым горизонтом, с линиями сканирования.</translation>
+      <translation>Неоновая пурпурная и голубая палитра над фиолетовым горизонтом, со строками развёртки.</translation>
     </message>
     <message id="gamehq.settings.theme.synthwave.label">
       <location filename="src/ui/qml/themes/SynthwaveSkin.qml" line="6"></location>
@@ -3908,43 +3886,43 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.startup.portable_import.failed_title">
       <location filename="src/main.cpp" line="238"></location>
       <source>Portable import failed</source>
-      <translation>Не удалось импортировать переносной профиль</translation>
+      <translation>Не удалось импортировать портативный профиль</translation>
     </message>
     <message id="gamehq.startup.portable_import.installed_copy_required">
       <location filename="src/main.cpp" line="205"></location>
       <source>Run portable import from an installed copy of GameHQ.</source>
-      <translation>Запустить портативный импорт с установленной копии GameHQ- Я не знаю .</translation>
+      <translation>Запустите портативный импорт из установленной копии GameHQ.</translation>
     </message>
     <message id="gamehq.startup.portable_import.instance_running">
       <location filename="src/main.cpp" line="217"></location>
       <source>Another GameHQ instance is running, so the portable import cannot start.</source>
-      <translation>Еще один GameHQ Инстанция запускается, поэтому портативный импорт не может быть запущен.</translation>
+      <translation>Уже запущен другой экземпляр GameHQ, поэтому портативный импорт не может начаться.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_argument_incomplete">
       <location filename="src/main.cpp" line="85"></location>
       <source>The portable import parent-process argument is incomplete.</source>
-      <translation>Аргумент переносного импорта родительского процесса неполный.</translation>
+      <translation>Аргумент родительского процесса для портативного импорта неполный.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_identifier_invalid">
       <location filename="src/main.cpp" line="113"></location>
       <location filename="src/main.cpp" line="119"></location>
       <source>The portable import parent-process identifier is invalid.</source>
-      <translation>Идентификатор переносного импорта родительского процесса недействителен.</translation>
+      <translation>Идентификатор родительского процесса для портативного импорта недействителен.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_still_running">
       <location filename="src/main.cpp" line="99"></location>
       <source>The running GameHQ instance did not close in time.</source>
-      <translation>Бег GameHQ Случай не закрылся вовремя.</translation>
+      <translation>Запущенный экземпляр GameHQ не закрылся вовремя.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_unverifiable">
       <location filename="src/main.cpp" line="106"></location>
       <source>GameHQ could not confirm that the previous instance has closed.</source>
-      <translation>GameHQ Не смог подтвердить, что предыдущая инстанция закрыта.</translation>
+      <translation>GameHQ не смог подтвердить, что предыдущий экземпляр закрыт.</translation>
     </message>
     <message id="gamehq.startup.portable_import.source_missing">
       <location filename="src/main.cpp" line="199"></location>
       <source>The portable import source folder is missing.</source>
-      <translation>Портативная папка источника импорта отсутствует.</translation>
+      <translation>Исходная папка портативного импорта отсутствует.</translation>
     </message>
     <message id="gamehq.tray.exit">
       <location filename="src/tray/TrayIcon.cpp" line="200"></location>
@@ -3979,7 +3957,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.available_version_short">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="126"></location>
       <source>%1 available</source>
-      <translation>%1 доступно</translation>
+      <translation>Доступна %1</translation>
     </message>
     <message id="gamehq.update.banner.available">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="67"></location>
@@ -4029,7 +4007,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.banner.waiting_for_capture">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="83"></location>
       <source>Waiting for capture work to finish safely.</source>
-      <translation>Ждём, когда работа по захвату закончится.</translation>
+      <translation>Ожидание безопасного завершения задач захвата.</translation>
     </message>
     <message id="gamehq.update.beta_download">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="166"></location>
@@ -4056,38 +4034,38 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="231"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
       <source>Check again</source>
-      <translation>Проверьте еще раз .</translation>
+      <translation>Проверить снова</translation>
     </message>
     <message id="gamehq.update.check_automatically.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="117"></location>
       <source>At most once every 24 hours, in the background.</source>
-      <translation>Максимально раз в 24 часа, на заднем плане.</translation>
+      <translation>Не чаще одного раза в 24 часа, в фоновом режиме.</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="115"></location>
       <source>Check automatically</source>
-      <translation>Проверка автоматическая</translation>
+      <translation>Проверять автоматически</translation>
     </message>
     <message id="gamehq.update.check_failed">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="172"></location>
       <source>Update check failed</source>
-      <translation>Провал проверки обновления</translation>
+      <translation>Не удалось проверить обновления</translation>
     </message>
     <message id="gamehq.update.check_now">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="139"></location>
       <source>Check now</source>
-      <translation>Проверьте сейчас .</translation>
+      <translation>Проверить сейчас</translation>
     </message>
     <message id="gamehq.update.checking">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="211"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="136"></location>
       <source>Checking...</source>
-      <translation>Проверяю...</translation>
+      <translation>Проверка...</translation>
     </message>
     <message id="gamehq.update.checking_for_updates">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="80"></location>
       <source>Checking for updates...</source>
-      <translation>Проверяю обновления...</translation>
+      <translation>Проверка обновлений...</translation>
     </message>
     <message id="gamehq.update.checking_for_updates_short">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="152"></location>
@@ -4102,7 +4080,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.download_progress">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="155"></location>
       <source>Download progress</source>
-      <translation>Прогресс загрузки</translation>
+      <translation>Ход загрузки</translation>
     </message>
     <message id="gamehq.update.download_verified_version">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="94"></location>
@@ -4134,7 +4112,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="172"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="199"></location>
       <source>Install and restart</source>
-      <translation>Установка и перезапуск</translation>
+      <translation>Установить и перезапустить</translation>
     </message>
     <message id="gamehq.update.installed_version">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="129"></location>
@@ -4160,7 +4138,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.last_checked">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="203"></location>
       <source>Last checked %1</source>
-      <translation>Последнее проверенное %1</translation>
+      <translation>Последняя проверка: %1</translation>
     </message>
     <message id="gamehq.update.last_checked_with_marker">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="554"></location>
@@ -4180,12 +4158,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.not_checked_yet">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="182"></location>
       <source>Not checked yet</source>
-      <translation>Еще не проверено</translation>
+      <translation>Ещё не проверялось</translation>
     </message>
     <message id="gamehq.update.preparing">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="224"></location>
       <source>Preparing...</source>
-      <translation>Готовимся...</translation>
+      <translation>Подготовка...</translation>
     </message>
     <message id="gamehq.update.preparing_to_install">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="166"></location>
@@ -4212,7 +4190,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="162"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="158"></location>
       <source>Ready to install</source>
-      <translation>Готовы к установке</translation>
+      <translation>Готово к установке</translation>
     </message>
     <message id="gamehq.update.release_metadata">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="95"></location>
@@ -4227,23 +4205,23 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.remind_later">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="933"></location>
       <source>Remind me later</source>
-      <translation>Напомни мне позже.</translation>
+      <translation>Напомнить позже</translation>
     </message>
     <message id="gamehq.update.restart_to_apply">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
       <source>GameHQ will restart to apply the update.</source>
-      <translation>GameHQ перезапустит обновление.</translation>
+      <translation>GameHQ перезапустится, чтобы применить обновление.</translation>
     </message>
     <message id="gamehq.update.retry_download">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="234"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="206"></location>
       <source>Retry download</source>
-      <translation>Попробуйте загрузить снова</translation>
+      <translation>Повторить загрузку</translation>
     </message>
     <message id="gamehq.update.see_whats_new">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="156"></location>
       <source>See what's new</source>
-      <translation>Посмотрим, что нового.</translation>
+      <translation>Посмотреть, что нового</translation>
     </message>
     <message id="gamehq.update.settings">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="728"></location>
@@ -4253,12 +4231,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.sha256_limit_warning">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="187"></location>
       <source>SHA-256 detects corruption, but not a compromised GitHub account.</source>
-      <translation>SHA-256 обнаруживает коррупцию, но не скомпрометированный аккаунт GitHub.</translation>
+      <translation>SHA-256 выявляет повреждение файла, но не взломанный аккаунт GitHub.</translation>
     </message>
     <message id="gamehq.update.skip_this_version">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="947"></location>
       <source>Skip this version</source>
-      <translation>Пропустите эту версию</translation>
+      <translation>Пропустить эту версию</translation>
     </message>
     <message id="gamehq.update.skip_version">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="738"></location>
@@ -4290,23 +4268,23 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.suffix.available">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="48"></location>
       <source>(Available)</source>
-      <translation>(доступно)</translation>
+      <translation>(доступна)</translation>
     </message>
     <message id="gamehq.update.suffix.current">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="53"></location>
       <source>(Current)</source>
-      <translation>(В настоящее время)</translation>
+      <translation>(текущая)</translation>
     </message>
     <message id="gamehq.update.up_to_date">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="175"></location>
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="179"></location>
       <source>Up to date</source>
-      <translation>Современная информация</translation>
+      <translation>Актуально</translation>
     </message>
     <message id="gamehq.update.up_to_date_last_checked">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="107"></location>
       <source>Up to date, last checked %1</source>
-      <translation>Обновлено, последний раз проверялось %1</translation>
+      <translation>Актуально, последняя проверка: %1</translation>
     </message>
     <message id="gamehq.update.version_available">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="43"></location>
@@ -4336,7 +4314,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.waiting_for_capture">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
       <source>Waiting for capture work to finish safely...</source>
-      <translation>Ждём, пока работа по захвату закончится безопасно...</translation>
+      <translation>Ожидание безопасного завершения задач захвата...</translation>
     </message>
   </context>
 </TS>
