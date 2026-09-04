@@ -41,7 +41,7 @@
     <message id="gamehq.about.product_description">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="629"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
-      <translation>Screenshot, replay e galleria multimediale per i giochi per PC, comodi da usare con il controller.</translation>
+      <translation>Un'app per screenshot, replay e galleria multimediale nei giochi per PC, ottimizzata per l'uso con il controller.</translation>
     </message>
     <message id="gamehq.about.product_updated">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="484"></location>
@@ -315,7 +315,7 @@
     <message id="gamehq.action.global.toggle_desktop.description">
       <location filename="src/input/ActionCatalog.cpp" line="109"></location>
       <source>Bring the GameHQ window to the front with focus, or hide it and return to the game.</source>
-      <translation>Porta la finestra di GameHQ in primo piano con il focus, oppure la nasconde e torna al gioco.</translation>
+      <translation>Porta in primo piano e attiva la finestra di GameHQ, oppure nascondila e torna al gioco.</translation>
     </message>
     <message id="gamehq.action.global.toggle_desktop.label">
       <location filename="src/input/ActionCatalog.cpp" line="105"></location>

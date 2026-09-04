@@ -13,7 +13,7 @@
       "items": [
         {
           "id": "added-01",
-          "text": "GameHQ è ora disponibile in sedici lingue dell'interfaccia. Al primo avvio segue la lingua di Windows e puoi sceglierne un'altra nelle impostazioni."
+          "text": "GameHQ è ora disponibile in sedici lingue dell'interfaccia. Al primo avvio usa la lingua impostata in Windows e puoi sceglierne un'altra nelle impostazioni."
         },
         {
           "id": "added-02",
@@ -21,7 +21,7 @@
         },
         {
           "id": "added-03",
-          "text": "Il programma di installazione ora si avvia nella tua lingua e trasmette quella scelta al primo avvio di GameHQ, così installazione e applicazione non si contraddicono più."
+          "text": "Il programma di installazione ora usa la lingua selezionata e la trasmette al primo avvio di GameHQ, così entrambi usano la stessa lingua."
         },
         {
           "id": "added-04",
@@ -39,7 +39,7 @@
       "items": [
         {
           "id": "changed-01",
-          "text": "Date, numeri e conteggi seguono ora la lingua selezionata anziché l'impostazione di sistema."
+          "text": "Date, numeri e conteggi sono ora formattati secondo la lingua selezionata anziché l'impostazione predefinita del sistema."
         }
       ]
     },
@@ -49,7 +49,7 @@
       "items": [
         {
           "id": "known-limitations-01",
-          "text": "Tutte e sedici le lingue del rilascio includono ora i testi dell'interfaccia tradotti. Prima del rilascio è ancora necessaria una revisione linguistica contestuale."
+          "text": "Tutte e sedici le lingue incluse al lancio dispongono ora dei testi dell'interfaccia tradotti. Prima del rilascio è ancora necessaria una revisione linguistica contestuale."
         }
       ]
     }

@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_it_IT.ts",
-    "sha256": "067ffc65f7b0807597a0c4c37c34e9019284d44bbcede7bd8f7f62488ca5d19f",
+    "sha256": "cf0916cbffb0d5e7223c6151efb7bf4f933f55e95524973ceafc6a1f4ceeebfb",
     "message_count": 831
   },
   "coverage": [
@@ -90,7 +90,7 @@
     {
       "id": "gamehq.about.product_description",
       "source_hash": "aa9b19cffaa783832dc62f3f8208d13e6e6855a46b0c86f957c32a85a274c37e",
-      "translation_hash": "76861385573217ad9ba4927d7e8c31419c9c16fb56148feab3ff3bae98539b3f",
+      "translation_hash": "66bb25d3dbf880693036d53c6c306360311af8ac922a011c638833076de21990",
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:629"
       ],
@@ -572,7 +572,7 @@
     {
       "id": "gamehq.action.global.toggle_desktop.description",
       "source_hash": "47f78de6d12efa5918aa5cb4f268ba472a1ec295b4462776a76ec4476ed2d9ce",
-      "translation_hash": "7fd80fa33809d162d62acd85356e496e1838a256e5e3904a406547062e6ef2ee",
+      "translation_hash": "7a2c5e41403394af75039d94a08ee3c02bd7f85c65538575f9a24b9f382a2d03",
       "locations": [
         "src/input/ActionCatalog.cpp:109"
       ],
@@ -7648,7 +7648,7 @@
       "id": "gamehq.about.product_description",
       "surface": "application",
       "before": "Uno screenshot, un replay e una galleria multimediale per i giochi per PC.",
-      "after": "Screenshot, replay e galleria multimediale per i giochi per PC, comodi da usare con il controller.",
+      "after": "Un'app per screenshot, replay e galleria multimediale nei giochi per PC, ottimizzata per l'uso con il controller.",
       "category": "natural_ui_register",
       "reason": "Uses natural Italian appropriate to the current English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the it-IT style guide, termbase, and product behavior contract."
@@ -8008,7 +8008,7 @@
       "id": "gamehq.action.global.toggle_desktop.description",
       "surface": "application",
       "before": "Portate GameHQ finestra sul davanti con fuoco, o nasconderlo e tornare al gioco.",
-      "after": "Porta la finestra di GameHQ in primo piano con il focus, oppure la nasconde e torna al gioco.",
+      "after": "Porta in primo piano e attiva la finestra di GameHQ, oppure nascondila e torna al gioco.",
       "category": "natural_ui_register",
       "reason": "Uses natural Italian appropriate to the current English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the it-IT style guide, termbase, and product behavior contract."
@@ -13000,10 +13000,37 @@
       "terminology_decision": "The reviewed wording follows the it-IT style guide, termbase, and product behavior contract."
     },
     {
+      "id": "added-01",
+      "surface": "release_notes",
+      "before": "GameHQ è ora disponibile in sedici lingue dell'interfaccia. Al primo avvio segue la lingua di Windows e puoi sceglierne un'altra nelle impostazioni.",
+      "after": "GameHQ è ora disponibile in sedici lingue dell'interfaccia. Al primo avvio usa la lingua impostata in Windows e puoi sceglierne un'altra nelle impostazioni.",
+      "category": "natural_ui_register",
+      "reason": "Uses natural Italian for selecting the Windows language instead of the literal follow wording.",
+      "terminology_decision": "The reviewed wording follows the it-IT style guide, termbase, and product behavior contract."
+    },
+    {
+      "id": "added-03",
+      "surface": "release_notes",
+      "before": "Il programma di installazione ora si avvia nella tua lingua e trasmette quella scelta al primo avvio di GameHQ, così installazione e applicazione non si contraddicono più.",
+      "after": "Il programma di installazione ora usa la lingua selezionata e la trasmette al primo avvio di GameHQ, così entrambi usano la stessa lingua.",
+      "category": "release_note_accuracy",
+      "reason": "Names the installer correctly and states that both surfaces use the same selected language.",
+      "terminology_decision": "The reviewed wording follows the it-IT style guide, termbase, and product behavior contract."
+    },
+    {
+      "id": "changed-01",
+      "surface": "release_notes",
+      "before": "Date, numeri e conteggi seguono ora la lingua selezionata anziché l'impostazione di sistema.",
+      "after": "Date, numeri e conteggi sono ora formattati secondo la lingua selezionata anziché l'impostazione predefinita del sistema.",
+      "category": "release_note_accuracy",
+      "reason": "States explicitly that locale-sensitive values use the selected language's formatting rules.",
+      "terminology_decision": "The reviewed wording follows the it-IT style guide, termbase, and product behavior contract."
+    },
+    {
       "id": "known-limitations-01",
       "surface": "release_notes",
       "before": "Dodici lingue includono i testi dell'interfaccia tradotti. Italiano, spagnolo latinoamericano, thai e ucraino sono già selezionabili e per ora mostrano il testo inglese completo.",
-      "after": "Tutte e sedici le lingue del rilascio includono ora i testi dell'interfaccia tradotti. Prima del rilascio è ancora necessaria una revisione linguistica contestuale.",
+      "after": "Tutte e sedici le lingue incluse al lancio dispongono ora dei testi dell'interfaccia tradotti. Prima del rilascio è ancora necessaria una revisione linguistica contestuale.",
       "category": "release_note_accuracy",
       "reason": "The known limitation still described the superseded twelve-language state.",
       "terminology_decision": "The reviewed wording follows the it-IT style guide, termbase, and product behavior contract."
@@ -13049,7 +13076,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_it_IT.ts",
-      "sha256": "067ffc65f7b0807597a0c4c37c34e9019284d44bbcede7bd8f7f62488ca5d19f",
+      "sha256": "cf0916cbffb0d5e7223c6151efb7bf4f933f55e95524973ceafc6a1f4ceeebfb",
       "reviewed_units": 831
     },
     {
@@ -13067,7 +13094,7 @@
     {
       "surface": "release_notes",
       "path": "assets/release-notes/versions/0.7.7/it-IT.json",
-      "sha256": "203d081a502648d2a9b4316e67a420d68a8e9fb583f52056fff11adb638a94ce",
+      "sha256": "6b2026aa7dc01669782a3bac6b2b7c63cfcb48f7f10b2728039e7f0ecf7cd8cb",
       "reviewed_units": 10
     }
   ],

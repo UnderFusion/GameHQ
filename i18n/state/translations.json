@@ -55928,11 +55928,11 @@
         "gamehq.about.product_description": {
           "domain": "application",
           "source_hash": "aa9b19cffaa783832dc62f3f8208d13e6e6855a46b0c86f957c32a85a274c37e",
-          "translation_hash": "76861385573217ad9ba4927d7e8c31419c9c16fb56148feab3ff3bae98539b3f",
+          "translation_hash": "66bb25d3dbf880693036d53c6c306360311af8ac922a011c638833076de21990",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "claude-opus-5-contextual-it-it-review"
+            "actor": "codex-gpt-5-bounded-it-it-recovery"
           },
           "updated_at": "2026-09-04T13:20:00Z"
         },
@@ -56500,11 +56500,11 @@
         "gamehq.action.global.toggle_desktop.description": {
           "domain": "application",
           "source_hash": "47f78de6d12efa5918aa5cb4f268ba472a1ec295b4462776a76ec4476ed2d9ce",
-          "translation_hash": "7fd80fa33809d162d62acd85356e496e1838a256e5e3904a406547062e6ef2ee",
+          "translation_hash": "7a2c5e41403394af75039d94a08ee3c02bd7f85c65538575f9a24b9f382a2d03",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "claude-opus-5-contextual-it-it-review"
+            "actor": "codex-gpt-5-bounded-it-it-recovery"
           },
           "updated_at": "2026-09-04T13:20:00Z"
         },
