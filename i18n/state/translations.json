@@ -38932,13 +38932,13 @@
         "gamehq.error.portable_import.commit_staged_file_failed": {
           "domain": "application",
           "source_hash": "bc68f092be2da5606117c4c819f2281e85f561c2509da5caedbc2b2bc458be93",
-          "translation_hash": "103a300075b54174c50962a67f6a13f59d21bd78676f3bc67f359beb39a3e869",
+          "translation_hash": "7a4ebb1bb080f5aed2363fd0133641ae801b6567c61bb68cbe31d481e268f507",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-es-es-review"
+            "actor": "codex-gpt-5-contextual-es-es-recovery"
           },
-          "updated_at": "2026-09-04T02:45:50Z"
+          "updated_at": "2026-09-04T03:02:44Z"
         },
         "gamehq.error.portable_import.config_malformed": {
           "domain": "application",
@@ -39009,13 +39009,13 @@
         "gamehq.error.portable_import.database_foreign_key_failed": {
           "domain": "application",
           "source_hash": "6721f171c91854503e17c40e208414eeb388c79b20581e7d80114f06b3f76dce",
-          "translation_hash": "b6d1cfb7edf813ea126dbda2172d086023af6ffd13c72b89a438604947791c04",
+          "translation_hash": "686997fef1209eee9e659176c2d61f23ed22dc2b726c653e4a89aa9283e1e0c1",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-es-es-review"
+            "actor": "codex-gpt-5-contextual-es-es-recovery"
           },
-          "updated_at": "2026-09-04T02:45:50Z"
+          "updated_at": "2026-09-04T03:02:44Z"
         },
         "gamehq.error.portable_import.database_integrity_failed": {
           "domain": "application",

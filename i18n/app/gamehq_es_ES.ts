@@ -683,7 +683,7 @@
       <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
       <source>Cannot commit staged file %1.</source>
       <oldsource>Cannot commit staged %1.</oldsource>
-      <translation>No se puede confirmar el archivo preparado %1.</translation>
+      <translation>No se puede guardar el archivo preparado %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_malformed">
       <location filename="src/config/PortableProfileImporter.cpp" line="343"></location>
@@ -718,7 +718,7 @@
     <message id="gamehq.error.portable_import.database_foreign_key_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="833"></location>
       <source>The staged database failed its foreign-key check.</source>
-      <translation>La base de datos preparada no superó la comprobación de claves externas.</translation>
+      <translation>La base de datos preparada no superó la comprobación de claves foráneas.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_integrity_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="822"></location>

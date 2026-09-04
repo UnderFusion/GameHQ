@@ -9,10 +9,10 @@
     "authority": "p8-3",
     "reviewer_kind": "agent",
     "actor": "codex-gpt-5-contextual-es-es-review",
-    "method": "complete_source_location_context_review",
+    "method": "complete_source_location_context_review_with_bounded_technical_recovery",
     "draft_provider": "machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T02:45:50Z"
+    "recorded_at": "2026-09-04T03:02:44Z"
   },
   "baseline": {
     "path": "git:a2169e25b18349a12c5d7b8da4b69a7747191929:i18n/app/gamehq_es_ES.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_es_ES.ts",
-    "sha256": "8e33348564ff9efa654c1c4ad5241e14d0490141105b52673fb90dbe91292b8f",
+    "sha256": "abdc28a20a94b67ee27adbf7e8a64a11b9e8f4cfa7f51b626fe2b3cdf20c15e7",
     "message_count": 831
   },
   "coverage": [
@@ -1196,7 +1196,7 @@
     {
       "id": "gamehq.error.portable_import.commit_staged_file_failed",
       "source_hash": "bc68f092be2da5606117c4c819f2281e85f561c2509da5caedbc2b2bc458be93",
-      "translation_hash": "103a300075b54174c50962a67f6a13f59d21bd78676f3bc67f359beb39a3e869",
+      "translation_hash": "7a4ebb1bb080f5aed2363fd0133641ae801b6567c61bb68cbe31d481e268f507",
       "locations": [
         "src/config/PortableProfileImporter.cpp:182"
       ],
@@ -1259,7 +1259,7 @@
     {
       "id": "gamehq.error.portable_import.database_foreign_key_failed",
       "source_hash": "6721f171c91854503e17c40e208414eeb388c79b20581e7d80114f06b3f76dce",
-      "translation_hash": "b6d1cfb7edf813ea126dbda2172d086023af6ffd13c72b89a438604947791c04",
+      "translation_hash": "686997fef1209eee9e659176c2d61f23ed22dc2b726c653e4a89aa9283e1e0c1",
       "locations": [
         "src/config/PortableProfileImporter.cpp:833"
       ],
@@ -8807,11 +8807,11 @@
         "No se puede comprometer la etapa %1- ¿ Qué ?"
       ],
       "after": [
-        "No se puede confirmar el archivo preparado %1."
+        "No se puede guardar el archivo preparado %1."
       ],
       "category": "portable_import_accuracy",
-      "reason": "The draft used literal or unrelated senses for paths, staging, strings, journals, links, or transaction recovery.",
-      "terminology_decision": "portable=portátil, staged=preparado, staging=preparación, journal=registro, string=cadena, root=raíz, and portable:/ stays literal."
+      "reason": "Qt atomically finalizes the staged file write; guardar expresses the filesystem operation more precisely than confirmar.",
+      "terminology_decision": "Translate QFile commit as guardar/finalizar the staged file, not confirmar it."
     },
     {
       "id": "gamehq.error.portable_import.config_malformed",
@@ -8885,11 +8885,11 @@
         "La base de datos escenificada falló en su verificación de llave extranjera."
       ],
       "after": [
-        "La base de datos preparada no superó la comprobación de claves externas."
+        "La base de datos preparada no superó la comprobación de claves foráneas."
       ],
       "category": "portable_import_accuracy",
-      "reason": "The draft used literal or unrelated senses for paths, staging, strings, journals, links, or transaction recovery.",
-      "terminology_decision": "portable=portátil, staged=preparado, staging=preparación, journal=registro, string=cadena, root=raíz, and portable:/ stays literal."
+      "reason": "Spanish database terminology uses clave foránea for a foreign key; clave externa is an incorrect literal calque.",
+      "terminology_decision": "Use clave foránea/claves foráneas for relational-database foreign keys."
     },
     {
       "id": "gamehq.error.portable_import.database_integrity_failed",
@@ -14826,7 +14826,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_es_ES.ts",
-      "sha256": "8e33348564ff9efa654c1c4ad5241e14d0490141105b52673fb90dbe91292b8f",
+      "sha256": "abdc28a20a94b67ee27adbf7e8a64a11b9e8f4cfa7f51b626fe2b3cdf20c15e7",
       "reviewed_units": 831
     },
     {
@@ -14856,7 +14856,8 @@
     "A saved media item is captura; screenshot is captura de pantalla; frame is fotograma; gallery is galería; library is biblioteca; overlay is superposición.",
     "manifest=manifiesto, checksum=suma de comprobación, signature=firma, staging=preparación, staged=preparado, transaction=transacción, trust state=estado de confianza, and volume=unidad.",
     "portable=portátil, journal=registro, string=cadena, root=raíz, source=origen, instance=instancia, and portable:/ remains literal.",
-    "European Spanish uses ordenador or equipo where relevant, concise infinitive action labels, informal address, natural word order, and Spanish punctuation and agreement."
+    "European Spanish uses ordenador or equipo where relevant, concise infinitive action labels, informal address, natural word order, and Spanish punctuation and agreement.",
+    "Database terminology uses clave foránea; Qt staged-file commit failures use guardar for the atomic filesystem finalization operation."
   ],
   "calibration_rules": [
     "Review every stable ID with its English source, location, control role, and neighboring UI; schema validity is not linguistic evidence.",
