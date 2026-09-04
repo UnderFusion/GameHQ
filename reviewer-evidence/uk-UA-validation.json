@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "locale": "uk-UA",
+  "commit": "e912cc8f358eae9ed767533f71284959808b13df",
+  "checks": [
+    {
+      "name": "Ukrainian linguistic review",
+      "result": "passed",
+      "detail": "831/831 IDs; exact source bijection; no unresolved defects"
+    },
+    {
+      "name": "Qt numerus forms",
+      "result": "passed",
+      "detail": "6 IDs x 3 non-empty Ukrainian forms"
+    },
+    {
+      "name": "Corrected-English stale units",
+      "result": "passed",
+      "detail": "20/20 current"
+    },
+    {
+      "name": "Focused governance",
+      "result": "passed",
+      "detail": "31/31 tests"
+    },
+    {
+      "name": "Verifier regressions",
+      "result": "passed",
+      "detail": "8/8 tests"
+    },
+    {
+      "name": "Offline localization CI",
+      "result": "passed",
+      "detail": "all fast deterministic checks; checkout unchanged"
+    },
+    {
+      "name": "lrelease",
+      "result": "passed",
+      "detail": "831 finished; 0 unfinished"
+    },
+    {
+      "name": "GameHQ Release build",
+      "result": "passed",
+      "detail": "Ninja Release target; toolchain runtime explicitly on PATH"
+    },
+    {
+      "name": "GameHQ.Playnite Release build",
+      "result": "passed",
+      "detail": "0 warnings; 0 errors"
+    },
+    {
+      "name": "git diff --check",
+      "result": "passed",
+      "detail": "no whitespace errors"
+    }
+  ]
+}

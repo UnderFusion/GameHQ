@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "locale": "uk-UA",
+  "commit": "e912cc8f358eae9ed767533f71284959808b13df",
+  "baseline_commit": "01b0ea8a8cdc0d2f6ee13b911195061b693a048c",
+  "coverage": {
+    "application_reviewed": 831,
+    "application_corrected": 730,
+    "application_accepted": 101,
+    "english_stale_resolved": 20,
+    "numerus_ids": 6,
+    "forms_per_numerus_id": 3,
+    "auxiliary_reviewed": 79,
+    "auxiliary_corrected": 13,
+    "production_locales_remaining": 2
+  },
+  "artifacts": [
+    {
+      "path": "reviewer-evidence/uk-UA-application.json",
+      "sha256": "f4bd668ae8e4082ff20ee6a5c9ff3e346e9dd2a0f512e0d65c82e82a57e0a08f"
+    },
+    {
+      "path": "reviewer-evidence/uk-UA-corrections.json",
+      "sha256": "af2f52eaae0549c04bdeaeee30dee69450fb2b79f131cf0bafc1ca4d1b7da2ed"
+    },
+    {
+      "path": "reviewer-evidence/uk-UA-auxiliary.json",
+      "sha256": "397db6a102f067b4a45eaeed349285c998cb04afbfd8997cece3fbfed6ea8bac"
+    },
+    {
+      "path": "reviewer-evidence/uk-UA-terminology.json",
+      "sha256": "28614b3489b562a4b7af14efd609c23645391f2f10ab4a52b87649cad83cfe9a"
+    },
+    {
+      "path": "reviewer-evidence/uk-UA-validation.json",
+      "sha256": "99226ae900d37805769bb172ecda7c3d774b139c2739c17ffe500fb475eb6ad3"
+    }
+  ],
+  "strict_utf8": true,
+  "source_bijection": true,
+  "unresolved": []
+}

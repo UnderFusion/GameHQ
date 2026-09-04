@@ -160,7 +160,7 @@
     <message id="gamehq.action.desktop.favorite.label">
       <location filename="src/input/ActionCatalog.cpp" line="234"></location>
       <source>Toggle Favorite</source>
-      <translation>Перемкнути обране</translation>
+      <translation>Додати/вилучити з обраного</translation>
     </message>
     <message id="gamehq.action.desktop.menu.description">
       <location filename="src/input/ActionCatalog.cpp" line="244"></location>
@@ -365,7 +365,7 @@
     <message id="gamehq.action.overlay.favorite.label">
       <location filename="src/input/ActionCatalog.cpp" line="156"></location>
       <source>Toggle Favorite</source>
-      <translation>Перемкнути обране</translation>
+      <translation>Додати/вилучити з обраного</translation>
     </message>
     <message id="gamehq.action.overlay.game_next.description">
       <location filename="src/input/ActionCatalog.cpp" line="187"></location>
@@ -601,7 +601,7 @@
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="293"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="312"></location>
       <source>%1 ms (relaxed)</source>
-      <translation>%1 мс (повільно)</translation>
+      <translation>%1 мс (із запасом)</translation>
     </message>
     <message id="gamehq.duration.minutes" numerus="yes">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="59"></location>
@@ -1542,7 +1542,7 @@ This cannot be undone.</source>
     <message id="gamehq.help.gamepad.button_combination_action">
       <location filename="src/ui/qml/HelpView.qml" line="187"></location>
       <source>Press the ordered pair within the configured combination window</source>
-      <translation>Натисніть пару кнопок по черзі в межах налаштованого вікна комбінації</translation>
+      <translation>Натисніть дві кнопки в заданому порядку в межах налаштованого інтервалу комбінації</translation>
     </message>
     <message id="gamehq.help.gamepad.circle">
       <location filename="src/ui/qml/HelpView.qml" line="214"></location>
@@ -1810,7 +1810,7 @@ This cannot be undone.</source>
     <message id="gamehq.input.binding_card.add_input">
       <location filename="src/ui/qml/components/BindingCard.qml" line="217"></location>
       <source>+ Add input</source>
-      <translation>+ Додати ввід</translation>
+      <translation>+ Додати введення</translation>
     </message>
     <message id="gamehq.input.binding_card.add_status_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="194"></location>
@@ -3122,7 +3122,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.gestures.combination_window">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="299"></location>
       <source>Combination window</source>
-      <translation>Вікно комбінації</translation>
+      <translation>Інтервал комбінації</translation>
     </message>
     <message id="gamehq.settings.input.gestures.combination_window_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="301"></location>

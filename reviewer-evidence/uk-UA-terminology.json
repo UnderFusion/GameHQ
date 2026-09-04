@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "locale": "uk-UA",
+  "commit": "e912cc8f358eae9ed767533f71284959808b13df",
+  "decisions": [
+    "GameHQ, GameInput, XInput, DualSense, HDR, FPS, Steam, Playnite, GitHub, APIs, paths, keys, placeholders, and versions remain unchanged.",
+    "Ukrainian uses контролер or геймпад, кнопка, введення, призначення, прив’язка, комірка, файл, папка, and налаштування according to context.",
+    "Immediate Press is Натискання; release-based Tap is Коротке натискання; Подвійне натискання, Потрійне натискання, and Утримування remain distinct.",
+    "A completed Утримування suppresses the Коротке натискання action, and lower-count sequences wait only for the configured interval.",
+    "Controller input listening uses виявлення введення and never screenshot or media-capture terminology.",
+    "Знімок екрана, захоплення, повтор, буфер повторів, кліп, запис, and відтворення denote distinct media concepts.",
+    "Галерея, бібліотека, оверлей, фокус, відстежувана папка, and місце зберігання remain contextually distinct.",
+    "Database terminology uses зовнішній ключ, схема, цілісність, транзакція, рядок, and масив.",
+    "Update security uses маніфест, контрольна сума, SHA-256, підпис, довіра, HTTPS, підготовка, повторна перевірка, and finalization wording.",
+    "Internal transactional publish operations use застосувати or перемістити до кінцевого розташування rather than public опублікувати wording.",
+    "GameInput uses середовище виконання and a safe перехід на застарілий механізм, which describes the fallback path rather than old hardware.",
+    "The notification area uses область сповіщень, and startup text explicitly describes Windows sign-in and minimized notification-area startup.",
+    "All 20 corrected-English stale IDs were reviewed from their current source meaning."
+  ],
+  "controller_contract": {
+    "press": "Натискання",
+    "tap": "Коротке натискання",
+    "double_tap": "Подвійне натискання",
+    "triple_tap": "Потрійне натискання",
+    "hold": "Утримування",
+    "press_timing": "immediate button-down",
+    "tap_timing": "release-based short press",
+    "hold_completion": "suppresses the short press"
+  },
+  "bounded_assertions": {
+    "touchscreen_gesture_word_occurrences": 0,
+    "slot_loanword_occurrences": 0,
+    "transactional_publication_word_ids": [],
+    "genuine_publication_label": "Опубліковано %1",
+    "legacy_fallback_label": "Перехід на застарілий механізм",
+    "gameinput_runtime_label": "Середовище виконання GameInput",
+    "input_detection_status": "Триває виявлення введення контролера · Навігацію діалогом призупинено",
+    "startup_description": "Виберіть, чи запускатиметься GameHQ під час входу у Windows і чи відкриватиметься згорнутим в області сповіщень.",
+    "overlay_scope_label": "Оверлей",
+    "russian_include_calque_occurrences": 0
+  }
+}

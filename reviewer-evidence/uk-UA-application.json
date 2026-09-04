@@ -1,0 +1,5839 @@
+{
+  "schema_version": 1,
+  "locale": "uk-UA",
+  "commit": "e912cc8f358eae9ed767533f71284959808b13df",
+  "catalog": "i18n/app/gamehq_uk_UA.ts",
+  "message_count": 831,
+  "source_bijection": true,
+  "entries": [
+    {
+      "id": "gamehq.about.enjoying_gamehq",
+      "source": "Enjoying GameHQ?",
+      "translation_forms": [
+        "Подобається GameHQ?"
+      ]
+    },
+    {
+      "id": "gamehq.about.full_release_notes",
+      "source": "View full release notes",
+      "translation_forms": [
+        "Переглянути повні примітки до випуску"
+      ]
+    },
+    {
+      "id": "gamehq.about.github",
+      "source": "GitHub",
+      "translation_forms": [
+        "GitHub"
+      ]
+    },
+    {
+      "id": "gamehq.about.license",
+      "source": "License",
+      "translation_forms": [
+        "Ліцензія"
+      ]
+    },
+    {
+      "id": "gamehq.about.mode.installed",
+      "source": "Installed",
+      "translation_forms": [
+        "Встановлено"
+      ]
+    },
+    {
+      "id": "gamehq.about.mode.portable",
+      "source": "Portable",
+      "translation_forms": [
+        "Портативний"
+      ]
+    },
+    {
+      "id": "gamehq.about.more_improvements",
+      "source": "Plus more improvements and fixes.",
+      "translation_forms": [
+        "А також інші покращення та виправлення."
+      ]
+    },
+    {
+      "id": "gamehq.about.product_description",
+      "source": "A controller-friendly screenshot, replay, and media gallery for PC games.",
+      "translation_forms": [
+        "Галерея знімків екрана, кліпів повтору та інших медіафайлів для ПК-ігор зі зручним керуванням геймпадом."
+      ]
+    },
+    {
+      "id": "gamehq.about.product_updated",
+      "source": "%1 updated",
+      "translation_forms": [
+        "%1 оновлено"
+      ]
+    },
+    {
+      "id": "gamehq.about.project_links",
+      "source": "PROJECT LINKS",
+      "translation_forms": [
+        "ПОСИЛАННЯ ПРОЄКТУ"
+      ]
+    },
+    {
+      "id": "gamehq.about.quick_actions",
+      "source": "QUICK ACTIONS",
+      "translation_forms": [
+        "ШВИДКІ ДІЇ"
+      ]
+    },
+    {
+      "id": "gamehq.about.report_issue",
+      "source": "Report issue",
+      "translation_forms": [
+        "Повідомити про проблему"
+      ]
+    },
+    {
+      "id": "gamehq.about.star_description",
+      "source": "A GitHub star helps more players discover the project.",
+      "translation_forms": [
+        "Зірка на GitHub допомагає більшій кількості гравців дізнатися про проєкт."
+      ]
+    },
+    {
+      "id": "gamehq.about.star_on_github",
+      "source": "Star on GitHub",
+      "translation_forms": [
+        "Поставити зірку на GitHub"
+      ]
+    },
+    {
+      "id": "gamehq.about.version",
+      "source": "Version %1",
+      "translation_forms": [
+        "Версія %1"
+      ]
+    },
+    {
+      "id": "gamehq.about.whats_new_in",
+      "source": "WHAT'S NEW IN %1",
+      "translation_forms": [
+        "ЩО НОВОГО В %1"
+      ]
+    },
+    {
+      "id": "gamehq.action.back",
+      "source": "Back",
+      "translation_forms": [
+        "Назад"
+      ]
+    },
+    {
+      "id": "gamehq.action.back_with_marker",
+      "source": "%1  Back",
+      "translation_forms": [
+        "%1  Назад"
+      ]
+    },
+    {
+      "id": "gamehq.action.cancel",
+      "source": "Cancel",
+      "translation_forms": [
+        "Скасувати"
+      ]
+    },
+    {
+      "id": "gamehq.action.delete",
+      "source": "Delete",
+      "translation_forms": [
+        "Видалити"
+      ]
+    },
+    {
+      "id": "gamehq.action.deselect_all",
+      "source": "Deselect all",
+      "translation_forms": [
+        "Скасувати вибір"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.back.description",
+      "source": "Close the current gallery panel.",
+      "translation_forms": [
+        "Закрити поточну панель галереї."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.back.label",
+      "source": "Back",
+      "translation_forms": [
+        "Назад"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.bulk_toggle.description",
+      "source": "Enter or leave bulk selection mode.",
+      "translation_forms": [
+        "Увійти в режим масового вибору або вийти з нього."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.bulk_toggle.label",
+      "source": "Bulk Select",
+      "translation_forms": [
+        "Масовий вибір"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.confirm.description",
+      "source": "Activate the selected item in the gallery.",
+      "translation_forms": [
+        "Активувати вибраний елемент у галереї."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.confirm.label",
+      "source": "Confirm",
+      "translation_forms": [
+        "Підтвердити"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.favorite.description",
+      "source": "Mark or unmark the selected capture as a favorite.",
+      "translation_forms": [
+        "Додати вибраний запис до обраного або вилучити з нього."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.favorite.label",
+      "source": "Toggle Favorite",
+      "translation_forms": [
+        "Перемкнути обране"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.menu.description",
+      "source": "Open the action menu for the selected item.",
+      "translation_forms": [
+        "Відкрити меню дій для вибраного елемента."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.menu.label",
+      "source": "Open Menu",
+      "translation_forms": [
+        "Відкрити меню"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_down.description",
+      "source": "Move selection down in the gallery.",
+      "translation_forms": [
+        "Перемістити виділення вниз у галереї."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_down.label",
+      "source": "Navigate Down",
+      "translation_forms": [
+        "Навігація вниз"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_left.description",
+      "source": "Move selection left in the gallery.",
+      "translation_forms": [
+        "Перемістити виділення ліворуч у галереї."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_left.label",
+      "source": "Navigate Left",
+      "translation_forms": [
+        "Навігація ліворуч"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_right.description",
+      "source": "Move selection right in the gallery.",
+      "translation_forms": [
+        "Перемістити виділення праворуч у галереї."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_right.label",
+      "source": "Navigate Right",
+      "translation_forms": [
+        "Навігація праворуч"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_up.description",
+      "source": "Move selection up in the gallery.",
+      "translation_forms": [
+        "Перемістити виділення вгору в галереї."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.navigate_up.label",
+      "source": "Navigate Up",
+      "translation_forms": [
+        "Навігація вгору"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.scroll_down.description",
+      "source": "Scroll the current view down without moving the selection.",
+      "translation_forms": [
+        "Прокрутити поточний вигляд вниз, не переміщуючи виділення."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.scroll_down.label",
+      "source": "Scroll Down",
+      "translation_forms": [
+        "Прокрутити вниз"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.scroll_up.description",
+      "source": "Scroll the current view up without moving the selection.",
+      "translation_forms": [
+        "Прокрутити поточний вигляд вгору, не переміщуючи виділення."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.scroll_up.label",
+      "source": "Scroll Up",
+      "translation_forms": [
+        "Прокрутити вгору"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.settings.description",
+      "source": "Open the Settings panel from anywhere in the gallery.",
+      "translation_forms": [
+        "Відкрити панель налаштувань із будь-якого місця галереї."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.settings.label",
+      "source": "Open Settings",
+      "translation_forms": [
+        "Відкрити налаштування"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.tab_next.description",
+      "source": "Step to the next sidebar category.",
+      "translation_forms": [
+        "Перейти до наступної категорії бічної панелі."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.tab_next.label",
+      "source": "Next Tab",
+      "translation_forms": [
+        "Наступна вкладка"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.tab_prev.description",
+      "source": "Step to the previous sidebar category.",
+      "translation_forms": [
+        "Перейти до попередньої категорії бічної панелі."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.tab_prev.label",
+      "source": "Previous Tab",
+      "translation_forms": [
+        "Попередня вкладка"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.zoom_in.description",
+      "source": "Make the gallery thumbnails larger.",
+      "translation_forms": [
+        "Збільшити мініатюри галереї."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.zoom_in.label",
+      "source": "Zoom In",
+      "translation_forms": [
+        "Збільшити"
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.zoom_out.description",
+      "source": "Make the gallery thumbnails smaller.",
+      "translation_forms": [
+        "Зменшити мініатюри галереї."
+      ]
+    },
+    {
+      "id": "gamehq.action.desktop.zoom_out.label",
+      "source": "Zoom Out",
+      "translation_forms": [
+        "Зменшити"
+      ]
+    },
+    {
+      "id": "gamehq.action.dismiss",
+      "source": "Dismiss",
+      "translation_forms": [
+        "Відхилити"
+      ]
+    },
+    {
+      "id": "gamehq.action.done",
+      "source": "Done",
+      "translation_forms": [
+        "Готово"
+      ]
+    },
+    {
+      "id": "gamehq.action.download",
+      "source": "Download",
+      "translation_forms": [
+        "Завантажити"
+      ]
+    },
+    {
+      "id": "gamehq.action.global.save_replay.description",
+      "source": "Save the rolling replay buffer as a clip.",
+      "translation_forms": [
+        "Зберегти циклічний буфер повтору як кліп."
+      ]
+    },
+    {
+      "id": "gamehq.action.global.save_replay.label",
+      "source": "Save Replay",
+      "translation_forms": [
+        "Зберегти повтор"
+      ]
+    },
+    {
+      "id": "gamehq.action.global.screenshot.description",
+      "source": "Capture a screenshot of the current game.",
+      "translation_forms": [
+        "Зробити знімок екрана поточної гри."
+      ]
+    },
+    {
+      "id": "gamehq.action.global.toggle_desktop.description",
+      "source": "Bring the GameHQ window to the front with focus, or hide it and return to the game.",
+      "translation_forms": [
+        "Вивести вікно GameHQ на передній план і передати йому фокус або приховати його й повернутися до гри."
+      ]
+    },
+    {
+      "id": "gamehq.action.global.toggle_desktop.label",
+      "source": "Show / Hide GameHQ Window",
+      "translation_forms": [
+        "Показати / приховати вікно GameHQ"
+      ]
+    },
+    {
+      "id": "gamehq.action.global.toggle_overlay.description",
+      "source": "Show or hide the in-game overlay.",
+      "translation_forms": [
+        "Показати або приховати внутрішньоігровий оверлей."
+      ]
+    },
+    {
+      "id": "gamehq.action.global.toggle_overlay.label",
+      "source": "Toggle Overlay",
+      "translation_forms": [
+        "Перемкнути оверлей"
+      ]
+    },
+    {
+      "id": "gamehq.action.not_now",
+      "source": "Not now",
+      "translation_forms": [
+        "Не зараз"
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.back.description",
+      "source": "Close the current overlay panel.",
+      "translation_forms": [
+        "Закрити поточну панель оверлея."
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.back.label",
+      "source": "Back",
+      "translation_forms": [
+        "Назад"
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.confirm.description",
+      "source": "Activate the selected item in the overlay.",
+      "translation_forms": [
+        "Активувати вибраний елемент в оверлеї."
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.confirm.label",
+      "source": "Confirm",
+      "translation_forms": [
+        "Підтвердити"
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.favorite.description",
+      "source": "Mark or unmark the selected capture as a favorite.",
+      "translation_forms": [
+        "Додати вибраний запис до обраного або вилучити з нього."
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.favorite.label",
+      "source": "Toggle Favorite",
+      "translation_forms": [
+        "Перемкнути обране"
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.game_next.description",
+      "source": "Step to the next game in the sidebar.",
+      "translation_forms": [
+        "Перейти до наступної гри в бічній панелі."
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.game_next.label",
+      "source": "Next Game",
+      "translation_forms": [
+        "Наступна гра"
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.game_prev.description",
+      "source": "Step to the previous game in the sidebar.",
+      "translation_forms": [
+        "Перейти до попередньої гри в бічній панелі."
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.game_prev.label",
+      "source": "Previous Game",
+      "translation_forms": [
+        "Попередня гра"
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.menu.description",
+      "source": "Open the action menu for the selected item.",
+      "translation_forms": [
+        "Відкрити меню дій для вибраного елемента."
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.menu.label",
+      "source": "Open Menu",
+      "translation_forms": [
+        "Відкрити меню"
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_down.description",
+      "source": "Move selection down in the overlay.",
+      "translation_forms": [
+        "Перемістити виділення вниз в оверлеї."
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_down.label",
+      "source": "Navigate Down",
+      "translation_forms": [
+        "Навігація вниз"
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_left.description",
+      "source": "Move selection left in the overlay.",
+      "translation_forms": [
+        "Перемістити виділення ліворуч в оверлеї."
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_left.label",
+      "source": "Navigate Left",
+      "translation_forms": [
+        "Навігація ліворуч"
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_right.description",
+      "source": "Move selection right in the overlay.",
+      "translation_forms": [
+        "Перемістити виділення праворуч в оверлеї."
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_right.label",
+      "source": "Navigate Right",
+      "translation_forms": [
+        "Навігація праворуч"
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_up.description",
+      "source": "Move selection up in the overlay.",
+      "translation_forms": [
+        "Перемістити виділення вгору в оверлеї."
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.navigate_up.label",
+      "source": "Navigate Up",
+      "translation_forms": [
+        "Навігація вгору"
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.sidebar_toggle.description",
+      "source": "Show or hide the overlay sidebar.",
+      "translation_forms": [
+        "Показати або приховати бічну панель оверлея."
+      ]
+    },
+    {
+      "id": "gamehq.action.overlay.sidebar_toggle.label",
+      "source": "Toggle Sidebar",
+      "translation_forms": [
+        "Перемкнути бічну панель"
+      ]
+    },
+    {
+      "id": "gamehq.action.playback.frame_grab.description",
+      "source": "Save the frame currently shown in the focused clip as a screenshot.",
+      "translation_forms": [
+        "Зберегти кадр, який зараз показано в активному кліпі, як знімок екрана."
+      ]
+    },
+    {
+      "id": "gamehq.action.playback.frame_grab.label",
+      "source": "Save Frame",
+      "translation_forms": [
+        "Зберегти кадр"
+      ]
+    },
+    {
+      "id": "gamehq.action.playback.play_pause.description",
+      "source": "Toggle playback of the focused clip.",
+      "translation_forms": [
+        "Перемкнути відтворення активного кліпа."
+      ]
+    },
+    {
+      "id": "gamehq.action.playback.play_pause.label",
+      "source": "Play / Pause",
+      "translation_forms": [
+        "Відтворення / пауза"
+      ]
+    },
+    {
+      "id": "gamehq.action.playback.seek_back.description",
+      "source": "Step the focused clip backward.",
+      "translation_forms": [
+        "Перемотати активний кліп на крок назад."
+      ]
+    },
+    {
+      "id": "gamehq.action.playback.seek_back.label",
+      "source": "Seek Back",
+      "translation_forms": [
+        "Перемотати назад"
+      ]
+    },
+    {
+      "id": "gamehq.action.playback.seek_forward.description",
+      "source": "Step the focused clip forward.",
+      "translation_forms": [
+        "Перемотати активний кліп на крок вперед."
+      ]
+    },
+    {
+      "id": "gamehq.action.playback.seek_forward.label",
+      "source": "Seek Forward",
+      "translation_forms": [
+        "Перемотати вперед"
+      ]
+    },
+    {
+      "id": "gamehq.action.record",
+      "source": "Record",
+      "translation_forms": [
+        "Записати"
+      ]
+    },
+    {
+      "id": "gamehq.action.remove",
+      "source": "Remove",
+      "translation_forms": [
+        "Вилучити"
+      ]
+    },
+    {
+      "id": "gamehq.action.replace",
+      "source": "Replace",
+      "translation_forms": [
+        "Замінити"
+      ]
+    },
+    {
+      "id": "gamehq.action.restore",
+      "source": "Restore",
+      "translation_forms": [
+        "Відновити"
+      ]
+    },
+    {
+      "id": "gamehq.action.restore_defaults",
+      "source": "Restore defaults",
+      "translation_forms": [
+        "Відновити типові налаштування"
+      ]
+    },
+    {
+      "id": "gamehq.action.revert",
+      "source": "Revert",
+      "translation_forms": [
+        "Повернути"
+      ]
+    },
+    {
+      "id": "gamehq.action.save",
+      "source": "Save",
+      "translation_forms": [
+        "Зберегти"
+      ]
+    },
+    {
+      "id": "gamehq.action.screenshot.label",
+      "source": "Screenshot",
+      "translation_forms": [
+        "Знімок екрана"
+      ]
+    },
+    {
+      "id": "gamehq.action.select_all",
+      "source": "Select all",
+      "translation_forms": [
+        "Вибрати все"
+      ]
+    },
+    {
+      "id": "gamehq.action.stop",
+      "source": "Stop",
+      "translation_forms": [
+        "Зупинити"
+      ]
+    },
+    {
+      "id": "gamehq.common.action.change",
+      "source": "Change",
+      "translation_forms": [
+        "Змінити"
+      ]
+    },
+    {
+      "id": "gamehq.common.action.close",
+      "source": "Close",
+      "translation_forms": [
+        "Закрити"
+      ]
+    },
+    {
+      "id": "gamehq.common.action.open",
+      "source": "Open",
+      "translation_forms": [
+        "Відкрити"
+      ]
+    },
+    {
+      "id": "gamehq.common.action.use_default",
+      "source": "Use default",
+      "translation_forms": [
+        "Використати типовий"
+      ]
+    },
+    {
+      "id": "gamehq.dialog.confirm.default_title",
+      "source": "Are you sure?",
+      "translation_forms": [
+        "Ви впевнені?"
+      ]
+    },
+    {
+      "id": "gamehq.duration.decimal_seconds",
+      "source": "%1 seconds",
+      "translation_forms": [
+        "%1 с"
+      ]
+    },
+    {
+      "id": "gamehq.duration.milliseconds",
+      "source": "%1 ms",
+      "translation_forms": [
+        "%1 мс"
+      ]
+    },
+    {
+      "id": "gamehq.duration.milliseconds.fast",
+      "source": "%1 ms (fast)",
+      "translation_forms": [
+        "%1 мс (швидко)"
+      ]
+    },
+    {
+      "id": "gamehq.duration.milliseconds.relaxed",
+      "source": "%1 ms (relaxed)",
+      "translation_forms": [
+        "%1 мс (повільно)"
+      ]
+    },
+    {
+      "id": "gamehq.duration.minutes",
+      "source": "%n minute(s)",
+      "translation_forms": [
+        "%n хвилина",
+        "%n хвилини",
+        "%n хвилин"
+      ]
+    },
+    {
+      "id": "gamehq.duration.seconds",
+      "source": "%n second(s)",
+      "translation_forms": [
+        "%n секунда",
+        "%n секунди",
+        "%n секунд"
+      ]
+    },
+    {
+      "id": "gamehq.duration.seconds_short",
+      "source": "%1 s",
+      "translation_forms": [
+        "%1 с"
+      ]
+    },
+    {
+      "id": "gamehq.error.capture_location.create_failed",
+      "source": "The selected folder could not be created.",
+      "translation_forms": [
+        "Не вдалося створити вибрану папку."
+      ]
+    },
+    {
+      "id": "gamehq.error.capture_location.folder_invalid",
+      "source": "The selected folder is invalid.",
+      "translation_forms": [
+        "Вибрана папка недійсна."
+      ]
+    },
+    {
+      "id": "gamehq.error.capture_location.local_folder_required",
+      "source": "Choose a local folder.",
+      "translation_forms": [
+        "Виберіть локальну папку."
+      ]
+    },
+    {
+      "id": "gamehq.error.capture_location.not_writable",
+      "source": "The selected folder is not writable.",
+      "translation_forms": [
+        "Вибрана папка недоступна для запису."
+      ]
+    },
+    {
+      "id": "gamehq.error.capture_location.restore_default_failed",
+      "source": "GameHQ could not restore the default folder.",
+      "translation_forms": [
+        "GameHQ не вдалося відновити типову папку."
+      ]
+    },
+    {
+      "id": "gamehq.error.capture_location.save_failed",
+      "source": "GameHQ could not save the selected folder.",
+      "translation_forms": [
+        "GameHQ не вдалося зберегти вибрану папку."
+      ]
+    },
+    {
+      "id": "gamehq.error.capture_location.type_invalid",
+      "source": "The capture type is invalid.",
+      "translation_forms": [
+        "Тип захоплення недійсний."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.backup_missing",
+      "source": "The interrupted portable-import backup is missing.",
+      "translation_forms": [
+        "Резервна копія перерваного портативного імпорту відсутня."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.capture_history_value_invalid",
+      "source": "Capture-root history contains a non-string value.",
+      "translation_forms": [
+        "Історія кореневих папок для записів містить нерядкове значення."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.commit_staged_file_failed",
+      "source": "Cannot commit staged file %1.",
+      "translation_forms": [
+        "Не вдалося перемістити підготовлений файл %1 до кінцевого розташування."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.config_malformed",
+      "source": "The portable config.json is malformed.",
+      "translation_forms": [
+        "Портативний config.json має некоректний формат."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.config_path_unsupported",
+      "source": "Unsupported portable path in config key %1.",
+      "translation_forms": [
+        "Непідтримуваний портативний шлях у ключі конфігурації %1."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.config_read_failed",
+      "source": "Cannot read the portable config.json.",
+      "translation_forms": [
+        "Не вдалося прочитати портативний config.json."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.config_value_not_array",
+      "source": "%1 must be an array.",
+      "translation_forms": [
+        "%1 має бути масивом."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.config_value_not_string",
+      "source": "%1 must be a string.",
+      "translation_forms": [
+        "%1 має бути рядком."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.data_directory_escapes_package",
+      "source": "The portable data directory escapes the selected package root.",
+      "translation_forms": [
+        "Портативний каталог даних виходить за межі вибраного кореня пакета."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.database_foreign_key_failed",
+      "source": "The staged database failed its foreign-key check.",
+      "translation_forms": [
+        "Підготовлена база даних не пройшла перевірку зовнішніх ключів."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.database_integrity_failed",
+      "source": "The staged database failed its integrity check.",
+      "translation_forms": [
+        "Підготовлена база даних не пройшла перевірку цілісності."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.database_missing",
+      "source": "The portable profile has no gamehq.db.",
+      "translation_forms": [
+        "Портативний профіль не містить gamehq.db."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.database_open_failed",
+      "source": "The staged portable database cannot be opened: %1",
+      "translation_forms": [
+        "Не вдалося відкрити підготовлену портативну базу даних: %1"
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.database_operation_failed",
+      "source": "A portable-profile database operation failed: %1",
+      "translation_forms": [
+        "Помилка операції з базою даних портативного профілю: %1"
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.database_path_unsupported",
+      "source": "Unsupported portable path in database setting %1.",
+      "translation_forms": [
+        "Непідтримуваний портативний шлях у налаштуванні бази даних %1."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.database_schema_read_failed",
+      "source": "The portable database schema cannot be read.",
+      "translation_forms": [
+        "Не вдалося прочитати схему портативної бази даних."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.database_schema_unsupported",
+      "source": "The portable database schema is unsupported.",
+      "translation_forms": [
+        "Схема портативної бази даних не підтримується."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.database_stage_failed",
+      "source": "The portable database cannot be staged.",
+      "translation_forms": [
+        "Не вдалося підготувати портативну базу даних."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.database_transaction_failed",
+      "source": "The portable database transaction cannot begin.",
+      "translation_forms": [
+        "Не вдалося розпочати транзакцію портативної бази даних."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_backup_failed",
+      "source": "The empty installed profile cannot be backed up for import.",
+      "translation_forms": [
+        "Не вдалося створити резервну копію порожнього встановленого профілю для імпорту."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_config_not_default",
+      "source": "The installed profile has non-default configuration.",
+      "translation_forms": [
+        "Встановлений профіль має нетипову конфігурацію."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_contains_link",
+      "source": "The installed profile contains a symbolic link or junction: %1.",
+      "translation_forms": [
+        "Встановлений профіль містить символічне посилання або з'єднання (junction): %1."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_data_unsupported",
+      "source": "The installed profile contains unsupported data: %1.",
+      "translation_forms": [
+        "Встановлений профіль містить непідтримувані дані: %1."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_database_inspection_failed",
+      "source": "The installed database cannot be inspected.",
+      "translation_forms": [
+        "Не вдалося перевірити встановлену базу даних."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_file_exists",
+      "source": "The installed profile already has its own %1.",
+      "translation_forms": [
+        "Встановлений профіль уже має власний файл %1."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_not_empty",
+      "source": "The installed profile is not empty.",
+      "translation_forms": [
+        "Встановлений профіль не порожній."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_restore_failed",
+      "source": "The interrupted portable import could not restore its destination backup.",
+      "translation_forms": [
+        "Перерваному портативному імпорту не вдалося відновити резервну копію призначення."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.destination_root_link",
+      "source": "The installed profile root must not be a symbolic link or junction.",
+      "translation_forms": [
+        "Корінь встановленого профілю не може бути символічним посиланням або з'єднанням (junction)."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.game_path_scheme_invalid",
+      "source": "A game executable path incorrectly uses portable:/.",
+      "translation_forms": [
+        "Шлях до виконуваного файлу гри помилково використовує portable:/."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.hash_failed",
+      "source": "Cannot hash %1.",
+      "translation_forms": [
+        "Не вдалося обчислити хеш %1."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.installed_copy_required",
+      "source": "Portable profiles can only be imported by an installed copy of GameHQ.",
+      "translation_forms": [
+        "Портативні профілі може імпортувати лише встановлена копія GameHQ."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.journal_invalid",
+      "source": "The interrupted portable-import journal is invalid.",
+      "translation_forms": [
+        "Журнал перерваного портативного імпорту недійсний."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.journal_malformed",
+      "source": "The interrupted portable-import journal is malformed.",
+      "translation_forms": [
+        "Журнал перерваного портативного імпорту має некоректний формат."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.journal_read_failed",
+      "source": "The interrupted portable-import journal cannot be read.",
+      "translation_forms": [
+        "Не вдалося прочитати журнал перерваного портативного імпорту."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.journal_remove_failed",
+      "source": "The recovered portable-import journal could not be removed.",
+      "translation_forms": [
+        "Не вдалося видалити відновлений журнал портативного імпорту."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.local_folder_required",
+      "source": "Select a local folder containing portable GameHQ.",
+      "translation_forms": [
+        "Виберіть локальну папку з портативною версією GameHQ."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.package_invalid",
+      "source": "The selected folder is not a GameHQ portable package.",
+      "translation_forms": [
+        "Вибрана папка не є портативним пакетом GameHQ."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.package_root_canonicalize_failed",
+      "source": "The portable package root cannot be canonicalized.",
+      "translation_forms": [
+        "Не вдалося отримати канонічний шлях кореня портативного пакета."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.path_escapes_package",
+      "source": "A portable path escapes the selected package root.",
+      "translation_forms": [
+        "Портативний шлях виходить за межі вибраного кореня пакета."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.path_invalid",
+      "source": "A portable:/ path is empty or absolute.",
+      "translation_forms": [
+        "Шлях portable:/ порожній або абсолютний."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.path_scheme_required",
+      "source": "Imported paths must be absolute or use portable:/.",
+      "translation_forms": [
+        "Імпортовані шляхи мають бути абсолютними або використовувати portable:/."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.portable_path_escapes_package",
+      "source": "A portable:/ path escapes the selected package root.",
+      "translation_forms": [
+        "Шлях portable:/ виходить за межі вибраного кореня пакета."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.process_identity_failed",
+      "source": "GameHQ could not identify its own process for the import.",
+      "translation_forms": [
+        "GameHQ не вдалося ідентифікувати власний процес для імпорту."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.process_start_failed",
+      "source": "GameHQ could not start the portable import process.",
+      "translation_forms": [
+        "GameHQ не вдалося запустити процес портативного імпорту."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.publish_failed",
+      "source": "The staged profile cannot be published.",
+      "translation_forms": [
+        "Не вдалося застосувати підготовлений профіль у кінцевому розташуванні."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.published_destination_missing",
+      "source": "The published portable-import destination is missing.",
+      "translation_forms": [
+        "Кінцеве місце призначення портативного імпорту відсутнє."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.recovery_remove_directory_failed",
+      "source": "Portable-import recovery could not remove a transaction directory.",
+      "translation_forms": [
+        "Під час відновлення портативного імпорту не вдалося видалити каталог транзакції."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.recovery_required",
+      "source": "%1 Recovery required: %2",
+      "translation_forms": [
+        "%1 Потрібне відновлення: %2"
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.rollback_restore_failed",
+      "source": "The installed profile backup could not be restored.",
+      "translation_forms": [
+        "Не вдалося відновити резервну копію встановленого профілю."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.sound_file_missing",
+      "source": "A referenced portable sound file is missing.",
+      "translation_forms": [
+        "Указаний портативний звуковий файл відсутній."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.sound_file_stage_failed",
+      "source": "A referenced sound file could not be staged.",
+      "translation_forms": [
+        "Не вдалося підготувати вказаний звуковий файл."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.source_changed",
+      "source": "The portable source changed during import.",
+      "translation_forms": [
+        "Портативне джерело змінилося під час імпорту."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.source_destination_overlap",
+      "source": "Source and destination profiles must be separate.",
+      "translation_forms": [
+        "Профілі джерела та призначення мають бути окремими."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.source_package_invalid",
+      "source": "Select a valid GameHQ portable package root.",
+      "translation_forms": [
+        "Виберіть дійсний корінь портативного пакета GameHQ."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.source_read_failed",
+      "source": "Cannot read %1 for source verification.",
+      "translation_forms": [
+        "Не вдалося прочитати %1 для перевірки джерела."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.stage_file_failed",
+      "source": "Cannot stage %1.",
+      "translation_forms": [
+        "Не вдалося підготувати %1."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.staging_directory_failed",
+      "source": "The import staging directory cannot be created.",
+      "translation_forms": [
+        "Не вдалося створити каталог підготовки імпорту."
+      ]
+    },
+    {
+      "id": "gamehq.error.portable_import.transaction_running",
+      "source": "Another portable-profile import is already running.",
+      "translation_forms": [
+        "Інший імпорт портативного профілю вже виконується."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.capture_quiescence_timeout",
+      "source": "The update was canceled because capture work did not finish safely in time.",
+      "translation_forms": [
+        "Оновлення скасовано, оскільки робота із захопленням не встигла безпечно завершитися."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.check_failed",
+      "source": "Update check failed: %1",
+      "translation_forms": [
+        "Не вдалося перевірити оновлення: %1"
+      ]
+    },
+    {
+      "id": "gamehq.error.update.check_rate_limited",
+      "source": "GitHub temporarily limited update checks. GameHQ will try again later.",
+      "translation_forms": [
+        "GitHub тимчасово обмежив перевірки оновлень. GameHQ спробує знову пізніше."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.check_rate_limited_until",
+      "source": "GitHub temporarily limited update checks. GameHQ will try again after %1.",
+      "translation_forms": [
+        "GitHub тимчасово обмежив перевірки оновлень. GameHQ спробує знову після %1."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.checksum_calculation_failed",
+      "source": "GameHQ could not calculate the update checksum.",
+      "translation_forms": [
+        "GameHQ не вдалося обчислити контрольну суму оновлення."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.checksum_entry_count",
+      "source": "The update checksum file must contain exactly one entry.",
+      "translation_forms": [
+        "Файл контрольної суми оновлення має містити рівно один запис."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.checksum_format_invalid",
+      "source": "The update checksum file has an invalid format.",
+      "translation_forms": [
+        "Файл контрольної суми оновлення має недійсний формат."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.checksum_package_mismatch",
+      "source": "The update checksum names a different package.",
+      "translation_forms": [
+        "Контрольна сума оновлення вказує на інший пакет."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.evidence_incomplete",
+      "source": "The verified update evidence is incomplete.",
+      "translation_forms": [
+        "Перевірені дані підтвердження оновлення неповні."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.flush_failed",
+      "source": "GameHQ could not flush the update download to disk.",
+      "translation_forms": [
+        "GameHQ не вдалося скинути завантажене оновлення на диск."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.http_status",
+      "source": "Update download failed with HTTP status %1.",
+      "translation_forms": [
+        "Завантаження оновлення завершилося помилкою HTTP з кодом %1."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.https_required",
+      "source": "The update download must use HTTPS.",
+      "translation_forms": [
+        "Завантаження оновлення має використовувати HTTPS."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.insecure_redirect",
+      "source": "The update download redirected away from HTTPS.",
+      "translation_forms": [
+        "Завантаження оновлення було перенаправлено з HTTPS на незахищене з'єднання."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.manifest_hash_malformed",
+      "source": "The signed manifest artifact hash is malformed.",
+      "translation_forms": [
+        "Хеш артефакту в підписаному маніфесті має некоректний формат."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.manifest_length_mismatch",
+      "source": "The update package length did not match the signed manifest.",
+      "translation_forms": [
+        "Довжина пакета оновлення не збігається з підписаним маніфестом."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.manifest_read_failed",
+      "source": "GameHQ could not read the downloaded release manifest.",
+      "translation_forms": [
+        "GameHQ не вдалося прочитати завантажений маніфест випуску."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.manifest_version_mismatch",
+      "source": "The signed manifest describes a different version than the release.",
+      "translation_forms": [
+        "Підписаний маніфест описує іншу версію, ніж випуск."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.network_failed",
+      "source": "Update download failed: %1",
+      "translation_forms": [
+        "Не вдалося завантажити оновлення: %1"
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.package_name_invalid",
+      "source": "The update package name is invalid.",
+      "translation_forms": [
+        "Назва пакета оновлення недійсна."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.package_name_mismatch",
+      "source": "The signed manifest names a different update package.",
+      "translation_forms": [
+        "Підписаний маніфест вказує іншу назву пакета оновлення."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.package_not_authorised",
+      "source": "The signed manifest does not authorize an update package.",
+      "translation_forms": [
+        "Підписаний маніфест не дозволяє встановлення жодного пакета оновлення."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.package_read_failed",
+      "source": "GameHQ could not read the downloaded update package.",
+      "translation_forms": [
+        "GameHQ не вдалося прочитати завантажений пакет оновлення."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.package_size_invalid",
+      "source": "The update package size is missing or exceeds the safety limit.",
+      "translation_forms": [
+        "Розмір пакета оновлення відсутній або перевищує безпечну межу."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.partial_create_failed",
+      "source": "GameHQ could not create the partial update file.",
+      "translation_forms": [
+        "GameHQ не вдалося створити файл часткового завантаження оновлення."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.publish_failed",
+      "source": "GameHQ could not publish the completed update download.",
+      "translation_forms": [
+        "GameHQ не вдалося перемістити завершене завантаження оновлення до кінцевого розташування."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.release_size_mismatch",
+      "source": "The update download size did not match the release metadata.",
+      "translation_forms": [
+        "Розмір завантаженого оновлення не збігається з метаданими випуску."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.sha256_mismatch",
+      "source": "The update package failed SHA-256 verification and was rejected.",
+      "translation_forms": [
+        "Пакет оновлення не пройшов перевірку SHA-256 і був відхилений."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.signature_noncanonical",
+      "source": "The release signature is not in its canonical form.",
+      "translation_forms": [
+        "Підпис випуску не має канонічної форми."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.signature_read_failed",
+      "source": "GameHQ could not read the downloaded release signature.",
+      "translation_forms": [
+        "GameHQ не вдалося прочитати завантажений підпис випуску."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.signature_untrusted",
+      "source": "This release is not authorized by a trusted signature: %1",
+      "translation_forms": [
+        "Цей випуск не підтверджено довіреним підписом: %1"
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.signed_manifest_missing",
+      "source": "This release has no signed manifest, so it cannot be installed.",
+      "translation_forms": [
+        "Цей випуск не має підписаного маніфесту, тому його не можна встановити."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.signed_size_invalid",
+      "source": "The signed update package size is out of range.",
+      "translation_forms": [
+        "Підписаний розмір пакета оновлення виходить за допустимі межі."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.size_limit_exceeded",
+      "source": "The update download exceeded its safety size limit.",
+      "translation_forms": [
+        "Завантаження оновлення перевищило безпечну межу розміру."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.staging_create_failed",
+      "source": "GameHQ could not create the update staging directory.",
+      "translation_forms": [
+        "GameHQ не вдалося створити каталог підготовки оновлення."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.trust_state_read_failed",
+      "source": "GameHQ could not read its release trust state: %1",
+      "translation_forms": [
+        "GameHQ не вдалося прочитати стан довіри до випусків: %1"
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.trust_state_write_failed",
+      "source": "GameHQ could not record the release trust state: %1",
+      "translation_forms": [
+        "GameHQ не вдалося записати стан довіри до випусків: %1"
+      ]
+    },
+    {
+      "id": "gamehq.error.update.download.write_failed",
+      "source": "GameHQ could not write the update download to disk.",
+      "translation_forms": [
+        "GameHQ не вдалося записати завантажене оновлення на диск."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.install.handshake_failed",
+      "source": "GameHQ could not prepare the updater handshake.",
+      "translation_forms": [
+        "GameHQ не вдалося підготувати з'єднання з помічником оновлення."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.install.helper_missing",
+      "source": "%1 is missing or cannot run.",
+      "translation_forms": [
+        "%1 відсутній або не може запуститися."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.install.helper_rejected",
+      "source": "The updater helper rejected the update before it became ready.",
+      "translation_forms": [
+        "Помічник оновлення відхилив оновлення до того, як воно стало готовим."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.install.helper_start_failed",
+      "source": "GameHQ could not start the updater helper.",
+      "translation_forms": [
+        "GameHQ не вдалося запустити помічник оновлення."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.install.helper_timeout",
+      "source": "The updater helper did not confirm it is ready in time.",
+      "translation_forms": [
+        "Помічник оновлення вчасно не підтвердив свою готовність."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.install.manifest_mismatch",
+      "source": "The staged package no longer matches the signed manifest.",
+      "translation_forms": [
+        "Підготовлений пакет більше не відповідає підписаному маніфесту."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.install.metadata_incomplete",
+      "source": "The verified update metadata is incomplete.",
+      "translation_forms": [
+        "Перевірені метадані оновлення неповні."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.install.metadata_invalid",
+      "source": "The verified update metadata is invalid.",
+      "translation_forms": [
+        "Перевірені метадані оновлення недійсні."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.install.package_changed",
+      "source": "The update package changed before installation: %1",
+      "translation_forms": [
+        "Пакет оновлення змінився перед встановленням: %1"
+      ]
+    },
+    {
+      "id": "gamehq.error.update.install.package_outside_staging",
+      "source": "The verified update package is outside GameHQ's staging directory.",
+      "translation_forms": [
+        "Перевірений пакет оновлення розташований поза каталогом підготовки GameHQ."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.install.process_identity_failed",
+      "source": "GameHQ could not identify its own process for the update.",
+      "translation_forms": [
+        "GameHQ не вдалося ідентифікувати власний процес для оновлення."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.install.transaction_directory_failed",
+      "source": "GameHQ could not create the update transaction directory.",
+      "translation_forms": [
+        "GameHQ не вдалося створити каталог транзакції оновлення."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.install.transaction_publish_failed",
+      "source": "GameHQ could not publish the update transaction.",
+      "translation_forms": [
+        "GameHQ не вдалося остаточно застосувати транзакцію оновлення."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.maintenance_handoff_failed",
+      "source": "GameHQ could not begin update maintenance: %1",
+      "translation_forms": [
+        "GameHQ не вдалося розпочати обслуговування оновлення: %1"
+      ]
+    },
+    {
+      "id": "gamehq.error.update.preflight.disk_space_insufficient",
+      "source": "There is not enough free space for download, staging and rollback backup.",
+      "translation_forms": [
+        "Недостатньо вільного місця для завантаження, підготовки та резервної копії для відкату."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.preflight.filesystem_unsupported",
+      "source": "Automatic updating currently requires NTFS or ReFS; use the release page on this drive.",
+      "translation_forms": [
+        "Автоматичне оновлення наразі потребує NTFS або ReFS; на цьому диску скористайтеся сторінкою випуску."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.preflight.network_share",
+      "source": "Automatic updating is not supported from a network share. Use the release page instead.",
+      "translation_forms": [
+        "Автоматичне оновлення з мережевого ресурсу не підтримується. Скористайтеся сторінкою випуску."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.preflight.package_incomplete",
+      "source": "Automatic updating is available only in a complete packaged GameHQ installation.",
+      "translation_forms": [
+        "Автоматичне оновлення доступне лише в повній пакетній інсталяції GameHQ."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.preflight.path_too_long",
+      "source": "This installation path is too long for safe automatic replacement. Use a shorter local path.",
+      "translation_forms": [
+        "Цей шлях встановлення надто довгий для безпечної автоматичної заміни. Використайте коротший локальний шлях."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.preflight.recovery_pending",
+      "source": "A previous update must finish recovery before another update can start.",
+      "translation_forms": [
+        "Попереднє оновлення має завершити відновлення, перш ніж можна буде почати нове."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.preflight.staging_create_failed",
+      "source": "GameHQ cannot create its update staging directory here.",
+      "translation_forms": [
+        "GameHQ не може створити тут каталог підготовки оновлення."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.preflight.volume_not_writable",
+      "source": "The GameHQ installation is not on a writable local volume.",
+      "translation_forms": [
+        "Інсталяція GameHQ розташована не на локальному томі з правом запису."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.preflight.write_failed",
+      "source": "GameHQ cannot safely write update files in this installation.",
+      "translation_forms": [
+        "GameHQ не може безпечно записати файли оновлення в цьому встановленні."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.release_changed",
+      "source": "The release changed after download. Check again before installing.",
+      "translation_forms": [
+        "Випуск змінився після завантаження. Перевірте ще раз перед встановленням."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.release_withdrawn",
+      "source": "The downloaded release was withdrawn before installation.",
+      "translation_forms": [
+        "Завантажений випуск було відкликано до встановлення."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.revalidation_failed",
+      "source": "The release could not be revalidated: %1",
+      "translation_forms": [
+        "Не вдалося повторно перевірити випуск: %1"
+      ]
+    },
+    {
+      "id": "gamehq.error.update.revalidation_not_fresh",
+      "source": "The release could not be freshly revalidated before installation.",
+      "translation_forms": [
+        "Не вдалося заново перевірити випуск безпосередньо перед встановленням."
+      ]
+    },
+    {
+      "id": "gamehq.error.update.revalidation_rate_limited",
+      "source": "GitHub could not revalidate this release before installation. Try again later.",
+      "translation_forms": [
+        "GitHub не зміг повторно перевірити цей випуск перед встановленням. Спробуйте пізніше."
+      ]
+    },
+    {
+      "id": "gamehq.format.fps",
+      "source": "%1 fps",
+      "translation_forms": [
+        "%1 fps"
+      ]
+    },
+    {
+      "id": "gamehq.format.megabits_per_second",
+      "source": "%1 Mbps",
+      "translation_forms": [
+        "%1 Мбіт/с"
+      ]
+    },
+    {
+      "id": "gamehq.format.percent",
+      "source": "%1%",
+      "translation_forms": [
+        "%1%"
+      ]
+    },
+    {
+      "id": "gamehq.format.size.bytes",
+      "source": "%1 B",
+      "translation_forms": [
+        "%1 Б"
+      ]
+    },
+    {
+      "id": "gamehq.format.size.kilobytes",
+      "source": "%1 KB",
+      "translation_forms": [
+        "%1 КБ"
+      ]
+    },
+    {
+      "id": "gamehq.format.size.megabytes",
+      "source": "%1 MB",
+      "translation_forms": [
+        "%1 МБ"
+      ]
+    },
+    {
+      "id": "gamehq.format.version_short",
+      "source": "v%1",
+      "translation_forms": [
+        "v%1"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.action.add_folder",
+      "source": "Add folder…",
+      "translation_forms": [
+        "Додати папку…"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.action.bulk_select",
+      "source": "Bulk select",
+      "translation_forms": [
+        "Масовий вибір"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.action.show_in_folder",
+      "source": "Show in folder",
+      "translation_forms": [
+        "Показати в папці"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.capture_caption",
+      "source": "%1 · %2",
+      "translation_forms": [
+        "%1 · %2"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.delete_capture.message",
+      "source": "%1 · %2\nThis permanently deletes the file.",
+      "translation_forms": [
+        "%1 · %2\nЦе назавжди видалить файл."
+      ]
+    },
+    {
+      "id": "gamehq.gallery.delete_capture.title",
+      "source": "Delete capture?",
+      "translation_forms": [
+        "Видалити медіафайл?"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.delete_selected.message",
+      "source": "%n capture will be permanently deleted.\nThis cannot be undone.",
+      "translation_forms": [
+        "%n медіафайл буде видалено назавжди.\nЦю дію не можна скасувати.",
+        "%n медіафайли буде видалено назавжди.\nЦю дію не можна скасувати.",
+        "%n медіафайлів буде видалено назавжди.\nЦю дію не можна скасувати."
+      ]
+    },
+    {
+      "id": "gamehq.gallery.delete_selected.title",
+      "source": "Delete selected captures?",
+      "translation_forms": [
+        "Видалити вибрані медіафайли?"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.empty.description",
+      "source": "No captures yet — add a folder to watch.",
+      "translation_forms": [
+        "Медіафайлів ще немає — додайте папку для відстеження."
+      ]
+    },
+    {
+      "id": "gamehq.gallery.hint.browse.gamepad",
+      "source": "Cross — open | Triangle — favorite | Square — menu | L1 — sidebar | PS — overlay",
+      "translation_forms": [
+        "Хрестик — відкрити | Трикутник — обране | Квадрат — меню | L1 — бічна панель | PS — оверлей"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.hint.browse.keyboard",
+      "source": "Enter — open | F — favorite | E — show in folder | Ctrl+Shift+G — overlay",
+      "translation_forms": [
+        "Enter — відкрити | F — обране | E — показати в папці | Ctrl+Shift+G — оверлей"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.hint.bulk.gamepad",
+      "source": "Cross — select | Triangle — all | Square — delete | Circle — done",
+      "translation_forms": [
+        "Хрестик — вибрати | Трикутник — усі | Квадрат — видалити | Коло — готово"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.hint.bulk.keyboard",
+      "source": "Enter/Space — select | Ctrl+A — all | Delete — delete | Esc — done",
+      "translation_forms": [
+        "Enter/Space — вибрати | Ctrl+A — усі | Delete — видалити | Esc — готово"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.hint.sidebar.gamepad",
+      "source": "D-pad ↑↓ — pick | Cross — select | R1 — back to grid",
+      "translation_forms": [
+        "D-pad ↑↓ — вибір | Хрестик — вибрати | R1 — назад до сітки"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.hint.sidebar.keyboard",
+      "source": "↑↓ — pick | Enter — select | Esc — back to grid",
+      "translation_forms": [
+        "↑↓ — вибір | Enter — вибрати | Esc — назад до сітки"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.selection.count",
+      "source": "%n selected",
+      "translation_forms": [
+        "Вибрано: %n",
+        "Вибрано: %n",
+        "Вибрано: %n"
+      ]
+    },
+    {
+      "id": "gamehq.gallery.viewer.window_title",
+      "source": "%1 Viewer",
+      "translation_forms": [
+        "%1 — переглядач"
+      ]
+    },
+    {
+      "id": "gamehq.hdr.detail.not_checked",
+      "source": "Check the current HDR state of every display.",
+      "translation_forms": [
+        "Перевірити поточний стан HDR усіх дисплеїв."
+      ]
+    },
+    {
+      "id": "gamehq.hdr.status.active",
+      "source": "Windows HDR is active",
+      "translation_forms": [
+        "HDR у Windows увімкнено"
+      ]
+    },
+    {
+      "id": "gamehq.hdr.status.inactive",
+      "source": "Windows HDR is inactive",
+      "translation_forms": [
+        "HDR у Windows вимкнено"
+      ]
+    },
+    {
+      "id": "gamehq.hdr.status.no_displays",
+      "source": "No displays reported by the graphics driver",
+      "translation_forms": [
+        "Графічний драйвер не повідомив про жоден дисплей"
+      ]
+    },
+    {
+      "id": "gamehq.hdr.status.not_checked",
+      "source": "Not checked yet",
+      "translation_forms": [
+        "Ще не перевірено"
+      ]
+    },
+    {
+      "id": "gamehq.help.binding.select_mode",
+      "source": "Select mode",
+      "translation_forms": [
+        "Режим вибору"
+      ]
+    },
+    {
+      "id": "gamehq.help.feature.gallery.description",
+      "source": "All captures in one grid — filter by category or game. Grid navigation works with keyboard, mouse, and controller.",
+      "translation_forms": [
+        "Усі медіафайли в одній сітці — фільтруйте за категорією чи грою. Навігація сіткою працює з клавіатурою, мишею та контролером."
+      ]
+    },
+    {
+      "id": "gamehq.help.feature.gallery.title",
+      "source": "Gallery",
+      "translation_forms": [
+        "Галерея"
+      ]
+    },
+    {
+      "id": "gamehq.help.feature.lightbox.description",
+      "source": "Full-screen viewer for screenshots and videos. Opens from both the main window and the overlay.",
+      "translation_forms": [
+        "Повноекранний переглядач знімків екрана та відео. Відкривається як з головного вікна, так і з оверлея."
+      ]
+    },
+    {
+      "id": "gamehq.help.feature.lightbox.title",
+      "source": "Lightbox",
+      "translation_forms": [
+        "Лайтбокс"
+      ]
+    },
+    {
+      "id": "gamehq.help.feature.overlay.description",
+      "source": "Transparent fullscreen HUD. View and manage captures from inside a game without alt-tabbing. Includes its own gallery grid, lightbox, and toast notifications.",
+      "translation_forms": [
+        "Прозорий повноекранний HUD. Переглядайте медіафайли й керуйте ними просто з гри, без Alt+Tab. Має власну сітку галереї, лайтбокс і спливні сповіщення."
+      ]
+    },
+    {
+      "id": "gamehq.help.feature.overlay.title",
+      "source": "Overlay",
+      "translation_forms": [
+        "Оверлей"
+      ]
+    },
+    {
+      "id": "gamehq.help.feature.replay.description",
+      "source": "When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.",
+      "translation_forms": [
+        "Якщо увімкнено, буфер повторів активується автоматично й записує у фоні, поки вікно гри має фокус. Утримуйте Share (або Ctrl+Shift+E), щоб зберегти останні секунди як кліп. Постійний запис вмикається й вимикається в Налаштування → Повтор."
+      ]
+    },
+    {
+      "id": "gamehq.help.feature.replay.title",
+      "source": "Replay buffer",
+      "translation_forms": [
+        "Буфер повторів"
+      ]
+    },
+    {
+      "id": "gamehq.help.feature.screenshots.description",
+      "source": "Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.",
+      "translation_forms": [
+        "Робить знімок активного вікна гри через GDI, зберігає PNG у папці для знімків і кліпів та миттєво відтворює звук затвора."
+      ]
+    },
+    {
+      "id": "gamehq.help.feature.screenshots.title",
+      "source": "Screenshots",
+      "translation_forms": [
+        "Знімки екрана"
+      ]
+    },
+    {
+      "id": "gamehq.help.feature.watched_folders.description",
+      "source": "Add any folder (Game Bar, Steam, NVIDIA ShadowPlay) — %1 scans it for new captures automatically.",
+      "translation_forms": [
+        "Додайте будь-яку папку (Game Bar, Steam, NVIDIA ShadowPlay) — %1 автоматично скануватиме її на нові медіафайли."
+      ]
+    },
+    {
+      "id": "gamehq.help.feature.watched_folders.title",
+      "source": "Watched folders",
+      "translation_forms": [
+        "Відстежувані папки"
+      ]
+    },
+    {
+      "id": "gamehq.help.features",
+      "source": "Features",
+      "translation_forms": [
+        "Можливості"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.button_combination",
+      "source": "Button combination",
+      "translation_forms": [
+        "Комбінація кнопок"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.button_combination_action",
+      "source": "Press the ordered pair within the configured combination window",
+      "translation_forms": [
+        "Натисніть пару кнопок по черзі в межах налаштованого вікна комбінації"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.circle",
+      "source": "Circle",
+      "translation_forms": [
+        "Коло"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.circle_action",
+      "source": "Back / close overlay",
+      "translation_forms": [
+        "Назад / закрити оверлей"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.cross",
+      "source": "Cross",
+      "translation_forms": [
+        "Хрестик"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.cross_action",
+      "source": "Open selected capture / confirm",
+      "translation_forms": [
+        "Відкрити вибраний медіафайл / підтвердити"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.navigation_controls",
+      "source": "D-pad / Left Stick",
+      "translation_forms": [
+        "D-pad / лівий стік"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.ps_button",
+      "source": "PS button",
+      "translation_forms": [
+        "Кнопка PS"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.select_mode",
+      "source": "Cross toggles, Triangle selects all, Square deletes, Circle exits",
+      "translation_forms": [
+        "Хрестик перемикає, Трикутник вибирає всі, Квадрат видаляє, Коло виходить"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.share_hold",
+      "source": "Share (hold)",
+      "translation_forms": [
+        "Share (утримування)"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.share_hold_action",
+      "source": "Save replay clip; hold consumes the tap",
+      "translation_forms": [
+        "Зберегти кліп повтору; утримування скасовує коротке натискання"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.share_multi_tap",
+      "source": "Share (2× / 3×)",
+      "translation_forms": [
+        "Share (2× / 3×)"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.share_multi_tap_action",
+      "source": "Exact double/triple tap; lower counts wait only for the configured interval",
+      "translation_forms": [
+        "Точне подвійне або потрійне натискання; послідовності з меншою кількістю натискань очікують лише налаштований інтервал"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.square",
+      "source": "Square",
+      "translation_forms": [
+        "Квадрат"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.square_action",
+      "source": "Action menu (Show in folder / Delete)",
+      "translation_forms": [
+        "Меню дій (Показати в папці / Видалити)"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.switch_panel",
+      "source": "Switch panel: sidebar ↔ grid (app) / flip captures (overlay)",
+      "translation_forms": [
+        "Перемкнути панель: бічна панель ↔ сітка (застосунок) / перегортання медіафайлів (оверлей)"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.system_share_action",
+      "source": "Take screenshot; distinct from Xbox View / Back",
+      "translation_forms": [
+        "Зробити знімок екрана; не те саме, що Xbox View / Back"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.system_share_tap",
+      "source": "System Share (tap)",
+      "translation_forms": [
+        "Системна кнопка Share (коротке натискання)"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad.triangle",
+      "source": "Triangle",
+      "translation_forms": [
+        "Трикутник"
+      ]
+    },
+    {
+      "id": "gamehq.help.gamepad_shortcuts",
+      "source": "DualSense / gamepad",
+      "translation_forms": [
+        "DualSense / геймпад"
+      ]
+    },
+    {
+      "id": "gamehq.help.keyboard.open_capture",
+      "source": "Open selected capture",
+      "translation_forms": [
+        "Відкрити вибраний медіафайл"
+      ]
+    },
+    {
+      "id": "gamehq.help.keyboard.open_overlay",
+      "source": "Open / close overlay",
+      "translation_forms": [
+        "Відкрити / закрити оверлей"
+      ]
+    },
+    {
+      "id": "gamehq.help.keyboard.save_replay",
+      "source": "Save last N seconds as clip",
+      "translation_forms": [
+        "Зберегти останні N секунд як кліп"
+      ]
+    },
+    {
+      "id": "gamehq.help.keyboard.select_mode",
+      "source": "Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items",
+      "translation_forms": [
+        "Enter / Space перемикає вибір, Ctrl+A вибирає всі, Delete видаляє вибрані елементи"
+      ]
+    },
+    {
+      "id": "gamehq.help.keyboard.show_in_explorer",
+      "source": "Show selected in Explorer",
+      "translation_forms": [
+        "Показати вибране в Провіднику"
+      ]
+    },
+    {
+      "id": "gamehq.help.keyboard.take_screenshot",
+      "source": "Take screenshot",
+      "translation_forms": [
+        "Зробити знімок екрана"
+      ]
+    },
+    {
+      "id": "gamehq.help.keyboard.toggle_favorite",
+      "source": "Favorite / unfavorite selected",
+      "translation_forms": [
+        "Додати вибране до обраного / вилучити з обраного"
+      ]
+    },
+    {
+      "id": "gamehq.help.keyboard_shortcuts",
+      "source": "Keyboard shortcuts",
+      "translation_forms": [
+        "Комбінації клавіш"
+      ]
+    },
+    {
+      "id": "gamehq.help.navigate_gallery",
+      "source": "Navigate gallery grid",
+      "translation_forms": [
+        "Навігація сіткою галереї"
+      ]
+    },
+    {
+      "id": "gamehq.help.open_controller_guide",
+      "source": "Open the controller compatibility guide",
+      "translation_forms": [
+        "Відкрити посібник із сумісності контролерів"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.capture_active",
+      "source": "Controller capture active · Dialog navigation is paused",
+      "translation_forms": [
+        "Триває виявлення введення контролера · Навігацію діалогом призупинено"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.combination_gesture",
+      "source": "Press · fixed for combinations",
+      "translation_forms": [
+        "Натискання · фіксовано для комбінацій"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.default_duration",
+      "source": "Default",
+      "translation_forms": [
+        "Типово"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.detected",
+      "source": "%1 detected",
+      "translation_forms": [
+        "Виявлено: %1"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.first_button",
+      "source": "First button",
+      "translation_forms": [
+        "Перша кнопка"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.gesture",
+      "source": "Gesture",
+      "translation_forms": [
+        "Жест"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.hold_duration",
+      "source": "Hold duration",
+      "translation_forms": [
+        "Тривалість утримування"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.listening_button",
+      "source": "Listening… Press a controller button",
+      "translation_forms": [
+        "Очікування… Натисніть кнопку контролера"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.listening_first",
+      "source": "Listening… Hold the first button",
+      "translation_forms": [
+        "Очікування… Утримуйте першу кнопку"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.listening_second",
+      "source": "Listening… Press the second button",
+      "translation_forms": [
+        "Очікування… Натисніть другу кнопку"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.not_set",
+      "source": "Not set",
+      "translation_forms": [
+        "Не задано"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.notice.attention",
+      "source": "Assignment needs attention",
+      "translation_forms": [
+        "Призначення потребує уваги"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.notice.compatibility",
+      "source": "Compatibility change required",
+      "translation_forms": [
+        "Потрібна зміна для сумісності"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.notice.default",
+      "source": "Assignment note",
+      "translation_forms": [
+        "Примітка щодо призначення"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.notice.not_verified",
+      "source": "Button not verified this session",
+      "translation_forms": [
+        "Кнопку не підтверджено в цьому сеансі"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.pattern",
+      "source": "Type",
+      "translation_forms": [
+        "Тип"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.pattern.combination",
+      "source": "Combination",
+      "translation_forms": [
+        "Комбінація"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.pattern.single",
+      "source": "Single button",
+      "translation_forms": [
+        "Одна кнопка"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.scope_slot",
+      "source": "%1 · Slot %2",
+      "translation_forms": [
+        "%1 · Комірка %2"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.second_button",
+      "source": "Second button",
+      "translation_forms": [
+        "Друга кнопка"
+      ]
+    },
+    {
+      "id": "gamehq.input.assignment.waiting_first",
+      "source": "Waiting for first button",
+      "translation_forms": [
+        "Очікування першої кнопки"
+      ]
+    },
+    {
+      "id": "gamehq.input.binding_card.add",
+      "source": "Add  ›",
+      "translation_forms": [
+        "Додати  ›"
+      ]
+    },
+    {
+      "id": "gamehq.input.binding_card.add_accessible",
+      "source": "Add %1 assignment",
+      "translation_forms": [
+        "Додати призначення %1"
+      ]
+    },
+    {
+      "id": "gamehq.input.binding_card.add_input",
+      "source": "+ Add input",
+      "translation_forms": [
+        "+ Додати ввід"
+      ]
+    },
+    {
+      "id": "gamehq.input.binding_card.add_status_accessible",
+      "source": "Add %1 assignment, status %2",
+      "translation_forms": [
+        "Додати призначення %1, статус %2"
+      ]
+    },
+    {
+      "id": "gamehq.input.binding_card.edit",
+      "source": "Edit  ›",
+      "translation_forms": [
+        "Змінити  ›"
+      ]
+    },
+    {
+      "id": "gamehq.input.binding_card.edit_accessible",
+      "source": "Edit %1 assignment: %2, %3",
+      "translation_forms": [
+        "Змінити призначення %1: %2, %3"
+      ]
+    },
+    {
+      "id": "gamehq.input.binding_card.edit_status_accessible",
+      "source": "Edit %1 assignment: %2, %3, status %4",
+      "translation_forms": [
+        "Змінити призначення %1: %2, %3, статус %4"
+      ]
+    },
+    {
+      "id": "gamehq.input.binding_card.heading",
+      "source": "%1 assignment",
+      "translation_forms": [
+        "Призначення %1"
+      ]
+    },
+    {
+      "id": "gamehq.input.binding_card.remove_accessible",
+      "source": "Remove %1 assignment",
+      "translation_forms": [
+        "Видалити призначення %1"
+      ]
+    },
+    {
+      "id": "gamehq.input.binding_card.restore_accessible",
+      "source": "Restore %1 assignment",
+      "translation_forms": [
+        "Відновити призначення %1"
+      ]
+    },
+    {
+      "id": "gamehq.input.binding_card.revert_accessible",
+      "source": "Revert %1 assignment",
+      "translation_forms": [
+        "Повернути призначення %1"
+      ]
+    },
+    {
+      "id": "gamehq.input.binding_card.unassigned",
+      "source": "Unassigned",
+      "translation_forms": [
+        "Не призначено"
+      ]
+    },
+    {
+      "id": "gamehq.input.choose_another",
+      "source": "Choose another",
+      "translation_forms": [
+        "Вибрати інше"
+      ]
+    },
+    {
+      "id": "gamehq.input.compatibility.convert",
+      "source": "Convert & add",
+      "translation_forms": [
+        "Перетворити й додати"
+      ]
+    },
+    {
+      "id": "gamehq.input.compatibility.convert_press",
+      "source": "%1 currently activates %2 immediately when the button is pressed.\n\nTo also use %1 for %3, GameHQ must change %2 from Press to Single tap.\n\n%2 will then activate after the button is released.",
+      "translation_forms": [
+        "%1 зараз активує %2 одразу при натисканні кнопки.\n\nЩоб також використовувати %1 для %3, GameHQ має змінити %2 з «Натискання» на «Коротке натискання».\n\nТоді %2 активуватиметься після відпускання кнопки."
+      ]
+    },
+    {
+      "id": "gamehq.input.compatibility.convert_press_with_wait",
+      "source": "%1 currently activates %2 immediately when the button is pressed.\n\nTo also use %1 for %3, GameHQ must change %2 from Press to Single tap.\n\n%2 will then activate after the button is released and may wait up to %4 ms to rule out the %3 action.",
+      "translation_forms": [
+        "%1 зараз активує %2 одразу при натисканні кнопки.\n\nЩоб також використовувати %1 для %3, GameHQ має змінити %2 з «Натискання» на «Коротке натискання».\n\nТоді %2 активуватиметься після відпускання кнопки й може очікувати до %4 мс, щоб переконатися, що це не дія %3."
+      ]
+    },
+    {
+      "id": "gamehq.input.compatibility.title",
+      "source": "Make these assignments compatible?",
+      "translation_forms": [
+        "Зробити ці призначення сумісними?"
+      ]
+    },
+    {
+      "id": "gamehq.input.conflict.already_assigned",
+      "source": "%1 · %2 is already assigned to %3 in this context.",
+      "translation_forms": [
+        "%1 · %2 уже призначено для %3 у цьому контексті."
+      ]
+    },
+    {
+      "id": "gamehq.input.conflict.press_timed",
+      "source": "%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.",
+      "translation_forms": [
+        "%1 використовує «Натискання» для %2. Його неможливо відрізнити від %3 у цьому контексті без зміни поведінки при натисканні кнопки."
+      ]
+    },
+    {
+      "id": "gamehq.input.conflict.title",
+      "source": "These assignments conflict",
+      "translation_forms": [
+        "Ці призначення конфліктують"
+      ]
+    },
+    {
+      "id": "gamehq.input.gesture.double_tap",
+      "source": "Double tap",
+      "translation_forms": [
+        "Подвійне натискання"
+      ]
+    },
+    {
+      "id": "gamehq.input.gesture.hold",
+      "source": "Hold",
+      "translation_forms": [
+        "Утримування"
+      ]
+    },
+    {
+      "id": "gamehq.input.gesture.press",
+      "source": "Press",
+      "translation_forms": [
+        "Натискання"
+      ]
+    },
+    {
+      "id": "gamehq.input.gesture.tap",
+      "source": "Tap",
+      "translation_forms": [
+        "Коротке натискання"
+      ]
+    },
+    {
+      "id": "gamehq.input.gesture.triple_tap",
+      "source": "Triple tap",
+      "translation_forms": [
+        "Потрійне натискання"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.capture.controller",
+      "source": "Press a controller button for %1 · Slot %2 · %3",
+      "translation_forms": [
+        "Натисніть кнопку контролера для %1 · Комірка %2 · %3"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.capture.keyboard",
+      "source": "Press a key or shortcut for %1 · Slot %2",
+      "translation_forms": [
+        "Натисніть клавішу або комбінацію для %1 · Комірка %2"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.capture.mouse",
+      "source": "Press the middle, Back, or Forward mouse button for %1 · Slot %2",
+      "translation_forms": [
+        "Натисніть середню кнопку миші або кнопку «Назад» чи «Вперед» для %1 · Комірка %2"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.combination",
+      "source": "Combination",
+      "translation_forms": [
+        "Комбінація"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.hold_default",
+      "source": "Hold · Default",
+      "translation_forms": [
+        "Утримування · Типово"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.hold_seconds",
+      "source": "Hold · %1 s",
+      "translation_forms": [
+        "Утримування · %1 с"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.no_action_fired",
+      "source": "No action fired yet",
+      "translation_forms": [
+        "Жодна дія ще не спрацювала"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.scope.gallery",
+      "source": "Gallery",
+      "translation_forms": [
+        "Галерея"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.scope.global",
+      "source": "Global",
+      "translation_forms": [
+        "Глобально"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.scope.overlay",
+      "source": "Overlay",
+      "translation_forms": [
+        "Оверлей"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.scope.playback",
+      "source": "Playback",
+      "translation_forms": [
+        "Відтворення"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.status.added",
+      "source": "Added",
+      "translation_forms": [
+        "Додано"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.status.modified",
+      "source": "Modified",
+      "translation_forms": [
+        "Змінено"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.status.removed",
+      "source": "Removed",
+      "translation_forms": [
+        "Видалено"
+      ]
+    },
+    {
+      "id": "gamehq.input.model.unassigned",
+      "source": "Unassigned",
+      "translation_forms": [
+        "Не призначено"
+      ]
+    },
+    {
+      "id": "gamehq.input.relation.chord_start_delay",
+      "source": "This action waits up to %1 ms because this button starts a combination.",
+      "translation_forms": [
+        "Ця дія очікує до %1 мс, оскільки ця кнопка починає комбінацію."
+      ]
+    },
+    {
+      "id": "gamehq.input.relation.context_override",
+      "source": "%1 replaces %2 while %3 is active. Both are saved.",
+      "translation_forms": [
+        "%1 замінює %2, поки діє %3. Обидва варіанти збережено."
+      ]
+    },
+    {
+      "id": "gamehq.input.relation.higher_tap_delay",
+      "source": "This action waits up to %1 ms because the same button also has an assignment that needs more taps.",
+      "translation_forms": [
+        "Ця дія очікує до %1 мс, оскільки на цій кнопці є також призначення, яке потребує більшої кількості натискань."
+      ]
+    },
+    {
+      "id": "gamehq.input.relation.redundant",
+      "source": "%1 already does the same thing here. The duplicate has no effect.",
+      "translation_forms": [
+        "%1 вже виконує тут те саме. Дублікат не має ефекту."
+      ]
+    },
+    {
+      "id": "gamehq.input.relation.shared_gesture",
+      "source": "%1 is shared: %2 = %3, %4 = %5.",
+      "translation_forms": [
+        "%1 використовується спільно: %2 = %3, %4 = %5."
+      ]
+    },
+    {
+      "id": "gamehq.library.folder_dialog.title",
+      "source": "Choose a folder to watch",
+      "translation_forms": [
+        "Виберіть папку для відстеження"
+      ]
+    },
+    {
+      "id": "gamehq.navigation.about",
+      "source": "About",
+      "translation_forms": [
+        "Про програму"
+      ]
+    },
+    {
+      "id": "gamehq.navigation.category.all",
+      "source": "All",
+      "translation_forms": [
+        "Усі"
+      ]
+    },
+    {
+      "id": "gamehq.navigation.category.clips",
+      "source": "Clips",
+      "translation_forms": [
+        "Кліпи"
+      ]
+    },
+    {
+      "id": "gamehq.navigation.category.favorites",
+      "source": "Favorites",
+      "translation_forms": [
+        "Обране"
+      ]
+    },
+    {
+      "id": "gamehq.navigation.category.game",
+      "source": "Game",
+      "translation_forms": [
+        "Гра"
+      ]
+    },
+    {
+      "id": "gamehq.navigation.category.game_favorites",
+      "source": "Game favorites",
+      "translation_forms": [
+        "Обране гри"
+      ]
+    },
+    {
+      "id": "gamehq.navigation.category.recent",
+      "source": "Recent",
+      "translation_forms": [
+        "Останні"
+      ]
+    },
+    {
+      "id": "gamehq.navigation.category.screenshots",
+      "source": "Screenshots",
+      "translation_forms": [
+        "Знімки екрана"
+      ]
+    },
+    {
+      "id": "gamehq.navigation.games",
+      "source": "Games",
+      "translation_forms": [
+        "Ігри"
+      ]
+    },
+    {
+      "id": "gamehq.navigation.help",
+      "source": "Help",
+      "translation_forms": [
+        "Довідка"
+      ]
+    },
+    {
+      "id": "gamehq.navigation.settings",
+      "source": "Settings",
+      "translation_forms": [
+        "Налаштування"
+      ]
+    },
+    {
+      "id": "gamehq.navigation.support_gamehq",
+      "source": "Support GameHQ",
+      "translation_forms": [
+        "Підтримати GameHQ"
+      ]
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason",
+      "source": "Reason: %1",
+      "translation_forms": [
+        "Причина: %1"
+      ]
+    },
+    {
+      "id": "gamehq.notification.replay_failed.title",
+      "source": "Replay failed",
+      "translation_forms": [
+        "Помилка повтору"
+      ]
+    },
+    {
+      "id": "gamehq.notification.replay_saved.title",
+      "source": "Replay saved",
+      "translation_forms": [
+        "Повтор збережено"
+      ]
+    },
+    {
+      "id": "gamehq.notification.screenshot_saved.title",
+      "source": "Screenshot saved",
+      "translation_forms": [
+        "Знімок екрана збережено"
+      ]
+    },
+    {
+      "id": "gamehq.notification.settings_quarantined.body",
+      "source": "GameHQ started with default settings. Your previous settings file was kept so nothing was lost.",
+      "translation_forms": [
+        "GameHQ запустився з типовими налаштуваннями. Попередній файл налаштувань збережено, тож нічого не втрачено."
+      ]
+    },
+    {
+      "id": "gamehq.notification.settings_quarantined.title",
+      "source": "Settings could not be read",
+      "translation_forms": [
+        "Не вдалося прочитати налаштування"
+      ]
+    },
+    {
+      "id": "gamehq.notifications.window_title",
+      "source": "%1 Notifications",
+      "translation_forms": [
+        "%1 — Сповіщення"
+      ]
+    },
+    {
+      "id": "gamehq.overlay.capture_actions",
+      "source": "Capture actions",
+      "translation_forms": [
+        "Дії захоплення"
+      ]
+    },
+    {
+      "id": "gamehq.overlay.focus_warning",
+      "source": "The game still has focus and may react to controller input",
+      "translation_forms": [
+        "Гра все ще у фокусі й може реагувати на введення з контролера"
+      ]
+    },
+    {
+      "id": "gamehq.overlay.hint.browse.gamepad",
+      "source": "L1/R1 — captures | D-pad Up/Down — categories/games | Cross — open | Triangle — favorite | Square — menu | Circle — back to game",
+      "translation_forms": [
+        "L1/R1 — медіафайли | D-pad вгору/вниз — категорії/ігри | Хрестик — відкрити | Трикутник — в обране | Квадрат — меню | Коло — назад до гри"
+      ]
+    },
+    {
+      "id": "gamehq.overlay.hint.browse.keyboard",
+      "source": "Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game",
+      "translation_forms": [
+        "Вліво/Вправо — медіафайли | Вгору/Вниз — категорії/ігри | Enter — відкрити | F — в обране | M — меню | Esc — назад до гри"
+      ]
+    },
+    {
+      "id": "gamehq.overlay.hint.menu.gamepad",
+      "source": "D-pad Up/Down — choose | Cross — confirm | Circle — close menu",
+      "translation_forms": [
+        "D-pad вгору/вниз — вибір | Хрестик — підтвердити | Коло — закрити меню"
+      ]
+    },
+    {
+      "id": "gamehq.overlay.hint.menu.keyboard",
+      "source": "Up/Down — choose | Enter — confirm | Esc/Backspace — close menu",
+      "translation_forms": [
+        "Вгору/Вниз — вибір | Enter — підтвердити | Esc/Backspace — закрити меню"
+      ]
+    },
+    {
+      "id": "gamehq.overlay.hint.video.gamepad",
+      "source": "D-pad Left/Right — scrub | Cross — play/pause | Circle — back to captures",
+      "translation_forms": [
+        "D-pad вліво/вправо — перемотування | Хрестик — відтворити/пауза | Коло — назад до медіафайлів"
+      ]
+    },
+    {
+      "id": "gamehq.overlay.hint.video.keyboard",
+      "source": "Left/Right — scrub clip | Enter — play/pause | Esc/Backspace — back to captures",
+      "translation_forms": [
+        "Вліво/Вправо — перемотування кліпу | Enter — відтворити/пауза | Esc/Backspace — назад до медіафайлів"
+      ]
+    },
+    {
+      "id": "gamehq.overlay.window_title",
+      "source": "%1 Overlay",
+      "translation_forms": [
+        "%1 — Оверлей"
+      ]
+    },
+    {
+      "id": "gamehq.player.position_duration",
+      "source": "%1 / %2",
+      "translation_forms": [
+        "%1 / %2"
+      ]
+    },
+    {
+      "id": "gamehq.release_notes.title",
+      "source": "Release notes",
+      "translation_forms": [
+        "Нотатки до випуску"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.application.eyebrow",
+      "source": "Application",
+      "translation_forms": [
+        "Застосунок"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.community.eyebrow",
+      "source": "Community",
+      "translation_forms": [
+        "Спільнота"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.description",
+      "source": "Version, update status, project resources, and ways to help.",
+      "translation_forms": [
+        "Версія, стан оновлень, ресурси проєкту та способи допомогти."
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.github_source",
+      "source": "Source on GitHub",
+      "translation_forms": [
+        "Вихідний код на GitHub"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.license",
+      "source": "GNU GPL v3 License",
+      "translation_forms": [
+        "Ліцензія GNU GPL v3"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.license_summary",
+      "source": "Free and open source under the GNU GPL version 3.",
+      "translation_forms": [
+        "Вільне програмне забезпечення з відкритим кодом за ліцензією GNU GPL версії 3."
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.maintenance.eyebrow",
+      "source": "Maintenance",
+      "translation_forms": [
+        "Обслуговування"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.open_source.eyebrow",
+      "source": "Open source",
+      "translation_forms": [
+        "Відкритий код"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.profile.installed",
+      "source": "Installed profile",
+      "translation_forms": [
+        "Установлений профіль"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.profile.portable",
+      "source": "Portable profile",
+      "translation_forms": [
+        "Портативний профіль"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.project.description",
+      "source": "Open official GameHQ resources in your default browser.",
+      "translation_forms": [
+        "Відкриття офіційних ресурсів GameHQ у типовому браузері."
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.project.title",
+      "source": "Project",
+      "translation_forms": [
+        "Проєкт"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.ready",
+      "source": "GameHQ is ready",
+      "translation_forms": [
+        "GameHQ готовий"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.releases",
+      "source": "Releases",
+      "translation_forms": [
+        "Випуски"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.report_issue",
+      "source": "Report an issue",
+      "translation_forms": [
+        "Повідомити про проблему"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.security_privacy",
+      "source": "Security & privacy",
+      "translation_forms": [
+        "Безпека та приватність"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.security_privacy.description",
+      "source": "Verification, local data, network use, and private reporting",
+      "translation_forms": [
+        "Перевірка, локальні дані, використання мережі та приватні звіти"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.support.description",
+      "source": "Enjoying %1? A GitHub star helps more players discover the project.",
+      "translation_forms": [
+        "Подобається %1? Зірка на GitHub допомагає більшій кількості гравців знайти проєкт."
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.support.star_on_github",
+      "source": "Star %1 on GitHub",
+      "translation_forms": [
+        "Поставити зірку %1 на GitHub"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.support.title",
+      "source": "Support the project",
+      "translation_forms": [
+        "Підтримати проєкт"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.title",
+      "source": "About",
+      "translation_forms": [
+        "Про програму"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.updates.title",
+      "source": "Updates",
+      "translation_forms": [
+        "Оновлення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.about.website",
+      "source": "Website",
+      "translation_forms": [
+        "Вебсайт"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.description",
+      "source": "Review system health, open diagnostic resources, and recover settings.",
+      "translation_forms": [
+        "Переглядайте стан системи, відкривайте діагностичні ресурси та відновлюйте налаштування."
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.diagnostics.copy.description",
+      "source": "Version, profile mode, and managed paths.",
+      "translation_forms": [
+        "Версія, режим профілю та керовані шляхи."
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.diagnostics.copy.title",
+      "source": "Copy diagnostic summary",
+      "translation_forms": [
+        "Копіювати діагностичне зведення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.diagnostics.description",
+      "source": "Collect support information or refresh hardware status without changing settings.",
+      "translation_forms": [
+        "Зберіть інформацію для підтримки або оновіть стан обладнання без зміни налаштувань."
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.diagnostics.eyebrow",
+      "source": "Diagnostics",
+      "translation_forms": [
+        "Діагностика"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.diagnostics.import.description",
+      "source": "Validate, stage, and import a fresh portable profile.",
+      "translation_forms": [
+        "Перевірка, підготовка та імпорт нового портативного профілю."
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.diagnostics.import.title",
+      "source": "Import portable profile",
+      "translation_forms": [
+        "Імпортувати портативний профіль"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.diagnostics.refresh.description",
+      "source": "Recheck HDR and capture capabilities.",
+      "translation_forms": [
+        "Повторно перевірити HDR і можливості захоплення."
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.diagnostics.refresh.title",
+      "source": "Refresh display status",
+      "translation_forms": [
+        "Оновити стан дисплея"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.diagnostics.title",
+      "source": "Tools",
+      "translation_forms": [
+        "Інструменти"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.hdr.active",
+      "source": "HDR active",
+      "translation_forms": [
+        "HDR активний"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.hdr.description",
+      "source": "Technical adapter and fallback details are available when troubleshooting capture output.",
+      "translation_forms": [
+        "Технічні відомості про адаптер і резервні режими доступні під час усунення проблем із захопленням."
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.hdr.disclosure",
+      "source": "Technical HDR details",
+      "translation_forms": [
+        "Технічні відомості про HDR"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.hdr.eyebrow",
+      "source": "Display capture",
+      "translation_forms": [
+        "Захоплення дисплея"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.hdr.inactive",
+      "source": "HDR inactive",
+      "translation_forms": [
+        "HDR неактивний"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.hdr.title",
+      "source": "HDR details",
+      "translation_forms": [
+        "Відомості про HDR"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.overview.description",
+      "source": "A concise view of the environment GameHQ is currently using.",
+      "translation_forms": [
+        "Стислий огляд середовища, яке зараз використовує GameHQ."
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.overview.eyebrow",
+      "source": "Overview",
+      "translation_forms": [
+        "Огляд"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.overview.storage",
+      "source": "Storage",
+      "translation_forms": [
+        "Сховище"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.overview.system",
+      "source": "System",
+      "translation_forms": [
+        "Система"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.overview.title",
+      "source": "System status",
+      "translation_forms": [
+        "Стан системи"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.overview.version",
+      "source": "Version",
+      "translation_forms": [
+        "Версія"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.portable_folder.title",
+      "source": "Select the GameHQ portable folder",
+      "translation_forms": [
+        "Виберіть портативну папку GameHQ"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.profile.installed",
+      "source": "Installed profile",
+      "translation_forms": [
+        "Установлений профіль"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.profile.portable",
+      "source": "Portable profile",
+      "translation_forms": [
+        "Портативний профіль"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.all.action",
+      "source": "Restore all",
+      "translation_forms": [
+        "Відновити все"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.all.description",
+      "source": "Return every configuration category to its default values.",
+      "translation_forms": [
+        "Повернути всі категорії конфігурації до типових значень."
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.all.label",
+      "source": "Restore all settings",
+      "translation_forms": [
+        "Відновити всі налаштування"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.category.description",
+      "source": "Return only the selected category to its defaults.",
+      "translation_forms": [
+        "Повернути до типових значень лише вибрану категорію."
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.category.label",
+      "source": "Restore one category",
+      "translation_forms": [
+        "Відновити одну категорію"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.description",
+      "source": "Restoring settings never deletes captures, favorites, watched media, or database records.",
+      "translation_forms": [
+        "Відновлення налаштувань ніколи не видаляє медіафайли, обране, відстежувані папки чи записи бази даних."
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.eyebrow",
+      "source": "Recovery",
+      "translation_forms": [
+        "Відновлення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.feedback",
+      "source": "Feedback",
+      "translation_forms": [
+        "Зворотний зв’язок"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.input.action",
+      "source": "Restore input",
+      "translation_forms": [
+        "Відновити введення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.input.description",
+      "source": "Return controller, keyboard, and mouse overrides to built-in defaults.",
+      "translation_forms": [
+        "Повернути перевизначення контролера, клавіатури та миші до вбудованих типових значень."
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.input.label",
+      "source": "Restore input bindings",
+      "translation_forms": [
+        "Відновити прив'язки введення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.options",
+      "source": "Restore options",
+      "translation_forms": [
+        "Параметри відновлення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.recovery.title",
+      "source": "Restore",
+      "translation_forms": [
+        "Відновити"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.resources.data",
+      "source": "Data folder",
+      "translation_forms": [
+        "Папка даних"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.resources.description",
+      "source": "Open GameHQ-owned folders used for logs, configuration, database, and support data.",
+      "translation_forms": [
+        "Відкриття папок GameHQ, що використовуються для журналів, конфігурації, бази даних і даних підтримки."
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.resources.eyebrow",
+      "source": "Resources",
+      "translation_forms": [
+        "Ресурси"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.resources.logs",
+      "source": "Logs folder",
+      "translation_forms": [
+        "Папка журналів"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.resources.title",
+      "source": "Locations",
+      "translation_forms": [
+        "Розташування"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.status.healthy",
+      "source": "Healthy",
+      "translation_forms": [
+        "Справно"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.status.ready",
+      "source": "Ready",
+      "translation_forms": [
+        "Готово"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.storage.available",
+      "source": "Managed folders available",
+      "translation_forms": [
+        "Керовані папки доступні"
+      ]
+    },
+    {
+      "id": "gamehq.settings.advanced.version.current",
+      "source": "Current installation",
+      "translation_forms": [
+        "Поточна інсталяція"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.description",
+      "source": "Choose when, how, and where GameHQ saves screenshots.",
+      "translation_forms": [
+        "Виберіть, коли, як і куди GameHQ зберігає знімки екрана."
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.feedback.description",
+      "source": "Combined with the master switches on the Notifications & Sound page.",
+      "translation_forms": [
+        "Працює разом із головними перемикачами на сторінці «Сповіщення та звук»."
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.feedback.eyebrow",
+      "source": "Feedback",
+      "translation_forms": [
+        "Зворотний зв’язок"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.feedback.notification",
+      "source": "Screenshot notification",
+      "translation_forms": [
+        "Сповіщення про знімок екрана"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.feedback.sound",
+      "source": "Screenshot sound",
+      "translation_forms": [
+        "Звук знімка екрана"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.feedback.title",
+      "source": "After a screenshot",
+      "translation_forms": [
+        "Після знімка екрана"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.image.description",
+      "source": "PNG is lossless; JPEG trades some quality for smaller files.",
+      "translation_forms": [
+        "PNG — без втрат; JPEG жертвує частиною якості заради менших файлів."
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.image.eyebrow",
+      "source": "Image",
+      "translation_forms": [
+        "Зображення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.image.format",
+      "source": "Format",
+      "translation_forms": [
+        "Формат"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.image.jpeg",
+      "source": "JPEG (smaller files)",
+      "translation_forms": [
+        "JPEG (менші файли)"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.image.jpeg_quality",
+      "source": "JPEG quality",
+      "translation_forms": [
+        "Якість JPEG"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.image.png",
+      "source": "PNG (lossless)",
+      "translation_forms": [
+        "PNG (без втрат)"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.image.title",
+      "source": "Format and quality",
+      "translation_forms": [
+        "Формат і якість"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.mode.always",
+      "source": "Always",
+      "translation_forms": [
+        "Завжди"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.mode.description",
+      "source": "Control when screenshots and replay recording are allowed.",
+      "translation_forms": [
+        "Керуйте тим, коли дозволені знімки екрана та запис повторів."
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.mode.eyebrow",
+      "source": "Capture mode",
+      "translation_forms": [
+        "Режим захоплення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.mode.label",
+      "source": "Capture mode",
+      "translation_forms": [
+        "Режим захоплення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.mode.only_in_games",
+      "source": "Only in games",
+      "translation_forms": [
+        "Лише в іграх"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.mode.row_description",
+      "source": "Only in games is the safest default for global shortcuts.",
+      "translation_forms": [
+        "«Лише в іграх» — найбезпечніший типовий варіант для глобальних комбінацій клавіш."
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.mode.title",
+      "source": "When to capture",
+      "translation_forms": [
+        "Коли захоплювати"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.mode.whitelist",
+      "source": "Whitelisted games",
+      "translation_forms": [
+        "Ігри з білого списку"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.storage.choose_clips",
+      "source": "Choose the clips folder",
+      "translation_forms": [
+        "Виберіть папку для кліпів"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.storage.choose_screenshots",
+      "source": "Choose the screenshots folder",
+      "translation_forms": [
+        "Виберіть папку для знімків екрана"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.storage.description",
+      "source": "Changing a location never moves or deletes existing media.",
+      "translation_forms": [
+        "Зміна розташування ніколи не переміщує й не видаляє наявні файли."
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.storage.eyebrow",
+      "source": "Storage",
+      "translation_forms": [
+        "Сховище"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.storage.replay_clips",
+      "source": "Replay clips",
+      "translation_forms": [
+        "Кліпи повторів"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.storage.screenshots",
+      "source": "Screenshots",
+      "translation_forms": [
+        "Знімки екрана"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.storage.title",
+      "source": "Where captures are saved",
+      "translation_forms": [
+        "Куди зберігаються знімки та кліпи"
+      ]
+    },
+    {
+      "id": "gamehq.settings.capture.title",
+      "source": "Capture",
+      "translation_forms": [
+        "Захоплення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.category.about",
+      "source": "About",
+      "translation_forms": [
+        "Про програму"
+      ]
+    },
+    {
+      "id": "gamehq.settings.category.advanced",
+      "source": "Advanced",
+      "translation_forms": [
+        "Додатково"
+      ]
+    },
+    {
+      "id": "gamehq.settings.category.capture",
+      "source": "Capture",
+      "translation_forms": [
+        "Захоплення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.category.general",
+      "source": "General",
+      "translation_forms": [
+        "Загальні"
+      ]
+    },
+    {
+      "id": "gamehq.settings.category.input",
+      "source": "Input",
+      "translation_forms": [
+        "Введення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.category.library",
+      "source": "Library",
+      "translation_forms": [
+        "Бібліотека"
+      ]
+    },
+    {
+      "id": "gamehq.settings.category.notifications_sound",
+      "source": "Notifications & sound",
+      "translation_forms": [
+        "Сповіщення та звук"
+      ]
+    },
+    {
+      "id": "gamehq.settings.category.replay",
+      "source": "Replay",
+      "translation_forms": [
+        "Повтори"
+      ]
+    },
+    {
+      "id": "gamehq.settings.disclosure.default",
+      "source": "View technical details",
+      "translation_forms": [
+        "Переглянути технічні відомості"
+      ]
+    },
+    {
+      "id": "gamehq.settings.disclosure.hide",
+      "source": "Hide",
+      "translation_forms": [
+        "Приховати"
+      ]
+    },
+    {
+      "id": "gamehq.settings.disclosure.show",
+      "source": "Show",
+      "translation_forms": [
+        "Показати"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.audio.description",
+      "source": "Set the master sound switch, volume, and event-specific feedback.",
+      "translation_forms": [
+        "Налаштуйте головний перемикач звуку, гучність і звуки для окремих подій."
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.audio.enabled.description",
+      "source": "Play navigation and action feedback sounds.",
+      "translation_forms": [
+        "Відтворювати звуки навігації та дій."
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.audio.enabled.label",
+      "source": "UI sounds",
+      "translation_forms": [
+        "Звуки інтерфейсу"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.audio.eyebrow",
+      "source": "Audio feedback",
+      "translation_forms": [
+        "Звуковий зворотний зв’язок"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.audio.replay",
+      "source": "Replay saved sound",
+      "translation_forms": [
+        "Звук збереження повтору"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.audio.screenshot",
+      "source": "Screenshot sound",
+      "translation_forms": [
+        "Звук знімка екрана"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.audio.title",
+      "source": "Sound",
+      "translation_forms": [
+        "Звук"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.audio.volume",
+      "source": "Volume",
+      "translation_forms": [
+        "Гучність"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.description",
+      "source": "Choose how GameHQ confirms captures, clips, and navigation.",
+      "translation_forms": [
+        "Виберіть, як GameHQ підтверджує знімки, кліпи та навігацію."
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.preview.description",
+      "source": "Preview notifications and sounds without creating a capture.",
+      "translation_forms": [
+        "Перевірте сповіщення та звуки, не створюючи знімка."
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.preview.eyebrow",
+      "source": "Preview",
+      "translation_forms": [
+        "Перевірка"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.preview.label",
+      "source": "Preview feedback",
+      "translation_forms": [
+        "Перевірка зворотного зв’язку"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.preview.notification",
+      "source": "Show test notification",
+      "translation_forms": [
+        "Показати тестове сповіщення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.preview.notification_body",
+      "source": "Notifications are working.",
+      "translation_forms": [
+        "Сповіщення працюють."
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.preview.notification_title",
+      "source": "%1 notification",
+      "translation_forms": [
+        "Сповіщення %1"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.preview.sound",
+      "source": "Play test sound",
+      "translation_forms": [
+        "Відтворити тестовий звук"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.preview.title",
+      "source": "Test the current feedback settings",
+      "translation_forms": [
+        "Перевірте поточні налаштування зворотного зв’язку"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.title",
+      "source": "Notifications & Sound",
+      "translation_forms": [
+        "Сповіщення та звук"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.visual.description",
+      "source": "Control the result cards shown after capture and replay actions.",
+      "translation_forms": [
+        "Керуйте картками результатів після захоплення та збереження повторів."
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.visual.enabled.description",
+      "source": "Master switch for capture and replay result cards.",
+      "translation_forms": [
+        "Головний перемикач карток результатів для знімків і повторів."
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.visual.enabled.label",
+      "source": "Show notifications",
+      "translation_forms": [
+        "Показувати сповіщення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.visual.eyebrow",
+      "source": "Visual feedback",
+      "translation_forms": [
+        "Візуальний зворотний зв’язок"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.visual.replay",
+      "source": "Replay saved",
+      "translation_forms": [
+        "Повтор збережено"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.visual.screenshot",
+      "source": "Screenshot captured",
+      "translation_forms": [
+        "Знімок екрана зроблено"
+      ]
+    },
+    {
+      "id": "gamehq.settings.feedback.visual.title",
+      "source": "Notifications",
+      "translation_forms": [
+        "Сповіщення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.description",
+      "source": "Appearance, startup, and window behavior.",
+      "translation_forms": [
+        "Вигляд, запуск і поведінка вікна."
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.desktop.close_to_tray.description",
+      "source": "Keep capture and replay services running; when disabled, Close exits %1.",
+      "translation_forms": [
+        "Служби захоплення й повторів продовжують працювати; якщо вимкнено, кнопка «Закрити» завершує роботу %1."
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.desktop.close_to_tray.label",
+      "source": "Close to tray",
+      "translation_forms": [
+        "Закривати до області сповіщень"
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.desktop.description",
+      "source": "Choose what happens when the main window is minimized or closed.",
+      "translation_forms": [
+        "Виберіть, що відбувається, коли головне вікно згортається або закривається."
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.desktop.eyebrow",
+      "source": "Desktop",
+      "translation_forms": [
+        "Робочий стіл"
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.desktop.minimize_to_tray.description",
+      "source": "Minimizing the window sends it straight to the tray instead of the taskbar.",
+      "translation_forms": [
+        "Згорнуте вікно потрапляє одразу до області сповіщень, а не на панель завдань."
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.desktop.minimize_to_tray.label",
+      "source": "Minimize to tray",
+      "translation_forms": [
+        "Згортати до області сповіщень"
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.desktop.title",
+      "source": "Window and tray behavior",
+      "translation_forms": [
+        "Поведінка вікна й області сповіщень"
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.overlay_dimming.description",
+      "source": "How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.",
+      "translation_forms": [
+        "Наскільки сильно ігровий оверлей затемнює гру позаду. 100% — власне затемнення теми; нижчі значення залишають гру помітнішою."
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.overlay_dimming.label",
+      "source": "Overlay dimming",
+      "translation_forms": [
+        "Затемнення оверлея"
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.personalization.description",
+      "source": "Choose the visual style and in-game overlay strength.",
+      "translation_forms": [
+        "Виберіть візуальний стиль та інтенсивність ігрового оверлея."
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.personalization.eyebrow",
+      "source": "Personalization",
+      "translation_forms": [
+        "Персоналізація"
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.personalization.title",
+      "source": "Look and feel",
+      "translation_forms": [
+        "Зовнішній вигляд"
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.startup.description",
+      "source": "Choose whether GameHQ starts when you sign in to Windows and opens quietly.",
+      "translation_forms": [
+        "Виберіть, чи запускатиметься GameHQ під час входу у Windows і чи відкриватиметься згорнутим в області сповіщень."
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.startup.eyebrow",
+      "source": "Startup",
+      "translation_forms": [
+        "Запуск"
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.startup.minimized.description",
+      "source": "Launch directly in the system tray without opening the main window.",
+      "translation_forms": [
+        "Запускатися одразу в області сповіщень, не відкриваючи головне вікно."
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.startup.minimized.label",
+      "source": "Launch minimized",
+      "translation_forms": [
+        "Запускати згорнутим"
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.startup.title",
+      "source": "How %1 starts",
+      "translation_forms": [
+        "Як запускається %1"
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.startup.windows.description",
+      "source": "Register %1 for the current Windows user; no administrator access is required.",
+      "translation_forms": [
+        "Реєструє %1 для поточного користувача Windows; права адміністратора не потрібні."
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.startup.windows.label",
+      "source": "Start with Windows",
+      "translation_forms": [
+        "Запускати разом із Windows"
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.theme.fallback",
+      "source": "Choose how %1 looks.",
+      "translation_forms": [
+        "Виберіть вигляд %1."
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.theme.label",
+      "source": "Theme",
+      "translation_forms": [
+        "Тема"
+      ]
+    },
+    {
+      "id": "gamehq.settings.general.title",
+      "source": "General",
+      "translation_forms": [
+        "Загальні"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.bindings.action_description",
+      "source": "%1 · %2",
+      "translation_forms": [
+        "%1 · %2"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.bindings.assignment_heading",
+      "source": "Input assignments",
+      "translation_forms": [
+        "Призначення введення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.bindings.assignment_hint",
+      "source": "Both slots can be active. Select one to edit.",
+      "translation_forms": [
+        "Обидві комірки можуть бути активними. Виберіть одну для редагування."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.bindings.description",
+      "source": "Primary and secondary slots are independent. Contexts can reuse the same input safely.",
+      "translation_forms": [
+        "Основна й додаткова комірки незалежні. Різні контексти можуть безпечно використовувати те саме введення."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.bindings.eyebrow",
+      "source": "Bindings",
+      "translation_forms": [
+        "Прив’язки"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.bindings.fixed",
+      "source": "Fixed",
+      "translation_forms": [
+        "Фіксовано"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.bindings.primary",
+      "source": "Primary",
+      "translation_forms": [
+        "Основний"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.bindings.secondary",
+      "source": "Secondary",
+      "translation_forms": [
+        "Додатковий"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.bindings.title",
+      "source": "Assignments",
+      "translation_forms": [
+        "Призначення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.capture.waiting",
+      "source": "Waiting for input",
+      "translation_forms": [
+        "Очікування введення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.description",
+      "source": "Configure controller, keyboard, and mouse shortcuts without changing navigation behavior.",
+      "translation_forms": [
+        "Налаштуйте комбінації для контролера, клавіатури й миші, не змінюючи поведінку навігації."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.devices.controller",
+      "source": "Controller",
+      "translation_forms": [
+        "Контролер"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.devices.description",
+      "source": "Choose a device type, then select either assignment slot to capture a new input.",
+      "translation_forms": [
+        "Виберіть тип пристрою, а потім одну з комірок призначення, щоб виявити нове введення."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.devices.eyebrow",
+      "source": "Devices",
+      "translation_forms": [
+        "Пристрої"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.devices.keyboard",
+      "source": "Keyboard",
+      "translation_forms": [
+        "Клавіатура"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.devices.keyboard_description",
+      "source": "Focused shortcuts and global key combinations",
+      "translation_forms": [
+        "Комбінації у вікні програми та глобальні комбінації клавіш"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.devices.mouse",
+      "source": "Mouse",
+      "translation_forms": [
+        "Миша"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.devices.mouse_description",
+      "source": "Middle, Back, and Forward mouse buttons",
+      "translation_forms": [
+        "Середня кнопка миші та кнопки «Назад» і «Вперед»"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.devices.title",
+      "source": "Input devices",
+      "translation_forms": [
+        "Пристрої введення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.devices.type",
+      "source": "Device type",
+      "translation_forms": [
+        "Тип пристрою"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.gestures.combination_window",
+      "source": "Combination window",
+      "translation_forms": [
+        "Вікно комбінації"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.gestures.combination_window_description",
+      "source": "How long the first button of a combination waits for the second one.",
+      "translation_forms": [
+        "Скільки перша кнопка комбінації чекає на другу."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.gestures.description",
+      "source": "How long GameHQ waits before it decides what a button press meant.",
+      "translation_forms": [
+        "Скільки GameHQ чекає, перш ніж визначити, що означало натискання кнопки."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.gestures.eyebrow",
+      "source": "Gestures",
+      "translation_forms": [
+        "Жести"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.gestures.hold_time",
+      "source": "Hold time",
+      "translation_forms": [
+        "Час утримування"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.gestures.hold_time_description",
+      "source": "How long a button must be held for a hold action. A completed hold consumes the tap.",
+      "translation_forms": [
+        "Скільки потрібно утримувати кнопку для дії утримування. Завершене утримування скасовує коротке натискання."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.gestures.multi_tap",
+      "source": "Multi-tap interval",
+      "translation_forms": [
+        "Інтервал кількох натискань"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.gestures.multi_tap_description",
+      "source": "How long a single tap waits when the same button also has a double or triple tap.",
+      "translation_forms": [
+        "Скільки коротке натискання очікує, якщо тій самій кнопці також призначено подвійне чи потрійне натискання."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.gestures.title",
+      "source": "Gesture timing",
+      "translation_forms": [
+        "Таймінг жестів"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.hidden.eyebrow",
+      "source": "Attention",
+      "translation_forms": [
+        "Увага"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.hidden.fix",
+      "source": "Fix automatically",
+      "translation_forms": [
+        "Виправити автоматично"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.hidden.title",
+      "source": "Controller hidden",
+      "translation_forms": [
+        "Контролер приховано"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.auto",
+      "source": "Auto",
+      "translation_forms": [
+        "Авто"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.device_layout_changed",
+      "source": "%1 button layout changed",
+      "translation_forms": [
+        "Розкладку кнопок %1 змінено"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.eyebrow",
+      "source": "Modern controllers",
+      "translation_forms": [
+        "Сучасні контролери"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.guide.description",
+      "source": "Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.",
+      "translation_forms": [
+        "Дізнайтеся про кнопки View і справжню кнопку Share, результати перевірки, повторні підключення, жести та комбінації."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.guide.label",
+      "source": "Controller compatibility guide",
+      "translation_forms": [
+        "Посібник із сумісності контролерів"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.layout_warning",
+      "source": "A controller layout changed. Review its extra-button assignments before using them.",
+      "translation_forms": [
+        "Розкладку контролера змінено. Перегляньте призначення його додаткових кнопок перед використанням."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.legacy_fallback",
+      "source": "Legacy fallback",
+      "translation_forms": [
+        "Перехід на застарілий механізм"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.off",
+      "source": "Off",
+      "translation_forms": [
+        "Вимкнено"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.report.copy",
+      "source": "Copy report",
+      "translation_forms": [
+        "Копіювати звіт"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.report.description",
+      "source": "Copies anonymous identity, providers, Share/Guide availability, extra buttons, and layout state—never serials or full device paths.",
+      "translation_forms": [
+        "Копіює анонімний ідентифікатор, провайдери, доступність Share/Guide, додаткові кнопки та стан розкладки — і ніколи не копіює серійних номерів чи повних шляхів пристроїв."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.report.label",
+      "source": "Compatibility report",
+      "translation_forms": [
+        "Звіт про сумісність"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.review_buttons",
+      "source": "Review buttons",
+      "translation_forms": [
+        "Переглянути кнопки"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.runtime",
+      "source": "GameInput runtime",
+      "translation_forms": [
+        "Середовище виконання GameInput"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.support.description",
+      "source": "Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.",
+      "translation_forms": [
+        "«Авто» використовує вбудоване середовище виконання GameInput із безпечним переходом на застарілий механізм; «Вимкнено» вимикає GameInput."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.support.label",
+      "source": "Modern controller support",
+      "translation_forms": [
+        "Підтримка сучасних контролерів"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.title",
+      "source": "GameInput support",
+      "translation_forms": [
+        "Підтримка GameInput"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.modern.use_current_layout",
+      "source": "Use current layout",
+      "translation_forms": [
+        "Використати поточну розкладку"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.profile.all_controllers",
+      "source": "All controllers",
+      "translation_forms": [
+        "Усі контролери"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.profile.label",
+      "source": "Controller profile",
+      "translation_forms": [
+        "Профіль контролера"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.profile.shared_description",
+      "source": "Position-based assignments work across PlayStation, Xbox, Nintendo, and generic pads.",
+      "translation_forms": [
+        "Позиційні призначення працюють на геймпадах PlayStation, Xbox, Nintendo та звичайних контролерах."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.profile.specific_description",
+      "source": "Changes apply only to %1.",
+      "translation_forms": [
+        "Зміни стосуються лише %1."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.profile.this_controller",
+      "source": "This controller",
+      "translation_forms": [
+        "Цей контролер"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.compatibility",
+      "source": "Compatibility",
+      "translation_forms": [
+        "Сумісність"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.compatibility_title",
+      "source": "Assignment conversion required",
+      "translation_forms": [
+        "Потрібне перетворення призначення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.context",
+      "source": "Context",
+      "translation_forms": [
+        "Контекст"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.context_title",
+      "source": "This button changes meaning",
+      "translation_forms": [
+        "Ця кнопка змінює значення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.duplicate",
+      "source": "Duplicate",
+      "translation_forms": [
+        "Дублікат"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.duplicate_title",
+      "source": "Already assigned",
+      "translation_forms": [
+        "Уже призначено"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.in_use",
+      "source": "In use",
+      "translation_forms": [
+        "Використовується"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.in_use_title",
+      "source": "Shortcut already taken",
+      "translation_forms": [
+        "Сполучення вже зайняте"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.not_available",
+      "source": "Not available",
+      "translation_forms": [
+        "Недоступно"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.not_reported_title",
+      "source": "Button not reported",
+      "translation_forms": [
+        "Кнопка не передається"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.not_saved",
+      "source": "Not saved",
+      "translation_forms": [
+        "Не збережено"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.not_saved_title",
+      "source": "Could not save this binding",
+      "translation_forms": [
+        "Не вдалося зберегти цю прив’язку"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.shared_button",
+      "source": "Shared button",
+      "translation_forms": [
+        "Спільна кнопка"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.relation.shared_button_title",
+      "source": "One button, several gestures",
+      "translation_forms": [
+        "Одна кнопка — кілька жестів"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.restore_all.message",
+      "source": "All controller, keyboard, and mouse overrides return to their built-in defaults.",
+      "translation_forms": [
+        "Усі перевизначення для контролера, клавіатури та миші повернуться до вбудованих типових значень."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.restore_all.title",
+      "source": "Restore all input bindings?",
+      "translation_forms": [
+        "Відновити всі прив’язки введення?"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.restore_displayed.message",
+      "source": "Only the currently displayed device/profile overrides will be removed.",
+      "translation_forms": [
+        "Буде видалено лише перевизначення для показаного пристрою чи профілю."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.restore_displayed.title",
+      "source": "Restore displayed bindings?",
+      "translation_forms": [
+        "Відновити показані прив’язки?"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.test.adopt_bindings",
+      "source": "Adopt per-slot bindings",
+      "translation_forms": [
+        "Перейняти прив’язки комірки"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.test.adopt_bindings_description",
+      "source": "Copy bindings saved for any controller in this slot to this specific controller. The originals are kept.",
+      "translation_forms": [
+        "Скопіювати прив’язки, збережені для будь-якого контролера в цій комірці, на цей конкретний контролер. Оригінали зберігаються."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.test.copy_to_controller",
+      "source": "Copy to this controller",
+      "translation_forms": [
+        "Копіювати на цей контролер"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.test.eyebrow",
+      "source": "Profile",
+      "translation_forms": [
+        "Профіль"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.test.identify_button",
+      "source": "Identify a controller button",
+      "translation_forms": [
+        "Визначити кнопку контролера"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.test.last_input",
+      "source": "Last input",
+      "translation_forms": [
+        "Останнє введення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.test.probe_description",
+      "source": "Records the next 3 seconds of raw button changes — including buttons GameHQ does not recognize — into the diagnostics you can copy from Advanced.",
+      "translation_forms": [
+        "Записує наступні 3 секунди необроблених змін кнопок — зокрема кнопок, яких GameHQ не розпізнає, — у діагностику, яку можна скопіювати в розділі «Додатково»."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.test.restore_displayed",
+      "source": "Restore displayed bindings",
+      "translation_forms": [
+        "Відновити показані прив’язки"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.test.restore_shared_description",
+      "source": "Remove overrides for the selected device type and shared profile.",
+      "translation_forms": [
+        "Видалити перевизначення для вибраного типу пристрою та спільного профілю."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.test.restore_specific_description",
+      "source": "Remove overrides for this controller only.",
+      "translation_forms": [
+        "Видалити перевизначення лише для цього контролера."
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.test.start_probe",
+      "source": "Start 3-second probe",
+      "translation_forms": [
+        "Почати 3-секундну перевірку"
+      ]
+    },
+    {
+      "id": "gamehq.settings.input.test.title",
+      "source": "Test and restore",
+      "translation_forms": [
+        "Тестування та відновлення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.language.description",
+      "source": "Choose the language GameHQ uses.",
+      "translation_forms": [
+        "Виберіть мову, якою користується GameHQ."
+      ]
+    },
+    {
+      "id": "gamehq.settings.language.eyebrow",
+      "source": "Language",
+      "translation_forms": [
+        "Мова"
+      ]
+    },
+    {
+      "id": "gamehq.settings.language.label",
+      "source": "Display language",
+      "translation_forms": [
+        "Мова відображення"
+      ]
+    },
+    {
+      "id": "gamehq.settings.language.row_description",
+      "source": "Changes apply immediately throughout GameHQ.",
+      "translation_forms": [
+        "Зміни застосовуються негайно в усьому GameHQ."
+      ]
+    },
+    {
+      "id": "gamehq.settings.language.system",
+      "source": "System language",
+      "translation_forms": [
+        "Мова системи"
+      ]
+    },
+    {
+      "id": "gamehq.settings.language.title",
+      "source": "Interface language",
+      "translation_forms": [
+        "Мова інтерфейсу"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.description",
+      "source": "Review every folder GameHQ manages or scans for media.",
+      "translation_forms": [
+        "Перегляньте всі папки, якими GameHQ керує або які сканує на наявність медіа."
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.imports.add",
+      "source": "Add watched folder",
+      "translation_forms": [
+        "Додати відстежувану папку"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.imports.count",
+      "source": "%n watched folder(s)",
+      "translation_forms": [
+        "%n відстежувана папка",
+        "%n відстежувані папки",
+        "%n відстежуваних папок"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.imports.description",
+      "source": "External folders are scanned read-only and never become GameHQ output locations.",
+      "translation_forms": [
+        "Зовнішні папки скануються лише для читання й ніколи не стають місцями збереження GameHQ."
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.imports.empty.description",
+      "source": "Add folders created by Steam, OBS, Xbox Game Bar, or another capture tool.",
+      "translation_forms": [
+        "Додайте папки, створені Steam, OBS, Xbox Game Bar або іншим інструментом запису."
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.imports.empty.title",
+      "source": "No watched folders yet",
+      "translation_forms": [
+        "Відстежуваних папок ще немає"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.imports.eyebrow",
+      "source": "Imports",
+      "translation_forms": [
+        "Імпорт"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.imports.folder",
+      "source": "Watched folder",
+      "translation_forms": [
+        "Відстежувана папка"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.imports.title",
+      "source": "Watched folders",
+      "translation_forms": [
+        "Відстежувані папки"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.rescan",
+      "source": "Rescan now",
+      "translation_forms": [
+        "Пересканувати зараз"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.scan.added",
+      "source": "%n new capture(s) added",
+      "translation_forms": [
+        "Додано %n новий медіафайл",
+        "Додано %n нові медіафайли",
+        "Додано %n нових медіафайлів"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.scan.description",
+      "source": "Rescan checks current, previous, and watched locations for media missing from the library.",
+      "translation_forms": [
+        "Пересканування перевіряє поточні, попередні та відстежувані розташування на медіа, відсутні в бібліотеці."
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.scan.eyebrow",
+      "source": "Last scan",
+      "translation_forms": [
+        "Останнє сканування"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.scan.not_scanned",
+      "source": "Not scanned this session",
+      "translation_forms": [
+        "У цьому сеансі не скановано"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.scan.up_to_date",
+      "source": "Library is up to date",
+      "translation_forms": [
+        "Бібліотека актуальна"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.storage.active_count",
+      "source": "2 active",
+      "translation_forms": [
+        "2 активні"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.storage.description",
+      "source": "Current output folders and earlier roots remain scanned so past media stays visible.",
+      "translation_forms": [
+        "Поточні папки збереження та попередні кореневі папки й далі скануються, щоб старі медіа залишалися видимими."
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.storage.eyebrow",
+      "source": "Storage",
+      "translation_forms": [
+        "Сховище"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.storage.previous_location",
+      "source": "Previous location",
+      "translation_forms": [
+        "Попереднє розташування"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.storage.replay_clips",
+      "source": "Replay clips",
+      "translation_forms": [
+        "Кліпи повторів"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.storage.screenshots",
+      "source": "Screenshots",
+      "translation_forms": [
+        "Знімки екрана"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.storage.title",
+      "source": "Managed locations",
+      "translation_forms": [
+        "Керовані розташування"
+      ]
+    },
+    {
+      "id": "gamehq.settings.library.title",
+      "source": "Library",
+      "translation_forms": [
+        "Бібліотека"
+      ]
+    },
+    {
+      "id": "gamehq.settings.portable_import.confirm",
+      "source": "Import and restart",
+      "translation_forms": [
+        "Імпортувати й перезапустити"
+      ]
+    },
+    {
+      "id": "gamehq.settings.portable_import.failed",
+      "source": "Portable import failed",
+      "translation_forms": [
+        "Не вдалося імпортувати портативний профіль"
+      ]
+    },
+    {
+      "id": "gamehq.settings.portable_import.message",
+      "source": "Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.",
+      "translation_forms": [
+        "Імпорт можливий лише в чистий встановлений профіль. Портативні записи залишаються на місці, джерело не змінюється, а GameHQ перезапускається, щоб завершити імпорт."
+      ]
+    },
+    {
+      "id": "gamehq.settings.portable_import.title",
+      "source": "Import this portable profile?",
+      "translation_forms": [
+        "Імпортувати цей портативний профіль?"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.buffer.description",
+      "source": "Recording changes restart an active buffer so new values apply immediately.",
+      "translation_forms": [
+        "Зміни параметрів запису перезапускають активний буфер, тож нові значення застосовуються негайно."
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.buffer.enabled.description",
+      "source": "Record a rolling buffer whenever an eligible game is active.",
+      "translation_forms": [
+        "Записувати циклічний буфер, коли активна відповідна гра."
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.buffer.enabled.label",
+      "source": "Automatic buffer",
+      "translation_forms": [
+        "Автоматичний буфер"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.buffer.eyebrow",
+      "source": "Buffer",
+      "translation_forms": [
+        "Буфер"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.buffer.length",
+      "source": "Replay length",
+      "translation_forms": [
+        "Тривалість повтору"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.buffer.title",
+      "source": "Automatic recording",
+      "translation_forms": [
+        "Автоматичний запис"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.description",
+      "source": "Manage the rolling buffer used for instant replay clips.",
+      "translation_forms": [
+        "Керуйте циклічним буфером для кліпів миттєвих повторів."
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.bitrate",
+      "source": "Video bitrate",
+      "translation_forms": [
+        "Бітрейт відео"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.bitrate_description",
+      "source": "Higher values improve motion detail but use more storage and encoder bandwidth.",
+      "translation_forms": [
+        "Вищі значення покращують деталізацію руху, але використовують більше місця та ресурсів кодера."
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.description",
+      "source": "Balance motion detail, resolution, storage use, and encoder load.",
+      "translation_forms": [
+        "Балансуйте деталізацію руху, роздільну здатність, використання сховища та навантаження на кодер."
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.eyebrow",
+      "source": "Encoding",
+      "translation_forms": [
+        "Кодування"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.frame_rate",
+      "source": "Frame rate",
+      "translation_forms": [
+        "Частота кадрів"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.resolution",
+      "source": "Resolution",
+      "translation_forms": [
+        "Роздільна здатність"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.system_audio.description",
+      "source": "Include desktop audio in newly recorded replay segments.",
+      "translation_forms": [
+        "Додавати системний звук до нових записаних сегментів повтору."
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.system_audio.label",
+      "source": "System audio",
+      "translation_forms": [
+        "Звук системи"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.title",
+      "source": "Recording quality",
+      "translation_forms": [
+        "Якість запису"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.feedback.description",
+      "source": "Saved replays go to %1. Failures always notify you.",
+      "translation_forms": [
+        "Збережені повтори потрапляють до %1. Про помилки завжди надходять сповіщення."
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.feedback.eyebrow",
+      "source": "Feedback",
+      "translation_forms": [
+        "Зворотний зв’язок"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.feedback.notification",
+      "source": "Clip saved notification",
+      "translation_forms": [
+        "Сповіщення про збережений кліп"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.feedback.sound",
+      "source": "Clip saved sound",
+      "translation_forms": [
+        "Звук збереження кліпу"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.feedback.title",
+      "source": "After saving a clip",
+      "translation_forms": [
+        "Після збереження кліпу"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.status.active_description",
+      "source": "Recording %1; the temporary ring is written only when you save a replay.",
+      "translation_forms": [
+        "Триває запис %1; тимчасовий кільцевий буфер записується лише під час збереження повтору."
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.status.eyebrow",
+      "source": "Current status",
+      "translation_forms": [
+        "Поточний стан"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.status.idle",
+      "source": "Idle",
+      "translation_forms": [
+        "Очікування"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.status.idle_description",
+      "source": "Not recording. The buffer arms automatically when an eligible game is active.",
+      "translation_forms": [
+        "Запис не ведеться. Буфер вмикається автоматично, коли активна відповідна гра."
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.status.recording",
+      "source": "Recording",
+      "translation_forms": [
+        "Запис"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.status.title",
+      "source": "Replay buffer",
+      "translation_forms": [
+        "Буфер повторів"
+      ]
+    },
+    {
+      "id": "gamehq.settings.replay.title",
+      "source": "Replay",
+      "translation_forms": [
+        "Повтор"
+      ]
+    },
+    {
+      "id": "gamehq.settings.restore_all.message",
+      "source": "Window preferences, capture behavior, replay options, notifications, and sound settings return to defaults. Captures and library data are not deleted.",
+      "translation_forms": [
+        "Налаштування вікна, поведінка запису, параметри повторів, сповіщення та звуки повернуться до типових значень. Записи та дані бібліотеки не видаляються."
+      ]
+    },
+    {
+      "id": "gamehq.settings.restore_all.title",
+      "source": "Restore all settings?",
+      "translation_forms": [
+        "Відновити всі налаштування?"
+      ]
+    },
+    {
+      "id": "gamehq.settings.restore_category.message",
+      "source": "%1 options return to defaults. Captures and library data are not deleted.",
+      "translation_forms": [
+        "Параметри «%1» буде повернуто до типових значень. Медіафайли та дані бібліотеки не видаляються."
+      ]
+    },
+    {
+      "id": "gamehq.settings.restore_category.title",
+      "source": "Restore %1 settings?",
+      "translation_forms": [
+        "Відновити налаштування «%1»?"
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.blue.description",
+      "source": "Deep navy surfaces with violet-to-blue accents.",
+      "translation_forms": [
+        "Глибокі темно-сині поверхні з акцентами від фіолетового до синього."
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.blue.label",
+      "source": "Blue",
+      "translation_forms": [
+        "Синя"
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.carbon.description",
+      "source": "Layered neutral grays and one bright blue. Minimal to a fault.",
+      "translation_forms": [
+        "Багатошарові нейтральні сірі тони з одним яскраво-синім акцентом. Безкомпромісний мінімалізм."
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.carbon.label",
+      "source": "Carbon",
+      "translation_forms": [
+        "Карбон"
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.cobalt.description",
+      "source": "Soft grays, an indigo accent, pill-shaped controls, and quick transitions.",
+      "translation_forms": [
+        "М’які сірі тони, акцент індиго, заокруглені елементи керування та швидкі переходи."
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.cobalt.label",
+      "source": "Cobalt",
+      "translation_forms": [
+        "Кобальт"
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.dracula.description",
+      "source": "Purple-gray base with bright candy accents.",
+      "translation_forms": [
+        "Фіолетово-сіра основа з яскравими кольоровими акцентами."
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.dracula.label",
+      "source": "Dracula",
+      "translation_forms": [
+        "Dracula"
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.emerald.description",
+      "source": "Charcoal and green, with quick Fluent-style responses.",
+      "translation_forms": [
+        "Вугільний і зелений зі швидкими відгуками у стилі Fluent."
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.emerald.label",
+      "source": "Emerald",
+      "translation_forms": [
+        "Смарагд"
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.gruvbox.description",
+      "source": "Warm retro-terminal browns and cream, in monospace.",
+      "translation_forms": [
+        "Теплі коричневі й кремові тони ретротермінала з моноширинним шрифтом."
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.gruvbox.label",
+      "source": "Gruvbox",
+      "translation_forms": [
+        "Gruvbox"
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.harbor.description",
+      "source": "Flat blue-gray with squared edges. Chrome gets out of the way.",
+      "translation_forms": [
+        "Плаский синьо-сірий дизайн із прямими кутами. Інтерфейс не відвертає уваги."
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.harbor.label",
+      "source": "Harbor",
+      "translation_forms": [
+        "Гавань"
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.high_contrast.label",
+      "source": "High contrast",
+      "translation_forms": [
+        "Високий контраст"
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.light.label",
+      "source": "Light",
+      "translation_forms": [
+        "Світла"
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.midnight.description",
+      "source": "Near-black with soft blue washes and slow, cinematic motion.",
+      "translation_forms": [
+        "Майже чорний з м’якими синіми відтінками та повільною кінематографічною анімацією."
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.midnight.label",
+      "source": "Midnight",
+      "translation_forms": [
+        "Опівніч"
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.nord.description",
+      "source": "Desaturated arctic blue-grays. Calm and low-contrast.",
+      "translation_forms": [
+        "Приглушені арктичні синьо-сірі тони. Спокійно та неконтрастно."
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.nord.label",
+      "source": "Nord",
+      "translation_forms": [
+        "Nord"
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.obsidian.description",
+      "source": "Near-black glass lit by a cool blue bloom. The default.",
+      "translation_forms": [
+        "Майже чорне скло, підсвічене холодним синім сяйвом. Типова тема."
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.obsidian.label",
+      "source": "Obsidian",
+      "translation_forms": [
+        "Обсидіан"
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.synthwave.description",
+      "source": "Neon magenta and cyan over a violet horizon, with scanlines.",
+      "translation_forms": [
+        "Неонові маджента й ціан над фіолетовим горизонтом, з лініями розгортки."
+      ]
+    },
+    {
+      "id": "gamehq.settings.theme.synthwave.label",
+      "source": "Synthwave",
+      "translation_forms": [
+        "Синтвейв"
+      ]
+    },
+    {
+      "id": "gamehq.startup.portable_import.failed_title",
+      "source": "Portable import failed",
+      "translation_forms": [
+        "Не вдалося виконати портативний імпорт"
+      ]
+    },
+    {
+      "id": "gamehq.startup.portable_import.installed_copy_required",
+      "source": "Run portable import from an installed copy of GameHQ.",
+      "translation_forms": [
+        "Запустіть портативний імпорт із встановленої копії GameHQ."
+      ]
+    },
+    {
+      "id": "gamehq.startup.portable_import.instance_running",
+      "source": "Another GameHQ instance is running, so the portable import cannot start.",
+      "translation_forms": [
+        "Запущено інший екземпляр GameHQ, тому портативний імпорт не може розпочатися."
+      ]
+    },
+    {
+      "id": "gamehq.startup.portable_import.parent_argument_incomplete",
+      "source": "The portable import parent-process argument is incomplete.",
+      "translation_forms": [
+        "Аргумент батьківського процесу портативного імпорту неповний."
+      ]
+    },
+    {
+      "id": "gamehq.startup.portable_import.parent_identifier_invalid",
+      "source": "The portable import parent-process identifier is invalid.",
+      "translation_forms": [
+        "Ідентифікатор батьківського процесу портативного імпорту недійсний."
+      ]
+    },
+    {
+      "id": "gamehq.startup.portable_import.parent_still_running",
+      "source": "The running GameHQ instance did not close in time.",
+      "translation_forms": [
+        "Запущений екземпляр GameHQ не закрився вчасно."
+      ]
+    },
+    {
+      "id": "gamehq.startup.portable_import.parent_unverifiable",
+      "source": "GameHQ could not confirm that the previous instance has closed.",
+      "translation_forms": [
+        "GameHQ не зміг підтвердити, що попередній екземпляр закрито."
+      ]
+    },
+    {
+      "id": "gamehq.startup.portable_import.source_missing",
+      "source": "The portable import source folder is missing.",
+      "translation_forms": [
+        "Вихідну папку портативного імпорту не знайдено."
+      ]
+    },
+    {
+      "id": "gamehq.tray.exit",
+      "source": "Exit",
+      "translation_forms": [
+        "Вийти"
+      ]
+    },
+    {
+      "id": "gamehq.tray.open_gallery",
+      "source": "Open Gallery",
+      "translation_forms": [
+        "Відкрити галерею"
+      ]
+    },
+    {
+      "id": "gamehq.tray.rescan_captures",
+      "source": "Rescan Captures",
+      "translation_forms": [
+        "Пересканувати медіафайли"
+      ]
+    },
+    {
+      "id": "gamehq.tray.save_replay",
+      "source": "Save Replay",
+      "translation_forms": [
+        "Зберегти повтор"
+      ]
+    },
+    {
+      "id": "gamehq.tray.take_screenshot",
+      "source": "Take Screenshot",
+      "translation_forms": [
+        "Зробити знімок екрана"
+      ]
+    },
+    {
+      "id": "gamehq.update.applying_and_restarting",
+      "source": "GameHQ is applying the update and will restart.",
+      "translation_forms": [
+        "GameHQ застосовує оновлення й перезапуститься."
+      ]
+    },
+    {
+      "id": "gamehq.update.available_version_short",
+      "source": "%1 available",
+      "translation_forms": [
+        "Доступна версія %1"
+      ]
+    },
+    {
+      "id": "gamehq.update.banner.available",
+      "source": "%1 %2 is available",
+      "translation_forms": [
+        "Доступне оновлення %1 %2"
+      ]
+    },
+    {
+      "id": "gamehq.update.banner.download_verified",
+      "source": "Download verified and ready to install.",
+      "translation_forms": [
+        "Завантаження перевірено й готове до встановлення."
+      ]
+    },
+    {
+      "id": "gamehq.update.banner.downloading",
+      "source": "Downloading %1 %2",
+      "translation_forms": [
+        "Завантаження %1 %2"
+      ]
+    },
+    {
+      "id": "gamehq.update.banner.installing",
+      "source": "Installing %1 %2",
+      "translation_forms": [
+        "Встановлення %1 %2"
+      ]
+    },
+    {
+      "id": "gamehq.update.banner.needs_attention",
+      "source": "The update needs attention",
+      "translation_forms": [
+        "Оновлення потребує уваги"
+      ]
+    },
+    {
+      "id": "gamehq.update.banner.open_details",
+      "source": "Open the update details to continue.",
+      "translation_forms": [
+        "Відкрийте деталі оновлення, щоб продовжити."
+      ]
+    },
+    {
+      "id": "gamehq.update.banner.preparing",
+      "source": "Preparing %1 %2",
+      "translation_forms": [
+        "Підготовка %1 %2"
+      ]
+    },
+    {
+      "id": "gamehq.update.banner.ready",
+      "source": "%1 %2 is ready",
+      "translation_forms": [
+        "%1 %2 готово до встановлення"
+      ]
+    },
+    {
+      "id": "gamehq.update.banner.restart_when_finished",
+      "source": "GameHQ will restart when installation finishes.",
+      "translation_forms": [
+        "GameHQ перезапуститься після завершення встановлення."
+      ]
+    },
+    {
+      "id": "gamehq.update.banner.waiting_for_capture",
+      "source": "Waiting for capture work to finish safely.",
+      "translation_forms": [
+        "Очікування безпечного завершення операцій захоплення."
+      ]
+    },
+    {
+      "id": "gamehq.update.beta_download",
+      "source": "Beta update download",
+      "translation_forms": [
+        "Завантаження бета-оновлення"
+      ]
+    },
+    {
+      "id": "gamehq.update.bundled_with_version",
+      "source": "Bundled with GameHQ %1",
+      "translation_forms": [
+        "Постачається з GameHQ %1"
+      ]
+    },
+    {
+      "id": "gamehq.update.cancel_download",
+      "source": "Cancel download",
+      "translation_forms": [
+        "Скасувати завантаження"
+      ]
+    },
+    {
+      "id": "gamehq.update.check.label",
+      "source": "Check for updates",
+      "translation_forms": [
+        "Перевірити наявність оновлень"
+      ]
+    },
+    {
+      "id": "gamehq.update.check_again",
+      "source": "Check again",
+      "translation_forms": [
+        "Перевірити ще раз"
+      ]
+    },
+    {
+      "id": "gamehq.update.check_automatically.description",
+      "source": "At most once every 24 hours, in the background.",
+      "translation_forms": [
+        "Не частіше ніж раз на 24 години, у фоновому режимі."
+      ]
+    },
+    {
+      "id": "gamehq.update.check_automatically.label",
+      "source": "Check automatically",
+      "translation_forms": [
+        "Перевіряти автоматично"
+      ]
+    },
+    {
+      "id": "gamehq.update.check_failed",
+      "source": "Update check failed",
+      "translation_forms": [
+        "Не вдалося перевірити оновлення"
+      ]
+    },
+    {
+      "id": "gamehq.update.check_now",
+      "source": "Check now",
+      "translation_forms": [
+        "Перевірити зараз"
+      ]
+    },
+    {
+      "id": "gamehq.update.checking",
+      "source": "Checking...",
+      "translation_forms": [
+        "Перевірка..."
+      ]
+    },
+    {
+      "id": "gamehq.update.checking_for_updates",
+      "source": "Checking for updates...",
+      "translation_forms": [
+        "Перевірка наявності оновлень..."
+      ]
+    },
+    {
+      "id": "gamehq.update.checking_for_updates_short",
+      "source": "Checking for updates",
+      "translation_forms": [
+        "Перевірка наявності оновлень"
+      ]
+    },
+    {
+      "id": "gamehq.update.choose_install_time",
+      "source": "Choose when to install %1 %2.",
+      "translation_forms": [
+        "Виберіть, коли встановити %1 %2."
+      ]
+    },
+    {
+      "id": "gamehq.update.download_progress",
+      "source": "Download progress",
+      "translation_forms": [
+        "Хід завантаження"
+      ]
+    },
+    {
+      "id": "gamehq.update.download_verified_version",
+      "source": "GameHQ %1 is downloaded and SHA-256 verified.",
+      "translation_forms": [
+        "GameHQ %1 завантажено та перевірено за SHA-256."
+      ]
+    },
+    {
+      "id": "gamehq.update.download_version",
+      "source": "Download update %1",
+      "translation_forms": [
+        "Завантажити оновлення %1"
+      ]
+    },
+    {
+      "id": "gamehq.update.downloading_percent",
+      "source": "Downloading %1%",
+      "translation_forms": [
+        "Завантаження %1%"
+      ]
+    },
+    {
+      "id": "gamehq.update.downloading_version_progress",
+      "source": "Downloading GameHQ %1... %2%",
+      "translation_forms": [
+        "Завантаження GameHQ %1... %2%"
+      ]
+    },
+    {
+      "id": "gamehq.update.github_check_description",
+      "source": "GameHQ can check GitHub for newer stable releases.",
+      "translation_forms": [
+        "GameHQ може перевіряти на GitHub наявність новіших стабільних випусків."
+      ]
+    },
+    {
+      "id": "gamehq.update.install_and_restart",
+      "source": "Install and restart",
+      "translation_forms": [
+        "Встановити й перезапустити"
+      ]
+    },
+    {
+      "id": "gamehq.update.installed_version",
+      "source": "Installed: %1",
+      "translation_forms": [
+        "Встановлено: %1"
+      ]
+    },
+    {
+      "id": "gamehq.update.installing",
+      "source": "Installing",
+      "translation_forms": [
+        "Встановлення"
+      ]
+    },
+    {
+      "id": "gamehq.update.installing_progress",
+      "source": "Installing...",
+      "translation_forms": [
+        "Встановлення..."
+      ]
+    },
+    {
+      "id": "gamehq.update.installing_version",
+      "source": "Installing GameHQ %1...",
+      "translation_forms": [
+        "Встановлення GameHQ %1..."
+      ]
+    },
+    {
+      "id": "gamehq.update.last_checked",
+      "source": "Last checked %1",
+      "translation_forms": [
+        "Остання перевірка: %1"
+      ]
+    },
+    {
+      "id": "gamehq.update.last_checked_with_marker",
+      "source": "%1  %2",
+      "translation_forms": [
+        "%1  %2"
+      ]
+    },
+    {
+      "id": "gamehq.update.new_version_available",
+      "source": "New version available",
+      "translation_forms": [
+        "Доступна нова версія"
+      ]
+    },
+    {
+      "id": "gamehq.update.not_checked_description",
+      "source": "Updates have not been checked yet",
+      "translation_forms": [
+        "Наявність оновлень ще не перевірялася"
+      ]
+    },
+    {
+      "id": "gamehq.update.not_checked_yet",
+      "source": "Not checked yet",
+      "translation_forms": [
+        "Ще не перевірено"
+      ]
+    },
+    {
+      "id": "gamehq.update.preparing",
+      "source": "Preparing...",
+      "translation_forms": [
+        "Підготовка..."
+      ]
+    },
+    {
+      "id": "gamehq.update.preparing_to_install",
+      "source": "Preparing to install",
+      "translation_forms": [
+        "Підготовка до встановлення"
+      ]
+    },
+    {
+      "id": "gamehq.update.preparing_version",
+      "source": "Getting ready to install GameHQ %1...",
+      "translation_forms": [
+        "Підготовка до встановлення GameHQ %1..."
+      ]
+    },
+    {
+      "id": "gamehq.update.progress_percent",
+      "source": "%1% complete",
+      "translation_forms": [
+        "Виконано %1%"
+      ]
+    },
+    {
+      "id": "gamehq.update.published_on",
+      "source": "Published %1",
+      "translation_forms": [
+        "Опубліковано %1"
+      ]
+    },
+    {
+      "id": "gamehq.update.ready_to_install",
+      "source": "Ready to install",
+      "translation_forms": [
+        "Готово до встановлення"
+      ]
+    },
+    {
+      "id": "gamehq.update.release_metadata",
+      "source": "%1 · %2",
+      "translation_forms": [
+        "%1 · %2"
+      ]
+    },
+    {
+      "id": "gamehq.update.released_on",
+      "source": "Released %1",
+      "translation_forms": [
+        "Випущено %1"
+      ]
+    },
+    {
+      "id": "gamehq.update.remind_later",
+      "source": "Remind me later",
+      "translation_forms": [
+        "Нагадати пізніше"
+      ]
+    },
+    {
+      "id": "gamehq.update.restart_to_apply",
+      "source": "GameHQ will restart to apply the update.",
+      "translation_forms": [
+        "GameHQ перезапуститься, щоб застосувати оновлення."
+      ]
+    },
+    {
+      "id": "gamehq.update.retry_download",
+      "source": "Retry download",
+      "translation_forms": [
+        "Повторити завантаження"
+      ]
+    },
+    {
+      "id": "gamehq.update.see_whats_new",
+      "source": "See what's new",
+      "translation_forms": [
+        "Дізнатися, що нового"
+      ]
+    },
+    {
+      "id": "gamehq.update.settings",
+      "source": "Update settings",
+      "translation_forms": [
+        "Налаштування оновлень"
+      ]
+    },
+    {
+      "id": "gamehq.update.sha256_limit_warning",
+      "source": "SHA-256 detects corruption, but not a compromised GitHub account.",
+      "translation_forms": [
+        "SHA-256 виявляє пошкодження даних, але не скомпрометований обліковий запис GitHub."
+      ]
+    },
+    {
+      "id": "gamehq.update.skip_this_version",
+      "source": "Skip this version",
+      "translation_forms": [
+        "Пропустити цю версію"
+      ]
+    },
+    {
+      "id": "gamehq.update.skip_version",
+      "source": "Skip version %1",
+      "translation_forms": [
+        "Пропустити версію %1"
+      ]
+    },
+    {
+      "id": "gamehq.update.status.available",
+      "source": "Available",
+      "translation_forms": [
+        "Доступна"
+      ]
+    },
+    {
+      "id": "gamehq.update.status.current",
+      "source": "Current",
+      "translation_forms": [
+        "Поточна"
+      ]
+    },
+    {
+      "id": "gamehq.update.status.previous",
+      "source": "Previous",
+      "translation_forms": [
+        "Попередня"
+      ]
+    },
+    {
+      "id": "gamehq.update.status.update_available",
+      "source": "Update available",
+      "translation_forms": [
+        "Доступне оновлення"
+      ]
+    },
+    {
+      "id": "gamehq.update.suffix.available",
+      "source": "(Available)",
+      "translation_forms": [
+        "(Доступна)"
+      ]
+    },
+    {
+      "id": "gamehq.update.suffix.current",
+      "source": "(Current)",
+      "translation_forms": [
+        "(Поточна)"
+      ]
+    },
+    {
+      "id": "gamehq.update.up_to_date",
+      "source": "Up to date",
+      "translation_forms": [
+        "Актуальна версія"
+      ]
+    },
+    {
+      "id": "gamehq.update.up_to_date_last_checked",
+      "source": "Up to date, last checked %1",
+      "translation_forms": [
+        "Актуальна версія, остання перевірка: %1"
+      ]
+    },
+    {
+      "id": "gamehq.update.version_available",
+      "source": "GameHQ %1 is available",
+      "translation_forms": [
+        "Доступна версія GameHQ %1"
+      ]
+    },
+    {
+      "id": "gamehq.update.version_available_sentence",
+      "source": "GameHQ %1 is available.",
+      "translation_forms": [
+        "Доступна версія GameHQ %1."
+      ]
+    },
+    {
+      "id": "gamehq.update.versions",
+      "source": "VERSIONS",
+      "translation_forms": [
+        "ВЕРСІЇ"
+      ]
+    },
+    {
+      "id": "gamehq.update.view_release_notes",
+      "source": "View release notes",
+      "translation_forms": [
+        "Переглянути примітки до випуску"
+      ]
+    },
+    {
+      "id": "gamehq.update.view_update",
+      "source": "View update",
+      "translation_forms": [
+        "Переглянути оновлення"
+      ]
+    },
+    {
+      "id": "gamehq.update.waiting_for_capture",
+      "source": "Waiting for capture work to finish safely...",
+      "translation_forms": [
+        "Очікування безпечного завершення операцій захоплення..."
+      ]
+    }
+  ]
+}
