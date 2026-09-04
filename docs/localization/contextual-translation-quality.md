@@ -108,3 +108,31 @@ The binding decisions are:
 Buttons and action-catalog descriptions use the Russian infinitive; errors and warnings stay
 impersonal complete sentences. All three plural forms are checked against the numerus source
 rather than assuming a single form.
+
+## European Spanish calibration decisions
+
+`i18n/quality/reviews/es-ES.json` records the complete contextual pass over the European
+Spanish catalog and its auxiliary surfaces. The machine draft mixed literal translations,
+subtitle fragments, missing clauses, translated key names, and Latin-American or unrelated
+word senses, so the review corrected terminology, register, and UI roles.
+
+The binding decisions are:
+
+- `controller` is `mando`; an input `assignment` or `binding` is `asignación`, its `slot` is
+  `ranura`, and binding capture means detecting a control rather than recording media.
+- Gesture names preserve timing: `Press` is `Pulsación`, release-based `Tap` is `Pulsación
+  breve`, `Double Tap` and `Triple Tap` are `Pulsación doble` and `Pulsación triple`, and
+  `Hold` is `Mantener pulsado`.
+- `replay` is `repetición`, its rolling `buffer` is `búfer de repetición continuo`, a saved
+  short video is a `clip`, recording is `grabación`, and ordinary playback is `reproducción`.
+- A saved media item is a `captura`, a screenshot is a `captura de pantalla`, and a video
+  frame is a `fotograma`. `gallery` is `galería`, `library` is `biblioteca`, `overlay` is
+  `superposición`, and the system tray is `bandeja`.
+- Update security uses `manifiesto`, `suma de comprobación`, `firma`, `preparación`,
+  `transacción`, `estado de confianza`, and `unidad` for a filesystem volume.
+- Portable import uses `portátil`, `preparado`, `registro`, `cadena`, `raíz`, `origen`, and
+  `instancia`; the `portable:/` scheme stays literal.
+
+The locale uses neutral Spain Spanish, informal address, concise infinitive action labels,
+natural word order, and Spanish punctuation and agreement. Shortcut key names, protected
+technical identifiers, paths, commands, placeholders, and version strings remain unchanged.
