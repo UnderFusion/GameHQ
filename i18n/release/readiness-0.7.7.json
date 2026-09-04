@@ -84,7 +84,7 @@
     },
     {
       "path": "i18n/quality/reviews/zh-Hant.json",
-      "sha256": "409ab11746554eae1afbdeeed93933d68f7976db2768745fdb3622b8f0a39ad7"
+      "sha256": "f545ed7003aecdc540a82c27b8ef744d85d68097bdf044e159852e14a5f35880"
     }
   ],
   "portfolio": {
@@ -709,14 +709,14 @@
     },
     "zh-Hant": {
       "catalog": "i18n/app/gamehq_zh_Hant.ts",
-      "catalog_sha256": "ea11505ba8a49a837b1e7152e16afc2295d6dace75c41ca8a6550f16baba6611",
+      "catalog_sha256": "61f225241ec3afe132eb2995dd098b25a51a1377d31817f2e9ee1abb6aabeee8",
       "style": {
         "path": "i18n/style/zh-Hant.json",
         "sha256": "808fdddc4f8c4626ff8ff937b3f4b13a1de3f302b45232e04eb1f735928300af"
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/zh-Hant.json",
-        "sha256": "857af4d61dd9a7f1cfb2a8e411d77ac9f064f78cb3a439793ad2aef6f16d9b0a"
+        "sha256": "a6e4e591d4a0752b24cd1e4c27fe3e7119baa574921ef11d184f60bd0e9cdf65"
       },
       "translation_state_counts": {
         "contextually_reviewed": 831
@@ -755,7 +755,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/zh-Hant.json",
-          "sha256": "409ab11746554eae1afbdeeed93933d68f7976db2768745fdb3622b8f0a39ad7"
+          "sha256": "f545ed7003aecdc540a82c27b8ef744d85d68097bdf044e159852e14a5f35880"
         }
       }
     },

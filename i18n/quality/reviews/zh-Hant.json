@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "reviewed Simplified Chinese source converted as a draft, followed by complete Traditional Chinese contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T06:45:29Z"
+    "recorded_at": "2026-09-04T07:24:37Z"
   },
   "baseline": {
     "path": "git:a40b69040da5398245bd7149a5354dd87df21e2d:i18n/app/gamehq_zh_Hant.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_zh_Hant.ts",
-    "sha256": "ea11505ba8a49a837b1e7152e16afc2295d6dace75c41ca8a6550f16baba6611",
+    "sha256": "61f225241ec3afe132eb2995dd098b25a51a1377d31817f2e9ee1abb6aabeee8",
     "message_count": 831
   },
   "coverage": [
@@ -90,7 +90,7 @@
     {
       "id": "gamehq.about.product_description",
       "source_hash": "aa9b19cffaa783832dc62f3f8208d13e6e6855a46b0c86f957c32a85a274c37e",
-      "translation_hash": "b97624765a5d3279a3054751e61ddf24b6fc04fe088f395e02010f1be3e7798f",
+      "translation_hash": "f0e3b134f3ee06d0a09359408267aab81e9f7388304b918c284315c7945abf35",
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:629"
       ],
@@ -2243,7 +2243,7 @@
     {
       "id": "gamehq.error.update.release_changed",
       "source_hash": "a8aee8ecc20060b3bf7c33846ce008daa511f96baea038f3988a6917ccd97ba5",
-      "translation_hash": "c3b2d30512cf16de1b16d33dbc03179b8de1d2f18448d39c90d815f9fd63a059",
+      "translation_hash": "07c03a3a0b920c20dd4801ce87dc6461c8008a190211be910f4ee7ed29062433",
       "locations": [
         "src/updates/UpdateService.cpp:224"
       ],
@@ -2586,7 +2586,7 @@
     {
       "id": "gamehq.help.feature.lightbox.description",
       "source_hash": "8518a606d8931f721b0f02438230def315d067692f0e2c6b77e3dd6a342e6c6e",
-      "translation_hash": "c59aafb2200d1fc902298ec951540253a8eec15ab88885732849de8e394b00f0",
+      "translation_hash": "e23a55a78db7b5d8177eed8ea219131d22fe34a5886d6617c4160cc3aabb4194",
       "locations": [
         "src/ui/qml/HelpView.qml:330"
       ],
@@ -2604,7 +2604,7 @@
     {
       "id": "gamehq.help.feature.overlay.description",
       "source_hash": "9ff30cfc7c1b48132e168c9b6ffe80dbdf51a30bd7fdfe5365d7137cdca0d7b2",
-      "translation_hash": "3019c2eeec38644b9fa4095c1442aede70cb5906b57dba542a6c7cc3976831ee",
+      "translation_hash": "6efb9d776700289d90e49cd1f12d3aac58ddd35b86ddf7f3cf1b219d54ab7d8f",
       "locations": [
         "src/ui/qml/HelpView.qml:324"
       ],
@@ -2640,7 +2640,7 @@
     {
       "id": "gamehq.help.feature.screenshots.description",
       "source_hash": "602c3a6cc283b5c9a7700fe7c5a1c81a5dbadddf315056786f564e6fa6d7b9a8",
-      "translation_hash": "ec825003ecb3694a5f82643d0c72c23a5880a88320388b5321d1bb647dfbf080",
+      "translation_hash": "e17807f1f6739132bde57ee9f4d79efcbbc365b1565e998f0617bc468dce9d6c",
       "locations": [
         "src/ui/qml/HelpView.qml:312"
       ],
@@ -5803,7 +5803,7 @@
     {
       "id": "gamehq.settings.input.relation.context_title",
       "source_hash": "fa201de76a6dfd18fe804029d47bb7c5ceb1921fecb53149ba76c5d63d237342",
-      "translation_hash": "f8b4c75b0e67ded9493f76fc492eacb48d2653b863bd20a5bab763ecc640edec",
+      "translation_hash": "f75244cb6742578e24425639c791a998738ea7aa5e255b6d47ff03f8bb6505fc",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:147"
       ],
@@ -7462,7 +7462,7 @@
     {
       "id": "gamehq.update.sha256_limit_warning",
       "source_hash": "4edb33bfe4031b77c25b7414970a7ebcb0a79f46607108be23889851f33a49b9",
-      "translation_hash": "7386f8a9ff9bc120ceff74f45e07be64413fb474078b52bfffae26f5ecb57fbe",
+      "translation_hash": "1a7158df67d2de8536c6b2a1cfa2522d725c99f231da356c8449f86d7d53b652",
       "locations": [
         "src/ui/qml/settings/AboutSettingsPage.qml:187"
       ],
@@ -7657,10 +7657,10 @@
       "id": "gamehq.about.product_description",
       "surface": "application",
       "before": "控制器友好的畫面截圖,重播,以及PC遊戲媒體畫廊.",
-      "after": "面向 PC 遊戲、支援控制器操作的截圖、重播和媒體圖庫。",
-      "category": "natural_language",
-      "reason": "Uses concise, natural Traditional Chinese appropriate to the control and its surrounding UI.",
-      "terminology_decision": "The reviewed wording follows zh-Hant UI usage while retaining the corrected English meaning."
+      "after": "專為 PC 遊戲打造的螢幕截圖、重播與媒體圖庫，並支援控制器操作。",
+      "category": "regional_language",
+      "reason": "Uses natural Taiwan Traditional Chinese rather than literal or Mainland-oriented wording.",
+      "terminology_decision": "Taiwan UI wording uses 螢幕截圖, 全螢幕, 提供, 變更, and 偵測 in these contexts."
     },
     {
       "id": "gamehq.about.product_updated",
@@ -9529,10 +9529,10 @@
       "id": "gamehq.error.update.release_changed",
       "surface": "application",
       "before": "版本在下載後有所變化.",
-      "after": "下載後該發行版本已發生變化。請在安裝前重新檢查。",
-      "category": "technical_accuracy",
-      "reason": "Uses conventional Traditional Chinese filesystem, database, updater, integrity, and security terminology.",
-      "terminology_decision": "The reviewed wording follows zh-Hant UI usage while retaining the corrected English meaning."
+      "after": "下載後該發行版本已變更。請在安裝前重新檢查。",
+      "category": "regional_language",
+      "reason": "Uses natural Taiwan Traditional Chinese rather than literal or Mainland-oriented wording.",
+      "terminology_decision": "Taiwan UI wording uses 螢幕截圖, 全螢幕, 提供, 變更, and 偵測 in these contexts."
     },
     {
       "id": "gamehq.error.update.release_withdrawn",
@@ -9781,19 +9781,19 @@
       "id": "gamehq.help.feature.lightbox.description",
       "surface": "application",
       "before": "顯示屏幕截圖和影片.",
-      "after": "用於檢視截圖和影片的全屏檢視器。可從主視窗和遊戲內嵌介面中開啟。",
-      "category": "natural_language",
-      "reason": "Uses concise, natural Traditional Chinese appropriate to the control and its surrounding UI.",
-      "terminology_decision": "The reviewed wording follows zh-Hant UI usage while retaining the corrected English meaning."
+      "after": "用於檢視螢幕截圖和影片的全螢幕檢視器。可從主視窗和遊戲內嵌介面中開啟。",
+      "category": "regional_language",
+      "reason": "Uses natural Taiwan Traditional Chinese rather than literal or Mainland-oriented wording.",
+      "terminology_decision": "Taiwan UI wording uses 螢幕截圖, 全螢幕, 提供, 變更, and 偵測 in these contexts."
     },
     {
       "id": "gamehq.help.feature.overlay.description",
       "surface": "application",
       "before": "透明全幕HUD. 顯示和管理遊戲內部的捕捉,沒有 Alt 選項. 包括自己的畫廊格子,光盒和乾杯通知.",
-      "after": "透明的全屏 HUD。無需切出遊戲即可在遊戲內檢視和管理擷取內容。內建自己的圖庫網格、燈箱和訊息提示。",
-      "category": "natural_language",
-      "reason": "Uses concise, natural Traditional Chinese appropriate to the control and its surrounding UI.",
-      "terminology_decision": "The reviewed wording follows zh-Hant UI usage while retaining the corrected English meaning."
+      "after": "透明的全螢幕 HUD。無需切出遊戲即可在遊戲內檢視和管理擷取內容。內建自己的圖庫網格、燈箱和訊息提示。",
+      "category": "regional_language",
+      "reason": "Uses natural Taiwan Traditional Chinese rather than literal or Mainland-oriented wording.",
+      "terminology_decision": "Taiwan UI wording uses 螢幕截圖, 全螢幕, 提供, 變更, and 偵測 in these contexts."
     },
     {
       "id": "gamehq.help.feature.overlay.title",
@@ -9826,10 +9826,10 @@
       "id": "gamehq.help.feature.screenshots.description",
       "surface": "application",
       "before": "接觸到活動遊戲窗口.",
-      "after": "透過 GDI 擷取活動的遊戲視窗，將 PNG 儲存到您的擷取資料夾，並立即給出快門回饋。",
-      "category": "natural_language",
-      "reason": "Uses concise, natural Traditional Chinese appropriate to the control and its surrounding UI.",
-      "terminology_decision": "The reviewed wording follows zh-Hant UI usage while retaining the corrected English meaning."
+      "after": "透過 GDI 擷取活動的遊戲視窗，將 PNG 儲存到您的擷取資料夾，並立即提供快門回饋。",
+      "category": "regional_language",
+      "reason": "Uses natural Taiwan Traditional Chinese rather than literal or Mainland-oriented wording.",
+      "terminology_decision": "Taiwan UI wording uses 螢幕截圖, 全螢幕, 提供, 變更, and 偵測 in these contexts."
     },
     {
       "id": "gamehq.help.feature.screenshots.title",
@@ -12436,10 +12436,10 @@
       "id": "gamehq.settings.input.relation.context_title",
       "surface": "application",
       "before": "這個按改變了意思,",
-      "after": "此按鍵的含義會發生變化",
-      "category": "controller_semantics",
-      "reason": "Preserves physical-button behavior, assignment context, and input-listening meaning.",
-      "terminology_decision": "The reviewed wording follows zh-Hant UI usage while retaining the corrected English meaning."
+      "after": "此按鍵的功能會依情境改變",
+      "category": "regional_language",
+      "reason": "Uses natural Taiwan Traditional Chinese rather than literal or Mainland-oriented wording.",
+      "terminology_decision": "Taiwan UI wording uses 螢幕截圖, 全螢幕, 提供, 變更, and 偵測 in these contexts."
     },
     {
       "id": "gamehq.settings.input.relation.duplicate",
@@ -13642,10 +13642,10 @@
       "id": "gamehq.update.sha256_limit_warning",
       "surface": "application",
       "before": "SHA-256 可以偵測檔案損毀，但無法偵測 GitHub 帳戶是否遭到入侵。",
-      "after": "SHA-256 可以檢測檔案損壞，但無法檢測 GitHub 帳戶是否遭到入侵。",
-      "category": "technical_accuracy",
-      "reason": "Uses conventional Traditional Chinese filesystem, database, updater, integrity, and security terminology.",
-      "terminology_decision": "The reviewed wording follows zh-Hant UI usage while retaining the corrected English meaning."
+      "after": "SHA-256 可偵測檔案損壞，但無法偵測 GitHub 帳戶是否遭到入侵。",
+      "category": "regional_language",
+      "reason": "Uses natural Taiwan Traditional Chinese rather than literal or Mainland-oriented wording.",
+      "terminology_decision": "Taiwan UI wording uses 螢幕截圖, 全螢幕, 提供, 變更, and 偵測 in these contexts."
     },
     {
       "id": "gamehq.update.skip_this_version",
@@ -13768,19 +13768,19 @@
       "id": "added-02",
       "surface": "release_notes",
       "before": "切換語言會立即套用到整個應用程式，包括覆蓋層與通知區功能表，不需要重新啟動 GameHQ。你的選擇會被記住。",
-      "after": "切換語言會立即套用到整個應用程式，包括遊戲內嵌介面與通知區域功能表，不需要重新啟動 GameHQ。您的選擇會被記住。",
-      "category": "terminology_consistency",
-      "reason": "Uses reviewed Traditional Chinese and reflects the corrected release meaning.",
-      "terminology_decision": "Release messaging uses the same UI terminology as the application and preserves the sixteen-language status."
+      "after": "切換語言會立即套用到整個應用程式，包括遊戲內嵌介面與通知區域功能表，不需要重新啟動 GameHQ。此選擇會被記住。",
+      "category": "register_consistency",
+      "reason": "Uses a consistent neutral second-person register across the Traditional Chinese release notes.",
+      "terminology_decision": "Release messaging avoids mixed 你/您 forms by using neutral references to the selected language and choice."
     },
     {
       "id": "added-03",
       "surface": "release_notes",
       "before": "安裝程式現在會以你的語言執行，並將該選擇傳遞給 GameHQ 的首次啟動，安裝程式與應用程式不會再各說各話。",
-      "after": "安裝程式現在會以您的語言執行，並將該選擇傳遞給 GameHQ 的首次啟動，安裝程式與應用程式不會再各說各話。",
-      "category": "terminology_consistency",
-      "reason": "Uses reviewed Traditional Chinese and reflects the corrected release meaning.",
-      "terminology_decision": "Release messaging uses the same UI terminology as the application and preserves the sixteen-language status."
+      "after": "安裝程式現在會以所選語言執行，並將該選擇傳遞給 GameHQ 的首次啟動，安裝程式與應用程式不會再各說各話。",
+      "category": "register_consistency",
+      "reason": "Uses a consistent neutral second-person register across the Traditional Chinese release notes.",
+      "terminology_decision": "Release messaging avoids mixed 你/您 forms by using neutral references to the selected language and choice."
     },
     {
       "id": "known-limitations-01",
@@ -13790,13 +13790,31 @@
       "category": "source_alignment",
       "reason": "Uses reviewed Traditional Chinese and reflects the corrected release meaning.",
       "terminology_decision": "Release messaging uses the same UI terminology as the application and preserves the sixteen-language status."
+    },
+    {
+      "id": "added-01",
+      "surface": "release_notes",
+      "before": "GameHQ 現已提供十六種介面語言。首次啟動時會跟隨 Windows 的語言，你也可以在設定中另選一種。",
+      "after": "GameHQ 現已提供十六種介面語言。首次啟動時會跟隨 Windows 的語言，也可在設定中另選一種。",
+      "category": "register_consistency",
+      "reason": "Uses a consistent neutral second-person register across the Traditional Chinese release notes.",
+      "terminology_decision": "Release messaging avoids mixed 你/您 forms by using neutral references to the selected language and choice."
+    },
+    {
+      "id": "added-05",
+      "surface": "release_notes",
+      "before": "只要這些說明有對應的譯文，更新內容就會以你的語言顯示；若沒有譯文，則顯示完整的英文文字，而不會中英夾雜。",
+      "after": "只要這些說明有對應的譯文，更新內容就會以所選語言顯示；若沒有譯文，則顯示完整的英文文字，而不會中英夾雜。",
+      "category": "register_consistency",
+      "reason": "Uses a consistent neutral second-person register across the Traditional Chinese release notes.",
+      "terminology_decision": "Release messaging avoids mixed 你/您 forms by using neutral references to the selected language and choice."
     }
   ],
   "surfaces": [
     {
       "surface": "application",
       "path": "i18n/app/gamehq_zh_Hant.ts",
-      "sha256": "ea11505ba8a49a837b1e7152e16afc2295d6dace75c41ca8a6550f16baba6611",
+      "sha256": "61f225241ec3afe132eb2995dd098b25a51a1377d31817f2e9ee1abb6aabeee8",
       "reviewed_units": 831
     },
     {
@@ -13814,7 +13832,7 @@
     {
       "surface": "release_notes",
       "path": "assets/release-notes/versions/0.7.7/zh-Hant.json",
-      "sha256": "857af4d61dd9a7f1cfb2a8e411d77ac9f064f78cb3a439793ad2aef6f16d9b0a",
+      "sha256": "a6e4e591d4a0752b24cd1e4c27fe3e7119baa574921ef11d184f60bd0e9cdf65",
       "reviewed_units": 10
     }
   ],
@@ -13828,7 +13846,8 @@
     "Portable import uses 可攜式, 暫存, 記錄檔, 字串, 根目錄, 來源, 執行個體, 資料庫, and 外部索引鍵; portable:/ stays literal.",
     "Traditional Chinese uses one Qt numerus form while preserving explicit quantities and counters.",
     "Controls use concise actions; explanatory text uses neutral Taiwan-oriented software terminology and full-width punctuation.",
-    "Internal staging publish operations use final-position or completion wording rather than public-release 發佈 terminology."
+    "Internal staging publish operations use final-position or completion wording rather than public-release 發佈 terminology.",
+    "Taiwan UI wording uses 螢幕截圖 and 全螢幕; release notes use neutral phrasing instead of mixing 你 and 您."
   ],
   "calibration_rules": [
     "Review every stable ID with its English source, location, control role, and neighboring UI; character conversion alone is not linguistic evidence.",

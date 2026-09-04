@@ -42,7 +42,7 @@
     <message id="gamehq.about.product_description">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="629"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
-      <translation>面向 PC 遊戲、支援控制器操作的截圖、重播和媒體圖庫。</translation>
+      <translation>專為 PC 遊戲打造的螢幕截圖、重播與媒體圖庫，並支援控制器操作。</translation>
     </message>
     <message id="gamehq.about.product_updated">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="484"></location>
@@ -1265,7 +1265,7 @@
     <message id="gamehq.error.update.release_changed">
       <location filename="src/updates/UpdateService.cpp" line="224"></location>
       <source>The release changed after download. Check again before installing.</source>
-      <translation>下載後該發行版本已發生變化。請在安裝前重新檢查。</translation>
+      <translation>下載後該發行版本已變更。請在安裝前重新檢查。</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
       <location filename="src/updates/UpdateService.cpp" line="281"></location>
@@ -1464,7 +1464,7 @@ This cannot be undone.</source>
     <message id="gamehq.help.feature.lightbox.description">
       <location filename="src/ui/qml/HelpView.qml" line="330"></location>
       <source>Full-screen viewer for screenshots and videos. Opens from both the main window and the overlay.</source>
-      <translation>用於檢視截圖和影片的全屏檢視器。可從主視窗和遊戲內嵌介面中開啟。</translation>
+      <translation>用於檢視螢幕截圖和影片的全螢幕檢視器。可從主視窗和遊戲內嵌介面中開啟。</translation>
     </message>
     <message id="gamehq.help.feature.lightbox.title">
       <location filename="src/ui/qml/HelpView.qml" line="328"></location>
@@ -1474,7 +1474,7 @@ This cannot be undone.</source>
     <message id="gamehq.help.feature.overlay.description">
       <location filename="src/ui/qml/HelpView.qml" line="324"></location>
       <source>Transparent fullscreen HUD. View and manage captures from inside a game without alt-tabbing. Includes its own gallery grid, lightbox, and toast notifications.</source>
-      <translation>透明的全屏 HUD。無需切出遊戲即可在遊戲內檢視和管理擷取內容。內建自己的圖庫網格、燈箱和訊息提示。</translation>
+      <translation>透明的全螢幕 HUD。無需切出遊戲即可在遊戲內檢視和管理擷取內容。內建自己的圖庫網格、燈箱和訊息提示。</translation>
     </message>
     <message id="gamehq.help.feature.overlay.title">
       <location filename="src/ui/qml/HelpView.qml" line="322"></location>
@@ -1496,7 +1496,7 @@ This cannot be undone.</source>
       <location filename="src/ui/qml/HelpView.qml" line="312"></location>
       <source>Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.</source>
       <oldsource>GameHQ captures the active game window through GDI, saves a PNG to your captures folder, and confirms the screenshot immediately.</oldsource>
-      <translation>透過 GDI 擷取活動的遊戲視窗，將 PNG 儲存到您的擷取資料夾，並立即給出快門回饋。</translation>
+      <translation>透過 GDI 擷取活動的遊戲視窗，將 PNG 儲存到您的擷取資料夾，並立即提供快門回饋。</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
       <location filename="src/ui/qml/HelpView.qml" line="310"></location>
@@ -3294,7 +3294,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.relation.context_title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="147"></location>
       <source>This button changes meaning</source>
-      <translation>此按鍵的含義會發生變化</translation>
+      <translation>此按鍵的功能會依情境改變</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="137"></location>
@@ -4227,7 +4227,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.sha256_limit_warning">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="187"></location>
       <source>SHA-256 detects corruption, but not a compromised GitHub account.</source>
-      <translation>SHA-256 可以檢測檔案損壞，但無法檢測 GitHub 帳戶是否遭到入侵。</translation>
+      <translation>SHA-256 可偵測檔案損壞，但無法偵測 GitHub 帳戶是否遭到入侵。</translation>
     </message>
     <message id="gamehq.update.skip_this_version">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="947"></location>
