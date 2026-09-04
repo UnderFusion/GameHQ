@@ -2925,7 +2925,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.general.startup.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
       <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
-      <translation>Windowsへのサインイン時に GameHQ を起動し、静かに開くかを選択します。</translation>
+      <translation>Windows へのサインイン時に GameHQ を起動するか、メインウィンドウを開かず通知領域へ起動するかを選択します。</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="94"></location>
@@ -3062,7 +3062,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.devices.mouse_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="40"></location>
       <source>Middle, Back, and Forward mouse buttons</source>
-      <translation>マウスの中、Back、Forwardボタン</translation>
+      <translation>マウスの中央ボタン、Back ボタン、Forward ボタン</translation>
     </message>
     <message id="gamehq.settings.input.devices.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="26"></location>
@@ -3147,7 +3147,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.modern.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="569"></location>
       <source>Modern controllers</source>
-      <translation>最新コントローラー</translation>
+      <translation>モダンコントローラー</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
@@ -3207,7 +3207,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.modern.support.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="579"></location>
       <source>Modern controller support</source>
-      <translation>最新コントローラー対応</translation>
+      <translation>モダンコントローラー対応</translation>
     </message>
     <message id="gamehq.settings.input.modern.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="571"></location>
@@ -3368,7 +3368,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.test.probe_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="241"></location>
       <source>Records the next 3 seconds of raw button changes — including buttons GameHQ does not recognize — into the diagnostics you can copy from Advanced.</source>
-      <translation>次の3秒間のボタンの生の変化（GameHQ が認識しないボタンを含む）を記録し、「詳細設定」からコピーできる診断情報へ追加します。</translation>
+      <translation>次の3秒間の未加工のボタン状態変化（GameHQ が認識しないボタンを含む）を記録し、「詳細設定」からコピーできる診断情報へ追加します。</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_displayed">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="206"></location>
@@ -3911,7 +3911,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.available_version_short">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="126"></location>
       <source>%1 available</source>
-      <translation>%1 を利用可能</translation>
+      <translation>%1 が利用可能</translation>
     </message>
     <message id="gamehq.update.banner.available">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="67"></location>
@@ -4212,7 +4212,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.update.status.previous">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="123"></location>
       <source>Previous</source>
-      <translation>以前</translation>
+      <translation>前のバージョン</translation>
     </message>
     <message id="gamehq.update.status.update_available">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="155"></location>
