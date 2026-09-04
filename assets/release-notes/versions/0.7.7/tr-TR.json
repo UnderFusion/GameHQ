@@ -13,7 +13,7 @@
       "items": [
         {
           "id": "added-01",
-          "text": "GameHQ artık on altı arayüz dilinde kullanılabiliyor. İlk açılışta Windows dilinizi izler, ayarlardan başka bir dil seçebilirsiniz."
+          "text": "GameHQ artık on altı arayüz dilinde kullanılabiliyor. İlk açılışta Windows dil ayarınızı kullanır; ayarlardan başka bir dil seçebilirsiniz."
         },
         {
           "id": "added-02",
@@ -39,7 +39,7 @@
       "items": [
         {
           "id": "changed-01",
-          "text": "Tarihler, sayılar ve öğe sayıları artık sistem ayarı yerine seçilen dili izliyor."
+          "text": "Tarihler, sayılar ve öğe sayıları artık sistem varsayılanı yerine seçilen dilin biçimlendirme kurallarına göre gösteriliyor."
         }
       ]
     },

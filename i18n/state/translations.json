@@ -120420,13 +120420,13 @@
         "gamehq.action.desktop.menu.label": {
           "domain": "application",
           "source_hash": "5bb799778c850643f7521660489dc3218db3ec10c21365e6d09aaae714da0291",
-          "translation_hash": "86b6080a86e7b1c29ac432fa88f8bc2091765da0dac08ae837d9e5cc2d6a89fb",
+          "translation_hash": "828221f8a930f60ecb1a69b45d5db4db1f594a027ccd58aebe5ccb6fe4cebbf9",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-tr-tr"
           },
-          "updated_at": "2026-09-04T08:11:57Z"
+          "updated_at": "2026-09-04T08:41:21Z"
         },
         "gamehq.action.desktop.navigate_down.description": {
           "domain": "application",
@@ -120739,13 +120739,13 @@
         "gamehq.action.global.toggle_desktop.description": {
           "domain": "application",
           "source_hash": "47f78de6d12efa5918aa5cb4f268ba472a1ec295b4462776a76ec4476ed2d9ce",
-          "translation_hash": "60a95634b45fb450139f9964f13c83fc4bd068cd4d326be0c5f996b0522ea386",
+          "translation_hash": "9d7b80efa1684a2d7faf6b65cae9eae7295a18b6a4f875fd286e1e08d9e83159",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-tr-tr"
           },
-          "updated_at": "2026-09-04T08:11:57Z"
+          "updated_at": "2026-09-04T08:41:21Z"
         },
         "gamehq.action.global.toggle_desktop.label": {
           "domain": "application",
@@ -120915,13 +120915,13 @@
         "gamehq.action.overlay.menu.label": {
           "domain": "application",
           "source_hash": "5bb799778c850643f7521660489dc3218db3ec10c21365e6d09aaae714da0291",
-          "translation_hash": "86b6080a86e7b1c29ac432fa88f8bc2091765da0dac08ae837d9e5cc2d6a89fb",
+          "translation_hash": "828221f8a930f60ecb1a69b45d5db4db1f594a027ccd58aebe5ccb6fe4cebbf9",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-tr-tr"
           },
-          "updated_at": "2026-09-04T08:11:57Z"
+          "updated_at": "2026-09-04T08:41:21Z"
         },
         "gamehq.action.overlay.navigate_down.description": {
           "domain": "application",

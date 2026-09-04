@@ -47,9 +47,9 @@
   <sys:String x:Key="LOCGameHQIntegrationDiagnosticsGameHQVersionFormat">GameHQ sürümü: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationDiagnosticsProtocolFormat">Protokol: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationDiagnosticsConnectionStateFormat">Bağlantı durumu: {0}</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationStateConnected">Bağlandı</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationStateConnected">Bağlı</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationStateConnecting">Bağlanıyor...</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationStateWaitingForUpdate">Bekleniyor (GameHQ güncelleniyor)</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationStateDisconnected">Bağlantı kesildi</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationStateWaitingForUpdate">Beklemede (GameHQ güncelleniyor)</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationStateDisconnected">Bağlı değil</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationInvalidSelectedPath">Seçilen yol geçerli bir GameHQ kurulumu değil.</sys:String>
 </ResourceDictionary>

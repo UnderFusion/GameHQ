@@ -281,7 +281,7 @@
       "GameHQAdditionalShortcuts": "Ek kısayollar:",
       "GameHQLaunch": "GameHQ'yu başlat",
       "GameHQStageDetail": " (aşama: %1)",
-      "GameHQUpdateActive": "GameHQ güncellemesi çalışıyor%1. Tamamlanmasını bekleyip yeniden deneyin.",
+      "GameHQUpdateActive": "GameHQ güncellemesi devam ediyor%1. Tamamlanmasını bekleyip yeniden deneyin.",
       "GameHQUpdateStale": "Önceki GameHQ güncellemesi tamamlanmadı%1. Kurtarma işleminin tamamlanması için GameHQ'yu bir kez başlatıp yeniden deneyin.",
       "GameHQNothingRemoved": "Hiçbir şey kaldırılmadı; kurulumunuz olduğu gibi duruyor.",
       "GameHQSetupAppRunning": "GameHQ çalışıyor. Diğer Windows oturumlarında çalışan örnekler de dahil olmak üzere uygulamayı normal şekilde kapatın, ardından Kurulumu yeniden çalıştırın.",

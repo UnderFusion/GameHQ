@@ -171,7 +171,7 @@
     <message id="gamehq.action.desktop.menu.label">
       <location filename="src/input/ActionCatalog.cpp" line="241"></location>
       <source>Open Menu</source>
-      <translation>Menüyü Aç</translation>
+      <translation>Menüyü aç</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_down.description">
       <location filename="src/input/ActionCatalog.cpp" line="202"></location>
@@ -316,7 +316,7 @@
     <message id="gamehq.action.global.toggle_desktop.description">
       <location filename="src/input/ActionCatalog.cpp" line="109"></location>
       <source>Bring the GameHQ window to the front with focus, or hide it and return to the game.</source>
-      <translation>Odaklanarak GameHQ penceresini öne getirin veya gizleyip oyuna geri dönün.</translation>
+      <translation>GameHQ penceresini öne getirip odağa alın veya gizleyip oyuna geri dönün.</translation>
     </message>
     <message id="gamehq.action.global.toggle_desktop.label">
       <location filename="src/input/ActionCatalog.cpp" line="105"></location>
@@ -396,7 +396,7 @@
     <message id="gamehq.action.overlay.menu.label">
       <location filename="src/input/ActionCatalog.cpp" line="163"></location>
       <source>Open Menu</source>
-      <translation>Menüyü Aç</translation>
+      <translation>Menüyü aç</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_down.description">
       <location filename="src/input/ActionCatalog.cpp" line="124"></location>

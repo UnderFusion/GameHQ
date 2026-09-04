@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "Google Translate draft from product-owned English followed by complete contextual Turkish review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T08:11:57Z"
+    "recorded_at": "2026-09-04T08:41:21Z"
   },
   "baseline": {
     "path": "git:1d04b6a5d5b5b41279d027aff302a154d8952c64:i18n/app/gamehq_tr_TR.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_tr_TR.ts",
-    "sha256": "0b3cf054b3bc591ab0de911906beb736dec0a55b6fb44487c1aaa856fce1d91f",
+    "sha256": "c912960ea623d518e85e43dbb3777648136e76bddaef2772888d75b6151b39f6",
     "message_count": 831
   },
   "coverage": [
@@ -311,7 +311,7 @@
     {
       "id": "gamehq.action.desktop.menu.label",
       "source_hash": "5bb799778c850643f7521660489dc3218db3ec10c21365e6d09aaae714da0291",
-      "translation_hash": "86b6080a86e7b1c29ac432fa88f8bc2091765da0dac08ae837d9e5cc2d6a89fb",
+      "translation_hash": "828221f8a930f60ecb1a69b45d5db4db1f594a027ccd58aebe5ccb6fe4cebbf9",
       "locations": [
         "src/input/ActionCatalog.cpp:241"
       ],
@@ -572,7 +572,7 @@
     {
       "id": "gamehq.action.global.toggle_desktop.description",
       "source_hash": "47f78de6d12efa5918aa5cb4f268ba472a1ec295b4462776a76ec4476ed2d9ce",
-      "translation_hash": "60a95634b45fb450139f9964f13c83fc4bd068cd4d326be0c5f996b0522ea386",
+      "translation_hash": "9d7b80efa1684a2d7faf6b65cae9eae7295a18b6a4f875fd286e1e08d9e83159",
       "locations": [
         "src/input/ActionCatalog.cpp:109"
       ],
@@ -716,7 +716,7 @@
     {
       "id": "gamehq.action.overlay.menu.label",
       "source_hash": "5bb799778c850643f7521660489dc3218db3ec10c21365e6d09aaae714da0291",
-      "translation_hash": "86b6080a86e7b1c29ac432fa88f8bc2091765da0dac08ae837d9e5cc2d6a89fb",
+      "translation_hash": "828221f8a930f60ecb1a69b45d5db4db1f594a027ccd58aebe5ccb6fe4cebbf9",
       "locations": [
         "src/input/ActionCatalog.cpp:163"
       ],
@@ -7810,10 +7810,10 @@
       "id": "gamehq.action.desktop.menu.label",
       "surface": "application",
       "before": "Açık Menü",
-      "after": "Menüyü Aç",
+      "after": "Menüyü aç",
       "category": "ui_action",
-      "reason": "Uses a concise, natural Turkish action or navigation label appropriate to the control.",
-      "terminology_decision": "The reviewed wording follows the tr-TR style guide and the corrected English behavior."
+      "reason": "Uses the established Turkish sentence-case convention for action labels.",
+      "terminology_decision": "Menu actions use sentence case consistently with Ayarları aç and Galeriyi aç."
     },
     {
       "id": "gamehq.action.desktop.navigate_down.description",
@@ -8062,10 +8062,10 @@
       "id": "gamehq.action.global.toggle_desktop.description",
       "surface": "application",
       "before": "Getir şunu. GameHQ Pencereyi ön tarafa odakla, ya da sakla ve oyuna dön.",
-      "after": "Odaklanarak GameHQ penceresini öne getirin veya gizleyip oyuna geri dönün.",
+      "after": "GameHQ penceresini öne getirip odağa alın veya gizleyip oyuna geri dönün.",
       "category": "ui_action",
-      "reason": "Uses a concise, natural Turkish action or navigation label appropriate to the control.",
-      "terminology_decision": "The reviewed wording follows the tr-TR style guide and the corrected English behavior."
+      "reason": "Expresses bringing the GameHQ window forward and giving it focus as two coordinated effects.",
+      "terminology_decision": "Odağa alın describes the window receiving focus rather than the user focusing while acting."
     },
     {
       "id": "gamehq.action.global.toggle_overlay.description",
@@ -8179,10 +8179,10 @@
       "id": "gamehq.action.overlay.menu.label",
       "surface": "application",
       "before": "Açık Menü",
-      "after": "Menüyü Aç",
+      "after": "Menüyü aç",
       "category": "ui_action",
-      "reason": "Uses a concise, natural Turkish action or navigation label appropriate to the control.",
-      "terminology_decision": "The reviewed wording follows the tr-TR style guide and the corrected English behavior."
+      "reason": "Uses the established Turkish sentence-case convention for action labels.",
+      "terminology_decision": "Menu actions use sentence case consistently with Ayarları aç and Galeriyi aç."
     },
     {
       "id": "gamehq.action.overlay.navigate_down.description",
@@ -13441,6 +13441,15 @@
       "terminology_decision": "The reviewed wording follows the tr-TR style guide and the corrected English behavior."
     },
     {
+      "id": "GameHQUpdateActive",
+      "surface": "installer",
+      "before": "GameHQ güncellemesi çalışıyor%1. Tamamlanmasını bekleyip yeniden deneyin.",
+      "after": "GameHQ güncellemesi devam ediyor%1. Tamamlanmasını bekleyip yeniden deneyin.",
+      "category": "status_semantics",
+      "reason": "Uses a natural Turkish in-progress status for an active update.",
+      "terminology_decision": "An update continues or remains in progress; it does not run like an application."
+    },
+    {
       "id": "LOCGameHQIntegrationAboutDescription",
       "surface": "playnite",
       "before": "GameHQ, algılama ve yakalama düzenini daha güvenilir hâle getirmek için Playnite'ta oynadığınız oyunun adını alır. Oynanışı kaydetmez, veri yüklemez veya hiçbir şey kurmaz. GameHQ, Playnite olmadan da çalışır.",
@@ -13450,6 +13459,42 @@
       "terminology_decision": "Turkish distinguishes capture organization from gameplay recording and data upload."
     },
     {
+      "id": "LOCGameHQIntegrationStateConnected",
+      "surface": "playnite",
+      "before": "Bağlandı",
+      "after": "Bağlı",
+      "category": "connection_state",
+      "reason": "Uses a persistent connection-state label rather than a completed event.",
+      "terminology_decision": "Playnite diagnostics display states as Bağlı, Bağlanıyor, Beklemede, and Bağlı değil."
+    },
+    {
+      "id": "LOCGameHQIntegrationStateDisconnected",
+      "surface": "playnite",
+      "before": "Bağlantı kesildi",
+      "after": "Bağlı değil",
+      "category": "connection_state",
+      "reason": "Keeps the persistent connection-state family grammatically consistent.",
+      "terminology_decision": "Bağlı değil is the status counterpart of Bağlı rather than an event report."
+    },
+    {
+      "id": "LOCGameHQIntegrationStateWaitingForUpdate",
+      "surface": "playnite",
+      "before": "Bekleniyor (GameHQ güncelleniyor)",
+      "after": "Beklemede (GameHQ güncelleniyor)",
+      "category": "connection_state",
+      "reason": "Uses the correct state voice for a connection waiting on an update.",
+      "terminology_decision": "Beklemede denotes the current state; Bekleniyor would mean something is being awaited."
+    },
+    {
+      "id": "added-01",
+      "surface": "release_notes",
+      "before": "GameHQ artık on altı arayüz dilinde kullanılabiliyor. İlk açılışta Windows dilinizi izler, ayarlardan başka bir dil seçebilirsiniz.",
+      "after": "GameHQ artık on altı arayüz dilinde kullanılabiliyor. İlk açılışta Windows dil ayarınızı kullanır; ayarlardan başka bir dil seçebilirsiniz.",
+      "category": "locale_semantics",
+      "reason": "States naturally that first launch uses the Windows language setting.",
+      "terminology_decision": "Software uses a language setting; it does not literally follow a language."
+    },
+    {
       "id": "added-02",
       "surface": "release_notes",
       "before": "Dil değişikliği, GameHQ'yu yeniden başlatmadan kaplama ve bildirim alanı menüsü dahil uygulamanın tamamında anında geçerli olur. Seçiminiz hatırlanır.",
@@ -13457,6 +13502,15 @@
       "category": "product_terminology",
       "reason": "Uses reviewed Turkish and reflects the corrected release meaning.",
       "terminology_decision": "Release messaging uses the same terminology as the application and preserves the sixteen-language status."
+    },
+    {
+      "id": "changed-01",
+      "surface": "release_notes",
+      "before": "Tarihler, sayılar ve öğe sayıları artık sistem ayarı yerine seçilen dili izliyor.",
+      "after": "Tarihler, sayılar ve öğe sayıları artık sistem varsayılanı yerine seçilen dilin biçimlendirme kurallarına göre gösteriliyor.",
+      "category": "locale_semantics",
+      "reason": "Explains precisely that localized values use the selected language's formatting rules.",
+      "terminology_decision": "Dates, numbers, and counts are formatted according to locale rules rather than literally following a language."
     },
     {
       "id": "known-limitations-01",
@@ -13472,25 +13526,25 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_tr_TR.ts",
-      "sha256": "0b3cf054b3bc591ab0de911906beb736dec0a55b6fb44487c1aaa856fce1d91f",
+      "sha256": "c912960ea623d518e85e43dbb3777648136e76bddaef2772888d75b6151b39f6",
       "reviewed_units": 831
     },
     {
       "surface": "installer",
       "path": "packaging/i18n/custom-messages.json",
-      "sha256": "1134a65516f2ee70e18d69c1ec3989c7151433fcdc04da38633c821d1a96b177",
+      "sha256": "919f68cdfec03b140dfa3130f196df4ee21d200ca31d220204aefc60f052c8d4",
       "reviewed_units": 11
     },
     {
       "surface": "playnite",
       "path": "integrations/playnite/src/GameHQ.Playnite/Localization/tr_TR.xaml",
-      "sha256": "f017d618dcee4c226c766a0a0279bb55cbecf55a7ec95b610285eed0684901d6",
+      "sha256": "fcc3351e986c80ce973ffa428af31a325112a2f4a253a08fbc09e94f89a6803d",
       "reviewed_units": 52
     },
     {
       "surface": "release_notes",
       "path": "assets/release-notes/versions/0.7.7/tr-TR.json",
-      "sha256": "63e2eb4c1f13e020774f510d86efc9d64b85eaca9c29710a16f3170e18eed664",
+      "sha256": "378bdf4b27d90bb510fed77c39e5fadb8ac88dcd45696a0ac39588d353609d34",
       "reviewed_units": 10
     }
   ],
