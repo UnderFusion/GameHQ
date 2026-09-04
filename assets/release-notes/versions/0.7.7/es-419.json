@@ -13,23 +13,23 @@
       "items": [
         {
           "id": "added-01",
-          "text": "GameHQ ahora está disponible en dieciséis idiomas de interfaz. La primera vez que se abre toma el idioma de Windows y puedes elegir otro desde la configuración."
+          "text": "GameHQ ahora está disponible en dieciséis idiomas de interfaz. En el primer inicio usa la configuración de idioma de Windows; puede elegirse otro idioma en Configuración."
         },
         {
           "id": "added-02",
-          "text": "El cambio de idioma se aplica al instante en toda la aplicación, incluidos la superposición y el menú de la bandeja del sistema, sin reiniciar GameHQ. Tu elección queda guardada."
+          "text": "Los cambios de idioma se aplican de inmediato en toda la aplicación, incluidos la superposición y el menú de la bandeja del sistema, sin reiniciar GameHQ. La elección queda guardada."
         },
         {
           "id": "added-03",
-          "text": "El instalador ahora corre en tu idioma y le pasa esa elección al primer inicio de GameHQ, así que el instalador y la aplicación ya no se contradicen."
+          "text": "El instalador ahora usa el idioma seleccionado y transfiere esa elección al primer inicio de GameHQ, por lo que el instalador y la aplicación mantienen la misma selección."
         },
         {
           "id": "added-04",
-          "text": "La extensión de Playnite y los cuadros de diálogo de error del lanzador también están traducidos."
+          "text": "La extensión de Playnite y los cuadros de diálogo de error del iniciador también están traducidos."
         },
         {
           "id": "added-05",
-          "text": "Las novedades aparecen en tu idioma cada vez que existe una versión traducida de estas notas. Si no existe, se muestra el texto completo en inglés, nunca una mezcla de idiomas."
+          "text": "Las novedades aparecen en el idioma seleccionado cuando existe una versión traducida de estas notas. De lo contrario, se muestra el texto completo en inglés, nunca una mezcla de idiomas."
         }
       ]
     },
@@ -39,7 +39,7 @@
       "items": [
         {
           "id": "changed-01",
-          "text": "Las fechas, los números y los conteos ahora siguen el idioma seleccionado en lugar de la configuración del sistema."
+          "text": "Las fechas, los números y los conteos ahora usan las reglas de formato del idioma seleccionado en lugar de la configuración predeterminada del sistema."
         }
       ]
     },
@@ -49,7 +49,7 @@
       "items": [
         {
           "id": "known-limitations-01",
-          "text": "Doce idiomas ya traen los textos de interfaz traducidos. El italiano, el español latinoamericano, el tailandés y el ucraniano se pueden seleccionar y por ahora muestran el texto completo en inglés."
+          "text": "Los dieciséis idiomas disponibles al iniciar GameHQ ya incluyen texto de interfaz traducido. Aún se requiere una revisión lingüística contextual antes del lanzamiento."
         }
       ]
     }

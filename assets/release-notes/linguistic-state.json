@@ -20,7 +20,7 @@
         "zh-Hant": "contextually_reviewed",
         "tr-TR": "contextually_reviewed",
         "th-TH": "contextually_reviewed",
-        "es-419": "stale_review_pending",
+        "es-419": "contextually_reviewed",
         "uk-UA": "stale_review_pending",
         "it-IT": "stale_review_pending"
       }

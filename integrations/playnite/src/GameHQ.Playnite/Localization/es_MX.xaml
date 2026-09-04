@@ -3,7 +3,7 @@
   <sys:String x:Key="LOCGameHQIntegrationName">Integración de GameHQ</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSubtitle">Complemento para Playnite</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSectionConnection">Conexión</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationConnectionDescription">Le informa a la aplicación de escritorio GameHQ, que funciona por separado, qué juego se está ejecutando. GameHQ debe instalarse por separado; este complemento nunca lo descarga ni lo instala.</sys:String>
+    <sys:String x:Key="LOCGameHQIntegrationConnectionDescription">Informa a la aplicación de escritorio independiente de GameHQ qué juego está en ejecución. GameHQ debe instalarse por separado; este complemento nunca lo descarga ni lo instala.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationGameHQLocation">Ubicación de GameHQ</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationOpenFolder">Abrir carpeta</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationDownloadGameHQ">Descargar GameHQ</sys:String>
@@ -23,7 +23,7 @@
   <sys:String x:Key="LOCGameHQIntegrationLogHint">Los mensajes del complemento se guardan en el registro principal de Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLastErrorFormat">Último error: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSectionAbout">Acerca de esta integración</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ recibe el nombre del juego que estás usando en Playnite para que la detección y la organización de capturas sean más confiables. No graba partidas, no sube datos ni instala nada. GameHQ sigue funcionando sin Playnite.</sys:String>
+    <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ recibe de Playnite el nombre del juego en ejecución para que la detección y la organización de capturas sean más confiables. No graba partidas, no sube datos ni instala nada. GameHQ sigue funcionando sin Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationNotConnected">(sin conexión)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationGameHQNotFound">No se encontró GameHQ en esta PC.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLocateHint">Instala GameHQ y luego usa “Buscar GameHQ.exe...” si aún no se detecta.</sys:String>
