@@ -194,7 +194,7 @@ ukrainian.GameHQLaunch=Запустити GameHQ
 ukrainian.GameHQStageDetail= (етап: %1)
 ukrainian.GameHQUpdateActive=Триває оновлення GameHQ%1. Дочекайтеся завершення й повторіть спробу.
 ukrainian.GameHQUpdateStale=Попереднє оновлення GameHQ не завершилося%1. Запустіть GameHQ один раз для відновлення, а потім повторіть спробу.
-ukrainian.GameHQNothingRemoved=Нічого не видалено — установлена копія лишилася без змін.
+ukrainian.GameHQNothingRemoved=Нічого не видалено — встановлена копія лишилася без змін.
 ukrainian.GameHQSetupAppRunning=GameHQ запущено. Завершіть роботу програми звичайним способом, зокрема в будь-якому іншому сеансі Windows, а потім знову запустіть програму інсталяції.
 ukrainian.GameHQUninstallAppRunning=GameHQ запущено. Перед видаленням завершіть роботу програми звичайним способом, зокрема в будь-якому іншому сеансі Windows.
 

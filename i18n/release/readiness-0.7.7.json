@@ -40,63 +40,67 @@
     },
     {
       "path": "assets/release-notes/linguistic-state.json",
-      "sha256": "90d04ba21b4cb2a2302a1b0ef1f59f2d8f7b51132593d83e5e0b51beb65a7966"
+      "sha256": "6878328c76fac4e7e829264f4288ae42d67f24fd1631f0f129d050f70a076e0c"
     },
     {
       "path": "i18n/quality/reviews/en-US.json",
-      "sha256": "bece4afff4fbbf2213c197e0ad06c54bdb56bb9527982fd5541de011a8481c8e"
+      "sha256": "82a0ae9ade796868f12d692586fe964bcf2eaf21edb7c50e0d190b995d05ff75"
     },
     {
       "path": "i18n/quality/reviews/zh-Hans.json",
-      "sha256": "3c48d90826b5c0a4ae2b336d3cd375ef8924b05c4e483815b9804b0d043eef9f"
+      "sha256": "11b7d753085339435d5130994c5ec25d7d05555012073dbbbe00aa6d74263351"
     },
     {
       "path": "i18n/quality/reviews/ru-RU.json",
-      "sha256": "6feaddbd279b124e49d4148d1a9ff7f86214fa3d1c3f0299292f5e12f94102c9"
+      "sha256": "dd2ead51c06f9b3706928c630d1605e7ef82f3ce558a036b619f98784d1c9939"
     },
     {
       "path": "i18n/quality/reviews/es-ES.json",
-      "sha256": "7477a740a1655e42b1d8f99095b69b0d5203052bd7efc216147cf648525980cc"
+      "sha256": "19184f4ab4643c44d712524859748a9a7397b3dee92fe38c218cd5fb07cc305d"
     },
     {
       "path": "i18n/quality/reviews/pt-BR.json",
-      "sha256": "527e77a41c96eeb347ac21e090d51f7a1970da4593c7d171da6e7d6961da2ddc"
+      "sha256": "c6524f74621d005b24a3ec2f5fd72f4c9f16f525b6c8c3f755ce927d7f16c1b2"
     },
     {
       "path": "i18n/quality/reviews/de-DE.json",
-      "sha256": "1c6d1b7d96fb7599be922ebbfd9f3630c29934626b21f0bee0372f2fad1f1864"
+      "sha256": "11d4f890c1b2252232389a6a033d3ecdaf1aa0209d44db9b920788c6753a595c"
     },
     {
       "path": "i18n/quality/reviews/ja-JP.json",
-      "sha256": "8c04e86dfe78641c64b61bb2d6c73cd371514d5d4f76f8fca39c4e7d2350e954"
+      "sha256": "ded11140a73b0f76d8c87aabcf554f3a6a99d07d4ab9d335e43427e576f9c9a2"
     },
     {
       "path": "i18n/quality/reviews/fr-FR.json",
-      "sha256": "cf5713831e6aa1954bc4cc8b84e0b5641f9022bccfa677d593d8f26b553ace0a"
+      "sha256": "8f000193b5bc2c3a6e5025d30f55380fc61d96f0de62533df2e762f425431c12"
     },
     {
       "path": "i18n/quality/reviews/pl-PL.json",
-      "sha256": "53270ee0e209cd49f3ebac20ed708138a5cef164880d460ca9f9b225727d19f4"
+      "sha256": "f64a99b80626f4ff25a06b1bd1392024f61264caff3c7489dfb03461206eeb56"
     },
     {
       "path": "i18n/quality/reviews/ko-KR.json",
-      "sha256": "d13db3bf2dea7ce857898cca371a7df5774f5dd82dc2203d0273525dc47baead"
+      "sha256": "68602ffdaf6291e91e7a08d6b6f0e11f40053ae786ea82a06ebc4aa9a7ce678d"
     },
     {
       "path": "i18n/quality/reviews/zh-Hant.json",
-      "sha256": "4c0acf89a0a996c78d3b065308c0e63ee410dce8df78018dc5066799717df557"
+      "sha256": "bc5f154e37b3f2893cbd15997d91f5327f1f87046a3343fe490abb6e7f483da1"
     },
     {
       "path": "i18n/quality/reviews/tr-TR.json",
-      "sha256": "d0d1c44ad40e5864b405314edf4534b0b74eaadca64f3161ecb30702b2ed0ca2"
+      "sha256": "1dabbc407c330da3bb634c887d8429248bfee4b784fff2054af17663bdc0d5d1"
     },
     {
       "path": "i18n/quality/reviews/th-TH.json",
-      "sha256": "42ebbba623dec8d89d5f804ae06a80a799a9405ed874d5f8a0c3658dfb5191ed"
+      "sha256": "d59e9c22eb930ecd1552f7748faedd8fb2cdc3f8a5658c8f82648214b2bd3dbc"
     },
     {
       "path": "i18n/quality/reviews/es-419.json",
-      "sha256": "5a22521158e0ff53ea4b371b884ccc58e2fe55ec68c55d349c34dff31e2017e9"
+      "sha256": "dcc9cc350caacc64cfcdb19bd10157ab7dd52637d735ed93a55bdf79ad4271e6"
+    },
+    {
+      "path": "i18n/quality/reviews/uk-UA.json",
+      "sha256": "e2d7283e9f71e547dcece518fdc94e891a7c33cf45c2dd5cf4591138eeb53181"
     }
   ],
   "portfolio": {
@@ -247,7 +251,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/en-US.json",
-          "sha256": "bece4afff4fbbf2213c197e0ad06c54bdb56bb9527982fd5541de011a8481c8e"
+          "sha256": "82a0ae9ade796868f12d692586fe964bcf2eaf21edb7c50e0d190b995d05ff75"
         }
       }
     },
@@ -299,7 +303,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/zh-Hans.json",
-          "sha256": "3c48d90826b5c0a4ae2b336d3cd375ef8924b05c4e483815b9804b0d043eef9f"
+          "sha256": "11b7d753085339435d5130994c5ec25d7d05555012073dbbbe00aa6d74263351"
         }
       }
     },
@@ -351,7 +355,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/ru-RU.json",
-          "sha256": "6feaddbd279b124e49d4148d1a9ff7f86214fa3d1c3f0299292f5e12f94102c9"
+          "sha256": "dd2ead51c06f9b3706928c630d1605e7ef82f3ce558a036b619f98784d1c9939"
         }
       }
     },
@@ -403,7 +407,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/es-ES.json",
-          "sha256": "7477a740a1655e42b1d8f99095b69b0d5203052bd7efc216147cf648525980cc"
+          "sha256": "19184f4ab4643c44d712524859748a9a7397b3dee92fe38c218cd5fb07cc305d"
         }
       }
     },
@@ -455,7 +459,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/pt-BR.json",
-          "sha256": "527e77a41c96eeb347ac21e090d51f7a1970da4593c7d171da6e7d6961da2ddc"
+          "sha256": "c6524f74621d005b24a3ec2f5fd72f4c9f16f525b6c8c3f755ce927d7f16c1b2"
         }
       }
     },
@@ -507,7 +511,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/de-DE.json",
-          "sha256": "1c6d1b7d96fb7599be922ebbfd9f3630c29934626b21f0bee0372f2fad1f1864"
+          "sha256": "11d4f890c1b2252232389a6a033d3ecdaf1aa0209d44db9b920788c6753a595c"
         }
       }
     },
@@ -559,7 +563,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/ja-JP.json",
-          "sha256": "8c04e86dfe78641c64b61bb2d6c73cd371514d5d4f76f8fca39c4e7d2350e954"
+          "sha256": "ded11140a73b0f76d8c87aabcf554f3a6a99d07d4ab9d335e43427e576f9c9a2"
         }
       }
     },
@@ -611,7 +615,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/fr-FR.json",
-          "sha256": "cf5713831e6aa1954bc4cc8b84e0b5641f9022bccfa677d593d8f26b553ace0a"
+          "sha256": "8f000193b5bc2c3a6e5025d30f55380fc61d96f0de62533df2e762f425431c12"
         }
       }
     },
@@ -663,7 +667,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/pl-PL.json",
-          "sha256": "53270ee0e209cd49f3ebac20ed708138a5cef164880d460ca9f9b225727d19f4"
+          "sha256": "f64a99b80626f4ff25a06b1bd1392024f61264caff3c7489dfb03461206eeb56"
         }
       }
     },
@@ -715,7 +719,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/ko-KR.json",
-          "sha256": "d13db3bf2dea7ce857898cca371a7df5774f5dd82dc2203d0273525dc47baead"
+          "sha256": "68602ffdaf6291e91e7a08d6b6f0e11f40053ae786ea82a06ebc4aa9a7ce678d"
         }
       }
     },
@@ -767,7 +771,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/zh-Hant.json",
-          "sha256": "4c0acf89a0a996c78d3b065308c0e63ee410dce8df78018dc5066799717df557"
+          "sha256": "bc5f154e37b3f2893cbd15997d91f5327f1f87046a3343fe490abb6e7f483da1"
         }
       }
     },
@@ -819,7 +823,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/tr-TR.json",
-          "sha256": "d0d1c44ad40e5864b405314edf4534b0b74eaadca64f3161ecb30702b2ed0ca2"
+          "sha256": "1dabbc407c330da3bb634c887d8429248bfee4b784fff2054af17663bdc0d5d1"
         }
       }
     },
@@ -871,7 +875,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/th-TH.json",
-          "sha256": "42ebbba623dec8d89d5f804ae06a80a799a9405ed874d5f8a0c3658dfb5191ed"
+          "sha256": "d59e9c22eb930ecd1552f7748faedd8fb2cdc3f8a5658c8f82648214b2bd3dbc"
         }
       }
     },
@@ -923,27 +927,26 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/es-419.json",
-          "sha256": "5a22521158e0ff53ea4b371b884ccc58e2fe55ec68c55d349c34dff31e2017e9"
+          "sha256": "dcc9cc350caacc64cfcdb19bd10157ab7dd52637d735ed93a55bdf79ad4271e6"
         }
       }
     },
     "uk-UA": {
       "catalog": "i18n/app/gamehq_uk_UA.ts",
-      "catalog_sha256": "3277e465c2037d3d4e03489171065ba12c8dae1763dc0d72653881537934fe3f",
+      "catalog_sha256": "539f2902634bb15c01d59ced9ae2f863f67b299ab1ebe277b93dd6f3e97fe81d",
       "style": {
         "path": "i18n/style/uk-UA.json",
         "sha256": "f939be147dba51a1dc29929a40fba2b660137dcf87c727c2adde63b90e8d94d1"
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/uk-UA.json",
-        "sha256": "7d3c32cb099d019a5a28f94c6a44c54b2a7533de10760e20f7f9a9d908b809a7"
+        "sha256": "bf38d34bd85a0c079a49e9cb19a1e8f40482e2e2f71565bcfe2d24f135f61326"
       },
       "translation_state_counts": {
-        "machine_translated": 811,
-        "stale": 20
+        "contextually_reviewed": 831
       },
       "provenance_counts": {
-        "machine": 831
+        "agent": 831
       },
       "required_surfaces": [
         {
@@ -951,30 +954,33 @@
           "source_hash": "3ec5df0c56abdfb1c952840601ddac58376bd3d2f70bc5acf2c63fabfe8c0fc2",
           "catalog_translation_hash": "846900702a9cb3b51593ed039b52928394457f7d84f0567f8a2d8cbea3d8f41e",
           "recorded_translation_hash": "846900702a9cb3b51593ed039b52928394457f7d84f0567f8a2d8cbea3d8f41e",
-          "translation_state": "machine_translated",
+          "translation_state": "contextually_reviewed",
           "provenance": {
-            "actor": "codex/gpt-5.6-p8-1-preserved",
-            "kind": "machine"
+            "kind": "agent",
+            "actor": "codex-gpt-5-contextual-uk-UA"
           },
-          "updated_at": "2026-09-03T22:52:11+02:00"
+          "updated_at": "2026-09-04T11:59:30Z"
         },
         {
           "id": "gamehq.navigation.support_gamehq",
           "source_hash": "89af8f5819b4816cd95d8dfb847a1efecb676a0403b9190776e093ee6452bb78",
           "catalog_translation_hash": "32a915ac4974b4815e63fb6c92b7643863c28fcca3b0b3bf75275a6d10dfe577",
           "recorded_translation_hash": "32a915ac4974b4815e63fb6c92b7643863c28fcca3b0b3bf75275a6d10dfe577",
-          "translation_state": "machine_translated",
+          "translation_state": "contextually_reviewed",
           "provenance": {
-            "actor": "codex/gpt-5.6-p8-1-preserved",
-            "kind": "machine"
+            "kind": "agent",
+            "actor": "codex-gpt-5-contextual-uk-UA"
           },
-          "updated_at": "2026-09-03T22:52:11+02:00"
+          "updated_at": "2026-09-04T11:59:30Z"
         }
       ],
       "linguistic_qa": {
-        "state": "pending",
+        "state": "contextually_reviewed",
         "authority": "p8-3",
-        "artifact": null
+        "artifact": {
+          "path": "i18n/quality/reviews/uk-UA.json",
+          "sha256": "e2d7283e9f71e547dcece518fdc94e891a7c33cf45c2dd5cf4591138eeb53181"
+        }
       }
     },
     "it-IT": {

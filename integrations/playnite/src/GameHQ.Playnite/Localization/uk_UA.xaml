@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
   <sys:String x:Key="LOCGameHQIntegrationName">Інтеграція GameHQ</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationSubtitle">Супровідний плагін для Playnite</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationSubtitle">Супутній плагін для Playnite</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSectionConnection">Підключення</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationConnectionDescription">Повідомляє окремій настільній програмі GameHQ, яка гра зараз запущена. GameHQ потрібно встановити окремо — цей плагін її не завантажує і не встановлює.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationGameHQLocation">Розташування GameHQ</sys:String>
@@ -23,10 +23,10 @@
   <sys:String x:Key="LOCGameHQIntegrationLogHint">Повідомлення плагіна записуються до основного журналу Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLastErrorFormat">Остання помилка: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSectionAbout">Про цю інтеграцію</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ отримує назву гри, у яку ви граєте через Playnite, завдяки чому виявлення й упорядкування знімків стають надійнішими. Програма не записує ігровий процес, не передає дані й нічого не встановлює. GameHQ працює і без Playnite.</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ отримує через Playnite назву запущеної гри, завдяки чому виявлення й упорядкування знімків стають надійнішими. Плагін не записує ігровий процес, не передає дані й нічого не встановлює. GameHQ працює і без Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationNotConnected">(не підключено)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationGameHQNotFound">GameHQ не знайдено на цьому комп’ютері.</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationLocateHint">Установіть GameHQ, а потім скористайтеся командою «Знайти GameHQ.exe...», якщо програму все ще не виявлено.</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationLocateHint">Встановіть GameHQ, а потім скористайтеся командою «Знайти GameHQ.exe...», якщо програму все ще не виявлено.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSelectedManually">Вибрано вручну</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationDetectedAutomatically">Виявлено автоматично</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationChangeLocation">Змінити розташування...</sys:String>
@@ -34,7 +34,7 @@
   <sys:String x:Key="LOCGameHQIntegrationProtocolCompatibleFormat">v{0} (сумісний)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationUnknown">(невідомо)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationNone">(немає)</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationInvalidInstallMessage">Це розташування не схоже на інсталяцію GameHQ (поруч очікувався файл «app\GameHQ.exe»).</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationInvalidInstallMessage">У цьому розташуванні немає встановленої копії GameHQ (поруч очікувався файл «app\GameHQ.exe»).</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationConfigurationPathMissing">Playnite не надав шлях до конфігурації.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationCouldNotOpenFormat">Не вдалося відкрити {0}: {1}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationTesting">Перевірка...</sys:String>
@@ -50,6 +50,6 @@
   <sys:String x:Key="LOCGameHQIntegrationStateConnected">Підключено</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationStateConnecting">Підключення...</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationStateWaitingForUpdate">Очікування (GameHQ оновлюється)</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationStateDisconnected">Відключено</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationInvalidSelectedPath">Вибраний шлях не містить правильної інсталяції GameHQ.</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationStateDisconnected">Не підключено</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationInvalidSelectedPath">Вибраний шлях не містить встановленої копії GameHQ.</sys:String>
 </ResourceDictionary>
