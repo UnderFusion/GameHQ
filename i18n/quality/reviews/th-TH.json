@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "Google Translate draft from product-owned English followed by complete contextual Thai review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T17:00:00Z"
+    "recorded_at": "2026-09-04T18:30:00Z"
   },
   "baseline": {
     "path": "git:afd86d57bb31b3868519de2c86a27fa89403957f:i18n/app/gamehq_th_TH.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_th_TH.ts",
-    "sha256": "c1a373b2f6b6254b386a790ba4cfe03ddc5cae444358657b79b721fb28493359",
+    "sha256": "458177f4e37d3fd4ba82b260e67695755b106603bcda1595e254dc4c011178f8",
     "message_count": 831
   },
   "coverage": [
@@ -293,7 +293,7 @@
     {
       "id": "gamehq.action.desktop.favorite.label",
       "source_hash": "3fb9b539e4eaff25ac6a4985218274a9910cbd77f0845c1446c21533063f6a76",
-      "translation_hash": "1bd43ca8dd91bcbc1eb3b7ea13cda40a0651381308f00a5fd73eb58bc3798482",
+      "translation_hash": "c6726fdee3c9669688fced5b06b388febb42b50f4ae152e6beaf6a559b446186",
       "locations": [
         "src/input/ActionCatalog.cpp:234"
       ],
@@ -662,7 +662,7 @@
     {
       "id": "gamehq.action.overlay.favorite.label",
       "source_hash": "3fb9b539e4eaff25ac6a4985218274a9910cbd77f0845c1446c21533063f6a76",
-      "translation_hash": "1bd43ca8dd91bcbc1eb3b7ea13cda40a0651381308f00a5fd73eb58bc3798482",
+      "translation_hash": "c6726fdee3c9669688fced5b06b388febb42b50f4ae152e6beaf6a559b446186",
       "locations": [
         "src/input/ActionCatalog.cpp:156"
       ],
@@ -2441,7 +2441,7 @@
     {
       "id": "gamehq.gallery.hint.browse.gamepad",
       "source_hash": "79e71f69b0b3bb1d6546182ce1e0c2757e9141c860904f7820246c4d62a68a7a",
-      "translation_hash": "d661b86e9d3ce0c85851567255f583853212e79398de51d9fb238b807dcc2cc4",
+      "translation_hash": "49b5458befdee3bef51a8f81af67f33d20f0c56999a9e342a6f4e86fbbf4f896",
       "locations": [
         "src/ui/qml/components/DesktopGalleryFooter.qml:46"
       ],
@@ -2459,7 +2459,7 @@
     {
       "id": "gamehq.gallery.hint.bulk.gamepad",
       "source_hash": "0025d5b8fb1ce0d2c6c552fdcc3baa53cc040b0d74ced3a9de2d58471932f457",
-      "translation_hash": "a97ad7aa7c8ff2f63a542c7a0108dd68a2dd40ec40d7df717f4e556b7cfb1ead",
+      "translation_hash": "b2562bf2addcab35b1a2121f597da3d143653d7193ff11643897accdfd8cece4",
       "locations": [
         "src/ui/qml/components/DesktopGalleryFooter.qml:39"
       ],
@@ -2468,7 +2468,7 @@
     {
       "id": "gamehq.gallery.hint.bulk.keyboard",
       "source_hash": "1af4faac1bf0856401bf0db88575ee3dc16dbf91b9a515fa76a2a67e617cdc57",
-      "translation_hash": "b30b8b578ef8d3f86967682b3ca99bb2aa4829e456ef1bc880a765fca174e5c1",
+      "translation_hash": "85685b918d32b8c0ad0d5841a629a7c6a90c44409d923c9517e77f0b23c29061",
       "locations": [
         "src/ui/qml/components/DesktopGalleryFooter.qml:42"
       ],
@@ -2477,7 +2477,7 @@
     {
       "id": "gamehq.gallery.hint.sidebar.gamepad",
       "source_hash": "20640ce0dcc2f6d6efc949c72794382385a03f9437d2b55762a439e764a3d6d2",
-      "translation_hash": "381b57f61ca87e1e6eff292801bf735865496e73dd9e122234a420c05c2b6d61",
+      "translation_hash": "cd2ccf3147b629eefee710ca84e80634f440c2f5d6e13870884d44e8bfddf65f",
       "locations": [
         "src/ui/qml/components/DesktopGalleryFooter.qml:31"
       ],
@@ -2486,7 +2486,7 @@
     {
       "id": "gamehq.gallery.hint.sidebar.keyboard",
       "source_hash": "4f8eb6a771ba8fdc5b9a44a891765fe2a8e3459278c730f7711c90427ffc87ba",
-      "translation_hash": "f0787689c579075127c48dbd239c260c6b743dc1a43e9c050016d99c71a8ff4f",
+      "translation_hash": "2692c29eb37a175b5bbd96bc5efa718eb91e2b0b88d41953452b0cca32890c31",
       "locations": [
         "src/ui/qml/components/DesktopGalleryFooter.qml:34"
       ],
@@ -2604,7 +2604,7 @@
     {
       "id": "gamehq.help.feature.overlay.description",
       "source_hash": "9ff30cfc7c1b48132e168c9b6ffe80dbdf51a30bd7fdfe5365d7137cdca0d7b2",
-      "translation_hash": "ccc8591055fd6f0d084eae770a4e05f5c727933febe20759d8aaf60fc4e4f6f3",
+      "translation_hash": "ead9aa93358e9b59efd7634c752ec1c87466cd1a1acbce3e33a1a541febf8e8e",
       "locations": [
         "src/ui/qml/HelpView.qml:324"
       ],
@@ -3793,7 +3793,7 @@
     {
       "id": "gamehq.overlay.hint.menu.gamepad",
       "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
-      "translation_hash": "bf887d73c798d17c9a8260760b3ccb8bf77038d43448159d477b3d7e78af4627",
+      "translation_hash": "a4562ad0bd51951e166355b5e8a298b699ee45cf92c45123cd37553422ae29e6",
       "locations": [
         "src/ui/qml/components/OverlayFooter.qml:19"
       ],
@@ -3802,7 +3802,7 @@
     {
       "id": "gamehq.overlay.hint.menu.keyboard",
       "source_hash": "94f4544530d1db64a8f80c68d5d43259b93092b57b8dcbd5f83a1ce29970edf2",
-      "translation_hash": "7efc1d85db8ae095dfafb64be2b28b4ef0cbc922a0dea0cd1dd602560253a3f1",
+      "translation_hash": "f82ea2b8bdda669432aa9dc4b9b9194b99ea5dc499557fb4bb72fdb349663291",
       "locations": [
         "src/ui/qml/components/OverlayFooter.qml:22"
       ],
@@ -5026,7 +5026,7 @@
     {
       "id": "gamehq.settings.feedback.visual.enabled.description",
       "source_hash": "be717dae646685cc642476d709db5709baf619b0204a2a154adcbfac0a27a082",
-      "translation_hash": "4c119bc2ba504711b58506e5ea3d53e905089e226331de87052b84819174754d",
+      "translation_hash": "5e3e304aa0201d4c4f3bb95742e350445f7b8a2e4e94adcd3c3b628d002323e9",
       "locations": [
         "src/ui/qml/settings/FeedbackSettingsPage.qml:23"
       ],
@@ -5397,7 +5397,7 @@
     {
       "id": "gamehq.settings.input.devices.description",
       "source_hash": "6bcdcd6d8f9ce0dd260dded5db4de86cdd1f3031c82c9dc703d8eea815b1bff5",
-      "translation_hash": "3d032afeaba5f6d698ca98ed98e64eeaa17aded17d4ff4e7914dc069683c338a",
+      "translation_hash": "f6b7ab05953b00cfc42c9fdfffe1ca660872ae42b970a16dfdd1c7eea09068af",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:28"
       ],
@@ -7837,10 +7837,10 @@
       "id": "gamehq.action.desktop.favorite.label",
       "surface": "application",
       "before": "เปิด/ ปิด รายการโปรด",
-      "after": "สลับรายการโปรด",
-      "category": "contextual_fluency",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
+      "after": "เพิ่ม/นำออกจากรายการโปรด",
+      "category": "action_label",
+      "reason": "Expresses toggling the selected item's favorite state rather than switching a favorites list.",
+      "terminology_decision": "Static favorite toggles explicitly say add/remove from favorites."
     },
     {
       "id": "gamehq.action.desktop.menu.description",
@@ -8134,10 +8134,10 @@
       "id": "gamehq.action.overlay.favorite.label",
       "surface": "application",
       "before": "เปิด/ ปิด รายการโปรด",
-      "after": "สลับรายการโปรด",
-      "category": "contextual_fluency",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
+      "after": "เพิ่ม/นำออกจากรายการโปรด",
+      "category": "action_label",
+      "reason": "Expresses toggling the selected item's favorite state rather than switching a favorites list.",
+      "terminology_decision": "Static favorite toggles explicitly say add/remove from favorites."
     },
     {
       "id": "gamehq.action.overlay.game_next.description",
@@ -9619,10 +9619,10 @@
       "id": "gamehq.gallery.hint.browse.gamepad",
       "surface": "application",
       "before": "ไม้ กางเขน — เปิด ○ ○ สแควร์ — อาหาร ที่ ชื่น ชอบ — L1 — ด้านข้าง ○ เพลง  PS เพลง | — จัตุรัส",
-      "after": "Cross — เปิด |Triangle — รายการโปรด |Square — เมนู |L1 — แถบด้านข้าง |PS — โอเวอร์เลย์",
-      "category": "product_terminology",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
+      "after": "Cross — เปิด | Triangle — รายการโปรด | Square — เมนู | L1 — แถบด้านข้าง | PS — โอเวอร์เลย์",
+      "category": "legend_formatting",
+      "reason": "Restores the source legend's spaces around vertical-bar separators.",
+      "terminology_decision": "Controller key names remain protected and legend separators use spaces on both sides."
     },
     {
       "id": "gamehq.gallery.hint.browse.keyboard",
@@ -9637,37 +9637,37 @@
       "id": "gamehq.gallery.hint.bulk.gamepad",
       "surface": "application",
       "before": "ไม้ กางเขน — เลือก α — ทั้ง หมด ○ จัตุรัส — ลบ ○ วงกลม — เสร็จ",
-      "after": "Cross — เลือก |Triangle — ทั้งหมด |Square — ลบ |Circle — เสร็จแล้ว",
-      "category": "product_terminology",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
+      "after": "Cross — เลือก | Triangle — ทั้งหมด | Square — ลบ | Circle — เสร็จแล้ว",
+      "category": "legend_formatting",
+      "reason": "Restores the source legend's spaces around vertical-bar separators.",
+      "terminology_decision": "Controller key names remain protected and legend separators use spaces on both sides."
     },
     {
       "id": "gamehq.gallery.hint.bulk.keyboard",
       "surface": "application",
       "before": "ใส่/ space — เลือก | Ctrl+A — ทั้งหมด ○ ลบ — ลบ ○ เอสเอส — ทําเสร็จแล้ว",
-      "after": "Enter/Space — เลือก | Ctrl+A — ทั้งหมด |Delete — ลบ |Esc — เสร็จแล้ว",
-      "category": "product_terminology",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
+      "after": "Enter/Space — เลือก | Ctrl+A — ทั้งหมด | Delete — ลบ | Esc — เสร็จแล้ว",
+      "category": "legend_formatting",
+      "reason": "Restores the source legend's spaces around vertical-bar separators.",
+      "terminology_decision": "Keyboard key names remain protected and legend separators use spaces on both sides."
     },
     {
       "id": "gamehq.gallery.hint.sidebar.gamepad",
       "surface": "application",
       "before": "D-pad ↑ — เลือก | Cross — เลือก | R1 — กลับไปยังตาราง",
-      "after": "D-pad↑↓ — เลือก |Cross — เลือก |R1 — กลับสู่กริด",
-      "category": "product_terminology",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
+      "after": "D-pad↑↓ — เลือก | Cross — เลือก | R1 — กลับสู่กริด",
+      "category": "legend_formatting",
+      "reason": "Restores the source legend's spaces around vertical-bar separators.",
+      "terminology_decision": "Controller key names remain protected and legend separators use spaces on both sides."
     },
     {
       "id": "gamehq.gallery.hint.sidebar.keyboard",
       "surface": "application",
       "before": "↑ — เลือก ○ ใส่ — เลือก ○ เอส เอส — ย้อน ไป",
-      "after": "↑↓ — เลือก |Enter — เลือก |Esc — กลับสู่กริด",
-      "category": "product_terminology",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
+      "after": "↑↓ — เลือก | Enter — เลือก | Esc — กลับสู่กริด",
+      "category": "legend_formatting",
+      "reason": "Restores the source legend's spaces around vertical-bar separators.",
+      "terminology_decision": "Keyboard key names remain protected and legend separators use spaces on both sides."
     },
     {
       "id": "gamehq.gallery.selection.count",
@@ -9772,10 +9772,10 @@
       "id": "gamehq.help.feature.overlay.description",
       "surface": "application",
       "before": "แสดงผลแบบเต็มจอ HUD และจัดการการจับภาพจากภายในเกมโดยไม่มีการถอดแบบอัลท์-ทาบเบิลรวมเครือข่ายของแกลเลอรี่, ไลท์บ็อกซ์, และแจ้งเตือนการดื่ม",
-      "after": "HUD แบบเต็มหน้าจอโปร่งใส ดูและจัดการการจับภาพจากภายในเกมโดยไม่ต้องกด Alt รวมตารางแกลเลอรี ไลท์บ็อกซ์ และการแจ้งเตือนแบบโทสต์ของตัวเอง",
-      "category": "contextual_fluency",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
+      "after": "HUD แบบเต็มหน้าจอโปร่งใส ดูและจัดการการจับภาพจากภายในเกมโดยไม่ต้องสลับออกจากเกมด้วย Alt+Tab รวมตารางแกลเลอรี ไลท์บ็อกซ์ และการแจ้งเตือนแบบโทสต์ของตัวเอง",
+      "category": "behavior_semantics",
+      "reason": "Preserves the source meaning of remaining in-game without switching away via Alt+Tab.",
+      "terminology_decision": "Alt+Tab remains a protected shortcut and denotes application switching."
     },
     {
       "id": "gamehq.help.feature.replay.description",
@@ -10762,19 +10762,19 @@
       "id": "gamehq.overlay.hint.menu.gamepad",
       "surface": "application",
       "before": "D- Pad Up/ Down — เลือก | ไม้ กางเขน — ยืนยัน | วงกลม — เมนูปิด",
-      "after": "D-pad ขึ้น/ลง — เลือก |Cross — ยืนยัน |Circle — ปิดเมนู",
-      "category": "contextual_fluency",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
+      "after": "D-pad ขึ้น/ลง — เลือก | Cross — ยืนยัน | Circle — ปิดเมนู",
+      "category": "legend_formatting",
+      "reason": "Restores the source legend's spaces around vertical-bar separators.",
+      "terminology_decision": "Controller key names remain protected and legend separators use spaces on both sides."
     },
     {
       "id": "gamehq.overlay.hint.menu.keyboard",
       "surface": "application",
       "before": "Up/ Down — เลือก | input — ยืนยัน | เอส เอส/ แบ็คสเปซ — เมนู ปิด",
-      "after": "ขึ้น/ลง — เลือก |Enter — ยืนยัน |Esc/Backspace — ปิดเมนู",
-      "category": "contextual_fluency",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
+      "after": "ขึ้น/ลง — เลือก | Enter — ยืนยัน | Esc/Backspace — ปิดเมนู",
+      "category": "legend_formatting",
+      "reason": "Restores the source legend's spaces around vertical-bar separators.",
+      "terminology_decision": "Keyboard key names remain protected and legend separators use spaces on both sides."
     },
     {
       "id": "gamehq.overlay.hint.video.gamepad",
@@ -11752,10 +11752,10 @@
       "id": "gamehq.settings.feedback.visual.enabled.description",
       "surface": "application",
       "before": "สวิทช์หลักสําหรับจับและเล่นบัตรผลลัพธ์",
-      "after": "สวิตช์หลักสำหรับการจับภาพและเล่นการ์ดผลลัพธ์ซ้ำ",
-      "category": "contextual_fluency",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
+      "after": "สวิตช์หลักสำหรับการ์ดผลลัพธ์ของการจับภาพและรีเพลย์",
+      "category": "semantic_disambiguation",
+      "reason": "Makes capture and replay the events that own result cards rather than treating replay as a verb.",
+      "terminology_decision": "รีเพลย์ is the product replay concept, distinct from playing a card again."
     },
     {
       "id": "gamehq.settings.feedback.visual.eyebrow",
@@ -12094,10 +12094,10 @@
       "id": "gamehq.settings.input.devices.description",
       "surface": "application",
       "before": "เลือกประเภทของอุปกรณ์ แล้วเลือกช่องส่งงานที่จะจับภาพค่านําเข้าใหม่",
-      "after": "เลือกประเภทอุปกรณ์ แล้วเลือกช่องการกำหนดช่องใดช่องหนึ่งเพื่อตรวจจับอินพุตใหม่",
-      "category": "controller_behavior",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
+      "after": "เลือกประเภทอุปกรณ์ แล้วเลือกหนึ่งในช่องกำหนดปุ่มเพื่อตรวจจับอินพุตใหม่",
+      "category": "contextual_fluency",
+      "reason": "Removes a duplicated slot phrase and names either assignment slot naturally.",
+      "terminology_decision": "Assignment slots use ช่องกำหนดปุ่ม in this controller-input context."
     },
     {
       "id": "gamehq.settings.input.devices.keyboard",
@@ -14111,7 +14111,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_th_TH.ts",
-      "sha256": "c1a373b2f6b6254b386a790ba4cfe03ddc5cae444358657b79b721fb28493359",
+      "sha256": "458177f4e37d3fd4ba82b260e67695755b106603bcda1595e254dc4c011178f8",
       "reviewed_units": 831
     },
     {
@@ -14144,7 +14144,11 @@
     "Update security uses manifest, ค่าตรวจสอบ, SHA-256, ลายเซ็น, สถานะความเชื่อถือ, HTTPS, revalidation, and finalization terminology.",
     "Thai spacing is natural around clauses, numbers, Latin protected terms, placeholders, and UI elements without mechanically separating Thai words.",
     "Thai uses one Qt numerus form while preserving explicit quantities.",
-    "Controls are concise and neutral; explanatory text omits unnecessary pronouns and polite particles."
+    "Controls are concise and neutral; explanatory text omits unnecessary pronouns and polite particles.",
+    "Alt+Tab is a protected application-switching shortcut; overlay help explicitly preserves the no-switch-away behavior.",
+    "Static favorite action labels use เพิ่ม/นำออกจากรายการโปรด to describe changing the selected item's state.",
+    "Thai key legends place spaces on both sides of vertical-bar separators while preserving key names.",
+    "The native launcher uses ตัวเรียกใช้งาน consistently with the release-note surface."
   ],
   "calibration_rules": [
     "Review every stable ID with its English source, location, control role, and neighboring UI.",

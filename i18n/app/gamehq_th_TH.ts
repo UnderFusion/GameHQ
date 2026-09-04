@@ -160,7 +160,7 @@
     <message id="gamehq.action.desktop.favorite.label">
       <location filename="src/input/ActionCatalog.cpp" line="234"></location>
       <source>Toggle Favorite</source>
-      <translation>สลับรายการโปรด</translation>
+      <translation>เพิ่ม/นำออกจากรายการโปรด</translation>
     </message>
     <message id="gamehq.action.desktop.menu.description">
       <location filename="src/input/ActionCatalog.cpp" line="244"></location>
@@ -365,7 +365,7 @@
     <message id="gamehq.action.overlay.favorite.label">
       <location filename="src/input/ActionCatalog.cpp" line="156"></location>
       <source>Toggle Favorite</source>
-      <translation>สลับรายการโปรด</translation>
+      <translation>เพิ่ม/นำออกจากรายการโปรด</translation>
     </message>
     <message id="gamehq.action.overlay.game_next.description">
       <location filename="src/input/ActionCatalog.cpp" line="187"></location>
@@ -1387,7 +1387,7 @@ This cannot be undone.</source>
     <message id="gamehq.gallery.hint.browse.gamepad">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="46"></location>
       <source>Cross — open | Triangle — favorite | Square — menu | L1 — sidebar | PS — overlay</source>
-      <translation>Cross — เปิด |Triangle — รายการโปรด |Square — เมนู |L1 — แถบด้านข้าง |PS — โอเวอร์เลย์</translation>
+      <translation>Cross — เปิด | Triangle — รายการโปรด | Square — เมนู | L1 — แถบด้านข้าง | PS — โอเวอร์เลย์</translation>
     </message>
     <message id="gamehq.gallery.hint.browse.keyboard">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="49"></location>
@@ -1397,22 +1397,22 @@ This cannot be undone.</source>
     <message id="gamehq.gallery.hint.bulk.gamepad">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="39"></location>
       <source>Cross — select | Triangle — all | Square — delete | Circle — done</source>
-      <translation>Cross — เลือก |Triangle — ทั้งหมด |Square — ลบ |Circle — เสร็จแล้ว</translation>
+      <translation>Cross — เลือก | Triangle — ทั้งหมด | Square — ลบ | Circle — เสร็จแล้ว</translation>
     </message>
     <message id="gamehq.gallery.hint.bulk.keyboard">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="42"></location>
       <source>Enter/Space — select | Ctrl+A — all | Delete — delete | Esc — done</source>
-      <translation>Enter/Space — เลือก | Ctrl+A — ทั้งหมด |Delete — ลบ |Esc — เสร็จแล้ว</translation>
+      <translation>Enter/Space — เลือก | Ctrl+A — ทั้งหมด | Delete — ลบ | Esc — เสร็จแล้ว</translation>
     </message>
     <message id="gamehq.gallery.hint.sidebar.gamepad">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="31"></location>
       <source>D-pad ↑↓ — pick | Cross — select | R1 — back to grid</source>
-      <translation>D-pad↑↓ — เลือก |Cross — เลือก |R1 — กลับสู่กริด</translation>
+      <translation>D-pad↑↓ — เลือก | Cross — เลือก | R1 — กลับสู่กริด</translation>
     </message>
     <message id="gamehq.gallery.hint.sidebar.keyboard">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="34"></location>
       <source>↑↓ — pick | Enter — select | Esc — back to grid</source>
-      <translation>↑↓ — เลือก |Enter — เลือก |Esc — กลับสู่กริด</translation>
+      <translation>↑↓ — เลือก | Enter — เลือก | Esc — กลับสู่กริด</translation>
     </message>
     <message id="gamehq.gallery.selection.count" numerus="yes">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="26"></location>
@@ -1480,7 +1480,7 @@ This cannot be undone.</source>
     <message id="gamehq.help.feature.overlay.description">
       <location filename="src/ui/qml/HelpView.qml" line="324"></location>
       <source>Transparent fullscreen HUD. View and manage captures from inside a game without alt-tabbing. Includes its own gallery grid, lightbox, and toast notifications.</source>
-      <translation>HUD แบบเต็มหน้าจอโปร่งใส ดูและจัดการการจับภาพจากภายในเกมโดยไม่ต้องกด Alt รวมตารางแกลเลอรี ไลท์บ็อกซ์ และการแจ้งเตือนแบบโทสต์ของตัวเอง</translation>
+      <translation>HUD แบบเต็มหน้าจอโปร่งใส ดูและจัดการการจับภาพจากภายในเกมโดยไม่ต้องสลับออกจากเกมด้วย Alt+Tab รวมตารางแกลเลอรี ไลท์บ็อกซ์ และการแจ้งเตือนแบบโทสต์ของตัวเอง</translation>
     </message>
     <message id="gamehq.help.feature.overlay.title">
       <location filename="src/ui/qml/HelpView.qml" line="322"></location>
@@ -2173,12 +2173,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.overlay.hint.menu.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="19"></location>
       <source>D-pad Up/Down — choose | Cross — confirm | Circle — close menu</source>
-      <translation>D-pad ขึ้น/ลง — เลือก |Cross — ยืนยัน |Circle — ปิดเมนู</translation>
+      <translation>D-pad ขึ้น/ลง — เลือก | Cross — ยืนยัน | Circle — ปิดเมนู</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="22"></location>
       <source>Up/Down — choose | Enter — confirm | Esc/Backspace — close menu</source>
-      <translation>ขึ้น/ลง — เลือก |Enter — ยืนยัน |Esc/Backspace — ปิดเมนู</translation>
+      <translation>ขึ้น/ลง — เลือก | Enter — ยืนยัน | Esc/Backspace — ปิดเมนู</translation>
     </message>
     <message id="gamehq.overlay.hint.video.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="27"></location>
@@ -2863,7 +2863,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.feedback.visual.enabled.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="23"></location>
       <source>Master switch for capture and replay result cards.</source>
-      <translation>สวิตช์หลักสำหรับการจับภาพและเล่นการ์ดผลลัพธ์ซ้ำ</translation>
+      <translation>สวิตช์หลักสำหรับการ์ดผลลัพธ์ของการจับภาพและรีเพลย์</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.enabled.label">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="21"></location>
@@ -3072,7 +3072,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.devices.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="28"></location>
       <source>Choose a device type, then select either assignment slot to capture a new input.</source>
-      <translation>เลือกประเภทอุปกรณ์ แล้วเลือกช่องการกำหนดช่องใดช่องหนึ่งเพื่อตรวจจับอินพุตใหม่</translation>
+      <translation>เลือกประเภทอุปกรณ์ แล้วเลือกหนึ่งในช่องกำหนดปุ่มเพื่อตรวจจับอินพุตใหม่</translation>
     </message>
     <message id="gamehq.settings.input.devices.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="24"></location>

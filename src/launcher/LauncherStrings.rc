@@ -142,7 +142,7 @@ BEGIN
     IDS_LAUNCHER_TITLE "GameHQ"
     IDS_LAUNCHER_PATH_TOO_DEEP "GameHQ ติดตั้งอยู่ในเส้นทางที่ลึกเกินกว่าที่ Windows จะเริ่มได้\nย้ายโฟลเดอร์ GameHQ ไปยังตำแหน่งที่มีเส้นทางสั้นกว่า"
     IDS_LAUNCHER_UPDATE_ACTIVE "GameHQ กำลังอัปเดต โปรดลองอีกครั้งในอีกสักครู่"
-    IDS_LAUNCHER_EXE_MISSING "ไม่พบ app\\GameHQ.exe ข้างตัวเปิดใช้"
+    IDS_LAUNCHER_EXE_MISSING "ไม่พบ app\\GameHQ.exe ข้างตัวเรียกใช้งาน"
     IDS_LAUNCHER_COMMAND_TOO_LONG "บรรทัดคำสั่งที่ส่งไปยัง GameHQ ยาวเกินขีดจำกัดของ Windows"
     IDS_LAUNCHER_START_FAILED "ไม่สามารถเริ่ม app\\GameHQ.exe ได้"
 END
