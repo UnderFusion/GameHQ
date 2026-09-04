@@ -328,7 +328,7 @@
     },
     "it-IT": {
       "GameHQWelcomeTitle": "Benvenuto in GameHQ",
-      "GameHQWelcomeBody": "Il programma di installazione installerà [name/ver] in questo computer.%n%nChiudi GameHQ prima di continuare.",
+      "GameHQWelcomeBody": "Il programma di installazione installerà [name/ver] su questo computer.%n%nChiudi GameHQ prima di continuare.",
       "GameHQDesktopShortcut": "Crea un collegamento sul desktop",
       "GameHQAdditionalShortcuts": "Collegamenti aggiuntivi:",
       "GameHQLaunch": "Avvia GameHQ",

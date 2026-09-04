@@ -25,7 +25,7 @@
         },
         {
           "id": "added-04",
-          "text": "Anche l'estensione per Playnite e le finestre di errore dell'avviatore sono localizzate."
+          "text": "Anche l'estensione per Playnite e le finestre di errore del programma di avvio sono localizzate."
         },
         {
           "id": "added-05",
@@ -49,7 +49,7 @@
       "items": [
         {
           "id": "known-limitations-01",
-          "text": "Dodici lingue includono i testi dell'interfaccia tradotti. Italiano, spagnolo latinoamericano, thai e ucraino sono già selezionabili e per ora mostrano il testo inglese completo."
+          "text": "Tutte e sedici le lingue del rilascio includono ora i testi dell'interfaccia tradotti. Prima del rilascio è ancora necessaria una revisione linguistica contestuale."
         }
       ]
     }

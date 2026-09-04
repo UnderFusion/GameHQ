@@ -23,7 +23,7 @@
   <sys:String x:Key="LOCGameHQIntegrationLogHint">I messaggi del plugin vengono scritti nel registro principale di Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLastErrorFormat">Ultimo errore: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSectionAbout">Informazioni sull'integrazione</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ riceve il nome del gioco usato in Playnite, rendendo più affidabili il rilevamento e l'organizzazione delle acquisizioni. Non registra l'attività di gioco, non carica dati e non installa nulla. GameHQ continua a funzionare senza Playnite.</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ riceve il nome del gioco a cui stai giocando in Playnite, rendendo più affidabili il rilevamento e l'organizzazione delle acquisizioni. Non registra l'attività di gioco, non carica dati e non installa nulla. GameHQ continua a funzionare senza Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationNotConnected">(non connesso)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationGameHQNotFound">GameHQ non è stato trovato in questo computer.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLocateHint">Installa GameHQ, quindi usa “Individua GameHQ.exe...” se non viene ancora rilevato.</sys:String>
@@ -48,7 +48,7 @@
   <sys:String x:Key="LOCGameHQIntegrationDiagnosticsProtocolFormat">Protocollo: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationDiagnosticsConnectionStateFormat">Stato della connessione: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationStateConnected">Connesso</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationStateConnecting">Connessione...</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationStateConnecting">Connessione in corso...</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationStateWaitingForUpdate">In attesa (aggiornamento di GameHQ in corso)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationStateDisconnected">Disconnesso</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationInvalidSelectedPath">Il percorso selezionato non contiene un'installazione valida di GameHQ.</sys:String>

@@ -277,3 +277,41 @@ The binding decisions are:
 Controls use concise infinitives and explanatory text uses neutral metropolitan French.
 Protected identifiers, shortcut keys, button names, paths, placeholders, and versions remain
 unchanged.
+
+## Italian calibration decisions
+
+`i18n/quality/reviews/it-IT.json` records the complete contextual review of the Italian
+application catalog and auxiliary surfaces. The draft was raw machine output: it left control
+labels in English, translated `Tap` as a plumbing tap, `string` as a rope, `fast` as breakfast,
+`Lightbox` as a bright box, `Screenshots` as projections, and rendered the database foreign key
+and the staging vocabulary as unrelated everyday words.
+
+The binding decisions are:
+
+- A saved screenshot or clip is an `acquisizione` and the domain verb is `acquisire`. `Take
+  screenshot` stays the natural `Cattura uno screenshot`, because the English verb there is
+  `take`, not `capture`.
+- Controller input detection is `rilevamento dell'input` and never reuses the media term.
+- Gesture names form one series: `Press` is `Pressione`, `Tap` is `Pressione breve`, `Double
+  tap` and `Triple tap` are `Doppia pressione` and `Tripla pressione`, and `Hold` is `Pressione
+  prolungata`. A completed hold cancels the short press.
+- Gesture timing windows are `intervalli`, never `finestre`, so `Combination window` is
+  `Intervallo di combinazione` beside `Intervallo tra pressioni`. Presets name behavior rather
+  than speed alone: `200 ms (rapido)` against `500 ms (tollerante)`.
+- Toggle labels state their effect. The favorite action is `Aggiungi/rimuovi dai preferiti`,
+  while genuine surface toggles such as the overlay and the sidebar use `Attiva/disattiva`.
+- `galleria`, `libreria`, `overlay` and `barra laterale` stay distinct, and the Windows tray is
+  the `area di notifica`, never a `vassoio`.
+- `replay`, `buffer di replay`, `clip`, `registrazione`, `riproduzione` and `screenshot` denote
+  distinct media concepts; `replay` is never rendered as `ripetizione`.
+- Database vocabulary is `chiave esterna`, `schema`, `integrità`, `transazione`, `riga`,
+  `array` and `stringa`. Update security uses `manifest`, `checksum`, `firma`, `attendibilità`
+  and `staging`; something staged is `in staging`, never `messo in scena`.
+- Internal transactional publish operations use `rendere definitivo` or `finalizzare` rather
+  than the public-facing `pubblicare`, and GameInput uses `runtime GameInput` with a `ripiego
+  sul meccanismo legacy` that names the fallback path rather than old hardware.
+- `storage` is `archiviazione`; `stoccaggio` is warehouse vocabulary and is not used.
+
+Controls use concise Italian sentence case without final periods, and explanatory prose uses
+natural Italian information order. Protected identifiers, shortcut keys, button names, paths,
+placeholders, and versions remain unchanged.

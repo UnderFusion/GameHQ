@@ -22,7 +22,7 @@
         "th-TH": "contextually_reviewed",
         "es-419": "contextually_reviewed",
         "uk-UA": "contextually_reviewed",
-        "it-IT": "stale_review_pending"
+        "it-IT": "contextually_reviewed"
       }
     }
   }

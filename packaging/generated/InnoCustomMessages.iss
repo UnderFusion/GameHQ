@@ -200,7 +200,7 @@ ukrainian.GameHQUninstallAppRunning=GameHQ запущено. Перед вида
 
 ; locale=it-IT; fallback=en-US
 italian.GameHQWelcomeTitle=Benvenuto in GameHQ
-italian.GameHQWelcomeBody=Il programma di installazione installerà [name/ver] in questo computer.%n%nChiudi GameHQ prima di continuare.
+italian.GameHQWelcomeBody=Il programma di installazione installerà [name/ver] su questo computer.%n%nChiudi GameHQ prima di continuare.
 italian.GameHQDesktopShortcut=Crea un collegamento sul desktop
 italian.GameHQAdditionalShortcuts=Collegamenti aggiuntivi:
 italian.GameHQLaunch=Avvia GameHQ
