@@ -166,6 +166,32 @@ The locale uses neutral Brazilian Portuguese, concise infinitive actions, `compu
 Protected identifiers, shortcut keys, button names, paths, placeholders, and versions remain
 unchanged.
 
+## Korean calibration decisions
+
+`i18n/quality/reviews/ko-KR.json` records the complete contextual review of the Korean
+application catalog and auxiliary surfaces. The structurally valid draft contained literal
+word senses, unnatural controls, and misleading input and technical terminology.
+
+The binding decisions are:
+
+- `controller` is `컨트롤러`; input assignment is `할당`, its position is a `슬롯`, and
+  controller input capture means detecting `입력`, never recording media.
+- Gesture timing remains explicit: immediate `Press` is `누르기`, release-based `Tap` is
+  `짧게 누르기`, double and triple presses are `두 번 누르기` and `세 번 누르기`, and
+  `Hold` is `길게 누르기`; a completed hold prevents the short-press action.
+- `Replay` is `리플레이`, its rolling store is the `리플레이 버퍼`, a saved video is a
+  `클립`, recording is `녹화`, and ordinary playback is `재생`.
+- The media `갤러리` remains distinct from the managed `라이브러리`; `오버레이`,
+  `알림 영역`, `감시 폴더`, and storage locations retain their separate product roles.
+- Update trust uses `매니페스트`, `체크섬`, `서명`, `무결성`, and `신뢰 상태`;
+  database foreign keys are `외래 키`.
+- Portable import uses `포터블`, `준비된`, `저널`, `문자열`, `루트`, `원본`, and
+  `인스턴스`; the `portable:/` scheme remains literal.
+
+Controls use concise action forms, while explanatory prose uses consistent polite Korean.
+Protected identifiers, shortcut keys, button names, paths, placeholders, and versions remain
+unchanged.
+
 ## German calibration decisions
 
 `i18n/quality/reviews/de-DE.json` records the complete contextual review of the German
