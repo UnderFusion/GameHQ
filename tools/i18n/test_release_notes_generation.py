@@ -96,7 +96,8 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         self.assertEqual("contextually_reviewed", statuses["pt-BR"])
         self.assertEqual("contextually_reviewed", statuses["de-DE"])
         self.assertEqual("contextually_reviewed", statuses["ja-JP"])
-        self.assertEqual(8, sum(value == "stale_review_pending" for value in statuses.values()))
+        self.assertEqual("contextually_reviewed", statuses["fr-FR"])
+        self.assertEqual(7, sum(value == "stale_review_pending" for value in statuses.values()))
 
         stale = copy.deepcopy(state)
         stale["units"]["known-limitations-01"]["source_hash"] = "0" * 64

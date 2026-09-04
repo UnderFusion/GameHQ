@@ -220,3 +220,30 @@ The binding decisions are:
 Controls use concise labels without unnecessary polite endings, while explanatory prose uses
 consistent polite Japanese. Protected identifiers, shortcut keys, button names, paths,
 placeholders, and versions remain unchanged.
+
+## French calibration decisions
+
+`i18n/quality/reviews/fr-FR.json` records the complete contextual review of the French
+application catalog and auxiliary surfaces. The draft was structurally valid but contained
+literal word senses, dialogue fragments, incorrect controls, and misleading technical terms.
+
+The binding decisions are:
+
+- `controller` is `manette`; input assignment is `affectation`, its position is an
+  `emplacement`, and input capture means detecting an `entrée`, never recording media.
+- Gesture timing remains explicit: immediate `Press` is `Appui`, release-based `Tap` is
+  `Appui bref`, double and triple press are `Double appui` and `Triple appui`, and `Hold` is
+  `Appui long`; a completed hold prevents the short-press action.
+- `Replay` names the feature, its rolling store is the `tampon de replay`, a saved video is a
+  `clip`, recording is `enregistrement`, and ordinary playback is `lecture`.
+- A saved media item is a `capture`, a screenshot is a `capture d’écran`, and a video frame is
+  an `image`. `gallery` is `galerie`, `library` is `bibliothèque`, `overlay` is `surcouche`,
+  and the system tray is the `zone de notification`.
+- Update security uses `manifeste`, `somme de contrôle`, `signature`, `préparation`,
+  `transaction`, and `état de confiance`; database foreign keys are `clés étrangères`.
+- Portable import uses `portable`, `préparé`, `journal`, `chaîne`, `racine`, `source`, and
+  `instance`; the `portable:/` scheme remains literal.
+
+Controls use concise infinitives and explanatory text uses neutral metropolitan French.
+Protected identifiers, shortcut keys, button names, paths, placeholders, and versions remain
+unchanged.
