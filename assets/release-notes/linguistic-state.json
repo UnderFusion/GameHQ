@@ -19,7 +19,7 @@
         "ko-KR": "contextually_reviewed",
         "zh-Hant": "contextually_reviewed",
         "tr-TR": "contextually_reviewed",
-        "th-TH": "stale_review_pending",
+        "th-TH": "contextually_reviewed",
         "es-419": "stale_review_pending",
         "uk-UA": "stale_review_pending",
         "it-IT": "stale_review_pending"

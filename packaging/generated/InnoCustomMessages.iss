@@ -181,7 +181,7 @@ thai.GameHQLaunch=เปิด GameHQ
 thai.GameHQStageDetail= (ขั้นตอน: %1)
 thai.GameHQUpdateActive=กำลังอัปเดต GameHQ%1 โปรดรอให้เสร็จแล้วลองอีกครั้ง
 thai.GameHQUpdateStale=การอัปเดต GameHQ ครั้งก่อนยังไม่เสร็จ%1 เปิด GameHQ หนึ่งครั้งเพื่อให้ระบบกู้คืน แล้วลองอีกครั้ง
-thai.GameHQNothingRemoved=ยังไม่มีการลบสิ่งใด การติดตั้งของคุณยังคงอยู่
+thai.GameHQNothingRemoved=ยังไม่มีการลบสิ่งใด การติดตั้งยังคงอยู่ครบถ้วน
 thai.GameHQSetupAppRunning=GameHQ กำลังทำงาน ปิดโปรแกรมตามปกติ รวมถึงโปรแกรมที่ทำงานอยู่ในเซสชัน Windows อื่น แล้วเรียกใช้โปรแกรมติดตั้งอีกครั้ง
 thai.GameHQUninstallAppRunning=GameHQ กำลังทำงาน ปิดโปรแกรมตามปกติ รวมถึงโปรแกรมที่ทำงานอยู่ในเซสชัน Windows อื่น ก่อนถอนการติดตั้ง
 

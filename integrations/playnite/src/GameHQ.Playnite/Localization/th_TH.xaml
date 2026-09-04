@@ -23,7 +23,7 @@
   <sys:String x:Key="LOCGameHQIntegrationLogHint">ข้อความจากปลั๊กอินจะถูกบันทึกไว้ในบันทึกหลักของ Playnite</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLastErrorFormat">ข้อผิดพลาดล่าสุด: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSectionAbout">เกี่ยวกับการผสานรวมนี้</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ รับชื่อเกมที่คุณกำลังเล่นผ่าน Playnite เพื่อให้การตรวจหาและการจัดระเบียบไฟล์บันทึกภาพมีความแม่นยำยิ่งขึ้น โปรแกรมจะไม่บันทึกการเล่นเกม อัปโหลดข้อมูล หรือติดตั้งสิ่งใด และ GameHQ ยังทำงานได้โดยไม่ต้องใช้ Playnite</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ รับชื่อเกมที่กำลังเล่นจาก Playnite เพื่อให้การตรวจจับและการจัดระเบียบไฟล์สื่อแม่นยำยิ่งขึ้น โปรแกรมจะไม่บันทึกการเล่นเกม อัปโหลดข้อมูล หรือติดตั้งสิ่งใด และ GameHQ ยังทำงานได้โดยไม่ต้องใช้ Playnite</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationNotConnected">(ยังไม่ได้เชื่อมต่อ)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationGameHQNotFound">ไม่พบ GameHQ ในคอมพิวเตอร์เครื่องนี้</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLocateHint">ติดตั้ง GameHQ แล้วใช้ “ค้นหา GameHQ.exe...” หากยังตรวจไม่พบ</sys:String>
@@ -47,9 +47,9 @@
   <sys:String x:Key="LOCGameHQIntegrationDiagnosticsGameHQVersionFormat">เวอร์ชัน GameHQ: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationDiagnosticsProtocolFormat">โปรโตคอล: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationDiagnosticsConnectionStateFormat">สถานะการเชื่อมต่อ: {0}</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationStateConnected">เชื่อมต่อแล้ว</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationStateConnected">เชื่อมต่ออยู่</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationStateConnecting">กำลังเชื่อมต่อ...</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationStateWaitingForUpdate">กำลังรอ (GameHQ กำลังอัปเดต)</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationStateDisconnected">ตัดการเชื่อมต่อแล้ว</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationStateWaitingForUpdate">รออยู่ (GameHQ กำลังอัปเดต)</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationStateDisconnected">ไม่ได้เชื่อมต่อ</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationInvalidSelectedPath">เส้นทางที่เลือกไม่มีการติดตั้ง GameHQ ที่ถูกต้อง</sys:String>
 </ResourceDictionary>
