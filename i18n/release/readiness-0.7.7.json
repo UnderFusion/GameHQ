@@ -40,7 +40,7 @@
     },
     {
       "path": "assets/release-notes/linguistic-state.json",
-      "sha256": "5a1c16f41d43dbd1c56f616027ef70a4324a51f5e8c0f283d2ba718bb6aba8d1"
+      "sha256": "bf89171c1e48108f2e35b37aed67098c8c53cddce576e601a139bcf9df62c7e3"
     },
     {
       "path": "i18n/quality/reviews/en-US.json",
@@ -65,6 +65,10 @@
     {
       "path": "i18n/quality/reviews/de-DE.json",
       "sha256": "e3643dc1c9babcd8185bd9c62d4e3365a2aba9a71cffbfd42b1ecfbcda4bbf21"
+    },
+    {
+      "path": "i18n/quality/reviews/ja-JP.json",
+      "sha256": "d01ed39be572b94da231d12519be21ebfb61b4b218b05ffde77e058cf0edc361"
     },
     {
       "path": "i18n/quality/reviews/pl-PL.json",
@@ -485,52 +489,54 @@
     },
     "ja-JP": {
       "catalog": "i18n/app/gamehq_ja_JP.ts",
-      "catalog_sha256": "48e4e3cd46899b3e4923bf0090490a80601fd0889b25e53a5a8dd90a7964f452",
+      "catalog_sha256": "dfeb141a8d09e7638b03e47545ff6265025cbf5b34f1d9a91195e459cbe3ab24",
       "style": {
         "path": "i18n/style/ja-JP.json",
         "sha256": "61efe55273dd5ec089c2c017cfc0b8a392f062efbe84a25c529a442af2ab0cfb"
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/ja-JP.json",
-        "sha256": "40b112c5a3f9f461eeb9c79fe2bc662f03398cbe524c0a03593c0c72e6b88aba"
+        "sha256": "a0d17aca6bebf7104968f932a5a1d6474d6784304a5a53f10b8d8c88437de2d7"
       },
       "translation_state_counts": {
-        "machine_translated": 811,
-        "stale": 20
+        "contextually_reviewed": 831
       },
       "provenance_counts": {
-        "machine": 831
+        "agent": 831
       },
       "required_surfaces": [
         {
           "id": "gamehq.navigation.about",
           "source_hash": "3ec5df0c56abdfb1c952840601ddac58376bd3d2f70bc5acf2c63fabfe8c0fc2",
-          "catalog_translation_hash": "345bc73a301d3171852dc05a9dbfc6cba1d0673641a28e88c7b5e881c1781c09",
-          "recorded_translation_hash": "345bc73a301d3171852dc05a9dbfc6cba1d0673641a28e88c7b5e881c1781c09",
-          "translation_state": "machine_translated",
+          "catalog_translation_hash": "ffbc1f5a6a447b848c13aa330e2450740cb8f1a9ae7f5413529cd577d5d2cc79",
+          "recorded_translation_hash": "ffbc1f5a6a447b848c13aa330e2450740cb8f1a9ae7f5413529cd577d5d2cc79",
+          "translation_state": "contextually_reviewed",
           "provenance": {
-            "actor": "codex/gpt-5.6-p8-1-preserved",
-            "kind": "machine"
+            "kind": "agent",
+            "actor": "codex-gpt-5-contextual-ja-jp"
           },
-          "updated_at": "2026-09-03T22:52:11+02:00"
+          "updated_at": "2026-09-04T14:30:00Z"
         },
         {
           "id": "gamehq.navigation.support_gamehq",
           "source_hash": "89af8f5819b4816cd95d8dfb847a1efecb676a0403b9190776e093ee6452bb78",
           "catalog_translation_hash": "4d58e8e43ec383cc0c584ba02b8a7f1ce5b7fbdf981ea41635b7d6df525bf8df",
           "recorded_translation_hash": "4d58e8e43ec383cc0c584ba02b8a7f1ce5b7fbdf981ea41635b7d6df525bf8df",
-          "translation_state": "machine_translated",
+          "translation_state": "contextually_reviewed",
           "provenance": {
-            "actor": "codex/gpt-5.6-p8-1-preserved",
-            "kind": "machine"
+            "kind": "agent",
+            "actor": "codex-gpt-5-contextual-ja-jp"
           },
-          "updated_at": "2026-09-03T22:52:11+02:00"
+          "updated_at": "2026-09-04T14:30:00Z"
         }
       ],
       "linguistic_qa": {
-        "state": "pending",
+        "state": "contextually_reviewed",
         "authority": "p8-3",
-        "artifact": null
+        "artifact": {
+          "path": "i18n/quality/reviews/ja-JP.json",
+          "sha256": "d01ed39be572b94da231d12519be21ebfb61b4b218b05ffde77e058cf0edc361"
+        }
       }
     },
     "fr-FR": {

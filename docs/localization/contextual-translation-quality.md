@@ -193,3 +193,30 @@ The binding decisions are:
 German nouns are capitalized, action labels use concise verbs, explanatory text uses neutral
 formal or impersonal phrasing, and compounds are formed naturally. Protected identifiers,
 shortcut keys, button names, paths, placeholders, and versions remain unchanged.
+
+## Japanese calibration decisions
+
+`i18n/quality/reviews/ja-JP.json` records the complete contextual review of the Japanese
+application catalog and auxiliary surfaces. The draft was structurally valid but contained
+literal word senses, subtitle fragments, incorrect controls, and translated key names.
+
+The binding decisions are:
+
+- `controller` is `コントローラー`; input assignment is `割り当て`, its position is a
+  `スロット`, and input capture means detecting `入力`, never recording media.
+- Gesture timing remains explicit: immediate `Press` is `押す`, release-based `Tap` is
+  `短押し`, double and triple press are `2回押し` and `3回押し`, and `Hold` is `長押し`;
+  a completed hold prevents the short-press action.
+- `リプレイ` names the feature, its rolling store is the `リプレイバッファ`, a saved video
+  is a `クリップ`, recording is `録画`, and ordinary playback is `再生`.
+- A saved media item is a `キャプチャ`, a screenshot is a `スクリーンショット`, and a
+  video frame is a `フレーム`. `gallery` is `ギャラリー`, `library` is `ライブラリ`,
+  `overlay` is `オーバーレイ`, and the system tray is `通知領域`.
+- Update security uses `マニフェスト`, `チェックサム`, `署名`, `準備`, `トランザクション`,
+  and `信頼状態`; database foreign keys are `外部キー`.
+- Portable import uses `ポータブル`, `準備済み`, `ジャーナル`, `文字列`, `ルート`,
+  `インポート元`, and `インスタンス`; the `portable:/` scheme remains literal.
+
+Controls use concise labels without unnecessary polite endings, while explanatory prose uses
+consistent polite Japanese. Protected identifiers, shortcut keys, button names, paths,
+placeholders, and versions remain unchanged.
