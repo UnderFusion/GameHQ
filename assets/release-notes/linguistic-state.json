@@ -11,7 +11,7 @@
         "zh-Hans": "contextually_reviewed",
         "ru-RU": "contextually_reviewed",
         "es-ES": "contextually_reviewed",
-        "pt-BR": "stale_review_pending",
+        "pt-BR": "contextually_reviewed",
         "de-DE": "stale_review_pending",
         "ja-JP": "stale_review_pending",
         "fr-FR": "stale_review_pending",

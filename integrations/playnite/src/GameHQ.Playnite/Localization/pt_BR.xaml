@@ -23,7 +23,7 @@
   <sys:String x:Key="LOCGameHQIntegrationLogHint">As mensagens do plugin são registradas no log principal do Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLastErrorFormat">Último erro: {0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSectionAbout">Sobre esta integração</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">O GameHQ recebe o nome do jogo que você está jogando no Playnite para tornar a detecção e a organização das capturas mais confiáveis. Ele não grava jogos, envia dados nem instala nada. O GameHQ continua funcionando sem o Playnite.</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">O GameHQ recebe do Playnite o nome do jogo em execução para tornar mais confiáveis a detecção e a organização das capturas. Ele não grava partidas, envia dados nem instala nada. O GameHQ continua funcionando sem o Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationNotConnected">(não conectado)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationGameHQNotFound">O GameHQ não foi encontrado neste PC.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLocateHint">Instale o GameHQ e use “Localizar GameHQ.exe...” caso ele ainda não seja encontrado.</sys:String>

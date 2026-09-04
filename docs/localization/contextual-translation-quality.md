@@ -136,3 +136,31 @@ The binding decisions are:
 The locale uses neutral Spain Spanish, informal address, concise infinitive action labels,
 natural word order, and Spanish punctuation and agreement. Shortcut key names, protected
 technical identifiers, paths, commands, placeholders, and version strings remain unchanged.
+
+## Brazilian Portuguese calibration decisions
+
+`i18n/quality/reviews/pt-BR.json` records the complete contextual pass over the Brazilian
+Portuguese catalog and its auxiliary surfaces. The machine draft mixed European Portuguese,
+subtitle fragments, missing clauses, translated key names, and unrelated literal senses.
+
+The binding decisions are:
+
+- `controller` is `controle`; an input `assignment` is `atribuição`, its `slot` is `posição`,
+  and input capture is `detecção de entrada`, never media capture.
+- Gesture timing stays explicit: immediate `Press` is `Pressionar`, release-based `Tap` is
+  `Pressão breve`, `Double Tap` and `Triple Tap` are `Pressão dupla` and `Pressão tripla`, and
+  `Hold` is `Manter pressionado`.
+- `Replay` names the feature, its rolling buffer is `buffer contínuo`, a saved video is a
+  `clipe`, recording is `gravação`, and ordinary playback is `reprodução`.
+- A saved media item is `captura`, a screenshot is `captura de tela`, a frame is `quadro`,
+  `gallery` is `galeria`, `library` is `biblioteca`, `overlay` is `sobreposição`, and the
+  system tray is `bandeja`.
+- Update security uses `manifesto`, `soma de verificação`, `assinatura`, `preparação`,
+  `transação`, `estado de confiança`, and `unidade`.
+- Portable import uses `portátil`, `preparado`, `registro`, `cadeia de caracteres`, `raiz`,
+  `origem`, `instância`, `banco de dados`, and `chave estrangeira`; `portable:/` stays literal.
+
+The locale uses neutral Brazilian Portuguese, concise infinitive actions, `computador`,
+`arquivo`, and `pasta`, and rejects European forms such as `ficheiro`, `ecrã`, and `ordenador`.
+Protected identifiers, shortcut keys, button names, paths, placeholders, and versions remain
+unchanged.
