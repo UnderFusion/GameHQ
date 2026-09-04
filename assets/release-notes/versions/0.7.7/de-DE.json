@@ -17,15 +17,15 @@
         },
         {
           "id": "added-02",
-          "text": "Ein Sprachwechsel wirkt sofort in der gesamten Anwendung, einschließlich Overlay und Infobereichsmenü, ohne GameHQ neu zu starten. Ihre Auswahl wird gespeichert."
+          "text": "Ein Sprachwechsel wird sofort in der gesamten Anwendung wirksam, einschließlich Overlay und Infobereichsmenü, ohne GameHQ neu zu starten. Ihre Auswahl wird gespeichert."
         },
         {
           "id": "added-03",
-          "text": "Setup läuft jetzt in Ihrer Sprache und übergibt diese Auswahl an den ersten Start von GameHQ, sodass Installationsprogramm und Anwendung nicht mehr auseinanderlaufen."
+          "text": "Das Installationsprogramm wird jetzt in Ihrer Sprache ausgeführt und übergibt diese Auswahl an den ersten Start von GameHQ, sodass Installation und Anwendung dieselbe Sprache verwenden."
         },
         {
           "id": "added-04",
-          "text": "Auch die Playnite-Erweiterung und die Fehlerdialoge des Starters sind lokalisiert."
+          "text": "Auch die Playnite-Erweiterung und die Fehlerdialoge des Startprogramms sind lokalisiert."
         },
         {
           "id": "added-05",
@@ -49,7 +49,7 @@
       "items": [
         {
           "id": "known-limitations-01",
-          "text": "Zwölf Sprachen werden mit übersetzten Oberflächentexten ausgeliefert. Italienisch, lateinamerikanisches Spanisch, Thailändisch und Ukrainisch lassen sich bereits auswählen und zeigen derzeit den vollständigen englischen Text."
+          "text": "Alle sechzehn Sprachen enthalten jetzt übersetzte Oberflächentexte. Vor der Veröffentlichung ist weiterhin eine kontextbezogene sprachliche Prüfung erforderlich."
         }
       ]
     }

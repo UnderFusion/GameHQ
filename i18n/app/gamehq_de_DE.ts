@@ -6,13 +6,13 @@
     <message id="gamehq.about.enjoying_gamehq">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="817"></location>
       <source>Enjoying GameHQ?</source>
-      <translation>Genießen Sie GameHQ?</translation>
+      <translation>Gefällt Ihnen GameHQ?</translation>
     </message>
     <message id="gamehq.about.full_release_notes">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="684"></location>
       <source>View full release notes</source>
       <oldsource>See full release notes</oldsource>
-      <translation>Siehe vollständige Veröffentlichungsnotizen</translation>
+      <translation>Vollständige Versionshinweise anzeigen</translation>
     </message>
     <message id="gamehq.about.github">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="776"></location>
@@ -22,7 +22,7 @@
     <message id="gamehq.about.license">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="788"></location>
       <source>License</source>
-      <translation>Zulassung</translation>
+      <translation>Lizenz</translation>
     </message>
     <message id="gamehq.about.mode.installed">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="521"></location>
@@ -32,17 +32,17 @@
     <message id="gamehq.about.mode.portable">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="518"></location>
       <source>Portable</source>
-      <translation>Träger</translation>
+      <translation>Portabel</translation>
     </message>
     <message id="gamehq.about.more_improvements">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="674"></location>
       <source>Plus more improvements and fixes.</source>
-      <translation>Plus weitere Verbesserungen und Korrekturen.</translation>
+      <translation>Dazu kommen weitere Verbesserungen und Fehlerbehebungen.</translation>
     </message>
     <message id="gamehq.about.product_description">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="629"></location>
       <source>A controller-friendly screenshot, replay, and media gallery for PC games.</source>
-      <translation>Ein kontrollerfreundlicher Screenshot, Wiedergabe und Mediengalerie für PC-Spiele.</translation>
+      <translation>Eine für Controller optimierte Screenshot-, Replay- und Mediengalerie für PC-Spiele.</translation>
     </message>
     <message id="gamehq.about.product_updated">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="484"></location>
@@ -52,27 +52,27 @@
     <message id="gamehq.about.project_links">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="760"></location>
       <source>PROJECT LINKS</source>
-      <translation>Projektverknüpfungen</translation>
+      <translation>PROJEKTLINKS</translation>
     </message>
     <message id="gamehq.about.quick_actions">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="705"></location>
       <source>QUICK ACTIONS</source>
-      <translation>Schnelle Maßnahmen</translation>
+      <translation>SCHNELLAKTIONEN</translation>
     </message>
     <message id="gamehq.about.report_issue">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="782"></location>
       <source>Report issue</source>
-      <translation>Ausgabe des Berichts</translation>
+      <translation>Problem melden</translation>
     </message>
     <message id="gamehq.about.star_description">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="826"></location>
       <source>A GitHub star helps more players discover the project.</source>
-      <translation>Ein GitHub Stern hilft mehr Spielern, das Projekt zu entdecken.</translation>
+      <translation>Ein GitHub-Stern hilft mehr Spielern, das Projekt zu entdecken.</translation>
     </message>
     <message id="gamehq.about.star_on_github">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="837"></location>
       <source>Star on GitHub</source>
-      <translation>Stern auf GitHub</translation>
+      <translation>Stern auf GitHub vergeben</translation>
     </message>
     <message id="gamehq.about.version">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="499"></location>
@@ -84,12 +84,12 @@
     <message id="gamehq.about.whats_new_in">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="639"></location>
       <source>WHAT'S NEW IN %1</source>
-      <translation>Was ist neu in %1</translation>
+      <translation>NEU IN %1</translation>
     </message>
     <message id="gamehq.action.back">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="575"></location>
       <source>Back</source>
-      <translation>Zurück .</translation>
+      <translation>Zurück</translation>
     </message>
     <message id="gamehq.action.back_with_marker">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="572"></location>
@@ -105,7 +105,7 @@
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="532"></location>
       <source>Cancel</source>
-      <translation>Absagen</translation>
+      <translation>Abbrechen</translation>
     </message>
     <message id="gamehq.action.delete">
       <location filename="src/ui/qml/Main.qml" line="1051"></location>
@@ -121,107 +121,107 @@
     <message id="gamehq.action.deselect_all">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="54"></location>
       <source>Deselect all</source>
-      <translation>Auswählen von allen</translation>
+      <translation>Auswahl aufheben</translation>
     </message>
     <message id="gamehq.action.desktop.back.description">
       <location filename="src/input/ActionCatalog.cpp" line="230"></location>
       <source>Close the current gallery panel.</source>
-      <translation>Schließen Sie das aktuelle Galerie-Panel.</translation>
+      <translation>Aktuelles Galeriepanel schließen.</translation>
     </message>
     <message id="gamehq.action.desktop.back.label">
       <location filename="src/input/ActionCatalog.cpp" line="227"></location>
       <source>Back</source>
-      <translation>Zurück .</translation>
+      <translation>Zurück</translation>
     </message>
     <message id="gamehq.action.desktop.bulk_toggle.description">
       <location filename="src/input/ActionCatalog.cpp" line="300"></location>
       <source>Enter or leave bulk selection mode.</source>
-      <translation>Ein- oder Ausstieg aus dem Massenwahlmodus.</translation>
+      <translation>Mehrfachauswahl aktivieren oder beenden.</translation>
     </message>
     <message id="gamehq.action.desktop.bulk_toggle.label">
       <location filename="src/input/ActionCatalog.cpp" line="297"></location>
       <source>Bulk Select</source>
-      <translation>Massenwahl</translation>
+      <translation>Mehrfachauswahl</translation>
     </message>
     <message id="gamehq.action.desktop.confirm.description">
       <location filename="src/input/ActionCatalog.cpp" line="223"></location>
       <source>Activate the selected item in the gallery.</source>
-      <translation>Aktivieren Sie das ausgewählte Element in der Galerie.</translation>
+      <translation>Ausgewähltes Element in der Galerie öffnen.</translation>
     </message>
     <message id="gamehq.action.desktop.confirm.label">
       <location filename="src/input/ActionCatalog.cpp" line="220"></location>
       <source>Confirm</source>
-      <translation>Bestätigen Sie .</translation>
+      <translation>Bestätigen</translation>
     </message>
     <message id="gamehq.action.desktop.favorite.description">
       <location filename="src/input/ActionCatalog.cpp" line="237"></location>
       <source>Mark or unmark the selected capture as a favorite.</source>
-      <translation>Die ausgewählte Aufnahme als Favorit markieren oder deaktivieren.</translation>
+      <translation>Ausgewählte Aufnahme als Favorit markieren oder die Markierung entfernen.</translation>
     </message>
     <message id="gamehq.action.desktop.favorite.label">
       <location filename="src/input/ActionCatalog.cpp" line="234"></location>
       <source>Toggle Favorite</source>
-      <translation>Lieblings-System wechseln</translation>
+      <translation>Zu Favoriten hinzufügen / entfernen</translation>
     </message>
     <message id="gamehq.action.desktop.menu.description">
       <location filename="src/input/ActionCatalog.cpp" line="244"></location>
       <source>Open the action menu for the selected item.</source>
-      <translation>Öffnen Sie das Aktionsmenü für das ausgewählte Element.</translation>
+      <translation>Aktionsmenü für das ausgewählte Element öffnen.</translation>
     </message>
     <message id="gamehq.action.desktop.menu.label">
       <location filename="src/input/ActionCatalog.cpp" line="241"></location>
       <source>Open Menu</source>
-      <translation>Öffnen von Menüs</translation>
+      <translation>Menü öffnen</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_down.description">
       <location filename="src/input/ActionCatalog.cpp" line="202"></location>
       <source>Move selection down in the gallery.</source>
-      <translation>Bewegen Sie die Auswahl in die Galerie.</translation>
+      <translation>Auswahl in der Galerie nach unten bewegen.</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_down.label">
       <location filename="src/input/ActionCatalog.cpp" line="199"></location>
       <source>Navigate Down</source>
-      <translation>Nach unten navigieren</translation>
+      <translation>Nach unten</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_left.description">
       <location filename="src/input/ActionCatalog.cpp" line="209"></location>
       <source>Move selection left in the gallery.</source>
-      <translation>Bewegen Sie die Auswahl links in der Galerie.</translation>
+      <translation>Auswahl in der Galerie nach links bewegen.</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_left.label">
       <location filename="src/input/ActionCatalog.cpp" line="206"></location>
       <source>Navigate Left</source>
-      <translation>Links navigieren</translation>
+      <translation>Nach links</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_right.description">
       <location filename="src/input/ActionCatalog.cpp" line="216"></location>
       <source>Move selection right in the gallery.</source>
-      <translation>Bewegen Sie die Auswahl direkt in die Galerie.</translation>
+      <translation>Auswahl in der Galerie nach rechts bewegen.</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_right.label">
       <location filename="src/input/ActionCatalog.cpp" line="213"></location>
       <source>Navigate Right</source>
-      <translation>Nach rechts navigieren</translation>
+      <translation>Nach rechts</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_up.description">
       <location filename="src/input/ActionCatalog.cpp" line="195"></location>
       <source>Move selection up in the gallery.</source>
-      <translation>Die Auswahl in die Galerie bringen.</translation>
+      <translation>Auswahl in der Galerie nach oben bewegen.</translation>
     </message>
     <message id="gamehq.action.desktop.navigate_up.label">
       <location filename="src/input/ActionCatalog.cpp" line="192"></location>
       <source>Navigate Up</source>
-      <translation>Nach oben navigieren</translation>
+      <translation>Nach oben</translation>
     </message>
     <message id="gamehq.action.desktop.scroll_down.description">
       <location filename="src/input/ActionCatalog.cpp" line="293"></location>
       <source>Scroll the current view down without moving the selection.</source>
-      <translation>Scrollen Sie die aktuelle Ansicht nach unten, ohne die Auswahl zu bewegen.</translation>
+      <translation>Scrollen Sie die aktuelle Ansicht nach unten, ohne die Auswahl zu verschieben.</translation>
     </message>
     <message id="gamehq.action.desktop.scroll_down.label">
       <location filename="src/input/ActionCatalog.cpp" line="290"></location>
       <source>Scroll Down</source>
-      <translation>Nach unten blättern</translation>
+      <translation>Nach unten scrollen</translation>
     </message>
     <message id="gamehq.action.desktop.scroll_up.description">
       <location filename="src/input/ActionCatalog.cpp" line="286"></location>
@@ -231,12 +231,12 @@
     <message id="gamehq.action.desktop.scroll_up.label">
       <location filename="src/input/ActionCatalog.cpp" line="283"></location>
       <source>Scroll Up</source>
-      <translation>Nach oben blättern</translation>
+      <translation>Nach oben scrollen</translation>
     </message>
     <message id="gamehq.action.desktop.settings.description">
       <location filename="src/input/ActionCatalog.cpp" line="265"></location>
       <source>Open the Settings panel from anywhere in the gallery.</source>
-      <translation>Öffnen Sie das Einstellungsfeld von überall in der Galerie.</translation>
+      <translation>Einstellungen von überall in der Galerie öffnen.</translation>
     </message>
     <message id="gamehq.action.desktop.settings.label">
       <location filename="src/input/ActionCatalog.cpp" line="262"></location>
@@ -246,7 +246,7 @@
     <message id="gamehq.action.desktop.tab_next.description">
       <location filename="src/input/ActionCatalog.cpp" line="258"></location>
       <source>Step to the next sidebar category.</source>
-      <translation>Schritt zur nächsten Seitenleiste Kategorie.</translation>
+      <translation>Zur nächsten Seitenleistenkategorie wechseln.</translation>
     </message>
     <message id="gamehq.action.desktop.tab_next.label">
       <location filename="src/input/ActionCatalog.cpp" line="255"></location>
@@ -256,7 +256,7 @@
     <message id="gamehq.action.desktop.tab_prev.description">
       <location filename="src/input/ActionCatalog.cpp" line="251"></location>
       <source>Step to the previous sidebar category.</source>
-      <translation>Schritt zur vorherigen Seitenleiste Kategorie.</translation>
+      <translation>Zur vorherigen Seitenleistenkategorie wechseln.</translation>
     </message>
     <message id="gamehq.action.desktop.tab_prev.label">
       <location filename="src/input/ActionCatalog.cpp" line="248"></location>
@@ -266,32 +266,32 @@
     <message id="gamehq.action.desktop.zoom_in.description">
       <location filename="src/input/ActionCatalog.cpp" line="279"></location>
       <source>Make the gallery thumbnails larger.</source>
-      <translation>Machen Sie die Galerie-Diktaturen größer.</translation>
+      <translation>Galerie-Miniaturansichten vergrößern.</translation>
     </message>
     <message id="gamehq.action.desktop.zoom_in.label">
       <location filename="src/input/ActionCatalog.cpp" line="276"></location>
       <source>Zoom In</source>
-      <translation>Zoom ein</translation>
+      <translation>Vergrößern</translation>
     </message>
     <message id="gamehq.action.desktop.zoom_out.description">
       <location filename="src/input/ActionCatalog.cpp" line="272"></location>
       <source>Make the gallery thumbnails smaller.</source>
-      <translation>Machen Sie die Galerie-Diktaturen kleiner.</translation>
+      <translation>Galerie-Miniaturansichten verkleinern.</translation>
     </message>
     <message id="gamehq.action.desktop.zoom_out.label">
       <location filename="src/input/ActionCatalog.cpp" line="269"></location>
       <source>Zoom Out</source>
-      <translation>Zoom aus</translation>
+      <translation>Verkleinern</translation>
     </message>
     <message id="gamehq.action.dismiss">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="180"></location>
       <source>Dismiss</source>
-      <translation>Entlassen</translation>
+      <translation>Schließen</translation>
     </message>
     <message id="gamehq.action.done">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="87"></location>
       <source>Done</source>
-      <translation>- Das ist erledigt.</translation>
+      <translation>Fertig</translation>
     </message>
     <message id="gamehq.action.download">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="209"></location>
@@ -301,22 +301,22 @@
     <message id="gamehq.action.global.save_replay.description">
       <location filename="src/input/ActionCatalog.cpp" line="94"></location>
       <source>Save the rolling replay buffer as a clip.</source>
-      <translation>Speichern Sie den rollenden Wiedergabepuffer als Clip.</translation>
+      <translation>Den laufenden Replay-Puffer als Clip speichern.</translation>
     </message>
     <message id="gamehq.action.global.save_replay.label">
       <location filename="src/input/ActionCatalog.cpp" line="91"></location>
       <source>Save Replay</source>
-      <translation>Wiederholung speichern</translation>
+      <translation>Replay speichern</translation>
     </message>
     <message id="gamehq.action.global.screenshot.description">
       <location filename="src/input/ActionCatalog.cpp" line="87"></location>
       <source>Capture a screenshot of the current game.</source>
-      <translation>Machen Sie einen Screenshot des aktuellen Spiels.</translation>
+      <translation>Screenshot des aktuellen Spiels aufnehmen.</translation>
     </message>
     <message id="gamehq.action.global.toggle_desktop.description">
       <location filename="src/input/ActionCatalog.cpp" line="109"></location>
       <source>Bring the GameHQ window to the front with focus, or hide it and return to the game.</source>
-      <translation>Bringen Sie die GameHQ Fenster nach vorne mit Fokus, oder verstecken und zum Spiel zurückkehren.</translation>
+      <translation>GameHQ-Fenster fokussiert in den Vordergrund holen oder ausblenden und zum Spiel zurückkehren.</translation>
     </message>
     <message id="gamehq.action.global.toggle_desktop.label">
       <location filename="src/input/ActionCatalog.cpp" line="105"></location>
@@ -326,52 +326,52 @@
     <message id="gamehq.action.global.toggle_overlay.description">
       <location filename="src/input/ActionCatalog.cpp" line="101"></location>
       <source>Show or hide the in-game overlay.</source>
-      <translation>Die Überlagerung im Spiel zeigen oder verbergen.</translation>
+      <translation>In-Game-Overlay anzeigen oder ausblenden.</translation>
     </message>
     <message id="gamehq.action.global.toggle_overlay.label">
       <location filename="src/input/ActionCatalog.cpp" line="98"></location>
       <source>Toggle Overlay</source>
-      <translation>Overlay ein-/ausblenden</translation>
+      <translation>Overlay anzeigen / ausblenden</translation>
     </message>
     <message id="gamehq.action.not_now">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="182"></location>
       <source>Not now</source>
-      <translation>Nicht jetzt.</translation>
+      <translation>Nicht jetzt</translation>
     </message>
     <message id="gamehq.action.overlay.back.description">
       <location filename="src/input/ActionCatalog.cpp" line="152"></location>
       <source>Close the current overlay panel.</source>
-      <translation>Schließen Sie das aktuelle Überlagerungsfeld.</translation>
+      <translation>Aktuelles Overlay-Panel schließen.</translation>
     </message>
     <message id="gamehq.action.overlay.back.label">
       <location filename="src/input/ActionCatalog.cpp" line="149"></location>
       <source>Back</source>
-      <translation>Zurück .</translation>
+      <translation>Zurück</translation>
     </message>
     <message id="gamehq.action.overlay.confirm.description">
       <location filename="src/input/ActionCatalog.cpp" line="145"></location>
       <source>Activate the selected item in the overlay.</source>
-      <translation>Aktivieren Sie das ausgewählte Element in der Überlagerung.</translation>
+      <translation>Ausgewähltes Element im Overlay öffnen.</translation>
     </message>
     <message id="gamehq.action.overlay.confirm.label">
       <location filename="src/input/ActionCatalog.cpp" line="142"></location>
       <source>Confirm</source>
-      <translation>Bestätigen Sie .</translation>
+      <translation>Bestätigen</translation>
     </message>
     <message id="gamehq.action.overlay.favorite.description">
       <location filename="src/input/ActionCatalog.cpp" line="159"></location>
       <source>Mark or unmark the selected capture as a favorite.</source>
-      <translation>Die ausgewählte Aufnahme als Favorit markieren oder deaktivieren.</translation>
+      <translation>Ausgewählte Aufnahme als Favorit markieren oder die Markierung entfernen.</translation>
     </message>
     <message id="gamehq.action.overlay.favorite.label">
       <location filename="src/input/ActionCatalog.cpp" line="156"></location>
       <source>Toggle Favorite</source>
-      <translation>Lieblings-System wechseln</translation>
+      <translation>Zu Favoriten hinzufügen / entfernen</translation>
     </message>
     <message id="gamehq.action.overlay.game_next.description">
       <location filename="src/input/ActionCatalog.cpp" line="187"></location>
       <source>Step to the next game in the sidebar.</source>
-      <translation>Schritt zum nächsten Spiel in der Seitenleiste.</translation>
+      <translation>Zum nächsten Spiel in der Seitenleiste wechseln.</translation>
     </message>
     <message id="gamehq.action.overlay.game_next.label">
       <location filename="src/input/ActionCatalog.cpp" line="184"></location>
@@ -381,7 +381,7 @@
     <message id="gamehq.action.overlay.game_prev.description">
       <location filename="src/input/ActionCatalog.cpp" line="180"></location>
       <source>Step to the previous game in the sidebar.</source>
-      <translation>Schritt zum vorherigen Spiel in der Seitenleiste.</translation>
+      <translation>Zum vorherigen Spiel in der Seitenleiste wechseln.</translation>
     </message>
     <message id="gamehq.action.overlay.game_prev.label">
       <location filename="src/input/ActionCatalog.cpp" line="177"></location>
@@ -391,67 +391,67 @@
     <message id="gamehq.action.overlay.menu.description">
       <location filename="src/input/ActionCatalog.cpp" line="166"></location>
       <source>Open the action menu for the selected item.</source>
-      <translation>Öffnen Sie das Aktionsmenü für das ausgewählte Element.</translation>
+      <translation>Aktionsmenü für das ausgewählte Element öffnen.</translation>
     </message>
     <message id="gamehq.action.overlay.menu.label">
       <location filename="src/input/ActionCatalog.cpp" line="163"></location>
       <source>Open Menu</source>
-      <translation>Öffnen von Menüs</translation>
+      <translation>Menü öffnen</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_down.description">
       <location filename="src/input/ActionCatalog.cpp" line="124"></location>
       <source>Move selection down in the overlay.</source>
-      <translation>Bewegen Sie die Auswahl in der Überlagerung nach unten.</translation>
+      <translation>Auswahl im Overlay nach unten bewegen.</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_down.label">
       <location filename="src/input/ActionCatalog.cpp" line="121"></location>
       <source>Navigate Down</source>
-      <translation>Nach unten navigieren</translation>
+      <translation>Nach unten</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_left.description">
       <location filename="src/input/ActionCatalog.cpp" line="131"></location>
       <source>Move selection left in the overlay.</source>
-      <translation>Bewegen Sie die Auswahl links in der Überlagerung.</translation>
+      <translation>Auswahl im Overlay nach links bewegen.</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_left.label">
       <location filename="src/input/ActionCatalog.cpp" line="128"></location>
       <source>Navigate Left</source>
-      <translation>Links navigieren</translation>
+      <translation>Nach links</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_right.description">
       <location filename="src/input/ActionCatalog.cpp" line="138"></location>
       <source>Move selection right in the overlay.</source>
-      <translation>Bewegen Sie die Auswahl direkt in die Überlagerung.</translation>
+      <translation>Auswahl im Overlay nach rechts bewegen.</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_right.label">
       <location filename="src/input/ActionCatalog.cpp" line="135"></location>
       <source>Navigate Right</source>
-      <translation>Nach rechts navigieren</translation>
+      <translation>Nach rechts</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_up.description">
       <location filename="src/input/ActionCatalog.cpp" line="117"></location>
       <source>Move selection up in the overlay.</source>
-      <translation>Bewegen Sie die Auswahl in der Überlagerung.</translation>
+      <translation>Auswahl im Overlay nach oben bewegen.</translation>
     </message>
     <message id="gamehq.action.overlay.navigate_up.label">
       <location filename="src/input/ActionCatalog.cpp" line="114"></location>
       <source>Navigate Up</source>
-      <translation>Nach oben navigieren</translation>
+      <translation>Nach oben</translation>
     </message>
     <message id="gamehq.action.overlay.sidebar_toggle.description">
       <location filename="src/input/ActionCatalog.cpp" line="173"></location>
       <source>Show or hide the overlay sidebar.</source>
-      <translation>Überlagerungsseitenleiste anzeigen oder ausblenden.</translation>
+      <translation>Overlay-Seitenleiste anzeigen oder ausblenden.</translation>
     </message>
     <message id="gamehq.action.overlay.sidebar_toggle.label">
       <location filename="src/input/ActionCatalog.cpp" line="170"></location>
       <source>Toggle Sidebar</source>
-      <translation>Beim Wechseln der Seitenleiste</translation>
+      <translation>Seitenleiste anzeigen / ausblenden</translation>
     </message>
     <message id="gamehq.action.playback.frame_grab.description">
       <location filename="src/input/ActionCatalog.cpp" line="329"></location>
       <source>Save the frame currently shown in the focused clip as a screenshot.</source>
-      <translation>Speichern Sie den aktuell im fokussierten Clip angezeigten Bildschirmrahmen als Screenshot.</translation>
+      <translation>Aktuell angezeigtes Einzelbild des fokussierten Clips als Screenshot speichern.</translation>
     </message>
     <message id="gamehq.action.playback.frame_grab.label">
       <location filename="src/input/ActionCatalog.cpp" line="326"></location>
@@ -461,39 +461,39 @@
     <message id="gamehq.action.playback.play_pause.description">
       <location filename="src/input/ActionCatalog.cpp" line="308"></location>
       <source>Toggle playback of the focused clip.</source>
-      <translation>Schalten Sie die Wiedergabe des fokussierten Clip ab.</translation>
+      <translation>Wiedergabe des fokussierten Clips starten oder pausieren.</translation>
     </message>
     <message id="gamehq.action.playback.play_pause.label">
       <location filename="src/input/ActionCatalog.cpp" line="305"></location>
       <source>Play / Pause</source>
-      <translation>Wiederholen / Pausieren</translation>
+      <translation>Wiedergabe / Pause</translation>
     </message>
     <message id="gamehq.action.playback.seek_back.description">
       <location filename="src/input/ActionCatalog.cpp" line="315"></location>
       <source>Step the focused clip backward.</source>
-      <translation>Schritt mit der Fokussierung zurück.</translation>
+      <translation>Im fokussierten Clip zurückspringen.</translation>
     </message>
     <message id="gamehq.action.playback.seek_back.label">
       <location filename="src/input/ActionCatalog.cpp" line="312"></location>
       <source>Seek Back</source>
-      <translation>Suchen Sie zurück</translation>
+      <translation>Zurückspringen</translation>
     </message>
     <message id="gamehq.action.playback.seek_forward.description">
       <location filename="src/input/ActionCatalog.cpp" line="322"></location>
       <source>Step the focused clip forward.</source>
-      <translation>Schritt mit der Fokussierung vorwärts.</translation>
+      <translation>Im fokussierten Clip vorspringen.</translation>
     </message>
     <message id="gamehq.action.playback.seek_forward.label">
       <location filename="src/input/ActionCatalog.cpp" line="319"></location>
       <source>Seek Forward</source>
-      <translation>Vorwärts schauen</translation>
+      <translation>Vorspringen</translation>
     </message>
     <message id="gamehq.action.record">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="295"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="371"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="435"></location>
       <source>Record</source>
-      <translation>Aufzeichnung</translation>
+      <translation>Aufnehmen</translation>
     </message>
     <message id="gamehq.action.remove">
       <location filename="src/ui/qml/components/BindingCard.qml" line="151"></location>
@@ -519,12 +519,12 @@
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="392"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="681"></location>
       <source>Restore defaults</source>
-      <translation>Wiederherstellen von Standardvorgaben</translation>
+      <translation>Standardeinstellungen wiederherstellen</translation>
     </message>
     <message id="gamehq.action.revert">
       <location filename="src/ui/qml/components/BindingCard.qml" line="117"></location>
       <source>Revert</source>
-      <translation>Zurückkehren</translation>
+      <translation>Zurücksetzen</translation>
     </message>
     <message id="gamehq.action.save">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="629"></location>
@@ -539,12 +539,12 @@
     <message id="gamehq.action.select_all">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="57"></location>
       <source>Select all</source>
-      <translation>Auswählen</translation>
+      <translation>Alle auswählen</translation>
     </message>
     <message id="gamehq.action.stop">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="288"></location>
       <source>Stop</source>
-      <translation>- Hört auf.</translation>
+      <translation>Stoppen</translation>
     </message>
     <message id="gamehq.common.action.change">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="292"></location>
@@ -552,29 +552,29 @@
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="432"></location>
       <location filename="src/ui/qml/components/SettingsPathRow.qml" line="27"></location>
       <source>Change</source>
-      <translation>Veränderung</translation>
+      <translation>Ändern</translation>
     </message>
     <message id="gamehq.common.action.close">
       <location filename="src/ui/qml/components/DialogCloseButton.qml" line="9"></location>
       <location filename="src/ui/qml/components/HelpDialog.qml" line="118"></location>
       <source>Close</source>
-      <translation>Schließen .</translation>
+      <translation>Schließen</translation>
     </message>
     <message id="gamehq.common.action.open">
       <location filename="src/ui/qml/components/SettingsPathRow.qml" line="34"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="102"></location>
       <source>Open</source>
-      <translation>Geöffnet</translation>
+      <translation>Öffnen</translation>
     </message>
     <message id="gamehq.common.action.use_default">
       <location filename="src/ui/qml/components/SettingsPathRow.qml" line="21"></location>
       <source>Use default</source>
-      <translation>Verwenden Sie den Standard</translation>
+      <translation>Standard verwenden</translation>
     </message>
     <message id="gamehq.dialog.confirm.default_title">
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="11"></location>
       <source>Are you sure?</source>
-      <translation>- Sind Sie sicher? - Ja.</translation>
+      <translation>Sind Sie sicher?</translation>
     </message>
     <message id="gamehq.duration.decimal_seconds">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="268"></location>
@@ -651,150 +651,150 @@
     <message id="gamehq.error.capture_location.not_writable">
       <location filename="src/config/CaptureLocations.cpp" line="136"></location>
       <source>The selected folder is not writable.</source>
-      <translation>Der ausgewählte Ordner ist nicht schreibbar.</translation>
+      <translation>Der ausgewählte Ordner ist nicht beschreibbar.</translation>
     </message>
     <message id="gamehq.error.capture_location.restore_default_failed">
       <location filename="src/config/CaptureLocations.cpp" line="202"></location>
       <source>GameHQ could not restore the default folder.</source>
-      <translation>GameHQ Es ist nicht möglich, den Standardordner wiederherzustellen.</translation>
+      <translation>GameHQ konnte den Standardordner nicht wiederherstellen.</translation>
     </message>
     <message id="gamehq.error.capture_location.save_failed">
       <location filename="src/config/CaptureLocations.cpp" line="175"></location>
       <source>GameHQ could not save the selected folder.</source>
-      <translation>GameHQ Es konnte der ausgewählte Ordner nicht gespeichert werden.</translation>
+      <translation>GameHQ konnte den ausgewählten Ordner nicht speichern.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
       <location filename="src/ui/AppController.cpp" line="347"></location>
       <location filename="src/ui/AppController.cpp" line="369"></location>
       <source>The capture type is invalid.</source>
-      <translation>Der Erfassungstyp ist ungültig.</translation>
+      <translation>Der Aufnahmetyp ist ungültig.</translation>
     </message>
     <message id="gamehq.error.portable_import.backup_missing">
       <location filename="src/config/PortableProfileImporter.cpp" line="303"></location>
       <source>The interrupted portable-import backup is missing.</source>
-      <translation>Das unterbrochene portable-Import-Backup fehlt.</translation>
+      <translation>Die Sicherung des unterbrochenen portablen Imports fehlt.</translation>
     </message>
     <message id="gamehq.error.portable_import.capture_history_value_invalid">
       <location filename="src/config/PortableProfileImporter.cpp" line="391"></location>
       <source>Capture-root history contains a non-string value.</source>
-      <translation>Der Capture-Root-Verlauf enthält einen nicht-String-Wert.</translation>
+      <translation>Der Verlauf des Aufnahme-Stammordners enthält einen Wert, der keine Zeichenkette ist.</translation>
     </message>
     <message id="gamehq.error.portable_import.commit_staged_file_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
       <source>Cannot commit staged file %1.</source>
       <oldsource>Cannot commit staged %1.</oldsource>
-      <translation type="unfinished">Kann nicht inszeniert werden %1- Ich weiß .</translation>
+      <translation>Die vorbereitete Datei %1 konnte nicht übernommen werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_malformed">
       <location filename="src/config/PortableProfileImporter.cpp" line="343"></location>
       <source>The portable config.json is malformed.</source>
-      <translation>Die portable config.json ist falsch.</translation>
+      <translation>Die portable config.json ist fehlerhaft.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_path_unsupported">
       <location filename="src/config/PortableProfileImporter.cpp" line="417"></location>
       <source>Unsupported portable path in config key %1.</source>
-      <translation>Nicht unterstützter portabler Pfad in der Konfigurationstaste %1- Ich weiß .</translation>
+      <translation>Nicht unterstützter portabler Pfad im Konfigurationsschlüssel %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_read_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="333"></location>
       <source>Cannot read the portable config.json.</source>
-      <translation>Das portable Config.json kann nicht gelesen werden.</translation>
+      <translation>Die portable config.json kann nicht gelesen werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_value_not_array">
       <location filename="src/config/PortableProfileImporter.cpp" line="382"></location>
       <source>%1 must be an array.</source>
-      <translation>%1 Das muss ein Array sein.</translation>
+      <translation>%1 muss ein Array sein.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_value_not_string">
       <location filename="src/config/PortableProfileImporter.cpp" line="364"></location>
       <source>%1 must be a string.</source>
-      <translation>%1 Das muss ein String sein.</translation>
+      <translation>%1 muss ein String sein.</translation>
     </message>
     <message id="gamehq.error.portable_import.data_directory_escapes_package">
       <location filename="src/config/PortableProfileImporter.cpp" line="893"></location>
       <source>The portable data directory escapes the selected package root.</source>
-      <translation>Das portable Datenspeicher entkommt der ausgewählten Paketwurzel.</translation>
+      <translation>Das portable Datenverzeichnis liegt außerhalb des ausgewählten Paketstammordners.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_foreign_key_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="833"></location>
       <source>The staged database failed its foreign-key check.</source>
-      <translation>Die inszenierte Datenbank hat ihre Fremdschlüsselprüfung nicht bestanden.</translation>
+      <translation>Die vorbereitete Datenbank hat die Fremdschlüsselprüfung nicht bestanden.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_integrity_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="822"></location>
       <source>The staged database failed its integrity check.</source>
-      <translation>Die inszenierte Datenbank hat ihre Integrität nicht überprüft.</translation>
+      <translation>Die vorbereitete Datenbank hat die Integritätsprüfung nicht bestanden.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_missing">
       <location filename="src/config/PortableProfileImporter.cpp" line="915"></location>
       <source>The portable profile has no gamehq.db.</source>
-      <translation>Das portable Profil hat keine gamehq.db.</translation>
+      <translation>Das portable Profil enthält keine gamehq.db.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_open_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="749"></location>
       <source>The staged portable database cannot be opened: %1</source>
-      <translation>Die portable Datenbank kann nicht geöffnet werden: %1</translation>
+      <translation>Die vorbereitete portable Datenbank kann nicht geöffnet werden: %1</translation>
     </message>
     <message id="gamehq.error.portable_import.database_operation_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="28"></location>
       <source>A portable-profile database operation failed: %1</source>
-      <translation>Eine Datenbankoperation mit portabelem Profil fehlgeschlagen: %1</translation>
+      <translation>Eine Datenbankoperation für das portable Profil ist fehlgeschlagen: %1</translation>
     </message>
     <message id="gamehq.error.portable_import.database_path_unsupported">
       <location filename="src/config/PortableProfileImporter.cpp" line="801"></location>
       <source>Unsupported portable path in database setting %1.</source>
-      <translation>Nicht unterstützter portabler Pfad in Datenbank-Einstellung %1- Ich weiß .</translation>
+      <translation>Nicht unterstützter portabler Pfad in der Datenbankeinstellung %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_schema_read_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="757"></location>
       <source>The portable database schema cannot be read.</source>
-      <translation>Das Schema der Datenbank kann nicht gelesen werden.</translation>
+      <translation>Das Schema der portablen Datenbank kann nicht gelesen werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_schema_unsupported">
       <location filename="src/config/PortableProfileImporter.cpp" line="763"></location>
       <source>The portable database schema is unsupported.</source>
-      <translation>Das portable Datenbank-Schema wird nicht unterstützt.</translation>
+      <translation>Das Schema der portablen Datenbank wird nicht unterstützt.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_stage_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="987"></location>
       <source>The portable database cannot be staged.</source>
-      <translation>Die portable Datenbank kann nicht inszeniert werden.</translation>
+      <translation>Die portable Datenbank kann nicht vorbereitet werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.database_transaction_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="769"></location>
       <source>The portable database transaction cannot begin.</source>
-      <translation>Die Transaktion mit der Datenbank kann nicht gestartet werden.</translation>
+      <translation>Die Transaktion der portablen Datenbank kann nicht gestartet werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_backup_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="1038"></location>
       <source>The empty installed profile cannot be backed up for import.</source>
-      <translation>Das leere Profil kann nicht für den Import gesichert werden.</translation>
+      <translation>Das leere installierte Profil kann für den Import nicht gesichert werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_config_not_default">
       <location filename="src/config/PortableProfileImporter.cpp" line="501"></location>
       <source>The installed profile has non-default configuration.</source>
-      <translation>Das installierte Profil ist nicht standardmäßig konfiguriert.</translation>
+      <translation>Das installierte Profil enthält eine benutzerdefinierte Konfiguration.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_contains_link">
       <location filename="src/config/PortableProfileImporter.cpp" line="459"></location>
       <source>The installed profile contains a symbolic link or junction: %1.</source>
-      <translation>Das installierte Profil enthält ein symbolisches Glied oder eine Verbindung: %1- Ich weiß .</translation>
+      <translation>Das installierte Profil enthält einen symbolischen Link oder eine Junction: %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_data_unsupported">
       <location filename="src/config/PortableProfileImporter.cpp" line="482"></location>
       <source>The installed profile contains unsupported data: %1.</source>
-      <translation>Das installierte Profil enthält nicht unterstützte Daten: %1- Ich weiß .</translation>
+      <translation>Das installierte Profil enthält nicht unterstützte Daten: %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_database_inspection_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="520"></location>
       <location filename="src/config/PortableProfileImporter.cpp" line="542"></location>
       <source>The installed database cannot be inspected.</source>
-      <translation>Die installierte Datenbank kann nicht überprüft werden.</translation>
+      <translation>Die installierte Datenbank kann nicht geprüft werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_file_exists">
       <location filename="src/config/PortableProfileImporter.cpp" line="469"></location>
       <source>The installed profile already has its own %1.</source>
-      <translation>Das installierte Profil hat bereits sein eigenes %1- Ich weiß .</translation>
+      <translation>Das installierte Profil enthält bereits eine eigene Datei %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_not_empty">
       <location filename="src/config/PortableProfileImporter.cpp" line="553"></location>
@@ -805,108 +805,108 @@
     <message id="gamehq.error.portable_import.destination_restore_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="292"></location>
       <source>The interrupted portable import could not restore its destination backup.</source>
-      <translation>Der unterbrochene portable Import konnte sein Zielsecured-Sicherungssystem nicht wiederherstellen.</translation>
+      <translation>Beim unterbrochenen portablen Import konnte die Zielsicherung nicht wiederhergestellt werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.destination_root_link">
       <location filename="src/config/PortableProfileImporter.cpp" line="432"></location>
       <source>The installed profile root must not be a symbolic link or junction.</source>
-      <translation>Die installierte Profilwurzel darf kein symbolisches Glied oder eine symbolische Verbindung sein.</translation>
+      <translation>Der Stammordner des installierten Profils darf kein symbolischer Link und keine Junction sein.</translation>
     </message>
     <message id="gamehq.error.portable_import.game_path_scheme_invalid">
       <location filename="src/config/PortableProfileImporter.cpp" line="604"></location>
       <source>A game executable path incorrectly uses portable:/.</source>
-      <translation>Ein Spiel-Ausführungsweg verwendet falsch portable:/.</translation>
+      <translation>Der Pfad einer ausführbaren Spieldatei verwendet fälschlicherweise portable:/.</translation>
     </message>
     <message id="gamehq.error.portable_import.hash_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="159"></location>
       <source>Cannot hash %1.</source>
-      <translation>Kann nicht hashen %1- Ich weiß .</translation>
+      <translation>Der Hash für %1 kann nicht berechnet werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
       <location filename="src/ui/AppController.cpp" line="194"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
-      <translation>Die Portable Profile können nur mit einer installierten Kopie von GameHQ- Ich weiß .</translation>
+      <translation>Portable Profile können nur aus einer installierten GameHQ-Version importiert werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_invalid">
       <location filename="src/config/PortableProfileImporter.cpp" line="263"></location>
       <source>The interrupted portable-import journal is invalid.</source>
-      <translation>Das unterbrochene portable Import-Journal ist ungültig.</translation>
+      <translation>Das unterbrochene Portable-Import-Journal ist ungültig.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_malformed">
       <location filename="src/config/PortableProfileImporter.cpp" line="242"></location>
       <source>The interrupted portable-import journal is malformed.</source>
-      <translation>Das unterbrochene portable Import-Journal ist verformt.</translation>
+      <translation>Das Journal des unterbrochenen portablen Imports ist fehlerhaft.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_read_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="231"></location>
       <source>The interrupted portable-import journal cannot be read.</source>
-      <translation>Das unterbrochene portable Import-Journal kann nicht gelesen werden.</translation>
+      <translation>Das unterbrochene Portable-Import-Journal kann nicht gelesen werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_remove_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="315"></location>
       <source>The recovered portable-import journal could not be removed.</source>
-      <translation>Das wiederhergestellte portable Import-Journal konnte nicht entfernt werden.</translation>
+      <translation>Das wiederhergestellte Portable-Import-Journal konnte nicht entfernt werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
       <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <oldsource>Select a local GameHQ portable folder.</oldsource>
-      <translation type="unfinished">Wählen Sie ein lokales GameHQ - Ein tragbarer Ordner.</translation>
+      <translation>Wählen Sie einen lokalen Ordner aus, der die portable GameHQ-Version enthält.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
       <location filename="src/ui/AppController.cpp" line="209"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
-      <translation>Der ausgewählte Ordner ist nicht ein GameHQ - Das ist ein tragbares Paket.</translation>
+      <translation>Der ausgewählte Ordner ist kein portables GameHQ-Paket.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_root_canonicalize_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="56"></location>
       <source>The portable package root cannot be canonicalized.</source>
-      <translation>Die portable Paketwurzel kann nicht kanonisiert werden.</translation>
+      <translation>Der Stammordner des portablen Pakets kann nicht kanonisiert werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.path_escapes_package">
       <location filename="src/config/PortableProfileImporter.cpp" line="73"></location>
       <source>A portable path escapes the selected package root.</source>
-      <translation>Ein portabler Pfad entkommt der ausgewählten Paketwurzel.</translation>
+      <translation>Ein portabler Pfad liegt außerhalb des ausgewählten Paketstammordners.</translation>
     </message>
     <message id="gamehq.error.portable_import.path_invalid">
       <location filename="src/config/PortableProfileImporter.cpp" line="106"></location>
       <source>A portable:/ path is empty or absolute.</source>
-      <translation>Ein tragbarer:/ Pfad ist leer oder absolut.</translation>
+      <translation>Ein portable:/-Pfad ist leer oder absolut.</translation>
     </message>
     <message id="gamehq.error.portable_import.path_scheme_required">
       <location filename="src/config/PortableProfileImporter.cpp" line="93"></location>
       <source>Imported paths must be absolute or use portable:/.</source>
-      <translation>Importierte Pfade müssen absolut sein oder portabel sein:/.</translation>
+      <translation>Importierte Pfade müssen absolut sein oder portable:/ verwenden.</translation>
     </message>
     <message id="gamehq.error.portable_import.portable_path_escapes_package">
       <location filename="src/config/PortableProfileImporter.cpp" line="117"></location>
       <source>A portable:/ path escapes the selected package root.</source>
-      <translation>Ein portabler:/ Pfad entkommt der ausgewählten Paketwurzel.</translation>
+      <translation>Ein portable:/-Pfad liegt außerhalb des ausgewählten Paketstammordners.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
       <location filename="src/ui/AppController.cpp" line="220"></location>
       <source>GameHQ could not identify its own process for the import.</source>
-      <translation>GameHQ Die Kommission hat sich in der Tat nicht dazu entschlossen, ihre eigenen Verfahren für die Einfuhr zu ermitteln.</translation>
+      <translation>GameHQ konnte den eigenen Prozess für den Import nicht identifizieren.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
       <location filename="src/ui/AppController.cpp" line="230"></location>
       <source>GameHQ could not start the portable import process.</source>
-      <translation>GameHQ konnte den portable Importprozess nicht starten.</translation>
+      <translation>GameHQ konnte den portablen Importprozess nicht starten.</translation>
     </message>
     <message id="gamehq.error.portable_import.publish_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="1062"></location>
       <source>The staged profile cannot be published.</source>
-      <translation>Das in mehreren Phasen erstellte Profil kann nicht veröffentlicht werden.</translation>
+      <translation>Das vorbereitete Profil kann nicht übernommen werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.published_destination_missing">
       <location filename="src/config/PortableProfileImporter.cpp" line="279"></location>
       <source>The published portable-import destination is missing.</source>
-      <translation>Das veröffentlichte Ziel für die portable Einfuhr fehlt.</translation>
+      <translation>Das übernommene Ziel des portablen Imports fehlt.</translation>
     </message>
     <message id="gamehq.error.portable_import.recovery_remove_directory_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="203"></location>
       <source>Portable-import recovery could not remove a transaction directory.</source>
-      <translation>Die Wiederherstellung von Portable-Import konnte kein Transaktionsverzeichnis entfernen.</translation>
+      <translation>Bei der Wiederherstellung des portablen Imports konnte ein Transaktionsverzeichnis nicht entfernt werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.recovery_required">
       <location filename="src/config/PortableProfileImporter.cpp" line="973"></location>
@@ -916,63 +916,63 @@
     <message id="gamehq.error.portable_import.rollback_restore_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="961"></location>
       <source>The installed profile backup could not be restored.</source>
-      <translation>Die installierte Profilsicherung konnte nicht wiederhergestellt werden.</translation>
+      <translation>Das installierte Profil-Backup konnte nicht wiederhergestellt werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.sound_file_missing">
       <location filename="src/config/PortableProfileImporter.cpp" line="706"></location>
       <source>A referenced portable sound file is missing.</source>
-      <translation>Eine Referenz-Portable-Sounddatei fehlt.</translation>
+      <translation>Eine referenzierte portable Audiodatei fehlt.</translation>
     </message>
     <message id="gamehq.error.portable_import.sound_file_stage_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="718"></location>
       <source>A referenced sound file could not be staged.</source>
-      <translation>Eine referenzierte Tonaufzeichnung konnte nicht inszeniert werden.</translation>
+      <translation>Eine referenzierte Audiodatei konnte nicht vorbereitet werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_changed">
       <location filename="src/config/PortableProfileImporter.cpp" line="1012"></location>
       <source>The portable source changed during import.</source>
-      <translation>Die portable Quelle änderte sich während des Imports.</translation>
+      <translation>Die Portable-Quelle wurde während des Imports geändert.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_destination_overlap">
       <location filename="src/config/PortableProfileImporter.cpp" line="901"></location>
       <source>Source and destination profiles must be separate.</source>
-      <translation>Die Profile der Quelle und des Bestimmungsortes müssen getrennt sein.</translation>
+      <translation>Quell- und Zielprofil müssen getrennt sein.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_package_invalid">
       <location filename="src/config/PortableProfileImporter.cpp" line="884"></location>
       <source>Select a valid GameHQ portable package root.</source>
-      <translation>Wählen Sie einen gültigen GameHQ Portable Paketwurzel.</translation>
+      <translation>Wählen Sie einen gültigen Stammordner eines portablen GameHQ-Pakets aus.</translation>
     </message>
     <message id="gamehq.error.portable_import.source_read_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="150"></location>
       <source>Cannot read %1 for source verification.</source>
-      <translation>%1 kann zur Überprüfung der Quelle nicht gelesen werden.</translation>
+      <translation>%1 kann für die Quellprüfung nicht gelesen werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.stage_file_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="173"></location>
       <source>Cannot stage %1.</source>
-      <translation>Nicht in Gang gebracht %1- Ich weiß .</translation>
+      <translation>%1 kann nicht vorbereitet werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.staging_directory_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="939"></location>
       <source>The import staging directory cannot be created.</source>
-      <translation>Das Import-Staging-Verzeichnis kann nicht erstellt werden.</translation>
+      <translation>Das temporäre Importverzeichnis kann nicht erstellt werden.</translation>
     </message>
     <message id="gamehq.error.portable_import.transaction_running">
       <location filename="src/config/PortableProfileImporter.cpp" line="872"></location>
       <source>Another portable-profile import is already running.</source>
-      <translation>Ein weiterer portable Profil-Import läuft bereits.</translation>
+      <translation>Ein anderer Import eines portablen Profils wird bereits ausgeführt.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
       <location filename="src/app/App.cpp" line="446"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <oldsource>The update was cancelled because capture work did not finish safely in time.</oldsource>
-      <translation type="unfinished">Das Update wurde abgesagt, weil die Aufnahme nicht rechtzeitig abgeschlossen wurde.</translation>
+      <translation>Das Update wurde abgebrochen, weil laufende Aufnahmen nicht rechtzeitig sicher beendet wurden.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
       <location filename="src/updates/UpdateService.cpp" line="333"></location>
       <source>Update check failed: %1</source>
-      <translation>Aktualisierungsprüfung fehlgeschlagen: %1</translation>
+      <translation>Updateprüfung fehlgeschlagen: %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
       <location filename="src/updates/UpdateService.cpp" line="122"></location>
@@ -987,67 +987,67 @@
     <message id="gamehq.error.update.download.checksum_calculation_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="523"></location>
       <source>GameHQ could not calculate the update checksum.</source>
-      <translation>GameHQ Die Überprüfungssumme für die Aktualisierung konnte nicht berechnet werden.</translation>
+      <translation>GameHQ konnte die Update-Prüfsumme nicht berechnen.</translation>
     </message>
     <message id="gamehq.error.update.download.checksum_entry_count">
       <location filename="src/updates/UpdateDownloader.cpp" line="477"></location>
       <source>The update checksum file must contain exactly one entry.</source>
-      <translation>Die Aktualisierungs-Checksumme-Datei muss genau einen Eintrag enthalten.</translation>
+      <translation>Die Update-Prüfsummendatei muss genau einen Eintrag enthalten.</translation>
     </message>
     <message id="gamehq.error.update.download.checksum_format_invalid">
       <location filename="src/updates/UpdateDownloader.cpp" line="489"></location>
       <source>The update checksum file has an invalid format.</source>
-      <translation>Die Update-Checksummendatei hat ein ungültiges Format.</translation>
+      <translation>Die Update-Prüfsummendatei hat ein ungültiges Format.</translation>
     </message>
     <message id="gamehq.error.update.download.checksum_package_mismatch">
       <location filename="src/updates/UpdateDownloader.cpp" line="498"></location>
       <source>The update checksum names a different package.</source>
-      <translation>Die Update-Checksumme benennt ein anderes Paket.</translation>
+      <translation>Die Update-Prüfsumme benennt ein anderes Paket.</translation>
     </message>
     <message id="gamehq.error.update.download.evidence_incomplete">
       <location filename="src/updates/UpdateDownloader.cpp" line="324"></location>
       <source>The verified update evidence is incomplete.</source>
-      <translation>Die überprüften Nachweise für die Aktualisierung sind unvollständig.</translation>
+      <translation>Die verifizierten Update-Nachweise sind unvollständig.</translation>
     </message>
     <message id="gamehq.error.update.download.flush_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="212"></location>
       <source>GameHQ could not flush the update download to disk.</source>
-      <translation>GameHQ Es ist nicht möglich, den Update-Download auf die Festplatte zu schieben.</translation>
+      <translation>GameHQ konnte den Update-Download nicht sicher auf den Datenträger schreiben.</translation>
     </message>
     <message id="gamehq.error.update.download.http_status">
       <location filename="src/updates/UpdateDownloader.cpp" line="257"></location>
       <source>Update download failed with HTTP status %1.</source>
-      <translation>Update-Download mit HTTP-Status fehlgeschlagen %1- Ich weiß .</translation>
+      <translation>Update-Download mit HTTP-Status %1 fehlgeschlagen.</translation>
     </message>
     <message id="gamehq.error.update.download.https_required">
       <location filename="src/updates/UpdateDownloader.cpp" line="80"></location>
       <source>The update download must use HTTPS.</source>
-      <translation>Der Download des Updates muss HTTPS verwenden.</translation>
+      <translation>Der Update-Download muss HTTPS verwenden.</translation>
     </message>
     <message id="gamehq.error.update.download.insecure_redirect">
       <location filename="src/updates/UpdateDownloader.cpp" line="240"></location>
       <source>The update download redirected away from HTTPS.</source>
-      <translation>Der Update-Download wurde von HTTPS umgeleitet.</translation>
+      <translation>Der Update-Download wurde von HTTPS weggeleitet.</translation>
     </message>
     <message id="gamehq.error.update.download.manifest_hash_malformed">
       <location filename="src/updates/UpdateDownloader.cpp" line="301"></location>
       <source>The signed manifest artifact hash is malformed.</source>
-      <translation>Der signierte Manifest-Artefakt-Hash ist verzerrt.</translation>
+      <translation>Der Artefakthash im signierten Manifest ist fehlerhaft.</translation>
     </message>
     <message id="gamehq.error.update.download.manifest_length_mismatch">
       <location filename="src/updates/UpdateDownloader.cpp" line="313"></location>
       <source>The update package length did not match the signed manifest.</source>
-      <translation>Die Länge des Aktualisierungspakets passte nicht zum signierten Manifest.</translation>
+      <translation>Die Länge des Updatepakets stimmte nicht mit dem unterzeichneten Manifest überein.</translation>
     </message>
     <message id="gamehq.error.update.download.manifest_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="346"></location>
       <source>GameHQ could not read the downloaded release manifest.</source>
-      <translation>GameHQ Ich konnte das heruntergeladene Veröffentlichungsmanifest nicht lesen.</translation>
+      <translation>GameHQ konnte das heruntergeladene Release-Manifest nicht lesen.</translation>
     </message>
     <message id="gamehq.error.update.download.manifest_version_mismatch">
       <location filename="src/updates/UpdateDownloader.cpp" line="396"></location>
       <source>The signed manifest describes a different version than the release.</source>
-      <translation>Das unterschriebene Manifest beschreibt eine andere Version als die Freigabe.</translation>
+      <translation>Das signierte Manifest beschreibt eine andere Version als die Veröffentlichung.</translation>
     </message>
     <message id="gamehq.error.update.download.network_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="248"></location>
@@ -1057,104 +1057,104 @@
     <message id="gamehq.error.update.download.package_name_invalid">
       <location filename="src/updates/UpdateDownloader.cpp" line="71"></location>
       <source>The update package name is invalid.</source>
-      <translation>Der Name des Aktualisierungspakets ist ungültig.</translation>
+      <translation>Der Name des Updatepakets ist ungültig.</translation>
     </message>
     <message id="gamehq.error.update.download.package_name_mismatch">
       <location filename="src/updates/UpdateDownloader.cpp" line="415"></location>
       <source>The signed manifest names a different update package.</source>
-      <translation>Das unterschriebene Manifest nennt ein anderes Update-Paket.</translation>
+      <translation>Das signierte Manifest benennt ein anderes Update-Paket.</translation>
     </message>
     <message id="gamehq.error.update.download.package_not_authorised">
       <location filename="src/updates/UpdateDownloader.cpp" line="405"></location>
       <source>The signed manifest does not authorize an update package.</source>
       <oldsource>The signed manifest does not authorise an update package.</oldsource>
-      <translation type="unfinished">Das unterschriebene Manifest erlaubt kein Aktualisierungspaket.</translation>
+      <translation>Das signierte Manifest autorisiert kein Update-Paket.</translation>
     </message>
     <message id="gamehq.error.update.download.package_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="514"></location>
       <source>GameHQ could not read the downloaded update package.</source>
-      <translation>GameHQ Das heruntergeladene Update-Paket konnte nicht gelesen werden.</translation>
+      <translation>GameHQ konnte das heruntergeladene Updatepaket nicht lesen.</translation>
     </message>
     <message id="gamehq.error.update.download.package_size_invalid">
       <location filename="src/updates/UpdateDownloader.cpp" line="96"></location>
       <source>The update package size is missing or exceeds the safety limit.</source>
-      <translation>Die Aktualisierungspaketgröße fehlt oder überschreitet die Sicherheitsgrenze.</translation>
+      <translation>Die Paketgröße des Updates fehlt oder überschreitet die Sicherheitsgrenze.</translation>
     </message>
     <message id="gamehq.error.update.download.partial_create_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="150"></location>
       <source>GameHQ could not create the partial update file.</source>
-      <translation>GameHQ Die partielle Aktualisierungsdatei wurde nicht erstellt.</translation>
+      <translation>GameHQ konnte die temporäre Update-Datei nicht erstellen.</translation>
     </message>
     <message id="gamehq.error.update.download.publish_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="222"></location>
       <source>GameHQ could not publish the completed update download.</source>
-      <translation>GameHQ konnte den vollständigen Update-Download nicht veröffentlichen.</translation>
+      <translation>GameHQ konnte den abgeschlossenen Update-Download nicht bereitstellen.</translation>
     </message>
     <message id="gamehq.error.update.download.release_size_mismatch">
       <location filename="src/updates/UpdateDownloader.cpp" line="265"></location>
       <source>The update download size did not match the release metadata.</source>
-      <translation>Die Downloadgröße des Updates stimmte nicht mit den Metadaten der Version überein.</translation>
+      <translation>Die Größe des Update-Downloads stimmte nicht mit den Release-Metadaten überein.</translation>
     </message>
     <message id="gamehq.error.update.download.sha256_mismatch">
       <location filename="src/updates/UpdateDownloader.cpp" line="532"></location>
       <source>The update package failed SHA-256 verification and was rejected.</source>
-      <translation>Das Aktualisierungspaket wurde durch die SHA-256-Verifizierung abgelehnt.</translation>
+      <translation>Das Update-Paket scheiterte an der SHA-256-Verifizierung und wurde abgelehnt.</translation>
     </message>
     <message id="gamehq.error.update.download.signature_noncanonical">
       <location filename="src/updates/UpdateDownloader.cpp" line="454"></location>
       <source>The release signature is not in its canonical form.</source>
-      <translation>Die Freigabe unterschrieben ist nicht in seiner kanonischen Form.</translation>
+      <translation>Die Versionssignatur hat kein kanonisches Format.</translation>
     </message>
     <message id="gamehq.error.update.download.signature_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="357"></location>
       <source>GameHQ could not read the downloaded release signature.</source>
-      <translation>GameHQ konnte die heruntergeladene Release-Signatur nicht lesen.</translation>
+      <translation>GameHQ konnte die heruntergeladene Versionssignatur nicht lesen.</translation>
     </message>
     <message id="gamehq.error.update.download.signature_untrusted">
       <location filename="src/updates/UpdateDownloader.cpp" line="387"></location>
       <source>This release is not authorized by a trusted signature: %1</source>
       <oldsource>This release is not authorised by a trusted signature: %1</oldsource>
-      <translation type="unfinished">Diese Freigabe ist nicht durch eine vertrauenswürdige Signatur autorisiert: %1</translation>
+      <translation>Diese Version ist nicht durch eine vertrauenswürdige Signatur autorisiert: %1</translation>
     </message>
     <message id="gamehq.error.update.download.signed_manifest_missing">
       <location filename="src/updates/UpdateDownloader.cpp" line="88"></location>
       <source>This release has no signed manifest, so it cannot be installed.</source>
-      <translation>Diese Version hat kein signiertes Manifest, also kann sie nicht installiert werden.</translation>
+      <translation>Dieses Release hat kein signiertes Manifest, daher kann es nicht installiert werden.</translation>
     </message>
     <message id="gamehq.error.update.download.signed_size_invalid">
       <location filename="src/updates/UpdateDownloader.cpp" line="423"></location>
       <source>The signed update package size is out of range.</source>
-      <translation>Die Größe des signierten Aktualisierungspakets ist nicht in der Reichweite.</translation>
+      <translation>Die signierte Größe des Update-Pakets liegt außerhalb des zulässigen Bereichs.</translation>
     </message>
     <message id="gamehq.error.update.download.size_limit_exceeded">
       <location filename="src/updates/UpdateDownloader.cpp" line="190"></location>
       <source>The update download exceeded its safety size limit.</source>
-      <translation>Der Download des Updates überschritt seine Sicherheitsgrößengrenze.</translation>
+      <translation>Der Update-Download hat die zulässige Sicherheitsgröße überschritten.</translation>
     </message>
     <message id="gamehq.error.update.download.staging_create_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="104"></location>
       <source>GameHQ could not create the update staging directory.</source>
-      <translation>GameHQ Das Update-Staging-Verzeichnis wurde nicht erstellt.</translation>
+      <translation>GameHQ konnte das temporäre Update-Verzeichnis nicht erstellen.</translation>
     </message>
     <message id="gamehq.error.update.download.trust_state_read_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="375"></location>
       <source>GameHQ could not read its release trust state: %1</source>
-      <translation>GameHQ konnte den Vertrauenszustand der Freigabe nicht lesen: %1</translation>
+      <translation>GameHQ konnte den Vertrauensstatus der Version nicht lesen: %1</translation>
     </message>
     <message id="gamehq.error.update.download.trust_state_write_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="434"></location>
       <source>GameHQ could not record the release trust state: %1</source>
-      <translation>GameHQ konnte den Vertrauenszustand der Freigabe nicht erfassen: %1</translation>
+      <translation>GameHQ konnte den Vertrauensstatus der Version nicht speichern: %1</translation>
     </message>
     <message id="gamehq.error.update.download.write_failed">
       <location filename="src/updates/UpdateDownloader.cpp" line="198"></location>
       <source>GameHQ could not write the update download to disk.</source>
-      <translation>GameHQ Das Update-Download konnte nicht auf die Festplatte geschrieben werden.</translation>
+      <translation>GameHQ konnte den Update-Download nicht auf die Festplatte schreiben.</translation>
     </message>
     <message id="gamehq.error.update.install.handshake_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="183"></location>
       <source>GameHQ could not prepare the updater handshake.</source>
-      <translation>GameHQ konnte den Update-Handschlag nicht vorbereiten.</translation>
+      <translation>GameHQ konnte den Updater-Handshake nicht vorbereiten.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_missing">
       <location filename="src/updates/UpdateInstaller.cpp" line="169"></location>
@@ -1165,113 +1165,113 @@
     <message id="gamehq.error.update.install.helper_rejected">
       <location filename="src/updates/UpdateInstaller.cpp" line="212"></location>
       <source>The updater helper rejected the update before it became ready.</source>
-      <translation>Der Update-Helfer hat das Update abgelehnt, bevor es fertig war.</translation>
+      <translation>Das Update-Hilfsprogramm hat das Update abgelehnt, bevor es bereit war.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_start_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="195"></location>
       <source>GameHQ could not start the updater helper.</source>
-      <translation>GameHQ Der Update-Helfer konnte nicht gestartet werden.</translation>
+      <translation>GameHQ konnte den Updater-Helfer nicht starten.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_timeout">
       <location filename="src/updates/UpdateInstaller.cpp" line="217"></location>
       <source>The updater helper did not confirm it is ready in time.</source>
-      <translation>Der Update-Helfer bestätigte nicht, dass es rechtzeitig fertig ist.</translation>
+      <translation>Das Update-Hilfsprogramm hat seine Bereitschaft nicht rechtzeitig bestätigt.</translation>
     </message>
     <message id="gamehq.error.update.install.manifest_mismatch">
       <location filename="src/updates/UpdateInstaller.cpp" line="72"></location>
       <source>The staged package no longer matches the signed manifest.</source>
-      <translation>Das Paket passt nicht mehr zum signierten Manifest.</translation>
+      <translation>Das vorbereitete Paket entspricht nicht mehr dem signierten Manifest.</translation>
     </message>
     <message id="gamehq.error.update.install.metadata_incomplete">
       <location filename="src/updates/UpdateInstaller.cpp" line="31"></location>
       <source>The verified update metadata is incomplete.</source>
-      <translation>Die überprüften Aktualisierungsmetadaten sind unvollständig.</translation>
+      <translation>Die verifizierten Update-Metadaten sind unvollständig.</translation>
     </message>
     <message id="gamehq.error.update.install.metadata_invalid">
       <location filename="src/updates/UpdateInstaller.cpp" line="63"></location>
       <source>The verified update metadata is invalid.</source>
-      <translation>Die überprüften Aktualisierungsmetadaten sind ungültig.</translation>
+      <translation>Die verifizierten Update-Metadaten sind ungültig.</translation>
     </message>
     <message id="gamehq.error.update.install.package_changed">
       <location filename="src/updates/UpdateInstaller.cpp" line="82"></location>
       <source>The update package changed before installation: %1</source>
-      <translation>Das Update-Paket wurde vor der Installation geändert: %1</translation>
+      <translation>Das Updatepaket wurde vor der Installation geändert: %1</translation>
     </message>
     <message id="gamehq.error.update.install.package_outside_staging">
       <location filename="src/updates/UpdateInstaller.cpp" line="54"></location>
       <source>The verified update package is outside GameHQ's staging directory.</source>
-      <translation>Das überprüfte Update-Paket ist draußen. GameHQ Das ist das Inszenierungsverzeichnis.</translation>
+      <translation>Das verifizierte Update-Paket liegt außerhalb des temporären Update-Verzeichnisses von GameHQ.</translation>
     </message>
     <message id="gamehq.error.update.install.process_identity_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="106"></location>
       <location filename="src/updates/UpdateInstaller.cpp" line="115"></location>
       <source>GameHQ could not identify its own process for the update.</source>
-      <translation>GameHQ konnte seinen eigenen Prozess für die Aktualisierung nicht identifizieren.</translation>
+      <translation>GameHQ konnte seinen eigenen Prozess für das Update nicht identifizieren.</translation>
     </message>
     <message id="gamehq.error.update.install.transaction_directory_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="91"></location>
       <source>GameHQ could not create the update transaction directory.</source>
-      <translation>GameHQ Das Update-Transaktionsverzeichnis wurde nicht erstellt.</translation>
+      <translation>GameHQ konnte das Update-Transaktionsverzeichnis nicht erstellen.</translation>
     </message>
     <message id="gamehq.error.update.install.transaction_publish_failed">
       <location filename="src/updates/UpdateInstaller.cpp" line="153"></location>
       <source>GameHQ could not publish the update transaction.</source>
-      <translation>GameHQ konnte die Aktualisierungs-Transaktion nicht veröffentlichen.</translation>
+      <translation>GameHQ konnte die Update-Transaktion nicht bereitstellen.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
       <location filename="src/app/App.cpp" line="421"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
-      <translation>GameHQ Es konnte keine Wartung der Aktualisierung begonnen werden: %1</translation>
+      <translation>GameHQ konnte die Update-Wartung nicht starten: %1</translation>
     </message>
     <message id="gamehq.error.update.preflight.disk_space_insufficient">
       <location filename="src/updates/UpdatePreflight.cpp" line="119"></location>
       <source>There is not enough free space for download, staging and rollback backup.</source>
-      <translation>Es gibt nicht genug freien Platz für Download, Staging und Rollback-Backup.</translation>
+      <translation>Für Download, Vorbereitung und Rücksetzungssicherung ist nicht genügend freier Speicherplatz vorhanden.</translation>
     </message>
     <message id="gamehq.error.update.preflight.filesystem_unsupported">
       <location filename="src/updates/UpdatePreflight.cpp" line="69"></location>
       <source>Automatic updating currently requires NTFS or ReFS; use the release page on this drive.</source>
-      <translation>Die automatische Aktualisierung erfordert derzeit NTFS oder ReFS; verwenden Sie die Release-Seite auf diesem Laufwerk.</translation>
+      <translation>Automatische Updates erfordern derzeit NTFS oder ReFS. Verwenden Sie auf diesem Laufwerk die Versionsseite.</translation>
     </message>
     <message id="gamehq.error.update.preflight.network_share">
       <location filename="src/updates/UpdatePreflight.cpp" line="21"></location>
       <source>Automatic updating is not supported from a network share. Use the release page instead.</source>
-      <translation>Automatische Aktualisierung wird nicht von einer Netzwerkfreigabe unterstützt.</translation>
+      <translation>Automatische Updates werden von einer Netzwerkfreigabe nicht unterstützt. Verwenden Sie stattdessen die Versionsseite.</translation>
     </message>
     <message id="gamehq.error.update.preflight.package_incomplete">
       <location filename="src/updates/UpdatePreflight.cpp" line="41"></location>
       <source>Automatic updating is available only in a complete packaged GameHQ installation.</source>
-      <translation>Die automatische Aktualisierung ist nur in einem vollständigen Paket erhältlich. GameHQ Einrichtung.</translation>
+      <translation>Automatische Updates sind nur in einer vollständigen, paketierten GameHQ-Installation verfügbar.</translation>
     </message>
     <message id="gamehq.error.update.preflight.path_too_long">
       <location filename="src/updates/UpdatePreflight.cpp" line="29"></location>
       <source>This installation path is too long for safe automatic replacement. Use a shorter local path.</source>
-      <translation>Dieser Installationsweg ist zu lang für einen sicheren automatischen Austausch.</translation>
+      <translation>Dieser Installationspfad ist für einen sicheren automatischen Austausch zu lang. Verwenden Sie einen kürzeren lokalen Pfad.</translation>
     </message>
     <message id="gamehq.error.update.preflight.recovery_pending">
       <location filename="src/updates/UpdatePreflight.cpp" line="51"></location>
       <source>A previous update must finish recovery before another update can start.</source>
-      <translation>Ein vorheriges Update muss die Wiederherstellung beenden, bevor ein anderes Update gestartet werden kann.</translation>
+      <translation>Ein vorheriges Update muss die Wiederherstellung abschließen, bevor ein anderes Update beginnen kann.</translation>
     </message>
     <message id="gamehq.error.update.preflight.staging_create_failed">
       <location filename="src/updates/UpdatePreflight.cpp" line="77"></location>
       <source>GameHQ cannot create its update staging directory here.</source>
-      <translation>GameHQ kann hier nicht sein Update-Staging-Verzeichnis erstellen.</translation>
+      <translation>GameHQ kann sein Update-Staging-Verzeichnis hier nicht erstellen.</translation>
     </message>
     <message id="gamehq.error.update.preflight.volume_not_writable">
       <location filename="src/updates/UpdatePreflight.cpp" line="60"></location>
       <source>The GameHQ installation is not on a writable local volume.</source>
-      <translation>Die GameHQ Die Installation erfolgt nicht auf einem schreibbaren lokalen Volumen.</translation>
+      <translation>Die GameHQ-Installation befindet sich nicht auf einem beschreibbaren lokalen Laufwerk.</translation>
     </message>
     <message id="gamehq.error.update.preflight.write_failed">
       <location filename="src/updates/UpdatePreflight.cpp" line="88"></location>
       <source>GameHQ cannot safely write update files in this installation.</source>
-      <translation>GameHQ kann keine Aktualisierungsdateien in dieser Installation sicher schreiben.</translation>
+      <translation>GameHQ kann Update-Dateien in dieser Installation nicht sicher schreiben.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
       <location filename="src/updates/UpdateService.cpp" line="224"></location>
       <source>The release changed after download. Check again before installing.</source>
-      <translation>Die Version wurde nach dem Download geändert.</translation>
+      <translation>Die Version wurde nach dem Download geändert. Prüfen Sie vor der Installation erneut auf Updates.</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
       <location filename="src/updates/UpdateService.cpp" line="281"></location>
@@ -1281,23 +1281,23 @@
     <message id="gamehq.error.update.revalidation_failed">
       <location filename="src/updates/UpdateService.cpp" line="325"></location>
       <source>The release could not be revalidated: %1</source>
-      <translation>Die Freigabe konnte nicht verlängert werden: %1</translation>
+      <translation>Die Version konnte nicht erneut validiert werden: %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
       <location filename="src/updates/UpdateService.cpp" line="253"></location>
       <source>The release could not be freshly revalidated before installation.</source>
-      <translation>Die Freigabe konnte vor der Installation nicht erneut verlängert werden.</translation>
+      <translation>Die Version konnte vor der Installation nicht aktuell erneut validiert werden.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
       <location filename="src/updates/UpdateService.cpp" line="303"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
-      <translation>GitHub konnte diese Version vor der Installation nicht erneut bestätigen. Versuchen Sie es später noch einmal.</translation>
+      <translation>GitHub konnte diese Version vor der Installation nicht erneut validieren. Versuchen Sie es später erneut.</translation>
     </message>
     <message id="gamehq.format.fps">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="87"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="89"></location>
       <source>%1 fps</source>
-      <translation>%1 FPS</translation>
+      <translation>%1 fps</translation>
     </message>
     <message id="gamehq.format.megabits_per_second">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="114"></location>
@@ -1310,7 +1310,7 @@
     <message id="gamehq.format.percent">
       <location filename="src/ui/qml/components/SettingsSlider.qml" line="21"></location>
       <source>%1%</source>
-      <translation>%1 %</translation>
+      <translation>%1%</translation>
     </message>
     <message id="gamehq.format.size.bytes">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="44"></location>
@@ -1336,19 +1336,19 @@
     <message id="gamehq.gallery.action.add_folder">
       <location filename="src/ui/qml/components/DesktopEmptyState.qml" line="31"></location>
       <source>Add folder…</source>
-      <translation>Fügen Sie den Ordner hinzu...</translation>
+      <translation>Ordner hinzufügen…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
       <location filename="src/ui/qml/Main.qml" line="1101"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
-      <translation>Massenwahl</translation>
+      <translation>Massenauswahl</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
       <location filename="src/ui/qml/Main.qml" line="1097"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="14"></location>
       <source>Show in folder</source>
-      <translation>In einem Ordner anzeigen</translation>
+      <translation>Im Ordner anzeigen</translation>
     </message>
     <message id="gamehq.gallery.capture_caption">
       <location filename="src/ui/qml/components/CaptureTile.qml" line="180"></location>
@@ -1367,7 +1367,7 @@ Dadurch wird die Datei dauerhaft gelöscht.</translation>
       <location filename="src/ui/qml/Main.qml" line="1049"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="464"></location>
       <source>Delete capture?</source>
-      <translation>Entfernen Sie das Aufnehmen?</translation>
+      <translation>Aufnahme löschen?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
       <location filename="src/ui/qml/Main.qml" line="382"></location>
@@ -1375,9 +1375,9 @@ Dadurch wird die Datei dauerhaft gelöscht.</translation>
 This cannot be undone.</source>
       <translation>
         <numerusform>%n Aufnahme wird dauerhaft gelöscht.
-Dies kann nicht rückgängig gemacht werden.</numerusform>
+Dieser Vorgang kann nicht rückgängig gemacht werden.</numerusform>
         <numerusform>%n Aufnahmen werden dauerhaft gelöscht.
-Dies kann nicht rückgängig gemacht werden.</numerusform>
+Dieser Vorgang kann nicht rückgängig gemacht werden.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
@@ -1388,37 +1388,37 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.gallery.empty.description">
       <location filename="src/ui/qml/components/DesktopEmptyState.qml" line="21"></location>
       <source>No captures yet — add a folder to watch.</source>
-      <translation>Noch keine Aufnahmen  fügen Sie einen Ordner zum Ansehen hinzu.</translation>
+      <translation>Noch keine Aufnahmen — fügen Sie einen zu überwachenden Ordner hinzu.</translation>
     </message>
     <message id="gamehq.gallery.hint.browse.gamepad">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="46"></location>
       <source>Cross — open | Triangle — favorite | Square — menu | L1 — sidebar | PS — overlay</source>
-      <translation>Kreuz  offen ∙ Dreieck  Favorit ∙ Quadrat  Menü L1  Seitenleiste PS  Überlagerung</translation>
+      <translation>Kreuz — öffnen | Dreieck — Favorit | Quadrat — Menü | L1 — Seitenleiste | PS — Overlay</translation>
     </message>
     <message id="gamehq.gallery.hint.browse.keyboard">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="49"></location>
       <source>Enter — open | F — favorite | E — show in folder | Ctrl+Shift+G — overlay</source>
-      <translation>Geben Sie  offen ∙ F  Lieblings ∙ E  in einem Ordner angezeigt ∙ Ctrl+Shift+G  Überlagerung</translation>
+      <translation>Enter — öffnen | F — Favorit | E — im Ordner anzeigen | Ctrl+Shift+G — Overlay</translation>
     </message>
     <message id="gamehq.gallery.hint.bulk.gamepad">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="39"></location>
       <source>Cross — select | Triangle — all | Square — delete | Circle — done</source>
-      <translation>Kreuz  Auswahl ∙ Dreieck  alle ∙ Quadrat  Löschen ∙ Kreis  fertig</translation>
+      <translation>Kreuz — auswählen | Dreieck — alle | Quadrat — löschen | Kreis — fertig</translation>
     </message>
     <message id="gamehq.gallery.hint.bulk.keyboard">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="42"></location>
       <source>Enter/Space — select | Ctrl+A — all | Delete — delete | Esc — done</source>
-      <translation>Enter/Space  wählen Ctrl+A  alle Löschen  löschen Esc  fertig</translation>
+      <translation>Enter/Space — auswählen | Ctrl+A — alle | Delete — löschen | Esc — fertig</translation>
     </message>
     <message id="gamehq.gallery.hint.sidebar.gamepad">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="31"></location>
       <source>D-pad ↑↓ — pick | Cross — select | R1 — back to grid</source>
-      <translation>D-Pad ↑↓  Pick ♫ Kreuz  Auswahl ♫ R1  Zurück zum Gitter</translation>
+      <translation>D-Pad ↑↓ — wählen | Kreuz — auswählen | R1 — zurück zum Raster</translation>
     </message>
     <message id="gamehq.gallery.hint.sidebar.keyboard">
       <location filename="src/ui/qml/components/DesktopGalleryFooter.qml" line="34"></location>
       <source>↑↓ — pick | Enter — select | Esc — back to grid</source>
-      <translation>↑↓  pick. ∞ Enter  select. ∞ Esc  zurück zum Gitter</translation>
+      <translation>↑↓ — wählen | Enter — auswählen | Esc — zurück zum Raster</translation>
     </message>
     <message id="gamehq.gallery.selection.count" numerus="yes">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="26"></location>
@@ -1431,12 +1431,12 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.gallery.viewer.window_title">
       <location filename="src/ui/qml/components/Lightbox.qml" line="19"></location>
       <source>%1 Viewer</source>
-      <translation>%1 Zuschauer</translation>
+      <translation>%1 – Medienansicht</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
       <location filename="src/ui/AppController.cpp" line="335"></location>
       <source>Check the current HDR state of every display.</source>
-      <translation>Überprüfen Sie den aktuellen HDR-Zustand jedes Displays.</translation>
+      <translation>Aktuellen HDR-Status aller Monitore prüfen.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
       <location filename="src/ui/AppController.cpp" line="321"></location>
@@ -1451,23 +1451,23 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.hdr.status.no_displays">
       <location filename="src/ui/AppController.cpp" line="315"></location>
       <source>No displays reported by the graphics driver</source>
-      <translation>Keine Anzeigen gemeldet durch den Grafiktreiber</translation>
+      <translation>Der Grafiktreiber hat keine Monitore gemeldet</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
       <location filename="src/ui/AppController.cpp" line="309"></location>
       <source>Not checked yet</source>
-      <translation>Noch nicht überprüft</translation>
+      <translation>Noch nicht geprüft</translation>
     </message>
     <message id="gamehq.help.binding.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="86"></location>
       <location filename="src/ui/qml/HelpView.qml" line="232"></location>
       <source>Select mode</source>
-      <translation>Auswählen des Modus</translation>
+      <translation>Auswahlmodus</translation>
     </message>
     <message id="gamehq.help.feature.gallery.description">
       <location filename="src/ui/qml/HelpView.qml" line="318"></location>
       <source>All captures in one grid — filter by category or game. Grid navigation works with keyboard, mouse, and controller.</source>
-      <translation>Alle Aufnahmen in einem Gitter  Filter nach Kategorie oder Spiel.</translation>
+      <translation>Alle Aufnahmen in einem Raster — nach Kategorie oder Spiel filtern. Die Raster-Navigation funktioniert mit Tastatur, Maus und Controller.</translation>
     </message>
     <message id="gamehq.help.feature.gallery.title">
       <location filename="src/ui/qml/HelpView.qml" line="316"></location>
@@ -1477,69 +1477,69 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.help.feature.lightbox.description">
       <location filename="src/ui/qml/HelpView.qml" line="330"></location>
       <source>Full-screen viewer for screenshots and videos. Opens from both the main window and the overlay.</source>
-      <translation>Vollbild-Anzeiger für Screenshots und Videos.</translation>
+      <translation>Vollbildanzeige für Screenshots und Videos. Sie lässt sich sowohl im Hauptfenster als auch im Overlay öffnen.</translation>
     </message>
     <message id="gamehq.help.feature.lightbox.title">
       <location filename="src/ui/qml/HelpView.qml" line="328"></location>
       <source>Lightbox</source>
-      <translation>Lichtbox</translation>
+      <translation>Lightbox</translation>
     </message>
     <message id="gamehq.help.feature.overlay.description">
       <location filename="src/ui/qml/HelpView.qml" line="324"></location>
       <source>Transparent fullscreen HUD. View and manage captures from inside a game without alt-tabbing. Includes its own gallery grid, lightbox, and toast notifications.</source>
-      <translation>Transparent Vollbild HUD. Anzeige und Verwaltung von Aufnahmen aus dem Spiel ohne Alt-Tabs. Ein eigenes Galerie-Gitter, Lightbox und Toast-Benachrichtigungen.</translation>
+      <translation>Transparentes Vollbild-HUD. Aufnahmen im Spiel anzeigen und verwalten, ohne mit Alt-Tab zu wechseln. Enthält ein eigenes Galerieraster, eine Vollbildanzeige und Popup-Benachrichtigungen.</translation>
     </message>
     <message id="gamehq.help.feature.overlay.title">
       <location filename="src/ui/qml/HelpView.qml" line="322"></location>
       <source>Overlay</source>
-      <translation>Überlagerung</translation>
+      <translation>Overlay</translation>
     </message>
     <message id="gamehq.help.feature.replay.description">
       <location filename="src/ui/qml/HelpView.qml" line="306"></location>
       <source>When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
       <oldsource>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</oldsource>
-      <translation type="unfinished">Immer eingeschaltet. Aufzeichnungen im Hintergrund, während ein Spiel im Fokus ist. Halten Sie die Last-Share-Taste (oder Ctrl+Shift+E) gedrückt, um die letzten Sekunden als Clip zu speichern. Schalten Sie die Aufnahme immer eingeschaltet in Einstellungen → Wiederholung ein oder aus.</translation>
+      <translation>Wenn aktiviert, startet der Replay-Puffer automatisch und zeichnet im Hintergrund auf, während ein Spiel fokussiert ist. Halten Sie Share (oder Ctrl+Shift+E) gedrückt, um die letzten Sekunden als Clip zu speichern. Die dauerhafte Aufnahme lässt sich unter Einstellungen → Replay ein- oder ausschalten.</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
       <location filename="src/ui/qml/HelpView.qml" line="304"></location>
       <source>Replay buffer</source>
-      <translation>Wiederholungspuffer</translation>
+      <translation>Replay-Puffer</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.description">
       <location filename="src/ui/qml/HelpView.qml" line="312"></location>
       <source>Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.</source>
       <oldsource>GameHQ captures the active game window through GDI, saves a PNG to your captures folder, and confirms the screenshot immediately.</oldsource>
-      <translation type="unfinished">GDI-Grab des aktiven Spielfensters. PNG gespeichert in Ihrem Aufnahmen-Ordner mit sofortigem Verschlussfeedback.</translation>
+      <translation>Erfasst das aktive Spielfenster über GDI, speichert eine PNG-Datei im Aufnahmeordner und gibt sofort ein Auslösefeedback.</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
       <location filename="src/ui/qml/HelpView.qml" line="310"></location>
       <source>Screenshots</source>
-      <translation>Bildschirmfotos</translation>
+      <translation>Screenshots</translation>
     </message>
     <message id="gamehq.help.feature.watched_folders.description">
       <location filename="src/ui/qml/HelpView.qml" line="336"></location>
       <source>Add any folder (Game Bar, Steam, NVIDIA ShadowPlay) — %1 scans it for new captures automatically.</source>
-      <translation>Fügen Sie einen Ordner hinzu (Game Bar, Steam, NVIDIA ShadowPlay)  %1 scannt ihn automatisch nach neuen Aufnahmen.</translation>
+      <translation>Fügen Sie einen beliebigen Ordner hinzu (Game Bar, Steam, NVIDIA ShadowPlay) — %1 durchsucht ihn automatisch nach neuen Aufnahmen.</translation>
     </message>
     <message id="gamehq.help.feature.watched_folders.title">
       <location filename="src/ui/qml/HelpView.qml" line="334"></location>
       <source>Watched folders</source>
-      <translation>Beobachtete Ordner</translation>
+      <translation>Überwachte Ordner</translation>
     </message>
     <message id="gamehq.help.features">
       <location filename="src/ui/qml/HelpView.qml" line="280"></location>
       <source>Features</source>
-      <translation>Merkmale</translation>
+      <translation>Funktionen</translation>
     </message>
     <message id="gamehq.help.gamepad.button_combination">
       <location filename="src/ui/qml/HelpView.qml" line="185"></location>
       <source>Button combination</source>
-      <translation>Schaltflächenkombination</translation>
+      <translation>Tastenkombination</translation>
     </message>
     <message id="gamehq.help.gamepad.button_combination_action">
       <location filename="src/ui/qml/HelpView.qml" line="187"></location>
       <source>Press the ordered pair within the configured combination window</source>
-      <translation>Drücken Sie das geordnete Paar im konfigurierten Kombinationsfenster</translation>
+      <translation>Geordnetes Tastenpaar innerhalb des festgelegten Kombinationszeitfensters drücken</translation>
     </message>
     <message id="gamehq.help.gamepad.circle">
       <location filename="src/ui/qml/HelpView.qml" line="214"></location>
@@ -1549,7 +1549,7 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.help.gamepad.circle_action">
       <location filename="src/ui/qml/HelpView.qml" line="216"></location>
       <source>Back / close overlay</source>
-      <translation>Rücken / Schließüberlagerung</translation>
+      <translation>Zurück / Overlay schließen</translation>
     </message>
     <message id="gamehq.help.gamepad.cross">
       <location filename="src/ui/qml/HelpView.qml" line="208"></location>
@@ -1559,12 +1559,12 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.help.gamepad.cross_action">
       <location filename="src/ui/qml/HelpView.qml" line="210"></location>
       <source>Open selected capture / confirm</source>
-      <translation>Ausgewählte Erfassung öffnen / bestätigen</translation>
+      <translation>Ausgewählte Aufnahme öffnen / bestätigen</translation>
     </message>
     <message id="gamehq.help.gamepad.navigation_controls">
       <location filename="src/ui/qml/HelpView.qml" line="202"></location>
       <source>D-pad / Left Stick</source>
-      <translation>D-Pad / Linksstick</translation>
+      <translation>D-Pad / linker Stick</translation>
     </message>
     <message id="gamehq.help.gamepad.ps_button">
       <location filename="src/ui/qml/HelpView.qml" line="191"></location>
@@ -1574,27 +1574,27 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.help.gamepad.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="234"></location>
       <source>Cross toggles, Triangle selects all, Square deletes, Circle exits</source>
-      <translation>Kreuzschaltfläche, Dreieck wählt alle, Quadrat löscht, Kreis geht aus</translation>
+      <translation>Kreuz schaltet um, Dreieck wählt alle aus, Quadrat löscht, Kreis beendet</translation>
     </message>
     <message id="gamehq.help.gamepad.share_hold">
       <location filename="src/ui/qml/HelpView.qml" line="173"></location>
       <source>Share (hold)</source>
-      <translation>Anteil (Hold)</translation>
+      <translation>Share (gedrückt halten)</translation>
     </message>
     <message id="gamehq.help.gamepad.share_hold_action">
       <location filename="src/ui/qml/HelpView.qml" line="175"></location>
       <source>Save replay clip; hold consumes the tap</source>
-      <translation>Wiederholungspläne speichern; Halten verbraucht den Tap</translation>
+      <translation>Replay-Clip speichern; Gedrückthalten verhindert die Aktion für kurzes Drücken</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap">
       <location filename="src/ui/qml/HelpView.qml" line="179"></location>
       <source>Share (2× / 3×)</source>
-      <translation>Teilen (2 × / 3 ×)</translation>
+      <translation>Share (2× / 3×)</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap_action">
       <location filename="src/ui/qml/HelpView.qml" line="181"></location>
       <source>Exact double/triple tap; lower counts wait only for the configured interval</source>
-      <translation>Genaue doppelte/dreifache Berührung; niedrigere Zählungen warten nur auf das konfigurierte Intervall</translation>
+      <translation>Genau doppelt oder dreifach drücken; eine kleinere Anzahl wartet nur das festgelegte Zeitfenster ab</translation>
     </message>
     <message id="gamehq.help.gamepad.square">
       <location filename="src/ui/qml/HelpView.qml" line="220"></location>
@@ -1604,22 +1604,22 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.help.gamepad.square_action">
       <location filename="src/ui/qml/HelpView.qml" line="222"></location>
       <source>Action menu (Show in folder / Delete)</source>
-      <translation>Aktionsmenü (In Ordner anzeigen / Löschen)</translation>
+      <translation>Aktionsmenü (Im Ordner anzeigen / Löschen)</translation>
     </message>
     <message id="gamehq.help.gamepad.switch_panel">
       <location filename="src/ui/qml/HelpView.qml" line="198"></location>
       <source>Switch panel: sidebar ↔ grid (app) / flip captures (overlay)</source>
-      <translation>Schaltfläche: Seitenleiste  Raster (App) / Flip-Captures (Überlagerung)</translation>
+      <translation>Panel wechseln: Seitenleiste ↔ Raster (App) / Aufnahmen wechseln (Overlay)</translation>
     </message>
     <message id="gamehq.help.gamepad.system_share_action">
       <location filename="src/ui/qml/HelpView.qml" line="169"></location>
       <source>Take screenshot; distinct from Xbox View / Back</source>
-      <translation>Screenshot machen; anders als Xbox View / Zurück</translation>
+      <translation>Screenshot aufnehmen; nicht mit Xbox View / Zurück identisch</translation>
     </message>
     <message id="gamehq.help.gamepad.system_share_tap">
       <location filename="src/ui/qml/HelpView.qml" line="167"></location>
       <source>System Share (tap)</source>
-      <translation>Systemfreigabe (Klopfen)</translation>
+      <translation>System-Share (kurz drücken)</translation>
     </message>
     <message id="gamehq.help.gamepad.triangle">
       <location filename="src/ui/qml/HelpView.qml" line="226"></location>
@@ -1634,66 +1634,66 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.help.keyboard.open_capture">
       <location filename="src/ui/qml/HelpView.qml" line="82"></location>
       <source>Open selected capture</source>
-      <translation>Ausgewählte Erfassung öffnen</translation>
+      <translation>Ausgewählte Aufnahme öffnen</translation>
     </message>
     <message id="gamehq.help.keyboard.open_overlay">
       <location filename="src/ui/qml/HelpView.qml" line="67"></location>
       <location filename="src/ui/qml/HelpView.qml" line="193"></location>
       <source>Open / close overlay</source>
-      <translation>Öffnen / Schließen der Überlagerung</translation>
+      <translation>Overlay öffnen / schließen</translation>
     </message>
     <message id="gamehq.help.keyboard.save_replay">
       <location filename="src/ui/qml/HelpView.qml" line="77"></location>
       <source>Save last N seconds as clip</source>
-      <translation>Speichern Sie die letzten N Sekunden als Clip</translation>
+      <translation>Letzte N Sekunden als Clip speichern</translation>
     </message>
     <message id="gamehq.help.keyboard.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="88"></location>
       <source>Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items</source>
       <oldsource>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</oldsource>
-      <translation type="unfinished">Einfügen / Platz wechselt, Ctrl+A wählt alle aus, Löschen entfernt ausgewählt</translation>
+      <translation>Enter / Space schaltet die Auswahl um, Ctrl+A wählt alle aus, Delete entfernt ausgewählte Elemente</translation>
     </message>
     <message id="gamehq.help.keyboard.show_in_explorer">
       <location filename="src/ui/qml/HelpView.qml" line="98"></location>
       <source>Show selected in Explorer</source>
-      <translation>Ausgewählte Anzeige im Explorer</translation>
+      <translation>Ausgewählt im Explorer anzeigen</translation>
     </message>
     <message id="gamehq.help.keyboard.take_screenshot">
       <location filename="src/ui/qml/HelpView.qml" line="72"></location>
       <source>Take screenshot</source>
-      <translation>Schnappen Sie sich einen Screenshot</translation>
+      <translation>Screenshot aufnehmen</translation>
     </message>
     <message id="gamehq.help.keyboard.toggle_favorite">
       <location filename="src/ui/qml/HelpView.qml" line="93"></location>
       <location filename="src/ui/qml/HelpView.qml" line="228"></location>
       <source>Favorite / unfavorite selected</source>
-      <translation>Lieblings- / Ungefähigkeits-System ausgewählt</translation>
+      <translation>Ausgewähltes Element als Favorit markieren / Markierung entfernen</translation>
     </message>
     <message id="gamehq.help.keyboard_shortcuts">
       <location filename="src/ui/qml/HelpView.qml" line="42"></location>
       <source>Keyboard shortcuts</source>
-      <translation>Tastaturverknüpfungen</translation>
+      <translation>Tastenkürzel</translation>
     </message>
     <message id="gamehq.help.navigate_gallery">
       <location filename="src/ui/qml/HelpView.qml" line="103"></location>
       <location filename="src/ui/qml/HelpView.qml" line="204"></location>
       <source>Navigate gallery grid</source>
-      <translation>Navigation im Galerie-Raster</translation>
+      <translation>Durch das Galerieraster navigieren</translation>
     </message>
     <message id="gamehq.help.open_controller_guide">
       <location filename="src/ui/qml/HelpView.qml" line="266"></location>
       <source>Open the controller compatibility guide</source>
-      <translation>Öffnen Sie die Anleitung zur Steuerungskompatibilität</translation>
+      <translation>Kompatibilitätsleitfaden für Controller öffnen</translation>
     </message>
     <message id="gamehq.input.assignment.capture_active">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="228"></location>
       <source>Controller capture active · Dialog navigation is paused</source>
-      <translation>Kontrollen erfassen aktiv · Dialognavigation eingestellt</translation>
+      <translation>Controller-Eingabe wird erfasst · Dialognavigation ist pausiert</translation>
     </message>
     <message id="gamehq.input.assignment.combination_gesture">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="506"></location>
       <source>Press · fixed for combinations</source>
-      <translation>• für Kombinationen fest</translation>
+      <translation>Drücken · bei Kombinationen festgelegt</translation>
     </message>
     <message id="gamehq.input.assignment.default_duration">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="532"></location>
@@ -1708,7 +1708,7 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.input.assignment.first_button">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="315"></location>
       <source>First button</source>
-      <translation>Erster Knopf</translation>
+      <translation>Erste Taste</translation>
     </message>
     <message id="gamehq.input.assignment.gesture">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="460"></location>
@@ -1724,50 +1724,50 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.input.assignment.listening_button">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="270"></location>
       <source>Listening… Press a controller button</source>
-      <translation>Hören Sie zu... drücken Sie einen Controllerknopf</translation>
+      <translation>Warten auf Eingabe… Controller-Taste drücken</translation>
     </message>
     <message id="gamehq.input.assignment.listening_first">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="342"></location>
       <source>Listening… Hold the first button</source>
-      <translation>Hören Sie, drücken Sie den ersten Knopf.</translation>
+      <translation>Warten auf Eingabe… Erste Taste gedrückt halten</translation>
     </message>
     <message id="gamehq.input.assignment.listening_second">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="407"></location>
       <source>Listening… Press the second button</source>
-      <translation>Hören Sie... drücken Sie den zweiten Knopf.</translation>
+      <translation>Warten auf Eingabe… Zweite Taste drücken</translation>
     </message>
     <message id="gamehq.input.assignment.not_set">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="275"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="353"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="416"></location>
       <source>Not set</source>
-      <translation>Nicht eingestellt</translation>
+      <translation>Nicht festgelegt</translation>
     </message>
     <message id="gamehq.input.assignment.notice.attention">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="585"></location>
       <source>Assignment needs attention</source>
-      <translation>Ein Auftrag braucht Aufmerksamkeit</translation>
+      <translation>Belegung erfordert Aufmerksamkeit</translation>
     </message>
     <message id="gamehq.input.assignment.notice.compatibility">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="593"></location>
       <source>Compatibility change required</source>
-      <translation>Notwendige Änderung der Kompatibilität</translation>
+      <translation>Kompatibilitätsänderung erforderlich</translation>
     </message>
     <message id="gamehq.input.assignment.notice.default">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="596"></location>
       <source>Assignment note</source>
-      <translation>Zuweisungsbericht</translation>
+      <translation>Hinweis zur Belegung</translation>
     </message>
     <message id="gamehq.input.assignment.notice.not_verified">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="589"></location>
       <source>Button not verified this session</source>
-      <translation>Taste nicht verifiziert</translation>
+      <translation>Taste wurde in dieser Sitzung nicht geprüft</translation>
     </message>
     <message id="gamehq.input.assignment.pattern">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="197"></location>
       <source>Type</source>
       <oldsource>Pattern</oldsource>
-      <translation type="unfinished">Muster</translation>
+      <translation>Typ</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.combination">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="209"></location>
@@ -1777,7 +1777,7 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.input.assignment.pattern.single">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="207"></location>
       <source>Single button</source>
-      <translation>Einfach geknüpft</translation>
+      <translation>Einzelne Taste</translation>
     </message>
     <message id="gamehq.input.assignment.scope_slot">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="181"></location>
@@ -1787,22 +1787,22 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.input.assignment.second_button">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="380"></location>
       <source>Second button</source>
-      <translation>Zweiter Knopf</translation>
+      <translation>Zweite Taste</translation>
     </message>
     <message id="gamehq.input.assignment.waiting_first">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="413"></location>
       <source>Waiting for first button</source>
-      <translation>Warten auf den ersten Knopf</translation>
+      <translation>Warten auf die erste Taste</translation>
     </message>
     <message id="gamehq.input.binding_card.add">
       <location filename="src/ui/qml/components/BindingCard.qml" line="257"></location>
       <source>Add  ›</source>
-      <translation>Hinzufügen ›</translation>
+      <translation>Hinzufügen  ›</translation>
     </message>
     <message id="gamehq.input.binding_card.add_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="198"></location>
       <source>Add %1 assignment</source>
-      <translation>Zuordnung %1 hinzufügen</translation>
+      <translation>%1-Belegung hinzufügen</translation>
     </message>
     <message id="gamehq.input.binding_card.add_input">
       <location filename="src/ui/qml/components/BindingCard.qml" line="217"></location>
@@ -1812,58 +1812,58 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
     <message id="gamehq.input.binding_card.add_status_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="194"></location>
       <source>Add %1 assignment, status %2</source>
-      <translation>Zufügen von Zuordnung %1, Status %2</translation>
+      <translation>%1-Belegung hinzufügen, Status %2</translation>
     </message>
     <message id="gamehq.input.binding_card.edit">
       <location filename="src/ui/qml/components/BindingCard.qml" line="254"></location>
       <source>Edit  ›</source>
-      <translation>Bearbeiten ›</translation>
+      <translation>Bearbeiten  ›</translation>
     </message>
     <message id="gamehq.input.binding_card.edit_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="189"></location>
       <source>Edit %1 assignment: %2, %3</source>
-      <translation>Zuweisung %1 bearbeiten: %2, %3</translation>
+      <translation>%1-Belegung bearbeiten: %2, %3</translation>
     </message>
     <message id="gamehq.input.binding_card.edit_status_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="183"></location>
       <source>Edit %1 assignment: %2, %3, status %4</source>
-      <translation>Bearbeiten Sie %1 Zuordnung: %2, %3, Status %4</translation>
+      <translation>%1-Belegung bearbeiten: %2, %3, Status %4</translation>
     </message>
     <message id="gamehq.input.binding_card.heading">
       <location filename="src/ui/qml/components/BindingCard.qml" line="61"></location>
       <source>%1 assignment</source>
-      <translation>Zuordnung %1</translation>
+      <translation>%1-Belegung</translation>
     </message>
     <message id="gamehq.input.binding_card.remove_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="144"></location>
       <source>Remove %1 assignment</source>
-      <translation>Zuordnung %1 entfernen</translation>
+      <translation>%1-Belegung entfernen</translation>
     </message>
     <message id="gamehq.input.binding_card.restore_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="101"></location>
       <source>Restore %1 assignment</source>
-      <translation>%1-Zuweisung wiederherstellen</translation>
+      <translation>%1-Belegung wiederherstellen</translation>
     </message>
     <message id="gamehq.input.binding_card.revert_accessible">
       <location filename="src/ui/qml/components/BindingCard.qml" line="104"></location>
       <source>Revert %1 assignment</source>
-      <translation>Änderung an der %1-Zuweisung rückgängig machen</translation>
+      <translation>%1-Belegung zurücksetzen</translation>
     </message>
     <message id="gamehq.input.binding_card.unassigned">
       <location filename="src/ui/qml/components/BindingCard.qml" line="214"></location>
       <source>Unassigned</source>
-      <translation>Nicht zugeteilt</translation>
+      <translation>Nicht zugewiesen</translation>
     </message>
     <message id="gamehq.input.choose_another">
       <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="17"></location>
       <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="23"></location>
       <source>Choose another</source>
-      <translation>Wählen Sie einen anderen</translation>
+      <translation>Andere auswählen</translation>
     </message>
     <message id="gamehq.input.compatibility.convert">
       <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="15"></location>
       <source>Convert &amp; add</source>
-      <translation>Konvertieren &amp; hinzufügen</translation>
+      <translation>Umwandeln und hinzufügen</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press">
       <location filename="src/input/BindingEditorModel.cpp" line="482"></location>
@@ -1872,11 +1872,11 @@ Dies kann nicht rückgängig gemacht werden.</numerusform>
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 
 %2 will then activate after the button is released.</source>
-      <translation>%1 aktiviert derzeit %2 sofort beim Drücken der Taste.
+      <translation>%1 aktiviert %2 derzeit sofort beim Drücken der Taste.
 
-Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Einfaches Tippen ändern.
+Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken ändern.
 
-%2 wird dann beim Loslassen der Taste aktiviert.</translation>
+%2 wird anschließend beim Loslassen der Taste aktiviert.</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press_with_wait">
       <location filename="src/input/BindingEditorModel.cpp" line="474"></location>
@@ -1885,16 +1885,16 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 
 %2 will then activate after the button is released and may wait up to %4 ms to rule out the %3 action.</source>
-      <translation>%1 aktiviert derzeit %2 sofort beim Drücken der Taste.
+      <translation>%1 aktiviert %2 derzeit sofort beim Drücken der Taste.
 
-Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Einfaches Tippen ändern.
+Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken ändern.
 
-%2 wird dann beim Loslassen der Taste aktiviert und wartet möglicherweise bis zu %4 ms, um die Aktion %3 auszuschließen.</translation>
+%2 wird anschließend beim Loslassen der Taste aktiviert und kann bis zu %4 ms warten, um die Aktion %3 auszuschließen.</translation>
     </message>
     <message id="gamehq.input.compatibility.title">
       <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="12"></location>
       <source>Make these assignments compatible?</source>
-      <translation>Diese Aufgaben miteinander vereinbaren?</translation>
+      <translation>Diese Belegungen kompatibel machen?</translation>
     </message>
     <message id="gamehq.input.conflict.already_assigned">
       <location filename="src/input/BindingEditorModel.cpp" line="458"></location>
@@ -1904,24 +1904,24 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.input.conflict.press_timed">
       <location filename="src/input/BindingEditorModel.cpp" line="451"></location>
       <source>%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.</source>
-      <translation>%1 verwendet Drücken für %2. Dies lässt sich in diesem Kontext nicht von %3 unterscheiden, ohne das Verhalten beim Tastendruck zu ändern.</translation>
+      <translation>%1 verwendet Drücken für %2. Ohne das Verhalten beim Tastendruck zu ändern, lässt sich dies in diesem Kontext nicht von %3 unterscheiden.</translation>
     </message>
     <message id="gamehq.input.conflict.title">
       <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="18"></location>
       <source>These assignments conflict</source>
-      <translation>Diese Aufgaben stehen im Widerspruch</translation>
+      <translation>Diese Belegungen stehen in Konflikt</translation>
     </message>
     <message id="gamehq.input.gesture.double_tap">
       <location filename="src/input/BindingPattern.cpp" line="106"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="474"></location>
       <source>Double tap</source>
-      <translation>Doppelt schlagen</translation>
+      <translation>Doppelt drücken</translation>
     </message>
     <message id="gamehq.input.gesture.hold">
       <location filename="src/input/BindingPattern.cpp" line="121"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="478"></location>
       <source>Hold</source>
-      <translation>Warten Sie .</translation>
+      <translation>Gedrückt halten</translation>
     </message>
     <message id="gamehq.input.gesture.press">
       <location filename="src/input/BindingPattern.cpp" line="101"></location>
@@ -1934,13 +1934,13 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/input/BindingPattern.cpp" line="117"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="472"></location>
       <source>Tap</source>
-      <translation>Tippen</translation>
+      <translation>Kurz drücken</translation>
     </message>
     <message id="gamehq.input.gesture.triple_tap">
       <location filename="src/input/BindingPattern.cpp" line="112"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="476"></location>
       <source>Triple tap</source>
-      <translation>Dreifach schlagen</translation>
+      <translation>Dreifach drücken</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
       <location filename="src/input/BindingEditorModel.cpp" line="301"></location>
@@ -1950,12 +1950,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.input.model.capture.keyboard">
       <location filename="src/input/BindingEditorModel.cpp" line="308"></location>
       <source>Press a key or shortcut for %1 · Slot %2</source>
-      <translation>Drücken Sie eine Taste oder eine Verknüpfung für %1 · Schlitze %2</translation>
+      <translation>Taste oder Tastenkürzel für %1 · Slot %2 drücken</translation>
     </message>
     <message id="gamehq.input.model.capture.mouse">
       <location filename="src/input/BindingEditorModel.cpp" line="315"></location>
       <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
-      <translation>Drücken Sie die Maustaste "Zwischen", "Zurück" oder "Vorwärts" %1 · Schlitze %2</translation>
+      <translation>Mittlere, Zurück- oder Vorwärts-Maustaste für %1 · Slot %2 drücken</translation>
     </message>
     <message id="gamehq.input.model.combination">
       <location filename="src/input/BindingEditorModel.cpp" line="179"></location>
@@ -1965,17 +1965,17 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.input.model.hold_default">
       <location filename="src/input/BindingEditorModel.cpp" line="185"></location>
       <source>Hold · Default</source>
-      <translation>Halten Sie · Standard</translation>
+      <translation>Gedrückt halten · Standard</translation>
     </message>
     <message id="gamehq.input.model.hold_seconds">
       <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
       <source>Hold · %1 s</source>
-      <translation>Warten Sie . %1 s</translation>
+      <translation>Gedrückt halten · %1 s</translation>
     </message>
     <message id="gamehq.input.model.no_action_fired">
       <location filename="src/input/BindingEditorModel.cpp" line="985"></location>
       <source>No action fired yet</source>
-      <translation>Noch keine Aktion</translation>
+      <translation>Noch keine Aktion ausgelöst</translation>
     </message>
     <message id="gamehq.input.model.scope.gallery">
       <location filename="src/input/BindingEditorModel.cpp" line="142"></location>
@@ -1985,12 +1985,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.input.model.scope.global">
       <location filename="src/input/BindingEditorModel.cpp" line="134"></location>
       <source>Global</source>
-      <translation>Weltweite</translation>
+      <translation>Global</translation>
     </message>
     <message id="gamehq.input.model.scope.overlay">
       <location filename="src/input/BindingEditorModel.cpp" line="138"></location>
       <source>Overlay</source>
-      <translation>Überlagerung</translation>
+      <translation>Overlay</translation>
     </message>
     <message id="gamehq.input.model.scope.playback">
       <location filename="src/input/BindingEditorModel.cpp" line="146"></location>
@@ -2005,7 +2005,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.input.model.status.modified">
       <location filename="src/input/BindingEditorModel.cpp" line="76"></location>
       <source>Modified</source>
-      <translation>Geänderte</translation>
+      <translation>Geändert</translation>
     </message>
     <message id="gamehq.input.model.status.removed">
       <location filename="src/input/BindingEditorModel.cpp" line="81"></location>
@@ -2016,27 +2016,27 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/input/BindingEditorModel.cpp" line="166"></location>
       <location filename="src/input/BindingEditorModel.cpp" line="242"></location>
       <source>Unassigned</source>
-      <translation>Nicht zugeteilt</translation>
+      <translation>Nicht zugewiesen</translation>
     </message>
     <message id="gamehq.input.relation.chord_start_delay">
       <location filename="src/input/BindingRelation.cpp" line="240"></location>
       <source>This action waits up to %1 ms because this button starts a combination.</source>
-      <translation>Diese Aktion wartet bis zu %1 ms, weil diese Taste eine Kombination beginnt.</translation>
+      <translation>Diese Aktion wartet bis zu %1 ms, da diese Taste eine Kombination startet.</translation>
     </message>
     <message id="gamehq.input.relation.context_override">
       <location filename="src/input/BindingEditorModel.cpp" line="580"></location>
       <source>%1 replaces %2 while %3 is active. Both are saved.</source>
-      <translation>%1 ersetzt %2, solange %3 aktiv ist. Beide Zuweisungen werden gespeichert.</translation>
+      <translation>%1 ersetzt %2, solange %3 aktiv ist. Beide Belegungen werden gespeichert.</translation>
     </message>
     <message id="gamehq.input.relation.higher_tap_delay">
       <location filename="src/input/BindingRelation.cpp" line="233"></location>
       <source>This action waits up to %1 ms because the same button also has an assignment that needs more taps.</source>
-      <translation>Diese Aktion wartet bis zu %1 ms, weil dieselbe Taste auch eine Zuweisung mit mehr Tippvorgängen hat.</translation>
+      <translation>Diese Aktion wartet bis zu %1 ms, weil dieselbe Taste auch eine Belegung hat, die mehr Tastendrücke erfordert.</translation>
     </message>
     <message id="gamehq.input.relation.redundant">
       <location filename="src/input/BindingEditorModel.cpp" line="589"></location>
       <source>%1 already does the same thing here. The duplicate has no effect.</source>
-      <translation>%1 führt hier bereits dieselbe Aktion aus. Das Duplikat hat keine Wirkung.</translation>
+      <translation>%1 macht hier bereits dasselbe. Das Duplikat hat keine Wirkung.</translation>
     </message>
     <message id="gamehq.input.relation.shared_gesture">
       <location filename="src/input/BindingEditorModel.cpp" line="596"></location>
@@ -2047,14 +2047,14 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/ui/qml/Main.qml" line="1022"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
-      <translation>Wählen Sie einen Ordner aus , den Sie ansehen möchten</translation>
+      <translation>Zu überwachenden Ordner auswählen</translation>
     </message>
     <message id="gamehq.navigation.about">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="162"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="194"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="143"></location>
       <source>About</source>
-      <translation>Über</translation>
+      <translation>Info</translation>
     </message>
     <message id="gamehq.navigation.category.all">
       <location filename="src/ui/qml/Main.qml" line="153"></location>
@@ -2066,13 +2066,13 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/ui/qml/Main.qml" line="161"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="19"></location>
       <source>Clips</source>
-      <translation>Klemmen</translation>
+      <translation>Clips</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
       <location filename="src/ui/qml/Main.qml" line="157"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="15"></location>
       <source>Favorites</source>
-      <translation>Geliebte</translation>
+      <translation>Favoriten</translation>
     </message>
     <message id="gamehq.navigation.category.game">
       <location filename="src/ui/qml/Main.qml" line="163"></location>
@@ -2084,19 +2084,19 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/ui/qml/Main.qml" line="165"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
       <source>Game favorites</source>
-      <translation>Lieblingsspiele</translation>
+      <translation>Spielfavoriten</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
       <location filename="src/ui/qml/Main.qml" line="155"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="13"></location>
       <source>Recent</source>
-      <translation>Vor kurzem</translation>
+      <translation>Zuletzt verwendet</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
       <location filename="src/ui/qml/Main.qml" line="159"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="17"></location>
       <source>Screenshots</source>
-      <translation>Bildschirmaufnahmen</translation>
+      <translation>Screenshots</translation>
     </message>
     <message id="gamehq.navigation.games">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="89"></location>
@@ -2130,12 +2130,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.notification.replay_failed.title">
       <location filename="src/app/App.cpp" line="286"></location>
       <source>Replay failed</source>
-      <translation>Wiederholung fehlgeschlagen</translation>
+      <translation>Replay fehlgeschlagen</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
       <location filename="src/app/App.cpp" line="266"></location>
       <source>Replay saved</source>
-      <translation>Wiederholung gespeichert</translation>
+      <translation>Replay gespeichert</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
       <location filename="src/app/App.cpp" line="218"></location>
@@ -2145,12 +2145,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.notification.settings_quarantined.body">
       <location filename="src/app/App.cpp" line="329"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
-      <translation>GameHQ wurde mit den Standardeinstellungen gestartet. Ihre vorherige Einstellungsdatei wurde beibehalten, sodass nichts verloren ging.</translation>
+      <translation>GameHQ wurde mit den Standardeinstellungen gestartet. Ihre vorherige Einstellungsdatei wurde beibehalten, damit nichts verloren geht.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
       <location filename="src/app/App.cpp" line="324"></location>
       <source>Settings could not be read</source>
-      <translation>Einstellungen nicht gelesen werden können</translation>
+      <translation>Einstellungen konnten nicht gelesen werden</translation>
     </message>
     <message id="gamehq.notifications.window_title">
       <location filename="src/ui/qml/ToastWindow.qml" line="19"></location>
@@ -2160,47 +2160,47 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.overlay.capture_actions">
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="55"></location>
       <source>Capture actions</source>
-      <translation>Aktionen erfassen</translation>
+      <translation>Aufnahmeaktionen</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
       <location filename="src/ui/qml/OverlayWindow.qml" line="100"></location>
       <source>The game still has focus and may react to controller input</source>
-      <translation>Das Spiel hat noch Fokus und kann auf Controller-Eingaben reagieren</translation>
+      <translation>Das Spiel ist weiterhin fokussiert und kann auf Controller-Eingaben reagieren</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="34"></location>
       <source>L1/R1 — captures | D-pad Up/Down — categories/games | Cross — open | Triangle — favorite | Square — menu | Circle — back to game</source>
-      <translation>L1/R1  erfasst ∙ D-Pad Up/Down  Kategorien/Spiele ∙ Kreuz  offen ∙ Dreieck  Favorit ∙ Quadrat  Menü ∙ Kreis  zurück zum Spiel</translation>
+      <translation>L1/R1 — Aufnahmen | D-Pad hoch/runter — Kategorien/Spiele | Kreuz — öffnen | Dreieck — Favorit | Quadrat — Menü | Kreis — zurück zum Spiel</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>
       <source>Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
-      <translation>Links/Recht  erfasst ██ Up/Down █ Kategorien/Spiele ██ Eingabe ██ Öffnen ██ F █ Favoriten ██ M █ Menü ██ Esc █ Zurück zum Spiel</translation>
+      <translation>Links/Rechts — Aufnahmen | Hoch/Runter — Kategorien/Spiele | Enter — öffnen | F — Favorit | M — Menü | Esc — zurück zum Spiel</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="19"></location>
       <source>D-pad Up/Down — choose | Cross — confirm | Circle — close menu</source>
-      <translation>D-Pad nach oben/nach unten  wählen ∙ Kreuz ∙ bestätigen ∙ Kreis ∙ Menü schließen</translation>
+      <translation>D-Pad hoch/runter — wählen | Kreuz — bestätigen | Kreis — Menü schließen</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="22"></location>
       <source>Up/Down — choose | Enter — confirm | Esc/Backspace — close menu</source>
-      <translation>Auf/Unter  wählen ∙ Eingabe  Bestätigen ∙ Esc/Backspace  Schließen Menü</translation>
+      <translation>Hoch/Runter — wählen | Enter — bestätigen | Esc/Backspace — Menü schließen</translation>
     </message>
     <message id="gamehq.overlay.hint.video.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="27"></location>
       <source>D-pad Left/Right — scrub | Cross — play/pause | Circle — back to captures</source>
-      <translation>D-Pad Links/Recht  Schrubben ∙ Kreuz  Wiedergabe/Pause ∙ Kreis  Zurück zum Erfassen</translation>
+      <translation>D-Pad links/rechts — suchen | Kreuz — Wiedergabe/Pause | Kreis — zurück zu den Aufnahmen</translation>
     </message>
     <message id="gamehq.overlay.hint.video.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="30"></location>
       <source>Left/Right — scrub clip | Enter — play/pause | Esc/Backspace — back to captures</source>
-      <translation>Links/Recht  Scrub-Clip ∙ Eingabe  Wiedergabe/Pause ∙ Esc/Backspace  zurück zu den Aufnahmen</translation>
+      <translation>Links/Rechts — Clip durchsuchen | Enter — Wiedergabe/Pause | Esc/Backspace — zurück zu den Aufnahmen</translation>
     </message>
     <message id="gamehq.overlay.window_title">
       <location filename="src/ui/qml/OverlayWindow.qml" line="30"></location>
       <source>%1 Overlay</source>
-      <translation>Überlagerung %1</translation>
+      <translation>%1 Overlay</translation>
     </message>
     <message id="gamehq.player.position_duration">
       <location filename="src/ui/qml/components/PlayerControls.qml" line="234"></location>
@@ -2220,12 +2220,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.about.community.eyebrow">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="290"></location>
       <source>Community</source>
-      <translation>Gemeinschaft</translation>
+      <translation>Community</translation>
     </message>
     <message id="gamehq.settings.about.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="10"></location>
       <source>Version, update status, project resources, and ways to help.</source>
-      <translation>Version, Update-Status, Projektressourcen und Möglichkeiten, zu helfen.</translation>
+      <translation>Version, Aktualisierungsstatus, Projektressourcen und Hilfemöglichkeiten.</translation>
     </message>
     <message id="gamehq.settings.about.github_source">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="252"></location>
@@ -2235,22 +2235,22 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.about.license">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="281"></location>
       <source>GNU GPL v3 License</source>
-      <translation>GNU GPL v3 Lizenz</translation>
+      <translation>GNU GPL v3-Lizenz</translation>
     </message>
     <message id="gamehq.settings.about.license_summary">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="55"></location>
       <source>Free and open source under the GNU GPL version 3.</source>
-      <translation>Frei und Open Source unter der GNU GPL Version 3.</translation>
+      <translation>Freie und quelloffene Software unter der GNU GPL Version 3.</translation>
     </message>
     <message id="gamehq.settings.about.maintenance.eyebrow">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="66"></location>
       <source>Maintenance</source>
-      <translation>Instandhaltung</translation>
+      <translation>Wartung</translation>
     </message>
     <message id="gamehq.settings.about.open_source.eyebrow">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="237"></location>
       <source>Open source</source>
-      <translation>Open-Source</translation>
+      <translation>Open Source</translation>
     </message>
     <message id="gamehq.settings.about.profile.installed">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="24"></location>
@@ -2260,12 +2260,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.about.profile.portable">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="21"></location>
       <source>Portable profile</source>
-      <translation>Tragbares Profil</translation>
+      <translation>Portables Profil</translation>
     </message>
     <message id="gamehq.settings.about.project.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="241"></location>
       <source>Open official GameHQ resources in your default browser.</source>
-      <translation>Öffnen Sie die offiziellen GameHQ Ressourcen in Ihrem Standardbrowser.</translation>
+      <translation>Öffnen Sie offizielle GameHQ-Ressourcen in Ihrem Standardbrowser.</translation>
     </message>
     <message id="gamehq.settings.about.project.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="239"></location>
@@ -2285,18 +2285,18 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.about.report_issue">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="266"></location>
       <source>Report an issue</source>
-      <translation>Meldung eines Problems</translation>
+      <translation>Problem melden</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="794"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
       <source>Security &amp; privacy</source>
-      <translation>Sicherheit &amp; Datenschutz</translation>
+      <translation>Sicherheit und Datenschutz</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="275"></location>
       <source>Verification, local data, network use, and private reporting</source>
-      <translation>Überprüfung, lokale Daten, Netzwerknutzung und private Berichterstattung</translation>
+      <translation>Prüfung, lokale Daten, Netzwerknutzung und private Fehlerberichte</translation>
     </message>
     <message id="gamehq.settings.about.support.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="295"></location>
@@ -2306,32 +2306,32 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.about.support.star_on_github">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="298"></location>
       <source>Star %1 on GitHub</source>
-      <translation>Stern %1 auf GitHub</translation>
+      <translation>%1 auf GitHub einen Stern geben</translation>
     </message>
     <message id="gamehq.settings.about.support.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="292"></location>
       <source>Support the project</source>
-      <translation>Unterstützung des Projekts</translation>
+      <translation>Projekt unterstützen</translation>
     </message>
     <message id="gamehq.settings.about.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="8"></location>
       <source>About</source>
-      <translation>Über</translation>
+      <translation>Info</translation>
     </message>
     <message id="gamehq.settings.about.updates.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="68"></location>
       <source>Updates</source>
-      <translation>Aktualisierungen</translation>
+      <translation>Updates</translation>
     </message>
     <message id="gamehq.settings.about.website">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
       <source>Website</source>
-      <translation>Webseite</translation>
+      <translation>Website</translation>
     </message>
     <message id="gamehq.settings.advanced.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="12"></location>
       <source>Review system health, open diagnostic resources, and recover settings.</source>
-      <translation>Überprüfen Sie den Zustand des Systems, öffnen Sie die diagnostischen Ressourcen und wiederherstellen Sie die Einstellungen.</translation>
+      <translation>Systemzustand prüfen, Diagnoseordner öffnen und Einstellungen wiederherstellen.</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.copy.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="121"></location>
@@ -2341,37 +2341,37 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.advanced.diagnostics.copy.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="119"></location>
       <source>Copy diagnostic summary</source>
-      <translation>Kopie der Diagnose</translation>
+      <translation>Diagnoseübersicht kopieren</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="110"></location>
       <source>Collect support information or refresh hardware status without changing settings.</source>
-      <translation>Sammeln von Supportinformationen oder Aktualisieren des Hardware-Status ohne Einstellungen zu ändern.</translation>
+      <translation>Sammeln Sie Supportinformationen oder aktualisieren Sie den Hardwarestatus, ohne die Einstellungen zu ändern.</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.eyebrow">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="106"></location>
       <source>Diagnostics</source>
-      <translation>Diagnostik</translation>
+      <translation>Diagnose</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.import.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="138"></location>
       <source>Validate, stage, and import a fresh portable profile.</source>
-      <translation>Validieren, inszenieren und importieren Sie ein neues portables Profil.</translation>
+      <translation>Neues portables Profil prüfen, vorbereiten und importieren.</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.import.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="136"></location>
       <source>Import portable profile</source>
-      <translation>Import eines portablen Profils</translation>
+      <translation>Portables Profil importieren</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.refresh.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="129"></location>
       <source>Recheck HDR and capture capabilities.</source>
-      <translation>Überprüfen Sie HDR und Aufnahmefunktionen noch einmal.</translation>
+      <translation>HDR- und Aufnahmefunktionen erneut prüfen.</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.refresh.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="127"></location>
       <source>Refresh display status</source>
-      <translation>Bildschirmstatus aktualisieren</translation>
+      <translation>Monitorstatus aktualisieren</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="108"></location>
@@ -2381,27 +2381,27 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.advanced.hdr.active">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="56"></location>
       <source>HDR active</source>
-      <translation>HDR-Aktivität</translation>
+      <translation>HDR aktiv</translation>
     </message>
     <message id="gamehq.settings.advanced.hdr.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="152"></location>
       <source>Technical adapter and fallback details are available when troubleshooting capture output.</source>
-      <translation>Bei der Fehlerbehebung der Erfassungsergebnisse sind technische Anpasser und Fallback-Details verfügbar.</translation>
+      <translation>Technische Adapter- und Ausweichdetails helfen bei der Fehlerbehebung für Aufnahmeausgaben.</translation>
     </message>
     <message id="gamehq.settings.advanced.hdr.disclosure">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="155"></location>
       <source>Technical HDR details</source>
-      <translation>Technische Details für HDR</translation>
+      <translation>Technische HDR-Details</translation>
     </message>
     <message id="gamehq.settings.advanced.hdr.eyebrow">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="146"></location>
       <source>Display capture</source>
-      <translation>Anzeige Erfassung</translation>
+      <translation>Monitoraufnahme</translation>
     </message>
     <message id="gamehq.settings.advanced.hdr.inactive">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="58"></location>
       <source>HDR inactive</source>
-      <translation>HDR nicht aktiv</translation>
+      <translation>HDR inaktiv</translation>
     </message>
     <message id="gamehq.settings.advanced.hdr.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="148"></location>
@@ -2411,7 +2411,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.advanced.overview.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="37"></location>
       <source>A concise view of the environment GameHQ is currently using.</source>
-      <translation>Eine prägnante Übersicht der Umgebung, die GameHQ derzeit nutzt.</translation>
+      <translation>Kurzübersicht der derzeit von GameHQ verwendeten Umgebung.</translation>
     </message>
     <message id="gamehq.settings.advanced.overview.eyebrow">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="33"></location>
@@ -2421,7 +2421,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.advanced.overview.storage">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="65"></location>
       <source>Storage</source>
-      <translation>Aufbewahrung</translation>
+      <translation>Speicher</translation>
     </message>
     <message id="gamehq.settings.advanced.overview.system">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="42"></location>
@@ -2441,7 +2441,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.advanced.portable_folder.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="274"></location>
       <source>Select the GameHQ portable folder</source>
-      <translation>Wählen Sie den GameHQ-Portable-Ordner aus</translation>
+      <translation>Portablen GameHQ-Ordner auswählen</translation>
     </message>
     <message id="gamehq.settings.advanced.profile.installed">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="49"></location>
@@ -2451,37 +2451,37 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.advanced.profile.portable">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="47"></location>
       <source>Portable profile</source>
-      <translation>Portierbares Profil</translation>
+      <translation>Portables Profil</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.all.action">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="261"></location>
       <source>Restore all</source>
-      <translation>Wiederherstellen</translation>
+      <translation>Alle wiederherstellen</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.all.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="257"></location>
       <source>Return every configuration category to its default values.</source>
-      <translation>Alle Konfigurationskategorien werden auf ihre Standardwerte zurückgegeben.</translation>
+      <translation>Alle Konfigurationskategorien auf ihre Standardwerte zurücksetzen.</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.all.label">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="255"></location>
       <source>Restore all settings</source>
-      <translation>Wiederherstellen aller Einstellungen</translation>
+      <translation>Alle Einstellungen wiederherstellen</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.category.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="213"></location>
       <source>Return only the selected category to its defaults.</source>
-      <translation>Nur die ausgewählte Kategorie wird auf die Standardeinstellungen zurückgegeben.</translation>
+      <translation>Nur die ausgewählte Kategorie auf ihre Standardwerte zurücksetzen.</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.category.label">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="211"></location>
       <source>Restore one category</source>
-      <translation>Wiederherstellen einer Kategorie</translation>
+      <translation>Eine Kategorie wiederherstellen</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="205"></location>
       <source>Restoring settings never deletes captures, favorites, watched media, or database records.</source>
-      <translation>Die Wiederherstellung der Einstellungen löscht niemals Aufnahmen, Favoriten, angesehene Medien oder Datenbankdatensätze.</translation>
+      <translation>Beim Wiederherstellen von Einstellungen werden keine Aufnahmen, Favoriten, überwachten Medien oder Datenbankeinträge gelöscht.</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.eyebrow">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="200"></location>
@@ -2491,27 +2491,27 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.advanced.recovery.feedback">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="235"></location>
       <source>Feedback</source>
-      <translation>Rückmeldungen</translation>
+      <translation>Feedback</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.input.action">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="247"></location>
       <source>Restore input</source>
-      <translation>Wiederherstellen der Eingabe</translation>
+      <translation>Eingabe wiederherstellen</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.input.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="244"></location>
       <source>Return controller, keyboard, and mouse overrides to built-in defaults.</source>
-      <translation>Rückgabe der Steuerung, Tastatur und Maus-Überschreibungen auf die eingebauten Standardeinstellungen.</translation>
+      <translation>Controller-, Tastatur- und Mausbelegungen auf die integrierten Standardwerte zurücksetzen.</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.input.label">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="242"></location>
       <source>Restore input bindings</source>
-      <translation>Wiederherstellen von Eingabebindungen</translation>
+      <translation>Eingabebelegungen wiederherstellen</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.options">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="208"></location>
       <source>Restore options</source>
-      <translation>Wiederherstellung von Optionen</translation>
+      <translation>Optionen wiederherstellen</translation>
     </message>
     <message id="gamehq.settings.advanced.recovery.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="202"></location>
@@ -2526,17 +2526,17 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.advanced.resources.description">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="88"></location>
       <source>Open GameHQ-owned folders used for logs, configuration, database, and support data.</source>
-      <translation>Öffnen Sie die von GameHQ gehörenden Ordner, die für Logs, Konfiguration, Datenbank und Supportdaten verwendet werden.</translation>
+      <translation>GameHQ-eigene Ordner für Protokolle, Konfiguration, Datenbank und Supportdaten öffnen.</translation>
     </message>
     <message id="gamehq.settings.advanced.resources.eyebrow">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="84"></location>
       <source>Resources</source>
-      <translation>Mittel</translation>
+      <translation>Ressourcen</translation>
     </message>
     <message id="gamehq.settings.advanced.resources.logs">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="91"></location>
       <source>Logs folder</source>
-      <translation>Ordner Logs</translation>
+      <translation>Protokollordner</translation>
     </message>
     <message id="gamehq.settings.advanced.resources.title">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="86"></location>
@@ -2546,13 +2546,13 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.advanced.status.healthy">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="67"></location>
       <source>Healthy</source>
-      <translation>Gesund</translation>
+      <translation>Fehlerfrei</translation>
     </message>
     <message id="gamehq.settings.advanced.status.ready">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="44"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="623"></location>
       <source>Ready</source>
-      <translation>Ich bin bereit.</translation>
+      <translation>Bereit</translation>
     </message>
     <message id="gamehq.settings.advanced.storage.available">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="69"></location>
@@ -2562,32 +2562,32 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.advanced.version.current">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="76"></location>
       <source>Current installation</source>
-      <translation>Aktuelle Anlage</translation>
+      <translation>Aktuelle Installation</translation>
     </message>
     <message id="gamehq.settings.capture.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="12"></location>
       <source>Choose when, how, and where GameHQ saves screenshots.</source>
-      <translation>Wählen Sie aus, wann, wie und wo GameHQ Screenshots speichert.</translation>
+      <translation>Wählen Sie, wann, wie und wo GameHQ Screenshots speichert.</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="95"></location>
       <source>Combined with the master switches on the Notifications &amp; Sound page.</source>
-      <translation>Kombiniert mit den Hauptschaltern auf der Seite „Benachrichtigungen &amp; Ton“.</translation>
+      <translation>Wird mit den Hauptschaltern auf der Seite „Benachrichtigungen und Ton“ kombiniert.</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.eyebrow">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="91"></location>
       <source>Feedback</source>
-      <translation>Rückmeldungen</translation>
+      <translation>Feedback</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.notification">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="103"></location>
       <source>Screenshot notification</source>
-      <translation>Benachrichtigung über Screenshot</translation>
+      <translation>Screenshot-Benachrichtigung</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.sound">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="98"></location>
       <source>Screenshot sound</source>
-      <translation>Bildschirmfoto-Sound</translation>
+      <translation>Screenshot-Ton</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.title">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="93"></location>
@@ -2597,7 +2597,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.capture.image.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="57"></location>
       <source>PNG is lossless; JPEG trades some quality for smaller files.</source>
-      <translation>PNG ist verlustfrei; JPEG tauscht für kleinere Dateien eine gewisse Qualität aus.</translation>
+      <translation>PNG ist verlustfrei; JPEG bietet kleinere Dateien bei etwas geringerer Qualität.</translation>
     </message>
     <message id="gamehq.settings.capture.image.eyebrow">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="53"></location>
@@ -2622,7 +2622,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.capture.image.png">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="67"></location>
       <source>PNG (lossless)</source>
-      <translation>PNG (verlustfrei)</translation>
+      <translation>PNG (verlustlos)</translation>
     </message>
     <message id="gamehq.settings.capture.image.title">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="55"></location>
@@ -2637,17 +2637,17 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.capture.mode.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="30"></location>
       <source>Control when screenshots and replay recording are allowed.</source>
-      <translation>Kontrolle, wann Screenshots und Wiederholungsaufnahmen erlaubt sind.</translation>
+      <translation>Festlegen, wann Screenshots und Replay-Aufnahmen zulässig sind.</translation>
     </message>
     <message id="gamehq.settings.capture.mode.eyebrow">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="26"></location>
       <source>Capture mode</source>
-      <translation>Aufnahme-Modus</translation>
+      <translation>Aufnahmemodus</translation>
     </message>
     <message id="gamehq.settings.capture.mode.label">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="33"></location>
       <source>Capture mode</source>
-      <translation>Aufnahme-Modus</translation>
+      <translation>Aufnahmemodus</translation>
     </message>
     <message id="gamehq.settings.capture.mode.only_in_games">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="41"></location>
@@ -2657,81 +2657,81 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.capture.mode.row_description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="35"></location>
       <source>Only in games is the safest default for global shortcuts.</source>
-      <translation>Nur in Spielen ist die sicherste Standardlösung für globale Abkürzungen.</translation>
+      <translation>„Nur in Spielen“ ist die sicherste Standardeinstellung für globale Tastenkürzel.</translation>
     </message>
     <message id="gamehq.settings.capture.mode.title">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="28"></location>
       <source>When to capture</source>
-      <translation>Wann zu fangen</translation>
+      <translation>Aufnahmezeitpunkt</translation>
     </message>
     <message id="gamehq.settings.capture.mode.whitelist">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="43"></location>
       <source>Whitelisted games</source>
-      <translation>Spiele auf der weißen Liste</translation>
+      <translation>Freigegebene Spiele</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="160"></location>
       <source>Choose the clips folder</source>
-      <translation>Wählen Sie den Ordner " Clips " aus</translation>
+      <translation>Clip-Ordner auswählen</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="153"></location>
       <source>Choose the screenshots folder</source>
-      <translation>Wählen Sie den Ordner " Screenshots " aus</translation>
+      <translation>Screenshot-Ordner auswählen</translation>
     </message>
     <message id="gamehq.settings.capture.storage.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="114"></location>
       <source>Changing a location never moves or deletes existing media.</source>
-      <translation>Das Ändern eines Standorts bewegt oder löscht keine vorhandenen Medien.</translation>
+      <translation>Beim Ändern eines Speicherorts werden vorhandene Medien weder verschoben noch gelöscht.</translation>
     </message>
     <message id="gamehq.settings.capture.storage.eyebrow">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="110"></location>
       <source>Storage</source>
-      <translation>Aufbewahrung</translation>
+      <translation>Speicher</translation>
     </message>
     <message id="gamehq.settings.capture.storage.replay_clips">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="129"></location>
       <source>Replay clips</source>
-      <translation>Wiederholung von Clips</translation>
+      <translation>Replay-Clips</translation>
     </message>
     <message id="gamehq.settings.capture.storage.screenshots">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="118"></location>
       <source>Screenshots</source>
-      <translation>Bildschirmfotos</translation>
+      <translation>Screenshots</translation>
     </message>
     <message id="gamehq.settings.capture.storage.title">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="112"></location>
       <source>Where captures are saved</source>
-      <translation>Aufbewahrungsorte der Fänge</translation>
+      <translation>Speicherorte für Aufnahmen</translation>
     </message>
     <message id="gamehq.settings.capture.title">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="10"></location>
       <source>Capture</source>
-      <translation>Gefangennahme</translation>
+      <translation>Aufnahme</translation>
     </message>
     <message id="gamehq.settings.category.about">
       <location filename="src/ui/qml/SettingsView.qml" line="27"></location>
       <source>About</source>
-      <translation>Über</translation>
+      <translation>Info</translation>
     </message>
     <message id="gamehq.settings.category.advanced">
       <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="10"></location>
       <source>Advanced</source>
-      <translation>Fortgeschritten</translation>
+      <translation>Erweitert</translation>
     </message>
     <message id="gamehq.settings.category.capture">
       <location filename="src/ui/qml/SettingsView.qml" line="15"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="53"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="223"></location>
       <source>Capture</source>
-      <translation>Gefangennahme</translation>
+      <translation>Aufnahme</translation>
     </message>
     <message id="gamehq.settings.category.general">
       <location filename="src/ui/qml/SettingsView.qml" line="13"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="217"></location>
       <source>General</source>
-      <translation>Allgemeine</translation>
+      <translation>Allgemein</translation>
     </message>
     <message id="gamehq.settings.category.input">
       <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
@@ -2748,18 +2748,18 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.category.notifications_sound">
       <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
       <source>Notifications &amp; sound</source>
-      <translation>Benachrichtigungen &amp; Ton</translation>
+      <translation>Benachrichtigungen und Ton</translation>
     </message>
     <message id="gamehq.settings.category.replay">
       <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="229"></location>
       <source>Replay</source>
-      <translation>Wiederholung</translation>
+      <translation>Replay</translation>
     </message>
     <message id="gamehq.settings.disclosure.default">
       <location filename="src/ui/qml/components/SettingsDisclosure.qml" line="9"></location>
       <source>View technical details</source>
-      <translation>Technische Details anzeigen</translation>
+      <translation>Technische Details ansehen</translation>
     </message>
     <message id="gamehq.settings.disclosure.hide">
       <location filename="src/ui/qml/components/SettingsDisclosure.qml" line="55"></location>
@@ -2774,53 +2774,53 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.feedback.audio.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="47"></location>
       <source>Set the master sound switch, volume, and event-specific feedback.</source>
-      <translation>Setzen Sie den Master-Sound-Schalter, die Lautstärke und die Ereignis-spezifische Rückmeldung.</translation>
+      <translation>Hauptschalter für Ton, Lautstärke und ereignisspezifisches Feedback festlegen.</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.enabled.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="53"></location>
       <source>Play navigation and action feedback sounds.</source>
-      <translation>Spielen Sie Navigations- und Aktionsfeedback-Sounds.</translation>
+      <translation>Feedbacktöne für Navigation und Aktionen wiedergeben.</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.enabled.label">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="51"></location>
       <source>UI sounds</source>
-      <translation>Benutzeroberflächenklänge</translation>
+      <translation>UI-Töne</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.eyebrow">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="43"></location>
       <source>Audio feedback</source>
-      <translation>Audio-Feedback</translation>
+      <translation>Audiofeedback</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.replay">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="74"></location>
       <source>Replay saved sound</source>
-      <translation>Wiederholung des gespeicherten Tones</translation>
+      <translation>Ton bei gespeichertem Replay</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.screenshot">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
       <source>Screenshot sound</source>
-      <translation>Bildschirmfoto-Sound</translation>
+      <translation>Screenshot-Ton</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="45"></location>
       <source>Sound</source>
-      <translation>Klang</translation>
+      <translation>Ton</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.volume">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="58"></location>
       <source>Volume</source>
-      <translation>Volumen</translation>
+      <translation>Lautstärke</translation>
     </message>
     <message id="gamehq.settings.feedback.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="9"></location>
       <source>Choose how GameHQ confirms captures, clips, and navigation.</source>
-      <translation>Wählen Sie, wie GameHQ Aufnahmen, Clips und Navigation bestätigt.</translation>
+      <translation>Festlegen, wie GameHQ Aufnahmen, Clips und Navigation bestätigt.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
       <source>Preview notifications and sounds without creating a capture.</source>
       <oldsource>Confirm notifications and sound without creating a capture.</oldsource>
-      <translation type="unfinished">Bestätigen Sie Benachrichtigungen und Sound ohne Erstellung einer Aufnahme.</translation>
+      <translation>Benachrichtigungen und Töne testen, ohne eine Aufnahme zu erstellen.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
@@ -2830,52 +2830,52 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.feedback.preview.label">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="90"></location>
       <source>Preview feedback</source>
-      <translation>Rückmeldung der Vorschau</translation>
+      <translation>Feedback testen</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
       <source>Show test notification</source>
-      <translation>Anzeige der Prüfmeldung</translation>
+      <translation>Testbenachrichtigung anzeigen</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_body">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="101"></location>
       <source>Notifications are working.</source>
-      <translation>Die Benachrichtigungen funktionieren.</translation>
+      <translation>Benachrichtigungen funktionieren.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="99"></location>
       <source>%1 notification</source>
-      <translation>Benachrichtigung %1</translation>
+      <translation>%1 Benachrichtigung</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.sound">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="107"></location>
       <source>Play test sound</source>
-      <translation>Spielen Sie den Testschall ab</translation>
+      <translation>Testton wiedergeben</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="84"></location>
       <source>Test the current feedback settings</source>
-      <translation>Testen Sie die aktuellen Feedback-Einstellungen</translation>
+      <translation>Aktuelle Feedbackeinstellungen testen</translation>
     </message>
     <message id="gamehq.settings.feedback.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="7"></location>
       <source>Notifications &amp; Sound</source>
-      <translation>Benachrichtigungen &amp; Ton</translation>
+      <translation>Benachrichtigungen &amp; Sound</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="17"></location>
       <source>Control the result cards shown after capture and replay actions.</source>
-      <translation>Kontrolle der Ergebniskarten nach Erfassung und Wiedergabe.</translation>
+      <translation>Ergebniskarten steuern, die nach Aufnahme- und Replay-Aktionen angezeigt werden.</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.enabled.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="23"></location>
       <source>Master switch for capture and replay result cards.</source>
-      <translation>Master-Schalter für Erfassung und Wiedergabe von Ergebniskarten.</translation>
+      <translation>Hauptschalter für Ergebniskarten nach Aufnahme- und Replay-Aktionen.</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.enabled.label">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="21"></location>
       <source>Show notifications</source>
-      <translation>Anzeigen von Benachrichtigungen</translation>
+      <translation>Benachrichtigungen anzeigen</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.eyebrow">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="13"></location>
@@ -2885,32 +2885,32 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.feedback.visual.replay">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="35"></location>
       <source>Replay saved</source>
-      <translation>Wiederholung gespeichert</translation>
+      <translation>Replay gespeichert</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.screenshot">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="29"></location>
       <source>Screenshot captured</source>
-      <translation>Bildschirm aufgenommen</translation>
+      <translation>Screenshot aufgenommen</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="15"></location>
       <source>Notifications</source>
-      <translation>Mitteilungen</translation>
+      <translation>Benachrichtigungen</translation>
     </message>
     <message id="gamehq.settings.general.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="9"></location>
       <source>Appearance, startup, and window behavior.</source>
-      <translation>Aussehen, Start und Fensterverhalten.</translation>
+      <translation>Aussehen, Start- und Fensterverhalten.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.close_to_tray.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="133"></location>
       <source>Keep capture and replay services running; when disabled, Close exits %1.</source>
-      <translation>Halten Sie die Erfassung und Wiedergabe von Diensten laufen; wenn deaktiviert, schließt der Ausgang %1.</translation>
+      <translation>Aufnahme- und Replay-Dienste bleiben aktiv; wenn deaktiviert, beendet „Schließen“ %1.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.close_to_tray.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="131"></location>
       <source>Close to tray</source>
-      <translation>In der Nähe des Trays</translation>
+      <translation>Beim Schließen im Infobereich lassen</translation>
     </message>
     <message id="gamehq.settings.general.desktop.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="121"></location>
@@ -2920,38 +2920,38 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.general.desktop.eyebrow">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="117"></location>
       <source>Desktop</source>
-      <translation>Schreibtisch</translation>
+      <translation>Desktop</translation>
     </message>
     <message id="gamehq.settings.general.desktop.minimize_to_tray.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="126"></location>
       <source>Minimizing the window sends it straight to the tray instead of the taskbar.</source>
-      <translation>Das Minimieren des Fensters schickt es direkt auf das Tablett anstelle der Taskleiste.</translation>
+      <translation>Beim Minimieren wird das Fenster direkt in den Infobereich statt in die Taskleiste verschoben.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.minimize_to_tray.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="124"></location>
       <source>Minimize to tray</source>
-      <translation>Minimieren auf Tray</translation>
+      <translation>In den Infobereich minimieren</translation>
     </message>
     <message id="gamehq.settings.general.desktop.title">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="119"></location>
       <source>Window and tray behavior</source>
-      <translation>Verhalten von Fenster und Tray</translation>
+      <translation>Fenster- und Infobereichsverhalten</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="81"></location>
       <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
       <oldsource>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible.</oldsource>
-      <translation type="unfinished">Wie stark die In-Game-Overlay das Spiel dahinter verdunkelt. 100% ist die eigene Dimming des Themas; niedriger hält mehr des Spiels sichtbar.</translation>
+      <translation>Stärke der Abdunkelung des Spiels hinter dem In-Game-Overlay. 100 % entspricht der Abdunkelung des Designs; niedrigere Werte lassen mehr vom Spiel sichtbar.</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="79"></location>
       <source>Overlay dimming</source>
-      <translation>Überlagerdämmung</translation>
+      <translation>Overlay-Abdunkelung</translation>
     </message>
     <message id="gamehq.settings.general.personalization.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="52"></location>
       <source>Choose the visual style and in-game overlay strength.</source>
-      <translation>Wählen Sie den visuellen Stil und die Überlagerungsstärke im Spiel.</translation>
+      <translation>Wählen Sie den visuellen Stil und die In-Game-Overlay-Stärke.</translation>
     </message>
     <message id="gamehq.settings.general.personalization.eyebrow">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="48"></location>
@@ -2961,58 +2961,58 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.general.personalization.title">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="50"></location>
       <source>Look and feel</source>
-      <translation>Schau und spüre</translation>
+      <translation>Erscheinungsbild</translation>
     </message>
     <message id="gamehq.settings.general.startup.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
       <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
       <oldsource>Choose whether GameHQ follows your Windows sign-in and opens quietly.</oldsource>
-      <translation type="unfinished">Wählen Sie aus, ob GameHQ Ihrer Windows Anmeldung folgt und leise geöffnet wird.</translation>
+      <translation>Festlegen, ob GameHQ bei der Windows-Anmeldung automatisch und im Hintergrund startet.</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="94"></location>
       <source>Startup</source>
-      <translation>Gründung</translation>
+      <translation>Autostart</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="110"></location>
       <source>Launch directly in the system tray without opening the main window.</source>
-      <translation>Start direkt im Systemfach, ohne das Hauptfenster zu öffnen.</translation>
+      <translation>Direkt im Infobereich starten, ohne das Hauptfenster zu öffnen.</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="108"></location>
       <source>Launch minimized</source>
-      <translation>Start minimiert</translation>
+      <translation>Minimiert starten</translation>
     </message>
     <message id="gamehq.settings.general.startup.title">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="96"></location>
       <source>How %1 starts</source>
-      <translation>Wie %1 beginnt</translation>
+      <translation>Startverhalten von %1</translation>
     </message>
     <message id="gamehq.settings.general.startup.windows.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="103"></location>
       <source>Register %1 for the current Windows user; no administrator access is required.</source>
-      <translation>Registrieren Sie %1 für den aktuellen Windows-Benutzer; kein Administratorzugriff ist erforderlich.</translation>
+      <translation>Registrieren Sie %1 für den aktuellen Windows-Benutzer; es ist kein Administratorzugriff erforderlich.</translation>
     </message>
     <message id="gamehq.settings.general.startup.windows.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="101"></location>
       <source>Start with Windows</source>
-      <translation>Start mit Windows</translation>
+      <translation>Mit Windows starten</translation>
     </message>
     <message id="gamehq.settings.general.theme.fallback">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="67"></location>
       <source>Choose how %1 looks.</source>
-      <translation>Wählen Sie, wie %1 aussieht.</translation>
+      <translation>Erscheinungsbild von %1 auswählen.</translation>
     </message>
     <message id="gamehq.settings.general.theme.label">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="56"></location>
       <source>Theme</source>
-      <translation>Thema</translation>
+      <translation>Design</translation>
     </message>
     <message id="gamehq.settings.general.title">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="7"></location>
       <source>General</source>
-      <translation>Allgemeine</translation>
+      <translation>Allgemein</translation>
     </message>
     <message id="gamehq.settings.input.bindings.action_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="380"></location>
@@ -3022,29 +3022,29 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.bindings.assignment_heading">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="421"></location>
       <source>Input assignments</source>
-      <translation>Zuweisungen von Eingaben</translation>
+      <translation>Eingabebelegungen</translation>
     </message>
     <message id="gamehq.settings.input.bindings.assignment_hint">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="430"></location>
       <source>Both slots can be active. Select one to edit.</source>
-      <translation>Beide Spalten können aktiv sein. Wählen Sie einen aus, um zu bearbeiten.</translation>
+      <translation>Beide Slots können aktiv sein. Wählen Sie einen zum Bearbeiten aus.</translation>
     </message>
     <message id="gamehq.settings.input.bindings.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="325"></location>
       <source>Primary and secondary slots are independent. Contexts can reuse the same input safely.</source>
-      <translation>Primäre und sekundäre Slots sind unabhängig voneinander.</translation>
+      <translation>Primärer und sekundärer Slot sind unabhängig. In unterschiedlichen Kontexten kann dieselbe Eingabe sicher wiederverwendet werden.</translation>
     </message>
     <message id="gamehq.settings.input.bindings.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="321"></location>
       <source>Bindings</source>
-      <translation>Verbindungen</translation>
+      <translation>Belegungen</translation>
     </message>
     <message id="gamehq.settings.input.bindings.fixed">
       <location filename="src/ui/qml/components/BindingCard.qml" line="250"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="455"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="472"></location>
       <source>Fixed</source>
-      <translation>Festgestellt</translation>
+      <translation>Fest</translation>
     </message>
     <message id="gamehq.settings.input.bindings.primary">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="449"></location>
@@ -3059,7 +3059,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.bindings.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="323"></location>
       <source>Assignments</source>
-      <translation>Zuweisungen</translation>
+      <translation>Belegungen</translation>
     </message>
     <message id="gamehq.settings.input.capture.waiting">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="517"></location>
@@ -3069,17 +3069,17 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="11"></location>
       <source>Configure controller, keyboard, and mouse shortcuts without changing navigation behavior.</source>
-      <translation>Konfiguration von Controller-, Tastatur- und Mausverknüpfungen ohne Änderung des Navigationsverhaltens.</translation>
+      <translation>Controller-, Tastatur- und Maustastenkürzel konfigurieren, ohne das Navigationsverhalten zu ändern.</translation>
     </message>
     <message id="gamehq.settings.input.devices.controller">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="46"></location>
       <source>Controller</source>
-      <translation>Steuerung</translation>
+      <translation>Controller</translation>
     </message>
     <message id="gamehq.settings.input.devices.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="28"></location>
       <source>Choose a device type, then select either assignment slot to capture a new input.</source>
-      <translation>Wählen Sie einen Gerätetypen aus und wählen Sie dann einen der beiden Zuweisungs-Slots aus, um eine neue Eingabe zu erfassen.</translation>
+      <translation>Gerätetyp auswählen und anschließend einen Belegungsslot wählen, um eine neue Eingabe zu erfassen.</translation>
     </message>
     <message id="gamehq.settings.input.devices.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="24"></location>
@@ -3094,7 +3094,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.devices.keyboard_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="37"></location>
       <source>Focused shortcuts and global key combinations</source>
-      <translation>Fokussierte Verknüpfungen und globale Schlüsselkombinationen</translation>
+      <translation>Fokussierte Tastenkürzel und globale Tastenkombinationen</translation>
     </message>
     <message id="gamehq.settings.input.devices.mouse">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="50"></location>
@@ -3104,7 +3104,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.devices.mouse_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="40"></location>
       <source>Middle, Back, and Forward mouse buttons</source>
-      <translation>Mittlere, Zurück und Vorwärts-Maustasten</translation>
+      <translation>Mittel-, Rück- und Vorwärts-Maustasten</translation>
     </message>
     <message id="gamehq.settings.input.devices.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="26"></location>
@@ -3114,7 +3114,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.devices.type">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="31"></location>
       <source>Device type</source>
-      <translation>Typ der Vorrichtung</translation>
+      <translation>Gerätetyp</translation>
     </message>
     <message id="gamehq.settings.input.gestures.combination_window">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="299"></location>
@@ -3124,12 +3124,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.gestures.combination_window_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="301"></location>
       <source>How long the first button of a combination waits for the second one.</source>
-      <translation>Wie lange wartet der erste Knopf einer Kombination auf den zweiten?</translation>
+      <translation>Zeit, die die erste Taste einer Kombination auf die zweite wartet.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="258"></location>
       <source>How long GameHQ waits before it decides what a button press meant.</source>
-      <translation>Wie lange wartet GameHQ, bevor es entscheidet, was ein Knopfdruck bedeutet?</translation>
+      <translation>Zeit, die GameHQ wartet, bevor die Bedeutung eines Tastendrucks bestimmt wird.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="254"></location>
@@ -3139,47 +3139,47 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.gestures.hold_time">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="261"></location>
       <source>Hold time</source>
-      <translation>Wartezeit</translation>
+      <translation>Haltezeit</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="263"></location>
       <source>How long a button must be held for a hold action. A completed hold consumes the tap.</source>
-      <translation>Wie lange muss ein Knopf gedrückt werden, um einen Haltevorgang durchzuführen?</translation>
+      <translation>Zeit, die eine Taste für die Aktion „Gedrückt halten“ gehalten werden muss. Eine abgeschlossene Halteaktion verhindert die Aktion für kurzes Drücken.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="280"></location>
       <source>Multi-tap interval</source>
-      <translation>Mehrfach-Tap-Intervall</translation>
+      <translation>Intervall für mehrfaches Drücken</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="282"></location>
       <source>How long a single tap waits when the same button also has a double or triple tap.</source>
-      <translation>Wie lange wartet ein einmaliger Klopf, wenn der gleiche Knopf auch einen doppelten oder dreifachen Klopf hat?</translation>
+      <translation>Zeit, die kurzes Drücken wartet, wenn dieselbe Taste auch doppelt oder dreifach gedrückt werden kann.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="256"></location>
       <source>Gesture timing</source>
-      <translation>Zeitgestaltung</translation>
+      <translation>Gestenzeitsteuerung</translation>
     </message>
     <message id="gamehq.settings.input.hidden.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="90"></location>
       <source>Attention</source>
-      <translation>Aufmerksamkeit !</translation>
+      <translation>Achtung</translation>
     </message>
     <message id="gamehq.settings.input.hidden.fix">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Fix automatically</source>
-      <translation>- Das ist nicht richtig.</translation>
+      <translation>Automatisch beheben</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="92"></location>
       <source>Controller hidden</source>
-      <translation>Steuerung versteckt</translation>
+      <translation>Controller ausgeblendet</translation>
     </message>
     <message id="gamehq.settings.input.modern.auto">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="586"></location>
       <source>Auto</source>
-      <translation>Auto</translation>
+      <translation>Automatisch</translation>
     </message>
     <message id="gamehq.settings.input.modern.device_layout_changed">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="597"></location>
@@ -3189,90 +3189,90 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.modern.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="569"></location>
       <source>Modern controllers</source>
-      <translation>Moderne Steuerungen</translation>
+      <translation>Moderne Controller</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
       <oldsource>View versus true Share, probe results, reconnects, gestures, and combinations</oldsource>
-      <translation type="unfinished">Anzeige gegen wahr Teilen, Sondenergebnisse, Wiederverbindungen, Gesten und Kombinationen</translation>
+      <translation>Informationen zu View- und echten Share-Tasten, Testergebnissen, Neuverbindungen, Gesten und Kombinationen.</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="645"></location>
       <source>Controller compatibility guide</source>
-      <translation>Leitfaden zur Kompatibilität der Steuerung</translation>
+      <translation>Controller-Kompatibilitätsleitfaden</translation>
     </message>
     <message id="gamehq.settings.input.modern.layout_warning">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="574"></location>
       <source>A controller layout changed. Review its extra-button assignments before using them.</source>
-      <translation>Ein Steuerungs-Layout geändert. Überprüfen Sie seine zusätzlichen Tasten-Zuteilungen vor der Verwendung.</translation>
+      <translation>Das Layout eines Controllers wurde geändert. Prüfen Sie vor der Verwendung die Belegungen der Zusatztasten.</translation>
     </message>
     <message id="gamehq.settings.input.modern.legacy_fallback">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="620"></location>
       <source>Legacy fallback</source>
-      <translation>Rückfall für Legacy</translation>
+      <translation>Legacy-Fallback</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="588"></location>
       <source>Off</source>
-      <translation>- Ich bin weg.</translation>
+      <translation>Aus</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.copy">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="637"></location>
       <source>Copy report</source>
-      <translation>Kopieren des Berichts</translation>
+      <translation>Bericht kopieren</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="634"></location>
       <source>Copies anonymous identity, providers, Share/Guide availability, extra buttons, and layout state—never serials or full device paths.</source>
-      <translation>Kopiert anonyme Identität, Anbieter, Verfügbarkeit von Share/Guide, zusätzliche Schaltflächen und Layout-Zustandnicht Serien oder vollständige Gerätespfade.</translation>
+      <translation>Kopiert anonymisierte Identität, Anbieter, Verfügbarkeit von Share/Guide, Zusatztasten und Layoutstatus — niemals Seriennummern oder vollständige Gerätepfade.</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="632"></location>
       <source>Compatibility report</source>
-      <translation>Bericht über die Vereinbarkeit</translation>
+      <translation>Kompatibilitätsbericht</translation>
     </message>
     <message id="gamehq.settings.input.modern.review_buttons">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="601"></location>
       <source>Review buttons</source>
-      <translation>Überprüfungsknöpfe</translation>
+      <translation>Tasten prüfen</translation>
     </message>
     <message id="gamehq.settings.input.modern.runtime">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="614"></location>
       <source>GameInput runtime</source>
-      <translation>Spiel-Eingabe-Laufzeit</translation>
+      <translation>GameInput-Laufzeit</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="581"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
       <oldsource>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</oldsource>
-      <translation type="unfinished">Auto verwendet App-local GameInput mit sicherem Legacy-Fallback; ausschaltet nur die Legacy-Anbieter.</translation>
+      <translation>„Automatisch“ verwendet die gebündelte GameInput-Laufzeit mit sicherem Legacy-Ausweichmodus; „Aus“ deaktiviert GameInput.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="579"></location>
       <source>Modern controller support</source>
-      <translation>Unterstützung moderner Steuerungen</translation>
+      <translation>Unterstützung moderner Controller</translation>
     </message>
     <message id="gamehq.settings.input.modern.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="571"></location>
       <source>GameInput support</source>
-      <translation>Unterstützung für GameInput</translation>
+      <translation>GameInput-Unterstützung</translation>
     </message>
     <message id="gamehq.settings.input.modern.use_current_layout">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="607"></location>
       <source>Use current layout</source>
-      <translation>Verwenden Sie das aktuelle Layout</translation>
+      <translation>Aktuelles Layout verwenden</translation>
     </message>
     <message id="gamehq.settings.input.profile.all_controllers">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="72"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="80"></location>
       <source>All controllers</source>
-      <translation>Alle Steuerungen</translation>
+      <translation>Alle Controller</translation>
     </message>
     <message id="gamehq.settings.input.profile.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="58"></location>
       <source>Controller profile</source>
-      <translation>Profil des Steuerungssystems</translation>
+      <translation>Controllerprofil</translation>
     </message>
     <message id="gamehq.settings.input.profile.shared_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="65"></location>
@@ -3292,12 +3292,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.relation.compatibility">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="125"></location>
       <source>Compatibility</source>
-      <translation>Vereinbarkeit</translation>
+      <translation>Kompatibilität</translation>
     </message>
     <message id="gamehq.settings.input.relation.compatibility_title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="150"></location>
       <source>Assignment conversion required</source>
-      <translation>Notwendige Umwandlung der Zuweisung</translation>
+      <translation>Belegung muss umgewandelt werden</translation>
     </message>
     <message id="gamehq.settings.input.relation.context">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="122"></location>
@@ -3307,12 +3307,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.relation.context_title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="147"></location>
       <source>This button changes meaning</source>
-      <translation>Dieser Knopf ändert die Bedeutung</translation>
+      <translation>Diese Taste ändert ihre Bedeutung</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="137"></location>
       <source>Duplicate</source>
-      <translation>Doppelstück</translation>
+      <translation>Duplikat</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate_title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="162"></location>
@@ -3327,7 +3327,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.relation.in_use_title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="156"></location>
       <source>Shortcut already taken</source>
-      <translation>Abkürzung bereits genommen</translation>
+      <translation>Tastenkürzel bereits belegt</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_available">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="128"></location>
@@ -3337,7 +3337,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.relation.not_reported_title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="153"></location>
       <source>Button not reported</source>
-      <translation>Knopf nicht gemeldet</translation>
+      <translation>Taste nicht gemeldet</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_saved">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="134"></location>
@@ -3347,52 +3347,52 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.relation.not_saved_title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="159"></location>
       <source>Could not save this binding</source>
-      <translation>Es ist nicht möglich, diese Bindung zu speichern.</translation>
+      <translation>Diese Belegung konnte nicht gespeichert werden</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="140"></location>
       <source>Shared button</source>
-      <translation>Geteilte Taste</translation>
+      <translation>Gemeinsam verwendete Taste</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button_title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="165"></location>
       <source>One button, several gestures</source>
-      <translation>Ein Knopf, mehrere Gesten</translation>
+      <translation>Eine Taste, mehrere Gesten</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.message">
       <location filename="src/ui/qml/SettingsView.qml" line="508"></location>
       <source>All controller, keyboard, and mouse overrides return to their built-in defaults.</source>
-      <translation>Alle Steuerung, Tastatur und Maus-Überschreibungen kehren zu ihren eingebauten Standards zurück.</translation>
+      <translation>Alle benutzerdefinierten Controller-, Tastatur- und Mausbelegungen werden auf die integrierten Standardwerte zurückgesetzt.</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.title">
       <location filename="src/ui/qml/SettingsView.qml" line="506"></location>
       <source>Restore all input bindings?</source>
-      <translation>Alle Eingabebindungen wiederherstellen?</translation>
+      <translation>Alle Eingabebelegungen wiederherstellen?</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.message">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="679"></location>
       <source>Only the currently displayed device/profile overrides will be removed.</source>
-      <translation>Nur die aktuell angezeigten Geräte/Profile werden überschrieben.</translation>
+      <translation>Nur die aktuell angezeigten benutzerdefinierten Geräte- oder Profilbelegungen werden entfernt.</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="677"></location>
       <source>Restore displayed bindings?</source>
-      <translation>Wiederherstellen angezeigter Bindungen?</translation>
+      <translation>Angezeigte Belegungen wiederherstellen?</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="225"></location>
       <source>Adopt per-slot bindings</source>
-      <translation>Annahme von Verbindungen pro Slot</translation>
+      <translation>Belegungen pro Slot übernehmen</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="227"></location>
       <source>Copy bindings saved for any controller in this slot to this specific controller. The originals are kept.</source>
-      <translation>Kopieren Sie die für jeden Controller in diesem Slot gespeicherten Bindungen auf diesen Controller.</translation>
+      <translation>Für beliebige Controller in diesem Slot gespeicherte Belegungen auf diesen Controller kopieren. Die Originale bleiben erhalten.</translation>
     </message>
     <message id="gamehq.settings.input.test.copy_to_controller">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="230"></location>
       <source>Copy to this controller</source>
-      <translation>Kopieren Sie auf diesen Controller</translation>
+      <translation>Auf diesen Controller kopieren</translation>
     </message>
     <message id="gamehq.settings.input.test.eyebrow">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="189"></location>
@@ -3402,7 +3402,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.test.identify_button">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="237"></location>
       <source>Identify a controller button</source>
-      <translation>Identifizieren eines Buttons</translation>
+      <translation>Controller-Taste identifizieren</translation>
     </message>
     <message id="gamehq.settings.input.test.last_input">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="195"></location>
@@ -3412,37 +3412,37 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.input.test.probe_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="241"></location>
       <source>Records the next 3 seconds of raw button changes — including buttons GameHQ does not recognize — into the diagnostics you can copy from Advanced.</source>
-      <translation>Erfasst die nächsten 3 Sekunden der Rohknopfänderungen  einschließlich der Knöpfe, die GameHQ nicht erkennt  in die Diagnostik, die Sie von Advanced kopieren können.</translation>
+      <translation>Zeichnet die nächsten 3 Sekunden roher Tastenänderungen — einschließlich Tasten, die GameHQ nicht erkennt — in der Diagnose auf, die unter Erweitert kopiert werden kann.</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_displayed">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="206"></location>
       <source>Restore displayed bindings</source>
-      <translation>Wiederherstellen angezeigter Bindungen</translation>
+      <translation>Angezeigte Belegungen wiederherstellen</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_shared_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="213"></location>
       <source>Remove overrides for the selected device type and shared profile.</source>
-      <translation>Überschreitung für den ausgewählten Gerätetypen und das freigegebene Profil entfernen.</translation>
+      <translation>Benutzerdefinierte Belegungen für den ausgewählten Gerätetyp und das gemeinsame Profil entfernen.</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_specific_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="210"></location>
       <source>Remove overrides for this controller only.</source>
-      <translation>Entfernen Sie die Überschrift nur für diesen Controller.</translation>
+      <translation>Nur benutzerdefinierte Belegungen dieses Controllers entfernen.</translation>
     </message>
     <message id="gamehq.settings.input.test.start_probe">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="244"></location>
       <source>Start 3-second probe</source>
-      <translation>Start 3 Sekunden Sonde</translation>
+      <translation>3-Sekunden-Test starten</translation>
     </message>
     <message id="gamehq.settings.input.test.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="191"></location>
       <source>Test and restore</source>
-      <translation>Test und Wiederherstellung</translation>
+      <translation>Testen und wiederherstellen</translation>
     </message>
     <message id="gamehq.settings.language.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="17"></location>
       <source>Choose the language GameHQ uses.</source>
-      <translation>Wähle die Sprache aus, die GameHQ verwenden soll.</translation>
+      <translation>Sprache auswählen, die GameHQ verwendet.</translation>
     </message>
     <message id="gamehq.settings.language.eyebrow">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="13"></location>
@@ -3457,7 +3457,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.language.row_description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="23"></location>
       <source>Changes apply immediately throughout GameHQ.</source>
-      <translation>Änderungen werden sofort in ganz GameHQ übernommen.</translation>
+      <translation>Änderungen gelten sofort im gesamten GameHQ.</translation>
     </message>
     <message id="gamehq.settings.language.system">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="31"></location>
@@ -3467,18 +3467,18 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.language.title">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="15"></location>
       <source>Interface language</source>
-      <translation>Sprache der Benutzeroberfläche</translation>
+      <translation>Oberflächensprache</translation>
     </message>
     <message id="gamehq.settings.library.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="11"></location>
       <source>Review every folder GameHQ manages or scans for media.</source>
-      <translation>Überprüfen Sie alle Ordner, die GameHQ verwaltet oder nach Medien scannt.</translation>
+      <translation>Alle Ordner prüfen, die GameHQ verwaltet oder nach Medien durchsucht.</translation>
     </message>
     <message id="gamehq.settings.library.imports.add">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="85"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="120"></location>
       <source>Add watched folder</source>
-      <translation>Folder hinzufügen</translation>
+      <translation>Überwachten Ordner hinzufügen</translation>
     </message>
     <message id="gamehq.settings.library.imports.count" numerus="yes">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="72"></location>
@@ -3491,37 +3491,37 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.library.imports.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="74"></location>
       <source>External folders are scanned read-only and never become GameHQ output locations.</source>
-      <translation>Externe Ordner werden nur für Lesen gescannt und werden nie zu GameHQ-Ausgabe-Standorten.</translation>
+      <translation>Externe Ordner werden schreibgeschützt durchsucht und nie als GameHQ-Ausgabeorte verwendet.</translation>
     </message>
     <message id="gamehq.settings.library.imports.empty.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="82"></location>
       <source>Add folders created by Steam, OBS, Xbox Game Bar, or another capture tool.</source>
-      <translation>Fügen Sie Ordner hinzu, die von Steam, OBS, Xbox Game Bar oder einem anderen Erfassungswerkzeug erstellt wurden.</translation>
+      <translation>Von Steam, OBS, Xbox Game Bar oder einem anderen Aufnahmetool erstellte Ordner hinzufügen.</translation>
     </message>
     <message id="gamehq.settings.library.imports.empty.title">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="80"></location>
       <source>No watched folders yet</source>
-      <translation>Noch keine gezeigten Ordner</translation>
+      <translation>Noch keine überwachten Ordner</translation>
     </message>
     <message id="gamehq.settings.library.imports.eyebrow">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="68"></location>
       <source>Imports</source>
-      <translation>Einfuhren</translation>
+      <translation>Importe</translation>
     </message>
     <message id="gamehq.settings.library.imports.folder">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="97"></location>
       <source>Watched folder</source>
-      <translation>Beobachtete Ordner</translation>
+      <translation>Überwachter Ordner</translation>
     </message>
     <message id="gamehq.settings.library.imports.title">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="70"></location>
       <source>Watched folders</source>
-      <translation>Beobachtete Ordner</translation>
+      <translation>Überwachte Ordner</translation>
     </message>
     <message id="gamehq.settings.library.rescan">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="15"></location>
       <source>Rescan now</source>
-      <translation>Wiederholen Sie das Scannen .</translation>
+      <translation>Jetzt erneut durchsuchen</translation>
     </message>
     <message id="gamehq.settings.library.scan.added" numerus="yes">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="139"></location>
@@ -3534,7 +3534,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.library.scan.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="143"></location>
       <source>Rescan checks current, previous, and watched locations for media missing from the library.</source>
-      <translation>Rescan überprüft aktuelle, vorherige und angesehene Standorte auf fehlende Medien in der Bibliothek.</translation>
+      <translation>Beim erneuten Durchsuchen werden aktuelle, frühere und überwachte Speicherorte auf Medien geprüft, die in der Bibliothek fehlen.</translation>
     </message>
     <message id="gamehq.settings.library.scan.eyebrow">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="128"></location>
@@ -3544,47 +3544,47 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.library.scan.not_scanned">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="132"></location>
       <source>Not scanned this session</source>
-      <translation>Diese Sitzung wurde nicht gescannt</translation>
+      <translation>In dieser Sitzung nicht durchsucht</translation>
     </message>
     <message id="gamehq.settings.library.scan.up_to_date">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="136"></location>
       <source>Library is up to date</source>
-      <translation>Die Bibliothek ist auf dem neuesten Stand</translation>
+      <translation>Bibliothek ist aktuell</translation>
     </message>
     <message id="gamehq.settings.library.storage.active_count">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="34"></location>
       <source>2 active</source>
-      <translation>2 Aktiv</translation>
+      <translation>2 aktiv</translation>
     </message>
     <message id="gamehq.settings.library.storage.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="36"></location>
       <source>Current output folders and earlier roots remain scanned so past media stays visible.</source>
-      <translation>Aktuelle Ausgabeordner und frühere Roots bleiben gescannt, so dass vergangene Medien sichtbar bleiben.</translation>
+      <translation>Aktuelle Ausgabeordner und frühere Stammordner werden weiterhin durchsucht, damit ältere Medien sichtbar bleiben.</translation>
     </message>
     <message id="gamehq.settings.library.storage.eyebrow">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="30"></location>
       <source>Storage</source>
-      <translation>Aufbewahrung</translation>
+      <translation>Speicher</translation>
     </message>
     <message id="gamehq.settings.library.storage.previous_location">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="58"></location>
       <source>Previous location</source>
-      <translation>Vorheriger Standort</translation>
+      <translation>Vorheriger Speicherort</translation>
     </message>
     <message id="gamehq.settings.library.storage.replay_clips">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="46"></location>
       <source>Replay clips</source>
-      <translation>Wiederholung von Clips</translation>
+      <translation>Replay-Clips</translation>
     </message>
     <message id="gamehq.settings.library.storage.screenshots">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="40"></location>
       <source>Screenshots</source>
-      <translation>Bildschirmfotos</translation>
+      <translation>Screenshots</translation>
     </message>
     <message id="gamehq.settings.library.storage.title">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="32"></location>
       <source>Managed locations</source>
-      <translation>Verwaltete Standorte</translation>
+      <translation>Verwaltete Speicherorte</translation>
     </message>
     <message id="gamehq.settings.library.title">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="9"></location>
@@ -3594,33 +3594,33 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.portable_import.confirm">
       <location filename="src/ui/qml/SettingsView.qml" line="473"></location>
       <source>Import and restart</source>
-      <translation>Import und Neustart</translation>
+      <translation>Importieren und neu starten</translation>
     </message>
     <message id="gamehq.settings.portable_import.failed">
       <location filename="src/ui/qml/SettingsView.qml" line="478"></location>
       <source>Portable import failed</source>
-      <translation>Portable Import fehlgeschlagen</translation>
+      <translation>Portabler Import fehlgeschlagen</translation>
     </message>
     <message id="gamehq.settings.portable_import.message">
       <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
       <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
       <oldsource>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</oldsource>
-      <translation type="unfinished">Nur ein frisch installiertes Profil wird akzeptiert. Portable Aufnahmen bleiben, wo sie sind, die Quelle wird nie geändert, und GameHQ wird neu gestartet, um den Import abzuschließen.</translation>
+      <translation>Der Import ist nur in ein sauberes installiertes Profil möglich. Portable Aufnahmen bleiben an ihrem Ort, die Quelle wird nie verändert und GameHQ wird zum Abschluss des Imports neu gestartet.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
       <location filename="src/ui/qml/SettingsView.qml" line="469"></location>
       <source>Import this portable profile?</source>
-      <translation>Das tragbare Profil importieren?</translation>
+      <translation>Dieses portable Profil importieren?</translation>
     </message>
     <message id="gamehq.settings.replay.buffer.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="41"></location>
       <source>Recording changes restart an active buffer so new values apply immediately.</source>
-      <translation>Die Aufzeichnung von Änderungen startet einen aktiven Puffer neu, so dass neue Werte sofort gelten.</translation>
+      <translation>Änderungen an der Aufnahme starten einen aktiven Puffer neu, damit neue Werte sofort gelten.</translation>
     </message>
     <message id="gamehq.settings.replay.buffer.enabled.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="46"></location>
       <source>Record a rolling buffer whenever an eligible game is active.</source>
-      <translation>Aufzeichnung eines rollenden Puffers, wenn ein berechtigtes Spiel aktiv ist.</translation>
+      <translation>Laufenden Puffer aufzeichnen, sobald ein geeignetes Spiel aktiv ist.</translation>
     </message>
     <message id="gamehq.settings.replay.buffer.enabled.label">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="44"></location>
@@ -3630,42 +3630,42 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.replay.buffer.eyebrow">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="37"></location>
       <source>Buffer</source>
-      <translation>Buffer</translation>
+      <translation>Puffer</translation>
     </message>
     <message id="gamehq.settings.replay.buffer.length">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="51"></location>
       <source>Replay length</source>
-      <translation>Wiederholungsdauer</translation>
+      <translation>Replay-Länge</translation>
     </message>
     <message id="gamehq.settings.replay.buffer.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="39"></location>
       <source>Automatic recording</source>
-      <translation>Automatische Aufzeichnung</translation>
+      <translation>Automatische Aufnahme</translation>
     </message>
     <message id="gamehq.settings.replay.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="9"></location>
       <source>Manage the rolling buffer used for instant replay clips.</source>
-      <translation>Verwalten Sie den für die sofortige Wiedergabe von Clips verwendeten Rollpuffer.</translation>
+      <translation>Laufenden Puffer für Sofort-Replay-Clips verwalten.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.bitrate">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="107"></location>
       <source>Video bitrate</source>
-      <translation>Video-Bitrate</translation>
+      <translation>Videobitrate</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.bitrate_description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="109"></location>
       <source>Higher values improve motion detail but use more storage and encoder bandwidth.</source>
-      <translation>Höhere Werte verbessern die Bewegungsgenauigkeit, verwenden jedoch mehr Speicherplatz und Encoder-Bandbreite.</translation>
+      <translation>Höhere Werte verbessern Bewegungsdetails, benötigen jedoch mehr Speicher und Encoder-Bandbreite.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="79"></location>
       <source>Balance motion detail, resolution, storage use, and encoder load.</source>
-      <translation>Balance-Bewegung, Auflösung, Speicherverwendung und Encoder-Last.</translation>
+      <translation>Bewegungsdetails, Auflösung, Speicherverbrauch und Encoder-Last abwägen.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.eyebrow">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="75"></location>
       <source>Encoding</source>
-      <translation>Verschlüsselung</translation>
+      <translation>Kodierung</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.frame_rate">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="82"></location>
@@ -3675,52 +3675,52 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.replay.encoding.resolution">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="95"></location>
       <source>Resolution</source>
-      <translation>Entschließung</translation>
+      <translation>Auflösung</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.system_audio.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="128"></location>
       <source>Include desktop audio in newly recorded replay segments.</source>
-      <translation>Fügen Sie Desktop-Audio in neu aufgenommene Wiedergabe-Segmente ein.</translation>
+      <translation>Desktop-Audio in neu aufgenommene Replay-Segmente einschließen.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.system_audio.label">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="126"></location>
       <source>System audio</source>
-      <translation>System-Audio</translation>
+      <translation>Systemaudio</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="77"></location>
       <source>Recording quality</source>
-      <translation>Aufzeichnungsqualität</translation>
+      <translation>Aufnahmequalität</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="140"></location>
       <source>Saved replays go to %1. Failures always notify you.</source>
-      <translation>Die gespeicherten Wiederholungen gehen zu %1.</translation>
+      <translation>Gespeicherte Replays werden unter %1 abgelegt. Bei Fehlern erscheint immer eine Benachrichtigung.</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.eyebrow">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="136"></location>
       <source>Feedback</source>
-      <translation>Rückmeldungen</translation>
+      <translation>Feedback</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.notification">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="148"></location>
       <source>Clip saved notification</source>
-      <translation>Clip-Speichernatisierung</translation>
+      <translation>Benachrichtigung bei gespeichertem Clip</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.sound">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="143"></location>
       <source>Clip saved sound</source>
-      <translation>Clip gespeichert Sound</translation>
+      <translation>Ton bei gespeichertem Clip</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="138"></location>
       <source>After saving a clip</source>
-      <translation>Nach dem Speichern einer Klippe</translation>
+      <translation>Nach dem Speichern eines Clips</translation>
     </message>
     <message id="gamehq.settings.replay.status.active_description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="28"></location>
       <source>Recording %1; the temporary ring is written only when you save a replay.</source>
-      <translation>Aufnahme %1; der temporäre Ring wird nur geschrieben, wenn Sie eine Wiedergabe speichern.</translation>
+      <translation>%1 wird aufgezeichnet; der temporäre Ringpuffer wird erst beim Speichern eines Replays geschrieben.</translation>
     </message>
     <message id="gamehq.settings.replay.status.eyebrow">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="13"></location>
@@ -3730,32 +3730,32 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.replay.status.idle">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="23"></location>
       <source>Idle</source>
-      <translation>Nicht eingesetzt</translation>
+      <translation>Inaktiv</translation>
     </message>
     <message id="gamehq.settings.replay.status.idle_description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="31"></location>
       <source>Not recording. The buffer arms automatically when an eligible game is active.</source>
-      <translation>Der Puffer wird automatisch aktiviert, wenn ein Spiel aktiv ist.</translation>
+      <translation>Keine Aufnahme. Der Puffer startet automatisch, wenn ein geeignetes Spiel aktiv ist.</translation>
     </message>
     <message id="gamehq.settings.replay.status.recording">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="20"></location>
       <source>Recording</source>
-      <translation>Aufzeichnung</translation>
+      <translation>Aufnahme läuft</translation>
     </message>
     <message id="gamehq.settings.replay.status.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="15"></location>
       <source>Replay buffer</source>
-      <translation>Wiederholungspuffer</translation>
+      <translation>Replay-Puffer</translation>
     </message>
     <message id="gamehq.settings.replay.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="7"></location>
       <source>Replay</source>
-      <translation>Wiederholung</translation>
+      <translation>Replay</translation>
     </message>
     <message id="gamehq.settings.restore_all.message">
       <location filename="src/ui/qml/SettingsView.qml" line="491"></location>
       <source>Window preferences, capture behavior, replay options, notifications, and sound settings return to defaults. Captures and library data are not deleted.</source>
-      <translation>Die Fenstervorlieben, das Aufnahmeverhalten, die Wiedergabeoptionen, Benachrichtigungen und die Ton-Einstellungen werden wieder auf die Standard-Einstellungen zurückgesetzt.</translation>
+      <translation>Fenstereinstellungen, Aufnahmeverhalten, Replay-Optionen, Benachrichtigungen und Toneinstellungen werden zurückgesetzt. Aufnahmen und Bibliotheksdaten werden nicht gelöscht.</translation>
     </message>
     <message id="gamehq.settings.restore_all.title">
       <location filename="src/ui/qml/SettingsView.qml" line="489"></location>
@@ -3765,17 +3765,17 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.restore_category.message">
       <location filename="src/ui/qml/SettingsView.qml" line="522"></location>
       <source>%1 options return to defaults. Captures and library data are not deleted.</source>
-      <translation>Die Optionen %1 werden wieder auf den Standard eingestellt.</translation>
+      <translation>%1-Optionen werden auf die Standardeinstellungen zurückgesetzt. Aufnahmen und Bibliotheksdaten werden nicht gelöscht.</translation>
     </message>
     <message id="gamehq.settings.restore_category.title">
       <location filename="src/ui/qml/SettingsView.qml" line="520"></location>
       <source>Restore %1 settings?</source>
-      <translation>Sollte man die Einstellungen von %1 wiederherstellen?</translation>
+      <translation>%1-Einstellungen wiederherstellen?</translation>
     </message>
     <message id="gamehq.settings.theme.blue.description">
       <location filename="src/ui/qml/themes/Skin.qml" line="22"></location>
       <source>Deep navy surfaces with violet-to-blue accents.</source>
-      <translation>Tiefe Marineoberflächen mit violetten bis blauen Akzenten.</translation>
+      <translation>Tiefblaue Flächen mit violett-blauen Akzenten.</translation>
     </message>
     <message id="gamehq.settings.theme.blue.label">
       <location filename="src/ui/qml/themes/DarkSkin.qml" line="6"></location>
@@ -3787,7 +3787,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="7"></location>
       <source>Layered neutral grays and one bright blue. Minimal to a fault.</source>
       <oldsource>Layered neutral greys and one bright blue. Minimal to a fault.</oldsource>
-      <translation type="unfinished">Neutrale Grautöne und ein hellblaues.</translation>
+      <translation>Abgestufte neutrale Grautöne mit einem leuchtenden Blau. Konsequent minimalistisch.</translation>
     </message>
     <message id="gamehq.settings.theme.carbon.label">
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="5"></location>
@@ -3798,7 +3798,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="7"></location>
       <source>Soft grays, an indigo accent, pill-shaped controls, and quick transitions.</source>
       <oldsource>Soft greys, indigo accent, pill-round and very fast.</oldsource>
-      <translation type="unfinished">Weiches Grau, Indigo-Akzent, pillenrund und sehr schnell.</translation>
+      <translation>Sanfte Grautöne, Indigoakzent, abgerundete Bedienelemente und schnelle Übergänge.</translation>
     </message>
     <message id="gamehq.settings.theme.cobalt.label">
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="5"></location>
@@ -3809,7 +3809,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="7"></location>
       <source>Purple-gray base with bright candy accents.</source>
       <oldsource>Purple-grey base with bright candy accents.</oldsource>
-      <translation type="unfinished">Lila-graue Basis mit leuchtenden Süßigkeiten.</translation>
+      <translation>Violett-graue Basis mit leuchtenden Bonbonakzenten.</translation>
     </message>
     <message id="gamehq.settings.theme.dracula.label">
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="5"></location>
@@ -3819,7 +3819,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.theme.emerald.description">
       <location filename="src/ui/qml/themes/EmeraldSkin.qml" line="7"></location>
       <source>Charcoal and green, with quick Fluent-style responses.</source>
-      <translation>Holzkohle und Grün, mit schnellen Fluent-Reaktionen.</translation>
+      <translation>Anthrazit und Grün mit schnellen Reaktionen im Fluent-Stil.</translation>
     </message>
     <message id="gamehq.settings.theme.emerald.label">
       <location filename="src/ui/qml/themes/EmeraldSkin.qml" line="5"></location>
@@ -3829,7 +3829,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.theme.gruvbox.description">
       <location filename="src/ui/qml/themes/GruvboxSkin.qml" line="8"></location>
       <source>Warm retro-terminal browns and cream, in monospace.</source>
-      <translation>Warme Rücken-Terminal-Braune und Creme, in Monospace.</translation>
+      <translation>Warme Retro-Terminalfarben in Braun und Creme mit Festbreitenschrift.</translation>
     </message>
     <message id="gamehq.settings.theme.gruvbox.label">
       <location filename="src/ui/qml/themes/GruvboxSkin.qml" line="6"></location>
@@ -3840,7 +3840,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="8"></location>
       <source>Flat blue-gray with squared edges. Chrome gets out of the way.</source>
       <oldsource>Flat blue-grey with squared edges. Chrome gets out of the way.</oldsource>
-      <translation type="unfinished">Flach blaugrau mit quadratischen Kanten.</translation>
+      <translation>Flaches Blaugrau mit eckigen Kanten. Die Fensterdekoration tritt in den Hintergrund.</translation>
     </message>
     <message id="gamehq.settings.theme.harbor.label">
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="6"></location>
@@ -3855,12 +3855,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.theme.light.label">
       <location filename="src/ui/qml/themes/LightSkin.qml" line="9"></location>
       <source>Light</source>
-      <translation>Licht</translation>
+      <translation>Hell</translation>
     </message>
     <message id="gamehq.settings.theme.midnight.description">
       <location filename="src/ui/qml/themes/MidnightSkin.qml" line="9"></location>
       <source>Near-black with soft blue washes and slow, cinematic motion.</source>
-      <translation>Fast schwarz mit weichen blauen Wäsche und langsame, filmische Bewegung.</translation>
+      <translation>Fast schwarz mit sanften Blautönen und langsamer, filmischer Bewegung.</translation>
     </message>
     <message id="gamehq.settings.theme.midnight.label">
       <location filename="src/ui/qml/themes/MidnightSkin.qml" line="7"></location>
@@ -3871,7 +3871,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/ui/qml/themes/NordSkin.qml" line="7"></location>
       <source>Desaturated arctic blue-grays. Calm and low-contrast.</source>
       <oldsource>Desaturated arctic blue-greys. Calm and low-contrast.</oldsource>
-      <translation type="unfinished">Ungesättigtes arktisches Blaugrau, ruhig und kontrastlos.</translation>
+      <translation>Entsättigte arktische Blaugrautöne. Ruhig und kontrastarm.</translation>
     </message>
     <message id="gamehq.settings.theme.nord.label">
       <location filename="src/ui/qml/themes/NordSkin.qml" line="5"></location>
@@ -3881,7 +3881,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.theme.obsidian.description">
       <location filename="src/ui/qml/themes/ObsidianSkin.qml" line="19"></location>
       <source>Near-black glass lit by a cool blue bloom. The default.</source>
-      <translation>Fast schwarzes Glas, beleuchtet von einer kühlen blauen Blüte.</translation>
+      <translation>Fast schwarzes Glas mit kühlem blauem Leuchten. Das Standarddesign.</translation>
     </message>
     <message id="gamehq.settings.theme.obsidian.label">
       <location filename="src/ui/qml/themes/ObsidianSkin.qml" line="17"></location>
@@ -3891,7 +3891,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.settings.theme.synthwave.description">
       <location filename="src/ui/qml/themes/SynthwaveSkin.qml" line="8"></location>
       <source>Neon magenta and cyan over a violet horizon, with scanlines.</source>
-      <translation>Neonmagenta und Cyan über einem violetten Horizont, mit Scanlinien.</translation>
+      <translation>Neonmagenta und Cyan vor violettem Horizont mit Scanlines.</translation>
     </message>
     <message id="gamehq.settings.theme.synthwave.label">
       <location filename="src/ui/qml/themes/SynthwaveSkin.qml" line="6"></location>
@@ -3901,43 +3901,43 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.startup.portable_import.failed_title">
       <location filename="src/main.cpp" line="238"></location>
       <source>Portable import failed</source>
-      <translation>Import des portablen Profils fehlgeschlagen</translation>
+      <translation>Portabler Import fehlgeschlagen</translation>
     </message>
     <message id="gamehq.startup.portable_import.installed_copy_required">
       <location filename="src/main.cpp" line="205"></location>
       <source>Run portable import from an installed copy of GameHQ.</source>
-      <translation>Ausführen des portablen Imports von einer installierten Kopie von GameHQ- Ich weiß .</translation>
+      <translation>Starten Sie den portablen Import aus einer installierten GameHQ-Version.</translation>
     </message>
     <message id="gamehq.startup.portable_import.instance_running">
       <location filename="src/main.cpp" line="217"></location>
       <source>Another GameHQ instance is running, so the portable import cannot start.</source>
-      <translation>Ein weiterer GameHQ Die Instance läuft, also kann der portable Import nicht gestartet werden.</translation>
+      <translation>Eine andere GameHQ-Instanz wird ausgeführt, daher kann der portable Import nicht starten.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_argument_incomplete">
       <location filename="src/main.cpp" line="85"></location>
       <source>The portable import parent-process argument is incomplete.</source>
-      <translation>Das Argument "Portable Import" ist unvollständig.</translation>
+      <translation>Das Argument für den übergeordneten Prozess des portablen Imports ist unvollständig.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_identifier_invalid">
       <location filename="src/main.cpp" line="113"></location>
       <location filename="src/main.cpp" line="119"></location>
       <source>The portable import parent-process identifier is invalid.</source>
-      <translation>Die Identifizierung des übertragbaren Import-Vorprozesses ist ungültig.</translation>
+      <translation>Die Kennung des übergeordneten Prozesses für den portablen Import ist ungültig.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_still_running">
       <location filename="src/main.cpp" line="99"></location>
       <source>The running GameHQ instance did not close in time.</source>
-      <translation>Das Laufen GameHQ Die Sache ist nicht rechtzeitig abgeschlossen.</translation>
+      <translation>Die laufende GameHQ-Instanz wurde nicht rechtzeitig beendet.</translation>
     </message>
     <message id="gamehq.startup.portable_import.parent_unverifiable">
       <location filename="src/main.cpp" line="106"></location>
       <source>GameHQ could not confirm that the previous instance has closed.</source>
-      <translation>GameHQ Die Kommission hat nicht bestätigt, dass die vorherige Instanz geschlossen ist.</translation>
+      <translation>GameHQ konnte nicht bestätigen, dass die vorherige Instanz beendet wurde.</translation>
     </message>
     <message id="gamehq.startup.portable_import.source_missing">
       <location filename="src/main.cpp" line="199"></location>
       <source>The portable import source folder is missing.</source>
-      <translation>Der portable Import-Quellordner fehlt.</translation>
+      <translation>Der Quellordner des portablen Imports fehlt.</translation>
     </message>
     <message id="gamehq.tray.exit">
       <location filename="src/tray/TrayIcon.cpp" line="200"></location>
@@ -3952,12 +3952,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.tray.rescan_captures">
       <location filename="src/tray/TrayIcon.cpp" line="188"></location>
       <source>Rescan Captures</source>
-      <translation>Aufnahmen neu einlesen</translation>
+      <translation>Aufnahmen erneut durchsuchen</translation>
     </message>
     <message id="gamehq.tray.save_replay">
       <location filename="src/tray/TrayIcon.cpp" line="196"></location>
       <source>Save Replay</source>
-      <translation>Wiederholung speichern</translation>
+      <translation>Replay speichern</translation>
     </message>
     <message id="gamehq.tray.take_screenshot">
       <location filename="src/tray/TrayIcon.cpp" line="192"></location>
@@ -3967,7 +3967,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.update.applying_and_restarting">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="184"></location>
       <source>GameHQ is applying the update and will restart.</source>
-      <translation>GameHQ wird das Update anwenden und neu starten.</translation>
+      <translation>GameHQ wendet das Update an und wird neu gestartet.</translation>
     </message>
     <message id="gamehq.update.available_version_short">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="126"></location>
@@ -3977,12 +3977,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.update.banner.available">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="67"></location>
       <source>%1 %2 is available</source>
-      <translation>%1 %2 ist verfügbar</translation>
+      <translation>%1 %2 verfügbar</translation>
     </message>
     <message id="gamehq.update.banner.download_verified">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="79"></location>
       <source>Download verified and ready to install.</source>
-      <translation>Download bestätigt und bereit zur Installation.</translation>
+      <translation>Download verifiziert und installationsbereit.</translation>
     </message>
     <message id="gamehq.update.banner.downloading">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="51"></location>
@@ -3997,7 +3997,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.update.banner.needs_attention">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="64"></location>
       <source>The update needs attention</source>
-      <translation>Das Update braucht Aufmerksamkeit.</translation>
+      <translation>Das Update erfordert Aufmerksamkeit</translation>
     </message>
     <message id="gamehq.update.banner.open_details">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="89"></location>
@@ -4017,12 +4017,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.update.banner.restart_when_finished">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="86"></location>
       <source>GameHQ will restart when installation finishes.</source>
-      <translation>GameHQ wird neu gestartet, wenn die Installation beendet ist.</translation>
+      <translation>GameHQ wird neu gestartet, wenn die Installation abgeschlossen ist.</translation>
     </message>
     <message id="gamehq.update.banner.waiting_for_capture">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="83"></location>
       <source>Waiting for capture work to finish safely.</source>
-      <translation>Warten, bis die Erfassung sicher abgeschlossen ist.</translation>
+      <translation>Warten auf den sicheren Abschluss laufender Aufnahmen.</translation>
     </message>
     <message id="gamehq.update.beta_download">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="166"></location>
@@ -4032,12 +4032,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.update.bundled_with_version">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="145"></location>
       <source>Bundled with GameHQ %1</source>
-      <translation>Enthalten in GameHQ %1</translation>
+      <translation>In GameHQ %1 enthalten</translation>
     </message>
     <message id="gamehq.update.cancel_download">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="217"></location>
       <source>Cancel download</source>
-      <translation>Abbrechen des Downloads</translation>
+      <translation>Download abbrechen</translation>
     </message>
     <message id="gamehq.update.check.label">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="237"></location>
@@ -4049,53 +4049,53 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="231"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
       <source>Check again</source>
-      <translation>Überprüfen Sie nochmal.</translation>
+      <translation>Erneut prüfen</translation>
     </message>
     <message id="gamehq.update.check_automatically.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="117"></location>
       <source>At most once every 24 hours, in the background.</source>
-      <translation>Höchstens alle 24 Stunden im Hintergrund.</translation>
+      <translation>Höchstens einmal alle 24 Stunden, im Hintergrund.</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="115"></location>
       <source>Check automatically</source>
-      <translation>Überprüfen Sie automatisch</translation>
+      <translation>Automatisch prüfen</translation>
     </message>
     <message id="gamehq.update.check_failed">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="172"></location>
       <source>Update check failed</source>
-      <translation>Aktualisierungsprüfung fehlgeschlagen</translation>
+      <translation>Updateprüfung fehlgeschlagen</translation>
     </message>
     <message id="gamehq.update.check_now">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="139"></location>
       <source>Check now</source>
-      <translation>Überprüfen Sie jetzt .</translation>
+      <translation>Jetzt prüfen</translation>
     </message>
     <message id="gamehq.update.checking">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="211"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="136"></location>
       <source>Checking...</source>
-      <translation>Ich überprüfe...</translation>
+      <translation>Wird geprüft…</translation>
     </message>
     <message id="gamehq.update.checking_for_updates">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="80"></location>
       <source>Checking for updates...</source>
-      <translation>Ich sehe nach Updates.</translation>
+      <translation>Nach Updates suchen...</translation>
     </message>
     <message id="gamehq.update.checking_for_updates_short">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="152"></location>
       <source>Checking for updates</source>
-      <translation>Überprüfung der Aktualisierungen</translation>
+      <translation>Suche nach Updates</translation>
     </message>
     <message id="gamehq.update.choose_install_time">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="908"></location>
       <source>Choose when to install %1 %2.</source>
-      <translation>Wählen Sie, wann %1 %2 installiert werden soll.</translation>
+      <translation>Wählen Sie aus, wann %1 %2 installiert werden soll.</translation>
     </message>
     <message id="gamehq.update.download_progress">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="155"></location>
       <source>Download progress</source>
-      <translation>Weiterentwicklung des Downloads</translation>
+      <translation>Downloadfortschritt</translation>
     </message>
     <message id="gamehq.update.download_verified_version">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="94"></location>
@@ -4105,22 +4105,22 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.update.download_version">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="214"></location>
       <source>Download update %1</source>
-      <translation>Das Update %1 herunterladen</translation>
+      <translation>Update %1 herunterladen</translation>
     </message>
     <message id="gamehq.update.downloading_percent">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="158"></location>
       <source>Downloading %1%</source>
-      <translation>Herunterladen %1%</translation>
+      <translation>%1 % wird heruntergeladen</translation>
     </message>
     <message id="gamehq.update.downloading_version_progress">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="88"></location>
       <source>Downloading GameHQ %1... %2%</source>
-      <translation>GameHQ %1 wird heruntergeladen... %2%</translation>
+      <translation>GameHQ %1 wird heruntergeladen… %2 %</translation>
     </message>
     <message id="gamehq.update.github_check_description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="111"></location>
       <source>GameHQ can check GitHub for newer stable releases.</source>
-      <translation>GameHQ kann GitHub auf neuere stabile Versionen überprüfen.</translation>
+      <translation>GameHQ kann GitHub auf neuere stabile Versionen prüfen.</translation>
     </message>
     <message id="gamehq.update.install_and_restart">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="220"></location>
@@ -4138,22 +4138,22 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="163"></location>
       <source>Installing</source>
-      <translation>Installation</translation>
+      <translation>Wird installiert</translation>
     </message>
     <message id="gamehq.update.installing_progress">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="227"></location>
       <source>Installing...</source>
-      <translation>Ich installiere...</translation>
+      <translation>Wird installiert…</translation>
     </message>
     <message id="gamehq.update.installing_version">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="102"></location>
       <source>Installing GameHQ %1...</source>
-      <translation>GameHQ %1 wird installiert...</translation>
+      <translation>GameHQ %1 wird installiert…</translation>
     </message>
     <message id="gamehq.update.last_checked">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="203"></location>
       <source>Last checked %1</source>
-      <translation>Zuletzt geprüft %1</translation>
+      <translation>Zuletzt geprüft: %1</translation>
     </message>
     <message id="gamehq.update.last_checked_with_marker">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="554"></location>
@@ -4168,38 +4168,38 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.update.not_checked_description">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="200"></location>
       <source>Updates have not been checked yet</source>
-      <translation>Aktualisierungen wurden noch nicht überprüft</translation>
+      <translation>Updates wurden noch nicht überprüft</translation>
     </message>
     <message id="gamehq.update.not_checked_yet">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="182"></location>
       <source>Not checked yet</source>
-      <translation>Noch nicht überprüft</translation>
+      <translation>Noch nicht geprüft</translation>
     </message>
     <message id="gamehq.update.preparing">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="224"></location>
       <source>Preparing...</source>
-      <translation>Ich bereite...</translation>
+      <translation>Wird vorbereitet…</translation>
     </message>
     <message id="gamehq.update.preparing_to_install">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="166"></location>
       <source>Preparing to install</source>
-      <translation>Vorbereitung der Installation</translation>
+      <translation>Vorbereitung auf die Installation</translation>
     </message>
     <message id="gamehq.update.preparing_version">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="98"></location>
       <source>Getting ready to install GameHQ %1...</source>
-      <translation>Installation von GameHQ %1 wird vorbereitet...</translation>
+      <translation>Installation von GameHQ %1 wird vorbereitet…</translation>
     </message>
     <message id="gamehq.update.progress_percent">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="75"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="173"></location>
       <source>%1% complete</source>
-      <translation>%1% abgeschlossen</translation>
+      <translation>%1 % abgeschlossen</translation>
     </message>
     <message id="gamehq.update.published_on">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="136"></location>
       <source>Published %1</source>
-      <translation>Veröffentlicht %1</translation>
+      <translation>Veröffentlicht: %1</translation>
     </message>
     <message id="gamehq.update.ready_to_install">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="162"></location>
@@ -4215,12 +4215,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.update.released_on">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="142"></location>
       <source>Released %1</source>
-      <translation>Freigegeben %1</translation>
+      <translation>Veröffentlicht: %1</translation>
     </message>
     <message id="gamehq.update.remind_later">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="933"></location>
       <source>Remind me later</source>
-      <translation>Erinnere mich später daran.</translation>
+      <translation>Später erinnern</translation>
     </message>
     <message id="gamehq.update.restart_to_apply">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
@@ -4231,12 +4231,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="234"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="206"></location>
       <source>Retry download</source>
-      <translation>Wiederholen Sie den Download</translation>
+      <translation>Download wiederholen</translation>
     </message>
     <message id="gamehq.update.see_whats_new">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="156"></location>
       <source>See what's new</source>
-      <translation>Mal sehen, was neu ist.</translation>
+      <translation>Neuerungen anzeigen</translation>
     </message>
     <message id="gamehq.update.settings">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="728"></location>
@@ -4246,17 +4246,17 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.update.sha256_limit_warning">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="187"></location>
       <source>SHA-256 detects corruption, but not a compromised GitHub account.</source>
-      <translation>SHA-256 erkennt Korruption, aber kein kompromittiertes GitHub-Konto.</translation>
+      <translation>SHA-256 erkennt Datenbeschädigungen, aber kein kompromittiertes GitHub-Konto.</translation>
     </message>
     <message id="gamehq.update.skip_this_version">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="947"></location>
       <source>Skip this version</source>
-      <translation>Überspringen Sie diese Version</translation>
+      <translation>Diese Version überspringen</translation>
     </message>
     <message id="gamehq.update.skip_version">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="738"></location>
       <source>Skip version %1</source>
-      <translation>Überspringen Sie die Version %1</translation>
+      <translation>Version %1 überspringen</translation>
     </message>
     <message id="gamehq.update.status.available">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="116"></location>
@@ -4268,17 +4268,17 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="120"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="75"></location>
       <source>Current</source>
-      <translation>Strom</translation>
+      <translation>Aktuell</translation>
     </message>
     <message id="gamehq.update.status.previous">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="123"></location>
       <source>Previous</source>
-      <translation>Vorheriger</translation>
+      <translation>Vorherig</translation>
     </message>
     <message id="gamehq.update.status.update_available">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="155"></location>
       <source>Update available</source>
-      <translation>Aktualisierung verfügbar</translation>
+      <translation>Update verfügbar</translation>
     </message>
     <message id="gamehq.update.suffix.available">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="48"></location>
@@ -4288,7 +4288,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.update.suffix.current">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="53"></location>
       <source>(Current)</source>
-      <translation>(Jetzt)</translation>
+      <translation>(Aktuell)</translation>
     </message>
     <message id="gamehq.update.up_to_date">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="175"></location>
@@ -4299,12 +4299,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.update.up_to_date_last_checked">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="107"></location>
       <source>Up to date, last checked %1</source>
-      <translation>Aktualisiert, zuletzt geprüft %1</translation>
+      <translation>Aktuell, zuletzt geprüft: %1</translation>
     </message>
     <message id="gamehq.update.version_available">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="43"></location>
       <source>GameHQ %1 is available</source>
-      <translation>GameHQ %1 ist verfügbar</translation>
+      <translation>GameHQ %1 verfügbar</translation>
     </message>
     <message id="gamehq.update.version_available_sentence">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="84"></location>
@@ -4314,12 +4314,12 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.update.versions">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="964"></location>
       <source>VERSIONS</source>
-      <translation>Versionen</translation>
+      <translation>VERSIONEN</translation>
     </message>
     <message id="gamehq.update.view_release_notes">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="228"></location>
       <source>View release notes</source>
-      <translation>Anmerkungen zur Veröffentlichung anzeigen</translation>
+      <translation>Versionshinweise anzeigen</translation>
     </message>
     <message id="gamehq.update.view_update">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="159"></location>
@@ -4329,7 +4329,7 @@ Damit %1 auch für %3 verwendet werden kann, muss GameHQ %2 von Drücken auf Ein
     <message id="gamehq.update.waiting_for_capture">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
       <source>Waiting for capture work to finish safely...</source>
-      <translation>Warten, bis die Arbeit sicher abgeschlossen ist...</translation>
+      <translation>Warten auf den sicheren Abschluss laufender Aufnahmen…</translation>
     </message>
   </context>
 </TS>

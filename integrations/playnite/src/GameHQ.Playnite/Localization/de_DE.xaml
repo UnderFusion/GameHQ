@@ -26,14 +26,14 @@
   <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ erhält den Namen des gerade in Playnite gespielten Spiels, damit Erkennung und Aufnahmeorganisation zuverlässiger sind. Es zeichnet kein Gameplay auf, lädt keine Daten hoch und installiert nichts. GameHQ funktioniert auch ohne Playnite.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationNotConnected">(nicht verbunden)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationGameHQNotFound">GameHQ wurde auf diesem PC nicht gefunden.</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationLocateHint">Installiere GameHQ und verwende dann „GameHQ.exe suchen...“, falls es weiterhin nicht gefunden wird.</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationLocateHint">Installieren Sie GameHQ und verwenden Sie dann „GameHQ.exe suchen...“, falls es weiterhin nicht gefunden wird.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSelectedManually">Manuell ausgewählt</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationDetectedAutomatically">Automatisch erkannt</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationChangeLocation">Speicherort ändern...</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLocateGameHQ">GameHQ.exe suchen...</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationProtocolCompatibleFormat">v{0} (kompatibel)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationUnknown">(unbekannt)</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationNone">(keiner)</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationNone">(nicht vorhanden)</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationInvalidInstallMessage">Dies scheint keine GameHQ-Installation zu sein (daneben wird „app\GameHQ.exe“ erwartet).</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationConfigurationPathMissing">Playnite hat keinen Konfigurationspfad gemeldet.</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationCouldNotOpenFormat">{0} konnte nicht geöffnet werden: {1}</sys:String>

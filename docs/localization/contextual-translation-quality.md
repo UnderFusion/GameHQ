@@ -165,3 +165,31 @@ The locale uses neutral Brazilian Portuguese, concise infinitive actions, `compu
 `arquivo`, and `pasta`, and rejects European forms such as `ficheiro`, `ecrã`, and `ordenador`.
 Protected identifiers, shortcut keys, button names, paths, placeholders, and versions remain
 unchanged.
+
+## German calibration decisions
+
+`i18n/quality/reviews/de-DE.json` records the complete contextual review of the German
+application catalog and auxiliary surfaces. The draft was structurally valid but contained
+literal compounds, conversational fragments, incorrect technical senses, and translated key
+names.
+
+The binding decisions are:
+
+- `Controller` is retained; an input assignment is a `Belegung`, its position is a `Slot`,
+  and input capture is `Controller-Eingabe erfassen`, never media capture.
+- Gesture timing remains explicit: immediate `Press` is `Drücken`, release-based `Tap` is
+  `Kurz drücken`, double and triple tap are `Doppelt drücken` and `Dreifach drücken`, and
+  `Hold` is `Gedrückt halten`; a completed hold prevents the short-press action.
+- `Replay` names the feature, its rolling store is the `Replay-Puffer`, a saved video is a
+  `Clip`, recording is `Aufnahme`, and ordinary playback is `Wiedergabe`.
+- A saved media item is an `Aufnahme`, a screenshot is a `Screenshot`, and a video frame is
+  an `Einzelbild`. `Gallery` is `Galerie`, `Library` is `Bibliothek`, `Overlay` remains
+  `Overlay`, and the system tray is the `Infobereich`.
+- Update security uses `Manifest`, `Prüfsumme`, `Signatur`, `Vorbereitung`, `Transaktion`,
+  `Vertrauensstatus`, and `Laufwerk`; database foreign keys are `Fremdschlüssel`.
+- Portable import uses `portabel`, `vorbereitet`, `Journal`, `Zeichenkette`, `Stammordner`,
+  `Quelle`, and `Instanz`; the `portable:/` scheme remains literal.
+
+German nouns are capitalized, action labels use concise verbs, explanatory text uses neutral
+formal or impersonal phrasing, and compounds are formed naturally. Protected identifiers,
+shortcut keys, button names, paths, placeholders, and versions remain unchanged.
