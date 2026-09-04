@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-pt-br-review",
-    "method": "complete_source_location_context_review",
+    "actor": "codex-gpt-5-contextual-pt-br-recovery",
+    "method": "complete_source_location_context_review_with_targeted_terminology_recovery",
     "draft_provider": "machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T03:19:03Z"
+    "recorded_at": "2026-09-04T03:39:08Z"
   },
   "baseline": {
     "path": "git:e9d53c41d6a1917b02e23da4148d2ee3cb771cd1:i18n/app/gamehq_pt_BR.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_pt_BR.ts",
-    "sha256": "6c103fe709b0691eef73bb07fc10fb486aa84cde9a8980eb5d3297725feed1f1",
+    "sha256": "38ce9e1d591cf30481371b2993ddd0534d68e5275f53aff3df44094fa57cc33b",
     "message_count": 831
   },
   "coverage": [
@@ -2270,7 +2270,7 @@
     {
       "id": "gamehq.error.update.revalidation_not_fresh",
       "source_hash": "5cc46c75c05e5b74f698fecf30ce229194725c4bd872c031664df9967a93baa8",
-      "translation_hash": "7806e547796dad2ebf481466b4cb058f9021d2d6dadc1137a882c9d7f14491fe",
+      "translation_hash": "72149fd37a8853a073f28c2b6ac0c094d21df8ef5f709cbc08039ad0f9ef29af",
       "locations": [
         "src/updates/UpdateService.cpp:253"
       ],
@@ -2540,11 +2540,11 @@
     {
       "id": "gamehq.hdr.status.no_displays",
       "source_hash": "5dfb6924357d38b008cb9e5314f26d229b3a8de9a4494991afea448a020b3858",
-      "translation_hash": "779a7dbea446f195b518e1f31d2795ee19063f2a202a26ccc9148a969cca3bed",
+      "translation_hash": "4d609aa49d44c6fe517935cd8ebecf758da931729d31705395f670cdf7d16afe",
       "locations": [
         "src/ui/AppController.cpp:315"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.hdr.status.not_checked",
@@ -2775,7 +2775,7 @@
     {
       "id": "gamehq.help.gamepad.share_hold_action",
       "source_hash": "b7f393cb8c49a3541a18eeba70f2b3befff58c73dc3ae676e6df043e9292244a",
-      "translation_hash": "baf574ff0e8f80e37852f657201c1f69b02a150e2bbfe1f4a536f8be1969634b",
+      "translation_hash": "086a178400ae4392122846d12c98a257ab6cc43398283cee708e5e4edd422c49",
       "locations": [
         "src/ui/qml/HelpView.qml:175"
       ],
@@ -2793,7 +2793,7 @@
     {
       "id": "gamehq.help.gamepad.share_multi_tap_action",
       "source_hash": "4fab9faeecf0b3a2bbb4dd563bd1fb48cd2949455ead3b610c221a7b629542ef",
-      "translation_hash": "39e5be19c49750a5418b827f7526b2389f832c89da1ce34b33f0a79631aa3c40",
+      "translation_hash": "1574b90125483e3012f95a07c009e43021387f8da6ef68d45d748a6526fcea1a",
       "locations": [
         "src/ui/qml/HelpView.qml:181"
       ],
@@ -2838,7 +2838,7 @@
     {
       "id": "gamehq.help.gamepad.system_share_tap",
       "source_hash": "4ccfa90e94cb8ad888a3928cf048bc1211a8102931ee0cecb5f926cd0a1340dc",
-      "translation_hash": "ba6c678816e42400898aaa56f043e6d7ca895ec79cd6f64d6c685c7afab9a392",
+      "translation_hash": "10a6518ca84d4d2e1c94e8d7eb5c3c6a7a5e51ffa90ad50768b2afb080e5484d",
       "locations": [
         "src/ui/qml/HelpView.qml:167"
       ],
@@ -3277,7 +3277,7 @@
     {
       "id": "gamehq.input.compatibility.convert_press",
       "source_hash": "1efa74b7651bdfc190b75ddebd5a0d9fe62027affde25c79c9c72ce12ca821c8",
-      "translation_hash": "881f6f593798cc55b3ced9deb4bb5623a674cabbcb10104f5dbf69af3f49ccae",
+      "translation_hash": "3c11ea784428c415da64761a93910c05d9992861136bf9f346ddfdd5ba3af43b",
       "locations": [
         "src/input/BindingEditorModel.cpp:482"
       ],
@@ -3286,7 +3286,7 @@
     {
       "id": "gamehq.input.compatibility.convert_press_with_wait",
       "source_hash": "f94a8cac5dbdb662da80333135303809ab4e29dd56bddf5ea5a1b1f13c1f7773",
-      "translation_hash": "1d8b5787e2679a5f7bfa99c217ada5eb7738938ce3bca161a8debb24a8adb5db",
+      "translation_hash": "5f054f41365db64718f95fa61517c8e5698158e49ee2df6528a23fa3cd730efa",
       "locations": [
         "src/input/BindingEditorModel.cpp:474"
       ],
@@ -3331,7 +3331,7 @@
     {
       "id": "gamehq.input.gesture.double_tap",
       "source_hash": "cf0332cd6a24148fba42be7678412c6d692dfb774a0bc6a467e191bdc638a4f1",
-      "translation_hash": "7824d726580a469cea7a05425393b7773436f9ad2dafa538b3573e18e28cf55b",
+      "translation_hash": "6c99c8f28277718a7ada6ee7d23d0d209be2f874f6f4cac25f1de1c7b3661e09",
       "locations": [
         "src/input/BindingPattern.cpp:106",
         "src/ui/qml/components/BindingAssignmentDialog.qml:474"
@@ -3362,7 +3362,7 @@
     {
       "id": "gamehq.input.gesture.tap",
       "source_hash": "48a60d2e2197297571d0d2a8a0d04bc20f162a5aaf243bfeb068b740a107df96",
-      "translation_hash": "cb30a783d57b7f67e9b14006435cb427e8d654b2579d5af05dd7190201bd86c4",
+      "translation_hash": "323777650586a79e69c724c090971fae5d4889ec68c9a05afb1ad6c1cf47da66",
       "locations": [
         "src/input/BindingPattern.cpp:117",
         "src/ui/qml/components/BindingAssignmentDialog.qml:472"
@@ -3372,7 +3372,7 @@
     {
       "id": "gamehq.input.gesture.triple_tap",
       "source_hash": "7321c01862585054f28be951e16d94c50a32513dd3b48a1e9f4acc973ad25e49",
-      "translation_hash": "7aa07408586debe94e78d588009a5fd9b3c43df6884d6cd3534a7ece060cad93",
+      "translation_hash": "3df12a63bbad9fdbb2b8483bb92b7b9508b7d561634e0c53bcbc1ad5e749dc0f",
       "locations": [
         "src/input/BindingPattern.cpp:112",
         "src/ui/qml/components/BindingAssignmentDialog.qml:476"
@@ -3536,7 +3536,7 @@
     {
       "id": "gamehq.input.relation.higher_tap_delay",
       "source_hash": "0a05f06521afe984dd87b21dd494825cdc88b39efc44c801e9be7581cb0899dd",
-      "translation_hash": "a8459ea1efaaa08267f0ecb34ed405e61b50d7238f40d867d06b44692ac76296",
+      "translation_hash": "ff24c48a7d8c2d791f9205b924612d9e5e4f2af88763d4d248718945bb7e7f45",
       "locations": [
         "src/input/BindingRelation.cpp:233"
       ],
@@ -4855,7 +4855,7 @@
     {
       "id": "gamehq.settings.feedback.audio.description",
       "source_hash": "a887866c17ffb29e355a18b49dbc33e249d3a46975b63c37a0b39de1ae37e457",
-      "translation_hash": "94f069dd64efca4390c724ca184192d5833dbe7243fdfc5ff1b42c847696c832",
+      "translation_hash": "2d3cc937742507ef5f34510f7c7cef3d29fb44017446d340f41825535375bdca",
       "locations": [
         "src/ui/qml/settings/FeedbackSettingsPage.qml:47"
       ],
@@ -4954,7 +4954,7 @@
     {
       "id": "gamehq.settings.feedback.preview.label",
       "source_hash": "217f5348b8d9996701f4dadccbdc9b33c5b1cfceec0ba805a9624990b0c5c21b",
-      "translation_hash": "70f2fd2636c6d85f3e1a5e4db180f2607930631bb2b2c1e24a6dcf053381aef2",
+      "translation_hash": "af867a7c83b30aef315e612d4f58b449c76b503cc748db994fee42af51aaa1cf",
       "locations": [
         "src/ui/qml/settings/FeedbackSettingsPage.qml:90"
       ],
@@ -4999,7 +4999,7 @@
     {
       "id": "gamehq.settings.feedback.preview.title",
       "source_hash": "f24ae3192805e36f38cb676855cf75231ab654c12267f571068827d97dca090e",
-      "translation_hash": "2f925baf3d552afc3be6a0114b9f63b49c29a91b6706a3c371c1fffe70d4c2ad",
+      "translation_hash": "6cf75338cfcd69cd848795450d421bd1cf18d0366a35bd1a6b402276f9edc695",
       "locations": [
         "src/ui/qml/settings/FeedbackSettingsPage.qml:84"
       ],
@@ -5514,7 +5514,7 @@
     {
       "id": "gamehq.settings.input.gestures.hold_time_description",
       "source_hash": "7ebeddd897b70a37d07c2965a9cd8dbdcc6b74947a7470a38ef4df7bcbec4b4f",
-      "translation_hash": "04f473cc96966b221d22fc5b88abf67f8817d8ad0a91cb18ab804a2211d68de6",
+      "translation_hash": "9a97f2dd964bd6043b3ffbb5979b0c8e99047e05e8d579ef7cc3a75a30b36ced",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:263"
       ],
@@ -5523,7 +5523,7 @@
     {
       "id": "gamehq.settings.input.gestures.multi_tap",
       "source_hash": "2c0d6dc84e45db6fa48bb5dc18ebd412bebb00a545440fd6ebd03efa4adfab4c",
-      "translation_hash": "03c00b61542f8374ebecc57593e9ad57d973d57e424e143c472252ca7e7d8ed9",
+      "translation_hash": "d71b3ce157be66403e9381e7e8abf5fc6e99eb4d77d513c2aed10995ca5556de",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:280"
       ],
@@ -5532,7 +5532,7 @@
     {
       "id": "gamehq.settings.input.gestures.multi_tap_description",
       "source_hash": "6a1e6379220934e3badf9a27c6eedf4b7d0cff3c3b60201349e2c7fcabfc9470",
-      "translation_hash": "ef48c499fe544341d300abb4ac9e0130fa47c6f8224e07370dc4e088a0fb66a4",
+      "translation_hash": "36cc4773418d5e2bcd00d3dec5a7baeba43ffab7834a2eea0e66f8729f51c1b7",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:282"
       ],
@@ -7462,7 +7462,7 @@
     {
       "id": "gamehq.update.sha256_limit_warning",
       "source_hash": "4edb33bfe4031b77c25b7414970a7ebcb0a79f46607108be23889851f33a49b9",
-      "translation_hash": "3c0ef1e25dddb869517fd2cda5fb76849ee0b4974e4d0e2011c40c949e9814cd",
+      "translation_hash": "26c9d967de3a824cb198de1353c73214d3b4ba3ea65e35eb884a2cd07b722989",
       "locations": [
         "src/ui/qml/settings/AboutSettingsPage.qml:187"
       ],
@@ -9899,10 +9899,10 @@
         "A autorização não pôde ser renovada antes da instalação."
       ],
       "after": [
-        "Não foi possível revalidar novamente a versão antes da instalação."
+        "Não foi possível fazer uma nova revalidação da versão antes da instalação."
       ],
       "category": "update_trust_accuracy",
-      "reason": "The draft weakened or mistranslated update verification, preparation, signature, manifest, filesystem, or release semantics.",
+      "reason": "The recovery removes redundant wording while preserving the requirement for a new pre-installation validation.",
       "terminology_decision": "manifest=manifesto, checksum=soma de verificação, signature=assinatura, staging=preparação, trust state=estado de confiança, and volume=unidade."
     },
     {
@@ -10060,6 +10060,19 @@
       "category": "contextual_naturalness",
       "reason": "The draft was literal, incomplete, grammatically unnatural, or used the wrong Brazilian UI register for this context.",
       "terminology_decision": "Use neutral Brazilian Portuguese, concise UI actions, complete explanations, and protected identifiers unchanged."
+    },
+    {
+      "id": "gamehq.hdr.status.no_displays",
+      "surface": "application",
+      "before": [
+        "Não há exibições relatadas pelo driver gráfico"
+      ],
+      "after": [
+        "O driver gráfico não informou nenhum monitor"
+      ],
+      "category": "hardware_context",
+      "reason": "The accepted draft used an abstract display sense instead of monitor hardware terminology.",
+      "terminology_decision": "A graphics-driver display is a monitor in this HDR hardware status surface."
     },
     {
       "id": "gamehq.help.binding.select_mode",
@@ -10289,11 +10302,11 @@
         "Guarde o clipe de reprodução; a suspensão consome o toque"
       ],
       "after": [
-        "Salvar clipe de replay; manter pressionado consome a pressão breve"
+        "Salvar clipe de replay; manter pressionado impede a ação de pressionamento breve"
       ],
       "category": "controller_input_accuracy",
-      "reason": "The draft confused controls, input detection, assignment positions, or button-gesture timing.",
-      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar, release-based Tap=Pressão breve, Double/Triple Tap=Pressão dupla/tripla, Hold=Manter pressionado."
+      "reason": "The recovery makes controller-button press terminology idiomatic while preserving gesture timing and hold suppression.",
+      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar and activates immediately, release-based Tap=Pressionamento breve, Double/Triple Tap=Pressionamento duplo/triplo, Hold=Manter pressionado, and a completed Hold suppresses Tap."
     },
     {
       "id": "gamehq.help.gamepad.share_multi_tap",
@@ -10315,11 +10328,11 @@
         "Toque duplo/tríplio exato; contagens mais baixas esperam apenas pelo intervalo configurado"
       ],
       "after": [
-        "Pressão dupla ou tripla exata; contagens menores aguardam apenas o intervalo configurado"
+        "Pressionamento duplo ou triplo exato; contagens menores aguardam apenas o intervalo configurado"
       ],
       "category": "controller_input_accuracy",
-      "reason": "The draft confused controls, input detection, assignment positions, or button-gesture timing.",
-      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar, release-based Tap=Pressão breve, Double/Triple Tap=Pressão dupla/tripla, Hold=Manter pressionado."
+      "reason": "The recovery makes controller-button press terminology idiomatic while preserving gesture timing and hold suppression.",
+      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar and activates immediately, release-based Tap=Pressionamento breve, Double/Triple Tap=Pressionamento duplo/triplo, Hold=Manter pressionado, and a completed Hold suppresses Tap."
     },
     {
       "id": "gamehq.help.gamepad.switch_panel",
@@ -10354,11 +10367,11 @@
         "Partilha do sistema (toque)"
       ],
       "after": [
-        "Share do sistema (pressão breve)"
+        "Share do sistema (pressionamento breve)"
       ],
       "category": "controller_input_accuracy",
-      "reason": "The draft confused controls, input detection, assignment positions, or button-gesture timing.",
-      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar, release-based Tap=Pressão breve, Double/Triple Tap=Pressão dupla/tripla, Hold=Manter pressionado."
+      "reason": "The recovery makes controller-button press terminology idiomatic while preserving gesture timing and hold suppression.",
+      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar and activates immediately, release-based Tap=Pressionamento breve, Double/Triple Tap=Pressionamento duplo/triplo, Hold=Manter pressionado, and a completed Hold suppresses Tap."
     },
     {
       "id": "gamehq.help.keyboard.open_overlay",
@@ -10640,11 +10653,11 @@
         "%1 ativa %2 imediatamente quando o botão é pressionado.\n\nPara também usar %1 com %3, o GameHQ precisa mudar %2 de Pressionar para Toque único.\n\n%2 será ativado quando o botão for solto."
       ],
       "after": [
-        "%1 ativa %2 imediatamente quando o botão é pressionado.\n\nPara usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pressão breve.\n\n%2 passará a ser ativado depois que o botão for solto."
+        "%1 ativa %2 imediatamente quando o botão é pressionado.\n\nPara usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pressionamento breve.\n\n%2 passará a ser ativado depois que o botão for solto."
       ],
       "category": "controller_input_accuracy",
-      "reason": "The draft confused controls, input detection, assignment positions, or button-gesture timing.",
-      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar, release-based Tap=Pressão breve, Double/Triple Tap=Pressão dupla/tripla, Hold=Manter pressionado."
+      "reason": "The recovery makes controller-button press terminology idiomatic while preserving gesture timing and hold suppression.",
+      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar and activates immediately, release-based Tap=Pressionamento breve, Double/Triple Tap=Pressionamento duplo/triplo, Hold=Manter pressionado, and a completed Hold suppresses Tap."
     },
     {
       "id": "gamehq.input.compatibility.convert_press_with_wait",
@@ -10653,11 +10666,11 @@
         "%1 ativa %2 imediatamente quando o botão é pressionado.\n\nPara também usar %1 com %3, o GameHQ precisa mudar %2 de Pressionar para Toque único.\n\n%2 será ativado quando o botão for solto e poderá aguardar até %4 ms para descartar a ação %3."
       ],
       "after": [
-        "%1 ativa %2 imediatamente quando o botão é pressionado.\n\nPara usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pressão breve.\n\n%2 passará a ser ativado depois que o botão for solto e poderá aguardar até %4 ms para descartar a ação %3."
+        "%1 ativa %2 imediatamente quando o botão é pressionado.\n\nPara usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pressionamento breve.\n\n%2 passará a ser ativado depois que o botão for solto e poderá aguardar até %4 ms para descartar a ação %3."
       ],
       "category": "controller_input_accuracy",
-      "reason": "The draft confused controls, input detection, assignment positions, or button-gesture timing.",
-      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar, release-based Tap=Pressão breve, Double/Triple Tap=Pressão dupla/tripla, Hold=Manter pressionado."
+      "reason": "The recovery makes controller-button press terminology idiomatic while preserving gesture timing and hold suppression.",
+      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar and activates immediately, release-based Tap=Pressionamento breve, Double/Triple Tap=Pressionamento duplo/triplo, Hold=Manter pressionado, and a completed Hold suppresses Tap."
     },
     {
       "id": "gamehq.input.compatibility.title",
@@ -10692,11 +10705,11 @@
         "Toque duas vezes"
       ],
       "after": [
-        "Pressão dupla"
+        "Pressionamento duplo"
       ],
       "category": "controller_input_accuracy",
-      "reason": "The draft confused controls, input detection, assignment positions, or button-gesture timing.",
-      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar, release-based Tap=Pressão breve, Double/Triple Tap=Pressão dupla/tripla, Hold=Manter pressionado."
+      "reason": "The recovery makes controller-button press terminology idiomatic while preserving gesture timing and hold suppression.",
+      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar and activates immediately, release-based Tap=Pressionamento breve, Double/Triple Tap=Pressionamento duplo/triplo, Hold=Manter pressionado, and a completed Hold suppresses Tap."
     },
     {
       "id": "gamehq.input.gesture.hold",
@@ -10731,11 +10744,11 @@
         "Toque"
       ],
       "after": [
-        "Pressão breve"
+        "Pressionamento breve"
       ],
       "category": "controller_input_accuracy",
-      "reason": "The draft confused controls, input detection, assignment positions, or button-gesture timing.",
-      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar, release-based Tap=Pressão breve, Double/Triple Tap=Pressão dupla/tripla, Hold=Manter pressionado."
+      "reason": "The recovery makes controller-button press terminology idiomatic while preserving gesture timing and hold suppression.",
+      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar and activates immediately, release-based Tap=Pressionamento breve, Double/Triple Tap=Pressionamento duplo/triplo, Hold=Manter pressionado, and a completed Hold suppresses Tap."
     },
     {
       "id": "gamehq.input.gesture.triple_tap",
@@ -10744,11 +10757,11 @@
         "Toque três vezes"
       ],
       "after": [
-        "Pressão tripla"
+        "Pressionamento triplo"
       ],
       "category": "controller_input_accuracy",
-      "reason": "The draft confused controls, input detection, assignment positions, or button-gesture timing.",
-      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar, release-based Tap=Pressão breve, Double/Triple Tap=Pressão dupla/tripla, Hold=Manter pressionado."
+      "reason": "The recovery makes controller-button press terminology idiomatic while preserving gesture timing and hold suppression.",
+      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar and activates immediately, release-based Tap=Pressionamento breve, Double/Triple Tap=Pressionamento duplo/triplo, Hold=Manter pressionado, and a completed Hold suppresses Tap."
     },
     {
       "id": "gamehq.input.model.capture.controller",
@@ -10848,11 +10861,11 @@
         "Esta ação aguarda até %1 ms porque o mesmo botão também tem uma atribuição que exige mais toques."
       ],
       "after": [
-        "Esta ação aguarda até %1 ms porque o mesmo botão também tem uma atribuição que exige mais pressões breves."
+        "Esta ação aguarda até %1 ms porque o mesmo botão também tem uma atribuição que exige mais pressionamentos."
       ],
       "category": "controller_input_accuracy",
-      "reason": "The draft confused controls, input detection, assignment positions, or button-gesture timing.",
-      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar, release-based Tap=Pressão breve, Double/Triple Tap=Pressão dupla/tripla, Hold=Manter pressionado."
+      "reason": "The recovery makes controller-button press terminology idiomatic while preserving gesture timing and hold suppression.",
+      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar and activates immediately, release-based Tap=Pressionamento breve, Double/Triple Tap=Pressionamento duplo/triplo, Hold=Manter pressionado, and a completed Hold suppresses Tap."
     },
     {
       "id": "gamehq.library.folder_dialog.title",
@@ -11628,11 +11641,11 @@
         "Configure o interruptor de som principal, volume e feedback específico do evento."
       ],
       "after": [
-        "Configurar o som geral, o volume e o retorno específico de cada evento."
+        "Configurar o som geral, o volume e o feedback específico de cada evento."
       ],
       "category": "settings_context",
-      "reason": "The draft used European variants, literal compounds, missing clauses, or terminology inconsistent with the actual settings control.",
-      "terminology_decision": "Use Brazilian software vocabulary and translate each label from its setting and control role."
+      "reason": "The Feedback settings surface now uses one deliberate product term consistently.",
+      "terminology_decision": "Use feedback consistently for the named Feedback settings surface."
     },
     {
       "id": "gamehq.settings.feedback.audio.enabled.label",
@@ -11706,11 +11719,11 @@
         "Feedback de visualização"
       ],
       "after": [
-        "Visualizar retorno"
+        "Visualizar feedback"
       ],
       "category": "settings_context",
-      "reason": "The draft used European variants, literal compounds, missing clauses, or terminology inconsistent with the actual settings control.",
-      "terminology_decision": "Use Brazilian software vocabulary and translate each label from its setting and control role."
+      "reason": "The Feedback settings surface now uses one deliberate product term consistently.",
+      "terminology_decision": "Use feedback consistently for the named Feedback settings surface."
     },
     {
       "id": "gamehq.settings.feedback.preview.notification",
@@ -11745,11 +11758,11 @@
         "Teste as configurações de feedback atuais"
       ],
       "after": [
-        "Testar as configurações atuais de retorno"
+        "Testar as configurações atuais de feedback"
       ],
       "category": "settings_context",
-      "reason": "The draft used European variants, literal compounds, missing clauses, or terminology inconsistent with the actual settings control.",
-      "terminology_decision": "Use Brazilian software vocabulary and translate each label from its setting and control role."
+      "reason": "The Feedback settings surface now uses one deliberate product term consistently.",
+      "terminology_decision": "Use feedback consistently for the named Feedback settings surface."
     },
     {
       "id": "gamehq.settings.feedback.visual.description",
@@ -12187,11 +12200,11 @@
         "Quanto tempo deve ser mantido pressionado um botão para uma ação de retenção."
       ],
       "after": [
-        "Por quanto tempo um botão deve ser mantido pressionado para essa ação. Uma ação concluída de manter pressionado consome a pressão breve."
+        "Por quanto tempo um botão deve ser mantido pressionado para essa ação. Quando concluída, ela impede o acionamento por pressionamento breve."
       ],
       "category": "controller_input_accuracy",
-      "reason": "The draft confused controls, input detection, assignment positions, or button-gesture timing.",
-      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar, release-based Tap=Pressão breve, Double/Triple Tap=Pressão dupla/tripla, Hold=Manter pressionado."
+      "reason": "The recovery makes controller-button press terminology idiomatic while preserving gesture timing and hold suppression.",
+      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar and activates immediately, release-based Tap=Pressionamento breve, Double/Triple Tap=Pressionamento duplo/triplo, Hold=Manter pressionado, and a completed Hold suppresses Tap."
     },
     {
       "id": "gamehq.settings.input.gestures.multi_tap",
@@ -12200,11 +12213,11 @@
         "Intervalo de toques múltiplos"
       ],
       "after": [
-        "Intervalo entre pressões múltiplas"
+        "Intervalo entre pressionamentos múltiplos"
       ],
       "category": "controller_input_accuracy",
-      "reason": "The draft confused controls, input detection, assignment positions, or button-gesture timing.",
-      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar, release-based Tap=Pressão breve, Double/Triple Tap=Pressão dupla/tripla, Hold=Manter pressionado."
+      "reason": "The recovery makes controller-button press terminology idiomatic while preserving gesture timing and hold suppression.",
+      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar and activates immediately, release-based Tap=Pressionamento breve, Double/Triple Tap=Pressionamento duplo/triplo, Hold=Manter pressionado, and a completed Hold suppresses Tap."
     },
     {
       "id": "gamehq.settings.input.gestures.multi_tap_description",
@@ -12213,11 +12226,11 @@
         "Quanto tempo espera uma batida única quando o mesmo botão também tem uma batida dupla ou tripla."
       ],
       "after": [
-        "Quanto tempo uma pressão breve aguarda quando o mesmo botão também tem uma pressão dupla ou tripla."
+        "Quanto tempo um pressionamento breve aguarda quando o mesmo botão também tem um pressionamento duplo ou triplo."
       ],
       "category": "controller_input_accuracy",
-      "reason": "The draft confused controls, input detection, assignment positions, or button-gesture timing.",
-      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar, release-based Tap=Pressão breve, Double/Triple Tap=Pressão dupla/tripla, Hold=Manter pressionado."
+      "reason": "The recovery makes controller-button press terminology idiomatic while preserving gesture timing and hold suppression.",
+      "terminology_decision": "controller=controle, assignment=atribuição, slot=posição; Press=Pressionar and activates immediately, release-based Tap=Pressionamento breve, Double/Triple Tap=Pressionamento duplo/triplo, Hold=Manter pressionado, and a completed Hold suppresses Tap."
     },
     {
       "id": "gamehq.settings.input.hidden.eyebrow",
@@ -13773,10 +13786,10 @@
         "SHA-256 detecta corrupção, mas não uma conta GitHub comprometida."
       ],
       "after": [
-        "O SHA-256 detecta corrupção, mas não uma conta do GitHub comprometida."
+        "O SHA-256 detecta corrupção de dados, mas não uma conta do GitHub comprometida."
       ],
       "category": "update_trust_accuracy",
-      "reason": "The draft weakened or mistranslated update verification, preparation, signature, manifest, filesystem, or release semantics.",
+      "reason": "The recovery names data corruption explicitly in this security and integrity warning.",
       "terminology_decision": "manifest=manifesto, checksum=soma de verificação, signature=assinatura, staging=preparação, trust state=estado de confiança, and volume=unidade."
     },
     {
@@ -13927,7 +13940,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_pt_BR.ts",
-      "sha256": "6c103fe709b0691eef73bb07fc10fb486aa84cde9a8980eb5d3297725feed1f1",
+      "sha256": "38ce9e1d591cf30481371b2993ddd0534d68e5275f53aff3df44094fa57cc33b",
       "reviewed_units": 831
     },
     {
@@ -13953,11 +13966,12 @@
     "GameHQ, GameInput, XInput, DualSense, HDR, FPS, Steam, Playnite, GitHub, API names, paths, commands, shortcut keys, placeholders, and version identifiers remain unchanged.",
     "Brazilian Portuguese uses computador, arquivo, pasta, controle, and neutral Brazilian verb forms; European Portuguese variants are rejected.",
     "Input uses atribuição and posição; detection of controller input never uses the media-capture sense.",
-    "Press is immediate Pressionar; release-based Tap is Pressão breve; Double and Triple Tap are Pressão dupla and Pressão tripla; Hold is Manter pressionado.",
+    "Press is immediate Pressionar; release-based Tap is Pressionamento breve; Double and Triple Tap are Pressionamento duplo and Pressionamento triplo; Hold is Manter pressionado and suppresses Tap when completed.",
     "Replay names the feature, buffer contínuo its rolling recording, clipe a saved video, gravação the recording process, and reprodução ordinary playback.",
     "A saved media item is captura, screenshot is captura de tela, frame is quadro, gallery is galeria, library is biblioteca, overlay is sobreposição, and tray is bandeja.",
     "Update security uses manifesto, soma de verificação, assinatura, preparação, transação, estado de confiança, and unidade.",
-    "Portable import uses portátil, preparado, registro, cadeia de caracteres, raiz, origem, instância, banco de dados, and chave estrangeira; portable:/ remains literal."
+    "Portable import uses portátil, preparado, registro, cadeia de caracteres, raiz, origem, instância, banco de dados, and chave estrangeira; portable:/ remains literal.",
+    "Feedback is used consistently on the named Feedback settings surface; monitor denotes HDR display hardware; corrupção de dados denotes integrity loss."
   ],
   "calibration_rules": [
     "Review every stable ID with its English source, location, control role, and neighboring UI; schema validity is not linguistic evidence.",

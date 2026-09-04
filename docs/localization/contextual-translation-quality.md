@@ -148,8 +148,9 @@ The binding decisions are:
 - `controller` is `controle`; an input `assignment` is `atribuição`, its `slot` is `posição`,
   and input capture is `detecção de entrada`, never media capture.
 - Gesture timing stays explicit: immediate `Press` is `Pressionar`, release-based `Tap` is
-  `Pressão breve`, `Double Tap` and `Triple Tap` are `Pressão dupla` and `Pressão tripla`, and
-  `Hold` is `Manter pressionado`.
+  `Pressionamento breve`, `Double Tap` and `Triple Tap` are `Pressionamento duplo` and
+  `Pressionamento triplo`, and `Hold` is `Manter pressionado`; a completed hold suppresses the
+  short-press action.
 - `Replay` names the feature, its rolling buffer is `buffer contínuo`, a saved video is a
   `clipe`, recording is `gravação`, and ordinary playback is `reprodução`.
 - A saved media item is `captura`, a screenshot is `captura de tela`, a frame is `quadro`,

@@ -1286,7 +1286,7 @@
     <message id="gamehq.error.update.revalidation_not_fresh">
       <location filename="src/updates/UpdateService.cpp" line="253"></location>
       <source>The release could not be freshly revalidated before installation.</source>
-      <translation>Não foi possível revalidar novamente a versão antes da instalação.</translation>
+      <translation>Não foi possível fazer uma nova revalidação da versão antes da instalação.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
       <location filename="src/updates/UpdateService.cpp" line="303"></location>
@@ -1451,7 +1451,7 @@ Esta ação não pode ser desfeita.</numerusform>
     <message id="gamehq.hdr.status.no_displays">
       <location filename="src/ui/AppController.cpp" line="315"></location>
       <source>No displays reported by the graphics driver</source>
-      <translation>Não há exibições relatadas pelo driver gráfico</translation>
+      <translation>O driver gráfico não informou nenhum monitor</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
       <location filename="src/ui/AppController.cpp" line="309"></location>
@@ -1584,7 +1584,7 @@ Esta ação não pode ser desfeita.</numerusform>
     <message id="gamehq.help.gamepad.share_hold_action">
       <location filename="src/ui/qml/HelpView.qml" line="175"></location>
       <source>Save replay clip; hold consumes the tap</source>
-      <translation>Salvar clipe de replay; manter pressionado consome a pressão breve</translation>
+      <translation>Salvar clipe de replay; manter pressionado impede a ação de pressionamento breve</translation>
     </message>
     <message id="gamehq.help.gamepad.share_multi_tap">
       <location filename="src/ui/qml/HelpView.qml" line="179"></location>
@@ -1594,7 +1594,7 @@ Esta ação não pode ser desfeita.</numerusform>
     <message id="gamehq.help.gamepad.share_multi_tap_action">
       <location filename="src/ui/qml/HelpView.qml" line="181"></location>
       <source>Exact double/triple tap; lower counts wait only for the configured interval</source>
-      <translation>Pressão dupla ou tripla exata; contagens menores aguardam apenas o intervalo configurado</translation>
+      <translation>Pressionamento duplo ou triplo exato; contagens menores aguardam apenas o intervalo configurado</translation>
     </message>
     <message id="gamehq.help.gamepad.square">
       <location filename="src/ui/qml/HelpView.qml" line="220"></location>
@@ -1619,7 +1619,7 @@ Esta ação não pode ser desfeita.</numerusform>
     <message id="gamehq.help.gamepad.system_share_tap">
       <location filename="src/ui/qml/HelpView.qml" line="167"></location>
       <source>System Share (tap)</source>
-      <translation>Share do sistema (pressão breve)</translation>
+      <translation>Share do sistema (pressionamento breve)</translation>
     </message>
     <message id="gamehq.help.gamepad.triangle">
       <location filename="src/ui/qml/HelpView.qml" line="226"></location>
@@ -1874,7 +1874,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 %2 will then activate after the button is released.</source>
       <translation>%1 ativa %2 imediatamente quando o botão é pressionado.
 
-Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pressão breve.
+Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pressionamento breve.
 
 %2 passará a ser ativado depois que o botão for solto.</translation>
     </message>
@@ -1887,7 +1887,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 %2 will then activate after the button is released and may wait up to %4 ms to rule out the %3 action.</source>
       <translation>%1 ativa %2 imediatamente quando o botão é pressionado.
 
-Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pressão breve.
+Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pressionamento breve.
 
 %2 passará a ser ativado depois que o botão for solto e poderá aguardar até %4 ms para descartar a ação %3.</translation>
     </message>
@@ -1915,7 +1915,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
       <location filename="src/input/BindingPattern.cpp" line="106"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="474"></location>
       <source>Double tap</source>
-      <translation>Pressão dupla</translation>
+      <translation>Pressionamento duplo</translation>
     </message>
     <message id="gamehq.input.gesture.hold">
       <location filename="src/input/BindingPattern.cpp" line="121"></location>
@@ -1934,13 +1934,13 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
       <location filename="src/input/BindingPattern.cpp" line="117"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="472"></location>
       <source>Tap</source>
-      <translation>Pressão breve</translation>
+      <translation>Pressionamento breve</translation>
     </message>
     <message id="gamehq.input.gesture.triple_tap">
       <location filename="src/input/BindingPattern.cpp" line="112"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="476"></location>
       <source>Triple tap</source>
-      <translation>Pressão tripla</translation>
+      <translation>Pressionamento triplo</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
       <location filename="src/input/BindingEditorModel.cpp" line="301"></location>
@@ -2031,7 +2031,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.input.relation.higher_tap_delay">
       <location filename="src/input/BindingRelation.cpp" line="233"></location>
       <source>This action waits up to %1 ms because the same button also has an assignment that needs more taps.</source>
-      <translation>Esta ação aguarda até %1 ms porque o mesmo botão também tem uma atribuição que exige mais pressões breves.</translation>
+      <translation>Esta ação aguarda até %1 ms porque o mesmo botão também tem uma atribuição que exige mais pressionamentos.</translation>
     </message>
     <message id="gamehq.input.relation.redundant">
       <location filename="src/input/BindingEditorModel.cpp" line="589"></location>
@@ -2774,7 +2774,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.settings.feedback.audio.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="47"></location>
       <source>Set the master sound switch, volume, and event-specific feedback.</source>
-      <translation>Configurar o som geral, o volume e o retorno específico de cada evento.</translation>
+      <translation>Configurar o som geral, o volume e o feedback específico de cada evento.</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.enabled.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="53"></location>
@@ -2830,7 +2830,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.settings.feedback.preview.label">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="90"></location>
       <source>Preview feedback</source>
-      <translation>Visualizar retorno</translation>
+      <translation>Visualizar feedback</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
@@ -2855,7 +2855,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.settings.feedback.preview.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="84"></location>
       <source>Test the current feedback settings</source>
-      <translation>Testar as configurações atuais de retorno</translation>
+      <translation>Testar as configurações atuais de feedback</translation>
     </message>
     <message id="gamehq.settings.feedback.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="7"></location>
@@ -3144,17 +3144,17 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.settings.input.gestures.hold_time_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="263"></location>
       <source>How long a button must be held for a hold action. A completed hold consumes the tap.</source>
-      <translation>Por quanto tempo um botão deve ser mantido pressionado para essa ação. Uma ação concluída de manter pressionado consome a pressão breve.</translation>
+      <translation>Por quanto tempo um botão deve ser mantido pressionado para essa ação. Quando concluída, ela impede o acionamento por pressionamento breve.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="280"></location>
       <source>Multi-tap interval</source>
-      <translation>Intervalo entre pressões múltiplas</translation>
+      <translation>Intervalo entre pressionamentos múltiplos</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="282"></location>
       <source>How long a single tap waits when the same button also has a double or triple tap.</source>
-      <translation>Quanto tempo uma pressão breve aguarda quando o mesmo botão também tem uma pressão dupla ou tripla.</translation>
+      <translation>Quanto tempo um pressionamento breve aguarda quando o mesmo botão também tem um pressionamento duplo ou triplo.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.title">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="256"></location>
@@ -4246,7 +4246,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.update.sha256_limit_warning">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="187"></location>
       <source>SHA-256 detects corruption, but not a compromised GitHub account.</source>
-      <translation>O SHA-256 detecta corrupção, mas não uma conta do GitHub comprometida.</translation>
+      <translation>O SHA-256 detecta corrupção de dados, mas não uma conta do GitHub comprometida.</translation>
     </message>
     <message id="gamehq.update.skip_this_version">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="947"></location>
