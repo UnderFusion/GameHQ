@@ -8,7 +8,7 @@
       "source_hash": "4b6a8b64c978ce2d9a00dbfaddcf4cae378508f470c0eed22311c9a8f6c57275",
       "locales": {
         "en-US": "source_reviewed",
-        "zh-Hans": "stale_review_pending",
+        "zh-Hans": "contextually_reviewed",
         "ru-RU": "stale_review_pending",
         "es-ES": "stale_review_pending",
         "pt-BR": "stale_review_pending",

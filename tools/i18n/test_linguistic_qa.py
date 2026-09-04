@@ -15,10 +15,21 @@ import linguistic_qa
 
 
 ROOT = Path(__file__).resolve().parents[2]
-ARTIFACT = ROOT / "i18n/quality/reviews/pl-PL.json"
+REVIEWS = ROOT / "i18n/quality/reviews"
+ARTIFACT = REVIEWS / "pl-PL.json"
 
 
 class LinguisticReviewTest(unittest.TestCase):
+    def test_every_completed_locale_review_validates(self) -> None:
+        artifacts = sorted(REVIEWS.glob("*.json"))
+        self.assertTrue(artifacts)
+        for artifact in artifacts:
+            with self.subTest(artifact=artifact.name):
+                review = linguistic_qa.validate_review(ROOT, artifact)
+                self.assertEqual(artifact.stem, review["locale"])
+                self.assertEqual(831, len(review["coverage"]))
+                self.assertEqual([], review["unresolved"])
+
     def test_polish_review_has_complete_auditable_coverage(self) -> None:
         review = linguistic_qa.validate_review(ROOT, ARTIFACT)
         self.assertEqual(831, len(review["coverage"]))

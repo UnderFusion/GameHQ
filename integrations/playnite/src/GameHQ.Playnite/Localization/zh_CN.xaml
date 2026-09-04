@@ -23,7 +23,7 @@
   <sys:String x:Key="LOCGameHQIntegrationLogHint">插件消息会写入 Playnite 的主日志。</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLastErrorFormat">最近错误：{0}</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationSectionAbout">关于此集成</sys:String>
-  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ 会接收您正在 Playnite 中游玩的游戏名称，从而提高检测和截图整理的可靠性。它不会录制游戏、上传数据或安装任何内容。没有 Playnite 时，GameHQ 仍可正常工作。</sys:String>
+  <sys:String x:Key="LOCGameHQIntegrationAboutDescription">GameHQ 会接收您正在 Playnite 中游玩的游戏名称，从而提高游戏检测和捕获内容整理的可靠性。它不会录制游戏、上传数据或安装任何内容。没有 Playnite 时，GameHQ 仍可正常工作。</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationNotConnected">（未连接）</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationGameHQNotFound">在此电脑上找不到 GameHQ。</sys:String>
   <sys:String x:Key="LOCGameHQIntegrationLocateHint">请安装 GameHQ；如果仍未找到，请使用“查找 GameHQ.exe...”。</sys:String>
