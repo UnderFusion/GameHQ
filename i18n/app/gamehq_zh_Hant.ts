@@ -925,7 +925,7 @@
     <message id="gamehq.error.portable_import.source_changed">
       <location filename="src/config/PortableProfileImporter.cpp" line="1012"></location>
       <source>The portable source changed during import.</source>
-      <translation>可攜式來源在匯入過程中發生了變化。</translation>
+      <translation>可攜式來源在匯入期間已變更。</translation>
     </message>
     <message id="gamehq.error.portable_import.source_destination_overlap">
       <location filename="src/config/PortableProfileImporter.cpp" line="901"></location>
@@ -1189,7 +1189,7 @@
     <message id="gamehq.error.update.install.package_changed">
       <location filename="src/updates/UpdateInstaller.cpp" line="82"></location>
       <source>The update package changed before installation: %1</source>
-      <translation>更新套件在安裝前發生了變化：%1</translation>
+      <translation>更新套件在安裝前已變更：%1</translation>
     </message>
     <message id="gamehq.error.update.install.package_outside_staging">
       <location filename="src/updates/UpdateInstaller.cpp" line="54"></location>

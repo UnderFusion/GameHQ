@@ -84,7 +84,7 @@
     },
     {
       "path": "i18n/quality/reviews/zh-Hant.json",
-      "sha256": "f545ed7003aecdc540a82c27b8ef744d85d68097bdf044e159852e14a5f35880"
+      "sha256": "7a5f5ee42525764a94370ff608485b6b62bb698f1dc680adcad987691c756d0c"
     }
   ],
   "portfolio": {
@@ -709,7 +709,7 @@
     },
     "zh-Hant": {
       "catalog": "i18n/app/gamehq_zh_Hant.ts",
-      "catalog_sha256": "61f225241ec3afe132eb2995dd098b25a51a1377d31817f2e9ee1abb6aabeee8",
+      "catalog_sha256": "e9de49effdfb7b76e20667941d7b9e4fc687fa762e25f04e0b0b5489223e0785",
       "style": {
         "path": "i18n/style/zh-Hant.json",
         "sha256": "808fdddc4f8c4626ff8ff937b3f4b13a1de3f302b45232e04eb1f735928300af"
@@ -755,7 +755,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/zh-Hant.json",
-          "sha256": "f545ed7003aecdc540a82c27b8ef744d85d68097bdf044e159852e14a5f35880"
+          "sha256": "7a5f5ee42525764a94370ff608485b6b62bb698f1dc680adcad987691c756d0c"
         }
       }
     },

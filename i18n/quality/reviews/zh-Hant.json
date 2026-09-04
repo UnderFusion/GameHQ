@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "reviewed Simplified Chinese source converted as a draft, followed by complete Traditional Chinese contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T07:24:37Z"
+    "recorded_at": "2026-09-04T07:45:10Z"
   },
   "baseline": {
     "path": "git:a40b69040da5398245bd7149a5354dd87df21e2d:i18n/app/gamehq_zh_Hant.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_zh_Hant.ts",
-    "sha256": "61f225241ec3afe132eb2995dd098b25a51a1377d31817f2e9ee1abb6aabeee8",
+    "sha256": "e9de49effdfb7b76e20667941d7b9e4fc687fa762e25f04e0b0b5489223e0785",
     "message_count": 831
   },
   "coverage": [
@@ -1639,7 +1639,7 @@
     {
       "id": "gamehq.error.portable_import.source_changed",
       "source_hash": "7c2495b1b8eb0268bafed00c1aee18748872fcaf3cac46aa2867ba40c77ee946",
-      "translation_hash": "4a57a2261a9c080cd1d7711941d863e42bf5de3ea062aa7fcf0b35426c54c5a3",
+      "translation_hash": "09f2a2abe563288dd3c236ee44b989fbdc78632ecdafc3f30f5e39c05da5b62e",
       "locations": [
         "src/config/PortableProfileImporter.cpp:1012"
       ],
@@ -2107,7 +2107,7 @@
     {
       "id": "gamehq.error.update.install.package_changed",
       "source_hash": "cc0c31f3301e77fb8ebd851f96838c8428693af9cdaf1a9882be063c2232f829",
-      "translation_hash": "1dd538bf905b477470ce7b698b4372e78758674ab22cd9a885bb0fe89e4271d1",
+      "translation_hash": "b230a809cc0cf64b69e2f0e3be5cd8aabc9759a848c4f21ee5dda94a4481d9bc",
       "locations": [
         "src/updates/UpdateInstaller.cpp:82"
       ],
@@ -8962,10 +8962,10 @@
       "id": "gamehq.error.portable_import.source_changed",
       "surface": "application",
       "before": "隨機源在進口過程中改變.",
-      "after": "可攜式來源在匯入過程中發生了變化。",
-      "category": "technical_accuracy",
-      "reason": "Uses conventional Traditional Chinese filesystem, database, updater, integrity, and security terminology.",
-      "terminology_decision": "The reviewed wording follows zh-Hant UI usage while retaining the corrected English meaning."
+      "after": "可攜式來源在匯入期間已變更。",
+      "category": "regional_language",
+      "reason": "Uses concise Taiwan software wording for a source or package that changed during a guarded operation.",
+      "terminology_decision": "A changed transactional input uses 已變更 rather than the literal 發生…變化 construction."
     },
     {
       "id": "gamehq.error.portable_import.source_destination_overlap",
@@ -9394,10 +9394,10 @@
       "id": "gamehq.error.update.install.package_changed",
       "surface": "application",
       "before": "更新包在安裝前更改: %1",
-      "after": "更新套件在安裝前發生了變化：%1",
-      "category": "technical_accuracy",
-      "reason": "Uses conventional Traditional Chinese filesystem, database, updater, integrity, and security terminology.",
-      "terminology_decision": "The reviewed wording follows zh-Hant UI usage while retaining the corrected English meaning."
+      "after": "更新套件在安裝前已變更：%1",
+      "category": "regional_language",
+      "reason": "Uses concise Taiwan software wording for a source or package that changed during a guarded operation.",
+      "terminology_decision": "A changed transactional input uses 已變更 rather than the literal 發生…變化 construction."
     },
     {
       "id": "gamehq.error.update.install.package_outside_staging",
@@ -13814,7 +13814,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_zh_Hant.ts",
-      "sha256": "61f225241ec3afe132eb2995dd098b25a51a1377d31817f2e9ee1abb6aabeee8",
+      "sha256": "e9de49effdfb7b76e20667941d7b9e4fc687fa762e25f04e0b0b5489223e0785",
       "reviewed_units": 831
     },
     {

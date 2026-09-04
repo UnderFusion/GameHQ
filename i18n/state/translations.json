@@ -149550,13 +149550,13 @@
         "gamehq.error.portable_import.source_changed": {
           "domain": "application",
           "source_hash": "7c2495b1b8eb0268bafed00c1aee18748872fcaf3cac46aa2867ba40c77ee946",
-          "translation_hash": "4a57a2261a9c080cd1d7711941d863e42bf5de3ea062aa7fcf0b35426c54c5a3",
+          "translation_hash": "09f2a2abe563288dd3c236ee44b989fbdc78632ecdafc3f30f5e39c05da5b62e",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-zh-hant"
           },
-          "updated_at": "2026-09-04T06:45:28Z"
+          "updated_at": "2026-09-04T07:45:10Z"
         },
         "gamehq.error.portable_import.source_destination_overlap": {
           "domain": "application",
@@ -150122,13 +150122,13 @@
         "gamehq.error.update.install.package_changed": {
           "domain": "application",
           "source_hash": "cc0c31f3301e77fb8ebd851f96838c8428693af9cdaf1a9882be063c2232f829",
-          "translation_hash": "1dd538bf905b477470ce7b698b4372e78758674ab22cd9a885bb0fe89e4271d1",
+          "translation_hash": "b230a809cc0cf64b69e2f0e3be5cd8aabc9759a848c4f21ee5dda94a4481d9bc",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "codex-gpt-5-contextual-zh-hant"
           },
-          "updated_at": "2026-09-04T06:45:28Z"
+          "updated_at": "2026-09-04T07:45:10Z"
         },
         "gamehq.error.update.install.package_outside_staging": {
           "domain": "application",
