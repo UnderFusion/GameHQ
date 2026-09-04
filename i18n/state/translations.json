@@ -14323,13 +14323,13 @@
         "gamehq.navigation.category.recent": {
           "domain": "application",
           "source_hash": "891dd17febe97fbe4dca469be030be1a32c4cb836c87b6c88331fd5d2a651860",
-          "translation_hash": "13fdb25035f7b3e8221effedc31e4ab0afac1f1c248c3bc092cbf655739c1037",
+          "translation_hash": "6957b8147a0dc705c639da671e1768bafb46b076b1b09e3f7c644b82b6ca53fb",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-de-de-review"
+            "actor": "codex-gpt-5-contextual-de-de-recovery"
           },
-          "updated_at": "2026-09-04T12:00:00Z"
+          "updated_at": "2026-09-04T13:00:00Z"
         },
         "gamehq.navigation.category.screenshots": {
           "domain": "application",
@@ -18613,13 +18613,13 @@
         "gamehq.update.checking_for_updates": {
           "domain": "application",
           "source_hash": "bf6a02f4f805e3cd2c3af0569eafc9ab3475c009fe681494a79b9732e7773146",
-          "translation_hash": "4ce896bf0d69e497bf91613709a099d9b793b67084e07167e3b097e328b0f465",
+          "translation_hash": "50bbf54ab5717de471c3c1599fc3fc062c3adae9ae259a0ddfba64d5d4531f7e",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-de-de-review"
+            "actor": "codex-gpt-5-contextual-de-de-recovery"
           },
-          "updated_at": "2026-09-04T12:00:00Z"
+          "updated_at": "2026-09-04T13:00:00Z"
         },
         "gamehq.update.checking_for_updates_short": {
           "domain": "application",
@@ -18679,13 +18679,13 @@
         "gamehq.update.downloading_percent": {
           "domain": "application",
           "source_hash": "355465e8f4c785166f0375646d9c6ab63299e6013d6e14d66532211065927e51",
-          "translation_hash": "b99aefd65534817431be9513caab462e54944ea118c0be8757105533bafa3fdf",
+          "translation_hash": "ce145ff6ea061cd2e001f80ed7878f75c27e14ebadc4bf52955630ec7a2af71f",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-de-de-review"
+            "actor": "codex-gpt-5-contextual-de-de-recovery"
           },
-          "updated_at": "2026-09-04T12:00:00Z"
+          "updated_at": "2026-09-04T13:00:00Z"
         },
         "gamehq.update.downloading_version_progress": {
           "domain": "application",
@@ -19020,13 +19020,13 @@
         "gamehq.update.status.previous": {
           "domain": "application",
           "source_hash": "31ec66fa1276c67ab9b36ba0292094a20dd260b57b30ff4854d687115866b2dc",
-          "translation_hash": "d00e212731a4874b122314ceb60f9b157160f293a7f1851c39970486e0f2eb0f",
+          "translation_hash": "bc03d42e18be80315c4c041e42aed84fc3bf99ef8ed75d9348bb1cc8bf836a19",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-de-de-review"
+            "actor": "codex-gpt-5-contextual-de-de-recovery"
           },
-          "updated_at": "2026-09-04T12:00:00Z"
+          "updated_at": "2026-09-04T13:00:00Z"
         },
         "gamehq.update.status.update_available": {
           "domain": "application",

@@ -2090,7 +2090,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <location filename="src/ui/qml/Main.qml" line="155"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="13"></location>
       <source>Recent</source>
-      <translation>Zuletzt verwendet</translation>
+      <translation>Neueste</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
       <location filename="src/ui/qml/Main.qml" line="159"></location>
@@ -4080,7 +4080,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.update.checking_for_updates">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="80"></location>
       <source>Checking for updates...</source>
-      <translation>Nach Updates suchen...</translation>
+      <translation>Suche nach Updates…</translation>
     </message>
     <message id="gamehq.update.checking_for_updates_short">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="152"></location>
@@ -4110,7 +4110,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.update.downloading_percent">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="158"></location>
       <source>Downloading %1%</source>
-      <translation>%1 % wird heruntergeladen</translation>
+      <translation>Wird heruntergeladen: %1 %</translation>
     </message>
     <message id="gamehq.update.downloading_version_progress">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="88"></location>
@@ -4273,7 +4273,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.update.status.previous">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="123"></location>
       <source>Previous</source>
-      <translation>Vorherig</translation>
+      <translation>Vorherige</translation>
     </message>
     <message id="gamehq.update.status.update_available">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="155"></location>

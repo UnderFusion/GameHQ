@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-de-de-review",
+    "actor": "codex-gpt-5-contextual-de-de-recovery",
     "method": "complete_source_location_context_review",
     "draft_provider": "machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T12:00:00Z"
+    "recorded_at": "2026-09-04T13:00:00Z"
   },
   "baseline": {
     "path": "git:c03491fd5ffce2d1ac92b99b27f8b6116fb44fee:i18n/app/gamehq_de_DE.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_de_DE.ts",
-    "sha256": "cb1e6400875646d19b5ce23d27feba4a6f498259926975f2d96a1522da8ec4e2",
+    "sha256": "63e27020419a3442837f274622e9a4337d41ff9d6ecfdd701ee95cac2bd68c1d",
     "message_count": 831
   },
   "coverage": [
@@ -3634,7 +3634,7 @@
     {
       "id": "gamehq.navigation.category.recent",
       "source_hash": "891dd17febe97fbe4dca469be030be1a32c4cb836c87b6c88331fd5d2a651860",
-      "translation_hash": "13fdb25035f7b3e8221effedc31e4ab0afac1f1c248c3bc092cbf655739c1037",
+      "translation_hash": "6957b8147a0dc705c639da671e1768bafb46b076b1b09e3f7c644b82b6ca53fb",
       "locations": [
         "src/ui/qml/Main.qml:155",
         "src/ui/qml/components/OverlaySidebar.qml:13"
@@ -7168,7 +7168,7 @@
     {
       "id": "gamehq.update.checking_for_updates",
       "source_hash": "bf6a02f4f805e3cd2c3af0569eafc9ab3475c009fe681494a79b9732e7773146",
-      "translation_hash": "4ce896bf0d69e497bf91613709a099d9b793b67084e07167e3b097e328b0f465",
+      "translation_hash": "50bbf54ab5717de471c3c1599fc3fc062c3adae9ae259a0ddfba64d5d4531f7e",
       "locations": [
         "src/ui/qml/settings/AboutSettingsPage.qml:80"
       ],
@@ -7222,7 +7222,7 @@
     {
       "id": "gamehq.update.downloading_percent",
       "source_hash": "355465e8f4c785166f0375646d9c6ab63299e6013d6e14d66532211065927e51",
-      "translation_hash": "b99aefd65534817431be9513caab462e54944ea118c0be8757105533bafa3fdf",
+      "translation_hash": "ce145ff6ea061cd2e001f80ed7878f75c27e14ebadc4bf52955630ec7a2af71f",
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:158"
       ],
@@ -7509,7 +7509,7 @@
     {
       "id": "gamehq.update.status.previous",
       "source_hash": "31ec66fa1276c67ab9b36ba0292094a20dd260b57b30ff4854d687115866b2dc",
-      "translation_hash": "d00e212731a4874b122314ceb60f9b157160f293a7f1851c39970486e0f2eb0f",
+      "translation_hash": "bc03d42e18be80315c4c041e42aed84fc3bf99ef8ed75d9348bb1cc8bf836a19",
       "locations": [
         "src/ui/qml/components/AboutWhatsNewDialog.qml:123"
       ],
@@ -11773,11 +11773,11 @@
         "Vor kurzem"
       ],
       "after": [
-        "Zuletzt verwendet"
+        "Neueste"
       ],
       "category": "contextual_naturalness",
-      "reason": "The draft was literal, incomplete, grammatically unnatural, or used the wrong German UI role for this context.",
-      "terminology_decision": "Use concise German actions, natural compounds, correct noun capitalization, and protected identifiers unchanged."
+      "reason": "The gallery filter selects the 50 newest captures, so the prior label incorrectly meant recently used items.",
+      "terminology_decision": "Use Neueste for the newest-captures category alongside Alle, Favoriten, Screenshots, and Clips."
     },
     {
       "id": "gamehq.navigation.category.screenshots",
@@ -15543,11 +15543,11 @@
         "Ich sehe nach Updates."
       ],
       "after": [
-        "Nach Updates suchen..."
+        "Suche nach Updates…"
       ],
       "category": "update_trust_accuracy",
-      "reason": "The draft weakened or mistranslated update verification, preparation, filesystem, signature, manifest, or release semantics.",
-      "terminology_decision": "Use established German security and update terms while preserving the exact trust and recovery contract."
+      "reason": "The previous infinitive phrasing read as a command instead of an in-progress update status.",
+      "terminology_decision": "Use Suche nach Updates… for the active checking state and retain Nach Updates suchen for the action label."
     },
     {
       "id": "gamehq.update.checking_for_updates_short",
@@ -15608,11 +15608,11 @@
         "Herunterladen %1%"
       ],
       "after": [
-        "%1 % wird heruntergeladen"
+        "Wird heruntergeladen: %1 %"
       ],
       "category": "update_trust_accuracy",
-      "reason": "The draft weakened or mistranslated update verification, preparation, filesystem, signature, manifest, or release semantics.",
-      "terminology_decision": "Use established German security and update terms while preserving the exact trust and recovery contract."
+      "reason": "The previous word order made the percentage itself sound like the object being downloaded.",
+      "terminology_decision": "Use a status-first progress construction: Wird heruntergeladen: %1 %."
     },
     {
       "id": "gamehq.update.downloading_version_progress",
@@ -15894,11 +15894,11 @@
         "Vorheriger"
       ],
       "after": [
-        "Vorherig"
+        "Vorherige"
       ],
       "category": "update_trust_accuracy",
-      "reason": "The draft weakened or mistranslated update verification, preparation, filesystem, signature, manifest, or release semantics.",
-      "terminology_decision": "Use established German security and update terms while preserving the exact trust and recovery contract."
+      "reason": "Vorherig is not grammatical as a standalone badge for an earlier release version.",
+      "terminology_decision": "Use the substantivized feminine form Vorherige because the neighboring badge denotes a Version."
     },
     {
       "id": "gamehq.update.status.update_available",
@@ -16074,7 +16074,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_de_DE.ts",
-      "sha256": "cb1e6400875646d19b5ce23d27feba4a6f498259926975f2d96a1522da8ec4e2",
+      "sha256": "63e27020419a3442837f274622e9a4337d41ff9d6ecfdd701ee95cac2bd68c1d",
       "reviewed_units": 831
     },
     {
