@@ -75912,13 +75912,13 @@
         "gamehq.error.portable_import.installed_copy_required": {
           "domain": "application",
           "source_hash": "0dba63208cb43bc28a86511c32a4de853601f1ddbbcef954446521724a3c9e05",
-          "translation_hash": "821eaa117a753ea11efb9a090f10c8552c85a0171a80a84b0be70cd971692d38",
+          "translation_hash": "80807fe644b3a5c19e22be80fb43f21a133fb2aa6889524d77b2cccb01ae30d6",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
-            "actor": "codex-gpt-5-contextual-ko-kr"
+            "actor": "codex-gpt-5-contextual-ko-kr-final-spacing-recovery"
           },
-          "updated_at": "2026-09-04T20:00:00Z"
+          "updated_at": "2026-09-04T21:30:00Z"
         },
         "gamehq.error.portable_import.journal_invalid": {
           "domain": "application",

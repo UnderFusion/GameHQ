@@ -34,6 +34,11 @@ CURRENT_STATUSES = {
     "human_reviewed",
     "intentionally_inherited",
 }
+SEPARATED_KOREAN_PARTICLE = re.compile(
+    r"\b(?:GameHQ|GameInput|GitHub|Playnite|Windows|Steam|XInput|DualSense)\s+"
+    r"(?:에서|으로|은|는|이|가|을|를|에|와|과|로)"
+    r"(?=(?:만|도)?(?:\s|[.,!?…:;)]|$))"
+)
 PROVENANCE_KINDS = {
     "none", "source", "unknown", "machine", "agent", "human", "inherited"
 }
@@ -141,6 +146,8 @@ def translation_hash(forms: list[str]) -> str:
 def validate_translation(label: str, message: dict[str, object], text: str) -> None:
     validate_text(label, text)
     validate_markup(label, text)
+    if label.startswith("ko-KR/") and SEPARATED_KOREAN_PARTICLE.search(text):
+        raise VerificationError(f"{label}: Korean particle is separated from protected name")
     source = str(message["source"])
     if Counter(extraction.PLACEHOLDER.findall(text)) != Counter(
         extraction.PLACEHOLDER.findall(source)

@@ -149,6 +149,16 @@ class VerifyTest(unittest.TestCase):
         verification.validate_translation(
             "ko-KR/gamehq.fixture.korean_particle", message, "GameHQ가 시작됩니다."
         )
+        verification.validate_translation(
+            "ko-KR/gamehq.fixture.korean_particle", message, "GameHQ에서만 시작됩니다."
+        )
+        with self.assertRaisesRegex(
+            verification.VerificationError, "Korean particle is separated"
+        ):
+            verification.validate_translation(
+                "ko-KR/gamehq.fixture.korean_particle", message,
+                "설치된 GameHQ 에서만 시작됩니다."
+            )
 
     def test_qml_conjunction_ampersand_is_not_treated_as_a_mnemonic(self) -> None:
         message = {

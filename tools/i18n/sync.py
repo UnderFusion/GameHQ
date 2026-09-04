@@ -161,7 +161,10 @@ def protected_tokens(source: str) -> list[str]:
     # Korean grammatical particles attach directly to Latin-script names. Treat
     # that attachment as a valid right boundary so GameHQ가/GameHQ에서 preserve
     # the protected product token without forcing incorrect visible spacing.
-    korean_particle = r"(?:에서|으로|은|는|이|가|을|를|에|와|과|로)(?=\s|[.,!?…:;)]|$)"
+    korean_particle = (
+        r"(?:에서|으로|은|는|이|가|을|를|에|와|과|로)(?:만|도)?"
+        r"(?=\s|[.,!?…:;)]|$)"
+    )
     for literal in PROTECTED_LITERALS:
         bounded = re.compile(
             rf"(?<![\w]){re.escape(literal)}(?:(?![\w])|(?={korean_particle}))"

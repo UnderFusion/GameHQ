@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-ko-kr-recovery",
+    "actor": "codex-gpt-5-contextual-ko-kr-final-spacing-recovery",
     "method": "complete_source_location_context_review",
     "draft_provider": "offline machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T21:00:00Z"
+    "recorded_at": "2026-09-04T21:30:00Z"
   },
   "baseline": {
     "path": "git:0f1362ce8b13fb1594079b0a7896c554f3886aa4:i18n/app/gamehq_ko_KR.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_ko_KR.ts",
-    "sha256": "61c08e50cbf7b94b486347e1027ff54a4de40e98366fbe0e6b24090e56e39cef",
+    "sha256": "3aef2d0729197bd45bf28527f6ae2f5c042d2335d515d02a2b4112c9cbd07065",
     "message_count": 831
   },
   "coverage": [
@@ -1450,7 +1450,7 @@
     {
       "id": "gamehq.error.portable_import.installed_copy_required",
       "source_hash": "0dba63208cb43bc28a86511c32a4de853601f1ddbbcef954446521724a3c9e05",
-      "translation_hash": "821eaa117a753ea11efb9a090f10c8552c85a0171a80a84b0be70cd971692d38",
+      "translation_hash": "80807fe644b3a5c19e22be80fb43f21a133fb2aa6889524d77b2cccb01ae30d6",
       "locations": [
         "src/ui/AppController.cpp:194"
       ],
@@ -8710,10 +8710,10 @@
       "id": "gamehq.error.portable_import.installed_copy_required",
       "surface": "application",
       "before": "휴대용 프로파일은 설치된 GameHQ- 그래",
-      "after": "포터블 프로필은 설치된 GameHQ 에서만 가져올 수 있습니다.",
-      "category": "technical_accuracy",
-      "reason": "Uses conventional Korean filesystem, database, updater, integrity, and security terminology.",
-      "terminology_decision": "Technical operations and failures retain their precise product meaning."
+      "after": "포터블 프로필은 설치된 GameHQ에서만 가져올 수 있습니다.",
+      "category": "bounded_korean_spacing_recovery",
+      "reason": "Attaches the Korean locative particle directly to the protected product name.",
+      "terminology_decision": "GameHQ에서만 is grammatical; GameHQ 에서만 is rejected by the focused validator."
     },
     {
       "id": "gamehq.error.portable_import.journal_invalid",
@@ -13562,7 +13562,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_ko_KR.ts",
-      "sha256": "61c08e50cbf7b94b486347e1027ff54a4de40e98366fbe0e6b24090e56e39cef",
+      "sha256": "3aef2d0729197bd45bf28527f6ae2f5c042d2335d515d02a2b4112c9cbd07065",
       "reviewed_units": 831
     },
     {

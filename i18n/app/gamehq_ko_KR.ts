@@ -819,7 +819,7 @@
     <message id="gamehq.error.portable_import.installed_copy_required">
       <location filename="src/ui/AppController.cpp" line="194"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
-      <translation>포터블 프로필은 설치된 GameHQ 에서만 가져올 수 있습니다.</translation>
+      <translation>포터블 프로필은 설치된 GameHQ에서만 가져올 수 있습니다.</translation>
     </message>
     <message id="gamehq.error.portable_import.journal_invalid">
       <location filename="src/config/PortableProfileImporter.cpp" line="263"></location>
