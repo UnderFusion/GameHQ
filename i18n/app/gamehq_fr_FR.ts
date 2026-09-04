@@ -591,7 +591,7 @@
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="293"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="312"></location>
       <source>%1 ms (relaxed)</source>
-      <translation>%1 ms (détendu)</translation>
+      <translation>%1 ms (souple)</translation>
     </message>
     <message id="gamehq.duration.minutes" numerus="yes">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="59"></location>
@@ -1563,7 +1563,7 @@ Cette action est irréversible.</numerusform></translation>
     <message id="gamehq.help.gamepad.share_multi_tap_action">
       <location filename="src/ui/qml/HelpView.qml" line="181"></location>
       <source>Exact double/triple tap; lower counts wait only for the configured interval</source>
-      <translation>Double ou triple appui exact ; un nombre inférieur attend uniquement l’intervalle configuré</translation>
+      <translation>Double ou triple appui exact ; les séquences comportant moins d’appuis n’attendent que l’intervalle configuré</translation>
     </message>
     <message id="gamehq.help.gamepad.square">
       <location filename="src/ui/qml/HelpView.qml" line="220"></location>
@@ -1988,7 +1988,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.input.relation.chord_start_delay">
       <location filename="src/input/BindingRelation.cpp" line="240"></location>
       <source>This action waits up to %1 ms because this button starts a combination.</source>
-      <translation>Cette action attend jusqu’à %1 ms, car ce bouton commence une combinaison.</translation>
+      <translation>Cette action attend jusqu’à %1 ms, car ce bouton est le premier d’une combinaison.</translation>
     </message>
     <message id="gamehq.input.relation.context_override">
       <location filename="src/input/BindingEditorModel.cpp" line="580"></location>
@@ -2756,7 +2756,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.settings.feedback.audio.replay">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="74"></location>
       <source>Replay saved sound</source>
-      <translation>Son de replay enregistré</translation>
+      <translation>Son lors de l’enregistrement d’un replay</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.screenshot">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
@@ -3053,7 +3053,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.settings.input.devices.keyboard_description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="37"></location>
       <source>Focused shortcuts and global key combinations</source>
-      <translation>Raccourcis avec focus et combinaisons de touches globales</translation>
+      <translation>Raccourcis actifs lorsque l’application a le focus et combinaisons de touches globales</translation>
     </message>
     <message id="gamehq.settings.input.devices.mouse">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="50"></location>
@@ -3168,7 +3168,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.settings.input.modern.legacy_fallback">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="620"></location>
       <source>Legacy fallback</source>
-      <translation>Mode de secours hérité</translation>
+      <translation>Mode de repli pour les manettes héritées</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="588"></location>
@@ -3198,12 +3198,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.settings.input.modern.runtime">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="614"></location>
       <source>GameInput runtime</source>
-      <translation>Environnement GameInput</translation>
+      <translation>Environnement d’exécution GameInput</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="581"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
-      <translation>Le mode Auto utilise l’environnement GameInput fourni, avec un mode de secours hérité sûr ; Désactivé désactive GameInput.</translation>
+      <translation>Le mode Auto utilise l’environnement d’exécution GameInput fourni, avec un mode de repli sûr pour les manettes héritées ; Désactivé désactive GameInput.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="579"></location>

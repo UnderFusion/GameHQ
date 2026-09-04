@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-fr-fr",
+    "actor": "codex-gpt-5-contextual-fr-fr-recovery",
     "method": "complete_source_location_context_review",
     "draft_provider": "offline machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T16:30:00Z"
+    "recorded_at": "2026-09-04T17:30:00Z"
   },
   "baseline": {
     "path": "git:1fc034eb69a417a6ee6e9cc20f5892dd7a9e0e5c:i18n/app/gamehq_fr_FR.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_fr_FR.ts",
-    "sha256": "afeceb7ebd2d68479360cb6ebcf0aaef3950c30ede42b22d836ad582dbea99a4",
+    "sha256": "01369695b20b085d59b20613e471d679777977279719be1b28e49fe7d25df196",
     "message_count": 831
   },
   "coverage": [
@@ -1051,7 +1051,7 @@
     {
       "id": "gamehq.duration.milliseconds.relaxed",
       "source_hash": "cb44226967f783a144a3951c6bc1464bfacf215f927dd1c3f83cc21f61e39451",
-      "translation_hash": "a6df587da792e12823ab7cc4b89086951c91f80941024d9cf68eba8965cf81d3",
+      "translation_hash": "e6e237f306418fd664d6b065cd6828d49936a43abfa9fdc2866d4e562ed9ff44",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:293",
         "src/ui/qml/settings/InputSettingsPage.qml:312"
@@ -2775,7 +2775,7 @@
     {
       "id": "gamehq.help.gamepad.share_multi_tap_action",
       "source_hash": "4fab9faeecf0b3a2bbb4dd563bd1fb48cd2949455ead3b610c221a7b629542ef",
-      "translation_hash": "d3ebe368a117daaa9ee5b409f19733146d853e4b716a8a26b3cae5d17690d858",
+      "translation_hash": "2769d4a9aecf5dafcf86128965031da9dec2863f0e5cc5f38d3f855f096a4eaf",
       "locations": [
         "src/ui/qml/HelpView.qml:181"
       ],
@@ -3500,11 +3500,11 @@
     {
       "id": "gamehq.input.relation.chord_start_delay",
       "source_hash": "2a8592a0f4be84a854ed262449009ae711a6c98d7ac4865449436db763552e52",
-      "translation_hash": "29435e4e6a539b1efccf2b078052a4ed00549639c64402a016a4821e5bbb57f1",
+      "translation_hash": "e864610bafc7ee4f2462be59696c2e4e4ae124dea505e2bf5a2e941e60d5af3e",
       "locations": [
         "src/input/BindingRelation.cpp:240"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.input.relation.context_override",
@@ -4864,7 +4864,7 @@
     {
       "id": "gamehq.settings.feedback.audio.replay",
       "source_hash": "4cdff5043b7ae537b1f1332ef3932d9eecd95b4eb3689760ceef74eda27c8671",
-      "translation_hash": "20571a06f97c490feb0e6556388bdc6c0bbfab6daebed938602f03cd4f36fd6a",
+      "translation_hash": "9a1ba264d9f706b408394541ac3b7921d6e97304c7a39a4c2aaa8532dd94d58d",
       "locations": [
         "src/ui/qml/settings/FeedbackSettingsPage.qml:74"
       ],
@@ -5397,7 +5397,7 @@
     {
       "id": "gamehq.settings.input.devices.keyboard_description",
       "source_hash": "68d17d93600a55aebdb1cd52da820936e5f3ea78e4f97dc002465f9691be59bd",
-      "translation_hash": "afbf0398f328d6546d879b83e60f304d04173b768f17a8b700b76ca0623ba0a1",
+      "translation_hash": "b72836c605321abe4be6122803b02f7aead706e9c90bf33911c770f6ea874cd4",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:37"
       ],
@@ -5604,7 +5604,7 @@
     {
       "id": "gamehq.settings.input.modern.legacy_fallback",
       "source_hash": "1a191a4675093d1376be17e4650a32df7dce5d61ff893d817ddb39061ee6e43d",
-      "translation_hash": "fc6b6b14c833521f0f2bcb2ad839a3606b6e1fc25d622f5c9932a42b2b4eb63d",
+      "translation_hash": "8eb96e8261005fe2c5f4e60ae1fe71327dab48679819f42e0b5fe506e5b82cab",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:620"
       ],
@@ -5658,7 +5658,7 @@
     {
       "id": "gamehq.settings.input.modern.runtime",
       "source_hash": "fe08b9b879e4369caa8d96f54faebf03c94201a80369d3b2e2ff25030aada8c7",
-      "translation_hash": "8ad1dd15c61b1a551cc630cd672db1fa3ecb930061512a5d938fe08d5889bcbd",
+      "translation_hash": "d8d1d171e5c8a347fe7f83b41fcaaec753f1e6f52ef93d236d0e190d0edcbe27",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:614"
       ],
@@ -5667,7 +5667,7 @@
     {
       "id": "gamehq.settings.input.modern.support.description",
       "source_hash": "15875e6a1d3400e930c324c83acb0cdacb3658f24f6690a031002d08f01a2fce",
-      "translation_hash": "359ea645487113d2e9a1b76bc80afff62db312d1bb1bc2c2861b661d8c6c50b5",
+      "translation_hash": "7680d8fbd9bcf69d41ad90a99ba6885bb893266dc9d6d4c63f799a38a51e7191",
       "locations": [
         "src/ui/qml/settings/InputSettingsPage.qml:581"
       ],
@@ -8458,10 +8458,10 @@
       "id": "gamehq.duration.milliseconds.relaxed",
       "surface": "application",
       "before": "%1 ms (relaxée)",
-      "after": "%1 ms (détendu)",
-      "category": "natural_ui_french",
-      "reason": "Replaces literal or fragmentary draft text with natural metropolitan French for the UI role.",
-      "terminology_decision": "Controls use concise infinitives and explanatory text uses neutral idiomatic French."
+      "after": "%1 ms (souple)",
+      "category": "bounded_context_recovery",
+      "reason": "Resolves the independent contextual review finding with precise, idiomatic French.",
+      "terminology_decision": "A relaxed timing preset is souple, not the person-state adjective détendu."
     },
     {
       "id": "gamehq.error.capture_location.create_failed",
@@ -9934,10 +9934,10 @@
       "id": "gamehq.help.gamepad.share_multi_tap_action",
       "surface": "application",
       "before": "Appuyez exactement deux fois ou trois fois; les compteurs inférieurs n'attendent que l'intervalle configuré",
-      "after": "Double ou triple appui exact ; un nombre inférieur attend uniquement l’intervalle configuré",
-      "category": "natural_ui_french",
-      "reason": "Replaces literal or fragmentary draft text with natural metropolitan French for the UI role.",
-      "terminology_decision": "Controls use concise infinitives and explanatory text uses neutral idiomatic French."
+      "after": "Double ou triple appui exact ; les séquences comportant moins d’appuis n’attendent que l’intervalle configuré",
+      "category": "bounded_context_recovery",
+      "reason": "Resolves the independent contextual review finding with precise, idiomatic French.",
+      "terminology_decision": "The French wording names the actual UI event or input relationship without literal English syntax."
     },
     {
       "id": "gamehq.help.gamepad.square_action",
@@ -11446,10 +11446,10 @@
       "id": "gamehq.settings.feedback.audio.replay",
       "surface": "application",
       "before": "Reprise du son enregistré",
-      "after": "Son de replay enregistré",
-      "category": "product_concept",
-      "reason": "Distinguishes capture, replay, saved media, gallery, library, and overlay concepts in context.",
-      "terminology_decision": "French media terminology follows the actual product surface rather than isolated English words."
+      "after": "Son lors de l’enregistrement d’un replay",
+      "category": "bounded_context_recovery",
+      "reason": "Resolves the independent contextual review finding with precise, idiomatic French.",
+      "terminology_decision": "The French wording names the actual UI event or input relationship without literal English syntax."
     },
     {
       "id": "gamehq.settings.feedback.audio.screenshot",
@@ -11905,10 +11905,10 @@
       "id": "gamehq.settings.input.devices.keyboard_description",
       "surface": "application",
       "before": "Des raccourcis ciblés et des combinaisons de touches globales",
-      "after": "Raccourcis avec focus et combinaisons de touches globales",
-      "category": "controller_input_semantics",
-      "reason": "Uses natural French input terminology while preserving controller gesture timing and UI behavior.",
-      "terminology_decision": "Manette input, affectation, and Appui/Appui bref/Appui long remain technically distinct."
+      "after": "Raccourcis actifs lorsque l’application a le focus et combinaisons de touches globales",
+      "category": "bounded_context_recovery",
+      "reason": "Resolves the independent contextual review finding with precise, idiomatic French.",
+      "terminology_decision": "The French wording names the actual UI event or input relationship without literal English syntax."
     },
     {
       "id": "gamehq.settings.input.devices.mouse_description",
@@ -12094,10 +12094,10 @@
       "id": "gamehq.settings.input.modern.legacy_fallback",
       "surface": "application",
       "before": "Retour en arrière",
-      "after": "Mode de secours hérité",
-      "category": "controller_input_semantics",
-      "reason": "Uses natural French input terminology while preserving controller gesture timing and UI behavior.",
-      "terminology_decision": "Manette input, affectation, and Appui/Appui bref/Appui long remain technically distinct."
+      "after": "Mode de repli pour les manettes héritées",
+      "category": "bounded_context_recovery",
+      "reason": "Resolves the independent contextual review finding with precise, idiomatic French.",
+      "terminology_decision": "GameInput runtime is an environnement d’exécution; legacy fallback is a safe mode de repli for legacy controllers."
     },
     {
       "id": "gamehq.settings.input.modern.off",
@@ -12148,19 +12148,19 @@
       "id": "gamehq.settings.input.modern.runtime",
       "surface": "application",
       "before": "Le jeu est en cours d'exécution",
-      "after": "Environnement GameInput",
-      "category": "controller_input_semantics",
-      "reason": "Uses natural French input terminology while preserving controller gesture timing and UI behavior.",
-      "terminology_decision": "Manette input, affectation, and Appui/Appui bref/Appui long remain technically distinct."
+      "after": "Environnement d’exécution GameInput",
+      "category": "bounded_context_recovery",
+      "reason": "Resolves the independent contextual review finding with precise, idiomatic French.",
+      "terminology_decision": "GameInput runtime is an environnement d’exécution; legacy fallback is a safe mode de repli for legacy controllers."
     },
     {
       "id": "gamehq.settings.input.modern.support.description",
       "surface": "application",
       "before": "L'Auto utilise l'application GameInput locale avec une sauvegarde sécurisée des services hérités; désactivé ne garde que les fournisseurs hérités.",
-      "after": "Le mode Auto utilise l’environnement GameInput fourni, avec un mode de secours hérité sûr ; Désactivé désactive GameInput.",
-      "category": "controller_input_semantics",
-      "reason": "Uses natural French input terminology while preserving controller gesture timing and UI behavior.",
-      "terminology_decision": "Manette input, affectation, and Appui/Appui bref/Appui long remain technically distinct."
+      "after": "Le mode Auto utilise l’environnement d’exécution GameInput fourni, avec un mode de repli sûr pour les manettes héritées ; Désactivé désactive GameInput.",
+      "category": "bounded_context_recovery",
+      "reason": "Resolves the independent contextual review finding with precise, idiomatic French.",
+      "terminology_decision": "GameInput runtime is an environnement d’exécution; legacy fallback is a safe mode de repli for legacy controllers."
     },
     {
       "id": "gamehq.settings.input.modern.support.label",
@@ -13538,13 +13538,22 @@
       "category": "source_alignment",
       "reason": "Reflects the corrected sixteen-language release state without naming a superseded locale set.",
       "terminology_decision": "Translated coverage remains distinct from pending contextual acceptance."
+    },
+    {
+      "id": "gamehq.input.relation.chord_start_delay",
+      "surface": "application",
+      "before": "Cette action attend jusqu’à %1 ms, car ce bouton commence une combinaison.",
+      "after": "Cette action attend jusqu’à %1 ms, car ce bouton est le premier d’une combinaison.",
+      "category": "bounded_context_recovery",
+      "reason": "Resolves the independent contextual review finding with precise, idiomatic French.",
+      "terminology_decision": "The French wording names the actual UI event or input relationship without literal English syntax."
     }
   ],
   "surfaces": [
     {
       "surface": "application",
       "path": "i18n/app/gamehq_fr_FR.ts",
-      "sha256": "afeceb7ebd2d68479360cb6ebcf0aaef3950c30ede42b22d836ad582dbea99a4",
+      "sha256": "01369695b20b085d59b20613e471d679777977279719be1b28e49fe7d25df196",
       "reviewed_units": 831
     },
     {
