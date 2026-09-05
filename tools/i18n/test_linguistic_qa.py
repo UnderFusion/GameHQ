@@ -20,6 +20,16 @@ ARTIFACT = REVIEWS / "pl-PL.json"
 
 
 class LinguisticReviewTest(unittest.TestCase):
+    def test_reviewed_surfaces_use_repository_lf_bytes(self) -> None:
+        # Evidence hashes must survive Git's LF checkout normalization.
+        # CRLF or mixed local files previously passed locally but failed CI.
+        for artifact in sorted(REVIEWS.glob("*.json")):
+            review = json.loads(artifact.read_text(encoding="utf-8"))
+            for surface in review["surfaces"]:
+                with self.subTest(locale=artifact.stem, path=surface["path"]):
+                    payload = (ROOT / surface["path"]).read_bytes()
+                    self.assertNotIn(b"\r", payload)
+
     def test_every_completed_locale_review_validates(self) -> None:
         artifacts = sorted(REVIEWS.glob("*.json"))
         self.assertTrue(artifacts)

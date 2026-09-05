@@ -15265,13 +15265,13 @@
     {
       "surface": "playnite",
       "path": "integrations/playnite/src/GameHQ.Playnite/Localization/zh_CN.xaml",
-      "sha256": "e99e6ed5890fefbb3dfcc1b1843638a7b703fbd01c2ab9910b1e8d375c09092a",
+      "sha256": "a9c4e1ce4fe7303cb1f7644841c081e2dddf6378cc8081b4aa565f7b5456ead7",
       "reviewed_units": 52
     },
     {
       "surface": "release_notes",
       "path": "assets/release-notes/versions/0.7.7/zh-Hans.json",
-      "sha256": "e13b75a038066939684a51888338be3a7c172eeced6bde0ed7069592d8f83064",
+      "sha256": "a2b71359372e1dfe68bd4e2151621419307be18fb460dee40f3f8e32bb64df08",
       "reviewed_units": 10
     }
   ],

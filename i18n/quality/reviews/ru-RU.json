@@ -14558,13 +14558,13 @@
     {
       "surface": "playnite",
       "path": "integrations/playnite/src/GameHQ.Playnite/Localization/ru_RU.xaml",
-      "sha256": "8e47e75d59258019c38dff1cc6ec2961d2b65869aff1979dad0d2162d8fa6dca",
+      "sha256": "833be15b7d69478ae8a76fd6190e1cf766170b63533637d2a1487a422ea7d066",
       "reviewed_units": 52
     },
     {
       "surface": "release_notes",
       "path": "assets/release-notes/versions/0.7.7/ru-RU.json",
-      "sha256": "f5f35bd82a528c57c2239b5a941bd0bf3854cc07e1fcb183e77ef06079ef5559",
+      "sha256": "ca2c81216d7c1598281b1cbe472169868ca45eff674bc1dcd2ce7c752f6fab94",
       "reviewed_units": 10
     }
   ],
