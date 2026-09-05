@@ -18,11 +18,15 @@ Rectangle {
     readonly property real gameIconSize: Theme.s12 * 1.2
     property bool active: false
     property bool sidebarHovered: false
+    // Rows that carry their own accent (Support) override these; the defaults
+    // keep every navigation row on the standard muted/active palette.
+    property color labelColor: active ? Theme.text : Theme.textMuted
+    property color glyphColor: active ? Theme.accent : Theme.textMuted
+    readonly property alias hovered: mouse.containsMouse
     signal clicked()
 
     implicitWidth: 200
-    implicitHeight: 40
-    width: parent ? parent.width : implicitWidth
+    implicitHeight: Theme.s32
     height: implicitHeight
     radius: Theme.radiusS
     color: active || sidebarHovered ? Theme.surfaceAlt
@@ -50,9 +54,9 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.leftMargin: Theme.s16
-        anchors.rightMargin: Theme.s16
-        spacing: Theme.s12
+        anchors.leftMargin: Theme.s8
+        anchors.rightMargin: Theme.s8
+        spacing: Theme.s8
 
         Rectangle {
             id: gameIconFrame
@@ -100,19 +104,24 @@ Rectangle {
             Text {
                 anchors.centerIn: parent
                 text: root.glyph
-                color: root.active ? Theme.accent : Theme.textMuted
+                color: root.glyphColor
                 font.pixelSize: Theme.fontBody
             }
         }
         Text {
+            id: labelText
             text: root.label
-            width: Math.max(0, contentRow.width
-                            - (root.iconSource !== "" ? root.gameIconSize + contentRow.spacing
-                               : root.glyph !== "" ? Theme.s24 + contentRow.spacing
-                               : 0)
-                            - (trailing.visible ? trailing.implicitWidth + contentRow.spacing : 0))
+            readonly property real leadingWidth: root.iconSource !== ""
+                                                 ? root.gameIconSize + contentRow.spacing
+                                                 : root.glyph !== ""
+                                                   ? Theme.s24 + contentRow.spacing
+                                                   : 0
+            readonly property real trailingWidth: trailing.visible
+                                                  ? trailing.implicitWidth + contentRow.spacing
+                                                  : 0
+            width: Math.max(0, contentRow.width - leadingWidth - trailingWidth)
             elide: Text.ElideRight
-            color: root.active ? Theme.text : Theme.textMuted
+            color: root.labelColor
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontBody
             anchors.verticalCenter: parent.verticalCenter

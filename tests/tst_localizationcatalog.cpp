@@ -306,6 +306,11 @@ void LocalizationCatalogTest::languageSelectorUsesRegistryAndAtomicManagerPath()
     QVERIFY(comboSource.contains(QStringLiteral("signal valueCommitted(var value)")));
     QVERIFY(comboSource.contains(QStringLiteral("onOptionsChanged: refresh()")));
     QVERIFY(comboSource.contains(QStringLiteral("onDefaultValueChanged: refresh()")));
+    const qsizetype closeIndex = comboSource.indexOf(QStringLiteral("popup.close()"));
+    const qsizetype emitIndex = comboSource.indexOf(QStringLiteral("valueCommitted(options[index].value)"));
+    QVERIFY(closeIndex >= 0 && emitIndex > closeIndex);
+    QVERIFY(comboSource.contains(QStringLiteral("checked: combo.currentIndex === index")));
+    QVERIFY(comboSource.contains(QStringLiteral("text: \"\\u2713\"")));
 }
 
 void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndTranslated()
@@ -356,8 +361,9 @@ void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
 {
     const QSet<QString> ids = translationIdsIn(p4OneSourceFiles());
     // Main.qml and SettingsView.qml also contribute feature/dialog IDs owned
-    // by adjacent localization units to this shared source-file set.
-    QCOMPARE(ids.size(), 219);
+    // by adjacent localization units to this shared source-file set, and the
+    // sidebar's Tools heading reuses the Advanced diagnostics title.
+    QCOMPARE(ids.size(), 220);
     for (const QString &catalogName : translatedCatalogs()) {
         QString error;
         const auto catalog = readTsCatalog(
@@ -629,24 +635,73 @@ void LocalizationCatalogTest::sidebarFooterStringsAndExternalLinkAreReleaseReady
 
     QFile sidebar(QStringLiteral(GAMEHQ_SOURCE_DIR
                                  "/src/ui/qml/components/DesktopSidebar.qml"));
+    QFile sidebarItem(QStringLiteral(GAMEHQ_SOURCE_DIR
+                                     "/src/ui/qml/components/SidebarItem.qml"));
     QFile brand(QStringLiteral(GAMEHQ_SOURCE_DIR "/src/ui/qml/Brand.qml"));
     QVERIFY(sidebar.open(QIODevice::ReadOnly));
+    QVERIFY(sidebarItem.open(QIODevice::ReadOnly));
     QVERIFY(brand.open(QIODevice::ReadOnly));
     const QString sidebarSource = QString::fromUtf8(sidebar.readAll());
+    const QString sidebarItemSource = QString::fromUtf8(sidebarItem.readAll());
     const QString brandSource = QString::fromUtf8(brand.readAll());
     const qsizetype aboutIndex = sidebarSource.indexOf(QStringLiteral("id: aboutRow"));
-    const qsizetype versionIndex = sidebarSource.indexOf(QStringLiteral("id: versionLabel"));
-    const qsizetype supportIndex = sidebarSource.indexOf(QStringLiteral("id: supportButton"));
-    QVERIFY(aboutIndex >= 0 && versionIndex > aboutIndex && supportIndex > versionIndex);
+    const qsizetype supportIndex =
+        sidebarSource.indexOf(QStringLiteral("SidebarItem {\n            id: supportButton"));
+    QVERIFY(aboutIndex >= 0 && supportIndex > aboutIndex);
     const QString supportSource = sidebarSource.mid(supportIndex);
     QVERIFY(sidebarSource.contains(QStringLiteral("Layout.preferredWidth: 220")));
+    QVERIFY(!sidebarItemSource.contains(
+        QStringLiteral("width: parent ? parent.width : implicitWidth")));
+    const qsizetype versionIndex = sidebarSource.indexOf(
+        QStringLiteral("id: headerVersionText"));
+    QVERIFY(versionIndex >= 0 && versionIndex < aboutIndex);
+    QVERIFY(sidebarSource.contains(
+        QStringLiteral("qsTrId(\"gamehq.format.version_short\").arg(app.version)")));
+    // The version pill is the About launcher and the update beacon: it opens
+    // the same dialog as the About row and reuses reviewed locale strings.
+    QVERIFY(sidebarSource.contains(QStringLiteral("objectName: \"sidebarVersionPill\"")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("objectName: \"sidebarBrandHome\"")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("app.setGameCategory(\"all\", -1)")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("qsTrId(\"gamehq.update.status.update_available\")")));
+    QVERIFY(sidebarSource.count(QStringLiteral("onClicked: root.aboutRequested()")) == 1);
+    QVERIFY(sidebarSource.contains(QStringLiteral("Theme.successSoft")));
+    QVERIFY(!sidebarSource.contains(
+        QStringLiteral("ToolTip.visible: versionPillMouse.containsMouse")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("id: versionPillHover")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("versionPillHover.hovered")));
+    QVERIFY(sidebarSource.contains(
+        QStringLiteral("Qt.tint(Theme.surfaceElevated, Theme.hoverTint)")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("onTapped: root.aboutRequested()")));
+    // The header brand text must elide instead of forcing a minimum width that
+    // would push every fillWidth row past the sidebar's right padding.
+    const qsizetype brandTextIndex = sidebarSource.indexOf(QStringLiteral("text: Brand.name"));
+    QVERIFY(brandTextIndex >= 0);
+    QVERIFY(sidebarSource.mid(brandTextIndex, 80).contains(QStringLiteral("elide: Text.ElideRight")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("ScrollBar.vertical: AppScrollBar")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("qsTrId(\"gamehq.settings.advanced.diagnostics.title\")")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("objectName: \"sidebarLanguageSelector\"")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("frameVisible: false")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("languageManager.availableLanguages")));
+    QVERIFY(sidebarSource.contains(
+        QStringLiteral("languageManager.requestedLanguage = value")));
     QVERIFY(supportSource.contains(QStringLiteral("Layout.fillWidth: true")));
     QVERIFY(sidebarSource.contains(QStringLiteral("glyph: \"\\u24d8\"")));
     QVERIFY(sidebarSource.contains(QStringLiteral("objectName: \"supportGameHqButton\"")));
-    QVERIFY(sidebarSource.contains(QStringLiteral("Layout.preferredHeight: 36")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("Layout.preferredHeight: Theme.s32")));
     QVERIFY(sidebarSource.contains(QStringLiteral("Accessible.name: localizedLabel")));
     QVERIFY(sidebarSource.contains(QStringLiteral("ToolTip.text: localizedLabel")));
-    QVERIFY(sidebarSource.contains(QStringLiteral("elide: Text.ElideRight")));
+    // Support is a sidebar row like Settings/Help/About: identical
+    // SidebarItem metrics and left alignment, only the danger accent differs.
+    QVERIFY(supportSource.startsWith(QStringLiteral("SidebarItem {")));
+    QVERIFY(supportSource.contains(QStringLiteral("glyph: \"\\u2665\"")));
+    QVERIFY(supportSource.contains(QStringLiteral("labelColor: Theme.danger")));
+    QVERIFY(supportSource.contains(QStringLiteral("glyphColor: Theme.danger")));
+    QVERIFY(sidebarItemSource.contains(QStringLiteral("color: root.labelColor")));
+    QVERIFY(sidebarItemSource.contains(QStringLiteral("color: root.glyphColor")));
+    // The language selector closes the sidebar: it sits below every link.
+    const qsizetype languageIndex =
+        sidebarSource.indexOf(QStringLiteral("objectName: \"sidebarLanguageSelector\""));
+    QVERIFY(languageIndex > supportIndex);
     QVERIFY(sidebarSource.contains(
         QStringLiteral("onClicked: root.externalUrlOpener(Brand.supportUrl)")));
     QVERIFY(sidebarSource.contains(QStringLiteral("Qt.openUrlExternally(url)")));

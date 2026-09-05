@@ -28,6 +28,22 @@ date is assigned by the project owner and is deliberately not recorded yet.
 
 - Dates, numbers and item counts now follow the selected language instead of the
   system default.
+- Support GameHQ is now a normal sidebar link under About, matching the other
+  entries in size and alignment while keeping its pink accent.
+- The language picker moved to the very bottom of the sidebar, below every link.
+- The version badge next to the logo now opens About, and turns green with an
+  arrow when a new GameHQ version is available; clicking it then opens the
+  update.
+- Clicking the GameHQ logo and wordmark now returns to the All view.
+- The Games section of the sidebar scrolls on its own once the library outgrows
+  the available space, so the categories and tools stay in place.
+
+### Fixed
+
+- Sidebar rows now sit at the same distance from the panel's left and right
+  edges.
+- Hovering the version badge now stays highlighted until the pointer leaves,
+  without showing a redundant tooltip.
 
 ### Known limitations
 

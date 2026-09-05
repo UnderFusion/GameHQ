@@ -40,26 +40,122 @@ Rectangle {
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: Theme.s12
-        spacing: Theme.s4
+        spacing: Theme.s4 / 2
 
         RowLayout {
+            Layout.fillWidth: true
             Layout.margins: Theme.s8
             spacing: Theme.s8
 
-            Image {
-                source: "qrc:/icons/gamehq.svg"
-                Layout.preferredWidth: Theme.fontTitle
-                Layout.preferredHeight: Theme.fontTitle
-                sourceSize.width: Theme.fontTitle
-                sourceSize.height: Theme.fontTitle
+            RowLayout {
+                id: brandHome
+                objectName: "sidebarBrandHome"
+                Layout.fillWidth: true
+                spacing: Theme.s8
+                Accessible.role: Accessible.Button
+                Accessible.name: Brand.name + " · " + qsTrId("gamehq.navigation.category.all")
+
+                Image {
+                    source: "qrc:/icons/gamehq.svg"
+                    Layout.preferredWidth: Theme.fontTitle
+                    Layout.preferredHeight: Theme.fontTitle
+                    sourceSize.width: Theme.fontTitle
+                    sourceSize.height: Theme.fontTitle
+                }
+
+                Text {
+                    // fillWidth + elide: a non-fill Text cannot shrink, which made
+                    // this header row's minimum width exceed the column and pushed
+                    // every fillWidth row past the right padding.
+                    Layout.fillWidth: true
+                    text: Brand.name
+                    elide: Text.ElideRight
+                    color: Theme.text
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontTitle
+                    font.weight: Font.DemiBold
+                }
+
+                HoverHandler {
+                    cursorShape: Qt.PointingHandCursor
+                }
+
+                TapHandler {
+                    onTapped: {
+                        root.pageClosed()
+                        app.setGameCategory("all", -1)
+                    }
+                }
             }
 
-            Text {
-                text: Brand.name
-                color: Theme.text
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontTitle
-                font.weight: Font.DemiBold
+            // Version pill doubles as the About launcher; it turns green and
+            // gains an arrow once an update is known, and the same About
+            // dialog then opens on the update release with its install action.
+            Rectangle {
+                id: versionPill
+                objectName: "sidebarVersionPill"
+                //% "v%1"
+                readonly property string versionLabel: qsTrId("gamehq.format.version_short").arg(app.version)
+                // Reuse the reviewed update-status string shipped by every locale.
+                //% "Update available"
+                readonly property string updateLabel: qsTrId("gamehq.update.status.update_available")
+                                                      + " · " + qsTrId("gamehq.format.version_short")
+                                                                    .arg(root.availableVersion)
+                //% "About"
+                readonly property string aboutLabel: qsTrId("gamehq.navigation.about")
+                implicitWidth: headerVersionRow.implicitWidth + Theme.s8 * 2
+                implicitHeight: Theme.s24 - Theme.s4
+                radius: Theme.radiusPill
+                color: root.updateAvailable
+                       ? (versionPillHover.hovered ? Theme.success : Theme.successSoft)
+                       : (versionPillHover.hovered
+                          ? Qt.tint(Theme.surfaceElevated, Theme.hoverTint)
+                          : Theme.surfaceElevated)
+                border.width: root.updateAvailable ? Theme.borderWidth : 0
+                border.color: Theme.success
+                Behavior on color { ColorAnimation { duration: Theme.durFast } }
+
+                Row {
+                    id: headerVersionRow
+                    anchors.centerIn: parent
+                    spacing: Theme.s4
+
+                    Text {
+                        visible: root.updateAvailable
+                        text: "\u2191"
+                        color: versionPillHover.hovered ? Theme.bg0 : Theme.success
+                        font.family: Theme.fontFamily
+                        font.pixelSize: Theme.fontCaption
+                        font.weight: Font.Bold
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                    Text {
+                        id: headerVersionText
+                        text: versionPill.versionLabel
+                        color: root.updateAvailable
+                               ? (versionPillHover.hovered ? Theme.bg0 : Theme.success)
+                               : Theme.textFaint
+                        font.family: Theme.fontFamily
+                        font.pixelSize: Theme.fontCaption
+                        font.weight: root.updateAvailable ? Font.DemiBold : Font.Normal
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                }
+
+                Accessible.role: Accessible.Button
+                Accessible.name: root.updateAvailable ? versionPill.updateLabel : versionPill.aboutLabel
+
+                // Keep hover observation separate from click handling. A
+                // MouseArea can briefly lose containsMouse during pointer-grab
+                // transitions even while the cursor remains inside the pill.
+                HoverHandler {
+                    id: versionPillHover
+                    cursorShape: Qt.PointingHandCursor
+                }
+
+                TapHandler {
+                    onTapped: root.aboutRequested()
+                }
             }
         }
 
@@ -84,6 +180,16 @@ Rectangle {
             }
         }
 
+        Rectangle {
+            Layout.fillWidth: true
+            Layout.leftMargin: Theme.s8
+            Layout.rightMargin: Theme.s8
+            Layout.topMargin: Theme.s8
+            Layout.bottomMargin: Theme.s4
+            Layout.preferredHeight: Math.max(1, Theme.borderWidth)
+            color: Theme.divider
+        }
+
         Text {
             //% "Games"
             text: qsTrId("gamehq.navigation.games").toUpperCase()
@@ -92,18 +198,27 @@ Rectangle {
             font.pixelSize: Theme.fontCaption
             font.letterSpacing: Theme.letterSpacingWide
             Layout.margins: Theme.s8
-            Layout.topMargin: Theme.s16
         }
 
+        // Only this section scrolls: the games list grows with the library
+        // while the category and tools groups above/below stay pinned. The
+        // scrollbar appears only once the rows no longer fit.
         ListView {
             id: gamesList
             Layout.fillWidth: true
             Layout.fillHeight: true
             clip: true
             spacing: Theme.s4
+            boundsBehavior: Flickable.StopAtBounds
             model: app.games
+            ScrollBar.vertical: AppScrollBar {
+                id: gamesScrollBar
+                anchors.right: parent.right
+            }
             delegate: SidebarItem {
                 width: ListView.view.width
+                        - (gamesScrollBar.visible && gamesScrollBar.size < 1
+                           ? gamesScrollBar.width + Theme.s4 : 0)
                 label: modelData.name
                 iconSource: modelData.iconPath ? ("file:///" + modelData.iconPath.replace(/\\/g, "/")) : ""
                 active: !root.settingsOpen && !root.helpOpen && app.gameId === modelData.id
@@ -114,6 +229,29 @@ Rectangle {
                     app.setGame(modelData.id)
                 }
             }
+        }
+
+        Rectangle {
+            Layout.fillWidth: true
+            Layout.leftMargin: Theme.s8
+            Layout.rightMargin: Theme.s8
+            Layout.topMargin: Theme.s4
+            Layout.bottomMargin: Theme.s4
+            Layout.preferredHeight: Math.max(1, Theme.borderWidth)
+            color: Theme.divider
+        }
+
+        Text {
+            // Reuse the reviewed Tools translation already shipped by every locale.
+            //% "Tools"
+            text: qsTrId("gamehq.settings.advanced.diagnostics.title").toUpperCase()
+            color: Theme.textFaint
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.fontCaption
+            font.letterSpacing: Theme.letterSpacingWide
+            Layout.leftMargin: Theme.s8
+            Layout.rightMargin: Theme.s8
+            Layout.bottomMargin: Theme.s4
         }
 
         SidebarItem {
@@ -149,73 +287,47 @@ Rectangle {
             onClicked: root.aboutRequested()
         }
 
-        Text {
-            id: versionLabel
-            Layout.fillWidth: true
-            Layout.leftMargin: Theme.s8
-            Layout.rightMargin: Theme.s8
-            //% "v%1"
-            text: qsTrId("gamehq.format.version_short").arg(app.version)
-            color: Theme.textFaint
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.fontCaption
-            horizontalAlignment: Text.AlignHCenter
-            elide: Text.ElideRight
-        }
-
-        Button {
+        SidebarItem {
             id: supportButton
             objectName: "supportGameHqButton"
             Layout.fillWidth: true
-            Layout.preferredHeight: 36
-            Layout.topMargin: Theme.s4
-            Layout.bottomMargin: Theme.s4
-            leftPadding: Theme.s12
-            rightPadding: Theme.s12
-            activeFocusOnTab: true
+            Layout.preferredHeight: Theme.s32
 
             //% "Support GameHQ"
             readonly property string localizedLabel: qsTrId("gamehq.navigation.support_gamehq")
+            label: localizedLabel
+            // Kept on the danger accent so the support row still reads as the
+            // one optional, non-navigational action in the tools group.
+            glyph: "\u2665"
+            glyphColor: Theme.danger
+            labelColor: Theme.danger
+            active: false
             Accessible.name: localizedLabel
             ToolTip.text: localizedLabel
-            ToolTip.visible: hovered
+            ToolTip.visible: supportButton.hovered
             ToolTip.delay: 500
             onClicked: root.externalUrlOpener(Brand.supportUrl)
+        }
 
-            background: Rectangle {
-                radius: Theme.radiusS
-                color: supportButton.down
-                       ? Qt.darker(Theme.danger, 1.18)
-                       : supportButton.hovered || supportButton.activeFocus
-                         ? Qt.lighter(Theme.danger, 1.08)
-                         : Theme.danger
-                border.width: supportButton.activeFocus ? 2 : 0
-                border.color: Theme.text
-            }
-
-            contentItem: Row {
-                spacing: Theme.s8
-
-                Text {
-                    id: supportGlyph
-                    text: "\u2615"
-                    color: Theme.textOnAccent
-                    font.pixelSize: Theme.fontBody
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-
-                Text {
-                    width: Math.max(0, supportButton.availableWidth
-                                    - supportGlyph.implicitWidth - parent.spacing)
-                    text: supportButton.localizedLabel
-                    color: Theme.textOnAccent
-                    font.family: Theme.fontFamily
-                    font.pixelSize: Theme.fontCaption
-                    font.weight: Font.DemiBold
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    elide: Text.ElideRight
-                }
+        SettingsCombo {
+            id: sidebarLanguageCombo
+            objectName: "sidebarLanguageSelector"
+            Layout.fillWidth: true
+            Layout.leftMargin: Theme.s4
+            Layout.rightMargin: Theme.s4
+            Layout.topMargin: Theme.s8
+            frameVisible: false
+            defaultValue: languageManager.requestedLanguage
+            options: [{
+                //% "System language"
+                label: qsTrId("gamehq.settings.language.system"),
+                value: "system"
+            }].concat(languageManager.availableLanguages.map(function (locale) {
+                return { label: locale.nativeName, value: locale.tag }
+            }))
+            onValueCommitted: function(value) {
+                languageManager.requestedLanguage = value
+                sidebarLanguageCombo.refresh()
             }
         }
     }

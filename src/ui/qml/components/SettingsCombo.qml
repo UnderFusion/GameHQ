@@ -16,6 +16,7 @@ QC.ComboBox {
     property var options: []
     property string configKey: ""
     property var defaultValue: undefined
+    property bool frameVisible: true
     signal valueCommitted(var value)
 
     model: options
@@ -25,6 +26,10 @@ QC.ComboBox {
     font.pixelSize: Theme.fontBody
 
     function commit(index) {
+        // Close first: committing the language selector retranslates the live
+        // UI and can replace this delegate before a later close() is reached.
+        popup.close()
+        padHighlight = -1
         currentIndex = index
         if (configKey.length > 0)
             app.setConfig(configKey, options[index].value)
@@ -83,7 +88,9 @@ QC.ComboBox {
         implicitHeight: Theme.fontBody + Theme.s16
         radius: Theme.radiusM
         color: Theme.surfaceAlt
-        border.width: combo.activeFocus ? Theme.borderWidth + 1 : Theme.borderWidth
+        border.width: combo.frameVisible
+                      ? (combo.activeFocus ? Theme.borderWidth + 1 : Theme.borderWidth)
+                      : 0
         // activeFocus matters as much as pressed/open: a pad or Tab lands here
         // without ever pressing it, and an unlit control reads as unreachable.
         border.color: (combo.pressed || combo.popup.visible || combo.activeFocus)
@@ -127,7 +134,8 @@ QC.ComboBox {
                     // Follow the pad's highlight when it is driving, so the list
                     // scrolls to the row the user is on.
                     currentIndex: combo.padHighlight >= 0 ? combo.padHighlight
-                                                          : combo.highlightedIndex
+                                  : combo.highlightedIndex >= 0 ? combo.highlightedIndex
+                                  : combo.currentIndex
                 }
             }
 
@@ -148,24 +156,46 @@ QC.ComboBox {
         }
     }
     delegate: QC.ItemDelegate {
+        id: optionDelegate
         width: combo.width
+        checked: combo.currentIndex === index
         highlighted: combo.padHighlight >= 0 ? combo.padHighlight === index
                                              : combo.highlightedIndex === index
-        contentItem: Text {
-            text: modelData.label
-            color: Theme.text
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.fontBody
-            verticalAlignment: Text.AlignVCenter
+        contentItem: Item {
+            implicitHeight: optionLabel.implicitHeight
+
+            Text {
+                id: optionLabel
+                anchors.left: parent.left
+                anchors.right: selectedCheck.left
+                anchors.rightMargin: Theme.s8
+                anchors.verticalCenter: parent.verticalCenter
+                text: modelData.label
+                color: optionDelegate.checked ? Theme.accent : Theme.text
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontBody
+                elide: Text.ElideRight
+            }
+
+            Text {
+                id: selectedCheck
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                visible: optionDelegate.checked
+                text: "\u2713"
+                color: Theme.accent
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontBody
+                font.weight: Font.DemiBold
+            }
         }
         background: Rectangle {
-            color: highlighted ? Theme.surfaceAlt : "transparent"
+            color: optionDelegate.highlighted ? Theme.surfaceHover
+                                               : optionDelegate.checked ? Theme.accentSoft
+                                                                        : "transparent"
         }
         // The custom popup's ListView doesn't route clicks through the
         // ComboBox's activate() path, so persist the choice here.
-        onClicked: {
-            combo.commit(index)
-            combo.popup.close()
-        }
+        onClicked: combo.commit(index)
     }
 }
