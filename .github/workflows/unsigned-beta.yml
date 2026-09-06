@@ -68,6 +68,12 @@ jobs:
           $ErrorActionPreference = 'Stop'
           & packaging/test-ninja-resolution.ps1
 
+      - name: Verify packaging validates the selected build directory
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          & packaging/test-build-directory-identity.ps1
+
       - name: Install pinned Qt and MinGW toolchain
         shell: pwsh
         run: |

@@ -8,11 +8,18 @@ param(
     [ValidateSet('none', 'test', 'production')]
     [string]$ManifestMode = 'none',
     [string]$NinjaPath = '',
+    [string]$BuildDirectory = 'out',
     [switch]$SkipTests
 )
 
 $ErrorActionPreference = 'Stop'
 $root = [System.IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
+. (Join-Path $PSScriptRoot 'resolve-build-directory.ps1')
+# Resolved before any other work and regardless of -SkipTests: an unusable build
+# selection is a release-evidence defect, not something tests may mask.
+$buildRoot = Resolve-BuildDirectory -Root $root -BuildDirectory $BuildDirectory
+$buildLabel = Get-BuildDirectoryLabel -Root $root -BuildDirectory $buildRoot
+$sourceCommit = Get-SourceCommit -Root $root
 & (Join-Path $PSScriptRoot 'assert-privacy.ps1') -ReleaseDirectory $ReleaseDirectory
 & (Join-Path $PSScriptRoot 'assert-license-compliance.ps1')
 & (Join-Path $PSScriptRoot 'test-release-note-assets.ps1')
@@ -211,10 +218,12 @@ $packagedApp = Join-Path $root 'dist\GameHQ\app\GameHQ.exe'
 $versionCheck = Start-Process -FilePath $packagedApp `
     -ArgumentList @('--assert-version', $version) -WindowStyle Hidden -Wait -PassThru
 if ($versionCheck.ExitCode -ne 0) { throw 'Packaged application version does not match VERSION.' }
+$packageLocalizationWorkRoot = Join-Path $buildRoot 'package-localization'
 & (Join-Path $PSScriptRoot 'test-localized-package.ps1') `
-    -PayloadRoot $payloadRoot -PortableZip $portableZip -UpdateZip $updateZip
+    -PayloadRoot $payloadRoot -PortableZip $portableZip -UpdateZip $updateZip `
+    -WorkDirectory $packageLocalizationWorkRoot
 if ($LASTEXITCODE -ne 0) { throw 'Packaged localization asset validation failed.' }
-$packageLocalizationReportPath = Join-Path $root 'out\package-localization\report.json'
+$packageLocalizationReportPath = Join-Path $packageLocalizationWorkRoot 'report.json'
 $packageLocalizationReport = Get-Content -LiteralPath $packageLocalizationReportPath -Raw -Encoding UTF8 | ConvertFrom-Json
 if ($ManifestMode -in @('test', 'production')) {
     foreach ($probe in @(
@@ -240,17 +249,22 @@ if ($ManifestMode -in @('test', 'production')) {
         }
     }
 }
-if (-not $SkipTests) {
-    $localCtest = Join-Path $root 'tools\cmake\bin\ctest.exe'
-    $ctest = if (Test-Path -LiteralPath $localCtest -PathType Leaf) {
-        $localCtest
-    } else {
-        $command = Get-Command ctest.exe -ErrorAction Stop
-        $command.Source
+# The packaged binaries are plain copies out of the selected build tree, so in
+# unsigned-beta mode identical hashes prove that the tested build and the
+# packaged candidate are the same bytes. Signing rewrites the files, so signed
+# mode records the same evidence without demanding equality.
+$binaryIdentity = Get-CandidateBinaryIdentity -BuildDirectory $buildRoot -PayloadRoot $payloadRoot
+if ($TrustMode -eq 'unsigned-beta') {
+    $divergent = @($binaryIdentity | Where-Object { -not $_.identical })
+    if ($divergent.Count -ne 0) {
+        throw ("Packaged binaries do not come from the validated build directory ${buildRoot}: " +
+            (($divergent | ForEach-Object { $_.name }) -join ', '))
     }
+}
+if (-not $SkipTests) {
     $env:PATH = (Join-Path $root 'tools\Qt\6.8.3\mingw_64\bin') + ';' + $env:PATH
-    & $ctest --test-dir (Join-Path $root 'out') -R 'tst_(releasenotes|updatedownloader|updatepreflight|updateinstaller|updatertransaction)' --output-on-failure
-    if ($LASTEXITCODE -ne 0) { throw 'Release-note or updater validation tests failed.' }
+    Invoke-CandidateNativeTests -Root $root -BuildDirectory $buildRoot `
+        -TestPattern 'tst_(releasenotes|updatedownloader|updatepreflight|updateinstaller|updatertransaction)'
     & (Join-Path $PSScriptRoot 'test-installer-language-acceptance.ps1') -SetupPath $setup
     if ($LASTEXITCODE -ne 0) { throw 'Installer localization acceptance failed.' }
 }
@@ -315,6 +329,14 @@ $evidence = [ordered]@{
     } else { $null }
     innoSetup = [ordered]@{ version = $toolchain.Version; installerSha256 = $toolchain.Sha256 }
     buildTools = $buildTools
+    build = [ordered]@{
+        sourceCommit = $sourceCommit
+        buildDirectory = $buildLabel
+        cmakeCacheSha256 = (Get-FileHash -LiteralPath (Join-Path $buildRoot 'CMakeCache.txt') `
+            -Algorithm SHA256).Hash.ToLowerInvariant()
+        nativeTests = if ($SkipTests) { 'skipped' } else { 'passed' }
+        binaries = $binaryIdentity
+    }
     compliance = [ordered]@{
         license = 'passed'
         privacy = 'passed'

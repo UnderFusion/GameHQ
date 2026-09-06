@@ -5,12 +5,21 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$PortableZip,
     [Parameter(Mandatory = $true)]
-    [string]$UpdateZip
+    [string]$UpdateZip,
+    # Defaults to the developer build tree; release validation passes the work
+    # directory of the build that was actually packaged.
+    [string]$WorkDirectory = ''
 )
 
 $ErrorActionPreference = 'Stop'
 $root = [System.IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
-$workRoot = Join-Path $root 'out\package-localization'
+$workRoot = if ([string]::IsNullOrWhiteSpace($WorkDirectory)) {
+    Join-Path $root 'out\package-localization'
+} elseif ([System.IO.Path]::IsPathRooted($WorkDirectory)) {
+    [System.IO.Path]::GetFullPath($WorkDirectory)
+} else {
+    [System.IO.Path]::GetFullPath((Join-Path $root $WorkDirectory))
+}
 $reportPath = Join-Path $workRoot 'report.json'
 
 function Assert-True([bool]$Condition, [string]$Message) {

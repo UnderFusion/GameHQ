@@ -276,6 +276,27 @@ then creates `dist/releases/GameHQ-<version>-win64-portable.zip` plus the
 program-only `GameHQ-<version>-win64-update.zip` and checksum, then runs
 `validate-release.ps1`. The gate checks filenames, manifest/version agreement,
 checksum, neutral/ZIP allowlists, packaged binary version and updater tests.
+
+### Build-directory identity
+
+The build that is packaged is the build that is validated. `make-dist.ps1`
+passes its `-BuildDirectory` selection to `validate-release.ps1`, which resolves
+it through `resolve-build-directory.ps1` before doing anything else and never
+falls back to `out/`. A missing, empty or unconfigured selection fails with the
+selected path in the message, and `-SkipTests` cannot bypass that resolution.
+The native candidate tests (`ctest --test-dir`) and the packaged-localization
+work directory both follow the selected build, so packaging `out-production/`
+can no longer be validated by tests running in `out/`.
+
+In `unsigned-beta` mode the three packaged GameHQ binaries must be byte-identical
+to their sources in the selected build directory; the assembler only copies them,
+so a mismatch means the package and the tests describe different builds. Signing
+rewrites those files, so `signed` mode records the same hashes without requiring
+equality. `release-evidence.json` gains a `build` block with the source commit,
+the selected build directory, its `CMakeCache.txt` hash, whether the native
+candidate tests ran, and the built/packaged hash pair for every binary.
+`packaging/test-build-directory-identity.ps1` proves this on a fixture whose
+default `out/` directory does not exist at all.
 The assembler validates its destination, copies the real executable
 into `app/`, runs `windeployqt --qmldir src/ui/qml --compiler-runtime`, adds the
 FFmpeg DLLs that Qt Multimedia loads dynamically, then writes the launcher,

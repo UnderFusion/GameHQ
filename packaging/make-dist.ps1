@@ -110,6 +110,8 @@ $validationArguments = @{
     TrustMode = $TrustMode
     ManifestMode = $ManifestMode
     GitTag = $GitTag
+    # The build that was packaged above is the build that must be validated.
+    BuildDirectory = $BuildDirectory
 }
 if ($SkipTests) { $validationArguments.SkipTests = $true }
 if (-not [string]::IsNullOrWhiteSpace($NinjaPath)) {
