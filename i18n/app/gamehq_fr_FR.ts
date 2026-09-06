@@ -600,12 +600,18 @@
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="65"></location>
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="67"></location>
       <source>%n minute(s)</source>
-      <translation><numerusform>%n minute</numerusform><numerusform>%n minutes</numerusform></translation>
+      <translation>
+        <numerusform>%n minute</numerusform>
+        <numerusform>%n minutes</numerusform>
+      </translation>
     </message>
     <message id="gamehq.duration.seconds" numerus="yes">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="57"></location>
       <source>%n second(s)</source>
-      <translation><numerusform>%n seconde</numerusform><numerusform>%n secondes</numerusform></translation>
+      <translation>
+        <numerusform>%n seconde</numerusform>
+        <numerusform>%n secondes</numerusform>
+      </translation>
     </message>
     <message id="gamehq.duration.seconds_short">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="534"></location>
@@ -1305,7 +1311,8 @@
       <translation>%1 Mo</translation>
     </message>
     <message id="gamehq.format.version_short">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="158"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="99"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="105"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="118"></location>
       <source>v%1</source>
       <translation>v %1</translation>
@@ -1350,9 +1357,12 @@ Cette action supprime définitivement le fichier.</translation>
       <location filename="src/ui/qml/Main.qml" line="382"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
-      <translation><numerusform>%n capture sera définitivement supprimée.
-Cette action est irréversible.</numerusform><numerusform>%n captures seront définitivement supprimées.
-Cette action est irréversible.</numerusform></translation>
+      <translation>
+        <numerusform>%n capture sera définitivement supprimée.
+Cette action est irréversible.</numerusform>
+        <numerusform>%n captures seront définitivement supprimées.
+Cette action est irréversible.</numerusform>
+      </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
       <location filename="src/ui/qml/Main.qml" line="1065"></location>
@@ -1397,7 +1407,10 @@ Cette action est irréversible.</numerusform></translation>
     <message id="gamehq.gallery.selection.count" numerus="yes">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="26"></location>
       <source>%n selected</source>
-      <translation><numerusform>%n sélectionnée</numerusform><numerusform>%n sélectionnées</numerusform></translation>
+      <translation>
+        <numerusform>%n sélectionnée</numerusform>
+        <numerusform>%n sélectionnées</numerusform>
+      </translation>
     </message>
     <message id="gamehq.gallery.viewer.window_title">
       <location filename="src/ui/qml/components/Lightbox.qml" line="19"></location>
@@ -2019,12 +2032,14 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.navigation.about">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="162"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="194"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="143"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="108"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="284"></location>
       <source>About</source>
       <translation>À propos</translation>
     </message>
     <message id="gamehq.navigation.category.all">
       <location filename="src/ui/qml/Main.qml" line="153"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="57"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="11"></location>
       <source>All</source>
       <translation>Tout</translation>
@@ -2066,26 +2081,26 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Captures d’écran</translation>
     </message>
     <message id="gamehq.navigation.games">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="89"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="198"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="54"></location>
       <source>Games</source>
       <translation>Jeux</translation>
     </message>
     <message id="gamehq.navigation.help">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="132"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="273"></location>
       <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
       <source>Help</source>
       <translation>Aide</translation>
     </message>
     <message id="gamehq.navigation.settings">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="122"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="263"></location>
       <source>Settings</source>
       <translation>Paramètres</translation>
     </message>
     <message id="gamehq.navigation.support_gamehq">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="164"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="196"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="178"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="300"></location>
       <source>Support GameHQ</source>
       <translation>Soutenir GameHQ</translation>
     </message>
@@ -2336,6 +2351,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Actualiser l’état des écrans</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.title">
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="250"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="108"></location>
       <source>Tools</source>
       <translation>Outils</translation>
@@ -3417,6 +3433,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Les modifications s’appliquent immédiatement dans tout GameHQ.</translation>
     </message>
     <message id="gamehq.settings.language.system">
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="326"></location>
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="31"></location>
       <source>System language</source>
       <translation>Langue du système</translation>
@@ -3440,7 +3457,10 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.settings.library.imports.count" numerus="yes">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="72"></location>
       <source>%n watched folder(s)</source>
-      <translation><numerusform>%n dossier surveillé</numerusform><numerusform>%n dossiers surveillés</numerusform></translation>
+      <translation>
+        <numerusform>%n dossier surveillé</numerusform>
+        <numerusform>%n dossiers surveillés</numerusform>
+      </translation>
     </message>
     <message id="gamehq.settings.library.imports.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="74"></location>
@@ -3480,7 +3500,10 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.settings.library.scan.added" numerus="yes">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="139"></location>
       <source>%n new capture(s) added</source>
-      <translation><numerusform>%n nouvelle capture ajoutée</numerusform><numerusform>%n nouvelles captures ajoutées</numerusform></translation>
+      <translation>
+        <numerusform>%n nouvelle capture ajoutée</numerusform>
+        <numerusform>%n nouvelles captures ajoutées</numerusform>
+      </translation>
     </message>
     <message id="gamehq.settings.library.scan.description">
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="143"></location>
@@ -4217,6 +4240,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     </message>
     <message id="gamehq.update.status.update_available">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="155"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="103"></location>
       <source>Update available</source>
       <translation>Mise à jour disponible</translation>
     </message>

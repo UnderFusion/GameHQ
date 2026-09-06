@@ -20,11 +20,11 @@
     },
     {
       "path": "i18n/extracted/messages.json",
-      "sha256": "1e45149917adc1ae90460e11c8fbace5631dfef67b5239be5bce299871996e3c"
+      "sha256": "e2060279c04b5cc0a58a1c0ca721a0e431e8b377196780013fedf0c1c43c1ced"
     },
     {
       "path": "i18n/app/gamehq_en_US.ts",
-      "sha256": "25d77b5a388cd38759b4c2d432c80d22cc72bd3fff7bc47d1d7516dba35b7a01"
+      "sha256": "414e034504c2441a239491b56e7e6b96d8caac2778e2040ed28892ed32c21775"
     },
     {
       "path": "assets/release-notes/manifest.json",
@@ -44,67 +44,67 @@
     },
     {
       "path": "i18n/quality/reviews/en-US.json",
-      "sha256": "e17e5bd063c2b54994ce2df221b0d25fa9d9e68aca73a42ebe4140d9da2f18cb"
+      "sha256": "773acf504847487c15194f6a14363db73537be5174d64c7cb175707f606dc3cc"
     },
     {
       "path": "i18n/quality/reviews/zh-Hans.json",
-      "sha256": "afd077cacab35caefadb827669a7e7a30b742647852b610e810abba8e72fe196"
+      "sha256": "22fb4f4c2baf8e49491b55c56b836684c7140912e8b2e0526b5417ff7ae4c160"
     },
     {
       "path": "i18n/quality/reviews/ru-RU.json",
-      "sha256": "02a301254d81787c40c464f0b16247490b62d49ac3d43fb10b8937bf52751a2d"
+      "sha256": "14bb2280f8c179990a5ba5506663cda2cfe1cf0c5d18a65ef4e3d204881fcb0c"
     },
     {
       "path": "i18n/quality/reviews/es-ES.json",
-      "sha256": "05e415ee0da8e9f65e625696ee9f6d034fae045f65462843501c4c1484baf4fa"
+      "sha256": "33d2f607aed6c34756b04bf941efd0b8961c5881a4e9c57c99db4868c93a4f04"
     },
     {
       "path": "i18n/quality/reviews/pt-BR.json",
-      "sha256": "a8ad3a8c9b0376f1a0de26661a1107c0d5588cda30047f78637785ac8db5e0a3"
+      "sha256": "ebfa545f49ddc1a42d9968cb2400db94c0d600d9642961cb94f6701732a4fa29"
     },
     {
       "path": "i18n/quality/reviews/de-DE.json",
-      "sha256": "7669980e75b6aaf9ebd854d87c5748e0aa76d3069d4ba72115d268b42d4a5fe8"
+      "sha256": "d32b22d672c3d85de8250da3699fcb850206206152e122c63176a40c956ed909"
     },
     {
       "path": "i18n/quality/reviews/ja-JP.json",
-      "sha256": "3462777e901ef6cd0b47ee2ced513340e3338694e6f0204e6f471648d179dca8"
+      "sha256": "8234d5cefd88233c361634a0ab7636360f902d80926b5f4d60abbf489a962b5c"
     },
     {
       "path": "i18n/quality/reviews/fr-FR.json",
-      "sha256": "bafbad6e02fcd09f09482b46edc458752fe2e41db10b1476a948f007c62bf600"
+      "sha256": "7163681df0540d5b8fcb908a1f548a43b10e5f2611d611c2c5ab87539e5e17da"
     },
     {
       "path": "i18n/quality/reviews/pl-PL.json",
-      "sha256": "9fa3e461e58751a0cb72ffdb0e3e4c269e4f7b177508b3fcca471b7d72d3e217"
+      "sha256": "ebd11b3fe4651d6f94c8bccfa23cd79ca0b4fe5cd11b20b7ed629b772d066abc"
     },
     {
       "path": "i18n/quality/reviews/ko-KR.json",
-      "sha256": "0968606d6721c56f04dfba77c39f2379a099d602c18ae32ecc41da3a2594b26b"
+      "sha256": "9be88c2e600cb420a5c3d9c959cc8c5cd23ad058175a7460591e2b64581876a4"
     },
     {
       "path": "i18n/quality/reviews/zh-Hant.json",
-      "sha256": "ebdbbda3d759ac759b0ebd62d916f6a4a242044b8ff2716520dccc2274550797"
+      "sha256": "196ea971051a2697ef98240e1a3de36d7d0446002b8bbf6553ea7f388b493de4"
     },
     {
       "path": "i18n/quality/reviews/tr-TR.json",
-      "sha256": "ae46b969c85a17af923b5247166b940c96a2028dfdf987a7c0819a332e5e9f79"
+      "sha256": "a7b19f535398bbab7beb3074aa7a10ee891fa814a93d61fafe5e25ab38055366"
     },
     {
       "path": "i18n/quality/reviews/th-TH.json",
-      "sha256": "929ab77f76b490b8915a265ad793e884c57f275769fd479c589a0238e64e3a65"
+      "sha256": "ac8d1cf2b3b8a49b8eb90d651d2f23dbe14b339dab58ef17fbdeff9b8e76bebf"
     },
     {
       "path": "i18n/quality/reviews/es-419.json",
-      "sha256": "602f360048ecdef5b40916ec96e45f6cb7407f2051f01088ed7564c888cfd60d"
+      "sha256": "f8cded391a36694068277abd6e0db90bfe59f9af221dd1cfad2c7f369a022cac"
     },
     {
       "path": "i18n/quality/reviews/uk-UA.json",
-      "sha256": "fa21f33b7dd568f5beea8f00a397d862181b8790b8c9bb76d54bd676f47fbe95"
+      "sha256": "fd0fc9653f6940245cac23eadbd69e64e0538517957669836a89671b8b1abee8"
     },
     {
       "path": "i18n/quality/reviews/it-IT.json",
-      "sha256": "8740f0f423ab2189d0a895b3a37471e3678a0ae6067ff1a3d74b3ebca316e77b"
+      "sha256": "1c29b9af13877e18293bb0ca6b8acd0733f86b7be3f1bc32eb0050561a8b6163"
     }
   ],
   "portfolio": {
@@ -209,7 +209,7 @@
   "locales": {
     "en-US": {
       "catalog": "i18n/app/gamehq_en_US.ts",
-      "catalog_sha256": "25d77b5a388cd38759b4c2d432c80d22cc72bd3fff7bc47d1d7516dba35b7a01",
+      "catalog_sha256": "414e034504c2441a239491b56e7e6b96d8caac2778e2040ed28892ed32c21775",
       "style": {
         "path": "i18n/style/en-US.json",
         "sha256": "4075827c08a2c7de24f351a34f1b08dbc9e0836f74093111a18523efe1a104d8"
@@ -255,13 +255,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/en-US.json",
-          "sha256": "e17e5bd063c2b54994ce2df221b0d25fa9d9e68aca73a42ebe4140d9da2f18cb"
+          "sha256": "773acf504847487c15194f6a14363db73537be5174d64c7cb175707f606dc3cc"
         }
       }
     },
     "zh-Hans": {
       "catalog": "i18n/app/gamehq_zh_Hans.ts",
-      "catalog_sha256": "5e460072ab52f9ae7048c68f3ef21b116054b2b941b3ff15e939af808701d55d",
+      "catalog_sha256": "5534ae17cb7d544a2dcbc8425bd3307e1f5078f25fe9556e4a98182987f78bbb",
       "style": {
         "path": "i18n/style/zh-Hans.json",
         "sha256": "cf0a5653a103b4d3bdb378ecf6805fa0ccc5e89dd9d2d10e9426553cddab6322"
@@ -307,13 +307,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/zh-Hans.json",
-          "sha256": "afd077cacab35caefadb827669a7e7a30b742647852b610e810abba8e72fe196"
+          "sha256": "22fb4f4c2baf8e49491b55c56b836684c7140912e8b2e0526b5417ff7ae4c160"
         }
       }
     },
     "ru-RU": {
       "catalog": "i18n/app/gamehq_ru_RU.ts",
-      "catalog_sha256": "93b4a008f3f995158d3c685274080e0600023cff03a6103be06730e928055bf3",
+      "catalog_sha256": "3420f0a627260fde0492363f5986bedd17907b4ca574886e994e1471cea882be",
       "style": {
         "path": "i18n/style/ru-RU.json",
         "sha256": "9f2397dfc4effcd004a28fab6e8857a541d4e9dbb5ee79a89bbe6fe6338f8368"
@@ -359,13 +359,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/ru-RU.json",
-          "sha256": "02a301254d81787c40c464f0b16247490b62d49ac3d43fb10b8937bf52751a2d"
+          "sha256": "14bb2280f8c179990a5ba5506663cda2cfe1cf0c5d18a65ef4e3d204881fcb0c"
         }
       }
     },
     "es-ES": {
       "catalog": "i18n/app/gamehq_es_ES.ts",
-      "catalog_sha256": "abdc28a20a94b67ee27adbf7e8a64a11b9e8f4cfa7f51b626fe2b3cdf20c15e7",
+      "catalog_sha256": "d69bf6d1cf78859e20be55dc213f787e5eedf9e13035436d507fb80eba4dd5c9",
       "style": {
         "path": "i18n/style/es-ES.json",
         "sha256": "96d5e424333e5adee3378474302a3eeb38ecaa5b5d5e19f46381a25f17f508ac"
@@ -411,13 +411,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/es-ES.json",
-          "sha256": "05e415ee0da8e9f65e625696ee9f6d034fae045f65462843501c4c1484baf4fa"
+          "sha256": "33d2f607aed6c34756b04bf941efd0b8961c5881a4e9c57c99db4868c93a4f04"
         }
       }
     },
     "pt-BR": {
       "catalog": "i18n/app/gamehq_pt_BR.ts",
-      "catalog_sha256": "38ce9e1d591cf30481371b2993ddd0534d68e5275f53aff3df44094fa57cc33b",
+      "catalog_sha256": "2603d8be04d98808424cdcb4e54c5efa397f7722242344c6a84cac10fde7509a",
       "style": {
         "path": "i18n/style/pt-BR.json",
         "sha256": "115b88366bc47a0d0a6c223efda5c7475667287680478e158ba1dd9d4adc4a6c"
@@ -463,13 +463,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/pt-BR.json",
-          "sha256": "a8ad3a8c9b0376f1a0de26661a1107c0d5588cda30047f78637785ac8db5e0a3"
+          "sha256": "ebfa545f49ddc1a42d9968cb2400db94c0d600d9642961cb94f6701732a4fa29"
         }
       }
     },
     "de-DE": {
       "catalog": "i18n/app/gamehq_de_DE.ts",
-      "catalog_sha256": "63e27020419a3442837f274622e9a4337d41ff9d6ecfdd701ee95cac2bd68c1d",
+      "catalog_sha256": "d2498f28ff5325111da02147baaa41c4298ff8056e56a8e5a3ead8d9b40bb4d5",
       "style": {
         "path": "i18n/style/de-DE.json",
         "sha256": "0f7fad40f92ec8bd2e59abf3ea5e26b45d38b28c31de9c6718968442022df2c8"
@@ -515,13 +515,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/de-DE.json",
-          "sha256": "7669980e75b6aaf9ebd854d87c5748e0aa76d3069d4ba72115d268b42d4a5fe8"
+          "sha256": "d32b22d672c3d85de8250da3699fcb850206206152e122c63176a40c956ed909"
         }
       }
     },
     "ja-JP": {
       "catalog": "i18n/app/gamehq_ja_JP.ts",
-      "catalog_sha256": "b854cb3724d08f7ad1b1545831b150b1324056f6ddf715325b4c47bfaf861c06",
+      "catalog_sha256": "2c4bcb2a1fe17a783f87e2ddeae00117bc784ce8e9c705ab527810cbb4a19aaf",
       "style": {
         "path": "i18n/style/ja-JP.json",
         "sha256": "61efe55273dd5ec089c2c017cfc0b8a392f062efbe84a25c529a442af2ab0cfb"
@@ -567,13 +567,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/ja-JP.json",
-          "sha256": "3462777e901ef6cd0b47ee2ced513340e3338694e6f0204e6f471648d179dca8"
+          "sha256": "8234d5cefd88233c361634a0ab7636360f902d80926b5f4d60abbf489a962b5c"
         }
       }
     },
     "fr-FR": {
       "catalog": "i18n/app/gamehq_fr_FR.ts",
-      "catalog_sha256": "7f6a9e7194d516b6a79fec8ad42ad4db679656f052d1d71f31a532ba5b5b8060",
+      "catalog_sha256": "4b788be2ff85548d5c6ba4da3a0c572dc3ab3150a446573e8b345c6cf481dae9",
       "style": {
         "path": "i18n/style/fr-FR.json",
         "sha256": "2775de1c1b4193639e94f1e6c6b675edbed85955366cd2c513de5e7d3ba484a3"
@@ -619,13 +619,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/fr-FR.json",
-          "sha256": "bafbad6e02fcd09f09482b46edc458752fe2e41db10b1476a948f007c62bf600"
+          "sha256": "7163681df0540d5b8fcb908a1f548a43b10e5f2611d611c2c5ab87539e5e17da"
         }
       }
     },
     "pl-PL": {
       "catalog": "i18n/app/gamehq_pl_PL.ts",
-      "catalog_sha256": "50ae6fccced3b13916de0d95c4018c9a9aad45d059db1fd489b1ecf0e4e3645b",
+      "catalog_sha256": "0e3432d2dac88c0fafa4e2bf6c52dd7f1ea47eb09957daa446a8332fade163bf",
       "style": {
         "path": "i18n/style/pl-PL.json",
         "sha256": "18bdb3c57631723aa73fa9683aacb133c55fda7db262fb38c9ddc0e49e294bc9"
@@ -671,13 +671,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/pl-PL.json",
-          "sha256": "9fa3e461e58751a0cb72ffdb0e3e4c269e4f7b177508b3fcca471b7d72d3e217"
+          "sha256": "ebd11b3fe4651d6f94c8bccfa23cd79ca0b4fe5cd11b20b7ed629b772d066abc"
         }
       }
     },
     "ko-KR": {
       "catalog": "i18n/app/gamehq_ko_KR.ts",
-      "catalog_sha256": "3aef2d0729197bd45bf28527f6ae2f5c042d2335d515d02a2b4112c9cbd07065",
+      "catalog_sha256": "dfacab7006e3caa3a7b4ca6c70a8424d588be99590d384aff4adaff5f1c76411",
       "style": {
         "path": "i18n/style/ko-KR.json",
         "sha256": "4e12ca071bab30d036ee21f881632f44ba0dc0a3e3de2c194e5dd9cfff8123c5"
@@ -723,13 +723,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/ko-KR.json",
-          "sha256": "0968606d6721c56f04dfba77c39f2379a099d602c18ae32ecc41da3a2594b26b"
+          "sha256": "9be88c2e600cb420a5c3d9c959cc8c5cd23ad058175a7460591e2b64581876a4"
         }
       }
     },
     "zh-Hant": {
       "catalog": "i18n/app/gamehq_zh_Hant.ts",
-      "catalog_sha256": "e9de49effdfb7b76e20667941d7b9e4fc687fa762e25f04e0b0b5489223e0785",
+      "catalog_sha256": "2ed5a7e1ca987092f15b72485cf3498d8957a9d570c4754e3c479187165cb068",
       "style": {
         "path": "i18n/style/zh-Hant.json",
         "sha256": "808fdddc4f8c4626ff8ff937b3f4b13a1de3f302b45232e04eb1f735928300af"
@@ -775,13 +775,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/zh-Hant.json",
-          "sha256": "ebdbbda3d759ac759b0ebd62d916f6a4a242044b8ff2716520dccc2274550797"
+          "sha256": "196ea971051a2697ef98240e1a3de36d7d0446002b8bbf6553ea7f388b493de4"
         }
       }
     },
     "tr-TR": {
       "catalog": "i18n/app/gamehq_tr_TR.ts",
-      "catalog_sha256": "c912960ea623d518e85e43dbb3777648136e76bddaef2772888d75b6151b39f6",
+      "catalog_sha256": "b322d6115d6899feb447354c6e290ef25490eb58fb26747c3ade9973c1c58135",
       "style": {
         "path": "i18n/style/tr-TR.json",
         "sha256": "ddad44821be551437c3f145272f2b017dfb4a691381c79967212046b2197125e"
@@ -827,13 +827,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/tr-TR.json",
-          "sha256": "ae46b969c85a17af923b5247166b940c96a2028dfdf987a7c0819a332e5e9f79"
+          "sha256": "a7b19f535398bbab7beb3074aa7a10ee891fa814a93d61fafe5e25ab38055366"
         }
       }
     },
     "th-TH": {
       "catalog": "i18n/app/gamehq_th_TH.ts",
-      "catalog_sha256": "458177f4e37d3fd4ba82b260e67695755b106603bcda1595e254dc4c011178f8",
+      "catalog_sha256": "34e3ebf18362f6d98cc8d6c5f6a0687f7ee9be1728e95244389e3aa2e042f6ef",
       "style": {
         "path": "i18n/style/th-TH.json",
         "sha256": "2591afc7390871aa3d1eb60ec3128966636a24682d45ddb7fff7ec77e9e3a932"
@@ -879,13 +879,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/th-TH.json",
-          "sha256": "929ab77f76b490b8915a265ad793e884c57f275769fd479c589a0238e64e3a65"
+          "sha256": "ac8d1cf2b3b8a49b8eb90d651d2f23dbe14b339dab58ef17fbdeff9b8e76bebf"
         }
       }
     },
     "es-419": {
       "catalog": "i18n/app/gamehq_es_419.ts",
-      "catalog_sha256": "db9c648e35be55acfaafa00ddad4c978454eebbc9a17ba475dc5b0d29dad5f4c",
+      "catalog_sha256": "22bb3e41de5aec1431e17d713eb3020a400ca29cb32a856111ad885fa2b456b2",
       "style": {
         "path": "i18n/style/es-419.json",
         "sha256": "4ef9023de484774b802561ae6d3589b658819339856830cf6482528d4f7c4972"
@@ -931,13 +931,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/es-419.json",
-          "sha256": "602f360048ecdef5b40916ec96e45f6cb7407f2051f01088ed7564c888cfd60d"
+          "sha256": "f8cded391a36694068277abd6e0db90bfe59f9af221dd1cfad2c7f369a022cac"
         }
       }
     },
     "uk-UA": {
       "catalog": "i18n/app/gamehq_uk_UA.ts",
-      "catalog_sha256": "556810bec7e66d42a8f7c18cc142bb9d4fd4584a74d852cf3c82cf351724dafe",
+      "catalog_sha256": "706c2e562036988bed055237745198e003c705f697bb9e3ab06df1ec9760cbb5",
       "style": {
         "path": "i18n/style/uk-UA.json",
         "sha256": "f939be147dba51a1dc29929a40fba2b660137dcf87c727c2adde63b90e8d94d1"
@@ -983,13 +983,13 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/uk-UA.json",
-          "sha256": "fa21f33b7dd568f5beea8f00a397d862181b8790b8c9bb76d54bd676f47fbe95"
+          "sha256": "fd0fc9653f6940245cac23eadbd69e64e0538517957669836a89671b8b1abee8"
         }
       }
     },
     "it-IT": {
       "catalog": "i18n/app/gamehq_it_IT.ts",
-      "catalog_sha256": "cf0916cbffb0d5e7223c6151efb7bf4f933f55e95524973ceafc6a1f4ceeebfb",
+      "catalog_sha256": "b265448f88446b437147e47894c6c96981180a22a337cc4ed230775500492a31",
       "style": {
         "path": "i18n/style/it-IT.json",
         "sha256": "7c7c8a574e56bad0e18d2cb1e6049ac3299a79f8fee9746dabcf8f763dab7fd9"
@@ -1035,7 +1035,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/it-IT.json",
-          "sha256": "8740f0f423ab2189d0a895b3a37471e3678a0ae6067ff1a3d74b3ebca316e77b"
+          "sha256": "1c29b9af13877e18293bb0ca6b8acd0733f86b7be3f1bc32eb0050561a8b6163"
         }
       }
     }

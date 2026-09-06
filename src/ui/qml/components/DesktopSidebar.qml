@@ -53,6 +53,7 @@ Rectangle {
                 Layout.fillWidth: true
                 spacing: Theme.s8
                 Accessible.role: Accessible.Button
+                //% "All"
                 Accessible.name: Brand.name + " · " + qsTrId("gamehq.navigation.category.all")
 
                 Image {
@@ -97,10 +98,12 @@ Rectangle {
                 //% "v%1"
                 readonly property string versionLabel: qsTrId("gamehq.format.version_short").arg(app.version)
                 // Reuse the reviewed update-status string shipped by every locale.
+                // Each call keeps its own source comment so extraction stays exact.
                 //% "Update available"
-                readonly property string updateLabel: qsTrId("gamehq.update.status.update_available")
-                                                      + " · " + qsTrId("gamehq.format.version_short")
-                                                                    .arg(root.availableVersion)
+                readonly property string updateStatusLabel: qsTrId("gamehq.update.status.update_available")
+                //% "v%1"
+                readonly property string availableVersionLabel: qsTrId("gamehq.format.version_short").arg(root.availableVersion)
+                readonly property string updateLabel: updateStatusLabel + " · " + availableVersionLabel
                 //% "About"
                 readonly property string aboutLabel: qsTrId("gamehq.navigation.about")
                 implicitWidth: headerVersionRow.implicitWidth + Theme.s8 * 2

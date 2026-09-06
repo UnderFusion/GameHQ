@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_fr_FR.ts",
-    "sha256": "7f6a9e7194d516b6a79fec8ad42ad4db679656f052d1d71f31a532ba5b5b8060",
+    "sha256": "4b788be2ff85548d5c6ba4da3a0c572dc3ab3150a446573e8b345c6cf481dae9",
     "message_count": 831
   },
   "coverage": [
@@ -2330,7 +2330,8 @@
       "source_hash": "3e5ed7970ca8257abfbf0979b9890fd3e57f4d263c717001f46e79494c922709",
       "translation_hash": "b9c8ae41e4fee886b620dac7e2a42471172b7b1a1802e2ad7f32f706b62afa81",
       "locations": [
-        "src/ui/qml/components/DesktopSidebar.qml:158",
+        "src/ui/qml/components/DesktopSidebar.qml:99",
+        "src/ui/qml/components/DesktopSidebar.qml:105",
         "src/ui/qml/components/OverlaySidebar.qml:118"
       ],
       "decision": "corrected"
@@ -3559,7 +3560,8 @@
       "locations": [
         "src/app/PackagedLocalizationProbe.cpp:162",
         "src/app/PackagedLocalizationProbe.cpp:194",
-        "src/ui/qml/components/DesktopSidebar.qml:143"
+        "src/ui/qml/components/DesktopSidebar.qml:108",
+        "src/ui/qml/components/DesktopSidebar.qml:284"
       ],
       "decision": "accepted"
     },
@@ -3569,6 +3571,7 @@
       "translation_hash": "b03c25d1757f7958b8093cc8062545100b491079cb35f224ca08c71fa6ea7124",
       "locations": [
         "src/ui/qml/Main.qml:153",
+        "src/ui/qml/components/DesktopSidebar.qml:57",
         "src/ui/qml/components/OverlaySidebar.qml:11"
       ],
       "decision": "corrected"
@@ -3638,7 +3641,7 @@
       "source_hash": "068d54db7700efc207534b91d10ad96e9393ae1af2c10bface847aec99edca88",
       "translation_hash": "79ca68713122599be824b7ec1568f27bdaab1df20e957fc712794c0d34803f3a",
       "locations": [
-        "src/ui/qml/components/DesktopSidebar.qml:89",
+        "src/ui/qml/components/DesktopSidebar.qml:198",
         "src/ui/qml/components/OverlaySidebar.qml:54"
       ],
       "decision": "accepted"
@@ -3648,7 +3651,7 @@
       "source_hash": "8634ffd9f8f9de7ce5a77ceae18984973ce40788ec54230e5c11caa332040950",
       "translation_hash": "9a494b2fd31dff6ee7a2d8811edc22699d3356d9fe313d77775a8127a96077bb",
       "locations": [
-        "src/ui/qml/components/DesktopSidebar.qml:132",
+        "src/ui/qml/components/DesktopSidebar.qml:273",
         "src/ui/qml/components/HelpDialog.qml:96"
       ],
       "decision": "accepted"
@@ -3658,7 +3661,7 @@
       "source_hash": "6264d1c9f07783289ab12c97c4ac107bcdde9f7a57672af7b493f964a5c7c95c",
       "translation_hash": "98620f6b7532021a0b80e7d237537871793c360cbe5f58e5b50167b87dc5d202",
       "locations": [
-        "src/ui/qml/components/DesktopSidebar.qml:122"
+        "src/ui/qml/components/DesktopSidebar.qml:263"
       ],
       "decision": "accepted"
     },
@@ -3669,7 +3672,7 @@
       "locations": [
         "src/app/PackagedLocalizationProbe.cpp:164",
         "src/app/PackagedLocalizationProbe.cpp:196",
-        "src/ui/qml/components/DesktopSidebar.qml:178"
+        "src/ui/qml/components/DesktopSidebar.qml:300"
       ],
       "decision": "accepted"
     },
@@ -4120,6 +4123,7 @@
       "source_hash": "1e0bcf26fc55603c048b732030567b5281daabc09673cca1d9ac4543a23c4109",
       "translation_hash": "ee39ba1202ac409ee1202f1f7a8894397f29237e891916d546a1f88c02482fb1",
       "locations": [
+        "src/ui/qml/components/DesktopSidebar.qml:250",
         "src/ui/qml/settings/AdvancedSettingsPage.qml:108"
       ],
       "decision": "accepted"
@@ -6057,6 +6061,7 @@
       "source_hash": "ba1c89cba728c63ffe2febf5c4ef47837f63476cf9f2918fa6d0b3b9fa803de0",
       "translation_hash": "fcad6cbfc6db6dee880c7791187c7cdb4655af148d4c23cc9a61ea41fccf508c",
       "locations": [
+        "src/ui/qml/components/DesktopSidebar.qml:326",
         "src/ui/qml/settings/GeneralSettingsPage.qml:31"
       ],
       "decision": "accepted"
@@ -7484,7 +7489,8 @@
       "source_hash": "1da8c8bc8b419e8fd502ede1a6ce0a57a67304fd2da6ecaf1060cf5e826d99e1",
       "translation_hash": "5f32766ffd6c69ce5acc198b460a673fb4d8f4b186252fcd04b68c1fabc89886",
       "locations": [
-        "src/ui/qml/components/AboutWhatsNewDialog.qml:155"
+        "src/ui/qml/components/AboutWhatsNewDialog.qml:155",
+        "src/ui/qml/components/DesktopSidebar.qml:103"
       ],
       "decision": "accepted"
     },
@@ -13553,7 +13559,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_fr_FR.ts",
-      "sha256": "7f6a9e7194d516b6a79fec8ad42ad4db679656f052d1d71f31a532ba5b5b8060",
+      "sha256": "4b788be2ff85548d5c6ba4da3a0c572dc3ab3150a446573e8b345c6cf481dae9",
       "reviewed_units": 831
     },
     {

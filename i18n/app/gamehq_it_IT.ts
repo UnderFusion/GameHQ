@@ -1326,7 +1326,8 @@
       <translation>%1 MB</translation>
     </message>
     <message id="gamehq.format.version_short">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="158"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="99"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="105"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="118"></location>
       <source>v%1</source>
       <translation>v%1</translation>
@@ -2050,12 +2051,14 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.navigation.about">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="162"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="194"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="143"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="108"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="284"></location>
       <source>About</source>
       <translation>Informazioni</translation>
     </message>
     <message id="gamehq.navigation.category.all">
       <location filename="src/ui/qml/Main.qml" line="153"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="57"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="11"></location>
       <source>All</source>
       <translation>Tutti</translation>
@@ -2097,26 +2100,26 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Screenshot</translation>
     </message>
     <message id="gamehq.navigation.games">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="89"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="198"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="54"></location>
       <source>Games</source>
       <translation>Giochi</translation>
     </message>
     <message id="gamehq.navigation.help">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="132"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="273"></location>
       <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
       <source>Help</source>
       <translation>Aiuto</translation>
     </message>
     <message id="gamehq.navigation.settings">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="122"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="263"></location>
       <source>Settings</source>
       <translation>Impostazioni</translation>
     </message>
     <message id="gamehq.navigation.support_gamehq">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="164"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="196"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="178"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="300"></location>
       <source>Support GameHQ</source>
       <translation>Sostieni GameHQ</translation>
     </message>
@@ -2372,6 +2375,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Aggiorna lo stato dello schermo</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.title">
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="250"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="108"></location>
       <source>Tools</source>
       <translation>Strumenti</translation>
@@ -3458,6 +3462,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Le modifiche si applicano subito in tutto GameHQ.</translation>
     </message>
     <message id="gamehq.settings.language.system">
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="326"></location>
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="31"></location>
       <source>System language</source>
       <translation>Lingua di sistema</translation>
@@ -4275,6 +4280,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     </message>
     <message id="gamehq.update.status.update_available">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="155"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="103"></location>
       <source>Update available</source>
       <translation>Aggiornamento disponibile</translation>
     </message>
