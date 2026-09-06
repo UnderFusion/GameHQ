@@ -152,6 +152,8 @@ signals:
     void modernControllerChanged();
 
 private:
+    friend class InputEngineShutdownTest;
+    void shutdown();
     void migrateLegacyHoldSetting();
     void applyGestureTiming();
     // Lazy mouse monitoring: the global WH_MOUSE_LL hook is installed only
@@ -308,6 +310,7 @@ private:
     PendingPress m_pending;
     int m_pendingGeneration = 0;   // cancels a superseded confirmation timer
     bool m_started = false;        // gates mouse monitoring until start()
+    bool m_shuttingDown = false;
     bool m_sonyConnected = false;
     bool m_xinputConnected = false;
     bool m_winmmConnected = false;

@@ -125,7 +125,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 // previous hook lifetime is dropped: its release was never
                 // captured, so acting on it would arm a gesture no release
                 // will ever end.
-                if (generation != m_mouse->generation())
+                if (m_shuttingDown || generation != m_mouse->generation())
                     return;
                 QString label = code;
                 if (code == MouseHookDevice::ButtonBack) label = QStringLiteral("Mouse Back");
@@ -138,6 +138,8 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
             });
     connect(m_mouse.get(), &MouseHookDevice::buttonReleased, this,
             [this](const QString& code, int) {
+                if (m_shuttingDown)
+                    return;
                 // Releases process regardless of generation: releasing an
                 // unpressed control is a safe no-op, dropping a real one
                 // risks a stuck control.
@@ -339,11 +341,43 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
 
 InputEngine::~InputEngine()
 {
-    // Run the final controller reset while BindingRuntime and the shared
-    // ProviderIntegration are still alive. GameInputRouter's destructor is a
-    // no-op after this ordered shutdown.
+    shutdown();
+}
+
+void InputEngine::shutdown()
+{
+    if (m_shuttingDown)
+        return;
+    m_shuttingDown = true;
+    m_started = false;
+
+    // Disconnect before cancelling: editor notifications and synthesized
+    // releases must not rearm monitoring or dispatch actions during teardown.
+    disconnect(m_config, nullptr, this, nullptr);
+    if (m_hotkeys)
+        disconnect(m_hotkeys, nullptr, this, nullptr);
+    disconnect(m_bindingEditor.get(), nullptr, this, nullptr);
+    disconnect(m_runtime.get(), nullptr, this, nullptr);
+    disconnect(m_mouse.get(), nullptr, this, nullptr);
+    for (const auto& pad : m_pads)
+        disconnect(pad.get(), nullptr, this, nullptr);
+    if (m_gameInput)
+        disconnect(m_gameInput.get(), nullptr, this, nullptr);
+
+    clearPendingCandidate();
+    stopNavRepeat();
+    m_runtime->cancelAll();
+    m_legacyViewFallbackHeld.clear();
+    m_bindingEditor->cancelCapture();
+    m_bindingEditor->cancelTriggerCapture();
+
+    // Join producers while every consumer member is alive. In particular,
+    // MouseHookDevice::stop() synchronously releases held mouse buttons;
+    // waiting for its member destructor would outlive the repeat state.
+    m_mouse->stop();
     if (m_gameInput)
         m_gameInput->shutdown();
+    m_pads.clear();
 }
 
 void InputEngine::retranslate()
@@ -358,6 +392,8 @@ QObject* InputEngine::bindingEditor() const
 
 void InputEngine::start()
 {
+    if (m_shuttingDown)
+        return;
     if (m_db)
         m_db->seedDefaultBindings();
     m_started = true;   // reloadBindings() below syncs the mouse hook state
@@ -1039,6 +1075,8 @@ ActionCatalog::Scope InputEngine::fallbackScope() const
 
 void InputEngine::dispatchAction(const QString& actionId, const QString& triggerCode)
 {
+    if (m_shuttingDown)
+        return;
     m_bindingEditor->setLastFiredAction(actionId);
     if (const auto* action = ActionCatalog::find(actionId))
         setLastInput(action->label);

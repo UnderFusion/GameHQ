@@ -241,6 +241,39 @@ gamehq_add_test(tst_mousehooklazy
     "${CMAKE_SOURCE_DIR}/src/input/MouseHookDevice.cpp")
 target_link_libraries(tst_mousehooklazy PRIVATE user32)
 
+# Owning-engine teardown, with real mouse parsing/hook lifecycle and isolated DB.
+gamehq_add_test(tst_inputengineshutdown
+    tst_inputengineshutdown.cpp
+    "${CMAKE_SOURCE_DIR}/src/input/Gamepad.h")
+foreach(unit IN ITEMS
+    InputEngine MouseHookDevice BindingRuntime BindingEditorModel BindingResolver
+    BindingPattern BindingRelation ContextOverrideCatalog InputPatternRecognizer
+    ActionCatalog ControlId ControllerIdentity GestureTiming HotkeyManager
+    DualSenseDevice XInputDevice WinMMDevice RawInputApi HidCloakMonitor
+    SelectiveRawHidFallback RawHidBindingCatalog ProviderIntegration
+    PhysicalControllerRegistry CapabilityEventRouter ExtraButtonCatalog
+    InputDiagnostics InputRateMonitor PerfTrace EventLoopStallMonitor)
+    target_sources(tst_inputengineshutdown PRIVATE "${CMAKE_SOURCE_DIR}/src/input/${unit}.cpp")
+endforeach()
+foreach(unit IN ITEMS GameInputRouter ProductionGameInputApi GameInputWrapper
+    GameInputEventQueue GameInputQtDispatcher)
+    target_sources(tst_inputengineshutdown PRIVATE "${CMAKE_SOURCE_DIR}/src/gameinput/${unit}.cpp")
+endforeach()
+target_sources(tst_inputengineshutdown PRIVATE
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
+    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp")
+target_include_directories(tst_inputengineshutdown PRIVATE
+    "${CMAKE_SOURCE_DIR}/third_party/gameinput/include")
+target_link_libraries(tst_inputengineshutdown PRIVATE
+    Qt6::Sql Qt6::Gui Qt6::Widgets user32 winmm cfgmgr32 hid)
+
 gamehq_add_test(tst_configmanager
     tst_configmanager.cpp
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp")
