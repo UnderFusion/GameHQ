@@ -40,6 +40,21 @@ def unique_object(pairs: list[tuple[str, object]]) -> dict:
     return result
 
 
+def iss_sections(script: str) -> dict[str, str]:
+    """Split an Inno script into its `[Section]` bodies, keyed by section name."""
+    sections: dict[str, list[str]] = {}
+    current = ""
+    for line in script.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("[") and stripped.endswith("]"):
+            current = stripped[1:-1]
+            sections.setdefault(current, [])
+            continue
+        if current:
+            sections[current].append(line)
+    return {name: "\n".join(body) for name, body in sections.items()}
+
+
 def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=unique_object)
 
@@ -164,6 +179,15 @@ def validate_repository(message_manifest: dict, locale_manifest: dict, locales: 
     for consumer in message_manifest["required_consumers"]:
         if script.count(consumer["needle"]) != 1:
             fail(f"{consumer['location']} does not consume {consumer['key']} exactly once")
+
+    # Inno expands {cm:...} in constant-bearing parameters, never inside a
+    # [Messages] override. Writing one there ships the literal placeholder to
+    # the user, which is exactly how the welcome page regressed once. Localized
+    # built-in messages must be assigned through CustomMessage() in [Code].
+    for section, body in iss_sections(script).items():
+        if section.lower() == "messages" and "{cm:" in body:
+            fail("[Messages] uses {cm:...}, which Inno does not expand; "
+                 "assign the text with CustomMessage() in [Code] instead")
     for entry in message_manifest["classified_nonlocalized"]:
         if entry["literal"] not in script:
             fail(f"classified installer literal is stale: {entry['literal']}")
@@ -276,7 +300,19 @@ def validate_negative_guards(message_manifest: dict, locales: list[dict]) -> int
     )
     for label, mutation, expected in guards:
         expect_mutation_failure(message_manifest, locales, label, mutation, expected)
-    return len(guards)
+
+    # The script-level guard needs its own fixture: it reads GameHQ.iss, not the
+    # message manifest. A [Messages] override with {cm:...} must be seen, while
+    # the same reference in a constant-bearing section must not be.
+    unexpanded = iss_sections(
+        "[Messages]\nWelcomeLabel1={cm:GameHQWelcomeTitle}\n"
+        "[Tasks]\nDescription: \"{cm:GameHQDesktopShortcut}\"\n"
+    )
+    if "{cm:" not in unexpanded["Messages"]:
+        fail("the [Messages] {cm:...} guard no longer sees an unexpandable override")
+    if "{cm:" not in unexpanded["Tasks"]:
+        fail("iss_sections dropped a legitimate {cm:...} consumer")
+    return len(guards) + 1
 
 
 def main() -> int:

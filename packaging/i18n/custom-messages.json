@@ -39,8 +39,8 @@
     }
   ],
   "required_consumers": [
-    { "key": "GameHQWelcomeTitle", "location": "[Messages].WelcomeLabel1", "needle": "WelcomeLabel1={cm:GameHQWelcomeTitle}" },
-    { "key": "GameHQWelcomeBody", "location": "[Messages].WelcomeLabel2", "needle": "WelcomeLabel2={cm:GameHQWelcomeBody}" },
+    { "key": "GameHQWelcomeTitle", "location": "InitializeWizard welcome title", "needle": "WizardForm.WelcomeLabel1.Caption := CustomMessage('GameHQWelcomeTitle')" },
+    { "key": "GameHQWelcomeBody", "location": "InitializeWizard welcome body", "needle": "CustomMessage('GameHQWelcomeBody')" },
     { "key": "GameHQDesktopShortcut", "location": "[Tasks].desktopicon.Description", "needle": "Description: \"{cm:GameHQDesktopShortcut}\"" },
     { "key": "GameHQAdditionalShortcuts", "location": "[Tasks].desktopicon.GroupDescription", "needle": "GroupDescription: \"{cm:GameHQAdditionalShortcuts}\"" },
     { "key": "GameHQLaunch", "location": "[Run].Description", "needle": "Description: \"{cm:GameHQLaunch}\"" },

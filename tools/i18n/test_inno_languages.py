@@ -165,8 +165,13 @@ def main() -> int:
         fail("GameHQ.iss does not consume the generated application-locale mapping")
     if '#include "generated\\InnoCustomMessages.iss"' not in script:
         fail("GameHQ.iss does not consume generated custom messages")
-    if "WelcomeLabel1={cm:GameHQWelcomeTitle}" not in script:
-        fail("GameHQ welcome text does not use CustomMessages")
+    # Assigned in [Code], not as a [Messages] override: Inno does not expand
+    # {cm:...} there and would render the literal placeholder.
+    if "WizardForm.WelcomeLabel1.Caption := CustomMessage('GameHQWelcomeTitle')" not in script:
+        fail("GameHQ welcome title does not use CustomMessages")
+    if "WizardForm.WelcomeLabel2.Caption" not in script \
+            or "CustomMessage('GameHQWelcomeBody')" not in script:
+        fail("GameHQ welcome body does not use CustomMessages")
     build_script = (ROOT / "packaging" / "build-setup.ps1").read_text(encoding="utf-8")
     for marker in (
         "generate_inno_languages.py",

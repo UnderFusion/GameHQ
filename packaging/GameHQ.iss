@@ -79,9 +79,9 @@ AllowNoIcons=yes
 
 #include "generated\InnoLanguages.iss"
 
-[Messages]
-WelcomeLabel1={cm:GameHQWelcomeTitle}
-WelcomeLabel2={cm:GameHQWelcomeBody}
+; No [Messages] overrides for the welcome page: Inno does not expand {cm:...}
+; there, so the raw placeholder would be shown to the user. InitializeWizard
+; below assigns the localized text through CustomMessage() instead.
 
 #include "generated\InnoCustomMessages.iss"
 
@@ -128,6 +128,24 @@ procedure ExitProcess(ExitCode: Integer);
   external 'ExitProcess@kernel32.dll stdcall';
 
 #include "generated\InnoLanguageBootstrap.iss"
+
+{ The welcome page carries the only two localized strings Inno owns as built-in
+  messages rather than CustomMessages. A cm: reference is never expanded in a
+  Messages override, so the text is applied here, where CustomMessage() resolves
+  it in the active installer language. The name and name/ver placeholders are
+  substituted the way Inno substitutes them in its own text.
+  Keep brackets and braces out of this comment: a leading bracket is read as a
+  section tag, and a closing brace ends the comment early. }
+procedure InitializeWizard;
+var
+  Body: String;
+begin
+  WizardForm.WelcomeLabel1.Caption := CustomMessage('GameHQWelcomeTitle');
+  Body := CustomMessage('GameHQWelcomeBody');
+  StringChangeEx(Body, '[name/ver]', 'GameHQ {#AppVersion}', True);
+  StringChangeEx(Body, '[name]', 'GameHQ', True);
+  WizardForm.WelcomeLabel2.Caption := Body;
+end;
 
 function InitializeSetup: Boolean;
 begin
