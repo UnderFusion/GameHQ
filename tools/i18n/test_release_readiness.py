@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import copy
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -17,6 +18,84 @@ TOOLS = ROOT / "tools" / "i18n"
 sys.path.insert(0, str(TOOLS))
 
 import release_readiness as readiness  # noqa: E402
+
+CANDIDATE_VERSION = "0.7.7"
+FINAL_DATE = "2026-09-30"
+READINESS_INPUTS = (
+    "VERSION",
+    "src/ui/qml/Brand.qml",
+    "packaging/i18n/custom-messages.json",
+    "i18n/locales.json",
+    "i18n/extracted/messages.json",
+    "i18n/state/translations.json",
+    "i18n/app",
+    "i18n/style",
+    "i18n/release",
+    "i18n/quality/reviews",
+    "integrations/playnite/src/GameHQ.Playnite/Localization",
+    "assets/release-notes",
+)
+# Assigning the release date rewrites every localized release-note document, so a
+# real finalization also has to re-pin the release-note surface hash each locale
+# review records. The fixture reproduces that instead of hiding it.
+NOTE_SURFACE = "release_notes"
+
+
+def copy_readiness_inputs(source: Path, destination: Path) -> None:
+    for relative in READINESS_INPUTS:
+        origin = source / relative
+        target = destination / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        if origin.is_dir():
+            shutil.copytree(origin, target)
+        else:
+            shutil.copy2(origin, target)
+
+
+def write_json(path: Path, value: object) -> None:
+    path.write_bytes(readiness.json_bytes(value))
+
+
+def tree_digest(root: Path) -> dict[str, str]:
+    return {
+        path.relative_to(root).as_posix(): readiness.sha256_bytes(path.read_bytes())
+        for path in sorted(root.rglob("*")) if path.is_file()
+    }
+
+
+def finalize_repository(
+    root: Path, *, version: str = CANDIDATE_VERSION, date: str | None = FINAL_DATE,
+    repository_version: str | None = None, status: str = "released",
+    promote: bool = True, policy: str = "complete", entry_date: str | None = None,
+    duplicate: bool = False, reorder: bool = False, stamp_documents: bool = True,
+) -> None:
+    """Rewrite a copied repository into an explicitly finalized release state."""
+    (root / "VERSION").write_text(f"{repository_version or version}\n", encoding="utf-8")
+    if stamp_documents:
+        for path in sorted((root / f"assets/release-notes/versions/{version}").glob("*.json")):
+            document = readiness.read_json(path)
+            document["date"] = date
+            write_json(path, document)
+        for path in sorted((root / "i18n/quality/reviews").glob("*.json")):
+            review = readiness.read_json(path)
+            for surface in review["surfaces"]:
+                if surface["surface"] == NOTE_SURFACE:
+                    surface["sha256"] = readiness.sha256_bytes((root / surface["path"]).read_bytes())
+            write_json(path, review)
+    manifest = readiness.read_json(root / "assets/release-notes/manifest.json")
+    manifest["localization_launch"] |= {"version": version, "date": date, "status": status}
+    if promote:
+        english = (root / f"assets/release-notes/versions/{version}/en-US.json").read_bytes()
+        integrity = f"sha256:{readiness.sha256_bytes(english)}"
+        entry = {
+            "version": version, "date": entry_date or date, "status": "released",
+            "localization_policy": policy, "source_integrity": integrity,
+            "original_source_integrity": integrity, "correction": None,
+        }
+        manifest["releases"].insert(len(manifest["releases"]) if reorder else 0, entry)
+        if duplicate:
+            manifest["releases"].insert(1, copy.deepcopy(entry))
+    write_json(root / "assets/release-notes/manifest.json", manifest)
 
 
 class ReleaseReadinessTest(unittest.TestCase):
@@ -124,6 +203,210 @@ class ReleaseReadinessTest(unittest.TestCase):
         self.assertIn("test_release_readiness.py", gate)
         for forbidden in ("Invoke-WebRequest", "Invoke-RestMethod", "curl ", "secrets."):
             self.assertNotIn(forbidden.casefold(), gate.casefold())
+
+
+class ReleaseStateModeTest(unittest.TestCase):
+    """Candidate mode protects the pre-release state; final mode validates a finalized one."""
+
+    MUTABLE = ("VERSION", "assets/release-notes/manifest.json")
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls._temporary = tempfile.TemporaryDirectory(prefix="gamehq-release-state-")
+        cls.workspace = Path(cls._temporary.name)
+        cls.root = cls.workspace / "repository"
+        copy_readiness_inputs(ROOT, cls.root)
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        cls._temporary.cleanup()
+
+    def setUp(self) -> None:
+        for relative in self.MUTABLE:
+            shutil.copy2(ROOT / relative, self.root / relative)
+        for directory in (f"assets/release-notes/versions/{CANDIDATE_VERSION}",
+                          "i18n/quality/reviews"):
+            for path in sorted((ROOT / directory).glob("*.json")):
+                shutil.copy2(path, self.root / directory / path.name)
+
+    def run_tool(self, *arguments: str) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(
+            [sys.executable, str(TOOLS / "release_readiness.py"), "--root", str(self.root),
+             *arguments],
+            capture_output=True, text=True, encoding="utf-8", errors="replace",
+        )
+
+    def test_copied_candidate_repository_passes_candidate_mode_only(self) -> None:
+        evidence = readiness.build_evidence(self.root)
+        self.assertEqual("not_requested", evidence["candidate"]["release_authorization"])
+        self.assertNotIn("mode", evidence)
+        with self.assertRaisesRegex(readiness.ReadinessError,
+                                    "final mode requires a released localization launch"):
+            readiness.build_evidence(self.root, readiness.FINAL_MODE)
+
+    def test_coherent_finalized_repository_passes_final_mode_only(self) -> None:
+        finalize_repository(self.root)
+        evidence = readiness.build_evidence(self.root, readiness.FINAL_MODE)
+        self.assertEqual("final", evidence["mode"])
+        self.assertNotIn("candidate", evidence)
+        release = evidence["release"]
+        self.assertEqual(
+            {"version": CANDIDATE_VERSION, "date": FINAL_DATE, "designation": "owner",
+             "repository_version": CANDIDATE_VERSION},
+            {key: release[key] for key in
+             ("version", "date", "designation", "repository_version")},
+        )
+        self.assertEqual("not_validated", release["release_authorization"])
+        self.assertEqual("requires_owner_authorization", release["publication_state"])
+        self.assertEqual(CANDIDATE_VERSION, release["release_entry"]["version"])
+        self.assertEqual("complete", release["release_entry"]["localization_policy"])
+        self.assertEqual(16, len(evidence["locales"]))
+        with self.assertRaisesRegex(readiness.ReadinessError,
+                                    "owner-designated and date-null"):
+            readiness.build_evidence(self.root, readiness.CANDIDATE_MODE)
+
+    def test_final_mode_accepts_a_released_launch_before_history_promotion(self) -> None:
+        finalize_repository(self.root, promote=False)
+        evidence = readiness.build_evidence(self.root, readiness.FINAL_MODE)
+        self.assertIsNone(evidence["release"]["release_entry"])
+
+    def test_partially_finalized_repositories_fail_final_mode(self) -> None:
+        mutations = (
+            ("repository VERSION still trails the release",
+             {"repository_version": "0.7.6"}, "repository VERSION 0.7.6 differs"),
+            ("the launch was never flipped to released",
+             {"status": "designated"}, "final mode requires a released localization launch"),
+            ("the launch carries no release date",
+             {"date": None}, "expected an ISO-8601 calendar date"),
+            ("the release entry contradicts the launch date",
+             {"entry_date": "2026-10-01"}, "instead of the launch date"),
+            ("the release entry allows English fallback",
+             {"policy": "fallback-allowed"}, "must require all sixteen locales"),
+            ("the release history records the version twice",
+             {"duplicate": True}, "records a version more than once"),
+            ("the release history is not newest-first",
+             {"version": "0.7.7", "date": FINAL_DATE, "reorder": True},
+             "not deterministically newest-first"),
+            ("the localized release notes keep a null date",
+             {"stamp_documents": False}, "instead of the release date"),
+        )
+        for diagnostic, overrides, expected in mutations:
+            with self.subTest(diagnostic=diagnostic):
+                self.setUp()
+                finalize_repository(self.root, **overrides)
+                with self.assertRaisesRegex(readiness.ReadinessError, expected):
+                    readiness.build_evidence(self.root, readiness.FINAL_MODE)
+
+    def test_final_mode_requires_an_explicit_output_and_never_writes_the_repository(self) -> None:
+        finalize_repository(self.root)
+        before = tree_digest(self.root)
+        missing = self.run_tool("--mode", "final", "--check")
+        self.assertNotEqual(0, missing.returncode)
+        self.assertIn("final mode requires an explicit --output path",
+                      missing.stdout + missing.stderr)
+
+        output = self.workspace / "final-readiness.json"
+        generated = self.run_tool("--mode", "final", "--output", str(output))
+        self.assertEqual(0, generated.returncode, generated.stdout + generated.stderr)
+        self.assertIn("publication still requires explicit owner authorization",
+                      generated.stdout)
+        payload = output.read_bytes()
+        checked = self.run_tool("--mode", "final", "--output", str(output), "--check")
+        self.assertEqual(0, checked.returncode, checked.stdout + checked.stderr)
+        self.assertEqual(payload, output.read_bytes())
+
+        output.write_bytes(payload + b"\n")
+        stale = self.run_tool("--mode", "final", "--output", str(output), "--check")
+        self.assertNotEqual(0, stale.returncode)
+        self.assertEqual(payload + b"\n", output.read_bytes())
+        self.assertEqual(before, tree_digest(self.root))
+
+    def test_default_invocation_stays_candidate_and_leaves_the_checkout_alone(self) -> None:
+        before = tree_digest(self.root)
+        checked = self.run_tool("--check")
+        self.assertEqual(0, checked.returncode, checked.stdout + checked.stderr)
+        self.assertIn("publication prohibited", checked.stdout)
+        self.assertEqual(before, tree_digest(self.root))
+        gate = (TOOLS / "ci.ps1").read_text(encoding="utf-8")
+        self.assertNotIn("--mode", gate)
+        self.assertNotIn("final", gate)
+        workflow = (ROOT / ".github/workflows/unsigned-beta.yml").read_text(encoding="utf-8")
+        self.assertNotIn("release_readiness.py", workflow)
+
+
+class ReadinessSchemaTest(unittest.TestCase):
+    """The schema and the generator must describe the same two document shapes."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.schema = readiness.read_json(ROOT / "i18n/schema/release-readiness.schema.json")
+        cls._temporary = tempfile.TemporaryDirectory(prefix="gamehq-readiness-schema-")
+        cls.root = Path(cls._temporary.name) / "repository"
+        copy_readiness_inputs(ROOT, cls.root)
+        cls.candidate = readiness.build_evidence(cls.root)
+        finalize_repository(cls.root)
+        cls.final = readiness.build_evidence(cls.root, readiness.FINAL_MODE)
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        cls._temporary.cleanup()
+
+    def definition(self, name: str) -> dict[str, object]:
+        return self.schema["definitions"][name]
+
+    def test_declared_document_shapes_match_the_generated_evidence(self) -> None:
+        self.assertEqual(
+            [{"$ref": "#/definitions/candidateDocument"},
+             {"$ref": "#/definitions/finalDocument"}],
+            self.schema["oneOf"],
+        )
+        for name, evidence in (("candidateDocument", self.candidate),
+                               ("finalDocument", self.final)):
+            with self.subTest(document=name):
+                declared = self.definition(name)
+                self.assertFalse(declared["additionalProperties"])
+                self.assertEqual(sorted(evidence), sorted(declared["required"]))
+                self.assertEqual(sorted(evidence), sorted(declared["properties"]))
+
+    def test_declared_release_state_matches_the_implementation(self) -> None:
+        candidate = self.definition("candidateDocument")["properties"]["candidate"]
+        self.assertEqual(sorted(self.candidate["candidate"]), sorted(candidate["required"]))
+        self.assertEqual("not_requested",
+                         candidate["properties"]["release_authorization"]["const"])
+        self.assertEqual("prohibited", candidate["properties"]["publication_state"]["const"])
+        self.assertEqual({"type": "null"}, candidate["properties"]["date"])
+
+        release = self.definition("finalDocument")["properties"]["release"]
+        self.assertEqual(sorted(self.final["release"]), sorted(release["required"]))
+        self.assertEqual("not_validated",
+                         release["properties"]["release_authorization"]["const"])
+        self.assertEqual("requires_owner_authorization",
+                         release["properties"]["publication_state"]["const"])
+        self.assertEqual(
+            sorted(readiness.RELEASE_ENTRY_FIELDS),
+            sorted(self.definition("releaseEntry")["required"]),
+        )
+        self.assertEqual(
+            "contextually_reviewed",
+            self.definition("reviewedLocale")["allOf"][1]["properties"]["linguistic_qa"]
+            ["properties"]["state"]["const"],
+        )
+
+    def test_both_documents_validate_against_the_published_schema(self) -> None:
+        try:
+            import jsonschema
+        except ImportError:  # pragma: no cover - offline CI images may omit the dependency
+            self.skipTest("jsonschema is unavailable")
+        jsonschema.Draft7Validator.check_schema(self.schema)
+        validator = jsonschema.Draft7Validator(self.schema)
+        for label, evidence in (("candidate", self.candidate), ("final", self.final)):
+            with self.subTest(document=label):
+                self.assertEqual([], [error.message for error in validator.iter_errors(evidence)])
+        committed = readiness.read_json(ROOT / "i18n/release/readiness-0.7.7.json")
+        self.assertEqual([], [error.message for error in validator.iter_errors(committed)])
+        broken = copy.deepcopy(self.final)
+        broken["release"]["release_authorization"] = "owner_authorized"
+        self.assertTrue(list(validator.iter_errors(broken)))
 
 
 if __name__ == "__main__":

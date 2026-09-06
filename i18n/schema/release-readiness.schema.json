@@ -2,83 +2,176 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://gamehq.local/schema/release-readiness.schema.json",
   "title": "GameHQ localization release readiness",
-  "type": "object",
-  "required": [
-    "$schema", "schema_version", "candidate", "source_freeze", "portfolio",
-    "workflow", "provenance_contract", "correction_contract", "locales", "handoff"
+  "description": "Candidate evidence describes the protected pre-release state. Final evidence describes a repository that a separately authorized owner action has already finalized; selecting final mode never authorizes publication.",
+  "oneOf": [
+    { "$ref": "#/definitions/candidateDocument" },
+    { "$ref": "#/definitions/finalDocument" }
   ],
-  "additionalProperties": false,
-  "properties": {
-    "$schema": { "type": "string" },
-    "schema_version": { "const": 1 },
-    "candidate": {
+  "definitions": {
+    "candidateDocument": {
       "type": "object",
       "required": [
-        "version", "date", "designation", "repository_version",
-        "release_authorization", "publication_state"
+        "$schema", "schema_version", "candidate", "source_freeze", "portfolio",
+        "workflow", "provenance_contract", "correction_contract", "locales", "handoff"
       ],
       "additionalProperties": false,
       "properties": {
-        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
-        "date": { "type": "null" },
-        "designation": { "const": "owner" },
-        "repository_version": { "type": "string", "minLength": 1 },
-        "release_authorization": { "const": "not_requested" },
-        "publication_state": { "const": "prohibited" }
+        "$schema": { "type": "string" },
+        "schema_version": { "const": 1 },
+        "candidate": {
+          "type": "object",
+          "required": [
+            "version", "date", "designation", "repository_version",
+            "release_authorization", "publication_state"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "version": { "$ref": "#/definitions/version" },
+            "date": { "type": "null" },
+            "designation": { "const": "owner" },
+            "repository_version": { "type": "string", "minLength": 1 },
+            "release_authorization": { "const": "not_requested" },
+            "publication_state": { "const": "prohibited" }
+          }
+        },
+        "source_freeze": { "$ref": "#/definitions/documentProperties/source_freeze" },
+        "portfolio": { "$ref": "#/definitions/documentProperties/portfolio" },
+        "workflow": { "$ref": "#/definitions/documentProperties/workflow" },
+        "provenance_contract": { "$ref": "#/definitions/documentProperties/provenance_contract" },
+        "correction_contract": { "$ref": "#/definitions/documentProperties/correction_contract" },
+        "locales": { "$ref": "#/definitions/documentProperties/locales" },
+        "handoff": { "$ref": "#/definitions/documentProperties/handoff" }
       }
     },
-    "source_freeze": {
-      "type": "array",
-      "minItems": 7,
-      "items": { "$ref": "#/definitions/file" }
-    },
-    "portfolio": {
+    "finalDocument": {
       "type": "object",
-      "required": ["production_locales", "development_only", "reserve"],
+      "required": [
+        "$schema", "schema_version", "mode", "release", "source_freeze", "portfolio",
+        "workflow", "provenance_contract", "correction_contract", "locales", "handoff"
+      ],
       "additionalProperties": false,
       "properties": {
-        "production_locales": {
-          "type": "array", "minItems": 16, "maxItems": 16,
-          "uniqueItems": true, "items": { "type": "string", "minLength": 2 }
+        "$schema": { "type": "string" },
+        "schema_version": { "const": 1 },
+        "mode": { "const": "final" },
+        "release": {
+          "type": "object",
+          "required": [
+            "version", "date", "designation", "repository_version",
+            "release_authorization", "publication_state", "release_entry"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "version": { "$ref": "#/definitions/version" },
+            "date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+            "designation": { "const": "owner" },
+            "repository_version": { "type": "string", "minLength": 1 },
+            "release_authorization": { "const": "not_validated" },
+            "publication_state": { "const": "requires_owner_authorization" },
+            "release_entry": {
+              "anyOf": [{ "type": "null" }, { "$ref": "#/definitions/releaseEntry" }]
+            }
+          }
         },
-        "development_only": { "const": ["en-XA", "ar-XB"] },
-        "reserve": { "const": ["cs-CZ"] }
+        "source_freeze": { "$ref": "#/definitions/documentProperties/source_freeze" },
+        "portfolio": { "$ref": "#/definitions/documentProperties/portfolio" },
+        "workflow": { "$ref": "#/definitions/documentProperties/workflow" },
+        "provenance_contract": { "$ref": "#/definitions/documentProperties/provenance_contract" },
+        "correction_contract": { "$ref": "#/definitions/documentProperties/correction_contract" },
+        "locales": {
+          "type": "object",
+          "minProperties": 16,
+          "maxProperties": 16,
+          "additionalProperties": { "$ref": "#/definitions/reviewedLocale" }
+        },
+        "handoff": { "$ref": "#/definitions/documentProperties/handoff" }
       }
     },
-    "workflow": {
-      "type": "array", "minItems": 8, "maxItems": 8,
-      "items": {
-        "type": "object", "required": ["order", "id", "gate"],
-        "additionalProperties": false,
-        "properties": {
-          "order": { "type": "integer", "minimum": 1, "maximum": 8 },
-          "id": { "type": "string", "minLength": 1 },
-          "gate": { "type": "string", "minLength": 1 }
-        }
-      }
-    },
-    "provenance_contract": { "type": "object" },
-    "correction_contract": { "type": "object" },
-    "locales": {
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "releaseEntry": {
       "type": "object",
-      "minProperties": 16,
-      "maxProperties": 16,
-      "additionalProperties": { "$ref": "#/definitions/locale" }
+      "required": [
+        "version", "date", "status", "localization_policy",
+        "source_integrity", "original_source_integrity", "correction"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "version": { "$ref": "#/definitions/version" },
+        "date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "status": { "const": "released" },
+        "localization_policy": { "const": "complete" },
+        "source_integrity": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "original_source_integrity": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "correction": { "type": ["object", "null"] }
+      }
     },
-    "handoff": {
-      "type": "array", "minItems": 4, "maxItems": 4,
-      "items": {
-        "type": "object", "required": ["item", "state", "authority"],
+    "reviewedLocale": {
+      "allOf": [
+        { "$ref": "#/definitions/locale" },
+        {
+          "properties": {
+            "linguistic_qa": {
+              "properties": {
+                "state": { "const": "contextually_reviewed" },
+                "artifact": { "$ref": "#/definitions/file" }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "documentProperties": {
+      "source_freeze": {
+        "type": "array",
+        "minItems": 7,
+        "items": { "$ref": "#/definitions/file" }
+      },
+      "portfolio": {
+        "type": "object",
+        "required": ["production_locales", "development_only", "reserve"],
         "additionalProperties": false,
         "properties": {
-          "item": { "enum": ["p8-1", "p8-2", "p8-3", "p8-4"] },
-          "state": { "const": "pending" },
-          "authority": { "type": "string", "minLength": 1 }
+          "production_locales": {
+            "type": "array", "minItems": 16, "maxItems": 16,
+            "uniqueItems": true, "items": { "type": "string", "minLength": 2 }
+          },
+          "development_only": { "const": ["en-XA", "ar-XB"] },
+          "reserve": { "const": ["cs-CZ"] }
+        }
+      },
+      "workflow": {
+        "type": "array", "minItems": 8, "maxItems": 8,
+        "items": {
+          "type": "object", "required": ["order", "id", "gate"],
+          "additionalProperties": false,
+          "properties": {
+            "order": { "type": "integer", "minimum": 1, "maximum": 8 },
+            "id": { "type": "string", "minLength": 1 },
+            "gate": { "type": "string", "minLength": 1 }
+          }
+        }
+      },
+      "provenance_contract": { "type": "object" },
+      "correction_contract": { "type": "object" },
+      "locales": {
+        "type": "object",
+        "minProperties": 16,
+        "maxProperties": 16,
+        "additionalProperties": { "$ref": "#/definitions/locale" }
+      },
+      "handoff": {
+        "type": "array", "minItems": 4, "maxItems": 4,
+        "items": {
+          "type": "object", "required": ["item", "state", "authority"],
+          "additionalProperties": false,
+          "properties": {
+            "item": { "enum": ["p8-1", "p8-2", "p8-3", "p8-4"] },
+            "state": { "const": "pending" },
+            "authority": { "type": "string", "minLength": 1 }
+          }
         }
       }
-    }
-  },
-  "definitions": {
+    },
     "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
     "file": {
       "type": "object", "required": ["path", "sha256"],

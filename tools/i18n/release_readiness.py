@@ -26,6 +26,18 @@ PSEUDO_LOCALES = ("en-XA", "ar-XB")
 RESERVE_LOCALES = ("cs-CZ",)
 HASH_PATTERN = re.compile(r"^[0-9a-f]{64}$")
 COMMIT_PATTERN = re.compile(r"^[0-9a-f]{40}$")
+VERSION_PATTERN = re.compile(r"^[0-9]+\.[0-9]+\.[0-9]+$")
+INTEGRITY_PATTERN = re.compile(r"^sha256:[0-9a-f]{64}$")
+ISO_DATE_PATTERN = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
+CANDIDATE_MODE = "candidate"
+FINAL_MODE = "final"
+MODES = (CANDIDATE_MODE, FINAL_MODE)
+RELEASE_ENTRY_FIELDS = (
+    "version", "date", "status", "localization_policy",
+    "source_integrity", "original_source_integrity", "correction",
+)
+SOURCE_REVIEWED = "source_reviewed"
+CONTEXTUALLY_REVIEWED = "contextually_reviewed"
 FORBIDDEN_KEYS = {
     "conversation",
     "conversation_contents",
@@ -170,7 +182,169 @@ def validate_corrections(
             raise ReadinessError(f"{label}.commit: expected a full commit SHA")
 
 
-def build_evidence(root: Path) -> dict[str, object]:
+def repository_version(root: Path) -> str:
+    return (root / "VERSION").read_text(encoding="utf-8").strip()
+
+
+def parse_version(value: object, label: str) -> str:
+    if not isinstance(value, str) or not VERSION_PATTERN.fullmatch(value):
+        raise ReadinessError(f"{label}: invalid release version {value!r}")
+    return value
+
+
+def version_key(value: str) -> tuple[int, ...]:
+    return tuple(int(part) for part in value.split("."))
+
+
+def parse_date(value: object, label: str) -> str:
+    if not isinstance(value, str) or not ISO_DATE_PATTERN.fullmatch(value):
+        raise ReadinessError(f"{label}: expected an ISO-8601 calendar date")
+    try:
+        datetime.strptime(value, "%Y-%m-%d")
+    except ValueError as error:
+        raise ReadinessError(f"{label}: {value} is not a real calendar date") from error
+    return value
+
+
+def candidate_state(root: Path, launch: dict[str, object]) -> dict[str, object]:
+    """Validate the pre-release candidate state the owner gate protects."""
+    if launch.get("status") != "designated" or launch.get("designated_by") != "owner" \
+            or launch.get("date") is not None:
+        raise ReadinessError("localization launch must remain owner-designated and date-null")
+    return {
+        "version": str(launch.get("version")),
+        "date": None,
+        "designation": "owner",
+        "repository_version": repository_version(root),
+        "release_authorization": "not_requested",
+        "publication_state": "prohibited",
+    }
+
+
+def release_history_entry(
+    manifest: dict[str, object], version: str, date: str
+) -> dict[str, object] | None:
+    """Return the unique release-history entry for a finalized version, if promoted.
+
+    The manifest documents newest-first ordering, so this enforces uniqueness and
+    that documented ordering only. A released launch that has not been promoted
+    into the history yet is accepted, but it must still be newer than every
+    recorded release.
+    """
+    releases = manifest.get("releases")
+    if not isinstance(releases, list) or not releases:
+        raise ReadinessError("release-note manifest records no release history")
+    keys: list[tuple[int, ...]] = []
+    for index, entry in enumerate(releases):
+        if not isinstance(entry, dict):
+            raise ReadinessError(f"manifest.releases[{index}] is not an object")
+        keys.append(version_key(
+            parse_version(entry.get("version"), f"manifest.releases[{index}].version")))
+    if len(set(keys)) != len(keys):
+        raise ReadinessError("release history records a version more than once")
+    if keys != sorted(keys, reverse=True):
+        raise ReadinessError("release history is not deterministically newest-first")
+    current = version_key(version)
+    matching = [entry for entry in releases if entry.get("version") == version]
+    if not matching:
+        if current <= keys[0]:
+            raise ReadinessError(
+                f"released version {version} is not newer than the recorded release history")
+        return None
+    if keys[0] != current:
+        raise ReadinessError(f"released version {version} is not the newest release-history entry")
+    entry = matching[0]
+    if set(entry) != set(RELEASE_ENTRY_FIELDS):
+        raise ReadinessError(f"release history entry {version} does not match the manifest schema")
+    if entry.get("status") != "released":
+        raise ReadinessError(f"release history entry {version} is not marked released")
+    if entry.get("date") != date:
+        raise ReadinessError(
+            f"release history entry {version} records {entry.get('date')!r} "
+            f"instead of the launch date {date}")
+    if entry.get("localization_policy") != "complete":
+        raise ReadinessError(
+            f"release history entry {version} must require all sixteen locales")
+    for field in ("source_integrity", "original_source_integrity"):
+        if not INTEGRITY_PATTERN.fullmatch(str(entry.get(field))):
+            raise ReadinessError(f"release history entry {version}: invalid {field}")
+    return {field: entry[field] for field in RELEASE_ENTRY_FIELDS}
+
+
+def final_state(
+    root: Path, manifest: dict[str, object], launch: dict[str, object]
+) -> dict[str, object]:
+    """Validate a repository that has already been finalized elsewhere.
+
+    Selecting final mode is not owner authorization. This path only proves that
+    the repository consistently describes its VERSION as a released, fully
+    localized version; it never records owner intent, never authorizes
+    publication, and never writes repository metadata.
+    """
+    if launch.get("status") != "released":
+        raise ReadinessError("final mode requires a released localization launch")
+    if launch.get("designated_by") != "owner":
+        raise ReadinessError("the released localization launch must stay owner-designated")
+    if launch.get("localization_policy") != "complete":
+        raise ReadinessError("the released localization launch must require all sixteen locales")
+    version = parse_version(launch.get("version"), "localization_launch.version")
+    date = parse_date(launch.get("date"), "localization_launch.date")
+    recorded = repository_version(root)
+    if recorded != version:
+        raise ReadinessError(
+            f"repository VERSION {recorded} differs from the released launch version {version}")
+    return {
+        "version": version,
+        "date": date,
+        "designation": "owner",
+        "repository_version": recorded,
+        "release_authorization": "not_validated",
+        "publication_state": "requires_owner_authorization",
+        "release_entry": release_history_entry(manifest, version, date),
+    }
+
+
+def validate_final_localization(
+    root: Path, version: str, date: str, production_tags: list[str],
+    locale_entries: dict[str, dict[str, object]],
+) -> None:
+    """Require finished localization evidence for an already finalized version."""
+    pending = sorted(tag for tag, value in locale_entries.items()
+                     if value["linguistic_qa"]["state"] != CONTEXTUALLY_REVIEWED)
+    if pending:
+        raise ReadinessError(
+            f"final mode requires contextual linguistic review for {', '.join(pending)}")
+    for tag in production_tags:
+        relative = f"assets/release-notes/versions/{version}/{tag}.json"
+        document = read_json(root / relative)
+        if document.get("version") != version:
+            raise ReadinessError(
+                f"{relative}: records version {document.get('version')!r} instead of {version}")
+        if document.get("date") != date:
+            raise ReadinessError(
+                f"{relative}: records date {document.get('date')!r} "
+                f"instead of the release date {date}")
+    linguistic = read_json(root / "assets/release-notes/linguistic-state.json")
+    if linguistic.get("candidate") != version:
+        raise ReadinessError(
+            f"release-note linguistic state tracks {linguistic.get('candidate')!r} "
+            f"instead of {version}")
+    units = linguistic.get("units")
+    if not isinstance(units, dict) or not units:
+        raise ReadinessError("release-note linguistic state records no reviewed units")
+    for unit_id, unit in sorted(units.items()):
+        locales = unit.get("locales") if isinstance(unit, dict) else None
+        if not isinstance(locales, dict) or set(locales) != set(production_tags):
+            raise ReadinessError(
+                f"release-note unit {unit_id} does not cover all sixteen production locales")
+        for tag, state in sorted(locales.items()):
+            expected = SOURCE_REVIEWED if tag == "en-US" else CONTEXTUALLY_REVIEWED
+            if state != expected:
+                raise ReadinessError(
+                    f"release-note unit {unit_id}: {tag} is {state!r}, expected {expected!r}")
+
+
+def build_evidence(root: Path, mode: str = CANDIDATE_MODE) -> dict[str, object]:
     locale_manifest = read_json(root / "i18n/locales.json")
     release_manifest = read_json(root / "assets/release-notes/manifest.json")
     translation_state = read_json(root / "i18n/state/translations.json")
@@ -185,11 +359,14 @@ def build_evidence(root: Path) -> dict[str, object]:
         raise ReadinessError("pseudo and reserve locales cannot enter the production portfolio")
     if release_manifest.get("production_locales") != production_tags:
         raise ReadinessError("release-note and application locale portfolios differ")
+    if mode not in MODES:
+        raise ReadinessError(f"unsupported validation mode {mode!r}")
     launch = release_manifest.get("localization_launch")
-    if not isinstance(launch, dict) or launch.get("status") != "designated" \
-            or launch.get("designated_by") != "owner" or launch.get("date") is not None:
-        raise ReadinessError("localization launch must remain owner-designated and date-null")
-    version = str(launch.get("version"))
+    if not isinstance(launch, dict):
+        raise ReadinessError("release-note manifest has no localization launch")
+    release_state = candidate_state(root, launch) if mode == CANDIDATE_MODE \
+        else final_state(root, release_manifest, launch)
+    version = str(release_state["version"])
     locale_entries: dict[str, dict[str, object]] = {}
     state_locales = translation_state.get("locales")
     if not isinstance(state_locales, dict):
@@ -246,17 +423,19 @@ def build_evidence(root: Path) -> dict[str, object]:
             "linguistic_qa": qa,
         }
     validate_corrections(corrections, root, production_tags, extracted, locale_entries)
-    evidence = {
+    if mode == FINAL_MODE:
+        validate_final_localization(
+            root, version, str(release_state["date"]), production_tags, locale_entries)
+    evidence: dict[str, object] = {
         "$schema": "../schema/release-readiness.schema.json",
         "schema_version": 1,
-        "candidate": {
-            "version": version,
-            "date": None,
-            "designation": "owner",
-            "repository_version": (root / "VERSION").read_text(encoding="utf-8").strip(),
-            "release_authorization": "not_requested",
-            "publication_state": "prohibited",
-        },
+    }
+    if mode == FINAL_MODE:
+        evidence["mode"] = FINAL_MODE
+        evidence["release"] = release_state
+    else:
+        evidence["candidate"] = release_state
+    evidence |= {
         "source_freeze": [
             file_evidence(root, "VERSION"),
             file_evidence(root, "i18n/locales.json"),
@@ -316,13 +495,22 @@ def main() -> int:
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument(
+        "--mode", choices=MODES, default=CANDIDATE_MODE,
+        help="candidate validates the protected pre-release state (default); final validates a "
+             "repository that has already been finalized by a separately authorized owner action",
+    )
     arguments = parser.parse_args()
     root = arguments.root.resolve()
+    if arguments.mode == FINAL_MODE and arguments.output is None:
+        print("release-readiness error: final mode requires an explicit --output path",
+              file=sys.stderr)
+        return 1
     output = arguments.output or root / "i18n/release/readiness-0.7.7.json"
     if not output.is_absolute():
         output = root / output
     try:
-        payload = json_bytes(build_evidence(root))
+        payload = json_bytes(build_evidence(root, arguments.mode))
         if arguments.check:
             if not output.is_file() or output.read_bytes() != payload:
                 raise ReadinessError(f"stale release-readiness evidence: {output}")
@@ -332,7 +520,11 @@ def main() -> int:
     except ReadinessError as error:
         print(f"release-readiness error: {error}", file=sys.stderr)
         return 1
-    print("release readiness verified: 16 locales, p8 gates pending, publication prohibited")
+    if arguments.mode == FINAL_MODE:
+        print("release finalization verified: 16 locales, coherent released repository state, "
+              "publication still requires explicit owner authorization")
+    else:
+        print("release readiness verified: 16 locales, p8 gates pending, publication prohibited")
     return 0
 
 

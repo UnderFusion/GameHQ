@@ -105,3 +105,39 @@ The localization launch remains designated as `0.7.7` with a null date.
 Readiness generation records `release_authorization: not_requested` and
 `publication_state: prohibited`. This workflow never changes `VERSION`, creates
 a tag, publishes an artifact, deploys a build, or flips release status.
+
+## Validation modes
+
+`release_readiness.py` validates two distinct repository states through an
+explicit `--mode` selector. The mode is never inferred from file contents.
+
+| Mode | Selector | Validates |
+| --- | --- | --- |
+| Candidate | default, no selector | the protected pre-release state above |
+| Final | `--mode final --output <path>` | a repository already finalized elsewhere |
+
+`tools/i18n/ci.ps1` and the public workflow call the default candidate mode and
+carry no selector, so the offline gate keeps rejecting accidental early
+finalization exactly as before.
+
+Final mode fails closed. It requires a released, owner-designated,
+`complete` localization launch whose version equals the repository `VERSION`,
+an ISO-8601 release date, the same date on all sixteen localized release-note
+documents, contextual linguistic review for every production locale, and a
+release-note linguistic state that tracks the released version. When the
+launch has already been promoted into `releases`, that entry must be unique,
+released, `complete`, integrity-stamped, dated identically to the launch, and
+newest under the manifest's documented newest-first ordering.
+
+Selecting `--mode final` is **not** owner authorization. Final evidence records
+`release_authorization: not_validated` and
+`publication_state: requires_owner_authorization`; the validator never
+synthesizes owner intent. Final mode is read-only with respect to the
+repository: it requires an explicit `--output` outside the normal candidate
+snapshot, and `--mode final --check` writes nothing at all.
+
+Assigning the release date rewrites every localized release-note document, so a
+real finalization also re-pins the release-note surface hash recorded in each
+`i18n/quality/reviews/<tag>.json`. Refresh that evidence as part of the
+finalization commit, before rerunning the final-mode gate on the exact
+release-candidate commit.
