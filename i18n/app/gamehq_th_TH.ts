@@ -679,7 +679,6 @@
     <message id="gamehq.error.portable_import.commit_staged_file_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
       <source>Cannot commit staged file %1.</source>
-      <oldsource>Cannot commit staged %1.</oldsource>
       <translation>ไม่สามารถบันทึกไฟล์ที่เตรียมไว้ %1 ไปยังตำแหน่งสุดท้ายได้</translation>
     </message>
     <message id="gamehq.error.portable_import.config_malformed">
@@ -847,7 +846,6 @@
     <message id="gamehq.error.portable_import.local_folder_required">
       <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Select a local folder containing portable GameHQ.</source>
-      <oldsource>Select a local GameHQ portable folder.</oldsource>
       <translation>เลือกโฟลเดอร์ภายในเครื่องที่มี GameHQ แบบพกพา</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
@@ -961,9 +959,8 @@
       <translation>กำลังดำเนินการนำเข้าโปรไฟล์แบบพกพาอื่นอยู่แล้ว</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="446"></location>
+      <location filename="src/app/App.cpp" line="476"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
-      <oldsource>The update was cancelled because capture work did not finish safely in time.</oldsource>
       <translation>การอัปเดตถูกยกเลิกเนื่องจากงานจับภาพไม่เสร็จสิ้นอย่างปลอดภัยทันเวลา</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
@@ -1064,7 +1061,6 @@
     <message id="gamehq.error.update.download.package_not_authorised">
       <location filename="src/updates/UpdateDownloader.cpp" line="405"></location>
       <source>The signed manifest does not authorize an update package.</source>
-      <oldsource>The signed manifest does not authorise an update package.</oldsource>
       <translation>manifest ที่ลงนามไม่อนุญาตแพ็กเกจอัปเดตนี้</translation>
     </message>
     <message id="gamehq.error.update.download.package_read_failed">
@@ -1110,7 +1106,6 @@
     <message id="gamehq.error.update.download.signature_untrusted">
       <location filename="src/updates/UpdateDownloader.cpp" line="387"></location>
       <source>This release is not authorized by a trusted signature: %1</source>
-      <oldsource>This release is not authorised by a trusted signature: %1</oldsource>
       <translation>รุ่นนี้ไม่ได้รับอนุญาตด้วยลายเซ็นที่เชื่อถือได้: %1</translation>
     </message>
     <message id="gamehq.error.update.download.signed_manifest_missing">
@@ -1215,7 +1210,7 @@
       <translation>GameHQ ไม่สามารถนำธุรกรรมอัปเดตไปใช้เป็นสถานะสุดท้ายได้</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="421"></location>
+      <location filename="src/app/App.cpp" line="451"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ ไม่สามารถเริ่มการบำรุงรักษาการอัปเดตได้: %1</translation>
     </message>
@@ -1491,7 +1486,6 @@ This cannot be undone.</source>
     <message id="gamehq.help.feature.replay.description">
       <location filename="src/ui/qml/HelpView.qml" line="306"></location>
       <source>When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
-      <oldsource>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</oldsource>
       <translation>เมื่อเปิดใช้ บัฟเฟอร์รีเพลย์จะพร้อมทำงานโดยอัตโนมัติและบันทึกอยู่เบื้องหลังขณะเกมมีโฟกัส กด Share ค้างไว้ (หรือ Ctrl+Shift+E) เพื่อบันทึกช่วงไม่กี่วินาทีล่าสุดเป็นคลิป เปิดหรือปิดการบันทึกตลอดเวลาได้ที่ การตั้งค่า → รีเพลย์</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
@@ -1502,7 +1496,6 @@ This cannot be undone.</source>
     <message id="gamehq.help.feature.screenshots.description">
       <location filename="src/ui/qml/HelpView.qml" line="312"></location>
       <source>Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.</source>
-      <oldsource>GameHQ captures the active game window through GDI, saves a PNG to your captures folder, and confirms the screenshot immediately.</oldsource>
       <translation>จับภาพหน้าต่างเกมที่กำลังใช้งานผ่าน GDI บันทึกเป็น PNG ในโฟลเดอร์ภาพหน้าจอ และแจ้งผลชัตเตอร์ทันที</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
@@ -1644,7 +1637,6 @@ This cannot be undone.</source>
     <message id="gamehq.help.keyboard.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="88"></location>
       <source>Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items</source>
-      <oldsource>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</oldsource>
       <translation>Enter / Space สลับการเลือก, Ctrl+A เลือกทั้งหมด, Delete ลบรายการที่เลือก</translation>
     </message>
     <message id="gamehq.help.keyboard.show_in_explorer">
@@ -1760,7 +1752,6 @@ This cannot be undone.</source>
     <message id="gamehq.input.assignment.pattern">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="197"></location>
       <source>Type</source>
-      <oldsource>Pattern</oldsource>
       <translation>รูปแบบ</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.combination">
@@ -2118,6 +2109,21 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Support GameHQ</source>
       <translation>สนับสนุน GameHQ</translation>
     </message>
+    <message id="gamehq.notification.capture_delete_failed.body_many">
+      <location filename="src/app/App.cpp" line="308"></location>
+      <source>Some files are open in other programs. Close them and try again.</source>
+      <translation>ไฟล์บางไฟล์ถูกเปิดอยู่ในโปรแกรมอื่น ปิดโปรแกรมเหล่านั้นแล้วลองอีกครั้ง</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_failed.body_one">
+      <location filename="src/app/App.cpp" line="314"></location>
+      <source>The file is open in another program. Close it and try again.</source>
+      <translation>ไฟล์ถูกเปิดอยู่ในโปรแกรมอื่น ปิดโปรแกรมนั้นแล้วลองอีกครั้ง</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_failed.title">
+      <location filename="src/app/App.cpp" line="320"></location>
+      <source>Couldn't delete</source>
+      <translation>ลบไม่สำเร็จ</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason">
       <location filename="src/app/App.cpp" line="280"></location>
       <source>Reason: %1</source>
@@ -2139,12 +2145,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>บันทึกภาพหน้าจอแล้ว</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="329"></location>
+      <location filename="src/app/App.cpp" line="359"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ เริ่มด้วยการตั้งค่าเริ่มต้น โดยเก็บไฟล์การตั้งค่าก่อนหน้าไว้ จึงไม่มีข้อมูลสูญหาย</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="324"></location>
+      <location filename="src/app/App.cpp" line="354"></location>
       <source>Settings could not be read</source>
       <translation>ไม่สามารถอ่านการตั้งค่าได้</translation>
     </message>
@@ -2816,7 +2822,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.feedback.preview.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
       <source>Preview notifications and sounds without creating a capture.</source>
-      <oldsource>Confirm notifications and sound without creating a capture.</oldsource>
       <translation>ดูตัวอย่างการแจ้งเตือนและเสียงโดยไม่ต้องจับภาพหรือบันทึกคลิป</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
@@ -2937,7 +2942,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.general.overlay_dimming.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="81"></location>
       <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
-      <oldsource>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible.</oldsource>
       <translation>โอเวอร์เลย์ในเกมจะทำให้เกมด้านหลังมืดลงเพียงใด 100% เป็นการหรี่แสงของธีมเอง ค่าที่ต่ำกว่าจะทำให้มองเห็นเกมได้มากขึ้น</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
@@ -2963,7 +2967,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.general.startup.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
       <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
-      <oldsource>Choose whether GameHQ follows your Windows sign-in and opens quietly.</oldsource>
       <translation>เลือกว่าจะเริ่ม GameHQ เมื่อลงชื่อเข้าใช้ Windows และเปิดไว้ในพื้นที่แจ้งเตือนหรือไม่</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
@@ -3191,7 +3194,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.modern.guide.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
-      <oldsource>View versus true Share, probe results, reconnects, gestures, and combinations</oldsource>
       <translation>เรียนรู้เกี่ยวกับปุ่ม View และปุ่ม Share จริง ผลการตรวจจับ การเชื่อมต่อใหม่ รูปแบบการกด และชุดปุ่ม</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
@@ -3242,7 +3244,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.modern.support.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="581"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
-      <oldsource>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</oldsource>
       <translation>โหมดอัตโนมัติใช้รันไทม์ GameInput ที่มาพร้อมโปรแกรมและมีทางเลือกสำรองแบบเดิมที่ปลอดภัย ส่วนโหมดปิดจะปิดใช้ GameInput</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
@@ -3600,7 +3601,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.portable_import.message">
       <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
       <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
-      <oldsource>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</oldsource>
       <translation>นำเข้าได้เฉพาะโปรไฟล์ที่ติดตั้งใหม่และยังไม่มีข้อมูล ไฟล์สื่อแบบพกพาจะอยู่ที่เดิม แหล่งข้อมูลจะไม่ถูกแก้ไข และ GameHQ จะเริ่มใหม่เพื่อให้นำเข้าเสร็จสมบูรณ์</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
@@ -3782,7 +3782,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.carbon.description">
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="7"></location>
       <source>Layered neutral grays and one bright blue. Minimal to a fault.</source>
-      <oldsource>Layered neutral greys and one bright blue. Minimal to a fault.</oldsource>
       <translation>สีเทากลางหลายชั้นตัดด้วยสีน้ำเงินสด เรียบง่ายอย่างถึงที่สุด</translation>
     </message>
     <message id="gamehq.settings.theme.carbon.label">
@@ -3793,7 +3792,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.cobalt.description">
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="7"></location>
       <source>Soft grays, an indigo accent, pill-shaped controls, and quick transitions.</source>
-      <oldsource>Soft greys, indigo accent, pill-round and very fast.</oldsource>
       <translation>สีเทาอ่อน แต้มสีคราม ปุ่มทรงแคปซูล และการเปลี่ยนภาพที่รวดเร็ว</translation>
     </message>
     <message id="gamehq.settings.theme.cobalt.label">
@@ -3804,7 +3802,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.dracula.description">
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="7"></location>
       <source>Purple-gray base with bright candy accents.</source>
-      <oldsource>Purple-grey base with bright candy accents.</oldsource>
       <translation>สีพื้นสีม่วงเทาพร้อมเน้นสีลูกกวาดสดใส</translation>
     </message>
     <message id="gamehq.settings.theme.dracula.label">
@@ -3835,7 +3832,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.harbor.description">
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="8"></location>
       <source>Flat blue-gray with squared edges. Chrome gets out of the way.</source>
-      <oldsource>Flat blue-grey with squared edges. Chrome gets out of the way.</oldsource>
       <translation>สีน้ำเงินเทาแบบเรียบพร้อมขอบเหลี่ยม ลดองค์ประกอบกรอบหน้าต่างที่รบกวนสายตา</translation>
     </message>
     <message id="gamehq.settings.theme.harbor.label">
@@ -3866,7 +3862,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.nord.description">
       <location filename="src/ui/qml/themes/NordSkin.qml" line="7"></location>
       <source>Desaturated arctic blue-grays. Calm and low-contrast.</source>
-      <oldsource>Desaturated arctic blue-greys. Calm and low-contrast.</oldsource>
       <translation>สีน้ำเงินเทาอาร์กติกที่ไม่อิ่มตัว สงบและคอนทราสต์ต่ำ</translation>
     </message>
     <message id="gamehq.settings.theme.nord.label">

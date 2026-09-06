@@ -20,6 +20,10 @@ The toast window is **frameless, topmost, click-through and non-activating** —
 notifications->post(title, body, imagePath /* "" = text only */, kind /* success|info|error */);
 ```
 
-Any subsystem can post. Currently wired: **screenshot saved** → `post("Screenshot saved", <game>, <png path>, "success")` (replaces the old OS tray balloon; gated by `notifications.enabled`, default true).
+Any subsystem can post. Currently wired:
+
+- **screenshot saved** → `post("Screenshot saved", <game>, <png path>, "success")` (replaces the old OS tray balloon; gated by `notifications.enabled`, default true).
+- **replay saved / replay failed** → `post(..., "success" | "error")`, gated by `notifications.enabled` plus the replay-specific keys.
+- **capture delete failed** → `AppController::captureDeletionFailed(count)` → `post("Couldn't delete", <one-file or several-files body>, "", "error")`. `CaptureLibraryService` keeps the library row when the media file cannot be removed, so without this toast the delete looks like it silently did nothing. The error sound plays even when notifications are disabled.
 
 > QML note: a `Repeater` delegate that is a separate component type cannot reliably resolve a *sibling* `id` (e.g. the `ListModel`) from inside its signal handlers under the QML AOT cache — route such access through a function on the **root** object instead (the root `id` always resolves).

@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-de-de-recovery",
+    "actor": "codex-gpt-5-contextual-de-de-recovery; claude-opus-5-capture-delete-notification-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-04T13:00:00Z"
+    "recorded_at": "2026-09-07T00:40:00Z"
   },
   "baseline": {
     "path": "git:c03491fd5ffce2d1ac92b99b27f8b6116fb44fee:i18n/app/gamehq_de_DE.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_de_DE.ts",
-    "sha256": "d2498f28ff5325111da02147baaa41c4298ff8056e56a8e5a3ead8d9b40bb4d5",
-    "message_count": 831
+    "sha256": "737dd6e472069102ffdf90e3a3439f89e322406afb8f0bb860a29e9a3a6fac02",
+    "message_count": 834
   },
   "coverage": [
     {
@@ -3691,6 +3691,33 @@
         "src/app/PackagedLocalizationProbe.cpp:164",
         "src/app/PackagedLocalizationProbe.cpp:196",
         "src/ui/qml/components/DesktopSidebar.qml:300"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_many",
+      "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
+      "translation_hash": "d5ce4507e9c2dfe1833cc70c918ff7a6102b786aa8ec5685b590fb57a45e6b31",
+      "locations": [
+        "src/app/App.cpp:308"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_one",
+      "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
+      "translation_hash": "9932f265c095b02d23ed11d32cde493c4415368c10eab0c5512b912e735a3623",
+      "locations": [
+        "src/app/App.cpp:314"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.title",
+      "source_hash": "21d8d5429f00e9e3563b1803f381b14f771ed7aa21a7ac58cfff64ab5824520c",
+      "translation_hash": "315b77a8cc7bb639d0d024cc5b6053a9e6598089e80e43664c33a64b5e027ebe",
+      "locations": [
+        "src/app/App.cpp:320"
       ],
       "decision": "accepted"
     },
@@ -16080,8 +16107,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_de_DE.ts",
-      "sha256": "d2498f28ff5325111da02147baaa41c4298ff8056e56a8e5a3ead8d9b40bb4d5",
-      "reviewed_units": 831
+      "sha256": "737dd6e472069102ffdf90e3a3439f89e322406afb8f0bb860a29e9a3a6fac02",
+      "reviewed_units": 834
     },
     {
       "surface": "installer",

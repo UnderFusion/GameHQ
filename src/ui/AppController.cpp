@@ -608,14 +608,27 @@ void AppController::deleteCaptures(const QVariantList& rows)
 {
     // Only a library row that really went away changes the game list; a media
     // file removed without its row leaves the list exactly as it was.
-    if (m_captureLibrary->deleteCaptures(m_gallery, rows).libraryChanged())
+    const CaptureDeletionResult result = m_captureLibrary->deleteCaptures(m_gallery, rows);
+    if (result.libraryChanged())
         emit gamesChanged();
+    reportDeletionFailures(result);
 }
 
 void AppController::deleteCaptureFrom(GalleryModel* model, int row)
 {
-    if (m_captureLibrary->deleteCapture(model, row).libraryChanged())
+    const CaptureDeletionResult result = m_captureLibrary->deleteCapture(model, row);
+    if (result.libraryChanged())
         emit gamesChanged();
+    reportDeletionFailures(result);
+}
+
+// A kept row is the recovery, not the explanation: without this the delete
+// looks like it did nothing at all. Only the "file still in use" case is
+// user-actionable; an inconsistent row is a rescan matter and stays in the log.
+void AppController::reportDeletionFailures(const CaptureDeletionResult& result)
+{
+    if (result.failed > 0)
+        emit captureDeletionFailed(result.failed);
 }
 
 void AppController::openCaptureFrom(GalleryModel* model, int row)

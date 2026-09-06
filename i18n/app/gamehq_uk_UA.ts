@@ -683,7 +683,6 @@
     <message id="gamehq.error.portable_import.commit_staged_file_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
       <source>Cannot commit staged file %1.</source>
-      <oldsource>Cannot commit staged %1.</oldsource>
       <translation>Не вдалося перемістити підготовлений файл %1 до кінцевого розташування.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_malformed">
@@ -851,7 +850,6 @@
     <message id="gamehq.error.portable_import.local_folder_required">
       <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Select a local folder containing portable GameHQ.</source>
-      <oldsource>Select a local GameHQ portable folder.</oldsource>
       <translation>Виберіть локальну папку з портативною версією GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
@@ -965,9 +963,8 @@
       <translation>Інший імпорт портативного профілю вже виконується.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="446"></location>
+      <location filename="src/app/App.cpp" line="476"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
-      <oldsource>The update was cancelled because capture work did not finish safely in time.</oldsource>
       <translation>Оновлення скасовано, оскільки робота із захопленням не встигла безпечно завершитися.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
@@ -1068,7 +1065,6 @@
     <message id="gamehq.error.update.download.package_not_authorised">
       <location filename="src/updates/UpdateDownloader.cpp" line="405"></location>
       <source>The signed manifest does not authorize an update package.</source>
-      <oldsource>The signed manifest does not authorise an update package.</oldsource>
       <translation>Підписаний маніфест не дозволяє встановлення жодного пакета оновлення.</translation>
     </message>
     <message id="gamehq.error.update.download.package_read_failed">
@@ -1114,7 +1110,6 @@
     <message id="gamehq.error.update.download.signature_untrusted">
       <location filename="src/updates/UpdateDownloader.cpp" line="387"></location>
       <source>This release is not authorized by a trusted signature: %1</source>
-      <oldsource>This release is not authorised by a trusted signature: %1</oldsource>
       <translation>Цей випуск не підтверджено довіреним підписом: %1</translation>
     </message>
     <message id="gamehq.error.update.download.signed_manifest_missing">
@@ -1219,7 +1214,7 @@
       <translation>GameHQ не вдалося остаточно застосувати транзакцію оновлення.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="421"></location>
+      <location filename="src/app/App.cpp" line="451"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ не вдалося розпочати обслуговування оновлення: %1</translation>
     </message>
@@ -1501,7 +1496,6 @@ This cannot be undone.</source>
     <message id="gamehq.help.feature.replay.description">
       <location filename="src/ui/qml/HelpView.qml" line="306"></location>
       <source>When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
-      <oldsource>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</oldsource>
       <translation>Якщо увімкнено, буфер повторів активується автоматично й записує у фоні, поки вікно гри має фокус. Утримуйте Share (або Ctrl+Shift+E), щоб зберегти останні секунди як кліп. Постійний запис вмикається й вимикається в Налаштування → Повтор.</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
@@ -1512,7 +1506,6 @@ This cannot be undone.</source>
     <message id="gamehq.help.feature.screenshots.description">
       <location filename="src/ui/qml/HelpView.qml" line="312"></location>
       <source>Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.</source>
-      <oldsource>GameHQ captures the active game window through GDI, saves a PNG to your captures folder, and confirms the screenshot immediately.</oldsource>
       <translation>Робить знімок активного вікна гри через GDI, зберігає PNG у папці для знімків і кліпів та миттєво відтворює звук затвора.</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
@@ -1654,7 +1647,6 @@ This cannot be undone.</source>
     <message id="gamehq.help.keyboard.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="88"></location>
       <source>Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items</source>
-      <oldsource>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</oldsource>
       <translation>Enter / Space перемикає вибір, Ctrl+A вибирає всі, Delete видаляє вибрані елементи</translation>
     </message>
     <message id="gamehq.help.keyboard.show_in_explorer">
@@ -1770,7 +1762,6 @@ This cannot be undone.</source>
     <message id="gamehq.input.assignment.pattern">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="197"></location>
       <source>Type</source>
-      <oldsource>Pattern</oldsource>
       <translation>Тип</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.combination">
@@ -2128,6 +2119,21 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Support GameHQ</source>
       <translation>Підтримати GameHQ</translation>
     </message>
+    <message id="gamehq.notification.capture_delete_failed.body_many">
+      <location filename="src/app/App.cpp" line="308"></location>
+      <source>Some files are open in other programs. Close them and try again.</source>
+      <translation>Деякі файли відкрито в інших програмах. Закрийте їх та спробуйте ще раз.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_failed.body_one">
+      <location filename="src/app/App.cpp" line="314"></location>
+      <source>The file is open in another program. Close it and try again.</source>
+      <translation>Файл відкрито в іншій програмі. Закрийте її та спробуйте ще раз.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_failed.title">
+      <location filename="src/app/App.cpp" line="320"></location>
+      <source>Couldn't delete</source>
+      <translation>Не вдалося видалити</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason">
       <location filename="src/app/App.cpp" line="280"></location>
       <source>Reason: %1</source>
@@ -2149,12 +2155,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Знімок екрана збережено</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="329"></location>
+      <location filename="src/app/App.cpp" line="359"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ запустився з типовими налаштуваннями. Попередній файл налаштувань збережено, тож нічого не втрачено.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="324"></location>
+      <location filename="src/app/App.cpp" line="354"></location>
       <source>Settings could not be read</source>
       <translation>Не вдалося прочитати налаштування</translation>
     </message>
@@ -2826,7 +2832,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.feedback.preview.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
       <source>Preview notifications and sounds without creating a capture.</source>
-      <oldsource>Confirm notifications and sound without creating a capture.</oldsource>
       <translation>Перевірте сповіщення та звуки, не створюючи знімка.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
@@ -2947,7 +2952,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.general.overlay_dimming.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="81"></location>
       <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
-      <oldsource>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible.</oldsource>
       <translation>Наскільки сильно ігровий оверлей затемнює гру позаду. 100% — власне затемнення теми; нижчі значення залишають гру помітнішою.</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
@@ -2973,7 +2977,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.general.startup.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
       <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
-      <oldsource>Choose whether GameHQ follows your Windows sign-in and opens quietly.</oldsource>
       <translation>Виберіть, чи запускатиметься GameHQ під час входу у Windows і чи відкриватиметься згорнутим в області сповіщень.</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
@@ -3201,7 +3204,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.modern.guide.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
-      <oldsource>View versus true Share, probe results, reconnects, gestures, and combinations</oldsource>
       <translation>Дізнайтеся про кнопки View і справжню кнопку Share, результати перевірки, повторні підключення, жести та комбінації.</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
@@ -3252,7 +3254,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.input.modern.support.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="581"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
-      <oldsource>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</oldsource>
       <translation>«Авто» використовує вбудоване середовище виконання GameInput із безпечним переходом на застарілий механізм; «Вимкнено» вимикає GameInput.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
@@ -3614,7 +3615,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.portable_import.message">
       <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
       <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
-      <oldsource>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</oldsource>
       <translation>Імпорт можливий лише в чистий встановлений профіль. Портативні записи залишаються на місці, джерело не змінюється, а GameHQ перезапускається, щоб завершити імпорт.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
@@ -3796,7 +3796,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.carbon.description">
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="7"></location>
       <source>Layered neutral grays and one bright blue. Minimal to a fault.</source>
-      <oldsource>Layered neutral greys and one bright blue. Minimal to a fault.</oldsource>
       <translation>Багатошарові нейтральні сірі тони з одним яскраво-синім акцентом. Безкомпромісний мінімалізм.</translation>
     </message>
     <message id="gamehq.settings.theme.carbon.label">
@@ -3807,7 +3806,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.cobalt.description">
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="7"></location>
       <source>Soft grays, an indigo accent, pill-shaped controls, and quick transitions.</source>
-      <oldsource>Soft greys, indigo accent, pill-round and very fast.</oldsource>
       <translation>М’які сірі тони, акцент індиго, заокруглені елементи керування та швидкі переходи.</translation>
     </message>
     <message id="gamehq.settings.theme.cobalt.label">
@@ -3818,7 +3816,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.dracula.description">
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="7"></location>
       <source>Purple-gray base with bright candy accents.</source>
-      <oldsource>Purple-grey base with bright candy accents.</oldsource>
       <translation>Фіолетово-сіра основа з яскравими кольоровими акцентами.</translation>
     </message>
     <message id="gamehq.settings.theme.dracula.label">
@@ -3849,7 +3846,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.harbor.description">
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="8"></location>
       <source>Flat blue-gray with squared edges. Chrome gets out of the way.</source>
-      <oldsource>Flat blue-grey with squared edges. Chrome gets out of the way.</oldsource>
       <translation>Плаский синьо-сірий дизайн із прямими кутами. Інтерфейс не відвертає уваги.</translation>
     </message>
     <message id="gamehq.settings.theme.harbor.label">
@@ -3880,7 +3876,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.theme.nord.description">
       <location filename="src/ui/qml/themes/NordSkin.qml" line="7"></location>
       <source>Desaturated arctic blue-grays. Calm and low-contrast.</source>
-      <oldsource>Desaturated arctic blue-greys. Calm and low-contrast.</oldsource>
       <translation>Приглушені арктичні синьо-сірі тони. Спокійно та неконтрастно.</translation>
     </message>
     <message id="gamehq.settings.theme.nord.label">

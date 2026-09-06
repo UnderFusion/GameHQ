@@ -3345,7 +3345,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 446
+          "line": 476
         }
       ],
       "plural": false,
@@ -4255,7 +4255,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 421
+          "line": 451
         }
       ],
       "plural": false,
@@ -7371,6 +7371,57 @@
       "source_hash": "89af8f5819b4816cd95d8dfb847a1efecb676a0403b9190776e093ee6452bb78"
     },
     {
+      "id": "gamehq.notification.capture_delete_failed.body_many",
+      "source": "Some files are open in other programs. Close them and try again.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 308
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb"
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_one",
+      "source": "The file is open in another program. Close it and try again.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 314
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883"
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.title",
+      "source": "Couldn't delete",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 320
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "21d8d5429f00e9e3563b1803f381b14f771ed7aa21a7ac58cfff64ab5824520c"
+    },
+    {
       "id": "gamehq.notification.replay_failed.reason",
       "source": "Reason: %1",
       "context": "ID",
@@ -7448,7 +7499,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 329
+          "line": 359
         }
       ],
       "plural": false,
@@ -7467,7 +7518,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 324
+          "line": 354
         }
       ],
       "plural": false,

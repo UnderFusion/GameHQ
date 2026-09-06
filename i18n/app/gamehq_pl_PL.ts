@@ -11,7 +11,6 @@
     <message id="gamehq.about.full_release_notes">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="684"></location>
       <source>View full release notes</source>
-      <oldsource>See full release notes</oldsource>
       <translation>Zobacz pełne informacje o wersji</translation>
     </message>
     <message id="gamehq.about.github">
@@ -964,7 +963,7 @@
       <translation>Trwa już inny import profilu przenośnego.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="446"></location>
+      <location filename="src/app/App.cpp" line="476"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Aktualizacja została anulowana, ponieważ operacje przechwytywania nie zakończyły się bezpiecznie na czas.</translation>
     </message>
@@ -1156,7 +1155,6 @@
     <message id="gamehq.error.update.install.helper_missing">
       <location filename="src/updates/UpdateInstaller.cpp" line="169"></location>
       <source>%1 is missing or cannot run.</source>
-      <oldsource>GameHQUpdater.exe is missing or cannot run.</oldsource>
       <translation>Brakuje pliku %1 lub nie można go uruchomić.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_rejected">
@@ -1216,7 +1214,7 @@
       <translation>GameHQ nie mógł zapisać transakcji aktualizacji.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="421"></location>
+      <location filename="src/app/App.cpp" line="451"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ nie mógł rozpocząć przygotowania aktualizacji: %1</translation>
     </message>
@@ -2121,6 +2119,21 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
       <source>Support GameHQ</source>
       <translation>Wesprzyj GameHQ</translation>
     </message>
+    <message id="gamehq.notification.capture_delete_failed.body_many">
+      <location filename="src/app/App.cpp" line="308"></location>
+      <source>Some files are open in other programs. Close them and try again.</source>
+      <translation>Niektóre pliki są otwarte w innych programach. Zamknij je i spróbuj ponownie.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_failed.body_one">
+      <location filename="src/app/App.cpp" line="314"></location>
+      <source>The file is open in another program. Close it and try again.</source>
+      <translation>Plik jest otwarty w innym programie. Zamknij go i spróbuj ponownie.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_failed.title">
+      <location filename="src/app/App.cpp" line="320"></location>
+      <source>Couldn't delete</source>
+      <translation>Nie udało się usunąć</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason">
       <location filename="src/app/App.cpp" line="280"></location>
       <source>Reason: %1</source>
@@ -2142,12 +2155,12 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
       <translation>Zapisano zrzut ekranu</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="329"></location>
+      <location filename="src/app/App.cpp" line="359"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ uruchomiono z ustawieniami domyślnymi. Twój poprzedni plik ustawień został zachowany, więc nic nie zostało utracone.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="324"></location>
+      <location filename="src/app/App.cpp" line="354"></location>
       <source>Settings could not be read</source>
       <translation>Nie można odczytać ustawień</translation>
     </message>

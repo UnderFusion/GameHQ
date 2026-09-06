@@ -11,7 +11,6 @@
     <message id="gamehq.about.full_release_notes">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="684"></location>
       <source>View full release notes</source>
-      <oldsource>See full release notes</oldsource>
       <translation>Sürüm notlarının tamamını görüntüle</translation>
     </message>
     <message id="gamehq.about.github">
@@ -680,7 +679,6 @@
     <message id="gamehq.error.portable_import.commit_staged_file_failed">
       <location filename="src/config/PortableProfileImporter.cpp" line="182"></location>
       <source>Cannot commit staged file %1.</source>
-      <oldsource>Cannot commit staged %1.</oldsource>
       <translation>Hazırlanan dosya son konumuna kaydedilemiyor: %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.config_malformed">
@@ -848,7 +846,6 @@
     <message id="gamehq.error.portable_import.local_folder_required">
       <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Select a local folder containing portable GameHQ.</source>
-      <oldsource>Select a local GameHQ portable folder.</oldsource>
       <translation>Taşınabilir GameHQ kopyasını içeren yerel bir klasör seçin.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
@@ -962,9 +959,8 @@
       <translation>Başka bir taşınabilir profil içe aktarma işlemi zaten çalışıyor.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="446"></location>
+      <location filename="src/app/App.cpp" line="476"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
-      <oldsource>The update was cancelled because capture work did not finish safely in time.</oldsource>
       <translation>Çekim işlemleri güvenli biçimde zamanında tamamlanamadığı için güncelleme iptal edildi.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
@@ -1065,7 +1061,6 @@
     <message id="gamehq.error.update.download.package_not_authorised">
       <location filename="src/updates/UpdateDownloader.cpp" line="405"></location>
       <source>The signed manifest does not authorize an update package.</source>
-      <oldsource>The signed manifest does not authorise an update package.</oldsource>
       <translation>İmzalı manifest hiçbir güncelleme paketine yetki vermiyor.</translation>
     </message>
     <message id="gamehq.error.update.download.package_read_failed">
@@ -1111,7 +1106,6 @@
     <message id="gamehq.error.update.download.signature_untrusted">
       <location filename="src/updates/UpdateDownloader.cpp" line="387"></location>
       <source>This release is not authorized by a trusted signature: %1</source>
-      <oldsource>This release is not authorised by a trusted signature: %1</oldsource>
       <translation>Bu sürüme güvenilir bir imza tarafından yetki verilmedi: %1</translation>
     </message>
     <message id="gamehq.error.update.download.signed_manifest_missing">
@@ -1157,7 +1151,6 @@
     <message id="gamehq.error.update.install.helper_missing">
       <location filename="src/updates/UpdateInstaller.cpp" line="169"></location>
       <source>%1 is missing or cannot run.</source>
-      <oldsource>GameHQUpdater.exe is missing or cannot run.</oldsource>
       <translation>%1 eksik veya çalıştırılamıyor.</translation>
     </message>
     <message id="gamehq.error.update.install.helper_rejected">
@@ -1217,7 +1210,7 @@
       <translation>GameHQ, güncelleme işlemini son durumuna uygulayamadı.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="421"></location>
+      <location filename="src/app/App.cpp" line="451"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ güncelleme bakımına başlayamadı: %1</translation>
     </message>
@@ -1493,7 +1486,6 @@ Bu işlem geri alınamaz.</numerusform>
     <message id="gamehq.help.feature.replay.description">
       <location filename="src/ui/qml/HelpView.qml" line="306"></location>
       <source>When enabled, the replay buffer arms automatically and records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</source>
-      <oldsource>Always-on auto-armed. Records in the background while a game is in focus. Hold Share (or Ctrl+Shift+E) to save the last few seconds as a clip. Turn always-on recording on or off in Settings → Replay.</oldsource>
       <translation>Etkinleştirildiğinde anında tekrar arabelleği otomatik olarak hazır olur ve odaktaki oyun için arka planda kayıt yapar. Son birkaç saniyeyi klip olarak kaydetmek için Share düğmesini (veya Ctrl+Shift+E kısayolunu) basılı tutun. Kesintisiz kaydı Ayarlar → Anında tekrar bölümünden açıp kapatabilirsiniz.</translation>
     </message>
     <message id="gamehq.help.feature.replay.title">
@@ -1504,7 +1496,6 @@ Bu işlem geri alınamaz.</numerusform>
     <message id="gamehq.help.feature.screenshots.description">
       <location filename="src/ui/qml/HelpView.qml" line="312"></location>
       <source>Captures the active game window through GDI, saves a PNG to your captures folder, and provides immediate shutter feedback.</source>
-      <oldsource>GameHQ captures the active game window through GDI, saves a PNG to your captures folder, and confirms the screenshot immediately.</oldsource>
       <translation>Etkin oyun penceresini GDI ile yakalar, PNG dosyasını çekim klasörüne kaydeder ve anında deklanşör geri bildirimi verir.</translation>
     </message>
     <message id="gamehq.help.feature.screenshots.title">
@@ -1646,7 +1637,6 @@ Bu işlem geri alınamaz.</numerusform>
     <message id="gamehq.help.keyboard.select_mode">
       <location filename="src/ui/qml/HelpView.qml" line="88"></location>
       <source>Enter / Space toggles selection, Ctrl+A selects all, Delete removes selected items</source>
-      <oldsource>Enter / Space toggles, Ctrl+A selects all, Delete removes selected</oldsource>
       <translation>Enter / Space seçimi değiştirir, Ctrl+A tümünü seçer, Delete seçili öğeleri kaldırır</translation>
     </message>
     <message id="gamehq.help.keyboard.show_in_explorer">
@@ -1762,7 +1752,6 @@ Bu işlem geri alınamaz.</numerusform>
     <message id="gamehq.input.assignment.pattern">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="197"></location>
       <source>Type</source>
-      <oldsource>Pattern</oldsource>
       <translation>Tür</translation>
     </message>
     <message id="gamehq.input.assignment.pattern.combination">
@@ -2120,6 +2109,21 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <source>Support GameHQ</source>
       <translation>GameHQ'yu destekle</translation>
     </message>
+    <message id="gamehq.notification.capture_delete_failed.body_many">
+      <location filename="src/app/App.cpp" line="308"></location>
+      <source>Some files are open in other programs. Close them and try again.</source>
+      <translation>Bazı dosyalar başka programlarda açık. Programları kapatıp tekrar deneyin.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_failed.body_one">
+      <location filename="src/app/App.cpp" line="314"></location>
+      <source>The file is open in another program. Close it and try again.</source>
+      <translation>Dosya başka bir programda açık. Programı kapatıp tekrar deneyin.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_failed.title">
+      <location filename="src/app/App.cpp" line="320"></location>
+      <source>Couldn't delete</source>
+      <translation>Silinemedi</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason">
       <location filename="src/app/App.cpp" line="280"></location>
       <source>Reason: %1</source>
@@ -2141,12 +2145,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Ekran görüntüsü kaydedildi</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="329"></location>
+      <location filename="src/app/App.cpp" line="359"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ varsayılan ayarlarla başladı. Önceki ayarlar dosyanız saklandığından hiçbir şey kaybolmadı.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="324"></location>
+      <location filename="src/app/App.cpp" line="354"></location>
       <source>Settings could not be read</source>
       <translation>Ayarlar okunamadı</translation>
     </message>
@@ -2818,7 +2822,6 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.feedback.preview.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
       <source>Preview notifications and sounds without creating a capture.</source>
-      <oldsource>Confirm notifications and sound without creating a capture.</oldsource>
       <translation>Çekim oluşturmadan bildirimleri ve sesleri önizleyin.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
@@ -2939,7 +2942,6 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.general.overlay_dimming.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="81"></location>
       <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
-      <oldsource>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower keeps more of the game visible.</oldsource>
       <translation>Oyun içi arayüzün arkasındaki oyunu ne kadar karartacağını belirler. 100% temanın kendi karartma düzeyidir; daha düşük değerler oyunu daha görünür tutar.</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
@@ -2965,7 +2967,6 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.general.startup.description">
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
       <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
-      <oldsource>Choose whether GameHQ follows your Windows sign-in and opens quietly.</oldsource>
       <translation>GameHQ'nun Windows'ta oturum açıldığında başlatılıp bildirim alanında küçültülmüş olarak açılıp açılmayacağını seçin.</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
@@ -3193,7 +3194,6 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.input.modern.guide.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
-      <oldsource>View versus true Share, probe results, reconnects, gestures, and combinations</oldsource>
       <translation>View ve gerçek Share düğmeleri, yoklama sonuçları, yeniden bağlanma, basma hareketleri ve düğme birleşimleri hakkında bilgi alın.</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
@@ -3244,7 +3244,6 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.input.modern.support.description">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="581"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
-      <oldsource>Auto uses app-local GameInput with safe legacy fallback; Off keeps only the legacy providers.</oldsource>
       <translation>Otomatik seçeneği, paketlenmiş GameInput çalışma ortamını eski sisteme güvenli dönüşle kullanır; Kapalı seçeneği GameInput desteğini devre dışı bırakır.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
@@ -3602,7 +3601,6 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.portable_import.message">
       <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
       <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
-      <oldsource>Only a fresh installed profile is accepted. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</oldsource>
       <translation>İçe aktarma yalnızca temiz bir kurulu profile yapılabilir. Taşınabilir çekimler yerinde kalır, kaynak hiçbir zaman değiştirilmez ve GameHQ içe aktarmayı tamamlamak için yeniden başlatılır.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
@@ -3784,7 +3782,6 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.theme.carbon.description">
       <location filename="src/ui/qml/themes/CarbonSkin.qml" line="7"></location>
       <source>Layered neutral grays and one bright blue. Minimal to a fault.</source>
-      <oldsource>Layered neutral greys and one bright blue. Minimal to a fault.</oldsource>
       <translation>Katmanlı nötr griler ve tek bir parlak mavi. Olabildiğince sade.</translation>
     </message>
     <message id="gamehq.settings.theme.carbon.label">
@@ -3795,7 +3792,6 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.theme.cobalt.description">
       <location filename="src/ui/qml/themes/CobaltSkin.qml" line="7"></location>
       <source>Soft grays, an indigo accent, pill-shaped controls, and quick transitions.</source>
-      <oldsource>Soft greys, indigo accent, pill-round and very fast.</oldsource>
       <translation>Yumuşak griler, çivit rengi vurgu, kapsül biçimli denetimler ve hızlı geçişler.</translation>
     </message>
     <message id="gamehq.settings.theme.cobalt.label">
@@ -3806,7 +3802,6 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.theme.dracula.description">
       <location filename="src/ui/qml/themes/DraculaSkin.qml" line="7"></location>
       <source>Purple-gray base with bright candy accents.</source>
-      <oldsource>Purple-grey base with bright candy accents.</oldsource>
       <translation>Parlak şeker tonlarında vurgulara sahip mor-gri taban.</translation>
     </message>
     <message id="gamehq.settings.theme.dracula.label">
@@ -3837,7 +3832,6 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.theme.harbor.description">
       <location filename="src/ui/qml/themes/HarborSkin.qml" line="8"></location>
       <source>Flat blue-gray with squared edges. Chrome gets out of the way.</source>
-      <oldsource>Flat blue-grey with squared edges. Chrome gets out of the way.</oldsource>
       <translation>Köşeli kenarlara sahip düz mavi-gri görünüm. Arayüz öğeleri geri planda kalır.</translation>
     </message>
     <message id="gamehq.settings.theme.harbor.label">
@@ -3868,7 +3862,6 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.theme.nord.description">
       <location filename="src/ui/qml/themes/NordSkin.qml" line="7"></location>
       <source>Desaturated arctic blue-grays. Calm and low-contrast.</source>
-      <oldsource>Desaturated arctic blue-greys. Calm and low-contrast.</oldsource>
       <translation>Düşük doygunluklu kutup mavisi ve gri tonları. Sakin ve düşük kontrastlı.</translation>
     </message>
     <message id="gamehq.settings.theme.nord.label">

@@ -963,7 +963,7 @@
       <translation>Импорт другого портативного профиля уже выполняется.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="446"></location>
+      <location filename="src/app/App.cpp" line="476"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Обновление отменено: захват не удалось безопасно завершить вовремя.</translation>
     </message>
@@ -1214,7 +1214,7 @@
       <translation>GameHQ не удалось опубликовать транзакцию обновления.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="421"></location>
+      <location filename="src/app/App.cpp" line="451"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ не удалось начать обслуживание обновления: %1</translation>
     </message>
@@ -2119,6 +2119,21 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Support GameHQ</source>
       <translation>Поддержать GameHQ</translation>
     </message>
+    <message id="gamehq.notification.capture_delete_failed.body_many">
+      <location filename="src/app/App.cpp" line="308"></location>
+      <source>Some files are open in other programs. Close them and try again.</source>
+      <translation>Некоторые файлы открыты в других программах. Закройте их и повторите попытку.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_failed.body_one">
+      <location filename="src/app/App.cpp" line="314"></location>
+      <source>The file is open in another program. Close it and try again.</source>
+      <translation>Файл открыт в другой программе. Закройте её и повторите попытку.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_failed.title">
+      <location filename="src/app/App.cpp" line="320"></location>
+      <source>Couldn't delete</source>
+      <translation>Не удалось удалить</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason">
       <location filename="src/app/App.cpp" line="280"></location>
       <source>Reason: %1</source>
@@ -2140,12 +2155,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Снимок экрана сохранён</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="329"></location>
+      <location filename="src/app/App.cpp" line="359"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ запущен с настройками по умолчанию. Предыдущий файл настроек сохранён, поэтому ничего не потеряно.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="324"></location>
+      <location filename="src/app/App.cpp" line="354"></location>
       <source>Settings could not be read</source>
       <translation>Не удалось прочитать настройки</translation>
     </message>

@@ -292,6 +292,36 @@ bool App::init()
             m_controller.get(), &AppController::updateForegroundGame);
     connect(m_framePump.get(), &FramePumpService::recordingStateChanged,
             m_controller.get(), &AppController::updateReplayBufferState);
+    // A delete that kept the row because the file is still locked used to be
+    // completely silent: the capture just stayed put with no explanation. Say
+    // it out loud, and name the only action that helps — close the other app.
+    connect(m_controller.get(), &AppController::captureDeletionFailed, this,
+            [this](int count) {
+                m_sounds->play(QStringLiteral("error"));
+                if (!m_config->value(ConfigKeys::NotificationsEnabled, true).toBool())
+                    return;
+                const QString body = count > 1
+                    ? NativeText::get(
+                          //: Body of the notification shown when several captures could not be
+                          //: deleted because their files are open elsewhere.
+                          //% "Some files are open in other programs. Close them and try again."
+                          QT_TRID_NOOP("gamehq.notification.capture_delete_failed.body_many"),
+                          "Some files are open in other programs. Close them and try again.")
+                    : NativeText::get(
+                          //: Body of the notification shown when a capture could not be deleted
+                          //: because its file is open elsewhere.
+                          //% "The file is open in another program. Close it and try again."
+                          QT_TRID_NOOP("gamehq.notification.capture_delete_failed.body_one"),
+                          "The file is open in another program. Close it and try again.");
+                m_notify->post(
+                    NativeText::get(
+                        //: Title of the notification shown when a capture could not be deleted.
+                        //% "Couldn't delete"
+                        QT_TRID_NOOP("gamehq.notification.capture_delete_failed.title"),
+                        "Couldn't delete"),
+                    body, QString(), QStringLiteral("error"), QDateTime::currentDateTime(), false);
+            });
+
     // Settings changed a replay.* key (fps/resolution/length): re-arm a
     // running buffer so it records with the new parameters immediately.
     connect(m_controller.get(), &AppController::replaySettingsChanged,

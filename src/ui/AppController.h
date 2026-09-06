@@ -10,6 +10,7 @@
 class CaptureDatabase;
 class CaptureScanner;
 class CaptureLibraryService;
+struct CaptureDeletionResult;
 class CaptureLocations;
 class ConfigManager;
 class CurrentGameService;
@@ -184,9 +185,13 @@ signals:
     // Emitted only after a previously-probed display changes HDR/topology state.
     void hdrDisplayConfigurationChanged();
     void desktopFocusRequested();
+    // At least one capture could not be deleted because its file is still in
+    // use. Carries how many failed, so the UI can word it for one or many.
+    void captureDeletionFailed(int count);
 
 private:
     void pollHdrStatus();
+    void reportDeletionFailures(const CaptureDeletionResult& result);
 
     CaptureDatabase* m_db;
     CaptureScanner* m_scanner;

@@ -40,6 +40,9 @@ date is assigned by the project owner and is deliberately not recorded yet.
 
 ### Fixed
 
+- Deleting a capture whose file is open in another program now says so. The
+  capture stays in the library instead of disappearing while its file remains
+  on disk, and a notification names the reason and what to do about it.
 - Sidebar rows now sit at the same distance from the panel's left and right
   edges.
 - Hovering the version badge now stays highlighted until the pointer leaves,
