@@ -2,10 +2,10 @@
   "$schema": "../../i18n/schema/release-note-linguistic-state.schema.json",
   "schema_version": 1,
   "candidate": "0.7.7",
-  "source_integrity": "sha256:53e6c2224d79f1384308936775afba9233d4833d7781a3b5d48869c048a76ace",
+  "source_integrity": "sha256:882ef67f9300d7ffdac3bf4ac5cd0a479eecd5a366254424b1cf2ca6ef065e40",
   "units": {
     "known-limitations-01": {
-      "source_hash": "4b6a8b64c978ce2d9a00dbfaddcf4cae378508f470c0eed22311c9a8f6c57275",
+      "source_hash": "8012a89d6514c160208263fe761fd76acbb96ec53e1bef0ed72b6c25b2312bef",
       "locales": {
         "en-US": "source_reviewed",
         "zh-Hans": "contextually_reviewed",

@@ -47,7 +47,7 @@
       "items": [
         {
           "id": "known-limitations-01",
-          "text": "All sixteen launch languages now include translated interface text. Contextual linguistic review is still required before release."
+          "text": "GameHQ is still an unsigned beta, so Windows may warn about an unknown publisher when you run Setup."
         }
       ]
     }

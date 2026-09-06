@@ -5,7 +5,7 @@
   "locale": "zh-Hant",
   "date": null,
   "mode": "localized",
-  "source_integrity": "sha256:53e6c2224d79f1384308936775afba9233d4833d7781a3b5d48869c048a76ace",
+  "source_integrity": "sha256:882ef67f9300d7ffdac3bf4ac5cd0a479eecd5a366254424b1cf2ca6ef065e40",
   "sections": [
     {
       "id": "added",
@@ -49,7 +49,7 @@
       "items": [
         {
           "id": "known-limitations-01",
-          "text": "現已為所有 16 種發行語言提供翻譯介面文字。每種語言仍需在發行前完成情境審查。"
+          "text": "GameHQ 仍是未簽署的測試版，因此執行安裝程式時 Windows 可能會警告發行者不明。"
         }
       ]
     }

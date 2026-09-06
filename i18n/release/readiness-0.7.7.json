@@ -32,7 +32,7 @@
     },
     {
       "path": "assets/release-notes/versions/0.7.7/en-US.json",
-      "sha256": "d66045da0f973a14db862248dc2f5f4e65dff8d782ace276fa24724dea9f7d61"
+      "sha256": "48b09b6f8837676a2a2f47c951bc26429c10eb4c6bee5206d5d95698c8f1afcb"
     },
     {
       "path": "i18n/release/corrections.json",
@@ -40,71 +40,71 @@
     },
     {
       "path": "assets/release-notes/linguistic-state.json",
-      "sha256": "cf8f9d3e08b6cae8e536a0c4d7ead2ae644a93cfce30f725a0660d1182439a11"
+      "sha256": "5f5e092eea6297e160a31808be0cbe20b586c0ea69211f2a4fc1073f00277e68"
     },
     {
       "path": "i18n/quality/reviews/en-US.json",
-      "sha256": "badca53c5e2e12f727c93f040476955a88e2c3e468b455088205dea2e1321ea6"
+      "sha256": "b909a0ac6d69dee8b681f1319ca4a7b7321c3592fc9465a4cd8cb397652b3ef2"
     },
     {
       "path": "i18n/quality/reviews/zh-Hans.json",
-      "sha256": "d47d8919b8f0797bd6bc32ea74678ba41fa3609a25a5061a5cea1d2cb5e8d0b4"
+      "sha256": "6e33c6fc0dc0ff526c601bfbfd90b635cd41badc680e16dc40b6df14c0c88f6c"
     },
     {
       "path": "i18n/quality/reviews/ru-RU.json",
-      "sha256": "6cc764a66467d859be345d29157cc6c18b33ed0b82220f7ff33783752f3df157"
+      "sha256": "18fde08dae1d0fc400e5a166e03ba540d6a01779298b86ecaceddb8fe475e3ae"
     },
     {
       "path": "i18n/quality/reviews/es-ES.json",
-      "sha256": "10e27c037ddd75e2a9b9d484410d20f4a3ecd07cc3164b739bccc28f8d5c4324"
+      "sha256": "fde0e89939df13747b09d6eb0617a606db6c013d244a8d8079227edf58aae460"
     },
     {
       "path": "i18n/quality/reviews/pt-BR.json",
-      "sha256": "12b2d73e5b1586debb86d9b793779c61e2f0b7b9ce212ade3b3afa1a86ceea49"
+      "sha256": "ed51bae0a76555767364c9e3fba3545445ec421f45958b4d588bca3745a6d419"
     },
     {
       "path": "i18n/quality/reviews/de-DE.json",
-      "sha256": "42671b69d3ea7fdd09e267ad18ae44373fec99b6a1520ca22e8ffd7d93931fa5"
+      "sha256": "68b2be8413f9c3bc76da60a0047d88f82cbd4fd78f863b77ba1d72be4281e083"
     },
     {
       "path": "i18n/quality/reviews/ja-JP.json",
-      "sha256": "386336fb5afec2f1225f8f11640b808613afb9024f8a364028d43de5b8c65206"
+      "sha256": "4d3e5d976ac993635edeeaba2c43b8e97dc17fb5a1911b856822fdeca890bb44"
     },
     {
       "path": "i18n/quality/reviews/fr-FR.json",
-      "sha256": "1d79356a44370821ef3db4446d61e980d0191e5b4f201887e98c533f3cecab24"
+      "sha256": "495d2e7a5848067e12706880d2d1843f671f2610474347d3291d0888fa1fce5b"
     },
     {
       "path": "i18n/quality/reviews/pl-PL.json",
-      "sha256": "a07b87b8a28954f205aa660c1288d3e1b7a04ecd004d0ff2632f69722da9dd39"
+      "sha256": "3847f028d9ba5fe6b59f8ce6d28837748efae3b619ddd8671e44a657d0c68dc5"
     },
     {
       "path": "i18n/quality/reviews/ko-KR.json",
-      "sha256": "fd82d17242bd7147280e6c8a9520b36a82db6c885eda54d5452ae08992819506"
+      "sha256": "fb7697c3da98d8a3515e2595231a4d30412506510d1873120681cad1f0909fb7"
     },
     {
       "path": "i18n/quality/reviews/zh-Hant.json",
-      "sha256": "9b50b79f184ebc790e26777dcc81354f5ff34ef9049a4d5123417b47ce0159fb"
+      "sha256": "6d7e897deebe6b60039a47bd6f3c8edb6e8a73a090293ec959c72492ee929944"
     },
     {
       "path": "i18n/quality/reviews/tr-TR.json",
-      "sha256": "c00fd520ae011541cb704bf76061ee0159a157c79df8b592ba88387815d46e9f"
+      "sha256": "07b5efbb8c9519db3464b732321a7dd43b63bf4e2ce3e064a9b1a68a85383d4a"
     },
     {
       "path": "i18n/quality/reviews/th-TH.json",
-      "sha256": "0021d05c1e0aee6a89047da7e539424c200cf4ca1424967cfc126f17d44829ce"
+      "sha256": "a3a1aace6884b40485c653daf22f6ee5d0b3d4fedd856cccbe2b78719dd09492"
     },
     {
       "path": "i18n/quality/reviews/es-419.json",
-      "sha256": "573f02371ee4eaba6202f730eb16c6527ae7f99c7722ee0c5e1179b76cbc86cb"
+      "sha256": "16fd4d071ed065044459041e8fbecbbf0bcb800c9052b1c0b88f91155a2d8154"
     },
     {
       "path": "i18n/quality/reviews/uk-UA.json",
-      "sha256": "c988db78fd696b9c537ecddbe44ad2b764f29036bab9014254f2185c4a208ac8"
+      "sha256": "b30cbe2de2da29daeefaa45aa96b351e20014caaada85f209d3214eff8405584"
     },
     {
       "path": "i18n/quality/reviews/it-IT.json",
-      "sha256": "9d59b2b9afae75febc67bc639b8eecc194c69e4173d8957f2b61fca65c341210"
+      "sha256": "544eb484b6139e64144aa4c0c41c2ccef2bb48d41013f3322eb675b207edef8e"
     }
   ],
   "portfolio": {
@@ -216,7 +216,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/en-US.json",
-        "sha256": "d66045da0f973a14db862248dc2f5f4e65dff8d782ace276fa24724dea9f7d61"
+        "sha256": "48b09b6f8837676a2a2f47c951bc26429c10eb4c6bee5206d5d95698c8f1afcb"
       },
       "translation_state_counts": {
         "human_reviewed": 834
@@ -255,7 +255,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/en-US.json",
-          "sha256": "badca53c5e2e12f727c93f040476955a88e2c3e468b455088205dea2e1321ea6"
+          "sha256": "b909a0ac6d69dee8b681f1319ca4a7b7321c3592fc9465a4cd8cb397652b3ef2"
         }
       }
     },
@@ -268,7 +268,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/zh-Hans.json",
-        "sha256": "a2b71359372e1dfe68bd4e2151621419307be18fb460dee40f3f8e32bb64df08"
+        "sha256": "647812e93ad623140fdf6e17de863186d6dc9e07c024f23160ffe98f74b4c942"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -307,7 +307,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/zh-Hans.json",
-          "sha256": "d47d8919b8f0797bd6bc32ea74678ba41fa3609a25a5061a5cea1d2cb5e8d0b4"
+          "sha256": "6e33c6fc0dc0ff526c601bfbfd90b635cd41badc680e16dc40b6df14c0c88f6c"
         }
       }
     },
@@ -320,7 +320,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/ru-RU.json",
-        "sha256": "ca2c81216d7c1598281b1cbe472169868ca45eff674bc1dcd2ce7c752f6fab94"
+        "sha256": "d1ac27ea374cae49852b132595fe50fcba5d2aa6628b2be58901dd6dee1289d4"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -359,7 +359,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/ru-RU.json",
-          "sha256": "6cc764a66467d859be345d29157cc6c18b33ed0b82220f7ff33783752f3df157"
+          "sha256": "18fde08dae1d0fc400e5a166e03ba540d6a01779298b86ecaceddb8fe475e3ae"
         }
       }
     },
@@ -372,7 +372,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/es-ES.json",
-        "sha256": "666b56b0b82678f95a24adafe84bcbdb8f0e5a7d03c7b62f7b6b6946188aa0be"
+        "sha256": "6ac1330d89dedfd8983e6051f31925b56eee8c738aff086e2ef1a863c31fe0c1"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -411,7 +411,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/es-ES.json",
-          "sha256": "10e27c037ddd75e2a9b9d484410d20f4a3ecd07cc3164b739bccc28f8d5c4324"
+          "sha256": "fde0e89939df13747b09d6eb0617a606db6c013d244a8d8079227edf58aae460"
         }
       }
     },
@@ -424,7 +424,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/pt-BR.json",
-        "sha256": "62063f502e9fd6f9b2665536f15572475a6da85d4666d4b965d2c923cb428bd9"
+        "sha256": "108f620dfa2f4e55714f2bcd8c7b004b0930d376f921a34aefccca02845354e2"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -463,7 +463,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/pt-BR.json",
-          "sha256": "12b2d73e5b1586debb86d9b793779c61e2f0b7b9ce212ade3b3afa1a86ceea49"
+          "sha256": "ed51bae0a76555767364c9e3fba3545445ec421f45958b4d588bca3745a6d419"
         }
       }
     },
@@ -476,7 +476,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/de-DE.json",
-        "sha256": "304a395f88af55fcee160a9cb765656801d34b1ab93754f121bdfa728d5a5775"
+        "sha256": "4823be17b55877c0e6a152f5aaac8cd344842a89b308dd990cc6d0f7b4e0ab27"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -515,7 +515,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/de-DE.json",
-          "sha256": "42671b69d3ea7fdd09e267ad18ae44373fec99b6a1520ca22e8ffd7d93931fa5"
+          "sha256": "68b2be8413f9c3bc76da60a0047d88f82cbd4fd78f863b77ba1d72be4281e083"
         }
       }
     },
@@ -528,7 +528,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/ja-JP.json",
-        "sha256": "3cc2be99f18f0f34f80f51e501ede985de93ba16539bfe13b9c6dd23c903cdb2"
+        "sha256": "63ebfaac0f7919eca4a48c5c7ca12779bf665a508c482deececc3c0e45128b34"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -567,7 +567,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/ja-JP.json",
-          "sha256": "386336fb5afec2f1225f8f11640b808613afb9024f8a364028d43de5b8c65206"
+          "sha256": "4d3e5d976ac993635edeeaba2c43b8e97dc17fb5a1911b856822fdeca890bb44"
         }
       }
     },
@@ -580,7 +580,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/fr-FR.json",
-        "sha256": "eaad1ed7e49d025b4087bf8412c8d8dbc8057e223560652be5824cb02222b9d5"
+        "sha256": "250339548919d499c13f8d1a35fdd7e1eb009465c3530e704fa2fd4fd477d038"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -619,7 +619,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/fr-FR.json",
-          "sha256": "1d79356a44370821ef3db4446d61e980d0191e5b4f201887e98c533f3cecab24"
+          "sha256": "495d2e7a5848067e12706880d2d1843f671f2610474347d3291d0888fa1fce5b"
         }
       }
     },
@@ -632,7 +632,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/pl-PL.json",
-        "sha256": "b67aebcc15c6f8806443262962d55b85a064a3fa355f599dbbd4b8f9865fdb49"
+        "sha256": "66ceca44efcd40d772d244ff1e4188d6d01c5922283de9c5cb70bede2c2661ff"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -671,7 +671,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/pl-PL.json",
-          "sha256": "a07b87b8a28954f205aa660c1288d3e1b7a04ecd004d0ff2632f69722da9dd39"
+          "sha256": "3847f028d9ba5fe6b59f8ce6d28837748efae3b619ddd8671e44a657d0c68dc5"
         }
       }
     },
@@ -684,7 +684,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/ko-KR.json",
-        "sha256": "c3cdf54bc0a69c24d189174bea1f884d1afcfb9662b5fd59ded49a6c2664c4c2"
+        "sha256": "b865a1da13e9cb6040e5212cbe4d8a9318c9f41c8a9a01d18fc266394054d822"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -723,7 +723,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/ko-KR.json",
-          "sha256": "fd82d17242bd7147280e6c8a9520b36a82db6c885eda54d5452ae08992819506"
+          "sha256": "fb7697c3da98d8a3515e2595231a4d30412506510d1873120681cad1f0909fb7"
         }
       }
     },
@@ -736,7 +736,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/zh-Hant.json",
-        "sha256": "bd799afecc2f28f78e3a358907c7f2a89965ee150e858f886d86812b71e4f817"
+        "sha256": "6fab73d4b943f6c0fb279c4fad2260a08d4182c275a1b8f1cc0b63bd33e715b1"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -775,7 +775,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/zh-Hant.json",
-          "sha256": "9b50b79f184ebc790e26777dcc81354f5ff34ef9049a4d5123417b47ce0159fb"
+          "sha256": "6d7e897deebe6b60039a47bd6f3c8edb6e8a73a090293ec959c72492ee929944"
         }
       }
     },
@@ -788,7 +788,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/tr-TR.json",
-        "sha256": "182240ed8963c6885731e94390d2dde95ad04989865b956b7732c143b30c7618"
+        "sha256": "9c18ec222c82db105d6691c94236d22e4b8afac42416298f797bb67e38f9151f"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -827,7 +827,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/tr-TR.json",
-          "sha256": "c00fd520ae011541cb704bf76061ee0159a157c79df8b592ba88387815d46e9f"
+          "sha256": "07b5efbb8c9519db3464b732321a7dd43b63bf4e2ce3e064a9b1a68a85383d4a"
         }
       }
     },
@@ -840,7 +840,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/th-TH.json",
-        "sha256": "fb29f61cbb34be86b09222f044cd6dc5cc75b17f125fe81061a1f01f82df5efc"
+        "sha256": "95a4970897d92f62b35c1c35987364594fff6adcead42a98f924bc337be9af8b"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -879,7 +879,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/th-TH.json",
-          "sha256": "0021d05c1e0aee6a89047da7e539424c200cf4ca1424967cfc126f17d44829ce"
+          "sha256": "a3a1aace6884b40485c653daf22f6ee5d0b3d4fedd856cccbe2b78719dd09492"
         }
       }
     },
@@ -892,7 +892,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/es-419.json",
-        "sha256": "a8f932afa17ccc217a6caff35f716c96e9a9c387c134fac2665d936bc65ad4b0"
+        "sha256": "4b7ca764f31219c22e8b6aaee1956d54ae33eafe72d888211a37c7fbebbf2ff0"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -931,7 +931,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/es-419.json",
-          "sha256": "573f02371ee4eaba6202f730eb16c6527ae7f99c7722ee0c5e1179b76cbc86cb"
+          "sha256": "16fd4d071ed065044459041e8fbecbbf0bcb800c9052b1c0b88f91155a2d8154"
         }
       }
     },
@@ -944,7 +944,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/uk-UA.json",
-        "sha256": "795f4077e2ed1b98e9cae82dd719e1575bbd2b225d4cee172497e296cf9f5ab2"
+        "sha256": "2f603a9d17ae108b13cb72bd944d786ccda19171e3763e1ec4fda818c455f187"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -983,7 +983,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/uk-UA.json",
-          "sha256": "c988db78fd696b9c537ecddbe44ad2b764f29036bab9014254f2185c4a208ac8"
+          "sha256": "b30cbe2de2da29daeefaa45aa96b351e20014caaada85f209d3214eff8405584"
         }
       }
     },
@@ -996,7 +996,7 @@
       },
       "launch_release_note": {
         "path": "assets/release-notes/versions/0.7.7/it-IT.json",
-        "sha256": "6b2026aa7dc01669782a3bac6b2b7c63cfcb48f7f10b2728039e7f0ecf7cd8cb"
+        "sha256": "e031d8073390271fc3becb5d89d2bf1f3d1517dd4175cdfc6e8cd718bf750bad"
       },
       "translation_state_counts": {
         "contextually_reviewed": 834
@@ -1035,7 +1035,7 @@
         "authority": "p8-3",
         "artifact": {
           "path": "i18n/quality/reviews/it-IT.json",
-          "sha256": "9d59b2b9afae75febc67bc639b8eecc194c69e4173d8957f2b61fca65c341210"
+          "sha256": "544eb484b6139e64144aa4c0c41c2ccef2bb48d41013f3322eb675b207edef8e"
         }
       }
     }
