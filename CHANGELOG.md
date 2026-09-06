@@ -49,12 +49,6 @@ date is assigned by the project owner and is deliberately not recorded yet.
 - Hovering the version badge now stays highlighted until the pointer leaves,
   without showing a redundant tooltip.
 
-### Known limitations
-
-- Twelve languages ship with translated interface text. Italian, Latin American
-  Spanish, Thai and Ukrainian can already be selected and currently show the
-  complete English text.
-
 ## [0.7.6] - 2026-08-31
 
 ### Fixed

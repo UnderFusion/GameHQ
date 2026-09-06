@@ -22,7 +22,12 @@ overlay, and Settings — can be driven from the controller alone.</p>
 <p align="center"><sub>Using Playnite? <a href="https://github.com/underfusion/GameHQ/releases/download/playnite-v0.4.12/GameHQ_Playnite_Integration_0_4_12.pext">Get the GameHQ Integration &rarr;</a></sub></p>
 <!-- public-downloads:end -->
 
+<p><strong>Available in 16 languages · Controller-first · No telemetry · Open source</strong></p>
+
 <p>⭐ Enjoying GameHQ? Star the repository — it helps more players discover the project.</p>
+
+<p>❤️ <a href="https://ko-fi.com/underfusion"><strong>Support GameHQ development</strong></a> — GameHQ is built by one
+developer. If it is useful to you, you can support continued development.</p>
 
 </div>
 
@@ -49,6 +54,10 @@ overlay, and Settings — can be driven from the controller alone.</p>
   over your game; hold again to send it back and return focus to the game.
 - **One organized library** — GameHQ captures alongside watched Steam, Game Bar,
   NVIDIA, and OBS folders.
+- **Speaks your language** — 16 interface languages across the app, overlay,
+  Settings, tray, installer, and release notes. GameHQ follows your Windows
+  language on first start, and switching language applies immediately without a
+  restart.
 - **Private and portable** — no account, telemetry, background service, or
   game-process injection.
 - Configurable replay duration, quality, frame rate, and resolution.
@@ -58,6 +67,17 @@ overlay, and Settings — can be driven from the controller alone.</p>
   overlay dimming.
 - Thumbnail zoom and controller-friendly bulk selection in the capture library.
 - Immediate gallery refresh after new captures and clean overlay focus handling.
+
+## Languages
+
+GameHQ is localized across the desktop interface, the in-game overlay, Settings,
+the tray menu, the installer, and the release notes. The language is picked from
+Windows on first start and can be changed at any time in **Settings > General**;
+the change applies immediately, without restarting.
+
+English · 简体中文 · 繁體中文 · Русский · Español (España) · Español (Latinoamérica) ·
+Português (Brasil) · Deutsch · 日本語 · Français · Polski · 한국어 · Türkçe · ไทย ·
+Українська · Italiano
 
 ## Quick controls
 
@@ -156,6 +176,13 @@ powershell -ExecutionPolicy Bypass -File packaging/make-dist.ps1
 - Windows 10 version 1903 or newer, 64-bit.
 - A GPU and driver supporting Windows Graphics Capture and H.264 encoding.
 - Enough free disk space for the configured rolling buffer and saved captures.
+
+## Support the project
+
+GameHQ is developed independently and stays open source, with no account, no
+telemetry, and no paid tier. If you would like to support continued development,
+bug fixing, and new features, you can support the creator at
+[ko-fi.com/underfusion](https://ko-fi.com/underfusion).
 
 ## Documentation
 
