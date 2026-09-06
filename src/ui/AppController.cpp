@@ -606,14 +606,15 @@ void AppController::showInFolder(int row) { showInFolderFrom(m_gallery, row); }
 
 void AppController::deleteCaptures(const QVariantList& rows)
 {
-    if (!m_captureLibrary->deleteCaptures(m_gallery, rows))
-        return;
-    emit gamesChanged();
+    // Only a library row that really went away changes the game list; a media
+    // file removed without its row leaves the list exactly as it was.
+    if (m_captureLibrary->deleteCaptures(m_gallery, rows).libraryChanged())
+        emit gamesChanged();
 }
 
 void AppController::deleteCaptureFrom(GalleryModel* model, int row)
 {
-    if (m_captureLibrary->deleteCapture(model, row))
+    if (m_captureLibrary->deleteCapture(model, row).libraryChanged())
         emit gamesChanged();
 }
 
