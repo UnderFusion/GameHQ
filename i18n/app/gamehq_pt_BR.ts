@@ -961,7 +961,7 @@
       <translation>Outra importação de perfil portátil já está em andamento.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="476"></location>
+      <location filename="src/app/App.cpp" line="479"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>A atualização foi cancelada porque as tarefas de captura não foram concluídas com segurança a tempo.</translation>
     </message>
@@ -1212,7 +1212,7 @@
       <translation>O GameHQ não conseguiu publicar a transação da atualização.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="451"></location>
+      <location filename="src/app/App.cpp" line="454"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>O GameHQ não conseguiu iniciar a manutenção da atualização: %1</translation>
     </message>
@@ -2115,17 +2115,17 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
       <translation>Apoie o GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="308"></location>
-      <source>Some files are open in other programs. Close them and try again.</source>
-      <translation>Alguns arquivos estão abertos em outros programas. Feche-os e tente novamente.</translation>
+      <location filename="src/app/App.cpp" line="310"></location>
+      <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
+      <translation>Não foi possível excluir alguns arquivos. Talvez eles estejam sendo usados por outros programas. Feche os programas que estiverem usando esses arquivos e tente novamente.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="314"></location>
-      <source>The file is open in another program. Close it and try again.</source>
-      <translation>O arquivo está aberto em outro programa. Feche-o e tente novamente.</translation>
+      <location filename="src/app/App.cpp" line="317"></location>
+      <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
+      <translation>Não foi possível excluir o arquivo. Talvez ele esteja sendo usado por outro programa. Feche o programa que estiver usando o arquivo e tente novamente.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="320"></location>
+      <location filename="src/app/App.cpp" line="323"></location>
       <source>Couldn't delete</source>
       <translation>Não foi possível excluir</translation>
     </message>
@@ -2150,12 +2150,12 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
       <translation>Captura de tela salva</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="359"></location>
+      <location filename="src/app/App.cpp" line="362"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>O GameHQ iniciou com as configurações padrão. Seu arquivo de configurações anterior foi mantido para que nada fosse perdido.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="354"></location>
+      <location filename="src/app/App.cpp" line="357"></location>
       <source>Settings could not be read</source>
       <translation>Não foi possível ler as configurações</translation>
     </message>

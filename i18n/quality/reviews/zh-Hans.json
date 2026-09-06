@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review_plus_targeted_recovery",
     "draft_provider": "machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-07T00:40:00Z"
+    "recorded_at": "2026-09-07T01:20:00Z"
   },
   "baseline": {
     "path": "git:1b3318c37f114ac3a2096a2457e906b118cd4033:i18n/app/gamehq_zh_Hans.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_zh_Hans.ts",
-    "sha256": "266760d993f76ef08bcef0294637cd2056c107a555150486834246ec6511536c",
+    "sha256": "c90bf62fd0614fb5b45cc8637f9acbc0f0d4c752cbb9feb5b32e6a3ca0c4272e",
     "message_count": 834
   },
   "coverage": [
@@ -3696,28 +3696,28 @@
     },
     {
       "id": "gamehq.notification.capture_delete_failed.body_many",
-      "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-      "translation_hash": "0b4ab7dbbb0d66cf954a1e613b3eab51c656c588194289175ff3a5188f5ddbba",
+      "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+      "translation_hash": "bb1a28a52422c247cfd865774ee131227c05b2b7fdb0cd465460c89700cafba1",
       "locations": [
-        "src/app/App.cpp:308"
+        "src/app/App.cpp:310"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.notification.capture_delete_failed.body_one",
-      "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-      "translation_hash": "ca89e41ebee8b800e8c4f7cd925bb19ad9634dc3efe30065ca37c832b8441a0f",
+      "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+      "translation_hash": "b34ca82510d6119c683edfbd9ba3cddd7d1a71367e673f68b810fb7f3dc57586",
       "locations": [
-        "src/app/App.cpp:314"
+        "src/app/App.cpp:317"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.notification.capture_delete_failed.title",
       "source_hash": "21d8d5429f00e9e3563b1803f381b14f771ed7aa21a7ac58cfff64ab5824520c",
       "translation_hash": "c71bdb367b93194f2f36a5f7d1ba89888d01770293f73729a99c3e308fcbd624",
       "locations": [
-        "src/app/App.cpp:320"
+        "src/app/App.cpp:323"
       ],
       "decision": "accepted"
     },
@@ -15280,13 +15280,39 @@
       "category": "release_note_accuracy",
       "reason": "The note used a different term for the tray menu than the application UI, which names it 托盘.",
       "terminology_decision": "tray menu is 托盘菜单, matching the application catalog."
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_one",
+      "surface": "application",
+      "before": [
+        "该文件已在其他程序中打开。请关闭该程序后重试。"
+      ],
+      "after": [
+        "无法删除该文件。它可能正被其他程序使用。请关闭正在使用该文件的程序后重试。"
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
+      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_many",
+      "surface": "application",
+      "before": [
+        "部分文件已在其他程序中打开。请关闭这些程序后重试。"
+      ],
+      "after": [
+        "部分文件无法删除。它们可能正被其他程序使用。请关闭正在使用这些文件的程序后重试。"
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
+      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
     }
   ],
   "surfaces": [
     {
       "surface": "application",
       "path": "i18n/app/gamehq_zh_Hans.ts",
-      "sha256": "266760d993f76ef08bcef0294637cd2056c107a555150486834246ec6511536c",
+      "sha256": "c90bf62fd0614fb5b45cc8637f9acbc0f0d4c752cbb9feb5b32e6a3ca0c4272e",
       "reviewed_units": 834
     },
     {

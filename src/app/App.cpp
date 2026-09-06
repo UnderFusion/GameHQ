@@ -292,9 +292,10 @@ bool App::init()
             m_controller.get(), &AppController::updateForegroundGame);
     connect(m_framePump.get(), &FramePumpService::recordingStateChanged,
             m_controller.get(), &AppController::updateReplayBufferState);
-    // A delete that kept the row because the file is still locked used to be
-    // completely silent: the capture just stayed put with no explanation. Say
-    // it out loud, and name the only action that helps — close the other app.
+    // A delete that kept the row used to be completely silent: the capture just
+    // stayed put with no explanation. Say it out loud. A failed QFile::remove is
+    // not proof of a lock — permissions, read-only files and antivirus hold-offs
+    // land here too — so the wording offers the likely cause without claiming it.
     connect(m_controller.get(), &AppController::captureDeletionFailed, this,
             [this](int count) {
                 m_sounds->play(QStringLiteral("error"));
@@ -303,16 +304,18 @@ bool App::init()
                 const QString body = count > 1
                     ? NativeText::get(
                           //: Body of the notification shown when several captures could not be
-                          //: deleted because their files are open elsewhere.
-                          //% "Some files are open in other programs. Close them and try again."
+                          //: deleted. The cause is not known for certain, so the text stays
+                          //: tentative and names the action most likely to help.
+                          //% "Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again."
                           QT_TRID_NOOP("gamehq.notification.capture_delete_failed.body_many"),
-                          "Some files are open in other programs. Close them and try again.")
+                          "Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.")
                     : NativeText::get(
-                          //: Body of the notification shown when a capture could not be deleted
-                          //: because its file is open elsewhere.
-                          //% "The file is open in another program. Close it and try again."
+                          //: Body of the notification shown when a capture could not be deleted.
+                          //: The cause is not known for certain, so the text stays tentative and
+                          //: names the action most likely to help.
+                          //% "The file couldn't be deleted. It may be in use by another program. Close any program using it and try again."
                           QT_TRID_NOOP("gamehq.notification.capture_delete_failed.body_one"),
-                          "The file is open in another program. Close it and try again.");
+                          "The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.");
                 m_notify->post(
                     NativeText::get(
                         //: Title of the notification shown when a capture could not be deleted.

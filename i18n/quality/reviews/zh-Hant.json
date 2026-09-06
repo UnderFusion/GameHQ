@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "reviewed Simplified Chinese source converted as a draft, followed by complete Traditional Chinese contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-07T00:40:00Z"
+    "recorded_at": "2026-09-07T01:20:00Z"
   },
   "baseline": {
     "path": "git:a40b69040da5398245bd7149a5354dd87df21e2d:i18n/app/gamehq_zh_Hant.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_zh_Hant.ts",
-    "sha256": "05bd3f6082bdd673cd251f3ef1936bf37c48f2077ce29369b00c438ce93839f2",
+    "sha256": "bf2fc7fb37923d62c8198abb675a49e3aaba4533d08e3676470a1ba71d90480c",
     "message_count": 834
   },
   "coverage": [
@@ -3696,28 +3696,28 @@
     },
     {
       "id": "gamehq.notification.capture_delete_failed.body_many",
-      "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-      "translation_hash": "d824fdaee7109768b5f3112a0101e24a3fd2acd9cd2da88c942c8ba958d172bf",
+      "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+      "translation_hash": "a1f2d8f3c65798107040753a17efcaeb2c82c097529025520717d7df0c6b650c",
       "locations": [
-        "src/app/App.cpp:308"
+        "src/app/App.cpp:310"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.notification.capture_delete_failed.body_one",
-      "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-      "translation_hash": "33b70b40fa6048574c6df5dbdd2c1d5b0fb366af0cd61f26db3a38bde622a90e",
+      "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+      "translation_hash": "2b6e0fddc25bd4490c8087b5addbad89d8e7d66c748523a1daa0e202a17ce046",
       "locations": [
-        "src/app/App.cpp:314"
+        "src/app/App.cpp:317"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.notification.capture_delete_failed.title",
       "source_hash": "21d8d5429f00e9e3563b1803f381b14f771ed7aa21a7ac58cfff64ab5824520c",
       "translation_hash": "4d4d71971265a5af3312fd9e73d25e06514a951ee8f8d7e313b86746c5a8133f",
       "locations": [
-        "src/app/App.cpp:320"
+        "src/app/App.cpp:323"
       ],
       "decision": "accepted"
     },
@@ -13841,13 +13841,39 @@
       "category": "register_consistency",
       "reason": "Uses a consistent neutral second-person register across the Traditional Chinese release notes.",
       "terminology_decision": "Release messaging avoids mixed 你/您 forms by using neutral references to the selected language and choice."
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_one",
+      "surface": "application",
+      "before": [
+        "該檔案已在其他程式中開啟。請關閉該程式後再試一次。"
+      ],
+      "after": [
+        "無法刪除該檔案。它可能正被其他程式使用。請關閉正在使用該檔案的程式後再試一次。"
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
+      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_many",
+      "surface": "application",
+      "before": [
+        "部分檔案已在其他程式中開啟。請關閉這些程式後再試一次。"
+      ],
+      "after": [
+        "部分檔案無法刪除。它們可能正被其他程式使用。請關閉正在使用這些檔案的程式後再試一次。"
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
+      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
     }
   ],
   "surfaces": [
     {
       "surface": "application",
       "path": "i18n/app/gamehq_zh_Hant.ts",
-      "sha256": "05bd3f6082bdd673cd251f3ef1936bf37c48f2077ce29369b00c438ce93839f2",
+      "sha256": "bf2fc7fb37923d62c8198abb675a49e3aaba4533d08e3676470a1ba71d90480c",
       "reviewed_units": 834
     },
     {

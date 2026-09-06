@@ -951,7 +951,7 @@
       <translation>Another portable-profile import is already running.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="476"></location>
+      <location filename="src/app/App.cpp" line="479"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>The update was canceled because capture work did not finish safely in time.</translation>
     </message>
@@ -1202,7 +1202,7 @@
       <translation>GameHQ could not publish the update transaction.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="451"></location>
+      <location filename="src/app/App.cpp" line="454"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ could not begin update maintenance: %1</translation>
     </message>
@@ -2105,17 +2105,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Support GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="308"></location>
-      <source>Some files are open in other programs. Close them and try again.</source>
-      <translation>Some files are open in other programs. Close them and try again.</translation>
+      <location filename="src/app/App.cpp" line="310"></location>
+      <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
+      <translation>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="314"></location>
-      <source>The file is open in another program. Close it and try again.</source>
-      <translation>The file is open in another program. Close it and try again.</translation>
+      <location filename="src/app/App.cpp" line="317"></location>
+      <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
+      <translation>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="320"></location>
+      <location filename="src/app/App.cpp" line="323"></location>
       <source>Couldn't delete</source>
       <translation>Couldn't delete</translation>
     </message>
@@ -2140,12 +2140,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Screenshot saved</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="359"></location>
+      <location filename="src/app/App.cpp" line="362"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="354"></location>
+      <location filename="src/app/App.cpp" line="357"></location>
       <source>Settings could not be read</source>
       <translation>Settings could not be read</translation>
     </message>

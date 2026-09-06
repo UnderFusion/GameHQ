@@ -959,7 +959,7 @@
       <translation>已有另一個可攜式設定檔匯入正在執行。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="476"></location>
+      <location filename="src/app/App.cpp" line="479"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>由於擷取任務未能及時安全完成，更新已取消。</translation>
     </message>
@@ -1210,7 +1210,7 @@
       <translation>GameHQ 無法完成更新交易。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="451"></location>
+      <location filename="src/app/App.cpp" line="454"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ 無法開始更新維護：%1</translation>
     </message>
@@ -2110,17 +2110,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>支援 GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="308"></location>
-      <source>Some files are open in other programs. Close them and try again.</source>
-      <translation>部分檔案已在其他程式中開啟。請關閉這些程式後再試一次。</translation>
+      <location filename="src/app/App.cpp" line="310"></location>
+      <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
+      <translation>部分檔案無法刪除。它們可能正被其他程式使用。請關閉正在使用這些檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="314"></location>
-      <source>The file is open in another program. Close it and try again.</source>
-      <translation>該檔案已在其他程式中開啟。請關閉該程式後再試一次。</translation>
+      <location filename="src/app/App.cpp" line="317"></location>
+      <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
+      <translation>無法刪除該檔案。它可能正被其他程式使用。請關閉正在使用該檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="320"></location>
+      <location filename="src/app/App.cpp" line="323"></location>
       <source>Couldn't delete</source>
       <translation>無法刪除</translation>
     </message>
@@ -2145,12 +2145,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>螢幕截圖已儲存</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="359"></location>
+      <location filename="src/app/App.cpp" line="362"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 已使用預設設定啟動。系統保留了之前的設定檔案，因此沒有遺失任何內容。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="354"></location>
+      <location filename="src/app/App.cpp" line="357"></location>
       <source>Settings could not be read</source>
       <translation>無法讀取設定</translation>
     </message>

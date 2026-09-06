@@ -4388,7 +4388,7 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -4399,7 +4399,7 @@
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -14424,25 +14424,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "d5ce4507e9c2dfe1833cc70c918ff7a6102b786aa8ec5685b590fb57a45e6b31",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "679d4015559729e9e1fb9d5c915315abe8149e8414b9c56fc12a55d73710c157",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "9932f265c095b02d23ed11d32cde493c4415368c10eab0c5512b912e735a3623",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "eef456fa7413e96af1468e6bfad7f756caf7271c197c9da626ce921b7286c530",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -14453,7 +14453,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -23625,8 +23625,8 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "ffd7eba630fdb0725270c372ce6be98c41dd4b67e381d66e9ec318f01d79def2",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "7f9bae005cc1b81ae06a2193954c4b301d602fc67308f5a78d1df8af1ddff389",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -23636,8 +23636,8 @@
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "66782733dfc599a6d686361baeb1281caf827470d21d302a8aabed350a422b66",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "12bc1d6de7b397fb89a2b1df73604ae0f3db593cd0fa08afd975c2629d988221",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -32826,25 +32826,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "7d9ce8efb6c5b39152754e370b192c9f06e0550889475b9fccc0fe5cfce3f0f9",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "9c24135e26c60f1996c3fab0045c91aee71f732c5dbcebb243ccb75d34c3e7cc",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "54718e82b161a7ba090d0f5eb582a0c9ea96dbd879021c7008dac7161ae57bbf",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "39941268bbba91d9480b6e771386d60709d81c64651e50f4c272c1c2ab7910dd",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -32855,7 +32855,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -42027,25 +42027,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "7d9ce8efb6c5b39152754e370b192c9f06e0550889475b9fccc0fe5cfce3f0f9",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "9c24135e26c60f1996c3fab0045c91aee71f732c5dbcebb243ccb75d34c3e7cc",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "54718e82b161a7ba090d0f5eb582a0c9ea96dbd879021c7008dac7161ae57bbf",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "39941268bbba91d9480b6e771386d60709d81c64651e50f4c272c1c2ab7910dd",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -42056,7 +42056,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -51228,25 +51228,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "7c7773d34b6e6d0d48f6508d81ae52eae860c624e107ce5add4ae6ddc41fcbd8",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "be160bda88bf3716fe9e657338eb5cedbf0d875ec6d816d86c66a32d8bbfc018",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "1e84afd972aea7ea7be26a165241635a21098ec16aa79f3ee2b753ab24838474",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "d1db99742deb7a26a613016ae9ab3d0c0c2f9f04a06241d326a8ac25afd02a5f",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -51257,7 +51257,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -60429,25 +60429,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "7ab242809ef3fb16491bdf58649391555684a616e743794d11032dd11b22f1e8",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "2da58bc93b0b1d068230694951114d39b73edc776d6650b7d40b906ba3d18e26",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "2c87e92f0e76b16390138d7aabf20c4f3e28845648d75ed89318e79cbe45ace0",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "dea51ee3e6b816e218047b145f98f0bde7576a3a8044fc7560aee9d5d2631279",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -60458,7 +60458,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -69630,25 +69630,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "14cc8c2808bacf7f05eef73966d584325d11f45b0232c20367bad98db24b69b5",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "7cda8820ead1344528b9688389d628b46aff88ea33bc543b5959ea4509b9e97b",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "3bfa9f417143c5cf12d9e6dff2cde85c20057d69b92d3e2d99263516dadc057c",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "11453bbda81982716bb193a3175ae19cb57cdd52b52bb790505945b65dd30955",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -69659,7 +69659,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -78831,25 +78831,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "68fe2b811ff8f92cb2ceb2ecc5023468b04f66a0e8af64ed980d6e2a4b0d4ea8",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "913d2c52292a4583416ab7abe9d7953553d0354434c2cf7a7ded596e48464cc8",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "83ef6ae60c30276d74c0a24dd5ea99720ecf8b7898ca4e44c447700b4f23b895",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "8bf2eb454b950c4587d8d10c9a960b1db238df826e07f15fd63459a207cf65f1",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -78860,7 +78860,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -88032,25 +88032,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "2abb594b414d0ee16ca36873ded002d795cc06a111911222481e6078604a79aa",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "1941c5f49379cf778c209648143dfc9b9d5a8a9c7b14941d465e5345e5858bac",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "f0c11d59b35b7cf9364954e45a5739c542cff8e8ac1d4d7a51a3cb2ff9f5fceb",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "a155ba628c510ab6e3e584c2037453c8f83c320433d9fa7e26a53adf097cdddd",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -88061,7 +88061,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -97233,25 +97233,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "78cd7a2d7a680fe25d4a171b63d877367a16a34cf3c324df40b4fd4dff1140a9",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "1406ae17cb8511b58dea8e12fd84d834361cee376607a23c7ea8c38e22fee34a",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "e9a1e6309effe386f49dead5f4da5a51c2e96fdcd8ef3313a7c9047fb5d378d2",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "cbc482d6fcdcd4b12c423b3782f74ce7b422ddf434ed7505dc8cbe7902c99814",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -97262,7 +97262,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -106434,25 +106434,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "8ce18b98219f2f6724cceea948212d2247306491fbbfbb29d7cf790dadcb398c",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "a4af1fb6a4d0aa6b90014f1e5085b7b2c8fe35a476f5afd2a12949c22999ea91",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "2755127b03bbcf052f8b4ac0af679be03b762fa1c6a8bea22258dc8f6f2961ef",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "a4487fc1239ae137dafc364f6e8a6bb736d3ca686eb390902644e026c046bca8",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -106463,7 +106463,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -115635,25 +115635,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "5a2004eaee28710a0800326e645a305604f8b5b800e3b77238e61fdcd9720c48",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "c03c2b3e15cb4eb54b25c7437d230df8787b915a48d2c56e68f1aebd0b26f45c",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "17d885dd7ca9ea61347321b3ec93f025f6c0ca2bc05a524a94a5da068396d954",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "628d0868a8ee1c0a613c204934e84214139887042f7ca83fee6b48343c7aec0c",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -115664,7 +115664,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -124836,25 +124836,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "a9450b979a60c5c14050f5c3e53ec3cfdfb4bcf1af108dbe3dc628d0ef7d67ef",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "9312621e81bf99fd3e021b77a7743e5f743e21f7e0785dfb6a7a6504362c9733",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "f1523029f5ae8b58fb75e5a5afe65595c9aabec3ca3481836a57db4ef4100b12",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "4fae73b60bdd68d24126b11266b06da922ff185306c3f2cbe613265a97ca660e",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -124865,7 +124865,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -134037,25 +134037,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "2c4a2d77262c27e79036223095a9c2f640034b46464c0a6e67075d79327a36dc",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "eac323202b0d1b22af55b76775979b14dc2324c38c5f72bf7453287ab065392c",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "74d8312c191c24533e3e666e6d93d7ede21230cb9b5737aa774ba047b563a9b3",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "cbe211dbb6d7e9c0404bbb00218508fa66d623cf70f62dc6b3d5c10e664d535b",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -134066,7 +134066,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -143238,25 +143238,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "0b4ab7dbbb0d66cf954a1e613b3eab51c656c588194289175ff3a5188f5ddbba",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "bb1a28a52422c247cfd865774ee131227c05b2b7fdb0cd465460c89700cafba1",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "ca89e41ebee8b800e8c4f7cd925bb19ad9634dc3efe30065ca37c832b8441a0f",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "b34ca82510d6119c683edfbd9ba3cddd7d1a71367e673f68b810fb7f3dc57586",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -143267,7 +143267,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",
@@ -152439,25 +152439,25 @@
         },
         "gamehq.notification.capture_delete_failed.body_many": {
           "domain": "application",
-          "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-          "translation_hash": "d824fdaee7109768b5f3112a0101e24a3fd2acd9cd2da88c942c8ba958d172bf",
+          "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+          "translation_hash": "a1f2d8f3c65798107040753a17efcaeb2c82c097529025520717d7df0c6b650c",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.body_one": {
           "domain": "application",
-          "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-          "translation_hash": "33b70b40fa6048574c6df5dbdd2c1d5b0fb366af0cd61f26db3a38bde622a90e",
+          "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+          "translation_hash": "2b6e0fddc25bd4490c8087b5addbad89d8e7d66c748523a1daa0e202a17ce046",
           "status": "contextually_reviewed",
           "provenance": {
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.capture_delete_failed.title": {
           "domain": "application",
@@ -152468,7 +152468,7 @@
             "kind": "agent",
             "actor": "claude-opus-5-capture-delete-notification-review"
           },
-          "updated_at": "2026-09-07T00:40:00Z"
+          "updated_at": "2026-09-07T01:20:00Z"
         },
         "gamehq.notification.replay_failed.reason": {
           "domain": "application",

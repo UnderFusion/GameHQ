@@ -959,7 +959,7 @@
       <translation>Başka bir taşınabilir profil içe aktarma işlemi zaten çalışıyor.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="476"></location>
+      <location filename="src/app/App.cpp" line="479"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Çekim işlemleri güvenli biçimde zamanında tamamlanamadığı için güncelleme iptal edildi.</translation>
     </message>
@@ -1210,7 +1210,7 @@
       <translation>GameHQ, güncelleme işlemini son durumuna uygulayamadı.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="451"></location>
+      <location filename="src/app/App.cpp" line="454"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ güncelleme bakımına başlayamadı: %1</translation>
     </message>
@@ -2110,17 +2110,17 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>GameHQ'yu destekle</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="308"></location>
-      <source>Some files are open in other programs. Close them and try again.</source>
-      <translation>Bazı dosyalar başka programlarda açık. Programları kapatıp tekrar deneyin.</translation>
+      <location filename="src/app/App.cpp" line="310"></location>
+      <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
+      <translation>Bazı dosyalar silinemedi. Başka programlar tarafından kullanılıyor olabilir. Bu dosyaları kullanan programları kapatıp tekrar deneyin.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="314"></location>
-      <source>The file is open in another program. Close it and try again.</source>
-      <translation>Dosya başka bir programda açık. Programı kapatıp tekrar deneyin.</translation>
+      <location filename="src/app/App.cpp" line="317"></location>
+      <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
+      <translation>Dosya silinemedi. Başka bir program tarafından kullanılıyor olabilir. Dosyayı kullanan programı kapatıp tekrar deneyin.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="320"></location>
+      <location filename="src/app/App.cpp" line="323"></location>
       <source>Couldn't delete</source>
       <translation>Silinemedi</translation>
     </message>
@@ -2145,12 +2145,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Ekran görüntüsü kaydedildi</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="359"></location>
+      <location filename="src/app/App.cpp" line="362"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ varsayılan ayarlarla başladı. Önceki ayarlar dosyanız saklandığından hiçbir şey kaybolmadı.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="354"></location>
+      <location filename="src/app/App.cpp" line="357"></location>
       <source>Settings could not be read</source>
       <translation>Ayarlar okunamadı</translation>
     </message>

@@ -185,8 +185,8 @@ signals:
     // Emitted only after a previously-probed display changes HDR/topology state.
     void hdrDisplayConfigurationChanged();
     void desktopFocusRequested();
-    // At least one capture could not be deleted because its file is still in
-    // use. Carries how many failed, so the UI can word it for one or many.
+    // At least one capture could not be deleted: its media file survived, so the
+    // row stayed. Carries how many failed, so the UI can word it for one or many.
     void captureDeletionFailed(int count);
 
 private:

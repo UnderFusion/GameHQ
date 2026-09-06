@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "Google Translate draft from product-owned English followed by complete contextual Thai review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-07T00:40:00Z"
+    "recorded_at": "2026-09-07T01:20:00Z"
   },
   "baseline": {
     "path": "git:afd86d57bb31b3868519de2c86a27fa89403957f:i18n/app/gamehq_th_TH.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_th_TH.ts",
-    "sha256": "1f9ece53d1afe37d03ec0d0f07f948d0d17987fae9f57353ff5200d7f8388c5f",
+    "sha256": "d92bc30dfc5758ac1289ec9c36d2e301fa7db95a99ccab46e0e2319a654bfb96",
     "message_count": 834
   },
   "coverage": [
@@ -3696,28 +3696,28 @@
     },
     {
       "id": "gamehq.notification.capture_delete_failed.body_many",
-      "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-      "translation_hash": "5a2004eaee28710a0800326e645a305604f8b5b800e3b77238e61fdcd9720c48",
+      "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+      "translation_hash": "c03c2b3e15cb4eb54b25c7437d230df8787b915a48d2c56e68f1aebd0b26f45c",
       "locations": [
-        "src/app/App.cpp:308"
+        "src/app/App.cpp:310"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.notification.capture_delete_failed.body_one",
-      "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-      "translation_hash": "17d885dd7ca9ea61347321b3ec93f025f6c0ca2bc05a524a94a5da068396d954",
+      "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+      "translation_hash": "628d0868a8ee1c0a613c204934e84214139887042f7ca83fee6b48343c7aec0c",
       "locations": [
-        "src/app/App.cpp:314"
+        "src/app/App.cpp:317"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.notification.capture_delete_failed.title",
       "source_hash": "21d8d5429f00e9e3563b1803f381b14f771ed7aa21a7ac58cfff64ab5824520c",
       "translation_hash": "b0d8f18dd2b99e4b4d91bff074a117b13754d023616d0834e744adc4b2a04c56",
       "locations": [
-        "src/app/App.cpp:320"
+        "src/app/App.cpp:323"
       ],
       "decision": "accepted"
     },
@@ -14138,13 +14138,39 @@
       "category": "source_alignment",
       "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
       "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_one",
+      "surface": "application",
+      "before": [
+        "ไฟล์ถูกเปิดอยู่ในโปรแกรมอื่น ปิดโปรแกรมนั้นแล้วลองอีกครั้ง"
+      ],
+      "after": [
+        "ไม่สามารถลบไฟล์ได้ ไฟล์อาจกำลังถูกใช้งานโดยโปรแกรมอื่น ปิดโปรแกรมที่กำลังใช้ไฟล์นี้แล้วลองอีกครั้ง"
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
+      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_many",
+      "surface": "application",
+      "before": [
+        "ไฟล์บางไฟล์ถูกเปิดอยู่ในโปรแกรมอื่น ปิดโปรแกรมเหล่านั้นแล้วลองอีกครั้ง"
+      ],
+      "after": [
+        "ไม่สามารถลบไฟล์บางไฟล์ได้ ไฟล์เหล่านี้อาจกำลังถูกใช้งานโดยโปรแกรมอื่น ปิดโปรแกรมที่กำลังใช้ไฟล์เหล่านี้แล้วลองอีกครั้ง"
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
+      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
     }
   ],
   "surfaces": [
     {
       "surface": "application",
       "path": "i18n/app/gamehq_th_TH.ts",
-      "sha256": "1f9ece53d1afe37d03ec0d0f07f948d0d17987fae9f57353ff5200d7f8388c5f",
+      "sha256": "d92bc30dfc5758ac1289ec9c36d2e301fa7db95a99ccab46e0e2319a654bfb96",
       "reviewed_units": 834
     },
     {

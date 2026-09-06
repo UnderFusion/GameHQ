@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review_plus_targeted_recovery",
     "draft_provider": "machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-07T00:40:00Z"
+    "recorded_at": "2026-09-07T01:20:00Z"
   },
   "baseline": {
     "path": "git:a8fea03319ee848f365fdfe501dd521a35a5ac61:i18n/app/gamehq_ru_RU.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_ru_RU.ts",
-    "sha256": "7da134b818080f9f1aab618ec7ac0c1d8a11754a537e0ffd0084af0a680c54ed",
+    "sha256": "3ba3a72980dd4a70b59d0af8fd83599adf0aa125a32a8c1d6451403791f897e1",
     "message_count": 834
   },
   "coverage": [
@@ -3696,28 +3696,28 @@
     },
     {
       "id": "gamehq.notification.capture_delete_failed.body_many",
-      "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-      "translation_hash": "8ce18b98219f2f6724cceea948212d2247306491fbbfbb29d7cf790dadcb398c",
+      "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+      "translation_hash": "a4af1fb6a4d0aa6b90014f1e5085b7b2c8fe35a476f5afd2a12949c22999ea91",
       "locations": [
-        "src/app/App.cpp:308"
+        "src/app/App.cpp:310"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.notification.capture_delete_failed.body_one",
-      "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-      "translation_hash": "2755127b03bbcf052f8b4ac0af679be03b762fa1c6a8bea22258dc8f6f2961ef",
+      "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+      "translation_hash": "a4487fc1239ae137dafc364f6e8a6bb736d3ca686eb390902644e026c046bca8",
       "locations": [
-        "src/app/App.cpp:314"
+        "src/app/App.cpp:317"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.notification.capture_delete_failed.title",
       "source_hash": "21d8d5429f00e9e3563b1803f381b14f771ed7aa21a7ac58cfff64ab5824520c",
       "translation_hash": "024f30fd02bd825015781b29f668eed754201b210f5103a52b57de32db449cf8",
       "locations": [
-        "src/app/App.cpp:320"
+        "src/app/App.cpp:323"
       ],
       "decision": "accepted"
     },
@@ -14573,13 +14573,39 @@
       "category": "release_note_accuracy",
       "reason": "The note used a different term for the tray menu than the application UI, which names it трей.",
       "terminology_decision": "tray menu is меню в трее, matching the application catalog."
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_one",
+      "surface": "application",
+      "before": [
+        "Файл открыт в другой программе. Закройте её и повторите попытку."
+      ],
+      "after": [
+        "Не удалось удалить файл. Возможно, он используется другой программой. Закройте программу, которая его использует, и повторите попытку."
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
+      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_many",
+      "surface": "application",
+      "before": [
+        "Некоторые файлы открыты в других программах. Закройте их и повторите попытку."
+      ],
+      "after": [
+        "Некоторые файлы не удалось удалить. Возможно, они используются другими программами. Закройте программы, которые их используют, и повторите попытку."
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
+      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
     }
   ],
   "surfaces": [
     {
       "surface": "application",
       "path": "i18n/app/gamehq_ru_RU.ts",
-      "sha256": "7da134b818080f9f1aab618ec7ac0c1d8a11754a537e0ffd0084af0a680c54ed",
+      "sha256": "3ba3a72980dd4a70b59d0af8fd83599adf0aa125a32a8c1d6451403791f897e1",
       "reviewed_units": 834
     },
     {

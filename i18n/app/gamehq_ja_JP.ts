@@ -949,7 +949,7 @@
       <translation>別のポータブルプロファイルのインポートが既に実行中です。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="476"></location>
+      <location filename="src/app/App.cpp" line="479"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>キャプチャ処理が時間内に安全に完了しなかったため、更新をキャンセルしました。</translation>
     </message>
@@ -1200,7 +1200,7 @@
       <translation>GameHQ は更新トランザクションを公開できませんでした。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="451"></location>
+      <location filename="src/app/App.cpp" line="454"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ は更新メンテナンスを開始できませんでした：%1</translation>
     </message>
@@ -2100,17 +2100,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ を支援</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="308"></location>
-      <source>Some files are open in other programs. Close them and try again.</source>
-      <translation>一部のファイルが別のプログラムで開かれています。それらのプログラムを閉じてからもう一度お試しください。</translation>
+      <location filename="src/app/App.cpp" line="310"></location>
+      <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
+      <translation>一部のファイルを削除できませんでした。別のプログラムで使用中の可能性があります。これらのファイルを使用しているプログラムを閉じて、もう一度お試しください。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="314"></location>
-      <source>The file is open in another program. Close it and try again.</source>
-      <translation>ファイルが別のプログラムで開かれています。そのプログラムを閉じてからもう一度お試しください。</translation>
+      <location filename="src/app/App.cpp" line="317"></location>
+      <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
+      <translation>ファイルを削除できませんでした。別のプログラムで使用中の可能性があります。そのファイルを使用しているプログラムを閉じて、もう一度お試しください。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="320"></location>
+      <location filename="src/app/App.cpp" line="323"></location>
       <source>Couldn't delete</source>
       <translation>削除できませんでした</translation>
     </message>
@@ -2135,12 +2135,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>スクリーンショットを保存しました</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="359"></location>
+      <location filename="src/app/App.cpp" line="362"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ は既定の設定で起動しました。以前の設定ファイルは保持されているため、失われたものはありません。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="354"></location>
+      <location filename="src/app/App.cpp" line="357"></location>
       <source>Settings could not be read</source>
       <translation>設定を読み取れませんでした</translation>
     </message>

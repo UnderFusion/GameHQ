@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "Google Translate draft from product-owned English followed by complete contextual Turkish review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-07T00:40:00Z"
+    "recorded_at": "2026-09-07T01:20:00Z"
   },
   "baseline": {
     "path": "git:1d04b6a5d5b5b41279d027aff302a154d8952c64:i18n/app/gamehq_tr_TR.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_tr_TR.ts",
-    "sha256": "f8a4b206e28d0963061939447bcfdece508a3b2232780cff66e6a4927b90a0d6",
+    "sha256": "c0050a29e02a9359a619e67446e4787fa0f25b82b0ce3b47685d7133b14442a6",
     "message_count": 834
   },
   "coverage": [
@@ -3696,28 +3696,28 @@
     },
     {
       "id": "gamehq.notification.capture_delete_failed.body_many",
-      "source_hash": "487fd662569e47a14aa4dda814bea2e8cb67c79399ccf8df2c8e67cc9b6eefeb",
-      "translation_hash": "a9450b979a60c5c14050f5c3e53ec3cfdfb4bcf1af108dbe3dc628d0ef7d67ef",
+      "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
+      "translation_hash": "9312621e81bf99fd3e021b77a7743e5f743e21f7e0785dfb6a7a6504362c9733",
       "locations": [
-        "src/app/App.cpp:308"
+        "src/app/App.cpp:310"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.notification.capture_delete_failed.body_one",
-      "source_hash": "33caeec27cb658cb09bc9a4922293b94085b9ca3aaea224d18f1b5fe0aaea883",
-      "translation_hash": "f1523029f5ae8b58fb75e5a5afe65595c9aabec3ca3481836a57db4ef4100b12",
+      "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
+      "translation_hash": "4fae73b60bdd68d24126b11266b06da922ff185306c3f2cbe613265a97ca660e",
       "locations": [
-        "src/app/App.cpp:314"
+        "src/app/App.cpp:317"
       ],
-      "decision": "accepted"
+      "decision": "corrected"
     },
     {
       "id": "gamehq.notification.capture_delete_failed.title",
       "source_hash": "21d8d5429f00e9e3563b1803f381b14f771ed7aa21a7ac58cfff64ab5824520c",
       "translation_hash": "7a1d0c737abdf62d75f7124b5517e22c796326e607cc6d4a514d2484462d1857",
       "locations": [
-        "src/app/App.cpp:320"
+        "src/app/App.cpp:323"
       ],
       "decision": "accepted"
     },
@@ -13553,13 +13553,39 @@
       "category": "source_alignment",
       "reason": "Uses reviewed Turkish and reflects the corrected release meaning.",
       "terminology_decision": "Release messaging uses the same terminology as the application and preserves the sixteen-language status."
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_one",
+      "surface": "application",
+      "before": [
+        "Dosya başka bir programda açık. Programı kapatıp tekrar deneyin."
+      ],
+      "after": [
+        "Dosya silinemedi. Başka bir program tarafından kullanılıyor olabilir. Dosyayı kullanan programı kapatıp tekrar deneyin."
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
+      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_many",
+      "surface": "application",
+      "before": [
+        "Bazı dosyalar başka programlarda açık. Programları kapatıp tekrar deneyin."
+      ],
+      "after": [
+        "Bazı dosyalar silinemedi. Başka programlar tarafından kullanılıyor olabilir. Bu dosyaları kullanan programları kapatıp tekrar deneyin."
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
+      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
     }
   ],
   "surfaces": [
     {
       "surface": "application",
       "path": "i18n/app/gamehq_tr_TR.ts",
-      "sha256": "f8a4b206e28d0963061939447bcfdece508a3b2232780cff66e6a4927b90a0d6",
+      "sha256": "c0050a29e02a9359a619e67446e4787fa0f25b82b0ce3b47685d7133b14442a6",
       "reviewed_units": 834
     },
     {
