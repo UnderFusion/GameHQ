@@ -308,12 +308,44 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
             with self.subTest(case=name):
                 with self.assertRaises(GEN.ReleaseNotesError):
                     GEN.validate_launch({"localization_launch": launch}, released)
-        # A released launch designation must carry a real ISO date.
-        released_launch = {**base, "status": "released", "date": "2026-09-30"}
-        self.assertEqual(released_launch,
-                         GEN.validate_launch({"localization_launch": released_launch}, released))
-        with self.assertRaises(GEN.ReleaseNotesError):
-            GEN.validate_launch({"localization_launch": {**base, "status": "released"}}, released)
+    def test_a_released_launch_requires_exactly_one_promoted_history_entry(self) -> None:
+        """Generation and publication ship releases[], so a released launch must be promoted."""
+        manifest, _, releases = GEN.load_contract(SOURCE_ROOT)
+        base = manifest["localization_launch"]
+        released = [copy.deepcopy(release) for release, _ in releases]
+        date = "2026-09-30"
+        launch = {**base, "status": "released", "date": date}
+        english = GEN.read_json(SOURCE_ROOT / "versions" / launch["version"] / "en-US.json")
+        integrity = GEN.source_integrity({**english, "date": date})
+        entry = {
+            "version": launch["version"], "date": date, "status": "released",
+            "localization_policy": "complete", "source_integrity": integrity,
+            "original_source_integrity": integrity, "correction": None,
+        }
+        # The one canonical post-promotion state is accepted...
+        promoted = [copy.deepcopy(entry), *released]
+        self.assertEqual(launch, GEN.validate_launch({"localization_launch": launch}, promoted))
+        # ...and every incomplete or contradictory variant is rejected by its own diagnostic.
+        cases = {
+            "missing promotion": (launch, released, "missing from the release history"),
+            "no release date": ({**base, "status": "released"}, promoted,
+                                "invalid ISO date"),
+            "duplicate promotion": (launch, [copy.deepcopy(entry), *promoted],
+                                    "promoted more than once"),
+            "wrong position": (launch, [*released, copy.deepcopy(entry)],
+                               "must be the newest release-history entry"),
+            "date mismatch": (launch, [{**entry, "date": "2026-10-01"}, *released],
+                              "instead of the localization-launch date"),
+            "history not released": (launch, [{**entry, "status": "draft"}, *released],
+                                     "is not marked released"),
+            "fallback policy": (launch,
+                                [{**entry, "localization_policy": "fallback-allowed"}, *released],
+                                "must require all sixteen locales"),
+        }
+        for name, (candidate, history, diagnostic) in cases.items():
+            with self.subTest(case=name):
+                with self.assertRaisesRegex(GEN.ReleaseNotesError, diagnostic):
+                    GEN.validate_launch({"localization_launch": candidate}, history)
 
     def test_generation_is_byte_deterministic(self) -> None:
         with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:

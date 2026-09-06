@@ -337,17 +337,37 @@ def validate_launch(
         fail("the localization-launch release must require all sixteen locales")
     if not isinstance(launch.get("designated_by"), str) or not launch["designated_by"].strip():
         fail("localization_launch must record who designated it")
-    if any(release["version"] == version for release in releases):
-        fail(f"localization-launch version {version} is already a released version")
-    if version_key(version) <= version_key(releases[0]["version"]):
-        fail("the localization-launch release must be newer than every released version")
     date = launch.get("date")
+    matching = [release for release in releases if release["version"] == version]
     if launch["status"] == "designated":
+        if matching:
+            fail(f"localization-launch version {version} is already a released version")
+        if version_key(version) <= version_key(releases[0]["version"]):
+            fail("the localization-launch release must be newer than every released version")
         if date is not None:
             fail("a designated localization-launch release must keep its date null "
                  "until the owner assigns it")
-    else:
-        validate_date(date, "localization_launch")
+        return launch
+    # A released localization launch is only complete once the owner has promoted
+    # it into the release history: generation and publication ship what releases[]
+    # records, so an unpromoted released launch describes a release nobody gets.
+    validate_date(date, "localization_launch")
+    if not matching:
+        fail(f"released localization-launch version {version} is missing from the release "
+             "history; the owner must promote it into releases[] exactly once")
+    if len(matching) > 1:
+        fail(f"released localization-launch version {version} is promoted more than once")
+    if releases[0]["version"] != version:
+        fail(f"released localization-launch version {version} must be the newest release-history "
+             f"entry, not {releases[0]['version']}")
+    entry = matching[0]
+    if entry["date"] != date:
+        fail(f"release-history entry {version} records {entry['date']} instead of the "
+             f"localization-launch date {date}")
+    if entry["status"] != "released":
+        fail(f"release-history entry {version} is not marked released")
+    if entry["localization_policy"] != launch["localization_policy"]:
+        fail(f"release-history entry {version} must require all sixteen locales")
     return launch
 
 

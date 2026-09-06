@@ -124,10 +124,18 @@ Final mode fails closed. It requires a released, owner-designated,
 `complete` localization launch whose version equals the repository `VERSION`,
 an ISO-8601 release date, the same date on all sixteen localized release-note
 documents, contextual linguistic review for every production locale, and a
-release-note linguistic state that tracks the released version. When the
-launch has already been promoted into `releases`, that entry must be unique,
-released, `complete`, integrity-stamped, dated identically to the launch, and
-newest under the manifest's documented newest-first ordering.
+release-note linguistic state that tracks the released version.
+
+A released launch is only finalized once the owner has promoted it into
+`releases`, because generation and publication ship exactly what `releases`
+records. Final mode therefore requires exactly one history entry for the
+released version, at the newest position of the manifest's documented
+newest-first ordering, marked `released` and `complete`, dated identically to
+the launch, with `source_integrity` and `original_source_integrity` both equal
+to the canonical hash of the dated `versions/<version>/en-US.json` and
+`correction: null` - a first publication cannot already be a correction of
+itself. Missing promotion, duplicate promotion and wrong history position each
+fail with their own diagnostic.
 
 Selecting `--mode final` is **not** owner authorization. Final evidence records
 `release_authorization: not_validated` and

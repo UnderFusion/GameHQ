@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import copy
+import importlib.util
 import json
 import shutil
 import subprocess
@@ -18,6 +19,15 @@ TOOLS = ROOT / "tools" / "i18n"
 sys.path.insert(0, str(TOOLS))
 
 import release_readiness as readiness  # noqa: E402
+
+
+def load_generator():
+    """Load the release-note generator to pin the duplicated integrity algorithm."""
+    path = TOOLS / "generate_release_notes.py"
+    spec = importlib.util.spec_from_file_location("gamehq_release_notes_readiness", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 CANDIDATE_VERSION = "0.7.7"
 FINAL_DATE = "2026-09-30"
@@ -67,6 +77,8 @@ def finalize_repository(
     root: Path, *, version: str = CANDIDATE_VERSION, date: str | None = FINAL_DATE,
     repository_version: str | None = None, status: str = "released",
     promote: bool = True, policy: str = "complete", entry_date: str | None = None,
+    entry_status: str = "released", integrity: str | None = None,
+    original_integrity: str | None = None, correction: object = None,
     duplicate: bool = False, reorder: bool = False, stamp_documents: bool = True,
 ) -> None:
     """Rewrite a copied repository into an explicitly finalized release state."""
@@ -85,12 +97,14 @@ def finalize_repository(
     manifest = readiness.read_json(root / "assets/release-notes/manifest.json")
     manifest["localization_launch"] |= {"version": version, "date": date, "status": status}
     if promote:
-        english = (root / f"assets/release-notes/versions/{version}/en-US.json").read_bytes()
-        integrity = f"sha256:{readiness.sha256_bytes(english)}"
+        english = readiness.read_json(
+            root / f"assets/release-notes/versions/{version}/en-US.json")
+        canonical = readiness.release_note_integrity(english)
         entry = {
-            "version": version, "date": entry_date or date, "status": "released",
-            "localization_policy": policy, "source_integrity": integrity,
-            "original_source_integrity": integrity, "correction": None,
+            "version": version, "date": entry_date or date, "status": entry_status,
+            "localization_policy": policy, "source_integrity": integrity or canonical,
+            "original_source_integrity": original_integrity or integrity or canonical,
+            "correction": correction,
         }
         manifest["releases"].insert(len(manifest["releases"]) if reorder else 0, entry)
         if duplicate:
@@ -240,6 +254,9 @@ class ReleaseStateModeTest(unittest.TestCase):
         evidence = readiness.build_evidence(self.root)
         self.assertEqual("not_requested", evidence["candidate"]["release_authorization"])
         self.assertNotIn("mode", evidence)
+        # Final-state validation must never change what the candidate gate emits.
+        self.assertEqual((ROOT / "i18n/release/readiness-0.7.7.json").read_bytes(),
+                         readiness.json_bytes(evidence))
         with self.assertRaisesRegex(readiness.ReadinessError,
                                     "final mode requires a released localization launch"):
             readiness.build_evidence(self.root, readiness.FINAL_MODE)
@@ -265,10 +282,18 @@ class ReleaseStateModeTest(unittest.TestCase):
                                     "owner-designated and date-null"):
             readiness.build_evidence(self.root, readiness.CANDIDATE_MODE)
 
-    def test_final_mode_accepts_a_released_launch_before_history_promotion(self) -> None:
-        finalize_repository(self.root, promote=False)
-        evidence = readiness.build_evidence(self.root, readiness.FINAL_MODE)
-        self.assertIsNone(evidence["release"]["release_entry"])
+    def test_readiness_and_generator_compute_the_same_release_integrity(self) -> None:
+        """The duplicated integrity computation must never drift from the generator."""
+        generator = load_generator()
+        for version in ("0.7.6", CANDIDATE_VERSION):
+            document = readiness.read_json(
+                ROOT / f"assets/release-notes/versions/{version}/en-US.json")
+            with self.subTest(version=version):
+                self.assertEqual(generator.source_integrity(document),
+                                 readiness.release_note_integrity(document))
+                self.assertEqual(generator.source_integrity({**document, "date": FINAL_DATE}),
+                                 readiness.release_note_integrity({**document,
+                                                                   "date": FINAL_DATE}))
 
     def test_partially_finalized_repositories_fail_final_mode(self) -> None:
         mutations = (
@@ -289,6 +314,19 @@ class ReleaseStateModeTest(unittest.TestCase):
              "not deterministically newest-first"),
             ("the localized release notes keep a null date",
              {"stamp_documents": False}, "instead of the release date"),
+            ("the release was never promoted into the history",
+             {"promote": False}, "was never promoted into the release history"),
+            ("the release history entry is not marked released",
+             {"entry_status": "designated"}, "is not marked released"),
+            ("the recorded source integrity does not match the English document",
+             {"integrity": f"sha256:{'0' * 64}"}, "source_integrity does not match"),
+            ("the entry claims a corrected original source",
+             {"original_integrity": f"sha256:{'1' * 64}"},
+             "original_source_integrity does not match"),
+            ("the first publication already claims a correction",
+             {"correction": {"reason": "typo", "approved_by": "owner",
+                             "corrected_at": FINAL_DATE}},
+             "records a correction before it was ever released"),
         )
         for diagnostic, overrides, expected in mutations:
             with self.subTest(diagnostic=diagnostic):

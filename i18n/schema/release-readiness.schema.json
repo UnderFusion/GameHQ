@@ -68,9 +68,7 @@
             "repository_version": { "type": "string", "minLength": 1 },
             "release_authorization": { "const": "not_validated" },
             "publication_state": { "const": "requires_owner_authorization" },
-            "release_entry": {
-              "anyOf": [{ "type": "null" }, { "$ref": "#/definitions/releaseEntry" }]
-            }
+            "release_entry": { "$ref": "#/definitions/releaseEntry" }
           }
         },
         "source_freeze": { "$ref": "#/definitions/documentProperties/source_freeze" },
@@ -102,7 +100,7 @@
         "localization_policy": { "const": "complete" },
         "source_integrity": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
         "original_source_integrity": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
-        "correction": { "type": ["object", "null"] }
+        "correction": { "type": "null" }
       }
     },
     "reviewedLocale": {

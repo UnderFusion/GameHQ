@@ -221,15 +221,29 @@ def candidate_state(root: Path, launch: dict[str, object]) -> dict[str, object]:
     }
 
 
-def release_history_entry(
-    manifest: dict[str, object], version: str, date: str
-) -> dict[str, object] | None:
-    """Return the unique release-history entry for a finalized version, if promoted.
+def release_note_integrity(document: dict[str, object]) -> str:
+    """Recompute the canonical release-note source integrity.
 
-    The manifest documents newest-first ordering, so this enforces uniqueness and
-    that documented ordering only. A released launch that has not been promoted
-    into the history yet is accepted, but it must still be newer than every
-    recorded release.
+    This intentionally mirrors generate_release_notes.source_integrity so the
+    readiness gate stays import-light; test_release_readiness pins both
+    implementations to the same hash so the duplication cannot drift.
+    """
+    payload = {key: document.get(key) for key in ("version", "date", "sections")}
+    canonical = json.dumps(
+        payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    ).encode("utf-8")
+    return "sha256:" + hashlib.sha256(canonical).hexdigest()
+
+
+def release_history_entry(
+    root: Path, manifest: dict[str, object], version: str, date: str
+) -> dict[str, object]:
+    """Return the unique release-history entry a finalized version must carry.
+
+    Generation and publication ship exactly what releases[] records, so a
+    released localization launch is only finalized once it has been promoted
+    into the history: exactly once, at the documented newest-first position,
+    with metadata and integrity that match the dated English source document.
     """
     releases = manifest.get("releases")
     if not isinstance(releases, list) or not releases:
@@ -247,10 +261,8 @@ def release_history_entry(
     current = version_key(version)
     matching = [entry for entry in releases if entry.get("version") == version]
     if not matching:
-        if current <= keys[0]:
-            raise ReadinessError(
-                f"released version {version} is not newer than the recorded release history")
-        return None
+        raise ReadinessError(
+            f"released version {version} was never promoted into the release history")
     if keys[0] != current:
         raise ReadinessError(f"released version {version} is not the newest release-history entry")
     entry = matching[0]
@@ -268,6 +280,19 @@ def release_history_entry(
     for field in ("source_integrity", "original_source_integrity"):
         if not INTEGRITY_PATTERN.fullmatch(str(entry.get(field))):
             raise ReadinessError(f"release history entry {version}: invalid {field}")
+    relative = f"assets/release-notes/versions/{version}/en-US.json"
+    integrity = release_note_integrity(read_json(root / relative))
+    if entry["source_integrity"] != integrity:
+        raise ReadinessError(
+            f"release history entry {version}: source_integrity does not match {relative}")
+    # A release being published for the first time cannot already be recorded as
+    # a correction of itself; corrected history is a separate lifecycle.
+    if entry["original_source_integrity"] != integrity:
+        raise ReadinessError(
+            f"release history entry {version}: original_source_integrity does not match {relative}")
+    if entry["correction"] is not None:
+        raise ReadinessError(
+            f"release history entry {version} records a correction before it was ever released")
     return {field: entry[field] for field in RELEASE_ENTRY_FIELDS}
 
 
@@ -278,8 +303,9 @@ def final_state(
 
     Selecting final mode is not owner authorization. This path only proves that
     the repository consistently describes its VERSION as a released, fully
-    localized version; it never records owner intent, never authorizes
-    publication, and never writes repository metadata.
+    localized version that was promoted into the release history exactly once;
+    it never records owner intent, never authorizes publication, and never
+    writes repository metadata.
     """
     if launch.get("status") != "released":
         raise ReadinessError("final mode requires a released localization launch")
@@ -300,7 +326,7 @@ def final_state(
         "repository_version": recorded,
         "release_authorization": "not_validated",
         "publication_state": "requires_owner_authorization",
-        "release_entry": release_history_entry(manifest, version, date),
+        "release_entry": release_history_entry(root, manifest, version, date),
     }
 
 
