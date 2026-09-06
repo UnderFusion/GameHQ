@@ -312,15 +312,18 @@ target_compile_definitions(tst_releasetrust PRIVATE
 add_dependencies(tst_releasetrust GameHQUpdater)
 
 # TEST ONLY signing helper. Kept out of gamehq_release_trust so no shipped
-# binary can ever produce a release signature.
+# binary can ever produce a release signature. It pulls in the TEST-ONLY trust
+# variant (src/CMakeLists.txt), which is what lets a shipping-configured build
+# still verify these synthetic signatures: the trusted RFC vector key is linked
+# into the test executable, never into GameHQ.exe or GameHQUpdater.exe.
 add_library(gamehq_test_release_signer STATIC support/TestReleaseSigner.cpp)
 target_include_directories(gamehq_test_release_signer
     PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/support"
     PRIVATE "${monocypher_SOURCE_DIR}/src" "${monocypher_SOURCE_DIR}/src/optional")
-target_link_libraries(gamehq_test_release_signer PUBLIC gamehq_release_trust)
+target_link_libraries(gamehq_test_release_signer PUBLIC gamehq_release_trust_testkeys)
 
 gamehq_add_test(tst_releasemanifest tst_releasemanifest.cpp)
-target_link_libraries(tst_releasemanifest PRIVATE gamehq_release_trust)
+target_link_libraries(tst_releasemanifest PRIVATE gamehq_release_trust_testkeys)
 target_compile_definitions(tst_releasemanifest PRIVATE
     GAMEHQ_RELEASE_VECTOR="${CMAKE_SOURCE_DIR}/tests/fixtures/release-trust/gamehq-test-vector.json")
 
@@ -615,11 +618,17 @@ gamehq_add_test(tst_updatertransaction
     "${CMAKE_SOURCE_DIR}/src/launcher/UpdaterPromotion.cpp")
 add_executable(updater_health_fixture updater_health_fixture.cpp)
 target_link_options(updater_health_fixture PRIVATE -static -municode)
+# UPDATER_EXE drives the transaction behaviour over synthetic signed releases,
+# so it is the TEST-ONLY trust twin. PRODUCTION_UPDATER_EXE is the helper the
+# release actually ships: the suite asserts that it refuses exactly the same
+# material, which is what proves the test key never reaches a shipped binary.
 target_compile_definitions(tst_updatertransaction PRIVATE
-    UPDATER_EXE="$<TARGET_FILE:GameHQUpdater>"
+    UPDATER_EXE="$<TARGET_FILE:updater_test_trust_fixture>"
+    PRODUCTION_UPDATER_EXE="$<TARGET_FILE:GameHQUpdater>"
     HEALTH_FIXTURE_EXE="$<TARGET_FILE:updater_health_fixture>"
     GAMEHQ_UPDATER_VERSION="${GAMEHQ_VERSION_FULL}")
-add_dependencies(tst_updatertransaction GameHQUpdater updater_health_fixture)
+add_dependencies(tst_updatertransaction GameHQUpdater updater_test_trust_fixture
+                 updater_health_fixture)
 target_link_libraries(tst_updatertransaction PRIVATE miniz bcrypt Qt6::Sql gamehq_test_release_signer)
 
 # The end-to-end updater tests drive real child processes through swap,

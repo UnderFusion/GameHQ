@@ -44,6 +44,7 @@ private Q_SLOTS:
     void promotesOnlySelfTestingPendingHelper();
     void completeApplyCleansStaleStagingAndPreservesUserData();
     void bindsHandoffToTheExactAuthorisingProcess();
+    void shippedHelperRefusesTestTrustMaterial();
 
 private:
     static QString writeFixture(const QString &root, const QString &backupDir);
@@ -839,6 +840,38 @@ void UpdaterTransactionTest::bindsHandoffToTheExactAuthorisingProcess()
     QVERIFY(staged->exitCode() != 0);
     QVERIFY(staged->readAllStandardError().contains("run the update again"));
     QVERIFY(!QFileInfo::exists(QDir(update).filePath(QStringLiteral("staging"))));
+}
+
+// Every case above drives updater_test_trust_fixture, which differs from the
+// shipped helper in exactly one way: it links the trust library built with the
+// public RFC 8032 vector key. This case closes that gap from the other side -
+// the helper the release actually ships must refuse the same evidence, and must
+// not even list a test key. Both binaries are built from one source list in one
+// build tree, so this also keeps the packaged build directory the tested one.
+void UpdaterTransactionTest::shippedHelperRefusesTestTrustMaterial()
+{
+    QTemporaryDir dir(QDir::current().filePath(QStringLiteral("tst-updater-shipped-XXXXXX")));
+    QVERIFY(dir.isValid());
+    const QString backup = QDir(dir.path()).filePath(QStringLiteral(".update/backup"));
+    const QString transaction = writeFixture(dir.path(), backup);
+    QVERIFY(!transaction.isEmpty());
+
+    QProcess helper;
+    helper.start(QStringLiteral(PRODUCTION_UPDATER_EXE),
+                 { QStringLiteral("--dry-run"), transaction });
+    QVERIFY(helper.waitForFinished(10000));
+    QVERIFY(helper.exitCode() != 0);
+    const QByteArray errors = helper.readAllStandardError();
+    QVERIFY2(errors.contains("no trusted key signs this release manifest"), errors.constData());
+
+    QProcess report;
+    report.start(QStringLiteral(PRODUCTION_UPDATER_EXE),
+                 { QStringLiteral("--release-trust-self-test") });
+    QVERIFY(report.waitForFinished(10000));
+    QCOMPARE(report.exitCode(), 0);
+    const QByteArray table = report.readAllStandardOutput();
+    QVERIFY2(table.contains("TRUST TABLE production"), table.constData());
+    QVERIFY2(!table.contains("TRUSTED KEY gamehq-test-"), table.constData());
 }
 
 QTEST_GUILESS_MAIN(UpdaterTransactionTest)

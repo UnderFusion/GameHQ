@@ -37,6 +37,32 @@ def fail(message: str) -> None:
     raise AssertionError(message)
 
 
+def without_test_only_blocks(cmake: str) -> str:
+    """Drop `if(GAMEHQ_BUILD_TESTS)` sections.
+
+    Targets declared there exist only in a test build and are never packaged,
+    so they are not auxiliary product surfaces and need no localization
+    boundary. Everything a release ships stays in scope.
+    """
+    kept: list[str] = []
+    depth = 0
+    for line in cmake.splitlines():
+        stripped = line.strip()
+        if depth:
+            if re.match(r"^if\s*\(", stripped):
+                depth += 1
+            elif re.match(r"^endif\s*\(", stripped):
+                depth -= 1
+            continue
+        if re.match(r"^if\s*\(\s*GAMEHQ_BUILD_TESTS\s*\)", stripped):
+            depth = 1
+            continue
+        kept.append(line)
+    if depth:
+        fail("src/CMakeLists.txt has an unbalanced GAMEHQ_BUILD_TESTS block")
+    return "\n".join(kept)
+
+
 def covered(path: str, boundaries: list[dict]) -> bool:
     return any(
         fnmatch.fnmatchcase(path, pattern)
@@ -111,7 +137,8 @@ def main() -> int:
                     fail(f"{boundary['id']} deferred work misses {field}")
 
     cmake = (ROOT / "src" / "CMakeLists.txt").read_text(encoding="utf-8")
-    targets = set(re.findall(r"(?:qt_)?add_executable\(\s*([A-Za-z0-9_]+)", cmake))
+    targets = set(re.findall(r"(?:qt_)?add_executable\(\s*([A-Za-z0-9_]+)",
+                             without_test_only_blocks(cmake)))
     auxiliary_targets = targets - {"GameHQ"}
     mapped_targets = {
         target for boundary in boundaries for target in boundary.get("build_targets", [])

@@ -72,13 +72,10 @@ FetchContent_Declare(monocypher
 FetchContent_MakeAvailable(monocypher)
 
 # Tests are opt-in so a normal build/run stays as fast as it was; start.bat does
-# not enable them. Test builds default to the public RFC 8032 vector, while
-# distributable builds default to production trust only.
+# not enable them. Enabling them no longer changes what the shipped binaries
+# trust: the TEST-ONLY signing key lives in a separate trust library that only
+# test targets link, so one build tree is both shippable and testable.
 option(GAMEHQ_BUILD_TESTS "Build the automated test target" OFF)
-set(_gamehq_test_key_default OFF)
-if(GAMEHQ_BUILD_TESTS)
-    set(_gamehq_test_key_default ON)
-endif()
 option(GAMEHQ_ENABLE_PSEUDO_LOCALES
     "Expose development-only en-XA and ar-XB pseudo-locales"
     OFF)
@@ -106,9 +103,13 @@ if(GAMEHQ_BUILD_TESTS OR GAMEHQ_ENABLE_PSEUDO_LOCALES)
         message(FATAL_ERROR "Pseudo-locale generation failed: ${GAMEHQ_PSEUDO_GENERATION_ERROR}")
     endif()
 endif()
+# Escape hatch only. It stays OFF for every configuration this project builds,
+# including test builds; tests get the RFC vector key from
+# gamehq_release_trust_testkeys instead. packaging/validate-release.ps1 refuses
+# to publish a production package whose updater reports a gamehq-test key.
 option(GAMEHQ_RELEASE_TRUST_TEST_KEYS
-    "Compile the TEST-ONLY release signing key into the trust table"
-    ${_gamehq_test_key_default})
+    "Compile the TEST-ONLY release signing key into the SHIPPED trust table"
+    OFF)
 
 # The production trust input contains public material only. CMake generates one
 # header shared by the app and static updater; private signing material never
@@ -138,21 +139,33 @@ endif()
 configure_file(src/security/ReleaseTrustConfig.h.in
     generated/ReleaseTrustConfig.h @ONLY)
 
-add_library(gamehq_release_trust STATIC
-    src/security/ReleaseTrust.cpp
-    src/security/ReleaseTrust.h
-    src/security/ReleaseManifest.cpp
-    src/security/ReleaseManifest.h
-    "${monocypher_SOURCE_DIR}/src/monocypher.c"
-    "${monocypher_SOURCE_DIR}/src/optional/monocypher-ed25519.c")
-target_include_directories(gamehq_release_trust PUBLIC
-    "${CMAKE_CURRENT_SOURCE_DIR}/src"
-    PRIVATE "${CMAKE_BINARY_DIR}/generated"
-            "${monocypher_SOURCE_DIR}/src" "${monocypher_SOURCE_DIR}/src/optional")
-target_link_libraries(gamehq_release_trust PUBLIC bcrypt)
-if(GAMEHQ_RELEASE_TRUST_TEST_KEYS)
-    target_compile_definitions(gamehq_release_trust PUBLIC GAMEHQ_RELEASE_TRUST_TEST_KEYS)
-endif()
+# One definition of the trust library, instantiated at most twice from the same
+# sources: the shipped gamehq_release_trust, and - only in a test build - the
+# TEST-ONLY gamehq_release_trust_testkeys (src/CMakeLists.txt). Keeping both on
+# one recipe means the variant a test verifies can never drift from the variant
+# the release ships; the trust table is the single difference between them.
+function(gamehq_add_release_trust_library target trust_test_keys)
+    add_library(${target} STATIC
+        "${CMAKE_SOURCE_DIR}/src/security/ReleaseTrust.cpp"
+        "${CMAKE_SOURCE_DIR}/src/security/ReleaseTrust.h"
+        "${CMAKE_SOURCE_DIR}/src/security/ReleaseManifest.cpp"
+        "${CMAKE_SOURCE_DIR}/src/security/ReleaseManifest.h"
+        "${GAMEHQ_MONOCYPHER_SOURCE_DIR}/src/monocypher.c"
+        "${GAMEHQ_MONOCYPHER_SOURCE_DIR}/src/optional/monocypher-ed25519.c")
+    target_include_directories(${target} PUBLIC
+        "${CMAKE_SOURCE_DIR}/src"
+        PRIVATE "${CMAKE_BINARY_DIR}/generated"
+                "${GAMEHQ_MONOCYPHER_SOURCE_DIR}/src"
+                "${GAMEHQ_MONOCYPHER_SOURCE_DIR}/src/optional")
+    target_link_libraries(${target} PUBLIC bcrypt)
+    if(trust_test_keys)
+        target_compile_definitions(${target} PUBLIC GAMEHQ_RELEASE_TRUST_TEST_KEYS)
+    endif()
+endfunction()
+
+set(GAMEHQ_MONOCYPHER_SOURCE_DIR "${monocypher_SOURCE_DIR}"
+    CACHE INTERNAL "Vendored monocypher checkout shared by both trust libraries")
+gamehq_add_release_trust_library(gamehq_release_trust ${GAMEHQ_RELEASE_TRUST_TEST_KEYS})
 
 # Brand.qml is the single source of truth for the visible product name. It is
 # read at configure time so C++ and QML always expose the same branding.

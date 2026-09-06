@@ -339,7 +339,7 @@ target_link_options(GameHQLauncher PRIVATE -static)
 
 # Static updater helper: it must remain runnable while app/ and Qt DLLs are
 # being replaced. Stage 1 exposes only a transaction-safe --dry-run mode.
-add_executable(GameHQUpdater
+set(GAMEHQ_UPDATER_SOURCES
     updater/UpdaterMain.cpp
     updater/UpdaterTransaction.cpp updater/UpdaterTransaction.h
     updater/UpdaterStaging.cpp updater/UpdaterStaging.h
@@ -350,12 +350,30 @@ add_executable(GameHQUpdater
     core/UpdateMaintenance.cpp core/UpdateMaintenance.h
     core/UpdaterHandshake.cpp core/UpdaterHandshake.h
 )
+add_executable(GameHQUpdater ${GAMEHQ_UPDATER_SOURCES})
 target_include_directories(GameHQUpdater PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(GameHQUpdater PRIVATE miniz bcrypt)
 target_link_libraries(GameHQUpdater PRIVATE gamehq_release_trust)
 target_link_options(GameHQUpdater PRIVATE -static -municode)
 target_compile_definitions(GameHQUpdater PRIVATE
     GAMEHQ_UPDATER_VERSION="${GAMEHQ_VERSION_FULL}")
+
+# TEST ONLY twin of the helper above. Same sources, same flags; the only
+# difference is that it links the trust library built with the public RFC 8032
+# vector key, so tests/tst_updatertransaction.cpp can drive a real updater
+# process over a synthetic signed release while the shipped GameHQUpdater keeps
+# production-only trust. Nothing packages it: packaging copies GameHQUpdater.exe
+# by name, and the shipped helper is asserted to reject this material.
+if(GAMEHQ_BUILD_TESTS)
+    gamehq_add_release_trust_library(gamehq_release_trust_testkeys ON)
+    add_executable(updater_test_trust_fixture ${GAMEHQ_UPDATER_SOURCES})
+    target_include_directories(updater_test_trust_fixture PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(updater_test_trust_fixture PRIVATE miniz bcrypt)
+    target_link_libraries(updater_test_trust_fixture PRIVATE gamehq_release_trust_testkeys)
+    target_link_options(updater_test_trust_fixture PRIVATE -static -municode)
+    target_compile_definitions(updater_test_trust_fixture PRIVATE
+        GAMEHQ_UPDATER_VERSION="${GAMEHQ_VERSION_FULL}")
+endif()
 
 # Minimal GameInput runtime probe (Phase 5 t17, docs/design/gameinput-spike.md).
 # Links the vendored MIT loader from the Microsoft.GameInput package and proves

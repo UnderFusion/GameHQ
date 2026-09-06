@@ -159,7 +159,14 @@ void ReleaseTrustTest::updaterRunsIndependentSelfTest()
     process.start(QStringLiteral(UPDATER_EXE), {QStringLiteral("--release-trust-self-test")});
     QVERIFY(process.waitForFinished(10000));
     QCOMPARE(process.exitCode(), 0);
-    QVERIFY(process.readAllStandardOutput().contains("passed"));
+    const QByteArray report = process.readAllStandardOutput();
+    QVERIFY(report.contains("passed"));
+
+    // The shipped helper must trust production keys only. The tests obtain the
+    // RFC 8032 vector key from a separate TEST-ONLY trust library, so no build
+    // configuration of this binary - including this one - may report it.
+    QVERIFY2(report.contains("TRUST TABLE production"), report.constData());
+    QVERIFY2(!report.contains("TRUSTED KEY gamehq-test-"), report.constData());
 }
 
 QTEST_GUILESS_MAIN(ReleaseTrustTest)

@@ -288,6 +288,15 @@ The native candidate tests (`ctest --test-dir`) and the packaged-localization
 work directory both follow the selected build, so packaging `out-production/`
 can no longer be validated by tests running in `out/`.
 
+That only works because a shipping-configured build can run its own tests. The
+TEST-ONLY release signing key is no longer a build option applied to the shipped
+trust table; it lives in a separate trust library that only test targets link
+(see docs/release-manifest-security-review.md). Configure the candidate with
+`GAMEHQ_BUILD_TESTS=ON` and leave `GAMEHQ_RELEASE_TRUST_TEST_KEYS` at its `OFF`
+default: the same tree then produces production-trust binaries and a green
+native suite, and `-SkipTests` is never the answer to a trust-configuration
+conflict.
+
 In `unsigned-beta` mode the three packaged GameHQ binaries must be byte-identical
 to their sources in the selected build directory; the assembler only copies them,
 so a mismatch means the package and the tests describe different builds. Signing

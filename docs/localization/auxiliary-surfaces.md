@@ -46,7 +46,10 @@ stable application message ID.
 `tst_auxiliarysurfaceaudit`, validates the four-way classification and required
 boundary fields. It discovers every non-Qt executable target, Playnite/tool
 `.csproj`, packaging/release/i18n/manual-validation script, and CI workflow,
-then fails if a discovered component is not covered. It also pins the five
+then fails if a discovered component is not covered. Targets declared inside an
+`if(GAMEHQ_BUILD_TESTS)` block are skipped: they exist only in a test build, are
+never packaged, and so are not product surfaces. Everything a release ships
+stays in scope. It also pins the five
 resource-driven launcher dialogs and sixteen native resource blocks, Playnite
 user-facing markers, updater log-only contract, and installer's still-deferred
 language state so implementation changes must update the inventory deliberately.

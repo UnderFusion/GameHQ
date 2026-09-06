@@ -128,6 +128,25 @@ the review-protected GitHub `production-release` environment. Rehearsal covers
 successful signing, public-key verification, tamper rejection, test-key
 exclusion from production binaries, and the existing next/revoked-key vectors.
 
+## Test trust is a separate library, not a build option
+
+The fixtures above are signed with the published RFC vector key, so something in
+the test process has to trust that key. That trust lives in its own static
+library, `gamehq_release_trust_testkeys`, built from the same sources as the
+shipped `gamehq_release_trust` and differing only in the compiled trust table.
+Only test targets link it. The release-transaction tests additionally drive
+`updater_test_trust_fixture`, a twin of `GameHQUpdater` built from one shared
+source list and linked against that library; nothing packages it.
+
+`GAMEHQ_RELEASE_TRUST_TEST_KEYS` therefore stays `OFF` for every configuration
+this project builds, including test builds and CI. One build tree is both
+shippable and fully testable, which is what lets release validation run the
+native suite inside the build directory it actually packaged. The shipped
+binaries are asserted from both sides: `tst_releasetrust` requires
+`GameHQUpdater --release-trust-self-test` to report `TRUST TABLE production`
+with no `gamehq-test-` key, and `tst_updatertransaction` requires the shipped
+helper to refuse the very transaction the test twin accepts.
+
 ## Implementation gate
 
 Implementation may begin only with the exact pins and contract above. It is
