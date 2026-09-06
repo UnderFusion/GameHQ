@@ -246,7 +246,8 @@ class LocaleLifecycleTest(unittest.TestCase):
                      argparse.Namespace(command="review", tag=FIXTURE))
         self.assertIn("style guide authored: False", output)
         self.assertIn("release-eligible: False", output)
-        self.assertIn("human-reviewed coverage: 0/", output)
+        expected_count = len(lifecycle.read_json(self.root / "i18n/extracted/messages.json")["messages"])
+        self.assertIn(f"contextually-reviewed coverage: 0/{expected_count}", output)
         self.assertIn("Generation never marks a message reviewed", output)
 
     # ----------------------------------------------------------------- verify

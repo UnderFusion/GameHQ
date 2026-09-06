@@ -37,12 +37,13 @@
         {
           "type": "object",
           "required": ["message_count"],
-          "properties": { "message_count": { "const": 831 } }
+          "properties": { "message_count": { "type": "integer", "minimum": 1 } }
         }
       ]
     },
     "coverage": {
-      "type": "array", "minItems": 831, "maxItems": 831,
+      "$comment": "linguistic_qa.py requires exactly the current canonical source IDs and count, including source and translation hashes.",
+      "type": "array", "minItems": 1,
       "items": {
         "type": "object",
         "required": ["id", "source_hash", "translation_hash", "locations", "decision"],

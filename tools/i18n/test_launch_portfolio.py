@@ -8,6 +8,8 @@ from pathlib import Path
 import unittest
 import xml.etree.ElementTree as ET
 
+import linguistic_qa
+
 
 ROOT = Path(__file__).resolve().parents[2]
 LAUNCH_LOCALES = {
@@ -34,7 +36,11 @@ def read_json(relative: str) -> dict[str, object]:
 
 def catalog_messages(relative: str) -> dict[str, ET.Element]:
     root = ET.parse(ROOT / relative).getroot()
-    return {message.get("id", ""): message for message in root.findall(".//message")}
+    return {
+        message.get("id", ""): message for message in root.findall(".//message")
+        if message.find("translation") is None
+        or message.find("translation").get("type") not in {"vanished", "obsolete"}
+    }
 
 
 class LaunchPortfolioTest(unittest.TestCase):
@@ -58,32 +64,45 @@ class LaunchPortfolioTest(unittest.TestCase):
             self.assertEqual(catalog, locales[tag]["qt_catalog"])
             self.assertEqual("en-US" if tag != "es-419" else "es-ES", locales[tag]["fallback"])
 
-    def test_promoted_catalogs_are_synchronized_for_safe_english_fallback(self) -> None:
+    def test_enabled_catalogs_are_complete_and_synchronized(self) -> None:
+        expected = linguistic_qa.source_messages(ROOT)
         source = catalog_messages("i18n/app/gamehq_en_US.ts")
-        self.assertEqual(830, len(source))
-        for tag, catalog in PROMOTED.items():
-            with self.subTest(locale=tag):
+        self.assertEqual(set(expected), set(source))
+        for locale in read_json("i18n/locales.json")["locales"]:
+            if locale["state"] != "enabled":
+                continue
+            catalog = locale["qt_catalog"]
+            with self.subTest(locale=locale["tag"]):
                 target = catalog_messages(f"i18n/app/{catalog}.ts")
                 self.assertEqual(set(source), set(target))
+                # Checks every active ID, duplicate IDs, unfinished text and empty plural forms.
+                self.assertEqual(set(expected), set(linguistic_qa.catalog_messages(
+                    ROOT / f"i18n/app/{catalog}.ts")))
                 for message_id, message in target.items():
                     self.assertEqual(
                         source[message_id].findtext("source"), message.findtext("source"), message_id
                     )
-                    translation = message.find("translation")
-                    self.assertIsNotNone(translation, message_id)
-                    self.assertEqual("unfinished", translation.get("type"), message_id)
-                    self.assertFalse("".join(translation.itertext()).strip(), message_id)
+                    self.assertEqual(expected[message_id]["source"], message.findtext("source"), message_id)
 
     def test_generated_state_resources_and_policy_cover_the_portfolio(self) -> None:
         status = read_json("i18n/extracted/catalog-status.json")["locales"]
         state = read_json("i18n/state/translations.json")["locales"]
+        expected = linguistic_qa.source_messages(ROOT)
         self.assertEqual(LAUNCH_LOCALES, set(status))
-        for tag, catalog in PROMOTED.items():
+        for tag in LAUNCH_LOCALES:
             with self.subTest(locale=tag):
-                self.assertEqual(830, len(status[tag]["missing"]))
+                self.assertEqual([], status[tag]["missing"])
+                self.assertEqual([], status[tag]["stale"])
+                self.assertCountEqual(expected, status[tag]["unchanged"])
                 self.assertTrue(state[tag]["catalog_present"])
                 self.assertTrue(state[tag]["enabled"])
-                self.assertEqual(830, len(state[tag]["completeness"]["application"]["missing"]))
+                self.assertEqual(set(expected), set(state[tag]["messages"]))
+                completeness = state[tag]["completeness"]["application"]
+                application_count = sum(message["domain"] == "application" for message in expected.values())
+                self.assertEqual(application_count, completeness["total"])
+                self.assertEqual(application_count, completeness["current"])
+                self.assertEqual([], completeness["missing"])
+                self.assertEqual([], completeness["stale"])
                 style = read_json(f"i18n/style/{tag}.json")
                 self.assertEqual(2, style["schema_version"])
                 self.assertTrue(style["contextual_terminology"])
@@ -100,8 +119,14 @@ class LaunchPortfolioTest(unittest.TestCase):
         playnite = (
             ROOT / "integrations/playnite/src/GameHQ.Playnite/Localization/README.md"
         ).read_text(encoding="utf-8")
-        self.assertIn("owner-approved launch portfolio", playnite)
         self.assertNotIn("Tier 2", playnite)
+        # Check the actual rollout contract independently of README editorial wording.
+        mapping = read_json("integrations/playnite/src/GameHQ.Playnite/Localization/locale-map.json")
+        self.assertEqual("Playnite", mapping["selection_owner"])
+        self.assertCountEqual(LAUNCH_LOCALES, [entry["gamehq"] for entry in mapping["locales"]])
+        for entry in mapping["locales"]:
+            self.assertTrue((ROOT / "integrations/playnite/src/GameHQ.Playnite/Localization"
+                             / entry["resource"]).is_file())
 
 
 if __name__ == "__main__":

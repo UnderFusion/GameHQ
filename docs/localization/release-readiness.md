@@ -43,6 +43,27 @@ No later step may be used to infer that an earlier one passed. A structurally
 valid or machine-produced translation is still `pending` until `p8-3` records
 contextual acceptance.
 
+## Current source coverage and historical reviews
+
+`tools/i18n/linguistic_qa.py` derives the expected ID set and count from
+`i18n/extracted/messages.json`. The active catalog, review coverage, and recorded
+message count must match that manifest exactly; each reviewed source and
+translation hash must also match. Empty manifests, duplicate IDs, unfinished
+translations, and missing coverage fail validation. The JSON schema permits a
+variable positive count; the validator enforces its relationship to the manifest.
+
+Accepted 831-ID review artifacts remain historical evidence and are not rewritten
+by validation. A new candidate needs a current receipt when its catalog changes.
+Unchanged per-ID decisions remain valid; added IDs require translation and review,
+and changed source hashes invalidate only the affected reviewed state. Removed
+IDs leave active coverage but retain their catalog history as `vanished` or
+`obsolete`; these entries are excluded from active catalog counts. Synchronization
+and state reconciliation never promote new or stale translations to reviewed.
+
+The manifest-evolution fixtures in `tools/i18n/test_linguistic_qa.py` exercise
+these transitions on isolated copies and verify that an incomplete enabled locale
+still fails the release gate.
+
 ## Provenance and privacy
 
 Every translation or correction event must retain:

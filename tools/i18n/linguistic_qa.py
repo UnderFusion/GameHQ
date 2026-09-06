@@ -12,6 +12,8 @@ import re
 import sys
 import xml.etree.ElementTree as ET
 
+import sync as extraction
+
 
 ROOT = Path(__file__).resolve().parents[2]
 HASH = re.compile(r"^[0-9a-f]{64}$")
@@ -58,9 +60,16 @@ def catalog_messages(path: Path) -> dict[str, list[str]]:
     except (OSError, UnicodeDecodeError, ET.ParseError) as error:
         raise ReviewError(f"cannot read catalog {path}: {error}") from error
     result: dict[str, list[str]] = {}
+    seen: set[str] = set()
     for message in tree.findall(".//message"):
         message_id = message.get("id")
         translation = message.find("translation")
+        if message_id in seen:
+            raise ReviewError(f"{path}: duplicate catalog ID {message_id}")
+        if message_id:
+            seen.add(message_id)
+        if translation is not None and translation.get("type") in {"vanished", "obsolete"}:
+            continue
         if not message_id or translation is None or translation.get("type") == "unfinished":
             raise ReviewError(f"{path}: missing or unfinished catalog message")
         forms = ["".join(item.itertext()) for item in translation.findall("numerusform")]
@@ -70,6 +79,18 @@ def catalog_messages(path: Path) -> dict[str, list[str]]:
             raise ReviewError(f"{path}: {message_id} has an empty translation")
         result[message_id] = forms
     return result
+
+
+def source_messages(root: Path) -> dict[str, dict[str, object]]:
+    extracted = read_json(root / "i18n/extracted/messages.json")
+    try:
+        extraction.validate_manifest(extracted)
+    except extraction.SyncError as error:
+        raise ReviewError(f"invalid canonical source manifest: {error}") from error
+    source = {item["id"]: item for item in extracted["messages"]}
+    if not source:
+        raise ReviewError("canonical source manifest must not be empty")
+    return source
 
 
 def validate_review(root: Path, artifact_path: Path) -> dict[str, object]:
@@ -96,8 +117,8 @@ def validate_review(root: Path, artifact_path: Path) -> dict[str, object]:
     if value.get("unresolved") != []:
         raise ReviewError("review contains unresolved linguistic defects")
 
-    extracted = read_json(root / "i18n/extracted/messages.json")
-    source = {str(item["id"]): item for item in extracted.get("messages", []) if isinstance(item, dict)}
+    source = source_messages(root)
+    expected_count = len(source)
     state = read_json(root / "i18n/state/translations.json")
     locale_state = state.get("locales", {}).get(locale)
     if not isinstance(locale_state, dict):
@@ -105,14 +126,14 @@ def validate_review(root: Path, artifact_path: Path) -> dict[str, object]:
     catalog_relative = str(locale_state.get("catalog"))
     catalog_path = root / catalog_relative
     catalog = catalog_messages(catalog_path)
-    if len(source) != 831 or set(catalog) != set(source):
-        raise ReviewError(f"{locale} review requires the exact 831-ID source/catalog set, got {len(source)}/{len(catalog)}")
+    if set(catalog) != set(source):
+        raise ReviewError(f"{locale} review requires the exact {expected_count}-ID source/catalog set, got {len(catalog)} active catalog IDs")
     reviewed = value.get("reviewed")
-    if not isinstance(reviewed, dict) or reviewed.get("path") != catalog_relative or reviewed.get("sha256") != sha256(catalog_path) or reviewed.get("message_count") != 831:
+    if not isinstance(reviewed, dict) or reviewed.get("path") != catalog_relative or reviewed.get("sha256") != sha256(catalog_path) or reviewed.get("message_count") != expected_count:
         raise ReviewError("reviewed catalog identity, hash, or count is stale")
     coverage = value.get("coverage")
-    if not isinstance(coverage, list) or len(coverage) != 831:
-        raise ReviewError("coverage must contain exactly 831 entries")
+    if not isinstance(coverage, list) or len(coverage) != expected_count:
+        raise ReviewError(f"coverage must contain exactly {expected_count} entries")
     coverage_map = {str(entry.get("id")): entry for entry in coverage if isinstance(entry, dict)}
     if set(coverage_map) != set(source):
         raise ReviewError("coverage IDs do not exactly match the canonical source")
@@ -170,7 +191,8 @@ def main() -> int:
     except ReviewError as error:
         print(f"linguistic-review error: {error}", file=sys.stderr)
         return 1
-    print(f"linguistic review verified: {value['locale']} 831/831 IDs, no unresolved defects")
+    count = len(value["coverage"])
+    print(f"linguistic review verified: {value['locale']} {count}/{count} IDs, no unresolved defects")
     return 0
 
 
