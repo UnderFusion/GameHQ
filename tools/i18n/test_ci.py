@@ -21,17 +21,56 @@ class LocalizationCiTest(unittest.TestCase):
     def test_pr_and_release_builds_require_the_fast_offline_gate(self) -> None:
         workflow = WORKFLOW.read_text(encoding="utf-8")
         self.assertIn("pull_request:", workflow)
-        self.assertIn("branches:\n      - dev\n      - main", workflow)
+        self.assertIn("branches:\n      - dev\n      - main\n      - 'release/**'", workflow)
         fast_start = workflow.index("  localization-fast:")
+        final_start = workflow.index("  localization-final:")
         build_start = workflow.index("  build-and-verify:")
-        fast_job = workflow[fast_start:build_start]
+        fast_job = workflow[fast_start:final_start]
+        final_job = workflow[final_start:build_start]
         build_job = workflow[build_start:]
         self.assertIn("tools/i18n/ci.ps1", fast_job)
         self.assertIn("timeout-minutes: 10", fast_job)
-        self.assertIn("needs: localization-fast", build_job)
+        self.assertIn("tools/i18n/ci.ps1 -Mode final", final_job)
+        self.assertIn("timeout-minutes: 10", final_job)
+        self.assertIn("needs: [localization-fast, localization-final]", build_job)
         self.assertIn("tools/i18n/sync.ps1 -Check", build_job)
         for forbidden in ("secrets.", "pip install", "Invoke-WebRequest", "curl "):
             self.assertNotIn(forbidden, fast_job)
+            self.assertNotIn(forbidden, final_job)
+
+    def test_lifecycle_gates_are_routed_by_branch_and_never_by_the_manifest(self) -> None:
+        """A development ref must keep failing on a finalized tree, and a release
+        ref must be validated as one. Neither gate may infer which it is."""
+        workflow = WORKFLOW.read_text(encoding="utf-8")
+        fast_start = workflow.index("  localization-fast:")
+        final_start = workflow.index("  localization-final:")
+        fast_job = workflow[fast_start:final_start]
+        final_job = workflow[final_start:workflow.index("  build-and-verify:")]
+        self.assertIn("github.ref != 'refs/heads/main'", fast_job)
+        self.assertIn("!startsWith(github.ref, 'refs/heads/release/')", fast_job)
+        self.assertIn("github.ref == 'refs/heads/main'", final_job)
+        self.assertIn("startsWith(github.ref, 'refs/heads/release/')", final_job)
+        self.assertNotIn("-Mode final", fast_job)
+
+        gate = GATE.read_text(encoding="utf-8")
+        # Every production-neutral check runs in both modes; only the validator's
+        # own candidate-evidence fixtures are development-ref work.
+        neutral_start = gate.index("$pythonChecks = @(")
+        neutral = gate[neutral_start:gate.index("foreach ($check in $pythonChecks)")]
+        for script in ("test_verify.py", "test_inno_languages.py", "test_inno_custom_messages.py",
+                       "test_inno_bootstrap.py", "test_auxiliary_surfaces.py", "test_ci.py",
+                       "test_linguistic_qa.py"):
+            self.assertIn(script, neutral)
+        self.assertNotIn("test_release_readiness.py", neutral)
+        self.assertIn("if ($Mode -eq 'candidate') {", gate)
+        self.assertIn("[ValidateSet('candidate', 'final')]", gate)
+        self.assertIn("$Mode = 'candidate'", gate)
+        # The candidate command keeps its exact meaning; final mode is additive.
+        self.assertIn("'release_readiness.py'), '--check'", gate)
+        self.assertIn("'--mode', 'final'", gate)
+        # Prose may describe the lifecycle; the gate may not read it.
+        for forbidden in ("localization_launch", "manifest.json", "linguistic-state"):
+            self.assertNotIn(forbidden, gate)
 
     def test_gate_is_local_non_mutating_and_reuses_existing_validators(self) -> None:
         gate = GATE.read_text(encoding="utf-8")
