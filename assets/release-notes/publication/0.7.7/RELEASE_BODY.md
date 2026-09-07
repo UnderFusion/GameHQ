@@ -20,23 +20,23 @@
 
 ## Release notes in other languages
 
-These release notes are published in English by default. Every production language is attached to this release as a separate Markdown asset.
+These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.7/assets/release-notes/publication/0.7.7) are kept in the repository; they are not attached to this release as separate downloads.
 
-| Language | Locale | Asset | Content |
-| --- | --- | --- | --- |
-| English | `en-US` | [release-notes.en-US.md](release-notes.en-US.md) | English source |
-| 简体中文 | `zh-Hans` | [release-notes.zh-Hans.md](release-notes.zh-Hans.md) | Reviewed translation |
-| Русский | `ru-RU` | [release-notes.ru-RU.md](release-notes.ru-RU.md) | Reviewed translation |
-| Español | `es-ES` | [release-notes.es-ES.md](release-notes.es-ES.md) | Reviewed translation |
-| Português (Brasil) | `pt-BR` | [release-notes.pt-BR.md](release-notes.pt-BR.md) | Reviewed translation |
-| Deutsch | `de-DE` | [release-notes.de-DE.md](release-notes.de-DE.md) | Reviewed translation |
-| 日本語 | `ja-JP` | [release-notes.ja-JP.md](release-notes.ja-JP.md) | Reviewed translation |
-| Français | `fr-FR` | [release-notes.fr-FR.md](release-notes.fr-FR.md) | Reviewed translation |
-| Polski | `pl-PL` | [release-notes.pl-PL.md](release-notes.pl-PL.md) | Reviewed translation |
-| 한국어 | `ko-KR` | [release-notes.ko-KR.md](release-notes.ko-KR.md) | Reviewed translation |
-| 繁體中文 | `zh-Hant` | [release-notes.zh-Hant.md](release-notes.zh-Hant.md) | Reviewed translation |
-| Türkçe | `tr-TR` | [release-notes.tr-TR.md](release-notes.tr-TR.md) | Reviewed translation |
-| ไทย | `th-TH` | [release-notes.th-TH.md](release-notes.th-TH.md) | Reviewed translation |
-| Español (Latinoamérica) | `es-419` | [release-notes.es-419.md](release-notes.es-419.md) | Reviewed translation |
-| Українська | `uk-UA` | [release-notes.uk-UA.md](release-notes.uk-UA.md) | Reviewed translation |
-| Italiano | `it-IT` | [release-notes.it-IT.md](release-notes.it-IT.md) | Reviewed translation |
+| Language | Locale | Content |
+| --- | --- | --- |
+| English | `en-US` | English source |
+| 简体中文 | `zh-Hans` | Reviewed translation |
+| Русский | `ru-RU` | Reviewed translation |
+| Español | `es-ES` | Reviewed translation |
+| Português (Brasil) | `pt-BR` | Reviewed translation |
+| Deutsch | `de-DE` | Reviewed translation |
+| 日本語 | `ja-JP` | Reviewed translation |
+| Français | `fr-FR` | Reviewed translation |
+| Polski | `pl-PL` | Reviewed translation |
+| 한국어 | `ko-KR` | Reviewed translation |
+| 繁體中文 | `zh-Hant` | Reviewed translation |
+| Türkçe | `tr-TR` | Reviewed translation |
+| ไทย | `th-TH` | Reviewed translation |
+| Español (Latinoamérica) | `es-419` | Reviewed translation |
+| Українська | `uk-UA` | Reviewed translation |
+| Italiano | `it-IT` | Reviewed translation |

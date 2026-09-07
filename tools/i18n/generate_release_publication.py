@@ -33,6 +33,11 @@ DEFAULT_OUTPUT_ROOT = ROOT / "assets" / "release-notes" / "publication"
 BODY_FILENAME = "RELEASE_BODY.md"
 METADATA_FILENAME = "publication-metadata.json"
 LOCALE_INDEX_MARKER = "<!-- gamehq:locale-index -->"
+REPOSITORY_URL = "https://github.com/underfusion/GameHQ"
+LOCALIZED_NOTES_URL = (
+    REPOSITORY_URL + "/tree/v{version}/assets/release-notes/publication/{version}"
+)
+LOCALE_DOCUMENT_LINK = "](release-notes."
 CONTROL_CHARACTERS = set(range(0x00, 0x20)) | {0x7F}
 
 
@@ -141,10 +146,16 @@ def assert_equivalent(rendered: str, document: dict[str, Any], label: str) -> No
         fail(f"{label}: rendered Markdown is not equivalent to the structured source")
 
 
-def build_assets(
+def build_localized_documents(
     source_root: Path, locales: list[str], release: dict[str, Any],
     english: dict[str, Any], names: dict[str, dict[str, str]],
 ) -> tuple[list[dict[str, Any]], dict[str, bytes]]:
+    """Render one repository document per production locale.
+
+    These documents are internal publication inputs: the application, the
+    updater and the repository consume them. They are never uploaded as
+    individual GitHub Release assets.
+    """
     assets: list[dict[str, Any]] = []
     files: dict[str, bytes] = {}
     for locale in locales:
@@ -188,18 +199,25 @@ def build_assets(
 
 def render_body(
     english: dict[str, Any], assets: list[dict[str, Any]],
-    names: dict[str, dict[str, str]],
+    names: dict[str, dict[str, str]], version: str,
 ) -> str:
-    """A concise English release body: the default English notes plus a short
-    index of the locale assets attached to the same release."""
+    """A concise English release body: the default English notes plus one link
+    to the localized documents kept in the repository.
+
+    The body never links a per-locale file, because those files are not GitHub
+    Release assets. Release assets stay limited to installable packages and
+    verification metadata.
+    """
     lines = render_document(english, "en-US", "en-US", names).rstrip("\n").split("\n")
+    url = LOCALIZED_NOTES_URL.format(version=version)
     lines.extend(["", LOCALE_INDEX_MARKER, "", "## Release notes in other languages", ""])
     lines.append(
         "These release notes are published in English by default. "
-        "Every production language is attached to this release as a separate "
-        "Markdown asset."
+        f"[Release notes in {len(assets)} languages]({url}) are kept in the "
+        "repository; they are not attached to this release as separate "
+        "downloads."
     )
-    lines.extend(["", "| Language | Locale | Asset | Content |", "| --- | --- | --- | --- |"])
+    lines.extend(["", "| Language | Locale | Content |", "| --- | --- | --- |"])
     for asset in assets:
         if asset["effective_locale"] == "en-US" and asset["requested_locale"] == "en-US":
             content = "English source"
@@ -209,7 +227,7 @@ def render_body(
             content = "Reviewed translation"
         lines.append(
             f"| {asset['language_native_name']} | `{asset['canonical_locale']}` | "
-            f"[{asset['filename']}]({asset['filename']}) | {content} |"
+            f"{content} |"
         )
     return "\n".join(lines).rstrip("\n") + "\n"
 
@@ -226,14 +244,20 @@ def build_release(
     source_root: Path, locales: list[str], release: dict[str, Any],
     english: dict[str, Any], names: dict[str, dict[str, str]],
 ) -> dict[str, bytes]:
-    assets, files = build_assets(source_root, locales, release, english, names)
-    body = render_body(english, assets, names)
-    label = f"release body {release['version']}"
+    version = release["version"]
+    assets, files = build_localized_documents(
+        source_root, locales, release, english, names
+    )
+    body = render_body(english, assets, names, version)
+    label = f"release body {version}"
     if body_release_notes(body, label) != structured_meaning(english):
         fail(f"{label}: release body is not equivalent to the structured English source")
-    for asset in assets:
-        if f"]({asset['filename']})" not in body:
-            fail(f"{label}: release body does not link {asset['filename']}")
+    localized_notes_url = LOCALIZED_NOTES_URL.format(version=version)
+    if f"]({localized_notes_url})" not in body:
+        fail(f"{label}: release body does not link the localized notes in the repository")
+    if LOCALE_DOCUMENT_LINK in body:
+        fail(f"{label}: per-locale documents are not GitHub Release assets and "
+             "must not be linked as release downloads")
     body_payload = body.encode("utf-8")
     files[BODY_FILENAME] = body_payload
     metadata = {
@@ -250,7 +274,12 @@ def build_release(
             "size": len(body_payload),
             "sha256": hashlib.sha256(body_payload).hexdigest(),
         },
-        "assets": assets,
+        "distribution": {
+            "localized_documents": "repository",
+            "github_release_assets": False,
+            "localized_documents_url": localized_notes_url,
+        },
+        "localized_documents": assets,
     }
     files[METADATA_FILENAME] = json_bytes(metadata)
     return files

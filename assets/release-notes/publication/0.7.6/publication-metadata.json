@@ -9,10 +9,15 @@
   "release_source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
   "release_body": {
     "filename": "RELEASE_BODY.md",
-    "size": 3226,
-    "sha256": "b48454ce7be53d3f6e5926b3ee1a988ae2147e4371e36bfb6fd7231100a9cb33"
+    "size": 2513,
+    "sha256": "30d14288b3186f44e815ec60185c7ef008837ae2a955bcfaf9d357a592fde822"
   },
-  "assets": [
+  "distribution": {
+    "localized_documents": "repository",
+    "github_release_assets": false,
+    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.7.6/assets/release-notes/publication/0.7.6"
+  },
+  "localized_documents": [
     {
       "canonical_locale": "en-US",
       "requested_locale": "en-US",

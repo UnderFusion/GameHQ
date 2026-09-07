@@ -311,6 +311,32 @@ into `app/`, runs `windeployqt --qmldir src/ui/qml --compiler-runtime`, adds the
 FFmpeg DLLs that Qt Multimedia loads dynamically, then writes the launcher,
 readme, and portable marker at the root.
 
+## GitHub Release asset policy
+
+A published GitHub Release exposes installable packages and verification
+metadata only: Setup, Portable, the update payload, the mandatory source
+archive, checksums, the release manifest and its signature, and the release
+evidence. Nothing else belongs on the Downloads list.
+
+**Never publish one release-note asset per locale.** Per-locale release-note
+files (`release-notes.<locale>.md`) are internal, generated publication inputs,
+not individual GitHub Release assets. They keep being generated for all sixteen
+production locales because the application, the updater and the repository
+consume them, but they are never uploaded to a release. If a downloadable
+bundle is ever needed, ship one combined multilingual asset instead of sixteen
+files.
+
+The English release body is the release's public text. It ends with a single
+"Release notes in other languages" section that links the tagged repository
+directory
+(`https://github.com/underfusion/GameHQ/tree/v<version>/assets/release-notes/publication/<version>`)
+and lists the languages in a table without per-file download links.
+`tools/i18n/generate_release_publication.py` renders that body and refuses to
+emit one that links a per-locale document;
+`tools/i18n/test_release_publication.py` and
+`packaging/test-release-note-assets.ps1` fail the build if a per-locale link
+reappears.
+
 ## App icon
 
 - Source of truth: `assets/icons/gamehq.svg`.

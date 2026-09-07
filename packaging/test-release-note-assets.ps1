@@ -105,4 +105,21 @@ foreach ($record in $index.bundles) {
     }
 }
 
-Write-Host '[release-notes] acceptance passed: 16 locales, sources, bundles, publication, UTF-8, and integrity'
+# GitHub Release asset policy: per-locale release-note documents are internal
+# publication inputs kept in the repository. They are never uploaded as
+# individual GitHub Release assets, so the release body must link the tagged
+# repository directory instead of sixteen separate downloads. The structured
+# contract lives in tools/i18n/test_release_publication.py; packaging only
+# proves the published body carries no per-locale download links.
+foreach ($versionDir in Get-ChildItem (Join-Path $sourceRoot 'publication') -Directory) {
+    $body = [System.IO.File]::ReadAllText((Join-Path $versionDir.FullName 'RELEASE_BODY.md'))
+    if ($body.Contains('](release-notes.')) {
+        throw "$($versionDir.Name): the release body links a per-locale document as a release asset."
+    }
+    $repositoryLink = "https://github.com/underfusion/GameHQ/tree/v$($versionDir.Name)/"
+    if (-not $body.Contains($repositoryLink)) {
+        throw "$($versionDir.Name): the release body does not link the localized notes in the repository."
+    }
+}
+
+Write-Host '[release-notes] acceptance passed: 16 locales, sources, bundles, publication, UTF-8, integrity, and asset policy'

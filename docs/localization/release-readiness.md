@@ -173,6 +173,12 @@ synthesizes owner intent. Final mode is read-only with respect to the
 repository: it requires an explicit `--output` outside the normal candidate
 snapshot, and `--mode final --check` writes nothing at all.
 
+The sixteen localized release-note documents are publication inputs, not
+release downloads. Publishing the release uploads installable packages and
+verification metadata only; the localized notes stay in the repository and the
+release body links them once. See `docs/packaging.md` > GitHub Release asset
+policy.
+
 Assigning the release date rewrites every localized release-note document, so a
 real finalization also re-pins the release-note surface hash recorded in each
 `i18n/quality/reviews/<tag>.json`. Refresh that evidence as part of the

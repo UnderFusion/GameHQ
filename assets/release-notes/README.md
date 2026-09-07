@@ -21,6 +21,20 @@ Released English sources are immutable. An explicit correction keeps
 `original_source_integrity`, updates `source_integrity`, and records `reason`,
 `approved_by`, and `corrected_at` in the manifest.
 
+## Publication and the GitHub Release asset policy
+
+`publication/<version>/` holds the rendered publication artifacts: one
+`release-notes.<locale>.md` per production locale, the English `RELEASE_BODY.md`
+and `publication-metadata.json`.
+
+The per-locale documents are internal, generated publication inputs. They are
+**never** uploaded as individual GitHub Release assets, because sixteen extra
+Markdown files bury the installable packages on the Downloads list. The release
+body links the tagged repository directory once instead, and
+`publication-metadata.json` records that contract in its `distribution` block
+(`github_release_assets: false`). See `docs/packaging.md` > GitHub Release asset
+policy.
+
 This versioned source replaced the single-locale `assets/release-notes.json`,
 which has been retired. `tools/i18n/fixtures/release-notes-history.en-US.json`
 is the byte-frozen record of the released 0.7.3-0.7.6 English history that was

@@ -18,3 +18,14 @@
 - Link [Download verification](https://github.com/underfusion/GameHQ/blob/main/docs/download-verification.md).
 - Link the [Code signing policy](https://github.com/underfusion/GameHQ/blob/main/docs/code-signing-policy.md)
   using that exact term; never imply SignPath enrollment or signatures before they are active.
+
+## GitHub Release assets
+
+- Upload installable packages and verification metadata only: Setup, Portable,
+  the update payload, `GameHQ-<version>-source.zip`, checksums, the release
+  manifest and its signature, and the release evidence.
+- **Never upload one release-note asset per locale.** `release-notes.<locale>.md`
+  files are internal generated publication inputs, not GitHub Release assets.
+- The localized notes stay in the repository; the release body links them once
+  as "Release notes in 16 languages". Full policy: `docs/packaging.md` >
+  GitHub Release asset policy.

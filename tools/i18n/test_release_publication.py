@@ -80,12 +80,12 @@ class PublicationTest(unittest.TestCase):
         self.assertEqual(len(production), 16)
         for version_dir in sorted(COMMITTED_ROOT.iterdir()):
             metadata = read_json(version_dir / publication.METADATA_FILENAME)
-            locales = [asset["canonical_locale"] for asset in metadata["assets"]]
-            filenames = [asset["filename"] for asset in metadata["assets"]]
+            locales = [asset["canonical_locale"] for asset in metadata["localized_documents"]]
+            filenames = [asset["filename"] for asset in metadata["localized_documents"]]
             self.assertEqual(locales, production)
             self.assertEqual(len(set(locales)), 16)
             self.assertEqual(len(set(filenames)), 16)
-            for asset in metadata["assets"]:
+            for asset in metadata["localized_documents"]:
                 self.assertEqual(asset["filename"],
                                  f"release-notes.{asset['canonical_locale']}.md")
                 self.assertNotIn(asset["canonical_locale"], source_tool.PSEUDO_LOCALES)
@@ -108,12 +108,12 @@ class PublicationTest(unittest.TestCase):
             english = read_json(SOURCE_ROOT / "versions" / metadata["version"] / "en-US.json")
             self.assertEqual(source_tool.source_integrity(english),
                              metadata["release_source_integrity"])
-            records = list(metadata["assets"]) + [metadata["release_body"]]
+            records = list(metadata["localized_documents"]) + [metadata["release_body"]]
             for record in records:
                 payload = (version_dir / record["filename"]).read_bytes()
                 self.assertEqual(record["size"], len(payload))
                 self.assertEqual(record["sha256"], hashlib.sha256(payload).hexdigest())
-            for asset in metadata["assets"]:
+            for asset in metadata["localized_documents"]:
                 self.assertEqual(asset["source_integrity"], release["source_integrity"])
                 self.assertEqual(asset["version"], metadata["version"])
 
@@ -127,7 +127,7 @@ class PublicationTest(unittest.TestCase):
             version = metadata["version"]
             self.assertEqual(policies[version], metadata["localization_policy"])
             complete = metadata["localization_policy"] == "complete"
-            for asset in metadata["assets"]:
+            for asset in metadata["localized_documents"]:
                 with self.subTest(version=version, locale=asset["canonical_locale"]):
                     text = (version_dir / asset["filename"]).read_text(encoding="utf-8")
                     self.assertEqual(asset["requested_locale"], asset["canonical_locale"])
@@ -147,7 +147,7 @@ class PublicationTest(unittest.TestCase):
         version_dir = COMMITTED_ROOT / FALLBACK_VERSION
         metadata = read_json(version_dir / publication.METADATA_FILENAME)
         english = (version_dir / "release-notes.en-US.md").read_text(encoding="utf-8")
-        for asset in metadata["assets"]:
+        for asset in metadata["localized_documents"]:
             text = (version_dir / asset["filename"]).read_text(encoding="utf-8")
             self.assertEqual(asset["requested_locale"], asset["canonical_locale"])
             if asset["canonical_locale"] == "en-US":
@@ -197,7 +197,7 @@ class PublicationTest(unittest.TestCase):
         output = self.generate("localized", source_root)
         text = (output / CURRENT_VERSION / "release-notes.pl-PL.md").read_text(encoding="utf-8")
         metadata = read_json(output / CURRENT_VERSION / publication.METADATA_FILENAME)
-        asset = next(a for a in metadata["assets"] if a["canonical_locale"] == "pl-PL")
+        asset = next(a for a in metadata["localized_documents"] if a["canonical_locale"] == "pl-PL")
         self.assertFalse(asset["fallback"])
         self.assertEqual(asset["effective_locale"], "pl-PL")
         self.assertEqual(asset["fallback_state"], "authored")
@@ -249,7 +249,7 @@ class PublicationTest(unittest.TestCase):
         for version_dir in sorted(COMMITTED_ROOT.iterdir()):
             version = version_dir.name
             english = read_json(SOURCE_ROOT / "versions" / version / "en-US.json")
-            for asset in read_json(version_dir / publication.METADATA_FILENAME)["assets"]:
+            for asset in read_json(version_dir / publication.METADATA_FILENAME)["localized_documents"]:
                 source = read_json(
                     SOURCE_ROOT / "versions" / version / f"{asset['effective_locale']}.json")
                 expected = publication.structured_meaning(source)
@@ -263,18 +263,27 @@ class PublicationTest(unittest.TestCase):
                     + [item for section in expected["sections"] for item in section["items"]])
                 self.assertEqual(sorted(LINK.findall(text)), sorted(LINK.findall(authored)))
 
-    def test_release_body_links_resolve_to_every_generated_locale_asset(self) -> None:
+    def test_release_body_links_the_repository_not_per_locale_release_assets(self) -> None:
+        """Per-locale notes are repository documents, never individual release assets."""
         for version_dir in sorted(COMMITTED_ROOT.iterdir()):
             metadata = read_json(version_dir / publication.METADATA_FILENAME)
+            version = metadata["version"]
             body = (version_dir / publication.BODY_FILENAME).read_text(encoding="utf-8")
-            english = read_json(SOURCE_ROOT / "versions" / metadata["version"] / "en-US.json")
+            english = read_json(SOURCE_ROOT / "versions" / version / "en-US.json")
             self.assertEqual(publication.body_release_notes(body, "body"),
                              publication.structured_meaning(english))
+            expected_url = publication.LOCALIZED_NOTES_URL.format(version=version)
             targets = {target for _, target in LINK.findall(body)}
-            self.assertEqual(targets, {a["filename"] for a in metadata["assets"]})
-            for target in targets:
-                self.assertTrue((version_dir / target).is_file())
+            self.assertIn(expected_url, targets)
+            for document in metadata["localized_documents"]:
+                self.assertNotIn(document["filename"], targets)
+                self.assertTrue((version_dir / document["filename"]).is_file())
+            self.assertNotIn(publication.LOCALE_DOCUMENT_LINK, body)
+            self.assertEqual(metadata["distribution"]["github_release_assets"], False)
+            self.assertEqual(metadata["distribution"]["localized_documents"], "repository")
+            self.assertEqual(metadata["distribution"]["localized_documents_url"], expected_url)
             self.assertIn("published in English by default", body)
+            self.assertIn("are kept in the", body)
             self.assertNotIn("en-XA", body)
             self.assertNotIn("ar-XB", body)
 

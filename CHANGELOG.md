@@ -4,6 +4,15 @@ All notable public releases of GameHQ are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Changed
+
+- Release notes in the other fifteen languages are no longer attached to a
+  GitHub Release as separate files. They stay in the repository, and the
+  release page links them once, so the download list shows only the installable
+  packages and the files needed to verify them.
+
 ## [0.7.7] - 2026-09-07
 
 ### Added
