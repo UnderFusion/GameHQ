@@ -50,6 +50,50 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         shutil.copytree(SOURCE_ROOT, root)
         return temporary, root
 
+    def designated_sources(self) -> tuple[tempfile.TemporaryDirectory, Path]:
+        """A synthetic pre-release checkout. The lifecycle stage of the real
+        repository is not a property these tests may depend on: a finalized
+        checkout must exercise the designated contract exactly as a
+        pre-release one does."""
+        temporary, root = self.temporary_sources()
+        manifest = GEN.read_json(root / "manifest.json")
+        launch = manifest["localization_launch"]
+        version = launch["version"]
+        launch["date"] = None
+        launch["status"] = "designated"
+        manifest["releases"] = [release for release in manifest["releases"]
+                                if release["version"] != version]
+        GEN.write_json(root / "manifest.json", manifest)
+
+        version_root = root / "versions" / version
+        for path in sorted(version_root.glob("*.json")):
+            document = GEN.read_json(path)
+            document["date"] = None
+            GEN.write_json(path, document)
+        english = GEN.read_json(version_root / "en-US.json")
+        integrity = GEN.source_integrity(english)
+        for path in sorted(version_root.glob("*.json")):
+            document = GEN.read_json(path)
+            if document["locale"] == "en-US":
+                continue
+            document["source_integrity"] = integrity
+            GEN.write_json(path, document)
+        state = GEN.read_json(root / "linguistic-state.json")
+        state["candidate"] = version
+        state["source_integrity"] = integrity
+        GEN.write_json(root / "linguistic-state.json", state)
+
+        shutil.rmtree(root / "publication" / version, ignore_errors=True)
+        GEN.generate_all(root, root / "generated", check=False)
+        return temporary, root
+
+    def fallback_release(self) -> dict:
+        """The newest release that ships English to every locale."""
+        for release, _ in self.releases:
+            if release["localization_policy"] == "fallback-allowed":
+                return release
+        raise AssertionError("no fallback-allowed release in the manifest")
+
     def assert_contract_error(self, callback, needle: str) -> None:
         with self.assertRaises(GEN.ReleaseNotesError) as raised:
             callback()
@@ -58,7 +102,8 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
     def test_production_contract_and_generated_bundles_are_current(self) -> None:
         self.assertEqual(2, self.manifest["schema_version"])
         self.assertEqual(16, len(self.locales))
-        self.assertEqual(4, len(self.releases))
+        self.assertEqual(len(self.manifest["releases"]), len(self.releases))
+        self.assertGreaterEqual(len(self.releases), 4)
         GEN.strict_validate_locales(SOURCE_ROOT, self.locales, self.releases)
         GEN.generate_all(SOURCE_ROOT, OUTPUT_ROOT, check=True)
         for release, _ in self.releases:
@@ -124,7 +169,12 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         frozen = GEN.read_json(HISTORY_FIXTURE)
         generated = GEN.read_json(OUTPUT_ROOT / "release-notes.en-US.json")
         generated.pop("_meta")
-        self.assertEqual(frozen, generated)
+        # Releases newer than the fixture may exist; the fixture chain must still
+        # be reproduced byte for byte from the position it occupies.
+        chain = [{"version": generated["version"], "date": generated["date"],
+                  "sections": generated["sections"]}, *generated["history"]]
+        position = [entry["version"] for entry in chain].index(frozen["version"])
+        self.assertEqual(frozen, {**chain[position], "history": chain[position + 1:]})
         self.assertEqual("0.7.6", frozen["version"])
         self.assertEqual("2026-08-31", frozen["date"])
         self.assertEqual(["0.7.5", "0.7.4", "0.7.3"],
@@ -158,9 +208,11 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         self.assertIn("has been retired", readme)
 
     def test_owner_designated_launch_release_is_recorded_without_a_date(self) -> None:
-        manifest = GEN.read_json(SOURCE_ROOT / "manifest.json")
+        temporary, root = self.designated_sources()
+        with temporary:
+            manifest = GEN.read_json(root / "manifest.json")
         launch = manifest["localization_launch"]
-        self.assertEqual("0.7.7", launch["version"])
+        self.assertTrue(launch["version"].strip())
         self.assertIsNone(launch["date"])
         self.assertEqual("designated", launch["status"])
         self.assertEqual("complete", launch["localization_policy"])
@@ -169,8 +221,10 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
                          {release["version"] for release in manifest["releases"]})
 
     def test_launch_content_is_ready_while_the_release_stays_owner_gated(self) -> None:
-        manifest, locales, _ = GEN.load_contract(SOURCE_ROOT)
-        readiness = GEN.launch_readiness(SOURCE_ROOT, manifest, locales)
+        temporary, root = self.designated_sources()
+        with temporary:
+            manifest, locales, _ = GEN.load_contract(root)
+            readiness = GEN.launch_readiness(root, manifest, locales)
         self.assertTrue(readiness["designated"])
         self.assertIsNone(readiness["date"])
         # Sixteen reviewed documents exist, so the content is ready...
@@ -186,10 +240,11 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
 
     def test_every_launch_document_is_a_reviewed_translation(self) -> None:
         manifest, locales, _ = GEN.load_contract(SOURCE_ROOT)
-        version = manifest["localization_launch"]["version"]
+        launch = manifest["localization_launch"]
+        version = launch["version"]
         root = SOURCE_ROOT / "versions" / version
         english = GEN.read_json(root / "en-US.json")
-        self.assertIsNone(english["date"])
+        self.assertEqual(launch["date"], english["date"])
         structure = GEN.structure_ids(english)
         english_text = {item["text"] for section in english["sections"]
                         for item in section["items"]}
@@ -199,7 +254,7 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
             with self.subTest(locale=locale):
                 document = GEN.read_json(root / f"{locale}.json")
                 self.assertEqual("localized", document["mode"])
-                self.assertIsNone(document["date"])
+                self.assertEqual(launch["date"], document["date"])
                 self.assertEqual(structure, GEN.structure_ids(document))
                 self.assertEqual(GEN.source_integrity(english), document["source_integrity"])
                 texts = [item["text"] for section in document["sections"]
@@ -279,22 +334,27 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
             GEN.validate_english_document(english, version, "2026-09-30", "released")
 
     def test_a_designated_launch_release_never_reaches_generated_artifacts(self) -> None:
-        version = GEN.read_json(SOURCE_ROOT / "manifest.json")["localization_launch"]["version"]
-        for path in sorted(OUTPUT_ROOT.glob("*.json")):
-            self.assertNotIn(version, path.read_text(encoding="utf-8"), path.name)
-        publication = SOURCE_ROOT / "publication"
-        self.assertFalse((publication / version).exists())
-        for path in sorted(publication.rglob("*")):
-            if path.is_file():
-                self.assertNotIn(version, path.read_text(encoding="utf-8"), str(path))
-        index = GEN.read_json(OUTPUT_ROOT / "release-notes.index.json")
-        self.assertNotEqual(version, index["current_version"])
-        self.assertNotIn(version, {document["version"] for document in index["documents"]})
+        temporary, root = self.designated_sources()
+        with temporary:
+            version = GEN.read_json(root / "manifest.json")["localization_launch"]["version"]
+            output = root / "generated"
+            for path in sorted(output.glob("*.json")):
+                self.assertNotIn(version, path.read_text(encoding="utf-8"), path.name)
+            publication = root / "publication"
+            self.assertFalse((publication / version).exists())
+            for path in sorted(publication.rglob("*")):
+                if path.is_file():
+                    self.assertNotIn(version, path.read_text(encoding="utf-8"), str(path))
+            index = GEN.read_json(output / "release-notes.index.json")
+            self.assertNotEqual(version, index["current_version"])
+            self.assertNotIn(version,
+                             {document["version"] for document in index["documents"]})
 
     def test_invalid_launch_designations_are_rejected(self) -> None:
         manifest, _, releases = GEN.load_contract(SOURCE_ROOT)
         base = manifest["localization_launch"]
-        released = [release for release, _ in releases]
+        released = [release for release, _ in releases
+                    if release["version"] != base["version"]]
         cases = {
             "date": {**base, "date": "2026-09-30"},
             "status": {**base, "status": "shipped"},
@@ -312,7 +372,8 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         """Generation and publication ship releases[], so a released launch must be promoted."""
         manifest, _, releases = GEN.load_contract(SOURCE_ROOT)
         base = manifest["localization_launch"]
-        released = [copy.deepcopy(release) for release, _ in releases]
+        released = [copy.deepcopy(release) for release, _ in releases
+                    if release["version"] != base["version"]]
         date = "2026-09-30"
         launch = {**base, "status": "released", "date": date}
         english = GEN.read_json(SOURCE_ROOT / "versions" / launch["version"] / "en-US.json")
@@ -328,7 +389,7 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         # ...and every incomplete or contradictory variant is rejected by its own diagnostic.
         cases = {
             "missing promotion": (launch, released, "missing from the release history"),
-            "no release date": ({**base, "status": "released"}, promoted,
+            "no release date": ({**base, "status": "released", "date": None}, promoted,
                                 "invalid ISO date"),
             "duplicate promotion": (launch, [copy.deepcopy(entry), *promoted],
                                     "promoted more than once"),
@@ -359,45 +420,59 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
                 self.assertEqual((first_root / name).read_bytes(), (second_root / name).read_bytes())
 
     def test_declared_missing_and_invalid_documents_use_whole_english_release(self) -> None:
+        fallback_version = self.fallback_release()["version"]
         english_bundle = GEN.build_bundle(SOURCE_ROOT, "en-US", self.locales, self.releases)
         polish_bundle = GEN.build_bundle(SOURCE_ROOT, "pl-PL", self.locales, self.releases)
-        for bundle in (english_bundle, polish_bundle):
-            bundle.pop("_meta")
-        self.assertEqual(english_bundle, polish_bundle)
+        english_chain = {entry["version"]: entry for entry in
+                         [english_bundle, *english_bundle["history"]]}
+        polish_chain = {entry["version"]: entry for entry in
+                        [polish_bundle, *polish_bundle["history"]]}
+        for document in polish_bundle["_meta"]["documents"]:
+            if document["fallback_reason"] != "declared-en-US-fallback":
+                continue
+            version = document["version"]
+            self.assertEqual("en-US", document["resolved_locale"])
+            self.assertEqual(english_chain[version]["sections"],
+                             polish_chain[version]["sections"])
 
         temporary, source_root = self.temporary_sources()
         with temporary:
-            polish = source_root / "versions" / "0.7.6" / "pl-PL.json"
+            polish = source_root / "versions" / fallback_version / "pl-PL.json"
             polish.unlink()
             _, locales, releases = GEN.load_contract(source_root)
             missing = GEN.build_bundle(source_root, "pl-PL", locales, releases)
-            self.assertEqual("en-US", missing["_meta"]["documents"][0]["resolved_locale"])
-            self.assertIn("missing", missing["_meta"]["documents"][0]["fallback_reason"])
+            entry = next(document for document in missing["_meta"]["documents"]
+                         if document["version"] == fallback_version)
+            self.assertEqual("en-US", entry["resolved_locale"])
+            self.assertIn("missing", entry["fallback_reason"])
 
+            record, source = next((release, document) for release, document in releases
+                                  if release["version"] == fallback_version)
             invalid = {
                 "$schema": "fixture",
                 "schema_version": 2,
-                "version": "0.7.6",
+                "version": fallback_version,
                 "locale": "pl-PL",
-                "date": "2026-08-31",
+                "date": record["date"],
                 "mode": "localized",
-                "source_integrity": releases[0][0]["source_integrity"],
-                "sections": [{"id": "fixed", "title": "Naprawiono", "items": []}],
+                "source_integrity": record["source_integrity"],
+                "sections": [{"id": source["sections"][0]["id"],
+                              "title": "Naprawiono", "items": []}],
             }
             GEN.write_json(polish, invalid)
-            fallback = GEN.build_bundle(source_root, "pl-PL", locales, releases)
-            self.assertEqual(
-                releases[0][1]["sections"][0]["title"],
-                fallback["sections"][0]["title"],
-            )
-            self.assertNotIn("Naprawiono", json.dumps(fallback, ensure_ascii=False))
+            rebuilt = GEN.build_bundle(source_root, "pl-PL", locales, releases)
+            chain = {entry["version"]: entry for entry in [rebuilt, *rebuilt["history"]]}
+            self.assertEqual(source["sections"][0]["title"],
+                             chain[fallback_version]["sections"][0]["title"])
+            self.assertNotIn("Naprawiono", json.dumps(rebuilt, ensure_ascii=False))
 
     def test_duplicate_ids_and_partial_structures_are_rejected(self) -> None:
+        newest = self.releases[0][0]
         english = copy.deepcopy(self.releases[0][1])
         english["sections"][0]["id"] = english["sections"][1]["id"]
         self.assert_contract_error(
             lambda: GEN.validate_english_document(
-                english, "0.7.6", "2026-08-31", "duplicate-section"
+                english, newest["version"], newest["date"], "duplicate-section"
             ),
             "duplicate section ID",
         )
@@ -406,7 +481,7 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         english["sections"][0]["items"][1]["id"] = english["sections"][0]["items"][0]["id"]
         self.assert_contract_error(
             lambda: GEN.validate_english_document(
-                english, "0.7.6", "2026-08-31", "duplicate-item"
+                english, newest["version"], newest["date"], "duplicate-item"
             ),
             "duplicate item ID",
         )
@@ -479,8 +554,11 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
     def test_complete_policy_requires_real_documents_for_all_sixteen_locales(self) -> None:
         temporary, source_root = self.temporary_sources()
         with temporary:
+            fallback = self.fallback_release()["version"]
             manifest = GEN.read_json(source_root / "manifest.json")
-            manifest["releases"][0]["localization_policy"] = "complete"
+            for release in manifest["releases"]:
+                if release["version"] == fallback:
+                    release["localization_policy"] = "complete"
             GEN.write_json(source_root / "manifest.json", manifest)
             _, locales, releases = GEN.load_contract(source_root)
             self.assert_contract_error(

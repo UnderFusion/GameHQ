@@ -19,12 +19,22 @@ import generate_release_publication as publication
 ROOT = publication.ROOT
 SOURCE_ROOT = ROOT / "assets" / "release-notes"
 COMMITTED_ROOT = publication.DEFAULT_OUTPUT_ROOT
-CURRENT_VERSION = "0.7.6"
 LINK = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 
 
 def read_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def read_manifest() -> dict:
+    return read_json(SOURCE_ROOT / "manifest.json")
+
+MANIFEST = read_manifest()
+# The newest release and the newest English-fallback release are manifest
+# facts; pinning them would tie the suite to one point in the history.
+CURRENT_VERSION = MANIFEST["releases"][0]["version"]
+FALLBACK_VERSION = next(release["version"] for release in MANIFEST["releases"]
+                        if release["localization_policy"] == "fallback-allowed")
 
 
 class PublicationTest(unittest.TestCase):
@@ -107,8 +117,34 @@ class PublicationTest(unittest.TestCase):
                 self.assertEqual(asset["source_integrity"], release["source_integrity"])
                 self.assertEqual(asset["version"], metadata["version"])
 
+    def test_every_published_release_matches_its_declared_policy(self) -> None:
+        """A complete release publishes real translations; a fallback-allowed one
+        publishes English to every locale. Which releases exist is history."""
+        policies = {release["version"]: release["localization_policy"]
+                    for release in MANIFEST["releases"]}
+        for version_dir in sorted(COMMITTED_ROOT.iterdir()):
+            metadata = read_json(version_dir / publication.METADATA_FILENAME)
+            version = metadata["version"]
+            self.assertEqual(policies[version], metadata["localization_policy"])
+            complete = metadata["localization_policy"] == "complete"
+            for asset in metadata["assets"]:
+                with self.subTest(version=version, locale=asset["canonical_locale"]):
+                    text = (version_dir / asset["filename"]).read_text(encoding="utf-8")
+                    self.assertEqual(asset["requested_locale"], asset["canonical_locale"])
+                    if complete or asset["canonical_locale"] == "en-US":
+                        self.assertEqual(asset["effective_locale"], asset["canonical_locale"])
+                        self.assertFalse(asset["fallback"])
+                        self.assertIsNone(asset["fallback_reason"])
+                        self.assertEqual(asset["fallback_state"], "authored")
+                        self.assertNotIn("No reviewed", text)
+                    else:
+                        self.assertEqual(asset["effective_locale"], "en-US")
+                        self.assertTrue(asset["fallback"])
+                        self.assertEqual(asset["fallback_state"], "whole-document-fallback")
+                        self.assertIn("No reviewed", text)
+
     def test_fallback_assets_separate_requested_from_effective_locale(self) -> None:
-        version_dir = COMMITTED_ROOT / CURRENT_VERSION
+        version_dir = COMMITTED_ROOT / FALLBACK_VERSION
         metadata = read_json(version_dir / publication.METADATA_FILENAME)
         english = (version_dir / "release-notes.en-US.md").read_text(encoding="utf-8")
         for asset in metadata["assets"]:
@@ -213,8 +249,10 @@ class PublicationTest(unittest.TestCase):
         for version_dir in sorted(COMMITTED_ROOT.iterdir()):
             version = version_dir.name
             english = read_json(SOURCE_ROOT / "versions" / version / "en-US.json")
-            expected = publication.structured_meaning(english)
             for asset in read_json(version_dir / publication.METADATA_FILENAME)["assets"]:
+                source = read_json(
+                    SOURCE_ROOT / "versions" / version / f"{asset['effective_locale']}.json")
+                expected = publication.structured_meaning(source)
                 text = (version_dir / asset["filename"]).read_text(encoding="utf-8")
                 parsed = publication.parse_document(text, asset["filename"])
                 self.assertEqual(parsed["version"], version)

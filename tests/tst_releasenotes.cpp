@@ -12,6 +12,39 @@
 
 namespace
 {
+// Expectations come from the shipped index and the authored English sources, so
+// these tests describe the release pipeline rather than one release's contents.
+QString currentVersion(const QByteArray &index)
+{
+    return QJsonDocument::fromJson(index).object()
+        .value(QStringLiteral("current_version")).toString();
+}
+
+QStringList documentVersions(const QByteArray &index)
+{
+    QStringList versions;
+    const QJsonArray documents = QJsonDocument::fromJson(index).object()
+                                     .value(QStringLiteral("documents")).toArray();
+    for (const QJsonValue &value : documents)
+        versions.append(value.toObject().value(QStringLiteral("version")).toString());
+    return versions;
+}
+
+int documentCount(const QByteArray &index)
+{
+    return documentVersions(index).size();
+}
+
+QJsonArray englishSections(const QString &version)
+{
+    QFile file(QStringLiteral(GAMEHQ_RELEASE_NOTES_SOURCE_DIR) + QStringLiteral("/versions/")
+               + version + QStringLiteral("/en-US.json"));
+    if (!file.open(QIODevice::ReadOnly))
+        return {};
+    return QJsonDocument::fromJson(file.readAll()).object()
+        .value(QStringLiteral("sections")).toArray();
+}
+
 struct BundleFixture
 {
     LocaleRegistry registry{false};
@@ -224,8 +257,8 @@ void ReleaseNotesTest::loadsEveryCanonicalLocaleBundle()
         const ReleaseNotes notes = fixture.notes(tag, &error);
         QVERIFY2(notes.isValid(), qPrintable(tag + QStringLiteral(": ") + error));
         QCOMPARE(notes.locale(), tag);
-        QCOMPARE(notes.version(), QStringLiteral("0.7.6"));
-        QCOMPARE(notes.releases().size(), 4);
+        QCOMPARE(notes.version(), currentVersion(fixture.index));
+        QCOMPARE(notes.releases().size(), documentCount(fixture.index));
     }
 }
 
@@ -368,7 +401,7 @@ void ReleaseNotesTest::localeDatesAndOfflineHistorySurviveSwitches()
                                QStringLiteral("zh-Hant"), QStringLiteral("th-TH")}) {
         const ReleaseNotes notes = fixture.notes(tag, &error);
         QVERIFY2(notes.isValid(), qPrintable(error));
-        QCOMPARE(notes.releases().size(), 4);
+        QCOMPARE(notes.releases().size(), documentCount(fixture.index));
         dates.insert(notes.releases().first().toMap().value(QStringLiteral("date")).toString());
     }
     QVERIFY(dates.size() >= 3);
@@ -388,10 +421,9 @@ void ReleaseNotesTest::exposesTheFrozenReleasedHistoryWithoutTheLegacySource()
     const ReleaseNotes notes = fixture.notes(QStringLiteral("en-US"), &error);
     QVERIFY2(notes.isValid(), qPrintable(error));
     const QVariantList releases = notes.releases();
-    QCOMPARE(releases.size(), 4);
+    QCOMPARE(releases.size(), documentCount(fixture.index));
 
-    const QStringList expected{QStringLiteral("0.7.6"), QStringLiteral("0.7.5"),
-                               QStringLiteral("0.7.4"), QStringLiteral("0.7.3")};
+    const QStringList expected = documentVersions(fixture.index);
     for (int index = 0; index < expected.size(); ++index) {
         const QVariantMap release = releases.at(index).toMap();
         QCOMPARE(release.value(QStringLiteral("version")).toString(), expected.at(index));
@@ -406,15 +438,20 @@ void ReleaseNotesTest::exposesTheFrozenReleasedHistoryWithoutTheLegacySource()
         }
     }
 
+    // The newest release owns whatever sections its English source declares, so
+    // the shape is read from that source instead of being pinned per release.
     const QVariantList current = releases.first().toMap()
                                      .value(QStringLiteral("sections")).toList();
-    QCOMPARE(current.size(), 2);
-    QCOMPARE(current.at(0).toMap().value(QStringLiteral("title")).toString(),
-             QStringLiteral("Fixed"));
-    QCOMPARE(current.at(0).toMap().value(QStringLiteral("items")).toList().size(), 3);
-    QCOMPARE(current.at(1).toMap().value(QStringLiteral("title")).toString(),
-             QStringLiteral("Diagnostics / Reliability"));
-    QCOMPARE(current.at(1).toMap().value(QStringLiteral("items")).toList().size(), 1);
+    const QJsonArray authored = englishSections(
+        releases.first().toMap().value(QStringLiteral("version")).toString());
+    QCOMPARE(current.size(), authored.size());
+    for (int index = 0; index < authored.size(); ++index) {
+        const QJsonObject section = authored.at(index).toObject();
+        QCOMPARE(current.at(index).toMap().value(QStringLiteral("title")).toString(),
+                 section.value(QStringLiteral("title")).toString());
+        QCOMPARE(current.at(index).toMap().value(QStringLiteral("items")).toList().size(),
+                 section.value(QStringLiteral("items")).toArray().size());
+    }
 }
 
 void ReleaseNotesTest::structuresGitHubMarkdownWithoutActiveContent()
@@ -482,7 +519,7 @@ void ReleaseNotesTest::rejectsMalformedIndexRecords()
         root.insert(QStringLiteral("schema_version"), 1);
     });
     verifyRejected([](QJsonObject &root) {
-        root.insert(QStringLiteral("current_version"), QStringLiteral("0.7.7"));
+        root.insert(QStringLiteral("current_version"), QStringLiteral("9.9.9"));
     });
     verifyRejected([](QJsonObject &root) {
         QJsonArray documents = root.value(QStringLiteral("documents")).toArray();
