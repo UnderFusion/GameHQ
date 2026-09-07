@@ -1,7 +1,0 @@
-<RCC>
-  <qresource prefix="/icons">
-    <file alias="gamehq.svg">I:/PROJECTS/Apps/GameHQ/assets/icons/gamehq.svg</file>
-    <file alias="gamehq.ico">I:/PROJECTS/Apps/GameHQ/assets/icons/gamehq.ico</file>
-  </qresource>
-</RCC>
-

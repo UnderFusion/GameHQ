@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/release-notes">
-    <file alias="release-notes.json">I:/PROJECTS/Apps/GameHQ/assets/release-notes.json</file>
-  </qresource>
-</RCC>
-
