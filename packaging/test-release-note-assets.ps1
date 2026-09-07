@@ -53,6 +53,20 @@ if (($actualLocales -join "`n") -cne ($expectedLocales -join "`n")) {
     throw 'Release-note bundle order or locale coverage differs from the production registry.'
 }
 
+# ctest launches this script through Windows PowerShell while the surrounding CI
+# job runs PowerShell 7, so the inherited PSModulePath can leave Get-FileHash
+# unresolvable. The .NET hash is always available and byte-identical.
+function Get-Sha256Hex {
+    param([string]$Path)
+    $sha256 = [System.Security.Cryptography.SHA256]::Create()
+    try {
+        $digest = $sha256.ComputeHash([System.IO.File]::ReadAllBytes($Path))
+    } finally {
+        $sha256.Dispose()
+    }
+    return [System.BitConverter]::ToString($digest).Replace('-', '').ToLowerInvariant()
+}
+
 $strictUtf8 = [System.Text.UTF8Encoding]::new($false, $true)
 $replacement = [string][char]0xfffd
 $assetPaths = @(
@@ -85,7 +99,7 @@ foreach ($record in $index.bundles) {
     if ($item.Length -ne [long]$record.size) {
         throw "$($record.locale): bundle byte size does not match the index."
     }
-    $hash = (Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash.ToLowerInvariant()
+    $hash = Get-Sha256Hex -Path $item.FullName
     if ($hash -cne [string]$record.sha256) {
         throw "$($record.locale): bundle SHA-256 does not match the index."
     }
