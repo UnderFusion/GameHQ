@@ -7,8 +7,8 @@
 <p>GameHQ brings console-style capture controls to Windows. Tap Share for an
 instant screenshot, hold it after something memorable happens to save the
 previous configurable minutes as a video clip, and press PS or Guide to browse
-everything in a controller-friendly overlay. The entire app — gallery,
-overlay, and Settings — can be driven from the controller alone.</p>
+everything in a controller-friendly overlay. The entire app - gallery,
+overlay, and Settings - can be driven from the controller alone.</p>
 
 <p><img src="docs/assets/readme-separator.svg" width="1000" height="1" alt=""></p>
 
@@ -24,9 +24,9 @@ overlay, and Settings — can be driven from the controller alone.</p>
 
 <p><strong>Available in 16 languages · Controller-first · No telemetry · Open source</strong></p>
 
-<p>⭐ Enjoying GameHQ? Star the repository — it helps more players discover the project.</p>
+<p>⭐ Enjoying GameHQ? Star the repository - it helps more players discover the project.</p>
 
-<p>❤️ <a href="https://ko-fi.com/underfusion"><strong>Support GameHQ development</strong></a> — GameHQ is built by one
+<p>❤️ <a href="https://ko-fi.com/underfusion"><strong>Support GameHQ development</strong></a> - GameHQ is built by one
 developer. If it is useful to you, you can support continued development.</p>
 
 </div>
@@ -35,30 +35,30 @@ developer. If it is useful to you, you can support continued development.</p>
 
 ## Highlights
 
-- **Save recent gameplay after it happens** — the rolling buffer turns the
+- **Save recent gameplay after it happens** - the rolling buffer turns the
   previous configurable minutes into a normal MP4 with system audio.
-- **Instant screenshots and frame capture** — save PNG or JPEG images, including
+- **Instant screenshots and frame capture** - save PNG or JPEG images, including
   the exact displayed frame from a recorded clip.
-- **In-game gallery** — browse, play, favorite, reveal, and delete captures
+- **In-game gallery** - browse, play, favorite, reveal, and delete captures
   without leaving your game.
-- **Controller-first everywhere** — the whole interface is pad-navigable:
+- **Controller-first everywhere** - the whole interface is pad-navigable:
   gallery, overlay, dialogs, and Settings, with follow-scroll, right-stick
   scrolling, and visible scrollbars. Keyboard and mouse work everywhere too.
-- **Modern controller support** — app-local GameInput, true Share/Guide, extra
+- **Modern controller support** - app-local GameInput, true Share/Guide, extra
   buttons, and safe legacy fallback ([getting started](docs/getting-started.md),
   [compatibility guide](docs/controller-compatibility.md)).
-- **Redesigned binding editor** — two slots per action with taps, holds, double
+- **Redesigned binding editor** - two slots per action with taps, holds, double
   and triple taps, button combinations, per-controller profiles, and
   conflict-aware validation.
-- **Summon GameHQ with the pad** — hold PS for two seconds to bring the window
+- **Summon GameHQ with the pad** - hold PS for two seconds to bring the window
   over your game; hold again to send it back and return focus to the game.
-- **One organized library** — GameHQ captures alongside watched Steam, Game Bar,
+- **One organized library** - GameHQ captures alongside watched Steam, Game Bar,
   NVIDIA, and OBS folders.
-- **Speaks your language** — 16 interface languages across the app, overlay,
+- **Speaks your language** - 16 interface languages across the app, overlay,
   Settings, tray, installer, and release notes. GameHQ follows your Windows
   language on first start, and switching language applies immediately without a
   restart.
-- **Private and portable** — no account, telemetry, background service, or
+- **Private and portable** - no account, telemetry, background service, or
   game-process injection.
 - Configurable replay duration, quality, frame rate, and resolution.
 - Detection of Sony controllers hidden by HidHide, with safe GameHQ allow-list
@@ -83,25 +83,25 @@ Português (Brasil) · Deutsch · 日本語 · Français · Polski · 한국어 
 
 | Input | Action |
 |---|---|
-| Share / Capture — tap | Take a screenshot |
-| Share / Capture — hold | Save recent gameplay |
+| Share / Capture - tap | Take a screenshot |
+| Share / Capture - hold | Save recent gameplay |
 | PS / Guide | Open or close the in-game overlay |
-| PS / Guide — hold | Show or hide the GameHQ window |
+| PS / Guide - hold | Show or hide the GameHQ window |
 
 <details>
 <summary><strong>Full controls</strong></summary>
 
 | Input | Action |
 |---|---|
-| Share / Capture — tap | Take a screenshot |
-| Share / Capture — hold | Save recent gameplay |
+| Share / Capture - tap | Take a screenshot |
+| Share / Capture - hold | Save recent gameplay |
 | PS / Guide | Open or close the in-game overlay |
-| PS / Guide — hold | Show or hide the GameHQ window |
+| PS / Guide - hold | Show or hide the GameHQ window |
 | D-pad / left stick | Navigate |
 | Cross / south button | Confirm or open |
 | Circle / east button | Back |
 | L2 / R2 | Decrease or increase gallery thumbnail size |
-| Cross / south button — hold | Enter bulk selection in the desktop gallery |
+| Cross / south button - hold | Enter bulk selection in the desktop gallery |
 | Share / `S` while playing a clip | Save the displayed video frame as a screenshot |
 | `Ctrl+Shift+S` | Take a screenshot |
 | `Ctrl+Shift+E` | Save a replay clip |
