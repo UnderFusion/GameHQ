@@ -2,7 +2,7 @@
   "$schema": "../../i18n/schema/release-note-linguistic-state.schema.json",
   "schema_version": 1,
   "candidate": "0.7.7",
-  "source_integrity": "sha256:882ef67f9300d7ffdac3bf4ac5cd0a479eecd5a366254424b1cf2ca6ef065e40",
+  "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",
   "units": {
     "known-limitations-01": {
       "source_hash": "8012a89d6514c160208263fe761fd76acbb96ec53e1bef0ed72b6c25b2312bef",

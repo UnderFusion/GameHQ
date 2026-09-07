@@ -4,10 +4,7 @@ All notable public releases of GameHQ are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
-
-Draft for the designated localization-launch release 0.7.7. The final release
-date is assigned by the project owner and is deliberately not recorded yet.
+## [0.7.7] - 2026-09-07
 
 ### Added
 

@@ -23,12 +23,21 @@
   ],
   "localization_launch": {
     "version": "0.7.7",
-    "date": null,
-    "status": "designated",
+    "date": "2026-09-07",
+    "status": "released",
     "localization_policy": "complete",
     "designated_by": "owner"
   },
   "releases": [
+    {
+      "version": "0.7.7",
+      "date": "2026-09-07",
+      "status": "released",
+      "localization_policy": "complete",
+      "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",
+      "original_source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",
+      "correction": null
+    },
     {
       "version": "0.7.6",
       "date": "2026-08-31",

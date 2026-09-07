@@ -1,23 +1,51 @@
 {
-  "version": "0.7.6",
-  "date": "2026-08-31",
+  "version": "0.7.7",
+  "date": "2026-09-07",
   "sections": [
     {
-      "title": "Fixed",
+      "title": "추가",
       "items": [
-        "Fixed an input path that could cause system-wide mouse stuttering or brief freezes while GameHQ was running. Global Mouse Back/Forward/Middle monitoring is now installed only while a mouse binding exists or mouse-binding capture requires it.",
-        "When global mouse monitoring is required, the Windows low-level mouse hook now runs on a dedicated worker thread instead of the interface thread. Hook start/stop and rapid-restart handling were also hardened so held buttons are released cleanly and stale queued input cannot survive across hook lifetimes.",
-        "WinMM joystick discovery no longer performs potentially slow device scans on the interface thread, preventing periodic GameHQ interface stalls on systems where discovery is slow."
+        "이제 GameHQ를 16개 인터페이스 언어로 사용할 수 있습니다. 처음 실행할 때는 Windows 언어를 따르며, 설정에서 다른 언어를 선택할 수 있습니다.",
+        "언어를 바꾸면 오버레이와 알림 영역 메뉴를 포함한 앱 전체에 즉시 적용되며, GameHQ를 다시 시작할 필요가 없습니다. 선택한 언어는 기억됩니다.",
+        "설치 프로그램이 사용자의 언어로 실행되고 그 선택을 GameHQ의 첫 실행에 전달하므로, 설치 프로그램과 앱의 언어가 서로 달라지지 않습니다.",
+        "Playnite 확장과 실행기의 오류 대화 상자도 현지화되었습니다.",
+        "이 릴리스 노트의 번역본이 있으면 새로운 기능이 사용자의 언어로 표시됩니다. 번역본이 없으면 여러 언어가 섞이지 않고 영어 전문이 표시됩니다."
       ]
     },
     {
-      "title": "Diagnostics / Reliability",
+      "title": "변경",
       "items": [
-        "Added lightweight, rate-limited performance diagnostics for slow XInput and WinMM operations and interface event-loop stalls. Any remaining hitch should now leave useful Perf: evidence in gamehq.log."
+        "날짜, 숫자, 개수가 이제 시스템 기본값이 아니라 선택한 언어를 따릅니다."
+      ]
+    },
+    {
+      "title": "알려진 제한 사항",
+      "items": [
+        "GameHQ는 아직 서명되지 않은 베타 버전이므로 설치 프로그램을 실행할 때 Windows에서 알 수 없는 게시자 경고가 표시될 수 있습니다."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "sections": [
+        {
+          "title": "Fixed",
+          "items": [
+            "Fixed an input path that could cause system-wide mouse stuttering or brief freezes while GameHQ was running. Global Mouse Back/Forward/Middle monitoring is now installed only while a mouse binding exists or mouse-binding capture requires it.",
+            "When global mouse monitoring is required, the Windows low-level mouse hook now runs on a dedicated worker thread instead of the interface thread. Hook start/stop and rapid-restart handling were also hardened so held buttons are released cleanly and stale queued input cannot survive across hook lifetimes.",
+            "WinMM joystick discovery no longer performs potentially slow device scans on the interface thread, preventing periodic GameHQ interface stalls on systems where discovery is slow."
+          ]
+        },
+        {
+          "title": "Diagnostics / Reliability",
+          "items": [
+            "Added lightweight, rate-limited performance diagnostics for slow XInput and WinMM operations and interface event-loop stalls. Any remaining hitch should now leave useful Perf: evidence in gamehq.log."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.5",
       "date": "2026-08-07",
@@ -148,6 +176,13 @@
     "requested_locale": "ko-KR",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.7",
+        "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",
+        "resolved_locale": "ko-KR",
+        "fallback": false,
+        "fallback_reason": null
+      },
       {
         "version": "0.7.6",
         "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",

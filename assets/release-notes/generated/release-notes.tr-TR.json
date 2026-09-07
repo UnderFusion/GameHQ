@@ -1,23 +1,51 @@
 {
-  "version": "0.7.6",
-  "date": "2026-08-31",
+  "version": "0.7.7",
+  "date": "2026-09-07",
   "sections": [
     {
-      "title": "Fixed",
+      "title": "Eklenenler",
       "items": [
-        "Fixed an input path that could cause system-wide mouse stuttering or brief freezes while GameHQ was running. Global Mouse Back/Forward/Middle monitoring is now installed only while a mouse binding exists or mouse-binding capture requires it.",
-        "When global mouse monitoring is required, the Windows low-level mouse hook now runs on a dedicated worker thread instead of the interface thread. Hook start/stop and rapid-restart handling were also hardened so held buttons are released cleanly and stale queued input cannot survive across hook lifetimes.",
-        "WinMM joystick discovery no longer performs potentially slow device scans on the interface thread, preventing periodic GameHQ interface stalls on systems where discovery is slow."
+        "GameHQ artık on altı arayüz dilinde kullanılabiliyor. İlk açılışta Windows dil ayarınızı kullanır; ayarlardan başka bir dil seçebilirsiniz.",
+        "Dil değişikliği, GameHQ'yu yeniden başlatmadan oyun içi arayüz ve bildirim alanı menüsü dâhil uygulamanın tamamında anında geçerli olur. Seçiminiz hatırlanır.",
+        "Kurulum artık sizin dilinizde çalışıyor ve bu seçimi GameHQ'nun ilk açılışına aktarıyor; böylece kurulum ile uygulama artık birbiriyle çelişmiyor.",
+        "Playnite eklentisi ve başlatıcının hata pencereleri de yerelleştirildi.",
+        "Yenilikler, bu notların çevrilmiş bir sürümü bulunduğunda kendi dilinizde gösterilir. Bulunmadığında ise diller karışmadan İngilizce metnin tamamı gösterilir."
       ]
     },
     {
-      "title": "Diagnostics / Reliability",
+      "title": "Değişiklikler",
       "items": [
-        "Added lightweight, rate-limited performance diagnostics for slow XInput and WinMM operations and interface event-loop stalls. Any remaining hitch should now leave useful Perf: evidence in gamehq.log."
+        "Tarihler, sayılar ve öğe sayıları artık sistem varsayılanı yerine seçilen dilin biçimlendirme kurallarına göre gösteriliyor."
+      ]
+    },
+    {
+      "title": "Bilinen sınırlamalar",
+      "items": [
+        "GameHQ hâlâ imzasız bir beta sürümüdür; bu nedenle kurulum programını çalıştırdığınızda Windows bilinmeyen yayımcı uyarısı gösterebilir."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.6",
+      "date": "2026-08-31",
+      "sections": [
+        {
+          "title": "Fixed",
+          "items": [
+            "Fixed an input path that could cause system-wide mouse stuttering or brief freezes while GameHQ was running. Global Mouse Back/Forward/Middle monitoring is now installed only while a mouse binding exists or mouse-binding capture requires it.",
+            "When global mouse monitoring is required, the Windows low-level mouse hook now runs on a dedicated worker thread instead of the interface thread. Hook start/stop and rapid-restart handling were also hardened so held buttons are released cleanly and stale queued input cannot survive across hook lifetimes.",
+            "WinMM joystick discovery no longer performs potentially slow device scans on the interface thread, preventing periodic GameHQ interface stalls on systems where discovery is slow."
+          ]
+        },
+        {
+          "title": "Diagnostics / Reliability",
+          "items": [
+            "Added lightweight, rate-limited performance diagnostics for slow XInput and WinMM operations and interface event-loop stalls. Any remaining hitch should now leave useful Perf: evidence in gamehq.log."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.5",
       "date": "2026-08-07",
@@ -148,6 +176,13 @@
     "requested_locale": "tr-TR",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.7",
+        "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",
+        "resolved_locale": "tr-TR",
+        "fallback": false,
+        "fallback_reason": null
+      },
       {
         "version": "0.7.6",
         "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",

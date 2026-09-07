@@ -3,9 +3,9 @@
   "schema_version": 2,
   "version": "0.7.7",
   "locale": "ru-RU",
-  "date": null,
+  "date": "2026-09-07",
   "mode": "localized",
-  "source_integrity": "sha256:882ef67f9300d7ffdac3bf4ac5cd0a479eecd5a366254424b1cf2ca6ef065e40",
+  "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",
   "sections": [
     {
       "id": "added",
