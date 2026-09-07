@@ -144,3 +144,12 @@ exit [int]$env:STUB_CTEST_EXIT
     Remove-Item Env:STUB_CTEST_LOG -ErrorAction SilentlyContinue
     Remove-Item Env:STUB_CTEST_EXIT -ErrorAction SilentlyContinue
 }
+
+# The stub ctest is deliberately driven to exit 3 so a failing candidate test
+# run is proven to fail validation. That `exit 3` leaves $LASTEXITCODE = 3 in
+# the caller scope, and PowerShell 7 propagates a lingering $LASTEXITCODE as the
+# script's own exit code, so a fully passing suite would still fail CI (the
+# observed exit code 1). Ending with an explicit `exit 0` on the success path
+# pins the process result to zero regardless of any leaked native exit status
+# or $? state, so success is reported as success.
+exit 0
