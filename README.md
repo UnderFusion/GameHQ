@@ -14,11 +14,11 @@ overlay, and Settings — can be driven from the controller alone.</p>
 
 <!-- public-downloads:start -->
 <p align="center">
-  <a href="https://github.com/underfusion/GameHQ/releases/download/v0.7.5/GameHQ-0.7.5-win64-setup.exe"><img src="docs/assets/download-windows.svg" width="230" alt="Download GameHQ for Windows"></a>
+  <a href="https://github.com/underfusion/GameHQ/releases/download/v0.7.7/GameHQ-0.7.7-win64-setup.exe"><img src="docs/assets/download-windows.svg" width="230" alt="Download GameHQ for Windows"></a>
   &nbsp;
-  <a href="https://github.com/underfusion/GameHQ/releases/download/v0.7.5/GameHQ-0.7.5-win64-portable.zip"><img src="docs/assets/download-portable.svg" width="230" alt="Download GameHQ Portable ZIP"></a>
+  <a href="https://github.com/underfusion/GameHQ/releases/download/v0.7.7/GameHQ-0.7.7-win64-portable.zip"><img src="docs/assets/download-portable.svg" width="230" alt="Download GameHQ Portable ZIP"></a>
 </p>
-<p align="center"><sub>Windows 10+ &middot; v0.7.5 Beta &middot; GPL-3.0 &middot; No telemetry</sub></p>
+<p align="center"><sub>Windows 10+ &middot; v0.7.7 Beta &middot; GPL-3.0 &middot; No telemetry</sub></p>
 <p align="center"><sub>Using Playnite? <a href="https://github.com/underfusion/GameHQ/releases/download/playnite-v0.4.12/GameHQ_Playnite_Integration_0_4_12.pext">Get the GameHQ Integration &rarr;</a></sub></p>
 <!-- public-downloads:end -->
 

@@ -1,7 +1,7 @@
 # Build
 build/
 out/
-out-production/
+out-*/
 *.user
 CMakeUserPresets.json
 

@@ -1,3 +1,0 @@
-I:/PROJECTS/Apps/GameHQ/out-production/_deps/monocypher-subbuild/CMakeFiles/monocypher-populate.dir
-I:/PROJECTS/Apps/GameHQ/out-production/_deps/monocypher-subbuild/CMakeFiles/edit_cache.dir
-I:/PROJECTS/Apps/GameHQ/out-production/_deps/monocypher-subbuild/CMakeFiles/rebuild_cache.dir
