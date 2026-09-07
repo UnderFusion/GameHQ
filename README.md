@@ -26,7 +26,7 @@ overlay, and Settings - can be driven from the controller alone.</p>
 
 <p>⭐ Enjoying GameHQ? Star the repository - it helps more players discover the project.</p>
 
-<p>❤️ <a href="https://ko-fi.com/underfusion"><strong>Support GameHQ development</strong></a> - GameHQ is built by one
+<p>❤️ <a href="https://ko-fi.com/underfusion" target="_blank"><strong>Support GameHQ development</strong></a> - GameHQ is built by one
 developer. If it is useful to you, you can support continued development.</p>
 
 </div>
