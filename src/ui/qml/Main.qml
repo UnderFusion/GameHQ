@@ -57,6 +57,10 @@ ApplicationWindow {
 
     property bool settingsOpen: false
     property bool helpOpen: false
+    // Last-view memory: the page is remembered as the user moves between the
+    // gallery and Settings. Help is deliberately never remembered — it is a
+    // dialog you dismiss, not a place to reopen on.
+    onSettingsOpenChanged: app.setPage(window.settingsOpen ? "settings" : "gallery")
     property string pendingPostUpdateVersion: app
         ? app.config("internal.updates.pending_post_update_version", "") : ""
     property string whatsNewSeenVersion: app
@@ -246,6 +250,13 @@ ApplicationWindow {
     function persistGeometry() {
         persistTimer.restart()
     }
+    // Idempotent flush of the current view. Every navigation already writes
+    // through AppController; this only guarantees a view that was merely
+    // restored is durable too. ConfigManager drops writes that change nothing.
+    function persistNavigation() {
+        app.persistNavigationState(window.settingsOpen ? "settings" : "gallery")
+    }
+
     function doPersistGeometry() {
         app.setConfig("ui.window_width", window.width)
         app.setConfig("ui.window_height", window.height)
@@ -267,11 +278,14 @@ ApplicationWindow {
     onVisibilityChanged: function(visibility) {
         if (visibility === Window.Minimized && app.config("tray.minimize_to_tray", false))
             window.hide()
+        if (visibility === Window.Hidden || visibility === Window.Minimized)
+            window.persistNavigation()
         if (visibility === Window.Windowed || visibility === Window.Maximized)
             window.maybeShowPostUpdateGreeting()
     }
     onClosing: function(close) {
         window.doPersistGeometry()
+        window.persistNavigation()
         if (app.config("tray.close_to_tray", true)) {
             close.accepted = false
             window.hide()
@@ -282,6 +296,9 @@ ApplicationWindow {
     }
     Component.onCompleted: {
         input.setDesktopFocused(window.active)
+        // Restore the last normal page. Help never comes back, and the
+        // post-update greeting still opens on top of whatever is restored.
+        window.settingsOpen = app.restoredPage() === "settings"
         // Restore saved zoom level (if any) from config.json.
         var savedZoom = app.config("ui.zoom_level", 0)
         if (savedZoom >= 160 && savedZoom <= 480)

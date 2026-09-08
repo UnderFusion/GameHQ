@@ -96,6 +96,7 @@ qt_add_executable(GameHQ
     storage/ThumbnailService.cpp storage/ThumbnailService.h
     tray/TrayIcon.cpp      tray/TrayIcon.h
     ui/AppController.cpp   ui/AppController.h
+    ui/NavigationState.cpp ui/NavigationState.h
     ui/CaptureLibraryService.cpp ui/CaptureLibraryService.h
     ui/SettingsRouter.cpp ui/SettingsRouter.h
     ui/CurrentGameService.cpp ui/CurrentGameService.h

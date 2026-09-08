@@ -7,6 +7,7 @@
 #include "capture/HdrCapabilities.h"
 #include "capture/ReplayBufferState.h"
 #include "ui/GalleryModel.h"
+#include "ui/NavigationState.h"
 
 class CaptureDatabase;
 class CaptureScanner;
@@ -104,6 +105,21 @@ public:
     Q_INVOKABLE void setCategory(const QString& category);
     Q_INVOKABLE void setGame(int gameId);
     Q_INVOKABLE void setGameCategory(const QString& category, int gameId);
+    // Same move, without touching the last-view memory. Reserved for an
+    // explicit one-shot jump (the "clip saved" toast) that must not overwrite
+    // the filter the user actually chose.
+    Q_INVOKABLE void setGameCategoryTransient(const QString& category, int gameId);
+
+    // Last-view memory (docs/product-spec.md "Navigation memory"). QML reads
+    // these once while restoring and writes them back as the user navigates.
+    Q_INVOKABLE QString restoredPage() const;
+    Q_INVOKABLE void setPage(const QString& page);
+    Q_INVOKABLE QString settingsCategory() const;
+    Q_INVOKABLE void setSettingsCategory(const QString& category);
+    Q_INVOKABLE QString overlayCategory(int gameId) const;
+    Q_INVOKABLE void setOverlayCategory(int gameId, const QString& category);
+    // Rewrites the current view on hide and on quit. Idempotent by design.
+    Q_INVOKABLE void persistNavigationState(const QString& page);
     Q_INVOKABLE void rescan();
     Q_INVOKABLE void toggleFavorite(int row);
     Q_INVOKABLE void deleteCapture(int row);     // removes file + thumbnail, tombstones DB row
@@ -195,6 +211,14 @@ signals:
 private:
     void pollHdrStatus();
     void reportDeletionFailures(const CaptureDeletionResult& result);
+    void applyFilter(const QString& category, int gameId, NavigationState::Persist persist);
+    // Navigation happens at pad speed; batching the disk write keeps browsing
+    // the sidebar from rewriting config.json on every highlight move.
+    void scheduleNavigationSave();
+    // Applies the saved gallery filter once the scanner has published the games
+    // it can be validated against.
+    void restoreGalleryFilter();
+    QList<int> knownGameIds() const;
 
     CaptureDatabase* m_db;
     CaptureScanner* m_scanner;
@@ -209,12 +233,15 @@ private:
     std::unique_ptr<CurrentGameService> m_currentGame;
     std::unique_ptr<SettingsRouter> m_settings;
     ReleaseNotes m_releaseNotes;
+    std::unique_ptr<NavigationState> m_navigation;
     QString m_category = QStringLiteral("all");
     int m_gameId = -1;
+    bool m_navigationRestored = false;
     ReplayBufferState::State m_replayBufferState = ReplayBufferState::Stopped;
     QString m_replayBufferGame;
     capture::HdrReport m_hdr;
     bool m_hdrProbed = false;
     QTimer* m_hdrPollTimer = nullptr;
+    QTimer* m_navigationSaveTimer = nullptr;
     int m_lastScanAdded = -1;   // -1 = not yet scanned this session
 };

@@ -24,6 +24,7 @@ GameHQ.exe
 
 - QML talks to app state and commands through `AppController` and exposed models.
 - `AppController` stays as the QML facade; helper classes such as `CaptureLibraryService`, `CurrentGameService`, `SettingsRouter`, and `ShellActions` handle capture-library, current-game, settings-key, and platform actions behind that API.
+- `NavigationState` owns the last-view memory (which page, Settings category, gallery filter and per-game overlay category the app reopens on). It is pure logic over `ConfigManager` — no database, no QML — so the rules in docs/product-spec.md "Navigation memory" are unit-tested in `tests/tst_navigationstate.cpp`. `AppController` restores the gallery filter after the first scan, once the game ids it validates against exist.
 - `SettingsRouter` owns the config keys that are not plain values: the startup toggle (an OS side effect that can refuse the change) and the capture roots (persisted by `CaptureLocations` itself). It performs the side effect and returns an outcome; emitting signals and rescanning stay with `AppController`.
 - QML never calls Win32/WinRT directly.
 - Visual values come from `Theme.qml` per [design-system.md](design-system.md).

@@ -79,8 +79,11 @@ AppController::AppController(CaptureDatabase* db, CaptureScanner* scanner,
     , m_captureLibrary(std::make_unique<CaptureLibraryService>(db, gallery, overlayGallery))
     , m_currentGame(std::make_unique<CurrentGameService>(db))
     , m_settings(std::make_unique<SettingsRouter>(startup, locations))
+    , m_navigation(std::make_unique<NavigationState>(config))
 {
     Q_ASSERT(m_languageManager);
+    // Releases up to 0.7.10 stored the settings category as a sidebar index.
+    m_navigation->migrateLegacyKeys();
     QString releaseNotesError;
     m_releaseNotes = ReleaseNotes::loadBundled(
         m_languageManager->effectiveLanguage(), *m_languageManager->localeRegistry(),
@@ -102,6 +105,11 @@ AppController::AppController(CaptureDatabase* db, CaptureScanner* scanner,
     m_hdrPollTimer->setTimerType(Qt::CoarseTimer);
     connect(m_hdrPollTimer, &QTimer::timeout, this, &AppController::pollHdrStatus);
     m_hdrPollTimer->start();
+
+    m_navigationSaveTimer = new QTimer(this);
+    m_navigationSaveTimer->setSingleShot(true);
+    m_navigationSaveTimer->setInterval(500);
+    connect(m_navigationSaveTimer, &QTimer::timeout, this, [this] { m_config->save(); });
 }
 
 AppController::~AppController() = default;
@@ -509,28 +517,105 @@ QVariantList AppController::games() const
     return out;
 }
 
-void AppController::setCategory(const QString& category)
+void AppController::applyFilter(const QString& category, int gameId,
+                                NavigationState::Persist persist)
 {
     m_category = category;
-    m_gameId = -1;
+    m_gameId = gameId;
     m_gallery->setFilter(m_category, m_gameId);
+    m_navigation->setGalleryFilter(m_category, m_gameId, persist);
+    if (persist == NavigationState::Persist::Yes)
+        scheduleNavigationSave();
     emit filterChanged();
+}
+
+void AppController::setCategory(const QString& category)
+{
+    applyFilter(category, -1, NavigationState::Persist::Yes);
 }
 
 void AppController::setGame(int gameId)
 {
-    m_category = QStringLiteral("all");
-    m_gameId = gameId;
-    m_gallery->setFilter(m_category, m_gameId);
-    emit filterChanged();
+    applyFilter(QStringLiteral("all"), gameId, NavigationState::Persist::Yes);
 }
 
 void AppController::setGameCategory(const QString& category, int gameId)
 {
-    m_category = category;
-    m_gameId = gameId;
-    m_gallery->setFilter(m_category, m_gameId);
-    emit filterChanged();
+    applyFilter(category, gameId, NavigationState::Persist::Yes);
+}
+
+void AppController::setGameCategoryTransient(const QString& category, int gameId)
+{
+    applyFilter(category, gameId, NavigationState::Persist::No);
+}
+
+QList<int> AppController::knownGameIds() const
+{
+    QList<int> ids;
+    const auto entries = m_db->listGames();
+    ids.reserve(entries.size());
+    for (const GameEntry& g : entries)
+        ids.append(g.id);
+    return ids;
+}
+
+// The saved filter can only be trusted once the first scan has published the
+// library: restoring it earlier would silently drop a valid game id just
+// because its row was not read yet.
+void AppController::restoreGalleryFilter()
+{
+    const NavigationState::GalleryFilter saved = m_navigation->galleryFilter(knownGameIds());
+    qInfo() << "Navigation: restored view — page" << m_navigation->page()
+            << "settings category" << m_navigation->settingsCategory()
+            << "gallery filter" << saved.category << "game" << saved.gameId;
+    if (saved.category == m_category && saved.gameId == m_gameId)
+        return;
+    applyFilter(saved.category, saved.gameId, NavigationState::Persist::No);
+}
+
+QString AppController::restoredPage() const
+{
+    return m_navigation->page();
+}
+
+void AppController::setPage(const QString& page)
+{
+    m_navigation->setPage(page);
+    scheduleNavigationSave();
+}
+
+void AppController::scheduleNavigationSave()
+{
+    m_navigationSaveTimer->start();
+}
+
+QString AppController::settingsCategory() const
+{
+    return m_navigation->settingsCategory();
+}
+
+void AppController::setSettingsCategory(const QString& category)
+{
+    m_navigation->setSettingsCategory(category);
+    scheduleNavigationSave();
+}
+
+QString AppController::overlayCategory(int gameId) const
+{
+    return m_navigation->overlayCategory(gameId);
+}
+
+void AppController::setOverlayCategory(int gameId, const QString& category)
+{
+    m_navigation->setOverlayCategory(gameId, category);
+    scheduleNavigationSave();
+}
+
+void AppController::persistNavigationState(const QString& page)
+{
+    m_navigation->flush(page, m_navigation->settingsCategory(), m_category, m_gameId);
+    m_navigationSaveTimer->stop();
+    m_config->save();
 }
 
 void AppController::syncOverlayToForegroundGame()
@@ -543,8 +628,11 @@ void AppController::syncOverlayToForegroundGame()
     if (m_currentGame->lastUpdateChangedGameMetadata())
         emit gamesChanged();
     if (m_overlayGallery) {
+        // The game binding always follows the foreground game; only the
+        // category the overlay was left on is remembered, per game.
         const int gameId = m_currentGame->currentGameAvailable() ? m_currentGame->currentGameId() : -1;
-        m_overlayGallery->setFilter(QStringLiteral("all"), gameId);
+        const NavigationState::GalleryFilter filter = m_navigation->overlayFilter(gameId);
+        m_overlayGallery->setFilter(filter.category, filter.gameId);
     }
 }
 
@@ -593,6 +681,10 @@ void AppController::rescan()
     m_gallery->refresh();
     emit gamesChanged();
     emit lastScanChanged();
+    if (!m_navigationRestored) {
+        m_navigationRestored = true;
+        restoreGalleryFilter();
+    }
 }
 
 void AppController::toggleFavorite(int row)

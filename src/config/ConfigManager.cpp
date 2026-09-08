@@ -57,6 +57,12 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::TrayMinimizeToTray,      false },
         { ConfigKeys::NotificationsEnabled,    true },
         { ConfigKeys::UiLanguage,              "system" },
+        // Last-view memory. Defaults are the state a first run opens on, so a
+        // user who never navigates keeps these out of config.json entirely.
+        { ConfigKeys::UiPage,                  "gallery" },
+        { ConfigKeys::UiSettingsCategory,      "general" },
+        { ConfigKeys::UiGalleryFilterCategory, "all" },
+        { ConfigKeys::UiGalleryFilterGame,     -1 },
         { ConfigKeys::ThemeActiveSkin,         "obsidian" },
         { ConfigKeys::ThemeOverlayScrimStrength, 100 },   // percent, 25-150
         { ConfigKeys::UpdatesCheckAutomatically, true },

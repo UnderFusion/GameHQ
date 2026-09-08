@@ -60,6 +60,18 @@ inline constexpr QLatin1StringView NotificationsEnabled{ "notifications.enabled"
 // ui.* — application presentation preferences. The explicit value "system"
 // is retained so first-run bootstrap can distinguish it from an absent key.
 inline constexpr QLatin1StringView UiLanguage{ "ui.language" };
+// Last-view memory (docs/product-spec.md "Navigation memory"). NavigationState
+// owns the spelling and the validation; a normal launch, tray open or window
+// summon restores these, Help is never restored and an explicit jump can skip
+// the write entirely.
+inline constexpr QLatin1StringView UiPage{ "ui.page" };                                // gallery | settings
+inline constexpr QLatin1StringView UiSettingsCategory{ "ui.settings_category" };       // stable key, migrated from a legacy index
+inline constexpr QLatin1StringView UiGalleryFilterCategory{ "ui.gallery_filter_category" };
+inline constexpr QLatin1StringView UiGalleryFilterGame{ "ui.gallery_filter_game" };    // game id, -1 = every game
+// Per-game overlay category memory: one key per game id, appended with the id
+// (ui.overlay_filter.12). Dynamic keys cannot live in defaults(); NavigationState
+// treats an absent or unknown entry as "all".
+inline constexpr QLatin1StringView UiOverlayFilterPrefix{ "ui.overlay_filter." };
 
 // theme.* — appearance. Read by the QML Theme singleton, which resolves an
 // unknown value back to Obsidian rather than leaving the app unpainted.

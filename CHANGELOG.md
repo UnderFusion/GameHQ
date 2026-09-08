@@ -6,6 +6,24 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.11] - 2026-09-08
+
+### Added
+
+- GameHQ reopens where you left it: the last page, the Settings category and
+  the gallery filter are restored on launch, and the overlay remembers the
+  category you last used for each game. Help is never restored, and a filter
+  pinned to a game that no longer exists falls back to the whole library.
+
+### Changed
+
+- The Settings category is stored as a stable name instead of a position, so
+  adding or reordering pages can no longer reopen the wrong one. An existing
+  numeric value is migrated once on the next start; downgrading to 0.7.10 or
+  earlier reopens Settings on General.
+- Opening the gallery from the command line (`--open-gallery`) now only brings
+  the gallery forward instead of also clearing the filter you had chosen.
+
 ## [0.7.10] - 2026-09-08
 
 ### Fixed

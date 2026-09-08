@@ -55,7 +55,10 @@ Window {
     Connections {
         target: app
         function onCurrentGameChanged() {
-            if (overlayWindow.visible && content.sidebarIndex === 0)
+            // A game switch re-restores that game's remembered category, but
+            // only while the user is on a category row — someone browsing a
+            // specific game's row keeps it.
+            if (overlayWindow.visible && content.sidebarIndex < content.categories.length)
                 content.selectDefaultSection()
         }
     }
@@ -122,9 +125,13 @@ Window {
         // instant-feedback feel as Left/Right on the strip.
         function selectSidebarEntryAt(idx, playSound) {
             if (idx < content.categories.length) {
-                const f = SidebarCategories.resolveFilter(content.categories[idx].key,
-                                                          app.currentGameId)
+                const key = content.categories[idx].key
+                const f = SidebarCategories.resolveFilter(key, app.currentGameId)
                 overlayGallery.setFilter(f.category, f.gameId)
+                // Remember the category under the foreground game only: the
+                // game binding itself always follows the foreground.
+                if (app.currentGameAvailable)
+                    app.setOverlayCategory(app.currentGameId, f.category)
             } else {
                 const game = app.games[idx - content.categories.length]
                 if (!game)
@@ -136,12 +143,19 @@ Window {
             sounds.play(playSound)
         }
 
+        // Opening the overlay restores the category this game was left on
+        // (rule R8); with no game in the foreground there is nothing per-game
+        // to restore and the whole library opens on "all".
         function selectDefaultSection() {
-            content.sidebarIndex = 0
-            if (app.currentGameAvailable)
-                overlayGallery.setFilter("all", app.currentGameId)
-            else
-                overlayGallery.setFilter("all", -1)
+            const gameId = app.currentGameAvailable ? app.currentGameId : -1
+            const saved = app.overlayCategory(gameId)
+            const key = gameId >= 0 && saved === "all" ? "game"
+                      : gameId >= 0 && saved === "favorites" ? "game_favorites"
+                      : saved
+            const idx = Math.max(0, content.categories.findIndex(c => c.key === key))
+            content.sidebarIndex = idx
+            const f = SidebarCategories.resolveFilter(content.categories[idx].key, gameId)
+            overlayGallery.setFilter(f.category, f.gameId)
             strip.currentIndex = 0
         }
 

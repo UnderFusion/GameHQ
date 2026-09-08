@@ -26,8 +26,13 @@ Item {
         //% "About"
         { label: qsTrId("gamehq.settings.category.about"), icon: "\u24D8" }
     ]
-    property int currentCategory: Math.max(0, Math.min(categories.length - 1,
-        Number(app.config("ui.settings_category", 0))))
+    // Stable keys, in the same order as `categories`. The persisted value is a
+    // key, not an index, so reordering or inserting a page never reopens the
+    // wrong one (AppController migrates the pre-0.7.11 index once).
+    readonly property var categoryKeys: ["general", "capture", "replay", "input",
+                                         "library", "notifications_sound",
+                                         "advanced", "about"]
+    property int currentCategory: Math.max(0, categoryKeys.indexOf(app.settingsCategory()))
 
     function categoryLabel(category) {
         const categoryIndex = ({
@@ -42,7 +47,7 @@ Item {
     function selectCategory(index, focusButton) {
         const next = Math.max(0, Math.min(categories.length - 1, index))
         currentCategory = next
-        app.setConfig("ui.settings_category", next)
+        app.setSettingsCategory(categoryKeys[next])
         if (focusButton && categoryRepeater.itemAt(next))
             categoryRepeater.itemAt(next).forceActiveFocus()
     }

@@ -121,6 +121,23 @@ No raw frames in RAM. Continuously encode 10-second temporary segments; 5-min bu
 Layout - overlay sidebar starts with Game (current focused game's screenshots and clips), then Game Favourites (favourites from that same focused game), Recent / Favorites / Screenshots / Clips / Games. Center: large preview. Bottom: thumbnail strip. Top: game, type, date, buffer status.
 Screenshot actions: prev/next, zoom 100 %, fit, fullscreen, favorite, delete, copy image/file, open in folder. Video: play/pause, seek, restart, fullscreen, favorite, delete, open in folder. Overlay = quick actions; desktop window = settings/imports/mappings/storage/sound packs/bindings.
 
+### Navigation memory (last-view rules)
+
+GameHQ reopens where the user left it. `NavigationState` (`src/ui/NavigationState.{h,cpp}`) owns the rules and the config keys; every surface goes through it.
+
+| Rule | Entry point | Behaviour |
+| --- | --- | --- |
+| R1 | Launch | Restores the last page, the Settings category and the gallery filter. Help is never restored and collapses to the gallery. |
+| R2 | Window summon (PS hold, `--activate`, desktop toggle) | Pure raise: page, category and filter are untouched. |
+| R3 | Tray open (menu item, single and double click) | Same as R2. |
+| R4 | `--open-gallery` | Explicit page intent: leaves Settings/Help and shows the gallery, keeping the saved filter. |
+| R5 | "Clip saved" toast click | One-shot jump to the new clip and its game, deliberately **not** persisted, so the next ordinary open restores the saved view. The toast click itself ships with the notification work; the non-persisting path (`setGameCategoryTransient`) is already in place. |
+| R6 | Settings category | Stored as a stable key in `ui.settings_category` (`general`, `capture`, `replay`, `input`, `library`, `notifications_sound`, `advanced`, `about`). A pre-0.7.11 numeric value is migrated once at startup; an unknown key opens General. |
+| R7 | Gallery filter | Stored as `ui.gallery_filter_category` + `ui.gallery_filter_game` (`-1` = every game). Applied after the first scan so the game id can be validated; a game that no longer exists takes the filter back to the whole library. |
+| R8 | Overlay filter | The game binding always follows the foreground game and is never restored. Only the category is remembered, per game, in `ui.overlay_filter.<gameId>`; an absent or unknown entry means `all`. |
+| R9 | Precedence | Explicit navigation intent (R5, R4) > restored state > defaults. The post-update greeting still opens over whatever was restored. |
+| R10 | Write timing | Persisted as the user navigates (batched by half a second) plus an idempotent flush on hide and on quit. "Restore all defaults" clears `ui.*`, so the next open starts on the defaults again; a single page's "Restore defaults" never touches the remembered view. |
+
 ## 16. Tray & Background
 
 Settings: start with Windows, start minimized, minimize/close to tray, tray icon, notifications, pause capture when not gaming. Tray menu: Open Gallery, Open Settings, Take Screenshot, Save Replay, Buffer ON/OFF, Capture Mode, Settings, Exit. Tooltip shows buffer state + preset + current game. Status states: buffer on/off/paused-no-game/error-audio-missing; overlay active/hidden.

@@ -674,7 +674,9 @@ void App::openGallery()
         return;
     }
     m_pendingOpenGallery = false;
-    m_controller->setCategory(QStringLiteral("all"));
+    // Explicit "show me the gallery" intent changes the page only: the filter
+    // the user last chose is theirs, not something an --open-gallery call gets
+    // to reset (docs/product-spec.md "Navigation memory", rule R4).
     QObject *root = m_engine.rootObjects().first();
     root->setProperty("settingsOpen", false);
     root->setProperty("helpOpen", false);

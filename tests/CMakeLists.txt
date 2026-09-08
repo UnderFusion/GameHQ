@@ -278,6 +278,11 @@ gamehq_add_test(tst_configmanager
     tst_configmanager.cpp
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp")
 
+gamehq_add_test(tst_navigationstate
+    tst_navigationstate.cpp
+    "${CMAKE_SOURCE_DIR}/src/ui/NavigationState.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp")
+
 gamehq_add_test(tst_portableprofileimporter
     tst_portableprofileimporter.cpp
     "${CMAKE_SOURCE_DIR}/src/config/PortableProfileImporter.cpp")
