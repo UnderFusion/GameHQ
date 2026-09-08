@@ -1,31 +1,50 @@
 {
-  "version": "0.7.7",
-  "date": "2026-09-07",
+  "version": "0.7.9",
+  "date": "2026-09-08",
   "sections": [
     {
-      "title": "Novedades",
+      "title": "Fixed",
       "items": [
-        "GameHQ ahora está disponible en dieciséis idiomas de interfaz. En el primer inicio usa la configuración de idioma de Windows; puede elegirse otro idioma en Configuración.",
-        "Los cambios de idioma se aplican de inmediato en toda la aplicación, incluidos la superposición y el menú de la bandeja del sistema, sin reiniciar GameHQ. La elección queda guardada.",
-        "El instalador ahora usa el idioma seleccionado y transfiere esa elección al primer inicio de GameHQ, por lo que el instalador y la aplicación mantienen la misma selección.",
-        "La extensión de Playnite y los cuadros de diálogo de error del iniciador también están traducidos.",
-        "Las novedades aparecen en el idioma seleccionado cuando existe una versión traducida de estas notas. De lo contrario, se muestra el texto completo en inglés, nunca una mezcla de idiomas."
+        "A replay save keeps its recorded segments when the game changes or the buffer restarts. Old files unrelated to the save can still be cleaned up, and closing GameHQ waits for the export to finish safely.",
+        "Saving two replay clips within the same second no longer replaces the first one. Each clip and preview claims its own file name, and a failed save cannot delete an existing clip."
       ]
     },
     {
-      "title": "Cambios",
+      "title": "Changed",
       "items": [
-        "Las fechas, los números y los conteos ahora usan las reglas de formato del idioma seleccionado en lugar de la configuración predeterminada del sistema."
-      ]
-    },
-    {
-      "title": "Limitaciones conocidas",
-      "items": [
-        "GameHQ sigue siendo una beta sin firmar, por lo que Windows puede advertir de un editor desconocido al ejecutar el instalador."
+        "Release notes in other languages stay in the repository, linked from the release page, so the download list shows the installable packages and verification files."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.7",
+      "date": "2026-09-07",
+      "sections": [
+        {
+          "title": "Novedades",
+          "items": [
+            "GameHQ ahora está disponible en dieciséis idiomas de interfaz. En el primer inicio usa la configuración de idioma de Windows; puede elegirse otro idioma en Configuración.",
+            "Los cambios de idioma se aplican de inmediato en toda la aplicación, incluidos la superposición y el menú de la bandeja del sistema, sin reiniciar GameHQ. La elección queda guardada.",
+            "El instalador ahora usa el idioma seleccionado y transfiere esa elección al primer inicio de GameHQ, por lo que el instalador y la aplicación mantienen la misma selección.",
+            "La extensión de Playnite y los cuadros de diálogo de error del iniciador también están traducidos.",
+            "Las novedades aparecen en el idioma seleccionado cuando existe una versión traducida de estas notas. De lo contrario, se muestra el texto completo en inglés, nunca una mezcla de idiomas."
+          ]
+        },
+        {
+          "title": "Cambios",
+          "items": [
+            "Las fechas, los números y los conteos ahora usan las reglas de formato del idioma seleccionado en lugar de la configuración predeterminada del sistema."
+          ]
+        },
+        {
+          "title": "Limitaciones conocidas",
+          "items": [
+            "GameHQ sigue siendo una beta sin firmar, por lo que Windows puede advertir de un editor desconocido al ejecutar el instalador."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.6",
       "date": "2026-08-31",
@@ -176,6 +195,13 @@
     "requested_locale": "es-419",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.9",
+        "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.7",
         "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",

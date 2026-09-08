@@ -1,31 +1,50 @@
 {
-  "version": "0.7.7",
-  "date": "2026-09-07",
+  "version": "0.7.9",
+  "date": "2026-09-08",
   "sections": [
     {
-      "title": "เพิ่มใหม่",
+      "title": "Fixed",
       "items": [
-        "ขณะนี้ GameHQ รองรับภาษาส่วนติดต่อผู้ใช้ 16 ภาษา เมื่อเปิดครั้งแรกจะใช้การตั้งค่าภาษาของ Windows และเลือกภาษาอื่นได้ในการตั้งค่า",
-        "การเปลี่ยนภาษามีผลทันทีทั่วทั้งแอปพลิเคชัน รวมถึงโอเวอร์เลย์และเมนูในพื้นที่แจ้งเตือน โดยไม่ต้องเริ่ม GameHQ ใหม่ ระบบจะจดจำภาษาที่เลือกไว้",
-        "ตัวติดตั้งทำงานเป็นภาษาที่เลือกและส่งต่อภาษานั้นไปยังการเปิด GameHQ ครั้งแรก ตัวติดตั้งกับแอปพลิเคชันจึงไม่ใช้ภาษาต่างกันอีกต่อไป",
-        "ส่วนขยาย Playnite และกล่องข้อความแจ้งข้อผิดพลาดของตัวเรียกใช้งานได้รับการแปลด้วยเช่นกัน",
-        "มีอะไรใหม่จะแสดงเป็นภาษาที่เลือกเมื่อมีบันทึกฉบับแปล หากไม่มี ระบบจะแสดงข้อความภาษาอังกฤษฉบับเต็มแทนโดยไม่ปะปนหลายภาษา"
+        "A replay save keeps its recorded segments when the game changes or the buffer restarts. Old files unrelated to the save can still be cleaned up, and closing GameHQ waits for the export to finish safely.",
+        "Saving two replay clips within the same second no longer replaces the first one. Each clip and preview claims its own file name, and a failed save cannot delete an existing clip."
       ]
     },
     {
-      "title": "เปลี่ยนแปลง",
+      "title": "Changed",
       "items": [
-        "วันที่ ตัวเลข และจำนวนรายการใช้รูปแบบตามภาษาที่เลือกแทนค่าเริ่มต้นของระบบ"
-      ]
-    },
-    {
-      "title": "ข้อจำกัดที่ทราบ",
-      "items": [
-        "GameHQ ยังเป็นรุ่นเบต้าที่ไม่ได้เซ็นชื่อ ดังนั้น Windows อาจเตือนว่าผู้เผยแพร่ไม่รู้จักเมื่อคุณเรียกใช้ตัวติดตั้ง"
+        "Release notes in other languages stay in the repository, linked from the release page, so the download list shows the installable packages and verification files."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.7",
+      "date": "2026-09-07",
+      "sections": [
+        {
+          "title": "เพิ่มใหม่",
+          "items": [
+            "ขณะนี้ GameHQ รองรับภาษาส่วนติดต่อผู้ใช้ 16 ภาษา เมื่อเปิดครั้งแรกจะใช้การตั้งค่าภาษาของ Windows และเลือกภาษาอื่นได้ในการตั้งค่า",
+            "การเปลี่ยนภาษามีผลทันทีทั่วทั้งแอปพลิเคชัน รวมถึงโอเวอร์เลย์และเมนูในพื้นที่แจ้งเตือน โดยไม่ต้องเริ่ม GameHQ ใหม่ ระบบจะจดจำภาษาที่เลือกไว้",
+            "ตัวติดตั้งทำงานเป็นภาษาที่เลือกและส่งต่อภาษานั้นไปยังการเปิด GameHQ ครั้งแรก ตัวติดตั้งกับแอปพลิเคชันจึงไม่ใช้ภาษาต่างกันอีกต่อไป",
+            "ส่วนขยาย Playnite และกล่องข้อความแจ้งข้อผิดพลาดของตัวเรียกใช้งานได้รับการแปลด้วยเช่นกัน",
+            "มีอะไรใหม่จะแสดงเป็นภาษาที่เลือกเมื่อมีบันทึกฉบับแปล หากไม่มี ระบบจะแสดงข้อความภาษาอังกฤษฉบับเต็มแทนโดยไม่ปะปนหลายภาษา"
+          ]
+        },
+        {
+          "title": "เปลี่ยนแปลง",
+          "items": [
+            "วันที่ ตัวเลข และจำนวนรายการใช้รูปแบบตามภาษาที่เลือกแทนค่าเริ่มต้นของระบบ"
+          ]
+        },
+        {
+          "title": "ข้อจำกัดที่ทราบ",
+          "items": [
+            "GameHQ ยังเป็นรุ่นเบต้าที่ไม่ได้เซ็นชื่อ ดังนั้น Windows อาจเตือนว่าผู้เผยแพร่ไม่รู้จักเมื่อคุณเรียกใช้ตัวติดตั้ง"
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.6",
       "date": "2026-08-31",
@@ -176,6 +195,13 @@
     "requested_locale": "th-TH",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.9",
+        "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.7",
         "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",

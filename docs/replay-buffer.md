@@ -37,7 +37,9 @@ Low RAM, crash-resistant fMP4 segments, trivial cleanup, replay length equals se
 ## Performance model
 
 - **GPU downscale**: when `replay.resolution` is below the source size, a D3D11 VideoProcessor scales each frame on the GPU before readback, so the CPU path (staging copy, row memcpy, MF color convert) runs at encode size — ~4× cheaper for 4K→1080p. Automatic fallback to full-size readback when the video processor is unavailable (`SegmentRecorder: GPU downscale active`/`CPU scaling` in the log).
-- **Async export**: Share-hold saves snapshot + pin the segment ring, then remux + final thumbnail run on a dedicated thread — recording never pauses during a save. The ring is unpinned (and trimmed) when the export finishes; only one export runs at a time.
+- **Async export**: Share-hold finalizes the current segment and returns a `SegmentLease` for the newest replay window. Remux + final thumbnail run on an owned `ReplayExportTask`; only one export runs at a time. The task releases its lease on return or exception, before `finished`, independently of worker callbacks. Failed output reservations are also discarded inside the export task.
+- **Lease-aware pruning**: a process-wide registry counts leases by normalized absolute path (case-insensitive on Windows). Restore, stale-cache sweep and ring trimming cannot delete leased paths. The ring retains the newest configured window plus any older leased paths; an old lease does not prevent deleting later expired, unleased segments. A game switch, buffer restart or replacement recorder does not change export ownership. Completion only updates worker/UI state and opportunistically trims the current recorder.
+- **Shutdown**: the worker owns and joins the export thread before apartment shutdown and destruction. A five-second grace timeout logs a warning and continues waiting; it never destroys a running thread or abandons the export. Shutdown can therefore exceed five seconds if the muxer is slow or stuck. Export work captures value inputs and shared result state, with no pipeline/recorder/worker pointers. A generation fence ignores obsolete completion callbacks; neither lease nor reservation cleanup needs the event loop.
 - **Stale-cache sweep (Step 9)**: on worker start, `replay-cache/` is swept for `*_clip.mp4` older than 10 minutes (matching the ring-restore threshold) and emptied per-game folders are pruned.
 
 ## Status
@@ -46,7 +48,7 @@ Implemented: rolling H.264 ring in per-game format-fingerprinted cache folders (
 
 Debugging: every save attempt writes a correlated `ReplaySave[...]` block to `gamehq.log`, including ring snapshot paths/sizes, thumbnail timings, remux segment media metadata, per-segment video/audio sample counts, output bytes, and final success/failure timing.
 
-Still needs real game/audio verification before Step 7 is marked complete. Not yet done: stale-cache cleanup on start/shutdown (Step 9).
+Focused regression coverage: `tst_segmentrecorder` exercises the actual recorder restore/trim code with file fixtures and the export task with controlled work: stale leased files during replacement/re-arm, overlapping leases, continued unrelated trimming, complete snapshot reads after recorder replacement, callback-independent return/exception cleanup, and joining beyond the shutdown grace period. It does not execute the encoder/muxer or replace real game/audio acceptance. Stale-cache cleanup runs on worker startup; shutdown joins any active export.
 
 ## Rules
 

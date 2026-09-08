@@ -548,6 +548,15 @@ gamehq_add_test(tst_capturepublisher
     tst_capturepublisher.cpp
     "${CMAKE_SOURCE_DIR}/src/capture/CapturePublisher.cpp")
 
+# Actual recorder restore/trim and export-task lifetime with file fixtures;
+# no capture device, encoder or muxer execution.
+gamehq_add_test(tst_segmentrecorder
+    tst_segmentrecorder.cpp
+    "${CMAKE_SOURCE_DIR}/src/capture/SegmentRecorder.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/SegmentLease.cpp")
+target_link_libraries(tst_segmentrecorder PRIVATE
+    d3d11 dxguid ole32 mfplat mfreadwrite mfuuid)
+
 add_executable(launcher_argecho_fixture launcher_argecho_fixture.cpp)
 target_link_options(launcher_argecho_fixture PRIVATE -static -municode)
 target_link_libraries(launcher_argecho_fixture PRIVATE shell32)

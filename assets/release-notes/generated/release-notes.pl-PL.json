@@ -1,31 +1,50 @@
 {
-  "version": "0.7.7",
-  "date": "2026-09-07",
+  "version": "0.7.9",
+  "date": "2026-09-08",
   "sections": [
     {
-      "title": "Dodano",
+      "title": "Fixed",
       "items": [
-        "GameHQ obsługuje teraz szesnaście języków interfejsu. Przy pierwszym uruchomieniu wybiera język na podstawie ustawień Windows; później możesz zmienić go w ustawieniach.",
-        "Zmiana języka działa natychmiast w całej aplikacji, w tym w nakładce i menu obszaru powiadomień, bez ponownego uruchamiania GameHQ. Wybrany język zostaje zapamiętany.",
-        "Instalator jest teraz dostępny w wybranym języku i przekazuje ten wybór do GameHQ, dzięki czemu aplikacja przy pierwszym uruchomieniu używa tego samego języka co instalator.",
-        "Rozszerzenie Playnite i okna błędów programu uruchamiającego również są dostępne w wielu językach.",
-        "Informacje o nowościach są wyświetlane w wybranym języku, gdy istnieje ich pełne tłumaczenie. W przeciwnym razie pojawia się cały tekst angielski — nigdy mieszanka języków."
+        "A replay save keeps its recorded segments when the game changes or the buffer restarts. Old files unrelated to the save can still be cleaned up, and closing GameHQ waits for the export to finish safely.",
+        "Saving two replay clips within the same second no longer replaces the first one. Each clip and preview claims its own file name, and a failed save cannot delete an existing clip."
       ]
     },
     {
-      "title": "Zmieniono",
+      "title": "Changed",
       "items": [
-        "Daty, liczby i liczebność elementów są teraz formatowane zgodnie z wybranym językiem, a nie z domyślnym ustawieniem systemu."
-      ]
-    },
-    {
-      "title": "Znane ograniczenia",
-      "items": [
-        "GameHQ jest nadal niepodpisaną wersją beta, dlatego system Windows może ostrzec o nieznanym wydawcy podczas uruchamiania instalatora."
+        "Release notes in other languages stay in the repository, linked from the release page, so the download list shows the installable packages and verification files."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.7",
+      "date": "2026-09-07",
+      "sections": [
+        {
+          "title": "Dodano",
+          "items": [
+            "GameHQ obsługuje teraz szesnaście języków interfejsu. Przy pierwszym uruchomieniu wybiera język na podstawie ustawień Windows; później możesz zmienić go w ustawieniach.",
+            "Zmiana języka działa natychmiast w całej aplikacji, w tym w nakładce i menu obszaru powiadomień, bez ponownego uruchamiania GameHQ. Wybrany język zostaje zapamiętany.",
+            "Instalator jest teraz dostępny w wybranym języku i przekazuje ten wybór do GameHQ, dzięki czemu aplikacja przy pierwszym uruchomieniu używa tego samego języka co instalator.",
+            "Rozszerzenie Playnite i okna błędów programu uruchamiającego również są dostępne w wielu językach.",
+            "Informacje o nowościach są wyświetlane w wybranym języku, gdy istnieje ich pełne tłumaczenie. W przeciwnym razie pojawia się cały tekst angielski — nigdy mieszanka języków."
+          ]
+        },
+        {
+          "title": "Zmieniono",
+          "items": [
+            "Daty, liczby i liczebność elementów są teraz formatowane zgodnie z wybranym językiem, a nie z domyślnym ustawieniem systemu."
+          ]
+        },
+        {
+          "title": "Znane ograniczenia",
+          "items": [
+            "GameHQ jest nadal niepodpisaną wersją beta, dlatego system Windows może ostrzec o nieznanym wydawcy podczas uruchamiania instalatora."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.6",
       "date": "2026-08-31",
@@ -176,6 +195,13 @@
     "requested_locale": "pl-PL",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.9",
+        "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.7",
         "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",

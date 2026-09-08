@@ -13,6 +13,7 @@ qt_add_executable(GameHQ
     capture/hdr/GpuToneMapper.cpp capture/hdr/GpuToneMapper.h
     capture/AudioCapture.cpp capture/AudioCapture.h capture/wasapi_shims.h
     capture/SegmentRecorder.cpp capture/SegmentRecorder.h
+    capture/SegmentLease.cpp capture/SegmentLease.h capture/ReplayExportTask.h
     capture/ReplayExporter.cpp capture/ReplayExporter.h
     config/Paths.cpp       config/Paths.h
     config/LegacyMigration.cpp config/LegacyMigration.h

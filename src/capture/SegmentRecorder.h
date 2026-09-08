@@ -1,5 +1,7 @@
 #pragma once
 
+#include "capture/SegmentLease.h"
+
 #include <QString>
 #include <QStringList>
 #include <QtGlobal>
@@ -58,10 +60,10 @@ public:
                unsigned audioRateHz = 0, unsigned audioChannels = 0);
 
     // Freeze the buffer for a save (Step 6): finalize the in-flight segment,
-    // return the chronological list of segment files covering ~lengthSeconds
-    // (the whole ring), and immediately reopen a new segment so recording
-    // continues uninterrupted. Empty if inactive.
-    QStringList snapshotForSave();
+    // lease the newest chronological window covering ~lengthSeconds, and
+    // immediately reopen a new segment so recording continues uninterrupted.
+    // Empty if inactive; the lease outlives this recorder if necessary.
+    SegmentLease snapshotForSave();
 
     // Feed one captured video frame. sampleTime100ns is a monotonic capture
     // timestamp in 100-ns units (e.g. QElapsedTimer::nsecsElapsed()/100).
@@ -75,11 +77,8 @@ public:
     // first video frame are dropped.
     void writeAudio(const float* samples, unsigned numFrames, qint64 audioTime100ns);
 
-    // While pinned, the on-disk ring never deletes segments (the list may
-    // exceed its cap). Pin around a save so the async exporter can read the
-    // snapshot files while recording keeps rolling; unpin trims back to cap.
-    void pinRing() { m_ringPinned = true; }
-    void unpinRing();
+    // Opportunistic cleanup after export; never releases another task's lease.
+    void trimRing();
 
     // Roll to a fresh segment if the current one has reached its duration.
     void rollIfDue();
@@ -96,6 +95,8 @@ public:
     bool hasAudio() const { return m_audioStream > 0; }
 
 private:
+    friend class TestSegmentRecorder;
+    void restoreRing();
     // A fully-built sink writer for one segment (streams added, BeginWriting
     // done). Built either synchronously (first segment, fallback) or by the
     // prep thread below so a segment roll doesn't stall the capture pump for
@@ -143,7 +144,6 @@ private:
     QStringList m_segments;
     QString     m_curPath;                   // current in-flight segment file
     int         m_keepSegments = 12;         // ceil(lengthSeconds / segmentSeconds)
-    bool        m_ringPinned = false;        // deletion paused during an async export
     bool        m_discardCurrentSegment = false;
 
     // current segment

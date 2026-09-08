@@ -16,6 +16,16 @@ Patch numbers run from `0` to `99` within a minor line. After `0.5.99`, the next
 
 The single source of truth is the `VERSION` file in the repo root. CMake reads it and injects `GAMEHQ_VERSION` into the binary; the About/sidebar version label and logs display it. `VERSION` is registered as a CMake configure dependency, so incremental builds reconfigure when the file changes.
 
+The matching release-note source must be prepared in
+`assets/release-notes/versions/<version>/` and registered newest-first in its
+manifest. Preserve released history and use explicit whole-English fallback
+documents for locales whose new notes are not translated. Run
+`python tools/i18n/generate_release_notes.py` and
+`python tools/i18n/generate_release_publication.py` before configuring: CMake
+requires the generated offline index to match `VERSION`. Generated bundles,
+indexes and publication artifacts must never be edited by hand. Preparing these
+local files does not publish or tag a release.
+
 ## Release Checklist
 
 1. Bump `VERSION` by one patch number (`0.7.1`, `0.7.2`, ...). Roll `0.7.99` to `0.8.0`.

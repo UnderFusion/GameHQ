@@ -1,31 +1,50 @@
 {
-  "version": "0.7.7",
-  "date": "2026-09-07",
+  "version": "0.7.9",
+  "date": "2026-09-08",
   "sections": [
     {
-      "title": "追加",
+      "title": "Fixed",
       "items": [
-        "GameHQ の表示言語が 16 言語になりました。初回起動時は Windows の言語に従い、設定から別の言語を選ぶこともできます。",
-        "言語を切り替えると、オーバーレイや通知領域のメニューを含むアプリ全体に即座に反映され、GameHQ を再起動する必要はありません。選んだ言語は記憶されます。",
-        "セットアップがあなたの言語で実行され、その選択が GameHQ の初回起動に引き継がれるようになりました。インストーラーとアプリの言語が食い違うことはありません。",
-        "Playnite 拡張機能とランチャーのエラーダイアログも各言語に対応しました。",
-        "更新内容は、翻訳版が用意されている場合はあなたの言語で表示されます。用意されていない場合は、言語が混在することなく英語の全文が表示されます。"
+        "A replay save keeps its recorded segments when the game changes or the buffer restarts. Old files unrelated to the save can still be cleaned up, and closing GameHQ waits for the export to finish safely.",
+        "Saving two replay clips within the same second no longer replaces the first one. Each clip and preview claims its own file name, and a failed save cannot delete an existing clip."
       ]
     },
     {
-      "title": "変更",
+      "title": "Changed",
       "items": [
-        "日付、数値、件数がシステム既定ではなく、選択した言語に従うようになりました。"
-      ]
-    },
-    {
-      "title": "既知の制限",
-      "items": [
-        "GameHQ は引き続き署名なしのベータ版です。そのため、セットアップを実行すると Windows が発行元不明の警告を表示することがあります。"
+        "Release notes in other languages stay in the repository, linked from the release page, so the download list shows the installable packages and verification files."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.7",
+      "date": "2026-09-07",
+      "sections": [
+        {
+          "title": "追加",
+          "items": [
+            "GameHQ の表示言語が 16 言語になりました。初回起動時は Windows の言語に従い、設定から別の言語を選ぶこともできます。",
+            "言語を切り替えると、オーバーレイや通知領域のメニューを含むアプリ全体に即座に反映され、GameHQ を再起動する必要はありません。選んだ言語は記憶されます。",
+            "セットアップがあなたの言語で実行され、その選択が GameHQ の初回起動に引き継がれるようになりました。インストーラーとアプリの言語が食い違うことはありません。",
+            "Playnite 拡張機能とランチャーのエラーダイアログも各言語に対応しました。",
+            "更新内容は、翻訳版が用意されている場合はあなたの言語で表示されます。用意されていない場合は、言語が混在することなく英語の全文が表示されます。"
+          ]
+        },
+        {
+          "title": "変更",
+          "items": [
+            "日付、数値、件数がシステム既定ではなく、選択した言語に従うようになりました。"
+          ]
+        },
+        {
+          "title": "既知の制限",
+          "items": [
+            "GameHQ は引き続き署名なしのベータ版です。そのため、セットアップを実行すると Windows が発行元不明の警告を表示することがあります。"
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.6",
       "date": "2026-08-31",
@@ -176,6 +195,13 @@
     "requested_locale": "ja-JP",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.9",
+        "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.7",
         "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",

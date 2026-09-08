@@ -1,31 +1,50 @@
 {
-  "version": "0.7.7",
-  "date": "2026-09-07",
+  "version": "0.7.9",
+  "date": "2026-09-08",
   "sections": [
     {
-      "title": "추가",
+      "title": "Fixed",
       "items": [
-        "이제 GameHQ를 16개 인터페이스 언어로 사용할 수 있습니다. 처음 실행할 때는 Windows 언어를 따르며, 설정에서 다른 언어를 선택할 수 있습니다.",
-        "언어를 바꾸면 오버레이와 알림 영역 메뉴를 포함한 앱 전체에 즉시 적용되며, GameHQ를 다시 시작할 필요가 없습니다. 선택한 언어는 기억됩니다.",
-        "설치 프로그램이 사용자의 언어로 실행되고 그 선택을 GameHQ의 첫 실행에 전달하므로, 설치 프로그램과 앱의 언어가 서로 달라지지 않습니다.",
-        "Playnite 확장과 실행기의 오류 대화 상자도 현지화되었습니다.",
-        "이 릴리스 노트의 번역본이 있으면 새로운 기능이 사용자의 언어로 표시됩니다. 번역본이 없으면 여러 언어가 섞이지 않고 영어 전문이 표시됩니다."
+        "A replay save keeps its recorded segments when the game changes or the buffer restarts. Old files unrelated to the save can still be cleaned up, and closing GameHQ waits for the export to finish safely.",
+        "Saving two replay clips within the same second no longer replaces the first one. Each clip and preview claims its own file name, and a failed save cannot delete an existing clip."
       ]
     },
     {
-      "title": "변경",
+      "title": "Changed",
       "items": [
-        "날짜, 숫자, 개수가 이제 시스템 기본값이 아니라 선택한 언어를 따릅니다."
-      ]
-    },
-    {
-      "title": "알려진 제한 사항",
-      "items": [
-        "GameHQ는 아직 서명되지 않은 베타 버전이므로 설치 프로그램을 실행할 때 Windows에서 알 수 없는 게시자 경고가 표시될 수 있습니다."
+        "Release notes in other languages stay in the repository, linked from the release page, so the download list shows the installable packages and verification files."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.7",
+      "date": "2026-09-07",
+      "sections": [
+        {
+          "title": "추가",
+          "items": [
+            "이제 GameHQ를 16개 인터페이스 언어로 사용할 수 있습니다. 처음 실행할 때는 Windows 언어를 따르며, 설정에서 다른 언어를 선택할 수 있습니다.",
+            "언어를 바꾸면 오버레이와 알림 영역 메뉴를 포함한 앱 전체에 즉시 적용되며, GameHQ를 다시 시작할 필요가 없습니다. 선택한 언어는 기억됩니다.",
+            "설치 프로그램이 사용자의 언어로 실행되고 그 선택을 GameHQ의 첫 실행에 전달하므로, 설치 프로그램과 앱의 언어가 서로 달라지지 않습니다.",
+            "Playnite 확장과 실행기의 오류 대화 상자도 현지화되었습니다.",
+            "이 릴리스 노트의 번역본이 있으면 새로운 기능이 사용자의 언어로 표시됩니다. 번역본이 없으면 여러 언어가 섞이지 않고 영어 전문이 표시됩니다."
+          ]
+        },
+        {
+          "title": "변경",
+          "items": [
+            "날짜, 숫자, 개수가 이제 시스템 기본값이 아니라 선택한 언어를 따릅니다."
+          ]
+        },
+        {
+          "title": "알려진 제한 사항",
+          "items": [
+            "GameHQ는 아직 서명되지 않은 베타 버전이므로 설치 프로그램을 실행할 때 Windows에서 알 수 없는 게시자 경고가 표시될 수 있습니다."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.6",
       "date": "2026-08-31",
@@ -176,6 +195,13 @@
     "requested_locale": "ko-KR",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.9",
+        "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.7",
         "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",

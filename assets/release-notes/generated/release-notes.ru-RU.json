@@ -1,31 +1,50 @@
 {
-  "version": "0.7.7",
-  "date": "2026-09-07",
+  "version": "0.7.9",
+  "date": "2026-09-08",
   "sections": [
     {
-      "title": "Добавлено",
+      "title": "Fixed",
       "items": [
-        "GameHQ теперь доступен на шестнадцати языках интерфейса. При первом запуске он использует язык Windows, а другой можно выбрать в настройках.",
-        "Смена языка действует сразу во всём приложении, включая оверлей и меню в трее, без перезапуска GameHQ. Ваш выбор запоминается.",
-        "Установщик теперь работает на вашем языке и передаёт этот выбор первому запуску GameHQ, поэтому установщик и приложение больше не расходятся.",
-        "Расширение для Playnite и диалоги ошибок программы запуска также переведены.",
-        "Раздел «Что нового» отображается на вашем языке всегда, когда есть переведённая версия этих заметок. Если её нет, показывается полный английский текст, а не смесь языков."
+        "A replay save keeps its recorded segments when the game changes or the buffer restarts. Old files unrelated to the save can still be cleaned up, and closing GameHQ waits for the export to finish safely.",
+        "Saving two replay clips within the same second no longer replaces the first one. Each clip and preview claims its own file name, and a failed save cannot delete an existing clip."
       ]
     },
     {
-      "title": "Изменено",
+      "title": "Changed",
       "items": [
-        "Даты, числа и счётные формы теперь следуют выбранному языку, а не системной настройке."
-      ]
-    },
-    {
-      "title": "Известные ограничения",
-      "items": [
-        "GameHQ по-прежнему является неподписанной бета-версией, поэтому при запуске программы установки Windows может предупредить о неизвестном издателе."
+        "Release notes in other languages stay in the repository, linked from the release page, so the download list shows the installable packages and verification files."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.7",
+      "date": "2026-09-07",
+      "sections": [
+        {
+          "title": "Добавлено",
+          "items": [
+            "GameHQ теперь доступен на шестнадцати языках интерфейса. При первом запуске он использует язык Windows, а другой можно выбрать в настройках.",
+            "Смена языка действует сразу во всём приложении, включая оверлей и меню в трее, без перезапуска GameHQ. Ваш выбор запоминается.",
+            "Установщик теперь работает на вашем языке и передаёт этот выбор первому запуску GameHQ, поэтому установщик и приложение больше не расходятся.",
+            "Расширение для Playnite и диалоги ошибок программы запуска также переведены.",
+            "Раздел «Что нового» отображается на вашем языке всегда, когда есть переведённая версия этих заметок. Если её нет, показывается полный английский текст, а не смесь языков."
+          ]
+        },
+        {
+          "title": "Изменено",
+          "items": [
+            "Даты, числа и счётные формы теперь следуют выбранному языку, а не системной настройке."
+          ]
+        },
+        {
+          "title": "Известные ограничения",
+          "items": [
+            "GameHQ по-прежнему является неподписанной бета-версией, поэтому при запуске программы установки Windows может предупредить о неизвестном издателе."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.6",
       "date": "2026-08-31",
@@ -176,6 +195,13 @@
     "requested_locale": "ru-RU",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.9",
+        "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.7",
         "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",

@@ -66,9 +66,10 @@ the runtime index.
 When the owner finalizes the launch, `status` becomes `released`, the date is
 assigned, and the same version is promoted into `releases` exactly once as the
 newest entry, with matching date, `complete` policy and the integrity of its
-dated English document. A `released` launch that is absent from `releases`, is
-promoted twice, or is not the newest entry is rejected: it would describe a
-release that neither the generated bundles nor the publication artifacts ship.
+dated English document. A `released` launch that is absent from `releases` or
+promoted twice is rejected. Later patches may precede it in the newest-first
+history; its original date, integrity and complete localization policy remain
+required.
 
 A designated version may already carry complete draft documents under
 `versions/<version>/`. Those documents keep `"date": null` too: a draft with a

@@ -61,8 +61,12 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         version = launch["version"]
         launch["date"] = None
         launch["status"] = "designated"
+        # Model the actual pre-launch history even after later patches ship.
+        for release in manifest["releases"]:
+            if GEN.version_key(release["version"]) >= GEN.version_key(version):
+                shutil.rmtree(root / "publication" / release["version"], ignore_errors=True)
         manifest["releases"] = [release for release in manifest["releases"]
-                                if release["version"] != version]
+                                if GEN.version_key(release["version"]) < GEN.version_key(version)]
         GEN.write_json(root / "manifest.json", manifest)
 
         version_root = root / "versions" / version
@@ -393,8 +397,6 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
                                 "invalid ISO date"),
             "duplicate promotion": (launch, [copy.deepcopy(entry), *promoted],
                                     "promoted more than once"),
-            "wrong position": (launch, [*released, copy.deepcopy(entry)],
-                               "must be the newest release-history entry"),
             "date mismatch": (launch, [{**entry, "date": "2026-10-01"}, *released],
                               "instead of the localization-launch date"),
             "history not released": (launch, [{**entry, "status": "draft"}, *released],
@@ -407,6 +409,25 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
             with self.subTest(case=name):
                 with self.assertRaisesRegex(GEN.ReleaseNotesError, diagnostic):
                     GEN.validate_launch({"localization_launch": candidate}, history)
+
+    def test_later_patches_preserve_launch_integrity_and_history_order(self) -> None:
+        manifest = copy.deepcopy(self.manifest)
+        newest = manifest["releases"][0]
+        major, minor, patch = GEN.version_key(newest["version"])
+        later = {**newest, "version": f"{major}.{minor}.{patch + 1}",
+                 "localization_policy": "fallback-allowed"}
+        manifest["releases"].insert(0, later)
+        self.assertEqual(manifest["releases"], GEN.validate_manifest(manifest, self.locales))
+        launch_entry = next(release for release in manifest["releases"]
+                            if release["version"] == manifest["localization_launch"]["version"])
+        launch_entry["localization_policy"] = "fallback-allowed"
+        self.assert_contract_error(lambda: GEN.validate_manifest(manifest, self.locales),
+                                   "must require all sixteen locales")
+        launch_entry["localization_policy"] = "complete"
+        manifest["releases"][0], manifest["releases"][1] = (
+            manifest["releases"][1], manifest["releases"][0])
+        self.assert_contract_error(lambda: GEN.validate_manifest(manifest, self.locales),
+                                   "not deterministically newest-first")
 
     def test_generation_is_byte_deterministic(self) -> None:
         with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:

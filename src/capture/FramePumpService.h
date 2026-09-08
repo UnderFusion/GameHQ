@@ -1,13 +1,16 @@
 #pragma once
 #include "capture/CapturePublisher.h"
+#include "capture/SegmentLease.h"
 
 #include <QObject>
 #include <QThread>
+#include <memory>
 
 class ConfigManager;
 class CaptureLocations;
 class QImage;
 class QTimer;
+class ReplayExportTask;
 
 // Auto-armed while a game is foreground (replay.auto, master switch in
 // Settings → Replay). On start it captures the current foreground game window
@@ -64,6 +67,7 @@ signals:
 private:
     struct Pipeline;                 // all WGC/D3D pointers + timer + fps state (.cpp)
     void teardown();                 // delete m_pipe (releases everything, reverse order)
+    void finishExport();             // join before worker/apartment shutdown
 
     // startPump bring-up, one phase per step, in call order. Each reports its own
     // failure via failStep() and returns false; startPump owns the single
@@ -78,16 +82,18 @@ private:
 
     // saveReplayOnWorker stages, in call order.
     bool saveGuard(const QString& saveId);                     // preflight: pipe/ring/busy
-    QStringList freezeRing(const QString& saveId);             // pin + snapshot (empty = refused)
+    SegmentLease freezeRing(const QString& saveId);            // leased snapshot (empty = refused)
     QString instantThumbnail(const QString& lastSegment, const QString& thumbPath,
                              const QString& saveId);
-    void runExport(const QStringList& segs, const CapturePublisher::Reservation& reservation,
+    void runExport(SegmentLease lease, const CapturePublisher::Reservation& reservation,
                    const QString& thumbPath, const QString& instantThumb,
                    const QString& game, const QString& exePath, const QString& saveId);
 
     Pipeline* m_pipe = nullptr;
     bool m_apartmentReady = false;
     bool m_exportBusy = false;       // one async clip export at a time
+    std::unique_ptr<ReplayExportTask> m_exportTask;
+    quint64 m_exportGeneration = 0;  // fences callbacks across export shutdown/replacement
     bool m_updatePreparing = false;
     bool m_hdrScreenshotPending = false;
 };

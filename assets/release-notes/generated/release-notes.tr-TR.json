@@ -1,31 +1,50 @@
 {
-  "version": "0.7.7",
-  "date": "2026-09-07",
+  "version": "0.7.9",
+  "date": "2026-09-08",
   "sections": [
     {
-      "title": "Eklenenler",
+      "title": "Fixed",
       "items": [
-        "GameHQ artık on altı arayüz dilinde kullanılabiliyor. İlk açılışta Windows dil ayarınızı kullanır; ayarlardan başka bir dil seçebilirsiniz.",
-        "Dil değişikliği, GameHQ'yu yeniden başlatmadan oyun içi arayüz ve bildirim alanı menüsü dâhil uygulamanın tamamında anında geçerli olur. Seçiminiz hatırlanır.",
-        "Kurulum artık sizin dilinizde çalışıyor ve bu seçimi GameHQ'nun ilk açılışına aktarıyor; böylece kurulum ile uygulama artık birbiriyle çelişmiyor.",
-        "Playnite eklentisi ve başlatıcının hata pencereleri de yerelleştirildi.",
-        "Yenilikler, bu notların çevrilmiş bir sürümü bulunduğunda kendi dilinizde gösterilir. Bulunmadığında ise diller karışmadan İngilizce metnin tamamı gösterilir."
+        "A replay save keeps its recorded segments when the game changes or the buffer restarts. Old files unrelated to the save can still be cleaned up, and closing GameHQ waits for the export to finish safely.",
+        "Saving two replay clips within the same second no longer replaces the first one. Each clip and preview claims its own file name, and a failed save cannot delete an existing clip."
       ]
     },
     {
-      "title": "Değişiklikler",
+      "title": "Changed",
       "items": [
-        "Tarihler, sayılar ve öğe sayıları artık sistem varsayılanı yerine seçilen dilin biçimlendirme kurallarına göre gösteriliyor."
-      ]
-    },
-    {
-      "title": "Bilinen sınırlamalar",
-      "items": [
-        "GameHQ hâlâ imzasız bir beta sürümüdür; bu nedenle kurulum programını çalıştırdığınızda Windows bilinmeyen yayımcı uyarısı gösterebilir."
+        "Release notes in other languages stay in the repository, linked from the release page, so the download list shows the installable packages and verification files."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.7",
+      "date": "2026-09-07",
+      "sections": [
+        {
+          "title": "Eklenenler",
+          "items": [
+            "GameHQ artık on altı arayüz dilinde kullanılabiliyor. İlk açılışta Windows dil ayarınızı kullanır; ayarlardan başka bir dil seçebilirsiniz.",
+            "Dil değişikliği, GameHQ'yu yeniden başlatmadan oyun içi arayüz ve bildirim alanı menüsü dâhil uygulamanın tamamında anında geçerli olur. Seçiminiz hatırlanır.",
+            "Kurulum artık sizin dilinizde çalışıyor ve bu seçimi GameHQ'nun ilk açılışına aktarıyor; böylece kurulum ile uygulama artık birbiriyle çelişmiyor.",
+            "Playnite eklentisi ve başlatıcının hata pencereleri de yerelleştirildi.",
+            "Yenilikler, bu notların çevrilmiş bir sürümü bulunduğunda kendi dilinizde gösterilir. Bulunmadığında ise diller karışmadan İngilizce metnin tamamı gösterilir."
+          ]
+        },
+        {
+          "title": "Değişiklikler",
+          "items": [
+            "Tarihler, sayılar ve öğe sayıları artık sistem varsayılanı yerine seçilen dilin biçimlendirme kurallarına göre gösteriliyor."
+          ]
+        },
+        {
+          "title": "Bilinen sınırlamalar",
+          "items": [
+            "GameHQ hâlâ imzasız bir beta sürümüdür; bu nedenle kurulum programını çalıştırdığınızda Windows bilinmeyen yayımcı uyarısı gösterebilir."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.6",
       "date": "2026-08-31",
@@ -176,6 +195,13 @@
     "requested_locale": "tr-TR",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.9",
+        "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.7",
         "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",

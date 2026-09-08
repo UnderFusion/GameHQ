@@ -115,6 +115,35 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
 
     QDir().mkpath(m_cacheDir);
 
+    restoreRing();
+
+    if (!mfAddRef())
+        return false;
+    m_mfOwned = true;
+
+    if (!openSegment()) {
+        mfRelease();
+        m_mfOwned = false;
+        return false;
+    }
+
+    m_active = true;
+    qInfo().noquote() << QStringLiteral(
+        "SegmentRecorder: started %1x%2 -> %3x%4 (%5) @%6fps %7Mbps seg=%8s audio=%9Hz/%10ch -> %11")
+        .arg(m_srcW).arg(m_srcH).arg(m_w).arg(m_h)
+        .arg(m_scaleOnGpu ? QStringLiteral("GPU scale")
+             : (m_w != m_srcW || m_h != m_srcH) ? QStringLiteral("CPU scale")
+                                                : QStringLiteral("no scale"))
+        .arg(m_fps).arg(bitrateMbps)
+        .arg(m_segTicks / 10000000LL)
+        .arg(m_audioRate).arg(m_audioChannels)
+        .arg(m_cacheDir);
+    return true;
+}
+
+void SegmentRecorder::restoreRing()
+{
+    m_segments.clear();
     // Restore the ring from any segments left on disk by a previous session/arm.
     // Without this, every teardown (alt-tab/overlay flicker disarming the buffer)
     // wipes the in-memory m_segments list, so a save right after re-arm yields
@@ -141,43 +170,17 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
         for (const QString& f : files) {
             const QString full = m_cacheDir + QLatin1Char('/') + f;
             const qint64 ageSecs = nowSecs - QFileInfo(full).lastModified().toSecsSinceEpoch();
-            if (ageSecs > staleSecs) {
-                QFile::remove(full);          // genuinely orphaned (old session)
+            if (ageSecs > staleSecs && SegmentLease::removeIfUnleased(full))
                 continue;
-            }
             m_segments.append(full);
         }
         // entryList already sorted chronologically; trim oldest if over capacity.
-        while (m_segments.size() > m_keepSegments)
-            QFile::remove(m_segments.takeFirst());
+        trimRing();
         if (!m_segments.isEmpty())
             qInfo().noquote() << QStringLiteral(
                 "SegmentRecorder: restored %1/%2 segments from disk (window=%3s)")
                 .arg(m_segments.size()).arg(m_keepSegments).arg(lengthSecs);
     }
-
-    if (!mfAddRef())
-        return false;
-    m_mfOwned = true;
-
-    if (!openSegment()) {
-        mfRelease();
-        m_mfOwned = false;
-        return false;
-    }
-
-    m_active = true;
-    qInfo().noquote() << QStringLiteral(
-        "SegmentRecorder: started %1x%2 -> %3x%4 (%5) @%6fps %7Mbps seg=%8s audio=%9Hz/%10ch -> %11")
-        .arg(m_srcW).arg(m_srcH).arg(m_w).arg(m_h)
-        .arg(m_scaleOnGpu ? QStringLiteral("GPU scale")
-             : (m_w != m_srcW || m_h != m_srcH) ? QStringLiteral("CPU scale")
-                                                : QStringLiteral("no scale"))
-        .arg(m_fps).arg(bitrateMbps)
-        .arg(m_segTicks / 10000000LL)
-        .arg(m_audioRate).arg(m_audioChannels)
-        .arg(m_cacheDir);
-    return true;
 }
 
 // Build the D3D11 VideoProcessor that downscales source frames to the encode
@@ -563,10 +566,8 @@ void SegmentRecorder::closeSegment()
 
     if (!m_curPath.isEmpty())
         m_segments.append(m_curPath);
-    // Ring (Step 5): keep only ~lengthSeconds of segments; delete the oldest.
-    // Deletion is paused while an async clip export reads the ring (pinRing).
-    while (!m_ringPinned && m_segments.size() > m_keepSegments)
-        QFile::remove(m_segments.takeFirst());
+    // Keep the normal window plus leased snapshots; unrelated old files go.
+    trimRing();
 
     // Per-segment stats: frames vs the ~expected count at the target fps make
     // capture starvation visible; lastSegPts is the segment's video span.
@@ -579,7 +580,7 @@ void SegmentRecorder::closeSegment()
     m_curPath.clear();
 }
 
-QStringList SegmentRecorder::snapshotForSave()
+SegmentLease SegmentRecorder::snapshotForSave()
 {
     if (!m_active || !m_writer)
         return {};
@@ -588,7 +589,9 @@ QStringList SegmentRecorder::snapshotForSave()
     QElapsedTimer rollTimer;
     rollTimer.start();
     closeSegment();
-    const QStringList clip = m_segments;   // chronological, ~lengthSeconds of footage
+    // Older leased files can remain in m_segments, but are not part of a new
+    // save. Acquire before reopening/returning to the worker event loop.
+    SegmentLease clip(m_segments.last(qMin(qsizetype(m_keepSegments), m_segments.size())));
     ++m_segIndex;
     if (!openSegment()) { m_active = false; return clip; }
     m_segStartPts = m_lastGlobalPts;   // provisional base until the next frame
@@ -836,11 +839,9 @@ void SegmentRecorder::writeAudio(const float* samples, unsigned numFrames, qint6
     if (sample) sample->Release();
 }
 
-void SegmentRecorder::unpinRing()
+void SegmentRecorder::trimRing()
 {
-    m_ringPinned = false;
-    while (m_segments.size() > m_keepSegments)
-        QFile::remove(m_segments.takeFirst());
+    SegmentLease::trim(m_segments, m_keepSegments);
 }
 
 void SegmentRecorder::end()

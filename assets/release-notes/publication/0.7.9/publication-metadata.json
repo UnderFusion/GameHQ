@@ -1,0 +1,518 @@
+{
+  "schema_version": 1,
+  "kind": "release-publication",
+  "version": "0.7.9",
+  "date": "2026-09-08",
+  "source_locale": "en-US",
+  "default_locale": "en-US",
+  "localization_policy": "fallback-allowed",
+  "release_source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+  "release_body": {
+    "filename": "RELEASE_BODY.md",
+    "size": 2111,
+    "sha256": "029edf718a31c73e1a358a96e86e8a5d4f9e12d222c46612c18a9a30896822c3"
+  },
+  "distribution": {
+    "localized_documents": "repository",
+    "github_release_assets": false,
+    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.7.9/assets/release-notes/publication/0.7.9"
+  },
+  "localized_documents": [
+    {
+      "canonical_locale": "en-US",
+      "requested_locale": "en-US",
+      "effective_locale": "en-US",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "English (United States)",
+      "language_native_name": "English",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.en-US.md",
+      "size": 603,
+      "sha256": "f87036bfc5bdb75c630fffc848df73ddf4a34f0a87026f60480efa817a2a8a19",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hans",
+      "requested_locale": "zh-Hans",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Simplified)",
+      "language_native_name": "简体中文",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.zh-Hans.md",
+      "size": 793,
+      "sha256": "d479fa9d942bbadf1201c6fab3f1dcb7e04709747881ef5a5c8478958d08f742",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ru-RU",
+      "requested_locale": "ru-RU",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Russian",
+      "language_native_name": "Русский",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.ru-RU.md",
+      "size": 780,
+      "sha256": "c503850d337f688d9e2f401a8dc2fdbfd5df37c1fbad21acc7326394a34e740e",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-ES",
+      "requested_locale": "es-ES",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish",
+      "language_native_name": "Español",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.es-ES.md",
+      "size": 780,
+      "sha256": "32353a79b7dd51574fb44cb9802570c3a2810a116bebe05d5a6fd8947f5afc04",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pt-BR",
+      "requested_locale": "pt-BR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Portuguese (Brazil)",
+      "language_native_name": "Português (Brasil)",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.pt-BR.md",
+      "size": 792,
+      "sha256": "6d7ff815787ee5243652820ade953b00c32ec3273026163cc4e0921d34a02b07",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "de-DE",
+      "requested_locale": "de-DE",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "German",
+      "language_native_name": "Deutsch",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.de-DE.md",
+      "size": 779,
+      "sha256": "45181af587703c2e91b6a2ff491b226a0838fb7ce2e37e1aef9b52a8a304e095",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ja-JP",
+      "requested_locale": "ja-JP",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Japanese",
+      "language_native_name": "日本語",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.ja-JP.md",
+      "size": 781,
+      "sha256": "dd49bfb6e05f1c21998dd734f1a4b9ae33e3c420b5efea63a01cad14b8fb0d32",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "fr-FR",
+      "requested_locale": "fr-FR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "French",
+      "language_native_name": "Français",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.fr-FR.md",
+      "size": 779,
+      "sha256": "9f5f4c6290cbf7129c771d7c2d136c37bf1984240317a9760415095eb90a1151",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pl-PL",
+      "requested_locale": "pl-PL",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Polish",
+      "language_native_name": "Polski",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.pl-PL.md",
+      "size": 779,
+      "sha256": "cb3910c7c5ecfd6edb7ab1248702faa84eefe326b63984522a8af2ab7b0b5bbf",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ko-KR",
+      "requested_locale": "ko-KR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Korean",
+      "language_native_name": "한국어",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.ko-KR.md",
+      "size": 779,
+      "sha256": "1261a8d6022483d132e810ec902336fb05d69949b7bd48522a7f958bdc8f9321",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hant",
+      "requested_locale": "zh-Hant",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Traditional)",
+      "language_native_name": "繁體中文",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.zh-Hant.md",
+      "size": 794,
+      "sha256": "241b0d0b4569b23bc594d0449cccf2f40a5e7fc6ba902f0a4ebfd00cca91e8d3",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "tr-TR",
+      "requested_locale": "tr-TR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Turkish",
+      "language_native_name": "Türkçe",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.tr-TR.md",
+      "size": 780,
+      "sha256": "b2fce9d2e437d1f031971cf6fcd71fecaa2317dc6078ac2a01a8cd31a12c2f0d",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "th-TH",
+      "requested_locale": "th-TH",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Thai",
+      "language_native_name": "ไทย",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.th-TH.md",
+      "size": 777,
+      "sha256": "16454ff0ad0d357242d36f97c52e5d92d43b6b32d7a85e02e573302b71665304",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-419",
+      "requested_locale": "es-419",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish (Latin America)",
+      "language_native_name": "Español (Latinoamérica)",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.es-419.md",
+      "size": 796,
+      "sha256": "b12777b255230f850d2b75757450187fe73a8bdeef3499f08a165a00832ecd89",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "uk-UA",
+      "requested_locale": "uk-UA",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Ukrainian",
+      "language_native_name": "Українська",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.uk-UA.md",
+      "size": 782,
+      "sha256": "7429370cc0bb8a373077a6a6a652bd1a3d24c5d1802127e8861c56a34b02f23c",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "it-IT",
+      "requested_locale": "it-IT",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Italian",
+      "language_native_name": "Italiano",
+      "version": "0.7.9",
+      "date": "2026-09-08",
+      "filename": "release-notes.it-IT.md",
+      "size": 780,
+      "sha256": "edf9fefa0fefd6ddcb983393ac67edbdec8ab5e75aeb0ec9df43ac3729928e5b",
+      "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+      "structure": [
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "fixed-replay-export-lifetime",
+            "fixed-replay-save-collisions"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "changed-release-note-downloads"
+          ]
+        }
+      ]
+    }
+  ]
+}

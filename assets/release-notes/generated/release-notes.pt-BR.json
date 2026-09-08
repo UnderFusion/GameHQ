@@ -1,31 +1,50 @@
 {
-  "version": "0.7.7",
-  "date": "2026-09-07",
+  "version": "0.7.9",
+  "date": "2026-09-08",
   "sections": [
     {
-      "title": "Novidades",
+      "title": "Fixed",
       "items": [
-        "O GameHQ agora está disponível em dezesseis idiomas de interface. Na primeira execução, ele segue o idioma do Windows, e você pode escolher outro em Configurações.",
-        "A troca de idioma passa a valer imediatamente em todo o aplicativo, incluindo a sobreposição e o menu da área de notificação, sem reiniciar o GameHQ. Sua escolha fica salva.",
-        "O instalador agora é executado no seu idioma e repassa essa escolha para a primeira execução do GameHQ, de modo que instalador e aplicativo não divergem mais.",
-        "A extensão do Playnite e as caixas de diálogo de erro do inicializador também estão traduzidas.",
-        "As novidades aparecem no seu idioma sempre que existir uma versão traduzida destas notas. Quando não existir, o texto completo em inglês é exibido, nunca uma mistura de idiomas."
+        "A replay save keeps its recorded segments when the game changes or the buffer restarts. Old files unrelated to the save can still be cleaned up, and closing GameHQ waits for the export to finish safely.",
+        "Saving two replay clips within the same second no longer replaces the first one. Each clip and preview claims its own file name, and a failed save cannot delete an existing clip."
       ]
     },
     {
-      "title": "Alterações",
+      "title": "Changed",
       "items": [
-        "Datas, números e contagens agora seguem o idioma selecionado em vez da configuração do sistema."
-      ]
-    },
-    {
-      "title": "Limitações conhecidas",
-      "items": [
-        "O GameHQ ainda é uma versão beta sem assinatura, por isso o Windows pode avisar sobre um editor desconhecido ao executar o instalador."
+        "Release notes in other languages stay in the repository, linked from the release page, so the download list shows the installable packages and verification files."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.7",
+      "date": "2026-09-07",
+      "sections": [
+        {
+          "title": "Novidades",
+          "items": [
+            "O GameHQ agora está disponível em dezesseis idiomas de interface. Na primeira execução, ele segue o idioma do Windows, e você pode escolher outro em Configurações.",
+            "A troca de idioma passa a valer imediatamente em todo o aplicativo, incluindo a sobreposição e o menu da área de notificação, sem reiniciar o GameHQ. Sua escolha fica salva.",
+            "O instalador agora é executado no seu idioma e repassa essa escolha para a primeira execução do GameHQ, de modo que instalador e aplicativo não divergem mais.",
+            "A extensão do Playnite e as caixas de diálogo de erro do inicializador também estão traduzidas.",
+            "As novidades aparecem no seu idioma sempre que existir uma versão traduzida destas notas. Quando não existir, o texto completo em inglês é exibido, nunca uma mistura de idiomas."
+          ]
+        },
+        {
+          "title": "Alterações",
+          "items": [
+            "Datas, números e contagens agora seguem o idioma selecionado em vez da configuração do sistema."
+          ]
+        },
+        {
+          "title": "Limitações conhecidas",
+          "items": [
+            "O GameHQ ainda é uma versão beta sem assinatura, por isso o Windows pode avisar sobre um editor desconhecido ao executar o instalador."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.6",
       "date": "2026-08-31",
@@ -176,6 +195,13 @@
     "requested_locale": "pt-BR",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.9",
+        "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.7",
         "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",

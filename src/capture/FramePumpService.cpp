@@ -10,6 +10,7 @@
 #include "config/ConfigKeys.h"
 #include "capture/SegmentRecorder.h"
 #include "capture/ReplayExporter.h"
+#include "capture/ReplayExportTask.h"
 #include "config/CaptureLocations.h"
 #include "config/ConfigManager.h"
 #include "config/Paths.h"
@@ -27,6 +28,7 @@
 #include <QImage>
 #include <QMetaObject>
 #include <QSize>
+#include <QScopeGuard>
 #include <QThread>
 #include <QVector>
 #include <QString>
@@ -112,6 +114,7 @@ FramePumpWorker::FramePumpWorker(QObject* parent)
 
 FramePumpWorker::~FramePumpWorker()
 {
+    finishExport();
     teardown();
 }
 
@@ -133,11 +136,19 @@ void FramePumpWorker::onThreadStarted()
 
 void FramePumpWorker::onThreadFinished()
 {
+    finishExport();
     teardown();
     if (m_apartmentReady) {
         RoUninitialize();
         m_apartmentReady = false;
     }
+}
+
+void FramePumpWorker::finishExport()
+{
+    ++m_exportGeneration;
+    m_exportTask.reset(); // waits without relying on the worker event loop
+    m_exportBusy = false;
 }
 
 void FramePumpWorker::teardown()
@@ -246,7 +257,7 @@ void sweepStaleReplayCache()
         const QString f = it.next();
         if (nowSecs - QFileInfo(f).lastModified().toSecsSinceEpoch()
                 > CaptureUtil::kStaleSegmentMaxAgeSecs
-            && QFile::remove(f))
+            && SegmentLease::removeIfUnleased(f))
             ++removed;
     }
     QDir rootDir(root);
@@ -752,16 +763,14 @@ bool FramePumpWorker::saveGuard(const QString& saveId)
 }
 
 // Freeze the ring (finalizes the in-flight segment, keeps recording).
-// Pin it FIRST so the rolling recorder cannot delete any snapshot file
-// while the export thread cut in runExport() is still reading it.
-// Empty result = ring had nothing; the failure signal is already emitted
-// and the ring unpinned.
-QStringList FramePumpWorker::freezeRing(const QString& saveId)
+// The snapshot itself leases its paths before recording resumes. Empty result
+// means the ring had nothing; the failure signal is already emitted.
+SegmentLease FramePumpWorker::freezeRing(const QString& saveId)
 {
-    m_pipe->recorder->pinRing();
     QElapsedTimer snapshotTimer;
     snapshotTimer.start();
-    const QStringList segs = m_pipe->recorder->snapshotForSave();
+    SegmentLease lease = m_pipe->recorder->snapshotForSave();
+    const QStringList& segs = lease.paths();
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: snapshot segments=%2 elapsedMs=%3")
                              .arg(saveId).arg(segs.size()).arg(snapshotTimer.elapsed());
     for (int i = 0; i < segs.size(); ++i) {
@@ -773,13 +782,12 @@ QStringList FramePumpWorker::freezeRing(const QString& saveId)
     }
     if (segs.isEmpty()) {
         qWarning() << "FramePump: save-replay — ring empty, nothing to save";
-        m_pipe->recorder->unpinRing();
         const QString game = m_pipe->gameName.isEmpty() ? QStringLiteral("Replay")
                                                         : m_pipe->gameName;
         emit clipFailed(game, QStringLiteral("Replay buffer is empty"));
-        return QStringList();
+        return {};
     }
-    return segs;
+    return lease;
 }
 
 // The moment is locked in — give instant feedback (before the slower
@@ -811,9 +819,9 @@ QString FramePumpWorker::instantThumbnail(const QString& lastSegment, const QStr
 
 // Remux + final thumbnail on their OWN thread: previously they ran right
 // here on the capture thread, so every save paused recording (and any
-// pad/frame processing) for the whole export. The ring stays pinned until
-// the export finishes so none of the snapshot files can be deleted.
-void FramePumpWorker::runExport(const QStringList& segs,
+// pad/frame processing) for the whole export. The task owns the snapshot lease
+// and releases it even if the worker completion callback is never delivered.
+void FramePumpWorker::runExport(SegmentLease lease,
                                 const CapturePublisher::Reservation& reservation,
                                 const QString& thumbPath, const QString& instantThumb,
                                 const QString& game, const QString& exePath,
@@ -828,10 +836,20 @@ void FramePumpWorker::runExport(const QStringList& segs,
     auto result = std::make_shared<ExportResult>();
     m_exportBusy = true;
     emit exportBusyChanged(true);
+    const quint64 generation = ++m_exportGeneration;
 
-    QThread* exportThread = QThread::create(
-        [segs, reservation, outPath, partialPath, thumbPath, instantThumb, saveId, result] {
+    m_exportTask = std::make_unique<ReplayExportTask>(std::move(lease),
+        [reservation, outPath, partialPath, thumbPath, instantThumb, saveId, result]
+        (const QStringList& segs) {
+            const auto discardOnFailure = qScopeGuard([&] {
+                if (!result->ok)
+                    CapturePublisher::discard(reservation);
+            });
             const HRESULT hrCo = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+            const auto uninitialize = qScopeGuard([hrCo] {
+                if (SUCCEEDED(hrCo))
+                    CoUninitialize();
+            });
             QElapsedTimer t;
             t.start();
             result->finalThumb = instantThumb;
@@ -865,26 +883,24 @@ void FramePumpWorker::runExport(const QStringList& segs,
                     "ReplaySave[%1]: failed - remux failed output=%2 elapsedMs=%3")
                     .arg(saveId).arg(outPath).arg(t.elapsed());
             }
-            if (SUCCEEDED(hrCo))
-                CoUninitialize();
         });
 
     // Completion runs back on THIS worker thread (context object = this), so
     // recorder access needs no locking; the connection dissolves safely if
     // the worker is destroyed first.
-    connect(exportThread, &QThread::finished, this,
-            [this, result, reservation, outPath, game, exePath, saveId] {
+    connect(m_exportTask.get(), &QThread::finished, this,
+            [this, result, outPath, game, exePath, saveId, generation] {
+                if (generation != m_exportGeneration)
+                    return;
+                m_exportTask.reset(); // finished; join and destroy on its owner thread
                 m_exportBusy = false;
                 emit exportBusyChanged(false);
                 if (m_pipe && m_pipe->recorder)
-                    m_pipe->recorder->unpinRing();
+                    m_pipe->recorder->trimRing();
                 if (result->ok) {
                     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: success (async)").arg(saveId);
                     emit clipSaved(outPath, game, result->finalThumb, exePath);
                 } else {
-                    // Only the reservation is given back. Deleting outPath here
-                    // used to destroy whatever clip already held that name.
-                    CapturePublisher::discard(reservation);
                     qWarning() << "FramePump: save-replay — remux failed for" << outPath;
                     emit clipFailed(game, QStringLiteral("Could not export a complete replay clip"));
                 }
@@ -892,9 +908,8 @@ void FramePumpWorker::runExport(const QStringList& segs,
                     stopPump();
                     emit updateReady();
                 }
-            });
-    connect(exportThread, &QThread::finished, exportThread, &QObject::deleteLater);
-    exportThread->start();
+            }, Qt::QueuedConnection);
+    m_exportTask->start();
 }
 
 void FramePumpWorker::prepareForUpdate()
@@ -923,8 +938,8 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot)
     if (!saveGuard(saveId))
         return;
 
-    const QStringList segs = freezeRing(saveId);
-    if (segs.isEmpty())
+    SegmentLease lease = freezeRing(saveId);
+    if (lease.isEmpty())
         return;
 
     const QString game = m_pipe->gameName.isEmpty() ? QStringLiteral("Unknown Game")
@@ -933,7 +948,6 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot)
     const QString clipsDir = clipsBaseRoot + QLatin1Char('/')
                              + GameIdentity::folderName(game) + QStringLiteral("/Clips");
     if (!QDir().mkpath(clipsDir)) {
-        m_pipe->recorder->unpinRing();
         emit clipFailed(game, QStringLiteral("Could not create the selected clips folder"));
         return;
     }
@@ -943,7 +957,6 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot)
     const CapturePublisher::Reservation reservation = CapturePublisher::reserve(
         clipsDir, QStringLiteral("yyyy-MM-dd_HH-mm-ss"), QStringLiteral(".mp4"));
     if (!reservation.isValid()) {
-        m_pipe->recorder->unpinRing();
         emit clipFailed(game, QStringLiteral("Could not reserve a name for the clip"));
         return;
     }
@@ -954,10 +967,11 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot)
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: output path=%2 game=%3")
                              .arg(saveId).arg(reservation.finalPath).arg(game);
 
-    const QString instantThumb = instantThumbnail(segs.last(), thumbPath, saveId);
+    const QString instantThumb = instantThumbnail(lease.paths().last(), thumbPath, saveId);
     emit clipSaving(game, instantThumb, m_pipe->executablePath);
 
-    runExport(segs, reservation, thumbPath, instantThumb, game, m_pipe->executablePath, saveId);
+    runExport(std::move(lease), reservation, thumbPath, instantThumb,
+              game, m_pipe->executablePath, saveId);
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: export started in background totalSoFarMs=%2")
                              .arg(saveId).arg(saveTimer.elapsed());
 }

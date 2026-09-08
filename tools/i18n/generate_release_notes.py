@@ -357,9 +357,9 @@ def validate_launch(
              "history; the owner must promote it into releases[] exactly once")
     if len(matching) > 1:
         fail(f"released localization-launch version {version} is promoted more than once")
-    if releases[0]["version"] != version:
-        fail(f"released localization-launch version {version} must be the newest release-history "
-             f"entry, not {releases[0]['version']}")
+    # The launch stays in history when later patches arrive. validate_manifest
+    # enforces newest-first ordering; the launch's own integrity/date/policy
+    # remain mandatory regardless of its position in that history.
     entry = matching[0]
     if entry["date"] != date:
         fail(f"release-history entry {version} records {entry['date']} instead of the "

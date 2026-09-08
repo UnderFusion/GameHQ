@@ -1,31 +1,50 @@
 {
-  "version": "0.7.7",
-  "date": "2026-09-07",
+  "version": "0.7.9",
+  "date": "2026-09-08",
   "sections": [
     {
-      "title": "Added",
+      "title": "Fixed",
       "items": [
-        "GameHQ is now available in sixteen interface languages. It follows your Windows language the first time it starts, and you can pick a different one in Settings.",
-        "Changing the language takes effect immediately across the application, including the overlay and the tray menu, without restarting GameHQ. Your choice is remembered.",
-        "Setup now runs in your language and passes that choice to GameHQ's first launch, so the installer and the application no longer disagree.",
-        "The Playnite extension and the launcher's error dialogs are localized as well.",
-        "What's New is shown in your language whenever a translated version of those notes exists. When it does not, the complete English text is shown instead, never a mixture of languages."
+        "A replay save keeps its recorded segments when the game changes or the buffer restarts. Old files unrelated to the save can still be cleaned up, and closing GameHQ waits for the export to finish safely.",
+        "Saving two replay clips within the same second no longer replaces the first one. Each clip and preview claims its own file name, and a failed save cannot delete an existing clip."
       ]
     },
     {
       "title": "Changed",
       "items": [
-        "Dates, numbers and item counts now follow the selected language instead of the system default."
-      ]
-    },
-    {
-      "title": "Known limitations",
-      "items": [
-        "GameHQ is still an unsigned beta, so Windows may warn about an unknown publisher when you run Setup."
+        "Release notes in other languages stay in the repository, linked from the release page, so the download list shows the installable packages and verification files."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.7",
+      "date": "2026-09-07",
+      "sections": [
+        {
+          "title": "Added",
+          "items": [
+            "GameHQ is now available in sixteen interface languages. It follows your Windows language the first time it starts, and you can pick a different one in Settings.",
+            "Changing the language takes effect immediately across the application, including the overlay and the tray menu, without restarting GameHQ. Your choice is remembered.",
+            "Setup now runs in your language and passes that choice to GameHQ's first launch, so the installer and the application no longer disagree.",
+            "The Playnite extension and the launcher's error dialogs are localized as well.",
+            "What's New is shown in your language whenever a translated version of those notes exists. When it does not, the complete English text is shown instead, never a mixture of languages."
+          ]
+        },
+        {
+          "title": "Changed",
+          "items": [
+            "Dates, numbers and item counts now follow the selected language instead of the system default."
+          ]
+        },
+        {
+          "title": "Known limitations",
+          "items": [
+            "GameHQ is still an unsigned beta, so Windows may warn about an unknown publisher when you run Setup."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.6",
       "date": "2026-08-31",
@@ -176,6 +195,13 @@
     "requested_locale": "en-US",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.9",
+        "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
+        "resolved_locale": "en-US",
+        "fallback": false,
+        "fallback_reason": null
+      },
       {
         "version": "0.7.7",
         "source_integrity": "sha256:36e5675c7052ed61479534f05713913c059f6aa0ce1ff9f3d88e3f7e8df5f6ab",

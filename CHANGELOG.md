@@ -6,8 +6,13 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.9] - 2026-09-08
+
 ### Fixed
 
+- A replay save keeps its recorded segments when the game changes or the buffer
+  restarts. Old files unrelated to the save can still be cleaned up, and closing
+  GameHQ waits for the export to finish safely.
 - Saving two replay clips within the same second no longer replaces the first
   one. Each clip now claims its own file name before anything is written, and a
   save that fails can no longer delete a clip you already had. Clip previews
