@@ -2,6 +2,7 @@
 
 #include "capture/wgc_shims.h"
 #include "capture/AudioCapture.h"
+#include "capture/CapturePublisher.h"
 #include "capture/CaptureUtil.h"
 #include "capture/HdrCapabilities.h"
 #include "capture/hdr/GpuToneMapper.h"
@@ -45,6 +46,10 @@
 // ===========================================================================
 
 namespace { void sweepStaleReplayCache(); }   // defined below with the helpers
+
+// How long an unfinished clip file may sit in a Clips folder before it counts
+// as abandoned. Same 10 minutes the segment cache uses.
+constexpr qint64 kStaleClipPartMaxAgeSecs = 600;
 
 // Holds every WinRT/D3D pointer plus the poll timer and fps counters for one
 // active capture. Destroying it releases everything in reverse-construction
@@ -808,12 +813,14 @@ QString FramePumpWorker::instantThumbnail(const QString& lastSegment, const QStr
 // here on the capture thread, so every save paused recording (and any
 // pad/frame processing) for the whole export. The ring stays pinned until
 // the export finishes so none of the snapshot files can be deleted.
-void FramePumpWorker::runExport(const QStringList& segs, const QString& outPath,
+void FramePumpWorker::runExport(const QStringList& segs,
+                                const CapturePublisher::Reservation& reservation,
                                 const QString& thumbPath, const QString& instantThumb,
                                 const QString& game, const QString& exePath,
                                 const QString& saveId)
 {
-    const QString partialPath = outPath + QStringLiteral(".partial");
+    const QString outPath = reservation.finalPath;
+    const QString partialPath = reservation.pendingPath;
     struct ExportResult {
         bool ok = false;
         QString finalThumb;
@@ -823,12 +830,13 @@ void FramePumpWorker::runExport(const QStringList& segs, const QString& outPath,
     emit exportBusyChanged(true);
 
     QThread* exportThread = QThread::create(
-        [segs, outPath, partialPath, thumbPath, instantThumb, saveId, result] {
+        [segs, reservation, outPath, partialPath, thumbPath, instantThumb, saveId, result] {
             const HRESULT hrCo = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
             QElapsedTimer t;
             t.start();
             result->finalThumb = instantThumb;
-            QFile::remove(partialPath);
+            // The reserved .part already exists and the MP4 sink writer
+            // truncates it, so the name stays claimed for the whole export.
             if (ReplayExporter::concat(segs, partialPath, saveId)) { // remux, no re-encode
                 qInfo().noquote() << QStringLiteral(
                     "ReplaySave[%1]: remux ok output=%2 segments=%3 elapsedMs=%4 bytes=%5")
@@ -844,11 +852,14 @@ void FramePumpWorker::runExport(const QStringList& segs, const QString& outPath,
                         result->finalThumb = thumbPath;
                 }
                 // Publish only a completely finalized file. A crash before
-                // this point leaves an ignored *.partial, never a gallery MP4.
-                QFile::remove(outPath);
-                result->ok = QFile::rename(partialPath, outPath);
+                // this point leaves an ignored *.part, never a gallery MP4.
+                // The rename refuses to clobber, so an unrelated clip that
+                // somehow holds the name survives instead of being replaced.
+                QString publishError;
+                result->ok = CapturePublisher::publish(reservation, &publishError);
                 if (!result->ok)
-                    qWarning() << "ReplaySave: could not publish finalized clip" << outPath;
+                    qWarning() << "ReplaySave: could not publish finalized clip" << outPath
+                               << publishError;
             } else {
                 qWarning().noquote() << QStringLiteral(
                     "ReplaySave[%1]: failed - remux failed output=%2 elapsedMs=%3")
@@ -862,7 +873,7 @@ void FramePumpWorker::runExport(const QStringList& segs, const QString& outPath,
     // recorder access needs no locking; the connection dissolves safely if
     // the worker is destroyed first.
     connect(exportThread, &QThread::finished, this,
-            [this, result, outPath, partialPath, game, exePath, saveId] {
+            [this, result, reservation, outPath, game, exePath, saveId] {
                 m_exportBusy = false;
                 emit exportBusyChanged(false);
                 if (m_pipe && m_pipe->recorder)
@@ -871,8 +882,9 @@ void FramePumpWorker::runExport(const QStringList& segs, const QString& outPath,
                     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: success (async)").arg(saveId);
                     emit clipSaved(outPath, game, result->finalThumb, exePath);
                 } else {
-                    QFile::remove(partialPath);
-                    QFile::remove(outPath);
+                    // Only the reservation is given back. Deleting outPath here
+                    // used to destroy whatever clip already held that name.
+                    CapturePublisher::discard(reservation);
                     qWarning() << "FramePump: save-replay — remux failed for" << outPath;
                     emit clipFailed(game, QStringLiteral("Could not export a complete replay clip"));
                 }
@@ -917,12 +929,6 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot)
 
     const QString game = m_pipe->gameName.isEmpty() ? QStringLiteral("Unknown Game")
                                                     : m_pipe->gameName;
-    const QString stamp = QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd_HH-mm-ss"));
-    const QString thumbPath = Paths::thumbnailsDir() + QLatin1Char('/') + stamp
-                              + QStringLiteral("_clip.png");
-
-    const QString instantThumb = instantThumbnail(segs.last(), thumbPath, saveId);
-    emit clipSaving(game, instantThumb, m_pipe->executablePath);
 
     const QString clipsDir = clipsBaseRoot + QLatin1Char('/')
                              + GameIdentity::folderName(game) + QStringLiteral("/Clips");
@@ -931,11 +937,27 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot)
         emit clipFailed(game, QStringLiteral("Could not create the selected clips folder"));
         return;
     }
-    const QString outPath = clipsDir + QLatin1Char('/') + stamp + QStringLiteral(".mp4");
+    // The name is claimed before anything is written, so a second save inside
+    // the same second is handed <stamp>_2.mp4 instead of the first clip's name.
+    // Nothing below may delete or overwrite a file it did not reserve.
+    const CapturePublisher::Reservation reservation = CapturePublisher::reserve(
+        clipsDir, QStringLiteral("yyyy-MM-dd_HH-mm-ss"), QStringLiteral(".mp4"));
+    if (!reservation.isValid()) {
+        m_pipe->recorder->unpinRing();
+        emit clipFailed(game, QStringLiteral("Could not reserve a name for the clip"));
+        return;
+    }
+    // Derived from the reserved clip name, so the preview inherits the same
+    // _2 and stays the "<clip base>_clip.png" pair ThumbnailService reattaches.
+    const QString thumbPath = CapturePublisher::companionPath(
+        reservation.finalPath, Paths::thumbnailsDir(), QStringLiteral("_clip.png"));
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: output path=%2 game=%3")
-                             .arg(saveId).arg(outPath).arg(game);
+                             .arg(saveId).arg(reservation.finalPath).arg(game);
 
-    runExport(segs, outPath, thumbPath, instantThumb, game, m_pipe->executablePath, saveId);
+    const QString instantThumb = instantThumbnail(segs.last(), thumbPath, saveId);
+    emit clipSaving(game, instantThumb, m_pipe->executablePath);
+
+    runExport(segs, reservation, thumbPath, instantThumb, game, m_pipe->executablePath, saveId);
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: export started in background totalSoFarMs=%2")
                              .arg(saveId).arg(saveTimer.elapsed());
 }
@@ -950,6 +972,13 @@ FramePumpService::FramePumpService(ConfigManager* config, CaptureLocations* loca
     , m_config(config)
     , m_locations(locations)
 {
+    // A crash or a power cut mid-export leaves a reserved *.part behind. It is
+    // invisible to the gallery, but nothing else would ever remove it. Only
+    // files older than the threshold go: an export takes seconds, never ten
+    // minutes, so a running one can never be swept away.
+    if (m_locations)
+        CapturePublisher::sweepStale(m_locations->clipsBaseRoot(), kStaleClipPartMaxAgeSecs);
+
     m_worker = new FramePumpWorker();   // no parent → we move it to m_thread
     m_worker->moveToThread(&m_thread);
     connect(&m_thread, &QThread::started, m_worker, &FramePumpWorker::onThreadStarted);

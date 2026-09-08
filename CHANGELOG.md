@@ -6,6 +6,13 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- Saving two replay clips within the same second no longer replaces the first
+  one. Each clip now claims its own file name before anything is written, and a
+  save that fails can no longer delete a clip you already had. Clip previews
+  follow the same naming, so the two clips keep their own thumbnails.
+
 ### Changed
 
 - Release notes in the other fifteen languages are no longer attached to a

@@ -1,4 +1,6 @@
 #pragma once
+#include "capture/CapturePublisher.h"
+
 #include <QObject>
 #include <QThread>
 
@@ -79,7 +81,7 @@ private:
     QStringList freezeRing(const QString& saveId);             // pin + snapshot (empty = refused)
     QString instantThumbnail(const QString& lastSegment, const QString& thumbPath,
                              const QString& saveId);
-    void runExport(const QStringList& segs, const QString& outPath,
+    void runExport(const QStringList& segs, const CapturePublisher::Reservation& reservation,
                    const QString& thumbPath, const QString& instantThumb,
                    const QString& game, const QString& exePath, const QString& saveId);
 

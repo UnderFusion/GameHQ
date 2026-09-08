@@ -68,6 +68,13 @@ void discard(const Reservation& reservation)
         qWarning() << "Capture: could not remove the unfinished" << reservation.pendingPath;
 }
 
+QString companionPath(const QString& finalPath, const QString& dir, const QString& suffix)
+{
+    if (finalPath.isEmpty())
+        return {};
+    return dir + QLatin1Char('/') + QFileInfo(finalPath).completeBaseName() + suffix;
+}
+
 int sweepStale(const QString& root, qint64 maxAgeSecs)
 {
     if (root.isEmpty() || !QFileInfo::exists(root))

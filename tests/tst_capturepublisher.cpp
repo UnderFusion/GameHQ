@@ -121,6 +121,95 @@ private slots:
         QVERIFY(QFileInfo::exists(first.finalPath));
     }
 
+    // The replay path used to name a clip with a bare timestamp, delete
+    // whatever held that name and rename its .partial on top. Two saves inside
+    // one second therefore left one clip where there should have been two.
+    void twoClipSavesInsideOneSecondBothSurvive()
+    {
+        QTemporaryDir dir;
+        QVERIFY(dir.isValid());
+
+        const auto exportClip = [&dir](const char* bytes) {
+            const CapturePublisher::Reservation reservation = CapturePublisher::reserve(
+                dir.path(), QStringLiteral("yyyy-MM-dd_HH-mm-ss"), QStringLiteral(".mp4"));
+            {
+                QFile pending(reservation.pendingPath);
+                pending.open(QIODevice::WriteOnly);
+                pending.write(bytes);
+            }
+            return reservation;
+        };
+
+        const CapturePublisher::Reservation first = exportClip("first-clip");
+        const CapturePublisher::Reservation second = exportClip("second-clip");
+        QVERIFY(first.isValid());
+        QVERIFY(second.isValid());
+        QVERIFY(first.finalPath != second.finalPath);
+        QVERIFY(CapturePublisher::publish(first));
+        QVERIFY(CapturePublisher::publish(second));
+
+        QCOMPARE(QDir(dir.path()).entryList({ QStringLiteral("*.mp4") }, QDir::Files).size(),
+                 qsizetype(2));
+        QFile older(first.finalPath);
+        QVERIFY(older.open(QIODevice::ReadOnly));
+        QCOMPARE(older.readAll(), QByteArray("first-clip"));   // untouched by the later save
+    }
+
+    // Every failure path gives the reservation back and nothing else. The old
+    // code removed the final path too, so a failed export could delete a clip
+    // saved earlier that happened to carry the same timestamp.
+    void aFailedExportNeverDeletesAnExistingClip()
+    {
+        QTemporaryDir dir;
+        QVERIFY(dir.isValid());
+
+        const CapturePublisher::Reservation saved = CapturePublisher::reserve(
+            dir.path(), QStringLiteral("yyyy-MM-dd_HH-mm-ss"), QStringLiteral(".mp4"));
+        {
+            QFile pending(saved.pendingPath);
+            QVERIFY(pending.open(QIODevice::WriteOnly));
+            pending.write("a clip the user already has");
+        }
+        QVERIFY(CapturePublisher::publish(saved));
+
+        const CapturePublisher::Reservation failing = CapturePublisher::reserve(
+            dir.path(), QStringLiteral("yyyy-MM-dd_HH-mm-ss"), QStringLiteral(".mp4"));
+        QVERIFY(failing.isValid());
+        CapturePublisher::discard(failing);
+
+        QVERIFY(!QFileInfo::exists(failing.finalPath));
+        QVERIFY(!QFileInfo::exists(failing.pendingPath));
+        QFile survivor(saved.finalPath);
+        QVERIFY(survivor.open(QIODevice::ReadOnly));
+        QCOMPARE(survivor.readAll(), QByteArray("a clip the user already has"));
+    }
+
+    // A clip and its preview must stay a pair: the preview inherits the _2 the
+    // reservation had to add, so the second save cannot overwrite the first
+    // clip's thumbnail either.
+    void aThumbnailFollowsTheNameItsClipWasGiven()
+    {
+        QTemporaryDir clips;
+        QTemporaryDir thumbs;
+        QVERIFY(clips.isValid() && thumbs.isValid());
+
+        const CapturePublisher::Reservation first = CapturePublisher::reserve(
+            clips.path(), QStringLiteral("yyyy-MM-dd_HH-mm-ss"), QStringLiteral(".mp4"));
+        const CapturePublisher::Reservation second = CapturePublisher::reserve(
+            clips.path(), QStringLiteral("yyyy-MM-dd_HH-mm-ss"), QStringLiteral(".mp4"));
+        const QString firstThumb = CapturePublisher::companionPath(
+            first.finalPath, thumbs.path(), QStringLiteral("_clip.png"));
+        const QString secondThumb = CapturePublisher::companionPath(
+            second.finalPath, thumbs.path(), QStringLiteral("_clip.png"));
+
+        QVERIFY(firstThumb != secondThumb);
+        // ThumbnailService reattaches a preview by "<clip base>_clip.png", so
+        // the companion has to keep exactly that shape.
+        QCOMPARE(QFileInfo(secondThumb).fileName(),
+                 QFileInfo(second.finalPath).completeBaseName() + QStringLiteral("_clip.png"));
+        QVERIFY(secondThumb.endsWith(QStringLiteral("_2_clip.png")));
+    }
+
     void sweepRemovesOnlyAbandonedFiles()
     {
         QTemporaryDir dir;

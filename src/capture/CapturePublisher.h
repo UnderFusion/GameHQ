@@ -38,6 +38,11 @@ bool publish(const Reservation& reservation, QString* error = nullptr);
 // Gives a reservation back after a failed encode.
 void discard(const Reservation& reservation);
 
+// Name of a file that belongs to an already reserved capture — a clip's
+// thumbnail. Built from the reserved name, so the companion inherits the
+// _2, _3 the reservation had to add and can never land on another capture's.
+QString companionPath(const QString& finalPath, const QString& dir, const QString& suffix);
+
 // Removes .part files under `root` older than `maxAgeSecs` — what a crash or a
 // power cut leaves behind. Returns how many were removed.
 int sweepStale(const QString& root, qint64 maxAgeSecs);
