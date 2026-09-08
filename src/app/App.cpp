@@ -37,6 +37,7 @@
 #include <QFile>
 #include <QGuiApplication>
 #include <QQmlContext>
+#include <qqml.h>
 #include <QQuickWindow>
 #include <QTimer>
 
@@ -290,7 +291,7 @@ bool App::init()
             });
     connect(m_framePump.get(), &FramePumpService::foregroundGameDetected,
             m_controller.get(), &AppController::updateForegroundGame);
-    connect(m_framePump.get(), &FramePumpService::recordingStateChanged,
+    connect(m_framePump.get(), &FramePumpService::bufferStateChanged,
             m_controller.get(), &AppController::updateReplayBufferState);
     // A delete that kept the row used to be completely silent: the capture just
     // stayed put with no explanation. Say it out loud. A failed QFile::remove is
@@ -534,6 +535,8 @@ bool App::init()
     });
 
     m_languageManager->setQmlRetranslateCallback([this] { m_engine.retranslate(); });
+    qmlRegisterUncreatableType<ReplayBufferState>("GameHQ", 1, 0, "ReplayBufferState",
+                                                QStringLiteral("Replay state is owned by the capture service"));
     m_engine.rootContext()->setContextProperty(QStringLiteral("app"), m_controller.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlayGallery"), m_overlayGallery.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlay"), m_overlay.get());

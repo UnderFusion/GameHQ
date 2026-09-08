@@ -6,6 +6,18 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.10] - 2026-09-08
+
+### Fixed
+
+- Replay status follows confirmed capture startup and finalized video. Saves
+  requested too early return an explicit retry message, and stale worker
+  callbacks cannot overwrite a newer recording session.
+- Manual replay sessions survive settings-driven re-arms and overlapping HDR
+  screenshots until their export succeeds or fails. A cold first-save arm
+  expires after 90 seconds without a follow-up; `replay.manual_idle_s` is
+  configurable between 10 and 600 seconds.
+
 ## [0.7.9] - 2026-09-08
 
 ### Fixed

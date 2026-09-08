@@ -64,6 +64,7 @@ struct FramePumpWorker::Pipeline
     IGraphicsCaptureItem*         item        = nullptr;
     IDirect3D11CaptureFramePool*  framePool   = nullptr;
     IGraphicsCaptureSession*      session     = nullptr;
+    QTimer*                       readinessTimer = nullptr;
     QTimer*                       timer       = nullptr;
     SegmentRecorder*              recorder    = nullptr;   // 0.5 Step 4 H.264 segment writer
     AudioCapture*                 audio       = nullptr;    // 0.5 Step 7 WASAPI loopback
@@ -90,6 +91,7 @@ struct FramePumpWorker::Pipeline
 
     ~Pipeline()
     {
+        if (readinessTimer) { readinessTimer->stop(); delete readinessTimer; }
         if (timer) { timer->stop(); delete timer; timer = nullptr; }
         // Finalize + release the recorder BEFORE the D3D device/context it borrows
         // (its staging texture was created from d3dDevice).
@@ -277,18 +279,18 @@ void sweepStaleReplayCache()
                 << "orphaned segment(s)";
 }
 
-// Log an HRESULT failure and return false, for the linear build-pipeline flow.
-bool failStep(FramePumpWorker* self, const char* step, HRESULT hr)
+} // namespace
+
+// Every start-stage failure carries the command generation back to the GUI.
+bool FramePumpWorker::failStep(const char* step, long hr)
 {
     const QString reason = QStringLiteral("%1 failed hr=0x%2")
                                .arg(QLatin1String(step))
                                .arg(quint32(hr), 8, 16, QLatin1Char('0'));
     qWarning() << "FramePump:" << reason;
-    QMetaObject::invokeMethod(self, "failed", Qt::DirectConnection,
-                              Q_ARG(QString, reason));
+    reportBufferState(ReplayBufferState::Failed, reason);
     return false;
 }
-} // namespace
 
 // 1-2. D3D11 device (BGRA support is mandatory for WGC) bridged to a WinRT
 //      IDirect3DDevice.
@@ -298,7 +300,7 @@ bool FramePumpWorker::createDevices(Pipeline* pipe)
                                    D3D11_CREATE_DEVICE_BGRA_SUPPORT, nullptr, 0,
                                    D3D11_SDK_VERSION, &pipe->d3dDevice, nullptr,
                                    &pipe->d3dCtx);
-    if (FAILED(hr)) return failStep(this, "D3D11CreateDevice", hr);
+    if (FAILED(hr)) return failStep("D3D11CreateDevice", hr);
 
     // The bridge export lives in d3d11.dll but the mingw import lib may not expose
     // the symbol, so resolve it at runtime (exactly as the proven spike does).
@@ -311,21 +313,21 @@ bool FramePumpWorker::createDevices(Pipeline* pipe)
                      : nullptr;
     }();
     if (!pfnBridge)
-        return failStep(this, "resolve CreateDirect3D11DeviceFromDXGIDevice", E_FAIL);
+        return failStep("resolve CreateDirect3D11DeviceFromDXGIDevice", E_FAIL);
 
     IDXGIDevice* dxgiDevice = nullptr;
     hr = pipe->d3dDevice->QueryInterface(__uuidof(IDXGIDevice), reinterpret_cast<void**>(&dxgiDevice));
-    if (FAILED(hr)) return failStep(this, "QI IDXGIDevice", hr);
+    if (FAILED(hr)) return failStep("QI IDXGIDevice", hr);
 
     IInspectable* inspDevice = nullptr;
     hr = pfnBridge(dxgiDevice, &inspDevice);
     dxgiDevice->Release();
     if (FAILED(hr) || !inspDevice)
-        return failStep(this, "CreateDirect3D11DeviceFromDXGIDevice", hr);
+        return failStep("CreateDirect3D11DeviceFromDXGIDevice", hr);
 
     hr = inspDevice->QueryInterface(IID_IDirect3DDevice, reinterpret_cast<void**>(&pipe->winrtDevice));
     inspDevice->Release();
-    if (FAILED(hr)) return failStep(this, "QI IDirect3DDevice", hr);
+    if (FAILED(hr)) return failStep("QI IDirect3DDevice", hr);
     return true;
 }
 
@@ -339,16 +341,16 @@ bool FramePumpWorker::createCaptureItem(Pipeline* pipe, void* hwndPtr, int* outW
                                         reinterpret_cast<void**>(&interop));
     if (itemClass) WindowsDeleteString(itemClass);
     if (FAILED(hr) || !interop)
-        return failStep(this, "RoGetActivationFactory(interop)", hr);
+        return failStep("RoGetActivationFactory(interop)", hr);
 
     hr = interop->CreateForWindow(static_cast<HWND>(hwndPtr), IID_IGraphicsCaptureItem,
                                   reinterpret_cast<void**>(&pipe->item));
     interop->Release();
-    if (FAILED(hr) || !pipe->item) return failStep(this, "CreateForWindow", hr);
+    if (FAILED(hr) || !pipe->item) return failStep("CreateForWindow", hr);
 
     WgcSizeInt32 size{ 0, 0 };
     hr = pipe->item->get_Size(&size);
-    if (FAILED(hr)) return failStep(this, "item->get_Size", hr);
+    if (FAILED(hr)) return failStep("item->get_Size", hr);
     qInfo() << "FramePump: capture item size" << size.Width << "x" << size.Height;
     *outW = size.Width;
     *outH = size.Height;
@@ -360,8 +362,8 @@ bool FramePumpWorker::createCaptureItem(Pipeline* pipe, void* hwndPtr, int* outW
 //     saved clip — Share-hold snapshots this ring and remuxes it into one file
 //     under <capturesRoot>/<Game>/Clips/ (Step 6/8, saveReplayOnWorker).
 //
-// Cannot fail the arm: a recorder that will not begin degrades to capture-only,
-// exactly as before, so this returns void rather than bool.
+// A failed recorder may still serve HDR screenshots through capture-only WGC,
+// but must report Failed for replay instead of claiming that it is recording.
 void FramePumpWorker::attachRecorder(Pipeline* pipe, unsigned long pid, int srcW, int srcH,
                                      int encodeWidth, int encodeHeight, int fps, int bitrateMbps,
                                      int segmentSeconds, int lengthSeconds, bool audioEnabled)
@@ -405,6 +407,8 @@ void FramePumpWorker::attachRecorder(Pipeline* pipe, unsigned long pid, int srcW
         qWarning() << "FramePump: segment recorder failed to start — capture-only";
         delete pipe->recorder;
         pipe->recorder = nullptr;
+        reportBufferState(ReplayBufferState::Failed,
+                          QStringLiteral("Replay recorder could not start"));
     }
     pipe->encClock.start();
     pipe->encStartQpc100ns = qpcNow100ns();   // A/V share this epoch
@@ -432,7 +436,7 @@ bool FramePumpWorker::createSession(Pipeline* pipe, void* hwndVoid, int srcW, in
                                         reinterpret_cast<void**>(&poolStatics2));
     if (poolClass) WindowsDeleteString(poolClass);
     if (FAILED(hr) || !poolStatics2)
-        return failStep(this, "RoGetActivationFactory(FramePoolStatics2)", hr);
+        return failStep("RoGetActivationFactory(FramePoolStatics2)", hr);
 
     DirectXPixelFormat poolFormat = DirectXPixelFormat_B8G8R8A8UIntNormalized;
     capture::HdrOutputInfo output;
@@ -493,14 +497,14 @@ bool FramePumpWorker::createSession(Pipeline* pipe, void* hwndVoid, int srcW, in
     }
     poolStatics2->Release();
     if (FAILED(hr) || !pipe->framePool)
-        return failStep(this, "CreateFreeThreaded", hr);
+        return failStep("CreateFreeThreaded", hr);
     pipe->hdrToneMapActive = (pipe->hdrToneMapper != nullptr);
 
     hr = pipe->framePool->CreateCaptureSession(pipe->item, &pipe->session);
-    if (FAILED(hr) || !pipe->session) return failStep(this, "CreateCaptureSession", hr);
+    if (FAILED(hr) || !pipe->session) return failStep("CreateCaptureSession", hr);
 
     hr = pipe->session->StartCapture();
-    if (FAILED(hr)) return failStep(this, "StartCapture", hr);
+    if (FAILED(hr)) return failStep("StartCapture", hr);
 
     // Best-effort: hide the yellow WGC capture border (Win11 IGraphicsCaptureSession3).
     // If the interface/capability is unavailable, QI fails and the border just stays.
@@ -520,26 +524,45 @@ bool FramePumpWorker::createSession(Pipeline* pipe, void* hwndVoid, int srcW, in
     return true;
 }
 
-void FramePumpWorker::startPump(qulonglong hwndVal, unsigned long pid, int encodeWidth,
+void FramePumpWorker::startPump(quint64 generation, qulonglong hwndVal, unsigned long pid, int encodeWidth,
                                 int encodeHeight, int fps, int bitrateMbps, int segmentSeconds,
                                 int lengthSeconds, const QString& gameName,
                                 const QString& executablePath, bool audioEnabled,
                                 bool hdrExperimentalEnabled)
 {
-    if (m_pipe)   // already running
+    if (generation <= m_pumpGeneration)
+        return; // obsolete or duplicate command
+    stopPump();
+    m_pumpGeneration = generation;
+    m_bufferState = ReplayBufferState::Starting;
+    if (m_updatePreparing) {
+        reportBufferState(ReplayBufferState::Failed,
+                          QStringLiteral("Replay capture is paused for an update"));
         return;
+    }
     if (!m_apartmentReady) {
+        reportBufferState(ReplayBufferState::Failed,
+                          QStringLiteral("Capture worker apartment is not initialized"));
         qWarning() << "FramePump: cannot start — worker apartment not initialised";
         return;
     }
 
     HWND hwnd = reinterpret_cast<HWND>(static_cast<quintptr>(hwndVal));
+    if (!hwnd || !IsWindow(hwnd)) {
+        failStep("capture window", E_HANDLE);
+        return;
+    }
     auto pipe = new Pipeline();
     pipe->gameName = gameName;
     pipe->executablePath = executablePath;
 
     int srcW = 0, srcH = 0;
     if (!createDevices(pipe) || !createCaptureItem(pipe, hwnd, &srcW, &srcH)) {
+        delete pipe;
+        return;
+    }
+    if (srcW < 2 || srcH < 2) {
+        failStep("capture size", E_INVALIDARG);
         delete pipe;
         return;
     }
@@ -561,6 +584,15 @@ void FramePumpWorker::startPump(qulonglong hwndVal, unsigned long pid, int encod
 
     m_pipe = pipe;
     m_pipe->timer->start();
+    // Readiness is lifecycle bookkeeping, not part of WGC frame arrival or
+    // the encoder hot path. Continue checking after Ready to detect re-open failure.
+    pipe->readinessTimer = new QTimer();
+    pipe->readinessTimer->setInterval(250);
+    connect(pipe->readinessTimer, &QTimer::timeout, this, &FramePumpWorker::checkReplayReadiness);
+    pipe->readinessTimer->start();
+    if (pipe->recorder && pipe->recorder->isActive())
+        reportBufferState(ReplayBufferState::Recording);
+    checkReplayReadiness();
     qInfo() << "FramePump: started (hwnd" << Qt::hex << hwndVal << Qt::dec << ")";
 
     // createSession() already logged the experimental-HDR decision when the
@@ -579,13 +611,45 @@ void FramePumpWorker::startPump(qulonglong hwndVal, unsigned long pid, int encod
     }
 }
 
+void FramePumpWorker::reportBufferState(ReplayBufferState::State state, const QString& reason)
+{
+    if (m_bufferState == state)
+        return;
+    m_bufferState = state;
+    emit bufferStateChanged(m_pumpGeneration, state, reason);
+}
+
+void FramePumpWorker::checkReplayReadiness()
+{
+    if (!m_pipe)
+        return;
+    if (!m_pipe->recorder || !m_pipe->recorder->isActive()) {
+        reportBufferState(ReplayBufferState::Failed, QStringLiteral("Replay recorder is not active"));
+    } else if (m_bufferState == ReplayBufferState::Recording
+               && m_pipe->recorder->hasClosedMedia()) {
+        reportBufferState(ReplayBufferState::Ready);
+    } else if (m_bufferState == ReplayBufferState::Ready
+               && !m_pipe->recorder->hasClosedMedia()) {
+        reportBufferState(ReplayBufferState::Recording);
+    }
+}
+
+void FramePumpWorker::stopPumpForGeneration(quint64 generation)
+{
+    if (generation <= m_pumpGeneration)
+        return;
+    stopPump();
+    m_pumpGeneration = generation;
+}
+
 void FramePumpWorker::stopPump()
 {
+    m_bufferState = ReplayBufferState::Stopped;
     if (!m_pipe)
         return;
     if (m_hdrScreenshotPending) {
         m_hdrScreenshotPending = false;
-        emit hdrScreenshotFailed(
+        emit hdrScreenshotFailed(m_pumpGeneration, m_hdrRequestId,
             QStringLiteral("HDR screenshot cancelled because the capture target changed"));
     }
     teardown();
@@ -621,7 +685,7 @@ void FramePumpWorker::poll()
                 m_pipe->timer->stop();
             m_pipe->recorder->discardCurrentSegment();
             qWarning() << "FramePump: audio endpoint was invalidated — requesting clean re-arm";
-            emit restartRequested(QStringLiteral("Windows audio endpoint changed"));
+            emit restartRequested(m_pumpGeneration, QStringLiteral("Windows audio endpoint changed"));
             return;
         }
     }
@@ -635,7 +699,7 @@ void FramePumpWorker::poll()
         IDirect3D11CaptureFrame* frame = nullptr;
         const HRESULT hr = m_pipe->framePool->TryGetNextFrame(&frame);
         if (FAILED(hr)) {
-            qWarning().nospace() << "FramePump: TryGetNextFrame hr=0x" << Qt::hex << quint32(hr);
+            failStep("TryGetNextFrame", hr);
             return;
         }
         if (!frame)          // pool drained — nothing more this tick
@@ -685,14 +749,14 @@ void FramePumpWorker::poll()
                             if (!image.isNull()) {
                                 qInfo() << "Screenshot: captured tone-mapped HDR frame"
                                         << image.width() << "x" << image.height();
-                                emit hdrScreenshotReady(image, m_pipe->gameName,
+                                emit hdrScreenshotReady(m_pumpGeneration, m_hdrRequestId, image, m_pipe->gameName,
                                                         m_pipe->executablePath);
                             } else {
-                                emit hdrScreenshotFailed(
+                                emit hdrScreenshotFailed(m_pumpGeneration, m_hdrRequestId,
                                     QStringLiteral("could not read back the tone-mapped HDR frame"));
                             }
                         } else {
-                            emit hdrScreenshotFailed(
+                            emit hdrScreenshotFailed(m_pumpGeneration, m_hdrRequestId,
                                 QStringLiteral("HDR tone mapper is not producing frames"));
                         }
                     }
@@ -719,23 +783,34 @@ void FramePumpWorker::poll()
     }
 }
 
-void FramePumpWorker::captureScreenshotOnWorker()
+void FramePumpWorker::captureScreenshotOnWorker(quint64 generation, quint64 requestId)
 {
+    if (generation != m_pumpGeneration) {
+        emit hdrScreenshotFailed(generation, requestId,
+            QStringLiteral("HDR screenshot cancelled because the capture target changed"));
+        return;
+    }
     if (!m_pipe || !m_pipe->hdrToneMapActive) {
-        emit hdrScreenshotFailed(
+        emit hdrScreenshotFailed(m_pumpGeneration, requestId,
             QStringLiteral("HDR replay frame pump is not active for the foreground game"));
         return;
     }
     if (m_hdrScreenshotPending) {
-        emit hdrScreenshotFailed(QStringLiteral("an HDR screenshot is already pending"));
+        emit hdrScreenshotFailed(m_pumpGeneration, requestId, QStringLiteral("an HDR screenshot is already pending"));
         return;
     }
+    m_hdrRequestId = requestId;
     m_hdrScreenshotPending = true;
 }
 
 // Preflight: refuse when the buffer is not running or an export is in flight.
 bool FramePumpWorker::saveGuard(const QString& saveId)
 {
+    checkReplayReadiness();
+    if (m_bufferState != ReplayBufferState::Ready) {
+        emit clipFailed(QStringLiteral("Replay"), ReplayBufferState::saveRejection(m_bufferState));
+        return false;
+    }
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: request begin pipe=%2 recorder=%3 active=%4")
                              .arg(saveId)
                              .arg(m_pipe ? QStringLiteral("yes") : QStringLiteral("no"))
@@ -770,6 +845,7 @@ SegmentLease FramePumpWorker::freezeRing(const QString& saveId)
     QElapsedTimer snapshotTimer;
     snapshotTimer.start();
     SegmentLease lease = m_pipe->recorder->snapshotForSave();
+    checkReplayReadiness();
     const QStringList& segs = lease.paths();
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: snapshot segments=%2 elapsedMs=%3")
                              .arg(saveId).arg(segs.size()).arg(snapshotTimer.elapsed());
@@ -785,6 +861,10 @@ SegmentLease FramePumpWorker::freezeRing(const QString& saveId)
         const QString game = m_pipe->gameName.isEmpty() ? QStringLiteral("Replay")
                                                         : m_pipe->gameName;
         emit clipFailed(game, QStringLiteral("Replay buffer is empty"));
+        return {};
+    }
+    if (!m_pipe->recorder->hasClosedMedia()) {
+        emit clipFailed(m_pipe->gameName, ReplayBufferState::saveRejection(m_bufferState));
         return {};
     }
     return lease;
@@ -825,7 +905,7 @@ void FramePumpWorker::runExport(SegmentLease lease,
                                 const CapturePublisher::Reservation& reservation,
                                 const QString& thumbPath, const QString& instantThumb,
                                 const QString& game, const QString& exePath,
-                                const QString& saveId)
+                                const QString& saveId, quint64 requestId)
 {
     const QString outPath = reservation.finalPath;
     const QString partialPath = reservation.pendingPath;
@@ -889,7 +969,7 @@ void FramePumpWorker::runExport(SegmentLease lease,
     // recorder access needs no locking; the connection dissolves safely if
     // the worker is destroyed first.
     connect(m_exportTask.get(), &QThread::finished, this,
-            [this, result, outPath, game, exePath, saveId, generation] {
+            [this, result, outPath, game, exePath, saveId, generation, requestId] {
                 if (generation != m_exportGeneration)
                     return;
                 m_exportTask.reset(); // finished; join and destroy on its owner thread
@@ -904,21 +984,23 @@ void FramePumpWorker::runExport(SegmentLease lease,
                     qWarning() << "FramePump: save-replay — remux failed for" << outPath;
                     emit clipFailed(game, QStringLiteral("Could not export a complete replay clip"));
                 }
+                emit saveRequestFinished(requestId);
                 if (m_updatePreparing) {
                     stopPump();
-                    emit updateReady();
+                    emit updateReady(m_updateGeneration);
                 }
             }, Qt::QueuedConnection);
     m_exportTask->start();
 }
 
-void FramePumpWorker::prepareForUpdate()
+void FramePumpWorker::prepareForUpdate(quint64 generation)
 {
+    m_updateGeneration = generation;
     m_updatePreparing = true;
     if (m_exportBusy)
         return;
     stopPump();
-    emit updateReady();
+    emit updateReady(m_updateGeneration);
 }
 
 void FramePumpWorker::cancelUpdatePreparation()
@@ -926,12 +1008,19 @@ void FramePumpWorker::cancelUpdatePreparation()
     m_updatePreparing = false;
 }
 
-void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot)
+void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot, quint64 generation, quint64 requestId)
 {
-    static quint64 saveCounter = 0;
-    const QString saveId = QStringLiteral("%1-%2")
-        .arg(QDateTime::currentDateTime().toString(QStringLiteral("HHmmsszzz")))
-        .arg(++saveCounter);
+    bool handedToExport = false;
+    const auto finishRejectedRequest = qScopeGuard([&] {
+        if (!handedToExport)
+            emit saveRequestFinished(requestId);
+    });
+    if (generation != m_pumpGeneration) {
+        emit clipFailed(QStringLiteral("Replay"),
+                        QStringLiteral("Replay buffer changed before the save could start"));
+        return;
+    }
+    const QString saveId = QString::number(requestId);
     QElapsedTimer saveTimer;
     saveTimer.start();
 
@@ -971,7 +1060,8 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot)
     emit clipSaving(game, instantThumb, m_pipe->executablePath);
 
     runExport(std::move(lease), reservation, thumbPath, instantThumb,
-              game, m_pipe->executablePath, saveId);
+              game, m_pipe->executablePath, saveId, requestId);
+    handedToExport = true;
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: export started in background totalSoFarMs=%2")
                              .arg(saveId).arg(saveTimer.elapsed());
 }
@@ -999,9 +1089,26 @@ FramePumpService::FramePumpService(ConfigManager* config, CaptureLocations* loca
     // DirectConnection: runs on the worker thread as run() unwinds, after wait() begins.
     connect(&m_thread, &QThread::finished, m_worker, &FramePumpWorker::onThreadFinished,
             Qt::DirectConnection);
-    connect(m_worker, &FramePumpWorker::failed, this, &FramePumpService::failed);
+    connect(&m_buffer, &ReplayBufferState::stateChanged, this, &FramePumpService::bufferStateChanged);
+    connect(&m_buffer, &ReplayBufferState::stateChanged, this, &FramePumpService::bufferStatusChanged);
+    connect(&m_buffer, &ReplayBufferState::recordingStateChanged,
+            this, &FramePumpService::recordingStateChanged);
+    connect(&m_buffer, &ReplayBufferState::failed, this, &FramePumpService::failed);
+    connect(&m_buffer, &ReplayBufferState::stateChanged, this,
+            [this](ReplayBufferState::State state, const QString&) {
+                if (state == ReplayBufferState::Stopped || state == ReplayBufferState::Failed)
+                    m_targetHwnd = 0;
+                if (state == ReplayBufferState::Stopped)
+                    m_targetGame = {};
+            });
+    connect(m_worker, &FramePumpWorker::bufferStateChanged, this,
+            [this](quint64 generation, ReplayBufferState::State state, const QString& reason) {
+                m_buffer.confirm(generation, state, reason);
+            });
     connect(m_worker, &FramePumpWorker::restartRequested, this,
-            [this](const QString& reason) {
+            [this](quint64 generation, const QString& reason) {
+                if (generation != m_buffer.generation() || m_preparingForUpdate)
+                    return;
                 qInfo().noquote() << QStringLiteral("FramePump: %1 — rebuilding capture pipeline")
                                          .arg(reason);
                 restartBuffer();
@@ -1009,21 +1116,23 @@ FramePumpService::FramePumpService(ConfigManager* config, CaptureLocations* loca
     connect(m_worker, &FramePumpWorker::clipSaving, this, &FramePumpService::clipSaving);
     connect(m_worker, &FramePumpWorker::clipSaved, this, &FramePumpService::clipSaved);
     connect(m_worker, &FramePumpWorker::clipFailed, this, &FramePumpService::clipFailed);
+    connect(m_worker, &FramePumpWorker::saveRequestFinished, this, [this](quint64 requestId) {
+        if (m_owners.finishSave(requestId))
+            ownersChanged("save finished", requestId);
+    });
     connect(m_worker, &FramePumpWorker::hdrScreenshotReady, this,
-            [this](const QImage& image, const QString& game, const QString& exePath) {
+            [this](quint64, quint64 requestId, const QImage& image, const QString& game, const QString& exePath) {
+                if (!m_owners.finishHdr(requestId))
+                    return;
+                ownersChanged("HDR finished", requestId);
                 emit hdrScreenshotReady(image, game, exePath);
-                if (m_stopAfterHdrScreenshot) {
-                    m_stopAfterHdrScreenshot = false;
-                    stopBuffer();
-                }
             });
     connect(m_worker, &FramePumpWorker::hdrScreenshotFailed, this,
-            [this](const QString& reason) {
+            [this](quint64, quint64 requestId, const QString& reason) {
+                if (!m_owners.finishHdr(requestId))
+                    return;
+                ownersChanged("HDR failed", requestId);
                 emit hdrScreenshotFailed(reason);
-                if (m_stopAfterHdrScreenshot) {
-                    m_stopAfterHdrScreenshot = false;
-                    stopBuffer();
-                }
             });
     connect(m_worker, &FramePumpWorker::exportBusyChanged, this, [this](bool busy) {
         if (m_exportBusy == busy)
@@ -1031,22 +1140,17 @@ FramePumpService::FramePumpService(ConfigManager* config, CaptureLocations* loca
         m_exportBusy = busy;
         emit exportBusyChanged(busy);
     });
-    connect(m_worker, &FramePumpWorker::updateReady, this, [this] {
-        m_running = false;
-        m_targetHwnd = 0;
-        emit recordingStateChanged(false, QString());
+    connect(m_worker, &FramePumpWorker::updateReady, this, [this](quint64 generation) {
+        if (!m_preparingForUpdate || generation != m_buffer.generation())
+            return;
+        m_buffer.requestStop();
         emit updateReady();
-    });
-    // If a startPump fails, clear the armed flag so auto-arm can retry next tick.
-    connect(m_worker, &FramePumpWorker::failed, this, [this] {
-        m_running = false;
-        m_targetHwnd = 0;
-        emit recordingStateChanged(false, QString());
     });
 
     // Always-on auto-arm (replay.auto, default true): a light poll of the foreground
     // window arms the buffer whenever a game is focused — no manual keypress needed.
     m_autoEnabled = m_config ? m_config->value(ConfigKeys::ReplayAuto, true).toBool() : true;
+    m_ownerClock.start();
     m_autoTimer = new QTimer(this);
     m_autoTimer->setInterval(1500);
     connect(m_autoTimer, &QTimer::timeout, this, &FramePumpService::autoTick);
@@ -1055,60 +1159,86 @@ FramePumpService::FramePumpService(ConfigManager* config, CaptureLocations* loca
     m_thread.start();
 }
 
+void FramePumpService::ownersChanged(const char* reason, quint64 requestId)
+{
+    qInfo().noquote() << QStringLiteral("ReplayOwner[%1]: %2 auto=%3 manual=%4 hdr=%5 savePending=%6")
+        .arg(requestId).arg(QLatin1String(reason))
+        .arg(m_owners.owns(ReplayBufferOwners::Auto))
+        .arg(m_owners.owns(ReplayBufferOwners::ManualSave))
+        .arg(m_owners.owns(ReplayBufferOwners::HdrScreenshot)).arg(m_owners.savePending());
+    if (!m_preparingForUpdate && !m_owners.needsSession())
+        stopBuffer();
+}
+
 void FramePumpService::saveReplay()
 {
     if (m_preparingForUpdate) {
         emit clipFailed(QStringLiteral("Replay"), QStringLiteral("Replay capture is paused for an update"));
         return;
     }
-    // A cold buffer holds no past frames, so passing the request through would
-    // only bounce back as "buffer is not running" — the Share-hold then looks
-    // ignored no matter how long it was held. Arm here instead: an explicit
-    // save request outranks replay.auto, so this arms even with always-on off.
-    // The tick is restarted because disabling always-on stops it, and it is
-    // what disarms the buffer once the game leaves the foreground.
-    if (!m_running) {
-        if (m_autoTimer && !m_autoTimer->isActive())
-            m_autoTimer->start();
-        startBuffer();
-        qInfo() << "FramePump: save-replay on a cold buffer —"
-                << (m_running ? "armed now, next hold has footage to save"
-                              : "foreground window is not a game, nothing to arm");
-        emit clipFailed(QStringLiteral("Replay"),
-                        m_running
-                            ? QStringLiteral("Replay buffer was off — recording now, hold again in a few seconds")
-                            : QStringLiteral("Replay buffer is not running"));
+    const int idleSeconds = m_config
+        ? m_config->value(ConfigKeys::ReplayManualIdleSeconds, 90).toInt() : 90;
+    const quint64 requestId = m_owners.acquireManual(m_ownerClock.elapsed(), idleSeconds);
+    if (!requestId) {
+        emit clipFailed(QStringLiteral("Replay"), QStringLiteral("A replay save is already in progress"));
         return;
     }
-
-    const QString clipsBaseRoot = m_locations ? m_locations->clipsBaseRoot()
-                                              : Paths::capturesRoot();
-    QMetaObject::invokeMethod(m_worker, "saveReplayOnWorker", Qt::QueuedConnection,
-                              Q_ARG(QString, clipsBaseRoot));
+    ownersChanged("manual save requested", requestId);
+    if (!m_buffer.startRequested())
+        startBuffer(m_targetGame.valid);
+    if (!m_buffer.canSave()) {
+        // A cold arm keeps its owner until the next save or bounded idle expiry.
+        // No pending save is silently deferred until readiness.
+        emit clipFailed(m_buffer.gameName().isEmpty() ? QStringLiteral("Replay") : m_buffer.gameName(),
+                        ReplayBufferState::saveRejection(m_buffer.state()));
+        return;
+    }
+    m_owners.beginSave(requestId);
+    ownersChanged("save dispatched", requestId);
+    const QString clipsBaseRoot = m_locations ? m_locations->clipsBaseRoot() : Paths::capturesRoot();
+    if (!QMetaObject::invokeMethod(m_worker, "saveReplayOnWorker", Qt::QueuedConnection,
+                                  Q_ARG(QString, clipsBaseRoot), Q_ARG(quint64, m_buffer.generation()),
+                                  Q_ARG(quint64, requestId))) {
+        m_owners.finishSave(requestId);
+        ownersChanged("save dispatch failed", requestId);
+        emit clipFailed(QStringLiteral("Replay"), QStringLiteral("Could not dispatch replay save"));
+    }
 }
 
 void FramePumpService::captureHdrScreenshot(qulonglong hwnd)
 {
     if (m_preparingForUpdate) {
-        emit hdrScreenshotFailed(
-            QStringLiteral("screenshot capture is paused for an update"));
+        emit hdrScreenshotFailed(QStringLiteral("screenshot capture is paused for an update"));
         return;
     }
-
-    if (!m_running || m_targetHwnd != hwnd) {
-        if (m_running)
-            stopBuffer();
-        startBuffer();
-    }
-    if (!m_running || m_targetHwnd != hwnd) {
-        emit hdrScreenshotFailed(
-            QStringLiteral("could not arm HDR capture on the foreground game"));
+    if (m_owners.owns(ReplayBufferOwners::ManualSave) && m_targetGame.valid
+        && qulonglong(reinterpret_cast<quintptr>(m_targetGame.hwnd)) != hwnd) {
+        emit hdrScreenshotFailed(QStringLiteral("HDR screenshot target differs from the active manual replay session"));
         return;
     }
-
-    m_stopAfterHdrScreenshot = !m_autoEnabled;
-    QMetaObject::invokeMethod(m_worker, "captureScreenshotOnWorker",
-                              Qt::QueuedConnection);
+    const quint64 requestId = m_owners.acquireHdr();
+    if (!requestId) {
+        emit hdrScreenshotFailed(QStringLiteral("an HDR screenshot is already pending"));
+        return;
+    }
+    ownersChanged("HDR requested", requestId);
+    if (!m_buffer.startRequested() || m_targetHwnd != hwnd) {
+        if (m_targetHwnd != hwnd && !m_owners.owns(ReplayBufferOwners::ManualSave))
+            m_targetGame = GameDetector::current();
+        startBuffer(m_targetGame.valid);
+    }
+    if (!m_buffer.startRequested() || m_targetHwnd != hwnd) {
+        m_owners.finishHdr(requestId);
+        ownersChanged("HDR arm failed", requestId);
+        emit hdrScreenshotFailed(QStringLiteral("could not arm HDR capture on the foreground game"));
+        return;
+    }
+    if (!QMetaObject::invokeMethod(m_worker, "captureScreenshotOnWorker", Qt::QueuedConnection,
+                                  Q_ARG(quint64, m_buffer.generation()), Q_ARG(quint64, requestId))) {
+        m_owners.finishHdr(requestId);
+        ownersChanged("HDR dispatch failed", requestId);
+        emit hdrScreenshotFailed(QStringLiteral("could not dispatch HDR capture"));
+    }
 }
 
 void FramePumpService::prepareForUpdate()
@@ -1116,12 +1246,16 @@ void FramePumpService::prepareForUpdate()
     if (m_preparingForUpdate)
         return;
     m_preparingForUpdate = true;
+    m_owners.setAuto(false);
+    m_owners.releaseColdManual(); // explicit shutdown cancels an idle arm, never an export
+    ownersChanged("update preparation");
     emit preparingForUpdateChanged(true);
     if (m_autoTimer)
         m_autoTimer->stop();
     if (m_exportBusy)
         emit updateWaitingForExport();
-    QMetaObject::invokeMethod(m_worker, "prepareForUpdate", Qt::QueuedConnection);
+    QMetaObject::invokeMethod(m_worker, "prepareForUpdate", Qt::QueuedConnection,
+                              Q_ARG(quint64, m_buffer.generation()));
 }
 
 void FramePumpService::cancelUpdatePreparation()
@@ -1131,36 +1265,24 @@ void FramePumpService::cancelUpdatePreparation()
     m_preparingForUpdate = false;
     emit preparingForUpdateChanged(false);
     QMetaObject::invokeMethod(m_worker, "cancelUpdatePreparation", Qt::QueuedConnection);
-    if (m_autoEnabled && m_autoTimer && !m_autoTimer->isActive())
+    if (m_autoTimer && !m_autoTimer->isActive())
         m_autoTimer->start();
 }
 
 void FramePumpService::restartBuffer()
 {
-    const bool configuredAuto = m_config
-        ? m_config->value(ConfigKeys::ReplayAuto, true).toBool() : true;
-    const bool autoChanged = configuredAuto != m_autoEnabled;
-    m_autoEnabled = configuredAuto;
-
-    if (!m_autoEnabled) {
-        if (m_autoTimer)
-            m_autoTimer->stop();
-        stopBuffer();
-        qInfo() << "FramePump: always-on recording disabled from Settings";
+    m_autoEnabled = m_config ? m_config->value(ConfigKeys::ReplayAuto, true).toBool() : true;
+    if (m_preparingForUpdate)
         return;
-    }
-
-    if (m_autoTimer && !m_autoTimer->isActive())
-        m_autoTimer->start();
-    if (!m_running) {
-        if (autoChanged)
-            qInfo() << "FramePump: always-on recording enabled from Settings";
-        startBuffer();
-        return;
-    }
-    qInfo() << "FramePump: capture conditions changed — re-arming the buffer";
-    stopBuffer();
-    startBuffer();   // no-op unless a game is still foreground; autoTick covers the rest
+    if (!m_autoEnabled)
+        m_owners.setAuto(false);
+    else if (GameDetector::shouldCapture(GameDetector::current(), m_config
+                 ? m_config->value(ConfigKeys::CaptureMode, QStringLiteral("only_in_games")).toString()
+                 : QStringLiteral("only_in_games")))
+        m_owners.setAuto(true);
+    ownersChanged("settings or capture restart", m_owners.manualToken());
+    if (m_owners.needsSession())
+        startBuffer(m_targetGame.valid); // worker replaces the pipe; owners and export leases survive
 }
 
 FramePumpService::~FramePumpService()
@@ -1177,6 +1299,9 @@ void FramePumpService::autoTick()
 {
     if (m_preparingForUpdate)
         return;
+    const quint64 manualToken = m_owners.manualToken();
+    if (m_owners.expireIdle(m_ownerClock.elapsed()))
+        ownersChanged("manual idle expired", manualToken);
     const QString mode = m_config
         ? m_config->value(ConfigKeys::CaptureMode, QStringLiteral("only_in_games")).toString()
         : QStringLiteral("only_in_games");
@@ -1184,40 +1309,46 @@ void FramePumpService::autoTick()
     const bool isGame = GameDetector::shouldCapture(g, mode);
     if (g.valid && !g.isExcludedProcess)
         emit foregroundGameDetected(g.gameName, g.executablePath);
-
-    if (isGame) {
-        if (!m_autoEnabled)
-            return;
+    if (m_autoEnabled && isGame) {
         m_noGameTicks = 0;
-        const qulonglong foregroundHwnd =
-            qulonglong(reinterpret_cast<quintptr>(g.hwnd));
-        if (!m_running) {
-            startBuffer();
-        } else if (m_targetHwnd != foregroundHwnd) {
-            qInfo() << "FramePump: foreground capture target changed — re-arming";
-            stopBuffer();
-            startBuffer();
+        if (!m_owners.owns(ReplayBufferOwners::Auto)) {
+            m_owners.setAuto(true);
+            ownersChanged("auto acquired");
+        }
+        // An explicit session owns its target until its operation/idle deadline ends.
+        if (m_owners.hasExplicitOwner())
+            return;
+        const auto hwnd = qulonglong(reinterpret_cast<quintptr>(g.hwnd));
+        if (!m_buffer.startRequested() || m_targetHwnd != hwnd) {
+            m_targetGame = g;
+            startBuffer(true);
         }
     } else {
         if (!g.valid || g.isExcludedProcess)
             emit foregroundGameDetected(QString(), QString());
-        if (m_running && ++m_noGameTicks >= 2)   // ~3 s grace so a brief focus change doesn't cut it
-            stopBuffer();
+        if (m_owners.owns(ReplayBufferOwners::Auto) && ++m_noGameTicks >= 2) {
+            m_owners.setAuto(false);
+            ownersChanged("auto released after foreground grace");
+        }
     }
 }
 
-void FramePumpService::startBuffer()
+void FramePumpService::startBuffer(bool rearm)
 {
-    if (m_running)
+    if ((!rearm && m_buffer.startRequested()) || m_preparingForUpdate || !m_owners.needsSession())
         return;
     const QString mode = m_config
         ? m_config->value(ConfigKeys::CaptureMode, QStringLiteral("only_in_games")).toString()
         : QStringLiteral("only_in_games");
-    const ForegroundGame g = GameDetector::current();
-    if (!GameDetector::shouldCapture(g, mode))
+    const ForegroundGame g = rearm && m_targetGame.valid ? m_targetGame : GameDetector::current();
+    const QString gameName = g.gameName.isEmpty() ? QStringLiteral("Unknown Game") : g.gameName;
+    const quint64 generation = m_buffer.requestStart(gameName);
+    if (!GameDetector::shouldCapture(g, mode)) {
+        m_buffer.confirm(generation, ReplayBufferState::Failed,
+                         QStringLiteral("No eligible foreground game for replay capture"));
         return;
-
-    m_running = true;
+    }
+    m_targetGame = g;
     m_targetHwnd = qulonglong(reinterpret_cast<quintptr>(g.hwnd));
     m_noGameTicks = 0;
     const int fps  = m_config ? m_config->value(ConfigKeys::ReplayFps, 30).toInt() : 30;
@@ -1237,12 +1368,11 @@ void FramePumpService::startBuffer()
         ? m_config->value(ConfigKeys::InternalCaptureExperimentalHdr,
                           ConfigKeys::InternalCaptureExperimentalHdrDefault).toBool()
         : ConfigKeys::InternalCaptureExperimentalHdrDefault;
-    const QString gameName = g.gameName.isEmpty() ? QStringLiteral("Unknown Game") : g.gameName;
     const QString executablePath = g.executablePath;
-    qInfo() << "FramePump: armed on" << gameName << "(audio:" << (audioOn ? "on" : "off")
+    qInfo() << "FramePump: start requested on" << gameName << "(audio:" << (audioOn ? "on" : "off")
             << ")";
-    emit recordingStateChanged(true, gameName);
-    QMetaObject::invokeMethod(m_worker, "startPump", Qt::QueuedConnection,
+    const bool queued = QMetaObject::invokeMethod(m_worker, "startPump", Qt::QueuedConnection,
+                              Q_ARG(quint64, generation),
                               Q_ARG(qulonglong, qulonglong(reinterpret_cast<quintptr>(g.hwnd))),
                               Q_ARG(unsigned long, g.pid),
                               Q_ARG(int, res.width()), Q_ARG(int, res.height()),
@@ -1251,15 +1381,19 @@ void FramePumpService::startBuffer()
                               Q_ARG(QString, executablePath),
                               Q_ARG(bool, audioOn),
                               Q_ARG(bool, hdrExperimentalEnabled));
+    if (!queued)
+        m_buffer.confirm(generation, ReplayBufferState::Failed,
+                         QStringLiteral("Could not dispatch replay startup"));
 }
 
 void FramePumpService::stopBuffer()
 {
-    if (!m_running)
+    if (m_owners.needsSession() || m_buffer.state() == ReplayBufferState::Stopped)
         return;
-    m_running = false;
+    m_targetGame = {};
+    const quint64 generation = m_buffer.requestStop();
     m_targetHwnd = 0;
     m_noGameTicks = 0;
-    QMetaObject::invokeMethod(m_worker, "stopPump", Qt::QueuedConnection);
-    emit recordingStateChanged(false, QString());
+    QMetaObject::invokeMethod(m_worker, "stopPumpForGeneration", Qt::QueuedConnection,
+                              Q_ARG(quint64, generation));
 }

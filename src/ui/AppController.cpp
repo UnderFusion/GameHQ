@@ -578,11 +578,11 @@ void AppController::updateForegroundGame(const QString& gameName, const QString&
         emit gamesChanged();
 }
 
-void AppController::updateReplayBufferState(bool active, const QString& gameName)
+void AppController::updateReplayBufferState(ReplayBufferState::State state, const QString& gameName)
 {
-    if (m_replayBufferActive == active && m_replayBufferGame == gameName)
+    if (m_replayBufferState == state && m_replayBufferGame == gameName)
         return;
-    m_replayBufferActive = active;
+    m_replayBufferState = state;
     m_replayBufferGame = gameName;
     emit replayBufferStateChanged();
 }

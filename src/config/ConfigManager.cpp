@@ -36,6 +36,7 @@ QJsonObject ConfigManager::defaults()
         // Always-on recording: auto-arm the replay buffer whenever a game is
         // foreground (per capture.mode). Settings → Replay is the master switch.
         { ConfigKeys::ReplayAuto,              true },
+        { ConfigKeys::ReplayManualIdleSeconds, 90 },
         // Gesture timing. The legacy input.share_hold_ms default stays listed so
         // an existing file that still carries it canonicalizes away instead of
         // being preserved as an unknown key; InputEngine migrates a real

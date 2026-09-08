@@ -557,6 +557,11 @@ gamehq_add_test(tst_segmentrecorder
 target_link_libraries(tst_segmentrecorder PRIVATE
     d3d11 dxguid ole32 mfplat mfreadwrite mfuuid)
 
+gamehq_add_test(tst_framepumpservice
+    tst_framepumpservice.cpp
+    "${CMAKE_SOURCE_DIR}/src/capture/ReplayBufferState.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/ReplayBufferState.h")
+
 add_executable(launcher_argecho_fixture launcher_argecho_fixture.cpp)
 target_link_options(launcher_argecho_fixture PRIVATE -static -municode)
 target_link_libraries(launcher_argecho_fixture PRIVATE shell32)

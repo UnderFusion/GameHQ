@@ -103,6 +103,7 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
     m_audioChannels = audioChannels;
     m_segments.clear();
     m_curPath.clear();
+    m_lastClosedMediaPath.clear();
     m_discardCurrentSegment = false;
     m_cacheDir = cacheDir;
     m_segIndex = 0;
@@ -564,8 +565,11 @@ void SegmentRecorder::closeSegment()
         return;
     }
 
-    if (!m_curPath.isEmpty())
+    if (!m_curPath.isEmpty()) {
         m_segments.append(m_curPath);
+        if (m_segVideoFrames > 0)
+            m_lastClosedMediaPath = m_curPath;
+    }
     // Keep the normal window plus leased snapshots; unrelated old files go.
     trimRing();
 
@@ -842,6 +846,13 @@ void SegmentRecorder::writeAudio(const float* samples, unsigned numFrames, qint6
 void SegmentRecorder::trimRing()
 {
     SegmentLease::trim(m_segments, m_keepSegments);
+}
+
+bool SegmentRecorder::hasClosedMedia() const
+{
+    // A leased file older than the normal replay window is not in a new save.
+    const qsizetype index = m_segments.lastIndexOf(m_lastClosedMediaPath);
+    return index >= qMax(qsizetype(0), m_segments.size() - m_keepSegments);
 }
 
 void SegmentRecorder::end()

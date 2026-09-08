@@ -9,6 +9,8 @@ qt_add_executable(GameHQ
       capture/HdrCapabilities.cpp capture/HdrCapabilities.h capture/hdr/HdrStateResolver.h
     capture/ScreenshotService.cpp capture/ScreenshotService.h
     capture/FramePumpService.cpp capture/FramePumpService.h capture/wgc_shims.h
+    capture/ReplayBufferState.cpp capture/ReplayBufferState.h
+    capture/ReplayBufferOwners.h
     capture/hdr/HdrToneMapMath.cpp capture/hdr/HdrToneMapMath.h
     capture/hdr/GpuToneMapper.cpp capture/hdr/GpuToneMapper.h
     capture/AudioCapture.cpp capture/AudioCapture.h capture/wasapi_shims.h

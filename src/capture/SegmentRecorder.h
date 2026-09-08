@@ -91,6 +91,9 @@ public:
     void discardCurrentSegment() { m_discardCurrentSegment = true; }
 
     bool isActive() const { return m_active; }
+    // Restored files are not trusted as finalized media until this recording
+    // has successfully closed a segment containing video samples.
+    bool hasClosedMedia() const;
     unsigned segmentCount() const { return m_segIndex + (m_writer ? 1 : 0); }
     bool hasAudio() const { return m_audioStream > 0; }
 
@@ -145,6 +148,7 @@ private:
     QString     m_curPath;                   // current in-flight segment file
     int         m_keepSegments = 12;         // ceil(lengthSeconds / segmentSeconds)
     bool        m_discardCurrentSegment = false;
+    QString     m_lastClosedMediaPath;
 
     // current segment
     IMFSinkWriter* m_writer = nullptr;

@@ -5,6 +5,7 @@
 #include <memory>
 #include "app/ReleaseNotes.h"
 #include "capture/HdrCapabilities.h"
+#include "capture/ReplayBufferState.h"
 #include "ui/GalleryModel.h"
 
 class CaptureDatabase;
@@ -50,6 +51,7 @@ class AppController : public QObject
     Q_PROPERTY(QString dataRoot READ dataRoot CONSTANT)
     Q_PROPERTY(QString logsRoot READ logsRoot CONSTANT)
     Q_PROPERTY(bool replayBufferActive READ replayBufferActive NOTIFY replayBufferStateChanged)
+    Q_PROPERTY(ReplayBufferState::State replayBufferState READ replayBufferState NOTIFY replayBufferStateChanged)
     Q_PROPERTY(QString replayBufferGame READ replayBufferGame NOTIFY replayBufferStateChanged)
     Q_PROPERTY(bool hdrDisplayActive READ hdrDisplayActive NOTIFY hdrStatusChanged)
     Q_PROPERTY(QString hdrStatusText READ hdrStatusText NOTIFY hdrStatusChanged)
@@ -87,7 +89,8 @@ public:
     bool portableMode() const;
     QString dataRoot() const;
     QString logsRoot() const;
-    bool replayBufferActive() const { return m_replayBufferActive; }
+    bool replayBufferActive() const { return ReplayBufferState::isRecording(m_replayBufferState); }
+    ReplayBufferState::State replayBufferState() const { return m_replayBufferState; }
     QString replayBufferGame() const { return m_replayBufferGame; }
     bool hdrDisplayActive() const;
     QString hdrStatusText() const;
@@ -154,8 +157,8 @@ public:
                     const QString& thumbnailPath, const QString& executablePath = QString());
     void rememberGameExecutable(const QString& gameName, const QString& executablePath);
     void updateForegroundGame(const QString& gameName, const QString& executablePath);
-    // FramePumpService::recordingStateChanged — drives the Replay Settings buffer-state row.
-    void updateReplayBufferState(bool active, const QString& gameName);
+    // Confirmed replay state; the compatibility bool is derived from this enum.
+    void updateReplayBufferState(ReplayBufferState::State state, const QString& gameName);
     void retranslate();
 
     // config.json access (flat dotted keys, see ConfigManager); setConfig saves.
@@ -208,7 +211,7 @@ private:
     ReleaseNotes m_releaseNotes;
     QString m_category = QStringLiteral("all");
     int m_gameId = -1;
-    bool m_replayBufferActive = false;
+    ReplayBufferState::State m_replayBufferState = ReplayBufferState::Stopped;
     QString m_replayBufferGame;
     capture::HdrReport m_hdr;
     bool m_hdrProbed = false;

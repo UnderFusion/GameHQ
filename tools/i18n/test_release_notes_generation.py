@@ -490,7 +490,8 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
     def test_duplicate_ids_and_partial_structures_are_rejected(self) -> None:
         newest = self.releases[0][0]
         english = copy.deepcopy(self.releases[0][1])
-        english["sections"][0]["id"] = english["sections"][1]["id"]
+        # A valid patch release may contain only one section or one item.
+        english["sections"].append(copy.deepcopy(english["sections"][0]))
         self.assert_contract_error(
             lambda: GEN.validate_english_document(
                 english, newest["version"], newest["date"], "duplicate-section"
@@ -499,7 +500,8 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         )
 
         english = copy.deepcopy(self.releases[0][1])
-        english["sections"][0]["items"][1]["id"] = english["sections"][0]["items"][0]["id"]
+        english["sections"][0]["items"].append(
+            copy.deepcopy(english["sections"][0]["items"][0]))
         self.assert_contract_error(
             lambda: GEN.validate_english_document(
                 english, newest["version"], newest["date"], "duplicate-item"

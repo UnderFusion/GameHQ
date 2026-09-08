@@ -36,6 +36,22 @@ class TestSegmentRecorder : public QObject
     }
 
 private slots:
+    void readinessRequiresConfirmedMediaInTheNormalWindow()
+    {
+        SegmentRecorder recorder;
+        recorder.m_keepSegments = 2;
+        recorder.m_segments = {"old-leased", "recent", "newest"};
+        QVERIFY(!recorder.hasClosedMedia()); // restored filenames alone prove nothing
+        recorder.m_lastClosedMediaPath = "old-leased";
+        QVERIFY(!recorder.hasClosedMedia()); // retained lease is outside a new save
+        recorder.m_lastClosedMediaPath = "recent";
+        QVERIFY(recorder.hasClosedMedia());
+        recorder.m_segments << "next";
+        QVERIFY(!recorder.hasClosedMedia()); // old usable video rolled out of the window
+        recorder.m_lastClosedMediaPath = "next";
+        QVERIFY(recorder.hasClosedMedia());
+    }
+
     void replacementRecorderRetainsLeasedStalePaths()
     {
         QTemporaryDir dir(QDir::currentPath() + "/segment-lease-XXXXXX");
