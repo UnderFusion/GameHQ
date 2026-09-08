@@ -1,5 +1,6 @@
 #pragma once
 #include <QObject>
+#include <QRect>
 #include <QVariantList>
 #include <QUrl>
 #include <memory>
@@ -113,6 +114,10 @@ public:
     // Last-view memory (docs/product-spec.md "Navigation memory"). QML reads
     // these once while restoring and writes them back as the user navigates.
     Q_INVOKABLE QString restoredPage() const;
+    // The rectangle the desktop window opens with, resolved against the screens
+    // that are actually connected (see core/WindowPlacement.h). QML asks once
+    // while the window is being created and never does screen maths itself.
+    Q_INVOKABLE QRect restoredWindowGeometry() const;
     Q_INVOKABLE void setPage(const QString& page);
     Q_INVOKABLE QString settingsCategory() const;
     Q_INVOKABLE void setSettingsCategory(const QString& category);

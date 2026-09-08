@@ -1,5 +1,8 @@
 #include "config/ConfigManager.h"
 #include "config/ConfigKeys.h"
+// Header-only constants (the geometry defaults and the unset sentinel), so the
+// stored values and the placement rules can never drift apart.
+#include "core/WindowPlacement.h"
 
 #include <QDateTime>
 #include <QFile>
@@ -63,6 +66,12 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::UiSettingsCategory,      "general" },
         { ConfigKeys::UiGalleryFilterCategory, "all" },
         { ConfigKeys::UiGalleryFilterGame,     -1 },
+        // Window geometry. The unset sentinel means "never placed" and makes
+        // reset-all reopen centred, the way a fresh profile does.
+        { ConfigKeys::UiWindowX,               WindowPlacement::kUnsetCoordinate },
+        { ConfigKeys::UiWindowY,               WindowPlacement::kUnsetCoordinate },
+        { ConfigKeys::UiWindowWidth,           WindowPlacement::kDefaultWidth },
+        { ConfigKeys::UiWindowHeight,          WindowPlacement::kDefaultHeight },
         { ConfigKeys::ThemeActiveSkin,         "obsidian" },
         { ConfigKeys::ThemeOverlayScrimStrength, 100 },   // percent, 25-150
         { ConfigKeys::UpdatesCheckAutomatically, true },

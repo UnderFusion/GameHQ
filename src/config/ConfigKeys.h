@@ -72,6 +72,14 @@ inline constexpr QLatin1StringView UiGalleryFilterGame{ "ui.gallery_filter_game"
 // (ui.overlay_filter.12). Dynamic keys cannot live in defaults(); NavigationState
 // treats an absent or unknown entry as "all".
 inline constexpr QLatin1StringView UiOverlayFilterPrefix{ "ui.overlay_filter." };
+// Desktop window geometry, written debounced while the user moves or resizes.
+// x/y default to WindowPlacement::kUnsetCoordinate ("never placed"), so a
+// monitor left of or above the primary keeps its negative coordinates instead
+// of being mistaken for an absent value.
+inline constexpr QLatin1StringView UiWindowX{ "ui.window_x" };
+inline constexpr QLatin1StringView UiWindowY{ "ui.window_y" };
+inline constexpr QLatin1StringView UiWindowWidth{ "ui.window_width" };
+inline constexpr QLatin1StringView UiWindowHeight{ "ui.window_height" };
 
 // theme.* — appearance. Read by the QML Theme singleton, which resolves an
 // unknown value back to Obsidian rather than leaving the app unpainted.

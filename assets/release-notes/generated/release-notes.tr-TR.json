@@ -1,22 +1,35 @@
 {
-  "version": "0.7.11",
+  "version": "0.7.12",
   "date": "2026-09-08",
   "sections": [
     {
-      "title": "Added",
+      "title": "Fixed",
       "items": [
-        "GameHQ reopens where you left it. The last page, the settings category and the gallery filter come back on launch, and the overlay remembers the category you last used for each game. Help is never restored, and a filter pinned to a game that no longer exists falls back to the whole library."
-      ]
-    },
-    {
-      "title": "Changed",
-      "items": [
-        "The settings category is stored by name instead of by position, so adding or reordering pages can no longer reopen the wrong one. An existing value is converted once on the next start.",
-        "Opening the gallery from the command line now only brings the gallery forward instead of also clearing the filter you had chosen."
+        "The window reopens on the monitor you left it on, including a monitor placed left of or above the main one. Those positions used to be discarded and the window jumped back to the middle of the primary screen.",
+        "A window last used on a monitor that is no longer connected now reopens centred on the primary screen at the same size, instead of opening somewhere you cannot reach."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.11",
+      "date": "2026-09-08",
+      "sections": [
+        {
+          "title": "Added",
+          "items": [
+            "GameHQ reopens where you left it. The last page, the settings category and the gallery filter come back on launch, and the overlay remembers the category you last used for each game. Help is never restored, and a filter pinned to a game that no longer exists falls back to the whole library."
+          ]
+        },
+        {
+          "title": "Changed",
+          "items": [
+            "The settings category is stored by name instead of by position, so adding or reordering pages can no longer reopen the wrong one. An existing value is converted once on the next start.",
+            "Opening the gallery from the command line now only brings the gallery forward instead of also clearing the filter you had chosen."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.10",
       "date": "2026-09-08",
@@ -227,6 +240,13 @@
     "requested_locale": "tr-TR",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.12",
+        "source_integrity": "sha256:87651e9bd42f4fc6a268bb38ec9a4427c4e454694d4d9bf7eb12c71796341a1f",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.11",
         "source_integrity": "sha256:a669d4b358d811e9bfdb9a2720af2cf39d27600896712f14053d3cc97cae9dcf",

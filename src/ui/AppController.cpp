@@ -7,6 +7,7 @@
 #include "config/SettingsCategories.h"
 #include "config/Paths.h"
 #include "core/ProcessIdentity.h"
+#include "core/WindowPlacement.h"
 #include "diagnostics/Logger.h"
 #include "input/InputDiagnostics.h"
 #include "localization/NativeText.h"
@@ -28,6 +29,7 @@
 #include <QImage>
 #include <QFileInfo>
 #include <QProcess>
+#include <QScreen>
 #include <QTimer>
 #include <QVariantMap>
 #include <QVideoFrame>
@@ -576,6 +578,31 @@ void AppController::restoreGalleryFilter()
 QString AppController::restoredPage() const
 {
     return m_navigation->page();
+}
+
+QRect AppController::restoredWindowGeometry() const
+{
+    WindowPlacement::Saved saved;
+    saved.x = m_config->value(ConfigKeys::UiWindowX).toInt();
+    saved.y = m_config->value(ConfigKeys::UiWindowY).toInt();
+    saved.width = m_config->value(ConfigKeys::UiWindowWidth).toInt();
+    saved.height = m_config->value(ConfigKeys::UiWindowHeight).toInt();
+
+    // Per-screen work areas, not the virtual bounding box: the bounding box of
+    // an L-shaped desktop covers gaps where no monitor exists, and a window
+    // "restored" into a gap is invisible.
+    QList<QRect> screens;
+    const auto available = QGuiApplication::screens();
+    screens.reserve(available.size());
+    for (const QScreen* screen : available)
+        screens.append(screen->availableGeometry());
+    const QScreen* primary = QGuiApplication::primaryScreen();
+    const QRect fallback = primary ? primary->availableGeometry() : QRect();
+
+    const QRect restored = WindowPlacement::restore(saved, screens, fallback);
+    qInfo() << "Window: restored geometry" << restored << "from saved" << saved.x << saved.y
+            << saved.width << "x" << saved.height << "screens" << screens;
+    return restored;
 }
 
 void AppController::setPage(const QString& page)

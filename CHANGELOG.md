@@ -6,6 +6,16 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.12] - 2026-09-08
+
+### Fixed
+
+- The window reopens on the monitor you left it on, including a monitor placed
+  left of or above the main one — those positions were previously discarded and
+  the window jumped back to the middle of the primary screen.
+- A window saved on a monitor that is no longer connected now reopens centred
+  on the primary screen at the same size, instead of opening out of reach.
+
 ## [0.7.11] - 2026-09-08
 
 ### Added

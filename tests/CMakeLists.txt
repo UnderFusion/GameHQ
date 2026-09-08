@@ -283,6 +283,10 @@ gamehq_add_test(tst_navigationstate
     "${CMAKE_SOURCE_DIR}/src/ui/NavigationState.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp")
 
+gamehq_add_test(tst_windowplacement
+    tst_windowplacement.cpp
+    "${CMAKE_SOURCE_DIR}/src/core/WindowPlacement.cpp")
+
 gamehq_add_test(tst_portableprofileimporter
     tst_portableprofileimporter.cpp
     "${CMAKE_SOURCE_DIR}/src/config/PortableProfileImporter.cpp")

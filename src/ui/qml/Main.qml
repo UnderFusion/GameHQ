@@ -14,16 +14,17 @@ ApplicationWindow {
     LayoutMirroring.enabled: languageManager.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
     visible: !app.startMinimized
-    width: app ? app.config("ui.window_width", 1280) : 1280
-    height: app ? app.config("ui.window_height", 760) : 760
-    x: {
-        var sx = app ? app.config("ui.window_x", -1) : -1
-        return sx >= 0 ? sx : Math.max(0, Math.round((Screen.width - width) / 2))
-    }
-    y: {
-        var sy = app ? app.config("ui.window_y", -1) : -1
-        return sy >= 0 ? sy : Math.max(0, Math.round((Screen.height - height) / 2))
-    }
+    // Where the window opens, resolved once by WindowPlacement (C++) against the
+    // screens that are actually connected: a saved place on a monitor left of or
+    // above the primary keeps its negative coordinates, and only a rectangle no
+    // screen can show is recentred. See core/WindowPlacement.h.
+    readonly property var restoredGeometry: app ? app.restoredWindowGeometry()
+                                                : Qt.rect(0, 0, 1280, 760)
+    width: restoredGeometry.width
+    height: restoredGeometry.height
+    x: restoredGeometry.x
+    y: restoredGeometry.y
+    // Mirrors WindowPlacement::kMinimumWidth / kMinimumHeight.
     minimumWidth: 1024
     minimumHeight: 640
     title: Brand.name

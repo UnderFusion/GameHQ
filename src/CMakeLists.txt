@@ -27,6 +27,7 @@ qt_add_executable(GameHQ
     core/GameIdentity.cpp core/GameIdentity.h
     core/UpdateMaintenance.cpp core/UpdateMaintenance.h
     core/UpdaterHandshake.cpp core/UpdaterHandshake.h
+    core/WindowPlacement.cpp core/WindowPlacement.h
     diagnostics/Logger.cpp diagnostics/Logger.h
     gameinput/GameInputEvent.h
     gameinput/IGameInputApi.h

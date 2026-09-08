@@ -138,6 +138,19 @@ GameHQ reopens where the user left it. `NavigationState` (`src/ui/NavigationStat
 | R9 | Precedence | Explicit navigation intent (R5, R4) > restored state > defaults. The post-update greeting still opens over whatever was restored. |
 | R10 | Write timing | Persisted as the user navigates (batched by half a second) plus an idempotent flush on hide and on quit. "Restore all defaults" clears `ui.*`, so the next open starts on the defaults again; a single page's "Restore defaults" never touches the remembered view. |
 
+### Window placement (restore rules)
+
+The desktop window reopens where it was closed, on whatever monitor that was. `WindowPlacement` (`src/core/WindowPlacement.{h,cpp}`) decides the rectangle from the saved numbers and the screens that are actually connected; `AppController::restoredWindowGeometry()` supplies both and `Main.qml` only applies the answer.
+
+| Rule | Behaviour |
+| --- | --- |
+| W1 | Position and size live in `ui.window_x` / `ui.window_y` / `ui.window_width` / `ui.window_height`, written debounced (half a second) while the user moves or resizes. |
+| W2 | A monitor left of or above the primary has negative coordinates; those are ordinary coordinates and are restored unchanged. |
+| W3 | The saved rectangle is kept whenever at least 120 x 32 px of it lands on one screen's work area — enough title bar to see and drag. A window that hangs over an edge is the user's own choice and is never nudged. |
+| W4 | If no connected screen can show that much of it — the monitor was unplugged, or the position was never saved — the window is centred on the primary screen's work area, keeping its size unless that screen is too small for it. |
+| W5 | Screens are matched one by one against their own work areas, never against the virtual bounding box, which on an L-shaped desktop covers gaps where no display exists. |
+| W6 | "Restore all defaults" clears the geometry with the rest of `ui.*`, so the next open is centred at the default size. |
+
 ## 16. Tray & Background
 
 Settings: start with Windows, start minimized, minimize/close to tray, tray icon, notifications, pause capture when not gaming. Tray menu: Open Gallery, Open Settings, Take Screenshot, Save Replay, Buffer ON/OFF, Capture Mode, Settings, Exit. Tooltip shows buffer state + preset + current game. Status states: buffer on/off/paused-no-game/error-audio-missing; overlay active/hidden.
