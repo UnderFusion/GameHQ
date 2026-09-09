@@ -6,6 +6,16 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.16] - 2026-09-09
+
+### Fixed
+
+- Interface sounds no longer report "9 effects loaded" before Windows has
+  actually loaded them. Each sound now logs when it becomes playable or why it
+  failed, and a single warning appears once per run if any sound is
+  unavailable. New source text falls back to English until the feedback-wave
+  translation pass.
+
 ## [0.7.15] - 2026-09-09
 
 ### Added

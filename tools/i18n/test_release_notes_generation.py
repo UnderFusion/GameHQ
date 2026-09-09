@@ -173,12 +173,20 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         frozen = GEN.read_json(HISTORY_FIXTURE)
         generated = GEN.read_json(OUTPUT_ROOT / "release-notes.en-US.json")
         generated.pop("_meta")
-        # Releases newer than the fixture may exist; the fixture chain must still
-        # be reproduced byte for byte from the position it occupies.
+        # Releases newer than the fixture may exist, and the shipped bundle is a
+        # rolling window of history_limit releases, so the oldest frozen entries
+        # eventually fall out of it. Whatever the window still carries must be
+        # reproduced byte for byte, in order, from the position it occupies.
         chain = [{"version": generated["version"], "date": generated["date"],
                   "sections": generated["sections"]}, *generated["history"]]
-        position = [entry["version"] for entry in chain].index(frozen["version"])
-        self.assertEqual(frozen, {**chain[position], "history": chain[position + 1:]})
+        shipped = [entry["version"] for entry in chain]
+        if frozen["version"] in shipped:
+            retained = [entry for entry in frozen["history"] if entry["version"] in shipped]
+            self.assertEqual(retained, frozen["history"][:len(retained)],
+                             "the window drops the oldest releases, never a middle one")
+            position = shipped.index(frozen["version"])
+            self.assertEqual({**frozen, "history": retained},
+                             {**chain[position], "history": chain[position + 1:]})
         self.assertEqual("0.7.6", frozen["version"])
         self.assertEqual("2026-08-31", frozen["date"])
         self.assertEqual(["0.7.5", "0.7.4", "0.7.3"],

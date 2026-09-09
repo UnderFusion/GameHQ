@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.16",
+  "locale": "th-TH",
+  "date": "2026-09-09",
+  "mode": "fallback",
+  "source_integrity": "sha256:75bcf13af6707a4d20f2b0ceb7e525420445266bdf13634d1617867720bdafb1",
+  "fallback_locale": "en-US"
+}

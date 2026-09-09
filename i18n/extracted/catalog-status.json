@@ -5,7 +5,18 @@
   "locales": {
     "de-DE": {
       "catalog": "i18n/app/gamehq_de_DE.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -1258,6 +1269,7 @@
         "gamehq.notification.screenshot_saved.title",
         "gamehq.notification.settings_quarantined.body",
         "gamehq.notification.settings_quarantined.title",
+        "gamehq.notification.sounds_unavailable.title",
         "gamehq.notifications.window_title",
         "gamehq.overlay.capture_actions",
         "gamehq.overlay.focus_warning",
@@ -1340,6 +1352,15 @@
         "gamehq.settings.advanced.status.ready",
         "gamehq.settings.advanced.storage.available",
         "gamehq.settings.advanced.version.current",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported",
         "gamehq.settings.capture.description",
         "gamehq.settings.capture.feedback.description",
         "gamehq.settings.capture.feedback.eyebrow",
@@ -1689,7 +1710,18 @@
     },
     "es-419": {
       "catalog": "i18n/app/gamehq_es_419.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -2531,7 +2563,18 @@
     },
     "es-ES": {
       "catalog": "i18n/app/gamehq_es_ES.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -3373,7 +3416,18 @@
     },
     "fr-FR": {
       "catalog": "i18n/app/gamehq_fr_FR.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -4215,7 +4269,18 @@
     },
     "it-IT": {
       "catalog": "i18n/app/gamehq_it_IT.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -5057,7 +5122,18 @@
     },
     "ja-JP": {
       "catalog": "i18n/app/gamehq_ja_JP.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -5899,7 +5975,18 @@
     },
     "ko-KR": {
       "catalog": "i18n/app/gamehq_ko_KR.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -6741,7 +6828,18 @@
     },
     "pl-PL": {
       "catalog": "i18n/app/gamehq_pl_PL.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -7583,7 +7681,18 @@
     },
     "pt-BR": {
       "catalog": "i18n/app/gamehq_pt_BR.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -8425,7 +8534,18 @@
     },
     "ru-RU": {
       "catalog": "i18n/app/gamehq_ru_RU.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -9267,7 +9387,18 @@
     },
     "th-TH": {
       "catalog": "i18n/app/gamehq_th_TH.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -10109,7 +10240,18 @@
     },
     "tr-TR": {
       "catalog": "i18n/app/gamehq_tr_TR.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -10951,7 +11093,18 @@
     },
     "uk-UA": {
       "catalog": "i18n/app/gamehq_uk_UA.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -11793,7 +11946,18 @@
     },
     "zh-Hans": {
       "catalog": "i18n/app/gamehq_zh_Hans.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [
@@ -12635,7 +12799,18 @@
     },
     "zh-Hant": {
       "catalog": "i18n/app/gamehq_zh_Hant.ts",
-      "missing": [],
+      "missing": [
+        "gamehq.notification.sounds_unavailable.title",
+        "gamehq.settings.capture.border.denied",
+        "gamehq.settings.capture.border.description",
+        "gamehq.settings.capture.border.hidden",
+        "gamehq.settings.capture.border.next_session",
+        "gamehq.settings.capture.border.not_requested",
+        "gamehq.settings.capture.border.title",
+        "gamehq.settings.capture.border.toggle",
+        "gamehq.settings.capture.border.unknown",
+        "gamehq.settings.capture.border.unsupported"
+      ],
       "stale": [],
       "obsolete": [],
       "unchanged": [

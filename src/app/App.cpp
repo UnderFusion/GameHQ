@@ -505,6 +505,21 @@ bool App::init()
             m_controller.get(), &AppController::syncOverlayToForegroundGame);
 
     m_sounds = std::make_unique<SoundEngine>(m_config.get());
+    connect(m_sounds.get(), &SoundEngine::loadFailed, this,
+            [this](const QString& failedEvents) {
+                // One notice per run, deliberately not gated on
+                // "notifications.enabled": the UI has just gone silent and the
+                // log line naming the events is the only other evidence.
+                qWarning() << "Sounds: unavailable —" << failedEvents;
+                m_notify->post(
+                    NativeText::get(
+                        //: Title of the warning shown once when interface sound
+                        //: effects could not be loaded at startup.
+                        //% "Some interface sounds are unavailable"
+                        QT_TRID_NOOP("gamehq.notification.sounds_unavailable.title"),
+                        "Some interface sounds are unavailable"),
+                    {}, {}, QStringLiteral("warning"), QDateTime::currentDateTime(), false);
+            });
     connect(m_overlay.get(), &OverlayManager::visibleChanged, this, [this] {
         m_sounds->play(m_overlay->isVisible() ? QStringLiteral("overlay_open")
                                               : QStringLiteral("overlay_close"));

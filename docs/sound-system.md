@@ -25,6 +25,24 @@ Master on/off · per-event on/off · master volume · pack selection · **"Inclu
 
 `SoundEngine` on Qt Multimedia (`QSoundEffect` — low latency, WAV, FFmpeg backend). All 9 effects pre-load from embedded resources (`qrc:/sounds/`) at startup; `play(event)` reads `sounds.enabled` / `sounds.volume` from config live. Exposed to QML as `sounds`.
 
+Pre-loading is asynchronous, so the log reports what actually happened rather
+than a count taken before Windows had finished. `SoundLoadTracker`
+(`src/sound/SoundLoadTracker.cpp`) maps each `QSoundEffect::statusChanged`
+transition onto a single decision:
+
+- `Ready` — logged once per event as `Sounds: ready <event> <source>`.
+- `Error`, or `Null` after the source was set — logged once per event as
+  `Sounds: failed to load <event> ...` with the reason.
+- `Loading`, or any repeat of a status for an already-resolved effect — not
+  logged, so a chatty backend cannot produce duplicate lines.
+
+The first failure of a run also emits `SoundEngine::loadFailed`, which `App`
+turns into exactly one notification ("Some interface sounds are unavailable").
+Later failures still appear in the log but never raise a second notification.
+The signal is emitted queued, because an effect can resolve inside the
+constructor before anything is connected. `play()` stays non-blocking and never
+waits for a load.
+
 The **default pack is synthesized** by `assets/sounds/generate_sounds.py` (pure stdlib, license-free, regenerable) — subtle sine tones with fast attack and exponential decay. Replace individual WAVs or add packs under `gamehq-data/sound-packs/` later (1.0).
 
 Run `python assets/sounds/generate_sounds.py` from the repository root to

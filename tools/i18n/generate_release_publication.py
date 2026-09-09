@@ -337,6 +337,13 @@ def publish(
             path = output_root / name
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(payload)
+        # A release that falls out of the rolling history window loses every
+        # file but would otherwise leave its directory behind, and consumers
+        # enumerate this tree by directory: an empty one reads as a published
+        # release with no assets.
+        for directory in sorted(output_root.iterdir() if output_root.is_dir() else []):
+            if directory.is_dir() and not any(directory.iterdir()):
+                directory.rmdir()
     return len(files)
 
 

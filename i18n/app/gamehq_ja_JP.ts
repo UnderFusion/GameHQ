@@ -102,10 +102,10 @@
       <translation>キャンセル</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1051"></location>
-      <location filename="src/ui/qml/Main.qml" line="1067"></location>
-      <location filename="src/ui/qml/Main.qml" line="1099"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="466"></location>
+      <location filename="src/ui/qml/Main.qml" line="1069"></location>
+      <location filename="src/ui/qml/Main.qml" line="1085"></location>
+      <location filename="src/ui/qml/Main.qml" line="1117"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="480"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="16"></location>
@@ -506,9 +506,9 @@
       <translation>復元</translation>
     </message>
     <message id="gamehq.action.restore_defaults">
-      <location filename="src/ui/qml/SettingsView.qml" line="493"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="510"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="524"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="498"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="515"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="529"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="217"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="392"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="681"></location>
@@ -631,7 +631,7 @@
       <translation>選択したフォルダーは無効です。</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="353"></location>
+      <location filename="src/ui/AppController.cpp" line="363"></location>
       <source>Choose a local folder.</source>
       <translation>ローカルフォルダーを選択してください。</translation>
     </message>
@@ -651,8 +651,8 @@
       <translation>GameHQ は選択したフォルダーを保存できませんでした。</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="347"></location>
-      <location filename="src/ui/AppController.cpp" line="369"></location>
+      <location filename="src/ui/AppController.cpp" line="357"></location>
+      <location filename="src/ui/AppController.cpp" line="379"></location>
       <source>The capture type is invalid.</source>
       <translation>キャプチャの種類が無効です。</translation>
     </message>
@@ -809,7 +809,7 @@
       <translation>%1 のハッシュを計算できません。</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="194"></location>
+      <location filename="src/ui/AppController.cpp" line="204"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>ポータブルプロファイルをインポートできるのは、インストール版 GameHQ だけです。</translation>
     </message>
@@ -834,12 +834,12 @@
       <translation>復旧済みのポータブルインポートジャーナルを削除できませんでした。</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="200"></location>
+      <location filename="src/ui/AppController.cpp" line="210"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>ポータブル版 GameHQ を含むローカルフォルダーを選択してください。</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="209"></location>
+      <location filename="src/ui/AppController.cpp" line="219"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>選択したフォルダーは GameHQ ポータブルパッケージではありません。</translation>
     </message>
@@ -869,12 +869,12 @@
       <translation>portable:/ パスが選択したパッケージルートの外を指しています。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="220"></location>
+      <location filename="src/ui/AppController.cpp" line="230"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ はインポート用に自身のプロセスを特定できませんでした。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="230"></location>
+      <location filename="src/ui/AppController.cpp" line="240"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ はポータブルインポートプロセスを開始できませんでした。</translation>
     </message>
@@ -949,7 +949,7 @@
       <translation>別のポータブルプロファイルのインポートが既に実行中です。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="479"></location>
+      <location filename="src/app/App.cpp" line="480"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>キャプチャ処理が時間内に安全に完了しなかったため、更新をキャンセルしました。</translation>
     </message>
@@ -1200,7 +1200,7 @@
       <translation>GameHQ は更新トランザクションを公開できませんでした。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="454"></location>
+      <location filename="src/app/App.cpp" line="455"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ は更新メンテナンスを開始できませんでした：%1</translation>
     </message>
@@ -1321,13 +1321,13 @@
       <translation>フォルダーを追加…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1101"></location>
+      <location filename="src/ui/qml/Main.qml" line="1119"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>一括選択</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1097"></location>
+      <location filename="src/ui/qml/Main.qml" line="1115"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="14"></location>
       <source>Show in folder</source>
       <translation>フォルダーで表示</translation>
@@ -1339,20 +1339,20 @@
       <translation>%1 ・ %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1040"></location>
+      <location filename="src/ui/qml/Main.qml" line="1058"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 ・ %2
 ファイルは完全に削除されます。</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1049"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="464"></location>
+      <location filename="src/ui/qml/Main.qml" line="1067"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="478"></location>
       <source>Delete capture?</source>
       <translation>キャプチャを削除しますか？</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="382"></location>
+      <location filename="src/ui/qml/Main.qml" line="400"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
@@ -1361,7 +1361,7 @@ This cannot be undone.</source>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1065"></location>
+      <location filename="src/ui/qml/Main.qml" line="1083"></location>
       <source>Delete selected captures?</source>
       <translation>選択したキャプチャを削除しますか？</translation>
     </message>
@@ -1413,27 +1413,27 @@ This cannot be undone.</source>
       <translation>%1 ビューアー</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="335"></location>
+      <location filename="src/ui/AppController.cpp" line="345"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>各モニターの現在のHDR状態を確認します。</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="321"></location>
+      <location filename="src/ui/AppController.cpp" line="331"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDRは有効です</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="326"></location>
+      <location filename="src/ui/AppController.cpp" line="336"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDRは無効です</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="315"></location>
+      <location filename="src/ui/AppController.cpp" line="325"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>グラフィックスドライバーからモニターが報告されていません</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="309"></location>
+      <location filename="src/ui/AppController.cpp" line="319"></location>
       <source>Not checked yet</source>
       <translation>未確認</translation>
     </message>
@@ -2019,7 +2019,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 を共有：%2 = %3、%4 = %5。</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1022"></location>
+      <location filename="src/ui/qml/Main.qml" line="1040"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>監視するフォルダーを選択</translation>
@@ -2033,44 +2033,44 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQについて</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="153"></location>
+      <location filename="src/ui/qml/Main.qml" line="158"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="57"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="11"></location>
       <source>All</source>
       <translation>すべて</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="161"></location>
+      <location filename="src/ui/qml/Main.qml" line="166"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="19"></location>
       <source>Clips</source>
       <translation>クリップ</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="157"></location>
+      <location filename="src/ui/qml/Main.qml" line="162"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="15"></location>
       <source>Favorites</source>
       <translation>お気に入り</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="163"></location>
+      <location filename="src/ui/qml/Main.qml" line="168"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="21"></location>
       <source>Game</source>
       <translation>ゲーム</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="165"></location>
+      <location filename="src/ui/qml/Main.qml" line="170"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
       <source>Game favorites</source>
       <translation>ゲームのお気に入り</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="155"></location>
+      <location filename="src/ui/qml/Main.qml" line="160"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="13"></location>
       <source>Recent</source>
       <translation>最新</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="159"></location>
+      <location filename="src/ui/qml/Main.qml" line="164"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="17"></location>
       <source>Screenshots</source>
       <translation>スクリーンショット</translation>
@@ -2100,49 +2100,54 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ を支援</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="310"></location>
+      <location filename="src/app/App.cpp" line="311"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>一部のファイルを削除できませんでした。別のプログラムで使用中の可能性があります。これらのファイルを使用しているプログラムを閉じて、もう一度お試しください。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="317"></location>
+      <location filename="src/app/App.cpp" line="318"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>ファイルを削除できませんでした。別のプログラムで使用中の可能性があります。そのファイルを使用しているプログラムを閉じて、もう一度お試しください。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="323"></location>
+      <location filename="src/app/App.cpp" line="324"></location>
       <source>Couldn't delete</source>
       <translation>削除できませんでした</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="280"></location>
+      <location filename="src/app/App.cpp" line="281"></location>
       <source>Reason: %1</source>
       <translation>理由：%1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="286"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>Replay failed</source>
       <translation>リプレイに失敗しました</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="266"></location>
+      <location filename="src/app/App.cpp" line="267"></location>
       <source>Replay saved</source>
       <translation>リプレイを保存しました</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="218"></location>
+      <location filename="src/app/App.cpp" line="219"></location>
       <source>Screenshot saved</source>
       <translation>スクリーンショットを保存しました</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="362"></location>
+      <location filename="src/app/App.cpp" line="363"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ は既定の設定で起動しました。以前の設定ファイルは保持されているため、失われたものはありません。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="357"></location>
+      <location filename="src/app/App.cpp" line="358"></location>
       <source>Settings could not be read</source>
       <translation>設定を読み取れませんでした</translation>
+    </message>
+    <message id="gamehq.notification.sounds_unavailable.title">
+      <location filename="src/app/App.cpp" line="519"></location>
+      <source>Some interface sounds are unavailable</source>
+      <translation type="unfinished"></translation>
     </message>
     <message id="gamehq.notifications.window_title">
       <location filename="src/ui/qml/ToastWindow.qml" line="19"></location>
@@ -2155,7 +2160,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>キャプチャ操作</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="100"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="103"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>ゲームにフォーカスがあるため、コントローラー入力に反応する場合があります。</translation>
     </message>
@@ -2552,143 +2557,188 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Current installation</source>
       <translation>現在のインストール</translation>
     </message>
+    <message id="gamehq.settings.capture.border.denied">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="35"></location>
+      <source>Windows did not allow border suppression for this session.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="76"></location>
+      <source>Requests border suppression where Windows supports it. Windows 10 does not support this.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.hidden">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="29"></location>
+      <source>Windows reports border suppression active. A visible border may still remain.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.next_session">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="81"></location>
+      <source>Applies to the next capture session. Changing this leaves the current session and replay buffer running.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.not_requested">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="38"></location>
+      <source>Border suppression was not requested for this session.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="74"></location>
+      <source>Windows capture border</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.toggle">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="79"></location>
+      <source>Request border suppression</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.unknown">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="41"></location>
+      <source>Border suppression is unconfirmed, or no capture session is active.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.unsupported">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="32"></location>
+      <source>This Windows version or capture session does not support border suppression.</source>
+      <translation type="unfinished"></translation>
+    </message>
     <message id="gamehq.settings.capture.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="12"></location>
       <source>Choose when, how, and where GameHQ saves screenshots.</source>
       <translation>GameHQ がスクリーンショットを保存するタイミング、方法、場所を選択します。</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="95"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="139"></location>
       <source>Combined with the master switches on the Notifications &amp; Sound page.</source>
       <translation>「通知とサウンド」ページのマスタースイッチと組み合わせて使用します。</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="91"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="135"></location>
       <source>Feedback</source>
       <translation>フィードバック</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.notification">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="103"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="147"></location>
       <source>Screenshot notification</source>
       <translation>スクリーンショット通知</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.sound">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="98"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="142"></location>
       <source>Screenshot sound</source>
       <translation>スクリーンショット音</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="93"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="137"></location>
       <source>After a screenshot</source>
       <translation>スクリーンショット撮影後</translation>
     </message>
     <message id="gamehq.settings.capture.image.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="57"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="101"></location>
       <source>PNG is lossless; JPEG trades some quality for smaller files.</source>
       <translation>PNGは可逆圧縮です。JPEGは一部の画質と引き換えにファイルを小さくします。</translation>
     </message>
     <message id="gamehq.settings.capture.image.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="53"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="97"></location>
       <source>Image</source>
       <translation>画像</translation>
     </message>
     <message id="gamehq.settings.capture.image.format">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="60"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="104"></location>
       <source>Format</source>
       <translation>形式</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="69"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
       <source>JPEG (smaller files)</source>
       <translation>JPEG（小さいファイル）</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg_quality">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="75"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="119"></location>
       <source>JPEG quality</source>
       <translation>JPEG品質</translation>
     </message>
     <message id="gamehq.settings.capture.image.png">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="67"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="111"></location>
       <source>PNG (lossless)</source>
       <translation>PNG（可逆圧縮）</translation>
     </message>
     <message id="gamehq.settings.capture.image.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="55"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="99"></location>
       <source>Format and quality</source>
       <translation>形式と品質</translation>
     </message>
     <message id="gamehq.settings.capture.mode.always">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="45"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="66"></location>
       <source>Always</source>
       <translation>常に</translation>
     </message>
     <message id="gamehq.settings.capture.mode.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="30"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="51"></location>
       <source>Control when screenshots and replay recording are allowed.</source>
       <translation>スクリーンショットとリプレイ録画を許可するタイミングを設定します。</translation>
     </message>
     <message id="gamehq.settings.capture.mode.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="26"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="47"></location>
       <source>Capture mode</source>
       <translation>キャプチャモード</translation>
     </message>
     <message id="gamehq.settings.capture.mode.label">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="33"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="54"></location>
       <source>Capture mode</source>
       <translation>キャプチャモード</translation>
     </message>
     <message id="gamehq.settings.capture.mode.only_in_games">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="41"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="62"></location>
       <source>Only in games</source>
       <translation>ゲーム中のみ</translation>
     </message>
     <message id="gamehq.settings.capture.mode.row_description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="35"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="56"></location>
       <source>Only in games is the safest default for global shortcuts.</source>
       <translation>グローバルショートカットには「ゲーム中のみ」が最も安全な既定値です。</translation>
     </message>
     <message id="gamehq.settings.capture.mode.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="28"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="49"></location>
       <source>When to capture</source>
       <translation>キャプチャするタイミング</translation>
     </message>
     <message id="gamehq.settings.capture.mode.whitelist">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="43"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="64"></location>
       <source>Whitelisted games</source>
       <translation>許可リストのゲーム</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="160"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="204"></location>
       <source>Choose the clips folder</source>
       <translation>クリップフォルダーを選択</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="153"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
       <source>Choose the screenshots folder</source>
       <translation>スクリーンショットフォルダーを選択</translation>
     </message>
     <message id="gamehq.settings.capture.storage.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="114"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="158"></location>
       <source>Changing a location never moves or deletes existing media.</source>
       <translation>保存場所を変更しても既存のメディアは移動・削除されません。</translation>
     </message>
     <message id="gamehq.settings.capture.storage.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="110"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="154"></location>
       <source>Storage</source>
       <translation>ストレージ</translation>
     </message>
     <message id="gamehq.settings.capture.storage.replay_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="173"></location>
       <source>Replay clips</source>
       <translation>リプレイクリップ</translation>
     </message>
     <message id="gamehq.settings.capture.storage.screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="162"></location>
       <source>Screenshots</source>
       <translation>スクリーンショット</translation>
     </message>
     <message id="gamehq.settings.capture.storage.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="112"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="156"></location>
       <source>Where captures are saved</source>
       <translation>キャプチャの保存場所</translation>
     </message>
@@ -3343,12 +3393,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>1つのボタンに複数のジェスチャー</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="508"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="513"></location>
       <source>All controller, keyboard, and mouse overrides return to their built-in defaults.</source>
       <translation>コントローラー、キーボード、マウスの変更をすべて組み込みの既定値に戻します。</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="506"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="511"></location>
       <source>Restore all input bindings?</source>
       <translation>すべての入力割り当てを復元しますか？</translation>
     </message>
@@ -3574,22 +3624,22 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>ライブラリ</translation>
     </message>
     <message id="gamehq.settings.portable_import.confirm">
-      <location filename="src/ui/qml/SettingsView.qml" line="473"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="478"></location>
       <source>Import and restart</source>
       <translation>インポートして再起動</translation>
     </message>
     <message id="gamehq.settings.portable_import.failed">
-      <location filename="src/ui/qml/SettingsView.qml" line="478"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="483"></location>
       <source>Portable import failed</source>
       <translation>ポータブルインポートに失敗しました</translation>
     </message>
     <message id="gamehq.settings.portable_import.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="476"></location>
       <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
       <translation>インポート先は、未使用のインストール版プロファイルに限られます。ポータブル版のキャプチャは元の場所に残り、インポート元は変更されません。完了のため GameHQ を再起動します。</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="469"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="474"></location>
       <source>Import this portable profile?</source>
       <translation>このポータブルプロファイルをインポートしますか？</translation>
     </message>
@@ -3734,22 +3784,22 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>リプレイ</translation>
     </message>
     <message id="gamehq.settings.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="491"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="496"></location>
       <source>Window preferences, capture behavior, replay options, notifications, and sound settings return to defaults. Captures and library data are not deleted.</source>
       <translation>ウィンドウ設定、キャプチャ動作、リプレイ設定、通知、サウンド設定を既定値に戻します。キャプチャとライブラリのデータは削除されません。</translation>
     </message>
     <message id="gamehq.settings.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="489"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="494"></location>
       <source>Restore all settings?</source>
       <translation>すべての設定を復元しますか？</translation>
     </message>
     <message id="gamehq.settings.restore_category.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="522"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="527"></location>
       <source>%1 options return to defaults. Captures and library data are not deleted.</source>
       <translation>%1 のオプションを既定値に戻します。キャプチャとライブラリのデータは削除されません。</translation>
     </message>
     <message id="gamehq.settings.restore_category.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="520"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="525"></location>
       <source>Restore %1 settings?</source>
       <translation>%1 の設定を復元しますか？</translation>
     </message>
@@ -4317,7 +4367,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>スクリーンショット</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="112"></location>
+      <location filename="src/ui/AppController.cpp" line="122"></location>
       <source>Release notes</source>
       <translation>リリースノート</translation>
     </message>

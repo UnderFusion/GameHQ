@@ -107,10 +107,10 @@
       <translation>Скасувати</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1051"></location>
-      <location filename="src/ui/qml/Main.qml" line="1067"></location>
-      <location filename="src/ui/qml/Main.qml" line="1099"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="466"></location>
+      <location filename="src/ui/qml/Main.qml" line="1069"></location>
+      <location filename="src/ui/qml/Main.qml" line="1085"></location>
+      <location filename="src/ui/qml/Main.qml" line="1117"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="480"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="16"></location>
@@ -511,9 +511,9 @@
       <translation>Відновити</translation>
     </message>
     <message id="gamehq.action.restore_defaults">
-      <location filename="src/ui/qml/SettingsView.qml" line="493"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="510"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="524"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="498"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="515"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="529"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="217"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="392"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="681"></location>
@@ -645,7 +645,7 @@
       <translation>Вибрана папка недійсна.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="353"></location>
+      <location filename="src/ui/AppController.cpp" line="363"></location>
       <source>Choose a local folder.</source>
       <translation>Виберіть локальну папку.</translation>
     </message>
@@ -665,8 +665,8 @@
       <translation>GameHQ не вдалося зберегти вибрану папку.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="347"></location>
-      <location filename="src/ui/AppController.cpp" line="369"></location>
+      <location filename="src/ui/AppController.cpp" line="357"></location>
+      <location filename="src/ui/AppController.cpp" line="379"></location>
       <source>The capture type is invalid.</source>
       <translation>Тип захоплення недійсний.</translation>
     </message>
@@ -823,7 +823,7 @@
       <translation>Не вдалося обчислити хеш %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="194"></location>
+      <location filename="src/ui/AppController.cpp" line="204"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>Портативні профілі може імпортувати лише встановлена копія GameHQ.</translation>
     </message>
@@ -848,12 +848,12 @@
       <translation>Не вдалося видалити відновлений журнал портативного імпорту.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="200"></location>
+      <location filename="src/ui/AppController.cpp" line="210"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>Виберіть локальну папку з портативною версією GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="209"></location>
+      <location filename="src/ui/AppController.cpp" line="219"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>Вибрана папка не є портативним пакетом GameHQ.</translation>
     </message>
@@ -883,12 +883,12 @@
       <translation>Шлях portable:/ виходить за межі вибраного кореня пакета.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="220"></location>
+      <location filename="src/ui/AppController.cpp" line="230"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ не вдалося ідентифікувати власний процес для імпорту.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="230"></location>
+      <location filename="src/ui/AppController.cpp" line="240"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ не вдалося запустити процес портативного імпорту.</translation>
     </message>
@@ -963,7 +963,7 @@
       <translation>Інший імпорт портативного профілю вже виконується.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="479"></location>
+      <location filename="src/app/App.cpp" line="480"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Оновлення скасовано, оскільки робота із захопленням не встигла безпечно завершитися.</translation>
     </message>
@@ -1214,7 +1214,7 @@
       <translation>GameHQ не вдалося остаточно застосувати транзакцію оновлення.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="454"></location>
+      <location filename="src/app/App.cpp" line="455"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ не вдалося розпочати обслуговування оновлення: %1</translation>
     </message>
@@ -1335,13 +1335,13 @@
       <translation>Додати папку…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1101"></location>
+      <location filename="src/ui/qml/Main.qml" line="1119"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Масовий вибір</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1097"></location>
+      <location filename="src/ui/qml/Main.qml" line="1115"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="14"></location>
       <source>Show in folder</source>
       <translation>Показати в папці</translation>
@@ -1353,20 +1353,20 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1040"></location>
+      <location filename="src/ui/qml/Main.qml" line="1058"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 Це назавжди видалить файл.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1049"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="464"></location>
+      <location filename="src/ui/qml/Main.qml" line="1067"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="478"></location>
       <source>Delete capture?</source>
       <translation>Видалити медіафайл?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="382"></location>
+      <location filename="src/ui/qml/Main.qml" line="400"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
@@ -1379,7 +1379,7 @@ This cannot be undone.</source>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1065"></location>
+      <location filename="src/ui/qml/Main.qml" line="1083"></location>
       <source>Delete selected captures?</source>
       <translation>Видалити вибрані медіафайли?</translation>
     </message>
@@ -1433,27 +1433,27 @@ This cannot be undone.</source>
       <translation>%1 — переглядач</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="335"></location>
+      <location filename="src/ui/AppController.cpp" line="345"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Перевірити поточний стан HDR усіх дисплеїв.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="321"></location>
+      <location filename="src/ui/AppController.cpp" line="331"></location>
       <source>Windows HDR is active</source>
       <translation>HDR у Windows увімкнено</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="326"></location>
+      <location filename="src/ui/AppController.cpp" line="336"></location>
       <source>Windows HDR is inactive</source>
       <translation>HDR у Windows вимкнено</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="315"></location>
+      <location filename="src/ui/AppController.cpp" line="325"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>Графічний драйвер не повідомив про жоден дисплей</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="309"></location>
+      <location filename="src/ui/AppController.cpp" line="319"></location>
       <source>Not checked yet</source>
       <translation>Ще не перевірено</translation>
     </message>
@@ -2039,7 +2039,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 використовується спільно: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1022"></location>
+      <location filename="src/ui/qml/Main.qml" line="1040"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Виберіть папку для відстеження</translation>
@@ -2053,44 +2053,44 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Про програму</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="153"></location>
+      <location filename="src/ui/qml/Main.qml" line="158"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="57"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="11"></location>
       <source>All</source>
       <translation>Усі</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="161"></location>
+      <location filename="src/ui/qml/Main.qml" line="166"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="19"></location>
       <source>Clips</source>
       <translation>Кліпи</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="157"></location>
+      <location filename="src/ui/qml/Main.qml" line="162"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="15"></location>
       <source>Favorites</source>
       <translation>Обране</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="163"></location>
+      <location filename="src/ui/qml/Main.qml" line="168"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="21"></location>
       <source>Game</source>
       <translation>Гра</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="165"></location>
+      <location filename="src/ui/qml/Main.qml" line="170"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
       <source>Game favorites</source>
       <translation>Обране гри</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="155"></location>
+      <location filename="src/ui/qml/Main.qml" line="160"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="13"></location>
       <source>Recent</source>
       <translation>Останні</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="159"></location>
+      <location filename="src/ui/qml/Main.qml" line="164"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="17"></location>
       <source>Screenshots</source>
       <translation>Знімки екрана</translation>
@@ -2120,49 +2120,54 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Підтримати GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="310"></location>
+      <location filename="src/app/App.cpp" line="311"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Деякі файли не вдалося видалити. Можливо, їх використовують інші програми. Закрийте програми, які їх використовують, і спробуйте ще раз.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="317"></location>
+      <location filename="src/app/App.cpp" line="318"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Не вдалося видалити файл. Можливо, його використовує інша програма. Закрийте програму, яка його використовує, і спробуйте ще раз.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="323"></location>
+      <location filename="src/app/App.cpp" line="324"></location>
       <source>Couldn't delete</source>
       <translation>Не вдалося видалити</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="280"></location>
+      <location filename="src/app/App.cpp" line="281"></location>
       <source>Reason: %1</source>
       <translation>Причина: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="286"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>Replay failed</source>
       <translation>Помилка повтору</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="266"></location>
+      <location filename="src/app/App.cpp" line="267"></location>
       <source>Replay saved</source>
       <translation>Повтор збережено</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="218"></location>
+      <location filename="src/app/App.cpp" line="219"></location>
       <source>Screenshot saved</source>
       <translation>Знімок екрана збережено</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="362"></location>
+      <location filename="src/app/App.cpp" line="363"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ запустився з типовими налаштуваннями. Попередній файл налаштувань збережено, тож нічого не втрачено.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="357"></location>
+      <location filename="src/app/App.cpp" line="358"></location>
       <source>Settings could not be read</source>
       <translation>Не вдалося прочитати налаштування</translation>
+    </message>
+    <message id="gamehq.notification.sounds_unavailable.title">
+      <location filename="src/app/App.cpp" line="519"></location>
+      <source>Some interface sounds are unavailable</source>
+      <translation type="unfinished"></translation>
     </message>
     <message id="gamehq.notifications.window_title">
       <location filename="src/ui/qml/ToastWindow.qml" line="19"></location>
@@ -2175,7 +2180,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Дії захоплення</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="100"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="103"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>Гра все ще у фокусі й може реагувати на введення з контролера</translation>
     </message>
@@ -2220,7 +2225,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="112"></location>
+      <location filename="src/ui/AppController.cpp" line="122"></location>
       <source>Release notes</source>
       <translation>Нотатки до випуску</translation>
     </message>
@@ -2577,143 +2582,188 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Current installation</source>
       <translation>Поточна інсталяція</translation>
     </message>
+    <message id="gamehq.settings.capture.border.denied">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="35"></location>
+      <source>Windows did not allow border suppression for this session.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="76"></location>
+      <source>Requests border suppression where Windows supports it. Windows 10 does not support this.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.hidden">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="29"></location>
+      <source>Windows reports border suppression active. A visible border may still remain.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.next_session">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="81"></location>
+      <source>Applies to the next capture session. Changing this leaves the current session and replay buffer running.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.not_requested">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="38"></location>
+      <source>Border suppression was not requested for this session.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="74"></location>
+      <source>Windows capture border</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.toggle">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="79"></location>
+      <source>Request border suppression</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.unknown">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="41"></location>
+      <source>Border suppression is unconfirmed, or no capture session is active.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.capture.border.unsupported">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="32"></location>
+      <source>This Windows version or capture session does not support border suppression.</source>
+      <translation type="unfinished"></translation>
+    </message>
     <message id="gamehq.settings.capture.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="12"></location>
       <source>Choose when, how, and where GameHQ saves screenshots.</source>
       <translation>Виберіть, коли, як і куди GameHQ зберігає знімки екрана.</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="95"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="139"></location>
       <source>Combined with the master switches on the Notifications &amp; Sound page.</source>
       <translation>Працює разом із головними перемикачами на сторінці «Сповіщення та звук».</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="91"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="135"></location>
       <source>Feedback</source>
       <translation>Зворотний зв’язок</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.notification">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="103"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="147"></location>
       <source>Screenshot notification</source>
       <translation>Сповіщення про знімок екрана</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.sound">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="98"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="142"></location>
       <source>Screenshot sound</source>
       <translation>Звук знімка екрана</translation>
     </message>
     <message id="gamehq.settings.capture.feedback.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="93"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="137"></location>
       <source>After a screenshot</source>
       <translation>Після знімка екрана</translation>
     </message>
     <message id="gamehq.settings.capture.image.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="57"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="101"></location>
       <source>PNG is lossless; JPEG trades some quality for smaller files.</source>
       <translation>PNG — без втрат; JPEG жертвує частиною якості заради менших файлів.</translation>
     </message>
     <message id="gamehq.settings.capture.image.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="53"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="97"></location>
       <source>Image</source>
       <translation>Зображення</translation>
     </message>
     <message id="gamehq.settings.capture.image.format">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="60"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="104"></location>
       <source>Format</source>
       <translation>Формат</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="69"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="113"></location>
       <source>JPEG (smaller files)</source>
       <translation>JPEG (менші файли)</translation>
     </message>
     <message id="gamehq.settings.capture.image.jpeg_quality">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="75"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="119"></location>
       <source>JPEG quality</source>
       <translation>Якість JPEG</translation>
     </message>
     <message id="gamehq.settings.capture.image.png">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="67"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="111"></location>
       <source>PNG (lossless)</source>
       <translation>PNG (без втрат)</translation>
     </message>
     <message id="gamehq.settings.capture.image.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="55"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="99"></location>
       <source>Format and quality</source>
       <translation>Формат і якість</translation>
     </message>
     <message id="gamehq.settings.capture.mode.always">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="45"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="66"></location>
       <source>Always</source>
       <translation>Завжди</translation>
     </message>
     <message id="gamehq.settings.capture.mode.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="30"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="51"></location>
       <source>Control when screenshots and replay recording are allowed.</source>
       <translation>Керуйте тим, коли дозволені знімки екрана та запис повторів.</translation>
     </message>
     <message id="gamehq.settings.capture.mode.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="26"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="47"></location>
       <source>Capture mode</source>
       <translation>Режим захоплення</translation>
     </message>
     <message id="gamehq.settings.capture.mode.label">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="33"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="54"></location>
       <source>Capture mode</source>
       <translation>Режим захоплення</translation>
     </message>
     <message id="gamehq.settings.capture.mode.only_in_games">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="41"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="62"></location>
       <source>Only in games</source>
       <translation>Лише в іграх</translation>
     </message>
     <message id="gamehq.settings.capture.mode.row_description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="35"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="56"></location>
       <source>Only in games is the safest default for global shortcuts.</source>
       <translation>«Лише в іграх» — найбезпечніший типовий варіант для глобальних комбінацій клавіш.</translation>
     </message>
     <message id="gamehq.settings.capture.mode.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="28"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="49"></location>
       <source>When to capture</source>
       <translation>Коли захоплювати</translation>
     </message>
     <message id="gamehq.settings.capture.mode.whitelist">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="43"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="64"></location>
       <source>Whitelisted games</source>
       <translation>Ігри з білого списку</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="160"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="204"></location>
       <source>Choose the clips folder</source>
       <translation>Виберіть папку для кліпів</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="153"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
       <source>Choose the screenshots folder</source>
       <translation>Виберіть папку для знімків екрана</translation>
     </message>
     <message id="gamehq.settings.capture.storage.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="114"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="158"></location>
       <source>Changing a location never moves or deletes existing media.</source>
       <translation>Зміна розташування ніколи не переміщує й не видаляє наявні файли.</translation>
     </message>
     <message id="gamehq.settings.capture.storage.eyebrow">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="110"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="154"></location>
       <source>Storage</source>
       <translation>Сховище</translation>
     </message>
     <message id="gamehq.settings.capture.storage.replay_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="173"></location>
       <source>Replay clips</source>
       <translation>Кліпи повторів</translation>
     </message>
     <message id="gamehq.settings.capture.storage.screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="162"></location>
       <source>Screenshots</source>
       <translation>Знімки екрана</translation>
     </message>
     <message id="gamehq.settings.capture.storage.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="112"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="156"></location>
       <source>Where captures are saved</source>
       <translation>Куди зберігаються знімки та кліпи</translation>
     </message>
@@ -3368,12 +3418,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Одна кнопка — кілька жестів</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="508"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="513"></location>
       <source>All controller, keyboard, and mouse overrides return to their built-in defaults.</source>
       <translation>Усі перевизначення для контролера, клавіатури та миші повернуться до вбудованих типових значень.</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="506"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="511"></location>
       <source>Restore all input bindings?</source>
       <translation>Відновити всі прив’язки введення?</translation>
     </message>
@@ -3603,22 +3653,22 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Бібліотека</translation>
     </message>
     <message id="gamehq.settings.portable_import.confirm">
-      <location filename="src/ui/qml/SettingsView.qml" line="473"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="478"></location>
       <source>Import and restart</source>
       <translation>Імпортувати й перезапустити</translation>
     </message>
     <message id="gamehq.settings.portable_import.failed">
-      <location filename="src/ui/qml/SettingsView.qml" line="478"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="483"></location>
       <source>Portable import failed</source>
       <translation>Не вдалося імпортувати портативний профіль</translation>
     </message>
     <message id="gamehq.settings.portable_import.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="471"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="476"></location>
       <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
       <translation>Імпорт можливий лише в чистий встановлений профіль. Портативні записи залишаються на місці, джерело не змінюється, а GameHQ перезапускається, щоб завершити імпорт.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="469"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="474"></location>
       <source>Import this portable profile?</source>
       <translation>Імпортувати цей портативний профіль?</translation>
     </message>
@@ -3763,22 +3813,22 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Повтор</translation>
     </message>
     <message id="gamehq.settings.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="491"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="496"></location>
       <source>Window preferences, capture behavior, replay options, notifications, and sound settings return to defaults. Captures and library data are not deleted.</source>
       <translation>Налаштування вікна, поведінка запису, параметри повторів, сповіщення та звуки повернуться до типових значень. Записи та дані бібліотеки не видаляються.</translation>
     </message>
     <message id="gamehq.settings.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="489"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="494"></location>
       <source>Restore all settings?</source>
       <translation>Відновити всі налаштування?</translation>
     </message>
     <message id="gamehq.settings.restore_category.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="522"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="527"></location>
       <source>%1 options return to defaults. Captures and library data are not deleted.</source>
       <translation>Параметри «%1» буде повернуто до типових значень. Медіафайли та дані бібліотеки не видаляються.</translation>
     </message>
     <message id="gamehq.settings.restore_category.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="520"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="525"></location>
       <source>Restore %1 settings?</source>
       <translation>Відновити налаштування «%1»?</translation>
     </message>

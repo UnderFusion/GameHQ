@@ -578,6 +578,13 @@ gamehq_add_test(tst_captureborderstate
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureBorderState.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureBorderState.h")
 
+# p6-3: what the sound engine reports while its effects load. Pure policy — no
+# audio device, no Qt Multimedia, no asynchronous loading to wait on.
+gamehq_add_test(tst_soundengine
+    tst_soundengine.cpp
+    "${CMAKE_SOURCE_DIR}/src/sound/SoundLoadTracker.cpp"
+    "${CMAKE_SOURCE_DIR}/src/sound/SoundLoadTracker.h")
+
 add_executable(launcher_argecho_fixture launcher_argecho_fixture.cpp)
 target_link_options(launcher_argecho_fixture PRIVATE -static -municode)
 target_link_libraries(launcher_argecho_fixture PRIVATE shell32)

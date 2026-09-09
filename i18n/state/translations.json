@@ -4485,6 +4485,17 @@
           },
           "updated_at": null
         },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.notifications.window_title": {
           "domain": "application",
           "source_hash": "666bf9ff43e2219003616dcc1355b7a80f73d792bf880b261d60c7b8cac24f94",
@@ -9284,7 +9295,7 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 0,
           "missing": [
             "gamehq.about.enjoying_gamehq",
@@ -9694,6 +9705,7 @@
             "gamehq.notification.screenshot_saved.title",
             "gamehq.notification.settings_quarantined.body",
             "gamehq.notification.settings_quarantined.title",
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.notifications.window_title",
             "gamehq.overlay.capture_actions",
             "gamehq.overlay.focus_warning",
@@ -14629,6 +14641,17 @@
           },
           "updated_at": "2026-09-04T12:00:00Z"
         },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.notifications.window_title": {
           "domain": "application",
           "source_hash": "666bf9ff43e2219003616dcc1355b7a80f73d792bf880b261d60c7b8cac24f94",
@@ -19428,9 +19451,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -23932,6 +23956,17 @@
           "domain": "application",
           "source_hash": "c1df9e7b183b26b477a5ec92c3cc871804461f3dceaf1c724992bb57e1569645",
           "translation_hash": "5abe6cec9ccbca05f938cae93b5f5fd77d3feaea3ce8a01d910513504fcaefc2",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": "c5528c49ee91da41d294027a94e5fa50e92cae57699a505ba36ce6d30690c826",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -28738,8 +28773,8 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
-          "current": 843,
+          "total": 844,
+          "current": 844,
           "missing": [],
           "stale": []
         },
@@ -33238,6 +33273,17 @@
             "actor": "codex-gpt-5-contextual-es-419"
           },
           "updated_at": "2026-09-04T20:00:00Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -38038,9 +38084,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -42548,6 +42595,17 @@
             "actor": "codex-gpt-5-contextual-es-es-review"
           },
           "updated_at": "2026-09-04T02:45:50Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -47348,9 +47406,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -51858,6 +51917,17 @@
             "actor": "codex-gpt-5-contextual-fr-fr"
           },
           "updated_at": "2026-09-04T16:30:00Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -56658,9 +56728,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -61168,6 +61239,17 @@
             "actor": "claude-opus-5-contextual-it-it-review"
           },
           "updated_at": "2026-09-04T13:20:00Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -65968,9 +66050,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -70478,6 +70561,17 @@
             "actor": "codex-gpt-5-contextual-ja-jp"
           },
           "updated_at": "2026-09-04T14:30:00Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -75278,9 +75372,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -79788,6 +79883,17 @@
             "actor": "codex-gpt-5-contextual-ko-kr"
           },
           "updated_at": "2026-09-04T20:00:00Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -84588,9 +84694,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -89098,6 +89205,17 @@
             "actor": "codex-gpt-5-contextual-pl-review"
           },
           "updated_at": "2026-09-03T22:45:00Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -93898,9 +94016,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -98408,6 +98527,17 @@
             "actor": "codex-gpt-5-contextual-pt-br-review"
           },
           "updated_at": "2026-09-04T03:19:03Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -103208,9 +103338,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -107718,6 +107849,17 @@
             "actor": "claude-opus-5-contextual-ru-review"
           },
           "updated_at": "2026-09-04T04:00:00Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -112518,9 +112660,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -117028,6 +117171,17 @@
             "actor": "codex-gpt-5-contextual-th-th"
           },
           "updated_at": "2026-09-04T17:00:00Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -121828,9 +121982,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -126338,6 +126493,17 @@
             "actor": "codex-gpt-5-contextual-tr-tr"
           },
           "updated_at": "2026-09-04T08:11:57Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -131138,9 +131304,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -135648,6 +135815,17 @@
             "actor": "codex-gpt-5-contextual-uk-UA"
           },
           "updated_at": "2026-09-04T11:59:30Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -140448,9 +140626,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -144958,6 +145137,17 @@
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
           "updated_at": "2026-09-04T03:10:00Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -149758,9 +149948,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",
@@ -154268,6 +154459,17 @@
             "actor": "codex-gpt-5-contextual-zh-hant"
           },
           "updated_at": "2026-09-04T06:45:28Z"
+        },
+        "gamehq.notification.sounds_unavailable.title": {
+          "domain": "application",
+          "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
         },
         "gamehq.notifications.window_title": {
           "domain": "application",
@@ -159068,9 +159270,10 @@
       },
       "completeness": {
         "application": {
-          "total": 843,
+          "total": 844,
           "current": 834,
           "missing": [
+            "gamehq.notification.sounds_unavailable.title",
             "gamehq.settings.capture.border.denied",
             "gamehq.settings.capture.border.description",
             "gamehq.settings.capture.border.hidden",

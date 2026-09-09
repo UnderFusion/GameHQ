@@ -89,6 +89,7 @@ qt_add_executable(GameHQ
     overlay/ForegroundApi.cpp overlay/ForegroundApi.h
     overlay/OverlayManager.cpp overlay/OverlayManager.h
     sound/SoundEngine.cpp  sound/SoundEngine.h
+    sound/SoundLoadTracker.cpp  sound/SoundLoadTracker.h
     storage/CaptureDatabase.cpp storage/CaptureDatabase.h
     storage/CaptureQueries.cpp storage/CaptureQueries.h
     storage/CaptureScanner.cpp  storage/CaptureScanner.h

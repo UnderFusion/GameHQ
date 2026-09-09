@@ -376,19 +376,19 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1051
+          "line": 1069
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1067
+          "line": 1085
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1099
+          "line": 1117
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 466
+          "line": 480
         },
         {
           "file": "src/ui/qml/components/ConfirmDialog.qml",
@@ -1759,15 +1759,15 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 493
+          "line": 498
         },
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 510
+          "line": 515
         },
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 524
+          "line": 529
         },
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
@@ -2217,7 +2217,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 353
+          "line": 363
         }
       ],
       "plural": false,
@@ -2289,11 +2289,11 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 347
+          "line": 357
         },
         {
           "file": "src/ui/AppController.cpp",
-          "line": 369
+          "line": 379
         }
       ],
       "plural": false,
@@ -2850,7 +2850,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 194
+          "line": 204
         }
       ],
       "plural": false,
@@ -2937,7 +2937,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 200
+          "line": 210
         }
       ],
       "plural": false,
@@ -2956,7 +2956,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 209
+          "line": 219
         }
       ],
       "plural": false,
@@ -3060,7 +3060,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 220
+          "line": 230
         }
       ],
       "plural": false,
@@ -3079,7 +3079,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 230
+          "line": 240
         }
       ],
       "plural": false,
@@ -3345,7 +3345,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 479
+          "line": 480
         }
       ],
       "plural": false,
@@ -4255,7 +4255,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 454
+          "line": 455
         }
       ],
       "plural": false,
@@ -4698,7 +4698,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1101
+          "line": 1119
         },
         {
           "file": "src/ui/qml/components/DesktopGalleryHeader.qml",
@@ -4719,7 +4719,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1097
+          "line": 1115
         },
         {
           "file": "src/ui/qml/components/OverlayActionMenu.qml",
@@ -4764,7 +4764,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1040
+          "line": 1058
         }
       ],
       "plural": false,
@@ -4784,11 +4784,11 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1049
+          "line": 1067
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 464
+          "line": 478
         }
       ],
       "plural": false,
@@ -4805,7 +4805,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 382
+          "line": 400
         }
       ],
       "plural": true,
@@ -4824,7 +4824,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1065
+          "line": 1083
         }
       ],
       "plural": false,
@@ -4998,7 +4998,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 335
+          "line": 345
         }
       ],
       "plural": false,
@@ -5015,7 +5015,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 321
+          "line": 331
         }
       ],
       "plural": false,
@@ -5032,7 +5032,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 326
+          "line": 336
         }
       ],
       "plural": false,
@@ -5049,7 +5049,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 315
+          "line": 325
         }
       ],
       "plural": false,
@@ -5066,7 +5066,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 309
+          "line": 319
         }
       ],
       "plural": false,
@@ -7091,7 +7091,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1022
+          "line": 1040
         },
         {
           "file": "src/ui/qml/settings/LibrarySettingsPage.qml",
@@ -7141,7 +7141,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 153
+          "line": 158
         },
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
@@ -7166,7 +7166,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 161
+          "line": 166
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7187,7 +7187,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 157
+          "line": 162
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7208,7 +7208,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 163
+          "line": 168
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7229,7 +7229,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 165
+          "line": 170
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7250,7 +7250,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 155
+          "line": 160
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7271,7 +7271,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 159
+          "line": 164
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7378,7 +7378,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 310
+          "line": 311
         }
       ],
       "plural": false,
@@ -7395,7 +7395,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 317
+          "line": 318
         }
       ],
       "plural": false,
@@ -7412,7 +7412,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 323
+          "line": 324
         }
       ],
       "plural": false,
@@ -7429,7 +7429,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 280
+          "line": 281
         }
       ],
       "plural": false,
@@ -7448,7 +7448,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 286
+          "line": 287
         }
       ],
       "plural": false,
@@ -7465,7 +7465,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 266
+          "line": 267
         }
       ],
       "plural": false,
@@ -7482,7 +7482,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 218
+          "line": 219
         }
       ],
       "plural": false,
@@ -7499,7 +7499,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 362
+          "line": 363
         }
       ],
       "plural": false,
@@ -7518,7 +7518,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 357
+          "line": 358
         }
       ],
       "plural": false,
@@ -7526,6 +7526,23 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "c1df9e7b183b26b477a5ec92c3cc871804461f3dceaf1c724992bb57e1569645"
+    },
+    {
+      "id": "gamehq.notification.sounds_unavailable.title",
+      "source": "Some interface sounds are unavailable",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 519
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0"
     },
     {
       "id": "gamehq.notifications.window_title",
@@ -7571,7 +7588,7 @@
       "locations": [
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 100
+          "line": 103
         }
       ],
       "plural": false,
@@ -7729,7 +7746,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 112
+          "line": 122
         }
       ],
       "plural": false,
@@ -9136,7 +9153,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 95
+          "line": 139
         }
       ],
       "plural": false,
@@ -9153,7 +9170,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 91
+          "line": 135
         }
       ],
       "plural": false,
@@ -9170,7 +9187,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 103
+          "line": 147
         }
       ],
       "plural": false,
@@ -9187,7 +9204,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 98
+          "line": 142
         }
       ],
       "plural": false,
@@ -9204,7 +9221,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 93
+          "line": 137
         }
       ],
       "plural": false,
@@ -9221,7 +9238,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 57
+          "line": 101
         }
       ],
       "plural": false,
@@ -9238,7 +9255,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 53
+          "line": 97
         }
       ],
       "plural": false,
@@ -9255,7 +9272,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 60
+          "line": 104
         }
       ],
       "plural": false,
@@ -9272,7 +9289,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 69
+          "line": 113
         }
       ],
       "plural": false,
@@ -9289,7 +9306,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 75
+          "line": 119
         }
       ],
       "plural": false,
@@ -9306,7 +9323,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 67
+          "line": 111
         }
       ],
       "plural": false,
@@ -9323,7 +9340,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 55
+          "line": 99
         }
       ],
       "plural": false,
@@ -9340,7 +9357,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 45
+          "line": 66
         }
       ],
       "plural": false,
@@ -9357,7 +9374,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 30
+          "line": 51
         }
       ],
       "plural": false,
@@ -9374,7 +9391,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 26
+          "line": 47
         }
       ],
       "plural": false,
@@ -9391,7 +9408,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 33
+          "line": 54
         }
       ],
       "plural": false,
@@ -9408,7 +9425,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 41
+          "line": 62
         }
       ],
       "plural": false,
@@ -9425,7 +9442,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 35
+          "line": 56
         }
       ],
       "plural": false,
@@ -9442,7 +9459,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 28
+          "line": 49
         }
       ],
       "plural": false,
@@ -9459,7 +9476,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 43
+          "line": 64
         }
       ],
       "plural": false,
@@ -9476,7 +9493,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 160
+          "line": 204
         }
       ],
       "plural": false,
@@ -9493,7 +9510,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 153
+          "line": 197
         }
       ],
       "plural": false,
@@ -9510,7 +9527,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 114
+          "line": 158
         }
       ],
       "plural": false,
@@ -9527,7 +9544,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 110
+          "line": 154
         }
       ],
       "plural": false,
@@ -9544,7 +9561,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 129
+          "line": 173
         }
       ],
       "plural": false,
@@ -9561,7 +9578,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 118
+          "line": 162
         }
       ],
       "plural": false,
@@ -9578,7 +9595,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 112
+          "line": 156
         }
       ],
       "plural": false,
@@ -11834,7 +11851,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 508
+          "line": 513
         }
       ],
       "plural": false,
@@ -11851,7 +11868,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 506
+          "line": 511
         }
       ],
       "plural": false,
@@ -12621,7 +12638,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 473
+          "line": 478
         }
       ],
       "plural": false,
@@ -12638,7 +12655,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 478
+          "line": 483
         }
       ],
       "plural": false,
@@ -12655,7 +12672,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 471
+          "line": 476
         }
       ],
       "plural": false,
@@ -12674,7 +12691,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 469
+          "line": 474
         }
       ],
       "plural": false,
@@ -13171,7 +13188,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 491
+          "line": 496
         }
       ],
       "plural": false,
@@ -13188,7 +13205,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 489
+          "line": 494
         }
       ],
       "plural": false,
@@ -13205,7 +13222,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 522
+          "line": 527
         }
       ],
       "plural": false,
@@ -13224,7 +13241,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 520
+          "line": 525
         }
       ],
       "plural": false,
