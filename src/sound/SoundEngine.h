@@ -9,8 +9,10 @@ class ConfigManager;
 class QSoundEffect;
 
 // Console-style UI sounds (docs/sound-system.md). Effects are pre-loaded
-// from embedded resources at startup; play() respects "sounds.enabled" and
-// "sounds.volume" from config live. Exposed to QML as "sounds".
+// from embedded resources at startup; play() respects "sounds.enabled" live
+// and reads the level SoundLevels picks for the event: "sounds.capture_volume"
+// for capture feedback, "sounds.volume" for everything else. Exposed to QML
+// as "sounds".
 //
 // Loading is asynchronous: each effect reports Ready or a real error through
 // QSoundEffect::statusChanged, which is logged per effect. The first effect

@@ -13,6 +13,7 @@
 
 class CaptureDatabase;
 class CaptureScanner;
+class SoundEngine;
 class CaptureLocations;
 class ConfigManager;
 class CurrentGameService;
@@ -194,6 +195,13 @@ public:
     Q_INVOKABLE void resetConfigGroup(const QString& prefix);
     Q_INVOKABLE void resetAllConfig();
 
+    // Wired after construction: App builds SoundEngine long after the
+    // controller, and the preview is the only thing here that needs it.
+    void setSoundEngine(SoundEngine* sounds) { m_sounds = sounds; }
+    // Plays the real saved-screenshot sound at the current capture level, so
+    // the Settings slider is judged with the sound it actually governs.
+    Q_INVOKABLE void previewCaptureSound();
+
 signals:
     void gamesChanged();
     void filterChanged();
@@ -235,6 +243,7 @@ private:
     ConfigManager* m_config;
     CaptureLocations* m_locations;
     StartupManager* m_startup;
+    SoundEngine* m_sounds = nullptr;
     LanguageManager* m_languageManager;
     ScreenshotService* m_screenshots = nullptr;   // owned by App; set post-construction
     std::unique_ptr<CaptureLibraryService> m_captureLibrary;

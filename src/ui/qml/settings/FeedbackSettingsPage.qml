@@ -65,6 +65,19 @@ SettingsPage {
             }
         }
         SettingsRow {
+            //% "Capture volume"
+            label: qsTrId("gamehq.settings.feedback.audio.capture_volume")
+            //% "Level for the screenshot, clip and capture-received sounds heard over a game."
+            description: qsTrId("gamehq.settings.feedback.audio.capture_volume.description")
+            SettingsSlider {
+                configKey: "sounds.capture_volume"
+                defaultValue: 100
+                from: 0
+                to: 100
+                stepSize: 5
+            }
+        }
+        SettingsRow {
             //% "Screenshot sound"
             label: qsTrId("gamehq.settings.feedback.audio.screenshot")
             SettingsToggle { configKey: "capture.screenshot_sound"; defaultValue: true }
@@ -105,8 +118,14 @@ SettingsPage {
             AccentButton {
                 //% "Play test sound"
                 label: qsTrId("gamehq.settings.feedback.preview.sound")
-                primary: true
+                quiet: true
                 onClicked: sounds.play("confirm")
+            }
+            AccentButton {
+                //% "Play capture sound"
+                label: qsTrId("gamehq.settings.feedback.preview.capture_sound")
+                primary: true
+                onClicked: app.previewCaptureSound()
             }
         }
     }

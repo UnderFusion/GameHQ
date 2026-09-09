@@ -57,6 +57,7 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::StartupMinimized,        false },
         { ConfigKeys::SoundsEnabled,           true },
         { ConfigKeys::SoundsVolume,            80 },
+        { ConfigKeys::SoundsCaptureVolume,     100 },
         { ConfigKeys::TrayCloseToTray,         true },
         { ConfigKeys::TrayMinimizeToTray,      false },
         { ConfigKeys::NotificationsEnabled,    true },

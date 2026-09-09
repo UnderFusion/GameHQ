@@ -13,6 +13,8 @@
 #include "localization/NativeText.h"
 #include "localization/LanguageManager.h"
 #include "storage/CaptureDatabase.h"
+#include "sound/SoundEngine.h"
+#include "sound/SoundLevels.h"
 #include "storage/CaptureScanner.h"
 #include "ui/CaptureLibraryService.h"
 #include "ui/CurrentGameService.h"
@@ -475,6 +477,18 @@ void AppController::resetAllConfig()
     m_config->save();
     emit replaySettingsChanged();
     rescan();
+}
+
+// The preview deliberately goes through the ordinary play path: it obeys the
+// UI-sounds master switch and the capture level exactly as a real capture
+// does, so what the user hears here is what a capture will sound like.
+void AppController::previewCaptureSound()
+{
+    if (!m_sounds) {
+        qWarning() << "Sound preview requested before the sound engine exists";
+        return;
+    }
+    m_sounds->play(SoundLevels::previewEvent());
 }
 
 void AppController::resetCategory(const QString& category)

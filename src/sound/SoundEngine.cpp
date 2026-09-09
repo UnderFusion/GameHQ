@@ -1,6 +1,7 @@
 #include "sound/SoundEngine.h"
 #include "config/ConfigKeys.h"
 #include "config/ConfigManager.h"
+#include "sound/SoundLevels.h"
 
 #include <QSoundEffect>
 #include <QUrl>
@@ -87,7 +88,15 @@ void SoundEngine::play(const QString& event)
         qWarning() << "Sounds: unknown event" << event;
         return;
     }
-    const qreal volume = m_config->value(ConfigKeys::SoundsVolume, 80).toInt() / 100.0;
-    effect->setVolume(qBound(0.0, volume, 1.0));
+    // Capture feedback answers to its own level, and only that level is read
+    // perceptually: the interface volume keeps the straight mapping every
+    // existing user already set theirs against.
+    const qreal volume =
+        SoundLevels::levelFor(event) == SoundLevels::Level::Capture
+            ? SoundLevels::perceptualAmplitude(
+                  m_config->value(ConfigKeys::SoundsCaptureVolume, 100).toInt())
+            : SoundLevels::linearAmplitude(
+                  m_config->value(ConfigKeys::SoundsVolume, 80).toInt());
+    effect->setVolume(volume);
     effect->play();
 }

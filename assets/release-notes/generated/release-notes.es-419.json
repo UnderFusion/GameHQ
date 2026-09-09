@@ -1,15 +1,27 @@
 {
-  "version": "0.7.19",
+  "version": "0.7.20",
   "date": "2026-09-09",
   "sections": [
     {
-      "title": "Fixed",
+      "title": "Added",
       "items": [
-        "Every skipped or failed screenshot and every failed clip save now shows a clear notification stating the reason. When a capture file is written but cannot be added to the library, the notification says \"Saved to disk, not in library\" instead of claiming it was saved."
+        "Capture sounds now have their own volume in Settings, separate from the interface volume, and a preview button that plays the real capture sound so the level can be set without taking a screenshot."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.19",
+      "date": "2026-09-09",
+      "sections": [
+        {
+          "title": "Fixed",
+          "items": [
+            "Every skipped or failed screenshot and every failed clip save now shows a clear notification stating the reason. When a capture file is written but cannot be added to the library, the notification says \"Saved to disk, not in library\" instead of claiming it was saved."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.18",
       "date": "2026-09-09",
@@ -192,26 +204,6 @@
           ]
         }
       ]
-    },
-    {
-      "version": "0.7.6",
-      "date": "2026-08-31",
-      "sections": [
-        {
-          "title": "Fixed",
-          "items": [
-            "Fixed an input path that could cause system-wide mouse stuttering or brief freezes while GameHQ was running. Global Mouse Back/Forward/Middle monitoring is now installed only while a mouse binding exists or mouse-binding capture requires it.",
-            "When global mouse monitoring is required, the Windows low-level mouse hook now runs on a dedicated worker thread instead of the interface thread. Hook start/stop and rapid-restart handling were also hardened so held buttons are released cleanly and stale queued input cannot survive across hook lifetimes.",
-            "WinMM joystick discovery no longer performs potentially slow device scans on the interface thread, preventing periodic GameHQ interface stalls on systems where discovery is slow."
-          ]
-        },
-        {
-          "title": "Diagnostics / Reliability",
-          "items": [
-            "Added lightweight, rate-limited performance diagnostics for slow XInput and WinMM operations and interface event-loop stalls. Any remaining hitch should now leave useful Perf: evidence in gamehq.log."
-          ]
-        }
-      ]
     }
   ],
   "_meta": {
@@ -219,6 +211,13 @@
     "requested_locale": "es-419",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.20",
+        "source_integrity": "sha256:deef8dd53b615f07af3e66bb1ce275c0e84ece8a5f54149fc334266f90d83424",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.19",
         "source_integrity": "sha256:5ed0328152f05aaa6a47588d010cda2f6a7406c763c71b3ae67ee59b2f767b69",
@@ -302,13 +301,6 @@
         "resolved_locale": "es-419",
         "fallback": false,
         "fallback_reason": null
-      },
-      {
-        "version": "0.7.6",
-        "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
       }
     ]
   }

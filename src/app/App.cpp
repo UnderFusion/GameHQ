@@ -627,6 +627,9 @@ bool App::init()
             m_controller.get(), &AppController::syncOverlayToForegroundGame);
 
     m_sounds = std::make_unique<SoundEngine>(m_config.get());
+    // Settings previews the capture sound through the controller; the engine
+    // only exists this late, so the controller is told about it here.
+    m_controller->setSoundEngine(m_sounds.get());
     connect(m_sounds.get(), &SoundEngine::loadFailed, this,
             [this](const QString& failedEvents) {
                 // One notice per run, deliberately not gated on

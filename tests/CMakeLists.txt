@@ -604,12 +604,19 @@ gamehq_add_test(tst_capturerequest
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureRequest.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureRequest.h")
 
-# p6-3: what the sound engine reports while its effects load. Pure policy — no
-# audio device, no Qt Multimedia, no asynchronous loading to wait on.
+# p6-2/p6-3: which level an event answers to, how a slider percentage becomes an
+# amplitude, and what the engine reports while its effects load. No audio device
+# and no asynchronous loading to wait on.
 gamehq_add_test(tst_soundengine
     tst_soundengine.cpp
     "${CMAKE_SOURCE_DIR}/src/sound/SoundLoadTracker.cpp"
-    "${CMAKE_SOURCE_DIR}/src/sound/SoundLoadTracker.h")
+    "${CMAKE_SOURCE_DIR}/src/sound/SoundLoadTracker.h"
+    "${CMAKE_SOURCE_DIR}/src/sound/SoundLevels.cpp"
+    "${CMAKE_SOURCE_DIR}/src/sound/SoundLevels.h"
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp")
+# Qt Multimedia is linked for QtAudio::convertVolume only: it is a plain
+# conversion function and opens no audio device.
+target_link_libraries(tst_soundengine PRIVATE Qt6::Multimedia)
 
 add_executable(launcher_argecho_fixture launcher_argecho_fixture.cpp)
 target_link_options(launcher_argecho_fixture PRIVATE -static -municode)

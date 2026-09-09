@@ -54,6 +54,9 @@ inline constexpr QLatin1StringView StartupEnabled{ "startup.enabled" };
 inline constexpr QLatin1StringView StartupMinimized{ "startup.minimized" };
 inline constexpr QLatin1StringView SoundsEnabled{ "sounds.enabled" };
 inline constexpr QLatin1StringView SoundsVolume{ "sounds.volume" };
+// Capture feedback carries its own level: it is heard over a running game,
+// while navigation and dialog sounds are heard in a quiet app.
+inline constexpr QLatin1StringView SoundsCaptureVolume{ "sounds.capture_volume" };
 inline constexpr QLatin1StringView TrayCloseToTray{ "tray.close_to_tray" };
 inline constexpr QLatin1StringView TrayMinimizeToTray{ "tray.minimize_to_tray" };
 inline constexpr QLatin1StringView NotificationsEnabled{ "notifications.enabled" };

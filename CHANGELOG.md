@@ -6,6 +6,16 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.20] - 2026-09-09
+
+### Added
+
+- Capture sounds have their own volume in Settings, separate from the interface
+  volume, and read that slider perceptually so half-way sounds about half as
+  loud. The interface volume keeps its original mapping and value.
+- A preview button plays the real capture sound at the chosen level, so it can
+  be set without taking a screenshot.
+
 ## [0.7.19] - 2026-09-09
 
 ### Fixed
