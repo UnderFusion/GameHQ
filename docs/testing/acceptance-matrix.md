@@ -11,39 +11,69 @@ gate is `tools/cmake/bin/ctest.exe --test-dir out --output-on-failure`.
 Full-gate result recorded during this audit:
 `out/acceptance-gate-M02-M12.log` — **100% tests passed, 0 failed out of 92**.
 
+## How to read this matrix
+
+A green gate is **not** the same thing as a passed acceptance criterion. Two
+different claims appear below and must not be conflated:
+
+- **Automated contract coverage** — a committed test pins the semantics the
+  criterion describes. This is what the gate proves.
+- **Residual acceptance** — behaviour that only a real game, a real display or a
+  real listener can confirm. Until that evidence exists the criterion is *not*
+  passed, however green the gate is.
+
+**M02-M05 carry unverified residual live-game acceptance.** Their group `p2`
+stays in `review` for exactly that reason: no game window was available when the
+implementation landed, and deterministic tests plus a desktop smoke run are not
+live replay evidence. Do not mark M02-M05 passed until the live evidence below
+is collected.
+
 ## M02 — two saves inside one second produce two files; the first is byte-identical afterwards
 
-Automated: `tst_capturepublisher` (`twoClipSavesInsideOneSecondBothSurvive`,
-`aFailedExportNeverDeletesAnExistingClip`) pin millisecond-*and*-collision-unique
-names and prove a later save never touches an earlier clip's bytes.
+Automated contract coverage: `tst_capturepublisher`
+(`twoClipSavesInsideOneSecondBothSurvive`, `aFailedExportNeverDeletesAnExistingClip`)
+pin millisecond-*and*-collision-unique names and prove a later save never touches
+an earlier clip's bytes.
 
-No residual manual observation.
+**Residual live-game acceptance (unverified → `p2`):** two rapid saves during a
+real game producing two playable clips *with* their paired thumbnails. The
+reservation and companion-name logic is unit-locked; only a real export proves the
+clip/thumbnail pair survives the full write path.
 
 ## M03 — game switch and buffer restart during export still yield a complete clip; shutdown never leaves a `.partial` file undetected
 
-Automated: `tst_segmentrecorder` (`exportReadsCompleteSnapshotAfterRecorderReplacement`,
+Automated contract coverage: `tst_segmentrecorder` (`exportReadsCompleteSnapshotAfterRecorderReplacement`,
 `replacementRecorderRetainsLeasedStalePaths`, `overlappingLeasesReleaseOnlyTheirOwnPaths`,
 `oldLeaseDoesNotBlockUnrelatedTrimming`) and `tst_framepumpservice`
 (`manualOwnershipSurvivesSettingsRestartAndStaleCallbacks`,
 `staleWorkerFactsCannotOverwriteNewerRequests`). The lease/snapshot semantics that
 survive a pipe replacement are already unit-locked.
 
-No residual manual observation.
+**Residual live-game acceptance (unverified → `p2`):** switching games mid-export,
+re-arming the buffer during an export, and shutting the app down mid-export — all
+against a real running game — still yielding a complete clip and no undetected
+`.partial` file.
 
 ## M04 — apartment/session failure ends in `Failed` state, never `Recording`
 
-Automated: `tst_framepumpservice` (`startupFailureIsTerminalForThatGeneration`,
-`onlyConfirmedStartupReportsRecording`, `everyNotReadyStateRejectsSaves`).
+Automated contract coverage: `tst_framepumpservice`
+(`startupFailureIsTerminalForThatGeneration`, `onlyConfirmedStartupReportsRecording`,
+`everyNotReadyStateRejectsSaves`).
 
-No residual manual observation.
+**Residual live-game acceptance (unverified → `p2`):** a real readiness failure
+against a live game, and a save pressed before footage is actually ready, ending
+in `Failed` with the early-save explanation rather than a silent `Recording`.
 
 ## M05 — manual-mode save survives `restartBuffer` and an HDR screenshot
 
-Automated: `tst_framepumpservice` (`manualColdArmBecomesReadyAndSaves`,
+Automated contract coverage: `tst_framepumpservice` (`manualColdArmBecomesReadyAndSaves`,
 `manualOwnershipSurvivesSettingsRestartAndStaleCallbacks`,
 `hdrAndManualOwnersReleaseIndependently`, `saveFailureReleasesManualOwnershipButKeepsAuto`).
 
-No residual manual observation.
+**Residual live-game acceptance (unverified → `p2`):** a manual-mode save over a
+real game overlapping a real HDR screenshot, and the bounded idle timeout actually
+expiring on a live buffer. Ownership arithmetic is unit-locked; the overlap and
+expiry timing are not.
 
 ## M06 — one save shows one toast transitioning Saving → Saved/Failed; a burst of 20 posts shows at most the configured cap
 
