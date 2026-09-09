@@ -199,6 +199,58 @@ IGraphicsCaptureSession3 : public IInspectable {
 };
 
 // ============================================================================
+//  Borderless capture access (Win11) — p4-2
+// ============================================================================
+// The yellow capture border can only be suppressed by a process that holds
+// Borderless capture access. mingw-w64 ships no declaration for any of this, and
+// the statics IID is not in any public mingw header either — it was read off the
+// live activation factory via IInspectable::GetIids() by the p4-1 spike
+// (tools/spikes/wgc_border_probe.cpp) rather than guessed.
+
+// Windows.Graphics.Capture.GraphicsCaptureAccessKind
+// Values read out of Windows.Graphics.winmd by tools/spikes/winrt_enum_probe.exe.
+enum GraphicsCaptureAccessKind : INT32 {
+    GraphicsCaptureAccessKind_Borderless   = 0,
+    GraphicsCaptureAccessKind_Programmatic = 1,
+};
+
+// Windows.Foundation.IAsyncOperation<AppCapabilityAccessStatus>.
+// Parameterized interfaces have computed IIDs, so this is never QI'd — we only use
+// the pointer RequestAccessAsync returns, at its own vtable offsets.
+struct IAsyncOperationAppCapabilityAccessStatus : public IInspectable {
+    virtual HRESULT STDMETHODCALLTYPE put_Completed(IUnknown* handler) = 0;   // slot 6 (stub)
+    virtual HRESULT STDMETHODCALLTYPE get_Completed(IUnknown** handler) = 0;  // slot 7 (stub)
+    virtual HRESULT STDMETHODCALLTYPE GetResults(INT32* results) = 0;         // slot 8
+};
+
+// Windows.Graphics.Capture.IGraphicsCaptureAccessStatics : IInspectable
+//   {743ED370-06EC-5040-A58A-901F0F757095}
+struct __declspec(uuid("743ED370-06EC-5040-A58A-901F0F757095"))
+IGraphicsCaptureAccessStatics : public IInspectable {
+    virtual HRESULT STDMETHODCALLTYPE RequestAccessAsync(
+        INT32 kind, IAsyncOperationAppCapabilityAccessStatus** operation) = 0; // slot 6
+};
+
+// Windows.Foundation.IAsyncInfo : IInspectable  {00000036-0000-0000-C000-000000000046}
+// Used to wait for the access request without a Completed handler.
+struct __declspec(uuid("00000036-0000-0000-C000-000000000046"))
+IAsyncInfoShim : public IInspectable {
+    virtual HRESULT STDMETHODCALLTYPE get_Id(UINT32* id) = 0;                 // slot 6 (stub)
+    virtual HRESULT STDMETHODCALLTYPE get_Status(INT32* status) = 0;          // slot 7
+    virtual HRESULT STDMETHODCALLTYPE get_ErrorCode(HRESULT* code) = 0;       // slot 8
+    virtual HRESULT STDMETHODCALLTYPE Cancel() = 0;                           // slot 9 (stub)
+    virtual HRESULT STDMETHODCALLTYPE Close() = 0;                            // slot 10
+};
+
+// Windows.Foundation.AsyncStatus
+enum WgcAsyncStatus : INT32 {
+    WgcAsyncStatus_Started   = 0,
+    WgcAsyncStatus_Completed = 1,
+    WgcAsyncStatus_Canceled  = 2,
+    WgcAsyncStatus_Error     = 3,
+};
+
+// ============================================================================
 //  IID constants (C initializer form — explicit, not reliant on __uuidof under MinGW)
 // ============================================================================
 static const GUID IID_IDirect3DDevice =
@@ -223,6 +275,10 @@ static const GUID IID_IGraphicsCaptureSession =
     { 0x814E42A9, 0xF70F, 0x4AD7, { 0x93, 0x9B, 0xFD, 0xDC, 0xC6, 0xEB, 0x88, 0x0D } };
 static const GUID IID_IGraphicsCaptureSession3 =
     { 0xF2CDD966, 0x22AE, 0x5EA1, { 0x95, 0x96, 0x3A, 0x28, 0x93, 0x44, 0xC3, 0xBE } };
+static const GUID IID_IGraphicsCaptureAccessStatics =
+    { 0x743ED370, 0x06EC, 0x5040, { 0xA5, 0x8A, 0x90, 0x1F, 0x0F, 0x75, 0x70, 0x95 } };
+static const GUID IID_IAsyncInfoShim =
+    { 0x00000036, 0x0000, 0x0000, { 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46 } };
 
 // ============================================================================
 //  Activation runtimeclass strings
@@ -231,6 +287,8 @@ static const wchar_t* const kWgcCaptureItemClass =
     L"Windows.Graphics.Capture.GraphicsCaptureItem";                 // -> IGraphicsCaptureItemInterop
 static const wchar_t* const kWgcFramePoolClass =
     L"Windows.Graphics.Capture.Direct3D11CaptureFramePool";          // -> ...FramePoolStatics / Statics2
+static const wchar_t* const kWgcCaptureAccessClass =
+    L"Windows.Graphics.Capture.GraphicsCaptureAccess";               // -> IGraphicsCaptureAccessStatics
 
 // ============================================================================
 //  d3d11.dll export — resolved at runtime via GetProcAddress (as the spike does)

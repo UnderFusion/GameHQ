@@ -1,21 +1,34 @@
 {
-  "version": "0.7.13",
+  "version": "0.7.14",
   "date": "2026-09-09",
   "sections": [
     {
-      "title": "Changed",
-      "items": [
-        "Screenshot and saved replay sounds are louder and easier to distinguish from quiet navigation ticks."
-      ]
-    },
-    {
       "title": "Fixed",
       "items": [
-        "Regenerating the default sound pack always writes to its own sound folder, regardless of the command's working directory."
+        "GameHQ now asks Windows for permission to hide the yellow recording border and reports the real result instead of always claiming the border is hidden.",
+        "On Windows versions that cannot hide the recording border, the capture status now says so instead of reporting it as hidden."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.13",
+      "date": "2026-09-09",
+      "sections": [
+        {
+          "title": "Changed",
+          "items": [
+            "Screenshot and saved replay sounds are louder and easier to distinguish from quiet navigation ticks."
+          ]
+        },
+        {
+          "title": "Fixed",
+          "items": [
+            "Regenerating the default sound pack always writes to its own sound folder, regardless of the command's working directory."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.12",
       "date": "2026-09-08",
@@ -258,6 +271,13 @@
     "requested_locale": "th-TH",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.14",
+        "source_integrity": "sha256:ee2a4783511199f0c51953ec0b9557caf6670a93ffd5893e2a8451951b6a7d38",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.13",
         "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",

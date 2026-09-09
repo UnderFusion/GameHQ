@@ -2,6 +2,7 @@
 
 #include "capture/wgc_shims.h"
 #include "capture/AudioCapture.h"
+#include "capture/CaptureBorderState.h"
 #include "capture/CapturePublisher.h"
 #include "capture/CaptureUtil.h"
 #include "capture/HdrCapabilities.h"
@@ -39,6 +40,7 @@
 
 #include <algorithm>
 #include <cstring>
+#include <cwchar>
 
 #include <roapi.h>       // RoInitialize / RoUninitialize / RoGetActivationFactory
 #include <winstring.h>   // WindowsCreateString / WindowsDeleteString
@@ -48,6 +50,91 @@
 // ===========================================================================
 
 namespace { void sweepStaleReplayCache(); }   // defined below with the helpers
+
+namespace {
+
+// Real OS build, not the marketing version: GetVersionEx() lies to unmanifested
+// processes, RtlGetVersion() does not. 0 means "could not read it".
+unsigned long windowsBuildNumber()
+{
+    static const unsigned long build = []() -> unsigned long {
+        using PfnRtlGetVersion = LONG (WINAPI*)(PRTL_OSVERSIONINFOW);
+        const HMODULE ntdll = GetModuleHandleW(L"ntdll.dll");
+        const auto pfn = ntdll ? reinterpret_cast<PfnRtlGetVersion>(
+                                     GetProcAddress(ntdll, "RtlGetVersion"))
+                               : nullptr;
+        RTL_OSVERSIONINFOW info{};
+        info.dwOSVersionInfoSize = sizeof(info);
+        if (!pfn || pfn(&info) != 0)
+            return 0;
+        return info.dwBuildNumber;
+    }();
+    return build;
+}
+
+// GraphicsCaptureAccess.RequestAccessAsync(Borderless), resolved once per process.
+// Must run on the MTA worker thread. Returns an AppCapabilityAccessStatus value, or
+// CaptureBorder::AccessNotRequested when the request could not even be started.
+//
+// p4-1 measured UserPromptRequired here for this unpackaged build — the OS will not
+// hand Borderless access to a process without package identity, and there is nowhere
+// to show the consent prompt from a background capture thread. We record that answer
+// honestly instead of ignoring it.
+int requestBorderlessAccess()
+{
+    static const int status = []() -> int {
+        HSTRING cls = nullptr;
+        if (FAILED(WindowsCreateString(kWgcCaptureAccessClass,
+                                       UINT32(wcslen(kWgcCaptureAccessClass)), &cls)))
+            return CaptureBorder::AccessNotRequested;
+        const auto releaseCls = qScopeGuard([&] { WindowsDeleteString(cls); });
+
+        IGraphicsCaptureAccessStatics* statics = nullptr;
+        HRESULT hr = RoGetActivationFactory(cls, IID_IGraphicsCaptureAccessStatics,
+                                            reinterpret_cast<void**>(&statics));
+        if (FAILED(hr) || !statics) {
+            qInfo().nospace() << "FramePump: GraphicsCaptureAccess unavailable hr=0x"
+                              << Qt::hex << quint32(hr);
+            return CaptureBorder::AccessNotRequested;
+        }
+
+        IAsyncOperationAppCapabilityAccessStatus* op = nullptr;
+        hr = statics->RequestAccessAsync(GraphicsCaptureAccessKind_Borderless, &op);
+        statics->Release();
+        if (FAILED(hr) || !op) {
+            qInfo().nospace() << "FramePump: RequestAccessAsync(Borderless) failed hr=0x"
+                              << Qt::hex << quint32(hr);
+            return CaptureBorder::AccessNotRequested;
+        }
+        const auto releaseOp = qScopeGuard([&] { op->Release(); });
+
+        IAsyncInfoShim* info = nullptr;
+        if (FAILED(op->QueryInterface(IID_IAsyncInfoShim, reinterpret_cast<void**>(&info))) || !info)
+            return CaptureBorder::AccessNotRequested;
+        const auto releaseInfo = qScopeGuard([&] { info->Close(); info->Release(); });
+
+        // Bounded wait: this runs once, during pipeline bring-up, and must never
+        // wedge the worker if the broker never answers.
+        INT32 asyncStatus = WgcAsyncStatus_Started;
+        for (int i = 0; i < 100; ++i) {          // <= ~2 s
+            if (FAILED(info->get_Status(&asyncStatus)))
+                return CaptureBorder::AccessNotRequested;
+            if (asyncStatus != WgcAsyncStatus_Started)
+                break;
+            Sleep(20);
+        }
+        if (asyncStatus != WgcAsyncStatus_Completed)
+            return CaptureBorder::AccessNotRequested;
+
+        INT32 result = CaptureBorder::AccessNotRequested;
+        if (FAILED(op->GetResults(&result)))
+            return CaptureBorder::AccessNotRequested;
+        return int(result);
+    }();
+    return status;
+}
+
+} // namespace
 
 // How long an unfinished clip file may sit in a Clips folder before it counts
 // as abandoned. Same 10 minutes the segment cache uses.
@@ -71,6 +158,11 @@ struct FramePumpWorker::Pipeline
     QVector<float>                audioBuf;
     QString                       gameName;                // for the saved-clip Clips/ path
     QString                       executablePath;          // for sidebar game icon metadata
+
+    // What actually happened to the Windows capture border for this session (p4-2).
+    // Never assumed — derived from the OS build, the access request and the read-back.
+    CaptureBorder::State          borderState  = CaptureBorder::Unknown;
+    QString                       borderDetail;
 
     // t24 experimental HDR tone-map stage (isolated, hidden flag, see
     // ConfigKeys::InternalCaptureExperimentalHdr). hdrToneMapActive is only
@@ -503,24 +595,39 @@ bool FramePumpWorker::createSession(Pipeline* pipe, void* hwndVoid, int srcW, in
     hr = pipe->framePool->CreateCaptureSession(pipe->item, &pipe->session);
     if (FAILED(hr) || !pipe->session) return failStep("CreateCaptureSession", hr);
 
+    // Try to suppress the yellow WGC capture border BEFORE StartCapture — that is the
+    // documented order, and the only one that can take effect for the very first frame.
+    //
+    // put_IsBorderRequired(false) returns S_OK and reads back false even when the
+    // process holds no Borderless access at all (measured in p4-1: this unpackaged
+    // build gets UserPromptRequired), so the HRESULT is NOT evidence. Collect every
+    // fact and let CaptureBorder::derive() decide; it is the only thing allowed to
+    // conclude Hidden, and it never does so on a pre-22000 build.
+    CaptureBorder::Facts border;
+    border.osBuild = windowsBuildNumber();
+
+    IGraphicsCaptureSession3* session3 = nullptr;
+    border.sessionInterfaceAvailable =
+        SUCCEEDED(pipe->session->QueryInterface(IID_IGraphicsCaptureSession3,
+                                                reinterpret_cast<void**>(&session3)))
+        && session3 != nullptr;
+
+    if (border.sessionInterfaceAvailable) {
+        border.accessStatus = requestBorderlessAccess();
+        border.setterSucceeded = SUCCEEDED(session3->put_IsBorderRequired(0));   // 0 = false
+        unsigned char required = 1;
+        border.readBackSucceeded = SUCCEEDED(session3->get_IsBorderRequired(&required));
+        border.readBackBorderRequired = (required != 0);
+        session3->Release();
+    }
+
+    pipe->borderState  = CaptureBorder::derive(border);
+    pipe->borderDetail = CaptureBorder::describe(border, pipe->borderState);
+    qInfo().noquote() << "FramePump: capture border" << pipe->borderDetail;
+    emit borderStateChanged(m_pumpGeneration, int(pipe->borderState), pipe->borderDetail);
+
     hr = pipe->session->StartCapture();
     if (FAILED(hr)) return failStep("StartCapture", hr);
-
-    // Best-effort: hide the yellow WGC capture border (Win11 IGraphicsCaptureSession3).
-    // If the interface/capability is unavailable, QI fails and the border just stays.
-    IGraphicsCaptureSession3* session3 = nullptr;
-    if (SUCCEEDED(pipe->session->QueryInterface(IID_IGraphicsCaptureSession3,
-                                                reinterpret_cast<void**>(&session3))) && session3) {
-        const HRESULT hrb = session3->put_IsBorderRequired(0);   // 0 = false
-        if (SUCCEEDED(hrb))
-            qInfo() << "FramePump: capture border hidden";
-        else
-            qInfo().nospace() << "FramePump: could not hide capture border (hr=0x"
-                              << Qt::hex << quint32(hrb) << ")";
-        session3->Release();
-    } else {
-        qInfo() << "FramePump: capture-border interface unavailable — border stays";
-    }
     return true;
 }
 
@@ -1104,6 +1211,19 @@ FramePumpService::FramePumpService(ConfigManager* config, CaptureLocations* loca
     connect(m_worker, &FramePumpWorker::bufferStateChanged, this,
             [this](quint64 generation, ReplayBufferState::State state, const QString& reason) {
                 m_buffer.confirm(generation, state, reason);
+            });
+    connect(m_worker, &FramePumpWorker::borderStateChanged, this,
+            [this](quint64 generation, int state, const QString& detail) {
+                // Only the live generation may speak for the border, same fencing rule
+                // the buffer state uses.
+                if (generation != m_buffer.generation())
+                    return;
+                const auto next = static_cast<CaptureBorder::State>(state);
+                if (next == m_borderState && detail == m_borderDetail)
+                    return;
+                m_borderState = next;
+                m_borderDetail = detail;
+                emit captureBorderStateChanged();
             });
     connect(m_worker, &FramePumpWorker::restartRequested, this,
             [this](quint64 generation, const QString& reason) {

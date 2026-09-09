@@ -1,4 +1,5 @@
 #pragma once
+#include "capture/CaptureBorderState.h"
 #include "capture/CapturePublisher.h"
 #include "capture/SegmentLease.h"
 #include "capture/ReplayBufferState.h"
@@ -7,6 +8,7 @@
 
 #include <QObject>
 #include <QElapsedTimer>
+#include <QString>
 #include <QThread>
 #include <memory>
 
@@ -54,6 +56,9 @@ private slots:
 
 signals:
     void bufferStateChanged(quint64 generation, ReplayBufferState::State state, const QString& reason);
+    // Honest capture-border verdict for the session just built (CaptureBorder::State),
+    // with the diagnostic detail behind it. Never derived from the setter HRESULT alone.
+    void borderStateChanged(quint64 generation, int state, const QString& detail);
     void restartRequested(quint64 generation, const QString& reason);
     // Fired the instant the ring is frozen (~1 s into the hold), before the
     // slower remux — thumbnailPath is a preview grabbed from the freshest
@@ -118,6 +123,9 @@ class FramePumpService : public QObject
     Q_PROPERTY(bool exportBusy READ exportBusy NOTIFY exportBusyChanged)
     Q_PROPERTY(bool preparingForUpdate READ preparingForUpdate NOTIFY preparingForUpdateChanged)
     Q_PROPERTY(ReplayBufferState::State bufferState READ bufferState NOTIFY bufferStatusChanged)
+    // Windows capture border: Unknown / Unsupported / Denied / Hidden (CaptureBorder::State).
+    Q_PROPERTY(int captureBorderState READ captureBorderState NOTIFY captureBorderStateChanged)
+    Q_PROPERTY(QString captureBorderDetail READ captureBorderDetail NOTIFY captureBorderStateChanged)
 public:
     explicit FramePumpService(ConfigManager* config, CaptureLocations* locations,
                               QObject* parent = nullptr);
@@ -125,6 +133,8 @@ public:
     bool exportBusy() const { return m_exportBusy; }
     bool preparingForUpdate() const { return m_preparingForUpdate; }
     ReplayBufferState::State bufferState() const { return m_buffer.state(); }
+    int captureBorderState() const { return int(m_borderState); }
+    QString captureBorderDetail() const { return m_borderDetail; }
 
 public slots:
     void saveReplay();               // Share-hold: save the last N seconds as one clip
@@ -149,6 +159,7 @@ signals:
     void recordingStateChanged(bool active, const QString& gameName);
     void bufferStateChanged(ReplayBufferState::State state, const QString& gameName);
     void bufferStatusChanged();
+    void captureBorderStateChanged();
     void exportBusyChanged(bool busy);
     void preparingForUpdateChanged(bool preparing);
     void updateWaitingForExport();
@@ -172,6 +183,8 @@ private:
     ForegroundGame m_targetGame;
     bool m_exportBusy = false;
     bool m_preparingForUpdate = false;
+    CaptureBorder::State m_borderState = CaptureBorder::Unknown;
+    QString m_borderDetail;
 
     // Always-on auto-arm (replay.auto): while enabled, the buffer records whenever a
     // game is foreground (per capture.mode) — no manual arming needed.

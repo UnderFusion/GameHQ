@@ -6,6 +6,16 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.14] - 2026-09-09
+
+### Fixed
+
+- GameHQ now asks Windows for permission to hide the yellow recording
+  border and reports the real result, instead of always logging the border
+  as hidden after a setter call that Windows may have ignored.
+- On Windows versions that cannot hide the recording border, the capture
+  status reports it as unsupported rather than hidden.
+
 ## [0.7.13] - 2026-09-09
 
 ### Changed

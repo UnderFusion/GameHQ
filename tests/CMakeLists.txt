@@ -571,6 +571,12 @@ gamehq_add_test(tst_framepumpservice
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayBufferState.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayBufferState.h")
 
+# Capture-border verdict (p4-2): pure derivation, no WinRT and no capture device.
+gamehq_add_test(tst_captureborderstate
+    tst_captureborderstate.cpp
+    "${CMAKE_SOURCE_DIR}/src/capture/CaptureBorderState.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/CaptureBorderState.h")
+
 add_executable(launcher_argecho_fixture launcher_argecho_fixture.cpp)
 target_link_options(launcher_argecho_fixture PRIVATE -static -municode)
 target_link_libraries(launcher_argecho_fixture PRIVATE shell32)

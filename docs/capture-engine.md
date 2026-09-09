@@ -28,6 +28,25 @@ The screenshot request forces the frame pump onto the current game when its stor
 
 ABI shims live in `src/capture/wgc_shims.h` (supersedes `spike/wgc/wgc_abi_shims.h`). MinGW's g++ ignores `__declspec(uuid(...))` (harmless warning) — interfaces are driven through explicit `IID_*` GUID constants, not `__uuidof`.
 
+### Windows capture border
+
+Windows draws a yellow border around anything captured through WGC. Suppressing it is **not** something the app can decide on its own: it needs Windows 11 22000+ (for `IGraphicsCaptureSession3`), it needs the process to hold **Borderless capture access**, and the flag has to be set **before** `StartCapture`.
+
+The trap is that `put_IsBorderRequired(false)` returns `S_OK` and `get_IsBorderRequired` reads back `false` **even when Windows is ignoring the flag** because the caller lacks Borderless access. Earlier versions logged "capture border hidden" off that HRESULT and were simply wrong.
+
+`AppCapabilityAccessStatus` is an ABI contract with no mingw-w64 header, so its integers are **not** guessed — `tools/spikes/winrt_enum_probe.exe` reads them out of `Windows.Security.winmd` through `RoGetMetaDataFile` + `IMetaDataImport2`: `DeniedBySystem=0`, `NotDeclaredByApp=1`, `DeniedByUser=2`, `UserPromptRequired=3`, **`Allowed=4`**. (An earlier draft assumed `Allowed=0`, which would have decoded a hard system denial as a grant; `static_assert`s in `CaptureBorderState.h` and a focused test now pin the mapping.) On build 26200 this unpackaged install measures `Allowed`.
+
+`src/capture/CaptureBorderState.{h,cpp}` is therefore the only place allowed to reach a verdict. It takes the OS build, the QI result, the access status and the read-back, and returns one of:
+
+| State | Meaning |
+| --- | --- |
+| `Unsupported` | Pre-22000 build, or no `IGraphicsCaptureSession3`. Windows 10 always lands here — it can never report `Hidden`. |
+| `Denied` | Supported, but the access request came back as anything other than `Allowed`, or the read-back still says the border is required. |
+| `Unknown` | The OS build could not be read, the request was never made, or the setter/read-back failed — no evidence either way. |
+| `Hidden` | 22000+, interface present, access `Allowed`, flag set **and** read back as suppressed. |
+
+The verdict is logged once per session as `FramePump: capture border <state> (<detail>)` and surfaced on `FramePumpService` through the `captureBorderState` / `captureBorderDetail` properties. Access is requested once per process on the MTA worker thread with a bounded (~2 s) wait, so a silent broker can never wedge pipeline bring-up. The statics IID `{743ED370-06EC-5040-A58A-901F0F757095}` was read off the live activation factory via `IInspectable::GetIids()` rather than guessed, since mingw-w64 publishes no declaration for `GraphicsCaptureAccess`. `Hidden` states that Windows accepted and confirmed the suppression request, not that a human has seen the border disappear; the visual A/B on real hardware is a separate manual acceptance step.
+
 ## Save-replay export (0.5 Steps 5/6/8, shipped dev.50; audio path dev.74, MinGW)
 
 The rolling segments (above) are the temporary **ring** in per-game `gamehq-data/replay-cache/<Game>/<media-format>/` folders. The folder fingerprint includes video dimensions/FPS and, when enabled, audio sample rate/channel count so a device or setting change cannot mix incompatible segments. `SegmentRecorder` keeps only `ceil(length_seconds / segment_seconds)` of them (deletes oldest; drops zero-frame segments that fail `Finalize` with `MF_E_SINK_NO_SAMPLES_PROCESSED`). Segment filenames include milliseconds and a collision suffix because `snapshotForSave()` closes one segment and immediately opens the next. On **Share-hold** (or **Ctrl+Shift+E**), `saveReplay()` copies the current `CaptureLocations` clip root into the pump's MTA worker. dev.90: if the buffer is cold there is no past to save, so the request arms it instead of only reporting the failure (an explicit save outranks `replay.auto`, and it restarts the auto tick so the buffer still disarms when the game leaves the foreground) — the first hold starts recording, the next one saves. Once armed: `SegmentRecorder::snapshotForSave()` finalizes the in-flight segment, snapshots the ring, and reopens a new one (recording never stops); then `src/capture/ReplayExporter.cpp` remux-concats the ring into ONE standard MP4 in `<ClipsRoot>/<Game>/Clips/` using native compressed passthrough. Video copies H.264 samples and clones the native type so SPS/PPS reach the output avcC. dev.79 enables the AAC path again when `audio.enabled=true` and resets audio timestamps after each segment roll/snapshot. Device invalidation discards the incomplete segment and re-arms WGC/WASAPI against the current endpoint. dev.76 treats unreadable/skipped segments and writer failures as an export failure rather than committing a partial short clip. `ReplayExporter::grabThumbnail()` decodes the first frame to a PNG. `AppController::commitClip()` inserts the `type="video"` DB row + thumbnail and refreshes the gallery only after the final MP4 exports successfully; sound + notification fire then.
