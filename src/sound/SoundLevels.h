@@ -29,10 +29,14 @@ Level levelFor(const QString& event);
 // test-only asset.
 QString previewEvent();
 
-// Slider percent (0-100) to the amplitude QSoundEffect expects, read as a
+// Slider percent (0-200) to gain relative to the original asset, read as a
 // perceptual scale: half-way sounds about half as loud instead of carrying
 // half the amplitude, which is barely a difference to the ear.
 qreal perceptualAmplitude(int percent);
+
+// Bundled playback assets contain exactly twice the original PCM amplitude.
+// Divide gain by this factor before passing it to QSoundEffect (which caps at 1).
+inline constexpr qreal assetGain = 2.0;
 
 // The interface level keeps its original straight percentage mapping. Making
 // it perceptual would quietly move the UI sounds of every existing user who

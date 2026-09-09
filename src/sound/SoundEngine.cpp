@@ -43,7 +43,7 @@ SoundEngine::SoundEngine(ConfigManager* config, QObject* parent)
         // setter, and a connection made afterwards would miss that signal.
         connect(effect, &QSoundEffect::statusChanged, this,
                 [this, name, effect] { handleStatus(name, effect); });
-        effect->setSource(QUrl(QStringLiteral("qrc:/sounds/%1.wav").arg(name)));
+        effect->setSource(QUrl(QStringLiteral("qrc:/sounds/boosted/%1.wav").arg(name)));
         // ...and read the status back, because a source that resolved inside
         // the setter emits nothing at all. Null here is not a verdict: it is
         // the pre-load value, and only counts as a failure once the backend
@@ -97,6 +97,8 @@ void SoundEngine::play(const QString& event)
                   m_config->value(ConfigKeys::SoundsCaptureVolume, 100).toInt())
             : SoundLevels::linearAmplitude(
                   m_config->value(ConfigKeys::SoundsVolume, 80).toInt());
-    effect->setVolume(volume);
+    // Pre-amplified PCM gives genuine +6 dB headroom without exceeding Qt's
+    // 0..1 playback range. At 100% this reproduces the original asset level.
+    effect->setVolume(volume / SoundLevels::assetGain);
     effect->play();
 }

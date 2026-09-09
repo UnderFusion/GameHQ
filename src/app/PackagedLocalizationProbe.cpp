@@ -135,6 +135,18 @@ bool PackagedLocalizationProbe::run(const QString &reportPath, QString *error)
         if (!translator.load(catalogPath))
             return fail(error, QStringLiteral("Invalid embedded Qt catalog for %1.").arg(locale));
 
+        // Check recent feedback controls in the actual bundled catalog, not
+        // just the source TS files: stale packages otherwise show raw IDs.
+        for (const char *id : {
+                 "gamehq.settings.feedback.audio.capture_volume",
+                 "gamehq.settings.feedback.audio.capture_volume.description",
+                 "gamehq.settings.feedback.preview.capture_sound"}) {
+            const QString text = translator.translate(nullptr, id);
+            if (text.isEmpty() || text.startsWith(QStringLiteral("gamehq.")))
+                return fail(error, QStringLiteral("Missing packaged feedback translation %1 for %2.")
+                                       .arg(QString::fromLatin1(id), locale));
+        }
+
         QTemporaryDir profile;
         if (!profile.isValid())
             return fail(error, QStringLiteral("Cannot create isolated profile for %1.").arg(locale));

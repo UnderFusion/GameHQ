@@ -6,6 +6,19 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.23] - 2026-09-09
+
+### Added
+
+- Both sound sliders now reach 200%, giving up to +6 dB of real gain while
+  preserving the existing levels through 100%. Bundled sounds have enough
+  headroom to remain unclipped at the maximum setting.
+
+### Fixed
+
+- Refreshed the local app with the translated capture-volume labels and preview
+  controls already added in 0.7.22, replacing raw translation IDs in older builds.
+
 ## [0.7.22] - 2026-09-09
 
 ### Fixed

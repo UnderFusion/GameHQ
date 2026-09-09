@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.23",
+  "locale": "en-US",
+  "date": "2026-09-09",
+  "sections": [
+    {
+      "id": "added",
+      "title": "Added",
+      "items": [
+        {
+          "id": "added-sound-boost",
+          "text": "Interface and capture sound sliders now reach 200%, providing up to +6 dB of gain without changing existing volume levels through 100%."
+        }
+      ]
+    }
+  ]
+}

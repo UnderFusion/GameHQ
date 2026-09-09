@@ -1,19 +1,14 @@
-# GameHQ 0.7.11 (2026-09-08)
+# GameHQ 0.7.23 (2026-09-09)
 
 ## Added
 
-- GameHQ reopens where you left it. The last page, the settings category and the gallery filter come back on launch, and the overlay remembers the category you last used for each game. Help is never restored, and a filter pinned to a game that no longer exists falls back to the whole library.
-
-## Changed
-
-- The settings category is stored by name instead of by position, so adding or reordering pages can no longer reopen the wrong one. An existing value is converted once on the next start.
-- Opening the gallery from the command line now only brings the gallery forward instead of also clearing the filter you had chosen.
+- Interface and capture sound sliders now reach 200%, providing up to +6 dB of gain without changing existing volume levels through 100%.
 
 <!-- gamehq:locale-index -->
 
 ## Release notes in other languages
 
-These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.11/assets/release-notes/publication/0.7.11) are kept in the repository; they are not attached to this release as separate downloads.
+These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.23/assets/release-notes/publication/0.7.23) are kept in the repository; they are not attached to this release as separate downloads.
 
 | Language | Locale | Content |
 | --- | --- | --- |

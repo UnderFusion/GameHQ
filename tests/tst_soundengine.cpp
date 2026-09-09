@@ -149,16 +149,19 @@ void SoundEngineTest::theCaptureSliderIsReadPerceptually()
     // Nothing may go backwards: a slider that dips as it is raised is a bug
     // the user reads as broken audio.
     qreal previous = -1.0;
-    for (int percent = 0; percent <= 100; percent += 5) {
+    for (int percent = 0; percent <= 200; percent += 5) {
         const qreal amplitude = SoundLevels::perceptualAmplitude(percent);
         QVERIFY(amplitude >= previous);
-        QVERIFY(amplitude >= 0.0 && amplitude <= 1.0);
+        QVERIFY(amplitude >= 0.0 && amplitude <= 2.0);
+        QVERIFY(amplitude / SoundLevels::assetGain <= 1.0);
         previous = amplitude;
     }
 
     // Out-of-range values are clamped, not wrapped.
     QCOMPARE(SoundLevels::perceptualAmplitude(-40), 0.0);
-    QCOMPARE(SoundLevels::perceptualAmplitude(400), SoundLevels::perceptualAmplitude(100));
+    QCOMPARE(SoundLevels::perceptualAmplitude(150), 1.5);
+    QCOMPARE(SoundLevels::perceptualAmplitude(200), 2.0);
+    QCOMPARE(SoundLevels::perceptualAmplitude(400), 2.0);
 }
 
 // Existing users set their UI volume against the old straight mapping, so it
@@ -169,7 +172,9 @@ void SoundEngineTest::theInterfaceSliderKeepsItsStraightMapping()
     QCOMPARE(SoundLevels::linearAmplitude(80), 0.8);
     QCOMPARE(SoundLevels::linearAmplitude(100), 1.0);
     QCOMPARE(SoundLevels::linearAmplitude(-5), 0.0);
-    QCOMPARE(SoundLevels::linearAmplitude(150), 1.0);
+    QCOMPARE(SoundLevels::linearAmplitude(150), 1.5);
+    QCOMPARE(SoundLevels::linearAmplitude(200), 2.0);
+    QCOMPARE(SoundLevels::linearAmplitude(400), 2.0);
 }
 
 // Previewing a test-only asset would prove nothing about the slider.
@@ -199,11 +204,11 @@ void SoundEngineTest::anExistingConfigKeepsItsVolumeAndGainsTheCaptureDefault()
     QCOMPARE(config.defaultValue(ConfigKeys::SoundsCaptureVolume).toInt(), 100);
 
     // The capture level is a real, settable key, not a constant.
-    config.setValue(ConfigKeys::SoundsCaptureVolume, 40);
+    config.setValue(ConfigKeys::SoundsCaptureVolume, 200);
     QVERIFY(config.save());
     ConfigManager reloaded(path);
     QVERIFY(reloaded.load());
-    QCOMPARE(reloaded.value(ConfigKeys::SoundsCaptureVolume, 100).toInt(), 40);
+    QCOMPARE(reloaded.value(ConfigKeys::SoundsCaptureVolume, 100).toInt(), 200);
     QCOMPARE(reloaded.value(ConfigKeys::SoundsVolume, 80).toInt(), 55);
 }
 
