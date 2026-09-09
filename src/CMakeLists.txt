@@ -271,6 +271,7 @@ qt_add_resources(GameHQ "sounds"
         "${CMAKE_SOURCE_DIR}/assets/sounds/error.wav"
         "${CMAKE_SOURCE_DIR}/assets/sounds/screenshot.wav"
         "${CMAKE_SOURCE_DIR}/assets/sounds/replay_saved.wav"
+        "${CMAKE_SOURCE_DIR}/assets/sounds/capture_accepted.wav"
 )
 
 set(GAMEHQ_LOCALIZED_RELEASE_NOTES

@@ -11,6 +11,7 @@ namespace
 const char* kEvents[] = {
     "nav_tick", "overlay_open", "overlay_close", "favorite",
     "confirm", "error", "screenshot", "replay_saved",
+    "capture_accepted",
 };
 }
 

@@ -1,16 +1,34 @@
 {
-  "version": "0.7.12",
-  "date": "2026-09-08",
+  "version": "0.7.13",
+  "date": "2026-09-09",
   "sections": [
+    {
+      "title": "Changed",
+      "items": [
+        "Screenshot and saved replay sounds are louder and easier to distinguish from quiet navigation ticks."
+      ]
+    },
     {
       "title": "Fixed",
       "items": [
-        "The window reopens on the monitor you left it on, including a monitor placed left of or above the main one. Those positions used to be discarded and the window jumped back to the middle of the primary screen.",
-        "A window last used on a monitor that is no longer connected now reopens centred on the primary screen at the same size, instead of opening somewhere you cannot reach."
+        "Regenerating the default sound pack always writes to its own sound folder, regardless of the command's working directory."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.12",
+      "date": "2026-09-08",
+      "sections": [
+        {
+          "title": "Fixed",
+          "items": [
+            "The window reopens on the monitor you left it on, including a monitor placed left of or above the main one. Those positions used to be discarded and the window jumped back to the middle of the primary screen.",
+            "A window last used on a monitor that is no longer connected now reopens centred on the primary screen at the same size, instead of opening somewhere you cannot reach."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.11",
       "date": "2026-09-08",
@@ -240,6 +258,13 @@
     "requested_locale": "zh-Hant",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.13",
+        "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.12",
         "source_integrity": "sha256:87651e9bd42f4fc6a268bb38ec9a4427c4e454694d4d9bf7eb12c71796341a1f",

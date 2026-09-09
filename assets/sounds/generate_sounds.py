@@ -6,14 +6,16 @@ Design goals: subtle, soft, console-like — sine tones with fast attack,
 exponential decay, gentle volumes. 44.1 kHz, 16-bit, mono.
 """
 import math
+from pathlib import Path
 import struct
 import wave
 
 RATE = 44100
+OUTPUT_DIR = Path(__file__).resolve().parent
 
 
 def render(name, samples):
-    with wave.open(name, "w") as f:
+    with wave.open(str(OUTPUT_DIR / name), "w") as f:
         f.setnchannels(1)
         f.setsampwidth(2)
         f.setframerate(RATE)
@@ -62,10 +64,18 @@ render("confirm.wav", tone(740, 130, 0.22))
 render("error.wav", mix((0, tone(210, 120, 0.25, harmonics=((1, 1.0),))),
                         (130, tone(180, 160, 0.22, harmonics=((1, 1.0),)))))
 
+# Capture sounds share a loudness floor: their RMS must sit at least
+# +6 dB above nav_tick so a capture confirmation is unmistakable but unclipped.
+
 # Screenshot — bright camera-like tick-tock
-render("screenshot.wav", mix((0, tone(2400, 30, 0.22, decay=10)),
-                             (45, tone(1500, 60, 0.20, decay=8))))
+render("screenshot.wav", mix((0, tone(2400, 30, 0.32, decay=10)),
+                             (45, tone(1500, 60, 0.29, decay=8))))
 
 # Replay saved — three-note ascending chime
-render("replay_saved.wav", mix((0, tone(523, 140, 0.20)), (110, tone(659, 140, 0.20)),
-                               (220, tone(784, 260, 0.22))))
+render("replay_saved.wav", mix((0, tone(523, 140, 0.30)), (110, tone(659, 140, 0.30)),
+                               (220, tone(784, 260, 0.32))))
+
+# Capture accepted — short bright double-tap, distinct from the single-note
+# confirm and from navigation ticks; reserved for request acceptance.
+render("capture_accepted.wav", mix((0, tone(1880, 26, 0.36, decay=11)),
+                                   (60, tone(2512, 40, 0.36, decay=10))))

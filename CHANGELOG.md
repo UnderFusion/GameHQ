@@ -6,6 +6,18 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.13] - 2026-09-09
+
+### Changed
+
+- Screenshot and saved replay sounds are louder and easier to distinguish
+  from quiet navigation ticks.
+
+### Fixed
+
+- Regenerating the default sound pack always writes beside the generator in
+  `assets/sounds`, regardless of the command's working directory.
+
 ## [0.7.12] - 2026-09-08
 
 ### Fixed

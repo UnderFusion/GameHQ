@@ -1,0 +1,29 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.13",
+  "locale": "en-US",
+  "date": "2026-09-09",
+  "sections": [
+    {
+      "id": "changed",
+      "title": "Changed",
+      "items": [
+        {
+          "id": "changed-capture-sounds-louder",
+          "text": "Screenshot and saved replay sounds are louder and easier to distinguish from quiet navigation ticks."
+        }
+      ]
+    },
+    {
+      "id": "fixed",
+      "title": "Fixed",
+      "items": [
+        {
+          "id": "fixed-sound-generation-location",
+          "text": "Regenerating the default sound pack always writes to its own sound folder, regardless of the command's working directory."
+        }
+      ]
+    }
+  ]
+}
