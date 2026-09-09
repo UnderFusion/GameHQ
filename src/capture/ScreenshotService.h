@@ -1,4 +1,6 @@
 #pragma once
+
+#include "capture/CaptureRequest.h"
 #include <QObject>
 #include <QString>
 #include <QThreadPool>
@@ -24,7 +26,12 @@ public:
     bool busy() const { return m_pendingWrites.load() > 0; }
 
 public slots:
-    void capture();   // grab per capture.mode; emits exactly one result signal
+    // Grab per capture.mode; emits exactly one result signal. The request is the
+    // chain id every stage line carries, so a press that the mode gate silently
+    // dropped is still visible in the log (docs/capture-engine.md).
+    void capture(const CaptureRequest& request);
+    // For callers with no press behind them (QML, internal retries).
+    void capture() { capture(CaptureRequest::create(CaptureRequest::Source::Ui)); }
     // Save an already-grabbed image (e.g. a clip frame from the QML video
     // surface) as a screenshot under the given game, reusing the same encode +
     // feedback path as capture(). No foreground gating — the caller owns the

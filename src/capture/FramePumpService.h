@@ -1,4 +1,6 @@
 #pragma once
+
+#include "capture/CaptureRequest.h"
 #include "capture/CaptureBorderState.h"
 #include "capture/CapturePublisher.h"
 #include "capture/SegmentLease.h"
@@ -47,7 +49,10 @@ public slots:
                    CaptureBorder::SessionPolicy borderPolicy = CaptureBorder::SessionPolicy{}); // build pipeline + start polling/encoding
     void stopPump();                 // stop polling + tear down the pipeline
     void stopPumpForGeneration(quint64 generation);
-    void saveReplayOnWorker(const QString& clipsBaseRoot, quint64 generation, quint64 requestId);
+    // chainId is the CaptureRequest id that started this save; it labels every
+    // stage line. requestId stays the owners-table lease token.
+    void saveReplayOnWorker(const QString& clipsBaseRoot, quint64 generation,
+                            quint64 requestId, quint64 chainId);
     void captureScreenshotOnWorker(quint64 generation, quint64 requestId);
     void prepareForUpdate(quint64 generation);
     void cancelUpdatePreparation();
@@ -139,7 +144,12 @@ public:
     QString captureBorderDetail() const { return m_borderDetail; }
 
 public slots:
-    void saveReplay();               // Share-hold: save the last N seconds as one clip
+    // Share-hold: save the last N seconds as one clip. The request is the chain
+    // id every stage line carries — accepted, armed, frozen, exporting,
+    // published or failed (docs/capture-engine.md).
+    void saveReplay(const CaptureRequest& request);
+    // For callers with no press behind them (QML, internal retries).
+    void saveReplay() { saveReplay(CaptureRequest::create(CaptureRequest::Source::Ui)); }
     void captureHdrScreenshot(qulonglong hwnd);
     // Replace the pipeline with new settings while preserving session owners.
     void restartBuffer();

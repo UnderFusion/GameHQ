@@ -341,8 +341,9 @@ bool App::init()
     connect(m_tray.get(), &TrayIcon::openGalleryRequested, this, &App::showWindow);
     connect(m_tray.get(), &TrayIcon::rescanRequested,
             m_controller.get(), &AppController::rescan);
-    connect(m_tray.get(), &TrayIcon::screenshotRequested,
-            m_screenshots.get(), &ScreenshotService::capture);
+    connect(m_tray.get(), &TrayIcon::screenshotRequested, m_screenshots.get(), [this] {
+        m_screenshots->capture(CaptureRequest::create(CaptureRequest::Source::Tray));
+    });
     connect(m_tray.get(), &TrayIcon::quitRequested,
             qApp, &QCoreApplication::quit, Qt::QueuedConnection);
 
@@ -541,10 +542,10 @@ bool App::init()
     // overlayHideRequested (Circle) is now consumed in OverlayWindow.qml: it
     // pops the action menu / sidebar focus first and only closes the overlay
     // at the root level, calling `overlay.hide()` itself in that case.
-    connect(m_input.get(), &InputEngine::screenshotRequested,
-            m_screenshots.get(), &ScreenshotService::capture);
-    connect(m_input.get(), &InputEngine::replayRequested,
-            m_framePump.get(), &FramePumpService::saveReplay);
+    connect(m_input.get(), &InputEngine::screenshotRequested, m_screenshots.get(),
+            qOverload<const CaptureRequest&>(&ScreenshotService::capture));
+    connect(m_input.get(), &InputEngine::replayRequested, m_framePump.get(),
+            qOverload<const CaptureRequest&>(&FramePumpService::saveReplay));
     connect(m_overlay.get(), &OverlayManager::visibleChanged, this, [this] {
         m_input->setOverlayVisible(m_overlay->isVisible());
     });

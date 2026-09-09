@@ -1,16 +1,36 @@
 {
-  "version": "0.7.16",
+  "version": "0.7.17",
   "date": "2026-09-09",
   "sections": [
     {
       "title": "Fixed",
       "items": [
-        "Interface sounds no longer report themselves as loaded before Windows has finished loading them. Each sound now records when it becomes playable, or why it could not be used.",
-        "If any interface sound is unavailable, GameHQ shows a single warning instead of staying silent without explanation. The new warning text uses English until the planned translation pass."
+        "A capture request that is refused early now says so in the log. Pressing save clip while the replay buffer was cold, busy or paused previously left no record of the press at all.",
+        "A screenshot skipped because the foreground window is not a game is now recorded with the reason, instead of passing without a trace."
+      ]
+    },
+    {
+      "title": "Added",
+      "items": [
+        "Every screenshot and clip request now carries an id and the device that pressed it, so one press reads as one chain in the log from start to finish or to the reason it failed.",
+        "The copied diagnostics now list the bindings of the controller in your hands next to the shared controller bindings."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.16",
+      "date": "2026-09-09",
+      "sections": [
+        {
+          "title": "Fixed",
+          "items": [
+            "Interface sounds no longer report themselves as loaded before Windows has finished loading them. Each sound now records when it becomes playable, or why it could not be used.",
+            "If any interface sound is unavailable, GameHQ shows a single warning instead of staying silent without explanation. The new warning text uses English until the planned translation pass."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.15",
       "date": "2026-09-09",
@@ -189,27 +209,6 @@
           ]
         }
       ]
-    },
-    {
-      "version": "0.7.4",
-      "date": "2026-08-07",
-      "sections": [
-        {
-          "title": "What's new",
-          "items": [
-            "Fixed HDR screenshots on HDR-enabled displays. HDR tone mapping was already implemented, but an internal feature gate remained disabled by default in public builds, causing screenshots to fall back to the SDR capture path and appear overexposed.",
-            "Fixed occasional double controller navigation caused by the same physical press being mirrored through multiple Windows controller APIs.",
-            "Improved non-exclusive background controller input delivery while games have focus, including Guide/Share delivery where the controller and firmware expose those buttons.",
-            "Improved diagnostics for controller buttons exposed as keyboard macros or disabled by firmware."
-          ]
-        },
-        {
-          "title": "Notes",
-          "items": [
-            "Share/Capture support remains hardware-dependent and is still unverified on GameSir G7 Pro. No controller-model compatibility claim is made by this release."
-          ]
-        }
-      ]
     }
   ],
   "_meta": {
@@ -217,6 +216,13 @@
     "requested_locale": "ru-RU",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.17",
+        "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.16",
         "source_integrity": "sha256:75bcf13af6707a4d20f2b0ceb7e525420445266bdf13634d1617867720bdafb1",
@@ -290,13 +296,6 @@
       {
         "version": "0.7.5",
         "source_integrity": "sha256:3d2c1ddc6025e8e4935c2f404d0d24fa4dd77cf4b83e2480fdab07fb62700955",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.4",
-        "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

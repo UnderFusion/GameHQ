@@ -1012,6 +1012,53 @@ private slots:
     }
 
     // A row that cannot be a valid pattern — a chord serialization this build
+    // p1-2: a diagnostics paste used to show only the shared controller table,
+    // so a per-pad override was invisible in a bug report — the reporter and
+    // the developer were reading different binding tables without knowing it.
+    void diagnosticsShowTheConnectedPadsOwnRowsNextToTheGroupRows()
+    {
+        InputDiagnostics::instance().clear();
+        const QString action = QStringLiteral("desktop.favorite");
+        const QString padFingerprint = QStringLiteral("3537:1004");
+
+        // Group table: every controller inherits this.
+        QVERIFY(m_database->upsertBindingOverride(
+            {QStringLiteral("controller"), {}, action, 2, ControlId::genericButton(21),
+             QStringLiteral("press"), 0, false}));
+        // The connected pad resolves the same action to a different button.
+        QVERIFY(m_database->upsertBindingOverride(
+            {QStringLiteral("controller"), padFingerprint, action, 2,
+             ControlId::genericButton(22), QStringLiteral("press"), 0, false}));
+        m_runtime->reload();
+
+        // With no pad seen yet, only the shared rows are published.
+        QString diagnostics = InputDiagnostics::instance().exportText();
+        QVERIFY(diagnostics.contains(QStringLiteral("[controller] ")));
+        QVERIFY2(!diagnostics.contains(QStringLiteral("[controller:")),
+                 "a profile section must not appear before a pad is seen");
+
+        m_runtime->setActiveProfile(QStringLiteral("controller"), padFingerprint);
+        diagnostics = InputDiagnostics::instance().exportText();
+        const QString section = QStringLiteral("[controller:") + padFingerprint
+                                + QStringLiteral("] ");
+        QVERIFY2(diagnostics.contains(section), "the connected pad needs its own section");
+        QVERIFY2(diagnostics.contains(QStringLiteral("[controller] ")),
+                 "the shared rows stay, so an override is visible as a difference");
+        QVERIFY(diagnostics.contains(section + ControlId::genericButton(22)));
+        QVERIFY(diagnostics.contains(QStringLiteral("[controller] ")
+                                     + ControlId::genericButton(21)));
+
+        // Idempotent: repeating the same pad must not duplicate the section.
+        m_runtime->setActiveProfile(QStringLiteral("controller"), padFingerprint);
+        const QString repeated = InputDiagnostics::instance().exportText();
+        QCOMPARE(repeated.count(section), diagnostics.count(section));
+
+        m_runtime->setActiveProfile({}, {});
+        m_database->clearBindingOverride(QStringLiteral("controller"), {}, action, 2);
+        m_database->clearBindingOverride(QStringLiteral("controller"), padFingerprint, action, 2);
+        m_runtime->reload();
+    }
+
     // does not know, a gesture whose parts contradict each other — must be
     // skipped at load, leaving the action on its default. Executing a guess
     // would fire an action the user never assigned.

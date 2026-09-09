@@ -49,14 +49,22 @@ ScreenshotService::~ScreenshotService()
     m_encodePool.waitForDone();
 }
 
-void ScreenshotService::capture()
+void ScreenshotService::capture(const CaptureRequest& request)
 {
+    const QString chain = request.tag();
+    // Logged before any gate, so "I pressed it and nothing happened" always has
+    // a matching line naming the reason.
+    qInfo().noquote() << QStringLiteral("Screenshot[%1]: accepted").arg(chain);
+    const auto reject = [this, &chain](const QString& reason) {
+        qInfo().noquote() << QStringLiteral("Screenshot[%1]: skipped - %2").arg(chain, reason);
+        emit skipped(reason);
+    };
     if (m_updatePreparing.load()) {
-        emit skipped(QStringLiteral("screenshot capture is paused for an update"));
+        reject(QStringLiteral("screenshot capture is paused for an update"));
         return;
     }
     if (encodeBacklogFull()) {
-        emit skipped(QStringLiteral("still saving the previous screenshots"));
+        reject(QStringLiteral("still saving the previous screenshots"));
         return;
     }
     const QString mode = m_config
@@ -66,8 +74,8 @@ void ScreenshotService::capture()
 
     const ForegroundGame g = GameDetector::current();
     if (!GameDetector::shouldCapture(g, mode)) {
-        emit skipped(QStringLiteral("foreground window is not a game (mode=%1, process=%2)")
-                         .arg(mode, g.processName.isEmpty() ? QStringLiteral("?") : g.processName));
+        reject(QStringLiteral("foreground window is not a game (mode=%1, process=%2)")
+                   .arg(mode, g.processName.isEmpty() ? QStringLiteral("?") : g.processName));
         return;
     }
 
@@ -79,8 +87,8 @@ void ScreenshotService::capture()
             capture::HdrCapabilities::forWindow(static_cast<HWND>(g.hwnd));
         if (output.valid && output.hdrActive) {
             qInfo().noquote() << QStringLiteral(
-                "Screenshot: HDR target detected (%1) — requesting tone-mapped WGC frame")
-                                     .arg(output.describe());
+                "Screenshot[%1]: HDR target detected (%2) - requesting tone-mapped WGC frame")
+                                     .arg(chain, output.describe());
             emit hdrCaptureRequested(
                 qulonglong(reinterpret_cast<quintptr>(g.hwnd)));
             return;
@@ -92,7 +100,9 @@ void ScreenshotService::capture()
     const QImage img = grabRect(g.hwnd, g.x, g.y, g.w, g.h);
     const qint64 grabMs = t.elapsed();
     if (img.isNull()) {
-        emit failed(QStringLiteral("GDI grab returned no pixels"));
+        const QString reason = QStringLiteral("GDI grab returned no pixels");
+        qWarning().noquote() << QStringLiteral("Screenshot[%1]: failed - %2").arg(chain, reason);
+        emit failed(reason);
         return;
     }
 
@@ -103,8 +113,9 @@ void ScreenshotService::capture()
 
     const QString gameName = g.gameName.isEmpty() ? QStringLiteral("Unknown Game")
                                                   : g.gameName;
-    qInfo() << "Screenshot: grabbed" << img.width() << "x" << img.height()
-            << "in" << grabMs << "ms — encoding in background";
+    qInfo().noquote() << QStringLiteral(
+                             "Screenshot[%1]: grabbed %2x%3 in %4ms - encoding in background")
+                             .arg(chain).arg(img.width()).arg(img.height()).arg(grabMs);
     encodeAndSave(img, gameName, g.executablePath);
 }
 

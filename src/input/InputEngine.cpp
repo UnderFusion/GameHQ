@@ -115,7 +115,9 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
             this, &InputEngine::dispatchAction);
     if (m_hotkeys) {
         connect(m_hotkeys, &HotkeyManager::hotkeyTriggered, this,
-                [this](const QString& actionId) { dispatchAction(actionId); });
+                [this](const QString& actionId) {
+                    dispatchAction(actionId, {}, QStringLiteral("keyboard"));
+                });
     }
     connect(m_mouse.get(), &MouseHookDevice::buttonPressed, this,
             [this](const QString& code, int generation) {
@@ -984,6 +986,9 @@ void InputEngine::deliverPress(Gamepad* source, const QString& controlId, int fa
             QStringLiteral("controller"), controlId,
             ControlId::label(controlId, static_cast<ControlId::ControllerFamily>(family))))
         return;
+    // Diagnostics only: keep the paste showing the rows of the pad actually in
+    // the user's hands, not just the shared controller table.
+    m_runtime->setActiveProfile(QStringLiteral("controller"), logicalProfile);
     const bool handled = m_runtime->press(QStringLiteral("controller"), logicalProfile, controlId,
                                           primaryScope(), fallbackScope());
     // XInput Back/View is now independently bindable. For profiles that have
@@ -1073,10 +1078,16 @@ ActionCatalog::Scope InputEngine::fallbackScope() const
                             : ActionCatalog::Scope::Desktop;
 }
 
-void InputEngine::dispatchAction(const QString& actionId, const QString& triggerCode)
+void InputEngine::dispatchAction(const QString& actionId, const QString& triggerCode,
+                                 const QString& deviceGroup)
 {
     if (m_shuttingDown)
         return;
+    // Read by the capture handlers below, which the dispatch table calls with
+    // the trigger code alone. Set here rather than threaded through every
+    // handler signature: dispatch is synchronous and single-threaded, so the
+    // value cannot be overwritten between this line and the handler call.
+    m_dispatchSource = CaptureRequest::sourceForDeviceGroup(deviceGroup);
     m_bindingEditor->setLastFiredAction(actionId);
     if (const auto* action = ActionCatalog::find(actionId))
         setLastInput(action->label);

@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
   "kind": "release-publication",
-  "version": "0.7.4",
-  "date": "2026-08-07",
+  "version": "0.7.17",
+  "date": "2026-09-09",
   "source_locale": "en-US",
   "default_locale": "en-US",
   "localization_policy": "fallback-allowed",
-  "release_source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+  "release_source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
   "release_body": {
     "filename": "RELEASE_BODY.md",
-    "size": 2380,
-    "sha256": "3004d6b6923138a4853d935b634350bf7f66dc483167aa91c52479165321a2d6"
+    "size": 2175,
+    "sha256": "a83be03446cf243d0af7083c017c1c518a2c3de0e35076ea0d3c302dceba3ce2"
   },
   "distribution": {
     "localized_documents": "repository",
     "github_release_assets": false,
-    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.7.4/assets/release-notes/publication/0.7.4"
+    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.7.17/assets/release-notes/publication/0.7.17"
   },
   "localized_documents": [
     {
@@ -27,26 +27,25 @@
       "fallback_reason": null,
       "language_english_name": "English (United States)",
       "language_native_name": "English",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.en-US.md",
-      "size": 872,
-      "sha256": "4b4e5d71d7cf022bbd1c44c72d7feb5040c3f71c217e160150efeb61f3a94921",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 665,
+      "sha256": "dac867a282263503b6a131f4b89af87db89af9adb4048342e8f0388f698d4e91",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -60,26 +59,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Chinese (Simplified)",
       "language_native_name": "简体中文",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.zh-Hans.md",
-      "size": 1062,
-      "sha256": "8bdd87cbe95361e269b3dbe2371a4949a2c84f94fc10c37c537475432bed4af6",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 855,
+      "sha256": "3c530fec928a73f49fd8a268077a074e1ddf4532f6fb8cef22c2b26308c62f4b",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -93,26 +91,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Russian",
       "language_native_name": "Русский",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.ru-RU.md",
-      "size": 1049,
-      "sha256": "60674e3f7783854d0dcb2cc294c2c3864901c02b7df7d44ced905a82968a8a7e",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 842,
+      "sha256": "66123858dbc719bc8a8021403cb847981206b120094aced8049508e99ad269f8",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -126,26 +123,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Spanish",
       "language_native_name": "Español",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.es-ES.md",
-      "size": 1049,
-      "sha256": "66effc68c0bfc94fc24c8401ad4b1cb7280ee8b6a5dbc023ecab2d43e2e01f64",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 842,
+      "sha256": "0e1edd8768febb573310374d6d2f4fe06d96fd642d5d3ba58077061206115f3b",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -159,26 +155,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Portuguese (Brazil)",
       "language_native_name": "Português (Brasil)",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.pt-BR.md",
-      "size": 1061,
-      "sha256": "6d4a19f2271ff5808f06b50d85a2b59804877e3c4f2ea917a5ca025a57a036bc",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 854,
+      "sha256": "2bd8681bf742d356a99f49509f7bafa8b73e850f48d170bea3fd2ccd92294c0b",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -192,26 +187,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "German",
       "language_native_name": "Deutsch",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.de-DE.md",
-      "size": 1048,
-      "sha256": "ffad3ae7067a46ee570f5c181f45fac3249fd0cf0269d8ad01649bfe7c2922f8",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 841,
+      "sha256": "833181f438ddd1b30af8dd43edf7cd38f4a6e7feab3f8931badee93f2cb00912",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -225,26 +219,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Japanese",
       "language_native_name": "日本語",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.ja-JP.md",
-      "size": 1050,
-      "sha256": "04ad0836a9996a5c22f018fa688859a6851854721654e6d83d36012c5d2cbc4b",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 843,
+      "sha256": "c8fcd02021c934618cb9b6311c060965f159502fa2f69b85934c366f0cc19c69",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -258,26 +251,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "French",
       "language_native_name": "Français",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.fr-FR.md",
-      "size": 1048,
-      "sha256": "93179eab505b0a1b27e8430c83457b3fbd9aa60b6a9e8b0690d6016d282cacef",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 841,
+      "sha256": "f53483d4f9310aa507f1945d0fc660daa93da72197c47baec9b0dfbf1daae214",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -291,26 +283,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Polish",
       "language_native_name": "Polski",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.pl-PL.md",
-      "size": 1048,
-      "sha256": "5269d5c35a6e9f86ae1a14e0b1d2907ae1ed5db4ff7e46495a62f67ced474cec",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 841,
+      "sha256": "0e5d5635de92490ef8d02ef5c4f5514a95f2daa28e171acd4cb75ab65bb30503",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -324,26 +315,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Korean",
       "language_native_name": "한국어",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.ko-KR.md",
-      "size": 1048,
-      "sha256": "90d609a6e33efd28b3536fac4045c339a6744a4bcf3563a6ac24a01e42093679",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 841,
+      "sha256": "32826496d2fd2a3d8666ac675fc2e050e352b7886599fd46396779018d85c1a9",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -357,26 +347,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Chinese (Traditional)",
       "language_native_name": "繁體中文",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.zh-Hant.md",
-      "size": 1063,
-      "sha256": "6b0207891cb5d2e7d3e33a6fe0aea621d7458101c4563c4bbd3e5fcd9afe9ba4",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 856,
+      "sha256": "263d5b914ed65977453faa01176307fe66ee2a5f2cb433c5417f902d83f25c4f",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -390,26 +379,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Turkish",
       "language_native_name": "Türkçe",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.tr-TR.md",
-      "size": 1049,
-      "sha256": "b733e79c17266e356f647ad013d8b828debe9dd668bedda67f66ec2e92a2156c",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 842,
+      "sha256": "b0146042f45cb9117218db3c53fa2254f0000a8a67036834aad73b7624591d78",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -423,26 +411,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Thai",
       "language_native_name": "ไทย",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.th-TH.md",
-      "size": 1046,
-      "sha256": "ab3675703db884d0aa0310b9b6406e230ad26bb0bfeb1dc1ac4c525d2ed9e617",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 839,
+      "sha256": "bc3cd40dc5b95e476fc0f1bed46b0428d766ece420292cca28478685842d4a46",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -456,26 +443,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Spanish (Latin America)",
       "language_native_name": "Español (Latinoamérica)",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.es-419.md",
-      "size": 1065,
-      "sha256": "c5fc9e58a7ce2ed2468e5670a98b157e1f6533f894cd77a174a3d4c7ff0d8fb2",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 858,
+      "sha256": "46cfe14d902b8a24e5eb4530752f2f2d1b0e010ee6c1adb9932871c6b866aae8",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -489,26 +475,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Ukrainian",
       "language_native_name": "Українська",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.uk-UA.md",
-      "size": 1051,
-      "sha256": "e6b3d2a59b29e7532869df3a9bc1256f013b39cb9ea43226f2e06b40e995bc4a",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 844,
+      "sha256": "2bb37c73f254d74df7f411e4c1bc3950810c274f7451961540127ad6649d6fda",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]
@@ -522,26 +507,25 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Italian",
       "language_native_name": "Italiano",
-      "version": "0.7.4",
-      "date": "2026-08-07",
+      "version": "0.7.17",
+      "date": "2026-09-09",
       "filename": "release-notes.it-IT.md",
-      "size": 1049,
-      "sha256": "66fc280cfc04c45fc0a2af7d61da930503bc24f10afefc9bc84950166e0c98af",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
+      "size": 842,
+      "sha256": "962f22f6d3da81f07f65b784fefee2ef5a09cd9d10a0b0cc07c9441ce6b13ee4",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
       "structure": [
         {
-          "section_id": "what-s-new",
+          "section_id": "fixed",
           "item_ids": [
-            "what-s-new-01",
-            "what-s-new-02",
-            "what-s-new-03",
-            "what-s-new-04"
+            "fixed-capture-request-silent-refusal",
+            "fixed-skipped-screenshot-is-recorded"
           ]
         },
         {
-          "section_id": "notes",
+          "section_id": "added",
           "item_ids": [
-            "notes-01"
+            "added-capture-request-chain",
+            "added-diagnostics-device-bindings"
           ]
         }
       ]

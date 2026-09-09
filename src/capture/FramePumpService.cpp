@@ -958,7 +958,7 @@ SegmentLease FramePumpWorker::freezeRing(const QString& saveId)
     SegmentLease lease = m_pipe->recorder->snapshotForSave();
     checkReplayReadiness();
     const QStringList& segs = lease.paths();
-    qInfo().noquote() << QStringLiteral("ReplaySave[%1]: snapshot segments=%2 elapsedMs=%3")
+    qInfo().noquote() << QStringLiteral("ReplaySave[%1]: frozen segments=%2 elapsedMs=%3")
                              .arg(saveId).arg(segs.size()).arg(snapshotTimer.elapsed());
     for (int i = 0; i < segs.size(); ++i) {
         const QFileInfo fi(segs.at(i));
@@ -1089,7 +1089,7 @@ void FramePumpWorker::runExport(SegmentLease lease,
                 if (m_pipe && m_pipe->recorder)
                     m_pipe->recorder->trimRing();
                 if (result->ok) {
-                    qInfo().noquote() << QStringLiteral("ReplaySave[%1]: success (async)").arg(saveId);
+                    qInfo().noquote() << QStringLiteral("ReplaySave[%1]: published").arg(saveId);
                     emit clipSaved(outPath, game, result->finalThumb, exePath);
                 } else {
                     qWarning() << "FramePump: save-replay — remux failed for" << outPath;
@@ -1119,7 +1119,8 @@ void FramePumpWorker::cancelUpdatePreparation()
     m_updatePreparing = false;
 }
 
-void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot, quint64 generation, quint64 requestId)
+void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot, quint64 generation,
+                                        quint64 requestId, quint64 chainId)
 {
     bool handedToExport = false;
     const auto finishRejectedRequest = qScopeGuard([&] {
@@ -1131,7 +1132,10 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot, quint64 g
                         QStringLiteral("Replay buffer changed before the save could start"));
         return;
     }
-    const QString saveId = QString::number(requestId);
+    // The chain id from the press, so every line below joins the same chain the
+    // service already logged. Falls back to the lease token for callers that
+    // have no request behind them.
+    const QString saveId = QString::number(chainId ? chainId : requestId);
     QElapsedTimer saveTimer;
     saveTimer.start();
 
@@ -1173,7 +1177,7 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot, quint64 g
     runExport(std::move(lease), reservation, thumbPath, instantThumb,
               game, m_pipe->executablePath, saveId, requestId);
     handedToExport = true;
-    qInfo().noquote() << QStringLiteral("ReplaySave[%1]: export started in background totalSoFarMs=%2")
+    qInfo().noquote() << QStringLiteral("ReplaySave[%1]: exporting totalSoFarMs=%2")
                              .arg(saveId).arg(saveTimer.elapsed());
 }
 
@@ -1300,17 +1304,27 @@ void FramePumpService::ownersChanged(const char* reason, quint64 requestId)
         stopBuffer();
 }
 
-void FramePumpService::saveReplay()
+void FramePumpService::saveReplay(const CaptureRequest& request)
 {
+    const QString chain = request.tag();
+    // Every exit below logs. Before this, the four early rejections emitted
+    // clipFailed() and nothing else, so a save that died here left no trace of
+    // the press at all - the exact shape of the reported "View/Back does
+    // nothing" symptom.
+    qInfo().noquote() << QStringLiteral("ReplaySave[%1]: accepted").arg(chain);
+    const auto reject = [this, &chain](const QString& game, const QString& reason) {
+        qWarning().noquote() << QStringLiteral("ReplaySave[%1]: failed - %2").arg(chain, reason);
+        emit clipFailed(game, reason);
+    };
     if (m_preparingForUpdate) {
-        emit clipFailed(QStringLiteral("Replay"), QStringLiteral("Replay capture is paused for an update"));
+        reject(QStringLiteral("Replay"), QStringLiteral("Replay capture is paused for an update"));
         return;
     }
     const int idleSeconds = m_config
         ? m_config->value(ConfigKeys::ReplayManualIdleSeconds, 90).toInt() : 90;
     const quint64 requestId = m_owners.acquireManual(m_ownerClock.elapsed(), idleSeconds);
     if (!requestId) {
-        emit clipFailed(QStringLiteral("Replay"), QStringLiteral("A replay save is already in progress"));
+        reject(QStringLiteral("Replay"), QStringLiteral("A replay save is already in progress"));
         return;
     }
     ownersChanged("manual save requested", requestId);
@@ -1319,19 +1333,23 @@ void FramePumpService::saveReplay()
     if (!m_buffer.canSave()) {
         // A cold arm keeps its owner until the next save or bounded idle expiry.
         // No pending save is silently deferred until readiness.
-        emit clipFailed(m_buffer.gameName().isEmpty() ? QStringLiteral("Replay") : m_buffer.gameName(),
-                        ReplayBufferState::saveRejection(m_buffer.state()));
+        reject(m_buffer.gameName().isEmpty() ? QStringLiteral("Replay") : m_buffer.gameName(),
+               ReplayBufferState::saveRejection(m_buffer.state()));
         return;
     }
     m_owners.beginSave(requestId);
     ownersChanged("save dispatched", requestId);
+    qInfo().noquote() << QStringLiteral("ReplaySave[%1]: armed generation=%2 owner=%3 game=%4")
+                             .arg(chain).arg(m_buffer.generation()).arg(requestId)
+                             .arg(m_buffer.gameName().isEmpty() ? QStringLiteral("?")
+                                                                : m_buffer.gameName());
     const QString clipsBaseRoot = m_locations ? m_locations->clipsBaseRoot() : Paths::capturesRoot();
     if (!QMetaObject::invokeMethod(m_worker, "saveReplayOnWorker", Qt::QueuedConnection,
                                   Q_ARG(QString, clipsBaseRoot), Q_ARG(quint64, m_buffer.generation()),
-                                  Q_ARG(quint64, requestId))) {
+                                  Q_ARG(quint64, requestId), Q_ARG(quint64, request.id))) {
         m_owners.finishSave(requestId);
         ownersChanged("save dispatch failed", requestId);
-        emit clipFailed(QStringLiteral("Replay"), QStringLiteral("Could not dispatch replay save"));
+        reject(QStringLiteral("Replay"), QStringLiteral("Could not dispatch replay save"));
     }
 }
 

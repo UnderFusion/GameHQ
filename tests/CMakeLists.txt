@@ -260,6 +260,7 @@ foreach(unit IN ITEMS GameInputRouter ProductionGameInputApi GameInputWrapper
     target_sources(tst_inputengineshutdown PRIVATE "${CMAKE_SOURCE_DIR}/src/gameinput/${unit}.cpp")
 endforeach()
 target_sources(tst_inputengineshutdown PRIVATE
+    "${CMAKE_SOURCE_DIR}/src/capture/CaptureRequest.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
     "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
@@ -577,6 +578,12 @@ gamehq_add_test(tst_captureborderstate
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureBorderState.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureBorderState.h")
+
+# p1-2: the identity that ties one capture press to its outcome in the log.
+gamehq_add_test(tst_capturerequest
+    tst_capturerequest.cpp
+    "${CMAKE_SOURCE_DIR}/src/capture/CaptureRequest.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/CaptureRequest.h")
 
 # p6-3: what the sound engine reports while its effects load. Pure policy — no
 # audio device, no Qt Multimedia, no asynchronous loading to wait on.

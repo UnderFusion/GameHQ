@@ -6,6 +6,26 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.17] - 2026-09-09
+
+### Fixed
+
+- A capture request that was refused early now says so in the log. Pressing the
+  save-clip button while the buffer is cold, busy or paused used to leave no
+  trace of the press at all, which made "I pressed it and nothing happened"
+  impossible to tell apart from "the button never arrived".
+- A screenshot skipped because the foreground window is not a game is now
+  recorded with the reason, instead of passing without a trace.
+
+### Added
+
+- Every screenshot and clip request carries an id and the device that pressed
+  it, so one press reads as one chain in the log from accepted through armed,
+  frozen, exporting and published, or the reason it failed.
+- The copied diagnostics now list the bindings of the controller in your hands
+  next to the shared controller bindings, so a controller-specific assignment is
+  visible in a bug report.
+
 ## [0.7.16] - 2026-09-09
 
 ### Fixed

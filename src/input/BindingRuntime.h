@@ -32,6 +32,11 @@ public:
     BindingResolver::Gesture inheritedGesture(const QString& deviceGroup,
                                               const QString& deviceProfile,
                                               const QString& actionId, int slot) const;
+    // The device whose rows a diagnostics paste should show next to the shared
+    // group rows. Cheap and idempotent: unchanged input returns immediately, so
+    // the press path can keep it current without re-resolving anything.
+    void setActiveProfile(const QString& deviceGroup, const QString& deviceProfile);
+
     void setProfileAlias(const QString& profile, const QString& legacyProfile);
     void setProfileAliases(const QString& profile, const QStringList& legacyProfiles);
 
@@ -60,7 +65,12 @@ public:
     void cancelAll();
 
 signals:
-    void actionTriggered(const QString& actionId, const QString& triggerCode);
+    // deviceGroup is the group the recognized gesture came from ("controller",
+    // "keyboard", "mouse"). A gesture resolves long after its press, so the
+    // group has to travel with the signal: a "last press" guess would credit a
+    // controller hold to a keyboard tap that landed in between.
+    void actionTriggered(const QString& actionId, const QString& triggerCode,
+                         const QString& deviceGroup);
 
 private:
     InputPatternRecognizer::TriggerFacts factsFor(const InputPatternRecognizer::Context& context,
@@ -77,4 +87,7 @@ private:
     QHash<QString, InputPatternRecognizer::Context> m_pressContexts;
     // Cleared by reload(); repopulated on first request per group/profile.
     mutable QHash<QString, QVector<Relation>> m_relations;
+    // The device last seen pressing something, for diagnostics only.
+    QString m_activeGroup;
+    QString m_activeProfile;
 };

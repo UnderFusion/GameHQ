@@ -1,4 +1,5 @@
 #pragma once
+#include "capture/CaptureRequest.h"
 #include "input/ActionCatalog.h"
 #include "input/ControlId.h"
 #include "input/ProviderIntegration.h"
@@ -106,8 +107,10 @@ public slots:
 
 signals:
     // Global actions (0.4/0.5 wire these to real capture; for now sound + log).
-    void screenshotRequested();
-    void replayRequested();
+    // Both carry the request that started them, so the log chain from press to
+    // saved/failed shares one id (docs/capture-engine.md).
+    void screenshotRequested(const CaptureRequest& request);
+    void replayRequested(const CaptureRequest& request);
     void overlayToggleRequested();
     // Hold PS (2 s): summon the desktop window over the game with focus, or
     // dismiss it again. Consumed by App, which owns the window + foreground.
@@ -213,14 +216,24 @@ private:
     bool anyBackendConnected() const;
     ActionCatalog::Scope primaryScope() const;
     ActionCatalog::Scope fallbackScope() const;
-    void dispatchAction(const QString& actionId, const QString& triggerCode = {});
+    void dispatchAction(const QString& actionId, const QString& triggerCode = {},
+                        const QString& deviceGroup = {});
 
     // Dispatch table handlers — one per entry in the static table inside
     // InputEngine.cpp. Each is a thin wrapper around the signal emission +
     // nav-repeat booking that the old if/else chain performed inline.
     using Self = InputEngine;
-    void handleScreenshot(const QString&)             { emit screenshotRequested(); }
-    void handleSaveReplay(const QString&)             { emit replayRequested(); }
+    // The device group of the action currently being dispatched. Valid only
+    // inside dispatchAction().
+    CaptureRequest::Source m_dispatchSource = CaptureRequest::Source::Unknown;
+    void handleScreenshot(const QString&)
+    {
+        emit screenshotRequested(CaptureRequest::create(m_dispatchSource));
+    }
+    void handleSaveReplay(const QString&)
+    {
+        emit replayRequested(CaptureRequest::create(m_dispatchSource));
+    }
     void handleToggleOverlay(const QString&)          { emit overlayToggleRequested(); }
     void handleToggleDesktop(const QString&)          { emit desktopWindowToggleRequested(); }
     void handleOverlayNavigateLeft(const QString& tc)  { startNavRepeat(tc, -1, [this](int d) { emit overlayNavigate(d); }); }

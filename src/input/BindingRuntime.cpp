@@ -191,16 +191,39 @@ InputPatternRecognizer::TriggerFacts BindingRuntime::factsFor(
 
 // The effective controller assignments in canonical form, so a diagnostics
 // paste shows what was bound rather than only what happened.
+void BindingRuntime::setActiveProfile(const QString& deviceGroup, const QString& deviceProfile)
+{
+    if (m_activeGroup == deviceGroup && m_activeProfile == deviceProfile)
+        return;
+    m_activeGroup = deviceGroup;
+    m_activeProfile = deviceProfile;
+    publishBoundPatterns();
+}
+
 void BindingRuntime::publishBoundPatterns()
 {
-    QStringList patterns;
-    for (const auto& binding : m_resolver.effectiveBindings(QStringLiteral("controller"))) {
-        patterns << QStringLiteral("%1 %2 -> %3 (slot %4)")
-                        .arg(binding.trigger().serialize(), binding.gesture().label(),
+    const auto rowsFor = [this](const QString& group, const QString& profile,
+                                const QString& section) {
+        QStringList rows;
+        for (const auto& binding : m_resolver.effectiveBindings(group, profile)) {
+            rows << QStringLiteral("[%1] %2 %3 -> %4 (slot %5)")
+                        .arg(section, binding.trigger().serialize(), binding.gesture().label(),
                              binding.actionId)
                         .arg(binding.slot);
+        }
+        rows.sort();
+        return rows;
+    };
+
+    // The group rows are what every controller inherits. They were the only
+    // rows a diagnostics paste ever showed, which is why a per-profile override
+    // was invisible in a bug report: the reporter's pad can resolve a button
+    // differently from the group table and nothing said so.
+    QStringList patterns = rowsFor(QStringLiteral("controller"), {}, QStringLiteral("controller"));
+    if (!m_activeGroup.isEmpty() && !m_activeProfile.isEmpty()) {
+        patterns += rowsFor(m_activeGroup, m_activeProfile,
+                            m_activeGroup + QLatin1Char(':') + m_activeProfile);
     }
-    patterns.sort();
     InputDiagnostics::instance().setBoundPatterns(patterns);
 }
 
@@ -223,7 +246,7 @@ void BindingRuntime::dispatch(const InputPatternRecognizer::Context& context,
         if (emitted.contains(binding.actionId))
             continue;
         emitted.insert(binding.actionId);
-        emit actionTriggered(binding.actionId, triggerCode);
+        emit actionTriggered(binding.actionId, triggerCode, context.deviceGroup);
         InputDiagnostics::instance().notePattern(
             QStringLiteral("%1 %2 -> %3").arg(triggerCode, gesture.label(), binding.actionId));
     }

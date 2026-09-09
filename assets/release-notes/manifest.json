@@ -30,6 +30,15 @@
   },
   "releases": [
     {
+      "version": "0.7.17",
+      "date": "2026-09-09",
+      "status": "released",
+      "localization_policy": "fallback-allowed",
+      "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
+      "original_source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
+      "correction": null
+    },
+    {
       "version": "0.7.16",
       "date": "2026-09-09",
       "status": "released",
@@ -126,15 +135,6 @@
       "localization_policy": "fallback-allowed",
       "source_integrity": "sha256:3d2c1ddc6025e8e4935c2f404d0d24fa4dd77cf4b83e2480fdab07fb62700955",
       "original_source_integrity": "sha256:3d2c1ddc6025e8e4935c2f404d0d24fa4dd77cf4b83e2480fdab07fb62700955",
-      "correction": null
-    },
-    {
-      "version": "0.7.4",
-      "date": "2026-08-07",
-      "status": "released",
-      "localization_policy": "fallback-allowed",
-      "source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
-      "original_source_integrity": "sha256:803572173843c7698a387a532fbcb2c0ca4993012ece7e1cd3a25c8ce1c8964a",
       "correction": null
     }
   ]

@@ -74,6 +74,35 @@ The rolling segments (above) are the temporary **ring** in per-game `gamehq-data
 
 Replay save debugging is keyed by `ReplaySave[...]` in `gamehq.log`. The trace covers request state, snapshot segment paths/sizes, instant/final thumbnail timing, output path, per-segment video dimensions/fps/audio presence, video/audio sample counts, remux duration, output bytes, and explicit failure/success totals.
 
+### Request chain (`CaptureRequest`)
+
+A press mints one `CaptureRequest` (`src/capture/CaptureRequest.{h,cpp}`) at the
+input edge: an id, the source that pressed (`controller`, `keyboard`, `mouse`,
+`overlay`, `ui`, `tray`) and milliseconds since the first request of the run.
+The id is the chain id in every stage line, so one press is one greppable chain:
+
+```
+ReplaySave[12 src=controller +4231ms]: accepted
+ReplaySave[12 src=controller +4231ms]: armed generation=3 owner=7 game=Elden Ring
+ReplaySave[12]: frozen segments=6 elapsedMs=41
+ReplaySave[12]: exporting totalSoFarMs=88
+ReplaySave[12]: published
+```
+
+The stages are `accepted`, `armed`, `frozen`, `exporting`, `published` and
+`failed`. `accepted` is logged before any gate, and every early rejection in
+`FramePumpService::saveReplay()` now logs `failed - <reason>` next to the
+`clipFailed` it already emitted. Before this, those four rejections emitted the
+signal and nothing else: a save that died there left no trace of the press at
+all, which is exactly what "I pressed the button and nothing happened" looks
+like in a log. Screenshots carry the same chain under `Screenshot[...]`,
+including the `capture.mode` gate that silently skipped a press.
+
+The chain id is minted at the press; the owners-table lease token
+(`ReplayBufferOwners`) stays the internal id for save ownership and appears as
+`owner=` on the `armed` line, so the two can be correlated without conflating
+them.
+
 ## H.264 segment writer (0.5 Step 4, shipped dev.49, MinGW)
 
 `SegmentRecorder` (`src/capture/SegmentRecorder.{h,cpp}`) turns the frame pump's live BGRA D3D11 textures into rolling **~5-second fragmented-MP4** segments in `gamehq-data/replay-cache/`, encoded with Media Foundation's `IMFSinkWriter`. **No ABI shims** — unlike WGC, MinGW already ships the full MF surface; the only extra link libs are `mfplat mfreadwrite mfuuid mf`. Path: input `MFVideoFormat_RGB32` (== BGRA; top-down via a positive `MF_MT_DEFAULT_STRIDE`) → SinkWriter auto-inserts conversion/scaling as needed → `MFVideoFormat_H264`, container `MFTranscodeContainerType_FMPEG4`, HW transforms + real-time hint on, throttling off. One SinkWriter per segment (`Finalize()` + a new `segment_NNN.mp4` every `replay.segment_seconds`), PTS reset to 0 each file so the first frame is always an IDR keyframe and each segment is independently playable/crash-safe. Frames are read off the GPU via a reusable `D3D11_USAGE_STAGING` texture (`CopyResource`+`Map`, honoring `RowPitch`) on the MTA worker thread, throttled to `replay.fps`. The source frame size and configured `replay.resolution` output cap are separate media types, so 4K games do not require a manual CPU downscale loop before H.264 encoding. Fed through the same auto-arm path. Validate a segment with `tools/check_mp4.py` (box-structure gate; no ffmpeg needed). Still on the roadmap for 0.5: stale-cache cleanup and real audio verification.
