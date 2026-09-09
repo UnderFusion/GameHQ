@@ -30,7 +30,7 @@ class LocalizationCiTest(unittest.TestCase):
         build_job = workflow[build_start:]
         self.assertIn("tools/i18n/ci.ps1", fast_job)
         self.assertIn("timeout-minutes: 10", fast_job)
-        self.assertIn("tools/i18n/ci.ps1 -Mode final", final_job)
+        self.assertIn("tools/i18n/ci.ps1 -Mode post-launch", final_job)
         self.assertIn("timeout-minutes: 10", final_job)
         self.assertIn("needs: [localization-fast, localization-final]", build_job)
         self.assertIn("tools/i18n/sync.ps1 -Check", build_job)
@@ -39,8 +39,8 @@ class LocalizationCiTest(unittest.TestCase):
             self.assertNotIn(forbidden, final_job)
 
     def test_lifecycle_gates_are_routed_by_branch_and_never_by_the_manifest(self) -> None:
-        """A development ref must keep failing on a finalized tree, and a release
-        ref must be validated as one. Neither gate may infer which it is."""
+        """Both current branch lanes explicitly select post-launch validation;
+        launch-only modes are never selected by inspecting the manifest."""
         workflow = WORKFLOW.read_text(encoding="utf-8")
         fast_start = workflow.index("  localization-fast:")
         final_start = workflow.index("  localization-final:")
@@ -51,6 +51,8 @@ class LocalizationCiTest(unittest.TestCase):
         self.assertIn("github.ref == 'refs/heads/main'", final_job)
         self.assertIn("startsWith(github.ref, 'refs/heads/release/')", final_job)
         self.assertNotIn("-Mode final", fast_job)
+        self.assertIn("tools/i18n/ci.ps1 -Mode post-launch", fast_job)
+        self.assertIn("tools/i18n/ci.ps1 -Mode post-launch", final_job)
 
         gate = GATE.read_text(encoding="utf-8")
         # Every production-neutral check runs in both modes; only the validator's
@@ -63,11 +65,14 @@ class LocalizationCiTest(unittest.TestCase):
             self.assertIn(script, neutral)
         self.assertNotIn("test_release_readiness.py", neutral)
         self.assertIn("if ($Mode -eq 'candidate') {", gate)
-        self.assertIn("[ValidateSet('candidate', 'final')]", gate)
+        self.assertIn("[ValidateSet('candidate', 'final', 'post-launch')]", gate)
         self.assertIn("$Mode = 'candidate'", gate)
         # The candidate command keeps its exact meaning; final mode is additive.
         self.assertIn("'release_readiness.py'), '--check'", gate)
         self.assertIn("'--mode', 'final'", gate)
+        self.assertIn("elseif ($Mode -eq 'post-launch')", gate)
+        self.assertIn("'post_launch.py'", gate)
+        self.assertIn("'test_post_launch.py'", neutral)
         # Prose may describe the lifecycle; the gate may not read it.
         for forbidden in ("localization_launch", "manifest.json", "linguistic-state"):
             self.assertNotIn(forbidden, gate)

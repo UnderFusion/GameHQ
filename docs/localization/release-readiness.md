@@ -137,17 +137,22 @@ explicit `--mode` selector. The mode is never inferred from file contents.
 | Candidate | default, no selector | the protected pre-release state above |
 | Final | `--mode final --output <path>` | a repository already finalized elsewhere |
 
-`tools/i18n/ci.ps1` defaults to candidate mode, so the offline gate keeps
-rejecting accidental early finalization exactly as before. The public workflow
-picks the gate from the branch, never from the manifest: pull requests and
-pushes to `dev` run `tools/i18n/ci.ps1`, while `main` and `release/**` run
-`tools/i18n/ci.ps1 -Mode final`, which replaces the candidate readiness command
-with a final-mode write to a temporary path followed by `--mode final --check`
-against it. Every production-neutral check runs in both modes. The readiness
-validator's own unit tests (`test_release_readiness.py`) build their fixtures
-from the live candidate evidence snapshot, so they run on the refs where code
-changes land rather than on a release ref, which instead validates the actual
-finalized repository. `tools/i18n/test_ci.py` pins that routing.
+These two modes are specific to the 0.7.7 localization launch, not later patches.
+`tools/i18n/ci.ps1` retains its strict candidate default and explicit `-Mode final`
+for that historical contract. Neither launch mode is relaxed or auto-selected.
+
+Current pull-request, development, main and release-branch localization jobs
+explicitly run `tools/i18n/ci.ps1 -Mode post-launch`. This read-only path requires
+a version strictly newer than the completed owner-designated launch and matching
+the newest unique release-history entry. It validates the preserved launch,
+all current catalogs and linguistic evidence, generated assets and publication
+integrity. Later patches retain their declared fallback policy; the launch still
+requires complete translations. Passing this gate never authorizes publication.
+
+Every production-neutral check runs in all three modes. The old readiness
+fixtures depend on the pre-launch evidence snapshot and remain candidate-only.
+`test_ci.py` pins explicit workflow routing; `test_post_launch.py` covers the
+post-launch boundary and confirms final mode still rejects later versions.
 
 Final mode fails closed. It requires a released, owner-designated,
 `complete` localization launch whose version equals the repository `VERSION`,

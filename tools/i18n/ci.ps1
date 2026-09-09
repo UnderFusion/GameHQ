@@ -1,9 +1,9 @@
 [CmdletBinding()]
 param(
     # The lifecycle stage is chosen by the caller, never sniffed from the
-    # manifest. Candidate keeps rejecting a finalized repository, which is the
-    # whole point of running it on development branches.
-    [ValidateSet('candidate', 'final')]
+    # manifest. Candidate keeps rejecting a finalized launch repository;
+    # current post-launch workflows explicitly select post-launch mode.
+    [ValidateSet('candidate', 'final', 'post-launch')]
     [string]$Mode = 'candidate'
 )
 
@@ -33,6 +33,10 @@ if ($Mode -eq 'candidate') {
     Invoke-Checked 'candidate localization readiness, privacy, and correction evidence' $python @(
         (Join-Path $PSScriptRoot 'release_readiness.py'), '--check'
     )
+} elseif ($Mode -eq 'post-launch') {
+    Invoke-Checked 'post-launch version and preserved localization launch' $python @(
+        (Join-Path $PSScriptRoot 'post_launch.py')
+    )
 } else {
     # Final evidence is written outside the checkout and then re-validated, so a
     # released repository is proven coherent and deterministic without the gate
@@ -61,6 +65,7 @@ $pythonChecks = @(
     @{ Label = 'auxiliary runtime and resource boundaries'; Script = 'test_auxiliary_surfaces.py' },
     @{ Label = 'CI wiring and stale-output regression'; Script = 'test_ci.py' }
     @{ Label = 'contextual linguistic-review evidence'; Script = 'test_linguistic_qa.py' }
+    @{ Label = 'post-launch routing boundaries'; Script = 'test_post_launch.py' }
 )
 foreach ($check in $pythonChecks) {
     Invoke-Checked $check.Label $python @((Join-Path $PSScriptRoot $check.Script))
@@ -68,8 +73,7 @@ foreach ($check in $pythonChecks) {
 
 # The readiness validator's own unit tests build their fixtures from the live
 # candidate evidence snapshot, which only a pre-release checkout carries. They
-# belong where code changes land - pull-request and development refs - while a
-# release ref runs the validator against the actual finalized repository above.
+# remain candidate-only; post-launch workflows use the current validators above.
 if ($Mode -eq 'candidate') {
     Invoke-Checked 'release-readiness governance and correction fixtures' $python @(
         (Join-Path $PSScriptRoot 'test_release_readiness.py')

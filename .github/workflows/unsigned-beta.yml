@@ -16,10 +16,8 @@ concurrency:
   group: unsigned-beta-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-# Which gate runs is decided by the branch, never by inspecting the manifest.
-# Development refs must keep failing on a finalized tree - that is the guard that
-# catches an accidental early finalization - while a real release branch is
-# validated as the finalized repository it is.
+# The 0.7.7 localization launch is complete. Both branch lanes explicitly use
+# post-launch validation; the strict candidate/final launch modes remain available.
 jobs:
   localization-fast:
     name: Fast offline localization gate
@@ -37,7 +35,7 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
-          & tools/i18n/ci.ps1
+          & tools/i18n/ci.ps1 -Mode post-launch
 
   localization-final:
     name: Final offline localization gate
@@ -55,7 +53,7 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
-          & tools/i18n/ci.ps1 -Mode final
+          & tools/i18n/ci.ps1 -Mode post-launch
 
   build-and-verify:
     name: Build and verify unsigned Beta
