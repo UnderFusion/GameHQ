@@ -1,16 +1,29 @@
 {
-  "version": "0.7.24",
+  "version": "0.7.25",
   "date": "2026-09-09",
   "sections": [
     {
       "title": "Improved",
       "items": [
-        "Controller binding labels and capture prompts now show the effective Hold duration, including the configured default.",
-        "Save-replay assignment guidance states how long to hold the button without changing existing bindings."
+        "Save-replay Hold guidance is now available in all 16 supported languages.",
+        "The translated guidance identifies the controller button and minimum hold duration needed to save a replay."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.24",
+      "date": "2026-09-09",
+      "sections": [
+        {
+          "title": "Improved",
+          "items": [
+            "Controller binding labels and capture prompts now show the effective Hold duration, including the configured default.",
+            "Save-replay assignment guidance states how long to hold the button without changing existing bindings."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.23",
       "date": "2026-09-09",
@@ -145,24 +158,6 @@
       ]
     },
     {
-      "version": "0.7.13",
-      "date": "2026-09-09",
-      "sections": [
-        {
-          "title": "Changed",
-          "items": [
-            "Screenshot and saved replay sounds are louder and easier to distinguish from quiet navigation ticks."
-          ]
-        },
-        {
-          "title": "Fixed",
-          "items": [
-            "Regenerating the default sound pack always writes to its own sound folder, regardless of the command's working directory."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -196,6 +191,13 @@
     "requested_locale": "pl-PL",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.25",
+        "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.24",
         "source_integrity": "sha256:73b24d5795b6b8abe8dfb3a7d6cb977b68c8da3afd9de36fa71cc8e6efdc4064",
@@ -269,13 +271,6 @@
       {
         "version": "0.7.14",
         "source_integrity": "sha256:ee2a4783511199f0c51953ec0b9557caf6670a93ffd5893e2a8451951b6a7d38",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.13",
-        "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

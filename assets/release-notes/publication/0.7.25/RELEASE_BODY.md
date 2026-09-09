@@ -1,18 +1,15 @@
-# GameHQ 0.7.13 (2026-09-09)
+# GameHQ 0.7.25 (2026-09-09)
 
-## Changed
+## Improved
 
-- Screenshot and saved replay sounds are louder and easier to distinguish from quiet navigation ticks.
-
-## Fixed
-
-- Regenerating the default sound pack always writes to its own sound folder, regardless of the command's working directory.
+- Save-replay Hold guidance is now available in all 16 supported languages.
+- The translated guidance identifies the controller button and minimum hold duration needed to save a replay.
 
 <!-- gamehq:locale-index -->
 
 ## Release notes in other languages
 
-These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.13/assets/release-notes/publication/0.7.13) are kept in the repository; they are not attached to this release as separate downloads.
+These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.25/assets/release-notes/publication/0.7.25) are kept in the repository; they are not attached to this release as separate downloads.
 
 | Language | Locale | Content |
 | --- | --- | --- |

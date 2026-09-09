@@ -6,6 +6,15 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.25] - 2026-09-09
+
+### Improved
+
+- Save-replay Hold guidance is now translated in all 15 non-source languages,
+  including the required duration and controller-button placeholders.
+- Synchronized all 16 application catalogs and contextual review records;
+  catalog regression coverage now includes the packaged Hold guidance.
+
 ## [0.7.24] - 2026-09-09
 
 ### Improved

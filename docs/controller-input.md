@@ -299,7 +299,7 @@ completed gestures, and adding an event path is outside this presentation batch.
 Replay failures continue to ignore the success-notification preference while
 respecting the global notification switch.
 
-Localization delta pending: `gamehq.input.assignment.replay_hold_hint` —
+Localized in all 16 catalogs as of 0.7.25: `gamehq.input.assignment.replay_hold_hint` —
 "Hold %1 for at least %2 ms to save a replay." (`%1`: button, `%2`: effective ms).
 Existing Hold-duration translations are reused for labels and capture prompts.
 

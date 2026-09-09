@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-de-de-recovery; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt",
+    "actor": "codex-gpt-5-contextual-de-de-recovery; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-09T12:00:00Z"
+    "recorded_at": "2026-09-09T21:26:00.978449Z"
   },
   "baseline": {
     "path": "git:c03491fd5ffce2d1ac92b99b27f8b6116fb44fee:i18n/app/gamehq_de_DE.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_de_DE.ts",
-    "sha256": "f4310be524d475186f9fcc3ffa90cf6055292323c7d3fbacf1230662069fda00",
-    "message_count": 853
+    "sha256": "8ced0225d40a43fd6d49fdfc0c3c218274dbb7f656df95667897dcdedf68b140",
+    "message_count": 854
   },
   "coverage": [
     {
@@ -3120,6 +3120,15 @@
         "src/ui/qml/components/BindingAssignmentDialog.qml:207"
       ],
       "decision": "corrected"
+    },
+    {
+      "id": "gamehq.input.assignment.replay_hold_hint",
+      "source_hash": "a537e120b626f4b5b97f32bd3080eb2810cb2e6fe4bbbd93db0137b6fa8e667e",
+      "translation_hash": "a4ba1e2a7bd538ec4c22dd072d53437dd9b04194eee478449d500a141d911599",
+      "locations": [
+        "src/input/BindingEditorModel.cpp:1068"
+      ],
+      "decision": "accepted"
     },
     {
       "id": "gamehq.input.assignment.scope_slot",
@@ -16304,8 +16313,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_de_DE.ts",
-      "sha256": "f4310be524d475186f9fcc3ffa90cf6055292323c7d3fbacf1230662069fda00",
-      "reviewed_units": 853
+      "sha256": "8ced0225d40a43fd6d49fdfc0c3c218274dbb7f656df95667897dcdedf68b140",
+      "reviewed_units": 854
     },
     {
       "surface": "installer",

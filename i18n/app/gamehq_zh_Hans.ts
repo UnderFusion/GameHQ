@@ -641,7 +641,7 @@
       <translation>所选文件夹无效。</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="356"></location>
+      <location filename="src/ui/AppController.cpp" line="362"></location>
       <source>Choose a local folder.</source>
       <translation>请选择一个本地文件夹。</translation>
     </message>
@@ -661,8 +661,8 @@
       <translation>GameHQ 无法保存所选文件夹。</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="350"></location>
-      <location filename="src/ui/AppController.cpp" line="372"></location>
+      <location filename="src/ui/AppController.cpp" line="356"></location>
+      <location filename="src/ui/AppController.cpp" line="378"></location>
       <source>The capture type is invalid.</source>
       <translation>捕获类型无效。</translation>
     </message>
@@ -819,7 +819,7 @@
       <translation>无法计算 %1 的哈希值。</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="197"></location>
+      <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>便携配置文件只能由已安装的 GameHQ 副本导入。</translation>
     </message>
@@ -844,12 +844,12 @@
       <translation>无法删除已恢复的便携导入日志。</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="203"></location>
+      <location filename="src/ui/AppController.cpp" line="206"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>请选择包含便携版 GameHQ 的本地文件夹。</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="212"></location>
+      <location filename="src/ui/AppController.cpp" line="215"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>所选文件夹不是 GameHQ 便携包。</translation>
     </message>
@@ -879,12 +879,12 @@
       <translation>portable:/ 路径超出了所选的包根目录。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="223"></location>
+      <location filename="src/ui/AppController.cpp" line="226"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ 无法为导入识别自身进程。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="233"></location>
+      <location filename="src/ui/AppController.cpp" line="236"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ 无法启动便携导入进程。</translation>
     </message>
@@ -1423,27 +1423,27 @@ This cannot be undone.</source>
       <translation>%1 查看器</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="338"></location>
+      <location filename="src/ui/AppController.cpp" line="344"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>检查每个显示器的当前 HDR 状态。</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="324"></location>
+      <location filename="src/ui/AppController.cpp" line="330"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR 已启用</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="329"></location>
+      <location filename="src/ui/AppController.cpp" line="335"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR 未启用</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="318"></location>
+      <location filename="src/ui/AppController.cpp" line="324"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>图形驱动程序未报告任何显示器</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="312"></location>
+      <location filename="src/ui/AppController.cpp" line="318"></location>
       <source>Not checked yet</source>
       <translation>尚未检查</translation>
     </message>
@@ -1764,6 +1764,11 @@ This cannot be undone.</source>
       <source>Single button</source>
       <translation>单个按键</translation>
     </message>
+    <message id="gamehq.input.assignment.replay_hold_hint">
+      <location filename="src/input/BindingEditorModel.cpp" line="1068"></location>
+      <source>Hold %1 for at least %2 ms to save a replay.</source>
+      <translation>请按住 %1 至少 %2 毫秒以保存回放。</translation>
+    </message>
     <message id="gamehq.input.assignment.scope_slot">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="181"></location>
       <source>%1 · Slot %2</source>
@@ -1851,7 +1856,7 @@ This cannot be undone.</source>
       <translation>转换并添加</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press">
-      <location filename="src/input/BindingEditorModel.cpp" line="482"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="487"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1864,7 +1869,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 此后，%2 将在松开按钮时激活。</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press_with_wait">
-      <location filename="src/input/BindingEditorModel.cpp" line="474"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="479"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1882,12 +1887,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>要使这些分配相互兼容吗？</translation>
     </message>
     <message id="gamehq.input.conflict.already_assigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="458"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="463"></location>
       <source>%1 · %2 is already assigned to %3 in this context.</source>
       <translation>在此上下文中，%1 · %2 已分配给 %3。</translation>
     </message>
     <message id="gamehq.input.conflict.press_timed">
-      <location filename="src/input/BindingEditorModel.cpp" line="451"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="456"></location>
       <source>%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.</source>
       <translation>%1 为 %2 使用“按下”手势。在不改变按钮按下行为的情况下，无法在此上下文中将其与 %3 区分开。</translation>
     </message>
@@ -1928,17 +1933,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>三击</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
-      <location filename="src/input/BindingEditorModel.cpp" line="301"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="306"></location>
       <source>Press a controller button for %1 · Slot %2 · %3</source>
       <translation>按下用于 %1 的手柄按键 · 槽位 %2 · %3</translation>
     </message>
     <message id="gamehq.input.model.capture.keyboard">
-      <location filename="src/input/BindingEditorModel.cpp" line="308"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="313"></location>
       <source>Press a key or shortcut for %1 · Slot %2</source>
       <translation>按下用于 %1 的按键或快捷键 · 槽位 %2</translation>
     </message>
     <message id="gamehq.input.model.capture.mouse">
-      <location filename="src/input/BindingEditorModel.cpp" line="315"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="320"></location>
       <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
       <translation>按下用于 %1 的鼠标中键、后退键或前进键 · 槽位 %2</translation>
     </message>
@@ -1948,17 +1953,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>组合</translation>
     </message>
     <message id="gamehq.input.model.hold_default">
-      <location filename="src/input/BindingEditorModel.cpp" line="185"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
       <source>Hold · Default</source>
       <translation>长按 · 默认</translation>
     </message>
     <message id="gamehq.input.model.hold_seconds">
-      <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="195"></location>
       <source>Hold · %1 s</source>
       <translation>长按 · %1 秒</translation>
     </message>
     <message id="gamehq.input.model.no_action_fired">
-      <location filename="src/input/BindingEditorModel.cpp" line="985"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="990"></location>
       <source>No action fired yet</source>
       <translation>尚未触发任何操作</translation>
     </message>
@@ -1999,7 +2004,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.input.model.unassigned">
       <location filename="src/input/BindingEditorModel.cpp" line="166"></location>
-      <location filename="src/input/BindingEditorModel.cpp" line="242"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="247"></location>
       <source>Unassigned</source>
       <translation>未分配</translation>
     </message>
@@ -2009,7 +2014,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>由于此按钮会启动组合键，此操作最多等待 %1 毫秒。</translation>
     </message>
     <message id="gamehq.input.relation.context_override">
-      <location filename="src/input/BindingEditorModel.cpp" line="580"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="585"></location>
       <source>%1 replaces %2 while %3 is active. Both are saved.</source>
       <translation>%3 处于活动状态时，%1 会替代 %2。两个分配都会保存。</translation>
     </message>
@@ -2019,12 +2024,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>由于同一按钮还有需要更多点击次数的分配，此操作最多等待 %1 毫秒。</translation>
     </message>
     <message id="gamehq.input.relation.redundant">
-      <location filename="src/input/BindingEditorModel.cpp" line="589"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="594"></location>
       <source>%1 already does the same thing here. The duplicate has no effect.</source>
       <translation>%1 已在此处执行相同操作。重复分配不会生效。</translation>
     </message>
     <message id="gamehq.input.relation.shared_gesture">
-      <location filename="src/input/BindingEditorModel.cpp" line="596"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="601"></location>
       <source>%1 is shared: %2 = %3, %4 = %5.</source>
       <translation>%1 已共享：%2 = %3，%4 = %5。</translation>
     </message>
@@ -2035,8 +2040,8 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>选择要监视的文件夹</translation>
     </message>
     <message id="gamehq.navigation.about">
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="162"></location>
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="194"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="174"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="206"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="108"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="284"></location>
       <source>About</source>
@@ -2103,8 +2108,8 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>设置</translation>
     </message>
     <message id="gamehq.navigation.support_gamehq">
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="164"></location>
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="196"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="176"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="208"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="300"></location>
       <source>Support GameHQ</source>
       <translation>支持 GameHQ</translation>
@@ -2245,7 +2250,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="115"></location>
+      <location filename="src/ui/AppController.cpp" line="118"></location>
       <source>Release notes</source>
       <translation>发布说明</translation>
     </message>

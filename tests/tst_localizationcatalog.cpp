@@ -319,6 +319,7 @@ void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndTranslated
     const auto english = readTsCatalog(
         QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/gamehq_en_US.ts"), &error);
     QVERIFY2(error.isEmpty(), qPrintable(error));
+    QCOMPARE(english.size(), 854);
     const QSet<QString> activeIds = activeProductionIds();
 
     for (const QString& catalogName : promotedLaunchCatalogs()) {
@@ -349,7 +350,8 @@ void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndTranslated
             QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/") + catalogName, &error);
         QVERIFY2(error.isEmpty(), qPrintable(error));
         for (const char *id : {"gamehq.action.save", "gamehq.navigation.about",
-                               "gamehq.navigation.support_gamehq"}) {
+                               "gamehq.navigation.support_gamehq",
+                               "gamehq.input.assignment.replay_hold_hint"}) {
             QCOMPARE(qtTrId(id), catalog[QString::fromLatin1(id)].translation);
         }
         QCoreApplication::removeTranslator(&target);
@@ -468,11 +470,12 @@ void LocalizationCatalogTest::migratedP4FourNativeIdsCoverEveryLaunchLocale()
             || id.startsWith(QStringLiteral("gamehq.tray."))
             || id.startsWith(QStringLiteral("gamehq.input.model."))
             || id.startsWith(QStringLiteral("gamehq.input.gesture."))
+            || id.startsWith(QStringLiteral("gamehq.input.assignment."))
             || id.startsWith(QStringLiteral("gamehq.hdr."))) {
             ids.insert(id);
         }
     }
-    QCOMPARE(ids.size(), 100);
+    QCOMPARE(ids.size(), 101);
 
     for (const QString& catalogName : translatedCatalogs()) {
         QString error;

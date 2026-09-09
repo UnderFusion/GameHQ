@@ -643,7 +643,7 @@
       <translation>La cartella selezionata non è valida.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="356"></location>
+      <location filename="src/ui/AppController.cpp" line="362"></location>
       <source>Choose a local folder.</source>
       <translation>Scegli una cartella locale.</translation>
     </message>
@@ -663,8 +663,8 @@
       <translation>GameHQ non è riuscito a salvare la cartella selezionata.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="350"></location>
-      <location filename="src/ui/AppController.cpp" line="372"></location>
+      <location filename="src/ui/AppController.cpp" line="356"></location>
+      <location filename="src/ui/AppController.cpp" line="378"></location>
       <source>The capture type is invalid.</source>
       <translation>Il tipo di acquisizione non è valido.</translation>
     </message>
@@ -821,7 +821,7 @@
       <translation>Impossibile calcolare l'hash di %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="197"></location>
+      <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>I profili portatili possono essere importati solo da una copia installata di GameHQ.</translation>
     </message>
@@ -846,12 +846,12 @@
       <translation>Impossibile rimuovere il journal dell'importazione portatile recuperata.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="203"></location>
+      <location filename="src/ui/AppController.cpp" line="206"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>Seleziona una cartella locale che contenga GameHQ in versione portatile.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="212"></location>
+      <location filename="src/ui/AppController.cpp" line="215"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>La cartella selezionata non è un pacchetto portatile di GameHQ.</translation>
     </message>
@@ -881,12 +881,12 @@
       <translation>Un percorso portable:/ esce dalla radice del pacchetto selezionato.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="223"></location>
+      <location filename="src/ui/AppController.cpp" line="226"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ non è riuscito a identificare il proprio processo per l'importazione.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="233"></location>
+      <location filename="src/ui/AppController.cpp" line="236"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ non è riuscito ad avviare il processo di importazione portatile.</translation>
     </message>
@@ -1428,27 +1428,27 @@ Questa operazione non può essere annullata.</numerusform>
       <translation>Visualizzatore di %1</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="338"></location>
+      <location filename="src/ui/AppController.cpp" line="344"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Controlla lo stato HDR attuale di ogni schermo.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="324"></location>
+      <location filename="src/ui/AppController.cpp" line="330"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR è attivo</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="329"></location>
+      <location filename="src/ui/AppController.cpp" line="335"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR è inattivo</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="318"></location>
+      <location filename="src/ui/AppController.cpp" line="324"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>Nessuno schermo segnalato dal driver grafico</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="312"></location>
+      <location filename="src/ui/AppController.cpp" line="318"></location>
       <source>Not checked yet</source>
       <translation>Non ancora controllato</translation>
     </message>
@@ -1769,6 +1769,11 @@ Questa operazione non può essere annullata.</numerusform>
       <source>Single button</source>
       <translation>Pulsante singolo</translation>
     </message>
+    <message id="gamehq.input.assignment.replay_hold_hint">
+      <location filename="src/input/BindingEditorModel.cpp" line="1068"></location>
+      <source>Hold %1 for at least %2 ms to save a replay.</source>
+      <translation>Tieni premuto %1 per almeno %2 ms per salvare un replay.</translation>
+    </message>
     <message id="gamehq.input.assignment.scope_slot">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="181"></location>
       <source>%1 · Slot %2</source>
@@ -1856,7 +1861,7 @@ Questa operazione non può essere annullata.</numerusform>
       <translation>Converti e aggiungi</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press">
-      <location filename="src/input/BindingEditorModel.cpp" line="482"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="487"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1869,7 +1874,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
 %2 si attiverà quindi al rilascio del pulsante.</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press_with_wait">
-      <location filename="src/input/BindingEditorModel.cpp" line="474"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="479"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1887,12 +1892,12 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Rendere compatibili queste assegnazioni?</translation>
     </message>
     <message id="gamehq.input.conflict.already_assigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="458"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="463"></location>
       <source>%1 · %2 is already assigned to %3 in this context.</source>
       <translation>%1 · %2 è già assegnato a %3 in questo contesto.</translation>
     </message>
     <message id="gamehq.input.conflict.press_timed">
-      <location filename="src/input/BindingEditorModel.cpp" line="451"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="456"></location>
       <source>%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.</source>
       <translation>%1 usa Pressione per %2. In questo contesto non può essere distinta da %3 senza cambiarne il comportamento alla pressione del pulsante.</translation>
     </message>
@@ -1933,17 +1938,17 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Tripla pressione</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
-      <location filename="src/input/BindingEditorModel.cpp" line="301"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="306"></location>
       <source>Press a controller button for %1 · Slot %2 · %3</source>
       <translation>Premi un pulsante del controller per %1 · Slot %2 · %3</translation>
     </message>
     <message id="gamehq.input.model.capture.keyboard">
-      <location filename="src/input/BindingEditorModel.cpp" line="308"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="313"></location>
       <source>Press a key or shortcut for %1 · Slot %2</source>
       <translation>Premi un tasto o una scorciatoia per %1 · Slot %2</translation>
     </message>
     <message id="gamehq.input.model.capture.mouse">
-      <location filename="src/input/BindingEditorModel.cpp" line="315"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="320"></location>
       <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
       <translation>Premi il tasto centrale, Indietro o Avanti del mouse per %1 · Slot %2</translation>
     </message>
@@ -1953,17 +1958,17 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Combinazione</translation>
     </message>
     <message id="gamehq.input.model.hold_default">
-      <location filename="src/input/BindingEditorModel.cpp" line="185"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
       <source>Hold · Default</source>
       <translation>Pressione prolungata · Predefinita</translation>
     </message>
     <message id="gamehq.input.model.hold_seconds">
-      <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="195"></location>
       <source>Hold · %1 s</source>
       <translation>Pressione prolungata · %1 s</translation>
     </message>
     <message id="gamehq.input.model.no_action_fired">
-      <location filename="src/input/BindingEditorModel.cpp" line="985"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="990"></location>
       <source>No action fired yet</source>
       <translation>Nessuna azione attivata finora</translation>
     </message>
@@ -2004,7 +2009,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     </message>
     <message id="gamehq.input.model.unassigned">
       <location filename="src/input/BindingEditorModel.cpp" line="166"></location>
-      <location filename="src/input/BindingEditorModel.cpp" line="242"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="247"></location>
       <source>Unassigned</source>
       <translation>Non assegnato</translation>
     </message>
@@ -2014,7 +2019,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Questa azione attende fino a %1 ms perché questo pulsante avvia una combinazione.</translation>
     </message>
     <message id="gamehq.input.relation.context_override">
-      <location filename="src/input/BindingEditorModel.cpp" line="580"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="585"></location>
       <source>%1 replaces %2 while %3 is active. Both are saved.</source>
       <translation>%1 sostituisce %2 mentre %3 è attivo. Entrambe le assegnazioni vengono salvate.</translation>
     </message>
@@ -2024,12 +2029,12 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Questa azione attende fino a %1 ms perché lo stesso pulsante ha anche un'assegnazione che richiede più pressioni.</translation>
     </message>
     <message id="gamehq.input.relation.redundant">
-      <location filename="src/input/BindingEditorModel.cpp" line="589"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="594"></location>
       <source>%1 already does the same thing here. The duplicate has no effect.</source>
       <translation>%1 fa già la stessa cosa qui. Il duplicato non ha alcun effetto.</translation>
     </message>
     <message id="gamehq.input.relation.shared_gesture">
-      <location filename="src/input/BindingEditorModel.cpp" line="596"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="601"></location>
       <source>%1 is shared: %2 = %3, %4 = %5.</source>
       <translation>%1 è condiviso: %2 = %3, %4 = %5.</translation>
     </message>
@@ -2040,8 +2045,8 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Scegli una cartella da monitorare</translation>
     </message>
     <message id="gamehq.navigation.about">
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="162"></location>
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="194"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="174"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="206"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="108"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="284"></location>
       <source>About</source>
@@ -2108,8 +2113,8 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Impostazioni</translation>
     </message>
     <message id="gamehq.navigation.support_gamehq">
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="164"></location>
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="196"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="176"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="208"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="300"></location>
       <source>Support GameHQ</source>
       <translation>Sostieni GameHQ</translation>
@@ -2250,7 +2255,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="115"></location>
+      <location filename="src/ui/AppController.cpp" line="118"></location>
       <source>Release notes</source>
       <translation>Note di rilascio</translation>
     </message>

@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
   "kind": "release-publication",
-  "version": "0.7.13",
+  "version": "0.7.25",
   "date": "2026-09-09",
   "source_locale": "en-US",
   "default_locale": "en-US",
   "localization_policy": "fallback-allowed",
-  "release_source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+  "release_source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
   "release_body": {
     "filename": "RELEASE_BODY.md",
-    "size": 1790,
-    "sha256": "2e9b3714a8b5259ff98fe0ac4dc7df520932c3af796d5449888c810bd454867d"
+    "size": 1739,
+    "sha256": "0faf46660fcef3592fbda854761b70868552ad4736e0887300c76552dcc6d595"
   },
   "distribution": {
     "localized_documents": "repository",
     "github_release_assets": false,
-    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.7.13/assets/release-notes/publication/0.7.13"
+    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.7.25/assets/release-notes/publication/0.7.25"
   },
   "localized_documents": [
     {
@@ -27,23 +27,18 @@
       "fallback_reason": null,
       "language_english_name": "English (United States)",
       "language_native_name": "English",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.en-US.md",
-      "size": 280,
-      "sha256": "f378dd310b1d99e76caa9145b7f2393b4c758653bd8de312cd7542bf6ab5f143",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 229,
+      "sha256": "cafc7fd7d42974272eee9c984b8250b10634c4c331792428c1d24b8ac89dc6ca",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -57,23 +52,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Chinese (Simplified)",
       "language_native_name": "简体中文",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.zh-Hans.md",
-      "size": 470,
-      "sha256": "8a5735b8360fd7d72f1151b749a55df6f330c9462d39ade0bf29bf85103970a9",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 419,
+      "sha256": "1254613cdc82059a35d21cf3e3e3f10c5e677068e791007c1f71be05137d1493",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -87,23 +77,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Russian",
       "language_native_name": "Русский",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.ru-RU.md",
-      "size": 457,
-      "sha256": "c7d579f635f9b5e01df7493c5e5b97e86747bec13838e3414e14dc8a9a1fdb3a",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 406,
+      "sha256": "098923391e764bc7bba25025e8a4a402e519a079560f044518884a3494af0938",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -117,23 +102,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Spanish",
       "language_native_name": "Español",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.es-ES.md",
-      "size": 457,
-      "sha256": "39e75af0c1857158d756b68a12f2d3c114e967c2e20f5976e81cce7be29200de",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 406,
+      "sha256": "7506e56b99e749fba8e221c12e59e0756c201730f75ef2b8db3334e19b1a353f",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -147,23 +127,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Portuguese (Brazil)",
       "language_native_name": "Português (Brasil)",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.pt-BR.md",
-      "size": 469,
-      "sha256": "7b178cc38daf97050a51bccf87defcc93f37cc5f5423ca70519169bcf9c5f526",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 418,
+      "sha256": "8e3a599362155c5063b801c83340320ea45d2b646c715c70e295a5d5159d972f",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -177,23 +152,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "German",
       "language_native_name": "Deutsch",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.de-DE.md",
-      "size": 456,
-      "sha256": "dede36544825712fe9e9cb4ff55f806341bfa727303f9e883c2bf5663b47774f",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 405,
+      "sha256": "8013d00051da23344b87a8806f829584ee7802d9451491f2f388dc7652d0f86e",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -207,23 +177,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Japanese",
       "language_native_name": "日本語",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.ja-JP.md",
-      "size": 458,
-      "sha256": "f8ea434dcf822eb1452e948619af9aec683561a1d3730569f1f6aba9fd102814",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 407,
+      "sha256": "423c9a04daaf0ee5ff7790167e71603b9c6a69768ba4a7bad3607a18278af166",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -237,23 +202,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "French",
       "language_native_name": "Français",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.fr-FR.md",
-      "size": 456,
-      "sha256": "8759830c3da799c91f32a1416d271f2274aba111d2805987621a51de5490ff56",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 405,
+      "sha256": "7ea176cdfbbe5404eb22154f9e8f4c4ab237d009b23a34667d0ea1d04c97d0b1",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -267,23 +227,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Polish",
       "language_native_name": "Polski",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.pl-PL.md",
-      "size": 456,
-      "sha256": "4d087b351d130fcf2be673215a489dc52144b93cde7d343938ec5fdae3ac9d63",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 405,
+      "sha256": "be2e68575bab3d8f333d93c9c8a68c642eb10cebe0d3d5be4da9b163ef12c15f",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -297,23 +252,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Korean",
       "language_native_name": "한국어",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.ko-KR.md",
-      "size": 456,
-      "sha256": "835d7176e1d3a479fe87c31ed16b6853b1bc38b4383c9a54931c1a89f9c58f11",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 405,
+      "sha256": "8075512ac4ec535f5dcb6568b85ff4b172b178f5a9e2ca24ebe4399dd9f68dcd",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -327,23 +277,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Chinese (Traditional)",
       "language_native_name": "繁體中文",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.zh-Hant.md",
-      "size": 471,
-      "sha256": "3c84bc5712d3da924a57262d3c8ab45a0fac35a2f06643485aa5a7736ea027f1",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 420,
+      "sha256": "a693f81b7a24d6f4779c59bdd5bfbe02681bdce13506e4b1494ee04f30a2bd56",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -357,23 +302,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Turkish",
       "language_native_name": "Türkçe",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.tr-TR.md",
-      "size": 457,
-      "sha256": "7bd577f33f3c76b1b5d30253b872ca07dbe79c83804343b47a7386f287eed719",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 406,
+      "sha256": "362ca11a4f2fa9d1febae27e9edcc2ae068636d2492bfd962119ebcd828df6c3",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -387,23 +327,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Thai",
       "language_native_name": "ไทย",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.th-TH.md",
-      "size": 454,
-      "sha256": "ecad0bd994c4aee73ad86741121591921c12fbfd35bfd76e98499bb0cc041f40",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 403,
+      "sha256": "ecdf17caa5505e58a382dff4d78527e7e067c7f8764b542a3ad42974d2070c3c",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -417,23 +352,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Spanish (Latin America)",
       "language_native_name": "Español (Latinoamérica)",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.es-419.md",
-      "size": 473,
-      "sha256": "f358554f740a40ebe1fdf94aedc7c8d420a2ffe6db3f46c04a37522042ab232c",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 422,
+      "sha256": "fa35018b10adc47c3020f84d52c737634a48dabd4b65c9d620b99a42aee14eb4",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -447,23 +377,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Ukrainian",
       "language_native_name": "Українська",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.uk-UA.md",
-      "size": 459,
-      "sha256": "ec894ee943e8130ee085e403fa6a845039d05708046ba80487d679955caf16fd",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 408,
+      "sha256": "a39845e82e0257427ef6728b0b6f33996a1775789694ed04a2d0c12f4fff00e4",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]
@@ -477,23 +402,18 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Italian",
       "language_native_name": "Italiano",
-      "version": "0.7.13",
+      "version": "0.7.25",
       "date": "2026-09-09",
       "filename": "release-notes.it-IT.md",
-      "size": 457,
-      "sha256": "b02798a273230dbabbcff26c8ba1b47fbc82ef50e6e3248424140bf50fa17157",
-      "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
+      "size": 406,
+      "sha256": "b71f0304bfc7003a25be00acc6b4dab579f14d41a837d166b349594d29907078",
+      "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
       "structure": [
         {
-          "section_id": "changed",
+          "section_id": "improved",
           "item_ids": [
-            "changed-capture-sounds-louder"
-          ]
-        },
-        {
-          "section_id": "fixed",
-          "item_ids": [
-            "fixed-sound-generation-location"
+            "localized-replay-hold-guidance",
+            "localized-hold-threshold"
           ]
         }
       ]

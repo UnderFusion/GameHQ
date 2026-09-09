@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-en-review; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt",
+    "actor": "codex-gpt-5-contextual-en-review; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "canonical repository English followed by complete contextual source review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-09T12:00:00Z"
+    "recorded_at": "2026-09-09T21:26:00.978449Z"
   },
   "baseline": {
     "path": "git:7accd39fa37db9d9b729d42855a5d687b1735b98:i18n/app/gamehq_en_US.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_en_US.ts",
-    "sha256": "2998f3c2f8a7c4f3ab73112d00c98a165ec33d3e4193aa777e76cbbad28ffaab",
-    "message_count": 853
+    "sha256": "a8905d1c13077d10d4c3b5462883270f25f1aeb8d05ec61a959925ff0998aea4",
+    "message_count": 854
   },
   "coverage": [
     {
@@ -3118,6 +3118,15 @@
       "translation_hash": "82e2176104355ca68e6077405185d689f322bb43be205f3caf2f764f3f13c321",
       "locations": [
         "src/ui/qml/components/BindingAssignmentDialog.qml:207"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.input.assignment.replay_hold_hint",
+      "source_hash": "a537e120b626f4b5b97f32bd3080eb2810cb2e6fe4bbbd93db0137b6fa8e667e",
+      "translation_hash": "b0ff5ae28099b9b2eb4cf8bd0e395585b741774f737940cfcc9a827c698c88be",
+      "locations": [
+        "src/input/BindingEditorModel.cpp:1068"
       ],
       "decision": "accepted"
     },
@@ -8095,8 +8104,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_en_US.ts",
-      "sha256": "2998f3c2f8a7c4f3ab73112d00c98a165ec33d3e4193aa777e76cbbad28ffaab",
-      "reviewed_units": 853
+      "sha256": "a8905d1c13077d10d4c3b5462883270f25f1aeb8d05ec61a959925ff0998aea4",
+      "reviewed_units": 854
     },
     {
       "surface": "installer",

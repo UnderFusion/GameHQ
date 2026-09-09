@@ -2217,7 +2217,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 356
+          "line": 362
         }
       ],
       "plural": false,
@@ -2289,11 +2289,11 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 350
+          "line": 356
         },
         {
           "file": "src/ui/AppController.cpp",
-          "line": 372
+          "line": 378
         }
       ],
       "plural": false,
@@ -2850,7 +2850,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 197
+          "line": 200
         }
       ],
       "plural": false,
@@ -2937,7 +2937,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 203
+          "line": 206
         }
       ],
       "plural": false,
@@ -2956,7 +2956,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 212
+          "line": 215
         }
       ],
       "plural": false,
@@ -3060,7 +3060,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 223
+          "line": 226
         }
       ],
       "plural": false,
@@ -3079,7 +3079,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 233
+          "line": 236
         }
       ],
       "plural": false,
@@ -4998,7 +4998,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 338
+          "line": 344
         }
       ],
       "plural": false,
@@ -5015,7 +5015,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 324
+          "line": 330
         }
       ],
       "plural": false,
@@ -5032,7 +5032,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 329
+          "line": 335
         }
       ],
       "plural": false,
@@ -5049,7 +5049,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 318
+          "line": 324
         }
       ],
       "plural": false,
@@ -5066,7 +5066,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 312
+          "line": 318
         }
       ],
       "plural": false,
@@ -6162,6 +6162,26 @@
       "source_hash": "1b96e72e6623f1aea0c4c9124094be245eb592cad8a00a8dbde6f2838a5db32e"
     },
     {
+      "id": "gamehq.input.assignment.replay_hold_hint",
+      "source": "Hold %1 for at least %2 ms to save a replay.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/BindingEditorModel.cpp",
+          "line": 1068
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a537e120b626f4b5b97f32bd3080eb2810cb2e6fe4bbbd93db0137b6fa8e667e"
+    },
+    {
       "id": "gamehq.input.assignment.scope_slot",
       "source": "%1 · Slot %2",
       "context": "ID",
@@ -6487,7 +6507,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 482
+          "line": 487
         }
       ],
       "plural": false,
@@ -6510,7 +6530,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 474
+          "line": 479
         }
       ],
       "plural": false,
@@ -6551,7 +6571,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 458
+          "line": 463
         }
       ],
       "plural": false,
@@ -6572,7 +6592,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 451
+          "line": 456
         }
       ],
       "plural": false,
@@ -6719,7 +6739,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 301
+          "line": 306
         }
       ],
       "plural": false,
@@ -6740,7 +6760,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 308
+          "line": 313
         }
       ],
       "plural": false,
@@ -6760,7 +6780,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 315
+          "line": 320
         }
       ],
       "plural": false,
@@ -6797,7 +6817,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 185
+          "line": 190
         }
       ],
       "plural": false,
@@ -6814,7 +6834,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 190
+          "line": 195
         }
       ],
       "plural": false,
@@ -6833,7 +6853,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 985
+          "line": 990
         }
       ],
       "plural": false,
@@ -6973,7 +6993,7 @@
         },
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 242
+          "line": 247
         }
       ],
       "plural": false,
@@ -7009,7 +7029,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 580
+          "line": 585
         }
       ],
       "plural": false,
@@ -7049,7 +7069,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 589
+          "line": 594
         }
       ],
       "plural": false,
@@ -7068,7 +7088,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 596
+          "line": 601
         }
       ],
       "plural": false,
@@ -7112,11 +7132,11 @@
       "locations": [
         {
           "file": "src/app/PackagedLocalizationProbe.cpp",
-          "line": 162
+          "line": 174
         },
         {
           "file": "src/app/PackagedLocalizationProbe.cpp",
-          "line": 194
+          "line": 206
         },
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
@@ -7351,11 +7371,11 @@
       "locations": [
         {
           "file": "src/app/PackagedLocalizationProbe.cpp",
-          "line": 164
+          "line": 176
         },
         {
           "file": "src/app/PackagedLocalizationProbe.cpp",
-          "line": 196
+          "line": 208
         },
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
@@ -7848,7 +7868,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 115
+          "line": 118
         }
       ],
       "plural": false,

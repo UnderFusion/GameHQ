@@ -641,7 +641,7 @@
       <translation>선택한 폴더가 올바르지 않습니다.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="356"></location>
+      <location filename="src/ui/AppController.cpp" line="362"></location>
       <source>Choose a local folder.</source>
       <translation>로컬 폴더를 선택하세요.</translation>
     </message>
@@ -661,8 +661,8 @@
       <translation>GameHQ에서 선택한 폴더를 저장할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="350"></location>
-      <location filename="src/ui/AppController.cpp" line="372"></location>
+      <location filename="src/ui/AppController.cpp" line="356"></location>
+      <location filename="src/ui/AppController.cpp" line="378"></location>
       <source>The capture type is invalid.</source>
       <translation>캡처 유형이 올바르지 않습니다.</translation>
     </message>
@@ -819,7 +819,7 @@
       <translation>%1의 해시를 계산할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="197"></location>
+      <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>포터블 프로필은 설치된 GameHQ에서만 가져올 수 있습니다.</translation>
     </message>
@@ -844,12 +844,12 @@
       <translation>복구된 포터블 가져오기 저널을 제거할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="203"></location>
+      <location filename="src/ui/AppController.cpp" line="206"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>포터블 GameHQ가 포함된 로컬 폴더를 선택하세요.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="212"></location>
+      <location filename="src/ui/AppController.cpp" line="215"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>선택한 폴더가 GameHQ 포터블 패키지가 아닙니다.</translation>
     </message>
@@ -879,12 +879,12 @@
       <translation>portable:/ 경로가 선택한 패키지 루트를 벗어납니다.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="223"></location>
+      <location filename="src/ui/AppController.cpp" line="226"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ에서 가져오기에 사용할 자체 프로세스를 식별할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="233"></location>
+      <location filename="src/ui/AppController.cpp" line="236"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ에서 포터블 가져오기 프로세스를 시작할 수 없습니다.</translation>
     </message>
@@ -1423,27 +1423,27 @@ This cannot be undone.</source>
       <translation>%1 뷰어</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="338"></location>
+      <location filename="src/ui/AppController.cpp" line="344"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>각 디스플레이의 현재 HDR 상태를 확인합니다.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="324"></location>
+      <location filename="src/ui/AppController.cpp" line="330"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR 활성</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="329"></location>
+      <location filename="src/ui/AppController.cpp" line="335"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR 비활성</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="318"></location>
+      <location filename="src/ui/AppController.cpp" line="324"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>그래픽 드라이버에서 보고한 모니터가 없습니다</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="312"></location>
+      <location filename="src/ui/AppController.cpp" line="318"></location>
       <source>Not checked yet</source>
       <translation>아직 확인하지 않음</translation>
     </message>
@@ -1764,6 +1764,11 @@ This cannot be undone.</source>
       <source>Single button</source>
       <translation>단일 버튼</translation>
     </message>
+    <message id="gamehq.input.assignment.replay_hold_hint">
+      <location filename="src/input/BindingEditorModel.cpp" line="1068"></location>
+      <source>Hold %1 for at least %2 ms to save a replay.</source>
+      <translation>리플레이를 저장하려면 %1을(를) %2ms 이상 길게 누르세요.</translation>
+    </message>
     <message id="gamehq.input.assignment.scope_slot">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="181"></location>
       <source>%1 · Slot %2</source>
@@ -1851,7 +1856,7 @@ This cannot be undone.</source>
       <translation>변환 후 추가</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press">
-      <location filename="src/input/BindingEditorModel.cpp" line="482"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="487"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1864,7 +1869,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 그러면 버튼을 놓은 뒤 %2 동작이 실행됩니다.</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press_with_wait">
-      <location filename="src/input/BindingEditorModel.cpp" line="474"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="479"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1882,12 +1887,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>이 할당을 호환되도록 변경할까요?</translation>
     </message>
     <message id="gamehq.input.conflict.already_assigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="458"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="463"></location>
       <source>%1 · %2 is already assigned to %3 in this context.</source>
       <translation>이 컨텍스트에서 %1 · %2이(가) 이미 %3에 할당되어 있습니다.</translation>
     </message>
     <message id="gamehq.input.conflict.press_timed">
-      <location filename="src/input/BindingEditorModel.cpp" line="451"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="456"></location>
       <source>%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.</source>
       <translation>%1에서 %2에 누르기를 사용합니다. 버튼을 누르는 즉시 실행되는 동작을 변경하지 않으면 이 컨텍스트에서 %3과(와) 구분할 수 없습니다.</translation>
     </message>
@@ -1928,17 +1933,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>세 번 누르기</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
-      <location filename="src/input/BindingEditorModel.cpp" line="301"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="306"></location>
       <source>Press a controller button for %1 · Slot %2 · %3</source>
       <translation>%1 · 슬롯 %2 · %3에 사용할 컨트롤러 버튼을 누르세요</translation>
     </message>
     <message id="gamehq.input.model.capture.keyboard">
-      <location filename="src/input/BindingEditorModel.cpp" line="308"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="313"></location>
       <source>Press a key or shortcut for %1 · Slot %2</source>
       <translation>%1 · 슬롯 %2에 사용할 키 또는 바로 가기를 누르세요</translation>
     </message>
     <message id="gamehq.input.model.capture.mouse">
-      <location filename="src/input/BindingEditorModel.cpp" line="315"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="320"></location>
       <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
       <translation>%1 · 슬롯 %2에 사용할 마우스 가운데, Back 또는 Forward 버튼을 누르세요</translation>
     </message>
@@ -1948,17 +1953,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>조합</translation>
     </message>
     <message id="gamehq.input.model.hold_default">
-      <location filename="src/input/BindingEditorModel.cpp" line="185"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
       <source>Hold · Default</source>
       <translation>길게 누르기 · 기본값</translation>
     </message>
     <message id="gamehq.input.model.hold_seconds">
-      <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="195"></location>
       <source>Hold · %1 s</source>
       <translation>길게 누르기 · %1초</translation>
     </message>
     <message id="gamehq.input.model.no_action_fired">
-      <location filename="src/input/BindingEditorModel.cpp" line="985"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="990"></location>
       <source>No action fired yet</source>
       <translation>아직 실행된 동작 없음</translation>
     </message>
@@ -1999,7 +2004,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.input.model.unassigned">
       <location filename="src/input/BindingEditorModel.cpp" line="166"></location>
-      <location filename="src/input/BindingEditorModel.cpp" line="242"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="247"></location>
       <source>Unassigned</source>
       <translation>할당되지 않음</translation>
     </message>
@@ -2009,7 +2014,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>이 버튼이 조합의 첫 번째 버튼이므로 동작이 최대 %1ms 동안 대기합니다.</translation>
     </message>
     <message id="gamehq.input.relation.context_override">
-      <location filename="src/input/BindingEditorModel.cpp" line="580"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="585"></location>
       <source>%1 replaces %2 while %3 is active. Both are saved.</source>
       <translation>%3이(가) 활성화되어 있으면 %1이(가) %2을(를) 대신합니다. 두 할당 모두 저장됩니다.</translation>
     </message>
@@ -2019,12 +2024,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>같은 버튼에 더 많은 횟수의 누르기가 필요한 할당도 있으므로 동작이 최대 %1ms 동안 대기합니다.</translation>
     </message>
     <message id="gamehq.input.relation.redundant">
-      <location filename="src/input/BindingEditorModel.cpp" line="589"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="594"></location>
       <source>%1 already does the same thing here. The duplicate has no effect.</source>
       <translation>%1이(가) 이미 여기에서 같은 작업을 수행합니다. 중복 할당은 적용되지 않습니다.</translation>
     </message>
     <message id="gamehq.input.relation.shared_gesture">
-      <location filename="src/input/BindingEditorModel.cpp" line="596"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="601"></location>
       <source>%1 is shared: %2 = %3, %4 = %5.</source>
       <translation>%1 공유: %2 = %3, %4 = %5.</translation>
     </message>
@@ -2035,8 +2040,8 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>감시할 폴더 선택</translation>
     </message>
     <message id="gamehq.navigation.about">
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="162"></location>
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="194"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="174"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="206"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="108"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="284"></location>
       <source>About</source>
@@ -2103,8 +2108,8 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>설정</translation>
     </message>
     <message id="gamehq.navigation.support_gamehq">
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="164"></location>
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="196"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="176"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="208"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="300"></location>
       <source>Support GameHQ</source>
       <translation>GameHQ 후원</translation>
@@ -2245,7 +2250,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="115"></location>
+      <location filename="src/ui/AppController.cpp" line="118"></location>
       <source>Release notes</source>
       <translation>릴리스 정보</translation>
     </message>

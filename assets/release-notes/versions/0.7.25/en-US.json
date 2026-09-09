@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.25",
+  "locale": "en-US",
+  "date": "2026-09-09",
+  "sections": [{
+    "id": "improved",
+    "title": "Improved",
+    "items": [
+      {"id": "localized-replay-hold-guidance", "text": "Save-replay Hold guidance is now available in all 16 supported languages."},
+      {"id": "localized-hold-threshold", "text": "The translated guidance identifies the controller button and minimum hold duration needed to save a replay."}
+    ]
+  }]
+}

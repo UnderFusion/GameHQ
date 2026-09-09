@@ -641,7 +641,7 @@
       <translation>Seçilen klasör geçersiz.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="356"></location>
+      <location filename="src/ui/AppController.cpp" line="362"></location>
       <source>Choose a local folder.</source>
       <translation>Yerel bir klasör seçin.</translation>
     </message>
@@ -661,8 +661,8 @@
       <translation>GameHQ seçilen klasörü kaydedemedi.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="350"></location>
-      <location filename="src/ui/AppController.cpp" line="372"></location>
+      <location filename="src/ui/AppController.cpp" line="356"></location>
+      <location filename="src/ui/AppController.cpp" line="378"></location>
       <source>The capture type is invalid.</source>
       <translation>Yakalama türü geçersiz.</translation>
     </message>
@@ -819,7 +819,7 @@
       <translation>Karma değeri hesaplanamıyor: %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="197"></location>
+      <location filename="src/ui/AppController.cpp" line="200"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>Taşınabilir profiller yalnızca kurulu GameHQ kopyasına aktarılabilir.</translation>
     </message>
@@ -844,12 +844,12 @@
       <translation>Kurtarılan taşınabilir içe aktarma günlüğü kaldırılamadı.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="203"></location>
+      <location filename="src/ui/AppController.cpp" line="206"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>Taşınabilir GameHQ kopyasını içeren yerel bir klasör seçin.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="212"></location>
+      <location filename="src/ui/AppController.cpp" line="215"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>Seçilen klasör geçerli bir taşınabilir GameHQ paketi değil.</translation>
     </message>
@@ -879,12 +879,12 @@
       <translation>portable:/ yolu seçilen paket kökünün dışına çıkıyor.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="223"></location>
+      <location filename="src/ui/AppController.cpp" line="226"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ, içe aktarma için kendi işlemini belirleyemedi.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="233"></location>
+      <location filename="src/ui/AppController.cpp" line="236"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ taşınabilir içe aktarma işlemini başlatamadı.</translation>
     </message>
@@ -1423,27 +1423,27 @@ Bu işlem geri alınamaz.</numerusform>
       <translation>%1 Görüntüleyici</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="338"></location>
+      <location filename="src/ui/AppController.cpp" line="344"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Her ekranın mevcut HDR durumunu kontrol edin.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="324"></location>
+      <location filename="src/ui/AppController.cpp" line="330"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR aktif</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="329"></location>
+      <location filename="src/ui/AppController.cpp" line="335"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR etkin değil</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="318"></location>
+      <location filename="src/ui/AppController.cpp" line="324"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>Grafik sürücüsü herhangi bir monitör bildirmedi</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="312"></location>
+      <location filename="src/ui/AppController.cpp" line="318"></location>
       <source>Not checked yet</source>
       <translation>Henüz kontrol edilmedi</translation>
     </message>
@@ -1764,6 +1764,11 @@ Bu işlem geri alınamaz.</numerusform>
       <source>Single button</source>
       <translation>Tek düğme</translation>
     </message>
+    <message id="gamehq.input.assignment.replay_hold_hint">
+      <location filename="src/input/BindingEditorModel.cpp" line="1068"></location>
+      <source>Hold %1 for at least %2 ms to save a replay.</source>
+      <translation>Anında tekrarı kaydetmek için %1 düğmesini en az %2 ms basılı tutun.</translation>
+    </message>
     <message id="gamehq.input.assignment.scope_slot">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="181"></location>
       <source>%1 · Slot %2</source>
@@ -1851,7 +1856,7 @@ Bu işlem geri alınamaz.</numerusform>
       <translation>Dönüştür ve ekle</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press">
-      <location filename="src/input/BindingEditorModel.cpp" line="482"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="487"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1864,7 +1869,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir.</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press_with_wait">
-      <location filename="src/input/BindingEditorModel.cpp" line="474"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="479"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1882,12 +1887,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Bu atamalar uyumlu hale getirilsin mi?</translation>
     </message>
     <message id="gamehq.input.conflict.already_assigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="458"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="463"></location>
       <source>%1 · %2 is already assigned to %3 in this context.</source>
       <translation>Bu bağlamda %1 · %2 zaten %3 eylemine atanmış.</translation>
     </message>
     <message id="gamehq.input.conflict.press_timed">
-      <location filename="src/input/BindingEditorModel.cpp" line="451"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="456"></location>
       <source>%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.</source>
       <translation>%1, %2 eylemi için Basma hareketini kullanıyor. Düğmeye basma davranışı değiştirilmeden bu bağlamda %3 eyleminden ayırt edilemez.</translation>
     </message>
@@ -1928,17 +1933,17 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Üç kez basma</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
-      <location filename="src/input/BindingEditorModel.cpp" line="301"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="306"></location>
       <source>Press a controller button for %1 · Slot %2 · %3</source>
       <translation>%1 · Yuva %2 · %3 için bir kumanda düğmesine basın</translation>
     </message>
     <message id="gamehq.input.model.capture.keyboard">
-      <location filename="src/input/BindingEditorModel.cpp" line="308"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="313"></location>
       <source>Press a key or shortcut for %1 · Slot %2</source>
       <translation>%1 · Yuva %2 için bir tuşa veya kısayola basın</translation>
     </message>
     <message id="gamehq.input.model.capture.mouse">
-      <location filename="src/input/BindingEditorModel.cpp" line="315"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="320"></location>
       <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
       <translation>%1 · Yuva %2 için orta, Back veya Forward fare düğmesine basın</translation>
     </message>
@@ -1948,17 +1953,17 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Kombinasyon</translation>
     </message>
     <message id="gamehq.input.model.hold_default">
-      <location filename="src/input/BindingEditorModel.cpp" line="185"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
       <source>Hold · Default</source>
       <translation>Basılı tutma · Varsayılan</translation>
     </message>
     <message id="gamehq.input.model.hold_seconds">
-      <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="195"></location>
       <source>Hold · %1 s</source>
       <translation>Basılı tutma · %1 sn</translation>
     </message>
     <message id="gamehq.input.model.no_action_fired">
-      <location filename="src/input/BindingEditorModel.cpp" line="985"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="990"></location>
       <source>No action fired yet</source>
       <translation>Henüz herhangi bir işlem başlatılmadı</translation>
     </message>
@@ -1999,7 +2004,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     </message>
     <message id="gamehq.input.model.unassigned">
       <location filename="src/input/BindingEditorModel.cpp" line="166"></location>
-      <location filename="src/input/BindingEditorModel.cpp" line="242"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="247"></location>
       <source>Unassigned</source>
       <translation>Atanmamış</translation>
     </message>
@@ -2009,7 +2014,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Bu düğme bir kombinasyon başlattığı için bu eylem %1 ms'ye kadar bekler.</translation>
     </message>
     <message id="gamehq.input.relation.context_override">
-      <location filename="src/input/BindingEditorModel.cpp" line="580"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="585"></location>
       <source>%1 replaces %2 while %3 is active. Both are saved.</source>
       <translation>%3 etkinken %1, %2 yerine kullanılır. Her ikisi de kaydedilir.</translation>
     </message>
@@ -2019,12 +2024,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Aynı düğmede daha fazla basma gerektiren başka bir atama olduğu için bu eylem %1 ms kadar bekler.</translation>
     </message>
     <message id="gamehq.input.relation.redundant">
-      <location filename="src/input/BindingEditorModel.cpp" line="589"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="594"></location>
       <source>%1 already does the same thing here. The duplicate has no effect.</source>
       <translation>%1 burada zaten aynı şeyi yapıyor. Çoğaltmanın hiçbir etkisi yoktur.</translation>
     </message>
     <message id="gamehq.input.relation.shared_gesture">
-      <location filename="src/input/BindingEditorModel.cpp" line="596"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="601"></location>
       <source>%1 is shared: %2 = %3, %4 = %5.</source>
       <translation>%1 paylaşılır: %2 = %3, %4 = %5.</translation>
     </message>
@@ -2035,8 +2040,8 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>İzlenecek bir klasör seçin</translation>
     </message>
     <message id="gamehq.navigation.about">
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="162"></location>
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="194"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="174"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="206"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="108"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="284"></location>
       <source>About</source>
@@ -2103,8 +2108,8 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Ayarlar</translation>
     </message>
     <message id="gamehq.navigation.support_gamehq">
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="164"></location>
-      <location filename="src/app/PackagedLocalizationProbe.cpp" line="196"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="176"></location>
+      <location filename="src/app/PackagedLocalizationProbe.cpp" line="208"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="300"></location>
       <source>Support GameHQ</source>
       <translation>GameHQ'yu destekle</translation>
@@ -2245,7 +2250,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="115"></location>
+      <location filename="src/ui/AppController.cpp" line="118"></location>
       <source>Release notes</source>
       <translation>Sürüm notları</translation>
     </message>
