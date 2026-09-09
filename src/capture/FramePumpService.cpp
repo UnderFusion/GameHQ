@@ -37,6 +37,7 @@
 #include <QTimer>
 
 #include <memory>
+#include <utility>
 
 #include <algorithm>
 #include <cstring>
@@ -981,11 +982,8 @@ SegmentLease FramePumpWorker::freezeRing(const QString& saveId)
     return lease;
 }
 
-// The moment is locked in — give instant feedback (before the slower
-// remux) so the "saved" sound/notification doesn't wait for encoding.
-// Grab a preview from the freshest completed segment (not the
-// not-yet-remuxed final file) so the toast can show a thumbnail right away.
-// Returns the written thumbnail path, or empty if the grab failed.
+// Export-thread fallback preview from the newest leased segment. Static and
+// value-only: decoding must never access the capture worker or its pipeline.
 QString FramePumpWorker::instantThumbnail(const QString& lastSegment, const QString& thumbPath,
                                           const QString& saveId)
 {
@@ -994,7 +992,6 @@ QString FramePumpWorker::instantThumbnail(const QString& lastSegment, const QStr
     QElapsedTimer instantThumbTimer;
     instantThumbTimer.start();
     if (ReplayExporter::grabThumbnail(lastSegment, instantFrame) && !instantFrame.isNull()) {
-        QDir().mkpath(Paths::thumbnailsDir());
         const QImage scaled = instantFrame.width() > 640
             ? instantFrame.scaledToWidth(640, Qt::SmoothTransformation) : instantFrame;
         if (ThumbnailService::saveThumbnail(scaled, thumbPath, "PNG"))
@@ -1014,7 +1011,7 @@ QString FramePumpWorker::instantThumbnail(const QString& lastSegment, const QStr
 // and releases it even if the worker completion callback is never delivered.
 void FramePumpWorker::runExport(SegmentLease lease,
                                 const CapturePublisher::Reservation& reservation,
-                                const QString& thumbPath, const QString& instantThumb,
+                                const QString& thumbPath,
                                 const QString& game, const QString& exePath,
                                 const QString& saveId, quint64 requestId)
 {
@@ -1030,7 +1027,7 @@ void FramePumpWorker::runExport(SegmentLease lease,
     const quint64 generation = ++m_exportGeneration;
 
     m_exportTask = std::make_unique<ReplayExportTask>(std::move(lease),
-        [reservation, outPath, partialPath, thumbPath, instantThumb, saveId, result]
+        [reservation, outPath, partialPath, thumbPath, saveId, result]
         (const QStringList& segs) {
             const auto discardOnFailure = qScopeGuard([&] {
                 if (!result->ok)
@@ -1043,7 +1040,11 @@ void FramePumpWorker::runExport(SegmentLease lease,
             });
             QElapsedTimer t;
             t.start();
-            result->finalThumb = instantThumb;
+            // Both preview and final decode/scale/encode stay under the export
+            // task's lease. The capture worker only schedules this work.
+            QDir().mkpath(QFileInfo(thumbPath).absolutePath());
+            if (!segs.isEmpty())
+                result->finalThumb = instantThumbnail(segs.last(), thumbPath, saveId);
             // The reserved .part already exists and the MP4 sink writer
             // truncates it, so the name stays claimed for the whole export.
             if (ReplayExporter::concat(segs, partialPath, saveId)) { // remux, no re-encode
@@ -1122,6 +1123,16 @@ void FramePumpWorker::cancelUpdatePreparation()
 void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot, quint64 generation,
                                         quint64 requestId, quint64 chainId)
 {
+    QElapsedTimer saveTimer;
+    saveTimer.start();
+    // Measure the next turn of this worker's event loop, not just thread start.
+    // This is save-request instrumentation; poll()/frame arrival are untouched.
+    const auto reportReturn = qScopeGuard([this, saveTimer, chainId, requestId] {
+        QMetaObject::invokeMethod(this, [saveTimer, chainId, requestId] {
+            qInfo().noquote() << QStringLiteral("ReplaySave[%1]: worker resumed elapsedMs=%2")
+                .arg(chainId ? chainId : requestId).arg(saveTimer.elapsed());
+        }, Qt::QueuedConnection);
+    });
     bool handedToExport = false;
     const auto finishRejectedRequest = qScopeGuard([&] {
         if (!handedToExport)
@@ -1136,9 +1147,6 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot, quint64 g
     // service already logged. Falls back to the lease token for callers that
     // have no request behind them.
     const QString saveId = QString::number(chainId ? chainId : requestId);
-    QElapsedTimer saveTimer;
-    saveTimer.start();
-
     if (!saveGuard(saveId))
         return;
 
@@ -1171,10 +1179,11 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot, quint64 g
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: output path=%2 game=%3")
                              .arg(saveId).arg(reservation.finalPath).arg(game);
 
-    const QString instantThumb = instantThumbnail(lease.paths().last(), thumbPath, saveId);
-    emit clipSaving(game, instantThumb, m_pipe->executablePath);
+    // Receipt already happened at service entry. No image work is needed to
+    // announce that export started; clipSaved delivers the completed thumbnail.
+    emit clipSaving(game, QString(), m_pipe->executablePath);
 
-    runExport(std::move(lease), reservation, thumbPath, instantThumb,
+    runExport(std::move(lease), reservation, thumbPath,
               game, m_pipe->executablePath, saveId, requestId);
     handedToExport = true;
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: exporting totalSoFarMs=%2")
@@ -1248,25 +1257,37 @@ FramePumpService::FramePumpService(ConfigManager* config, CaptureLocations* loca
                 restartBuffer();
             });
     connect(m_worker, &FramePumpWorker::clipSaving, this, &FramePumpService::clipSaving);
-    connect(m_worker, &FramePumpWorker::clipSaved, this, &FramePumpService::clipSaved);
-    connect(m_worker, &FramePumpWorker::clipFailed, this, &FramePumpService::clipFailed);
+    // There is one admitted replay export at a time. Immediate rejections carry
+    // their own request id and must never overwrite the active export identity.
+    connect(m_worker, &FramePumpWorker::clipSaved, this,
+            [this](const QString& path, const QString& game, const QString& thumb, const QString& exe) {
+                emit clipSaved(path, game, thumb, exe, m_activeReplayOperation);
+            });
+    connect(m_worker, &FramePumpWorker::clipFailed, this,
+            [this](const QString& game, const QString& reason) {
+                emit clipFailed(game, reason, m_activeReplayOperation);
+            });
     connect(m_worker, &FramePumpWorker::saveRequestFinished, this, [this](quint64 requestId) {
-        if (m_owners.finishSave(requestId))
+        if (m_owners.finishSave(requestId)) {
+            m_activeReplayOperation = 0;
             ownersChanged("save finished", requestId);
+        }
     });
     connect(m_worker, &FramePumpWorker::hdrScreenshotReady, this,
             [this](quint64, quint64 requestId, const QImage& image, const QString& game, const QString& exePath) {
                 if (!m_owners.finishHdr(requestId))
                     return;
+                const auto operationId = std::exchange(m_activeHdrOperation, 0);
                 ownersChanged("HDR finished", requestId);
-                emit hdrScreenshotReady(image, game, exePath);
+                emit hdrScreenshotReady(image, game, exePath, operationId);
             });
     connect(m_worker, &FramePumpWorker::hdrScreenshotFailed, this,
             [this](quint64, quint64 requestId, const QString& reason) {
                 if (!m_owners.finishHdr(requestId))
                     return;
+                const auto operationId = std::exchange(m_activeHdrOperation, 0);
                 ownersChanged("HDR failed", requestId);
-                emit hdrScreenshotFailed(reason);
+                emit hdrScreenshotFailed(reason, operationId);
             });
     connect(m_worker, &FramePumpWorker::exportBusyChanged, this, [this](bool busy) {
         if (m_exportBusy == busy)
@@ -1306,15 +1327,16 @@ void FramePumpService::ownersChanged(const char* reason, quint64 requestId)
 
 void FramePumpService::saveReplay(const CaptureRequest& request)
 {
+    emit requestAccepted(request, CaptureRequest::Kind::Replay);
     const QString chain = request.tag();
     // Every exit below logs. Before this, the four early rejections emitted
     // clipFailed() and nothing else, so a save that died here left no trace of
     // the press at all - the exact shape of the reported "View/Back does
     // nothing" symptom.
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: accepted").arg(chain);
-    const auto reject = [this, &chain](const QString& game, const QString& reason) {
+    const auto reject = [this, &chain, &request](const QString& game, const QString& reason) {
         qWarning().noquote() << QStringLiteral("ReplaySave[%1]: failed - %2").arg(chain, reason);
-        emit clipFailed(game, reason);
+        emit clipFailed(game, reason, request.id);
     };
     if (m_preparingForUpdate) {
         reject(QStringLiteral("Replay"), QStringLiteral("Replay capture is paused for an update"));
@@ -1338,6 +1360,7 @@ void FramePumpService::saveReplay(const CaptureRequest& request)
         return;
     }
     m_owners.beginSave(requestId);
+    m_activeReplayOperation = request.id;
     ownersChanged("save dispatched", requestId);
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: armed generation=%2 owner=%3 game=%4")
                              .arg(chain).arg(m_buffer.generation()).arg(requestId)
@@ -1348,27 +1371,29 @@ void FramePumpService::saveReplay(const CaptureRequest& request)
                                   Q_ARG(QString, clipsBaseRoot), Q_ARG(quint64, m_buffer.generation()),
                                   Q_ARG(quint64, requestId), Q_ARG(quint64, request.id))) {
         m_owners.finishSave(requestId);
+        m_activeReplayOperation = 0;
         ownersChanged("save dispatch failed", requestId);
         reject(QStringLiteral("Replay"), QStringLiteral("Could not dispatch replay save"));
     }
 }
 
-void FramePumpService::captureHdrScreenshot(qulonglong hwnd)
+void FramePumpService::captureHdrScreenshot(qulonglong hwnd, quint64 operationId)
 {
     if (m_preparingForUpdate) {
-        emit hdrScreenshotFailed(QStringLiteral("screenshot capture is paused for an update"));
+        emit hdrScreenshotFailed(QStringLiteral("screenshot capture is paused for an update"), operationId);
         return;
     }
     if (m_owners.owns(ReplayBufferOwners::ManualSave) && m_targetGame.valid
         && qulonglong(reinterpret_cast<quintptr>(m_targetGame.hwnd)) != hwnd) {
-        emit hdrScreenshotFailed(QStringLiteral("HDR screenshot target differs from the active manual replay session"));
+        emit hdrScreenshotFailed(QStringLiteral("HDR screenshot target differs from the active manual replay session"), operationId);
         return;
     }
     const quint64 requestId = m_owners.acquireHdr();
     if (!requestId) {
-        emit hdrScreenshotFailed(QStringLiteral("an HDR screenshot is already pending"));
+        emit hdrScreenshotFailed(QStringLiteral("an HDR screenshot is already pending"), operationId);
         return;
     }
+    m_activeHdrOperation = operationId;
     ownersChanged("HDR requested", requestId);
     if (!m_buffer.startRequested() || m_targetHwnd != hwnd) {
         if (m_targetHwnd != hwnd && !m_owners.owns(ReplayBufferOwners::ManualSave))
@@ -1377,15 +1402,17 @@ void FramePumpService::captureHdrScreenshot(qulonglong hwnd)
     }
     if (!m_buffer.startRequested() || m_targetHwnd != hwnd) {
         m_owners.finishHdr(requestId);
+        m_activeHdrOperation = 0;
         ownersChanged("HDR arm failed", requestId);
-        emit hdrScreenshotFailed(QStringLiteral("could not arm HDR capture on the foreground game"));
+        emit hdrScreenshotFailed(QStringLiteral("could not arm HDR capture on the foreground game"), operationId);
         return;
     }
     if (!QMetaObject::invokeMethod(m_worker, "captureScreenshotOnWorker", Qt::QueuedConnection,
                                   Q_ARG(quint64, m_buffer.generation()), Q_ARG(quint64, requestId))) {
         m_owners.finishHdr(requestId);
+        m_activeHdrOperation = 0;
         ownersChanged("HDR dispatch failed", requestId);
-        emit hdrScreenshotFailed(QStringLiteral("could not dispatch HDR capture"));
+        emit hdrScreenshotFailed(QStringLiteral("could not dispatch HDR capture"), operationId);
     }
 }
 

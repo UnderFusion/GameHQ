@@ -51,13 +51,14 @@ ScreenshotService::~ScreenshotService()
 
 void ScreenshotService::capture(const CaptureRequest& request)
 {
+    emit requestAccepted(request, CaptureRequest::Kind::Screenshot);
     const QString chain = request.tag();
     // Logged before any gate, so "I pressed it and nothing happened" always has
     // a matching line naming the reason.
     qInfo().noquote() << QStringLiteral("Screenshot[%1]: accepted").arg(chain);
-    const auto reject = [this, &chain](const QString& reason) {
+    const auto reject = [this, &chain, &request](const QString& reason) {
         qInfo().noquote() << QStringLiteral("Screenshot[%1]: skipped - %2").arg(chain, reason);
-        emit skipped(reason);
+        emit skipped(reason, request.id);
     };
     if (m_updatePreparing.load()) {
         reject(QStringLiteral("screenshot capture is paused for an update"));
@@ -90,7 +91,7 @@ void ScreenshotService::capture(const CaptureRequest& request)
                 "Screenshot[%1]: HDR target detected (%2) - requesting tone-mapped WGC frame")
                                      .arg(chain, output.describe());
             emit hdrCaptureRequested(
-                qulonglong(reinterpret_cast<quintptr>(g.hwnd)));
+                qulonglong(reinterpret_cast<quintptr>(g.hwnd)), request.id);
             return;
         }
     }
@@ -102,7 +103,7 @@ void ScreenshotService::capture(const CaptureRequest& request)
     if (img.isNull()) {
         const QString reason = QStringLiteral("GDI grab returned no pixels");
         qWarning().noquote() << QStringLiteral("Screenshot[%1]: failed - %2").arg(chain, reason);
-        emit failed(reason);
+        emit failed(reason, request.id);
         return;
     }
 
@@ -116,36 +117,36 @@ void ScreenshotService::capture(const CaptureRequest& request)
     qInfo().noquote() << QStringLiteral(
                              "Screenshot[%1]: grabbed %2x%3 in %4ms - encoding in background")
                              .arg(chain).arg(img.width()).arg(img.height()).arg(grabMs);
-    encodeAndSave(img, gameName, g.executablePath);
+    encodeAndSave(img, gameName, g.executablePath, request.id);
 }
 
 // Save a caller-supplied image (a clip frame from the QML video surface) as a
 // screenshot. Same feedback + encode path as capture(), minus the GDI grab and
 // foreground gate — the caller already holds the pixels for a specific game.
 void ScreenshotService::saveImage(const QImage& img, const QString& gameName,
-                                  const QString& executablePath)
+                                  const QString& executablePath, quint64 operationId)
 {
     if (m_updatePreparing.load()) {
-        emit skipped(QStringLiteral("screenshot capture is paused for an update"));
+        emit skipped(QStringLiteral("screenshot capture is paused for an update"), operationId);
         return;
     }
     if (img.isNull()) {
-        emit failed(QStringLiteral("no video frame available to save"));
+        emit failed(QStringLiteral("no video frame available to save"), operationId);
         return;
     }
     if (encodeBacklogFull()) {
-        emit skipped(QStringLiteral("still saving the previous screenshots"));
+        emit skipped(QStringLiteral("still saving the previous screenshots"), operationId);
         return;
     }
     emit grabbed();
     const QString game = gameName.isEmpty() ? QStringLiteral("Unknown Game") : gameName;
     qInfo() << "Frame grab:" << img.width() << "x" << img.height()
             << "for" << game << "— encoding in background";
-    encodeAndSave(img, game, executablePath);
+    encodeAndSave(img, game, executablePath, operationId);
 }
 
 void ScreenshotService::encodeAndSave(const QImage& img, const QString& gameName,
-                                      const QString& executablePath)
+                                      const QString& executablePath, quint64 operationId)
 {
     const QString dir = m_locations->screenshotDir(gameName);
     // Read format/quality on the calling thread (ConfigManager is not meant for
@@ -162,7 +163,7 @@ void ScreenshotService::encodeAndSave(const QImage& img, const QString& gameName
     ++m_pendingWrites;
     m_pendingBytes += imageBytes;
     m_encodePool.start(QRunnable::create(
-        [this, img, gameName, executablePath, dir, jpeg, ext, jpegQuality, imageBytes]() {
+        [this, img, gameName, executablePath, dir, jpeg, ext, jpegQuality, imageBytes, operationId]() {
         struct Completion {
             ScreenshotService *service;
             qint64 bytes;
@@ -175,7 +176,7 @@ void ScreenshotService::encodeAndSave(const QImage& img, const QString& gameName
         QElapsedTimer et;
         et.start();
         if (!QDir().mkpath(dir)) {
-            emit failed(QStringLiteral("could not create ") + dir);
+            emit failed(QStringLiteral("could not create ") + dir, operationId);
             return;
         }
 
@@ -184,7 +185,7 @@ void ScreenshotService::encodeAndSave(const QImage& img, const QString& gameName
         const CapturePublisher::Reservation reservation = CapturePublisher::reserve(
             dir, QStringLiteral("yyyy-MM-dd_HH-mm-ss"), ext);
         if (!reservation.isValid()) {
-            emit failed(QStringLiteral("could not reserve a screenshot name in ") + dir);
+            emit failed(QStringLiteral("could not reserve a screenshot name in ") + dir, operationId);
             return;
         }
 
@@ -200,7 +201,7 @@ void ScreenshotService::encodeAndSave(const QImage& img, const QString& gameName
                 const QString reason = writer.errorString();
                 CapturePublisher::discard(reservation);
                 emit failed(QStringLiteral("could not write ") + reservation.finalPath
-                            + QStringLiteral(": ") + reason);
+                            + QStringLiteral(": ") + reason, operationId);
                 return;
             }
         }
@@ -213,14 +214,14 @@ void ScreenshotService::encodeAndSave(const QImage& img, const QString& gameName
             // The .part stays behind on purpose: the pixels are still in it and
             // the startup sweep will clear it if nothing ever claims it.
             emit failed(QStringLiteral("could not publish ") + reservation.finalPath
-                        + QStringLiteral(": ") + publishError);
+                        + QStringLiteral(": ") + publishError, operationId);
             return;
         }
 
         qInfo() << "Screenshot: saved" << reservation.finalPath
                 << "(" << img.width() << "x" << img.height()
                 << ") encode+write" << et.elapsed() << "ms";
-        emit captured(reservation.finalPath, gameName, executablePath);
+        emit captured(reservation.finalPath, gameName, executablePath, operationId);
     }));
 }
 

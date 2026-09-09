@@ -959,7 +959,7 @@
       <translation>กำลังดำเนินการนำเข้าโปรไฟล์แบบพกพาอื่นอยู่แล้ว</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="480"></location>
+      <location filename="src/app/App.cpp" line="522"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>การอัปเดตถูกยกเลิกเนื่องจากงานจับภาพไม่เสร็จสิ้นอย่างปลอดภัยทันเวลา</translation>
     </message>
@@ -1210,7 +1210,7 @@
       <translation>GameHQ ไม่สามารถนำธุรกรรมอัปเดตไปใช้เป็นสถานะสุดท้ายได้</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="455"></location>
+      <location filename="src/app/App.cpp" line="497"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ ไม่สามารถเริ่มการบำรุงรักษาการอัปเดตได้: %1</translation>
     </message>
@@ -2110,57 +2110,67 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>สนับสนุน GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="311"></location>
+      <location filename="src/app/App.cpp" line="352"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>ไม่สามารถลบไฟล์บางไฟล์ได้ ไฟล์เหล่านี้อาจกำลังถูกใช้งานโดยโปรแกรมอื่น ปิดโปรแกรมที่กำลังใช้ไฟล์เหล่านี้แล้วลองอีกครั้ง</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="318"></location>
+      <location filename="src/app/App.cpp" line="359"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>ไม่สามารถลบไฟล์ได้ ไฟล์อาจกำลังถูกใช้งานโดยโปรแกรมอื่น ปิดโปรแกรมที่กำลังใช้ไฟล์นี้แล้วลองอีกครั้ง</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="324"></location>
+      <location filename="src/app/App.cpp" line="365"></location>
       <source>Couldn't delete</source>
       <translation>ลบไม่สำเร็จ</translation>
     </message>
+    <message id="gamehq.notification.capture_requested.title">
+      <location filename="src/app/App.cpp" line="270"></location>
+      <source>Capture request received</source>
+      <translation>ได้รับคำขอจับภาพแล้ว</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="281"></location>
+      <location filename="src/app/App.cpp" line="322"></location>
       <source>Reason: %1</source>
       <translation>เหตุผล: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="287"></location>
+      <location filename="src/app/App.cpp" line="328"></location>
       <source>Replay failed</source>
       <translation>รีเพลย์ล้มเหลว</translation>
     </message>
+    <message id="gamehq.notification.replay_requested.title">
+      <location filename="src/app/App.cpp" line="265"></location>
+      <source>Replay save requested</source>
+      <translation>ส่งคำขอบันทึกรีเพลย์แล้ว</translation>
+    </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="267"></location>
+      <location filename="src/app/App.cpp" line="308"></location>
       <source>Replay saved</source>
       <translation>บันทึกการรีเพลย์แล้ว</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="219"></location>
+      <location filename="src/app/App.cpp" line="227"></location>
       <source>Screenshot saved</source>
       <translation>บันทึกภาพหน้าจอแล้ว</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="363"></location>
+      <location filename="src/app/App.cpp" line="405"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ เริ่มด้วยการตั้งค่าเริ่มต้น โดยเก็บไฟล์การตั้งค่าก่อนหน้าไว้ จึงไม่มีข้อมูลสูญหาย</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="358"></location>
+      <location filename="src/app/App.cpp" line="400"></location>
       <source>Settings could not be read</source>
       <translation>ไม่สามารถอ่านการตั้งค่าได้</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="519"></location>
+      <location filename="src/app/App.cpp" line="561"></location>
       <source>Some interface sounds are unavailable</source>
       <translation type="unfinished"></translation>
     </message>
     <message id="gamehq.notifications.window_title">
-      <location filename="src/ui/qml/ToastWindow.qml" line="19"></location>
+      <location filename="src/ui/qml/ToastWindow.qml" line="18"></location>
       <source>%1 Notifications</source>
       <translation>การแจ้งเตือน %1</translation>
     </message>

@@ -14,11 +14,11 @@ std::atomic<quint64> g_nextId{1};
 // line reads +0ms instead of "however long startup took".
 qint64 elapsedMs()
 {
-    static QElapsedTimer timer;
-    if (!timer.isValid()) {
-        timer.start();
-        return 0;
-    }
+    static const QElapsedTimer timer = [] {
+        QElapsedTimer clock;
+        clock.start();
+        return clock;
+    }();
     return timer.elapsed();
 }
 }
@@ -65,4 +65,9 @@ QString CaptureRequest::tag() const
         .arg(id)
         .arg(label(source))
         .arg(monotonicMs);
+}
+
+qint64 CaptureRequest::ageMs() const
+{
+    return isValid() ? elapsedMs() - monotonicMs : -1;
 }

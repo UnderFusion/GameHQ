@@ -82,6 +82,7 @@ signals:
     void updateReady(quint64 generation);
 
 private:
+    friend class TestReplayThumbnail;
     struct Pipeline;                 // all WGC/D3D pointers + timer + fps state (.cpp)
     void teardown();                 // delete m_pipe (releases everything, reverse order)
     void finishExport();             // join before worker/apartment shutdown
@@ -104,10 +105,10 @@ private:
     // saveReplayOnWorker stages, in call order.
     bool saveGuard(const QString& saveId);                     // preflight: pipe/ring/busy
     SegmentLease freezeRing(const QString& saveId);            // leased snapshot (empty = refused)
-    QString instantThumbnail(const QString& lastSegment, const QString& thumbPath,
+    static QString instantThumbnail(const QString& lastSegment, const QString& thumbPath,
                              const QString& saveId);
     void runExport(SegmentLease lease, const CapturePublisher::Reservation& reservation,
-                   const QString& thumbPath, const QString& instantThumb,
+                   const QString& thumbPath,
                    const QString& game, const QString& exePath, const QString& saveId, quint64 requestId);
 
     Pipeline* m_pipe = nullptr;
@@ -150,22 +151,24 @@ public slots:
     void saveReplay(const CaptureRequest& request);
     // For callers with no press behind them (QML, internal retries).
     void saveReplay() { saveReplay(CaptureRequest::create(CaptureRequest::Source::Ui)); }
-    void captureHdrScreenshot(qulonglong hwnd);
+    void captureHdrScreenshot(qulonglong hwnd, quint64 operationId = 0);
     // Replace the pipeline with new settings while preserving session owners.
     void restartBuffer();
     void prepareForUpdate();
     void cancelUpdatePreparation();
 
 signals:
+    // Receipt only: the request may still be rejected by a later gate.
+    void requestAccepted(const CaptureRequest& request, CaptureRequest::Kind kind);
     void failed(const QString& reason);
     void clipSaving(const QString& gameName, const QString& thumbnailPath,
                     const QString& executablePath);   // ring frozen - instant feedback
     void clipSaved(const QString& clipPath, const QString& gameName,
-                   const QString& thumbnailPath, const QString& executablePath);
-    void clipFailed(const QString& gameName, const QString& reason);
+                   const QString& thumbnailPath, const QString& executablePath, quint64 operationId = 0);
+    void clipFailed(const QString& gameName, const QString& reason, quint64 operationId = 0);
     void hdrScreenshotReady(const QImage& image, const QString& gameName,
-                            const QString& executablePath);
-    void hdrScreenshotFailed(const QString& reason);
+                            const QString& executablePath, quint64 operationId = 0);
+    void hdrScreenshotFailed(const QString& reason, quint64 operationId = 0);
     void foregroundGameDetected(const QString& gameName, const QString& executablePath);
     // Rolling buffer armed/disarmed — drives the Settings "buffer state" row.
     void recordingStateChanged(bool active, const QString& gameName);
@@ -185,6 +188,8 @@ private:
     void stopBuffer();               // disarm only when no owner needs the session
     void ownersChanged(const char* reason, quint64 requestId = 0);
 
+    quint64 m_activeReplayOperation = 0;
+    quint64 m_activeHdrOperation = 0;
     ConfigManager* m_config = nullptr;
     CaptureLocations* m_locations = nullptr;
     QThread m_thread;

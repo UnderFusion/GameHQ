@@ -128,3 +128,69 @@ Detection combines a fresh `IDXGIOutput6::GetDesc1` snapshot with the matching a
 Encoder probe: `MFTEnumEx(MFT_CATEGORY_VIDEO_ENCODER, ..., MFVideoFormat_HEVC)`, then each returned MFT is activated and offered an HEVC **Main10** output type (`MF_MT_MPEG2_PROFILE` — the same GUID the SDK also calls `MF_MT_VIDEO_PROFILE` — set to `eAVEncH265VProfile_Main_420_10`). Presence of an HEVC encoder alone proves nothing: plenty of hardware encodes 8-bit HEVC only, so the probe asks for the type it would actually use.
 
 HDR is a runtime toggle, so display state is never treated as a permanent fact. `AppController::refreshHdrStatus()` performs a full probe at startup, whenever the display topology changes (`QGuiApplication::screenAdded`/`screenRemoved`/`primaryScreenChanged`), and from the **Settings → Advanced → Display HDR** Refresh button. A lightweight one-second watcher refreshes DXGI/DisplayConfig state without repeating the slow encoder probe; an actual change updates the Advanced page and re-arms the replay buffer to avoid mixed SDR/HDR segments. `FramePumpService::startPump` separately re-reads the monitor the capture target sits on, because a game can be on a different display than the one probed at startup. All lines are logged with the `Hdr:` / `FramePump:` prefixes and are included in the copied diagnostic summary.
+
+### Immediate request receipt (0.7.18)
+
+`FramePumpService::saveReplay(request)` and `ScreenshotService::capture(request)`
+emit `requestAccepted(request, kind)` synchronously as their first operation,
+before admission gates or capture work. App submits `capture_accepted` and an
+informational request-received toast using the existing per-capture sound and
+notification preferences. Receipt does not guarantee capture or saving; shutter,
+saved, skipped and failure outcomes remain independent. No notification replacement
+or operation queue is introduced.
+
+`CaptureFeedback[id src=...]: ... submitted elapsedMs=N sound=B toast=B` records
+request-to-feedback submission latency on the request's monotonic clock. This is
+submission timing, not measured speaker output or first displayed frame. Disabled
+feedback is recorded explicitly. The focused acknowledgement test uses both
+controller and keyboard source labels with queued delivery to real service entry
+points and checks receipt before update-gate rejection; real device/render/audio
+latency must be measured separately.
+
+App-level acceptance receipt (2026-09-09): an isolated portable harness linked the
+built production App objects/resources, initialized App in its existing
+post-update validation mode (input hooks stopped and capture gates closed), and
+emitted the real InputEngine request signals. The unchanged App handler submitted
+sound and toast with logged elapsed times of 9 ms / 2 ms for keyboard replay /
+screenshot, and 0 ms / 1 ms for controller-labelled replay / screenshot. The
+9 ms sample included the first toast load. Every acknowledgement preceded its
+gate rejection; replay also posted a separate error toast. All four bounded
+software receipts passed the 100 ms limit. This is not physical-device or
+speaker/display acceptance. Receipt and temporary harness are retained under
+`.claude-gui-temp/p3-1-app-receipt/`; log: `gamehq-data/logs/gamehq.log`.
+
+### Replay thumbnails off the capture worker (0.7.18)
+
+After freezing and reserving the clip name, the capture worker emits `clipSaving`
+with an empty preview and starts the existing `ReplayExportTask`. That task owns
+the segment lease while it decodes/scales/encodes both the segment fallback
+preview and the final clip thumbnail. Preview decoding is a static value-only
+helper, so it cannot access the worker's pipeline. Thumbnail paths still come
+from `CapturePublisher::companionPath`, including collision suffixes; image writes
+remain atomic through `ThumbnailService::saveThumbnail`. `clipSaved` carries the
+finished thumbnail to the existing App/gallery commit path after clip publication.
+
+The save-only `ReplaySave[id]: worker resumed elapsedMs=N` log measures the next
+capture-worker event-loop turn from save entry, including freeze and reservation.
+No frame-arrival or polling code is changed. The focused media fixture test times
+the real export handoff and checks the published `_2` clip's decoded thumbnail and
+gallery reattachment. Full active-recording save-to-frame-pumping timing remains
+part of p7-3/M01, as specified by this item's validation profile.
+
+Focused p3-4 receipt (2026-09-09): `tst_replaythumbnail` passed 3/3. The real
+capture worker resumed its event loop 0 ms after export handoff while the segment
+preview took 170 ms on the export task. The published `same-second_2.mp4` retained
+its matching, decodable `same-second_2_clip.png`; gallery reattachment returned
+that companion, and the pre-existing unsuffixed clip was unchanged. Evidence:
+`.claude-gui-temp/p3-4-validation/receipt.txt`. This measurement isolates export
+handoff; it does not claim a full live-recording freeze/roll budget.
+
+### Notification operation identity (0.7.18, p3-2)
+
+Capture outcomes now update the request's existing visible toast by CaptureRequest
+id. Screenshot encoders capture that id by value; HDR propagates it through its
+service continuation, and the single admitted replay export retains its id until
+saveRequestFinished. A concurrent rejected request never overwrites that id.
+See docs/notifications.md for visible-stack eviction and update semantics. This
+supersedes the earlier p3-1 note about separate toast cards; final outcome signals
+and sounds remain distinct from acknowledgement.

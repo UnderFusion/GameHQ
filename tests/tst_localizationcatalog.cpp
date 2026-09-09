@@ -417,7 +417,7 @@ void LocalizationCatalogTest::migratedP4ThreeCppIdsCoverEveryLaunchLocale()
             ids.insert(id);
         }
     }
-    QCOMPARE(ids.size(), 147);
+    QCOMPARE(ids.size(), 149);
 
     for (const QString &catalogName : translatedCatalogs()) {
         QString error;

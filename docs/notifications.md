@@ -1,29 +1,50 @@
 # Notifications (in-app toasts)
 
-App-wide, reusable toast notifications styled from [design-system.md](design-system.md). Introduced dev.14.
+`NotificationCenter` owns a `ToastModel` for the visible stack. `ToastWindow.qml`
+binds its Repeater to this model. Cards remain non-activating, click-through and
+positioned at the bottom-right of the foreground monitor.
 
-## Behaviour
+## Operations and ordinary notifications
 
-A toast slides in at the **bottom-right** of the monitor the active app (usually the game) is on, holds for ~2.6 s, then fades out and removes itself. Multiple toasts stack vertically (newest at the bottom, nearest the corner). The host window hides automatically when the stack empties.
+`post(title, body, image, kind, when, isVideo)` creates an independent ordinary
+notification. `post(CaptureRequest::id, ...)` creates a pending operation row;
+`update(id, ...)` changes that same row to its terminal saved/failed state.
+Operation keys are decimal strings in QML, preserving the full 64-bit identity.
+The same request id travels through screenshot encode jobs, HDR continuation,
+and admitted replay export; immediate replay rejections keep their own ids.
 
-The toast window is **frameless, topmost, click-through and non-activating** — posting a toast never pulls focus away from a running game, and clicks pass straight through to whatever is underneath. (Like the overlay, it renders over borderless/windowed games; exclusive-fullscreen is a WGC-era concern.)
+An identical post/update does not alter the row revision or restart its timer.
+A duplicate receipt cannot turn a terminal row back into pending. Unknown,
+expired, or evicted ids return false from update and never resurrect a toast.
+Screenshot failure/skip updates an existing row to error with its reason, without
+introducing a standalone failure notification; broader failure policy is p3-3.
+Existing ordinary notification and capture sound/preferences remain in force.
 
-## Architecture
+## Visible stack and timing
 
-- `notify/NotificationCenter` (C++, context property **`notifications`**) — lazy-loads `ToastWindow.qml`, sets the window flags (`FramelessWindowHint | WindowStaysOnTopHint | Tool | WindowDoesNotAcceptFocus | WindowTransparentForInput`), positions it against the work-area corner of the active app's screen, shows it without activating (`SW_SHOWNOACTIVATE`), and emits `posted(title, body, imageUrl, kind)`.
-- `ui/qml/ToastWindow.qml` (objectName `gamehqToasts`) — a transparent `Window` holding a `ListModel` + bottom-anchored `Column`/`Repeater`. Appends on `notifications.posted`; each card removes itself via the root `dismissToast(idx)` function; calls `notifications.hideWindow()` when empty.
-- `ui/qml/components/Toast.qml` — the card: a `Theme.surface` rounded rectangle with a left **accent bar** coloured by `kind` (`success`→`Theme.success`, `error`→`Theme.danger`, else `Theme.accent`), an optional 16:9 thumbnail, a title (`fontH3`, DemiBold) and body (`fontCaption`, muted). Slide-in + fade on entry, fade on exit, `lifespan` timer (default 2600 ms).
+Theme owns `toastVisibleLimit` (4), `toastLifespan` (3600 ms), and
+`toastPendingLifespan` (60000 ms). Posting beyond the cap evicts the oldest visible
+row. This is presentation only; it does not delete capture records or notification
+history elsewhere. A terminal update restarts the short lifetime and cancels any
+in-flight exit animation. Dismissals use a stable row key and revision, so a stale
+fade completion cannot remove a newer state or another toast.
 
-## Posting one
+`clipSaved` and screenshot completion still commit media to the gallery before
+updating the visible toast. Eviction/expiry does not affect saving, sounds, logs,
+or gallery updates. A final result for an evicted row is not shown again.
 
-```cpp
-notifications->post(title, body, imagePath /* "" = text only */, kind /* success|info|error */);
-```
+## Validation
 
-Any subsystem can post. Currently wired:
+`tst_notificationcenter` checks row-preserving updates, large ids, duplicates,
+unknown/evicted ids, stale dismissals, ordinary posts and a 20-post burst under a
+configurable cap. `tst_captureacknowledgement` also verifies request ids on gated
+outcomes and independent ids through overlapping screenshot encode jobs.
 
-- **screenshot saved** → `post("Screenshot saved", <game>, <png path>, "success")` (replaces the old OS tray balloon; gated by `notifications.enabled`, default true).
-- **replay saved / replay failed** → `post(..., "success" | "error")`, gated by `notifications.enabled` plus the replay-specific keys.
-- **capture delete failed** → `AppController::captureDeletionFailed(count)` → `post("Couldn't delete", <one-file or several-files body>, "", "error")`. `CaptureLibraryService` keeps the library row when the media file cannot be removed, so without this toast the delete looks like it silently did nothing. The wording is deliberately tentative (“may be in use”): a failed `QFile::remove` also covers permissions, read-only files and antivirus hold-offs, so the message offers the likely cause instead of asserting it. The error sound plays even when notifications are disabled.
-
-> QML note: a `Repeater` delegate that is a separate component type cannot reliably resolve a *sibling* `id` (e.g. the `ListModel`) from inside its signal handlers under the QML AOT cache — route such access through a function on the **root** object instead (the root `id` always resolves).
+Acceptance receipt (2026-09-09): both focused executables passed 7/7. The isolated
+App/QML harness exercised actual InputEngine signals and App handlers with capture
+gates closed: keyboard/controller replay and screenshot requests retained the
+same persistent model row through the terminal error update, with feedback
+submission times 8/0/0/0 ms. Theme supplied cap=4; 20 further posts left 4 visible
+rows. No QML assignment/type/reference errors were reported. Evidence:
+`.claude-gui-temp/p3-2-validation/` and
+`.claude-gui-temp/p3-2-app-receipt/gamehq-data/logs/gamehq.log`.

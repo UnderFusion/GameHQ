@@ -11,6 +11,7 @@
 
 NotificationCenter::NotificationCenter(QQmlApplicationEngine* engine, QObject* parent)
     : QObject(parent)
+    , m_toasts(this)
     , m_engine(engine)
 {
 }
@@ -71,14 +72,50 @@ void NotificationCenter::post(const QString& title, const QString& body,
                               const QString& imagePath, const QString& kind,
                               const QDateTime& when, bool isVideo)
 {
-    if (!ensureLoaded())
-        return;
-    positionAndShow();
-    const QString url = imagePath.isEmpty()
-        ? QString()
-        : QUrl::fromLocalFile(imagePath).toString();
-    emit posted(title, body, url, kind, when, isVideo);
-    qInfo() << "Notification:" << kind << title << body;
+    post(0, title, body, imagePath, kind, when, isVideo);
+}
+
+void NotificationCenter::setVisibleLimit(int limit)
+{
+    if (limit == m_toasts.limit()) return;
+    m_toasts.setLimit(limit);
+    emit visibleLimitChanged();
+    if (!m_toasts.rowCount()) hideWindow();
+}
+void NotificationCenter::post(quint64 id, const QString& title, const QString& body,
+                               const QString& imagePath, const QString& kind,
+                               const QDateTime& when, bool video)
+{
+    if (m_engine && !ensureLoaded()) return;
+    const QString key = id ? QStringLiteral("capture:%1").arg(id)
+                           : QStringLiteral("toast:%1").arg(++m_nextToast);
+    const QString url = imagePath.isEmpty() ? QString() : QUrl::fromLocalFile(imagePath).toString();
+    if (!m_toasts.post({key,title,body,url,kind,when,video,id != 0 && kind == "info"})) return;
+    if (m_window) positionAndShow();
+    emit posted(title, body, url, kind, when, video);
+    qInfo() << "Notification:" << key << kind << title << body;
+}
+bool NotificationCenter::update(quint64 id, const QString& title, const QString& body,
+                                 const QString& imagePath, const QString& kind,
+                                 const QDateTime& when, bool video)
+{
+    if (!id) return false;
+    const QString url = imagePath.isEmpty() ? QString() : QUrl::fromLocalFile(imagePath).toString();
+    if (!m_toasts.update({QStringLiteral("capture:%1").arg(id),title,body,url,kind,when,video,false})) return false;
+    emit updated(id);
+    qInfo() << "Notification updated:" << id << kind << title << body;
+    return true;
+}
+bool NotificationCenter::failOperation(quint64 id, const QString& reason)
+{
+    if (!id || !m_toasts.fail(QStringLiteral("capture:%1").arg(id), reason)) return false;
+    emit updated(id);
+    return true;
+}
+void NotificationCenter::dismiss(const QString& key, int revision)
+{
+    m_toasts.dismiss(key, revision);
+    if (!m_toasts.rowCount()) hideWindow();
 }
 
 void NotificationCenter::hideWindow()

@@ -37,18 +37,20 @@ public slots:
     // feedback path as capture(). No foreground gating — the caller owns the
     // pixels already.
     void saveImage(const QImage& img, const QString& gameName,
-                   const QString& executablePath = QString());
-    void reportHdrCaptureFailure(const QString& reason) { emit failed(reason); }
+                   const QString& executablePath = QString(), quint64 operationId = 0);
+    void reportHdrCaptureFailure(const QString& reason, quint64 operationId = 0) { emit failed(reason, operationId); }
     void prepareForUpdate();
     void cancelUpdatePreparation();
 
 signals:
+    // Receipt only: the request may still be rejected by a later gate.
+    void requestAccepted(const CaptureRequest& request, CaptureRequest::Kind kind);
     void grabbed();                        // pixels are in hand — play shutter NOW
     void captured(const QString& filePath, const QString& gameName,
-                  const QString& executablePath);
-    void hdrCaptureRequested(qulonglong hwnd);
-    void skipped(const QString& reason);   // gate said "not in a game"
-    void failed(const QString& reason);    // grab or save error
+                  const QString& executablePath, quint64 operationId = 0);
+    void hdrCaptureRequested(qulonglong hwnd, quint64 operationId);
+    void skipped(const QString& reason, quint64 operationId = 0);   // gate said "not in a game"
+    void failed(const QString& reason, quint64 operationId = 0);    // grab or save error
     void updateReady();
 
 private:
@@ -65,7 +67,7 @@ private:
     // Shared tail of capture()/saveImage(): read format/quality on this thread,
     // then encode + write on a pool thread and emit captured()/failed().
     void encodeAndSave(const QImage& img, const QString& gameName,
-                       const QString& executablePath);
+                       const QString& executablePath, quint64 operationId = 0);
 
     ConfigManager* m_config;
     CaptureLocations* m_locations;

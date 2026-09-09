@@ -6,6 +6,19 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.18] - 2026-09-09
+
+### Added
+
+- Screenshot and replay requests immediately play the capture acknowledgement
+  sound and show a request-received toast, respecting capture feedback settings.
+  Saved and failed outcomes remain separate; receipt does not promise success.
+- Capture feedback logs include elapsed time from the originating request.
+- Capture notifications update their request toast in place, and the visible
+  stack is capped at four cards without changing capture history.
+- Replay preview thumbnail decoding and encoding now run on the export thread,
+  so image work no longer stalls the capture worker during a save.
+
 ## [0.7.17] - 2026-09-09
 
 ### Fixed

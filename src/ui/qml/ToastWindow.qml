@@ -4,8 +4,7 @@ import "components"
 
 // Bottom-right toast stack window (docs/notifications.md). Frameless, topmost,
 // click-through and non-activating — flags + placement live in NotificationCenter.
-// Listens to `notifications.posted` and stacks Toast cards that remove themselves
-// on dismiss; hides the window once the stack is empty.
+// The C++ model bounds only visible cards; operation outcomes update one row.
 Window {
     id: win
     LayoutMirroring.enabled: languageManager.layoutDirection === Qt.RightToLeft
@@ -18,25 +17,7 @@ Window {
     //% "%1 Notifications"
     title: qsTrId("gamehq.notifications.window_title").arg(Brand.name)
 
-    ListModel { id: toastModel }
-
-    // Removal goes through a root function: a delegate can reliably resolve the
-    // root object's id (win) but not always a sibling id (toastModel) under the
-    // QML AOT cache.
-    function dismissToast(idx) {
-        toastModel.remove(idx)
-        if (toastModel.count === 0)
-            notifications.hideWindow()
-    }
-
-    Connections {
-        target: notifications
-        function onPosted(title, body, imageUrl, kind, when, isVideo) {
-            toastModel.append({ "title": title, "body": body,
-                                "imageUrl": imageUrl, "kind": kind,
-                                "when": when, "isVideo": isVideo })
-        }
-    }
+    Binding { target: notifications; property: "visibleLimit"; value: Theme.toastVisibleLimit }
 
     Column {
         id: stack
@@ -51,7 +32,7 @@ Window {
         }
 
         Repeater {
-            model: toastModel
+            model: notifications.visibleToasts
             delegate: Toast {
                 width: stack.width
                 title: model.title
@@ -60,7 +41,9 @@ Window {
                 kind: model.kind
                 when: model.when
                 isVideo: model.isVideo
-                onDismissed: win.dismissToast(index)
+                pending: model.pending
+                contentRevision: model.revision
+                onDismissed: notifications.dismiss(model.toastKey, model.revision)
             }
         }
     }

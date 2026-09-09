@@ -3345,7 +3345,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 480
+          "line": 522
         }
       ],
       "plural": false,
@@ -4255,7 +4255,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 455
+          "line": 497
         }
       ],
       "plural": false,
@@ -7378,7 +7378,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 311
+          "line": 352
         }
       ],
       "plural": false,
@@ -7395,7 +7395,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 318
+          "line": 359
         }
       ],
       "plural": false,
@@ -7412,7 +7412,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 324
+          "line": 365
         }
       ],
       "plural": false,
@@ -7422,6 +7422,23 @@
       "source_hash": "21d8d5429f00e9e3563b1803f381b14f771ed7aa21a7ac58cfff64ab5824520c"
     },
     {
+      "id": "gamehq.notification.capture_requested.title",
+      "source": "Capture request received",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 270
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f5a508cd116c4ab3b6a707c6a7ce2ae6baa636e8ee6090a66a64077fb0373555"
+    },
+    {
       "id": "gamehq.notification.replay_failed.reason",
       "source": "Reason: %1",
       "context": "ID",
@@ -7429,7 +7446,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 281
+          "line": 322
         }
       ],
       "plural": false,
@@ -7448,7 +7465,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 287
+          "line": 328
         }
       ],
       "plural": false,
@@ -7458,6 +7475,23 @@
       "source_hash": "24027af1461f776395f7cb1b22b0fbd39e73873acf6d2c67aeff45a8590528a2"
     },
     {
+      "id": "gamehq.notification.replay_requested.title",
+      "source": "Replay save requested",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 265
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6f61bb786cd7ac2c687dc8bf5d27725786abb51e8e56033209c19650b6b91202"
+    },
+    {
       "id": "gamehq.notification.replay_saved.title",
       "source": "Replay saved",
       "context": "ID",
@@ -7465,7 +7499,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 267
+          "line": 308
         }
       ],
       "plural": false,
@@ -7482,7 +7516,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 219
+          "line": 227
         }
       ],
       "plural": false,
@@ -7499,7 +7533,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 363
+          "line": 405
         }
       ],
       "plural": false,
@@ -7518,7 +7552,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 358
+          "line": 400
         }
       ],
       "plural": false,
@@ -7535,7 +7569,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 519
+          "line": 561
         }
       ],
       "plural": false,
@@ -7552,7 +7586,7 @@
       "locations": [
         {
           "file": "src/ui/qml/ToastWindow.qml",
-          "line": 19
+          "line": 18
         }
       ],
       "plural": false,

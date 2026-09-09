@@ -86,6 +86,7 @@ qt_add_executable(GameHQ
     input/EventLoopStallMonitor.cpp input/EventLoopStallMonitor.h
     input/InputEngine.cpp input/InputEngine.h
     notify/NotificationCenter.cpp notify/NotificationCenter.h
+    notify/ToastModel.cpp notify/ToastModel.h
     overlay/ForegroundAcquirer.cpp overlay/ForegroundAcquirer.h
     overlay/ForegroundApi.cpp overlay/ForegroundApi.h
     overlay/OverlayManager.cpp overlay/OverlayManager.h

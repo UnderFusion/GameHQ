@@ -16,6 +16,8 @@ struct CaptureRequest
 {
     // Where the press came from. Recorded once, on the accepted line, because
     // the same action reaches the same service from four different surfaces.
+    enum class Kind { Screenshot, Replay };
+
     enum class Source { Unknown, Controller, Keyboard, Mouse, Overlay, Ui, Tray };
 
     quint64 id = 0;
@@ -36,6 +38,9 @@ struct CaptureRequest
 
     static QString label(Source source);
 
+    // Elapsed time on the same process-wide clock used at request creation.
+    qint64 ageMs() const;
+
     bool isValid() const { return id != 0; }
 
     // "12 src=controller +4231ms" — the chain id first, so a log line reads
@@ -44,3 +49,5 @@ struct CaptureRequest
 };
 
 Q_DECLARE_METATYPE(CaptureRequest)
+
+Q_DECLARE_METATYPE(CaptureRequest::Kind)

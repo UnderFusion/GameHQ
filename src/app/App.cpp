@@ -194,6 +194,14 @@ bool App::init()
     // if a service ever fires a signal from its own constructor, construct
     // m_sounds/m_notify before the connect that uses them.
 
+    const auto postCaptureOutcome = [this](quint64 operationId, const QString& title,
+            const QString& body, const QString& image, const QString& kind,
+            const QDateTime& when, bool video) {
+        if (operationId)
+            m_notify->update(operationId, title, body, image, kind, when, video);
+        else
+            m_notify->post(title, body, image, kind, when, video);
+    };
     // Screenshot capture (0.4): GDI grab of the foreground game → DB/gallery.
     m_screenshots = std::make_unique<ScreenshotService>(m_config.get(),
                                                         m_locations.get());
@@ -208,11 +216,11 @@ bool App::init()
                     m_sounds->play(QStringLiteral("screenshot"));
             });
     connect(m_screenshots.get(), &ScreenshotService::captured, this,
-            [this](const QString& path, const QString& game, const QString& exePath) {
+            [this, postCaptureOutcome](const QString& path, const QString& game, const QString& exePath, quint64 operationId) {
                 m_controller->commitCapture(path, QStringLiteral("screenshot"), game, exePath);
                 if (m_config->value(ConfigKeys::NotificationsEnabled, true).toBool()
                     && m_config->value(ConfigKeys::CaptureScreenshotNotify, true).toBool()) {
-                    m_notify->post(
+                    postCaptureOutcome(operationId,
                         NativeText::get(
                             //: Title of the notification shown after a screenshot is saved.
                             //% "Screenshot saved"
@@ -223,12 +231,14 @@ bool App::init()
                 }
             });
     connect(m_screenshots.get(), &ScreenshotService::skipped, this,
-            [this](const QString& why) {
+            [this](const QString& why, quint64 operationId) {
+                m_notify->failOperation(operationId, why);
                 qInfo() << "Screenshot: skipped —" << why;
                 m_sounds->play(QStringLiteral("error"));
             });
     connect(m_screenshots.get(), &ScreenshotService::failed, this,
-            [this](const QString& why) {
+            [this](const QString& why, quint64 operationId) {
+                m_notify->failOperation(operationId, why);
                 qWarning() << "Screenshot: failed —" << why;
                 m_sounds->play(QStringLiteral("error"));
             });
@@ -237,6 +247,37 @@ bool App::init()
     // (replay.auto, always-on; Settings → Replay is the master switch). Share-hold
     // (or Ctrl+Shift+E) saves the last N seconds as one clip (below).
     m_framePump = std::make_unique<FramePumpService>(m_config.get(), m_locations.get());
+    // Both services acknowledge on this thread before any admission gate or work.
+    const auto acknowledgeCapture = [this](const CaptureRequest& request, CaptureRequest::Kind kind) {
+        const bool replay = kind == CaptureRequest::Kind::Replay;
+        const bool sound = m_config->value(replay ? ConfigKeys::ReplayClipSound
+                                                 : ConfigKeys::CaptureScreenshotSound, true).toBool();
+        const bool toast = m_config->value(ConfigKeys::NotificationsEnabled, true).toBool()
+            && m_config->value(replay ? ConfigKeys::ReplayClipNotify
+                                     : ConfigKeys::CaptureScreenshotNotify, true).toBool();
+        if (sound)
+            m_sounds->play(QStringLiteral("capture_accepted"));
+        if (toast) {
+            const QString title = replay
+                ? NativeText::get(
+                    //: A replay save request was received; saving may still fail.
+                    //% "Replay save requested"
+                    QT_TRID_NOOP("gamehq.notification.replay_requested.title"),
+                    "Replay save requested")
+                : NativeText::get(
+                    //: A screenshot request was received; capture may still fail.
+                    //% "Capture request received"
+                    QT_TRID_NOOP("gamehq.notification.capture_requested.title"),
+                    "Capture request received");
+            m_notify->post(request.id, title, {}, {}, QStringLiteral("info"));
+        }
+        qInfo().noquote() << QStringLiteral(
+            "CaptureFeedback[%1]: kind=%2 submitted elapsedMs=%3 sound=%4 toast=%5")
+            .arg(request.tag(), replay ? QStringLiteral("replay") : QStringLiteral("screenshot"))
+            .arg(request.ageMs()).arg(sound).arg(toast);
+    };
+    connect(m_screenshots.get(), &ScreenshotService::requestAccepted, this, acknowledgeCapture);
+    connect(m_framePump.get(), &FramePumpService::requestAccepted, this, acknowledgeCapture);
     connect(m_screenshots.get(), &ScreenshotService::hdrCaptureRequested,
             m_framePump.get(), &FramePumpService::captureHdrScreenshot);
     connect(m_framePump.get(), &FramePumpService::hdrScreenshotReady,
@@ -253,14 +294,14 @@ bool App::init()
             });
     // Remux finished: file + thumbnail ready → add it to the gallery and notify.
     connect(m_framePump.get(), &FramePumpService::clipSaved, this,
-            [this](const QString& path, const QString& game, const QString& thumb,
-                   const QString& exePath) {
+            [this, postCaptureOutcome](const QString& path, const QString& game, const QString& thumb,
+                   const QString& exePath, quint64 operationId) {
                 m_controller->commitClip(path, game, thumb, exePath);
                 if (m_config->value(ConfigKeys::ReplayClipSound, true).toBool())
                     m_sounds->play(QStringLiteral("replay_saved"));
                 if (m_config->value(ConfigKeys::NotificationsEnabled, true).toBool()
                     && m_config->value(ConfigKeys::ReplayClipNotify, true).toBool()) {
-                    m_notify->post(
+                    postCaptureOutcome(operationId,
                         NativeText::get(
                             //: Title of the notification shown after a replay clip is saved.
                             //% "Replay saved"
@@ -270,7 +311,7 @@ bool App::init()
                 }
             });
     connect(m_framePump.get(), &FramePumpService::clipFailed, this,
-            [this](const QString& game, const QString& reason) {
+            [this, postCaptureOutcome](const QString& game, const QString& reason, quint64 operationId) {
                 m_sounds->play(QStringLiteral("error"));
                 if (m_config->value(ConfigKeys::NotificationsEnabled, true).toBool()) {
                     const QString body = reason.isEmpty()
@@ -280,7 +321,7 @@ bool App::init()
                               //% "Reason: %1"
                               QT_TRID_NOOP("gamehq.notification.replay_failed.reason"),
                               "Reason: %1").arg(reason);
-                    m_notify->post(
+                    postCaptureOutcome(m_config->value(ConfigKeys::ReplayClipNotify, true).toBool() ? operationId : 0,
                         NativeText::get(
                             //: Title of the notification shown when saving a replay clip fails.
                             //% "Replay failed"

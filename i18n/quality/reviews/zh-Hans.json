@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_zh_Hans.ts",
-    "sha256": "c90bf62fd0614fb5b45cc8637f9acbc0f0d4c752cbb9feb5b32e6a3ca0c4272e",
-    "message_count": 834
+    "sha256": "5e5c2189d3a22bf7143adf305d98305ce3cb889b3044ddc2f9b919df2be81383",
+    "message_count": 836
   },
   "coverage": [
     {
@@ -7647,6 +7647,24 @@
         "src/ui/qml/settings/AboutSettingsPage.qml:181"
       ],
       "decision": "corrected"
+    },
+    {
+      "id": "gamehq.notification.capture_requested.title",
+      "source_hash": "f5a508cd116c4ab3b6a707c6a7ce2ae6baa636e8ee6090a66a64077fb0373555",
+      "translation_hash": "98ff4e6b2f74f03ec69641772fa2efa148046cdc7ed6e94ce4f4b2c036ed07b7",
+      "locations": [
+        "src/app/App.cpp:260"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.replay_requested.title",
+      "source_hash": "6f61bb786cd7ac2c687dc8bf5d27725786abb51e8e56033209c19650b6b91202",
+      "translation_hash": "5c8a9f02f9862b6d54f3f13e792460c01c067deb98d06e38f113e6e2ac519d5b",
+      "locations": [
+        "src/app/App.cpp:255"
+      ],
+      "decision": "accepted"
     }
   ],
   "corrections": [
@@ -15312,8 +15330,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_zh_Hans.ts",
-      "sha256": "c90bf62fd0614fb5b45cc8637f9acbc0f0d4c752cbb9feb5b32e6a3ca0c4272e",
-      "reviewed_units": 834
+      "sha256": "5e5c2189d3a22bf7143adf305d98305ce3cb889b3044ddc2f9b919df2be81383",
+      "reviewed_units": 836
     },
     {
       "surface": "installer",

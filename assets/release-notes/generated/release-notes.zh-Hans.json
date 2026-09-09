@@ -1,23 +1,37 @@
 {
-  "version": "0.7.17",
+  "version": "0.7.18",
   "date": "2026-09-09",
   "sections": [
     {
-      "title": "Fixed",
-      "items": [
-        "A capture request that is refused early now says so in the log. Pressing save clip while the replay buffer was cold, busy or paused previously left no record of the press at all.",
-        "A screenshot skipped because the foreground window is not a game is now recorded with the reason, instead of passing without a trace."
-      ]
-    },
-    {
       "title": "Added",
       "items": [
-        "Every screenshot and clip request now carries an id and the device that pressed it, so one press reads as one chain in the log from start to finish or to the reason it failed.",
-        "The copied diagnostics now list the bindings of the controller in your hands next to the shared controller bindings."
+        "Screenshot and replay requests now immediately play an acknowledgement sound and show a request-received notification, according to your feedback settings. Saving can still fail; the final outcome is reported separately.",
+        "Replay preview thumbnails are now decoded and encoded on the export thread, keeping image work off the capture worker while saving. The gallery still receives the thumbnail associated with the saved clip.",
+        "Capture results update the original request notification in place. The visible notification stack is limited to four cards; older cards leaving the stack do not affect saved captures."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.17",
+      "date": "2026-09-09",
+      "sections": [
+        {
+          "title": "Fixed",
+          "items": [
+            "A capture request that is refused early now says so in the log. Pressing save clip while the replay buffer was cold, busy or paused previously left no record of the press at all.",
+            "A screenshot skipped because the foreground window is not a game is now recorded with the reason, instead of passing without a trace."
+          ]
+        },
+        {
+          "title": "Added",
+          "items": [
+            "Every screenshot and clip request now carries an id and the device that pressed it, so one press reads as one chain in the log from start to finish or to the reason it failed.",
+            "The copied diagnostics now list the bindings of the controller in your hands next to the shared controller bindings."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.16",
       "date": "2026-09-09",
@@ -216,6 +230,13 @@
     "requested_locale": "zh-Hans",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.18",
+        "source_integrity": "sha256:33eb49e2133db7d1c990139bad18a2aedf32a3a3ffcf54b79c76433276cf9e2f",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.17",
         "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",

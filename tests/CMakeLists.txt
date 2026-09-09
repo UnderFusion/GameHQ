@@ -902,3 +902,55 @@ add_test(NAME tst_i18nlocalelifecycle
     COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_SOURCE_DIR}/tools/i18n/test_locale_lifecycle.py")
 set_tests_properties(tst_i18nlocalelifecycle PROPERTIES TIMEOUT 180)
+
+# Real service entry points, deterministic update gate, no capture hardware.
+gamehq_add_test(tst_captureacknowledgement
+    tst_captureacknowledgement.cpp
+    "${CMAKE_SOURCE_DIR}/src/capture/FramePumpService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/ScreenshotService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/CaptureRequest.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/CaptureBorderState.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/CapturePublisher.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/ReplayBufferState.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/HdrCapabilities.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/hdr/GpuToneMapper.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/hdr/HdrToneMapMath.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/AudioCapture.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/SegmentRecorder.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/SegmentLease.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/ReplayExporter.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/CaptureLocations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
+    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp"
+    "${CMAKE_SOURCE_DIR}/src/games/GameDetector.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/ExternalGameContext.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/ThumbnailService.cpp"
+)
+target_compile_definitions(tst_captureacknowledgement PRIVATE UNICODE _UNICODE)
+target_link_libraries(tst_captureacknowledgement PRIVATE
+    Qt6::Gui Qt6::Widgets Qt6::Network
+    user32 gdi32 version winmm windowsapp runtimeobject ole32 oleaut32
+    d3d11 dxgi dxguid uuid d3dcompiler mfplat mfreadwrite mfuuid mf avrt ksuser mmdevapi)
+# Worker startup sweeps its replay cache. Keep that cache isolated from user data.
+set_target_properties(tst_captureacknowledgement PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests/captureacknowledgement")
+file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/tests/captureacknowledgement/portable.flag" CONTENT "")
+
+# p3-4: real Media Foundation decode/export plus worker handoff and gallery identity.
+get_target_property(GAMEHQ_CAPTURE_TEST_SOURCES tst_captureacknowledgement SOURCES)
+list(REMOVE_ITEM GAMEHQ_CAPTURE_TEST_SOURCES tst_captureacknowledgement.cpp)
+gamehq_add_test(tst_replaythumbnail tst_replaythumbnail.cpp ${GAMEHQ_CAPTURE_TEST_SOURCES})
+get_target_property(GAMEHQ_CAPTURE_TEST_LIBRARIES tst_captureacknowledgement LINK_LIBRARIES)
+target_link_libraries(tst_replaythumbnail PRIVATE ${GAMEHQ_CAPTURE_TEST_LIBRARIES})
+target_compile_definitions(tst_replaythumbnail PRIVATE UNICODE _UNICODE
+    REPLAY_THUMB_FIXTURE="${CMAKE_SOURCE_DIR}/tests/fixtures/replay-thumbnail.mp4")
+set_target_properties(tst_replaythumbnail PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests/replaythumbnail")
+file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/tests/replaythumbnail/portable.flag" CONTENT "")
+
+gamehq_add_test(tst_notificationcenter tst_notificationcenter.cpp
+    "${CMAKE_SOURCE_DIR}/src/notify/NotificationCenter.cpp"
+    "${CMAKE_SOURCE_DIR}/src/notify/ToastModel.cpp")
+target_link_libraries(tst_notificationcenter PRIVATE Qt6::Quick user32)

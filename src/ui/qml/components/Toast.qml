@@ -13,7 +13,18 @@ Item {
     property date when                // formatted on demand so live locale changes update the toast
     property bool isVideo: false      // show the play badge over the thumbnail
     property string kind: "info"      // success | info | error
-    property int lifespan: 3600
+    property int lifespan: pending ? Theme.toastPendingLifespan : Theme.toastLifespan
+    property bool pending: false
+    property int contentRevision: 0
+    property bool ready: false
+    onContentRevisionChanged: {
+        if (!ready) return
+        exit.stop()
+        enter.stop()
+        opacity = 1
+        rise.y = 0
+        lifetime.restart()
+    }
     signal dismissed()
 
     implicitHeight: card.height
@@ -126,7 +137,7 @@ Item {
     // positioner (which owns root.y) and never clips against the window edge.
     opacity: 0
     transform: Translate { id: rise; y: 16 }
-    Component.onCompleted: enter.start()
+    Component.onCompleted: { ready = true; enter.start() }
     ParallelAnimation {
         id: enter
         NumberAnimation { target: root; property: "opacity"; from: 0; to: 1; duration: Theme.durNormal; easing.type: Easing.OutCubic }
@@ -141,6 +152,7 @@ Item {
     }
 
     Timer {
+        id: lifetime
         interval: root.lifespan
         running: true
         repeat: false

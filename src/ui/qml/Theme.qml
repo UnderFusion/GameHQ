@@ -185,6 +185,10 @@ QtObject {
     readonly property int radiusPill: 999   // a pill is a pill in every skin
     readonly property int borderWidth: skin.borderWidth
 
+    readonly property int toastVisibleLimit: 4
+    readonly property int toastLifespan: 3600
+    readonly property int toastPendingLifespan: 60000
+
     readonly property int durFast:   skin.durFast
     readonly property int durNormal: skin.durNormal
     readonly property int durSlow:   skin.durSlow
