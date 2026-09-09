@@ -31,6 +31,9 @@
 #include <QHash>
 #include <QImage>
 #include <QFileInfo>
+#include <QFile>
+#include <QSysInfo>
+#include <QCryptographicHash>
 #include <QProcess>
 #include <QScreen>
 #include <QTimer>
@@ -243,23 +246,26 @@ void AppController::quitApplication()
 
 void AppController::copyDiagnosticSummary() const
 {
-    // Whether the log is actually being written is the first thing worth
-    // knowing when a report arrives without one attached.
-    const QString summary = QStringLiteral(
-        "GameHQ %1 (%2)\n"
-        "Data folder: %3\n"
-        "Logs folder: %4 (%5)\n"
-        "Screenshots folder: %6\n"
-        "Clips folder: %7\n"
-        "%8\n"
-        "%9")
-        .arg(version(), portableMode() ? QStringLiteral("portable") : QStringLiteral("installed"),
-             dataRoot(), logsRoot(),
-             Logger::writingToFile() ? QStringLiteral("writing")
-                                     : QStringLiteral("NOT writable — logging to stderr"),
-             screenshotsRoot(), clipsRoot(),
-             m_hdr.summaryLines().join(QLatin1Char('\n')),
-             InputDiagnostics::instance().exportText());
+    QVariantMap relevant;
+    for (const auto& key : {ConfigKeys::CaptureMode, ConfigKeys::ReplayAuto,
+            ConfigKeys::ReplayClipNotify, ConfigKeys::ReplayClipSound,
+            ConfigKeys::ReplayLengthSeconds, ConfigKeys::ReplayManualIdleSeconds,
+            ConfigKeys::InputDefaultHoldMs, ConfigKeys::InputMultiTapIntervalMs})
+        relevant.insert(QString(key), m_config->value(key));
+    QFile log(QDir(logsRoot()).filePath(QStringLiteral("gamehq.log")));
+    QByteArray tail;
+    if (log.open(QIODevice::ReadOnly)) {
+        log.seek(qMax<qint64>(0, log.size() - InputDiagnostics::kMaxTraceBytes));
+        tail = log.read(InputDiagnostics::kMaxTraceBytes);
+    }
+    QString build = version() + QStringLiteral(" compiled " __DATE__ " " __TIME__ " Qt " QT_VERSION_STR);
+    QFile executable(QCoreApplication::applicationFilePath());
+    QCryptographicHash digest(QCryptographicHash::Sha256);
+    build += executable.open(QIODevice::ReadOnly) && digest.addData(&executable)
+        ? QStringLiteral(" binary-sha256=") + QString::fromLatin1(digest.result().toHex())
+        : QStringLiteral(" binary-sha256=unavailable");
+    const QString summary = InputDiagnostics::instance().exportBetaText(
+        build, QSysInfo::kernelVersion(), relevant, QString::fromUtf8(tail));
     QGuiApplication::clipboard()->setText(summary);
 }
 

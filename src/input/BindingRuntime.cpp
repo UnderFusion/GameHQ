@@ -225,6 +225,17 @@ void BindingRuntime::publishBoundPatterns()
                             m_activeGroup + QLatin1Char(':') + m_activeProfile);
     }
     InputDiagnostics::instance().setBoundPatterns(patterns);
+    if (m_activeGroup == QLatin1String("controller")) {
+        QStringList replayRows;
+        for (const auto& binding : m_resolver.effectiveBindings(m_activeGroup, m_activeProfile)) {
+            if (binding.actionId == QLatin1String("global.save_replay"))
+                replayRows << QStringLiteral("slot=%1 trigger=%2 activation=%3 hold_ms=%4 tap_count=%5")
+                    .arg(binding.slot).arg(binding.trigger().serialize(), binding.gesture().activationCode())
+                    .arg(binding.gesture().kind == GestureSpec::Kind::Hold ? holdThreshold(binding) : 0)
+                    .arg(binding.gesture().tapCount);
+        }
+        InputDiagnostics::instance().setReplayBindings(m_activeProfile, replayRows);
+    }
 }
 
 void BindingRuntime::dispatch(const InputPatternRecognizer::Context& context,
@@ -256,6 +267,7 @@ bool BindingRuntime::press(const QString& group, const QString& profile,
                            const QString& trigger, ActionCatalog::Scope primary,
                            ActionCatalog::Scope fallback)
 {
+    if (group == QLatin1String("controller")) setActiveProfile(group, profile);
     const InputPatternRecognizer::Context context{group, profile, primary, fallback};
     m_pressContexts.insert(group + QChar(0x1f) + profile + QChar(0x1f) + trigger, context);
     return m_recognizer.press(context, trigger);

@@ -9,6 +9,55 @@ class InputDiagnosticsTest : public QObject
     Q_OBJECT
 
 private slots:
+    void betaPackageContainsOnlyRelevantSanitizedEvidence()
+    {
+        InputDiagnostics diag;
+        diag.noteControl("gamepad.view_back", "XInput");
+        diag.setReplayBindings("C:\\Users\\Secret Person\\controller", {
+            "slot=1 trigger=gamepad.view_back activation=hold hold_ms=2000 tap_count=1",
+            "slot=2 trigger=C:\\Users\\Secret Person\\private"});
+        diag.setBoundPatterns({"unrelated screenshot binding"});
+        diag.noteDevice("private serial", "private device", "unused");
+        const QVariantMap config{{"capture.mode", "always"}, {"replay.auto", true},
+            {"replay.clip_notify", false}, {"storage.clips_root", "C:\\Users\\Secret Person"}};
+        const QString log = "Private game C:\\Users\\Secret Person\\game.exe\n"
+            "ReplaySave[77 src=controller +12ms]: accepted\n"
+            "ReplaySave[77 src=controller +12ms]: armed game=Private game\n"
+            "ReplaySave[77]: exporting output=\\\\server\\share\\Secret Person.mp4\n"
+            "ReplaySave[77]: failed - remux failed output=/home/private/name.mp4\n"
+            "ReplaySave[78 src=keyboard +13ms]: accepted\n"
+            "ReplaySave[78]: published\n";
+        const QString text = diag.exportBetaText("0.7.23 compiled Sep 9 2026 12:00:00", "10.0.26200", config, log);
+        for (const auto& expected : {"0.7.23", "10.0.26200", "Active provider: XInput",
+                "Resolved controller profile: sha256:", "global.save_replay", "hold_ms=2000",
+                "capture.mode=always", "replay.auto=1", "replay.clip_notify=0",
+                "request=77 accepted", "request=77 armed", "request=77 exporting", "request=77 failed"})
+            QVERIFY2(text.contains(QLatin1String(expected)), expected);
+        for (const auto& secret : {"Secret Person", "private", "Private game", "server", "share",
+                "C:\\", "/home/", "storage.clips_root", "screenshot", "request=78"})
+            QVERIFY2(!text.contains(QLatin1String(secret)), secret);
+    }
+
+    void betaTraceIsBoundedAndMissingEvidenceIsExplicit()
+    {
+        InputDiagnostics diag;
+        QString log;
+        for (int i = 1; i <= 50; ++i)
+            log += QStringLiteral("ReplaySave[%1 src=controller +1ms]: accepted\n").arg(i);
+        const QString text = diag.exportBetaText("build", "10.0.26200", {}, log);
+        QCOMPARE(text.count("request="), InputDiagnostics::kMaxTraceEvents);
+        QVERIFY(!text.contains("request=1 "));
+        QVERIFY(text.contains("request=50 accepted"));
+        const QString empty = diag.exportBetaText("C:/Users/secret/build", "\\\\server\\secret", {}, {});
+        QVERIFY(empty.contains("unavailable: no controller requests"));
+        QVERIFY(!empty.contains("secret"));
+        log += QString(InputDiagnostics::kMaxTraceBytes, QLatin1Char('x'));
+        QVERIFY(!diag.exportBetaText("build", "windows", {}, log).contains("request="));
+        diag.setReplayBindings("secret-profile", {"test"});
+        diag.clear();
+        QVERIFY(diag.exportBetaText("build", "windows", {}, {}).contains("profile: none"));
+    }
+
     void ringsKeepOnlyTheLatestEntries()
     {
         InputDiagnostics diag;

@@ -4,6 +4,7 @@
 #include <QString>
 #include <QStringList>
 #include <QVector>
+#include <QVariantMap>
 #include <QtGlobal>
 
 // Per-window payload-read budget for the "press your button now" probe.
@@ -154,6 +155,11 @@ public:
     static QString redactDevicePath(const QString& path);
 
     QString exportText() const;
+    void setReplayBindings(const QString& profile, const QStringList& rows);
+    QString exportBetaText(const QString& build, const QString& windowsBuild,
+                           const QVariantMap& config, const QString& logTail) const;
+    static constexpr int kMaxTraceBytes = 64 * 1024;
+    static constexpr int kMaxTraceEvents = 32;
     void clear();
 
     static constexpr int kProbeDurationMs = 3000;
@@ -188,6 +194,8 @@ private:
     QString m_gestureTiming;
     QVector<Stamped> m_patterns;
     QStringList m_boundPatterns;
+    QString m_replayProfile;
+    QStringList m_replayBindings;
     bool m_guideObserved = false;
     QHash<QString, DeviceInfo> m_devices;
     QStringList m_deviceOrder;            // insertion order for stable export

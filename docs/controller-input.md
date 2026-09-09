@@ -287,3 +287,21 @@ enumeration strategy can bypass it, so GameHQ detects and explains it instead:
   usage before tracking a supported VID/PID; vendor-defined collections on
   Sony hardware (PS Link adapter) are ignored instead of being logged as
   phantom "tracked DualSense" devices.
+
+## Sanitized beta diagnostics
+
+The existing **Copy diagnostic summary** action copies a paste-ready controller
+replay package. It includes the GameHQ version, executable SHA-256, compile timestamp, Qt version,
+Windows kernel build, last observed provider, a SHA-256 pseudonym of the resolved
+controller profile, effective `global.save_replay` bindings (slot, trigger,
+activation, resolved hold duration and tap count), and relevant capture/replay
+settings. Press the controller binding before copying so its resolved profile is
+available. Timing and binding values are diagnostic tokens, independent of UI language.
+
+Only the last 64 KiB of the current log is read. At most 32 recognized controller
+replay stage events are included, with request IDs and coarse failure categories.
+Raw log lines, game names, storage paths, device serials, unrelated bindings and
+other requests are excluded. Missing or rotated-out evidence is reported as
+unavailable; the package cannot reconstruct a request whose controller identity
+has already left that log tail. A request receipt does not prove publication.
+The existing internal full input report remains available to diagnostic code.

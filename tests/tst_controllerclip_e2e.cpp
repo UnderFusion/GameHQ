@@ -1,6 +1,7 @@
 #include "input/InputEngine.h"
 #include "input/XInputDevice.h"
 #include "input/BindingRuntime.h"
+#include "input/InputDiagnostics.h"
 #include "capture/FramePumpService.h"
 #include "config/ConfigManager.h"
 #include "config/ConfigKeys.h"
@@ -80,6 +81,10 @@ private slots:
         const auto request = qvariant_cast<CaptureRequest>(replay.first().first());
         QVERIFY(request.id != 0);
         QCOMPARE(request.source, CaptureRequest::Source::Controller);
+        const QString diagnostic = InputDiagnostics::instance().exportBetaText("test", "windows", {}, {});
+        QVERIFY(diagnostic.contains("activation=tap"));
+        QVERIFY(diagnostic.contains("trigger=" + ControlId::ViewBack));
+        QVERIFY(diagnostic.contains("Resolved controller profile: sha256:"));
         pad->edge(false);
         QCOMPARE(replay.count(), 1);
     }
