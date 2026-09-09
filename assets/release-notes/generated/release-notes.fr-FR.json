@@ -1,17 +1,29 @@
 {
-  "version": "0.7.18",
+  "version": "0.7.19",
   "date": "2026-09-09",
   "sections": [
     {
-      "title": "Added",
+      "title": "Fixed",
       "items": [
-        "Screenshot and replay requests now immediately play an acknowledgement sound and show a request-received notification, according to your feedback settings. Saving can still fail; the final outcome is reported separately.",
-        "Replay preview thumbnails are now decoded and encoded on the export thread, keeping image work off the capture worker while saving. The gallery still receives the thumbnail associated with the saved clip.",
-        "Capture results update the original request notification in place. The visible notification stack is limited to four cards; older cards leaving the stack do not affect saved captures."
+        "Every skipped or failed screenshot and every failed clip save now shows a clear notification stating the reason. When a capture file is written but cannot be added to the library, the notification says \"Saved to disk, not in library\" instead of claiming it was saved."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.18",
+      "date": "2026-09-09",
+      "sections": [
+        {
+          "title": "Added",
+          "items": [
+            "Screenshot and replay requests now immediately play an acknowledgement sound and show a request-received notification, according to your feedback settings. Saving can still fail; the final outcome is reported separately.",
+            "Replay preview thumbnails are now decoded and encoded on the export thread, keeping image work off the capture worker while saving. The gallery still receives the thumbnail associated with the saved clip.",
+            "Capture results update the original request notification in place. The visible notification stack is limited to four cards; older cards leaving the stack do not affect saved captures."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.17",
       "date": "2026-09-09",
@@ -200,29 +212,6 @@
           ]
         }
       ]
-    },
-    {
-      "version": "0.7.5",
-      "date": "2026-08-07",
-      "sections": [
-        {
-          "title": "Added",
-          "items": [
-            "The full About release-notes view now lists recent version links across the top, with the newest selected by default (0.7.5). The current-version summary stays compact, while users who skipped 0.7.3 or 0.7.4 can read those changes offline without leaving GameHQ.",
-            "The desktop update banner is now a compact notification that opens the update-aware release dialog (0.7.5). Available updates open directly on the complete changelog with Update, Remind me later and Skip version actions at the top, plus version links for the new, current and recent releases."
-          ]
-        },
-        {
-          "title": "Fixed",
-          "items": [
-            "The compact About view now shows Skip version for a real available update without evaluating a removed preview-only helper (0.7.5), preventing a QML runtime warning and restoring the intended skip action.",
-            "Closing a gallery video or another desktop dialog no longer leaves controller navigation without a visible focus indicator (0.7.5). Focus returns through GameHQ's verified native foreground path, waits until the main window is active, and targets the active Settings panel instead of the hidden gallery grid.",
-            "Custom Global controller gestures remain active when a Desktop or Overlay binding uses the same button (0.7.5). Primary-scope trigger ownership now suppresses only contextual fallbacks, never Global tap, hold or multi-tap actions when the engine represents the fallback scope as Global.",
-            "Pressing Cross during video playback now toggles Play/Pause exactly once (0.7.5). Playback now owns the button for its entire press cycle, so the Desktop Confirm tap can no longer resume the clip on release and holding the button cannot enter Bulk Select behind the lightbox.",
-            "DualSense Share and PS buttons no longer stop responding after the first press (0.7.5). When Sony Raw Input delivered a press and the preferred GameInput mirror arrived while the button was held, the capability router silently transferred ownership of the held control to GameInput; the Sony release was then rejected, the control stayed logically held forever, and every later press â€” including standard buttons routed the same way â€” was swallowed as a duplicate. The router now uses press-cycle ownership: the first accepted press owns the cycle, mirrored presses only join it as participants (never a second action, never an ownership transfer), any participant's release closes the cycle exactly once, and a release with no open cycle is explicitly ignored. Dead-owner safe releases and lifecycle resets are preserved. Regression tests cover repeated Share/PS handoff cycles for both Capture and Guide at router and provider-integration level."
-          ]
-        }
-      ]
     }
   ],
   "_meta": {
@@ -230,6 +219,13 @@
     "requested_locale": "fr-FR",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.19",
+        "source_integrity": "sha256:5ed0328152f05aaa6a47588d010cda2f6a7406c763c71b3ae67ee59b2f767b69",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.18",
         "source_integrity": "sha256:33eb49e2133db7d1c990139bad18a2aedf32a3a3ffcf54b79c76433276cf9e2f",
@@ -310,13 +306,6 @@
       {
         "version": "0.7.6",
         "source_integrity": "sha256:46b163a6c5ca12b0e0d47f08750dc73c29f23938cdbda5146e8cd997909268af",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.5",
-        "source_integrity": "sha256:3d2c1ddc6025e8e4935c2f404d0d24fa4dd77cf4b83e2480fdab07fb62700955",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

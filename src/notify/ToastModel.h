@@ -23,7 +23,6 @@ public:
     void setLimit(int limit);
     bool post(Toast toast);
     bool update(Toast toast);
-    bool fail(const QString& key, const QString& reason);
     bool dismiss(const QString& key, int revision);
 private:
     int find(const QString& key) const;

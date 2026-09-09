@@ -760,28 +760,34 @@ void AppController::showInFolderFrom(GalleryModel* model, int row)
     m_captureLibrary->showInFolder(model, row);
 }
 
-void AppController::commitCapture(const QString& filePath, const QString& type,
-                                  const QString& gameName, const QString& executablePath)
+CaptureCommitOutcome AppController::commitCapture(const QString& filePath, const QString& type,
+                                                 const QString& gameName,
+                                                 const QString& executablePath)
 {
-    m_captureLibrary->commitCapture(filePath, type, gameName, executablePath);
+    const CaptureCommitOutcome outcome =
+        m_captureLibrary->commitCapture(filePath, type, gameName, executablePath);
     const bool stateChanged = m_currentGame->update(gameName, executablePath);
     if (stateChanged) {
         emit currentGameChanged();
         emit overlayGameChanged();
     }
     emit gamesChanged();
+    return outcome;
 }
 
-void AppController::commitClip(const QString& filePath, const QString& gameName,
-                              const QString& thumbnailPath, const QString& executablePath)
+CaptureCommitOutcome AppController::commitClip(const QString& filePath, const QString& gameName,
+                                               const QString& thumbnailPath,
+                                               const QString& executablePath)
 {
-    m_captureLibrary->commitClip(filePath, gameName, thumbnailPath, executablePath);
+    const CaptureCommitOutcome outcome =
+        m_captureLibrary->commitClip(filePath, gameName, thumbnailPath, executablePath);
     const bool stateChanged = m_currentGame->update(gameName, executablePath);
     if (stateChanged) {
         emit currentGameChanged();
         emit overlayGameChanged();
     }
     emit gamesChanged();
+    return outcome;
 }
 
 void AppController::rememberGameExecutable(const QString& gameName, const QString& executablePath)

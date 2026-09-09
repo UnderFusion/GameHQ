@@ -194,13 +194,65 @@ bool App::init()
     // if a service ever fires a signal from its own constructor, construct
     // m_sounds/m_notify before the connect that uses them.
 
+    // Every capture outcome goes through here, so a request that was answered
+    // with a receipt card replaces that card and one that was not still gets a
+    // card of its own. update() fails when the receipt is already gone -
+    // dismissed by the user, or pushed out of the visible stack - and an
+    // outcome nobody sees is the bug this whole path exists to prevent.
     const auto postCaptureOutcome = [this](quint64 operationId, const QString& title,
             const QString& body, const QString& image, const QString& kind,
             const QDateTime& when, bool video) {
-        if (operationId)
-            m_notify->update(operationId, title, body, image, kind, when, video);
-        else
-            m_notify->post(title, body, image, kind, when, video);
+        if (operationId && m_notify->update(operationId, title, body, image, kind, when, video))
+            return;
+        m_notify->post(title, body, image, kind, when, video);
+    };
+    // "The encoder finished" and "the library has it" are two different claims.
+    // A rejected insert leaves a real file on disk that no gallery will ever
+    // show, so the toast names which of the two happened instead of saying
+    // "saved" and sending the user after a thumbnail that does not exist.
+    const auto commitOutcomeTitle = [](CaptureCommitOutcome outcome, const QString& savedTitle,
+                                       const QString& failedTitle) {
+        if (outcome == CaptureCommitOutcome::Indexed)
+            return savedTitle;
+        if (outcome == CaptureCommitOutcome::Failed)
+            return failedTitle;
+        return NativeText::get(
+            //: Shown when a capture file was written but could not be added to the library.
+            //% "Saved to disk, not in library"
+            QT_TRID_NOOP("gamehq.notification.capture_media_only.title"),
+            "Saved to disk, not in library");
+    };
+    const auto commitOutcomeBody = [](CaptureCommitOutcome outcome, const QString& savedBody) {
+        if (outcome == CaptureCommitOutcome::Indexed)
+            return savedBody;
+        if (outcome == CaptureCommitOutcome::MediaOnly) {
+            return NativeText::get(
+                //: Body shown when a capture file exists on disk but has no library entry.
+                //% "The file is in your captures folder, but it could not be added to the library."
+                QT_TRID_NOOP("gamehq.notification.capture_media_only.body"),
+                "The file is in your captures folder, but it could not be added to the library.");
+        }
+        return NativeText::get(
+            //: Body shown when a capture is neither in the library nor on disk.
+            //% "It was not added to the library and the file is not on disk."
+            QT_TRID_NOOP("gamehq.notification.capture_lost.body"),
+            "It was not added to the library and the file is not on disk.");
+    };
+    // One title for every screenshot dead end: a refused request, a failed grab
+    // and a capture that never reached the library all read the same way.
+    const auto screenshotFailedTitle = [] {
+        return NativeText::get(
+            //: Title of the notification shown when a screenshot could not be taken or kept.
+            //% "Screenshot failed"
+            QT_TRID_NOOP("gamehq.notification.screenshot_failed.title"),
+            "Screenshot failed");
+    };
+    const auto replayFailedTitle = [] {
+        return NativeText::get(
+            //: Title of the notification shown when saving a replay clip fails.
+            //% "Replay failed"
+            QT_TRID_NOOP("gamehq.notification.replay_failed.title"),
+            "Replay failed");
     };
     // Screenshot capture (0.4): GDI grab of the foreground game → DB/gallery.
     m_screenshots = std::make_unique<ScreenshotService>(m_config.get(),
@@ -216,31 +268,53 @@ bool App::init()
                     m_sounds->play(QStringLiteral("screenshot"));
             });
     connect(m_screenshots.get(), &ScreenshotService::captured, this,
-            [this, postCaptureOutcome](const QString& path, const QString& game, const QString& exePath, quint64 operationId) {
-                m_controller->commitCapture(path, QStringLiteral("screenshot"), game, exePath);
-                if (m_config->value(ConfigKeys::NotificationsEnabled, true).toBool()
-                    && m_config->value(ConfigKeys::CaptureScreenshotNotify, true).toBool()) {
-                    postCaptureOutcome(operationId,
-                        NativeText::get(
-                            //: Title of the notification shown after a screenshot is saved.
-                            //% "Screenshot saved"
-                            QT_TRID_NOOP("gamehq.notification.screenshot_saved.title"),
-                            "Screenshot saved"),
-                        game, path,
-                        QStringLiteral("success"), QDateTime::currentDateTime(), false);
-                }
+            [this, postCaptureOutcome, commitOutcomeTitle, commitOutcomeBody,
+             screenshotFailedTitle](const QString& path, const QString& game,
+                                    const QString& exePath, quint64 operationId) {
+                const CaptureCommitOutcome outcome =
+                    m_controller->commitCapture(path, QStringLiteral("screenshot"), game, exePath);
+                const bool indexed = outcome == CaptureCommitOutcome::Indexed;
+                if (!indexed)
+                    m_sounds->play(QStringLiteral("error"));
+                if (!m_config->value(ConfigKeys::NotificationsEnabled, true).toBool())
+                    return;
+                // A commit that failed is reported even when screenshot toasts
+                // are off: that switch mutes successes, it does not agree to
+                // leave a capture invisible.
+                if (indexed && !m_config->value(ConfigKeys::CaptureScreenshotNotify, true).toBool())
+                    return;
+                const QString savedTitle = NativeText::get(
+                    //: Title of the notification shown after a screenshot is saved.
+                    //% "Screenshot saved"
+                    QT_TRID_NOOP("gamehq.notification.screenshot_saved.title"),
+                    "Screenshot saved");
+                postCaptureOutcome(operationId,
+                    commitOutcomeTitle(outcome, savedTitle, screenshotFailedTitle()),
+                    commitOutcomeBody(outcome, game),
+                    indexed ? path : QString(),
+                    indexed ? QStringLiteral("success") : QStringLiteral("error"),
+                    QDateTime::currentDateTime(), false);
             });
+    // Skipped and failed are one story for the user: the press produced no
+    // screenshot, and the reason belongs on screen. Neither is gated on the
+    // screenshot toast toggle, which mutes successes, not dead ends.
+    const auto reportScreenshotFailure = [this, postCaptureOutcome, screenshotFailedTitle](
+            const QString& why, quint64 operationId) {
+        m_sounds->play(QStringLiteral("error"));
+        if (!m_config->value(ConfigKeys::NotificationsEnabled, true).toBool())
+            return;
+        postCaptureOutcome(operationId, screenshotFailedTitle(), why, QString(),
+                           QStringLiteral("error"), QDateTime::currentDateTime(), false);
+    };
     connect(m_screenshots.get(), &ScreenshotService::skipped, this,
-            [this](const QString& why, quint64 operationId) {
-                m_notify->failOperation(operationId, why);
+            [reportScreenshotFailure](const QString& why, quint64 operationId) {
                 qInfo() << "Screenshot: skipped —" << why;
-                m_sounds->play(QStringLiteral("error"));
+                reportScreenshotFailure(why, operationId);
             });
     connect(m_screenshots.get(), &ScreenshotService::failed, this,
-            [this](const QString& why, quint64 operationId) {
-                m_notify->failOperation(operationId, why);
+            [reportScreenshotFailure](const QString& why, quint64 operationId) {
                 qWarning() << "Screenshot: failed —" << why;
-                m_sounds->play(QStringLiteral("error"));
+                reportScreenshotFailure(why, operationId);
             });
 
     // WGC replay buffer (0.5): records continuously while a game is foreground
@@ -294,24 +368,35 @@ bool App::init()
             });
     // Remux finished: file + thumbnail ready → add it to the gallery and notify.
     connect(m_framePump.get(), &FramePumpService::clipSaved, this,
-            [this, postCaptureOutcome](const QString& path, const QString& game, const QString& thumb,
+            [this, postCaptureOutcome, commitOutcomeTitle, commitOutcomeBody, replayFailedTitle](
+                   const QString& path, const QString& game, const QString& thumb,
                    const QString& exePath, quint64 operationId) {
-                m_controller->commitClip(path, game, thumb, exePath);
-                if (m_config->value(ConfigKeys::ReplayClipSound, true).toBool())
+                const CaptureCommitOutcome outcome =
+                    m_controller->commitClip(path, game, thumb, exePath);
+                const bool indexed = outcome == CaptureCommitOutcome::Indexed;
+                if (!indexed)
+                    m_sounds->play(QStringLiteral("error"));
+                else if (m_config->value(ConfigKeys::ReplayClipSound, true).toBool())
                     m_sounds->play(QStringLiteral("replay_saved"));
-                if (m_config->value(ConfigKeys::NotificationsEnabled, true).toBool()
-                    && m_config->value(ConfigKeys::ReplayClipNotify, true).toBool()) {
-                    postCaptureOutcome(operationId,
-                        NativeText::get(
-                            //: Title of the notification shown after a replay clip is saved.
-                            //% "Replay saved"
-                            QT_TRID_NOOP("gamehq.notification.replay_saved.title"),
-                            "Replay saved"),
-                        game, thumb, QStringLiteral("success"), QDateTime::currentDateTime(), true);
-                }
+                if (!m_config->value(ConfigKeys::NotificationsEnabled, true).toBool())
+                    return;
+                if (indexed && !m_config->value(ConfigKeys::ReplayClipNotify, true).toBool())
+                    return;
+                const QString savedTitle = NativeText::get(
+                    //: Title of the notification shown after a replay clip is saved.
+                    //% "Replay saved"
+                    QT_TRID_NOOP("gamehq.notification.replay_saved.title"),
+                    "Replay saved");
+                postCaptureOutcome(operationId,
+                    commitOutcomeTitle(outcome, savedTitle, replayFailedTitle()),
+                    commitOutcomeBody(outcome, game),
+                    indexed ? thumb : QString(),
+                    indexed ? QStringLiteral("success") : QStringLiteral("error"),
+                    QDateTime::currentDateTime(), indexed);
             });
     connect(m_framePump.get(), &FramePumpService::clipFailed, this,
-            [this, postCaptureOutcome](const QString& game, const QString& reason, quint64 operationId) {
+            [this, postCaptureOutcome, replayFailedTitle](
+                    const QString& game, const QString& reason, quint64 operationId) {
                 m_sounds->play(QStringLiteral("error"));
                 if (m_config->value(ConfigKeys::NotificationsEnabled, true).toBool()) {
                     const QString body = reason.isEmpty()
@@ -321,13 +406,8 @@ bool App::init()
                               //% "Reason: %1"
                               QT_TRID_NOOP("gamehq.notification.replay_failed.reason"),
                               "Reason: %1").arg(reason);
-                    postCaptureOutcome(m_config->value(ConfigKeys::ReplayClipNotify, true).toBool() ? operationId : 0,
-                        NativeText::get(
-                            //: Title of the notification shown when saving a replay clip fails.
-                            //% "Replay failed"
-                            QT_TRID_NOOP("gamehq.notification.replay_failed.title"),
-                            "Replay failed"),
-                        body, QString(), QStringLiteral("error"), QDateTime::currentDateTime(), false);
+                    postCaptureOutcome(operationId, replayFailedTitle(), body, QString(),
+                                       QStringLiteral("error"), QDateTime::currentDateTime(), false);
                 }
             });
     connect(m_framePump.get(), &FramePumpService::foregroundGameDetected,

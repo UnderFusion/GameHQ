@@ -53,7 +53,7 @@ private slots:
         center.setVisibleLimit(2);
         QVERIFY(!center.update(90, "Saved"));
         QVERIFY(!center.update(0, "Saved"));
-        QVERIFY(!center.failOperation(90, "Rejected"));
+        QVERIFY(!center.update(90, "Screenshot failed", "Rejected", {}, "error"));
         QCOMPARE(center.visibleToasts()->rowCount(), 0);
         for (quint64 id = 1; id <= 3; ++id) center.post(id, "Requested");
         QVERIFY(!center.update(1, "Saved"));
@@ -65,7 +65,9 @@ private slots:
         center.setVisibleLimit(4);
         center.post(1, "Requested");
         const int old = at(center, 0, ToastModel::Revision).toInt();
-        QVERIFY(center.failOperation(1, "Gate rejected this request"));
+        QVERIFY(center.update(1, "Screenshot failed", "Gate rejected this request",
+                              {}, "error"));
+        QCOMPARE(at(center, 0, ToastModel::Title).toString(), QString("Screenshot failed"));
         QCOMPARE(at(center, 0, ToastModel::Kind).toString(), QString("error"));
         QVERIFY(!at(center, 0, ToastModel::Pending).toBool());
         center.dismiss("capture:1", old);

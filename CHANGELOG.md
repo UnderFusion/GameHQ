@@ -6,6 +6,17 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.19] - 2026-09-09
+
+### Fixed
+
+- Skipped and failed screenshots now always post a notification with the reason,
+  instead of only updating a request card that may already have disappeared.
+- A capture whose file was written but could not be added to the library reports
+  "Saved to disk, not in library" instead of claiming it was saved.
+- Screenshot and replay notification toggles mute successful outcomes only; a
+  failed or unindexed capture is still reported.
+
 ## [0.7.18] - 2026-09-09
 
 ### Added

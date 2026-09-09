@@ -106,12 +106,6 @@ bool NotificationCenter::update(quint64 id, const QString& title, const QString&
     qInfo() << "Notification updated:" << id << kind << title << body;
     return true;
 }
-bool NotificationCenter::failOperation(quint64 id, const QString& reason)
-{
-    if (!id || !m_toasts.fail(QStringLiteral("capture:%1").arg(id), reason)) return false;
-    emit updated(id);
-    return true;
-}
 void NotificationCenter::dismiss(const QString& key, int revision)
 {
     m_toasts.dismiss(key, revision);

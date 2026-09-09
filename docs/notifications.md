@@ -16,9 +16,31 @@ and admitted replay export; immediate replay rejections keep their own ids.
 An identical post/update does not alter the row revision or restart its timer.
 A duplicate receipt cannot turn a terminal row back into pending. Unknown,
 expired, or evicted ids return false from update and never resurrect a toast.
-Screenshot failure/skip updates an existing row to error with its reason, without
-introducing a standalone failure notification; broader failure policy is p3-3.
+A terminal outcome first tries to update its request row; when that row is gone
+-- dismissed, expired or evicted -- the outcome is posted as a new card instead,
+so no result is silently dropped.
 Existing ordinary notification and capture sound/preferences remain in force.
+
+## Capture commit outcomes
+
+Saving a capture touches two stores that fail independently: the media file and
+the library row that makes it visible. `CaptureLibraryService::commitCapture` and
+`commitClip` therefore return a `CaptureCommitOutcome`:
+
+- `Indexed` -- file on disk and a library row for it; the toast says saved.
+- `MediaOnly` -- the file exists but the insert was refused; the toast says
+  "Saved to disk, not in library" and names the captures folder.
+- `Failed` -- neither store has it; the toast says the capture was lost.
+
+A refused insert is not automatically a lost capture: `insertCapture` also refuses
+duplicates, so a file the scanner indexed first is re-checked with `hasCapture`
+and still reported as `Indexed`.
+
+Skipped and failed screenshots take the same route as a failed commit: one
+`Screenshot failed` title with the reason in the body, plus the error sound.
+The screenshot and replay notification toggles mute successful outcomes only --
+they never agree to leave a failed or unindexed capture invisible. Muting all
+notifications still suppresses everything.
 
 ## Visible stack and timing
 

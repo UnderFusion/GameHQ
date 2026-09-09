@@ -41,7 +41,6 @@ public:
     bool update(quint64 operationId, const QString& title, const QString& body = {},
                 const QString& imagePath = {}, const QString& kind = QStringLiteral("success"),
                 const QDateTime& when = {}, bool isVideo = false);
-    bool failOperation(quint64 operationId, const QString& reason);
     Q_INVOKABLE void dismiss(const QString& key, int revision);
 
     Q_INVOKABLE void hideWindow();   // QML calls this once the stack empties

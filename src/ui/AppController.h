@@ -7,13 +7,12 @@
 #include "app/ReleaseNotes.h"
 #include "capture/HdrCapabilities.h"
 #include "capture/ReplayBufferState.h"
+#include "ui/CaptureLibraryService.h"
 #include "ui/GalleryModel.h"
 #include "ui/NavigationState.h"
 
 class CaptureDatabase;
 class CaptureScanner;
-class CaptureLibraryService;
-struct CaptureDeletionResult;
 class CaptureLocations;
 class ConfigManager;
 class CurrentGameService;
@@ -169,13 +168,17 @@ public:
     // Records a freshly-captured file (screenshot/clip) in the DB, builds its
     // thumbnail and refreshes the gallery + games sidebar. Called from App when
     // ScreenshotService (0.4) / ReplayService (0.5) produce a file.
-    void commitCapture(const QString& filePath, const QString& type,
-                       const QString& gameName, const QString& executablePath = QString());
+    // Returns what the commit achieved, so the caller can tell "saved" apart
+    // from "on disk but missing from the library".
+    CaptureCommitOutcome commitCapture(const QString& filePath, const QString& type,
+                                       const QString& gameName,
+                                       const QString& executablePath = QString());
 
     // Like commitCapture, but for a saved replay clip (type "video") whose video
     // thumbnail was already produced by the exporter (ThumbnailService is image-only).
-    void commitClip(const QString& filePath, const QString& gameName,
-                    const QString& thumbnailPath, const QString& executablePath = QString());
+    CaptureCommitOutcome commitClip(const QString& filePath, const QString& gameName,
+                                    const QString& thumbnailPath,
+                                    const QString& executablePath = QString());
     void rememberGameExecutable(const QString& gameName, const QString& executablePath);
     void updateForegroundGame(const QString& gameName, const QString& executablePath);
     // Confirmed replay state; the compatibility bool is derived from this enum.

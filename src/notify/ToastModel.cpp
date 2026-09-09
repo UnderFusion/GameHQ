@@ -71,15 +71,6 @@ bool ToastModel::update(Toast t)
     replace(row, t);
     return true; // An identical update is accepted without restarting presentation.
 }
-bool ToastModel::fail(const QString& key, const QString& reason)
-{
-    const int row = find(key);
-    if (row < 0) return false;
-    Toast t = m_rows.at(row);
-    t.body = reason; t.kind = "error"; t.pending = false;
-    replace(row, t);
-    return true;
-}
 bool ToastModel::dismiss(const QString& key, int revision)
 {
     const int row = find(key);

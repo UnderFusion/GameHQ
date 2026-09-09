@@ -25,6 +25,18 @@ struct CaptureDeletionResult
     bool allRemoved() const { return requested > 0 && removed == requested; }
 };
 
+// What a commit request actually did. Writing a capture also touches two
+// stores, so "the encoder finished" is not the same claim as "it is in the
+// library": a rejected insert leaves a real file on disk that no gallery will
+// ever show. Saying "saved" there sends the user looking for a thumbnail that
+// does not exist.
+enum class CaptureCommitOutcome
+{
+    Indexed,     // media on disk and a library row for it
+    MediaOnly,   // media on disk, but no library row
+    Failed,      // no library row and the media is not on disk either
+};
+
 // Filesystem seam. Production passes the QFile-backed default; tests inject
 // deterministic failures instead of racing real Windows file locks.
 struct CaptureFileOps
@@ -46,10 +58,12 @@ public:
     void openCapture(GalleryModel* model, int row) const;
     void showInFolder(GalleryModel* model, int row) const;
 
-    void commitCapture(const QString& filePath, const QString& type,
-                       const QString& gameName, const QString& executablePath = QString());
-    void commitClip(const QString& filePath, const QString& gameName,
-                    const QString& thumbnailPath, const QString& executablePath = QString());
+    CaptureCommitOutcome commitCapture(const QString& filePath, const QString& type,
+                                       const QString& gameName,
+                                       const QString& executablePath = QString());
+    CaptureCommitOutcome commitClip(const QString& filePath, const QString& gameName,
+                                    const QString& thumbnailPath,
+                                    const QString& executablePath = QString());
 
 private:
     enum class ItemOutcome {
@@ -60,6 +74,7 @@ private:
     };
 
     ItemOutcome deleteItem(int id, const QString& file, const QString& thumb);
+    CaptureCommitOutcome commitOutcome(int insertedId, const QString& filePath) const;
     void refreshGalleries();
 
     CaptureDatabase* m_db;

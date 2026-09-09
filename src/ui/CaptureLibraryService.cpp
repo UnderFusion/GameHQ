@@ -159,8 +159,10 @@ void CaptureLibraryService::showInFolder(GalleryModel* model, int row) const
         ShellActions::showInFolder(r->filePath);
 }
 
-void CaptureLibraryService::commitCapture(const QString& filePath, const QString& type,
-                                          const QString& gameName, const QString& executablePath)
+CaptureCommitOutcome CaptureLibraryService::commitCapture(const QString& filePath,
+                                                          const QString& type,
+                                                          const QString& gameName,
+                                                          const QString& executablePath)
 {
     const int id = m_db->insertCapture(filePath, type, gameName,
                                        QDateTime::currentDateTime().toString(Qt::ISODate),
@@ -172,10 +174,13 @@ void CaptureLibraryService::commitCapture(const QString& filePath, const QString
             m_db->setThumbnail(id, thumb);
     }
     refreshGalleries();
+    return commitOutcome(id, filePath);
 }
 
-void CaptureLibraryService::commitClip(const QString& filePath, const QString& gameName,
-                                       const QString& thumbnailPath, const QString& executablePath)
+CaptureCommitOutcome CaptureLibraryService::commitClip(const QString& filePath,
+                                                       const QString& gameName,
+                                                       const QString& thumbnailPath,
+                                                       const QString& executablePath)
 {
     const int id = m_db->insertCapture(filePath, QStringLiteral("video"), gameName,
                                        QDateTime::currentDateTime().toString(Qt::ISODate),
@@ -183,6 +188,26 @@ void CaptureLibraryService::commitClip(const QString& filePath, const QString& g
     if (id > 0 && !thumbnailPath.isEmpty())
         m_db->setThumbnail(id, thumbnailPath);
     refreshGalleries();
+    return commitOutcome(id, filePath);
+}
+
+// A rejected insert is not automatically a lost capture: the encoder may have
+// written a perfectly good file that only the library missed. Check the disk
+// before deciding which of the two things to tell the user.
+CaptureCommitOutcome CaptureLibraryService::commitOutcome(int insertedId,
+                                                          const QString& filePath) const
+{
+    if (insertedId > 0)
+        return CaptureCommitOutcome::Indexed;
+    // A refused insert is not always a missing row: the scanner may have
+    // indexed the same file first, and insertCapture refuses duplicates. Ask
+    // the library before telling the user it is not there.
+    if (m_db->hasCapture(filePath))
+        return CaptureCommitOutcome::Indexed;
+    const bool onDisk = m_fileOps.exists && m_fileOps.exists(filePath);
+    qWarning() << "Capture commit: no library row for" << filePath
+               << (onDisk ? "— the file is still on disk" : "— the file is gone too");
+    return onDisk ? CaptureCommitOutcome::MediaOnly : CaptureCommitOutcome::Failed;
 }
 
 void CaptureLibraryService::refreshGalleries()
