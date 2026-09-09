@@ -1,15 +1,15 @@
-# GameHQ 0.7.14 (2026-09-09)
+# GameHQ 0.7.26 (2026-09-09)
 
-## Fixed
+## Improved
 
-- GameHQ now asks Windows for permission to hide the yellow recording border and reports the real result instead of always claiming the border is hidden.
-- On Windows versions that cannot hide the recording border, the capture status now says so instead of reporting it as hidden.
+- Both sound sliders now reach 300% instead of 200%, for up to +9.5 dB of extra loudness.
+- Settings up to 100% sound exactly as before, and the bundled sounds stay free of distortion at the new maximum.
 
 <!-- gamehq:locale-index -->
 
 ## Release notes in other languages
 
-These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.14/assets/release-notes/publication/0.7.14) are kept in the repository; they are not attached to this release as separate downloads.
+These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.26/assets/release-notes/publication/0.7.26) are kept in the repository; they are not attached to this release as separate downloads.
 
 | Language | Locale | Content |
 | --- | --- | --- |

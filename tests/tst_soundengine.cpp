@@ -149,10 +149,10 @@ void SoundEngineTest::theCaptureSliderIsReadPerceptually()
     // Nothing may go backwards: a slider that dips as it is raised is a bug
     // the user reads as broken audio.
     qreal previous = -1.0;
-    for (int percent = 0; percent <= 200; percent += 5) {
+    for (int percent = 0; percent <= 300; percent += 5) {
         const qreal amplitude = SoundLevels::perceptualAmplitude(percent);
         QVERIFY(amplitude >= previous);
-        QVERIFY(amplitude >= 0.0 && amplitude <= 2.0);
+        QVERIFY(amplitude >= 0.0 && amplitude <= 3.0);
         QVERIFY(amplitude / SoundLevels::assetGain <= 1.0);
         previous = amplitude;
     }
@@ -161,7 +161,8 @@ void SoundEngineTest::theCaptureSliderIsReadPerceptually()
     QCOMPARE(SoundLevels::perceptualAmplitude(-40), 0.0);
     QCOMPARE(SoundLevels::perceptualAmplitude(150), 1.5);
     QCOMPARE(SoundLevels::perceptualAmplitude(200), 2.0);
-    QCOMPARE(SoundLevels::perceptualAmplitude(400), 2.0);
+    QCOMPARE(SoundLevels::perceptualAmplitude(300), 3.0);
+    QCOMPARE(SoundLevels::perceptualAmplitude(400), 3.0);
 }
 
 // Existing users set their UI volume against the old straight mapping, so it
@@ -174,7 +175,8 @@ void SoundEngineTest::theInterfaceSliderKeepsItsStraightMapping()
     QCOMPARE(SoundLevels::linearAmplitude(-5), 0.0);
     QCOMPARE(SoundLevels::linearAmplitude(150), 1.5);
     QCOMPARE(SoundLevels::linearAmplitude(200), 2.0);
-    QCOMPARE(SoundLevels::linearAmplitude(400), 2.0);
+    QCOMPARE(SoundLevels::linearAmplitude(300), 3.0);
+    QCOMPARE(SoundLevels::linearAmplitude(400), 3.0);
 }
 
 // Previewing a test-only asset would prove nothing about the slider.

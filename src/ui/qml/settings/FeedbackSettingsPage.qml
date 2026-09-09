@@ -60,7 +60,7 @@ SettingsPage {
                 configKey: "sounds.volume"
                 defaultValue: 80
                 from: 0
-                to: 200
+                to: 300
                 stepSize: 5
             }
         }
@@ -73,7 +73,7 @@ SettingsPage {
                 configKey: "sounds.capture_volume"
                 defaultValue: 100
                 from: 0
-                to: 200
+                to: 300
                 stepSize: 5
             }
         }

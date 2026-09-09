@@ -19,22 +19,25 @@ Files in `assets/sounds/`, overridable per event via `sound_settings` table (ena
 
 ## Volume levels
 
-Both sliders range from 0 to 200%. Existing settings and defaults keep their
-original loudness through 100%. Above 100%, gain rises linearly to twice the
-original amplitude at 200% (+6.02 dB, not a promise of twice perceived loudness).
-The cap applies even to manually edited configuration values.
+Both sliders range from 0 to 300%. Existing settings and defaults keep their
+original loudness through 100%. Above 100%, gain rises linearly to three times
+the original amplitude at 300% (+9.54 dB, not a promise of three times the
+perceived loudness). The cap applies even to manually edited configuration
+values.
 
 Qt clamps QSoundEffect volume to 0..1. To provide real boost, the app preloads
-`assets/sounds/boosted/` WAVs with exactly twice the original PCM amplitude and
-sets playback volume to the requested gain divided by two. This preserves the
-original samples' effective amplitude at 100%, works without changing sources
-when a slider moves, and adds no audio processing to the capture pipeline.
-`python assets/sounds/generate_boost.py` generates the playback assets from the
-original WAVs and refuses any asset that would clip at 200%; `--check` verifies
-every sample and format field. Run it after regenerating the original pack.
-All nine bundled sounds have sufficient headroom, so no distortion or limiter
-is needed for this gain range. The asset measurements below describe the
-original WAVs at 100%; at 200%, both peak and RMS increase by 6.02 dB.
+`assets/sounds/boosted/` WAVs with exactly three times the original PCM
+amplitude and sets playback volume to the requested gain divided by three. This
+preserves the original samples' effective amplitude at 100%, works without
+changing sources when a slider moves, and adds no audio processing to the
+capture pipeline. `python assets/sounds/generate_boost.py` generates the
+playback assets from the original WAVs and refuses any asset that would clip at
+300%; `--check` verifies every sample and format field. Run it after
+regenerating the original pack. All nine bundled sounds have sufficient
+headroom — the loudest, `replay_saved`, peaks at 31713/32767 after the 3x boost
+— so no distortion or limiter is needed for this gain range. The asset
+measurements below describe the original WAVs at 100%; at 300%, both peak and
+RMS increase by 9.54 dB.
 
 Two levels, chosen by event, not multiplied together:
 

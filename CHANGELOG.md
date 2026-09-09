@@ -6,6 +6,14 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.26] - 2026-09-09
+
+### Changed
+
+- Both sound sliders now reach 300% instead of 200%, giving up to +9.5 dB of
+  real gain. Levels through 100% are unchanged and the bundled sounds still
+  play without clipping at the new maximum.
+
 ## [0.7.25] - 2026-09-09
 
 ### Improved

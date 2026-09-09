@@ -1,16 +1,29 @@
 {
-  "version": "0.7.25",
+  "version": "0.7.26",
   "date": "2026-09-09",
   "sections": [
     {
       "title": "Improved",
       "items": [
-        "Save-replay Hold guidance is now available in all 16 supported languages.",
-        "The translated guidance identifies the controller button and minimum hold duration needed to save a replay."
+        "Both sound sliders now reach 300% instead of 200%, for up to +9.5 dB of extra loudness.",
+        "Settings up to 100% sound exactly as before, and the bundled sounds stay free of distortion at the new maximum."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.25",
+      "date": "2026-09-09",
+      "sections": [
+        {
+          "title": "Improved",
+          "items": [
+            "Save-replay Hold guidance is now available in all 16 supported languages.",
+            "The translated guidance identifies the controller button and minimum hold duration needed to save a replay."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.24",
       "date": "2026-09-09",
@@ -145,19 +158,6 @@
       ]
     },
     {
-      "version": "0.7.14",
-      "date": "2026-09-09",
-      "sections": [
-        {
-          "title": "Fixed",
-          "items": [
-            "GameHQ now asks Windows for permission to hide the yellow recording border and reports the real result instead of always claiming the border is hidden.",
-            "On Windows versions that cannot hide the recording border, the capture status now says so instead of reporting it as hidden."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -191,6 +191,13 @@
     "requested_locale": "es-419",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.26",
+        "source_integrity": "sha256:d6da7511c826452ce849334cb1e4d2fce086ac4278d9cd4f702f665184fe70cf",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.25",
         "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
@@ -264,13 +271,6 @@
       {
         "version": "0.7.15",
         "source_integrity": "sha256:af835f0c2c92aa3d1c2f267230b4703eace61a922e4528796a9bd942d183791e",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.14",
-        "source_integrity": "sha256:ee2a4783511199f0c51953ec0b9557caf6670a93ffd5893e2a8451951b6a7d38",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

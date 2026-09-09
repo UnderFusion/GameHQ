@@ -97,7 +97,7 @@ void SoundEngine::play(const QString& event)
                   m_config->value(ConfigKeys::SoundsCaptureVolume, 100).toInt())
             : SoundLevels::linearAmplitude(
                   m_config->value(ConfigKeys::SoundsVolume, 80).toInt());
-    // Pre-amplified PCM gives genuine +6 dB headroom without exceeding Qt's
+    // Pre-amplified PCM gives genuine +9.5 dB headroom without exceeding Qt's
     // 0..1 playback range. At 100% this reproduces the original asset level.
     effect->setVolume(volume / SoundLevels::assetGain);
     effect->play();

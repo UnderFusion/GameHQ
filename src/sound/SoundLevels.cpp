@@ -30,7 +30,7 @@ QString previewEvent()
 qreal perceptualAmplitude(int percent)
 {
     if (percent > 100)
-        return qBound(100, percent, 200) / 100.0;
+        return qBound(100, percent, 300) / 100.0;
     const qreal slider = qBound(0, percent, 100) / 100.0;
     // Qt's own slider-to-device conversion: the value the user sets is on the
     // logarithmic (perceptual) scale, the device wants linear amplitude.
@@ -42,6 +42,6 @@ qreal perceptualAmplitude(int percent)
 
 qreal linearAmplitude(int percent)
 {
-    return qBound(0, percent, 200) / 100.0;
+    return qBound(0, percent, 300) / 100.0;
 }
 }

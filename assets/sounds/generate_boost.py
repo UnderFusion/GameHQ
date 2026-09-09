@@ -1,4 +1,4 @@
-"""Generate exact 2x PCM assets for 0-200% playback; refuse clipping.
+"""Generate exact 3x PCM assets for 0-300% playback; refuse clipping.
 
 Original WAVs stay unchanged. Run after generate_sounds.py; --check verifies
 all samples and WAV parameters against the original assets without writing.
@@ -24,9 +24,9 @@ def main():
                 raise ValueError(f"{event}: expected uncompressed 16-bit PCM")
             raw = source.readframes(params.nframes)
         samples = [s[0] for s in struct.iter_unpack("<h", raw)]
-        boosted = [s * 2 for s in samples]
+        boosted = [s * 3 for s in samples]
         if not boosted or min(boosted) < -32768 or max(boosted) > 32767:
-            raise ValueError(f"{event}: insufficient headroom for 200%; refusing clipping")
+            raise ValueError(f"{event}: insufficient headroom for 300%; refusing clipping")
         payload = struct.pack(f"<{len(boosted)}h", *boosted)
         path = ROOT / "boosted" / f"{event}.wav"
         if args.check:
@@ -38,7 +38,7 @@ def main():
             with wave.open(str(path), "wb") as result:
                 result.setparams(params)
                 result.writeframes(payload)
-        print(f"{event}: exact 2x PCM, peak {max(abs(s) for s in boosted)}/32768, no clipping")
+        print(f"{event}: exact 3x PCM, peak {max(abs(s) for s in boosted)}/32768, no clipping")
 
 
 if __name__ == "__main__":
