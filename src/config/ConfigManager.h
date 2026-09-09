@@ -2,6 +2,7 @@
 #include <QObject>
 #include <QJsonObject>
 #include <QString>
+#include <QStringList>
 #include <QVariant>
 
 // JSON config (config.json). Flat keys with dotted namespaces, e.g. "capture.mode".
@@ -34,6 +35,8 @@ public:
     bool resetValue(const QString& key);
     bool resetGroup(const QString& prefix);
     bool resetAll();
+    QStringList overriddenKeys(const QString& prefix = {}) const;
+    static QStringList defaultKeys();
 
 signals:
     void valueChanged(const QString& key, const QVariant& value);

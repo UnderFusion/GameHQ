@@ -24,9 +24,21 @@ Low RAM, crash-resistant fMP4 segments, trivial cleanup, replay length equals se
 - `replay.fps` - target frame rate, `30` (default) or `60`. Exposed as the **Frame rate** dropdown in Settings.
 - `replay.resolution` - encode cap, `1280x720` / `1920x1080` (default) / `3840x2160`. Exposed as the **Resolution** dropdown in Settings (720p / 1080p / 4K). Captured frames are fed to Media Foundation with the full source size and this cap as the output size, so conversion/scaling is handled by the sink-writer pipeline instead of a manual CPU loop.
 - `replay.bitrate_mbps` (`14`, not in the UI).
-- Changing a recording-parameter `replay.*` key from Settings re-arms a running buffer immediately (`AppController::replaySettingsChanged` → `FramePumpService::restartBuffer`); otherwise the new values apply on the next auto-arm. `replay.clip_sound` and `replay.clip_notify` are feedback-only and never re-arm the buffer.
+- `SettingsApplyPolicy` is the single restart classifier used by individual changes, individual resets, group resets and reset-all. Unknown forward-compatible keys default to live, while a completeness test requires every built-in default to be listed explicitly.
 - `FramePumpService::recordingStateChanged(active, gameName)` drives `AppController::replayBufferActive`/`replayBufferGame`, shown as a live "Buffer state" row in Replay Settings.
 - `audio.enabled` controls replay AAC capture. When enabled, WASAPI desktop loopback is attached and the audio format becomes part of the cache fingerprint. Audio samples are re-expressed on the video clock (shared QPC epoch) before encoding so the AAC track stays aligned with the frames. If Windows invalidates the render endpoint during an HDR/display transition, the incomplete segment is discarded and the capture pipeline automatically re-arms.
+
+### Settings application policy
+
+| Application | Keys | Effect |
+|---|---|---|
+| Restart replay buffer | `replay.resolution`, `replay.fps`, `replay.bitrate_mbps`, `replay.length_seconds`, `replay.segment_seconds`, `replay.auto`, `audio.enabled` | A running buffer re-arms once with the new recording parameters. |
+| Apply live | `replay.clip_sound`, `replay.clip_notify`, `replay.manual_idle_s` | Feedback changes immediately; the manual idle deadline uses the value on its next evaluation. |
+| Apply live | All `capture.*` keys | Screenshot options affect the next screenshot. `capture.hide_border` affects the next WGC capture session without restarting the current session or buffer. |
+| Apply live | All `sounds.*`, `notifications.*`, `storage.*`, `startup.*`, `tray.*`, `input.*`, `ui.*`, `theme.*` and `updates.*` keys | The owning service or next operation reads the new value without rebuilding the replay pipeline. |
+
+A mixed Replay group reset requests at most one buffer restart. Resetting only
+live Replay keys, or the Sounds, Capture or Notifications groups, requests none.
 
 ## Timing model
 

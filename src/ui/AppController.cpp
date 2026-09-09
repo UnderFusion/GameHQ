@@ -5,6 +5,7 @@
 #include "config/ConfigKeys.h"
 #include "config/ConfigManager.h"
 #include "config/SettingsCategories.h"
+#include "config/SettingsApplyPolicy.h"
 #include "config/Paths.h"
 #include "core/ProcessIdentity.h"
 #include "core/WindowPlacement.h"
@@ -54,16 +55,6 @@ bool parseCaptureKind(const QString& value, CaptureLocations::Kind& kind)
     return false;
 }
 
-// replay.clip_sound / replay.clip_notify only affect the "saved" toast, not the
-// recording pipeline — rearming the buffer for them would discard its ring for
-// no benefit. Every other replay.* key (and audio.enabled) is an actual
-// recording parameter and must re-arm a running buffer to take effect.
-bool isReplayBufferParamKey(const QString& key)
-{
-    if (key == ConfigKeys::ReplayClipSound || key == ConfigKeys::ReplayClipNotify)
-        return false;
-    return key.startsWith(QStringLiteral("replay.")) || key == ConfigKeys::AudioEnabled;
-}
 }
 
 AppController::AppController(CaptureDatabase* db, CaptureScanner* scanner,
@@ -415,9 +406,7 @@ void AppController::setConfig(const QString& key, const QVariant& value)
     }
     m_config->setValue(key, value);
     m_config->save();
-    // A recording buffer armed with the old fps/resolution/length must pick
-    // up the change — App connects this to FramePumpService::restartBuffer.
-    if (isReplayBufferParamKey(key))
+    if (SettingsApplyPolicy::requiresReplayBufferRestart(key))
         emit replaySettingsChanged();
 }
 
@@ -448,12 +437,13 @@ void AppController::resetConfig(const QString& key)
     if (!m_config->resetValue(key))
         return;
     m_config->save();
-    if (isReplayBufferParamKey(key))
+    if (SettingsApplyPolicy::requiresReplayBufferRestart(key))
         emit replaySettingsChanged();
 }
 
 void AppController::resetConfigGroup(const QString& prefix)
 {
+    const QStringList changedKeys = m_config->overriddenKeys(prefix);
     if (prefix == QStringLiteral("startup") || prefix.isEmpty())
         m_startup->setEnabled(false);
     if (prefix == QStringLiteral("storage") || prefix.isEmpty())
@@ -461,8 +451,7 @@ void AppController::resetConfigGroup(const QString& prefix)
     if (!m_config->resetGroup(prefix))
         return;
     m_config->save();
-    if (prefix == QStringLiteral("replay") || prefix == QStringLiteral("audio")
-        || prefix.isEmpty())
+    if (SettingsApplyPolicy::requiresReplayBufferRestart(changedKeys))
         emit replaySettingsChanged();
     if (prefix == QStringLiteral("storage") || prefix.isEmpty())
         rescan();
@@ -470,12 +459,14 @@ void AppController::resetConfigGroup(const QString& prefix)
 
 void AppController::resetAllConfig()
 {
+    const QStringList changedKeys = m_config->overriddenKeys();
     m_startup->setEnabled(false);
     m_locations->preserveCurrentRoots();
     if (!m_config->resetAll())
         return;
     m_config->save();
-    emit replaySettingsChanged();
+    if (SettingsApplyPolicy::requiresReplayBufferRestart(changedKeys))
+        emit replaySettingsChanged();
     rescan();
 }
 

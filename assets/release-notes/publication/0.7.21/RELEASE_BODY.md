@@ -1,19 +1,14 @@
-# GameHQ 0.7.9 (2026-09-08)
+# GameHQ 0.7.21 (2026-09-09)
 
 ## Fixed
 
-- A replay save keeps its recorded segments when the game changes or the buffer restarts. Old files unrelated to the save can still be cleaned up, and closing GameHQ waits for the export to finish safely.
-- Saving two replay clips within the same second no longer replaces the first one. Each clip and preview claims its own file name, and a failed save cannot delete an existing clip.
-
-## Changed
-
-- Release notes in other languages stay in the repository, linked from the release page, so the download list shows the installable packages and verification files.
+- Capture feedback, border, notification and manual replay-idle settings now apply without discarding the replay buffer; only recording parameters re-arm it.
 
 <!-- gamehq:locale-index -->
 
 ## Release notes in other languages
 
-These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.9/assets/release-notes/publication/0.7.9) are kept in the repository; they are not attached to this release as separate downloads.
+These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.21/assets/release-notes/publication/0.7.21) are kept in the repository; they are not attached to this release as separate downloads.
 
 | Language | Locale | Content |
 | --- | --- | --- |

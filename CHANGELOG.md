@@ -6,6 +6,14 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.21] - 2026-09-09
+
+### Fixed
+
+- Capture feedback, border, notification and manual replay-idle settings now
+  apply without discarding the replay buffer. Only recording parameters re-arm
+  it, and restoring a mixed settings group requests at most one restart.
+
 ## [0.7.20] - 2026-09-09
 
 ### Added

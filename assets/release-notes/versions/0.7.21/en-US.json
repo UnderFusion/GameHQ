@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.21",
+  "locale": "en-US",
+  "date": "2026-09-09",
+  "sections": [
+    {
+      "id": "fixed",
+      "title": "Fixed",
+      "items": [
+        {
+          "id": "fixed-settings-buffer-restarts",
+          "text": "Capture feedback, border, notification and manual replay-idle settings now apply without discarding the replay buffer; only recording parameters re-arm it."
+        }
+      ]
+    }
+  ]
+}

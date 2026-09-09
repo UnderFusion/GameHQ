@@ -37,6 +37,13 @@ gamehq_add_test(tst_gameidentity
     tst_gameidentity.cpp
     "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
 
+# p7-1: every built-in key is explicitly live or restart-required. The policy
+# stays pure; group tests prove mixed replay resets request one rebuild only.
+gamehq_add_test(tst_settingsapplypolicy
+    tst_settingsapplypolicy.cpp
+    "${CMAKE_SOURCE_DIR}/src/config/SettingsApplyPolicy.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp")
+
 gamehq_add_test(tst_controllerarbitration
     tst_controllerarbitration.cpp)
 

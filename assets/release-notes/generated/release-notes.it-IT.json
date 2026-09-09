@@ -1,15 +1,27 @@
 {
-  "version": "0.7.20",
+  "version": "0.7.21",
   "date": "2026-09-09",
   "sections": [
     {
-      "title": "Added",
+      "title": "Fixed",
       "items": [
-        "Capture sounds now have their own volume in Settings, separate from the interface volume, and a preview button that plays the real capture sound so the level can be set without taking a screenshot."
+        "Capture feedback, border, notification and manual replay-idle settings now apply without discarding the replay buffer; only recording parameters re-arm it."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.20",
+      "date": "2026-09-09",
+      "sections": [
+        {
+          "title": "Added",
+          "items": [
+            "Capture sounds now have their own volume in Settings, separate from the interface volume, and a preview button that plays the real capture sound so the level can be set without taking a screenshot."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.19",
       "date": "2026-09-09",
@@ -159,25 +171,6 @@
       ]
     },
     {
-      "version": "0.7.9",
-      "date": "2026-09-08",
-      "sections": [
-        {
-          "title": "Fixed",
-          "items": [
-            "A replay save keeps its recorded segments when the game changes or the buffer restarts. Old files unrelated to the save can still be cleaned up, and closing GameHQ waits for the export to finish safely.",
-            "Saving two replay clips within the same second no longer replaces the first one. Each clip and preview claims its own file name, and a failed save cannot delete an existing clip."
-          ]
-        },
-        {
-          "title": "Changed",
-          "items": [
-            "Release notes in other languages stay in the repository, linked from the release page, so the download list shows the installable packages and verification files."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -211,6 +204,13 @@
     "requested_locale": "it-IT",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.21",
+        "source_integrity": "sha256:12ec6b37564b8345af135fa9b21442daff817bc5fe403023d6f445bf82cf0fe3",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.20",
         "source_integrity": "sha256:deef8dd53b615f07af3e66bb1ce275c0e84ece8a5f54149fc334266f90d83424",
@@ -284,13 +284,6 @@
       {
         "version": "0.7.10",
         "source_integrity": "sha256:f124a3689b4a03d3a78ba89c179a06547ca47735c7caa99de2e2fbba4da4d6e8",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.9",
-        "source_integrity": "sha256:94f4946b5a94983a2ddda76cb8cf98f49073f1fa4fa02c5312e484b82492c4eb",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

@@ -81,6 +81,11 @@ QJsonObject ConfigManager::defaults()
     };
 }
 
+QStringList ConfigManager::defaultKeys()
+{
+    return defaults().keys();
+}
+
 bool ConfigManager::load()
 {
     m_overrides = {};
@@ -197,6 +202,21 @@ QVariant ConfigManager::defaultValue(const QString& key, const QVariant& fallbac
 bool ConfigManager::isDefault(const QString& key) const
 {
     return !m_overrides.contains(key);
+}
+
+QStringList ConfigManager::overriddenKeys(const QString& prefix) const
+{
+    if (prefix.isEmpty())
+        return m_overrides.keys();
+
+    const QString normalized = prefix.endsWith(QLatin1Char('.'))
+        ? prefix : prefix + QLatin1Char('.');
+    QStringList keys;
+    for (auto it = m_overrides.constBegin(); it != m_overrides.constEnd(); ++it) {
+        if (it.key().startsWith(normalized))
+            keys.append(it.key());
+    }
+    return keys;
 }
 
 bool ConfigManager::resetValue(const QString& key)

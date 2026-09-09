@@ -23,6 +23,7 @@ qt_add_executable(GameHQ
     config/LegacyMigration.cpp config/LegacyMigration.h
     config/PortableProfileImporter.cpp config/PortableProfileImporter.h
     config/ConfigManager.cpp config/ConfigManager.h
+    config/SettingsApplyPolicy.cpp config/SettingsApplyPolicy.h
     config/CaptureLocations.cpp config/CaptureLocations.h
     core/ApplicationMutex.cpp core/ApplicationMutex.h
     core/ProcessIdentity.cpp core/ProcessIdentity.h
