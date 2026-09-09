@@ -54,24 +54,36 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         """A synthetic pre-release checkout. The lifecycle stage of the real
         repository is not a property these tests may depend on: a finalized
         checkout must exercise the designated contract exactly as a
-        pre-release one does."""
+        pre-release one does.
+
+        Because the real manifest's localization-launch is already a released
+        version (the oldest retained release), the fixture cannot repurpose it
+        as a "designated" launch. Instead it synthesizes a future launch that
+        is strictly newer than the newest released version, copies the complete
+        launch documents (all sixteen locales) into a temporary future-version
+        directory, and rewrites their version/date/integrity consistently while
+        leaving the real released history and its generation/validation rules
+        untouched."""
         temporary, root = self.temporary_sources()
         manifest = GEN.read_json(root / "manifest.json")
-        launch = manifest["localization_launch"]
-        version = launch["version"]
-        launch["date"] = None
-        launch["status"] = "designated"
-        # Model the actual pre-launch history even after later patches ship.
-        for release in manifest["releases"]:
-            if GEN.version_key(release["version"]) >= GEN.version_key(version):
-                shutil.rmtree(root / "publication" / release["version"], ignore_errors=True)
-        manifest["releases"] = [release for release in manifest["releases"]
-                                if GEN.version_key(release["version"]) < GEN.version_key(version)]
+        released = manifest["releases"]
+        # A future designated version: strictly newer than every released version.
+        newest_major, newest_minor, newest_patch = GEN.version_key(released[0]["version"])
+        version = f"{newest_major}.{newest_minor}.{newest_patch + 1}"
+        # The launch documents are authored once and reused for the future
+        # version, so copy the complete set from the current (released) launch.
+        current_launch = manifest["localization_launch"]
+        launch = {**current_launch, "version": version, "date": None,
+                  "status": "designated"}
+        manifest["localization_launch"] = launch
         GEN.write_json(root / "manifest.json", manifest)
 
+        source_version_root = root / "versions" / current_launch["version"]
         version_root = root / "versions" / version
+        shutil.copytree(source_version_root, version_root)
         for path in sorted(version_root.glob("*.json")):
             document = GEN.read_json(path)
+            document["version"] = version
             document["date"] = None
             GEN.write_json(path, document)
         english = GEN.read_json(version_root / "en-US.json")
@@ -87,7 +99,6 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         state["source_integrity"] = integrity
         GEN.write_json(root / "linguistic-state.json", state)
 
-        shutil.rmtree(root / "publication" / version, ignore_errors=True)
         GEN.generate_all(root, root / "generated", check=False)
         return temporary, root
 
@@ -424,6 +435,17 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         major, minor, patch = GEN.version_key(newest["version"])
         later = {**newest, "version": f"{major}.{minor}.{patch + 1}",
                  "localization_policy": "fallback-allowed"}
+        # A normal rolling history window: drop the oldest retained release
+        # before inserting the newest patch so the fixture stays within the
+        # production MAX_HISTORY + 1 bound (do not raise that limit). The
+        # launch entry (the oldest release) must remain in history, so the
+        # oldest non-launch release is the one that rolls off.
+        launch_version = manifest["localization_launch"]["version"]
+        retainable = [release for release in manifest["releases"]
+                      if release["version"] != launch_version]
+        manifest["releases"] = retainable[:-1] + [
+            release for release in manifest["releases"]
+            if release["version"] == launch_version]
         manifest["releases"].insert(0, later)
         self.assertEqual(manifest["releases"], GEN.validate_manifest(manifest, self.locales))
         launch_entry = next(release for release in manifest["releases"]
@@ -517,11 +539,21 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
             "duplicate item ID",
         )
 
+        # A localized document that drops one item from a two-item section must
+        # hit the structure-ID contract ("missing, extra, or reordered"), not the
+        # zero-item guard. Build a two-item English reference and a localized copy
+        # that is missing its second item.
+        english_two = copy.deepcopy(self.releases[0][1])
+        english_two["sections"][0]["items"].append(
+            {"id": "fixed-02", "text": "A second fixed item for structure coverage."})
         localized = self.localized_copy("pl-PL")
+        localized["sections"][0]["items"].append(
+            {"id": "fixed-02", "text": "Drugi naprawiony element."})
+        localized["source_integrity"] = GEN.source_integrity(english_two)
         localized["sections"][0]["items"].pop()
         self.assert_contract_error(
             lambda: GEN.validate_locale_document(
-                localized, "pl-PL", self.releases[0][1], "missing-item"
+                localized, "pl-PL", english_two, "missing-item"
             ),
             "missing, extra, or reordered",
         )
