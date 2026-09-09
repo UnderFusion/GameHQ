@@ -633,7 +633,7 @@
       <translation>The selected folder is invalid.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="363"></location>
+      <location filename="src/ui/AppController.cpp" line="356"></location>
       <source>Choose a local folder.</source>
       <translation>Choose a local folder.</translation>
     </message>
@@ -653,8 +653,8 @@
       <translation>GameHQ could not save the selected folder.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="357"></location>
-      <location filename="src/ui/AppController.cpp" line="379"></location>
+      <location filename="src/ui/AppController.cpp" line="350"></location>
+      <location filename="src/ui/AppController.cpp" line="372"></location>
       <source>The capture type is invalid.</source>
       <translation>The capture type is invalid.</translation>
     </message>
@@ -811,7 +811,7 @@
       <translation>Cannot hash %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="204"></location>
+      <location filename="src/ui/AppController.cpp" line="197"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>Portable profiles can only be imported by an installed copy of GameHQ.</translation>
     </message>
@@ -836,12 +836,12 @@
       <translation>The recovered portable-import journal could not be removed.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="210"></location>
+      <location filename="src/ui/AppController.cpp" line="203"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>Select a local folder containing portable GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="219"></location>
+      <location filename="src/ui/AppController.cpp" line="212"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>The selected folder is not a GameHQ portable package.</translation>
     </message>
@@ -871,12 +871,12 @@
       <translation>A portable:/ path escapes the selected package root.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="230"></location>
+      <location filename="src/ui/AppController.cpp" line="223"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ could not identify its own process for the import.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="240"></location>
+      <location filename="src/ui/AppController.cpp" line="233"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ could not start the portable import process.</translation>
     </message>
@@ -951,7 +951,7 @@
       <translation>Another portable-profile import is already running.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="522"></location>
+      <location filename="src/app/App.cpp" line="602"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>The update was canceled because capture work did not finish safely in time.</translation>
     </message>
@@ -1202,7 +1202,7 @@
       <translation>GameHQ could not publish the update transaction.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="497"></location>
+      <location filename="src/app/App.cpp" line="577"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ could not begin update maintenance: %1</translation>
     </message>
@@ -1418,27 +1418,27 @@ This cannot be undone.</numerusform>
       <translation>%1 Viewer</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="345"></location>
+      <location filename="src/ui/AppController.cpp" line="338"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Check the current HDR state of every display.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="331"></location>
+      <location filename="src/ui/AppController.cpp" line="324"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR is active</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="336"></location>
+      <location filename="src/ui/AppController.cpp" line="329"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR is inactive</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="325"></location>
+      <location filename="src/ui/AppController.cpp" line="318"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>No displays reported by the graphics driver</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="319"></location>
+      <location filename="src/ui/AppController.cpp" line="312"></location>
       <source>Not checked yet</source>
       <translation>Not checked yet</translation>
     </message>
@@ -2105,62 +2105,82 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Support GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="352"></location>
+      <location filename="src/app/App.cpp" line="432"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="359"></location>
+      <location filename="src/app/App.cpp" line="439"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="365"></location>
+      <location filename="src/app/App.cpp" line="445"></location>
       <source>Couldn't delete</source>
       <translation>Couldn't delete</translation>
     </message>
+    <message id="gamehq.notification.capture_lost.body">
+      <location filename="src/app/App.cpp" line="238"></location>
+      <source>It was not added to the library and the file is not on disk.</source>
+      <translation>It was not added to the library and the file is not on disk.</translation>
+    </message>
+    <message id="gamehq.notification.capture_media_only.body">
+      <location filename="src/app/App.cpp" line="232"></location>
+      <source>The file is in your captures folder, but it could not be added to the library.</source>
+      <translation>The file is in your captures folder, but it could not be added to the library.</translation>
+    </message>
+    <message id="gamehq.notification.capture_media_only.title">
+      <location filename="src/app/App.cpp" line="222"></location>
+      <source>Saved to disk, not in library</source>
+      <translation>Saved to disk, not in library</translation>
+    </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="270"></location>
+      <location filename="src/app/App.cpp" line="344"></location>
       <source>Capture request received</source>
       <translation>Capture request received</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="322"></location>
+      <location filename="src/app/App.cpp" line="407"></location>
       <source>Reason: %1</source>
       <translation>Reason: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="328"></location>
+      <location filename="src/app/App.cpp" line="254"></location>
       <source>Replay failed</source>
       <translation>Replay failed</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="265"></location>
+      <location filename="src/app/App.cpp" line="339"></location>
       <source>Replay save requested</source>
       <translation>Replay save requested</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="308"></location>
+      <location filename="src/app/App.cpp" line="388"></location>
       <source>Replay saved</source>
       <translation>Replay saved</translation>
     </message>
+    <message id="gamehq.notification.screenshot_failed.title">
+      <location filename="src/app/App.cpp" line="247"></location>
+      <source>Screenshot failed</source>
+      <translation>Screenshot failed</translation>
+    </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="227"></location>
+      <location filename="src/app/App.cpp" line="289"></location>
       <source>Screenshot saved</source>
       <translation>Screenshot saved</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="405"></location>
+      <location filename="src/app/App.cpp" line="485"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="400"></location>
+      <location filename="src/app/App.cpp" line="480"></location>
       <source>Settings could not be read</source>
       <translation>Settings could not be read</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="561"></location>
+      <location filename="src/app/App.cpp" line="644"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Some interface sounds are unavailable</translation>
     </message>
@@ -2824,6 +2844,16 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Show</source>
       <translation>Show</translation>
     </message>
+    <message id="gamehq.settings.feedback.audio.capture_volume">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
+      <source>Capture volume</source>
+      <translation>Capture volume</translation>
+    </message>
+    <message id="gamehq.settings.feedback.audio.capture_volume.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="71"></location>
+      <source>Level for the screenshot, clip and capture-received sounds heard over a game.</source>
+      <translation>Level for the screenshot, clip and capture-received sounds heard over a game.</translation>
+    </message>
     <message id="gamehq.settings.feedback.audio.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="47"></location>
       <source>Set the master sound switch, volume, and event-specific feedback.</source>
@@ -2845,12 +2875,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Audio feedback</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.replay">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="74"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
       <source>Replay saved sound</source>
       <translation>Replay saved sound</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.screenshot">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
       <source>Screenshot sound</source>
       <translation>Screenshot sound</translation>
     </message>
@@ -2869,43 +2899,48 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Choose how GameHQ confirms captures, clips, and navigation.</source>
       <translation>Choose how GameHQ confirms captures, clips, and navigation.</translation>
     </message>
+    <message id="gamehq.settings.feedback.preview.capture_sound">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="126"></location>
+      <source>Play capture sound</source>
+      <translation>Play capture sound</translation>
+    </message>
     <message id="gamehq.settings.feedback.preview.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="100"></location>
       <source>Preview notifications and sounds without creating a capture.</source>
       <translation>Preview notifications and sounds without creating a capture.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
       <source>Preview</source>
       <translation>Preview</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.label">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="90"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="103"></location>
       <source>Preview feedback</source>
       <translation>Preview feedback</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="108"></location>
       <source>Show test notification</source>
       <translation>Show test notification</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_body">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="101"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="114"></location>
       <source>Notifications are working.</source>
       <translation>Notifications are working.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="99"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="112"></location>
       <source>%1 notification</source>
       <translation>%1 notification</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.sound">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="107"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="120"></location>
       <source>Play test sound</source>
       <translation>Play test sound</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="84"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="97"></location>
       <source>Test the current feedback settings</source>
       <translation>Test the current feedback settings</translation>
     </message>
@@ -4384,7 +4419,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Screenshot</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="122"></location>
+      <location filename="src/ui/AppController.cpp" line="115"></location>
       <source>Release notes</source>
       <translation>Release notes</translation>
     </message>

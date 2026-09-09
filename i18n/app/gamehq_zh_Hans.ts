@@ -641,7 +641,7 @@
       <translation>所选文件夹无效。</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="363"></location>
+      <location filename="src/ui/AppController.cpp" line="356"></location>
       <source>Choose a local folder.</source>
       <translation>请选择一个本地文件夹。</translation>
     </message>
@@ -661,8 +661,8 @@
       <translation>GameHQ 无法保存所选文件夹。</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="357"></location>
-      <location filename="src/ui/AppController.cpp" line="379"></location>
+      <location filename="src/ui/AppController.cpp" line="350"></location>
+      <location filename="src/ui/AppController.cpp" line="372"></location>
       <source>The capture type is invalid.</source>
       <translation>捕获类型无效。</translation>
     </message>
@@ -819,7 +819,7 @@
       <translation>无法计算 %1 的哈希值。</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="204"></location>
+      <location filename="src/ui/AppController.cpp" line="197"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>便携配置文件只能由已安装的 GameHQ 副本导入。</translation>
     </message>
@@ -844,12 +844,12 @@
       <translation>无法删除已恢复的便携导入日志。</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="210"></location>
+      <location filename="src/ui/AppController.cpp" line="203"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>请选择包含便携版 GameHQ 的本地文件夹。</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="219"></location>
+      <location filename="src/ui/AppController.cpp" line="212"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>所选文件夹不是 GameHQ 便携包。</translation>
     </message>
@@ -879,12 +879,12 @@
       <translation>portable:/ 路径超出了所选的包根目录。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="230"></location>
+      <location filename="src/ui/AppController.cpp" line="223"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ 无法为导入识别自身进程。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="240"></location>
+      <location filename="src/ui/AppController.cpp" line="233"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ 无法启动便携导入进程。</translation>
     </message>
@@ -959,7 +959,7 @@
       <translation>已有另一个便携配置文件导入正在运行。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="522"></location>
+      <location filename="src/app/App.cpp" line="602"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>由于捕获任务未能及时安全完成，更新已取消。</translation>
     </message>
@@ -1210,7 +1210,7 @@
       <translation>GameHQ 无法发布更新事务。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="497"></location>
+      <location filename="src/app/App.cpp" line="577"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ 无法开始更新维护：%1</translation>
     </message>
@@ -1423,27 +1423,27 @@ This cannot be undone.</source>
       <translation>%1 查看器</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="345"></location>
+      <location filename="src/ui/AppController.cpp" line="338"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>检查每个显示器的当前 HDR 状态。</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="331"></location>
+      <location filename="src/ui/AppController.cpp" line="324"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR 已启用</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="336"></location>
+      <location filename="src/ui/AppController.cpp" line="329"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR 未启用</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="325"></location>
+      <location filename="src/ui/AppController.cpp" line="318"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>图形驱动程序未报告任何显示器</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="319"></location>
+      <location filename="src/ui/AppController.cpp" line="312"></location>
       <source>Not checked yet</source>
       <translation>尚未检查</translation>
     </message>
@@ -2110,64 +2110,84 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>支持 GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="352"></location>
+      <location filename="src/app/App.cpp" line="432"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>部分文件无法删除。它们可能正被其他程序使用。请关闭正在使用这些文件的程序后重试。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="359"></location>
+      <location filename="src/app/App.cpp" line="439"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>无法删除该文件。它可能正被其他程序使用。请关闭正在使用该文件的程序后重试。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="365"></location>
+      <location filename="src/app/App.cpp" line="445"></location>
       <source>Couldn't delete</source>
       <translation>无法删除</translation>
     </message>
+    <message id="gamehq.notification.capture_lost.body">
+      <location filename="src/app/App.cpp" line="238"></location>
+      <source>It was not added to the library and the file is not on disk.</source>
+      <translation>未添加到媒体库，磁盘上也没有该文件。</translation>
+    </message>
+    <message id="gamehq.notification.capture_media_only.body">
+      <location filename="src/app/App.cpp" line="232"></location>
+      <source>The file is in your captures folder, but it could not be added to the library.</source>
+      <translation>文件位于你的捕获文件夹中，但无法添加到媒体库。</translation>
+    </message>
+    <message id="gamehq.notification.capture_media_only.title">
+      <location filename="src/app/App.cpp" line="222"></location>
+      <source>Saved to disk, not in library</source>
+      <translation>已保存到磁盘，未加入媒体库</translation>
+    </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="270"></location>
+      <location filename="src/app/App.cpp" line="344"></location>
       <source>Capture request received</source>
       <translation>已收到捕获请求</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="322"></location>
+      <location filename="src/app/App.cpp" line="407"></location>
       <source>Reason: %1</source>
       <translation>原因：%1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="328"></location>
+      <location filename="src/app/App.cpp" line="254"></location>
       <source>Replay failed</source>
       <translation>回放失败</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="265"></location>
+      <location filename="src/app/App.cpp" line="339"></location>
       <source>Replay save requested</source>
       <translation>已请求保存回放</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="308"></location>
+      <location filename="src/app/App.cpp" line="388"></location>
       <source>Replay saved</source>
       <translation>回放已保存</translation>
     </message>
+    <message id="gamehq.notification.screenshot_failed.title">
+      <location filename="src/app/App.cpp" line="247"></location>
+      <source>Screenshot failed</source>
+      <translation>屏幕截图失败</translation>
+    </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="227"></location>
+      <location filename="src/app/App.cpp" line="289"></location>
       <source>Screenshot saved</source>
       <translation>屏幕截图已保存</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="405"></location>
+      <location filename="src/app/App.cpp" line="485"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 已使用默认设置启动。系统保留了之前的设置文件，因此没有丢失任何内容。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="400"></location>
+      <location filename="src/app/App.cpp" line="480"></location>
       <source>Settings could not be read</source>
       <translation>无法读取设置</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="561"></location>
+      <location filename="src/app/App.cpp" line="644"></location>
       <source>Some interface sounds are unavailable</source>
-      <translation type="unfinished"></translation>
+      <translation>部分界面声音不可用</translation>
     </message>
     <message id="gamehq.notifications.window_title">
       <location filename="src/ui/qml/ToastWindow.qml" line="18"></location>
@@ -2225,7 +2245,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="122"></location>
+      <location filename="src/ui/AppController.cpp" line="115"></location>
       <source>Release notes</source>
       <translation>发布说明</translation>
     </message>
@@ -2585,47 +2605,47 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.capture.border.denied">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="35"></location>
       <source>Windows did not allow border suppression for this session.</source>
-      <translation type="unfinished"></translation>
+      <translation>Windows 未允许在本次会话中隐藏边框。</translation>
     </message>
     <message id="gamehq.settings.capture.border.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="76"></location>
       <source>Requests border suppression where Windows supports it. Windows 10 does not support this.</source>
-      <translation type="unfinished"></translation>
+      <translation>在 Windows 支持时请求隐藏边框。Windows 10 不支持此功能。</translation>
     </message>
     <message id="gamehq.settings.capture.border.hidden">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="29"></location>
       <source>Windows reports border suppression active. A visible border may still remain.</source>
-      <translation type="unfinished"></translation>
+      <translation>Windows 报告边框隐藏已生效。可见的边框仍可能存在。</translation>
     </message>
     <message id="gamehq.settings.capture.border.next_session">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="81"></location>
       <source>Applies to the next capture session. Changing this leaves the current session and replay buffer running.</source>
-      <translation type="unfinished"></translation>
+      <translation>在下次捕获会话中生效。更改此项不会中断当前会话和回放缓冲区。</translation>
     </message>
     <message id="gamehq.settings.capture.border.not_requested">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="38"></location>
       <source>Border suppression was not requested for this session.</source>
-      <translation type="unfinished"></translation>
+      <translation>本次会话未请求隐藏边框。</translation>
     </message>
     <message id="gamehq.settings.capture.border.title">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="74"></location>
       <source>Windows capture border</source>
-      <translation type="unfinished"></translation>
+      <translation>Windows 捕获边框</translation>
     </message>
     <message id="gamehq.settings.capture.border.toggle">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="79"></location>
       <source>Request border suppression</source>
-      <translation type="unfinished"></translation>
+      <translation>请求隐藏边框</translation>
     </message>
     <message id="gamehq.settings.capture.border.unknown">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="41"></location>
       <source>Border suppression is unconfirmed, or no capture session is active.</source>
-      <translation type="unfinished"></translation>
+      <translation>边框隐藏尚未确认，或没有正在进行的捕获会话。</translation>
     </message>
     <message id="gamehq.settings.capture.border.unsupported">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="32"></location>
       <source>This Windows version or capture session does not support border suppression.</source>
-      <translation type="unfinished"></translation>
+      <translation>此 Windows 版本或捕获会话不支持隐藏边框。</translation>
     </message>
     <message id="gamehq.settings.capture.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="12"></location>
@@ -2834,6 +2854,16 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Show</source>
       <translation>显示</translation>
     </message>
+    <message id="gamehq.settings.feedback.audio.capture_volume">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
+      <source>Capture volume</source>
+      <translation>捕获音量</translation>
+    </message>
+    <message id="gamehq.settings.feedback.audio.capture_volume.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="71"></location>
+      <source>Level for the screenshot, clip and capture-received sounds heard over a game.</source>
+      <translation>在游戏中听到的屏幕截图、片段和捕获受理声音的音量。</translation>
+    </message>
     <message id="gamehq.settings.feedback.audio.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="47"></location>
       <source>Set the master sound switch, volume, and event-specific feedback.</source>
@@ -2855,12 +2885,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>音频反馈</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.replay">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="74"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
       <source>Replay saved sound</source>
       <translation>回放保存声音</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.screenshot">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
       <source>Screenshot sound</source>
       <translation>屏幕截图声音</translation>
     </message>
@@ -2879,43 +2909,48 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Choose how GameHQ confirms captures, clips, and navigation.</source>
       <translation>选择 GameHQ 如何确认捕获、片段和导航操作。</translation>
     </message>
+    <message id="gamehq.settings.feedback.preview.capture_sound">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="126"></location>
+      <source>Play capture sound</source>
+      <translation>播放捕获声音</translation>
+    </message>
     <message id="gamehq.settings.feedback.preview.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="100"></location>
       <source>Preview notifications and sounds without creating a capture.</source>
       <translation>在不创建捕获内容的情况下预览通知和声音。</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
       <source>Preview</source>
       <translation>预览</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.label">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="90"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="103"></location>
       <source>Preview feedback</source>
       <translation>预览反馈</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="108"></location>
       <source>Show test notification</source>
       <translation>显示测试通知</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_body">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="101"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="114"></location>
       <source>Notifications are working.</source>
       <translation>通知功能正常。</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="99"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="112"></location>
       <source>%1 notification</source>
       <translation>%1 通知</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.sound">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="107"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="120"></location>
       <source>Play test sound</source>
       <translation>播放测试声音</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="84"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="97"></location>
       <source>Test the current feedback settings</source>
       <translation>测试当前的反馈设置</translation>
     </message>

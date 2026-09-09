@@ -6,6 +6,14 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.22] - 2026-09-09
+
+### Fixed
+
+- The Windows capture border settings, the new capture and screenshot
+  notifications and the capture sound controls are now translated in all
+  sixteen locales instead of falling back to English.
+
 ## [0.7.21] - 2026-09-09
 
 ### Fixed

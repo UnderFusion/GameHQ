@@ -643,7 +643,7 @@
       <translation>La cartella selezionata non è valida.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="363"></location>
+      <location filename="src/ui/AppController.cpp" line="356"></location>
       <source>Choose a local folder.</source>
       <translation>Scegli una cartella locale.</translation>
     </message>
@@ -663,8 +663,8 @@
       <translation>GameHQ non è riuscito a salvare la cartella selezionata.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="357"></location>
-      <location filename="src/ui/AppController.cpp" line="379"></location>
+      <location filename="src/ui/AppController.cpp" line="350"></location>
+      <location filename="src/ui/AppController.cpp" line="372"></location>
       <source>The capture type is invalid.</source>
       <translation>Il tipo di acquisizione non è valido.</translation>
     </message>
@@ -821,7 +821,7 @@
       <translation>Impossibile calcolare l'hash di %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="204"></location>
+      <location filename="src/ui/AppController.cpp" line="197"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>I profili portatili possono essere importati solo da una copia installata di GameHQ.</translation>
     </message>
@@ -846,12 +846,12 @@
       <translation>Impossibile rimuovere il journal dell'importazione portatile recuperata.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="210"></location>
+      <location filename="src/ui/AppController.cpp" line="203"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>Seleziona una cartella locale che contenga GameHQ in versione portatile.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="219"></location>
+      <location filename="src/ui/AppController.cpp" line="212"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>La cartella selezionata non è un pacchetto portatile di GameHQ.</translation>
     </message>
@@ -881,12 +881,12 @@
       <translation>Un percorso portable:/ esce dalla radice del pacchetto selezionato.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="230"></location>
+      <location filename="src/ui/AppController.cpp" line="223"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ non è riuscito a identificare il proprio processo per l'importazione.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="240"></location>
+      <location filename="src/ui/AppController.cpp" line="233"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ non è riuscito ad avviare il processo di importazione portatile.</translation>
     </message>
@@ -961,7 +961,7 @@
       <translation>È già in corso un'altra importazione di profilo portatile.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="522"></location>
+      <location filename="src/app/App.cpp" line="602"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>L'aggiornamento è stato annullato perché le operazioni di acquisizione non si sono concluse in sicurezza in tempo.</translation>
     </message>
@@ -1212,7 +1212,7 @@
       <translation>GameHQ non è riuscito a rendere definitiva la transazione di aggiornamento.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="497"></location>
+      <location filename="src/app/App.cpp" line="577"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ non è riuscito ad avviare la manutenzione di aggiornamento: %1</translation>
     </message>
@@ -1428,27 +1428,27 @@ Questa operazione non può essere annullata.</numerusform>
       <translation>Visualizzatore di %1</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="345"></location>
+      <location filename="src/ui/AppController.cpp" line="338"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Controlla lo stato HDR attuale di ogni schermo.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="331"></location>
+      <location filename="src/ui/AppController.cpp" line="324"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR è attivo</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="336"></location>
+      <location filename="src/ui/AppController.cpp" line="329"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR è inattivo</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="325"></location>
+      <location filename="src/ui/AppController.cpp" line="318"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>Nessuno schermo segnalato dal driver grafico</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="319"></location>
+      <location filename="src/ui/AppController.cpp" line="312"></location>
       <source>Not checked yet</source>
       <translation>Non ancora controllato</translation>
     </message>
@@ -2115,64 +2115,84 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Sostieni GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="352"></location>
+      <location filename="src/app/App.cpp" line="432"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Impossibile eliminare alcuni file. Potrebbero essere in uso da altri programmi. Chiudi i programmi che li stanno usando e riprova.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="359"></location>
+      <location filename="src/app/App.cpp" line="439"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Impossibile eliminare il file. Potrebbe essere in uso da un altro programma. Chiudi il programma che lo sta usando e riprova.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="365"></location>
+      <location filename="src/app/App.cpp" line="445"></location>
       <source>Couldn't delete</source>
       <translation>Impossibile eliminare</translation>
     </message>
+    <message id="gamehq.notification.capture_lost.body">
+      <location filename="src/app/App.cpp" line="238"></location>
+      <source>It was not added to the library and the file is not on disk.</source>
+      <translation>Non è stata aggiunta alla libreria e il file non è presente sul disco.</translation>
+    </message>
+    <message id="gamehq.notification.capture_media_only.body">
+      <location filename="src/app/App.cpp" line="232"></location>
+      <source>The file is in your captures folder, but it could not be added to the library.</source>
+      <translation>Il file si trova nella cartella delle acquisizioni, ma non è stato possibile aggiungerlo alla libreria.</translation>
+    </message>
+    <message id="gamehq.notification.capture_media_only.title">
+      <location filename="src/app/App.cpp" line="222"></location>
+      <source>Saved to disk, not in library</source>
+      <translation>Salvato su disco, non in libreria</translation>
+    </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="270"></location>
+      <location filename="src/app/App.cpp" line="344"></location>
       <source>Capture request received</source>
       <translation>Richiesta di cattura ricevuta</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="322"></location>
+      <location filename="src/app/App.cpp" line="407"></location>
       <source>Reason: %1</source>
       <translation>Motivo: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="328"></location>
+      <location filename="src/app/App.cpp" line="254"></location>
       <source>Replay failed</source>
       <translation>Replay non riuscito</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="265"></location>
+      <location filename="src/app/App.cpp" line="339"></location>
       <source>Replay save requested</source>
       <translation>Salvataggio del replay richiesto</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="308"></location>
+      <location filename="src/app/App.cpp" line="388"></location>
       <source>Replay saved</source>
       <translation>Replay salvato</translation>
     </message>
+    <message id="gamehq.notification.screenshot_failed.title">
+      <location filename="src/app/App.cpp" line="247"></location>
+      <source>Screenshot failed</source>
+      <translation>Screenshot non riuscito</translation>
+    </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="227"></location>
+      <location filename="src/app/App.cpp" line="289"></location>
       <source>Screenshot saved</source>
       <translation>Screenshot salvato</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="405"></location>
+      <location filename="src/app/App.cpp" line="485"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ è stato avviato con le impostazioni predefinite. Il file delle impostazioni precedenti è stato conservato, quindi non è andato perso nulla.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="400"></location>
+      <location filename="src/app/App.cpp" line="480"></location>
       <source>Settings could not be read</source>
       <translation>Impossibile leggere le impostazioni</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="561"></location>
+      <location filename="src/app/App.cpp" line="644"></location>
       <source>Some interface sounds are unavailable</source>
-      <translation type="unfinished"></translation>
+      <translation>Alcuni suoni dell’interfaccia non sono disponibili</translation>
     </message>
     <message id="gamehq.notifications.window_title">
       <location filename="src/ui/qml/ToastWindow.qml" line="18"></location>
@@ -2230,7 +2250,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="122"></location>
+      <location filename="src/ui/AppController.cpp" line="115"></location>
       <source>Release notes</source>
       <translation>Note di rilascio</translation>
     </message>
@@ -2590,47 +2610,47 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.settings.capture.border.denied">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="35"></location>
       <source>Windows did not allow border suppression for this session.</source>
-      <translation type="unfinished"></translation>
+      <translation>Windows non ha consentito la soppressione del bordo per questa sessione.</translation>
     </message>
     <message id="gamehq.settings.capture.border.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="76"></location>
       <source>Requests border suppression where Windows supports it. Windows 10 does not support this.</source>
-      <translation type="unfinished"></translation>
+      <translation>Richiede la soppressione del bordo dove Windows la supporta. Windows 10 non la supporta.</translation>
     </message>
     <message id="gamehq.settings.capture.border.hidden">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="29"></location>
       <source>Windows reports border suppression active. A visible border may still remain.</source>
-      <translation type="unfinished"></translation>
+      <translation>Windows segnala la soppressione del bordo come attiva. Un bordo visibile potrebbe comunque rimanere.</translation>
     </message>
     <message id="gamehq.settings.capture.border.next_session">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="81"></location>
       <source>Applies to the next capture session. Changing this leaves the current session and replay buffer running.</source>
-      <translation type="unfinished"></translation>
+      <translation>Si applica alla prossima sessione di acquisizione. La modifica lascia attive la sessione corrente e il buffer del replay.</translation>
     </message>
     <message id="gamehq.settings.capture.border.not_requested">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="38"></location>
       <source>Border suppression was not requested for this session.</source>
-      <translation type="unfinished"></translation>
+      <translation>La soppressione del bordo non è stata richiesta per questa sessione.</translation>
     </message>
     <message id="gamehq.settings.capture.border.title">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="74"></location>
       <source>Windows capture border</source>
-      <translation type="unfinished"></translation>
+      <translation>Bordo di acquisizione di Windows</translation>
     </message>
     <message id="gamehq.settings.capture.border.toggle">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="79"></location>
       <source>Request border suppression</source>
-      <translation type="unfinished"></translation>
+      <translation>Richiedi la soppressione del bordo</translation>
     </message>
     <message id="gamehq.settings.capture.border.unknown">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="41"></location>
       <source>Border suppression is unconfirmed, or no capture session is active.</source>
-      <translation type="unfinished"></translation>
+      <translation>La soppressione del bordo non è confermata oppure non è attiva alcuna sessione di acquisizione.</translation>
     </message>
     <message id="gamehq.settings.capture.border.unsupported">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="32"></location>
       <source>This Windows version or capture session does not support border suppression.</source>
-      <translation type="unfinished"></translation>
+      <translation>Questa versione di Windows o questa sessione di acquisizione non supporta la soppressione del bordo.</translation>
     </message>
     <message id="gamehq.settings.capture.description">
       <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="12"></location>
@@ -2839,6 +2859,16 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <source>Show</source>
       <translation>Mostra</translation>
     </message>
+    <message id="gamehq.settings.feedback.audio.capture_volume">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
+      <source>Capture volume</source>
+      <translation>Volume dell’acquisizione</translation>
+    </message>
+    <message id="gamehq.settings.feedback.audio.capture_volume.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="71"></location>
+      <source>Level for the screenshot, clip and capture-received sounds heard over a game.</source>
+      <translation>Livello dei suoni di screenshot, clip e acquisizione ricevuta uditi sopra un gioco.</translation>
+    </message>
     <message id="gamehq.settings.feedback.audio.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="47"></location>
       <source>Set the master sound switch, volume, and event-specific feedback.</source>
@@ -2860,12 +2890,12 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Riscontro sonoro</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.replay">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="74"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
       <source>Replay saved sound</source>
       <translation>Suono del replay salvato</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.screenshot">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
       <source>Screenshot sound</source>
       <translation>Suono dello screenshot</translation>
     </message>
@@ -2884,43 +2914,48 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <source>Choose how GameHQ confirms captures, clips, and navigation.</source>
       <translation>Scegli come GameHQ conferma acquisizioni, clip e navigazione.</translation>
     </message>
+    <message id="gamehq.settings.feedback.preview.capture_sound">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="126"></location>
+      <source>Play capture sound</source>
+      <translation>Riproduci il suono di acquisizione</translation>
+    </message>
     <message id="gamehq.settings.feedback.preview.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="100"></location>
       <source>Preview notifications and sounds without creating a capture.</source>
       <translation>Prova notifiche e suoni senza creare un'acquisizione.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
       <source>Preview</source>
       <translation>Anteprima</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.label">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="90"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="103"></location>
       <source>Preview feedback</source>
       <translation>Prova il riscontro</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="108"></location>
       <source>Show test notification</source>
       <translation>Mostra una notifica di prova</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_body">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="101"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="114"></location>
       <source>Notifications are working.</source>
       <translation>Le notifiche stanno funzionando.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="99"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="112"></location>
       <source>%1 notification</source>
       <translation>Notifica di %1</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.sound">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="107"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="120"></location>
       <source>Play test sound</source>
       <translation>Riproduci un suono di prova</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="84"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="97"></location>
       <source>Test the current feedback settings</source>
       <translation>Prova le impostazioni di riscontro attuali</translation>
     </message>

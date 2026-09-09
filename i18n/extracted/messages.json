@@ -2217,7 +2217,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 363
+          "line": 356
         }
       ],
       "plural": false,
@@ -2289,11 +2289,11 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 357
+          "line": 350
         },
         {
           "file": "src/ui/AppController.cpp",
-          "line": 379
+          "line": 372
         }
       ],
       "plural": false,
@@ -2850,7 +2850,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 204
+          "line": 197
         }
       ],
       "plural": false,
@@ -2937,7 +2937,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 210
+          "line": 203
         }
       ],
       "plural": false,
@@ -2956,7 +2956,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 219
+          "line": 212
         }
       ],
       "plural": false,
@@ -3060,7 +3060,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 230
+          "line": 223
         }
       ],
       "plural": false,
@@ -3079,7 +3079,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 240
+          "line": 233
         }
       ],
       "plural": false,
@@ -3345,7 +3345,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 522
+          "line": 602
         }
       ],
       "plural": false,
@@ -4255,7 +4255,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 497
+          "line": 577
         }
       ],
       "plural": false,
@@ -4998,7 +4998,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 345
+          "line": 338
         }
       ],
       "plural": false,
@@ -5015,7 +5015,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 331
+          "line": 324
         }
       ],
       "plural": false,
@@ -5032,7 +5032,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 336
+          "line": 329
         }
       ],
       "plural": false,
@@ -5049,7 +5049,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 325
+          "line": 318
         }
       ],
       "plural": false,
@@ -5066,7 +5066,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 319
+          "line": 312
         }
       ],
       "plural": false,
@@ -7378,7 +7378,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 352
+          "line": 432
         }
       ],
       "plural": false,
@@ -7395,7 +7395,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 359
+          "line": 439
         }
       ],
       "plural": false,
@@ -7412,7 +7412,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 365
+          "line": 445
         }
       ],
       "plural": false,
@@ -7422,6 +7422,57 @@
       "source_hash": "21d8d5429f00e9e3563b1803f381b14f771ed7aa21a7ac58cfff64ab5824520c"
     },
     {
+      "id": "gamehq.notification.capture_lost.body",
+      "source": "It was not added to the library and the file is not on disk.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 238
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "70f15a1f370f36b7ae94c36f7554d7f52a2851b84bd9ec34f651d0f0db3ba819"
+    },
+    {
+      "id": "gamehq.notification.capture_media_only.body",
+      "source": "The file is in your captures folder, but it could not be added to the library.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 232
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "24172ec755fb25eba2e71647ce6cb1c03c19b1ae3169fe820e0e10e2f2181e54"
+    },
+    {
+      "id": "gamehq.notification.capture_media_only.title",
+      "source": "Saved to disk, not in library",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 222
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "325239770a27469c01e08ea81ff86629b5cb52ce27d016b2fc1b1c79a29a202d"
+    },
+    {
       "id": "gamehq.notification.capture_requested.title",
       "source": "Capture request received",
       "context": "ID",
@@ -7429,7 +7480,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 270
+          "line": 344
         }
       ],
       "plural": false,
@@ -7446,7 +7497,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 322
+          "line": 407
         }
       ],
       "plural": false,
@@ -7465,7 +7516,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 328
+          "line": 254
         }
       ],
       "plural": false,
@@ -7482,7 +7533,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 265
+          "line": 339
         }
       ],
       "plural": false,
@@ -7499,7 +7550,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 308
+          "line": 388
         }
       ],
       "plural": false,
@@ -7509,6 +7560,23 @@
       "source_hash": "51884f334bd43b288a81f4d1380315616704f3104e581b63941881a6f406cdd4"
     },
     {
+      "id": "gamehq.notification.screenshot_failed.title",
+      "source": "Screenshot failed",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 247
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f60cb0e0cb16f7a2b36b4f0e6c64a2057b6aa27d22f91e9d5a3e8cc31558171c"
+    },
+    {
       "id": "gamehq.notification.screenshot_saved.title",
       "source": "Screenshot saved",
       "context": "ID",
@@ -7516,7 +7584,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 227
+          "line": 289
         }
       ],
       "plural": false,
@@ -7533,7 +7601,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 405
+          "line": 485
         }
       ],
       "plural": false,
@@ -7552,7 +7620,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 400
+          "line": 480
         }
       ],
       "plural": false,
@@ -7569,7 +7637,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 561
+          "line": 644
         }
       ],
       "plural": false,
@@ -7780,7 +7848,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 122
+          "line": 115
         }
       ],
       "plural": false,
@@ -9871,6 +9939,40 @@
       "source_hash": "f07e5c76029895cb384cc673232fd8899a283dc571ea199e30f5d8441f6eca60"
     },
     {
+      "id": "gamehq.settings.feedback.audio.capture_volume",
+      "source": "Capture volume",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/FeedbackSettingsPage.qml",
+          "line": 69
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f82d2aad7e404f36f7561b96a342d66656445235583655cf54df265e396e9fe2"
+    },
+    {
+      "id": "gamehq.settings.feedback.audio.capture_volume.description",
+      "source": "Level for the screenshot, clip and capture-received sounds heard over a game.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/FeedbackSettingsPage.qml",
+          "line": 71
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b070facf66d8c66e653547da81bff1a5b5541d902d54eafa8ebcbe35f299fdbd"
+    },
+    {
       "id": "gamehq.settings.feedback.audio.description",
       "source": "Set the master sound switch, volume, and event-specific feedback.",
       "context": "ID",
@@ -9946,7 +10048,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/FeedbackSettingsPage.qml",
-          "line": 74
+          "line": 87
         }
       ],
       "plural": false,
@@ -9963,7 +10065,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/FeedbackSettingsPage.qml",
-          "line": 69
+          "line": 82
         }
       ],
       "plural": false,
@@ -10026,6 +10128,23 @@
       "source_hash": "78ca9101024ef0c27fb8e4e0b5aca5f7f54b475f33a94232ad49544c8ded8f66"
     },
     {
+      "id": "gamehq.settings.feedback.preview.capture_sound",
+      "source": "Play capture sound",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/FeedbackSettingsPage.qml",
+          "line": 126
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a102a03fbfc98db21892096bc513654bd6de18024c9ac15a013e8debfbb015ad"
+    },
+    {
       "id": "gamehq.settings.feedback.preview.description",
       "source": "Preview notifications and sounds without creating a capture.",
       "context": "ID",
@@ -10033,7 +10152,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/FeedbackSettingsPage.qml",
-          "line": 87
+          "line": 100
         }
       ],
       "plural": false,
@@ -10050,7 +10169,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/FeedbackSettingsPage.qml",
-          "line": 82
+          "line": 95
         }
       ],
       "plural": false,
@@ -10067,7 +10186,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/FeedbackSettingsPage.qml",
-          "line": 90
+          "line": 103
         }
       ],
       "plural": false,
@@ -10084,7 +10203,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/FeedbackSettingsPage.qml",
-          "line": 95
+          "line": 108
         }
       ],
       "plural": false,
@@ -10101,7 +10220,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/FeedbackSettingsPage.qml",
-          "line": 101
+          "line": 114
         }
       ],
       "plural": false,
@@ -10118,7 +10237,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/FeedbackSettingsPage.qml",
-          "line": 99
+          "line": 112
         }
       ],
       "plural": false,
@@ -10137,7 +10256,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/FeedbackSettingsPage.qml",
-          "line": 107
+          "line": 120
         }
       ],
       "plural": false,
@@ -10154,7 +10273,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/FeedbackSettingsPage.qml",
-          "line": 84
+          "line": 97
         }
       ],
       "plural": false,

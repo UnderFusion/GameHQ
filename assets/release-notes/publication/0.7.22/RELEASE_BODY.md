@@ -1,15 +1,14 @@
-# GameHQ 0.7.10 (2026-09-08)
+# GameHQ 0.7.22 (2026-09-09)
 
 ## Fixed
 
-- Replay status now reflects successful capture startup and finalized footage. Saving before the buffer is ready gives an explicit retry message, and older callbacks cannot overwrite a newer recording session.
-- With always-on replay disabled, a manual save keeps its buffer through settings changes and HDR screenshot activity until the save finishes. A first save that only starts the buffer expires after 90 seconds without a follow-up, so manual mode does not record indefinitely.
+- The capture border settings, the new capture notifications and the capture sound controls now appear in your own language instead of English.
 
 <!-- gamehq:locale-index -->
 
 ## Release notes in other languages
 
-These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.10/assets/release-notes/publication/0.7.10) are kept in the repository; they are not attached to this release as separate downloads.
+These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.22/assets/release-notes/publication/0.7.22) are kept in the repository; they are not attached to this release as separate downloads.
 
 | Language | Locale | Content |
 | --- | --- | --- |
