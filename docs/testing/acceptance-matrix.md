@@ -1,15 +1,16 @@
-# Acceptance Matrix — Feedback Reliability Wave (M02-M12)
+# Acceptance Matrix — Feedback Reliability Wave (M01-M12)
 
 Maps each acceptance criterion from the 2026-09-08 feedback-reliability wave to
 the executable test (or tests) that prove it, plus any residual observation that
-can only be made on real hardware. M01 (View/Back request-id trace) belongs to
-the sibling input item and is deliberately excluded here.
+can only be made on real hardware. M01 covers the synthetic controller request
+path; physical controller acceptance remains a separate reporter evidence task.
 
 Every automated case below is exercised by a committed ctest target. The full
 gate is `tools/cmake/bin/ctest.exe --test-dir out --output-on-failure`.
 
-Full-gate result recorded during this audit:
-`out/acceptance-gate-M02-M12.log` — **100% tests passed, 0 failed out of 92**.
+Full-gate result after adding synthetic M01 coverage:
+`out/controllerclip-full-gate.log` — **100% tests passed, 0 failed out of 93**
+(2026-09-09, 218.42 seconds).
 
 ## How to read this matrix
 
@@ -27,6 +28,26 @@ stays in `review` for exactly that reason: no game window was available when the
 implementation landed, and deterministic tests plus a desktop smoke run are not
 live replay evidence. Do not mark M02-M05 passed until the live evidence below
 is collected.
+
+## M01 — synthetic controller-to-clip request continuity
+
+Automated contract coverage: `tst_controllerclip_e2e` drives synthetic XInput
+edges through real `InputEngine`, `ProviderIntegration`, `BindingRuntime`, and
+`FramePumpService` receipt/rejection handling. It covers Tap, Hold below/at/above
+the configured threshold, a live hold firing once, exact and correlated provider
+profiles, isolated same-model endpoints, legacy Capture fallback, and explicit
+View binding precedence without duplication. Real-timer boundary cases allow
+Windows timer delivery delay; they do not prove an exact millisecond boundary.
+
+The replay receipt and not-ready/busy failures retain the controller request ID.
+Receipt means acknowledgment, not successful clip publication. The fixture seeds
+readiness/ownership facts without starting game capture and keeps worker cache
+data in its own portable test directory. Qt results: `out/tests/controllerclip/results.txt`.
+
+**Residual reporter acceptance (unverified → p7-4):** physical 8BitDo behavior,
+playable clip publication, and visible feedback require beta/reporter evidence.
+The owner does not own this hardware; documented non-reproduction is a valid
+reporter outcome. No physical 8BitDo validation is claimed by this test.
 
 ## M02 — two saves inside one second produce two files; the first is byte-identical afterwards
 

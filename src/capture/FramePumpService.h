@@ -185,6 +185,7 @@ private slots:
 
 private:
     void startBuffer(bool rearm = false); // re-arm retains the owned target
+    friend class ControllerClipE2ETest;
     void stopBuffer();               // disarm only when no owner needs the session
     void ownersChanged(const char* reason, quint64 requestId = 0);
 

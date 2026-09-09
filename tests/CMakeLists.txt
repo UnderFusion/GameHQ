@@ -971,6 +971,23 @@ set_target_properties(tst_captureacknowledgement PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests/captureacknowledgement")
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/tests/captureacknowledgement/portable.flag" CONTENT "")
 
+# p1-5: real input dispatch and replay receipts, with synthetic device/state facts.
+get_target_property(CONTROLLER_CLIP_INPUT_SOURCES tst_inputengineshutdown SOURCES)
+list(REMOVE_ITEM CONTROLLER_CLIP_INPUT_SOURCES tst_inputengineshutdown.cpp)
+get_target_property(CONTROLLER_CLIP_CAPTURE_SOURCES tst_captureacknowledgement SOURCES)
+list(REMOVE_ITEM CONTROLLER_CLIP_CAPTURE_SOURCES tst_captureacknowledgement.cpp)
+set(CONTROLLER_CLIP_SOURCES ${CONTROLLER_CLIP_INPUT_SOURCES} ${CONTROLLER_CLIP_CAPTURE_SOURCES})
+list(REMOVE_DUPLICATES CONTROLLER_CLIP_SOURCES)
+gamehq_add_test(tst_controllerclip_e2e tst_controllerclip_e2e.cpp ${CONTROLLER_CLIP_SOURCES})
+get_target_property(CONTROLLER_CLIP_INPUT_LIBS tst_inputengineshutdown LINK_LIBRARIES)
+get_target_property(CONTROLLER_CLIP_CAPTURE_LIBS tst_captureacknowledgement LINK_LIBRARIES)
+target_link_libraries(tst_controllerclip_e2e PRIVATE ${CONTROLLER_CLIP_INPUT_LIBS} ${CONTROLLER_CLIP_CAPTURE_LIBS})
+target_include_directories(tst_controllerclip_e2e PRIVATE "${CMAKE_SOURCE_DIR}/third_party/gameinput/include")
+target_compile_definitions(tst_controllerclip_e2e PRIVATE UNICODE _UNICODE)
+set_target_properties(tst_controllerclip_e2e PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests/controllerclip")
+file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/tests/controllerclip/portable.flag" CONTENT "")
+
 # p3-4: real Media Foundation decode/export plus worker handoff and gallery identity.
 get_target_property(GAMEHQ_CAPTURE_TEST_SOURCES tst_captureacknowledgement SOURCES)
 list(REMOVE_ITEM GAMEHQ_CAPTURE_TEST_SOURCES tst_captureacknowledgement.cpp)

@@ -156,6 +156,7 @@ signals:
 
 private:
     friend class InputEngineShutdownTest;
+    friend class ControllerClipE2ETest;
     void shutdown();
     void migrateLegacyHoldSetting();
     void applyGestureTiming();
