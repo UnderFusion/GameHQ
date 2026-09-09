@@ -1,15 +1,15 @@
-# GameHQ 0.7.12 (2026-09-08)
+# GameHQ 0.7.24 (2026-09-09)
 
-## Fixed
+## Improved
 
-- The window reopens on the monitor you left it on, including a monitor placed left of or above the main one. Those positions used to be discarded and the window jumped back to the middle of the primary screen.
-- A window last used on a monitor that is no longer connected now reopens centred on the primary screen at the same size, instead of opening somewhere you cannot reach.
+- Controller binding labels and capture prompts now show the effective Hold duration, including the configured default.
+- Save-replay assignment guidance states how long to hold the button without changing existing bindings.
 
 <!-- gamehq:locale-index -->
 
 ## Release notes in other languages
 
-These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.12/assets/release-notes/publication/0.7.12) are kept in the repository; they are not attached to this release as separate downloads.
+These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.24/assets/release-notes/publication/0.7.24) are kept in the repository; they are not attached to this release as separate downloads.
 
 | Language | Locale | Content |
 | --- | --- | --- |

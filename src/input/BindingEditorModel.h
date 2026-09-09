@@ -205,7 +205,8 @@ private:
     void reloadAndRefresh();
     QString formatTrigger(const BindingResolver::Binding& binding) const;
     QString formatBinding(const BindingResolver::Binding& binding) const;
-    static QString formatGestureBadge(const BindingResolver::Binding& binding);
+    QString formatGestureBadge(const BindingResolver::Binding& binding) const;
+    QString formatEffectiveGesture(const GestureSpec& gesture) const;
     void setRelationNotice(const QString& kindId, const QString& text);
     QString noticeTextFor(BindingRelation::Kind kind,
                           const BindingResolver::Binding& target,

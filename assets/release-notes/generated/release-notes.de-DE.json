@@ -1,15 +1,28 @@
 {
-  "version": "0.7.23",
+  "version": "0.7.24",
   "date": "2026-09-09",
   "sections": [
     {
-      "title": "Added",
+      "title": "Improved",
       "items": [
-        "Interface and capture sound sliders now reach 200%, providing up to +6 dB of gain without changing existing volume levels through 100%."
+        "Controller binding labels and capture prompts now show the effective Hold duration, including the configured default.",
+        "Save-replay assignment guidance states how long to hold the button without changing existing bindings."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.23",
+      "date": "2026-09-09",
+      "sections": [
+        {
+          "title": "Added",
+          "items": [
+            "Interface and capture sound sliders now reach 200%, providing up to +6 dB of gain without changing existing volume levels through 100%."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.22",
       "date": "2026-09-09",
@@ -150,19 +163,6 @@
       ]
     },
     {
-      "version": "0.7.12",
-      "date": "2026-09-08",
-      "sections": [
-        {
-          "title": "Fixed",
-          "items": [
-            "The window reopens on the monitor you left it on, including a monitor placed left of or above the main one. Those positions used to be discarded and the window jumped back to the middle of the primary screen.",
-            "A window last used on a monitor that is no longer connected now reopens centred on the primary screen at the same size, instead of opening somewhere you cannot reach."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -196,6 +196,13 @@
     "requested_locale": "de-DE",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.24",
+        "source_integrity": "sha256:73b24d5795b6b8abe8dfb3a7d6cb977b68c8da3afd9de36fa71cc8e6efdc4064",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.23",
         "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
@@ -269,13 +276,6 @@
       {
         "version": "0.7.13",
         "source_integrity": "sha256:a3e6853aa2ecb70120593af6a1604ec467d19c211e990d2d3194c263ba996398",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.12",
-        "source_integrity": "sha256:87651e9bd42f4fc6a268bb38ec9a4427c4e454694d4d9bf7eb12c71796341a1f",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

@@ -72,6 +72,28 @@ private:
     }
 
 private slots:
+    void replayHoldShowsEffectiveThresholdWithoutChangingStoredGesture()
+    {
+        m_runtime->setDefaultHoldMs(1750);
+        m_runtime->reload();
+        m_editor->setDeviceGroup("controller");
+        m_editor->retranslate();
+        const auto row = rowFor(*m_editor, "global.save_replay");
+        QVERIFY(row.value("primary").toString().contains("1.75"));
+        QVERIFY(row.value("primaryGesture").toString().contains("1.75"));
+        m_editor->beginCapture("global.save_replay", 2);
+        QVERIFY(m_editor->capturePrompt().contains("1.75"));
+        m_editor->cancelCapture();
+        m_editor->openAssignmentEditor("global.save_replay", 1);
+        QVERIFY(m_editor->editorTriggerHint().contains("1750 ms"));
+        QCOMPARE(m_editor->editorHoldMs(), 0);
+        m_editor->setEditorGesture("hold", 1, 1250);
+        QVERIFY(m_editor->editorTriggerHint().contains("1250 ms"));
+        m_editor->closeAssignmentEditor();
+        QCOMPARE(bindingFor(*m_runtime, "controller", {}, "global.save_replay", 1).holdMs, 0);
+        m_runtime->setDefaultHoldMs(2000);
+    }
+
     void initTestCase()
     {
         QVERIFY(m_dir.isValid());
@@ -86,6 +108,9 @@ private slots:
 
     void init()
     {
+        // Controller presses now publish the observed profile to diagnostics.
+        // Each test starts with no observed pad, independent of prior cases.
+        m_runtime->setActiveProfile({}, {});
         QVERIFY(m_database->clearAllBindingOverrides());
         m_runtime->reload();
         m_runtime->cancelAll();

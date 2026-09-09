@@ -1004,3 +1004,5 @@ gamehq_add_test(tst_notificationcenter tst_notificationcenter.cpp
     "${CMAKE_SOURCE_DIR}/src/notify/NotificationCenter.cpp"
     "${CMAKE_SOURCE_DIR}/src/notify/ToastModel.cpp")
 target_link_libraries(tst_notificationcenter PRIVATE Qt6::Quick user32)
+target_compile_definitions(tst_notificationcenter PRIVATE
+    GAMEHQ_APP_SOURCE="${CMAKE_SOURCE_DIR}/src/app/App.cpp")

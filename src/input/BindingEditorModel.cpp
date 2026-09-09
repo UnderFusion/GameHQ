@@ -167,29 +167,34 @@ QString BindingEditorModel::formatBinding(const BindingResolver::Binding& bindin
     QString label = formatTrigger(binding);
     const GestureSpec gesture = binding.gesture();
     if (gesture.kind != GestureSpec::Kind::Press)
-        label += QStringLiteral(" · %1").arg(gesture.label());
+        label += QStringLiteral(" · %1").arg(formatEffectiveGesture(gesture));
     return label;
 }
 
-QString BindingEditorModel::formatGestureBadge(const BindingResolver::Binding& binding)
+QString BindingEditorModel::formatGestureBadge(const BindingResolver::Binding& binding) const
 {
     if (binding.trigger().isChord())
         //: Binding-editor badge for a two-button shortcut.
         //% "Combination"
         return NativeText::get(QT_TRID_NOOP("gamehq.input.model.combination"), "Combination");
-    const GestureSpec gesture = binding.gesture();
+    return formatEffectiveGesture(binding.gesture());
+}
+
+QString BindingEditorModel::formatEffectiveGesture(const GestureSpec& gesture) const
+{
     if (gesture.kind == GestureSpec::Kind::Hold) {
-        if (gesture.holdMs == 0)
+        const int holdMs = gesture.holdMs > 0 ? gesture.holdMs : m_runtime->timing().defaultHoldMs;
+        if (holdMs <= 0)
             //: Binding-editor badge for a hold shortcut using the default duration.
             //% "Hold · Default"
             return NativeText::get(QT_TRID_NOOP("gamehq.input.model.hold_default"),
                                    "Hold · Default");
-        const bool wholeSeconds = gesture.holdMs % 1000 == 0;
+        const int precision = holdMs % 1000 == 0 ? 0 : holdMs % 100 == 0 ? 1 : holdMs % 10 == 0 ? 2 : 3;
         //: Binding-editor badge for a hold shortcut. %1 is a duration number.
         //% "Hold · %1 s"
         return NativeText::get(QT_TRID_NOOP("gamehq.input.model.hold_seconds"),
                                "Hold · %1 s")
-            .arg(gesture.holdMs / 1000.0, 0, 'f', wholeSeconds ? 0 : 1);
+            .arg(holdMs / 1000.0, 0, 'f', precision);
     }
     return gesture.label();
 }
@@ -300,7 +305,7 @@ void BindingEditorModel::refreshCapturePrompt()
             //% "Press a controller button for %1 · Slot %2 · %3"
             QT_TRID_NOOP("gamehq.input.model.capture.controller"),
             "Press a controller button for %1 · Slot %2 · %3")
-            .arg(action->label).arg(m_captureSlot).arg(gesture.spec().label());
+            .arg(action->label).arg(m_captureSlot).arg(formatEffectiveGesture(gesture.spec()));
     } else if (m_deviceGroup == QLatin1String("keyboard")) {
         m_capturePrompt = NativeText::get(
             //: Keyboard binding-capture prompt. %1 is an action and %2 a slot number.
@@ -1052,6 +1057,16 @@ QString BindingEditorModel::editorTriggerHint() const
         // not tell anyone that one button is held and the other tapped.
         return QStringLiteral("Hold %1, then press %2.")
             .arg(controlLabel(m_editorFirstControl), controlLabel(m_editorSecondControl));
+    }
+    if (m_editorActionId == QLatin1String("global.save_replay")
+        && m_editorGesture.kind == GestureSpec::Kind::Hold && !m_editorFirstControl.isEmpty()) {
+        const int holdMs = m_editorGesture.holdMs > 0
+            ? m_editorGesture.holdMs : m_runtime->timing().defaultHoldMs;
+        return NativeText::get(
+            //: Save-replay binding guidance; %1 is a controller button, %2 the effective hold duration in milliseconds.
+            //% "Hold %1 for at least %2 ms to save a replay."
+            QT_TRID_NOOP("gamehq.input.assignment.replay_hold_hint"),
+            "Hold %1 for at least %2 ms to save a replay.").arg(controlLabel(m_editorFirstControl)).arg(holdMs);
     }
     return {};
 }

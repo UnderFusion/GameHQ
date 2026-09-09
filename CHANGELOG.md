@@ -6,6 +6,15 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.24] - 2026-09-09
+
+### Improved
+
+- Controller binding labels and capture prompts show the effective Hold duration,
+  including configured defaults, without changing saved bindings.
+- Save-replay assignment guidance states the required hold threshold explicitly.
+  Replay error notifications remain independent of success-notification settings.
+
 ## [0.7.23] - 2026-09-09
 
 ### Added

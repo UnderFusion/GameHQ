@@ -3,6 +3,7 @@
 #include <QPersistentModelIndex>
 #include <QSignalSpy>
 #include <QtTest>
+#include <QFile>
 
 class TestNotificationCenter : public QObject
 {
@@ -12,6 +13,23 @@ class TestNotificationCenter : public QObject
         return model->data(model->index(row, 0), role);
     }
 private slots:
+    void replayFailureWiringDoesNotUseSuccessNotificationPreference()
+    {
+        // Guard the actual App connection without duplicating its policy in a mock.
+        QFile source(QStringLiteral(GAMEHQ_APP_SOURCE));
+        QVERIFY(source.open(QIODevice::ReadOnly));
+        const QByteArray app = source.readAll();
+        const int start = app.indexOf("connect(m_framePump.get(), &FramePumpService::clipFailed");
+        QVERIFY(start >= 0);
+        const int end = app.indexOf("connect(m_framePump.get(), &FramePumpService::foregroundGameDetected", start);
+        QVERIFY(end > start);
+        const QByteArray failure = app.mid(start, end - start);
+        QVERIFY(!failure.contains("ReplayClipNotify"));
+        QVERIFY(failure.contains("NotificationsEnabled"));
+        QVERIFY(failure.contains("postCaptureOutcome(operationId"));
+        QVERIFY(failure.contains("QStringLiteral(\"error\")"));
+    }
+
     void updatesTheSameRowAndPreservesLargeIds()
     {
         NotificationCenter center(nullptr);

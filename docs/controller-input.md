@@ -290,6 +290,19 @@ enumeration strategy can bypass it, so GameHQ detects and explains it instead:
 
 ## Sanitized beta diagnostics
 
+Binding presentation (0.7.24): Hold badges, binding text and controller capture
+prompts resolve the configured default duration to seconds. The save-replay
+assignment hint states the effective threshold in milliseconds. This is display
+guidance only: stored gestures and controller matching are unchanged. A separate
+short-release toast is not introduced; the recognizer currently publishes only
+completed gestures, and adding an event path is outside this presentation batch.
+Replay failures continue to ignore the success-notification preference while
+respecting the global notification switch.
+
+Localization delta pending: `gamehq.input.assignment.replay_hold_hint` —
+"Hold %1 for at least %2 ms to save a replay." (`%1`: button, `%2`: effective ms).
+Existing Hold-duration translations are reused for labels and capture prompts.
+
 The existing **Copy diagnostic summary** action copies a paste-ready controller
 replay package. It includes the GameHQ version, executable SHA-256, compile timestamp, Qt version,
 Windows kernel build, last observed provider, a SHA-256 pseudonym of the resolved
