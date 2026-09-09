@@ -6,6 +6,18 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.15] - 2026-09-09
+
+### Added
+
+- Capture settings now include a border-suppression request, enabled by default.
+  Changes apply to the next Windows capture session without restarting the
+  current session or replay buffer. Disabling it skips the suppression request.
+- Capture settings explain whether Windows reports suppression active,
+  unsupported, denied, unconfirmed, or not requested. API confirmation does not
+  guarantee that no border is visible. New source text falls back to English
+  until the feedback-wave translation pass.
+
 ## [0.7.14] - 2026-09-09
 
 ### Fixed

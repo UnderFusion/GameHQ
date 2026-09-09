@@ -1,16 +1,29 @@
 {
-  "version": "0.7.14",
+  "version": "0.7.15",
   "date": "2026-09-09",
   "sections": [
     {
-      "title": "Fixed",
+      "title": "Added",
       "items": [
-        "GameHQ now asks Windows for permission to hide the yellow recording border and reports the real result instead of always claiming the border is hidden.",
-        "On Windows versions that cannot hide the recording border, the capture status now says so instead of reporting it as hidden."
+        "Capture settings now let you request Windows capture-border suppression. The setting is on by default and applies to the next capture session without interrupting the current session or replay buffer.",
+        "Capture settings explain the Windows border-suppression result without promising that a border is invisible. The new explanations use English until the planned translation pass."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.14",
+      "date": "2026-09-09",
+      "sections": [
+        {
+          "title": "Fixed",
+          "items": [
+            "GameHQ now asks Windows for permission to hide the yellow recording border and reports the real result instead of always claiming the border is hidden.",
+            "On Windows versions that cannot hide the recording border, the capture status now says so instead of reporting it as hidden."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.13",
       "date": "2026-09-09",
@@ -271,6 +284,13 @@
     "requested_locale": "zh-Hans",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.15",
+        "source_integrity": "sha256:af835f0c2c92aa3d1c2f267230b4703eace61a922e4528796a9bd942d183791e",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.14",
         "source_integrity": "sha256:ee2a4783511199f0c51953ec0b9557caf6670a93ffd5893e2a8451951b6a7d38",

@@ -518,7 +518,8 @@ void FramePumpWorker::attachRecorder(Pipeline* pipe, unsigned long pid, int srcW
 // hardcoded BGRA8 pool below — the SDR path this function has always taken
 // is otherwise completely unchanged.
 bool FramePumpWorker::createSession(Pipeline* pipe, void* hwndVoid, int srcW, int srcH,
-                                    bool hdrExperimentalEnabled)
+                                    bool hdrExperimentalEnabled,
+                                    const CaptureBorder::SessionPolicy& borderPolicy)
 {
     HWND hwnd = reinterpret_cast<HWND>(hwndVoid);
     IDirect3D11CaptureFramePoolStatics2* poolStatics2 = nullptr;
@@ -603,23 +604,26 @@ bool FramePumpWorker::createSession(Pipeline* pipe, void* hwndVoid, int srcW, in
     // build gets UserPromptRequired), so the HRESULT is NOT evidence. Collect every
     // fact and let CaptureBorder::derive() decide; it is the only thing allowed to
     // conclude Hidden, and it never does so on a pre-22000 build.
-    CaptureBorder::Facts border;
-    border.osBuild = windowsBuildNumber();
+    const CaptureBorder::Facts border = borderPolicy.collect([pipe] {
+        CaptureBorder::Facts facts;
+        facts.osBuild = windowsBuildNumber();
 
-    IGraphicsCaptureSession3* session3 = nullptr;
-    border.sessionInterfaceAvailable =
-        SUCCEEDED(pipe->session->QueryInterface(IID_IGraphicsCaptureSession3,
-                                                reinterpret_cast<void**>(&session3)))
-        && session3 != nullptr;
+        IGraphicsCaptureSession3* session3 = nullptr;
+        facts.sessionInterfaceAvailable =
+            SUCCEEDED(pipe->session->QueryInterface(IID_IGraphicsCaptureSession3,
+                                                    reinterpret_cast<void**>(&session3)))
+            && session3 != nullptr;
 
-    if (border.sessionInterfaceAvailable) {
-        border.accessStatus = requestBorderlessAccess();
-        border.setterSucceeded = SUCCEEDED(session3->put_IsBorderRequired(0));   // 0 = false
-        unsigned char required = 1;
-        border.readBackSucceeded = SUCCEEDED(session3->get_IsBorderRequired(&required));
-        border.readBackBorderRequired = (required != 0);
-        session3->Release();
-    }
+        if (facts.sessionInterfaceAvailable) {
+            facts.accessStatus = requestBorderlessAccess();
+            facts.setterSucceeded = SUCCEEDED(session3->put_IsBorderRequired(0));
+            unsigned char required = 1;
+            facts.readBackSucceeded = SUCCEEDED(session3->get_IsBorderRequired(&required));
+            facts.readBackBorderRequired = (required != 0);
+            session3->Release();
+        }
+        return facts;
+    });
 
     pipe->borderState  = CaptureBorder::derive(border);
     pipe->borderDetail = CaptureBorder::describe(border, pipe->borderState);
@@ -635,7 +639,7 @@ void FramePumpWorker::startPump(quint64 generation, qulonglong hwndVal, unsigned
                                 int encodeHeight, int fps, int bitrateMbps, int segmentSeconds,
                                 int lengthSeconds, const QString& gameName,
                                 const QString& executablePath, bool audioEnabled,
-                                bool hdrExperimentalEnabled)
+                                bool hdrExperimentalEnabled, CaptureBorder::SessionPolicy borderPolicy)
 {
     if (generation <= m_pumpGeneration)
         return; // obsolete or duplicate command
@@ -675,7 +679,7 @@ void FramePumpWorker::startPump(quint64 generation, qulonglong hwndVal, unsigned
     }
     attachRecorder(pipe, pid, srcW, srcH, encodeWidth, encodeHeight, fps, bitrateMbps,
                    segmentSeconds, lengthSeconds, audioEnabled);
-    if (!createSession(pipe, hwnd, srcW, srcH, hdrExperimentalEnabled)) {
+    if (!createSession(pipe, hwnd, srcW, srcH, hdrExperimentalEnabled, borderPolicy)) {
         delete pipe;
         return;
     }
@@ -1203,6 +1207,12 @@ FramePumpService::FramePumpService(ConfigManager* config, CaptureLocations* loca
     connect(&m_buffer, &ReplayBufferState::failed, this, &FramePumpService::failed);
     connect(&m_buffer, &ReplayBufferState::stateChanged, this,
             [this](ReplayBufferState::State state, const QString&) {
+                if (state == ReplayBufferState::Starting || state == ReplayBufferState::Stopped
+                    || state == ReplayBufferState::Failed) {
+                    m_borderState = CaptureBorder::Unknown;
+                    m_borderDetail.clear();
+                    emit captureBorderStateChanged();
+                }
                 if (state == ReplayBufferState::Stopped || state == ReplayBufferState::Failed)
                     m_targetHwnd = 0;
                 if (state == ReplayBufferState::Stopped)
@@ -1489,6 +1499,9 @@ void FramePumpService::startBuffer(bool rearm)
                           ConfigKeys::InternalCaptureExperimentalHdrDefault).toBool()
         : ConfigKeys::InternalCaptureExperimentalHdrDefault;
     const QString executablePath = g.executablePath;
+    // Copy at dispatch, never read mutable GUI-thread config on the worker.
+    const CaptureBorder::SessionPolicy borderPolicy(m_config
+        ? m_config->value(ConfigKeys::CaptureHideBorder, true).toBool() : true);
     qInfo() << "FramePump: start requested on" << gameName << "(audio:" << (audioOn ? "on" : "off")
             << ")";
     const bool queued = QMetaObject::invokeMethod(m_worker, "startPump", Qt::QueuedConnection,
@@ -1500,7 +1513,8 @@ void FramePumpService::startBuffer(bool rearm)
                               Q_ARG(int, len), Q_ARG(QString, gameName),
                               Q_ARG(QString, executablePath),
                               Q_ARG(bool, audioOn),
-                              Q_ARG(bool, hdrExperimentalEnabled));
+                              Q_ARG(bool, hdrExperimentalEnabled),
+                              Q_ARG(CaptureBorder::SessionPolicy, borderPolicy));
     if (!queued)
         m_buffer.confirm(generation, ReplayBufferState::Failed,
                          QStringLiteral("Could not dispatch replay startup"));

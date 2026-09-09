@@ -8957,6 +8957,159 @@
       "source_hash": "c87e5a80bf6decfc46e439af85d5815cf2bd8e3be0110bdba0284fc94971b586"
     },
     {
+      "id": "gamehq.settings.capture.border.denied",
+      "source": "Windows did not allow border suppression for this session.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 35
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3"
+    },
+    {
+      "id": "gamehq.settings.capture.border.description",
+      "source": "Requests border suppression where Windows supports it. Windows 10 does not support this.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 76
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9"
+    },
+    {
+      "id": "gamehq.settings.capture.border.hidden",
+      "source": "Windows reports border suppression active. A visible border may still remain.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 29
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a"
+    },
+    {
+      "id": "gamehq.settings.capture.border.next_session",
+      "source": "Applies to the next capture session. Changing this leaves the current session and replay buffer running.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 81
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22"
+    },
+    {
+      "id": "gamehq.settings.capture.border.not_requested",
+      "source": "Border suppression was not requested for this session.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 38
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17"
+    },
+    {
+      "id": "gamehq.settings.capture.border.title",
+      "source": "Windows capture border",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 74
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04"
+    },
+    {
+      "id": "gamehq.settings.capture.border.toggle",
+      "source": "Request border suppression",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 79
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610"
+    },
+    {
+      "id": "gamehq.settings.capture.border.unknown",
+      "source": "Border suppression is unconfirmed, or no capture session is active.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 41
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582"
+    },
+    {
+      "id": "gamehq.settings.capture.border.unsupported",
+      "source": "This Windows version or capture session does not support border suppression.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 32
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf"
+    },
+    {
       "id": "gamehq.settings.capture.description",
       "source": "Choose when, how, and where GameHQ saves screenshots.",
       "context": "ID",

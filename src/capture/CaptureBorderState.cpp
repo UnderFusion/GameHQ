@@ -4,8 +4,18 @@
 
 namespace CaptureBorder {
 
+Facts SessionPolicy::collect(const std::function<Facts()>& requestSuppression) const
+{
+    Facts facts = m_requested ? requestSuppression() : Facts{};
+    facts.suppressionRequested = m_requested;
+    return facts;
+}
+
 State derive(const Facts& facts)
 {
+    if (!facts.suppressionRequested)
+        return NotRequested;
+
     // 1. A known pre-22000 build can never suppress the border, no matter what the
     //    rest of the calls report. This is the "never claim hidden on Windows 10" gate.
     if (facts.osBuild != 0 && facts.osBuild < kFirstBuildWithBorderControl)
@@ -49,6 +59,7 @@ QString stateName(State state)
     case Unsupported: return QStringLiteral("unsupported");
     case Denied:      return QStringLiteral("denied");
     case Hidden:      return QStringLiteral("hidden");
+    case NotRequested: return QStringLiteral("not requested");
     }
     return QStringLiteral("unknown");
 }
@@ -68,6 +79,8 @@ QString accessStatusName(int status)
 
 QString describe(const Facts& facts, State state)
 {
+    if (!facts.suppressionRequested)
+        return QStringLiteral("not requested (suppression disabled for this session)");
     QStringList parts;
     parts << (facts.osBuild ? QStringLiteral("build %1").arg(facts.osBuild)
                             : QStringLiteral("build unknown"));

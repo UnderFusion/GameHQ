@@ -16,6 +16,7 @@ namespace ConfigKeys
 {
 // capture.* — screenshot behavior and when capture is allowed at all.
 inline constexpr QLatin1StringView CaptureMode{ "capture.mode" };                          // only_in_games | whitelist | always
+inline constexpr QLatin1StringView CaptureHideBorder{ "capture.hide_border" };            // request suppression on the next WGC session
 inline constexpr QLatin1StringView CaptureScreenshotFormat{ "capture.screenshot_format" }; // png | jpg
 inline constexpr QLatin1StringView CaptureJpegQuality{ "capture.jpeg_quality" };           // 1-100, only when format=jpg
 inline constexpr QLatin1StringView CaptureScreenshotSound{ "capture.screenshot_sound" };

@@ -100,6 +100,27 @@ private slots:
         QVERIFY(cfg.isDefault(ConfigKeys::ThemeActiveSkin));
     }
 
+    void captureBorderDefaultsAndPersistence()
+    {
+        ConfigManager cfg(path());
+        QVERIFY(cfg.load());
+        QVERIFY(cfg.value(ConfigKeys::CaptureHideBorder).toBool());
+        QVERIFY(cfg.isDefault(ConfigKeys::CaptureHideBorder));
+        cfg.setValue(ConfigKeys::CaptureHideBorder, false);
+        QVERIFY(cfg.save());
+        ConfigManager reopened(path());
+        QVERIFY(reopened.load());
+        QVERIFY(!reopened.value(ConfigKeys::CaptureHideBorder).toBool());
+        QVERIFY(!reopened.isDefault(ConfigKeys::CaptureHideBorder));
+        resetCategory(reopened, QStringLiteral("Capture"));
+        QVERIFY(reopened.value(ConfigKeys::CaptureHideBorder).toBool());
+        QVERIFY(reopened.isDefault(ConfigKeys::CaptureHideBorder));
+        QVERIFY(reopened.save());
+        ConfigManager reset(path());
+        QVERIFY(reset.load());
+        QVERIFY(reset.value(ConfigKeys::CaptureHideBorder).toBool());
+    }
+
     void unknownKeyFallsBackToTheCallersValue()
     {
         ConfigManager cfg(path());

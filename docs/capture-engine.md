@@ -44,8 +44,29 @@ The trap is that `put_IsBorderRequired(false)` returns `S_OK` and `get_IsBorderR
 | `Denied` | Supported, but the access request came back as anything other than `Allowed`, or the read-back still says the border is required. |
 | `Unknown` | The OS build could not be read, the request was never made, or the setter/read-back failed — no evidence either way. |
 | `Hidden` | 22000+, interface present, access `Allowed`, flag set **and** read back as suppressed. |
+| `NotRequested` | This session started with `capture.hide_border=false`; no border probe, access request, setter or read-back was attempted. |
 
 The verdict is logged once per session as `FramePump: capture border <state> (<detail>)` and surfaced on `FramePumpService` through the `captureBorderState` / `captureBorderDetail` properties. Access is requested once per process on the MTA worker thread with a bounded (~2 s) wait, so a silent broker can never wedge pipeline bring-up. The statics IID `{743ED370-06EC-5040-A58A-901F0F757095}` was read off the live activation factory via `IInspectable::GetIids()` rather than guessed, since mingw-w64 publishes no declaration for `GraphicsCaptureAccess`. `Hidden` states that Windows accepted and confirmed the suppression request, not that a human has seen the border disappear; the visual A/B on real hardware is a separate manual acceptance step.
+
+Since 0.7.15, **Settings → Capture → Windows capture border** exposes
+`capture.hide_border` (boolean, default `true`). It persists through the normal
+config override path and Capture's restore-defaults action resets it to `true`.
+The service snapshots the setting when dispatching each new WGC session to the
+worker. Changing or resetting this key does not restart the replay buffer,
+change the current session's border request, or rewrite its displayed verdict.
+Disabling it skips all suppression calls for the next session, including the
+access request. It also applies to WGC sessions used for HDR screenshots; GDI
+screenshots are unaffected.
+
+The Capture page shows **“Windows reports border suppression active. A visible
+border may still remain.”** for `Hidden`, and plain explanations for unsupported,
+denied, unconfirmed and not-requested states. Starting, stopping or failing a
+session clears the previous verdict so it cannot be mistaken for the current
+state. The nine new localization IDs live in the QML source, English catalog and
+source manifest; translation state records the missing translations honestly.
+The full extraction refresh, 15 translated catalogs and review/readiness artifacts
+belong to p7-2. Other languages use the normal English source-catalog fallback meanwhile.
+Real in-game visual acceptance remains p7-5.
 
 ## Save-replay export (0.5 Steps 5/6/8, shipped dev.50; audio path dev.74, MinGW)
 

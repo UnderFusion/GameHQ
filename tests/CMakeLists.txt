@@ -574,6 +574,7 @@ gamehq_add_test(tst_framepumpservice
 # Capture-border verdict (p4-2): pure derivation, no WinRT and no capture device.
 gamehq_add_test(tst_captureborderstate
     tst_captureborderstate.cpp
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureBorderState.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureBorderState.h")
 

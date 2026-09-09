@@ -537,6 +537,9 @@ bool App::init()
     m_languageManager->setQmlRetranslateCallback([this] { m_engine.retranslate(); });
     qmlRegisterUncreatableType<ReplayBufferState>("GameHQ", 1, 0, "ReplayBufferState",
                                                 QStringLiteral("Replay state is owned by the capture service"));
+    qmlRegisterUncreatableMetaObject(CaptureBorder::staticMetaObject, "GameHQ", 1, 0,
+                                     "CaptureBorder", QStringLiteral("Capture border API states"));
+    m_engine.rootContext()->setContextProperty(QStringLiteral("framePump"), m_framePump.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("app"), m_controller.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlayGallery"), m_overlayGallery.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlay"), m_overlay.get());

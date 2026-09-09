@@ -21,6 +21,27 @@ SettingsPage {
         Qt.openUrlExternally("file:///" + path.replace(/\\/g, "/"))
     }
 
+    function borderStatusText() {
+        switch (framePump.captureBorderState) {
+        case CaptureBorder.Hidden:
+            //: Windows API confirmation, not a visual guarantee that no border is visible.
+            //% "Windows reports border suppression active. A visible border may still remain."
+            return qsTrId("gamehq.settings.capture.border.hidden")
+        case CaptureBorder.Unsupported:
+            //% "This Windows version or capture session does not support border suppression."
+            return qsTrId("gamehq.settings.capture.border.unsupported")
+        case CaptureBorder.Denied:
+            //% "Windows did not allow border suppression for this session."
+            return qsTrId("gamehq.settings.capture.border.denied")
+        case CaptureBorder.NotRequested:
+            //% "Border suppression was not requested for this session."
+            return qsTrId("gamehq.settings.capture.border.not_requested")
+        default:
+            //% "Border suppression is unconfirmed, or no capture session is active."
+            return qsTrId("gamehq.settings.capture.border.unknown")
+        }
+    }
+
     SettingsSection {
         //% "Capture mode"
         eyebrow: qsTrId("gamehq.settings.capture.mode.eyebrow")
@@ -45,6 +66,29 @@ SettingsPage {
                     { label: qsTrId("gamehq.settings.capture.mode.always"), value: "always" }
                 ]
             }
+        }
+    }
+
+    SettingsSection {
+        //% "Windows capture border"
+        title: qsTrId("gamehq.settings.capture.border.title")
+        //% "Requests border suppression where Windows supports it. Windows 10 does not support this."
+        description: qsTrId("gamehq.settings.capture.border.description")
+        SettingsRow {
+            //% "Request border suppression"
+            label: qsTrId("gamehq.settings.capture.border.toggle")
+            //% "Applies to the next capture session. Changing this leaves the current session and replay buffer running."
+            description: qsTrId("gamehq.settings.capture.border.next_session")
+            SettingsToggle { configKey: "capture.hide_border"; defaultValue: true }
+        }
+        Text {
+            text: root.borderStatusText()
+            color: Theme.textMuted
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.fontCaption
+            wrapMode: Text.WordWrap
+            Layout.fillWidth: true
+            Layout.minimumWidth: 0
         }
     }
 

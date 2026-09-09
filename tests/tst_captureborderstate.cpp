@@ -13,6 +13,8 @@
 //    static_asserts in the header.
 
 #include "capture/CaptureBorderState.h"
+#include "config/ConfigKeys.h"
+#include "config/ConfigManager.h"
 
 #include <QtTest>
 
@@ -48,6 +50,8 @@ class TestCaptureBorderState : public QObject
 {
     Q_OBJECT
 private slots:
+    void policyChangesOnlyForNextSession();
+    void disabledSessionDoesNotCallWindows();
     void hiddenNeedsEveryCondition();
     void windows10IsNeverHidden();
     void windows10IsNeverHidden_data();
@@ -66,6 +70,42 @@ private slots:
     void failedCallsAreUnknownNotHidden_data();
     void describeMentionsStateAndAccess();
 };
+
+void TestCaptureBorderState::policyChangesOnlyForNextSession()
+{
+    QTemporaryDir dir;
+    QVERIFY(dir.isValid());
+    ConfigManager config(dir.filePath("config.json"));
+    QVERIFY(config.load());
+    const SessionPolicy current(config.value(ConfigKeys::CaptureHideBorder).toBool());
+    config.setValue(ConfigKeys::CaptureHideBorder, false);
+    const SessionPolicy next(config.value(ConfigKeys::CaptureHideBorder).toBool());
+    config.resetValue(ConfigKeys::CaptureHideBorder);
+    const SessionPolicy afterReset(config.value(ConfigKeys::CaptureHideBorder).toBool());
+    int requests = 0;
+    const auto windows = [&requests] { ++requests; return allowedFacts(); };
+    // Even a queued start retains the preference from dispatch, regardless of
+    // subsequent changes or reset. Existing session facts are never rewritten.
+    QCOMPARE(derive(current.collect(windows)), Hidden);
+    QCOMPARE(derive(next.collect(windows)), NotRequested);
+    QCOMPARE(derive(afterReset.collect(windows)), Hidden);
+    QCOMPARE(requests, 2);
+}
+
+void TestCaptureBorderState::disabledSessionDoesNotCallWindows()
+{
+    int requests = 0;
+    const auto facts = SessionPolicy(false).collect([&requests] {
+        ++requests;
+        return allowedFacts();
+    });
+    QCOMPARE(requests, 0);
+    QCOMPARE(facts.accessStatus, AccessNotRequested);
+    QCOMPARE(derive(facts), NotRequested);
+    QCOMPARE(describe(facts, derive(facts)),
+             QStringLiteral("not requested (suppression disabled for this session)"));
+    QCOMPARE(derive(SessionPolicy().collect(allowedFacts)), Hidden);
+}
 
 void TestCaptureBorderState::hiddenNeedsEveryCondition()
 {

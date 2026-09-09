@@ -4310,6 +4310,42 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Waiting for capture work to finish safely...</source>
       <translation>Waiting for capture work to finish safely...</translation>
     </message>
+    <message id="gamehq.settings.capture.border.hidden">
+      <source>Windows reports border suppression active. A visible border may still remain.</source>
+      <translation>Windows reports border suppression active. A visible border may still remain.</translation>
+    </message>
+    <message id="gamehq.settings.capture.border.unsupported">
+      <source>This Windows version or capture session does not support border suppression.</source>
+      <translation>This Windows version or capture session does not support border suppression.</translation>
+    </message>
+    <message id="gamehq.settings.capture.border.denied">
+      <source>Windows did not allow border suppression for this session.</source>
+      <translation>Windows did not allow border suppression for this session.</translation>
+    </message>
+    <message id="gamehq.settings.capture.border.not_requested">
+      <source>Border suppression was not requested for this session.</source>
+      <translation>Border suppression was not requested for this session.</translation>
+    </message>
+    <message id="gamehq.settings.capture.border.unknown">
+      <source>Border suppression is unconfirmed, or no capture session is active.</source>
+      <translation>Border suppression is unconfirmed, or no capture session is active.</translation>
+    </message>
+    <message id="gamehq.settings.capture.border.title">
+      <source>Windows capture border</source>
+      <translation>Windows capture border</translation>
+    </message>
+    <message id="gamehq.settings.capture.border.description">
+      <source>Requests border suppression where Windows supports it. Windows 10 does not support this.</source>
+      <translation>Requests border suppression where Windows supports it. Windows 10 does not support this.</translation>
+    </message>
+    <message id="gamehq.settings.capture.border.toggle">
+      <source>Request border suppression</source>
+      <translation>Request border suppression</translation>
+    </message>
+    <message id="gamehq.settings.capture.border.next_session">
+      <source>Applies to the next capture session. Changing this leaves the current session and replay buffer running.</source>
+      <translation>Applies to the next capture session. Changing this leaves the current session and replay buffer running.</translation>
+    </message>
   </context>
   <context>
     <name>GameHQLiveRetranslation</name>

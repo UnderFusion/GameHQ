@@ -43,7 +43,8 @@ public slots:
                    int fps, int bitrateMbps, int segmentSeconds, int lengthSeconds,
                    const QString& gameName, const QString& executablePath,
                    bool audioEnabled,
-                   bool hdrExperimentalEnabled = false); // build pipeline + start polling/encoding
+                   bool hdrExperimentalEnabled = false,
+                   CaptureBorder::SessionPolicy borderPolicy = CaptureBorder::SessionPolicy{}); // build pipeline + start polling/encoding
     void stopPump();                 // stop polling + tear down the pipeline
     void stopPumpForGeneration(quint64 generation);
     void saveReplayOnWorker(const QString& clipsBaseRoot, quint64 generation, quint64 requestId);
@@ -92,7 +93,8 @@ private:
                         int encodeWidth, int encodeHeight, int fps, int bitrateMbps,
                         int segmentSeconds, int lengthSeconds, bool audioEnabled);
     bool createSession(Pipeline* pipe, void* hwnd, int srcW, int srcH,
-                       bool hdrExperimentalEnabled); // frame pool + session
+                       bool hdrExperimentalEnabled,
+                       const CaptureBorder::SessionPolicy& borderPolicy); // frame pool + session
 
     // saveReplayOnWorker stages, in call order.
     bool saveGuard(const QString& saveId);                     // preflight: pipe/ring/busy
@@ -123,7 +125,7 @@ class FramePumpService : public QObject
     Q_PROPERTY(bool exportBusy READ exportBusy NOTIFY exportBusyChanged)
     Q_PROPERTY(bool preparingForUpdate READ preparingForUpdate NOTIFY preparingForUpdateChanged)
     Q_PROPERTY(ReplayBufferState::State bufferState READ bufferState NOTIFY bufferStatusChanged)
-    // Windows capture border: Unknown / Unsupported / Denied / Hidden (CaptureBorder::State).
+    // Windows API verdict for the current session (CaptureBorder::State).
     Q_PROPERTY(int captureBorderState READ captureBorderState NOTIFY captureBorderStateChanged)
     Q_PROPERTY(QString captureBorderDetail READ captureBorderDetail NOTIFY captureBorderStateChanged)
 public:

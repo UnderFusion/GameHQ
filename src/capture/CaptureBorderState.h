@@ -2,6 +2,7 @@
 
 #include <QObject>
 #include <QString>
+#include <functional>
 
 // Honest reporting of the Windows capture border (S4 / p4-2).
 //
@@ -31,6 +32,7 @@ enum State {
     Unsupported,  // this Windows build cannot suppress the border at all
     Denied,       // supported, but this process has no Borderless capture access
     Hidden,       // access granted, flag set and read back as suppressed
+    NotRequested, // this session was started with suppression disabled
 };
 Q_ENUM_NS(State)
 
@@ -66,12 +68,24 @@ inline constexpr unsigned long kFirstBuildWithBorderControl = 22000;
 // Everything derive() is allowed to look at. The capture worker fills this in from
 // real calls; tests fill it in by hand.
 struct Facts {
+    bool suppressionRequested = true;         // immutable preference for this session
     unsigned long osBuild = 0;                // 0 = could not be read
     bool sessionInterfaceAvailable = false;   // QI(IGraphicsCaptureSession3) succeeded
     int  accessStatus = AccessNotRequested;   // AppCapabilityAccessStatus
     bool setterSucceeded = false;             // put_IsBorderRequired(false) returned S_OK
     bool readBackSucceeded = false;           // get_IsBorderRequired returned S_OK
     bool readBackBorderRequired = true;       // the value it returned (true = border stays)
+};
+
+// Snapshot at session dispatch. Applying it can never consult changed settings;
+// disabled sessions do not even invoke the Windows probe/access/setter callback.
+class SessionPolicy {
+public:
+    explicit SessionPolicy(bool requested = true) : m_requested(requested) {}
+    bool requested() const { return m_requested; }
+    Facts collect(const std::function<Facts()>& requestSuppression) const;
+private:
+    bool m_requested;
 };
 
 // Pure, side-effect free, and the only place a Hidden verdict may be produced.
@@ -86,3 +100,5 @@ QString accessStatusName(int status);
 QString describe(const Facts& facts, State state);
 
 } // namespace CaptureBorder
+
+Q_DECLARE_METATYPE(CaptureBorder::SessionPolicy)

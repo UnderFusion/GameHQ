@@ -5387,6 +5387,105 @@
           },
           "updated_at": null
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -9185,7 +9284,7 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 0,
           "missing": [
             "gamehq.about.enjoying_gamehq",
@@ -9677,6 +9776,15 @@
             "gamehq.settings.advanced.status.ready",
             "gamehq.settings.advanced.storage.available",
             "gamehq.settings.advanced.version.current",
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported",
             "gamehq.settings.capture.description",
             "gamehq.settings.capture.feedback.description",
             "gamehq.settings.capture.feedback.eyebrow",
@@ -15423,6 +15531,105 @@
           },
           "updated_at": "2026-09-04T12:00:00Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -19221,9 +19428,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -24624,6 +24841,105 @@
           },
           "updated_at": null
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": "7ea1929c231fe40370e324a2ec73e2e65afb5b55f235d963bc5174b524321c3e",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": "95aeaed04eb2a34506ecc267c64352ff81098614146060dab3bbc5d2bea70e09",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": "e2acaa488c8f5c7a084f9745627f283af9a3a383c71edaf778c107868fc77455",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": "0399998e4d193b62ab329718463940c8fd7aab177773548d6e09320569dafcff",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": "12d92ec25a8e9363408616a96d7dc361a3e5823d75cb14c45bd95b41423428d6",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": "af5152bb9669be49ecfdcd90ee9a5574deec95c030dff6a383082ff5be28c5a4",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": "f4d09ea42b7c369de9550a9aa8adc5fc97d1cd02045974333fe27f40c8ffe245",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": "024f626ad4fd4c76e3388d885fbb7f622c543ebcc5dcc5103ad36faf13cd642c",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": "3a907c8e3e616ed4edc125d97ba09c80794f3429fad43d97f7748aaf111ac090",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -28422,8 +28738,8 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
-          "current": 834,
+          "total": 843,
+          "current": 843,
           "missing": [],
           "stale": []
         },
@@ -33825,6 +34141,105 @@
           },
           "updated_at": "2026-09-04T20:00:00Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -37623,9 +38038,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -43026,6 +43451,105 @@
           },
           "updated_at": "2026-09-04T02:45:50Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -46824,9 +47348,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -52227,6 +52761,105 @@
           },
           "updated_at": "2026-09-04T16:30:00Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -56025,9 +56658,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -61428,6 +62071,105 @@
           },
           "updated_at": "2026-09-04T13:20:00Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -65226,9 +65968,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -70629,6 +71381,105 @@
           },
           "updated_at": "2026-09-04T14:30:00Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -74427,9 +75278,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -79830,6 +80691,105 @@
           },
           "updated_at": "2026-09-04T20:00:00Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -83628,9 +84588,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -89031,6 +90001,105 @@
           },
           "updated_at": "2026-09-03T22:45:00Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -92829,9 +93898,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -98232,6 +99311,105 @@
           },
           "updated_at": "2026-09-04T03:19:03Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -102030,9 +103208,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -107433,6 +108621,105 @@
           },
           "updated_at": "2026-09-04T04:00:00Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -111231,9 +112518,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -116634,6 +117931,105 @@
           },
           "updated_at": "2026-09-04T17:00:00Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -120432,9 +121828,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -125835,6 +127241,105 @@
           },
           "updated_at": "2026-09-04T08:11:57Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -129633,9 +131138,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -135036,6 +136551,105 @@
           },
           "updated_at": "2026-09-04T11:59:30Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -138834,9 +140448,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -144237,6 +145861,105 @@
           },
           "updated_at": "2026-09-04T03:10:00Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -148035,9 +149758,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
@@ -153438,6 +155171,105 @@
           },
           "updated_at": "2026-09-04T06:45:28Z"
         },
+        "gamehq.settings.capture.border.denied": {
+          "domain": "application",
+          "source_hash": "b0b091e88867f5d07e6b1abdff55c7f374a5799b4fbb23dde653fcaa8cf2aef3",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.description": {
+          "domain": "application",
+          "source_hash": "8ffe83ce0df6127bda14b45846b26736b56132ec94015ae142eb818e7851d7e9",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.hidden": {
+          "domain": "application",
+          "source_hash": "58ac90f771a85375be661ad2df7171a29a3d20eae47a68f0fd290691062bd12a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.next_session": {
+          "domain": "application",
+          "source_hash": "61aed94d47c29bf0e99e8ecdc6f3ca6772465a7204062f1c310a7eebc5a1cb22",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.not_requested": {
+          "domain": "application",
+          "source_hash": "2e26902a51384ad60db27a7f6120ff2c25305196f254c933d9e2d69af6484b17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.title": {
+          "domain": "application",
+          "source_hash": "2ded96c3ab29ee4009ed8af0343aee0908a1bec4aa14467d26d9f08eaf630d04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.toggle": {
+          "domain": "application",
+          "source_hash": "d7cd59c888d86c7971506f14bc28bae4f25bfdbad56020aba098ce6e09be2610",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unknown": {
+          "domain": "application",
+          "source_hash": "0c006d8ea99e484fbd4bb42a20c19bb5604885c4c030bb073ebb017fccd46582",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.capture.border.unsupported": {
+          "domain": "application",
+          "source_hash": "9e82a02212f25af6e7472429cbd77e7c6b4c76d11c34222801dab73f6805badf",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.capture.description": {
           "domain": "application",
           "source_hash": "4d249227b6cecb2fbd38eaf1d912bf6004dd92ddd78a221d6b8a753e7014e456",
@@ -157236,9 +159068,19 @@
       },
       "completeness": {
         "application": {
-          "total": 834,
+          "total": 843,
           "current": 834,
-          "missing": [],
+          "missing": [
+            "gamehq.settings.capture.border.denied",
+            "gamehq.settings.capture.border.description",
+            "gamehq.settings.capture.border.hidden",
+            "gamehq.settings.capture.border.next_session",
+            "gamehq.settings.capture.border.not_requested",
+            "gamehq.settings.capture.border.title",
+            "gamehq.settings.capture.border.toggle",
+            "gamehq.settings.capture.border.unknown",
+            "gamehq.settings.capture.border.unsupported"
+          ],
           "stale": []
         },
         "installer": {
