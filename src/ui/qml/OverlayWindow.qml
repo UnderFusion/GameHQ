@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls.Basic
 import QtQuick.Effects
 import QtMultimedia
 import GameHQ
@@ -21,6 +22,18 @@ import "helpers/SidebarCategories.js" as SidebarCategories
 // modal state is the action menu (Square/M).
 Window {
     id: overlayWindow
+
+    // Keep native window geometry separate from the scaled interface.
+    readonly property ScaledSurface uiSurface: ScaledSurface {
+        id: scaledViewport
+        parent: overlayWindow.contentItem
+        anchors.fill: parent
+        settings: app
+        configKey: "theme.overlay_scale"
+        minimumContentWidth: Theme.minimumUiWidth
+        minimumContentHeight: Theme.minimumUiHeight
+    }
+    Overlay.overlay.transform: uiSurface.scaleTransform
     LayoutMirroring.enabled: languageManager.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
     objectName: "gamehqOverlay"
@@ -64,7 +77,9 @@ Window {
     }
 
     Rectangle {
+        parent: uiSurface.contentItem
         id: scrim
+        z: -1
         anchors.fill: parent
         color: Theme.overlayScrim
         opacity: overlayWindow.visible ? 1 : 0
@@ -81,15 +96,15 @@ Window {
         }
     }
 
-    // Honest-isolation notice: shown only when Windows refused to hand the
-    // overlay the foreground, i.e. the game underneath still owns focus and
-    // may keep reacting to the controller. Non-blocking on purpose.
+    // Also shown during the non-activating experiment: the game deliberately
+    // keeps foreground and may receive the same controller input.
     Rectangle {
+        parent: uiSurface.contentItem
         visible: overlayWindow.visible && !overlay.foregroundAcquired
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.topMargin: Theme.s12
-        width: focusWarningText.implicitWidth + Theme.s24
+        width: Math.min(parent.width - Theme.s24, focusWarningText.implicitWidth + Theme.s24)
         height: focusWarningText.implicitHeight + Theme.s12
         radius: Theme.radiusM
         color: Theme.surface
@@ -99,6 +114,9 @@ Window {
         Text {
             id: focusWarningText
             anchors.centerIn: parent
+            width: parent.width - Theme.s24
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignHCenter
             //% "The game still has focus and may react to controller input"
             text: qsTrId("gamehq.overlay.focus_warning")
             color: Theme.warning
@@ -108,6 +126,7 @@ Window {
     }
 
     Item {
+        parent: uiSurface.contentItem
         id: content
         anchors.fill: parent
         anchors.margins: Theme.s48
@@ -457,7 +476,9 @@ Window {
 
     // Per-capture action menu (Square / M) â€” Show in folder / Delete.
     OverlayActionMenu {
+        parent: uiSurface.contentItem
         id: actionMenu
+        z: 100
         open: content.menuOpen
         currentIndex: content.menuIndex
         onCloseRequested: content.menuOpen = false
@@ -471,6 +492,7 @@ Window {
     // Mouse delete confirmation. Above the action menu in z-order so it stays
     // usable no matter which path opened it.
     ConfirmDialog {
+        parent: uiSurface.contentItem
         id: deleteDialog
         anchors.fill: parent
         z: 200

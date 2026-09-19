@@ -376,19 +376,19 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1069
+          "line": 1087
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1085
+          "line": 1104
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1117
+          "line": 1140
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 480
+          "line": 502
         },
         {
           "file": "src/ui/qml/components/ConfirmDialog.qml",
@@ -4698,7 +4698,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1119
+          "line": 1142
         },
         {
           "file": "src/ui/qml/components/DesktopGalleryHeader.qml",
@@ -4719,7 +4719,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1115
+          "line": 1138
         },
         {
           "file": "src/ui/qml/components/OverlayActionMenu.qml",
@@ -4744,7 +4744,7 @@
         },
         {
           "file": "src/ui/qml/components/Lightbox.qml",
-          "line": 202
+          "line": 216
         }
       ],
       "plural": false,
@@ -4764,7 +4764,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1058
+          "line": 1075
         }
       ],
       "plural": false,
@@ -4784,11 +4784,11 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1067
+          "line": 1085
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 478
+          "line": 500
         }
       ],
       "plural": false,
@@ -4805,7 +4805,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 400
+          "line": 413
         }
       ],
       "plural": true,
@@ -4824,7 +4824,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1083
+          "line": 1102
         }
       ],
       "plural": false,
@@ -4979,7 +4979,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/Lightbox.qml",
-          "line": 19
+          "line": 32
         }
       ],
       "plural": false,
@@ -7111,7 +7111,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1040
+          "line": 1057
         },
         {
           "file": "src/ui/qml/settings/LibrarySettingsPage.qml",
@@ -7161,7 +7161,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 158
+          "line": 171
         },
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
@@ -7186,7 +7186,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 166
+          "line": 179
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7207,7 +7207,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 162
+          "line": 175
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7228,7 +7228,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 168
+          "line": 181
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7249,7 +7249,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 170
+          "line": 183
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7270,7 +7270,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 160
+          "line": 173
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7291,7 +7291,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 164
+          "line": 177
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7710,7 +7710,7 @@
       "locations": [
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 103
+          "line": 121
         }
       ],
       "plural": false,
@@ -7727,7 +7727,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 34
+          "line": 37
         }
       ],
       "plural": false,
@@ -7744,7 +7744,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 37
+          "line": 40
         }
       ],
       "plural": false,
@@ -7761,7 +7761,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 19
+          "line": 22
         }
       ],
       "plural": false,
@@ -7778,7 +7778,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 22
+          "line": 25
         }
       ],
       "plural": false,
@@ -7795,7 +7795,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 27
+          "line": 30
         }
       ],
       "plural": false,
@@ -7812,7 +7812,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 30
+          "line": 33
         }
       ],
       "plural": false,
@@ -7829,7 +7829,7 @@
       "locations": [
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 30
+          "line": 43
         }
       ],
       "plural": false,
@@ -10446,7 +10446,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 9
+          "line": 14
         }
       ],
       "plural": false,
@@ -10463,7 +10463,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 133
+          "line": 162
         }
       ],
       "plural": false,
@@ -10482,7 +10482,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 131
+          "line": 160
         }
       ],
       "plural": false,
@@ -10499,7 +10499,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 121
+          "line": 150
         }
       ],
       "plural": false,
@@ -10516,7 +10516,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 117
+          "line": 146
         }
       ],
       "plural": false,
@@ -10533,7 +10533,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 126
+          "line": 155
         }
       ],
       "plural": false,
@@ -10550,7 +10550,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 124
+          "line": 153
         }
       ],
       "plural": false,
@@ -10567,7 +10567,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 119
+          "line": 148
         }
       ],
       "plural": false,
@@ -10577,6 +10577,44 @@
       "source_hash": "bb3f44f11a0571085861963c02d53cbe2bf6c8666924378de1438a9e966bbae5"
     },
     {
+      "id": "gamehq.settings.general.interface_scale.description",
+      "source": "Enlarge text, icons, and controls. Applies immediately; reduced automatically when space is limited.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 86
+        },
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 98
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "f8fcb7d3331d39d0e9847ac018425868f035df39cfd8aaf7b8a85abd2ee64588"
+    },
+    {
+      "id": "gamehq.settings.general.main_scale.label",
+      "source": "Main interface size",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 84
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d85730d003716cf9cd566f340f2907993ab9d2f81fffe5eeebd6cd1293c7dd4c"
+    },
+    {
       "id": "gamehq.settings.general.overlay_dimming.description",
       "source": "How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.",
       "context": "ID",
@@ -10584,7 +10622,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 81
+          "line": 110
         }
       ],
       "plural": false,
@@ -10601,7 +10639,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 79
+          "line": 108
         }
       ],
       "plural": false,
@@ -10611,6 +10649,23 @@
       "source_hash": "85a4f2ecbd5686af12f6171d551b163c289026c58520c9be890b2e9016f410ec"
     },
     {
+      "id": "gamehq.settings.general.overlay_scale.label",
+      "source": "Overlay interface size",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
+          "line": 96
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0bc8dfe15429f8bf797c42c26aa401617e6aef1a07024d7f01d78a23248c09b0"
+    },
+    {
       "id": "gamehq.settings.general.personalization.description",
       "source": "Choose the visual style and in-game overlay strength.",
       "context": "ID",
@@ -10618,7 +10673,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 52
+          "line": 57
         }
       ],
       "plural": false,
@@ -10635,7 +10690,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 48
+          "line": 53
         }
       ],
       "plural": false,
@@ -10652,7 +10707,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 50
+          "line": 55
         }
       ],
       "plural": false,
@@ -10669,7 +10724,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 98
+          "line": 127
         }
       ],
       "plural": false,
@@ -10688,7 +10743,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 94
+          "line": 123
         }
       ],
       "plural": false,
@@ -10705,7 +10760,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 110
+          "line": 139
         }
       ],
       "plural": false,
@@ -10722,7 +10777,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 108
+          "line": 137
         }
       ],
       "plural": false,
@@ -10739,7 +10794,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 96
+          "line": 125
         }
       ],
       "plural": false,
@@ -10758,7 +10813,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 103
+          "line": 132
         }
       ],
       "plural": false,
@@ -10777,7 +10832,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 101
+          "line": 130
         }
       ],
       "plural": false,
@@ -10794,7 +10849,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 67
+          "line": 72
         }
       ],
       "plural": false,
@@ -10813,7 +10868,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 56
+          "line": 61
         }
       ],
       "plural": false,
@@ -10830,7 +10885,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 7
+          "line": 12
         }
       ],
       "plural": false,
@@ -12298,7 +12353,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 17
+          "line": 22
         }
       ],
       "plural": false,
@@ -12317,7 +12372,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 13
+          "line": 18
         }
       ],
       "plural": false,
@@ -12334,7 +12389,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 21
+          "line": 26
         }
       ],
       "plural": false,
@@ -12351,7 +12406,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 23
+          "line": 28
         }
       ],
       "plural": false,
@@ -12374,7 +12429,7 @@
         },
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 31
+          "line": 36
         }
       ],
       "plural": false,
@@ -12391,7 +12446,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 15
+          "line": 20
         }
       ],
       "plural": false,

@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.32",
+  "locale": "en-US",
+  "date": "2026-09-14",
+  "sections": [
+    {
+      "id": "fixed",
+      "title": "Fixed",
+      "items": [
+        {
+          "id": "offline-update-notes",
+          "text": "Previously discovered updates and their cached release notes remain available after restarting GameHQ offline. Cached discovery never replaces update signature verification."
+        }
+      ]
+    }
+  ]
+}

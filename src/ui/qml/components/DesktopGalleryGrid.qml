@@ -191,8 +191,10 @@ Item {
         }
         onPositionChanged: {
             if (gridScroll.pressed)
-                galleryGrid.contentY = gridScroll.position
-                    * Math.max(0, galleryGrid.contentHeight - galleryGrid.height)
+                // ScrollBar.position is a fraction of the whole content,
+                // with its maximum at 1 - size, not at 1.
+                galleryGrid.contentY = galleryGrid.originY
+                    + gridScroll.position * galleryGrid.contentHeight
         }
         interactive: true
         contentItem: Rectangle {

@@ -107,10 +107,10 @@
       <translation>Abbrechen</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1069"></location>
-      <location filename="src/ui/qml/Main.qml" line="1085"></location>
-      <location filename="src/ui/qml/Main.qml" line="1117"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="480"></location>
+      <location filename="src/ui/qml/Main.qml" line="1087"></location>
+      <location filename="src/ui/qml/Main.qml" line="1104"></location>
+      <location filename="src/ui/qml/Main.qml" line="1140"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="502"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="16"></location>
@@ -1333,38 +1333,38 @@
       <translation>Ordner hinzufügen…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1119"></location>
+      <location filename="src/ui/qml/Main.qml" line="1142"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Massenauswahl</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1115"></location>
+      <location filename="src/ui/qml/Main.qml" line="1138"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="14"></location>
       <source>Show in folder</source>
       <translation>Im Ordner anzeigen</translation>
     </message>
     <message id="gamehq.gallery.capture_caption">
       <location filename="src/ui/qml/components/CaptureTile.qml" line="180"></location>
-      <location filename="src/ui/qml/components/Lightbox.qml" line="202"></location>
+      <location filename="src/ui/qml/components/Lightbox.qml" line="216"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1058"></location>
+      <location filename="src/ui/qml/Main.qml" line="1075"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 Dadurch wird die Datei dauerhaft gelöscht.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1067"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="478"></location>
+      <location filename="src/ui/qml/Main.qml" line="1085"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="500"></location>
       <source>Delete capture?</source>
       <translation>Aufnahme löschen?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="400"></location>
+      <location filename="src/ui/qml/Main.qml" line="413"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
@@ -1375,7 +1375,7 @@ Dieser Vorgang kann nicht rückgängig gemacht werden.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1083"></location>
+      <location filename="src/ui/qml/Main.qml" line="1102"></location>
       <source>Delete selected captures?</source>
       <translation>Ausgewählte Aufnahmen löschen?</translation>
     </message>
@@ -1423,7 +1423,7 @@ Dieser Vorgang kann nicht rückgängig gemacht werden.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.viewer.window_title">
-      <location filename="src/ui/qml/components/Lightbox.qml" line="19"></location>
+      <location filename="src/ui/qml/components/Lightbox.qml" line="32"></location>
       <source>%1 Viewer</source>
       <translation>%1 – Medienansicht</translation>
     </message>
@@ -2039,7 +2039,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>%1 wird gemeinsam verwendet: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1040"></location>
+      <location filename="src/ui/qml/Main.qml" line="1057"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Zu überwachenden Ordner auswählen</translation>
@@ -2053,44 +2053,44 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Info</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="158"></location>
+      <location filename="src/ui/qml/Main.qml" line="171"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="57"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="11"></location>
       <source>All</source>
       <translation>Alle</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="166"></location>
+      <location filename="src/ui/qml/Main.qml" line="179"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="19"></location>
       <source>Clips</source>
       <translation>Clips</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="162"></location>
+      <location filename="src/ui/qml/Main.qml" line="175"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="15"></location>
       <source>Favorites</source>
       <translation>Favoriten</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="168"></location>
+      <location filename="src/ui/qml/Main.qml" line="181"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="21"></location>
       <source>Game</source>
       <translation>Spiel</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="170"></location>
+      <location filename="src/ui/qml/Main.qml" line="183"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
       <source>Game favorites</source>
       <translation>Spielfavoriten</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="160"></location>
+      <location filename="src/ui/qml/Main.qml" line="173"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="13"></location>
       <source>Recent</source>
       <translation>Neueste</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="164"></location>
+      <location filename="src/ui/qml/Main.qml" line="177"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="17"></location>
       <source>Screenshots</source>
       <translation>Screenshots</translation>
@@ -2210,42 +2210,42 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Aufnahmeaktionen</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="103"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="121"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>Das Spiel ist weiterhin fokussiert und kann auf Controller-Eingaben reagieren</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="34"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>
       <source>L1/R1 — captures | D-pad Up/Down — categories/games | Cross — open | Triangle — favorite | Square — menu | Circle — back to game</source>
       <translation>L1/R1 — Aufnahmen | D-Pad hoch/runter — Kategorien/Spiele | Kreuz — öffnen | Dreieck — Favorit | Quadrat — Menü | Kreis — zurück zum Spiel</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="40"></location>
       <source>Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
       <translation>Links/Rechts — Aufnahmen | Hoch/Runter — Kategorien/Spiele | Enter — öffnen | F — Favorit | M — Menü | Esc — zurück zum Spiel</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="19"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="22"></location>
       <source>D-pad Up/Down — choose | Cross — confirm | Circle — close menu</source>
       <translation>D-Pad hoch/runter — wählen | Kreuz — bestätigen | Kreis — Menü schließen</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="22"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="25"></location>
       <source>Up/Down — choose | Enter — confirm | Esc/Backspace — close menu</source>
       <translation>Hoch/Runter — wählen | Enter — bestätigen | Esc/Backspace — Menü schließen</translation>
     </message>
     <message id="gamehq.overlay.hint.video.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="27"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="30"></location>
       <source>D-pad Left/Right — scrub | Cross — play/pause | Circle — back to captures</source>
       <translation>D-Pad links/rechts — suchen | Kreuz — Wiedergabe/Pause | Kreis — zurück zu den Aufnahmen</translation>
     </message>
     <message id="gamehq.overlay.hint.video.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="30"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="33"></location>
       <source>Left/Right — scrub clip | Enter — play/pause | Esc/Backspace — back to captures</source>
       <translation>Links/Rechts — Clip durchsuchen | Enter — Wiedergabe/Pause | Esc/Backspace — zurück zu den Aufnahmen</translation>
     </message>
     <message id="gamehq.overlay.window_title">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="30"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="43"></location>
       <source>%1 Overlay</source>
       <translation>%1 Overlay</translation>
     </message>
@@ -3005,117 +3005,133 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Benachrichtigungen</translation>
     </message>
     <message id="gamehq.settings.general.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="9"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="14"></location>
       <source>Appearance, startup, and window behavior.</source>
       <translation>Aussehen, Start- und Fensterverhalten.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.close_to_tray.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="133"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="162"></location>
       <source>Keep capture and replay services running; when disabled, Close exits %1.</source>
       <translation>Aufnahme- und Replay-Dienste bleiben aktiv; wenn deaktiviert, beendet „Schließen“ %1.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.close_to_tray.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="131"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="160"></location>
       <source>Close to tray</source>
       <translation>Beim Schließen im Infobereich lassen</translation>
     </message>
     <message id="gamehq.settings.general.desktop.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="121"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="150"></location>
       <source>Choose what happens when the main window is minimized or closed.</source>
       <translation>Wählen Sie, was passiert, wenn das Hauptfenster minimiert oder geschlossen wird.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="117"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="146"></location>
       <source>Desktop</source>
       <translation>Desktop</translation>
     </message>
     <message id="gamehq.settings.general.desktop.minimize_to_tray.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="155"></location>
       <source>Minimizing the window sends it straight to the tray instead of the taskbar.</source>
       <translation>Beim Minimieren wird das Fenster direkt in den Infobereich statt in die Taskleiste verschoben.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.minimize_to_tray.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="124"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="153"></location>
       <source>Minimize to tray</source>
       <translation>In den Infobereich minimieren</translation>
     </message>
     <message id="gamehq.settings.general.desktop.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="119"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="148"></location>
       <source>Window and tray behavior</source>
       <translation>Fenster- und Infobereichsverhalten</translation>
     </message>
+    <message id="gamehq.settings.general.interface_scale.description">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="86"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
+      <source>Enlarge text, icons, and controls. Applies immediately; reduced automatically when space is limited.</source>
+      <translation>Vergrößert Text, Symbole und Bedienelemente. Änderungen gelten sofort; bei wenig Platz wird die Größe automatisch reduziert.</translation>
+    </message>
+    <message id="gamehq.settings.general.main_scale.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="84"></location>
+      <source>Main interface size</source>
+      <translation>Größe der Hauptoberfläche</translation>
+    </message>
     <message id="gamehq.settings.general.overlay_dimming.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="81"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="110"></location>
       <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
       <translation>Stärke der Abdunkelung des Spiels hinter dem In-Game-Overlay. 100 % entspricht der Abdunkelung des Designs; niedrigere Werte lassen mehr vom Spiel sichtbar.</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="79"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="108"></location>
       <source>Overlay dimming</source>
       <translation>Overlay-Abdunkelung</translation>
     </message>
+    <message id="gamehq.settings.general.overlay_scale.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="96"></location>
+      <source>Overlay interface size</source>
+      <translation>Größe der Overlay-Oberfläche</translation>
+    </message>
     <message id="gamehq.settings.general.personalization.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="52"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="57"></location>
       <source>Choose the visual style and in-game overlay strength.</source>
       <translation>Wählen Sie den visuellen Stil und die In-Game-Overlay-Stärke.</translation>
     </message>
     <message id="gamehq.settings.general.personalization.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="48"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="53"></location>
       <source>Personalization</source>
       <translation>Personalisierung</translation>
     </message>
     <message id="gamehq.settings.general.personalization.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="50"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="55"></location>
       <source>Look and feel</source>
       <translation>Erscheinungsbild</translation>
     </message>
     <message id="gamehq.settings.general.startup.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="127"></location>
       <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
       <translation>Festlegen, ob GameHQ bei der Windows-Anmeldung automatisch und im Hintergrund startet.</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="94"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="123"></location>
       <source>Startup</source>
       <translation>Autostart</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="110"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="139"></location>
       <source>Launch directly in the system tray without opening the main window.</source>
       <translation>Direkt im Infobereich starten, ohne das Hauptfenster zu öffnen.</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="108"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="137"></location>
       <source>Launch minimized</source>
       <translation>Minimiert starten</translation>
     </message>
     <message id="gamehq.settings.general.startup.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="96"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="125"></location>
       <source>How %1 starts</source>
       <translation>Startverhalten von %1</translation>
     </message>
     <message id="gamehq.settings.general.startup.windows.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="103"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="132"></location>
       <source>Register %1 for the current Windows user; no administrator access is required.</source>
       <translation>Registrieren Sie %1 für den aktuellen Windows-Benutzer; es ist kein Administratorzugriff erforderlich.</translation>
     </message>
     <message id="gamehq.settings.general.startup.windows.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="101"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="130"></location>
       <source>Start with Windows</source>
       <translation>Mit Windows starten</translation>
     </message>
     <message id="gamehq.settings.general.theme.fallback">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="67"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="72"></location>
       <source>Choose how %1 looks.</source>
       <translation>Erscheinungsbild von %1 auswählen.</translation>
     </message>
     <message id="gamehq.settings.general.theme.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="56"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="61"></location>
       <source>Theme</source>
       <translation>Design</translation>
     </message>
     <message id="gamehq.settings.general.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="7"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="12"></location>
       <source>General</source>
       <translation>Allgemein</translation>
     </message>
@@ -3543,33 +3559,33 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Testen und wiederherstellen</translation>
     </message>
     <message id="gamehq.settings.language.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="17"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="22"></location>
       <source>Choose the language GameHQ uses.</source>
       <translation>Sprache auswählen, die GameHQ verwendet.</translation>
     </message>
     <message id="gamehq.settings.language.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="13"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="18"></location>
       <source>Language</source>
       <translation>Sprache</translation>
     </message>
     <message id="gamehq.settings.language.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="21"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="26"></location>
       <source>Display language</source>
       <translation>Anzeigesprache</translation>
     </message>
     <message id="gamehq.settings.language.row_description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="23"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="28"></location>
       <source>Changes apply immediately throughout GameHQ.</source>
       <translation>Änderungen gelten sofort im gesamten GameHQ.</translation>
     </message>
     <message id="gamehq.settings.language.system">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="326"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="31"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="36"></location>
       <source>System language</source>
       <translation>Systemsprache</translation>
     </message>
     <message id="gamehq.settings.language.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="15"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="20"></location>
       <source>Interface language</source>
       <translation>Oberflächensprache</translation>
     </message>

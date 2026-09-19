@@ -51,7 +51,7 @@ Item {
 
     function revealFocusedItem() {
         const item = Window.window ? Window.window.activeFocusItem : null
-        if (!item || !containsItem(item))
+        if (!item || item === pageContainer || !PadNav.isInside(item, pageContainer))
             return
         // A modal scrolls its own viewport; the page must not chase it.
         if (padOverlay && PadNav.isInside(item, padOverlay))
@@ -62,7 +62,7 @@ Item {
         if (top < flick.contentY)
             flick.contentY = top
         else if (bottom > flick.contentY + flick.height)
-            flick.contentY = Math.min(flick.contentHeight - flick.height,
+            flick.contentY = Math.min(Math.max(0, flick.contentHeight - flick.height),
                                       bottom - flick.height)
     }
 
@@ -71,7 +71,17 @@ Item {
         // the Connections object — which is not an Item — and stay null
         // forever, silently never connecting. Qualify through the page item.
         target: root.Window.window
-        function onActiveFocusItemChanged() { Qt.callLater(root.revealFocusedItem) }
+        function onActiveFocusItemChanged() {
+            const item = root.Window.window.activeFocusItem
+            // Pointer interaction already targets the visible area. Revealing
+            // its focus can fight scrolling; only navigation needs assistance.
+            if (!item || item.focusReason === Qt.MouseFocusReason)
+                return
+            Qt.callLater(function() {
+                if (root.Window.window && root.Window.window.activeFocusItem === item)
+                    root.revealFocusedItem()
+            })
+        }
     }
 
     // True while the focused control still overlaps the visible band. The right

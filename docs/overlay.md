@@ -1,30 +1,26 @@
 # Overlay Design
 
-> Milestone 0.2. Core rule: **GameHQ is primarily an in-game overlay**, never a window you alt-tab into.
+> GameHQ is primarily an in-game overlay, without injection into game processes.
 
 ## Behavior contract
 
-- PS (or hotkey `Ctrl+Shift+G`, or Share double-tap fallback): toggle overlay.
-- On open: the first sidebar tab is `Game`, filtered to screenshots and clips for the game that had focus before the overlay appeared. When a current game is available, `Game Favourites` appears directly below it and shows only favourite captures from that same game.
-- The overlay remembers the category it was left on **per game** (`ui.overlay_filter.<gameId>`, see docs/product-spec.md "Navigation memory" R8): reopening on the same game restores that category, and switching games restores the new game's own. The game binding itself always follows the foreground game and is never restored, so the overlay can never open on a game that is not running.
-- Circle: back in submenus/viewer; close from main gallery.
-- On close: hide → restore focus to remembered game HWND → controller input returns to game.
-- Overlay open ⇒ GameHQ takes the OS foreground focus, and its own input routing sends pad events to the overlay UI instead of GameHQ actions. **This is not input isolation from the game's point of view**: games that pause or ignore input on focus loss stop reacting, but games that keep reading XInput/DirectInput/Raw Input in the background (e.g. Rise of the Ronin) still receive the pad while the overlay is open. Universal blocking requires the separately designed, unimplemented Exclusive Controller Mode (`docs/design/exclusive-controller-mode.md`). Product copy: "GameHQ takes foreground focus while the overlay is open; some games that accept background controller input may still respond."
-- Any OS-level focus change away from the overlay (Windows key, Alt-Tab, task
-  switcher, clicking another window) auto-hides the overlay the same way
-  Circle/click-outside does, **except** it does not force focus back onto the
-  remembered game — that would fight whatever just took focus (e.g. yanking
-  focus away from a freshly-opened Start menu). Detected process-wide via
-  `SetWinEventHook(EVENT_SYSTEM_FOREGROUND)` in `OverlayManager` so every
-  system focus-changing operation is covered, not just a hard-coded key list.
+- PS, `Ctrl+Shift+G`, or the Share double-tap fallback toggles the overlay.
+- Opening remembers the foreground game and shows a frameless, topmost tool window on its monitor without activating it.
+- The game keeps OS focus. GameHQ routes its controller events by overlay visibility, independently of keyboard focus. This does not block the game from receiving the same controller input; the existing focus warning remains visible.
+- Circle goes back in submenus/viewers and closes from the gallery. Closing only hides the overlay; it never acquires or restores foreground.
+- Foreground events for the remembered game or overlay leave it open. A current foreground event for another window (Alt-Tab, Start, another application) dismisses it. Queued events are ignored when their HWND no longer matches `GetForegroundWindow()`.
+- Keyboard navigation and Escape are unavailable while the game retains focus. Use the global toggle hotkey or controller to close. Mouse clicks are intended to interact without activation; hardware verification remains required.
+- The first sidebar tab is `Game`, filtered to captures for the foreground game, followed by `Game Favourites` when available. Category selection is remembered per game (`ui.overlay_filter.<gameId>`); the game binding always follows the foreground game.
 
-## Window technique (MVP, no injection)
+## Windows implementation
 
-- Qt `QQuickWindow` with `Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint`, no taskbar entry (`Qt::Tool`).
-- On show: remember `GetForegroundWindow()` (the game), then move the OS foreground to the overlay. The `AttachThreadInput` foreground-lock bypass lives behind the `ForegroundApi` seam (`overlay/ForegroundApi.cpp`); `ForegroundAcquirer` wraps it with **verification and a bounded retry** — the result of `SetForegroundWindow` is not trusted, the actual foreground window is re-read, and on mismatch it retries at most twice (50 ms, 150 ms) with no busy loop. The final outcome is logged, recorded in the input diagnostics ring, and exposed as `overlay.foregroundAcquired`; on failure the overlay still opens but shows a non-blocking "the game still has focus" notice and never claims input isolation. Tested with a deterministic denial fake in `tst_foregroundacquirer`.
-- On hide: focus is restored to the remembered game HWND via the same acquire-verify-retry path.
-- Supported: borderless fullscreen, windowed fullscreen, windowed. **Exclusive fullscreen not guaranteed** — detect (window covers monitor + `IsIconic` false + swap-chain heuristics unavailable without injection) and advise switching to borderless.
-- **Never** inject into game processes (anti-cheat).
+`OverlayManager` uses `Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::WindowDoesNotAcceptFocus` and `SetWindowPos(HWND_TOPMOST, SWP_NOACTIVATE)`. Qt's Windows tool-window show path uses `SW_SHOWNOACTIVATE`; its no-focus flag handles mouse activation with `MA_NOACTIVATE`.
+
+The overlay has no `ForegroundAcquirer`, `requestActivate`, `AttachThreadInput`, or foreground retry path. The separate desktop window still uses its existing acquisition mechanism.
+
+Sources: [Qt Windows show implementation](https://github.com/qt/qtbase/blob/6.8/src/plugins/platforms/windows/qwindowswindow.cpp), [Qt activation handling](https://github.com/qt/qtbase/blob/6.8/src/plugins/platforms/windows/qwindowscontext.cpp), [Microsoft mouse activation contract](https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-mouseactivate).
+
+This local Khazan compatibility change still requires verification in a rebuilt executable. Borderless/windowed modes are the intended targets; exclusive fullscreen is not guaranteed. It does not establish a fix for the original reported freeze. Controller isolation remains a separate, unimplemented design (`docs/design/exclusive-controller-mode.md`).
 
 ## QML structure
 

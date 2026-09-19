@@ -6,6 +6,53 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.32] - 2026-09-14
+
+### Fixed
+
+- Restore previously discovered updates and their cached notes after restarting
+  offline. Discovered metadata remains untrusted and never authorizes installation.
+
+## [0.7.31] - 2026-09-14
+
+### Added
+
+- Optional GitHub link beneath upcoming release notes opens the matching release
+  page and supports controller navigation.
+
+## [0.7.30] - 2026-09-14
+
+### Fixed
+
+- Upcoming release notes now load and render inside GameHQ, with translated
+  notes fetched from the exact GitHub release tag, immediate English fallback,
+  persistent cached notes, and safe formatting. Language changes discard stale
+  responses; failed requests preserve existing notes and empty results offer retry.
+
+## [0.7.29] - 2026-09-14
+
+### Fixed
+
+- Suggested updates now show matching bundled release notes or a direct GitHub
+  release-notes link instead of a blank panel, including controller navigation.
+
+## [0.7.28] - 2026-09-12
+
+### Fixed
+
+- Fixed the blank main window caused by scaled-content reparenting changing
+  the drawing order. Backgrounds stay behind controls, and action menus remain
+  above content in both the main window and overlay.
+
+## [0.7.27] - 2026-09-12
+
+### Added
+
+- Independent main interface and overlay size presets (100%, 125%, 150%, 175%,
+  200%) in General settings, applied live and saved between sessions.
+- Text, icons, controls, spacing, dropdowns, and the fullscreen capture viewer
+  scale together; small windows limit enlargement to keep navigation reachable.
+
 ## [0.7.26] - 2026-09-09
 
 ### Changed

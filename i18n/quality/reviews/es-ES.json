@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-es-es-review; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review",
+    "actor": "codex-gpt-5-contextual-es-es-review; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review",
     "method": "complete_source_location_context_review_with_bounded_technical_recovery",
     "draft_provider": "machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-09T21:26:00.978449Z"
+    "recorded_at": "2026-09-12T16:22:27.038746Z"
   },
   "baseline": {
     "path": "git:a2169e25b18349a12c5d7b8da4b69a7747191929:i18n/app/gamehq_es_ES.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_es_ES.ts",
-    "sha256": "7a2cb5bda684bd7f94d0c5c300f8c450994749747c119817ee7fac08d4f7fba8",
-    "message_count": 854
+    "sha256": "4e9e0dc5ed5a51adbe8d0669a92c94c99d3641cfbf2d3a8d86640eb337aa35ec",
+    "message_count": 857
   },
   "coverage": [
     {
@@ -5361,6 +5361,25 @@
       "decision": "corrected"
     },
     {
+      "id": "gamehq.settings.general.interface_scale.description",
+      "source_hash": "f8fcb7d3331d39d0e9847ac018425868f035df39cfd8aaf7b8a85abd2ee64588",
+      "translation_hash": "fa25af3f26bd2118d8bf484729968033e333eced62b0cbd86ee8c8f221c46db7",
+      "locations": [
+        "src/ui/qml/settings/GeneralSettingsPage.qml:86",
+        "src/ui/qml/settings/GeneralSettingsPage.qml:98"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.general.main_scale.label",
+      "source_hash": "d85730d003716cf9cd566f340f2907993ab9d2f81fffe5eeebd6cd1293c7dd4c",
+      "translation_hash": "a2438ce12e0df08e6a00e9ea478237174ccdb43363eda4dbf05be6f82f2bd724",
+      "locations": [
+        "src/ui/qml/settings/GeneralSettingsPage.qml:84"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.settings.general.overlay_dimming.description",
       "source_hash": "e05bf20e681354c990b3cfafdef766992f4e1891703da73c84b8aa15582e2219",
       "translation_hash": "4fa76262e8171a3ee63a39f884a48d0336575f75babe0609a039119e1e748164",
@@ -5377,6 +5396,15 @@
         "src/ui/qml/settings/GeneralSettingsPage.qml:79"
       ],
       "decision": "corrected"
+    },
+    {
+      "id": "gamehq.settings.general.overlay_scale.label",
+      "source_hash": "0bc8dfe15429f8bf797c42c26aa401617e6aef1a07024d7f01d78a23248c09b0",
+      "translation_hash": "197f5109d17a952b1652e8084f172cf4d2d4471891e5719aa26298bf01b9bcdc",
+      "locations": [
+        "src/ui/qml/settings/GeneralSettingsPage.qml:96"
+      ],
+      "decision": "accepted"
     },
     {
       "id": "gamehq.settings.general.personalization.description",
@@ -15065,8 +15093,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_es_ES.ts",
-      "sha256": "7a2cb5bda684bd7f94d0c5c300f8c450994749747c119817ee7fac08d4f7fba8",
-      "reviewed_units": 854
+      "sha256": "4e9e0dc5ed5a51adbe8d0669a92c94c99d3641cfbf2d3a8d86640eb337aa35ec",
+      "reviewed_units": 857
     },
     {
       "surface": "installer",

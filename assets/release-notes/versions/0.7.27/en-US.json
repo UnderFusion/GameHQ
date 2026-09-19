@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.27",
+  "locale": "en-US",
+  "date": "2026-09-12",
+  "sections": [
+    {
+      "id": "added",
+      "title": "Added",
+      "items": [
+        {
+          "id": "independent-interface-scaling",
+          "text": "Choose separate main-window and in-game overlay sizes from 100% to 200% in General settings. Text, icons, controls, and spacing scale together."
+        },
+        {
+          "id": "scale-to-fit",
+          "text": "Interface size updates immediately and is saved between sessions. Smaller windows automatically limit enlargement to keep controls accessible."
+        }
+      ]
+    }
+  ]
+}

@@ -18,7 +18,7 @@ public:
     static ReleaseNotes fromJson(const QByteArray& json, QString* error = nullptr);
     static ReleaseNotes fromJson(const QByteArray& json, const QLocale& locale,
                                  QString* error = nullptr);
-    // Release notes come only from the versioned source's generated,
+    // Offline release notes come from the versioned source's generated,
     // integrity-checked locale bundles.
     static ReleaseNotes loadBundled(const QString &requestedLocale,
                                     const LocaleRegistry &registry,

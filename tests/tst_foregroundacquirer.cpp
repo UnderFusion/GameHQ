@@ -100,6 +100,26 @@ private slots:
         QCOMPARE(spy.count(), 1);
         QCOMPARE(spy.first().at(0).toString(), QStringLiteral("overlay hide"));
     }
+
+    void cancelPreventsClosedOverlayFromReacquiringFocus()
+    {
+        auto* api = new FakeForegroundApi;
+        api->succeedOnAttempt = 2;
+        api->current = hwnd(0x20);
+        ForegroundAcquirer acquirer(api);
+        QSignalSpy spy(&acquirer, &ForegroundAcquirer::finished);
+
+        acquirer.acquire(hwnd(0x21), QStringLiteral("overlay show"));
+        acquirer.cancel();
+        QTest::qWait(300);
+        QCOMPARE(api->attempts, 1);
+        QCOMPARE(api->current, hwnd(0x20));
+        QCOMPARE(spy.count(), 0);
+
+        acquirer.acquire(hwnd(0x22), QStringLiteral("overlay show"));
+        QCOMPARE(api->current, hwnd(0x22));
+        QCOMPARE(spy.count(), 1);
+    }
 };
 
 QTEST_GUILESS_MAIN(ForegroundAcquirerTest)

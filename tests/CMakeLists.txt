@@ -313,6 +313,15 @@ gamehq_add_test(tst_versionnumber
     tst_versionnumber.cpp
     "${CMAKE_SOURCE_DIR}/src/updates/VersionNumber.cpp")
 
+gamehq_add_test(tst_remotereleasenotes
+    tst_remotereleasenotes.cpp
+    "${CMAKE_SOURCE_DIR}/src/updates/RemoteReleaseNotes.cpp"
+    "${CMAKE_SOURCE_DIR}/src/updates/ReleaseCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/updates/VersionNumber.cpp"
+    "${CMAKE_SOURCE_DIR}/src/app/ReleaseNotes.cpp"
+    "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp")
+target_link_libraries(tst_remotereleasenotes PRIVATE Qt6::Network)
+
 gamehq_add_test(tst_releasenotes
     tst_releasenotes.cpp
     "${CMAKE_SOURCE_DIR}/src/app/ReleaseNotes.cpp"

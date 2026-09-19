@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls.Basic
 import QtQuick.Window
 import QtMultimedia
 import GameHQ
@@ -12,6 +13,18 @@ import "."
 // on a CaptureTile (see Main.qml).
 Window {
     id: root
+
+    // Keep native window geometry separate from the scaled interface.
+    readonly property ScaledSurface uiSurface: ScaledSurface {
+        id: scaledViewport
+        parent: root.contentItem
+        anchors.fill: parent
+        settings: app
+        configKey: "theme.main_scale"
+        minimumContentWidth: Theme.minimumUiWidth
+        minimumContentHeight: Theme.minimumUiHeight
+    }
+    Overlay.overlay.transform: uiSurface.scaleTransform
     visible: false
     flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
     color: "transparent"
@@ -128,6 +141,7 @@ Window {
     }
 
     Item {
+        parent: uiSurface.contentItem
         id: content
         anchors.fill: parent
         focus: true

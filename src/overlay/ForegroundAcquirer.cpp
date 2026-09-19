@@ -30,10 +30,19 @@ void ForegroundAcquirer::acquire(void* target, const QString& phase)
     attempt();
 }
 
+void ForegroundAcquirer::cancel()
+{
+    ++m_generation;
+}
+
 void ForegroundAcquirer::attempt()
 {
+    const int attemptGeneration = m_generation;
     ++m_attempts;
     const bool reported = m_api->forceForeground(m_target);
+    // Native focus calls can dispatch callbacks that cancel this acquisition.
+    if (attemptGeneration != m_generation)
+        return;
     // What SetForegroundWindow *reported* is not the truth — re-read where the
     // foreground actually is. Windows can claim success without moving it.
     const bool acquired = m_api->foregroundWindow() == m_target;

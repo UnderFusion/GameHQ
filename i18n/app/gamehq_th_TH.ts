@@ -107,10 +107,10 @@
       <translation>ยกเลิก</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1069"></location>
-      <location filename="src/ui/qml/Main.qml" line="1085"></location>
-      <location filename="src/ui/qml/Main.qml" line="1117"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="480"></location>
+      <location filename="src/ui/qml/Main.qml" line="1087"></location>
+      <location filename="src/ui/qml/Main.qml" line="1104"></location>
+      <location filename="src/ui/qml/Main.qml" line="1140"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="502"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="16"></location>
@@ -1331,38 +1331,38 @@
       <translation>เพิ่มโฟลเดอร์...</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1119"></location>
+      <location filename="src/ui/qml/Main.qml" line="1142"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>เลือกเป็นกลุ่ม</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1115"></location>
+      <location filename="src/ui/qml/Main.qml" line="1138"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="14"></location>
       <source>Show in folder</source>
       <translation>แสดงในโฟลเดอร์</translation>
     </message>
     <message id="gamehq.gallery.capture_caption">
       <location filename="src/ui/qml/components/CaptureTile.qml" line="180"></location>
-      <location filename="src/ui/qml/components/Lightbox.qml" line="202"></location>
+      <location filename="src/ui/qml/components/Lightbox.qml" line="216"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1058"></location>
+      <location filename="src/ui/qml/Main.qml" line="1075"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 การดำเนินการนี้จะลบไฟล์อย่างถาวร</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1067"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="478"></location>
+      <location filename="src/ui/qml/Main.qml" line="1085"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="500"></location>
       <source>Delete capture?</source>
       <translation>ลบรายการสื่อนี้หรือไม่</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="400"></location>
+      <location filename="src/ui/qml/Main.qml" line="413"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
@@ -1371,7 +1371,7 @@ This cannot be undone.</source>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1083"></location>
+      <location filename="src/ui/qml/Main.qml" line="1102"></location>
       <source>Delete selected captures?</source>
       <translation>ลบรายการสื่อที่เลือกหรือไม่</translation>
     </message>
@@ -1418,7 +1418,7 @@ This cannot be undone.</source>
       </translation>
     </message>
     <message id="gamehq.gallery.viewer.window_title">
-      <location filename="src/ui/qml/components/Lightbox.qml" line="19"></location>
+      <location filename="src/ui/qml/components/Lightbox.qml" line="32"></location>
       <source>%1 Viewer</source>
       <translation>โปรแกรมดู %1</translation>
     </message>
@@ -2034,7 +2034,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 ใช้ร่วมกัน: %2 = %3, %4 = %5</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1040"></location>
+      <location filename="src/ui/qml/Main.qml" line="1057"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>เลือกโฟลเดอร์ที่จะดู</translation>
@@ -2048,44 +2048,44 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>เกี่ยวกับ</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="158"></location>
+      <location filename="src/ui/qml/Main.qml" line="171"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="57"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="11"></location>
       <source>All</source>
       <translation>ทั้งหมด</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="166"></location>
+      <location filename="src/ui/qml/Main.qml" line="179"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="19"></location>
       <source>Clips</source>
       <translation>คลิป</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="162"></location>
+      <location filename="src/ui/qml/Main.qml" line="175"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="15"></location>
       <source>Favorites</source>
       <translation>รายการโปรด</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="168"></location>
+      <location filename="src/ui/qml/Main.qml" line="181"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="21"></location>
       <source>Game</source>
       <translation>เกม</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="170"></location>
+      <location filename="src/ui/qml/Main.qml" line="183"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
       <source>Game favorites</source>
       <translation>รายการโปรดของเกม</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="160"></location>
+      <location filename="src/ui/qml/Main.qml" line="173"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="13"></location>
       <source>Recent</source>
       <translation>ล่าสุด</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="164"></location>
+      <location filename="src/ui/qml/Main.qml" line="177"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="17"></location>
       <source>Screenshots</source>
       <translation>ภาพหน้าจอ</translation>
@@ -2205,42 +2205,42 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>การทำงานกับสื่อ</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="103"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="121"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>เกมยังมีโฟกัสและอาจตอบสนองต่ออินพุตจากคอนโทรลเลอร์</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="34"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>
       <source>L1/R1 — captures | D-pad Up/Down — categories/games | Cross — open | Triangle — favorite | Square — menu | Circle — back to game</source>
       <translation>L1/R1 — รายการสื่อ | D-pad Up/Down — หมวดหมู่/เกม | Cross — เปิด | Triangle — รายการโปรด | Square — เมนู | Circle — กลับไปยังเกม</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="40"></location>
       <source>Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
       <translation>Left/Right — รายการสื่อ | Up/Down — หมวดหมู่/เกม | Enter — เปิด | F — รายการโปรด | M — เมนู | Esc — กลับไปยังเกม</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="19"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="22"></location>
       <source>D-pad Up/Down — choose | Cross — confirm | Circle — close menu</source>
       <translation>D-pad ขึ้น/ลง — เลือก | Cross — ยืนยัน | Circle — ปิดเมนู</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="22"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="25"></location>
       <source>Up/Down — choose | Enter — confirm | Esc/Backspace — close menu</source>
       <translation>ขึ้น/ลง — เลือก | Enter — ยืนยัน | Esc/Backspace — ปิดเมนู</translation>
     </message>
     <message id="gamehq.overlay.hint.video.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="27"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="30"></location>
       <source>D-pad Left/Right — scrub | Cross — play/pause | Circle — back to captures</source>
       <translation>D-pad Left/Right — เลื่อนตำแหน่ง | Cross — เล่น/หยุดชั่วคราว | Circle — กลับไปรายการสื่อ</translation>
     </message>
     <message id="gamehq.overlay.hint.video.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="30"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="33"></location>
       <source>Left/Right — scrub clip | Enter — play/pause | Esc/Backspace — back to captures</source>
       <translation>Left/Right — เลื่อนตำแหน่งคลิป | Enter — เล่น/หยุดชั่วคราว | Esc/Backspace — กลับไปรายการสื่อ</translation>
     </message>
     <message id="gamehq.overlay.window_title">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="30"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="43"></location>
       <source>%1 Overlay</source>
       <translation>โอเวอร์เลย์ %1</translation>
     </message>
@@ -3000,117 +3000,133 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>การแจ้งเตือน</translation>
     </message>
     <message id="gamehq.settings.general.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="9"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="14"></location>
       <source>Appearance, startup, and window behavior.</source>
       <translation>ลักษณะที่ปรากฏ การเริ่มต้น และลักษณะการทำงานของหน้าต่าง</translation>
     </message>
     <message id="gamehq.settings.general.desktop.close_to_tray.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="133"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="162"></location>
       <source>Keep capture and replay services running; when disabled, Close exits %1.</source>
       <translation>ให้บริการจับภาพและรีเพลย์ทำงานต่อไป เมื่อปิดตัวเลือกนี้ การกด ปิด จะออกจาก %1</translation>
     </message>
     <message id="gamehq.settings.general.desktop.close_to_tray.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="131"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="160"></location>
       <source>Close to tray</source>
       <translation>ปิดไปยังพื้นที่แจ้งเตือน</translation>
     </message>
     <message id="gamehq.settings.general.desktop.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="121"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="150"></location>
       <source>Choose what happens when the main window is minimized or closed.</source>
       <translation>เลือกสิ่งที่จะเกิดขึ้นเมื่อมีการย่อหรือปิดหน้าต่างหลัก</translation>
     </message>
     <message id="gamehq.settings.general.desktop.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="117"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="146"></location>
       <source>Desktop</source>
       <translation>เดสก์ท็อป</translation>
     </message>
     <message id="gamehq.settings.general.desktop.minimize_to_tray.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="155"></location>
       <source>Minimizing the window sends it straight to the tray instead of the taskbar.</source>
       <translation>การย่อขนาดหน้าต่างจะส่งตรงไปที่พื้นที่แจ้งเตือนแทนทาสก์บาร์</translation>
     </message>
     <message id="gamehq.settings.general.desktop.minimize_to_tray.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="124"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="153"></location>
       <source>Minimize to tray</source>
       <translation>ย่อไปยังพื้นที่แจ้งเตือน</translation>
     </message>
     <message id="gamehq.settings.general.desktop.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="119"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="148"></location>
       <source>Window and tray behavior</source>
       <translation>ลักษณะหน้าต่างและพื้นที่แจ้งเตือน</translation>
     </message>
+    <message id="gamehq.settings.general.interface_scale.description">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="86"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
+      <source>Enlarge text, icons, and controls. Applies immediately; reduced automatically when space is limited.</source>
+      <translation>ขยายข้อความ ไอคอน และส่วนควบคุม มีผลทันที และจะลดขนาดโดยอัตโนมัติเมื่อมีพื้นที่ไม่เพียงพอ</translation>
+    </message>
+    <message id="gamehq.settings.general.main_scale.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="84"></location>
+      <source>Main interface size</source>
+      <translation>ขนาดอินเทอร์เฟซหลัก</translation>
+    </message>
     <message id="gamehq.settings.general.overlay_dimming.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="81"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="110"></location>
       <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
       <translation>โอเวอร์เลย์ในเกมจะทำให้เกมด้านหลังมืดลงเพียงใด 100% เป็นการหรี่แสงของธีมเอง ค่าที่ต่ำกว่าจะทำให้มองเห็นเกมได้มากขึ้น</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="79"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="108"></location>
       <source>Overlay dimming</source>
       <translation>การหรี่แสงซ้อน</translation>
     </message>
+    <message id="gamehq.settings.general.overlay_scale.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="96"></location>
+      <source>Overlay interface size</source>
+      <translation>ขนาดอินเทอร์เฟซโอเวอร์เลย์</translation>
+    </message>
     <message id="gamehq.settings.general.personalization.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="52"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="57"></location>
       <source>Choose the visual style and in-game overlay strength.</source>
       <translation>เลือกสไตล์ภาพและระดับความมืดของโอเวอร์เลย์ในเกม</translation>
     </message>
     <message id="gamehq.settings.general.personalization.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="48"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="53"></location>
       <source>Personalization</source>
       <translation>การปรับแต่ง</translation>
     </message>
     <message id="gamehq.settings.general.personalization.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="50"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="55"></location>
       <source>Look and feel</source>
       <translation>รูปลักษณ์</translation>
     </message>
     <message id="gamehq.settings.general.startup.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="127"></location>
       <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
       <translation>เลือกว่าจะเริ่ม GameHQ เมื่อลงชื่อเข้าใช้ Windows และเปิดไว้ในพื้นที่แจ้งเตือนหรือไม่</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="94"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="123"></location>
       <source>Startup</source>
       <translation>การเริ่มต้น</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="110"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="139"></location>
       <source>Launch directly in the system tray without opening the main window.</source>
       <translation>เปิดโดยตรงในพื้นที่แจ้งเตือนโดยไม่แสดงหน้าต่างหลัก</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="108"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="137"></location>
       <source>Launch minimized</source>
       <translation>เปิดแบบย่อ</translation>
     </message>
     <message id="gamehq.settings.general.startup.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="96"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="125"></location>
       <source>How %1 starts</source>
       <translation>%1 เริ่มต้นอย่างไร</translation>
     </message>
     <message id="gamehq.settings.general.startup.windows.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="103"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="132"></location>
       <source>Register %1 for the current Windows user; no administrator access is required.</source>
       <translation>ลงทะเบียน %1 สำหรับผู้ใช้ Windows ปัจจุบัน ไม่จำเป็นต้องมีการเข้าถึงของผู้ดูแลระบบ</translation>
     </message>
     <message id="gamehq.settings.general.startup.windows.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="101"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="130"></location>
       <source>Start with Windows</source>
       <translation>เริ่มต้นด้วย Windows</translation>
     </message>
     <message id="gamehq.settings.general.theme.fallback">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="67"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="72"></location>
       <source>Choose how %1 looks.</source>
       <translation>เลือกรูปลักษณ์ของ %1</translation>
     </message>
     <message id="gamehq.settings.general.theme.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="56"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="61"></location>
       <source>Theme</source>
       <translation>ธีม</translation>
     </message>
     <message id="gamehq.settings.general.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="7"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="12"></location>
       <source>General</source>
       <translation>ทั่วไป</translation>
     </message>
@@ -3538,33 +3554,33 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>ทดสอบและกู้คืน</translation>
     </message>
     <message id="gamehq.settings.language.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="17"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="22"></location>
       <source>Choose the language GameHQ uses.</source>
       <translation>เลือกภาษาที่ GameHQ ใช้</translation>
     </message>
     <message id="gamehq.settings.language.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="13"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="18"></location>
       <source>Language</source>
       <translation>ภาษา</translation>
     </message>
     <message id="gamehq.settings.language.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="21"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="26"></location>
       <source>Display language</source>
       <translation>ภาษาที่แสดง</translation>
     </message>
     <message id="gamehq.settings.language.row_description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="23"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="28"></location>
       <source>Changes apply immediately throughout GameHQ.</source>
       <translation>การเปลี่ยนแปลงมีผลทันทีตลอดทั้ง GameHQ</translation>
     </message>
     <message id="gamehq.settings.language.system">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="326"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="31"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="36"></location>
       <source>System language</source>
       <translation>ภาษาของระบบ</translation>
     </message>
     <message id="gamehq.settings.language.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="15"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="20"></location>
       <source>Interface language</source>
       <translation>ภาษาอินเทอร์เฟซ</translation>
     </message>

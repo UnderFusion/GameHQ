@@ -209,6 +209,10 @@ QtObject {
     // ── Everything below is fixed across skins: layout, not style. ──
     // Sizes stay put because a skin must restyle the app, not re-lay-it-out.
 
+    // Minimum logical canvas keeps navigation and settings reachable at large scales.
+    readonly property int minimumUiWidth: 1024
+    readonly property int minimumUiHeight: 640
+
     // Typography sizes
     readonly property int fontHero:    48   // oversized glyph in empty states
     readonly property int fontDisplay: 32   // weight Light

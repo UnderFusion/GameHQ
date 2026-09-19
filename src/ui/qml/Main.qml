@@ -11,6 +11,18 @@ import "helpers/SidebarCategories.js" as SidebarCategories
 // thin display type, sidebar → grid → preview.
 ApplicationWindow {
     id: window
+
+    // Keep native window geometry separate from the scaled interface.
+    readonly property ScaledSurface uiSurface: ScaledSurface {
+        id: scaledViewport
+        parent: window.contentItem
+        anchors.fill: parent
+        settings: app
+        configKey: "theme.main_scale"
+        minimumContentWidth: Theme.minimumUiWidth
+        minimumContentHeight: Theme.minimumUiHeight
+    }
+    Overlay.overlay.transform: uiSurface.scaleTransform
     LayoutMirroring.enabled: languageManager.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
     visible: !app.startMinimized
@@ -33,8 +45,9 @@ ApplicationWindow {
     color: Theme.bg0
 
     ThemeBackdrop {
+        parent: uiSurface.contentItem
         anchors.fill: parent
-        z: -1
+        z: -2
     }
 
     // Debounce timer for geometry persistence (avoid writing config.json on
@@ -905,7 +918,9 @@ ApplicationWindow {
 
     // Background gradient (design-system §1: never flat black)
     Rectangle {
+        parent: uiSurface.contentItem
         anchors.fill: parent
+        z: -1
         gradient: Gradient {
             GradientStop { position: 0; color: Theme.bg1 }
             GradientStop { position: 1; color: Theme.bg0 }
@@ -913,6 +928,7 @@ ApplicationWindow {
     }
 
     RowLayout {
+        parent: uiSurface.contentItem
         anchors.fill: parent
         anchors.margins: Theme.s16
         spacing: Theme.s16
@@ -1025,6 +1041,7 @@ ApplicationWindow {
     // ever shown here (the desktop gallery window) — never above the pad
     // overlay or a running game.
     UpdateBanner {
+        parent: uiSurface.contentItem
         id: updateBanner
         anchors.top: parent.top
         anchors.left: parent.left
@@ -1060,6 +1077,7 @@ ApplicationWindow {
     }
 
     ConfirmDialog {
+        parent: uiSurface.contentItem
         id: deleteDialog
         anchors.fill: parent
         z: 100
@@ -1076,6 +1094,7 @@ ApplicationWindow {
     }
 
     ConfirmDialog {
+        parent: uiSurface.contentItem
         id: bulkDeleteDialog
         anchors.fill: parent
         z: 100
@@ -1087,6 +1106,7 @@ ApplicationWindow {
     }
 
     AboutWhatsNewDialog {
+        parent: uiSurface.contentItem
         id: aboutDialog
         anchors.fill: parent
         z: 500
@@ -1096,6 +1116,7 @@ ApplicationWindow {
     }
 
     HelpDialog {
+        parent: uiSurface.contentItem
         id: helpDialog
         anchors.fill: parent
         z: 500
@@ -1107,7 +1128,9 @@ ApplicationWindow {
     // users already have per-tile hover icons for this; pad users need an
     // equivalent that doesn't require hovering.
     OverlayActionMenu {
+        parent: uiSurface.contentItem
         id: padMenu
+        z: 90
         // Bulk select is desktop-only, so it is added here rather than in the
         // shared component. padMenuConfirm() maps these by index.
         entries: [

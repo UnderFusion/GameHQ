@@ -24,6 +24,9 @@ inline constexpr int kMaxPages = 3;
 // app version and which carries the assets this app knows how to install.
 // Nothing here establishes trust - it only locates candidate URLs.
 std::optional<ReleaseInfo> selectBest(const QJsonArray &releases);
+// Bounded discovery snapshot only; package trust is still checked separately.
+QByteArray cacheSnapshot(const ReleaseInfo &release);
+std::optional<ReleaseInfo> restoreSnapshot(const QByteArray &bytes);
 
 // Whether another page could still hold a newer app release. A short page is
 // the last page, so there is nothing more to ask for.

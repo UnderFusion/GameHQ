@@ -1,21 +1,20 @@
 #pragma once
 #include <QObject>
+#include <QString>
 
 class QQmlApplicationEngine;
 class QQuickWindow;
 
 // In-game overlay window lifecycle (docs/overlay.md): lazy-loads
 // OverlayWindow.qml, shows it frameless/topmost over the active app,
-// remembers the previous foreground window and restores focus on hide.
+// remembers the foreground game without taking or restoring OS focus.
 // No injection — borderless/windowed fullscreen games only (MVP).
 class OverlayManager : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool visible READ isVisible NOTIFY visibleChanged)
-    // Honest input-isolation state: true only when the OS foreground really
-    // moved to the overlay after show(). When false, the overlay is open but
-    // the game underneath still owns focus — it may keep reacting to the pad,
-    // and the UI must not pretend otherwise.
+    // False while open: the non-activating overlay leaves input with the game.
+    // True while closed only suppresses the existing input warning.
     Q_PROPERTY(bool foregroundAcquired READ foregroundAcquired NOTIFY foregroundAcquiredChanged)
 
 public:
@@ -49,12 +48,21 @@ signals:
 
 private:
     bool ensureLoaded();
-    void hideInternal(bool restoreFocus);
+    void hideInternal();
+    void applyNoActivateStyle();
+    void startShowProbe();
+    void probeTick();
 
     QQmlApplicationEngine* m_engine;
     QQuickWindow* m_window = nullptr;
     void* m_previousForeground = nullptr;   // HWND of the game/app under us
     void* m_focusHook = nullptr;            // HWINEVENTHOOK, opaque here to avoid <windows.h> in the header
-    class ForegroundAcquirer* m_acquirer = nullptr;
     bool m_foregroundAcquired = true;
+
+    // Diagnostic probe: for a few seconds after show() the game window's
+    // state is sampled and every change is logged, so a game that hides or
+    // minimizes itself in reaction to the overlay leaves evidence in the log.
+    class QTimer* m_probeTimer = nullptr;
+    int m_probeElapsedMs = 0;
+    QString m_probeLastState;
 };

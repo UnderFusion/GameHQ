@@ -53,11 +53,19 @@ FocusScope {
         return qsTrId("gamehq.update.suffix.current")
     }
 
+    function bundledUpdateRelease() {
+        return bundledReleases().find(release => release.version === updateVersion()) || null
+    }
+
     function selectedUsesRemoteNotes() {
-        return updateReleaseSelected && hasUpdateRelease()
+        return updateReleaseSelected && hasUpdateRelease() && !bundledUpdateRelease()
     }
 
     function selectedStructuredSections() {
+        if (updateReleaseSelected && hasUpdateRelease()) {
+            const release = bundledUpdateRelease()
+            return release ? release.sections || [] : []
+        }
         return selectedBundledRelease().sections || []
     }
 
@@ -258,17 +266,19 @@ FocusScope {
 
     function summaryItems() {
         const result = []
-        if (hasUpdateRelease()) {
+        if (hasUpdateRelease() && !bundledUpdateRelease()) {
             for (const block of updates.noteBlocks) {
-                if (block.kind === "heading")
-                    continue
-                result.push(block.text)
+                if (block.kind !== "heading")
+                    result.push(block.text)
                 if (result.length === 3)
                     break
             }
             return result
         }
-        const sections = app.releaseNotesSections || []
+        const updateRelease = hasUpdateRelease() ? bundledUpdateRelease() : null
+        const sections = hasUpdateRelease()
+                       ? (updateRelease ? updateRelease.sections || [] : [])
+                       : app.releaseNotesSections || []
         for (const section of sections) {
             const items = section.items || []
             for (const item of items) {
@@ -306,6 +316,8 @@ FocusScope {
                 controls.push(updateNowAction, remindLaterAction, skipUpdateAction)
             if (releaseEntries().length > 1)
                 controls.push(...releaseVersionControls())
+            controls.push(retryReleaseNotesLink)
+            controls.push(updateReleaseGithubLink)
             return controls.filter(control => control.visible && control.enabled)
         }
         return [releaseNotesLink, primaryAction, settingsButton, skipVersionLink, githubLink,
@@ -995,6 +1007,12 @@ FocusScope {
                             }
                         }
 
+                        QC.BusyIndicator {
+                            visible: root.selectedUsesRemoteNotes() && updates.notesLoading
+                            running: visible
+                            Layout.alignment: Qt.AlignHCenter
+                        }
+
                         Repeater {
                             model: root.selectedUsesRemoteNotes() ? updates.noteBlocks : []
                             delegate: ColumnLayout {
@@ -1049,6 +1067,15 @@ FocusScope {
                             }
                         }
 
+                        TextLink {
+                            id: retryReleaseNotesLink
+                            visible: root.selectedUsesRemoteNotes()
+                                     && !updates.notesLoading && updates.noteBlocks.length === 0
+                            //% "Check again"
+                            label: qsTrId("gamehq.update.check_again")
+                            onClicked: updates.retryNotes()
+                        }
+
                         Repeater {
                             model: root.selectedUsesRemoteNotes() ? []
                                                                   : root.selectedStructuredSections()
@@ -1089,6 +1116,16 @@ FocusScope {
                                     }
                                 }
                             }
+                        }
+
+                        TextLink {
+                            id: updateReleaseGithubLink
+                            visible: root.updateReleaseSelected && root.hasUpdateRelease()
+                                     && updates.releaseUrl !== ""
+                            //% "GitHub"
+                            label: qsTrId("gamehq.about.github")
+                            suffix: root.updateVersion()
+                            onClicked: updates.openReleasePage()
                         }
 
                         Rectangle {

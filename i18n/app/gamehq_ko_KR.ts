@@ -107,10 +107,10 @@
       <translation>취소</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1069"></location>
-      <location filename="src/ui/qml/Main.qml" line="1085"></location>
-      <location filename="src/ui/qml/Main.qml" line="1117"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="480"></location>
+      <location filename="src/ui/qml/Main.qml" line="1087"></location>
+      <location filename="src/ui/qml/Main.qml" line="1104"></location>
+      <location filename="src/ui/qml/Main.qml" line="1140"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="502"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="16"></location>
@@ -1331,38 +1331,38 @@
       <translation>폴더 추가…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1119"></location>
+      <location filename="src/ui/qml/Main.qml" line="1142"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>일괄 선택</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1115"></location>
+      <location filename="src/ui/qml/Main.qml" line="1138"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="14"></location>
       <source>Show in folder</source>
       <translation>폴더에서 보기</translation>
     </message>
     <message id="gamehq.gallery.capture_caption">
       <location filename="src/ui/qml/components/CaptureTile.qml" line="180"></location>
-      <location filename="src/ui/qml/components/Lightbox.qml" line="202"></location>
+      <location filename="src/ui/qml/components/Lightbox.qml" line="216"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1058"></location>
+      <location filename="src/ui/qml/Main.qml" line="1075"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 파일이 영구적으로 삭제됩니다.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1067"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="478"></location>
+      <location filename="src/ui/qml/Main.qml" line="1085"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="500"></location>
       <source>Delete capture?</source>
       <translation>캡처를 삭제할까요?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="400"></location>
+      <location filename="src/ui/qml/Main.qml" line="413"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
@@ -1371,7 +1371,7 @@ This cannot be undone.</source>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1083"></location>
+      <location filename="src/ui/qml/Main.qml" line="1102"></location>
       <source>Delete selected captures?</source>
       <translation>선택한 캡처를 삭제할까요?</translation>
     </message>
@@ -1418,7 +1418,7 @@ This cannot be undone.</source>
       </translation>
     </message>
     <message id="gamehq.gallery.viewer.window_title">
-      <location filename="src/ui/qml/components/Lightbox.qml" line="19"></location>
+      <location filename="src/ui/qml/components/Lightbox.qml" line="32"></location>
       <source>%1 Viewer</source>
       <translation>%1 뷰어</translation>
     </message>
@@ -2034,7 +2034,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 공유: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1040"></location>
+      <location filename="src/ui/qml/Main.qml" line="1057"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>감시할 폴더 선택</translation>
@@ -2048,44 +2048,44 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>정보</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="158"></location>
+      <location filename="src/ui/qml/Main.qml" line="171"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="57"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="11"></location>
       <source>All</source>
       <translation>전체</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="166"></location>
+      <location filename="src/ui/qml/Main.qml" line="179"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="19"></location>
       <source>Clips</source>
       <translation>클립</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="162"></location>
+      <location filename="src/ui/qml/Main.qml" line="175"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="15"></location>
       <source>Favorites</source>
       <translation>즐겨찾기</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="168"></location>
+      <location filename="src/ui/qml/Main.qml" line="181"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="21"></location>
       <source>Game</source>
       <translation>게임</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="170"></location>
+      <location filename="src/ui/qml/Main.qml" line="183"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
       <source>Game favorites</source>
       <translation>게임 즐겨찾기</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="160"></location>
+      <location filename="src/ui/qml/Main.qml" line="173"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="13"></location>
       <source>Recent</source>
       <translation>최근 항목</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="164"></location>
+      <location filename="src/ui/qml/Main.qml" line="177"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="17"></location>
       <source>Screenshots</source>
       <translation>스크린샷</translation>
@@ -2205,42 +2205,42 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>캡처 작업</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="103"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="121"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>게임에 계속 포커스가 있어 컨트롤러 입력에 반응할 수 있습니다</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="34"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>
       <source>L1/R1 — captures | D-pad Up/Down — categories/games | Cross — open | Triangle — favorite | Square — menu | Circle — back to game</source>
       <translation>L1/R1 — 캡처 | D-pad 위/아래 — 범주/게임 | Cross — 열기 | Triangle — 즐겨찾기 | Square — 메뉴 | Circle — 게임으로 돌아가기</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="40"></location>
       <source>Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
       <translation>왼쪽/오른쪽 — 캡처 | 위/아래 — 범주/게임 | Enter — 열기 | F — 즐겨찾기 | M — 메뉴 | Esc — 게임으로 돌아가기</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="19"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="22"></location>
       <source>D-pad Up/Down — choose | Cross — confirm | Circle — close menu</source>
       <translation>D-pad 위/아래 — 선택 | Cross — 확인 | Circle — 메뉴 닫기</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="22"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="25"></location>
       <source>Up/Down — choose | Enter — confirm | Esc/Backspace — close menu</source>
       <translation>위/아래 — 선택 | Enter — 확인 | Esc/Backspace — 메뉴 닫기</translation>
     </message>
     <message id="gamehq.overlay.hint.video.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="27"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="30"></location>
       <source>D-pad Left/Right — scrub | Cross — play/pause | Circle — back to captures</source>
       <translation>D-pad 왼쪽/오른쪽 — 탐색 | Cross — 재생/일시 정지 | Circle — 캡처로 돌아가기</translation>
     </message>
     <message id="gamehq.overlay.hint.video.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="30"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="33"></location>
       <source>Left/Right — scrub clip | Enter — play/pause | Esc/Backspace — back to captures</source>
       <translation>왼쪽/오른쪽 — 클립 탐색 | Enter — 재생/일시 정지 | Esc/Backspace — 캡처로 돌아가기</translation>
     </message>
     <message id="gamehq.overlay.window_title">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="30"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="43"></location>
       <source>%1 Overlay</source>
       <translation>%1 오버레이</translation>
     </message>
@@ -3000,117 +3000,133 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>알림</translation>
     </message>
     <message id="gamehq.settings.general.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="9"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="14"></location>
       <source>Appearance, startup, and window behavior.</source>
       <translation>모양, 시작 및 창 동작을 설정합니다.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.close_to_tray.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="133"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="162"></location>
       <source>Keep capture and replay services running; when disabled, Close exits %1.</source>
       <translation>캡처 및 리플레이 서비스를 계속 실행합니다. 비활성화하면 닫기를 선택할 때 %1이(가) 종료됩니다.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.close_to_tray.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="131"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="160"></location>
       <source>Close to tray</source>
       <translation>닫을 때 알림 영역으로</translation>
     </message>
     <message id="gamehq.settings.general.desktop.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="121"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="150"></location>
       <source>Choose what happens when the main window is minimized or closed.</source>
       <translation>기본 창을 최소화하거나 닫을 때 수행할 작업을 선택합니다.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="117"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="146"></location>
       <source>Desktop</source>
       <translation>데스크톱</translation>
     </message>
     <message id="gamehq.settings.general.desktop.minimize_to_tray.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="155"></location>
       <source>Minimizing the window sends it straight to the tray instead of the taskbar.</source>
       <translation>창을 최소화하면 작업 표시줄 대신 알림 영역으로 바로 이동합니다.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.minimize_to_tray.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="124"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="153"></location>
       <source>Minimize to tray</source>
       <translation>최소화할 때 알림 영역으로</translation>
     </message>
     <message id="gamehq.settings.general.desktop.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="119"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="148"></location>
       <source>Window and tray behavior</source>
       <translation>창 및 알림 영역 동작</translation>
     </message>
+    <message id="gamehq.settings.general.interface_scale.description">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="86"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
+      <source>Enlarge text, icons, and controls. Applies immediately; reduced automatically when space is limited.</source>
+      <translation>텍스트, 아이콘 및 컨트롤을 확대합니다. 즉시 적용되며 공간이 부족하면 자동으로 축소됩니다.</translation>
+    </message>
+    <message id="gamehq.settings.general.main_scale.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="84"></location>
+      <source>Main interface size</source>
+      <translation>메인 인터페이스 크기</translation>
+    </message>
     <message id="gamehq.settings.general.overlay_dimming.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="81"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="110"></location>
       <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
       <translation>게임 내 오버레이가 뒤의 게임 화면을 어둡게 하는 정도입니다. 100%는 테마의 기본 어둡기이며, 값을 낮추면 게임 화면이 더 잘 보입니다.</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="79"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="108"></location>
       <source>Overlay dimming</source>
       <translation>오버레이 어둡기</translation>
     </message>
+    <message id="gamehq.settings.general.overlay_scale.label">
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="96"></location>
+      <source>Overlay interface size</source>
+      <translation>오버레이 인터페이스 크기</translation>
+    </message>
     <message id="gamehq.settings.general.personalization.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="52"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="57"></location>
       <source>Choose the visual style and in-game overlay strength.</source>
       <translation>시각적 스타일과 게임 내 오버레이 강도를 선택합니다.</translation>
     </message>
     <message id="gamehq.settings.general.personalization.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="48"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="53"></location>
       <source>Personalization</source>
       <translation>개인 설정</translation>
     </message>
     <message id="gamehq.settings.general.personalization.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="50"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="55"></location>
       <source>Look and feel</source>
       <translation>화면 스타일</translation>
     </message>
     <message id="gamehq.settings.general.startup.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="127"></location>
       <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
       <translation>Windows 로그인 시 GameHQ를 시작하고 기본 창을 열지 않은 채 알림 영역에서 실행할지 선택합니다.</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="94"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="123"></location>
       <source>Startup</source>
       <translation>시작</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="110"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="139"></location>
       <source>Launch directly in the system tray without opening the main window.</source>
       <translation>기본 창을 열지 않고 시스템 알림 영역에서 바로 시작합니다.</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="108"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="137"></location>
       <source>Launch minimized</source>
       <translation>최소화 상태로 시작</translation>
     </message>
     <message id="gamehq.settings.general.startup.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="96"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="125"></location>
       <source>How %1 starts</source>
       <translation>%1 시작 방식</translation>
     </message>
     <message id="gamehq.settings.general.startup.windows.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="103"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="132"></location>
       <source>Register %1 for the current Windows user; no administrator access is required.</source>
       <translation>현재 Windows 사용자에 대해 %1을(를) 등록합니다. 관리자 권한은 필요하지 않습니다.</translation>
     </message>
     <message id="gamehq.settings.general.startup.windows.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="101"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="130"></location>
       <source>Start with Windows</source>
       <translation>Windows와 함께 시작</translation>
     </message>
     <message id="gamehq.settings.general.theme.fallback">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="67"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="72"></location>
       <source>Choose how %1 looks.</source>
       <translation>%1의 모양을 선택합니다.</translation>
     </message>
     <message id="gamehq.settings.general.theme.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="56"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="61"></location>
       <source>Theme</source>
       <translation>테마</translation>
     </message>
     <message id="gamehq.settings.general.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="7"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="12"></location>
       <source>General</source>
       <translation>일반</translation>
     </message>
@@ -3538,33 +3554,33 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>테스트 및 복원</translation>
     </message>
     <message id="gamehq.settings.language.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="17"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="22"></location>
       <source>Choose the language GameHQ uses.</source>
       <translation>GameHQ에서 사용할 언어를 선택합니다.</translation>
     </message>
     <message id="gamehq.settings.language.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="13"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="18"></location>
       <source>Language</source>
       <translation>언어</translation>
     </message>
     <message id="gamehq.settings.language.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="21"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="26"></location>
       <source>Display language</source>
       <translation>표시 언어</translation>
     </message>
     <message id="gamehq.settings.language.row_description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="23"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="28"></location>
       <source>Changes apply immediately throughout GameHQ.</source>
       <translation>변경 사항은 GameHQ 전체에 즉시 적용됩니다.</translation>
     </message>
     <message id="gamehq.settings.language.system">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="326"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="31"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="36"></location>
       <source>System language</source>
       <translation>시스템 언어</translation>
     </message>
     <message id="gamehq.settings.language.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="15"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="20"></location>
       <source>Interface language</source>
       <translation>인터페이스 언어</translation>
     </message>

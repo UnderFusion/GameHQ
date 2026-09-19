@@ -1,16 +1,89 @@
 {
-  "version": "0.7.26",
-  "date": "2026-09-09",
+  "version": "0.7.32",
+  "date": "2026-09-14",
   "sections": [
     {
-      "title": "Improved",
+      "title": "Fixed",
       "items": [
-        "Both sound sliders now reach 300% instead of 200%, for up to +9.5 dB of extra loudness.",
-        "Settings up to 100% sound exactly as before, and the bundled sounds stay free of distortion at the new maximum."
+        "Previously discovered updates and their cached release notes remain available after restarting GameHQ offline. Cached discovery never replaces update signature verification."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.31",
+      "date": "2026-09-14",
+      "sections": [
+        {
+          "title": "Fixed",
+          "items": [
+            "Added an optional GitHub link beneath upcoming release notes to open the same release in your browser, with controller navigation support."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.7.30",
+      "date": "2026-09-14",
+      "sections": [
+        {
+          "title": "Fixed",
+          "items": [
+            "Upcoming release notes now appear inside GameHQ. Notes in your selected language are fetched from the release on GitHub, with English and cached notes available as fallbacks."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.7.29",
+      "date": "2026-09-14",
+      "sections": [
+        {
+          "title": "Fixed",
+          "items": [
+            "Suggested updates show matching bundled release notes when available, or a direct link to the GitHub release notes instead of an empty panel."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.7.28",
+      "date": "2026-09-12",
+      "sections": [
+        {
+          "title": "Fixed",
+          "items": [
+            "Fixed the blank main window after introducing interface scaling. Backgrounds stay behind controls, and action menus stay above content in both windows."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.7.27",
+      "date": "2026-09-12",
+      "sections": [
+        {
+          "title": "Added",
+          "items": [
+            "Choose separate main-window and in-game overlay sizes from 100% to 200% in General settings. Text, icons, controls, and spacing scale together.",
+            "Interface size updates immediately and is saved between sessions. Smaller windows automatically limit enlargement to keep controls accessible."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.7.26",
+      "date": "2026-09-09",
+      "sections": [
+        {
+          "title": "Improved",
+          "items": [
+            "Both sound sliders now reach 300% instead of 200%, for up to +9.5 dB of extra loudness.",
+            "Settings up to 100% sound exactly as before, and the bundled sounds stay free of distortion at the new maximum."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.25",
       "date": "2026-09-09",
@@ -62,102 +135,6 @@
       ]
     },
     {
-      "version": "0.7.21",
-      "date": "2026-09-09",
-      "sections": [
-        {
-          "title": "Fixed",
-          "items": [
-            "Capture feedback, border, notification and manual replay-idle settings now apply without discarding the replay buffer; only recording parameters re-arm it."
-          ]
-        }
-      ]
-    },
-    {
-      "version": "0.7.20",
-      "date": "2026-09-09",
-      "sections": [
-        {
-          "title": "Added",
-          "items": [
-            "Capture sounds now have their own volume in Settings, separate from the interface volume, and a preview button that plays the real capture sound so the level can be set without taking a screenshot."
-          ]
-        }
-      ]
-    },
-    {
-      "version": "0.7.19",
-      "date": "2026-09-09",
-      "sections": [
-        {
-          "title": "Fixed",
-          "items": [
-            "Every skipped or failed screenshot and every failed clip save now shows a clear notification stating the reason. When a capture file is written but cannot be added to the library, the notification says \"Saved to disk, not in library\" instead of claiming it was saved."
-          ]
-        }
-      ]
-    },
-    {
-      "version": "0.7.18",
-      "date": "2026-09-09",
-      "sections": [
-        {
-          "title": "Added",
-          "items": [
-            "Screenshot and replay requests now immediately play an acknowledgement sound and show a request-received notification, according to your feedback settings. Saving can still fail; the final outcome is reported separately.",
-            "Replay preview thumbnails are now decoded and encoded on the export thread, keeping image work off the capture worker while saving. The gallery still receives the thumbnail associated with the saved clip.",
-            "Capture results update the original request notification in place. The visible notification stack is limited to four cards; older cards leaving the stack do not affect saved captures."
-          ]
-        }
-      ]
-    },
-    {
-      "version": "0.7.17",
-      "date": "2026-09-09",
-      "sections": [
-        {
-          "title": "Fixed",
-          "items": [
-            "A capture request that is refused early now says so in the log. Pressing save clip while the replay buffer was cold, busy or paused previously left no record of the press at all.",
-            "A screenshot skipped because the foreground window is not a game is now recorded with the reason, instead of passing without a trace."
-          ]
-        },
-        {
-          "title": "Added",
-          "items": [
-            "Every screenshot and clip request now carries an id and the device that pressed it, so one press reads as one chain in the log from start to finish or to the reason it failed.",
-            "The copied diagnostics now list the bindings of the controller in your hands next to the shared controller bindings."
-          ]
-        }
-      ]
-    },
-    {
-      "version": "0.7.16",
-      "date": "2026-09-09",
-      "sections": [
-        {
-          "title": "Fixed",
-          "items": [
-            "Interface sounds no longer report themselves as loaded before Windows has finished loading them. Each sound now records when it becomes playable, or why it could not be used.",
-            "If any interface sound is unavailable, GameHQ shows a single warning instead of staying silent without explanation. The new warning text uses English until the planned translation pass."
-          ]
-        }
-      ]
-    },
-    {
-      "version": "0.7.15",
-      "date": "2026-09-09",
-      "sections": [
-        {
-          "title": "Added",
-          "items": [
-            "Capture settings now let you request Windows capture-border suppression. The setting is on by default and applies to the next capture session without interrupting the current session or replay buffer.",
-            "Capture settings explain the Windows border-suppression result without promising that a border is invisible. The new explanations use English until the planned translation pass."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -192,6 +169,48 @@
     "source_locale": "en-US",
     "documents": [
       {
+        "version": "0.7.32",
+        "source_integrity": "sha256:7f13fd8eeaf26df2f1dca96dead7c489ca043b595e853e3433a6ed413753f15a",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
+      {
+        "version": "0.7.31",
+        "source_integrity": "sha256:fa336e25633e214c81a416a7204239b65bc8859ad101a4800dada8e7c11fca79",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
+      {
+        "version": "0.7.30",
+        "source_integrity": "sha256:4c9495c6f9306d39d590dd613b440185fb6bdc93268cea99a8ae58a530f6794a",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
+      {
+        "version": "0.7.29",
+        "source_integrity": "sha256:fa6707d89f67c062d0d7b6385fc3698371008725f10540ccc968a776f5ba16f2",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
+      {
+        "version": "0.7.28",
+        "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
+      {
+        "version": "0.7.27",
+        "source_integrity": "sha256:5c058c98a50cf96622e403a5236239b550f31b84218e7b5fc4a9000029cd25b9",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
+      {
         "version": "0.7.26",
         "source_integrity": "sha256:d6da7511c826452ce849334cb1e4d2fce086ac4278d9cd4f702f665184fe70cf",
         "resolved_locale": "en-US",
@@ -222,55 +241,6 @@
       {
         "version": "0.7.22",
         "source_integrity": "sha256:2fc37bf5c6bd65c335f19f8dc3c036be468e979bf3b36a1b1b6b21a5c22cd444",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.21",
-        "source_integrity": "sha256:12ec6b37564b8345af135fa9b21442daff817bc5fe403023d6f445bf82cf0fe3",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.20",
-        "source_integrity": "sha256:deef8dd53b615f07af3e66bb1ce275c0e84ece8a5f54149fc334266f90d83424",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.19",
-        "source_integrity": "sha256:5ed0328152f05aaa6a47588d010cda2f6a7406c763c71b3ae67ee59b2f767b69",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.18",
-        "source_integrity": "sha256:33eb49e2133db7d1c990139bad18a2aedf32a3a3ffcf54b79c76433276cf9e2f",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.17",
-        "source_integrity": "sha256:b0725dad158850dbf31d92a821b98984f78d98242c1c757179dc205edfba557e",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.16",
-        "source_integrity": "sha256:75bcf13af6707a4d20f2b0ceb7e525420445266bdf13634d1617867720bdafb1",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.15",
-        "source_integrity": "sha256:af835f0c2c92aa3d1c2f267230b4703eace61a922e4528796a9bd942d183791e",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

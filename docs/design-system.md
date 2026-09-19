@@ -2,6 +2,26 @@
 
 > **Rule: every visual value used in the app comes from `src/ui/qml/Theme.qml` (singleton). No hardcoded colors, sizes, or durations in components — ever.** This doc is the human-readable contract; Theme.qml is the machine-readable one. Update both together.
 
+## Interface size
+
+General → Look and feel has separate Main interface size and Overlay interface
+size presets: 100%, 125%, 150%, 175%, and 200%. Both default to 100%, apply live,
+and persist as `theme.main_scale` and `theme.overlay_scale`. General/category
+reset restores both defaults. The fullscreen capture viewer uses the main setting.
+
+`ScaledSurface.qml` gives each window its own logical canvas and transform,
+including its controls popup layer. Theme tokens remain shared and unmodified;
+Qt monitor DPI scaling still applies normally. Layouts receive the reduced logical
+viewport, so existing row stacking, wrapping, and gallery column calculations work.
+The actual factor is limited to fit a 1024×640 logical canvas; the saved preset
+is retained and takes effect as the window or monitor provides more space.
+This prevents a large preset from hiding the control needed to reduce it.
+Native title bars, file pickers, and notification toasts retain their system sizing.
+Scaled-window backgrounds use negative z values and action menus explicit positive
+z values: reparented siblings must not rely on declarative insertion order.
+
+Focused check: `tools/Qt/6.8.3/mingw_64/bin/qmltestrunner.exe -input tests/qml/tst_interfacescaling.qml`.
+
 ## Direction
 
 Modern, minimalist, **PS5-inspired**: dark, spacious, content-first. The captures *are* the interface — chrome stays quiet, typography is light and airy, and a single violet→blue accent (from the app icon) does all the talking. Everything must look correct from couch distance and navigate beautifully with a controller.

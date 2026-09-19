@@ -9,6 +9,7 @@
 #include <QVariantList>
 #include <optional>
 
+class RemoteReleaseNotes;
 class GitHubReleaseSource;
 class UpdateDownloader;
 
@@ -27,11 +28,10 @@ class UpdateService : public QObject
     Q_PROPERTY(QString installedVersion READ installedVersion CONSTANT)
     Q_PROPERTY(QString latestVersion READ latestVersion NOTIFY releaseChanged)
     Q_PROPERTY(QString releaseName READ releaseName NOTIFY releaseChanged)
-    // Raw GitHub body text is discovery metadata, not a verified localized
-    // presentation source. Keep these compatibility properties empty so it
-    // cannot bypass the compiled release-note bundle policy.
-    Q_PROPERTY(QString notes READ notes NOTIFY releaseChanged)
-    Q_PROPERTY(QVariantList noteBlocks READ noteBlocks NOTIFY releaseChanged)
+    // Remote Markdown is sanitized presentation content, never installation evidence.
+    Q_PROPERTY(QString notes READ notes NOTIFY notesChanged)
+    Q_PROPERTY(QVariantList noteBlocks READ noteBlocks NOTIFY notesChanged)
+    Q_PROPERTY(bool notesLoading READ notesLoading NOTIFY notesChanged)
     Q_PROPERTY(QString releaseUrl READ releaseUrl NOTIFY releaseChanged)
     Q_PROPERTY(qint64 size READ size NOTIFY releaseChanged)
     Q_PROPERTY(QDateTime publishedAt READ publishedAt NOTIFY releaseChanged)
@@ -72,7 +72,10 @@ public:
     QString installedVersion() const { return m_installedVersion; }
     QString latestVersion() const { return m_release ? m_release->version : QString(); }
     QString releaseName() const { return m_release ? m_release->name : QString(); }
-    QString notes() const { return {}; }
+    QString notes() const;
+    bool notesLoading() const;
+    void setNotesLocale(const QString &locale);
+    Q_INVOKABLE void retryNotes();
     QVariantList noteBlocks() const;
     QString releaseUrl() const { return m_release ? m_release->webUrl : QString(); }
     qint64 size() const { return m_release ? m_release->zipSize : 0; }
@@ -84,6 +87,7 @@ public:
 
     // Config-key persistence (updates.skipped_version, internal.updates.etag,
     // ...) is owned by the caller; these let it prime/read this instance.
+    void restoreCachedRelease();
     void primeCachedEtag(const QString &etag) { m_etag = etag; }
     void primeSkippedVersion(const QString &version) { m_skippedVersion = version; }
     // Without this the persisted timestamp was never read back, so the "at most
@@ -111,6 +115,7 @@ public:
 Q_SIGNALS:
     void stateChanged();
     void releaseChanged();
+    void notesChanged();
     void progressChanged();
     void errorChanged();
     void lastCheckedChanged();
@@ -136,6 +141,8 @@ private:
     void onRateLimited(qint64 resetEpochSeconds);
     void onFailed(const QString &errorText);
 
+    RemoteReleaseNotes *m_notes;
+    QString m_notesLocale = QStringLiteral("en-US");
     GitHubReleaseSource *m_source;
     UpdateDownloader *m_downloader;
     QString m_installedVersion;
@@ -148,6 +155,7 @@ private:
     QString m_etag;
     VerifiedUpdate m_verified;
     QString m_packageRoot;
+    QString m_releaseCachePath;
     QElapsedTimer m_lastCheckRequest;
     bool m_revalidatingInstall = false;
     bool m_failedDuringCheck = false;

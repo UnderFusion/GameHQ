@@ -87,6 +87,8 @@ inline constexpr QLatin1StringView UiWindowHeight{ "ui.window_height" };
 
 // theme.* — appearance. Read by the QML Theme singleton, which resolves an
 // unknown value back to Obsidian rather than leaving the app unpainted.
+inline constexpr QLatin1StringView ThemeMainScale{ "theme.main_scale" }; // percent: 100,125,150,175,200
+inline constexpr QLatin1StringView ThemeOverlayScale{ "theme.overlay_scale" };
 inline constexpr QLatin1StringView ThemeActiveSkin{ "theme.active_skin" };  // see Theme.skinOrder (QML); default obsidian
 // Percent multiplier (25-150) on the active skin's overlay scrim alpha, so
 // "100" always means "the skin's own dimming" regardless of which skin is on.

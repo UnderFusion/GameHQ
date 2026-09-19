@@ -1,4 +1,9 @@
 #include "updates/UpdateService.h"
+#include "updates/RemoteReleaseNotes.h"
+#include <QFileInfo>
+#include <QFile>
+#include <QSaveFile>
+#include "updates/ReleaseCatalog.h"
 #include "updates/GitHubReleaseSource.h"
 #include "updates/UpdateDownloader.h"
 #include "updates/VersionNumber.h"
@@ -15,17 +20,33 @@
 
 QVariantList UpdateService::noteBlocks() const
 {
-    return {};
+    return m_notes->blocks();
+}
+
+QString UpdateService::notes() const { return m_notes->markdown(); }
+bool UpdateService::notesLoading() const { return m_notes->loading(); }
+void UpdateService::retryNotes() { m_notes->retry(); }
+void UpdateService::setNotesLocale(const QString &locale)
+{
+    if (m_notesLocale == locale)
+        return;
+    m_notesLocale = locale;
+    if (m_release)
+        m_notes->select(m_release->version, m_release->tag, m_release->notes, locale);
 }
 
 UpdateService::UpdateService(QString owner, QString repo, QString installedVersion,
                              QString stagingRoot, QString trustStatePath, QObject *parent)
     : QObject(parent)
+    , m_notes(new RemoteReleaseNotes(owner, repo,
+          QFileInfo(trustStatePath).absolutePath() + QStringLiteral("/release-notes-cache"), this))
     , m_source(new GitHubReleaseSource(std::move(owner), std::move(repo), this))
     , m_downloader(new UpdateDownloader(stagingRoot, std::move(trustStatePath), this))
     , m_installedVersion(std::move(installedVersion))
     , m_packageRoot(QDir(stagingRoot).absoluteFilePath(QStringLiteral("../..")))
+    , m_releaseCachePath(QFileInfo(trustStatePath).absolutePath() + QStringLiteral("/release-notes-cache/discovery.json"))
 {
+    connect(m_notes, &RemoteReleaseNotes::changed, this, &UpdateService::notesChanged);
     connect(m_source, &GitHubReleaseSource::succeeded, this, &UpdateService::onSucceeded);
     connect(m_source, &GitHubReleaseSource::unchanged, this, &UpdateService::onUnchanged);
     connect(m_source, &GitHubReleaseSource::notFound, this, &UpdateService::onNotFound);
@@ -159,6 +180,20 @@ QString UpdateService::conditionalEtag() const
     return m_release.has_value() ? m_etag : QString();
 }
 
+void UpdateService::restoreCachedRelease()
+{
+    QFile cached(m_releaseCachePath);
+    if (!cached.open(QIODevice::ReadOnly) || cached.size() > 1024 * 1024)
+        return;
+    const auto release = ReleaseCatalog::restoreSnapshot(cached.readAll());
+    if (!release || !releaseIsNewerThanInstalled(*release))
+        return;
+    // ETag and snapshot are persisted separately. The first refresh must be
+    // unconditional so an interrupted write cannot bind an ETag to old notes.
+    m_etag.clear();
+    applyRelease(*release);
+}
+
 void UpdateService::applyRelease(const ReleaseInfo &release)
 {
     if (release.draft) {
@@ -174,6 +209,9 @@ void UpdateService::applyRelease(const ReleaseInfo &release)
     if (!releaseIsNewerThanInstalled(release)) {
         qInfo() << "UpdateService: latest release" << release.version
                  << "is not newer than installed" << m_installedVersion;
+        QFile::remove(m_releaseCachePath);
+        m_release.reset();
+        Q_EMIT releaseChanged();
         setState(State::UpToDate);
         return;
     }
@@ -186,6 +224,12 @@ void UpdateService::applyRelease(const ReleaseInfo &release)
     }
 
     m_release = release;
+    m_notes->select(release.version, release.tag, release.notes, m_notesLocale);
+    QDir().mkpath(QFileInfo(m_releaseCachePath).absolutePath());
+    QSaveFile cached(m_releaseCachePath);
+    const QByteArray snapshot = ReleaseCatalog::cacheSnapshot(release);
+    if (cached.open(QIODevice::WriteOnly) && cached.write(snapshot) == snapshot.size())
+        cached.commit();
     Q_EMIT releaseChanged();
     setState(State::UpdateAvailable);
 }
@@ -265,6 +309,8 @@ void UpdateService::onUnchanged(const QString & /*etag*/)
         return;
     }
     m_retriedWithoutCache = false;
+    m_release.reset();
+    Q_EMIT releaseChanged();
     setNextAllowedCheck({});   // GitHub answered, so any cooldown is over
     m_lastChecked = QDateTime::currentDateTimeUtc();
     Q_EMIT lastCheckedChanged();
@@ -273,6 +319,7 @@ void UpdateService::onUnchanged(const QString & /*etag*/)
 
 void UpdateService::onNotFound()
 {
+    QFile::remove(m_releaseCachePath);
     if (m_revalidatingInstall) {
         m_revalidatingInstall = false;
         cancelPreparation(NativeText::get(

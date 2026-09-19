@@ -8,6 +8,9 @@ Text {
     property bool menuOpen: false
     property bool videoFocused: false
 
+    width: parent.width
+    wrapMode: Text.WordWrap
+    horizontalAlignment: Text.AlignHCenter
     anchors.bottom: parent.bottom
     anchors.horizontalCenter: parent.horizontalCenter
 

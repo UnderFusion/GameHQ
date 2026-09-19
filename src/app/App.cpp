@@ -493,6 +493,10 @@ bool App::init()
                                                  Paths::packageRoot() + QStringLiteral("/.update/downloads"),
                                                  Paths::dataDir() + QStringLiteral("/release-trust-state.json"),
                                                  nullptr);
+    m_updates->setNotesLocale(m_languageManager->effectiveLanguage());
+    connect(m_languageManager.get(), &LanguageManager::languageChanged, this, [this] {
+        m_updates->setNotesLocale(m_languageManager->effectiveLanguage());
+    });
     // Update-check policy (docs/updater.md "Discovery"): prime the cached ETag
     // and skip flag from config, persist whatever the service later reports,
     // and gate automatic checks to at most once every 24h. Manual checkNow()
@@ -505,6 +509,7 @@ bool App::init()
     m_updates->primeNextAllowedCheck(QDateTime::fromString(
         m_config->value(ConfigKeys::InternalUpdatesNextAllowedCheckUtc, QString()).toString(),
         Qt::ISODate).toUTC());
+    m_updates->restoreCachedRelease();
     connect(m_updates.get(), &UpdateService::nextAllowedCheckChanged, this,
             [this](const QDateTime& when) {
         m_config->setValue(ConfigKeys::InternalUpdatesNextAllowedCheckUtc,

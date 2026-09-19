@@ -26,6 +26,9 @@ public:
     // call supersedes any retries still pending from the previous one.
     void acquire(void* target, const QString& phase);
 
+    // Stop queued retries when the window closes or focus moves elsewhere.
+    void cancel();
+
     // Result of the most recently *finished* acquisition.
     bool lastAcquired() const { return m_lastAcquired; }
 

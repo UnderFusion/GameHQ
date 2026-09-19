@@ -52,6 +52,8 @@ constexpr std::array liveKeys{
     ConfigKeys::UiWindowY,
     ConfigKeys::UiWindowWidth,
     ConfigKeys::UiWindowHeight,
+    ConfigKeys::ThemeMainScale,
+    ConfigKeys::ThemeOverlayScale,
     ConfigKeys::ThemeActiveSkin,
     ConfigKeys::ThemeOverlayScrimStrength,
     ConfigKeys::UpdatesCheckAutomatically,

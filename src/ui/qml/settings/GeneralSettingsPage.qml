@@ -3,6 +3,11 @@ import GameHQ
 import "../components"
 
 SettingsPage {
+    id: generalPage
+    readonly property var scaleOptions: [100, 125, 150, 175, 200].map(function(value) {
+        return { label: value + "%", value: value }
+    })
+
     //% "General"
     pageTitle: qsTrId("gamehq.settings.general.title")
     //% "Appearance, startup, and window behavior."
@@ -72,6 +77,30 @@ SettingsPage {
                 options: Theme.availableSkins.map(function (s) {
                     return { label: s.label, value: s.key }
                 })
+            }
+        }
+        SettingsRow {
+            //% "Main interface size"
+            label: qsTrId("gamehq.settings.general.main_scale.label")
+            //% "Enlarge text, icons, and controls. Applies immediately; reduced automatically when space is limited."
+            description: qsTrId("gamehq.settings.general.interface_scale.description")
+            SettingsCombo {
+                objectName: "mainInterfaceScale"
+                configKey: "theme.main_scale"
+                defaultValue: 100
+                options: generalPage.scaleOptions
+            }
+        }
+        SettingsRow {
+            //% "Overlay interface size"
+            label: qsTrId("gamehq.settings.general.overlay_scale.label")
+            //% "Enlarge text, icons, and controls. Applies immediately; reduced automatically when space is limited."
+            description: qsTrId("gamehq.settings.general.interface_scale.description")
+            SettingsCombo {
+                objectName: "overlayInterfaceScale"
+                configKey: "theme.overlay_scale"
+                defaultValue: 100
+                options: generalPage.scaleOptions
             }
         }
         SettingsRow {

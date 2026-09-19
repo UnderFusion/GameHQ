@@ -66,3 +66,7 @@ tools/release-manifest/**/obj/
 
 # Assembled dist packages (packaging/make-dist.ps1)
 dist/
+
+# Agent scratch directories (never committed)
+.codex-tmp/
+.claude-gui-temp/

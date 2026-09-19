@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.28",
+  "locale": "en-US",
+  "date": "2026-09-12",
+  "sections": [
+    {
+      "id": "fixed",
+      "title": "Fixed",
+      "items": [
+        {
+          "id": "scaled-window-stacking",
+          "text": "Fixed the blank main window after introducing interface scaling. Backgrounds stay behind controls, and action menus stay above content in both windows."
+        }
+      ]
+    }
+  ]
+}

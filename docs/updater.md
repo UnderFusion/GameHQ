@@ -185,10 +185,33 @@ identical after any update, successful or rolled back.
    `internal.ui.whats_new_seen_version` when the modal closes. The modal is never
    created in the game overlay. The effective application locale selects the
    complete bundle and a missing or invalid localized bundle falls back wholly
-   to verified `en-US`; fields are never mixed. GitHub release-body Markdown is
-   discovery metadata and is not rendered as trusted localized notes. Release
-   notes are presentation-only: signed manifest and artifact evidence remain
-   the sole inputs to download and installation authorization.
+   to verified `en-US`; fields are never mixed. For a suggested version absent
+   from that bundle, the dialog renders the GitHub release body's notes immediately
+   and fetches `assets/release-notes/publication/<version>/release-notes.<locale>.md`
+   from the exact release tag on `raw.githubusercontent.com`. A missing translation
+   falls back to the English publication or discovery body. Published fallback
+   documents explicitly identify their English content. Language changes fetch
+   the new locale and generation checks discard stale replies.
+
+   Remote notes are presentation-only untrusted content: the existing Markdown
+   parser emits plain structured blocks and QML escapes styled text. Requests use
+   HTTPS without redirects, a ten-second timeout and a 128 KiB limit; downloaded
+   documents must identify the requested version. Version/tag/locale-specific
+   notes, the discovery body, and a bounded offerable-release snapshot are cached atomically under
+   `gamehq-data/release-notes-cache/`. A failed refresh preserves available notes;
+   if neither published notes, discovery text nor cached content exists, the
+   dialog offers an in-app retry. A controller-accessible GitHub link beneath
+   the suggested version's notes opens that exact release page. An uncached
+   offline release cannot supply text. Startup restores the snapshot after applying
+   the skipped-version preference, so known updates remain visible offline. The
+   first refresh is unconditional to avoid mismatched cached ETags. Confirmed
+   withdrawal or an up-to-date result invalidates the persisted offer.
+   Existing publication generation provides the remote documents; retain them
+   in the release tag before publishing. No additional release assets are needed.
+
+   Signed manifest and artifact evidence remain the sole inputs to download and
+   installation authorization; fetched notes never authorize installation.
+
 
 ## Implementation stages
 

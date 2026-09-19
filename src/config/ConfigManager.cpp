@@ -74,6 +74,8 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::UiWindowY,               WindowPlacement::kUnsetCoordinate },
         { ConfigKeys::UiWindowWidth,           WindowPlacement::kDefaultWidth },
         { ConfigKeys::UiWindowHeight,          WindowPlacement::kDefaultHeight },
+        { ConfigKeys::ThemeMainScale,          100 },
+        { ConfigKeys::ThemeOverlayScale,       100 },
         { ConfigKeys::ThemeActiveSkin,         "obsidian" },
         { ConfigKeys::ThemeOverlayScrimStrength, 100 },   // percent, 25-150
         { ConfigKeys::UpdatesCheckAutomatically, true },
