@@ -6,6 +6,17 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.33] - 2026-09-19
+
+### Fixed
+
+- Normalize controller buttons to the same canonical control on every input
+  backend. A wired DualSense reaching GameHQ through Sony HID, XInput and WinMM
+  at once reported its triggers and stick clicks under different ids per
+  backend, so a saved shortcut stopped matching after pressing certain buttons.
+  Thumbstick clicks are now `gamepad.thumb_left`/`gamepad.thumb_right` and
+  triggers `gamepad.trigger_left`/`gamepad.trigger_right` everywhere.
+
 ## [0.7.32] - 2026-09-14
 
 ### Fixed

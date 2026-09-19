@@ -17,49 +17,8 @@ constexpr UINT kMaxSlots = 16;
 
 quint32 mapWinMMState(const JOYINFOEX& info, bool ds4Layout)
 {
-    quint32 s = 0;
+    quint32 s = WinMMDevice::mapDigitalButtons(info.dwButtons, ds4Layout);
     auto set = [&s](int btn) { s |= (1u << btn); };
-    const quint32 b = info.dwButtons;
-
-    if (ds4Layout) {
-        // Sony DS4/DualSense DirectInput button order (also used by DSX's
-        // virtual Sony pads):
-        //   0=Square 1=Cross 2=Circle 3=Triangle 4=L1 5=R1 6=L2 7=R2
-        //   8=Share 9=Options 10=L3 11=R3 12=PS 13=Touchpad
-        // This is what makes Share-screenshot and PS-overlay work when the
-        // pad is only reachable through WinMM.
-        if (b & 0x0001) set(Gamepad::Square);
-        if (b & 0x0002) set(Gamepad::Cross);
-        if (b & 0x0004) set(Gamepad::Circle);
-        if (b & 0x0008) set(Gamepad::Triangle);
-        if (b & 0x0010) set(Gamepad::L1);
-        if (b & 0x0020) set(Gamepad::R1);
-        if (b & 0x0100) set(Gamepad::Share);
-        if (b & 0x0200) set(Gamepad::Options);
-        if (b & 0x1000) set(Gamepad::PS);
-        // Previously discarded — now exposed as generic (unnamed-position)
-        // buttons so they stay bindable: 6=L2 7=R2 10=L3 11=R3 13=Touchpad.
-        if (b & 0x0040) set(Gamepad::GenericButtonBase + 0);
-        if (b & 0x0080) set(Gamepad::GenericButtonBase + 1);
-        if (b & 0x0400) set(Gamepad::GenericButtonBase + 2);
-        if (b & 0x0800) set(Gamepad::GenericButtonBase + 3);
-        if (b & 0x2000) set(Gamepad::GenericButtonBase + 4);
-    } else {
-        // Xbox-style joystick button numbering:
-        //   0=A, 1=B, 2=X, 3=Y, 4=LB, 5=RB, 6=Back, 7=Start, 8=LThumb, 9=RThumb
-        // Covers DSX virtual Xbox mode and generic DirectInput pads.
-        if (b & 0x01) set(Gamepad::Cross);       // A
-        if (b & 0x02) set(Gamepad::Circle);      // B
-        if (b & 0x04) set(Gamepad::Square);      // X
-        if (b & 0x08) set(Gamepad::Triangle);    // Y
-        if (b & 0x10) set(Gamepad::L1);          // LB
-        if (b & 0x20) set(Gamepad::R1);          // RB
-        if (b & 0x40) set(Gamepad::Share);       // Back
-        if (b & 0x80) set(Gamepad::Options);     // Start
-        // Previously discarded — now exposed as generic buttons.
-        if (b & 0x100) set(Gamepad::GenericButtonBase + 0);   // LThumb
-        if (b & 0x200) set(Gamepad::GenericButtonBase + 1);   // RThumb
-    }
 
     // Some drivers report "centered" as 0xFFFFFFFF instead of the 16-bit
     // JOY_POVCENTERED (0xFFFF) — treat anything outside 0..35999 as neutral.
@@ -81,6 +40,60 @@ quint32 mapWinMMState(const JOYINFOEX& info, bool ds4Layout)
     return s;
 }
 } // namespace
+
+// Sony DS4/DualSense DirectInput button order (also used by the virtual Sony
+// pads DSX exposes):
+//   0=Square 1=Cross 2=Circle 3=Triangle 4=L1 5=R1 6=L2 7=R2
+//   8=Share 9=Options 10=L3 11=R3 12=PS 13=Touchpad
+// Xbox-style DirectInput order:
+//   0=A 1=B 2=X 3=Y 4=LB 5=RB 6=Back 7=Start 8=LThumb 9=RThumb
+quint32 WinMMDevice::mapDigitalButtons(quint32 rawButtons, bool ds4Layout)
+{
+    quint32 s = 0;
+    auto set = [&s](int btn) { s |= (1u << btn); };
+    const quint32 b = rawButtons;
+
+    if (ds4Layout) {
+        // This is what makes Share-screenshot and PS-overlay work when the
+        // pad is only reachable through WinMM.
+        if (b & 0x0001) set(Gamepad::Square);
+        if (b & 0x0002) set(Gamepad::Cross);
+        if (b & 0x0004) set(Gamepad::Circle);
+        if (b & 0x0008) set(Gamepad::Triangle);
+        if (b & 0x0010) set(Gamepad::L1);
+        if (b & 0x0020) set(Gamepad::R1);
+        if (b & 0x0100) set(Gamepad::Share);
+        if (b & 0x0200) set(Gamepad::Options);
+        if (b & 0x1000) set(Gamepad::PS);
+        // 6=L2 7=R2 10=L3 11=R3 all have canonical positions and MUST use
+        // them: the Sony HID, GameInput and XInput views of the same pad
+        // publish trigger_left/right and thumb_left/right, so emitting an
+        // unnamed generic code here made one physical button resolve to a
+        // different canonical control depending on which API delivered it.
+        if (b & 0x0040) set(Gamepad::L2);
+        if (b & 0x0080) set(Gamepad::R2);
+        if (b & 0x0400) set(Gamepad::L3);
+        if (b & 0x0800) set(Gamepad::R3);
+        // 13=Touchpad click has no canonical position in any other provider,
+        // so it stays a generic button — and keeps its historic index so an
+        // existing binding to it survives this correction.
+        if (b & 0x2000) set(Gamepad::GenericButtonBase + 4);
+    } else {
+        // Covers DSX virtual Xbox mode and generic DirectInput pads.
+        if (b & 0x01) set(Gamepad::Cross);       // A
+        if (b & 0x02) set(Gamepad::Circle);      // B
+        if (b & 0x04) set(Gamepad::Square);      // X
+        if (b & 0x08) set(Gamepad::Triangle);    // Y
+        if (b & 0x10) set(Gamepad::L1);          // LB
+        if (b & 0x20) set(Gamepad::R1);          // RB
+        if (b & 0x40) set(Gamepad::Share);       // Back
+        if (b & 0x80) set(Gamepad::Options);     // Start
+        // Thumbstick clicks: canonical positions, same as every other backend.
+        if (b & 0x100) set(Gamepad::L3);         // LThumb
+        if (b & 0x200) set(Gamepad::R3);         // RThumb
+    }
+    return s;
+}
 
 WinMMDevice::WinMMDevice(QObject* parent)
     : Gamepad(parent)

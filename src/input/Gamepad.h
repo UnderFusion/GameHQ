@@ -24,6 +24,12 @@ public:
         // generic codes stay stable across this append: genericButton() indexes
         // relative to GenericButtonBase on both the emit and the persist side.
         RStickUp, RStickDown,
+        // Thumbstick clicks. GameInput has always published these as the
+        // canonical gamepad.thumb_left / gamepad.thumb_right; the legacy
+        // backends used to emit them as unnamed generic buttons, which made
+        // the SAME physical button resolve to a different canonical control
+        // depending on which API happened to deliver the edge.
+        L3, R3,
         ButtonCount
     };
     Q_ENUM(Button)
@@ -67,6 +73,8 @@ public:
         case DpadRight: return QStringLiteral("D-Right");
         case RStickUp:   return QStringLiteral("RS-Up");
         case RStickDown: return QStringLiteral("RS-Down");
+        case L3:        return QStringLiteral("L3");
+        case R3:        return QStringLiteral("R3");
         default:
             // Matches ControlId::label()'s numbering for the same generic code.
             return b >= GenericButtonBase
@@ -99,6 +107,8 @@ public:
         case Share:     return ControlId::Capture;
         case RStickUp:   return ControlId::StickRightUp;
         case RStickDown: return ControlId::StickRightDown;
+        case L3:        return ControlId::ThumbLeft;
+        case R3:        return ControlId::ThumbRight;
         default:
             return b >= GenericButtonBase
                 ? ControlId::genericButton(b - GenericButtonBase)

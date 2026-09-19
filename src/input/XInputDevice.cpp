@@ -21,42 +21,51 @@ constexpr WORD kGuideButton = 0x0400;
 
 quint32 mapButtons(const XINPUT_GAMEPAD& pad)
 {
-    quint32 s = 0;
-    auto set = [&s](int btn) { s |= (1u << btn); };
-
-    if (pad.wButtons & XINPUT_GAMEPAD_BACK) set(Gamepad::Share);
-    if (pad.wButtons & XINPUT_GAMEPAD_START) set(Gamepad::Options);
-    if (pad.wButtons & XINPUT_GAMEPAD_A) set(Gamepad::Cross);
-    if (pad.wButtons & XINPUT_GAMEPAD_B) set(Gamepad::Circle);
-    if (pad.wButtons & XINPUT_GAMEPAD_Y) set(Gamepad::Triangle);
-    if (pad.wButtons & XINPUT_GAMEPAD_X) set(Gamepad::Square);
-    if (pad.wButtons & XINPUT_GAMEPAD_LEFT_SHOULDER) set(Gamepad::L1);
-    if (pad.wButtons & XINPUT_GAMEPAD_RIGHT_SHOULDER) set(Gamepad::R1);
-    // XInput reports the triggers as 0..255 analog, with no digital edge, so
-    // they are thresholded into buttons here — every action bound to a trigger
-    // is a discrete step. XINPUT_GAMEPAD_TRIGGER_THRESHOLD (30) is Microsoft's
-    // own "pressed" floor.
-    if (pad.bLeftTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD) set(Gamepad::L2);
-    if (pad.bRightTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD) set(Gamepad::R2);
-    if (pad.wButtons & XINPUT_GAMEPAD_DPAD_UP) set(Gamepad::DpadUp);
-    if (pad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN) set(Gamepad::DpadDown);
-    if (pad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT) set(Gamepad::DpadLeft);
-    if (pad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT) set(Gamepad::DpadRight);
-    if (pad.wButtons & kGuideButton) set(Gamepad::PS);
-    // Previously discarded stick clicks — now exposed as generic buttons.
-    if (pad.wButtons & XINPUT_GAMEPAD_LEFT_THUMB) set(Gamepad::GenericButtonBase + 0);
-    if (pad.wButtons & XINPUT_GAMEPAD_RIGHT_THUMB) set(Gamepad::GenericButtonBase + 1);
-
+    quint32 s = XInputDevice::mapDigitalButtons(pad.wButtons, pad.bLeftTrigger,
+                                                pad.bRightTrigger);
     // Signed axes centered on 0, Y growing upward. No hysteresis here (return
     // zone == deadzone), matching how this backend has always behaved.
     constexpr StickNav::AxisConfig kNav{ 0, 12000, 12000, true };
     s |= StickNav::bits(kNav, pad.sThumbLX, pad.sThumbLY);
-    // Right stick vertical → wheel-like scroll controls.
+    // Right stick vertical -> wheel-like scroll controls.
     s |= StickNav::verticalBits(kNav, pad.sThumbRY,
                                 Gamepad::RStickUp, Gamepad::RStickDown);
-
     return s;
 }
+}
+
+quint32 XInputDevice::mapDigitalButtons(quint16 buttons, quint8 leftTrigger,
+                                        quint8 rightTrigger)
+{
+    quint32 s = 0;
+    auto set = [&s](int btn) { s |= (1u << btn); };
+
+    if (buttons & XINPUT_GAMEPAD_BACK) set(Gamepad::Share);
+    if (buttons & XINPUT_GAMEPAD_START) set(Gamepad::Options);
+    if (buttons & XINPUT_GAMEPAD_A) set(Gamepad::Cross);
+    if (buttons & XINPUT_GAMEPAD_B) set(Gamepad::Circle);
+    if (buttons & XINPUT_GAMEPAD_Y) set(Gamepad::Triangle);
+    if (buttons & XINPUT_GAMEPAD_X) set(Gamepad::Square);
+    if (buttons & XINPUT_GAMEPAD_LEFT_SHOULDER) set(Gamepad::L1);
+    if (buttons & XINPUT_GAMEPAD_RIGHT_SHOULDER) set(Gamepad::R1);
+    // XInput reports the triggers as 0..255 analog, with no digital edge, so
+    // they are thresholded into buttons here - every action bound to a trigger
+    // is a discrete step. XINPUT_GAMEPAD_TRIGGER_THRESHOLD (30) is Microsoft's
+    // own "pressed" floor.
+    if (leftTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD) set(Gamepad::L2);
+    if (rightTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD) set(Gamepad::R2);
+    if (buttons & XINPUT_GAMEPAD_DPAD_UP) set(Gamepad::DpadUp);
+    if (buttons & XINPUT_GAMEPAD_DPAD_DOWN) set(Gamepad::DpadDown);
+    if (buttons & XINPUT_GAMEPAD_DPAD_LEFT) set(Gamepad::DpadLeft);
+    if (buttons & XINPUT_GAMEPAD_DPAD_RIGHT) set(Gamepad::DpadRight);
+    if (buttons & kGuideButton) set(Gamepad::PS);
+    // Thumbstick clicks are canonical positions (gamepad.thumb_left/right),
+    // not unnamed generic buttons: GameInput and the WinMM view of the same
+    // pad publish them that way, and a generic index means a different
+    // physical button on every backend.
+    if (buttons & XINPUT_GAMEPAD_LEFT_THUMB) set(Gamepad::L3);
+    if (buttons & XINPUT_GAMEPAD_RIGHT_THUMB) set(Gamepad::R3);
+    return s;
 }
 
 XInputDevice::XInputDevice(QObject* parent)

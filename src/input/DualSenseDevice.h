@@ -49,6 +49,11 @@ public:
     ~DualSenseDevice() override;
 
     bool start() override;
+
+    // Pure Sony HID button-block decode, exposed so the canonical control
+    // each physical button produces can be compared against the WinMM and
+    // XInput views of the same pad without a real device.
+    static quint32 decodeButtons(const unsigned char* d, int base);
     ControlId::DeviceProfile profile() const override;
 
     // Re-run the debounced device reconciliation (used after the HidHide
@@ -130,7 +135,6 @@ private:
     // parseReport stages, in call order. The decoders are pure (static);
     // routeReport owns the active-pad selection/steal side effects.
     static int buttonBlockBase(unsigned char reportId, bool ds4, int len);
-    static quint32 decodeButtons(const unsigned char* d, int base);
     static quint32 decodeStickNav(const DeviceState& st, const unsigned char* d, int base, int len);
     void routeReport(void* handle, const DeviceState& st, quint32 s, bool changed,
                      unsigned char reportId, const unsigned char* d, int len);

@@ -25,6 +25,12 @@ public:
     ControlId::DeviceProfile profile() const override;
     ControlId::DeviceProfile profileForSlot(int slot) const;
 
+    // Pure XInput button/trigger normalization, exposed so the canonical
+    // control each physical button produces can be compared against the Sony
+    // HID and WinMM views of the same pad without a real device.
+    static quint32 mapDigitalButtons(quint16 buttons, quint8 leftTrigger,
+                                     quint8 rightTrigger);
+
     // Stable hardware identity ("vvvv:pppp") for the connected pad when the
     // Raw Input topology correlation is unambiguous, empty otherwise.
     // XInput cannot know this itself — InputEngine injects it (see

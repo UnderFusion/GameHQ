@@ -1,9 +1,14 @@
 {
   "schema_version": 2,
   "source_locale": "en-US",
-  "current_version": "0.7.32",
+  "current_version": "0.7.33",
   "history_limit": 12,
   "documents": [
+    {
+      "version": "0.7.33",
+      "date": "2026-09-19",
+      "source_integrity": "sha256:993913c72329ce5a6202bf3bc589af784d61be3d4c801b1348e2ed2389d0470b"
+    },
     {
       "version": "0.7.32",
       "date": "2026-09-14",
@@ -69,98 +74,98 @@
     {
       "locale": "en-US",
       "filename": "release-notes.en-US.json",
-      "size": 8525,
-      "sha256": "4646cf3dc483c0a4aacd9b3f09f9065a0b74b866f9a9fc5fcf773b520c3b9cca"
+      "size": 9259,
+      "sha256": "4e8f8d32eb9dbc63c0bb83f7abb7f74192250156f37f1db54218b982460cf6a5"
     },
     {
       "locale": "zh-Hans",
       "filename": "release-notes.zh-Hans.json",
-      "size": 8650,
-      "sha256": "d6ea99c5b934eefe554c765c91fa3d4dd1a19f0fd075e794120f5d8d30bda68f"
+      "size": 9404,
+      "sha256": "17227b28f931143e5303058aef33321101121fafabafeedba1ebd9070a118707"
     },
     {
       "locale": "ru-RU",
       "filename": "release-notes.ru-RU.json",
-      "size": 9462,
-      "sha256": "2ee577cd573e6b39fc589a29c7a099fda2cfd573aab980d30499471d9a5d41d8"
+      "size": 10216,
+      "sha256": "b82880d807e3760208cb08fd16521b0fa2bdd55329eb00a147305542f44d8a0c"
     },
     {
       "locale": "es-ES",
       "filename": "release-notes.es-ES.json",
-      "size": 8843,
-      "sha256": "24ee284d51813c1ce324fffbdc25eaddabe7db4529829884ed4069729a9bfd87"
+      "size": 9597,
+      "sha256": "3f455ac5f1d60170dfa2f3b824929214442e35f79ab6b581a575796ecf3eb253"
     },
     {
       "locale": "pt-BR",
       "filename": "release-notes.pt-BR.json",
-      "size": 8869,
-      "sha256": "cc036b867d9d03eb88b4aa1a799efe9c3795824112689eddd4cdcf0089d06a94"
+      "size": 9623,
+      "sha256": "d2119d38de7cb9dba5c61ff838388cee7205fc348dd0fcf1cf45a8aecdb1f348"
     },
     {
       "locale": "de-DE",
       "filename": "release-notes.de-DE.json",
-      "size": 8948,
-      "sha256": "4981eb35ff0ca26caf00626aeb9d8e73802008d4b2b42a4b5aaf916a85a8c5c6"
+      "size": 9702,
+      "sha256": "d72331937e607c749fa4f95e86fe73241c62812637a572c56955ebd5d3923372"
     },
     {
       "locale": "ja-JP",
       "filename": "release-notes.ja-JP.json",
-      "size": 9046,
-      "sha256": "c5bb8a712f180a79adcdef8f1678d69168460b5dd13cc06ca3b17b5aa726ab6a"
+      "size": 9800,
+      "sha256": "d99a940319032f08fec60cea2e8d8005e449a45fc057bef8e62224d5a3b68853"
     },
     {
       "locale": "fr-FR",
       "filename": "release-notes.fr-FR.json",
-      "size": 8930,
-      "sha256": "b0ad3abf82309b4867f2dec2822f1f91ba6b846a017608d2f9346979c09a3c0b"
+      "size": 9684,
+      "sha256": "6d76d7ecaeee9ec8bc9d260e5a8c93b1979ced6f202d6a05ae658e5ebf2b6089"
     },
     {
       "locale": "pl-PL",
       "filename": "release-notes.pl-PL.json",
-      "size": 8921,
-      "sha256": "495247e2fc097495d792d18ba1857d7a471d49b42d0b0efa28ffa7b5a111d040"
+      "size": 9675,
+      "sha256": "b472ce10bbd198cbc2027d18ed56e3a1ecd5d9bf4b0298ee1c910d850cb9250a"
     },
     {
       "locale": "ko-KR",
       "filename": "release-notes.ko-KR.json",
-      "size": 8952,
-      "sha256": "5dc879c24035d9e84e9f5f7659c7cf1690749261d78aa7c12c9245efad18237f"
+      "size": 9706,
+      "sha256": "2bcd9ade4cbd61620c228357e8160a0a7a3a4be13d521e02b5bbdbb89c8c737f"
     },
     {
       "locale": "zh-Hant",
       "filename": "release-notes.zh-Hant.json",
-      "size": 8671,
-      "sha256": "dac1fcfb57d5c2bbbab2c860f156b32514cad36026c34047d9a688ffc885dbeb"
+      "size": 9425,
+      "sha256": "52d692504904843e38301fab06f00d77e594810f1a6f677c63eb76fd41063bb2"
     },
     {
       "locale": "tr-TR",
       "filename": "release-notes.tr-TR.json",
-      "size": 8884,
-      "sha256": "59bff71f31479d6788ab0ae1e5b520e659734a2fb911f959660fa6c6cb313fdb"
+      "size": 9638,
+      "sha256": "8ece252f66d6df62e24c406de8975222b18930792edf5185c1df96dd30123423"
     },
     {
       "locale": "th-TH",
       "filename": "release-notes.th-TH.json",
-      "size": 10121,
-      "sha256": "7050bf09310d3e8fa818831b52bf61070395866dee92f4d3c542a10ff6c6b041"
+      "size": 10875,
+      "sha256": "9cb7d884754fd3f400a6a1fdd93e188a94c1848b094c92ef948fecbb9bf32234"
     },
     {
       "locale": "es-419",
       "filename": "release-notes.es-419.json",
-      "size": 8944,
-      "sha256": "680b571be4ea551c6dd207b9e28befb8b63da3c6707a7fd6fa56eb3d473b8bce"
+      "size": 9698,
+      "sha256": "4263e18868dbec187147342df9eefcf3d78af2db37376850cb4ea5549167024e"
     },
     {
       "locale": "uk-UA",
       "filename": "release-notes.uk-UA.json",
-      "size": 9508,
-      "sha256": "227d34205b0ec075b33a9d695a8f40cbb429e8742032774b163a2c1649b4bd0f"
+      "size": 10262,
+      "sha256": "5165fdefe1abe4213b84dc79dd0b2285e99752199bd945d9669b5c1cd332e8a1"
     },
     {
       "locale": "it-IT",
       "filename": "release-notes.it-IT.json",
-      "size": 8846,
-      "sha256": "a9e7e3a406aeef6d38244ee4a3131c153ddb97e3825a892b4fe11446f5386304"
+      "size": 9600,
+      "sha256": "05f935ab0f43d512688c5e11d650e91ceb960915ab5c215d755d32ffd0838d73"
     }
   ]
 }

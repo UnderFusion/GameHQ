@@ -63,6 +63,30 @@ gamehq_add_test(tst_xinputidentity
 gamehq_add_test(tst_sonyreportlayout
     tst_sonyreportlayout.cpp)
 
+# cpo-c01/cpo-c02: one wired DualSense reaches GameHQ through the Sony HID,
+# XInput and WinMM backends at once. Each backend normalizes raw buttons
+# independently, so this drives the three pure mapping tables directly and
+# asserts the same physical button always yields the same canonical control.
+# Without it, gamepad.button.0 silently meant L2 on one API and the left stick
+# click on another, and a saved binding matched only half the time.
+gamehq_add_test(tst_providercontrolmap
+    tst_providercontrolmap.cpp
+    # Gamepad.h has no .cpp of its own, so AUTOMOC only sees its Q_OBJECT when
+    # the header is listed here explicitly.
+    "${CMAKE_SOURCE_DIR}/src/input/Gamepad.h"
+    "${CMAKE_SOURCE_DIR}/src/input/WinMMDevice.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/XInputDevice.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/InputRateMonitor.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/RawInputApi.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/HidCloakMonitor.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/SelectiveRawHidFallback.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/PerfTrace.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControllerIdentity.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp")
+target_link_libraries(tst_providercontrolmap PRIVATE user32 cfgmgr32 hid winmm)
+
 # Pure policy test: no database, no Qt GUI. Covers the frozen decision order in
 # BindingRelation that both the editor and the runtime depend on.
 gamehq_add_test(tst_bindingrelation

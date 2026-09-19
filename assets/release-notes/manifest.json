@@ -30,6 +30,15 @@
   },
   "releases": [
     {
+      "version": "0.7.33",
+      "date": "2026-09-19",
+      "status": "released",
+      "localization_policy": "fallback-allowed",
+      "source_integrity": "sha256:993913c72329ce5a6202bf3bc589af784d61be3d4c801b1348e2ed2389d0470b",
+      "original_source_integrity": "sha256:993913c72329ce5a6202bf3bc589af784d61be3d4c801b1348e2ed2389d0470b",
+      "correction": null
+    },
+    {
       "version": "0.7.32",
       "date": "2026-09-14",
       "status": "released",

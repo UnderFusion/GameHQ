@@ -34,6 +34,11 @@ public:
     bool start() override;
     ControlId::DeviceProfile profile() const override;
 
+    // Pure DirectInput button-mask normalization, exposed so the canonical
+    // control each physical button produces can be compared against the Sony
+    // HID and XInput views of the same pad without a real device.
+    static quint32 mapDigitalButtons(quint32 rawButtons, bool ds4Layout);
+
 public slots:
     void rescan();   // kick a background scan for a newly arrived joystick
 
