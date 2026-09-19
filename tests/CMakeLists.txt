@@ -239,6 +239,16 @@ gamehq_add_test(tst_foregroundacquirer
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp")
 target_link_libraries(tst_foregroundacquirer PRIVATE user32)
 
+# cpo-o02: the single non-activating overlay presentation path. The fake seam
+# proves the flag/ordering contract (including an HWND swap no machine
+# reproduces on demand); the last case drives the production QWindow adapter
+# against real Windows and skips only on a session that cannot hold focus.
+gamehq_add_test(tst_overlaypresenter
+    tst_overlaypresenter.cpp
+    "${CMAKE_SOURCE_DIR}/src/overlay/OverlayPresenter.cpp"
+    "${CMAKE_SOURCE_DIR}/src/overlay/ForegroundApi.cpp")
+target_link_libraries(tst_overlaypresenter PRIVATE Qt6::Gui user32)
+
 # Drives the real DualSenseDevice through a fake RawInputApi. It links the
 # Win32 implementation only because the production constructor references it;
 # the fake overrides every call, so no test here touches the machine's devices.

@@ -2,8 +2,11 @@
 #include <QObject>
 #include <QString>
 
+#include <memory>
+
 class QQmlApplicationEngine;
 class QQuickWindow;
+class OverlayPresenter;
 
 // In-game overlay window lifecycle (docs/overlay.md): lazy-loads
 // OverlayWindow.qml, shows it frameless/topmost over the active app,
@@ -49,12 +52,14 @@ signals:
 private:
     bool ensureLoaded();
     void hideInternal();
-    void applyNoActivateStyle();
     void startShowProbe();
     void probeTick();
 
     QQmlApplicationEngine* m_engine;
     QQuickWindow* m_window = nullptr;
+    // The one production path that makes the overlay visible, positioned and
+    // topmost; it owns the never-activate guarantee (docs/overlay.md).
+    std::unique_ptr<OverlayPresenter> m_presenter;
     void* m_previousForeground = nullptr;   // HWND of the game/app under us
     void* m_focusHook = nullptr;            // HWINEVENTHOOK, opaque here to avoid <windows.h> in the header
     bool m_foregroundAcquired = true;

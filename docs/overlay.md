@@ -14,7 +14,14 @@
 
 ## Windows implementation
 
-`OverlayManager` uses `Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::WindowDoesNotAcceptFocus` and `SetWindowPos(HWND_TOPMOST, SWP_NOACTIVATE)`. Qt's Windows tool-window show path uses `SW_SHOWNOACTIVATE`; its no-focus flag handles mouse activation with `MA_NOACTIVATE`.
+`OverlayManager` uses `Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::WindowDoesNotAcceptFocus`. Qt's Windows tool-window show path uses `SW_SHOWNOACTIVATE`; its no-focus flag handles mouse activation with `MA_NOACTIVATE`.
+
+Every production path that shows, positions or raises the overlay goes through one primitive, `OverlayPresenter` (`src/overlay/OverlayPresenter.{h,cpp}`), so no call site re-derives the guarantee. It applies two independent protections on every presentation:
+
+- `WS_EX_NOACTIVATE` on the **current** native handle, written before the window is moved, shown or raised. Qt does not translate `Qt::WindowDoesNotAcceptFocus` into this ex-style, and without it Windows may activate the overlay on its own — it promotes the next topmost window when the foreground one hides or minimizes.
+- `SWP_NOACTIVATE` on every native positioning and z-order call, including the `HWND_TOPMOST` pin after the window becomes visible.
+
+Neither protection replaces the other. Qt rebuilds the native window on some flag, geometry and screen transitions, and a rebuilt window starts without the ex-style, so the presenter re-resolves the handle after each step and re-applies it; `OverlayPresenter::reassert()` does the same after a `QWindow::screenChanged`. Each presentation records the foreground window before and after and logs it, so the claim is measured rather than assumed. `tests/tst_overlaypresenter.cpp` covers initial show, repeated show, reposition, screen change, handle recreation and a stripped ex-style through a fake Win32 seam, plus one real-window case on the production adapter.
 
 The overlay has no `ForegroundAcquirer`, `requestActivate`, `AttachThreadInput`, or foreground retry path. The separate desktop window still uses its existing acquisition mechanism.
 

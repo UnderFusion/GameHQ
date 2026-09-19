@@ -6,6 +6,18 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.34] - 2026-09-19
+
+### Fixed
+
+- Route every overlay show, move and raise through one non-activating
+  presentation path. `WS_EX_NOACTIVATE` is now written to the current native
+  handle before the window is moved, shown or raised, and re-applied whenever
+  Qt rebuilds that handle (flag, geometry and screen transitions) or after a
+  screen change; every native positioning call keeps `SWP_NOACTIVATE`. Each
+  presentation logs the foreground window before and after instead of assuming
+  it was preserved.
+
 ## [0.7.33] - 2026-09-19
 
 ### Fixed

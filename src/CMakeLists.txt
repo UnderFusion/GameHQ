@@ -91,6 +91,7 @@ qt_add_executable(GameHQ
     overlay/ForegroundAcquirer.cpp overlay/ForegroundAcquirer.h
     overlay/ForegroundApi.cpp overlay/ForegroundApi.h
     overlay/OverlayManager.cpp overlay/OverlayManager.h
+    overlay/OverlayPresenter.cpp overlay/OverlayPresenter.h
     sound/SoundEngine.cpp  sound/SoundEngine.h
     sound/SoundLevels.cpp  sound/SoundLevels.h
     sound/SoundLoadTracker.cpp  sound/SoundLoadTracker.h

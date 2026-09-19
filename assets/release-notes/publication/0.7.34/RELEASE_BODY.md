@@ -1,14 +1,14 @@
-# GameHQ 0.7.22 (2026-09-09)
+# GameHQ 0.7.34 (2026-09-19)
 
 ## Fixed
 
-- The capture border settings, the new capture notifications and the capture sound controls now appear in your own language instead of English.
+- The in-game overlay keeps the game in the foreground on every path that opens, moves or raises it. The overlay window is marked as never-activating before it appears, and that mark is restored whenever Windows rebuilds the window, so opening the overlay no longer pulls focus away from a borderless game.
 
 <!-- gamehq:locale-index -->
 
 ## Release notes in other languages
 
-These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.22/assets/release-notes/publication/0.7.22) are kept in the repository; they are not attached to this release as separate downloads.
+These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.34/assets/release-notes/publication/0.7.34) are kept in the repository; they are not attached to this release as separate downloads.
 
 | Language | Locale | Content |
 | --- | --- | --- |

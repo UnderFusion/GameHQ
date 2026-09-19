@@ -1,5 +1,7 @@
 #include "overlay/OverlayManager.h"
 
+#include "overlay/OverlayPresenter.h"
+
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickWindow>
@@ -76,31 +78,20 @@ bool OverlayManager::ensureLoaded()
     }
     m_window->setFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
                        | Qt::Tool | Qt::WindowDoesNotAcceptFocus);
-    applyNoActivateStyle();
+    m_presenter = std::make_unique<OverlayPresenter>(makeQWindowOverlayApi(m_window));
+    // Moving between screens is one of the transitions where Qt rebuilds the
+    // native window, and a rebuilt window starts without WS_EX_NOACTIVATE.
+    connect(m_window, &QWindow::screenChanged, this, [this] {
+        if (!isVisible() || !m_presenter)
+            return;
+        const OverlayPresentReport report = m_presenter->reassert();
+        qInfo().noquote() << "Overlay: re-asserted after screen change |"
+                          << report.toLogString();
+    });
+    // Style the native window immediately: it must be unactivatable before
+    // anything — including Windows itself — can decide to show it.
+    m_presenter->reassert();
     return true;
-}
-
-// Qt's Windows backend does NOT translate Qt::WindowDoesNotAcceptFocus into
-// WS_EX_NOACTIVATE (verified in Qt 6.8 qwindowswindow.cpp: it only shows the
-// window with SW_SHOWNOACTIVATE and rejects WM_MOUSEACTIVATE). Without the
-// ex-style, Windows is free to activate the overlay on its own — notably it
-// picks the next topmost window when the current foreground window hides or
-// minimizes — which is exactly what stole the foreground from the game in
-// the 2026-09-12 logs. Applied natively; harmless if already present.
-void OverlayManager::applyNoActivateStyle()
-{
-    const HWND hwnd = reinterpret_cast<HWND>(m_window->winId());
-    const LONG_PTR exStyle = GetWindowLongPtrW(hwnd, GWL_EXSTYLE);
-    if (exStyle & WS_EX_NOACTIVATE)
-        return;
-    SetWindowLongPtrW(hwnd, GWL_EXSTYLE, exStyle | WS_EX_NOACTIVATE);
-    // Frame-cache the style change without moving, resizing or activating.
-    SetWindowPos(hwnd, nullptr, 0, 0, 0, 0,
-                 SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE
-                 | SWP_FRAMECHANGED);
-    qInfo() << "Overlay: WS_EX_NOACTIVATE applied to" << hwnd
-            << "| exstyle now" << Qt::hex
-            << GetWindowLongPtrW(hwnd, GWL_EXSTYLE);
 }
 
 void OverlayManager::toggle()
@@ -135,27 +126,23 @@ void OverlayManager::show()
             }
         }
     }
-    m_window->setGeometry(target->geometry());
-    // Experimental non-activating overlay: keep the game in the foreground.
-    // Controller navigation is routed by overlay visibility, not OS focus.
-    // Do not use raise/requestActivate or the force-foreground retry path.
+    // Non-activating overlay: the game keeps the foreground. Controller
+    // navigation is routed by overlay visibility, not by OS focus. Do not
+    // use raise/requestActivate or the force-foreground retry path.
     if (m_foregroundAcquired) {
         m_foregroundAcquired = false;
         emit foregroundAcquiredChanged();
     }
-    // Qt may rebuild the native styles on flag/geometry changes; make sure
-    // the no-activate ex-style is in place BEFORE the window becomes visible.
-    applyNoActivateStyle();
-    m_window->show();
-    const HWND overlayHwnd = reinterpret_cast<HWND>(m_window->winId());
-    SetWindowPos(overlayHwnd, HWND_TOPMOST, 0, 0, 0, 0,
-                 SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
-    qInfo() << "Overlay: shown without activation over" << m_previousForeground
-            << "| overlay hwnd=" << overlayHwnd
-            << "| exstyle=" << Qt::hex << GetWindowLongPtrW(overlayHwnd, GWL_EXSTYLE) << Qt::dec
-            << "| foreground=" << GetForegroundWindow()
-            << "| game minimized=" << (m_previousForeground
-                && IsIconic(static_cast<HWND>(m_previousForeground)));
+    // Every geometry, visibility and z-order change goes through the single
+    // presenter, so no show path can drop the never-activate guarantee.
+    const OverlayPresentReport report = m_presenter->present(target->geometry());
+    qInfo().noquote() << "Overlay: shown without activation |" << report.toLogString()
+                      << QStringLiteral("| game=0x%1 minimized=%2")
+                             .arg(QString::number(reinterpret_cast<qulonglong>(m_previousForeground), 16))
+                             .arg(m_previousForeground
+                                  && IsIconic(static_cast<HWND>(m_previousForeground)) ? 1 : 0);
+    if (!report.foregroundPreserved())
+        qWarning() << "Overlay: showing the overlay changed the foreground window";
     startShowProbe();
     emit visibleChanged();
 }
