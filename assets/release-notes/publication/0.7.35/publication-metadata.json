@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
   "kind": "release-publication",
-  "version": "0.7.23",
-  "date": "2026-09-09",
+  "version": "0.7.35",
+  "date": "2026-09-20",
   "source_locale": "en-US",
   "default_locale": "en-US",
   "localization_policy": "fallback-allowed",
-  "release_source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+  "release_source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
   "release_body": {
     "filename": "RELEASE_BODY.md",
-    "size": 1688,
-    "sha256": "0820c89bfe7d3f2ef6527661c9edd9ac92bc41524bddd6efa9d6d054548d5ac4"
+    "size": 1889,
+    "sha256": "5ecd71f680631ddff7db51da89edc611cdeb3ebe80bf49c85b17af0d0ec10398"
   },
   "distribution": {
     "localized_documents": "repository",
     "github_release_assets": false,
-    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.7.23/assets/release-notes/publication/0.7.23"
+    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.7.35/assets/release-notes/publication/0.7.35"
   },
   "localized_documents": [
     {
@@ -27,17 +27,17 @@
       "fallback_reason": null,
       "language_english_name": "English (United States)",
       "language_native_name": "English",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.en-US.md",
-      "size": 178,
-      "sha256": "b621113939eef7f27c18f6de2bd173be16e86c5d8be461336deaa1cac7be7760",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 379,
+      "sha256": "d90412697f5b21a4f0f15fc4002654b0209e10f6110775046779f909ac5ef960",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -51,17 +51,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Chinese (Simplified)",
       "language_native_name": "简体中文",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.zh-Hans.md",
-      "size": 368,
-      "sha256": "ae4cb5c21d4e5a8d45c7851afaf5b30c8c6e23691f77409350b9f3dd5ead9c4a",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 569,
+      "sha256": "72148d2d3a6da9327633ffa76028e2a32b0b319dcb924c0434613021752eb1af",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -75,17 +75,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Russian",
       "language_native_name": "Русский",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.ru-RU.md",
-      "size": 355,
-      "sha256": "ac7b402ad28fdcdb3a5b0a3735b4163169ff188bca04d62f9cf7c0e94367ffb0",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 556,
+      "sha256": "8a3c7804c1dccc021fbc89e83042f43ac9c91b88951f4c4bc09188efd550a641",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -99,17 +99,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Spanish",
       "language_native_name": "Español",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.es-ES.md",
-      "size": 355,
-      "sha256": "cd51d2693f2aa6aebf3e0c325149a6957f064dc3c37d5017207e6f05b77d1faf",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 556,
+      "sha256": "73e1c2043698f8352f1eb9d5254cc1f3992f2c75ebf59fdc5d609ce8fcea5767",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -123,17 +123,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Portuguese (Brazil)",
       "language_native_name": "Português (Brasil)",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.pt-BR.md",
-      "size": 367,
-      "sha256": "ce53ee00f50374d7aa000f24bf215d7bea94c54d52fa97b1248bc8b51f223e24",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 568,
+      "sha256": "ecf6497cc26e039ee61e462ea5d8f2cad1716409e52c1ddf05f1f557f6f36529",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -147,17 +147,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "German",
       "language_native_name": "Deutsch",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.de-DE.md",
-      "size": 354,
-      "sha256": "959c354dec4bb5ba8957ac51eef9353654054374f750d1801dd7df7ef1c42c28",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 555,
+      "sha256": "caceeccc76bcb4654b3b1581519149a90d897c97fda5f1329fa66497d818d764",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -171,17 +171,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Japanese",
       "language_native_name": "日本語",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.ja-JP.md",
-      "size": 356,
-      "sha256": "569b898999aed78097b716d82a0fe69aa10ffe2e534ca7968c3367a3a33136c6",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 557,
+      "sha256": "e042e34f94066c317e0e4e2d22fea7397ef0483f45de04172285fe516f743fb4",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -195,17 +195,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "French",
       "language_native_name": "Français",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.fr-FR.md",
-      "size": 354,
-      "sha256": "600f9c118274bb223b1b03f3de88dab089a87f54111fa782298e4c6bde1ec10a",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 555,
+      "sha256": "dfefce9ce87d5761a2f80a8cbb9b2be620a455676fc7923b75c22112c9683849",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -219,17 +219,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Polish",
       "language_native_name": "Polski",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.pl-PL.md",
-      "size": 354,
-      "sha256": "c15819811393129c13e202a36caa353fc5f321d4c8e9ef8128d75de6f0a2e75c",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 555,
+      "sha256": "cea7184d9c3726a2f20603c189cc8e6a7e6770a950b8e44d19ccdfd4382f6f79",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -243,17 +243,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Korean",
       "language_native_name": "한국어",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.ko-KR.md",
-      "size": 354,
-      "sha256": "9f7c26bbe7713f753af85ef23080ac4e77b41ea487df5eae4f36b086ca8f64a5",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 555,
+      "sha256": "e085237d24de0ba5fc9fe1ee810cf108393c66bac0ca569c5448c7c343c27d73",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -267,17 +267,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Chinese (Traditional)",
       "language_native_name": "繁體中文",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.zh-Hant.md",
-      "size": 369,
-      "sha256": "3387fc8cdb539a58437d2fc86e6ae4b8ea9f23f69bca697da592e26271f3400d",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 570,
+      "sha256": "6b15bfc5a62b30cbe6e00266133d2a7e4df4f91fa2f67709a915688a14bb84ce",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -291,17 +291,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Turkish",
       "language_native_name": "Türkçe",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.tr-TR.md",
-      "size": 355,
-      "sha256": "5509ba095e9b84260bbcad1b9cafb1b064347eed6c5b306a4f8c4c36b26fe2b3",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 556,
+      "sha256": "c11484c3633eb91dc6ee8cb953282b06f817b5b12c42b30b27ad4a634f5dd254",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -315,17 +315,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Thai",
       "language_native_name": "ไทย",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.th-TH.md",
-      "size": 352,
-      "sha256": "8f0dcc1e861d40cbf5af85fe3832dba9a504d0df2f8b0b04aefc8ed69beef2b1",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 553,
+      "sha256": "9c8584600e5ca54ee4b5762479e82342155d28b20c10039c641eb0d4626bf551",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -339,17 +339,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Spanish (Latin America)",
       "language_native_name": "Español (Latinoamérica)",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.es-419.md",
-      "size": 371,
-      "sha256": "2eba75955bb5a32ceb4323a1dd32c60f85de7364484be843ee784a357e83ce96",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 572,
+      "sha256": "de6397a7b26e08ec47fbe2768ebf23b4d68e2cd97ed68dc8493196ea2e9ef035",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -363,17 +363,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Ukrainian",
       "language_native_name": "Українська",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.uk-UA.md",
-      "size": 357,
-      "sha256": "3814e3cb6996e30b03e1d3f8e145f8f9e4491bc7e1fb2aaef2a47b0365ac891d",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 558,
+      "sha256": "a3d2a427735e09cd4fe90af90a5c52547fdfca02b17022f6f2cf8f6b1e02b935",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]
@@ -387,17 +387,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Italian",
       "language_native_name": "Italiano",
-      "version": "0.7.23",
-      "date": "2026-09-09",
+      "version": "0.7.35",
+      "date": "2026-09-20",
       "filename": "release-notes.it-IT.md",
-      "size": 355,
-      "sha256": "4c17a4d48a3724f15ee11b5a10e2a7a9f74895838a7fad168ca9be71ba193ae3",
-      "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
+      "size": 556,
+      "sha256": "f9e1a8da9a7d40f56476313729650ceae28fb653d1ac2f83c30f39485d515533",
+      "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
       "structure": [
         {
-          "section_id": "added",
+          "section_id": "fixed",
           "item_ids": [
-            "added-sound-boost"
+            "controller-identity-evidence-ranking"
           ]
         }
       ]

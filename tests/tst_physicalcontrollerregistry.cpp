@@ -2,6 +2,8 @@
 
 #include <QtTest>
 
+#include <algorithm>
+
 using namespace ModernInput;
 
 class PhysicalControllerRegistryTest : public QObject
@@ -126,6 +128,198 @@ private slots:
         const QString secondId = registry.observe(two);
         QVERIFY(firstId != secondId);
         QCOMPARE(registry.controllers().size(), 2);
+    }
+
+    void exactAppLocalIdBeatsSharedRootEvidence()
+    {
+        // A shared root is topology evidence several endpoints can carry; an
+        // app-local device ID names exactly one device. The exact identity
+        // must win, never the root that happens to be scanned first.
+        PhysicalControllerRegistry registry;
+        ProviderObservation rooted{ControllerProvider::GameInput, QStringLiteral("gi-1")};
+        rooted.topologyRoot = QStringLiteral("root-r");
+        rooted.appLocalDeviceId = QStringLiteral("app-a");
+        ProviderObservation exact{ControllerProvider::XInput, QStringLiteral("x-1")};
+        exact.appLocalDeviceId = QStringLiteral("app-b");
+
+        const QString rootedId = registry.observe(rooted);
+        const QString exactId = registry.observe(exact);
+        QVERIFY(rootedId != exactId);
+
+        ProviderObservation legacy{ControllerProvider::WinMM, QStringLiteral("mm-1")};
+        legacy.topologyRoot = rooted.topologyRoot;
+        legacy.appLocalDeviceId = exact.appLocalDeviceId;
+        QCOMPARE(registry.observe(legacy), exactId);
+        QCOMPARE(registry.matchEvidence(ControllerProvider::WinMM, QStringLiteral("mm-1")),
+                 MatchEvidence::AppLocalDeviceId);
+    }
+
+    void exactEndpointBeatsSharedContainerEvidence()
+    {
+        PhysicalControllerRegistry registry;
+        ProviderObservation shared{ControllerProvider::GameInput, QStringLiteral("gi-1")};
+        shared.containerId = QStringLiteral("container-c");
+        ProviderObservation endpoint{ControllerProvider::XInput, QStringLiteral("x-1")};
+        endpoint.endpointId = QStringLiteral("endpoint-e");
+
+        const QString sharedId = registry.observe(shared);
+        const QString endpointId = registry.observe(endpoint);
+        QVERIFY(sharedId != endpointId);
+
+        ProviderObservation legacy{ControllerProvider::WinMM, QStringLiteral("mm-1")};
+        legacy.containerId = shared.containerId;
+        legacy.endpointId = endpoint.endpointId;
+        QCOMPARE(registry.observe(legacy), endpointId);
+        QCOMPARE(registry.matchEvidence(ControllerProvider::WinMM, QStringLiteral("mm-1")),
+                 MatchEvidence::EndpointId);
+    }
+
+    void ambiguousContainerNeverMerges()
+    {
+        // A hub container holding two distinct endpoints is ambiguous: an
+        // observation carrying only that container must not pick one of them.
+        PhysicalControllerRegistry registry;
+        ProviderObservation one{ControllerProvider::XInput, QStringLiteral("x-1")};
+        one.containerId = QStringLiteral("hub-container");
+        one.endpointId = QStringLiteral("endpoint-1");
+        ProviderObservation two{ControllerProvider::WinMM, QStringLiteral("mm-1")};
+        two.containerId = one.containerId;
+        two.endpointId = QStringLiteral("endpoint-2");
+        const QString firstId = registry.observe(one);
+        const QString secondId = registry.observe(two);
+        QVERIFY(firstId != secondId);
+
+        ProviderObservation third{ControllerProvider::GameInput, QStringLiteral("gi-1")};
+        third.containerId = one.containerId;
+        const QString thirdId = registry.observe(third);
+        QVERIFY(thirdId != firstId);
+        QVERIFY(thirdId != secondId);
+        QCOMPARE(registry.controllers().size(), 3);
+    }
+
+    void twoPadsOnOneRootFromOneProviderStayDistinct()
+    {
+        // One provider reports each physical pad separately. Two pads behind
+        // a single receiver root must never collapse onto one identity, not
+        // through matching and not through a colliding deterministic ID.
+        PhysicalControllerRegistry registry;
+        ProviderObservation padA{ControllerProvider::XInput, QStringLiteral("x-1")};
+        padA.topologyRoot = QStringLiteral("receiver-root");
+        ProviderObservation padB{ControllerProvider::XInput, QStringLiteral("x-2")};
+        padB.topologyRoot = padA.topologyRoot;
+
+        const QString aId = registry.observe(padA);
+        const QString bId = registry.observe(padB);
+        QVERIFY(aId != bId);
+        QCOMPARE(registry.controllers().size(), 2);
+        QCOMPARE(registry.controller(aId)->providers.size(), 1);
+        QCOMPARE(registry.controller(bId)->providers.size(), 1);
+    }
+
+    void contradictoryEndpointsBlockRootMatch()
+    {
+        PhysicalControllerRegistry registry;
+        ProviderObservation first{ControllerProvider::GameInput, QStringLiteral("gi-1")};
+        first.topologyRoot = QStringLiteral("root-r");
+        first.endpointId = QStringLiteral("endpoint-1");
+        ProviderObservation second{ControllerProvider::XInput, QStringLiteral("x-1")};
+        second.topologyRoot = first.topologyRoot;
+        second.endpointId = QStringLiteral("endpoint-2");
+
+        const QString firstId = registry.observe(first);
+        const QString secondId = registry.observe(second);
+        QVERIFY(firstId != secondId);
+        QCOMPARE(registry.controllers().size(), 2);
+    }
+
+    void twoIdenticalPadsWithStrongEndpointsStayDistinct()
+    {
+        PhysicalControllerRegistry registry;
+        ProviderObservation padA{ControllerProvider::GameInput, QStringLiteral("gi-a")};
+        padA.endpointId = QStringLiteral("endpoint-a");
+        padA.modelFingerprint = QStringLiteral("054c:0ce6");
+        padA.vendorId = 0x054c;
+        padA.productId = 0x0ce6;
+        ProviderObservation padB = padA;
+        padB.providerDeviceId = QStringLiteral("gi-b");
+        padB.endpointId = QStringLiteral("endpoint-b");
+
+        const QString aId = registry.observe(padA);
+        const QString bId = registry.observe(padB);
+        QVERIFY(aId != bId);
+        QCOMPARE(registry.controllers().size(), 2);
+    }
+
+    void matchingIsIndependentOfObservationOrder()
+    {
+        // m_controllers is a QHash: iteration order is unspecified and
+        // seed-dependent, so the same population must resolve identically
+        // whatever order it was built in.
+        const auto populate = [](PhysicalControllerRegistry& registry, bool reversed) {
+            QVector<ProviderObservation> pads;
+            for (int index = 0; index < 6; ++index) {
+                ProviderObservation pad{ControllerProvider::GameInput,
+                                        QStringLiteral("gi-%1").arg(index)};
+                pad.containerId = QStringLiteral("container-%1").arg(index);
+                pad.topologyRoot = QStringLiteral("root-%1").arg(index);
+                pads.push_back(pad);
+            }
+            if (reversed)
+                std::reverse(pads.begin(), pads.end());
+            for (const auto& pad : pads)
+                registry.observe(pad);
+        };
+
+        PhysicalControllerRegistry forward;
+        PhysicalControllerRegistry backward;
+        populate(forward, false);
+        populate(backward, true);
+
+        ProviderObservation probe{ControllerProvider::XInput, QStringLiteral("x-1")};
+        probe.containerId = QStringLiteral("container-3");
+        const QString forwardId = forward.observe(probe);
+        const QString backwardId = backward.observe(probe);
+        QCOMPARE(forwardId, backwardId);
+        QCOMPARE(forward.matchEvidence(ControllerProvider::XInput, QStringLiteral("x-1")),
+                 MatchEvidence::ContainerId);
+        QCOMPARE(backward.matchEvidence(ControllerProvider::XInput, QStringLiteral("x-1")),
+                 MatchEvidence::ContainerId);
+    }
+
+    void reconnectRestoresTheSameLogicalIdentity()
+    {
+        PhysicalControllerRegistry registry;
+        ProviderObservation pad{ControllerProvider::GameInput, QStringLiteral("gi-1")};
+        pad.appLocalDeviceId = QStringLiteral("app-1");
+        pad.capabilities = ControllerCapability::StandardControls;
+        const QString id = registry.observe(pad);
+
+        QVERIFY(registry.removeProvider(ControllerProvider::GameInput,
+                                        QStringLiteral("gi-1")));
+        QVERIFY(!registry.controller(id)->connected());
+
+        QCOMPARE(registry.observe(pad), id);
+        QVERIFY(registry.controller(id)->connected());
+        QCOMPARE(registry.controllers().size(), 1);
+        QCOMPARE(registry.matchEvidence(ControllerProvider::GameInput,
+                                        QStringLiteral("gi-1")),
+                 MatchEvidence::AppLocalDeviceId);
+    }
+
+    void firstObservationRecordsNewIdentityProvenance()
+    {
+        PhysicalControllerRegistry registry;
+        ProviderObservation pad{ControllerProvider::XInput, QStringLiteral("x-1")};
+        pad.topologyRoot = QStringLiteral("root-r");
+        registry.observe(pad);
+        QCOMPARE(registry.matchEvidence(ControllerProvider::XInput, QStringLiteral("x-1")),
+                 MatchEvidence::NewIdentity);
+
+        ProviderObservation paired{ControllerProvider::GameInput, QStringLiteral("gi-1")};
+        paired.topologyRoot = pad.topologyRoot;
+        registry.observe(paired);
+        QCOMPARE(registry.matchEvidence(ControllerProvider::GameInput, QStringLiteral("gi-1")),
+                 MatchEvidence::TopologyRoot);
     }
 
     void reObservationRefreshesAttachmentCapabilities()

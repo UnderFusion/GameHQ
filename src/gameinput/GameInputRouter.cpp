@@ -164,11 +164,12 @@ QString GameInputRouter::observeDevice(const GameInputDeviceDescriptor& device)
     observation.displayName = device.displayName;
     observation.vendorId = device.vendorId;
     observation.productId = device.productId;
-    // The lowercase "vvvv:pppp" fingerprint is the only identity legacy
-    // providers can also produce, so it is the topology correlation root
-    // that lets Sony Raw/XInput/WinMM attachments merge onto this logical
-    // controller (t25 cross-provider dedup). The registry's unique-match
-    // rule keeps two identical models apart.
+    // The lowercase "vvvv:pppp" fingerprint is a model hint only. It is
+    // deliberately NOT a correlation key: two identical pads share it, so
+    // merging on it would collapse them into one logical controller. Sony
+    // Raw/XInput/WinMM attachments can only merge onto this controller
+    // through endpoint, container or device-root evidence, which those
+    // backends do not currently produce (see cpo-c03).
     if (device.vendorId != 0 || device.productId != 0) {
         observation.modelFingerprint = QStringLiteral("%1:%2")
             .arg(device.vendorId, 4, 16, QLatin1Char('0'))

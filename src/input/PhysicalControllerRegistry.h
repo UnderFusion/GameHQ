@@ -28,8 +28,21 @@ Q_DECLARE_FLAGS(ControllerCapabilities, ControllerCapability)
 
 enum class IdentityConfidence {
     Weak,
+    // Reserved for a future genuine cross-provider topology key. No provider
+    // currently produces evidence that earns this level (see cpo-c03).
     Correlated,
     Strong
+};
+
+// Which piece of evidence attached a provider to a logical controller.
+// Registry-internal provenance only: it is never part of the sanitized
+// diagnostics bundle.
+enum class MatchEvidence {
+    NewIdentity,
+    AppLocalDeviceId,
+    EndpointId,
+    ContainerId,
+    TopologyRoot
 };
 
 struct ProviderObservation {
@@ -52,6 +65,7 @@ struct ProviderAttachment {
     QString providerDeviceId;
     ControllerCapabilities capabilities;
     QSet<QString> controls;
+    MatchEvidence evidence = MatchEvidence::NewIdentity;
 };
 
 struct LogicalController {
@@ -87,12 +101,20 @@ public:
     bool addProviderControl(ControllerProvider provider,
                             const QString& providerDeviceId,
                             const QString& controlId);
+    MatchEvidence matchEvidence(ControllerProvider provider,
+                                const QString& providerDeviceId) const;
 
 private:
-    QString findStrongMatch(const ProviderObservation& observation) const;
-    QString findCorrelatedMatch(const ProviderObservation& observation) const;
+    struct Match {
+        QString logicalId;
+        MatchEvidence evidence = MatchEvidence::NewIdentity;
+    };
+
+    Match findMatch(const ProviderObservation& observation) const;
     static QString attachmentKey(ControllerProvider provider, const QString& providerDeviceId);
-    static QString createLogicalId(const ProviderObservation& observation, quint64 generation);
+    static QString createLogicalId(const ProviderObservation& observation,
+                                   quint64 generation,
+                                   const QString& disambiguator = {});
 
     QHash<QString, LogicalController> m_controllers;
     QHash<QString, QString> m_attachmentToLogical;

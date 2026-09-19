@@ -6,6 +6,14 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.35] - 2026-09-20
+
+### Fixed
+
+- Controller identity: an observation is now matched on ranked evidence — app-local device ID, endpoint, container, device root — so exact per-device evidence always wins and a shared container or receiver root can no longer preempt it. Every rank requires exactly one non-contradictory candidate, making the result independent of hash iteration order; ambiguity creates a separate controller instead of guessing.
+- Controller identity: the deterministic logical ID now hashes the same ranked evidence as the matcher, and a new identity that would collide with an existing one is disambiguated on the provider endpoint. Two pads behind a single receiver root reported by one provider could previously hash to the same ID and collapse into one controller, taking their saved bindings with them.
+- Removed the disabled legacy correlation path and corrected the stale comments and documentation claiming that the `vvvv:pppp` model fingerprint acts as a cross-provider correlation root.
+
 ## [0.7.34] - 2026-09-19
 
 ### Fixed

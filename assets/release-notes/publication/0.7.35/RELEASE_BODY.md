@@ -1,14 +1,14 @@
-# GameHQ 0.7.23 (2026-09-09)
+# GameHQ 0.7.35 (2026-09-20)
 
-## Added
+## Fixed
 
-- Interface and capture sound sliders now reach 200%, providing up to +6 dB of gain without changing existing volume levels through 100%.
+- Controllers are identified more precisely. GameHQ now weighs the strongest available evidence about a device first, and when the evidence is ambiguous it keeps controllers separate instead of guessing. Two identical pads connected through one receiver can no longer be treated as a single controller, so their saved bindings stay apart.
 
 <!-- gamehq:locale-index -->
 
 ## Release notes in other languages
 
-These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.23/assets/release-notes/publication/0.7.23) are kept in the repository; they are not attached to this release as separate downloads.
+These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.35/assets/release-notes/publication/0.7.35) are kept in the repository; they are not attached to this release as separate downloads.
 
 | Language | Locale | Content |
 | --- | --- | --- |

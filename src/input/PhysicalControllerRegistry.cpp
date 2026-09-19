@@ -27,7 +27,8 @@ QString PhysicalControllerRegistry::attachmentKey(ControllerProvider provider,
 }
 
 QString PhysicalControllerRegistry::createLogicalId(const ProviderObservation& observation,
-                                                     quint64 generation)
+                                                     quint64 generation,
+                                                     const QString& disambiguator)
 {
     // A strong identity hashes deterministically from the identity namespace
     // alone: the same physical device must produce the same logical ID
@@ -35,17 +36,21 @@ QString PhysicalControllerRegistry::createLogicalId(const ProviderObservation& o
     // this ID is persisted in binding profiles and controller_layouts. Only
     // weak identities (nothing stable to hash) stay session-local through
     // the generation counter.
+    //
+    // The evidence is ranked exactly as findMatch() ranks it. If the ID were
+    // derived from weaker evidence than the match, two endpoints the matcher
+    // deliberately kept apart could hash to one ID and silently collapse.
     const bool strongIdentity = !observation.appLocalDeviceId.isEmpty()
-        || !observation.containerId.isEmpty() || !observation.topologyRoot.isEmpty()
-        || !observation.endpointId.isEmpty();
+        || !observation.endpointId.isEmpty() || !observation.containerId.isEmpty()
+        || !observation.topologyRoot.isEmpty();
     const QString strongest = !observation.appLocalDeviceId.isEmpty()
         ? observation.appLocalDeviceId
-        : (!observation.containerId.isEmpty() ? observation.containerId
-           : (!observation.topologyRoot.isEmpty() ? observation.topologyRoot
-              : (!observation.endpointId.isEmpty() ? observation.endpointId
-                                                    : observation.providerDeviceId)));
+        : (!observation.endpointId.isEmpty() ? observation.endpointId
+           : (!observation.containerId.isEmpty() ? observation.containerId
+              : (!observation.topologyRoot.isEmpty() ? observation.topologyRoot
+                                                     : observation.providerDeviceId)));
     const QByteArray material = strongIdentity
-        ? QStringLiteral("strong|%1").arg(strongest).toUtf8()
+        ? QStringLiteral("strong|%1%2").arg(strongest, disambiguator).toUtf8()
         : QStringLiteral("weak|%1|%2|%3")
               .arg(static_cast<int>(observation.provider))
               .arg(strongest).arg(generation).toUtf8();
@@ -53,85 +58,74 @@ QString PhysicalControllerRegistry::createLogicalId(const ProviderObservation& o
         QCryptographicHash::hash(material, QCryptographicHash::Sha256).toHex().left(16)));
 }
 
-QString PhysicalControllerRegistry::findStrongMatch(const ProviderObservation& observation) const
+PhysicalControllerRegistry::Match
+PhysicalControllerRegistry::findMatch(const ProviderObservation& observation) const
 {
-    if (!observation.topologyRoot.isEmpty()) {
-        QString rootMatch;
+    // Evidence is ranked, strongest first. An exact per-device identity
+    // (app-local ID, endpoint) always wins over shared-topology evidence
+    // (container, root), because a container or root can legitimately hold
+    // several endpoints. Every rank demands exactly one non-contradictory
+    // candidate, so a match never depends on QHash iteration order and
+    // ambiguity deliberately creates a new identity instead of guessing.
+    const auto contradicts = [](const QString& left, const QString& right) {
+        return !left.isEmpty() && !right.isEmpty() && left != right;
+    };
+    const auto uniqueCandidate = [this](auto&& accept) -> QString {
+        QString match;
         for (auto it = m_controllers.cbegin(); it != m_controllers.cend(); ++it) {
-            if (it->topologyRoot != observation.topologyRoot
-                || it->hasProvider(observation.provider))
+            if (!accept(it.value()))
                 continue;
-            if (!observation.containerId.isEmpty() && !it->containerId.isEmpty()
-                && observation.containerId != it->containerId)
-                continue;
-            if (!rootMatch.isEmpty())
+            if (!match.isEmpty())
                 return {};
-            rootMatch = it.key();
+            match = it.key();
         }
-        if (!rootMatch.isEmpty())
-            return rootMatch;
-    }
-    for (auto it = m_controllers.cbegin(); it != m_controllers.cend(); ++it) {
-        const auto& current = it.value();
-        if (!observation.appLocalDeviceId.isEmpty()
-            && observation.appLocalDeviceId == current.appLocalDeviceId)
-            return it.key();
-        // A shared container may hold several endpoints (hub, receiver): a
-        // container match must never merge two conflicting strong device IDs.
-        if (!observation.containerId.isEmpty()
-            && observation.containerId == current.containerId) {
-            if (current.hasProvider(observation.provider))
-                continue;
-            if (!observation.appLocalDeviceId.isEmpty()
-                && !current.appLocalDeviceId.isEmpty()
-                && observation.appLocalDeviceId != current.appLocalDeviceId)
-                continue;
-            return it.key();
-        }
-        if (!observation.endpointId.isEmpty()
-            && observation.endpointId == current.endpointId) {
-            if (current.hasProvider(observation.provider))
-                continue;
-            return it.key();
-        }
-    }
-    return {};
-}
+        return match;
+    };
 
-QString PhysicalControllerRegistry::findCorrelatedMatch(const ProviderObservation& observation) const
-{
-    // Model/VID:PID hints must never merge providers. Strong app-local,
-    // container, root, or endpoint evidence is handled by findStrongMatch().
-    Q_UNUSED(observation);
-    return {};
-#if 0
-    if (observation.topologyRoot.isEmpty())
-        return {};
-
-    QString match;
-    for (auto it = m_controllers.cbegin(); it != m_controllers.cend(); ++it) {
-        if (it->topologyRoot != observation.topologyRoot)
-            continue;
-        // One provider observes each physical device separately: a controller
-        // that already carries a live attachment from this provider cannot be
-        // the same physical pad — it is its identical twin. Without this, a
-        // second same-model pad would silently merge into the first.
-        if (it->hasProvider(observation.provider))
-            continue;
-        if (!observation.appLocalDeviceId.isEmpty() && !it->appLocalDeviceId.isEmpty()
-            && observation.appLocalDeviceId != it->appLocalDeviceId)
-            continue;
-        if (!observation.containerId.isEmpty() && !it->containerId.isEmpty()
-            && observation.containerId != it->containerId)
-            continue;
-        // Correlation is accepted only when the root identifies exactly one
-        // logical controller. Ambiguity deliberately creates a new identity.
+    if (!observation.appLocalDeviceId.isEmpty()) {
+        const QString match = uniqueCandidate([&](const LogicalController& candidate) {
+            return candidate.appLocalDeviceId == observation.appLocalDeviceId;
+        });
         if (!match.isEmpty())
-            return {};
-        match = it.key();
+            return {match, MatchEvidence::AppLocalDeviceId};
     }
-    return match;
-#endif
+
+    if (!observation.endpointId.isEmpty()) {
+        const QString match = uniqueCandidate([&](const LogicalController& candidate) {
+            return candidate.endpointId == observation.endpointId
+                && !candidate.hasProvider(observation.provider)
+                && !contradicts(observation.appLocalDeviceId, candidate.appLocalDeviceId);
+        });
+        if (!match.isEmpty())
+            return {match, MatchEvidence::EndpointId};
+    }
+
+    // A shared container may hold several endpoints (hub, receiver): a
+    // container match must never merge two conflicting strong device IDs.
+    if (!observation.containerId.isEmpty()) {
+        const QString match = uniqueCandidate([&](const LogicalController& candidate) {
+            return candidate.containerId == observation.containerId
+                && !candidate.hasProvider(observation.provider)
+                && !contradicts(observation.appLocalDeviceId, candidate.appLocalDeviceId)
+                && !contradicts(observation.endpointId, candidate.endpointId);
+        });
+        if (!match.isEmpty())
+            return {match, MatchEvidence::ContainerId};
+    }
+
+    if (!observation.topologyRoot.isEmpty()) {
+        const QString match = uniqueCandidate([&](const LogicalController& candidate) {
+            return candidate.topologyRoot == observation.topologyRoot
+                && !candidate.hasProvider(observation.provider)
+                && !contradicts(observation.appLocalDeviceId, candidate.appLocalDeviceId)
+                && !contradicts(observation.endpointId, candidate.endpointId)
+                && !contradicts(observation.containerId, candidate.containerId);
+        });
+        if (!match.isEmpty())
+            return {match, MatchEvidence::TopologyRoot};
+    }
+
+    return {};
 }
 
 QString PhysicalControllerRegistry::observe(const ProviderObservation& observation,
@@ -191,12 +185,10 @@ QString PhysicalControllerRegistry::observe(const ProviderObservation& observati
         return currentId;
     }
 
-    QString logicalId = findStrongMatch(observation);
+    const Match match = findMatch(observation);
+    QString logicalId = match.logicalId;
+    MatchEvidence evidence = match.evidence;
     IdentityConfidence confidence = IdentityConfidence::Strong;
-    if (logicalId.isEmpty()) {
-        logicalId = findCorrelatedMatch(observation);
-        confidence = IdentityConfidence::Correlated;
-    }
     // A strong observation merging into a controller that was created from a
     // weak identity (a legacy provider observed first) upgrades the logical
     // ID to the deterministic strong hash. Persisted per-controller state
@@ -231,6 +223,18 @@ QString PhysicalControllerRegistry::observe(const ProviderObservation& observati
     }
     if (logicalId.isEmpty()) {
         logicalId = createLogicalId(observation, ++m_generation);
+        // Shared evidence (a receiver root, a hub container) can hash two
+        // deliberately separate endpoints onto one ID. findMatch() already
+        // refused to merge them, so the new identity must not merge them
+        // through the back door either: disambiguate on the provider
+        // endpoint, which stays stable for this device across sessions.
+        if (m_controllers.contains(logicalId)) {
+            logicalId = createLogicalId(
+                observation, m_generation,
+                QStringLiteral("|%1").arg(
+                    attachmentKey(observation.provider, observation.providerDeviceId)));
+        }
+        evidence = MatchEvidence::NewIdentity;
         confidence = (!observation.appLocalDeviceId.isEmpty()
                       || !observation.containerId.isEmpty()
                       || !observation.topologyRoot.isEmpty()
@@ -265,7 +269,8 @@ QString PhysicalControllerRegistry::observe(const ProviderObservation& observati
         controller.modelFingerprint = observation.modelFingerprint;
     controller.confidence = std::max(controller.confidence, confidence);
     controller.providers.push_back({observation.provider, observation.providerDeviceId,
-                                    observation.capabilities, observation.controls});
+                                    observation.capabilities, observation.controls,
+                                    evidence});
     m_attachmentToLogical.insert(key, logicalId);
     return logicalId;
 }
@@ -342,6 +347,20 @@ ControllerProvider PhysicalControllerRegistry::preferredProvider(
             return provider;
     }
     return ControllerProvider::WinMM;
+}
+
+MatchEvidence PhysicalControllerRegistry::matchEvidence(
+    ControllerProvider provider, const QString& providerDeviceId) const
+{
+    const auto* logical = controller(logicalIdFor(provider, providerDeviceId));
+    if (!logical)
+        return MatchEvidence::NewIdentity;
+    for (const auto& attachment : logical->providers) {
+        if (attachment.provider == provider
+            && attachment.providerDeviceId == providerDeviceId)
+            return attachment.evidence;
+    }
+    return MatchEvidence::NewIdentity;
 }
 
 bool PhysicalControllerRegistry::addProviderControl(

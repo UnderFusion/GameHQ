@@ -1,15 +1,27 @@
 {
-  "version": "0.7.34",
-  "date": "2026-09-19",
+  "version": "0.7.35",
+  "date": "2026-09-20",
   "sections": [
     {
       "title": "Fixed",
       "items": [
-        "The in-game overlay keeps the game in the foreground on every path that opens, moves or raises it. The overlay window is marked as never-activating before it appears, and that mark is restored whenever Windows rebuilds the window, so opening the overlay no longer pulls focus away from a borderless game."
+        "Controllers are identified more precisely. GameHQ now weighs the strongest available evidence about a device first, and when the evidence is ambiguous it keeps controllers separate instead of guessing. Two identical pads connected through one receiver can no longer be treated as a single controller, so their saved bindings stay apart."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.34",
+      "date": "2026-09-19",
+      "sections": [
+        {
+          "title": "Fixed",
+          "items": [
+            "The in-game overlay keeps the game in the foreground on every path that opens, moves or raises it. The overlay window is marked as never-activating before it appears, and that mark is restored whenever Windows rebuilds the window, so opening the overlay no longer pulls focus away from a borderless game."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.33",
       "date": "2026-09-19",
@@ -135,18 +147,6 @@
       ]
     },
     {
-      "version": "0.7.23",
-      "date": "2026-09-09",
-      "sections": [
-        {
-          "title": "Added",
-          "items": [
-            "Interface and capture sound sliders now reach 200%, providing up to +6 dB of gain without changing existing volume levels through 100%."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -180,6 +180,13 @@
     "requested_locale": "es-ES",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.35",
+        "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.34",
         "source_integrity": "sha256:8d7381dfa45a8889e3161a85d4d08cfe6ebf2384b2f903cc014542e09912fe39",
@@ -253,13 +260,6 @@
       {
         "version": "0.7.24",
         "source_integrity": "sha256:73b24d5795b6b8abe8dfb3a7d6cb977b68c8da3afd9de36fa71cc8e6efdc4064",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.23",
-        "source_integrity": "sha256:29e6f224d1a638a2dec329e940b2d6d3087c721824003d3041496d4cbbfc8b3c",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"
