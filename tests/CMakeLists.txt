@@ -702,6 +702,31 @@ gamehq_add_test(tst_presetmaterializer
     "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
 target_link_libraries(tst_presetmaterializer PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
+# Assignment resolution (cpo-p04): the winner rule game -> controller ->
+# group_default -> builtin, with the source named and broken assignments
+# stepping down the chain (docs/mapping-presets.md sections 4 and 7).
+gamehq_add_test(tst_mappingassignmentresolver
+    tst_mappingassignmentresolver.cpp
+    "${CMAKE_SOURCE_DIR}/src/input/MappingAssignmentResolver.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingResolver.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DefaultBindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/OverlayInputPolicy.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ContextOverrideCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ExtraButtonCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
+    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+target_link_libraries(tst_mappingassignmentresolver PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
+
 # Stand-in for app\GameHQ.exe: it reports the arguments Windows actually handed
 # it, so the launcher's pass-through can be checked against a real process.
 gamehq_add_test(tst_updateschedule

@@ -1996,6 +1996,10 @@ MappingAssignment CaptureDatabase::mappingAssignment(const QString& deviceGroup,
                                                      const QString& targetKind,
                                                      const QString& targetKey) const
 {
+    // Game lookups accept any equivalent spelling of the executable path and
+    // match the canonical row the write path stored (see setMappingAssignment).
+    const QString key =
+        targetKind == QLatin1String("game") ? GameIdentity::executableKey(targetKey) : targetKey;
     QSqlQuery q(m_db);
     q.prepare(QStringLiteral(
         "SELECT id, device_group, preset_id, target_kind, target_key, game_row_id "
@@ -2003,7 +2007,7 @@ MappingAssignment CaptureDatabase::mappingAssignment(const QString& deviceGroup,
         "WHERE device_group = :group AND target_kind = :kind AND target_key = IFNULL(:key, '')"));
     q.bindValue(QStringLiteral(":group"), deviceGroup);
     q.bindValue(QStringLiteral(":kind"), targetKind);
-    q.bindValue(QStringLiteral(":key"), targetKey);
+    q.bindValue(QStringLiteral(":key"), key);
     if (!q.exec()) {
         qWarning() << "DB: mappingAssignment failed:" << q.lastError().text();
         return MappingAssignment{};
@@ -2058,12 +2062,18 @@ bool CaptureDatabase::setMappingAssignment(const QString& deviceGroup, const QSt
 {
     if (!isMappingDeviceGroup(deviceGroup) || !isMappingTargetKind(targetKind))
         return false;
-    // The kind decides the key rules — the text never does. `controller-…`,
-    // `xinput.slotN` and a game executable are all opaque strings here.
+    // Game targets are persisted in the one canonical executable form
+    // (GameIdentity::executableKey), whatever spelling the caller supplies: a
+    // writer can never create two canonically equivalent game rows, and the
+    // resolver's lookup runs through the same boundary. The text is still never
+    // classified here - only `game` targets are normalized; `controller-…`,
+    // `xinput.slotN` and provider keys stay opaque.
+    const QString key =
+        targetKind == QLatin1String("game") ? GameIdentity::executableKey(targetKey) : targetKey;
     if (targetKind == QLatin1String("group_default")) {
-        if (!targetKey.isEmpty())
+        if (!key.isEmpty())
             return false;
-    } else if (targetKey.isEmpty()) {
+    } else if (key.isEmpty()) {
         return false;
     }
     if ((targetKind == QLatin1String("controller") || targetKind == QLatin1String("legacy_slot"))
@@ -2079,8 +2089,8 @@ bool CaptureDatabase::setMappingAssignment(const QString& deviceGroup, const QSt
                    << m_db.lastError().text();
         return false;
     }
-    if (!upsertMappingAssignmentRow(deviceGroup, targetKind, targetKey, presetId, gameRowId)) {
-        qWarning() << "DB: setMappingAssignment failed for target" << targetKind << targetKey;
+    if (!upsertMappingAssignmentRow(deviceGroup, targetKind, key, presetId, gameRowId)) {
+        qWarning() << "DB: setMappingAssignment failed for target" << targetKind << key;
         m_db.rollback();
         return false;
     }
@@ -2096,13 +2106,17 @@ bool CaptureDatabase::setMappingAssignment(const QString& deviceGroup, const QSt
 bool CaptureDatabase::clearMappingAssignment(const QString& deviceGroup, const QString& targetKind,
                                              const QString& targetKey)
 {
+    // Same canonical boundary as the game write path: any equivalent spelling
+    // clears the one canonical game row.
+    const QString key =
+        targetKind == QLatin1String("game") ? GameIdentity::executableKey(targetKey) : targetKey;
     QSqlQuery q(m_db);
     q.prepare(QStringLiteral(
         "DELETE FROM mapping_assignments "
         "WHERE device_group = :group AND target_kind = :kind AND target_key = IFNULL(:key, '')"));
     q.bindValue(QStringLiteral(":group"), deviceGroup);
     q.bindValue(QStringLiteral(":kind"), targetKind);
-    q.bindValue(QStringLiteral(":key"), targetKey);
+    q.bindValue(QStringLiteral(":key"), key);
     if (!q.exec()) {
         qWarning() << "DB: clearMappingAssignment failed:" << q.lastError().text();
         return false;

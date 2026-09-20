@@ -100,7 +100,8 @@ running game `X`, resolution produces **one** preset and one source:
 1. **Game rule** — `X` has an assignment for `G` → that preset. Source `game`.
 2. **Controller rule** — `G` is `controller` and `C` has an assignment → that preset.
    Source `controller`. `C` is matched through the same durable key + alias chain the resolver
-   uses for binding rows today.
+   uses for binding rows today: the chain is **typed** (section 12) — each candidate carries the
+   provenance the caller can prove and is matched only against its declared kind.
 3. **Group default** — `G` has a default assignment → that preset. Source `group_default`.
 4. **Built-in defaults** — no assignment anywhere → the shipped default table. Source `builtin`.
 
@@ -416,3 +417,47 @@ Invariants the storage layer enforces (locked by `tst_mappingpresetstorage`):
 `game_row_id` is a `game`-target-only cache and is enforced in SQL
 (`CHECK(target_kind = 'game' OR game_row_id IS NULL)`) as well as in the API, because game rows can
 be merged or deleted by `GameRowRepair` while the durable game key is the executable path.
+
+## 12. Assignment resolution (implemented by `MappingAssignmentResolver`, `cpo-p04`)
+
+`MappingAssignmentResolver::resolve(group, identityKeys, gameExecutableKey)` answers section 4 with
+one winner and one stated source; every precedence test asserts the pair, which is the leaf's
+`done_when`.
+
+- **Order.** Game rule → controller rule → group default → built-in defaults, first *usable* hit
+  wins. The controller step takes a **typed chain**: the caller supplies `IdentityCandidate`
+  entries in precedence order (the exact proven identity first, then its compatibility aliases; the
+  resolver never invents or reorders identity), and the whole chain is ignored for keyboard and
+  mouse, whose resolution is game → group default → built-in as section 4 states. Durability stays
+  a write-time decision (promotion proof, or the typed CRUD `cpo-p06` owns): the caller declares
+  provenance through each candidate's kind, resolution trusts the declared kind and matches keys
+  exactly, so it can never manufacture a durable-looking target.
+- **Source names.** `game`, `controller`, `group_default`, `builtin`. A slot-scoped target still
+  resolves through the controller step (`source = controller`) and reports `targetKind =
+  legacy_slot` plus the fingerprint key, so Settings can use honest slot wording.
+- **Kinds never conflate.** A game key matches only `game` rows, a fingerprint only `legacy_slot`
+  rows, a durable key only `controller` rows; `group_default` rows carry no key. Each chain
+  candidate is queried **only for its declared kind** — a `legacy_slot` candidate never reads a
+  `controller` row and a durable candidate never reads a `legacy_slot` row — so a malformed or
+  stale row in one namespace can never shadow the other kind's legitimate hit, whatever its text
+  looks like. Candidate keys that this provider did not present cannot attract an assignment —
+  there is no inference here, exactly as the conservative-split policy requires.
+- **Empty preset is a win.** A game rule pointing at a preset with zero rows is the supported
+  "built-in defaults for this game" opt-out (section 10), never a fall-through and never reported
+  as broken.
+- **Broken assignments step down and are reported once.** A hit whose preset row is missing or
+  belongs to another device group is skipped, named in `Resolution::steppedDown` and recorded in
+  `staleReports()`, deduplicated by `(group, kind, key, preset)`, so a repeated resolution does not
+  repeat the report. With every rule broken the chain still ends at exactly one winner: built-in.
+- **Game key canonicalization.** `GameIdentity::executableKey()` is the one normal form for
+  game-assignment keys: idempotent and lowercased; `QFileInfo::canonicalFilePath()` while the
+  executable is resolvable and a cleaned path otherwise. The storage accessors
+  (`setMappingAssignment`, `mappingAssignment`, `clearMappingAssignment`) run every `game` key
+  through it, and resolution canonicalizes the live foreground key the same way — so matching never
+  depends on the casing or separators a caller happens to use, an uninstalled game still normalizes
+  deterministically, and two canonically equivalent game rows cannot exist, whatever spelling a
+  writer supplied. `MappingAssignmentResolver::canonicalGameKey()` delegates to the same helper.
+- **Decision only.** Applying a winner to the live table — the atomic switch, cancel/invalidate and
+  overlay-safe behavior of section 5 — is `cpo-p05`; until that wiring lands the `cpo-p03`
+  migration bridge keeps serving exactly as before, and nothing in this resolver bypasses its
+  proof state.

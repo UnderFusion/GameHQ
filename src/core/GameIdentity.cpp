@@ -1,6 +1,7 @@
 #include "core/GameIdentity.h"
 
 #include <QDir>
+#include <QFileInfo>
 #include <QStringList>
 
 namespace
@@ -35,6 +36,20 @@ bool hasFolderForbiddenChar(const QString& name)
             return true;
     }
     return false;
+}
+
+QString executableKey(const QString& executablePathOrKey)
+{
+    const QString raw = executablePathOrKey.trimmed();
+    if (raw.isEmpty())
+        return QString();
+    // canonicalFilePath() resolves separators, casing and links while the
+    // executable is resolvable; a path that currently does not exist (an
+    // uninstalled game) still normalizes deterministically. Both sides of a
+    // match run through this, so the function only has to be idempotent.
+    const QString canonical = QFileInfo(raw).canonicalFilePath();
+    const QString key = canonical.isEmpty() ? QDir::cleanPath(raw) : canonical;
+    return key.toLower();
 }
 
 QString inferFromPath(const QString& root, const QString& filePath)

@@ -241,6 +241,10 @@ public:
     // (group_default takes an empty key, every other kind a non-empty one,
     // controller/legacy_slot only in the controller group) and a preset from a
     // different device group. `gameRowId` is kept only for `game` targets.
+    // `game` keys are stored in the canonical executable form
+    // (GameIdentity::executableKey) whatever spelling is passed, so no two
+    // canonically equivalent game rows can exist; `mappingAssignment` and
+    // `clearMappingAssignment` normalize the same way.
     bool setMappingAssignment(const QString& deviceGroup, const QString& targetKind,
                               const QString& targetKey, const QString& presetId,
                               int gameRowId = -1);
