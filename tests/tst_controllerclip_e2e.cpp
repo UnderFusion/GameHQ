@@ -1,5 +1,6 @@
 #include "input/InputEngine.h"
 #include "input/XInputDevice.h"
+#include "input/WinMMDevice.h"
 #include "input/BindingRuntime.h"
 #include "input/InputDiagnostics.h"
 #include "capture/FramePumpService.h"
@@ -18,6 +19,47 @@ class SyntheticXInput final : public XInputDevice
 public:
     void edge(bool down) { setSlotState(0, down ? (1u << Gamepad::Share) : 0, true); }
     void secondEdge(bool down) { setSlotState(1, down ? (1u << Gamepad::Share) : 0, true); }
+
+    // The provider vanishes while the button is still physically down: the
+    // device reports no release edge at all, so only the disconnect path can
+    // close or cancel whatever cycle the press opened (cpo-c04).
+    void vanishWhileHeld(int slot = 0) { setSlotState(slot, 1u << Gamepad::Share, false); }
+    // A release arriving from a provider that is already gone.
+    void lateRelease(int slot = 0) { setSlotState(slot, 0, false); }
+    void reconnect(int slot = 0) { setSlotState(slot, 0, true); }
+};
+
+// The low-priority legacy provider path: InputEngine::providerFor() maps any
+// pad that is neither the Sony nor the XInput backend onto WinMM. A real
+// WinMMDevice needs a physical joystick, so the test drives the same Gamepad
+// edge contract directly.
+class SyntheticWinMM final : public WinMMDevice
+{
+public:
+    using WinMMDevice::WinMMDevice;
+
+    ControlId::DeviceProfile profile() const override
+    {
+        return {QStringLiteral("WinMM joystick"), QStringLiteral("winmm.slot0"),
+                ControlId::ControllerFamily::Xbox,
+                QStringLiteral("Synthetic WinMM (test)"), {}, {}};
+    }
+
+    void arrive() { m_arrived = true; emit connected(true); }
+    // The provider disappears mid-press too: no release edge is invented.
+    void vanish() { m_arrived = false; emit connected(false); }
+    bool arrived() const { return m_arrived; }
+
+    void edge(bool down)
+    {
+        if (down)
+            publishControlPressed(ControlId::ViewBack, profile());
+        else
+            publishControlReleased(ControlId::ViewBack, profile());
+    }
+
+private:
+    bool m_arrived = false;
 };
 
 class ControllerClipE2ETest : public QObject
@@ -28,7 +70,9 @@ class ControllerClipE2ETest : public QObject
     std::unique_ptr<CaptureDatabase> db;
     std::unique_ptr<InputEngine> engine;
     SyntheticXInput* pad = nullptr;
+    SyntheticWinMM* winmmPad = nullptr;
     QString profile;
+    QString winmmProfile;
 
     bool bind(const QString& target, const QString& activation,
               const QString& control = ControlId::ViewBack,
@@ -61,6 +105,18 @@ private slots:
         profile = engine->canonicalProfile(pad, "xinput.slot0");
         QVERIFY(!profile.isEmpty());
         engine->m_runtime->reload();
+
+        // Second backend on the legacy provider path: connected but quiet, so
+        // the XInput pad owns the active role until a test moves it.
+        auto winmm = std::make_unique<SyntheticWinMM>();
+        winmmPad = winmm.get();
+        engine->m_winmmPad = winmmPad;
+        engine->attachGamepad(std::move(winmm), "Synthetic WinMM");
+        winmmPad->arrive();
+        engine->observeLegacyBackend(winmmPad, winmmPad->profile());
+        winmmProfile = engine->canonicalProfile(winmmPad, "winmm.slot0");
+        QVERIFY(!winmmProfile.isEmpty());
+        QVERIFY(winmmProfile != profile);
     }
 
     void cleanup()
@@ -169,6 +225,170 @@ private slots:
         QTRY_COMPARE_WITH_TIMEOUT(screenshots.count(), 1, 700);
         QTest::qWait(350);
         QCOMPARE(replay.count(), 1);
+        QCOMPARE(screenshots.count(), 1);
+    }
+
+    // cpo-c04: route and gesture lifetimes across a provider that disappears
+    // mid-gesture. The press cycle is closed by the removal itself and never
+    // fires late once the pad is gone.
+    void providerRemovalMidHoldCancelsArmedGesture()
+    {
+        QVERIFY(bind(profile, "hold"));
+        QSignalSpy replay(engine.get(), &InputEngine::replayRequested);
+        pad->edge(true);            // hold armed on the active backend
+        QTest::qWait(80);           // well below the 250 ms hold threshold
+        pad->vanishWhileHeld();     // provider gone, button still down
+        QTest::qWait(400);          // past the threshold: nothing may fire late
+        QCOMPARE(replay.count(), 0);
+    }
+
+    void lateReleaseFromRemovedProviderIsIgnored()
+    {
+        QVERIFY(bind(profile, "tap"));
+        QSignalSpy replay(engine.get(), &InputEngine::replayRequested);
+        pad->edge(true);
+        QTest::qWait(30);
+        pad->vanishWhileHeld();     // press cycle closed by the removal
+        QTest::qWait(50);
+        pad->lateRelease();         // release from a provider that is gone
+        QTest::qWait(200);
+        QCOMPARE(replay.count(), 0);   // cannot fire, reopen or leave it stuck
+    }
+
+    void rearmAfterProviderRemovalFiresOnce()
+    {
+        QVERIFY(bind(profile, "tap"));
+        QSignalSpy replay(engine.get(), &InputEngine::replayRequested);
+        pad->edge(true);
+        pad->vanishWhileHeld();
+        pad->lateRelease();
+        QTest::qWait(50);
+        QCOMPARE(replay.count(), 0);
+
+        pad->reconnect();           // the same route comes back
+        pad->edge(true);            // a fresh press re-arms it
+        pad->edge(false);
+        QCOMPARE(replay.count(), 1);
+        QTest::qWait(300);          // exactly one action, nothing stuck behind
+        QCOMPARE(replay.count(), 1);
+    }
+
+    // A mirrored press on another provider inside the duplicate window is a
+    // trailing copy: it must be dropped, not held and replayed later.
+    void mirroredPressInsideDuplicateWindowIsDropped()
+    {
+        QVERIFY(bind(profile, "tap"));
+        QVERIFY(bind(winmmProfile, "tap", ControlId::ViewBack, "global.screenshot"));
+        QSignalSpy replay(engine.get(), &InputEngine::replayRequested);
+        QSignalSpy screenshots(engine.get(), &InputEngine::screenshotRequested);
+
+        pad->edge(true);            // the active backend delivers the real press
+        QTest::qWait(30);
+        winmmPad->edge(true);       // the mirror arrives inside the 100 ms window
+        winmmPad->edge(false);
+        QTest::qWait(30);
+        pad->edge(false);
+        QCOMPARE(replay.count(), 1);
+        QCOMPARE(screenshots.count(), 0);
+        QTest::qWait(350);          // and nothing is replayed from a held run
+        QCOMPARE(screenshots.count(), 0);
+        QCOMPARE(replay.count(), 1);
+    }
+
+    // A candidate provider that carries the input alone is promoted, and the
+    // switch cancels the stale gesture on the old route before the new route
+    // becomes authoritative: exactly one action survives.
+    void sustainedCandidatePromotesWithExactlyOneAction()
+    {
+        QVERIFY(bind(profile, "tap"));
+        QVERIFY(bind(winmmProfile, "tap", ControlId::ViewBack, "global.screenshot"));
+        QSignalSpy replay(engine.get(), &InputEngine::replayRequested);
+        QSignalSpy screenshots(engine.get(), &InputEngine::screenshotRequested);
+
+        pad->edge(true);            // active route press, armed and still held
+        QTest::qWait(150);          // past the mirror window, inside the silence
+        winmmPad->edge(true);       // candidate press: held for confirmation
+
+        // The candidate path must actually be entered: the press is buffered
+        // against WinMM, XInput still owns the active role and nothing has
+        // fired yet. A scheduler overshoot (immediate takeover or a mirror
+        // drop) fails here instead of quietly passing through the end state.
+        QCOMPARE(engine->m_pending.source, static_cast<Gamepad*>(winmmPad));
+        QCOMPARE(engine->m_activeBackend, static_cast<Gamepad*>(pad));
+        QCOMPARE(screenshots.count(), 0);
+
+        winmmPad->edge(false);      // released while still pending
+        QTRY_COMPARE_WITH_TIMEOUT(screenshots.count(), 1, 900);
+
+        // Promotion went through the confirmation window: the buffer is empty
+        // and WinMM owns the active role now.
+        QVERIFY(!engine->m_pending.source);
+        QCOMPARE(engine->m_activeBackend, static_cast<Gamepad*>(winmmPad));
+        QCOMPARE(screenshots.count(), 1);
+
+        QCOMPARE(replay.count(), 0);   // the stale active gesture was cancelled
+        pad->edge(false);              // late release of the old route
+        QCOMPARE(replay.count(), 0);
+        QCOMPARE(screenshots.count(), 1);
+    }
+
+    // A pending candidate press whose provider disappears before confirmation
+    // is never replayed, and the surviving route still closes normally.
+    void pendingCandidatePressDiesWithItsProvider()
+    {
+        QVERIFY(bind(profile, "tap"));
+        QVERIFY(bind(winmmProfile, "tap", ControlId::ViewBack, "global.screenshot"));
+        QSignalSpy replay(engine.get(), &InputEngine::replayRequested);
+        QSignalSpy screenshots(engine.get(), &InputEngine::screenshotRequested);
+
+        pad->edge(true);            // real press on the active route
+        QTest::qWait(150);
+        winmmPad->edge(true);       // candidate press, awaiting confirmation
+
+        // The press must really be buffered as the pending candidate, and it
+        // must not have moved the active role already (the overshoot path).
+        QCOMPARE(engine->m_pending.source, static_cast<Gamepad*>(winmmPad));
+        QCOMPARE(engine->m_activeBackend, static_cast<Gamepad*>(pad));
+
+        QTest::qWait(60);
+        winmmPad->vanish();         // provider disappears before it confirms
+        QTest::qWait(500);          // past the confirmation timer
+
+        // The candidate died with its provider: nothing is pending, it never
+        // became authoritative, and the wait cannot replay it.
+        QVERIFY(!engine->m_pending.source);
+        QCOMPARE(engine->m_activeBackend, static_cast<Gamepad*>(pad));
+        QCOMPARE(screenshots.count(), 0);
+
+        pad->edge(false);           // the surviving route closes on its own
+        QCOMPARE(replay.count(), 1);
+        QTest::qWait(300);
+        QCOMPARE(screenshots.count(), 0);
+        QCOMPARE(replay.count(), 1);
+    }
+
+    // Two routes on the same pad: a second slot pressing mid-hold fires its own
+    // action exactly once and never disturbs the held route's cycle.
+    void twoRoutesMidHoldDoNotCrossTalk()
+    {
+        QVERIFY(bind(profile, "hold"));
+        const QString secondProfile = engine->canonicalProfile(pad, "xinput.slot1");
+        QVERIFY(!secondProfile.isEmpty());
+        QVERIFY(secondProfile != profile);
+        QVERIFY(bind(secondProfile, "tap", ControlId::ViewBack, "global.screenshot"));
+        QSignalSpy replay(engine.get(), &InputEngine::replayRequested);
+        QSignalSpy screenshots(engine.get(), &InputEngine::screenshotRequested);
+
+        pad->edge(true);            // slot 0 hold armed
+        QTest::qWait(80);
+        pad->secondEdge(true);      // slot 1 presses mid-hold
+        pad->secondEdge(false);
+        QCOMPARE(screenshots.count(), 1);   // its own tap, exactly once
+        QCOMPARE(replay.count(), 0);        // the held route has not fired yet
+        QTRY_COMPARE_WITH_TIMEOUT(replay.count(), 1, 700);   // fires once at threshold
+        pad->edge(false);
+        QTest::qWait(100);
+        QCOMPARE(replay.count(), 1);        // nothing stuck, nothing duplicated
         QCOMPARE(screenshots.count(), 1);
     }
 
