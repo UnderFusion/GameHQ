@@ -2211,7 +2211,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     </message>
     <message id="gamehq.overlay.hint.browse.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="40"></location>
-      <source>Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
+      <source>Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
       <translation>Gauche/Droite — captures | Haut/Bas — catégories/jeux | Enter — ouvrir | F — favoris | M — menu | Esc — retour au jeu</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">

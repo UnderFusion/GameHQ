@@ -15,6 +15,7 @@
 #include "input/InputDiagnostics.h"
 #include "input/MouseHookDevice.h"
 #include "input/MouseMonitorPolicy.h"
+#include "input/OverlayInputPolicy.h"
 #include "input/WinMMDevice.h"
 #include "input/XInputDevice.h"
 #include "input/SelectiveRawHidFallback.h"
@@ -1061,21 +1062,16 @@ void InputEngine::stopNavRepeat()
 
 ActionCatalog::Scope InputEngine::primaryScope() const
 {
-    if (m_playbackActive)
-        return ActionCatalog::Scope::Playback;
-    if (m_overlayVisible)
-        return ActionCatalog::Scope::Overlay;
-    if (desktopCanReceiveInput())
-        return ActionCatalog::Scope::Desktop;
-    return ActionCatalog::Scope::Global;
+    // Scope selection is decided in one place (input/OverlayInputPolicy.cpp)
+    // so the overlay's routing contract is testable without a device.
+    return OverlayInput::primaryScope(
+        {m_overlayVisible, m_playbackActive, desktopCanReceiveInput()});
 }
 
 ActionCatalog::Scope InputEngine::fallbackScope() const
 {
-    if (!m_playbackActive)
-        return ActionCatalog::Scope::Global;
-    return m_overlayVisible ? ActionCatalog::Scope::Overlay
-                            : ActionCatalog::Scope::Desktop;
+    return OverlayInput::fallbackScope(
+        {m_overlayVisible, m_playbackActive, desktopCanReceiveInput()});
 }
 
 void InputEngine::dispatchAction(const QString& actionId, const QString& triggerCode,

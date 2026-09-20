@@ -209,6 +209,8 @@ gamehq_add_test(tst_controlleracceptance
     "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingRuntime.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingResolver.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DefaultBindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/OverlayInputPolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingRelation.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ContextOverrideCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputPatternRecognizer.cpp"
@@ -268,6 +270,25 @@ gamehq_add_test(tst_overlaylifetime
     tst_overlaylifetime.cpp
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayLifetimePolicy.cpp")
 target_compile_definitions(tst_overlaylifetime PRIVATE
+    GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}/src")
+
+# cpo-o04: the overlay's input contract — what GameHQ fires while the overlay
+# is visible, the escape routes, and the audit that no shipped trigger+gesture
+# delivers two actions. Drives the same arbitration the runtime uses
+# (OverlayInput::select, which BindingResolver::matching delegates to) against
+# the shipped default table: no database, no Win32, no device.
+gamehq_add_test(tst_overlayinput
+    tst_overlayinput.cpp
+    "${CMAKE_SOURCE_DIR}/src/input/DefaultBindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/OverlayInputPolicy.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ContextOverrideCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp")
+
+# The shell contract lives in the real QML, so this suite reads it
+# from the source tree (left/right is seek-only; L1/R1 switches).
+target_compile_definitions(tst_overlayinput PRIVATE
     GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}/src")
 
 # Drives the real DualSenseDevice through a fake RawInputApi. It links the
@@ -545,6 +566,8 @@ gamehq_add_test(tst_bindingeditor
     "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingResolver.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DefaultBindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/OverlayInputPolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingRelation.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingRuntime.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ContextOverrideCatalog.cpp"
@@ -580,6 +603,8 @@ gamehq_add_test(tst_actioncatalog
     "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingResolver.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DefaultBindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/OverlayInputPolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ContextOverrideCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
@@ -599,6 +624,8 @@ gamehq_add_test(tst_bindingmigration
     "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingResolver.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DefaultBindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/OverlayInputPolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ContextOverrideCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ExtraButtonCatalog.cpp"

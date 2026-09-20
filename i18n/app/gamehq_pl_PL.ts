@@ -2226,7 +2226,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.overlay.hint.browse.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="40"></location>
-      <source>Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
+      <source>Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
       <translation>Lewo/prawo — materiały | Góra/dół — kategorie/gry | Enter — otwórz | F — ulubione | M — menu | Esc — wróć do gry</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">

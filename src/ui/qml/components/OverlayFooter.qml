@@ -36,7 +36,10 @@ Text {
             //% "L1/R1 — captures | D-pad Up/Down — categories/games | Cross — open | Triangle — favorite | Square — menu | Circle — back to game"
             return qsTrId("gamehq.overlay.hint.browse.gamepad")
         }
-        //% "Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game"
+        // The overlay has no keyboard capture switch: left/right is
+        // seek-only there (and a no-op without a focused clip), so the
+        // browse hint does not promise it.
+        //% "Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game"
         return qsTrId("gamehq.overlay.hint.browse.keyboard")
     }
     color: Theme.textMuted

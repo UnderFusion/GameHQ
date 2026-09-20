@@ -10,7 +10,9 @@ import "helpers/SidebarCategories.js" as SidebarCategories
 // dark scrim over the game, sidebar (categories + games, with the GameHQ
 // brand mark at its bottom), recent-captures strip, big preview, per-capture
 // action menu. Toggled by
-// Ctrl+Shift+G (OverlayManager/HotkeyManager) or PS; Esc/Circle close.
+// Ctrl+Shift+G (OverlayManager/HotkeyManager) or PS; Circle closes. The window
+// never accepts keyboard focus, so Esc/Backspace only act on the desktop path,
+// not here.
 // Uses its own `overlayGallery` GalleryModel instance so its category/game
 // filter never clashes with the main window's. PS5-style slide+fade per
 // design-system Â§5.
@@ -58,9 +60,12 @@ Window {
     }
 
     // Tracks which input source was used last so the footer hint can show
-    // matching labels (keyboard glyphs vs DualSense button names). Flipped
-    // to true on any pad input, false on any key press.
-    property bool usingGamepad: false
+    // matching labels (keyboard glyphs vs DualSense button names). Flipped to
+    // true on any pad input, false on any key press — but this window is
+    // created WindowDoesNotAcceptFocus, so the pad is the only input it can
+    // really receive: it starts on the gamepad labels rather than promising a
+    // keyboard route that cannot reach it.
+    property bool usingGamepad: true
 
     // Row queued by the mouse delete path until the confirm dialog answers.
     property int pendingDeleteRow: -1
@@ -242,22 +247,6 @@ Window {
             sounds.play("confirm")
         }
 
-        // Keyboard left/right fallback: keeps the legacy dual behavior (seek
-        // when a clip is focused, otherwise flip). Pad uses the two dedicated
-        // paths below so the controls stay independent on the gamepad.
-        function handleNavigate(direction) {
-            if (content.menuOpen)
-                return
-            if (content.videoFocused) {
-                content.seekVideo(direction * previewStage.seekStepMs)
-                return
-            }
-            if (direction < 0)
-                strip.decrementCurrentIndex()
-            else
-                strip.incrementCurrentIndex()
-        }
-
         // L1/R1 pad path: ALWAYS flips between captures, independent of
         // whether a clip is currently focused or playing. This is the only
         // pad gesture that switches items â€” see the user request that L1/R1
@@ -277,11 +266,9 @@ Window {
         function handleSeekStep(direction) {
             if (content.menuOpen)
                 return
-            if (content.videoFocused) {
-                content.seekVideo(direction * previewStage.seekStepMs)
+            if (!content.videoFocused)
                 return
-            }
-            content.handleCaptureStep(direction)
+            content.seekVideo(direction * previewStage.seekStepMs)
         }
 
         function handleNavigateVertical(direction) {

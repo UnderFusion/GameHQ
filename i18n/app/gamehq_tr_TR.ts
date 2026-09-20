@@ -2216,7 +2216,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     </message>
     <message id="gamehq.overlay.hint.browse.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="40"></location>
-      <source>Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
+      <source>Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
       <translation>Sol/Sağ — çekimler | Yukarı/Aşağı — kategoriler/oyunlar | Enter — aç | F — favori | M — menü | Esc — oyuna dön</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">

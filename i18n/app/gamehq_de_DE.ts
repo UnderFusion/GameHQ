@@ -2221,7 +2221,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     </message>
     <message id="gamehq.overlay.hint.browse.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="40"></location>
-      <source>Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
+      <source>Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
       <translation>Links/Rechts — Aufnahmen | Hoch/Runter — Kategorien/Spiele | Enter — öffnen | F — Favorit | M — Menü | Esc — zurück zum Spiel</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">

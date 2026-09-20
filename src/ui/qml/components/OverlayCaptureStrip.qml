@@ -48,6 +48,9 @@ Rectangle {
         radius: Theme.radiusPill
         color: Theme.text
         opacity: 0.92
+        // The pill labels the L1/R1 capture switch, so it is shown
+        // only while a pad is in use: the overlay has no arrow-key route.
+        visible: root.usingGamepad
 
         Text {
             id: stripPillTextL
@@ -72,6 +75,7 @@ Rectangle {
         radius: Theme.radiusPill
         color: Theme.text
         opacity: 0.92
+        visible: root.usingGamepad
 
         Text {
             id: stripPillTextR

@@ -2211,8 +2211,8 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.overlay.hint.browse.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="40"></location>
-      <source>Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
-      <translation>Left/Right — captures | Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</translation>
+      <source>Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
+      <translation>Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="22"></location>
