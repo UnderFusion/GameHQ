@@ -2,6 +2,7 @@
 
 #include "input/InputDiagnostics.h"
 
+#include <QCryptographicHash>
 #include <QSet>
 #include <algorithm>
 #include <utility>
@@ -267,7 +268,8 @@ void BindingRuntime::dispatch(const InputPatternRecognizer::Context& context,
         if (emitted.contains(binding.actionId))
             continue;
         emitted.insert(binding.actionId);
-        emit actionTriggered(binding.actionId, triggerCode, context.deviceGroup);
+        emit actionTriggered(binding.actionId, triggerCode, context.deviceGroup,
+                             context.deviceProfile);
         InputDiagnostics::instance().notePattern(
             QStringLiteral("%1 %2 -> %3").arg(triggerCode, gesture.label(), binding.actionId));
     }
@@ -277,6 +279,11 @@ bool BindingRuntime::press(const QString& group, const QString& profile,
                            const QString& trigger, ActionCatalog::Scope primary,
                            ActionCatalog::Scope fallback)
 {
+    // cpo-p05: this control was physically down when the mapping for its route
+    // was switched. The press it belongs to ended with the old table; a real
+    // release has to arrive before this control may act under the new one.
+    if (releaseGateArmed(group, profile, trigger))
+        return true;
     if (group == QLatin1String("controller")) setActiveProfile(group, profile);
     const InputPatternRecognizer::Context context{group, profile, primary, fallback};
     m_pressContexts.insert(group + QChar(0x1f) + profile + QChar(0x1f) + trigger, context);
@@ -289,6 +296,16 @@ bool BindingRuntime::release(const QString& group, const QString& profile,
     // Release carries no scope of its own — the pattern belongs to the context
     // its press started in, which is also what the recognizer keyed its state
     // by. Looking it up here keeps every caller from having to remember it.
+    // The release that closes a switch gate is consumed here: the press it
+    // belonged to was invalidated with the old table, so no pattern is left to
+    // end - not even for a press that was gated and never delivered. The
+    // physical bookkeeping is repaired explicitly: the button is genuinely up,
+    // and a later switch must not snapshot it as still down and arm a phantom
+    // gate for it.
+    if (clearReleaseGate(group, profile, trigger)) {
+        m_recognizer.notePhysicalRelease(group, profile, trigger);
+        return true;
+    }
     const auto it = m_pressContexts.constFind(group + QChar(0x1f) + profile
                                               + QChar(0x1f) + trigger);
     if (it == m_pressContexts.cend())
@@ -299,4 +316,145 @@ bool BindingRuntime::release(const QString& group, const QString& profile,
 void BindingRuntime::cancelAll()
 {
     m_recognizer.invalidate();
+}
+
+// ---------------------------------------------------------------------- cpo-p05
+
+namespace {
+QString releaseGateKey(const QString& group, const QString& profile, const QString& control)
+{
+    return group + QChar(0x1f) + profile + QChar(0x1f) + control;
+}
+} // namespace
+
+void BindingRuntime::installPresetTable(const QString& deviceGroup, const QString& deviceProfile,
+                                        const QString& presetId, const QString& source,
+                                        const QVector<BindingResolver::Binding>& table)
+{
+    m_resolver.setPresetTable(deviceGroup, deviceProfile, presetId, source, table);
+}
+
+void BindingRuntime::uninstallPresetTable(const QString& deviceGroup, const QString& deviceProfile)
+{
+    m_resolver.clearPresetTable(deviceGroup, deviceProfile);
+}
+
+bool BindingRuntime::hasInstalledPresetTable(const QString& deviceGroup,
+                                             const QString& deviceProfile) const
+{
+    return m_resolver.hasPresetTable(deviceGroup, deviceProfile);
+}
+
+QString BindingRuntime::installedPresetId(const QString& deviceGroup,
+                                          const QString& deviceProfile) const
+{
+    return m_resolver.presetTableId(deviceGroup, deviceProfile);
+}
+
+QString BindingRuntime::installedPresetSource(const QString& deviceGroup,
+                                              const QString& deviceProfile) const
+{
+    return m_resolver.presetTableSource(deviceGroup, deviceProfile);
+}
+
+QStringList BindingRuntime::installedPresetChains() const
+{
+    QStringList keys;
+    for (const QString& key : m_resolver.installedPresetChainKeys())
+        keys.append(key);
+    keys.sort();
+    return keys;
+}
+
+void BindingRuntime::invalidateGestureState()
+{
+    // Exactly what reload() does to gesture state, plus the press contexts:
+    // they describe where a press started under the table that is now gone, so
+    // a delayed release must not re-address it.
+    cancelAll();
+    m_pressContexts.clear();
+    m_relations.clear();
+}
+
+void BindingRuntime::invalidateGestureStateFor(const QString& deviceGroup,
+                                               const QString& deviceProfile)
+{
+    // One route changed; every other route's gesture state is still current and
+    // must keep resolving. The recognizer resets only its own matching states,
+    // the press contexts of this route are dropped (their table is gone), and
+    // only this route's relation cache is stale.
+    m_recognizer.invalidateRoute(deviceGroup, deviceProfile);
+    const QString prefix = deviceGroup + QChar(0x1f) + deviceProfile + QChar(0x1f);
+    for (auto it = m_pressContexts.begin(); it != m_pressContexts.end();) {
+        if (it.key().startsWith(prefix))
+            it = m_pressContexts.erase(it);
+        else
+            ++it;
+    }
+    m_relations.remove(deviceGroup + QLatin1Char('\x1f') + deviceProfile);
+}
+
+void BindingRuntime::notePhysicalRelease(const QString& deviceGroup, const QString& deviceProfile,
+                                         const QString& control)
+{
+    m_recognizer.notePhysicalRelease(deviceGroup, deviceProfile, control);
+}
+
+void BindingRuntime::refreshPatternDiagnostics()
+{
+    publishBoundPatterns();
+}
+
+void BindingRuntime::armReleaseGate(const QString& deviceGroup, const QString& deviceProfile,
+                                    const QString& control)
+{
+    if (control.isEmpty())
+        return;
+    m_releaseGates.insert(releaseGateKey(deviceGroup, deviceProfile, control));
+}
+
+bool BindingRuntime::clearReleaseGate(const QString& deviceGroup, const QString& deviceProfile,
+                                      const QString& control)
+{
+    return m_releaseGates.remove(releaseGateKey(deviceGroup, deviceProfile, control)) > 0;
+}
+
+bool BindingRuntime::releaseGateArmed(const QString& deviceGroup, const QString& deviceProfile,
+                                      const QString& control) const
+{
+    return m_releaseGates.contains(releaseGateKey(deviceGroup, deviceProfile, control));
+}
+
+QStringList BindingRuntime::armedReleaseGates() const
+{
+    QStringList gates = m_releaseGates.values();
+    gates.sort();
+    return gates;
+}
+
+QStringList BindingRuntime::downControls(const QString& deviceGroup,
+                                         const QString& deviceProfile) const
+{
+    return m_recognizer.downControls(deviceGroup, deviceProfile);
+}
+
+QString BindingRuntime::tableFingerprint(const QVector<BindingResolver::Binding>& table)
+{
+    QStringList rows;
+    rows.reserve(table.size());
+    for (const BindingResolver::Binding& binding : table) {
+        rows.append(QStringLiteral("%1|%2|%3|%4|%5|%6|%7")
+                        .arg(binding.actionId)
+                        .arg(binding.slot)
+                        .arg(binding.triggerCode, binding.activation)
+                        .arg(binding.holdMs)
+                        .arg(binding.unbound ? 1 : 0)
+                        .arg(binding.tapCount));
+    }
+    // Sorted, so a rewritten preset that stores the same rows in another order
+    // is still recognized as the same table.
+    rows.sort();
+    return QString::fromLatin1(
+        QCryptographicHash::hash(rows.join(QLatin1Char('\n')).toUtf8(),
+                                 QCryptographicHash::Sha256).toHex());
 }

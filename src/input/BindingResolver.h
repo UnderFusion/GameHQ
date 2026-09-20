@@ -147,6 +147,50 @@ public:
     bool isMaterialized(const QString& deviceGroup, const QString& profile) const;
     QString materializedPreset(const QString& deviceGroup, const QString& profile) const;
 
+    // ---------------------------------------------------------------- cpo-p05
+    // The preset a mapping switch installed for one chain
+    // (deviceGroup + canonical logical profile), if any. Set only by
+    // BindingRuntime::installPresetTable() after the switch transaction has
+    // prepared and validated the table; effectiveBindings() then serves it
+    // ahead of the materialized view and the legacy merge. Cleared by the next
+    // switch that resolves this chain back to its inherited table.
+    void setPresetTable(const QString& deviceGroup, const QString& deviceProfile,
+                        const QString& presetId, const QString& source,
+                        const QVector<Binding>& table);
+    void clearPresetTable(const QString& deviceGroup, const QString& deviceProfile);
+    bool hasPresetTable(const QString& deviceGroup, const QString& deviceProfile) const;
+    QString presetTableId(const QString& deviceGroup, const QString& deviceProfile) const;
+    QString presetTableSource(const QString& deviceGroup, const QString& deviceProfile) const;
+    // Installed chains as "group\x1fprofile" keys.
+    QStringList installedPresetChainKeys() const;
+
+    // The table below any preset winner: the cpo-p03 materialized view when the
+    // chain is proven, otherwise the legacy merge (defaults + group-wide +
+    // alias + chain rows). This is what a chain serves when no winner preset is
+    // installed, and what a switch must compare a newly resolved table against.
+    QVector<Binding> inheritedTable(const QString& deviceGroup,
+                                    const QString& deviceProfile = {}) const;
+
+    // True while this chain still resolves from unretired device-specific
+    // legacy rows: the cpo-p03 migration bridge stays the effective mapping
+    // source for it until the materializer proves the chain or a promotion
+    // retires the rows. The group-wide layer is inherited behavior, not a
+    // chain-specific override, so it never makes a chain bridge-owned
+    // (keyboard and mouse have only that layer).
+    bool hasUnretiredSpecificLegacy(const QString& deviceGroup,
+                                    const QString& deviceProfile) const;
+
+    // True while any retained override row still applies to this chain - the
+    // group-wide layer counts, because that is behavior the chain inherits
+    // today. This is the question that separates `local_legacy` ("no assignment,
+    // but live local rows still provide behavior") from `builtin` ("shipped
+    // defaults only") once a chain is not bridge-owned. local_legacy is a
+    // TRANSITIONAL compatibility source: it exists only because the binding
+    // editor still writes plain binding_overrides rows, and cpo-p06 moves those
+    // edits into named presets. It must not become a permanent layer.
+    bool hasRetainedLocalRows(const QString& deviceGroup,
+                              const QString& deviceProfile) const;
+
     // Bridge inputs for the materializer; both are cheap copies of small sets.
     QStringList aliasesFor(const QString& profile) const { return m_profileAliases.value(profile); }
     QVector<Binding> validatedOverrides() const { return m_overrides; }
@@ -189,6 +233,15 @@ private:
     QVector<Binding> m_overrides;
     QHash<QString, QStringList> m_profileAliases;
     QHash<QString, MaterializedView> m_materialized;
+    // A preset installed by the cpo-p05 mapping switch: the exact table it
+    // serves for one chain, plus the identity it was resolved from (diagnostics
+    // and the engine's no-op comparison).
+    struct PresetTableView {
+        QString presetId;
+        QString source;
+        QVector<Binding> table;
+    };
+    QHash<QString, PresetTableView> m_presetTables;
     quint64 m_revision = 1;
     int m_defaultHoldMs = 2000;
 };

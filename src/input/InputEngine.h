@@ -1,7 +1,9 @@
 #pragma once
 #include "capture/CaptureRequest.h"
 #include "input/ActionCatalog.h"
+#include "input/BindingResolver.h"
 #include "input/ControlId.h"
+#include "input/MappingAssignmentResolver.h"
 #include "input/ProviderIntegration.h"
 #include <QElapsedTimer>
 #include <QHash>
@@ -106,6 +108,42 @@ public slots:
     Q_INVOKABLE bool handleKeyPressed(int key, int modifiers, bool autoRepeat = false);
     Q_INVOKABLE bool handleKeyReleased(int key, int modifiers);
 
+    // ---------------------------------------------------------------- cpo-p05
+    // The running game's executable path or key; empty means no game. The key
+    // is canonicalized with MappingAssignmentResolver::canonicalGameKey(), the
+    // same normalization storage writes rows with. A change re-resolves the
+    // mapping winners at a safe input boundary; an unchanged key is a no-op.
+    //
+    // cpo-p05 owns this seam only: cpo-p07 connects the real App /
+    // CurrentGameService game session to it.
+    void setRunningGameKey(const QString& executablePathOrKey);
+    QString runningGameKey() const { return m_runningGameKey; }
+
+    // Re-resolve the preset winner for every mapping route this engine tracks
+    // (keyboard, mouse, the active controller route and any route a preset was
+    // installed for) and apply the change - if any - at a safe input boundary:
+    // prepare, compare, snapshot, invalidate the old generation, publish the
+    // new tables, then release-gate the controls that were down. Also the seam
+    // assignment/content edits (cpo-p06) call after a write.
+    void refreshResolvedPreset();
+
+    // Register a controller mapping route the first time this engine observes
+    // it, planning and publishing its winner BEFORE the press that revealed it
+    // is dispatched. One shared seam: the legacy pad path, GameInput and
+    // selective Raw-HID all call it, so no backend can execute an unplanned
+    // table. Cheap after the first registration (an already tracked route does
+    // no database work), which is what keeps the per-event path free of
+    // assignment and preset resolution. Returns true when a refresh ran.
+    bool ensureMappingRoute(const QString& logicalProfile);
+
+    // Read-only resolution state for diagnostics and later leaves.
+    QString mappingEffectiveSource(const QString& deviceGroup,
+                                   const QString& deviceProfile = {}) const;
+    QString mappingInstalledPresetId(const QString& deviceGroup,
+                                     const QString& deviceProfile = {}) const;
+    // "group\x1fprofile\x1fcontrol" entries currently gated until release.
+    QStringList mappingArmedReleaseGates() const;
+
 signals:
     // Global actions (0.4/0.5 wire these to real capture; for now sound + log).
     // Both carry the request that started them, so the log chain from press to
@@ -158,6 +196,7 @@ signals:
 private:
     friend class InputEngineShutdownTest;
     friend class ControllerClipE2ETest;
+    friend class PresetSwitchTest;
     void shutdown();
     void migrateLegacyHoldSetting();
     void applyGestureTiming();
@@ -219,7 +258,7 @@ private:
     ActionCatalog::Scope primaryScope() const;
     ActionCatalog::Scope fallbackScope() const;
     void dispatchAction(const QString& actionId, const QString& triggerCode = {},
-                        const QString& deviceGroup = {});
+                        const QString& deviceGroup = {}, const QString& deviceProfile = {});
 
     // Dispatch table handlers — one per entry in the static table inside
     // InputEngine.cpp. Each is a thin wrapper around the signal emission +
@@ -228,6 +267,12 @@ private:
     // The device group of the action currently being dispatched. Valid only
     // inside dispatchAction().
     CaptureRequest::Source m_dispatchSource = CaptureRequest::Source::Unknown;
+    // The mapping route of the action currently being dispatched, for the same
+    // reason and under the same contract: a handler that starts something
+    // lasting (the navigation repeat) has to record which route's table it
+    // belongs to. Keyboard/mouse have no profile layer, so it is empty there.
+    QString m_dispatchGroup;
+    QString m_dispatchProfile;
     void handleScreenshot(const QString&)
     {
         emit screenshotRequested(CaptureRequest::create(m_dispatchSource));
@@ -327,6 +372,47 @@ private:
     };
     PendingPress m_pending;
     int m_pendingGeneration = 0;   // cancels a superseded confirmation timer
+
+    // ---------------------------------------------------------------- cpo-p05
+    // What serves one mapping route right now (deviceGroup + canonical logical
+    // profile): the installed preset table, or the resolver's own inherited
+    // table with an honest source label. The fingerprint is what makes the
+    // no-op check exact: same winner AND same content, or a real switch.
+    struct MappingChainState {
+        QString group;
+        QString profile;
+        QString source;
+        // The switch layer serves an explicit table for this chain. Ownership
+        // can NEVER be inferred from a non-empty preset id: `builtin` is an
+        // owned, explicitly prepared shipped-defaults table with no preset.
+        bool owned = false;
+        QString presetId;     // empty when the serving table has no preset (builtin)
+        QString fingerprint;
+    };
+    // One chain's next resolved state, prepared without touching live state.
+    struct PlannedChain {
+        QString group;
+        QString profile;
+        bool install = false;             // the switch layer serves an explicit table?
+        QString presetId;                 // set only when the table is a named preset
+        QString source;                   // effective source that will serve
+        QVector<BindingResolver::Binding> table;
+        QString fingerprint;
+    };
+
+    QString mappingChainKey(const QString& group, const QString& profile) const;
+    // The typed controller identity chain for one route: the durable identity
+    // first when the registry proves it, then the legacy provider/alias keys.
+    // A weak or session-local identity is only ever presented as legacy_slot.
+    QVector<MappingAssignmentResolver::IdentityCandidate> controllerIdentityChain(
+        const QString& profile) const;
+    PlannedChain planMappingChain(const QString& group, const QString& profile) const;
+
+    QHash<QString, MappingChainState> m_mappingChains;
+    std::unique_ptr<MappingAssignmentResolver> m_assignmentResolver;
+    QString m_runningGameKey;         // canonical; empty = no game
+    QString m_lastControllerRoute;    // canonical logical profile of the last pad press
+    bool m_mappingSwitchRunning = false;
     bool m_started = false;        // gates mouse monitoring until start()
     bool m_shuttingDown = false;
     bool m_sonyConnected = false;
@@ -347,6 +433,12 @@ private:
 
     QTimer* m_repeatTick = nullptr;      // accelerating repeat timer
     QString m_repeatTrigger;             // canonical control currently held
+    // The mapping route the running repeat started from (device group +
+    // canonical logical profile). A cpo-p05 switch ends a repeat whose own
+    // table was replaced and leaves a repeat belonging to any other route
+    // ticking: the repeat is a press of one table, not of the runtime.
+    QString m_repeatRouteGroup;
+    QString m_repeatRouteProfile;
     int m_repeatDirection = 0;
     std::function<void(int)> m_repeatEmitter;
 };

@@ -6,6 +6,7 @@
 
 #include <QHash>
 #include <QObject>
+#include <QSet>
 
 class CaptureDatabase;
 
@@ -69,13 +70,82 @@ public:
                  const QString& triggerCode);
     void cancelAll();
 
+    // ---------------------------------------------------------------- cpo-p05
+    // One mapping route (deviceGroup + canonical logical profile) can be
+    // switched to a resolved preset winner at a safe input boundary. The engine
+    // prepares the table first, then invalidates, then installs - so the new
+    // table never becomes visible while old-generation gesture state could
+    // still complete. Installing does not touch recognizer state by itself.
+    void installPresetTable(const QString& deviceGroup, const QString& deviceProfile,
+                            const QString& presetId, const QString& source,
+                            const QVector<BindingResolver::Binding>& table);
+    void uninstallPresetTable(const QString& deviceGroup, const QString& deviceProfile);
+    bool hasInstalledPresetTable(const QString& deviceGroup, const QString& deviceProfile) const;
+    QString installedPresetId(const QString& deviceGroup, const QString& deviceProfile) const;
+    QString installedPresetSource(const QString& deviceGroup, const QString& deviceProfile) const;
+    // Installed chains as "group\x1fprofile" keys, so a switch can also retire
+    // a chain that is no longer on any live route.
+    QStringList installedPresetChains() const;
+
+    // The invalidation half of a switch: the recognizer generation moves and
+    // every pending pattern dies (exactly like reload()), the mapping-derived
+    // relation cache drops and the press contexts of the old table go with it.
+    // Release gates are deliberately NOT touched here; the switch arms them
+    // right after this call, from the pre-invalidation snapshot.
+    //
+    // This is the WHOLE-RUNTIME form (reload, shutdown, backend lifecycle
+    // reset). A mapping switch that changes one route uses the scoped form
+    // below instead, so a gesture belonging to an unchanged route survives.
+    void invalidateGestureState();
+
+    // The route-scoped half of a mapping switch: only this (deviceGroup,
+    // deviceProfile)'s recognizer states are reset and marked stale, only its
+    // press contexts are dropped and only its relation-cache entry is
+    // invalidated. Every other route keeps its timers, snapshots and cache.
+    void invalidateGestureStateFor(const QString& deviceGroup, const QString& deviceProfile);
+
+    // Republish the diagnostics view of the current effective tables.
+    void refreshPatternDiagnostics();
+
+    // Physical release bookkeeping for a gated release: clears the recognizer's
+    // "still down" bit for one route + control without completing anything. The
+    // engine's non-active-backend path needs this because it closes a gate
+    // without going through release().
+    void notePhysicalRelease(const QString& deviceGroup, const QString& deviceProfile,
+                             const QString& control);
+
+    // Release gates: keyed by logical mapping route + control - never by
+    // backend pointer, so two controllers holding the same button on different
+    // routes cannot block one another, and a provider failover for one route
+    // cannot open a hole in its gate. Armed only for controls that were
+    // physically down at a switch boundary; cleared by a real release edge for
+    // the same route + control. A press on a gated control is consumed and does
+    // nothing until that release arrives.
+    void armReleaseGate(const QString& deviceGroup, const QString& deviceProfile,
+                        const QString& control);
+    bool clearReleaseGate(const QString& deviceGroup, const QString& deviceProfile,
+                          const QString& control);
+    bool releaseGateArmed(const QString& deviceGroup, const QString& deviceProfile,
+                          const QString& control) const;
+    QStringList armedReleaseGates() const;
+    QStringList downControls(const QString& deviceGroup, const QString& deviceProfile) const;
+
+    // Deterministic content fingerprint of an effective table, sorted by row so
+    // storage order cannot fake a change. This is the missing half of the
+    // switch's no-op identity: the same winner with the same fingerprint is a
+    // true no-op, the same preset id with rewritten rows is a real switch.
+    static QString tableFingerprint(const QVector<BindingResolver::Binding>& table);
+
 signals:
     // deviceGroup is the group the recognized gesture came from ("controller",
-    // "keyboard", "mouse"). A gesture resolves long after its press, so the
-    // group has to travel with the signal: a "last press" guess would credit a
-    // controller hold to a keyboard tap that landed in between.
+    // "keyboard", "mouse") and deviceProfile is the mapping route inside it
+    // (the canonical logical profile; empty for keyboard and mouse). A gesture
+    // resolves long after its press, so both have to travel with the signal: a
+    // "last press" guess would credit a controller hold to a keyboard tap that
+    // landed in between, and the cpo-p05 switch needs the route to tell whether
+    // a mapping-derived repeat belongs to a table that is being replaced.
     void actionTriggered(const QString& actionId, const QString& triggerCode,
-                         const QString& deviceGroup);
+                         const QString& deviceGroup, const QString& deviceProfile);
 
 private:
     InputPatternRecognizer::TriggerFacts factsFor(const InputPatternRecognizer::Context& context,
@@ -87,6 +157,9 @@ private:
 
     BindingResolver m_resolver;
     InputPatternRecognizer m_recognizer;
+    // Armed release gates, keyed group\x1fprofile\x1fcontrol (cpo-p05). Cleared
+    // by the matching release edge; never by a switch or a reload.
+    QSet<QString> m_releaseGates;
     // The context a control was last pressed in, so release() can address the
     // same recognizer state without the caller having to repeat the scope.
     QHash<QString, InputPatternRecognizer::Context> m_pressContexts;

@@ -28,7 +28,7 @@ QSet<QString> runningExecutablePaths()
         wchar_t buf[MAX_PATH] = {};
         DWORD size = MAX_PATH;
         if (QueryFullProcessImageNameW(proc, 0, buf, &size))
-            paths.insert(QFileInfo(QString::fromWCharArray(buf, size)).canonicalFilePath().toLower());
+            paths.insert(GameIdentity::executableKey(QString::fromWCharArray(buf, size)));
         CloseHandle(proc);
     }
 
@@ -105,7 +105,7 @@ int CurrentGameService::runningCapturedGameFallback() const
         if (game.executablePath.isEmpty())
             continue;
 
-        const QString path = QFileInfo(game.executablePath).canonicalFilePath().toLower();
+        const QString path = GameIdentity::executableKey(game.executablePath);
         if (path.isEmpty() || !running.contains(path))
             continue;
 

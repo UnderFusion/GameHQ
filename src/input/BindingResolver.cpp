@@ -250,6 +250,96 @@ QString BindingResolver::materializedPreset(const QString& deviceGroup, const QS
     return view == m_materialized.cend() ? QString() : view->presetId;
 }
 
+void BindingResolver::setPresetTable(const QString& deviceGroup, const QString& deviceProfile,
+                                     const QString& presetId, const QString& source,
+                                     const QVector<Binding>& table)
+{
+    PresetTableView view;
+    view.presetId = presetId;
+    view.source = source;
+    view.table = table;
+    m_presetTables.insert(materializedKey(deviceGroup, deviceProfile), view);
+    ++m_revision;
+}
+
+void BindingResolver::clearPresetTable(const QString& deviceGroup, const QString& deviceProfile)
+{
+    if (m_presetTables.remove(materializedKey(deviceGroup, deviceProfile)) > 0)
+        ++m_revision;
+}
+
+bool BindingResolver::hasPresetTable(const QString& deviceGroup, const QString& deviceProfile) const
+{
+    return m_presetTables.contains(materializedKey(deviceGroup, deviceProfile));
+}
+
+QString BindingResolver::presetTableId(const QString& deviceGroup, const QString& deviceProfile) const
+{
+    const auto view = m_presetTables.constFind(materializedKey(deviceGroup, deviceProfile));
+    return view == m_presetTables.cend() ? QString() : view->presetId;
+}
+
+QString BindingResolver::presetTableSource(const QString& deviceGroup, const QString& deviceProfile) const
+{
+    const auto view = m_presetTables.constFind(materializedKey(deviceGroup, deviceProfile));
+    return view == m_presetTables.cend() ? QString() : view->source;
+}
+
+QStringList BindingResolver::installedPresetChainKeys() const
+{
+    return m_presetTables.keys();
+}
+
+QVector<BindingResolver::Binding> BindingResolver::inheritedTable(
+    const QString& deviceGroup, const QString& deviceProfile) const
+{
+    const auto view = m_materialized.constFind(materializedKey(deviceGroup, deviceProfile));
+    if (view != m_materialized.cend())
+        return view->table;
+    return mergedTable(defaultBindings(), m_overrides, deviceGroup,
+                       chainLayers(deviceProfile, m_profileAliases.value(deviceProfile)));
+}
+
+bool BindingResolver::hasUnretiredSpecificLegacy(const QString& deviceGroup,
+                                                 const QString& deviceProfile) const
+{
+    if (m_overrides.isEmpty())
+        return false;
+    // A chain resolves through group-wide rows first, then its alias layers,
+    // then its own profile. Only the latter two are device-specific behavior
+    // that the migration bridge exists to protect.
+    QSet<QString> specific;
+    const QStringList layers = chainLayers(deviceProfile, m_profileAliases.value(deviceProfile));
+    for (const QString& layer : layers) {
+        if (!layer.isEmpty())
+            specific.insert(layer);
+    }
+    if (specific.isEmpty())
+        return false;
+    for (const Binding& binding : m_overrides) {
+        if (binding.deviceGroup == deviceGroup && specific.contains(binding.deviceProfile))
+            return true;
+    }
+    return false;
+}
+
+bool BindingResolver::hasRetainedLocalRows(const QString& deviceGroup,
+                                           const QString& deviceProfile) const
+{
+    if (m_overrides.isEmpty())
+        return false;
+    // Every layer the chain resolves through counts here, the group-wide layer
+    // included: these rows are still live behavior, they are simply not a
+    // preset. `specific` (alias + own profile) is what makes a chain
+    // bridge-owned; this method is the wider question "is anything local left".
+    const QStringList layers = chainLayers(deviceProfile, m_profileAliases.value(deviceProfile));
+    for (const Binding& binding : m_overrides) {
+        if (binding.deviceGroup == deviceGroup && layers.contains(binding.deviceProfile))
+            return true;
+    }
+    return false;
+}
+
 // Keyboard and mouse have no per-device identity layer, so their migrated
 // group-default content may become the active resolution once it is proven
 // equal to today's group-wide table. Controllers deliberately never activate
@@ -441,14 +531,14 @@ QVector<BindingResolver::Binding> BindingResolver::defaultBindings()
 QVector<BindingResolver::Binding> BindingResolver::effectiveBindings(
     const QString& deviceGroup, const QString& deviceProfile) const
 {
-    // A proven chain serves its materialized preset table; every other chain -
-    // and every keyboard/mouse group whose default has not been proven - keeps
-    // the legacy merge, byte for byte.
-    const auto view = m_materialized.constFind(materializedKey(deviceGroup, deviceProfile));
-    if (view != m_materialized.cend())
-        return view->table;
-    return mergedTable(defaultBindings(), m_overrides, deviceGroup,
-                       chainLayers(deviceProfile, m_profileAliases.value(deviceProfile)));
+    // A preset installed by the cpo-p05 mapping switch serves this chain whole;
+    // below it, a proven chain serves its materialized preset table and every
+    // other chain - and every keyboard/mouse group whose default has not been
+    // proven - keeps the legacy merge, byte for byte.
+    const auto preset = m_presetTables.constFind(materializedKey(deviceGroup, deviceProfile));
+    if (preset != m_presetTables.cend())
+        return preset->table;
+    return inheritedTable(deviceGroup, deviceProfile);
 }
 
 QVector<BindingResolver::Binding> BindingResolver::baselineBindings(

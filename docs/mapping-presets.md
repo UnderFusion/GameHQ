@@ -163,6 +163,81 @@ changes, or migration completes. The contract:
 - **Latency**: a switch decision is made on the same signals that already drive the runtime
   (assignment change, `currentGameChanged`); no polling is required.
 
+## 5b. Switch transaction (implemented by `cpo-p05`)
+
+A mapping winner belongs to one **mapping route**: `deviceGroup + canonical logical
+profile` - never to the scope pair. One selected preset spans all scopes; the scope pair
+only selects actions *inside* the already-selected table.
+
+`MappingAssignmentResolver::source` is a decision, not the effective runtime source. What
+actually serves one route is:
+
+1. explicit `game` winner -> that preset;
+2. explicit typed `controller` / `legacy_slot` winner -> that preset;
+3. a chain the migration proved (`materialized`) -> its proven table;
+4. a chain with unretired device-specific legacy rows -> `migration_bridge`: the legacy
+   table keeps serving until the materializer proves the chain or a promotion retires the
+   rows, exactly as `cpo-p03` left it;
+5. otherwise `group_default` -> that preset (so controller group defaults are effective for
+   every route that is not bridge-owned, and they never flatten an unretired bridge);
+6. otherwise, while any retained `binding_overrides` row still applies to the route (the
+   group-wide layer included): `local_legacy` -> the legacy composition. This is a
+   transitional compatibility source, not a permanent layer: the binding editor still writes
+   plain rows, `cpo-p06` moves those edits into named presets, and the label retires with
+   them;
+7. otherwise `builtin` -> the shipped defaults only. Retained rows are recovery/migration
+   evidence, never an invisible permanent layer behind `builtin`. An explicitly assigned
+   empty preset is the user's "built-in defaults" choice: it wins as a preset and therefore
+   masks every lower compatibility layer.
+
+Keyboard and mouse have no per-instance identity and never own a bridge: they use the plain
+game -> group-default -> local_legacy/builtin path.
+
+Every controller route plans through one shared seam (`InputEngine::ensureMappingRoute`):
+the legacy pad path, GameInput and selective Raw-HID all register a route - and publish its
+winner - before the first press on it is dispatched, and an already tracked route costs one
+hash lookup, so the per-event path never queries assignments or preset content again.
+
+`InputEngine::refreshResolvedPreset()` applies a change in exactly this order - prepare,
+compare, snapshot, invalidate, publish, gate:
+
+- **prepare** resolves and composes the complete next table for every tracked route before
+  anything visible moves; a route that cannot produce a winner keeps its inherited table
+  instead of half-switching;
+- **compare**: a refresh that resolves to the same effective state *and* the same table
+  content is a true no-op - no invalidation, no gates, active gesture state untouched. The
+  identity is `(owned/installed, effective source, preset id, content fingerprint)`, so the
+  same preset id with rewritten rows (Settings editing, `cpo-p06`) is correctly a real
+  switch. A route this layer has never planned was served by the resolver's inherited view,
+  so its first plan is compared by table *content*: recording an owner for the table the
+  route already serves is bookkeeping, not a boundary, and must not disturb a buffered
+  provider candidate that has not been dispatched at all;
+- **snapshot** records which controls are physically down in the routes that are about to
+  change, plus any buffered provider-candidate press;
+- **invalidate** resets only the routes that actually changed: their recognizer states and
+  press contexts, their relation-cache entries, their `View/Back` legacy-fallback latch. The
+  generation of every other route keeps running, so controller A's switch cannot cancel
+  controller B's - or the keyboard's - in-flight hold, tap or chord. The mapping-derived
+  navigation repeat ends only when its own originating route changed. Whole-runtime events
+  (binding reload, shutdown, backend lifecycle resets) keep the global form;
+- **publish** installs/retires every changing route's table inside the same event-loop turn,
+  and a first-planned route's table is installed too, so `owned` in the recorded state is
+  always backed by an actually installed table;
+- **gate**: every control that was physically down at the boundary is inert on its own
+  route (`deviceGroup + profile + control`) until a real release arrives, so two pads
+  holding the same button never block one another. A partly held chord gates every down
+  constituent; a tap candidate whose button was already released needs only the generation
+  invalidation. A buffered provider-candidate press is cancelled by a switch of *its own*
+  route and gated only when its control is still down, so it can never replay into a new
+  table. The release that consumes a gate also clears the recognizer's physical bookkeeping
+  (`InputPatternRecognizer::notePhysicalRelease`), so a later switch cannot arm a phantom
+  gate for a button nobody is holding.
+
+`cpo-p05` ships this engine seam only (`setRunningGameKey()`, `refreshResolvedPreset()`,
+plus read-only resolution state); connecting the real game session is `cpo-p07`, editing
+preset content is `cpo-p06`, and the sanitized "active preset" diagnostics export is
+`cpo-x01`.
+
 ## 6. Migration (owned end-to-end by `cpo-p03`)
 
 - **Timing**: the migration has a deterministic offline part and a bounded runtime phase

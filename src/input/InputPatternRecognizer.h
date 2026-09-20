@@ -86,9 +86,33 @@ public:
     // firing an action into a world that has moved on.
     void invalidate();
 
+    // The cpo-p05 mapping switch replaces the table of ONE route. Only the
+    // states whose (deviceGroup, deviceProfile) matches that route are reset,
+    // and only those are marked stale, so an unaffected route (another pad,
+    // keyboard, mouse) keeps its timers, tap windows and snapshots running.
+    // The global generation deliberately does NOT move: it is the value every
+    // other state's queued callback compares itself against.
+    void invalidateRoute(const QString& deviceGroup, const QString& deviceProfile);
+
+    // Physical bookkeeping only, no gesture semantics: clears the "still down"
+    // bit for one control in one route without completing, firing or cancelling
+    // anything. The switch needs it when a gated release closes a release gate
+    // (the press it belonged to already ended with the old table, so there is no
+    // pattern left to complete) - without it the control would stay "down"
+    // forever and a LATER switch would arm a phantom gate for a button the user
+    // is not holding. A no-op when no state exists for that route + control.
+    void notePhysicalRelease(const QString& deviceGroup, const QString& deviceProfile,
+                             const QString& control);
+
     // Returns true when the edge was consumed by a pattern (pending or fired).
     bool press(const Context& context, const QString& control);
     bool release(const Context& context, const QString& control);
+
+    // Controls whose press is still physically down in one mapping chain
+    // (device group + profile), sorted. The cpo-p05 switch snapshots this
+    // BEFORE invalidating, so a control held across the boundary can be
+    // release-gated instead of acting under the table that replaced its own.
+    QStringList downControls(const QString& deviceGroup, const QString& deviceProfile) const;
 
 signals:
     // A pattern completed. `gesture` is exact: Tap carries the number of taps

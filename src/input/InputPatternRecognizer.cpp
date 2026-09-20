@@ -21,6 +21,11 @@ struct InputPatternRecognizer::ControlState
     QTimer* chordTimer = nullptr;
 
     bool down = false;
+    // Physical reality, kept apart from the timing state machine: a press edge
+    // sets this, a release edge clears it, and reset()/invalidate() never do.
+    // A press-only control is not `down` after it fired, but the button is
+    // still held - which is exactly what a cpo-p05 switch boundary has to know.
+    bool physicallyDown = false;
     int completedTaps = 0;
     int nextHoldIndex = 0;    // into facts.holdThresholdsMs
     bool holdFired = false;
@@ -97,6 +102,55 @@ void InputPatternRecognizer::invalidate()
         reset(state);
 }
 
+void InputPatternRecognizer::invalidateRoute(const QString& deviceGroup,
+                                             const QString& deviceProfile)
+{
+    for (ControlState* state : std::as_const(m_states)) {
+        if (state->context.deviceGroup != deviceGroup
+            || state->context.deviceProfile != deviceProfile)
+            continue;
+        // Mark this state's queued callbacks stale before resetting it. The
+        // stale token is 0, which no live generation ever holds - so a callback
+        // already dispatched for this state resolves to nothing, while every
+        // other route keeps comparing against the unchanged m_generation.
+        state->generation = 0;
+        reset(state);
+    }
+}
+
+void InputPatternRecognizer::notePhysicalRelease(const QString& deviceGroup,
+                                                 const QString& deviceProfile,
+                                                 const QString& control)
+{
+    const auto it = m_states.constFind(deviceGroup + QChar(0x1f) + deviceProfile
+                                       + QChar(0x1f) + control);
+    if (it == m_states.cend())
+        return;
+    // Only the physical truth changes: the pattern this press belonged to was
+    // already invalidated with its own table, so there is nothing to end. The
+    // timing state (down, timers, taps) is deliberately left exactly as the
+    // invalidation left it.
+    (*it)->physicallyDown = false;
+}
+
+QStringList InputPatternRecognizer::downControls(const QString& deviceGroup,
+                                                 const QString& deviceProfile) const
+{
+    QStringList controls;
+    for (ControlState* state : m_states) {
+        if (!state->physicallyDown)
+            continue;
+        if (state->context.deviceGroup != deviceGroup
+            || state->context.deviceProfile != deviceProfile)
+            continue;
+        controls.append(state->control);
+    }
+    // QHash iteration order is arbitrary; a deterministic list keeps the
+    // snapshot (and the diagnostics built from it) reproducible.
+    controls.sort();
+    return controls;
+}
+
 QString InputPatternRecognizer::stateKey(const Context& context, const QString& control)
 {
     return context.deviceGroup + QChar(0x1f) + context.deviceProfile + QChar(0x1f) + control;
@@ -107,32 +161,37 @@ InputPatternRecognizer::ControlState* InputPatternRecognizer::stateFor(const Con
 {
     const QString key = stateKey(context, control);
     ControlState*& state = m_states[key];
-    if (state)
-        return state;
-
-    state = new ControlState;
-    state->control = control;
-    state->holdTimer = new QTimer;
-    state->holdTimer->setSingleShot(true);
-    state->tapTimer = new QTimer;
-    state->tapTimer->setSingleShot(true);
-    state->chordTimer = new QTimer;
-    state->chordTimer->setSingleShot(true);
-    connect(state->holdTimer, &QTimer::timeout, this, [this, state] {
-        if (state->generation != m_generation)
-            return;
-        fireDueHolds(state);
-    });
-    connect(state->tapTimer, &QTimer::timeout, this, [this, state] {
-        if (state->generation != m_generation)
-            return;
-        completeTaps(state);
-    });
-    connect(state->chordTimer, &QTimer::timeout, this, [this, state] {
-        if (state->generation != m_generation)
-            return;
-        abandonChordCandidate(state);
-    });
+    if (!state) {
+        state = new ControlState;
+        state->control = control;
+        state->holdTimer = new QTimer;
+        state->holdTimer->setSingleShot(true);
+        state->tapTimer = new QTimer;
+        state->tapTimer->setSingleShot(true);
+        state->chordTimer = new QTimer;
+        state->chordTimer->setSingleShot(true);
+        connect(state->holdTimer, &QTimer::timeout, this, [this, state] {
+            if (state->generation != m_generation)
+                return;
+            fireDueHolds(state);
+        });
+        connect(state->tapTimer, &QTimer::timeout, this, [this, state] {
+            if (state->generation != m_generation)
+                return;
+            completeTaps(state);
+        });
+        connect(state->chordTimer, &QTimer::timeout, this, [this, state] {
+            if (state->generation != m_generation)
+                return;
+            abandonChordCandidate(state);
+        });
+    }
+    // stateFor() is only ever reached on a press edge, so this is where a
+    // control becomes physically down in this context; the matching release
+    // edge in release() is the only place it stops being down. reset() and
+    // invalidate() deliberately leave it alone: a switch boundary needs the
+    // physical truth, not the timing state machine's bookkeeping.
+    state->physicallyDown = true;
     return state;
 }
 
@@ -309,6 +368,11 @@ bool InputPatternRecognizer::release(const Context& context, const QString& cont
     if (it == m_states.cend())
         return false;
     ControlState* state = *it;
+
+    // The physical button is up again, whatever the timing state machine
+    // decides to do with this edge: a switch boundary may now clear this
+    // control's release gate.
+    state->physicallyDown = false;
 
     // The chord consumed this physical press. Its release means nothing.
     if (state->chordConsumed) {

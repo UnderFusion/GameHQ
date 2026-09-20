@@ -330,7 +330,7 @@ gamehq_add_test(tst_inputengineshutdown
     "${CMAKE_SOURCE_DIR}/src/input/Gamepad.h")
 foreach(unit IN ITEMS
     InputEngine MouseHookDevice BindingRuntime BindingEditorModel BindingResolver
-    MappingPresetMaterializer
+    MappingPresetMaterializer MappingAssignmentResolver
     BindingPattern BindingRelation ContextOverrideCatalog InputPatternRecognizer
     ActionCatalog ControlId ControllerIdentity GestureTiming HotkeyManager
     DualSenseDevice XInputDevice WinMMDevice RawInputApi HidCloakMonitor
@@ -1165,6 +1165,16 @@ target_compile_definitions(tst_controllerclip_e2e PRIVATE UNICODE _UNICODE)
 set_target_properties(tst_controllerclip_e2e PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests/controllerclip")
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/tests/controllerclip/portable.flag" CONTENT "")
+
+# cpo-p05: preset switching at safe input boundaries. Same synthetic backends and
+# the same real InputEngine/BindingRuntime the controller clip E2E drives.
+get_target_property(PRESET_SWITCH_SOURCES tst_inputengineshutdown SOURCES)
+list(REMOVE_ITEM PRESET_SWITCH_SOURCES tst_inputengineshutdown.cpp)
+gamehq_add_test(tst_presetswitch tst_presetswitch.cpp ${PRESET_SWITCH_SOURCES})
+get_target_property(PRESET_SWITCH_LIBS tst_inputengineshutdown LINK_LIBRARIES)
+target_link_libraries(tst_presetswitch PRIVATE ${PRESET_SWITCH_LIBS})
+target_include_directories(tst_presetswitch PRIVATE "${CMAKE_SOURCE_DIR}/third_party/gameinput/include")
+target_compile_definitions(tst_presetswitch PRIVATE UNICODE _UNICODE)
 
 # p3-4: real Media Foundation decode/export plus worker handoff and gallery identity.
 get_target_property(GAMEHQ_CAPTURE_TEST_SOURCES tst_captureacknowledgement SOURCES)
