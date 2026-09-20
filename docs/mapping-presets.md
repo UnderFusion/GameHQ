@@ -364,3 +364,55 @@ changes, or migration completes. The contract:
    `legacy_slot` assignment must be distinguishable rows with an explicit kind, because one
    follows a pad and the other follows a slot — conflating them silently re-creates the orphaning
    trap. The UI wording half of this stays with `cpo-p06` (finding 2).
+
+## 11. Storage (schema v8 — implemented by `cpo-p02`)
+
+The contract above is stored by schema v8 (`CaptureDatabase::applyV8()`). The migration is
+**additive only**: it creates storage and bumps `user_version` to 8 and converts nothing —
+`binding_overrides` and the legacy `bindings` seed data are untouched, and the conversion plus its
+bounded compatibility phase stay with `cpo-p03`.
+
+Four tables, no data duplication:
+
+- `mapping_presets` — opaque immutable `id`, `device_group` (`keyboard`/`controller`/`mouse`),
+  display `name`, `name_key` (trimmed, case-folded), `origin` (`user`/`migration`) and timestamps.
+  `UNIQUE(device_group, name_key)` carries the per-group naming rule of section 7; the unique index
+  `(id, device_group)` is the parent key the composite foreign keys below hang on, which is what
+  makes a cross-group assignment impossible in the database itself rather than by caller discipline.
+- `mapping_preset_rows` — the sparse row set: `action_id`, `slot` (1/2), `trigger_code` (NULL =
+  unbound), `activation`, `hold_ms`, `unbound`, `tap_count`, primary key
+  `(preset_id, action_id, slot)`, `ON DELETE CASCADE` from the preset.
+- `mapping_assignments` — `device_group`, explicit `target_kind` (`controller`, `legacy_slot`,
+  `game`, `group_default`), `target_key`, `preset_id`, an optional `game_row_id` cache, timestamps;
+  unique per `(device_group, target_kind, target_key)`.
+- `mapping_preset_sources` — historical opaque `controller-…` keys as *unverified migration
+  sources*: converted content plus bookkeeping, deliberately held apart from `mapping_assignments`
+  so a migrated key can never become an active target through migration alone.
+
+Invariants the storage layer enforces (locked by `tst_mappingpresetstorage`):
+
+- **Canonical validation.** Stored rows pass the same parse boundary as the runtime binding model:
+  bound rows through `BindingPattern::parse(deviceGroup, triggerCode, activation, tapCount,
+  holdMs)`, unbound rows through `GestureSpec::parse(...)`. Contradictory content such as a `press`
+  carrying `hold_ms = 750` is rejected on write, so a preset cannot hold a row the resolver would
+  silently skip.
+- **Whole-set replacement.** `replaceMappingPresetRows()` stores exactly the given set; duplicate
+  `(action_id, slot)` input is rejected instead of last-one-wins; a preset that does not exist is a
+  failure even when the replacement set is empty (the metadata touch must affect exactly one row).
+- **Referential safety on delete.** Assignments and source rows point at presets through
+  `ON DELETE RESTRICT`, so plain delete is refused while anything references the preset, and
+  `deleteMappingPresetAndReassign()` moves every assignment to the replacement preset inside the
+  same transaction.
+- **Runtime-only promotion.** `upsertMappingPresetSource()` and `setMappingPresetSourceStatus()`
+  refuse to write `promoted`, and a stored `promoted` row is terminal for both. Promotion is the
+  dedicated atomic path `promoteMappingPresetSource(deviceGroup, sourceKey, controllerKey)`: one
+  transaction writes the durable `controller` assignment *and* flips the source to `promoted` with
+  `promoted_at`; a failure on either half rolls both back. Storage performs only the
+  already-authorized transition — the identity/equality proof stays in `cpo-p03`.
+- **All-or-nothing writes.** Every write path (create, rename, replace rows, delete,
+  delete-and-reassign, assignment upsert, source upsert, promotion) runs in one transaction and
+  rolls back on a failed step *and* on a failed commit.
+
+`game_row_id` is a `game`-target-only cache and is enforced in SQL
+(`CHECK(target_kind = 'game' OR game_row_id IS NULL)`) as well as in the API, because game rows can
+be merged or deleted by `GameRowRepair` while the durable game key is the executable path.

@@ -5,6 +5,7 @@
 #include "storage/CaptureQueries.h"
 #include "storage/GameRowRepair.h"
 #include "config/Paths.h"
+#include "input/BindingPattern.h"
 
 #include <QDateTime>
 #include <QFileInfo>
@@ -13,7 +14,9 @@
 #include <QJsonDocument>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QSet>
 #include <QStringList>
+#include <QUuid>
 #include <QVariant>
 #include <QDebug>
 
@@ -70,6 +73,8 @@ bool CaptureDatabase::migrate()
     if (version < 6 && !applyV6())
         return false;
     if (version < 7 && !applyV7())
+        return false;
+    if (version < 8 && !applyV8())
         return false;
     if (!ensureGameMetadataColumns())
         return false;
@@ -1088,4 +1093,839 @@ bool CaptureDatabase::applyV7()
     }
     QSqlQuery(QStringLiteral("PRAGMA user_version = 7"), m_db);
     return m_db.commit();
+}
+
+// --- Mapping presets (schema v8, docs/mapping-presets.md) ---------------------
+//
+// Storage contract:
+// - A preset's identity is its opaque id; its device group is immutable and an
+//   assignment can never cross groups (the composite foreign key enforces it).
+// - A stored key never types itself. Every assignment carries its kind, so a
+//   durable `controller` target and a `legacy_slot` fingerprint stay different
+//   records even when their text looks identical.
+// - A game assignment matches on the executable key only; `game_row_id` is a UI
+//   join cache with no foreign key, because `GameRowRepair` may merge or delete
+//   game rows and a stale id must never attract an assignment.
+// - Historical `controller-…` profile keys live in mapping_preset_sources,
+//   which is deliberately not an assignment table: strong and weak ids have the
+//   same stored shape, so promotion to a durable controller assignment is a
+//   runtime decision (cpo-p03) written through promoteMappingPresetSource, which
+//   lands the assignment and the `promoted` flag in one transaction.
+// - This migration creates the empty, versioned store. Converting existing
+//   binding_overrides rows is cpo-p03's job, not this build's.
+
+namespace
+{
+QString mappingNow()
+{
+    return QDateTime::currentDateTimeUtc().toString(Qt::ISODate);
+}
+
+bool knownSourceStatus(const QString& status)
+{
+    return status == QLatin1String("unverified") || status == QLatin1String("promoted")
+        || status == QLatin1String("retired");
+}
+
+MappingPreset mappingPresetFromQuery(const QSqlQuery& q)
+{
+    MappingPreset preset;
+    preset.id          = q.value(0).toString();
+    preset.deviceGroup = q.value(1).toString();
+    preset.name        = q.value(2).toString();
+    preset.origin      = q.value(3).toString();
+    preset.createdAt   = q.value(4).toString();
+    preset.updatedAt   = q.value(5).toString();
+    return preset;
+}
+
+MappingPresetSource mappingSourceFromQuery(const QSqlQuery& q)
+{
+    MappingPresetSource source;
+    source.deviceGroup       = q.value(0).toString();
+    source.sourceKey         = q.value(1).toString();
+    source.convertedPresetId = q.value(2).toString();
+    source.status            = q.value(3).toString();
+    source.createdAt         = q.value(4).toString();
+    source.promotedAt        = q.value(5).toString();
+    source.note              = q.value(6).toString();
+    return source;
+}
+} // namespace
+
+bool CaptureDatabase::applyV8()
+{
+    // Additive only. `binding_overrides` and the legacy `bindings` seed data are
+    // untouched, and no user row is converted into a preset here — that
+    // conversion (and its bounded compatibility phase) belongs to cpo-p03.
+    const QStringList statements = {
+        QStringLiteral(R"(CREATE TABLE IF NOT EXISTS mapping_presets (
+            id            TEXT PRIMARY KEY,
+            device_group  TEXT NOT NULL CHECK(device_group IN ('keyboard','controller','mouse')),
+            name          TEXT NOT NULL,
+            name_key      TEXT NOT NULL,
+            origin        TEXT NOT NULL DEFAULT 'user' CHECK(origin IN ('user','migration')),
+            created_at    TEXT NOT NULL,
+            updated_at    TEXT NOT NULL,
+            UNIQUE(device_group, name_key)))"),
+        // Parent key for the composite foreign keys below. This index is what
+        // makes a cross-group assignment impossible in the database itself
+        // instead of relying on every caller to remember the rule.
+        QStringLiteral("CREATE UNIQUE INDEX IF NOT EXISTS idx_mapping_presets_identity "
+                       "ON mapping_presets(id, device_group)"),
+        QStringLiteral(R"(CREATE TABLE IF NOT EXISTS mapping_preset_rows (
+            preset_id     TEXT NOT NULL REFERENCES mapping_presets(id) ON DELETE CASCADE,
+            action_id     TEXT NOT NULL,
+            slot          INTEGER NOT NULL DEFAULT 1 CHECK(slot IN (1,2)),
+            trigger_code  TEXT,
+            activation    TEXT NOT NULL DEFAULT 'press' CHECK(activation IN ('press','tap','hold','double_tap')),
+            hold_ms       INTEGER,
+            unbound       INTEGER NOT NULL DEFAULT 0 CHECK(unbound IN (0,1)),
+            tap_count     INTEGER NOT NULL DEFAULT 1 CHECK(tap_count BETWEEN 1 AND 3),
+            PRIMARY KEY (preset_id, action_id, slot)))"),
+        QStringLiteral(R"(CREATE TABLE IF NOT EXISTS mapping_assignments (
+            id            INTEGER PRIMARY KEY AUTOINCREMENT,
+            device_group  TEXT NOT NULL CHECK(device_group IN ('keyboard','controller','mouse')),
+            target_kind   TEXT NOT NULL CHECK(target_kind IN ('controller','legacy_slot','game','group_default')),
+            target_key    TEXT NOT NULL DEFAULT '',
+            preset_id     TEXT NOT NULL,
+            game_row_id   INTEGER,
+            created_at    TEXT NOT NULL,
+            updated_at    TEXT NOT NULL,
+            -- group_default carries no key; every other kind must carry one.
+            CHECK((target_kind = 'group_default') = (target_key = '')),
+            -- The games row-id cache belongs to `game` targets only: raw SQL
+            -- must not be able to park one on a pad target.
+            CHECK(target_kind = 'game' OR game_row_id IS NULL),
+            -- A pad identity and a slot fingerprint only exist for controllers.
+            CHECK(target_kind NOT IN ('controller','legacy_slot') OR device_group = 'controller'),
+            UNIQUE(device_group, target_kind, target_key),
+            FOREIGN KEY(preset_id, device_group)
+                REFERENCES mapping_presets(id, device_group) ON DELETE RESTRICT))"),
+        QStringLiteral("CREATE INDEX IF NOT EXISTS idx_mapping_assignments_preset "
+                       "ON mapping_assignments(preset_id)"),
+        // Unverified migration sources: converted content plus bookkeeping, held
+        // apart from mapping_assignments so a historical opaque key can never
+        // become an active target just by being migrated.
+        QStringLiteral(R"(CREATE TABLE IF NOT EXISTS mapping_preset_sources (
+            device_group        TEXT NOT NULL CHECK(device_group IN ('keyboard','controller','mouse')),
+            source_key          TEXT NOT NULL,
+            converted_preset_id TEXT,
+            status              TEXT NOT NULL DEFAULT 'unverified' CHECK(status IN ('unverified','promoted','retired')),
+            created_at          TEXT NOT NULL,
+            promoted_at         TEXT,
+            note                TEXT NOT NULL DEFAULT '',
+            PRIMARY KEY (device_group, source_key),
+            FOREIGN KEY(converted_preset_id, device_group)
+                REFERENCES mapping_presets(id, device_group) ON DELETE RESTRICT))"),
+    };
+
+    if (!m_db.transaction()) {
+        qCritical() << "DB: cannot start migration transaction";
+        return false;
+    }
+    for (const QString& sql : statements) {
+        QSqlQuery q(m_db);
+        if (!q.exec(sql)) {
+            qCritical() << "DB: migration v8 failed:" << q.lastError().text();
+            m_db.rollback();
+            return false;
+        }
+    }
+    QSqlQuery(QStringLiteral("PRAGMA user_version = 8"), m_db);
+    return m_db.commit();
+}
+
+QString CaptureDatabase::mappingPresetNameKey(const QString& name)
+{
+    // Contract (docs/mapping-presets.md section 7): names are unique within a
+    // device group under trimmed, case-insensitive comparison, so the picker
+    // can never show two rows a user cannot tell apart.
+    return name.trimmed().toCaseFolded();
+}
+
+bool CaptureDatabase::isMappingDeviceGroup(const QString& deviceGroup)
+{
+    return deviceGroup == QLatin1String("keyboard") || deviceGroup == QLatin1String("controller")
+        || deviceGroup == QLatin1String("mouse");
+}
+
+bool CaptureDatabase::isMappingTargetKind(const QString& targetKind)
+{
+    return targetKind == QLatin1String("controller") || targetKind == QLatin1String("legacy_slot")
+        || targetKind == QLatin1String("game") || targetKind == QLatin1String("group_default");
+}
+
+bool CaptureDatabase::isValidMappingPresetRow(const QString& deviceGroup,
+                                              const MappingPresetRow& row)
+{
+    if (row.actionId.trimmed().isEmpty())
+        return false;
+    if (row.slot < 1 || row.slot > 2)
+        return false;
+    if (row.holdMs < 0)
+        return false;
+    // A row is either one explicit trigger or an explicit "no trigger" — a
+    // leftover code on an unbound row would make the intent ambiguous.
+    if (row.unbound) {
+        if (!row.triggerCode.isEmpty())
+            return false;
+        // No trigger to recognize, but the gesture still has to be one the
+        // runtime understands.
+        return GestureSpec::parse(row.activation, row.tapCount, row.holdMs).ok;
+    }
+    if (row.triggerCode.isEmpty())
+        return false;
+    // Bound rows go through the same parse boundary the runtime binding model
+    // uses, so storage can never accept a row BindingPattern would call
+    // malformed (press with a hold duration, a chord outside the controller
+    // group, a chord layered with a non-press gesture, ...).
+    return BindingPattern::parse(deviceGroup, row.triggerCode, row.activation,
+                                 row.tapCount, row.holdMs).ok;
+}
+
+bool CaptureDatabase::insertMappingPresetRows(const QString& presetId,
+                                              const QVector<MappingPresetRow>& rows)
+{
+    for (const MappingPresetRow& row : rows) {
+        QSqlQuery q(m_db);
+        q.prepare(QStringLiteral(
+            "INSERT INTO mapping_preset_rows "
+            "(preset_id, action_id, slot, trigger_code, activation, hold_ms, unbound, tap_count) "
+            "VALUES (:preset, :action, :slot, :trigger, :activation, :hold, :unbound, :taps)"));
+        q.bindValue(QStringLiteral(":preset"), presetId);
+        q.bindValue(QStringLiteral(":action"), row.actionId);
+        q.bindValue(QStringLiteral(":slot"), row.slot);
+        q.bindValue(QStringLiteral(":trigger"), row.triggerCode.isEmpty() ? QVariant()
+                                                                         : row.triggerCode);
+        q.bindValue(QStringLiteral(":activation"), row.activation);
+        q.bindValue(QStringLiteral(":hold"), row.holdMs > 0 ? QVariant(row.holdMs) : QVariant());
+        q.bindValue(QStringLiteral(":unbound"), row.unbound ? 1 : 0);
+        q.bindValue(QStringLiteral(":taps"), row.tapCount);
+        if (!q.exec()) {
+            qWarning() << "DB: mapping preset row insert failed:" << q.lastError().text();
+            return false;
+        }
+    }
+    return true;
+}
+
+QVector<MappingPreset> CaptureDatabase::listMappingPresets(const QString& deviceGroup) const
+{
+    QVector<MappingPreset> out;
+    QSqlQuery q(m_db);
+    if (deviceGroup.isEmpty()) {
+        q.prepare(QStringLiteral(
+            "SELECT id, device_group, name, origin, created_at, updated_at FROM mapping_presets "
+            "ORDER BY device_group, name_key"));
+    } else {
+        q.prepare(QStringLiteral(
+            "SELECT id, device_group, name, origin, created_at, updated_at FROM mapping_presets "
+            "WHERE device_group = :group ORDER BY name_key"));
+        q.bindValue(QStringLiteral(":group"), deviceGroup);
+    }
+    if (!q.exec()) {
+        qWarning() << "DB: listMappingPresets failed:" << q.lastError().text();
+        return out;
+    }
+    while (q.next())
+        out.append(mappingPresetFromQuery(q));
+    return out;
+}
+
+MappingPreset CaptureDatabase::mappingPreset(const QString& presetId) const
+{
+    QSqlQuery q(m_db);
+    q.prepare(QStringLiteral(
+        "SELECT id, device_group, name, origin, created_at, updated_at FROM mapping_presets "
+        "WHERE id = :id"));
+    q.bindValue(QStringLiteral(":id"), presetId);
+    if (!q.exec()) {
+        qWarning() << "DB: mappingPreset failed:" << q.lastError().text();
+        return MappingPreset{};
+    }
+    return q.next() ? mappingPresetFromQuery(q) : MappingPreset{};
+}
+
+QString CaptureDatabase::createMappingPreset(const QString& deviceGroup, const QString& name,
+                                             const QVector<MappingPresetRow>& rows,
+                                             const QString& origin)
+{
+    if (!isMappingDeviceGroup(deviceGroup))
+        return QString();
+    if (name.trimmed().isEmpty() || mappingPresetNameKey(name).isEmpty())
+        return QString();
+    if (origin != QLatin1String("user") && origin != QLatin1String("migration"))
+        return QString();
+    QSet<QString> seen;
+    for (const MappingPresetRow& row : rows) {
+        if (!isValidMappingPresetRow(deviceGroup, row))
+            return QString();
+        const QString key = row.actionId + QLatin1Char('\n') + QString::number(row.slot);
+        if (seen.contains(key))
+            return QString();
+        seen.insert(key);
+    }
+
+    if (!m_db.transaction()) {
+        qWarning() << "DB: could not open mapping preset transaction:" << m_db.lastError().text();
+        return QString();
+    }
+    const QString id = QStringLiteral("preset-")
+        + QUuid::createUuid().toString(QUuid::WithoutBraces);
+    const QString now = mappingNow();
+    QSqlQuery insert(m_db);
+    insert.prepare(QStringLiteral(
+        "INSERT INTO mapping_presets (id, device_group, name, name_key, origin, created_at, updated_at) "
+        "VALUES (:id, :group, :name, :key, :origin, :created, :updated)"));
+    insert.bindValue(QStringLiteral(":id"), id);
+    insert.bindValue(QStringLiteral(":group"), deviceGroup);
+    insert.bindValue(QStringLiteral(":name"), name.trimmed());
+    insert.bindValue(QStringLiteral(":key"), mappingPresetNameKey(name));
+    insert.bindValue(QStringLiteral(":origin"), origin);
+    insert.bindValue(QStringLiteral(":created"), now);
+    insert.bindValue(QStringLiteral(":updated"), now);
+    if (!insert.exec()) {
+        qWarning() << "DB: createMappingPreset failed:" << insert.lastError().text();
+        m_db.rollback();
+        return QString();
+    }
+    if (!insertMappingPresetRows(id, rows)) {
+        m_db.rollback();
+        return QString();
+    }
+    if (!m_db.commit()) {
+        qWarning() << "DB: mapping preset transaction commit failed:" << m_db.lastError().text();
+        m_db.rollback();
+        return QString();
+    }
+    return id;
+}
+
+bool CaptureDatabase::renameMappingPreset(const QString& presetId, const QString& name)
+{
+    if (presetId.isEmpty() || name.trimmed().isEmpty() || mappingPresetNameKey(name).isEmpty())
+        return false;
+
+    if (!m_db.transaction()) {
+        qWarning() << "DB: could not open mapping preset transaction:" << m_db.lastError().text();
+        return false;
+    }
+    QSqlQuery update(m_db);
+    update.prepare(QStringLiteral(
+        "UPDATE mapping_presets SET name = :name, name_key = :key, updated_at = :updated "
+        "WHERE id = :id"));
+    update.bindValue(QStringLiteral(":name"), name.trimmed());
+    update.bindValue(QStringLiteral(":key"), mappingPresetNameKey(name));
+    update.bindValue(QStringLiteral(":updated"), mappingNow());
+    update.bindValue(QStringLiteral(":id"), presetId);
+    const bool ok = update.exec() && update.numRowsAffected() == 1;
+    if (!ok) {
+        qWarning() << "DB: renameMappingPreset failed:" << update.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    if (!m_db.commit()) {
+        qWarning() << "DB: renameMappingPreset commit failed:" << m_db.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    return true;
+}
+
+bool CaptureDatabase::replaceMappingPresetRows(const QString& presetId,
+                                               const QVector<MappingPresetRow>& rows)
+{
+    if (presetId.isEmpty())
+        return false;
+    const MappingPreset preset = mappingPreset(presetId);
+    if (preset.id.isEmpty())
+        return false;
+    for (const MappingPresetRow& row : rows) {
+        if (!isValidMappingPresetRow(preset.deviceGroup, row))
+            return false;
+    }
+    // Replacing is a whole-set operation: the stored set always equals `rows`.
+    // Duplicates would violate the primary key halfway through, so they are a
+    // rejected input, not a silent last-one-wins.
+    QSet<QString> seen;
+    for (const MappingPresetRow& row : rows) {
+        const QString key = row.actionId + QLatin1Char('\n') + QString::number(row.slot);
+        if (seen.contains(key))
+            return false;
+        seen.insert(key);
+    }
+
+    if (!m_db.transaction()) {
+        qWarning() << "DB: could not open mapping preset transaction:" << m_db.lastError().text();
+        return false;
+    }
+    QSqlQuery remove(m_db);
+    remove.prepare(QStringLiteral("DELETE FROM mapping_preset_rows WHERE preset_id = :id"));
+    remove.bindValue(QStringLiteral(":id"), presetId);
+    QSqlQuery touch(m_db);
+    touch.prepare(QStringLiteral("UPDATE mapping_presets SET updated_at = :now WHERE id = :id"));
+    touch.bindValue(QStringLiteral(":now"), mappingNow());
+    touch.bindValue(QStringLiteral(":id"), presetId);
+    if (!remove.exec()) {
+        qWarning() << "DB: replaceMappingPresetRows failed:" << remove.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    // The metadata touch doubles as the existence check: exactly one row has to
+    // be updated, so a preset that vanished mid-call is a failure even when the
+    // replacement set is empty (zero rows deleted, zero inserted).
+    if (!touch.exec() || touch.numRowsAffected() != 1) {
+        qWarning() << "DB: replaceMappingPresetRows on a missing preset:" << presetId;
+        m_db.rollback();
+        return false;
+    }
+    if (!insertMappingPresetRows(presetId, rows)) {
+        m_db.rollback();
+        return false;
+    }
+    if (!m_db.commit()) {
+        qWarning() << "DB: mapping preset transaction commit failed:" << m_db.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    return true;
+}
+
+QVector<MappingPresetRow> CaptureDatabase::mappingPresetRows(const QString& presetId) const
+{
+    QVector<MappingPresetRow> out;
+    QSqlQuery q(m_db);
+    q.prepare(QStringLiteral(
+        "SELECT action_id, slot, trigger_code, activation, hold_ms, unbound, tap_count "
+        "FROM mapping_preset_rows WHERE preset_id = :id ORDER BY action_id, slot"));
+    q.bindValue(QStringLiteral(":id"), presetId);
+    if (!q.exec()) {
+        qWarning() << "DB: mappingPresetRows failed:" << q.lastError().text();
+        return out;
+    }
+    while (q.next()) {
+        MappingPresetRow row;
+        row.actionId     = q.value(0).toString();
+        row.slot         = q.value(1).toInt();
+        row.triggerCode  = q.value(2).toString();
+        row.activation   = q.value(3).toString();
+        row.holdMs       = q.value(4).isNull() ? 0 : q.value(4).toInt();
+        row.unbound      = q.value(5).toInt() != 0;
+        row.tapCount     = q.value(6).isNull() ? 1 : q.value(6).toInt();
+        out.append(row);
+    }
+    return out;
+}
+
+int CaptureDatabase::mappingPresetReferenceCount(const QString& presetId) const
+{
+    QSqlQuery q(m_db);
+    q.prepare(QStringLiteral(
+        "SELECT (SELECT COUNT(*) FROM mapping_assignments WHERE preset_id = :id) "
+        "+ (SELECT COUNT(*) FROM mapping_preset_sources WHERE converted_preset_id = :id)"));
+    q.bindValue(QStringLiteral(":id"), presetId);
+    if (!q.exec()) {
+        qWarning() << "DB: mappingPresetReferenceCount failed:" << q.lastError().text();
+        return 0;
+    }
+    return q.next() ? q.value(0).toInt() : 0;
+}
+
+bool CaptureDatabase::deleteMappingPreset(const QString& presetId)
+{
+    if (presetId.isEmpty() || mappingPreset(presetId).id.isEmpty())
+        return false;
+    // A referenced preset is refused, never half-deleted: every target either
+    // keeps pointing at an existing preset or the delete simply does not happen.
+    if (mappingPresetReferenceCount(presetId) > 0)
+        return false;
+
+    if (!m_db.transaction()) {
+        qWarning() << "DB: could not open mapping preset transaction:" << m_db.lastError().text();
+        return false;
+    }
+    QSqlQuery remove(m_db);
+    remove.prepare(QStringLiteral("DELETE FROM mapping_presets WHERE id = :id"));
+    remove.bindValue(QStringLiteral(":id"), presetId);
+    if (!remove.exec() || remove.numRowsAffected() != 1) {
+        qWarning() << "DB: deleteMappingPreset failed:" << remove.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    if (!m_db.commit()) {
+        qWarning() << "DB: deleteMappingPreset commit failed:" << m_db.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    return true;
+}
+
+bool CaptureDatabase::deleteMappingPresetAndReassign(const QString& presetId,
+                                                     const QString& keepPresetId)
+{
+    if (presetId.isEmpty() || keepPresetId.isEmpty() || presetId == keepPresetId)
+        return false;
+    const MappingPreset victim = mappingPreset(presetId);
+    const MappingPreset keep = mappingPreset(keepPresetId);
+    if (victim.id.isEmpty() || keep.id.isEmpty() || victim.deviceGroup != keep.deviceGroup)
+        return false;
+
+    if (!m_db.transaction()) {
+        qWarning() << "DB: could not open mapping preset transaction:" << m_db.lastError().text();
+        return false;
+    }
+    // A migration source is recovery evidence for one specific historical key;
+    // it cannot be "reassigned" to another content, so it refuses the delete.
+    QSqlQuery sources(m_db);
+    sources.prepare(QStringLiteral(
+        "SELECT COUNT(*) FROM mapping_preset_sources WHERE converted_preset_id = :id"));
+    sources.bindValue(QStringLiteral(":id"), presetId);
+    if (!sources.exec() || !sources.next() || sources.value(0).toInt() > 0) {
+        m_db.rollback();
+        return false;
+    }
+    QSqlQuery move(m_db);
+    move.prepare(QStringLiteral(
+        "UPDATE mapping_assignments SET preset_id = :keep, updated_at = :now "
+        "WHERE preset_id = :victim"));
+    move.bindValue(QStringLiteral(":keep"), keepPresetId);
+    move.bindValue(QStringLiteral(":now"), mappingNow());
+    move.bindValue(QStringLiteral(":victim"), presetId);
+    if (!move.exec()) {
+        qWarning() << "DB: reassigning mapping targets failed:" << move.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    QSqlQuery remove(m_db);
+    remove.prepare(QStringLiteral("DELETE FROM mapping_presets WHERE id = :id"));
+    remove.bindValue(QStringLiteral(":id"), presetId);
+    if (!remove.exec() || remove.numRowsAffected() != 1) {
+        qWarning() << "DB: deleteMappingPresetAndReassign failed:" << remove.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    if (!m_db.commit()) {
+        qWarning() << "DB: mapping preset transaction commit failed:" << m_db.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    return true;
+}
+
+QVector<MappingAssignment> CaptureDatabase::listMappingAssignments(
+    const QString& deviceGroup) const
+{
+    QVector<MappingAssignment> out;
+    QSqlQuery q(m_db);
+    if (deviceGroup.isEmpty()) {
+        q.prepare(QStringLiteral(
+            "SELECT id, device_group, preset_id, target_kind, target_key, game_row_id "
+            "FROM mapping_assignments ORDER BY device_group, target_kind, target_key"));
+    } else {
+        q.prepare(QStringLiteral(
+            "SELECT id, device_group, preset_id, target_kind, target_key, game_row_id "
+            "FROM mapping_assignments WHERE device_group = :group "
+            "ORDER BY target_kind, target_key"));
+        q.bindValue(QStringLiteral(":group"), deviceGroup);
+    }
+    if (!q.exec()) {
+        qWarning() << "DB: listMappingAssignments failed:" << q.lastError().text();
+        return out;
+    }
+    while (q.next()) {
+        MappingAssignment assignment;
+        assignment.id          = q.value(0).toInt();
+        assignment.deviceGroup = q.value(1).toString();
+        assignment.presetId    = q.value(2).toString();
+        assignment.targetKind  = q.value(3).toString();
+        assignment.targetKey   = q.value(4).toString();
+        assignment.gameRowId   = q.value(5).isNull() ? -1 : q.value(5).toInt();
+        out.append(assignment);
+    }
+    return out;
+}
+
+MappingAssignment CaptureDatabase::mappingAssignment(const QString& deviceGroup,
+                                                     const QString& targetKind,
+                                                     const QString& targetKey) const
+{
+    QSqlQuery q(m_db);
+    q.prepare(QStringLiteral(
+        "SELECT id, device_group, preset_id, target_kind, target_key, game_row_id "
+        "FROM mapping_assignments "
+        "WHERE device_group = :group AND target_kind = :kind AND target_key = IFNULL(:key, '')"));
+    q.bindValue(QStringLiteral(":group"), deviceGroup);
+    q.bindValue(QStringLiteral(":kind"), targetKind);
+    q.bindValue(QStringLiteral(":key"), targetKey);
+    if (!q.exec()) {
+        qWarning() << "DB: mappingAssignment failed:" << q.lastError().text();
+        return MappingAssignment{};
+    }
+    if (!q.next())
+        return MappingAssignment{};
+    MappingAssignment assignment;
+    assignment.id          = q.value(0).toInt();
+    assignment.deviceGroup = q.value(1).toString();
+    assignment.presetId    = q.value(2).toString();
+    assignment.targetKind  = q.value(3).toString();
+    assignment.targetKey   = q.value(4).toString();
+    assignment.gameRowId   = q.value(5).isNull() ? -1 : q.value(5).toInt();
+    return assignment;
+}
+
+bool CaptureDatabase::upsertMappingAssignmentRow(const QString& deviceGroup,
+                                                 const QString& targetKind,
+                                                 const QString& targetKey,
+                                                 const QString& presetId, int gameRowId)
+{
+    const QString now = mappingNow();
+    QSqlQuery q(m_db);
+    q.prepare(QStringLiteral(
+        "INSERT INTO mapping_assignments "
+        "(device_group, target_kind, target_key, preset_id, game_row_id, created_at, updated_at) "
+        "VALUES (:group, :kind, IFNULL(:key, ''), :preset, :game, :created, :updated) "
+        "ON CONFLICT(device_group, target_kind, target_key) DO UPDATE SET "
+        "preset_id = excluded.preset_id, game_row_id = excluded.game_row_id, "
+        "updated_at = excluded.updated_at"));
+    q.bindValue(QStringLiteral(":group"), deviceGroup);
+    q.bindValue(QStringLiteral(":kind"), targetKind);
+    q.bindValue(QStringLiteral(":key"), targetKey);
+    q.bindValue(QStringLiteral(":preset"), presetId);
+    // Only a `game` target can carry a row id, and it stays optional: the
+    // assignment matches on the executable key alone.
+    q.bindValue(QStringLiteral(":game"),
+                targetKind == QLatin1String("game") && gameRowId > 0 ? QVariant(gameRowId)
+                                                                     : QVariant());
+    q.bindValue(QStringLiteral(":created"), now);
+    q.bindValue(QStringLiteral(":updated"), now);
+    if (!q.exec()) {
+        qWarning() << "DB: mapping assignment write failed:" << q.lastError().text();
+        return false;
+    }
+    return true;
+}
+
+bool CaptureDatabase::setMappingAssignment(const QString& deviceGroup, const QString& targetKind,
+                                           const QString& targetKey, const QString& presetId,
+                                           int gameRowId)
+{
+    if (!isMappingDeviceGroup(deviceGroup) || !isMappingTargetKind(targetKind))
+        return false;
+    // The kind decides the key rules — the text never does. `controller-…`,
+    // `xinput.slotN` and a game executable are all opaque strings here.
+    if (targetKind == QLatin1String("group_default")) {
+        if (!targetKey.isEmpty())
+            return false;
+    } else if (targetKey.isEmpty()) {
+        return false;
+    }
+    if ((targetKind == QLatin1String("controller") || targetKind == QLatin1String("legacy_slot"))
+        && deviceGroup != QLatin1String("controller")) {
+        return false;
+    }
+    const MappingPreset preset = mappingPreset(presetId);
+    if (preset.id.isEmpty() || preset.deviceGroup != deviceGroup)
+        return false;
+
+    if (!m_db.transaction()) {
+        qWarning() << "DB: could not open mapping assignment transaction:"
+                   << m_db.lastError().text();
+        return false;
+    }
+    if (!upsertMappingAssignmentRow(deviceGroup, targetKind, targetKey, presetId, gameRowId)) {
+        qWarning() << "DB: setMappingAssignment failed for target" << targetKind << targetKey;
+        m_db.rollback();
+        return false;
+    }
+    if (!m_db.commit()) {
+        qWarning() << "DB: mapping assignment transaction commit failed:"
+                   << m_db.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    return true;
+}
+
+bool CaptureDatabase::clearMappingAssignment(const QString& deviceGroup, const QString& targetKind,
+                                             const QString& targetKey)
+{
+    QSqlQuery q(m_db);
+    q.prepare(QStringLiteral(
+        "DELETE FROM mapping_assignments "
+        "WHERE device_group = :group AND target_kind = :kind AND target_key = IFNULL(:key, '')"));
+    q.bindValue(QStringLiteral(":group"), deviceGroup);
+    q.bindValue(QStringLiteral(":kind"), targetKind);
+    q.bindValue(QStringLiteral(":key"), targetKey);
+    if (!q.exec()) {
+        qWarning() << "DB: clearMappingAssignment failed:" << q.lastError().text();
+        return false;
+    }
+    return true;
+}
+
+QVector<MappingPresetSource> CaptureDatabase::listMappingPresetSources(
+    const QString& deviceGroup) const
+{
+    QVector<MappingPresetSource> out;
+    QSqlQuery q(m_db);
+    if (deviceGroup.isEmpty()) {
+        q.prepare(QStringLiteral(
+            "SELECT device_group, source_key, converted_preset_id, status, created_at, "
+            "promoted_at, note FROM mapping_preset_sources ORDER BY device_group, source_key"));
+    } else {
+        q.prepare(QStringLiteral(
+            "SELECT device_group, source_key, converted_preset_id, status, created_at, "
+            "promoted_at, note FROM mapping_preset_sources WHERE device_group = :group "
+            "ORDER BY source_key"));
+        q.bindValue(QStringLiteral(":group"), deviceGroup);
+    }
+    if (!q.exec()) {
+        qWarning() << "DB: listMappingPresetSources failed:" << q.lastError().text();
+        return out;
+    }
+    while (q.next())
+        out.append(mappingSourceFromQuery(q));
+    return out;
+}
+
+MappingPresetSource CaptureDatabase::mappingPresetSource(const QString& deviceGroup,
+                                                         const QString& sourceKey) const
+{
+    QSqlQuery q(m_db);
+    q.prepare(QStringLiteral(
+        "SELECT device_group, source_key, converted_preset_id, status, created_at, promoted_at, "
+        "note FROM mapping_preset_sources WHERE device_group = :group AND source_key = :key"));
+    q.bindValue(QStringLiteral(":group"), deviceGroup);
+    q.bindValue(QStringLiteral(":key"), sourceKey);
+    if (!q.exec()) {
+        qWarning() << "DB: mappingPresetSource failed:" << q.lastError().text();
+        return MappingPresetSource{};
+    }
+    return q.next() ? mappingSourceFromQuery(q) : MappingPresetSource{};
+}
+
+bool CaptureDatabase::upsertMappingPresetSource(const MappingPresetSource& source)
+{
+    if (!isMappingDeviceGroup(source.deviceGroup) || source.sourceKey.isEmpty())
+        return false;
+    const QString status = source.status.isEmpty() ? QStringLiteral("unverified") : source.status;
+    if (!knownSourceStatus(status))
+        return false;
+    // `promoted` is the durable outcome of runtime proof, not bookkeeping: only
+    // promoteMappingPresetSource() may write it. A row that already is promoted
+    // is terminal here too — relinking or downgrading it would separate the
+    // evidence from the assignment it proved.
+    if (status == QLatin1String("promoted"))
+        return false;
+    if (mappingPresetSource(source.deviceGroup, source.sourceKey).status
+        == QLatin1String("promoted"))
+        return false;
+    if (!source.convertedPresetId.isEmpty()) {
+        const MappingPreset converted = mappingPreset(source.convertedPresetId);
+        if (converted.id.isEmpty() || converted.deviceGroup != source.deviceGroup)
+            return false;
+    }
+
+    QSqlQuery q(m_db);
+    q.prepare(QStringLiteral(
+        "INSERT INTO mapping_preset_sources "
+        "(device_group, source_key, converted_preset_id, status, created_at, promoted_at, note) "
+        "VALUES (:group, :key, :preset, :status, :created, NULL, IFNULL(:note, '')) "
+        "ON CONFLICT(device_group, source_key) DO UPDATE SET "
+        "converted_preset_id = excluded.converted_preset_id, status = excluded.status, "
+        "note = excluded.note "
+        "WHERE mapping_preset_sources.status <> 'promoted'"));
+    q.bindValue(QStringLiteral(":group"), source.deviceGroup);
+    q.bindValue(QStringLiteral(":key"), source.sourceKey);
+    q.bindValue(QStringLiteral(":preset"),
+                source.convertedPresetId.isEmpty() ? QVariant() : source.convertedPresetId);
+    q.bindValue(QStringLiteral(":status"), status);
+    q.bindValue(QStringLiteral(":created"),
+                source.createdAt.isEmpty() ? mappingNow() : source.createdAt);
+    q.bindValue(QStringLiteral(":note"), source.note);
+    if (!q.exec() || q.numRowsAffected() != 1) {
+        qWarning() << "DB: upsertMappingPresetSource failed:" << q.lastError().text();
+        return false;
+    }
+    // Deliberately no assignment write here: a migrated key is not an active
+    // target until runtime proves it (docs/mapping-presets.md section 6).
+    return true;
+}
+
+bool CaptureDatabase::setMappingPresetSourceStatus(const QString& deviceGroup,
+                                                   const QString& sourceKey,
+                                                   const QString& status)
+{
+    if (!isMappingDeviceGroup(deviceGroup) || sourceKey.isEmpty())
+        return false;
+    // `promoted` needs the atomic assignment + bookkeeping path, and a promoted
+    // row cannot be downgraded through this generic setter either.
+    if (!knownSourceStatus(status) || status == QLatin1String("promoted"))
+        return false;
+
+    QSqlQuery q(m_db);
+    q.prepare(QStringLiteral(
+        "UPDATE mapping_preset_sources SET status = :status, promoted_at = NULL "
+        "WHERE device_group = :group AND source_key = :key AND status <> 'promoted'"));
+    q.bindValue(QStringLiteral(":status"), status);
+    q.bindValue(QStringLiteral(":group"), deviceGroup);
+    q.bindValue(QStringLiteral(":key"), sourceKey);
+    if (!q.exec() || q.numRowsAffected() != 1) {
+        qWarning() << "DB: setMappingPresetSourceStatus failed:" << q.lastError().text();
+        return false;
+    }
+    return true;
+}
+
+bool CaptureDatabase::promoteMappingPresetSource(const QString& deviceGroup,
+                                                 const QString& sourceKey,
+                                                 const QString& controllerKey)
+{
+    // A durable pad identity only exists in the controller group, and the
+    // transition needs every part of it to make sense.
+    if (deviceGroup != QLatin1String("controller") || sourceKey.isEmpty()
+        || controllerKey.isEmpty())
+        return false;
+
+    const MappingPresetSource source = mappingPresetSource(deviceGroup, sourceKey);
+    if (source.sourceKey.isEmpty() || source.status != QLatin1String("unverified"))
+        return false;
+    const MappingPreset converted = mappingPreset(source.convertedPresetId);
+    if (converted.id.isEmpty() || converted.deviceGroup != deviceGroup)
+        return false;
+
+    if (!m_db.transaction()) {
+        qWarning() << "DB: could not open mapping promotion transaction:"
+                   << m_db.lastError().text();
+        return false;
+    }
+    // Half one: the durable assignment the runtime identity proof authorizes.
+    if (!upsertMappingAssignmentRow(deviceGroup, QStringLiteral("controller"), controllerKey,
+                                    source.convertedPresetId, -1)) {
+        qWarning() << "DB: promoteMappingPresetSource assignment failed:" << sourceKey;
+        m_db.rollback();
+        return false;
+    }
+    // Half two: the source itself, and only while it is still unverified, so a
+    // generic write can never be overwritten into a false promotion.
+    QSqlQuery mark(m_db);
+    mark.prepare(QStringLiteral(
+        "UPDATE mapping_preset_sources SET status = 'promoted', promoted_at = :now "
+        "WHERE device_group = :group AND source_key = :key AND status = 'unverified'"));
+    mark.bindValue(QStringLiteral(":now"), mappingNow());
+    mark.bindValue(QStringLiteral(":group"), deviceGroup);
+    mark.bindValue(QStringLiteral(":key"), sourceKey);
+    if (!mark.exec() || mark.numRowsAffected() != 1) {
+        qWarning() << "DB: promoteMappingPresetSource status failed:" << mark.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    if (!m_db.commit()) {
+        qWarning() << "DB: mapping promotion transaction commit failed:"
+                   << m_db.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    return true;
 }

@@ -169,7 +169,7 @@ private slots:
 
         CaptureDatabase database(m_path);
         QVERIFY(database.open());
-        QCOMPARE(database.schemaVersion(), 7);
+        QCOMPARE(database.schemaVersion(), CaptureDatabase::kCurrentSchemaVersion);
 
         const auto rows = database.listBindingOverrides();
         QCOMPARE(rows.size(), 7);
@@ -267,7 +267,7 @@ private slots:
 
         CaptureDatabase migrated(m_path);
         QVERIFY(migrated.open());
-        QCOMPARE(migrated.schemaVersion(), 7);
+        QCOMPARE(migrated.schemaVersion(), CaptureDatabase::kCurrentSchemaVersion);
         const auto rows = migrated.listBindingOverrides();
         QCOMPARE(find(rows, QStringLiteral("legacy.simple"), 1).triggerCode,
                  QStringLiteral("gamepad.view_back"));
@@ -316,7 +316,7 @@ private slots:
 
         CaptureDatabase migrated(m_path);
         QVERIFY(migrated.open());
-        QCOMPARE(migrated.schemaVersion(), 7);
+        QCOMPARE(migrated.schemaVersion(), CaptureDatabase::kCurrentSchemaVersion);
         const auto rows = migrated.listBindingOverrides();
 
         // Overlay toggles became taps, shared and device-specific alike.
@@ -423,7 +423,8 @@ private slots:
                                                          QStringLiteral("fixture"));
             raw.setDatabaseName(m_path);
             QVERIFY(raw.open());
-            QSqlQuery(QStringLiteral("PRAGMA user_version = 8"), raw);
+            QSqlQuery(QStringLiteral("PRAGMA user_version = %1")
+                          .arg(CaptureDatabase::kCurrentSchemaVersion + 1), raw);
             raw.close();
         }
         QSqlDatabase::removeDatabase(QStringLiteral("fixture"));

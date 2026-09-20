@@ -496,6 +496,9 @@ target_link_libraries(tst_gameiconcache PRIVATE Qt6::Gui Qt6::Widgets)
 
 gamehq_add_test(tst_captureiconrefresh
     tst_captureiconrefresh.cpp
+    # CaptureDatabase validates preset rows through the shared binding grammar.
+    "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
@@ -509,6 +512,9 @@ target_link_libraries(tst_captureiconrefresh PRIVATE Qt6::Sql Qt6::Gui Qt6::Widg
 # Capture deletion: file/DB failure paths with an injected filesystem seam.
 gamehq_add_test(tst_capturelibrarydeletion
     tst_capturelibrarydeletion.cpp
+    # CaptureDatabase validates preset rows through the shared binding grammar.
+    "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
     "${CMAKE_SOURCE_DIR}/src/ui/CaptureLibraryService.cpp"
     "${CMAKE_SOURCE_DIR}/src/ui/GalleryModel.cpp"
     "${CMAKE_SOURCE_DIR}/src/ui/ShellActions.cpp"
@@ -530,6 +536,9 @@ target_link_libraries(tst_capturelibrarydeletion PRIVATE
 # Capture commit: what the library actually did with a finished capture.
 gamehq_add_test(tst_capturecommitoutcome
     tst_capturecommitoutcome.cpp
+    # CaptureDatabase validates preset rows through the shared binding grammar.
+    "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
     "${CMAKE_SOURCE_DIR}/src/ui/CaptureLibraryService.cpp"
     "${CMAKE_SOURCE_DIR}/src/ui/GalleryModel.cpp"
     "${CMAKE_SOURCE_DIR}/src/ui/ShellActions.cpp"
@@ -548,6 +557,9 @@ target_link_libraries(tst_capturecommitoutcome PRIVATE
 
 gamehq_add_test(tst_capturedatabaserepair
     tst_capturedatabaserepair.cpp
+    # CaptureDatabase validates preset rows through the shared binding grammar.
+    "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
@@ -639,6 +651,29 @@ gamehq_add_test(tst_bindingmigration
     "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
     "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
 target_link_libraries(tst_bindingmigration PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
+
+# Mapping-preset storage (schema v8): transactional CRUD, typed targets and the
+# rollback guarantees a later migration has to trust (docs/mapping-presets.md).
+gamehq_add_test(tst_mappingpresetstorage
+    tst_mappingpresetstorage.cpp
+    "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingResolver.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DefaultBindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/OverlayInputPolicy.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ContextOverrideCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ExtraButtonCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
+    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+target_link_libraries(tst_mappingpresetstorage PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
 # Stand-in for app\GameHQ.exe: it reports the arguments Windows actually handed
 # it, so the launcher's pass-through can be checked against a real process.
