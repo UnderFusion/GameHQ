@@ -176,6 +176,8 @@ See [product-spec.md §6](product-spec.md#6-controller-mapping-default). PS butt
 
 Built-in defaults are merged with sparse rows from `binding_overrides`. `BindingResolver` applies group-wide or device-fingerprint overrides, and `BindingRuntime` resolves press, tap (by count) and hold gestures with playback → overlay/desktop → global context precedence. Controller codes are position-based, so the same assignment follows the physical button position across PlayStation, Xbox, Nintendo, and generic pads. The legacy `bindings` table is retained only for database compatibility.
 
+Named mapping presets (in progress) will let a user save, select and assign named mapping sets. The semantics contract — scope, identity separation, precedence, switching, migration and exclusions — lives in [mapping-presets.md](mapping-presets.md); until that layer lands, the merge described above remains the active model.
+
 ## Overlay routing
 
 `InputEngine` owns the routing gates. Overlay open ⇒ events go to QML navigation and are *not* forwarded anywhere else. Overlay closed ⇒ global triggers (Share tap/hold, PS/toggle) remain available, while desktop-gallery navigation is allowed only when the main GameHQ window is focused **and** the real Win32 foreground window belongs to the GameHQ process. This second foreground-process check is required because RawInput uses `RIDEV_INPUTSINK`, so pad reports still arrive while a game has focus. GameHQ never blocks the pad for the game itself — isolation relies on the game losing focus (see [overlay.md](overlay.md)).
