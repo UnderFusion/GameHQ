@@ -1097,3 +1097,79 @@ gamehq_add_test(tst_notificationcenter tst_notificationcenter.cpp
 target_link_libraries(tst_notificationcenter PRIVATE Qt6::Quick user32)
 target_compile_definitions(tst_notificationcenter PRIVATE
     GAMEHQ_APP_SOURCE="${CMAKE_SOURCE_DIR}/src/app/App.cpp")
+
+# cpo-o05: native overlay acceptance. The overlay window, manager and presenter
+# are the shipped sources (OverlayManager, OverlayPresenter, OverlayLifetimePolicy,
+# ForegroundApi) and the QML is embedded from src/ui/qml unchanged; the other
+# process in the test is a borderless Win32 fixture window driven through a
+# registered message (tests/overlay_target_fixture.cpp).
+add_executable(overlay_target_fixture overlay_target_fixture.cpp)
+target_link_options(overlay_target_fixture PRIVATE -static -municode)
+target_link_libraries(overlay_target_fixture PRIVATE user32)
+set_target_properties(overlay_target_fixture PROPERTIES WIN32_EXECUTABLE TRUE)
+
+gamehq_add_test(tst_overlaynative
+    tst_overlaynative.cpp
+    "${CMAKE_SOURCE_DIR}/src/overlay/ForegroundApi.cpp"
+    "${CMAKE_SOURCE_DIR}/src/overlay/OverlayLifetimePolicy.cpp"
+    "${CMAKE_SOURCE_DIR}/src/overlay/OverlayManager.cpp"
+    "${CMAKE_SOURCE_DIR}/src/overlay/OverlayPresenter.cpp")
+target_link_libraries(tst_overlaynative PRIVATE Qt6::Gui Qt6::Quick Qt6::Qml Qt6::Multimedia user32)
+target_compile_definitions(tst_overlaynative PRIVATE
+    GAMEHQ_TARGET_FIXTURE="$<TARGET_FILE:overlay_target_fixture>")
+add_dependencies(tst_overlaynative overlay_target_fixture)
+# Ten native window scenarios, each of which builds a QML engine, spawns or
+# drives a second process and waits on real foreground transitions.
+set_tests_properties(tst_overlaynative PROPERTIES TIMEOUT 600)
+
+# The harness must drive the shipped overlay, not a copy of it: the real QML
+# files are embedded under the same module URI the app uses ("GameHQ") through
+# an explicit resource tree, with the qmldir listing the module's singletons.
+file(GENERATE
+    OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/overlay_qml_module/qmldir"
+    CONTENT "module GameHQ\nsingleton Theme 1.0 Theme.qml\nsingleton Brand 1.0 Brand.qml\nOverlayWindow 1.0 OverlayWindow.qml\n")
+qt_add_resources(tst_overlaynative "overlay_qml_module"
+    PREFIX "/qt/qml/GameHQ"
+    BASE "${CMAKE_CURRENT_BINARY_DIR}/overlay_qml_module"
+    FILES "${CMAKE_CURRENT_BINARY_DIR}/overlay_qml_module/qmldir")
+qt_add_resources(tst_overlaynative "overlay_qml"
+    PREFIX "/qt/qml/GameHQ"
+    BASE "${CMAKE_SOURCE_DIR}/src/ui/qml"
+    FILES
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/OverlayWindow.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/Theme.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/Brand.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/ScaledSurface.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/SidebarItem.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/OverlaySidebar.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/CaptureTile.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/VideoBadge.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/TileIconButton.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/OverlayCaptureStrip.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/AppScrollBar.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/SettingsPageHeader.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/SettingsPage.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/AccentButton.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/Lightbox.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/MediaStage.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/PlayerControls.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/OverlayPreview.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/ConfirmDialog.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/OverlayFooter.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/OverlayActionMenu.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/helpers/SidebarCategories.js"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/helpers/PadNav.js"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/Skin.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/DarkSkin.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/LightSkin.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/HighContrastSkin.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/MidnightSkin.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/EmeraldSkin.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/HarborSkin.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/CarbonSkin.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/CobaltSkin.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/SynthwaveSkin.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/NordSkin.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/DraculaSkin.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/GruvboxSkin.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/ObsidianSkin.qml")

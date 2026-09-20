@@ -48,3 +48,35 @@ This local Khazan compatibility change still requires verification in a rebuilt 
 ## Known risks
 
 Focus-restoration flakiness · Steam Input remapping the pad while overlay focused · games reading input via Raw Input regardless of focus (log + document per game) · multi-monitor placement (show on the game's monitor).
+
+## Native acceptance (cpo-o05)
+
+`tests/tst_overlaynative.cpp` drives the shipped overlay — `OverlayWindow.qml`, the
+manager and the presenter, loaded through a test-local `GameHQ` QML module that
+embeds the real files — against `tests/overlay_target_fixture.cpp`: a borderless
+window in a separate process, driven through a registered window message. The
+assertions are real Win32 facts (`GetForegroundWindow`, `GWL_EXSTYLE`,
+`IsWindow`/`IsIconic`, posted input), not fakes:
+
+- showing the overlay never moves the foreground away from the target — across
+  repeated open/close cycles, the action menu, the delete confirmation, and a
+  native-handle rebuild (`destroy()` + `show()`, the Qt path a flag or screen
+  change uses);
+- the overlay closes when the foreground genuinely leaves the game (another
+  application activated, the target minimized, the target window destroyed) and
+  stays open when the game replaces its own window in the same process;
+- a destroyed game handle is never measured or followed again, and
+  `WS_EX_NOACTIVATE` is restored on the rebuilt handle by the production show
+  path;
+- the target keeps processing its window messages while the overlay is open,
+  and the overlay's input route (keyed on overlay visibility, not OS focus)
+  still closes it — driven through the same signals the device layer emits.
+
+It runs through `ctest -R tst_overlaynative --output-on-failure` and needs an
+interactive session that can hold a foreground window; it briefly shows the real
+full-screen overlay for each scenario. The cross-screen scenario needs two
+monitors and skips itself with that reason on a single-screen machine (the
+rebind-and-reposition path it would exercise is decided by
+`overlay/OverlayLifetimePolicy` and covered by `tst_overlaylifetime`). Physical
+gamepad delivery is not part of this harness: it needs a real device and stays
+with controller acceptance.
