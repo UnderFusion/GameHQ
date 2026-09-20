@@ -175,6 +175,16 @@ gamehq_add_test(tst_physicalcontrollerregistry
     tst_physicalcontrollerregistry.cpp
     "${CMAKE_SOURCE_DIR}/src/input/PhysicalControllerRegistry.cpp")
 
+# cpo-c03b investigation slice: the PnP container seam is the only new
+# production unit. It has no callers yet by design (no correlation wiring until
+# container equality with the GameInput side is proven), so it is compiled and
+# tested on its own; the live half of the evidence comes from
+# tools/spikes/pnp_container_probe.cpp on real hardware.
+gamehq_add_test(tst_pnpdeviceapi
+    tst_pnpdeviceapi.cpp
+    "${CMAKE_SOURCE_DIR}/src/input/PnpDeviceApi.cpp")
+target_link_libraries(tst_pnpdeviceapi PRIVATE cfgmgr32)
+
 gamehq_add_test(tst_capabilityeventrouter
     tst_capabilityeventrouter.cpp
     "${CMAKE_SOURCE_DIR}/src/input/CapabilityEventRouter.cpp"

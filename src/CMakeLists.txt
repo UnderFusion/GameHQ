@@ -66,6 +66,7 @@ qt_add_executable(GameHQ
     input/InputDiagnostics.cpp input/InputDiagnostics.h
     input/InputRateMonitor.cpp input/InputRateMonitor.h
     input/RawInputApi.cpp input/RawInputApi.h
+    input/PnpDeviceApi.cpp input/PnpDeviceApi.h
     input/DualSenseDevice.cpp input/DualSenseDevice.h
     input/HidCloakMonitor.cpp input/HidCloakMonitor.h
     input/XInputDevice.cpp input/XInputDevice.h
