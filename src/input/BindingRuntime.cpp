@@ -52,6 +52,16 @@ void BindingRuntime::reload()
     publishBoundPatterns();
 }
 
+BindingResolver& BindingRuntime::resolver()
+{
+    return m_resolver;
+}
+
+const BindingResolver& BindingRuntime::resolver() const
+{
+    return m_resolver;
+}
+
 const QVector<BindingRuntime::Relation>& BindingRuntime::relations(
     const QString& deviceGroup, const QString& deviceProfile) const
 {

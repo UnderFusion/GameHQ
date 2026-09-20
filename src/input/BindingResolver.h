@@ -2,12 +2,11 @@
 
 #include "input/ActionCatalog.h"
 #include "input/BindingPattern.h"
+#include "storage/CaptureDatabase.h"
 
 #include <QHash>
 #include <QString>
 #include <QVector>
-
-class CaptureDatabase;
 
 // Merges code-owned defaults with the sparse user overrides stored in SQLite.
 // Runtime input and the binding editor both consume this same effective view.
@@ -85,6 +84,76 @@ public:
     bool setProfileAlias(const QString& profile, const QString& legacyProfile);
     bool setProfileAliases(const QString& profile, const QStringList& legacyProfiles);
 
+    // ---------------------------------------------------------------- cpo-p03
+    // Migration bridge (docs/mapping-presets.md section 6). A chain may resolve
+    // from its materialized preset only while that preset is proven equal to
+    // the current ordered alias chain; every other chain keeps the legacy
+    // merge above, byte-for-byte. Nothing here interprets assignment rows as a
+    // winner rule - that stays cpo-p04.
+
+    // The one canonical row validator: the same parse boundary reload() has
+    // always applied, shared with the offline migration so v9 can never skip a
+    // row differently than the runtime does.
+    static bool validateOverrideRow(const BindingOverrideRow& row, QString* error);
+
+    // Layer order for a chain: group-wide, then aliases in registration order,
+    // then the exact profile - later wins. `profile` empty means the group-wide
+    // chain itself (keyboard/mouse have no distinct identity layer).
+    static QStringList chainLayers(const QString& profile, const QStringList& aliases);
+
+    // The legacy merged table (defaults + layers, bindable rows only, unbound
+    // rows suppress their default, only bound rows survive). effectiveBindings()
+    // is this function; it is public so the migration can prove equality against
+    // the exact code path input already exercises.
+    static QVector<Binding> mergedTable(const QVector<Binding>& defaults,
+                                        const QVector<Binding>& overrides,
+                                        const QString& deviceGroup,
+                                        const QStringList& layers);
+
+    // The fold persisted as preset content: the last winning row per
+    // (action, slot) across the chain's layers, unbound sentinels preserved so
+    // the preset suppresses the same defaults the legacy table suppressed.
+    // Rows that cannot be stored as a valid preset row are skipped (they stay
+    // in binding_overrides and keep legacy resolution). `contributingLayers`,
+    // when given, reports which layers supplied at least one storable row -
+    // winners and shadowed rows alike, because both are part of the chain the
+    // proof covers.
+    static QVector<MappingPresetRow> foldChainRows(const QVector<Binding>& overrides,
+                                                   const QString& deviceGroup,
+                                                   const QString& profile,
+                                                   const QStringList& aliases,
+                                                   QStringList* contributingLayers = nullptr);
+
+    // The table a stored preset's rows produce over the defaults - the "new"
+    // side of the equivalence proof.
+    static QVector<Binding> chainTableFromRows(const QVector<Binding>& defaults,
+                                               const QString& deviceGroup,
+                                               const QString& profile,
+                                               const QVector<MappingPresetRow>& rows);
+
+    // Content equality for the proof. Keyed by (action, slot): trigger, gesture
+    // and unbound-state must match exactly; the profile label is storage detail
+    // (legacy rows carry their original layer, preset rows the chain key).
+    static bool chainTablesEqual(const QVector<Binding>& a, const QVector<Binding>& b);
+
+    // Only the materializer may call this, and only after the equality proof
+    // against the chain whose fingerprint it passes. The aliases are stored so
+    // setProfileAliases() drops the view the moment the chain changes.
+    bool activateMaterializedChain(const QString& deviceGroup, const QString& profile,
+                                   const QString& presetId,
+                                   const QVector<MappingPresetRow>& rows,
+                                   const QStringList& aliases);
+    void deactivateMaterializedChain(const QString& deviceGroup, const QString& profile);
+    bool isMaterialized(const QString& deviceGroup, const QString& profile) const;
+    QString materializedPreset(const QString& deviceGroup, const QString& profile) const;
+
+    // Bridge inputs for the materializer; both are cheap copies of small sets.
+    QStringList aliasesFor(const QString& profile) const { return m_profileAliases.value(profile); }
+    QVector<Binding> validatedOverrides() const { return m_overrides; }
+    // Bumped whenever the resolved facts change (reload, alias edit, chain
+    // activation). Lets the materializer memoize without missing a change.
+    quint64 revision() const { return m_revision; }
+
     QVector<Binding> effectiveBindings(const QString& deviceGroup,
                                        const QString& deviceProfile = {}) const;
     // Values inherited when the selected profile's own rows are absent.
@@ -102,8 +171,24 @@ public:
     static QVector<Binding> defaultBindings();
 
 private:
+    // A chain whose preset content is proven equal to its legacy resolution.
+    // The default resolution uses `table`; anything else goes through the
+    // legacy merge. `aliases` is the chain fingerprint: when
+    // setProfileAliases() sees a different ordered list (or reload() drops the
+    // whole map because stored rows changed), the view is gone and the chain
+    // resolves legacy until the materializer proves it again.
+    struct MaterializedView {
+        QString presetId;
+        QStringList aliases;
+        QVector<Binding> table;
+    };
+    static QString materializedKey(const QString& deviceGroup, const QString& profile);
+    void rebuildGroupChains();
+
     CaptureDatabase* m_database = nullptr;
     QVector<Binding> m_overrides;
     QHash<QString, QStringList> m_profileAliases;
+    QHash<QString, MaterializedView> m_materialized;
+    quint64 m_revision = 1;
     int m_defaultHoldMs = 2000;
 };

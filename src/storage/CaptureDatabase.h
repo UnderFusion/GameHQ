@@ -136,7 +136,7 @@ public:
 
     // Highest schema this build understands. A database stamped higher was
     // written by a newer GameHQ and must never be modified by this one.
-    static constexpr int kCurrentSchemaVersion = 8;
+    static constexpr int kCurrentSchemaVersion = 9;
 
     bool open();      // opens + runs pending migrations
     int schemaVersion() const;
@@ -191,6 +191,21 @@ public:
     // calls never resolve a preset for a device or game — the input layer owns
     // that; storage must not know which target kind "wins".
     static QString mappingPresetNameKey(const QString& name);
+    // The one canonical validator for a legacy `binding_overrides` row: the
+    // same parse boundary BindingResolver::reload() has always applied, so the
+    // v9 migration and the runtime can never skip rows differently.
+    static bool isValidBindingOverrideRow(const BindingOverrideRow& row,
+                                          QString* error = nullptr);
+    // Rows are validated with the runtime binding grammar (BindingPattern /
+    // GestureSpec), never with a storage-local approximation, so a stored row
+    // can never be one the binding layer would call malformed. Shared with the
+    // migration bridge's composition helpers.
+    static bool isValidMappingPresetRow(const QString& deviceGroup, const MappingPresetRow& row);
+    // Deterministic, collision-safe migration name: `base`, then `base (2)`,
+    // `base (3)`, ... A pre-existing user preset is never renamed or reused -
+    // shared by the v9 migration and the runtime materializer so generated
+    // names cannot drift apart.
+    QString uniqueMigrationPresetName(const QString& deviceGroup, const QString& base) const;
     QVector<MappingPreset> listMappingPresets(const QString& deviceGroup = QString()) const;
     MappingPreset mappingPreset(const QString& presetId) const;
     // Creates metadata + initial rows in one transaction. Returns the new opaque
@@ -199,6 +214,14 @@ public:
     QString createMappingPreset(const QString& deviceGroup, const QString& name,
                                 const QVector<MappingPresetRow>& rows = {},
                                 const QString& origin = QStringLiteral("user"));
+    // Creates an inactive migration preset, its rows and its unverified source
+    // link in ONE transaction (cpo-p03 review, correction B): a write failure
+    // or a crash can never leave an orphan preset that the next retry would
+    // duplicate. Proof and promotion are deliberately not part of this call.
+    // Returns the new preset id, or empty with nothing written.
+    QString createUnverifiedMigrationSource(const QString& deviceGroup, const QString& name,
+                                            const QVector<MappingPresetRow>& rows,
+                                            const QString& sourceKey);
     bool renameMappingPreset(const QString& presetId, const QString& name);
     // Replaces the preset's whole sparse row set in one transaction.
     bool replaceMappingPresetRows(const QString& presetId, const QVector<MappingPresetRow>& rows);
@@ -259,6 +282,16 @@ private:
     bool applyV6();
     bool applyV7();
     bool applyV8();
+    // Schema v8 -> v9: convert legacy binding_overrides rows into migration
+    // presets/sources (docs/mapping-presets.md section 6). Data-only: no table
+    // shape changes, one transaction, `user_version` as the completion marker.
+    bool applyV9();
+    // Checked read of the legacy rows for v9: a failing SELECT (missing or
+    // corrupt binding_overrides) aborts the migration instead of looking like
+    // an empty legacy profile (cpo-p03 review, correction C). Backs the public
+    // listBindingOverrides() too, so the SELECT and its parsing stay in one
+    // place.
+    bool loadLegacyOverridesChecked(QVector<BindingOverrideRow>* sink, QString* error) const;
     bool ensureGameMetadataColumns();
     bool repairsV1Done() const;
     bool markRepairsV1Done();
@@ -271,11 +304,21 @@ private:
     // rolls back metadata, content and references together.
     static bool isMappingDeviceGroup(const QString& deviceGroup);
     static bool isMappingTargetKind(const QString& targetKind);
-    // Rows are validated with the runtime binding grammar (BindingPattern /
-    // GestureSpec), never with a storage-local approximation, so a stored row
-    // can never be one the binding layer would call malformed.
-    static bool isValidMappingPresetRow(const QString& deviceGroup, const MappingPresetRow& row);
     bool insertMappingPresetRows(const QString& presetId, const QVector<MappingPresetRow>& rows);
+    // One canonical content check for createMappingPreset() and
+    // createUnverifiedMigrationSource(): every row storable, no duplicate
+    // (action, slot).
+    static bool isValidPresetContent(const QString& deviceGroup,
+                                     const QVector<MappingPresetRow>& rows);
+    // Transaction-aware metadata insert shared by createMappingPreset() and the
+    // v9 migration, so preset-row writes and name uniqueness have one path.
+    // Returns the new opaque id, or empty (nothing written beyond the caller's
+    // transaction, which the caller rolls back).
+    QString insertMappingPresetMetadata(const QString& deviceGroup, const QString& name,
+                                        const QString& origin);
+    // `xinput.slotN` / `winmm.slotN`: slot fingerprints from before stable
+    // identity existed. They stay explicitly slot-scoped (section 6).
+    static bool isLegacySlotProfileKey(const QString& key);
     // One typed assignment write; the caller owns the transaction.
     bool upsertMappingAssignmentRow(const QString& deviceGroup, const QString& targetKind,
                                     const QString& targetKey, const QString& presetId,

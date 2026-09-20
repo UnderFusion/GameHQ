@@ -13,6 +13,7 @@
 #include "input/HotkeyManager.h"
 #include "input/EventLoopStallMonitor.h"
 #include "input/InputDiagnostics.h"
+#include "input/MappingPresetMaterializer.h"
 #include "input/MouseHookDevice.h"
 #include "input/MouseMonitorPolicy.h"
 #include "input/OverlayInputPolicy.h"
@@ -58,6 +59,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
     , m_lastInput(QStringLiteral("Connect a controller and press a button..."))
     , m_controllerStatus(QStringLiteral("No controller detected"))
 {
+    m_presetMaterializer = std::make_unique<MappingPresetMaterializer>(db, &m_runtime->resolver());
     // OS half of the binding transaction. The editor calls this *before* it
     // writes anything, so a chord Windows refuses can never be persisted and
     // shown as a working shortcut.
@@ -627,6 +629,14 @@ void InputEngine::configureLogicalProfile(const QString& logicalId,
             aliases.append(attachment.providerDeviceId);
     }
     m_runtime->setProfileAliases(logicalId, aliases);
+    // cpo-p03 migration bridge: the ordered chain is installed now; a durable
+    // identity may materialize and prove it, a weak one keeps legacy resolution
+    // and leaves no persistent state behind. The call is a memoized no-op on
+    // the press path once the chain is settled.
+    if (m_presetMaterializer) {
+        const bool durable = logical->confidence == ModernInput::IdentityConfidence::Strong;
+        (void)m_presetMaterializer->considerControllerChain(logicalId, durable);
+    }
 }
 
 bool InputEngine::routeLegacySystemEdge(Gamepad* source,

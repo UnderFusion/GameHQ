@@ -20,6 +20,7 @@ class DualSenseDevice;
 class XInputDevice;
 class WinMMDevice;
 class BindingRuntime;
+class MappingPresetMaterializer;
 class BindingEditorModel;
 class HotkeyManager;
 class MouseHookDevice;
@@ -289,6 +290,9 @@ private:
     CaptureDatabase* m_db;
     HotkeyManager* m_hotkeys;
     std::unique_ptr<BindingRuntime> m_runtime;
+    // cpo-p03: proves and materializes a controller's chain from the migration
+    // presets once the live identity is durable; weak pads never reach storage.
+    std::unique_ptr<MappingPresetMaterializer> m_presetMaterializer;
     std::unique_ptr<BindingEditorModel> m_bindingEditor;
     std::unique_ptr<MouseHookDevice> m_mouse;
     // Shared t25 integration: one PhysicalControllerRegistry and one

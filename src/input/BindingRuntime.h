@@ -25,6 +25,11 @@ public:
     void setTiming(const InputPatternRecognizer::Timing& timing);
     InputPatternRecognizer::Timing timing() const;
     void reload();
+    // The resolver the runtime serves from. Exposed for the migration
+    // materializer (cpo-p03), which needs the live alias chain and the
+    // validated rows exactly as the runtime sees them.
+    BindingResolver& resolver();
+    const BindingResolver& resolver() const;
     QVector<BindingResolver::Binding> effectiveBindings(
         const QString& deviceGroup, const QString& deviceProfile = {}) const;
     QVector<BindingResolver::Binding> baselineBindings(

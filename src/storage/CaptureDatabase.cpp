@@ -19,6 +19,7 @@
 #include <QUuid>
 #include <QVariant>
 #include <QDebug>
+#include <algorithm>
 
 CaptureDatabase::CaptureDatabase(QString filePath, QObject* parent)
     : QObject(parent)
@@ -75,6 +76,8 @@ bool CaptureDatabase::migrate()
     if (version < 7 && !applyV7())
         return false;
     if (version < 8 && !applyV8())
+        return false;
+    if (version < 9 && !applyV9())
         return false;
     if (!ensureGameMetadataColumns())
         return false;
@@ -442,9 +445,21 @@ QVector<BindingRow> CaptureDatabase::listBindings() const
 QVector<BindingOverrideRow> CaptureDatabase::listBindingOverrides() const
 {
     QVector<BindingOverrideRow> out;
-    QSqlQuery q(QStringLiteral(
-        "SELECT device_group, device_profile, action_id, slot, trigger_code, "
-        "activation, hold_ms, unbound, tap_count FROM binding_overrides ORDER BY id"), m_db);
+    loadLegacyOverridesChecked(&out, nullptr);
+    return out;
+}
+
+bool CaptureDatabase::loadLegacyOverridesChecked(QVector<BindingOverrideRow>* sink,
+                                                 QString* error) const
+{
+    QSqlQuery q(m_db);
+    if (!q.exec(QStringLiteral(
+            "SELECT device_group, device_profile, action_id, slot, trigger_code, "
+            "activation, hold_ms, unbound, tap_count FROM binding_overrides ORDER BY id"))) {
+        if (error)
+            *error = q.lastError().text();
+        return false;
+    }
     while (q.next()) {
         BindingOverrideRow r;
         r.deviceGroup   = q.value(0).toString();
@@ -456,9 +471,9 @@ QVector<BindingOverrideRow> CaptureDatabase::listBindingOverrides() const
         r.holdMs        = q.value(6).isNull() ? 0 : q.value(6).toInt();
         r.unbound       = q.value(7).toInt() != 0;
         r.tapCount      = q.value(8).isNull() ? 1 : q.value(8).toInt();
-        out.append(r);
+        sink->append(r);
     }
-    return out;
+    return true;
 }
 
 bool CaptureDatabase::upsertBindingOverride(const BindingOverrideRow& row)
@@ -1151,6 +1166,52 @@ MappingPresetSource mappingSourceFromQuery(const QSqlQuery& q)
     source.note              = q.value(6).toString();
     return source;
 }
+
+// Schema v9 conversion: the last winning row per (action, slot) across the
+// chain layers, in the preset-row shape. Unbound and empty-trigger sentinels
+// are kept as explicit unbound rows so the content suppresses exactly the
+// defaults the legacy merge suppressed. Rows that cannot be stored as preset
+// content are skipped here; they stay in binding_overrides and keep resolving
+// exactly as before (which is not at all), so nothing user-visible changes.
+QVector<MappingPresetRow> migrationFoldRows(const QVector<BindingOverrideRow>& validated,
+                                            const QString& group, const QString& exactProfile)
+{
+    QStringList layers{QString()};
+    if (!exactProfile.isEmpty())
+        layers.append(exactProfile);
+    QHash<QString, int> slotOf;
+    QVector<MappingPresetRow> fold;
+    for (const QString& layer : layers) {
+        for (const BindingOverrideRow& source : validated) {
+            if (source.deviceGroup != group || source.deviceProfile != layer)
+                continue;
+            MappingPresetRow row;
+            row.actionId = source.actionId;
+            row.slot = source.slot;
+            row.unbound = source.unbound || source.triggerCode.isEmpty();
+            row.triggerCode = row.unbound ? QString() : source.triggerCode;
+            row.activation = source.activation;
+            row.holdMs = source.holdMs;
+            row.tapCount = source.tapCount;
+            if (!CaptureDatabase::isValidMappingPresetRow(group, row))
+                continue;
+            const QString key = row.actionId + QLatin1Char('\n') + QString::number(row.slot);
+            const auto hit = slotOf.constFind(key);
+            if (hit != slotOf.cend()) {
+                fold[*hit] = row;
+            } else {
+                slotOf.insert(key, fold.size());
+                fold.append(row);
+            }
+        }
+    }
+    std::sort(fold.begin(), fold.end(), [](const MappingPresetRow& a, const MappingPresetRow& b) {
+        if (a.actionId != b.actionId)
+            return a.actionId < b.actionId;
+        return a.slot < b.slot;
+    });
+    return fold;
+}
 } // namespace
 
 bool CaptureDatabase::applyV8()
@@ -1234,6 +1295,196 @@ bool CaptureDatabase::applyV8()
     }
     QSqlQuery(QStringLiteral("PRAGMA user_version = 8"), m_db);
     return m_db.commit();
+}
+
+bool CaptureDatabase::isValidBindingOverrideRow(const BindingOverrideRow& row, QString* error)
+{
+    // A cleared slot deliberately keeps its gesture and has no trigger, so
+    // only the gesture half is meaningful. Validating the trigger here would
+    // reject every "unbound" sentinel the editor writes.
+    if (row.unbound || row.triggerCode.isEmpty()) {
+        const auto gesture = GestureSpec::parse(row.activation, row.tapCount, row.holdMs);
+        if (error)
+            *error = gesture.error;
+        return gesture.ok;
+    }
+
+    const auto pattern = BindingPattern::parse(row.deviceGroup, row.triggerCode,
+                                               row.activation, row.tapCount, row.holdMs);
+    if (error)
+        *error = pattern.error;
+    return pattern.ok;
+}
+
+bool CaptureDatabase::isLegacySlotProfileKey(const QString& key)
+{
+    const auto matches = [](const QString& value, const char* prefix) {
+        const QString head = QString::fromLatin1(prefix);
+        if (!value.startsWith(head))
+            return false;
+        bool ok = false;
+        const int slot = value.mid(head.size()).toInt(&ok);
+        return ok && slot >= 0;
+    };
+    return matches(key, "xinput.slot") || matches(key, "winmm.slot");
+}
+
+bool CaptureDatabase::applyV9()
+{
+    // Data-only conversion of the legacy rows (docs/mapping-presets.md section
+    // 6). One transaction; `user_version = 9` is the completion marker, so a
+    // rolled-back attempt retries cleanly and a completed one never reruns.
+    // Real database failures roll back and abort the open (fail-closed);
+    // invalid rows are a data condition and are skipped/reported exactly as
+    // the resolver skips them at reload().
+    QVector<BindingOverrideRow> stored;
+    QString readError;
+    if (!loadLegacyOverridesChecked(&stored, &readError)) {
+        // A failing SELECT must never look like "no legacy rows": migrating on
+        // top of an unreadable table would stamp `user_version = 9` and skip
+        // this installation's data forever (cpo-p03 review, correction C).
+        qCritical() << "DB: migration v9 cannot read binding_overrides:" << readError;
+        return false;
+    }
+    QVector<BindingOverrideRow> validated;
+    int rejected = 0;
+    for (const BindingOverrideRow& row : stored) {
+        QString error;
+        if (isValidBindingOverrideRow(row, &error)) {
+            validated.append(row);
+            continue;
+        }
+        ++rejected;
+        qWarning() << "DB: migration v9 skipping stored override" << row.actionId
+                   << "slot" << row.slot << "(" << row.deviceGroup << ")";
+    }
+    if (rejected > 0)
+        qInfo() << "DB: migration v9 skipped" << rejected
+                << "invalid binding rows; they stay in binding_overrides for recovery";
+
+    if (!m_db.transaction()) {
+        qCritical() << "DB: cannot start migration transaction";
+        return false;
+    }
+    const auto abort = [this](const QString& reason) {
+        qCritical() << "DB: migration v9 failed:" << reason;
+        m_db.rollback();
+        return false;
+    };
+
+    // 1) Group-wide rows (`device_profile = ''`) become the group's migration
+    //    "Default" preset and its group default assignment. A group without
+    //    group-wide rows keeps the built-in default and gets no preset.
+    //    The controller group default is created exactly like the contract
+    //    says, but the runtime bridge never activates a controller from it:
+    //    a pad switches to its preset only after its own chain is
+    //    materialized and proven (section 6, reviewer correction B).
+    for (const QString& group :
+         {QStringLiteral("keyboard"), QStringLiteral("controller"), QStringLiteral("mouse")}) {
+        const QVector<MappingPresetRow> content = migrationFoldRows(validated, group, QString());
+        if (content.isEmpty())
+            continue;
+        const QString presetId = insertMappingPresetMetadata(
+            group, uniqueMigrationPresetName(group, QStringLiteral("Default")),
+            QStringLiteral("migration"));
+        if (presetId.isEmpty() || !insertMappingPresetRows(presetId, content))
+            return abort(QStringLiteral("group default preset for ") + group);
+        if (!upsertMappingAssignmentRow(group, QStringLiteral("group_default"), QString(), presetId, -1))
+            return abort(QStringLiteral("group default assignment for ") + group);
+    }
+
+    // 2) Every stored non-empty profile key is converted to its own content
+    //    (`group-wide + own rows`) and classified by shape, never guessed into
+    //    a live assignment:
+    //    - `xinput.slotN` / `winmm.slotN` keys stay explicitly slot-scoped
+    //      (`legacy_slot` target, controller group only);
+    //    - everything else (`controller-<hex>`, fingerprints, provider ids)
+    //      waits as an *unverified migration source* for runtime proof - the
+    //      storage layer never turns a key string into a durable assignment;
+    //    - a key whose rows all fail validation is behaviorally inert: it is
+    //      recorded as a retired source (recovery evidence) and never gets a
+    //      preset or an assignment.
+    for (const QString& group :
+         {QStringLiteral("keyboard"), QStringLiteral("controller"), QStringLiteral("mouse")}) {
+        QSet<QString> keys;
+        for (const BindingOverrideRow& row : stored) {
+            if (row.deviceGroup == group && !row.deviceProfile.isEmpty())
+                keys.insert(row.deviceProfile);
+        }
+        QStringList sortedKeys(keys.begin(), keys.end());
+        std::sort(sortedKeys.begin(), sortedKeys.end());
+        for (const QString& key : sortedKeys) {
+            const bool slotKey = group == QLatin1String("controller") && isLegacySlotProfileKey(key);
+            // A key only becomes a conversion target when the key ITSELF owns
+            // at least one valid, storable row. Group-wide rows alone describe
+            // inherited behavior, not a device-specific override (cpo-p03
+            // review, correction A): a key whose own rows were all rejected is
+            // inert recovery evidence, never a per-key preset or assignment
+            // that would stop the device from following its group default.
+            QVector<BindingOverrideRow> ownRows;
+            for (const BindingOverrideRow& row : validated) {
+                if (row.deviceGroup == group && row.deviceProfile == key)
+                    ownRows.append(row);
+            }
+            const QVector<MappingPresetRow> ownContent = migrationFoldRows(ownRows, group, key);
+            if (ownContent.isEmpty()) {
+                MappingPresetSource inert;
+                inert.deviceGroup = group;
+                inert.sourceKey = key;
+                inert.status = QStringLiteral("retired");
+                inert.note = QStringLiteral("no valid own rows at v9; inert");
+                if (!upsertMappingPresetSource(inert))
+                    return abort(QStringLiteral("inert source ") + key);
+                continue;
+            }
+            const QVector<MappingPresetRow> content = migrationFoldRows(validated, group, key);
+            if (content.isEmpty()) {
+                MappingPresetSource inert;
+                inert.deviceGroup = group;
+                inert.sourceKey = key;
+                inert.status = QStringLiteral("retired");
+                inert.note = QStringLiteral("no valid rows at v9; inert");
+                if (!upsertMappingPresetSource(inert))
+                    return abort(QStringLiteral("inert source ") + key);
+                continue;
+            }
+            const QString baseName = key.size() > 32 ? key.left(29) + QStringLiteral("...") : key;
+            const QString presetId = insertMappingPresetMetadata(
+                group, uniqueMigrationPresetName(group, QStringLiteral("Migrated ") + baseName),
+                QStringLiteral("migration"));
+            if (presetId.isEmpty() || !insertMappingPresetRows(presetId, content))
+                return abort(QStringLiteral("converted preset for ") + key);
+            if (slotKey) {
+                if (!upsertMappingAssignmentRow(QStringLiteral("controller"),
+                                                QStringLiteral("legacy_slot"), key, presetId, -1))
+                    return abort(QStringLiteral("legacy_slot assignment for ") + key);
+            } else {
+                MappingPresetSource source;
+                source.deviceGroup = group;
+                source.sourceKey = key;
+                source.convertedPresetId = presetId;
+                source.status = QStringLiteral("unverified");
+                if (!upsertMappingPresetSource(source))
+                    return abort(QStringLiteral("migration source for ") + key);
+            }
+        }
+    }
+
+    QSqlQuery versionWrite(m_db);
+    if (!versionWrite.exec(QStringLiteral("PRAGMA user_version = 9"))) {
+        // The stamp is the migration's completion marker: assuming it landed
+        // would mark a half-converted database as current (correction C).
+        qCritical() << "DB: migration v9 could not stamp the schema version:"
+                    << versionWrite.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    if (!m_db.commit()) {
+        qCritical() << "DB: migration v9 commit failed:" << m_db.lastError().text();
+        m_db.rollback();
+        return false;
+    }
+    return true;
 }
 
 QString CaptureDatabase::mappingPresetNameKey(const QString& name)
@@ -1347,30 +1598,12 @@ MappingPreset CaptureDatabase::mappingPreset(const QString& presetId) const
     return q.next() ? mappingPresetFromQuery(q) : MappingPreset{};
 }
 
-QString CaptureDatabase::createMappingPreset(const QString& deviceGroup, const QString& name,
-                                             const QVector<MappingPresetRow>& rows,
-                                             const QString& origin)
+QString CaptureDatabase::insertMappingPresetMetadata(const QString& deviceGroup, const QString& name,
+                                                     const QString& origin)
 {
-    if (!isMappingDeviceGroup(deviceGroup))
-        return QString();
-    if (name.trimmed().isEmpty() || mappingPresetNameKey(name).isEmpty())
-        return QString();
-    if (origin != QLatin1String("user") && origin != QLatin1String("migration"))
-        return QString();
-    QSet<QString> seen;
-    for (const MappingPresetRow& row : rows) {
-        if (!isValidMappingPresetRow(deviceGroup, row))
-            return QString();
-        const QString key = row.actionId + QLatin1Char('\n') + QString::number(row.slot);
-        if (seen.contains(key))
-            return QString();
-        seen.insert(key);
-    }
-
-    if (!m_db.transaction()) {
-        qWarning() << "DB: could not open mapping preset transaction:" << m_db.lastError().text();
-        return QString();
-    }
+    // Runs inside the caller's transaction on purpose: the public create path
+    // and the v9 migration must share one normalization + uniqueness rule
+    // instead of each owning a second, nested transaction.
     const QString id = QStringLiteral("preset-")
         + QUuid::createUuid().toString(QUuid::WithoutBraces);
     const QString now = mappingNow();
@@ -1386,7 +1619,53 @@ QString CaptureDatabase::createMappingPreset(const QString& deviceGroup, const Q
     insert.bindValue(QStringLiteral(":created"), now);
     insert.bindValue(QStringLiteral(":updated"), now);
     if (!insert.exec()) {
-        qWarning() << "DB: createMappingPreset failed:" << insert.lastError().text();
+        qWarning() << "DB: mapping preset metadata insert failed:" << insert.lastError().text();
+        return QString();
+    }
+    return id;
+}
+
+QString CaptureDatabase::uniqueMigrationPresetName(const QString& deviceGroup,
+                                                   const QString& base) const
+{
+    // Deterministic and collision-safe (section 6 review, edge case G): a v8
+    // database may already hold a user preset whose name collides with a
+    // generated one. The user's row is never renamed or overwritten; the
+    // migration takes the next free deterministic suffix.
+    QSet<QString> taken;
+    for (const MappingPreset& preset : listMappingPresets(deviceGroup))
+        taken.insert(mappingPresetNameKey(preset.name));
+    if (!taken.contains(mappingPresetNameKey(base)))
+        return base;
+    for (int suffix = 2; suffix < 1000; ++suffix) {
+        const QString candidate = QStringLiteral("%1 (%2)").arg(base).arg(suffix);
+        if (!taken.contains(mappingPresetNameKey(candidate)))
+            return candidate;
+    }
+    return base + QStringLiteral(" (")
+        + QUuid::createUuid().toString(QUuid::WithoutBraces).left(8) + QLatin1Char(')');
+}
+
+QString CaptureDatabase::createMappingPreset(const QString& deviceGroup, const QString& name,
+                                             const QVector<MappingPresetRow>& rows,
+                                             const QString& origin)
+{
+    if (!isMappingDeviceGroup(deviceGroup))
+        return QString();
+    if (name.trimmed().isEmpty() || mappingPresetNameKey(name).isEmpty())
+        return QString();
+    if (origin != QLatin1String("user") && origin != QLatin1String("migration"))
+        return QString();
+    if (!isValidPresetContent(deviceGroup, rows))
+        return QString();
+
+    if (!m_db.transaction()) {
+        qWarning() << "DB: could not open mapping preset transaction:" << m_db.lastError().text();
+        return QString();
+    }
+    const QString id = insertMappingPresetMetadata(deviceGroup, name, origin);
+    if (id.isEmpty()) {
+        qWarning() << "DB: createMappingPreset failed:" << m_db.lastError().text();
         m_db.rollback();
         return QString();
     }
@@ -1396,6 +1675,73 @@ QString CaptureDatabase::createMappingPreset(const QString& deviceGroup, const Q
     }
     if (!m_db.commit()) {
         qWarning() << "DB: mapping preset transaction commit failed:" << m_db.lastError().text();
+        m_db.rollback();
+        return QString();
+    }
+    return id;
+}
+
+bool CaptureDatabase::isValidPresetContent(const QString& deviceGroup,
+                                           const QVector<MappingPresetRow>& rows)
+{
+    QSet<QString> seen;
+    for (const MappingPresetRow& row : rows) {
+        if (!isValidMappingPresetRow(deviceGroup, row))
+            return false;
+        const QString key = row.actionId + QLatin1Char('\n') + QString::number(row.slot);
+        if (seen.contains(key))
+            return false;
+        seen.insert(key);
+    }
+    return true;
+}
+
+QString CaptureDatabase::createUnverifiedMigrationSource(const QString& deviceGroup,
+                                                         const QString& name,
+                                                         const QVector<MappingPresetRow>& rows,
+                                                         const QString& sourceKey)
+{
+    if (!isMappingDeviceGroup(deviceGroup) || sourceKey.isEmpty())
+        return QString();
+    if (name.trimmed().isEmpty() || mappingPresetNameKey(name).isEmpty())
+        return QString();
+    if (!isValidPresetContent(deviceGroup, rows))
+        return QString();
+
+    // One transaction for all three writes (correction B): a crash after the
+    // preset landed but before its source link exists would otherwise leave an
+    // orphan preset that every retry duplicates.
+    if (!m_db.transaction()) {
+        qWarning() << "DB: could not open migration source transaction:"
+                   << m_db.lastError().text();
+        return QString();
+    }
+    const QString id = insertMappingPresetMetadata(deviceGroup, name,
+                                                   QStringLiteral("migration"));
+    if (id.isEmpty()) {
+        qWarning() << "DB: createUnverifiedMigrationSource metadata failed:"
+                   << m_db.lastError().text();
+        m_db.rollback();
+        return QString();
+    }
+    if (!insertMappingPresetRows(id, rows)) {
+        m_db.rollback();
+        return QString();
+    }
+    MappingPresetSource source;
+    source.deviceGroup = deviceGroup;
+    source.sourceKey = sourceKey;
+    source.convertedPresetId = id;
+    source.status = QStringLiteral("unverified");
+    if (!upsertMappingPresetSource(source)) {
+        qWarning() << "DB: createUnverifiedMigrationSource source link failed:"
+                   << m_db.lastError().text();
+        m_db.rollback();
+        return QString();
+    }
+    if (!m_db.commit()) {
+        qWarning() << "DB: migration source transaction commit failed:"
+                   << m_db.lastError().text();
         m_db.rollback();
         return QString();
     }

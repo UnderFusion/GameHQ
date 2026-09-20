@@ -28,22 +28,262 @@ QString bindingKey(const QString& actionId, int slot)
 // instead of firing something nobody asked for.
 bool validateRow(const BindingOverrideRow& row, QString* error)
 {
-    // A cleared slot deliberately keeps its gesture and has no trigger, so
-    // only the gesture half is meaningful. Validating the trigger here would
-    // reject every "unbound" sentinel the editor writes.
-    if (row.unbound || row.triggerCode.isEmpty()) {
-        const auto gesture = GestureSpec::parse(row.activation, row.tapCount, row.holdMs);
-        if (error)
-            *error = gesture.error;
-        return gesture.ok;
+    // Delegates to the storage-side canonical validator so the v9 migration
+    // and the runtime judge a stored row at exactly one parse boundary.
+    return CaptureDatabase::isValidBindingOverrideRow(row, error);
+}
+}
+
+bool BindingResolver::validateOverrideRow(const BindingOverrideRow& row, QString* error)
+{
+    return validateRow(row, error);
+}
+
+QStringList BindingResolver::chainLayers(const QString& profile, const QStringList& aliases)
+{
+    QStringList layers{QString()};
+    if (profile.isEmpty())
+        return layers;
+    for (const QString& alias : aliases) {
+        if (!alias.isEmpty() && alias != profile && !layers.contains(alias))
+            layers.append(alias);
+    }
+    layers.append(profile);
+    return layers;
+}
+
+QVector<BindingResolver::Binding> BindingResolver::mergedTable(const QVector<Binding>& defaults,
+                                                               const QVector<Binding>& overrides,
+                                                               const QString& deviceGroup,
+                                                               const QStringList& layers)
+{
+    QHash<QString, Binding> merged;
+    for (const Binding& binding : defaults) {
+        if (binding.deviceGroup == deviceGroup)
+            merged.insert(bindingKey(binding.actionId, binding.slot), binding);
+    }
+    for (const QString& profile : layers) {
+        for (const Binding& binding : overrides) {
+            if (binding.deviceGroup != deviceGroup || binding.deviceProfile != profile)
+                continue;
+            const auto* action = ActionCatalog::find(binding.actionId);
+            if (!action || !action->bindable)
+                continue;
+            merged.insert(bindingKey(binding.actionId, binding.slot), binding);
+        }
     }
 
-    const auto pattern = BindingPattern::parse(row.deviceGroup, row.triggerCode,
-                                               row.activation, row.tapCount, row.holdMs);
-    if (error)
-        *error = pattern.error;
-    return pattern.ok;
+    QVector<Binding> result;
+    for (const Binding& binding : std::as_const(merged)) {
+        if (!binding.unbound && !binding.triggerCode.isEmpty())
+            result.append(binding);
+    }
+    return result;
 }
+
+QVector<MappingPresetRow> BindingResolver::foldChainRows(const QVector<Binding>& overrides,
+                                                         const QString& deviceGroup,
+                                                         const QString& profile,
+                                                         const QStringList& aliases,
+                                                         QStringList* contributingLayers)
+{
+    const QStringList layers = chainLayers(profile, aliases);
+    QHash<QString, int> slotOf;   // action#slot -> index into `fold`
+    QVector<MappingPresetRow> fold;
+    QSet<QString> contributors;   // layers with at least one storable row
+
+    for (const QString& layer : layers) {
+        for (const Binding& binding : overrides) {
+            if (binding.deviceGroup != deviceGroup || binding.deviceProfile != layer)
+                continue;
+            const auto* action = ActionCatalog::find(binding.actionId);
+            if (!action || !action->bindable)
+                continue;
+            const QString key = bindingKey(binding.actionId, binding.slot);
+            MappingPresetRow row;
+            row.actionId = binding.actionId;
+            row.slot = binding.slot;
+            // A row with no trigger means "no trigger" in the preset model too:
+            // it must keep suppressing the default it shadowed. The old model
+            // allowed an empty trigger with unbound still false (the clear
+            // sentinel); the stored content always spells that out as unbound.
+            row.unbound = binding.unbound || binding.triggerCode.isEmpty();
+            row.triggerCode = row.unbound ? QString() : binding.triggerCode;
+            row.activation = binding.activation;
+            row.holdMs = binding.holdMs;
+            row.tapCount = binding.tapCount;
+            if (!CaptureDatabase::isValidMappingPresetRow(deviceGroup, row)) {
+                // Cannot be stored as preset content; the row stays in
+                // binding_overrides and keeps legacy resolution. Equality will
+                // simply never prove for this chain.
+                qWarning() << "Bindings: migration cannot store override"
+                           << bindingKey(binding.actionId, binding.slot) << "for profile"
+                           << (layer.isEmpty() ? QStringLiteral("<group>") : layer);
+                continue;
+            }
+            contributors.insert(layer);
+            const auto existing = slotOf.constFind(key);
+            if (existing != slotOf.cend())
+                fold[*existing] = row;
+            else {
+                slotOf.insert(key, fold.size());
+                fold.append(row);
+            }
+        }
+    }
+
+    std::sort(fold.begin(), fold.end(), [](const MappingPresetRow& a, const MappingPresetRow& b) {
+        if (a.actionId != b.actionId)
+            return a.actionId < b.actionId;
+        return a.slot < b.slot;
+    });
+
+    if (contributingLayers) {
+        contributingLayers->clear();
+        for (const QString& layer : layers) {
+            if (contributors.contains(layer))
+                contributingLayers->append(layer);
+        }
+    }
+    return fold;
+}
+
+QVector<BindingResolver::Binding> BindingResolver::chainTableFromRows(
+    const QVector<Binding>& defaults, const QString& deviceGroup, const QString& profile,
+    const QVector<MappingPresetRow>& rows)
+{
+    // Mirrors mergedTable()'s semantics exactly (defaults first, rows after,
+    // bindable actions only, unbound rows suppress their default, bound rows
+    // only) - but the rows are profile-less, so they are labeled with the
+    // chain key instead of a stored layer name.
+    QHash<QString, Binding> merged;
+    for (const Binding& binding : defaults) {
+        if (binding.deviceGroup == deviceGroup)
+            merged.insert(bindingKey(binding.actionId, binding.slot), binding);
+    }
+    for (const MappingPresetRow& row : rows) {
+        if (!CaptureDatabase::isValidMappingPresetRow(deviceGroup, row))
+            continue;
+        const auto* action = ActionCatalog::find(row.actionId);
+        if (!action || !action->bindable)
+            continue;
+        Binding binding;
+        binding.deviceGroup = deviceGroup;
+        binding.deviceProfile = profile;
+        binding.actionId = row.actionId;
+        binding.slot = row.slot;
+        binding.triggerCode = row.triggerCode;
+        binding.activation = row.activation;
+        binding.holdMs = row.holdMs;
+        binding.unbound = row.unbound;
+        binding.tapCount = row.tapCount;
+        merged.insert(bindingKey(binding.actionId, binding.slot), binding);
+    }
+
+    QVector<Binding> result;
+    for (const Binding& binding : std::as_const(merged)) {
+        if (!binding.unbound && !binding.triggerCode.isEmpty())
+            result.append(binding);
+    }
+    return result;
+}
+
+bool BindingResolver::chainTablesEqual(const QVector<Binding>& a, const QVector<Binding>& b)
+{
+    if (a.size() != b.size())
+        return false;
+    QHash<QString, const Binding*> index;
+    for (const Binding& binding : b)
+        index.insert(bindingKey(binding.actionId, binding.slot), &binding);
+    for (const Binding& binding : a) {
+        const auto hit = index.constFind(bindingKey(binding.actionId, binding.slot));
+        if (hit == index.cend())
+            return false;
+        const Binding& other = *hit.value();
+        if (other.deviceGroup != binding.deviceGroup
+            || other.triggerCode != binding.triggerCode
+            || other.activation != binding.activation
+            || other.holdMs != binding.holdMs
+            || other.tapCount != binding.tapCount
+            || other.unbound != binding.unbound)
+            return false;
+    }
+    return true;
+}
+
+QString BindingResolver::materializedKey(const QString& deviceGroup, const QString& profile)
+{
+    return deviceGroup + QLatin1Char('\x1f') + profile;
+}
+
+bool BindingResolver::activateMaterializedChain(const QString& deviceGroup, const QString& profile,
+                                                const QString& presetId,
+                                                const QVector<MappingPresetRow>& rows,
+                                                const QStringList& aliases)
+{
+    if (deviceGroup.isEmpty()
+        || (profile.isEmpty() && deviceGroup == QLatin1String("controller")))
+        return false;
+    MaterializedView view;
+    view.presetId = presetId;
+    view.aliases = aliases;
+    view.table = chainTableFromRows(defaultBindings(), deviceGroup, profile, rows);
+    m_materialized.insert(materializedKey(deviceGroup, profile), view);
+    ++m_revision;
+    return true;
+}
+
+void BindingResolver::deactivateMaterializedChain(const QString& deviceGroup, const QString& profile)
+{
+    if (m_materialized.remove(materializedKey(deviceGroup, profile)) > 0)
+        ++m_revision;
+}
+
+bool BindingResolver::isMaterialized(const QString& deviceGroup, const QString& profile) const
+{
+    return m_materialized.contains(materializedKey(deviceGroup, profile));
+}
+
+QString BindingResolver::materializedPreset(const QString& deviceGroup, const QString& profile) const
+{
+    const auto view = m_materialized.constFind(materializedKey(deviceGroup, profile));
+    return view == m_materialized.cend() ? QString() : view->presetId;
+}
+
+// Keyboard and mouse have no per-device identity layer, so their migrated
+// group-default content may become the active resolution once it is proven
+// equal to today's group-wide table. Controllers deliberately never activate
+// here: a controller group default existing in the database must not move any
+// pad off the legacy chain before that pad's own chain is materialized.
+void BindingResolver::rebuildGroupChains()
+{
+    if (!m_database)
+        return;
+    for (const QString& group :
+         {QStringLiteral("keyboard"), QStringLiteral("mouse")}) {
+        deactivateMaterializedChain(group, QString());
+        QString presetId;
+        for (const MappingAssignment& assignment : m_database->listMappingAssignments(group)) {
+            if (assignment.targetKind == QLatin1String("group_default"))
+                presetId = assignment.presetId;
+        }
+        if (presetId.isEmpty())
+            continue;
+        const MappingPreset preset = m_database->mappingPreset(presetId);
+        if (preset.id.isEmpty() || preset.origin != QLatin1String("migration"))
+            continue;   // user content is not activated by the migration bridge
+        const QVector<MappingPresetRow> rows = m_database->mappingPresetRows(presetId);
+        const QVector<Binding> legacy = mergedTable(defaultBindings(), m_overrides, group,
+                                                    chainLayers(QString(), {}));
+        const QVector<Binding> candidate = chainTableFromRows(defaultBindings(), group,
+                                                              QString(), rows);
+        if (!chainTablesEqual(legacy, candidate)) {
+            qWarning() << "Bindings: group default preset for" << group
+                       << "does not match the stored group rows; keeping legacy resolution";
+            continue;
+        }
+        activateMaterializedChain(group, QString(), presetId, rows, {});
+    }
 }
 
 BindingResolver::BindingResolver(CaptureDatabase* database)
@@ -81,6 +321,18 @@ bool BindingResolver::setProfileAliases(const QString& profile,
         m_profileAliases.remove(profile);
     else
         m_profileAliases.insert(profile, aliases);
+    // The chain just changed; a view proven against the old alias list may not
+    // execute against the new one (section 6: revalidate, never trust a stale
+    // proof). Views for other profiles are untouched.
+    for (auto it = m_materialized.begin(); it != m_materialized.end();) {
+        const int split = it.key().indexOf(QLatin1Char('\x1f'));
+        const QString keyProfile = split >= 0 ? it.key().mid(split + 1) : QString();
+        if (keyProfile == profile && it.value().aliases != aliases)
+            it = m_materialized.erase(it);
+        else
+            ++it;
+    }
+    ++m_revision;
     return true;
 }
 
@@ -102,6 +354,13 @@ void BindingResolver::reload()
                             row.slot, row.triggerCode, row.activation,
                             row.holdMs, row.unbound, row.tapCount});
     }
+    // A reload means the stored rows changed: every materialized chain was
+    // proven against the old bytes, so all views drop and the materializer has
+    // to re-prove per attach. Group-wide chains (keyboard/mouse) re-verify
+    // here, because they have no attach-time identity to wait for.
+    m_materialized.clear();
+    ++m_revision;
+    rebuildGroupChains();
 }
 
 // A capture into an empty slot must not invent semantics. The slot's meaning is
@@ -182,36 +441,14 @@ QVector<BindingResolver::Binding> BindingResolver::defaultBindings()
 QVector<BindingResolver::Binding> BindingResolver::effectiveBindings(
     const QString& deviceGroup, const QString& deviceProfile) const
 {
-    QHash<QString, Binding> merged;
-    for (const Binding& binding : defaultBindings()) {
-        if (binding.deviceGroup == deviceGroup)
-            merged.insert(bindingKey(binding.actionId, binding.slot), binding);
-    }
-
-    // Precedence, later wins: group-wide < legacy alias (pre-identity
-    // "xinput.slotN" rows kept alive for this profile) < device-specific.
-    QStringList profiles{QString()};
-    if (!deviceProfile.isEmpty()) {
-        profiles.append(m_profileAliases.value(deviceProfile));
-        profiles.append(deviceProfile);
-    }
-    for (const QString& profile : profiles) {
-        for (const Binding& binding : m_overrides) {
-            if (binding.deviceGroup != deviceGroup || binding.deviceProfile != profile)
-                continue;
-            const auto* action = ActionCatalog::find(binding.actionId);
-            if (!action || !action->bindable)
-                continue;
-            merged.insert(bindingKey(binding.actionId, binding.slot), binding);
-        }
-    }
-
-    QVector<Binding> result;
-    for (const Binding& binding : std::as_const(merged)) {
-        if (!binding.unbound && !binding.triggerCode.isEmpty())
-            result.append(binding);
-    }
-    return result;
+    // A proven chain serves its materialized preset table; every other chain -
+    // and every keyboard/mouse group whose default has not been proven - keeps
+    // the legacy merge, byte for byte.
+    const auto view = m_materialized.constFind(materializedKey(deviceGroup, deviceProfile));
+    if (view != m_materialized.cend())
+        return view->table;
+    return mergedTable(defaultBindings(), m_overrides, deviceGroup,
+                       chainLayers(deviceProfile, m_profileAliases.value(deviceProfile)));
 }
 
 QVector<BindingResolver::Binding> BindingResolver::baselineBindings(

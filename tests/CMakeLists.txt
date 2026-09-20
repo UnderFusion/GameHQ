@@ -330,6 +330,7 @@ gamehq_add_test(tst_inputengineshutdown
     "${CMAKE_SOURCE_DIR}/src/input/Gamepad.h")
 foreach(unit IN ITEMS
     InputEngine MouseHookDevice BindingRuntime BindingEditorModel BindingResolver
+    MappingPresetMaterializer
     BindingPattern BindingRelation ContextOverrideCatalog InputPatternRecognizer
     ActionCatalog ControlId ControllerIdentity GestureTiming HotkeyManager
     DualSenseDevice XInputDevice WinMMDevice RawInputApi HidCloakMonitor
@@ -674,6 +675,31 @@ gamehq_add_test(tst_mappingpresetstorage
     "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
     "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
 target_link_libraries(tst_mappingpresetstorage PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
+
+# Runtime materialization of the mapping migration (cpo-p03): the bounded
+# compatibility phase that folds a live alias chain, proves the persisted
+# content equal to legacy resolution and only then promotes the chain.
+gamehq_add_test(tst_presetmaterializer
+    tst_presetmaterializer.cpp
+    "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingResolver.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DefaultBindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/OverlayInputPolicy.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ContextOverrideCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ExtraButtonCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/MappingPresetMaterializer.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
+    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+target_link_libraries(tst_presetmaterializer PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
 
 # Stand-in for app\GameHQ.exe: it reports the arguments Windows actually handed
 # it, so the launcher's pass-through can be checked against a real process.

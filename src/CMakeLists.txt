@@ -50,6 +50,7 @@ qt_add_executable(GameHQ
     input/BindingPattern.cpp input/BindingPattern.h
     input/BindingRelation.cpp input/BindingRelation.h
     input/BindingResolver.cpp input/BindingResolver.h
+    input/MappingPresetMaterializer.cpp input/MappingPresetMaterializer.h
     input/DefaultBindings.cpp input/DefaultBindings.h
     input/OverlayInputPolicy.cpp input/OverlayInputPolicy.h
     input/ContextOverrideCatalog.cpp input/ContextOverrideCatalog.h
