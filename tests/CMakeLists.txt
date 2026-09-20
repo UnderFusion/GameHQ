@@ -336,7 +336,8 @@ foreach(unit IN ITEMS
     DualSenseDevice XInputDevice WinMMDevice RawInputApi HidCloakMonitor
     SelectiveRawHidFallback RawHidBindingCatalog ProviderIntegration
     PhysicalControllerRegistry CapabilityEventRouter ExtraButtonCatalog
-    InputDiagnostics InputRateMonitor PerfTrace EventLoopStallMonitor)
+    InputDiagnostics InputRateMonitor PerfTrace EventLoopStallMonitor
+    DefaultBindings OverlayInputPolicy)
     target_sources(tst_inputengineshutdown PRIVATE "${CMAKE_SOURCE_DIR}/src/input/${unit}.cpp")
 endforeach()
 foreach(unit IN ITEMS GameInputRouter ProductionGameInputApi GameInputWrapper
