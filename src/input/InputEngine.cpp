@@ -469,6 +469,11 @@ QObject* InputEngine::mappingPresets() const
     return m_mappingPresets.get();
 }
 
+MappingPresetModel* InputEngine::mappingPresetsModel() const
+{
+    return m_mappingPresets.get();
+}
+
 void InputEngine::start()
 {
     if (m_shuttingDown)

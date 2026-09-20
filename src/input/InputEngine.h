@@ -81,6 +81,9 @@ public:
     bool controllerFixAvailable() const { return m_controllerFixAvailable; }
     QObject* bindingEditor() const;
     QObject* mappingPresets() const;
+    // C++ face of the same object, so the app can hand the preset model the
+    // session game (cpo-p07) without going through QML.
+    MappingPresetModel* mappingPresetsModel() const;
 
     // One-click HidHide remedy: relaunches GameHQ elevated to add itself to
     // HidHide's application allow-list, then rescans. Progress/outcome is
@@ -203,6 +206,7 @@ private:
     friend class InputEngineShutdownTest;
     friend class ControllerClipE2ETest;
     friend class PresetSwitchTest;
+    friend class GameSessionPresetTest;
     void shutdown();
     void migrateLegacyHoldSetting();
     void applyGestureTiming();

@@ -53,6 +53,7 @@ qt_add_executable(GameHQ
     input/MappingPresetMaterializer.cpp input/MappingPresetMaterializer.h
     input/MappingAssignmentResolver.cpp input/MappingAssignmentResolver.h
     input/MappingPresetModel.cpp input/MappingPresetModel.h
+    input/GameSessionPresetBinder.cpp input/GameSessionPresetBinder.h
     input/DefaultBindings.cpp input/DefaultBindings.h
     input/OverlayInputPolicy.cpp input/OverlayInputPolicy.h
     input/ContextOverrideCatalog.cpp input/ContextOverrideCatalog.h

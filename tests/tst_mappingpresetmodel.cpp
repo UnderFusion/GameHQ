@@ -17,6 +17,7 @@
 
 #include "input/ActionCatalog.h"
 #include "input/ControlId.h"
+#include "input/MappingAssignmentResolver.h"
 #include "storage/CaptureDatabase.h"
 
 #include <QTemporaryDir>
@@ -98,6 +99,7 @@ private slots:
     // the model must refuse the delete instead of reporting a partial success.
     void migrationSourceReferenceBlocksDeletion();
     void fallbackAndBuiltinAreDifferentChoices();
+    void gameAssignmentWritesTheSessionGameRow();
 
 private:
     int refreshes = 0;
@@ -426,6 +428,82 @@ void MappingPresetModelTest::secondEditLandsInTheAdoptedPreset()
     QCOMPARE(model->assignedPresetId(), adopted);
     QCOMPARE(db->mappingPresetRows(adopted).size(), 2);
     QCOMPARE(refreshes, 2);
+}
+
+// The game row (cpo-p07): the same three choices as the device picker, scoped to
+// the session game, written through the same typed-assignment API and the same
+// single runtime seam. No second source of truth for "which game am I in".
+void MappingPresetModelTest::gameAssignmentWritesTheSessionGameRow()
+{
+    // No game in session: refused, and nothing is written.
+    model->setGameTargetProvider([] { return MappingPresetModel::GameTarget(); });
+    model->refreshGameTarget();
+    QVERIFY(!model->gameAvailable());
+    QVERIFY(!model->applyGameAssignment(QStringLiteral("preset-anything")));
+    QCOMPARE(model->noticeKind(), QStringLiteral("game_unavailable"));
+    QCOMPARE(refreshes, 0);
+    model->clearNotice();
+
+    const QString gameKey = MappingAssignmentResolver::canonicalGameKey(
+        QStringLiteral("C:\\Games\\Racer\\Racer.exe"));
+    QVERIFY(!gameKey.isEmpty());
+    MappingPresetModel::GameTarget target;
+    target.key = gameKey;
+    target.label = QStringLiteral("Racer");
+    target.rowId = 7;
+    model->setGameTargetProvider([target] { return target; });
+    model->refreshGameTarget();
+    QVERIFY(model->gameAvailable());
+    QCOMPARE(model->gameLabel(), QStringLiteral("Racer"));
+    QVERIFY(model->gameAssignedToFallback());
+
+    const QString preset = db->createMappingPreset(
+        QStringLiteral("controller"), QStringLiteral("Racer preset"),
+        {makeRow(QStringLiteral("global.screenshot"), ControlId::FaceSouth)});
+    QVERIFY(!preset.isEmpty());
+
+    QVERIFY(model->applyGameAssignment(preset));
+    QCOMPARE(refreshes, 1);
+    QCOMPARE(model->gameAssignedPresetId(), preset);
+    QCOMPARE(model->gameAssignedPresetName(), QStringLiteral("Racer preset"));
+    const MappingAssignment row =
+        db->mappingAssignment(QStringLiteral("controller"), QStringLiteral("game"), gameKey);
+    QCOMPARE(row.presetId, preset);
+    QCOMPARE(row.targetKey, gameKey);
+    QCOMPARE(row.gameRowId, 7);
+
+    // Built-in defaults for this game: the explicit empty winner, atomically.
+    QVERIFY(model->applyGameAssignment(MappingPresetModel::builtinChoiceToken()));
+    QCOMPARE(refreshes, 2);
+    QVERIFY(model->gameAssignedToBuiltin());
+    QVERIFY(CaptureDatabase::isBuiltinMappingPresetId(
+        db->mappingAssignment(QStringLiteral("controller"), QStringLiteral("game"), gameKey)
+            .presetId));
+
+    // Follow the chain below the game.
+    QVERIFY(model->applyGameAssignment(QString()));
+    QCOMPARE(refreshes, 3);
+    QVERIFY(model->gameAssignedToFallback());
+    QCOMPARE(db->mappingAssignment(QStringLiteral("controller"), QStringLiteral("game"), gameKey)
+                 .presetId,
+             QString());
+
+    // An unknown preset is refused and changes nothing.
+    QVERIFY(!model->applyGameAssignment(QStringLiteral("preset-missing")));
+    QCOMPARE(model->noticeKind(), QStringLiteral("unknown_preset"));
+    QCOMPARE(refreshes, 3);
+    model->clearNotice();
+
+    // An open draft blocks the write, like every other assignment.
+    model->setPendingEditProvider([] { return true; });
+    QVERIFY(!model->applyGameAssignment(preset));
+    QCOMPARE(model->noticeKind(), QStringLiteral("pending_edit"));
+    QCOMPARE(refreshes, 3);
+
+    // Re-publishing the session state is never a switch: a foreground poll that
+    // resolves to the same game must not invalidate a gesture.
+    model->refreshGameTarget();
+    QCOMPARE(refreshes, 3);
 }
 
 void MappingPresetModelTest::duplicateForTargetMovesOnlyThatTarget()

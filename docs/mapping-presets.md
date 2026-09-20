@@ -416,6 +416,65 @@ re-resolve; it never decides a winner itself, and the runtime seam is exactly
   source strings; the 16-locale semantic pass and the catalog fills stay with
   `cpo-x02`, which must also include the `t1`/`t2a` translations.
 
+## 7c. The live game session (implemented by `cpo-p07`)
+
+The runtime half of section 8: how the game context the resolver matches actually
+reaches the input engine, and what keeps it stable.
+
+- **One direction, one source.** `CurrentGameService` owns the session; its
+  canonical executable key (`GameIdentity::executableKey`, the same normalization
+  the assignment rows use) is read by `GameSessionPresetBinder` and pushed through
+  `InputEngine::setRunningGameKey()`. The engine never inspects the foreground
+  window itself, and nothing in Settings writes a key.
+- **A real change is a switch.** `setRunningGameKey()` ignores an unchanged key;
+  a change goes through the `cpo-p05` switch transaction (section 5b) - prepare,
+  invalidate the old generation, publish, then release-gate controls that are
+  physically down. A game change therefore cannot let a held button fire the new
+  game's action.
+- **Two signals, one wiring.** The engine push and the Settings game row are
+  (re)synced on `currentGameChanged` **and** on `gamesChanged`. The second one is
+  not redundant: `CurrentGameService::update()` reports no state change when the
+  SAME game row merely learns or changes its stored executable path
+  (`rememberGameExecutable()` from a foreground poll, a capture commit or a
+  metadata repair), and that is exactly the moment a per-game assignment becomes
+  resolvable. `GameSessionPresetBinder::wireGameSessionContext()` holds both
+  connections in one place; `App.cpp` and `tst_gamesessionpresets` call the same
+  function, so a dropped connection fails a test instead of the app. An unchanged
+  key is one string compare, so the overlap between the signals is free.
+- **The overlay is not a session event.** GameHQ's own window is an excluded
+  process, so while the overlay is open the foreground detector reports no game -
+  but the game process is still running, so the session keeps it (foreground-miss
+  grace plus the running-process fallback). Opening, browsing or closing the
+  overlay therefore never retargets, clears or re-resolves the mapping game
+  context, and `InputEngine::setOverlayVisible()` does not touch the winner.
+- **Exit is removal, not replacement.** When the game stops, the session clears
+  and the engine re-resolves: the `game` row is simply no longer a winner, and
+  the next rule in the chain (controller, then group default, then built-in)
+  serves through the same resolver. No table is replaced and no rule is rewritten.
+- **Broken game rows fall through and say so.** A game row whose preset is gone
+  is skipped once, reported through `staleReports()` as `missing_preset`, and
+  surfaced in Settings as "the preset assigned to this game no longer exists". A
+  row whose preset belongs to ANOTHER device group reports `wrong_group` and gets
+  its own sentence ("... is for a different device type. Choose another one.") -
+  never the normal "uses the preset" line with an empty name. Both states reuse
+  the row's warning tone, are named by the model (never a silent fallback), and
+  leave the chain below the game serving.
+- **Settings surface.** The game row (`MappingPresetModel` game target) offers the
+  same three choices as the device picker - follow the chain below the game, an
+  explicit built-in-defaults winner, or a named preset - and writes the row
+  through the same typed-assignment API, with the one runtime seam called exactly
+  once per successful write. It is hidden while no game is in session, because a
+  game assignment without a game has no key to write; a refused write snaps the
+  picker back to the model.
+- **Boundary (open decision, not a promise).** The session is the identity the
+  overlay already binds to, i.e. a game the app can resolve (name match, running
+  process, row present). A game that has never been captured can still hold an
+  assignment - the row exists via `rememberGameExecutable()` and resolution
+  matches it by key - but it cannot become the session game, so that assignment is
+  inert until the game has a capture and the session can hold it. Widening the
+  session to never-captured foreground games is a change to the overlay's own
+  contract and is deliberately NOT part of this leaf.
+
 ## 8. Relationship to games
 
 - Presets are **global** user data, not per-game files: a game never owns mappings; it only has
@@ -434,8 +493,10 @@ re-resolve; it never decides a winner itself, and the runtime seam is exactly
   row id.
 - Game start/exit are exactly the switch events of section 5; with the overlay open they must not
   close it (`cpo-p07`).
-- Games without captures are supported: `rememberGameExecutable()` already creates their row, and
-  the key above does not depend on captures existing.
+- Games without captures are supported by storage and by resolution: `rememberGameExecutable()`
+  already creates their row, an assignment can be written for them, and matching is by executable
+  key - it never requires captures to exist. What the *runtime* game context follows is the
+  session game (section 7c).
 
 ## 9. Exclusions — what a preset does not own
 

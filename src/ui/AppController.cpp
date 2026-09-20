@@ -511,6 +511,16 @@ bool AppController::currentGameAvailable() const
     return m_currentGame->currentGameAvailable();
 }
 
+QString AppController::currentGameExecutableKey() const
+{
+    return m_currentGame->currentGameExecutableKey();
+}
+
+QString AppController::currentGameName() const
+{
+    return m_currentGame->currentGameName();
+}
+
 int AppController::overlayGameId() const
 {
     return m_currentGame->currentGameId();

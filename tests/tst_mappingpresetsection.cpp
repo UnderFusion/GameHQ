@@ -8,6 +8,7 @@
 // uses, and asserts what the controls actually contain.
 
 #include "input/MappingPresetModel.h"
+#include "input/MappingAssignmentResolver.h"
 #include "storage/CaptureDatabase.h"
 
 #include <QDir>
@@ -17,6 +18,8 @@
 #include <QQmlComponent>
 #include <QQmlContext>
 #include <QQmlEngine>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 #include <QTemporaryDir>
 #include <QTest>
 
@@ -51,11 +54,20 @@ private:
     QScopedPointer<MappingPresetModel> m_model;
     QScopedPointer<QObject> m_section;
     QUrl m_sectionUrl;
+    QString m_dbPath;
     int m_sequence = 0;
 
     QObject *loadSection();
     QObject *combo(const char *objectName) const;
     QString firstPresetId() const;
+    // The session game this suite simulates: one canonical key, so the raw row
+    // written below and the model's game target cannot disagree.
+    void applyRacerGameTarget();
+    QString racerGameKey() const;
+    // Storage refuses a cross-group game assignment - it is only reachable through
+    // a database damaged outside the app - so that fixture row is written out of
+    // band, the same approach as tst_gamesessionpresets.
+    bool rawExec(const QString& sql);
 
 private slots:
     void initTestCase();
@@ -64,6 +76,8 @@ private slots:
     void libraryPickerTracksLibraryMutations();
     void librarySelectionDoesNotChangeAssignmentOrRuntime();
     void deleteDialogRefusesWhatStorageWouldRefuse();
+    void gameRowFollowsTheSessionAndTheModel();
+    void gameRowNamesAWrongGroupAssignment();
 };
 
 void MappingPresetSectionTest::initTestCase()
@@ -124,6 +138,7 @@ void MappingPresetSectionTest::init()
 
     // A fresh library per case: every case mutates presets and assignments.
     const QString file = m_dir.filePath(QStringLiteral("section_%1.db").arg(++m_sequence));
+    m_dbPath = file;
     m_database.reset(new CaptureDatabase(file, nullptr));
     QVERIFY(m_database->open());
     m_model.reset(new MappingPresetModel(m_database.data()));
@@ -160,6 +175,41 @@ QString MappingPresetSectionTest::firstPresetId() const
     return presets.isEmpty()
                ? QString()
                : presets.first().toMap().value(QStringLiteral("id")).toString();
+}
+
+void MappingPresetSectionTest::applyRacerGameTarget()
+{
+    m_model->setGameTargetProvider([] {
+        MappingPresetModel::GameTarget target;
+        target.key = MappingAssignmentResolver::canonicalGameKey(
+            QStringLiteral("C:\\Games\\Racer\\Racer.exe"));
+        target.label = QStringLiteral("Racer");
+        return target;
+    });
+    m_model->refreshGameTarget();
+}
+
+QString MappingPresetSectionTest::racerGameKey() const
+{
+    return MappingAssignmentResolver::canonicalGameKey(
+        QStringLiteral("C:\\Games\\Racer\\Racer.exe"));
+}
+
+bool MappingPresetSectionTest::rawExec(const QString& sql)
+{
+    bool ok = false;
+    {
+        QSqlDatabase raw = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"),
+                                                     QStringLiteral("section-raw"));
+        raw.setDatabaseName(m_dbPath);
+        if (raw.open()) {
+            QSqlQuery query(raw);
+            ok = query.exec(sql);
+            raw.close();
+        }
+    }
+    QSqlDatabase::removeDatabase(QStringLiteral("section-raw"));
+    return ok;
 }
 
 void MappingPresetSectionTest::assignmentPickerIsPopulatedAndFollowsTheLibrary()
@@ -277,6 +327,57 @@ void MappingPresetSectionTest::librarySelectionDoesNotChangeAssignmentOrRuntime(
     QTRY_COMPARE(libraryCombo->property("currentIndex").toInt(), secondIndex);
 }
 
+void MappingPresetSectionTest::gameRowFollowsTheSessionAndTheModel()
+{
+    QObject *gameCombo = combo("presetGameCombo");
+    QVERIFY(gameCombo);
+
+    // No game in session: only the two virtual choices exist, and a commit is
+    // refused (there is no game key to write a row for).
+    QVERIFY(!m_model->gameAvailable());
+    QCOMPARE(m_section->property("gameOptions").toList().size(), 2);
+    QCOMPARE(gameCombo->property("count").toInt(), 2);
+    QVERIFY(QMetaObject::invokeMethod(gameCombo, "commit", Q_ARG(QVariant, 0)));
+    QCOMPARE(m_model->noticeKind(), QStringLiteral("game_unavailable"));
+    m_model->clearNotice();
+
+    // The session game arrives: the model publishes it, the picker is rebuilt,
+    // and the row still follows the chain below the game.
+    m_model->setGameTargetProvider([] {
+        MappingPresetModel::GameTarget target;
+        target.key = MappingAssignmentResolver::canonicalGameKey(
+            QStringLiteral("C:\\Games\\Racer\\Racer.exe"));
+        target.label = QStringLiteral("Racer");
+        return target;
+    });
+    m_model->refreshGameTarget();
+    QVERIFY(m_model->gameAvailable());
+    QTRY_COMPARE(m_section->property("gameOptions").toList().size(), 2);
+    QTRY_COMPARE(gameCombo->property("currentIndex").toInt(), 0);
+
+    // Assigning through the real control writes the game row and nothing else.
+    QVERIFY(m_model->createPreset(QStringLiteral("Racer preset")));
+    const QString preset = firstPresetId();
+    QVERIFY(!preset.isEmpty());
+    int runtimeRefreshes = 0;
+    m_model->setRuntimeRefresh([&runtimeRefreshes] { ++runtimeRefreshes; });
+    QTRY_COMPARE(m_section->property("gameOptions").toList().size(), 3);
+    QVERIFY(QMetaObject::invokeMethod(gameCombo, "commit", Q_ARG(QVariant, 2)));
+    QCOMPARE(m_model->gameAssignedPresetId(), preset);
+    QCOMPARE(m_model->gameAssignedPresetName(), QStringLiteral("Racer preset"));
+    // The device assignment is a different question and did not move.
+    QVERIFY(m_model->assignedToFallback());
+    QCOMPARE(runtimeRefreshes, 1);
+
+    // A refused write (an open draft) leaves the game row alone and the control
+    // snaps back to the model instead of showing the refused choice.
+    m_model->setPendingEditProvider([] { return true; });
+    QVERIFY(QMetaObject::invokeMethod(gameCombo, "commit", Q_ARG(QVariant, 0)));
+    QCOMPARE(m_model->gameAssignedPresetId(), preset);
+    QCOMPARE(runtimeRefreshes, 1);
+    QTRY_COMPARE(gameCombo->property("currentIndex").toInt(), 2);
+}
+
 void MappingPresetSectionTest::deleteDialogRefusesWhatStorageWouldRefuse()
 {
     const QString dialogUrl = QString(m_sectionUrl.toString())
@@ -313,6 +414,62 @@ void MappingPresetSectionTest::deleteDialogRefusesWhatStorageWouldRefuse()
     dialog->setProperty("candidates", candidates);
     QVERIFY(dialog->property("blocked").toBool());
     QVERIFY(!dialog->property("needsReassign").toBool());
+}
+
+// The game row must NAME a wrong-group assignment instead of falling through to
+// the normal sentence with an empty preset name (exactly what the cpo-p07 review
+// found in the shipped QML). The row publishes its state, so the check does not
+// depend on a translated sentence.
+void MappingPresetSectionTest::gameRowNamesAWrongGroupAssignment()
+{
+    applyRacerGameTarget();
+    QVERIFY(m_model->gameAvailable());
+
+    QObject *gameRow = m_section->findChild<QObject *>(QStringLiteral("presetGameRow"));
+    QVERIFY(gameRow);
+    QVERIFY(gameRow->property("visible").toBool());
+
+    // A real controller preset on the game: the normal state, whose sentence a
+    // broken row must NOT render.
+    QVERIFY(m_model->createPreset(QStringLiteral("Racer preset")));
+    const QString controllerPreset = firstPresetId();
+    QVERIFY(!controllerPreset.isEmpty());
+    QVERIFY(m_model->applyGameAssignment(controllerPreset));
+    QTRY_COMPARE(gameRow->property("assignmentState").toString(),
+                 QStringLiteral("preset"));
+    const QString normalDescription = gameRow->property("description").toString();
+    QVERIFY(!normalDescription.isEmpty());
+    QCOMPARE(gameRow->property("tone").toString(), QStringLiteral("normal"));
+
+    // A keyboard preset for the same game. Storage refuses that pairing, so the
+    // damaged row is written out of band - like a database repaired outside the app.
+    m_model->setDeviceGroup(QStringLiteral("keyboard"));
+    QVERIFY(m_model->createPreset(QStringLiteral("Keys")));
+    const QString keyboardPreset = firstPresetId();
+    QVERIFY(!keyboardPreset.isEmpty());
+    m_model->setDeviceGroup(QStringLiteral("controller"));
+    QVERIFY(rawExec(QStringLiteral(
+        "INSERT OR REPLACE INTO mapping_assignments "
+        "(device_group, target_kind, target_key, preset_id, game_row_id, created_at, updated_at) "
+        "VALUES ('controller', 'game', '%1', '%2', NULL, '2026-09-20', '2026-09-20')")
+                        .arg(racerGameKey(), keyboardPreset)));
+    m_model->refreshGameTarget();
+
+    QVERIFY(m_model->gameAssignedPresetWrongGroup());
+    QCOMPARE(m_model->gameAssignedPresetId(), keyboardPreset);
+    QTRY_COMPARE(gameRow->property("assignmentState").toString(),
+                 QStringLiteral("wrong_group"));
+    // The row says so: its own sentence, its own warning tone - never the normal
+    // "uses the preset \"\"" sentence.
+    QCOMPARE(gameRow->property("tone").toString(), QStringLiteral("warning"));
+    const QString wrongDescription = gameRow->property("description").toString();
+    QVERIFY(!wrongDescription.isEmpty());
+    QVERIFY(wrongDescription != normalDescription);
+
+    // The picker stays available so the user can choose another preset.
+    QObject *gameCombo = combo("presetGameCombo");
+    QVERIFY(gameCombo);
+    QVERIFY(gameCombo->property("count").toInt() >= 2);
 }
 
 QTEST_MAIN(MappingPresetSectionTest)

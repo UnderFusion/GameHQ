@@ -87,6 +87,39 @@ SettingsSection {
         root.libraryOptions = list
     }
 
+    // The game picker (cpo-p07): the same three kinds of choice as the device
+    // picker, but scoped to the game the user is in right now. Only visible while
+    // a game is in session - a game assignment without a game would have no key
+    // to write, and the model refuses it rather than guessing.
+    property var gameOptions: []
+
+    function rebuildGameOptions() {
+        var list = [
+            {
+                //% "Follow the chain below the game"
+                label: qsTrId("gamehq.settings.presets.game.fallback"),
+                value: ""
+            },
+            {
+                //% "Built-in defaults"
+                label: qsTrId("gamehq.settings.presets.assignment.builtin"),
+                value: "@builtin"
+            }
+        ]
+        const entries = root.presets.presets
+        for (var i = 0; i < entries.length; ++i)
+            list.push({ label: entries[i].name, value: entries[i].id })
+        const assigned = root.presets.gameAssignedPresetId
+        if (assigned.length > 0 && !root.hasOptionValue(list, assigned)) {
+            list.push({
+                //% "%1 (not in this group)"
+                label: qsTrId("gamehq.settings.presets.game.missing_option").arg(assigned),
+                value: assigned
+            })
+        }
+        root.gameOptions = list
+    }
+
     function unavailableReasonText() {
         if (root.presets.targetUnavailableReason === "weak_identity") {
             //% "This controller has no stable identity yet, so a per-controller preset cannot be saved. Connect it again or edit all controllers."
@@ -115,10 +148,13 @@ SettingsSection {
     Component.onCompleted: {
         rebuildOptions()
         rebuildLibraryOptions()
-        // Both pickers read their current value from `defaultValue` at refresh
-        // time, so they must be pointed at the model once the options exist.
+        rebuildGameOptions()
+        // All three pickers read their current value from `defaultValue` at
+        // refresh time, so they must be pointed at the model once the options
+        // exist.
         assignmentCombo.refresh()
         libraryCombo.refresh()
+        gameCombo.refresh()
     }
 
     // Deterministic, collision-free suggestions for the name dialogs: a gamepad
@@ -155,16 +191,26 @@ SettingsSection {
         function onPresetsChanged() {
             root.rebuildOptions()
             root.rebuildLibraryOptions()
-            // Replacing the model can reset a control's current row, so both
+            root.rebuildGameOptions()
+            // Replacing the model can reset a control's current row, so all
             // pickers are re-pointed at the model once it has consumed the list.
             Qt.callLater(function() {
                 assignmentCombo.refresh()
                 libraryCombo.refresh()
+                gameCombo.refresh()
             })
         }
         function onAssignmentChanged() {
             root.rebuildOptions()
             assignmentCombo.refresh()
+        }
+        function onGameTargetChanged() {
+            root.rebuildGameOptions()
+            Qt.callLater(function() { gameCombo.refresh() })
+        }
+        function onGameAssignmentChanged() {
+            root.rebuildGameOptions()
+            gameCombo.refresh()
         }
         function onSelectionChanged() { libraryCombo.refresh() }
     }
@@ -201,6 +247,66 @@ SettingsSection {
                 // A refused change (open draft, no persistable target) leaves
                 // the assignment where it was, so snap back to the truth.
                 Qt.callLater(function() { assignmentCombo.refresh() })
+            }
+        }
+    }
+
+    SettingsRow {
+        // The game row (cpo-p07). It sits BELOW the device assignment because it
+        // answers a different question - what this game runs - and it only exists
+        // while a game is in session.
+        objectName: "presetGameRow"
+        visible: root.presets.gameAvailable
+        //% "Mappings used by this game"
+        label: qsTrId("gamehq.settings.presets.game.label")
+        // Which of the five assignment states the row is in: it drives the tone
+        // and the sentence below, and it is what the QML suite asserts (a state,
+        // not a translated sentence).
+        readonly property string assignmentState:
+            root.presets.gameAssignedToFallback ? "fallback"
+            : root.presets.gameAssignedToBuiltin ? "builtin"
+            : root.presets.gameAssignedPresetMissing ? "missing"
+            : root.presets.gameAssignedPresetWrongGroup ? "wrong_group"
+            : "preset"
+        // A broken row (the preset is gone, or it is another device group's
+        // preset) is a warning: the chain below the game is serving, not this row.
+        tone: assignmentState === "missing" || assignmentState === "wrong_group"
+              ? "warning" : "normal"
+        description: {
+            if (assignmentState === "fallback") {
+                //% "No preset is assigned to \"%1\": it follows this device's mappings."
+                return qsTrId("gamehq.settings.presets.game.fallback_description")
+                       .arg(root.presets.gameLabel)
+            }
+            if (assignmentState === "builtin") {
+                //% "Built-in defaults replace every other layer while \"%1\" is running."
+                return qsTrId("gamehq.settings.presets.game.builtin_description")
+                       .arg(root.presets.gameLabel)
+            }
+            if (assignmentState === "missing") {
+                //% "The preset assigned to this game no longer exists. Choose another one."
+                return qsTrId("gamehq.settings.presets.game.missing_description")
+            }
+            if (assignmentState === "wrong_group") {
+                //% "The preset assigned to this game is for a different device type. Choose another one."
+                return qsTrId("gamehq.settings.presets.game.wrong_group_description")
+            }
+            //% "\"%1\" uses the preset \"%2\" while it is running."
+            return qsTrId("gamehq.settings.presets.game.preset_description")
+                   .arg(root.presets.gameLabel)
+                   .arg(root.presets.gameAssignedPresetName)
+        }
+        SettingsCombo {
+            id: gameCombo
+            objectName: "presetGameCombo"
+            configKey: ""
+            options: root.gameOptions
+            defaultValue: root.presets.gameAssignedPresetId
+            onValueCommitted: function(value) {
+                root.presets.applyGameAssignment(value)
+                // A refused change (open draft, no game in session) leaves the
+                // assignment where it was, so snap back to the truth.
+                Qt.callLater(function() { gameCombo.refresh() })
             }
         }
     }

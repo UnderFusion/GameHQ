@@ -83,6 +83,14 @@ QString noticeBuiltinReadOnly()
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.builtin_read_only"),
                            "Built-in defaults cannot be renamed or deleted.");
 }
+//: Shown when a game assignment was requested while no game is in session.
+//% "Start a game first: a game assignment needs to know which game it is for."
+QString noticeGameUnavailable()
+{
+    return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.game_unavailable"),
+                           "Start a game first: a game assignment needs to know which game "
+                           "it is for.");
+}
 //: Shown when an edited binding cannot be stored as preset content.
 //% "That assignment cannot be stored as a preset row."
 QString noticeEditInvalid()
@@ -182,6 +190,80 @@ void MappingPresetModel::setPinnedProfileProvider(PinProvider provider)
     m_pinProvider = std::move(provider);
 }
 
+void MappingPresetModel::setGameTargetProvider(GameTargetProvider provider)
+{
+    m_gameTargetProvider = std::move(provider);
+    rebuildGameAssignment();
+}
+
+MappingPresetModel::GameTarget MappingPresetModel::gameTarget() const
+{
+    if (m_gameTargetProvider) {
+        const GameTarget target = m_gameTargetProvider();
+        if (!target.key.isEmpty())
+            return target;
+    }
+    return GameTarget();
+}
+
+bool MappingPresetModel::gameAvailable() const
+{
+    return !m_gameKey.isEmpty();
+}
+
+void MappingPresetModel::refreshGameTarget()
+{
+    rebuildGameAssignment();
+}
+
+void MappingPresetModel::rebuildGameAssignment()
+{
+    const GameTarget target = gameTarget();
+    const bool targetChanged = target.key != m_gameKey || target.label != m_gameLabel
+        || target.rowId != m_gameRowId;
+    m_gameKey = target.key;
+    m_gameLabel = target.label;
+    m_gameRowId = target.rowId;
+
+    QString id;
+    QString name;
+    bool missing = false;
+    bool wrongGroup = false;
+    if (!m_gameKey.isEmpty()) {
+        const MappingAssignment assignment =
+            m_database->mappingAssignment(m_deviceGroup, QStringLiteral("game"), m_gameKey);
+        if (!assignment.presetId.isEmpty()) {
+            if (CaptureDatabase::isBuiltinMappingPresetId(assignment.presetId)) {
+                id = builtinChoiceToken();
+            } else {
+                const MappingPreset preset = m_database->mappingPreset(assignment.presetId);
+                if (preset.id.isEmpty()) {
+                    // The resolver steps down and reports this once; Settings must
+                    // say it out loud instead of showing a silent fallback.
+                    missing = true;
+                    id = assignment.presetId;
+                } else if (preset.deviceGroup != m_deviceGroup) {
+                    wrongGroup = true;
+                    id = assignment.presetId;
+                } else {
+                    id = assignment.presetId;
+                    name = preset.name;
+                }
+            }
+        }
+    }
+    const bool changed = id != m_gameAssignedPresetId || name != m_gameAssignedPresetName
+        || missing != m_gameAssignedMissing || wrongGroup != m_gameAssignedWrongGroup;
+    m_gameAssignedPresetId = id;
+    m_gameAssignedPresetName = name;
+    m_gameAssignedMissing = missing;
+    m_gameAssignedWrongGroup = wrongGroup;
+    if (targetChanged)
+        emit gameTargetChanged();
+    if (changed)
+        emit gameAssignmentChanged();
+}
+
 void MappingPresetModel::setPendingEditProvider(std::function<bool()> provider)
 {
     m_pendingEditProvider = std::move(provider);
@@ -213,6 +295,7 @@ void MappingPresetModel::refresh()
 {
     rebuildPresets();
     rebuildAssignment();
+    rebuildGameAssignment();
     rebuildUses();
 }
 
@@ -586,6 +669,51 @@ bool MappingPresetModel::applyAssignment(const QString& presetId)
     if (!presetId.isEmpty() && presetId != builtinChoiceToken())
         m_selectedPresetId = presetId;
     refresh();
+    notifyRuntimeChange();
+    return true;
+}
+
+bool MappingPresetModel::applyGameAssignment(const QString& presetId)
+{
+    if (m_gameKey.isEmpty()) {
+        return setNotice(QStringLiteral("game_unavailable"), noticeGameUnavailable());
+    }
+    if (guarded())
+        return false;
+
+    // The session can have moved on between the click and the write; the row is
+    // written for the game the model currently shows, and the key is the
+    // canonical one storage normalizes with.
+    const GameTarget t = gameTarget();
+    if (t.key.isEmpty())
+        return setNotice(QStringLiteral("game_unavailable"), noticeGameUnavailable());
+
+    bool ok = false;
+    if (presetId.isEmpty()) {
+        // "Follow the chain below the game": drop the game row and let the next
+        // winner serve.
+        ok = m_database->clearMappingAssignment(m_deviceGroup, QStringLiteral("game"), t.key);
+    } else if (presetId == builtinChoiceToken()) {
+        // "Built-in defaults for this game": the explicit empty winner, created
+        // lazily inside the same transaction as the assignment.
+        ok = !m_database->assignMappingTargetToBuiltin(m_deviceGroup, QStringLiteral("game"),
+                                                       t.key, t.rowId)
+                  .isEmpty();
+    } else {
+        const MappingPreset preset = m_database->mappingPreset(presetId);
+        if (preset.id.isEmpty() || preset.deviceGroup != m_deviceGroup)
+            return setNotice(QStringLiteral("unknown_preset"),
+                             noticeUnknownPreset());
+        ok = m_database->setMappingAssignment(m_deviceGroup, QStringLiteral("game"), t.key,
+                                              preset.id, t.rowId);
+    }
+    if (!ok) {
+        return setNotice(QStringLiteral("write_failed"),
+                         noticeWriteFailed());
+    }
+    refresh();
+    // A game row is the highest precedence for a running game, so this can change
+    // an effective table: re-resolve at a safe input boundary.
     notifyRuntimeChange();
     return true;
 }

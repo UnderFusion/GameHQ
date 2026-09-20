@@ -78,6 +78,12 @@ public:
     QString category() const { return m_category; }
     int gameId() const { return m_gameId; }
     int currentGameId() const;
+    // cpo-p07: the session game's canonical executable key and display name. The
+    // mapping game context and the Settings game row both read the SESSION here -
+    // an open overlay is not a game-session transition, so it cannot retarget
+    // either of them.
+    QString currentGameExecutableKey() const;
+    QString currentGameName() const;
     bool currentGameAvailable() const;
     int overlayGameId() const;
     QStringList watchedFolders() const;

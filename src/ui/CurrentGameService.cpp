@@ -93,6 +93,27 @@ bool CurrentGameService::update(const QString& gameName, const QString& executab
     return stateChanged;
 }
 
+GameEntry CurrentGameService::currentGameEntry() const
+{
+    if (!m_db || m_currentGameId < 0)
+        return GameEntry();
+    for (const GameEntry& game : m_db->listGames()) {
+        if (game.id == m_currentGameId)
+            return game;
+    }
+    return GameEntry();
+}
+
+QString CurrentGameService::currentGameExecutableKey() const
+{
+    return GameIdentity::executableKey(currentGameEntry().executablePath);
+}
+
+QString CurrentGameService::currentGameName() const
+{
+    return currentGameEntry().name;
+}
+
 int CurrentGameService::runningCapturedGameFallback() const
 {
     const QSet<QString> running = runningExecutablePaths();

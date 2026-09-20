@@ -56,6 +56,14 @@ class MappingPresetModel : public QObject
     Q_PROPERTY(bool assignedToBuiltin READ assignedToBuiltin NOTIFY assignmentChanged)
     Q_PROPERTY(bool assignedPresetMissing READ assignedPresetMissing NOTIFY assignmentChanged)
     Q_PROPERTY(bool assignedPresetWrongGroup READ assignedPresetWrongGroup NOTIFY assignmentChanged)
+    Q_PROPERTY(bool gameAvailable READ gameAvailable NOTIFY gameTargetChanged)
+    Q_PROPERTY(QString gameLabel READ gameLabel NOTIFY gameTargetChanged)
+    Q_PROPERTY(QString gameAssignedPresetId READ gameAssignedPresetId NOTIFY gameAssignmentChanged)
+    Q_PROPERTY(QString gameAssignedPresetName READ gameAssignedPresetName NOTIFY gameAssignmentChanged)
+    Q_PROPERTY(bool gameAssignedToFallback READ gameAssignedToFallback NOTIFY gameAssignmentChanged)
+    Q_PROPERTY(bool gameAssignedToBuiltin READ gameAssignedToBuiltin NOTIFY gameAssignmentChanged)
+    Q_PROPERTY(bool gameAssignedPresetMissing READ gameAssignedPresetMissing NOTIFY gameAssignmentChanged)
+    Q_PROPERTY(bool gameAssignedPresetWrongGroup READ gameAssignedPresetWrongGroup NOTIFY gameAssignmentChanged)
     Q_PROPERTY(int controllerUses READ controllerUses NOTIFY usesChanged)
     Q_PROPERTY(int groupDefaultUses READ groupDefaultUses NOTIFY usesChanged)
     Q_PROPERTY(int gameUses READ gameUses NOTIFY usesChanged)
@@ -97,6 +105,17 @@ public:
     static Target targetFromProvenance(const QString& deviceGroup, const QString& pinnedProfile,
                                        const Provenance& provenance);
     using PinProvider = std::function<QString()>;
+    // cpo-p07: the game the user is in. The key is the canonical executable key
+    // (GameIdentity::executableKey); an empty key means "no game in session", and
+    // then the game assignment row is not offered at all. This is a SESSION
+    // identity, never a foreground-window guess - see GameSessionPresetBinder.
+    struct GameTarget
+    {
+        QString key;     // canonical game key, "" when no game is in session
+        QString label;   // display name for the UI
+        int rowId = -1;  // games row id, auxiliary cache for the assignment row
+    };
+    using GameTargetProvider = std::function<GameTarget()>;
     // One requested (action, slot) change; the unit the editor hands over. The
     // preset decision (which preset owns the target, or adoption) stays here.
     struct ContentEdit
@@ -122,6 +141,13 @@ public:
     // The cpo-c05 pin: the editor's explicitly selected controller profile, or
     // empty while editing is shared (group-wide).
     void setPinnedProfileProvider(PinProvider provider);
+    // The session game, as the app sees it. Without a provider there is simply
+    // no game target to offer (tests, headless tools): the game surface stays
+    // hidden instead of inventing a game.
+    void setGameTargetProvider(GameTargetProvider provider);
+    // Re-read the session game and re-publish the game assignment state. The app
+    // calls it on every session change; it never touches a preset or the runtime.
+    Q_INVOKABLE void refreshGameTarget();
     // True while the binding editor holds an unsaved draft or an active
     // capture. Guarded operations are refused, never applied destructively.
     void setPendingEditProvider(std::function<bool()> provider);
@@ -150,6 +176,17 @@ public:
     bool assignedToBuiltin() const;
     bool assignedPresetMissing() const;
     bool assignedPresetWrongGroup() const;
+    bool gameAvailable() const;
+    QString gameLabel() const { return m_gameLabel; }
+    QString gameAssignedPresetId() const { return m_gameAssignedPresetId; }
+    QString gameAssignedPresetName() const { return m_gameAssignedPresetName; }
+    bool gameAssignedToFallback() const { return m_gameAssignedPresetId.isEmpty(); }
+    bool gameAssignedToBuiltin() const
+    {
+        return m_gameAssignedPresetId == builtinChoiceToken();
+    }
+    bool gameAssignedPresetMissing() const { return m_gameAssignedMissing; }
+    bool gameAssignedPresetWrongGroup() const { return m_gameAssignedWrongGroup; }
     int controllerUses() const { return m_uses.controllerUses; }
     int groupDefaultUses() const { return m_uses.groupDefaultUses; }
     int gameUses() const { return m_uses.gameUses; }
@@ -178,6 +215,12 @@ public:
     // "" = remove the assignment (follow fallback); "@builtin" = explicit empty
     // winner; anything else = assign that preset.
     Q_INVOKABLE bool applyAssignment(const QString& presetId);
+    // The game assignment of the session game, same token semantics as
+    // applyAssignment: "" follows the chain below the game, "@builtin" is the
+    // explicit built-in-defaults winner for this game, anything else assigns that
+    // preset. Refused with a notice when no game is in session. The game is the
+    // HIGHEST precedence in the resolver; this writes the row, never a rule.
+    Q_INVOKABLE bool applyGameAssignment(const QString& presetId);
     // Atomic duplicate + assign for the current target ("duplicate for this
     // controller") - the explicit copy-on-write path for a shared preset.
     Q_INVOKABLE bool duplicateSelectedForTarget(const QString& name);
@@ -189,6 +232,8 @@ signals:
     void selectionChanged();
     void targetChanged();
     void assignmentChanged();
+    void gameTargetChanged();
+    void gameAssignmentChanged();
     void usesChanged();
     void pendingEditChanged();
     void noticeChanged();
@@ -206,6 +251,8 @@ private:
     QString pinnedProfile() const { return m_pinProvider ? m_pinProvider() : QString(); }
     void rebuildPresets();
     void rebuildAssignment();
+    void rebuildGameAssignment();
+    GameTarget gameTarget() const;
     void rebuildUses();
     void notifyRuntimeChange();
     bool guarded();
@@ -229,6 +276,7 @@ private:
         m_effectiveTable;
     TargetProvider m_targetProvider;
     PinProvider m_pinProvider;
+    GameTargetProvider m_gameTargetProvider;
     std::function<bool()> m_pendingEditProvider;
 
     QString m_deviceGroup = QStringLiteral("controller");
@@ -238,6 +286,13 @@ private:
     QString m_assignedPresetName;
     bool m_assignedMissing = false;
     bool m_assignedWrongGroup = false;
+    QString m_gameKey;
+    QString m_gameLabel;
+    int m_gameRowId = -1;
+    QString m_gameAssignedPresetId;
+    QString m_gameAssignedPresetName;
+    bool m_gameAssignedMissing = false;
+    bool m_gameAssignedWrongGroup = false;
     Uses m_uses;
     QString m_notice;
     QString m_noticeKind;

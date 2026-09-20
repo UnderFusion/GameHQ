@@ -683,6 +683,7 @@ target_link_libraries(tst_mappingpresetstorage PRIVATE Qt6::Sql Qt6::Gui Qt6::Wi
 gamehq_add_test(tst_mappingpresetmodel
     tst_mappingpresetmodel.cpp
     "${CMAKE_SOURCE_DIR}/src/input/MappingPresetModel.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/MappingAssignmentResolver.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingResolver.cpp"
@@ -709,6 +710,7 @@ target_link_libraries(tst_mappingpresetmodel PRIVATE Qt6::Sql Qt6::Gui Qt6::Widg
 gamehq_add_test(tst_mappingpresetsection
     tst_mappingpresetsection.cpp
     "${CMAKE_SOURCE_DIR}/src/input/MappingPresetModel.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/MappingAssignmentResolver.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingResolver.cpp"
@@ -1233,6 +1235,21 @@ get_target_property(PRESET_SWITCH_LIBS tst_inputengineshutdown LINK_LIBRARIES)
 target_link_libraries(tst_presetswitch PRIVATE ${PRESET_SWITCH_LIBS})
 target_include_directories(tst_presetswitch PRIVATE "${CMAKE_SOURCE_DIR}/third_party/gameinput/include")
 target_compile_definitions(tst_presetswitch PRIVATE UNICODE _UNICODE)
+
+# cpo-p07: the game session IS the mapping game context. Same engine/runtime
+# sources as the switch suite, plus the real CurrentGameService session identity,
+# the GameDetector it reads, and the session->engine binder.
+gamehq_add_test(tst_gamesessionpresets
+    tst_gamesessionpresets.cpp
+    ${PRESET_SWITCH_SOURCES}
+    "${CMAKE_SOURCE_DIR}/src/input/GameSessionPresetBinder.cpp"
+    "${CMAKE_SOURCE_DIR}/src/ui/CurrentGameService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/games/GameDetector.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/ExternalGameContext.cpp")
+target_link_libraries(tst_gamesessionpresets PRIVATE ${PRESET_SWITCH_LIBS} version)
+target_include_directories(tst_gamesessionpresets PRIVATE
+    "${CMAKE_SOURCE_DIR}/third_party/gameinput/include")
+target_compile_definitions(tst_gamesessionpresets PRIVATE UNICODE _UNICODE)
 
 # p3-4: real Media Foundation decode/export plus worker handoff and gallery identity.
 get_target_property(GAMEHQ_CAPTURE_TEST_SOURCES tst_captureacknowledgement SOURCES)

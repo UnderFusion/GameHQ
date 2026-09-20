@@ -18,6 +18,7 @@ class HotkeyManager;
 class OverlayManager;
 class SoundEngine;
 class InputEngine;
+class GameSessionPresetBinder;
 class ScreenshotService;
 class FramePumpService;
 class NotificationCenter;
@@ -66,6 +67,8 @@ private:
     std::unique_ptr<OverlayManager> m_overlay;
     std::unique_ptr<SoundEngine> m_sounds;
     std::unique_ptr<InputEngine> m_input;
+    // cpo-p07: the game session -> mapping game context seam.
+    std::unique_ptr<GameSessionPresetBinder> m_gameSessionPresets;
     std::unique_ptr<ScreenshotService> m_screenshots;
     std::unique_ptr<FramePumpService> m_framePump;
     std::unique_ptr<NotificationCenter> m_notify;

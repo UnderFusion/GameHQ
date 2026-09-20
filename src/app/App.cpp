@@ -11,6 +11,8 @@
 #include "input/ActionCatalog.h"
 #include "input/InputDiagnostics.h"
 #include "input/InputEngine.h"
+#include "input/GameSessionPresetBinder.h"
+#include "input/MappingPresetModel.h"
 #include "integration/IntegrationService.h"
 #include "localization/LanguageManager.h"
 #include "localization/LanguagePreference.h"
@@ -678,6 +680,32 @@ bool App::init()
     connect(m_overlay.get(), &OverlayManager::visibleChanged, this, [this] {
         m_input->setOverlayVisible(m_overlay->isVisible());
     });
+
+    // cpo-p07: the game session decides the mapping game context. One direction:
+    // the session's canonical key (CurrentGameService, which already survives an
+    // open overlay and a still-running game) is pushed into the engine, and the
+    // engine re-resolves the winners at the cpo-p05 safe switch boundary. Opening
+    // or browsing the overlay is not a game-session transition, so nothing here
+    // can retarget the mappings while the user is in the overlay.
+    m_gameSessionPresets = std::make_unique<GameSessionPresetBinder>(
+        m_input.get(), [this] { return m_controller->currentGameExecutableKey(); });
+    // Settings' game row reads the same session: no second source of truth.
+    m_input->mappingPresetsModel()->setGameTargetProvider([this] {
+        MappingPresetModel::GameTarget target;
+        target.key = m_controller->currentGameExecutableKey();
+        target.label = m_controller->currentGameName();
+        target.rowId = m_controller->currentGameId();
+        return target;
+    });
+    // One shared wiring, so the app and tst_gamesessionpresets drive the same
+    // connections: a session transition AND a metadata-only change of the same
+    // session game (its stored executable path moving under a stable game id)
+    // both re-sync the engine and the Settings game row.
+    GameSessionPresetBinder::wireGameSessionContext(m_controller.get(),
+                                                    m_gameSessionPresets.get(),
+                                                    m_input->mappingPresetsModel());
+    m_input->mappingPresetsModel()->refreshGameTarget();
+    m_gameSessionPresets->syncFromSession();
 
     m_languageManager->setQmlRetranslateCallback([this] { m_engine.retranslate(); });
     qmlRegisterUncreatableType<ReplayBufferState>("GameHQ", 1, 0, "ReplayBufferState",
