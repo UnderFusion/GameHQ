@@ -119,8 +119,10 @@ private slots:
         m_editor->dismissConflict();
         m_editor->dismissCompatibility();
         m_editor->setDeviceGroup(QStringLiteral("controller"));
-        m_editor->setControllerProfile({});
+        // Order matters: while controller-specific editing is pinned a runtime
+        // profile update is ignored, so the pin must be released first (cpo-c05).
         m_editor->setControllerSpecific(false);
+        m_editor->setControllerProfile({});
     }
 
     void cachedPresentationRetranslatesWithoutChangingActionIdentity()
@@ -364,6 +366,89 @@ private slots:
         QVERIFY(!hasBinding(*m_runtime, QStringLiteral("controller"),
                             QStringLiteral("054C:0CE6"),
                             QStringLiteral("desktop.favorite"), 2, custom));
+    }
+
+    // cpo-c05: while controller-specific editing is on, the edited controller
+    // is pinned. A second provider speaking or the selected pad disconnecting
+    // is diagnostics — it must not silently retarget the editor or downgrade
+    // it to the shared profile.
+    void pinnedControllerIgnoresForeignAndDisconnectActivity()
+    {
+        const ControlId::DeviceProfile dualSense{
+            QStringLiteral("Sony Raw Input"), QStringLiteral("054C:0CE6"),
+            ControlId::ControllerFamily::PlayStation, QStringLiteral("DualSense")};
+        const ControlId::DeviceProfile xbox{
+            QStringLiteral("XInput"), QStringLiteral("3537:1004"),
+            ControlId::ControllerFamily::Xbox, QStringLiteral("Xbox-compatible controller")};
+
+        m_editor->setControllerProfile(dualSense);
+        m_editor->setControllerSpecific(true);
+        QVERIFY(m_editor->controllerSpecific());
+
+        m_editor->setControllerProfile(xbox);   // another provider speaks
+        m_editor->setControllerProfile({});     // the selected pad disconnects
+
+        QCOMPARE(m_editor->controllerName(), QStringLiteral("DualSense"));
+        QVERIFY(m_editor->controllerSpecific());
+        QVERIFY(m_editor->controllerSpecificAvailable());
+
+        // Releasing the pin restores following; re-enabling it pins whatever
+        // controller is displayed at that moment.
+        m_editor->setControllerSpecific(false);
+        m_editor->setControllerProfile(xbox);
+        QCOMPARE(m_editor->controllerName(), QStringLiteral("Xbox-compatible controller"));
+        m_editor->setControllerSpecific(true);
+        m_editor->setControllerProfile(dualSense);
+        QCOMPARE(m_editor->controllerName(), QStringLiteral("Xbox-compatible controller"));
+    }
+
+    // cpo-c05: the pinned selection is also the write target — provider activity
+    // arriving mid-edit must not move where the next binding is saved.
+    void pinnedControllerKeepsWritesOnSelectedController()
+    {
+        const ControlId::DeviceProfile dualSense{
+            QStringLiteral("Sony Raw Input"), QStringLiteral("054C:0CE6"),
+            ControlId::ControllerFamily::PlayStation, QStringLiteral("DualSense")};
+        const ControlId::DeviceProfile winmm{
+            QStringLiteral("WinMM joystick"), QStringLiteral("winmm.slot0"),
+            ControlId::ControllerFamily::Xbox, QStringLiteral("WinMM joystick")};
+
+        m_editor->setControllerProfile(dualSense);
+        m_editor->setControllerSpecific(true);
+
+        const QString first = ControlId::genericButton(17);
+        m_editor->beginCapture(QStringLiteral("desktop.menu"), 2);
+        QVERIFY(m_editor->captureInput(QStringLiteral("controller"), first,
+                                       QStringLiteral("Button 17")));
+        QVERIFY(!m_editor->conflictPending());
+        QVERIFY(!m_editor->compatibilityPending());
+        QVERIFY(hasBinding(*m_runtime, QStringLiteral("controller"),
+                           dualSense.fingerprint, QStringLiteral("desktop.menu"), 2, first));
+
+        // Another API sends an event mid-edit: the next capture still lands on
+        // the selected controller, never on the newcomer or the shared profile.
+        m_editor->setControllerProfile(winmm);
+        const QString second = ControlId::genericButton(18);
+        m_editor->beginCapture(QStringLiteral("desktop.favorite"), 2);
+        QVERIFY(m_editor->captureInput(QStringLiteral("controller"), second,
+                                       QStringLiteral("Button 18")));
+        QVERIFY(hasBinding(*m_runtime, QStringLiteral("controller"),
+                           dualSense.fingerprint, QStringLiteral("desktop.favorite"), 2, second));
+        QVERIFY(!hasBinding(*m_runtime, QStringLiteral("controller"),
+                            winmm.fingerprint, QStringLiteral("desktop.favorite"), 2, second));
+        QVERIFY(!hasBinding(*m_runtime, QStringLiteral("controller"), {},
+                            QStringLiteral("desktop.favorite"), 2, second));
+
+        // A disconnect mid-edit must not downgrade a later write to shared.
+        m_editor->setControllerProfile({});
+        const QString third = ControlId::genericButton(19);
+        m_editor->beginCapture(QStringLiteral("desktop.favorite"), 1);
+        QVERIFY(m_editor->captureInput(QStringLiteral("controller"), third,
+                                       QStringLiteral("Button 19")));
+        QVERIFY(hasBinding(*m_runtime, QStringLiteral("controller"),
+                           dualSense.fingerprint, QStringLiteral("desktop.favorite"), 1, third));
+        QVERIFY(!hasBinding(*m_runtime, QStringLiteral("controller"), {},
+                            QStringLiteral("desktop.favorite"), 1, third));
     }
 
     void mouseInputsPersistWithFriendlyLabels()

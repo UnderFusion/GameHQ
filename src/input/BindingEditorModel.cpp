@@ -961,6 +961,17 @@ void BindingEditorModel::reloadAndRefresh()
 
 void BindingEditorModel::setControllerProfile(const ControlId::DeviceProfile& profile)
 {
+    // While controller-specific editing is on, the edited controller is pinned
+    // (cpo-c05): the user selected this pad, so another provider speaking, a
+    // backend takeover or a disconnect is diagnostics — never identity. Without
+    // this, the next provider event silently retargets the editor (or clears
+    // the selection), and the following write lands on a controller the user
+    // never chose. The selection changes only through the explicit
+    // controller-specific toggle.
+    if (m_controllerSpecific && !m_controllerFingerprint.isEmpty()
+        && profile.fingerprint != m_controllerFingerprint)
+        return;
+
     const bool availabilityChanged = m_controllerFingerprint.isEmpty() != profile.fingerprint.isEmpty();
     m_controllerFingerprint = profile.fingerprint;
     m_controllerName = profile.displayName;

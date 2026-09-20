@@ -2,6 +2,7 @@
 #include "input/XInputDevice.h"
 #include "input/WinMMDevice.h"
 #include "input/BindingRuntime.h"
+#include "input/BindingEditorModel.h"
 #include "input/InputDiagnostics.h"
 #include "capture/FramePumpService.h"
 #include "config/ConfigManager.h"
@@ -330,6 +331,44 @@ private slots:
         pad->edge(false);              // late release of the old route
         QCOMPARE(replay.count(), 0);
         QCOMPARE(screenshots.count(), 1);
+    }
+
+    // cpo-c05: the Settings editor's controller stays pinned while controller-
+    // specific editing is on. A promoted takeover is real provider activity —
+    // it must not silently retarget the editor; releasing the pin restores it.
+    void pinnedEditorControllerSurvivesProviderTakeover()
+    {
+        auto* editor = qobject_cast<BindingEditorModel*>(engine->bindingEditor());
+        QVERIFY(editor);
+
+        // Follow mode: XInput activity makes the editor show that controller.
+        pad->edge(true);
+        pad->edge(false);
+        const QString xinputName = editor->controllerName();
+        QVERIFY(!xinputName.isEmpty());
+        QVERIFY(editor->controllerSpecificAvailable());
+
+        // The user selects it: controller-specific editing pins the selection.
+        editor->setControllerSpecific(true);
+        QVERIFY(editor->controllerSpecific());
+
+        // The second provider is promoted to the active role (activateBackend
+        // feeds the editor the WinMM profile). The pinned editor must not move.
+        QTest::qWait(150);
+        winmmPad->edge(true);
+        QCOMPARE(engine->m_pending.source, static_cast<Gamepad*>(winmmPad));
+        winmmPad->edge(false);
+        QTRY_COMPARE_WITH_TIMEOUT(engine->m_activeBackend, static_cast<Gamepad*>(winmmPad), 900);
+        QCOMPARE(editor->controllerName(), xinputName);
+        QVERIFY(editor->controllerSpecific());
+
+        // Releasing the pin restores following: the next WinMM activity moves
+        // the editor to the controller that actually produces input.
+        editor->setControllerSpecific(false);
+        winmmPad->edge(true);
+        winmmPad->edge(false);
+        QCOMPARE(editor->controllerName(), winmmPad->profile().displayName);
+        QVERIFY(editor->controllerName() != xinputName);
     }
 
     // A pending candidate press whose provider disappears before confirmation
