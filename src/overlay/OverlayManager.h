@@ -6,6 +6,7 @@
 
 class QQmlApplicationEngine;
 class QQuickWindow;
+class QScreen;
 class OverlayPresenter;
 
 // In-game overlay window lifecycle (docs/overlay.md): lazy-loads
@@ -55,12 +56,30 @@ private:
     void startShowProbe();
     void probeTick();
 
+    // cpo-o03: the lifetime decision is pure (overlay/OverlayLifetimePolicy.h);
+    // this class only resolves Win32 facts for it and performs the effects
+    // through the existing presenter.
+    class LifetimeActions;
+    // The screen the overlay should cover for `gameWindow`: the game's monitor
+    // when that handle still exists, the primary screen otherwise. A stale
+    // HWND can therefore never drive overlay geometry.
+    QScreen* targetScreenForGameWindow(void* gameWindow) const;
+    bool gameWindowMovedToAnotherMonitor(void* gameWindow) const;
+    void rebindGameWindow(void* newWindow);
+    void reassertOverlay();
+    void repositionOverlay();
+
     QQmlApplicationEngine* m_engine;
     QQuickWindow* m_window = nullptr;
     // The one production path that makes the overlay visible, positioned and
     // topmost; it owns the never-activate guarantee (docs/overlay.md).
     std::unique_ptr<OverlayPresenter> m_presenter;
+    std::unique_ptr<LifetimeActions> m_lifetimeActions;
     void* m_previousForeground = nullptr;   // HWND of the game/app under us
+    // Process id of the window above. It is the continuity evidence that keeps
+    // the overlay open when a game replaces its own window, and the reason a
+    // destroyed HWND is never remembered: a pid outlives a handle.
+    unsigned long m_previousForegroundPid = 0;
     void* m_focusHook = nullptr;            // HWINEVENTHOOK, opaque here to avoid <windows.h> in the header
     bool m_foregroundAcquired = true;
 

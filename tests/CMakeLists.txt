@@ -259,6 +259,17 @@ gamehq_add_test(tst_overlaypresenter
     "${CMAKE_SOURCE_DIR}/src/overlay/ForegroundApi.cpp")
 target_link_libraries(tst_overlaypresenter PRIVATE Qt6::Gui user32)
 
+# cpo-o03: the overlay's lifetime/focus rules are pure — every Win32 query the
+# manager performs is expressed as a fact, so the decisions (keep, rebind to a
+# replaced game window, hide) are testable without a game, a desktop session or
+# a QML window. The last case audits that the overlay's popups are still
+# in-window items rather than separate native windows.
+gamehq_add_test(tst_overlaylifetime
+    tst_overlaylifetime.cpp
+    "${CMAKE_SOURCE_DIR}/src/overlay/OverlayLifetimePolicy.cpp")
+target_compile_definitions(tst_overlaylifetime PRIVATE
+    GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}/src")
+
 # Drives the real DualSenseDevice through a fake RawInputApi. It links the
 # Win32 implementation only because the production constructor references it;
 # the fake overrides every call, so no test here touches the machine's devices.

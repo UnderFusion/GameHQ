@@ -91,6 +91,7 @@ qt_add_executable(GameHQ
     notify/ToastModel.cpp notify/ToastModel.h
     overlay/ForegroundAcquirer.cpp overlay/ForegroundAcquirer.h
     overlay/ForegroundApi.cpp overlay/ForegroundApi.h
+    overlay/OverlayLifetimePolicy.cpp overlay/OverlayLifetimePolicy.h
     overlay/OverlayManager.cpp overlay/OverlayManager.h
     overlay/OverlayPresenter.cpp overlay/OverlayPresenter.h
     sound/SoundEngine.cpp  sound/SoundEngine.h
