@@ -330,7 +330,7 @@ gamehq_add_test(tst_inputengineshutdown
     "${CMAKE_SOURCE_DIR}/src/input/Gamepad.h")
 foreach(unit IN ITEMS
     InputEngine MouseHookDevice BindingRuntime BindingEditorModel BindingResolver
-    MappingPresetMaterializer MappingAssignmentResolver
+    MappingPresetMaterializer MappingAssignmentResolver MappingPresetModel
     BindingPattern BindingRelation ContextOverrideCatalog InputPatternRecognizer
     ActionCatalog ControlId ControllerIdentity GestureTiming HotkeyManager
     DualSenseDevice XInputDevice WinMMDevice RawInputApi HidCloakMonitor
@@ -676,6 +676,64 @@ gamehq_add_test(tst_mappingpresetstorage
     "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
     "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
 target_link_libraries(tst_mappingpresetstorage PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
+
+# Mapping-preset model (cpo-p06): the library/assignment facade, the reserved
+# Built-in artifact, provenance-derived targets, adopt-and-mask and the
+# runtime-refresh boundaries the Settings screen depends on.
+gamehq_add_test(tst_mappingpresetmodel
+    tst_mappingpresetmodel.cpp
+    "${CMAKE_SOURCE_DIR}/src/input/MappingPresetModel.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingResolver.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DefaultBindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/OverlayInputPolicy.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ContextOverrideCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ExtraButtonCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
+    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+target_link_libraries(tst_mappingpresetmodel PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets)
+
+# The real MappingPresetSection.qml driven by the real model: the cpo-p06
+# acceptance review found the assignment picker dead in QML (the option list was
+# returned instead of assigned to the bound property), which no C++ suite can
+# see. This one loads the shipped QML file and inspects the controls.
+gamehq_add_test(tst_mappingpresetsection
+    tst_mappingpresetsection.cpp
+    "${CMAKE_SOURCE_DIR}/src/input/MappingPresetModel.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingResolver.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DefaultBindings.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/OverlayInputPolicy.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ContextOverrideCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ExtraButtonCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
+    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+target_link_libraries(tst_mappingpresetsection PRIVATE Qt6::Sql Qt6::Gui Qt6::Widgets Qt6::Qml Qt6::Quick)
+# The QML file is read from the source tree; the GameHQ module (Theme, the
+# settings row/button/combobox components it imports) comes from the build tree,
+# so the app target is built first and its module directory is the import path.
+target_compile_definitions(tst_mappingpresetsection PRIVATE
+    GAMEHQ_QML_SOURCE_DIR="${CMAKE_SOURCE_DIR}/src"
+    GAMEHQ_QML_IMPORT_DIR="${CMAKE_BINARY_DIR}/src")
+add_dependencies(tst_mappingpresetsection GameHQ)
 
 # Runtime materialization of the mapping migration (cpo-p03): the bounded
 # compatibility phase that folds a live alias chain, proves the persisted

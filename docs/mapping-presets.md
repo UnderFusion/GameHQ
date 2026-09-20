@@ -340,6 +340,82 @@ preset content is `cpo-p06`, and the sanitized "active preset" diagnostics expor
     default — the user first points the group default elsewhere.
   - Deletion is always an explicit user action; the app never deletes user presets on its own.
 
+## 7b. Implemented Settings contract (owned by `cpo-p06`)
+
+`MappingPresetModel` is the one QML-facing preset surface
+(`input.mappingPresets`). It writes storage and then asks the engine to
+re-resolve; it never decides a winner itself, and the runtime seam is exactly
+`InputEngine::refreshResolvedPreset()`.
+
+- **Built-in defaults is a virtual choice, not a library row.** It is backed by
+  ONE reusable reserved empty preset per device group (`builtin-<group>`, an id
+  namespace user presets cannot use — every user id is `preset-<uuid>`). The
+  schema's `origin` check constraint stays untouched, and no translated or
+  pasted label can ever be the marker: the reserved display name lives in a
+  control-character namespace that create and rename refuse. The row is created
+  lazily inside the same transaction that assigns it, is filtered from the
+  library list, and normal CRUD cannot rename, delete or fill it. Its label is
+  localized UI text.
+- **The two "no preset" choices stay different.** *Follow fallback* removes the
+  assignment, so the precedence chain applies and retained local rows may
+  become visible again. *Built-in defaults* assigns the empty winner, which
+  masks every layer below it.
+- **Writes land in named presets.** `BindingEditorModel` keeps its draft,
+  relation, conflict and hotkey logic and forwards each change through one sink;
+  the model decides which preset owns the target. A target whose direct
+  assignment is a **user** preset edits that preset in place (everyone else
+  using it changes too — the UI says "used by N"). Otherwise the first edit
+  **adopts** what the target serves today: snapshot the effective table, apply
+  the requested edit, then create + assign in ONE transaction. A migration-owned
+  preset is never rewritten by a user edit (the `cpo-p03` proof path owns its
+  content), and retained legacy rows are never deleted — they stay dormant
+  recovery evidence.
+- **Targets come from provenance, never from key syntax.** A registry identity
+  with Strong confidence is persisted as `controller`; a weak or session-local
+  logical id may only be persisted through a real persistable slot alias
+  (`xinput.slotN` / `winmm.slotN`, the same rule the v9 migration uses). With
+  neither, per-controller assignment is refused and the screen says why.
+  Unpinned editing targets the group default.
+- **Library vs runtime.** create, duplicate (unused) and rename only refresh the
+  list and never invalidate an in-flight gesture; assignment, clear, Built-in,
+  content edits and a delete/reassign that actually moves references call the
+  refresh seam (a delete of an unreferenced preset does not).
+- **A preset write never reloads the legacy rows** (acceptance-review correction
+  3). `BindingEditorModel` refreshes its view by where the write landed: a write
+  that went through the preset sink rebuilds the view only, because the sink's
+  own transaction already published the change and asked the engine for the
+  route-scoped `refreshResolvedPreset()`. The broad `reloadBindings()` seam stays
+  with the operations that really touch `binding_overrides`
+  (`resetCurrentProfile`, `resetAllBindings`, `copyLegacyOverridesToController`).
+  A displaced global hotkey is released explicitly in the preset path, because
+  the sweep that normally does it lives in the reload that no longer runs.
+- **A replacement is ONE transaction** (correction 4). The displaced rows and the
+  requested row travel as one editor batch, so both backends are all-or-nothing
+  per replacement: a later failure can never leave an earlier conflict row
+  committed, and no hand-rolled rollback of preset content is attempted.
+- **Library selection is not assignment** (correction 2). The Settings page has
+  two pickers: *Mappings used by this device* (the assignment; every choice
+  applies at a safe input boundary) and *Preset* (the library; select, then
+  rename/duplicate/delete). Selecting in the library never assigns, never
+  switches the runtime and never invalidates input — a refused switch (open
+  draft) leaves the model untouched and the control snaps back to the model.
+- **The delete dialog only offers what storage accepts.** A migration-source
+  reference cannot be reassigned (it is recovery evidence for one historical
+  key), so such a preset is blocked with that reason; a referenced preset with no
+  other preset in the group is blocked too, instead of enabling a Delete the
+  model would refuse.
+- **Shared presets are copy-on-write.** Reference metadata counts controller /
+  legacy-slot uses, group-default uses, game references and migration sources
+  separately; the explicit "duplicate for this controller" path copies and
+  assigns the pinned target in one transaction, leaving every other user of the
+  original untouched.
+- **Nothing discards an unsaved edit.** Selection, assignment change, delete and
+  duplicate-for-this-controller are refused with a notice while a draft or a
+  capture is pending; rename stays allowed because the id is the identity.
+- **Localization.** New UI strings use `qsTrId` / `NativeText::get` with `//%`
+  source strings; the 16-locale semantic pass and the catalog fills stay with
+  `cpo-x02`, which must also include the `t1`/`t2a` translations.
+
 ## 8. Relationship to games
 
 - Presets are **global** user data, not per-game files: a game never owns mappings; it only has

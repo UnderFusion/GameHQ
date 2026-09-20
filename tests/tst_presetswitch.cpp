@@ -2,6 +2,7 @@
 #include "input/XInputDevice.h"
 #include "input/WinMMDevice.h"
 #include "input/DualSenseDevice.h"
+#include "input/BindingEditorModel.h"
 #include "gameinput/GameInputRouter.h"
 #include "input/BindingRuntime.h"
 #include "input/BindingResolver.h"
@@ -124,6 +125,7 @@ private slots:
     void firstGameInputPressSeesItsAssignedPreset();
     void firstRawHidPressSeesItsAssignedPreset();
     void knownRoutePressDoesNotRePlan();
+    void editorEditAdoptsTheEffectiveTableIntoAPreset();
 
 private:
     BindingRuntime& rt() { return *engine->m_runtime; }
@@ -1200,6 +1202,82 @@ void PresetSwitchTest::knownRoutePressDoesNotRePlan()
     // An explicit refresh is what applies the write.
     engine->refreshResolvedPreset();
     QCOMPARE(engine->mappingInstalledPresetId(kController, winmmProfile), silent);
+}
+
+// cpo-p06 phase C: the editor's write path lands in a named preset. With
+// InputEngine's sink wired, one row change adopts the behavior this route
+// serves TODAY into a user preset assigned to this controller - it does not
+// write a binding_overrides row, and it does not delete the retained legacy
+// rows either.
+void PresetSwitchTest::editorEditAdoptsTheEffectiveTableIntoAPreset()
+{
+    addDeviceRow(kController, profile, QStringLiteral("global.screenshot"), ControlId::FaceSouth);
+    const int legacyBefore = db->listBindingOverrides().size();
+    QVERIFY(legacyBefore > 0);
+
+    // What this route serves today is the yardstick: the adopted preset must be
+    // exactly that table minus the one reset row.
+    const QVector<BindingResolver::Binding> before = rt().effectiveBindings(kController, profile);
+    QHash<QString, QString> expectedTriggers;
+    for (const BindingResolver::Binding& binding : before) {
+        if (binding.actionId == QStringLiteral("global.screenshot") && binding.slot == 1)
+            continue;
+        // The same storable-row rule the cpo-p03 fold and the preset model
+        // apply: an action that is not user-bindable is not preset content, and
+        // the defaults keep serving it underneath the preset.
+        const auto* action = ActionCatalog::find(binding.actionId);
+        if (!action || !action->bindable)
+            continue;
+        expectedTriggers.insert(binding.actionId + QLatin1Char('#') + QString::number(binding.slot),
+                                binding.triggerCode);
+    }
+    QVERIFY(!expectedTriggers.isEmpty());
+
+    BindingEditorModel* editor = engine->m_bindingEditor.get();
+    editor->setDeviceGroup(kController);
+    editor->setControllerProfile({QStringLiteral("XInput"), profile,
+                                  ControlId::ControllerFamily::Generic,
+                                  QStringLiteral("Synthetic pad")});
+    editor->setControllerSpecific(true);
+    QCOMPARE(editor->pinnedProfile(), profile);
+
+    // "Restore default" for one action is a single-row change; the sink owns
+    // which preset it lands in.
+    editor->resetBinding(QStringLiteral("global.screenshot"), 1);
+
+    // Provenance decides the target kind, so the test accepts either persisted
+    // form of the same controller.
+    MappingAssignment assignment = db->mappingAssignment(kController,
+                                                         QStringLiteral("controller"), profile);
+    QString targetKind = QStringLiteral("controller");
+    QString targetKey = profile;
+    if (assignment.presetId.isEmpty()) {
+        targetKind = QStringLiteral("legacy_slot");
+        targetKey = QStringLiteral("xinput.slot0");
+        assignment = db->mappingAssignment(kController, targetKind, targetKey);
+    }
+    const QString adopted = assignment.presetId;
+    QVERIFY(!adopted.isEmpty());
+    QVERIFY(!CaptureDatabase::isBuiltinMappingPresetId(adopted));
+    QCOMPARE(db->mappingPreset(adopted).origin, QStringLiteral("user"));
+
+    // The adopted preset is the effective table minus exactly the reset row:
+    // every other button keeps the trigger it had a moment ago.
+    const QVector<MappingPresetRow> rows = db->mappingPresetRows(adopted);
+    QCOMPARE(rows.size(), expectedTriggers.size());
+    for (const MappingPresetRow& row : rows) {
+        const QString key = row.actionId + QLatin1Char('#') + QString::number(row.slot);
+        QVERIFY2(expectedTriggers.contains(key), qPrintable(QStringLiteral("unexpected row ") + key));
+        QCOMPARE(row.triggerCode, expectedTriggers.value(key));
+    }
+    QVERIFY(!rows.isEmpty());
+    // Retained legacy rows are recovery evidence: adoption never deletes them.
+    QCOMPARE(db->listBindingOverrides().size(), legacyBefore);
+
+    // And the winner was re-resolved at a safe boundary: this route now serves
+    // the adopted preset.
+    QCOMPARE(engine->mappingInstalledPresetId(kController, profile), adopted);
+    QCOMPARE(engine->mappingEffectiveSource(kController, profile), QStringLiteral("controller"));
 }
 
 QTEST_GUILESS_MAIN(PresetSwitchTest)

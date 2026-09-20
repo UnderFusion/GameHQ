@@ -83,6 +83,37 @@ public:
     void setHotkeyApply(HotkeyApply apply);
     void setPersistRow(PersistRow persist);
 
+    // ---------------------------------------------------------------- cpo-p06
+    // One (action, slot) change the preset layer must apply. The editor never
+    // decides WHICH preset owns a target - that stays MappingPresetModel's
+    // provenance rule - it only says what the user asked for.
+    struct PresetEdit
+    {
+        QString actionId;
+        int slot = 1;
+        QString triggerCode;
+        QString activation = QStringLiteral("press");
+        int holdMs = 0;
+        bool unbound = false;
+        int tapCount = 1;
+        bool remove = false;
+    };
+    // The preset write sink. When wired (production), every editor write lands
+    // in a named preset - adopt-and-mask included - and no new
+    // binding_overrides rows are created by normal editing. Unset in legacy
+    // harnesses, which keep the override path.
+    using PresetSink = std::function<bool(const QVector<PresetEdit>& edits)>;
+    void setPresetSink(PresetSink sink);
+    // The cpo-c05 pin as the preset layer sees it: the explicitly selected
+    // controller profile, or empty while editing is shared (group-wide).
+    QString pinnedProfile() const
+    {
+        return m_controllerSpecific ? m_controllerFingerprint : QString();
+    }
+    // True while an open draft or an active capture would be lost by a preset
+    // operation, so MappingPresetModel refuses instead of discarding it.
+    bool pendingEdit() const { return m_editorOpen || m_captureActive; }
+
     QString deviceGroup() const { return m_deviceGroup; }
     void setDeviceGroup(const QString& group);
     QVariantList rows() const { return m_rows; }
@@ -202,7 +233,18 @@ private:
     // OS half of the transaction applies to.
     bool isGlobalHotkey(const BindingResolver::Binding& binding) const;
     bool persist(const BindingOverrideRow& row);
+    // Clears one row through the same seam `persist` uses: preset content when
+    // the sink is wired, a legacy override row otherwise.
+    bool clearRow(const QString& deviceGroup, const QString& deviceProfile,
+                  const QString& actionId, int slot);
     void reloadAndRefresh();
+    // Post-write refresh, chosen by where the write actually landed (cpo-p06
+    // review blocker 3). A preset-sink batch is published by the sink's own
+    // transaction, which already asked the engine for the safe cpo-p05 switch
+    // (refreshResolvedPreset); running the legacy reload afterwards would
+    // re-read binding_overrides the change never touched and invalidate live
+    // gestures for nothing. Only writes to real legacy rows reload the runtime.
+    void refreshAfterWrite();
     QString formatTrigger(const BindingResolver::Binding& binding) const;
     QString formatBinding(const BindingResolver::Binding& binding) const;
     QString formatGestureBadge(const BindingResolver::Binding& binding) const;
@@ -230,6 +272,7 @@ private:
     std::function<void()> m_reloadRuntime;
     HotkeyApply m_hotkeyApply;
     PersistRow m_persistRow;
+    PresetSink m_presetSink;
     QString m_deviceGroup = QStringLiteral("controller");
     QVariantList m_rows;
     bool m_controllerSpecific = false;

@@ -653,6 +653,8 @@ void BindingEditorModel::copyLegacyOverridesToController()
         row.deviceProfile = profile;
         m_database->upsertBindingOverride(row);
     }
+    // Genuine legacy-row operation (it writes binding_overrides), so it keeps
+    // the broad reload rather than the preset-era refreshAfterWrite().
     reloadAndRefresh();
 }
 
@@ -725,9 +727,41 @@ void BindingEditorModel::setPersistRow(PersistRow persist)
     m_persistRow = std::move(persist);
 }
 
+void BindingEditorModel::setPresetSink(PresetSink sink)
+{
+    m_presetSink = std::move(sink);
+}
+
 bool BindingEditorModel::persist(const BindingOverrideRow& row)
 {
+    if (m_presetSink) {
+        // cpo-p06: the write lands in a named preset (adopt-and-mask on the way
+        // when nothing user-owned serves this target yet), so normal editing no
+        // longer creates binding_overrides rows.
+        PresetEdit edit;
+        edit.actionId = row.actionId;
+        edit.slot = row.slot;
+        edit.triggerCode = row.triggerCode;
+        edit.activation = row.activation;
+        edit.holdMs = row.holdMs;
+        edit.unbound = row.unbound;
+        edit.tapCount = row.tapCount;
+        return m_presetSink({edit});
+    }
     return m_persistRow ? m_persistRow(row) : m_database->upsertBindingOverride(row);
+}
+
+bool BindingEditorModel::clearRow(const QString& deviceGroup, const QString& deviceProfile,
+                                  const QString& actionId, int slot)
+{
+    if (m_presetSink) {
+        PresetEdit edit;
+        edit.actionId = actionId;
+        edit.slot = slot;
+        edit.remove = true;
+        return m_presetSink({edit});
+    }
+    return m_database->clearBindingOverride(deviceGroup, deviceProfile, actionId, slot);
 }
 
 bool BindingEditorModel::isGlobalHotkey(const BindingResolver::Binding& binding) const
@@ -742,6 +776,24 @@ bool BindingEditorModel::isGlobalHotkey(const BindingResolver::Binding& binding)
 
 bool BindingEditorModel::persistRowsAtomically(const QVector<BindingOverrideRow>& rows)
 {
+    if (m_presetSink) {
+        // One batch = one preset transaction: the whole set lands in exactly
+        // one preset, or in one adopted preset, or nowhere.
+        QVector<PresetEdit> edits;
+        edits.reserve(rows.size());
+        for (const BindingOverrideRow& row : rows) {
+            PresetEdit edit;
+            edit.actionId = row.actionId;
+            edit.slot = row.slot;
+            edit.triggerCode = row.triggerCode;
+            edit.activation = row.activation;
+            edit.holdMs = row.holdMs;
+            edit.unbound = row.unbound;
+            edit.tapCount = row.tapCount;
+            edits.append(edit);
+        }
+        return m_presetSink(edits);
+    }
     if (!m_persistRow)
         return m_database->upsertBindingOverridesAtomically(rows);
 
@@ -795,10 +847,10 @@ bool BindingEditorModel::applyChange(const PendingChange& change)
             setRelationNotice(QStringLiteral("persistence_error"),
                               QStringLiteral("These assignments could not be saved. Both "
                                              "previous assignments are still active."));
-            reloadAndRefresh();
+            refreshAfterWrite();
             return false;
         }
-        reloadAndRefresh();
+        refreshAfterWrite();
         return true;
     }
 
@@ -829,49 +881,30 @@ bool BindingEditorModel::applyChange(const PendingChange& change)
         }
     }
 
-    // 3) Persist: the displaced bindings first, then the new one. Remember what
-    //    each displaced key held before the transaction — undoing a write must
-    //    put that row back, not delete it: a displaced action that already had
-    //    a custom override would otherwise roll back to the shipped default.
-    const auto overrideKey = [](const BindingOverrideRow& row) {
-        return row.deviceGroup + QLatin1Char('|') + row.deviceProfile + QLatin1Char('|')
-             + row.actionId + QLatin1Char('#') + QString::number(row.slot);
-    };
-    QHash<QString, BindingOverrideRow> before;
-    if (!change.conflicts.isEmpty()) {
-        for (const BindingOverrideRow& row : m_database->listBindingOverrides())
-            before.insert(overrideKey(row), row);
-    }
-    QVector<BindingOverrideRow> written;
-    bool persisted = true;
+    // 3) Persist: the displaced bindings and the requested one are ONE batch.
+    //    Both backends are all-or-nothing per batch — a preset batch lands in
+    //    exactly one preset transaction (adopt-and-mask included), the legacy
+    //    path uses the atomic upsert — so a failure can never leave an earlier
+    //    conflict row committed, and no hand-rolled rollback is needed (cpo-p06
+    //    review blocker 4: the old loop committed each displaced row in its own
+    //    transaction and then tried to undo them through binding_overrides,
+    //    which is not a rollback of preset content). A displaced row keeps its
+    //    gesture but loses the trigger.
+    QVector<BindingOverrideRow> batch;
+    batch.reserve(change.conflicts.size() + 1);
     for (const auto& conflict : change.conflicts) {
-        BindingOverrideRow row{conflict.deviceGroup, profile, conflict.actionId,
-                               conflict.slot, {}, conflict.activation, conflict.holdMs, true,
-                               conflict.tapCount};
-        if (!persist(row)) {
-            persisted = false;
-            break;
-        }
-        written.append(row);
+        batch.append(BindingOverrideRow{conflict.deviceGroup, profile, conflict.actionId,
+                                        conflict.slot, {}, conflict.activation, conflict.holdMs,
+                                        true, conflict.tapCount});
     }
-    if (persisted) {
-        BindingOverrideRow row{target.deviceGroup, profile, target.actionId, target.slot,
-                               target.triggerCode, target.activation, target.holdMs, false,
-                               target.tapCount};
-        persisted = persist(row);
-    }
+    batch.append(BindingOverrideRow{target.deviceGroup, profile, target.actionId, target.slot,
+                                    target.triggerCode, target.activation, target.holdMs, false,
+                                    target.tapCount});
+    const bool persisted = persistRowsAtomically(batch);
 
-    // 4) A failed write rolls the OS back to the chord that was live before, and
-    //    undoes the rows that did land, so the three views cannot disagree.
+    // 4) A failed transaction rolls the OS back to the chord that was live
+    //    before, so the three views cannot disagree.
     if (!persisted) {
-        for (const auto& row : written) {
-            const auto it = before.constFind(overrideKey(row));
-            if (it != before.cend())
-                persist(*it);
-            else
-                m_database->clearBindingOverride(row.deviceGroup, row.deviceProfile,
-                                                 row.actionId, row.slot);
-        }
         if (ownsHotkey) {
             QString reason;
             m_hotkeyApply(target.actionId, target.slot, previousChord, &reason);
@@ -879,12 +912,25 @@ bool BindingEditorModel::applyChange(const PendingChange& change)
         setRelationNotice(QStringLiteral("persistence_error"),
                           QStringLiteral("This shortcut could not be saved. The previous "
                                          "assignment is still active."));
-        reloadAndRefresh();
+        refreshAfterWrite();
         return false;
     }
 
+    // A displaced global hotkey must lose its Win32 registration too. The legacy
+    // path gets that from reloadBindings()' sweep; a preset-sink batch never
+    // runs that sweep, so release those slots here (an empty chord means
+    // "release the slot" — the same contract the rollback path uses).
+    if (m_presetSink && m_hotkeyApply) {
+        for (const auto& conflict : change.conflicts) {
+            if (!isGlobalHotkey(conflict))
+                continue;
+            QString reason;
+            m_hotkeyApply(conflict.actionId, conflict.slot, QString(), &reason);
+        }
+    }
+
     // 5) Only a fully committed change refreshes the editor.
-    reloadAndRefresh();
+    refreshAfterWrite();
     return true;
 }
 
@@ -901,8 +947,8 @@ void BindingEditorModel::clearBinding(const QString& actionId, int slot)
         m_runtime->inheritedGesture(m_deviceGroup, selectedProfile(), actionId, slot);
     BindingOverrideRow row{m_deviceGroup, selectedProfile(), actionId, slot, {},
                            gesture.activation, gesture.holdMs, true, gesture.tapCount};
-    m_database->upsertBindingOverride(row);
-    reloadAndRefresh();
+    persist(row);
+    refreshAfterWrite();
 }
 
 void BindingEditorModel::resetBinding(const QString& actionId, int slot)
@@ -910,19 +956,22 @@ void BindingEditorModel::resetBinding(const QString& actionId, int slot)
     const auto* action = ActionCatalog::find(actionId);
     if (!action || !action->bindable || slot < 1 || slot > 2)
         return;
-    m_database->clearBindingOverride(m_deviceGroup, selectedProfile(), actionId, slot);
-    reloadAndRefresh();
+    clearRow(m_deviceGroup, selectedProfile(), actionId, slot);
+    refreshAfterWrite();
 }
 
 void BindingEditorModel::resetAction(const QString& actionId)
 {
     for (int slot = 1; slot <= 2; ++slot)
-        m_database->clearBindingOverride(m_deviceGroup, selectedProfile(), actionId, slot);
-    reloadAndRefresh();
+        clearRow(m_deviceGroup, selectedProfile(), actionId, slot);
+    refreshAfterWrite();
 }
 
 void BindingEditorModel::resetCurrentProfile()
 {
+    // Genuine legacy-row operation: it writes binding_overrides directly, so it
+    // keeps the broad reload even in the preset era (the record's preset-era
+    // semantics are an open decision, see docs/mapping-presets.md).
     m_database->clearBindingOverridesForProfile(m_deviceGroup, selectedProfile());
     reloadAndRefresh();
 }
@@ -957,6 +1006,18 @@ void BindingEditorModel::reloadAndRefresh()
     if (m_reloadRuntime)
         m_reloadRuntime();
     rebuildRows();
+}
+
+void BindingEditorModel::refreshAfterWrite()
+{
+    if (m_presetSink) {
+        // The sink's transaction published the change and asked the engine for
+        // the route-scoped cpo-p05 switch. Nothing here reads binding_overrides,
+        // so the editor only rebuilds its view (review blocker 3).
+        rebuildRows();
+        return;
+    }
+    reloadAndRefresh();
 }
 
 void BindingEditorModel::setControllerProfile(const ControlId::DeviceProfile& profile)

@@ -52,6 +52,7 @@ qt_add_executable(GameHQ
     input/BindingResolver.cpp input/BindingResolver.h
     input/MappingPresetMaterializer.cpp input/MappingPresetMaterializer.h
     input/MappingAssignmentResolver.cpp input/MappingAssignmentResolver.h
+    input/MappingPresetModel.cpp input/MappingPresetModel.h
     input/DefaultBindings.cpp input/DefaultBindings.h
     input/OverlayInputPolicy.cpp input/OverlayInputPolicy.h
     input/ContextOverrideCatalog.cpp input/ContextOverrideCatalog.h
@@ -187,6 +188,8 @@ qt_add_qml_module(GameHQ
         ui/qml/components/BindingConflictDialog.qml
         ui/qml/components/BindingCompatibilityDialog.qml
         ui/qml/components/ConfirmDialog.qml
+        ui/qml/components/MappingPresetNameDialog.qml
+        ui/qml/components/MappingPresetDeleteDialog.qml
         ui/qml/components/Toast.qml
         ui/qml/components/UpdateBanner.qml
         ui/qml/components/AboutWhatsNewDialog.qml
@@ -216,6 +219,7 @@ qt_add_qml_module(GameHQ
         ui/qml/settings/CaptureSettingsPage.qml
         ui/qml/settings/ReplaySettingsPage.qml
         ui/qml/settings/InputSettingsPage.qml
+        ui/qml/settings/MappingPresetSection.qml
         ui/qml/settings/LibrarySettingsPage.qml
         ui/qml/settings/FeedbackSettingsPage.qml
         ui/qml/settings/AdvancedSettingsPage.qml

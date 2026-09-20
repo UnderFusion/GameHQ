@@ -24,6 +24,7 @@ class WinMMDevice;
 class BindingRuntime;
 class MappingPresetMaterializer;
 class BindingEditorModel;
+class MappingPresetModel;
 class HotkeyManager;
 class MouseHookDevice;
 class QTimer;
@@ -54,6 +55,10 @@ class InputEngine : public QObject
     Q_PROPERTY(QString controllerWarning READ controllerWarning NOTIFY controllerWarningChanged)
     Q_PROPERTY(bool controllerFixAvailable READ controllerFixAvailable NOTIFY controllerWarningChanged)
     Q_PROPERTY(QObject* bindingEditor READ bindingEditor CONSTANT)
+    // The mapping-preset library + assignment facade (cpo-p06): create, select,
+    // rename, delete/reassign, follow-fallback vs Built-in defaults, and the
+    // explicit "duplicate for this controller" copy-on-write path.
+    Q_PROPERTY(QObject* mappingPresets READ mappingPresets CONSTANT)
     // Diagnostics button probe (Settings → Input): startButtonProbe() opens a
     // 3 s window in which raw button changes — including ones GameHQ normally
     // ignores — are summarized into probeStatus and the diagnostics export.
@@ -75,6 +80,7 @@ public:
     QString controllerWarning() const { return m_controllerWarning; }
     bool controllerFixAvailable() const { return m_controllerFixAvailable; }
     QObject* bindingEditor() const;
+    QObject* mappingPresets() const;
 
     // One-click HidHide remedy: relaunches GameHQ elevated to add itself to
     // HidHide's application allow-list, then rescans. Progress/outcome is
@@ -339,6 +345,9 @@ private:
     // presets once the live identity is durable; weak pads never reach storage.
     std::unique_ptr<MappingPresetMaterializer> m_presetMaterializer;
     std::unique_ptr<BindingEditorModel> m_bindingEditor;
+    // cpo-p06: the preset library/assignment facade QML drives. It never
+    // resolves a winner itself; its one runtime seam is refreshResolvedPreset().
+    std::unique_ptr<MappingPresetModel> m_mappingPresets;
     std::unique_ptr<MouseHookDevice> m_mouse;
     // Shared t25 integration: one PhysicalControllerRegistry and one
     // CapabilityEventRouter for every provider (Sony Raw, GameInput, XInput,

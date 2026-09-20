@@ -1599,13 +1599,17 @@ MappingPreset CaptureDatabase::mappingPreset(const QString& presetId) const
 }
 
 QString CaptureDatabase::insertMappingPresetMetadata(const QString& deviceGroup, const QString& name,
-                                                     const QString& origin)
+                                                     const QString& origin,
+                                                     const QString& explicitId)
 {
     // Runs inside the caller's transaction on purpose: the public create path
     // and the v9 migration must share one normalization + uniqueness rule
-    // instead of each owning a second, nested transaction.
-    const QString id = QStringLiteral("preset-")
-        + QUuid::createUuid().toString(QUuid::WithoutBraces);
+    // instead of each owning a second, nested transaction. `explicitId` is the
+    // reserved Built-in artifact's identity (cpo-p06); user presets always get
+    // a generated opaque id.
+    const QString id = explicitId.isEmpty()
+        ? QStringLiteral("preset-") + QUuid::createUuid().toString(QUuid::WithoutBraces)
+        : explicitId;
     const QString now = mappingNow();
     QSqlQuery insert(m_db);
     insert.prepare(QStringLiteral(
@@ -1654,6 +1658,9 @@ QString CaptureDatabase::createMappingPreset(const QString& deviceGroup, const Q
         return QString();
     if (name.trimmed().isEmpty() || mappingPresetNameKey(name).isEmpty())
         return QString();
+    // The reserved Built-in sentinel is not a name a user can create or copy.
+    if (isReservedMappingPresetName(name))
+        return QString();
     if (origin != QLatin1String("user") && origin != QLatin1String("migration"))
         return QString();
     if (!isValidPresetContent(deviceGroup, rows))
@@ -1675,6 +1682,131 @@ QString CaptureDatabase::createMappingPreset(const QString& deviceGroup, const Q
     }
     if (!m_db.commit()) {
         qWarning() << "DB: mapping preset transaction commit failed:" << m_db.lastError().text();
+        m_db.rollback();
+        return QString();
+    }
+    return id;
+}
+
+QString CaptureDatabase::builtinMappingPresetId(const QString& deviceGroup)
+{
+    // ------------------------------------------------------------------ cpo-p06
+    // A reserved IDENTITY, not a name and not an origin value: `origin` is
+    // constrained to user|migration by the schema, and a name would be
+    // user-visible, translatable and collidable. User preset ids are always
+    // `preset-<uuid>`, so this namespace cannot collide with them.
+    if (!isMappingDeviceGroup(deviceGroup))
+        return QString();
+    return QStringLiteral("builtin-") + deviceGroup;
+}
+
+bool CaptureDatabase::isBuiltinMappingPresetId(const QString& presetId)
+{
+    return presetId == QStringLiteral("builtin-keyboard")
+        || presetId == QStringLiteral("builtin-controller")
+        || presetId == QStringLiteral("builtin-mouse");
+}
+
+bool CaptureDatabase::isReservedMappingPresetName(const QString& name)
+{
+    // The artifact's stored name is a sentinel in a namespace no user input can
+    // produce (a leading control character). Nothing ever infers "builtin" from
+    // a translated or user-visible label; the id is the only marker.
+    return mappingPresetNameKey(name).startsWith(QChar(0x01));
+}
+
+QString CaptureDatabase::ensureBuiltinMappingPreset(const QString& deviceGroup)
+{
+    const QString reservedId = builtinMappingPresetId(deviceGroup);
+    if (reservedId.isEmpty())
+        return QString();
+    if (!mappingPreset(reservedId).id.isEmpty())
+        return reservedId;
+    if (!m_db.transaction()) {
+        qWarning() << "DB: could not open built-in preset transaction:"
+                   << m_db.lastError().text();
+        return QString();
+    }
+    const QString id = insertMappingPresetMetadata(
+        deviceGroup, QStringLiteral("\u0001builtin"), QStringLiteral("user"), reservedId);
+    if (id.isEmpty() || !m_db.commit()) {
+        qWarning() << "DB: ensureBuiltinMappingPreset failed:" << m_db.lastError().text();
+        m_db.rollback();
+        return QString();
+    }
+    return id;
+}
+
+QString CaptureDatabase::createMappingPresetAssigned(const QString& deviceGroup,
+                                                     const QString& name,
+                                                     const QVector<MappingPresetRow>& rows,
+                                                     const QString& targetKind,
+                                                     const QString& targetKey, int gameRowId)
+{
+    // One transaction for metadata + content + the target assignment: a failure
+    // can leave neither an orphan preset nor a partial assignment (cpo-p06).
+    if (!isMappingDeviceGroup(deviceGroup))
+        return QString();
+    if (name.trimmed().isEmpty() || mappingPresetNameKey(name).isEmpty()
+        || isReservedMappingPresetName(name))
+        return QString();
+    if (!isValidPresetContent(deviceGroup, rows))
+        return QString();
+    QString key;
+    if (!validateMappingAssignmentTarget(deviceGroup, targetKind, targetKey, &key, nullptr))
+        return QString();
+
+    if (!m_db.transaction()) {
+        qWarning() << "DB: could not open preset+assignment transaction:" << m_db.lastError().text();
+        return QString();
+    }
+    const QString id = insertMappingPresetMetadata(deviceGroup, name, QStringLiteral("user"));
+    if (id.isEmpty() || !insertMappingPresetRows(id, rows)
+        || !upsertMappingAssignmentRow(deviceGroup, targetKind, key, id, gameRowId)) {
+        qWarning() << "DB: createMappingPresetAssigned failed:" << m_db.lastError().text();
+        m_db.rollback();
+        return QString();
+    }
+    if (!m_db.commit()) {
+        qWarning() << "DB: preset+assignment transaction commit failed:" << m_db.lastError().text();
+        m_db.rollback();
+        return QString();
+    }
+    return id;
+}
+
+QString CaptureDatabase::assignMappingTargetToBuiltin(const QString& deviceGroup,
+                                                      const QString& targetKind,
+                                                      const QString& targetKey, int gameRowId)
+{
+    QString key;
+    if (!validateMappingAssignmentTarget(deviceGroup, targetKind, targetKey, &key, nullptr))
+        return QString();
+    const QString reservedId = builtinMappingPresetId(deviceGroup);
+    if (reservedId.isEmpty())
+        return QString();
+
+    // Ensure + assign in ONE transaction: a user who selects "Built-in
+    // defaults" can never end up with an assignment that points at a preset the
+    // same operation failed to create.
+    if (!m_db.transaction()) {
+        qWarning() << "DB: could not open built-in assignment transaction:"
+                   << m_db.lastError().text();
+        return QString();
+    }
+    QString id = reservedId;
+    if (mappingPreset(reservedId).id.isEmpty()) {
+        id = insertMappingPresetMetadata(deviceGroup, QStringLiteral("\u0001builtin"),
+                                         QStringLiteral("user"), reservedId);
+    }
+    if (id.isEmpty() || !upsertMappingAssignmentRow(deviceGroup, targetKind, key, id, gameRowId)) {
+        qWarning() << "DB: assignMappingTargetToBuiltin failed:" << m_db.lastError().text();
+        m_db.rollback();
+        return QString();
+    }
+    if (!m_db.commit()) {
+        qWarning() << "DB: built-in assignment transaction commit failed:"
+                   << m_db.lastError().text();
         m_db.rollback();
         return QString();
     }
@@ -1752,6 +1884,10 @@ bool CaptureDatabase::renameMappingPreset(const QString& presetId, const QString
 {
     if (presetId.isEmpty() || name.trimmed().isEmpty() || mappingPresetNameKey(name).isEmpty())
         return false;
+    // The reserved Built-in artifact keeps its identity and its sentinel name:
+    // normal CRUD can neither rename it nor steal its name (cpo-p06).
+    if (isBuiltinMappingPresetId(presetId) || isReservedMappingPresetName(name))
+        return false;
 
     if (!m_db.transaction()) {
         qWarning() << "DB: could not open mapping preset transaction:" << m_db.lastError().text();
@@ -1783,6 +1919,10 @@ bool CaptureDatabase::replaceMappingPresetRows(const QString& presetId,
                                                const QVector<MappingPresetRow>& rows)
 {
     if (presetId.isEmpty())
+        return false;
+    // The Built-in artifact is an explicit EMPTY winner: filling it would turn
+    // "built-in defaults" into a second, invisible user preset (cpo-p06).
+    if (isBuiltinMappingPresetId(presetId))
         return false;
     const MappingPreset preset = mappingPreset(presetId);
     if (preset.id.isEmpty())
@@ -1886,6 +2026,10 @@ bool CaptureDatabase::deleteMappingPreset(const QString& presetId)
     // keeps pointing at an existing preset or the delete simply does not happen.
     if (mappingPresetReferenceCount(presetId) > 0)
         return false;
+    // The reserved Built-in artifact is not deletable through normal CRUD; the
+    // assignment must first move away, and the artifact then stays reusable.
+    if (isBuiltinMappingPresetId(presetId))
+        return false;
 
     if (!m_db.transaction()) {
         qWarning() << "DB: could not open mapping preset transaction:" << m_db.lastError().text();
@@ -1911,6 +2055,10 @@ bool CaptureDatabase::deleteMappingPresetAndReassign(const QString& presetId,
                                                      const QString& keepPresetId)
 {
     if (presetId.isEmpty() || keepPresetId.isEmpty() || presetId == keepPresetId)
+        return false;
+    // Neither side may be the reserved artifact: it is never a delete victim
+    // and never the "reassign onto" leftover of a delete (cpo-p06).
+    if (isBuiltinMappingPresetId(presetId) || isBuiltinMappingPresetId(keepPresetId))
         return false;
     const MappingPreset victim = mappingPreset(presetId);
     const MappingPreset keep = mappingPreset(keepPresetId);
@@ -2056,6 +2204,40 @@ bool CaptureDatabase::upsertMappingAssignmentRow(const QString& deviceGroup,
     return true;
 }
 
+bool CaptureDatabase::validateMappingAssignmentTarget(const QString& deviceGroup,
+                                                      const QString& targetKind,
+                                                      const QString& targetKey,
+                                                      QString* canonicalKey, QString* error) const
+{
+    // The one target rule every assignment writer shares (cpo-p06): the public
+    // set path and the atomic create/ensure paths can never disagree about what
+    // a valid target is. Game keys are canonicalized exactly once, here.
+    const auto reject = [error](const QString& reason) {
+        if (error)
+            *error = reason;
+        return false;
+    };
+    if (!isMappingDeviceGroup(deviceGroup))
+        return reject(QStringLiteral("unknown device group"));
+    if (!isMappingTargetKind(targetKind))
+        return reject(QStringLiteral("unknown target kind"));
+    const QString key =
+        targetKind == QLatin1String("game") ? GameIdentity::executableKey(targetKey) : targetKey;
+    if (targetKind == QLatin1String("group_default")) {
+        if (!key.isEmpty())
+            return reject(QStringLiteral("group_default takes no key"));
+    } else if (key.isEmpty()) {
+        return reject(QStringLiteral("empty target key"));
+    }
+    if ((targetKind == QLatin1String("controller") || targetKind == QLatin1String("legacy_slot"))
+        && deviceGroup != QLatin1String("controller")) {
+        return reject(QStringLiteral("controller targets only exist in the controller group"));
+    }
+    if (canonicalKey)
+        *canonicalKey = key;
+    return true;
+}
+
 bool CaptureDatabase::setMappingAssignment(const QString& deviceGroup, const QString& targetKind,
                                            const QString& targetKey, const QString& presetId,
                                            int gameRowId)
@@ -2068,18 +2250,9 @@ bool CaptureDatabase::setMappingAssignment(const QString& deviceGroup, const QSt
     // resolver's lookup runs through the same boundary. The text is still never
     // classified here - only `game` targets are normalized; `controller-…`,
     // `xinput.slotN` and provider keys stay opaque.
-    const QString key =
-        targetKind == QLatin1String("game") ? GameIdentity::executableKey(targetKey) : targetKey;
-    if (targetKind == QLatin1String("group_default")) {
-        if (!key.isEmpty())
-            return false;
-    } else if (key.isEmpty()) {
+    QString key;
+    if (!validateMappingAssignmentTarget(deviceGroup, targetKind, targetKey, &key, nullptr))
         return false;
-    }
-    if ((targetKind == QLatin1String("controller") || targetKind == QLatin1String("legacy_slot"))
-        && deviceGroup != QLatin1String("controller")) {
-        return false;
-    }
     const MappingPreset preset = mappingPreset(presetId);
     if (preset.id.isEmpty() || preset.deviceGroup != deviceGroup)
         return false;

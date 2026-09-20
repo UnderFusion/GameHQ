@@ -58,6 +58,9 @@ private:
     CaptureDatabase *m_database = nullptr;
     BindingRuntime *m_runtime = nullptr;
     BindingEditorModel *m_editor = nullptr;
+    // Counts the legacy broad reload the editor runs after a write. A preset-sink
+    // write must never trigger it (cpo-p06 review blocker 3).
+    int m_legacyReloads = 0;
 
     // The press→tap conversion tests predate Guide's tap/hold default pair;
     // each seeds an explicit press override on Guide so the conversion
@@ -102,6 +105,7 @@ private slots:
         m_runtime = new BindingRuntime(m_database, this);
         m_runtime->reload();
         m_editor = new BindingEditorModel(m_database, m_runtime, [this] {
+            ++m_legacyReloads;
             m_runtime->reload();
         }, this);
     }
@@ -123,6 +127,8 @@ private slots:
         // profile update is ignored, so the pin must be released first (cpo-c05).
         m_editor->setControllerSpecific(false);
         m_editor->setControllerProfile({});
+        m_editor->setPresetSink(nullptr);
+        m_legacyReloads = 0;
     }
 
     void cachedPresentationRetranslatesWithoutChangingActionIdentity()
@@ -1012,6 +1018,111 @@ private slots:
                            QStringLiteral("desktop.navigate_up"), 1, QStringLiteral("J")));
         QVERIFY(!hasBinding(*m_runtime, QStringLiteral("keyboard"), {},
                             QStringLiteral("desktop.navigate_down"), 2, QStringLiteral("J")));
+    }
+
+    void presetSinkReplacementIsOneBatchAndSkipsTheLegacyReload()
+    {
+        // Two things at once (cpo-p06 review blockers 3 and 4):
+        // - the displaced rows and the requested row travel as ONE sink call,
+        //   because one call is one preset transaction;
+        // - the write refreshes the view through the preset path only: the
+        //   legacy broad reload that re-reads binding_overrides is not run.
+        m_editor->setDeviceGroup(QStringLiteral("keyboard"));
+        m_editor->beginCapture(QStringLiteral("desktop.navigate_up"), 1);
+        QVERIFY(m_editor->captureInput(QStringLiteral("keyboard"), QStringLiteral("J"),
+                                       QStringLiteral("J")));
+        QVERIFY(!m_editor->conflictPending());
+
+        int sinkCalls = 0;
+        QVector<QVector<BindingEditorModel::PresetEdit>> batches;
+        m_editor->setPresetSink([&](const QVector<BindingEditorModel::PresetEdit> &edits) {
+            ++sinkCalls;
+            batches.append(edits);
+            return true;
+        });
+        const int reloadsBefore = m_legacyReloads;
+
+        m_editor->beginCapture(QStringLiteral("desktop.navigate_down"), 2);
+        QVERIFY(m_editor->captureInput(QStringLiteral("keyboard"), QStringLiteral("J"),
+                                       QStringLiteral("J")));
+        QVERIFY(m_editor->conflictPending());
+        m_editor->confirmConflict();
+
+        QCOMPARE(sinkCalls, 1);
+        QCOMPARE(batches.size(), 1);
+        const auto batch = batches.first();
+        QCOMPARE(batch.size(), 2); // displaced navigate_up + requested
+        QCOMPARE(batch.first().actionId, QStringLiteral("desktop.navigate_up"));
+        QVERIFY(batch.first().unbound);
+        QCOMPARE(batch.last().actionId, QStringLiteral("desktop.navigate_down"));
+        QCOMPARE(batch.last().triggerCode, QStringLiteral("J"));
+        QVERIFY(!batch.last().unbound);
+        QCOMPARE(m_legacyReloads, reloadsBefore);
+    }
+
+    void presetSinkFailureLeavesNothingBehindAndSkipsTheLegacyReload()
+    {
+        // A failing sink call is a failed preset transaction: the displaced row
+        // must not survive as a committed half-replacement, and the editor must
+        // report the failure instead of quietly re-loading the legacy rows.
+        m_editor->setDeviceGroup(QStringLiteral("keyboard"));
+        m_editor->beginCapture(QStringLiteral("desktop.navigate_up"), 1);
+        QVERIFY(m_editor->captureInput(QStringLiteral("keyboard"), QStringLiteral("J"),
+                                       QStringLiteral("J")));
+        QVERIFY(!m_editor->conflictPending());
+
+        int sinkCalls = 0;
+        m_editor->setPresetSink([&](const QVector<BindingEditorModel::PresetEdit> &) {
+            ++sinkCalls;
+            return false;
+        });
+        const int reloadsBefore = m_legacyReloads;
+
+        m_editor->beginCapture(QStringLiteral("desktop.navigate_down"), 2);
+        QVERIFY(m_editor->captureInput(QStringLiteral("keyboard"), QStringLiteral("J"),
+                                       QStringLiteral("J")));
+        QVERIFY(m_editor->conflictPending());
+        m_editor->confirmConflict();
+
+        QCOMPARE(sinkCalls, 1);
+        QCOMPARE(m_editor->relationKind(), QStringLiteral("persistence_error"));
+        QCOMPARE(m_legacyReloads, reloadsBefore);
+
+        const auto rows = m_database->listBindingOverrides();
+        QCOMPARE(rows.size(), 1);
+        QCOMPARE(rows.first().actionId, QStringLiteral("desktop.navigate_up"));
+        QCOMPARE(rows.first().triggerCode, QStringLiteral("J"));
+        QVERIFY(!rows.first().unbound);
+    }
+
+    void presetSinkReleasesDisplacedGlobalHotkeys()
+    {
+        // A preset batch never runs reloadBindings()' hotkey sweep, so the
+        // displaced global hotkey would keep its Win32 registration. The editor
+        // releases those slots explicitly (an empty chord means "release").
+        m_editor->setDeviceGroup(QStringLiteral("keyboard"));
+        QVERIFY(m_database->upsertBindingOverride(
+            {QStringLiteral("keyboard"), {}, QStringLiteral("global.screenshot"), 1,
+             QStringLiteral("J"), QStringLiteral("press"), 0, false}));
+        m_runtime->reload();
+
+        QStringList hotkeyCalls; // "actionId|chord"
+        m_editor->setHotkeyApply([&](const QString &actionId, int, const QString &chord,
+                                     QString *) {
+            hotkeyCalls.append(actionId + QLatin1Char('|') + chord);
+            return true;
+        });
+        m_editor->setPresetSink(
+            [](const QVector<BindingEditorModel::PresetEdit> &) { return true; });
+
+        m_editor->beginCapture(QStringLiteral("global.toggle_overlay"), 1);
+        QVERIFY(m_editor->captureInput(QStringLiteral("keyboard"), QStringLiteral("J"),
+                                       QStringLiteral("J")));
+        QVERIFY(m_editor->conflictPending());
+        m_editor->confirmConflict();
+
+        QVERIFY(hotkeyCalls.contains(QStringLiteral("global.screenshot|")));
+        m_editor->setHotkeyApply(nullptr);
     }
 
     void legacySlotRowsApplyThroughAliasOnlyAndCopyIsExplicit()

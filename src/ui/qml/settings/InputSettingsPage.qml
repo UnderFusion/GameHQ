@@ -12,12 +12,18 @@ SettingsPage {
     readonly property var editor: input.bindingEditor
 
     // Whichever modal is up owns the pad (ordered by stacking: the conflict
-    // and compatibility prompts sit above the assignment editor).
-    padOverlay: compatibilityDialog.visible ? compatibilityDialog
+    // and compatibility prompts sit above the assignment editor, and the
+    // preset dialogs sit above the page they belong to).
+    padOverlay: presetDeleteDialog.visible ? presetDeleteDialog
+              : presetNameDialog.visible ? presetNameDialog
+              : compatibilityDialog.visible ? compatibilityDialog
               : conflictDialog.visible ? conflictDialog
               : resetProfileDialog.visible ? resetProfileDialog
               : assignmentDialog.visible ? assignmentDialog
               : null
+    // Which preset action the shared name dialog is serving; the dialog itself
+    // carries no identity, only the label.
+    property string presetDialogMode: "create"
 
     SettingsSection {
         //% "Devices"
@@ -81,6 +87,64 @@ SettingsPage {
                       ]
                 onActivated: function(value) { editor.controllerSpecific = value === "specific" }
             }
+        }
+    }
+
+    MappingPresetSection {
+        id: presetSection
+        onNewRequested: {
+            root.presetDialogMode = "create"
+            presetNameDialog.title = qsTrId("gamehq.settings.presets.new.title")
+            presetNameDialog.message = qsTrId("gamehq.settings.presets.new.message")
+            presetNameDialog.suggestedName = presetSection.suggestedName(
+                        //% "My mappings"
+                        qsTrId("gamehq.settings.presets.new.suggested"))
+            presetNameDialog.open()
+        }
+        onRenameRequested: {
+            root.presetDialogMode = "rename"
+            presetNameDialog.title = qsTrId("gamehq.settings.presets.rename.title")
+            presetNameDialog.message = qsTrId("gamehq.settings.presets.rename.message")
+            presetNameDialog.suggestedName = input.mappingPresets.selectedPresetName
+            presetNameDialog.open()
+        }
+        onDuplicateRequested: {
+            root.presetDialogMode = "duplicate"
+            presetNameDialog.title = qsTrId("gamehq.settings.presets.duplicate.title")
+            presetNameDialog.message = qsTrId("gamehq.settings.presets.duplicate.message")
+            presetNameDialog.suggestedName = presetSection.suggestedName(
+                        input.mappingPresets.selectedPresetName + " 2")
+            presetNameDialog.open()
+        }
+        onDuplicateForTargetRequested: {
+            root.presetDialogMode = "duplicate_for_target"
+            presetNameDialog.title = qsTrId("gamehq.settings.presets.duplicate_target.title")
+            presetNameDialog.message = qsTrId("gamehq.settings.presets.duplicate_target.message")
+            presetNameDialog.suggestedName = presetSection.suggestedName(
+                        input.mappingPresets.selectedPresetName + " 2")
+            presetNameDialog.open()
+        }
+        onDeleteRequested: {
+            const references = input.mappingPresets.controllerUses
+                             + input.mappingPresets.groupDefaultUses
+                             + input.mappingPresets.gameUses
+            presetDeleteDialog.candidates = references > 0
+                        ? presetSection.reassignCandidates() : []
+            // A migration-source reference cannot be moved (storage refuses the
+            // reassign), and a referenced preset with no candidate left cannot
+            // be deleted either, so the dialog is told both counts instead of
+            // enabling a Delete the model will reject.
+            presetDeleteDialog.movableReferences = references
+            presetDeleteDialog.migrationReferences = input.mappingPresets.migrationUses
+            presetDeleteDialog.title = qsTrId("gamehq.settings.presets.delete.title")
+            presetDeleteDialog.message = references > 0
+                        //% "\"%1\" is used elsewhere. Pick the preset that takes over its users."
+                        ? qsTrId("gamehq.settings.presets.delete.in_use")
+                              .arg(input.mappingPresets.selectedPresetName)
+                        //% "\"%1\" will be deleted. This cannot be undone."
+                        : qsTrId("gamehq.settings.presets.delete.confirm")
+                              .arg(input.mappingPresets.selectedPresetName)
+            presetDeleteDialog.open()
         }
     }
 
@@ -680,5 +744,32 @@ SettingsPage {
         //% "Restore defaults"
         confirmLabel: qsTrId("gamehq.action.restore_defaults")
         onConfirmed: editor.resetCurrentProfile()
+    }
+
+    MappingPresetNameDialog {
+        id: presetNameDialog
+        parent: root
+        anchors.fill: parent
+        z: 212
+        onAccepted: function(name) {
+            if (root.presetDialogMode === "create")
+                input.mappingPresets.createPreset(name)
+            else if (root.presetDialogMode === "rename")
+                input.mappingPresets.renameSelected(name)
+            else if (root.presetDialogMode === "duplicate")
+                input.mappingPresets.duplicateSelected(name)
+            else
+                input.mappingPresets.duplicateSelectedForTarget(name)
+        }
+    }
+
+    MappingPresetDeleteDialog {
+        id: presetDeleteDialog
+        parent: root
+        anchors.fill: parent
+        z: 212
+        onAccepted: function(reassignToId) {
+            input.mappingPresets.deleteSelected(reassignToId)
+        }
     }
 }

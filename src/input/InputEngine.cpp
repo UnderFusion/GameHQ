@@ -14,6 +14,7 @@
 #include "input/EventLoopStallMonitor.h"
 #include "input/InputDiagnostics.h"
 #include "input/MappingPresetMaterializer.h"
+#include "input/MappingPresetModel.h"
 #include "input/MouseHookDevice.h"
 #include "input/MouseMonitorPolicy.h"
 #include "input/OverlayInputPolicy.h"
@@ -64,6 +65,61 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
     // live controller identity chain. Applying a result is a switch boundary
     // (refreshResolvedPreset), never a per-event decision.
     m_assignmentResolver = std::make_unique<MappingAssignmentResolver>(db);
+
+    // cpo-p06: the preset library/assignment facade QML drives. It writes
+    // storage and then asks THIS engine to re-resolve at a safe boundary; it
+    // never resolves a winner itself, and library-only operations (create,
+    // rename, an unused duplicate) never touch the runtime.
+    m_mappingPresets = std::make_unique<MappingPresetModel>(db);
+    m_mappingPresets->setRuntimeRefresh([this] { refreshResolvedPreset(); });
+    m_mappingPresets->setEffectiveTableProvider(
+        [this](const QString& group, const QString& profile) {
+            return m_runtime->effectiveBindings(group, profile);
+        });
+    m_mappingPresets->setPinnedProfileProvider(
+        [this] { return m_bindingEditor->pinnedProfile(); });
+    m_mappingPresets->setPendingEditProvider([this] { return m_bindingEditor->pendingEdit(); });
+    m_mappingPresets->setTargetProvider([this](const QString& group, const QString& pinned) {
+        // Provenance, never key syntax (cpo-p04/p05 reused): durable identity ->
+        // `controller`; a weak one may only persist through a real slot alias.
+        MappingPresetModel::Provenance provenance;
+        const auto* logical =
+            pinned.isEmpty() ? nullptr : m_providers.registry().controller(pinned);
+        provenance.known = logical != nullptr;
+        if (logical) {
+            provenance.durable = logical->confidence == ModernInput::IdentityConfidence::Strong;
+            provenance.displayName = logical->displayName;
+            for (const auto& attachment : logical->providers) {
+                if (!attachment.providerDeviceId.isEmpty())
+                    provenance.slotAliases.append(attachment.providerDeviceId);
+            }
+            provenance.slotAliases.append(m_runtime->resolver().aliasesFor(pinned));
+        }
+        return MappingPresetModel::targetFromProvenance(group, pinned, provenance);
+    });
+    // cpo-p06 phase C: the editor's write path lands in a named preset from
+    // here on. The editor keeps its draft/conflict/hotkey logic; the model owns
+    // which preset a target edit belongs to (adopt-and-mask included).
+    m_bindingEditor->setPresetSink(
+        [this](const QVector<BindingEditorModel::PresetEdit>& edits) {
+            QVector<MappingPresetModel::ContentEdit> batch;
+            batch.reserve(edits.size());
+            for (const BindingEditorModel::PresetEdit& edit : edits) {
+                MappingPresetModel::ContentEdit out;
+                out.actionId = edit.actionId;
+                out.slot = edit.slot;
+                out.remove = edit.remove;
+                out.row.actionId = edit.actionId;
+                out.row.slot = edit.slot;
+                out.row.triggerCode = edit.triggerCode;
+                out.row.activation = edit.activation;
+                out.row.holdMs = edit.holdMs;
+                out.row.unbound = edit.unbound;
+                out.row.tapCount = edit.tapCount;
+                batch.append(out);
+            }
+            return m_mappingPresets->applyContentEdits(batch);
+        });
     // OS half of the binding transaction. The editor calls this *before* it
     // writes anything, so a chord Windows refuses can never be persisted and
     // shown as a working shortcut.
@@ -406,6 +462,11 @@ void InputEngine::retranslate()
 QObject* InputEngine::bindingEditor() const
 {
     return m_bindingEditor.get();
+}
+
+QObject* InputEngine::mappingPresets() const
+{
+    return m_mappingPresets.get();
 }
 
 void InputEngine::start()

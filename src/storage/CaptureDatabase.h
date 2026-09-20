@@ -234,6 +234,39 @@ public:
     // in one transaction; a migration source reference still refuses the delete.
     bool deleteMappingPresetAndReassign(const QString& presetId, const QString& keepPresetId);
 
+    // ---------------------------------------------------------------- cpo-p06
+    // The "Built-in defaults" artifact: one reusable, reserved, permanently
+    // empty preset per device group. It is the explicit empty winner that masks
+    // every compatibility layer below it, which is why it may not be a name:
+    // the identity is the reserved id, and the label the user reads is
+    // localized app text (reviewer correction Q2). It never appears in the
+    // normal library and normal CRUD cannot rename, delete or fill it.
+    static QString builtinMappingPresetId(const QString& deviceGroup);
+    static bool isBuiltinMappingPresetId(const QString& presetId);
+    // Names a user may never store: the reserved display sentinel lives in one
+    // control-character namespace, so a translated or pasted label can never
+    // become the marker.
+    static bool isReservedMappingPresetName(const QString& name);
+    // Get-or-create the reserved artifact in ONE transaction. Returns the
+    // reserved id, or empty with nothing written.
+    QString ensureBuiltinMappingPreset(const QString& deviceGroup);
+    // Creates metadata + rows + the target assignment in ONE transaction
+    // (cpo-p06 atomic boundaries: duplicate-for-this-controller and
+    // adopt-effective-table-and-edit). Returns the new preset id, or empty with
+    // nothing written.
+    QString createMappingPresetAssigned(const QString& deviceGroup, const QString& name,
+                                        const QVector<MappingPresetRow>& rows,
+                                        const QString& targetKind, const QString& targetKey,
+                                        int gameRowId = -1);
+    // Ensures the reserved Built-in preset and points this target at it in ONE
+    // transaction. Returns the reserved id, or empty with nothing written.
+    QString assignMappingTargetToBuiltin(const QString& deviceGroup, const QString& targetKind,
+                                         const QString& targetKey, int gameRowId = -1);
+    // `xinput.slotN` / `winmm.slotN`: slot fingerprints from before stable
+    // identity existed. They stay explicitly slot-scoped (section 6), and this
+    // is the one rule a writer may use to call a key persistably slot-scoped.
+    static bool isLegacySlotProfileKey(const QString& key);
+
     QVector<MappingAssignment> listMappingAssignments(const QString& deviceGroup = QString()) const;
     MappingAssignment mappingAssignment(const QString& deviceGroup, const QString& targetKind,
                                         const QString& targetKey) const;
@@ -317,12 +350,22 @@ private:
     // Transaction-aware metadata insert shared by createMappingPreset() and the
     // v9 migration, so preset-row writes and name uniqueness have one path.
     // Returns the new opaque id, or empty (nothing written beyond the caller's
-    // transaction, which the caller rolls back).
+    // transaction, which the caller rolls back). `explicitId` is used only by
+    // the reserved Built-in artifact (cpo-p06); every user preset gets a
+    // generated opaque id.
     QString insertMappingPresetMetadata(const QString& deviceGroup, const QString& name,
-                                        const QString& origin);
-    // `xinput.slotN` / `winmm.slotN`: slot fingerprints from before stable
-    // identity existed. They stay explicitly slot-scoped (section 6).
-    static bool isLegacySlotProfileKey(const QString& key);
+                                        const QString& origin,
+                                        const QString& explicitId = QString());
+    // One canonical target validation for every assignment writer (the public
+    // set/clear path and the cpo-p06 atomic create/ensure paths), so a target a
+    // new caller accepts can never differ from what setMappingAssignment()
+    // would have accepted. `canonicalKey` receives the persisted key (game keys
+    // go through GameIdentity::executableKey).
+    bool validateMappingAssignmentTarget(const QString& deviceGroup, const QString& targetKind,
+                                         const QString& targetKey, QString* canonicalKey,
+                                         QString* error) const;
+    // `xinput.slotN` / `winmm.slotN` slot fingerprints: the public declaration
+    // above is the one rule (cpo-p06 target derivation reuses it).
     // One typed assignment write; the caller owns the transaction.
     bool upsertMappingAssignmentRow(const QString& deviceGroup, const QString& targetKind,
                                     const QString& targetKey, const QString& presetId,
