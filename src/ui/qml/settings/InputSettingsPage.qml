@@ -94,7 +94,9 @@ SettingsPage {
         id: presetSection
         onNewRequested: {
             root.presetDialogMode = "create"
+            //% "New preset"
             presetNameDialog.title = qsTrId("gamehq.settings.presets.new.title")
+            //% "Name the new preset. You can rename it later."
             presetNameDialog.message = qsTrId("gamehq.settings.presets.new.message")
             presetNameDialog.suggestedName = presetSection.suggestedName(
                         //% "My mappings"
@@ -103,14 +105,18 @@ SettingsPage {
         }
         onRenameRequested: {
             root.presetDialogMode = "rename"
+            //% "Rename preset"
             presetNameDialog.title = qsTrId("gamehq.settings.presets.rename.title")
+            //% "Enter the new name for this preset."
             presetNameDialog.message = qsTrId("gamehq.settings.presets.rename.message")
             presetNameDialog.suggestedName = input.mappingPresets.selectedPresetName
             presetNameDialog.open()
         }
         onDuplicateRequested: {
             root.presetDialogMode = "duplicate"
+            //% "Duplicate preset"
             presetNameDialog.title = qsTrId("gamehq.settings.presets.duplicate.title")
+            //% "Name the copy."
             presetNameDialog.message = qsTrId("gamehq.settings.presets.duplicate.message")
             presetNameDialog.suggestedName = presetSection.suggestedName(
                         input.mappingPresets.selectedPresetName + " 2")
@@ -118,7 +124,9 @@ SettingsPage {
         }
         onDuplicateForTargetRequested: {
             root.presetDialogMode = "duplicate_for_target"
+            //% "Duplicate for this controller"
             presetNameDialog.title = qsTrId("gamehq.settings.presets.duplicate_target.title")
+            //% "Name the copy that this controller will use."
             presetNameDialog.message = qsTrId("gamehq.settings.presets.duplicate_target.message")
             presetNameDialog.suggestedName = presetSection.suggestedName(
                         input.mappingPresets.selectedPresetName + " 2")
@@ -136,6 +144,7 @@ SettingsPage {
             // enabling a Delete the model will reject.
             presetDeleteDialog.movableReferences = references
             presetDeleteDialog.migrationReferences = input.mappingPresets.migrationUses
+            //% "Delete preset"
             presetDeleteDialog.title = qsTrId("gamehq.settings.presets.delete.title")
             presetDeleteDialog.message = references > 0
                         //% "\"%1\" is used elsewhere. Pick the preset that takes over its users."

@@ -11,104 +11,104 @@ namespace {
 // Translation inventory for cpo-p06 (semantic pass and 16-locale acceptance
 // stay with cpo-x02; every id below has its source string and a translator
 // comment so the extraction pipeline can pick it up).
-//: Shown when a preset write failed and nothing was changed.
-//% "That change could not be saved. Nothing was modified."
 QString noticeWriteFailed()
 {
+    //: Shown when a preset write failed and nothing was changed.
+    //% "That change could not be saved. Nothing was modified."
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.write_failed"),
                            "That change could not be saved. Nothing was modified.");
 }
-//: Shown when the entered preset name is already used in this device group.
-//% "That name is already used in this device group."
 QString noticeNameTaken()
 {
+    //: Shown when the entered preset name is already used in this device group.
+    //% "That name is already used in this device group."
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.name_taken"),
                            "That name is already used in this device group.");
 }
-//: Shown when a preset action was attempted with no preset selected.
-//% "Select a preset first."
 QString noticeNothingSelected()
 {
+    //: Shown when a preset action was attempted with no preset selected.
+    //% "Select a preset first."
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.nothing_selected"),
                            "Select a preset first.");
 }
-//: Shown while the binding editor holds an unsaved draft or an active capture.
-//% "Finish or cancel the edit in progress first."
 QString noticePendingEdit()
 {
+    //: Shown while the binding editor holds an unsaved draft or an active capture.
+    //% "Finish or cancel the edit in progress first."
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.pending_edit"),
                            "Finish or cancel the edit in progress first.");
 }
-//: Shown when the editing target has no stable controller identity to save under.
-//% "This controller has no stable identity yet, so a per-controller preset cannot be saved."
 QString noticeTargetUnavailable()
 {
+    //: Shown when the editing target has no stable controller identity to save under.
+    //% "This controller has no stable identity yet, so a per-controller preset cannot be saved."
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.target_unavailable"),
                            "This controller has no stable identity yet, so a per-controller "
                            "preset cannot be saved.");
 }
-//: Shown when a referenced preset is deleted without choosing where its users go.
-//% "This preset is still in use. Pick a preset to move its users to, then delete it."
 QString noticeDeleteInUse()
 {
+    //: Shown when a referenced preset is deleted without choosing where its users go.
+    //% "This preset is still in use. Pick a preset to move its users to, then delete it."
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.delete_in_use"),
                            "This preset is still in use. Pick a preset to move its users to, "
                            "then delete it.");
 }
-//: Shown when a delete failed and nothing changed.
-//% "That preset could not be deleted. Nothing was changed."
 QString noticeDeleteFailed()
 {
+    //: Shown when a delete failed and nothing changed.
+    //% "That preset could not be deleted. Nothing was changed."
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.delete_failed"),
                            "That preset could not be deleted. Nothing was changed.");
 }
-//: Shown when a rename failed; the previous name stays active.
-//% "That preset could not be renamed. The previous name is still active."
 QString noticeRenameFailed()
 {
+    //: Shown when a rename failed; the previous name stays active.
+    //% "That preset could not be renamed. The previous name is still active."
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.rename_failed"),
                            "That preset could not be renamed. The previous name is still active.");
 }
-//: Shown when a preset id does not exist in the current device group.
-//% "That preset is not available in this device group."
 QString noticeUnknownPreset()
 {
+    //: Shown when a preset id does not exist in the current device group.
+    //% "That preset is not available in this device group."
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.unknown_preset"),
                            "That preset is not available in this device group.");
 }
-//: Shown when the reserved Built-in defaults entry is targeted by rename/delete.
-//% "Built-in defaults cannot be renamed or deleted."
 QString noticeBuiltinReadOnly()
 {
+    //: Shown when the reserved Built-in defaults entry is targeted by rename/delete.
+    //% "Built-in defaults cannot be renamed or deleted."
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.builtin_read_only"),
                            "Built-in defaults cannot be renamed or deleted.");
 }
-//: Shown when a game assignment was requested while no game is in session.
-//% "Start a game first: a game assignment needs to know which game it is for."
 QString noticeGameUnavailable()
 {
+    //: Shown when a game assignment was requested while no game is in session.
+    //% "Start a game first: a game assignment needs to know which game it is for."
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.game_unavailable"),
                            "Start a game first: a game assignment needs to know which game "
                            "it is for.");
 }
-//: Shown when an edited binding cannot be stored as preset content.
-//% "That assignment cannot be stored as a preset row."
 QString noticeEditInvalid()
 {
+    //: Shown when an edited binding cannot be stored as preset content.
+    //% "That assignment cannot be stored as a preset row."
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.edit_invalid"),
                            "That assignment cannot be stored as a preset row.");
 }
-//: Shown when a new preset name is empty or reserved.
-//% "Enter a name for the new preset."
 QString noticeInvalidName()
 {
+    //: Shown when a new preset name is empty or reserved.
+    //% "Enter a name for the new preset."
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.notice.invalid_name"),
                            "Enter a name for the new preset.");
 }
-//: The virtual "Built-in defaults" picker entry; localized UI text, never a stored name.
-//% "Built-in defaults"
 QString builtinChoiceLabel()
 {
+    //: The virtual "Built-in defaults" picker entry; localized UI text, never a stored name.
+    //% "Built-in defaults"
     return NativeText::get(QT_TRID_NOOP("gamehq.settings.presets.builtin_label"),
                            "Built-in defaults");
 }
