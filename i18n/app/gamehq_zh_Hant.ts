@@ -101,11 +101,12 @@
       <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="19"></location>
       <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="25"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="14"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="605"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
       <source>Cancel</source>
       <translation>取消</translation>
     </message>
@@ -287,7 +288,7 @@
       <translation>縮小</translation>
     </message>
     <message id="gamehq.action.dismiss">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="253"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="187"></location>
       <source>Dismiss</source>
       <translation>忽略</translation>
     </message>
@@ -518,9 +519,9 @@
       <location filename="src/ui/qml/SettingsView.qml" line="498"></location>
       <location filename="src/ui/qml/SettingsView.qml" line="515"></location>
       <location filename="src/ui/qml/SettingsView.qml" line="529"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="290"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="465"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="754"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="224"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="475"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="764"></location>
       <source>Restore defaults</source>
       <translation>復原預設設定</translation>
     </message>
@@ -581,30 +582,30 @@
       <translation>確定要繼續嗎？</translation>
     </message>
     <message id="gamehq.duration.decimal_seconds">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="341"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="343"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="345"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="347"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="275"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="277"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="279"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="281"></location>
       <source>%1 seconds</source>
       <translation>%1 秒</translation>
     </message>
     <message id="gamehq.duration.milliseconds">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="362"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="364"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="381"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="383"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="296"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="298"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="315"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="317"></location>
       <source>%1 ms</source>
       <translation>%1 毫秒</translation>
     </message>
     <message id="gamehq.duration.milliseconds.fast">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="360"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="379"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="294"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="313"></location>
       <source>%1 ms (fast)</source>
       <translation>%1 毫秒（快速）</translation>
     </message>
     <message id="gamehq.duration.milliseconds.relaxed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="366"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="385"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="300"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="319"></location>
       <source>%1 ms (relaxed)</source>
       <translation>%1 毫秒（寬鬆）</translation>
     </message>
@@ -2598,7 +2599,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.advanced.status.ready">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="44"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="696"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="706"></location>
       <source>Ready</source>
       <translation>就緒</translation>
     </message>
@@ -3136,54 +3137,54 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>一般</translation>
     </message>
     <message id="gamehq.settings.input.bindings.action_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="453"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="463"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.settings.input.bindings.assignment_heading">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="494"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="504"></location>
       <source>Input assignments</source>
       <translation>輸入指派</translation>
     </message>
     <message id="gamehq.settings.input.bindings.assignment_hint">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="503"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="513"></location>
       <source>Both slots can be active. Select one to edit.</source>
       <translation>兩個欄位可以同時生效。選擇其中一個進行編輯。</translation>
     </message>
     <message id="gamehq.settings.input.bindings.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="398"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="408"></location>
       <source>Primary and secondary slots are independent. Contexts can reuse the same input safely.</source>
       <translation>主欄位和副欄位相互獨立。不同情境可以安全地重複使用同一輸入。</translation>
     </message>
     <message id="gamehq.settings.input.bindings.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="394"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="404"></location>
       <source>Bindings</source>
       <translation>綁定</translation>
     </message>
     <message id="gamehq.settings.input.bindings.fixed">
       <location filename="src/ui/qml/components/BindingCard.qml" line="250"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="528"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="545"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="538"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="555"></location>
       <source>Fixed</source>
       <translation>固定</translation>
     </message>
     <message id="gamehq.settings.input.bindings.primary">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="522"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="532"></location>
       <source>Primary</source>
       <translation>主</translation>
     </message>
     <message id="gamehq.settings.input.bindings.secondary">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="539"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="549"></location>
       <source>Secondary</source>
       <translation>副</translation>
     </message>
     <message id="gamehq.settings.input.bindings.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="396"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="406"></location>
       <source>Assignments</source>
       <translation>指派</translation>
     </message>
     <message id="gamehq.settings.input.capture.waiting">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="590"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="600"></location>
       <source>Waiting for input</source>
       <translation>等待輸入</translation>
     </message>
@@ -3193,288 +3194,288 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>在不改變導覽行為的前提下設定控制器、鍵盤和滑鼠快速鍵。</translation>
     </message>
     <message id="gamehq.settings.input.devices.controller">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="52"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="53"></location>
       <source>Controller</source>
       <translation>控制器</translation>
     </message>
     <message id="gamehq.settings.input.devices.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="34"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="35"></location>
       <source>Choose a device type, then select either assignment slot to capture a new input.</source>
       <translation>選擇裝置類型，再選擇任一指派欄位以偵測新的輸入。</translation>
     </message>
     <message id="gamehq.settings.input.devices.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="30"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="31"></location>
       <source>Devices</source>
       <translation>裝置</translation>
     </message>
     <message id="gamehq.settings.input.devices.keyboard">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="54"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="55"></location>
       <source>Keyboard</source>
       <translation>鍵盤</translation>
     </message>
     <message id="gamehq.settings.input.devices.keyboard_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="43"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="44"></location>
       <source>Focused shortcuts and global key combinations</source>
       <translation>視窗取得焦點時的快速鍵與全域組合鍵</translation>
     </message>
     <message id="gamehq.settings.input.devices.mouse">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="56"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="57"></location>
       <source>Mouse</source>
       <translation>滑鼠</translation>
     </message>
     <message id="gamehq.settings.input.devices.mouse_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="46"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="47"></location>
       <source>Middle, Back, and Forward mouse buttons</source>
       <translation>滑鼠中鍵、後退鍵和前進鍵</translation>
     </message>
     <message id="gamehq.settings.input.devices.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="32"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="33"></location>
       <source>Input devices</source>
       <translation>輸入裝置</translation>
     </message>
     <message id="gamehq.settings.input.devices.type">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="37"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="38"></location>
       <source>Device type</source>
       <translation>裝置類型</translation>
     </message>
     <message id="gamehq.settings.input.gestures.combination_window">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="372"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="306"></location>
       <source>Combination window</source>
       <translation>組合時間視窗</translation>
     </message>
     <message id="gamehq.settings.input.gestures.combination_window_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="374"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="308"></location>
       <source>How long the first button of a combination waits for the second one.</source>
       <translation>組合中第一個按鍵等待第二個按鍵的時長。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="331"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="265"></location>
       <source>How long GameHQ waits before it decides what a button press meant.</source>
       <translation>GameHQ 在判定按鈕按下操作的含義前要等待多久。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="327"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="261"></location>
       <source>Gestures</source>
       <translation>手勢</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="334"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="268"></location>
       <source>Hold time</source>
       <translation>長按時長</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="336"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="270"></location>
       <source>How long a button must be held for a hold action. A completed hold consumes the tap.</source>
       <translation>按鍵必須按住多久才會觸發長按動作。完成長按後不會觸發短按動作。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="353"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="287"></location>
       <source>Multi-tap interval</source>
       <translation>多次按壓間隔</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="355"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="289"></location>
       <source>How long a single tap waits when the same button also has a double or triple tap.</source>
       <translation>同一按鍵也設定按兩下或按三下時，短按需要等待多久。</translation>
     </message>
     <message id="gamehq.settings.input.gestures.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="329"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="263"></location>
       <source>Gesture timing</source>
       <translation>手勢時間</translation>
     </message>
     <message id="gamehq.settings.input.hidden.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="163"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="97"></location>
       <source>Attention</source>
       <translation>注意</translation>
     </message>
     <message id="gamehq.settings.input.hidden.fix">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="172"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="106"></location>
       <source>Fix automatically</source>
       <translation>自動修復</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="165"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Controller hidden</source>
       <translation>控制器被隱藏</translation>
     </message>
     <message id="gamehq.settings.input.modern.auto">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="659"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="669"></location>
       <source>Auto</source>
       <translation>自動</translation>
     </message>
     <message id="gamehq.settings.input.modern.device_layout_changed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="670"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
       <source>%1 button layout changed</source>
       <translation>%1 按鍵設定已變更</translation>
     </message>
     <message id="gamehq.settings.input.modern.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="642"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="652"></location>
       <source>Modern controllers</source>
       <translation>現代控制器</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="720"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="730"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
       <translation>瞭解 View 鍵與真正的 Share 鍵、偵測結果、重新連線、手勢和組合鍵。</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="718"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="728"></location>
       <source>Controller compatibility guide</source>
       <translation>控制器相容性指南</translation>
     </message>
     <message id="gamehq.settings.input.modern.layout_warning">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="657"></location>
       <source>A controller layout changed. Review its extra-button assignments before using them.</source>
       <translation>某個控制器的按鍵設定已變更。使用前請檢查其額外按鍵的指派。</translation>
     </message>
     <message id="gamehq.settings.input.modern.legacy_fallback">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="693"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="703"></location>
       <source>Legacy fallback</source>
       <translation>舊版備援</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="661"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="671"></location>
       <source>Off</source>
       <translation>關閉</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.copy">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="710"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="720"></location>
       <source>Copy report</source>
       <translation>複製報告</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="707"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="717"></location>
       <source>Copies anonymous identity, providers, Share/Guide availability, extra buttons, and layout state—never serials or full device paths.</source>
       <translation>複製匿名識別資訊、提供者、Share/Guide 鍵可用性、額外按鍵和按鍵排列狀態，但絕不包含序號或完整裝置路徑。</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="705"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="715"></location>
       <source>Compatibility report</source>
       <translation>相容性報告</translation>
     </message>
     <message id="gamehq.settings.input.modern.review_buttons">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="674"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="684"></location>
       <source>Review buttons</source>
       <translation>檢查按鍵</translation>
     </message>
     <message id="gamehq.settings.input.modern.runtime">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="687"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="697"></location>
       <source>GameInput runtime</source>
       <translation>GameInput 執行階段</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="654"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="664"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
       <translation>「自動」會使用隨附的 GameInput 執行階段，並提供安全的舊版備援；「關閉」會停用 GameInput。</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="652"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="662"></location>
       <source>Modern controller support</source>
       <translation>現代控制器支援</translation>
     </message>
     <message id="gamehq.settings.input.modern.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="644"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="654"></location>
       <source>GameInput support</source>
       <translation>GameInput 支援</translation>
     </message>
     <message id="gamehq.settings.input.modern.use_current_layout">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="690"></location>
       <source>Use current layout</source>
       <translation>使用目前佈局</translation>
     </message>
     <message id="gamehq.settings.input.profile.all_controllers">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="78"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="86"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="79"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="87"></location>
       <source>All controllers</source>
       <translation>所有控制器</translation>
     </message>
     <message id="gamehq.settings.input.profile.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="64"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="65"></location>
       <source>Controller profile</source>
       <translation>控制器設定</translation>
     </message>
     <message id="gamehq.settings.input.profile.shared_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="71"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="72"></location>
       <source>Position-based assignments work across PlayStation, Xbox, Nintendo, and generic pads.</source>
       <translation>基於按鍵位置的指派適用於 PlayStation、Xbox、任天堂和通用控制器。</translation>
     </message>
     <message id="gamehq.settings.input.profile.specific_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="68"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="69"></location>
       <source>Changes apply only to %1.</source>
       <translation>變更僅套用至 %1。</translation>
     </message>
     <message id="gamehq.settings.input.profile.this_controller">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="82"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="83"></location>
       <source>This controller</source>
       <translation>此控制器</translation>
     </message>
     <message id="gamehq.settings.input.relation.compatibility">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="198"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="132"></location>
       <source>Compatibility</source>
       <translation>相容性</translation>
     </message>
     <message id="gamehq.settings.input.relation.compatibility_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="223"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="157"></location>
       <source>Assignment conversion required</source>
       <translation>需要轉換指派</translation>
     </message>
     <message id="gamehq.settings.input.relation.context">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="195"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="129"></location>
       <source>Context</source>
       <translation>情境</translation>
     </message>
     <message id="gamehq.settings.input.relation.context_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="220"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="154"></location>
       <source>This button changes meaning</source>
       <translation>此按鍵的功能會依情境改變</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="210"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="144"></location>
       <source>Duplicate</source>
       <translation>重複</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="235"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="169"></location>
       <source>Already assigned</source>
       <translation>已指派</translation>
     </message>
     <message id="gamehq.settings.input.relation.in_use">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="204"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="138"></location>
       <source>In use</source>
       <translation>在使用中</translation>
     </message>
     <message id="gamehq.settings.input.relation.in_use_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="229"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="163"></location>
       <source>Shortcut already taken</source>
       <translation>該快速鍵已被佔用</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_available">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="201"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="135"></location>
       <source>Not available</source>
       <translation>不可用</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_reported_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="226"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="160"></location>
       <source>Button not reported</source>
       <translation>未報告該按鍵</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_saved">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="207"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="141"></location>
       <source>Not saved</source>
       <translation>未儲存</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_saved_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="232"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="166"></location>
       <source>Could not save this binding</source>
       <translation>無法儲存此綁定</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="213"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="147"></location>
       <source>Shared button</source>
       <translation>共用按鍵</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="238"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="172"></location>
       <source>One button, several gestures</source>
       <translation>一個按鍵，多種手勢</translation>
     </message>
@@ -3489,72 +3490,72 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>要復原所有輸入綁定嗎？</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="752"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="762"></location>
       <source>Only the currently displayed device/profile overrides will be removed.</source>
       <translation>僅會刪除目前顯示的裝置/設定的自定義設定。</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="750"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="760"></location>
       <source>Restore displayed bindings?</source>
       <translation>要復原目前顯示的綁定嗎？</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="298"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="232"></location>
       <source>Adopt per-slot bindings</source>
       <translation>採用按欄位的綁定</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="300"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="234"></location>
       <source>Copy bindings saved for any controller in this slot to this specific controller. The originals are kept.</source>
       <translation>將該欄位中為所有控制器儲存的綁定複製到此特定控制器。原有綁定會保留。</translation>
     </message>
     <message id="gamehq.settings.input.test.copy_to_controller">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="303"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="237"></location>
       <source>Copy to this controller</source>
       <translation>複製到此控制器</translation>
     </message>
     <message id="gamehq.settings.input.test.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="262"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="196"></location>
       <source>Profile</source>
       <translation>設定</translation>
     </message>
     <message id="gamehq.settings.input.test.identify_button">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="310"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="244"></location>
       <source>Identify a controller button</source>
       <translation>識別控制器按鍵</translation>
     </message>
     <message id="gamehq.settings.input.test.last_input">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="268"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="202"></location>
       <source>Last input</source>
       <translation>上次輸入</translation>
     </message>
     <message id="gamehq.settings.input.test.probe_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="314"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="248"></location>
       <source>Records the next 3 seconds of raw button changes — including buttons GameHQ does not recognize — into the diagnostics you can copy from Advanced.</source>
       <translation>將接下來 3 秒內未經處理的按鍵狀態變化（包括 GameHQ 無法識別的按鍵）記錄到診斷資訊中，之後可從「進階」頁面複製。</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_displayed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="279"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="213"></location>
       <source>Restore displayed bindings</source>
       <translation>復原目前顯示的綁定</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_shared_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="286"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="220"></location>
       <source>Remove overrides for the selected device type and shared profile.</source>
       <translation>刪除所選裝置類型和共享設定的自定義設定。</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_specific_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="283"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="217"></location>
       <source>Remove overrides for this controller only.</source>
       <translation>僅刪除此控制器的自定義設定。</translation>
     </message>
     <message id="gamehq.settings.input.test.start_probe">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="317"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="251"></location>
       <source>Start 3-second probe</source>
       <translation>開始 3 秒偵測</translation>
     </message>
     <message id="gamehq.settings.input.test.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="264"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="198"></location>
       <source>Test and restore</source>
       <translation>測試和復原</translation>
     </message>
@@ -3729,72 +3730,93 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Import this portable profile?</source>
       <translation>要匯入此可攜式設定檔嗎？</translation>
     </message>
+    <message id="gamehq.settings.presets.action.assign_to_device">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="404"></location>
+      <source>Assign to this device</source>
+      <translation>指派給此裝置</translation>
+    </message>
     <message id="gamehq.settings.presets.action.delete">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="405"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="31"></location>
       <source>Delete</source>
       <translation>刪除</translation>
     </message>
     <message id="gamehq.settings.presets.action.duplicate">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="399"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="29"></location>
       <source>Duplicate</source>
       <translation>複製</translation>
     </message>
+    <message id="gamehq.settings.presets.action.more">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="460"></location>
+      <source>More actions</source>
+      <translation>更多操作</translation>
+    </message>
     <message id="gamehq.settings.presets.action.new">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="388"></location>
-      <source>New</source>
-      <translation>新增</translation>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="453"></location>
+      <source>New preset</source>
+      <oldsource>New</oldsource>
+      <translation>新增預設</translation>
     </message>
     <message id="gamehq.settings.presets.action.rename">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="393"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="27"></location>
       <source>Rename</source>
       <translation>重新命名</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.builtin">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="47"></location>
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="105"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="60"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="118"></location>
       <source>Built-in defaults</source>
       <translation>內建預設設定</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.builtin_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="229"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="256"></location>
       <source>Built-in defaults replace every other layer for this device.</source>
       <translation>內建預設設定會取代此裝置的其他所有層級。</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.fallback">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="42"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="55"></location>
       <source>Follow fallback (no preset)</source>
       <translation>跟隨遞補（無預設）</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.fallback_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="225"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="252"></location>
       <source>No preset is assigned: this device follows the fallback chain.</source>
       <translation>未指派預設：此裝置跟隨遞補鏈。</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="221"></location>
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="318"></location>
-      <source>Mappings used by this device</source>
-      <translation>此裝置使用的對應</translation>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="239"></location>
+      <source>Assigned preset</source>
+      <oldsource>Mappings used by this device</oldsource>
+      <translation>已指派的預設</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.missing_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="233"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="260"></location>
       <source>The assigned preset no longer exists. Choose another one.</source>
       <translation>指派的預設已不存在。請選擇其他預設。</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.preset_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="236"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="263"></location>
       <source>This device uses the preset "%1".</source>
       <translation>此裝置使用預設「%1」。</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.unavailable_unknown">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="142"></location>
       <source>Choose the controller to edit before saving a per-controller preset.</source>
       <translation>儲存控制器專屬預設之前，請先選擇要編輯的控制器。</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.unavailable_weak">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="139"></location>
       <source>This controller has no stable identity yet, so a per-controller preset cannot be saved. Connect it again or edit all controllers.</source>
       <translation>此控制器尚無穩定識別資訊，因此無法儲存控制器專屬預設。請重新連接，或編輯所有控制器。</translation>
+    </message>
+    <message id="gamehq.settings.presets.badge.shared">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="360"></location>
+      <source>Shared</source>
+      <translation>共用</translation>
+    </message>
+    <message id="gamehq.settings.presets.badge.this_device">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="242"></location>
+      <source>Used by this device</source>
+      <translation>此裝置正在使用</translation>
     </message>
     <message id="gamehq.settings.presets.builtin_label">
       <location filename="src/input/MappingPresetModel.cpp" line="112"></location>
@@ -3802,12 +3824,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>內建預設設定</translation>
     </message>
     <message id="gamehq.settings.presets.delete.confirm">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="154"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="395"></location>
       <source>"%1" will be deleted. This cannot be undone.</source>
       <translation>預設「%1」將被刪除。此操作無法復原。</translation>
     </message>
     <message id="gamehq.settings.presets.delete.in_use">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="151"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="392"></location>
       <source>"%1" is used elsewhere. Pick the preset that takes over its users.</source>
       <translation>預設「%1」仍被其他位置使用。請選擇要接手其對應的預設。</translation>
     </message>
@@ -3827,95 +3849,120 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>此群組中沒有其他預設可接手其對應。請先建立一個預設。</translation>
     </message>
     <message id="gamehq.settings.presets.delete.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="148"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="389"></location>
       <source>Delete preset</source>
       <translation>刪除預設</translation>
     </message>
     <message id="gamehq.settings.presets.description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="25"></location>
-      <source>Presets are global: a game never owns mappings, it only has an assignment.</source>
-      <translation>預設是全域的：遊戲從不擁有對應，只有指派。</translation>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="30"></location>
+      <source>Presets are reusable mapping profiles. A device or game can be assigned to a preset.</source>
+      <oldsource>Presets are global: a game never owns mappings, it only has an assignment.</oldsource>
+      <translation>預設是可重複使用的對應設定檔。可以為裝置或遊戲指派一個預設。</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="361"></location>
       <source>Name the copy.</source>
       <translation>為副本命名。</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="359"></location>
       <source>Duplicate preset</source>
       <translation>複製預設</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate_target.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="130"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="371"></location>
       <source>Name the copy that this controller will use.</source>
       <translation>為此控制器要使用的副本命名。</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate_target.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="128"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="369"></location>
       <source>Duplicate for this controller</source>
       <translation>為此控制器複製</translation>
     </message>
+    <message id="gamehq.settings.presets.editing.helper">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="376"></location>
+      <source>Changes below will be saved to this preset.</source>
+      <translation>下方的變更將儲存到此預設。</translation>
+    </message>
+    <message id="gamehq.settings.presets.editing.unassigned">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="401"></location>
+      <source>This preset is not assigned to this device yet.</source>
+      <translation>此預設尚未指派給此裝置。</translation>
+    </message>
     <message id="gamehq.settings.presets.eyebrow">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="21"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="26"></location>
       <source>Mappings</source>
       <translation>對應</translation>
     </message>
     <message id="gamehq.settings.presets.game.builtin_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="283"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="311"></location>
       <source>Built-in defaults replace every other layer while "%1" is running.</source>
       <translation>「%1」執行期間，內建預設設定會取代其他所有層級。</translation>
     </message>
     <message id="gamehq.settings.presets.game.fallback">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="100"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="113"></location>
       <source>Follow the chain below the game</source>
       <translation>跟隨遊戲之下的鏈</translation>
     </message>
     <message id="gamehq.settings.presets.game.fallback_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="278"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="306"></location>
       <source>No preset is assigned to "%1": it follows this device's mappings.</source>
       <translation>未為「%1」指派預設：它會跟隨此裝置的對應。</translation>
     </message>
     <message id="gamehq.settings.presets.game.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="261"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="289"></location>
       <source>Mappings used by this game</source>
       <translation>此遊戲使用的對應</translation>
     </message>
     <message id="gamehq.settings.presets.game.missing_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="288"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="316"></location>
       <source>The preset assigned to this game no longer exists. Choose another one.</source>
       <translation>指派給此遊戲的預設已不存在。請選擇其他預設。</translation>
     </message>
     <message id="gamehq.settings.presets.game.missing_option">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="116"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="129"></location>
       <source>%1 (not in this group)</source>
       <translation>%1（不在此群組中）</translation>
     </message>
     <message id="gamehq.settings.presets.game.preset_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="295"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="323"></location>
       <source>"%1" uses the preset "%2" while it is running.</source>
       <translation>「%1」執行期間使用預設「%2」。</translation>
     </message>
     <message id="gamehq.settings.presets.game.wrong_group_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="292"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="320"></location>
       <source>The preset assigned to this game is for a different device type. Choose another one.</source>
       <translation>指派給此遊戲的預設屬於其他裝置類型。請選擇其他預設。</translation>
     </message>
     <message id="gamehq.settings.presets.library.empty">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="380"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="444"></location>
       <source>Create a preset to save a custom mapping set.</source>
       <translation>建立預設以儲存自訂對應集。</translation>
     </message>
+    <message id="gamehq.settings.presets.library.helper">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="436"></location>
+      <source>Create and manage reusable presets.</source>
+      <translation>建立及管理可重複使用的預設。</translation>
+    </message>
     <message id="gamehq.settings.presets.library.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="372"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="434"></location>
       <source>Preset library</source>
       <translation>預設資料庫</translation>
     </message>
     <message id="gamehq.settings.presets.library.pending_edit">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="346"></location>
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="376"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="373"></location>
       <source>Finish or cancel the current edit before changing presets.</source>
       <translation>切換預設前，請完成或取消目前的編輯。</translation>
+    </message>
+    <message id="gamehq.settings.presets.more.message">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="331"></location>
+      <source>Choose what to do with "%1".</source>
+      <translation>選擇要對預設「%1」執行的操作。</translation>
+    </message>
+    <message id="gamehq.settings.presets.more.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="329"></location>
+      <source>Preset actions</source>
+      <translation>預設操作</translation>
     </message>
     <message id="gamehq.settings.presets.name_label">
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="22"></location>
@@ -3923,17 +3970,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>名稱</translation>
     </message>
     <message id="gamehq.settings.presets.new.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="100"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="341"></location>
       <source>Name the new preset. You can rename it later.</source>
       <translation>為新預設命名。之後可以重新命名。</translation>
     </message>
     <message id="gamehq.settings.presets.new.suggested">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="103"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="344"></location>
       <source>My mappings</source>
       <translation>我的對應</translation>
     </message>
     <message id="gamehq.settings.presets.new.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="98"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="339"></location>
       <source>New preset</source>
       <translation>新增預設</translation>
     </message>
@@ -3968,7 +4015,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>請輸入新預設的名稱。</translation>
     </message>
     <message id="gamehq.settings.presets.notice.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="422"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="478"></location>
       <source>Preset</source>
       <translation>預設</translation>
     </message>
@@ -4008,57 +4055,58 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>無法儲存該變更。未做任何修改。</translation>
     </message>
     <message id="gamehq.settings.presets.rename.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="111"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="352"></location>
       <source>Enter the new name for this preset.</source>
       <translation>請輸入此預設的新名稱。</translation>
     </message>
     <message id="gamehq.settings.presets.rename.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="109"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="350"></location>
       <source>Rename preset</source>
       <translation>重新命名預設</translation>
     </message>
     <message id="gamehq.settings.presets.select.assigned">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="350"></location>
       <source>This device uses it, so the editor saves its changes here.</source>
-      <translation>此裝置正在使用它，因此編輯器會將變更儲存在此處。</translation>
+      <translation type="vanished">此裝置正在使用它，因此編輯器會將變更儲存在此處。</translation>
     </message>
     <message id="gamehq.settings.presets.select.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="342"></location>
-      <source>Preset</source>
-      <translation>預設</translation>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="358"></location>
+      <source>Editing preset</source>
+      <oldsource>Preset</oldsource>
+      <translation>正在編輯的預設</translation>
     </message>
     <message id="gamehq.settings.presets.select.managing">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="353"></location>
       <source>Selected for renaming, duplicating or deleting. The editor still saves to the preset this device uses.</source>
-      <translation>已選取用於重新命名、複製或刪除。編輯器仍會儲存到該裝置使用的預設。</translation>
+      <translation type="vanished">已選取用於重新命名、複製或刪除。編輯器仍會儲存到該裝置使用的預設。</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.both">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="151"></location>
       <source>Used by %1 target(s) and %2 game(s). Editing it changes all of them.</source>
       <translation>對應項目：%1，遊戲：%2。對此預設的修改將套用到所有這些對應項目與遊戲。</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.duplicate">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="329"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="419"></location>
       <source>Duplicate for this controller</source>
       <translation>為此控制器複製</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.games">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="142"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="155"></location>
       <source>Used by %1 game(s). Editing it changes all of them.</source>
       <translation>遊戲：%1。對此預設的修改將套用到所有這些遊戲。</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="325"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="415"></location>
       <source>Shared preset</source>
       <translation>共用預設</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.targets">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="145"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="158"></location>
       <source>Used by %1 target(s). Editing it changes all of them, or duplicate it for this controller.</source>
       <translation>對應項目：%1。編輯後會一併變更全部；也可以為此控制器複製一份。</translation>
     </message>
     <message id="gamehq.settings.presets.title">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="23"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="28"></location>
       <source>Mapping presets</source>
       <translation>對應預設</translation>
     </message>

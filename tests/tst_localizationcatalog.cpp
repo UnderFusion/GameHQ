@@ -18,6 +18,7 @@ struct CatalogEntry {
     QString source;
     QString translation;
     bool unfinished = false;
+    bool vanished = false;
 };
 
 struct LookupResult {
@@ -52,12 +53,17 @@ QHash<QString, CatalogEntry> readTsCatalog(const QString &path, QString *error)
             if (xml.name() == u"source") {
                 entry.source = xml.readElementText();
             } else if (xml.name() == u"translation") {
-                entry.unfinished = xml.attributes().value(u"type") == u"unfinished";
+                const auto type = xml.attributes().value(u"type");
+                entry.unfinished = type == u"unfinished";
+                // A retired ID stays in the catalog as translation history
+                // (type="vanished"). It is not part of the shipped surface, so
+                // it must not be counted or asserted like a live entry.
+                entry.vanished = type == u"vanished";
                 entry.translation = xml.readElementText(
                     QXmlStreamReader::IncludeChildElements);
             }
         }
-        if (!id.isEmpty())
+        if (!id.isEmpty() && !entry.vanished)
             entries.insert(id, entry);
     }
 
@@ -319,7 +325,7 @@ void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndTranslated
     const auto english = readTsCatalog(
         QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/gamehq_en_US.ts"), &error);
     QVERIFY2(error.isEmpty(), qPrintable(error));
-    QCOMPARE(english.size(), 923);
+    QCOMPARE(english.size(), 930);
     const QSet<QString> activeIds = activeProductionIds();
 
     for (const QString& catalogName : promotedLaunchCatalogs()) {
@@ -388,7 +394,7 @@ void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
 void LocalizationCatalogTest::migratedProductionQmlIdsCoverEveryLaunchLocale()
 {
     const QSet<QString> ids = translationIdsIn(productionQmlFiles());
-    QCOMPARE(ids.size(), 649);
+    QCOMPARE(ids.size(), 656);
 
     for (const QString &catalogName : translatedCatalogs()) {
         QString error;

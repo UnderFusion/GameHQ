@@ -101,11 +101,12 @@
       <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="19"></location>
       <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="25"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="14"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="605"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
       <source>Cancel</source>
       <translation>Скасувати</translation>
     </message>
@@ -287,7 +288,7 @@
       <translation>Зменшити</translation>
     </message>
     <message id="gamehq.action.dismiss">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="253"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="187"></location>
       <source>Dismiss</source>
       <translation>Відхилити</translation>
     </message>
@@ -518,9 +519,9 @@
       <location filename="src/ui/qml/SettingsView.qml" line="498"></location>
       <location filename="src/ui/qml/SettingsView.qml" line="515"></location>
       <location filename="src/ui/qml/SettingsView.qml" line="529"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="290"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="465"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="754"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="224"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="475"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="764"></location>
       <source>Restore defaults</source>
       <translation>Відновити типові налаштування</translation>
     </message>
@@ -581,30 +582,30 @@
       <translation>Ви впевнені?</translation>
     </message>
     <message id="gamehq.duration.decimal_seconds">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="341"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="343"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="345"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="347"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="275"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="277"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="279"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="281"></location>
       <source>%1 seconds</source>
       <translation>%1 с</translation>
     </message>
     <message id="gamehq.duration.milliseconds">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="362"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="364"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="381"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="383"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="296"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="298"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="315"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="317"></location>
       <source>%1 ms</source>
       <translation>%1 мс</translation>
     </message>
     <message id="gamehq.duration.milliseconds.fast">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="360"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="379"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="294"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="313"></location>
       <source>%1 ms (fast)</source>
       <translation>%1 мс (швидко)</translation>
     </message>
     <message id="gamehq.duration.milliseconds.relaxed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="366"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="385"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="300"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="319"></location>
       <source>%1 ms (relaxed)</source>
       <translation>%1 мс (із запасом)</translation>
     </message>
@@ -2608,7 +2609,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.advanced.status.ready">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="44"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="696"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="706"></location>
       <source>Ready</source>
       <translation>Готово</translation>
     </message>
@@ -3146,54 +3147,54 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Загальні</translation>
     </message>
     <message id="gamehq.settings.input.bindings.action_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="453"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="463"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.settings.input.bindings.assignment_heading">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="494"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="504"></location>
       <source>Input assignments</source>
       <translation>Призначення введення</translation>
     </message>
     <message id="gamehq.settings.input.bindings.assignment_hint">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="503"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="513"></location>
       <source>Both slots can be active. Select one to edit.</source>
       <translation>Обидві комірки можуть бути активними. Виберіть одну для редагування.</translation>
     </message>
     <message id="gamehq.settings.input.bindings.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="398"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="408"></location>
       <source>Primary and secondary slots are independent. Contexts can reuse the same input safely.</source>
       <translation>Основна й додаткова комірки незалежні. Різні контексти можуть безпечно використовувати те саме введення.</translation>
     </message>
     <message id="gamehq.settings.input.bindings.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="394"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="404"></location>
       <source>Bindings</source>
       <translation>Прив’язки</translation>
     </message>
     <message id="gamehq.settings.input.bindings.fixed">
       <location filename="src/ui/qml/components/BindingCard.qml" line="250"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="528"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="545"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="538"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="555"></location>
       <source>Fixed</source>
       <translation>Фіксовано</translation>
     </message>
     <message id="gamehq.settings.input.bindings.primary">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="522"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="532"></location>
       <source>Primary</source>
       <translation>Основний</translation>
     </message>
     <message id="gamehq.settings.input.bindings.secondary">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="539"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="549"></location>
       <source>Secondary</source>
       <translation>Додатковий</translation>
     </message>
     <message id="gamehq.settings.input.bindings.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="396"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="406"></location>
       <source>Assignments</source>
       <translation>Призначення</translation>
     </message>
     <message id="gamehq.settings.input.capture.waiting">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="590"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="600"></location>
       <source>Waiting for input</source>
       <translation>Очікування введення</translation>
     </message>
@@ -3203,288 +3204,288 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Налаштуйте комбінації для контролера, клавіатури й миші, не змінюючи поведінку навігації.</translation>
     </message>
     <message id="gamehq.settings.input.devices.controller">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="52"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="53"></location>
       <source>Controller</source>
       <translation>Контролер</translation>
     </message>
     <message id="gamehq.settings.input.devices.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="34"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="35"></location>
       <source>Choose a device type, then select either assignment slot to capture a new input.</source>
       <translation>Виберіть тип пристрою, а потім одну з комірок призначення, щоб виявити нове введення.</translation>
     </message>
     <message id="gamehq.settings.input.devices.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="30"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="31"></location>
       <source>Devices</source>
       <translation>Пристрої</translation>
     </message>
     <message id="gamehq.settings.input.devices.keyboard">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="54"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="55"></location>
       <source>Keyboard</source>
       <translation>Клавіатура</translation>
     </message>
     <message id="gamehq.settings.input.devices.keyboard_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="43"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="44"></location>
       <source>Focused shortcuts and global key combinations</source>
       <translation>Комбінації у вікні програми та глобальні комбінації клавіш</translation>
     </message>
     <message id="gamehq.settings.input.devices.mouse">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="56"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="57"></location>
       <source>Mouse</source>
       <translation>Миша</translation>
     </message>
     <message id="gamehq.settings.input.devices.mouse_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="46"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="47"></location>
       <source>Middle, Back, and Forward mouse buttons</source>
       <translation>Середня кнопка миші та кнопки «Назад» і «Вперед»</translation>
     </message>
     <message id="gamehq.settings.input.devices.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="32"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="33"></location>
       <source>Input devices</source>
       <translation>Пристрої введення</translation>
     </message>
     <message id="gamehq.settings.input.devices.type">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="37"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="38"></location>
       <source>Device type</source>
       <translation>Тип пристрою</translation>
     </message>
     <message id="gamehq.settings.input.gestures.combination_window">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="372"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="306"></location>
       <source>Combination window</source>
       <translation>Інтервал комбінації</translation>
     </message>
     <message id="gamehq.settings.input.gestures.combination_window_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="374"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="308"></location>
       <source>How long the first button of a combination waits for the second one.</source>
       <translation>Скільки перша кнопка комбінації чекає на другу.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="331"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="265"></location>
       <source>How long GameHQ waits before it decides what a button press meant.</source>
       <translation>Скільки GameHQ чекає, перш ніж визначити, що означало натискання кнопки.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="327"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="261"></location>
       <source>Gestures</source>
       <translation>Жести</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="334"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="268"></location>
       <source>Hold time</source>
       <translation>Час утримування</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="336"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="270"></location>
       <source>How long a button must be held for a hold action. A completed hold consumes the tap.</source>
       <translation>Скільки потрібно утримувати кнопку для дії утримування. Завершене утримування скасовує коротке натискання.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="353"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="287"></location>
       <source>Multi-tap interval</source>
       <translation>Інтервал кількох натискань</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="355"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="289"></location>
       <source>How long a single tap waits when the same button also has a double or triple tap.</source>
       <translation>Скільки коротке натискання очікує, якщо тій самій кнопці також призначено подвійне чи потрійне натискання.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="329"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="263"></location>
       <source>Gesture timing</source>
       <translation>Таймінг жестів</translation>
     </message>
     <message id="gamehq.settings.input.hidden.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="163"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="97"></location>
       <source>Attention</source>
       <translation>Увага</translation>
     </message>
     <message id="gamehq.settings.input.hidden.fix">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="172"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="106"></location>
       <source>Fix automatically</source>
       <translation>Виправити автоматично</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="165"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Controller hidden</source>
       <translation>Контролер приховано</translation>
     </message>
     <message id="gamehq.settings.input.modern.auto">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="659"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="669"></location>
       <source>Auto</source>
       <translation>Авто</translation>
     </message>
     <message id="gamehq.settings.input.modern.device_layout_changed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="670"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
       <source>%1 button layout changed</source>
       <translation>Розкладку кнопок %1 змінено</translation>
     </message>
     <message id="gamehq.settings.input.modern.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="642"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="652"></location>
       <source>Modern controllers</source>
       <translation>Сучасні контролери</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="720"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="730"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
       <translation>Дізнайтеся про кнопки View і справжню кнопку Share, результати перевірки, повторні підключення, жести та комбінації.</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="718"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="728"></location>
       <source>Controller compatibility guide</source>
       <translation>Посібник із сумісності контролерів</translation>
     </message>
     <message id="gamehq.settings.input.modern.layout_warning">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="657"></location>
       <source>A controller layout changed. Review its extra-button assignments before using them.</source>
       <translation>Розкладку контролера змінено. Перегляньте призначення його додаткових кнопок перед використанням.</translation>
     </message>
     <message id="gamehq.settings.input.modern.legacy_fallback">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="693"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="703"></location>
       <source>Legacy fallback</source>
       <translation>Перехід на застарілий механізм</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="661"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="671"></location>
       <source>Off</source>
       <translation>Вимкнено</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.copy">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="710"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="720"></location>
       <source>Copy report</source>
       <translation>Копіювати звіт</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="707"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="717"></location>
       <source>Copies anonymous identity, providers, Share/Guide availability, extra buttons, and layout state—never serials or full device paths.</source>
       <translation>Копіює анонімний ідентифікатор, провайдери, доступність Share/Guide, додаткові кнопки та стан розкладки — і ніколи не копіює серійних номерів чи повних шляхів пристроїв.</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="705"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="715"></location>
       <source>Compatibility report</source>
       <translation>Звіт про сумісність</translation>
     </message>
     <message id="gamehq.settings.input.modern.review_buttons">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="674"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="684"></location>
       <source>Review buttons</source>
       <translation>Переглянути кнопки</translation>
     </message>
     <message id="gamehq.settings.input.modern.runtime">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="687"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="697"></location>
       <source>GameInput runtime</source>
       <translation>Середовище виконання GameInput</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="654"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="664"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
       <translation>«Авто» використовує вбудоване середовище виконання GameInput із безпечним переходом на застарілий механізм; «Вимкнено» вимикає GameInput.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="652"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="662"></location>
       <source>Modern controller support</source>
       <translation>Підтримка сучасних контролерів</translation>
     </message>
     <message id="gamehq.settings.input.modern.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="644"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="654"></location>
       <source>GameInput support</source>
       <translation>Підтримка GameInput</translation>
     </message>
     <message id="gamehq.settings.input.modern.use_current_layout">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="690"></location>
       <source>Use current layout</source>
       <translation>Використати поточну розкладку</translation>
     </message>
     <message id="gamehq.settings.input.profile.all_controllers">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="78"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="86"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="79"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="87"></location>
       <source>All controllers</source>
       <translation>Усі контролери</translation>
     </message>
     <message id="gamehq.settings.input.profile.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="64"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="65"></location>
       <source>Controller profile</source>
       <translation>Профіль контролера</translation>
     </message>
     <message id="gamehq.settings.input.profile.shared_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="71"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="72"></location>
       <source>Position-based assignments work across PlayStation, Xbox, Nintendo, and generic pads.</source>
       <translation>Позиційні призначення працюють на геймпадах PlayStation, Xbox, Nintendo та звичайних контролерах.</translation>
     </message>
     <message id="gamehq.settings.input.profile.specific_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="68"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="69"></location>
       <source>Changes apply only to %1.</source>
       <translation>Зміни стосуються лише %1.</translation>
     </message>
     <message id="gamehq.settings.input.profile.this_controller">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="82"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="83"></location>
       <source>This controller</source>
       <translation>Цей контролер</translation>
     </message>
     <message id="gamehq.settings.input.relation.compatibility">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="198"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="132"></location>
       <source>Compatibility</source>
       <translation>Сумісність</translation>
     </message>
     <message id="gamehq.settings.input.relation.compatibility_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="223"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="157"></location>
       <source>Assignment conversion required</source>
       <translation>Потрібне перетворення призначення</translation>
     </message>
     <message id="gamehq.settings.input.relation.context">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="195"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="129"></location>
       <source>Context</source>
       <translation>Контекст</translation>
     </message>
     <message id="gamehq.settings.input.relation.context_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="220"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="154"></location>
       <source>This button changes meaning</source>
       <translation>Ця кнопка змінює значення</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="210"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="144"></location>
       <source>Duplicate</source>
       <translation>Дублікат</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="235"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="169"></location>
       <source>Already assigned</source>
       <translation>Уже призначено</translation>
     </message>
     <message id="gamehq.settings.input.relation.in_use">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="204"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="138"></location>
       <source>In use</source>
       <translation>Використовується</translation>
     </message>
     <message id="gamehq.settings.input.relation.in_use_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="229"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="163"></location>
       <source>Shortcut already taken</source>
       <translation>Сполучення вже зайняте</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_available">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="201"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="135"></location>
       <source>Not available</source>
       <translation>Недоступно</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_reported_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="226"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="160"></location>
       <source>Button not reported</source>
       <translation>Кнопка не передається</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_saved">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="207"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="141"></location>
       <source>Not saved</source>
       <translation>Не збережено</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_saved_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="232"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="166"></location>
       <source>Could not save this binding</source>
       <translation>Не вдалося зберегти цю прив’язку</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="213"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="147"></location>
       <source>Shared button</source>
       <translation>Спільна кнопка</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="238"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="172"></location>
       <source>One button, several gestures</source>
       <translation>Одна кнопка — кілька жестів</translation>
     </message>
@@ -3499,72 +3500,72 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Відновити всі прив’язки введення?</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="752"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="762"></location>
       <source>Only the currently displayed device/profile overrides will be removed.</source>
       <translation>Буде видалено лише перевизначення для показаного пристрою чи профілю.</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="750"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="760"></location>
       <source>Restore displayed bindings?</source>
       <translation>Відновити показані прив’язки?</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="298"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="232"></location>
       <source>Adopt per-slot bindings</source>
       <translation>Перейняти прив’язки комірки</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="300"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="234"></location>
       <source>Copy bindings saved for any controller in this slot to this specific controller. The originals are kept.</source>
       <translation>Скопіювати прив’язки, збережені для будь-якого контролера в цій комірці, на цей конкретний контролер. Оригінали зберігаються.</translation>
     </message>
     <message id="gamehq.settings.input.test.copy_to_controller">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="303"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="237"></location>
       <source>Copy to this controller</source>
       <translation>Копіювати на цей контролер</translation>
     </message>
     <message id="gamehq.settings.input.test.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="262"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="196"></location>
       <source>Profile</source>
       <translation>Профіль</translation>
     </message>
     <message id="gamehq.settings.input.test.identify_button">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="310"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="244"></location>
       <source>Identify a controller button</source>
       <translation>Визначити кнопку контролера</translation>
     </message>
     <message id="gamehq.settings.input.test.last_input">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="268"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="202"></location>
       <source>Last input</source>
       <translation>Останнє введення</translation>
     </message>
     <message id="gamehq.settings.input.test.probe_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="314"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="248"></location>
       <source>Records the next 3 seconds of raw button changes — including buttons GameHQ does not recognize — into the diagnostics you can copy from Advanced.</source>
       <translation>Записує наступні 3 секунди необроблених змін кнопок — зокрема кнопок, яких GameHQ не розпізнає, — у діагностику, яку можна скопіювати в розділі «Додатково».</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_displayed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="279"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="213"></location>
       <source>Restore displayed bindings</source>
       <translation>Відновити показані прив’язки</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_shared_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="286"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="220"></location>
       <source>Remove overrides for the selected device type and shared profile.</source>
       <translation>Видалити перевизначення для вибраного типу пристрою та спільного профілю.</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_specific_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="283"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="217"></location>
       <source>Remove overrides for this controller only.</source>
       <translation>Видалити перевизначення лише для цього контролера.</translation>
     </message>
     <message id="gamehq.settings.input.test.start_probe">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="317"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="251"></location>
       <source>Start 3-second probe</source>
       <translation>Почати 3-секундну перевірку</translation>
     </message>
     <message id="gamehq.settings.input.test.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="264"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="198"></location>
       <source>Test and restore</source>
       <translation>Тестування та відновлення</translation>
     </message>
@@ -3743,72 +3744,93 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Import this portable profile?</source>
       <translation>Імпортувати цей портативний профіль?</translation>
     </message>
+    <message id="gamehq.settings.presets.action.assign_to_device">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="404"></location>
+      <source>Assign to this device</source>
+      <translation>Призначити цьому пристрою</translation>
+    </message>
     <message id="gamehq.settings.presets.action.delete">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="405"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="31"></location>
       <source>Delete</source>
       <translation>Видалити</translation>
     </message>
     <message id="gamehq.settings.presets.action.duplicate">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="399"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="29"></location>
       <source>Duplicate</source>
       <translation>Дублювати</translation>
     </message>
+    <message id="gamehq.settings.presets.action.more">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="460"></location>
+      <source>More actions</source>
+      <translation>Інші дії</translation>
+    </message>
     <message id="gamehq.settings.presets.action.new">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="388"></location>
-      <source>New</source>
-      <translation>Створити</translation>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="453"></location>
+      <source>New preset</source>
+      <oldsource>New</oldsource>
+      <translation>Новий пресет</translation>
     </message>
     <message id="gamehq.settings.presets.action.rename">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="393"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="27"></location>
       <source>Rename</source>
       <translation>Перейменувати</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.builtin">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="47"></location>
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="105"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="60"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="118"></location>
       <source>Built-in defaults</source>
       <translation>Вбудовані типові налаштування</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.builtin_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="229"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="256"></location>
       <source>Built-in defaults replace every other layer for this device.</source>
       <translation>Вбудовані типові налаштування замінюють усі інші рівні для цього пристрою.</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.fallback">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="42"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="55"></location>
       <source>Follow fallback (no preset)</source>
       <translation>Використовувати резервний ланцюжок (без пресета)</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.fallback_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="225"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="252"></location>
       <source>No preset is assigned: this device follows the fallback chain.</source>
       <translation>Пресет не призначено: цей пристрій використовує резервний ланцюжок.</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="221"></location>
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="318"></location>
-      <source>Mappings used by this device</source>
-      <translation>Розкладки, які використовує цей пристрій</translation>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="239"></location>
+      <source>Assigned preset</source>
+      <oldsource>Mappings used by this device</oldsource>
+      <translation>Призначений пресет</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.missing_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="233"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="260"></location>
       <source>The assigned preset no longer exists. Choose another one.</source>
       <translation>Призначеного пресета більше не існує. Виберіть інший.</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.preset_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="236"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="263"></location>
       <source>This device uses the preset "%1".</source>
       <translation>Цей пристрій використовує пресет «%1».</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.unavailable_unknown">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="142"></location>
       <source>Choose the controller to edit before saving a per-controller preset.</source>
       <translation>Виберіть контролер для редагування, перш ніж зберігати пресет для контролера.</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.unavailable_weak">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="139"></location>
       <source>This controller has no stable identity yet, so a per-controller preset cannot be saved. Connect it again or edit all controllers.</source>
       <translation>Цей контролер ще не має сталої ідентифікації, тому зберегти пресет для контролера неможливо. Підключіть його знову або змініть усі контролери.</translation>
+    </message>
+    <message id="gamehq.settings.presets.badge.shared">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="360"></location>
+      <source>Shared</source>
+      <translation>Спільний</translation>
+    </message>
+    <message id="gamehq.settings.presets.badge.this_device">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="242"></location>
+      <source>Used by this device</source>
+      <translation>Використовується цим пристроєм</translation>
     </message>
     <message id="gamehq.settings.presets.builtin_label">
       <location filename="src/input/MappingPresetModel.cpp" line="112"></location>
@@ -3816,12 +3838,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Вбудовані типові налаштування</translation>
     </message>
     <message id="gamehq.settings.presets.delete.confirm">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="154"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="395"></location>
       <source>"%1" will be deleted. This cannot be undone.</source>
       <translation>Пресет «%1» буде видалено. Скасувати цю дію неможливо.</translation>
     </message>
     <message id="gamehq.settings.presets.delete.in_use">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="151"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="392"></location>
       <source>"%1" is used elsewhere. Pick the preset that takes over its users.</source>
       <translation>Пресет «%1» використовується в інших місцях. Виберіть пресет, який прийме його розкладки.</translation>
     </message>
@@ -3841,95 +3863,120 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>У цій групі немає іншого пресета, куди можна передати його розкладки. Спершу створіть його.</translation>
     </message>
     <message id="gamehq.settings.presets.delete.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="148"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="389"></location>
       <source>Delete preset</source>
       <translation>Видалити пресет</translation>
     </message>
     <message id="gamehq.settings.presets.description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="25"></location>
-      <source>Presets are global: a game never owns mappings, it only has an assignment.</source>
-      <translation>Пресети глобальні: гра ніколи не володіє розкладками, вона має лише призначення.</translation>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="30"></location>
+      <source>Presets are reusable mapping profiles. A device or game can be assigned to a preset.</source>
+      <oldsource>Presets are global: a game never owns mappings, it only has an assignment.</oldsource>
+      <translation>Пресети — це багаторазові профілі розкладок. Пресет можна призначити пристрою або грі.</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="361"></location>
       <source>Name the copy.</source>
       <translation>Дайте назву копії.</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="359"></location>
       <source>Duplicate preset</source>
       <translation>Дублювати пресет</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate_target.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="130"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="371"></location>
       <source>Name the copy that this controller will use.</source>
       <translation>Дайте назву копії, яку використовуватиме цей контролер.</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate_target.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="128"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="369"></location>
       <source>Duplicate for this controller</source>
       <translation>Дублювати для цього контролера</translation>
     </message>
+    <message id="gamehq.settings.presets.editing.helper">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="376"></location>
+      <source>Changes below will be saved to this preset.</source>
+      <translation>Зміни нижче буде збережено в цьому пресеті.</translation>
+    </message>
+    <message id="gamehq.settings.presets.editing.unassigned">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="401"></location>
+      <source>This preset is not assigned to this device yet.</source>
+      <translation>Цей пресет ще не призначено цьому пристрою.</translation>
+    </message>
     <message id="gamehq.settings.presets.eyebrow">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="21"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="26"></location>
       <source>Mappings</source>
       <translation>Розкладки</translation>
     </message>
     <message id="gamehq.settings.presets.game.builtin_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="283"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="311"></location>
       <source>Built-in defaults replace every other layer while "%1" is running.</source>
       <translation>Вбудовані типові налаштування замінюють усі інші рівні, поки запущено гру «%1».</translation>
     </message>
     <message id="gamehq.settings.presets.game.fallback">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="100"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="113"></location>
       <source>Follow the chain below the game</source>
       <translation>Використовувати ланцюжок нижче гри</translation>
     </message>
     <message id="gamehq.settings.presets.game.fallback_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="278"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="306"></location>
       <source>No preset is assigned to "%1": it follows this device's mappings.</source>
       <translation>Для гри «%1» пресет не призначено: вона використовує розкладки цього пристрою.</translation>
     </message>
     <message id="gamehq.settings.presets.game.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="261"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="289"></location>
       <source>Mappings used by this game</source>
       <translation>Розкладки, які використовує ця гра</translation>
     </message>
     <message id="gamehq.settings.presets.game.missing_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="288"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="316"></location>
       <source>The preset assigned to this game no longer exists. Choose another one.</source>
       <translation>Призначеного цій грі пресета більше не існує. Виберіть інший.</translation>
     </message>
     <message id="gamehq.settings.presets.game.missing_option">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="116"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="129"></location>
       <source>%1 (not in this group)</source>
       <translation>%1 (немає в цій групі)</translation>
     </message>
     <message id="gamehq.settings.presets.game.preset_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="295"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="323"></location>
       <source>"%1" uses the preset "%2" while it is running.</source>
       <translation>Гра «%1» використовує пресет «%2», поки вона запущена.</translation>
     </message>
     <message id="gamehq.settings.presets.game.wrong_group_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="292"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="320"></location>
       <source>The preset assigned to this game is for a different device type. Choose another one.</source>
       <translation>Призначений цій грі пресет належить до іншого типу пристрою. Виберіть інший.</translation>
     </message>
     <message id="gamehq.settings.presets.library.empty">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="380"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="444"></location>
       <source>Create a preset to save a custom mapping set.</source>
       <translation>Створіть пресет, щоб зберегти власний набір розкладок.</translation>
     </message>
+    <message id="gamehq.settings.presets.library.helper">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="436"></location>
+      <source>Create and manage reusable presets.</source>
+      <translation>Створюйте багаторазові пресети та керуйте ними.</translation>
+    </message>
     <message id="gamehq.settings.presets.library.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="372"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="434"></location>
       <source>Preset library</source>
       <translation>Бібліотека пресетів</translation>
     </message>
     <message id="gamehq.settings.presets.library.pending_edit">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="346"></location>
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="376"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="373"></location>
       <source>Finish or cancel the current edit before changing presets.</source>
       <translation>Завершіть або скасуйте поточне редагування, перш ніж змінювати пресет.</translation>
+    </message>
+    <message id="gamehq.settings.presets.more.message">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="331"></location>
+      <source>Choose what to do with "%1".</source>
+      <translation>Виберіть, що зробити з пресетом «%1».</translation>
+    </message>
+    <message id="gamehq.settings.presets.more.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="329"></location>
+      <source>Preset actions</source>
+      <translation>Дії з пресетом</translation>
     </message>
     <message id="gamehq.settings.presets.name_label">
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="22"></location>
@@ -3937,17 +3984,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Назва</translation>
     </message>
     <message id="gamehq.settings.presets.new.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="100"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="341"></location>
       <source>Name the new preset. You can rename it later.</source>
       <translation>Дайте назву новому пресету. Пізніше його можна перейменувати.</translation>
     </message>
     <message id="gamehq.settings.presets.new.suggested">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="103"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="344"></location>
       <source>My mappings</source>
       <translation>Мої розкладки</translation>
     </message>
     <message id="gamehq.settings.presets.new.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="98"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="339"></location>
       <source>New preset</source>
       <translation>Новий пресет</translation>
     </message>
@@ -3982,7 +4029,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Введіть назву нового пресета.</translation>
     </message>
     <message id="gamehq.settings.presets.notice.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="422"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="478"></location>
       <source>Preset</source>
       <translation>Пресет</translation>
     </message>
@@ -4022,57 +4069,58 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Не вдалося зберегти цю зміну. Нічого не змінено.</translation>
     </message>
     <message id="gamehq.settings.presets.rename.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="111"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="352"></location>
       <source>Enter the new name for this preset.</source>
       <translation>Введіть нову назву цього пресета.</translation>
     </message>
     <message id="gamehq.settings.presets.rename.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="109"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="350"></location>
       <source>Rename preset</source>
       <translation>Перейменувати пресет</translation>
     </message>
     <message id="gamehq.settings.presets.select.assigned">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="350"></location>
       <source>This device uses it, so the editor saves its changes here.</source>
-      <translation>Цей пристрій його використовує, тому редактор зберігає зміни тут.</translation>
+      <translation type="vanished">Цей пристрій його використовує, тому редактор зберігає зміни тут.</translation>
     </message>
     <message id="gamehq.settings.presets.select.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="342"></location>
-      <source>Preset</source>
-      <translation>Пресет</translation>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="358"></location>
+      <source>Editing preset</source>
+      <oldsource>Preset</oldsource>
+      <translation>Пресет, який редагується</translation>
     </message>
     <message id="gamehq.settings.presets.select.managing">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="353"></location>
       <source>Selected for renaming, duplicating or deleting. The editor still saves to the preset this device uses.</source>
-      <translation>Вибрано для перейменування, дублювання або видалення. Редактор і далі зберігає в пресет, який використовує цей пристрій.</translation>
+      <translation type="vanished">Вибрано для перейменування, дублювання або видалення. Редактор і далі зберігає в пресет, який використовує цей пристрій.</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.both">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="151"></location>
       <source>Used by %1 target(s) and %2 game(s). Editing it changes all of them.</source>
       <translation>Розкладки: %1, ігри: %2. Зміни цього пресета застосовуватимуться до всіх цих розкладок та ігор.</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.duplicate">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="329"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="419"></location>
       <source>Duplicate for this controller</source>
       <translation>Дублювати для цього контролера</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.games">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="142"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="155"></location>
       <source>Used by %1 game(s). Editing it changes all of them.</source>
       <translation>Ігри: %1. Зміни цього пресета застосовуватимуться до всіх цих ігор.</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="325"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="415"></location>
       <source>Shared preset</source>
       <translation>Спільний пресет</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.targets">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="145"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="158"></location>
       <source>Used by %1 target(s). Editing it changes all of them, or duplicate it for this controller.</source>
       <translation>Розкладки: %1. Зміна вплине на всі розкладки; також можна продублювати пресет для цього контролера.</translation>
     </message>
     <message id="gamehq.settings.presets.title">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="23"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="28"></location>
       <source>Mapping presets</source>
       <translation>Пресети розкладок</translation>
     </message>

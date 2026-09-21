@@ -6,6 +6,14 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.37] - 2026-09-21
+
+### Changed
+
+- Input settings: the mapping-preset section is now three labelled cards — **Assigned preset** (what this device, and the running game, actually use), **Editing preset** (where binding changes are saved), and **Preset library** — instead of two near-identical dropdowns whose difference was left to the reader.
+- Input settings: **New preset** is the only primary button in the preset library. Rename, duplicate and delete moved into a **More actions** dialog, so the area no longer reads as a four-button toolbar.
+- Input settings: the editing card now says when the preset being edited is not the one this device runs, and offers **Assign to this device** to make it so in one click. A refused switch (an open capture or assignment dialog) is called out on the card instead of the picker silently snapping back.
+
 ## [0.7.36] - 2026-09-21
 
 ### Changed

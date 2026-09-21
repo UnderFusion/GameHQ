@@ -7895,6 +7895,17 @@
           },
           "updated_at": null
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -7917,9 +7928,20 @@
           },
           "updated_at": null
         },
+        "gamehq.settings.presets.action.more": {
+          "domain": "application",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.presets.action.new": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -7985,7 +8007,7 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -8030,6 +8052,28 @@
         "gamehq.settings.presets.assignment.unavailable_weak": {
           "domain": "application",
           "source_hash": "35eaed8e93ebf4656d04ac3f58a5e9329111a3f68574a243f5f16ad4de649f71",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -8117,7 +8161,7 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -8162,6 +8206,28 @@
         "gamehq.settings.presets.duplicate_target.title": {
           "domain": "application",
           "source_hash": "82d54c2d62805f5d78ac872ac0e53587dc22a4d45664c71845654e1a309d965c",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -8280,6 +8346,17 @@
           },
           "updated_at": null
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -8294,6 +8371,28 @@
         "gamehq.settings.presets.library.pending_edit": {
           "domain": "application",
           "source_hash": "75f9f1d3365cdfe20310b58bf631f84ef1e84ca8773049b0f0087d194ec772fe",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -8522,31 +8621,9 @@
           },
           "updated_at": null
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": null,
-          "status": "missing",
-          "provenance": {
-            "kind": "none",
-            "actor": null
-          },
-          "updated_at": null
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": null,
-          "status": "missing",
-          "provenance": {
-            "kind": "none",
-            "actor": null
-          },
-          "updated_at": null
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -10164,7 +10241,7 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
+          "total": 930,
           "current": 0,
           "missing": [
             "gamehq.about.enjoying_gamehq",
@@ -10884,8 +10961,10 @@
             "gamehq.settings.portable_import.failed",
             "gamehq.settings.portable_import.message",
             "gamehq.settings.portable_import.title",
+            "gamehq.settings.presets.action.assign_to_device",
             "gamehq.settings.presets.action.delete",
             "gamehq.settings.presets.action.duplicate",
+            "gamehq.settings.presets.action.more",
             "gamehq.settings.presets.action.new",
             "gamehq.settings.presets.action.rename",
             "gamehq.settings.presets.assignment.builtin",
@@ -10897,6 +10976,8 @@
             "gamehq.settings.presets.assignment.preset_description",
             "gamehq.settings.presets.assignment.unavailable_unknown",
             "gamehq.settings.presets.assignment.unavailable_weak",
+            "gamehq.settings.presets.badge.shared",
+            "gamehq.settings.presets.badge.this_device",
             "gamehq.settings.presets.builtin_label",
             "gamehq.settings.presets.delete.confirm",
             "gamehq.settings.presets.delete.in_use",
@@ -10909,6 +10990,8 @@
             "gamehq.settings.presets.duplicate.title",
             "gamehq.settings.presets.duplicate_target.message",
             "gamehq.settings.presets.duplicate_target.title",
+            "gamehq.settings.presets.editing.helper",
+            "gamehq.settings.presets.editing.unassigned",
             "gamehq.settings.presets.eyebrow",
             "gamehq.settings.presets.game.builtin_description",
             "gamehq.settings.presets.game.fallback",
@@ -10919,8 +11002,11 @@
             "gamehq.settings.presets.game.preset_description",
             "gamehq.settings.presets.game.wrong_group_description",
             "gamehq.settings.presets.library.empty",
+            "gamehq.settings.presets.library.helper",
             "gamehq.settings.presets.library.label",
             "gamehq.settings.presets.library.pending_edit",
+            "gamehq.settings.presets.more.message",
+            "gamehq.settings.presets.more.title",
             "gamehq.settings.presets.name_label",
             "gamehq.settings.presets.new.message",
             "gamehq.settings.presets.new.suggested",
@@ -10941,9 +11027,7 @@
             "gamehq.settings.presets.notice.write_failed",
             "gamehq.settings.presets.rename.message",
             "gamehq.settings.presets.rename.title",
-            "gamehq.settings.presets.select.assigned",
             "gamehq.settings.presets.select.label",
-            "gamehq.settings.presets.select.managing",
             "gamehq.settings.presets.sharing.both",
             "gamehq.settings.presets.sharing.duplicate",
             "gamehq.settings.presets.sharing.games",
@@ -18999,6 +19083,17 @@
           },
           "updated_at": "2026-09-04T12:00:00Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "e1f28fafe586a5423fbf108010765008f28cec98e16158f187881c2a00d24008",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -19021,16 +19116,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "f3d078ce207f6ce10737edbeeda526e8cc6c34ef1f6010861c2f54bcf4914117",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "0a26cf43edf0bf9548a5fedf064df45df316e48b90da125c5b5bb50297f68729",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "753fb62d6b2f416e093982632df74904ca274f487e2596743eb9d72374323135",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -19089,14 +19195,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "5efa5d1e3d7e863a8e08fa9fe77dbffa5e06e49e248c37f1f19aaa540f9d9088",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "ba68df4dab8df441645d526dc09ee70e16ae3164abfa4c06a07e0095c9315ec7",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -19141,6 +19247,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "512e7c748fafccb2a4816f93a697e1b9a9439cedbee7e311971f70525b95de0d",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "984c5683083bc140ae2435a9d58a81bce65d6c783e62e6b38015f73339aa40fb",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -19221,14 +19349,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "6c998f7dac65f551b897b6248e4e27784e945d2a7738389dbaad0eb7854d3a26",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "9635aaf16b9cc7df7090c98f3d4f861347d161c30f217901cb55487eb4aa0b77",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -19273,6 +19401,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "77b31702d9ec5c6a6fc391fa5fdd2f8bf6420d3f047baeed02264924a721668f",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "7321b1700d0f6ef28024a4baa5106502b25c22c45d6508131f73facee7ef3069",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -19384,6 +19534,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "15ffdf22b5b5ec42f047f540f1d2782b7b2044743da7a7fde4bbe2f6b83246c4",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -19405,6 +19566,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "22c0cddbdc9d1c87506d6692c59b38f795ff3644f52bd010854f86d6f3b5d9dd",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "9abf9f2d345d8e21215a5240c37a86038db48fb01a96037f753fdea54b16f783",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -19626,38 +19809,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "5a675946183db204b3269ddb2a228d882030e94a3076109ba108c26f87fbe5ec",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "e78ffc0270ed692bce1b172b98de6f2148d92e714bc1e258988542fe03830db5",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "b4fb224abc212a2d7fdeb05317fa1aec15a8e201654d951dc34a41181fb04935",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "78766a1199fbc448e8e407304c76c07144863bfb53921df28ab829084b78aa15",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -21268,8 +21429,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -29179,6 +29340,17 @@
           },
           "updated_at": null
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "4b05d10b79dc5ff140f61ad1fa617756e3bdf2c6280cbd674580e3a892e7b6cc",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -29201,10 +29373,21 @@
           },
           "updated_at": null
         },
+        "gamehq.settings.presets.action.more": {
+          "domain": "application",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "a9bd3718a208b051e684c99bb0d43992401a11f6c4fdff1549dc76ad6a6b8635",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.settings.presets.action.new": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "3c0718effc924b3fb299b300401e0463d92526e68f1c8216a5dd3a9d4286f774",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "159fccabcec3703ff5a691990efea14cf43d4fb352769dd31c8a9e7294cdbb9f",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -29269,8 +29452,8 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "525cd0f3e0da64d1da4baddf28731f1e4ed33e42ea58b54ba7686a7409119c20",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "592816848c61f164586c7b0b20caf61abc26901b71ffe8b0bd6eb97defbdd9e0",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -29315,6 +29498,28 @@
           "domain": "application",
           "source_hash": "35eaed8e93ebf4656d04ac3f58a5e9329111a3f68574a243f5f16ad4de649f71",
           "translation_hash": "5de04197ae6045d9e128fbeae72d90852d6ff65014c0950e1ffba8db525ec65b",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "67f68bbb73f706b4d9d4f7a39b94890fa112a294a07848d233e2cba6c16fd36f",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "300e83b5af5f349865d7706788d7f1fa7777dfe61c5c0fc714cb105ea671fb23",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -29401,8 +29606,8 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "537d0c7fe7304014434d5c6c9adeb3277b0b8c48aba845b1ab56e02cb8be1287",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "55711877c672afcaaff5c5c3dc55f00e29aa0c791cdd9e0670b47089db442fb4",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -29447,6 +29652,28 @@
           "domain": "application",
           "source_hash": "82d54c2d62805f5d78ac872ac0e53587dc22a4d45664c71845654e1a309d965c",
           "translation_hash": "248c4c27c0bc2301ee6d274e872458e5a3d993582f070a37c36b10ee415d2c68",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "4f62c1dd2746b21254385b0a8c6554f70ab345a8855854ae75d4a569cb549608",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "72437ba3d8b401be6ab72e498d1825afa410ad4423b691da3f65718a86741e6f",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -29564,6 +29791,17 @@
           },
           "updated_at": null
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "6f0fdff8960c5df3bf6b213a646dd2aafbdfced69a4254bf84544ce049f8625f",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -29579,6 +29817,28 @@
           "domain": "application",
           "source_hash": "75f9f1d3365cdfe20310b58bf631f84ef1e84ca8773049b0f0087d194ec772fe",
           "translation_hash": "f10050d0cf9a73c6faacda2d456a2ea04d5a3d77ee69efaf4d48c0be30266101",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "fed5afe0d21e7d32ea6cd7c6bcc2c03b1701206b9474ca8f0f6b86fa804e956c",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "7e26f67c8a33915e0bf9f824eafbdf7870145dd51b64d7889bbab590107a527c",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -29806,32 +30066,10 @@
           },
           "updated_at": null
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "370b363b0e380ad6d48e5c334bd0f5ed2ae2fc6a0b6fd07d6575c4b948e361da",
-          "status": "human_reviewed",
-          "provenance": {
-            "kind": "source",
-            "actor": "repository"
-          },
-          "updated_at": null
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "a9ee8a0acb9ce5d1b09c632875d20560a0fee83274e960fd7791129596950d65",
-          "status": "human_reviewed",
-          "provenance": {
-            "kind": "source",
-            "actor": "repository"
-          },
-          "updated_at": null
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "f99a6969fbbf708175755c88b823d3a7073363e9c36078487a23208d7e390d8e",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "0ac00a1eccae0d065c4fc2ea6175ca6b4e242ead3b5b2984e09e630841169c2d",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -31448,8 +31686,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -39359,6 +39597,17 @@
           },
           "updated_at": "2026-09-04T20:00:00Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "1ef48f77a4ed8ab3fac7dedee348d8fbd4486b9a147be4d85501ecf763679fbc",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -39381,16 +39630,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "1bd99eab6217656b6387c4849020b49251027f429d32372e8adea36632c2d329",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "3ebeca84c7937920afe37f51eec318892434a4ac2e5b0e301dca639550f2bac8",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "ae06bbf138d6857d4313edd1de511419d3f48a3ec7c3423afa45fa74ab01073c",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -39449,14 +39709,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "7111ead96e2dd0ab65efcd275f8b4757c8d593448fa086351710bc40393b9c16",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "314cc2c4ab498d4a217d6498b52c2797d08b1322e90e81454c46426e032cdc02",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -39501,6 +39761,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "32b736fd548c66695dad58cd7be2cb98915fc8c22b4851c47299a912c75a1e11",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "89fd762e424bf0d0fedff8e730f09d7c0d5f69e2705c8b72de69e1b145ef870e",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -39581,14 +39863,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "9817c8c0840c09b04de71a89fe6c1f021ac1d5702554315980aafcda56b94f9d",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "bc8e6d66aaf357fb2cc1ab3d3e8cd6272daeef185e8fbe316b0c60253b903ae0",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -39633,6 +39915,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "6a9b55d3f18f9b10c6e237166713fc1aa8fa1d4b03e1696078f0499f851ae7d6",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "aa22ae06e2a7e48707906e587dbe13a1c29196c48502c4b9f79c61aa3db90b59",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -39744,6 +40048,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "03514abdf4d90476cfbdb3c207713ea32e9d606e17cde04a3938a4bbf0c8ce26",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -39765,6 +40080,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "a4ee07e6289a14f7e1973f82be995e1687edcd33f5b2ab53451b8303dd05a352",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "cbffd2483d6f01bf435966beb3526cd01b5ab1b79725a06d5a194b4c8b3b28c5",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -39986,38 +40323,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "61427c54e0634cb475dba1be6763215e9ff2bd301d40238e40930fbd74f433b4",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "ddd0dfec561b71fd52d62d39b0ad48671428523a28ac9fb1c7ac10081fdaf0b8",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "a4d2df2dfa887e7a3715729cd88cdb03801d343bb667b9d8595b01244f974500",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "7479246c68c298239c0dd07a0068d30f1320aee7a01e80ad64cfdef70407a9bd",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -41628,8 +41943,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -49539,6 +49854,17 @@
           },
           "updated_at": "2026-09-04T02:45:50Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "1ef48f77a4ed8ab3fac7dedee348d8fbd4486b9a147be4d85501ecf763679fbc",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -49561,16 +49887,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "1bd99eab6217656b6387c4849020b49251027f429d32372e8adea36632c2d329",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "3ebeca84c7937920afe37f51eec318892434a4ac2e5b0e301dca639550f2bac8",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "ae06bbf138d6857d4313edd1de511419d3f48a3ec7c3423afa45fa74ab01073c",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -49629,14 +49966,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "7111ead96e2dd0ab65efcd275f8b4757c8d593448fa086351710bc40393b9c16",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "314cc2c4ab498d4a217d6498b52c2797d08b1322e90e81454c46426e032cdc02",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -49681,6 +50018,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "32b736fd548c66695dad58cd7be2cb98915fc8c22b4851c47299a912c75a1e11",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "89fd762e424bf0d0fedff8e730f09d7c0d5f69e2705c8b72de69e1b145ef870e",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -49761,14 +50120,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "9817c8c0840c09b04de71a89fe6c1f021ac1d5702554315980aafcda56b94f9d",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "bc8e6d66aaf357fb2cc1ab3d3e8cd6272daeef185e8fbe316b0c60253b903ae0",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -49813,6 +50172,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "6a9b55d3f18f9b10c6e237166713fc1aa8fa1d4b03e1696078f0499f851ae7d6",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "aa22ae06e2a7e48707906e587dbe13a1c29196c48502c4b9f79c61aa3db90b59",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -49924,6 +50305,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "53d96fcff971079f173509b96df44cd3f686cb51ba566ea0cfe75067a9078609",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -49945,6 +50337,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "a4ee07e6289a14f7e1973f82be995e1687edcd33f5b2ab53451b8303dd05a352",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "cbffd2483d6f01bf435966beb3526cd01b5ab1b79725a06d5a194b4c8b3b28c5",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -50166,38 +50580,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "61427c54e0634cb475dba1be6763215e9ff2bd301d40238e40930fbd74f433b4",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "ddd0dfec561b71fd52d62d39b0ad48671428523a28ac9fb1c7ac10081fdaf0b8",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "a4d2df2dfa887e7a3715729cd88cdb03801d343bb667b9d8595b01244f974500",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "7479246c68c298239c0dd07a0068d30f1320aee7a01e80ad64cfdef70407a9bd",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -51808,8 +52200,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -59719,6 +60111,17 @@
           },
           "updated_at": "2026-09-04T16:30:00Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "9c4bef0aa9cb7b3fdf756d90f05c46c6a4a9a5bb4753ba2d43f9793fb1541a63",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -59741,16 +60144,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "8fc4eeb7234d4e013c3f38ea3e44d5223b857c9d27c5469536203ba9d81e881f",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "7f423f6b5f94ebd815f9a3f53943dc8750c526b9d4aeaddb0ae5bf2fe98de940",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "13f1236a3cc23879f83256c03e56227991414f0c2c0533f7ced6b549d5ca7e02",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -59809,14 +60223,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "920d485aa0001cdc98c66bb825eee342beb31506186dc991f869d772e30c86ee",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "6b10e10b696aa5f4076b23699ac92aa2f54c1c5326800389a9885bfbbd1fe123",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -59861,6 +60275,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "f509ad864f45b0dac0d8f9f22564f1670d9568da794c4314b824b887dd081caf",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "a007f138a66590ad232d507814c107a854a070c47460210e172b0dbd363c8b62",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -59941,14 +60377,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "cabed0e6b8abda80321dfc9b2044ec07fef565dc6d64d3ae245e25084eaa4702",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "07929e7d4c14d4ad2846b28cc7893fac14203cf0f94af71279bf91a192b26f51",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -59993,6 +60429,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "0f7a23b72e4349ec65bf80be9d14f1e3e34e0db5b84fc96c331f24d3e2b531bc",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "5eab6a8ec3383d0b7999f2dc4266baac37a0864930ca2ab552bcbc70dfd494dd",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -60104,6 +60562,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "ef43cf3fb6a39ecadd723724cd956b6885f197e2225d1c5aeb77cbd629f0676a",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -60125,6 +60594,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "627e7d7e677b7c3f4ebc820e49a2d983fd2b1935a2bd4642d117e508132d83ac",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "53c5bfef07ea8c4a6e4f9f2662c9573142fc14543e3bd7c0b8ed3eaf0faf9900",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -60346,38 +60837,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "908b22081091425e7633054bbba16c78e835c7b0a10798390687e659940d8e28",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "cb55aa6193c7b77364269dc9632214d953f76bf1a86eba7c8bf7785c5f72c845",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "9967e1543ce2d62d6edb976c00ebed3c30c7c4a5228af025e9433942e0af99a8",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "060775894475c62c029a8501e752de5522abb5f4c24453d36ad7cdf8261536b8",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -61988,8 +62457,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -69899,6 +70368,17 @@
           },
           "updated_at": "2026-09-04T13:20:00Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "45c70c0f631d1f6a5b263f0002e297ba9644c9c00034f047a1f8a3c84099b8fc",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -69921,16 +70401,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "f08ab36a77412a345c65ac36ff36fded7158534d37f88b63d01b97ac81ae9ba7",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "cab02046a31ba5de771894d1109c1d1facdf716ca0f8a6085ec8f774c11af680",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "69496f6a0768ab3e1af588ae58c68fc87b3dc1c104be326b9ef1dbe66382c8cf",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -69989,14 +70480,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "6d4825e5b3cb4bf1b6e93a901d87970abf463c1a5e431d343d5faf0db2940060",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "9bd86133b2819d0b817c25e6a6124acf80fd0639ef4ecc3f2a27e9bfe731e529",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -70041,6 +70532,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "e3bacbf03b738f4fa021faa9e643646dc15edcbdbced4cc0d879e404e34b5ce4",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "566339a22ca6a0d10ee5dd1bad02afe0574eb2e817ed026ada9c6ff58699508b",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -70121,14 +70634,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "e9e674579ef9a720c5dacb1fc1d9c8745939eefd3876ba38ec1c7b47970525b3",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "0fde062939cf8be78cf402c55c3f26f5c96cb63173cc0dbfc4ca9931c70b016d",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -70173,6 +70686,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "7651c19523bc14bc6c63ffee246bf15703cfa33a9893cb913fbbff298c40fce6",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "caf2fe795ce6c8cfda67fca5ba0b826c09cf565a7435cb75d4b927b132abeb97",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -70284,6 +70819,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "590e5035c162a693080a9723b7330a1cd5b4fe6dec939b204879b7a9b7052b36",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -70305,6 +70851,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "68a2e377c6703cfe0b75b7f67081d06d605c0a74946152c4b5e002178c767f49",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "3d306bd93c9bdfa4ec390d27995619ac9387b91112a9c6f7bb77fcbb84cfacb1",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -70526,38 +71094,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "4a96cb5c3734cd11fb16bd24cdce714ced5c5a3a7f374e1cd5b779c4bf79301c",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "7aac40d07c75e24d9a97680c053cae3c0d7b2470e62312eb5bb24b56908e2034",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "b5930fd65f274cce9270f8d1c165058f42ef026609ba6dfad645a101e0ea1397",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "3df938d1a6fb82ec4ffa81fbaa36584cc266537a03bd0582bc5320a56fec519b",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -72168,8 +72714,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -80079,6 +80625,17 @@
           },
           "updated_at": "2026-09-04T14:30:00Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "425ebc0b23351830bc13f2bfd031e4be078feebbb76bb3cbcf9fd4ab5ef759a6",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -80101,16 +80658,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "08a182a3b110ec139c33a407ada30ed01d308902f8eb1014ca16b3bd555c109a",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "4700861afedfb709de39f9bb0c747f28e17b1e56504cd9ed0cbfee65cd6f754c",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "8959e02c0d8bedfb15c0862c0212e1e90ee7d79fdfe8af4838ad46dd704fda9f",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -80169,14 +80737,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "ef87a3120f2eae4062a31241aebbaa07ca5c5c1f09271ccba211140e5c93bf36",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "4754844e447306b4b69a69fbd58932ba4f72306a9011231aa9055773541f30e7",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -80221,6 +80789,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "f9204b347929213a42631401867cc964114c57dcfbcda8caefb29d4701350b06",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "ac800311c6ddb9a5054e422bc389bf8d3337aa43ab1208a26c0aba3fd4c6de6e",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -80301,14 +80891,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "9229ecf1105f92aedc0a01ed469c30e7920b3216ae2a148f95fa6f500e538338",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "ae19857e3a42156009cd7e859a62f156e968a0c54de67e1819db824ca001aadb",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -80353,6 +80943,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "67ae89676952d74c41ab62c5cf01ef4d731b3647b8deac507b21d94862ce7f3e",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "d7cac622873baaada2ae6f726d5b48e398dfd54276cf6dd2f66a4c6a378fa250",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -80464,6 +81076,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "0a1d5cbcb73df54646b1ba7bf86291647bbca70914d134f04fbabb7b49976624",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -80485,6 +81108,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "e4c9a82fa9a00a35c4bea61bb2a6342ad8c459e86c95b8cff0156898bbea96b3",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "55efb40a288f3787138a532d032fc6ec27768162bfec99c0b8d79f9c6e339c68",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -80706,38 +81351,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "4bf237d71197e2d90413e966286edf2fad488ddfdc4bd511111624b39433ab39",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "31de5ae733cb2a6c004469f9ebf8ee71b30bc7e6eba83f61a6efbb9bc644e435",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "13b1d0e919fa147537404b64e89add2146d739ae84fe9a66e8fff8f556d8bfdb",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "4e0c1d27a74ed68a4d946083b555a75f19593fc4aed23695226f898bb4960fa9",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -82348,8 +82971,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -90259,6 +90882,17 @@
           },
           "updated_at": "2026-09-04T20:00:00Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "538476f775a892b7adb7b395ae7b3be98ea2464f029d1b319c96e58acd29ace2",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -90281,16 +90915,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "adbaaf860315b6ea6722586ff9fee69edc5694fbc5366a51c0a2c17b6f130b88",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "badf4a37afaaf48742be93919b724711f561ad934cac1566569041091d05a69d",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "82630ac715b5ea9478526407f56772f32833eecb84eb07c3fe91142692e0856a",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -90349,14 +90994,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "0b4a289f61e9d086d1363e2f05d6155647130de742067e48a78df20bee3646a8",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "70240ef20a49d48dc5155f442a68caa629319b020cf04d4e19ddc9574afd698b",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -90401,6 +91046,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "a8c5e9081a66bbeab9686789888e2a15214f4292ca7abfaacf04afe859278088",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "999f3772dcc373ad209f53e1d9c27e2d1499b91f6811a5d974b3bf076bbefff0",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -90481,14 +91148,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "ce3e3e637c69075644e40ba1970b82470079fc74e42879d93598ac0c1440c47b",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "5413b6c764066ce11ae9fc98c10da7cbc3a6e09ae8e2f78e796502ba760870f2",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -90533,6 +91200,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "d020b56b9e7c5b00a1eb24e4ba9cc05b7baa2faa783bac774b657c00c338102a",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "54e432c8cdbcac79492e488378a7f634bd7af0b6d93da7f45b5a360ccc950de0",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -90644,6 +91333,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "f407fb433ce741a4b48aa70b2819cbd0e360c0547369fbb73a7d7486ecc62703",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -90665,6 +91365,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "4cc46d50c43ea26f9f4e57211c65ff61278dacccd3d97c545d941fbb36977e76",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "5b6353e7679fa978f573338e59a7faa25ebd5e8e251d6baa123cbca85bb96ad1",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -90886,38 +91608,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "400323b8354bd7ee6d92a4006a14fa13a311834f733393062f67bc6920b955bd",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "4e4b15e46c615b389f24f483ace90aacda496e7fa98c6bbd0afe69e5efa0f2ba",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "355e55ee421567064578ebb5b7a02a51f73a92a472d5afd25266d58ed7927053",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "b0d6dd5b5338064a2e4de8ef37eed08167c7d60d3aa07a5ddf97005e920c9659",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -92528,8 +93228,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -100439,6 +101139,17 @@
           },
           "updated_at": "2026-09-03T22:45:00Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "144f541393416174ed35b5ca104cf74b1f8de1be3ffb5fd1f4ee96b820a8b833",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -100461,16 +101172,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "2f13d32962dde8d190aca475449ad5a1a686545b37e011c8c873fc79ba0ff527",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "c93b1e205b93a2837191311027b1b9c90f97418265f421e53ef7cdcd2f8be1bf",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "d46ff963c7e010108e5356830d0591a99dea67b977178d70a9e4124e9b82f383",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -100529,14 +101251,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "bcdf161dfe7d9cfeb3b1c789c4d53f0d87384b9e26f337bee53146e6590f0585",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "a8881ced6483a33a41d52bdc993c3f9f9a6392f4450c16ad8c2fc7a282ed78c6",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -100581,6 +101303,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "1e038dee1f65b737c140358465fe42ccba167e6affadd2a76914833f50fcdcd1",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "f55384b381842284a618dc25ad0cc74495a0b8eb144505a6b22b7b6d19e80dde",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -100661,14 +101405,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "54ba216464a81b283bc7519a254c0022ad4298c6f6f0c1fc103d1abe66d11ca8",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "4e65dc7f8d63d11d0aff150fb9b57db096ac5feb01ab775ff4b9886969db5196",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -100713,6 +101457,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "0cf72dbfe2fd23ab211a3d57c758e98d2f9b984380066442da1b96f982d59e90",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "39c68251cfa97fb0e03dc015e2c4ddc971855a86f22a9fa6c42219d8683d2317",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -100824,6 +101590,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "4e58606c747e01350ff56d39c0463fc02665734ddc1694008dcfb062769f5035",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -100845,6 +101622,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "9082f421210791d9667119708e2ca21cd8f2dfe70e38ebbca13550cf3a3adcfb",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "0477964ec153759a72fac2c6270132bed4a931ffb169c6eeabb3e533daa2fe6e",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -101066,38 +101865,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "27774b6ede2fa8a0a0699fc9e45a2ce810f5ab2f1f8e5d62daf7ee9ec6517a33",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "a9ee8a0acb9ce5d1b09c632875d20560a0fee83274e960fd7791129596950d65",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "6503301bc5289289f7b219506242bb5ed5c0858567d21d38a9b72b738ecaa83b",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "42ef93f2024b152338ca2a9052b280afbf88fd59f71ed81746d01df7891516c7",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -102708,8 +103485,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -110619,6 +111396,17 @@
           },
           "updated_at": "2026-09-04T03:19:03Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "0be0ae9401158e8aa019cf75ee7f6b09633375c9e947a085d9fae2478b0765a9",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -110641,16 +111429,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "2b82b0ebe0cf713ed06512ee36256e5ea4805e6a77d1da949bcde9f380b9cbc1",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "e4f073a8875449f22655bf8e4fe96b3f1b3eb2c6a087ec25c14d246354956a7f",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "3a2edd474969f9d3c264d3be143b2b9abf3baf80f557c86493a0a7fc59cf99d6",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -110709,14 +111508,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "278180b9dcafcab99d889dfb72cb7ecadcf7823d951ce37332ba63777cbc8650",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "88e60ca7b672836dc4376c5f3c95ae6ce03a554470c0dde8b89bbe9264df79f3",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -110761,6 +111560,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "4e06186db9cb375dab8b5633381b1a0b04799a91982ad1bea3aedb9433f5338e",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "f395d1c1fbd62020f6339b6e47f289a8f4d75324f33805924e94ad5ced9e6dca",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -110841,14 +111662,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "ce8555d622010befc6eda3b12e7a430da2b78dc6fc4c22d9bf9737e29f94ce40",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "ad24635f07a9fd895090be192c23bc9ee0d3872583987de6849b495ff781cfb3",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -110893,6 +111714,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "ec046f1896a1c32bc34886e725eaf688acf371a5a7d06ff700f00fcc062c46b3",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "5ccac25d82bc00b5354a16edc3df24ad3d48a2ad6807cc0a6137a3e19463c990",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -111004,6 +111847,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "f240aac19eef675e288daf7dde10e986d942fbaa4d885cbd06e8ac5a094fbb8f",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -111025,6 +111879,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "0c1eeae8aa49863409cf28506de197e25bf3d882270ccaafad8ecd0e564dc860",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "c705d4f7ba084d801579190b50945aad9ca39fb0c828876d70c382882457527a",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -111246,38 +112122,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "1db9bec7ee5fdd64eb79db64db36e650af4c6fff710e233892e14a0f1bf582f5",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "8d7c0c9dfe54e43bc2c869ca8358850525243f18b7144283954ca2778b16f63c",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "5a751dc112abd38b2f8b52fdeb42d456e3858745922c1742b3bcd13562406869",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "8233757a89035389a47eea8fc93bd3ec5fb297ea7642a4baa6d3e1bda9283ae7",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -112888,8 +113742,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -120799,6 +121653,17 @@
           },
           "updated_at": "2026-09-04T04:00:00Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "cf3c93d6f60e30488decbb9452ed99f6a5d710a450f9c8175adca1e7425dc80f",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -120821,16 +121686,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "35c34485e80c17b03cde39e7a81cbdb9816d133e0da16ea281f1ab9b2677300f",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "2e5a8f5c893f72ff3b23036eeca0ee753f976da8f1e40abc828071c776b6b838",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "b151f0ccd449e1ce7ab450bf5ab98f93360e993f40d8c5738955bfbaded89225",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -120889,14 +121765,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "7f4a40ae0e5f304dd2ef41c3a4d9fc0e6790777ffa9f57f5525f3a47a8dc313b",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "70983eaf9315d0b0e1fcf53961865d89fc53217f32bb0865d9eb349febe775d4",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -120941,6 +121817,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "af0c09d47cdd7890ff24b5f2a936aa60b582c5d929b921c68ad58372e71d1e85",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "7b588566ac6209b3d407b49573093678c8cae4d2c9f99fa7f51f0e964154290f",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -121021,14 +121919,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "635d224c83ad23d943c993f1bd4de8581df8dc1a69aa349bce37eaccafbc6a32",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "e47323b071e171f23e4140bc87082d4b162112883b55fba381247394c2edb411",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -121073,6 +121971,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "b73b7334913bdca7e68bbbd5034d62302543f1bf795ea0e60573ee2b2c8928b5",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "ad9bb935aa9ce5e90d17012039266ef0b1800af16ce670f00b6e5bda7ace9288",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -121184,6 +122104,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "472a33c9b2a4ee16105e0e3a1634fc1e6d48c34ef8acd6a521ea4837444f1f50",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -121205,6 +122136,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "72a3a595feecc5abf43e055278ea67195f4dde3fdf6b9fa69b9ae2fd84c71cd3",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "e303d9d7f969ff51147ffcb61aaf03fc1e8ca359619b2cb7ae082faddf43a79e",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -121426,38 +122379,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "81a84f02a65a1084a8f463315fb725246613060da69a089f879be42fe55664b2",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "30a16fa712b36c8729d4d10c66725bccbc5f86f06516f48d7b32ba74f1948e54",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "3dd0df930dccdce5fa7274271456bc246aa0b7f6ff38e4c7a30ddaef1e0ead53",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "50bb04811a7e09bb826f5a12c6740eeb8cdcdef036008f7bf9092b6088bdedbd",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -123068,8 +123999,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -130979,6 +131910,17 @@
           },
           "updated_at": "2026-09-04T17:00:00Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "8a2a7e09162ebd1b6812e8e17d366ccb950d3066a0721f36c802ebd069b884aa",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -131001,16 +131943,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "09996395f6985abf9a2b1415428d2c680aa422496269534fbeb7b2ccd7523a43",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "93813468fbc09c401ddebaf6eb46e1106986e2d03efbe6a9ed2dbeea67a4e96f",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "d0a3cae04fb3d392f17b145ec249410f753f54e7d6bbb8999f419edcb9fab5a7",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -131069,14 +132022,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "8fc130efde124e8947b93d6ebd200b794c3777b313d06fdea53c9ce08121bec3",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "cf9774d181dda8fd2e6e6b38c02388d29f090af1da62b208ce0b1c1ef86483ea",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -131121,6 +132074,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "1a0fb1f5e6bc92d5be0ea1a23032df77cf15c329ab81e05bce5bf5bb765ddadd",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "e0fd2bcaffdb99a419e2cc21738c95722ee8b224254360232b035393fda6b759",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -131201,14 +132176,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "8c7d8965d32c59de23b391ad2129bd5bbbec4f2d1ae35df219e9ad71db57f6f5",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "26064a8aed6032b7c762f8dfa36ca1439ce8ba113a94e8b464e1bf43c02bbd6c",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -131253,6 +132228,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "c91fbf873ce524e4152e3c9261cbea67f2ebdfac60eb558f564e89a0cba3b6be",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "b104928f1f857e61ae28252b890b142d667510a6febb97ebdbf863290517bcae",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -131364,6 +132361,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "1453fbc738bc98f406d1b57899729b9eb454ea41072bf727e4b83e57026ecd57",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -131385,6 +132393,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "f88b54d780093711db9a08c6bd803a33a110404cf15c299c9483971ef65f6041",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "5e6354374d0c0b8a73bb578619bb20dccf962abfefaa5ea900514cb39b7ec847",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -131606,38 +132636,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "6046f98d04f62220ad9199e5d6b2b615d3a04bf8412f6fbc46e85b4fb6ed32cb",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "115c753616c255b0c9c3f1ff976e0b5257a88303016b997eefbb913687ca687f",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "3b8c51ad72dcde184d81cf79487fde1a5ffeb8e3514e655f4f11f7842130cbfb",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "7b54379b5294f539275abfa34ce47c56e742676f9c6cdf7d47b87dc5cf31ae34",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -133248,8 +134256,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -141159,6 +142167,17 @@
           },
           "updated_at": "2026-09-04T08:11:57Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "31d33fb89c697210e21811a0318e5c2512e3bf664d687e81cc4554802ebc99ae",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -141181,16 +142200,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "d0904e8ee0004fdf03383b94794ceb5fef24e4d9bbd0e883745f4de06d0897ff",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "08f475bff39982dd90c612de97093e866bf45fc62a9bf6d3101f97069297753b",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "7b56ca7a46ca92dda9cb3f2bdaacda75665da44a51eccc2ef3884596ddd8bcd7",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -141249,14 +142279,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "0cdbfcf66fc2985db2f3b78dc372d80af0a54722a204934b70e161c0519a201d",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "440015d87c93bc1e4f95a8f1cb7018fbce86706e45a021913319091f863ef0ed",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -141301,6 +142331,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "04dea1a32cb55b3aeb6a0433955bfd434e3fa23d109fb740f9d7c443bc6e87f8",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "d8f963a0906b41773d4e3a399b662c6bc6c4d36e021a32b8491fb8c4460bba11",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -141381,14 +142433,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "f50450aaa0ac8c7d58b633b74f6faedd06b4748210b193a9b42cd2d74e8cc6fe",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "93497b03e8e13232c5a485841e172def71d1e015c2dffb1735b7b74f86608cdd",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -141433,6 +142485,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "8c7f26f6bd940128d138726b8655da96dc46f42e7ae7d0dc82596a93847f36e9",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "a8ea990c50881fdea8d538b1b50c464c9da742eab168ec99f411dde0b2e13304",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -141544,6 +142618,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "2c13598620d778afe3b9abf7e2a7e83ae66ee0c74f27a2c2422146ff5a948cdc",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -141565,6 +142650,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "46e0b004118df4269bb6b99630721bb184fd2d08ed530e791c35240710f5b8ca",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "3110ee96bc578b2248180e742d8ad9289010b63b9f15e968b19eb7cfd6d35e15",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -141786,38 +142893,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "c20b52c1b9690e8ed8faf6bf68f9a38e83b46c8908c6e316ee628005e4f685c8",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "d36f3e023ff974d465850ab3d5ddbdb92b6efa13c110be86174f8708e73940b9",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "8d662e3940c6941743db4e516eac848ef1e8d63de49e8d560b01571d61da8873",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "00646b77c66d267b7ab81095ee4a1de5fc814f0281bdbc445a0cc24a60fde994",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -143428,8 +144513,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -151339,6 +152424,17 @@
           },
           "updated_at": "2026-09-04T11:59:30Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "79e4d968afaa636993aa8bc5687144e8de55443f8c94a06328fdbdd881244cae",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -151361,16 +152457,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "5142aa6cd8f624c21818e66d1a99d19321659b8e7b23e160b5d19f882baeed3d",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "349e9444285f93be1538aa6248ec1be0d3174e4f9ef6d843e75265e75af0f6f4",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "dba6e62ee723c079d8b7145aa80aaf1667a3026d2ffc28847a4c443538904916",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -151429,14 +152536,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "3f92ac391ea9ddc04ff5515277bd527f2147bdad17ec0a544a5acb080fe2d2b0",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "59ab3427c019d5bd2142385abbbe41b9d8ebbe93faed993b0759a15c2b60ca7c",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -151481,6 +152588,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "daf75fe8b009e03f23b75baf95873779f627fd2bc54099306494136ccabb7e4c",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "c272ac0325d47e1109ac8327216d60625c8dd84aeefd66ced1a599b93591bc7b",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -151561,14 +152690,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "86fd4730805a57cf03950299d0b6ae53ceae25bed89730371be06d09f78c5866",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "e563247e9689665dff923fe4efcc6bc5615dcf0b1eec11fe4a1570839e9d64ae",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -151613,6 +152742,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "58a14aa69a6f5af96acac7e0cdb4ab5b3e60e57d2726debeb417e6a4222fc632",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "4a01016a50b967ccbdd40d1a53e40e94c6bbb22f4a64e7f32defbbf780aa52c1",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -151724,6 +152875,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "f33352b062f00b8ad13e1dbed7bd1fd3014aad9287fbcd0e901529510c621c45",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -151745,6 +152907,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "586a06a3e99965e842f645031abb55575fb586e60e257fa5a0ab754323871a57",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "a73dc7c1133ccb539bb80726d99b7de12cd9d9dcdbd6cd344fa4e0c86eed742a",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -151966,38 +153150,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "5b0a8e88f668cccc24e72a8efc0874c1d7c74bd9d3e313d70b6763e60de9b996",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "30a16fa712b36c8729d4d10c66725bccbc5f86f06516f48d7b32ba74f1948e54",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "8440d2a74c631cc05b7ec8ce53407fd17b6abe907e2ac02f472f58cd87478ed2",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "1510e9f8092b996c3e3c335bcc5d3113cd432de6bc07c8844ef08ea5cc92f574",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -153608,8 +154770,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -161519,6 +162681,17 @@
           },
           "updated_at": "2026-09-04T03:10:00Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "061857510a9ccd11fd7d8e8054ba77c6b1ea450c45830331b1e565db6f573ec9",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -161541,16 +162714,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "831b4e0fb574c612d684b776b13d86e233b8fa0300399641c43c9c3cb5992028",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "a6d26e1520253bdc5fa26c0b63220c77a07bb09d7d907acdb74d4737bb767bfb",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "6eb4b4e73c1e6b5c0e6252882fa40a66dfb866d71cfe04c16158db86a17c1782",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -161609,14 +162793,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "5a3acaf785baa6e50abef6a0255ae5703d45e6f64fc67768731877c97d8c2d2a",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "c4ba66574c7834b67c2b90a3603eb8a092511cffe5dce81e59e1e0c1fbd617ec",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -161661,6 +162845,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "f07e37c7aa4499d5e583ddf67e235726ee7ba05d396c402f845cda44c1bd7312",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "c44c16919cf70aa9d9ac46c1fb2def5b5368d166dffeae8164251c152f9c18e0",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -161741,14 +162947,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "b2d453449a4a13b66ad9b31911e7c9e55300974f303398cd6454bb3d06b20e6a",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "5a3aeb87eeaa71694a738fdbcfffb61424ed9873ca68fe28788bcd065a633fe9",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -161793,6 +162999,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "5bdc5d3e865b6f46984b3760dd11195841c3adaf10d6a846e7dead50e73d3ea4",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "78a5fcd59b2447570b71d0e3209895638548950a178566acd6fe2996c2d7a680",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -161904,6 +163132,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "1fb94739c2dde9d3899e5176703bcbfcc85340f346ae9f93a92deed7feda588e",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -161925,6 +163164,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "a9f1ea27585e6490730d9b9b92eb0128923656ea0d1d0e781248658d9d5c7414",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "666ef11ea4555cc9c1c3cbe6df33637fb8e5510f69ef9c2ab0a706a8f1262e67",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -162146,38 +163407,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "c973fd647a37a256a8394407296eccc5676c211a5c57c50212a1ee0d640beb33",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "ec0aeba27808f3a1b46a399db5c13afc48a59460945c4cab5ed4cdad0b2600f9",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "aaf3e501f5c7e3fde7b14f600a984de1de1de042e93a1a5de53c9cbd9d9b9f1c",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "e63942209f2b07b60f5405fba39945c06f401a68152b5e047eefbfb7b83b04f7",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -163788,8 +165027,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },
@@ -171699,6 +172938,17 @@
           },
           "updated_at": "2026-09-04T06:45:28Z"
         },
+        "gamehq.settings.presets.action.assign_to_device": {
+          "domain": "application",
+          "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+          "translation_hash": "a1d4b7f7b111abbc6c3d90904e12467dde636b34ae125a0d03b8c00bb00b15d7",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.action.delete": {
           "domain": "application",
           "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
@@ -171721,16 +172971,27 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.action.new": {
+        "gamehq.settings.presets.action.more": {
           "domain": "application",
-          "source_hash": "328975c333026c632208b1235059266b49824418ee308c4de252ae82885dfa8e",
-          "translation_hash": "41400695a51118d5adb3bef1a06fe9cb476c66e530e95f57dfce349c726b0af7",
+          "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+          "translation_hash": "a6d26e1520253bdc5fa26c0b63220c77a07bb09d7d907acdb74d4737bb767bfb",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.action.new": {
+          "domain": "application",
+          "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+          "translation_hash": "133457f7701e4939fdd9f00115fe30c270fa8a799872774b13f1c8848df3057d",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.action.rename": {
           "domain": "application",
@@ -171789,14 +173050,14 @@
         },
         "gamehq.settings.presets.assignment.label": {
           "domain": "application",
-          "source_hash": "955b0cb0df609338156d6d62bc04bc9edcb4f502f4b8d752625fba1dd5e6a8ed",
-          "translation_hash": "1e90c4d4b8bdb20a39eeb56fcde554d34566514aafafab826855c97da56aef0b",
+          "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+          "translation_hash": "6ced5d6f0e70ecad6e0ca58fbf49219e5e1236000d3f5878feb21403f5810bd9",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.assignment.missing_description": {
           "domain": "application",
@@ -171841,6 +173102,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.badge.shared": {
+          "domain": "application",
+          "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+          "translation_hash": "a8ff7b0faf9ae5e0df928d3bed1be10b20a0b6ba05455bd6382970af635ed52d",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.badge.this_device": {
+          "domain": "application",
+          "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+          "translation_hash": "cc3d080731eaa64c42642c65df53ccad723f6a992a88ddc2cfe786208d961881",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.builtin_label": {
           "domain": "application",
@@ -171921,14 +173204,14 @@
         },
         "gamehq.settings.presets.description": {
           "domain": "application",
-          "source_hash": "4e319d503af2b0b826e6f0c97f6cb607b5945564f4a8d5caaf2c23a9b75fe6fa",
-          "translation_hash": "60278b0f12866111937e3c9855c0527509f606c606d7625cd9834199a1932ad0",
+          "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+          "translation_hash": "100239fdd9830bde08620b04d9226bc2835cd9479b7029e9d76bc14867ed834f",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.duplicate.message": {
           "domain": "application",
@@ -171973,6 +173256,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.editing.helper": {
+          "domain": "application",
+          "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+          "translation_hash": "35e6c2ae496b0b57516dc9e79ae3a59a3bc66c33a2b8f09cb47f63f4b45cb141",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.editing.unassigned": {
+          "domain": "application",
+          "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+          "translation_hash": "c73a2482908e4b7363610d1f9a25ac3f31ff17ef32bdfaee530897e392bd53dc",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.eyebrow": {
           "domain": "application",
@@ -172084,6 +173389,17 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.settings.presets.library.helper": {
+          "domain": "application",
+          "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+          "translation_hash": "075d37994f3c54d5485b8b441c55843fb7ca60d94d42634c7e985a16c403edb7",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
         "gamehq.settings.presets.library.label": {
           "domain": "application",
           "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
@@ -172105,6 +173421,28 @@
             "actor": "deepseek-flash-max-cpo-x02-preset-localization"
           },
           "updated_at": "2026-09-21T00:00:00Z"
+        },
+        "gamehq.settings.presets.more.message": {
+          "domain": "application",
+          "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+          "translation_hash": "70c3d31f885fbd633fe4edd155a76d17cd112c76466565bd6ffd7ca4d9f0ed1f",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
+        },
+        "gamehq.settings.presets.more.title": {
+          "domain": "application",
+          "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+          "translation_hash": "17c96f63c2f7e3ed9ae43287f7513a0413a41ae93257bf9cd46f816c11f97da3",
+          "status": "machine_translated",
+          "provenance": {
+            "kind": "machine",
+            "actor": "claude-opus-5-presets-ux-redesign"
+          },
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.name_label": {
           "domain": "application",
@@ -172326,38 +173664,16 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
-        "gamehq.settings.presets.select.assigned": {
-          "domain": "application",
-          "source_hash": "f2995f4701046cc68fc2c264ee6f2b6e31435fc83526d7a6ba3e4a900c27969b",
-          "translation_hash": "16d6cbd88dd45046edeb893cc5cc08aa7f16ad0c0c5f9c5c30b1c6e25b3ac2a2",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
         "gamehq.settings.presets.select.label": {
           "domain": "application",
-          "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
-          "translation_hash": "a5c89084d8b6e926806ffc758e62cf7aeb63d0de90f63484838a703c7bda4179",
+          "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+          "translation_hash": "f889ed730967e39a983ced2f426758f7d5db71ac60e3fd7267fda7a4669e3312",
           "status": "machine_translated",
           "provenance": {
             "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
+            "actor": "claude-opus-5-presets-ux-redesign"
           },
-          "updated_at": "2026-09-21T00:00:00Z"
-        },
-        "gamehq.settings.presets.select.managing": {
-          "domain": "application",
-          "source_hash": "f6195e2f1abb6339b4c6d44222fde2264693d3ae50c8b757022f53f7c253d387",
-          "translation_hash": "866e51ed9973e531587fb1fbdf79d1e497016fb3784469a50922f2c74363c13c",
-          "status": "machine_translated",
-          "provenance": {
-            "kind": "machine",
-            "actor": "deepseek-flash-max-cpo-x02-preset-localization"
-          },
-          "updated_at": "2026-09-21T00:00:00Z"
+          "updated_at": "2026-09-21T13:00:00Z"
         },
         "gamehq.settings.presets.sharing.both": {
           "domain": "application",
@@ -173968,8 +175284,8 @@
       },
       "completeness": {
         "application": {
-          "total": 923,
-          "current": 923,
+          "total": 930,
+          "current": 930,
           "missing": [],
           "stale": []
         },

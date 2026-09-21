@@ -1,15 +1,27 @@
 {
-  "version": "0.7.36",
+  "version": "0.7.37",
   "date": "2026-09-21",
   "sections": [
     {
       "title": "Changed",
       "items": [
-        "Mapping presets now sit directly above Assignments on the Input settings page. Choosing the preset a controller or game uses and editing the individual bindings it contains belong together, so the two sections are no longer separated by the profile and gesture settings."
+        "The Mapping presets section is now three labelled cards - the preset this device runs, the preset being edited, and the preset library - so it is clear at a glance what is assigned and where binding changes are saved. New preset is the only primary button; rename, duplicate and delete moved into a More actions dialog, and a new Assign to this device button makes the preset you are editing the one the controller uses."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.36",
+      "date": "2026-09-21",
+      "sections": [
+        {
+          "title": "Changed",
+          "items": [
+            "Mapping presets now sit directly above Assignments on the Input settings page. Choosing the preset a controller or game uses and editing the individual bindings it contains belong together, so the two sections are no longer separated by the profile and gesture settings."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.35",
       "date": "2026-09-20",
@@ -133,19 +145,6 @@
       ]
     },
     {
-      "version": "0.7.25",
-      "date": "2026-09-09",
-      "sections": [
-        {
-          "title": "Improved",
-          "items": [
-            "Save-replay Hold guidance is now available in all 16 supported languages.",
-            "The translated guidance identifies the controller button and minimum hold duration needed to save a replay."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -179,6 +178,13 @@
     "requested_locale": "tr-TR",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.37",
+        "source_integrity": "sha256:41ba673689a8802ae2a8db91f82243b475350c82bdbaf6539d9f2ba765b3e2e3",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.36",
         "source_integrity": "sha256:7ab1d9f309ffba306f3a578c70e4f6b14803a4aef02abba6b0fb8b0c4337aa38",
@@ -252,13 +258,6 @@
       {
         "version": "0.7.26",
         "source_integrity": "sha256:d6da7511c826452ce849334cb1e4d2fce086ac4278d9cd4f702f665184fe70cf",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.25",
-        "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

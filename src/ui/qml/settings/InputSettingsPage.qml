@@ -16,6 +16,7 @@ SettingsPage {
     // preset dialogs sit above the page they belong to).
     padOverlay: presetDeleteDialog.visible ? presetDeleteDialog
               : presetNameDialog.visible ? presetNameDialog
+              : presetActionsDialog.visible ? presetActionsDialog
               : compatibilityDialog.visible ? compatibilityDialog
               : conflictDialog.visible ? conflictDialog
               : resetProfileDialog.visible ? resetProfileDialog
@@ -323,6 +324,15 @@ SettingsPage {
 
     MappingPresetSection {
         id: presetSection
+        onMoreActionsRequested: function(anchorItem) {
+            //% "Preset actions"
+            presetActionsDialog.title = qsTrId("gamehq.settings.presets.more.title")
+            //% "Choose what to do with \"%1\"."
+            presetActionsDialog.message = qsTrId("gamehq.settings.presets.more.message")
+                        .arg(input.mappingPresets.selectedPresetName)
+            presetActionsDialog.deleteEnabled = !input.mappingPresets.pendingEdit
+            presetActionsDialog.open(anchorItem)
+        }
         onNewRequested: {
             root.presetDialogMode = "create"
             //% "New preset"
@@ -770,6 +780,18 @@ SettingsPage {
             else
                 input.mappingPresets.duplicateSelectedForTarget(name)
         }
+    }
+
+    MappingPresetActionsDialog {
+        id: presetActionsDialog
+        parent: root
+        anchors.fill: parent
+        z: 212
+        // The dialog only routes: the section already owns each flow, so the
+        // name and delete dialogs are reached exactly as a direct click did.
+        onRenameRequested: presetSection.renameRequested()
+        onDuplicateRequested: presetSection.duplicateRequested()
+        onDeleteRequested: presetSection.deleteRequested()
     }
 
     MappingPresetDeleteDialog {

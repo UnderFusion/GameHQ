@@ -1,15 +1,14 @@
-# GameHQ 0.7.25 (2026-09-09)
+# GameHQ 0.7.37 (2026-09-21)
 
-## Improved
+## Changed
 
-- Save-replay Hold guidance is now available in all 16 supported languages.
-- The translated guidance identifies the controller button and minimum hold duration needed to save a replay.
+- The Mapping presets section is now three labelled cards - the preset this device runs, the preset being edited, and the preset library - so it is clear at a glance what is assigned and where binding changes are saved. New preset is the only primary button; rename, duplicate and delete moved into a More actions dialog, and a new Assign to this device button makes the preset you are editing the one the controller uses.
 
 <!-- gamehq:locale-index -->
 
 ## Release notes in other languages
 
-These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.25/assets/release-notes/publication/0.7.25) are kept in the repository; they are not attached to this release as separate downloads.
+These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.37/assets/release-notes/publication/0.7.37) are kept in the repository; they are not attached to this release as separate downloads.
 
 | Language | Locale | Content |
 | --- | --- | --- |

@@ -6,6 +6,13 @@ Item {
     id: root
 
     property string icon: ""
+    property string iconFontFamily: Theme.fontFamily
+    property int iconSize: 30
+    property int iconPixelSize: Theme.fontBody
+    property color iconColor: tone === "normal" ? Theme.accent : toneColor
+    property int labelPixelSize: Theme.fontBody
+    property int descriptionPixelSize: Theme.fontCaption
+    property string badge: ""
     property string label: ""
     property string description: ""
     property string tone: "normal" // normal | warning | danger | success
@@ -53,8 +60,8 @@ Item {
 
         Rectangle {
             visible: root.icon.length > 0
-            Layout.preferredWidth: 30
-            Layout.preferredHeight: 30
+            Layout.preferredWidth: root.iconSize
+            Layout.preferredHeight: root.iconSize
             radius: Theme.radiusS
             color: root.tone === "warning" ? Theme.warningSoft
                  : root.tone === "danger" ? Theme.dangerSoft
@@ -63,9 +70,9 @@ Item {
             Text {
                 anchors.centerIn: parent
                 text: root.icon
-                color: root.tone === "normal" ? Theme.accent : root.toneColor
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontBody
+                color: root.iconColor
+                font.family: root.iconFontFamily
+                font.pixelSize: root.iconPixelSize
                 font.weight: Font.DemiBold
             }
         }
@@ -78,7 +85,7 @@ Item {
                 text: root.label
                 color: root.toneColor
                 font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontBody
+                font.pixelSize: root.labelPixelSize
                 font.weight: Font.Medium
                 wrapMode: Text.WordWrap
                 Layout.fillWidth: true
@@ -89,10 +96,25 @@ Item {
                 text: root.description
                 color: Theme.textMuted
                 font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontCaption
+                font.pixelSize: root.descriptionPixelSize
                 wrapMode: Text.WordWrap
                 Layout.fillWidth: true
                 Layout.minimumWidth: 0
+            }
+            Rectangle {
+                visible: root.badge.length > 0
+                implicitWidth: badgeLabel.implicitWidth + Theme.s16
+                implicitHeight: badgeLabel.implicitHeight + Theme.s8
+                radius: Theme.radiusPill
+                color: Theme.accentSoft
+                Text {
+                    id: badgeLabel
+                    anchors.centerIn: parent
+                    text: root.badge
+                    color: Theme.text
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontCaption
+                }
             }
         }
     }

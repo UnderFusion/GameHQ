@@ -191,6 +191,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/ConfirmDialog.qml
         ui/qml/components/MappingPresetNameDialog.qml
         ui/qml/components/MappingPresetDeleteDialog.qml
+        ui/qml/components/MappingPresetActionsDialog.qml
         ui/qml/components/Toast.qml
         ui/qml/components/UpdateBanner.qml
         ui/qml/components/AboutWhatsNewDialog.qml

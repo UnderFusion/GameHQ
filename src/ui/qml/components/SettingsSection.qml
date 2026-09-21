@@ -13,6 +13,8 @@ Rectangle {
     property string status: ""
     property string variant: "normal" // normal | status | warning | compact
     property bool showHeaderDivider: contentColumn.children.length > 0
+    property int contentSpacing: Theme.s4
+    property int titlePixelSize: compact ? Theme.fontBody : Theme.fontH3
     property Component headerAction
     default property alias contentData: contentColumn.data
 
@@ -104,7 +106,7 @@ Rectangle {
                         text: root.title
                         color: Theme.text
                         font.family: Theme.fontFamily
-                        font.pixelSize: root.compact ? Theme.fontBody : Theme.fontH3
+                        font.pixelSize: root.titlePixelSize
                         font.weight: Font.DemiBold
                         wrapMode: Text.WordWrap
                         Layout.fillWidth: true
@@ -164,7 +166,7 @@ Rectangle {
             id: contentColumn
             Layout.fillWidth: true
             Layout.minimumWidth: 0
-            spacing: Theme.s4
+            spacing: root.contentSpacing
         }
     }
 }

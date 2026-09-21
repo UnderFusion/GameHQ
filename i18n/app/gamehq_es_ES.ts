@@ -101,11 +101,12 @@
       <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="19"></location>
       <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="25"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="14"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="605"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
       <source>Cancel</source>
       <translation>Cancelar</translation>
     </message>
@@ -287,7 +288,7 @@
       <translation>Reducir</translation>
     </message>
     <message id="gamehq.action.dismiss">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="253"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="187"></location>
       <source>Dismiss</source>
       <translation>Descartar</translation>
     </message>
@@ -518,9 +519,9 @@
       <location filename="src/ui/qml/SettingsView.qml" line="498"></location>
       <location filename="src/ui/qml/SettingsView.qml" line="515"></location>
       <location filename="src/ui/qml/SettingsView.qml" line="529"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="290"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="465"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="754"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="224"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="475"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="764"></location>
       <source>Restore defaults</source>
       <translation>Restablecer valores predeterminados</translation>
     </message>
@@ -581,30 +582,30 @@
       <translation>¿Seguro?</translation>
     </message>
     <message id="gamehq.duration.decimal_seconds">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="341"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="343"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="345"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="347"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="275"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="277"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="279"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="281"></location>
       <source>%1 seconds</source>
       <translation>%1 segundos</translation>
     </message>
     <message id="gamehq.duration.milliseconds">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="362"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="364"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="381"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="383"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="296"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="298"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="315"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="317"></location>
       <source>%1 ms</source>
       <translation>%1 ms</translation>
     </message>
     <message id="gamehq.duration.milliseconds.fast">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="360"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="379"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="294"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="313"></location>
       <source>%1 ms (fast)</source>
       <translation>%1 ms (rápido)</translation>
     </message>
     <message id="gamehq.duration.milliseconds.relaxed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="366"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="385"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="300"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="319"></location>
       <source>%1 ms (relaxed)</source>
       <translation>%1 ms (relajado)</translation>
     </message>
@@ -2603,7 +2604,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     </message>
     <message id="gamehq.settings.advanced.status.ready">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="44"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="696"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="706"></location>
       <source>Ready</source>
       <translation>Listo</translation>
     </message>
@@ -3141,54 +3142,54 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>General</translation>
     </message>
     <message id="gamehq.settings.input.bindings.action_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="453"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="463"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.settings.input.bindings.assignment_heading">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="494"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="504"></location>
       <source>Input assignments</source>
       <translation>Asignaciones de controles</translation>
     </message>
     <message id="gamehq.settings.input.bindings.assignment_hint">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="503"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="513"></location>
       <source>Both slots can be active. Select one to edit.</source>
       <translation>Ambas ranuras pueden estar activas. Selecciona una para editarla.</translation>
     </message>
     <message id="gamehq.settings.input.bindings.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="398"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="408"></location>
       <source>Primary and secondary slots are independent. Contexts can reuse the same input safely.</source>
       <translation>Las ranuras principal y secundaria son independientes. Los contextos pueden reutilizar el mismo control con seguridad.</translation>
     </message>
     <message id="gamehq.settings.input.bindings.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="394"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="404"></location>
       <source>Bindings</source>
       <translation>Asignaciones</translation>
     </message>
     <message id="gamehq.settings.input.bindings.fixed">
       <location filename="src/ui/qml/components/BindingCard.qml" line="250"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="528"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="545"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="538"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="555"></location>
       <source>Fixed</source>
       <translation>Fija</translation>
     </message>
     <message id="gamehq.settings.input.bindings.primary">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="522"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="532"></location>
       <source>Primary</source>
       <translation>Principal</translation>
     </message>
     <message id="gamehq.settings.input.bindings.secondary">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="539"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="549"></location>
       <source>Secondary</source>
       <translation>Secundaria</translation>
     </message>
     <message id="gamehq.settings.input.bindings.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="396"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="406"></location>
       <source>Assignments</source>
       <translation>Asignaciones</translation>
     </message>
     <message id="gamehq.settings.input.capture.waiting">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="590"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="600"></location>
       <source>Waiting for input</source>
       <translation>Esperando un control</translation>
     </message>
@@ -3198,288 +3199,288 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Configurar los atajos de mando, teclado y ratón sin cambiar el comportamiento de navegación.</translation>
     </message>
     <message id="gamehq.settings.input.devices.controller">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="52"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="53"></location>
       <source>Controller</source>
       <translation>Mando</translation>
     </message>
     <message id="gamehq.settings.input.devices.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="34"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="35"></location>
       <source>Choose a device type, then select either assignment slot to capture a new input.</source>
       <translation>Elegir un tipo de dispositivo y después una ranura de asignación para detectar un nuevo control.</translation>
     </message>
     <message id="gamehq.settings.input.devices.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="30"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="31"></location>
       <source>Devices</source>
       <translation>Dispositivos</translation>
     </message>
     <message id="gamehq.settings.input.devices.keyboard">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="54"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="55"></location>
       <source>Keyboard</source>
       <translation>Teclado</translation>
     </message>
     <message id="gamehq.settings.input.devices.keyboard_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="43"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="44"></location>
       <source>Focused shortcuts and global key combinations</source>
       <translation>Atajos con foco y combinaciones globales de teclas</translation>
     </message>
     <message id="gamehq.settings.input.devices.mouse">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="56"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="57"></location>
       <source>Mouse</source>
       <translation>Ratón</translation>
     </message>
     <message id="gamehq.settings.input.devices.mouse_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="46"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="47"></location>
       <source>Middle, Back, and Forward mouse buttons</source>
       <translation>Botones central, Atrás y Adelante del ratón</translation>
     </message>
     <message id="gamehq.settings.input.devices.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="32"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="33"></location>
       <source>Input devices</source>
       <translation>Dispositivos de entrada</translation>
     </message>
     <message id="gamehq.settings.input.devices.type">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="37"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="38"></location>
       <source>Device type</source>
       <translation>Tipo de dispositivo</translation>
     </message>
     <message id="gamehq.settings.input.gestures.combination_window">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="372"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="306"></location>
       <source>Combination window</source>
       <translation>Intervalo de combinación</translation>
     </message>
     <message id="gamehq.settings.input.gestures.combination_window_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="374"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="308"></location>
       <source>How long the first button of a combination waits for the second one.</source>
       <translation>Cuánto espera el primer botón de una combinación al segundo.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="331"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="265"></location>
       <source>How long GameHQ waits before it decides what a button press meant.</source>
       <translation>Cuánto espera GameHQ antes de interpretar una pulsación.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="327"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="261"></location>
       <source>Gestures</source>
       <translation>Gestos</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="334"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="268"></location>
       <source>Hold time</source>
       <translation>Tiempo de pulsación mantenida</translation>
     </message>
     <message id="gamehq.settings.input.gestures.hold_time_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="336"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="270"></location>
       <source>How long a button must be held for a hold action. A completed hold consumes the tap.</source>
       <translation>Cuánto tiempo debe mantenerse pulsado un botón para activar ese gesto. Mantenerlo pulsado anula la pulsación breve.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="353"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="287"></location>
       <source>Multi-tap interval</source>
       <translation>Intervalo de varias pulsaciones</translation>
     </message>
     <message id="gamehq.settings.input.gestures.multi_tap_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="355"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="289"></location>
       <source>How long a single tap waits when the same button also has a double or triple tap.</source>
       <translation>Cuánto espera una pulsación breve cuando el mismo botón también tiene asignada una pulsación doble o triple.</translation>
     </message>
     <message id="gamehq.settings.input.gestures.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="329"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="263"></location>
       <source>Gesture timing</source>
       <translation>Duración de los gestos</translation>
     </message>
     <message id="gamehq.settings.input.hidden.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="163"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="97"></location>
       <source>Attention</source>
       <translation>Atención</translation>
     </message>
     <message id="gamehq.settings.input.hidden.fix">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="172"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="106"></location>
       <source>Fix automatically</source>
       <translation>Corregir automáticamente</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="165"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Controller hidden</source>
       <translation>Mando oculto</translation>
     </message>
     <message id="gamehq.settings.input.modern.auto">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="659"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="669"></location>
       <source>Auto</source>
       <translation>Automático</translation>
     </message>
     <message id="gamehq.settings.input.modern.device_layout_changed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="670"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
       <source>%1 button layout changed</source>
       <translation>Ha cambiado la distribución de botones de %1</translation>
     </message>
     <message id="gamehq.settings.input.modern.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="642"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="652"></location>
       <source>Modern controllers</source>
       <translation>Mandos modernos</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="720"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="730"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
       <translation>Consultar información sobre View y los botones Share reales, los resultados de pruebas, las reconexiones, los gestos y las combinaciones.</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="718"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="728"></location>
       <source>Controller compatibility guide</source>
       <translation>Guía de compatibilidad de mandos</translation>
     </message>
     <message id="gamehq.settings.input.modern.layout_warning">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="647"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="657"></location>
       <source>A controller layout changed. Review its extra-button assignments before using them.</source>
       <translation>Ha cambiado la distribución de un mando. Revisa sus asignaciones de botones adicionales antes de usarlas.</translation>
     </message>
     <message id="gamehq.settings.input.modern.legacy_fallback">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="693"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="703"></location>
       <source>Legacy fallback</source>
       <translation>Compatibilidad heredada</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="661"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="671"></location>
       <source>Off</source>
       <translation>Desactivado</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.copy">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="710"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="720"></location>
       <source>Copy report</source>
       <translation>Copiar informe</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="707"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="717"></location>
       <source>Copies anonymous identity, providers, Share/Guide availability, extra buttons, and layout state—never serials or full device paths.</source>
       <translation>Copia la identidad anónima, los proveedores, la disponibilidad de Share/Guide, los botones adicionales y el estado de la distribución; nunca copia números de serie ni rutas completas de dispositivos.</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="705"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="715"></location>
       <source>Compatibility report</source>
       <translation>Informe de compatibilidad</translation>
     </message>
     <message id="gamehq.settings.input.modern.review_buttons">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="674"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="684"></location>
       <source>Review buttons</source>
       <translation>Revisar botones</translation>
     </message>
     <message id="gamehq.settings.input.modern.runtime">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="687"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="697"></location>
       <source>GameInput runtime</source>
       <translation>Entorno de GameInput</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="654"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="664"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
       <translation>Automático usa el entorno de GameInput incluido y una alternativa heredada segura; Desactivado deshabilita GameInput.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="652"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="662"></location>
       <source>Modern controller support</source>
       <translation>Compatibilidad con mandos modernos</translation>
     </message>
     <message id="gamehq.settings.input.modern.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="644"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="654"></location>
       <source>GameInput support</source>
       <translation>Compatibilidad con GameInput</translation>
     </message>
     <message id="gamehq.settings.input.modern.use_current_layout">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="690"></location>
       <source>Use current layout</source>
       <translation>Usar la distribución actual</translation>
     </message>
     <message id="gamehq.settings.input.profile.all_controllers">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="78"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="86"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="79"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="87"></location>
       <source>All controllers</source>
       <translation>Todos los mandos</translation>
     </message>
     <message id="gamehq.settings.input.profile.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="64"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="65"></location>
       <source>Controller profile</source>
       <translation>Perfil del mando</translation>
     </message>
     <message id="gamehq.settings.input.profile.shared_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="71"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="72"></location>
       <source>Position-based assignments work across PlayStation, Xbox, Nintendo, and generic pads.</source>
       <translation>Las asignaciones por posición funcionan con mandos PlayStation, Xbox, Nintendo y genéricos.</translation>
     </message>
     <message id="gamehq.settings.input.profile.specific_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="68"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="69"></location>
       <source>Changes apply only to %1.</source>
       <translation>Los cambios solo se aplican a %1.</translation>
     </message>
     <message id="gamehq.settings.input.profile.this_controller">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="82"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="83"></location>
       <source>This controller</source>
       <translation>Este mando</translation>
     </message>
     <message id="gamehq.settings.input.relation.compatibility">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="198"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="132"></location>
       <source>Compatibility</source>
       <translation>Compatibilidad</translation>
     </message>
     <message id="gamehq.settings.input.relation.compatibility_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="223"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="157"></location>
       <source>Assignment conversion required</source>
       <translation>Hay que convertir la asignación</translation>
     </message>
     <message id="gamehq.settings.input.relation.context">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="195"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="129"></location>
       <source>Context</source>
       <translation>Contexto</translation>
     </message>
     <message id="gamehq.settings.input.relation.context_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="220"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="154"></location>
       <source>This button changes meaning</source>
       <translation>Este botón cambia de función</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="210"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="144"></location>
       <source>Duplicate</source>
       <translation>Duplicada</translation>
     </message>
     <message id="gamehq.settings.input.relation.duplicate_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="235"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="169"></location>
       <source>Already assigned</source>
       <translation>Ya asignada</translation>
     </message>
     <message id="gamehq.settings.input.relation.in_use">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="204"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="138"></location>
       <source>In use</source>
       <translation>En uso</translation>
     </message>
     <message id="gamehq.settings.input.relation.in_use_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="229"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="163"></location>
       <source>Shortcut already taken</source>
       <translation>Atajo ya asignado</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_available">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="201"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="135"></location>
       <source>Not available</source>
       <translation>No está disponible</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_reported_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="226"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="160"></location>
       <source>Button not reported</source>
       <translation>Botón no detectado</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_saved">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="207"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="141"></location>
       <source>Not saved</source>
       <translation>No se ha guardado</translation>
     </message>
     <message id="gamehq.settings.input.relation.not_saved_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="232"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="166"></location>
       <source>Could not save this binding</source>
       <translation>No se pudo guardar esta asignación</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="213"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="147"></location>
       <source>Shared button</source>
       <translation>Botón compartido</translation>
     </message>
     <message id="gamehq.settings.input.relation.shared_button_title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="238"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="172"></location>
       <source>One button, several gestures</source>
       <translation>Un botón, varios gestos</translation>
     </message>
@@ -3494,72 +3495,72 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>¿Restablecer todas las asignaciones de controles?</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="752"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="762"></location>
       <source>Only the currently displayed device/profile overrides will be removed.</source>
       <translation>Solo se eliminarán las personalizaciones del dispositivo o perfil mostrado actualmente.</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="750"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="760"></location>
       <source>Restore displayed bindings?</source>
       <translation>¿Restablecer las asignaciones mostradas?</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="298"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="232"></location>
       <source>Adopt per-slot bindings</source>
       <translation>Adoptar asignaciones por ranura</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="300"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="234"></location>
       <source>Copy bindings saved for any controller in this slot to this specific controller. The originals are kept.</source>
       <translation>Copiar a este mando concreto las asignaciones guardadas para cualquier mando en esta ranura. Se conservarán las originales.</translation>
     </message>
     <message id="gamehq.settings.input.test.copy_to_controller">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="303"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="237"></location>
       <source>Copy to this controller</source>
       <translation>Copiar a este mando</translation>
     </message>
     <message id="gamehq.settings.input.test.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="262"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="196"></location>
       <source>Profile</source>
       <translation>Perfil</translation>
     </message>
     <message id="gamehq.settings.input.test.identify_button">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="310"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="244"></location>
       <source>Identify a controller button</source>
       <translation>Identificar un botón del mando</translation>
     </message>
     <message id="gamehq.settings.input.test.last_input">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="268"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="202"></location>
       <source>Last input</source>
       <translation>Último control</translation>
     </message>
     <message id="gamehq.settings.input.test.probe_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="314"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="248"></location>
       <source>Records the next 3 seconds of raw button changes — including buttons GameHQ does not recognize — into the diagnostics you can copy from Advanced.</source>
       <translation>Registra en el diagnóstico los siguientes 3 segundos de cambios de botones sin procesar, incluidos los que GameHQ no reconoce. Puedes copiarlo desde Avanzado.</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_displayed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="279"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="213"></location>
       <source>Restore displayed bindings</source>
       <translation>Restablecer las asignaciones mostradas</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_shared_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="286"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="220"></location>
       <source>Remove overrides for the selected device type and shared profile.</source>
       <translation>Eliminar las personalizaciones del tipo de dispositivo seleccionado y del perfil compartido.</translation>
     </message>
     <message id="gamehq.settings.input.test.restore_specific_description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="283"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="217"></location>
       <source>Remove overrides for this controller only.</source>
       <translation>Eliminar las personalizaciones solo de este mando.</translation>
     </message>
     <message id="gamehq.settings.input.test.start_probe">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="317"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="251"></location>
       <source>Start 3-second probe</source>
       <translation>Iniciar prueba de 3 segundos</translation>
     </message>
     <message id="gamehq.settings.input.test.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="264"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="198"></location>
       <source>Test and restore</source>
       <translation>Probar y restablecer</translation>
     </message>
@@ -3736,72 +3737,93 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <source>Import this portable profile?</source>
       <translation>¿Importar este perfil portátil?</translation>
     </message>
+    <message id="gamehq.settings.presets.action.assign_to_device">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="404"></location>
+      <source>Assign to this device</source>
+      <translation>Asignar a este dispositivo</translation>
+    </message>
     <message id="gamehq.settings.presets.action.delete">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="405"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="31"></location>
       <source>Delete</source>
       <translation>Eliminar</translation>
     </message>
     <message id="gamehq.settings.presets.action.duplicate">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="399"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="29"></location>
       <source>Duplicate</source>
       <translation>Duplicar</translation>
     </message>
+    <message id="gamehq.settings.presets.action.more">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="460"></location>
+      <source>More actions</source>
+      <translation>Más acciones</translation>
+    </message>
     <message id="gamehq.settings.presets.action.new">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="388"></location>
-      <source>New</source>
-      <translation>Nuevo</translation>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="453"></location>
+      <source>New preset</source>
+      <oldsource>New</oldsource>
+      <translation>Nuevo preajuste</translation>
     </message>
     <message id="gamehq.settings.presets.action.rename">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="393"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="27"></location>
       <source>Rename</source>
       <translation>Cambiar nombre</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.builtin">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="47"></location>
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="105"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="60"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="118"></location>
       <source>Built-in defaults</source>
       <translation>Valores predeterminados integrados</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.builtin_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="229"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="256"></location>
       <source>Built-in defaults replace every other layer for this device.</source>
       <translation>Los valores predeterminados integrados sustituyen cualquier otra capa para este dispositivo.</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.fallback">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="42"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="55"></location>
       <source>Follow fallback (no preset)</source>
       <translation>Seguir la alternativa (sin preajuste)</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.fallback_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="225"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="252"></location>
       <source>No preset is assigned: this device follows the fallback chain.</source>
       <translation>No hay ningún preajuste asignado: este dispositivo sigue la cadena de alternativas.</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="221"></location>
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="318"></location>
-      <source>Mappings used by this device</source>
-      <translation>Asignaciones que usa este dispositivo</translation>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="239"></location>
+      <source>Assigned preset</source>
+      <oldsource>Mappings used by this device</oldsource>
+      <translation>Preajuste asignado</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.missing_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="233"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="260"></location>
       <source>The assigned preset no longer exists. Choose another one.</source>
       <translation>El preajuste asignado ya no existe. Elige otro.</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.preset_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="236"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="263"></location>
       <source>This device uses the preset "%1".</source>
       <translation>Este dispositivo usa el preajuste “%1”.</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.unavailable_unknown">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="142"></location>
       <source>Choose the controller to edit before saving a per-controller preset.</source>
       <translation>Elige el mando que quieres editar antes de guardar un preajuste por mando.</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.unavailable_weak">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="139"></location>
       <source>This controller has no stable identity yet, so a per-controller preset cannot be saved. Connect it again or edit all controllers.</source>
       <translation>Este mando aún no tiene una identidad estable, así que no se puede guardar un preajuste por mando. Vuelve a conectarlo o edita todos los mandos.</translation>
+    </message>
+    <message id="gamehq.settings.presets.badge.shared">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="360"></location>
+      <source>Shared</source>
+      <translation>Compartido</translation>
+    </message>
+    <message id="gamehq.settings.presets.badge.this_device">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="242"></location>
+      <source>Used by this device</source>
+      <translation>Usado por este dispositivo</translation>
     </message>
     <message id="gamehq.settings.presets.builtin_label">
       <location filename="src/input/MappingPresetModel.cpp" line="112"></location>
@@ -3809,12 +3831,12 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Valores predeterminados integrados</translation>
     </message>
     <message id="gamehq.settings.presets.delete.confirm">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="154"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="395"></location>
       <source>"%1" will be deleted. This cannot be undone.</source>
       <translation>“%1” se eliminará. Esta acción no se puede deshacer.</translation>
     </message>
     <message id="gamehq.settings.presets.delete.in_use">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="151"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="392"></location>
       <source>"%1" is used elsewhere. Pick the preset that takes over its users.</source>
       <translation>“%1” se usa en otros lugares. Elige el preajuste que asuma sus asignaciones.</translation>
     </message>
@@ -3834,95 +3856,120 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>No hay otro preajuste en este grupo que pueda asumir sus asignaciones. Crea uno primero.</translation>
     </message>
     <message id="gamehq.settings.presets.delete.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="148"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="389"></location>
       <source>Delete preset</source>
       <translation>Eliminar preajuste</translation>
     </message>
     <message id="gamehq.settings.presets.description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="25"></location>
-      <source>Presets are global: a game never owns mappings, it only has an assignment.</source>
-      <translation>Los preajustes son globales: un juego nunca posee asignaciones de botones, solo tiene una asignación.</translation>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="30"></location>
+      <source>Presets are reusable mapping profiles. A device or game can be assigned to a preset.</source>
+      <oldsource>Presets are global: a game never owns mappings, it only has an assignment.</oldsource>
+      <translation>Los preajustes son perfiles de asignaciones reutilizables. Puedes asignar un preajuste a un dispositivo o a un juego.</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="361"></location>
       <source>Name the copy.</source>
       <translation>Ponle nombre a la copia.</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="359"></location>
       <source>Duplicate preset</source>
       <translation>Duplicar preajuste</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate_target.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="130"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="371"></location>
       <source>Name the copy that this controller will use.</source>
       <translation>Ponle nombre a la copia que usará este mando.</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate_target.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="128"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="369"></location>
       <source>Duplicate for this controller</source>
       <translation>Duplicar para este mando</translation>
     </message>
+    <message id="gamehq.settings.presets.editing.helper">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="376"></location>
+      <source>Changes below will be saved to this preset.</source>
+      <translation>Los cambios de abajo se guardarán en este preajuste.</translation>
+    </message>
+    <message id="gamehq.settings.presets.editing.unassigned">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="401"></location>
+      <source>This preset is not assigned to this device yet.</source>
+      <translation>Este preajuste aún no está asignado a este dispositivo.</translation>
+    </message>
     <message id="gamehq.settings.presets.eyebrow">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="21"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="26"></location>
       <source>Mappings</source>
       <translation>Asignaciones</translation>
     </message>
     <message id="gamehq.settings.presets.game.builtin_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="283"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="311"></location>
       <source>Built-in defaults replace every other layer while "%1" is running.</source>
       <translation>Los valores predeterminados integrados sustituyen cualquier otra capa mientras se ejecuta “%1”.</translation>
     </message>
     <message id="gamehq.settings.presets.game.fallback">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="100"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="113"></location>
       <source>Follow the chain below the game</source>
       <translation>Seguir la cadena por debajo del juego</translation>
     </message>
     <message id="gamehq.settings.presets.game.fallback_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="278"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="306"></location>
       <source>No preset is assigned to "%1": it follows this device's mappings.</source>
       <translation>No hay ningún preajuste asignado a “%1”: sigue las asignaciones de este dispositivo.</translation>
     </message>
     <message id="gamehq.settings.presets.game.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="261"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="289"></location>
       <source>Mappings used by this game</source>
       <translation>Asignaciones que usa este juego</translation>
     </message>
     <message id="gamehq.settings.presets.game.missing_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="288"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="316"></location>
       <source>The preset assigned to this game no longer exists. Choose another one.</source>
       <translation>El preajuste asignado a este juego ya no existe. Elige otro.</translation>
     </message>
     <message id="gamehq.settings.presets.game.missing_option">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="116"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="129"></location>
       <source>%1 (not in this group)</source>
       <translation>%1 (no está en este grupo)</translation>
     </message>
     <message id="gamehq.settings.presets.game.preset_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="295"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="323"></location>
       <source>"%1" uses the preset "%2" while it is running.</source>
       <translation>“%1” usa el preajuste “%2” mientras se ejecuta.</translation>
     </message>
     <message id="gamehq.settings.presets.game.wrong_group_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="292"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="320"></location>
       <source>The preset assigned to this game is for a different device type. Choose another one.</source>
       <translation>El preajuste asignado a este juego es de otro tipo de dispositivo. Elige otro.</translation>
     </message>
     <message id="gamehq.settings.presets.library.empty">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="380"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="444"></location>
       <source>Create a preset to save a custom mapping set.</source>
       <translation>Crea un preajuste para guardar un conjunto de asignaciones propio.</translation>
     </message>
+    <message id="gamehq.settings.presets.library.helper">
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="436"></location>
+      <source>Create and manage reusable presets.</source>
+      <translation>Crea y gestiona preajustes reutilizables.</translation>
+    </message>
     <message id="gamehq.settings.presets.library.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="372"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="434"></location>
       <source>Preset library</source>
       <translation>Biblioteca de preajustes</translation>
     </message>
     <message id="gamehq.settings.presets.library.pending_edit">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="346"></location>
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="376"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="373"></location>
       <source>Finish or cancel the current edit before changing presets.</source>
       <translation>Termina o cancela la edición actual antes de cambiar de preajuste.</translation>
+    </message>
+    <message id="gamehq.settings.presets.more.message">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="331"></location>
+      <source>Choose what to do with "%1".</source>
+      <translation>Elige qué hacer con “%1”.</translation>
+    </message>
+    <message id="gamehq.settings.presets.more.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="329"></location>
+      <source>Preset actions</source>
+      <translation>Acciones del preajuste</translation>
     </message>
     <message id="gamehq.settings.presets.name_label">
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="22"></location>
@@ -3930,17 +3977,17 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Nombre</translation>
     </message>
     <message id="gamehq.settings.presets.new.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="100"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="341"></location>
       <source>Name the new preset. You can rename it later.</source>
       <translation>Ponle nombre al nuevo preajuste. Podrás cambiarlo más adelante.</translation>
     </message>
     <message id="gamehq.settings.presets.new.suggested">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="103"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="344"></location>
       <source>My mappings</source>
       <translation>Mis asignaciones</translation>
     </message>
     <message id="gamehq.settings.presets.new.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="98"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="339"></location>
       <source>New preset</source>
       <translation>Nuevo preajuste</translation>
     </message>
@@ -3975,7 +4022,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Escribe un nombre para el nuevo preajuste.</translation>
     </message>
     <message id="gamehq.settings.presets.notice.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="422"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="478"></location>
       <source>Preset</source>
       <translation>Preajuste</translation>
     </message>
@@ -4015,57 +4062,58 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>No se ha podido guardar ese cambio. No se ha modificado nada.</translation>
     </message>
     <message id="gamehq.settings.presets.rename.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="111"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="352"></location>
       <source>Enter the new name for this preset.</source>
       <translation>Escribe el nuevo nombre de este preajuste.</translation>
     </message>
     <message id="gamehq.settings.presets.rename.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="109"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="350"></location>
       <source>Rename preset</source>
       <translation>Cambiar nombre del preajuste</translation>
     </message>
     <message id="gamehq.settings.presets.select.assigned">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="350"></location>
       <source>This device uses it, so the editor saves its changes here.</source>
-      <translation>Este dispositivo lo usa, así que el editor guarda aquí sus cambios.</translation>
+      <translation type="vanished">Este dispositivo lo usa, así que el editor guarda aquí sus cambios.</translation>
     </message>
     <message id="gamehq.settings.presets.select.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="342"></location>
-      <source>Preset</source>
-      <translation>Preajuste</translation>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="358"></location>
+      <source>Editing preset</source>
+      <oldsource>Preset</oldsource>
+      <translation>Preajuste en edición</translation>
     </message>
     <message id="gamehq.settings.presets.select.managing">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="353"></location>
       <source>Selected for renaming, duplicating or deleting. The editor still saves to the preset this device uses.</source>
-      <translation>Seleccionado para cambiarle el nombre, duplicarlo o eliminarlo. El editor sigue guardando en el preajuste que usa este dispositivo.</translation>
+      <translation type="vanished">Seleccionado para cambiarle el nombre, duplicarlo o eliminarlo. El editor sigue guardando en el preajuste que usa este dispositivo.</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.both">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="151"></location>
       <source>Used by %1 target(s) and %2 game(s). Editing it changes all of them.</source>
       <translation>Asignaciones: %1, juegos: %2. Los cambios de este preajuste se aplican a todas estas asignaciones y a todos estos juegos.</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.duplicate">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="329"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="419"></location>
       <source>Duplicate for this controller</source>
       <translation>Duplicar para este mando</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.games">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="142"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="155"></location>
       <source>Used by %1 game(s). Editing it changes all of them.</source>
       <translation>Juegos: %1. Los cambios de este preajuste se aplican a todos estos juegos.</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="325"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="415"></location>
       <source>Shared preset</source>
       <translation>Preajuste compartido</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.targets">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="145"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="158"></location>
       <source>Used by %1 target(s). Editing it changes all of them, or duplicate it for this controller.</source>
       <translation>Asignaciones: %1. Editarlo cambia todas las asignaciones; también puedes duplicarlo para este mando.</translation>
     </message>
     <message id="gamehq.settings.presets.title">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="23"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="28"></location>
       <source>Mapping presets</source>
       <translation>Preajustes de asignaciones</translation>
     </message>

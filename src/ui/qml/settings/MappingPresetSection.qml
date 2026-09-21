@@ -6,22 +6,29 @@ import "../components"
 // Mapping-preset library + assignment controls (cpo-p06, docs/mapping-presets.md
 // section 7) for the Input settings page.
 //
-// The screen answers two separate questions, and the rows keep them apart:
-// - "Mappings used by <target>" is the assignment (follow fallback / Built-in
-//   defaults / a named preset). Every choice applies immediately through the
-//   model's refresh seam, at a safe input boundary.
-// - "Preset" is the library (create, rename, duplicate, delete). A rename or an
-//   unused duplicate never disturbs a running gesture.
+// The section answers three separate questions, and each one owns a card, so a
+// user never has to guess which dropdown does what:
+// - "Assigned preset" is what this device (and, in session, this game) runs.
+//   Every choice applies immediately through the model's refresh seam, at a
+//   safe input boundary.
+// - "Editing preset" is where the Assignments below are written. It is a
+//   library selection, not an assignment: choosing here never changes what the
+//   device runs.
+// - "Preset library" creates and manages presets. Only "New preset" is a
+//   first-class button; rename / duplicate / delete live behind "More actions",
+//   so the area carries one primary action instead of four equal ones.
 //
 // Dialogs live on the page (SettingsPage.padOverlay), so the section only
 // raises requests; it never owns a modal.
 SettingsSection {
     id: root
+    titlePixelSize: Theme.fontTitle
+    contentSpacing: Theme.s12
     //% "Mappings"
     eyebrow: qsTrId("gamehq.settings.presets.eyebrow")
     //% "Mapping presets"
     title: qsTrId("gamehq.settings.presets.title")
-    //% "Presets are global: a game never owns mappings, it only has an assignment."
+    //% "Presets are reusable mapping profiles. A device or game can be assigned to a preset."
     description: qsTrId("gamehq.settings.presets.description")
 
     readonly property var presets: input.mappingPresets
@@ -30,6 +37,24 @@ SettingsSection {
     signal duplicateRequested()
     signal duplicateForTargetRequested()
     signal deleteRequested()
+    signal moreActionsRequested(Item anchorItem)
+
+    component PresetRow: SettingsRow {
+        showDivider: false
+        iconSize: Theme.s48
+        iconPixelSize: Theme.s24
+        iconFontFamily: "Segoe Fluent Icons"
+        iconColor: Theme.text
+        labelPixelSize: Theme.fontH3
+        descriptionPixelSize: Theme.fontBody
+    }
+
+    // True while the preset being edited is not the one this device runs. The
+    // library selection is deliberately free to roam, so the editing card says
+    // so and offers the one-click way to make it the assignment.
+    readonly property bool editingUnassigned: presets.selectedEditable
+                                              && presets.targetAvailable
+                                              && presets.selectedPresetId !== presets.assignedPresetId
 
     // The assignment picker: the two virtual choices first, then the library.
     // Values are the model's own tokens, so QML never handles the reserved id.
@@ -215,197 +240,274 @@ SettingsSection {
         function onSelectionChanged() { libraryCombo.refresh() }
     }
 
-    SettingsRow {
-        visible: root.presets.targetAvailable
-        //% "Mappings used by this device"
-        label: qsTrId("gamehq.settings.presets.assignment.label")
-        description: {
-            if (root.presets.assignedToFallback) {
-                //% "No preset is assigned: this device follows the fallback chain."
-                return qsTrId("gamehq.settings.presets.assignment.fallback_description")
-            }
-            if (root.presets.assignedToBuiltin) {
-                //% "Built-in defaults replace every other layer for this device."
-                return qsTrId("gamehq.settings.presets.assignment.builtin_description")
-            }
-            if (root.presets.assignedPresetMissing) {
-                //% "The assigned preset no longer exists. Choose another one."
-                return qsTrId("gamehq.settings.presets.assignment.missing_description")
-            }
-            //% "This device uses the preset \"%1\"."
-            return qsTrId("gamehq.settings.presets.assignment.preset_description")
-                   .arg(root.presets.assignedPresetName)
-        }
-        SettingsCombo {
-            id: assignmentCombo
-            objectName: "presetAssignmentCombo"
-            configKey: ""
-            options: root.assignmentOptions
-            defaultValue: root.presets.assignedPresetId
-            onValueCommitted: function(value) {
-                root.presets.applyAssignment(value)
-                // A refused change (open draft, no persistable target) leaves
-                // the assignment where it was, so snap back to the truth.
-                Qt.callLater(function() { assignmentCombo.refresh() })
-            }
-        }
-    }
+    // ───────────────────────────── Assigned preset ─────────────────────────────
+    // What this device - and, while a game is in session, this game - actually
+    // runs. Changing anything here re-resolves the effective table.
+    SettingsSection {
+        objectName: "presetAssignedCard"
+        showHeaderDivider: false
 
-    SettingsRow {
-        // The game row (cpo-p07). It sits BELOW the device assignment because it
-        // answers a different question - what this game runs - and it only exists
-        // while a game is in session.
-        objectName: "presetGameRow"
-        visible: root.presets.gameAvailable
-        //% "Mappings used by this game"
-        label: qsTrId("gamehq.settings.presets.game.label")
-        // Which of the five assignment states the row is in: it drives the tone
-        // and the sentence below, and it is what the QML suite asserts (a state,
-        // not a translated sentence).
-        readonly property string assignmentState:
-            root.presets.gameAssignedToFallback ? "fallback"
-            : root.presets.gameAssignedToBuiltin ? "builtin"
-            : root.presets.gameAssignedPresetMissing ? "missing"
-            : root.presets.gameAssignedPresetWrongGroup ? "wrong_group"
-            : "preset"
-        // A broken row (the preset is gone, or it is another device group's
-        // preset) is a warning: the chain below the game is serving, not this row.
-        tone: assignmentState === "missing" || assignmentState === "wrong_group"
-              ? "warning" : "normal"
-        description: {
-            if (assignmentState === "fallback") {
-                //% "No preset is assigned to \"%1\": it follows this device's mappings."
-                return qsTrId("gamehq.settings.presets.game.fallback_description")
+        PresetRow {
+            objectName: "presetAssignmentRow"
+            icon: "\uE7FC"
+            //% "Assigned preset"
+            label: qsTrId("gamehq.settings.presets.assignment.label")
+            badge: root.presets.targetAvailable && !root.presets.assignedToFallback
+                   //% "Used by this device"
+                   ? qsTrId("gamehq.settings.presets.badge.this_device") : ""
+            visible: root.presets.targetAvailable
+            compact: true
+            tone: root.presets.assignedPresetMissing ? "warning" : "normal"
+            description: {
+                if (root.presets.assignedToFallback) {
+                    //% "No preset is assigned: this device follows the fallback chain."
+                    return qsTrId("gamehq.settings.presets.assignment.fallback_description")
+                }
+                if (root.presets.assignedToBuiltin) {
+                    //% "Built-in defaults replace every other layer for this device."
+                    return qsTrId("gamehq.settings.presets.assignment.builtin_description")
+                }
+                if (root.presets.assignedPresetMissing) {
+                    //% "The assigned preset no longer exists. Choose another one."
+                    return qsTrId("gamehq.settings.presets.assignment.missing_description")
+                }
+                //% "This device uses the preset \"%1\"."
+                return qsTrId("gamehq.settings.presets.assignment.preset_description")
+                       .arg(root.presets.assignedPresetName)
+            }
+            SettingsCombo {
+                id: assignmentCombo
+                objectName: "presetAssignmentCombo"
+                implicitWidth: Theme.s48 * 5
+                implicitHeight: (Theme.s32 + Theme.s8)
+                configKey: ""
+                options: root.assignmentOptions
+                defaultValue: root.presets.assignedPresetId
+                onValueCommitted: function(value) {
+                    root.presets.applyAssignment(value)
+                    // A refused change (open draft, no persistable target) leaves
+                    // the assignment where it was, so snap back to the truth.
+                    Qt.callLater(function() { assignmentCombo.refresh() })
+                }
+            }
+        }
+
+        SettingsRow {
+            // The game row (cpo-p07). It sits BELOW the device assignment because it
+            // answers a different question - what this game runs - and it only exists
+            // while a game is in session.
+            objectName: "presetGameRow"
+            showDivider: false
+            visible: root.presets.gameAvailable
+            compact: true
+            //% "Mappings used by this game"
+            label: qsTrId("gamehq.settings.presets.game.label")
+            // Which of the five assignment states the row is in: it drives the tone
+            // and the sentence below, and it is what the QML suite asserts (a state,
+            // not a translated sentence).
+            readonly property string assignmentState:
+                root.presets.gameAssignedToFallback ? "fallback"
+                : root.presets.gameAssignedToBuiltin ? "builtin"
+                : root.presets.gameAssignedPresetMissing ? "missing"
+                : root.presets.gameAssignedPresetWrongGroup ? "wrong_group"
+                : "preset"
+            // A broken row (the preset is gone, or it is another device group's
+            // preset) is a warning: the chain below the game is serving, not this row.
+            tone: assignmentState === "missing" || assignmentState === "wrong_group"
+                  ? "warning" : "normal"
+            description: {
+                if (assignmentState === "fallback") {
+                    //% "No preset is assigned to \"%1\": it follows this device's mappings."
+                    return qsTrId("gamehq.settings.presets.game.fallback_description")
+                           .arg(root.presets.gameLabel)
+                }
+                if (assignmentState === "builtin") {
+                    //% "Built-in defaults replace every other layer while \"%1\" is running."
+                    return qsTrId("gamehq.settings.presets.game.builtin_description")
+                           .arg(root.presets.gameLabel)
+                }
+                if (assignmentState === "missing") {
+                    //% "The preset assigned to this game no longer exists. Choose another one."
+                    return qsTrId("gamehq.settings.presets.game.missing_description")
+                }
+                if (assignmentState === "wrong_group") {
+                    //% "The preset assigned to this game is for a different device type. Choose another one."
+                    return qsTrId("gamehq.settings.presets.game.wrong_group_description")
+                }
+                //% "\"%1\" uses the preset \"%2\" while it is running."
+                return qsTrId("gamehq.settings.presets.game.preset_description")
                        .arg(root.presets.gameLabel)
+                       .arg(root.presets.gameAssignedPresetName)
             }
-            if (assignmentState === "builtin") {
-                //% "Built-in defaults replace every other layer while \"%1\" is running."
-                return qsTrId("gamehq.settings.presets.game.builtin_description")
-                       .arg(root.presets.gameLabel)
+            SettingsCombo {
+                id: gameCombo
+                objectName: "presetGameCombo"
+                configKey: ""
+                options: root.gameOptions
+                defaultValue: root.presets.gameAssignedPresetId
+                onValueCommitted: function(value) {
+                    root.presets.applyGameAssignment(value)
+                    // A refused change (open draft, no game in session) leaves the
+                    // assignment where it was, so snap back to the truth.
+                    Qt.callLater(function() { gameCombo.refresh() })
+                }
             }
-            if (assignmentState === "missing") {
-                //% "The preset assigned to this game no longer exists. Choose another one."
-                return qsTrId("gamehq.settings.presets.game.missing_description")
-            }
-            if (assignmentState === "wrong_group") {
-                //% "The preset assigned to this game is for a different device type. Choose another one."
-                return qsTrId("gamehq.settings.presets.game.wrong_group_description")
-            }
-            //% "\"%1\" uses the preset \"%2\" while it is running."
-            return qsTrId("gamehq.settings.presets.game.preset_description")
-                   .arg(root.presets.gameLabel)
-                   .arg(root.presets.gameAssignedPresetName)
         }
-        SettingsCombo {
-            id: gameCombo
-            objectName: "presetGameCombo"
-            configKey: ""
-            options: root.gameOptions
-            defaultValue: root.presets.gameAssignedPresetId
-            onValueCommitted: function(value) {
-                root.presets.applyGameAssignment(value)
-                // A refused change (open draft, no game in session) leaves the
-                // assignment where it was, so snap back to the truth.
-                Qt.callLater(function() { gameCombo.refresh() })
+
+        PresetRow {
+            visible: !root.presets.targetAvailable
+            icon: "\uE7FC"
+            showDivider: false
+            //% "Assigned preset"
+            label: qsTrId("gamehq.settings.presets.assignment.label")
+            compact: true
+            tone: "warning"
+            description: root.unavailableReasonText()
+        }
+    }
+
+    // ───────────────────────────── Editing preset ─────────────────────────────
+    // Where the Assignments below are written. Selecting here is a library
+    // choice, never a runtime one.
+    SettingsSection {
+        objectName: "presetEditingCard"
+        showHeaderDivider: false
+        border.color: Theme.accent
+
+        PresetRow {
+            objectName: "presetEditingRow"
+            icon: "\uE70F"
+            iconColor: Theme.accent
+            //% "Editing preset"
+            label: qsTrId("gamehq.settings.presets.select.label")
+            //% "Shared"
+            badge: root.presets.selectedShared ? qsTrId("gamehq.settings.presets.badge.shared") : ""
+            compact: true
+            // An in-flight capture or an open assignment dialog is the one state
+            // that refuses a preset switch, so it is called out rather than
+            // letting the picker silently snap back.
+            tone: root.presets.pendingEdit ? "warning" : "normal"
+            description: {
+                if (root.presets.presets.length === 0) {
+                    //% "Create a preset to save a custom mapping set."
+                    return qsTrId("gamehq.settings.presets.library.empty")
+                }
+                if (root.presets.pendingEdit) {
+                    //% "Finish or cancel the current edit before changing presets."
+                    return qsTrId("gamehq.settings.presets.library.pending_edit")
+                }
+                //% "Changes below will be saved to this preset."
+                return qsTrId("gamehq.settings.presets.editing.helper")
+            }
+            SettingsCombo {
+                id: libraryCombo
+                objectName: "presetLibraryCombo"
+                visible: root.presets.presets.length > 0
+                implicitWidth: Theme.s48 * 5
+                implicitHeight: (Theme.s32 + Theme.s8)
+                configKey: ""
+                options: root.libraryOptions
+                defaultValue: root.presets.selectedPresetId
+                onValueCommitted: function(value) {
+                    root.presets.selectPreset(value)
+                    // A refused switch (open draft) leaves the selection where it
+                    // was; the picker follows the model, not the click.
+                    Qt.callLater(function() { libraryCombo.refresh() })
+                }
+            }
+        }
+
+        // The edited preset is not the one this device runs. Saying so beats
+        // leaving the user to compare two dropdown labels, and the button is the
+        // one-click way to make the edit take effect.
+        SettingsRow {
+            objectName: "presetAssignEditedRow"
+            showDivider: false
+            visible: root.editingUnassigned
+            compact: true
+            //% "This preset is not assigned to this device yet."
+            description: qsTrId("gamehq.settings.presets.editing.unassigned")
+            AccentButton {
+                //% "Assign to this device"
+                label: qsTrId("gamehq.settings.presets.action.assign_to_device")
+                primary: true
+                enabled: !root.presets.pendingEdit
+                onClicked: root.presets.applyAssignment(root.presets.selectedPresetId)
+            }
+        }
+
+        SettingsRow {
+            visible: root.presets.selectedShared
+            showDivider: false
+            compact: true
+            //% "Shared preset"
+            label: qsTrId("gamehq.settings.presets.sharing.label")
+            description: root.sharingText()
+            AccentButton {
+                //% "Duplicate for this controller"
+                label: qsTrId("gamehq.settings.presets.sharing.duplicate")
+                enabled: root.presets.targetAvailable && !root.presets.pendingEdit
+                onClicked: root.duplicateForTargetRequested()
             }
         }
     }
 
-    SettingsRow {
-        visible: !root.presets.targetAvailable
-        tone: "warning"
-        //% "Mappings used by this device"
-        label: qsTrId("gamehq.settings.presets.assignment.label")
-        description: root.unavailableReasonText()
-    }
+    // ───────────────────────────── Preset library ─────────────────────────────
+    // One primary action. Rename / duplicate / delete are management, so they sit
+    // behind "More actions" instead of competing with it.
+    SettingsSection {
+        objectName: "presetLibraryCard"
+        showHeaderDivider: false
 
-    SettingsRow {
-        visible: root.presets.selectedShared
-        //% "Shared preset"
-        label: qsTrId("gamehq.settings.presets.sharing.label")
-        description: root.sharingText()
-        AccentButton {
-            //% "Duplicate for this controller"
-            label: qsTrId("gamehq.settings.presets.sharing.duplicate")
-            enabled: root.presets.targetAvailable && !root.presets.pendingEdit
-            onClicked: root.duplicateForTargetRequested()
-        }
-    }
-
-    // The library picker. It is the only way to reach an unassigned preset for
-    // renaming, duplicating or deleting, and it is deliberately separate from
-    // the assignment picker above: choosing here must not change what the device
-    // runs, so it never asks the model for a runtime refresh.
-    SettingsRow {
-        visible: root.presets.presets.length > 0
-        //% "Preset"
-        label: qsTrId("gamehq.settings.presets.select.label")
-        description: {
-            if (root.presets.pendingEdit) {
-                //% "Finish or cancel the current edit before changing presets."
-                return qsTrId("gamehq.settings.presets.library.pending_edit")
+        PresetRow {
+            objectName: "presetLibraryRow"
+            icon: "\uE8F1"
+            //% "Preset library"
+            label: qsTrId("gamehq.settings.presets.library.label")
+            compact: true
+            description: {
+                if (!root.presets.selectedEditable) {
+                    //% "Create a preset to save a custom mapping set."
+                    return qsTrId("gamehq.settings.presets.library.empty")
+                }
+                //% "Create and manage reusable presets."
+                return qsTrId("gamehq.settings.presets.library.helper")
             }
-            if (root.presets.selectedPresetId === root.presets.assignedPresetId) {
-                //% "This device uses it, so the editor saves its changes here."
-                return qsTrId("gamehq.settings.presets.select.assigned")
-            }
-            //% "Selected for renaming, duplicating or deleting. The editor still saves to the preset this device uses."
-            return qsTrId("gamehq.settings.presets.select.managing")
-        }
-        SettingsCombo {
-            id: libraryCombo
-            objectName: "presetLibraryCombo"
-            configKey: ""
-            options: root.libraryOptions
-            defaultValue: root.presets.selectedPresetId
-            onValueCommitted: function(value) {
-                root.presets.selectPreset(value)
-                // A refused switch (open draft) leaves the selection where it
-                // was; the picker follows the model, not the click.
-                Qt.callLater(function() { libraryCombo.refresh() })
-            }
-        }
-    }
-
-    SettingsRow {
-        //% "Preset library"
-        label: qsTrId("gamehq.settings.presets.library.label")
-        description: {
-            if (root.presets.pendingEdit) {
-                //% "Finish or cancel the current edit before changing presets."
-                return qsTrId("gamehq.settings.presets.library.pending_edit")
-            }
-            if (!root.presets.selectedEditable) {
-                //% "Create a preset to save a custom mapping set."
-                return qsTrId("gamehq.settings.presets.library.empty")
-            }
-            return root.presets.selectedPresetName
-        }
-        Row {
-            spacing: Theme.s8
-            AccentButton {
-                //% "New"
-                label: qsTrId("gamehq.settings.presets.action.new")
-                onClicked: root.newRequested()
-            }
-            AccentButton {
-                //% "Rename"
-                label: qsTrId("gamehq.settings.presets.action.rename")
-                enabled: root.presets.selectedEditable
-                onClicked: root.renameRequested()
-            }
-            AccentButton {
-                //% "Duplicate"
-                label: qsTrId("gamehq.settings.presets.action.duplicate")
-                enabled: root.presets.selectedEditable
-                onClicked: root.duplicateRequested()
-            }
-            AccentButton {
-                //% "Delete"
-                label: qsTrId("gamehq.settings.presets.action.delete")
-                quiet: true
-                enabled: root.presets.selectedEditable && !root.presets.pendingEdit
-                onClicked: root.deleteRequested()
+            Row {
+                spacing: Theme.s8
+                AccentButton {
+                    objectName: "presetNewButton"
+                    //% "New preset"
+                    label: qsTrId("gamehq.settings.presets.action.new")
+                    icon: "+"
+                    iconColor: Theme.accent
+                    implicitHeight: (Theme.s32 + Theme.s8)
+                    onClicked: root.newRequested()
+                }
+                Column {
+                    spacing: Theme.s8
+                    AccentButton {
+                        id: moreButton
+                        objectName: "presetMoreButton"
+                        //% "More actions"
+                        label: qsTrId("gamehq.settings.presets.action.more") + "   \u2304"
+                        icon: "\u2026"
+                        implicitHeight: (Theme.s32 + Theme.s8)
+                        quiet: true
+                        enabled: root.presets.selectedEditable
+                        onClicked: root.moreActionsRequested(moreButton)
+                    }
+                    Text {
+                        width: moreButton.width
+                        text: [qsTrId("gamehq.settings.presets.action.rename"),
+                               qsTrId("gamehq.settings.presets.action.duplicate"),
+                               qsTrId("gamehq.settings.presets.action.delete")].join(" · ")
+                        color: Theme.textMuted
+                        font.family: Theme.fontFamily
+                        font.pixelSize: Theme.fontCaption
+                        wrapMode: Text.WordWrap
+                    }
+                }
             }
         }
     }
