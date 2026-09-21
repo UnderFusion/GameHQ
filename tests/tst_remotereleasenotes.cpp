@@ -89,7 +89,7 @@ private slots:
         QVERIFY(!ReleaseCatalog::restoreSnapshot(QByteArray(1024 * 1024 + 1, 'x')));
     }
     void bodyThenLocalizedAndSafeFormatting() {
-        QTemporaryDir dir(QDir::currentPath() + "/.claude-gui-temp/notes-test-XXXXXX");
+        QTemporaryDir dir(QDir::tempPath() + "/gamehq-notes-test-XXXXXX");
         QVERIFY(dir.isValid());
         Network network;
         network.answers = {{document("0.7.7", "**Fix:** [details](https://example.com) <img src=x>")}};
@@ -107,7 +107,7 @@ private slots:
         QVERIFY(!block.value("text").toString().contains("https://"));
     }
     void fallsBackAndRestoresCacheOffline() {
-        QTemporaryDir dir(QDir::currentPath() + "/.claude-gui-temp/notes-test-XXXXXX");
+        QTemporaryDir dir(QDir::tempPath() + "/gamehq-notes-test-XXXXXX");
         Network network;
         network.answers = {{{},404}, {document("0.7.7", "English publication")}};
         RemoteReleaseNotes notes("underfusion", "GameHQ", dir.path(), nullptr, &network);
@@ -126,7 +126,7 @@ private slots:
         QTRY_VERIFY(!restored.loading());
     }
     void rejectsBadDocumentsAndSupportsRetry() {
-        QTemporaryDir dir(QDir::currentPath() + "/.claude-gui-temp/notes-test-XXXXXX");
+        QTemporaryDir dir(QDir::tempPath() + "/gamehq-notes-test-XXXXXX");
         Network network;
         network.answers = {{document("0.7.8", "Wrong version")}, {QByteArray(140000,'x')}, {document("0.7.7","Retried")}};
         RemoteReleaseNotes notes("underfusion", "GameHQ", dir.path(), nullptr, &network);
@@ -142,7 +142,7 @@ private slots:
         QCOMPARE(network.urls.size(), requests);
     }
     void staleLanguageAndVersionRepliesCannotReplaceSelection() {
-        QTemporaryDir dir(QDir::currentPath() + "/.claude-gui-temp/notes-test-XXXXXX");
+        QTemporaryDir dir(QDir::tempPath() + "/gamehq-notes-test-XXXXXX");
         Network network;
         network.answers = {{document("0.7.7", "Old Polish"),200,80}, {document("0.7.7", "New German")}};
         RemoteReleaseNotes notes("underfusion", "GameHQ", dir.path(), nullptr, &network);

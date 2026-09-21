@@ -96,6 +96,11 @@ gamehq_add_test(tst_bindingrelation
     "${CMAKE_SOURCE_DIR}/src/input/BindingRelation.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ContextOverrideCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp")
+# BindingResolver.h (reached through BindingRelation) includes
+# storage/CaptureDatabase.h, whose <QSqlDatabase> include needs Qt::Sql on the
+# include path. The tested code never opens a database (same precedent as
+# tst_gamerowrepair).
+target_link_libraries(tst_bindingrelation PRIVATE Qt6::Sql)
 
 # Pure model test: the trigger/gesture specs, their canonical serialization and
 # the validation that guards the parse boundary. No database, no device.
@@ -285,6 +290,10 @@ gamehq_add_test(tst_overlayinput
     "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ContextOverrideCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp")
+# DefaultBindings.h reaches BindingResolver.h -> storage/CaptureDatabase.h; the
+# <QSqlDatabase> include needs Qt::Sql on the include path even though no test
+# here touches a database (same precedent as tst_gamerowrepair).
+target_link_libraries(tst_overlayinput PRIVATE Qt6::Sql)
 
 # The shell contract lives in the real QML, so this suite reads it
 # from the source tree (left/right is seek-only; L1/R1 switches).

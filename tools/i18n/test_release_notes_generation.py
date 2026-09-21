@@ -322,8 +322,14 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
     def test_release_note_presentation_is_not_an_update_authorization_input(self) -> None:
         trust_roots = (ROOT / "src" / "updates", ROOT / "src" / "updater",
                        ROOT / "tools" / "release-manifest")
+        # Never an update or trust input, in any trust-root file.
         forbidden = ("release-notes/generated", "publication-metadata",
-                     "app/ReleaseNotes.h", "loadVerifiedBundle")
+                     "loadVerifiedBundle")
+        # The accepted in-app notes presentation (update-release-notes) renders
+        # fetched documents with the presentation formatter and lives beside the
+        # service that shows it; it is display-only, so it alone may use it.
+        presentation = {ROOT / "src" / "updates" / "RemoteReleaseNotes.cpp",
+                        ROOT / "src" / "updates" / "RemoteReleaseNotes.h"}
         paths = sorted(
             path for root in trust_roots for path in root.rglob("*")
             if path.is_file() and path.suffix in {".cpp", ".h", ".cs", ".csproj"}
@@ -331,8 +337,9 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         self.assertTrue(paths)
         for path in paths:
             text = path.read_text(encoding="utf-8", errors="strict").replace("\\", "/")
+            needles = forbidden if path in presentation else (*forbidden, "app/ReleaseNotes.h")
             with self.subTest(path=path.relative_to(ROOT).as_posix()):
-                self.assertFalse([needle for needle in forbidden if needle in text])
+                self.assertFalse([needle for needle in needles if needle in text])
 
         release_validation = (ROOT / "packaging" / "validate-release.ps1").read_text(
             encoding="utf-8"

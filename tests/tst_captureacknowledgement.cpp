@@ -6,6 +6,7 @@
 #include "config/ConfigKeys.h"
 #include <QImage>
 #include <QSignalSpy>
+#include <QElapsedTimer>
 #include <QTemporaryDir>
 #include <algorithm>
 
@@ -27,7 +28,21 @@ private slots:
         QImage blue(64, 64, QImage::Format_RGB32); blue.fill(Qt::blue);
         shots.saveImage(red, "Fixture", {}, 101);
         shots.saveImage(blue, "Fixture", {}, 202);
-        QTRY_COMPARE_WITH_TIMEOUT(saved.count(), 2, 5000);
+        // Both encodes must complete. A worker that loses the folder-create
+        // race used to drop its capture with only an unlogged failed() emit, so
+        // a bare count timeout hid the reason; carry it into the report.
+        QElapsedTimer wait;
+        wait.start();
+        while (saved.count() < 2 && wait.elapsed() < 5000)
+            QTest::qWait(10);
+        QStringList reasons;
+        for (const auto& f : failed)
+            reasons += f.at(0).toString();
+        QVERIFY2(saved.count() == 2,
+                 qPrintable(QStringLiteral("saved=%1 failed=%2 [%3]")
+                                .arg(saved.count())
+                                .arg(failed.count())
+                                .arg(reasons.join(QStringLiteral("; ")))));
         QCOMPARE(failed.count(), 0);
         QSet<quint64> ids;
         for (const auto& result : saved) {

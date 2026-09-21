@@ -175,7 +175,12 @@ void ScreenshotService::encodeAndSave(const QImage& img, const QString& gameName
         } completion{this, imageBytes};
         QElapsedTimer et;
         et.start();
-        if (!QDir().mkpath(dir)) {
+        // Two encode workers can target the same not-yet-existing folder at
+        // once; QDir::mkpath reports failure for the thread that loses that
+        // create race even though the folder now exists (pinned by
+        // tst_captureacknowledgement). Only a genuinely uncreatable folder is
+        // an error.
+        if (!QDir().mkpath(dir) && !QFileInfo(dir).isDir()) {
             emit failed(QStringLiteral("could not create ") + dir, operationId);
             return;
         }

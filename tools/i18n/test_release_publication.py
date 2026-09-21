@@ -310,10 +310,23 @@ class PublicationTest(unittest.TestCase):
         haystacks = list((ROOT / "src").rglob("*.cpp")) + list((ROOT / "src").rglob("*.h"))
         haystacks += list((ROOT / "packaging").glob("*.ps1"))
         haystacks += [ROOT / "src" / "CMakeLists.txt", ROOT / "CMakeLists.txt"]
+        # The accepted repository distribution publishes the per-locale documents
+        # under assets/release-notes/publication/<version>/ and the in-app notes
+        # presentation (update-release-notes) fetches exactly that published
+        # document URL for display. That one component may name the path, and only
+        # as the canonical HTTPS document URL - never a local path or a build
+        # artifact, in no other file - so the output stays out of update and trust
+        # code.
+        fetch = ROOT / "src" / "updates" / "RemoteReleaseNotes.cpp"
         for path in haystacks:
             text = path.read_text(encoding="utf-8", errors="replace")
-            self.assertNotIn("release-notes/publication", text, str(path))
             self.assertNotIn("publication-metadata", text, str(path))
+            if path == fetch:
+                for line in text.splitlines():
+                    if "release-notes/publication" in line:
+                        self.assertIn("https://raw.githubusercontent.com/", line, str(path))
+                continue
+            self.assertNotIn("release-notes/publication", text, str(path))
         changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
         self.assertNotIn("gamehq:locale-index", changelog)
 
