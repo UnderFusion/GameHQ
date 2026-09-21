@@ -199,8 +199,26 @@ public:
     // Show carries the observed OS fact - did the game window keep the
     // foreground through presentation - and never the non-activating policy
     // flag; hide makes no foreground claim and therefore takes no value.
-    void noteOverlayShow(bool foregroundPreserved);
-    void noteOverlayHide();
+    //
+    // cpo-o06a: `trace` is the one-line OverlayFocus record for that
+    // transition (overlay/OverlayFocusTrace.h) - already sanitized by its
+    // caller. It is optional so the existing bool-only contract, and the tests
+    // that pin it, keep working unchanged.
+    void noteOverlayShow(bool foregroundPreserved, const QString& trace = QString());
+    void noteOverlayHide(const QString& trace = QString());
+
+    // ---------------------------------------------------------------- cpo-o06a
+    // The GameInput focus policy the runtime is actually running under, in
+    // words ("background input + guide + share"). Pushed by the component that
+    // applies it, so the export states the policy in force rather than the one
+    // the code intended. Stays empty when GameInput is not active.
+    void setGameInputFocusPolicy(const QString& description);
+    QString gameInputFocusPolicy() const { return m_gameInputFocusPolicy; }
+    // Read-back for the overlay trace: the provider currently serving the
+    // logical controller, and its profile as the pseudonym the export uses -
+    // never the raw profile string.
+    QString servingProvider() const { return m_servingProvider; }
+    QString controllerProfileId() const;
     static constexpr int kMaxTraceBytes = 64 * 1024;
     static constexpr int kMaxTraceEvents = 32;
     void clear();
@@ -272,4 +290,9 @@ private:
     bool m_overlayShowSeen = false;      // a show ran, so preservation was observed
     bool m_overlayForegroundPreserved = false;
     QVector<Stamped> m_overlayTransitions;   // overlay show/hide only
+    // cpo-o06a: the most recent full focus/controller record of each kind.
+    // One per transition, kept as the already-formatted line.
+    QString m_overlayShowTrace;
+    QString m_overlayHideTrace;
+    QString m_gameInputFocusPolicy;
 };

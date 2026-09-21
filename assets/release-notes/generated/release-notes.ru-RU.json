@@ -1,15 +1,27 @@
 {
-  "version": "0.7.37",
+  "version": "0.7.38",
   "date": "2026-09-21",
   "sections": [
     {
-      "title": "Changed",
+      "title": "Added",
       "items": [
-        "The Mapping presets section is now three labelled cards - the preset this device runs, the preset being edited, and the preset library - so it is clear at a glance what is assigned and where binding changes are saved. New preset is the only primary button; rename, duplicate and delete moved into a More actions dialog, and a new Assign to this device button makes the preset you are editing the one the controller uses."
+        "The diagnostic report now records what really happened each time the in-game overlay opened and closed: which window Windows kept in the foreground, whether the game window stayed visible or was minimised, whether GameHQ's own window became active, which controller was serving input and which Windows controller focus policy was in force. This is groundwork for stopping overlay navigation from also reaching the game - it changes no overlay behaviour, and it states plainly that whether the game still receives the controller is not something GameHQ can measure about itself."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.37",
+      "date": "2026-09-21",
+      "sections": [
+        {
+          "title": "Changed",
+          "items": [
+            "The Mapping presets section is now three labelled cards - the preset this device runs, the preset being edited, and the preset library - so it is clear at a glance what is assigned and where binding changes are saved. New preset is the only primary button; rename, duplicate and delete moved into a More actions dialog, and a new Assign to this device button makes the preset you are editing the one the controller uses."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.36",
       "date": "2026-09-21",
@@ -132,19 +144,6 @@
       ]
     },
     {
-      "version": "0.7.26",
-      "date": "2026-09-09",
-      "sections": [
-        {
-          "title": "Improved",
-          "items": [
-            "Both sound sliders now reach 300% instead of 200%, for up to +9.5 dB of extra loudness.",
-            "Settings up to 100% sound exactly as before, and the bundled sounds stay free of distortion at the new maximum."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -178,6 +177,13 @@
     "requested_locale": "ru-RU",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.38",
+        "source_integrity": "sha256:49b55a7a4ef471d9c4c6dfb4d6fd201f79f0253b2478ff10a96a2eca31fc8f27",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.37",
         "source_integrity": "sha256:41ba673689a8802ae2a8db91f82243b475350c82bdbaf6539d9f2ba765b3e2e3",
@@ -251,13 +257,6 @@
       {
         "version": "0.7.27",
         "source_integrity": "sha256:5c058c98a50cf96622e403a5236239b550f31b84218e7b5fc4a9000029cd25b9",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.26",
-        "source_integrity": "sha256:d6da7511c826452ce849334cb1e4d2fce086ac4278d9cd4f702f665184fe70cf",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

@@ -1,15 +1,14 @@
-# GameHQ 0.7.26 (2026-09-09)
+# GameHQ 0.7.38 (2026-09-21)
 
-## Improved
+## Added
 
-- Both sound sliders now reach 300% instead of 200%, for up to +9.5 dB of extra loudness.
-- Settings up to 100% sound exactly as before, and the bundled sounds stay free of distortion at the new maximum.
+- The diagnostic report now records what really happened each time the in-game overlay opened and closed: which window Windows kept in the foreground, whether the game window stayed visible or was minimised, whether GameHQ's own window became active, which controller was serving input and which Windows controller focus policy was in force. This is groundwork for stopping overlay navigation from also reaching the game - it changes no overlay behaviour, and it states plainly that whether the game still receives the controller is not something GameHQ can measure about itself.
 
 <!-- gamehq:locale-index -->
 
 ## Release notes in other languages
 
-These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.26/assets/release-notes/publication/0.7.26) are kept in the repository; they are not attached to this release as separate downloads.
+These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.38/assets/release-notes/publication/0.7.38) are kept in the repository; they are not attached to this release as separate downloads.
 
 | Language | Locale | Content |
 | --- | --- | --- |

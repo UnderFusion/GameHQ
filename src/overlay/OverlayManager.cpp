@@ -1,6 +1,7 @@
 #include "overlay/OverlayManager.h"
 
 #include "input/InputDiagnostics.h"
+#include "overlay/OverlayFocusTrace.h"
 #include "overlay/OverlayLifetimePolicy.h"
 #include "overlay/OverlayPresenter.h"
 
@@ -28,6 +29,28 @@ unsigned long processIdOfWindow(HWND hwnd)
     DWORD pid = 0;
     GetWindowThreadProcessId(hwnd, &pid);
     return pid;
+}
+
+// cpo-o06a: resolve one window to the plain facts OverlayFocus records. Every
+// Win32 query for the trace happens here, so the trace unit itself stays pure
+// and testable without a desktop session.
+OverlayFocus::WindowFacts describeWindowFacts(HWND hwnd)
+{
+    OverlayFocus::WindowFacts facts;
+    facts.handle = hwnd;
+    if (!hwnd || !IsWindow(hwnd))
+        return facts;   // exists stays false: a destroyed handle states nothing else
+    facts.exists = true;
+    facts.visible = IsWindowVisible(hwnd);
+    facts.iconic = IsIconic(hwnd);
+    facts.pid = processIdOfWindow(hwnd);
+    RECT rect{};
+    GetWindowRect(hwnd, &rect);
+    facts.left = rect.left;
+    facts.top = rect.top;
+    facts.right = rect.right;
+    facts.bottom = rect.bottom;
+    return facts;
 }
 
 // Fires for EVERY OS foreground-window change, system-wide — this is how we
@@ -161,20 +184,47 @@ void OverlayManager::show()
     const OverlayPresentReport report = m_presenter->present(target->geometry());
     const HWND game = static_cast<HWND>(m_previousForeground);
     const bool gameAlive = game && IsWindow(game);
+    if (!report.foregroundPreserved())
+        qWarning() << "Overlay: showing the overlay changed the foreground window";
+
+    // cpo-o06a: one bounded record of what Windows and the controller stack
+    // actually did during this open. The presenter's own report covers our
+    // window; this adds the game window, the foreground sequence, the Qt vs
+    // Win32 activation view and the controller provider, so the isolation
+    // question can be argued from facts rather than from intent.
+    const InputDiagnostics& diagnostics = InputDiagnostics::instance();
+    OverlayFocus::ShowTrace trace;
+    trace.game = describeWindowFacts(game);
+    trace.overlay = describeWindowFacts(static_cast<HWND>(report.handle));
+    trace.foregroundBefore = report.foregroundBefore;
+    trace.foregroundAfterPresent = report.foregroundAfter;
+    // No variant asks for activation yet (cpo-o06b), so the post-activation
+    // foreground is the post-presentation one. Recorded as its own field so
+    // the line keeps its shape once activation exists.
+    trace.foregroundAfterActivation = report.foregroundAfter;
+    trace.activationRequested = false;
+    trace.overlayActiveQt = m_window && m_window->isActive();
+    trace.overlayForegroundWin32 = report.handle && GetForegroundWindow() == report.handle;
+    trace.controllerProvider = diagnostics.servingProvider();
+    trace.controllerProfile = diagnostics.controllerProfileId();
+    trace.gameInputFocusPolicy = diagnostics.gameInputFocusPolicy();
+    const QString traceLine = trace.toLogString();
+
     qInfo().noquote() << "Overlay: shown without activation |" << report.toLogString()
                       << QStringLiteral("| game=0x%1 pid=%2 minimized=%3")
                              .arg(QString::number(reinterpret_cast<qulonglong>(m_previousForeground), 16))
                              .arg(m_previousForegroundPid)
                              .arg(gameAlive && IsIconic(game) ? 1 : 0);
-    if (!report.foregroundPreserved())
-        qWarning() << "Overlay: showing the overlay changed the foreground window";
+    qInfo().noquote() << "Overlay focus trace (open):" << traceLine;
+    if (trace.qtWin32Disagree())
+        qWarning() << "Overlay: Qt and Win32 disagree about who is active";
     startShowProbe();
     emit visibleChanged();
     // cpo-x01: the export states the observed fact - whether the game window
     // actually kept the foreground through presentation. m_foregroundAcquired
     // is the non-activating policy contract, not evidence, and is never
     // exported as proof.
-    InputDiagnostics::instance().noteOverlayShow(report.foregroundPreserved());
+    InputDiagnostics::instance().noteOverlayShow(report.foregroundPreserved(), traceLine);
 }
 
 // --- post-show diagnostic probe -------------------------------------------
@@ -256,12 +306,31 @@ void OverlayManager::hideInternal()
         return;
     if (m_probeTimer)
         m_probeTimer->stop();
+
+    // cpo-o06a: the close record is gathered around the hide, not after it —
+    // m_previousForeground is cleared below, and the provider can change while
+    // the window goes away.
+    const InputDiagnostics& diagnostics = InputDiagnostics::instance();
+    OverlayFocus::HideTrace trace;
+    trace.foregroundBefore = GetForegroundWindow();
+    trace.restoreTarget = m_previousForeground;
+    trace.restoreRequested = false;   // no restore path yet (cpo-o06e)
+    trace.providerBefore = diagnostics.servingProvider();
+
     // The overlay never takes focus, so closing it has nothing to restore.
     // In particular, do not attach input queues or retry foreground changes.
     m_window->hide();
     m_previousForeground = nullptr;
     m_previousForegroundPid = 0;
+
+    trace.foregroundAfter = GetForegroundWindow();
+    trace.restored = trace.restoreTarget != nullptr
+        && trace.foregroundAfter == trace.restoreTarget;
+    trace.providerAfter = diagnostics.servingProvider();
+    const QString traceLine = trace.toLogString();
+
     qInfo() << "Overlay: hidden without changing foreground";
+    qInfo().noquote() << "Overlay focus trace (close):" << traceLine;
     // A closed overlay makes no isolation claim; clear any stale warning.
     if (!m_foregroundAcquired) {
         m_foregroundAcquired = true;
@@ -270,7 +339,7 @@ void OverlayManager::hideInternal()
     emit visibleChanged();
     // cpo-x01: closing the overlay is a real transition the export shows; it
     // makes no foreground claim, so no preservation value is recorded.
-    InputDiagnostics::instance().noteOverlayHide();
+    InputDiagnostics::instance().noteOverlayHide(traceLine);
 }
 
 // --- lifetime decision (cpo-o03) ------------------------------------------

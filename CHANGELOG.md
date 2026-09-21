@@ -6,6 +6,15 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.38] - 2026-09-21
+
+### Added
+
+- Overlay diagnostics (`cpo-o06a`): every real overlay open and close now records one bounded focus/controller line — the game and overlay window facts (existence, visibility, minimised state, pid, rect), the foreground window before presentation, after presentation and after any activation request, whether Qt and Win32 agree about who is active, the serving controller provider, the hashed controller profile and the GameInput focus policy actually in force. The report and the log carry the same line.
+- `src/overlay/OverlayFocusTrace.{h,cpp}`: the record is a pure unit — every Win32 query stays in `OverlayManager` — so its formatting and derived verdicts are tested without a desktop session (`tests/tst_overlayfocustrace.cpp`). It states `isolation=not measured in-process` on every open, including one where the overlay owns the foreground: whether the game still receives the controller can only be measured outside GameHQ.
+- `ProductionGameInputApi` now reports the focus policy it applies (currently background input + background Guide + background Share, no exclusive-foreground flags) to the diagnostics export, so the report states the policy in force rather than the one a reader infers.
+
+
 ## [0.7.37] - 2026-09-21
 
 ### Changed

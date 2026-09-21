@@ -1,6 +1,7 @@
 #include "gameinput/ProductionGameInputApi.h"
 
 #include "gameinput/GameInputLabelMap.h"
+#include "input/InputDiagnostics.h"
 
 #include "GameInput.h"
 
@@ -138,6 +139,12 @@ public:
             GI::GameInputEnableBackgroundInput
             | GI::GameInputEnableBackgroundGuideButton
             | GI::GameInputEnableBackgroundShareButton));
+        // cpo-o06a: the export must state the policy actually in force, not
+        // the one a reader assumes from the class name. Reported here, where
+        // the value is decided, so the two cannot drift apart.
+        InputDiagnostics::instance().setGameInputFocusPolicy(QStringLiteral(
+            "background input + background guide + background share"
+            " (no exclusive-foreground flags)"));
     }
 
     CallbackToken registerCallback(CallbackKind kind, EventSink sink)

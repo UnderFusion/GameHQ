@@ -30,6 +30,21 @@ The lifetime decision is pure and separate: `OverlayManager` only resolves the W
 
 The overlay has no `ForegroundAcquirer`, `requestActivate`, `AttachThreadInput`, or foreground retry path. The separate desktop window still uses its existing acquisition mechanism.
 
+### Focus and controller record (`cpo-o06a`)
+
+Every real overlay open and close writes one bounded record, built by `src/overlay/OverlayFocusTrace.{h,cpp}` and emitted both to the log (`Overlay focus trace (open)` / `(close)`) and to the diagnostic export. One record per transition — never per frame or per input event.
+
+An open record carries the game window and the overlay window as Windows described them (existence, visibility, minimised state, process id, rect), the foreground window before presentation, after presentation and after any activation request, whether activation was requested at all, whether Qt and Win32 agree about who is active, the serving controller provider, the hashed controller profile, and the GameInput focus policy actually in force. A close record carries the foreground before and after, the window that would be restored to, whether a restore was requested and whether it happened, the neutral-state handoff status, and the provider on both sides.
+
+Two fields exist to stop the record from overstating itself:
+
+- `isolation=not measured in-process` appears on **every** open record, including one where the overlay owns the foreground. Whether the game still receives the controller cannot be observed from inside GameHQ; it needs a separate receiver process (`cpo-o06d`).
+- `neutral-handoff=not implemented` stays until `cpo-o06e` builds the handoff, rather than leaving the field blank and reading as a pass.
+
+`OverlayManager` is the only place the Win32 facts are read, so the record itself is pure and `tests/tst_overlayfocustrace.cpp` pins the formatting and the derived verdicts without a desktop session, a game or a controller. `ProductionGameInputApi` reports the focus policy it applies — today background input plus background Guide and Share, with no exclusive-foreground flags — so the export states the policy in force rather than the one inferred from the class name.
+
+This record changes no overlay behaviour. It is the evidence layer for `cpo-o06`, which is out-of-process only by constraint: no injection into the game, no API hooking, no game memory access, no per-game shims and no kernel driver or virtual controller as the default path.
+
 Sources: [Qt Windows show implementation](https://github.com/qt/qtbase/blob/6.8/src/plugins/platforms/windows/qwindowswindow.cpp), [Qt activation handling](https://github.com/qt/qtbase/blob/6.8/src/plugins/platforms/windows/qwindowscontext.cpp), [Microsoft mouse activation contract](https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-mouseactivate).
 
 This local Khazan compatibility change still requires verification in a rebuilt executable. Borderless/windowed modes are the intended targets; exclusive fullscreen is not guaranteed. It does not establish a fix for the original reported freeze. Controller isolation remains a separate, unimplemented design (`docs/design/exclusive-controller-mode.md`).

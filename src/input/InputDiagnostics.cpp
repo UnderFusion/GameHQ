@@ -124,24 +124,42 @@ void InputDiagnostics::setMappingState(
     m_staleAssignments = staleAssignments;
 }
 
-void InputDiagnostics::noteOverlayShow(bool foregroundPreserved)
+void InputDiagnostics::noteOverlayShow(bool foregroundPreserved, const QString& trace)
 {
     m_overlayStateSeen = true;
     m_overlayVisible = true;
     m_overlayShowSeen = true;
     m_overlayForegroundPreserved = foregroundPreserved;
+    if (!trace.isEmpty())
+        m_overlayShowTrace = trace;
     push(m_overlayTransitions, kMaxOverlayTransitions, m_clock.elapsed(),
          foregroundPreserved
              ? QStringLiteral("overlay show | game foreground preserved")
              : QStringLiteral("overlay show | foreground CHANGED (game lost foreground)"));
 }
 
-void InputDiagnostics::noteOverlayHide()
+void InputDiagnostics::noteOverlayHide(const QString& trace)
 {
     m_overlayStateSeen = true;
     m_overlayVisible = false;
+    if (!trace.isEmpty())
+        m_overlayHideTrace = trace;
     push(m_overlayTransitions, kMaxOverlayTransitions, m_clock.elapsed(),
          QStringLiteral("overlay hide"));
+}
+
+void InputDiagnostics::setGameInputFocusPolicy(const QString& description)
+{
+    m_gameInputFocusPolicy = description;
+}
+
+QString InputDiagnostics::controllerProfileId() const
+{
+    for (const MappingChainSnapshot& chain : m_mappingChains) {
+        if (chain.deviceGroup == QLatin1String("controller"))
+            return hashedId(chain.profile);
+    }
+    return {};
 }
 
 QString InputDiagnostics::hashedId(const QString& raw)
@@ -342,6 +360,9 @@ void InputDiagnostics::clear()
     m_overlayShowSeen = false;
     m_overlayForegroundPreserved = false;
     m_overlayTransitions.clear();
+    m_overlayShowTrace.clear();
+    m_overlayHideTrace.clear();
+    m_gameInputFocusPolicy.clear();
 }
 
 void InputDiagnostics::push(QVector<Stamped>& ring, int cap, qint64 ms,
@@ -524,5 +545,18 @@ QString InputDiagnostics::exportBetaText(const QString& build, const QString& wi
         lines << QStringLiteral("    no overlay open/close this session");
     for (const Stamped& entry : m_overlayTransitions)
         lines << QStringLiteral("    %1").arg(stamp(entry));
+    // cpo-o06a: the full window/controller facts of the last open and close.
+    // The timeline above says a transition happened; these two lines say what
+    // Windows and the controller stack actually did during it.
+    lines << QStringLiteral("  GameInput focus policy: ")
+        + (m_gameInputFocusPolicy.isEmpty()
+               ? QStringLiteral("unavailable (GameInput not active this session)")
+               : m_gameInputFocusPolicy);
+    lines << QStringLiteral("  last overlay open: ")
+        + (m_overlayShowTrace.isEmpty() ? QStringLiteral("unavailable (no overlay show this session)")
+                                        : m_overlayShowTrace);
+    lines << QStringLiteral("  last overlay close: ")
+        + (m_overlayHideTrace.isEmpty() ? QStringLiteral("unavailable (no overlay hide this session)")
+                                        : m_overlayHideTrace);
     return lines.join(QLatin1Char('\n'));
 }

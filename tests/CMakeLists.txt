@@ -247,6 +247,14 @@ gamehq_add_test(tst_inputdiagnostics
     tst_inputdiagnostics.cpp
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp")
 
+# cpo-o06a: the overlay's focus/controller record. Pure formatting and derived
+# verdicts, so the one thing that matters — that an in-process record can never
+# claim controller isolation it did not measure — is pinned without a desktop
+# session, a game or a controller.
+gamehq_add_test(tst_overlayfocustrace
+    tst_overlayfocustrace.cpp
+    "${CMAKE_SOURCE_DIR}/src/overlay/OverlayFocusTrace.cpp")
+
 # Verify + bounded-retry policy behind the overlay's foreground grab, driven
 # through a fake ForegroundApi that can refuse deterministically.
 gamehq_add_test(tst_foregroundacquirer
@@ -1292,6 +1300,7 @@ set_target_properties(overlay_target_fixture PROPERTIES WIN32_EXECUTABLE TRUE)
 gamehq_add_test(tst_overlaynative
     tst_overlaynative.cpp
     "${CMAKE_SOURCE_DIR}/src/overlay/ForegroundApi.cpp"
+    "${CMAKE_SOURCE_DIR}/src/overlay/OverlayFocusTrace.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayLifetimePolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayPresenter.cpp"
