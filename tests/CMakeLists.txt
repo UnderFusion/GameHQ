@@ -1285,7 +1285,8 @@ gamehq_add_test(tst_overlaynative
     "${CMAKE_SOURCE_DIR}/src/overlay/ForegroundApi.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayLifetimePolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayManager.cpp"
-    "${CMAKE_SOURCE_DIR}/src/overlay/OverlayPresenter.cpp")
+    "${CMAKE_SOURCE_DIR}/src/overlay/OverlayPresenter.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp")
 target_link_libraries(tst_overlaynative PRIVATE Qt6::Gui Qt6::Quick Qt6::Qml Qt6::Multimedia user32)
 target_compile_definitions(tst_overlaynative PRIVATE
     GAMEHQ_TARGET_FIXTURE="$<TARGET_FILE:overlay_target_fixture>")

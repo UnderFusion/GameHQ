@@ -426,6 +426,19 @@ private:
     QString m_runningGameKey;         // canonical; empty = no game
     QString m_lastControllerRoute;    // canonical logical profile of the last pad press
     bool m_mappingSwitchRunning = false;
+
+    // ---------------------------------------------------------------- cpo-x01
+    // Routing evidence for the one-click export: which provider serves the
+    // logical controller, what a candidate run is holding, and what the
+    // arbitration dropped. Counters are process-lifetime arithmetic; the push
+    // itself happens only at routing transitions, and from the press path at
+    // most once per kRoutingPushThrottleMs - never per event.
+    void publishControllerRouting();
+    void publishMappingDiagnostics();
+    int m_mirrorWindowDrops = 0;       // cross-provider events dropped as duplicates
+    int m_candidateRuns = 0;           // candidate presses held for confirmation
+    qint64 m_lastRoutingPushMs = -1;   // throttle for pushes from the press path
+    QString m_lastBackendSwitchReason;
     bool m_started = false;        // gates mouse monitoring until start()
     bool m_shuttingDown = false;
     bool m_sonyConnected = false;

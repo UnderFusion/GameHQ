@@ -236,7 +236,7 @@ compare, snapshot, invalidate, publish, gate:
 `cpo-p05` ships this engine seam only (`setRunningGameKey()`, `refreshResolvedPreset()`,
 plus read-only resolution state); connecting the real game session is `cpo-p07`, editing
 preset content is `cpo-p06`, and the sanitized "active preset" diagnostics export is
-`cpo-x01`.
+`cpo-x01` (section 7d).
 
 ## 6. Migration (owned end-to-end by `cpo-p03`)
 
@@ -474,6 +474,26 @@ reaches the input engine, and what keeps it stable.
   inert until the game has a capture and the session can hold it. Widening the
   session to never-captured foreground games is a change to the overlay's own
   contract and is deliberately NOT part of this leaf.
+
+## 7d. What a bug report shows (implemented by `cpo-x01`)
+
+The one-click **Copy diagnostic summary** export carries the current mapping state. It is
+the same paste-ready package documented in `docs/controller-input.md` ("Sanitized beta
+diagnostics"), extended in place rather than duplicated:
+
+- **Game context** - whether a session key is present, e.g. `game context: present (key
+  sha256:...)`. While the game runs the key IS a full executable path, so it enters only
+  as a stable pseudonym.
+- **Routes** - one line per tracked route (`controller`, `keyboard`, `mouse`) with the
+  effective source (`game`, `controller`, `group_default`, `builtin`, `materialized`,
+  `migration_bridge`, `local_legacy`), the installed preset id, ownership, and the served
+  table fingerprint. A label outside that vocabulary is dropped, not passed through.
+- **Stale assignments** - the rows the resolver skipped (`missing_preset`, `wrong_group`),
+  with the target key pseudonymized, so "my per-game preset did nothing" is answerable
+  from the export alone.
+- **Two timelines** - game-session transitions and overlay show/hide are stamped
+  separately, so "the overlay was open" is distinguishable from "the session changed"
+  without reading the raw log.
 
 ## 8. Relationship to games
 

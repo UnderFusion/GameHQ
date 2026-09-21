@@ -40,6 +40,7 @@
 
 #include <memory>
 
+#include "input/InputDiagnostics.h"
 #include "overlay/ForegroundApi.h"
 #include "overlay/OverlayManager.h"
 
@@ -528,6 +529,7 @@ private slots:
     void initTestCase();
     void cleanupTestCase();
     void openingTheOverlayKeepsTheTargetForegroundWithoutActivation();
+    void realShowAndHideLandInTheOverlayDiagnostics();
     void repeatedOpenCloseCyclesPreserveTargetForeground();
     void menuAndDeleteConfirmationNeverActivateAnotherWindow();
     void anotherApplicationTakingTheForegroundDismissesTheOverlay();
@@ -624,6 +626,36 @@ void NativeOverlayTest::openingTheOverlayKeepsTheTargetForegroundWithoutActivati
     harness->manager->hide();
     QTest::qWait(100);
     expectTargetForeground();
+}
+
+// cpo-x01: the advertised overlay show/hide timeline must come from the real
+// show/hide path, not from a test-seeded ring. The environment decides whether
+// the game keeps the foreground (yes and no are both acceptable here); what
+// must never happen is an overlay entry that reports nothing observed.
+void NativeOverlayTest::realShowAndHideLandInTheOverlayDiagnostics()
+{
+    if (!m_fixture.forceTargetForeground())
+        QSKIP("this session cannot put the fixture window in the foreground");
+
+    InputDiagnostics::instance().clear();
+    auto harness = makeHarness();
+    showOverlay(*harness);
+
+    QString text = InputDiagnostics::instance().exportBetaText(
+        QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+    QVERIFY2(text.contains(QStringLiteral("overlay show | ")), qPrintable(text));
+    QVERIFY2(!text.contains(QStringLiteral("unavailable (no overlay show this session)")),
+             qPrintable(text));
+    QVERIFY2(text.contains(QStringLiteral("game foreground preserved on show: yes"))
+                 || text.contains(QStringLiteral("game foreground preserved on show: no")),
+             qPrintable(text));
+
+    harness->manager->hide();
+    QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
+    text = InputDiagnostics::instance().exportBetaText(
+        QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+    QVERIFY2(text.contains(QStringLiteral("overlay hide")), qPrintable(text));
+    QVERIFY2(text.contains(QStringLiteral("overlay visible: no")), qPrintable(text));
 }
 
 void NativeOverlayTest::repeatedOpenCloseCyclesPreserveTargetForeground()

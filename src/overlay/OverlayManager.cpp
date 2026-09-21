@@ -1,5 +1,6 @@
 #include "overlay/OverlayManager.h"
 
+#include "input/InputDiagnostics.h"
 #include "overlay/OverlayLifetimePolicy.h"
 #include "overlay/OverlayPresenter.h"
 
@@ -169,6 +170,11 @@ void OverlayManager::show()
         qWarning() << "Overlay: showing the overlay changed the foreground window";
     startShowProbe();
     emit visibleChanged();
+    // cpo-x01: the export states the observed fact - whether the game window
+    // actually kept the foreground through presentation. m_foregroundAcquired
+    // is the non-activating policy contract, not evidence, and is never
+    // exported as proof.
+    InputDiagnostics::instance().noteOverlayShow(report.foregroundPreserved());
 }
 
 // --- post-show diagnostic probe -------------------------------------------
@@ -262,6 +268,9 @@ void OverlayManager::hideInternal()
         emit foregroundAcquiredChanged();
     }
     emit visibleChanged();
+    // cpo-x01: closing the overlay is a real transition the export shows; it
+    // makes no foreground claim, so no preservation value is recorded.
+    InputDiagnostics::instance().noteOverlayHide();
 }
 
 // --- lifetime decision (cpo-o03) ------------------------------------------

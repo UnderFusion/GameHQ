@@ -23,6 +23,7 @@
 
 #include "input/InputEngine.h"
 #include "input/GameSessionPresetBinder.h"
+#include "input/InputDiagnostics.h"
 #include "input/XInputDevice.h"
 #include "input/BindingRuntime.h"
 #include "input/BindingResolver.h"
@@ -215,6 +216,7 @@ private slots:
     void missingGameAssignmentIsVisibleInSettings();
     void sessionRefreshNeverSwitchesOnItsOwn();
     void sameGameLearnsItsExecutableWithoutATransition();
+    void diagnosticsExportCarriesTheLiveMappingState();
 };
 
 void GameSessionPresetTest::initTestCase()
@@ -345,6 +347,35 @@ void GameSessionPresetTest::overlayOpenKeepsTheGameContext()
     engine->setOverlayVisible(false);
     syncSession();
     QCOMPARE(engine->mappingInstalledPresetId(kController, profile), gamePreset);
+}
+
+// cpo-x01: the one-click export must carry the live game context and the
+// winner each route serves, with the executable path only as a pseudonym.
+void GameSessionPresetTest::diagnosticsExportCarriesTheLiveMappingState()
+{
+    const QString self = QCoreApplication::applicationFilePath();
+    QVERIFY(capturedGame(QStringLiteral("SelfGame"), self) > 0);
+    const QString gamePreset = installGamePreset(kController, self, QStringLiteral("Game"),
+                                                 QStringLiteral("global.screenshot"),
+                                                 ControlId::FaceSouth);
+    QVERIFY(!gamePreset.isEmpty());
+
+    QVERIFY(session->update(QStringLiteral("SelfGame"), self));
+    syncSession();
+    QCOMPARE(engine->mappingEffectiveSource(kController, profile), QStringLiteral("game"));
+
+    const QString text = InputDiagnostics::instance().exportBetaText(
+        QStringLiteral("test-build"), QStringLiteral("10.0.26200"), {}, {});
+    QVERIFY(text.contains(QStringLiteral("Controller routing:")));
+    QVERIFY(text.contains(QStringLiteral("serving provider: ")));
+    QVERIFY(text.contains(QStringLiteral("Mapping state:")));
+    QVERIFY(text.contains(QStringLiteral("game context: present (key sha256:")));
+    QVERIFY(text.contains(QStringLiteral("routes:")));
+    QVERIFY(text.contains(QStringLiteral("source=game preset=") + gamePreset));
+    QVERIFY(text.contains(QStringLiteral("sha256:")));
+    // The executable path is identity, never evidence: it enters hashed.
+    QVERIFY(!text.contains(self));
+    QVERIFY(!text.contains(MappingAssignmentResolver::canonicalGameKey(self)));
 }
 
 // A game change is a session change: the new game's winner is published at the

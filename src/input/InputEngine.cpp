@@ -807,6 +807,8 @@ void InputEngine::holdCandidatePress(Gamepad* source, const QString& controlId,
     const int generation = ++m_pendingGeneration;
     QTimer::singleShot(ControllerArbitration::BackendCandidateConfirmMs, this,
                        [this, generation] { resolvePendingCandidate(generation); });
+    ++m_candidateRuns;
+    publishControllerRouting();
 }
 
 void InputEngine::clearPendingCandidate()
@@ -825,6 +827,7 @@ void InputEngine::resolvePendingCandidate(int generation)
     Gamepad* source = m_pending.source;
     if (!backendConnected(source)) {
         clearPendingCandidate();
+        publishControllerRouting();
         return;
     }
     const auto activeIt = m_backendLastControlMs.constFind(m_activeBackend);
@@ -833,6 +836,7 @@ void InputEngine::resolvePendingCandidate(int generation)
     if (!ControllerArbitration::heldPressSurvives(m_pending.pressedMs, activeLastMs,
                                                   m_controllerClock.elapsed())) {
         clearPendingCandidate();   // the active backend answered after all
+        publishControllerRouting();
         return;
     }
 
@@ -866,6 +870,7 @@ void InputEngine::activateBackend(Gamepad* pick, const QString& reason)
     m_runtime->cancelAll();
     m_legacyViewFallbackHeld.clear();
     m_activeBackend = pick;
+    m_lastBackendSwitchReason = reason;
 
     if (pick) {
         auto profile = pick->profile();
@@ -882,6 +887,7 @@ void InputEngine::activateBackend(Gamepad* pick, const QString& reason)
         qInfo() << "Input: no controller backend connected";
         setControllerStatus(QStringLiteral("No controller detected"));
     }
+    publishControllerRouting();
 }
 
 bool InputEngine::backendConnected(const Gamepad* pad) const
@@ -915,6 +921,90 @@ int InputEngine::backendPriority(const Gamepad* pad) const
     if (pad == m_winmmPad)
         return 1;
     return 0;
+}
+
+namespace {
+// Throttle for routing snapshots pushed from the press path: a mirrored
+// remapper can deliver duplicate events at device rate, and the export needs
+// the current state, not one write per dropped event.
+constexpr qint64 kRoutingPushThrottleMs = 1000;
+} // namespace
+
+// ---------------------------------------------------------------- cpo-x01
+// The one-click export's routing evidence: which provider serves the logical
+// controller, how the current route's identity is treated, whether a candidate
+// press is being held, and what the arbitration suppressed. Pushed at routing
+// transitions, and from the press path at most once per kRoutingPushThrottleMs.
+//
+// Provider-local facts only: the engine never states that two providers see
+// the same physical device - that question belongs to cpo-c03b and is open.
+void InputEngine::publishControllerRouting()
+{
+    const qint64 now = m_controllerClock.elapsed();
+    m_lastRoutingPushMs = now;
+    QStringList lines;
+    QString routeProfile;
+    if (m_activeBackend) {
+        auto profile = m_activeBackend->profile();
+        routeProfile = canonicalProfile(m_activeBackend, profile.fingerprint);
+    }
+    if (routeProfile.isEmpty()) {
+        lines << QStringLiteral("route identity: no controller route");
+    } else {
+        const auto* logical = m_providers.registry().controller(routeProfile);
+        const bool durable = logical
+            && logical->confidence == ModernInput::IdentityConfidence::Strong;
+        lines << (durable
+                      ? QStringLiteral("route identity: durable controller id (strong confidence)")
+                      : QStringLiteral("route identity: legacy slot (weak or unknown confidence)"));
+    }
+    if (m_pending.source) {
+        lines << QStringLiteral("candidate press held: %1 via %2 (%3 ms)")
+                     .arg(m_pending.controlId, backendDisplayName(m_pending.source))
+                     .arg(now - m_pending.pressedMs);
+    }
+    QStringList ages;
+    const QVector<Gamepad*> legacyBackends{m_sonyPad, m_xinputPad, m_winmmPad};
+    for (Gamepad* pad : legacyBackends) {
+        if (!pad || !backendConnected(pad))
+            continue;
+        const auto lastIt = m_backendLastControlMs.constFind(pad);
+        ages << (lastIt == m_backendLastControlMs.cend()
+                     ? QStringLiteral("%1 never").arg(backendDisplayName(pad))
+                     : QStringLiteral("%1 %2 s").arg(backendDisplayName(pad),
+                             QString::number(double(now - *lastIt) / 1000.0, 'f', 1)));
+    }
+    if (!ages.isEmpty())
+        lines << QStringLiteral("provider last-control ages: ") + ages.join(QStringLiteral(", "));
+    lines << QStringLiteral("events dropped inside the mirror window: %1").arg(m_mirrorWindowDrops);
+    lines << QStringLiteral("candidate presses held for confirmation: %1").arg(m_candidateRuns);
+
+    InputDiagnostics::instance().setControllerRouting(
+        m_activeBackend ? backendDisplayName(m_activeBackend) : QStringLiteral("none"),
+        m_lastBackendSwitchReason, lines);
+}
+
+// The mapping half of the one-click export: the current winner per tracked
+// route, the running game context, and the assignment rows the resolver had to
+// skip. Profiles and target keys are identity strings, so InputDiagnostics
+// hashes them - this method never formats raw values itself.
+void InputEngine::publishMappingDiagnostics()
+{
+    QVector<InputDiagnostics::MappingChainSnapshot> chains;
+    chains.reserve(m_mappingChains.size());
+    for (auto it = m_mappingChains.cbegin(); it != m_mappingChains.cend(); ++it) {
+        const MappingChainState& state = it.value();
+        chains.append({state.group, state.profile, state.source, state.presetId,
+                       state.owned, state.fingerprint});
+    }
+    QVector<InputDiagnostics::StaleAssignmentSnapshot> stale;
+    const auto reports = m_assignmentResolver->staleReports();
+    stale.reserve(reports.size());
+    for (const MappingAssignmentResolver::StaleAssignment& report : reports) {
+        stale.append({report.deviceGroup, report.targetKind, report.targetKey,
+                      report.presetId, report.reason});
+    }
+    InputDiagnostics::instance().setMappingState(m_runningGameKey, chains, stale);
 }
 
 void InputEngine::updateXInputIdentity()
@@ -1020,8 +1110,17 @@ void InputEngine::onControlPressed(const QString& controlId, int family,
             // (the 0.7.3 double-navigation bug) — drop it outright. Only an
             // event past the window but before the takeover timeout can open
             // a candidate run.
-            if (now - *activeIt <= ControllerArbitration::BackendDuplicateWindowMs)
+            if (now - *activeIt <= ControllerArbitration::BackendDuplicateWindowMs) {
+                // A trailing duplicate of a press the active backend already
+                // delivered. Counted for the export, which is refreshed at most
+                // once per kRoutingPushThrottleMs even while a mirrored remapper
+                // keeps flooding this path.
+                ++m_mirrorWindowDrops;
+                if (m_lastRoutingPushMs < 0
+                    || now - m_lastRoutingPushMs >= kRoutingPushThrottleMs)
+                    publishControllerRouting();
                 return;
+            }
             if (!confirmCandidate(source, now, *activeIt)) {
                 // Not proven yet — hold the press rather than drop it. If the
                 // candidate turns out to be real it is delivered on promotion;
@@ -1742,6 +1841,9 @@ void InputEngine::refreshResolvedPreset()
             state.fingerprint = plan.fingerprint;
             m_mappingChains.insert(mappingChainKey(plan.group, plan.profile), state);
         }
+        // The served state did not change, but the game context may have: the
+        // export still gets the current snapshot.
+        publishMappingDiagnostics();
         m_mappingSwitchRunning = false;
         return;
     }
@@ -1843,6 +1945,7 @@ void InputEngine::refreshResolvedPreset()
         m_mappingChains.insert(mappingChainKey(plan.group, plan.profile), state);
     }
     m_runtime->refreshPatternDiagnostics();
+    publishMappingDiagnostics();
     m_mappingSwitchRunning = false;
 }
 

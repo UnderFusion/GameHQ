@@ -1,5 +1,6 @@
 #include "input/InputDiagnostics.h"
 
+#include <QCryptographicHash>
 #include <QTest>
 
 // Bounded rings, probe window semantics, privacy redaction, and export layout.
@@ -36,6 +37,174 @@ private slots:
         for (const auto& secret : {"Secret Person", "private", "Private game", "server", "share",
                 "C:\\", "/home/", "storage.clips_root", "screenshot", "request=78"})
             QVERIFY2(!text.contains(QLatin1String(secret)), secret);
+    }
+
+    // cpo-x01: the controller-routing, mapping and overlay/focus sections must
+    // be present with canonical labels - and every identity value (logical
+    // profile, running game key, assignment target key) enters only as a
+    // pseudonym, never as a path.
+    void routingMappingAndOverlayStateCarryCanonicalEvidence()
+    {
+        InputDiagnostics diag;
+        const QString gamePath = QStringLiteral("C:\\Users\\Secret Person\\game.exe");
+        const QString profile = QStringLiteral(R"(\\?\HID#VID_054C&PID_0CE6#9&DEADBEEF&0&0000)");
+        diag.setControllerRouting(
+            QStringLiteral("XInput controller"), QStringLiteral("connection fallback"),
+            {QStringLiteral("route identity: legacy slot (weak or unknown confidence)"),
+             QStringLiteral("provider last-control ages: XInput controller 0.2 s"),
+             QStringLiteral("events dropped inside the mirror window: 3"),
+             QStringLiteral("candidate presses held for confirmation: 1")});
+        diag.setMappingState(
+            gamePath,
+            {{QStringLiteral("controller"), profile, QStringLiteral("game"),
+              QStringLiteral("preset-alpha"), true, QStringLiteral("0f21aa")},
+             {QStringLiteral("keyboard"), {}, QStringLiteral("builtin"), {}, true,
+              QStringLiteral("77bb")}},
+            {{QStringLiteral("controller"), QStringLiteral("game"),
+              QStringLiteral("C:\\Users\\Secret Person\\other.exe"), QStringLiteral("preset-beta"),
+              QStringLiteral("wrong_group")}});
+        diag.noteOverlayShow(true);
+
+        const QString text = diag.exportBetaText(QStringLiteral("0.7.26"),
+                                                 QStringLiteral("10.0.26200"), {}, {});
+        for (const auto& expected : {"Controller routing:", "serving provider: XInput controller",
+                "last switch reason: connection fallback",
+                "route identity: legacy slot (weak or unknown confidence)",
+                "events dropped inside the mirror window: 3",
+                "candidate presses held for confirmation: 1", "Mapping state:",
+                "game context: present (key sha256:", "routes:",
+                "source=game preset=preset-alpha owned=yes fp=0f21aa",
+                "keyboard -> source=builtin preset=none owned=yes",
+                "stale assignments (skipped, next winner served):", "wrong_group",
+                "Overlay/focus:", "overlay visible: yes",
+                "game foreground preserved on show: yes",
+                "game session transitions:", "present sha256:", "overlay show/hide:",
+                "overlay show | game foreground preserved"})
+            QVERIFY2(text.contains(QLatin1String(expected)), expected);
+
+        // The pseudonyms themselves must be there: redaction without the stable
+        // hash would make two reports of one profile impossible to correlate.
+        const auto pseudonym = [](const QString& value) {
+            return QStringLiteral("sha256:")
+                + QString::fromLatin1(QCryptographicHash::hash(
+                      value.toUtf8(), QCryptographicHash::Sha256).toHex().left(16));
+        };
+        QVERIFY(text.contains(pseudonym(gamePath)));
+        QVERIFY(text.contains(pseudonym(profile)));
+        QVERIFY(text.contains(pseudonym(QStringLiteral("C:\\Users\\Secret Person\\other.exe"))));
+        for (const auto& secret : {"Secret Person", "C:\\", "HID#VID", "DEADBEEF", "game.exe"})
+            QVERIFY2(!text.contains(QLatin1String(secret)), secret);
+    }
+
+    // cpo-x01: a package with no overlay/routing activity says so explicitly,
+    // and the two stamped timelines move with the state - that separation is
+    // what distinguishes "the overlay was open" from "the game session changed".
+    void routingMappingAndOverlayStateStayExplicitAndMoveWithTheState()
+    {
+        InputDiagnostics diag;
+        QString text = diag.exportBetaText(QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+        for (const auto& expected : {"Controller routing:",
+                "serving provider: unavailable (no provider switch observed)",
+                "arbitration: unavailable (no routing transition observed)", "Mapping state:",
+                "game context: unavailable (no mapping refresh observed)", "routes: none tracked",
+                "Overlay/focus:", "overlay visible: unavailable (no overlay activity this session)",
+                "game foreground preserved on show: unavailable (no overlay show this session)",
+                "game session transitions:",
+                "overlay show/hide:", "no overlay open/close this session"})
+            QVERIFY2(text.contains(QLatin1String(expected)), expected);
+        QVERIFY(!text.contains(QStringLiteral("stale assignments")));
+
+        diag.setMappingState(QStringLiteral("D:\\Games\\Alpha\\alpha.exe"), {}, {});
+        // A show that did not preserve the foreground: the export must state
+        // the observation, never reinterpret the policy as "the game keeps
+        // input".
+        diag.noteOverlayShow(false);
+        text = diag.exportBetaText(QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+        QVERIFY(text.contains(QStringLiteral("game context: present (key sha256:")));
+        QVERIFY(text.contains(QStringLiteral("overlay visible: yes")));
+        QVERIFY(text.contains(QStringLiteral(
+            "game foreground preserved on show: no (the foreground changed during show)")));
+        QVERIFY(text.contains(QStringLiteral(
+            "overlay show | foreground CHANGED (game lost foreground)")));
+        QVERIFY(!text.contains(QStringLiteral("keeps input")));
+        QVERIFY(!text.contains(QStringLiteral("D:\\Games")));
+        QVERIFY(!text.contains(QStringLiteral("alpha.exe")));
+
+        // Game exit and overlay close: both timelines get their new entry, and
+        // the raw key is still absent.
+        diag.setMappingState(QString(), {}, {});
+        diag.noteOverlayHide();
+        text = diag.exportBetaText(QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+        QVERIFY(text.contains(QStringLiteral("game context: none")));
+        QVERIFY(text.contains(QStringLiteral("overlay visible: no")));
+        QVERIFY(text.contains(QStringLiteral("overlay hide")));
+        QVERIFY(text.contains(QStringLiteral("present sha256:")));
+        QVERIFY(text.contains(QStringLiteral("s none")));
+    }
+
+    // cpo-x01: the overlay timeline is written by real show/hide only. A hide
+    // entry carries no preservation value (there is none to observe at close),
+    // a failed show exports failure wording rather than the old policy claim,
+    // and the ring stays bounded like every other ring in the package.
+    void overlayTransitionsComeFromShowAndHideOnly()
+    {
+        InputDiagnostics diag;
+        QString text = diag.exportBetaText(QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+        QVERIFY(text.contains(QStringLiteral(
+            "game foreground preserved on show: unavailable (no overlay show this session)")));
+        QVERIFY(text.contains(QStringLiteral("no overlay open/close this session")));
+
+        diag.noteOverlayShow(true);
+        text = diag.exportBetaText(QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+        QVERIFY(text.contains(QStringLiteral("overlay visible: yes")));
+        QVERIFY(text.contains(QStringLiteral("game foreground preserved on show: yes")));
+        QVERIFY(text.contains(QStringLiteral("overlay show | game foreground preserved")));
+
+        diag.noteOverlayHide();
+        text = diag.exportBetaText(QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+        QVERIFY(text.contains(QStringLiteral("overlay visible: no")));
+        QVERIFY(text.contains(QStringLiteral("overlay hide")));
+        // The hide branch must not serialize a preservation boolean.
+        QVERIFY(!text.contains(QStringLiteral("overlay hide |")));
+
+        diag.noteOverlayShow(false);
+        text = diag.exportBetaText(QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+        QVERIFY(text.contains(QStringLiteral(
+            "game foreground preserved on show: no (the foreground changed during show)")));
+        QVERIFY(text.contains(QStringLiteral(
+            "overlay show | foreground CHANGED (game lost foreground)")));
+        QVERIFY(!text.contains(QStringLiteral("keeps input")));
+
+        InputDiagnostics bounded;
+        for (int i = 0; i < InputDiagnostics::kMaxOverlayTransitions + 5; ++i)
+            bounded.noteOverlayShow(true);
+        const QString boundedText =
+            bounded.exportBetaText(QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+        QCOMPARE(boundedText.count(QStringLiteral("overlay show | ")),
+                 InputDiagnostics::kMaxOverlayTransitions);
+
+        diag.clear();
+        text = diag.exportBetaText(QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+        QVERIFY(text.contains(QStringLiteral("no overlay open/close this session")));
+        QVERIFY(text.contains(QStringLiteral(
+            "game foreground preserved on show: unavailable (no overlay show this session)")));
+    }
+
+    // cpo-x01: an unknown source or stale-reason label is not evidence; it is
+    // dropped rather than passed through.
+    void unknownMappingLabelsNeverEnterTheExport()
+    {
+        InputDiagnostics diag;
+        diag.setMappingState(
+            {},
+            {{QStringLiteral("controller"), {}, QStringLiteral("rogue_source"), {}, true, {}}},
+            {{QStringLiteral("controller"), QStringLiteral("weird_kind"), {},
+              {}, QStringLiteral("spontaneous")}});
+        const QString text = diag.exportBetaText(QStringLiteral("build"),
+                                                 QStringLiteral("windows"), {}, {});
+        for (const auto& unknown : {"rogue_source", "weird_kind", "spontaneous"})
+            QVERIFY2(!text.contains(QLatin1String(unknown)), unknown);
+        QVERIFY(text.contains(QStringLiteral("[redacted]")));
     }
 
     void betaTraceIsBoundedAndMissingEvidenceIsExplicit()

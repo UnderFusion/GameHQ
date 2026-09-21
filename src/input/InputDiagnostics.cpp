@@ -93,6 +93,65 @@ void InputDiagnostics::setCloakStatus(const QStringList& hiddenPads, bool hidHid
     m_hidHidePresent = hidHidePresent;
 }
 
+// ---------------------------------------------------------------- cpo-x01
+
+void InputDiagnostics::setControllerRouting(const QString& servingProvider,
+                                            const QString& switchReason,
+                                            const QStringList& arbitrationLines)
+{
+    m_servingProvider = servingProvider;
+    m_switchReason = switchReason;
+    m_arbitrationLines = arbitrationLines;
+}
+
+void InputDiagnostics::setMappingState(
+    const QString& runningGameKey,
+    const QVector<MappingChainSnapshot>& chains,
+    const QVector<StaleAssignmentSnapshot>& staleAssignments)
+{
+    const bool first = !m_mappingStateSeen;
+    if (first || runningGameKey != m_gameKey) {
+        // One transition entry per change - a session start, an exit, or a
+        // move to another game. Hashed here so no ring ever holds a path.
+        push(m_gameSessions, kMaxGameSessions, m_clock.elapsed(),
+             runningGameKey.isEmpty()
+                 ? QStringLiteral("none")
+                 : QStringLiteral("present ") + hashedId(runningGameKey));
+    }
+    m_mappingStateSeen = true;
+    m_gameKey = runningGameKey;
+    m_mappingChains = chains;
+    m_staleAssignments = staleAssignments;
+}
+
+void InputDiagnostics::noteOverlayShow(bool foregroundPreserved)
+{
+    m_overlayStateSeen = true;
+    m_overlayVisible = true;
+    m_overlayShowSeen = true;
+    m_overlayForegroundPreserved = foregroundPreserved;
+    push(m_overlayTransitions, kMaxOverlayTransitions, m_clock.elapsed(),
+         foregroundPreserved
+             ? QStringLiteral("overlay show | game foreground preserved")
+             : QStringLiteral("overlay show | foreground CHANGED (game lost foreground)"));
+}
+
+void InputDiagnostics::noteOverlayHide()
+{
+    m_overlayStateSeen = true;
+    m_overlayVisible = false;
+    push(m_overlayTransitions, kMaxOverlayTransitions, m_clock.elapsed(),
+         QStringLiteral("overlay hide"));
+}
+
+QString InputDiagnostics::hashedId(const QString& raw)
+{
+    if (raw.isEmpty())
+        return {};
+    return QStringLiteral("sha256:") + QString::fromLatin1(
+        QCryptographicHash::hash(raw.toUtf8(), QCryptographicHash::Sha256).toHex().left(16));
+}
+
 void InputDiagnostics::startProbe(int durationMs)
 {
     m_probeStartedMs = m_clock.elapsed();
@@ -270,6 +329,19 @@ void InputDiagnostics::clear()
     m_probeEvents.clear();
     m_probeOverflowed = false;
     m_probeSampled = false;
+    m_servingProvider.clear();
+    m_switchReason.clear();
+    m_arbitrationLines.clear();
+    m_mappingStateSeen = false;
+    m_gameKey.clear();
+    m_mappingChains.clear();
+    m_staleAssignments.clear();
+    m_gameSessions.clear();
+    m_overlayStateSeen = false;
+    m_overlayVisible = false;
+    m_overlayShowSeen = false;
+    m_overlayForegroundPreserved = false;
+    m_overlayTransitions.clear();
 }
 
 void InputDiagnostics::push(QVector<Stamped>& ring, int cap, qint64 ms,
@@ -302,14 +374,90 @@ QString InputDiagnostics::exportBetaText(const QString& build, const QString& wi
         return plain.match(value).hasMatch() ? value : QStringLiteral("[redacted]");
     };
     const QString profile = m_replayProfile.isEmpty() ? QStringLiteral("none")
-        : QStringLiteral("sha256:") + QString::fromLatin1(QCryptographicHash::hash(
-            m_replayProfile.toUtf8(), QCryptographicHash::Sha256).toHex().left(16));
+        : hashedId(m_replayProfile);
     QStringList lines{QStringLiteral("GameHQ beta diagnostics v1"),
         QStringLiteral("Build: ") + safe(build),
         QStringLiteral("Windows build: ") + safe(windowsBuild),
         QStringLiteral("Active provider: ") + (m_activeBackend.isEmpty() ? QStringLiteral("none") : safe(m_activeBackend)),
-        QStringLiteral("Resolved controller profile: ") + profile,
-        QStringLiteral("Effective global.save_replay bindings:")};
+        QStringLiteral("Resolved controller profile: ") + profile};
+
+    // cpo-x01: which provider serves the logical controller and what its
+    // arbitration is doing. Provider-local facts only - this package never
+    // claims two providers see the same physical device (that question is
+    // cpo-c03b's and is unresolved).
+    lines << QStringLiteral("Controller routing:");
+    lines << QStringLiteral("  serving provider: ") +
+        (m_servingProvider.isEmpty()
+             ? QStringLiteral("unavailable (no provider switch observed)")
+             : safe(m_servingProvider));
+    if (!m_switchReason.isEmpty())
+        lines << QStringLiteral("  last switch reason: ") + safe(m_switchReason);
+    if (m_arbitrationLines.isEmpty()) {
+        lines << QStringLiteral("  arbitration: unavailable (no routing transition observed)");
+    } else {
+        for (const QString& line : m_arbitrationLines)
+            lines << QStringLiteral("  ") + safe(line);
+    }
+
+    // cpo-x01: what each mapping route currently serves, why, and which broken
+    // assignment rows were skipped. Profiles, game keys and assignment target
+    // keys are paths or identity strings, so they enter only as pseudonyms.
+    lines << QStringLiteral("Mapping state:");
+    lines << QStringLiteral("  game context: ") +
+        (!m_mappingStateSeen
+             ? QStringLiteral("unavailable (no mapping refresh observed)")
+             : (m_gameKey.isEmpty() ? QStringLiteral("none")
+                                    : QStringLiteral("present (key ") + hashedId(m_gameKey) + QStringLiteral(")")));
+    if (m_mappingChains.isEmpty()) {
+        lines << QStringLiteral("  routes: none tracked");
+    } else {
+        static const QStringList sources{QStringLiteral("game"), QStringLiteral("controller"),
+            QStringLiteral("group_default"), QStringLiteral("builtin"),
+            QStringLiteral("materialized"), QStringLiteral("migration_bridge"),
+            QStringLiteral("local_legacy")};
+        QStringList rendered;
+        for (const MappingChainSnapshot& chain : m_mappingChains) {
+            rendered << QStringLiteral("    %1%2 -> source=%3 preset=%4 owned=%5 fp=%6")
+                            .arg(safe(chain.deviceGroup),
+                                 chain.profile.isEmpty() ? QString()
+                                                         : QStringLiteral(" profile ") + hashedId(chain.profile),
+                                 sources.contains(chain.source) ? chain.source : QStringLiteral("[redacted]"),
+                                 chain.presetId.isEmpty() ? QStringLiteral("none") : safe(chain.presetId),
+                                 chain.owned ? QStringLiteral("yes") : QStringLiteral("no"),
+                                 chain.fingerprint.isEmpty() ? QStringLiteral("none") : safe(chain.fingerprint));
+        }
+        rendered.sort();
+        const int omitted = rendered.size() - kMaxMappingChains;
+        if (omitted > 0)
+            rendered = rendered.mid(0, kMaxMappingChains)
+                + QStringList{QStringLiteral("    ... %1 more route(s)").arg(omitted)};
+        lines << QStringLiteral("  routes:");
+        lines << rendered;
+    }
+    if (!m_staleAssignments.isEmpty()) {
+        static const QStringList reasons{QStringLiteral("missing_preset"),
+                                         QStringLiteral("wrong_group")};
+        static const QStringList kinds{QStringLiteral("game"), QStringLiteral("controller"),
+                                       QStringLiteral("legacy_slot"), QStringLiteral("group_default")};
+        QStringList stale;
+        for (const StaleAssignmentSnapshot& report : m_staleAssignments) {
+            stale << QStringLiteral("    %1 %2 %3 preset=%4 key=%5")
+                         .arg(safe(report.deviceGroup),
+                              kinds.contains(report.targetKind) ? report.targetKind : QStringLiteral("[redacted]"),
+                              reasons.contains(report.reason) ? report.reason : QStringLiteral("[redacted]"),
+                              report.presetId.isEmpty() ? QStringLiteral("none") : safe(report.presetId),
+                              report.targetKey.isEmpty() ? QStringLiteral("none") : hashedId(report.targetKey));
+        }
+        stale.sort();
+        const int omitted = stale.size() - kMaxStaleAssignments;
+        if (omitted > 0)
+            stale = stale.mid(0, kMaxStaleAssignments)
+                + QStringList{QStringLiteral("    ... %1 more").arg(omitted)};
+        lines << QStringLiteral("  stale assignments (skipped, next winner served):");
+        lines << stale;
+    }
+
+    lines << QStringLiteral("Effective global.save_replay bindings:");
     if (m_replayBindings.isEmpty()) lines << QStringLiteral("  unavailable (no controller profile observed)");
     for (const auto& row : m_replayBindings) lines << QStringLiteral("  ") + safe(row);
     lines << QStringLiteral("Relevant configuration:");
@@ -352,5 +500,29 @@ QString InputDiagnostics::exportBetaText(const QString& build, const QString& wi
         if (trace.size() > kMaxTraceEvents) trace.removeFirst();
     }
     lines << (trace.isEmpty() ? QStringList{QStringLiteral("  unavailable: no controller requests in readable log tail")}: trace);
+
+    // cpo-x01: overlay/focus state. Two stamped timelines - game-session
+    // transitions and overlay show/hide - are what separates "the overlay was
+    // open" from "the game session actually changed".
+    lines << QStringLiteral("Overlay/focus:");
+    lines << QStringLiteral("  overlay visible: ") +
+        (!m_overlayStateSeen ? QStringLiteral("unavailable (no overlay activity this session)")
+                             : (m_overlayVisible ? QStringLiteral("yes") : QStringLiteral("no")));
+    lines << QStringLiteral("  game foreground preserved on show: ") +
+        (!m_overlayShowSeen
+             ? QStringLiteral("unavailable (no overlay show this session)")
+             : (m_overlayForegroundPreserved
+                    ? QStringLiteral("yes")
+                    : QStringLiteral("no (the foreground changed during show)")));
+    lines << QStringLiteral("  game session transitions:");
+    if (m_gameSessions.isEmpty())
+        lines << QStringLiteral("    unavailable (no mapping refresh observed)");
+    for (const Stamped& entry : m_gameSessions)
+        lines << QStringLiteral("    %1").arg(stamp(entry));
+    lines << QStringLiteral("  overlay show/hide:");
+    if (m_overlayTransitions.isEmpty())
+        lines << QStringLiteral("    no overlay open/close this session");
+    for (const Stamped& entry : m_overlayTransitions)
+        lines << QStringLiteral("    %1").arg(stamp(entry));
     return lines.join(QLatin1Char('\n'));
 }

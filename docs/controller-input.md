@@ -331,3 +331,18 @@ other requests are excluded. Missing or rotated-out evidence is reported as
 unavailable; the package cannot reconstruct a request whose controller identity
 has already left that log tail. A request receipt does not prove publication.
 The existing internal full input report remains available to diagnostic code.
+
+Since `cpo-x01` the same package also states the controller-routing, mapping and
+overlay/focus facts needed to diagnose the shipped preset and overlay behavior:
+which provider serves the logical controller with its last switch reason, how the
+current route's identity is treated (durable controller id vs legacy slot -
+provider-local facts only; the package never claims two providers see the same
+physical device), candidate/suppression counters, the current winner per mapping
+route with its effective source, the game context as presence plus a SHA-256
+pseudonym, skipped assignment rows with their reason, and the live overlay
+visibility plus the observed `game foreground preserved on show` fact (what the
+OS actually reported at presentation - never the non-activating policy flag)
+next to two stamped timelines: game-session transitions, and overlay show/hide
+written only by the real show/hide path. Profiles, game keys and assignment target keys
+enter only as pseudonyms; a source or reason outside the fixed vocabulary is
+dropped rather than printed.

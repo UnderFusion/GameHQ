@@ -158,6 +158,49 @@ public:
     void setReplayBindings(const QString& profile, const QStringList& rows);
     QString exportBetaText(const QString& build, const QString& windowsBuild,
                            const QVariantMap& config, const QString& logTail) const;
+
+    // ---------------------------------------------------------------- cpo-x01
+    // Current-state snapshots for the one-click export: which provider serves
+    // the logical controller and what its arbitration is doing, what each
+    // mapping route currently serves, and the overlay/focus state. These are
+    // bounded snapshots - one value per fact plus two small rings - never
+    // per-event telemetry; the owning components push them at their existing
+    // low-frequency transitions, and the export renders them through the same
+    // allowlist and hashing rules as the rest of the package.
+    struct MappingChainSnapshot {
+        QString deviceGroup;   // "controller" | "keyboard" | "mouse"
+        QString profile;       // raw logical profile; hashed in the export
+        QString source;        // canonical source label; allowlisted in the export
+        QString presetId;
+        bool owned = false;
+        QString fingerprint;   // served table content fingerprint
+    };
+    struct StaleAssignmentSnapshot {
+        QString deviceGroup;
+        QString targetKind;    // "game" | "controller" | "legacy_slot"
+        QString targetKey;     // raw; hashed in the export
+        QString presetId;
+        QString reason;        // "missing_preset" | "wrong_group"
+    };
+    // servingProvider: the backend currently serving the logical controller
+    // ("Sony controller", "GameInput shadow", ... or "none"); switchReason: why
+    // that role last moved; arbitrationLines: canonical engine-built facts
+    // (route identity, pending candidate, last-control ages, suppression
+    // counters) - each still passed through the export allowlist.
+    void setControllerRouting(const QString& servingProvider, const QString& switchReason,
+                              const QStringList& arbitrationLines);
+    // runningGameKey is the raw canonical key (a full executable path while the
+    // game runs); the export hashes it and reports presence only, and a change
+    // pushes one stamped game-session transition entry.
+    void setMappingState(const QString& runningGameKey,
+                         const QVector<MappingChainSnapshot>& chains,
+                         const QVector<StaleAssignmentSnapshot>& staleAssignments);
+    // A real overlay open/close, recorded by the production show/hide path.
+    // Show carries the observed OS fact - did the game window keep the
+    // foreground through presentation - and never the non-activating policy
+    // flag; hide makes no foreground claim and therefore takes no value.
+    void noteOverlayShow(bool foregroundPreserved);
+    void noteOverlayHide();
     static constexpr int kMaxTraceBytes = 64 * 1024;
     static constexpr int kMaxTraceEvents = 32;
     void clear();
@@ -169,6 +212,10 @@ public:
     static constexpr int kMaxRejectedBindings = 16;
     static constexpr int kMaxPatterns = 16;
     static constexpr int kMaxProbeEvents = 64;
+    static constexpr int kMaxMappingChains = 8;
+    static constexpr int kMaxStaleAssignments = 8;
+    static constexpr int kMaxGameSessions = 8;
+    static constexpr int kMaxOverlayTransitions = 8;
 
 private:
     struct Stamped {
@@ -184,6 +231,9 @@ private:
 
     static void push(QVector<Stamped>& ring, int cap, qint64 ms, const QString& text);
     static QString stamp(const Stamped& entry);
+    // Privacy boundary for identity-like values (logical profiles, game keys,
+    // assignment target keys): a stable short pseudonym, never the raw value.
+    static QString hashedId(const QString& raw);
 
     QElapsedTimer m_clock;
     bool m_previousSessionCrashed = false;
@@ -207,4 +257,19 @@ private:
     QVector<Stamped> m_probeEvents;
     bool m_probeOverflowed = false;
     bool m_probeSampled = false;
+
+    // ---------------------------------------------------------------- cpo-x01
+    QString m_servingProvider;
+    QString m_switchReason;
+    QStringList m_arbitrationLines;
+    bool m_mappingStateSeen = false;
+    QString m_gameKey;   // raw canonical key; hashed in the export
+    QVector<MappingChainSnapshot> m_mappingChains;
+    QVector<StaleAssignmentSnapshot> m_staleAssignments;
+    QVector<Stamped> m_gameSessions;   // hashed keys only
+    bool m_overlayStateSeen = false;
+    bool m_overlayVisible = false;
+    bool m_overlayShowSeen = false;      // a show ran, so preservation was observed
+    bool m_overlayForegroundPreserved = false;
+    QVector<Stamped> m_overlayTransitions;   // overlay show/hide only
 };
