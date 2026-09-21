@@ -1,15 +1,27 @@
 {
-  "version": "0.7.35",
-  "date": "2026-09-20",
+  "version": "0.7.36",
+  "date": "2026-09-21",
   "sections": [
     {
-      "title": "Fixed",
+      "title": "Changed",
       "items": [
-        "Controllers are identified more precisely. GameHQ now weighs the strongest available evidence about a device first, and when the evidence is ambiguous it keeps controllers separate instead of guessing. Two identical pads connected through one receiver can no longer be treated as a single controller, so their saved bindings stay apart."
+        "Mapping presets now sit directly above Assignments on the Input settings page. Choosing the preset a controller or game uses and editing the individual bindings it contains belong together, so the two sections are no longer separated by the profile and gesture settings."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.35",
+      "date": "2026-09-20",
+      "sections": [
+        {
+          "title": "Fixed",
+          "items": [
+            "Controllers are identified more precisely. GameHQ now weighs the strongest available evidence about a device first, and when the evidence is ambiguous it keeps controllers separate instead of guessing. Two identical pads connected through one receiver can no longer be treated as a single controller, so their saved bindings stay apart."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.34",
       "date": "2026-09-19",
@@ -134,19 +146,6 @@
       ]
     },
     {
-      "version": "0.7.24",
-      "date": "2026-09-09",
-      "sections": [
-        {
-          "title": "Improved",
-          "items": [
-            "Controller binding labels and capture prompts now show the effective Hold duration, including the configured default.",
-            "Save-replay assignment guidance states how long to hold the button without changing existing bindings."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -180,6 +179,13 @@
     "requested_locale": "it-IT",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.36",
+        "source_integrity": "sha256:7ab1d9f309ffba306f3a578c70e4f6b14803a4aef02abba6b0fb8b0c4337aa38",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.35",
         "source_integrity": "sha256:1089081114a2c74fa9609b65df8fb3ac7fd7ce4d64be4ee2ac8a1d50db7ef09d",
@@ -253,13 +259,6 @@
       {
         "version": "0.7.25",
         "source_integrity": "sha256:8a846a73fa52085fcc664218cec018cf9d081e638dfe3415d940cbaad0eda867",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.24",
-        "source_integrity": "sha256:73b24d5795b6b8abe8dfb3a7d6cb977b68c8da3afd9de36fa71cc8e6efdc4064",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

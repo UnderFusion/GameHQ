@@ -6,6 +6,12 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.36] - 2026-09-21
+
+### Changed
+
+- Input settings: the mapping-preset section now sits directly above Assignments instead of between the device list and the profile and gesture settings. Picking the preset a controller or game follows and editing the bindings inside it are one task, and the two sections were separated by three unrelated ones.
+
 ## [0.7.35] - 2026-09-20
 
 ### Fixed
