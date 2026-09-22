@@ -30,18 +30,18 @@ private slots:
     {
         InputDiagnostics diag;
         diag.noteControl("gamepad.view_back", "XInput");
-        diag.setReplayBindings("C:\\Users\\Secret Person\\controller", {
+        diag.setReplayBindings("C:\\Users\\USERNAME\\controller", {
             "slot=1 trigger=gamepad.view_back activation=hold hold_ms=2000 tap_count=1",
-            "slot=2 trigger=C:\\Users\\Secret Person\\private"});
+            "slot=2 trigger=C:\\Users\\USERNAME\\private"});
         diag.setBoundPatterns({"unrelated screenshot binding"});
         diag.noteDevice("private serial", "private device", "unused");
         const QVariantMap config{{"capture.mode", "always"}, {"replay.auto", true},
-            {"replay.clip_notify", false}, {"storage.clips_root", "C:\\Users\\Secret Person"}};
-        const QString log = "Private game C:\\Users\\Secret Person\\game.exe\n"
+            {"replay.clip_notify", false}, {"storage.clips_root", "C:\\Users\\USERNAME"}};
+        const QString log = "Private game C:\\Users\\USERNAME\\game.exe\n"
             "ReplaySave[77 src=controller +12ms]: accepted\n"
             "ReplaySave[77 src=controller +12ms]: armed game=Private game\n"
-            "ReplaySave[77]: exporting output=\\\\server\\share\\Secret Person.mp4\n"
-            "ReplaySave[77]: failed - remux failed output=/home/private/name.mp4\n"
+            "ReplaySave[77]: exporting output=\\\\server\\share\\USERNAME.mp4\n"
+            "ReplaySave[77]: failed - remux failed output=/home/user/name.mp4\n"
             "ReplaySave[78 src=keyboard +13ms]: accepted\n"
             "ReplaySave[78]: published\n";
         const QString text = diag.exportBetaText("0.7.23 compiled Sep 9 2026 12:00:00", "10.0.26200", config, log);
@@ -50,7 +50,7 @@ private slots:
                 "capture.mode=always", "replay.auto=1", "replay.clip_notify=0",
                 "request=77 accepted", "request=77 armed", "request=77 exporting", "request=77 failed"})
             QVERIFY2(text.contains(QLatin1String(expected)), expected);
-        for (const auto& secret : {"Secret Person", "private", "Private game", "server", "share",
+        for (const auto& secret : {"USERNAME", "private", "Private game", "server", "share",
                 "C:\\", "/home/", "storage.clips_root", "screenshot", "request=78"})
             QVERIFY2(!text.contains(QLatin1String(secret)), secret);
     }
@@ -62,7 +62,7 @@ private slots:
     void routingMappingAndOverlayStateCarryCanonicalEvidence()
     {
         InputDiagnostics diag;
-        const QString gamePath = QStringLiteral("C:\\Users\\Secret Person\\game.exe");
+        const QString gamePath = QStringLiteral("C:\\Users\\USERNAME\\game.exe");
         const QString profile = QStringLiteral(R"(\\?\HID#VID_054C&PID_0CE6#9&DEADBEEF&0&0000)");
         diag.setControllerRouting(
             QStringLiteral("XInput controller"), QStringLiteral("connection fallback"),
@@ -77,7 +77,7 @@ private slots:
              {QStringLiteral("keyboard"), {}, QStringLiteral("builtin"), {}, true,
               QStringLiteral("77bb")}},
             {{QStringLiteral("controller"), QStringLiteral("game"),
-              QStringLiteral("C:\\Users\\Secret Person\\other.exe"), QStringLiteral("preset-beta"),
+              QStringLiteral("C:\\Users\\USERNAME\\other.exe"), QStringLiteral("preset-beta"),
               QStringLiteral("wrong_group")}});
         diag.noteOverlayShow(true);
 
@@ -107,8 +107,8 @@ private slots:
         };
         QVERIFY(text.contains(pseudonym(gamePath)));
         QVERIFY(text.contains(pseudonym(profile)));
-        QVERIFY(text.contains(pseudonym(QStringLiteral("C:\\Users\\Secret Person\\other.exe"))));
-        for (const auto& secret : {"Secret Person", "C:\\", "HID#VID", "DEADBEEF", "game.exe"})
+        QVERIFY(text.contains(pseudonym(QStringLiteral("C:\\Users\\USERNAME\\other.exe"))));
+        for (const auto& secret : {"USERNAME", "C:\\", "HID#VID", "DEADBEEF", "game.exe"})
             QVERIFY2(!text.contains(QLatin1String(secret)), secret);
     }
 
