@@ -120,7 +120,14 @@ assertions are real Win32 facts (`GetForegroundWindow`, `GWL_EXSTYLE`,
 - the target keeps processing its window messages while the overlay is open and
   owns the foreground, and the overlay's input route (keyed on overlay
   visibility, not OS focus) still closes it — driven through the same signals
-  the device layer emits.
+  the device layer emits;
+- cpo-o06c: while the overlay holds that verified foreground, the exclusive
+  GameInput focus policy is requested exactly once, and released — with the
+  reason the exit path actually observed — when the overlay closes, when another
+  application takes the foreground, or when the game itself goes away. A denied
+  foreground request never asks for the policy at all, and the export says so
+  (`request=refused`, `reason="foreground was not acquired"`) instead of
+  implying a policy that was never set.
 
 It runs through `ctest -R tst_overlaynative --output-on-failure` and needs an
 interactive session that can hold a foreground window; it briefly shows the real

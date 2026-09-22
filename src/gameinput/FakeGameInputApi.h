@@ -16,7 +16,7 @@ class FakeGameInputApi final : public IGameInputApi
 {
 public:
     bool initialize(QString& error) override;
-    void applyBackgroundFocusPolicy() override;
+    void applyFocusPolicy(GameInputFocusMode mode) override;
     CallbackToken registerDeviceCallback(EventSink sink) override;
     CallbackToken registerReadingCallback(EventSink sink) override;
     CallbackToken registerSystemButtonCallback(EventSink sink) override;

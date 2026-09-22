@@ -153,6 +153,12 @@ void InputDiagnostics::setGameInputFocusPolicy(const QString& description)
     m_gameInputFocusPolicy = description;
 }
 
+void InputDiagnostics::noteGameInputFocusTransition(const QString& mode, const QString& reason)
+{
+    push(m_gameInputFocusTransitions, kMaxGameInputFocusTransitions, m_clock.elapsed(),
+         QStringLiteral("%1 (%2)").arg(mode, reason));
+}
+
 QString InputDiagnostics::controllerProfileId() const
 {
     for (const MappingChainSnapshot& chain : m_mappingChains) {
@@ -362,6 +368,7 @@ void InputDiagnostics::clear()
     m_overlayTransitions.clear();
     m_overlayShowTrace.clear();
     m_overlayHideTrace.clear();
+    m_gameInputFocusTransitions.clear();
     m_gameInputFocusPolicy.clear();
 }
 
@@ -552,6 +559,14 @@ QString InputDiagnostics::exportBetaText(const QString& build, const QString& wi
         + (m_gameInputFocusPolicy.isEmpty()
                ? QStringLiteral("unavailable (GameInput not active this session)")
                : m_gameInputFocusPolicy);
+    // cpo-o06c: the policy in force is only half the story — the timeline says
+    // when it changed and why, which is what a report about a stolen or missing
+    // pad needs.
+    lines << QStringLiteral("  GameInput focus-policy transitions:");
+    if (m_gameInputFocusTransitions.isEmpty())
+        lines << QStringLiteral("    none this session");
+    for (const Stamped& entry : m_gameInputFocusTransitions)
+        lines << QStringLiteral("    %1").arg(stamp(entry));
     lines << QStringLiteral("  last overlay open: ")
         + (m_overlayShowTrace.isEmpty() ? QStringLiteral("unavailable (no overlay show this session)")
                                         : m_overlayShowTrace);

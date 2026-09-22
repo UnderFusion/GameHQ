@@ -127,24 +127,29 @@ public:
         return true;
     }
 
-    void applyBackgroundFocusPolicy()
+    void applyFocusPolicy(GameInputFocusMode mode)
     {
         if (!input)
             return;
-        // All three flags are required: EnableBackgroundInput covers standard
-        // readings only, while the system Guide/Share buttons each have their
-        // own background flag. No ExclusiveForeground* flags — GameHQ is an
-        // overlay and must observe, never steal, the game's controller.
-        input->SetFocusPolicy(GI::GameInputFocusPolicy(
-            GI::GameInputEnableBackgroundInput
-            | GI::GameInputEnableBackgroundGuideButton
-            | GI::GameInputEnableBackgroundShareButton));
-        // cpo-o06a: the export must state the policy actually in force, not
-        // the one a reader assumes from the class name. Reported here, where
-        // the value is decided, so the two cannot drift apart.
-        InputDiagnostics::instance().setGameInputFocusPolicy(QStringLiteral(
-            "background input + background guide + background share"
-            " (no exclusive-foreground flags)"));
+        // cpo-o06c: the focus-policy masks are derived in one place
+        // (gameInputFocusMask), so the flags sent to Windows and the words the
+        // export prints cannot drift apart. See GameInputFocusPolicy.h for the
+        // three rules the masks encode (background system buttons in both modes,
+        // exclusive input replacing background input, guide/share never made
+        // exclusive).
+        GameInputFocusPolicyFlags flags;
+        flags.backgroundInput = int(GI::GameInputEnableBackgroundInput);
+        flags.backgroundGuideButton = int(GI::GameInputEnableBackgroundGuideButton);
+        flags.backgroundShareButton = int(GI::GameInputEnableBackgroundShareButton);
+        flags.exclusiveForegroundInput = int(GI::GameInputExclusiveForegroundInput);
+        input->SetFocusPolicy(
+            GI::GameInputFocusPolicy(gameInputFocusMask(mode, flags)));
+        // cpo-o06a/c: the export must state the policy actually in force, not the
+        // one a reader assumes from the class name. Reported here, where the value
+        // is decided, so the two cannot drift apart — and phrased so the exclusive
+        // state cannot be mistaken for verified controller isolation.
+        InputDiagnostics::instance().setGameInputFocusPolicy(
+            gameInputFocusPolicyDescription(mode));
     }
 
     CallbackToken registerCallback(CallbackKind kind, EventSink sink)
@@ -386,7 +391,7 @@ ProductionGameInputApi::ProductionGameInputApi(QString runtimeOverride)
 ProductionGameInputApi::~ProductionGameInputApi() = default;
 
 bool ProductionGameInputApi::initialize(QString& error) { return m_impl->initialize(error); }
-void ProductionGameInputApi::applyBackgroundFocusPolicy() { m_impl->applyBackgroundFocusPolicy(); }
+void ProductionGameInputApi::applyFocusPolicy(GameInputFocusMode mode) { m_impl->applyFocusPolicy(mode); }
 IGameInputApi::CallbackToken ProductionGameInputApi::registerDeviceCallback(EventSink sink)
 { return m_impl->registerCallback(Impl::CallbackKind::Device, std::move(sink)); }
 IGameInputApi::CallbackToken ProductionGameInputApi::registerReadingCallback(EventSink sink)

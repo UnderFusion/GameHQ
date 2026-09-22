@@ -6,6 +6,18 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.40] - 2026-09-22
+
+### Changed
+
+- GameInput focus policy (`cpo-o06c`, third step of the out-of-process isolation experiment): while the in-game overlay holds the verified interactive foreground, GameHQ now also asks the Windows GameInput runtime for `ExclusiveForegroundInput`, so other GameInput clients are meant to stop receiving the pad while the overlay is up. The two background Guide/Share flags stay exactly as they were, and `GameInputExclusiveForegroundGuideButton`/`...ShareButton` are deliberately not requested — taking the system buttons from the game as well would be broader than this step needs.
+- The focus policy now has exactly one owner, `GameInputFocusController`. The overlay only *requests* a transition; the controller decides the flags, applies them through the single `IGameInputApi::applyFocusPolicy()` seam and records every transition with its reason. The exclusive state is requested only after the verified interactive foreground, never when the foreground request was denied or cancelled, and released on every exit path: overlay close, desktop handoff, another application taking the foreground (including a polled fallback when no foreground event arrives), the game going away, GameInput being switched off, and runtime shutdown — where it is released while the runtime is still alive to receive it. A restarted session always starts from the background policy.
+- Overlay focus record gained `gameinput-policy=[mode=… request=… reason="…" transitions=…]` on both the open and the close line, and the diagnostics export gained a bounded focus-policy timeline, so a report shows when the policy changed and why.
+
+### Fixed
+
+- Nothing in this step is claimed as input isolation, and the records now say so explicitly: the policy is best-effort and GameInput-scoped, games that read XInput/DirectInput/Raw Input directly are unaffected, and `isolation` stays `not measured in-process` until the external receiver measurement exists.
+
 ## [0.7.39] - 2026-09-22
 
 ### Changed

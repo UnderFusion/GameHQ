@@ -18,10 +18,12 @@ bool FakeGameInputApi::initialize(QString& error)
     return true;
 }
 
-void FakeGameInputApi::applyBackgroundFocusPolicy()
+void FakeGameInputApi::applyFocusPolicy(GameInputFocusMode mode)
 {
     QMutexLocker lock(&m_mutex);
-    m_callLog.push_back(QStringLiteral("focus-policy:background"));
+    // The log entry is the test-visible contract: which policy the runtime was
+    // asked for, in order, across a whole session (cpo-o06c).
+    m_callLog.push_back(QStringLiteral("focus-policy:%1").arg(gameInputFocusModeName(mode)));
 }
 
 IGameInputApi::CallbackToken FakeGameInputApi::registerDeviceCallback(EventSink sink)

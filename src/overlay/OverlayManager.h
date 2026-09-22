@@ -11,6 +11,11 @@ class OverlayPresenter;
 class ForegroundAcquirer;
 class ForegroundApi;
 
+namespace ModernInput
+{
+class GameInputFocusRequestSink;
+}
+
 namespace OverlayFocus
 {
 struct ShowTrace;
@@ -28,6 +33,14 @@ struct HideTrace;
 // no minimize, no restore, no restyle, and nothing is injected into it. When
 // the request is denied the overlay simply stays as presentation left it, which
 // is exactly the behaviour that shipped before.
+//
+// cpo-o06c: while that interactive state holds, the overlay may also ask the
+// GameInput runtime to make foreground input exclusive to it — and must give the
+// policy back on every exit path. The overlay only REQUESTS: the process-wide
+// policy has exactly one owner (GameInputFocusController, installed by the app),
+// which decides the flags, applies them and records the transition. A request
+// that never happens because the truth condition did not hold is recorded with
+// the clause that refused it.
 class OverlayManager : public QObject
 {
     Q_OBJECT
@@ -49,6 +62,12 @@ public:
 
     bool isVisible() const;
     bool foregroundAcquired() const { return m_foregroundAcquired; }
+
+    // cpo-o06c: the one owner of the process-wide GameInput focus policy. The
+    // app installs it at startup (and it outlives the overlay). Left null — as in
+    // the overlay-only tests — every policy request is recorded as refused
+    // instead of silently pretending one happened.
+    void setGameInputFocusRequestSink(ModernInput::GameInputFocusRequestSink* sink);
 
     Q_INVOKABLE void toggle();
     Q_INVOKABLE void show();
@@ -92,6 +111,12 @@ private:
                                          bool acquired, int attempts);
     void finishShowTrace(bool acquired, int attempts);
     void finishHideTrace(bool restored);
+    // cpo-o06c: the policy side of an open and of a close, kept in one place each
+    // so every exit path releases the same way and no path can forget to.
+    void askForExclusiveGameInputPolicy(OverlayFocus::ShowTrace& trace);
+    void releaseGameInputPolicy(OverlayFocus::HideTrace& trace, bool gameAlive,
+                                bool gameIconic, bool overlayOwnedForeground,
+                                bool desktopHandoff);
     void startShowProbe();
     void probeTick();
 
@@ -126,6 +151,9 @@ private:
     std::unique_ptr<ForegroundAcquirer> m_focusAcquirer;
     std::unique_ptr<OverlayFocus::ShowTrace> m_pendingShowTrace;
     std::unique_ptr<OverlayFocus::HideTrace> m_pendingHideTrace;
+    // cpo-o06c: non-owning. The app owns the single GameInput focus-policy owner
+    // and keeps it alive for longer than this window manager.
+    ModernInput::GameInputFocusRequestSink* m_focusPolicySink = nullptr;
     // Logged once per open, not per foreground event: the lifetime rules can
     // see our own overlay many times while it is up.
     bool m_loggedOverlayForeground = false;

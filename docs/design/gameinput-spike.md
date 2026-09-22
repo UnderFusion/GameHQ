@@ -88,6 +88,13 @@ degrade to the existing backends when neither resolves.
   XInput/DirectInput/Raw Input directly are unaffected. It does not replace
   the Exclusive Controller Mode design (`exclusive-controller-mode.md`) and
   must never be advertised as input isolation.
+  cpo-o06c put this to work in exactly that spirit: while the in-game overlay
+  holds the verified interactive foreground, GameHQ requests
+  `ExclusiveForegroundInput` (plus the unchanged background Guide/Share flags)
+  and releases it on every exit path, through the single owner
+  `GameInputFocusController`. Games with host-side controller handoff (2K/…
+  family) may swallow XInput regardless — that stays a documented compatibility
+  limit, measured externally in cpo-o06d, not "fixed" in-process.
 
 ## Recommended integration shape (for p12 and the future backend)
 

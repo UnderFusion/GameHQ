@@ -1,15 +1,27 @@
 {
-  "version": "0.7.39",
+  "version": "0.7.40",
   "date": "2026-09-22",
   "sections": [
     {
       "title": "Changed",
       "items": [
-        "Opening the in-game overlay now makes it the active window, so the keyboard and the controller drive the overlay instead of the game behind it. The game stays on screen and is never minimised, moved or changed in any way, and closing the overlay hands the focus straight back to it. If Windows refuses to move the focus, the overlay behaves exactly as before and keeps warning that the game may still react to the controller. This is a first step: a game that deliberately reads the controller in the background can still receive it, and that is reported honestly rather than hidden."
+        "While the in-game overlay is the active window, GameHQ now also asks Windows' GameInput runtime for exclusive foreground input, so other GameInput clients are meant to stop receiving the pad while the overlay is open. The policy has exactly one owner that applies it only after the overlay has really taken the foreground, and releases it again on every way out: closing the overlay, another app taking the focus, the game going away, or GameInput being switched off. Guide and Share handling is unchanged. Whether another program actually stops seeing the pad is not something GameHQ can confirm from inside itself, so the diagnostics report the policy it requested and explicitly do not claim isolation."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.39",
+      "date": "2026-09-22",
+      "sections": [
+        {
+          "title": "Changed",
+          "items": [
+            "Opening the in-game overlay now makes it the active window, so the keyboard and the controller drive the overlay instead of the game behind it. The game stays on screen and is never minimised, moved or changed in any way, and closing the overlay hands the focus straight back to it. If Windows refuses to move the focus, the overlay behaves exactly as before and keeps warning that the game may still react to the controller. This is a first step: a game that deliberately reads the controller in the background can still receive it, and that is reported honestly rather than hidden."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.38",
       "date": "2026-09-21",
@@ -131,18 +143,6 @@
       ]
     },
     {
-      "version": "0.7.28",
-      "date": "2026-09-12",
-      "sections": [
-        {
-          "title": "Fixed",
-          "items": [
-            "Fixed the blank main window after introducing interface scaling. Backgrounds stay behind controls, and action menus stay above content in both windows."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -176,6 +176,13 @@
     "requested_locale": "zh-Hant",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.40",
+        "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.39",
         "source_integrity": "sha256:1a0589dc3fc3e929fec7d03bfc4507073a962771ca38c3d115b2b6f862ec73e8",
@@ -249,13 +256,6 @@
       {
         "version": "0.7.29",
         "source_integrity": "sha256:fa6707d89f67c062d0d7b6385fc3698371008725f10540ccc968a776f5ba16f2",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.28",
-        "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

@@ -2,6 +2,8 @@
 
 #include <QtTest>
 
+#include <functional>
+
 // cpo-o06a: the overlay's focus/controller record, with every Win32 query
 // already replaced by the fact it would resolve to (OverlayManager is the only
 // place those facts come from real Windows).
@@ -66,6 +68,13 @@ private slots:
     void aDeniedRequestIsReportedAsNotAcquired();
     void hideReportsRestoreOutcome();
     void hideWithoutRememberedGameIsNotRestored();
+    // cpo-o06c
+    void exclusivePolicyIsRequestedOnlyForVerifiedInteractiveForeground();
+    void exclusivePolicyIsNeverRequestedWhenTheForegroundRequestDidNotSucceed();
+    void theTwoDependentPredicatesCannotDisagree();
+    void policyRefusalsNameTheClauseThatRefusedThem();
+    void restoreReasonNamesTheActualExitPath();
+    void policyFactsAndLinesStaySelfContained();
 };
 
 void TestOverlayFocusTrace::handleFormattingIsStable()
@@ -262,6 +271,171 @@ void TestOverlayFocusTrace::aDeniedRequestIsReportedAsNotAcquired()
     QVERIFY2(line.contains(QStringLiteral("acquisition=not-acquired attempts=3")), qPrintable(line));
     QVERIFY2(line.contains(QStringLiteral("activation-requested=yes")), qPrintable(line));
     QVERIFY2(line.contains(OverlayFocus::ShowTrace::isolationEvidence()), qPrintable(line));
+}
+
+namespace
+{
+// The state cpo-o06b established and cpo-o06c is allowed to act on: the overlay
+// owns the foreground while the game stays alive, visible and un-minimized.
+OverlayFocus::ShowTrace verifiedInteractiveShow()
+{
+    OverlayFocus::ShowTrace trace = nonActivatingShow();
+    trace.activationRequested = true;
+    trace.acquisitionAttempts = 1;
+    trace.acquisitionSucceeded = true;
+    trace.foregroundAfterActivation = hwnd(0x2222);
+    trace.overlayActiveQt = true;
+    trace.overlayForegroundWin32 = true;
+    trace.gameAfterAcquisition = liveWindow(0x1111, 4242);
+    trace.overlayAfterAcquisition = liveWindow(0x2222, 99);
+    return trace;
+}
+}  // namespace
+
+void TestOverlayFocusTrace::exclusivePolicyIsRequestedOnlyForVerifiedInteractiveForeground()
+{
+    const OverlayFocus::ShowTrace verified = verifiedInteractiveShow();
+    QVERIFY(verified.interactiveForegroundTruth());
+
+    const OverlayFocus::GameInputPolicyDecision decision =
+        OverlayFocus::decideGameInputPolicy(verified);
+    QVERIFY(decision.request);
+    QVERIFY2(decision.reason.contains(QStringLiteral("verified interactive foreground")),
+             qPrintable(decision.reason));
+
+    // Presented but never activated — the state that shipped before o06b — asks
+    // for nothing, and says so.
+    const OverlayFocus::GameInputPolicyDecision untouched =
+        OverlayFocus::decideGameInputPolicy(nonActivatingShow());
+    QVERIFY(!untouched.request);
+    QCOMPARE(untouched.reason, QStringLiteral("no foreground request was made"));
+}
+
+void TestOverlayFocusTrace::exclusivePolicyIsNeverRequestedWhenTheForegroundRequestDidNotSucceed()
+{
+    // Denied, or cancelled because the overlay was closing while the request was
+    // still retrying: even if the overlay happens to hold the foreground at that
+    // instant, asking for a policy that is about to be released would only widen
+    // the window in which another process can lose input.
+    OverlayFocus::ShowTrace trace = verifiedInteractiveShow();
+    trace.acquisitionSucceeded = false;
+    QVERIFY(trace.interactiveForegroundTruth());   // the truth condition alone would allow it
+    const OverlayFocus::GameInputPolicyDecision decision =
+        OverlayFocus::decideGameInputPolicy(trace);
+    QVERIFY(!decision.request);
+    QCOMPARE(decision.reason, QStringLiteral("foreground was not acquired"));
+}
+
+void TestOverlayFocusTrace::theTwoDependentPredicatesCannotDisagree()
+{
+    // decideGameInputPolicy() mirrors interactiveForegroundTruth() clause by
+    // clause, so a later edit to one of them must not silently leave the other
+    // behind: walk a matrix of broken clauses and require the implication to hold
+    // in both directions (plus the acquirer's verdict on top).
+    for (int broken = 0; broken < 6; ++broken) {
+        OverlayFocus::ShowTrace trace = verifiedInteractiveShow();
+        switch (broken) {
+        case 0: trace.activationRequested = false; break;
+        case 1: trace.acquisitionSucceeded = false; break;
+        case 2: trace.gameAfterAcquisition.exists = false; break;
+        case 3: trace.gameAfterAcquisition.iconic = true; break;
+        case 4: trace.gameAfterAcquisition.visible = false; break;
+        case 5: trace.overlayAfterAcquisition.visible = false; break;
+        default: break;
+        }
+
+        const bool truth = trace.interactiveForegroundTruth();
+        const bool request = OverlayFocus::decideGameInputPolicy(trace).request;
+        QVERIFY2(!request || truth, "a policy request without the verified interactive state");
+        QVERIFY2(!(truth && trace.acquisitionSucceeded) || request,
+                 "the verified interactive state must be what asks for the policy");
+    }
+
+    const OverlayFocus::ShowTrace intact = verifiedInteractiveShow();
+    QVERIFY(intact.interactiveForegroundTruth());
+    QVERIFY(OverlayFocus::decideGameInputPolicy(intact).request);
+}
+
+void TestOverlayFocusTrace::policyRefusalsNameTheClauseThatRefusedThem()
+{
+    struct Case
+    {
+        std::function<void(OverlayFocus::ShowTrace&)> breakIt;
+        QString expected;
+    };
+    const Case cases[] = {
+        { [](OverlayFocus::ShowTrace& t) { t.gameAfterAcquisition.exists = false; },
+          QStringLiteral("the game window is gone") },
+        { [](OverlayFocus::ShowTrace& t) { t.gameAfterAcquisition.iconic = true; },
+          QStringLiteral("the game minimized itself") },
+        { [](OverlayFocus::ShowTrace& t) { t.gameAfterAcquisition.visible = false; },
+          QStringLiteral("the game window is no longer visible") },
+        { [](OverlayFocus::ShowTrace& t) { t.overlayAfterAcquisition.exists = false; },
+          QStringLiteral("the overlay window is not visible") },
+        { [](OverlayFocus::ShowTrace& t) {
+              t.foregroundAfterActivation = t.foregroundBefore;
+              t.overlayForegroundWin32 = false;
+          },
+          QStringLiteral("the overlay does not own the foreground") },
+    };
+    for (const Case& item : cases) {
+        OverlayFocus::ShowTrace trace = verifiedInteractiveShow();
+        item.breakIt(trace);
+        const OverlayFocus::GameInputPolicyDecision decision =
+            OverlayFocus::decideGameInputPolicy(trace);
+        QVERIFY2(!decision.request, qPrintable(item.expected));
+        QCOMPARE(decision.reason, item.expected);
+    }
+}
+
+void TestOverlayFocusTrace::restoreReasonNamesTheActualExitPath()
+{
+    // Most specific fact first, so the close record says what actually ended the
+    // interactive state instead of always blaming the close.
+    QCOMPARE(OverlayFocus::gameInputRestoreReason(false, false, true, false),
+             QStringLiteral("the game window is gone"));
+    QCOMPARE(OverlayFocus::gameInputRestoreReason(true, true, true, false),
+             QStringLiteral("the game was minimized"));
+    QCOMPARE(OverlayFocus::gameInputRestoreReason(true, false, false, false),
+             QStringLiteral("the overlay lost the foreground"));
+    QCOMPARE(OverlayFocus::gameInputRestoreReason(true, false, true, true),
+             QStringLiteral("desktop handoff"));
+    QCOMPARE(OverlayFocus::gameInputRestoreReason(true, false, true, false),
+             QStringLiteral("the overlay closed"));
+}
+
+void TestOverlayFocusTrace::policyFactsAndLinesStaySelfContained()
+{
+    OverlayFocus::ShowTrace trace = verifiedInteractiveShow();
+    trace.gameInputPolicy.mode = QStringLiteral("exclusive-foreground");
+    trace.gameInputPolicy.request = QStringLiteral("requested");
+    trace.gameInputPolicy.reason = QStringLiteral("overlay holds the verified interactive foreground");
+    trace.gameInputPolicy.transitions = 1;
+
+    QVERIFY(trace.gameInputPolicy.exclusiveApplied());
+    QVERIFY(trace.gameInputPolicy.requested());
+    const QString policy = trace.gameInputPolicy.toLogString();
+    for (const QString& field : { QStringLiteral("mode=exclusive-foreground"),
+                                  QStringLiteral("request=requested"),
+                                  QStringLiteral("reason=\"overlay holds the verified interactive foreground\""),
+                                  QStringLiteral("transitions=1") }) {
+        QVERIFY2(policy.contains(field), qPrintable(policy));
+    }
+
+    const QString line = trace.toLogString();
+    QVERIFY2(line.contains(QStringLiteral("gameinput-policy=[")), qPrintable(line));
+    QVERIFY2(line.contains(QStringLiteral("mode=exclusive-foreground")), qPrintable(line));
+    // The whole point of the record: a policy request is still not isolation.
+    QVERIFY2(line.contains(OverlayFocus::ShowTrace::isolationEvidence()), qPrintable(line));
+
+    OverlayFocus::HideTrace hide;
+    hide.gameInputPolicy.mode = QStringLiteral("background");
+    hide.gameInputPolicy.request = QStringLiteral("released");
+    hide.gameInputPolicy.reason = QStringLiteral("the overlay closed");
+    const QString hideLine = hide.toLogString();
+    QVERIFY2(hideLine.contains(QStringLiteral("gameinput-policy=[")), qPrintable(hideLine));
+    QVERIFY2(hideLine.contains(QStringLiteral("request=released")), qPrintable(hideLine));
+    QVERIFY2(hideLine.contains(QStringLiteral("the overlay closed")), qPrintable(hideLine));
 }
 
 #include "tst_overlayfocustrace.moc"

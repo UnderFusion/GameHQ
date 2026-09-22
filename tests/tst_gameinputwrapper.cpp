@@ -1,5 +1,6 @@
 #include "gameinput/FakeGameInputApi.h"
 #include "gameinput/GameInputEventQueue.h"
+#include "gameinput/GameInputFocusController.h"
 #include "gameinput/GameInputWrapper.h"
 
 #include <QCoreApplication>
@@ -25,6 +26,7 @@ private slots:
     void overflowRequestsRecovery();
     void callbacksArriveOnQtThread();
     void backgroundFocusPolicyIsAppliedBeforeCallbackRegistration();
+    void focusPolicyOwnerIsAttachedAndDetachedWithTheSession();
     void shutdownIsOrderedAndLateCallbacksAreHarmless();
     void restartAfterShutdownDeliversEventsAgain();
     void initializationFailureFailsSoft();
@@ -184,6 +186,59 @@ void TestGameInputWrapper::backgroundFocusPolicyIsAppliedBeforeCallbackRegistrat
     QVERIFY(wrapper.start(error));
     QVERIFY(raw->callLog().lastIndexOf(QStringLiteral("focus-policy:background"))
             > raw->callLog().lastIndexOf(QStringLiteral("unload")));
+    wrapper.shutdown();
+}
+
+// cpo-o06c: when a controller owns the process-wide policy, the wrapper is the
+// thing that attaches it to the runtime session — and it must detach it on
+// shutdown, so a stopped or restarted session can never inherit the exclusive
+// state an interactive overlay asked for.
+void TestGameInputWrapper::focusPolicyOwnerIsAttachedAndDetachedWithTheSession()
+{
+    auto fake = std::make_unique<FakeGameInputApi>();
+    FakeGameInputApi* raw = fake.get();
+    auto controller = std::make_unique<GameInputFocusController>();
+    GameInputFocusController* focus = controller.get();
+    GameInputWrapper wrapper(std::move(fake));
+    wrapper.setFocusController(focus);
+
+    QString error;
+    QVERIFY2(wrapper.start(error), qPrintable(error));
+    QVERIFY(focus->policyAttached());
+    QVERIFY(focus->focusMode() == GameInputFocusMode::Background);
+    // Attaching IS what applies the start-up policy, so the ordering contract is
+    // unchanged: policy before the first callback registration.
+    QVERIFY(raw->callLog().indexOf(QStringLiteral("focus-policy:background"))
+            < raw->callLog().indexOf(QStringLiteral("register:1")));
+
+    // The overlay asks for exclusive input while it is interactive.
+    QVERIFY(focus->requestExclusiveForeground(QStringLiteral("overlay-interactive")));
+    QVERIFY(focus->exclusiveForegroundActive());
+
+    wrapper.shutdown();
+
+    // Released before the runtime was unloaded, and the session is no longer
+    // attached at all.
+    const QStringList log = raw->callLog();
+    const int restore = log.lastIndexOf(QStringLiteral("focus-policy:background"));
+    QVERIFY(restore > log.lastIndexOf(QStringLiteral("focus-policy:exclusive-foreground")));
+    QVERIFY(restore < log.lastIndexOf(QStringLiteral("unload")));
+    QVERIFY(!focus->policyAttached());
+    QVERIFY(focus->focusMode() == GameInputFocusMode::Background);
+
+    // A fresh session starts from the background policy, whatever the previous
+    // one ended in. Hold the policy exclusive — as the overlay does while it is
+    // up — then tear the session down and bring it back.
+    QVERIFY2(wrapper.start(error), qPrintable(error));
+    QVERIFY(focus->requestExclusiveForeground(QStringLiteral("overlay-interactive")));
+    QVERIFY(focus->exclusiveForegroundActive());
+    wrapper.shutdown();
+    // While the runtime is gone a request is refused rather than remembered, so
+    // nothing can be applied later to a session that never asked for it.
+    QVERIFY(!focus->requestExclusiveForeground(QStringLiteral("overlay-interactive")));
+    QVERIFY2(wrapper.start(error), qPrintable(error));
+    QVERIFY(focus->focusMode() == GameInputFocusMode::Background);
+    QVERIFY(!focus->exclusiveForegroundActive());
     wrapper.shutdown();
 }
 

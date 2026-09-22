@@ -9,6 +9,8 @@
 
 namespace ModernInput {
 
+class GameInputFocusController;
+
 class GameInputWrapper final : public QObject
 {
     Q_OBJECT
@@ -18,6 +20,14 @@ public:
                               int emergencyReserve = 64,
                               QObject* parent = nullptr);
     ~GameInputWrapper() override;
+
+    // cpo-o06c: the process-wide focus policy has one owner
+    // (GameInputFocusController). Install one before start(); the wrapper then
+    // attaches it to the runtime session it creates — which applies the
+    // start-up background policy before any callback registration — and detaches
+    // it on shutdown, while the runtime is still alive to receive the restore.
+    // Without one, the wrapper applies the start-up background policy itself.
+    void setFocusController(GameInputFocusController* controller);
 
     bool start(QString& error);
     void shutdown();
@@ -29,6 +39,7 @@ signals:
 
 private:
     std::unique_ptr<IGameInputApi> m_api;
+    GameInputFocusController* m_focusController = nullptr;
     const int m_queueCapacity;
     const int m_emergencyReserve;
     std::shared_ptr<GameInputEventQueue> m_queue;

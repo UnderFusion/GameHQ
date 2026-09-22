@@ -1,6 +1,7 @@
 #pragma once
 
 #include "gameinput/GameInputEvent.h"
+#include "gameinput/GameInputFocusPolicy.h"
 
 #include <QString>
 
@@ -17,14 +18,23 @@ public:
     virtual ~IGameInputApi() = default;
 
     virtual bool initialize(QString& error) = 0;
-    // GameHQ runs behind the game that has focus, and GameInput's default
-    // focus policy delivers input — including system Guide/Share — only to
-    // the focused process. Called after initialize() and before any callback
-    // registration; must request background delivery for standard input AND
-    // the system Guide/Share buttons (EnableBackgroundInput alone does not
-    // cover them). Never exclusive: an overlay must not steal buttons from
-    // the game.
-    virtual void applyBackgroundFocusPolicy() = 0;
+    // cpo-o06c: GameInput's focus policy is one process-wide setting, and
+    // GameInputFocusController is its single owner — this method is the only
+    // entry point, so the mask and the transition logic can never be duplicated
+    // across callers. Called after initialize() and before any callback
+    // registration, because the runtime only honours the policy for callbacks
+    // registered afterwards.
+    //
+    // Background (the default, and what every normal session runs under) must
+    // request delivery for standard input AND the system Guide/Share buttons:
+    // EnableBackgroundInput alone does not cover the system buttons.
+    //
+    // ExclusiveForeground is requested only while an interactive overlay holds
+    // the verified foreground, and is released on every exit path (see
+    // GameInputFocusController). It is best-effort and GameInput-scoped: it binds
+    // other GameInput clients, does nothing to games reading XInput/DirectInput/
+    // Raw Input, and nothing in-process can verify its effect.
+    virtual void applyFocusPolicy(GameInputFocusMode mode) = 0;
     virtual CallbackToken registerDeviceCallback(EventSink sink) = 0;
     virtual CallbackToken registerReadingCallback(EventSink sink) = 0;
     virtual CallbackToken registerSystemButtonCallback(EventSink sink) = 0;

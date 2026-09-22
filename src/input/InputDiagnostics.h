@@ -214,6 +214,11 @@ public:
     // the code intended. Stays empty when GameInput is not active.
     void setGameInputFocusPolicy(const QString& description);
     QString gameInputFocusPolicy() const { return m_gameInputFocusPolicy; }
+    // cpo-o06c: the focus policy has exactly one owner
+    // (GameInputFocusController); every transition it makes is recorded here with
+    // its reason, so a report shows the policy TIMELINE rather than only the
+    // policy in force at the moment the export happened to be written. Bounded.
+    void noteGameInputFocusTransition(const QString& mode, const QString& reason);
     // Read-back for the overlay trace: the provider currently serving the
     // logical controller, and its profile as the pseudonym the export uses -
     // never the raw profile string.
@@ -234,6 +239,9 @@ public:
     static constexpr int kMaxStaleAssignments = 8;
     static constexpr int kMaxGameSessions = 8;
     static constexpr int kMaxOverlayTransitions = 8;
+    // cpo-o06c: mode + reason per application of the GameInput focus policy.
+    // Bounded: the policy changes at most twice per overlay open/close.
+    static constexpr int kMaxGameInputFocusTransitions = 16;
 
 private:
     struct Stamped {
@@ -290,6 +298,8 @@ private:
     bool m_overlayShowSeen = false;      // a show ran, so preservation was observed
     bool m_overlayForegroundPreserved = false;
     QVector<Stamped> m_overlayTransitions;   // overlay show/hide only
+    // cpo-o06c: GameInput focus-policy transitions (mode + reason), bounded.
+    QVector<Stamped> m_gameInputFocusTransitions;
     // cpo-o06a: the most recent full focus/controller record of each kind.
     // One per transition, kept as the already-formatted line.
     QString m_overlayShowTrace;

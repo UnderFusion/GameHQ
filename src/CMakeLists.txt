@@ -34,6 +34,8 @@ qt_add_executable(GameHQ
     diagnostics/Logger.cpp diagnostics/Logger.h
     gameinput/GameInputEvent.h
     gameinput/IGameInputApi.h
+    gameinput/GameInputFocusPolicy.h
+    gameinput/GameInputFocusController.cpp gameinput/GameInputFocusController.h
     gameinput/GameInputEventQueue.cpp gameinput/GameInputEventQueue.h
     gameinput/GameInputQtDispatcher.cpp gameinput/GameInputQtDispatcher.h
     gameinput/GameInputWrapper.cpp gameinput/GameInputWrapper.h

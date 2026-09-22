@@ -1,6 +1,13 @@
 #include "gameinput/GameInputWrapper.h"
 
+#include "gameinput/GameInputFocusController.h"
+
 namespace ModernInput {
+
+void GameInputWrapper::setFocusController(GameInputFocusController* controller)
+{
+    m_focusController = controller;
+}
 
 GameInputWrapper::GameInputWrapper(std::unique_ptr<IGameInputApi> api,
                                    int queueCapacity, int emergencyReserve,
@@ -33,7 +40,13 @@ bool GameInputWrapper::start(QString& error)
     // Focus policy must be in place before the first callback registration —
     // otherwise the runtime may withhold background Share/Guide edges that
     // arrive while the game (not GameHQ) holds focus.
-    m_api->applyBackgroundFocusPolicy();
+    //
+    // cpo-o06c: when a controller owns the policy, attaching it is what applies
+    // that start-up background policy; the ordering contract is unchanged.
+    if (m_focusController)
+        m_focusController->attach(m_api.get());
+    else
+        m_api->applyFocusPolicy(GameInputFocusMode::Background);
 
     // A previous shutdown() permanently stops the old queue so late callbacks
     // stay harmless. A restart (Auto → Off → Auto) therefore needs a fresh
@@ -70,6 +83,12 @@ void GameInputWrapper::shutdown()
 {
     if (!m_api)
         return;
+
+    // cpo-o06c: release the focus policy first, while the runtime is still alive
+    // to receive the call. A stopped or restarted session must never inherit the
+    // exclusive state an interactive overlay asked for.
+    if (m_focusController)
+        m_focusController->detach();
 
     // Required order: stop/unregister every callback, release retained device
     // state, stop the queue bridge, then release/unload the runtime.

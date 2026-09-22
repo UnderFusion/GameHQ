@@ -1,6 +1,7 @@
 #include "overlay/OverlayManager.h"
 
 #include "input/InputDiagnostics.h"
+#include "gameinput/GameInputFocusPolicy.h"
 #include "overlay/ForegroundAcquirer.h"
 #include "overlay/ForegroundApi.h"
 #include "overlay/OverlayFocusTrace.h"
@@ -138,6 +139,11 @@ OverlayManager::~OverlayManager()
         g_overlayManagerInstance = nullptr;
 }
 
+void OverlayManager::setGameInputFocusRequestSink(ModernInput::GameInputFocusRequestSink* sink)
+{
+    m_focusPolicySink = sink;
+}
+
 bool OverlayManager::isVisible() const
 {
     return m_window && m_window->isVisible();
@@ -220,6 +226,12 @@ void OverlayManager::show()
         m_foregroundAcquired = false;
         emit foregroundAcquiredChanged();
     }
+    // cpo-o06c: an open always starts from the background policy. In the normal
+    // flow this is a no-op (the close path already released it), and it is
+    // idempotent by contract — but it means a session that somehow still holds
+    // the exclusive state cannot carry it into a new open.
+    if (m_focusPolicySink)
+        m_focusPolicySink->restoreBackground(QStringLiteral("overlay opening"));
     // Every geometry, visibility and z-order change goes through the single
     // presenter, so no show path can drop the never-activate guarantee.
     const OverlayPresentReport report = m_presenter->present(target->geometry());
@@ -293,6 +305,10 @@ void OverlayManager::finishShowTrace(bool acquired, int attempts)
     // before this line ran.
     trace.lifetimeAcceptedOverlayForeground = isVisible() && trace.overlayOwnsForeground();
 
+    // cpo-o06c: the policy request is made here — after the acquisition settled
+    // and both windows were re-sampled — because it is gated on those facts.
+    askForExclusiveGameInputPolicy(trace);
+
     const InputDiagnostics& diagnostics = InputDiagnostics::instance();
     trace.controllerProvider = diagnostics.servingProvider();
     trace.controllerProfile = diagnostics.controllerProfileId();
@@ -350,6 +366,73 @@ QString describeWindow(HWND hwnd)
 }
 }  // namespace
 
+// cpo-o06c: ONE request per open, and only when this leaf's own truth condition
+// holds. The gate is the point: a denied foreground request, a game that
+// vanished, or a game that minimized itself in reaction must never narrow
+// anybody's delivery — and the record names the clause that refused it.
+void OverlayManager::askForExclusiveGameInputPolicy(OverlayFocus::ShowTrace& trace)
+{
+    OverlayFocus::GameInputPolicyFacts& facts = trace.gameInputPolicy;
+    if (!m_focusPolicySink) {
+        // Overlay-only session (tests, or no input stack): no owner exists, so
+        // nothing is asked for and nothing is claimed.
+        facts.mode = QStringLiteral("uncontrolled");
+        facts.request = QStringLiteral("refused");
+        facts.reason = QStringLiteral("no GameInput focus-policy owner in this session");
+        return;
+    }
+
+    const OverlayFocus::GameInputPolicyDecision decision =
+        OverlayFocus::decideGameInputPolicy(trace);
+    const int transitionsBefore = m_focusPolicySink->focusTransitionCount();
+    if (!decision.request) {
+        facts.mode = m_focusPolicySink->focusModeName();
+        facts.request = QStringLiteral("refused");
+        facts.reason = decision.reason;
+        facts.transitions = m_focusPolicySink->focusTransitionCount() - transitionsBefore;
+        return;
+    }
+
+    const bool applied = m_focusPolicySink->requestExclusiveForeground(decision.reason);
+    facts.mode = m_focusPolicySink->focusModeName();
+    facts.request = applied ? QStringLiteral("requested") : QStringLiteral("refused");
+    facts.reason = applied
+        ? decision.reason
+        : decision.reason + QStringLiteral(" (no GameInput runtime attached)");
+    facts.transitions = m_focusPolicySink->focusTransitionCount() - transitionsBefore;
+}
+
+// cpo-o06c: ONE release point. Every exit path in this class funnels through
+// hideInternal(), so the exclusive policy cannot outlive the interactive state it
+// was granted for — including the paths that hide because the game itself went
+// away. The reason is derived from the same Windows facts the close record
+// already gathered, so it cannot drift from the state that caused it.
+void OverlayManager::releaseGameInputPolicy(OverlayFocus::HideTrace& trace, bool gameAlive,
+                                            bool gameIconic, bool overlayOwnedForeground,
+                                            bool desktopHandoff)
+{
+    OverlayFocus::GameInputPolicyFacts& facts = trace.gameInputPolicy;
+    if (!m_focusPolicySink) {
+        facts.mode = QStringLiteral("uncontrolled");
+        facts.request = QStringLiteral("not-engaged");
+        facts.reason = QStringLiteral("no GameInput focus-policy owner in this session");
+        return;
+    }
+
+    // Read the state BEFORE releasing: the record has to say whether this close
+    // actually released something or found the policy already at background.
+    const bool engaged = m_focusPolicySink->exclusiveForegroundActive();
+    const int transitionsBefore = m_focusPolicySink->focusTransitionCount();
+    const QString reason = OverlayFocus::gameInputRestoreReason(
+        gameAlive, gameIconic, overlayOwnedForeground, desktopHandoff);
+    // Idempotent by contract, so every exit path may call it unconditionally.
+    m_focusPolicySink->restoreBackground(reason);
+    facts.mode = m_focusPolicySink->focusModeName();
+    facts.request = engaged ? QStringLiteral("released") : QStringLiteral("not-engaged");
+    facts.reason = reason;
+    facts.transitions = m_focusPolicySink->focusTransitionCount() - transitionsBefore;
+}
+
 void OverlayManager::startShowProbe()
 {
     if (!m_probeTimer) {
@@ -374,14 +457,25 @@ void OverlayManager::probeTick()
 
     const HWND game = static_cast<HWND>(m_previousForeground);
     const HWND fg = GetForegroundWindow();
+    const HWND overlayHwnd = m_window ? reinterpret_cast<HWND>(m_window->winId()) : nullptr; 
     const QString state = QStringLiteral("game %1 | foreground=0x%2 | overlay %3")
         .arg(describeWindow(game))
         .arg(QString::number(reinterpret_cast<qulonglong>(fg), 16))
-        .arg(m_window ? describeWindow(reinterpret_cast<HWND>(m_window->winId()))
-                      : QStringLiteral("none"));
+        .arg(overlayHwnd ? describeWindow(overlayHwnd) : QStringLiteral("none"));
     if (state != m_probeLastState) {
         qInfo().noquote() << QStringLiteral("Overlay probe +%1ms:").arg(m_probeElapsedMs) << state;
         m_probeLastState = state;
+    }
+    // cpo-o06c: the exclusive policy is granted for the interactive state only.
+    // The foreground event normally reports a loss first; this is the fallback for
+    // a session where it does not arrive at all, because staying in
+    // exclusive-foreground while another window owns the foreground would withhold
+    // input from GameHQ itself. Idempotent, so a repeated tick is harmless.
+    if (m_focusPolicySink && m_focusPolicySink->exclusiveForegroundActive()
+        && (!overlayHwnd || fg != overlayHwnd)) {
+        qWarning() << "Overlay: the overlay no longer owns the foreground — releasing the "
+                      "exclusive GameInput policy";
+        m_focusPolicySink->restoreBackground(QStringLiteral("the overlay lost the foreground"));
     }
     m_probeElapsedMs += m_probeTimer->interval();
     // The dense sampling exists to catch what a game does in the first moments
@@ -472,6 +566,12 @@ void OverlayManager::hideInternal(ForegroundReturn returnPolicy)
     const bool overlayOwnsForeground = overlayHwnd && foregroundBefore == overlayHwnd;
     const bool returnToGame = returnPolicy == ForegroundReturn::ToGame && overlayOwnsForeground
         && game && IsWindow(game) && !IsIconic(game);
+
+    // cpo-o06c: release the exclusive GameInput policy BEFORE the foreground goes
+    // back, so the game returns to a normal policy rather than to a narrowed one.
+    releaseGameInputPolicy(trace, game && IsWindow(game), game && IsIconic(game),
+                           overlayOwnsForeground,
+                           returnPolicy == ForegroundReturn::LeaveAlone);
 
     m_window->hide();
     // The window goes back to non-activating for its next open; the style is

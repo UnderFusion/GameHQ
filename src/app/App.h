@@ -27,6 +27,7 @@ class IntegrationService;
 class ForegroundApi;
 class ForegroundAcquirer;
 class QTimer;
+namespace ModernInput { class GameInputFocusController; }
 
 // Owns application lifecycle: paths → logging → config → database →
 // scanner/model/controller → tray → QML UI.
@@ -64,6 +65,11 @@ private:
     std::unique_ptr<AppController> m_controller;
     std::unique_ptr<TrayIcon> m_tray;
     std::unique_ptr<HotkeyManager> m_hotkeys;
+    // cpo-o06c: the one owner of the process-wide GameInput focus policy.
+    // Declared BEFORE the overlay and the input engine, so it is destroyed after
+    // both: the overlay requests transitions from it and the input stack attaches
+    // the runtime to it, so neither may outlive it.
+    std::unique_ptr<ModernInput::GameInputFocusController> m_gameInputFocus;
     std::unique_ptr<OverlayManager> m_overlay;
     std::unique_ptr<SoundEngine> m_sounds;
     std::unique_ptr<InputEngine> m_input;

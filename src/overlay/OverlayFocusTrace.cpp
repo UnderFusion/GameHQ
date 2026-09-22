@@ -36,6 +36,68 @@ QString WindowFacts::toLogString() const
         .arg(bottom);
 }
 
+QString GameInputPolicyFacts::toLogString() const
+{
+    return QStringLiteral("mode=%1 request=%2 reason=\"%3\" transitions=%4")
+        .arg(orUnavailable(mode), orUnavailable(request), orUnavailable(reason))
+        .arg(transitions);
+}
+
+GameInputPolicyDecision decideGameInputPolicy(const ShowTrace& trace)
+{
+    GameInputPolicyDecision decision;
+    // Clause order mirrors interactiveForegroundTruth(); tst_overlayfocustrace
+    // pins that the two cannot disagree.
+    if (!trace.activationRequested) {
+        decision.reason = QStringLiteral("no foreground request was made");
+        return decision;
+    }
+    if (!trace.acquisitionSucceeded) {
+        decision.reason = QStringLiteral("foreground was not acquired");
+        return decision;
+    }
+    if (!trace.gameAfterAcquisition.exists) {
+        decision.reason = QStringLiteral("the game window is gone");
+        return decision;
+    }
+    if (trace.gameAfterAcquisition.iconic) {
+        decision.reason = QStringLiteral("the game minimized itself");
+        return decision;
+    }
+    if (!trace.gameAfterAcquisition.visible) {
+        decision.reason = QStringLiteral("the game window is no longer visible");
+        return decision;
+    }
+    if (!trace.overlayAfterAcquisition.exists || !trace.overlayAfterAcquisition.visible) {
+        decision.reason = QStringLiteral("the overlay window is not visible");
+        return decision;
+    }
+    if (!trace.overlayOwnsForeground()) {
+        decision.reason = QStringLiteral("the overlay does not own the foreground");
+        return decision;
+    }
+    decision.request = true;
+    decision.reason = QStringLiteral("overlay holds the verified interactive foreground");
+    return decision;
+}
+
+QString gameInputRestoreReason(bool gameAlive, bool gameIconic,
+                               bool overlayOwnedForeground, bool desktopHandoff)
+{
+    // Most specific fact first: the report should say what actually ended the
+    // interactive state, not the generic "the overlay closed" whenever it can be
+    // more precise than that.
+    if (!gameAlive)
+        return QStringLiteral("the game window is gone");
+    if (gameIconic)
+        return QStringLiteral("the game was minimized");
+    if (!overlayOwnedForeground)
+        return QStringLiteral("the overlay lost the foreground");
+    if (desktopHandoff)
+        return QStringLiteral("desktop handoff");
+    return QStringLiteral("the overlay closed");
+}
+
 QString ShowTrace::toLogString() const
 {
     // One line, fixed field order: a report pasted from two different sessions
@@ -85,14 +147,21 @@ QString ShowTrace::toLogString() const
                  orUnavailable(gameInputFocusPolicy),
                  isolationEvidence());
 
-    return windows + acquisition + controller;
+    // cpo-o06c: the policy request this open made (or refused), and why. Still no
+    // isolation claim: the request is what GameHQ asked for, not proof that
+    // another process lost the pad.
+    const QString policy =
+        QStringLiteral(" gameinput-policy=[%1]").arg(gameInputPolicy.toLogString());
+
+    return windows + acquisition + controller + policy;
 }
 
 QString HideTrace::toLogString() const
 {
     return QStringLiteral(
                "fg before=%1 after=%2 restore-target=%3 restore-requested=%4 "
-               "restored=%5 neutral-handoff=%6 provider before=%7 after=%8")
+               "restored=%5 neutral-handoff=%6 provider before=%7 after=%8 "
+               "gameinput-policy=[%9]")
         .arg(formatHandle(foregroundBefore),
              formatHandle(foregroundAfter),
              formatHandle(restoreTarget),
@@ -100,7 +169,8 @@ QString HideTrace::toLogString() const
              restored ? QStringLiteral("yes") : QStringLiteral("no"),
              orUnavailable(neutralHandoff),
              orUnavailable(providerBefore),
-             orUnavailable(providerAfter));
+             orUnavailable(providerAfter),
+             gameInputPolicy.toLogString());
 }
 
 }  // namespace OverlayFocus

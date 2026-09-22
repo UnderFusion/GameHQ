@@ -7,6 +7,7 @@
 #include "config/Paths.h"
 #include "config/ConfigManager.h"
 #include "diagnostics/Logger.h"
+#include "gameinput/GameInputFocusController.h"
 #include "input/HotkeyManager.h"
 #include "input/ActionCatalog.h"
 #include "input/InputDiagnostics.h"
@@ -470,7 +471,12 @@ bool App::init()
     connect(m_tray.get(), &TrayIcon::quitRequested,
             qApp, &QCoreApplication::quit, Qt::QueuedConnection);
 
+    // cpo-o06c: one owner of the process-wide GameInput focus policy, created
+    // before anything that may use it (overlay, input stack) so it outlives both.
+    m_gameInputFocus = std::make_unique<ModernInput::GameInputFocusController>();
     m_overlay = std::make_unique<OverlayManager>(&m_engine);
+    // The overlay may only REQUEST a policy change; the controller owns it.
+    m_overlay->setGameInputFocusRequestSink(m_gameInputFocus.get());
     m_notify = std::make_unique<NotificationCenter>(&m_engine);
     if (!m_configQuarantinedPath.isEmpty()) {
         // One non-blocking notice, not a startup loop: the settings are already
@@ -659,6 +665,9 @@ bool App::init()
 
     // Controller input (0.3): DualSense Share tap/hold + PS, keyboard hotkey stays.
     m_input = std::make_unique<InputEngine>(m_config.get(), m_db.get(), m_hotkeys.get());
+    // cpo-o06c: the input stack attaches the runtime to that same controller, so
+    // there is exactly one place that changes GameInput's focus policy.
+    m_input->setGameInputFocusController(m_gameInputFocus.get());
     connect(m_languageManager.get(), &LanguageManager::retranslationRequested,
             m_input.get(), &InputEngine::retranslate);
     connect(m_input.get(), &InputEngine::overlayToggleRequested,

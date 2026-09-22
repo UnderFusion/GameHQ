@@ -54,6 +54,7 @@
 #include "overlay/ForegroundAcquirer.h"
 #include "overlay/ForegroundApi.h"
 #include "overlay/OverlayManager.h"
+#include "gameinput/GameInputFocusPolicy.h"
 
 #include <windows.h>
 
@@ -177,6 +178,62 @@ private:
     bool m_allow;
     std::unique_ptr<ForegroundApi> m_system;
     int m_attempts = 0;
+};
+
+// cpo-o06c: the overlay may only REQUEST a GameInput focus-policy transition;
+// the process-wide policy has one owner. This records the exact request/release
+// sequence the overlay asked for, so the native cases can assert that the
+// exclusive policy is requested once — while the overlay is verified
+// interactive — and released, with a reason, on every exit path.
+//
+// It stands in for GameInputFocusController on purpose: the controller's own
+// transition sequence and its refusal when no runtime is attached are pinned in
+// tst_gameinputfocus, and the flags it maps each mode to in the production API.
+class RecordingFocusSink final : public ModernInput::GameInputFocusRequestSink
+{
+public:
+    bool requestExclusiveForeground(const QString& reason) override
+    {
+        m_requests.append(reason);
+        m_mode = ModernInput::GameInputFocusMode::ExclusiveForeground;
+        ++m_transitions;
+        return true;
+    }
+
+    void restoreBackground(const QString& reason) override
+    {
+        if (m_mode == ModernInput::GameInputFocusMode::Background) {
+            // Every exit path releases unconditionally; this counts the calls
+            // that found the policy already at background rather than releasing
+            // something.
+            ++m_idleReleases;
+            return;
+        }
+        m_releases.append(reason);
+        m_mode = ModernInput::GameInputFocusMode::Background;
+        ++m_transitions;
+    }
+
+    ModernInput::GameInputFocusMode focusMode() const override { return m_mode; }
+    bool exclusiveForegroundActive() const override
+    {
+        return m_mode == ModernInput::GameInputFocusMode::ExclusiveForeground;
+    }
+    QString focusModeName() const override { return ModernInput::gameInputFocusModeName(m_mode); }
+    int focusTransitionCount() const override { return m_transitions; }
+    bool policyAttached() const override { return true; }
+
+    QStringList requests() const { return m_requests; }
+    QStringList releases() const { return m_releases; }
+    int idleReleases() const { return m_idleReleases; }
+    bool exclusive() const { return exclusiveForegroundActive(); }
+
+private:
+    QStringList m_requests;
+    QStringList m_releases;
+    ModernInput::GameInputFocusMode m_mode = ModernInput::GameInputFocusMode::Background;
+    int m_transitions = 0;
+    int m_idleReleases = 0;
 };
 
 // The command message the fixture registers. RegisterWindowMessage returns the
@@ -581,6 +638,10 @@ private slots:
     void destroyedTargetHandlesAreNeverReused();
     void targetKeepsWorkingWhileTheOverlayIsOpen();
     void overlayFollowsAGameOnAnotherScreenWhenOneExists();
+    // cpo-o06c
+    void exclusiveGameInputPolicyIsScopedToTheInteractiveOverlay();
+    void aDeniedForegroundRequestNeverAsksForExclusiveGameInput();
+    void dismissingTheOverlayAlwaysReleasesTheExclusiveGameInputPolicy();
 
 private:
     // `foregroundApi` (optional, ownership passes on) lets a case decide what
@@ -1115,6 +1176,156 @@ void NativeOverlayTest::overlayFollowsAGameOnAnotherScreenWhenOneExists()
 
     harness->manager->hide();
     expectTargetForeground();
+}
+
+// cpo-o06c: the exclusive GameInput policy is requested exactly once, only once
+// the overlay has VERIFIED the interactive foreground, and it is released — with
+// a reason — when the overlay closes. The export is asserted too, because that is
+// where a report reads the policy from.
+void NativeOverlayTest::exclusiveGameInputPolicyIsScopedToTheInteractiveOverlay()
+{
+    if (!m_fixture.forceTargetForeground())
+        QSKIP("this session cannot put the fixture window in the foreground");
+    QVERIFY(m_fixture.recreate());
+    QVERIFY(m_fixture.forceTargetForeground());
+
+    InputDiagnostics::instance().clear();
+    RecordingFocusSink sink;
+    auto harness = makeHarness();
+    harness->manager->setGameInputFocusRequestSink(&sink);
+
+    showOverlay(*harness);
+    expectOverlayForeground(*harness);
+
+    // Requested after the foreground was verified, not before: the whole gate is
+    // "the overlay really is the interactive window and the game is still there".
+    QTRY_COMPARE_WITH_TIMEOUT(sink.requests().size(), 1, 3000);
+    QVERIFY(sink.exclusive());
+    QVERIFY2(sink.requests().first().contains(QStringLiteral("verified interactive foreground")),
+             qPrintable(sink.requests().first()));
+    QVERIFY(sink.releases().isEmpty());
+    expectTargetStillOnScreen();
+
+    QString text = InputDiagnostics::instance().exportBetaText(
+        QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+    QVERIFY2(text.contains(QStringLiteral("mode=exclusive-foreground")), qPrintable(text));
+    QVERIFY2(text.contains(QStringLiteral("request=requested")), qPrintable(text));
+    QVERIFY2(text.contains(QStringLiteral("request=refused")) == false, qPrintable(text));
+    // Still not an isolation claim, even with the policy in force.
+    QVERIFY2(text.contains(QStringLiteral("isolation=not measured in-process")), qPrintable(text));
+
+    harness->manager->hide();
+    QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
+
+    // Released once, with the reason the close path observed, and the foreground
+    // goes back to the game the overlay covered.
+    QCOMPARE(sink.releases().size(), 1);
+    QVERIFY2(sink.releases().first().contains(QStringLiteral("the overlay closed")),
+             qPrintable(sink.releases().first()));
+    QVERIFY(!sink.exclusive());
+    expectTargetForeground();
+
+    text = InputDiagnostics::instance().exportBetaText(
+        QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+    QVERIFY2(text.contains(QStringLiteral("request=released")), qPrintable(text));
+    QVERIFY2(text.contains(QStringLiteral("the overlay closed")), qPrintable(text));
+}
+
+// A denied foreground request must never narrow anybody's delivery: the overlay
+// is not interactive, so the exclusive policy is never asked for, and the close
+// path that runs anyway records that it found nothing to release.
+void NativeOverlayTest::aDeniedForegroundRequestNeverAsksForExclusiveGameInput()
+{
+    if (!m_fixture.forceTargetForeground())
+        QSKIP("this session cannot put the fixture window in the foreground");
+    QVERIFY(m_fixture.recreate());
+    QVERIFY(m_fixture.forceTargetForeground());
+
+    InputDiagnostics::instance().clear();
+    auto* refusing = new CountingForegroundApi(false);
+    RecordingFocusSink sink;
+    auto harness = makeHarness(refusing);
+    harness->manager->setGameInputFocusRequestSink(&sink);
+
+    showOverlay(*harness);
+    // Let the bounded request settle (1 attempt + its two retries).
+    QTest::qWait(800);
+
+    QVERIFY(harness->manager->isVisible());
+    QVERIFY(!harness->manager->foregroundAcquired());
+    QVERIFY2(sink.requests().isEmpty(), "a denied foreground request asked for the pad anyway");
+    QVERIFY(!sink.exclusive());
+
+    QString text = InputDiagnostics::instance().exportBetaText(
+        QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+    QVERIFY2(text.contains(QStringLiteral("mode=background")), qPrintable(text));
+    QVERIFY2(text.contains(QStringLiteral("request=refused")), qPrintable(text));
+    QVERIFY2(text.contains(QStringLiteral("foreground was not acquired")), qPrintable(text));
+
+    const int attemptsBefore = refusing->attempts();
+    harness->manager->hide();
+    QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
+
+    // Nothing was engaged, so nothing was released — and the release path still
+    // ran (open + close), which is what makes it safe to call unconditionally.
+    QVERIFY2(sink.releases().isEmpty(), "a policy was released that was never engaged");
+    QCOMPARE(sink.idleReleases(), 2);
+    QVERIFY(!sink.exclusive());
+    QCOMPARE(refusing->attempts(), attemptsBefore);
+    expectTargetForeground();
+
+    text = InputDiagnostics::instance().exportBetaText(
+        QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+    QVERIFY2(text.contains(QStringLiteral("request=not-engaged")), qPrintable(text));
+}
+
+// The two ways the overlay can be dismissed out from under an engaged policy:
+// another application taking the foreground, and the game itself going away. Both
+// must return GameInput to the background policy — a session that stayed
+// exclusive after the interactive state ended would withhold input from GameHQ's
+// own windows.
+void NativeOverlayTest::dismissingTheOverlayAlwaysReleasesTheExclusiveGameInputPolicy()
+{
+    FixtureTarget other;
+    QVERIFY(other.start());
+
+    if (!m_fixture.forceTargetForeground())
+        QSKIP("this session cannot put the fixture window in the foreground");
+
+    RecordingFocusSink sink;
+    auto harness = makeHarness();
+    harness->manager->setGameInputFocusRequestSink(&sink);
+
+    // Phase A: the user moves to an unrelated window (Alt-Tab / Start menu / a
+    // click on another app all arrive as the same OS event).
+    showOverlay(*harness);
+    expectOverlayForeground(*harness);
+    QTRY_COMPARE_WITH_TIMEOUT(sink.requests().size(), 1, 3000);
+    QVERIFY(sink.exclusive());
+
+    QVERIFY(other.forceTargetForeground());
+    QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
+    QCOMPARE(sink.releases().size(), 1);
+    QVERIFY2(sink.releases().first().contains(QStringLiteral("lost the foreground")),
+             qPrintable(sink.releases().first()));
+    QVERIFY(!sink.exclusive());
+
+    // Phase B: the game the overlay covers goes away — the path that closes the
+    // overlay with no foreground event at all.
+    harness->manager->show();
+    QTRY_VERIFY_WITH_TIMEOUT(harness->manager->isVisible(), 5000);
+    expectOverlayForeground(*harness);
+    QTRY_COMPARE_WITH_TIMEOUT(sink.requests().size(), 2, 3000);
+    QVERIFY(sink.exclusive());
+
+    QVERIFY(other.minimizeTarget());
+    QTRY_VERIFY_WITH_TIMEOUT(IsIconic(other.target()), 3000);
+    QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
+
+    QCOMPARE(sink.releases().size(), 2);
+    QVERIFY2(sink.releases().last().contains(QStringLiteral("game was minimized")),
+             qPrintable(sink.releases().last()));
+    QVERIFY(!sink.exclusive());
 }
 
 QTEST_MAIN(NativeOverlayTest)

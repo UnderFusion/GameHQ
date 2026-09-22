@@ -16,6 +16,7 @@ class CaptureDatabase;
 namespace ModernInput {
 
 class GameInputWrapper;
+class GameInputFocusController;
 class IGameInputApi;
 class ExtraButtonCatalog;
 class CapabilityEventRouter;
@@ -47,6 +48,10 @@ public:
     // Raw/XInput/WinMM. Must be installed before start(); without it the
     // router falls back to a private integration (GameInput-only dedup).
     void setProviderIntegration(ProviderIntegration* integration);
+    // cpo-o06c: the one owner of the process-wide GameInput focus policy. Must be
+    // installed before start(); the router only forwards it to the wrapper, which
+    // attaches it to each runtime session it creates.
+    void setFocusController(GameInputFocusController* controller);
     // Number of system-button edges withheld because an uncorrelated legacy
     // provider was live (dedup could not be guaranteed). Diagnostics only.
     int shadowedSystemEdgeCount() const { return m_shadowedSystemEdges; }

@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
   "kind": "release-publication",
-  "version": "0.7.28",
-  "date": "2026-09-12",
+  "version": "0.7.40",
+  "date": "2026-09-22",
   "source_locale": "en-US",
   "default_locale": "en-US",
   "localization_policy": "fallback-allowed",
-  "release_source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+  "release_source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
   "release_body": {
     "filename": "RELEASE_BODY.md",
-    "size": 1704,
-    "sha256": "10bc3176fa0f7a42d15927f85b3924e4210a18608015eed26cf4cf4efd85dbc3"
+    "size": 2260,
+    "sha256": "5a7f27de949ad4d7e8df7a71a07c16a7096b777d91641f75cbf86b8b2d0bb584"
   },
   "distribution": {
     "localized_documents": "repository",
     "github_release_assets": false,
-    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.7.28/assets/release-notes/publication/0.7.28"
+    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.7.40/assets/release-notes/publication/0.7.40"
   },
   "localized_documents": [
     {
@@ -27,17 +27,17 @@
       "fallback_reason": null,
       "language_english_name": "English (United States)",
       "language_native_name": "English",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.en-US.md",
-      "size": 194,
-      "sha256": "a6ad27b6fe60bf9f9d78ea31b8497c90631cd81e2a627e656f350874d65f7368",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 750,
+      "sha256": "53ae2ae61023594a56a5f5edfea9be0937c6327a3b78bfa51207985d0cd5b7e2",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -51,17 +51,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Chinese (Simplified)",
       "language_native_name": "简体中文",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.zh-Hans.md",
-      "size": 384,
-      "sha256": "46d72ad9f35fb8ca4e98348dd9e307c033d4e54061274b40b2a0a86b0dac1b43",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 940,
+      "sha256": "25ea94919b26528ac577d51f2ff0fff49d5afd0f8a86b1077fd84e31836b076f",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -75,17 +75,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Russian",
       "language_native_name": "Русский",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.ru-RU.md",
-      "size": 371,
-      "sha256": "8d3e6fdd70734c0a53bb3fbdc3c1fa034b6fef5894348587b623b47cd95a903a",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 927,
+      "sha256": "ef01e548486ec944fcb654e61008cc4f9e3e3cda36aef3da3525a7716fb94ea3",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -99,17 +99,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Spanish",
       "language_native_name": "Español",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.es-ES.md",
-      "size": 371,
-      "sha256": "dbc05eea0256d874f00bd6468b7f1439a06f09ff1a26a5ad34bfd102740e0d9c",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 927,
+      "sha256": "54de93f1994f54a64a40ef7adb33c13b01753a345841b675978833e14c5fbcd9",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -123,17 +123,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Portuguese (Brazil)",
       "language_native_name": "Português (Brasil)",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.pt-BR.md",
-      "size": 383,
-      "sha256": "67f442d6c48a34bcf51e90e58e57c7153eaff5b1a8bceeca7c02c7c3952b02ab",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 939,
+      "sha256": "1b3ff0fc7a1420ab6b1f2c99894b7e3a55af984a689f6690ad5cd5f1f39ed279",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -147,17 +147,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "German",
       "language_native_name": "Deutsch",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.de-DE.md",
-      "size": 370,
-      "sha256": "b3a14b4cf6e192964b1bbff833f40a7d9f39df4a21babd9c50779310168c5acd",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 926,
+      "sha256": "69400aad25c2df0dea31cdd48dfb5767f717bcdbf25aaeca715222ac382d0f03",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -171,17 +171,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Japanese",
       "language_native_name": "日本語",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.ja-JP.md",
-      "size": 372,
-      "sha256": "acafdb3e3aa5282d8df5a6390a05fbf4225339227f7621eeb7f673b1a5298557",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 928,
+      "sha256": "0cbd9915567fedae80371ce1af0bb2b26822fc0e45d299cb68845217d74c1705",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -195,17 +195,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "French",
       "language_native_name": "Français",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.fr-FR.md",
-      "size": 370,
-      "sha256": "4a4fc3a51cf0cf780752c0a15a7452077b3174027aa8cdeee09663ad98a2df8f",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 926,
+      "sha256": "2c823962a4bc55d90b41b5d54d24e028725ce69de7ddabf71afad691464b425e",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -219,17 +219,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Polish",
       "language_native_name": "Polski",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.pl-PL.md",
-      "size": 370,
-      "sha256": "4c7e89fe207df3ab76126e06b4664e90a0b4209ea8355ac66bac524fe47480d7",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 926,
+      "sha256": "080dc6a4a9d26265ff7d585edcf30b5879523432cb895ed4adf6694ce59e3603",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -243,17 +243,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Korean",
       "language_native_name": "한국어",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.ko-KR.md",
-      "size": 370,
-      "sha256": "21936b145b080f6d34660b9b37ab759b9d09dbbb34e5768ac3a387855fce8a63",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 926,
+      "sha256": "be42aeaacec944ffd7612476ecb570acf65a179ef8fd35495442a7f8b35a3f8b",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -267,17 +267,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Chinese (Traditional)",
       "language_native_name": "繁體中文",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.zh-Hant.md",
-      "size": 385,
-      "sha256": "8c9600055c1fe9017629e205a4e4d3d27dc51fc75e5e3132fb772c20be817a78",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 941,
+      "sha256": "aa5df5747c932e4582324f16e354479ab7c8653acb398703d83d01935d5867cf",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -291,17 +291,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Turkish",
       "language_native_name": "Türkçe",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.tr-TR.md",
-      "size": 371,
-      "sha256": "6b208265373a0ba682d104d94ff5491609e0e837aa8b076caa345f8034271d8a",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 927,
+      "sha256": "7882366f31d893ffb2e700ab500c6fdf3eda223bc0c6c0c2a0bca33c32a26e3c",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -315,17 +315,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Thai",
       "language_native_name": "ไทย",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.th-TH.md",
-      "size": 368,
-      "sha256": "d14cbaf048e75bafce161b88e8699aefc64298e17bfb6e3ea2e73d11dc1f99dd",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 924,
+      "sha256": "83546797c8fa658d029c5dd456e47532e67295b147d7c218bf0ecf59bbcf9ccd",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -339,17 +339,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Spanish (Latin America)",
       "language_native_name": "Español (Latinoamérica)",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.es-419.md",
-      "size": 387,
-      "sha256": "5f6dbb53d302deaf1fc27931415552fbb8210754182da293015905346d735f54",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 943,
+      "sha256": "ee68073ba2b38f86bf7a706ef3932f31bd74a19e553cfcf2c3a6c6936ddf0c27",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -363,17 +363,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Ukrainian",
       "language_native_name": "Українська",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.uk-UA.md",
-      "size": 373,
-      "sha256": "504d789710453d7e9950fab78f32d09628182ac05954dd07e189d1e82a5680da",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 929,
+      "sha256": "f354da49c9d0d73c5ee900100baab9996061a832bf13763c3f7f1021f2f2894e",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]
@@ -387,17 +387,17 @@
       "fallback_reason": "declared-en-US-fallback",
       "language_english_name": "Italian",
       "language_native_name": "Italiano",
-      "version": "0.7.28",
-      "date": "2026-09-12",
+      "version": "0.7.40",
+      "date": "2026-09-22",
       "filename": "release-notes.it-IT.md",
-      "size": 371,
-      "sha256": "869d05a0aef72ac8678bdc3c4682ec45217acebd48944dfcaf39b78c9ecec246",
-      "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
+      "size": 927,
+      "sha256": "1493d3af316594059197040286d0e883470cef1754c911fa3e17fc5ef3a4186c",
+      "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
       "structure": [
         {
-          "section_id": "fixed",
+          "section_id": "changed",
           "item_ids": [
-            "scaled-window-stacking"
+            "exclusive-gameinput-policy-while-overlay-is-active"
           ]
         }
       ]

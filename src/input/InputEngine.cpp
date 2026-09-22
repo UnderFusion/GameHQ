@@ -22,6 +22,7 @@
 #include "input/XInputDevice.h"
 #include "input/SelectiveRawHidFallback.h"
 #include "input/RawHidBindingCatalog.h"
+#include "gameinput/GameInputFocusController.h"
 #include "gameinput/GameInputRouter.h"
 #include "gameinput/ProductionGameInputApi.h"
 #include "storage/CaptureDatabase.h"
@@ -1033,6 +1034,16 @@ void InputEngine::updateXInputIdentity()
         profile.fingerprint = canonicalProfile(m_xinputPad, profile.fingerprint);
         m_bindingEditor->setControllerProfile(profile);
     }
+}
+
+void InputEngine::setGameInputFocusController(ModernInput::GameInputFocusController* controller)
+{
+    m_gameInputFocus = controller;
+    // The router already exists (created in the constructor) and its runtime
+    // session has not started yet: the app installs the controller before
+    // start(), which is what the router's own precondition asks for.
+    if (m_gameInput)
+        m_gameInput->setFocusController(controller);
 }
 
 void InputEngine::setOverlayVisible(bool visible)

@@ -140,8 +140,21 @@ gamehq_add_test(tst_gameinputwrapper
     "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputEventQueue.cpp"
     "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputQtDispatcher.cpp"
     "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputQtDispatcher.h"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputFocusController.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputFocusController.h"
+    "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputWrapper.cpp"
     "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputWrapper.h")
+
+# cpo-o06c: the GameInput focus policy has exactly one owner. This pins the
+# application sequence the runtime sees (including the restore before a session
+# goes away) against the fake runtime, with no desktop session or device.
+gamehq_add_test(tst_gameinputfocus
+    tst_gameinputfocus.cpp
+    "${CMAKE_SOURCE_DIR}/src/gameinput/FakeGameInputApi.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputFocusController.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputFocusController.h"
+    "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp")
 
 gamehq_add_test(tst_gameinputrouter
     tst_gameinputrouter.cpp
@@ -151,6 +164,9 @@ gamehq_add_test(tst_gameinputrouter
     "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputQtDispatcher.h"
     "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputWrapper.cpp"
     "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputWrapper.h"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputFocusController.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputFocusController.h"
+    "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputRouter.cpp"
     "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputRouter.h"
     "${CMAKE_SOURCE_DIR}/src/input/PhysicalControllerRegistry.cpp"
@@ -358,6 +374,7 @@ foreach(unit IN ITEMS
     target_sources(tst_inputengineshutdown PRIVATE "${CMAKE_SOURCE_DIR}/src/input/${unit}.cpp")
 endforeach()
 foreach(unit IN ITEMS GameInputRouter ProductionGameInputApi GameInputWrapper
+    GameInputFocusController
     GameInputEventQueue GameInputQtDispatcher)
     target_sources(tst_inputengineshutdown PRIVATE "${CMAKE_SOURCE_DIR}/src/gameinput/${unit}.cpp")
 endforeach()

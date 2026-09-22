@@ -1,4 +1,5 @@
 #include "gameinput/FakeGameInputApi.h"
+#include "gameinput/GameInputFocusController.h"
 #include "gameinput/GameInputLabelMap.h"
 #include "gameinput/GameInputRouter.h"
 #include "input/ControlId.h"
@@ -49,6 +50,58 @@ private slots:
         QVERIFY(router.start());
         QCOMPARE(router.runtimeStatus(), QStringLiteral("Off"));
         QVERIFY(raw->callLog().isEmpty());
+    }
+
+    // cpo-o06c: a session with GameInput switched off has no focus policy to
+    // change — the legacy providers (Sony Raw, XInput, WinMM) are not touched by
+    // this leaf at all, and an installed owner must not invent a policy request
+    // for a runtime that was never loaded.
+    void offModeNeverTouchesTheFocusPolicy()
+    {
+        auto api = std::make_unique<FakeGameInputApi>();
+        auto* raw = api.get();
+        auto controller = std::make_unique<GameInputFocusController>();
+        GameInputFocusController* focus = controller.get();
+        GameInputRouter router(std::move(api), GameInputRouter::SupportMode::Off);
+        router.setFocusController(focus);
+
+        QVERIFY(router.start());
+        QVERIFY(raw->callLog().isEmpty());
+        QVERIFY(!focus->policyAttached());
+
+        // A request in this state is refused and recorded, never queued.
+        QVERIFY(!focus->requestExclusiveForeground(QStringLiteral("overlay-interactive")));
+        QVERIFY(focus->focusMode() == GameInputFocusMode::Background);
+        QVERIFY(raw->callLog().isEmpty());
+
+        router.shutdown();
+        QVERIFY(raw->callLog().isEmpty());
+    }
+
+    // cpo-o06c: switching GameInput off while the overlay holds the exclusive
+    // policy must return the runtime to the background policy on the way out —
+    // a provider/runtime disconnect can never leave the process exclusive.
+    void switchingTheRuntimeOffReleasesTheExclusivePolicy()
+    {
+        auto api = std::make_unique<FakeGameInputApi>();
+        auto* raw = api.get();
+        auto controller = std::make_unique<GameInputFocusController>();
+        GameInputFocusController* focus = controller.get();
+        GameInputRouter router(std::move(api));
+        router.setFocusController(focus);
+
+        QVERIFY(router.start());
+        QVERIFY(focus->policyAttached());
+        QVERIFY(focus->requestExclusiveForeground(QStringLiteral("overlay-interactive")));
+        QVERIFY(focus->exclusiveForegroundActive());
+
+        router.setMode(GameInputRouter::SupportMode::Off);
+
+        QVERIFY(focus->focusMode() == GameInputFocusMode::Background);
+        QVERIFY(!focus->policyAttached());
+        const QStringList log = raw->callLog();
+        QVERIFY(log.lastIndexOf(QStringLiteral("focus-policy:background"))
+                > log.lastIndexOf(QStringLiteral("focus-policy:exclusive-foreground")));
     }
 
     void readingsStayShadowWhileSystemButtonsRoute()

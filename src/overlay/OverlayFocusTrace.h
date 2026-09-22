@@ -41,6 +41,29 @@ struct WindowFacts
     QString toLogString() const;
 };
 
+// cpo-o06c: what GameHQ asked GameInput to do about the pad while the overlay
+// was interactive, and why. `mode` is the policy in force as GameHQ knows it,
+// `request` says what this open/close did to it (requested / refused /
+// released / not-engaged), `reason` names the fact behind it.
+//
+// This is a statement about POLICY CONTROL only. The runtime has no failure
+// return, and nothing in this process can observe whether another process
+// actually stopped receiving input — see isolationEvidence().
+struct GameInputPolicyFacts
+{
+    QString mode = QStringLiteral("uncontrolled");
+    QString request = QStringLiteral("none");
+    QString reason;
+    int transitions = 0;   // policy applications caused by this open/close
+
+    bool exclusiveApplied() const
+    {
+        return mode == QLatin1String("exclusive-foreground");
+    }
+    bool requested() const { return request == QLatin1String("requested"); }
+    QString toLogString() const;
+};
+
 // What one overlay open observed.
 struct ShowTrace
 {
@@ -79,6 +102,8 @@ struct ShowTrace
     QString controllerProvider;      // "Sony controller", "GameInput shadow", ...
     QString controllerProfile;       // hashed logical profile id, never the raw one
     QString gameInputFocusPolicy;    // the policy GameInput is actually running under
+    // cpo-o06c: what this open did to that policy, and why.
+    GameInputPolicyFacts gameInputPolicy;
 
     // The game window still owned the foreground when presentation finished.
     bool foregroundPreserved() const { return foregroundBefore == foregroundAfterPresent; }
@@ -133,6 +158,10 @@ struct HideTrace
 
     bool providerChanged() const { return providerBefore != providerAfter; }
 
+    // cpo-o06c: the exclusive GameInput policy is scoped to the interactive
+    // overlay, so every close reports what happened to it and why.
+    GameInputPolicyFacts gameInputPolicy;
+
     QString toLogString() const;
 };
 
@@ -140,4 +169,36 @@ struct HideTrace
 // the hide line and the diagnostics export cannot drift apart.
 QString formatHandle(const void* handle);
 
+// Pure decision for the whole of cpo-o06c: may the overlay ask GameInput for the
+// exclusive-foreground policy, given what it measured while opening?
+//
+// It is gated on the state the open record calls interactiveForegroundTruth() —
+// the overlay owns the foreground AND the game is alive, visible and un-minimized
+// AND the overlay is still visible — PLUS the acquirer's own verdict, because a
+// request that was denied or cancelled must not be followed by asking for a
+// policy the overlay is about to have to give back. So:
+//
+//   request            => the verified interactive state held
+//   verified state
+//   + acquisition won  => request
+//
+// and the refusal names the clause that failed, because "foreground denied" and
+// "the game minimized itself in reaction" are different findings for whoever
+// reads the report. The refusal direction is the safe one: a request that never
+// happens cannot narrow anybody's delivery, and the game keeps the pad exactly
+// as it was.
+struct GameInputPolicyDecision
+{
+    bool request = false;
+    QString reason;   // request reason, or the fact that refused it
+};
+
+GameInputPolicyDecision decideGameInputPolicy(const ShowTrace& trace);
+
+// Pure: why the exclusive policy is being released on this exit path, derived
+// from the same Windows facts the close record already gathers (game window
+// alive / minimized / the overlay still owning the foreground / the desktop
+// handoff), so the reason cannot drift from the state that caused it.
+QString gameInputRestoreReason(bool gameAlive, bool gameIconic,
+                               bool overlayOwnedForeground, bool desktopHandoff);
 }  // namespace OverlayFocus

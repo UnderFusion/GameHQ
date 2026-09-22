@@ -28,7 +28,7 @@ class MappingPresetModel;
 class HotkeyManager;
 class MouseHookDevice;
 class QTimer;
-namespace ModernInput { class GameInputRouter; }
+namespace ModernInput { class GameInputRouter; class GameInputFocusController; }
 
 // Owns the controller backends (Sony Raw Input, XInput, WinMM) + Share
 // tap/hold detector and maps buttons onto GameHQ actions
@@ -107,6 +107,12 @@ public:
 public slots:
     void retranslate();
     void setOverlayVisible(bool visible);
+    // cpo-o06c: the one owner of the process-wide GameInput focus policy. The
+    // app owns the controller (it outlives both the input stack and the overlay)
+    // and installs it here before start(); the engine forwards it to the router,
+    // which hands it to the runtime session. Never allows a second owner: the
+    // pointer is only forwarded.
+    void setGameInputFocusController(ModernInput::GameInputFocusController* controller);
     // Desktop gallery window's OS focus state (Main.qml binds this to
     // window.active). Pad navigation only reaches the desktop window while
     // it's genuinely the foreground window — same "never steal the pad from
@@ -362,6 +368,9 @@ private:
     QHash<QString, QStringList> m_profileMigrationAliases;
     QSet<QString> m_legacyViewFallbackHeld;
     std::unique_ptr<ModernInput::GameInputRouter> m_gameInput;
+    // cpo-o06c: non-owning. The controller is owned by App so that it outlives
+    // both the input stack and the overlay that requests transitions from it.
+    ModernInput::GameInputFocusController* m_gameInputFocus = nullptr;
     std::vector<std::unique_ptr<Gamepad>> m_pads;
     DualSenseDevice* m_sonyPad = nullptr;
     XInputDevice* m_xinputPad = nullptr;

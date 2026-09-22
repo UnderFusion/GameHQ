@@ -54,6 +54,14 @@ void GameInputRouter::setProviderIntegration(ProviderIntegration* integration)
     m_ownedIntegration.reset();
 }
 
+void GameInputRouter::setFocusController(GameInputFocusController* controller)
+{
+    // cpo-o06c: forwarded to the wrapper, which owns the runtime session the
+    // policy belongs to. Install before start().
+    Q_ASSERT(!m_wrapper->running());
+    m_wrapper->setFocusController(controller);
+}
+
 PhysicalControllerRegistry& GameInputRouter::registryRef()
 {
     return m_integration->registry();
