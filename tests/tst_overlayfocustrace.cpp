@@ -1,5 +1,7 @@
 #include "overlay/OverlayFocusTrace.h"
 
+#include "gameinput/NeutralHandoff.h"
+
 #include <QtTest>
 
 #include <functional>
@@ -68,6 +70,7 @@ private slots:
     void aDeniedRequestIsReportedAsNotAcquired();
     void hideReportsRestoreOutcome();
     void hideWithoutRememberedGameIsNotRestored();
+    void releaseHandoffReceiptIsOnTheCloseLine();
     // cpo-o06c
     void exclusivePolicyIsRequestedOnlyForVerifiedInteractiveForeground();
     void exclusivePolicyIsNeverRequestedWhenTheForegroundRequestDidNotSucceed();
@@ -185,9 +188,39 @@ void TestOverlayFocusTrace::hideReportsRestoreOutcome()
     QVERIFY(!trace.providerChanged());
     const QString line = trace.toLogString();
     QVERIFY(line.contains(QStringLiteral("restored=yes")));
-    // Until cpo-o06e implements it, the record must admit the handoff is
-    // missing rather than leaving the field blank.
-    QVERIFY(line.contains(QStringLiteral("neutral-handoff=not implemented")));
+    // cpo-o06e: a close that ran no handoff says so — the field is never left
+    // blank, and it never reads as a pass.
+    QVERIFY(line.contains(
+        QStringLiteral("neutral-handoff=no receipt (this close path ran no handoff)")));
+}
+
+// cpo-o06e: the release handoff's receipt is part of the close record, in the
+// shared vocabulary, and a pass and a timeout can never be confused.
+void TestOverlayFocusTrace::releaseHandoffReceiptIsOnTheCloseLine()
+{
+    OverlayFocus::HideTrace trace;
+    trace.foregroundBefore = hwnd(0x2222);
+    trace.restoreTarget = hwnd(0x1111);
+
+    trace.neutralHandoff =
+        ModernInput::neutralHandoffReceipt(QStringLiteral("passed"), 12, 2, QString());
+    QVERIFY(trace.toLogString().contains(
+        QStringLiteral("neutral-handoff=passed duration_ms=12 polls=2")));
+
+    trace.neutralHandoff = ModernInput::neutralHandoffReceipt(
+        QStringLiteral("timeout"), 402, 41, QStringLiteral("gamepad.face_south"));
+    const QString line = trace.toLogString();
+    QVERIFY(line.contains(QStringLiteral(
+        "neutral-handoff=timeout duration_ms=402 polls=41 held=\"gamepad.face_south\"")));
+    QVERIFY(!line.contains(QStringLiteral("neutral-handoff=passed")));
+
+    // The two "nothing to defer" shapes are reported, never implied.
+    QCOMPARE(ModernInput::neutralHandoffReceipt(QStringLiteral("not-engaged"), 0, 0,
+                                                QStringLiteral("the exclusive policy was not in force")),
+             QStringLiteral("not-engaged (the exclusive policy was not in force)"));
+    QCOMPARE(ModernInput::neutralHandoffReceipt(QStringLiteral("waiting"), 0, 1,
+                                                QStringLiteral("the overlay closed")),
+             QStringLiteral("waiting (the overlay closed)"));
 }
 
 void TestOverlayFocusTrace::hideWithoutRememberedGameIsNotRestored()

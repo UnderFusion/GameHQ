@@ -149,9 +149,12 @@ struct HideTrace
     bool restoreRequested = false;         // a variant asked for it (cpo-o06e)
     bool restored = false;                 // ... and the foreground really moved there
 
-    // Filled once the neutral-state handoff exists (cpo-o06e). Until then it
-    // says so, rather than implying a handoff that never ran.
-    QString neutralHandoff = QStringLiteral("not implemented");
+    // cpo-o06e: this close's release handoff, in the shared receipt vocabulary —
+    // "passed duration_ms=12 polls=2", "timeout duration_ms=402 polls=41
+    // held=\"gamepad.cross\"", or "not-engaged (…)" when nothing had to be
+    // deferred. A close that never produced a receipt says exactly that, instead
+    // of implying a handoff that never ran.
+    QString neutralHandoff = QStringLiteral("no receipt (this close path ran no handoff)");
 
     QString providerBefore;
     QString providerAfter;

@@ -1,21 +1,40 @@
 {
-  "version": "0.7.41",
+  "version": "0.7.42",
   "date": "2026-09-22",
   "sections": [
     {
       "title": "Added",
       "items": [
-        "A developer-only tool now watches the controller from outside GameHQ. It is a separate program that only observes - no injection, no hooks, no drivers, no virtual devices - and it is never part of an installed copy. It records, phase by phase, whether the pad still reaches another program through the three Windows input paths, and it says \"not measurable\" rather than claiming isolation whenever it had nothing to compare against."
+        "Closing the overlay while a button, a trigger or a stick direction is still held no longer passes that held state straight to the game. GameHQ now waits - briefly, never longer than about half a second - until the controller is physically back at rest before it hands control back, and it does so without pressing or releasing anything on the game's behalf. When the controller is already at rest, closing is as immediate as it always was."
       ]
     },
     {
       "title": "Changed",
       "items": [
-        "The exclusive input mode the overlay asks for while it is active is now measured from outside GameHQ instead of being described as unverified. On the test machine, with a controller streaming in the background, another program's controller input stopped while the overlay had the exclusive mode and came back as soon as it was released - twice, in two independent runs. Games that read the controller through other Windows interfaces are unaffected by that mode, which is documented as a limit rather than hidden; the diagnostics keep saying the effect is not verified from inside GameHQ, because that is what they can honestly know."
+        "Every overlay close now records how that hand-over went: whether the controller came back to rest in time, whether the short wait ran out and the close finished anyway, whether something else had already given the controller back, or whether the close never needed to wait - for example when the overlay steps aside for the GameHQ window, or when the game it covered is gone. A close that ran out its wait says so, instead of being reported as a clean hand-over.",
+        "If the controller is disconnected while the overlay is closing, the close finishes straight away: a controller that is no longer there cannot pass anything on to the game, so there is nothing to wait for."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.41",
+      "date": "2026-09-22",
+      "sections": [
+        {
+          "title": "Added",
+          "items": [
+            "A developer-only tool now watches the controller from outside GameHQ. It is a separate program that only observes - no injection, no hooks, no drivers, no virtual devices - and it is never part of an installed copy. It records, phase by phase, whether the pad still reaches another program through the three Windows input paths, and it says \"not measurable\" rather than claiming isolation whenever it had nothing to compare against."
+          ]
+        },
+        {
+          "title": "Changed",
+          "items": [
+            "The exclusive input mode the overlay asks for while it is active is now measured from outside GameHQ instead of being described as unverified. On the test machine, with a controller streaming in the background, another program's controller input stopped while the overlay had the exclusive mode and came back as soon as it was released - twice, in two independent runs. Games that read the controller through other Windows interfaces are unaffected by that mode, which is documented as a limit rather than hidden; the diagnostics keep saying the effect is not verified from inside GameHQ, because that is what they can honestly know."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.40",
       "date": "2026-09-22",
@@ -137,18 +156,6 @@
       ]
     },
     {
-      "version": "0.7.30",
-      "date": "2026-09-14",
-      "sections": [
-        {
-          "title": "Fixed",
-          "items": [
-            "Upcoming release notes now appear inside GameHQ. Notes in your selected language are fetched from the release on GitHub, with English and cached notes available as fallbacks."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -182,6 +189,13 @@
     "requested_locale": "zh-Hans",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.42",
+        "source_integrity": "sha256:9458cf9d5b544ab036d84cc64b8258e81abf8272f9cd47b18565cc18ce5eb6d0",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.41",
         "source_integrity": "sha256:8ba3b1300c0e7506c81800d6f1d8b60f91a421c742617be3c12179da8b9af8aa",
@@ -255,13 +269,6 @@
       {
         "version": "0.7.31",
         "source_integrity": "sha256:fa336e25633e214c81a416a7204239b65bc8859ad101a4800dada8e7c11fca79",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.30",
-        "source_integrity": "sha256:4c9495c6f9306d39d590dd613b440185fb6bdc93268cea99a8ae58a530f6794a",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

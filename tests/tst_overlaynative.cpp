@@ -55,6 +55,7 @@
 #include "overlay/ForegroundApi.h"
 #include "overlay/OverlayManager.h"
 #include "gameinput/GameInputFocusPolicy.h"
+#include "gameinput/NeutralHandoff.h"
 
 #include <windows.h>
 
@@ -234,6 +235,47 @@ private:
     ModernInput::GameInputFocusMode m_mode = ModernInput::GameInputFocusMode::Background;
     int m_transitions = 0;
     int m_idleReleases = 0;
+};
+
+// cpo-o06e: a scriptable controller for the close path. It records whether the
+// policy was still exclusive at every poll, which is how "the release waits for
+// neutral" is asserted against the real OverlayManager and real Win32 facts
+// instead of being a comment about intent.
+class ScriptedNeutralSource final : public ModernInput::NeutralHandoffSource
+{
+public:
+    void attachSink(ModernInput::GameInputFocusRequestSink* sink) { m_sink = sink; }
+
+    ModernInput::NeutralHandoffSample sampleNeutralPadState() const override
+    {
+        ++m_samples;
+        if (m_sink)
+            m_exclusiveAtSample.append(m_sink->exclusiveForegroundActive());
+        return m_sample;
+    }
+
+    void setOverlayReleaseActive(bool active) override
+    {
+        m_quiesced = active;
+        m_sample.overlayActionsQuiesced = active;
+    }
+
+    void setSample(int heldControls, const QString& summary)
+    {
+        m_sample.heldControls = heldControls;
+        m_sample.heldSummary = summary;
+    }
+
+    int samples() const { return m_samples; }
+    bool quiesced() const { return m_quiesced; }
+    QVector<bool> exclusiveAtSample() const { return m_exclusiveAtSample; }
+
+private:
+    mutable ModernInput::NeutralHandoffSample m_sample;
+    ModernInput::GameInputFocusRequestSink* m_sink = nullptr;
+    mutable int m_samples = 0;
+    mutable QVector<bool> m_exclusiveAtSample;
+    bool m_quiesced = false;
 };
 
 // The command message the fixture registers. RegisterWindowMessage returns the
@@ -642,6 +684,8 @@ private slots:
     void exclusiveGameInputPolicyIsScopedToTheInteractiveOverlay();
     void aDeniedForegroundRequestNeverAsksForExclusiveGameInput();
     void dismissingTheOverlayAlwaysReleasesTheExclusiveGameInputPolicy();
+    void closingWithAHeldControlWaitsForNeutralBeforeReleasingThePolicy();
+    void aReleaseHandoffTimeoutStillClosesAndSaysSo();
 
 private:
     // `foregroundApi` (optional, ownership passes on) lets a case decide what
@@ -1326,6 +1370,102 @@ void NativeOverlayTest::dismissingTheOverlayAlwaysReleasesTheExclusiveGameInputP
     QVERIFY2(sink.releases().last().contains(QStringLiteral("game was minimized")),
              qPrintable(sink.releases().last()));
     QVERIFY(!sink.exclusive());
+}
+
+// cpo-o06e: closing while a control is still held must not expose that held
+// state to the game. The exclusive policy stays in force until the pad is
+// neutral, and only then does the release + foreground hand-back happen — in
+// that order, which is the whole point of the handoff.
+void NativeOverlayTest::closingWithAHeldControlWaitsForNeutralBeforeReleasingThePolicy()
+{
+    if (!m_fixture.forceTargetForeground())
+        QSKIP("this session cannot put the fixture window in the foreground");
+    QVERIFY(m_fixture.recreate());
+    QVERIFY(m_fixture.forceTargetForeground());
+
+    InputDiagnostics::instance().clear();
+    RecordingFocusSink sink;
+    ScriptedNeutralSource pad;
+    pad.attachSink(&sink);
+    pad.setSample(1, QStringLiteral("gamepad.face_south"));
+    auto harness = makeHarness();
+    harness->manager->setGameInputFocusRequestSink(&sink);
+    harness->manager->setNeutralHandoffSource(&pad);
+
+    showOverlay(*harness);
+    expectOverlayForeground(*harness);
+    QTRY_COMPARE_WITH_TIMEOUT(sink.requests().size(), 1, 3000);
+    QVERIFY(sink.exclusive());
+
+    harness->manager->hide();
+
+    // The close is waiting: the overlay is still up, the game has not been asked
+    // back, and the exclusive policy is STILL in force. Releasing it here is
+    // exactly the leak this leaf removes.
+    QVERIFY(harness->manager->isVisible());
+    QVERIFY(sink.exclusive());
+    QVERIFY(sink.releases().isEmpty());
+    QVERIFY(pad.quiesced());
+    QTRY_VERIFY_WITH_TIMEOUT(pad.samples() >= 2, 3000);
+    for (bool exclusive : pad.exclusiveAtSample())
+        QVERIFY2(exclusive, "the policy was released while the pad was still held");
+
+    // The user lets go.
+    pad.setSample(0, QString());
+    QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
+
+    QCOMPARE(sink.releases().size(), 1);
+    QVERIFY(!sink.exclusive());
+    expectTargetForeground();
+    QVERIFY2(!pad.quiesced(), "the input layer stayed quiesced after the close");
+
+    const QString text = InputDiagnostics::instance().exportBetaText(
+        QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+    QVERIFY2(text.contains(QStringLiteral("neutral-handoff=waiting (the overlay closed)")),
+             qPrintable(text));
+    QVERIFY2(text.contains(QStringLiteral("neutral-handoff=passed duration_ms=")), qPrintable(text));
+    // The close record keeps the same receipt, next to the policy facts.
+    QVERIFY2(text.contains(QStringLiteral("neutral-handoff=passed")), qPrintable(text));
+}
+
+// cpo-o06e: a pad that never reaches neutral inside the bound completes the close
+// anyway — the timeout can never invent a release — and the record says
+// "timeout", so a report never mistakes it for a clean handoff.
+void NativeOverlayTest::aReleaseHandoffTimeoutStillClosesAndSaysSo()
+{
+    if (!m_fixture.forceTargetForeground())
+        QSKIP("this session cannot put the fixture window in the foreground");
+    QVERIFY(m_fixture.recreate());
+    QVERIFY(m_fixture.forceTargetForeground());
+
+    InputDiagnostics::instance().clear();
+    RecordingFocusSink sink;
+    ScriptedNeutralSource pad;
+    pad.attachSink(&sink);
+    pad.setSample(1, QStringLiteral("gamepad.l2"));   // held for the whole test
+    auto harness = makeHarness();
+    harness->manager->setGameInputFocusRequestSink(&sink);
+    harness->manager->setNeutralHandoffSource(&pad);
+
+    showOverlay(*harness);
+    expectOverlayForeground(*harness);
+    QTRY_COMPARE_WITH_TIMEOUT(sink.requests().size(), 1, 3000);
+
+    harness->manager->hide();
+    QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
+
+    // Completed, released exactly once, foreground back to the game — and honest
+    // about how the pad was handed over.
+    QCOMPARE(sink.releases().size(), 1);
+    QVERIFY(!sink.exclusive());
+    expectTargetForeground();
+    QVERIFY(!pad.quiesced());
+
+    const QString text = InputDiagnostics::instance().exportBetaText(
+        QStringLiteral("build"), QStringLiteral("windows"), {}, {});
+    QVERIFY2(text.contains(QStringLiteral("neutral-handoff=timeout duration_ms=")), qPrintable(text));
+    QVERIFY2(text.contains(QStringLiteral("held=\"gamepad.l2\"")), qPrintable(text));
+    QVERIFY2(text.contains(QStringLiteral("neutral-handoff=passed")) == false, qPrintable(text));
 }
 
 QTEST_MAIN(NativeOverlayTest)

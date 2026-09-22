@@ -114,8 +114,14 @@ OverlayManager::OverlayManager(QQmlApplicationEngine* engine, ForegroundApi* for
     , m_lifetimeActions(std::make_unique<LifetimeActions>(*this))
     , m_focusAcquirer(std::make_unique<ForegroundAcquirer>(
           foregroundApi ? foregroundApi : ForegroundApi::createSystem(), nullptr))
+    , m_releaseHandoff(std::make_unique<ModernInput::NeutralHandoffRunner>())
 {
     g_overlayManagerInstance = this;
+    // cpo-o06e: the close's release transition is owned by that one runner; the
+    // close continues from its verdict (which may arrive synchronously when the
+    // pad is already neutral).
+    connect(m_releaseHandoff.get(), &ModernInput::NeutralHandoffRunner::finished, this,
+            &OverlayManager::onReleaseHandoffFinished);
     // cpo-o06b: the request is bounded and asynchronous on retry, so both the
     // open and the close record are completed from here rather than stating a
     // result before Windows has produced one.
@@ -133,6 +139,8 @@ OverlayManager::OverlayManager(QQmlApplicationEngine* engine, ForegroundApi* for
 
 OverlayManager::~OverlayManager()
 {
+    // A close that never finished must not keep the input layer quiesced.
+    m_releaseHandoff->cancel();
     if (m_focusHook)
         UnhookWinEvent(static_cast<HWINEVENTHOOK>(m_focusHook));
     if (g_overlayManagerInstance == this)
@@ -142,6 +150,12 @@ OverlayManager::~OverlayManager()
 void OverlayManager::setGameInputFocusRequestSink(ModernInput::GameInputFocusRequestSink* sink)
 {
     m_focusPolicySink = sink;
+    m_releaseHandoff->setPolicySink(sink);
+}
+
+void OverlayManager::setNeutralHandoffSource(ModernInput::NeutralHandoffSource* source)
+{
+    m_releaseHandoff->setSource(source);
 }
 
 bool OverlayManager::isVisible() const
@@ -198,6 +212,13 @@ void OverlayManager::toggle()
 
 void OverlayManager::show()
 {
+    // cpo-o06e: a close is in flight (bounded, <= the handoff timeout). Re-opening
+    // now would race the release that is handing the controller back, so the
+    // request is refused rather than half-applied.
+    if (m_closeStage == CloseStage::ReleasingInput) {
+        qInfo() << "Overlay: show ignored - a close is still handing the controller back";
+        return;
+    }
     if (!ensureLoaded() || isVisible())
         return;
 
@@ -403,19 +424,40 @@ void OverlayManager::askForExclusiveGameInputPolicy(OverlayFocus::ShowTrace& tra
 }
 
 // cpo-o06c: ONE release point. Every exit path in this class funnels through
-// hideInternal(), so the exclusive policy cannot outlive the interactive state it
+// completeHide(), so the exclusive policy cannot outlive the interactive state it
 // was granted for — including the paths that hide because the game itself went
 // away. The reason is derived from the same Windows facts the close record
 // already gathered, so it cannot drift from the state that caused it.
+//
+// cpo-o06e: when the neutral handoff ran, it already restored the policy — while
+// the pad was held and before the foreground moved, which is the whole point of
+// the ordering — so this function only records what that release did. It never
+// releases a second time.
 void OverlayManager::releaseGameInputPolicy(OverlayFocus::HideTrace& trace, bool gameAlive,
                                             bool gameIconic, bool overlayOwnedForeground,
-                                            bool desktopHandoff)
+                                            bool desktopHandoff,
+                                            const ModernInput::NeutralHandoffRunner::Outcome& handoff)
 {
     OverlayFocus::GameInputPolicyFacts& facts = trace.gameInputPolicy;
+
+    // The close line carries the handoff whatever its outcome: the wait's
+    // numbers when it ran, and the fact that refused it when it did not. The
+    // runner owns the wording, so the record and the diagnostics timeline can
+    // never spell a stage two ways.
+    trace.neutralHandoff = m_releaseHandoff->receiptText();
+
     if (!m_focusPolicySink) {
         facts.mode = QStringLiteral("uncontrolled");
         facts.request = QStringLiteral("not-engaged");
         facts.reason = QStringLiteral("no GameInput focus-policy owner in this session");
+        return;
+    }
+
+    if (handoff.released) {
+        facts.mode = m_focusPolicySink->focusModeName();
+        facts.request = QStringLiteral("released");
+        facts.reason = handoff.releaseReason;
+        facts.transitions = handoff.releaseTransitions;
         return;
     }
 
@@ -535,6 +577,64 @@ void OverlayManager::hideInternal(ForegroundReturn returnPolicy)
 {
     if (!isVisible())
         return;
+
+    // cpo-o06e: one close at a time. The handoff is asynchronous, and every
+    // other exit path (a repeated hide, the foreground event, the game-context
+    // watch) can arrive while it runs; each would otherwise restart the wait or
+    // release the policy a second time.
+    if (m_closeStage == CloseStage::ReleasingInput) {
+        qInfo() << "Overlay: close already in progress - ignoring the repeated request";
+        return;
+    }
+
+    // cpo-o06e: the release transition is decided in ONE place. The wait runs
+    // when the handoff could actually protect something — the game is the next
+    // owner — and the runner itself declines, with a receipt, when the exclusive
+    // policy was never in force or no source can observe the pad. A close that
+    // truly needs no wait completes synchronously.
+    const QString blocked = handoffBlockedReason(returnPolicy);
+    if (!blocked.isEmpty()) {
+        m_releaseHandoff->noteSkipped(blocked);
+        completeHide(returnPolicy);
+        return;
+    }
+
+    m_closeStage = CloseStage::ReleasingInput;
+    m_pendingReturnPolicy = returnPolicy;
+    m_releaseHandoff->begin(QStringLiteral("the overlay closed"));
+}
+
+// cpo-o06e: may this close defer its policy release until the pad is neutral?
+// An empty result means yes. Every refusal is a path on which nothing could be
+// exposed by the release, so waiting would only delay the close:
+//   * the desktop handoff hands the foreground to GameHQ's own window, not to
+//     the game (the same call that must not fight the desktop window for focus);
+//   * a game that is gone or minimized is not a hand-back target at all.
+// The remaining two refusals (no policy in force, no source to observe with)
+// belong to the runner, which reports them with the same receipt vocabulary
+// instead of leaving a gap here.
+QString OverlayManager::handoffBlockedReason(ForegroundReturn returnPolicy) const
+{
+    if (returnPolicy != ForegroundReturn::ToGame)
+        return QStringLiteral("desktop handoff - the game is not the next owner");
+    const HWND game = static_cast<HWND>(m_previousForeground);
+    if (!game || !IsWindow(game) || IsIconic(game))
+        return QStringLiteral("the game window is not a hand-back target");
+    return QString();
+}
+
+void OverlayManager::onReleaseHandoffFinished()
+{
+    if (m_closeStage != CloseStage::ReleasingInput)
+        return;   // a cancelled handoff or a stray signal: nothing to finish
+    m_closeStage = CloseStage::Idle;
+    completeHide(m_pendingReturnPolicy);
+}
+
+void OverlayManager::completeHide(ForegroundReturn returnPolicy)
+{
+    if (!isVisible())
+        return;
     if (m_probeTimer)
         m_probeTimer->stop();
 
@@ -571,7 +671,8 @@ void OverlayManager::hideInternal(ForegroundReturn returnPolicy)
     // back, so the game returns to a normal policy rather than to a narrowed one.
     releaseGameInputPolicy(trace, game && IsWindow(game), game && IsIconic(game),
                            overlayOwnsForeground,
-                           returnPolicy == ForegroundReturn::LeaveAlone);
+                           returnPolicy == ForegroundReturn::LeaveAlone,
+                           m_releaseHandoff->outcome());
 
     m_window->hide();
     // The window goes back to non-activating for its next open; the style is

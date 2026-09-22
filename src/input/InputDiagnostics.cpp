@@ -159,6 +159,11 @@ void InputDiagnostics::noteGameInputFocusTransition(const QString& mode, const Q
          QStringLiteral("%1 (%2)").arg(mode, reason));
 }
 
+void InputDiagnostics::noteGameInputHandoff(const QString& receipt)
+{
+    push(m_gameInputHandoffs, kMaxGameInputHandoffs, m_clock.elapsed(), receipt);
+}
+
 QString InputDiagnostics::controllerProfileId() const
 {
     for (const MappingChainSnapshot& chain : m_mappingChains) {
@@ -369,6 +374,7 @@ void InputDiagnostics::clear()
     m_overlayShowTrace.clear();
     m_overlayHideTrace.clear();
     m_gameInputFocusTransitions.clear();
+    m_gameInputHandoffs.clear();
     m_gameInputFocusPolicy.clear();
 }
 
@@ -566,6 +572,14 @@ QString InputDiagnostics::exportBetaText(const QString& build, const QString& wi
     if (m_gameInputFocusTransitions.isEmpty())
         lines << QStringLiteral("    none this session");
     for (const Stamped& entry : m_gameInputFocusTransitions)
+        lines << QStringLiteral("    %1").arg(stamp(entry));
+    // cpo-o06e: releasing the policy is a transition too, and the interesting
+    // half is whether the pad was actually neutral when it happened. A timeout
+    // here is an honest failure record, not a clean handoff.
+    lines << QStringLiteral("  GameInput release handoff:");
+    if (m_gameInputHandoffs.isEmpty())
+        lines << QStringLiteral("    no overlay close this session");
+    for (const Stamped& entry : m_gameInputHandoffs)
         lines << QStringLiteral("    %1").arg(stamp(entry));
     lines << QStringLiteral("  last overlay open: ")
         + (m_overlayShowTrace.isEmpty() ? QStringLiteral("unavailable (no overlay show this session)")

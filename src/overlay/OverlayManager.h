@@ -2,6 +2,8 @@
 #include <QObject>
 #include <QString>
 
+#include "gameinput/NeutralHandoffRunner.h"
+
 #include <memory>
 
 class QQmlApplicationEngine;
@@ -14,6 +16,7 @@ class ForegroundApi;
 namespace ModernInput
 {
 class GameInputFocusRequestSink;
+class NeutralHandoffSource;
 }
 
 namespace OverlayFocus
@@ -69,6 +72,13 @@ public:
     // instead of silently pretending one happened.
     void setGameInputFocusRequestSink(ModernInput::GameInputFocusRequestSink* sink);
 
+    // cpo-o06e: the input layer that can say whether the pad is neutral, and
+    // that stops producing overlay actions while the release handoff runs. The
+    // app installs it at startup (InputEngine). Left null — as in the
+    // overlay-only tests — the handoff is recorded as not engaged instead of
+    // being faked: an unmeasurable wait must not exist.
+    void setNeutralHandoffSource(ModernInput::NeutralHandoffSource* source);
+
     Q_INVOKABLE void toggle();
     Q_INVOKABLE void show();
     Q_INVOKABLE void hide();
@@ -104,6 +114,27 @@ private:
 
     bool ensureLoaded();
     void hideInternal(ForegroundReturn returnPolicy = ForegroundReturn::ToGame);
+    // cpo-o06e: the close has two stages once a neutral handoff is possible.
+    // ReleasingInput is bounded by the handoff runner and ends in
+    // onReleaseHandoffFinished; Idle is every other moment.
+    enum class CloseStage
+    {
+        Idle,
+        ReleasingInput,
+    };
+    // Why this close does not defer its policy release — empty means it does.
+    // The reasons are all "nothing could leak through this handoff anyway".
+    QString handoffBlockedReason(ForegroundReturn returnPolicy) const;
+    // The rest of the close: trace facts, the policy release (already done when
+    // the handoff ran), the window hide and the foreground hand-back.
+    void completeHide(ForegroundReturn returnPolicy);
+    void onReleaseHandoffFinished();
+    // cpo-o06c: the ONE release point. Every close path funnels through
+    // completeHide(), so the exclusive policy cannot outlive the interactive
+    // state it was granted for. Fills the trace's policy and handoff facts.
+    void releaseGameInputPolicy(OverlayFocus::HideTrace& trace, bool gameAlive, bool gameIconic,
+                                bool overlayOwnedForeground, bool desktopHandoff,
+                                const ModernInput::NeutralHandoffRunner::Outcome& handoff);
     // cpo-o06b: the open/close records are completed once the bounded
     // foreground request has settled — its retries are asynchronous, so a
     // synchronous line would state a result that had not happened yet.
@@ -114,9 +145,6 @@ private:
     // cpo-o06c: the policy side of an open and of a close, kept in one place each
     // so every exit path releases the same way and no path can forget to.
     void askForExclusiveGameInputPolicy(OverlayFocus::ShowTrace& trace);
-    void releaseGameInputPolicy(OverlayFocus::HideTrace& trace, bool gameAlive,
-                                bool gameIconic, bool overlayOwnedForeground,
-                                bool desktopHandoff);
     void startShowProbe();
     void probeTick();
 
@@ -154,6 +182,12 @@ private:
     // cpo-o06c: non-owning. The app owns the single GameInput focus-policy owner
     // and keeps it alive for longer than this window manager.
     ModernInput::GameInputFocusRequestSink* m_focusPolicySink = nullptr;
+    // cpo-o06e: the close's release transition. Always constructed — a close
+    // with no source or no policy still records why no handoff ran — and owned
+    // here, because the overlay is the one that closes.
+    std::unique_ptr<ModernInput::NeutralHandoffRunner> m_releaseHandoff;
+    CloseStage m_closeStage = CloseStage::Idle;
+    ForegroundReturn m_pendingReturnPolicy = ForegroundReturn::ToGame;
     // Logged once per open, not per foreground event: the lifetime rules can
     // see our own overlay many times while it is up.
     bool m_loggedOverlayForeground = false;

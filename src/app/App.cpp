@@ -668,6 +668,10 @@ bool App::init()
     // cpo-o06c: the input stack attaches the runtime to that same controller, so
     // there is exactly one place that changes GameInput's focus policy.
     m_input->setGameInputFocusController(m_gameInputFocus.get());
+    // cpo-o06e: the input layer is the neutral-state source a close waits on
+    // before it hands the controller back. The overlay only asks; the physical
+    // state stays the input layer's to read.
+    m_overlay->setNeutralHandoffSource(m_input.get());
     connect(m_languageManager.get(), &LanguageManager::retranslationRequested,
             m_input.get(), &InputEngine::retranslate);
     connect(m_input.get(), &InputEngine::overlayToggleRequested,

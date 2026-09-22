@@ -25,6 +25,22 @@
 #include "gameinput/GameInputFocusController.h"
 #include "gameinput/GameInputRouter.h"
 #include "gameinput/ProductionGameInputApi.h"
+
+namespace {
+// cpo-o06e: engine-internal device identities for the held-control tracker. The
+// values are never printed — the receipts name canonical control ids only — they
+// exist so a legacy backend and a GameInput logical controller can be told apart
+// when the device that owns a held control goes away.
+QString legacyDeviceKey(const Gamepad* pad)
+{
+    return QStringLiteral("pad:0x%1").arg(reinterpret_cast<quintptr>(pad), 0, 16);
+}
+
+QString gameInputDeviceKey(const QString& logicalId)
+{
+    return QStringLiteral("gameinput:") + logicalId;
+}
+}  // namespace
 #include "storage/CaptureDatabase.h"
 
 #include <QDebug>
@@ -261,6 +277,11 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::systemControlPressed,
             this, [this, gameInputProfile](const QString& control, const QString& logicalId,
                          const QString& displayName) {
+                // cpo-o06e: the raw edge, before any capture or routing — what is
+                // held right now is what the release handoff waits for.
+                m_held.notePressed(gameInputDeviceKey(logicalId), control);
+                if (m_overlayReleaseActive)
+                    return;   // a close is waiting for neutral: no actions fire
                 InputDiagnostics::instance().noteControl(control, QStringLiteral("GameInput"));
                 m_bindingEditor->noteObservedControl(control);
                 const auto family = ControlId::ControllerFamily::Generic;
@@ -284,6 +305,10 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::systemControlReleased,
             this, [this, gameInputProfile](const QString& control, const QString& logicalId,
                          const QString&) {
+                // cpo-o06e: the release is tracked even while a close waits, so
+                // the handoff can see the pad become neutral. Releases never fire
+                // actions that a suppression would have to swallow.
+                m_held.noteReleased(gameInputDeviceKey(logicalId), control);
                 m_runtime->release(QStringLiteral("controller"), gameInputProfile(logicalId),
                                    control);
             });
@@ -294,21 +319,33 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 m_legacyViewFallbackHeld.clear();
             });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::lifecycleReset,
-            this, [this](const QString&, const QString&) {
+            this, [this](const QString& logicalId, const QString&) {
+                // cpo-o06e: the device is gone, so whatever it was holding went
+                // with it — a handoff must not wait for a controller that cannot
+                // deliver the release.
+                m_held.noteDeviceGone(gameInputDeviceKey(logicalId));
                 stopNavRepeat();
                 m_runtime->cancelAll();
                 m_legacyViewFallbackHeld.clear();
             });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::logicalControllerRekeyed,
             this, [this](const QString& previous, const QString& logicalId) {
+                m_held.noteDeviceGone(gameInputDeviceKey(previous));
+                m_held.noteDevicePresent(gameInputDeviceKey(logicalId));
                 configureLogicalProfile(logicalId, {previous});
             });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::statusChanged,
             this, &InputEngine::modernControllerChanged);
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::deviceConnected,
-            this, [this](const QString&, bool) { emit modernControllerChanged(); });
+            this, [this](const QString& logicalId, bool) {
+                m_held.noteDevicePresent(gameInputDeviceKey(logicalId));
+                emit modernControllerChanged();
+            });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::deviceDisconnected,
-            this, [this](const QString&) { emit modernControllerChanged(); });
+            this, [this](const QString& logicalId) {
+                m_held.noteDeviceGone(gameInputDeviceKey(logicalId));
+                emit modernControllerChanged();
+            });
 
     // The Raw Input backend sees every HID arrival/removal (debounced),
     // including XInput and DirectInput devices. Use it as the hot-plug
@@ -589,6 +626,8 @@ bool InputEngine::handleKeyReleased(int key, int modifiers)
 void InputEngine::attachGamepad(std::unique_ptr<Gamepad> pad, const QString& displayName)
 {
     Gamepad* raw = pad.get();
+    // cpo-o06e: a backend exists = a device the handoff may have to wait for.
+    m_held.noteDevicePresent(legacyDeviceKey(raw));
     connect(raw, &Gamepad::controlPressed, this, &InputEngine::onControlPressed);
     connect(raw, &Gamepad::controlReleased, this, &InputEngine::onControlReleased);
     connect(raw, &Gamepad::connected, this, [this, raw, displayName](bool c) {
@@ -671,6 +710,9 @@ void InputEngine::observeLegacyBackend(Gamepad* pad,
 
 void InputEngine::removeLegacyBackend(Gamepad* pad, const QString& providerDeviceId)
 {
+    // cpo-o06e: the backend is gone, so anything it was holding is gone with it:
+    // a handoff must never wait for a device that can no longer send a release.
+    m_held.noteDeviceGone(legacyDeviceKey(pad));
     QSet<QString> observed = m_legacyObservedIds.value(pad);
     if (!providerDeviceId.isEmpty())
         observed.intersect(QSet<QString>{providerDeviceId});
@@ -1046,6 +1088,39 @@ void InputEngine::setGameInputFocusController(ModernInput::GameInputFocusControl
         m_gameInput->setFocusController(controller);
 }
 
+// cpo-o06e: the release handoff's source. "Held" means a control the engine has
+// seen pressed and not yet released, tracked from the raw edges
+// (input/HeldControlTracker.h) — never a re-interpretation: the thresholds and
+// deadzones that produced those edges stay with the backend that published them.
+ModernInput::NeutralHandoffSample InputEngine::sampleNeutralPadState() const
+{
+    ModernInput::NeutralHandoffSample sample;
+    sample.attachedDevices = m_held.presentDevices();
+    sample.heldControls = m_held.heldCount();
+    sample.heldSummary =
+        m_held.heldControls(ModernInput::kNeutralHandoffSummaryLimit).join(QStringLiteral(", "));
+    sample.overlayActionsQuiesced = m_overlayReleaseActive;
+    return sample;
+}
+
+void InputEngine::setOverlayReleaseActive(bool active)
+{
+    if (m_overlayReleaseActive == active)
+        return;
+    m_overlayReleaseActive = active;
+    if (!active)
+        return;
+    // The overlay input path goes quiet the moment the close starts — the same
+    // three cancellations the context switches use, so no navigation repeat and
+    // no pending gesture can still fire an action into the window that is going
+    // away. The PHYSICAL state keeps being tracked, because the handoff is
+    // waiting for exactly that release, and nothing is ever pushed into the game.
+    stopNavRepeat();
+    m_runtime->cancelAll();
+    m_legacyViewFallbackHeld.clear();
+    qInfo() << "Input: overlay input quiesced - a close is waiting for a neutral controller";
+}
+
 void InputEngine::setOverlayVisible(bool visible)
 {
     if (m_overlayVisible == visible)
@@ -1094,6 +1169,11 @@ void InputEngine::onControlPressed(const QString& controlId, int family,
     auto* source = qobject_cast<Gamepad*>(sender());
     if (!source || !backendConnected(source))
         return;
+    // cpo-o06e: the raw edge, before any arbitration — a control the user holds
+    // counts for the release handoff whether or not this press fires an action.
+    m_held.notePressed(legacyDeviceKey(source), controlId);
+    if (m_overlayReleaseActive)
+        return;   // a close is waiting for neutral: no further actions fire
     const auto currentProfile = source->profile();
     if (currentProfile.fingerprint == fingerprint)
         observeLegacyBackend(source, currentProfile);
@@ -1224,6 +1304,10 @@ void InputEngine::onControlReleased(const QString& controlId, int, const QString
                                     const QString& fingerprint, const QString&)
 {
     auto* source = qobject_cast<Gamepad*>(sender());
+    // cpo-o06e: the raw release edge, before the confirmation/arbitration logic
+    // — this is what lets a close's handoff observe the pad become neutral.
+    if (source)
+        m_held.noteReleased(legacyDeviceKey(source), controlId);
     // A release for a press still waiting on confirmation is remembered, not
     // forwarded: the press has not been delivered yet, so there is nothing to
     // release. Recording it is what keeps a tap a tap — on promotion the pair

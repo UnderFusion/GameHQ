@@ -219,6 +219,11 @@ public:
     // its reason, so a report shows the policy TIMELINE rather than only the
     // policy in force at the moment the export happened to be written. Bounded.
     void noteGameInputFocusTransition(const QString& mode, const QString& reason);
+    // cpo-o06e: the bounded neutral-state handoff of the close path, one receipt
+    // per stage ("neutral-handoff=waiting (…)", "neutral-handoff=passed
+    // duration_ms=…"), so a report shows whether the pad was handed back cleanly
+    // or whether the close ran into its bound. Bounded.
+    void noteGameInputHandoff(const QString& receipt);
     // Read-back for the overlay trace: the provider currently serving the
     // logical controller, and its profile as the pseudonym the export uses -
     // never the raw profile string.
@@ -242,6 +247,9 @@ public:
     // cpo-o06c: mode + reason per application of the GameInput focus policy.
     // Bounded: the policy changes at most twice per overlay open/close.
     static constexpr int kMaxGameInputFocusTransitions = 16;
+    // cpo-o06e: one close contributes at most two handoff receipts (waiting,
+    // then its outcome), so the same bound covers a whole session's closes.
+    static constexpr int kMaxGameInputHandoffs = 16;
 
 private:
     struct Stamped {
@@ -300,6 +308,8 @@ private:
     QVector<Stamped> m_overlayTransitions;   // overlay show/hide only
     // cpo-o06c: GameInput focus-policy transitions (mode + reason), bounded.
     QVector<Stamped> m_gameInputFocusTransitions;
+    // cpo-o06e: the release handoff's receipts (stage + numbers), bounded.
+    QVector<Stamped> m_gameInputHandoffs;
     // cpo-o06a: the most recent full focus/controller record of each kind.
     // One per transition, kept as the already-formatted line.
     QString m_overlayShowTrace;

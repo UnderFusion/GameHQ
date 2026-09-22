@@ -269,6 +269,7 @@ gamehq_add_test(tst_inputdiagnostics
 # session, a game or a controller.
 gamehq_add_test(tst_overlayfocustrace
     tst_overlayfocustrace.cpp
+    "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoff.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayFocusTrace.cpp")
 
 # Verify + bounded-retry policy behind the overlay's foreground grab, driven
@@ -1270,6 +1271,25 @@ target_link_libraries(tst_presetswitch PRIVATE ${PRESET_SWITCH_LIBS})
 target_include_directories(tst_presetswitch PRIVATE "${CMAKE_SOURCE_DIR}/third_party/gameinput/include")
 target_compile_definitions(tst_presetswitch PRIVATE UNICODE _UNICODE)
 
+# cpo-o06e: the release handoff's source, at the input layer. Same engine stack
+# as the preset-switch suite (it drives the production edge publisher through a
+# synthetic XInput backend), so what is asserted is the engine's real bookkeeping
+# rather than a copy of it.
+gamehq_add_test(tst_inputreleasehandoff tst_inputreleasehandoff.cpp ${PRESET_SWITCH_SOURCES}
+    "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoff.cpp")
+target_link_libraries(tst_inputreleasehandoff PRIVATE ${PRESET_SWITCH_LIBS})
+target_include_directories(tst_inputreleasehandoff PRIVATE "${CMAKE_SOURCE_DIR}/third_party/gameinput/include")
+target_compile_definitions(tst_inputreleasehandoff PRIVATE UNICODE _UNICODE)
+
+# cpo-o06e: the bounded neutral-state handoff, with no desktop session and no
+# device: the one definition of "neutral", the held-control tracker and the
+# runner's order (wait while the pad is held, release exactly once afterwards).
+gamehq_add_test(tst_neutralhandoff
+    tst_neutralhandoff.cpp
+    "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoff.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoffRunner.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp")
+
 # cpo-p07: the game session IS the mapping game context. Same engine/runtime
 # sources as the switch suite, plus the real CurrentGameService session identity,
 # the GameDetector it reads, and the session->engine binder.
@@ -1322,6 +1342,8 @@ gamehq_add_test(tst_overlaynative
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayLifetimePolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayPresenter.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoff.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoffRunner.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp")
 target_link_libraries(tst_overlaynative PRIVATE Qt6::Gui Qt6::Quick Qt6::Qml Qt6::Multimedia user32)
 target_compile_definitions(tst_overlaynative PRIVATE

@@ -51,7 +51,21 @@ The acceptance question is a conjunction, recorded as `interactive-foreground`: 
 
 Foreground ownership is not game identity. The remembered window and pid stay the authoritative game context for presets, capture association, gallery identity, diagnostics and the eventual return of focus; `OverlayLifetimePolicy` already treats "the foreground is our own overlay" as `Ignore`, and `sameProcessAsGame` excludes GameHQ's own pid, so `GameHQ.exe` can never become "the current game" by holding the foreground for a while.
 
-Not in this step: the GameInput exclusive-foreground policy (`cpo-o06c` — now done, and measured from an external process by `cpo-o06d`; see `docs/controller-input.md` and `tools/input-receiver/README.md`), and the neutral-state handoff that must stop a held button from reaching the game on close (`cpo-o06e`). Closing currently returns the foreground plainly, with no neutral-state wait.
+Not in this step: the GameInput exclusive-foreground policy (`cpo-o06c` — done, and measured from an external process by `cpo-o06d`; see `docs/controller-input.md` and `tools/input-receiver/README.md`), and the **neutral-state handoff** (`cpo-o06e` — implemented; see "Closing with a held control" below): a close with the exclusive policy in force waits, inside a bound, for the pad to be physically neutral before it releases the policy and hands the foreground back.
+
+### Closing with a held control (`cpo-o06e`)
+
+Closing while a control is still held used to expose that held state the instant the policy was dropped and the foreground went back. The close is now a two-stage transition:
+
+1. `ReleasingInput`: the close begins and `InputEngine::setOverlayReleaseActive(true)` stops the overlay input path from producing actions (navigation repeat cancelled, pending gestures invalidated) — while the physical state keeps being tracked, because that is exactly what the wait is waiting for.
+2. The exclusive policy **stays in force** while the close polls the pad every 10 ms, up to a 400 ms bound. Releasing first and waiting afterwards would expose precisely the state the wait exists to hide.
+3. On neutral — or on the bound expiring — the policy is restored, then the foreground goes back, then the window hides. `OverlayManager` completes every close from one place, so each exit path releases exactly once.
+
+"What is held" is one definition, in `src/input/HeldControlTracker.h`: the raw press/release edges the backends publish, before any routing, so a control that never fired an action still counts, and a device that goes away takes its held controls with it — a controller that no longer exists cannot deliver the release, and a handoff must not wait for a ghost. Thresholds are not re-invented: whichever deadzone or trigger threshold the active backend applied in order to publish the edge is the one the wait respects.
+
+A close that nothing could leak through does not wait, and says why: the desktop handoff (`hideForDesktopHandoff`) gives the foreground to GameHQ's own window rather than the game, a game window that is gone or minimized is not a hand-back target, and a close with no exclusive policy in force has nothing to defer.
+
+The wait is honest about its limits. A pad that never reaches neutral inside the bound completes the close anyway — restores the policy and the foreground — and records `neutral-handoff=timeout` together with what was still held. Nothing is ever synthesized into the game, and a timeout is never written as a clean handoff.
 
 ### Focus and controller record (`cpo-o06a`)
 
@@ -62,7 +76,7 @@ An open record carries the game window and the overlay window as Windows describ
 Two fields exist to stop the record from overstating itself:
 
 - `isolation=not measured in-process` appears on **every** open record, including one where the overlay owns the foreground. Whether the game still receives the controller cannot be observed from inside GameHQ; it needs a separate receiver process (`cpo-o06d`).
-- `neutral-handoff=not implemented` stays until `cpo-o06e` builds the handoff, rather than leaving the field blank and reading as a pass.
+- The close record's `neutral-handoff` field carries the handoff's receipt, in the one vocabulary the log, the diagnostics timeline and the close line share (`ModernInput::neutralHandoffReceipt`): `passed duration_ms=… polls=…`, `timeout duration_ms=… polls=… held="…"`, `released-elsewhere …`, `not-engaged (…)`. A clean handoff, a timeout and a close that never needed to wait can therefore never read as the same thing, and the field is never blank.
 
 `OverlayManager` is the only place the Win32 facts are read, so the record itself is pure and `tests/tst_overlayfocustrace.cpp` pins the formatting and the derived verdicts without a desktop session, a game or a controller. `ProductionGameInputApi` reports the focus policy it applies — today background input plus background Guide and Share, with no exclusive-foreground flags — so the export states the policy in force rather than the one inferred from the class name.
 

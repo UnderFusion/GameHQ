@@ -6,6 +6,18 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.42] - 2026-09-22
+
+### Added
+
+- The overlay now hands the controller back **cleanly** (`cpo-o06e`): closing it while a button, trigger or thumbstick direction is still held waits — inside a 400 ms bound, polled every 10 ms — for the pad to become physically neutral before the exclusive GameInput policy is released and the foreground goes back to the game. A held state can therefore no longer be exposed to the game by the hand-back itself, and no synthetic release event is ever pushed into it. "Held" is one definition (`src/input/HeldControlTracker.h`): the raw press/release edges the backends publish, before any routing, so a control that fired no action still counts — and a controller that disappears takes its held controls with it instead of making the wait run out its bound.
+
+### Changed
+
+- Every close records a **receipt** for that transition — `neutral-handoff=passed duration_ms=… polls=…`, `=timeout duration_ms=… polls=… held="…"`, `=released-elsewhere …` (another path restored the policy first) or `=not-engaged (…)` with the reason it did not need to (desktop handoff, no hand-back target, no policy in force) — in the log line, the diagnostics timeline and the overlay close record alike. A timeout completes the close honestly rather than claiming a clean handoff.
+- Closes that nothing could leak through keep their immediate behaviour: the desktop summon (`hideForDesktopHandoff`), a game window that is gone or minimized, and any close with no exclusive policy in force.
+- `docs/overlay.md` and `docs/controller-input.md` document the order (wait first, release after), the bound, the disconnect rule and the receipt vocabulary.
+
 ## [0.7.41] - 2026-09-22
 
 ### Added

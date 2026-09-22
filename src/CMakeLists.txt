@@ -43,9 +43,12 @@ qt_add_executable(GameHQ
     gameinput/ProductionGameInputApi.cpp gameinput/ProductionGameInputApi.h
     gameinput/GameInputLabelMap.h
     gameinput/StandardControlMap.h
+    gameinput/NeutralHandoff.cpp gameinput/NeutralHandoff.h
+    gameinput/NeutralHandoffRunner.cpp gameinput/NeutralHandoffRunner.h
     games/GameDetector.cpp games/GameDetector.h
     input/HotkeyManager.cpp input/HotkeyManager.h
     input/Gamepad.h
+    input/HeldControlTracker.h
     input/StickNav.h
     input/SonyReportLayout.h
     input/ActionCatalog.cpp input/ActionCatalog.h

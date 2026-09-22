@@ -15,6 +15,9 @@
 #include <memory>
 #include <vector>
 
+#include "gameinput/NeutralHandoff.h"
+#include "input/HeldControlTracker.h"
+
 class ConfigManager;
 class CaptureDatabase;
 class Gamepad;
@@ -44,7 +47,7 @@ namespace ModernInput { class GameInputRouter; class GameInputFocusController; }
 // device-topology hint triggers XInput/WinMM rescans, so pads appearing in
 // those APIs are picked up event-driven instead of by hot polling.
 // Exposed to QML as "input" for the Settings input-test screen.
-class InputEngine : public QObject
+class InputEngine : public QObject, public ModernInput::NeutralHandoffSource
 {
     Q_OBJECT
     Q_PROPERTY(QString lastInput READ lastInput NOTIFY lastInputChanged)
@@ -113,6 +116,15 @@ public slots:
     // which hands it to the runtime session. Never allows a second owner: the
     // pointer is only forwarded.
     void setGameInputFocusController(ModernInput::GameInputFocusController* controller);
+
+    // ---------------------------------------------------------------- cpo-o06e
+    // The release handoff's source (ModernInput::NeutralHandoffSource). What is
+    // held right now comes from the raw edges this engine receives, before any
+    // routing; setOverlayReleaseActive() stops overlay input from producing
+    // further actions while a close waits for neutral, without ever releasing a
+    // control synthetically. The overlay only asks.
+    ModernInput::NeutralHandoffSample sampleNeutralPadState() const override;
+    void setOverlayReleaseActive(bool active) override;
     // Desktop gallery window's OS focus state (Main.qml binds this to
     // window.active). Pad navigation only reaches the desktop window while
     // it's genuinely the foreground window — same "never steal the pad from
@@ -210,6 +222,7 @@ signals:
 
 private:
     friend class InputEngineShutdownTest;
+    friend class InputReleaseHandoffTest;
     friend class ControllerClipE2ETest;
     friend class PresetSwitchTest;
     friend class GameSessionPresetTest;
@@ -367,6 +380,13 @@ private:
     QHash<Gamepad*, QSet<QString>> m_legacyObservedIds;
     QHash<QString, QStringList> m_profileMigrationAliases;
     QSet<QString> m_legacyViewFallbackHeld;
+    // cpo-o06e: which controls are held right now, fed from the raw edges before
+    // any routing; the release handoff's whole evidence base.
+    HeldControlTracker m_held;
+    // True for the duration of a close's release handoff: presses stop
+    // producing actions while the wait observes the pad (releases keep flowing,
+    // they only ever close things).
+    bool m_overlayReleaseActive = false;
     std::unique_ptr<ModernInput::GameInputRouter> m_gameInput;
     // cpo-o06c: non-owning. The controller is owned by App so that it outlives
     // both the input stack and the overlay that requests transitions from it.
