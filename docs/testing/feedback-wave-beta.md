@@ -23,10 +23,10 @@ recorded when this build was packaged:
 | Field | Value |
 |---|---|
 | Version | 0.7.43 |
-| Source commit | 2bf126d7302978b971e0fd994e0c97d8a3651b3f (dev) |
+| Source commit | 75ddf417ea114bb89803a43fc0a52c8df4c6759a (dev) |
 | Product tree at packaging | clean - compiled and packaged inputs match the commit |
 | Package | GameHQ-0.7.43-feedback-wave-beta-portable.zip |
-| Package SHA-256 | `101fe08cb82f7763279f017ab1a622eb986ab829a306d57a818853f85bd8f244` |
+| Package SHA-256 | `eb79c915bbb15725ce353b8213d3eb780e0c461d6f5664263c5ce62ff613654f` |
 | `GameHQ.exe` (root launcher) SHA-256 | `577f2cee4d536e57dde24d6516361fcdc4481961814163e60b9c84600fd7f695` |
 | `app\GameHQ.exe` SHA-256 | `3fe9d1d35af5f33798279e2807f08503cd7f71698517113b7c0ff0465c8d6141` |
 | Build | Release - Ninja - MinGW-w64 GCC 13.1.0 - Qt 6.8.3 mingw_64 |
@@ -35,6 +35,16 @@ The launcher hash is unchanged from the previous beta on purpose: the launcher
 is a stable stub that starts `app\GameHQ.exe` and carries no version of its own,
 so its bytes are expected to stay identical across versions. Everything that
 identifies this build is in `app\GameHQ.exe` and `beta-manifest.json`.
+
+The archive was re-created at the commit above after the earlier package (source
+`2bf126d`, SHA-256 `101fe08cb82f7763279f017ab1a622eb986ab829a306d57a818853f85bd8f244`)
+had been recorded; the difference between the two commits is documentation only,
+and the payload is byte-identical - all 1421 files compared one by one, with
+`app\GameHQ.exe` unchanged. Archive bytes are not reproducible run to run (the
+same payload re-zipped gives a different SHA-256), so the value above, together
+with `beta-manifest.json`, identifies exactly this delivered file. These
+instructions and the two checklists are delivered beside the ZIP, never inside
+it, and are updated in place after the archive is built.
 
 Verify the ZIP hash before testing:
 
