@@ -41,6 +41,8 @@ public:
     // lightbox viewer), which cannot call the protected data()/index() pair
     // by role id directly.
     Q_INVOKABLE QVariantMap get(int row) const;
+    // Row of the capture at filePath in the current filter, or -1.
+    Q_INVOKABLE int rowOf(const QString& filePath) const;
 
     QString category() const { return m_category; }
     int gameId() const { return m_gameId; }

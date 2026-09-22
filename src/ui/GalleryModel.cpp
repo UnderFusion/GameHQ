@@ -97,6 +97,17 @@ const CaptureRecord* GalleryModel::record(int row) const
     return &m_items.at(row);
 }
 
+int GalleryModel::rowOf(const QString& filePath) const
+{
+    if (filePath.isEmpty())
+        return -1;
+    for (int row = 0; row < m_items.size(); ++row) {
+        if (m_items.at(row).filePath == filePath)
+            return row;
+    }
+    return -1;
+}
+
 QVariantMap GalleryModel::get(int row) const
 {
     const CaptureRecord* r = record(row);

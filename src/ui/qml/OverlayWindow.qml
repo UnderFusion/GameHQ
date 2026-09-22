@@ -54,10 +54,11 @@ Window {
     // deletes a capture with no menu visibly just having been opened.
     onVisibleChanged: {
         if (!overlayWindow.visible) {
+            content.rememberSelection()
             content.menuOpen = false
             content.menuIndex = 0
             content.stopVideoFocus()
-        } else {
+        } else if (!content.restoreSelection()) {
             content.selectDefaultSection()
         }
     }
@@ -185,6 +186,37 @@ Window {
             const f = SidebarCategories.resolveFilter(content.categories[idx].key, gameId)
             overlayGallery.setFilter(f.category, f.gameId)
             strip.currentIndex = 0
+        }
+
+        // Reopening returns to the capture the user left on (same sidebar entry,
+        // same item) while the foreground game is unchanged. A capture made in
+        // the meantime becomes the newest row, and then the strip starts on it.
+        property var savedSelection: null
+        function rememberSelection() {
+            const current = overlayGallery.get(strip.currentIndex)
+            const newest = overlayGallery.get(0)
+            content.savedSelection = {
+                gameId: app.currentGameAvailable ? app.currentGameId : -1,
+                sidebarIndex: content.sidebarIndex,
+                category: overlayGallery.category,
+                filterGameId: overlayGallery.gameId,
+                selectedPath: current.filePath || "",
+                newestPath: newest.filePath || ""
+            }
+        }
+        function restoreSelection() {
+            const saved = content.savedSelection
+            content.savedSelection = null
+            const gameId = app.currentGameAvailable ? app.currentGameId : -1
+            if (!saved || saved.gameId !== gameId
+                    || saved.sidebarIndex >= content.totalSidebarCount())
+                return false
+            overlayGallery.setFilter(saved.category, saved.filterGameId)
+            content.sidebarIndex = saved.sidebarIndex
+            const newestNow = overlayGallery.get(0).filePath || ""
+            const row = newestNow === saved.newestPath ? overlayGallery.rowOf(saved.selectedPath) : -1
+            strip.currentIndex = Math.max(0, row)
+            return true
         }
 
         function sidebarStep(direction) {
