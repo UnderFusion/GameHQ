@@ -919,7 +919,7 @@ void FramePumpWorker::captureScreenshotOnWorker(quint64 generation, quint64 requ
 bool FramePumpWorker::saveGuard(const QString& saveId)
 {
     checkReplayReadiness();
-    if (m_bufferState != ReplayBufferState::Ready) {
+    if (!ReplayBufferState::canSave(m_bufferState)) {
         emit clipFailed(QStringLiteral("Replay"), ReplayBufferState::saveRejection(m_bufferState));
         return false;
     }
@@ -1150,6 +1150,8 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot, quint64 g
     if (!saveGuard(saveId))
         return;
 
+    // Recording may contain a short first segment, even before Ready. Freeze
+    // finalizes that footage and rejects an empty/unusable snapshot itself.
     SegmentLease lease = freezeRing(saveId);
     if (lease.isEmpty())
         return;

@@ -858,8 +858,8 @@ gamehq_add_test(tst_capturepublisher
     tst_capturepublisher.cpp
     "${CMAKE_SOURCE_DIR}/src/capture/CapturePublisher.cpp")
 
-# Actual recorder restore/trim and export-task lifetime with file fixtures;
-# no capture device, encoder or muxer execution.
+# Recorder restore/trim and export-task lifetime with file fixtures, plus
+# partial-segment encoding with a synthetic D3D texture (no capture device).
 gamehq_add_test(tst_segmentrecorder
     tst_segmentrecorder.cpp
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentRecorder.cpp"
@@ -1354,7 +1354,7 @@ gamehq_add_test(tst_overlaynative
     "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoffRunner.cpp"
     "${CMAKE_SOURCE_DIR}/src/gameinput/IsolationCapability.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp")
-target_link_libraries(tst_overlaynative PRIVATE Qt6::Gui Qt6::Quick Qt6::Qml Qt6::Multimedia user32)
+target_link_libraries(tst_overlaynative PRIVATE Qt6::Gui Qt6::Quick Qt6::Qml Qt6::Multimedia user32 dwmapi)
 target_compile_definitions(tst_overlaynative PRIVATE
     GAMEHQ_TARGET_FIXTURE="$<TARGET_FILE:overlay_target_fixture>")
 add_dependencies(tst_overlaynative overlay_target_fixture)

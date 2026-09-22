@@ -313,17 +313,20 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                                    control);
             });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::sessionFallback,
-            this, [this](const QString&) {
+            this, [this](const QString& reason) {
+                traceProviderLifecycle(QStringLiteral("fallback: ") + reason);
                 stopNavRepeat();
                 m_runtime->cancelAll();
                 m_legacyViewFallbackHeld.clear();
             });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::lifecycleReset,
-            this, [this](const QString& logicalId, const QString&) {
+            this, [this](const QString& logicalId, const QString& reason) {
+                traceProviderLifecycle(QStringLiteral("reset-before: ") + reason);
                 // cpo-o06e: the device is gone, so whatever it was holding went
                 // with it — a handoff must not wait for a controller that cannot
                 // deliver the release.
                 m_held.noteDeviceGone(gameInputDeviceKey(logicalId));
+                traceProviderLifecycle(QStringLiteral("reset-after: ") + reason);
                 stopNavRepeat();
                 m_runtime->cancelAll();
                 m_legacyViewFallbackHeld.clear();
@@ -333,17 +336,22 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 m_held.noteDeviceGone(gameInputDeviceKey(previous));
                 m_held.noteDevicePresent(gameInputDeviceKey(logicalId));
                 configureLogicalProfile(logicalId, {previous});
+                traceProviderLifecycle(QStringLiteral("rekey"));
             });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::statusChanged,
             this, &InputEngine::modernControllerChanged);
+    connect(m_gameInput.get(), &ModernInput::GameInputRouter::statusChanged,
+            this, [this] { traceProviderLifecycle(QStringLiteral("runtime-status")); });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::deviceConnected,
             this, [this](const QString& logicalId, bool) {
                 m_held.noteDevicePresent(gameInputDeviceKey(logicalId));
+                traceProviderLifecycle(QStringLiteral("GameInput-attached"));
                 emit modernControllerChanged();
             });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::deviceDisconnected,
             this, [this](const QString& logicalId) {
                 m_held.noteDeviceGone(gameInputDeviceKey(logicalId));
+                traceProviderLifecycle(QStringLiteral("GameInput-detached"));
                 emit modernControllerChanged();
             });
 
@@ -646,6 +654,7 @@ void InputEngine::attachGamepad(std::unique_ptr<Gamepad> pad, const QString& dis
         }
         if (!c) {
             m_backendLastControlMs.remove(raw);
+            m_backendLastReleaseMs.remove(raw);
             m_backendCandidateFirstMs.remove(raw);
             if (m_pending.source == raw)
                 clearPendingCandidate();
@@ -706,6 +715,8 @@ void InputEngine::observeLegacyBackend(Gamepad* pad,
     configureLogicalProfile(logicalId,
                             previousLogical == logicalId ? QStringList{}
                                                          : QStringList{previousLogical});
+    if (previousLogical != logicalId)
+        traceProviderLifecycle(QStringLiteral("legacy-observed"));
 }
 
 void InputEngine::removeLegacyBackend(Gamepad* pad, const QString& providerDeviceId)
@@ -726,6 +737,7 @@ void InputEngine::removeLegacyBackend(Gamepad* pad, const QString& providerDevic
     }
     if (m_legacyObservedIds.value(pad).isEmpty())
         m_legacyObservedIds.remove(pad);
+    traceProviderLifecycle(QStringLiteral("legacy-removed"));
 }
 
 QString InputEngine::canonicalProfile(Gamepad* pad, const QString& providerDeviceId) const
@@ -874,8 +886,14 @@ void InputEngine::resolvePendingCandidate(int generation)
         return;
     }
     const auto activeIt = m_backendLastControlMs.constFind(m_activeBackend);
-    const qint64 activeLastMs = activeIt != m_backendLastControlMs.cend()
+    qint64 activeLastMs = activeIt != m_backendLastControlMs.cend()
         ? *activeIt : std::numeric_limits<qint64>::min();
+    const auto releases = m_backendLastReleaseMs.constFind(m_activeBackend);
+    if (releases != m_backendLastReleaseMs.cend()) {
+        const auto released = releases->constFind(m_pending.controlId);
+        if (released != releases->cend())
+            activeLastMs = qMax(activeLastMs, *released);
+    }
     if (!ControllerArbitration::heldPressSurvives(m_pending.pressedMs, activeLastMs,
                                                   m_controllerClock.elapsed())) {
         clearPendingCandidate();   // the active backend answered after all
@@ -897,6 +915,13 @@ void InputEngine::replayPendingPress(const PendingPress& press)
     // Replayed back to back so a tap stays a tap: the runtime measures hold
     // time from the press it just saw, and this release arrives immediately.
     if (press.released) {
+        // The buffered press entered the capability router too. Close that
+        // cycle before releasing the recognizer, or the next real PS/Share
+        // press is mistaken for an echo of a button still held.
+        if ((press.controlId == ControlId::Capture || press.controlId == ControlId::Guide)
+            && !routeLegacySystemEdge(press.source, press.fingerprint,
+                                      press.controlId, false))
+            return;
         m_runtime->release(QStringLiteral("controller"),
                            canonicalProfile(press.source, press.fingerprint),
                            press.controlId);
@@ -1025,6 +1050,26 @@ void InputEngine::publishControllerRouting()
     InputDiagnostics::instance().setControllerRouting(
         m_activeBackend ? backendDisplayName(m_activeBackend) : QStringLiteral("none"),
         m_lastBackendSwitchReason, lines);
+}
+
+void InputEngine::traceProviderLifecycle(const QString& event)
+{
+    const QString context = QStringLiteral("overlay=%1 releasing=%2 held=%3 attached=%4 policy=%5 runtime=%6")
+        .arg(m_overlayVisible).arg(m_overlayReleaseActive).arg(m_held.heldCount())
+        .arg(m_gameInputFocus && m_gameInputFocus->policyAttached())
+        .arg(m_gameInputFocus ? m_gameInputFocus->focusModeName() : QStringLiteral("none"),
+             m_gameInput ? m_gameInput->runtimeStatus() : QStringLiteral("none"));
+    auto& diag = InputDiagnostics::instance();
+    diag.noteProviderTransition(event, QStringLiteral("summary"), {}, {}, {}, {}, {}, context);
+    for (const auto& controller : m_providers.registry().controllers()) {
+        for (const auto& attachment : controller.providers) {
+            diag.noteProviderTransition(event, QString::number(int(attachment.provider)),
+                attachment.providerDeviceId, controller.logicalId, controller.containerId,
+                controller.endpointId, controller.topologyRoot,
+                QStringLiteral("model=%1 evidence=%2 %3").arg(controller.modelFingerprint)
+                    .arg(int(attachment.evidence)).arg(context));
+        }
+    }
 }
 
 // The mapping half of the one-click export: the current winner per tracked
@@ -1180,6 +1225,19 @@ void InputEngine::onControlPressed(const QString& controlId, int family,
 
     const qint64 now = m_controllerClock.elapsed();
     if (source != m_activeBackend) {
+        // A polled mirror can arrive after the raw provider has already
+        // released this control. Measure this same-control duplicate window
+        // from the release as well as the press; otherwise a slow mirror is
+        // buffered and replays a second toggle after candidate confirmation.
+        const auto releases = m_backendLastReleaseMs.constFind(m_activeBackend);
+        if (releases != m_backendLastReleaseMs.cend()) {
+            const auto released = releases->constFind(controlId);
+            if (released != releases->cend()
+                && now - *released <= ControllerArbitration::BackendDuplicateWindowMs) {
+                ++m_mirrorWindowDrops;
+                return;
+            }
+        }
         const auto activeIt = m_backendLastControlMs.constFind(m_activeBackend);
         // Same fingerprint on a higher-priority backend = the same physical
         // pad reached us over a better path (Sony Raw Input and WinMM both
@@ -1308,6 +1366,8 @@ void InputEngine::onControlReleased(const QString& controlId, int, const QString
     // — this is what lets a close's handoff observe the pad become neutral.
     if (source)
         m_held.noteReleased(legacyDeviceKey(source), controlId);
+    if (source && backendConnected(source))
+        m_backendLastReleaseMs[source].insert(controlId, m_controllerClock.elapsed());
     // A release for a press still waiting on confirmation is remembered, not
     // forwarded: the press has not been delivered yet, so there is nothing to
     // release. Recording it is what keeps a tap a tap — on promotion the pair
@@ -1319,6 +1379,10 @@ void InputEngine::onControlReleased(const QString& controlId, int, const QString
         return;
     }
     if (source != m_activeBackend) {
+        // Backend promotion cancels gestures, but not the shared system-button
+        // cycle. Its original provider must still be allowed to close it.
+        if (source && (controlId == ControlId::Capture || controlId == ControlId::Guide))
+            routeLegacySystemEdge(source, fingerprint, controlId, false);
         // cpo-p05: a route that is no longer the active backend can still be
         // the one holding a switch gate - a provider failover mid-press must
         // not leave that gate armed forever. Its real release closes it, and

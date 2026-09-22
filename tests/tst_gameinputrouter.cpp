@@ -42,6 +42,78 @@ class GameInputRouterTest : public QObject
     Q_OBJECT
 
 private slots:
+    void degradedSystemButtonsPreserveFallbackAndDeviceIdentity()
+    {
+        ProviderIntegration integration;
+        const auto caps = ControllerCapability::StandardControls
+            | ControllerCapability::SystemShare | ControllerCapability::Guide;
+        const QString legacyId = integration.observeLegacy(ControllerProvider::SonyRaw,
+            QStringLiteral("physical"), {}, QStringLiteral("DualSense"), caps,
+            nullptr, {}, {}, QStringLiteral("pnp.root.device-a"));
+        auto api = std::make_unique<FakeGameInputApi>();
+        auto* raw = api.get();
+        raw->setRegistrationFailure(FakeGameInputApi::Kind::System);
+        GameInputFocusController focus;
+        GameInputRouter router(std::move(api));
+        router.setProviderIntegration(&integration);
+        router.setFocusController(&focus);
+        QSignalSpy connected(&router, &GameInputRouter::deviceConnected);
+        QSignalSpy disconnected(&router, &GameInputRouter::deviceDisconnected);
+        QSignalSpy fallback(&router, &GameInputRouter::sessionFallback);
+        QVERIFY(router.start());
+        auto physical = makeEvent(GameInputEventKind::DeviceAdded);
+        physical.device.containerId.clear(); // correlate by root, upgrade to app-local identity
+        raw->emitDevice(physical);
+        QTRY_COMPARE(connected.size(), 1);
+        const QString rootId = router.registry().logicalIdFor(ControllerProvider::GameInput, physical.deviceId);
+        QVERIFY(!rootId.isEmpty());
+        QVERIFY(rootId != legacyId);
+        physical.kind = GameInputEventKind::CapabilityChanged;
+        physical.device.containerId = QStringLiteral("container-a");
+        raw->emitDevice(physical);
+        QTRY_COMPARE(router.registry().controller(router.registry().logicalIdFor(
+            ControllerProvider::GameInput, physical.deviceId))->containerId, QStringLiteral("container-a"));
+        const QString physicalId = router.registry().logicalIdFor(ControllerProvider::GameInput, physical.deviceId);
+        QCOMPARE(physicalId, rootId); // metadata enrichment must not create another controller
+        QCOMPARE(router.registry().logicalIdFor(ControllerProvider::SonyRaw, QStringLiteral("physical")), physicalId);
+        QVERIFY(focus.requestExclusiveForeground(QStringLiteral("test-interactive")));
+
+        for (int cycle = 0; cycle < 2; ++cycle) {
+            auto virtualPad = makeEvent(GameInputEventKind::DeviceAdded);
+            virtualPad.deviceId = QStringLiteral("virtual-%1").arg(cycle);
+            virtualPad.device.deviceId = virtualPad.deviceId;
+            virtualPad.device.containerId = QStringLiteral("virtual-container");
+            virtualPad.device.rootId = QStringLiteral("virtual-root");
+            raw->emitDevice(virtualPad);
+            QTRY_COMPARE(connected.size(), cycle + 2);
+            const QString virtualId = router.registry().logicalIdFor(ControllerProvider::GameInput, virtualPad.deviceId);
+            QVERIFY(virtualId != physicalId);
+            virtualPad.kind = GameInputEventKind::DeviceRemoved;
+            raw->emitDevice(virtualPad);
+            QTRY_COMPARE(disconnected.size(), cycle + 1);
+            QVERIFY(!router.registry().controller(virtualId)->connected());
+            QCOMPARE(router.registry().logicalIdFor(ControllerProvider::GameInput, physical.deviceId), physicalId);
+            QVERIFY(focus.exclusiveForegroundActive());
+            QVERIFY(router.active());
+
+            physical.kind = GameInputEventKind::Reading;
+            physical.standardButtons = cycle + 1;
+            raw->emitReading(physical);
+            QTRY_COMPARE(router.shadowReadingCount(), cycle + 1);
+            for (const QString& control : {ControlId::Capture, ControlId::Guide}) {
+                QVERIFY(integration.routeLegacySystemEdge(ControllerProvider::SonyRaw,
+                    QStringLiteral("physical"), control, true, 1000 + cycle * 100).accepted);
+                QVERIFY(integration.routeLegacySystemEdge(ControllerProvider::SonyRaw,
+                    QStringLiteral("physical"), control, false, 1050 + cycle * 100).accepted);
+            }
+        }
+        QCOMPARE(fallback.size(), 0);
+        QVERIFY(!raw->callLog().contains(QStringLiteral("unload")));
+        router.shutdown();
+        QVERIFY(!focus.policyAttached());
+        QVERIFY(!focus.exclusiveForegroundActive());
+    }
+
     void offNeverLoadsTheRuntime()
     {
         auto api = std::make_unique<FakeGameInputApi>();

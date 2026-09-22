@@ -343,7 +343,7 @@ target_link_libraries(GameHQ PRIVATE
     Qt6::Multimedia Qt6::Network
     # `hid` backs the selective Raw HID fallback's report parsing
     # (RIDI_PREPARSEDDATA + HidP_GetUsages in RawInputApi.cpp).
-    user32 gdi32 version winmm cfgmgr32 hid
+    user32 gdi32 version winmm cfgmgr32 hid dwmapi
     # 0.5 Windows Graphics Capture frame pump (WinRT raw-ABI path, no cppwinrt).
     windowsapp runtimeobject ole32 oleaut32 d3d11 dxgi dxguid uuid
     # t24 experimental HDR tone-map shader (runtime HLSL compile via D3DCompile).

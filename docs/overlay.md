@@ -1,9 +1,23 @@
 # Overlay Design
 
+Owner acceptance update (2026-09-22): native wired DualSense visibility,
+navigation isolation, held-input close, recovery, repeated cycles and Alt-Tab
+behavior passed as reported by the owner. Game names/build hash and unrelated
+preset/capture cases were not supplied. DSX switching remains partial. The
+abnormal-kill experiment was skipped by the owner with residual risk accepted,
+not passed. See [the evidence and focused DSX retest](testing/dsx-switching-0.7.8.md).
+
 > GameHQ is primarily an in-game overlay, without injection into game processes.
 
 ## Behavior contract
 
+- A target that is topmost when opened becomes the temporary owner of GameHQ's
+  overlay popup. This keeps a borderless game that drops topmost on focus loss
+  directly beneath the overlay instead of below unrelated applications. Only
+  the overlay's owner field is written; the game is not reparented or restyled.
+  Ownership follows a validated replacement game window and is cleared on
+  close. If owner demotion also removes the overlay's topmost flag, GameHQ
+  repairs its own window once during the opening probe without taking focus.
 - PS, `Ctrl+Shift+G`, or the Share double-tap fallback toggles the overlay.
 - Opening remembers the foreground game — its window **and its process id** — and shows a frameless, topmost tool window on the game's monitor without activating it.
 - **The overlay then asks for the foreground (`cpo-o06b`).** Presentation stays non-activating; one explicit, bounded request (1 attempt + 2 retries, never a timer or frame loop) follows it, so the overlay becomes the active window and the keyboard and controller drive the overlay. The game window is never minimised, restored or restyled, and nothing is injected into it. A game that takes the foreground back keeps it — GameHQ does not fight for it. When Windows denies the request the overlay stays exactly as presentation left it: visible, topmost and non-activating, with the in-overlay warning still up. Closing hands the foreground back to the remembered game, but only when the overlay is the window still holding it.
@@ -256,3 +270,19 @@ rebind-and-reposition path it would exercise is decided by
 `overlay/OverlayLifetimePolicy` and covered by `tst_overlaylifetime`). Physical
 gamepad delivery is not part of this harness: it needs a real device and stays
 with controller acceptance.
+
+When a game disappears behind the overlay, `visible=1 iconic=0` alone does not
+prove its picture remains visible. The existing post-show probe also records
+DWM `cloaked` state and, for its first three seconds, up to four overlapping
+windows above the game (excluding the overlay), with handles, PIDs, owners and
+rectangles, but no window titles. Enumeration stops at the game or after 128
+windows; `game-reached=0` means the sample is incomplete. Candidates may be
+transparent and are not proof of occlusion. These observations never change
+focus, z-order, game styles, input policy or handoff behavior.
+
+The 2026-09-22 Great Circle comparison reproduced the drop with a separate
+foreground popup making no GameInput calls. Giving that popup the game as its
+owner kept the game above the other application windows; reasserting only the
+popup's topmost position preserved foreground on the popup and left the game
+non-topmost. This establishes focus loss as sufficient to reproduce the issue,
+without blaming GameInput exclusivity or claiming why an earlier session differed.

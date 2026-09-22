@@ -10,6 +10,7 @@
 #include <QMutex>
 #include <QMutexLocker>
 #include <QVarLengthArray>
+#include <QDebug>
 
 #include <atomic>
 #include <memory>
@@ -182,8 +183,13 @@ public:
                                                       &Impl::systemButtonCallback,
                                                       &token);
         }
-        if (FAILED(hr) || token == 0)
+        if (FAILED(hr) || token == 0) {
+            qWarning().noquote() << QStringLiteral("GameInput callback registration failed: kind=%1 hr=0x%2 token=%3")
+                .arg(kind == CallbackKind::Device ? QStringLiteral("device")
+                    : kind == CallbackKind::Reading ? QStringLiteral("reading") : QStringLiteral("system-button"))
+                .arg(quint32(hr), 8, 16, QLatin1Char('0')).arg(quint64(token));
             return 0;
+        }
 
         QMutexLocker lock(&mutex);
         callbacks.emplace(quint64(token), std::move(context));

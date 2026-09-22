@@ -13,6 +13,7 @@
 #include "storage/CaptureDatabase.h"
 
 #include <algorithm>
+#include <QDebug>
 
 namespace ModernInput {
 
@@ -95,6 +96,7 @@ bool GameInputRouter::start()
     if (!m_wrapper->start(error)) {
         m_runtimeStatus = error.isEmpty() ? QStringLiteral("Unavailable") : error;
         m_failedForSession = true;
+        qWarning().noquote() << "GameInput startup failed:" << m_runtimeStatus;
         emit statusChanged();
         emit sessionFallback(m_runtimeStatus);
         return false;
@@ -186,15 +188,19 @@ QString GameInputRouter::observeDevice(const GameInputDeviceDescriptor& device)
     observation.capabilities = ControllerCapability::StandardControls;
     for (const QString& control : StandardControlMap::controlsFor(0xFFFFFFFFu))
         observation.controls.insert(control);
+    // Hardware support is insufficient when this session could not register
+    // the system callback. Do not displace a working legacy Guide/Share path.
+    const quint32 systemButtons = m_wrapper->systemButtonsAvailable()
+        ? device.supportedSystemButtons : 0;
     // Each system button is granted individually: a Guide-only pad must not
     // be reported (or routed) as Share-capable, and vice versa.
-    if (device.supportedSystemButtons & SystemControlMap::Share)
+    if (systemButtons & SystemControlMap::Share)
         observation.capabilities |= ControllerCapability::SystemShare;
-    if (device.supportedSystemButtons & SystemControlMap::Share)
+    if (systemButtons & SystemControlMap::Share)
         observation.controls.insert(ControlId::Capture);
-    if (device.supportedSystemButtons & SystemControlMap::Guide)
+    if (systemButtons & SystemControlMap::Guide)
         observation.capabilities |= ControllerCapability::Guide;
-    if (device.supportedSystemButtons & SystemControlMap::Guide)
+    if (systemButtons & SystemControlMap::Guide)
         observation.controls.insert(ControlId::Guide);
     if (device.extraButtonCount > 0)
         observation.capabilities |= ControllerCapability::ExtraControls;
@@ -221,7 +227,9 @@ QString GameInputRouter::observeDevice(const GameInputDeviceDescriptor& device)
     InputDiagnostics::instance().noteDevice(
         QStringLiteral("%1:%2").arg(device.vendorId, 4, 16, QLatin1Char('0'))
                                   .arg(device.productId, 4, 16, QLatin1Char('0')),
-        device.displayName, QStringLiteral("GameInput shadow; system buttons routed"));
+        device.displayName, m_wrapper->systemButtonsAvailable()
+            ? QStringLiteral("GameInput shadow; system buttons routed")
+            : QStringLiteral("GameInput shadow; Guide/Share callback unavailable; existing providers only"));
     if (firstObservation)
         emit statusChanged();
     return logicalId;
@@ -564,6 +572,7 @@ void GameInputRouter::failSession(const QString& reason)
 {
     if (m_failedForSession)
         return;
+    qWarning().noquote() << "GameInput session fallback:" << reason;
     m_wrapper->shutdown();
     m_active = false;
     m_failedForSession = true;

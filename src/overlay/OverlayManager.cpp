@@ -13,10 +13,12 @@
 #include <QQmlApplicationEngine>
 #include <QQuickWindow>
 #include <QScreen>
+#include <QStringList>
 #include <QTimer>
 #include <QDebug>
 
 #include <windows.h>
+#include <dwmapi.h>
 
 namespace {
 // The two acquisition phases, spelled once: ForegroundAcquirer logs them and
@@ -140,6 +142,8 @@ OverlayManager::OverlayManager(QQmlApplicationEngine* engine, ForegroundApi* for
 
 OverlayManager::~OverlayManager()
 {
+    m_groupWithGame = false;
+    syncGameWindowOwner();
     // A close that never finished must not keep the input layer quiesced.
     m_releaseHandoff->cancel();
     if (m_focusHook)
@@ -193,6 +197,7 @@ bool OverlayManager::ensureLoaded()
     connect(m_window, &QWindow::screenChanged, this, [this] {
         if (!isVisible() || !m_presenter)
             return;
+        syncGameWindowOwner();
         const OverlayPresentReport report = m_presenter->reassert();
         qInfo().noquote() << "Overlay: re-asserted after screen change |"
                           << report.toLogString();
@@ -231,6 +236,15 @@ void OverlayManager::show()
     // game identity.
     m_previousForeground = GetForegroundWindow();
     m_previousForegroundPid = processIdOfWindow(static_cast<HWND>(m_previousForeground));
+    // Some borderless games drop TOPMOST on deactivation. An unrelated tool
+    // window then leaves them below other apps. Group OUR popup with the live
+    // game, so Windows keeps the pair together without restyling the game.
+    m_groupWithGame = m_previousForegroundPid != 0
+        && m_previousForegroundPid != GetCurrentProcessId()
+        && (GetWindowLongPtrW(static_cast<HWND>(m_previousForeground), GWL_EXSTYLE)
+            & WS_EX_TOPMOST) != 0;
+    m_ownerTopmostRepaired = false;
+    syncGameWindowOwner();
     m_loggedOverlayForeground = false;
     // Only a context that existed can be lost: opening the overlay with no
     // foreground window at all must not make it close itself.
@@ -257,6 +271,7 @@ void OverlayManager::show()
     // Every geometry, visibility and z-order change goes through the single
     // presenter, so no show path can drop the never-activate guarantee.
     const OverlayPresentReport report = m_presenter->present(target->geometry());
+    syncGameWindowOwner(); // geometry/screen changes can recreate our HWND
     const HWND game = static_cast<HWND>(m_previousForeground);
     const bool gameAlive = game && IsWindow(game);
 
@@ -373,6 +388,29 @@ void OverlayManager::finishShowTrace(bool acquired, int attempts)
     InputDiagnostics::instance().noteOverlayShow(trace.foregroundPreserved(), traceLine);
 }
 
+void OverlayManager::syncGameWindowOwner()
+{
+    if (!m_window)
+        return;
+    const HWND overlay = reinterpret_cast<HWND>(m_window->winId());
+    const HWND game = static_cast<HWND>(m_previousForeground);
+    const HWND owner = m_groupWithGame && game && IsWindow(game)
+            && processIdOfWindow(game) == m_previousForegroundPid
+            && m_previousForegroundPid != GetCurrentProcessId()
+        ? game : nullptr;
+    if (!IsWindow(overlay) || GetWindow(overlay, GW_OWNER) == owner)
+        return;
+    SetLastError(ERROR_SUCCESS);
+    const LONG_PTR previous = SetWindowLongPtrW(overlay, GWLP_HWNDPARENT,
+                                               reinterpret_cast<LONG_PTR>(owner));
+    const DWORD error = GetLastError();
+    if (!previous && error != ERROR_SUCCESS) {
+        qWarning() << "Overlay: could not associate our popup with game, error" << error;
+        return;
+    }
+    qInfo().noquote() << "Overlay: popup owner=" << OverlayFocus::formatHandle(owner);
+}
+
 // --- post-show diagnostic probe -------------------------------------------
 // Every 2026-09-12 failure had the same shape: overlay shown with the game
 // still foreground, then ~0.5 s later the game window was gone (foreground
@@ -381,6 +419,14 @@ void OverlayManager::finishShowTrace(bool acquired, int attempts)
 // and logs each state change with its timestamp, so the next repro tells us
 // whether the game hides, minimizes, resizes or destroys its window.
 namespace {
+QString cloakedState(HWND hwnd)
+{
+    DWORD cloaked = 0;
+    if (FAILED(DwmGetWindowAttribute(hwnd, DWMWA_CLOAKED, &cloaked, sizeof(cloaked))))
+        return QStringLiteral("unavailable");
+    return QString::number(cloaked);
+}
+
 QString describeWindow(HWND hwnd)
 {
     if (!hwnd)
@@ -389,12 +435,68 @@ QString describeWindow(HWND hwnd)
         return QStringLiteral("destroyed");
     RECT r{};
     GetWindowRect(hwnd, &r);
-    return QStringLiteral("visible=%1 iconic=%2 rect=%3,%4-%5,%6 style=0x%7 ex=0x%8")
+    return QStringLiteral("visible=%1 iconic=%2 rect=%3,%4-%5,%6 style=0x%7 ex=0x%8 cloaked=%9")
         .arg(IsWindowVisible(hwnd) ? 1 : 0)
         .arg(IsIconic(hwnd) ? 1 : 0)
         .arg(r.left).arg(r.top).arg(r.right).arg(r.bottom)
         .arg(QString::number(static_cast<qulonglong>(GetWindowLongPtrW(hwnd, GWL_STYLE)), 16))
-        .arg(QString::number(static_cast<qulonglong>(GetWindowLongPtrW(hwnd, GWL_EXSTYLE)), 16));
+        .arg(QString::number(static_cast<qulonglong>(GetWindowLongPtrW(hwnd, GWL_EXSTYLE)), 16))
+        .arg(cloakedState(hwnd));
+}
+
+// Read-only evidence, not an occlusion verdict: overlapping windows can be
+// transparent. Bound both enumeration and output; never log window titles.
+struct WindowStackProbe
+{
+    HWND game = nullptr;
+    HWND overlay = nullptr;
+    RECT gameRect{};
+    int visited = 0;
+    int candidates = 0;
+    bool reachedGame = false;
+    QStringList windows;
+};
+
+BOOL CALLBACK collectWindowsAboveGame(HWND hwnd, LPARAM context)
+{
+    auto& probe = *reinterpret_cast<WindowStackProbe*>(context);
+    if (hwnd == probe.game) {
+        probe.reachedGame = true;
+        return FALSE;
+    }
+    if (++probe.visited > 128)
+        return FALSE;
+    if (hwnd == probe.overlay || !IsWindowVisible(hwnd) || IsIconic(hwnd))
+        return TRUE;
+    RECT rect{}, overlap{};
+    if (!GetWindowRect(hwnd, &rect) || !IntersectRect(&overlap, &rect, &probe.gameRect))
+        return TRUE;
+    const QString cloaked = cloakedState(hwnd);
+    if (cloaked != QLatin1String("0") && cloaked != QLatin1String("unavailable"))
+        return TRUE;
+    ++probe.candidates;
+    if (probe.windows.size() < 4) {
+        probe.windows.append(QStringLiteral("hwnd=%1 pid=%2 owner=%3 overlap=%4,%5-%6,%7 [%8]")
+            .arg(OverlayFocus::formatHandle(hwnd))
+            .arg(processIdOfWindow(hwnd))
+            .arg(OverlayFocus::formatHandle(GetWindow(hwnd, GW_OWNER)))
+            .arg(overlap.left).arg(overlap.top).arg(overlap.right).arg(overlap.bottom)
+            .arg(describeWindow(hwnd)));
+    }
+    return TRUE;
+}
+
+QString describeWindowsAboveGame(HWND game, HWND overlay)
+{
+    WindowStackProbe probe;
+    probe.game = game;
+    probe.overlay = overlay;
+    if (!game || !IsWindow(game) || !GetWindowRect(game, &probe.gameRect))
+        return QStringLiteral("stack=unavailable");
+    EnumWindows(collectWindowsAboveGame, reinterpret_cast<LPARAM>(&probe));
+    return QStringLiteral("stack game-reached=%1 candidates=%2 listed=[%3]")
+        .arg(probe.reachedGame ? 1 : 0).arg(probe.candidates)
+        .arg(probe.windows.join(QStringLiteral("; ")));
 }
 }  // namespace
 
@@ -511,10 +613,25 @@ void OverlayManager::probeTick()
     const HWND game = static_cast<HWND>(m_previousForeground);
     const HWND fg = GetForegroundWindow();
     const HWND overlayHwnd = m_window ? reinterpret_cast<HWND>(m_window->winId()) : nullptr; 
-    const QString state = QStringLiteral("game %1 | foreground=0x%2 | overlay %3")
+    // Demoting an owner can also demote its popup. Repair only OUR topmost
+    // position once per opening; never acquire focus or move/restyle the game.
+    if (m_groupWithGame && !m_ownerTopmostRepaired && m_probeElapsedMs <= kProbeDetailMs
+        && overlayHwnd && fg == overlayHwnd && game && IsWindow(game)
+        && processIdOfWindow(game) == m_previousForegroundPid
+        && GetWindow(overlayHwnd, GW_OWNER) == game
+        && !(GetWindowLongPtrW(overlayHwnd, GWL_EXSTYLE) & WS_EX_TOPMOST)) {
+        m_ownerTopmostRepaired = true;
+        m_presenter->reassert();
+        qInfo() << "Overlay: repaired our topmost position after owner demotion (once)";
+    }
+    QString state = QStringLiteral("game %1 | foreground=0x%2 | overlay %3")
         .arg(describeWindow(game))
         .arg(QString::number(reinterpret_cast<qulonglong>(fg), 16))
         .arg(overlayHwnd ? describeWindow(overlayHwnd) : QStringLiteral("none"));
+    // Only the existing three-second diagnostic window enumerates z-order.
+    // The steady-state context watch keeps its original lightweight queries.
+    if (m_probeElapsedMs <= kProbeDetailMs)
+        state += QStringLiteral(" | ") + describeWindowsAboveGame(game, overlayHwnd);
     if (state != m_probeLastState) {
         qInfo().noquote() << QStringLiteral("Overlay probe +%1ms:").arg(m_probeElapsedMs) << state;
         m_probeLastState = state;
@@ -686,6 +803,8 @@ void OverlayManager::completeHide(ForegroundReturn returnPolicy)
                            m_releaseHandoff->outcome());
 
     m_window->hide();
+    m_groupWithGame = false;
+    syncGameWindowOwner();
     // The window goes back to non-activating for its next open; the style is
     // re-written by the next present(), on whatever handle exists then.
     m_presenter->resetActivationPolicy();
@@ -796,6 +915,7 @@ void OverlayManager::rebindGameWindow(void* newWindow)
     // overlay: the process id proves it is still the same game.
     m_previousForeground = newWindow;
     m_previousForegroundPid = processIdOfWindow(static_cast<HWND>(newWindow));
+    syncGameWindowOwner();
     qInfo().noquote() << QStringLiteral(
         "Overlay: game window replaced by 0x%1 (pid %2) — rebinding, overlay stays open")
         .arg(QString::number(reinterpret_cast<qulonglong>(newWindow), 16))
@@ -806,6 +926,7 @@ void OverlayManager::reassertOverlay()
 {
     if (!m_presenter)
         return;
+    syncGameWindowOwner();
     const OverlayPresentReport report = m_presenter->reassert();
     qInfo().noquote() << "Overlay: re-asserted after the game window changed |"
                       << report.toLogString();

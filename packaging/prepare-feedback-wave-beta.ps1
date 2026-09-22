@@ -78,20 +78,42 @@ $gameInputHash = Get-Sha256 (Join-Path $source 'app\GameInputRedist.dll')
 
 foreach ($document in @(
         'docs\testing\feedback-wave-beta.md',
+        'docs\testing\dsx-switching-0.7.8.md',
         'tools\manual-validation\FEEDBACK-WAVE-DUALSENSE-CHECKLIST.md',
         'tools\manual-validation\FEEDBACK-WAVE-OVERLAY-CHECKLIST.md')) {
     Copy-Item -LiteralPath (Join-Path $root $document) -Destination $betaRoot
 }
 
+# A local candidate may contain authorized, uncommitted edits. Record every
+# source input hash so sourceCommit is never mistaken for the whole build.
+$identityPaths = $productPaths + @('packaging', 'docs/testing', 'tools/manual-validation')
+$inputNames = @(& git -C $root ls-files --cached --others --exclude-standard -- $identityPaths) |
+    Sort-Object -Unique
+$inputHashes = [ordered]@{}
+foreach ($name in $inputNames) {
+    $inputPath = [System.IO.Path]::GetFullPath((Join-Path $root $name))
+    if (-not $inputPath.StartsWith($root + '\', [System.StringComparison]::OrdinalIgnoreCase)) {
+        throw "Source input escaped project: $name"
+    }
+    if (Test-Path -LiteralPath $inputPath -PathType Leaf) {
+        $inputHashes[$name] = Get-Sha256 $inputPath
+    }
+}
+$inputManifest = Join-Path $betaRoot 'source-inputs.json'
+[System.IO.File]::WriteAllText($inputManifest,
+    ($inputHashes | ConvertTo-Json -Depth 3), [System.Text.UTF8Encoding]::new($false))
+
 $manifest = [ordered]@{
     schemaVersion      = 1
-    purpose            = 'feedback-wave-hardware-beta (cpo-h01 wired DualSense, cpo-h02 borderless overlay)'
+    purpose            = '0.7.8 local acceptance candidate; focused DSX switching diagnostics (native owner results retained)'
     stableRelease      = $false
     version            = $version
     branch             = $branch
     sourceCommit       = $commit
     productTreeClean   = $productClean
-    packagingNote      = 'Prepared by packaging\prepare-feedback-wave-beta.ps1 from dist\GameHQ assembled by packaging\assemble-package.ps1 (out-final Release). Uncommitted packaging/docs additions do not enter the packaged app; productTreeClean covers the compiled and packaged product inputs only.'
+    sourceInputs       = 'source-inputs.json'
+    sourceInputsSha256 = Get-Sha256 $inputManifest
+    packagingNote      = 'Assembled from out-final Release. sourceCommit is the base commit; when productTreeClean is false, source-inputs.json identifies the local source bytes, including uncommitted changes.'
     package            = $betaName
     sha256             = $packageHash
     launcherSha256     = $launcherHash
@@ -109,6 +131,7 @@ $manifest = [ordered]@{
         'app\dxcompiler.dll and app\dxil.dll are not packaged: the local Qt 6.8.3 bin no longer ships them (windeployqt reports them missing, no packaging script references them) and the app never selects the D3D12 backend. The 0.7.7 release package carried them from an earlier environment.'
     )
     evidenceChecklists = [ordered]@{
+        'cpo-dsx02' = 'dsx-switching-0.7.8.md'
         'cpo-h01' = 'FEEDBACK-WAVE-DUALSENSE-CHECKLIST.md'
         'cpo-h02' = 'FEEDBACK-WAVE-OVERLAY-CHECKLIST.md'
     }

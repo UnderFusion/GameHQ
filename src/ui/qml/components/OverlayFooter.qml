@@ -8,11 +8,26 @@ Text {
     property bool menuOpen: false
     property bool videoFocused: false
 
-    width: parent.width
+    width: Math.min(parent.width, implicitWidth)
+    leftPadding: Theme.s16
+    rightPadding: Theme.s16
+    topPadding: Theme.s8
+    bottomPadding: Theme.s8
     wrapMode: Text.WordWrap
     horizontalAlignment: Text.AlignHCenter
     anchors.bottom: parent.bottom
     anchors.horizontalCenter: parent.horizontalCenter
+
+    Rectangle {
+        anchors.fill: parent
+        z: -1
+        radius: Theme.radiusM
+        // Share the existing overlay dimming slider; keep the hint text opaque.
+        color: Qt.rgba(Theme.panelTint.r, Theme.panelTint.g, Theme.panelTint.b,
+                       Math.min(0.95, Theme.panelTint.a * Theme.overlayScrimStrength / 100))
+        border.width: 1
+        border.color: Theme.stroke
+    }
 
     text: {
         const pad = root.usingGamepad

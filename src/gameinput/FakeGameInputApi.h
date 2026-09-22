@@ -15,6 +15,8 @@ namespace ModernInput {
 class FakeGameInputApi final : public IGameInputApi
 {
 public:
+    enum class Kind { Device, Reading, System };
+    void setRegistrationFailure(Kind kind, bool fail = true);
     bool initialize(QString& error) override;
     void applyFocusPolicy(GameInputFocusMode mode) override;
     CallbackToken registerDeviceCallback(EventSink sink) override;
@@ -36,7 +38,7 @@ public:
     QStringList callLog() const;
 
 private:
-    enum class Kind { Device, Reading, System };
+    QHash<Kind, bool> m_registrationFailures;
     struct Entry { Kind kind; EventSink sink; bool stopped = false; };
 
     CallbackToken add(Kind kind, EventSink sink);
@@ -52,4 +54,3 @@ private:
 };
 
 } // namespace ModernInput
-

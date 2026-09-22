@@ -1,6 +1,7 @@
 #include "gameinput/GameInputWrapper.h"
 
 #include "gameinput/GameInputFocusController.h"
+#include <QDebug>
 
 namespace ModernInput {
 
@@ -27,7 +28,10 @@ GameInputWrapper::~GameInputWrapper()
 
 QString GameInputWrapper::runtimeDescription() const
 {
-    return m_api ? m_api->runtimeDescription() : QStringLiteral("Unavailable");
+    QString description = m_api ? m_api->runtimeDescription() : QStringLiteral("Unavailable");
+    if (m_running && !systemButtonsAvailable())
+        description += QStringLiteral("; Guide/Share callback unavailable (existing providers only)");
+    return description;
 }
 
 bool GameInputWrapper::start(QString& error)
@@ -68,13 +72,16 @@ bool GameInputWrapper::start(QString& error)
 
     m_deviceRegistration = {m_api.get(), m_api->registerDeviceCallback(sink)};
     m_readingRegistration = {m_api.get(), m_api->registerReadingCallback(sink)};
-    m_systemRegistration = {m_api.get(), m_api->registerSystemButtonCallback(sink)};
-    if (!m_deviceRegistration.valid() || !m_readingRegistration.valid()
-        || !m_systemRegistration.valid()) {
+    if (!m_deviceRegistration.valid() || !m_readingRegistration.valid()) {
         error = QStringLiteral("GameInput callback registration failed.");
         shutdown();
         return false;
     }
+    // Guide/Share is a separate, optional registration. Keep ordinary readings,
+    // device identity and the focus-policy owner alive if only this path fails.
+    m_systemRegistration = {m_api.get(), m_api->registerSystemButtonCallback(sink)};
+    if (!systemButtonsAvailable())
+        qWarning() << "GameInput degraded: Guide/Share callback unavailable; ordinary input and focus policy retained; existing system-button providers remain eligible";
     m_running = true;
     return true;
 }

@@ -224,6 +224,12 @@ public:
     // duration_ms=…"), so a report shows whether the pad was handed back cleanly
     // or whether the close ran into its bound. Bounded.
     void noteGameInputHandoff(const QString& receipt);
+    // Lifecycle events only, never individual input reports. Identity values
+    // are hashed before either the bounded export or rotating log sees them.
+    void noteProviderTransition(const QString& event, const QString& provider,
+                                const QString& device, const QString& logical,
+                                const QString& container, const QString& endpoint,
+                                const QString& root, const QString& context);
     // Read-back for the overlay trace: the provider currently serving the
     // logical controller, and its profile as the pseudonym the export uses -
     // never the raw profile string.
@@ -310,6 +316,7 @@ private:
     QVector<Stamped> m_gameInputFocusTransitions;
     // cpo-o06e: the release handoff's receipts (stage + numbers), bounded.
     QVector<Stamped> m_gameInputHandoffs;
+    QVector<Stamped> m_providerTransitions;
     // cpo-o06a: the most recent full focus/controller record of each kind.
     // One per transition, kept as the already-formatted line.
     QString m_overlayShowTrace;

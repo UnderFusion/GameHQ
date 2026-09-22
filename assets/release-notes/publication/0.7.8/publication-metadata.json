@@ -1,0 +1,726 @@
+{
+  "schema_version": 1,
+  "kind": "release-publication",
+  "version": "0.7.8",
+  "date": "2026-09-22",
+  "source_locale": "en-US",
+  "default_locale": "en-US",
+  "localization_policy": "fallback-allowed",
+  "release_source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+  "release_body": {
+    "filename": "RELEASE_BODY.md",
+    "size": 3308,
+    "sha256": "9a14c83076cbaef176d760679cf9c4c81e6091dea51dd8e0ccd95be11f3674e4"
+  },
+  "distribution": {
+    "localized_documents": "repository",
+    "github_release_assets": false,
+    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.7.8/assets/release-notes/publication/0.7.8"
+  },
+  "localized_documents": [
+    {
+      "canonical_locale": "en-US",
+      "requested_locale": "en-US",
+      "effective_locale": "en-US",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "English (United States)",
+      "language_native_name": "English",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.en-US.md",
+      "size": 1800,
+      "sha256": "b7b24b32186b3ed9c949359f84379fbee4836e90bc4c92fb49134d31983c3f7b",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hans",
+      "requested_locale": "zh-Hans",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Simplified)",
+      "language_native_name": "简体中文",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.zh-Hans.md",
+      "size": 1990,
+      "sha256": "10a5c3ae8f1bbaba0b34f443ef49d53501b53fb258ba4573cbd8ab7118cb4a08",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ru-RU",
+      "requested_locale": "ru-RU",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Russian",
+      "language_native_name": "Русский",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.ru-RU.md",
+      "size": 1977,
+      "sha256": "0ab0c4f41f6c419c42757dce62ee29fb5ff2de35d5d9d809387fbfa80a8944eb",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-ES",
+      "requested_locale": "es-ES",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish",
+      "language_native_name": "Español",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.es-ES.md",
+      "size": 1977,
+      "sha256": "47cb4960071e17640434b5166d83868e19a8789b9d479e02060037cac8263d80",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pt-BR",
+      "requested_locale": "pt-BR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Portuguese (Brazil)",
+      "language_native_name": "Português (Brasil)",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.pt-BR.md",
+      "size": 1989,
+      "sha256": "5725c11de4708511374a0d9e0e198177bdc492a2c131135ca9655011ce0643ce",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "de-DE",
+      "requested_locale": "de-DE",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "German",
+      "language_native_name": "Deutsch",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.de-DE.md",
+      "size": 1976,
+      "sha256": "60b977ffc3168035cf51ae51d73246338972b215f9af96cd13819072f99d86f0",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ja-JP",
+      "requested_locale": "ja-JP",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Japanese",
+      "language_native_name": "日本語",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.ja-JP.md",
+      "size": 1978,
+      "sha256": "72e76a895bb83047a628184f738aac8b090cb8a84f8d17fd34923c18b050c736",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "fr-FR",
+      "requested_locale": "fr-FR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "French",
+      "language_native_name": "Français",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.fr-FR.md",
+      "size": 1976,
+      "sha256": "ff4e761631ef383aee63af9b8e6892ac1c22f73be77fa49d0fd423c4845bb192",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pl-PL",
+      "requested_locale": "pl-PL",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Polish",
+      "language_native_name": "Polski",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.pl-PL.md",
+      "size": 1976,
+      "sha256": "763ea57a4a816deb7d175f17cb47bf86859aaf85cac53d02023a0ef4c4387112",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ko-KR",
+      "requested_locale": "ko-KR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Korean",
+      "language_native_name": "한국어",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.ko-KR.md",
+      "size": 1976,
+      "sha256": "0861a3c8e883392dc946b5f91098ca6649512dcc591695fbc61634d6b98f4839",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hant",
+      "requested_locale": "zh-Hant",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Traditional)",
+      "language_native_name": "繁體中文",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.zh-Hant.md",
+      "size": 1991,
+      "sha256": "a1b3739982c6c3598a6feb4e12fee8c5b6d3b2a88fb59b964f387f0073e3a036",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "tr-TR",
+      "requested_locale": "tr-TR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Turkish",
+      "language_native_name": "Türkçe",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.tr-TR.md",
+      "size": 1977,
+      "sha256": "ab4e0ccb6358295b8028e3fbe92deff4f68531312aff7661c679f9c0b768ee3e",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "th-TH",
+      "requested_locale": "th-TH",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Thai",
+      "language_native_name": "ไทย",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.th-TH.md",
+      "size": 1974,
+      "sha256": "1269149e6ac97914f618a4ad76789da7ece34cb9c48ad4155329c4dcf2359114",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-419",
+      "requested_locale": "es-419",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish (Latin America)",
+      "language_native_name": "Español (Latinoamérica)",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.es-419.md",
+      "size": 1993,
+      "sha256": "e823a391a6413843948817050c4dc28b87430e6415eeefc74c44ce17992ba167",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "uk-UA",
+      "requested_locale": "uk-UA",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Ukrainian",
+      "language_native_name": "Українська",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.uk-UA.md",
+      "size": 1979,
+      "sha256": "1ac4256eb4ae7694a98410fcbaeb736f0509ca405b701871214c3763fbc9194a",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "it-IT",
+      "requested_locale": "it-IT",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Italian",
+      "language_native_name": "Italiano",
+      "version": "0.7.8",
+      "date": "2026-09-22",
+      "filename": "release-notes.it-IT.md",
+      "size": 1977,
+      "sha256": "66cbe52a8faa6bf39d315a39ba7e99c4ffcd83d89e43510e0c96bb1c7bac9669",
+      "source_integrity": "sha256:992e93b309e5fdcc9da3cba04635117f53986bff2c7cb8cd20e79be9cc1a2b73",
+      "structure": [
+        {
+          "section_id": "added",
+          "item_ids": [
+            "capture-feedback",
+            "controller-presets"
+          ]
+        },
+        {
+          "section_id": "changed",
+          "item_ids": [
+            "overlay-input",
+            "navigation",
+            "overlay-readability",
+            "diagnostics"
+          ]
+        },
+        {
+          "section_id": "fixed",
+          "item_ids": [
+            "gameinput-optional-callback",
+            "replay-safety",
+            "buffer-state",
+            "capture-border",
+            "controller-reliability"
+          ]
+        }
+      ]
+    }
+  ]
+}

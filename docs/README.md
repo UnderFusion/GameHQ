@@ -4,6 +4,8 @@ Technical and product documentation for contributors and maintainers.
 
 ## Start here
 
+- [0.7.8 owner evidence and DSX switching retest](testing/dsx-switching-0.7.8.md).
+
 - [Getting Started](getting-started.md) — screenshots, replay, overlay, bindings, and controller probe.
 - [Controller Compatibility](controller-compatibility.md) — providers, Share/View, extras, reconnects, and reports.
 

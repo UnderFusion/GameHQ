@@ -18,7 +18,10 @@ public:
     quint64 generation() const { return m_generation; }
     QString gameName() const { return m_gameName; }
     bool startRequested() const { return m_state == Starting || isRecording(m_state); }
-    bool canSave() const { return m_state == Ready; }
+    // Admit a save attempt once capture has started. The worker finalizes the
+    // current partial segment and verifies usable video before exporting it.
+    bool canSave() const { return canSave(m_state); }
+    static bool canSave(State state) { return isRecording(state); }
     static bool isRecording(State state) { return state == Recording || state == Ready; }
     static QString saveRejection(State state);
 

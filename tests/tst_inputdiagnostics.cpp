@@ -10,6 +10,22 @@ class InputDiagnosticsTest : public QObject
     Q_OBJECT
 
 private slots:
+    void providerLifecycleIsBoundedAndSanitized()
+    {
+        InputDiagnostics diag;
+        for (int i = 0; i < 40; ++i)
+            diag.noteProviderTransition(QStringLiteral("edge-%1").arg(i), "GameInput",
+                "private-device", "private-logical", "private-container", "private-endpoint",
+                "private-root", "overlay=1 held=2 attached=0 runtime=registration failed");
+        const QString text = diag.exportBetaText("0.7.8", "Windows", {}, {});
+        QVERIFY(!text.contains("private-"));
+        QVERIFY(!text.contains("event=edge-0 "));
+        QVERIFY(text.contains("event=edge-39 "));
+        QVERIFY(text.contains("container=sha256:"));
+        QVERIFY(text.contains("held=2 attached=0 runtime=registration failed"));
+        diag.clear();
+        QVERIFY(!diag.exportBetaText("0.7.8", "Windows", {}, {}).contains("event=edge-"));
+    }
     void betaPackageContainsOnlyRelevantSanitizedEvidence()
     {
         InputDiagnostics diag;

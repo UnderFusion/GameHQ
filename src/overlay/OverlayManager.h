@@ -1,5 +1,6 @@
 #pragma once
 #include <QObject>
+#include <QPointer>
 #include <QString>
 
 #include "gameinput/NeutralHandoffRunner.h"
@@ -147,6 +148,7 @@ private:
     void askForExclusiveGameInputPolicy(OverlayFocus::ShowTrace& trace);
     void startShowProbe();
     void probeTick();
+    void syncGameWindowOwner();
 
     // cpo-o03: the lifetime decision is pure (overlay/OverlayLifetimePolicy.h);
     // this class only resolves Win32 facts for it and performs the effects
@@ -162,7 +164,7 @@ private:
     void repositionOverlay();
 
     QQmlApplicationEngine* m_engine;
-    QQuickWindow* m_window = nullptr;
+    QPointer<QQuickWindow> m_window;
     // The one production path that makes the overlay visible, positioned and
     // topmost; it owns the never-activate guarantee (docs/overlay.md).
     std::unique_ptr<OverlayPresenter> m_presenter;
@@ -172,6 +174,8 @@ private:
     // the overlay open when a game replaces its own window, and the reason a
     // destroyed HWND is never remembered: a pid outlives a handle.
     unsigned long m_previousForegroundPid = 0;
+    bool m_groupWithGame = false;
+    bool m_ownerTopmostRepaired = false;
     void* m_focusHook = nullptr;            // HWINEVENTHOOK, opaque here to avoid <windows.h> in the header
     bool m_foregroundAcquired = true;
     // cpo-o06b: one bounded acquisition at a time, shared by the show request

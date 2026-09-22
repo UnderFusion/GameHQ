@@ -11,6 +11,11 @@
 #include <atomic>
 #include <stdexcept>
 #include <thread>
+#include <d3d11.h>
+#include <mfapi.h>
+#include <mfidl.h>
+#include <mfreadwrite.h>
+#include <wrl/client.h>
 
 class TestSegmentRecorder : public QObject
 {
@@ -36,6 +41,78 @@ class TestSegmentRecorder : public QObject
     }
 
 private slots:
+    void earlySnapshot_data()
+    {
+        QTest::addColumn<bool>("hasFrames");
+        QTest::newRow("empty-is-not-saveable") << false;
+        QTest::newRow("one-second-of-thirty-is-saveable") << true;
+    }
+
+    void earlySnapshot()
+    {
+        QFETCH(bool, hasFrames);
+        using Microsoft::WRL::ComPtr;
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-partial-XXXXXX");
+        QVERIFY(dir.isValid());
+        ComPtr<ID3D11Device> device;
+        ComPtr<ID3D11DeviceContext> context;
+        QVERIFY(SUCCEEDED(D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_WARP, nullptr, 0,
+            nullptr, 0, D3D11_SDK_VERSION, device.GetAddressOf(), nullptr,
+            context.GetAddressOf())));
+        D3D11_TEXTURE2D_DESC desc{};
+        desc.Width = 320;
+        desc.Height = 180;
+        desc.MipLevels = desc.ArraySize = desc.SampleDesc.Count = 1;
+        desc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
+        desc.Usage = D3D11_USAGE_DEFAULT;
+        const QByteArray pixels(320 * 180 * 4, char(0x80));
+        D3D11_SUBRESOURCE_DATA data{};
+        data.pSysMem = pixels.constData();
+        data.SysMemPitch = 320 * 4;
+        ComPtr<ID3D11Texture2D> texture;
+        QVERIFY(SUCCEEDED(device->CreateTexture2D(&desc, &data, texture.GetAddressOf())));
+        SegmentRecorder recorder;
+        QVERIFY(recorder.begin(320, 180, 320, 180, 30, 2, 5, 30,
+                               dir.path(), device.Get(), context.Get()));
+        const auto finish = qScopeGuard([&] {
+            recorder.discardCurrentSegment();
+            recorder.end();
+        });
+        if (hasFrames) {
+            for (int i = 0; i < 30; ++i)
+                recorder.writeFrame(texture.Get(), device.Get(), context.Get(),
+                                    10000000LL + i * 10000000LL / 30);
+        }
+        QVERIFY(!recorder.hasClosedMedia());
+        const SegmentLease clip = recorder.snapshotForSave();
+        QCOMPARE(recorder.hasClosedMedia(), hasFrames);
+        QCOMPARE(clip.isEmpty(), !hasFrames);
+        QVERIFY(recorder.isActive()); // saving must leave recording usable
+        if (!hasFrames)
+            return;
+        QCOMPARE(clip.paths().size(), 1);
+        const QString path = clip.paths().first();
+        ComPtr<IMFSourceReader> reader;
+        QVERIFY(SUCCEEDED(MFCreateSourceReaderFromURL(
+            reinterpret_cast<LPCWSTR>(path.utf16()), nullptr, reader.GetAddressOf())));
+        PROPVARIANT duration{};
+        const auto clearDuration = qScopeGuard([&] { PropVariantClear(&duration); });
+        QVERIFY(SUCCEEDED(reader->GetPresentationAttribute(
+            MF_SOURCE_READER_MEDIASOURCE, MF_PD_DURATION, &duration)));
+        QCOMPARE(duration.vt, VARTYPE(VT_UI8));
+        QVERIFY(duration.uhVal.QuadPart > 0);
+        QVERIFY(duration.uhVal.QuadPart < 50000000ULL); // shorter than first segment
+        ComPtr<IMFSample> sample;
+        DWORD flags = 0;
+        LONGLONG timestamp = 0;
+        QVERIFY(SUCCEEDED(reader->ReadSample(MF_SOURCE_READER_FIRST_VIDEO_STREAM,
+            0, nullptr, &flags, &timestamp, sample.GetAddressOf())));
+        QVERIFY(sample.Get() != nullptr); // finalized file really contains video
+    }
+
     void readinessRequiresConfirmedMediaInTheNormalWindow()
     {
         SegmentRecorder recorder;

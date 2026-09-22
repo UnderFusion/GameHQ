@@ -18,10 +18,12 @@
 #include "input/BindingRuntime.h"
 #include "input/InputEngine.h"
 #include "input/XInputDevice.h"
+#include "input/WinMMDevice.h"
 #include "storage/CaptureDatabase.h"
 
 #include <QTemporaryDir>
 #include <QTest>
+#include <QSignalSpy>
 
 using namespace ModernInput;
 
@@ -44,6 +46,23 @@ public:
     void release(const QString& controlId) { publishControlReleased(controlId, profile()); }
 };
 
+class SyntheticWinMM final : public WinMMDevice
+{
+public:
+    ControlId::DeviceProfile profile() const override
+    {
+        return {QStringLiteral("WinMM joystick"), QStringLiteral("winmm.slot0"),
+                ControlId::ControllerFamily::PlayStation, QStringLiteral("Synthetic WinMM"),
+                {}, {}};
+    }
+    void arrive() { emit connected(true); }
+    void edge(bool down, const QString& control)
+    {
+        if (down) publishControlPressed(control, profile());
+        else publishControlReleased(control, profile());
+    }
+};
+
 class InputReleaseHandoffTest : public QObject
 {
     Q_OBJECT
@@ -55,6 +74,10 @@ private slots:
     void rawEdgesDecideWhatIsHeld();
     void aDeviceThatGoesAwayCannotHoldAnything();
     void suppressionStopsActionsAndKeepsTracking();
+    void bufferedSystemTapsDoNotSwallowTheNextTap();
+    void inactiveProviderReleaseClosesItsSystemCycle();
+    void delayedMirrorAfterReleaseDoesNotToggleAgain();
+    void activeReleaseCancelsBufferedMirror();
 
 private:
     BindingRuntime& rt() { return *engine->m_runtime; }
@@ -196,6 +219,100 @@ void InputReleaseHandoffTest::suppressionStopsActionsAndKeepsTracking()
     pad->buttons(buttonBit(Gamepad::L1));
     QVERIFY2(engine->lastInput() != delivered, qPrintable(engine->lastInput()));
     pad->buttons(0);
+}
+
+void InputReleaseHandoffTest::bufferedSystemTapsDoNotSwallowTheNextTap()
+{
+    QSignalSpy toggles(engine.get(), &InputEngine::overlayToggleRequested);
+    // A candidate tap already released before its 250 ms confirmation.
+    // Replay must close BOTH the recognizer and capability-router cycles.
+    InputEngine::PendingPress pending;
+    pending.source = pad;
+    pending.controlId = ControlId::Guide;
+    pending.fingerprint = pad->profile().fingerprint;
+    pending.family = int(pad->profile().family);
+    pending.released = true;
+    engine->replayPendingPress(pending);
+    QCOMPARE(toggles.count(), 1);
+    for (int i = 0; i < 3; ++i) {
+        pad->press(ControlId::Guide);
+        pad->release(ControlId::Guide);
+        QCOMPARE(toggles.count(), i + 2);
+    }
+}
+
+void InputReleaseHandoffTest::inactiveProviderReleaseClosesItsSystemCycle()
+{
+    QSignalSpy toggles(engine.get(), &InputEngine::overlayToggleRequested);
+    pad->press(ControlId::Guide);
+    engine->activateBackend(nullptr, QStringLiteral("test provider transition"));
+    pad->release(ControlId::Guide);
+    QCOMPARE(toggles.count(), 0); // cancelled gesture must not finish on switch
+    engine->activateBackend(pad, QStringLiteral("test provider restored"));
+    pad->press(ControlId::Guide);
+    pad->release(ControlId::Guide);
+    QCOMPARE(toggles.count(), 1);
+}
+
+void InputReleaseHandoffTest::delayedMirrorAfterReleaseDoesNotToggleAgain()
+{
+    auto synthetic = std::make_unique<SyntheticWinMM>();
+    auto* mirror = synthetic.get();
+    engine->m_winmmPad = mirror;
+    engine->attachGamepad(std::move(synthetic), QStringLiteral("Synthetic WinMM"));
+    mirror->arrive();
+    QSignalSpy toggles(engine.get(), &InputEngine::overlayToggleRequested);
+    pad->press(ControlId::Guide);
+    pad->release(ControlId::Guide);
+    QCOMPARE(toggles.count(), 1);
+    // Raw press is over 100 ms old, but its release just arrived. This is
+    // the logged Sony/WinMM sequence that previously scheduled a ghost tap.
+    engine->m_backendLastControlMs[pad] = engine->m_controllerClock.elapsed() - 160;
+    mirror->edge(true, ControlId::Guide);
+    mirror->edge(false, ControlId::Guide);
+    QVERIFY(!engine->m_pending.source);
+    QCOMPARE(engine->m_activeBackend, static_cast<Gamepad*>(pad));
+    QCOMPARE(toggles.count(), 1);
+
+    // A genuine fallback after silence remains usable, including rapid taps.
+    engine->m_backendLastControlMs[pad] = engine->m_controllerClock.elapsed() - 1500;
+    engine->m_backendLastReleaseMs[pad][ControlId::Guide] =
+        engine->m_controllerClock.elapsed() - 1400;
+    mirror->edge(true, ControlId::Guide);
+    mirror->edge(false, ControlId::Guide);
+    QCOMPARE(toggles.count(), 2);
+    mirror->edge(true, ControlId::Guide);
+    mirror->edge(false, ControlId::Guide);
+    QCOMPARE(toggles.count(), 3);
+}
+
+void InputReleaseHandoffTest::activeReleaseCancelsBufferedMirror()
+{
+    auto synthetic = std::make_unique<SyntheticWinMM>();
+    auto* mirror = synthetic.get();
+    engine->m_winmmPad = mirror;
+    engine->attachGamepad(std::move(synthetic), QStringLiteral("Synthetic WinMM"));
+    mirror->arrive();
+    QSignalSpy toggles(engine.get(), &InputEngine::overlayToggleRequested);
+
+    pad->press(ControlId::Guide);
+    engine->m_backendLastControlMs[pad] = engine->m_controllerClock.elapsed() - 160;
+    mirror->edge(true, ControlId::Guide);
+    mirror->edge(false, ControlId::Guide);
+    QCOMPARE(engine->m_pending.source, static_cast<Gamepad*>(mirror));
+    QVERIFY(engine->m_pending.released);
+
+    // The original release arrives while the mirrored tap awaits promotion.
+    // It must invalidate that tap, even though no new active press arrived.
+    pad->release(ControlId::Guide);
+    QCOMPARE(toggles.count(), 1);
+    QTest::qWait(300);
+    QVERIFY(!engine->m_pending.source);
+    QCOMPARE(engine->m_activeBackend, static_cast<Gamepad*>(pad));
+    QCOMPARE(toggles.count(), 1);
+    pad->press(ControlId::Guide);
+    pad->release(ControlId::Guide);
+    QCOMPARE(toggles.count(), 2);
 }
 
 QTEST_MAIN(InputReleaseHandoffTest)

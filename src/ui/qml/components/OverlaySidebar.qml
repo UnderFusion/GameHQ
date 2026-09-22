@@ -67,7 +67,6 @@ Rectangle {
                 label: modelData.name
                 iconSource: modelData.iconPath ? ("file:///" + modelData.iconPath.replace(/\\/g, "/")) : ""
                 active: root.sidebarIndex === (root.categories.length + index)
-                        && !(app.currentGameAvailable && app.currentGameId === modelData.id)
                 onClicked: root.entrySelected(root.categories.length + index)
             }
         }

@@ -398,6 +398,7 @@ private:
     Gamepad* m_activeBackend = nullptr;   // the one backend whose events route
     QElapsedTimer m_controllerClock;
     QHash<Gamepad*, qint64> m_backendLastControlMs;
+    QHash<Gamepad*, QHash<QString, qint64>> m_backendLastReleaseMs;
     // First event of each non-active backend's current pending run; cleared on
     // takeover and on disconnect, restarted whenever the active backend speaks.
     QHash<Gamepad*, qint64> m_backendCandidateFirstMs;
@@ -463,6 +464,7 @@ private:
     // itself happens only at routing transitions, and from the press path at
     // most once per kRoutingPushThrottleMs - never per event.
     void publishControllerRouting();
+    void traceProviderLifecycle(const QString& event);
     void publishMappingDiagnostics();
     int m_mirrorWindowDrops = 0;       // cross-provider events dropped as duplicates
     int m_candidateRuns = 0;           // candidate presses held for confirmation

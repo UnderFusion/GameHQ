@@ -294,6 +294,7 @@ enum FixtureCommand : WPARAM {
     CmdRestoreForeground = 4,
     CmdPing = 5,
     CmdQuit = 6,
+    CmdDemoteOnDeactivate = 7,
 };
 
 // ---------------------------------------------------------------------------
@@ -686,6 +687,8 @@ private slots:
     void dismissingTheOverlayAlwaysReleasesTheExclusiveGameInputPolicy();
     void closingWithAHeldControlWaitsForNeutralBeforeReleasingThePolicy();
     void aReleaseHandoffTimeoutStillClosesAndSaysSo();
+    void aTopmostGameStaysAboveOtherApps_data();
+    void aTopmostGameStaysAboveOtherApps();
 
 private:
     // `foregroundApi` (optional, ownership passes on) lets a case decide what
@@ -1471,6 +1474,71 @@ void NativeOverlayTest::aReleaseHandoffTimeoutStillClosesAndSaysSo()
     QVERIFY2(text.contains(QStringLiteral("neutral-handoff=timeout duration_ms=")), qPrintable(text));
     QVERIFY2(text.contains(QStringLiteral("held=\"gamepad.l2\"")), qPrintable(text));
     QVERIFY2(text.contains(QStringLiteral("neutral-handoff=passed")) == false, qPrintable(text));
+}
+
+void NativeOverlayTest::aTopmostGameStaysAboveOtherApps_data()
+{
+    QTest::addColumn<QString>("exitPath");
+    QTest::newRow("close") << QStringLiteral("close");
+    QTest::newRow("external-focus") << QStringLiteral("external");
+    QTest::newRow("game-destroyed") << QStringLiteral("destroy");
+    QTest::newRow("game-replaced") << QStringLiteral("replace");
+}
+
+void NativeOverlayTest::aTopmostGameStaysAboveOtherApps()
+{
+    QFETCH(QString, exitPath);
+    FixtureTarget other;
+    QVERIFY(other.start());
+    QVERIFY(m_fixture.recreate());
+    QVERIFY(m_fixture.sendToControl(CmdDemoteOnDeactivate));
+    QTRY_VERIFY(GetWindowLongPtrW(m_fixture.target(), GWL_EXSTYLE) & WS_EX_TOPMOST);
+    QVERIFY(m_fixture.forceTargetForeground());
+    const LONG_PTR gameStyle = GetWindowLongPtrW(m_fixture.target(), GWL_STYLE);
+    auto above = [](HWND upper, HWND lower) {
+        for (int budget = 128; upper && budget > 0; --budget) {
+            upper = GetWindow(upper, GW_HWNDNEXT);
+            if (upper == lower)
+                return true;
+        }
+        return false;
+    };
+    RecordingFocusSink sink;
+    auto harness = makeHarness();
+    harness->manager->setGameInputFocusRequestSink(&sink);
+    showOverlay(*harness);
+    expectOverlayForeground(*harness);
+    QTRY_VERIFY(!(GetWindowLongPtrW(m_fixture.target(), GWL_EXSTYLE) & WS_EX_TOPMOST));
+    QTRY_VERIFY(GetWindowLongPtrW(harness->handle(), GWL_EXSTYLE) & WS_EX_TOPMOST);
+    QCOMPARE(GetWindow(harness->handle(), GW_OWNER), m_fixture.target());
+    QCOMPARE(GetWindowLongPtrW(m_fixture.target(), GWL_STYLE), gameStyle);
+    QVERIFY(above(harness->handle(), m_fixture.target()));
+    QVERIFY(above(m_fixture.target(), other.target()));
+    QVERIFY(sink.exclusive());
+    QCOMPARE(sink.requests().size(), 1);
+
+    if (exitPath == QLatin1String("external")) {
+        QVERIFY(other.forceTargetForeground());
+        QTRY_VERIFY(!harness->manager->isVisible());
+        QCOMPARE(GetForegroundWindow(), other.target());
+    } else if (exitPath == QLatin1String("destroy")) {
+        QVERIFY(m_fixture.destroyTargetWindow());
+        QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
+    } else {
+        if (exitPath == QLatin1String("replace")) {
+            QVERIFY(m_fixture.recreate());
+            QTRY_COMPARE(GetWindow(harness->handle(), GW_OWNER), m_fixture.target());
+            QVERIFY(harness->manager->isVisible());
+        }
+        harness->manager->hide();
+        QTRY_VERIFY(!harness->manager->isVisible());
+        expectTargetForeground();
+    }
+    QCOMPARE(GetWindow(harness->handle(), GW_OWNER), HWND(nullptr));
+    QVERIFY(!sink.exclusive());
+    QCOMPARE(sink.releases().size(), 1);
+    // Every row leaves a fresh ordinary target for subsequent native tests.
+    QVERIFY(m_fixture.recreate());
 }
 
 QTEST_MAIN(NativeOverlayTest)

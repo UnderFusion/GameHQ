@@ -99,10 +99,20 @@ QStringList FakeGameInputApi::callLog() const
 IGameInputApi::CallbackToken FakeGameInputApi::add(Kind kind, EventSink sink)
 {
     QMutexLocker lock(&m_mutex);
+    if (m_registrationFailures.value(kind)) {
+        m_callLog.push_back(QStringLiteral("register-failed:%1").arg(int(kind)));
+        return 0;
+    }
     const CallbackToken token = m_nextToken++;
     m_entries.insert(token, Entry{kind, std::move(sink), false});
     m_callLog.push_back(QStringLiteral("register:%1").arg(token));
     return token;
+}
+
+void FakeGameInputApi::setRegistrationFailure(Kind kind, bool fail)
+{
+    QMutexLocker lock(&m_mutex);
+    m_registrationFailures[kind] = fail;
 }
 
 void FakeGameInputApi::emitKind(Kind kind, GameInputEvent event, bool asynchronous)

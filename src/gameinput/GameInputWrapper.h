@@ -32,6 +32,7 @@ public:
     bool start(QString& error);
     void shutdown();
     bool running() const { return m_running; }
+    bool systemButtonsAvailable() const { return m_systemRegistration.valid(); }
     QString runtimeDescription() const;
 
 signals:

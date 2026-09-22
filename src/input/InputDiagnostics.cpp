@@ -3,6 +3,7 @@
 #include <QRegularExpression>
 #include <QCryptographicHash>
 #include <QSet>
+#include <QDebug>
 
 InputDiagnostics& InputDiagnostics::instance()
 {
@@ -162,6 +163,21 @@ void InputDiagnostics::noteGameInputFocusTransition(const QString& mode, const Q
 void InputDiagnostics::noteGameInputHandoff(const QString& receipt)
 {
     push(m_gameInputHandoffs, kMaxGameInputHandoffs, m_clock.elapsed(), receipt);
+}
+
+void InputDiagnostics::noteProviderTransition(const QString& event, const QString& provider,
+                                              const QString& device, const QString& logical,
+                                              const QString& container, const QString& endpoint,
+                                              const QString& root, const QString& context)
+{
+    const auto identity = [](const QString& value) {
+        return value.isEmpty() ? QStringLiteral("unavailable") : hashedId(value);
+    };
+    const QString text = QStringLiteral("event=%1 provider=%2 device=%3 logical=%4 container=%5 endpoint=%6 root=%7 %8")
+        .arg(event, provider, identity(device), identity(logical), identity(container),
+             identity(endpoint), identity(root), context.left(1024));
+    push(m_providerTransitions, kMaxSwitches, m_clock.elapsed(), text);
+    qInfo().noquote() << "Input lifecycle:" << text;
 }
 
 QString InputDiagnostics::controllerProfileId() const
@@ -332,6 +348,9 @@ QString InputDiagnostics::exportText() const
     }
 
     lines << QStringLiteral("  %1").arg(probeSummary());
+    lines << QStringLiteral("  Provider lifecycle transitions:");
+    for (const Stamped& entry : m_providerTransitions)
+        lines << QStringLiteral("    %1").arg(stamp(entry));
     return lines.join(QLatin1Char('\n'));
 }
 
@@ -375,6 +394,7 @@ void InputDiagnostics::clear()
     m_overlayHideTrace.clear();
     m_gameInputFocusTransitions.clear();
     m_gameInputHandoffs.clear();
+    m_providerTransitions.clear();
     m_gameInputFocusPolicy.clear();
 }
 
@@ -568,6 +588,9 @@ QString InputDiagnostics::exportBetaText(const QString& build, const QString& wi
     // cpo-o06c: the policy in force is only half the story — the timeline says
     // when it changed and why, which is what a report about a stolen or missing
     // pad needs.
+    lines << QStringLiteral("  Provider lifecycle transitions:");
+    for (const Stamped& entry : m_providerTransitions)
+        lines << QStringLiteral("    %1").arg(stamp(entry));
     lines << QStringLiteral("  GameInput focus-policy transitions:");
     if (m_gameInputFocusTransitions.isEmpty())
         lines << QStringLiteral("    none this session");

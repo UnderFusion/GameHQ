@@ -30,6 +30,9 @@ private slots:
     void shutdownIsOrderedAndLateCallbacksAreHarmless();
     void restartAfterShutdownDeliversEventsAgain();
     void initializationFailureFailsSoft();
+    void optionalCallbackFailureKeepsReadingsAndPolicy();
+    void requiredCallbackFailureStillShutsDown_data();
+    void requiredCallbackFailureStillShutsDown();
     void concurrentProducersDrainAndShutdownStayConsistent();
 };
 
@@ -298,6 +301,80 @@ void TestGameInputWrapper::restartAfterShutdownDeliversEventsAgain()
     }
 }
 
+void TestGameInputWrapper::optionalCallbackFailureKeepsReadingsAndPolicy()
+{
+    auto fake = std::make_unique<FakeGameInputApi>();
+    auto* raw = fake.get();
+    raw->setRegistrationFailure(FakeGameInputApi::Kind::System);
+    GameInputFocusController focus;
+    GameInputWrapper wrapper(std::move(fake));
+    wrapper.setFocusController(&focus);
+    QSignalSpy delivered(&wrapper, &GameInputWrapper::eventsReady);
+    QString error;
+    QVERIFY2(wrapper.start(error), qPrintable(error));
+    QVERIFY(wrapper.running());
+    QVERIFY(raw->loaded());
+    QVERIFY(!wrapper.systemButtonsAvailable());
+    QVERIFY(wrapper.runtimeDescription().contains(QStringLiteral("Guide/Share callback unavailable")));
+    QVERIFY(!raw->callLog().contains(QStringLiteral("unload")));
+    QVERIFY(focus.requestExclusiveForeground(QStringLiteral("test-interactive")));
+
+    GameInputEvent reading;
+    reading.kind = GameInputEventKind::Reading;
+    reading.deviceId = QStringLiteral("ordinary-pad");
+    reading.standardButtons = 1;
+    raw->emitReading(reading, true);
+    QTRY_VERIFY(!delivered.isEmpty());
+    const auto batch = qvariant_cast<GameInputEventBatch>(delivered.front().front());
+    QCOMPARE(batch.events.size(), 1);
+    QCOMPARE(batch.events.front().standardButtons, quint32(1));
+    QVERIFY(focus.exclusiveForegroundActive());
+
+    wrapper.shutdown();
+    QVERIFY(!focus.policyAttached());
+    const auto log = raw->callLog();
+    QCOMPARE(log.count(QStringLiteral("focus-policy:exclusive-foreground")), 1);
+    QCOMPARE(log.count(QStringLiteral("focus-policy:background")), 2);
+    QVERIFY(log.lastIndexOf(QStringLiteral("focus-policy:background")) < log.indexOf(QStringLiteral("unload")));
+    QCOMPARE(log.count(QStringLiteral("unregister:1")), 1);
+    QCOMPARE(log.count(QStringLiteral("unregister:2")), 1);
+    QVERIFY(!log.contains(QStringLiteral("unregister:0")));
+
+    // A new session retries the optional registration; no degraded state sticks.
+    raw->setRegistrationFailure(FakeGameInputApi::Kind::System, false);
+    QVERIFY(wrapper.start(error));
+    QVERIFY(wrapper.systemButtonsAvailable());
+    QVERIFY(!wrapper.runtimeDescription().contains(QStringLiteral("unavailable")));
+    QVERIFY(!focus.exclusiveForegroundActive());
+    wrapper.shutdown();
+}
+
+void TestGameInputWrapper::requiredCallbackFailureStillShutsDown_data()
+{
+    QTest::addColumn<bool>("deviceFailure");
+    QTest::newRow("device") << true;
+    QTest::newRow("reading") << false;
+}
+
+void TestGameInputWrapper::requiredCallbackFailureStillShutsDown()
+{
+    QFETCH(bool, deviceFailure);
+    auto fake = std::make_unique<FakeGameInputApi>();
+    auto* raw = fake.get();
+    raw->setRegistrationFailure(deviceFailure ? FakeGameInputApi::Kind::Device
+                                             : FakeGameInputApi::Kind::Reading);
+    GameInputFocusController focus;
+    GameInputWrapper wrapper(std::move(fake));
+    wrapper.setFocusController(&focus);
+    QString error;
+    QVERIFY(!wrapper.start(error));
+    QVERIFY(!error.isEmpty());
+    QVERIFY(!wrapper.running());
+    QVERIFY(!raw->loaded());
+    QVERIFY(!focus.policyAttached());
+    QVERIFY(raw->callLog().contains(QStringLiteral("unload")));
+}
+
 void TestGameInputWrapper::initializationFailureFailsSoft()
 {
     auto fake = std::make_unique<FakeGameInputApi>();
@@ -400,4 +477,3 @@ void TestGameInputWrapper::concurrentProducersDrainAndShutdownStayConsistent()
 
 QTEST_GUILESS_MAIN(TestGameInputWrapper)
 #include "tst_gameinputwrapper.moc"
-

@@ -442,18 +442,15 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
         major, minor, patch = GEN.version_key(newest["version"])
         later = {**newest, "version": f"{major}.{minor}.{patch + 1}",
                  "localization_policy": "fallback-allowed"}
-        # A normal rolling history window: drop the oldest retained release
-        # before inserting the newest patch so the fixture stays within the
-        # production MAX_HISTORY + 1 bound (do not raise that limit). The
-        # launch entry (the oldest release) must remain in history, so the
-        # oldest non-launch release is the one that rolls off.
+        # Roll off the oldest non-launch entry only when the window is full.
+        # The launch may be in the middle after older published history is
+        # restored; never move it to the end and corrupt newest-first ordering.
         launch_version = manifest["localization_launch"]["version"]
-        retainable = [release for release in manifest["releases"]
-                      if release["version"] != launch_version]
-        manifest["releases"] = retainable[:-1] + [
-            release for release in manifest["releases"]
-            if release["version"] == launch_version]
         manifest["releases"].insert(0, later)
+        if len(manifest["releases"]) > manifest["history_limit"] + 1:
+            oldest = next(index for index in reversed(range(len(manifest["releases"])))
+                          if manifest["releases"][index]["version"] != launch_version)
+            manifest["releases"].pop(oldest)
         self.assertEqual(manifest["releases"], GEN.validate_manifest(manifest, self.locales))
         launch_entry = next(release for release in manifest["releases"]
                             if release["version"] == manifest["localization_launch"]["version"])

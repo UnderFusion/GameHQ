@@ -364,3 +364,21 @@ next to two stamped timelines: game-session transitions, and overlay show/hide
 written only by the real show/hide path. Profiles, game keys and assignment target keys
 enter only as pseudonyms; a source or reason outside the fixed vocabulary is
 dropped rather than printed.
+
+### Buffered button releases (0.7.8)
+
+A candidate tap replayed after provider confirmation closes both the binding
+recognizer and the shared Guide/Share press cycle. A release from a provider
+that just lost the active role also clears its system-button cycle, without
+completing the cancelled gesture. This prevents the next PS/Guide press from
+being swallowed as an already-held button.
+
+The existing 100 ms cross-provider mirror guard also covers the active
+provider's release of the same control. A polled copy arriving shortly after
+that release must not become a deferred second toggle. A matching release
+during candidate confirmation cancels that pending mirror too. This is a
+bounded timing guard, not proof that two provider identities are one device;
+fallback after silence and repeated taps on the active provider still work.
+The focused `tst_inputreleasehandoff` cases exercise these paths through the
+production input engine. Overlay window ownership and exclusive-input handoff
+are unchanged by this correction.

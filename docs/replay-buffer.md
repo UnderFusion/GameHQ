@@ -56,9 +56,15 @@ derived from that same confirmed state.
 |---|---|---|
 | `Stopped` | No recording requested | Request a start, then reject this save explicitly |
 | `Starting` | Worker startup has not yet succeeded | Reject and ask the user to retry shortly |
-| `Recording` | Capture session started and replay recorder is active | Reject until closed media exists |
+| `Recording` | Capture session started and replay recorder is active | Finalize available footage and save if it contains usable video |
 | `Ready` | The current recorder has finalized a segment containing video | Queue the save with the current generation |
 | `Failed` | Startup or the active recording failed | Request a fresh start, then reject this save explicitly |
+
+The configured replay length is a maximum window, not a minimum save duration.
+A save during `Recording` finalizes the current partial segment immediately;
+it need not wait for the first five-second segment or the full replay window.
+Empty or unusable snapshots still fail explicitly, and `Ready` continues to mean
+that finalized video has been confirmed rather than merely requested.
 
 No save waits silently in a queue for readiness. Worker-side save guards also
 check the generation and recorder facts before taking a snapshot. Restored cache

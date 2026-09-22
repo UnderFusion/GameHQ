@@ -1,6 +1,6 @@
 # Versioning & Documentation Rules
 
-> **Project rule (non-negotiable):** every change to the app bumps the version and updates the changelog and any affected docs in the same change.
+> **Owner policy (2026-09-22):** the current release candidate is **0.7.8**. Internal implementation slices do not increment the product version; update its consolidated notes and affected docs instead.
 
 ## Scheme
 
@@ -8,9 +8,18 @@ GameHQ uses Semantic Versioning as plain `MAJOR.MINOR.PATCH`.
 
 - `MAJOR` - `1.0` is the first polished release; later major bumps are for breaking data/config format changes.
 - `MINOR` - active development line or roadmap milestone family.
-- `PATCH` - every project change increments this number.
+- `PATCH` - advances for an owner-designated product release, not each internal change.
 
 Current development line: `0.7.x`.
+
+On 2026-09-22, `git ls-remote --tags origin 'v0.7.*'` and `gh release list`
+confirmed v0.7.7 as the latest published GameHQ version (2026-09-07).
+The 0.7.8-0.7.43 development slice labels had no published tags/releases.
+Their changes are consolidated into the 0.7.8 local candidate. All 80 published
+release-note source documents for 0.7.3-0.7.7 were verified byte-for-byte against
+tag v0.7.7; no public history was rewritten. Git commits remain historical
+implementation checkpoints, and package source-input hashes distinguish local
+uncommitted candidates sharing the same product version.
 
 Patch numbers run from `0` to `99` within a minor line. After `0.5.99`, the next version is `0.6.0`. The first version after the old `0.1.0-dev.N` scheme is `0.5.0`; the next changed build is `0.5.1`.
 
@@ -28,7 +37,7 @@ local files does not publish or tag a release.
 
 ## Release Checklist
 
-1. Bump `VERSION` by one patch number (`0.7.1`, `0.7.2`, ...). Roll `0.7.99` to `0.8.0`.
+1. Use the owner-designated release version in `VERSION`; retain 0.7.8 throughout this acceptance wave.
 2. Add a `CHANGELOG.md` entry with Added/Changed/Fixed/Removed sections as needed.
 3. Update affected docs in `docs/` when code changes behavior, architecture, storage, setup, capture, overlay, input, or UI rules.
 4. Update `docs/README.md` if a doc is added, renamed, or its purpose changes.

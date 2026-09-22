@@ -134,7 +134,7 @@ private slots:
         QCOMPARE(recording.size(), 1);
         QCOMPARE(recording.at(0).at(0).toBool(), true);
         QCOMPARE(recording.at(0).at(1).toString(), QString("Game A"));
-        QVERIFY(!buffer.canSave());
+        QVERIFY(buffer.canSave()); // worker may finalize the first partial segment
         QVERIFY(buffer.confirm(generation, ReplayBufferState::Ready));
         QVERIFY(buffer.canSave());
         QCOMPARE(states.size(), 3);
@@ -187,7 +187,7 @@ private slots:
         QCOMPARE(failed.size(), 0);
     }
 
-    void everyNotReadyStateRejectsSaves()
+    void activeRecordingAdmitsPartialSaveButInactiveStatesReject()
     {
         ReplayBufferState buffer;
         QVERIFY(!buffer.canSave());
@@ -196,13 +196,13 @@ private slots:
         QVERIFY(!buffer.canSave());
         QVERIFY(!ReplayBufferState::saveRejection(buffer.state()).isEmpty());
         QVERIFY(buffer.confirm(generation, ReplayBufferState::Recording));
-        QVERIFY(!buffer.canSave());
-        QVERIFY(!ReplayBufferState::saveRejection(buffer.state()).isEmpty());
+        QVERIFY(buffer.canSave()); // no closed segment or full duration required
+        QVERIFY(ReplayBufferState::canSave(buffer.state())); // worker guard
         QVERIFY(buffer.confirm(generation, ReplayBufferState::Ready));
         QVERIFY(buffer.canSave());
         QVERIFY(ReplayBufferState::saveRejection(buffer.state()).isEmpty());
         QVERIFY(buffer.confirm(generation, ReplayBufferState::Recording));
-        QVERIFY(!buffer.canSave()); // usable media left the normal ring window
+        QVERIFY(buffer.canSave()); // worker can finalize current in-flight video
         QVERIFY(buffer.confirm(generation, ReplayBufferState::Ready));
         QVERIFY(buffer.confirm(generation, ReplayBufferState::Failed, "recorder stopped"));
         QVERIFY(!buffer.canSave());

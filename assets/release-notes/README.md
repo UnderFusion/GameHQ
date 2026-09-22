@@ -1,5 +1,10 @@
 # Versioned release-note sources
 
+The owner-designated local candidate is 0.7.8. Internal implementation labels
+0.7.9-0.7.43 were unpublished and consolidated into it. Published history through
+0.7.7 is preserved. The schema's `released` entry status is required for offline
+bundle generation; its presence is not evidence of a public tag or release.
+
 `manifest.json` orders released versions newest-first and pins the canonical
 `en-US` integrity for each version. Every version directory contains one
 canonical English document and sibling documents for the other fifteen

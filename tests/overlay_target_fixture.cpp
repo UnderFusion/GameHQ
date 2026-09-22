@@ -25,6 +25,7 @@ enum Command : WPARAM {
     CmdRestoreForeground = 4, // restore the target window and give it the foreground
     CmdPing = 5,              // target window processed a message: bump the title counter
     CmdQuit = 6,
+    CmdDemoteOnDeactivate = 7,
 };
 
 HWND g_control = nullptr;
@@ -32,6 +33,7 @@ HWND g_target = nullptr;
 int g_generation = 0;
 unsigned g_pings = 0;
 UINT g_command = 0;
+bool g_demoteOnDeactivate = false;
 
 void updateTargetTitle()
 {
@@ -78,6 +80,7 @@ bool forceOwnForeground(HWND hwnd)
 
 HWND createTarget()
 {
+    g_demoteOnDeactivate = false;
     ++g_generation;
     g_target = CreateWindowExW(0, kTargetClass, L"", WS_POPUP | WS_VISIBLE | WS_CLIPCHILDREN,
                                60, 60, 640, 480, nullptr, nullptr, GetModuleHandleW(nullptr), nullptr);
@@ -131,6 +134,12 @@ void handleCommand(WPARAM command)
             DestroyWindow(old);
         }
         break;
+    case CmdDemoteOnDeactivate:
+        g_demoteOnDeactivate = true;
+        if (g_target)
+            SetWindowPos(g_target, HWND_TOPMOST, 0, 0, 0, 0,
+                         SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+        break;
     default:
         break;
     }
@@ -138,6 +147,10 @@ void handleCommand(WPARAM command)
 
 LRESULT CALLBACK targetProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    if (message == WM_ACTIVATE && g_demoteOnDeactivate) {
+        SetWindowPos(hwnd, LOWORD(wParam) == WA_INACTIVE ? HWND_NOTOPMOST : HWND_TOPMOST,
+                     0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+    }
     if (g_command && message == g_command) {
         if (wParam == CmdPing) {
             ++g_pings;
