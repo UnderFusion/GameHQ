@@ -8,21 +8,43 @@ class QQmlApplicationEngine;
 class QQuickWindow;
 class QScreen;
 class OverlayPresenter;
+class ForegroundAcquirer;
+class ForegroundApi;
+
+namespace OverlayFocus
+{
+struct ShowTrace;
+struct HideTrace;
+}  // namespace OverlayFocus
 
 // In-game overlay window lifecycle (docs/overlay.md): lazy-loads
-// OverlayWindow.qml, shows it frameless/topmost over the active app,
-// remembers the foreground game without taking or restoring OS focus.
-// No injection — borderless/windowed fullscreen games only (MVP).
+// OverlayWindow.qml, shows it frameless/topmost over the active app and
+// remembers the game it covers.
+//
+// cpo-o06b: presentation is still non-activating, but it is now followed by an
+// explicit, bounded foreground request — the overlay asks to become the active
+// window so keyboard and controller input belong to it, while the game stays
+// visible and un-minimized behind it. The game window itself is never touched:
+// no minimize, no restore, no restyle, and nothing is injected into it. When
+// the request is denied the overlay simply stays as presentation left it, which
+// is exactly the behaviour that shipped before.
 class OverlayManager : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool visible READ isVisible NOTIFY visibleChanged)
-    // False while open: the non-activating overlay leaves input with the game.
-    // True while closed only suppresses the existing input warning.
+    // cpo-o06b: observed, not intended. While the overlay is open this is the
+    // acquirer's verified result (it re-reads the OS foreground); a denied
+    // request leaves it false and the in-overlay warning visible, because the
+    // game really can still be reading the pad. True while closed makes no
+    // claim — it only keeps the warning out of a closed overlay.
     Q_PROPERTY(bool foregroundAcquired READ foregroundAcquired NOTIFY foregroundAcquiredChanged)
 
 public:
     explicit OverlayManager(QQmlApplicationEngine* engine, QObject* parent = nullptr);
+    // Test seam: takes ownership of `foregroundApi`, so a session that cannot
+    // move the real foreground (or must refuse to) can still be exercised.
+    OverlayManager(QQmlApplicationEngine* engine, ForegroundApi* foregroundApi,
+                   QObject* parent = nullptr);
     ~OverlayManager() override;
 
     bool isVisible() const;
@@ -51,8 +73,25 @@ signals:
     void foregroundAcquiredChanged();
 
 private:
+    // Whether closing should hand the foreground back to the game. It must not
+    // when the overlay no longer owns the foreground (something else took it —
+    // pulling it back would fight the user), and not for the desktop handoff,
+    // where GameHQ's main window is about to take focus instead.
+    enum class ForegroundReturn
+    {
+        ToGame,
+        LeaveAlone,
+    };
+
     bool ensureLoaded();
-    void hideInternal();
+    void hideInternal(ForegroundReturn returnPolicy = ForegroundReturn::ToGame);
+    // cpo-o06b: the open/close records are completed once the bounded
+    // foreground request has settled — its retries are asynchronous, so a
+    // synchronous line would state a result that had not happened yet.
+    void onForegroundAcquisitionFinished(const QString& phase, void* target,
+                                         bool acquired, int attempts);
+    void finishShowTrace(bool acquired, int attempts);
+    void finishHideTrace(bool restored);
     void startShowProbe();
     void probeTick();
 
@@ -82,11 +121,29 @@ private:
     unsigned long m_previousForegroundPid = 0;
     void* m_focusHook = nullptr;            // HWINEVENTHOOK, opaque here to avoid <windows.h> in the header
     bool m_foregroundAcquired = true;
+    // cpo-o06b: one bounded acquisition at a time, shared by the show request
+    // and the hand-back on close (the phase string tells them apart).
+    std::unique_ptr<ForegroundAcquirer> m_focusAcquirer;
+    std::unique_ptr<OverlayFocus::ShowTrace> m_pendingShowTrace;
+    std::unique_ptr<OverlayFocus::HideTrace> m_pendingHideTrace;
+    // Logged once per open, not per foreground event: the lifetime rules can
+    // see our own overlay many times while it is up.
+    bool m_loggedOverlayForeground = false;
 
     // Diagnostic probe: for a few seconds after show() the game window's
     // state is sampled and every change is logged, so a game that hides or
     // minimizes itself in reaction to the overlay leaves evidence in the log.
+    // After that window it keeps running at a slower rate as the game-context
+    // watch (cpo-o06b): while the overlay owns the foreground, a game that
+    // loses its window produces no foreground event, so the only way to notice
+    // is to look.
     class QTimer* m_probeTimer = nullptr;
     int m_probeElapsedMs = 0;
     QString m_probeLastState;
+    // Only watch a context that existed: the overlay opened over nothing (no
+    // foreground window at all) must not close itself immediately.
+    bool m_watchGameContext = false;
+    // Consecutive watch ticks that saw the game gone. A game recreating its
+    // own window is gone for an instant, and that must rebind, not hide.
+    int m_gameContextLostTicks = 0;
 };

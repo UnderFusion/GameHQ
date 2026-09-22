@@ -1,6 +1,8 @@
 #include "overlay/OverlayManager.h"
 
 #include "input/InputDiagnostics.h"
+#include "overlay/ForegroundAcquirer.h"
+#include "overlay/ForegroundApi.h"
 #include "overlay/OverlayFocusTrace.h"
 #include "overlay/OverlayLifetimePolicy.h"
 #include "overlay/OverlayPresenter.h"
@@ -14,8 +16,20 @@
 
 #include <windows.h>
 
-// Overlay visibility never changes the game's foreground ownership.
 namespace {
+// The two acquisition phases, spelled once: ForegroundAcquirer logs them and
+// InputDiagnostics records them, so the completion handler must match exactly.
+const QString kShowPhase = QStringLiteral("overlay show");
+const QString kHidePhase = QStringLiteral("overlay hide");
+
+// Post-show probe: dense sampling while the game reacts to the overlay, then
+// the same timer slows down and becomes the game-context watch.
+constexpr int kProbeIntervalMs = 50;
+constexpr int kProbeDetailMs = 3000;
+constexpr int kWatchIntervalMs = 250;
+// How long the game has to look gone before the overlay acts on it.
+constexpr int kContextLostGraceMs = 750;
+
 // Only one OverlayManager exists per process; the WinEvent callback is a
 // free function (Win32 API requirement) so it reaches the instance here.
 OverlayManager* g_overlayManagerInstance = nullptr;
@@ -88,11 +102,24 @@ private:
 };
 
 OverlayManager::OverlayManager(QQmlApplicationEngine* engine, QObject* parent)
+    : OverlayManager(engine, nullptr, parent)
+{
+}
+
+OverlayManager::OverlayManager(QQmlApplicationEngine* engine, ForegroundApi* foregroundApi,
+                               QObject* parent)
     : QObject(parent)
     , m_engine(engine)
     , m_lifetimeActions(std::make_unique<LifetimeActions>(*this))
+    , m_focusAcquirer(std::make_unique<ForegroundAcquirer>(
+          foregroundApi ? foregroundApi : ForegroundApi::createSystem(), nullptr))
 {
     g_overlayManagerInstance = this;
+    // cpo-o06b: the request is bounded and asynchronous on retry, so both the
+    // open and the close record are completed from here rather than stating a
+    // result before Windows has produced one.
+    connect(m_focusAcquirer.get(), &ForegroundAcquirer::finished, this,
+            &OverlayManager::onForegroundAcquisitionFinished);
     // WINEVENT_OUTOFCONTEXT: delivered via this thread's message queue, no
     // DLL injection into other processes needed — safe for the "never inject
     // into game processes" rule (docs/overlay.md).
@@ -132,8 +159,13 @@ bool OverlayManager::ensureLoaded()
         qCritical() << "Overlay: failed to load OverlayWindow.qml";
         return false;
     }
-    m_window->setFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
-                       | Qt::Tool | Qt::WindowDoesNotAcceptFocus);
+    // Qt::Tool keeps the overlay out of the taskbar and the Alt-Tab list.
+    // Qt::WindowDoesNotAcceptFocus is deliberately NOT set (cpo-o06b): it
+    // would make Qt refuse keyboard focus even after Windows handed us the
+    // foreground. The never-activate guarantee of the presentation path does
+    // not depend on it — WS_EX_NOACTIVATE plus SWP_NOACTIVATE carry it, and
+    // the presenter re-applies them on every present/reassert.
+    m_window->setFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool);
     m_presenter = std::make_unique<OverlayPresenter>(makeQWindowOverlayApi(m_window));
     // Moving between screens is one of the transitions where Qt rebuilds the
     // native window, and a rebuilt window starts without WS_EX_NOACTIVATE.
@@ -165,16 +197,25 @@ void OverlayManager::show()
 
     // Remember the app that owns the screen right now (usually the game): its
     // handle for the Win32 calls that need one, and its process id as the
-    // continuity evidence that survives a window recreation.
+    // continuity evidence that survives a window recreation. This stays the
+    // authoritative game context for presets, captures, gallery and session
+    // even once GameHQ owns the OS foreground — foreground ownership is not
+    // game identity.
     m_previousForeground = GetForegroundWindow();
     m_previousForegroundPid = processIdOfWindow(static_cast<HWND>(m_previousForeground));
+    m_loggedOverlayForeground = false;
+    // Only a context that existed can be lost: opening the overlay with no
+    // foreground window at all must not make it close itself.
+    m_watchGameContext = m_previousForeground != nullptr
+        && IsWindow(static_cast<HWND>(m_previousForeground));
     emit aboutToShow();
 
     // Cover the screen the previous app is on; fall back to primary.
     QScreen* target = targetScreenForGameWindow(m_previousForeground);
-    // Non-activating overlay: the game keeps the foreground. Controller
-    // navigation is routed by overlay visibility, not by OS focus. Do not
-    // use raise/requestActivate or the force-foreground retry path.
+    // Every open starts from the proven non-activating presentation: the
+    // window appears without disturbing the game, and only then does the
+    // explicit foreground request below run. No claim is made until it settles.
+    m_presenter->resetActivationPolicy();
     if (m_foregroundAcquired) {
         m_foregroundAcquired = false;
         emit foregroundAcquiredChanged();
@@ -184,47 +225,104 @@ void OverlayManager::show()
     const OverlayPresentReport report = m_presenter->present(target->geometry());
     const HWND game = static_cast<HWND>(m_previousForeground);
     const bool gameAlive = game && IsWindow(game);
-    if (!report.foregroundPreserved())
-        qWarning() << "Overlay: showing the overlay changed the foreground window";
 
-    // cpo-o06a: one bounded record of what Windows and the controller stack
-    // actually did during this open. The presenter's own report covers our
-    // window; this adds the game window, the foreground sequence, the Qt vs
-    // Win32 activation view and the controller provider, so the isolation
-    // question can be argued from facts rather than from intent.
-    const InputDiagnostics& diagnostics = InputDiagnostics::instance();
-    OverlayFocus::ShowTrace trace;
-    trace.game = describeWindowFacts(game);
-    trace.overlay = describeWindowFacts(static_cast<HWND>(report.handle));
-    trace.foregroundBefore = report.foregroundBefore;
-    trace.foregroundAfterPresent = report.foregroundAfter;
-    // No variant asks for activation yet (cpo-o06b), so the post-activation
-    // foreground is the post-presentation one. Recorded as its own field so
-    // the line keeps its shape once activation exists.
-    trace.foregroundAfterActivation = report.foregroundAfter;
-    trace.activationRequested = false;
-    trace.overlayActiveQt = m_window && m_window->isActive();
-    trace.overlayForegroundWin32 = report.handle && GetForegroundWindow() == report.handle;
-    trace.controllerProvider = diagnostics.servingProvider();
-    trace.controllerProfile = diagnostics.controllerProfileId();
-    trace.gameInputFocusPolicy = diagnostics.gameInputFocusPolicy();
-    const QString traceLine = trace.toLogString();
+    // cpo-o06a/b: one bounded record of what Windows and the controller stack
+    // actually did during this open. It is completed — not written — here: the
+    // foreground request may still retry, and the fields that matter most
+    // (who owns the foreground, whether the game is still on screen) are only
+    // true once it has settled.
+    auto trace = std::make_unique<OverlayFocus::ShowTrace>();
+    trace->game = describeWindowFacts(game);
+    trace->overlay = describeWindowFacts(static_cast<HWND>(report.handle));
+    trace->foregroundBefore = report.foregroundBefore;
+    trace->foregroundAfterPresent = report.foregroundAfter;
+    trace->foregroundAfterActivation = report.foregroundAfter;
+    m_pendingShowTrace = std::move(trace);
 
-    qInfo().noquote() << "Overlay: shown without activation |" << report.toLogString()
+    qInfo().noquote() << "Overlay: presented |" << report.toLogString()
                       << QStringLiteral("| game=0x%1 pid=%2 minimized=%3")
                              .arg(QString::number(reinterpret_cast<qulonglong>(m_previousForeground), 16))
                              .arg(m_previousForegroundPid)
                              .arg(gameAlive && IsIconic(game) ? 1 : 0);
-    qInfo().noquote() << "Overlay focus trace (open):" << traceLine;
-    if (trace.qtWin32Disagree())
-        qWarning() << "Overlay: Qt and Win32 disagree about who is active";
+    if (!report.foregroundPreserved())
+        qWarning() << "Overlay: presentation itself changed the foreground window";
     startShowProbe();
     emit visibleChanged();
+
+    // cpo-o06b, variant B. Order is the point: the overlay is on screen and
+    // topmost FIRST, then it becomes activatable, then one bounded request
+    // (1 attempt + 2 retries) asks Windows for the foreground. The game window
+    // is never minimized, restored or restyled, and nothing re-forces the
+    // foreground afterwards — a game that takes it back keeps it.
+    if (!report.handle) {
+        finishShowTrace(false, 0);
+        return;
+    }
+    const OverlayPresentReport activation = m_presenter->makeActivatable();
+    qInfo().noquote() << "Overlay: made activatable |" << activation.toLogString();
+    m_pendingShowTrace->activationRequested = true;
+    m_focusAcquirer->acquire(report.handle, kShowPhase);
+}
+
+// Completes the open record once the bounded foreground request has settled —
+// including the cancelled case, where it settles at "not acquired". Both
+// windows are re-sampled here, because that is the only moment at which
+// "the overlay owns the foreground AND the game is still on screen" is a fact
+// rather than an expectation.
+void OverlayManager::finishShowTrace(bool acquired, int attempts)
+{
+    if (!m_pendingShowTrace)
+        return;
+    const std::unique_ptr<OverlayFocus::ShowTrace> owned = std::move(m_pendingShowTrace);
+    OverlayFocus::ShowTrace& trace = *owned;
+
+    const HWND game = static_cast<HWND>(m_previousForeground);
+    const HWND overlayHwnd = m_window ? reinterpret_cast<HWND>(m_window->winId()) : nullptr;
+    const HWND foreground = GetForegroundWindow();
+
+    trace.acquisitionAttempts = attempts;
+    trace.acquisitionSucceeded = acquired;
+    trace.foregroundAfterActivation = foreground;
+    trace.gameAfterAcquisition = describeWindowFacts(game);
+    trace.overlayAfterAcquisition = describeWindowFacts(overlayHwnd);
+    trace.overlayActiveQt = m_window && m_window->isActive();
+    trace.overlayForegroundWin32 = overlayHwnd && foreground == overlayHwnd;
+    // Observed, not intended: the overlay holds the foreground and the
+    // lifetime rules have not dismissed it. A rule that had mistaken our own
+    // foreground for "the user left the game" would have hidden the window
+    // before this line ran.
+    trace.lifetimeAcceptedOverlayForeground = isVisible() && trace.overlayOwnsForeground();
+
+    const InputDiagnostics& diagnostics = InputDiagnostics::instance();
+    trace.controllerProvider = diagnostics.servingProvider();
+    trace.controllerProfile = diagnostics.controllerProfileId();
+    trace.gameInputFocusPolicy = diagnostics.gameInputFocusPolicy();
+
+    const QString traceLine = trace.toLogString();
+    qInfo().noquote() << "Overlay focus trace (open):" << traceLine;
+    // Only the misleading direction is a warning. Qt lagging behind Windows is
+    // an ordering artefact — WM_ACTIVATE has not been processed yet at this
+    // instant — while Qt claiming the window is active when Windows says it is
+    // not is exactly the illusion that made earlier focus attempts look like
+    // they had worked.
+    if (trace.overlayActiveQt && !trace.overlayForegroundWin32)
+        qWarning() << "Overlay: Qt believes the overlay is active but Windows does not";
+    if (trace.activationRequested && !trace.interactiveForegroundTruth()) {
+        // Says which clause failed, because "foreground denied" and "the game
+        // minimized itself in reaction" are different findings.
+        qWarning().noquote() << "Overlay: interactive foreground NOT achieved |"
+                             << traceLine;
+    }
+
+    if (m_foregroundAcquired != acquired) {
+        m_foregroundAcquired = acquired;
+        emit foregroundAcquiredChanged();
+    }
     // cpo-x01: the export states the observed fact - whether the game window
     // actually kept the foreground through presentation. m_foregroundAcquired
-    // is the non-activating policy contract, not evidence, and is never
+    // is the acquisition result, not a presentation claim, and is never
     // exported as proof.
-    InputDiagnostics::instance().noteOverlayShow(report.foregroundPreserved(), traceLine);
+    InputDiagnostics::instance().noteOverlayShow(trace.foregroundPreserved(), traceLine);
 }
 
 // --- post-show diagnostic probe -------------------------------------------
@@ -256,17 +354,24 @@ void OverlayManager::startShowProbe()
 {
     if (!m_probeTimer) {
         m_probeTimer = new QTimer(this);
-        m_probeTimer->setInterval(50);
+        m_probeTimer->setInterval(kProbeIntervalMs);
         connect(m_probeTimer, &QTimer::timeout, this, &OverlayManager::probeTick);
     }
+    m_probeTimer->setInterval(kProbeIntervalMs);
     m_probeElapsedMs = 0;
     m_probeLastState.clear();
+    m_gameContextLostTicks = 0;
     probeTick();
     m_probeTimer->start();
 }
 
 void OverlayManager::probeTick()
 {
+    if (!isVisible()) {
+        m_probeTimer->stop();
+        return;
+    }
+
     const HWND game = static_cast<HWND>(m_previousForeground);
     const HWND fg = GetForegroundWindow();
     const QString state = QStringLiteral("game %1 | foreground=0x%2 | overlay %3")
@@ -279,8 +384,38 @@ void OverlayManager::probeTick()
         m_probeLastState = state;
     }
     m_probeElapsedMs += m_probeTimer->interval();
-    if (m_probeElapsedMs > 3000 || !isVisible())
-        m_probeTimer->stop();
+    // The dense sampling exists to catch what a game does in the first moments
+    // after the overlay appears; after that the same timer keeps running, far
+    // more slowly, purely as the game-context watch below.
+    if (m_probeElapsedMs > kProbeDetailMs && m_probeTimer->interval() != kWatchIntervalMs)
+        m_probeTimer->setInterval(kWatchIntervalMs);
+
+    // cpo-o06b: with the overlay holding the foreground, Windows sends no
+    // foreground event when the game's own window goes away — so ask directly.
+    // The same rule the event path uses decides (OverlayLifetimePolicy), and
+    // it has to hold for a bounded stretch before acting: a game that destroys
+    // and immediately recreates its window must get the chance to rebind
+    // through the normal foreground event instead of being treated as gone.
+    if (!m_watchGameContext)
+        return;
+    OverlayLifetime::ForegroundFacts facts;
+    facts.rememberedGameAlive = game && IsWindow(game);
+    facts.rememberedGameVisible = facts.rememberedGameAlive && IsWindowVisible(game);
+    facts.rememberedGameIconic = facts.rememberedGameAlive && IsIconic(game);
+    if (!OverlayLifetime::rememberedGameContextLost(facts)) {
+        m_gameContextLostTicks = 0;
+        return;
+    }
+    if (++m_gameContextLostTicks * m_probeTimer->interval() < kContextLostGraceMs)
+        return;
+    qInfo().noquote() << QStringLiteral(
+        "Overlay: the game window 0x%1 is gone (alive=%2 visible=%3 iconic=%4) and no "
+        "foreground event could report it — hiding")
+        .arg(QString::number(reinterpret_cast<qulonglong>(game), 16))
+        .arg(facts.rememberedGameAlive ? 1 : 0)
+        .arg(facts.rememberedGameVisible ? 1 : 0)
+        .arg(facts.rememberedGameIconic ? 1 : 0);
+    hideInternal();
 }
 
 void OverlayManager::hide()
@@ -296,50 +431,112 @@ void* OverlayManager::hideForDesktopHandoff()
     const HWND remembered = static_cast<HWND>(m_previousForeground);
     const bool usable = isVisible() && remembered && IsWindow(remembered);
     void* previous = usable ? m_previousForeground : nullptr;
-    hideInternal();
+    // The desktop window is about to take the foreground: handing it back to
+    // the game here would make the two fight over it.
+    hideInternal(ForegroundReturn::LeaveAlone);
     return previous;
 }
 
-void OverlayManager::hideInternal()
+void OverlayManager::hideInternal(ForegroundReturn returnPolicy)
 {
     if (!isVisible())
         return;
     if (m_probeTimer)
         m_probeTimer->stop();
 
+    // A show acquisition still retrying must not outlive the window it was
+    // acquiring for. Cancelling settles its record at "not acquired", which is
+    // the truth: it never finished.
+    m_focusAcquirer->cancel();
+    if (m_pendingShowTrace)
+        finishShowTrace(false, 0);
+
     // cpo-o06a: the close record is gathered around the hide, not after it —
     // m_previousForeground is cleared below, and the provider can change while
     // the window goes away.
     const InputDiagnostics& diagnostics = InputDiagnostics::instance();
-    OverlayFocus::HideTrace trace;
-    trace.foregroundBefore = GetForegroundWindow();
+    auto owned = std::make_unique<OverlayFocus::HideTrace>();
+    OverlayFocus::HideTrace& trace = *owned;
+    const HWND foregroundBefore = GetForegroundWindow();
+    const HWND overlayHwnd = m_window ? reinterpret_cast<HWND>(m_window->winId()) : nullptr;
+    const HWND game = static_cast<HWND>(m_previousForeground);
+    trace.foregroundBefore = foregroundBefore;
     trace.restoreTarget = m_previousForeground;
-    trace.restoreRequested = false;   // no restore path yet (cpo-o06e)
     trace.providerBefore = diagnostics.servingProvider();
 
-    // The overlay never takes focus, so closing it has nothing to restore.
-    // In particular, do not attach input queues or retry foreground changes.
+    // cpo-o06b: having taken the foreground, give it back — but only when the
+    // overlay is the window still holding it. If anything else owns it the
+    // user has already moved on (Alt-Tab, the shell, another app), and pulling
+    // focus back to the game would be exactly the ping-pong this must never
+    // do. A minimized or destroyed game is never a target either.
+    const bool overlayOwnsForeground = overlayHwnd && foregroundBefore == overlayHwnd;
+    const bool returnToGame = returnPolicy == ForegroundReturn::ToGame && overlayOwnsForeground
+        && game && IsWindow(game) && !IsIconic(game);
+
     m_window->hide();
+    // The window goes back to non-activating for its next open; the style is
+    // re-written by the next present(), on whatever handle exists then.
+    m_presenter->resetActivationPolicy();
+    m_watchGameContext = false;
+    m_gameContextLostTicks = 0;
     m_previousForeground = nullptr;
     m_previousForegroundPid = 0;
 
-    trace.foregroundAfter = GetForegroundWindow();
-    trace.restored = trace.restoreTarget != nullptr
-        && trace.foregroundAfter == trace.restoreTarget;
+    trace.restoreRequested = returnToGame;
     trace.providerAfter = diagnostics.servingProvider();
-    const QString traceLine = trace.toLogString();
 
-    qInfo() << "Overlay: hidden without changing foreground";
-    qInfo().noquote() << "Overlay focus trace (close):" << traceLine;
     // A closed overlay makes no isolation claim; clear any stale warning.
     if (!m_foregroundAcquired) {
         m_foregroundAcquired = true;
         emit foregroundAcquiredChanged();
     }
     emit visibleChanged();
+
+    if (returnToGame) {
+        qInfo() << "Overlay: hidden, handing the foreground back to the game";
+        m_pendingHideTrace = std::move(owned);
+        m_focusAcquirer->acquire(game, kHidePhase);
+        return;
+    }
+    qInfo() << "Overlay: hidden without changing foreground";
+    m_pendingHideTrace = std::move(owned);
+    finishHideTrace(false);
+}
+
+// Completes the close record. `restored` is the acquirer's verified result
+// when a hand-back was requested; without one it is false and the line still
+// reports where the foreground actually ended up.
+void OverlayManager::finishHideTrace(bool restored)
+{
+    if (!m_pendingHideTrace)
+        return;
+    const std::unique_ptr<OverlayFocus::HideTrace> owned = std::move(m_pendingHideTrace);
+    OverlayFocus::HideTrace& trace = *owned;
+
+    trace.foregroundAfter = GetForegroundWindow();
+    // Both halves have to agree: the acquirer says it moved the foreground,
+    // and the foreground really is the window we remembered.
+    trace.restored = restored && trace.restoreTarget != nullptr
+        && trace.foregroundAfter == trace.restoreTarget;
+    trace.providerAfter = InputDiagnostics::instance().servingProvider();
+
+    const QString traceLine = trace.toLogString();
+    qInfo().noquote() << "Overlay focus trace (close):" << traceLine;
+    if (trace.restoreRequested && !trace.restored)
+        qWarning().noquote() << "Overlay: the game did NOT get the foreground back |" << traceLine;
     // cpo-x01: closing the overlay is a real transition the export shows; it
     // makes no foreground claim, so no preservation value is recorded.
     InputDiagnostics::instance().noteOverlayHide(traceLine);
+}
+
+void OverlayManager::onForegroundAcquisitionFinished(const QString& phase, void* target,
+                                                     bool acquired, int attempts)
+{
+    Q_UNUSED(target);
+    if (phase == kShowPhase)
+        finishShowTrace(acquired, attempts);
+    else if (phase == kHidePhase)
+        finishHideTrace(acquired);
 }
 
 // --- lifetime decision (cpo-o03) ------------------------------------------
@@ -458,6 +655,21 @@ void OverlayManager::onForegroundWindowChanged(void* newForeground)
         && GetWindow(remembered, GW_OWNER) != nullptr;
 
     OverlayLifetime::Decision decision = OverlayLifetime::decide(facts);
+
+    // cpo-o06b: our own overlay becoming the foreground is the state variant B
+    // exists to reach, not "the user left the game". The rules already say so
+    // (isOverlay -> Ignore); this states it in the log once per open, so a
+    // report shows the distinction was made rather than leaving it implied.
+    // The remembered game window is untouched here: it stays the game context.
+    if (facts.isOverlay && !m_loggedOverlayForeground) {
+        m_loggedOverlayForeground = true;
+        qInfo().noquote() << QStringLiteral(
+            "Overlay: foreground is our own overlay 0x%1 — interactive state, overlay stays "
+            "open (game context still 0x%2 pid %3)")
+            .arg(QString::number(reinterpret_cast<qulonglong>(foreground), 16))
+            .arg(QString::number(reinterpret_cast<qulonglong>(m_previousForeground), 16))
+            .arg(m_previousForegroundPid);
+    }
 
     OverlayLifetime::RebindRequest rebind;
     if (decision == OverlayLifetime::Decision::RebindGame) {

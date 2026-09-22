@@ -19,6 +19,13 @@ class QWindow;
 //   * SWP_NOACTIVATE on every native positioning / z-order call.
 // Neither replaces the other: the ex-style can be lost when Qt rebuilds the
 // native window, and a plain SetWindowPos without SWP_NOACTIVATE activates.
+//
+// cpo-o06b adds a second, explicitly requested mode: makeActivatable() clears
+// WS_EX_NOACTIVATE so a foreground request can succeed. It is never part of
+// present() — presentation always starts from the non-activating path, and an
+// overlay whose foreground request is denied simply stays where that path left
+// it. SWP_NOACTIVATE stays on every positioning call in BOTH modes: the only
+// thing that may move the foreground is the caller's explicit request.
 namespace OverlayWin32
 {
 // Mirrored from <windows.h> so this unit — and its tests — stay free of it.
@@ -63,7 +70,8 @@ struct OverlayPresentReport
 {
     void* handle = nullptr;
     bool recreated = false;      // Qt handed us a different HWND than last time
-    bool styleApplied = false;   // WS_EX_NOACTIVATE had to be (re)applied
+    bool styleApplied = false;   // the activation ex-style had to be (re)written
+    bool activatable = false;    // the mode this report was produced under
     void* foregroundBefore = nullptr;
     void* foregroundAfter = nullptr;
 
@@ -86,11 +94,32 @@ public:
     // rebuilt the native window under a visible overlay.
     OverlayPresentReport reassert();
 
+    // cpo-o06b: switch the already-presented window to activatable — clears
+    // WS_EX_NOACTIVATE so an explicit foreground request can succeed. It is a
+    // deliberate second step AFTER present(), never part of it: presentation
+    // keeps its never-activate guarantee, and a window that was shown without
+    // activation stays that way if this is never called (or if the foreground
+    // request that follows is denied).
+    //
+    // Geometry, visibility and z-order are untouched here; the mode sticks, so
+    // a later reassert()/present() — a screen change, the game moving monitors
+    // — keeps the overlay activatable instead of silently reverting it.
+    OverlayPresentReport makeActivatable();
+
+    // Back to the non-activating default, applied by the next present()/
+    // reassert(). Called at the start of every open so each show begins from
+    // the proven path rather than inheriting the previous session's mode.
+    void resetActivationPolicy() { m_activatable = false; }
+
+    bool isActivatable() const { return m_activatable; }
+
 private:
-    bool ensureNoActivate(void* hwnd, OverlayPresentReport& report);
+    // Writes WS_EX_NOACTIVATE or clears it, whichever the current mode wants.
+    bool ensureActivationStyle(void* hwnd, OverlayPresentReport& report);
 
     std::unique_ptr<OverlayWindowApi> m_api;
     void* m_styledHandle = nullptr;
+    bool m_activatable = false;
 };
 
 // Production seam over a real QWindow. Declared here so the overlay test can

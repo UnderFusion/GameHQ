@@ -1,9 +1,19 @@
 // cpo-o05: native acceptance of the in-game overlay's window/focus behaviour.
 //
+// cpo-o06b changed the contract this file pins down. The overlay is no longer
+// a window that must never own the foreground: presentation is still
+// non-activating, but it is now followed by an explicit, bounded foreground
+// request, so while the overlay is open it is expected to BE the active
+// window — with the target app still visible and un-minimized behind it, and
+// the foreground handed back when the overlay closes.
+//
 // What this proves, on real Win32 facts rather than fakes:
-//   * showing the overlay never takes the foreground away from the target app
-//     (a borderless window in ANOTHER process), across repeated open/close
-//     cycles, popup interactions and native-handle recreation;
+//   * showing the overlay takes the foreground while the target app (a
+//     borderless window in ANOTHER process) stays visible and un-minimized,
+//     across repeated open/close cycles, popup interactions and native-handle
+//     recreation, and closing gives the foreground back;
+//   * a denied foreground request leaves the overlay usable and honest
+//     instead of breaking presentation, and never turns into a retry loop;
 //   * the overlay closes itself when the foreground genuinely leaves the game
 //     (another app activated, target minimized, target window destroyed) and
 //     survives a same-process replacement window (game recreates its window);
@@ -41,6 +51,7 @@
 #include <memory>
 
 #include "input/InputDiagnostics.h"
+#include "overlay/ForegroundAcquirer.h"
 #include "overlay/ForegroundApi.h"
 #include "overlay/OverlayManager.h"
 
@@ -138,6 +149,35 @@ bool hasNoActivateStyle(HWND hwnd)
 {
     return hwnd && (GetWindowLongPtrW(hwnd, GWL_EXSTYLE) & WS_EX_NOACTIVATE) != 0;
 }
+
+// Counts what the overlay ASKED Windows to do, and optionally refuses it.
+// Windows denying the foreground cannot be provoked on a live desktop, and
+// "the overlay never requested the foreground" cannot be observed from the
+// outside at all — both need this seam. Ownership passes to the manager.
+class CountingForegroundApi final : public ForegroundApi
+{
+public:
+    explicit CountingForegroundApi(bool allow)
+        : m_allow(allow)
+        , m_system(ForegroundApi::createSystem())
+    {
+    }
+
+    void* foregroundWindow() override { return m_system->foregroundWindow(); }
+
+    bool forceForeground(void* target) override
+    {
+        ++m_attempts;
+        return m_allow && m_system->forceForeground(target);
+    }
+
+    int attempts() const { return m_attempts; }
+
+private:
+    bool m_allow;
+    std::unique_ptr<ForegroundApi> m_system;
+    int m_attempts = 0;
+};
 
 // The command message the fixture registers. RegisterWindowMessage returns the
 // same value in every process on the desktop, so the fixture and this test
@@ -528,9 +568,11 @@ class NativeOverlayTest : public QObject
 private slots:
     void initTestCase();
     void cleanupTestCase();
-    void openingTheOverlayKeepsTheTargetForegroundWithoutActivation();
+    void openingTheOverlayTakesForegroundWhileTheTargetStaysVisible();
+    void theTargetStaysTheGameContextWhileTheOverlayIsActive();
+    void aDeniedForegroundRequestLeavesTheOverlayUsable();
     void realShowAndHideLandInTheOverlayDiagnostics();
-    void repeatedOpenCloseCyclesPreserveTargetForeground();
+    void repeatedOpenCloseCyclesHandTheForegroundBackAndForth();
     void menuAndDeleteConfirmationNeverActivateAnotherWindow();
     void anotherApplicationTakingTheForegroundDismissesTheOverlay();
     void minimizingTheTargetDismissesTheOverlay();
@@ -541,7 +583,9 @@ private slots:
     void overlayFollowsAGameOnAnotherScreenWhenOneExists();
 
 private:
-    std::unique_ptr<OverlayHarness> makeHarness() const
+    // `foregroundApi` (optional, ownership passes on) lets a case decide what
+    // Windows does with the overlay's foreground request.
+    std::unique_ptr<OverlayHarness> makeHarness(ForegroundApi* foregroundApi = nullptr) const
     {
         auto harness = std::make_unique<OverlayHarness>();
         // Qt maps module URIs onto the resource tree; make that explicit so the
@@ -554,7 +598,7 @@ private:
         harness->engine.rootContext()->setContextProperty(QStringLiteral("sounds"), &harness->sounds);
         harness->engine.rootContext()->setContextProperty(QStringLiteral("languageManager"),
                                                           &harness->language);
-        harness->manager = std::make_unique<OverlayManager>(&harness->engine);
+        harness->manager = std::make_unique<OverlayManager>(&harness->engine, foregroundApi);
         harness->engine.rootContext()->setContextProperty(QStringLiteral("overlay"),
                                                           harness->manager.get());
         return harness;
@@ -570,13 +614,52 @@ private:
     // A failed foreground check must say what actually holds the foreground:
     // on a live desktop "something else took focus" is exactly the diagnosis
     // that separates a product defect from environment interference.
+    //
+    // Retried rather than sampled once: handing the foreground back on close is
+    // a bounded request with its own retries, so the assertion has to allow the
+    // same budget the product does.
     void expectTargetForeground()
     {
-        const HWND foreground = GetForegroundWindow();
-        QVERIFY2(foreground == m_fixture.target(),
-                 qPrintable(QStringLiteral("foreground is %1, expected the fixture target %2")
-                                .arg(windowSnapshot(foreground),
-                                     windowSnapshot(m_fixture.target()))));
+        QTRY_VERIFY2_WITH_TIMEOUT(
+            GetForegroundWindow() == m_fixture.target(),
+            qPrintable(QStringLiteral("foreground is %1, expected the fixture target %2")
+                           .arg(windowSnapshot(GetForegroundWindow()),
+                                windowSnapshot(m_fixture.target()))),
+            3000);
+    }
+
+    // cpo-o06b's acceptance shape, as one call: the overlay owns the
+    // foreground AND the target is still on screen behind it. Both halves
+    // matter — a game that minimized itself in reaction would leave the first
+    // one true and the feature broken.
+    void expectOverlayForeground(OverlayHarness& harness)
+    {
+        const HWND overlay = harness.handle();
+        QVERIFY(overlay != nullptr);
+        QTRY_VERIFY2_WITH_TIMEOUT(
+            GetForegroundWindow() == overlay,
+            qPrintable(QStringLiteral("foreground is %1, expected the overlay %2")
+                           .arg(windowSnapshot(GetForegroundWindow()),
+                                windowSnapshot(overlay))),
+            3000);
+        expectTargetStillOnScreen();
+        QVERIFY2(harness.manager->isVisible(),
+                 "the overlay dismissed itself after taking the foreground");
+        QVERIFY2(!hasNoActivateStyle(overlay),
+                 "an interactive overlay must not keep WS_EX_NOACTIVATE");
+    }
+
+    void expectTargetStillOnScreen()
+    {
+        const HWND target = m_fixture.target();
+        QVERIFY2(target && IsWindow(target),
+                 "the target window disappeared while the overlay was open");
+        QVERIFY2(IsWindowVisible(target),
+                 qPrintable(QStringLiteral("the target is not visible: %1")
+                                .arg(windowSnapshot(target))));
+        QVERIFY2(!IsIconic(target),
+                 qPrintable(QStringLiteral("the target minimized itself: %1")
+                                .arg(windowSnapshot(target))));
     }
 
     FixtureTarget m_fixture;
@@ -597,7 +680,7 @@ void NativeOverlayTest::cleanupTestCase()
     qInstallMessageHandler(nullptr);
 }
 
-void NativeOverlayTest::openingTheOverlayKeepsTheTargetForegroundWithoutActivation()
+void NativeOverlayTest::openingTheOverlayTakesForegroundWhileTheTargetStaysVisible()
 {
     if (!m_fixture.forceTargetForeground())
         QSKIP("this session cannot put the fixture window in the foreground");
@@ -613,10 +696,19 @@ void NativeOverlayTest::openingTheOverlayKeepsTheTargetForegroundWithoutActivati
     QVERIFY(overlay != nullptr);
     QVERIFY(IsWindowVisible(overlay));
 
-    // The one fact this whole leaf exists for: the target is still foreground.
-    expectTargetForeground();
-    QVERIFY(hasNoActivateStyle(overlay));
+    // The whole point of this leaf: the overlay is the active window, the
+    // target is still on screen and un-minimized behind it.
+    expectOverlayForeground(*harness);
     QVERIFY((GetWindowLongPtrW(overlay, GWL_EXSTYLE) & WS_EX_TOPMOST) != 0);
+
+    // ... and it stays that way. Taking the foreground away from the game is
+    // exactly the event the lifetime rules used to read as "the user left":
+    // if that misfired, the overlay would be gone by now.
+    QTest::qWait(1200);
+    QVERIFY2(harness->manager->isVisible(),
+             "the overlay dismissed itself on its own expected foreground");
+    QCOMPARE(GetForegroundWindow(), overlay);
+    expectTargetStillOnScreen();
 
     // The overlay covers the screen the target is on (single-screen session,
     // so that is the primary screen).
@@ -624,7 +716,78 @@ void NativeOverlayTest::openingTheOverlayKeepsTheTargetForegroundWithoutActivati
 
     QCOMPARE(brokenQmlDiagnostics(), QStringList());
     harness->manager->hide();
+    expectTargetForeground();
+}
+
+// The game the overlay opened over stays the game context even once GameHQ
+// owns the OS foreground: hideForDesktopHandoff() returns the window the
+// manager remembers, so a manager that had let its own window become "the
+// game" would hand back the wrong handle — or none.
+void NativeOverlayTest::theTargetStaysTheGameContextWhileTheOverlayIsActive()
+{
+    if (!m_fixture.forceTargetForeground())
+        QSKIP("this session cannot put the fixture window in the foreground");
+    QVERIFY(m_fixture.recreate());
+    QVERIFY(m_fixture.forceTargetForeground());
+
+    auto* counting = new CountingForegroundApi(true);
+    auto harness = makeHarness(counting);
+    showOverlay(*harness);
+    expectOverlayForeground(*harness);
+    const int afterShow = counting->attempts();
+    QVERIFY(afterShow > 0);
+
+    const HWND remembered = static_cast<HWND>(harness->manager->hideForDesktopHandoff());
+    QCOMPARE(remembered, m_fixture.target());
+    QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
+
+    // The desktop handoff deliberately does NOT ask for the foreground back:
+    // GameHQ's main window is about to take it, and two windows requesting it
+    // is the fight this avoids. Windows is free to promote whatever it likes
+    // once the overlay hides — what is asserted here is that GameHQ made no
+    // request of its own.
+    QTest::qWait(400);
+    QCOMPARE(counting->attempts(), afterShow);
+}
+
+// A denied foreground request must not cost anything: the overlay is still
+// presented, still open and still honest about the game keeping the input.
+void NativeOverlayTest::aDeniedForegroundRequestLeavesTheOverlayUsable()
+{
+    if (!m_fixture.forceTargetForeground())
+        QSKIP("this session cannot put the fixture window in the foreground");
+    QVERIFY(m_fixture.recreate());
+    QVERIFY(m_fixture.forceTargetForeground());
+
+    auto* refusing = new CountingForegroundApi(false);
+    auto harness = makeHarness(refusing);
+    showOverlay(*harness);
+
+    const HWND overlay = harness->handle();
+    QVERIFY(overlay != nullptr);
+    QVERIFY(IsWindowVisible(overlay));
+    QVERIFY((GetWindowLongPtrW(overlay, GWL_EXSTYLE) & WS_EX_TOPMOST) != 0);
+
+    // Presentation is untouched by the denial, the overlay stays open, and the
+    // target keeps the foreground exactly as it did before cpo-o06b.
+    QTest::qWait(600);
+    QVERIFY2(harness->manager->isVisible(), "a denied foreground request closed the overlay");
+    expectTargetForeground();
+    expectTargetStillOnScreen();
+    QVERIFY2(!harness->manager->foregroundAcquired(),
+             "a denied request must not be reported as acquired");
+
+    // Bounded, not a loop: the acquirer spends its fixed budget and stops.
+    // Anything else would be GameHQ fighting the shell for focus.
+    const int afterShow = refusing->attempts();
+    QCOMPARE(afterShow, ForegroundAcquirer::kMaxAttempts);
+    QTest::qWait(700);
+    QCOMPARE(refusing->attempts(), afterShow);
+
+    harness->manager->hide();
     QTest::qWait(100);
+    // Nothing was taken, so nothing is handed back: no second acquisition.
+    QCOMPARE(refusing->attempts(), afterShow);
     expectTargetForeground();
 }
 
@@ -658,7 +821,7 @@ void NativeOverlayTest::realShowAndHideLandInTheOverlayDiagnostics()
     QVERIFY2(text.contains(QStringLiteral("overlay visible: no")), qPrintable(text));
 }
 
-void NativeOverlayTest::repeatedOpenCloseCyclesPreserveTargetForeground()
+void NativeOverlayTest::repeatedOpenCloseCyclesHandTheForegroundBackAndForth()
 {
     if (!m_fixture.forceTargetForeground())
         QSKIP("this session cannot put the fixture window in the foreground");
@@ -669,14 +832,14 @@ void NativeOverlayTest::repeatedOpenCloseCyclesPreserveTargetForeground()
     for (int cycle = 0; cycle < 5; ++cycle) {
         harness->manager->toggle();
         QTRY_VERIFY_WITH_TIMEOUT(harness->manager->isVisible(), 5000);
-        expectTargetForeground();
-        QVERIFY(hasNoActivateStyle(harness->handle()));
+        expectOverlayForeground(*harness);
 
         harness->manager->toggle();
         QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
-        // Closing never hands the foreground anywhere: not to the overlay and
-        // not back — the target never lost it.
+        // Closing gives the foreground back to the window the overlay took it
+        // from — every cycle, not just the first.
         expectTargetForeground();
+        expectTargetStillOnScreen();
     }
 }
 
@@ -690,7 +853,7 @@ void NativeOverlayTest::menuAndDeleteConfirmationNeverActivateAnotherWindow()
     g_diagnostics.clear();
     auto harness = makeHarness();
     showOverlay(*harness);
-    expectTargetForeground();
+    expectOverlayForeground(*harness);
 
     QQuickWindow* window = harness->window();
     QQuickItem* content = findItemByProperty(window->contentItem(), "menuOpen");
@@ -700,8 +863,9 @@ void NativeOverlayTest::menuAndDeleteConfirmationNeverActivateAnotherWindow()
     QVERIFY(QMetaObject::invokeMethod(content, "toggleMenu"));
     QTRY_VERIFY_WITH_TIMEOUT(content->property("menuOpen").toBool(), 2000);
     QTest::qWait(150);
-    expectTargetForeground();
-    QVERIFY(harness->manager->isVisible());
+    // The popups belong to the overlay: they must not move the foreground to
+    // any other window — not to a popup of their own, and not back to the game.
+    expectOverlayForeground(*harness);
 
     // Real delete confirmation (the mouse delete path opens this dialog).
     QQuickItem* dialog = findItemByClass(window->contentItem(), "ConfirmDialog");
@@ -710,19 +874,19 @@ void NativeOverlayTest::menuAndDeleteConfirmationNeverActivateAnotherWindow()
     QVERIFY(QMetaObject::invokeMethod(dialog, "open"));
     QTRY_VERIFY_WITH_TIMEOUT(dialog->property("visible").toBool(), 2000);
     QTest::qWait(150);
-    expectTargetForeground();
-    QVERIFY(harness->manager->isVisible());
+    // The popups belong to the overlay: they must not move the foreground to
+    // any other window — not to a popup of their own, and not back to the game.
+    expectOverlayForeground(*harness);
 
     // Closing both again must not activate anything either.
     QVERIFY(QMetaObject::invokeMethod(dialog, "close"));
     QTRY_VERIFY_WITH_TIMEOUT(!dialog->property("visible").toBool(), 2000);
     QVERIFY(QMetaObject::invokeMethod(content, "toggleMenu"));
     QTRY_VERIFY_WITH_TIMEOUT(!content->property("menuOpen").toBool(), 2000);
-    expectTargetForeground();
+    expectOverlayForeground(*harness);
     QCOMPARE(brokenQmlDiagnostics(), QStringList());
 
     harness->manager->hide();
-    QTest::qWait(100);
     expectTargetForeground();
 }
 
@@ -738,8 +902,11 @@ void NativeOverlayTest::anotherApplicationTakingTheForegroundDismissesTheOverlay
 
     auto harness = makeHarness();
     showOverlay(*harness);
-    expectTargetForeground();
+    expectOverlayForeground(*harness);
 
+    // The user moving to a genuinely unrelated window still closes the
+    // overlay — and the overlay must NOT pull the foreground back to the game
+    // on the way out, which would be focus ping-pong with the user.
     QVERIFY(other.forceTargetForeground());
     QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
     QVERIFY2(GetForegroundWindow() == other.target(),
@@ -757,8 +924,11 @@ void NativeOverlayTest::minimizingTheTargetDismissesTheOverlay()
 
     auto harness = makeHarness();
     showOverlay(*harness);
-    expectTargetForeground();
+    expectOverlayForeground(*harness);
 
+    // No foreground event can report this: the overlay already owns the
+    // foreground, so the game minimizing changes nothing Windows notifies
+    // about. The polled game-context watch is what has to catch it.
     QVERIFY(m_fixture.minimizeTarget());
     QTRY_VERIFY_WITH_TIMEOUT(IsIconic(m_fixture.target()), 3000);
     QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
@@ -773,7 +943,7 @@ void NativeOverlayTest::targetWindowRecreationKeepsTheOverlayOpen()
 
     auto harness = makeHarness();
     showOverlay(*harness);
-    expectTargetForeground();
+    expectOverlayForeground(*harness);
 
     // The game replaces its own window (borderless toggle, resolution change,
     // launcher handover): the process stays, the handle does not.
@@ -784,11 +954,13 @@ void NativeOverlayTest::targetWindowRecreationKeepsTheOverlayOpen()
     QTest::qWait(600);
     QVERIFY2(harness->manager->isVisible(),
              "the overlay closed on a same-process window replacement");
+    // The replacement window took the foreground itself; GameHQ does not
+    // fight it back. The overlay stays open over the rebound game.
     expectTargetForeground();
-    QVERIFY(hasNoActivateStyle(harness->handle()));
+    QVERIFY2(!hasNoActivateStyle(harness->handle()),
+             "the rebind path must keep the interactive mode it was in");
 
     harness->manager->hide();
-    QTest::qWait(100);
     expectTargetForeground();
 }
 
@@ -802,7 +974,7 @@ void NativeOverlayTest::nativeHandleRecreationIsRepairedByTheShowPath()
     auto harness = makeHarness();
     showOverlay(*harness);
     const HWND before = harness->handle();
-    QVERIFY(hasNoActivateStyle(before));
+    expectOverlayForeground(*harness);
 
     // Qt rebuilds the native window through exactly this API on flag, screen
     // and geometry transitions; a rebuilt window starts without our ex-style.
@@ -821,12 +993,13 @@ void NativeOverlayTest::nativeHandleRecreationIsRepairedByTheShowPath()
 
     const HWND after = harness->handle();
     QVERIFY(after != nullptr);
-    QVERIFY2(hasNoActivateStyle(after),
-             "the rebuilt overlay window did not get WS_EX_NOACTIVATE back");
-    expectTargetForeground();
+    QVERIFY2(after != before, "the native window was not actually rebuilt");
+    // The repair path re-applies whatever mode the presentation is in on the
+    // NEW handle: a rebuilt window that kept the old style would be either
+    // permanently unactivatable or permanently activatable.
+    expectOverlayForeground(*harness);
 
     harness->manager->hide();
-    QTest::qWait(100);
     expectTargetForeground();
 }
 
@@ -839,7 +1012,7 @@ void NativeOverlayTest::destroyedTargetHandlesAreNeverReused()
 
     auto harness = makeHarness();
     showOverlay(*harness);
-    expectTargetForeground();
+    expectOverlayForeground(*harness);
 
     const HWND gone = m_fixture.target();
     QVERIFY(m_fixture.destroyTargetWindow());
@@ -854,11 +1027,9 @@ void NativeOverlayTest::destroyedTargetHandlesAreNeverReused()
     QVERIFY(m_fixture.recreate());
     QVERIFY(m_fixture.forceTargetForeground());
     showOverlay(*harness);
-    expectTargetForeground();
-    QVERIFY(hasNoActivateStyle(harness->handle()));
+    expectOverlayForeground(*harness);
 
     harness->manager->hide();
-    QTest::qWait(100);
     expectTargetForeground();
 }
 
@@ -871,14 +1042,15 @@ void NativeOverlayTest::targetKeepsWorkingWhileTheOverlayIsOpen()
 
     auto harness = makeHarness();
     showOverlay(*harness);
-    expectTargetForeground();
+    expectOverlayForeground(*harness);
 
     // The target still receives and processes its window messages while the
-    // overlay covers the screen and keeps its hands off the foreground.
+    // overlay covers the screen and owns the foreground: losing the
+    // foreground is not the same as being frozen out.
     const unsigned pingsBefore = m_fixture.pings();
     QVERIFY(m_fixture.pingTarget());
     QTRY_COMPARE_WITH_TIMEOUT(m_fixture.pings(), pingsBefore + 1, 3000);
-    expectTargetForeground();
+    expectOverlayForeground(*harness);
 
     // And the GameHQ-side overlay route keeps working while the target owns
     // the foreground: it is keyed on overlay visibility, not on OS focus
@@ -888,18 +1060,18 @@ void NativeOverlayTest::targetKeepsWorkingWhileTheOverlayIsOpen()
     QVERIFY(!content->property("menuOpen").toBool());
     QVERIFY(QMetaObject::invokeMethod(&harness->input, "overlayMenu"));
     QTRY_VERIFY_WITH_TIMEOUT(content->property("menuOpen").toBool(), 2000);
-    expectTargetForeground();
+    expectOverlayForeground(*harness);
 
     // Back/Circle inside an open menu closes the menu first; only the next
     // Back closes the overlay itself (the shipped shell contract).
     QVERIFY(QMetaObject::invokeMethod(&harness->input, "overlayHideRequested"));
     QTRY_VERIFY_WITH_TIMEOUT(!content->property("menuOpen").toBool(), 2000);
-    QVERIFY(harness->manager->isVisible());
-    expectTargetForeground();
+    expectOverlayForeground(*harness);
 
     QVERIFY(QMetaObject::invokeMethod(&harness->input, "overlayHideRequested"));
     QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
     expectTargetForeground();
+    expectTargetStillOnScreen();
 }
 
 void NativeOverlayTest::overlayFollowsAGameOnAnotherScreenWhenOneExists()
@@ -938,10 +1110,10 @@ void NativeOverlayTest::overlayFollowsAGameOnAnotherScreenWhenOneExists()
 
     QTRY_VERIFY_WITH_TIMEOUT(harness->window()->screen() == other, 5000);
     expectTargetForeground();
-    QVERIFY(hasNoActivateStyle(harness->handle()));
+    QVERIFY2(!hasNoActivateStyle(harness->handle()),
+             "following the game to another monitor must keep the interactive mode");
 
     harness->manager->hide();
-    QTest::qWait(100);
     expectTargetForeground();
 }
 

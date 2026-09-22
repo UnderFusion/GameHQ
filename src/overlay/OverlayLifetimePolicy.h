@@ -73,6 +73,18 @@ bool isCurrentForegroundEvent(const void* eventWindow, const void* currentForegr
 // never replace the remembered window.
 Decision decide(const ForegroundFacts& facts);
 
+// cpo-o06b: the same loss of context, detected by looking instead of by being
+// told. While the overlay itself owns the OS foreground, a game that hides,
+// minimizes or destroys its window produces NO foreground event — nothing
+// changed foreground, because we already had it — so `decide()` is never
+// asked. Only the remembered-window fields are consulted; who owns the
+// foreground is deliberately irrelevant here.
+//
+// This is a question, not a decision: the caller is expected to require the
+// answer to hold for a short, bounded while before hiding, so a game that
+// destroys and immediately recreates its window gets to rebind first.
+bool rememberedGameContextLost(const ForegroundFacts& facts);
+
 // What a rebind carries: the new game window, and whether it sits on another
 // monitor than the overlay is covering right now.
 struct RebindRequest

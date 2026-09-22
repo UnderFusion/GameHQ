@@ -97,6 +97,17 @@ Decision decide(const ForegroundFacts& facts)
     return Decision::Hide;
 }
 
+bool rememberedGameContextLost(const ForegroundFacts& facts)
+{
+    // Deliberately the same three conditions `decide()` treats as a lost game
+    // context for the remembered window — destroyed, hidden or minimized — so
+    // the polled path and the event path cannot drift into disagreeing about
+    // what "the game is gone" means. Shape (top-level/owned) is NOT part of
+    // it: a game briefly reparenting its own window must not be read as a loss.
+    return !facts.rememberedGameAlive || !facts.rememberedGameVisible
+        || facts.rememberedGameIconic;
+}
+
 void apply(Decision decision, const RebindRequest& rebind, Actions& actions)
 {
     switch (decision) {

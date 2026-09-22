@@ -6,6 +6,19 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.39] - 2026-09-22
+
+### Changed
+
+- Overlay focus (`cpo-o06b`, variant B of the out-of-process isolation experiment): presentation is still non-activating, but it is now followed by one explicit, bounded foreground request. The overlay becomes the active window while the tracked game stays visible and un-minimised behind it, and closing the overlay hands the foreground straight back to that game. The game window is never minimised, restored or restyled, nothing is injected into it, and the foreground is never re-forced in a timer or frame loop — a game that takes the foreground back keeps it.
+- `OverlayPresenter` gained a second, explicitly requested mode: `makeActivatable()` clears `WS_EX_NOACTIVATE` on the window that is already presented. `present()` always starts from the non-activating path, `SWP_NOACTIVATE` stays on every positioning call in both modes, and the mode survives a reassert or a monitor move so an interactive overlay is not silently reverted.
+- `foregroundAcquired` is now observed rather than intended: it carries the acquirer's verified result (which re-reads `GetForegroundWindow` instead of trusting what `SetForegroundWindow` reported). A denied request leaves the overlay exactly as presentation left it — open, topmost, non-activating — and keeps the in-overlay warning that the game may still react to the controller.
+- The overlay focus record gained the acquisition outcome, both windows re-sampled after the request settled, and one derived verdict, `interactive-foreground`: the overlay owns the foreground AND the game is still alive, visible and un-minimised. A successful API call alone never produces a `yes`.
+
+### Fixed
+
+- While the overlay owns the foreground, a game that minimises, hides or destroys its window produces no foreground event at all — nothing changed foreground, because GameHQ already had it. The post-show probe now continues as a slower game-context watch and applies the same "lost context" rule the event path uses, after a short grace period so a game that recreates its own window still rebinds instead of being treated as gone.
+
 ## [0.7.38] - 2026-09-21
 
 ### Added

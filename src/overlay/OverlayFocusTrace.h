@@ -53,6 +53,22 @@ struct ShowTrace
     // the overlay stays non-activating this equals foregroundAfterPresent.
     const void* foregroundAfterActivation = nullptr;
     bool activationRequested = false;
+    // How the explicit foreground request went (cpo-o06b). `succeeded` is the
+    // acquirer's verified result — it re-reads GetForegroundWindow rather than
+    // trusting what SetForegroundWindow reported.
+    int acquisitionAttempts = 0;
+    bool acquisitionSucceeded = false;
+
+    // Both windows sampled AGAIN after the request settled. The game's row is
+    // the half of the truth condition that a foreground check alone cannot
+    // give: a game that minimized itself in reaction still leaves the overlay
+    // owning the foreground.
+    WindowFacts gameAfterAcquisition;
+    WindowFacts overlayAfterAcquisition;
+
+    // The lifetime rules saw our own overlay in the foreground and kept the
+    // overlay open instead of treating it as "the user left the game".
+    bool lifetimeAcceptedOverlayForeground = false;
 
     // Qt and Win32 can disagree: Qt believes the window is active while
     // Windows still reports another foreground, which is exactly the state
@@ -78,6 +94,16 @@ struct ShowTrace
         return overlay.handle != nullptr && finalForeground() == overlay.handle;
     }
     bool qtWin32Disagree() const { return overlayActiveQt != overlayForegroundWin32; }
+
+    // cpo-o06b's whole acceptance question, as one boolean. Every clause is an
+    // observed Windows fact: a successful API call proves none of them, and
+    // three of the four would still be true if the game had vanished.
+    bool interactiveForegroundTruth() const
+    {
+        return overlayOwnsForeground() && gameAfterAcquisition.exists
+            && gameAfterAcquisition.visible && !gameAfterAcquisition.iconic
+            && overlayAfterAcquisition.exists && overlayAfterAcquisition.visible;
+    }
 
     // What this record proves about controller isolation — which is nothing.
     // Foreground ownership is a precondition GameHQ can observe; whether the

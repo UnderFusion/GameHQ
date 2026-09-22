@@ -218,6 +218,96 @@ private slots:
     // holds the foreground, the overlay is presented, and the foreground must
     // not move. Skipped only when this session cannot hold a foreground
     // window at all (headless/locked desktop) — never on a failure.
+    // --- cpo-o06b: the activatable mode ------------------------------------
+
+    void makeActivatableClearsTheStyleWithoutTouchingAnythingElse()
+    {
+        auto* api = new FakeOverlayWindowApi;
+        auto presenter = presenterFor(api);
+        presenter->present(QRect(0, 0, 1920, 1080));
+        const int showsAfterPresent = api->shows;
+        const int geometriesAfterPresent = api->geometries.size();
+
+        const OverlayPresentReport report = presenter->makeActivatable();
+
+        QVERIFY(report.activatable);
+        QVERIFY(report.styleApplied);
+        QVERIFY(!(api->styles.value(hwnd(0x100)) & OverlayWin32::kExNoActivate));
+        // Presentation state is untouched: no show, no geometry, and the one
+        // positioning call it makes still refuses to activate.
+        QCOMPARE(api->shows, showsAfterPresent);
+        QCOMPARE(api->geometries.size(), geometriesAfterPresent);
+        QVERIFY(api->everyPosCallIsNonActivating());
+        QVERIFY(presenter->isActivatable());
+    }
+
+    void presentationItselfNeverMakesTheWindowActivatable()
+    {
+        auto* api = new FakeOverlayWindowApi;
+        auto presenter = presenterFor(api);
+
+        const OverlayPresentReport report = presenter->present(QRect(0, 0, 1920, 1080));
+
+        // Whatever cpo-o06b does afterwards, the window becomes visible
+        // unactivatable first: a foreground request is a separate decision.
+        QVERIFY(!report.activatable);
+        QVERIFY(api->styles.value(hwnd(0x100)) & OverlayWin32::kExNoActivate);
+    }
+
+    void theActivatableModeSurvivesAReassert()
+    {
+        auto* api = new FakeOverlayWindowApi;
+        auto presenter = presenterFor(api);
+        presenter->present(QRect(0, 0, 1920, 1080));
+        presenter->makeActivatable();
+
+        // A screen change re-asserts on whatever handle exists now. An
+        // interactive overlay must not silently fall back to unactivatable —
+        // it would keep the foreground it has and lose it on the next
+        // transition.
+        const OverlayPresentReport report = presenter->reassert();
+
+        QVERIFY(report.activatable);
+        QVERIFY(!(api->styles.value(hwnd(0x100)) & OverlayWin32::kExNoActivate));
+    }
+
+    void aRebuiltHandleIsMadeActivatableAgain()
+    {
+        auto* api = new FakeOverlayWindowApi;
+        auto presenter = presenterFor(api);
+        presenter->present(QRect(0, 0, 1920, 1080));
+        presenter->makeActivatable();
+
+        // Qt rebuilds the native window: the new handle starts with whatever
+        // Qt gave it, so the mode has to be written onto it, not assumed.
+        api->styles[hwnd(0x200)] = OverlayWin32::kExNoActivate;
+        api->handle = hwnd(0x200);
+        const OverlayPresentReport report = presenter->reassert();
+
+        QVERIFY(report.recreated);
+        QVERIFY(report.styleApplied);
+        QVERIFY(!(api->styles.value(hwnd(0x200)) & OverlayWin32::kExNoActivate));
+    }
+
+    void resettingTheActivationPolicyRestoresTheGuaranteeOnTheNextPresent()
+    {
+        auto* api = new FakeOverlayWindowApi;
+        auto presenter = presenterFor(api);
+        presenter->present(QRect(0, 0, 1920, 1080));
+        presenter->makeActivatable();
+
+        // Every open starts from the proven path: a closed overlay must not
+        // stay activatable until someone asks for the foreground again.
+        presenter->resetActivationPolicy();
+        QVERIFY(!presenter->isActivatable());
+        const OverlayPresentReport report = presenter->present(QRect(0, 0, 1920, 1080));
+
+        QVERIFY(!report.activatable);
+        QVERIFY(report.styleApplied);
+        QVERIFY(api->styles.value(hwnd(0x100)) & OverlayWin32::kExNoActivate);
+        QVERIFY(api->everyPosCallIsNonActivating());
+    }
+
     void realWindowShowLeavesTheOtherWindowForeground()
     {
         QWindow other;

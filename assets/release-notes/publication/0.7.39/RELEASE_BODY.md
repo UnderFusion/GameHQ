@@ -1,15 +1,14 @@
-# GameHQ 0.7.27 (2026-09-12)
+# GameHQ 0.7.39 (2026-09-22)
 
-## Added
+## Changed
 
-- Choose separate main-window and in-game overlay sizes from 100% to 200% in General settings. Text, icons, controls, and spacing scale together.
-- Interface size updates immediately and is saved between sessions. Smaller windows automatically limit enlargement to keep controls accessible.
+- Opening the in-game overlay now makes it the active window, so the keyboard and the controller drive the overlay instead of the game behind it. The game stays on screen and is never minimised, moved or changed in any way, and closing the overlay hands the focus straight back to it. If Windows refuses to move the focus, the overlay behaves exactly as before and keeps warning that the game may still react to the controller. This is a first step: a game that deliberately reads the controller in the background can still receive it, and that is reported honestly rather than hidden.
 
 <!-- gamehq:locale-index -->
 
 ## Release notes in other languages
 
-These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.27/assets/release-notes/publication/0.7.27) are kept in the repository; they are not attached to this release as separate downloads.
+These release notes are published in English by default. [Release notes in 16 languages](https://github.com/underfusion/GameHQ/tree/v0.7.39/assets/release-notes/publication/0.7.39) are kept in the repository; they are not attached to this release as separate downloads.
 
 | Language | Locale | Content |
 | --- | --- | --- |

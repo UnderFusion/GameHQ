@@ -146,6 +146,11 @@ private slots:
     void staleForegroundEventIsIgnored();
     void staleEventAfterTheGameReturnsIsIgnored();
 
+    // --- the polled game-context check (cpo-o06b) ----------------------------
+    void aHealthyRememberedGameIsNotALostContext();
+    void aGoneRememberedGameIsALostContext();
+    void theShapeOfTheRememberedWindowDoesNotDecideLoss();
+
     // --- popups stay inside the overlay window -------------------------------
     void overlayPopupsRemainInWindow();
 };
@@ -442,6 +447,55 @@ void OverlayLifetimeTest::monitorPickFallsBackWithoutAMatch()
     QCOMPARE(OverlayLifetime::screenIndexForMonitor(nullptr, monitors, 2), -1);
     QCOMPARE(OverlayLifetime::screenIndexForMonitor(hwnd(0x11), monitors, 0), -1);
     QCOMPARE(OverlayLifetime::screenIndexForMonitor(hwnd(0x11), nullptr, 0), -1);
+}
+
+// cpo-o06b: while the overlay owns the foreground, a game losing its window
+// produces no foreground event at all — so the manager polls instead. These
+// three cases pin the rule that poll uses.
+void OverlayLifetimeTest::aHealthyRememberedGameIsNotALostContext()
+{
+    OverlayLifetime::ForegroundFacts facts;
+    facts.rememberedGameAlive = true;
+    facts.rememberedGameVisible = true;
+    facts.rememberedGameIconic = false;
+
+    QVERIFY(!OverlayLifetime::rememberedGameContextLost(facts));
+}
+
+void OverlayLifetimeTest::aGoneRememberedGameIsALostContext()
+{
+    // Destroyed.
+    OverlayLifetime::ForegroundFacts destroyed;
+    destroyed.rememberedGameAlive = false;
+    QVERIFY(OverlayLifetime::rememberedGameContextLost(destroyed));
+
+    // Alive but no longer showing anything.
+    OverlayLifetime::ForegroundFacts hidden;
+    hidden.rememberedGameAlive = true;
+    hidden.rememberedGameVisible = false;
+    QVERIFY(OverlayLifetime::rememberedGameContextLost(hidden));
+
+    // Alive, visible, minimized: the same loss the event path hides on.
+    OverlayLifetime::ForegroundFacts minimized;
+    minimized.rememberedGameAlive = true;
+    minimized.rememberedGameVisible = true;
+    minimized.rememberedGameIconic = true;
+    QVERIFY(OverlayLifetime::rememberedGameContextLost(minimized));
+}
+
+void OverlayLifetimeTest::theShapeOfTheRememberedWindowDoesNotDecideLoss()
+{
+    // A game briefly reparenting or re-owning its own window is not a game
+    // that went away: only destroyed / hidden / minimized counts. Reading
+    // shape here would close the overlay during ordinary window churn.
+    OverlayLifetime::ForegroundFacts facts;
+    facts.rememberedGameAlive = true;
+    facts.rememberedGameVisible = true;
+    facts.rememberedGameIconic = false;
+    facts.rememberedGameTopLevel = false;
+    facts.rememberedGameOwned = true;
+
+    QVERIFY(!OverlayLifetime::rememberedGameContextLost(facts));
 }
 
 void OverlayLifetimeTest::overlayPopupsRemainInWindow()

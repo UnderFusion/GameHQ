@@ -1,15 +1,27 @@
 {
-  "version": "0.7.38",
-  "date": "2026-09-21",
+  "version": "0.7.39",
+  "date": "2026-09-22",
   "sections": [
     {
-      "title": "Added",
+      "title": "Changed",
       "items": [
-        "The diagnostic report now records what really happened each time the in-game overlay opened and closed: which window Windows kept in the foreground, whether the game window stayed visible or was minimised, whether GameHQ's own window became active, which controller was serving input and which Windows controller focus policy was in force. This is groundwork for stopping overlay navigation from also reaching the game - it changes no overlay behaviour, and it states plainly that whether the game still receives the controller is not something GameHQ can measure about itself."
+        "Opening the in-game overlay now makes it the active window, so the keyboard and the controller drive the overlay instead of the game behind it. The game stays on screen and is never minimised, moved or changed in any way, and closing the overlay hands the focus straight back to it. If Windows refuses to move the focus, the overlay behaves exactly as before and keeps warning that the game may still react to the controller. This is a first step: a game that deliberately reads the controller in the background can still receive it, and that is reported honestly rather than hidden."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.38",
+      "date": "2026-09-21",
+      "sections": [
+        {
+          "title": "Added",
+          "items": [
+            "The diagnostic report now records what really happened each time the in-game overlay opened and closed: which window Windows kept in the foreground, whether the game window stayed visible or was minimised, whether GameHQ's own window became active, which controller was serving input and which Windows controller focus policy was in force. This is groundwork for stopping overlay navigation from also reaching the game - it changes no overlay behaviour, and it states plainly that whether the game still receives the controller is not something GameHQ can measure about itself."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.37",
       "date": "2026-09-21",
@@ -131,19 +143,6 @@
       ]
     },
     {
-      "version": "0.7.27",
-      "date": "2026-09-12",
-      "sections": [
-        {
-          "title": "Added",
-          "items": [
-            "Choose separate main-window and in-game overlay sizes from 100% to 200% in General settings. Text, icons, controls, and spacing scale together.",
-            "Interface size updates immediately and is saved between sessions. Smaller windows automatically limit enlargement to keep controls accessible."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -177,6 +176,13 @@
     "requested_locale": "es-ES",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.39",
+        "source_integrity": "sha256:1a0589dc3fc3e929fec7d03bfc4507073a962771ca38c3d115b2b6f862ec73e8",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.38",
         "source_integrity": "sha256:49b55a7a4ef471d9c4c6dfb4d6fd201f79f0253b2478ff10a96a2eca31fc8f27",
@@ -250,13 +256,6 @@
       {
         "version": "0.7.28",
         "source_integrity": "sha256:c07f93a8fe3ad91d46b007e04e78496abfda321b271cb5dd140ebab9cb6ac9ab",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.27",
-        "source_integrity": "sha256:5c058c98a50cf96622e403a5236239b550f31b84218e7b5fc4a9000029cd25b9",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

@@ -1299,6 +1299,7 @@ set_target_properties(overlay_target_fixture PROPERTIES WIN32_EXECUTABLE TRUE)
 
 gamehq_add_test(tst_overlaynative
     tst_overlaynative.cpp
+    "${CMAKE_SOURCE_DIR}/src/overlay/ForegroundAcquirer.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/ForegroundApi.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayFocusTrace.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayLifetimePolicy.cpp"

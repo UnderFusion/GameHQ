@@ -61,6 +61,9 @@ private slots:
     void activationFieldDecidesWhichForegroundCounts();
     void qtAndWin32DisagreementIsVisible();
     void showNeverClaimsIsolation();
+    void interactiveForegroundNeedsTheGameStillOnScreen();
+    void aMinimizedGameBreaksTheInteractiveVerdict();
+    void aDeniedRequestIsReportedAsNotAcquired();
     void hideReportsRestoreOutcome();
     void hideWithoutRememberedGameIsNotRestored();
 };
@@ -195,4 +198,70 @@ void TestOverlayFocusTrace::hideWithoutRememberedGameIsNotRestored()
 }
 
 QTEST_MAIN(TestOverlayFocusTrace)
+// cpo-o06b: the acceptance verdict is a conjunction on purpose. A foreground
+// grab that succeeded while the game minimized itself is a failure of this
+// leaf, and the record must be able to say so.
+void TestOverlayFocusTrace::interactiveForegroundNeedsTheGameStillOnScreen()
+{
+    OverlayFocus::ShowTrace trace = nonActivatingShow();
+    trace.activationRequested = true;
+    trace.foregroundAfterActivation = hwnd(0x2222);
+    trace.acquisitionSucceeded = true;
+    trace.acquisitionAttempts = 1;
+    trace.gameAfterAcquisition = liveWindow(0x1111, 4242);
+    trace.overlayAfterAcquisition = liveWindow(0x2222, 99);
+
+    QVERIFY(trace.overlayOwnsForeground());
+    QVERIFY(trace.interactiveForegroundTruth());
+    const QString line = trace.toLogString();
+    QVERIFY2(line.contains(QStringLiteral("interactive-foreground=yes")), qPrintable(line));
+    QVERIFY2(line.contains(QStringLiteral("acquisition=acquired attempts=1")), qPrintable(line));
+}
+
+void TestOverlayFocusTrace::aMinimizedGameBreaksTheInteractiveVerdict()
+{
+    OverlayFocus::ShowTrace trace = nonActivatingShow();
+    trace.activationRequested = true;
+    trace.foregroundAfterActivation = hwnd(0x2222);
+    trace.acquisitionSucceeded = true;
+    trace.acquisitionAttempts = 1;
+    trace.overlayAfterAcquisition = liveWindow(0x2222, 99);
+
+    // The overlay really is the foreground window — and the leaf still failed.
+    trace.gameAfterAcquisition = liveWindow(0x1111, 4242);
+    trace.gameAfterAcquisition.iconic = true;
+    QVERIFY(trace.overlayOwnsForeground());
+    QVERIFY(!trace.interactiveForegroundTruth());
+
+    // Same for a game that hid its window rather than minimizing it, and for
+    // one that is gone entirely.
+    trace.gameAfterAcquisition.iconic = false;
+    trace.gameAfterAcquisition.visible = false;
+    QVERIFY(!trace.interactiveForegroundTruth());
+
+    trace.gameAfterAcquisition = OverlayFocus::WindowFacts{};
+    QVERIFY(!trace.interactiveForegroundTruth());
+    QVERIFY2(trace.toLogString().contains(QStringLiteral("interactive-foreground=no")),
+             qPrintable(trace.toLogString()));
+}
+
+void TestOverlayFocusTrace::aDeniedRequestIsReportedAsNotAcquired()
+{
+    OverlayFocus::ShowTrace trace = nonActivatingShow();
+    trace.activationRequested = true;
+    trace.acquisitionAttempts = 3;
+    trace.acquisitionSucceeded = false;
+    trace.gameAfterAcquisition = liveWindow(0x1111, 4242);
+    trace.overlayAfterAcquisition = liveWindow(0x2222, 99);
+
+    // Asked and refused: the game kept the foreground, so the record must not
+    // read like the overlay got it.
+    QVERIFY(!trace.overlayOwnsForeground());
+    QVERIFY(!trace.interactiveForegroundTruth());
+    const QString line = trace.toLogString();
+    QVERIFY2(line.contains(QStringLiteral("acquisition=not-acquired attempts=3")), qPrintable(line));
+    QVERIFY2(line.contains(QStringLiteral("activation-requested=yes")), qPrintable(line));
+    QVERIFY2(line.contains(OverlayFocus::ShowTrace::isolationEvidence()), qPrintable(line));
+}
+
 #include "tst_overlayfocustrace.moc"
