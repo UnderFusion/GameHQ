@@ -87,8 +87,9 @@ Window {
         z: -1
         anchors.fill: parent
         color: Theme.overlayScrim
-        opacity: overlayWindow.visible ? 1 : 0
-        Behavior on opacity { NumberAnimation { duration: Theme.durSlow; easing.type: Easing.OutQuint } }
+        // No fade: the panels appear in the first frame, so an animated scrim
+        // arrived visibly after them (hide is instant, so it only ever played
+        // on open). Scrim and panels now land together.
 
         // Click-outside-to-close: this MouseArea sits below every panel in
         // z-order, so it only ever sees clicks that none of the panels
