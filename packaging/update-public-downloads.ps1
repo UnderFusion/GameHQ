@@ -3,6 +3,10 @@
 .SYNOPSIS
     Keeps the README and website download blocks aligned with repository versions.
 .DESCRIPTION
+    App download buttons open GitHub's /releases/latest page, which always
+    resolves to the newest non-pre-release, so promoting a release to Latest
+    needs no repository change.
+
     The Playnite add-on link stays on an immutable package until the official
     database entry is accepted. Set $playniteAddonPublished to $true after that
     acceptance; the primary link will then become the stable Playnite add-on page.
@@ -15,21 +19,16 @@ param(
 $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $appVersion = (Get-Content (Join-Path $repoRoot "VERSION") -Raw -Encoding UTF8).Trim()
-$publicAppVersion = (Get-Content `
-    (Join-Path $PSScriptRoot "public-app-version.txt") -Raw -Encoding UTF8).Trim()
 $pluginRoot = Join-Path $repoRoot "integrations\playnite"
 $pluginVersion = (Get-Content (Join-Path $pluginRoot "VERSION") -Raw -Encoding UTF8).Trim()
 $installerManifest = Get-Content (Join-Path $pluginRoot "InstallerManifest.yaml") -Raw -Encoding UTF8
 $playniteAddonPublished = $false
 $stableAddonUrl = "https://playnite.link/addons.html#GameHQ_Integration"
 
-foreach ($candidate in @($appVersion, $publicAppVersion, $pluginVersion)) {
+foreach ($candidate in @($appVersion, $pluginVersion)) {
     if ($candidate -notmatch '^\d+\.\d+\.\d+$') {
         throw "Release version '$candidate' is not X.Y.Z"
     }
-}
-if ([version]$publicAppVersion -gt [version]$appVersion) {
-    throw "Public app version $publicAppVersion cannot be newer than VERSION $appVersion"
 }
 
 $packageMatch = [regex]::Match(
@@ -45,15 +44,11 @@ if ($pluginPackageUrl -match '/releases/latest(?:/|$)') {
 }
 $pluginPrimaryUrl = if ($playniteAddonPublished) { $stableAddonUrl } else { $pluginPackageUrl }
 
-$appReleaseBase = "https://github.com/underfusion/GameHQ/releases/download/v$publicAppVersion"
-$setupUrl = "$appReleaseBase/GameHQ-$publicAppVersion-win64-setup.exe"
-$portableUrl = "$appReleaseBase/GameHQ-$publicAppVersion-win64-portable.zip"
-$publicLicenseLabel = if ([version]$publicAppVersion -lt [version]'0.7.1') {
-    'MIT licensed'
-} else {
-    'GPL-3.0 licensed'
-}
-$readmeLicenseLabel = $publicLicenseLabel -replace ' licensed$', ''
+$latestReleaseUrl = "https://github.com/underfusion/GameHQ/releases/latest"
+$setupUrl = $latestReleaseUrl
+$portableUrl = $latestReleaseUrl
+$publicLicenseLabel = 'GPL-3.0 licensed'
+$readmeLicenseLabel = 'GPL-3.0'
 $newline = [Environment]::NewLine
 
 $readmeBlock = @(
@@ -63,7 +58,7 @@ $readmeBlock = @(
     "  &nbsp;",
     "  <a href=""$portableUrl""><img src=""docs/assets/download-portable.svg"" width=""230"" alt=""Download GameHQ Portable ZIP""></a>",
     "</p>",
-    "<p align=""center""><sub>Windows 10+ &middot; v$publicAppVersion Beta &middot; $readmeLicenseLabel &middot; No telemetry</sub></p>",
+    "<p align=""center""><sub>Windows 10+ &middot; Latest Beta &middot; $readmeLicenseLabel &middot; No telemetry</sub></p>",
     "<p align=""center""><sub>Using Playnite? <a href=""$pluginPrimaryUrl"">Get the GameHQ Integration &rarr;</a></sub></p>",
     "<!-- public-downloads:end -->"
 ) -join $newline
@@ -72,10 +67,10 @@ $siteBlock = @(
     "  <!-- public-downloads:start -->",
     '  <section class="download" aria-label="Downloads">',
     '    <div class="download-actions">',
-    "      <a class=""download-button"" href=""$setupUrl""><span>Download for Windows</span><small>GameHQ $publicAppVersion Setup</small></a>",
-    "      <a class=""download-button secondary"" href=""$portableUrl""><span>Portable ZIP</span><small>GameHQ $publicAppVersion &middot; no installation</small></a>",
+    "      <a class=""download-button"" href=""$setupUrl""><span>Download for Windows</span><small>Latest GameHQ Setup</small></a>",
+    "      <a class=""download-button secondary"" href=""$portableUrl""><span>Portable ZIP</span><small>Latest GameHQ &middot; no installation</small></a>",
     "    </div>",
-    "    <p class=""download-meta"">Windows 10+ &middot; GameHQ $publicAppVersion Beta &middot; $publicLicenseLabel &middot; No telemetry</p>",
+    "    <p class=""download-meta"">Windows 10+ &middot; Latest Beta &middot; $publicLicenseLabel &middot; No telemetry</p>",
     "    <p class=""playnite-link"">Using Playnite? <a href=""$pluginPrimaryUrl"">Get the GameHQ Integration &rarr;</a></p>",
     "  </section>",
     "  <!-- public-downloads:end -->"
