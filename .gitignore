@@ -63,6 +63,12 @@ tools/i18n/__pycache__/
 !tools/release-manifest/**
 tools/release-manifest/**/bin/
 tools/release-manifest/**/obj/
+# cpo-o06d: the external controller-input receiver. Its sources are shipped
+# (developer-only, never installed), so they are tracked even though the
+# toolchain directories under tools/ are not. Built artefacts stay ignored.
+!tools/input-receiver/
+!tools/input-receiver/**
+tools/input-receiver/**/*.exe
 
 # Assembled dist packages (packaging/make-dist.ps1)
 dist/

@@ -1,15 +1,33 @@
 {
-  "version": "0.7.40",
+  "version": "0.7.41",
   "date": "2026-09-22",
   "sections": [
     {
+      "title": "Added",
+      "items": [
+        "A developer-only tool now watches the controller from outside GameHQ. It is a separate program that only observes - no injection, no hooks, no drivers, no virtual devices - and it is never part of an installed copy. It records, phase by phase, whether the pad still reaches another program through the three Windows input paths, and it says \"not measurable\" rather than claiming isolation whenever it had nothing to compare against."
+      ]
+    },
+    {
       "title": "Changed",
       "items": [
-        "While the in-game overlay is the active window, GameHQ now also asks Windows' GameInput runtime for exclusive foreground input, so other GameInput clients are meant to stop receiving the pad while the overlay is open. The policy has exactly one owner that applies it only after the overlay has really taken the foreground, and releases it again on every way out: closing the overlay, another app taking the focus, the game going away, or GameInput being switched off. Guide and Share handling is unchanged. Whether another program actually stops seeing the pad is not something GameHQ can confirm from inside itself, so the diagnostics report the policy it requested and explicitly do not claim isolation."
+        "The exclusive input mode the overlay asks for while it is active is now measured from outside GameHQ instead of being described as unverified. On the test machine, with a controller streaming in the background, another program's controller input stopped while the overlay had the exclusive mode and came back as soon as it was released - twice, in two independent runs. Games that read the controller through other Windows interfaces are unaffected by that mode, which is documented as a limit rather than hidden; the diagnostics keep saying the effect is not verified from inside GameHQ, because that is what they can honestly know."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.40",
+      "date": "2026-09-22",
+      "sections": [
+        {
+          "title": "Changed",
+          "items": [
+            "While the in-game overlay is the active window, GameHQ now also asks Windows' GameInput runtime for exclusive foreground input, so other GameInput clients are meant to stop receiving the pad while the overlay is open. The policy has exactly one owner that applies it only after the overlay has really taken the foreground, and releases it again on every way out: closing the overlay, another app taking the focus, the game going away, or GameInput being switched off. Guide and Share handling is unchanged. Whether another program actually stops seeing the pad is not something GameHQ can confirm from inside itself, so the diagnostics report the policy it requested and explicitly do not claim isolation."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.39",
       "date": "2026-09-22",
@@ -131,18 +149,6 @@
       ]
     },
     {
-      "version": "0.7.29",
-      "date": "2026-09-14",
-      "sections": [
-        {
-          "title": "Fixed",
-          "items": [
-            "Suggested updates show matching bundled release notes when available, or a direct link to the GitHub release notes instead of an empty panel."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -176,6 +182,13 @@
     "requested_locale": "it-IT",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.41",
+        "source_integrity": "sha256:8ba3b1300c0e7506c81800d6f1d8b60f91a421c742617be3c12179da8b9af8aa",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.40",
         "source_integrity": "sha256:010451eaeb1e233ef0b2c18f22060cd1f7e00d0eebe70826af6655db066d1faa",
@@ -249,13 +262,6 @@
       {
         "version": "0.7.30",
         "source_integrity": "sha256:4c9495c6f9306d39d590dd613b440185fb6bdc93268cea99a8ae58a530f6794a",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.29",
-        "source_integrity": "sha256:fa6707d89f67c062d0d7b6385fc3698371008725f10540ccc968a776f5ba16f2",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

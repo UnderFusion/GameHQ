@@ -6,6 +6,17 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.41] - 2026-09-22
+
+### Added
+
+- A developer-only tool now watches the controller from **outside** GameHQ (`cpo-o06d`): `tools/input-receiver/` builds `gamehq_input_receiver.exe`, a separate statically linked console process that logs what a second program actually receives through GameInput, XInput and a Raw Input `RIDEV_INPUTSINK` sink, phase by phase. It only observes — no injection, no hooks, no drivers, no virtual devices — it is defined inside the test build and is part of no packaging payload. Every record carries the provider, the pad identity, the receiver's own foreground state and the current foreground window; a provider whose baseline saw no activity reports `not-measurable` instead of claiming isolation.
+
+### Changed
+
+- The exclusive input mode the overlay requests (`cpo-o06c`) is now **measured from outside** instead of being described as unverified. With the shipped policy path doing the asking (`GameInputFocusController` → `ProductionGameInputApi`), a test-owned window holding the foreground, and the DualSense (054c:0ce6, USB) streaming in the background, two independent runs measured another process's GameInput delivery stop while the exclusive policy was in force and resume after release: 208.90/s → 0.00/s → 248.94/s and 208.73/s → 0.00/s → 248.88/s. Games reading the pad through other Windows interfaces are unaffected — XInput and Raw Input were `not-measurable` on this hardware (the pad is not an XInput device; an idle pad produces no Raw Input reports) and are documented as such, never as isolation.
+- `docs/controller-input.md`, `docs/overlay.md` and `docs/design/gameinput-spike.md` now record that measurement, the receipt format and the limits it does not cover. The diagnostics keep saying `isolation=not measured in-process`: that statement is about what GameHQ can know from inside itself, and it stays true.
+
 ## [0.7.40] - 2026-09-22
 
 ### Changed

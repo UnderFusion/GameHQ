@@ -1382,3 +1382,57 @@ qt_add_resources(tst_overlaynative "overlay_qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/DraculaSkin.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/GruvboxSkin.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/themes/ObsidianSkin.qml")
+
+# cpo-o06d: the external controller-input receiver (developer-only).
+#
+# It is a separate process on purpose: whether GameHQ's exclusive-foreground
+# GameInput request stops ANOTHER app from receiving the pad cannot be answered
+# from inside GameHQ's process. It observes only (GameInput, XInput and a Raw
+# Input background sink) — no injection, no hooks, no drivers, no virtual
+# devices — and it is deliberately not part of any packaging payload: it is
+# defined here, inside the GAMEHQ_BUILD_TESTS block, so a release build never
+# contains it. Kept console-subsystem and statically linked, so an operator can
+# copy the exe anywhere and run it without deploying Qt.
+add_executable(gamehq_input_receiver
+    "${CMAKE_SOURCE_DIR}/tools/input-receiver/GameHQInputReceiver.cpp"
+    "${CMAKE_SOURCE_DIR}/tools/input-receiver/ReceiverModel.cpp"
+    "${CMAKE_SOURCE_DIR}/tools/input-receiver/ReceiverProviders.cpp"
+    "${CMAKE_SOURCE_DIR}/tools/input-receiver/ReceiverModel.h"
+    "${CMAKE_SOURCE_DIR}/tools/input-receiver/ReceiverProviders.h")
+target_include_directories(gamehq_input_receiver PRIVATE
+    "${CMAKE_SOURCE_DIR}/tools/input-receiver"
+    "${CMAKE_SOURCE_DIR}/third_party/gameinput/include")
+# The vendored GameInput.h needs the Unicode macros (see third_party/gameinput/README.md).
+target_compile_definitions(gamehq_input_receiver PRIVATE UNICODE _UNICODE)
+target_link_libraries(gamehq_input_receiver PRIVATE user32 gdi32)
+target_link_options(gamehq_input_receiver PRIVATE -static)
+set_target_properties(gamehq_input_receiver PROPERTIES WIN32_EXECUTABLE FALSE)
+
+# The receiver's own tests, plus the experiment that measures the exclusive
+# policy from outside: the pure log/phase/verdict logic, the receiver as a
+# process (startup, REFUSED arguments, no-controller handling, bounded exit) and
+# one live run driven by the SHIPPED policy path — GameInputFocusController
+# asking ProductionGameInputApi, exactly as cpo-o06c wired it up in the app.
+#
+# The live case prints the measured verdict per provider and asserts only the
+# mechanics: the phases happened, the receiver stayed a background process, and
+# every provider produced a verdict. "The other client kept receiving the pad"
+# is a measurement, not a harness failure, and a run whose baseline saw nothing
+# reports not-measurable instead of claiming isolation.
+gamehq_add_test(tst_inputreceiver
+    tst_inputreceiver.cpp
+    "${CMAKE_SOURCE_DIR}/tools/input-receiver/ReceiverModel.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/ProductionGameInputApi.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/GameInputFocusController.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
+    "${CMAKE_SOURCE_DIR}/src/overlay/ForegroundApi.cpp")
+target_include_directories(tst_inputreceiver PRIVATE
+    "${CMAKE_SOURCE_DIR}/tools/input-receiver"
+    "${CMAKE_SOURCE_DIR}/third_party/gameinput/include")
+target_compile_definitions(tst_inputreceiver PRIVATE
+    GAMEHQ_INPUT_RECEIVER="$<TARGET_FILE:gamehq_input_receiver>")
+target_link_libraries(tst_inputreceiver PRIVATE Qt6::Gui user32)
+add_dependencies(tst_inputreceiver gamehq_input_receiver)
+# The live case spends about fifteen seconds in real phases on top of three
+# window/focus transitions; two minutes is the honest budget for it.
+set_tests_properties(tst_inputreceiver PROPERTIES TIMEOUT 300)

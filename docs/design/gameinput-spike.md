@@ -95,6 +95,14 @@ degrade to the existing backends when neither resolves.
   `GameInputFocusController`. Games with host-side controller handoff (2K/…
   family) may swallow XInput regardless — that stays a documented compatibility
   limit, measured externally in cpo-o06d, not "fixed" in-process.
+  cpo-o06d then measured it from the outside with `tools/input-receiver/`
+  (developer-only observer process, GameInput + XInput + Raw Input
+  `RIDEV_INPUTSINK`): two independent runs on a DualSense measured another
+  process's GameInput delivery dropping from ~209/s to **0/s** while the
+  exclusive policy was in force and returning to ~249/s after release, while
+  XInput and Raw Input stayed `not-measurable` on that hardware. The flag is
+  therefore real for other GameInput clients and unchanged for everything else —
+  exactly the boundary this paragraph describes.
 
 ## Recommended integration shape (for p12 and the future backend)
 

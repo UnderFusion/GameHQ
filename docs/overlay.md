@@ -51,7 +51,7 @@ The acceptance question is a conjunction, recorded as `interactive-foreground`: 
 
 Foreground ownership is not game identity. The remembered window and pid stay the authoritative game context for presets, capture association, gallery identity, diagnostics and the eventual return of focus; `OverlayLifetimePolicy` already treats "the foreground is our own overlay" as `Ignore`, and `sameProcessAsGame` excludes GameHQ's own pid, so `GameHQ.exe` can never become "the current game" by holding the foreground for a while.
 
-Not in this step: the GameInput exclusive-foreground policy (`cpo-o06c`), the external receiver that can actually measure leakage (`cpo-o06d`), and the neutral-state handoff that must stop a held button from reaching the game on close (`cpo-o06e`). Closing currently returns the foreground plainly, with no neutral-state wait.
+Not in this step: the GameInput exclusive-foreground policy (`cpo-o06c` — now done, and measured from an external process by `cpo-o06d`; see `docs/controller-input.md` and `tools/input-receiver/README.md`), and the neutral-state handoff that must stop a held button from reaching the game on close (`cpo-o06e`). Closing currently returns the foreground plainly, with no neutral-state wait.
 
 ### Focus and controller record (`cpo-o06a`)
 
