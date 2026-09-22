@@ -70,10 +70,15 @@ $expectedAssets = @(
     'assets/installer/generate_installer_artwork.py',
     'assets/installer/wizard-large.png', 'assets/installer/wizard-small.png',
     'assets/sounds/README.md', 'assets/sounds/generate_sounds.py',
+    'assets/sounds/generate_boost.py', 'assets/sounds/capture_accepted.wav',
     'assets/sounds/confirm.wav', 'assets/sounds/error.wav', 'assets/sounds/favorite.wav',
     'assets/sounds/nav_tick.wav', 'assets/sounds/overlay_close.wav',
     'assets/sounds/overlay_open.wav', 'assets/sounds/replay_saved.wav',
     'assets/sounds/screenshot.wav'
+) + @(
+    # First-party 3x gain copies derived from the WAVs above by generate_boost.py.
+    'capture_accepted', 'confirm', 'error', 'favorite', 'nav_tick', 'overlay_close',
+    'overlay_open', 'replay_saved', 'screenshot' | ForEach-Object { "assets/sounds/boosted/$_.wav" }
 ) | Sort-Object
 $allAssets = @(& git -C $root ls-files --cached --others --exclude-standard 'assets/**')
 # The versioned release-note source, its generated bundles and its publication
