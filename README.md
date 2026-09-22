@@ -38,17 +38,21 @@ overlay, and Settings - can be driven from the controller alone.</p>
   previous configurable minutes into a normal MP4 with system audio.
 - **Instant screenshots and frame capture** - save PNG or JPEG images, including
   the exact displayed frame from a recorded clip.
-- **In-game gallery** - browse, play, favorite, reveal, and delete captures
-  without leaving your game.
+- **In-game overlay over borderless games** - browse, play, favorite, reveal,
+  and delete captures without leaving your game. The overlay stays above a
+  visible borderless game, and on supported GameInput paths overlay navigation
+  doesn't also control the game underneath.
 - **Controller-first everywhere** - the whole interface is pad-navigable:
   gallery, overlay, dialogs, and Settings, with follow-scroll, right-stick
   scrolling, and visible scrollbars. Keyboard and mouse work everywhere too.
 - **Modern controller support** - app-local GameInput, true Share/Guide, extra
   buttons, and safe legacy fallback ([getting started](docs/getting-started.md),
   [compatibility guide](docs/controller-compatibility.md)).
-- **Redesigned binding editor** - two slots per action with taps, holds, double
-  and triple taps, button combinations, per-controller profiles, and
-  conflict-aware validation.
+- **Mapping presets** - save controller layouts as named presets, then assign
+  them per controller and per game; the preset for the game you're running is
+  picked automatically.
+- **Flexible binding editor** - two slots per action with taps, holds, double
+  and triple taps, button combinations, and conflict-aware validation.
 - **Summon GameHQ with the pad** - hold PS for two seconds to bring the window
   over your game; hold again to send it back and return focus to the game.
 - **One organized library** - GameHQ captures alongside watched Steam, Game Bar,
@@ -57,6 +61,9 @@ overlay, and Settings - can be driven from the controller alone.</p>
   Settings, tray, installer, and release notes. GameHQ follows your Windows
   language on first start, and switching language applies immediately without a
   restart.
+- **Picks up where you left off** - GameHQ reopens on your last page, Settings
+  category, and gallery filter, and the overlay returns to the capture you had
+  selected.
 - **Private and portable** - no account, telemetry, background service, or
   game-process injection.
 - Configurable replay duration, quality, frame rate, and resolution.
@@ -65,7 +72,10 @@ overlay, and Settings - can be driven from the controller alone.</p>
 - Thirteen themes, live theme switching, textured backdrops, and adjustable
   overlay dimming.
 - Thumbnail zoom and controller-friendly bulk selection in the capture library.
-- Immediate gallery refresh after new captures and clean overlay focus handling.
+- Clip saves never overwrite earlier clips, and a replay can be saved right
+  after recording starts, using the footage captured so far.
+- Immediate gallery refresh after new captures, with instant saved or failed
+  feedback.
 
 ## Languages
 
@@ -106,7 +116,8 @@ Português (Brasil) · Deutsch · 日本語 · Français · Polski · 한국어 
 | `Ctrl+Shift+E` | Save a replay clip |
 | `Ctrl+Shift+G` | Toggle the overlay |
 
-Bindings and gesture timing can be changed from **Settings > Input**.
+Bindings, mapping presets, and gesture timing can be changed from
+**Settings > Input**.
 
 </details>
 
