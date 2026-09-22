@@ -1,4 +1,5 @@
 #pragma once
+#include <QElapsedTimer>
 #include <QObject>
 #include <QPointer>
 #include <QString>
@@ -87,6 +88,9 @@ public:
     void setNeutralHandoffSource(ModernInput::NeutralHandoffSource* source);
 
     Q_INVOKABLE void toggle();
+    // The controller/hotkey route: toggle() behind a short duplicate-press
+    // guard, because one physical press can arrive from two providers.
+    void toggleFromInput();
     Q_INVOKABLE void show();
     Q_INVOKABLE void hide();
 
@@ -199,6 +203,8 @@ private:
     std::unique_ptr<ModernInput::NeutralHandoffRunner> m_releaseHandoff;
     CloseStage m_closeStage = CloseStage::Idle;
     bool m_closing = false;
+    // Time of the last toggle that was acted on; see toggle().
+    QElapsedTimer m_lastToggle;
     void setClosing(bool closing);
     ForegroundReturn m_pendingReturnPolicy = ForegroundReturn::ToGame;
     // Logged once per open, not per foreground event: the lifetime rules can

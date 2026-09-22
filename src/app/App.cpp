@@ -675,7 +675,7 @@ bool App::init()
     connect(m_languageManager.get(), &LanguageManager::retranslationRequested,
             m_input.get(), &InputEngine::retranslate);
     connect(m_input.get(), &InputEngine::overlayToggleRequested,
-            m_overlay.get(), &OverlayManager::toggle);
+            m_overlay.get(), &OverlayManager::toggleFromInput);
     // Hold PS (2 s): summon/dismiss the desktop window with real OS focus.
     m_foregroundApi.reset(ForegroundApi::createSystem());
     m_desktopFocus = new ForegroundAcquirer(this);

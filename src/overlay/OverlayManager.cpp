@@ -208,6 +208,23 @@ bool OverlayManager::ensureLoaded()
     return true;
 }
 
+void OverlayManager::toggleFromInput()
+{
+    // One physical press can reach here twice: the same PS/Guide edge arrives
+    // from two input providers up to ~110 ms apart (observed in the owner's
+    // log), and the second copy used to close the overlay it had just opened.
+    // Deliberate open/close taps are several hundred ms apart, so a toggle
+    // inside this window of the previous one is a duplicate and is dropped.
+    constexpr qint64 kToggleGuardMs = 250;
+    if (m_lastToggle.isValid() && m_lastToggle.elapsed() < kToggleGuardMs) {
+        qInfo() << "Overlay: toggle ignored -" << m_lastToggle.elapsed()
+                << "ms after the previous one (duplicate press)";
+        return;
+    }
+    m_lastToggle.start();
+    toggle();
+}
+
 void OverlayManager::toggle()
 {
     if (isVisible())
