@@ -636,6 +636,17 @@ void OverlayManager::probeTick()
         qInfo().noquote() << QStringLiteral("Overlay probe +%1ms:").arg(m_probeElapsedMs) << state;
         m_probeLastState = state;
     }
+    // A foreground WinEvent can be missed during repeated window lifetimes.
+    // Once we acquired foreground, reconcile an observed unrelated app through
+    // the same lifetime policy: releasing input alone would leave our topmost
+    // overlay visible over it. Do not act on transient null foreground, a game
+    // window in the remembered process, or the denied-acquisition fallback.
+    if (m_foregroundAcquired && fg && fg != overlayHwnd
+        && processIdOfWindow(fg) != m_previousForegroundPid) {
+        onForegroundWindowChanged(fg);
+        if (!isVisible())
+            return;
+    }
     // cpo-o06c: the exclusive policy is granted for the interactive state only.
     // The foreground event normally reports a loss first; this is the fallback for
     // a session where it does not arrive at all, because staying in

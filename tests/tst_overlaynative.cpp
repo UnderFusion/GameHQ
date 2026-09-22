@@ -1512,8 +1512,11 @@ void NativeOverlayTest::aTopmostGameStaysAboveOtherApps()
     QTRY_VERIFY(GetWindowLongPtrW(harness->handle(), GWL_EXSTYLE) & WS_EX_TOPMOST);
     QCOMPARE(GetWindow(harness->handle(), GW_OWNER), m_fixture.target());
     QCOMPARE(GetWindowLongPtrW(m_fixture.target(), GWL_STYLE), gameStyle);
-    QVERIFY(above(harness->handle(), m_fixture.target()));
-    QVERIFY(above(m_fixture.target(), other.target()));
+    // The fixture demotes itself on its own thread; the presenter's bounded
+    // probe then repairs our popup. Wait for that cross-process transition,
+    // just as the style checks above do, before judging the final stack.
+    QTRY_VERIFY(above(harness->handle(), m_fixture.target()));
+    QTRY_VERIFY(above(m_fixture.target(), other.target()));
     QVERIFY(sink.exclusive());
     QCOMPARE(sink.requests().size(), 1);
 

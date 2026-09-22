@@ -49,6 +49,8 @@ The overlay uses the same `ForegroundAcquirer` the desktop window does: one sync
 
 **The polled game-context watch.** While the overlay owns the foreground, a game that minimises, hides or destroys its window produces no `EVENT_SYSTEM_FOREGROUND` at all: nothing changed foreground, because GameHQ already had it. The post-show probe therefore keeps running after its dense first three seconds, at 250 ms, and applies `OverlayLifetime::rememberedGameContextLost()` — the same destroyed/hidden/minimised rule the event path uses — hiding the overlay once that has held for 750 ms. The grace period matters: a game that destroys and immediately recreates its own window must rebind through the normal foreground event instead of being read as gone. The watch is armed only when a real window was remembered at open time, so an overlay opened with no foreground window at all does not close itself.
 
+After verified foreground acquisition, the same watcher also reconciles a non-null foreground window from another process through the existing lifetime policy. This dismisses the overlay if a foreground WinEvent was missed, instead of only releasing input while leaving the topmost overlay visible. It does not reacquire focus, act on transient null foreground, or change the denied-acquisition fallback.
+
 ### Foreground acquisition (`cpo-o06b`)
 
 Variant B of the out-of-process isolation experiment, and the only variant implemented so far. The sequence is:
