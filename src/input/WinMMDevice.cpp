@@ -217,6 +217,7 @@ void WinMMDevice::applyScanResult(const ScanResult& result)
     m_activeId = result.id;
     m_connected = true;
     m_prevButtons = 0;
+    m_baselinePending = true;
 
     m_ds4Layout = (result.mid == 0x054C)
         || (result.mid == 0x11FF && result.pid == 0x0847)
@@ -253,7 +254,16 @@ void WinMMDevice::poll()
     if (result != JOYERR_NOERROR)
         return;   // transient error — keep the slot, skip this tick
 
-    emitEdges(mapWinMMState(info, m_ds4Layout));
+    const quint32 state = mapWinMMState(info, m_ds4Layout);
+    if (m_baselinePending) {
+        m_baselinePending = false;
+        m_prevButtons = state;
+        if (state != 0)
+            qInfo() << "Gamepad: WinMM joystick rests with controls active - treated as neutral"
+                    << Qt::hex << state << Qt::dec;
+        return;
+    }
+    emitEdges(state);
 }
 
 void WinMMDevice::disconnectActive()

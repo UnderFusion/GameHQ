@@ -34,8 +34,11 @@ Window {
         configKey: "theme.overlay_scale"
         minimumContentWidth: Theme.minimumUiWidth
         minimumContentHeight: Theme.minimumUiHeight
+        // A close stays invisible while the controller handoff finishes.
+        opacity: overlay.closing ? 0 : 1
     }
     Overlay.overlay.transform: uiSurface.scaleTransform
+    Overlay.overlay.opacity: overlay.closing ? 0 : 1
     LayoutMirroring.enabled: languageManager.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
     objectName: "gamehqOverlay"

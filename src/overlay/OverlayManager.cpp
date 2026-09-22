@@ -740,7 +740,18 @@ void OverlayManager::hideInternal(ForegroundReturn returnPolicy)
 
     m_closeStage = CloseStage::ReleasingInput;
     m_pendingReturnPolicy = returnPolicy;
+    // The window stays up (it must keep the foreground, or the game would see
+    // the held controls the wait is protecting it from) but stops drawing now.
+    setClosing(true);
     m_releaseHandoff->begin(QStringLiteral("the overlay closed"));
+}
+
+void OverlayManager::setClosing(bool closing)
+{
+    if (m_closing == closing)
+        return;
+    m_closing = closing;
+    emit closingChanged();
 }
 
 // cpo-o06e: may this close defer its policy release until the pad is neutral?
@@ -768,6 +779,8 @@ void OverlayManager::onReleaseHandoffFinished()
         return;   // a cancelled handoff or a stray signal: nothing to finish
     m_closeStage = CloseStage::Idle;
     completeHide(m_pendingReturnPolicy);
+    // Cleared only after the hide, so no frame of the overlay is drawn again.
+    setClosing(false);
 }
 
 void OverlayManager::completeHide(ForegroundReturn returnPolicy)

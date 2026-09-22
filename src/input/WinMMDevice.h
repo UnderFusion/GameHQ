@@ -63,6 +63,10 @@ private:
     std::thread m_scanThread;          // joined before reuse and in the dtor
     bool m_scanInFlight = false;       // owning thread only
     quint32 m_prevButtons = 0;
+    // The first reading after a connect is the device's resting state, not a
+    // press: some pads (or their drivers) idle with an axis at 0, which would
+    // otherwise decode as D-pad Up+Left held forever.
+    bool m_baselinePending = false;
     bool m_connected = false;
     bool m_ds4Layout = false;   // Sony button order (Share=8, PS=12) vs Xbox
     UINT m_activeId = UINT_MAX;

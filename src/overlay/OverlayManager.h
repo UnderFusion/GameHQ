@@ -55,6 +55,11 @@ class OverlayManager : public QObject
     // game really can still be reading the pad. True while closed makes no
     // claim — it only keeps the warning out of a closed overlay.
     Q_PROPERTY(bool foregroundAcquired READ foregroundAcquired NOTIFY foregroundAcquiredChanged)
+    // True from the moment a close is requested until the window is hidden.
+    // The neutral handoff can keep the window (and the exclusive policy) alive
+    // for up to its timeout; QML draws nothing meanwhile so the close looks
+    // instant while the controller is still handed back safely.
+    Q_PROPERTY(bool closing READ closing NOTIFY closingChanged)
 
 public:
     explicit OverlayManager(QQmlApplicationEngine* engine, QObject* parent = nullptr);
@@ -66,6 +71,7 @@ public:
 
     bool isVisible() const;
     bool foregroundAcquired() const { return m_foregroundAcquired; }
+    bool closing() const { return m_closing; }
 
     // cpo-o06c: the one owner of the process-wide GameInput focus policy. The
     // app installs it at startup (and it outlives the overlay). Left null — as in
@@ -101,6 +107,7 @@ signals:
     void aboutToShow();
     void visibleChanged();
     void foregroundAcquiredChanged();
+    void closingChanged();
 
 private:
     // Whether closing should hand the foreground back to the game. It must not
@@ -191,6 +198,8 @@ private:
     // here, because the overlay is the one that closes.
     std::unique_ptr<ModernInput::NeutralHandoffRunner> m_releaseHandoff;
     CloseStage m_closeStage = CloseStage::Idle;
+    bool m_closing = false;
+    void setClosing(bool closing);
     ForegroundReturn m_pendingReturnPolicy = ForegroundReturn::ToGame;
     // Logged once per open, not per foreground event: the lifetime rules can
     // see our own overlay many times while it is up.
