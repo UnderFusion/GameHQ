@@ -35,6 +35,9 @@ Item {
     // capture eagerly (Lightbox.openAt) or drop it on close.
     property url committedUrl: ""
 
+    // True once the current clip source has advanced past its first frame.
+    property bool _videoStarted: false
+
     readonly property alias player: clipPlayer
     // The video surface's sink holds the live frame — callers hand this to
     // AppController.saveVideoFrame to grab a still of the clip on screen.
@@ -53,7 +56,9 @@ Item {
     Image {
         id: still
         anchors.fill: parent
-        visible: root.stillVisible
+        // Stays up under a starting clip until the player has produced its
+        // first frame; hiding it earlier flashed an empty stage on play.
+        visible: root.stillVisible || (root.videoVisible && !root._videoStarted)
         source: root.committedUrl
         fillMode: Image.PreserveAspectFit
         cache: true
@@ -91,7 +96,12 @@ Item {
         source: root.videoSource
         audioOutput: AudioOutput {}
         videoOutput: videoSurface
+        onPositionChanged: {
+            if (position > 0)
+                root._videoStarted = true
+        }
         onSourceChanged: {
+            root._videoStarted = false
             if (source.toString() !== "") {
                 play()
                 root.playbackStarted()
