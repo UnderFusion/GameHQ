@@ -512,14 +512,14 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
                 "mode": "localized",
                 "source_integrity": record["source_integrity"],
                 "sections": [{"id": source["sections"][0]["id"],
-                              "title": "Naprawiono", "items": []}],
+                              "title": "Naprawiono (fixture)", "items": []}],
             }
             GEN.write_json(polish, invalid)
             rebuilt = GEN.build_bundle(source_root, "pl-PL", locales, releases)
             chain = {entry["version"]: entry for entry in [rebuilt, *rebuilt["history"]]}
             self.assertEqual(source["sections"][0]["title"],
                              chain[fallback_version]["sections"][0]["title"])
-            self.assertNotIn("Naprawiono", json.dumps(rebuilt, ensure_ascii=False))
+            self.assertNotIn("Naprawiono (fixture)", json.dumps(rebuilt, ensure_ascii=False))
 
     def test_duplicate_ids_and_partial_structures_are_rejected(self) -> None:
         newest = self.releases[0][0]

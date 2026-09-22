@@ -4,7 +4,272 @@
   "version": "0.7.8",
   "locale": "es-419",
   "date": "2026-09-22",
-  "mode": "fallback",
-  "source_integrity": "sha256:dcb96161a379242c1399dccb1775804e6b7e73c65961410a1da5b692e4eb43a7",
-  "fallback_locale": "en-US"
+  "mode": "localized",
+  "source_integrity": "sha256:e02ffd2855471b5c602776fb9069fc0f9f0f1fab1cabadde6bbbf8f5fbf0d78c",
+  "sections": [
+    {
+      "id": "highlights",
+      "title": "Lo más destacado",
+      "items": [
+        {
+          "id": "highlight-borderless",
+          "text": "La superposición ahora funciona de forma mucho más confiable sobre juegos en modo sin bordes. Aparece por encima del juego, recibe la entrada del control para navegar por la superposición en las rutas de GameInput compatibles y el juego sigue visible. Se comprobó con un DualSense conectado por cable en Indiana Jones and the Great Circle en modo sin bordes."
+        },
+        {
+          "id": "highlight-isolation",
+          "text": "Navegar por la superposición ya no controla el juego que está debajo en las rutas de GameInput compatibles. Al cerrar la superposición, GameHQ espera a que sueltes los botones que tengas presionados antes de devolverle el control al juego."
+        },
+        {
+          "id": "highlight-replay-safety",
+          "text": "Los clips de repetición son más seguros: guardar varias veces seguidas nunca sobrescribe un clip existente, y puedes guardar un clip justo después de que empieza la grabación."
+        },
+        {
+          "id": "highlight-presets",
+          "text": "Nuevos preajustes de asignaciones: crea, edita y asigna configuraciones de botones para cada control y cada juego."
+        },
+        {
+          "id": "highlight-last-view",
+          "text": "GameHQ recuerda dónde te quedaste: la última página, la categoría de Configuración, el filtro de la galería y la categoría de la superposición de cada juego."
+        }
+      ]
+    },
+    {
+      "id": "overlay",
+      "title": "Superposición",
+      "items": [
+        {
+          "id": "focus",
+          "text": "La superposición puede tomar el foco del control y seguir mostrándose sobre un juego visible en modo sin bordes, sin minimizarlo."
+        },
+        {
+          "id": "isolation",
+          "text": "En las rutas de GameInput compatibles, navegar por la superposición ya no controla también el juego."
+        },
+        {
+          "id": "handoff",
+          "text": "Al cerrar la superposición, se espera un momento a que los botones presionados y las palancas vuelvan a reposo antes de devolverle el control al juego, para que una entrada sostenida no pase al juego."
+        },
+        {
+          "id": "toggle",
+          "text": "Abrir y cerrar la superposición es más rápido y confiable, y una pulsación rápida repetida ya no la cierra justo después de abrirse. Se respetan Alt-Tab y los demás cambios intencionales a otra aplicación."
+        },
+        {
+          "id": "game-window",
+          "text": "La superposición sigue al juego correcto cuando este vuelve a crear su ventana, la pierde o pierde el foco por un momento. Se cierra correctamente cuando otra aplicación pasa a primer plano."
+        },
+        {
+          "id": "reselect",
+          "text": "La superposición se vuelve a abrir en la captura de pantalla o el clip que seleccionaste por última vez. Después de una captura nueva, empieza en el elemento más reciente."
+        },
+        {
+          "id": "playback",
+          "text": "Los clips empiezan a reproducirse en la superposición sin que la vista previa desaparezca por un instante."
+        },
+        {
+          "id": "dimming",
+          "text": "El fondo oscurecido ahora aparece junto con los menús de la superposición, en lugar de aparecer gradualmente después."
+        },
+        {
+          "id": "hints",
+          "text": "Las indicaciones de controles de la parte inferior ahora tienen un pequeño fondo que sigue tu ajuste de oscurecimiento de la superposición, para que se puedan leer bien sobre el juego."
+        },
+        {
+          "id": "sidebar",
+          "text": "El juego que estás jugando ahora se resalta correctamente al desplazarte por la barra lateral."
+        },
+        {
+          "id": "navigation",
+          "text": "La navegación con el control funciona mejor en los menús de la superposición, la galería y la reproducción de video, y los botones de navegación se mantienen separados de los atajos de captura."
+        }
+      ]
+    },
+    {
+      "id": "capture",
+      "title": "Captura y repetición",
+      "items": [
+        {
+          "id": "unique-names",
+          "text": "Al guardar varias veces seguidas, cada archivo recibe un nombre único en lugar de sobrescribir un clip existente. Una exportación fallida nunca elimina clips anteriores, y las miniaturas siempre corresponden al clip correcto."
+        },
+        {
+          "id": "early-save",
+          "text": "Al guardar una repetición se usa lo grabado hasta ese momento, aunque todavía no se complete la duración del búfer que configuraste."
+        },
+        {
+          "id": "export-lease",
+          "text": "Una exportación de repetición conserva la grabación que necesita aunque cambies de juego o el búfer se reinicie, y GameHQ espera a que termine una exportación en curso antes de cerrarse."
+        },
+        {
+          "id": "acknowledgement",
+          "text": "Las capturas de pantalla y los guardados de repeticiones se confirman al instante y después muestran claramente si se guardaron o fallaron. Las notificaciones se actualizan sin duplicarse y solo se muestra una cantidad limitada a la vez."
+        },
+        {
+          "id": "failure-reasons",
+          "text": "Las capturas fallidas u omitidas ahora explican el motivo, incluso con las notificaciones de éxito desactivadas."
+        },
+        {
+          "id": "buffer-status",
+          "text": "El estado de la repetición ahora indica si la grabación realmente empezó y si hay grabación utilizable, con mensajes claros cuando el búfer se está iniciando, está vacío o hay una exportación en curso."
+        },
+        {
+          "id": "manual-sessions",
+          "text": "Las sesiones de repetición manuales ahora se mantienen después de cambiar la configuración y al tomar capturas de pantalla HDR al mismo tiempo. Una sesión manual que inicias pero no llegas a usar se desactiva después de un tiempo."
+        },
+        {
+          "id": "thumbnails",
+          "text": "Guardar una repetición ya no detiene la captura mientras se crea la miniatura, y las capturas de pantalla tomadas al mismo tiempo crean su carpeta de forma más confiable."
+        },
+        {
+          "id": "border",
+          "text": "Nueva opción para el borde amarillo de captura de Windows, con información más clara sobre permisos y compatibilidad del sistema. La grabación sigue funcionando cuando Windows no puede ocultar el borde."
+        }
+      ]
+    },
+    {
+      "id": "controllers",
+      "title": "Controles y entrada",
+      "items": [
+        {
+          "id": "identity",
+          "text": "Detección de controles y enrutamiento de la entrada más confiables cuando hay varios controles o fuentes de entrada conectados."
+        },
+        {
+          "id": "switching",
+          "text": "Al cambiar de fuente de entrada, reconectar controles y hacer seguimiento de los botones sostenidos, ahora se evitan pulsaciones perdidas, pulsaciones duplicadas y entradas trabadas."
+        },
+        {
+          "id": "guide",
+          "text": "Se corrigieron las pulsaciones del botón PS que no se detectaban y las pulsaciones repetidas con retraso que podían volver a abrir la superposición justo después de cerrarla."
+        },
+        {
+          "id": "controls",
+          "text": "Los gatillos, las pulsaciones de las palancas y los demás botones ahora se comportan igual en todas las fuentes de entrada compatibles, así que las asignaciones funcionan de forma más predecible."
+        },
+        {
+          "id": "gameinput",
+          "text": "Los controles que usan GameInput siguen funcionando con normalidad, incluido el aislamiento de la superposición, cuando Windows no puede ofrecer la compatibilidad opcional con los botones Guide/Share."
+        },
+        {
+          "id": "editing",
+          "text": "El control que estás editando en Configuración sigue seleccionado cuando se activa otro control."
+        }
+      ]
+    },
+    {
+      "id": "presets",
+      "title": "Preajustes de asignaciones",
+      "items": [
+        {
+          "id": "library",
+          "text": "Nueva biblioteca de preajustes para configuraciones de botones, donde puedes crear, cambiar el nombre, duplicar, editar y eliminar preajustes."
+        },
+        {
+          "id": "assignment",
+          "text": "Puedes asignar preajustes a controles y juegos, con una opción alternativa y selección automática para el juego que estás ejecutando."
+        },
+        {
+          "id": "migration",
+          "text": "Tus asignaciones personalizadas pasan automáticamente al sistema de preajustes, y los datos originales se conservan como copia de seguridad."
+        },
+        {
+          "id": "held-controls",
+          "text": "El cambio de preajuste tiene en cuenta los botones sostenidos y los gestos en curso, para que cambiar no active acciones por accidente."
+        },
+        {
+          "id": "preset-editing",
+          "text": "La interfaz distingue entre el preajuste asignado y el que estás editando, protege los cambios sin guardar y te permite crear una copia para un solo control."
+        },
+        {
+          "id": "deletion",
+          "text": "Al eliminar un preajuste en uso, primero se te pide un reemplazo o una opción alternativa, y los cambios en preajustes compartidos se indican claramente."
+        }
+      ]
+    },
+    {
+      "id": "interface",
+      "title": "Interfaz, configuración y sonido",
+      "items": [
+        {
+          "id": "restore-last-view",
+          "text": "GameHQ se vuelve a abrir en la última página, categoría de Configuración y filtro de galería que usaste. La superposición recuerda su última categoría por separado para cada juego."
+        },
+        {
+          "id": "monitors",
+          "text": "La ventana ahora se restaura correctamente en monitores ubicados a la izquierda o por encima de la pantalla principal. Una ventana que se abriría completamente fuera de la pantalla se mueve de vuelta a una pantalla conectada."
+        },
+        {
+          "id": "scaling",
+          "text": "La ventana principal y la superposición tienen cada una su propia escala, de 100 % a 200 %, que se conserva entre reinicios. Las ventanas pequeñas se organizan mejor."
+        },
+        {
+          "id": "sounds",
+          "text": "Los sonidos de captura son más fuertes y se distinguen mejor, y tienen su propio control de volumen y vista previa. El volumen de la interfaz y de la captura puede llegar a 300 %."
+        },
+        {
+          "id": "buffer-settings",
+          "text": "Cambiar la configuración de notificaciones, sonido, borde de captura o sesiones manuales ya no descarta tu búfer de repetición."
+        },
+        {
+          "id": "gallery-filter",
+          "text": "Al abrir la galería se mantiene su filtro guardado. Si el filtro guardado corresponde a un juego que ya no existe, se restablece de forma segura. Las categorías de Configuración se mantienen aunque cambie su orden."
+        },
+        {
+          "id": "scaling-fixes",
+          "text": "Se corrigieron el contenido en blanco y los problemas de elementos superpuestos al cambiar la escala de la interfaz, y los menús ahora aparecen por encima del contenido principal."
+        },
+        {
+          "id": "hold",
+          "text": "Los controles de asignación muestran cuánto dura una pulsación prolongada y explican cómo funcionan los gestos de pulsación prolongada."
+        }
+      ]
+    },
+    {
+      "id": "updates-diagnostics",
+      "title": "Actualizaciones, idiomas y diagnóstico",
+      "items": [
+        {
+          "id": "notes-language",
+          "text": "Las notas de actualización aparecen en el idioma que elegiste, se muestran en inglés cuando no hay una traducción disponible y se pueden leer sin conexión una vez cargadas."
+        },
+        {
+          "id": "release-link",
+          "text": "Las notas de actualización pueden incluir un enlace opcional a la versión en GitHub, al que puedes acceder con el control."
+        },
+        {
+          "id": "translations",
+          "text": "Se ampliaron las traducciones en todos los idiomas compatibles para los nuevos mensajes de captura, sonido, borde, pulsación prolongada, preajustes y foco."
+        },
+        {
+          "id": "diagnostics",
+          "text": "El diagnóstico copiado ahora incluye las asignaciones activas, la selección de preajuste, los cambios de fuente de entrada y el estado del foco de la superposición, con los identificadores de dispositivo anonimizados."
+        },
+        {
+          "id": "capture-diagnostics",
+          "text": "El diagnóstico de captura sigue cada solicitud desde que presionas el botón hasta que se guarda el archivo, lo que facilita encontrar problemas. Los problemas de sonido se informan con una advertencia clara."
+        }
+      ]
+    },
+    {
+      "id": "limitations",
+      "title": "Limitaciones conocidas",
+      "items": [
+        {
+          "id": "limit-isolation",
+          "text": "Que la superposición aísle el control del juego depende del juego y de cómo lee el control. Un DualSense conectado por cable con GameInput está bien probado. No está garantizado con XInput, Raw Input, HID directo, Steam Input ni controles virtuales."
+        },
+        {
+          "id": "dsx",
+          "text": "El cambio de control con DSX en ejecución solo está verificado en parte. Tú mantienes el control de tu configuración de DSX; GameHQ no instala ni administra drivers de controles virtuales ni de ocultación de dispositivos."
+        },
+        {
+          "id": "focus-border",
+          "text": "Algunos juegos se pausan o reaccionan al perder el foco. Windows u otra aplicación de captura pueden mantener visible el borde amarillo de grabación."
+        },
+        {
+          "id": "fallback",
+          "text": "Si no hay una nota de la versión 0.7.8 traducida, GameHQ la muestra en inglés."
+        }
+      ]
+    }
+  ]
 }

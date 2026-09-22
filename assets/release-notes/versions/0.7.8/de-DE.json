@@ -4,7 +4,272 @@
   "version": "0.7.8",
   "locale": "de-DE",
   "date": "2026-09-22",
-  "mode": "fallback",
-  "source_integrity": "sha256:dcb96161a379242c1399dccb1775804e6b7e73c65961410a1da5b692e4eb43a7",
-  "fallback_locale": "en-US"
+  "mode": "localized",
+  "source_integrity": "sha256:e02ffd2855471b5c602776fb9069fc0f9f0f1fab1cabadde6bbbf8f5fbf0d78c",
+  "sections": [
+    {
+      "id": "highlights",
+      "title": "Die wichtigsten Neuerungen",
+      "items": [
+        {
+          "id": "highlight-borderless",
+          "text": "Das Overlay funktioniert über randlosen Spielen jetzt deutlich zuverlässiger. Es erscheint über dem Spiel, übernimmt auf unterstützten GameInput-Pfaden die Controllereingaben für die Overlay-Navigation, und das Spiel bleibt sichtbar. Bestätigt mit einem kabelgebundenen DualSense in Indiana Jones and the Great Circle im randlosen Fenstermodus (Borderless)."
+        },
+        {
+          "id": "highlight-isolation",
+          "text": "Auf unterstützten GameInput-Pfaden steuert die Navigation im Overlay nicht mehr das Spiel darunter. Beim Schließen wartet das Overlay, bis Sie alle gedrückten Tasten losgelassen haben, bevor es den Controller an das Spiel zurückgibt."
+        },
+        {
+          "id": "highlight-replay-safety",
+          "text": "Replay-Clips sind sicherer: Schnell aufeinanderfolgende Speichervorgänge überschreiben nie einen vorhandenen Clip, und ein Clip lässt sich direkt nach Aufnahmebeginn speichern."
+        },
+        {
+          "id": "highlight-presets",
+          "text": "Neue Zuordnungsvoreinstellungen: Erstellen und bearbeiten Sie Controller-Belegungen und weisen Sie sie einzelnen Controllern und Spielen zu."
+        },
+        {
+          "id": "highlight-last-view",
+          "text": "GameHQ merkt sich, wo Sie aufgehört haben: die letzte Seite, die Kategorie in den Einstellungen, den Galeriefilter und für jedes Spiel die Overlay-Kategorie."
+        }
+      ]
+    },
+    {
+      "id": "overlay",
+      "title": "Overlay",
+      "items": [
+        {
+          "id": "focus",
+          "text": "Das Overlay kann den Controllerfokus übernehmen und bleibt dabei über einem sichtbaren randlosen Spiel, ohne es zu minimieren."
+        },
+        {
+          "id": "isolation",
+          "text": "Auf unterstützten GameInput-Pfaden steuert die Navigation im Overlay nicht mehr gleichzeitig das Spiel."
+        },
+        {
+          "id": "handoff",
+          "text": "Beim Schließen wartet das Overlay kurz, bis gedrückte Tasten losgelassen und die Sticks in die Ruheposition zurückgekehrt sind, bevor es den Controller zurückgibt. So wird eine gehaltene Eingabe nicht ins Spiel übertragen."
+        },
+        {
+          "id": "toggle",
+          "text": "Das Overlay öffnet und schließt schneller und zuverlässiger, und ein schneller wiederholter Tastendruck schließt es nicht mehr direkt nach dem Öffnen. Alt-Tab und andere bewusste Wechsel zu einer anderen App werden berücksichtigt."
+        },
+        {
+          "id": "game-window",
+          "text": "Das Overlay folgt dem richtigen Spiel, wenn das Spiel sein Fenster neu erstellt, sein Fenster verliert oder kurz den Fokus verliert. Wenn eine andere App in den Vordergrund tritt, schließt es sich sauber."
+        },
+        {
+          "id": "reselect",
+          "text": "Das Overlay öffnet sich wieder mit dem zuletzt ausgewählten Screenshot oder Clip. Nach einer neuen Aufnahme beginnt es mit dem neuesten Element."
+        },
+        {
+          "id": "playback",
+          "text": "Clips starten im Overlay, ohne dass die Vorschau kurz verschwindet."
+        },
+        {
+          "id": "dimming",
+          "text": "Der abgedunkelte Hintergrund erscheint jetzt gemeinsam mit den Overlay-Menüs, statt erst danach eingeblendet zu werden."
+        },
+        {
+          "id": "hints",
+          "text": "Die Steuerungshinweise am unteren Rand liegen jetzt auf einem kleinen Hintergrund, der Ihrer Einstellung für die Overlay-Abdunkelung folgt, damit sie über dem Spiel lesbar bleiben."
+        },
+        {
+          "id": "sidebar",
+          "text": "Das aktuell gespielte Spiel wird beim Durchblättern der Seitenleiste jetzt korrekt hervorgehoben."
+        },
+        {
+          "id": "navigation",
+          "text": "Die Controller-Navigation funktioniert in Overlay-Menüs, in der Galerie und bei der Videowiedergabe besser, und Navigationstasten bleiben von Aufnahme-Tastenkombinationen getrennt."
+        }
+      ]
+    },
+    {
+      "id": "capture",
+      "title": "Aufnahme und Replay",
+      "items": [
+        {
+          "id": "unique-names",
+          "text": "Schnell aufeinanderfolgende Speichervorgänge erhalten eindeutige Dateinamen, statt einen vorhandenen Clip zu überschreiben. Ein fehlgeschlagener Export entfernt nie frühere Clips, und Miniaturansichten passen immer zum richtigen Clip."
+        },
+        {
+          "id": "early-save",
+          "text": "Beim Speichern eines Replays wird das bisher aufgezeichnete Material verwendet, auch wenn die eingestellte Pufferdauer noch nicht erreicht ist."
+        },
+        {
+          "id": "export-lease",
+          "text": "Ein Replay-Export behält das benötigte Material, wenn Sie das Spiel wechseln oder der Puffer neu startet, und GameHQ wartet vor dem Beenden, bis ein laufender Export abgeschlossen ist."
+        },
+        {
+          "id": "acknowledgement",
+          "text": "Screenshots und Replay-Speicherungen werden sofort bestätigt und zeigen danach eindeutig an, ob sie gespeichert wurden oder fehlgeschlagen sind. Benachrichtigungen werden an Ort und Stelle aktualisiert, und es werden nur begrenzt viele gleichzeitig angezeigt."
+        },
+        {
+          "id": "failure-reasons",
+          "text": "Fehlgeschlagene oder übersprungene Aufnahmen nennen jetzt den Grund, auch wenn Erfolgsbenachrichtigungen ausgeschaltet sind."
+        },
+        {
+          "id": "buffer-status",
+          "text": "Der Replay-Status zeigt jetzt, ob die Aufnahme tatsächlich begonnen hat und ob verwendbares Material vorhanden ist, mit klaren Meldungen, wenn der Puffer startet, leer ist oder ein Export läuft."
+        },
+        {
+          "id": "manual-sessions",
+          "text": "Manuelle Replay-Sitzungen bleiben jetzt bei Änderungen an den Einstellungen und bei gleichzeitig aufgenommenen HDR-Screenshots erhalten. Eine manuell gestartete, aber nie genutzte Sitzung wird nach einer Weile beendet."
+        },
+        {
+          "id": "thumbnails",
+          "text": "Das Speichern eines Replays hält die Aufnahme nicht mehr an, während die Miniaturansicht erstellt wird, und gleichzeitig aufgenommene Screenshots legen ihren Ordner zuverlässiger an."
+        },
+        {
+          "id": "border",
+          "text": "Neue Option für den gelben Windows-Aufnahmerahmen, mit klareren Informationen zu Berechtigungen und Systemunterstützung. Die Aufnahme funktioniert weiterhin, auch wenn Windows den Rahmen nicht ausblenden kann."
+        }
+      ]
+    },
+    {
+      "id": "controllers",
+      "title": "Controller und Eingabe",
+      "items": [
+        {
+          "id": "identity",
+          "text": "Zuverlässigere Controllererkennung und Eingabeweiterleitung, wenn mehrere Controller oder Eingabequellen verbunden sind."
+        },
+        {
+          "id": "switching",
+          "text": "Beim Wechsel der Eingabequelle, beim erneuten Verbinden von Controllern und beim Verfolgen gehaltener Tasten werden verpasste, doppelte und hängende Eingaben jetzt vermieden."
+        },
+        {
+          "id": "guide",
+          "text": "Behoben: Drücke auf die PS-Taste wurden teilweise nicht erkannt, und verzögerte Wiederholungen konnten das Overlay direkt nach dem Schließen erneut öffnen."
+        },
+        {
+          "id": "controls",
+          "text": "Trigger, Stickklicks und andere Tasten verhalten sich jetzt bei allen unterstützten Eingabequellen gleich, sodass Belegungen vorhersehbarer funktionieren."
+        },
+        {
+          "id": "gameinput",
+          "text": "Controller, die GameInput verwenden, funktionieren weiterhin normal, einschließlich der Overlay-Isolierung, wenn Windows keine optionale Unterstützung für die Guide/Share-Tasten bereitstellen kann."
+        },
+        {
+          "id": "editing",
+          "text": "Der Controller, den Sie in den Einstellungen bearbeiten, bleibt ausgewählt, wenn ein anderer Controller aktiv wird."
+        }
+      ]
+    },
+    {
+      "id": "presets",
+      "title": "Zuordnungsvoreinstellungen",
+      "items": [
+        {
+          "id": "library",
+          "text": "Neue Bibliothek für Controller-Belegungen, in der Sie Voreinstellungen erstellen, umbenennen, duplizieren, bearbeiten und löschen können."
+        },
+        {
+          "id": "assignment",
+          "text": "Voreinstellungen lassen sich Controllern und Spielen zuweisen, mit einer Ausweichoption und automatischer Auswahl für das laufende Spiel."
+        },
+        {
+          "id": "migration",
+          "text": "Ihre bisherigen benutzerdefinierten Belegungen werden automatisch in das Voreinstellungssystem übernommen, und die ursprünglichen Daten bleiben als Sicherung erhalten."
+        },
+        {
+          "id": "held-controls",
+          "text": "Beim Wechsel der Voreinstellung werden gehaltene Tasten und laufende Gesten berücksichtigt, damit der Wechsel nicht versehentlich Aktionen auslöst."
+        },
+        {
+          "id": "preset-editing",
+          "text": "Die Oberfläche trennt die zugewiesene Voreinstellung von der gerade bearbeiteten, schützt ungespeicherte Änderungen und ermöglicht eine Kopie für einen einzelnen Controller."
+        },
+        {
+          "id": "deletion",
+          "text": "Wenn Sie eine verwendete Voreinstellung löschen, werden Sie zuerst nach einem Ersatz oder einer Ausweichoption gefragt, und Änderungen an gemeinsam genutzten Voreinstellungen sind deutlich gekennzeichnet."
+        }
+      ]
+    },
+    {
+      "id": "interface",
+      "title": "Oberfläche, Einstellungen und Ton",
+      "items": [
+        {
+          "id": "restore-last-view",
+          "text": "GameHQ öffnet sich wieder mit der zuletzt verwendeten Seite, Einstellungskategorie und dem zuletzt verwendeten Galeriefilter. Das Overlay merkt sich seine letzte Kategorie für jedes Spiel separat."
+        },
+        {
+          "id": "monitors",
+          "text": "Das Fenster wird jetzt auch auf Monitoren links neben oder oberhalb des Hauptbildschirms korrekt wiederhergestellt. Ein Fenster, das vollständig außerhalb des sichtbaren Bereichs geöffnet würde, wird auf einen angeschlossenen Bildschirm zurückverschoben."
+        },
+        {
+          "id": "scaling",
+          "text": "Hauptfenster und Overlay haben jeweils eine eigene Skalierung von 100 % bis 200 %, die auch nach einem Neustart erhalten bleibt. Kleine Fenster werden besser dargestellt."
+        },
+        {
+          "id": "sounds",
+          "text": "Aufnahmetöne sind lauter und besser unterscheidbar und haben eine eigene Lautstärkeregelung mit Vorschau. Oberflächen- und Aufnahmelautstärke lassen sich bis auf 300 % erhöhen."
+        },
+        {
+          "id": "buffer-settings",
+          "text": "Änderungen an den Einstellungen für Benachrichtigungen, Töne, Aufnahmerahmen oder manuelle Sitzungen verwerfen Ihren Replay-Puffer nicht mehr."
+        },
+        {
+          "id": "gallery-filter",
+          "text": "Beim Öffnen der Galerie bleibt der gespeicherte Filter erhalten. Ein gespeicherter Filter für ein nicht mehr vorhandenes Spiel wird sicher zurückgesetzt. Einstellungskategorien bleiben an ihrem Platz, auch wenn sich ihre Reihenfolge ändert."
+        },
+        {
+          "id": "scaling-fixes",
+          "text": "Leere Inhalte und Überlagerungsprobleme beim Ändern der Oberflächenskalierung wurden behoben, und Menüs erscheinen jetzt über dem Hauptinhalt."
+        },
+        {
+          "id": "hold",
+          "text": "Die Belegungseinstellungen zeigen, wie lange ein Halten dauert, und erklären, wie Haltegesten funktionieren."
+        }
+      ]
+    },
+    {
+      "id": "updates-diagnostics",
+      "title": "Updates, Sprachen und Diagnose",
+      "items": [
+        {
+          "id": "notes-language",
+          "text": "Update-Hinweise erscheinen in Ihrer ausgewählten Sprache, greifen auf Englisch zurück, wenn keine Übersetzung verfügbar ist, und bleiben nach dem Laden auch offline lesbar."
+        },
+        {
+          "id": "release-link",
+          "text": "Update-Hinweise können einen optionalen Link zum GitHub-Release enthalten, den Sie auch mit dem Controller erreichen."
+        },
+        {
+          "id": "translations",
+          "text": "Die Übersetzungen wurden in allen unterstützten Sprachen um die neuen Meldungen zu Aufnahme, Ton, Aufnahmerahmen, Halten, Voreinstellungen und Fokus erweitert."
+        },
+        {
+          "id": "diagnostics",
+          "text": "Kopierte Diagnosedaten enthalten jetzt aktive Belegungen, die Auswahl der Voreinstellung, Wechsel der Eingabequelle und den Fokusstatus des Overlays; Gerätekennungen werden dabei anonymisiert."
+        },
+        {
+          "id": "capture-diagnostics",
+          "text": "Die Aufnahmediagnose verfolgt jede Anfrage vom Tastendruck bis zur gespeicherten Datei, wodurch sich Probleme leichter eingrenzen lassen. Tonprobleme werden mit einer deutlichen Warnung gemeldet."
+        }
+      ]
+    },
+    {
+      "id": "limitations",
+      "title": "Bekannte Einschränkungen",
+      "items": [
+        {
+          "id": "limit-isolation",
+          "text": "Ob das Overlay den Controller vom Spiel isoliert, hängt vom Spiel ab und davon, wie es den Controller ausliest. Ein kabelgebundener DualSense über GameInput ist gut getestet. Für XInput, Raw Input, direktes HID, Steam Input oder virtuelle Controller ist dies nicht garantiert."
+        },
+        {
+          "id": "dsx",
+          "text": "Der Controllerwechsel bei laufendem DSX ist nur teilweise überprüft. DSX-Konfigurationen bleiben unter Ihrer Kontrolle; GameHQ installiert und verwaltet keine Treiber für virtuelle Controller oder zum Ausblenden von Geräten."
+        },
+        {
+          "id": "focus-border",
+          "text": "Manche Spiele pausieren oder reagieren anderweitig, wenn sie den Fokus verlieren. Windows oder eine andere Aufnahme-App kann den gelben Aufnahmerahmen weiterhin anzeigen."
+        },
+        {
+          "id": "fallback",
+          "text": "Wenn für 0.7.8 keine lokalisierten Versionshinweise verfügbar sind, zeigt GameHQ die englische Fassung an."
+        }
+      ]
+    }
+  ]
 }

@@ -1,75 +1,79 @@
 # GameHQ 0.7.8 (2026-09-22)
 
-> This document is the original **English (en-US)** release note. No reviewed Japanese translation exists for this version, so the complete English text is published unchanged.
+## 主な変更点
 
-## Controller & Input
+- ボーダーレスのゲーム上で、オーバーレイがより安定して動作するようになりました。オーバーレイはゲームの前面に表示され、対応する GameInput 経路ではオーバーレイ操作のためにコントローラー入力を受け取り、ゲームは表示されたままになります。Indiana Jones and the Great Circle のボーダーレスモードで、有線接続の DualSense により動作を確認しています。
+- 対応する GameInput 経路では、オーバーレイを操作しても背後のゲームが操作されなくなりました。オーバーレイを閉じる際は、押し続けているボタンをすべて離すまで待ってから、コントローラーをゲームに戻します。
+- リプレイクリップの保存がより安全になりました。短時間に繰り返し保存しても既存のクリップが上書きされることはなく、録画開始直後からクリップを保存できます。
+- 新しいマッピングプリセットを追加しました。コントローラーのレイアウトを作成・編集し、コントローラーごと、ゲームごとに割り当てられます。
+- GameHQ が前回の続きを記憶するようになりました。最後に開いたページ、設定のカテゴリ、ギャラリーのフィルター、ゲームごとのオーバーレイのカテゴリが保持されます。
 
-- Improved controller identification and input routing when multiple devices or input providers are present, with more conservative handling of ambiguous device matches.
-- Standardized trigger, stick-click and other controller button handling across supported input providers so bindings behave more consistently.
-- Improved provider switching, reconnect cleanup and held-button tracking to reduce missed actions, duplicate actions and stuck input.
-- Fixed missed PS-button presses and delayed duplicate presses that could reopen the overlay immediately after closing it.
-- GameInput can continue handling ordinary controller input and overlay input isolation when optional Guide/Share support is unavailable, while existing button fallbacks remain usable.
-- The controller selected for editing in Settings stays selected when another controller or provider becomes active.
+## オーバーレイ
 
-## Mapping Presets
+- オーバーレイは、表示中のボーダーレスのゲームを最小化することなく、その前面に表示されたままコントローラーのフォーカスを取得できます。
+- 対応する GameInput 経路では、オーバーレイを操作してもゲームが同時に操作されることはなくなりました。
+- オーバーレイを閉じると、押し続けているボタンやスティックがニュートラルに戻るまで少し待ってから、コントローラーをゲームに戻します。そのため、押したままの入力がゲームに引き継がれることはありません。
+- オーバーレイの開閉がより速く、確実になりました。素早く連続して押しても、開いた直後に閉じてしまうことはありません。Alt-Tab など、意図的に別のアプリへ切り替えた場合はその操作が尊重されます。
+- ゲームがウィンドウを作り直したり、ウィンドウを失ったり、一時的にフォーカスを失ったりしても、オーバーレイは正しいゲームに追従します。別のアプリが前面に来た場合は、オーバーレイが正常に閉じます。
+- オーバーレイを再び開くと、最後に選択したスクリーンショットまたはクリップが表示されます。新しくキャプチャした後は、最新の項目から始まります。
+- オーバーレイでクリップの再生を始める際に、プレビューが一瞬消えることがなくなりました。
+- 背景を暗くする効果が、オーバーレイのメニューより遅れてフェードインするのではなく、メニューと同時に表示されるようになりました。
+- 画面下部の操作ヒントに、オーバーレイの暗さの設定に連動する小さな背景が付きました。これにより、ゲーム画面の上でも読みやすくなります。
+- サイドバーを移動する際に、プレイ中のゲームが正しく強調表示されるようになりました。
+- オーバーレイのメニュー、ギャラリー、動画再生でのコントローラー操作が改善されました。また、ナビゲーション用のボタンとキャプチャのショートカットが区別されるようになりました。
 
-- Added a mapping preset library with create, rename, duplicate, edit and delete controls alongside controller bindings.
-- Presets can be assigned to controllers and games, with explicit fallback choices and automatic selection for the running game.
-- Existing custom bindings are migrated into the preset system while preserving the original binding data for recovery.
-- Preset changes account for held controls and pending gestures, reducing accidental actions when switching mappings.
-- The interface distinguishes the assigned preset from the preset being edited, protects unfinished edits, and offers a separate copy for one controller.
-- Deleting an assigned preset requires a valid replacement or fallback, preventing broken assignments; shared preset changes are made clearer.
+## キャプチャとリプレイ
 
-## Overlay
+- 短時間に繰り返し保存しても、既存のクリップを上書きせず、それぞれ固有のファイル名が付けられます。書き出しに失敗しても以前のクリップが削除されることはなく、サムネイルは常に正しいクリップと一致します。
+- 設定したバッファの長さに達する前でも、それまでに録画された映像を使ってリプレイを保存できます。
+- ゲームを切り替えたりバッファが再起動したりしても、リプレイの書き出しに必要な映像は保持されます。また、GameHQ は実行中の書き出しが完了するまで待ってから終了します。
+- スクリーンショットやリプレイの保存はすぐに受け付けられ、その後、保存の成功または失敗がはっきりと表示されます。通知はその場で更新され、同時に表示される数は制限されます。
+- キャプチャが失敗またはスキップされた場合、成功時の通知をオフにしていても、その理由が表示されるようになりました。
+- リプレイの状態表示で、録画が実際に始まっているか、使用できる映像があるかがわかるようになりました。開始中、バッファが空、書き出し中といった状態も、わかりやすいメッセージで表示されます。
+- 手動のリプレイセッションが、設定の変更や同時に撮影した HDR スクリーンショットによって途切れなくなりました。開始したまま使用しなかった手動セッションは、しばらくすると自動的にオフになります。
+- リプレイの保存時に、サムネイルの作成中にキャプチャが止まることがなくなりました。また、同時に撮影したスクリーンショットの保存フォルダーがより確実に作成されます。
+- Windows の黄色いキャプチャ枠線に関する新しいオプションを追加し、権限やシステムの対応状況についての説明をわかりやすくしました。Windows が枠線を非表示にできない場合でも、録画は引き続き行えます。
 
-- The overlay can take controller focus while remaining above a visible borderless game. Native wired DualSense behavior has been confirmed in Indiana Jones and the Great Circle in Borderless mode.
-- On supported GameInput paths, navigating the overlay no longer simultaneously controls the game underneath.
-- Closing the overlay briefly waits for held controls to return to neutral before handing input back to the game, with a bounded wait if a control stays held.
-- Improved focus return and repeated open/close behavior, while respecting Alt-Tab and other deliberate switches to another application.
-- Improved handling of game window replacement, disappearance and temporary foreground changes, keeping the overlay tied to the correct game.
-- Bottom control hints now have a compact background that follows overlay dimming, and the currently running game highlights correctly during sidebar navigation.
-- Improved controller navigation across overlay menus, gallery and video playback, including clearer separation of navigation and capture shortcuts.
+## コントローラーと入力
 
-## Capture & Replay
+- 複数のコントローラーや入力ソースが接続されている場合でも、コントローラーの検出と入力の振り分けがより確実になりました。
+- 入力ソースの切り替え、コントローラーの再接続、押し続けているボタンの追跡において、入力の取りこぼし、二重入力、入力が押されたままになる問題が起きないようになりました。
+- PS ボタンの入力が認識されない問題と、遅れて届いた繰り返し入力によって、閉じた直後のオーバーレイが再び開いてしまう問題を修正しました。
+- トリガー、スティック押し込み、その他のボタンが、対応するすべての入力ソースで同じように動作するようになり、割り当ての動作がより予測しやすくなりました。
+- Windows がオプションの Guide/Share ボタンのサポートを提供できない場合でも、GameInput を使用するコントローラーは、オーバーレイでの入力分離を含めて通常どおり動作します。
+- 設定で編集中のコントローラーは、別のコントローラーがアクティブになっても選択されたままになります。
 
-- Replay saves use the footage available so far, even before the configured buffer duration has elapsed or the first normal recording segment has finished.
-- Rapid saves receive unique filenames instead of overwriting an existing clip; failed exports preserve earlier clips and thumbnails stay paired with the correct file.
-- Replay exports retain the footage they need across game changes and buffer restarts, and GameHQ waits for an active export to finish safely on shutdown.
-- Replay status now reflects actual capture startup and usable footage, with clearer feedback for startup, empty-buffer and busy-export conditions.
-- Manual replay sessions survive recording-setting changes and overlapping HDR screenshots; an armed but unused manual session expires after an idle period.
-- Screenshot and replay requests receive prompt acknowledgement followed by a clear saved or failed result. Notifications update in place and the visible stack is limited.
-- Failed or skipped captures explain why, even when success notifications are disabled. Files saved to disk but not added to the library are reported accurately.
-- Replay thumbnail work no longer blocks the capture worker during a save, and concurrent screenshots more reliably create their destination folder.
-- Added a Windows capture-border preference with clearer permission and support reporting. Recording remains available when Windows cannot hide the border.
+## マッピングプリセット
 
-## UI, Settings & Sound
+- コントローラーのレイアウト用の新しいプリセットライブラリを追加しました。プリセットの作成、名前の変更、複製、編集、削除ができます。
+- プリセットをコントローラーやゲームに割り当てられます。フォールバックの選択肢があり、実行中のゲームに合わせて自動的に選択されます。
+- 既存のカスタム割り当ては自動的にプリセットに移行され、元のデータはバックアップとして保持されます。
+- プリセットの切り替え時には、押し続けているボタンや進行中のジェスチャーが考慮されるため、切り替えによって誤って操作が実行されることはありません。
+- 割り当て済みのプリセットと編集中のプリセットが区別して表示され、未保存の編集内容は保護されます。また、特定のコントローラー専用のコピーを作成することもできます。
+- 使用中のプリセットを削除する場合は、先に代わりのプリセットまたはフォールバックを選ぶよう求められます。共有プリセットへの変更は、はっきりと示されます。
 
-- The app restores the last normal page, Settings category and gallery filter; the overlay remembers its last category separately for each game.
-- Opening the gallery preserves its saved filter, invalid saved game filters fall back safely, and Settings categories remain stable when their order changes.
-- Window placement now supports monitors left of or above the primary display and brings fully off-screen windows back onto a connected display.
-- Added independent interface and overlay scaling from 100% to 200%, remembered across restarts, with improved small-window layout handling.
-- Fixed blank content and stacking problems during interface scaling, and improved menu visibility above the main content.
-- Capture confirmations are louder and more distinct, with a separate capture volume and sound preview. Interface and capture sound controls now support levels up to 300%.
-- Changing feedback, sound, notification, capture-border or manual-idle settings no longer unnecessarily discards the replay buffer.
-- Binding controls show the effective hold duration and explain how hold gestures are recognized.
+## インターフェース、設定、サウンド
 
-## Localization & Updates
+- GameHQ は、最後に使ったページ、設定のカテゴリ、ギャラリーのフィルターで再び開きます。オーバーレイは、ゲームごとに最後のカテゴリを個別に記憶します。
+- メインディスプレイの左側や上側にあるモニターでも、ウィンドウが正しく復元されるようになりました。完全に画面外に開いてしまうウィンドウは、接続中のディスプレイ上に戻されます。
+- メインウィンドウとオーバーレイで、それぞれ 100% から 200% までの拡大率を個別に設定でき、再起動後も保持されます。小さいウィンドウでのレイアウトも改善されました。
+- キャプチャ音がより大きく、聞き分けやすくなり、専用の音量調整とプレビューが追加されました。インターフェースとキャプチャの音量は最大 300% まで上げられます。
+- 通知、サウンド、キャプチャ枠線、手動セッションの設定を変更しても、リプレイバッファが破棄されなくなりました。
+- ギャラリーを開くと、保存されたフィルターが維持されます。存在しなくなったゲームのフィルターが保存されていた場合は、安全に既定の表示に戻ります。設定のカテゴリの並び順が変わっても、選択中のカテゴリは維持されます。
+- インターフェースの拡大率を変更したときに、内容が空白になったり重なり順が乱れたりする問題を修正しました。また、メニューがメインのコンテンツの前面に表示されるようになりました。
+- 割り当ての項目に長押しの時間が表示され、長押しジェスチャーの仕組みが説明されるようになりました。
 
-- Expanded translations for capture feedback, border controls, sound settings, hold guidance, mapping presets and focus-related messages across the supported interface languages.
-- Available-update notes now follow the selected language, use an explicit English fallback when needed, and can restore previously fetched notes while offline.
-- Added an optional GitHub release link beneath upcoming update notes, accessible through controller navigation.
-- Improved release-note loading, safe text formatting and handling of stale language requests; displayed notes remain separate from update installation authorization.
+## 更新、言語、診断
 
-## Diagnostics & Reliability
+- 更新内容は選択した言語で表示されます。翻訳がない場合は英語で表示され、一度読み込めばオフラインでも読むことができます。
+- 更新内容には、GitHub のリリースへのリンクを任意で含めることができます。このリンクはコントローラーでも開けます。
+- 新しいキャプチャ、サウンド、枠線、長押し、プリセット、フォーカスに関するメッセージについて、対応するすべての言語の翻訳を追加しました。
+- コピーした診断情報に、有効な割り当て、プリセットの選択、入力ソースの変更、オーバーレイのフォーカス状態が含まれるようになりました。デバイスの識別子は匿名化されます。
+- キャプチャの診断で、ボタンを押してからファイルが保存されるまで各リクエストを追跡できるようになり、問題の原因を特定しやすくなりました。サウンドの問題は、わかりやすい警告で報告されます。
 
-- Capture diagnostics follow each request through acceptance, export and completion, helping distinguish an unrecognized shortcut from a rejected save.
-- Copied diagnostics include the active controller bindings, preset selection, input-provider transitions and overlay focus/input state, with sensitive device identifiers sanitized.
-- Sound availability is checked when effects actually load, with a clear warning if an effect cannot be played.
+## 既知の制限
 
-## Known Limitations
-
-- Controller isolation depends on the game and input path. Native wired DualSense/GameInput has strong practical evidence, but universal isolation is not claimed for XInput, Raw Input, direct HID, Steam Input or virtual-controller configurations.
-- DSX provider switching remains partially verified. Existing DSX setups remain user-managed; this release does not install or manage virtual-controller or device-hiding drivers.
-- Games may pause or react to losing focus, and Windows or another capture application may keep the recording border visible.
-- Controller recovery after forcibly terminating GameHQ during exclusive overlay input was not verified; normal overlay close and input return were tested.
-- The complete 0.7.8 release notes currently use an explicit English fallback in other interface languages.
+- オーバーレイがコントローラーの入力をゲームから分離できるかどうかは、ゲームや、そのゲームがコントローラーを読み取る方法によって異なります。GameInput を使用する有線接続の DualSense では十分にテストされています。XInput、Raw Input、HID の直接読み取り、Steam Input、仮想コントローラーでは動作は保証されません。
+- DSX の実行中にコントローラーを切り替える動作は、一部しか検証されていません。DSX の設定はユーザー自身が管理するもので、GameHQ は仮想コントローラー用やデバイス非表示用のドライバーをインストールしたり管理したりしません。
+- 一部のゲームは、フォーカスを失うと一時停止したり反応したりします。Windows や他のキャプチャアプリによって、黄色い録画枠線が表示されたままになる場合があります。
+- 0.7.8 のリリースノートの翻訳版がない場合、GameHQ は英語版を表示します。

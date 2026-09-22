@@ -3,91 +3,97 @@
   "date": "2026-09-22",
   "sections": [
     {
-      "title": "Controller & Input",
+      "title": "ไฮไลต์",
       "items": [
-        "Improved controller identification and input routing when multiple devices or input providers are present, with more conservative handling of ambiguous device matches.",
-        "Standardized trigger, stick-click and other controller button handling across supported input providers so bindings behave more consistently.",
-        "Improved provider switching, reconnect cleanup and held-button tracking to reduce missed actions, duplicate actions and stuck input.",
-        "Fixed missed PS-button presses and delayed duplicate presses that could reopen the overlay immediately after closing it.",
-        "GameInput can continue handling ordinary controller input and overlay input isolation when optional Guide/Share support is unavailable, while existing button fallbacks remain usable.",
-        "The controller selected for editing in Settings stays selected when another controller or provider becomes active."
+        "โอเวอร์เลย์ทำงานบนเกมแบบไร้ขอบ (Borderless) ได้เสถียรกว่าเดิมมาก โดยจะแสดงอยู่เหนือเกม รับอินพุตจากคอนโทรลเลอร์เพื่อใช้นำทางในโอเวอร์เลย์บนเส้นทาง GameInput ที่รองรับ และยังมองเห็นเกมได้ตามปกติ ยืนยันแล้วด้วย DualSense แบบใช้สายในเกม Indiana Jones and the Great Circle โหมด Borderless",
+        "บนเส้นทาง GameInput ที่รองรับ การนำทางในโอเวอร์เลย์จะไม่ควบคุมเกมที่อยู่ด้านหลังอีกต่อไป เมื่อปิดโอเวอร์เลย์ ระบบจะรอให้ปล่อยปุ่มที่กดค้างอยู่ทั้งหมดก่อนคืนคอนโทรลเลอร์ให้เกม",
+        "คลิปรีเพลย์ปลอดภัยยิ่งขึ้น การบันทึกซ้ำอย่างรวดเร็วจะไม่เขียนทับคลิปที่มีอยู่ และบันทึกคลิปได้ทันทีหลังเริ่มการบันทึก",
+        "พรีเซ็ตการแมปใหม่ สร้าง แก้ไข และกำหนดเลย์เอาต์คอนโทรลเลอร์แยกตามคอนโทรลเลอร์และตามเกมได้",
+        "GameHQ จดจำตำแหน่งล่าสุดที่คุณใช้งาน ได้แก่ หน้าล่าสุด หมวดหมู่การตั้งค่า ตัวกรองแกลเลอรี และหมวดหมู่โอเวอร์เลย์ของแต่ละเกม"
       ]
     },
     {
-      "title": "Mapping Presets",
+      "title": "โอเวอร์เลย์",
       "items": [
-        "Added a mapping preset library with create, rename, duplicate, edit and delete controls alongside controller bindings.",
-        "Presets can be assigned to controllers and games, with explicit fallback choices and automatic selection for the running game.",
-        "Existing custom bindings are migrated into the preset system while preserving the original binding data for recovery.",
-        "Preset changes account for held controls and pending gestures, reducing accidental actions when switching mappings.",
-        "The interface distinguishes the assigned preset from the preset being edited, protects unfinished edits, and offers a separate copy for one controller.",
-        "Deleting an assigned preset requires a valid replacement or fallback, preventing broken assignments; shared preset changes are made clearer."
+        "โอเวอร์เลย์รับโฟกัสคอนโทรลเลอร์ได้โดยยังคงแสดงอยู่เหนือเกมแบบไร้ขอบที่มองเห็นอยู่ และไม่ย่อหน้าต่างเกมลง",
+        "บนเส้นทาง GameInput ที่รองรับ การนำทางในโอเวอร์เลย์จะไม่ควบคุมเกมไปพร้อมกันอีกต่อไป",
+        "เมื่อปิดโอเวอร์เลย์ ระบบจะรอสักครู่ให้ปุ่มที่กดค้างถูกปล่อยและจอยสติ๊กกลับสู่ตำแหน่งกลางก่อนคืนคอนโทรลเลอร์ให้เกม อินพุตที่กดค้างไว้จึงไม่ส่งต่อเข้าไปในเกม",
+        "การเปิดและปิดโอเวอร์เลย์เร็วและเสถียรขึ้น และการกดซ้ำอย่างรวดเร็วจะไม่ทำให้โอเวอร์เลย์ปิดลงทันทีหลังเปิดอีกต่อไป ระบบจะเคารพการสลับไปยังแอปอื่นโดยตั้งใจ เช่น Alt-Tab",
+        "โอเวอร์เลย์ติดตามเกมที่ถูกต้องเมื่อเกมสร้างหน้าต่างใหม่ สูญเสียหน้าต่าง หรือเสียโฟกัสชั่วขณะ และปิดลงอย่างเรียบร้อยเมื่อแอปอื่นเข้ามาแทนที่",
+        "โอเวอร์เลย์จะเปิดขึ้นที่ภาพหน้าจอหรือคลิปที่คุณเลือกไว้ล่าสุด และหลังจับภาพใหม่จะเริ่มที่รายการล่าสุด",
+        "คลิปเริ่มเล่นในโอเวอร์เลย์ได้โดยภาพตัวอย่างไม่หายไปชั่วขณะ",
+        "พื้นหลังที่หรี่แสงจะปรากฏพร้อมกับเมนูโอเวอร์เลย์ แทนที่จะค่อย ๆ ปรากฏขึ้นหลังเมนู",
+        "คำแนะนำการควบคุมที่ด้านล่างมีพื้นหลังขนาดเล็กที่ปรับตามการตั้งค่าการหรี่แสงของโอเวอร์เลย์ จึงอ่านได้ชัดเจนบนภาพเกม",
+        "เกมที่กำลังเล่นอยู่จะถูกไฮไลต์อย่างถูกต้องเมื่อเลื่อนผ่านแถบด้านข้าง",
+        "การนำทางด้วยคอนโทรลเลอร์ทำงานได้ดีขึ้นในเมนูโอเวอร์เลย์ แกลเลอรี และการเล่นวิดีโอ และปุ่มนำทางแยกจากปุ่มลัดการจับภาพ"
       ]
     },
     {
-      "title": "Overlay",
+      "title": "การจับภาพและรีเพลย์",
       "items": [
-        "The overlay can take controller focus while remaining above a visible borderless game. Native wired DualSense behavior has been confirmed in Indiana Jones and the Great Circle in Borderless mode.",
-        "On supported GameInput paths, navigating the overlay no longer simultaneously controls the game underneath.",
-        "Closing the overlay briefly waits for held controls to return to neutral before handing input back to the game, with a bounded wait if a control stays held.",
-        "Improved focus return and repeated open/close behavior, while respecting Alt-Tab and other deliberate switches to another application.",
-        "Improved handling of game window replacement, disappearance and temporary foreground changes, keeping the overlay tied to the correct game.",
-        "Bottom control hints now have a compact background that follows overlay dimming, and the currently running game highlights correctly during sidebar navigation.",
-        "Improved controller navigation across overlay menus, gallery and video playback, including clearer separation of navigation and capture shortcuts."
+        "การบันทึกซ้ำอย่างรวดเร็วจะได้ชื่อไฟล์ที่ไม่ซ้ำกันแทนการเขียนทับคลิปที่มีอยู่ การส่งออกที่ล้มเหลวจะไม่ลบคลิปก่อนหน้า และภาพขนาดย่อจะตรงกับคลิปที่ถูกต้องเสมอ",
+        "การบันทึกรีเพลย์จะใช้ภาพที่บันทึกไว้จนถึงขณะนั้น แม้บัฟเฟอร์จะยังบันทึกไม่ครบระยะเวลาที่คุณตั้งไว้",
+        "การส่งออกรีเพลย์จะเก็บภาพที่ต้องใช้ไว้เมื่อคุณสลับเกมหรือเมื่อบัฟเฟอร์เริ่มใหม่ และ GameHQ จะรอให้การส่งออกที่กำลังดำเนินอยู่เสร็จสิ้นก่อนปิดโปรแกรม",
+        "ภาพหน้าจอและการบันทึกรีเพลย์จะได้รับการยืนยันทันที จากนั้นแสดงผลลัพธ์ที่ชัดเจนว่าบันทึกสำเร็จหรือล้มเหลว การแจ้งเตือนจะอัปเดตในตำแหน่งเดิม และแสดงพร้อมกันได้ในจำนวนจำกัด",
+        "การจับภาพที่ล้มเหลวหรือถูกข้ามจะแจ้งเหตุผลให้ทราบ แม้จะปิดการแจ้งเตือนเมื่อสำเร็จไว้ก็ตาม",
+        "สถานะรีเพลย์แสดงว่าการบันทึกเริ่มขึ้นจริงหรือไม่ และมีภาพที่ใช้งานได้หรือไม่ พร้อมข้อความที่ชัดเจนสำหรับสถานะกำลังเริ่มทำงาน บัฟเฟอร์ว่าง และกำลังส่งออก",
+        "เซสชันรีเพลย์แบบแมนนวลจะไม่หยุดทำงานเมื่อเปลี่ยนการตั้งค่าหรือเมื่อจับภาพหน้าจอ HDR ในเวลาเดียวกัน เซสชันแบบแมนนวลที่เริ่มไว้แต่ไม่ได้ใช้งานจะปิดเองหลังผ่านไประยะหนึ่ง",
+        "การบันทึกรีเพลย์ไม่ทำให้การจับภาพหยุดชะงักขณะสร้างภาพขนาดย่ออีกต่อไป และภาพหน้าจอที่จับในเวลาเดียวกันจะสร้างโฟลเดอร์ได้อย่างเสถียรขึ้น",
+        "ตัวเลือกใหม่สำหรับเส้นขอบการจับภาพสีเหลืองของ Windows พร้อมข้อมูลที่ชัดเจนขึ้นเกี่ยวกับสิทธิ์และการรองรับของระบบ การบันทึกยังคงทำงานได้แม้ Windows จะซ่อนเส้นขอบไม่ได้"
       ]
     },
     {
-      "title": "Capture & Replay",
+      "title": "คอนโทรลเลอร์และอินพุต",
       "items": [
-        "Replay saves use the footage available so far, even before the configured buffer duration has elapsed or the first normal recording segment has finished.",
-        "Rapid saves receive unique filenames instead of overwriting an existing clip; failed exports preserve earlier clips and thumbnails stay paired with the correct file.",
-        "Replay exports retain the footage they need across game changes and buffer restarts, and GameHQ waits for an active export to finish safely on shutdown.",
-        "Replay status now reflects actual capture startup and usable footage, with clearer feedback for startup, empty-buffer and busy-export conditions.",
-        "Manual replay sessions survive recording-setting changes and overlapping HDR screenshots; an armed but unused manual session expires after an idle period.",
-        "Screenshot and replay requests receive prompt acknowledgement followed by a clear saved or failed result. Notifications update in place and the visible stack is limited.",
-        "Failed or skipped captures explain why, even when success notifications are disabled. Files saved to disk but not added to the library are reported accurately.",
-        "Replay thumbnail work no longer blocks the capture worker during a save, and concurrent screenshots more reliably create their destination folder.",
-        "Added a Windows capture-border preference with clearer permission and support reporting. Recording remains available when Windows cannot hide the border."
+        "การตรวจจับคอนโทรลเลอร์และการส่งต่ออินพุตเสถียรขึ้นเมื่อเชื่อมต่อคอนโทรลเลอร์หรือแหล่งอินพุตหลายรายการ",
+        "การสลับแหล่งอินพุต การเชื่อมต่อคอนโทรลเลอร์ใหม่ และการติดตามปุ่มที่กดค้าง ไม่ทำให้การกดตกหล่น การกดซ้ำซ้อน หรืออินพุตค้างอีกต่อไป",
+        "แก้ไขปัญหาการกดปุ่ม PS ที่ระบบตรวจไม่พบ และการกดซ้ำที่ล่าช้าซึ่งอาจเปิดโอเวอร์เลย์ขึ้นมาอีกครั้งทันทีหลังจากที่คุณปิดไป",
+        "ทริกเกอร์ การกดจอยสติ๊ก และปุ่มอื่น ๆ ทำงานเหมือนกันในทุกแหล่งอินพุตที่รองรับ การกำหนดปุ่มจึงทำงานได้อย่างคาดเดาได้มากขึ้น",
+        "คอนโทรลเลอร์ที่ใช้ GameInput ยังคงทำงานได้ตามปกติ รวมถึงการแยกอินพุตของโอเวอร์เลย์ แม้ Windows จะไม่สามารถให้การรองรับปุ่ม Guide/Share ซึ่งเป็นความสามารถเสริมได้",
+        "คอนโทรลเลอร์ที่คุณกำลังแก้ไขในการตั้งค่าจะยังคงถูกเลือกไว้ เมื่อคอนโทรลเลอร์อื่นกลายเป็นตัวที่ใช้งานอยู่"
       ]
     },
     {
-      "title": "UI, Settings & Sound",
+      "title": "พรีเซ็ตการแมป",
       "items": [
-        "The app restores the last normal page, Settings category and gallery filter; the overlay remembers its last category separately for each game.",
-        "Opening the gallery preserves its saved filter, invalid saved game filters fall back safely, and Settings categories remain stable when their order changes.",
-        "Window placement now supports monitors left of or above the primary display and brings fully off-screen windows back onto a connected display.",
-        "Added independent interface and overlay scaling from 100% to 200%, remembered across restarts, with improved small-window layout handling.",
-        "Fixed blank content and stacking problems during interface scaling, and improved menu visibility above the main content.",
-        "Capture confirmations are louder and more distinct, with a separate capture volume and sound preview. Interface and capture sound controls now support levels up to 300%.",
-        "Changing feedback, sound, notification, capture-border or manual-idle settings no longer unnecessarily discards the replay buffer.",
-        "Binding controls show the effective hold duration and explain how hold gestures are recognized."
+        "คลังพรีเซ็ตใหม่สำหรับเลย์เอาต์คอนโทรลเลอร์ ซึ่งคุณสามารถสร้าง เปลี่ยนชื่อ ทำสำเนา แก้ไข และลบพรีเซ็ตได้",
+        "กำหนดพรีเซ็ตให้กับคอนโทรลเลอร์และเกมได้ พร้อมตัวเลือกสำรองและการเลือกอัตโนมัติสำหรับเกมที่กำลังเล่นอยู่",
+        "การกำหนดปุ่มแบบกำหนดเองที่มีอยู่จะย้ายเข้าสู่ระบบพรีเซ็ตโดยอัตโนมัติ และเก็บข้อมูลเดิมไว้เป็นข้อมูลสำรอง",
+        "การสลับพรีเซ็ตจะคำนึงถึงปุ่มที่กดค้างและท่าทางที่กำลังดำเนินอยู่ การสลับจึงไม่ทำให้เกิดการทำงานโดยไม่ตั้งใจ",
+        "อินเทอร์เฟซแยกพรีเซ็ตที่กำหนดไว้ออกจากพรีเซ็ตที่กำลังแก้ไข ปกป้องการแก้ไขที่ยังไม่ได้บันทึก และให้คุณทำสำเนาสำหรับคอนโทรลเลอร์เครื่องเดียวได้",
+        "การลบพรีเซ็ตที่ใช้งานอยู่จะขอให้เลือกพรีเซ็ตทดแทนหรือตัวเลือกสำรองก่อน และการเปลี่ยนแปลงพรีเซ็ตที่ใช้ร่วมกันจะมีเครื่องหมายระบุไว้อย่างชัดเจน"
       ]
     },
     {
-      "title": "Localization & Updates",
+      "title": "อินเทอร์เฟซ การตั้งค่า และเสียง",
       "items": [
-        "Expanded translations for capture feedback, border controls, sound settings, hold guidance, mapping presets and focus-related messages across the supported interface languages.",
-        "Available-update notes now follow the selected language, use an explicit English fallback when needed, and can restore previously fetched notes while offline.",
-        "Added an optional GitHub release link beneath upcoming update notes, accessible through controller navigation.",
-        "Improved release-note loading, safe text formatting and handling of stale language requests; displayed notes remain separate from update installation authorization."
+        "GameHQ จะเปิดขึ้นที่หน้า หมวดหมู่การตั้งค่า และตัวกรองแกลเลอรีที่คุณใช้ล่าสุด ส่วนโอเวอร์เลย์จะจดจำหมวดหมู่ล่าสุดแยกตามแต่ละเกม",
+        "หน้าต่างกลับมาแสดงได้อย่างถูกต้องบนจอภาพที่อยู่ทางซ้ายหรือด้านบนของจอภาพหลัก หน้าต่างที่จะเปิดขึ้นนอกหน้าจอทั้งหมดจะถูกย้ายกลับมายังจอภาพที่เชื่อมต่ออยู่",
+        "หน้าต่างหลักและโอเวอร์เลย์มีการปรับขนาดแยกกันตั้งแต่ 100% ถึง 200% และจดจำค่าไว้แม้รีสตาร์ท หน้าต่างขนาดเล็กจัดเลย์เอาต์ได้ดีขึ้น",
+        "เสียงการจับภาพดังขึ้นและแยกแยะได้ชัดเจนขึ้น พร้อมตัวควบคุมระดับเสียงและการฟังตัวอย่างแยกต่างหาก ระดับเสียงอินเทอร์เฟซและการจับภาพปรับได้สูงสุด 300%",
+        "การเปลี่ยนการตั้งค่าการแจ้งเตือน เสียง เส้นขอบการจับภาพ หรือเซสชันแบบแมนนวล จะไม่ล้างบัฟเฟอร์รีเพลย์ของคุณอีกต่อไป",
+        "การเปิดแกลเลอรีจะคงตัวกรองที่บันทึกไว้ หากตัวกรองที่บันทึกไว้เป็นของเกมที่ไม่มีอยู่แล้ว ระบบจะกลับไปใช้ค่าสำรองอย่างปลอดภัย และหมวดหมู่การตั้งค่าจะยังอยู่ที่เดิมแม้ลำดับจะเปลี่ยนไป",
+        "แก้ไขปัญหาเนื้อหาว่างเปล่าและการซ้อนลำดับผิดพลาดเมื่อเปลี่ยนขนาดอินเทอร์เฟซ และเมนูจะแสดงอยู่เหนือเนื้อหาหลัก",
+        "ตัวควบคุมการกำหนดปุ่มแสดงระยะเวลาการกดค้าง และอธิบายวิธีการทำงานของท่าทางแบบกดค้าง"
       ]
     },
     {
-      "title": "Diagnostics & Reliability",
+      "title": "การอัปเดต ภาษา และการวินิจฉัย",
       "items": [
-        "Capture diagnostics follow each request through acceptance, export and completion, helping distinguish an unrecognized shortcut from a rejected save.",
-        "Copied diagnostics include the active controller bindings, preset selection, input-provider transitions and overlay focus/input state, with sensitive device identifiers sanitized.",
-        "Sound availability is checked when effects actually load, with a clear warning if an effect cannot be played."
+        "บันทึกการอัปเดตจะแสดงเป็นภาษาที่คุณเลือก หากไม่มีคำแปลจะแสดงเป็นภาษาอังกฤษแทน และยังอ่านได้แบบออฟไลน์เมื่อโหลดแล้ว",
+        "บันทึกการอัปเดตสามารถมีลิงก์ไปยังรีลีสบน GitHub ได้ (ไม่บังคับ) และเปิดลิงก์ได้ด้วยคอนโทรลเลอร์",
+        "เพิ่มคำแปลในทุกภาษาที่รองรับสำหรับข้อความใหม่เกี่ยวกับการจับภาพ เสียง เส้นขอบ การกดค้าง พรีเซ็ต และโฟกัส",
+        "ข้อมูลการวินิจฉัยที่คัดลอกจะรวมการกำหนดปุ่มที่ใช้งานอยู่ การเลือกพรีเซ็ต การเปลี่ยนแหล่งอินพุต และสถานะโฟกัสของโอเวอร์เลย์ โดยปกปิดตัวระบุอุปกรณ์ไม่ให้ระบุตัวตนได้",
+        "การวินิจฉัยการจับภาพจะติดตามแต่ละคำขอตั้งแต่การกดปุ่มจนถึงไฟล์ที่บันทึก ทำให้ค้นหาสาเหตุของปัญหาได้ง่ายขึ้น ส่วนปัญหาด้านเสียงจะรายงานพร้อมคำเตือนที่ชัดเจน"
       ]
     },
     {
-      "title": "Known Limitations",
+      "title": "ข้อจำกัดที่ทราบ",
       "items": [
-        "Controller isolation depends on the game and input path. Native wired DualSense/GameInput has strong practical evidence, but universal isolation is not claimed for XInput, Raw Input, direct HID, Steam Input or virtual-controller configurations.",
-        "DSX provider switching remains partially verified. Existing DSX setups remain user-managed; this release does not install or manage virtual-controller or device-hiding drivers.",
-        "Games may pause or react to losing focus, and Windows or another capture application may keep the recording border visible.",
-        "Controller recovery after forcibly terminating GameHQ during exclusive overlay input was not verified; normal overlay close and input return were tested.",
-        "The complete 0.7.8 release notes currently use an explicit English fallback in other interface languages."
+        "การที่โอเวอร์เลย์จะแยกคอนโทรลเลอร์ออกจากเกมได้หรือไม่ ขึ้นอยู่กับเกมและวิธีที่เกมอ่านอินพุตจากคอนโทรลเลอร์ DualSense แบบใช้สายที่ใช้ GameInput ผ่านการทดสอบมาอย่างดี แต่ไม่รับประกันสำหรับ XInput, Raw Input, HID โดยตรง, Steam Input หรือคอนโทรลเลอร์เสมือน",
+        "การสลับคอนโทรลเลอร์ขณะที่ DSX ทำงานอยู่ผ่านการตรวจสอบเพียงบางส่วนเท่านั้น การตั้งค่า DSX ยังอยู่ในการควบคุมของคุณ GameHQ ไม่ได้ติดตั้งหรือจัดการไดรเวอร์คอนโทรลเลอร์เสมือนหรือไดรเวอร์ซ่อนอุปกรณ์",
+        "บางเกมจะหยุดชั่วคราวหรือมีปฏิกิริยาเมื่อเสียโฟกัส Windows หรือแอปจับภาพอื่นอาจทำให้เส้นขอบการบันทึกสีเหลืองยังคงปรากฏอยู่",
+        "หากไม่มีบันทึกประจำรุ่น 0.7.8 ฉบับแปล GameHQ จะแสดงเป็นภาษาอังกฤษแทน"
       ]
     }
   ],
@@ -272,10 +278,10 @@
     "documents": [
       {
         "version": "0.7.8",
-        "source_integrity": "sha256:dcb96161a379242c1399dccb1775804e6b7e73c65961410a1da5b692e4eb43a7",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
+        "source_integrity": "sha256:e02ffd2855471b5c602776fb9069fc0f9f0f1fab1cabadde6bbbf8f5fbf0d78c",
+        "resolved_locale": "th-TH",
+        "fallback": false,
+        "fallback_reason": null
       },
       {
         "version": "0.7.7",

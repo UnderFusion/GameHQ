@@ -3,91 +3,97 @@
   "date": "2026-09-22",
   "sections": [
     {
-      "title": "Controller & Input",
+      "title": "Головне",
       "items": [
-        "Improved controller identification and input routing when multiple devices or input providers are present, with more conservative handling of ambiguous device matches.",
-        "Standardized trigger, stick-click and other controller button handling across supported input providers so bindings behave more consistently.",
-        "Improved provider switching, reconnect cleanup and held-button tracking to reduce missed actions, duplicate actions and stuck input.",
-        "Fixed missed PS-button presses and delayed duplicate presses that could reopen the overlay immediately after closing it.",
-        "GameInput can continue handling ordinary controller input and overlay input isolation when optional Guide/Share support is unavailable, while existing button fallbacks remain usable.",
-        "The controller selected for editing in Settings stays selected when another controller or provider becomes active."
+        "Оверлей тепер працює значно надійніше поверх ігор у режимі вікна без рамки. Він з’являється над грою, перехоплює введення з контролера для навігації в оверлеї під час підтримуваного введення через GameInput, а гра залишається видимою. Перевірено з дротовим DualSense в Indiana Jones and the Great Circle у режимі без рамки (Borderless).",
+        "Під час підтримуваного введення через GameInput навігація в оверлеї більше не керує грою під ним. Під час закриття оверлей чекає, доки ви відпустите всі утримувані кнопки, і лише потім повертає контролер грі.",
+        "Кліпи повторів зберігаються надійніше: швидкі повторні збереження ніколи не перезаписують наявний кліп, а зберегти кліп можна одразу після початку запису.",
+        "Нові пресети розкладок: створюйте, редагуйте й призначайте розкладки для кожного контролера та кожної гри.",
+        "GameHQ пам’ятає, де ви зупинилися: останню сторінку, категорію налаштувань, фільтр галереї та категорію оверлея для кожної гри."
       ]
     },
     {
-      "title": "Mapping Presets",
+      "title": "Оверлей",
       "items": [
-        "Added a mapping preset library with create, rename, duplicate, edit and delete controls alongside controller bindings.",
-        "Presets can be assigned to controllers and games, with explicit fallback choices and automatic selection for the running game.",
-        "Existing custom bindings are migrated into the preset system while preserving the original binding data for recovery.",
-        "Preset changes account for held controls and pending gestures, reducing accidental actions when switching mappings.",
-        "The interface distinguishes the assigned preset from the preset being edited, protects unfinished edits, and offers a separate copy for one controller.",
-        "Deleting an assigned preset requires a valid replacement or fallback, preventing broken assignments; shared preset changes are made clearer."
+        "Оверлей може перебирати фокус контролера, залишаючись над видимою грою в режимі без рамки й не згортаючи її.",
+        "Під час підтримуваного введення через GameInput навігація в оверлеї більше не керує одночасно грою.",
+        "Під час закриття оверлей коротко чекає, доки утримувані кнопки й стики повернуться в початкове положення, і лише потім повертає контролер грі, щоб утримуване введення не потрапило в гру.",
+        "Оверлей відкривається й закривається швидше та надійніше, а швидке повторне натискання більше не закриває його одразу після відкриття. Alt-Tab та інші навмисні перемикання на інший застосунок ураховуються.",
+        "Оверлей стежить за правильною грою, коли вона перестворює вікно, втрачає його або ненадовго втрачає фокус. Коли на передній план виходить інший застосунок, оверлей коректно закривається.",
+        "Оверлей знову відкривається на знімку екрана чи кліпі, який ви вибрали останнім. Після нового захоплення він починає з найновішого елемента.",
+        "Кліпи починають відтворюватися в оверлеї без короткочасного зникнення попереднього перегляду.",
+        "Затемнений фон тепер з’являється разом із меню оверлея, а не проявляється після них.",
+        "Підказки щодо керування внизу тепер розміщено на невеликій підкладці, яка враховує налаштування затемнення оверлея, тож вони залишаються читабельними поверх гри.",
+        "Гру, у яку ви зараз граєте, тепер правильно виділено під час переміщення бічною панеллю.",
+        "Навігація контролером краще працює в меню оверлея, галереї та під час відтворення відео, а кнопки навігації відокремлено від комбінацій для захоплення."
       ]
     },
     {
-      "title": "Overlay",
+      "title": "Захоплення та повтори",
       "items": [
-        "The overlay can take controller focus while remaining above a visible borderless game. Native wired DualSense behavior has been confirmed in Indiana Jones and the Great Circle in Borderless mode.",
-        "On supported GameInput paths, navigating the overlay no longer simultaneously controls the game underneath.",
-        "Closing the overlay briefly waits for held controls to return to neutral before handing input back to the game, with a bounded wait if a control stays held.",
-        "Improved focus return and repeated open/close behavior, while respecting Alt-Tab and other deliberate switches to another application.",
-        "Improved handling of game window replacement, disappearance and temporary foreground changes, keeping the overlay tied to the correct game.",
-        "Bottom control hints now have a compact background that follows overlay dimming, and the currently running game highlights correctly during sidebar navigation.",
-        "Improved controller navigation across overlay menus, gallery and video playback, including clearer separation of navigation and capture shortcuts."
+        "Швидкі повторні збереження отримують унікальні імена файлів замість перезапису наявного кліпу. Невдалий експорт ніколи не видаляє попередні кліпи, а мініатюри завжди відповідають правильному кліпу.",
+        "Збереження повтору використовує вже записаний матеріал, навіть якщо встановлену тривалість буфера ще не заповнено.",
+        "Експорт повтору зберігає потрібний йому матеріал, коли ви перемикаєте гру або буфер перезапускається, а GameHQ перед завершенням роботи чекає, доки поточний експорт закінчиться.",
+        "Знімки екрана та збереження повторів підтверджуються одразу, а потім показується чіткий результат: збережено або помилка. Сповіщення оновлюються на місці, і водночас показується лише обмежена їх кількість.",
+        "Для невдалих або пропущених захоплень тепер пояснюється причина, навіть якщо сповіщення про успіх вимкнено.",
+        "Стан повтору тепер показує, чи справді почався запис і чи є придатний матеріал, із чіткими повідомленнями про запуск, порожній буфер і експорт, що триває.",
+        "Ручні сеанси повтору тепер не перериваються через зміну налаштувань і одночасне створення знімків HDR. Ручний сеанс, який ви запустили, але так і не використали, через деякий час вимикається.",
+        "Збереження повтору більше не призупиняє захоплення на час створення мініатюри, а знімки екрана, зроблені одночасно, надійніше створюють свою папку.",
+        "Новий параметр для жовтої рамки захоплення Windows із чіткішими відомостями про дозволи та підтримку системою. Запис продовжує працювати, навіть якщо Windows не може приховати рамку."
       ]
     },
     {
-      "title": "Capture & Replay",
+      "title": "Контролери та введення",
       "items": [
-        "Replay saves use the footage available so far, even before the configured buffer duration has elapsed or the first normal recording segment has finished.",
-        "Rapid saves receive unique filenames instead of overwriting an existing clip; failed exports preserve earlier clips and thumbnails stay paired with the correct file.",
-        "Replay exports retain the footage they need across game changes and buffer restarts, and GameHQ waits for an active export to finish safely on shutdown.",
-        "Replay status now reflects actual capture startup and usable footage, with clearer feedback for startup, empty-buffer and busy-export conditions.",
-        "Manual replay sessions survive recording-setting changes and overlapping HDR screenshots; an armed but unused manual session expires after an idle period.",
-        "Screenshot and replay requests receive prompt acknowledgement followed by a clear saved or failed result. Notifications update in place and the visible stack is limited.",
-        "Failed or skipped captures explain why, even when success notifications are disabled. Files saved to disk but not added to the library are reported accurately.",
-        "Replay thumbnail work no longer blocks the capture worker during a save, and concurrent screenshots more reliably create their destination folder.",
-        "Added a Windows capture-border preference with clearer permission and support reporting. Recording remains available when Windows cannot hide the border."
+        "Надійніше розпізнавання контролерів і маршрутизація введення, коли підключено кілька контролерів або джерел введення.",
+        "Перемикання джерел введення, повторне підключення контролерів і відстеження утримуваних кнопок тепер обходяться без пропущених і подвійних натискань та залиплого введення.",
+        "Виправлено пропущені натискання кнопки PS, а також запізнілі повторні натискання, через які оверлей міг знову відкритися одразу після закриття.",
+        "Тригери, натискання стиків та інші кнопки тепер поводяться однаково в усіх підтримуваних джерелах введення, тож прив’язки працюють передбачуваніше.",
+        "Контролери, що використовують GameInput, і далі працюють нормально, зокрема з ізоляцією оверлея, навіть якщо Windows не може надати необов’язкову підтримку кнопок Guide/Share.",
+        "Контролер, який ви редагуєте в налаштуваннях, залишається вибраним, коли активним стає інший контролер."
       ]
     },
     {
-      "title": "UI, Settings & Sound",
+      "title": "Пресети розкладок",
       "items": [
-        "The app restores the last normal page, Settings category and gallery filter; the overlay remembers its last category separately for each game.",
-        "Opening the gallery preserves its saved filter, invalid saved game filters fall back safely, and Settings categories remain stable when their order changes.",
-        "Window placement now supports monitors left of or above the primary display and brings fully off-screen windows back onto a connected display.",
-        "Added independent interface and overlay scaling from 100% to 200%, remembered across restarts, with improved small-window layout handling.",
-        "Fixed blank content and stacking problems during interface scaling, and improved menu visibility above the main content.",
-        "Capture confirmations are louder and more distinct, with a separate capture volume and sound preview. Interface and capture sound controls now support levels up to 300%.",
-        "Changing feedback, sound, notification, capture-border or manual-idle settings no longer unnecessarily discards the replay buffer.",
-        "Binding controls show the effective hold duration and explain how hold gestures are recognized."
+        "Нова бібліотека пресетів розкладок контролера, де можна створювати, перейменовувати, дублювати, редагувати й видаляти пресети.",
+        "Пресети можна призначати контролерам та іграм, із резервним варіантом і автоматичним вибором для запущеної гри.",
+        "Ваші наявні користувацькі прив’язки автоматично переносяться в систему пресетів, а початкові дані зберігаються як резервна копія.",
+        "Під час перемикання пресетів ураховуються утримувані кнопки й незавершені жести, тож перемикання не запускає дій випадково.",
+        "Інтерфейс розрізняє призначений пресет і той, який ви редагуєте, захищає незбережені зміни та дає змогу створити копію для окремого контролера.",
+        "Під час видалення пресета, який використовується, спершу пропонується вибрати заміну або резервний варіант, а зміни спільних пресетів чітко позначаються."
       ]
     },
     {
-      "title": "Localization & Updates",
+      "title": "Інтерфейс, налаштування та звук",
       "items": [
-        "Expanded translations for capture feedback, border controls, sound settings, hold guidance, mapping presets and focus-related messages across the supported interface languages.",
-        "Available-update notes now follow the selected language, use an explicit English fallback when needed, and can restore previously fetched notes while offline.",
-        "Added an optional GitHub release link beneath upcoming update notes, accessible through controller navigation.",
-        "Improved release-note loading, safe text formatting and handling of stale language requests; displayed notes remain separate from update installation authorization."
+        "GameHQ знову відкривається на останній сторінці, категорії налаштувань і фільтрі галереї, які ви використовували. Оверлей запам’ятовує останню категорію окремо для кожної гри.",
+        "Вікно тепер правильно відновлюється на моніторах, розташованих ліворуч від основного екрана або над ним. Вікно, яке відкрилося б повністю за межами екрана, переміщується на підключений дисплей.",
+        "Головне вікно й оверлей мають окреме масштабування від 100% до 200%, яке зберігається після перезапуску. Малі вікна краще компонуються.",
+        "Звуки захоплення стали гучнішими й виразнішими, і для них є окреме регулювання гучності та прослуховування. Гучність інтерфейсу й захоплення можна підняти до 300%.",
+        "Зміна налаштувань сповіщень, звуку, рамки захоплення або ручного сеансу більше не скидає буфер повторів.",
+        "Галерея відкривається зі збереженим фільтром. Якщо збережений фільтр стосується гри, якої більше немає, безпечно застосовується варіант за замовчуванням. Категорії налаштувань лишаються на місці, навіть якщо їхній порядок змінюється.",
+        "Виправлено порожній вміст і проблеми з накладанням елементів під час зміни масштабу інтерфейсу, а меню тепер відображаються поверх основного вмісту.",
+        "Елементи налаштування прив’язок показують тривалість утримування й пояснюють, як працюють жести утримування."
       ]
     },
     {
-      "title": "Diagnostics & Reliability",
+      "title": "Оновлення, мови та діагностика",
       "items": [
-        "Capture diagnostics follow each request through acceptance, export and completion, helping distinguish an unrecognized shortcut from a rejected save.",
-        "Copied diagnostics include the active controller bindings, preset selection, input-provider transitions and overlay focus/input state, with sensitive device identifiers sanitized.",
-        "Sound availability is checked when effects actually load, with a clear warning if an effect cannot be played."
+        "Примітки до оновлення відображаються вибраною мовою, а якщо перекладу немає — англійською, і залишаються доступними офлайн після завантаження.",
+        "Примітки до оновлення можуть містити необов’язкове посилання на випуск на GitHub, до якого можна перейти за допомогою контролера.",
+        "Переклади всіма підтримуваними мовами доповнено новими повідомленнями про захоплення, звук, рамку, утримування, пресети й фокус.",
+        "Скопійована діагностика тепер містить активні прив’язки, вибір пресета, зміни джерел введення та стан фокуса оверлея, а ідентифікатори пристроїв анонімізовано.",
+        "Діагностика захоплення відстежує кожен запит від натискання кнопки до збереженого файлу, що спрощує пошук проблем. Про проблеми зі звуком повідомляється чітким попередженням."
       ]
     },
     {
-      "title": "Known Limitations",
+      "title": "Відомі обмеження",
       "items": [
-        "Controller isolation depends on the game and input path. Native wired DualSense/GameInput has strong practical evidence, but universal isolation is not claimed for XInput, Raw Input, direct HID, Steam Input or virtual-controller configurations.",
-        "DSX provider switching remains partially verified. Existing DSX setups remain user-managed; this release does not install or manage virtual-controller or device-hiding drivers.",
-        "Games may pause or react to losing focus, and Windows or another capture application may keep the recording border visible.",
-        "Controller recovery after forcibly terminating GameHQ during exclusive overlay input was not verified; normal overlay close and input return were tested.",
-        "The complete 0.7.8 release notes currently use an explicit English fallback in other interface languages."
+        "Чи ізолює оверлей контролер від гри, залежить від самої гри та того, як вона зчитує контролер. Дротовий DualSense із GameInput добре протестовано. Для XInput, Raw Input, прямого HID, Steam Input і віртуальних контролерів ізоляцію не гарантовано.",
+        "Перемикання контролерів за запущеного DSX перевірено лише частково. Налаштування DSX залишаються під вашим контролем: GameHQ не встановлює драйвери віртуальних контролерів чи приховування пристроїв і не керує ними.",
+        "Деякі ігри ставляться на паузу або інакше реагують, коли втрачають фокус. Windows або інший застосунок для захоплення може залишати видимою жовту рамку запису.",
+        "Якщо локалізовані примітки до випуску 0.7.8 недоступні, GameHQ показує їх англійською."
       ]
     }
   ],
@@ -272,10 +278,10 @@
     "documents": [
       {
         "version": "0.7.8",
-        "source_integrity": "sha256:dcb96161a379242c1399dccb1775804e6b7e73c65961410a1da5b692e4eb43a7",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
+        "source_integrity": "sha256:e02ffd2855471b5c602776fb9069fc0f9f0f1fab1cabadde6bbbf8f5fbf0d78c",
+        "resolved_locale": "uk-UA",
+        "fallback": false,
+        "fallback_reason": null
       },
       {
         "version": "0.7.7",

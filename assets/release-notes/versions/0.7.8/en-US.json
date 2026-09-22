@@ -6,32 +6,150 @@
   "date": "2026-09-22",
   "sections": [
     {
+      "id": "highlights",
+      "title": "Highlights",
+      "items": [
+        {
+          "id": "highlight-borderless",
+          "text": "The overlay now works much more reliably over borderless games. It appears above the game, captures controller input for overlay navigation on supported GameInput paths, and the game stays visible. Confirmed with a wired DualSense in Indiana Jones and the Great Circle in Borderless mode."
+        },
+        {
+          "id": "highlight-isolation",
+          "text": "Navigating the overlay no longer controls the game underneath on supported GameInput paths. Closing the overlay waits until you release any held buttons before giving the controller back to the game."
+        },
+        {
+          "id": "highlight-replay-safety",
+          "text": "Replay clips are safer: quick repeated saves never overwrite an existing clip, and a clip can be saved right after recording starts."
+        },
+        {
+          "id": "highlight-presets",
+          "text": "New mapping presets: create, edit and assign controller layouts per controller and per game."
+        },
+        {
+          "id": "highlight-last-view",
+          "text": "GameHQ remembers where you left off: the last page, Settings category, gallery filter and each game's overlay category."
+        }
+      ]
+    },
+    {
+      "id": "overlay",
+      "title": "Overlay",
+      "items": [
+        {
+          "id": "focus",
+          "text": "The overlay can take controller focus while staying above a visible borderless game, without minimizing it."
+        },
+        {
+          "id": "isolation",
+          "text": "On supported GameInput paths, navigating the overlay no longer also controls the game."
+        },
+        {
+          "id": "handoff",
+          "text": "When you close the overlay, it waits briefly for held buttons and sticks to return to rest before handing the controller back, so a held input doesn't carry into the game."
+        },
+        {
+          "id": "toggle",
+          "text": "Opening and closing the overlay is faster and more reliable, and a quick repeated press no longer closes it right after it opens. Alt-Tab and other deliberate switches to another app are respected."
+        },
+        {
+          "id": "game-window",
+          "text": "The overlay follows the correct game when the game recreates its window, loses its window or briefly loses focus. It closes cleanly when another app takes over."
+        },
+        {
+          "id": "reselect",
+          "text": "The overlay reopens on the screenshot or clip you last selected. After a new capture it starts on the newest item."
+        },
+        {
+          "id": "playback",
+          "text": "Clips start playing in the overlay without the preview briefly disappearing."
+        },
+        {
+          "id": "dimming",
+          "text": "The dimmed background now appears together with the overlay menus instead of fading in after them."
+        },
+        {
+          "id": "hints",
+          "text": "The control hints at the bottom now sit on a small background that follows your overlay dimming setting, so they stay readable over the game."
+        },
+        {
+          "id": "sidebar",
+          "text": "The game you're currently playing is now highlighted correctly when you move through the sidebar."
+        },
+        {
+          "id": "navigation",
+          "text": "Controller navigation works better across overlay menus, the gallery and video playback, and navigation buttons are kept separate from capture shortcuts."
+        }
+      ]
+    },
+    {
+      "id": "capture",
+      "title": "Capture & Replay",
+      "items": [
+        {
+          "id": "unique-names",
+          "text": "Quick repeated saves get unique filenames instead of overwriting an existing clip. A failed export never removes earlier clips, and thumbnails always match the right clip."
+        },
+        {
+          "id": "early-save",
+          "text": "A replay save uses the footage recorded so far, even before the buffer duration you set has filled."
+        },
+        {
+          "id": "export-lease",
+          "text": "A replay export keeps the footage it needs when you switch games or the buffer restarts, and GameHQ waits for an active export to finish before shutting down."
+        },
+        {
+          "id": "acknowledgement",
+          "text": "Screenshots and replay saves are acknowledged immediately, then show a clear saved or failed result. Notifications update in place, and only a limited number are shown at once."
+        },
+        {
+          "id": "failure-reasons",
+          "text": "Failed or skipped captures now explain why, even with success notifications turned off."
+        },
+        {
+          "id": "buffer-status",
+          "text": "The replay status now shows whether recording has really started and whether usable footage exists, with clear messages for starting, empty-buffer and export-in-progress states."
+        },
+        {
+          "id": "manual-sessions",
+          "text": "Manual replay sessions now survive settings changes and HDR screenshots taken at the same time. A manual session you start but never use turns off after a while."
+        },
+        {
+          "id": "thumbnails",
+          "text": "Saving a replay no longer stalls capture while the thumbnail is created, and screenshots taken at the same time create their folder more reliably."
+        },
+        {
+          "id": "border",
+          "text": "New option for the Windows yellow capture border, with clearer information about permission and system support. Recording still works when Windows can't hide the border."
+        }
+      ]
+    },
+    {
       "id": "controllers",
       "title": "Controller & Input",
       "items": [
         {
           "id": "identity",
-          "text": "Improved controller identification and input routing when multiple devices or input providers are present, with more conservative handling of ambiguous device matches."
-        },
-        {
-          "id": "controls",
-          "text": "Standardized trigger, stick-click and other controller button handling across supported input providers so bindings behave more consistently."
+          "text": "More reliable controller detection and input routing when several controllers or input sources are connected."
         },
         {
           "id": "switching",
-          "text": "Improved provider switching, reconnect cleanup and held-button tracking to reduce missed actions, duplicate actions and stuck input."
+          "text": "Switching input sources, reconnecting controllers and tracking held buttons now avoid missed presses, doubled presses and stuck input."
         },
         {
           "id": "guide",
-          "text": "Fixed missed PS-button presses and delayed duplicate presses that could reopen the overlay immediately after closing it."
+          "text": "Fixed PS-button presses that were missed, and delayed repeat presses that could reopen the overlay right after you closed it."
+        },
+        {
+          "id": "controls",
+          "text": "Triggers, stick clicks and other buttons now behave the same across supported input sources, so bindings act more predictably."
         },
         {
           "id": "gameinput",
-          "text": "GameInput can continue handling ordinary controller input and overlay input isolation when optional Guide/Share support is unavailable, while existing button fallbacks remain usable."
+          "text": "Controllers that use GameInput keep working normally, including overlay isolation, when Windows can't provide optional Guide/Share button support."
         },
         {
-          "id": "editor-device",
-          "text": "The controller selected for editing in Settings stays selected when another controller or provider becomes active."
+          "id": "editing",
+          "text": "The controller you're editing in Settings stays selected when a different controller becomes active."
         }
       ]
     },
@@ -41,181 +159,91 @@
       "items": [
         {
           "id": "library",
-          "text": "Added a mapping preset library with create, rename, duplicate, edit and delete controls alongside controller bindings."
+          "text": "New preset library for controller layouts, where you can create, rename, duplicate, edit and delete presets."
         },
         {
-          "id": "assignments",
-          "text": "Presets can be assigned to controllers and games, with explicit fallback choices and automatic selection for the running game."
+          "id": "assignment",
+          "text": "Presets can be assigned to controllers and games, with a fallback choice and automatic selection for the game you're running."
         },
         {
           "id": "migration",
-          "text": "Existing custom bindings are migrated into the preset system while preserving the original binding data for recovery."
+          "text": "Your existing custom bindings move into the preset system automatically, and the original data is kept as a backup."
         },
         {
-          "id": "safe-switch",
-          "text": "Preset changes account for held controls and pending gestures, reducing accidental actions when switching mappings."
+          "id": "held-controls",
+          "text": "Switching presets takes held buttons and gestures in progress into account, so switching doesn't trigger actions by accident."
         },
         {
-          "id": "safe-edit",
-          "text": "The interface distinguishes the assigned preset from the preset being edited, protects unfinished edits, and offers a separate copy for one controller."
+          "id": "preset-editing",
+          "text": "The interface separates the assigned preset from the one you're editing, protects unsaved edits, and lets you make a copy for a single controller."
         },
         {
-          "id": "safe-delete",
-          "text": "Deleting an assigned preset requires a valid replacement or fallback, preventing broken assignments; shared preset changes are made clearer."
-        }
-      ]
-    },
-    {
-      "id": "overlay",
-      "title": "Overlay",
-      "items": [
-        {
-          "id": "foreground",
-          "text": "The overlay can take controller focus while remaining above a visible borderless game. Native wired DualSense behavior has been confirmed in Indiana Jones and the Great Circle in Borderless mode."
-        },
-        {
-          "id": "isolation",
-          "text": "On supported GameInput paths, navigating the overlay no longer simultaneously controls the game underneath."
-        },
-        {
-          "id": "handoff",
-          "text": "Closing the overlay briefly waits for held controls to return to neutral before handing input back to the game, with a bounded wait if a control stays held."
-        },
-        {
-          "id": "focus",
-          "text": "Improved focus return and repeated open/close behavior, while respecting Alt-Tab and other deliberate switches to another application."
-        },
-        {
-          "id": "lifetime",
-          "text": "Improved handling of game window replacement, disappearance and temporary foreground changes, keeping the overlay tied to the correct game."
-        },
-        {
-          "id": "readability",
-          "text": "Bottom control hints now have a compact background that follows overlay dimming, and the currently running game highlights correctly during sidebar navigation."
-        },
-        {
-          "id": "routing",
-          "text": "Improved controller navigation across overlay menus, gallery and video playback, including clearer separation of navigation and capture shortcuts."
-        }
-      ]
-    },
-    {
-      "id": "capture",
-      "title": "Capture & Replay",
-      "items": [
-        {
-          "id": "short-buffer",
-          "text": "Replay saves use the footage available so far, even before the configured buffer duration has elapsed or the first normal recording segment has finished."
-        },
-        {
-          "id": "filenames",
-          "text": "Rapid saves receive unique filenames instead of overwriting an existing clip; failed exports preserve earlier clips and thumbnails stay paired with the correct file."
-        },
-        {
-          "id": "export-lifetime",
-          "text": "Replay exports retain the footage they need across game changes and buffer restarts, and GameHQ waits for an active export to finish safely on shutdown."
-        },
-        {
-          "id": "readiness",
-          "text": "Replay status now reflects actual capture startup and usable footage, with clearer feedback for startup, empty-buffer and busy-export conditions."
-        },
-        {
-          "id": "manual",
-          "text": "Manual replay sessions survive recording-setting changes and overlapping HDR screenshots; an armed but unused manual session expires after an idle period."
-        },
-        {
-          "id": "acknowledgement",
-          "text": "Screenshot and replay requests receive prompt acknowledgement followed by a clear saved or failed result. Notifications update in place and the visible stack is limited."
-        },
-        {
-          "id": "failures",
-          "text": "Failed or skipped captures explain why, even when success notifications are disabled. Files saved to disk but not added to the library are reported accurately."
-        },
-        {
-          "id": "thumbnails",
-          "text": "Replay thumbnail work no longer blocks the capture worker during a save, and concurrent screenshots more reliably create their destination folder."
-        },
-        {
-          "id": "border",
-          "text": "Added a Windows capture-border preference with clearer permission and support reporting. Recording remains available when Windows cannot hide the border."
+          "id": "deletion",
+          "text": "Deleting a preset that's in use asks for a replacement or fallback first, and changes to shared presets are clearly marked."
         }
       ]
     },
     {
       "id": "interface",
-      "title": "UI, Settings & Sound",
+      "title": "Interface, Settings & Sound",
       "items": [
         {
-          "id": "restore",
-          "text": "The app restores the last normal page, Settings category and gallery filter; the overlay remembers its last category separately for each game."
-        },
-        {
-          "id": "filters",
-          "text": "Opening the gallery preserves its saved filter, invalid saved game filters fall back safely, and Settings categories remain stable when their order changes."
+          "id": "restore-last-view",
+          "text": "GameHQ reopens on the last page, Settings category and gallery filter you used. The overlay remembers its last category separately for each game."
         },
         {
           "id": "monitors",
-          "text": "Window placement now supports monitors left of or above the primary display and brings fully off-screen windows back onto a connected display."
+          "text": "The window now restores correctly on monitors to the left of or above your main display. A window that would open fully off-screen is moved back onto a connected display."
         },
         {
-          "id": "scale",
-          "text": "Added independent interface and overlay scaling from 100% to 200%, remembered across restarts, with improved small-window layout handling."
+          "id": "scaling",
+          "text": "The main window and overlay each have their own scaling, from 100% to 200%, remembered across restarts. Small windows lay out better."
         },
         {
-          "id": "stacking",
-          "text": "Fixed blank content and stacking problems during interface scaling, and improved menu visibility above the main content."
+          "id": "sounds",
+          "text": "Capture sounds are louder and more distinct, and have their own volume control and preview. Interface and capture volume can go up to 300%."
         },
         {
-          "id": "sound",
-          "text": "Capture confirmations are louder and more distinct, with a separate capture volume and sound preview. Interface and capture sound controls now support levels up to 300%."
+          "id": "buffer-settings",
+          "text": "Changing notification, sound, capture-border or manual-session settings no longer throws away your replay buffer."
         },
         {
-          "id": "settings",
-          "text": "Changing feedback, sound, notification, capture-border or manual-idle settings no longer unnecessarily discards the replay buffer."
+          "id": "gallery-filter",
+          "text": "Opening the gallery keeps its saved filter. A saved filter for a game that no longer exists falls back safely. Settings categories stay put if their order changes."
+        },
+        {
+          "id": "scaling-fixes",
+          "text": "Fixed blank content and stacking problems when changing interface scale, and menus now show above the main content."
         },
         {
           "id": "hold",
-          "text": "Binding controls show the effective hold duration and explain how hold gestures are recognized."
+          "text": "Binding controls show how long a hold lasts and explain how hold gestures work."
         }
       ]
     },
     {
-      "id": "localization-updates",
-      "title": "Localization & Updates",
+      "id": "updates-diagnostics",
+      "title": "Updates, Languages & Diagnostics",
       "items": [
+        {
+          "id": "notes-language",
+          "text": "Update notes appear in your selected language, fall back to English when a translation isn't available, and remain readable offline once loaded."
+        },
+        {
+          "id": "release-link",
+          "text": "Update notes can include an optional link to the GitHub release, which you can reach with a controller."
+        },
         {
           "id": "translations",
-          "text": "Expanded translations for capture feedback, border controls, sound settings, hold guidance, mapping presets and focus-related messages across the supported interface languages."
+          "text": "Translations have been extended across all supported languages for the new capture, sound, border, hold, preset and focus messages."
         },
         {
-          "id": "update-notes",
-          "text": "Available-update notes now follow the selected language, use an explicit English fallback when needed, and can restore previously fetched notes while offline."
+          "id": "diagnostics",
+          "text": "Copied diagnostics now include active bindings, preset selection, input-source changes and overlay focus state, with device identifiers anonymized."
         },
         {
-          "id": "update-navigation",
-          "text": "Added an optional GitHub release link beneath upcoming update notes, accessible through controller navigation."
-        },
-        {
-          "id": "update-safety",
-          "text": "Improved release-note loading, safe text formatting and handling of stale language requests; displayed notes remain separate from update installation authorization."
-        }
-      ]
-    },
-    {
-      "id": "diagnostics",
-      "title": "Diagnostics & Reliability",
-      "items": [
-        {
-          "id": "request-trace",
-          "text": "Capture diagnostics follow each request through acceptance, export and completion, helping distinguish an unrecognized shortcut from a rejected save."
-        },
-        {
-          "id": "input-report",
-          "text": "Copied diagnostics include the active controller bindings, preset selection, input-provider transitions and overlay focus/input state, with sensitive device identifiers sanitized."
-        },
-        {
-          "id": "sound-errors",
-          "text": "Sound availability is checked when effects actually load, with a clear warning if an effect cannot be played."
+          "id": "capture-diagnostics",
+          "text": "Capture diagnostics follow each request from the button press to the saved file, which makes problems easier to track down. Sound problems are reported with a clear warning."
         }
       ]
     },
@@ -224,24 +252,20 @@
       "title": "Known Limitations",
       "items": [
         {
-          "id": "compatibility",
-          "text": "Controller isolation depends on the game and input path. Native wired DualSense/GameInput has strong practical evidence, but universal isolation is not claimed for XInput, Raw Input, direct HID, Steam Input or virtual-controller configurations."
+          "id": "limit-isolation",
+          "text": "Whether the overlay isolates the controller from the game depends on the game and how it reads the controller. A wired DualSense using GameInput is well tested. It isn't guaranteed for XInput, Raw Input, direct HID, Steam Input or virtual controllers."
         },
         {
           "id": "dsx",
-          "text": "DSX provider switching remains partially verified. Existing DSX setups remain user-managed; this release does not install or manage virtual-controller or device-hiding drivers."
+          "text": "Switching controllers with DSX running is only partly verified. DSX setups stay under your control; GameHQ doesn't install or manage virtual-controller or device-hiding drivers."
         },
         {
-          "id": "windows",
-          "text": "Games may pause or react to losing focus, and Windows or another capture application may keep the recording border visible."
+          "id": "focus-border",
+          "text": "Some games pause or react when they lose focus. Windows or another capture app may keep the yellow recording border visible."
         },
         {
-          "id": "recovery",
-          "text": "Controller recovery after forcibly terminating GameHQ during exclusive overlay input was not verified; normal overlay close and input return were tested."
-        },
-        {
-          "id": "notes-language",
-          "text": "The complete 0.7.8 release notes currently use an explicit English fallback in other interface languages."
+          "id": "fallback",
+          "text": "Where a localized 0.7.8 release note is unavailable, GameHQ falls back to English."
         }
       ]
     }

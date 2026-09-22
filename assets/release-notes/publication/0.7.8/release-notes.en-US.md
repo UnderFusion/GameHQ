@@ -1,73 +1,79 @@
 # GameHQ 0.7.8 (2026-09-22)
 
-## Controller & Input
+## Highlights
 
-- Improved controller identification and input routing when multiple devices or input providers are present, with more conservative handling of ambiguous device matches.
-- Standardized trigger, stick-click and other controller button handling across supported input providers so bindings behave more consistently.
-- Improved provider switching, reconnect cleanup and held-button tracking to reduce missed actions, duplicate actions and stuck input.
-- Fixed missed PS-button presses and delayed duplicate presses that could reopen the overlay immediately after closing it.
-- GameInput can continue handling ordinary controller input and overlay input isolation when optional Guide/Share support is unavailable, while existing button fallbacks remain usable.
-- The controller selected for editing in Settings stays selected when another controller or provider becomes active.
-
-## Mapping Presets
-
-- Added a mapping preset library with create, rename, duplicate, edit and delete controls alongside controller bindings.
-- Presets can be assigned to controllers and games, with explicit fallback choices and automatic selection for the running game.
-- Existing custom bindings are migrated into the preset system while preserving the original binding data for recovery.
-- Preset changes account for held controls and pending gestures, reducing accidental actions when switching mappings.
-- The interface distinguishes the assigned preset from the preset being edited, protects unfinished edits, and offers a separate copy for one controller.
-- Deleting an assigned preset requires a valid replacement or fallback, preventing broken assignments; shared preset changes are made clearer.
+- The overlay now works much more reliably over borderless games. It appears above the game, captures controller input for overlay navigation on supported GameInput paths, and the game stays visible. Confirmed with a wired DualSense in Indiana Jones and the Great Circle in Borderless mode.
+- Navigating the overlay no longer controls the game underneath on supported GameInput paths. Closing the overlay waits until you release any held buttons before giving the controller back to the game.
+- Replay clips are safer: quick repeated saves never overwrite an existing clip, and a clip can be saved right after recording starts.
+- New mapping presets: create, edit and assign controller layouts per controller and per game.
+- GameHQ remembers where you left off: the last page, Settings category, gallery filter and each game's overlay category.
 
 ## Overlay
 
-- The overlay can take controller focus while remaining above a visible borderless game. Native wired DualSense behavior has been confirmed in Indiana Jones and the Great Circle in Borderless mode.
-- On supported GameInput paths, navigating the overlay no longer simultaneously controls the game underneath.
-- Closing the overlay briefly waits for held controls to return to neutral before handing input back to the game, with a bounded wait if a control stays held.
-- Improved focus return and repeated open/close behavior, while respecting Alt-Tab and other deliberate switches to another application.
-- Improved handling of game window replacement, disappearance and temporary foreground changes, keeping the overlay tied to the correct game.
-- Bottom control hints now have a compact background that follows overlay dimming, and the currently running game highlights correctly during sidebar navigation.
-- Improved controller navigation across overlay menus, gallery and video playback, including clearer separation of navigation and capture shortcuts.
+- The overlay can take controller focus while staying above a visible borderless game, without minimizing it.
+- On supported GameInput paths, navigating the overlay no longer also controls the game.
+- When you close the overlay, it waits briefly for held buttons and sticks to return to rest before handing the controller back, so a held input doesn't carry into the game.
+- Opening and closing the overlay is faster and more reliable, and a quick repeated press no longer closes it right after it opens. Alt-Tab and other deliberate switches to another app are respected.
+- The overlay follows the correct game when the game recreates its window, loses its window or briefly loses focus. It closes cleanly when another app takes over.
+- The overlay reopens on the screenshot or clip you last selected. After a new capture it starts on the newest item.
+- Clips start playing in the overlay without the preview briefly disappearing.
+- The dimmed background now appears together with the overlay menus instead of fading in after them.
+- The control hints at the bottom now sit on a small background that follows your overlay dimming setting, so they stay readable over the game.
+- The game you're currently playing is now highlighted correctly when you move through the sidebar.
+- Controller navigation works better across overlay menus, the gallery and video playback, and navigation buttons are kept separate from capture shortcuts.
 
 ## Capture & Replay
 
-- Replay saves use the footage available so far, even before the configured buffer duration has elapsed or the first normal recording segment has finished.
-- Rapid saves receive unique filenames instead of overwriting an existing clip; failed exports preserve earlier clips and thumbnails stay paired with the correct file.
-- Replay exports retain the footage they need across game changes and buffer restarts, and GameHQ waits for an active export to finish safely on shutdown.
-- Replay status now reflects actual capture startup and usable footage, with clearer feedback for startup, empty-buffer and busy-export conditions.
-- Manual replay sessions survive recording-setting changes and overlapping HDR screenshots; an armed but unused manual session expires after an idle period.
-- Screenshot and replay requests receive prompt acknowledgement followed by a clear saved or failed result. Notifications update in place and the visible stack is limited.
-- Failed or skipped captures explain why, even when success notifications are disabled. Files saved to disk but not added to the library are reported accurately.
-- Replay thumbnail work no longer blocks the capture worker during a save, and concurrent screenshots more reliably create their destination folder.
-- Added a Windows capture-border preference with clearer permission and support reporting. Recording remains available when Windows cannot hide the border.
+- Quick repeated saves get unique filenames instead of overwriting an existing clip. A failed export never removes earlier clips, and thumbnails always match the right clip.
+- A replay save uses the footage recorded so far, even before the buffer duration you set has filled.
+- A replay export keeps the footage it needs when you switch games or the buffer restarts, and GameHQ waits for an active export to finish before shutting down.
+- Screenshots and replay saves are acknowledged immediately, then show a clear saved or failed result. Notifications update in place, and only a limited number are shown at once.
+- Failed or skipped captures now explain why, even with success notifications turned off.
+- The replay status now shows whether recording has really started and whether usable footage exists, with clear messages for starting, empty-buffer and export-in-progress states.
+- Manual replay sessions now survive settings changes and HDR screenshots taken at the same time. A manual session you start but never use turns off after a while.
+- Saving a replay no longer stalls capture while the thumbnail is created, and screenshots taken at the same time create their folder more reliably.
+- New option for the Windows yellow capture border, with clearer information about permission and system support. Recording still works when Windows can't hide the border.
 
-## UI, Settings & Sound
+## Controller & Input
 
-- The app restores the last normal page, Settings category and gallery filter; the overlay remembers its last category separately for each game.
-- Opening the gallery preserves its saved filter, invalid saved game filters fall back safely, and Settings categories remain stable when their order changes.
-- Window placement now supports monitors left of or above the primary display and brings fully off-screen windows back onto a connected display.
-- Added independent interface and overlay scaling from 100% to 200%, remembered across restarts, with improved small-window layout handling.
-- Fixed blank content and stacking problems during interface scaling, and improved menu visibility above the main content.
-- Capture confirmations are louder and more distinct, with a separate capture volume and sound preview. Interface and capture sound controls now support levels up to 300%.
-- Changing feedback, sound, notification, capture-border or manual-idle settings no longer unnecessarily discards the replay buffer.
-- Binding controls show the effective hold duration and explain how hold gestures are recognized.
+- More reliable controller detection and input routing when several controllers or input sources are connected.
+- Switching input sources, reconnecting controllers and tracking held buttons now avoid missed presses, doubled presses and stuck input.
+- Fixed PS-button presses that were missed, and delayed repeat presses that could reopen the overlay right after you closed it.
+- Triggers, stick clicks and other buttons now behave the same across supported input sources, so bindings act more predictably.
+- Controllers that use GameInput keep working normally, including overlay isolation, when Windows can't provide optional Guide/Share button support.
+- The controller you're editing in Settings stays selected when a different controller becomes active.
 
-## Localization & Updates
+## Mapping Presets
 
-- Expanded translations for capture feedback, border controls, sound settings, hold guidance, mapping presets and focus-related messages across the supported interface languages.
-- Available-update notes now follow the selected language, use an explicit English fallback when needed, and can restore previously fetched notes while offline.
-- Added an optional GitHub release link beneath upcoming update notes, accessible through controller navigation.
-- Improved release-note loading, safe text formatting and handling of stale language requests; displayed notes remain separate from update installation authorization.
+- New preset library for controller layouts, where you can create, rename, duplicate, edit and delete presets.
+- Presets can be assigned to controllers and games, with a fallback choice and automatic selection for the game you're running.
+- Your existing custom bindings move into the preset system automatically, and the original data is kept as a backup.
+- Switching presets takes held buttons and gestures in progress into account, so switching doesn't trigger actions by accident.
+- The interface separates the assigned preset from the one you're editing, protects unsaved edits, and lets you make a copy for a single controller.
+- Deleting a preset that's in use asks for a replacement or fallback first, and changes to shared presets are clearly marked.
 
-## Diagnostics & Reliability
+## Interface, Settings & Sound
 
-- Capture diagnostics follow each request through acceptance, export and completion, helping distinguish an unrecognized shortcut from a rejected save.
-- Copied diagnostics include the active controller bindings, preset selection, input-provider transitions and overlay focus/input state, with sensitive device identifiers sanitized.
-- Sound availability is checked when effects actually load, with a clear warning if an effect cannot be played.
+- GameHQ reopens on the last page, Settings category and gallery filter you used. The overlay remembers its last category separately for each game.
+- The window now restores correctly on monitors to the left of or above your main display. A window that would open fully off-screen is moved back onto a connected display.
+- The main window and overlay each have their own scaling, from 100% to 200%, remembered across restarts. Small windows lay out better.
+- Capture sounds are louder and more distinct, and have their own volume control and preview. Interface and capture volume can go up to 300%.
+- Changing notification, sound, capture-border or manual-session settings no longer throws away your replay buffer.
+- Opening the gallery keeps its saved filter. A saved filter for a game that no longer exists falls back safely. Settings categories stay put if their order changes.
+- Fixed blank content and stacking problems when changing interface scale, and menus now show above the main content.
+- Binding controls show how long a hold lasts and explain how hold gestures work.
+
+## Updates, Languages & Diagnostics
+
+- Update notes appear in your selected language, fall back to English when a translation isn't available, and remain readable offline once loaded.
+- Update notes can include an optional link to the GitHub release, which you can reach with a controller.
+- Translations have been extended across all supported languages for the new capture, sound, border, hold, preset and focus messages.
+- Copied diagnostics now include active bindings, preset selection, input-source changes and overlay focus state, with device identifiers anonymized.
+- Capture diagnostics follow each request from the button press to the saved file, which makes problems easier to track down. Sound problems are reported with a clear warning.
 
 ## Known Limitations
 
-- Controller isolation depends on the game and input path. Native wired DualSense/GameInput has strong practical evidence, but universal isolation is not claimed for XInput, Raw Input, direct HID, Steam Input or virtual-controller configurations.
-- DSX provider switching remains partially verified. Existing DSX setups remain user-managed; this release does not install or manage virtual-controller or device-hiding drivers.
-- Games may pause or react to losing focus, and Windows or another capture application may keep the recording border visible.
-- Controller recovery after forcibly terminating GameHQ during exclusive overlay input was not verified; normal overlay close and input return were tested.
-- The complete 0.7.8 release notes currently use an explicit English fallback in other interface languages.
+- Whether the overlay isolates the controller from the game depends on the game and how it reads the controller. A wired DualSense using GameInput is well tested. It isn't guaranteed for XInput, Raw Input, direct HID, Steam Input or virtual controllers.
+- Switching controllers with DSX running is only partly verified. DSX setups stay under your control; GameHQ doesn't install or manage virtual-controller or device-hiding drivers.
+- Some games pause or react when they lose focus. Windows or another capture app may keep the yellow recording border visible.
+- Where a localized 0.7.8 release note is unavailable, GameHQ falls back to English.

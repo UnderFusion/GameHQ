@@ -1,75 +1,79 @@
 # GameHQ 0.7.8 (2026-09-22)
 
-> This document is the original **English (en-US)** release note. No reviewed Chinese (Simplified) translation exists for this version, so the complete English text is published unchanged.
+## 亮点
 
-## Controller & Input
+- 叠加层在无边框游戏上的表现大幅提升：它会显示在游戏上方，在受支持的 GameInput 路径上接管手柄输入用于叠加层导航，同时游戏画面保持可见。已在 Indiana Jones and the Great Circle 的无边框模式下使用有线 DualSense 手柄验证。
+- 在受支持的 GameInput 路径上，操作叠加层时不会再同时控制下方的游戏。关闭叠加层时，会等你松开所有按住的按键后，再把手柄交还给游戏。
+- 回放片段更安全：快速连续保存绝不会覆盖已有片段，录制刚开始即可保存片段。
+- 新增映射预设：可按手柄和按游戏创建、编辑并分配手柄布局。
+- GameHQ 会记住你上次停留的位置：最后访问的页面、设置类别、图库筛选条件，以及每款游戏的叠加层类别。
 
-- Improved controller identification and input routing when multiple devices or input providers are present, with more conservative handling of ambiguous device matches.
-- Standardized trigger, stick-click and other controller button handling across supported input providers so bindings behave more consistently.
-- Improved provider switching, reconnect cleanup and held-button tracking to reduce missed actions, duplicate actions and stuck input.
-- Fixed missed PS-button presses and delayed duplicate presses that could reopen the overlay immediately after closing it.
-- GameInput can continue handling ordinary controller input and overlay input isolation when optional Guide/Share support is unavailable, while existing button fallbacks remain usable.
-- The controller selected for editing in Settings stays selected when another controller or provider becomes active.
+## 叠加层
 
-## Mapping Presets
+- 叠加层可以获取手柄焦点，同时保持显示在可见的无边框游戏上方，而不会将游戏最小化。
+- 在受支持的 GameInput 路径上，操作叠加层时不会再同时控制游戏。
+- 关闭叠加层时，它会短暂等待按住的按键松开、摇杆回到中位，然后再将手柄交还给游戏，避免按住的输入延续到游戏中。
+- 打开和关闭叠加层更快、更可靠，快速重复按键也不会再让叠加层刚打开就关闭。Alt-Tab 等主动切换到其他应用的操作会被正确遵循。
+- 当游戏重新创建窗口、丢失窗口或短暂失去焦点时，叠加层会继续跟随正确的游戏。其他应用接管前台时，叠加层会正常关闭。
+- 叠加层重新打开时会定位到你上次选中的截图或片段。有新的捕获内容后，则从最新一项开始。
+- 片段在叠加层中开始播放时，预览画面不会再短暂消失。
+- 变暗背景现在会与叠加层菜单同时出现，而不是在菜单之后才淡入。
+- 底部的操作提示现在带有一块小背景，并跟随叠加层变暗设置，因此在游戏画面上也清晰易读。
+- 在侧边栏中移动时，当前正在玩的游戏现在会被正确高亮显示。
+- 在叠加层菜单、图库和视频播放中使用手柄导航更加顺畅，导航按键也与捕获快捷键相互独立。
 
-- Added a mapping preset library with create, rename, duplicate, edit and delete controls alongside controller bindings.
-- Presets can be assigned to controllers and games, with explicit fallback choices and automatic selection for the running game.
-- Existing custom bindings are migrated into the preset system while preserving the original binding data for recovery.
-- Preset changes account for held controls and pending gestures, reducing accidental actions when switching mappings.
-- The interface distinguishes the assigned preset from the preset being edited, protects unfinished edits, and offers a separate copy for one controller.
-- Deleting an assigned preset requires a valid replacement or fallback, preventing broken assignments; shared preset changes are made clearer.
+## 捕获与回放
 
-## Overlay
+- 快速连续保存时会生成唯一的文件名，不会覆盖已有片段。导出失败绝不会删除之前的片段，缩略图也始终与对应的片段匹配。
+- 即使尚未录满你设置的缓冲时长，保存回放时也会使用目前已录制的画面。
+- 切换游戏或缓冲区重启时，回放导出会保留所需的画面；GameHQ 也会等待进行中的导出完成后再关闭。
+- 截图和回放保存会立即得到确认，随后清楚显示保存成功或失败的结果。通知会原地更新，且同时显示的数量有限。
+- 即使关闭了成功通知，捕获失败或被跳过时也会说明原因。
+- 回放状态现在会显示录制是否真正开始、是否已有可用画面，并针对正在启动、缓冲区为空和正在导出等状态给出清晰的提示。
+- 手动回放会话现在不会因设置更改或同时截取的 HDR 截图而中断。已启动但一直未使用的手动会话会在一段时间后自动关闭。
+- 保存回放时，生成缩略图不再导致捕获停顿；同时截取的屏幕截图也能更可靠地创建所需的文件夹。
+- 新增 Windows 黄色捕获边框选项，并更清楚地说明权限和系统支持情况。即使 Windows 无法隐藏边框，录制仍可正常进行。
 
-- The overlay can take controller focus while remaining above a visible borderless game. Native wired DualSense behavior has been confirmed in Indiana Jones and the Great Circle in Borderless mode.
-- On supported GameInput paths, navigating the overlay no longer simultaneously controls the game underneath.
-- Closing the overlay briefly waits for held controls to return to neutral before handing input back to the game, with a bounded wait if a control stays held.
-- Improved focus return and repeated open/close behavior, while respecting Alt-Tab and other deliberate switches to another application.
-- Improved handling of game window replacement, disappearance and temporary foreground changes, keeping the overlay tied to the correct game.
-- Bottom control hints now have a compact background that follows overlay dimming, and the currently running game highlights correctly during sidebar navigation.
-- Improved controller navigation across overlay menus, gallery and video playback, including clearer separation of navigation and capture shortcuts.
+## 手柄与输入
 
-## Capture & Replay
+- 连接多个手柄或输入源时，手柄识别和输入路由更加可靠。
+- 切换输入源、重新连接手柄以及跟踪按住的按键时，不再出现漏按、重复触发和输入卡住的问题。
+- 修复了 PS 键按下未被识别的问题，以及延迟的重复按键可能在你刚关闭叠加层后又将其重新打开的问题。
+- 扳机键、摇杆按下及其他按键在各个受支持的输入源上表现一致，绑定的行为更可预测。
+- 当 Windows 无法提供可选的 Guide/Share 按键支持时，使用 GameInput 的手柄仍可正常工作，包括叠加层输入隔离。
+- 当另一个手柄变为活动状态时，你在设置中正在编辑的手柄会保持选中。
 
-- Replay saves use the footage available so far, even before the configured buffer duration has elapsed or the first normal recording segment has finished.
-- Rapid saves receive unique filenames instead of overwriting an existing clip; failed exports preserve earlier clips and thumbnails stay paired with the correct file.
-- Replay exports retain the footage they need across game changes and buffer restarts, and GameHQ waits for an active export to finish safely on shutdown.
-- Replay status now reflects actual capture startup and usable footage, with clearer feedback for startup, empty-buffer and busy-export conditions.
-- Manual replay sessions survive recording-setting changes and overlapping HDR screenshots; an armed but unused manual session expires after an idle period.
-- Screenshot and replay requests receive prompt acknowledgement followed by a clear saved or failed result. Notifications update in place and the visible stack is limited.
-- Failed or skipped captures explain why, even when success notifications are disabled. Files saved to disk but not added to the library are reported accurately.
-- Replay thumbnail work no longer blocks the capture worker during a save, and concurrent screenshots more reliably create their destination folder.
-- Added a Windows capture-border preference with clearer permission and support reporting. Recording remains available when Windows cannot hide the border.
+## 映射预设
 
-## UI, Settings & Sound
+- 新增手柄布局预设库，可以创建、重命名、复制、编辑和删除预设。
+- 预设可分配给手柄和游戏，支持设置回退选项，并可为正在运行的游戏自动选择预设。
+- 现有的自定义绑定会自动迁移到预设系统，原始数据会保留作为备份。
+- 切换预设时会考虑正在按住的按键和进行中的手势，避免切换时意外触发操作。
+- 界面会区分已分配的预设与正在编辑的预设，保护未保存的编辑，并允许为单个手柄创建副本。
+- 删除正在使用的预设前，会先要求选择替代预设或回退选项；对共享预设的更改也会明确标示。
 
-- The app restores the last normal page, Settings category and gallery filter; the overlay remembers its last category separately for each game.
-- Opening the gallery preserves its saved filter, invalid saved game filters fall back safely, and Settings categories remain stable when their order changes.
-- Window placement now supports monitors left of or above the primary display and brings fully off-screen windows back onto a connected display.
-- Added independent interface and overlay scaling from 100% to 200%, remembered across restarts, with improved small-window layout handling.
-- Fixed blank content and stacking problems during interface scaling, and improved menu visibility above the main content.
-- Capture confirmations are louder and more distinct, with a separate capture volume and sound preview. Interface and capture sound controls now support levels up to 300%.
-- Changing feedback, sound, notification, capture-border or manual-idle settings no longer unnecessarily discards the replay buffer.
-- Binding controls show the effective hold duration and explain how hold gestures are recognized.
+## 界面、设置与声音
 
-## Localization & Updates
+- GameHQ 重新打开时会回到你上次使用的页面、设置类别和图库筛选条件。叠加层会为每款游戏分别记住上次的类别。
+- 在位于主显示器左侧或上方的显示器上，窗口现在能正确恢复。原本会完全在屏幕外打开的窗口会被移回到已连接的显示器上。
+- 主窗口和叠加层各自拥有独立的缩放比例，范围为 100% 至 200%，重启后仍会保留。小窗口的布局也更合理。
+- 捕获音效更响亮、更易分辨，并拥有独立的音量控制和试听功能。界面音量和捕获音量最高可调至 300%。
+- 更改通知、声音、捕获边框或手动会话设置时，不会再丢弃你的回放缓冲区。
+- 打开图库时会保留已保存的筛选条件。如果已保存的筛选条件对应的游戏已不存在，会安全地回退。设置类别的顺序发生变化时，当前类别也会保持不变。
+- 修复了更改界面缩放时内容空白和层叠错乱的问题，菜单现在会显示在主内容上方。
+- 绑定控件会显示长按的持续时间，并说明长按手势的工作方式。
 
-- Expanded translations for capture feedback, border controls, sound settings, hold guidance, mapping presets and focus-related messages across the supported interface languages.
-- Available-update notes now follow the selected language, use an explicit English fallback when needed, and can restore previously fetched notes while offline.
-- Added an optional GitHub release link beneath upcoming update notes, accessible through controller navigation.
-- Improved release-note loading, safe text formatting and handling of stale language requests; displayed notes remain separate from update installation authorization.
+## 更新、语言与诊断
 
-## Diagnostics & Reliability
+- 更新说明会以你所选的语言显示；没有译文时会回退为英文，加载后即使离线也能阅读。
+- 更新说明可以附带指向 GitHub 发布页面的可选链接，并可使用手柄打开。
+- 所有受支持的语言都已补充翻译，涵盖新的捕获、声音、边框、长按、预设和焦点相关消息。
+- 复制的诊断信息现在包含当前生效的绑定、预设选择、输入源变化和叠加层焦点状态，设备标识符会进行匿名化处理。
+- 捕获诊断会跟踪每个请求从按下按键到保存文件的全过程，便于排查问题。声音问题会以明确的警告报告。
 
-- Capture diagnostics follow each request through acceptance, export and completion, helping distinguish an unrecognized shortcut from a rejected save.
-- Copied diagnostics include the active controller bindings, preset selection, input-provider transitions and overlay focus/input state, with sensitive device identifiers sanitized.
-- Sound availability is checked when effects actually load, with a clear warning if an effect cannot be played.
+## 已知限制
 
-## Known Limitations
-
-- Controller isolation depends on the game and input path. Native wired DualSense/GameInput has strong practical evidence, but universal isolation is not claimed for XInput, Raw Input, direct HID, Steam Input or virtual-controller configurations.
-- DSX provider switching remains partially verified. Existing DSX setups remain user-managed; this release does not install or manage virtual-controller or device-hiding drivers.
-- Games may pause or react to losing focus, and Windows or another capture application may keep the recording border visible.
-- Controller recovery after forcibly terminating GameHQ during exclusive overlay input was not verified; normal overlay close and input return were tested.
-- The complete 0.7.8 release notes currently use an explicit English fallback in other interface languages.
+- 叠加层能否将手柄与游戏隔离，取决于游戏本身及其读取手柄的方式。通过 GameInput 连接的有线 DualSense 已经过充分测试。对于 XInput、Raw Input、直接 HID、Steam Input 或虚拟手柄，则无法保证。
+- 在 DSX 运行时切换手柄仅经过部分验证。DSX 的配置仍由你自行掌控；GameHQ 不会安装或管理虚拟手柄驱动或设备隐藏驱动。
+- 部分游戏在失去焦点时会暂停或作出反应。Windows 或其他捕获应用可能会使黄色录制边框保持可见。
+- 如果没有 0.7.8 的本地化更新说明，GameHQ 会回退显示英文版本。
