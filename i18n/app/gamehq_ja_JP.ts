@@ -96,7 +96,7 @@
       <location filename="src/ui/qml/components/BindingCompatibilityDialog.qml" line="19"></location>
       <location filename="src/ui/qml/components/BindingConflictDialog.qml" line="25"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="14"></location>
-      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="33"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="35"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
@@ -109,7 +109,7 @@
       <location filename="src/ui/qml/Main.qml" line="1087"></location>
       <location filename="src/ui/qml/Main.qml" line="1104"></location>
       <location filename="src/ui/qml/Main.qml" line="1140"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="489"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="525"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -955,7 +955,7 @@
       <translation>別のポータブルプロファイルのインポートが既に実行中です。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="609"></location>
+      <location filename="src/app/App.cpp" line="658"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>キャプチャ処理が時間内に安全に完了しなかったため、更新をキャンセルしました。</translation>
     </message>
@@ -1206,7 +1206,7 @@
       <translation>GameHQ は更新トランザクションを公開できませんでした。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="584"></location>
+      <location filename="src/app/App.cpp" line="633"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ は更新メンテナンスを開始できませんでした：%1</translation>
     </message>
@@ -1317,7 +1317,7 @@
     <message id="gamehq.format.version_short">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="99"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="105"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="118"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="117"></location>
       <source>v%1</source>
       <translation>v%1</translation>
     </message>
@@ -1353,7 +1353,7 @@ This permanently deletes the file.</source>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1085"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="487"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="523"></location>
       <source>Delete capture?</source>
       <translation>キャプチャを削除しますか？</translation>
     </message>
@@ -2111,82 +2111,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ を支援</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="434"></location>
+      <location filename="src/app/App.cpp" line="478"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>一部のファイルを削除できませんでした。別のプログラムで使用中の可能性があります。これらのファイルを使用しているプログラムを閉じて、もう一度お試しください。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="441"></location>
+      <location filename="src/app/App.cpp" line="485"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>ファイルを削除できませんでした。別のプログラムで使用中の可能性があります。そのファイルを使用しているプログラムを閉じて、もう一度お試しください。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="447"></location>
+      <location filename="src/app/App.cpp" line="491"></location>
       <source>Couldn't delete</source>
       <translation>削除できませんでした</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="240"></location>
+      <location filename="src/app/App.cpp" line="284"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>ライブラリに追加されず、ファイルもディスク上にありません。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="234"></location>
+      <location filename="src/app/App.cpp" line="278"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>ファイルはキャプチャフォルダーにありますが、ライブラリに追加できませんでした。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="224"></location>
+      <location filename="src/app/App.cpp" line="268"></location>
       <source>Saved to disk, not in library</source>
       <translation>ディスクに保存、ライブラリには未登録</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="346"></location>
+      <location filename="src/app/App.cpp" line="390"></location>
       <source>Capture request received</source>
       <translation>キャプチャのリクエストを受信しました</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="409"></location>
+      <location filename="src/app/App.cpp" line="453"></location>
       <source>Reason: %1</source>
       <translation>理由：%1</translation>
     </message>
+    <message id="gamehq.notification.replay_failed.reason_buffer_failed">
+      <location filename="src/app/App.cpp" line="71"></location>
+      <source>Replay buffer failed; no clip was saved</source>
+      <translation>リプレイバッファでエラーが発生したため、クリップは保存されませんでした</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason_collecting">
+      <location filename="src/app/App.cpp" line="65"></location>
+      <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
+      <translation>リプレイバッファが映像を収集しています。数秒後にもう一度保存してください</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason_empty">
+      <location filename="src/app/App.cpp" line="83"></location>
+      <source>Replay buffer is empty</source>
+      <translation>リプレイバッファが空です</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason_not_running">
+      <location filename="src/app/App.cpp" line="77"></location>
+      <source>Replay buffer is not running</source>
+      <translation>リプレイバッファが実行されていません</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason_starting">
+      <location filename="src/app/App.cpp" line="59"></location>
+      <source>Replay buffer is starting; try saving again in a few seconds</source>
+      <translation>リプレイバッファを開始しています。数秒後にもう一度保存してください</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="256"></location>
+      <location filename="src/app/App.cpp" line="300"></location>
       <source>Replay failed</source>
       <translation>リプレイに失敗しました</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="341"></location>
+      <location filename="src/app/App.cpp" line="385"></location>
       <source>Replay save requested</source>
       <translation>リプレイの保存をリクエストしました</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="390"></location>
+      <location filename="src/app/App.cpp" line="434"></location>
       <source>Replay saved</source>
       <translation>リプレイを保存しました</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="249"></location>
+      <location filename="src/app/App.cpp" line="293"></location>
       <source>Screenshot failed</source>
       <translation>スクリーンショットに失敗しました</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="291"></location>
+      <location filename="src/app/App.cpp" line="335"></location>
       <source>Screenshot saved</source>
       <translation>スクリーンショットを保存しました</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="487"></location>
+      <location filename="src/app/App.cpp" line="536"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ は既定の設定で起動しました。以前の設定ファイルは保持されているため、失われたものはありません。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="482"></location>
+      <location filename="src/app/App.cpp" line="531"></location>
       <source>Settings could not be read</source>
       <translation>設定を読み取れませんでした</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="651"></location>
+      <location filename="src/app/App.cpp" line="700"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>一部のインターフェース音を利用できません</translation>
     </message>
@@ -2201,42 +2226,42 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>キャプチャ操作</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="126"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="131"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>ゲームにフォーカスがあるため、コントローラー入力に反応する場合があります。</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="52"></location>
       <source>L1/R1 — captures | D-pad Up/Down — categories/games | Cross — open | Triangle — favorite | Square — menu | Circle — back to game</source>
       <translation>L1/R1 — キャプチャ | 方向キー上下 — カテゴリ／ゲーム | × — 開く | △ — お気に入り | □ — メニュー | ○ — ゲームへ戻る</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="43"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="58"></location>
       <source>Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
       <translation>上下 — カテゴリ／ゲーム | Enter — 開く | F — お気に入り | M — メニュー | Esc — ゲームへ戻る</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="22"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>
       <source>D-pad Up/Down — choose | Cross — confirm | Circle — close menu</source>
       <translation>方向キー上下 — 選択 | × — 決定 | ○ — メニューを閉じる</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="25"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="40"></location>
       <source>Up/Down — choose | Enter — confirm | Esc/Backspace — close menu</source>
       <translation>上下 — 選択 | Enter — 決定 | Esc/Backspace — メニューを閉じる</translation>
     </message>
     <message id="gamehq.overlay.hint.video.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="30"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="45"></location>
       <source>D-pad Left/Right — scrub | Cross — play/pause | Circle — back to captures</source>
       <translation>方向キー左右 — シーク | × — 再生／一時停止 | ○ — キャプチャへ戻る</translation>
     </message>
     <message id="gamehq.overlay.hint.video.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="33"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="48"></location>
       <source>Left/Right — scrub clip | Enter — play/pause | Esc/Backspace — back to captures</source>
       <translation>左右 — クリップをシーク | Enter — 再生／一時停止 | Esc/Backspace — キャプチャへ戻る</translation>
     </message>
     <message id="gamehq.overlay.window_title">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="45"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="48"></location>
       <source>%1 Overlay</source>
       <translation>%1 オーバーレイ</translation>
     </message>
@@ -3716,90 +3741,94 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>このポータブルプロファイルをインポートしますか？</translation>
     </message>
     <message id="gamehq.settings.presets.action.assign_to_device">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="404"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="432"></location>
       <source>Assign to this device</source>
       <translation>このデバイスに割り当てる</translation>
     </message>
     <message id="gamehq.settings.presets.action.delete">
-      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="31"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="33"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="508"></location>
       <source>Delete</source>
       <translation>削除</translation>
     </message>
     <message id="gamehq.settings.presets.action.duplicate">
-      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="29"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="31"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="506"></location>
       <source>Duplicate</source>
       <translation>複製</translation>
     </message>
     <message id="gamehq.settings.presets.action.more">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="460"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="493"></location>
       <source>More actions</source>
       <translation>その他の操作</translation>
     </message>
     <message id="gamehq.settings.presets.action.new">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="453"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="481"></location>
       <source>New preset</source>
       <oldsource>New</oldsource>
       <translation>新規プリセット</translation>
     </message>
     <message id="gamehq.settings.presets.action.rename">
-      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="27"></location>
+      <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="29"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="504"></location>
       <source>Rename</source>
       <translation>名前を変更</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.builtin">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="60"></location>
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="118"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="72"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="130"></location>
       <source>Built-in defaults</source>
       <translation>組み込みの既定値</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.builtin_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="256"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="268"></location>
       <source>Built-in defaults replace every other layer for this device.</source>
       <translation>組み込みの既定値は、このデバイスの他のすべての階層を置き換えます。</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.fallback">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="55"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="67"></location>
       <source>Follow fallback (no preset)</source>
       <translation>フォールバックに従う（プリセットなし）</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.fallback_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="252"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="264"></location>
       <source>No preset is assigned: this device follows the fallback chain.</source>
       <translation>プリセットが割り当てられていません。このデバイスはフォールバックチェーンに従います。</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="239"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="254"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="362"></location>
       <source>Assigned preset</source>
       <oldsource>Mappings used by this device</oldsource>
       <translation>割り当てられたプリセット</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.missing_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="260"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="272"></location>
       <source>The assigned preset no longer exists. Choose another one.</source>
       <translation>割り当てられたプリセットはもう存在しません。別のプリセットを選択してください。</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.preset_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="263"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="275"></location>
       <source>This device uses the preset "%1".</source>
       <translation>このデバイスはプリセット「%1」を使用します。</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.unavailable_unknown">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="142"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="154"></location>
       <source>Choose the controller to edit before saving a per-controller preset.</source>
       <translation>コントローラーごとのプリセットを保存する前に、編集するコントローラーを選択してください。</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.unavailable_weak">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="139"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="151"></location>
       <source>This controller has no stable identity yet, so a per-controller preset cannot be saved. Connect it again or edit all controllers.</source>
       <translation>このコントローラーにはまだ安定した識別情報がないため、コントローラーごとのプリセットを保存できません。再接続するか、すべてのコントローラーを編集してください。</translation>
     </message>
     <message id="gamehq.settings.presets.badge.shared">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="360"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="384"></location>
       <source>Shared</source>
       <translation>共有</translation>
     </message>
     <message id="gamehq.settings.presets.badge.this_device">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="242"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="257"></location>
       <source>Used by this device</source>
       <translation>このデバイスで使用中</translation>
     </message>
@@ -3839,7 +3868,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>プリセットを削除</translation>
     </message>
     <message id="gamehq.settings.presets.description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="30"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="32"></location>
       <source>Presets are reusable mapping profiles. A device or game can be assigned to a preset.</source>
       <oldsource>Presets are global: a game never owns mappings, it only has an assignment.</oldsource>
       <translation>プリセットは再利用できるマッピングプロファイルです。デバイスやゲームにプリセットを割り当てられます。</translation>
@@ -3865,77 +3894,78 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>このコントローラー用に複製</translation>
     </message>
     <message id="gamehq.settings.presets.editing.helper">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="376"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="400"></location>
       <source>Changes below will be saved to this preset.</source>
       <translation>下の変更はこのプリセットに保存されます。</translation>
     </message>
     <message id="gamehq.settings.presets.editing.unassigned">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="401"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="429"></location>
       <source>This preset is not assigned to this device yet.</source>
       <translation>このプリセットはまだこのデバイスに割り当てられていません。</translation>
     </message>
     <message id="gamehq.settings.presets.eyebrow">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="26"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="28"></location>
       <source>Mappings</source>
       <translation>マッピング</translation>
     </message>
     <message id="gamehq.settings.presets.game.builtin_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="311"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="326"></location>
       <source>Built-in defaults replace every other layer while "%1" is running.</source>
       <translation>組み込みの既定値は、「%1」の実行中に他のすべての階層を置き換えます。</translation>
     </message>
     <message id="gamehq.settings.presets.game.fallback">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="113"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="125"></location>
       <source>Follow the chain below the game</source>
       <translation>ゲームより下のチェーンに従う</translation>
     </message>
     <message id="gamehq.settings.presets.game.fallback_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="306"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="321"></location>
       <source>No preset is assigned to "%1": it follows this device's mappings.</source>
       <translation>「%1」にはプリセットが割り当てられていません。このデバイスのマッピングに従います。</translation>
     </message>
     <message id="gamehq.settings.presets.game.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="289"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="304"></location>
       <source>Mappings used by this game</source>
       <translation>このゲームが使用するマッピング</translation>
     </message>
     <message id="gamehq.settings.presets.game.missing_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="316"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="331"></location>
       <source>The preset assigned to this game no longer exists. Choose another one.</source>
       <translation>このゲームに割り当てられたプリセットはもう存在しません。別のプリセットを選択してください。</translation>
     </message>
     <message id="gamehq.settings.presets.game.missing_option">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="141"></location>
       <source>%1 (not in this group)</source>
       <translation>%1（このグループにはありません）</translation>
     </message>
     <message id="gamehq.settings.presets.game.preset_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="323"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="338"></location>
       <source>"%1" uses the preset "%2" while it is running.</source>
       <translation>「%1」は実行中にプリセット「%2」を使用します。</translation>
     </message>
     <message id="gamehq.settings.presets.game.wrong_group_description">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="320"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="335"></location>
       <source>The preset assigned to this game is for a different device type. Choose another one.</source>
       <translation>このゲームに割り当てられたプリセットは別の種類のデバイス用です。別のプリセットを選択してください。</translation>
     </message>
     <message id="gamehq.settings.presets.library.empty">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="444"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="393"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="471"></location>
       <source>Create a preset to save a custom mapping set.</source>
       <translation>カスタムマッピングセットを保存するには、プリセットを作成してください。</translation>
     </message>
     <message id="gamehq.settings.presets.library.helper">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="436"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="474"></location>
       <source>Create and manage reusable presets.</source>
       <translation>再利用できるプリセットを作成して管理します。</translation>
     </message>
     <message id="gamehq.settings.presets.library.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="434"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="466"></location>
       <source>Preset library</source>
       <translation>プリセットライブラリ</translation>
     </message>
     <message id="gamehq.settings.presets.library.pending_edit">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="373"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="397"></location>
       <source>Finish or cancel the current edit before changing presets.</source>
       <translation>プリセットを切り替える前に、進行中の編集を完了するか取り消してください。</translation>
     </message>
@@ -4000,7 +4030,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>新しいプリセットの名前を入力してください。</translation>
     </message>
     <message id="gamehq.settings.presets.notice.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="478"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="529"></location>
       <source>Preset</source>
       <translation>プリセット</translation>
     </message>
@@ -4055,7 +4085,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation type="vanished">このデバイスが使用しているため、エディターの変更はここに保存されます。</translation>
     </message>
     <message id="gamehq.settings.presets.select.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="358"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="382"></location>
       <source>Editing preset</source>
       <oldsource>Preset</oldsource>
       <translation>編集中のプリセット</translation>
@@ -4066,32 +4096,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation type="vanished">名前の変更、複製、削除の対象として選択されています。エディターの保存先は、このデバイスが使用するプリセットのままです。</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.both">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="151"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="163"></location>
       <source>Used by %1 target(s) and %2 game(s). Editing it changes all of them.</source>
       <translation>%1 件の対象と %2 件のゲームで使用されています。編集するとすべてに反映されます。</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.duplicate">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="419"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="448"></location>
       <source>Duplicate for this controller</source>
       <translation>このコントローラー用に複製</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.games">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="155"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="167"></location>
       <source>Used by %1 game(s). Editing it changes all of them.</source>
       <translation>%1 件のゲームで使用されています。編集するとすべてに反映されます。</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.label">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="415"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="444"></location>
       <source>Shared preset</source>
       <translation>共有プリセット</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.targets">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="158"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="170"></location>
       <source>Used by %1 target(s). Editing it changes all of them, or duplicate it for this controller.</source>
       <translation>%1 件の対象で使用されています。編集するとすべてに反映されます。このコントローラー用に複製することもできます。</translation>
     </message>
     <message id="gamehq.settings.presets.title">
-      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="28"></location>
+      <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="30"></location>
       <source>Mapping presets</source>
       <translation>マッピングプリセット</translation>
     </message>

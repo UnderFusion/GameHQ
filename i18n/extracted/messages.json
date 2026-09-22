@@ -355,7 +355,7 @@
         },
         {
           "file": "src/ui/qml/components/MappingPresetActionsDialog.qml",
-          "line": 33
+          "line": 35
         },
         {
           "file": "src/ui/qml/components/MappingPresetDeleteDialog.qml",
@@ -404,7 +404,7 @@
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 489
+          "line": 525
         },
         {
           "file": "src/ui/qml/components/ConfirmDialog.qml",
@@ -3369,7 +3369,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 609
+          "line": 658
         }
       ],
       "plural": false,
@@ -4279,7 +4279,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 584
+          "line": 633
         }
       ],
       "plural": false,
@@ -4686,7 +4686,7 @@
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
-          "line": 118
+          "line": 117
         }
       ],
       "plural": false,
@@ -4812,7 +4812,7 @@
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 487
+          "line": 523
         }
       ],
       "plural": false,
@@ -7422,7 +7422,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 434
+          "line": 478
         }
       ],
       "plural": false,
@@ -7439,7 +7439,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 441
+          "line": 485
         }
       ],
       "plural": false,
@@ -7456,7 +7456,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 447
+          "line": 491
         }
       ],
       "plural": false,
@@ -7473,7 +7473,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 240
+          "line": 284
         }
       ],
       "plural": false,
@@ -7490,7 +7490,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 234
+          "line": 278
         }
       ],
       "plural": false,
@@ -7507,7 +7507,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 224
+          "line": 268
         }
       ],
       "plural": false,
@@ -7524,7 +7524,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 346
+          "line": 390
         }
       ],
       "plural": false,
@@ -7541,7 +7541,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 409
+          "line": 453
         }
       ],
       "plural": false,
@@ -7553,6 +7553,91 @@
       "source_hash": "a5cadb8e899f7085ce4c5d89a59153e9260d60a119c1cb944889bfda65a3de2d"
     },
     {
+      "id": "gamehq.notification.replay_failed.reason_buffer_failed",
+      "source": "Replay buffer failed; no clip was saved",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 71
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "dc859d868d5b382daeb3213ecc28d0fe5473b37463b7a4aeb3172d5dcb154dbe"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_collecting",
+      "source": "Replay buffer is collecting footage; try saving again in a few seconds",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 65
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "91d2dfd1bd809733d933cc096f08b1bf0703faa6b4cb6e6ea03b405792e995b3"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_empty",
+      "source": "Replay buffer is empty",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 83
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6ae16902e0117b3d363219386368e72ecff2301942819100b62b8ff66d6af182"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_not_running",
+      "source": "Replay buffer is not running",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 77
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6c6956d0e486f5f8991e45a9da1dd1bb451ef4fffe8a14c322686e85113a0080"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_starting",
+      "source": "Replay buffer is starting; try saving again in a few seconds",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 59
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "31ad76835b430f39144432cd0679793eec93a84118095c13d3ea858874b0b9c6"
+    },
+    {
       "id": "gamehq.notification.replay_failed.title",
       "source": "Replay failed",
       "context": "ID",
@@ -7560,7 +7645,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 256
+          "line": 300
         }
       ],
       "plural": false,
@@ -7577,7 +7662,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 341
+          "line": 385
         }
       ],
       "plural": false,
@@ -7594,7 +7679,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 390
+          "line": 434
         }
       ],
       "plural": false,
@@ -7611,7 +7696,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 249
+          "line": 293
         }
       ],
       "plural": false,
@@ -7628,7 +7713,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 291
+          "line": 335
         }
       ],
       "plural": false,
@@ -7645,7 +7730,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 487
+          "line": 536
         }
       ],
       "plural": false,
@@ -7664,7 +7749,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 482
+          "line": 531
         }
       ],
       "plural": false,
@@ -7681,7 +7766,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 651
+          "line": 700
         }
       ],
       "plural": false,
@@ -7734,7 +7819,7 @@
       "locations": [
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 126
+          "line": 131
         }
       ],
       "plural": false,
@@ -7751,7 +7836,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 37
+          "line": 52
         }
       ],
       "plural": false,
@@ -7768,7 +7853,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 43
+          "line": 58
         }
       ],
       "plural": false,
@@ -7785,7 +7870,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 22
+          "line": 37
         }
       ],
       "plural": false,
@@ -7802,7 +7887,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 25
+          "line": 40
         }
       ],
       "plural": false,
@@ -7819,7 +7904,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 30
+          "line": 45
         }
       ],
       "plural": false,
@@ -7836,7 +7921,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 33
+          "line": 48
         }
       ],
       "plural": false,
@@ -7853,7 +7938,7 @@
       "locations": [
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 45
+          "line": 48
         }
       ],
       "plural": false,
@@ -12960,7 +13045,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 404
+          "line": 432
         }
       ],
       "plural": false,
@@ -12977,7 +13062,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/MappingPresetActionsDialog.qml",
-          "line": 31
+          "line": 33
+        },
+        {
+          "file": "src/ui/qml/settings/MappingPresetSection.qml",
+          "line": 508
         }
       ],
       "plural": false,
@@ -12994,7 +13083,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/MappingPresetActionsDialog.qml",
-          "line": 29
+          "line": 31
+        },
+        {
+          "file": "src/ui/qml/settings/MappingPresetSection.qml",
+          "line": 506
         }
       ],
       "plural": false,
@@ -13011,7 +13104,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 460
+          "line": 493
         }
       ],
       "plural": false,
@@ -13028,7 +13121,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 453
+          "line": 481
         }
       ],
       "plural": false,
@@ -13045,7 +13138,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/MappingPresetActionsDialog.qml",
-          "line": 27
+          "line": 29
+        },
+        {
+          "file": "src/ui/qml/settings/MappingPresetSection.qml",
+          "line": 504
         }
       ],
       "plural": false,
@@ -13062,11 +13159,11 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 60
+          "line": 72
         },
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 118
+          "line": 130
         }
       ],
       "plural": false,
@@ -13083,7 +13180,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 256
+          "line": 268
         }
       ],
       "plural": false,
@@ -13100,7 +13197,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 55
+          "line": 67
         }
       ],
       "plural": false,
@@ -13117,7 +13214,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 252
+          "line": 264
         }
       ],
       "plural": false,
@@ -13134,7 +13231,11 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 239
+          "line": 254
+        },
+        {
+          "file": "src/ui/qml/settings/MappingPresetSection.qml",
+          "line": 362
         }
       ],
       "plural": false,
@@ -13151,7 +13252,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 260
+          "line": 272
         }
       ],
       "plural": false,
@@ -13168,7 +13269,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 263
+          "line": 275
         }
       ],
       "plural": false,
@@ -13187,7 +13288,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 142
+          "line": 154
         }
       ],
       "plural": false,
@@ -13204,7 +13305,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 139
+          "line": 151
         }
       ],
       "plural": false,
@@ -13221,7 +13322,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 360
+          "line": 384
         }
       ],
       "plural": false,
@@ -13238,7 +13339,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 242
+          "line": 257
         }
       ],
       "plural": false,
@@ -13378,7 +13479,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 30
+          "line": 32
         }
       ],
       "plural": false,
@@ -13463,7 +13564,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 376
+          "line": 400
         }
       ],
       "plural": false,
@@ -13480,7 +13581,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 401
+          "line": 429
         }
       ],
       "plural": false,
@@ -13497,7 +13598,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 26
+          "line": 28
         }
       ],
       "plural": false,
@@ -13514,7 +13615,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 311
+          "line": 326
         }
       ],
       "plural": false,
@@ -13533,7 +13634,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 113
+          "line": 125
         }
       ],
       "plural": false,
@@ -13550,7 +13651,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 306
+          "line": 321
         }
       ],
       "plural": false,
@@ -13569,7 +13670,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 289
+          "line": 304
         }
       ],
       "plural": false,
@@ -13586,7 +13687,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 316
+          "line": 331
         }
       ],
       "plural": false,
@@ -13603,7 +13704,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 129
+          "line": 141
         }
       ],
       "plural": false,
@@ -13622,7 +13723,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 323
+          "line": 338
         }
       ],
       "plural": false,
@@ -13642,7 +13743,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 320
+          "line": 335
         }
       ],
       "plural": false,
@@ -13659,7 +13760,11 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 444
+          "line": 393
+        },
+        {
+          "file": "src/ui/qml/settings/MappingPresetSection.qml",
+          "line": 471
         }
       ],
       "plural": false,
@@ -13676,7 +13781,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 436
+          "line": 474
         }
       ],
       "plural": false,
@@ -13693,7 +13798,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 434
+          "line": 466
         }
       ],
       "plural": false,
@@ -13710,7 +13815,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 373
+          "line": 397
         }
       ],
       "plural": false,
@@ -13933,7 +14038,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 478
+          "line": 529
         }
       ],
       "plural": false,
@@ -14103,7 +14208,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 358
+          "line": 382
         }
       ],
       "plural": false,
@@ -14120,7 +14225,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 151
+          "line": 163
         }
       ],
       "plural": false,
@@ -14140,7 +14245,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 419
+          "line": 448
         }
       ],
       "plural": false,
@@ -14157,7 +14262,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 155
+          "line": 167
         }
       ],
       "plural": false,
@@ -14176,7 +14281,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 415
+          "line": 444
         }
       ],
       "plural": false,
@@ -14193,7 +14298,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 158
+          "line": 170
         }
       ],
       "plural": false,
@@ -14212,7 +14317,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/MappingPresetSection.qml",
-          "line": 28
+          "line": 30
         }
       ],
       "plural": false,

@@ -499,9 +499,14 @@ SettingsSection {
                     }
                     Text {
                         width: moreButton.width
-                        text: [qsTrId("gamehq.settings.presets.action.rename"),
-                               qsTrId("gamehq.settings.presets.action.duplicate"),
-                               qsTrId("gamehq.settings.presets.action.delete")].join(" · ")
+                        text: [
+                            //% "Rename"
+                            qsTrId("gamehq.settings.presets.action.rename"),
+                            //% "Duplicate"
+                            qsTrId("gamehq.settings.presets.action.duplicate"),
+                            //% "Delete"
+                            qsTrId("gamehq.settings.presets.action.delete")
+                        ].join(" · ")
                         color: Theme.textMuted
                         font.family: Theme.fontFamily
                         font.pixelSize: Theme.fontCaption

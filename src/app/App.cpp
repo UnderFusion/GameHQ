@@ -2,6 +2,7 @@
 #include "app/StartupManager.h"
 #include "config/ConfigKeys.h"
 #include "capture/FramePumpService.h"
+#include "capture/ReplayBufferState.h"
 #include "capture/ScreenshotService.h"
 #include "config/CaptureLocations.h"
 #include "config/Paths.h"
@@ -43,6 +44,48 @@
 #include <qqml.h>
 #include <QQuickWindow>
 #include <QTimer>
+
+namespace {
+
+// Replay buffer rejections tell the user what to do next, so the toast shows
+// them in the interface language. The English text stays the signal payload so
+// logs and diagnostics keep one grammar; other technical reasons pass through.
+QString localizedReplayReason(const QString& reason)
+{
+    if (reason == ReplayBufferState::saveRejection(ReplayBufferState::Starting))
+        return NativeText::get(
+            //: Replay failure reason: the replay buffer has just been started.
+            //% "Replay buffer is starting; try saving again in a few seconds"
+            QT_TRID_NOOP("gamehq.notification.replay_failed.reason_starting"),
+            "Replay buffer is starting; try saving again in a few seconds");
+    if (reason == ReplayBufferState::saveRejection(ReplayBufferState::Recording))
+        return NativeText::get(
+            //: Replay failure reason: recording runs but no usable footage exists yet.
+            //% "Replay buffer is collecting footage; try saving again in a few seconds"
+            QT_TRID_NOOP("gamehq.notification.replay_failed.reason_collecting"),
+            "Replay buffer is collecting footage; try saving again in a few seconds");
+    if (reason == ReplayBufferState::saveRejection(ReplayBufferState::Failed))
+        return NativeText::get(
+            //: Replay failure reason: the replay buffer stopped with an error.
+            //% "Replay buffer failed; no clip was saved"
+            QT_TRID_NOOP("gamehq.notification.replay_failed.reason_buffer_failed"),
+            "Replay buffer failed; no clip was saved");
+    if (reason == ReplayBufferState::saveRejection(ReplayBufferState::Stopped))
+        return NativeText::get(
+            //: Replay failure reason: the replay buffer is turned off.
+            //% "Replay buffer is not running"
+            QT_TRID_NOOP("gamehq.notification.replay_failed.reason_not_running"),
+            "Replay buffer is not running");
+    if (reason == QStringLiteral("Replay buffer is empty"))
+        return NativeText::get(
+            //: Replay failure reason: the replay buffer holds no footage yet.
+            //% "Replay buffer is empty"
+            QT_TRID_NOOP("gamehq.notification.replay_failed.reason_empty"),
+            "Replay buffer is empty");
+    return reason;
+}
+
+} // namespace
 
 App::App(QObject* parent)
     : QObject(parent)
@@ -408,7 +451,7 @@ bool App::init()
                               //: Replay failure detail; %1 is the unchanged technical reason.
                               //% "Reason: %1"
                               QT_TRID_NOOP("gamehq.notification.replay_failed.reason"),
-                              "Reason: %1").arg(reason);
+                              "Reason: %1").arg(localizedReplayReason(reason));
                     postCaptureOutcome(operationId, replayFailedTitle(), body, QString(),
                                        QStringLiteral("error"), QDateTime::currentDateTime(), false);
                 }
