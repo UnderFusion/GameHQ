@@ -7,7 +7,7 @@
 - PS, `Ctrl+Shift+G`, or the Share double-tap fallback toggles the overlay.
 - Opening remembers the foreground game — its window **and its process id** — and shows a frameless, topmost tool window on the game's monitor without activating it.
 - **The overlay then asks for the foreground (`cpo-o06b`).** Presentation stays non-activating; one explicit, bounded request (1 attempt + 2 retries, never a timer or frame loop) follows it, so the overlay becomes the active window and the keyboard and controller drive the overlay. The game window is never minimised, restored or restyled, and nothing is injected into it. A game that takes the foreground back keeps it — GameHQ does not fight for it. When Windows denies the request the overlay stays exactly as presentation left it: visible, topmost and non-activating, with the in-overlay warning still up. Closing hands the foreground back to the remembered game, but only when the overlay is the window still holding it.
-- Owning the foreground is **not** isolation. GameHQ routes its controller events by overlay visibility, independently of OS focus, and a game that reads the controller in the background can still receive it; measuring that needs a separate receiver process (`cpo-o06d`), and asking Windows for exclusive controller input is `cpo-o06c`. GameHQ never suppresses or injects input — the game keeps seeing every button its own input path delivers — and the rules below decide only what *GameHQ* fires for a press. The in-overlay focus warning is driven by the acquirer's verified result, so it disappears only when the overlay really did take the foreground.
+- Owning the foreground is **not** isolation by itself, and GameHQ never suppresses or injects input of its own. What narrows the pad is a second, separate step (`cpo-o06c`): while the overlay holds the *verified interactive* foreground, GameHQ asks GameInput for the exclusive-foreground policy, and `cpo-o06e` waits for the pad to be physically neutral before that policy is released. A game that reads the pad through the same GameInput mechanism stops receiving it for that interval; a game that reads through another input path can still be receiving it, and the rules below decide only what *GameHQ* fires for a press. What is verified, what is not, and how the one-line record states its own position (`isolation=<level>`) is written down in **Controller isolation: what is verified, and what is not** below. The in-overlay focus warning is driven by the acquirer's verified result, so it disappears only when the overlay really did take the foreground.
 - **Input delivery (one press, one GameHQ action).** The arbitration is pure and shared: `src/input/OverlayInputPolicy.{h,cpp}` decides the active scope, `BindingResolver::matching()` and `InputEngine` are its only callers, and `tests/tst_overlayinput.cpp` audits the shipped table (`src/input/DefaultBindings.cpp`). While the overlay is visible the primary scope is Overlay: PS tap / `Ctrl+Shift+G` → `global.toggle_overlay`; Circle → `overlay.back`; Cross → `overlay.confirm`; D-pad and the left stick → `overlay.navigate_*`; Square/Triangle/Options → `overlay.menu` / `overlay.favorite` / `overlay.sidebar_toggle`; L1/R1 → `overlay.game_prev` / `overlay.game_next` (the only capture switch). Pad or arrow-key left/right is seek-only: it never flips the strip and is a no-op unless a clip is focused. Every `desktop.*` and `playback.*` binding is inert in that scope, so a shipped trigger+gesture never delivers two actions. Globals (screenshot, replay, the two toggles) stay live in every context and are dropped only by a substitution declared in `ContextOverrideCatalog` (the playback frame grab); a user-created second binding on the same trigger stays an editor-visible overlap, never a silent double delivery.
 - Circle goes back in submenus/viewers and closes from the gallery. Closing hides the overlay and, when the overlay holds the foreground, hands it back to the remembered game; if anything else already owns the foreground the user has moved on and GameHQ does not pull it back. Escape routes: PS tap, Circle, the Share double-tap and the `Ctrl+Shift+G` global hotkey. `Esc`/`Backspace` map to `overlay.back` and now work in-game as well whenever the foreground request succeeded — the overlay is a real active window at that point. They remain unavailable if the request was denied.
 - Overlay interaction stays with the game GameHQ remembered: opening pins the context (`AppController::syncOverlayToForegroundGame` on `aboutToShow`), and routing follows the overlay's own visibility — it never re-reads the OS foreground, so L1/R1 browsing of other games is explicit user intent, not context loss.
@@ -86,6 +86,106 @@ Sources: [Qt Windows show implementation](https://github.com/qt/qtbase/blob/6.8/
 
 This local Khazan compatibility change still requires verification in a rebuilt executable. Borderless/windowed modes are the intended targets; exclusive fullscreen is not guaranteed. It does not establish a fix for the original reported freeze. Controller isolation remains a separate, unimplemented design (`docs/design/exclusive-controller-mode.md`).
 
+## Controller isolation: what is verified, and what is not
+
+The point of taking the foreground is that the presses the user aims at the
+overlay should not also act in the game. One level is used everywhere — in the
+open record, in the diagnostics export, and here — and the levels are
+deliberately not symmetric:
+
+| Level | Means | What sets it |
+|---|---|---|
+| `isolation=unavailable` | No exclusive policy is in force, so nothing is narrowed. | The policy was never requested, was refused, or was already released. |
+| `isolation=scoped` | The exclusive policy is in force; isolation is externally verified for **GameInput clients**, and the game's own input path is unconfirmed. | The mechanism, plus the out-of-process measurement below. |
+| `isolation=full-native` | The exclusive policy is in force **and** the tested game, pad and configuration was confirmed externally. | A recorded physical acceptance result only. An API call can never produce this level — `tests/tst_isolationcapability.cpp` walks every combination of the inputs and fails if any of them claims more than it was given. |
+
+### Externally verified
+
+`tools/input-receiver/` (`cpo-o06d`) measures the pad from **outside** GameHQ: a
+separate process with its own GameInput session that explicitly asks for
+background input, so a gap in what it receives cannot be explained by it losing
+the foreground. Against the shipped path — overlay in the foreground, `cpo-o06c`
+policy in force — that second process received a wired DualSense (054c:0ce6 over
+USB) at ~209 Hz before the overlay opened, **0 arrivals for the whole exclusive
+phase**, and ~249 Hz after release. Reproduced twice:
+
+| Run | Baseline | Exclusive phase | After release | Verdict |
+|---|---|---|---|---|
+| 1 | 208.90/s (728) | **0.00/s (0)** | 248.94/s (885) | `blocked-then-resumed` |
+| 2 | 208.73/s (732) | **0.00/s (0)** | 248.88/s (882) | `blocked-then-resumed` |
+
+**This is the strongest claim GameHQ makes, and it is exactly this narrow:** a
+second GameInput client stops receiving the pad while the exclusive policy is in
+force and starts again after it is released, on that one pad, over USB.
+
+### Not measured — the row above does not cover these
+
+| Path | State |
+|---|---|
+| A game reading through **XInput** | not measurable here: the attached DualSense is not an XInput device, and the receiver reports `not-measurable` rather than "isolated" |
+| A game reading **Raw Input / HID directly** | not measurable here: an idle pad emits no Raw Input reports for the registered collections |
+| **Steam Input** translation | not measured |
+| **DSX / virtual-pad** paths | not measured |
+| The **Guide/PS opening gesture** reaching the game | not measured, and a separate question from post-open navigation |
+| A real game's reaction to overlay navigation | not measured — this is what the physical checklist is for |
+| Closing with a control held, inside a real game | the software sequencing is proven (`cpo-o06e`); the in-game result is not |
+
+`not-measurable` is a verdict of its own so that an unproven path can never be
+quoted as isolated. If a title turns out to act on presses aimed at the overlay,
+the honest report is that **its** input path is outside what the exclusive policy
+covers — not that a test was missing.
+
+### What an open records about itself
+
+Every open writes its own position into the log line and into the diagnostics
+export behind **Copy diagnostic summary** (Settings → Advanced):
+
+```
+isolation=scoped evidence=external-gameinput-clients real-game=unconfirmed
+isolation=unavailable evidence=none real-game=unconfirmed
+isolation=unclassified (this open recorded no classification)
+```
+
+The level comes from the policy that **ended up in force** — never from the
+request having been made — combined with evidence recorded outside the process,
+so a refused request cannot read as isolation and no run can claim a game path it
+never confirmed.
+
+## Anti-cheat and process footprint
+
+The shipped path installs nothing into a game and touches nothing inside it:
+
+- no DLL is loaded into the game, none of its APIs are hooked, no remote thread
+  is created, and no game memory is read or written;
+- no per-game shim, no injection of any kind;
+- no HidHide, no ViGEm, no virtual controller, no kernel filter or driver;
+- no synthetic keyboard or pad events: input the user did not perform is never
+  delivered to a game, and GameHQ's own actions never masquerade as game input;
+- only GameHQ-owned windows, Qt, documented Win32 calls (foreground, window
+  style, window placement) and the documented GameInput focus policy.
+
+The consequence is stated rather than engineered away: a title whose input path
+the exclusive policy does not cover **cannot** be isolated under this
+architecture, and that case is reported as a limitation instead of being "fixed"
+with injection. Hiding the physical device or presenting a virtual one is a
+documented, rejected alternative — see
+[design/exclusive-controller-mode.md](design/exclusive-controller-mode.md).
+
+## Crash, exit and recovery
+
+- The exclusive policy belongs to the GameHQ process and its GameInput session.
+  A normal exit releases it on the runtime-shutdown path while the runtime is
+  still alive, and every other exit path funnels through the one release point in
+  `OverlayManager` (`cpo-o06c`).
+- Nothing else is left behind, because nothing else exists: no virtual
+  controller for a game to keep seeing, no hidden physical state, no cloaking
+  configuration to unwind, and no cleanup step inside any game process.
+- If the process is killed rather than closed, its per-process GameInput state
+  dies with it. That is a Windows/process-lifetime expectation — GameHQ sets no
+  machine-level state at all — and it is **not** something this repository has
+  measured. A bounded crash experiment is listed with the physical acceptance
+  work; it is not claimed here as verified.
+
 ## QML structure
 
 - `OverlayWindow.qml` owns overlay state, keyboard/controller routing, preview playback state, and top-level layout.
@@ -99,7 +199,12 @@ This local Khazan compatibility change still requires verification in a rebuilt 
 
 ## Known risks
 
-Focus-restoration flakiness · Steam Input remapping the pad while overlay focused · games reading input via Raw Input regardless of focus (log + document per game) · multi-monitor placement (show on the game's monitor).
+- Focus-restoration flakiness; the neutral handoff has a 400 ms bound, and a close that runs into it says so (`neutral-handoff=timeout`) rather than claiming a clean hand-back.
+- The exclusive policy is **GameInput-scoped** (`cpo-o06c`): a game or tool reading the pad through XInput, Raw Input, a virtual pad or Steam Input is outside it, and the matrix above lists those paths as not measured rather than covered.
+- Steam Input remapping the pad while the overlay is focused, and DSX-style virtual pads, change which client receives what — record the configuration when reporting.
+- Games that keep reading input regardless of focus: measure the title, then document it per game instead of generalising from one result.
+- The Guide/PS opening gesture is not part of the post-open isolation story and is still unmeasured.
+- Multi-monitor placement (show on the game's monitor).
 
 ## Native acceptance (cpo-o05)
 

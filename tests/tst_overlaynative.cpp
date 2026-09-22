@@ -1255,8 +1255,13 @@ void NativeOverlayTest::exclusiveGameInputPolicyIsScopedToTheInteractiveOverlay(
     QVERIFY2(text.contains(QStringLiteral("mode=exclusive-foreground")), qPrintable(text));
     QVERIFY2(text.contains(QStringLiteral("request=requested")), qPrintable(text));
     QVERIFY2(text.contains(QStringLiteral("request=refused")) == false, qPrintable(text));
-    // Still not an isolation claim, even with the policy in force.
-    QVERIFY2(text.contains(QStringLiteral("isolation=not measured in-process")), qPrintable(text));
+    // Still not an isolation claim, even with the policy in force: the real open
+    // path composes the classification, and the strongest thing it may say
+    // in-process is "scoped" — never full native (cpo-o06f).
+    QVERIFY2(text.contains(QStringLiteral("isolation=scoped evidence=external-gameinput-clients "
+                                          "real-game=unconfirmed")),
+             qPrintable(text));
+    QVERIFY2(!text.contains(QStringLiteral("full-native")), qPrintable(text));
 
     harness->manager->hide();
     QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);

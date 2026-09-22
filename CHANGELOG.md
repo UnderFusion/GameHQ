@@ -6,6 +6,19 @@ All notable public releases of GameHQ are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.7.43] - 2026-09-22
+
+### Added
+
+- Every overlay open now says **exactly what it may claim about controller isolation** (`cpo-o06f`), in the log line and in the diagnostics export behind *Copy diagnostic summary*: `isolation=unavailable` (no exclusive policy in force, so nothing is narrowed), `isolation=scoped` (the policy is in force and isolation is externally verified for GameInput clients only, with the game's own input path unconfirmed), or `isolation=full-native` (the policy is in force **and** that game, pad and configuration was confirmed by a recorded physical result). The classification is derived from the policy that ended up in force — never from a request having been made — plus evidence recorded outside the app, and `tests/tst_isolationcapability.cpp` walks every combination of those inputs and fails if any of them claims more than it was given.
+
+### Changed
+
+- `docs/overlay.md` now carries the honest capability matrix: the externally verified case (`cpo-o06d`: a second GameInput client received ~209 Hz before, **0** during the exclusive phase and ~249 Hz after release, twice, on a wired DualSense over USB) and the paths that are explicitly **not measured** — XInput, Raw Input/HID, Steam Input, DSX-style virtual pads, the Guide/PS opening gesture, and a real game's reaction to overlay navigation or to a held-control close. An unproven path can no longer be read as isolated.
+- The same document states the **anti-cheat footprint** of the shipped path plainly — no DLL in the game, no hooks, no remote thread, no game memory access, no per-game shim, no HidHide/ViGEm/kernel filter, no virtual controller, no synthetic input — and the consequence that a title whose input path the policy does not cover cannot be isolated under this architecture rather than being "fixed" with injection. A short **crash and exit recovery** section records what is true (no persistent state anywhere, the policy belongs to the GameHQ process) and marks the process-kill case as an expectation, not a measurement.
+- `docs/design/exclusive-controller-mode.md` keeps its history but can no longer be mistaken for the shipped design: the device-cloaking hypothesis is labelled as such, with a status table naming what each `cpo-o06` step actually established instead.
+- The borderless overlay checklist was rewritten for the behaviour that now ships: the overlay taking the foreground without minimising the game, navigation not acting in the game (a finding about the title's input path, not a defect), a close with a control held (with the `neutral-handoff` receipt attached), foreground return, external foreground changes never stolen back, controller usable after a normal GameHQ exit, natural pause-on-focus-loss and the opening gesture recorded as metadata, and repeated open/close cycles.
+
 ## [0.7.42] - 2026-09-22
 
 ### Added

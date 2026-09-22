@@ -45,6 +45,7 @@ qt_add_executable(GameHQ
     gameinput/StandardControlMap.h
     gameinput/NeutralHandoff.cpp gameinput/NeutralHandoff.h
     gameinput/NeutralHandoffRunner.cpp gameinput/NeutralHandoffRunner.h
+    gameinput/IsolationCapability.cpp gameinput/IsolationCapability.h
     games/GameDetector.cpp games/GameDetector.h
     input/HotkeyManager.cpp input/HotkeyManager.h
     input/Gamepad.h

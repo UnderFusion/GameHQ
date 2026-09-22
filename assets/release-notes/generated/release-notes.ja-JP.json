@@ -1,22 +1,42 @@
 {
-  "version": "0.7.42",
+  "version": "0.7.43",
   "date": "2026-09-22",
   "sections": [
     {
       "title": "Added",
       "items": [
-        "Closing the overlay while a button, a trigger or a stick direction is still held no longer passes that held state straight to the game. GameHQ now waits - briefly, never longer than about half a second - until the controller is physically back at rest before it hands control back, and it does so without pressing or releasing anything on the game's behalf. When the controller is already at rest, closing is as immediate as it always was."
+        "GameHQ now says plainly what it can and cannot promise about keeping your controller input away from the game while the overlay is open. Every overlay open records one of three levels in its log and in the diagnostics summary behind Settings, Advanced, Copy diagnostic summary: no isolation for that open, scoped (input is held back from other GameInput clients, which is the case that has actually been measured), or full native (measured and confirmed for that specific game, controller and setup). The strongest level is never claimed on the strength of an internal call alone."
       ]
     },
     {
       "title": "Changed",
       "items": [
-        "Every overlay close now records how that hand-over went: whether the controller came back to rest in time, whether the short wait ran out and the close finished anyway, whether something else had already given the controller back, or whether the close never needed to wait - for example when the overlay steps aside for the GameHQ window, or when the game it covered is gone. A close that ran out its wait says so, instead of being reported as a clean hand-over.",
-        "If the controller is disconnected while the overlay is closing, the close finishes straight away: a controller that is no longer there cannot pass anything on to the game, so there is nothing to wait for."
+        "The controller-isolation documentation now lists the measured case and, separately, everything that is not measured: games reading the controller through XInput, Raw Input, Steam Input or a virtual-pad tool such as DSX, the PlayStation or Guide press that opens the overlay, and how a real game reacts to the moment the overlay closes while a control is still held. Anything that was not measured is named as not measured instead of being implied to be covered.",
+        "The same documentation states the footprint of the normal overlay path in plain terms: nothing is loaded into the game, nothing of it is hooked or modified, no virtual controller or driver is installed, and no input is ever synthesized. It also records what happens when GameHQ closes or is killed: the setting belongs to the running GameHQ process, nothing is left behind on the machine, and the controller keeps working.",
+        "The tester checklist for real borderless games now covers the behaviour as it works today: the overlay taking the foreground without minimising the game, navigation not acting in the game, closing with a control held, the foreground coming back afterwards, changes you make to the foreground never being stolen back, and the controller still working after GameHQ exits."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.42",
+      "date": "2026-09-22",
+      "sections": [
+        {
+          "title": "Added",
+          "items": [
+            "Closing the overlay while a button, a trigger or a stick direction is still held no longer passes that held state straight to the game. GameHQ now waits - briefly, never longer than about half a second - until the controller is physically back at rest before it hands control back, and it does so without pressing or releasing anything on the game's behalf. When the controller is already at rest, closing is as immediate as it always was."
+          ]
+        },
+        {
+          "title": "Changed",
+          "items": [
+            "Every overlay close now records how that hand-over went: whether the controller came back to rest in time, whether the short wait ran out and the close finished anyway, whether something else had already given the controller back, or whether the close never needed to wait - for example when the overlay steps aside for the GameHQ window, or when the game it covered is gone. A close that ran out its wait says so, instead of being reported as a clean hand-over.",
+            "If the controller is disconnected while the overlay is closing, the close finishes straight away: a controller that is no longer there cannot pass anything on to the game, so there is nothing to wait for."
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.41",
       "date": "2026-09-22",
@@ -144,18 +164,6 @@
       ]
     },
     {
-      "version": "0.7.31",
-      "date": "2026-09-14",
-      "sections": [
-        {
-          "title": "Fixed",
-          "items": [
-            "Added an optional GitHub link beneath upcoming release notes to open the same release in your browser, with controller navigation support."
-          ]
-        }
-      ]
-    },
-    {
       "version": "0.7.7",
       "date": "2026-09-07",
       "sections": [
@@ -189,6 +197,13 @@
     "requested_locale": "ja-JP",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.7.43",
+        "source_integrity": "sha256:7e2e047de03592c8fd1d79f622129b14fab3df27f24f0b9e70cca80e8d5bb54e",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.42",
         "source_integrity": "sha256:9458cf9d5b544ab036d84cc64b8258e81abf8272f9cd47b18565cc18ce5eb6d0",
@@ -262,13 +277,6 @@
       {
         "version": "0.7.32",
         "source_integrity": "sha256:7f13fd8eeaf26df2f1dca96dead7c489ca043b595e853e3433a6ed413753f15a",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
-      },
-      {
-        "version": "0.7.31",
-        "source_integrity": "sha256:fa336e25633e214c81a416a7204239b65bc8859ad101a4800dada8e7c11fca79",
         "resolved_locale": "en-US",
         "fallback": true,
         "fallback_reason": "declared-en-US-fallback"

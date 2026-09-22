@@ -1,5 +1,6 @@
 #include "overlay/OverlayFocusTrace.h"
 
+#include "gameinput/IsolationCapability.h"
 #include "gameinput/NeutralHandoff.h"
 
 #include <QtTest>
@@ -164,14 +165,31 @@ void TestOverlayFocusTrace::qtAndWin32DisagreementIsVisible()
 void TestOverlayFocusTrace::showNeverClaimsIsolation()
 {
     // Every open record, including one where the overlay won the foreground,
-    // has to state that isolation was not measured here.
+    // has to state what was actually established — and nothing more.
     OverlayFocus::ShowTrace trace = nonActivatingShow();
     trace.activationRequested = true;
     trace.foregroundAfterActivation = trace.overlay.handle;
     const QString line = trace.toLogString();
     QVERIFY(trace.overlayOwnsForeground());
-    QVERIFY(line.contains(QStringLiteral("isolation=not measured in-process")));
+    // No classification composed: the record says so instead of implying one.
+    QVERIFY(line.contains(QStringLiteral("isolation=unclassified")));
     QVERIFY(!line.contains(QStringLiteral("isolated")));
+    QVERIFY(!line.contains(QStringLiteral("full-native")));
+
+    // cpo-o06f: with the classification the show path composes, the strongest
+    // claim available to a running GameHQ is "scoped" — and it names what backs
+    // it. Full native is not reachable from in-process facts at all
+    // (tests/tst_isolationcapability.cpp pins that exhaustively).
+    GameInputIsolation::Facts facts;
+    facts.policyInForce = true;
+    facts.evidence = GameInputIsolation::recordedEvidence();
+    trace.isolation = GameInputIsolation::classify(facts).toLogString();
+    const QString classified = trace.toLogString();
+    QVERIFY2(classified.contains(QStringLiteral("isolation=scoped "
+                                                "evidence=external-gameinput-clients "
+                                                "real-game=unconfirmed")),
+             qPrintable(classified));
+    QVERIFY2(!classified.contains(QStringLiteral("full-native")), qPrintable(classified));
 }
 
 void TestOverlayFocusTrace::hideReportsRestoreOutcome()
@@ -303,7 +321,7 @@ void TestOverlayFocusTrace::aDeniedRequestIsReportedAsNotAcquired()
     const QString line = trace.toLogString();
     QVERIFY2(line.contains(QStringLiteral("acquisition=not-acquired attempts=3")), qPrintable(line));
     QVERIFY2(line.contains(QStringLiteral("activation-requested=yes")), qPrintable(line));
-    QVERIFY2(line.contains(OverlayFocus::ShowTrace::isolationEvidence()), qPrintable(line));
+    QVERIFY2(line.contains(QStringLiteral("isolation=unclassified")), qPrintable(line));
 }
 
 namespace
@@ -458,8 +476,9 @@ void TestOverlayFocusTrace::policyFactsAndLinesStaySelfContained()
     const QString line = trace.toLogString();
     QVERIFY2(line.contains(QStringLiteral("gameinput-policy=[")), qPrintable(line));
     QVERIFY2(line.contains(QStringLiteral("mode=exclusive-foreground")), qPrintable(line));
-    // The whole point of the record: a policy request is still not isolation.
-    QVERIFY2(line.contains(OverlayFocus::ShowTrace::isolationEvidence()), qPrintable(line));
+    // The whole point of the record: a policy request is still not isolation,
+    // and a record that composed no classification says exactly that.
+    QVERIFY2(line.contains(QStringLiteral("isolation=unclassified")), qPrintable(line));
 
     OverlayFocus::HideTrace hide;
     hide.gameInputPolicy.mode = QStringLiteral("background");

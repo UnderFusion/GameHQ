@@ -48,7 +48,7 @@ struct WindowFacts
 //
 // This is a statement about POLICY CONTROL only. The runtime has no failure
 // return, and nothing in this process can observe whether another process
-// actually stopped receiving input — see isolationEvidence().
+// actually stopped receiving input — see `isolation` below (cpo-o06f).
 struct GameInputPolicyFacts
 {
     QString mode = QStringLiteral("uncontrolled");
@@ -130,12 +130,15 @@ struct ShowTrace
             && overlayAfterAcquisition.exists && overlayAfterAcquisition.visible;
     }
 
-    // What this record proves about controller isolation — which is nothing.
-    // Foreground ownership is a precondition GameHQ can observe; whether the
-    // game stopped receiving the pad can only be measured outside this
-    // process (cpo-o06d). Stated here so no reader mistakes a successful
-    // foreground grab for isolation.
-    static QString isolationEvidence() { return QStringLiteral("not measured in-process"); }
+    // cpo-o06f: what this open may honestly claim about controller isolation,
+    // classified by gameinput/IsolationCapability from facts the open observed
+    // — the policy that ended up in force (`gameInputPolicy`), plus the evidence
+    // recorded OUTSIDE this process. Composed by the show path after the policy
+    // request settled, never by this formatter, so the record cannot claim a
+    // mechanism that was refused. A record that carries no classification says
+    // so: foreground ownership alone is not isolation (cpo-o06a), and no API
+    // call in this process can prove a game stopped seeing the pad (cpo-o06d).
+    QString isolation;
 
     QString toLogString() const;
 };

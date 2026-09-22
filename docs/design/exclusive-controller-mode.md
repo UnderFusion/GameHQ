@@ -1,7 +1,10 @@
 # Exclusive Controller Mode — design
 
-Status: **design only. Nothing here is implemented, and the build/no-build
-decision at the end is "no build" for now.**
+Status: **design only, and superseded as a plan — preserved as the hypothesis it
+was.** Nothing in this document was built, and the build/no-build decision
+recorded below still stands. What was actually done instead is in
+[Status update (2026-09-22)](#status-update-2026-09-22), and the shipped
+behaviour with its measured limits is `docs/overlay.md`.
 
 This document exists so the idea stops being re-litigated from memory every time
 a user reports that the overlay does not block game input. It records the
@@ -11,6 +14,36 @@ requirements any implementation would have to meet.
 Scope note: this is plain documentation. It is deliberately not a canonical plan
 document and not under `docs/plans/` — the project has one canonical plan at a
 time, and a second one here would compete with it.
+
+## Status update (2026-09-22)
+
+The hypothesis in this document — cloak the physical pad with a filter driver,
+present a virtual one, hold it neutral while the overlay is up — was **not**
+built, and the blocker it names (a retired or self-owned kernel-mode dependency)
+is exactly why `cpo-o06` was given a hard "out-of-process, no kernel component"
+constraint by the owner. What was built instead is a different mechanism with a
+much smaller footprint, and each step below states what it established rather
+than what it hoped:
+
+| Step | What it did | What it established |
+|---|---|---|
+| `cpo-o06a` | Records the facts of every overlay open and close (windows, foreground, policy, controller) | Before this, the log stated the policy GameHQ *intended*; the record now states what Windows and the policy did, and it says plainly that it cannot measure isolation from inside the process |
+| `cpo-o06b` | The overlay takes the foreground with one bounded request, non-activating presentation, game never minimised, never fought for | The overlay can be the interactive window while the game stays alive, visible and un-minimised behind it |
+| `cpo-o06c` | While the overlay holds the *verified interactive* foreground, GameHQ asks GameInput for `ExclusiveForegroundInput` — one owner, released on every exit path | Another GameInput client stops receiving the pad for that interval without any driver, injection or virtual device |
+| `cpo-o06d` | `tools/input-receiver/`: a separate process measures the pad from outside the app | The measured result: ~209 Hz → **0** during the exclusive phase → ~249 Hz after release, twice, on a wired DualSense. XInput and Raw Input paths report `not-measurable`, never "isolated" |
+| `cpo-o06e` | The close waits for the pad to be physically neutral **before** releasing the policy | This document's "hold the virtual pad neutral" idea, achieved without a virtual pad: a held button cannot leak into the game through the hand-back |
+| `cpo-o06f` | Classifies every open as `unavailable` / `scoped` / `full-native` and writes the limits down | `full-native` is unreachable from anything the running process can observe; only a recorded physical result can claim it |
+
+**What this means for the hypothesis.** Its central sentence — *"the only
+approach that works without injection is to stop the game from seeing the
+physical device at all"* — is still true for the input paths the shipped
+mechanism does not cover. The difference is what happens next: those paths are
+now listed as *not measured*, and a title that turns out to act on overlay
+presses is reported as an input path outside the exclusive policy's scope rather
+than as a defect to be closed with injection. GameInput clients on a measured
+configuration are isolated; anything reading the pad through XInput, Raw Input, a
+virtual pad or Steam Input is not, and `docs/overlay.md` says so in the same
+words the product's own diagnostics use.
 
 ## The problem
 
@@ -106,6 +139,13 @@ open leaves the user with no working controller and no obvious cause.
 
 ## Anti-cheat compatibility
 
+Scope: this section describes the **hypothesis above** (device cloaking plus a
+virtual pad), which was never built. The shipped path has no driver, no virtual
+device and no injection, and its footprint is stated in `docs/overlay.md`
+("Anti-cheat and process footprint"). The reasoning below is kept because it is
+the reason the hypothesis stayed unbuilt, and because it is what any future
+proposal of that shape would have to answer.
+
 State this plainly in the UI, not in a footnote:
 
 Hiding a physical device and presenting a virtual one is indistinguishable, from
@@ -118,12 +158,17 @@ that it may prevent protected games from launching.
 
 ## Relationship to the current input work
 
-Exclusive Controller Mode is the complete fix for overlay input bleed. It is not
-the only mitigation, and the cheaper ones are worth doing regardless:
+Exclusive Controller Mode was proposed as the complete fix for overlay input
+bleed. It was not built. What shipped instead is a narrower mechanism with no
+kernel component (`cpo-o06c`), plus the cheaper mitigations this section already
+listed — both of which were done, and a third that turned out to matter:
 
-- Honest overlay foreground state, so the overlay does not claim to have focus
-  it never acquired.
-- A clear statement in the UI that the overlay does not block game input, rather
-  than letting users discover it during a match.
+- honest overlay foreground state, so the overlay never claims focus it did not
+  acquire (`cpo-o06b`, recorded per open by `cpo-o06a`);
+- a clear statement of what is and is not isolated, in the product's own
+  diagnostics and in `docs/overlay.md`, instead of letting users discover the
+  boundary during a match (`cpo-o06f`);
+- a clean hand-back on close, so the moment the overlay steps aside cannot hand a
+  held control to the game (`cpo-o06e`).
 
-Those are tracked separately and do not depend on anything in this document.
+Nothing in this document is a prerequisite for any of that.

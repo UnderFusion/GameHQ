@@ -2,6 +2,7 @@
 
 #include "input/InputDiagnostics.h"
 #include "gameinput/GameInputFocusPolicy.h"
+#include "gameinput/IsolationCapability.h"
 #include "overlay/ForegroundAcquirer.h"
 #include "overlay/ForegroundApi.h"
 #include "overlay/OverlayFocusTrace.h"
@@ -329,6 +330,16 @@ void OverlayManager::finishShowTrace(bool acquired, int attempts)
     // cpo-o06c: the policy request is made here — after the acquisition settled
     // and both windows were re-sampled — because it is gated on those facts.
     askForExclusiveGameInputPolicy(trace);
+
+    // cpo-o06f: what this open may honestly claim about controller isolation.
+    // Classified from the policy that ended up in force plus the evidence
+    // recorded outside this process, so a request that was refused, or a run
+    // with no external evidence behind it, cannot read as isolation. An API
+    // call alone never yields full_native (gameinput/IsolationCapability.h).
+    GameInputIsolation::Facts isolationFacts;
+    isolationFacts.policyInForce = trace.gameInputPolicy.exclusiveApplied();
+    isolationFacts.evidence = GameInputIsolation::recordedEvidence();
+    trace.isolation = GameInputIsolation::classify(isolationFacts).toLogString();
 
     const InputDiagnostics& diagnostics = InputDiagnostics::instance();
     trace.controllerProvider = diagnostics.servingProvider();

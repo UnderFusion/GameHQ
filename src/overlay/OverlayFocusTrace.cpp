@@ -140,12 +140,17 @@ QString ShowTrace::toLogString() const
 
     const QString controller =
         QStringLiteral(" game-kept-foreground=%1 provider=%2 profile=%3 "
-                       "gameinput-focus-policy=%4 isolation=%5")
+                       "gameinput-focus-policy=%4 %5")
             .arg(foregroundPreserved() ? QStringLiteral("yes") : QStringLiteral("no"),
                  orUnavailable(controllerProvider),
                  orUnavailable(controllerProfile),
                  orUnavailable(gameInputFocusPolicy),
-                 isolationEvidence());
+                 // cpo-o06f: the classification carries its own `isolation=`
+                 // label (gameinput/IsolationCapability.h), so this formatter
+                 // never adds a second one; a record with none says why.
+                 isolation.isEmpty()
+                     ? QStringLiteral("isolation=unclassified (this open recorded no classification)")
+                     : isolation);
 
     // cpo-o06c: the policy request this open made (or refused), and why. Still no
     // isolation claim: the request is what GameHQ asked for, not proof that

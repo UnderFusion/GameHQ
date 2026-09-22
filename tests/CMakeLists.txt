@@ -270,6 +270,7 @@ gamehq_add_test(tst_inputdiagnostics
 gamehq_add_test(tst_overlayfocustrace
     tst_overlayfocustrace.cpp
     "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoff.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/IsolationCapability.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayFocusTrace.cpp")
 
 # Verify + bounded-retry policy behind the overlay's foreground grab, driven
@@ -1290,6 +1291,13 @@ gamehq_add_test(tst_neutralhandoff
     "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoffRunner.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp")
 
+# cpo-o06f: what GameHQ may claim about controller isolation. The rule that makes
+# the difference is negative - an API call alone may never produce full native
+# isolation - so it is pinned exhaustively rather than by one example.
+gamehq_add_test(tst_isolationcapability
+    tst_isolationcapability.cpp
+    "${CMAKE_SOURCE_DIR}/src/gameinput/IsolationCapability.cpp")
+
 # cpo-p07: the game session IS the mapping game context. Same engine/runtime
 # sources as the switch suite, plus the real CurrentGameService session identity,
 # the GameDetector it reads, and the session->engine binder.
@@ -1344,6 +1352,7 @@ gamehq_add_test(tst_overlaynative
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayPresenter.cpp"
     "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoff.cpp"
     "${CMAKE_SOURCE_DIR}/src/gameinput/NeutralHandoffRunner.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gameinput/IsolationCapability.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp")
 target_link_libraries(tst_overlaynative PRIVATE Qt6::Gui Qt6::Quick Qt6::Qml Qt6::Multimedia user32)
 target_compile_definitions(tst_overlaynative PRIVATE
