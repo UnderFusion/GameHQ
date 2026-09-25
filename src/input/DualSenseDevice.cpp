@@ -45,6 +45,7 @@ constexpr int kTopologyDebounceMs = 400;
 // most) one log line each. Never log per event: an 8 kHz pad would write 8000
 // lines a second and the diagnostic would become the outage.
 constexpr int kRateSampleMs = 5000;
+constexpr int kSilenceFollowupMs = 15000;
 
 enum ReportLayout {
     LayoutUnknown = 0,
@@ -106,8 +107,10 @@ LRESULT CALLBACK rawInputWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
 {
     switch (msg) {
     case WM_INPUT:
-        if (auto* dev = deviceFor(hwnd))
+        if (auto* dev = deviceFor(hwnd)) {
+            dev->noteWmInput(GET_RAWINPUT_CODE_WPARAM(wParam) == RIM_INPUTSINK);
             dev->onRawInput(reinterpret_cast<void*>(lParam));
+        }
         // Documented WM_INPUT contract: a foreground event (RIM_INPUT) must be
         // passed to DefWindowProc so the system can perform its cleanup pass,
         // while a sink event (RIM_INPUTSINK) returns 0. Returning 0 for both —
@@ -151,6 +154,7 @@ DualSenseDevice::DualSenseDevice(RawInputApi* api, QObject* parent)
     m_topologyTimer->setSingleShot(true);
     m_topologyTimer->setInterval(kTopologyDebounceMs);
     connect(m_topologyTimer, &QTimer::timeout, this, &DualSenseDevice::deviceTopologyChanged);
+    connect(m_topologyTimer, &QTimer::timeout, this, [this] { logDeliveryReceipt("topology"); });
 
     // Runs only while devices are actually reporting; the sample that finds
     // everything quiet stops it again.
@@ -207,6 +211,7 @@ bool DualSenseDevice::start()
         return false;
     }
     qInfo() << "Gamepad: Raw Input registered (Sony HID optional - none required to run)";
+    logDeliveryReceipt("registered");
     // RIDEV_DEVNOTIFY also delivers arrival messages for already-connected
     // devices, but do one synchronous scan so startup logs the initial set.
     reconcileDevices();
@@ -385,8 +390,10 @@ void DualSenseDevice::rawHidFallbackEvent(void* handle, void* hRawInputV)
         return;
 
     RawInputApi::Payload payload;
-    if (!m_api->readPayload(hRawInputV, payload))
+    if (!m_api->readPayload(hRawInputV, payload)) {
+        ++m_payloadFailures;
         return;
+    }
     const QString identity = m_ignoredHandles.value(handle);
     struct VisitContext {
         DualSenseDevice* device = nullptr;
@@ -663,8 +670,10 @@ void DualSenseDevice::finishDisconnect()
 void DualSenseDevice::onRawInput(void* hRawInputV)
 {
     RawInputApi::Header header;
-    if (!m_api->readHeader(hRawInputV, header) || !header.device)
+    if (!m_api->readHeader(hRawInputV, header) || !header.device) {
+        ++m_headerFailures;
         return;
+    }
 
     if (!m_sawInput) {
         m_sawInput = true;
@@ -698,8 +707,10 @@ void DualSenseDevice::onRawInput(void* hRawInputV)
     noteEvent(handle, false);
 
     RawInputApi::Payload payload;
-    if (!m_api->readPayload(hRawInputV, payload))
+    if (!m_api->readPayload(hRawInputV, payload)) {
+        ++m_payloadFailures;
         return;
+    }
 
     for (int i = 0; i < payload.reportCount; ++i)
         parseReport(handle, *st, payload.reports + i * payload.reportSize, payload.reportSize);
@@ -834,6 +845,18 @@ void DualSenseDevice::logInputRates()
         if (s.eventsPerSecond == 0) {
             qInfo().noquote()
                 << QStringLiteral("Gamepad: Raw Input stream from %1 stopped").arg(what);
+            if (!s.ignored) {
+                logDeliveryReceipt("stream-silent");
+                // One follow-up shows whether WM_INPUT resumed, kept arriving
+                // but failing, or stayed absent. Never more than one pending.
+                if (!m_silenceFollowupPending) {
+                    m_silenceFollowupPending = true;
+                    QTimer::singleShot(kSilenceFollowupMs, this, [this] {
+                        m_silenceFollowupPending = false;
+                        logDeliveryReceipt("silence-followup");
+                    });
+                }
+            }
             continue;
         }
         qInfo().noquote()
@@ -845,6 +868,57 @@ void DualSenseDevice::logInputRates()
     }
     if (!traffic)
         m_rateTimer->stop();
+}
+
+void DualSenseDevice::logDeliveryReceipt(const char* reason)
+{
+    const qint64 now = m_clock.elapsed();
+    const HWND own = static_cast<HWND>(m_hwnd);
+
+    // Effective registrations of THIS process (the API only reports the
+    // caller's own); a gamepad-class entry targeting another window, or one
+    // missing INPUTSINK, would explain background silence.
+    QStringList regs;
+    UINT count = 0;
+    GetRegisteredRawInputDevices(nullptr, &count, sizeof(RAWINPUTDEVICE));
+    if (count > 0 && count < 64) {
+        RAWINPUTDEVICE list[64]{};
+        const UINT got = GetRegisteredRawInputDevices(list, &count, sizeof(RAWINPUTDEVICE));
+        for (UINT i = 0; i < got && got != UINT(-1); ++i) {
+            const RAWINPUTDEVICE& r = list[i];
+            const char* target = !r.hwndTarget ? "focus"
+                               : r.hwndTarget == own ? "own"
+                               : "other";
+            regs << QString::asprintf("%02x:%02x/0x%x/%s", r.usUsagePage, r.usUsage,
+                                      unsigned(r.dwFlags), target);
+        }
+    }
+
+    DWORD fgPid = 0;
+    if (HWND fg = GetForegroundWindow())
+        GetWindowThreadProcessId(fg, &fgPid);
+    const bool windowOk = own && IsWindow(own);
+    const bool sameThread = windowOk
+        && GetWindowThreadProcessId(own, nullptr) == GetCurrentThreadId();
+
+    qInfo().noquote() << QStringLiteral(
+        "Gamepad: raw-input receipt reason=%1 window=%2 thread=%3 foreground=%4 "
+        "wm_input_fg=%5 wm_input_sink=%6 header_fail=%7 payload_fail=%8 "
+        "tracked=%9 span_ms=%10 registrations=[%11]")
+        .arg(QLatin1String(reason))
+        .arg(windowOk ? QStringLiteral("ok") : QStringLiteral("invalid"))
+        .arg(sameThread ? QStringLiteral("same") : QStringLiteral("other"))
+        .arg(fgPid == GetCurrentProcessId() ? QStringLiteral("self")
+                                            : (fgPid ? QStringLiteral("other")
+                                                     : QStringLiteral("none")))
+        .arg(m_wmInputForeground).arg(m_wmInputSink)
+        .arg(m_headerFailures).arg(m_payloadFailures)
+        .arg(m_devices.size())
+        .arg(now - m_lastReceiptMs)
+        .arg(regs.join(QLatin1Char(' ')));
+
+    m_wmInputForeground = m_wmInputSink = m_headerFailures = m_payloadFailures = 0;
+    m_lastReceiptMs = now;
 }
 
 QString DualSenseDevice::deviceLabel(void* handle, bool ignored) const

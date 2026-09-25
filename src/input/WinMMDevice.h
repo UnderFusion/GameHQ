@@ -41,6 +41,12 @@ public:
 
 public slots:
     void rescan();   // kick a background scan for a newly arrived joystick
+    // A HID device arrived or left. WinMM caches its joystick list per
+    // process, so a pad that reappears on a new transport (USB -> Bluetooth)
+    // stays invisible to joyGetPosEx until the list is reloaded. The next few
+    // scans reload it first; the count is bounded because every reload
+    // broadcasts a window message to all top-level windows.
+    void rescanAfterTopologyChange();
 
 private:
     // What the worker thread found; everything Qt-visible happens in
@@ -51,8 +57,10 @@ private:
         quint32 mid = 0;
         quint32 pid = 0;
         qint64 elapsedUs = 0;
+        bool reloadedConfig = false;
     };
-    static ScanResult scanSlots();   // worker thread; touches no members
+    // Worker thread; touches no members.
+    static ScanResult scanSlots(bool reloadConfig);
     void applyScanResult(const ScanResult& result);
     void poll();
     void disconnectActive();
@@ -62,6 +70,7 @@ private:
     QTimer* m_rescanTimer = nullptr;   // slow safety net while disconnected
     std::thread m_scanThread;          // joined before reuse and in the dtor
     bool m_scanInFlight = false;       // owning thread only
+    int m_configReloadScans = 0;       // scans left that reload WinMM's list
     quint32 m_prevButtons = 0;
     // The first reading after a connect is the device's resting state, not a
     // press: some pads (or their drivers) idle with an axis at 0, which would

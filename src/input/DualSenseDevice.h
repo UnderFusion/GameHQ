@@ -78,6 +78,7 @@ public:
     QStringList xinputClassEndpoints() const;
 
     // Called from the window procedure — not for general use.
+    void noteWmInput(bool sink) { ++(sink ? m_wmInputSink : m_wmInputForeground); }
     void onRawInput(void* hRawInput);
     void onDeviceChange(bool arrived, void* deviceHandle);
 
@@ -128,6 +129,12 @@ private:
     void forgetClassification(void* handle);  // drop cached verdict + rate counter
     void noteEvent(void* handle, bool ignored);
     void logInputRates();
+    // Bounded delivery receipt: WM_INPUT counts at the window procedure,
+    // header/payload read failures and the effective registrations of this
+    // process. Logged at startup, on topology changes and when a stream goes
+    // silent (plus one follow-up), so a silent in-game stream shows whether
+    // WM_INPUT stopped arriving or arrived and was dropped.
+    void logDeliveryReceipt(const char* reason);
     QString deviceLabel(void* handle, bool ignored) const;
     void removeDevice(void* handle);
     void reconcileDevices();                  // debounced full-list sync (prune stale handles)
@@ -177,6 +184,13 @@ private:
     quint32 m_emittedButtons = 0;            // bitmask InputEngine has seen so far
     bool m_connectedState = false;           // connected(bool) as last emitted
     bool m_sawInput = false;                 // first WM_INPUT diagnostic logged?
+    // Delivery counters since the last receipt (GUI thread only).
+    quint64 m_wmInputForeground = 0;         // RIM_INPUT
+    quint64 m_wmInputSink = 0;               // RIM_INPUTSINK
+    quint64 m_headerFailures = 0;            // header read failed or null device
+    quint64 m_payloadFailures = 0;
+    qint64 m_lastReceiptMs = 0;
+    bool m_silenceFollowupPending = false;
     QStringList m_lastHiddenPads;            // last cloak-scan result (change detection)
 
     // Selective Raw HID fallback state. Eligibility is cached per handle and
