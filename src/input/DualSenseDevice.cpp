@@ -861,20 +861,6 @@ QString DualSenseDevice::deviceLabel(void* handle, bool ignored) const
                                        deviceIdentity(it->vendorId, it->productId));
 }
 
-// Locate the button block. USB report 0x01 puts it at byte 8; Bluetooth
-// report 0x31 shifts the whole payload +2 bytes (docs/controller-input.md).
-// Returns -1 for report ids this app does not parse.
-int DualSenseDevice::buttonBlockBase(unsigned char reportId, bool ds4, int len)
-{
-    if (reportId == 0x01)
-        return (ds4 || len < 11) ? 5 : 8;
-    if (reportId == 0x11 && ds4)
-        return 7;
-    if (reportId == 0x31 && !ds4)
-        return 10;
-    return -1;
-}
-
 // Face buttons, shoulder/trigger edges, Share/Options/PS, and the D-pad hat.
 quint32 DualSenseDevice::decodeButtons(const unsigned char* d, int base)
 {
@@ -898,6 +884,8 @@ quint32 DualSenseDevice::decodeButtons(const unsigned char* d, int base)
     if (b1 & 0x08) set(R2);
     if (b1 & 0x10) set(Share);      // "Create" button
     if (b1 & 0x20) set(Options);
+    if (b1 & 0x40) set(L3);
+    if (b1 & 0x80) set(R3);
     if (b2 & 0x01) set(PS);
 
     switch (hat) {                  // 0..7 = 8 directions, 8 = neutral
@@ -915,8 +903,7 @@ quint32 DualSenseDevice::decodeButtons(const unsigned char* d, int base)
 }
 
 // Left stick doubles as the D-pad for menu navigation (overlay request:
-// "D-pad or left stick"). Axes sit 7 bytes before the button block on
-// both encodings (USB base=8 → LX at d[1]; BT base=10 → LX at d[3]),
+// "D-pad or left stick"). Axis offsets come from SonyReportLayout::locate(),
 // 0..255 with ~128 center and Y growing downward. A wide deadzone avoids
 // drift; this is the one backend that runs the hysteresis path, so its
 // return zone is tighter than its deadzone (see StickNav.h for why).
@@ -924,14 +911,10 @@ quint32 DualSenseDevice::decodeButtons(const unsigned char* d, int base)
 // a real button — no auto-repeat while held, matching the D-pad.
 // Hysteresis state comes from st.stick (last frame's stick bits).
 quint32 DualSenseDevice::decodeStickNav(const DeviceState& st, const unsigned char* d,
-                                        int base, int len)
+                                        int axisBase, int len)
 {
     constexpr StickNav::AxisConfig kNav{ 128, 60, 30, false };
 
-    const auto family = st.layout == LayoutDs4
-        ? SonyReportLayout::Family::Ds4
-        : SonyReportLayout::Family::DualSense;
-    const int axisBase = SonyReportLayout::stickAxisBase(family, base);
     if (axisBase < 1 || len <= axisBase + 1)
         return 0;
 
@@ -952,9 +935,27 @@ void DualSenseDevice::parseReport(void* handle, DeviceState& st,
         return;
 
     const unsigned char reportId = d[0];
-    const int base = buttonBlockBase(reportId, st.layout == LayoutDs4, len);
-    if (base < 0 || len < base + 3)
+    const auto layout = SonyReportLayout::locate(
+        reportId,
+        st.layout == LayoutDs4 ? SonyReportLayout::Family::Ds4
+                               : SonyReportLayout::Family::DualSense,
+        len);
+    if (!layout.valid() || len < layout.buttons + 3)
         return;
+
+    // One line per pad whenever its report shape changes (first report, or
+    // a Bluetooth pad switching simple -> full), so a user log shows which
+    // layout was decoded without dumping every report.
+    const int shape = (int(reportId) << 16) | (len & 0xFFFF);
+    if (shape != st.reportShape) {
+        st.reportShape = shape;
+        qInfo().noquote() << QStringLiteral(
+            "Gamepad: input layout %1 report_id=0x%2 length=%3 variant=%4 axes=%5 buttons=%6")
+            .arg(deviceIdentity(st.vendorId, st.productId))
+            .arg(reportId, 2, 16, QLatin1Char('0'))
+            .arg(len).arg(QLatin1String(layout.variant))
+            .arg(layout.axes).arg(layout.buttons);
+    }
 
     st.reported = true;
     st.lastReportMs = m_clock.elapsed();
@@ -968,8 +969,8 @@ void DualSenseDevice::parseReport(void* handle, DeviceState& st,
                 << "reports resumed before disconnect debounce";
     }
 
-    quint32 s = decodeButtons(d, base);
-    st.stick = decodeStickNav(st, d, base, len);
+    quint32 s = decodeButtons(d, layout.buttons);
+    st.stick = decodeStickNav(st, d, layout.axes, len);
     s |= st.stick;
 
     const bool changed = (s != st.buttons);
@@ -1002,8 +1003,8 @@ void DualSenseDevice::routeReport(void* handle, const DeviceState& st, quint32 s
     }
 
     if (handle == m_activeHandle) {
-        // On any button change, dump the raw report so offsets (esp. the BT
-        // +2 shift) can be confirmed/corrected against real hardware.
+        // On any button change, dump the raw report so offsets can be
+        // confirmed/corrected against real hardware.
         if (changed) {
             const int n = qMin(len, 16);
             QString hex;

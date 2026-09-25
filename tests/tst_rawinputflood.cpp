@@ -71,6 +71,46 @@ QByteArray dualSenseReport(bool crossHeld)
     return report;
 }
 
+// DualSense state reports in every transport, written from the protocol
+// (SDL_hidapi_ps5.c / Linux hid-playstation.c), not from SonyReportLayout, so
+// the test cannot inherit a wrong offset. b0 = hat+face, b1 = L1 R1 L2 R2
+// Create Options L3 R3, b2 = PS. Axes centred unless given.
+enum class DsTransport { Usb, BtSimple10, BtSimple78, BtFull };
+
+QByteArray dsReport(DsTransport t, quint8 b0, quint8 b1 = 0, quint8 b2 = 0,
+                    quint8 lx = 128, quint8 ly = 128)
+{
+    int len = 64, axes = 1, buttons = 8;
+    char id = 0x01;
+    switch (t) {
+    case DsTransport::Usb:        break;
+    case DsTransport::BtSimple10: len = 10; buttons = 5; break;
+    case DsTransport::BtSimple78: len = 78; buttons = 5; break;
+    case DsTransport::BtFull:     len = 78; axes = 2; buttons = 9; id = 0x31; break;
+    }
+    QByteArray r(len, '\0');
+    r[0] = id;
+    if (t == DsTransport::BtFull)
+        r[1] = char(0x10);            // sequence tag byte
+    r[axes] = char(lx);
+    r[axes + 1] = char(ly);
+    r[axes + 2] = char(128);
+    r[axes + 3] = char(128);
+    r[buttons] = char(b0);
+    r[buttons + 1] = char(b1);
+    r[buttons + 2] = char(b2);
+    return r;
+}
+
+QStringList controlIds(const QSignalSpy& spy)
+{
+    QStringList out;
+    for (const auto& args : spy)
+        out << args.first().toString();
+    out.sort();
+    return out;
+}
+
 // Stands in for the whole Win32 Raw Input surface and counts every call.
 //
 // In this fake the WM_INPUT handle IS the device handle. Real HRAWINPUT values
@@ -88,6 +128,7 @@ public:
         QList<quint32> pressedUsages;   // (page << 16) | usage for the report visitor
         QList<QList<quint32>> usageReports; // ordered states in one RAWINPUTHID batch
         bool usagesParseable = true;
+        int sonyBatch = 0;              // >0: `report` holds this many equal-size Sony reports
         bool present = true;            // listed by enumerateDevices()
         int describeFailures = 0;       // transient RIDI_DEVICEINFO failures to serve first
         int pathFailures = 0;           // transient RIDI_DEVICENAME failures to serve first
@@ -138,6 +179,11 @@ public:
         if (it == devices.cend() || it->report.isEmpty())
             return false;
         out.reports = reinterpret_cast<const unsigned char*>(it->report.constData());
+        if (it->sonyBatch > 0) {
+            out.reportCount = it->sonyBatch;
+            out.reportSize = static_cast<int>(it->report.size()) / it->sonyBatch;
+            return true;
+        }
         out.reportCount = qMax(1, static_cast<int>(it->usageReports.size()));
         out.reportSize = static_cast<int>(it->report.size());
         return true;
@@ -320,6 +366,116 @@ private slots:
         // Still exactly one classification after all that traffic.
         QCOMPARE(api->describeCalls, 1);
         QCOMPARE(api->pathCalls, 1);
+    }
+
+    // Every DualSense transport through the production decoder, asserting the
+    // canonical controls it emits (Bluetooth offsets were one byte off).
+    void dualSenseTransportsDecodeToCanonicalControls_data()
+    {
+        QTest::addColumn<int>("transport");
+        QTest::newRow("usb") << int(DsTransport::Usb);
+        QTest::newRow("bt-simple-10") << int(DsTransport::BtSimple10);
+        QTest::newRow("bt-simple-78") << int(DsTransport::BtSimple78);
+        QTest::newRow("bt-full-0x31") << int(DsTransport::BtFull);
+    }
+
+    void dualSenseTransportsDecodeToCanonicalControls()
+    {
+        QFETCH(int, transport);
+        const auto t = DsTransport(transport);
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        void* ds = handle(0x8101);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad);
+        device.report = dsReport(t, 0x08);
+        api->devices.insert(ds, device);
+
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        QSignalSpy released(&pad, &Gamepad::controlReleased);
+        auto feed = [&](const QByteArray& r) {
+            api->devices[ds].report = r;
+            pad.onRawInput(ds);
+        };
+
+        feed(dsReport(t, 0x08));
+        QVERIFY2(pressed.isEmpty(), "neutral report produced a control");
+
+        // Left stick up must be Up, never Left; down must be Down.
+        feed(dsReport(t, 0x08, 0, 0, 128, 0));
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::DpadUp});
+        feed(dsReport(t, 0x08));
+        feed(dsReport(t, 0x08, 0, 0, 128, 255));
+        QCOMPARE(pressed.last().first().toString(), ControlId::DpadDown);
+        feed(dsReport(t, 0x08));
+        pressed.clear();
+        released.clear();
+
+        // Cross + Circle, L3 + R3, Create + Options, PS.
+        feed(dsReport(t, 0x08 | 0x20 | 0x40, 0x40 | 0x80 | 0x10 | 0x20, 0x01));
+        QStringList expected{ControlId::FaceSouth, ControlId::FaceEast,
+                             ControlId::ThumbLeft, ControlId::ThumbRight,
+                             ControlId::Capture, ControlId::Menu, ControlId::Guide};
+        expected.sort();
+        QCOMPARE(controlIds(pressed), expected);
+        feed(dsReport(t, 0x08));
+        QCOMPARE(controlIds(released), expected);
+
+        pressed.clear();
+        feed(dsReport(t, 0x03));   // hat 3 = down-right
+        QStringList diag{ControlId::DpadDown, ControlId::DpadRight};
+        diag.sort();
+        QCOMPARE(controlIds(pressed), diag);
+    }
+
+    // A Bluetooth pad can switch simple -> full mid-hold (e.g. another app
+    // reads its calibration). The held button must not re-press or stick, and
+    // a truncated report must not read as a release.
+    void dualSenseSimpleToFullSwitchKeepsHeldButton()
+    {
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        void* ds = handle(0x8102);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad);
+        device.report = dsReport(DsTransport::BtSimple78, 0x08);
+        api->devices.insert(ds, device);
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        QSignalSpy released(&pad, &Gamepad::controlReleased);
+        auto feed = [&](const QByteArray& r) {
+            api->devices[ds].report = r;
+            pad.onRawInput(ds);
+        };
+
+        feed(dsReport(DsTransport::BtSimple78, 0x08));
+        feed(dsReport(DsTransport::BtSimple78, 0x28));
+        feed(dsReport(DsTransport::BtFull, 0x28));
+        feed(dsReport(DsTransport::BtFull, 0x08).left(8));   // truncated
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::FaceSouth});
+        QVERIFY(released.isEmpty());
+
+        feed(dsReport(DsTransport::BtFull, 0x08));
+        QCOMPARE(controlIds(released), QStringList{ControlId::FaceSouth});
+        QCOMPARE(pressed.size(), 1);
+    }
+
+    // Two 0x31 reports in one RAWHID batch: press and release both surface.
+    void dualSenseBluetoothBatchKeepsPressAndRelease()
+    {
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        void* ds = handle(0x8103);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad);
+        device.report = dsReport(DsTransport::BtFull, 0x08);
+        api->devices.insert(ds, device);
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        QSignalSpy released(&pad, &Gamepad::controlReleased);
+
+        pad.onRawInput(ds);
+        api->devices[ds].report = dsReport(DsTransport::BtFull, 0x08, 0x40)
+                                + dsReport(DsTransport::BtFull, 0x08);
+        api->devices[ds].sonyBatch = 2;
+        pad.onRawInput(ds);
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::ThumbLeft});
+        QCOMPARE(controlIds(released), QStringList{ControlId::ThumbLeft});
     }
 
     void xinputCollectionIsRejectedAndRemembered()

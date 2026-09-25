@@ -28,9 +28,10 @@ class QTimer;
 // pad shows real input, the active role fails over immediately instead of
 // waiting out the disconnect debounce.
 //
-// USB (report 0x01) and Bluetooth (report 0x31, payload shifted +2) layouts
-// are both parsed. HID collections whose path contains "IG_" are XInput
-// devices and are left to the XInput backend. See docs/controller-input.md.
+// USB (report 0x01) and Bluetooth (simple 0x01, full 0x31) layouts are all
+// parsed; offsets live in SonyReportLayout.h. HID collections whose path
+// contains "IG_" are XInput devices and are left to the XInput backend.
+// See docs/controller-input.md.
 // Win32 lives in the .cpp only.
 //
 // Every WM_INPUT is read header-first and classified once per handle: a device
@@ -118,6 +119,7 @@ private:
         qint64 lastReportMs = 0;    // m_clock timestamp of the last report
         qint64 lastChangeMs = 0;    // last real button/stick edge, not idle traffic
         bool reported = false;      // produced at least one valid report
+        int reportShape = -1;       // (report id << 16) | length last logged
     };
 
     bool registerRawInput(bool remove = false);
@@ -134,8 +136,7 @@ private:
     void parseReport(void* handle, DeviceState& st, const unsigned char* data, int len);
     // parseReport stages, in call order. The decoders are pure (static);
     // routeReport owns the active-pad selection/steal side effects.
-    static int buttonBlockBase(unsigned char reportId, bool ds4, int len);
-    static quint32 decodeStickNav(const DeviceState& st, const unsigned char* d, int base, int len);
+    static quint32 decodeStickNav(const DeviceState& st, const unsigned char* d, int axisBase, int len);
     void routeReport(void* handle, const DeviceState& st, quint32 s, bool changed,
                      unsigned char reportId, const unsigned char* d, int len);
     void emitEdges(quint32 buttons);
