@@ -13,7 +13,7 @@ Bluetooth DualSense hotfix, first shipped as the `v0.7.9-beta1` pre-release for 
 
 ### Changed
 
-- The log records one `Gamepad: input layout` line per Sony controller whenever its report format changes (report id, length, layout, byte offsets), not every report.
+- The log records one `Gamepad: input layout` line per Sony controller whenever its report format changes (provider, report id, length, layout, byte offsets), not every report.
 
 ## [0.7.8] - 2026-09-22
 

@@ -950,7 +950,8 @@ void DualSenseDevice::parseReport(void* handle, DeviceState& st,
     if (shape != st.reportShape) {
         st.reportShape = shape;
         qInfo().noquote() << QStringLiteral(
-            "Gamepad: input layout %1 report_id=0x%2 length=%3 variant=%4 axes=%5 buttons=%6")
+            "Gamepad: input layout %1 provider=Sony Raw Input report_id=0x%2 length=%3 "
+            "variant=%4 axes=%5 buttons=%6")
             .arg(deviceIdentity(st.vendorId, st.productId))
             .arg(reportId, 2, 16, QLatin1Char('0'))
             .arg(len).arg(QLatin1String(layout.variant))
