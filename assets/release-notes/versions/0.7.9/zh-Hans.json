@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.9",
+  "locale": "zh-Hans",
+  "date": "2026-09-25",
+  "mode": "localized",
+  "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "修复",
+      "items": [
+        {
+          "id": "bluetooth-dualsense",
+          "text": "蓝牙连接的 DualSense：现在 GameHQ 菜单能正确读取摇杆和按键。此前，向上或向下推动左摇杆可能被识别为向左或向右，部分按键也没有反应。USB 连接不受影响。"
+        },
+        {
+          "id": "stick-clicks",
+          "text": "直接连接到 GameHQ 的 DualSense 和 DualShock 4 手柄现在支持 L3 和 R3（按下摇杆）。"
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "诊断",
+      "items": [
+        {
+          "id": "input-layout-log",
+          "text": "日志现在会记录每个 Sony 手柄发送的报告格式，便于诊断手柄问题。"
+        }
+      ]
+    }
+  ]
+}

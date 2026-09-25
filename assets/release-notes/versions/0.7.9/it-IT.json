@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.9",
+  "locale": "it-IT",
+  "date": "2026-09-25",
+  "mode": "localized",
+  "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "Correzioni",
+      "items": [
+        {
+          "id": "bluetooth-dualsense",
+          "text": "DualSense via Bluetooth: levette e pulsanti ora vengono letti correttamente nei menu di GameHQ. In precedenza, spingere la levetta sinistra in alto o in basso poteva essere rilevato come sinistra o destra e alcuni pulsanti non rispondevano. L’USB non era interessato."
+        },
+        {
+          "id": "stick-clicks",
+          "text": "L3 e R3 (pressione delle levette) ora funzionano sui controller DualSense e DualShock 4 collegati direttamente a GameHQ."
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "Diagnostica",
+      "items": [
+        {
+          "id": "input-layout-log",
+          "text": "Il log ora indica quale formato di report invia ogni controller Sony, rendendo più semplice diagnosticare i problemi del controller."
+        }
+      ]
+    }
+  ]
+}

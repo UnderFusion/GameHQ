@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.9",
+  "locale": "pt-BR",
+  "date": "2026-09-25",
+  "mode": "localized",
+  "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "Correções",
+      "items": [
+        {
+          "id": "bluetooth-dualsense",
+          "text": "DualSense via Bluetooth: os analógicos e os botões agora são lidos corretamente nos menus do GameHQ. Antes, mover o analógico esquerdo para cima ou para baixo podia ser registrado como esquerda ou direita, e alguns botões não respondiam. O USB não era afetado."
+        },
+        {
+          "id": "stick-clicks",
+          "text": "L3 e R3 (pressionar os analógicos) agora funcionam em controles DualSense e DualShock 4 conectados diretamente ao GameHQ."
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "Diagnóstico",
+      "items": [
+        {
+          "id": "input-layout-log",
+          "text": "O log agora registra qual formato de relatório cada controle Sony envia, o que facilita diagnosticar problemas de controle."
+        }
+      ]
+    }
+  ]
+}

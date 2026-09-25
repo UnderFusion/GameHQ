@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.9",
+  "locale": "zh-Hant",
+  "date": "2026-09-25",
+  "mode": "localized",
+  "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "修正",
+      "items": [
+        {
+          "id": "bluetooth-dualsense",
+          "text": "藍牙連線的 DualSense：現在 GameHQ 選單能正確讀取搖桿與按鍵。先前向上或向下推動左搖桿可能被判讀為向左或向右，部分按鍵也沒有反應。USB 連線不受影響。"
+        },
+        {
+          "id": "stick-clicks",
+          "text": "直接連線到 GameHQ 的 DualSense 與 DualShock 4 控制器現在支援 L3 與 R3（按下搖桿）。"
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "診斷",
+      "items": [
+        {
+          "id": "input-layout-log",
+          "text": "記錄檔現在會記下每個 Sony 控制器傳送的報告格式，方便診斷控制器問題。"
+        }
+      ]
+    }
+  ]
+}

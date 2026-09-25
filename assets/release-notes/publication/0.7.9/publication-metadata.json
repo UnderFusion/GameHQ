@@ -1,0 +1,518 @@
+{
+  "schema_version": 1,
+  "kind": "release-publication",
+  "version": "0.7.9",
+  "date": "2026-09-25",
+  "source_locale": "en-US",
+  "default_locale": "en-US",
+  "localization_policy": "complete",
+  "release_source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+  "release_body": {
+    "filename": "RELEASE_BODY.md",
+    "size": 1693,
+    "sha256": "329b8f3f76e72f8075fba1d8692b5015428428fc03ab5c6c85c252ede04bed80"
+  },
+  "distribution": {
+    "localized_documents": "repository",
+    "github_release_assets": false,
+    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.7.9/assets/release-notes/publication/0.7.9"
+  },
+  "localized_documents": [
+    {
+      "canonical_locale": "en-US",
+      "requested_locale": "en-US",
+      "effective_locale": "en-US",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "English (United States)",
+      "language_native_name": "English",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.en-US.md",
+      "size": 515,
+      "sha256": "510075921ef21e0833136d3690838bc97a98ecdfb06409d1d79ae7e76033f5a7",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hans",
+      "requested_locale": "zh-Hans",
+      "effective_locale": "zh-Hans",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Chinese (Simplified)",
+      "language_native_name": "简体中文",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.zh-Hans.md",
+      "size": 464,
+      "sha256": "157d69ed77977ca60bd8c94518023076a5c2a9dbc9fee2adc2975647f53b81ab",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ru-RU",
+      "requested_locale": "ru-RU",
+      "effective_locale": "ru-RU",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Russian",
+      "language_native_name": "Русский",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.ru-RU.md",
+      "size": 910,
+      "sha256": "7c628ab335b237f5976341edb7b83feff56ad434ca4443ce5658cf41f540ea14",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-ES",
+      "requested_locale": "es-ES",
+      "effective_locale": "es-ES",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Spanish",
+      "language_native_name": "Español",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.es-ES.md",
+      "size": 580,
+      "sha256": "98b7cc11da65fa70ea62aa22878057f21ba1620d727590b0a87bc2e25e249f0c",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pt-BR",
+      "requested_locale": "pt-BR",
+      "effective_locale": "pt-BR",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Portuguese (Brazil)",
+      "language_native_name": "Português (Brasil)",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.pt-BR.md",
+      "size": 585,
+      "sha256": "a6034d0e2688acec986c4e535d331d0eaa48cb1c3acd7838611ebb92a7819122",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "de-DE",
+      "requested_locale": "de-DE",
+      "effective_locale": "de-DE",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "German",
+      "language_native_name": "Deutsch",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.de-DE.md",
+      "size": 602,
+      "sha256": "f717b9750f896084602201401e7eaaf2eec00462f5a29d15f118b59cfbb75717",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ja-JP",
+      "requested_locale": "ja-JP",
+      "effective_locale": "ja-JP",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Japanese",
+      "language_native_name": "日本語",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.ja-JP.md",
+      "size": 750,
+      "sha256": "9c7a1592b9991d167bc9aca6a3f921fe36c563b44228e1289954f4b0f28767c0",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "fr-FR",
+      "requested_locale": "fr-FR",
+      "effective_locale": "fr-FR",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "French",
+      "language_native_name": "Français",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.fr-FR.md",
+      "size": 636,
+      "sha256": "98a927606310d3db8dbcb84d13662e6c50bef245a70aa84878c896dfae037712",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pl-PL",
+      "requested_locale": "pl-PL",
+      "effective_locale": "pl-PL",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Polish",
+      "language_native_name": "Polski",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.pl-PL.md",
+      "size": 593,
+      "sha256": "fbf24958c9953e2b30d87be1d6f6674e24fc7fa96e30bd5502d2047c9563027f",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ko-KR",
+      "requested_locale": "ko-KR",
+      "effective_locale": "ko-KR",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Korean",
+      "language_native_name": "한국어",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.ko-KR.md",
+      "size": 644,
+      "sha256": "a983f0cb00204ce611686e5e5bdc395c70ab2b37199977a973a431a330cbee16",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hant",
+      "requested_locale": "zh-Hant",
+      "effective_locale": "zh-Hant",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Chinese (Traditional)",
+      "language_native_name": "繁體中文",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.zh-Hant.md",
+      "size": 473,
+      "sha256": "e6c962cb56fc8e6b2d65c4ed351109f2a965e7d4af33b7bd4f82680c7bf9b57e",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "tr-TR",
+      "requested_locale": "tr-TR",
+      "effective_locale": "tr-TR",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Turkish",
+      "language_native_name": "Türkçe",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.tr-TR.md",
+      "size": 615,
+      "sha256": "30169f451e263c4410c0b9ad750490ad3106bdf3154c844f1daaa7c53f213d85",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "th-TH",
+      "requested_locale": "th-TH",
+      "effective_locale": "th-TH",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Thai",
+      "language_native_name": "ไทย",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.th-TH.md",
+      "size": 1212,
+      "sha256": "e8905927e0f74e0b8d5132a2a76d46cddc1e420287b95f088be3a6762051c76f",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-419",
+      "requested_locale": "es-419",
+      "effective_locale": "es-419",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Spanish (Latin America)",
+      "language_native_name": "Español (Latinoamérica)",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.es-419.md",
+      "size": 590,
+      "sha256": "f0461a2b5c0729656e4a7c41d8419a8f03ea2d950e17a6793509add41f65a744",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "uk-UA",
+      "requested_locale": "uk-UA",
+      "effective_locale": "uk-UA",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Ukrainian",
+      "language_native_name": "Українська",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.uk-UA.md",
+      "size": 874,
+      "sha256": "3535d9f9dc169f511541d3cd9dd4c9c1de4d9120df788f9b1dca084e8ec2dd25",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "it-IT",
+      "requested_locale": "it-IT",
+      "effective_locale": "it-IT",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "Italian",
+      "language_native_name": "Italiano",
+      "version": "0.7.9",
+      "date": "2026-09-25",
+      "filename": "release-notes.it-IT.md",
+      "size": 592,
+      "sha256": "e9270c8c150ebed41bc0b0d83888c9a325ff952ad85050cd1ad9bea0032093cc",
+      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "structure": [
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "bluetooth-dualsense",
+            "stick-clicks"
+          ]
+        },
+        {
+          "section_id": "diagnostics",
+          "item_ids": [
+            "input-layout-log"
+          ]
+        }
+      ]
+    }
+  ]
+}

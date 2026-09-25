@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.9",
+  "locale": "th-TH",
+  "date": "2026-09-25",
+  "mode": "localized",
+  "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "การแก้ไข",
+      "items": [
+        {
+          "id": "bluetooth-dualsense",
+          "text": "DualSense ผ่านบลูทูธ: ตอนนี้ GameHQ อ่านค่าก้านอนาล็อกและปุ่มในเมนูได้ถูกต้องแล้ว ก่อนหน้านี้การดันก้านซ้ายขึ้นหรือลงอาจถูกอ่านเป็นซ้ายหรือขวา และบางปุ่มไม่ตอบสนอง การเชื่อมต่อแบบ USB ไม่ได้รับผลกระทบ"
+        },
+        {
+          "id": "stick-clicks",
+          "text": "L3 และ R3 (การกดก้านอนาล็อก) ใช้งานได้แล้วบนคอนโทรลเลอร์ DualSense และ DualShock 4 ที่เชื่อมต่อกับ GameHQ โดยตรง"
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "การวินิจฉัย",
+      "items": [
+        {
+          "id": "input-layout-log",
+          "text": "ตอนนี้บันทึกจะระบุรูปแบบรายงานที่คอนโทรลเลอร์ Sony แต่ละตัวส่งมา ช่วยให้วินิจฉัยปัญหาคอนโทรลเลอร์ได้ง่ายขึ้น"
+        }
+      ]
+    }
+  ]
+}

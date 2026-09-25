@@ -2,6 +2,19 @@
 
 Public release history and the current local release candidate.
 
+## [0.7.9] - 2026-09-25
+
+Bluetooth DualSense hotfix, first shipped as the `v0.7.9-beta1` pre-release for confirmation on a Bluetooth pad.
+
+### Fixed
+
+- DualSense over Bluetooth: sticks and buttons are read correctly in GameHQ menus. Full Bluetooth reports (0x31) were parsed one byte off, so stick up/down registered as left/right and buttons were misread; simple Bluetooth reports were parsed with the USB layout. USB was not affected.
+- L3 and R3 (stick clicks) are now decoded on DualSense and DualShock 4 controllers read directly by GameHQ.
+
+### Changed
+
+- The log records one `Gamepad: input layout` line per Sony controller whenever its report format changes (report id, length, layout, byte offsets), not every report.
+
 ## [0.7.8] - 2026-09-22
 
 ### Highlights

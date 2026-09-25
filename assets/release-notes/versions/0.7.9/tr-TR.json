@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.9",
+  "locale": "tr-TR",
+  "date": "2026-09-25",
+  "mode": "localized",
+  "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "Düzeltmeler",
+      "items": [
+        {
+          "id": "bluetooth-dualsense",
+          "text": "Bluetooth üzerinden DualSense: GameHQ menülerinde analog çubuklar ve düğmeler artık doğru okunuyor. Önceden sol çubuğu yukarı veya aşağı itmek sol ya da sağ olarak algılanabiliyor ve bazı düğmeler yanıt vermiyordu. USB bağlantısı etkilenmiyordu."
+        },
+        {
+          "id": "stick-clicks",
+          "text": "L3 ve R3 (çubuklara basma) artık GameHQ’ya doğrudan bağlı DualSense ve DualShock 4 kontrolcülerinde çalışıyor."
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "Tanılama",
+      "items": [
+        {
+          "id": "input-layout-log",
+          "text": "Günlük artık her Sony kontrolcüsünün hangi rapor biçimini gönderdiğini kaydediyor; bu da kontrolcü sorunlarını tanılamayı kolaylaştırıyor."
+        }
+      ]
+    }
+  ]
+}

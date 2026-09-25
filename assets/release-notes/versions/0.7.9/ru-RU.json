@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.9",
+  "locale": "ru-RU",
+  "date": "2026-09-25",
+  "mode": "localized",
+  "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "Исправления",
+      "items": [
+        {
+          "id": "bluetooth-dualsense",
+          "text": "DualSense по Bluetooth: стики и кнопки теперь правильно считываются в меню GameHQ. Раньше наклон левого стика вверх или вниз мог распознаваться как влево или вправо, а некоторые кнопки не реагировали. USB-подключение это не затрагивало."
+        },
+        {
+          "id": "stick-clicks",
+          "text": "L3 и R3 (нажатие стиков) теперь работают на контроллерах DualSense и DualShock 4, подключённых напрямую к GameHQ."
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "Диагностика",
+      "items": [
+        {
+          "id": "input-layout-log",
+          "text": "Теперь журнал отмечает, какой формат отчётов отправляет каждый контроллер Sony. Это упрощает диагностику проблем с контроллером."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.9",
+  "locale": "fr-FR",
+  "date": "2026-09-25",
+  "mode": "localized",
+  "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "Corrections",
+      "items": [
+        {
+          "id": "bluetooth-dualsense",
+          "text": "DualSense en Bluetooth : les sticks et les boutons sont désormais lus correctement dans les menus de GameHQ. Auparavant, pousser le stick gauche vers le haut ou le bas pouvait être interprété comme gauche ou droite, et certains boutons ne répondaient pas. L’USB n’était pas concerné."
+        },
+        {
+          "id": "stick-clicks",
+          "text": "L3 et R3 (appui sur les sticks) fonctionnent désormais sur les manettes DualSense et DualShock 4 connectées directement à GameHQ."
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "Diagnostic",
+      "items": [
+        {
+          "id": "input-layout-log",
+          "text": "Le journal indique désormais le format de rapport envoyé par chaque manette Sony, ce qui facilite le diagnostic des problèmes de manette."
+        }
+      ]
+    }
+  ]
+}

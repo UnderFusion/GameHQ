@@ -1,6 +1,6 @@
 # Versioning & Documentation Rules
 
-> **Owner policy (2026-09-22):** the current release candidate is **0.7.8**. Internal implementation slices do not increment the product version; update its consolidated notes and affected docs instead.
+> **Owner policy (2026-09-25):** 0.7.8 is published. The Bluetooth DualSense hotfix is **0.7.9**, shipped first as the `v0.7.9-beta1` GitHub pre-release. `VERSION` stays plain `MAJOR.MINOR.PATCH` (the updater and release-note schema reject suffixes); a beta is identified by its tag and release title only. Internal implementation slices do not increment the product version.
 
 ## Scheme
 
@@ -37,7 +37,7 @@ local files does not publish or tag a release.
 
 ## Release Checklist
 
-1. Use the owner-designated release version in `VERSION`; retain 0.7.8 throughout this acceptance wave.
+1. Use the owner-designated release version in `VERSION` (currently 0.7.9); never add a `-betaN` suffix to it.
 2. Add a `CHANGELOG.md` entry with Added/Changed/Fixed/Removed sections as needed.
 3. Update affected docs in `docs/` when code changes behavior, architecture, storage, setup, capture, overlay, input, or UI rules.
 4. Update `docs/README.md` if a doc is added, renamed, or its purpose changes.

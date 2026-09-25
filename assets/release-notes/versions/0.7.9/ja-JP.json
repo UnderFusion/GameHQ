@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.9",
+  "locale": "ja-JP",
+  "date": "2026-09-25",
+  "mode": "localized",
+  "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "修正",
+      "items": [
+        {
+          "id": "bluetooth-dualsense",
+          "text": "Bluetooth 接続の DualSense：GameHQ のメニューでスティックとボタンが正しく読み取られるようになりました。以前は左スティックの上下が左右として認識されたり、一部のボタンが反応しなかったりすることがありました。USB 接続には影響はありませんでした。"
+        },
+        {
+          "id": "stick-clicks",
+          "text": "GameHQ に直接接続した DualSense および DualShock 4 コントローラーで、L3 と R3（スティック押し込み）が使えるようになりました。"
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "診断",
+      "items": [
+        {
+          "id": "input-layout-log",
+          "text": "各 Sony コントローラーが送信するレポート形式をログに記録するようになり、コントローラーの問題を診断しやすくなりました。"
+        }
+      ]
+    }
+  ]
+}

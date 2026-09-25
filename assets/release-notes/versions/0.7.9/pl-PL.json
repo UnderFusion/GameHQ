@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.9",
+  "locale": "pl-PL",
+  "date": "2026-09-25",
+  "mode": "localized",
+  "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "Poprawki",
+      "items": [
+        {
+          "id": "bluetooth-dualsense",
+          "text": "DualSense przez Bluetooth: gałki i przyciski są teraz poprawnie odczytywane w menu GameHQ. Wcześniej wychylenie lewej gałki w górę lub w dół mogło działać jak w lewo lub w prawo, a część przycisków nie reagowała. Połączenie USB nie było dotknięte problemem."
+        },
+        {
+          "id": "stick-clicks",
+          "text": "L3 i R3 (wciśnięcie gałek) działają teraz na kontrolerach DualSense i DualShock 4 podłączonych bezpośrednio do GameHQ."
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "Diagnostyka",
+      "items": [
+        {
+          "id": "input-layout-log",
+          "text": "Log zapisuje teraz, jaki format raportu wysyła każdy kontroler Sony, co ułatwia diagnozowanie problemów z kontrolerem."
+        }
+      ]
+    }
+  ]
+}
