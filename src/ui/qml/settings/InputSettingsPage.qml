@@ -647,6 +647,99 @@ SettingsPage {
         }
     }
 
+    // Steam Input conflict help. Guidance only: GameHQ cannot see Steam's
+    // controller settings, so every sentence here says "may". The two Steam
+    // buttons are the only external actions and run only when clicked.
+    SettingsSection {
+        id: steamSection
+        readonly property bool active: steamInput.enabled && steamInput.steamGame
+        readonly property bool pending: active && steamInput.pendingControls.length > 0
+        //% "Steam"
+        eyebrow: qsTrId("gamehq.settings.input.steam.eyebrow")
+        //% "Steam Input"
+        title: qsTrId("gamehq.settings.input.steam.title")
+        //% "Steam Input may also send a GameHQ controller shortcut to a Steam game, so one press can trigger both. GameHQ never changes Steam settings."
+        description: qsTrId("gamehq.settings.input.steam.description")
+        variant: pending ? "warning" : "normal"
+        Component.onCompleted: steamInput.refresh()
+        SettingsRow {
+            //% "Steam Input conflict help"
+            label: qsTrId("gamehq.settings.input.steam.help.label")
+            //% "Explain when a Create / Share or PS shortcut may also reach the game through Steam Input."
+            description: qsTrId("gamehq.settings.input.steam.help.description")
+            SettingsToggle { configKey: "input.steam_conflict_help"; defaultValue: true }
+        }
+        SettingsRow {
+            visible: steamInput.enabled
+            //% "Current game"
+            label: qsTrId("gamehq.settings.input.steam.game.label")
+            tone: steamSection.pending ? "warning" : "normal"
+            description: {
+                if (!steamInput.steamGame) {
+                    //% "No Steam game is in session."
+                    return qsTrId("gamehq.settings.input.steam.game.none")
+                }
+                if (steamInput.boundControls.length === 0) {
+                    //% "%1: no GameHQ shortcut uses Create / Share or PS."
+                    return qsTrId("gamehq.settings.input.steam.game.unbound").arg(steamInput.gameName)
+                }
+                if (steamSection.pending) {
+                    //% "%1: Steam Input may also send this GameHQ shortcut to the game."
+                    return qsTrId("gamehq.settings.input.steam.game.pending").arg(steamInput.gameName)
+                }
+                //% "%1: reviewed. This help returns if these shortcuts change."
+                return qsTrId("gamehq.settings.input.steam.game.reviewed").arg(steamInput.gameName)
+            }
+        }
+        SettingsRow {
+            visible: steamSection.active && steamInput.createShareBound
+            label: steamInput.controlLabel("gamepad.capture")
+            //% "If Steam Input is on for this game, remove the Steam binding on this button in the game's controller layout."
+            description: qsTrId("gamehq.settings.input.steam.capture.description")
+            AccentButton {
+                //% "Open Steam controller layout"
+                label: qsTrId("gamehq.settings.input.steam.capture.open")
+                quiet: true
+                onClicked: steamInput.openGameLayout()
+            }
+        }
+        SettingsRow {
+            visible: steamSection.active && steamInput.guideBound
+            label: steamInput.controlLabel("gamepad.guide")
+            //% "Steam sets this button for all games. In Steam's controller settings, review the Guide Button Chord Layout."
+            description: qsTrId("gamehq.settings.input.steam.guide.description")
+            AccentButton {
+                //% "Open Steam controller settings"
+                label: qsTrId("gamehq.settings.input.steam.guide.open")
+                quiet: true
+                onClicked: steamInput.openControllerSettings()
+            }
+        }
+        SettingsRow {
+            visible: steamSection.pending
+            controlWidth: Theme.s48 * 7
+            //% "Reviewed in Steam?"
+            label: qsTrId("gamehq.settings.input.steam.review.label")
+            //% "Mark this game as reviewed, or hide this help for it."
+            description: qsTrId("gamehq.settings.input.steam.review.description")
+            Row {
+                spacing: Theme.s8
+                AccentButton {
+                    //% "I've reviewed it"
+                    label: qsTrId("gamehq.settings.input.steam.review.done")
+                    primary: true
+                    onClicked: steamInput.markReviewed()
+                }
+                AccentButton {
+                    //% "Don't show for this game"
+                    label: qsTrId("gamehq.settings.input.steam.review.hide")
+                    quiet: true
+                    onClicked: steamInput.hideForGame()
+                }
+            }
+        }
+    }
+
     SettingsSection {
         //% "Modern controllers"
         eyebrow: qsTrId("gamehq.settings.input.modern.eyebrow")

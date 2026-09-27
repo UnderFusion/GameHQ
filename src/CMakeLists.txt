@@ -47,6 +47,7 @@ qt_add_executable(GameHQ
     gameinput/NeutralHandoffRunner.cpp gameinput/NeutralHandoffRunner.h
     gameinput/IsolationCapability.cpp gameinput/IsolationCapability.h
     games/GameDetector.cpp games/GameDetector.h
+    games/SteamAppLookup.cpp games/SteamAppLookup.h
     input/HotkeyManager.cpp input/HotkeyManager.h
     input/Gamepad.h
     input/HeldControlTracker.h
@@ -68,6 +69,7 @@ qt_add_executable(GameHQ
     input/GestureTiming.cpp input/GestureTiming.h
     input/BindingEditorModel.cpp input/BindingEditorModel.h
     input/ControlId.cpp input/ControlId.h
+    input/SteamInputAdvice.cpp input/SteamInputAdvice.h
     input/ControllerIdentity.cpp input/ControllerIdentity.h
     input/PhysicalControllerRegistry.cpp input/PhysicalControllerRegistry.h
     input/ExtraButtonCatalog.cpp input/ExtraButtonCatalog.h
@@ -123,6 +125,7 @@ qt_add_executable(GameHQ
     ui/CaptureLibraryService.cpp ui/CaptureLibraryService.h
     ui/SettingsRouter.cpp ui/SettingsRouter.h
     ui/CurrentGameService.cpp ui/CurrentGameService.h
+    ui/SteamInputHelper.cpp ui/SteamInputHelper.h
     ui/GalleryModel.cpp    ui/GalleryModel.h
     ui/ShellActions.cpp    ui/ShellActions.h
     updates/VersionNumber.cpp updates/VersionNumber.h

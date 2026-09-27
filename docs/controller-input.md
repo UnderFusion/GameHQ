@@ -228,6 +228,16 @@ A timeout is recorded as a timeout: the close completes, the policy and the fore
 
 **Controller-to-keyboard mappers (JoyXoff etc.).** A mapper that turns pad input into mouse/keyboard events is a second *logical* source GameHQ cannot dedup against: the pad arrives natively and the synthesized arrow keys arrive through Qt. Users of such tools should add GameHQ to the mapper's ignored-applications list; GameHQ deliberately does not blanket-ignore injected input, which would break Steam Input, accessibility tools and intentional macros.
 
+## Steam Input conflict help (guidance only)
+
+Steam Input can translate a controller button for a Steam game (DualSense Create → Select, for example) while GameHQ reads the same button, so one press fires the GameHQ shortcut and a game action. GameHQ cannot stop that without drivers or hooks, so it only explains it:
+
+- **Trigger.** The session game (`CurrentGameService`) is a Steam install and a **Global** GameHQ action on the pad in use is bound to Create/Share (`gamepad.capture`) or PS (`gamepad.guide`). `SteamInputAdvice` decides this from the effective controller table; `SteamAppLookup` maps the executable to its AppID through the library's `appmanifest_<appid>.acf` install manifest — the same scan the game-title lookup already did.
+- **Never touched.** No Steam controller configuration or other Steam user data is read or written, Steam is never hooked, and no layout is changed. Wording is always "may": GameHQ cannot see whether Steam Input is on.
+- **User-triggered links only.** Settings › Input › Steam Input offers `steam://controllerconfig/<appid>` for Create/Share (per-game layout) and `steam://settings/controller` for PS/Guide (Steam sets the Guide Button Chord Layout for all games). Nothing opens on its own.
+- **Notice.** At most one passive toast per game, set of unreviewed buttons and GameHQ run (respects `notifications.enabled`).
+- **State.** `input.steam_conflict_help` (default on) switches the help off. `input.steam_conflict_ack.<appid>` stores the reviewed buttons; a button bound later shows up again. `*` means "don't show for this game".
+
 ## Cross-provider integration (t25, 0.7.3)
 
 `ProviderIntegration` (`src/input/ProviderIntegration.h`) is the single seam every real input provider reports into: one `PhysicalControllerRegistry` (physical identity, lifecycle, capabilities) and one `CapabilityEventRouter` (press-cycle ownership + cross-provider edge dedup) shared by Sony Raw Input, GameInput, XInput, WinMM and the selective Raw HID fallback. `InputEngine` owns it; `GameInputRouter` receives it via `setProviderIntegration()` before `start()`.

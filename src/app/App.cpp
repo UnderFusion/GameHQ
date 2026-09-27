@@ -32,18 +32,21 @@
 #include "tray/TrayIcon.h"
 #include "ui/AppController.h"
 #include "ui/GalleryModel.h"
+#include "ui/SteamInputHelper.h"
 #include "updates/UpdateSchedule.h"
 #include "updates/UpdateService.h"
 #include "updates/UpdateInstaller.h"
 #include "Brand.h"
 
 #include <QDateTime>
+#include <QDesktopServices>
 #include <QFile>
 #include <QGuiApplication>
 #include <QQmlContext>
 #include <qqml.h>
 #include <QQuickWindow>
 #include <QTimer>
+#include <QUrl>
 
 namespace {
 
@@ -763,6 +766,27 @@ bool App::init()
     m_input->mappingPresetsModel()->refreshGameTarget();
     m_gameSessionPresets->syncFromSession();
 
+    // Steam Input conflict help: guidance only. It reads the session game from
+    // the same CurrentGameService as the mapping context, opens Steam's own
+    // screens only from an explicit click, and posts at most one passive notice
+    // per game and run.
+    SteamInputHelper::Providers steamProviders;
+    steamProviders.gameExecutable = [this] { return m_controller->currentGameExecutableKey(); };
+    steamProviders.gameName = [this] { return m_controller->currentGameName(); };
+    steamProviders.boundControls = [this] { return m_input->steamAdvisedBoundControls(); };
+    steamProviders.openUrl = [](const QString& url) {
+        return QDesktopServices::openUrl(QUrl(url));
+    };
+    steamProviders.notify = [this](const QString& title, const QString& body) {
+        if (m_config->value(ConfigKeys::NotificationsEnabled, true).toBool())
+            m_notify->post(title, body, {}, QStringLiteral("info"));
+    };
+    m_steamInput = std::make_unique<SteamInputHelper>(m_config.get(), std::move(steamProviders));
+    connect(m_controller.get(), &AppController::currentGameChanged,
+            m_steamInput.get(), &SteamInputHelper::refresh, Qt::QueuedConnection);
+    connect(m_input.get(), &InputEngine::mappingTablesChanged,
+            m_steamInput.get(), &SteamInputHelper::refresh, Qt::QueuedConnection);
+
     m_languageManager->setQmlRetranslateCallback([this] { m_engine.retranslate(); });
     qmlRegisterUncreatableType<ReplayBufferState>("GameHQ", 1, 0, "ReplayBufferState",
                                                 QStringLiteral("Replay state is owned by the capture service"));
@@ -774,6 +798,7 @@ bool App::init()
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlay"), m_overlay.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("sounds"), m_sounds.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("input"), m_input.get());
+    m_engine.rootContext()->setContextProperty(QStringLiteral("steamInput"), m_steamInput.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("updates"), m_updates.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("notifications"), m_notify.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("languageManager"),

@@ -33,6 +33,7 @@ constexpr std::array liveKeys{
     ConfigKeys::InputMultiTapIntervalMs,
     ConfigKeys::InputChordWindowMs,
     ConfigKeys::InputModernControllerSupport,
+    ConfigKeys::InputSteamConflictHelp,
     ConfigKeys::StorageScreenshotsRoot,
     ConfigKeys::StorageClipsRoot,
     ConfigKeys::StartupEnabled,

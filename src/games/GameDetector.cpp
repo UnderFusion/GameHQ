@@ -1,4 +1,5 @@
 #include "games/GameDetector.h"
+#include "games/SteamAppLookup.h"
 #include "integration/ExternalGameContext.h"
 
 #include <QDebug>
@@ -216,46 +217,12 @@ QString readVersionString(const QString& fullPath, const wchar_t* field)
     return {};
 }
 
-// Steam stores the real store name in each library's `appmanifest_<appid>.acf`.
-// If `fullPath` sits inside a `…/steamapps/common/<installdir>/…` tree, find the
-// manifest whose `installdir` matches and return its `name` — the true marketing
-// title even when the exe is an engine codename ("BBQ"/"KZ" → the real title).
+// Steam stores the real store name in each library's `appmanifest_<appid>.acf`
+// — the true marketing title even when the exe is an engine codename
+// ("BBQ"/"KZ" → the real title). SteamAppLookup owns the manifest scan.
 QString steamTitleForPath(const QString& fullPath)
 {
-    if (fullPath.isEmpty())
-        return {};
-    const QString unix = QDir::fromNativeSeparators(fullPath);
-    const int commonIdx = unix.indexOf(QStringLiteral("/steamapps/common/"),
-                                       0, Qt::CaseInsensitive);
-    if (commonIdx < 0)
-        return {};
-
-    const QString steamappsDir = unix.left(commonIdx) + QStringLiteral("/steamapps");
-    const QString afterCommon = unix.mid(commonIdx + int(qstrlen("/steamapps/common/")));
-    const QString installDir = afterCommon.section(QLatin1Char('/'), 0, 0);
-    if (installDir.isEmpty())
-        return {};
-
-    const QStringList manifests =
-        QDir(steamappsDir).entryList({ QStringLiteral("appmanifest_*.acf") }, QDir::Files);
-    static const QRegularExpression reInstall(
-        QStringLiteral("\"installdir\"\\s*\"([^\"]*)\""));
-    static const QRegularExpression reName(
-        QStringLiteral("\"name\"\\s*\"([^\"]*)\""));
-    for (const QString& m : manifests) {
-        QFile f(steamappsDir + QLatin1Char('/') + m);
-        if (!f.open(QIODevice::ReadOnly | QIODevice::Text))
-            continue;
-        const QString acf = QString::fromUtf8(f.readAll());
-        const auto mi = reInstall.match(acf);
-        if (mi.hasMatch()
-            && mi.captured(1).compare(installDir, Qt::CaseInsensitive) == 0) {
-            const auto mn = reName.match(acf);
-            if (mn.hasMatch() && !mn.captured(1).trimmed().isEmpty())
-                return mn.captured(1).trimmed();
-        }
-    }
-    return {};
+    return SteamAppLookup::forExecutable(fullPath).name;
 }
 
 // Is `cand` a usable human-facing title (vs. junk, a build artifact, or the bare

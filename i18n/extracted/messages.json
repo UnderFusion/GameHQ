@@ -1799,7 +1799,7 @@
         },
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 764
+          "line": 857
         }
       ],
       "plural": false,
@@ -3369,7 +3369,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 658
+          "line": 661
         }
       ],
       "plural": false,
@@ -4279,7 +4279,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 633
+          "line": 636
         }
       ],
       "plural": false,
@@ -7422,7 +7422,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 478
+          "line": 481
         }
       ],
       "plural": false,
@@ -7439,7 +7439,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 485
+          "line": 488
         }
       ],
       "plural": false,
@@ -7456,7 +7456,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 491
+          "line": 494
         }
       ],
       "plural": false,
@@ -7473,7 +7473,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 284
+          "line": 287
         }
       ],
       "plural": false,
@@ -7490,7 +7490,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 278
+          "line": 281
         }
       ],
       "plural": false,
@@ -7507,7 +7507,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 268
+          "line": 271
         }
       ],
       "plural": false,
@@ -7524,7 +7524,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 390
+          "line": 393
         }
       ],
       "plural": false,
@@ -7541,7 +7541,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 453
+          "line": 456
         }
       ],
       "plural": false,
@@ -7560,7 +7560,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 71
+          "line": 74
         }
       ],
       "plural": false,
@@ -7577,7 +7577,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 65
+          "line": 68
         }
       ],
       "plural": false,
@@ -7594,7 +7594,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 83
+          "line": 86
         }
       ],
       "plural": false,
@@ -7611,7 +7611,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 77
+          "line": 80
         }
       ],
       "plural": false,
@@ -7628,7 +7628,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 59
+          "line": 62
         }
       ],
       "plural": false,
@@ -7645,7 +7645,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 300
+          "line": 303
         }
       ],
       "plural": false,
@@ -7662,7 +7662,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 385
+          "line": 388
         }
       ],
       "plural": false,
@@ -7679,7 +7679,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 434
+          "line": 437
         }
       ],
       "plural": false,
@@ -7696,7 +7696,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 293
+          "line": 296
         }
       ],
       "plural": false,
@@ -7713,7 +7713,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 335
+          "line": 338
         }
       ],
       "plural": false,
@@ -7730,7 +7730,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 536
+          "line": 539
         }
       ],
       "plural": false,
@@ -7749,7 +7749,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 531
+          "line": 534
         }
       ],
       "plural": false,
@@ -7766,7 +7766,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 700
+          "line": 703
         }
       ],
       "plural": false,
@@ -9161,7 +9161,7 @@
         },
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 706
+          "line": 799
         }
       ],
       "plural": false,
@@ -11568,7 +11568,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 669
+          "line": 762
         }
       ],
       "plural": false,
@@ -11585,7 +11585,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 680
+          "line": 773
         }
       ],
       "plural": false,
@@ -11604,7 +11604,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 652
+          "line": 745
         }
       ],
       "plural": false,
@@ -11621,7 +11621,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 730
+          "line": 823
         }
       ],
       "plural": false,
@@ -11638,7 +11638,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 728
+          "line": 821
         }
       ],
       "plural": false,
@@ -11655,7 +11655,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 657
+          "line": 750
         }
       ],
       "plural": false,
@@ -11672,7 +11672,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 703
+          "line": 796
         }
       ],
       "plural": false,
@@ -11689,7 +11689,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 671
+          "line": 764
         }
       ],
       "plural": false,
@@ -11706,7 +11706,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 720
+          "line": 813
         }
       ],
       "plural": false,
@@ -11723,7 +11723,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 717
+          "line": 810
         }
       ],
       "plural": false,
@@ -11740,7 +11740,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 715
+          "line": 808
         }
       ],
       "plural": false,
@@ -11757,7 +11757,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 684
+          "line": 777
         }
       ],
       "plural": false,
@@ -11774,7 +11774,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 697
+          "line": 790
         }
       ],
       "plural": false,
@@ -11791,7 +11791,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 664
+          "line": 757
         }
       ],
       "plural": false,
@@ -11808,7 +11808,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 662
+          "line": 755
         }
       ],
       "plural": false,
@@ -11825,7 +11825,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 654
+          "line": 747
         }
       ],
       "plural": false,
@@ -11842,7 +11842,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 690
+          "line": 783
         }
       ],
       "plural": false,
@@ -12222,7 +12222,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 762
+          "line": 855
         }
       ],
       "plural": false,
@@ -12239,7 +12239,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
-          "line": 760
+          "line": 853
         }
       ],
       "plural": false,
@@ -12247,6 +12247,325 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "28bd1052812489099b3b1331a4bac9903c100fecd5b71a07d85e05fd1af38475"
+    },
+    {
+      "id": "gamehq.settings.input.steam.capture.description",
+      "source": "If Steam Input is on for this game, remove the Steam binding on this button in the game's controller layout.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 698
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7eeb735056ad0b8ae9bf8b183c127a22e21a9c783479ba5776989526320682fc"
+    },
+    {
+      "id": "gamehq.settings.input.steam.capture.open",
+      "source": "Open Steam controller layout",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 701
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2994e5948e542e2c580a7325426d18a677fdb00aacb5d7733c82822d7a1e6e69"
+    },
+    {
+      "id": "gamehq.settings.input.steam.description",
+      "source": "Steam Input may also send a GameHQ controller shortcut to a Steam game, so one press can trigger both. GameHQ never changes Steam settings.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 662
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ",
+        "GameHQ"
+      ],
+      "source_hash": "0a06d3b26a9ba5cae9573af2d5c5f925bc25cce495b2a46c2ed258d3078bc13b"
+    },
+    {
+      "id": "gamehq.settings.input.steam.eyebrow",
+      "source": "Steam",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 658
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "571f948833fbc74db5886c372e62e02c1e8337141d09949b3fcc363dcaba845c"
+    },
+    {
+      "id": "gamehq.settings.input.steam.game.label",
+      "source": "Current game",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 675
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "982755b5c6920c050f691914f97d42e9833a69e312c8523d0f6cc766d35a7fd4"
+    },
+    {
+      "id": "gamehq.settings.input.steam.game.none",
+      "source": "No Steam game is in session.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 680
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3c4f549c013fe916f45f52c9b7f8006536b59b9289318cfbde1bf04f546ca870"
+    },
+    {
+      "id": "gamehq.settings.input.steam.game.pending",
+      "source": "%1: Steam Input may also send this GameHQ shortcut to the game.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 688
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "656bd30fb52a459a4de56a660487a64669337dd6622d611fdb1d38919a9bc796"
+    },
+    {
+      "id": "gamehq.settings.input.steam.game.reviewed",
+      "source": "%1: reviewed. This help returns if these shortcuts change.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 691
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8cd5c12348c32f07b1e11fe6dae7ad4c8c66234deb4a867f206baf1afebe4c9b"
+    },
+    {
+      "id": "gamehq.settings.input.steam.game.unbound",
+      "source": "%1: no GameHQ shortcut uses Create / Share or PS.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 684
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "125a0ff806d423b1c37056ac4c83000628943a2edaf1f2a8b5fe8aaf14add12b"
+    },
+    {
+      "id": "gamehq.settings.input.steam.guide.description",
+      "source": "Steam sets this button for all games. In Steam's controller settings, review the Guide Button Chord Layout.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 710
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d1c0d841032f36c32e260e54bf437cf68dd25c15e953273f247d2045cd114de6"
+    },
+    {
+      "id": "gamehq.settings.input.steam.guide.open",
+      "source": "Open Steam controller settings",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 713
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5707f4019d5309c39a8ea2d841b95fd3731c77f2a3811acd721a0ae9b6497e45"
+    },
+    {
+      "id": "gamehq.settings.input.steam.help.description",
+      "source": "Explain when a Create / Share or PS shortcut may also reach the game through Steam Input.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 669
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "eec6e5d99f2431b359fbda37267b6c9c1d6fa2c751d1d5199208f6bf0abcde5a"
+    },
+    {
+      "id": "gamehq.settings.input.steam.help.label",
+      "source": "Steam Input conflict help",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 667
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "322c10daf57a5d4315539e31280ddbcb5518e3f0af919cff80776a8c7e21e92d"
+    },
+    {
+      "id": "gamehq.settings.input.steam.review.description",
+      "source": "Mark this game as reviewed, or hide this help for it.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 724
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "90d017d0ad5e7fd09fe4363af2cc763222d4e17ad7f4761e898a991c8e3efb89"
+    },
+    {
+      "id": "gamehq.settings.input.steam.review.done",
+      "source": "I've reviewed it",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 729
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1fe0e8da8598342751773bf29ab3245c7c7ae3471d5885b540f1307a18fccc2a"
+    },
+    {
+      "id": "gamehq.settings.input.steam.review.hide",
+      "source": "Don't show for this game",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 735
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0b49ca90dcd9124fcb7590fc0bacf7ad3f352e1fb8ea119b89ec81141b174f2c"
+    },
+    {
+      "id": "gamehq.settings.input.steam.review.label",
+      "source": "Reviewed in Steam?",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 722
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0efa0c542a4cf2c3f7974f1bdc453771e752554715ab9c01d527ded1a829cd09"
+    },
+    {
+      "id": "gamehq.settings.input.steam.title",
+      "source": "Steam Input",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/InputSettingsPage.qml",
+          "line": 660
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9515cd06e491287d92c6f0bda9b67252875b4f16d4a47bb2b8e15475dbf54ffd"
     },
     {
       "id": "gamehq.settings.input.test.adopt_bindings",
@@ -15437,6 +15756,77 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "eda8d7dc2647a8cdbb3c20288b0159797791c01e67938d9f4da5c2e97e142c9b"
+    },
+    {
+      "id": "gamehq.steam_input.control.capture",
+      "source": "Create / Share button",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/SteamInputHelper.cpp",
+          "line": 57
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "e7658b6654974089fa21103af59aefa84ac79792d43e22d851eb8d7248837c8e"
+    },
+    {
+      "id": "gamehq.steam_input.control.guide",
+      "source": "PS / Guide button",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/SteamInputHelper.cpp",
+          "line": 51
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "822b370b70ff9181b812aea0830c9ea0983ba551bcbb25df2fedcd4ca89133a6"
+    },
+    {
+      "id": "gamehq.steam_input.notice.body",
+      "source": "%1: Steam Input may also send %2 to the game. Review it in Settings › Input › Steam Input.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/SteamInputHelper.cpp",
+          "line": 106
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1",
+        "%2"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c168dd0a28df871d4a177b56d26385655b09543b34dbff53fc28c768ff957697"
+    },
+    {
+      "id": "gamehq.steam_input.notice.title",
+      "source": "Steam Input may also use this button",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/SteamInputHelper.cpp",
+          "line": 101
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "eee351f9081f1e261bfbcfbe8b2c04e4db4dfd696238160aac6a2d84e42e1101"
     },
     {
       "id": "gamehq.tray.exit",
