@@ -1173,6 +1173,8 @@ void InputEngine::setOverlayVisible(bool visible)
     m_overlayVisible = visible;
     if (!visible)
         m_playbackActive = false;
+    else
+        m_held.markHeldAsStale();   // pre-open holds must not stall the close
     // A held navigation button shouldn't keep firing into the window we just
     // left — stop any in-flight repeat when the focus context switches.
     stopNavRepeat();
