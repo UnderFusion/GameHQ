@@ -4,7 +4,10 @@
 #include <climits>
 #include <windows.h>
 
+#include <atomic>
+#include <mutex>
 #include <thread>
+#include <vector>
 
 class QTimer;
 
@@ -21,9 +24,13 @@ class QTimer;
 // on a real machine, far too slow for the GUI thread (and repeating every
 // 2 s on machines with no joystick at all). Only the result is marshalled
 // back to the owning thread; all state, timers and signals stay there.
-// While connected, the active slot is polled fast; on unplug the held
-// buttons are released before the disconnect is reported, then arrival
-// scanning resumes.
+// While connected, the active slot is sampled on its own worker thread and
+// only state CHANGES are handed to the owning thread, in order. joyGetPosEx
+// reports "is it down right now", so sampling on the GUI thread lost every
+// tap that started and ended inside a GUI stall (50-200 ms stalls are common
+// while the overlay animates) — the user had to press twice. A change is now
+// delivered late at worst, never dropped. On unplug the held buttons are
+// released before the disconnect is reported, then arrival scanning resumes.
 class WinMMDevice : public Gamepad
 {
     Q_OBJECT
@@ -62,13 +69,26 @@ private:
     // Worker thread; touches no members.
     static ScanResult scanSlots(bool reloadConfig);
     void applyScanResult(const ScanResult& result);
-    void poll();
+    // One sampled reading; `result` is the joyGetPosEx code.
+    struct Sample {
+        UINT result = 0;
+        quint32 state = 0;
+    };
+    void startSampler();
+    void stopSampler();
+    void pushSample(const Sample& sample);   // worker thread
+    void drainSamples();                     // owning thread
+    void applyState(quint32 state);
     void disconnectActive();
     void emitEdges(quint32 buttons);
 
-    QTimer* m_pollTimer = nullptr;     // runs only while connected
     QTimer* m_rescanTimer = nullptr;   // slow safety net while disconnected
     std::thread m_scanThread;          // joined before reuse and in the dtor
+    std::thread m_sampleThread;        // runs only while connected
+    std::atomic<bool> m_sampleStop{false};
+    std::mutex m_sampleMutex;          // guards the two members below
+    std::vector<Sample> m_samples;
+    bool m_drainPosted = false;
     bool m_scanInFlight = false;       // owning thread only
     int m_configReloadScans = 0;       // scans left that reload WinMM's list
     quint32 m_prevButtons = 0;
