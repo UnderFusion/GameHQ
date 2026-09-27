@@ -188,6 +188,8 @@ QtObject {
     readonly property int toastVisibleLimit: 4
     readonly property int toastLifespan: 3600
     readonly property int toastPendingLifespan: 60000
+    readonly property int toastWarningLifespan: 10000   // warnings stay long enough to read
+    readonly property int toastWarningGlyph: 40         // caution badge diameter
 
     readonly property int durFast:   skin.durFast
     readonly property int durNormal: skin.durNormal

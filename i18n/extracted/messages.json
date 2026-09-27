@@ -392,15 +392,15 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1087
+          "line": 1105
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1104
+          "line": 1122
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1140
+          "line": 1158
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
@@ -4722,7 +4722,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1142
+          "line": 1160
         },
         {
           "file": "src/ui/qml/components/DesktopGalleryHeader.qml",
@@ -4743,7 +4743,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1138
+          "line": 1156
         },
         {
           "file": "src/ui/qml/components/OverlayActionMenu.qml",
@@ -4788,7 +4788,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1075
+          "line": 1093
         }
       ],
       "plural": false,
@@ -4808,7 +4808,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1085
+          "line": 1103
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
@@ -4829,7 +4829,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 413
+          "line": 431
         }
       ],
       "plural": true,
@@ -4848,7 +4848,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1102
+          "line": 1120
         }
       ],
       "plural": false,
@@ -7135,7 +7135,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1057
+          "line": 1075
         },
         {
           "file": "src/ui/qml/settings/LibrarySettingsPage.qml",
@@ -7185,7 +7185,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 171
+          "line": 189
         },
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
@@ -7210,7 +7210,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 179
+          "line": 197
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7231,7 +7231,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 175
+          "line": 193
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7252,7 +7252,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 181
+          "line": 199
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7273,7 +7273,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 183
+          "line": 201
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7294,7 +7294,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 173
+          "line": 191
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7315,7 +7315,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 177
+          "line": 195
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -11549,6 +11549,10 @@
       "context": "ID",
       "domain": "application",
       "locations": [
+        {
+          "file": "src/ui/qml/Main.qml",
+          "line": 160
+        },
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
           "line": 99

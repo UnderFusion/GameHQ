@@ -106,9 +106,9 @@
       <translation>キャンセル</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1087"></location>
-      <location filename="src/ui/qml/Main.qml" line="1104"></location>
-      <location filename="src/ui/qml/Main.qml" line="1140"></location>
+      <location filename="src/ui/qml/Main.qml" line="1105"></location>
+      <location filename="src/ui/qml/Main.qml" line="1122"></location>
+      <location filename="src/ui/qml/Main.qml" line="1158"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="525"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
@@ -1327,13 +1327,13 @@
       <translation>フォルダーを追加…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1142"></location>
+      <location filename="src/ui/qml/Main.qml" line="1160"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>一括選択</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1138"></location>
+      <location filename="src/ui/qml/Main.qml" line="1156"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="14"></location>
       <source>Show in folder</source>
       <translation>フォルダーで表示</translation>
@@ -1345,20 +1345,20 @@
       <translation>%1 ・ %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1075"></location>
+      <location filename="src/ui/qml/Main.qml" line="1093"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 ・ %2
 ファイルは完全に削除されます。</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1085"></location>
+      <location filename="src/ui/qml/Main.qml" line="1103"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="523"></location>
       <source>Delete capture?</source>
       <translation>キャプチャを削除しますか？</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="413"></location>
+      <location filename="src/ui/qml/Main.qml" line="431"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
@@ -1367,7 +1367,7 @@ This cannot be undone.</source>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1102"></location>
+      <location filename="src/ui/qml/Main.qml" line="1120"></location>
       <source>Delete selected captures?</source>
       <translation>選択したキャプチャを削除しますか？</translation>
     </message>
@@ -2030,7 +2030,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 を共有：%2 = %3、%4 = %5。</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1057"></location>
+      <location filename="src/ui/qml/Main.qml" line="1075"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>監視するフォルダーを選択</translation>
@@ -2044,44 +2044,44 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQについて</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="171"></location>
+      <location filename="src/ui/qml/Main.qml" line="189"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="57"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="11"></location>
       <source>All</source>
       <translation>すべて</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="179"></location>
+      <location filename="src/ui/qml/Main.qml" line="197"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="19"></location>
       <source>Clips</source>
       <translation>クリップ</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="175"></location>
+      <location filename="src/ui/qml/Main.qml" line="193"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="15"></location>
       <source>Favorites</source>
       <translation>お気に入り</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="181"></location>
+      <location filename="src/ui/qml/Main.qml" line="199"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="21"></location>
       <source>Game</source>
       <translation>ゲーム</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="183"></location>
+      <location filename="src/ui/qml/Main.qml" line="201"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
       <source>Game favorites</source>
       <translation>ゲームのお気に入り</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="173"></location>
+      <location filename="src/ui/qml/Main.qml" line="191"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="13"></location>
       <source>Recent</source>
       <translation>最新</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="177"></location>
+      <location filename="src/ui/qml/Main.qml" line="195"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="17"></location>
       <source>Screenshots</source>
       <translation>スクリーンショット</translation>
@@ -3304,6 +3304,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>自動修正</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
+      <location filename="src/ui/qml/Main.qml" line="160"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Controller hidden</source>
       <translation>コントローラーが非表示です</translation>

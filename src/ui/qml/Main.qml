@@ -143,6 +143,24 @@ ApplicationWindow {
         settingsView.selectCategory(settingsView.categories.length - 1, true)
     }
 
+    // A pad cloaked by a HID filter (HidHide under DSX/DS4Windows/reWASD) makes
+    // every controller shortcut silently dead. Settings shows the full warning;
+    // this raises it once per distinct message so it is noticed while in-game.
+    property string lastControllerWarningToast: ""
+    Connections {
+        target: input
+        function onControllerWarningChanged() {
+            const text = input.controllerWarning
+            if (text.length === 0 || text === window.lastControllerWarningToast)
+                return
+            window.lastControllerWarningToast = text
+            if (!app.config("notifications.enabled", true))
+                return
+            //% "Controller hidden"
+            notifications.post(qsTrId("gamehq.settings.input.hidden.title"), text, "", "warning")
+        }
+    }
+
     Connections {
         target: app
         function onConfigChanged(key, value) {

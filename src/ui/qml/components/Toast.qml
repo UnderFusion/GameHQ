@@ -12,8 +12,10 @@ Item {
     property string imageUrl: ""
     property date when                // formatted on demand so live locale changes update the toast
     property bool isVideo: false      // show the play badge over the thumbnail
-    property string kind: "info"      // success | info | error
-    property int lifespan: pending ? Theme.toastPendingLifespan : Theme.toastLifespan
+    property string kind: "info"      // success | info | warning | error
+    readonly property bool alert: kind === "warning" || kind === "error"
+    property int lifespan: pending ? Theme.toastPendingLifespan
+                         : alert ? Theme.toastWarningLifespan : Theme.toastLifespan
     property bool pending: false
     property int contentRevision: 0
     property bool ready: false
@@ -34,6 +36,7 @@ Item {
     function accentColor() {
         if (kind === "success") return Theme.success
         if (kind === "error")   return Theme.danger
+        if (kind === "warning") return Theme.warning
         return Theme.accent
     }
 
@@ -65,6 +68,26 @@ Item {
             width: card.width - Theme.s16 * 2
             anchors.verticalCenter: parent.verticalCenter
             spacing: Theme.s16
+
+            Rectangle {                   // caution badge for warnings/errors
+                id: badge
+                visible: root.alert && root.imageUrl === ""
+                width: visible ? Theme.toastWarningGlyph : 0
+                height: width
+                radius: width / 2
+                color: Qt.rgba(root.accentColor().r, root.accentColor().g, root.accentColor().b, 0.16)
+                border.width: 2
+                border.color: root.accentColor()
+                anchors.verticalCenter: parent.verticalCenter
+                Text {
+                    anchors.centerIn: parent
+                    text: "!"
+                    color: root.accentColor()
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontDisplay
+                    font.weight: Font.Bold
+                }
+            }
 
             Rectangle {                   // thumbnail — locked to 16:9 (screen ratio)
                 id: thumb
@@ -98,6 +121,7 @@ Item {
             Column {
                 anchors.verticalCenter: parent.verticalCenter
                 width: bodyRow.width - (thumb.visible ? thumb.width + bodyRow.spacing : 0)
+                       - (badge.visible ? badge.width + bodyRow.spacing : 0)
                 spacing: 2
                 Text {
                     width: parent.width
@@ -115,6 +139,10 @@ Item {
                     color: Theme.textMuted
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontBody
+                    // Warnings explain what to do, so let them wrap instead of
+                    // cutting the advice off after one line.
+                    wrapMode: root.alert ? Text.WordWrap : Text.NoWrap
+                    maximumLineCount: root.alert ? 4 : 1
                     elide: Text.ElideRight
                 }
                 Text {
