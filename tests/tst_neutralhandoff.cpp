@@ -133,6 +133,7 @@ private slots:
 
     void trackerKeepsRawEdgesPerDevice();
     void aDeviceThatGoesAwayCannotHoldAnything();
+    void holdsFromBeforeTheOverlayOpenedDoNotBlockTheClose();
 
     void aCloseWithNothingToDeferDoesNotWait();
     void aNeutralPadClosesWithoutWaiting();
@@ -248,6 +249,36 @@ void NeutralHandoffTest::trackerKeepsRawEdgesPerDevice()
 
     tracker.reset();
     QCOMPARE(tracker.presentDevices(), 0);
+}
+
+void NeutralHandoffTest::holdsFromBeforeTheOverlayOpenedDoNotBlockTheClose()
+{
+    const QString pad = QStringLiteral("pad:virtual");
+    HeldControlTracker tracker;
+    tracker.noteDevicePresent(pad);
+    // A pad whose resting report decodes as pressed: it never sends a release.
+    tracker.notePressed(pad, QStringLiteral("gamepad.dpad_up"));
+    tracker.notePressed(pad, QStringLiteral("gamepad.dpad_left"));
+    QCOMPARE(tracker.heldCount(), 2);
+
+    tracker.markHeldAsStale();   // the overlay opens
+    QVERIFY(!tracker.anyHeld());
+    QVERIFY(tracker.heldControls().isEmpty());
+    QCOMPARE(tracker.presentDevices(), 1);
+
+    // The same hold repeated is still the stale one.
+    tracker.notePressed(pad, QStringLiteral("gamepad.dpad_up"));
+    QVERIFY(!tracker.anyHeld());
+
+    // A press made inside the overlay counts as usual.
+    tracker.notePressed(pad, QStringLiteral("gamepad.cross"));
+    QCOMPARE(tracker.heldControls(), QStringList({QStringLiteral("gamepad.cross")}));
+
+    // Once the stale control really releases, a fresh press counts again.
+    tracker.noteReleased(pad, QStringLiteral("gamepad.dpad_up"));
+    QCOMPARE(tracker.heldCount(), 1);
+    tracker.notePressed(pad, QStringLiteral("gamepad.dpad_up"));
+    QCOMPARE(tracker.heldCount(), 2);
 }
 
 void NeutralHandoffTest::aDeviceThatGoesAwayCannotHoldAnything()

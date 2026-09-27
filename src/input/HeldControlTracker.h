@@ -48,11 +48,17 @@ public:
             return;
         m_heldCount -= device->size();
         m_devices.erase(device);
+        m_stale.remove(deviceKey);
     }
 
     void notePressed(const QString& deviceKey, const QString& controlId)
     {
         if (deviceKey.isEmpty() || controlId.isEmpty())
+            return;
+        // Still the same physical hold that was already there when the
+        // overlay opened: keep ignoring it until a real release arrives.
+        auto stale = m_stale.constFind(deviceKey);
+        if (stale != m_stale.cend() && stale->contains(controlId))
             return;
         QSet<QString>& held = m_devices[deviceKey];
         if (!held.contains(controlId)) {
@@ -63,6 +69,9 @@ public:
 
     void noteReleased(const QString& deviceKey, const QString& controlId)
     {
+        auto stale = m_stale.find(deviceKey);
+        if (stale != m_stale.end() && stale->remove(controlId))
+            return;
         auto device = m_devices.find(deviceKey);
         if (device == m_devices.end() || !device->remove(controlId))
             return;
@@ -72,6 +81,24 @@ public:
     void reset()
     {
         m_devices.clear();
+        m_stale.clear();
+        m_heldCount = 0;
+    }
+
+    // The overlay just opened. Whatever is held at this moment was not pressed
+    // to use the overlay, so the close handoff must not wait for it: a pad
+    // whose resting report decodes as pressed (a virtual DS4 in a mode we
+    // misread) would otherwise push every close into the handoff timeout.
+    // Those controls stop counting until the device really releases them; a
+    // fresh press after that release counts again.
+    void markHeldAsStale()
+    {
+        for (auto device = m_devices.begin(); device != m_devices.end(); ++device) {
+            if (device->isEmpty())
+                continue;
+            m_stale[device.key()].unite(*device);
+            device->clear();
+        }
         m_heldCount = 0;
     }
 
@@ -100,5 +127,6 @@ public:
 
 private:
     QHash<QString, QSet<QString>> m_devices;
+    QHash<QString, QSet<QString>> m_stale;   // held before the overlay opened
     int m_heldCount = 0;
 };
