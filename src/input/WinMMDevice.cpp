@@ -10,8 +10,15 @@
 #include <windows.h>
 #include <mmsystem.h>
 
+#include <chrono>
+
 namespace {
-constexpr int kPollMs = 50;
+// Sampling runs off the GUI thread, so it can afford a rate that catches a
+// quick tap (Windows sleep granularity makes this ~10-16 ms in practice).
+constexpr int kSampleMs = 8;
+// Changes queued while the owning thread is stalled; far more than any stall
+// produces, bounded only so a wedged GUI cannot grow it forever.
+constexpr size_t kMaxQueuedSamples = 512;
 constexpr int kRescanMs = 2000;
 constexpr UINT kMaxSlots = 16;
 // Scans after a topology change that reload the WinMM joystick list. A
@@ -101,19 +108,15 @@ quint32 WinMMDevice::mapDigitalButtons(quint32 rawButtons, bool ds4Layout)
 
 WinMMDevice::WinMMDevice(QObject* parent)
     : Gamepad(parent)
-    , m_pollTimer(new QTimer(this))
     , m_rescanTimer(new QTimer(this))
 {
-    m_pollTimer->setTimerType(Qt::PreciseTimer);
-    m_pollTimer->setInterval(kPollMs);
-    connect(m_pollTimer, &QTimer::timeout, this, &WinMMDevice::poll);
-
     m_rescanTimer->setInterval(kRescanMs);
     connect(m_rescanTimer, &QTimer::timeout, this, &WinMMDevice::rescan);
 }
 
 WinMMDevice::~WinMMDevice()
 {
+    stopSampler();
     if (m_scanThread.joinable())
         m_scanThread.join();
 }
@@ -250,33 +253,92 @@ void WinMMDevice::applyScanResult(const ScanResult& result)
             << (result.reloadedConfig ? "(after joystick list reload)" : "");
     m_configReloadScans = 0;
     m_rescanTimer->stop();
-    m_pollTimer->start();
+    startSampler();
     emit connected(true);
 }
 
-void WinMMDevice::poll()
+void WinMMDevice::startSampler()
 {
-    if (!m_connected)
-        return;
+    stopSampler();
+    m_sampleStop = false;
+    const UINT id = m_activeId;
+    const bool ds4 = m_ds4Layout;
+    m_sampleThread = std::thread([this, id, ds4] {
+        bool first = true;
+        quint32 last = 0;
+        while (!m_sampleStop.load()) {
+            JOYINFOEX info{};
+            info.dwSize = sizeof(info);
+            info.dwFlags = JOY_RETURNALL;
 
-    JOYINFOEX info{};
-    info.dwSize = sizeof(info);
-    info.dwFlags = JOY_RETURNALL;
+            QElapsedTimer call;
+            call.start();
+            const MMRESULT result = joyGetPosEx(id, &info);
+            PerfTrace::reportSlow("WinMM joyGetPosEx poll", call.nsecsElapsed() / 1000);
 
-    QElapsedTimer call;
-    call.start();
-    const MMRESULT result = joyGetPosEx(m_activeId, &info);
-    PerfTrace::reportSlow("WinMM joyGetPosEx poll", call.nsecsElapsed() / 1000);
+            if (result == JOYERR_UNPLUGGED) {
+                pushSample({result, 0});
+                return;
+            }
+            if (result == JOYERR_NOERROR) {
+                const quint32 state = mapWinMMState(info, ds4);
+                if (first || state != last) {
+                    pushSample({result, state});
+                    last = state;
+                    first = false;
+                }
+            }   // other errors are transient: keep the slot, skip this sample
+            std::this_thread::sleep_for(std::chrono::milliseconds(kSampleMs));
+        }
+    });
+}
 
-    if (result == JOYERR_UNPLUGGED) {
-        disconnectActive();
-        return;
+void WinMMDevice::stopSampler()
+{
+    m_sampleStop = true;
+    if (m_sampleThread.joinable())
+        m_sampleThread.join();   // at most one sample interval
+    std::lock_guard<std::mutex> lock(m_sampleMutex);
+    m_samples.clear();
+}
+
+void WinMMDevice::pushSample(const Sample& sample)
+{
+    bool post = false;
+    {
+        std::lock_guard<std::mutex> lock(m_sampleMutex);
+        if (m_samples.size() < kMaxQueuedSamples || sample.result == JOYERR_UNPLUGGED)
+            m_samples.push_back(sample);
+        post = !m_drainPosted;
+        m_drainPosted = true;
     }
+    // One queued drain per batch. The destructor joins this thread first, so
+    // `this` is alive here; a metacall to a destroyed object is discarded.
+    if (post)
+        QMetaObject::invokeMethod(this, [this] { drainSamples(); }, Qt::QueuedConnection);
+}
 
-    if (result != JOYERR_NOERROR)
-        return;   // transient error — keep the slot, skip this tick
+void WinMMDevice::drainSamples()
+{
+    std::vector<Sample> batch;
+    {
+        std::lock_guard<std::mutex> lock(m_sampleMutex);
+        batch.swap(m_samples);
+        m_drainPosted = false;
+    }
+    for (const Sample& sample : batch) {
+        if (!m_connected)
+            return;   // a stale batch from a previous connection
+        if (sample.result == JOYERR_UNPLUGGED) {
+            disconnectActive();
+            return;
+        }
+        applyState(sample.state);
+    }
+}
 
-    const quint32 state = mapWinMMState(info, m_ds4Layout);
+void WinMMDevice::applyState(quint32 state)
+{
     if (m_baselinePending) {
         m_baselinePending = false;
         m_prevButtons = state;
@@ -296,7 +358,7 @@ void WinMMDevice::disconnectActive()
     emitEdges(0);
     m_connected = false;
     m_activeId = UINT_MAX;
-    m_pollTimer->stop();
+    stopSampler();
     m_rescanTimer->start();
     emit connected(false);
 }
