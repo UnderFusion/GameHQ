@@ -22,7 +22,8 @@ class NotificationCenter : public QObject
 public:
     explicit NotificationCenter(QQmlApplicationEngine* engine, QObject* parent = nullptr);
 
-    // kind: "success" | "info" | "error" (tints the accent bar).
+    // kind: "success" | "info" | "warning" | "error" (tints the accent bar;
+    // warning/error add a caution badge and stay up for 10 s).
     // imagePath: optional local file path for a thumbnail ("" = text only).
     // when: optional event time, formatted by QML using the effective locale.
     // isVideo: shows a play badge over the thumbnail (imagePath is a clip frame).

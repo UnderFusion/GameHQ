@@ -779,7 +779,7 @@ bool App::init()
     };
     steamProviders.notify = [this](const QString& title, const QString& body) {
         if (m_config->value(ConfigKeys::NotificationsEnabled, true).toBool())
-            m_notify->post(title, body, {}, QStringLiteral("info"));
+            m_notify->post(title, body, {}, QStringLiteral("warning"));
     };
     m_steamInput = std::make_unique<SteamInputHelper>(m_config.get(), std::move(steamProviders));
     connect(m_controller.get(), &AppController::currentGameChanged,
