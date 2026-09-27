@@ -1,4 +1,5 @@
 #include "input/InputEngine.h"
+#include "input/SteamInputAdvice.h"
 
 #include "config/ConfigKeys.h"
 #include "config/ConfigManager.h"
@@ -544,6 +545,7 @@ void InputEngine::reloadBindings()
     // other chain serves just changed - and so did the p03 bridge state. A
     // refresh is a no-op unless a chain actually resolves differently now.
     refreshResolvedPreset();
+    emit mappingTablesChanged();
     syncMouseMonitoring();
     ModernInput::SelectiveRawHidFallback::instance().setBoundControls(
         ModernInput::persistedRawHidControls(*m_runtime, m_db));
@@ -1899,11 +1901,20 @@ bool InputEngine::ensureMappingRoute(const QString& logicalProfile)
         return false;
     // Whatever happens next, this is the pad whose presses are arriving now, so
     // the next refresh plans this route even when it needed no refresh itself.
-    m_lastControllerRoute = logicalProfile;
+    if (m_lastControllerRoute != logicalProfile) {
+        m_lastControllerRoute = logicalProfile;
+        emit mappingTablesChanged();   // another pad's table may bind other buttons
+    }
     if (m_mappingChains.contains(mappingChainKey(QStringLiteral("controller"), logicalProfile)))
         return false;
     refreshResolvedPreset();
     return true;
+}
+
+QStringList InputEngine::steamAdvisedBoundControls() const
+{
+    return SteamInputAdvice::boundControls(
+        m_runtime->effectiveBindings(QStringLiteral("controller"), m_lastControllerRoute));
 }
 
 void InputEngine::refreshResolvedPreset()
@@ -2108,6 +2119,7 @@ void InputEngine::refreshResolvedPreset()
     m_runtime->refreshPatternDiagnostics();
     publishMappingDiagnostics();
     m_mappingSwitchRunning = false;
+    emit mappingTablesChanged();
 }
 
 QString InputEngine::mappingEffectiveSource(const QString& deviceGroup,

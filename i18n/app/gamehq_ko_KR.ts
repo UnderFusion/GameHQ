@@ -521,7 +521,7 @@
       <location filename="src/ui/qml/SettingsView.qml" line="529"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="224"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="475"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="764"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="857"></location>
       <source>Restore defaults</source>
       <translation>기본값 복원</translation>
     </message>
@@ -965,7 +965,7 @@
       <translation>다른 포터블 프로필 가져오기가 이미 실행 중입니다.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="658"></location>
+      <location filename="src/app/App.cpp" line="661"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>캡처 작업이 제한 시간 내에 안전하게 완료되지 않아 업데이트가 취소되었습니다.</translation>
     </message>
@@ -1216,7 +1216,7 @@
       <translation>GameHQ에서 업데이트 트랜잭션을 최종 상태로 반영할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="633"></location>
+      <location filename="src/app/App.cpp" line="636"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ에서 업데이트 유지 관리 작업을 시작할 수 없습니다: %1</translation>
     </message>
@@ -2121,107 +2121,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ 후원</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="478"></location>
+      <location filename="src/app/App.cpp" line="481"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>일부 파일을 삭제하지 못했습니다. 다른 프로그램에서 사용 중일 수 있습니다. 해당 파일을 사용 중인 프로그램을 모두 닫고 다시 시도하세요.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="485"></location>
+      <location filename="src/app/App.cpp" line="488"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>파일을 삭제하지 못했습니다. 다른 프로그램에서 사용 중일 수 있습니다. 이 파일을 사용 중인 프로그램을 닫고 다시 시도하세요.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="491"></location>
+      <location filename="src/app/App.cpp" line="494"></location>
       <source>Couldn't delete</source>
       <translation>삭제하지 못했습니다</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="284"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>라이브러리에 추가되지 않았고 파일도 디스크에 없습니다.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="278"></location>
+      <location filename="src/app/App.cpp" line="281"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>파일은 캡처 폴더에 있지만 라이브러리에 추가하지 못했습니다.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="268"></location>
+      <location filename="src/app/App.cpp" line="271"></location>
       <source>Saved to disk, not in library</source>
       <translation>디스크에 저장됨, 라이브러리에는 없음</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="390"></location>
+      <location filename="src/app/App.cpp" line="393"></location>
       <source>Capture request received</source>
       <translation>캡처 요청을 받았습니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="453"></location>
+      <location filename="src/app/App.cpp" line="456"></location>
       <source>Reason: %1</source>
       <translation>원인: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="71"></location>
+      <location filename="src/app/App.cpp" line="74"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>리플레이 버퍼에 오류가 발생하여 클립이 저장되지 않았습니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="65"></location>
+      <location filename="src/app/App.cpp" line="68"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>리플레이 버퍼가 영상을 수집하는 중입니다. 몇 초 후에 다시 저장해 보세요</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="83"></location>
+      <location filename="src/app/App.cpp" line="86"></location>
       <source>Replay buffer is empty</source>
       <translation>리플레이 버퍼가 비어 있습니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="77"></location>
+      <location filename="src/app/App.cpp" line="80"></location>
       <source>Replay buffer is not running</source>
       <translation>리플레이 버퍼가 실행 중이 아닙니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="59"></location>
+      <location filename="src/app/App.cpp" line="62"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>리플레이 버퍼를 시작하는 중입니다. 몇 초 후에 다시 저장해 보세요</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="300"></location>
+      <location filename="src/app/App.cpp" line="303"></location>
       <source>Replay failed</source>
       <translation>리플레이 실패</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="385"></location>
+      <location filename="src/app/App.cpp" line="388"></location>
       <source>Replay save requested</source>
       <translation>리플레이 저장을 요청했습니다</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="434"></location>
+      <location filename="src/app/App.cpp" line="437"></location>
       <source>Replay saved</source>
       <translation>리플레이 저장됨</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="293"></location>
+      <location filename="src/app/App.cpp" line="296"></location>
       <source>Screenshot failed</source>
       <translation>스크린샷 실패</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="335"></location>
+      <location filename="src/app/App.cpp" line="338"></location>
       <source>Screenshot saved</source>
       <translation>스크린샷 저장됨</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="536"></location>
+      <location filename="src/app/App.cpp" line="539"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ가 기본 설정으로 시작되었습니다. 이전 설정 파일은 그대로 보관되어 손실된 항목이 없습니다.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="531"></location>
+      <location filename="src/app/App.cpp" line="534"></location>
       <source>Settings could not be read</source>
       <translation>설정을 읽을 수 없습니다</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="700"></location>
+      <location filename="src/app/App.cpp" line="703"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>일부 인터페이스 소리를 사용할 수 없습니다</translation>
     </message>
@@ -2624,7 +2624,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.advanced.status.ready">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="44"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="706"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="799"></location>
       <source>Ready</source>
       <translation>준비됨</translation>
     </message>
@@ -3324,87 +3324,87 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>컨트롤러 숨김</translation>
     </message>
     <message id="gamehq.settings.input.modern.auto">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="669"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="762"></location>
       <source>Auto</source>
       <translation>자동</translation>
     </message>
     <message id="gamehq.settings.input.modern.device_layout_changed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="773"></location>
       <source>%1 button layout changed</source>
       <translation>%1 버튼 배치가 변경됨</translation>
     </message>
     <message id="gamehq.settings.input.modern.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="652"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="745"></location>
       <source>Modern controllers</source>
       <translation>모던 컨트롤러</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="730"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="823"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
       <translation>View 버튼과 실제 Share 버튼, 감지 결과, 재연결, 제스처 및 조합에 대해 알아봅니다.</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="728"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="821"></location>
       <source>Controller compatibility guide</source>
       <translation>컨트롤러 호환성 안내</translation>
     </message>
     <message id="gamehq.settings.input.modern.layout_warning">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="657"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="750"></location>
       <source>A controller layout changed. Review its extra-button assignments before using them.</source>
       <translation>컨트롤러의 버튼 배치가 변경되었습니다. 사용하기 전에 추가 버튼 할당을 검토하세요.</translation>
     </message>
     <message id="gamehq.settings.input.modern.legacy_fallback">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="703"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="796"></location>
       <source>Legacy fallback</source>
       <translation>레거시 대체 경로</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="671"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="764"></location>
       <source>Off</source>
       <translation>끔</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.copy">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="720"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="813"></location>
       <source>Copy report</source>
       <translation>보고서 복사</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="717"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="810"></location>
       <source>Copies anonymous identity, providers, Share/Guide availability, extra buttons, and layout state—never serials or full device paths.</source>
       <translation>익명 식별 정보, 공급자, Share/Guide 사용 가능 여부, 추가 버튼 및 배치 상태를 복사합니다. 일련번호나 전체 장치 경로는 포함하지 않습니다.</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="715"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="808"></location>
       <source>Compatibility report</source>
       <translation>호환성 보고서</translation>
     </message>
     <message id="gamehq.settings.input.modern.review_buttons">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="684"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="777"></location>
       <source>Review buttons</source>
       <translation>버튼 검토</translation>
     </message>
     <message id="gamehq.settings.input.modern.runtime">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="697"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="790"></location>
       <source>GameInput runtime</source>
       <translation>GameInput 런타임</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="664"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="757"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
       <translation>자동은 번들 GameInput 런타임과 안전한 레거시 대체 경로를 사용하며, 끔은 GameInput을 비활성화합니다.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="662"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="755"></location>
       <source>Modern controller support</source>
       <translation>모던 컨트롤러 지원</translation>
     </message>
     <message id="gamehq.settings.input.modern.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="654"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="747"></location>
       <source>GameInput support</source>
       <translation>GameInput 지원</translation>
     </message>
     <message id="gamehq.settings.input.modern.use_current_layout">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="690"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="783"></location>
       <source>Use current layout</source>
       <translation>현재 배치 사용</translation>
     </message>
@@ -3515,14 +3515,104 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>모든 입력 바인딩을 복원할까요?</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="762"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="855"></location>
       <source>Only the currently displayed device/profile overrides will be removed.</source>
       <translation>현재 표시된 장치/프로필의 사용자 지정만 제거됩니다.</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="760"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="853"></location>
       <source>Restore displayed bindings?</source>
       <translation>표시된 바인딩을 복원할까요?</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.capture.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="698"></location>
+      <source>If Steam Input is on for this game, remove the Steam binding on this button in the game's controller layout.</source>
+      <translation>이 게임에서 Steam Input이 켜져 있다면 게임의 컨트롤러 레이아웃에서 이 버튼의 Steam 할당을 제거하세요.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.capture.open">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="701"></location>
+      <source>Open Steam controller layout</source>
+      <translation>Steam 컨트롤러 레이아웃 열기</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="662"></location>
+      <source>Steam Input may also send a GameHQ controller shortcut to a Steam game, so one press can trigger both. GameHQ never changes Steam settings.</source>
+      <translation>Steam Input이 GameHQ 컨트롤러 단축키를 Steam 게임에도 보낼 수 있어 한 번 누르면 둘 다 실행될 수 있습니다. GameHQ는 Steam 설정을 변경하지 않습니다.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.eyebrow">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="658"></location>
+      <source>Steam</source>
+      <translation>Steam</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="675"></location>
+      <source>Current game</source>
+      <translation>현재 게임</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.none">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
+      <source>No Steam game is in session.</source>
+      <translation>실행 중인 Steam 게임이 없습니다.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.pending">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="688"></location>
+      <source>%1: Steam Input may also send this GameHQ shortcut to the game.</source>
+      <translation>%1: Steam Input이 이 GameHQ 단축키를 게임에도 보낼 수 있습니다.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.reviewed">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="691"></location>
+      <source>%1: reviewed. This help returns if these shortcuts change.</source>
+      <translation>%1: 확인됨. 이 단축키가 바뀌면 도움말이 다시 표시됩니다.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.unbound">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="684"></location>
+      <source>%1: no GameHQ shortcut uses Create / Share or PS.</source>
+      <translation>%1: Create / Share 또는 PS를 사용하는 GameHQ 단축키가 없습니다.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.guide.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="710"></location>
+      <source>Steam sets this button for all games. In Steam's controller settings, review the Guide Button Chord Layout.</source>
+      <translation>Steam은 이 버튼을 모든 게임에 대해 설정합니다. Steam 컨트롤러 설정에서 "Guide Button Chord Layout"을 확인하세요.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.guide.open">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="713"></location>
+      <source>Open Steam controller settings</source>
+      <translation>Steam 컨트롤러 설정 열기</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.help.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="669"></location>
+      <source>Explain when a Create / Share or PS shortcut may also reach the game through Steam Input.</source>
+      <translation>Create / Share 또는 PS 단축키가 Steam Input을 통해 게임에도 전달될 수 있을 때 알려 줍니다.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.help.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="667"></location>
+      <source>Steam Input conflict help</source>
+      <translation>Steam Input 충돌 도움말</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="724"></location>
+      <source>Mark this game as reviewed, or hide this help for it.</source>
+      <translation>이 게임을 확인됨으로 표시하거나 이 게임에서는 도움말을 숨기세요.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.done">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="729"></location>
+      <source>I've reviewed it</source>
+      <translation>확인했습니다</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.hide">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="735"></location>
+      <source>Don't show for this game</source>
+      <translation>이 게임에서는 표시 안 함</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="722"></location>
+      <source>Reviewed in Steam?</source>
+      <translation>Steam에서 확인했나요?</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="660"></location>
+      <source>Steam Input</source>
+      <translation>Steam Input</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="232"></location>
@@ -4461,6 +4551,26 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/main.cpp" line="199"></location>
       <source>The portable import source folder is missing.</source>
       <translation>포터블 가져오기 원본 폴더가 없습니다.</translation>
+    </message>
+    <message id="gamehq.steam_input.control.capture">
+      <location filename="src/ui/SteamInputHelper.cpp" line="57"></location>
+      <source>Create / Share button</source>
+      <translation>Create / Share 버튼</translation>
+    </message>
+    <message id="gamehq.steam_input.control.guide">
+      <location filename="src/ui/SteamInputHelper.cpp" line="51"></location>
+      <source>PS / Guide button</source>
+      <translation>PS / Guide 버튼</translation>
+    </message>
+    <message id="gamehq.steam_input.notice.body">
+      <location filename="src/ui/SteamInputHelper.cpp" line="106"></location>
+      <source>%1: Steam Input may also send %2 to the game. Review it in Settings › Input › Steam Input.</source>
+      <translation>%1: Steam Input이 %2 버튼을 게임에도 보낼 수 있습니다. 설정 › 입력 › Steam Input에서 확인하세요.</translation>
+    </message>
+    <message id="gamehq.steam_input.notice.title">
+      <location filename="src/ui/SteamInputHelper.cpp" line="101"></location>
+      <source>Steam Input may also use this button</source>
+      <translation>Steam Input도 이 버튼을 사용할 수 있습니다</translation>
     </message>
     <message id="gamehq.tray.exit">
       <location filename="src/tray/TrayIcon.cpp" line="200"></location>

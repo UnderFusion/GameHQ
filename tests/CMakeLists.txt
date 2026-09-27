@@ -102,6 +102,17 @@ gamehq_add_test(tst_bindingrelation
 # tst_gamerowrepair).
 target_link_libraries(tst_bindingrelation PRIVATE Qt6::Sql)
 
+# Steam Input conflict help (guidance only): manifest AppID lookup, which
+# advised buttons drive a Global shortcut, and the per-game reviewed state.
+gamehq_add_test(tst_steaminputadvice
+    tst_steaminputadvice.cpp
+    "${CMAKE_SOURCE_DIR}/src/games/SteamAppLookup.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/SteamInputAdvice.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp")
+target_link_libraries(tst_steaminputadvice PRIVATE Qt6::Sql)
+
 # Pure model test: the trigger/gesture specs, their canonical serialization and
 # the validation that guards the parse boundary. No database, no device.
 gamehq_add_test(tst_bindingpattern
@@ -1232,6 +1243,7 @@ gamehq_add_test(tst_captureacknowledgement
     "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
     "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp"
     "${CMAKE_SOURCE_DIR}/src/games/GameDetector.cpp"
+    "${CMAKE_SOURCE_DIR}/src/games/SteamAppLookup.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/ExternalGameContext.cpp"
     "${CMAKE_SOURCE_DIR}/src/storage/ThumbnailService.cpp"
 )
@@ -1307,6 +1319,7 @@ gamehq_add_test(tst_gamesessionpresets
     "${CMAKE_SOURCE_DIR}/src/input/GameSessionPresetBinder.cpp"
     "${CMAKE_SOURCE_DIR}/src/ui/CurrentGameService.cpp"
     "${CMAKE_SOURCE_DIR}/src/games/GameDetector.cpp"
+    "${CMAKE_SOURCE_DIR}/src/games/SteamAppLookup.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/ExternalGameContext.cpp")
 target_link_libraries(tst_gamesessionpresets PRIVATE ${PRESET_SWITCH_LIBS} version)
 target_include_directories(tst_gamesessionpresets PRIVATE

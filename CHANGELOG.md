@@ -2,6 +2,12 @@
 
 Public release history and the current local release candidate.
 
+## [Unreleased]
+
+### Added
+
+- Settings › Input › Steam Input: when a Steam game is running and a GameHQ controller shortcut uses Create / Share or PS, GameHQ explains that Steam Input may also send that button to the game, and offers buttons that open the game's Steam controller layout or Steam's controller settings. Guidance only: GameHQ never reads or changes Steam's controller settings. On by default; it can be switched off or hidden per game.
+
 ## [0.7.9] - 2026-09-25
 
 Bluetooth DualSense hotfix, first shipped as the `v0.7.9-beta1` pre-release for confirmation on a Bluetooth pad.

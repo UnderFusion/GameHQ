@@ -22,6 +22,7 @@ class GameSessionPresetBinder;
 class ScreenshotService;
 class FramePumpService;
 class NotificationCenter;
+class SteamInputHelper;
 class UpdateService;
 class IntegrationService;
 class ForegroundApi;
@@ -78,6 +79,7 @@ private:
     std::unique_ptr<ScreenshotService> m_screenshots;
     std::unique_ptr<FramePumpService> m_framePump;
     std::unique_ptr<NotificationCenter> m_notify;
+    std::unique_ptr<SteamInputHelper> m_steamInput;
     std::unique_ptr<UpdateService> m_updates;
     std::unique_ptr<IntegrationService> m_integration;
     // Wakes periodically to see if the 24h automatic-check window has passed

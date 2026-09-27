@@ -521,7 +521,7 @@
       <location filename="src/ui/qml/SettingsView.qml" line="529"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="224"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="475"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="764"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="857"></location>
       <source>Restore defaults</source>
       <translation>復原預設設定</translation>
     </message>
@@ -965,7 +965,7 @@
       <translation>已有另一個可攜式設定檔匯入正在執行。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="658"></location>
+      <location filename="src/app/App.cpp" line="661"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>由於擷取任務未能及時安全完成，更新已取消。</translation>
     </message>
@@ -1216,7 +1216,7 @@
       <translation>GameHQ 無法完成更新交易。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="633"></location>
+      <location filename="src/app/App.cpp" line="636"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ 無法開始更新維護：%1</translation>
     </message>
@@ -2121,107 +2121,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>支援 GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="478"></location>
+      <location filename="src/app/App.cpp" line="481"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>部分檔案無法刪除。它們可能正被其他程式使用。請關閉正在使用這些檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="485"></location>
+      <location filename="src/app/App.cpp" line="488"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>無法刪除該檔案。它可能正被其他程式使用。請關閉正在使用該檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="491"></location>
+      <location filename="src/app/App.cpp" line="494"></location>
       <source>Couldn't delete</source>
       <translation>無法刪除</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="284"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>未加入媒體庫，磁碟上也沒有該檔案。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="278"></location>
+      <location filename="src/app/App.cpp" line="281"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>檔案位於您的擷取資料夾中，但無法加入媒體庫。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="268"></location>
+      <location filename="src/app/App.cpp" line="271"></location>
       <source>Saved to disk, not in library</source>
       <translation>已儲存至磁碟，未加入媒體庫</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="390"></location>
+      <location filename="src/app/App.cpp" line="393"></location>
       <source>Capture request received</source>
       <translation>已收到擷取請求</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="453"></location>
+      <location filename="src/app/App.cpp" line="456"></location>
       <source>Reason: %1</source>
       <translation>原因：%1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="71"></location>
+      <location filename="src/app/App.cpp" line="74"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>重播緩衝區發生錯誤，未儲存任何短片</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="65"></location>
+      <location filename="src/app/App.cpp" line="68"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>重播緩衝區正在收集畫面，請於幾秒後再試著儲存</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="83"></location>
+      <location filename="src/app/App.cpp" line="86"></location>
       <source>Replay buffer is empty</source>
       <translation>重播緩衝區是空的</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="77"></location>
+      <location filename="src/app/App.cpp" line="80"></location>
       <source>Replay buffer is not running</source>
       <translation>重播緩衝區未在執行</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="59"></location>
+      <location filename="src/app/App.cpp" line="62"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>重播緩衝區正在啟動，請於幾秒後再試著儲存</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="300"></location>
+      <location filename="src/app/App.cpp" line="303"></location>
       <source>Replay failed</source>
       <translation>重播失敗</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="385"></location>
+      <location filename="src/app/App.cpp" line="388"></location>
       <source>Replay save requested</source>
       <translation>已請求儲存重播</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="434"></location>
+      <location filename="src/app/App.cpp" line="437"></location>
       <source>Replay saved</source>
       <translation>重播已儲存</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="293"></location>
+      <location filename="src/app/App.cpp" line="296"></location>
       <source>Screenshot failed</source>
       <translation>螢幕截圖失敗</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="335"></location>
+      <location filename="src/app/App.cpp" line="338"></location>
       <source>Screenshot saved</source>
       <translation>螢幕截圖已儲存</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="536"></location>
+      <location filename="src/app/App.cpp" line="539"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 已使用預設設定啟動。系統保留了之前的設定檔案，因此沒有遺失任何內容。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="531"></location>
+      <location filename="src/app/App.cpp" line="534"></location>
       <source>Settings could not be read</source>
       <translation>無法讀取設定</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="700"></location>
+      <location filename="src/app/App.cpp" line="703"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>部分介面音效無法使用</translation>
     </message>
@@ -2624,7 +2624,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.advanced.status.ready">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="44"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="706"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="799"></location>
       <source>Ready</source>
       <translation>就緒</translation>
     </message>
@@ -3324,87 +3324,87 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>控制器被隱藏</translation>
     </message>
     <message id="gamehq.settings.input.modern.auto">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="669"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="762"></location>
       <source>Auto</source>
       <translation>自動</translation>
     </message>
     <message id="gamehq.settings.input.modern.device_layout_changed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="773"></location>
       <source>%1 button layout changed</source>
       <translation>%1 按鍵設定已變更</translation>
     </message>
     <message id="gamehq.settings.input.modern.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="652"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="745"></location>
       <source>Modern controllers</source>
       <translation>現代控制器</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="730"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="823"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
       <translation>瞭解 View 鍵與真正的 Share 鍵、偵測結果、重新連線、手勢和組合鍵。</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="728"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="821"></location>
       <source>Controller compatibility guide</source>
       <translation>控制器相容性指南</translation>
     </message>
     <message id="gamehq.settings.input.modern.layout_warning">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="657"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="750"></location>
       <source>A controller layout changed. Review its extra-button assignments before using them.</source>
       <translation>某個控制器的按鍵設定已變更。使用前請檢查其額外按鍵的指派。</translation>
     </message>
     <message id="gamehq.settings.input.modern.legacy_fallback">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="703"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="796"></location>
       <source>Legacy fallback</source>
       <translation>舊版備援</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="671"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="764"></location>
       <source>Off</source>
       <translation>關閉</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.copy">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="720"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="813"></location>
       <source>Copy report</source>
       <translation>複製報告</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="717"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="810"></location>
       <source>Copies anonymous identity, providers, Share/Guide availability, extra buttons, and layout state—never serials or full device paths.</source>
       <translation>複製匿名識別資訊、提供者、Share/Guide 鍵可用性、額外按鍵和按鍵排列狀態，但絕不包含序號或完整裝置路徑。</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="715"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="808"></location>
       <source>Compatibility report</source>
       <translation>相容性報告</translation>
     </message>
     <message id="gamehq.settings.input.modern.review_buttons">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="684"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="777"></location>
       <source>Review buttons</source>
       <translation>檢查按鍵</translation>
     </message>
     <message id="gamehq.settings.input.modern.runtime">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="697"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="790"></location>
       <source>GameInput runtime</source>
       <translation>GameInput 執行階段</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="664"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="757"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
       <translation>「自動」會使用隨附的 GameInput 執行階段，並提供安全的舊版備援；「關閉」會停用 GameInput。</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="662"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="755"></location>
       <source>Modern controller support</source>
       <translation>現代控制器支援</translation>
     </message>
     <message id="gamehq.settings.input.modern.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="654"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="747"></location>
       <source>GameInput support</source>
       <translation>GameInput 支援</translation>
     </message>
     <message id="gamehq.settings.input.modern.use_current_layout">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="690"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="783"></location>
       <source>Use current layout</source>
       <translation>使用目前佈局</translation>
     </message>
@@ -3515,14 +3515,104 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>要復原所有輸入綁定嗎？</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="762"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="855"></location>
       <source>Only the currently displayed device/profile overrides will be removed.</source>
       <translation>僅會刪除目前顯示的裝置/設定的自定義設定。</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="760"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="853"></location>
       <source>Restore displayed bindings?</source>
       <translation>要復原目前顯示的綁定嗎？</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.capture.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="698"></location>
+      <source>If Steam Input is on for this game, remove the Steam binding on this button in the game's controller layout.</source>
+      <translation>如果此遊戲開啟了 Steam Input，請在遊戲的控制器配置中移除此按鈕的 Steam 綁定。</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.capture.open">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="701"></location>
+      <source>Open Steam controller layout</source>
+      <translation>開啟 Steam 控制器配置</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="662"></location>
+      <source>Steam Input may also send a GameHQ controller shortcut to a Steam game, so one press can trigger both. GameHQ never changes Steam settings.</source>
+      <translation>Steam Input 也可能把 GameHQ 的控制器快速鍵傳送給 Steam 遊戲，因此按一次可能會同時觸發兩者。GameHQ 從不變更 Steam 設定。</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.eyebrow">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="658"></location>
+      <source>Steam</source>
+      <translation>Steam</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="675"></location>
+      <source>Current game</source>
+      <translation>目前遊戲</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.none">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
+      <source>No Steam game is in session.</source>
+      <translation>沒有正在執行的 Steam 遊戲。</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.pending">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="688"></location>
+      <source>%1: Steam Input may also send this GameHQ shortcut to the game.</source>
+      <translation>%1：Steam Input 也可能把此 GameHQ 快速鍵傳送到遊戲。</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.reviewed">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="691"></location>
+      <source>%1: reviewed. This help returns if these shortcuts change.</source>
+      <translation>%1：已檢查。如果這些快速鍵變更，此說明會再次出現。</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.unbound">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="684"></location>
+      <source>%1: no GameHQ shortcut uses Create / Share or PS.</source>
+      <translation>%1：沒有 GameHQ 快速鍵使用 Create / Share 或 PS。</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.guide.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="710"></location>
+      <source>Steam sets this button for all games. In Steam's controller settings, review the Guide Button Chord Layout.</source>
+      <translation>Steam 會為所有遊戲設定此按鈕。請在 Steam 的控制器設定中檢查「Guide Button Chord Layout」。</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.guide.open">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="713"></location>
+      <source>Open Steam controller settings</source>
+      <translation>開啟 Steam 控制器設定</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.help.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="669"></location>
+      <source>Explain when a Create / Share or PS shortcut may also reach the game through Steam Input.</source>
+      <translation>說明 Create / Share 或 PS 上的快速鍵何時可能也會透過 Steam Input 傳送到遊戲。</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.help.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="667"></location>
+      <source>Steam Input conflict help</source>
+      <translation>Steam Input 衝突說明</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="724"></location>
+      <source>Mark this game as reviewed, or hide this help for it.</source>
+      <translation>請將此遊戲標記為已檢查，或為此遊戲隱藏此說明。</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.done">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="729"></location>
+      <source>I've reviewed it</source>
+      <translation>我已檢查</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.hide">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="735"></location>
+      <source>Don't show for this game</source>
+      <translation>此遊戲不再顯示</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="722"></location>
+      <source>Reviewed in Steam?</source>
+      <translation>已在 Steam 中檢查？</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="660"></location>
+      <source>Steam Input</source>
+      <translation>Steam Input</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="232"></location>
@@ -4461,6 +4551,26 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/main.cpp" line="199"></location>
       <source>The portable import source folder is missing.</source>
       <translation>可攜式匯入的來源資料夾不存在。</translation>
+    </message>
+    <message id="gamehq.steam_input.control.capture">
+      <location filename="src/ui/SteamInputHelper.cpp" line="57"></location>
+      <source>Create / Share button</source>
+      <translation>Create / Share 按鈕</translation>
+    </message>
+    <message id="gamehq.steam_input.control.guide">
+      <location filename="src/ui/SteamInputHelper.cpp" line="51"></location>
+      <source>PS / Guide button</source>
+      <translation>PS / Guide 按鈕</translation>
+    </message>
+    <message id="gamehq.steam_input.notice.body">
+      <location filename="src/ui/SteamInputHelper.cpp" line="106"></location>
+      <source>%1: Steam Input may also send %2 to the game. Review it in Settings › Input › Steam Input.</source>
+      <translation>%1：Steam Input 也可能把 %2 傳送到遊戲。請在 設定 › 輸入 › Steam Input 中檢查。</translation>
+    </message>
+    <message id="gamehq.steam_input.notice.title">
+      <location filename="src/ui/SteamInputHelper.cpp" line="101"></location>
+      <source>Steam Input may also use this button</source>
+      <translation>Steam Input 也可能使用此按鈕</translation>
     </message>
     <message id="gamehq.tray.exit">
       <location filename="src/tray/TrayIcon.cpp" line="200"></location>

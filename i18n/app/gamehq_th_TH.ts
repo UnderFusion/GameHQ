@@ -521,7 +521,7 @@
       <location filename="src/ui/qml/SettingsView.qml" line="529"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="224"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="475"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="764"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="857"></location>
       <source>Restore defaults</source>
       <translation>คืนค่าเริ่มต้น</translation>
     </message>
@@ -965,7 +965,7 @@
       <translation>กำลังดำเนินการนำเข้าโปรไฟล์แบบพกพาอื่นอยู่แล้ว</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="658"></location>
+      <location filename="src/app/App.cpp" line="661"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>การอัปเดตถูกยกเลิกเนื่องจากงานจับภาพไม่เสร็จสิ้นอย่างปลอดภัยทันเวลา</translation>
     </message>
@@ -1216,7 +1216,7 @@
       <translation>GameHQ ไม่สามารถนำธุรกรรมอัปเดตไปใช้เป็นสถานะสุดท้ายได้</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="633"></location>
+      <location filename="src/app/App.cpp" line="636"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ ไม่สามารถเริ่มการบำรุงรักษาการอัปเดตได้: %1</translation>
     </message>
@@ -2121,107 +2121,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>สนับสนุน GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="478"></location>
+      <location filename="src/app/App.cpp" line="481"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>ไม่สามารถลบไฟล์บางไฟล์ได้ ไฟล์เหล่านี้อาจกำลังถูกใช้งานโดยโปรแกรมอื่น ปิดโปรแกรมที่กำลังใช้ไฟล์เหล่านี้แล้วลองอีกครั้ง</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="485"></location>
+      <location filename="src/app/App.cpp" line="488"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>ไม่สามารถลบไฟล์ได้ ไฟล์อาจกำลังถูกใช้งานโดยโปรแกรมอื่น ปิดโปรแกรมที่กำลังใช้ไฟล์นี้แล้วลองอีกครั้ง</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="491"></location>
+      <location filename="src/app/App.cpp" line="494"></location>
       <source>Couldn't delete</source>
       <translation>ลบไม่สำเร็จ</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="284"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>ไม่ได้เพิ่มลงในคลังสื่อ และไม่พบไฟล์บนดิสก์</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="278"></location>
+      <location filename="src/app/App.cpp" line="281"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>ไฟล์อยู่ในโฟลเดอร์การจับภาพของคุณ แต่ไม่สามารถเพิ่มลงในคลังสื่อได้</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="268"></location>
+      <location filename="src/app/App.cpp" line="271"></location>
       <source>Saved to disk, not in library</source>
       <translation>บันทึกลงดิสก์แล้ว แต่ไม่อยู่ในคลังสื่อ</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="390"></location>
+      <location filename="src/app/App.cpp" line="393"></location>
       <source>Capture request received</source>
       <translation>ได้รับคำขอจับภาพแล้ว</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="453"></location>
+      <location filename="src/app/App.cpp" line="456"></location>
       <source>Reason: %1</source>
       <translation>เหตุผล: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="71"></location>
+      <location filename="src/app/App.cpp" line="74"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>บัฟเฟอร์รีเพลย์ทำงานผิดพลาด ไม่ได้บันทึกคลิปใด ๆ</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="65"></location>
+      <location filename="src/app/App.cpp" line="68"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>บัฟเฟอร์รีเพลย์กำลังรวบรวมภาพวิดีโอ โปรดลองบันทึกอีกครั้งในอีกไม่กี่วินาที</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="83"></location>
+      <location filename="src/app/App.cpp" line="86"></location>
       <source>Replay buffer is empty</source>
       <translation>บัฟเฟอร์รีเพลย์ว่างเปล่า</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="77"></location>
+      <location filename="src/app/App.cpp" line="80"></location>
       <source>Replay buffer is not running</source>
       <translation>บัฟเฟอร์รีเพลย์ไม่ได้ทำงานอยู่</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="59"></location>
+      <location filename="src/app/App.cpp" line="62"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>บัฟเฟอร์รีเพลย์กำลังเริ่มทำงาน โปรดลองบันทึกอีกครั้งในอีกไม่กี่วินาที</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="300"></location>
+      <location filename="src/app/App.cpp" line="303"></location>
       <source>Replay failed</source>
       <translation>รีเพลย์ล้มเหลว</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="385"></location>
+      <location filename="src/app/App.cpp" line="388"></location>
       <source>Replay save requested</source>
       <translation>ส่งคำขอบันทึกรีเพลย์แล้ว</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="434"></location>
+      <location filename="src/app/App.cpp" line="437"></location>
       <source>Replay saved</source>
       <translation>บันทึกการรีเพลย์แล้ว</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="293"></location>
+      <location filename="src/app/App.cpp" line="296"></location>
       <source>Screenshot failed</source>
       <translation>จับภาพหน้าจอไม่สำเร็จ</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="335"></location>
+      <location filename="src/app/App.cpp" line="338"></location>
       <source>Screenshot saved</source>
       <translation>บันทึกภาพหน้าจอแล้ว</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="536"></location>
+      <location filename="src/app/App.cpp" line="539"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ เริ่มด้วยการตั้งค่าเริ่มต้น โดยเก็บไฟล์การตั้งค่าก่อนหน้าไว้ จึงไม่มีข้อมูลสูญหาย</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="531"></location>
+      <location filename="src/app/App.cpp" line="534"></location>
       <source>Settings could not be read</source>
       <translation>ไม่สามารถอ่านการตั้งค่าได้</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="700"></location>
+      <location filename="src/app/App.cpp" line="703"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>เสียงอินเทอร์เฟซบางรายการใช้งานไม่ได้</translation>
     </message>
@@ -2624,7 +2624,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.advanced.status.ready">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="44"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="706"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="799"></location>
       <source>Ready</source>
       <translation>พร้อม</translation>
     </message>
@@ -3324,87 +3324,87 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>คอนโทรลเลอร์ซ่อนอยู่</translation>
     </message>
     <message id="gamehq.settings.input.modern.auto">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="669"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="762"></location>
       <source>Auto</source>
       <translation>อัตโนมัติ</translation>
     </message>
     <message id="gamehq.settings.input.modern.device_layout_changed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="773"></location>
       <source>%1 button layout changed</source>
       <translation>เค้าโครงปุ่ม %1 มีการเปลี่ยนแปลง</translation>
     </message>
     <message id="gamehq.settings.input.modern.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="652"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="745"></location>
       <source>Modern controllers</source>
       <translation>คอนโทรลเลอร์สมัยใหม่</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="730"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="823"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
       <translation>เรียนรู้เกี่ยวกับปุ่ม View และปุ่ม Share จริง ผลการตรวจจับ การเชื่อมต่อใหม่ รูปแบบการกด และชุดปุ่ม</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="728"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="821"></location>
       <source>Controller compatibility guide</source>
       <translation>คู่มือความเข้ากันได้ของคอนโทรลเลอร์</translation>
     </message>
     <message id="gamehq.settings.input.modern.layout_warning">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="657"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="750"></location>
       <source>A controller layout changed. Review its extra-button assignments before using them.</source>
       <translation>เค้าโครงคอนโทรลเลอร์มีการเปลี่ยนแปลง ตรวจสอบการกำหนดปุ่มพิเศษก่อนใช้งาน</translation>
     </message>
     <message id="gamehq.settings.input.modern.legacy_fallback">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="703"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="796"></location>
       <source>Legacy fallback</source>
       <translation>ทางเลือกสำรองแบบเดิม</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="671"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="764"></location>
       <source>Off</source>
       <translation>ปิด</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.copy">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="720"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="813"></location>
       <source>Copy report</source>
       <translation>คัดลอกรายงาน</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="717"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="810"></location>
       <source>Copies anonymous identity, providers, Share/Guide availability, extra buttons, and layout state—never serials or full device paths.</source>
       <translation>คัดลอกข้อมูลประจำตัวที่ไม่เปิดเผยตัวตน ผู้ให้บริการ ความพร้อมใช้งานของ Share/Guide ปุ่มพิเศษ และสถานะเค้าโครง ไม่ใช้ซีเรียลหรือพาธของอุปกรณ์แบบเต็ม</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="715"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="808"></location>
       <source>Compatibility report</source>
       <translation>รายงานความเข้ากันได้</translation>
     </message>
     <message id="gamehq.settings.input.modern.review_buttons">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="684"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="777"></location>
       <source>Review buttons</source>
       <translation>ตรวจสอบปุ่ม</translation>
     </message>
     <message id="gamehq.settings.input.modern.runtime">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="697"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="790"></location>
       <source>GameInput runtime</source>
       <translation>รันไทม์ GameInput</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="664"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="757"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
       <translation>โหมดอัตโนมัติใช้รันไทม์ GameInput ที่มาพร้อมโปรแกรมและมีทางเลือกสำรองแบบเดิมที่ปลอดภัย ส่วนโหมดปิดจะปิดใช้ GameInput</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="662"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="755"></location>
       <source>Modern controller support</source>
       <translation>การรองรับคอนโทรลเลอร์สมัยใหม่</translation>
     </message>
     <message id="gamehq.settings.input.modern.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="654"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="747"></location>
       <source>GameInput support</source>
       <translation>รองรับ GameInput</translation>
     </message>
     <message id="gamehq.settings.input.modern.use_current_layout">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="690"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="783"></location>
       <source>Use current layout</source>
       <translation>ใช้เค้าโครงปัจจุบัน</translation>
     </message>
@@ -3515,14 +3515,104 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>กู้คืนการกำหนดอินพุตทั้งหมดหรือไม่</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="762"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="855"></location>
       <source>Only the currently displayed device/profile overrides will be removed.</source>
       <translation>เฉพาะการแทนที่อุปกรณ์/โปรไฟล์ที่แสดงอยู่ในปัจจุบันเท่านั้นที่จะถูกลบออก</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="760"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="853"></location>
       <source>Restore displayed bindings?</source>
       <translation>คืนค่าการกำหนดปุ่มที่แสดงหรือไม่</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.capture.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="698"></location>
+      <source>If Steam Input is on for this game, remove the Steam binding on this button in the game's controller layout.</source>
+      <translation>หากเปิด Steam Input สำหรับเกมนี้ ให้ลบการกำหนดปุ่มนี้ของ Steam ในเลย์เอาต์คอนโทรลเลอร์ของเกม</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.capture.open">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="701"></location>
+      <source>Open Steam controller layout</source>
+      <translation>เปิดเลย์เอาต์คอนโทรลเลอร์ของ Steam</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="662"></location>
+      <source>Steam Input may also send a GameHQ controller shortcut to a Steam game, so one press can trigger both. GameHQ never changes Steam settings.</source>
+      <translation>Steam Input อาจส่งทางลัดคอนโทรลเลอร์ของ GameHQ ไปยังเกม Steam ด้วย การกดครั้งเดียวจึงอาจทำงานทั้งสองอย่าง GameHQ จะไม่เปลี่ยนการตั้งค่า Steam</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.eyebrow">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="658"></location>
+      <source>Steam</source>
+      <translation>Steam</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="675"></location>
+      <source>Current game</source>
+      <translation>เกมปัจจุบัน</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.none">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
+      <source>No Steam game is in session.</source>
+      <translation>ไม่มีเกม Steam ที่กำลังเล่นอยู่</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.pending">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="688"></location>
+      <source>%1: Steam Input may also send this GameHQ shortcut to the game.</source>
+      <translation>%1: Steam Input อาจส่งทางลัด GameHQ นี้ไปยังเกมด้วย</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.reviewed">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="691"></location>
+      <source>%1: reviewed. This help returns if these shortcuts change.</source>
+      <translation>%1: ตรวจสอบแล้ว ความช่วยเหลือนี้จะกลับมาหากทางลัดเหล่านี้เปลี่ยน</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.unbound">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="684"></location>
+      <source>%1: no GameHQ shortcut uses Create / Share or PS.</source>
+      <translation>%1: ไม่มีทางลัด GameHQ ที่ใช้ Create / Share หรือ PS</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.guide.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="710"></location>
+      <source>Steam sets this button for all games. In Steam's controller settings, review the Guide Button Chord Layout.</source>
+      <translation>Steam กำหนดปุ่มนี้สำหรับทุกเกม ในการตั้งค่าคอนโทรลเลอร์ของ Steam ให้ตรวจสอบ "Guide Button Chord Layout"</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.guide.open">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="713"></location>
+      <source>Open Steam controller settings</source>
+      <translation>เปิดการตั้งค่าคอนโทรลเลอร์ของ Steam</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.help.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="669"></location>
+      <source>Explain when a Create / Share or PS shortcut may also reach the game through Steam Input.</source>
+      <translation>อธิบายเมื่อทางลัดบน Create / Share หรือ PS อาจส่งถึงเกมผ่าน Steam Input ด้วย</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.help.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="667"></location>
+      <source>Steam Input conflict help</source>
+      <translation>ความช่วยเหลือเรื่องการชนกันของ Steam Input</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="724"></location>
+      <source>Mark this game as reviewed, or hide this help for it.</source>
+      <translation>ทำเครื่องหมายว่าเกมนี้ตรวจสอบแล้ว หรือซ่อนความช่วยเหลือนี้สำหรับเกมนี้</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.done">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="729"></location>
+      <source>I've reviewed it</source>
+      <translation>ตรวจสอบแล้ว</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.hide">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="735"></location>
+      <source>Don't show for this game</source>
+      <translation>ไม่ต้องแสดงสำหรับเกมนี้</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="722"></location>
+      <source>Reviewed in Steam?</source>
+      <translation>ตรวจสอบใน Steam แล้วหรือยัง</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="660"></location>
+      <source>Steam Input</source>
+      <translation>Steam Input</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="232"></location>
@@ -4461,6 +4551,26 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/main.cpp" line="199"></location>
       <source>The portable import source folder is missing.</source>
       <translation>โฟลเดอร์ต้นทางการนำเข้าแบบพกพาหายไป</translation>
+    </message>
+    <message id="gamehq.steam_input.control.capture">
+      <location filename="src/ui/SteamInputHelper.cpp" line="57"></location>
+      <source>Create / Share button</source>
+      <translation>ปุ่ม Create / Share</translation>
+    </message>
+    <message id="gamehq.steam_input.control.guide">
+      <location filename="src/ui/SteamInputHelper.cpp" line="51"></location>
+      <source>PS / Guide button</source>
+      <translation>ปุ่ม PS / Guide</translation>
+    </message>
+    <message id="gamehq.steam_input.notice.body">
+      <location filename="src/ui/SteamInputHelper.cpp" line="106"></location>
+      <source>%1: Steam Input may also send %2 to the game. Review it in Settings › Input › Steam Input.</source>
+      <translation>%1: Steam Input อาจส่ง %2 ไปยังเกมด้วย ตรวจสอบได้ที่ การตั้งค่า › อินพุต › Steam Input</translation>
+    </message>
+    <message id="gamehq.steam_input.notice.title">
+      <location filename="src/ui/SteamInputHelper.cpp" line="101"></location>
+      <source>Steam Input may also use this button</source>
+      <translation>Steam Input อาจใช้ปุ่มนี้ด้วย</translation>
     </message>
     <message id="gamehq.tray.exit">
       <location filename="src/tray/TrayIcon.cpp" line="200"></location>

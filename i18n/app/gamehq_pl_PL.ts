@@ -521,7 +521,7 @@
       <location filename="src/ui/qml/SettingsView.qml" line="529"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="224"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="475"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="764"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="857"></location>
       <source>Restore defaults</source>
       <translation>Przywróć ustawienia domyślne</translation>
     </message>
@@ -969,7 +969,7 @@
       <translation>Trwa już inny import profilu przenośnego.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="658"></location>
+      <location filename="src/app/App.cpp" line="661"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Aktualizacja została anulowana, ponieważ operacje przechwytywania nie zakończyły się bezpiecznie na czas.</translation>
     </message>
@@ -1220,7 +1220,7 @@
       <translation>GameHQ nie mógł zapisać transakcji aktualizacji.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="633"></location>
+      <location filename="src/app/App.cpp" line="636"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ nie mógł rozpocząć przygotowania aktualizacji: %1</translation>
     </message>
@@ -2131,107 +2131,107 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
       <translation>Wesprzyj GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="478"></location>
+      <location filename="src/app/App.cpp" line="481"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Nie udało się usunąć niektórych plików. Być może są używane przez inne programy. Zamknij programy, które z nich korzystają, i spróbuj ponownie.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="485"></location>
+      <location filename="src/app/App.cpp" line="488"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Nie udało się usunąć pliku. Być może jest używany przez inny program. Zamknij program, który z niego korzysta, i spróbuj ponownie.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="491"></location>
+      <location filename="src/app/App.cpp" line="494"></location>
       <source>Couldn't delete</source>
       <translation>Nie udało się usunąć</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="284"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>Nie dodano jej do biblioteki, a pliku nie ma na dysku.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="278"></location>
+      <location filename="src/app/App.cpp" line="281"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>Plik znajduje się w folderze przechwytywania, ale nie udało się dodać go do biblioteki.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="268"></location>
+      <location filename="src/app/App.cpp" line="271"></location>
       <source>Saved to disk, not in library</source>
       <translation>Zapisano na dysku, brak w bibliotece</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="390"></location>
+      <location filename="src/app/App.cpp" line="393"></location>
       <source>Capture request received</source>
       <translation>Otrzymano żądanie przechwycenia</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="453"></location>
+      <location filename="src/app/App.cpp" line="456"></location>
       <source>Reason: %1</source>
       <translation>Powód: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="71"></location>
+      <location filename="src/app/App.cpp" line="74"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>Błąd bufora powtórek; nie zapisano klipu</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="65"></location>
+      <location filename="src/app/App.cpp" line="68"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>Bufor powtórek zbiera materiał; spróbuj zapisać ponownie za kilka sekund</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="83"></location>
+      <location filename="src/app/App.cpp" line="86"></location>
       <source>Replay buffer is empty</source>
       <translation>Bufor powtórek jest pusty</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="77"></location>
+      <location filename="src/app/App.cpp" line="80"></location>
       <source>Replay buffer is not running</source>
       <translation>Bufor powtórek nie działa</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="59"></location>
+      <location filename="src/app/App.cpp" line="62"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>Bufor powtórek się uruchamia; spróbuj zapisać ponownie za kilka sekund</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="300"></location>
+      <location filename="src/app/App.cpp" line="303"></location>
       <source>Replay failed</source>
       <translation>Nie udało się zapisać powtórki</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="385"></location>
+      <location filename="src/app/App.cpp" line="388"></location>
       <source>Replay save requested</source>
       <translation>Zażądano zapisania powtórki</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="434"></location>
+      <location filename="src/app/App.cpp" line="437"></location>
       <source>Replay saved</source>
       <translation>Zapisano powtórkę</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="293"></location>
+      <location filename="src/app/App.cpp" line="296"></location>
       <source>Screenshot failed</source>
       <translation>Nie udało się zapisać zrzutu ekranu</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="335"></location>
+      <location filename="src/app/App.cpp" line="338"></location>
       <source>Screenshot saved</source>
       <translation>Zapisano zrzut ekranu</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="536"></location>
+      <location filename="src/app/App.cpp" line="539"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ uruchomiono z ustawieniami domyślnymi. Twój poprzedni plik ustawień został zachowany, więc nic nie zostało utracone.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="531"></location>
+      <location filename="src/app/App.cpp" line="534"></location>
       <source>Settings could not be read</source>
       <translation>Nie można odczytać ustawień</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="700"></location>
+      <location filename="src/app/App.cpp" line="703"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Niektóre dźwięki interfejsu są niedostępne</translation>
     </message>
@@ -2634,7 +2634,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.settings.advanced.status.ready">
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="44"></location>
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="706"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="799"></location>
       <source>Ready</source>
       <translation>Gotowy</translation>
     </message>
@@ -3334,87 +3334,87 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
       <translation>Kontroler ukryty</translation>
     </message>
     <message id="gamehq.settings.input.modern.auto">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="669"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="762"></location>
       <source>Auto</source>
       <translation>Auto</translation>
     </message>
     <message id="gamehq.settings.input.modern.device_layout_changed">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="773"></location>
       <source>%1 button layout changed</source>
       <translation>Zmieniono układ przycisków %1</translation>
     </message>
     <message id="gamehq.settings.input.modern.eyebrow">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="652"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="745"></location>
       <source>Modern controllers</source>
       <translation>Nowoczesne kontrolery</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="730"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="823"></location>
       <source>Learn about View and true Share buttons, probe results, reconnects, gestures, and combinations.</source>
       <translation>Różnica między przyciskiem View a prawdziwym przyciskiem Share, wyniki testu, ponowne połączenia, gesty i kombinacje.</translation>
     </message>
     <message id="gamehq.settings.input.modern.guide.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="728"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="821"></location>
       <source>Controller compatibility guide</source>
       <translation>Przewodnik zgodności kontrolerów</translation>
     </message>
     <message id="gamehq.settings.input.modern.layout_warning">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="657"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="750"></location>
       <source>A controller layout changed. Review its extra-button assignments before using them.</source>
       <translation>Zmieniono układ kontrolera. Przed użyciem sprawdź przypisania dodatkowych przycisków.</translation>
     </message>
     <message id="gamehq.settings.input.modern.legacy_fallback">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="703"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="796"></location>
       <source>Legacy fallback</source>
       <translation>Awaryjna obsługa starszych interfejsów</translation>
     </message>
     <message id="gamehq.settings.input.modern.off">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="671"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="764"></location>
       <source>Off</source>
       <translation>Wyłączone</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.copy">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="720"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="813"></location>
       <source>Copy report</source>
       <translation>Skopiuj raport</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="717"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="810"></location>
       <source>Copies anonymous identity, providers, Share/Guide availability, extra buttons, and layout state—never serials or full device paths.</source>
       <translation>Kopiuje anonimowy identyfikator, dostawców, dostępność przycisków Share/Guide, dodatkowe przyciski i stan układu — nigdy numery seryjne ani pełne ścieżki urządzeń.</translation>
     </message>
     <message id="gamehq.settings.input.modern.report.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="715"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="808"></location>
       <source>Compatibility report</source>
       <translation>Raport zgodności</translation>
     </message>
     <message id="gamehq.settings.input.modern.review_buttons">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="684"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="777"></location>
       <source>Review buttons</source>
       <translation>Sprawdź przyciski</translation>
     </message>
     <message id="gamehq.settings.input.modern.runtime">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="697"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="790"></location>
       <source>GameInput runtime</source>
       <translation>Środowisko GameInput</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.description">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="664"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="757"></location>
       <source>Auto uses the bundled GameInput runtime with a safe legacy fallback; Off disables GameInput.</source>
       <translation>Tryb Auto używa lokalnego modułu GameInput z bezpiecznym awaryjnym przełączeniem na starsze mechanizmy obsługi; tryb Wyłączony korzysta wyłącznie ze starszych mechanizmów obsługi.</translation>
     </message>
     <message id="gamehq.settings.input.modern.support.label">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="662"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="755"></location>
       <source>Modern controller support</source>
       <translation>Obsługa nowoczesnych kontrolerów</translation>
     </message>
     <message id="gamehq.settings.input.modern.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="654"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="747"></location>
       <source>GameInput support</source>
       <translation>Obsługa GameInput</translation>
     </message>
     <message id="gamehq.settings.input.modern.use_current_layout">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="690"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="783"></location>
       <source>Use current layout</source>
       <translation>Użyj bieżącego układu</translation>
     </message>
@@ -3525,14 +3525,104 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
       <translation>Przywrócić wszystkie przypisania sterowania?</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.message">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="762"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="855"></location>
       <source>Only the currently displayed device/profile overrides will be removed.</source>
       <translation>Usunięte zostaną tylko nadpisania aktualnie wyświetlanego urządzenia lub profilu.</translation>
     </message>
     <message id="gamehq.settings.input.restore_displayed.title">
-      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="760"></location>
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="853"></location>
       <source>Restore displayed bindings?</source>
       <translation>Przywrócić wyświetlane przypisania?</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.capture.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="698"></location>
+      <source>If Steam Input is on for this game, remove the Steam binding on this button in the game's controller layout.</source>
+      <translation>Jeśli Steam Input jest włączony dla tej gry, usuń przypisanie Steam z tego przycisku w układzie kontrolera gry.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.capture.open">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="701"></location>
+      <source>Open Steam controller layout</source>
+      <translation>Otwórz układ kontrolera w Steam</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="662"></location>
+      <source>Steam Input may also send a GameHQ controller shortcut to a Steam game, so one press can trigger both. GameHQ never changes Steam settings.</source>
+      <translation>Steam Input może też wysłać skrót kontrolera GameHQ do gry ze Steam, więc jedno naciśnięcie może uruchomić oba. GameHQ nigdy nie zmienia ustawień Steam.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.eyebrow">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="658"></location>
+      <source>Steam</source>
+      <translation>Steam</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="675"></location>
+      <source>Current game</source>
+      <translation>Bieżąca gra</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.none">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="680"></location>
+      <source>No Steam game is in session.</source>
+      <translation>Żadna gra ze Steam nie jest uruchomiona.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.pending">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="688"></location>
+      <source>%1: Steam Input may also send this GameHQ shortcut to the game.</source>
+      <translation>%1: Steam Input może też wysłać ten skrót GameHQ do gry.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.reviewed">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="691"></location>
+      <source>%1: reviewed. This help returns if these shortcuts change.</source>
+      <translation>%1: sprawdzone. Ta pomoc wróci, jeśli te skróty się zmienią.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.game.unbound">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="684"></location>
+      <source>%1: no GameHQ shortcut uses Create / Share or PS.</source>
+      <translation>%1: żaden skrót GameHQ nie używa Create / Share ani PS.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.guide.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="710"></location>
+      <source>Steam sets this button for all games. In Steam's controller settings, review the Guide Button Chord Layout.</source>
+      <translation>Steam ustawia ten przycisk dla wszystkich gier. W ustawieniach kontrolera Steam sprawdź „Guide Button Chord Layout”.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.guide.open">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="713"></location>
+      <source>Open Steam controller settings</source>
+      <translation>Otwórz ustawienia kontrolera Steam</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.help.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="669"></location>
+      <source>Explain when a Create / Share or PS shortcut may also reach the game through Steam Input.</source>
+      <translation>Wyjaśnia, kiedy skrót na Create / Share lub PS może też trafić do gry przez Steam Input.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.help.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="667"></location>
+      <source>Steam Input conflict help</source>
+      <translation>Pomoc przy konfliktach Steam Input</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.description">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="724"></location>
+      <source>Mark this game as reviewed, or hide this help for it.</source>
+      <translation>Oznacz tę grę jako sprawdzoną albo ukryj dla niej tę pomoc.</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.done">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="729"></location>
+      <source>I've reviewed it</source>
+      <translation>Sprawdziłem</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.hide">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="735"></location>
+      <source>Don't show for this game</source>
+      <translation>Nie pokazuj dla tej gry</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.review.label">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="722"></location>
+      <source>Reviewed in Steam?</source>
+      <translation>Sprawdzone w Steam?</translation>
+    </message>
+    <message id="gamehq.settings.input.steam.title">
+      <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="660"></location>
+      <source>Steam Input</source>
+      <translation>Steam Input</translation>
     </message>
     <message id="gamehq.settings.input.test.adopt_bindings">
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="232"></location>
@@ -4475,6 +4565,26 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
       <location filename="src/main.cpp" line="199"></location>
       <source>The portable import source folder is missing.</source>
       <translation>Brakuje folderu źródłowego importu profilu przenośnego.</translation>
+    </message>
+    <message id="gamehq.steam_input.control.capture">
+      <location filename="src/ui/SteamInputHelper.cpp" line="57"></location>
+      <source>Create / Share button</source>
+      <translation>Przycisk Create / Share</translation>
+    </message>
+    <message id="gamehq.steam_input.control.guide">
+      <location filename="src/ui/SteamInputHelper.cpp" line="51"></location>
+      <source>PS / Guide button</source>
+      <translation>Przycisk PS / Guide</translation>
+    </message>
+    <message id="gamehq.steam_input.notice.body">
+      <location filename="src/ui/SteamInputHelper.cpp" line="106"></location>
+      <source>%1: Steam Input may also send %2 to the game. Review it in Settings › Input › Steam Input.</source>
+      <translation>%1: Steam Input może też wysłać %2 do gry. Sprawdź to w Ustawienia › Sterowanie › Steam Input.</translation>
+    </message>
+    <message id="gamehq.steam_input.notice.title">
+      <location filename="src/ui/SteamInputHelper.cpp" line="101"></location>
+      <source>Steam Input may also use this button</source>
+      <translation>Steam Input może też używać tego przycisku</translation>
     </message>
     <message id="gamehq.tray.exit">
       <location filename="src/tray/TrayIcon.cpp" line="200"></location>

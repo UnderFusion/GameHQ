@@ -171,6 +171,10 @@ public slots:
     // "group\x1fprofile\x1fcontrol" entries currently gated until release.
     QStringList mappingArmedReleaseGates() const;
 
+    // Steam Input conflict help: which of Create/Share and PS drive a Global
+    // GameHQ action on the pad in use (the shared table before any pad pressed).
+    QStringList steamAdvisedBoundControls() const;
+
 signals:
     // Global actions (0.4/0.5 wire these to real capture; for now sound + log).
     // Both carry the request that started them, so the log chain from press to
@@ -219,6 +223,10 @@ signals:
     void controllerWarningChanged();
     void probeStatusChanged();
     void modernControllerChanged();
+    // The effective controller table may now bind different buttons: bindings
+    // were reloaded, a preset switch installed a new table, or another pad
+    // became the one in use.
+    void mappingTablesChanged();
 
 private:
     friend class InputEngineShutdownTest;
