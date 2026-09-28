@@ -100,6 +100,9 @@ private slots:
     void migrationSourceReferenceBlocksDeletion();
     void fallbackAndBuiltinAreDifferentChoices();
     void gameAssignmentWritesTheSessionGameRow();
+    // 0.7.9-beta2 report: edits must land in the preset open in "Editing
+    // preset", even when a game assignment (or no assignment) serves it.
+    void editsLandInTheOpenPresetNotTheTargetAssignment();
 
 private:
     int refreshes = 0;
@@ -657,6 +660,61 @@ void MappingPresetModelTest::fallbackAndBuiltinAreDifferentChoices()
                                    QStringLiteral("controller-abc"))
                  .presetId,
              reserved);
+}
+
+void MappingPresetModelTest::editsLandInTheOpenPresetNotTheTargetAssignment()
+{
+    const QString gameKey = MappingAssignmentResolver::canonicalGameKey(
+        QStringLiteral("C:\\Games\\Ring\\Ring.exe"));
+    QVERIFY(!gameKey.isEmpty());
+    MappingPresetModel::GameTarget game;
+    game.key = gameKey;
+    game.label = QStringLiteral("Ring");
+    model->setGameTargetProvider([game] { return game; });
+
+    // The controller runs "Device"; the user's own preset serves only the game.
+    const QString device = db->createMappingPreset(
+        QStringLiteral("controller"), QStringLiteral("Device"),
+        {makeRow(QStringLiteral("global.screenshot"), ControlId::FaceSouth)});
+    const QString mine = db->createMappingPreset(
+        QStringLiteral("controller"), QStringLiteral("Mine"),
+        {makeRow(QStringLiteral("global.save_replay"), ControlId::Capture, 1,
+                 QStringLiteral("tap"), 2)});
+    QVERIFY(!device.isEmpty() && !mine.isEmpty());
+    model->refresh();
+    QVERIFY(model->selectPreset(device));
+    QVERIFY(model->applyAssignment(device));
+    QVERIFY(model->applyGameAssignment(mine));
+
+    // A fresh page opens on the preset in effect: the game's.
+    MappingPresetModel reopened(db.get());
+    reopened.setPinnedProfileProvider([] { return QStringLiteral("controller-abc"); });
+    reopened.setGameTargetProvider([game] { return game; });
+    reopened.refresh();
+    QCOMPARE(reopened.selectedPresetId(), mine);
+
+    QVERIFY(model->selectPreset(mine));
+    QCOMPARE(model->editingPresetId(), mine);
+    const int presetsBefore = presetCount();
+    const QString deviceBefore = rowsSignature(db->mappingPresetRows(device));
+    refreshes = 0;
+
+    MappingPresetModel::ContentEdit remove;
+    remove.actionId = QStringLiteral("global.save_replay");
+    remove.slot = 1;
+    remove.remove = true;
+    QVERIFY(model->applyContentEdits({remove}));
+    QVERIFY(db->mappingPresetRows(mine).isEmpty());
+    QCOMPARE(rowsSignature(db->mappingPresetRows(device)), deviceBefore);
+    QCOMPARE(presetCount(), presetsBefore);   // no adopted "... mappings" copy
+    QCOMPARE(model->selectedPresetId(), mine);
+    QCOMPARE(model->assignedPresetId(), device);
+    QCOMPARE(refreshes, 1);
+
+    // A new preset opens for editing right away.
+    QVERIFY(model->createPreset(QStringLiteral("Fresh")));
+    QCOMPARE(model->selectedPresetId(), presetIdByName(QStringLiteral("Fresh")));
+    QCOMPARE(model->editingPresetId(), model->selectedPresetId());
 }
 
 QTEST_GUILESS_MAIN(MappingPresetModelTest)

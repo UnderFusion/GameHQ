@@ -138,6 +138,23 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
             }
             return m_mappingPresets->applyContentEdits(batch);
         });
+    // The editor shows and checks the preset open in "Editing preset" - the one
+    // its writes land in (editingPresetId() is the shared rule) - and follows
+    // that selection as it changes.
+    m_bindingEditor->setEditSourceProvider(
+        [this](const QString& group, const QString& profile) {
+            BindingEditorModel::EditSource source;
+            if (group != m_mappingPresets->deviceGroup())
+                return source;
+            source.presetId = m_mappingPresets->editingPresetId();
+            if (source.presetId.isEmpty())
+                return source;
+            source.rows = m_db->mappingPresetRows(source.presetId);
+            source.live = m_runtime->resolver().presetTableId(group, profile) == source.presetId;
+            return source;
+        });
+    connect(m_mappingPresets.get(), &MappingPresetModel::selectionChanged, this,
+            [this] { m_bindingEditor->refreshRows(); });
     // OS half of the binding transaction. The editor calls this *before* it
     // writes anything, so a chord Windows refuses can never be persisted and
     // shown as a working shortcut.

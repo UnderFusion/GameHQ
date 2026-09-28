@@ -362,7 +362,19 @@ re-resolve; it never decides a winner itself, and the runtime seam is exactly
   masks every layer below it.
 - **Writes land in named presets.** `BindingEditorModel` keeps its draft,
   relation, conflict and hotkey logic and forwards each change through one sink;
-  the model decides which preset owns the target. A target whose direct
+  the model decides which preset receives it. The preset open in *Editing
+  preset* wins: when it is a user preset of this group
+  (`MappingPresetModel::editingPresetId()`), the Assignments list shows THAT
+  preset's table (built-in defaults plus its rows, the same construction the
+  switch installs) and every edit, Remove, Revert and Restore defaults lands in
+  it - whether a game assignment, this device, or nothing serves it. The
+  editor's conflict checks and inherited gestures read the same table, and a
+  Win32 hotkey is only claimed or released when the runtime serves that preset
+  on the edited route. Until the user picks a preset, the selection follows the
+  one in effect (session game, then this target); "New preset" selects the new
+  preset unless a draft is open. (Before 0.7.9 the list showed the runtime
+  table and edits went to the target's assignment, so a game's preset could not
+  be edited at all.) With no user preset open, a target whose direct
   assignment is a **user** preset edits that preset in place (everyone else
   using it changes too — the UI says "used by N"). Otherwise the first edit
   **adopts** what the target serves today: snapshot the effective table, apply

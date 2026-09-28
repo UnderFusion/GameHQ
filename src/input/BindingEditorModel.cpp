@@ -125,6 +125,80 @@ QString BindingEditorModel::selectedProfile() const
         ? m_controllerFingerprint : QString();
 }
 
+BindingEditorModel::EditSource BindingEditorModel::editSource(
+    const QString& deviceGroup, const QString& deviceProfile) const
+{
+    // Only the preset write path has a preset to show; legacy harnesses keep
+    // the runtime view their override rows feed.
+    if (!m_presetSink || !m_editSourceProvider || deviceGroup != m_deviceGroup)
+        return {};
+    return m_editSourceProvider(deviceGroup, deviceProfile);
+}
+
+QVector<BindingResolver::Binding> BindingEditorModel::editedBindings(
+    const QString& deviceGroup, const QString& deviceProfile) const
+{
+    const EditSource source = editSource(deviceGroup, deviceProfile);
+    if (source.presetId.isEmpty())
+        return m_runtime->effectiveBindings(deviceGroup, deviceProfile);
+    // The same construction the mapping switch installs for a serving preset
+    // (InputEngine::planMappingChain), so an assigned preset reads identically.
+    return BindingResolver::chainTableFromRows(BindingResolver::defaultBindings(), deviceGroup,
+                                               deviceProfile, source.rows);
+}
+
+BindingResolver::Gesture BindingEditorModel::editedGesture(
+    const QString& deviceGroup, const QString& deviceProfile,
+    const QString& actionId, int slot) const
+{
+    const EditSource source = editSource(deviceGroup, deviceProfile);
+    if (source.presetId.isEmpty())
+        return m_runtime->inheritedGesture(deviceGroup, deviceProfile, actionId, slot);
+
+    // BindingResolver::inheritedGesture()'s order, read from the open preset:
+    // the slot's own row (an unbound one keeps its gesture; the pre-0.7.3
+    // press/0 clear sentinel carries none), the slot default, a live sibling
+    // slot, then the action's default semantics.
+    for (const MappingPresetRow& row : source.rows) {
+        if (row.actionId != actionId || row.slot != slot)
+            continue;
+        if (!(row.unbound && row.activation == QLatin1String("press") && row.holdMs == 0))
+            return {row.activation, row.holdMs, row.tapCount};
+        break;
+    }
+    const QVector<BindingResolver::Binding> defaults = BindingResolver::defaultBindings();
+    for (const auto& binding : defaults) {
+        if (binding.deviceGroup == deviceGroup && binding.actionId == actionId
+            && binding.slot == slot)
+            return {binding.activation, binding.holdMs, binding.tapCount};
+    }
+    const BindingResolver::Binding* sibling = nullptr;
+    const QVector<BindingResolver::Binding> table = editedBindings(deviceGroup, deviceProfile);
+    for (const auto& binding : table) {
+        if (binding.actionId != actionId || binding.slot == slot)
+            continue;
+        if (!sibling || binding.slot < sibling->slot)
+            sibling = &binding;
+    }
+    if (sibling)
+        return {sibling->activation, sibling->holdMs, sibling->tapCount};
+    for (const auto& binding : defaults) {
+        if (binding.deviceGroup == deviceGroup && binding.actionId == actionId)
+            return {binding.activation, binding.holdMs, binding.tapCount};
+    }
+    for (const auto& binding : defaults) {
+        if (binding.actionId == actionId)
+            return {binding.activation, binding.holdMs, binding.tapCount};
+    }
+    return {};
+}
+
+bool BindingEditorModel::editTargetIsLive() const
+{
+    const EditSource source = editSource(m_deviceGroup, selectedProfile());
+    return source.presetId.isEmpty() || source.live;
+}
+
 QString BindingEditorModel::scopeLabel(ActionCatalog::Scope scope)
 {
     switch (scope) {
@@ -202,18 +276,37 @@ QString BindingEditorModel::formatEffectiveGesture(const GestureSpec& gesture) c
 void BindingEditorModel::rebuildRows()
 {
     const QString profile = selectedProfile();
+    const EditSource source = editSource(m_deviceGroup, profile);
+    const bool presetOpen = !source.presetId.isEmpty();
     QHash<QString, BindingResolver::Binding> bindings;
-    for (const auto& binding : m_runtime->effectiveBindings(m_deviceGroup, profile))
+    for (const auto& binding : editedBindings(m_deviceGroup, profile))
         bindings.insert(slotKey(binding.actionId, binding.slot), binding);
 
+    // An open preset is compared with the built-in defaults it is layered on,
+    // and its own rows are the "local" changes, so Revert / Restore / Restore
+    // defaults work on a preset's customizations. Without a preset the legacy
+    // override rows keep that role.
     QHash<QString, BindingResolver::Binding> baselines;
-    for (const auto& binding : m_runtime->baselineBindings(m_deviceGroup, profile))
+    const QVector<BindingResolver::Binding> baselineTable = presetOpen
+        ? BindingResolver::chainTableFromRows(BindingResolver::defaultBindings(), m_deviceGroup,
+                                              profile, {})
+        : m_runtime->baselineBindings(m_deviceGroup, profile);
+    for (const auto& binding : baselineTable)
         baselines.insert(slotKey(binding.actionId, binding.slot), binding);
 
     QHash<QString, BindingOverrideRow> localOverrides;
-    for (const BindingOverrideRow& row : m_database->listBindingOverrides()) {
-        if (row.deviceGroup == m_deviceGroup && row.deviceProfile == profile)
-            localOverrides.insert(slotKey(row.actionId, row.slot), row);
+    if (presetOpen) {
+        for (const MappingPresetRow& row : source.rows) {
+            localOverrides.insert(slotKey(row.actionId, row.slot),
+                                  BindingOverrideRow{m_deviceGroup, profile, row.actionId,
+                                                     row.slot, row.triggerCode, row.activation,
+                                                     row.holdMs, row.unbound, row.tapCount});
+        }
+    } else {
+        for (const BindingOverrideRow& row : m_database->listBindingOverrides()) {
+            if (row.deviceGroup == m_deviceGroup && row.deviceProfile == profile)
+                localOverrides.insert(slotKey(row.actionId, row.slot), row);
+        }
     }
 
     QVariantList next;
@@ -298,8 +391,7 @@ void BindingEditorModel::refreshCapturePrompt()
     }
     if (m_deviceGroup == QLatin1String("controller")) {
         const BindingResolver::Gesture gesture =
-            m_runtime->inheritedGesture(m_deviceGroup, selectedProfile(),
-                                        m_captureActionId, m_captureSlot);
+            editedGesture(m_deviceGroup, selectedProfile(), m_captureActionId, m_captureSlot);
         m_capturePrompt = NativeText::get(
             //: Binding-capture prompt. %1 is an action, %2 a slot number, %3 a gesture.
             //% "Press a controller button for %1 · Slot %2 · %3"
@@ -405,7 +497,7 @@ BindingEditorModel::PendingChange BindingEditorModel::pendingChangeFor(
 {
     PendingChange change;
     change.target = target;
-    const auto effective = m_runtime->effectiveBindings(target.deviceGroup, target.deviceProfile);
+    const auto effective = editedBindings(target.deviceGroup, target.deviceProfile);
     for (const auto& binding : effective) {
         if (binding.actionId == target.actionId && binding.slot == target.slot)
             continue;
@@ -500,14 +592,14 @@ bool BindingEditorModel::captureInput(const QString& deviceGroup, const QString&
         return editorCaptureInput(deviceGroup, triggerCode);
 
     const QString profile = selectedProfile();
-    const auto effective = m_runtime->effectiveBindings(deviceGroup, profile);
+    const auto effective = editedBindings(deviceGroup, profile);
     // The gesture belongs to the slot, not to the trigger being captured: an
     // empty secondary Screenshot is still a tap, a cleared Save Replay is
     // still a hold. Inheriting it here keeps the relation classification below
     // honest — a guessed "press" manufactured HardConflicts on any trigger
     // that already carried a timed gesture.
     const BindingResolver::Gesture gesture =
-        m_runtime->inheritedGesture(deviceGroup, profile, m_captureActionId, m_captureSlot);
+        editedGesture(deviceGroup, profile, m_captureActionId, m_captureSlot);
     BindingResolver::Binding target{deviceGroup, profile, m_captureActionId, m_captureSlot,
                                     triggerCode, gesture.activation, gesture.holdMs, false,
                                     gesture.tapCount};
@@ -732,6 +824,11 @@ void BindingEditorModel::setPresetSink(PresetSink sink)
     m_presetSink = std::move(sink);
 }
 
+void BindingEditorModel::setEditSourceProvider(EditSourceProvider provider)
+{
+    m_editSourceProvider = std::move(provider);
+}
+
 bool BindingEditorModel::persist(const BindingOverrideRow& row)
 {
     if (m_presetSink) {
@@ -854,7 +951,10 @@ bool BindingEditorModel::applyChange(const PendingChange& change)
         return true;
     }
 
-    const bool ownsHotkey = m_hotkeyApply && isGlobalHotkey(target);
+    // A preset that is open but not served changes nothing live, so Windows is
+    // neither asked for its chord nor told to drop the live one.
+    const bool liveEdit = editTargetIsLive();
+    const bool ownsHotkey = liveEdit && m_hotkeyApply && isGlobalHotkey(target);
 
     // 1) Remember what is live now, so step 4 can put it back.
     QString previousChord;
@@ -920,7 +1020,7 @@ bool BindingEditorModel::applyChange(const PendingChange& change)
     // path gets that from reloadBindings()' sweep; a preset-sink batch never
     // runs that sweep, so release those slots here (an empty chord means
     // "release the slot" — the same contract the rollback path uses).
-    if (m_presetSink && m_hotkeyApply) {
+    if (liveEdit && m_presetSink && m_hotkeyApply) {
         for (const auto& conflict : change.conflicts) {
             if (!isGlobalHotkey(conflict))
                 continue;
@@ -944,7 +1044,7 @@ void BindingEditorModel::clearBinding(const QString& actionId, int slot)
     // so the next capture into it collided with every timed gesture sharing
     // the trigger.
     const BindingResolver::Gesture gesture =
-        m_runtime->inheritedGesture(m_deviceGroup, selectedProfile(), actionId, slot);
+        editedGesture(m_deviceGroup, selectedProfile(), actionId, slot);
     BindingOverrideRow row{m_deviceGroup, selectedProfile(), actionId, slot, {},
                            gesture.activation, gesture.holdMs, true, gesture.tapCount};
     persist(row);
@@ -1172,7 +1272,7 @@ void BindingEditorModel::openAssignmentEditor(const QString& actionId, int slot)
 
     // Seed from what the slot holds today, so opening the dialog on a bound
     // slot shows that binding instead of an empty form.
-    for (const auto& binding : m_runtime->effectiveBindings(m_deviceGroup, selectedProfile())) {
+    for (const auto& binding : editedBindings(m_deviceGroup, selectedProfile())) {
         if (binding.actionId != actionId || binding.slot != slot)
             continue;
         const TriggerSpec trigger = binding.trigger();
@@ -1187,8 +1287,7 @@ void BindingEditorModel::openAssignmentEditor(const QString& actionId, int slot)
     }
     // Empty slot: inherit the gesture the slot means, exactly as a plain
     // capture does, so a second Screenshot button still starts out as a tap.
-    m_editorGesture = m_runtime->inheritedGesture(m_deviceGroup, selectedProfile(),
-                                                  actionId, slot).spec();
+    m_editorGesture = editedGesture(m_deviceGroup, selectedProfile(), actionId, slot).spec();
     if (m_deviceGroup != QLatin1String("controller"))
         m_editorGesture = GestureSpec::press();
     refreshEditorNotice();
@@ -1362,7 +1461,7 @@ void BindingEditorModel::refreshEditorNotice()
     BindingRelation::Kind worst = BindingRelation::Kind::None;
     BindingRelation::Notice notice = BindingRelation::Notice::None;
     BindingResolver::Binding partner;
-    for (const auto& binding : m_runtime->effectiveBindings(m_deviceGroup, selectedProfile())) {
+    for (const auto& binding : editedBindings(m_deviceGroup, selectedProfile())) {
         if (binding.actionId == target.actionId && binding.slot == target.slot)
             continue;
         const auto kind = BindingRelation::classify(target, binding);
