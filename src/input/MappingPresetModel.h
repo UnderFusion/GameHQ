@@ -164,6 +164,11 @@ public:
     QString selectedPresetName() const;
     bool selectedIsBuiltin() const;
     bool selectedEditable() const;
+    // The preset the Assignments list shows and writes: the "Editing preset"
+    // selection when it is a user preset of this group, otherwise empty (the
+    // editor then shows the live table and the first edit adopts it). Migration
+    // presets are never edited in place (the cpo-p03 proof path owns them).
+    QString editingPresetId() const;
     Target target() const;
     QString targetKind() const { return target().kind; }
     QString targetKey() const { return target().key; }
@@ -282,6 +287,9 @@ private:
     QString m_deviceGroup = QStringLiteral("controller");
     QVariantList m_presetList;
     QString m_selectedPresetId;
+    // True once the user (or an edit) chose the selection; until then it
+    // follows the preset in effect.
+    bool m_selectionChosen = false;
     QString m_assignedPresetId;
     QString m_assignedPresetName;
     bool m_assignedMissing = false;

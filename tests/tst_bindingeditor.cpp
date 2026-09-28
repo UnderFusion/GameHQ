@@ -128,6 +128,7 @@ private slots:
         m_editor->setControllerSpecific(false);
         m_editor->setControllerProfile({});
         m_editor->setPresetSink(nullptr);
+        m_editor->setEditSourceProvider(nullptr);
         m_legacyReloads = 0;
     }
 
@@ -1647,6 +1648,86 @@ private slots:
         QVERIFY(hasBinding(*m_runtime, QStringLiteral("controller"), {},
                            QStringLiteral("global.screenshot"), 2, ControlId::Guide));
         m_editor->closeAssignmentEditor();
+    }
+    // 0.7.9-beta2 report: a double-tap customization in a created preset could
+    // be neither removed nor edited. The editor showed and checked the RUNTIME
+    // table (a game's preset or another assignment) while writes landed in a
+    // different preset. With a preset open, the rows, the gesture a Remove
+    // keeps and Restore all read that preset - never the runtime.
+    void openPresetIsShownAndEditedInsteadOfTheRuntimeTable()
+    {
+        MappingPresetRow custom;
+        custom.actionId = QStringLiteral("global.save_replay");
+        custom.slot = 1;
+        custom.triggerCode = ControlId::Capture;
+        custom.activation = QStringLiteral("tap");
+        custom.tapCount = 2;
+        QVector<MappingPresetRow> presetRows{custom};
+
+        QVector<BindingEditorModel::PresetEdit> received;
+        m_editor->setPresetSink([&](const QVector<BindingEditorModel::PresetEdit> &edits) {
+            received += edits;
+            for (const auto &edit : edits) {
+                for (int i = 0; i < presetRows.size(); ++i) {
+                    if (presetRows.at(i).actionId == edit.actionId
+                        && presetRows.at(i).slot == edit.slot) {
+                        presetRows.removeAt(i);
+                        break;
+                    }
+                }
+                if (edit.remove)
+                    continue;
+                MappingPresetRow row;
+                row.actionId = edit.actionId;
+                row.slot = edit.slot;
+                row.triggerCode = edit.triggerCode;
+                row.activation = edit.activation;
+                row.holdMs = edit.holdMs;
+                row.unbound = edit.unbound;
+                row.tapCount = edit.tapCount;
+                presetRows.append(row);
+            }
+            return true;
+        });
+        m_editor->setEditSourceProvider([&](const QString &, const QString &) {
+            BindingEditorModel::EditSource source;
+            source.presetId = QStringLiteral("preset-open");
+            source.rows = presetRows;
+            return source;
+        });
+        m_editor->refreshRows();
+
+        // The runtime still serves the built-in Share hold; the editor shows the
+        // open preset's double tap, marked as a change.
+        QVariantMap row = rowFor(*m_editor, QStringLiteral("global.save_replay"));
+        QVERIFY(row.value(QStringLiteral("primaryAssigned")).toBool());
+        QVERIFY(!row.value(QStringLiteral("primaryGesture")).toString().contains(
+            QStringLiteral("Hold")));
+        QCOMPARE(row.value(QStringLiteral("primaryChangeState")).toString(),
+                 QStringLiteral("modified"));
+        QVERIFY(row.value(QStringLiteral("modified")).toBool());
+
+        // Remove writes an unbound row that keeps the PRESET's double tap, not
+        // the runtime's hold, and the slot now reads as removed.
+        m_editor->clearBinding(QStringLiteral("global.save_replay"), 1);
+        QCOMPARE(received.size(), 1);
+        QVERIFY(received.first().unbound);
+        QCOMPARE(received.first().activation, QStringLiteral("tap"));
+        QCOMPARE(received.first().tapCount, 2);
+        row = rowFor(*m_editor, QStringLiteral("global.save_replay"));
+        QVERIFY(!row.value(QStringLiteral("primaryAssigned")).toBool());
+        QCOMPARE(row.value(QStringLiteral("primaryChangeState")).toString(),
+                 QStringLiteral("removed"));
+
+        // Restore drops the preset row, so the built-in hold is back.
+        m_editor->resetBinding(QStringLiteral("global.save_replay"), 1);
+        QCOMPARE(received.size(), 2);
+        QVERIFY(received.last().remove);
+        QVERIFY(presetRows.isEmpty());
+        row = rowFor(*m_editor, QStringLiteral("global.save_replay"));
+        QVERIFY(row.value(QStringLiteral("primaryAssigned")).toBool());
+        QCOMPARE(row.value(QStringLiteral("primaryChangeState")).toString(),
+                 QStringLiteral("default"));
     }
 };
 

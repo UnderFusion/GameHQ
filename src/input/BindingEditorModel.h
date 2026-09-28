@@ -104,6 +104,24 @@ public:
     // harnesses, which keep the override path.
     using PresetSink = std::function<bool(const QVector<PresetEdit>& edits)>;
     void setPresetSink(PresetSink sink);
+    // The preset the page has open for editing (MappingPresetModel::
+    // editingPresetId()). With a preset open, the rows, conflict checks and
+    // inherited gestures read THAT preset's table - the same table its writes
+    // land in - instead of whatever the runtime serves right now (a game's
+    // preset, or another assignment). `live` says whether the runtime serves
+    // it on this route, which gates the Win32 hotkey half of a write. An empty
+    // presetId keeps the runtime view (no preset yet: the first edit adopts).
+    struct EditSource
+    {
+        QString presetId;
+        QVector<MappingPresetRow> rows;
+        bool live = false;
+    };
+    using EditSourceProvider = std::function<EditSource(const QString& deviceGroup,
+                                                        const QString& deviceProfile)>;
+    void setEditSourceProvider(EditSourceProvider provider);
+    // Rebuilds the rows after the edited preset changed outside the editor.
+    void refreshRows() { rebuildRows(); }
     // The cpo-c05 pin as the preset layer sees it: the explicitly selected
     // controller profile, or empty while editing is shared (group-wide).
     QString pinnedProfile() const
@@ -219,6 +237,17 @@ private:
     };
 
     QString selectedProfile() const;
+    EditSource editSource(const QString& deviceGroup, const QString& deviceProfile) const;
+    // The table the editor shows and checks against: the open preset's, or the
+    // runtime's when none is open.
+    QVector<BindingResolver::Binding> editedBindings(const QString& deviceGroup,
+                                                     const QString& deviceProfile) const;
+    BindingResolver::Gesture editedGesture(const QString& deviceGroup,
+                                           const QString& deviceProfile,
+                                           const QString& actionId, int slot) const;
+    // False while the open preset is not what the runtime serves: nothing live
+    // changes, so no OS hotkey may be claimed or released for it.
+    bool editTargetIsLive() const;
     void rebuildRows();
     void refreshCapturePrompt();
     void refreshLastFiredAction();
@@ -273,6 +302,7 @@ private:
     HotkeyApply m_hotkeyApply;
     PersistRow m_persistRow;
     PresetSink m_presetSink;
+    EditSourceProvider m_editSourceProvider;
     QString m_deviceGroup = QStringLiteral("controller");
     QVariantList m_rows;
     bool m_controllerSpecific = false;

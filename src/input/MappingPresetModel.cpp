@@ -287,6 +287,7 @@ void MappingPresetModel::setDeviceGroup(const QString& group)
         return;
     m_deviceGroup = group;
     m_selectedPresetId.clear();
+    m_selectionChosen = false;
     emit deviceGroupChanged();
     refresh();
 }
@@ -320,6 +321,14 @@ bool MappingPresetModel::selectedEditable() const
         return false;
     const MappingPreset preset = m_database->mappingPreset(m_selectedPresetId);
     return !preset.id.isEmpty() && preset.deviceGroup == m_deviceGroup;
+}
+
+QString MappingPresetModel::editingPresetId() const
+{
+    if (!selectedEditable())
+        return QString();
+    const MappingPreset preset = m_database->mappingPreset(m_selectedPresetId);
+    return preset.origin == QLatin1String("user") ? preset.id : QString();
 }
 
 MappingPresetModel::Target MappingPresetModel::target() const
@@ -421,8 +430,33 @@ void MappingPresetModel::rebuildPresets()
         && !known.contains(m_selectedPresetId)) {
         m_selectedPresetId.clear();
     }
-    if (m_selectedPresetId.isEmpty() && !known.isEmpty())
-        m_selectedPresetId = list.first().toMap().value(QStringLiteral("id")).toString();
+    // Until the user picks a preset, the selection follows the preset in effect
+    // (the model is built before its game/target seams are wired, so the first
+    // pick is re-evaluated on every refresh). Never while a draft is open.
+    if (!m_selectionChosen && !pendingEdit())
+        m_selectedPresetId.clear();
+    // With nothing selected yet, open the preset that is in effect (the session
+    // game's, then this target's) so the Assignments list starts on what the
+    // device really runs; the first library entry is only the last resort.
+    if (m_selectedPresetId.isEmpty() && !known.isEmpty()) {
+        QStringList preferred;
+        const QString gameKey = gameTarget().key;
+        if (!gameKey.isEmpty()) {
+            preferred.append(m_database->mappingAssignment(m_deviceGroup, QStringLiteral("game"),
+                                                           gameKey).presetId);
+        }
+        const Target t = target();
+        if (!t.kind.isEmpty())
+            preferred.append(m_database->mappingAssignment(m_deviceGroup, t.kind, t.key).presetId);
+        for (const QString& id : std::as_const(preferred)) {
+            if (known.contains(id)) {
+                m_selectedPresetId = id;
+                break;
+            }
+        }
+        if (m_selectedPresetId.isEmpty())
+            m_selectedPresetId = list.first().toMap().value(QStringLiteral("id")).toString();
+    }
     emit presetsChanged();
     emit selectionChanged();
 }
@@ -514,6 +548,7 @@ bool MappingPresetModel::selectPreset(const QString& presetId)
         return false;
     if (presetId.isEmpty() || CaptureDatabase::isBuiltinMappingPresetId(presetId)) {
         m_selectedPresetId = presetId;
+        m_selectionChosen = true;
         emit selectionChanged();
         rebuildUses();
         return true;
@@ -523,6 +558,7 @@ bool MappingPresetModel::selectPreset(const QString& presetId)
         return setNotice(QStringLiteral("unknown_preset"),
                          noticeUnknownPreset());
     m_selectedPresetId = presetId;
+    m_selectionChosen = true;
     emit selectionChanged();
     rebuildUses();
     return true;
@@ -543,8 +579,16 @@ bool MappingPresetModel::createPreset(const QString& name)
         return setNotice(QStringLiteral("write_failed"),
                          noticeNameTaken());
     }
+    // The new preset opens for editing: "New preset" is followed by editing it,
+    // and the Assignments list follows the selection. Still library-only.
+    // An open draft keeps its preset: selection is refused while one is pending.
+    if (!pendingEdit()) {
+        m_selectedPresetId = id;
+        m_selectionChosen = true;
+    }
     rebuildPresets();
     rebuildAssignment();
+    rebuildUses();
     // Library-only: an unused preset cannot change any effective table, so this
     // must not invalidate an in-flight gesture.
     return true;
@@ -564,6 +608,7 @@ bool MappingPresetModel::duplicateSelected(const QString& name)
         return setNotice(QStringLiteral("write_failed"),
                          noticeNameTaken());
     m_selectedPresetId = id;
+    m_selectionChosen = true;
     rebuildPresets();
     rebuildAssignment();
     emit selectionChanged();
@@ -668,6 +713,7 @@ bool MappingPresetModel::applyAssignment(const QString& presetId)
     }
     if (!presetId.isEmpty() && presetId != builtinChoiceToken())
         m_selectedPresetId = presetId;
+        m_selectionChosen = true;
     refresh();
     notifyRuntimeChange();
     return true;
@@ -745,6 +791,7 @@ bool MappingPresetModel::duplicateSelectedForTarget(const QString& name)
     // Duplicate + assign landed together; the original preset's other users are
     // untouched, and only this target moved.
     m_selectedPresetId = id;
+    m_selectionChosen = true;
     refresh();
     notifyRuntimeChange();
     return true;
@@ -826,6 +873,31 @@ bool MappingPresetModel::applyContentEdits(const QVector<ContentEdit>& edits)
         return true;
     const Target t = target();
 
+    const auto editInPlace = [this, &edits](const QString& presetId) {
+        QVector<MappingPresetRow> rows = m_database->mappingPresetRows(presetId);
+        for (const ContentEdit& edit : edits) {
+            if (!applyEditToRows(m_deviceGroup, rows, edit))
+                return setNotice(QStringLiteral("edit_invalid"), noticeEditInvalid());
+        }
+        if (!m_database->replaceMappingPresetRows(presetId, rows))
+            return setNotice(QStringLiteral("write_failed"), noticeWriteFailed());
+        m_selectedPresetId = presetId;
+        m_selectionChosen = true;
+        refresh();
+        notifyRuntimeChange();
+        return true;
+    };
+
+    // 0) The preset open in "Editing preset" is where the Assignments are
+    //    written - the page says so, and the editor shows that preset's table
+    //    (editingPresetId() is the one rule both sides read). Before 0.7.9 the
+    //    write went to the target's assignment instead, so a preset served by a
+    //    game assignment, or one not assigned to this device, could not be
+    //    changed at all: every Remove/Edit landed in a different preset.
+    const QString editing = editingPresetId();
+    if (!editing.isEmpty())
+        return editInPlace(editing);
+
     // 1) A real user preset already owns this target: the edit lands there, and
     //    everyone else using that preset changes too - which is exactly what
     //    the "used by N" copy and the duplicate-for-this-controller path exist
@@ -836,19 +908,7 @@ bool MappingPresetModel::applyContentEdits(const QVector<ContentEdit>& edits)
         const MappingPreset owner = m_database->mappingPreset(assignment.presetId);
         if (!owner.id.isEmpty() && owner.origin == QLatin1String("user")
             && owner.deviceGroup == m_deviceGroup) {
-            QVector<MappingPresetRow> rows = m_database->mappingPresetRows(owner.id);
-            for (const ContentEdit& edit : edits) {
-                if (!applyEditToRows(m_deviceGroup, rows, edit)) {
-                    return setNotice(QStringLiteral("edit_invalid"), noticeEditInvalid());
-                }
-            }
-            if (!m_database->replaceMappingPresetRows(owner.id, rows)) {
-                return setNotice(QStringLiteral("write_failed"), noticeWriteFailed());
-            }
-            m_selectedPresetId = owner.id;
-            refresh();
-            notifyRuntimeChange();
-            return true;
+            return editInPlace(owner.id);
         }
     }
 
@@ -887,6 +947,7 @@ bool MappingPresetModel::applyContentEdits(const QVector<ContentEdit>& edits)
                          noticeWriteFailed());
     }
     m_selectedPresetId = id;
+    m_selectionChosen = true;
     refresh();
     notifyRuntimeChange();
     emit selectionChanged();
