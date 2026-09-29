@@ -84,6 +84,44 @@ These hold for every provider, including future external ones:
 - properties: `active`, `fileName`, `mediaKind`, `phase` (`idle|choosing|sending|finished`), `busy`, `lastError`, `lastResult`, `targetsProviderId`, `targetsLoading`
 - signal `finished(result)`
 
+## UI
+
+`src/ui/qml/components/ShareDialog.qml` is the one Share flow. Each window
+hosts an instance, because the desktop `Lightbox` is its own full-screen window
+and would cover the main window's dialog: `Main.qml` (`shareDialog`),
+`Lightbox.qml` (`lightboxShare`, exposed as `lightbox.shareDialog`) and
+`OverlayWindow.qml` (`overlayShare`).
+
+Entry points:
+
+- **Square** on a gallery tile or overlay strip capture opens the action menu;
+  its entries are `{ id, label }` (`share`, `show_in_folder`, `delete`, plus
+  `bulk_select` on the desktop) and the host runs `runMenuAction(id)`.
+- **Square** in the desktop lightbox or the overlay's full-screen viewer opens
+  Share for the shown capture directly (neither has a menu of its own).
+- **Mouse:** a Share icon on every capture tile (desktop and overlay strip) and
+  a Share pill next to the lightbox's close button.
+
+Pad model (modal): Up/Down move the highlight (clamped, unavailable providers
+are skipped), Cross activates, Circle steps back (recipients → destinations →
+closed). While a job runs, Circle asks the service to cancel and the dialog
+stays until the result arrives. After a Sent/Unconfirmed result, sharing the
+same capture to the same recipient shows a confirmation that lands on Cancel.
+A provider whose only target is its external app (desktop hand-off) goes
+straight from the destination to the hand-off. Nothing underneath acts while
+the dialog is open: `Main.qml` routes every desktop pad signal through
+`activeShareDialog()`, `DesktopGalleryGrid.inputBlocked` stops the grid's own
+shortcuts, and the overlay handlers check `overlayShare.isOpen` first. The
+dialog tracks an explicit `isOpen` state rather than item visibility. Hiding
+the overlay closes an idle dialog; a running send keeps going and its result
+is shown on the next open.
+
+Built-in provider: `share::ClipboardShareProvider` (`clipboard`) puts the file
+on the clipboard (plus image data for screenshots). Result: `copied`.
+
+Tests: `tests/tst_sharedialog.cpp` drives the real `ShareDialog.qml` with pad
+calls against the real service.
+
 ## Workstream
 
 Plan items t9–t20: core (t9), controller-first Share UI with stable action ids

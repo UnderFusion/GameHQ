@@ -104,6 +104,8 @@
       <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="35"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="419"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
@@ -111,14 +113,14 @@
       <translation>İptal</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1105"></location>
-      <location filename="src/ui/qml/Main.qml" line="1122"></location>
-      <location filename="src/ui/qml/Main.qml" line="1158"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="525"></location>
+      <location filename="src/ui/qml/Main.qml" line="1156"></location>
+      <location filename="src/ui/qml/Main.qml" line="1175"></location>
+      <location filename="src/ui/qml/Main.qml" line="1213"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="652"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
-      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="16"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="19"></location>
       <source>Delete</source>
       <translation>Sil</translation>
     </message>
@@ -294,6 +296,7 @@
     </message>
     <message id="gamehq.action.done">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="87"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="175"></location>
       <source>Done</source>
       <translation>Bitti</translation>
     </message>
@@ -647,7 +650,7 @@
       <translation>Seçilen klasör geçersiz.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="362"></location>
+      <location filename="src/ui/AppController.cpp" line="368"></location>
       <source>Choose a local folder.</source>
       <translation>Yerel bir klasör seçin.</translation>
     </message>
@@ -667,8 +670,8 @@
       <translation>GameHQ seçilen klasörü kaydedemedi.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="356"></location>
-      <location filename="src/ui/AppController.cpp" line="378"></location>
+      <location filename="src/ui/AppController.cpp" line="362"></location>
+      <location filename="src/ui/AppController.cpp" line="384"></location>
       <source>The capture type is invalid.</source>
       <translation>Yakalama türü geçersiz.</translation>
     </message>
@@ -825,7 +828,7 @@
       <translation>Karma değeri hesaplanamıyor: %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="200"></location>
+      <location filename="src/ui/AppController.cpp" line="206"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>Taşınabilir profiller yalnızca kurulu GameHQ kopyasına aktarılabilir.</translation>
     </message>
@@ -850,12 +853,12 @@
       <translation>Kurtarılan taşınabilir içe aktarma günlüğü kaldırılamadı.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="206"></location>
+      <location filename="src/ui/AppController.cpp" line="212"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>Taşınabilir GameHQ kopyasını içeren yerel bir klasör seçin.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="215"></location>
+      <location filename="src/ui/AppController.cpp" line="221"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>Seçilen klasör geçerli bir taşınabilir GameHQ paketi değil.</translation>
     </message>
@@ -885,12 +888,12 @@
       <translation>portable:/ yolu seçilen paket kökünün dışına çıkıyor.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="226"></location>
+      <location filename="src/ui/AppController.cpp" line="232"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ, içe aktarma için kendi işlemini belirleyemedi.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="236"></location>
+      <location filename="src/ui/AppController.cpp" line="242"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ taşınabilir içe aktarma işlemini başlatamadı.</translation>
     </message>
@@ -965,7 +968,7 @@
       <translation>Başka bir taşınabilir profil içe aktarma işlemi zaten çalışıyor.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="661"></location>
+      <location filename="src/app/App.cpp" line="663"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Çekim işlemleri güvenli biçimde zamanında tamamlanamadığı için güncelleme iptal edildi.</translation>
     </message>
@@ -1216,7 +1219,7 @@
       <translation>GameHQ, güncelleme işlemini son durumuna uygulayamadı.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="636"></location>
+      <location filename="src/app/App.cpp" line="638"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ güncelleme bakımına başlayamadı: %1</translation>
     </message>
@@ -1337,33 +1340,40 @@
       <translation>Klasör ekle…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1160"></location>
+      <location filename="src/ui/qml/Main.qml" line="1215"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Toplu seçim</translation>
     </message>
+    <message id="gamehq.gallery.action.share">
+      <location filename="src/ui/qml/Main.qml" line="1209"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
+      <source>Share</source>
+      <translation>Paylaş</translation>
+    </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1156"></location>
-      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="14"></location>
+      <location filename="src/ui/qml/Main.qml" line="1211"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Klasörde göster</translation>
     </message>
     <message id="gamehq.gallery.capture_caption">
-      <location filename="src/ui/qml/components/CaptureTile.qml" line="180"></location>
-      <location filename="src/ui/qml/components/Lightbox.qml" line="216"></location>
+      <location filename="src/ui/qml/components/CaptureTile.qml" line="185"></location>
+      <location filename="src/ui/qml/components/Lightbox.qml" line="270"></location>
+      <location filename="src/ui/qml/components/OverlayViewer.qml" line="179"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1093"></location>
+      <location filename="src/ui/qml/Main.qml" line="1144"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 Bu işlem dosyayı kalıcı olarak siler.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1103"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="523"></location>
+      <location filename="src/ui/qml/Main.qml" line="1154"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="650"></location>
       <source>Delete capture?</source>
       <translation>Çekim silinsin mi?</translation>
     </message>
@@ -1377,7 +1387,7 @@ Bu işlem geri alınamaz.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1120"></location>
+      <location filename="src/ui/qml/Main.qml" line="1173"></location>
       <source>Delete selected captures?</source>
       <translation>Seçili çekimler silinsin mi?</translation>
     </message>
@@ -1429,27 +1439,27 @@ Bu işlem geri alınamaz.</numerusform>
       <translation>%1 Görüntüleyici</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="344"></location>
+      <location filename="src/ui/AppController.cpp" line="350"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Her ekranın mevcut HDR durumunu kontrol edin.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="330"></location>
+      <location filename="src/ui/AppController.cpp" line="336"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR aktif</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="335"></location>
+      <location filename="src/ui/AppController.cpp" line="341"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR etkin değil</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="324"></location>
+      <location filename="src/ui/AppController.cpp" line="330"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>Grafik sürücüsü herhangi bir monitör bildirmedi</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="318"></location>
+      <location filename="src/ui/AppController.cpp" line="324"></location>
       <source>Not checked yet</source>
       <translation>Henüz kontrol edilmedi</translation>
     </message>
@@ -1596,8 +1606,8 @@ Bu işlem geri alınamaz.</numerusform>
     </message>
     <message id="gamehq.help.gamepad.square_action">
       <location filename="src/ui/qml/HelpView.qml" line="222"></location>
-      <source>Action menu (Show in folder / Delete)</source>
-      <translation>Eylem menüsü (Klasörde göster / Sil)</translation>
+      <source>Action menu (Share / Show in folder / Delete)</source>
+      <translation>Eylem menüsü (Paylaş / Klasörde göster / Sil)</translation>
     </message>
     <message id="gamehq.help.gamepad.switch_panel">
       <location filename="src/ui/qml/HelpView.qml" line="198"></location>
@@ -1771,7 +1781,7 @@ Bu işlem geri alınamaz.</numerusform>
       <translation>Tek düğme</translation>
     </message>
     <message id="gamehq.input.assignment.replay_hold_hint">
-      <location filename="src/input/BindingEditorModel.cpp" line="1140"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="1240"></location>
       <source>Hold %1 for at least %2 ms to save a replay.</source>
       <translation>Anında tekrarı kaydetmek için %1 düğmesini en az %2 ms basılı tutun.</translation>
     </message>
@@ -1862,7 +1872,7 @@ Bu işlem geri alınamaz.</numerusform>
       <translation>Dönüştür ve ekle</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press">
-      <location filename="src/input/BindingEditorModel.cpp" line="487"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="579"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1875,7 +1885,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir.</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press_with_wait">
-      <location filename="src/input/BindingEditorModel.cpp" line="479"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="571"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1893,12 +1903,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Bu atamalar uyumlu hale getirilsin mi?</translation>
     </message>
     <message id="gamehq.input.conflict.already_assigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="463"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="555"></location>
       <source>%1 · %2 is already assigned to %3 in this context.</source>
       <translation>Bu bağlamda %1 · %2 zaten %3 eylemine atanmış.</translation>
     </message>
     <message id="gamehq.input.conflict.press_timed">
-      <location filename="src/input/BindingEditorModel.cpp" line="456"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="548"></location>
       <source>%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.</source>
       <translation>%1, %2 eylemi için Basma hareketini kullanıyor. Düğmeye basma davranışı değiştirilmeden bu bağlamda %3 eyleminden ayırt edilemez.</translation>
     </message>
@@ -1939,57 +1949,57 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Üç kez basma</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
-      <location filename="src/input/BindingEditorModel.cpp" line="306"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="398"></location>
       <source>Press a controller button for %1 · Slot %2 · %3</source>
       <translation>%1 · Yuva %2 · %3 için bir kumanda düğmesine basın</translation>
     </message>
     <message id="gamehq.input.model.capture.keyboard">
-      <location filename="src/input/BindingEditorModel.cpp" line="313"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="405"></location>
       <source>Press a key or shortcut for %1 · Slot %2</source>
       <translation>%1 · Yuva %2 için bir tuşa veya kısayola basın</translation>
     </message>
     <message id="gamehq.input.model.capture.mouse">
-      <location filename="src/input/BindingEditorModel.cpp" line="320"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="412"></location>
       <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
       <translation>%1 · Yuva %2 için orta, Back veya Forward fare düğmesine basın</translation>
     </message>
     <message id="gamehq.input.model.combination">
-      <location filename="src/input/BindingEditorModel.cpp" line="179"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="253"></location>
       <source>Combination</source>
       <translation>Kombinasyon</translation>
     </message>
     <message id="gamehq.input.model.hold_default">
-      <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="264"></location>
       <source>Hold · Default</source>
       <translation>Basılı tutma · Varsayılan</translation>
     </message>
     <message id="gamehq.input.model.hold_seconds">
-      <location filename="src/input/BindingEditorModel.cpp" line="195"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="269"></location>
       <source>Hold · %1 s</source>
       <translation>Basılı tutma · %1 sn</translation>
     </message>
     <message id="gamehq.input.model.no_action_fired">
-      <location filename="src/input/BindingEditorModel.cpp" line="1062"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="1162"></location>
       <source>No action fired yet</source>
       <translation>Henüz herhangi bir işlem başlatılmadı</translation>
     </message>
     <message id="gamehq.input.model.scope.gallery">
-      <location filename="src/input/BindingEditorModel.cpp" line="142"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="216"></location>
       <source>Gallery</source>
       <translation>Galeri</translation>
     </message>
     <message id="gamehq.input.model.scope.global">
-      <location filename="src/input/BindingEditorModel.cpp" line="134"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="208"></location>
       <source>Global</source>
       <translation>Genel</translation>
     </message>
     <message id="gamehq.input.model.scope.overlay">
-      <location filename="src/input/BindingEditorModel.cpp" line="138"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="212"></location>
       <source>Overlay</source>
       <translation>Oyun içi arayüz</translation>
     </message>
     <message id="gamehq.input.model.scope.playback">
-      <location filename="src/input/BindingEditorModel.cpp" line="146"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="220"></location>
       <source>Playback</source>
       <translation>Oynatma</translation>
     </message>
@@ -2009,8 +2019,8 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Kaldırıldı</translation>
     </message>
     <message id="gamehq.input.model.unassigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="166"></location>
-      <location filename="src/input/BindingEditorModel.cpp" line="247"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="240"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="340"></location>
       <source>Unassigned</source>
       <translation>Atanmamış</translation>
     </message>
@@ -2020,7 +2030,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Bu düğme bir kombinasyon başlattığı için bu eylem %1 ms'ye kadar bekler.</translation>
     </message>
     <message id="gamehq.input.relation.context_override">
-      <location filename="src/input/BindingEditorModel.cpp" line="585"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="677"></location>
       <source>%1 replaces %2 while %3 is active. Both are saved.</source>
       <translation>%3 etkinken %1, %2 yerine kullanılır. Her ikisi de kaydedilir.</translation>
     </message>
@@ -2030,17 +2040,17 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Aynı düğmede daha fazla basma gerektiren başka bir atama olduğu için bu eylem %1 ms kadar bekler.</translation>
     </message>
     <message id="gamehq.input.relation.redundant">
-      <location filename="src/input/BindingEditorModel.cpp" line="594"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="686"></location>
       <source>%1 already does the same thing here. The duplicate has no effect.</source>
       <translation>%1 burada zaten aynı şeyi yapıyor. Çoğaltmanın hiçbir etkisi yoktur.</translation>
     </message>
     <message id="gamehq.input.relation.shared_gesture">
-      <location filename="src/input/BindingEditorModel.cpp" line="601"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="693"></location>
       <source>%1 is shared: %2 = %3, %4 = %5.</source>
       <translation>%1 paylaşılır: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1075"></location>
+      <location filename="src/ui/qml/Main.qml" line="1124"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>İzlenecek bir klasör seçin</translation>
@@ -2121,107 +2131,107 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>GameHQ'yu destekle</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="481"></location>
+      <location filename="src/app/App.cpp" line="483"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Bazı dosyalar silinemedi. Başka programlar tarafından kullanılıyor olabilir. Bu dosyaları kullanan programları kapatıp tekrar deneyin.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="488"></location>
+      <location filename="src/app/App.cpp" line="490"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Dosya silinemedi. Başka bir program tarafından kullanılıyor olabilir. Dosyayı kullanan programı kapatıp tekrar deneyin.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="494"></location>
+      <location filename="src/app/App.cpp" line="496"></location>
       <source>Couldn't delete</source>
       <translation>Silinemedi</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="287"></location>
+      <location filename="src/app/App.cpp" line="289"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>Kitaplığa eklenmedi ve dosya diskte yok.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="281"></location>
+      <location filename="src/app/App.cpp" line="283"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>Dosya çekim klasörünüzde, ancak kitaplığa eklenemedi.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="271"></location>
+      <location filename="src/app/App.cpp" line="273"></location>
       <source>Saved to disk, not in library</source>
       <translation>Diske kaydedildi, kitaplıkta yok</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="393"></location>
+      <location filename="src/app/App.cpp" line="395"></location>
       <source>Capture request received</source>
       <translation>Yakalama isteği alındı</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="456"></location>
+      <location filename="src/app/App.cpp" line="458"></location>
       <source>Reason: %1</source>
       <translation>Sebep: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="74"></location>
+      <location filename="src/app/App.cpp" line="76"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>Anında tekrar arabelleği başarısız oldu; klip kaydedilmedi</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="68"></location>
+      <location filename="src/app/App.cpp" line="70"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>Anında tekrar arabelleği görüntü topluyor; birkaç saniye sonra yeniden kaydetmeyi deneyin</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="86"></location>
+      <location filename="src/app/App.cpp" line="88"></location>
       <source>Replay buffer is empty</source>
       <translation>Anında tekrar arabelleği boş</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="80"></location>
+      <location filename="src/app/App.cpp" line="82"></location>
       <source>Replay buffer is not running</source>
       <translation>Anında tekrar arabelleği çalışmıyor</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="62"></location>
+      <location filename="src/app/App.cpp" line="64"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>Anında tekrar arabelleği başlatılıyor; birkaç saniye sonra yeniden kaydetmeyi deneyin</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="303"></location>
+      <location filename="src/app/App.cpp" line="305"></location>
       <source>Replay failed</source>
       <translation>Anında tekrar başarısız</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="388"></location>
+      <location filename="src/app/App.cpp" line="390"></location>
       <source>Replay save requested</source>
       <translation>Tekrar kaydetme isteği gönderildi</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="437"></location>
+      <location filename="src/app/App.cpp" line="439"></location>
       <source>Replay saved</source>
       <translation>Anında tekrar kaydedildi</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="296"></location>
+      <location filename="src/app/App.cpp" line="298"></location>
       <source>Screenshot failed</source>
       <translation>Ekran görüntüsü başarısız</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="338"></location>
+      <location filename="src/app/App.cpp" line="340"></location>
       <source>Screenshot saved</source>
       <translation>Ekran görüntüsü kaydedildi</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="539"></location>
+      <location filename="src/app/App.cpp" line="541"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ varsayılan ayarlarla başladı. Önceki ayarlar dosyanız saklandığından hiçbir şey kaybolmadı.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="534"></location>
+      <location filename="src/app/App.cpp" line="536"></location>
       <source>Settings could not be read</source>
       <translation>Ayarlar okunamadı</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="703"></location>
+      <location filename="src/app/App.cpp" line="705"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Bazı arayüz sesleri kullanılamıyor</translation>
     </message>
@@ -2231,12 +2241,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>%1 Bildirimler</translation>
     </message>
     <message id="gamehq.overlay.capture_actions">
-      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="55"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="64"></location>
       <source>Capture actions</source>
       <translation>Çekim eylemleri</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="131"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="136"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>Odak hâlâ oyunda; oyun kumanda girişine tepki verebilir</translation>
     </message>
@@ -2271,7 +2281,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Sol/Sağ — klibi ileri/geri sar | Enter — oynat/duraklat | Esc/Backspace — çekimlere dön</translation>
     </message>
     <message id="gamehq.overlay.window_title">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="48"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="47"></location>
       <source>%1 Overlay</source>
       <translation>%1 Oyun içi arayüz</translation>
     </message>
@@ -2281,7 +2291,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="118"></location>
+      <location filename="src/ui/AppController.cpp" line="124"></location>
       <source>Release notes</source>
       <translation>Sürüm notları</translation>
     </message>
@@ -4511,6 +4521,96 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <location filename="src/ui/qml/themes/SynthwaveSkin.qml" line="6"></location>
       <source>Synthwave</source>
       <translation>Synthwave</translation>
+    </message>
+    <message id="gamehq.share.close">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="164"></location>
+      <source>Close</source>
+      <translation>Kapat</translation>
+    </message>
+    <message id="gamehq.share.error.capture_changed">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="207"></location>
+      <source>This capture changed on disk after you opened Share. Open Share again.</source>
+      <translation>Paylaş'ı açtıktan sonra bu çekim diskte değişti. Paylaş'ı yeniden açın.</translation>
+    </message>
+    <message id="gamehq.share.error.capture_missing">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="204"></location>
+      <source>This capture is no longer on disk.</source>
+      <translation>Bu çekim artık diskte değil.</translation>
+    </message>
+    <message id="gamehq.share.error.generic">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
+      <source>This capture could not be shared.</source>
+      <translation>Bu çekim paylaşılamadı.</translation>
+    </message>
+    <message id="gamehq.share.error.not_connected">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
+      <source>Connect this account in Settings first.</source>
+      <translation>Önce bu hesabı Ayarlar'da bağlayın.</translation>
+    </message>
+    <message id="gamehq.share.loading">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="134"></location>
+      <source>Loading…</source>
+      <translation>Yükleniyor…</translation>
+    </message>
+    <message id="gamehq.share.no_destinations">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="119"></location>
+      <source>No share destinations are available yet.</source>
+      <translation>Henüz kullanılabilir paylaşım hedefi yok.</translation>
+    </message>
+    <message id="gamehq.share.no_targets">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="137"></location>
+      <source>No recipients found.</source>
+      <translation>Alıcı bulunamadı.</translation>
+    </message>
+    <message id="gamehq.share.outcome.cancelled">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="192"></location>
+      <source>Sharing cancelled. Nothing was sent.</source>
+      <translation>Paylaşım iptal edildi. Hiçbir şey gönderilmedi.</translation>
+    </message>
+    <message id="gamehq.share.outcome.copied">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="189"></location>
+      <source>Copied. Paste it wherever you want to share it.</source>
+      <translation>Kopyalandı. Paylaşmak istediğiniz yere yapıştırın.</translation>
+    </message>
+    <message id="gamehq.share.outcome.handed_off">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="186"></location>
+      <source>Opened in %1. Finish sending there.</source>
+      <translation>%1 içinde açıldı. Gönderme işlemini orada tamamlayın.</translation>
+    </message>
+    <message id="gamehq.share.outcome.sent">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="183"></location>
+      <source>Sent.</source>
+      <translation>Gönderildi.</translation>
+    </message>
+    <message id="gamehq.share.outcome.unconfirmed">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="195"></location>
+      <source>GameHQ couldn't confirm whether it was sent. Check before sharing again.</source>
+      <translation>GameHQ gönderilip gönderilmediğini doğrulayamadı. Yeniden paylaşmadan önce kontrol edin.</translation>
+    </message>
+    <message id="gamehq.share.provider.clipboard">
+      <location filename="src/share/providers/ClipboardShareProvider.cpp" line="24"></location>
+      <source>Copy to clipboard</source>
+      <translation>Panoya kopyala</translation>
+    </message>
+    <message id="gamehq.share.resend_confirm">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="150"></location>
+      <source>Share again</source>
+      <translation>Yeniden paylaş</translation>
+    </message>
+    <message id="gamehq.share.resend_question">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="147"></location>
+      <source>You already shared this capture here. Share it again?</source>
+      <translation>Bu çekimi burada zaten paylaştınız. Yeniden paylaşılsın mı?</translation>
+    </message>
+    <message id="gamehq.share.sending">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="221"></location>
+      <source>Sharing…</source>
+      <translation>Paylaşılıyor…</translation>
+    </message>
+    <message id="gamehq.share.title">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="325"></location>
+      <source>Share</source>
+      <translation>Paylaş</translation>
     </message>
     <message id="gamehq.startup.portable_import.failed_title">
       <location filename="src/main.cpp" line="238"></location>

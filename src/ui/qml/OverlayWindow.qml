@@ -56,6 +56,9 @@ Window {
             content.rememberSelection()
             content.menuOpen = false
             content.menuIndex = 0
+            // A finished or unstarted Share never survives a hide; a send in
+            // flight keeps running and shows its result on the next open.
+            overlayShare.close()
             viewer.close()
             content.stopVideoFocus()
         } else if (!content.restoreSelection()) {
@@ -234,17 +237,40 @@ Window {
         }
 
         function menuStep(direction) {
-            content.menuIndex = (content.menuIndex + direction + 2) % 2
+            const count = actionMenu.entries.length
+            content.menuIndex = (content.menuIndex + direction + count) % count
             sounds.play("nav_tick")
         }
 
         function menuConfirm() {
-            if (content.menuIndex === 0)
-                app.showInFolderFrom(overlayGallery, strip.currentIndex)
-            else
-                app.deleteCaptureFrom(overlayGallery, strip.currentIndex)
-            sounds.play("confirm")
+            content.runMenuAction(actionMenu.currentActionId())
+        }
+
+        // Acts on the stable action id of a menu entry, never on its position.
+        function runMenuAction(actionId) {
             content.menuOpen = false
+            switch (actionId) {
+            case "share":
+                content.openShare(overlayGallery.get(strip.currentIndex))
+                return
+            case "show_in_folder":
+                app.showInFolderFrom(overlayGallery, strip.currentIndex)
+                break
+            case "delete":
+                app.deleteCaptureFrom(overlayGallery, strip.currentIndex)
+                break
+            default:
+                return
+            }
+            sounds.play("confirm")
+        }
+
+        // Share flow for one capture record; modal until closed.
+        function openShare(rec) {
+            if (!rec || !rec.filePath)
+                return
+            content.stopVideoFocus()
+            overlayShare.openFor(rec.filePath, rec.gameName)
         }
 
         function stopVideoFocus() {
@@ -295,6 +321,8 @@ Window {
         // pad gesture that switches items â€” see the user request that L1/R1
         // and d-pad seek must be two independent controls.
         function handleCaptureStep(direction) {
+            if (overlayShare.isOpen)
+                return   // Share is modal
             if (viewer.open) {
                 viewer.step(direction)
                 return
@@ -311,6 +339,8 @@ Window {
         // X, or shown in the full-screen viewer); otherwise it flips captures
         // exactly like L1/R1.
         function handleSeekStep(direction) {
+            if (overlayShare.isOpen)
+                return
             if (viewer.open) {
                 if (viewer.currentIsVideo)
                     viewer.seekVideo(direction * viewer.seekStepMs)
@@ -328,6 +358,10 @@ Window {
         }
 
         function handleNavigateVertical(direction) {
+            if (overlayShare.isOpen) {
+                overlayShare.padNavigate(direction)
+                return
+            }
             if (viewer.open)
                 return   // the sidebar filter behind the viewer stays put
             if (content.menuOpen)
@@ -337,6 +371,10 @@ Window {
         }
 
         function handleConfirm() {
+            if (overlayShare.isOpen) {
+                overlayShare.padConfirm()
+                return
+            }
             if (content.menuOpen) {
                 content.menuConfirm()
                 return
@@ -361,14 +399,22 @@ Window {
         }
 
         function toggleMenu() {
-            if (viewer.open)
+            if (overlayShare.isOpen)
                 return
+            // The full-screen viewer has no menu of its own: Square shares
+            // the capture it shows.
+            if (viewer.open) {
+                content.openShare(overlayGallery.get(viewer.index))
+                return
+            }
             content.menuOpen = !content.menuOpen
             if (content.menuOpen)
                 content.menuIndex = 0
         }
 
         function togglePlayback() {
+            if (overlayShare.isOpen)
+                return
             if (viewer.open)
                 viewer.toggleVideoPlayback()
             else
@@ -376,6 +422,8 @@ Window {
         }
 
         function handleFavorite() {
+            if (overlayShare.isOpen)
+                return
             if (content.menuOpen)
                 return
             sounds.play("favorite")
@@ -383,6 +431,10 @@ Window {
         }
 
         function handleBack() {
+            if (overlayShare.isOpen) {
+                overlayShare.padBack()
+                return
+            }
             if (viewer.open)
                 viewer.close()   // Circle leaves full screen before anything else
             else if (content.menuOpen)
@@ -463,6 +515,8 @@ Window {
             // screenshot instead of the global foreground screenshot.
             function onFrameGrabRequested() {
                 overlayWindow.usingGamepad = true
+                if (overlayShare.isOpen)
+                    return
                 if (viewer.open)
                     viewer.saveCurrentFrame()
                 else
@@ -504,6 +558,9 @@ Window {
                 onDeleteRequested: function(index) {
                     overlayWindow.pendingDeletePath = overlayGallery.get(index).filePath || ""
                     deleteDialog.open()
+                }
+                onShareRequested: function(index) {
+                    content.openShare(overlayGallery.get(index))
                 }
                 onOpenFolderRequested: function(index) {
                     sounds.play("confirm")
@@ -562,7 +619,7 @@ Window {
         }
     }
 
-    // Per-capture action menu (Square / M) â€” Show in folder / Delete.
+    // Per-capture action menu (Square / M) â€” Share / Show in folder / Delete.
     OverlayActionMenu {
         parent: uiSurface.contentItem
         id: actionMenu
@@ -571,10 +628,15 @@ Window {
         currentIndex: content.menuIndex
         onCloseRequested: content.menuOpen = false
         onItemHovered: function(index) { content.menuIndex = index }
-        onItemConfirmed: function(index) {
-            content.menuIndex = index
-            content.menuConfirm()
-        }
+        onActionConfirmed: function(actionId) { content.runMenuAction(actionId) }
+    }
+
+    // Share (docs/share-platform.md): same flow as the desktop, modal while
+    // open — every pad handler above hands its input to it first.
+    ShareDialog {
+        parent: uiSurface.contentItem
+        id: overlayShare
+        onClosed: content.forceActiveFocus()
     }
 
     // Mouse delete confirmation. Above the action menu in z-order so it stays

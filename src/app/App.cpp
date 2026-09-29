@@ -30,6 +30,7 @@
 #include "storage/CaptureDatabase.h"
 #include "storage/CaptureScanner.h"
 #include "share/ShareService.h"
+#include "share/providers/ClipboardShareProvider.h"
 #include "tray/TrayIcon.h"
 #include "ui/AppController.h"
 #include "ui/GalleryModel.h"
@@ -798,6 +799,7 @@ bool App::init()
     // One Share flow for gallery, lightbox and overlay; providers register
     // into its registry and never need their own QML.
     m_share = std::make_unique<share::Service>();
+    m_share->registry()->add(new share::ClipboardShareProvider(m_share.get()));
     m_engine.rootContext()->setContextProperty(QStringLiteral("shareService"), m_share.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlayGallery"), m_overlayGallery.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlay"), m_overlay.get());

@@ -21,6 +21,7 @@ Item {
     signal openRequested()           // double click — open in viewer
     signal requestDelete()
     signal requestOpenFolder()
+    signal requestShare()
     signal toggleFavoriteRequested()
     signal checkToggled(bool extendRange)
 
@@ -154,6 +155,10 @@ Item {
             TileIconButton {
                 glyph: ""              // FolderOpen
                 onClicked: root.requestOpenFolder()
+            }
+            TileIconButton {
+                glyph: ""        // Share
+                onClicked: root.requestShare()
             }
         }
 

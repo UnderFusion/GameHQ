@@ -784,20 +784,46 @@ ApplicationWindow {
     }
 
     function padMenuConfirm() {
-        // Index order mirrors padMenu.entries.
-        if (window.menuIndex === 0) {
-            app.showInFolder(grid.currentIndex)
-        } else if (window.menuIndex === 1) {
-            const rec = app.gallery.get(grid.currentIndex)
-            window.askDelete(grid.currentIndex, rec.gameName, rec.dateText)
-        } else {
-            window.menuOpen = false
+        window.runMenuAction(padMenu.currentActionId())
+    }
+
+    // Acts on the stable action id of a menu entry, never on its position.
+    function runMenuAction(actionId) {
+        const row = grid.currentIndex
+        const rec = app.gallery.get(row)
+        window.menuOpen = false
+        switch (actionId) {
+        case "share":
+            window.openShare(rec)
+            return
+        case "show_in_folder":
+            app.showInFolder(row)
+            break
+        case "delete":
+            window.askDelete(row, rec.gameName, rec.dateText)
+            break
+        case "bulk_select":
             window.bulkEnter()
-            sounds.play("confirm")
+            break
+        default:
             return
         }
         sounds.play("confirm")
-        window.menuOpen = false
+    }
+
+    // Share flow for one capture record ({ filePath, gameName, ... }).
+    function openShare(rec) {
+        if (!rec || !rec.filePath)
+            return
+        shareDialog.openFor(rec.filePath, rec.gameName)
+    }
+
+    // The Share dialog that currently owns pad input, or null. The lightbox
+    // is its own window with its own instance.
+    function activeShareDialog() {
+        if (lightbox.visible && lightbox.shareOpen)
+            return lightbox.shareDialog
+        return shareDialog.isOpen ? shareDialog : null
     }
 
     function padBack() {
@@ -829,6 +855,7 @@ ApplicationWindow {
     Connections {
         target: input
         function onDesktopNavigate(direction) {
+            if (window.activeShareDialog()) { window.usingGamepad = true; return }
             window.usingGamepad = true
             if (lightbox.visible) {
                 lightbox.padNavigate(direction)
@@ -837,6 +864,8 @@ ApplicationWindow {
             window.padNavigate(direction)
         }
         function onDesktopNavigateVertical(direction) {
+            const share = window.activeShareDialog()
+            if (share) { window.usingGamepad = true; share.padNavigate(direction); return }
             window.usingGamepad = true
             if (lightbox.visible) {
                 lightbox.padReveal()
@@ -845,6 +874,8 @@ ApplicationWindow {
             window.padNavigateVertical(direction)
         }
         function onDesktopConfirm() {
+            const share = window.activeShareDialog()
+            if (share) { window.usingGamepad = true; share.padConfirm(); return }
             window.usingGamepad = true
             if (lightbox.visible) {
                 lightbox.padConfirm()
@@ -853,6 +884,7 @@ ApplicationWindow {
             window.padConfirm()
         }
         function onDesktopFavorite() {
+            if (window.activeShareDialog()) return   // Share is modal
             window.usingGamepad = true
             if (lightbox.visible) {
                 lightbox.padReveal()
@@ -862,13 +894,16 @@ ApplicationWindow {
         }
         function onDesktopMenu() {
             window.usingGamepad = true
+            if (window.activeShareDialog())
+                return   // Share is modal
             if (lightbox.visible) {
-                lightbox.padReveal()
+                lightbox.openShare()
                 return
             }
             window.padToggleMenu()
         }
         function onDesktopTabStep(direction) {
+            if (window.activeShareDialog()) return   // Share is modal
             window.usingGamepad = true
             if (lightbox.visible) {
                 lightbox.padStep(direction)
@@ -876,14 +911,21 @@ ApplicationWindow {
             }
             window.padTabStep(direction)
         }
-        function onDesktopBack() { window.usingGamepad = true; window.padBack() }
+        function onDesktopBack() {
+            window.usingGamepad = true
+            const share = window.activeShareDialog()
+            if (share) { share.padBack(); return }
+            window.padBack()
+        }
         function onDesktopSettings() {
+            if (window.activeShareDialog()) return   // Share is modal
             window.usingGamepad = true
             if (lightbox.visible || aboutDialog.visible || helpDialog.visible)
                 return
             window.openSettings()
         }
         function onDesktopZoom(direction) {
+            if (window.activeShareDialog()) return   // Share is modal
             window.usingGamepad = true
             if (lightbox.visible || aboutDialog.visible || window.settingsOpen || window.helpOpen)
                 return
@@ -893,27 +935,32 @@ ApplicationWindow {
                 window.zoomOut()
         }
         function onDesktopScroll(direction) {
+            if (window.activeShareDialog()) return   // Share is modal
             window.usingGamepad = true
             if (lightbox.visible)
                 return
             window.padScroll(direction)
         }
         function onDesktopBulkToggle() {
+            if (window.activeShareDialog()) return   // Share is modal
             window.usingGamepad = true
             if (lightbox.visible || aboutDialog.visible || window.settingsOpen || window.helpOpen)
                 return
             window.padBulkToggle()
         }
         function onPlaybackPlayPause() {
+            if (window.activeShareDialog()) return   // Share is modal
             if (lightbox.visible)
                 lightbox.toggleVideoPlayback()
         }
         function onPlaybackSeek(direction) {
+            if (window.activeShareDialog()) return   // Share is modal
             if (lightbox.visible)
                 lightbox.padNavigate(direction)
         }
         // Share on a focused clip in the lightbox: save the on-screen frame.
         function onFrameGrabRequested() {
+            if (window.activeShareDialog()) return   // Share is modal
             if (lightbox.visible)
                 lightbox.saveCurrentFrame()
         }
@@ -1026,6 +1073,8 @@ ApplicationWindow {
                 bulkDeleteDialog: bulkDeleteDialog
                 onCaptureActivated: (index) => lightbox.openAt(index)
                 onDeleteRequested: (index, gameName, dateText) => window.askDelete(index, gameName, dateText)
+                onShareRequested: (index) => window.openShare(app.gallery.get(index))
+                inputBlocked: shareDialog.isOpen
                 onAddFolderRequested: folderDialog.open()
                 onKeyboardActivity: window.usingGamepad = false
                 onBulkToggleRequested: (index, extendRange) => window.bulkToggle(index, extendRange)
@@ -1146,7 +1195,7 @@ ApplicationWindow {
     }
 
     // ───────────────────────── Pad action menu (Square) ─────────────────────────
-    // Show in folder / Delete for the currently pad-selected tile — mouse
+    // Share / Show in folder / Delete for the currently pad-selected tile — mouse
     // users already have per-tile hover icons for this; pad users need an
     // equivalent that doesn't require hovering.
     OverlayActionMenu {
@@ -1156,20 +1205,27 @@ ApplicationWindow {
         // Bulk select is desktop-only, so it is added here rather than in the
         // shared component. padMenuConfirm() maps these by index.
         entries: [
+            //% "Share"
+            { id: "share", label: qsTrId("gamehq.gallery.action.share") },
             //% "Show in folder"
-            qsTrId("gamehq.gallery.action.show_in_folder"),
+            { id: "show_in_folder", label: qsTrId("gamehq.gallery.action.show_in_folder") },
             //% "Delete"
-            qsTrId("gamehq.action.delete"),
+            { id: "delete", label: qsTrId("gamehq.action.delete") },
             //% "Bulk select"
-            qsTrId("gamehq.gallery.action.bulk_select")
+            { id: "bulk_select", label: qsTrId("gamehq.gallery.action.bulk_select") }
         ]
         open: window.menuOpen
         currentIndex: window.menuIndex
         onCloseRequested: window.menuOpen = false
         onItemHovered: function(index) { window.menuIndex = index }
-        onItemConfirmed: function(index) {
-            window.menuIndex = index
-            window.padMenuConfirm()
-        }
+        onActionConfirmed: function(actionId) { window.runMenuAction(actionId) }
+    }
+
+    // ───────────────────────── Share (docs/share-platform.md) ─────────────────────────
+    // Modal: while open it owns all pad input (see activeShareDialog()).
+    ShareDialog {
+        parent: uiSurface.contentItem
+        id: shareDialog
+        onClosed: Qt.callLater(window.focusGalleryOrSidebar)
     }
 }

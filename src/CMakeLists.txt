@@ -116,6 +116,7 @@ qt_add_executable(GameHQ
     share/ShareProvider.h
     share/ShareProviderRegistry.cpp share/ShareProviderRegistry.h
     share/ShareService.cpp share/ShareService.h
+    share/providers/ClipboardShareProvider.cpp share/providers/ClipboardShareProvider.h
     storage/CaptureDatabase.cpp storage/CaptureDatabase.h
     storage/CaptureQueries.cpp storage/CaptureQueries.h
     storage/CaptureFolderWatcher.cpp storage/CaptureFolderWatcher.h
@@ -205,6 +206,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/BindingConflictDialog.qml
         ui/qml/components/BindingCompatibilityDialog.qml
         ui/qml/components/ConfirmDialog.qml
+        ui/qml/components/ShareDialog.qml
         ui/qml/components/MappingPresetNameDialog.qml
         ui/qml/components/MappingPresetDeleteDialog.qml
         ui/qml/components/MappingPresetActionsDialog.qml
