@@ -27,6 +27,10 @@ public:
     void requestTargets(const QString& queryId, const Request& request,
                         const QString& query) override;
     void start(const Job& job, const Request& request, const Target& target) override;
+
+    // Puts the capture on the clipboard (file, plus image data for a
+    // screenshot). Shared with providers that hand the file to another app.
+    static bool copyCapture(const Request& request);
 };
 
 } // namespace share

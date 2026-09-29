@@ -36,18 +36,11 @@ void ClipboardShareProvider::requestTargets(const QString& queryId, const Reques
     emit targetsReady(queryId, { t }, {});
 }
 
-void ClipboardShareProvider::start(const Job& job, const Request& request, const Target& target)
+bool ClipboardShareProvider::copyCapture(const Request& request)
 {
-    Q_UNUSED(target);
-    Result r;
-    r.jobId = job.id;
     QClipboard* clipboard = QGuiApplication::clipboard();
-    if (!clipboard) {
-        r.outcome = Outcome::Failed;
-        r.errorCode = QStringLiteral("clipboard_unavailable");
-        emit jobFinished(r);
-        return;
-    }
+    if (!clipboard)
+        return false;
     auto* mime = new QMimeData;
     mime->setUrls({ QUrl::fromLocalFile(request.filePath()) });
     if (request.mediaKind() == MediaKind::Image) {
@@ -56,7 +49,20 @@ void ClipboardShareProvider::start(const Job& job, const Request& request, const
             mime->setImageData(image);
     }
     clipboard->setMimeData(mime);   // takes ownership
-    r.outcome = Outcome::Copied;
+    return true;
+}
+
+void ClipboardShareProvider::start(const Job& job, const Request& request, const Target& target)
+{
+    Q_UNUSED(target);
+    Result r;
+    r.jobId = job.id;
+    if (copyCapture(request)) {
+        r.outcome = Outcome::Copied;
+    } else {
+        r.outcome = Outcome::Failed;
+        r.errorCode = QStringLiteral("clipboard_unavailable");
+    }
     emit jobFinished(r);
 }
 

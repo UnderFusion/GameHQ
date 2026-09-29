@@ -105,7 +105,7 @@
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="419"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="422"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
@@ -968,7 +968,7 @@
       <translation>다른 포터블 프로필 가져오기가 이미 실행 중입니다.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="664"></location>
+      <location filename="src/app/App.cpp" line="665"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>캡처 작업이 제한 시간 내에 안전하게 완료되지 않아 업데이트가 취소되었습니다.</translation>
     </message>
@@ -1219,7 +1219,7 @@
       <translation>GameHQ에서 업데이트 트랜잭션을 최종 상태로 반영할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="639"></location>
+      <location filename="src/app/App.cpp" line="640"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ에서 업데이트 유지 관리 작업을 시작할 수 없습니다: %1</translation>
     </message>
@@ -2131,107 +2131,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ 후원</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="484"></location>
+      <location filename="src/app/App.cpp" line="485"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>일부 파일을 삭제하지 못했습니다. 다른 프로그램에서 사용 중일 수 있습니다. 해당 파일을 사용 중인 프로그램을 모두 닫고 다시 시도하세요.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="491"></location>
+      <location filename="src/app/App.cpp" line="492"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>파일을 삭제하지 못했습니다. 다른 프로그램에서 사용 중일 수 있습니다. 이 파일을 사용 중인 프로그램을 닫고 다시 시도하세요.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="497"></location>
+      <location filename="src/app/App.cpp" line="498"></location>
       <source>Couldn't delete</source>
       <translation>삭제하지 못했습니다</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="290"></location>
+      <location filename="src/app/App.cpp" line="291"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>라이브러리에 추가되지 않았고 파일도 디스크에 없습니다.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="284"></location>
+      <location filename="src/app/App.cpp" line="285"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>파일은 캡처 폴더에 있지만 라이브러리에 추가하지 못했습니다.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="274"></location>
+      <location filename="src/app/App.cpp" line="275"></location>
       <source>Saved to disk, not in library</source>
       <translation>디스크에 저장됨, 라이브러리에는 없음</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="396"></location>
+      <location filename="src/app/App.cpp" line="397"></location>
       <source>Capture request received</source>
       <translation>캡처 요청을 받았습니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="459"></location>
+      <location filename="src/app/App.cpp" line="460"></location>
       <source>Reason: %1</source>
       <translation>원인: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="77"></location>
+      <location filename="src/app/App.cpp" line="78"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>리플레이 버퍼에 오류가 발생하여 클립이 저장되지 않았습니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="71"></location>
+      <location filename="src/app/App.cpp" line="72"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>리플레이 버퍼가 영상을 수집하는 중입니다. 몇 초 후에 다시 저장해 보세요</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="89"></location>
+      <location filename="src/app/App.cpp" line="90"></location>
       <source>Replay buffer is empty</source>
       <translation>리플레이 버퍼가 비어 있습니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="83"></location>
+      <location filename="src/app/App.cpp" line="84"></location>
       <source>Replay buffer is not running</source>
       <translation>리플레이 버퍼가 실행 중이 아닙니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="65"></location>
+      <location filename="src/app/App.cpp" line="66"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>리플레이 버퍼를 시작하는 중입니다. 몇 초 후에 다시 저장해 보세요</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="306"></location>
+      <location filename="src/app/App.cpp" line="307"></location>
       <source>Replay failed</source>
       <translation>리플레이 실패</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="391"></location>
+      <location filename="src/app/App.cpp" line="392"></location>
       <source>Replay save requested</source>
       <translation>리플레이 저장을 요청했습니다</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="440"></location>
+      <location filename="src/app/App.cpp" line="441"></location>
       <source>Replay saved</source>
       <translation>리플레이 저장됨</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="299"></location>
+      <location filename="src/app/App.cpp" line="300"></location>
       <source>Screenshot failed</source>
       <translation>스크린샷 실패</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="341"></location>
+      <location filename="src/app/App.cpp" line="342"></location>
       <source>Screenshot saved</source>
       <translation>스크린샷 저장됨</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="542"></location>
+      <location filename="src/app/App.cpp" line="543"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ가 기본 설정으로 시작되었습니다. 이전 설정 파일은 그대로 보관되어 손실된 항목이 없습니다.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="537"></location>
+      <location filename="src/app/App.cpp" line="538"></location>
       <source>Settings could not be read</source>
       <translation>설정을 읽을 수 없습니다</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="706"></location>
+      <location filename="src/app/App.cpp" line="707"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>일부 인터페이스 소리를 사용할 수 없습니다</translation>
     </message>
@@ -4527,23 +4527,33 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Close</source>
       <translation>닫기</translation>
     </message>
+    <message id="gamehq.share.discord_desktop.not_installed">
+      <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="125"></location>
+      <source>Discord Desktop isn't installed.</source>
+      <translation>Discord Desktop이 설치되어 있지 않습니다.</translation>
+    </message>
+    <message id="gamehq.share.discord_desktop.privacy">
+      <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="134"></location>
+      <source>Copies the file and opens Discord so you can paste it. GameHQ never signs in to Discord.</source>
+      <translation>파일을 복사하고 Discord를 열어 붙여 넣을 수 있게 합니다. GameHQ는 Discord에 로그인하지 않습니다.</translation>
+    </message>
     <message id="gamehq.share.error.capture_changed">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="207"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
       <source>This capture changed on disk after you opened Share. Open Share again.</source>
       <translation>공유를 연 뒤 디스크에서 이 캡처가 변경되었습니다. 공유를 다시 여세요.</translation>
     </message>
     <message id="gamehq.share.error.capture_missing">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="204"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="207"></location>
       <source>This capture is no longer on disk.</source>
       <translation>이 캡처가 더 이상 디스크에 없습니다.</translation>
     </message>
     <message id="gamehq.share.error.generic">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
       <source>This capture could not be shared.</source>
       <translation>이 캡처를 공유할 수 없습니다.</translation>
     </message>
     <message id="gamehq.share.error.not_connected">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
       <source>Connect this account in Settings first.</source>
       <translation>먼저 설정에서 이 계정을 연결하세요.</translation>
     </message>
@@ -4563,19 +4573,24 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>받는 사람을 찾을 수 없습니다.</translation>
     </message>
     <message id="gamehq.share.outcome.cancelled">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="192"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="195"></location>
       <source>Sharing cancelled. Nothing was sent.</source>
       <translation>공유를 취소했습니다. 아무것도 보내지 않았습니다.</translation>
     </message>
     <message id="gamehq.share.outcome.copied">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="189"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="192"></location>
       <source>Copied. Paste it wherever you want to share it.</source>
       <translation>복사했습니다. 공유하려는 곳에 붙여 넣으세요.</translation>
     </message>
     <message id="gamehq.share.outcome.handed_off">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="186"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="189"></location>
       <source>Opened in %1. Finish sending there.</source>
       <translation>%1에서 열었습니다. 보내기는 그곳에서 마치세요.</translation>
+    </message>
+    <message id="gamehq.share.outcome.handed_off_paste">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="187"></location>
+      <source>Copied and opened %1. Paste it into a chat to send it.</source>
+      <translation>복사하고 %1을(를) 열었습니다. 채팅에 붙여 넣어 보내세요.</translation>
     </message>
     <message id="gamehq.share.outcome.sent">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="183"></location>
@@ -4583,7 +4598,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>보냈습니다.</translation>
     </message>
     <message id="gamehq.share.outcome.unconfirmed">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="195"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="198"></location>
       <source>GameHQ couldn't confirm whether it was sent. Check before sharing again.</source>
       <translation>GameHQ가 전송 여부를 확인하지 못했습니다. 다시 공유하기 전에 확인하세요.</translation>
     </message>
@@ -4603,7 +4618,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>이미 이 캡처를 여기에 공유했습니다. 다시 공유할까요?</translation>
     </message>
     <message id="gamehq.share.sending">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="221"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="224"></location>
       <source>Sharing…</source>
       <translation>공유하는 중…</translation>
     </message>
@@ -4618,7 +4633,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Telegram을 열어 채팅을 선택합니다. GameHQ는 Telegram에 로그인하지 않습니다.</translation>
     </message>
     <message id="gamehq.share.title">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="325"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="328"></location>
       <source>Share</source>
       <translation>공유</translation>
     </message>

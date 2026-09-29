@@ -31,6 +31,7 @@
 #include "storage/CaptureScanner.h"
 #include "share/ShareService.h"
 #include "share/providers/ClipboardShareProvider.h"
+#include "share/providers/DiscordDesktopProvider.h"
 #include "share/providers/TelegramDesktopProvider.h"
 #include "tray/TrayIcon.h"
 #include "ui/AppController.h"
@@ -802,6 +803,10 @@ bool App::init()
     m_share = std::make_unique<share::Service>();
     // Registration order is the order the Share dialog lists destinations.
     m_share->registry()->add(new share::TelegramDesktopProvider(m_share.get()));
+    m_share->registry()->add(new share::DiscordDesktopProvider(
+        &share::DiscordDesktopProvider::locateInstalled,
+        &share::DiscordDesktopProvider::startDetached,
+        &share::ClipboardShareProvider::copyCapture, m_share.get()));
     m_share->registry()->add(new share::ClipboardShareProvider(m_share.get()));
     m_engine.rootContext()->setContextProperty(QStringLiteral("shareService"), m_share.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlayGallery"), m_overlayGallery.get());

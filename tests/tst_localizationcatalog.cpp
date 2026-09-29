@@ -325,7 +325,7 @@ void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndTranslated
     const auto english = readTsCatalog(
         QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/gamehq_en_US.ts"), &error);
     QVERIFY2(error.isEmpty(), qPrintable(error));
-    QCOMPARE(english.size(), 978);
+    QCOMPARE(english.size(), 981);
     const QSet<QString> activeIds = activeProductionIds();
 
     for (const QString& catalogName : promotedLaunchCatalogs()) {
@@ -394,7 +394,7 @@ void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
 void LocalizationCatalogTest::migratedProductionQmlIdsCoverEveryLaunchLocale()
 {
     const QSet<QString> ids = translationIdsIn(productionQmlFiles());
-    QCOMPARE(ids.size(), 692);
+    QCOMPARE(ids.size(), 693);
 
     for (const QString &catalogName : translatedCatalogs()) {
         QString error;

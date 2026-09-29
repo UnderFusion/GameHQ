@@ -105,7 +105,7 @@
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="419"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="422"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
@@ -970,7 +970,7 @@
       <translation>Otra importación de perfil portátil ya está en ejecución.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="664"></location>
+      <location filename="src/app/App.cpp" line="665"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>La actualización se canceló porque las tareas de captura no terminaron de forma segura a tiempo.</translation>
     </message>
@@ -1221,7 +1221,7 @@
       <translation>GameHQ no pudo aplicar la transacción de actualización al estado final.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="639"></location>
+      <location filename="src/app/App.cpp" line="640"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ no pudo iniciar el mantenimiento de la actualización: %1</translation>
     </message>
@@ -2136,107 +2136,107 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Apoyar a GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="484"></location>
+      <location filename="src/app/App.cpp" line="485"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>No se pudieron eliminar algunos archivos. Puede que otros programas los estén usando. Cierra los programas que los estén usando y vuelve a intentarlo.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="491"></location>
+      <location filename="src/app/App.cpp" line="492"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>No se pudo eliminar el archivo. Puede que otro programa lo esté usando. Cierra el programa que lo esté usando y vuelve a intentarlo.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="497"></location>
+      <location filename="src/app/App.cpp" line="498"></location>
       <source>Couldn't delete</source>
       <translation>No se pudo eliminar</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="290"></location>
+      <location filename="src/app/App.cpp" line="291"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>No se agregó a la biblioteca y el archivo no está en el disco.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="284"></location>
+      <location filename="src/app/App.cpp" line="285"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>El archivo está en su carpeta de capturas, pero no se pudo agregar a la biblioteca.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="274"></location>
+      <location filename="src/app/App.cpp" line="275"></location>
       <source>Saved to disk, not in library</source>
       <translation>Guardado en el disco, no en la biblioteca</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="396"></location>
+      <location filename="src/app/App.cpp" line="397"></location>
       <source>Capture request received</source>
       <translation>Solicitud de captura recibida</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="459"></location>
+      <location filename="src/app/App.cpp" line="460"></location>
       <source>Reason: %1</source>
       <translation>Motivo: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="77"></location>
+      <location filename="src/app/App.cpp" line="78"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>El búfer de repetición falló; no se guardó ningún clip</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="71"></location>
+      <location filename="src/app/App.cpp" line="72"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>El búfer de repetición está acumulando grabación; intenta guardar de nuevo en unos segundos</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="89"></location>
+      <location filename="src/app/App.cpp" line="90"></location>
       <source>Replay buffer is empty</source>
       <translation>El búfer de repetición está vacío</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="83"></location>
+      <location filename="src/app/App.cpp" line="84"></location>
       <source>Replay buffer is not running</source>
       <translation>El búfer de repetición no está en ejecución</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="65"></location>
+      <location filename="src/app/App.cpp" line="66"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>El búfer de repetición se está iniciando; intenta guardar de nuevo en unos segundos</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="306"></location>
+      <location filename="src/app/App.cpp" line="307"></location>
       <source>Replay failed</source>
       <translation>Error al guardar la repetición</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="391"></location>
+      <location filename="src/app/App.cpp" line="392"></location>
       <source>Replay save requested</source>
       <translation>Guardado de repetición solicitado</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="440"></location>
+      <location filename="src/app/App.cpp" line="441"></location>
       <source>Replay saved</source>
       <translation>Repetición guardada</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="299"></location>
+      <location filename="src/app/App.cpp" line="300"></location>
       <source>Screenshot failed</source>
       <translation>Error en la captura de pantalla</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="341"></location>
+      <location filename="src/app/App.cpp" line="342"></location>
       <source>Screenshot saved</source>
       <translation>Captura de pantalla guardada</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="542"></location>
+      <location filename="src/app/App.cpp" line="543"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ se inició con la configuración predeterminada. Se conservó el archivo de configuración anterior para que no se perdiera nada.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="537"></location>
+      <location filename="src/app/App.cpp" line="538"></location>
       <source>Settings could not be read</source>
       <translation>No se pudo leer la configuración</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="706"></location>
+      <location filename="src/app/App.cpp" line="707"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Algunos sonidos de la interfaz no están disponibles</translation>
     </message>
@@ -4534,23 +4534,33 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <source>Close</source>
       <translation>Cerrar</translation>
     </message>
+    <message id="gamehq.share.discord_desktop.not_installed">
+      <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="125"></location>
+      <source>Discord Desktop isn't installed.</source>
+      <translation>Discord Desktop no está instalado.</translation>
+    </message>
+    <message id="gamehq.share.discord_desktop.privacy">
+      <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="134"></location>
+      <source>Copies the file and opens Discord so you can paste it. GameHQ never signs in to Discord.</source>
+      <translation>Copia el archivo y abre Discord para que lo pegues. GameHQ nunca inicia sesión en Discord.</translation>
+    </message>
     <message id="gamehq.share.error.capture_changed">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="207"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
       <source>This capture changed on disk after you opened Share. Open Share again.</source>
       <translation>Esta captura cambió en el disco después de que abriste Compartir. Vuelve a abrir Compartir.</translation>
     </message>
     <message id="gamehq.share.error.capture_missing">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="204"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="207"></location>
       <source>This capture is no longer on disk.</source>
       <translation>Esta captura ya no está en el disco.</translation>
     </message>
     <message id="gamehq.share.error.generic">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
       <source>This capture could not be shared.</source>
       <translation>No se pudo compartir esta captura.</translation>
     </message>
     <message id="gamehq.share.error.not_connected">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
       <source>Connect this account in Settings first.</source>
       <translation>Primero conecta esta cuenta en Configuración.</translation>
     </message>
@@ -4570,19 +4580,24 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>No se encontraron destinatarios.</translation>
     </message>
     <message id="gamehq.share.outcome.cancelled">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="192"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="195"></location>
       <source>Sharing cancelled. Nothing was sent.</source>
       <translation>Se canceló el envío. No se envió nada.</translation>
     </message>
     <message id="gamehq.share.outcome.copied">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="189"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="192"></location>
       <source>Copied. Paste it wherever you want to share it.</source>
       <translation>Copiada. Pégala donde quieras compartirla.</translation>
     </message>
     <message id="gamehq.share.outcome.handed_off">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="186"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="189"></location>
       <source>Opened in %1. Finish sending there.</source>
       <translation>Se abrió en %1. Termina el envío allí.</translation>
+    </message>
+    <message id="gamehq.share.outcome.handed_off_paste">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="187"></location>
+      <source>Copied and opened %1. Paste it into a chat to send it.</source>
+      <translation>Se copió y se abrió %1. Pégala en un chat para enviarla.</translation>
     </message>
     <message id="gamehq.share.outcome.sent">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="183"></location>
@@ -4590,7 +4605,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Enviada.</translation>
     </message>
     <message id="gamehq.share.outcome.unconfirmed">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="195"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="198"></location>
       <source>GameHQ couldn't confirm whether it was sent. Check before sharing again.</source>
       <translation>GameHQ no pudo confirmar si se envió. Revísalo antes de volver a compartir.</translation>
     </message>
@@ -4610,7 +4625,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Ya compartiste esta captura aquí. ¿Quieres compartirla de nuevo?</translation>
     </message>
     <message id="gamehq.share.sending">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="221"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="224"></location>
       <source>Sharing…</source>
       <translation>Compartiendo…</translation>
     </message>
@@ -4625,7 +4640,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Abre Telegram para elegir el chat. GameHQ nunca inicia sesión en Telegram.</translation>
     </message>
     <message id="gamehq.share.title">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="325"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="328"></location>
       <source>Share</source>
       <translation>Compartir</translation>
     </message>

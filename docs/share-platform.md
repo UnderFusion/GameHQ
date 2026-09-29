@@ -179,6 +179,33 @@ is shown on the next open.
   when it does not, never `sent`. In the overlay a hand-off closes the dialog
   and hides the overlay so Telegram's window is visible.
 
+### Discord Desktop (`discord.desktop`, t14)
+
+`src/share/providers/DiscordDesktopProvider.{h,cpp}`, tests
+`tests/tst_sharediscorddesktop.cpp`. No Discord login, bot, webhook or user
+token in GameHQ (`access: none`). Discord has no documented "send this file"
+launch option and `discord://` cannot carry a file, so the hand-off does not
+depend on it.
+
+- **Detection:** the registered `discord` URL handler (`HKCU`, then `HKLM`
+  `Software\Classes\discord\shell\open\command`), else the default per-user
+  `Update.exe`. Only an existing `Update.exe` / `Discord*.exe` counts;
+  otherwise the destination is listed as unavailable. PTB/Canary are used only
+  if they own the `discord` handler.
+- **Hand-off:** the capture is put on the clipboard first (file, plus image
+  data for a screenshot, via `ClipboardShareProvider::copyCapture`), then
+  Discord is started or brought forward with `Update.exe --processStart
+  Discord.exe` (the URL placeholder is dropped). The user pastes into a chat.
+- **Result:** `handed_off` with detail `paste` when Discord was opened
+  ("Copied and opened Discord. Paste it into a chat to send it."); `copied` /
+  `launch_failed` when only the clipboard step worked; `failed` /
+  `clipboard_unavailable` when nothing was copied (Discord is then not
+  opened). Never `sent`. In the overlay a hand-off hides the overlay so
+  Discord is visible.
+- **Manual check pending (owner):** PNG, JPG and MP4 paste into a Discord chat
+  with Discord running and closed; large clips are subject to the account's
+  upload limit.
+
 ### Copy to clipboard (`clipboard`)
 
 Built-in provider: `share::ClipboardShareProvider` (`clipboard`) puts the file
