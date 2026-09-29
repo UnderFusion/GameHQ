@@ -55,6 +55,17 @@ QString TdRuntime::sha256OfFile(const QString& path)
     return QString::fromLatin1(hash.result().toHex());
 }
 
+TdRuntime::Status TdRuntime::quickStatus() const
+{
+    if (m_status != Status::NotLoaded)
+        return m_status;
+    if (m_expectedSha256.isEmpty())
+        return Status::Unpinned;
+    if (!QFileInfo(m_dllPath).isFile())
+        return Status::NotInstalled;
+    return Status::NotLoaded;
+}
+
 TdRuntime::Status TdRuntime::load()
 {
     if (m_status != Status::NotLoaded)

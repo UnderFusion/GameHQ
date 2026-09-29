@@ -1,3 +1,7 @@
+> **SUPERSEDED (2026-09-30).** Settings > Sharing (t21) and Telegram Integrated
+> (t22-t24) change the final product, so this session is not to be run. A new
+> acceptance session is generated against the final build.
+
 <!-- SPDX-License-Identifier: MIT -->
 
 # Share acceptance session (owner)

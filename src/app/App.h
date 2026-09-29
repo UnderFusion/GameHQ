@@ -13,6 +13,7 @@ class CaptureDatabase;
 class CaptureScanner;
 namespace share { class Service; }
 namespace share::external { class ExternalProviderHost; }
+namespace telegram { class Account; class TdRuntime; }
 class GalleryModel;
 class AppController;
 class TrayIcon;
@@ -88,6 +89,10 @@ private:
     // Out-of-process Share providers (docs/share-provider-api-v1.md). Declared
     // after m_share so it is destroyed first and unregisters its providers.
     std::unique_ptr<share::external::ExternalProviderHost> m_shareProviders;
+    // Telegram Integrated (docs/tdlib-runtime.md). The account is declared
+    // after m_share so it goes first; the provider only holds a pointer to it.
+    std::unique_ptr<telegram::TdRuntime> m_tdRuntime;
+    std::unique_ptr<telegram::Account> m_telegramAccount;
     // Wakes periodically to see if the 24h automatic-check window has passed
     // (see the update-check policy block in init()). Manual checkNow() from
     // QML bypasses this entirely.

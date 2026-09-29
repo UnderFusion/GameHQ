@@ -210,7 +210,7 @@ depend on it.
 
 `src/share/providers/DiscordWebhook{Provider,Store,Upload}.{h,cpp}`, tests
 `tests/tst_sharediscordwebhook.cpp`. The user adds named channels (incoming
-webhooks) in Settings > Capture > Share destinations; Share then uploads the
+webhooks) in Settings > Sharing; Share then uploads the
 capture natively (multipart file, no link, no third-party host). The post
 appears under the **webhook's identity, not the user's personal Discord
 account**, and the privacy notice says so. `access: share_token`: a webhook can
@@ -259,6 +259,44 @@ post to its one channel and nothing else.
 - **Not done:** the OAuth `webhook.incoming` setup flow (needs a backend to
   keep the client secret) and a rename control in Settings. **Manual check pending (owner):** send a screenshot and a clip to a
   real channel over real TLS from the overlay.
+
+### Telegram account (`telegram.integrated`, t13/t22-t24)
+
+Optional. `share::TelegramIntegratedProvider` sends the picked capture natively
+through the user's own Telegram account using TDLib (`docs/tdlib-runtime.md`
+for the pinned runtime). Layers:
+
+- `telegram::TdRuntime` locates, hashes and lazily loads the pinned
+  `tdjson.dll`; missing or wrong runtime means the provider is unavailable
+  with a plain reason, never a crash. Telegram Desktop sharing is independent
+  of all of this.
+- `telegram::TdTransport` is the seam to TDLib (real `TdJsonTransport`, or a
+  scripted fake in tests). `telegram::Account` is the authorization state
+  machine (`disconnected -> starting -> wait_phone -> wait_code ->
+  [wait_password] -> connected`), the credentials (`api-id`, `api-hash`) and a
+  random database key in Credential Manager, and the confined session
+  directory `<data>/share/sessions/telegram.integrated`.
+  The phone number, code and password go straight to TDLib and are never
+  stored or logged. Unsupported steps (e-mail login, QR, registration) end as
+  `unsupported_auth`.
+- The client is released after five idle minutes (no background traffic); the
+  saved session resumes on the next Share. `Disconnect` logs out on Telegram's
+  side and deletes the local session and database key.
+- TDLib is configured with no message database and no file cache, `online` set
+  to false, and every update that is not authorization or the answer to a
+  request GameHQ made is dropped: there is no inbox, incoming-message UI or
+  Telegram notification path.
+- Targets: private chats and non-broadcast groups (Telegram's own recency
+  order; search merges chats and contacts). Secret chats, bots and channels
+  are not offered; groups without photo/video permission are hidden. Ids are
+  `c:<chat>` / `u:<user>`, validated again at send time.
+- Sending: a screenshot goes as a photo (a PNG over 10 MB as a document), a
+  clip as a video (over 2000 MB refused). **Sent is reported only after TDLib's
+  `updateMessageSendSucceeded` for that message.** A lost connection ends as
+  `unconfirmed`; nothing is ever retried. Cancel deletes the still-pending
+  message.
+
+Tests: `tst_tdruntime`, `tst_telegramaccount`, `tst_telegramprovider`.
 
 ### External providers (`ext.*`, t18)
 

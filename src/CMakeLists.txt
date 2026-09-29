@@ -118,6 +118,7 @@ qt_add_executable(GameHQ
     share/ShareService.cpp share/ShareService.h
     share/ShareSecurity.cpp share/ShareSecurity.h
     share/providers/TelegramDesktopProvider.cpp share/providers/TelegramDesktopProvider.h
+    share/providers/TelegramIntegratedProvider.cpp share/providers/TelegramIntegratedProvider.h
     share/providers/ClipboardShareProvider.cpp share/providers/ClipboardShareProvider.h
     share/providers/DiscordDesktopProvider.cpp share/providers/DiscordDesktopProvider.h
     share/providers/DiscordWebhookProvider.cpp share/providers/DiscordWebhookProvider.h
@@ -127,6 +128,8 @@ qt_add_executable(GameHQ
     share/external/ExternalProviderHost.cpp share/external/ExternalProviderHost.h
     share/providers/DiscordWebhookUpload.cpp share/providers/DiscordWebhookUpload.h
     telegram/TdRuntime.cpp telegram/TdRuntime.h telegram/TdRuntimePin.h
+    telegram/TdTransport.h telegram/TdJsonTransport.cpp telegram/TdJsonTransport.h
+    telegram/TelegramAccount.cpp telegram/TelegramAccount.h
     storage/CaptureDatabase.cpp storage/CaptureDatabase.h
     storage/CaptureQueries.cpp storage/CaptureQueries.h
     storage/CaptureFolderWatcher.cpp storage/CaptureFolderWatcher.h
@@ -249,6 +252,7 @@ qt_add_qml_module(GameHQ
         ui/qml/settings/GeneralSettingsPage.qml
         ui/qml/settings/CaptureSettingsPage.qml
         ui/qml/settings/SharingSettingsPage.qml
+        ui/qml/settings/TelegramAccountSection.qml
         ui/qml/settings/ReplaySettingsPage.qml
         ui/qml/settings/InputSettingsPage.qml
         ui/qml/settings/MappingPresetSection.qml
