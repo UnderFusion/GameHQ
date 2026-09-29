@@ -151,8 +151,8 @@ void ScreenshotService::encodeAndSave(const QImage& img, const QString& gameName
     const QString dir = m_locations->screenshotDir(gameName);
     // Read format/quality on the calling thread (ConfigManager is not meant for
     // concurrent access) and hand plain values to the worker.
-    const bool jpeg = m_config
-        && m_config->value(ConfigKeys::CaptureScreenshotFormat, QStringLiteral("png"))
+    const bool jpeg = !m_config
+        || m_config->value(ConfigKeys::CaptureScreenshotFormat, QStringLiteral("jpg"))
                .toString().compare(QStringLiteral("jpg"), Qt::CaseInsensitive) == 0;
     const QString ext = jpeg ? QStringLiteral(".jpg") : QStringLiteral(".png");
     const int jpegQuality = m_config

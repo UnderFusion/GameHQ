@@ -22,7 +22,7 @@ QJsonObject ConfigManager::defaults()
     return {
         { ConfigKeys::CaptureMode,             "only_in_games" }, // only_in_games | whitelist | always
         { ConfigKeys::CaptureHideBorder,       true },           // next WGC session only
-        { ConfigKeys::CaptureScreenshotFormat, "png" },           // png | jpg
+        { ConfigKeys::CaptureScreenshotFormat, "jpg" },           // jpg | png
         { ConfigKeys::CaptureJpegQuality,      90 },              // 1-100, only used when format=jpg
         { ConfigKeys::CaptureScreenshotSound,  true },
         { ConfigKeys::CaptureScreenshotNotify, true },

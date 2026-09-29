@@ -105,7 +105,7 @@ SettingsPage {
             SettingsCombo {
                 id: formatCombo
                 configKey: "capture.screenshot_format"
-                defaultValue: "png"
+                defaultValue: "jpg"
                 options: [
                     //% "PNG (lossless)"
                     { label: qsTrId("gamehq.settings.capture.image.png"), value: "png" },
