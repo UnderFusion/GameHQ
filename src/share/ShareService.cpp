@@ -337,6 +337,52 @@ bool Service::disconnectProvider(const QString& providerId)
     return true;
 }
 
+QVariantList Service::savedDestinationProviders() const
+{
+    QVariantList out;
+    for (Provider* p : m_registry->providers()) {
+        if (!p->capabilities().testFlag(Capability::SavedTargets))
+            continue;
+        QVariantList destinations;
+        for (const Provider::SavedDestination& d : p->savedDestinations())
+            destinations.append(QVariantMap{ { QStringLiteral("id"), d.id },
+                                             { QStringLiteral("name"), d.name } });
+        out.append(QVariantMap{ { QStringLiteral("id"), p->id() },
+                                { QStringLiteral("name"), p->displayName() },
+                                { QStringLiteral("privacy"), p->privacyNotice() },
+                                { QStringLiteral("destinations"), destinations } });
+    }
+    return out;
+}
+
+QString Service::addSavedDestination(const QString& providerId, const QString& name,
+                                     const QString& secret)
+{
+    Provider* p = m_registry->find(providerId);
+    if (!p || !p->capabilities().testFlag(Capability::SavedTargets))
+        return QStringLiteral("unknown_provider");
+    if (m_hasActive && m_active.job.providerId == providerId)
+        return QStringLiteral("busy");
+    const QString code = sanitizedCode(p->addSavedDestination(name, secret));
+    // Only the outcome is logged: the secret is a webhook URL.
+    qInfo() << "Share: add destination for" << providerId << (code.isEmpty() ? QStringLiteral("ok") : code);
+    emit providersChanged();
+    return code;
+}
+
+bool Service::removeSavedDestination(const QString& providerId, const QString& id)
+{
+    Provider* p = m_registry->find(providerId);
+    if (!p || !p->capabilities().testFlag(Capability::SavedTargets))
+        return false;
+    if (m_hasActive && m_active.job.providerId == providerId)
+        return false;
+    const bool removed = p->removeSavedDestination(id);
+    qInfo() << "Share: remove destination for" << providerId << (removed ? "ok" : "not found");
+    emit providersChanged();
+    return removed;
+}
+
 void Service::onJobProgress(Provider* provider, const QString& jobId, JobState state,
                             double progress)
 {

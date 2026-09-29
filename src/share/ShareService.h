@@ -74,6 +74,15 @@ public:
     // session data. Refused while that provider has a job running.
     Q_INVOKABLE bool disconnectProvider(const QString& providerId);
 
+    // Settings support for providers with SavedTargets (webhooks...):
+    // { id, name, privacy, destinations: [{ id, name }] } per such provider.
+    Q_INVOKABLE QVariantList savedDestinationProviders() const;
+    // Returns "" on success, else a stable error code. Refused while that
+    // provider has a job running.
+    Q_INVOKABLE QString addSavedDestination(const QString& providerId, const QString& name,
+                                            const QString& secret);
+    Q_INVOKABLE bool removeSavedDestination(const QString& providerId, const QString& id);
+
     bool active() const { return m_request.isValid(); }
     QString fileName() const { return m_request.fileName(); }
     QString mediaKindName() const;

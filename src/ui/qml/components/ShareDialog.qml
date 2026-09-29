@@ -211,6 +211,19 @@ Item {
         case "not_connected":
             //% "Connect this account in Settings first."
             return qsTrId("gamehq.share.error.not_connected")
+        case "rate_limited":
+            //% "Discord is limiting uploads right now. Wait a moment and try again."
+            return qsTrId("gamehq.share.error.rate_limited")
+        case "too_large":
+            //% "This capture is too large for that channel."
+            return qsTrId("gamehq.share.error.too_large")
+        case "webhook_revoked":
+        case "webhook_missing":
+            //% "That channel's webhook no longer works. Remove it in Settings and add it again."
+            return qsTrId("gamehq.share.error.webhook_revoked")
+        case "network_error":
+            //% "GameHQ couldn't reach the service. Check your connection."
+            return qsTrId("gamehq.share.error.network_error")
         }
         //% "This capture could not be shared."
         return qsTrId("gamehq.share.error.generic")

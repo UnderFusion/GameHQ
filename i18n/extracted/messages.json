@@ -371,7 +371,7 @@
         },
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 422
+          "line": 435
         },
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
@@ -1739,6 +1739,10 @@
           "line": 151
         },
         {
+          "file": "src/ui/qml/components/ShareDestinationsSection.qml",
+          "line": 85
+        },
+        {
           "file": "src/ui/qml/settings/LibrarySettingsPage.qml",
           "line": 108
         }
@@ -1850,6 +1854,10 @@
         {
           "file": "src/ui/qml/components/MappingPresetNameDialog.qml",
           "line": 26
+        },
+        {
+          "file": "src/ui/qml/components/ShareDestinationsSection.qml",
+          "line": 155
         }
       ],
       "plural": false,
@@ -3381,7 +3389,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 665
+          "line": 666
         }
       ],
       "plural": false,
@@ -4291,7 +4299,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 640
+          "line": 641
         }
       ],
       "plural": false,
@@ -7459,7 +7467,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 485
+          "line": 486
         }
       ],
       "plural": false,
@@ -7476,7 +7484,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 492
+          "line": 493
         }
       ],
       "plural": false,
@@ -7493,7 +7501,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 498
+          "line": 499
         }
       ],
       "plural": false,
@@ -7510,7 +7518,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 291
+          "line": 292
         }
       ],
       "plural": false,
@@ -7527,7 +7535,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 285
+          "line": 286
         }
       ],
       "plural": false,
@@ -7544,7 +7552,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 275
+          "line": 276
         }
       ],
       "plural": false,
@@ -7561,7 +7569,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 397
+          "line": 398
         }
       ],
       "plural": false,
@@ -7578,7 +7586,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 460
+          "line": 461
         }
       ],
       "plural": false,
@@ -7597,7 +7605,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 78
+          "line": 79
         }
       ],
       "plural": false,
@@ -7614,7 +7622,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 72
+          "line": 73
         }
       ],
       "plural": false,
@@ -7631,7 +7639,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 90
+          "line": 91
         }
       ],
       "plural": false,
@@ -7648,7 +7656,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 84
+          "line": 85
         }
       ],
       "plural": false,
@@ -7665,7 +7673,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 66
+          "line": 67
         }
       ],
       "plural": false,
@@ -7682,7 +7690,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 307
+          "line": 308
         }
       ],
       "plural": false,
@@ -7699,7 +7707,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 392
+          "line": 393
         }
       ],
       "plural": false,
@@ -7716,7 +7724,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 441
+          "line": 442
         }
       ],
       "plural": false,
@@ -7733,7 +7741,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 300
+          "line": 301
         }
       ],
       "plural": false,
@@ -7750,7 +7758,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 342
+          "line": 343
         }
       ],
       "plural": false,
@@ -7767,7 +7775,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 543
+          "line": 544
         }
       ],
       "plural": false,
@@ -7786,7 +7794,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 538
+          "line": 539
         }
       ],
       "plural": false,
@@ -7803,7 +7811,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 707
+          "line": 708
         }
       ],
       "plural": false,
@@ -9761,7 +9769,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 204
+          "line": 206
         }
       ],
       "plural": false,
@@ -9778,7 +9786,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 197
+          "line": 199
         }
       ],
       "plural": false,
@@ -14229,6 +14237,10 @@
         {
           "file": "src/ui/qml/components/MappingPresetNameDialog.qml",
           "line": 22
+        },
+        {
+          "file": "src/ui/qml/components/ShareDestinationsSection.qml",
+          "line": 96
         }
       ],
       "plural": false,
@@ -15704,6 +15716,57 @@
       "source_hash": "b18da0a7c4d431420a2d00bbb3cedeeab39594ac7c99e5ed5ad4e8ff8b035b31"
     },
     {
+      "id": "gamehq.share.discord_webhook.name",
+      "source": "Discord channel",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/providers/DiscordWebhookProvider.cpp",
+          "line": 45
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "059fd717d08c78ac258e54ef78360a8eb55b5d2b3a0e8678b355dec66dd309a9"
+    },
+    {
+      "id": "gamehq.share.discord_webhook.not_configured",
+      "source": "Add a Discord channel in Settings first.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/providers/DiscordWebhookProvider.cpp",
+          "line": 60
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2b4d4eb43099527e54c89e34949413ceda4762c101faad9f0d45be42355931c3"
+    },
+    {
+      "id": "gamehq.share.discord_webhook.privacy",
+      "source": "Posts to the channel as a webhook, not as your Discord account. Everyone in the channel can see it.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/providers/DiscordWebhookProvider.cpp",
+          "line": 69
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "50005cc6dc3c2f317e9e50a8796037ed349cae5e77d2a6eb6b2036d3bcefe318"
+    },
+    {
       "id": "gamehq.share.error.capture_changed",
       "source": "This capture changed on disk after you opened Share. Open Share again.",
       "context": "ID",
@@ -15745,7 +15808,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 216
+          "line": 229
         }
       ],
       "plural": false,
@@ -15753,6 +15816,25 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "fa2e67eaddbec06aa70d6b47fcb46b94bbbda5b8c4b4929bbe88884b098e9af3"
+    },
+    {
+      "id": "gamehq.share.error.network_error",
+      "source": "GameHQ couldn't reach the service. Check your connection.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 226
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "5cdc633d567928f2cb5e38175f6a9a4e6ba5a1d52d9334a457f1c6766d7bb3b0"
     },
     {
       "id": "gamehq.share.error.not_connected",
@@ -15770,6 +15852,57 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "519839a8b9e171be4fd82282d527ef3334ad763e04a2f5a78aa0096f5260c0f4"
+    },
+    {
+      "id": "gamehq.share.error.rate_limited",
+      "source": "Discord is limiting uploads right now. Wait a moment and try again.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 216
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3adc6e840d78c5c444b86a8b8cb07b1ec04a2c865b25015baa04e22003f2c909"
+    },
+    {
+      "id": "gamehq.share.error.too_large",
+      "source": "This capture is too large for that channel.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 219
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "4e9c20c15e4bb414c3f1d2f5280847511ed545095127d153ab7a1cb5638e59fd"
+    },
+    {
+      "id": "gamehq.share.error.webhook_revoked",
+      "source": "That channel's webhook no longer works. Remove it in Settings and add it again.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 223
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "216e5fb0a28f6bd13ba10ed8cc139e837e361d439d555249507a4386d73c5f2a"
     },
     {
       "id": "gamehq.share.loading",
@@ -15989,7 +16122,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 224
+          "line": 237
         }
       ],
       "plural": false,
@@ -15997,6 +16130,127 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "88e325e8b6489d45a1ccfeebb017f13b3e90a7155524e93b4d6817d1ed5cda6b"
+    },
+    {
+      "id": "gamehq.share.settings.description",
+      "source": "Channels that Share can post to. Webhook links are kept in Windows Credential Manager, not in GameHQ's settings.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDestinationsSection.qml",
+          "line": 41
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "6da5d5a17a6f9f0d58585044d96dda5968aae7a59dfb3995b165823aaf707457"
+    },
+    {
+      "id": "gamehq.share.settings.error.invalid_name",
+      "source": "Enter a short name for this channel.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDestinationsSection.qml",
+          "line": 25
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "aea801f1e39f3e1ef3c7a30fb6cc181cd125cadb01975d00f522606917833ff1"
+    },
+    {
+      "id": "gamehq.share.settings.error.invalid_secret",
+      "source": "That is not a Discord webhook link.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDestinationsSection.qml",
+          "line": 28
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bf70dee5ad649b48ba1925763988716f606619fb8532e66f091320326f02d6df"
+    },
+    {
+      "id": "gamehq.share.settings.error.storage_failed",
+      "source": "Couldn't save the channel. Try again.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDestinationsSection.qml",
+          "line": 34
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "68ca4dc1d9a46ef04d6095935f3421b9e5e37155b22b81f2531ad82a8aabebaa"
+    },
+    {
+      "id": "gamehq.share.settings.error.too_many",
+      "source": "You have reached the limit of saved channels.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDestinationsSection.qml",
+          "line": 31
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8b1094ebbfd3cb27c0ee67edc9c4a5e5ed3f6c66e1524682caf3425460af73fb"
+    },
+    {
+      "id": "gamehq.share.settings.title",
+      "source": "Share destinations",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDestinationsSection.qml",
+          "line": 39
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728"
+    },
+    {
+      "id": "gamehq.share.settings.webhook_label",
+      "source": "Webhook link",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDestinationsSection.qml",
+          "line": 119
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9979db98c40d835d3dfe0ade685f3f78026322bc57145fbacdbce2136606aa98"
     },
     {
       "id": "gamehq.share.telegram_desktop.not_installed",
@@ -16042,7 +16296,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 328
+          "line": 341
         }
       ],
       "plural": false,

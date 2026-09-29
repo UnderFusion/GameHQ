@@ -105,7 +105,7 @@
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="422"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="435"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
@@ -504,6 +504,7 @@
     </message>
     <message id="gamehq.action.remove">
       <location filename="src/ui/qml/components/BindingCard.qml" line="151"></location>
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="85"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="108"></location>
       <source>Remove</source>
       <translation>제거</translation>
@@ -536,6 +537,7 @@
     <message id="gamehq.action.save">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="629"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="26"></location>
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="155"></location>
       <source>Save</source>
       <translation>저장</translation>
     </message>
@@ -968,7 +970,7 @@
       <translation>다른 포터블 프로필 가져오기가 이미 실행 중입니다.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="665"></location>
+      <location filename="src/app/App.cpp" line="666"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>캡처 작업이 제한 시간 내에 안전하게 완료되지 않아 업데이트가 취소되었습니다.</translation>
     </message>
@@ -1219,7 +1221,7 @@
       <translation>GameHQ에서 업데이트 트랜잭션을 최종 상태로 반영할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="640"></location>
+      <location filename="src/app/App.cpp" line="641"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ에서 업데이트 유지 관리 작업을 시작할 수 없습니다: %1</translation>
     </message>
@@ -2131,107 +2133,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ 후원</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="485"></location>
+      <location filename="src/app/App.cpp" line="486"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>일부 파일을 삭제하지 못했습니다. 다른 프로그램에서 사용 중일 수 있습니다. 해당 파일을 사용 중인 프로그램을 모두 닫고 다시 시도하세요.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="492"></location>
+      <location filename="src/app/App.cpp" line="493"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>파일을 삭제하지 못했습니다. 다른 프로그램에서 사용 중일 수 있습니다. 이 파일을 사용 중인 프로그램을 닫고 다시 시도하세요.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="498"></location>
+      <location filename="src/app/App.cpp" line="499"></location>
       <source>Couldn't delete</source>
       <translation>삭제하지 못했습니다</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="291"></location>
+      <location filename="src/app/App.cpp" line="292"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>라이브러리에 추가되지 않았고 파일도 디스크에 없습니다.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="285"></location>
+      <location filename="src/app/App.cpp" line="286"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>파일은 캡처 폴더에 있지만 라이브러리에 추가하지 못했습니다.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="275"></location>
+      <location filename="src/app/App.cpp" line="276"></location>
       <source>Saved to disk, not in library</source>
       <translation>디스크에 저장됨, 라이브러리에는 없음</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="397"></location>
+      <location filename="src/app/App.cpp" line="398"></location>
       <source>Capture request received</source>
       <translation>캡처 요청을 받았습니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="460"></location>
+      <location filename="src/app/App.cpp" line="461"></location>
       <source>Reason: %1</source>
       <translation>원인: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="78"></location>
+      <location filename="src/app/App.cpp" line="79"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>리플레이 버퍼에 오류가 발생하여 클립이 저장되지 않았습니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="72"></location>
+      <location filename="src/app/App.cpp" line="73"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>리플레이 버퍼가 영상을 수집하는 중입니다. 몇 초 후에 다시 저장해 보세요</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="90"></location>
+      <location filename="src/app/App.cpp" line="91"></location>
       <source>Replay buffer is empty</source>
       <translation>리플레이 버퍼가 비어 있습니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="84"></location>
+      <location filename="src/app/App.cpp" line="85"></location>
       <source>Replay buffer is not running</source>
       <translation>리플레이 버퍼가 실행 중이 아닙니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="66"></location>
+      <location filename="src/app/App.cpp" line="67"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>리플레이 버퍼를 시작하는 중입니다. 몇 초 후에 다시 저장해 보세요</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="307"></location>
+      <location filename="src/app/App.cpp" line="308"></location>
       <source>Replay failed</source>
       <translation>리플레이 실패</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="392"></location>
+      <location filename="src/app/App.cpp" line="393"></location>
       <source>Replay save requested</source>
       <translation>리플레이 저장을 요청했습니다</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="441"></location>
+      <location filename="src/app/App.cpp" line="442"></location>
       <source>Replay saved</source>
       <translation>리플레이 저장됨</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="300"></location>
+      <location filename="src/app/App.cpp" line="301"></location>
       <source>Screenshot failed</source>
       <translation>스크린샷 실패</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="342"></location>
+      <location filename="src/app/App.cpp" line="343"></location>
       <source>Screenshot saved</source>
       <translation>스크린샷 저장됨</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="543"></location>
+      <location filename="src/app/App.cpp" line="544"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ가 기본 설정으로 시작되었습니다. 이전 설정 파일은 그대로 보관되어 손실된 항목이 없습니다.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="538"></location>
+      <location filename="src/app/App.cpp" line="539"></location>
       <source>Settings could not be read</source>
       <translation>설정을 읽을 수 없습니다</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="707"></location>
+      <location filename="src/app/App.cpp" line="708"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>일부 인터페이스 소리를 사용할 수 없습니다</translation>
     </message>
@@ -2799,12 +2801,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>허용 목록의 게임</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="204"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="206"></location>
       <source>Choose the clips folder</source>
       <translation>클립 폴더 선택</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="199"></location>
       <source>Choose the screenshots folder</source>
       <translation>스크린샷 폴더 선택</translation>
     </message>
@@ -4097,6 +4099,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.presets.name_label">
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="22"></location>
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="96"></location>
       <source>Name</source>
       <translation>이름</translation>
     </message>
@@ -4537,6 +4540,21 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Copies the file and opens Discord so you can paste it. GameHQ never signs in to Discord.</source>
       <translation>파일을 복사하고 Discord를 열어 붙여 넣을 수 있게 합니다. GameHQ는 Discord에 로그인하지 않습니다.</translation>
     </message>
+    <message id="gamehq.share.discord_webhook.name">
+      <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="45"></location>
+      <source>Discord channel</source>
+      <translation>Discord 채널</translation>
+    </message>
+    <message id="gamehq.share.discord_webhook.not_configured">
+      <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="60"></location>
+      <source>Add a Discord channel in Settings first.</source>
+      <translation>먼저 설정에서 Discord 채널을 추가하세요.</translation>
+    </message>
+    <message id="gamehq.share.discord_webhook.privacy">
+      <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="69"></location>
+      <source>Posts to the channel as a webhook, not as your Discord account. Everyone in the channel can see it.</source>
+      <translation>웹훅으로 채널에 게시되며 내 Discord 계정으로는 게시되지 않습니다. 채널의 모든 사람이 볼 수 있습니다.</translation>
+    </message>
     <message id="gamehq.share.error.capture_changed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
       <source>This capture changed on disk after you opened Share. Open Share again.</source>
@@ -4548,14 +4566,34 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>이 캡처가 더 이상 디스크에 없습니다.</translation>
     </message>
     <message id="gamehq.share.error.generic">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="229"></location>
       <source>This capture could not be shared.</source>
       <translation>이 캡처를 공유할 수 없습니다.</translation>
+    </message>
+    <message id="gamehq.share.error.network_error">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="226"></location>
+      <source>GameHQ couldn't reach the service. Check your connection.</source>
+      <translation>GameHQ가 서비스에 연결하지 못했습니다. 연결 상태를 확인하세요.</translation>
     </message>
     <message id="gamehq.share.error.not_connected">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
       <source>Connect this account in Settings first.</source>
       <translation>먼저 설정에서 이 계정을 연결하세요.</translation>
+    </message>
+    <message id="gamehq.share.error.rate_limited">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
+      <source>Discord is limiting uploads right now. Wait a moment and try again.</source>
+      <translation>Discord에서 현재 업로드를 제한하고 있습니다. 잠시 후 다시 시도하세요.</translation>
+    </message>
+    <message id="gamehq.share.error.too_large">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="219"></location>
+      <source>This capture is too large for that channel.</source>
+      <translation>이 캡처는 해당 채널에 올리기에는 너무 큽니다.</translation>
+    </message>
+    <message id="gamehq.share.error.webhook_revoked">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="223"></location>
+      <source>That channel's webhook no longer works. Remove it in Settings and add it again.</source>
+      <translation>해당 채널의 웹훅이 더 이상 작동하지 않습니다. 설정에서 삭제한 뒤 다시 추가하세요.</translation>
     </message>
     <message id="gamehq.share.loading">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="134"></location>
@@ -4618,9 +4656,44 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>이미 이 캡처를 여기에 공유했습니다. 다시 공유할까요?</translation>
     </message>
     <message id="gamehq.share.sending">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="224"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="237"></location>
       <source>Sharing…</source>
       <translation>공유하는 중…</translation>
+    </message>
+    <message id="gamehq.share.settings.description">
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="41"></location>
+      <source>Channels that Share can post to. Webhook links are kept in Windows Credential Manager, not in GameHQ's settings.</source>
+      <translation>공유로 게시할 수 있는 채널입니다. 웹훅 링크는 GameHQ 설정이 아닌 Windows 자격 증명 관리자에 저장됩니다.</translation>
+    </message>
+    <message id="gamehq.share.settings.error.invalid_name">
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="25"></location>
+      <source>Enter a short name for this channel.</source>
+      <translation>이 채널의 짧은 이름을 입력하세요.</translation>
+    </message>
+    <message id="gamehq.share.settings.error.invalid_secret">
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="28"></location>
+      <source>That is not a Discord webhook link.</source>
+      <translation>Discord 웹훅 링크가 아닙니다.</translation>
+    </message>
+    <message id="gamehq.share.settings.error.storage_failed">
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="34"></location>
+      <source>Couldn't save the channel. Try again.</source>
+      <translation>채널을 저장하지 못했습니다. 다시 시도하세요.</translation>
+    </message>
+    <message id="gamehq.share.settings.error.too_many">
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="31"></location>
+      <source>You have reached the limit of saved channels.</source>
+      <translation>저장할 수 있는 채널 수 한도에 도달했습니다.</translation>
+    </message>
+    <message id="gamehq.share.settings.title">
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="39"></location>
+      <source>Share destinations</source>
+      <translation>공유 대상</translation>
+    </message>
+    <message id="gamehq.share.settings.webhook_label">
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="119"></location>
+      <source>Webhook link</source>
+      <translation>웹훅 링크</translation>
     </message>
     <message id="gamehq.share.telegram_desktop.not_installed">
       <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="123"></location>
@@ -4633,7 +4706,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Telegram을 열어 채팅을 선택합니다. GameHQ는 Telegram에 로그인하지 않습니다.</translation>
     </message>
     <message id="gamehq.share.title">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="328"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="341"></location>
       <source>Share</source>
       <translation>공유</translation>
     </message>

@@ -32,6 +32,7 @@
 #include "share/ShareService.h"
 #include "share/providers/ClipboardShareProvider.h"
 #include "share/providers/DiscordDesktopProvider.h"
+#include "share/providers/DiscordWebhookProvider.h"
 #include "share/providers/TelegramDesktopProvider.h"
 #include "tray/TrayIcon.h"
 #include "ui/AppController.h"
@@ -807,6 +808,11 @@ bool App::init()
         &share::DiscordDesktopProvider::locateInstalled,
         &share::DiscordDesktopProvider::startDetached,
         &share::ClipboardShareProvider::copyCapture, m_share.get()));
+    m_share->registry()->add(new share::DiscordWebhookProvider(
+        std::make_unique<share::DiscordWebhookStore>(
+            Paths::dataDir() + QStringLiteral("/share/discord-webhooks.json"),
+            share::SecretStore(), share::DiscordWebhookStore::UrlValidator()),
+        m_share.get()));
     m_share->registry()->add(new share::ClipboardShareProvider(m_share.get()));
     m_engine.rootContext()->setContextProperty(QStringLiteral("shareService"), m_share.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlayGallery"), m_overlayGallery.get());
