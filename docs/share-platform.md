@@ -164,7 +164,7 @@ is shown on the next open.
 (`access: none`).
 
 - **Detection:** the registered `tg` URL handler
-  (`HKCU`, then `HKLM` `Software\Classes	g\shell\open\command`), else
+  (`HKCU`, then `HKLM` `Software\Classes\tg\shell\open\command`), else
   `%APPDATA%\Telegram Desktop\Telegram.exe`. Only an existing `Telegram.exe`
   counts; otherwise the destination is listed as unavailable ("Telegram Desktop
   isn't installed."). The Microsoft Store build does not register a classic
