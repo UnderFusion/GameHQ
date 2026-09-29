@@ -6,10 +6,12 @@ Public release history and the current local release candidate.
 
 ### Added
 
+- Overlay: Cross on a screenshot opens it full screen. L1/R1 step through screenshots and clips (clips play full screen), and Circle returns to the capture strip on the item you ended on. Cross on a clip still plays it in the preview.
 - Settings › Input › Steam Input: when a Steam game is running and a GameHQ controller shortcut uses Create / Share or PS, GameHQ explains that Steam Input may also send that button to the game, and offers buttons that open the game's Steam controller layout or Steam's controller settings. Guidance only: GameHQ never reads or changes Steam's controller settings. On by default; it can be switched off or hidden per game.
 
 ### Fixed
 
+- Start with Windows: starting another GameHQ copy (a portable build, or a copy with its own settings) no longer removes or takes over the installed copy's startup entry. Before, a copy with the setting off deleted the entry, so the installed GameHQ could fail to start after a restart even though the setting was on.
 - Settings › Input › Mapping presets: the Assignments list now shows and edits the preset chosen under *Editing preset*. Before, it showed the mappings currently in use and saved changes to the device's assigned preset, so a preset used by a game (or not assigned to this device) could not be edited, and its custom mappings, such as a double tap, could not be removed or reverted. Opening the page selects the preset in use, and a new preset opens for editing right away.
 
 ## [0.7.9] - 2026-09-25
