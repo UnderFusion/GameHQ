@@ -114,6 +114,7 @@ Window {
         content.forceActiveFocus()
     }
     function close() {
+        lightboxShare.close()
         mediaStage.player.stop()
         root.visible = false
         root.index = -1
@@ -176,6 +177,18 @@ Window {
         if (root.current.captureType === "video")
             root.toggleVideoPlayback()
     }
+    // Share runs inside this window: the lightbox is full screen and would
+    // cover the main window's dialog. Main routes pad input here while open.
+    readonly property alias shareDialog: lightboxShare
+    readonly property bool shareOpen: lightboxShare.isOpen
+    function openShare() {
+        if (!root.current.filePath || lightboxShare.isOpen)
+            return
+        if (mediaStage.player.playbackState === MediaPlayer.PlayingState)
+            mediaStage.player.pause()
+        lightboxShare.openFor(root.current.filePath, root.current.gameName)
+    }
+
     function padReveal() {
         if (root.current.captureType === "video")
             playerControls.revealControls()
@@ -309,6 +322,35 @@ Window {
             }
 
             Rectangle {
+                id: sharePill
+                anchors.top: closePill.top
+                anchors.right: closePill.left
+                anchors.rightMargin: Theme.s12
+                width: Theme.s48
+                height: Theme.s48
+                radius: Theme.radiusPill
+                color: Theme.text
+                visible: root.index >= 0
+                opacity: shareMouse.containsMouse ? 1.0 : 0.92
+                Text {
+                    anchors.centerIn: parent
+                    text: ""   // Share
+                    color: Theme.bg0
+                    font.family: "Segoe Fluent Icons"
+                    font.pixelSize: Theme.fontTitle
+                }
+                MouseArea {
+                    id: shareMouse
+                    anchors.fill: parent
+                    acceptedButtons: Qt.LeftButton
+                    cursorShape: Qt.PointingHandCursor
+                    hoverEnabled: true
+                    onClicked: root.openShare()
+                }
+                Behavior on opacity { NumberAnimation { duration: Theme.durFast } }
+            }
+
+            Rectangle {
                 id: pillLeft
                 anchors.left: parent.left
                 anchors.leftMargin: -Theme.s32
@@ -369,6 +411,12 @@ Window {
                 }
                 Behavior on opacity { NumberAnimation { duration: Theme.durFast } }
             }
+        }
+
+        ShareDialog {
+            id: lightboxShare
+            anchors.fill: parent
+            onClosed: content.forceActiveFocus()
         }
     }
 }

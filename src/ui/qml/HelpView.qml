@@ -218,7 +218,7 @@ Item {
                         {
                             //% "Square"
                             binding: qsTrId("gamehq.help.gamepad.square"),
-                            //% "Action menu (Show in folder / Delete)"
+                            //% "Action menu (Share / Show in folder / Delete)"
                             act: qsTrId("gamehq.help.gamepad.square_action")
                         },
                         {

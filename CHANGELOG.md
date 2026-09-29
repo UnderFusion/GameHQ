@@ -6,6 +6,7 @@ Public release history and the current local release candidate.
 
 ### Added
 
+- Share for saved screenshots and clips: press Square on a capture and choose *Share*, click the new Share icon on a capture tile, or use the Share button in the full-screen viewer. It works the same in the gallery, the viewer and the overlay, and is fully usable with a controller (Cross selects, Circle goes back). The first destination is *Copy to clipboard*; Telegram and Discord follow. GameHQ only says "Sent" when a service confirms delivery, and asks before sharing the same capture to the same place twice. The capture button on the controller is unchanged.
 - Overlay: Cross on a screenshot opens it full screen. L1/R1 step through screenshots and clips (clips play full screen), and Circle returns to the capture strip on the item you ended on. Cross on a clip still plays it in the preview.
 - Overlay: D-pad left/right flips between screenshots and clips again, like L1/R1. Once Cross is playing a clip, left/right seeks it instead.
 - Settings › Input › Steam Input: when a Steam game is running and a GameHQ controller shortcut uses Create / Share or PS, GameHQ explains that Steam Input may also send that button to the game, and offers buttons that open the game's Steam controller layout or Steam's controller settings. Guidance only: GameHQ never reads or changes Steam's controller settings. On by default; it can be switched off or hidden per game.

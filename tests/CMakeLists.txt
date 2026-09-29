@@ -919,6 +919,19 @@ gamehq_add_test(tst_sharecore
     "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp")
 
+# Share Platform UI (t10): the real ShareDialog.qml driven by pad calls.
+gamehq_add_test(tst_sharedialog
+    tst_sharedialog.cpp
+    "${CMAKE_SOURCE_DIR}/src/share/ShareTypes.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProvider.h"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp")
+target_link_libraries(tst_sharedialog PRIVATE Qt6::Gui Qt6::Qml Qt6::Quick)
+target_compile_definitions(tst_sharedialog PRIVATE
+    GAMEHQ_QML_SOURCE_DIR="${CMAKE_SOURCE_DIR}/src"
+    GAMEHQ_QML_IMPORT_DIR="${CMAKE_BINARY_DIR}/src")
+add_dependencies(tst_sharedialog GameHQ)
+
 gamehq_add_test(tst_captureborderstate
     tst_captureborderstate.cpp
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"

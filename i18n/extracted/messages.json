@@ -366,6 +366,14 @@
           "line": 24
         },
         {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 152
+        },
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 419
+        },
+        {
           "file": "src/ui/qml/components/UpdateBanner.qml",
           "line": 169
         },
@@ -392,19 +400,19 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1105
+          "line": 1156
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1122
+          "line": 1175
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1158
+          "line": 1213
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 525
+          "line": 652
         },
         {
           "file": "src/ui/qml/components/ConfirmDialog.qml",
@@ -420,7 +428,7 @@
         },
         {
           "file": "src/ui/qml/components/OverlayActionMenu.qml",
-          "line": 16
+          "line": 19
         }
       ],
       "plural": false,
@@ -1016,6 +1024,10 @@
         {
           "file": "src/ui/qml/components/DesktopGalleryHeader.qml",
           "line": 87
+        },
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 175
         }
       ],
       "plural": false,
@@ -2241,7 +2253,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 362
+          "line": 368
         }
       ],
       "plural": false,
@@ -2313,11 +2325,11 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 356
+          "line": 362
         },
         {
           "file": "src/ui/AppController.cpp",
-          "line": 378
+          "line": 384
         }
       ],
       "plural": false,
@@ -2874,7 +2886,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 200
+          "line": 206
         }
       ],
       "plural": false,
@@ -2961,7 +2973,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 206
+          "line": 212
         }
       ],
       "plural": false,
@@ -2980,7 +2992,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 215
+          "line": 221
         }
       ],
       "plural": false,
@@ -3084,7 +3096,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 226
+          "line": 232
         }
       ],
       "plural": false,
@@ -3103,7 +3115,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 236
+          "line": 242
         }
       ],
       "plural": false,
@@ -3369,7 +3381,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 661
+          "line": 663
         }
       ],
       "plural": false,
@@ -4279,7 +4291,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 636
+          "line": 638
         }
       ],
       "plural": false,
@@ -4722,7 +4734,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1160
+          "line": 1215
         },
         {
           "file": "src/ui/qml/components/DesktopGalleryHeader.qml",
@@ -4736,6 +4748,27 @@
       "source_hash": "71e48f5d88c620a5129e51bad78fa7ea07224b5370e9efdf0dfe83b4ebaac8ba"
     },
     {
+      "id": "gamehq.gallery.action.share",
+      "source": "Share",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/Main.qml",
+          "line": 1209
+        },
+        {
+          "file": "src/ui/qml/components/OverlayActionMenu.qml",
+          "line": 15
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134"
+    },
+    {
       "id": "gamehq.gallery.action.show_in_folder",
       "source": "Show in folder",
       "context": "ID",
@@ -4743,11 +4776,11 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1156
+          "line": 1211
         },
         {
           "file": "src/ui/qml/components/OverlayActionMenu.qml",
-          "line": 14
+          "line": 17
         }
       ],
       "plural": false,
@@ -4764,11 +4797,15 @@
       "locations": [
         {
           "file": "src/ui/qml/components/CaptureTile.qml",
-          "line": 180
+          "line": 185
         },
         {
           "file": "src/ui/qml/components/Lightbox.qml",
-          "line": 216
+          "line": 270
+        },
+        {
+          "file": "src/ui/qml/components/OverlayViewer.qml",
+          "line": 179
         }
       ],
       "plural": false,
@@ -4788,7 +4825,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1093
+          "line": 1144
         }
       ],
       "plural": false,
@@ -4808,11 +4845,11 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1103
+          "line": 1154
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 523
+          "line": 650
         }
       ],
       "plural": false,
@@ -4848,7 +4885,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1120
+          "line": 1173
         }
       ],
       "plural": false,
@@ -5022,7 +5059,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 344
+          "line": 350
         }
       ],
       "plural": false,
@@ -5039,7 +5076,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 330
+          "line": 336
         }
       ],
       "plural": false,
@@ -5056,7 +5093,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 335
+          "line": 341
         }
       ],
       "plural": false,
@@ -5073,7 +5110,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 324
+          "line": 330
         }
       ],
       "plural": false,
@@ -5090,7 +5127,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 318
+          "line": 324
         }
       ],
       "plural": false,
@@ -5583,7 +5620,7 @@
     },
     {
       "id": "gamehq.help.gamepad.square_action",
-      "source": "Action menu (Show in folder / Delete)",
+      "source": "Action menu (Share / Show in folder / Delete)",
       "context": "ID",
       "domain": "application",
       "locations": [
@@ -5596,7 +5633,7 @@
       "placeholders": [],
       "markup_signature": [],
       "protected_tokens": [],
-      "source_hash": "ee1ea22ea88a307c5552976e3065364a704dff745c46175f4e0ef11aa448ce0e"
+      "source_hash": "90b7de9853a53200bdf4355ff3a2f72ceec56f9b4668b59433387317e37e4d3d"
     },
     {
       "id": "gamehq.help.gamepad.switch_panel",
@@ -6193,7 +6230,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 1140
+          "line": 1240
         }
       ],
       "plural": false,
@@ -6531,7 +6568,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 487
+          "line": 579
         }
       ],
       "plural": false,
@@ -6554,7 +6591,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 479
+          "line": 571
         }
       ],
       "plural": false,
@@ -6595,7 +6632,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 463
+          "line": 555
         }
       ],
       "plural": false,
@@ -6616,7 +6653,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 456
+          "line": 548
         }
       ],
       "plural": false,
@@ -6763,7 +6800,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 306
+          "line": 398
         }
       ],
       "plural": false,
@@ -6784,7 +6821,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 313
+          "line": 405
         }
       ],
       "plural": false,
@@ -6804,7 +6841,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 320
+          "line": 412
         }
       ],
       "plural": false,
@@ -6824,7 +6861,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 179
+          "line": 253
         }
       ],
       "plural": false,
@@ -6841,7 +6878,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 190
+          "line": 264
         }
       ],
       "plural": false,
@@ -6858,7 +6895,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 195
+          "line": 269
         }
       ],
       "plural": false,
@@ -6877,7 +6914,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 1062
+          "line": 1162
         }
       ],
       "plural": false,
@@ -6894,7 +6931,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 142
+          "line": 216
         }
       ],
       "plural": false,
@@ -6911,7 +6948,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 134
+          "line": 208
         }
       ],
       "plural": false,
@@ -6928,7 +6965,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 138
+          "line": 212
         }
       ],
       "plural": false,
@@ -6945,7 +6982,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 146
+          "line": 220
         }
       ],
       "plural": false,
@@ -7013,11 +7050,11 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 166
+          "line": 240
         },
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 247
+          "line": 340
         }
       ],
       "plural": false,
@@ -7053,7 +7090,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 585
+          "line": 677
         }
       ],
       "plural": false,
@@ -7093,7 +7130,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 594
+          "line": 686
         }
       ],
       "plural": false,
@@ -7112,7 +7149,7 @@
       "locations": [
         {
           "file": "src/input/BindingEditorModel.cpp",
-          "line": 601
+          "line": 693
         }
       ],
       "plural": false,
@@ -7135,7 +7172,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1075
+          "line": 1124
         },
         {
           "file": "src/ui/qml/settings/LibrarySettingsPage.qml",
@@ -7422,7 +7459,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 481
+          "line": 483
         }
       ],
       "plural": false,
@@ -7439,7 +7476,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 488
+          "line": 490
         }
       ],
       "plural": false,
@@ -7456,7 +7493,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 494
+          "line": 496
         }
       ],
       "plural": false,
@@ -7473,7 +7510,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 287
+          "line": 289
         }
       ],
       "plural": false,
@@ -7490,7 +7527,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 281
+          "line": 283
         }
       ],
       "plural": false,
@@ -7507,7 +7544,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 271
+          "line": 273
         }
       ],
       "plural": false,
@@ -7524,7 +7561,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 393
+          "line": 395
         }
       ],
       "plural": false,
@@ -7541,7 +7578,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 456
+          "line": 458
         }
       ],
       "plural": false,
@@ -7560,7 +7597,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 74
+          "line": 76
         }
       ],
       "plural": false,
@@ -7577,7 +7614,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 68
+          "line": 70
         }
       ],
       "plural": false,
@@ -7594,7 +7631,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 86
+          "line": 88
         }
       ],
       "plural": false,
@@ -7611,7 +7648,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 80
+          "line": 82
         }
       ],
       "plural": false,
@@ -7628,7 +7665,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 62
+          "line": 64
         }
       ],
       "plural": false,
@@ -7645,7 +7682,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 303
+          "line": 305
         }
       ],
       "plural": false,
@@ -7662,7 +7699,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 388
+          "line": 390
         }
       ],
       "plural": false,
@@ -7679,7 +7716,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 437
+          "line": 439
         }
       ],
       "plural": false,
@@ -7696,7 +7733,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 296
+          "line": 298
         }
       ],
       "plural": false,
@@ -7713,7 +7750,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 338
+          "line": 340
         }
       ],
       "plural": false,
@@ -7730,7 +7767,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 539
+          "line": 541
         }
       ],
       "plural": false,
@@ -7749,7 +7786,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 534
+          "line": 536
         }
       ],
       "plural": false,
@@ -7766,7 +7803,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 703
+          "line": 705
         }
       ],
       "plural": false,
@@ -7802,7 +7839,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayActionMenu.qml",
-          "line": 55
+          "line": 64
         }
       ],
       "plural": false,
@@ -7819,7 +7856,7 @@
       "locations": [
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 131
+          "line": 136
         }
       ],
       "plural": false,
@@ -7938,7 +7975,7 @@
       "locations": [
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 48
+          "line": 47
         }
       ],
       "plural": false,
@@ -7977,7 +8014,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 118
+          "line": 124
         }
       ],
       "plural": false,
@@ -15612,6 +15649,316 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "e4465a7a62708098793af1d3a7289dd5c471ee2485c38cc7716a26f842c675d3"
+    },
+    {
+      "id": "gamehq.share.close",
+      "source": "Close",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 164
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ef942900eb24e0c15f68d8a5184d08d04a998f4344933fe7feb8db846f22fd78"
+    },
+    {
+      "id": "gamehq.share.error.capture_changed",
+      "source": "This capture changed on disk after you opened Share. Open Share again.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 207
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bd139d76fcdcefebc045ffb3ba1f4208f75472958f167ff7afcfe012c95411ac"
+    },
+    {
+      "id": "gamehq.share.error.capture_missing",
+      "source": "This capture is no longer on disk.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 204
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "589f1a3c25981b79ea2201bfaefc419c3e119836cf841e3a61851f2decc71c80"
+    },
+    {
+      "id": "gamehq.share.error.generic",
+      "source": "This capture could not be shared.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 213
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "fa2e67eaddbec06aa70d6b47fcb46b94bbbda5b8c4b4929bbe88884b098e9af3"
+    },
+    {
+      "id": "gamehq.share.error.not_connected",
+      "source": "Connect this account in Settings first.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 210
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "519839a8b9e171be4fd82282d527ef3334ad763e04a2f5a78aa0096f5260c0f4"
+    },
+    {
+      "id": "gamehq.share.loading",
+      "source": "Loading…",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 134
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ed6336bf05e33f8c776114810c5df49692f3a71ada90fbce25bcfabe4350520f"
+    },
+    {
+      "id": "gamehq.share.no_destinations",
+      "source": "No share destinations are available yet.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 119
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "118661dc8588bfb5fcdfa315bb04731a7f091b915155df9743bb6adf71ff3b87"
+    },
+    {
+      "id": "gamehq.share.no_targets",
+      "source": "No recipients found.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 137
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ad6b5c1aa8322845ad89fcfce0f3b376cdb529381ff9e3b90ca19f03c77cf67b"
+    },
+    {
+      "id": "gamehq.share.outcome.cancelled",
+      "source": "Sharing cancelled. Nothing was sent.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 192
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "81877d47e2243c13af024e67f0dd2a02a69e4ec06db176c4ba335e05d6172ff0"
+    },
+    {
+      "id": "gamehq.share.outcome.copied",
+      "source": "Copied. Paste it wherever you want to share it.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 189
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7ee262e98bd18923d3141db794c891392a64539e3cfac78e55633dcb0f7a01b0"
+    },
+    {
+      "id": "gamehq.share.outcome.handed_off",
+      "source": "Opened in %1. Finish sending there.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 186
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6846079c9310ac8744ef813bd4256fdccefb595d54a763ea5d023f6ec9cb898e"
+    },
+    {
+      "id": "gamehq.share.outcome.sent",
+      "source": "Sent.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 183
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "e3da632171819214144ae063742046c458116e3a183ee0bac3578e0fa29c18bf"
+    },
+    {
+      "id": "gamehq.share.outcome.unconfirmed",
+      "source": "GameHQ couldn't confirm whether it was sent. Check before sharing again.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 195
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "a230b50ed90fa0935474958ef395ad517ba756713ac9704a557218a5d81d6b41"
+    },
+    {
+      "id": "gamehq.share.provider.clipboard",
+      "source": "Copy to clipboard",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/providers/ClipboardShareProvider.cpp",
+          "line": 24
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "7879729e7ad7372f177e0e12a98aa1349021452ce9ab56d62ef63f254a5540bf"
+    },
+    {
+      "id": "gamehq.share.resend_confirm",
+      "source": "Share again",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 150
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "cfc131a6b874609f29bc6f4295b550a4367f886b7583af9d6c6d669abfce4c13"
+    },
+    {
+      "id": "gamehq.share.resend_question",
+      "source": "You already shared this capture here. Share it again?",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 147
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a32bbb2e55d5b2b9479e15805749a8b3388442d6a9cc1ed852b354d82bff103f"
+    },
+    {
+      "id": "gamehq.share.sending",
+      "source": "Sharing…",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 221
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "88e325e8b6489d45a1ccfeebb017f13b3e90a7155524e93b4d6817d1ed5cda6b"
+    },
+    {
+      "id": "gamehq.share.title",
+      "source": "Share",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 325
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134"
     },
     {
       "id": "gamehq.startup.portable_import.failed_title",

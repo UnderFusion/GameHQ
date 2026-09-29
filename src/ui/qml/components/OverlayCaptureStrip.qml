@@ -15,6 +15,7 @@ Rectangle {
     // hands the row to the host, which already owns delete/folder/favourite.
     signal deleteRequested(int index)
     signal openFolderRequested(int index)
+    signal shareRequested(int index)
     signal favoriteToggleRequested(int index)
 
     function decrementCurrentIndex() { strip.decrementCurrentIndex() }
@@ -131,6 +132,10 @@ Rectangle {
                 onRequestOpenFolder: {
                     strip.currentIndex = index
                     root.openFolderRequested(index)
+                }
+                onRequestShare: {
+                    strip.currentIndex = index
+                    root.shareRequested(index)
                 }
                 onToggleFavoriteRequested: {
                     strip.currentIndex = index

@@ -104,6 +104,8 @@
       <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="35"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="419"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
@@ -111,14 +113,14 @@
       <translation>取消</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1105"></location>
-      <location filename="src/ui/qml/Main.qml" line="1122"></location>
-      <location filename="src/ui/qml/Main.qml" line="1158"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="525"></location>
+      <location filename="src/ui/qml/Main.qml" line="1156"></location>
+      <location filename="src/ui/qml/Main.qml" line="1175"></location>
+      <location filename="src/ui/qml/Main.qml" line="1213"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="652"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
-      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="16"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="19"></location>
       <source>Delete</source>
       <translation>刪除</translation>
     </message>
@@ -294,6 +296,7 @@
     </message>
     <message id="gamehq.action.done">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="87"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="175"></location>
       <source>Done</source>
       <translation>完成</translation>
     </message>
@@ -647,7 +650,7 @@
       <translation>所選資料夾無效。</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="362"></location>
+      <location filename="src/ui/AppController.cpp" line="368"></location>
       <source>Choose a local folder.</source>
       <translation>請選擇一個本機資料夾。</translation>
     </message>
@@ -667,8 +670,8 @@
       <translation>GameHQ 無法儲存所選資料夾。</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="356"></location>
-      <location filename="src/ui/AppController.cpp" line="378"></location>
+      <location filename="src/ui/AppController.cpp" line="362"></location>
+      <location filename="src/ui/AppController.cpp" line="384"></location>
       <source>The capture type is invalid.</source>
       <translation>擷取類型無效。</translation>
     </message>
@@ -825,7 +828,7 @@
       <translation>無法計算 %1 的雜湊值。</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="200"></location>
+      <location filename="src/ui/AppController.cpp" line="206"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>可攜式設定檔只能由已安裝的 GameHQ 匯入。</translation>
     </message>
@@ -850,12 +853,12 @@
       <translation>無法刪除已復原的可攜式匯入記錄檔。</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="206"></location>
+      <location filename="src/ui/AppController.cpp" line="212"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>請選擇包含可攜式版 GameHQ 的本機資料夾。</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="215"></location>
+      <location filename="src/ui/AppController.cpp" line="221"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>所選資料夾不是 GameHQ 可攜式套件。</translation>
     </message>
@@ -885,12 +888,12 @@
       <translation>portable:/ 路徑超出了所選的套件根目錄。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="226"></location>
+      <location filename="src/ui/AppController.cpp" line="232"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ 無法識別自身的匯入處理程序。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="236"></location>
+      <location filename="src/ui/AppController.cpp" line="242"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ 無法啟動可攜式匯入處理程序。</translation>
     </message>
@@ -965,7 +968,7 @@
       <translation>已有另一個可攜式設定檔匯入正在執行。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="661"></location>
+      <location filename="src/app/App.cpp" line="663"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>由於擷取任務未能及時安全完成，更新已取消。</translation>
     </message>
@@ -1216,7 +1219,7 @@
       <translation>GameHQ 無法完成更新交易。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="636"></location>
+      <location filename="src/app/App.cpp" line="638"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ 無法開始更新維護：%1</translation>
     </message>
@@ -1337,33 +1340,40 @@
       <translation>新增資料夾…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1160"></location>
+      <location filename="src/ui/qml/Main.qml" line="1215"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>批次選擇</translation>
     </message>
+    <message id="gamehq.gallery.action.share">
+      <location filename="src/ui/qml/Main.qml" line="1209"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
+      <source>Share</source>
+      <translation>分享</translation>
+    </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1156"></location>
-      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="14"></location>
+      <location filename="src/ui/qml/Main.qml" line="1211"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>在資料夾中顯示</translation>
     </message>
     <message id="gamehq.gallery.capture_caption">
-      <location filename="src/ui/qml/components/CaptureTile.qml" line="180"></location>
-      <location filename="src/ui/qml/components/Lightbox.qml" line="216"></location>
+      <location filename="src/ui/qml/components/CaptureTile.qml" line="185"></location>
+      <location filename="src/ui/qml/components/Lightbox.qml" line="270"></location>
+      <location filename="src/ui/qml/components/OverlayViewer.qml" line="179"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1093"></location>
+      <location filename="src/ui/qml/Main.qml" line="1144"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 這將永久刪除該檔案。</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1103"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="523"></location>
+      <location filename="src/ui/qml/Main.qml" line="1154"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="650"></location>
       <source>Delete capture?</source>
       <translation>刪除該擷取內容？</translation>
     </message>
@@ -1377,7 +1387,7 @@ This cannot be undone.</source>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1120"></location>
+      <location filename="src/ui/qml/Main.qml" line="1173"></location>
       <source>Delete selected captures?</source>
       <translation>刪除選取的擷取內容？</translation>
     </message>
@@ -1429,27 +1439,27 @@ This cannot be undone.</source>
       <translation>%1 檢視器</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="344"></location>
+      <location filename="src/ui/AppController.cpp" line="350"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>檢查每個顯示器的目前 HDR 狀態。</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="330"></location>
+      <location filename="src/ui/AppController.cpp" line="336"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR 已啟用</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="335"></location>
+      <location filename="src/ui/AppController.cpp" line="341"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR 未啟用</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="324"></location>
+      <location filename="src/ui/AppController.cpp" line="330"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>圖形驅動程式未報告任何顯示器</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="318"></location>
+      <location filename="src/ui/AppController.cpp" line="324"></location>
       <source>Not checked yet</source>
       <translation>尚未檢查</translation>
     </message>
@@ -1596,8 +1606,8 @@ This cannot be undone.</source>
     </message>
     <message id="gamehq.help.gamepad.square_action">
       <location filename="src/ui/qml/HelpView.qml" line="222"></location>
-      <source>Action menu (Show in folder / Delete)</source>
-      <translation>操作選單（在資料夾中顯示 / 刪除）</translation>
+      <source>Action menu (Share / Show in folder / Delete)</source>
+      <translation>操作選單（分享 / 在資料夾中顯示 / 刪除）</translation>
     </message>
     <message id="gamehq.help.gamepad.switch_panel">
       <location filename="src/ui/qml/HelpView.qml" line="198"></location>
@@ -1771,7 +1781,7 @@ This cannot be undone.</source>
       <translation>單個按鍵</translation>
     </message>
     <message id="gamehq.input.assignment.replay_hold_hint">
-      <location filename="src/input/BindingEditorModel.cpp" line="1140"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="1240"></location>
       <source>Hold %1 for at least %2 ms to save a replay.</source>
       <translation>請按住 %1 至少 %2 毫秒以儲存重播。</translation>
     </message>
@@ -1862,7 +1872,7 @@ This cannot be undone.</source>
       <translation>轉換並新增</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press">
-      <location filename="src/input/BindingEditorModel.cpp" line="487"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="579"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1875,7 +1885,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 之後，%2 會在放開按鍵時啟用。</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press_with_wait">
-      <location filename="src/input/BindingEditorModel.cpp" line="479"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="571"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1893,12 +1903,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>要使這些指派相互相容嗎？</translation>
     </message>
     <message id="gamehq.input.conflict.already_assigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="463"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="555"></location>
       <source>%1 · %2 is already assigned to %3 in this context.</source>
       <translation>在此情境中，%1 · %2 已指派給 %3。</translation>
     </message>
     <message id="gamehq.input.conflict.press_timed">
-      <location filename="src/input/BindingEditorModel.cpp" line="456"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="548"></location>
       <source>%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.</source>
       <translation>%1 為 %2 使用「按下」手勢。在不改變按鈕按下行為的情況下，無法在此情境中將其與 %3 區分開。</translation>
     </message>
@@ -1939,57 +1949,57 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>按三下</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
-      <location filename="src/input/BindingEditorModel.cpp" line="306"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="398"></location>
       <source>Press a controller button for %1 · Slot %2 · %3</source>
       <translation>按下用於 %1 的控制器按鍵 · 欄位 %2 · %3</translation>
     </message>
     <message id="gamehq.input.model.capture.keyboard">
-      <location filename="src/input/BindingEditorModel.cpp" line="313"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="405"></location>
       <source>Press a key or shortcut for %1 · Slot %2</source>
       <translation>按下用於 %1 的按鍵或快速鍵 · 欄位 %2</translation>
     </message>
     <message id="gamehq.input.model.capture.mouse">
-      <location filename="src/input/BindingEditorModel.cpp" line="320"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="412"></location>
       <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
       <translation>按下用於 %1 的滑鼠中鍵、後退鍵或前進鍵 · 欄位 %2</translation>
     </message>
     <message id="gamehq.input.model.combination">
-      <location filename="src/input/BindingEditorModel.cpp" line="179"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="253"></location>
       <source>Combination</source>
       <translation>組合</translation>
     </message>
     <message id="gamehq.input.model.hold_default">
-      <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="264"></location>
       <source>Hold · Default</source>
       <translation>長按 · 預設</translation>
     </message>
     <message id="gamehq.input.model.hold_seconds">
-      <location filename="src/input/BindingEditorModel.cpp" line="195"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="269"></location>
       <source>Hold · %1 s</source>
       <translation>長按 · %1 秒</translation>
     </message>
     <message id="gamehq.input.model.no_action_fired">
-      <location filename="src/input/BindingEditorModel.cpp" line="1062"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="1162"></location>
       <source>No action fired yet</source>
       <translation>尚未觸發任何操作</translation>
     </message>
     <message id="gamehq.input.model.scope.gallery">
-      <location filename="src/input/BindingEditorModel.cpp" line="142"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="216"></location>
       <source>Gallery</source>
       <translation>圖庫</translation>
     </message>
     <message id="gamehq.input.model.scope.global">
-      <location filename="src/input/BindingEditorModel.cpp" line="134"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="208"></location>
       <source>Global</source>
       <translation>全域</translation>
     </message>
     <message id="gamehq.input.model.scope.overlay">
-      <location filename="src/input/BindingEditorModel.cpp" line="138"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="212"></location>
       <source>Overlay</source>
       <translation>遊戲內嵌介面</translation>
     </message>
     <message id="gamehq.input.model.scope.playback">
-      <location filename="src/input/BindingEditorModel.cpp" line="146"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="220"></location>
       <source>Playback</source>
       <translation>播放</translation>
     </message>
@@ -2009,8 +2019,8 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>已移除</translation>
     </message>
     <message id="gamehq.input.model.unassigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="166"></location>
-      <location filename="src/input/BindingEditorModel.cpp" line="247"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="240"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="340"></location>
       <source>Unassigned</source>
       <translation>未指派</translation>
     </message>
@@ -2020,7 +2030,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>由於此按鈕會啟動組合鍵，此操作最多等待 %1 毫秒。</translation>
     </message>
     <message id="gamehq.input.relation.context_override">
-      <location filename="src/input/BindingEditorModel.cpp" line="585"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="677"></location>
       <source>%1 replaces %2 while %3 is active. Both are saved.</source>
       <translation>%3 處於活動狀態時，%1 會替代 %2。兩個指派都會儲存。</translation>
     </message>
@@ -2030,17 +2040,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>同一按鍵也有需要更多按壓次數的指派，因此此動作最多等待 %1 毫秒。</translation>
     </message>
     <message id="gamehq.input.relation.redundant">
-      <location filename="src/input/BindingEditorModel.cpp" line="594"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="686"></location>
       <source>%1 already does the same thing here. The duplicate has no effect.</source>
       <translation>%1 已在此處執行相同操作。重複指派不會生效。</translation>
     </message>
     <message id="gamehq.input.relation.shared_gesture">
-      <location filename="src/input/BindingEditorModel.cpp" line="601"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="693"></location>
       <source>%1 is shared: %2 = %3, %4 = %5.</source>
       <translation>%1 已共享：%2 = %3，%4 = %5。</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1075"></location>
+      <location filename="src/ui/qml/Main.qml" line="1124"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>選擇要監看的資料夾</translation>
@@ -2121,107 +2131,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>支援 GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="481"></location>
+      <location filename="src/app/App.cpp" line="483"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>部分檔案無法刪除。它們可能正被其他程式使用。請關閉正在使用這些檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="488"></location>
+      <location filename="src/app/App.cpp" line="490"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>無法刪除該檔案。它可能正被其他程式使用。請關閉正在使用該檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="494"></location>
+      <location filename="src/app/App.cpp" line="496"></location>
       <source>Couldn't delete</source>
       <translation>無法刪除</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="287"></location>
+      <location filename="src/app/App.cpp" line="289"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>未加入媒體庫，磁碟上也沒有該檔案。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="281"></location>
+      <location filename="src/app/App.cpp" line="283"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>檔案位於您的擷取資料夾中，但無法加入媒體庫。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="271"></location>
+      <location filename="src/app/App.cpp" line="273"></location>
       <source>Saved to disk, not in library</source>
       <translation>已儲存至磁碟，未加入媒體庫</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="393"></location>
+      <location filename="src/app/App.cpp" line="395"></location>
       <source>Capture request received</source>
       <translation>已收到擷取請求</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="456"></location>
+      <location filename="src/app/App.cpp" line="458"></location>
       <source>Reason: %1</source>
       <translation>原因：%1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="74"></location>
+      <location filename="src/app/App.cpp" line="76"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>重播緩衝區發生錯誤，未儲存任何短片</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="68"></location>
+      <location filename="src/app/App.cpp" line="70"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>重播緩衝區正在收集畫面，請於幾秒後再試著儲存</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="86"></location>
+      <location filename="src/app/App.cpp" line="88"></location>
       <source>Replay buffer is empty</source>
       <translation>重播緩衝區是空的</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="80"></location>
+      <location filename="src/app/App.cpp" line="82"></location>
       <source>Replay buffer is not running</source>
       <translation>重播緩衝區未在執行</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="62"></location>
+      <location filename="src/app/App.cpp" line="64"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>重播緩衝區正在啟動，請於幾秒後再試著儲存</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="303"></location>
+      <location filename="src/app/App.cpp" line="305"></location>
       <source>Replay failed</source>
       <translation>重播失敗</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="388"></location>
+      <location filename="src/app/App.cpp" line="390"></location>
       <source>Replay save requested</source>
       <translation>已請求儲存重播</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="437"></location>
+      <location filename="src/app/App.cpp" line="439"></location>
       <source>Replay saved</source>
       <translation>重播已儲存</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="296"></location>
+      <location filename="src/app/App.cpp" line="298"></location>
       <source>Screenshot failed</source>
       <translation>螢幕截圖失敗</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="338"></location>
+      <location filename="src/app/App.cpp" line="340"></location>
       <source>Screenshot saved</source>
       <translation>螢幕截圖已儲存</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="539"></location>
+      <location filename="src/app/App.cpp" line="541"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 已使用預設設定啟動。系統保留了之前的設定檔案，因此沒有遺失任何內容。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="534"></location>
+      <location filename="src/app/App.cpp" line="536"></location>
       <source>Settings could not be read</source>
       <translation>無法讀取設定</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="703"></location>
+      <location filename="src/app/App.cpp" line="705"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>部分介面音效無法使用</translation>
     </message>
@@ -2231,12 +2241,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 通知</translation>
     </message>
     <message id="gamehq.overlay.capture_actions">
-      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="55"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="64"></location>
       <source>Capture actions</source>
       <translation>擷取操作</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="131"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="136"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>遊戲仍處於焦點狀態，可能會響應控制器輸入</translation>
     </message>
@@ -2271,7 +2281,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>左/右 — 拖動短片進度 | Enter — 播放/暫停 | Esc/Backspace — 返回擷取內容</translation>
     </message>
     <message id="gamehq.overlay.window_title">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="48"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="47"></location>
       <source>%1 Overlay</source>
       <translation>%1 遊戲內嵌介面</translation>
     </message>
@@ -2281,7 +2291,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="118"></location>
+      <location filename="src/ui/AppController.cpp" line="124"></location>
       <source>Release notes</source>
       <translation>版本資訊</translation>
     </message>
@@ -4511,6 +4521,96 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/themes/SynthwaveSkin.qml" line="6"></location>
       <source>Synthwave</source>
       <translation>Synthwave</translation>
+    </message>
+    <message id="gamehq.share.close">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="164"></location>
+      <source>Close</source>
+      <translation>關閉</translation>
+    </message>
+    <message id="gamehq.share.error.capture_changed">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="207"></location>
+      <source>This capture changed on disk after you opened Share. Open Share again.</source>
+      <translation>開啟分享後，該擷取內容在磁碟上已變更。請重新開啟分享。</translation>
+    </message>
+    <message id="gamehq.share.error.capture_missing">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="204"></location>
+      <source>This capture is no longer on disk.</source>
+      <translation>該擷取內容已不在磁碟上。</translation>
+    </message>
+    <message id="gamehq.share.error.generic">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
+      <source>This capture could not be shared.</source>
+      <translation>無法分享該擷取內容。</translation>
+    </message>
+    <message id="gamehq.share.error.not_connected">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
+      <source>Connect this account in Settings first.</source>
+      <translation>請先在設定中連結此帳戶。</translation>
+    </message>
+    <message id="gamehq.share.loading">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="134"></location>
+      <source>Loading…</source>
+      <translation>正在載入…</translation>
+    </message>
+    <message id="gamehq.share.no_destinations">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="119"></location>
+      <source>No share destinations are available yet.</source>
+      <translation>目前沒有可用的分享目標。</translation>
+    </message>
+    <message id="gamehq.share.no_targets">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="137"></location>
+      <source>No recipients found.</source>
+      <translation>找不到收件者。</translation>
+    </message>
+    <message id="gamehq.share.outcome.cancelled">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="192"></location>
+      <source>Sharing cancelled. Nothing was sent.</source>
+      <translation>已取消分享。未傳送任何內容。</translation>
+    </message>
+    <message id="gamehq.share.outcome.copied">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="189"></location>
+      <source>Copied. Paste it wherever you want to share it.</source>
+      <translation>已複製。請貼到您想分享的位置。</translation>
+    </message>
+    <message id="gamehq.share.outcome.handed_off">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="186"></location>
+      <source>Opened in %1. Finish sending there.</source>
+      <translation>已在 %1 中開啟。請在那裡完成傳送。</translation>
+    </message>
+    <message id="gamehq.share.outcome.sent">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="183"></location>
+      <source>Sent.</source>
+      <translation>已傳送。</translation>
+    </message>
+    <message id="gamehq.share.outcome.unconfirmed">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="195"></location>
+      <source>GameHQ couldn't confirm whether it was sent. Check before sharing again.</source>
+      <translation>GameHQ 無法確認是否已傳送。請先檢查，再重新分享。</translation>
+    </message>
+    <message id="gamehq.share.provider.clipboard">
+      <location filename="src/share/providers/ClipboardShareProvider.cpp" line="24"></location>
+      <source>Copy to clipboard</source>
+      <translation>複製到剪貼簿</translation>
+    </message>
+    <message id="gamehq.share.resend_confirm">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="150"></location>
+      <source>Share again</source>
+      <translation>再次分享</translation>
+    </message>
+    <message id="gamehq.share.resend_question">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="147"></location>
+      <source>You already shared this capture here. Share it again?</source>
+      <translation>您已在此處分享過該擷取內容。要再次分享嗎？</translation>
+    </message>
+    <message id="gamehq.share.sending">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="221"></location>
+      <source>Sharing…</source>
+      <translation>正在分享…</translation>
+    </message>
+    <message id="gamehq.share.title">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="325"></location>
+      <source>Share</source>
+      <translation>分享</translation>
     </message>
     <message id="gamehq.startup.portable_import.failed_title">
       <location filename="src/main.cpp" line="238"></location>

@@ -23,6 +23,8 @@ Item {
     property var bulkIsChecked: (filePath) => false
     property var deleteDialog
     property var bulkDeleteDialog
+    // True while a modal (Share) owns input: grid-local shortcuts stay inert.
+    property bool inputBlocked: false
     property alias currentIndex: galleryGrid.currentIndex
     property alias count: galleryGrid.count
     property alias cellWidth: galleryGrid.cellWidth
@@ -33,6 +35,7 @@ Item {
 
     signal captureActivated(int index)
     signal deleteRequested(int index, string gameName, string dateText)
+    signal shareRequested(int index)
     signal addFolderRequested()
     signal keyboardActivity()
     signal bulkToggleRequested(int index, bool extendRange)
@@ -130,6 +133,7 @@ Item {
                     app.toggleFavorite(index)
                 }
                 onRequestDelete: root.deleteRequested(index, model.gameName, model.dateText)
+                onRequestShare: root.shareRequested(index)
             }
         }
 
@@ -137,6 +141,10 @@ Item {
             root.keyboardActivity()
             if (input.handleKeyPressed(event.key, event.modifiers,
                                        event.isAutoRepeat)) {
+                event.accepted = true
+                return
+            }
+            if (root.inputBlocked) {
                 event.accepted = true
                 return
             }

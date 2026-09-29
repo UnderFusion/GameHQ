@@ -99,6 +99,8 @@
       <location filename="src/ui/qml/components/MappingPresetActionsDialog.qml" line="35"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="419"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
@@ -106,14 +108,14 @@
       <translation>Cancel</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1105"></location>
-      <location filename="src/ui/qml/Main.qml" line="1122"></location>
-      <location filename="src/ui/qml/Main.qml" line="1158"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="525"></location>
+      <location filename="src/ui/qml/Main.qml" line="1156"></location>
+      <location filename="src/ui/qml/Main.qml" line="1175"></location>
+      <location filename="src/ui/qml/Main.qml" line="1213"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="652"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
-      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="16"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="19"></location>
       <source>Delete</source>
       <translation>Delete</translation>
     </message>
@@ -289,6 +291,7 @@
     </message>
     <message id="gamehq.action.done">
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="87"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="175"></location>
       <source>Done</source>
       <translation>Done</translation>
     </message>
@@ -639,7 +642,7 @@
       <translation>The selected folder is invalid.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="362"></location>
+      <location filename="src/ui/AppController.cpp" line="368"></location>
       <source>Choose a local folder.</source>
       <translation>Choose a local folder.</translation>
     </message>
@@ -659,8 +662,8 @@
       <translation>GameHQ could not save the selected folder.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="356"></location>
-      <location filename="src/ui/AppController.cpp" line="378"></location>
+      <location filename="src/ui/AppController.cpp" line="362"></location>
+      <location filename="src/ui/AppController.cpp" line="384"></location>
       <source>The capture type is invalid.</source>
       <translation>The capture type is invalid.</translation>
     </message>
@@ -817,7 +820,7 @@
       <translation>Cannot hash %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="200"></location>
+      <location filename="src/ui/AppController.cpp" line="206"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>Portable profiles can only be imported by an installed copy of GameHQ.</translation>
     </message>
@@ -842,12 +845,12 @@
       <translation>The recovered portable-import journal could not be removed.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="206"></location>
+      <location filename="src/ui/AppController.cpp" line="212"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>Select a local folder containing portable GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="215"></location>
+      <location filename="src/ui/AppController.cpp" line="221"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>The selected folder is not a GameHQ portable package.</translation>
     </message>
@@ -877,12 +880,12 @@
       <translation>A portable:/ path escapes the selected package root.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="226"></location>
+      <location filename="src/ui/AppController.cpp" line="232"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ could not identify its own process for the import.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="236"></location>
+      <location filename="src/ui/AppController.cpp" line="242"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ could not start the portable import process.</translation>
     </message>
@@ -957,7 +960,7 @@
       <translation>Another portable-profile import is already running.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="661"></location>
+      <location filename="src/app/App.cpp" line="663"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>The update was canceled because capture work did not finish safely in time.</translation>
     </message>
@@ -1208,7 +1211,7 @@
       <translation>GameHQ could not publish the update transaction.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="636"></location>
+      <location filename="src/app/App.cpp" line="638"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ could not begin update maintenance: %1</translation>
     </message>
@@ -1329,33 +1332,40 @@
       <translation>Add folder…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1160"></location>
+      <location filename="src/ui/qml/Main.qml" line="1215"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Bulk select</translation>
     </message>
+    <message id="gamehq.gallery.action.share">
+      <location filename="src/ui/qml/Main.qml" line="1209"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
+      <source>Share</source>
+      <translation>Share</translation>
+    </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1156"></location>
-      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="14"></location>
+      <location filename="src/ui/qml/Main.qml" line="1211"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Show in folder</translation>
     </message>
     <message id="gamehq.gallery.capture_caption">
-      <location filename="src/ui/qml/components/CaptureTile.qml" line="180"></location>
-      <location filename="src/ui/qml/components/Lightbox.qml" line="216"></location>
+      <location filename="src/ui/qml/components/CaptureTile.qml" line="185"></location>
+      <location filename="src/ui/qml/components/Lightbox.qml" line="270"></location>
+      <location filename="src/ui/qml/components/OverlayViewer.qml" line="179"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1093"></location>
+      <location filename="src/ui/qml/Main.qml" line="1144"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 This permanently deletes the file.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1103"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="523"></location>
+      <location filename="src/ui/qml/Main.qml" line="1154"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="650"></location>
       <source>Delete capture?</source>
       <translation>Delete capture?</translation>
     </message>
@@ -1371,7 +1381,7 @@ This cannot be undone.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1120"></location>
+      <location filename="src/ui/qml/Main.qml" line="1173"></location>
       <source>Delete selected captures?</source>
       <translation>Delete selected captures?</translation>
     </message>
@@ -1424,27 +1434,27 @@ This cannot be undone.</numerusform>
       <translation>%1 Viewer</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="344"></location>
+      <location filename="src/ui/AppController.cpp" line="350"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Check the current HDR state of every display.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="330"></location>
+      <location filename="src/ui/AppController.cpp" line="336"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR is active</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="335"></location>
+      <location filename="src/ui/AppController.cpp" line="341"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR is inactive</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="324"></location>
+      <location filename="src/ui/AppController.cpp" line="330"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>No displays reported by the graphics driver</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="318"></location>
+      <location filename="src/ui/AppController.cpp" line="324"></location>
       <source>Not checked yet</source>
       <translation>Not checked yet</translation>
     </message>
@@ -1591,8 +1601,8 @@ This cannot be undone.</numerusform>
     </message>
     <message id="gamehq.help.gamepad.square_action">
       <location filename="src/ui/qml/HelpView.qml" line="222"></location>
-      <source>Action menu (Show in folder / Delete)</source>
-      <translation>Action menu (Show in folder / Delete)</translation>
+      <source>Action menu (Share / Show in folder / Delete)</source>
+      <translation>Action menu (Share / Show in folder / Delete)</translation>
     </message>
     <message id="gamehq.help.gamepad.switch_panel">
       <location filename="src/ui/qml/HelpView.qml" line="198"></location>
@@ -1766,7 +1776,7 @@ This cannot be undone.</numerusform>
       <translation>Single button</translation>
     </message>
     <message id="gamehq.input.assignment.replay_hold_hint">
-      <location filename="src/input/BindingEditorModel.cpp" line="1140"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="1240"></location>
       <source>Hold %1 for at least %2 ms to save a replay.</source>
       <translation>Hold %1 for at least %2 ms to save a replay.</translation>
     </message>
@@ -1857,7 +1867,7 @@ This cannot be undone.</numerusform>
       <translation>Convert &amp; add</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press">
-      <location filename="src/input/BindingEditorModel.cpp" line="487"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="579"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1870,7 +1880,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
 %2 will then activate after the button is released.</translation>
     </message>
     <message id="gamehq.input.compatibility.convert_press_with_wait">
-      <location filename="src/input/BindingEditorModel.cpp" line="479"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="571"></location>
       <source>%1 currently activates %2 immediately when the button is pressed.
 
 To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
@@ -1888,12 +1898,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Make these assignments compatible?</translation>
     </message>
     <message id="gamehq.input.conflict.already_assigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="463"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="555"></location>
       <source>%1 · %2 is already assigned to %3 in this context.</source>
       <translation>%1 · %2 is already assigned to %3 in this context.</translation>
     </message>
     <message id="gamehq.input.conflict.press_timed">
-      <location filename="src/input/BindingEditorModel.cpp" line="456"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="548"></location>
       <source>%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.</source>
       <translation>%1 uses Press for %2. It cannot be distinguished from %3 in this context without changing its button-down behavior.</translation>
     </message>
@@ -1934,57 +1944,57 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Triple tap</translation>
     </message>
     <message id="gamehq.input.model.capture.controller">
-      <location filename="src/input/BindingEditorModel.cpp" line="306"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="398"></location>
       <source>Press a controller button for %1 · Slot %2 · %3</source>
       <translation>Press a controller button for %1 · Slot %2 · %3</translation>
     </message>
     <message id="gamehq.input.model.capture.keyboard">
-      <location filename="src/input/BindingEditorModel.cpp" line="313"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="405"></location>
       <source>Press a key or shortcut for %1 · Slot %2</source>
       <translation>Press a key or shortcut for %1 · Slot %2</translation>
     </message>
     <message id="gamehq.input.model.capture.mouse">
-      <location filename="src/input/BindingEditorModel.cpp" line="320"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="412"></location>
       <source>Press the middle, Back, or Forward mouse button for %1 · Slot %2</source>
       <translation>Press the middle, Back, or Forward mouse button for %1 · Slot %2</translation>
     </message>
     <message id="gamehq.input.model.combination">
-      <location filename="src/input/BindingEditorModel.cpp" line="179"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="253"></location>
       <source>Combination</source>
       <translation>Combination</translation>
     </message>
     <message id="gamehq.input.model.hold_default">
-      <location filename="src/input/BindingEditorModel.cpp" line="190"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="264"></location>
       <source>Hold · Default</source>
       <translation>Hold · Default</translation>
     </message>
     <message id="gamehq.input.model.hold_seconds">
-      <location filename="src/input/BindingEditorModel.cpp" line="195"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="269"></location>
       <source>Hold · %1 s</source>
       <translation>Hold · %1 s</translation>
     </message>
     <message id="gamehq.input.model.no_action_fired">
-      <location filename="src/input/BindingEditorModel.cpp" line="1062"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="1162"></location>
       <source>No action fired yet</source>
       <translation>No action fired yet</translation>
     </message>
     <message id="gamehq.input.model.scope.gallery">
-      <location filename="src/input/BindingEditorModel.cpp" line="142"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="216"></location>
       <source>Gallery</source>
       <translation>Gallery</translation>
     </message>
     <message id="gamehq.input.model.scope.global">
-      <location filename="src/input/BindingEditorModel.cpp" line="134"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="208"></location>
       <source>Global</source>
       <translation>Global</translation>
     </message>
     <message id="gamehq.input.model.scope.overlay">
-      <location filename="src/input/BindingEditorModel.cpp" line="138"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="212"></location>
       <source>Overlay</source>
       <translation>Overlay</translation>
     </message>
     <message id="gamehq.input.model.scope.playback">
-      <location filename="src/input/BindingEditorModel.cpp" line="146"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="220"></location>
       <source>Playback</source>
       <translation>Playback</translation>
     </message>
@@ -2004,8 +2014,8 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Removed</translation>
     </message>
     <message id="gamehq.input.model.unassigned">
-      <location filename="src/input/BindingEditorModel.cpp" line="166"></location>
-      <location filename="src/input/BindingEditorModel.cpp" line="247"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="240"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="340"></location>
       <source>Unassigned</source>
       <translation>Unassigned</translation>
     </message>
@@ -2015,7 +2025,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>This action waits up to %1 ms because this button starts a combination.</translation>
     </message>
     <message id="gamehq.input.relation.context_override">
-      <location filename="src/input/BindingEditorModel.cpp" line="585"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="677"></location>
       <source>%1 replaces %2 while %3 is active. Both are saved.</source>
       <translation>%1 replaces %2 while %3 is active. Both are saved.</translation>
     </message>
@@ -2025,17 +2035,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>This action waits up to %1 ms because the same button also has an assignment that needs more taps.</translation>
     </message>
     <message id="gamehq.input.relation.redundant">
-      <location filename="src/input/BindingEditorModel.cpp" line="594"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="686"></location>
       <source>%1 already does the same thing here. The duplicate has no effect.</source>
       <translation>%1 already does the same thing here. The duplicate has no effect.</translation>
     </message>
     <message id="gamehq.input.relation.shared_gesture">
-      <location filename="src/input/BindingEditorModel.cpp" line="601"></location>
+      <location filename="src/input/BindingEditorModel.cpp" line="693"></location>
       <source>%1 is shared: %2 = %3, %4 = %5.</source>
       <translation>%1 is shared: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1075"></location>
+      <location filename="src/ui/qml/Main.qml" line="1124"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Choose a folder to watch</translation>
@@ -2116,107 +2126,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Support GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="481"></location>
+      <location filename="src/app/App.cpp" line="483"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="488"></location>
+      <location filename="src/app/App.cpp" line="490"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="494"></location>
+      <location filename="src/app/App.cpp" line="496"></location>
       <source>Couldn't delete</source>
       <translation>Couldn't delete</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="287"></location>
+      <location filename="src/app/App.cpp" line="289"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>It was not added to the library and the file is not on disk.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="281"></location>
+      <location filename="src/app/App.cpp" line="283"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>The file is in your captures folder, but it could not be added to the library.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="271"></location>
+      <location filename="src/app/App.cpp" line="273"></location>
       <source>Saved to disk, not in library</source>
       <translation>Saved to disk, not in library</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="393"></location>
+      <location filename="src/app/App.cpp" line="395"></location>
       <source>Capture request received</source>
       <translation>Capture request received</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="456"></location>
+      <location filename="src/app/App.cpp" line="458"></location>
       <source>Reason: %1</source>
       <translation>Reason: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="74"></location>
+      <location filename="src/app/App.cpp" line="76"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>Replay buffer failed; no clip was saved</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="68"></location>
+      <location filename="src/app/App.cpp" line="70"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>Replay buffer is collecting footage; try saving again in a few seconds</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="86"></location>
+      <location filename="src/app/App.cpp" line="88"></location>
       <source>Replay buffer is empty</source>
       <translation>Replay buffer is empty</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="80"></location>
+      <location filename="src/app/App.cpp" line="82"></location>
       <source>Replay buffer is not running</source>
       <translation>Replay buffer is not running</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="62"></location>
+      <location filename="src/app/App.cpp" line="64"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>Replay buffer is starting; try saving again in a few seconds</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="303"></location>
+      <location filename="src/app/App.cpp" line="305"></location>
       <source>Replay failed</source>
       <translation>Replay failed</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="388"></location>
+      <location filename="src/app/App.cpp" line="390"></location>
       <source>Replay save requested</source>
       <translation>Replay save requested</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="437"></location>
+      <location filename="src/app/App.cpp" line="439"></location>
       <source>Replay saved</source>
       <translation>Replay saved</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="296"></location>
+      <location filename="src/app/App.cpp" line="298"></location>
       <source>Screenshot failed</source>
       <translation>Screenshot failed</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="338"></location>
+      <location filename="src/app/App.cpp" line="340"></location>
       <source>Screenshot saved</source>
       <translation>Screenshot saved</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="539"></location>
+      <location filename="src/app/App.cpp" line="541"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="534"></location>
+      <location filename="src/app/App.cpp" line="536"></location>
       <source>Settings could not be read</source>
       <translation>Settings could not be read</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="703"></location>
+      <location filename="src/app/App.cpp" line="705"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Some interface sounds are unavailable</translation>
     </message>
@@ -2226,12 +2236,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 Notifications</translation>
     </message>
     <message id="gamehq.overlay.capture_actions">
-      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="55"></location>
+      <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="64"></location>
       <source>Capture actions</source>
       <translation>Capture actions</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="131"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="136"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>The game still has focus and may react to controller input</translation>
     </message>
@@ -2266,7 +2276,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Left/Right — scrub clip | Enter — play/pause | Esc/Backspace — back to captures</translation>
     </message>
     <message id="gamehq.overlay.window_title">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="48"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="47"></location>
       <source>%1 Overlay</source>
       <translation>%1 Overlay</translation>
     </message>
@@ -4500,6 +4510,96 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Synthwave</source>
       <translation>Synthwave</translation>
     </message>
+    <message id="gamehq.share.close">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="164"></location>
+      <source>Close</source>
+      <translation>Close</translation>
+    </message>
+    <message id="gamehq.share.error.capture_changed">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="207"></location>
+      <source>This capture changed on disk after you opened Share. Open Share again.</source>
+      <translation>This capture changed on disk after you opened Share. Open Share again.</translation>
+    </message>
+    <message id="gamehq.share.error.capture_missing">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="204"></location>
+      <source>This capture is no longer on disk.</source>
+      <translation>This capture is no longer on disk.</translation>
+    </message>
+    <message id="gamehq.share.error.generic">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
+      <source>This capture could not be shared.</source>
+      <translation>This capture could not be shared.</translation>
+    </message>
+    <message id="gamehq.share.error.not_connected">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
+      <source>Connect this account in Settings first.</source>
+      <translation>Connect this account in Settings first.</translation>
+    </message>
+    <message id="gamehq.share.loading">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="134"></location>
+      <source>Loading…</source>
+      <translation>Loading…</translation>
+    </message>
+    <message id="gamehq.share.no_destinations">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="119"></location>
+      <source>No share destinations are available yet.</source>
+      <translation>No share destinations are available yet.</translation>
+    </message>
+    <message id="gamehq.share.no_targets">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="137"></location>
+      <source>No recipients found.</source>
+      <translation>No recipients found.</translation>
+    </message>
+    <message id="gamehq.share.outcome.cancelled">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="192"></location>
+      <source>Sharing cancelled. Nothing was sent.</source>
+      <translation>Sharing cancelled. Nothing was sent.</translation>
+    </message>
+    <message id="gamehq.share.outcome.copied">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="189"></location>
+      <source>Copied. Paste it wherever you want to share it.</source>
+      <translation>Copied. Paste it wherever you want to share it.</translation>
+    </message>
+    <message id="gamehq.share.outcome.handed_off">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="186"></location>
+      <source>Opened in %1. Finish sending there.</source>
+      <translation>Opened in %1. Finish sending there.</translation>
+    </message>
+    <message id="gamehq.share.outcome.sent">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="183"></location>
+      <source>Sent.</source>
+      <translation>Sent.</translation>
+    </message>
+    <message id="gamehq.share.outcome.unconfirmed">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="195"></location>
+      <source>GameHQ couldn't confirm whether it was sent. Check before sharing again.</source>
+      <translation>GameHQ couldn't confirm whether it was sent. Check before sharing again.</translation>
+    </message>
+    <message id="gamehq.share.provider.clipboard">
+      <location filename="src/share/providers/ClipboardShareProvider.cpp" line="24"></location>
+      <source>Copy to clipboard</source>
+      <translation>Copy to clipboard</translation>
+    </message>
+    <message id="gamehq.share.resend_confirm">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="150"></location>
+      <source>Share again</source>
+      <translation>Share again</translation>
+    </message>
+    <message id="gamehq.share.resend_question">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="147"></location>
+      <source>You already shared this capture here. Share it again?</source>
+      <translation>You already shared this capture here. Share it again?</translation>
+    </message>
+    <message id="gamehq.share.sending">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="221"></location>
+      <source>Sharing…</source>
+      <translation>Sharing…</translation>
+    </message>
+    <message id="gamehq.share.title">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="325"></location>
+      <source>Share</source>
+      <translation>Share</translation>
+    </message>
     <message id="gamehq.startup.portable_import.failed_title">
       <location filename="src/main.cpp" line="238"></location>
       <source>Portable import failed</source>
@@ -4964,7 +5064,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Screenshot</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="118"></location>
+      <location filename="src/ui/AppController.cpp" line="124"></location>
       <source>Release notes</source>
       <translation>Release notes</translation>
     </message>
