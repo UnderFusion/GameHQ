@@ -11,6 +11,9 @@ crash upload, media upload, or GameHQ-operated server.
 | Update download | Explicit user action; HTTPS release asset URL returned by GitHub | Normal HTTPS/IP metadata and requested artifact path | Cancel in UI; staged downloads remain under the owned `.update/` root and are bounded/verified. |
 | Project links | Explicit button; visible GitHub repository, releases, issues, license, security or policy URL | Browser performs the request under its own policy | No background request by GameHQ. |
 | Playnite integration | Local plugin connection to `GameHQ.Local.v1` | Local game IDs, titles, executable paths and lifecycle state | Same-user local named pipe only; disabling the plugin stops messages. |
+| Share to Discord channel | Explicit Share of one capture to a channel the user added; `discord.com` / `discordapp.com` webhook URL the user pasted | The chosen screenshot or clip as a multipart upload, GameHQ user-agent, normal HTTPS/IP metadata | Opt-in per channel (Settings > Capture > Share destinations); remove a channel or use Disconnect to delete the link from Windows Credential Manager. Nothing is sent unless the user shares. |
+| Share hand-off (Telegram, Discord Desktop, clipboard) | Explicit Share; installed client on this PC | The selected capture path or file is passed to that local app | No network transfer by GameHQ; GameHQ never signs in to those services. |
+| Share add-ons | Optional; other programs connect to `GameHQ.Share.Provider.v1` | Target lists they send; the path and details of a capture only when the user shares to that add-on | Off by default (Settings > Capture > Share add-ons, restart). Same-user local pipe only; see [share-provider-api-v1.md](share-provider-api-v1.md). |
 | HidHide repair | Explicit elevated action | Executable path to the local HidHide command-line tool | No network transfer; user sees the elevation prompt. |
 
 Logs may contain executable names, game/window titles, device information and

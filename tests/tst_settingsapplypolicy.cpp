@@ -41,6 +41,7 @@ void SettingsApplyPolicyTest::liveKeysAreExplicit()
         ConfigKeys::CaptureHideBorder,
         ConfigKeys::SoundsCaptureVolume,
         ConfigKeys::NotificationsEnabled,
+        ConfigKeys::ShareExternalProviders,
     };
     for (const QString& key : keys)
         QVERIFY2(!SettingsApplyPolicy::requiresReplayBufferRestart(key), qPrintable(key));

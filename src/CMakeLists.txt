@@ -122,6 +122,9 @@ qt_add_executable(GameHQ
     share/providers/DiscordDesktopProvider.cpp share/providers/DiscordDesktopProvider.h
     share/providers/DiscordWebhookProvider.cpp share/providers/DiscordWebhookProvider.h
     share/providers/DiscordWebhookStore.cpp share/providers/DiscordWebhookStore.h
+    share/external/ExternalProviderProtocol.cpp share/external/ExternalProviderProtocol.h
+    share/external/ExternalProvider.cpp share/external/ExternalProvider.h
+    share/external/ExternalProviderHost.cpp share/external/ExternalProviderHost.h
     share/providers/DiscordWebhookUpload.cpp share/providers/DiscordWebhookUpload.h
     storage/CaptureDatabase.cpp storage/CaptureDatabase.h
     storage/CaptureQueries.cpp storage/CaptureQueries.h

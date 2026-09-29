@@ -970,7 +970,7 @@
       <translation>已有另一個可攜式設定檔匯入正在執行。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="666"></location>
+      <location filename="src/app/App.cpp" line="667"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>由於擷取任務未能及時安全完成，更新已取消。</translation>
     </message>
@@ -1221,7 +1221,7 @@
       <translation>GameHQ 無法完成更新交易。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="641"></location>
+      <location filename="src/app/App.cpp" line="642"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ 無法開始更新維護：%1</translation>
     </message>
@@ -2133,107 +2133,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>支援 GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="486"></location>
+      <location filename="src/app/App.cpp" line="487"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>部分檔案無法刪除。它們可能正被其他程式使用。請關閉正在使用這些檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="493"></location>
+      <location filename="src/app/App.cpp" line="494"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>無法刪除該檔案。它可能正被其他程式使用。請關閉正在使用該檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="499"></location>
+      <location filename="src/app/App.cpp" line="500"></location>
       <source>Couldn't delete</source>
       <translation>無法刪除</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="292"></location>
+      <location filename="src/app/App.cpp" line="293"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>未加入媒體庫，磁碟上也沒有該檔案。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="286"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>檔案位於您的擷取資料夾中，但無法加入媒體庫。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="276"></location>
+      <location filename="src/app/App.cpp" line="277"></location>
       <source>Saved to disk, not in library</source>
       <translation>已儲存至磁碟，未加入媒體庫</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="398"></location>
+      <location filename="src/app/App.cpp" line="399"></location>
       <source>Capture request received</source>
       <translation>已收到擷取請求</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="461"></location>
+      <location filename="src/app/App.cpp" line="462"></location>
       <source>Reason: %1</source>
       <translation>原因：%1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="79"></location>
+      <location filename="src/app/App.cpp" line="80"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>重播緩衝區發生錯誤，未儲存任何短片</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="73"></location>
+      <location filename="src/app/App.cpp" line="74"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>重播緩衝區正在收集畫面，請於幾秒後再試著儲存</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="91"></location>
+      <location filename="src/app/App.cpp" line="92"></location>
       <source>Replay buffer is empty</source>
       <translation>重播緩衝區是空的</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="85"></location>
+      <location filename="src/app/App.cpp" line="86"></location>
       <source>Replay buffer is not running</source>
       <translation>重播緩衝區未在執行</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="67"></location>
+      <location filename="src/app/App.cpp" line="68"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>重播緩衝區正在啟動，請於幾秒後再試著儲存</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="308"></location>
+      <location filename="src/app/App.cpp" line="309"></location>
       <source>Replay failed</source>
       <translation>重播失敗</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="393"></location>
+      <location filename="src/app/App.cpp" line="394"></location>
       <source>Replay save requested</source>
       <translation>已請求儲存重播</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="442"></location>
+      <location filename="src/app/App.cpp" line="443"></location>
       <source>Replay saved</source>
       <translation>重播已儲存</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="301"></location>
+      <location filename="src/app/App.cpp" line="302"></location>
       <source>Screenshot failed</source>
       <translation>螢幕截圖失敗</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="343"></location>
+      <location filename="src/app/App.cpp" line="344"></location>
       <source>Screenshot saved</source>
       <translation>螢幕截圖已儲存</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="544"></location>
+      <location filename="src/app/App.cpp" line="545"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 已使用預設設定啟動。系統保留了之前的設定檔案，因此沒有遺失任何內容。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="539"></location>
+      <location filename="src/app/App.cpp" line="540"></location>
       <source>Settings could not be read</source>
       <translation>無法讀取設定</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="708"></location>
+      <location filename="src/app/App.cpp" line="709"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>部分介面音效無法使用</translation>
     </message>
@@ -2801,12 +2801,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>允許清單中的遊戲</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="206"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="222"></location>
       <source>Choose the clips folder</source>
       <translation>選擇短片資料夾</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="199"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="215"></location>
       <source>Choose the screenshots folder</source>
       <translation>選擇截圖資料夾</translation>
     </message>
@@ -4525,6 +4525,21 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Synthwave</source>
       <translation>Synthwave</translation>
     </message>
+    <message id="gamehq.share.addons.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="203"></location>
+      <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
+      <translation>開啟後，在此電腦上以您的身分執行的其他程式可以提供分享目標，並接收您選擇分享的擷取內容。預設為關閉。重新啟動 GameHQ 後生效。</translation>
+    </message>
+    <message id="gamehq.share.addons.label">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="201"></location>
+      <source>Allow add-ons from other programs</source>
+      <translation>允許來自其他程式的附加元件</translation>
+    </message>
+    <message id="gamehq.share.addons.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="198"></location>
+      <source>Share add-ons</source>
+      <translation>分享附加元件</translation>
+    </message>
     <message id="gamehq.share.close">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="164"></location>
       <source>Close</source>
@@ -4594,6 +4609,16 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/components/ShareDialog.qml" line="223"></location>
       <source>That channel's webhook no longer works. Remove it in Settings and add it again.</source>
       <translation>該頻道的 Webhook 已失效。請在設定中將其移除後重新新增。</translation>
+    </message>
+    <message id="gamehq.share.external.not_running">
+      <location filename="src/share/external/ExternalProvider.cpp" line="89"></location>
+      <source>This add-on is not running.</source>
+      <translation>此附加元件未執行。</translation>
+    </message>
+    <message id="gamehq.share.external.privacy">
+      <location filename="src/share/external/ExternalProvider.cpp" line="99"></location>
+      <source>Add-on from another program on this PC. It receives the capture you choose to share.</source>
+      <translation>來自此電腦上其他程式的附加元件。它會收到您選擇分享的擷取內容。</translation>
     </message>
     <message id="gamehq.share.loading">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="134"></location>

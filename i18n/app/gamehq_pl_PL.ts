@@ -974,7 +974,7 @@
       <translation>Trwa już inny import profilu przenośnego.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="666"></location>
+      <location filename="src/app/App.cpp" line="667"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Aktualizacja została anulowana, ponieważ operacje przechwytywania nie zakończyły się bezpiecznie na czas.</translation>
     </message>
@@ -1225,7 +1225,7 @@
       <translation>GameHQ nie mógł zapisać transakcji aktualizacji.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="641"></location>
+      <location filename="src/app/App.cpp" line="642"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ nie mógł rozpocząć przygotowania aktualizacji: %1</translation>
     </message>
@@ -2143,107 +2143,107 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
       <translation>Wesprzyj GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="486"></location>
+      <location filename="src/app/App.cpp" line="487"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Nie udało się usunąć niektórych plików. Być może są używane przez inne programy. Zamknij programy, które z nich korzystają, i spróbuj ponownie.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="493"></location>
+      <location filename="src/app/App.cpp" line="494"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Nie udało się usunąć pliku. Być może jest używany przez inny program. Zamknij program, który z niego korzysta, i spróbuj ponownie.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="499"></location>
+      <location filename="src/app/App.cpp" line="500"></location>
       <source>Couldn't delete</source>
       <translation>Nie udało się usunąć</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="292"></location>
+      <location filename="src/app/App.cpp" line="293"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>Nie dodano jej do biblioteki, a pliku nie ma na dysku.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="286"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>Plik znajduje się w folderze przechwytywania, ale nie udało się dodać go do biblioteki.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="276"></location>
+      <location filename="src/app/App.cpp" line="277"></location>
       <source>Saved to disk, not in library</source>
       <translation>Zapisano na dysku, brak w bibliotece</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="398"></location>
+      <location filename="src/app/App.cpp" line="399"></location>
       <source>Capture request received</source>
       <translation>Otrzymano żądanie przechwycenia</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="461"></location>
+      <location filename="src/app/App.cpp" line="462"></location>
       <source>Reason: %1</source>
       <translation>Powód: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="79"></location>
+      <location filename="src/app/App.cpp" line="80"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>Błąd bufora powtórek; nie zapisano klipu</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="73"></location>
+      <location filename="src/app/App.cpp" line="74"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>Bufor powtórek zbiera materiał; spróbuj zapisać ponownie za kilka sekund</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="91"></location>
+      <location filename="src/app/App.cpp" line="92"></location>
       <source>Replay buffer is empty</source>
       <translation>Bufor powtórek jest pusty</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="85"></location>
+      <location filename="src/app/App.cpp" line="86"></location>
       <source>Replay buffer is not running</source>
       <translation>Bufor powtórek nie działa</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="67"></location>
+      <location filename="src/app/App.cpp" line="68"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>Bufor powtórek się uruchamia; spróbuj zapisać ponownie za kilka sekund</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="308"></location>
+      <location filename="src/app/App.cpp" line="309"></location>
       <source>Replay failed</source>
       <translation>Nie udało się zapisać powtórki</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="393"></location>
+      <location filename="src/app/App.cpp" line="394"></location>
       <source>Replay save requested</source>
       <translation>Zażądano zapisania powtórki</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="442"></location>
+      <location filename="src/app/App.cpp" line="443"></location>
       <source>Replay saved</source>
       <translation>Zapisano powtórkę</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="301"></location>
+      <location filename="src/app/App.cpp" line="302"></location>
       <source>Screenshot failed</source>
       <translation>Nie udało się zapisać zrzutu ekranu</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="343"></location>
+      <location filename="src/app/App.cpp" line="344"></location>
       <source>Screenshot saved</source>
       <translation>Zapisano zrzut ekranu</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="544"></location>
+      <location filename="src/app/App.cpp" line="545"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ uruchomiono z ustawieniami domyślnymi. Twój poprzedni plik ustawień został zachowany, więc nic nie zostało utracone.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="539"></location>
+      <location filename="src/app/App.cpp" line="540"></location>
       <source>Settings could not be read</source>
       <translation>Nie można odczytać ustawień</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="708"></location>
+      <location filename="src/app/App.cpp" line="709"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Niektóre dźwięki interfejsu są niedostępne</translation>
     </message>
@@ -2811,12 +2811,12 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
       <translation>Gry z listy dozwolonych</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="206"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="222"></location>
       <source>Choose the clips folder</source>
       <translation>Wybierz folder z klipami</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="199"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="215"></location>
       <source>Choose the screenshots folder</source>
       <translation>Wybierz folder ze zrzutami ekranu</translation>
     </message>
@@ -4539,6 +4539,21 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
       <source>Synthwave</source>
       <translation>Synthwave</translation>
     </message>
+    <message id="gamehq.share.addons.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="203"></location>
+      <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
+      <translation>Inne programy działające na tym komputerze na Twoim koncie będą mogły wtedy oferować miejsca udostępniania i otrzymywać materiały wybrane do udostępnienia. Domyślnie wyłączone. Uruchom GameHQ ponownie, aby zastosować.</translation>
+    </message>
+    <message id="gamehq.share.addons.label">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="201"></location>
+      <source>Allow add-ons from other programs</source>
+      <translation>Zezwalaj na dodatki innych programów</translation>
+    </message>
+    <message id="gamehq.share.addons.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="198"></location>
+      <source>Share add-ons</source>
+      <translation>Dodatki do udostępniania</translation>
+    </message>
     <message id="gamehq.share.close">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="164"></location>
       <source>Close</source>
@@ -4608,6 +4623,16 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
       <location filename="src/ui/qml/components/ShareDialog.qml" line="223"></location>
       <source>That channel's webhook no longer works. Remove it in Settings and add it again.</source>
       <translation>Webhook tego kanału już nie działa. Usuń go w Ustawieniach i dodaj ponownie.</translation>
+    </message>
+    <message id="gamehq.share.external.not_running">
+      <location filename="src/share/external/ExternalProvider.cpp" line="89"></location>
+      <source>This add-on is not running.</source>
+      <translation>Ten dodatek nie jest uruchomiony.</translation>
+    </message>
+    <message id="gamehq.share.external.privacy">
+      <location filename="src/share/external/ExternalProvider.cpp" line="99"></location>
+      <source>Add-on from another program on this PC. It receives the capture you choose to share.</source>
+      <translation>Dodatek innego programu na tym komputerze. Otrzymuje materiał, który wybierzesz do udostępnienia.</translation>
     </message>
     <message id="gamehq.share.loading">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="134"></location>

@@ -65,6 +65,10 @@ inline constexpr QLatin1StringView SoundsCaptureVolume{ "sounds.capture_volume" 
 inline constexpr QLatin1StringView TrayCloseToTray{ "tray.close_to_tray" };
 inline constexpr QLatin1StringView TrayMinimizeToTray{ "tray.minimize_to_tray" };
 inline constexpr QLatin1StringView NotificationsEnabled{ "notifications.enabled" };
+// share.* — whether other programs on this PC may register Share destinations
+// through the Share Provider API (docs/share-provider-api-v1.md). Off by
+// default; read once at startup.
+inline constexpr QLatin1StringView ShareExternalProviders{ "share.external_providers" };
 
 // ui.* — application presentation preferences. The explicit value "system"
 // is retained so first-run bootstrap can distinguish it from an absent key.

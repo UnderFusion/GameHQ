@@ -62,6 +62,7 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::TrayCloseToTray,         true },
         { ConfigKeys::TrayMinimizeToTray,      false },
         { ConfigKeys::NotificationsEnabled,    true },
+        { ConfigKeys::ShareExternalProviders,  false },
         { ConfigKeys::UiLanguage,              "system" },
         // Last-view memory. Defaults are the state a first run opens on, so a
         // user who never navigates keeps these out of config.json entirely.

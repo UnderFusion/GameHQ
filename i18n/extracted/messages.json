@@ -3389,7 +3389,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 666
+          "line": 667
         }
       ],
       "plural": false,
@@ -4299,7 +4299,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 641
+          "line": 642
         }
       ],
       "plural": false,
@@ -7467,7 +7467,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 486
+          "line": 487
         }
       ],
       "plural": false,
@@ -7484,7 +7484,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 493
+          "line": 494
         }
       ],
       "plural": false,
@@ -7501,7 +7501,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 499
+          "line": 500
         }
       ],
       "plural": false,
@@ -7518,7 +7518,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 292
+          "line": 293
         }
       ],
       "plural": false,
@@ -7535,7 +7535,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 286
+          "line": 287
         }
       ],
       "plural": false,
@@ -7552,7 +7552,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 276
+          "line": 277
         }
       ],
       "plural": false,
@@ -7569,7 +7569,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 398
+          "line": 399
         }
       ],
       "plural": false,
@@ -7586,7 +7586,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 461
+          "line": 462
         }
       ],
       "plural": false,
@@ -7605,7 +7605,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 79
+          "line": 80
         }
       ],
       "plural": false,
@@ -7622,7 +7622,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 73
+          "line": 74
         }
       ],
       "plural": false,
@@ -7639,7 +7639,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 91
+          "line": 92
         }
       ],
       "plural": false,
@@ -7656,7 +7656,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 85
+          "line": 86
         }
       ],
       "plural": false,
@@ -7673,7 +7673,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 67
+          "line": 68
         }
       ],
       "plural": false,
@@ -7690,7 +7690,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 308
+          "line": 309
         }
       ],
       "plural": false,
@@ -7707,7 +7707,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 393
+          "line": 394
         }
       ],
       "plural": false,
@@ -7724,7 +7724,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 442
+          "line": 443
         }
       ],
       "plural": false,
@@ -7741,7 +7741,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 301
+          "line": 302
         }
       ],
       "plural": false,
@@ -7758,7 +7758,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 343
+          "line": 344
         }
       ],
       "plural": false,
@@ -7775,7 +7775,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 544
+          "line": 545
         }
       ],
       "plural": false,
@@ -7794,7 +7794,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 539
+          "line": 540
         }
       ],
       "plural": false,
@@ -7811,7 +7811,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 708
+          "line": 709
         }
       ],
       "plural": false,
@@ -9769,7 +9769,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 206
+          "line": 222
         }
       ],
       "plural": false,
@@ -9786,7 +9786,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
-          "line": 199
+          "line": 215
         }
       ],
       "plural": false,
@@ -15663,6 +15663,59 @@
       "source_hash": "e4465a7a62708098793af1d3a7289dd5c471ee2485c38cc7716a26f842c675d3"
     },
     {
+      "id": "gamehq.share.addons.description",
+      "source": "Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 203
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "f3a379ad643734a609f6db4a6fa6128e345155572e3e902332db619c1c3c34f2"
+    },
+    {
+      "id": "gamehq.share.addons.label",
+      "source": "Allow add-ons from other programs",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 201
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d2e793d4499281373f915f1656c2f4d88e8a91b30870dc6e2d457eef856581ce"
+    },
+    {
+      "id": "gamehq.share.addons.title",
+      "source": "Share add-ons",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/CaptureSettingsPage.qml",
+          "line": 198
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d8464d3f87322e19a49f3f1acde9ffa9b87e0972beda90177322a22d2214d3e3"
+    },
+    {
       "id": "gamehq.share.close",
       "source": "Close",
       "context": "ID",
@@ -15903,6 +15956,40 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "216e5fb0a28f6bd13ba10ed8cc139e837e361d439d555249507a4386d73c5f2a"
+    },
+    {
+      "id": "gamehq.share.external.not_running",
+      "source": "This add-on is not running.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/external/ExternalProvider.cpp",
+          "line": 89
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "dd60364f03e445a15be82c76eb6f48696962ad72440768226fceb6e88cde67a9"
+    },
+    {
+      "id": "gamehq.share.external.privacy",
+      "source": "Add-on from another program on this PC. It receives the capture you choose to share.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/external/ExternalProvider.cpp",
+          "line": 99
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8fe50db1f6fdd7c9317bf492a4d31c709d18ef07934bbf86886502c7960293e8"
     },
     {
       "id": "gamehq.share.loading",

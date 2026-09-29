@@ -974,7 +974,7 @@
       <translation>Інший імпорт портативного профілю вже виконується.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="666"></location>
+      <location filename="src/app/App.cpp" line="667"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Оновлення скасовано, оскільки робота із захопленням не встигла безпечно завершитися.</translation>
     </message>
@@ -1225,7 +1225,7 @@
       <translation>GameHQ не вдалося остаточно застосувати транзакцію оновлення.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="641"></location>
+      <location filename="src/app/App.cpp" line="642"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ не вдалося розпочати обслуговування оновлення: %1</translation>
     </message>
@@ -2143,107 +2143,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Підтримати GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="486"></location>
+      <location filename="src/app/App.cpp" line="487"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Деякі файли не вдалося видалити. Можливо, їх використовують інші програми. Закрийте програми, які їх використовують, і спробуйте ще раз.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="493"></location>
+      <location filename="src/app/App.cpp" line="494"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Не вдалося видалити файл. Можливо, його використовує інша програма. Закрийте програму, яка його використовує, і спробуйте ще раз.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="499"></location>
+      <location filename="src/app/App.cpp" line="500"></location>
       <source>Couldn't delete</source>
       <translation>Не вдалося видалити</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="292"></location>
+      <location filename="src/app/App.cpp" line="293"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>Його не додано до бібліотеки, і файлу немає на диску.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="286"></location>
+      <location filename="src/app/App.cpp" line="287"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>Файл є в папці захоплення, але його не вдалося додати до бібліотеки.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="276"></location>
+      <location filename="src/app/App.cpp" line="277"></location>
       <source>Saved to disk, not in library</source>
       <translation>Збережено на диск, немає в бібліотеці</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="398"></location>
+      <location filename="src/app/App.cpp" line="399"></location>
       <source>Capture request received</source>
       <translation>Запит на захоплення отримано</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="461"></location>
+      <location filename="src/app/App.cpp" line="462"></location>
       <source>Reason: %1</source>
       <translation>Причина: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="79"></location>
+      <location filename="src/app/App.cpp" line="80"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>Збій буфера повторів; кліп не збережено</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="73"></location>
+      <location filename="src/app/App.cpp" line="74"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>Буфер повторів накопичує матеріал; спробуйте зберегти ще раз за кілька секунд</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="91"></location>
+      <location filename="src/app/App.cpp" line="92"></location>
       <source>Replay buffer is empty</source>
       <translation>Буфер повторів порожній</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="85"></location>
+      <location filename="src/app/App.cpp" line="86"></location>
       <source>Replay buffer is not running</source>
       <translation>Буфер повторів не запущено</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="67"></location>
+      <location filename="src/app/App.cpp" line="68"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>Буфер повторів запускається; спробуйте зберегти ще раз за кілька секунд</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="308"></location>
+      <location filename="src/app/App.cpp" line="309"></location>
       <source>Replay failed</source>
       <translation>Помилка повтору</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="393"></location>
+      <location filename="src/app/App.cpp" line="394"></location>
       <source>Replay save requested</source>
       <translation>Надіслано запит на збереження повтору</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="442"></location>
+      <location filename="src/app/App.cpp" line="443"></location>
       <source>Replay saved</source>
       <translation>Повтор збережено</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="301"></location>
+      <location filename="src/app/App.cpp" line="302"></location>
       <source>Screenshot failed</source>
       <translation>Не вдалося зробити знімок екрана</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="343"></location>
+      <location filename="src/app/App.cpp" line="344"></location>
       <source>Screenshot saved</source>
       <translation>Знімок екрана збережено</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="544"></location>
+      <location filename="src/app/App.cpp" line="545"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ запустився з типовими налаштуваннями. Попередній файл налаштувань збережено, тож нічого не втрачено.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="539"></location>
+      <location filename="src/app/App.cpp" line="540"></location>
       <source>Settings could not be read</source>
       <translation>Не вдалося прочитати налаштування</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="708"></location>
+      <location filename="src/app/App.cpp" line="709"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Деякі звуки інтерфейсу недоступні</translation>
     </message>
@@ -2811,12 +2811,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Ігри з білого списку</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="206"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="222"></location>
       <source>Choose the clips folder</source>
       <translation>Виберіть папку для кліпів</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="199"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="215"></location>
       <source>Choose the screenshots folder</source>
       <translation>Виберіть папку для знімків екрана</translation>
     </message>
@@ -4539,6 +4539,21 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Synthwave</source>
       <translation>Синтвейв</translation>
     </message>
+    <message id="gamehq.share.addons.description">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="203"></location>
+      <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
+      <translation>Інші програми, запущені від вашого імені на цьому комп’ютері, зможуть пропонувати місця для поширення й отримувати медіафайли, якими ви вирішили поділитися. За замовчуванням вимкнено. Перезапустіть GameHQ, щоб застосувати.</translation>
+    </message>
+    <message id="gamehq.share.addons.label">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="201"></location>
+      <source>Allow add-ons from other programs</source>
+      <translation>Дозволити додатки інших програм</translation>
+    </message>
+    <message id="gamehq.share.addons.title">
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="198"></location>
+      <source>Share add-ons</source>
+      <translation>Додатки для поширення</translation>
+    </message>
     <message id="gamehq.share.close">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="164"></location>
       <source>Close</source>
@@ -4608,6 +4623,16 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/components/ShareDialog.qml" line="223"></location>
       <source>That channel's webhook no longer works. Remove it in Settings and add it again.</source>
       <translation>Вебхук цього каналу більше не працює. Вилучіть його в налаштуваннях і додайте знову.</translation>
+    </message>
+    <message id="gamehq.share.external.not_running">
+      <location filename="src/share/external/ExternalProvider.cpp" line="89"></location>
+      <source>This add-on is not running.</source>
+      <translation>Цей додаток не запущено.</translation>
+    </message>
+    <message id="gamehq.share.external.privacy">
+      <location filename="src/share/external/ExternalProvider.cpp" line="99"></location>
+      <source>Add-on from another program on this PC. It receives the capture you choose to share.</source>
+      <translation>Додаток іншої програми на цьому комп’ютері. Він отримує медіафайл, яким ви вирішили поділитися.</translation>
     </message>
     <message id="gamehq.share.loading">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="134"></location>

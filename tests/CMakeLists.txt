@@ -978,6 +978,20 @@ gamehq_add_test(tst_sharediscordwebhook
     "${CMAKE_SOURCE_DIR}/src/share/providers/DiscordWebhookProvider.cpp")
 target_link_libraries(tst_sharediscordwebhook PRIVATE Qt6::Network advapi32)
 
+# Share Provider API v1 (t18): handshake/version/capability negotiation, hostile
+# input, target and job lifecycle, file-access boundary, disconnect and timeout.
+gamehq_add_test(tst_shareexternalprovider
+    tst_shareexternalprovider.cpp
+    "${CMAKE_SOURCE_DIR}/src/share/ShareTypes.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProvider.h"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderProtocol.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProvider.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderHost.cpp")
+target_link_libraries(tst_shareexternalprovider PRIVATE Qt6::Network advapi32)
+
 gamehq_add_test(tst_captureborderstate
     tst_captureborderstate.cpp
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
