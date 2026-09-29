@@ -17,9 +17,9 @@ controller and real screen can show.
 
 | | |
 |---|---|
-| Code commit | **`af58f81`** on `dev` (`feat(telegram): add Telegram Integrated account session, recipient search and native media sending`). Later commits that only touch `docs/` do not change the app. |
+| Code commit | **`4dae02b`** on `dev` (`feat(share): keep Telegram Integrated behind a developer-only flag so users see no login option`). Later commits that only touch `docs/` do not change the app. |
 | Version | `0.7.9` (`VERSION`) |
-| Build | Debug build from `out\`. `out\GameHQ.exe` SHA-256 = `58358c41230e147eb2deaadf824cdb416b609129394391c0e6eaf9f482e8be44` (`out\GameHQLauncher.exe` = `787e2e7b1b5f870cb956974db122c8d017812d951471904de7f8ab96f010642f`) |
+| Build | Debug build from `out\`. `out\GameHQ.exe` SHA-256 = `e866e8efcea4997eadccc8381cb5053feaf9253454a007a33ea368c8cd5cdf51` (`out\GameHQLauncher.exe` = `787e2e7b1b5f870cb956974db122c8d017812d951471904de7f8ab96f010642f`) |
 | How to run | `start.bat` in the repo root: rebuilds `out\`, assembles a clean package in `build\`, keeps your data, and launches `build\GameHQ.exe`. **It stops any running `GameHQ.exe` first, including the installed copy.** |
 | Data / log | `build\gamehq-data\` (separate from the installed copy). Log: `build\gamehq-data\logs\gamehq.log` |
 
@@ -227,7 +227,7 @@ Copy this into your reply (or a file). One line per row you ran; unlisted rows c
 
 ```
 Session date:            
-Code commit / exe SHA-256 checked:   af58f81 / <first 16 chars of the hash you computed>
+Code commit / exe SHA-256 checked:   4dae02b / <first 16 chars of the hash you computed>
 Windows build:           
 Controller model:        
 Telegram Desktop version:            Discord Desktop version:
