@@ -917,7 +917,9 @@ gamehq_add_test(tst_sharecore
     "${CMAKE_SOURCE_DIR}/src/share/ShareTypes.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareProvider.h"
     "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp")
+target_link_libraries(tst_sharecore PRIVATE advapi32)
 
 # Share Platform UI (t10): the real ShareDialog.qml driven by pad calls.
 gamehq_add_test(tst_sharedialog
@@ -925,12 +927,20 @@ gamehq_add_test(tst_sharedialog
     "${CMAKE_SOURCE_DIR}/src/share/ShareTypes.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareProvider.h"
     "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp")
-target_link_libraries(tst_sharedialog PRIVATE Qt6::Gui Qt6::Qml Qt6::Quick)
+target_link_libraries(tst_sharedialog PRIVATE Qt6::Gui Qt6::Qml Qt6::Quick advapi32)
 target_compile_definitions(tst_sharedialog PRIVATE
     GAMEHQ_QML_SOURCE_DIR="${CMAKE_SOURCE_DIR}/src"
     GAMEHQ_QML_IMPORT_DIR="${CMAKE_BINARY_DIR}/src")
 add_dependencies(tst_sharedialog GameHQ)
+
+# Share Platform security (t11): redaction, Credential Manager store, session dirs.
+gamehq_add_test(tst_sharesecurity
+    tst_sharesecurity.cpp
+    "${CMAKE_SOURCE_DIR}/src/share/ShareTypes.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp")
+target_link_libraries(tst_sharesecurity PRIVATE advapi32)
 
 gamehq_add_test(tst_captureborderstate
     tst_captureborderstate.cpp

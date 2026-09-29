@@ -40,6 +40,16 @@ QStringList capabilityNames(Capabilities caps);
 // providers are NotRequired and never hold an account session.
 enum class AuthState { NotRequired, Disconnected, Connecting, Connected, Error };
 
+// How much of the user's account a provider can reach, independent of how
+// little GameHQ uses. Shown to the user before connecting.
+//  - None: no account in GameHQ at all (desktop hand-off, clipboard).
+//  - ShareToken: a credential that can only post somewhere specific
+//    (e.g. one Discord channel webhook).
+//  - FullAccountSession: a real signed-in session (e.g. Telegram via TDLib),
+//    technically able to do everything the account can, even though GameHQ
+//    only ever sends the capture the user picked.
+enum class AccountAccess { None, ShareToken, FullAccountSession };
+
 // Whether the provider can be offered at all right now (installed client,
 // supported platform, enabled by the user).
 enum class Availability { Available, NotInstalled, Unsupported, Disabled };
@@ -145,6 +155,7 @@ QString outcomeName(Outcome outcome);
 QString authStateName(AuthState state);
 QString availabilityName(Availability availability);
 QString targetKindName(TargetKind kind);
+QString accountAccessName(AccountAccess access);
 
 // Provider ids are part of saved settings and the future external API:
 // lowercase ASCII, digits, '.', '-' and '_', 2..64 chars, starting with a letter.

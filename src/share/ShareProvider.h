@@ -38,6 +38,13 @@ public:
     virtual Availability availability() const { return Availability::Available; }
     // Localized, user-safe reason when availability() != Available.
     virtual QString availabilityReason() const { return {}; }
+    // Privacy boundary (t11): what the provider can reach and a short,
+    // localized plain-language notice the Share UI shows next to it.
+    virtual AccountAccess accountAccess() const { return AccountAccess::None; }
+    virtual QString privacyNotice() const { return {}; }
+    // Called on Disconnect: drop the session, secrets and local session data.
+    // Providers without an account need nothing here.
+    virtual void disconnectAccount() {}
     // How long a started job may stay silent before the service ends it as
     // Unconfirmed. Hand-offs are quick; uploads get longer.
     virtual int jobTimeoutMs() const { return 120000; }

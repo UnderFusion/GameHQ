@@ -70,6 +70,9 @@ public:
     Q_INVOKABLE QString share(const QString& providerId, const QString& targetId,
                               bool confirmResend = false);
     Q_INVOKABLE void cancel();
+    // Disconnect (t11): the provider drops its session, secrets and local
+    // session data. Refused while that provider has a job running.
+    Q_INVOKABLE bool disconnectProvider(const QString& providerId);
 
     bool active() const { return m_request.isValid(); }
     QString fileName() const { return m_request.fileName(); }

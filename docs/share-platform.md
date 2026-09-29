@@ -74,13 +74,52 @@ These hold for every provider, including future external ones:
    cannot list targets or send. `requires-account` providers must be
    `Connected`.
 
+## Security and privacy
+
+Source: `src/share/ShareSecurity.{h,cpp}`. Tests: `tests/tst_sharesecurity.cpp`.
+
+- **Secrets never live in `config.json`.** Tokens, webhook URLs and session
+  keys go to `share::SecretStore`: generic credentials in the Windows
+  Credential Manager, DPAPI-protected, `CRED_PERSIST_LOCAL_MACHINE` (this user
+  on this PC, never roaming), named `GameHQ.Share/<providerId>/<name>`, at most
+  2560 bytes. Invalid ids/names and oversized values are refused, never
+  truncated.
+- **Local session data** (e.g. an account library's database) lives only in
+  `share::SessionStorage`: one directory per provider under a fixed root.
+  `removeAll(id)` deletes exactly that directory, refuses invalid ids and never
+  follows a link out of the root.
+- **Disconnect** (`shareService.disconnectProvider(id)` →
+  `Provider::disconnectAccount()`) must log the account out and remove that
+  provider's secrets and session directory. Refused while its job runs.
+- **Redaction.** `share::redactSecrets()` strips Discord webhook tokens (the id
+  is kept), Telegram bot tokens, Bearer/Bot/Basic values, secret query/form
+  parameters, `"token": …`-style fields and 40+ character opaque runs.
+  Providers run it over anything they log or show that came from a server or
+  from user configuration; the service runs it over every result `detail`.
+- **Access scope** is declared per provider (`accountAccess()`) and shown with
+  a plain-language `privacyNotice()` next to the destination:
+  `none` (hand-off, clipboard: no account in GameHQ), `share_token` (can only
+  post to one destination, e.g. a channel webhook), `full_account_session` (a
+  real signed-in session such as Telegram via TDLib: technically able to do
+  everything the account can, even though GameHQ only sends the capture the
+  user picked, with no inbox, notifications or chat features).
+- **Least data.** A provider receives one frozen `Request` for the capture the
+  user explicitly picked and nothing else: no library, no other files, no
+  game list.
+- **No automatic publishing.** Every send starts from an explicit user
+  confirmation in the Share dialog; nothing is shared in the background and a
+  resend of the same capture to the same target needs a second confirmation.
+- **No blind retries.** Neither the service nor a provider retries after an
+  ambiguous failure; the outcome is `unconfirmed` and the user decides.
+
 ## QML surface (`shareService`)
 
 - `open(filePath, gameName)` / `close()`
-- `providers()` → `[{ id, name, icon, available, availability, reason, auth, capabilities }]`
+- `providers()` → `[{ id, name, icon, available, availability, reason, auth, capabilities, access, privacy }]`
 - `requestTargets(providerId, query)` → then `targets()` → `[{ id, providerId, kind, name, subtitle }]`
 - `share(providerId, targetId, confirmResend)` → job id or `""` with `lastError`
 - `cancel()`
+- `disconnectProvider(providerId)`
 - properties: `active`, `fileName`, `mediaKind`, `phase` (`idle|choosing|sending|finished`), `busy`, `lastError`, `lastResult`, `targetsProviderId`, `targetsLoading`
 - signal `finished(result)`
 
