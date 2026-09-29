@@ -7,6 +7,7 @@ Public release history and the current local release candidate.
 ### Added
 
 - Overlay: Cross on a screenshot opens it full screen. L1/R1 step through screenshots and clips (clips play full screen), and Circle returns to the capture strip on the item you ended on. Cross on a clip still plays it in the preview.
+- Overlay: D-pad left/right flips between screenshots and clips again, like L1/R1. Once Cross is playing a clip, left/right seeks it instead.
 - Settings › Input › Steam Input: when a Steam game is running and a GameHQ controller shortcut uses Create / Share or PS, GameHQ explains that Steam Input may also send that button to the game, and offers buttons that open the game's Steam controller layout or Steam's controller settings. Guidance only: GameHQ never reads or changes Steam's controller settings. On by default; it can be switched off or hidden per game.
 
 ### Fixed
