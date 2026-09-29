@@ -12,6 +12,7 @@ Public release history and the current local release candidate.
 
 ### Fixed
 
+- Gallery and overlay follow the capture folders live. A screenshot or clip deleted in Explorer disappears right away, and it comes back when restored from the Recycle Bin, still marked as a favorite if it was one. New files copied into a capture folder show up without *Rescan*. Nothing is deleted from GameHQ's library in the process: a missing file is only hidden while it is gone. An open viewer stays on the capture it shows, and a delete confirmation always deletes the capture it named, even if the list changed meanwhile.
 - Start with Windows: starting another GameHQ copy (a portable build, or a copy with its own settings) no longer removes or takes over the installed copy's startup entry. Before, a copy with the setting off deleted the entry, so the installed GameHQ could fail to start after a restart even though the setting was on.
 - Settings › Input › Mapping presets: the Assignments list now shows and edits the preset chosen under *Editing preset*. Before, it showed the mappings currently in use and saved changes to the device's assigned preset, so a preset used by a game (or not assigned to this device) could not be edited, and its custom mappings, such as a double tap, could not be removed or reverted. Opening the page selects the preset in use, and a new preset opens for editing right away.
 

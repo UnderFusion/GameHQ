@@ -72,7 +72,9 @@ Window {
     property bool usingGamepad: true
 
     // Row queued by the mouse delete path until the confirm dialog answers.
-    property int pendingDeleteRow: -1
+    // Keyed by file path, not row: the gallery follows the disk live, so rows
+    // can shift while the confirmation is open.
+    property string pendingDeletePath: ""
 
     Connections {
         target: app
@@ -500,7 +502,7 @@ Window {
                 usingGamepad: overlayWindow.usingGamepad
                 videoFocused: content.videoFocused
                 onDeleteRequested: function(index) {
-                    overlayWindow.pendingDeleteRow = index
+                    overlayWindow.pendingDeletePath = overlayGallery.get(index).filePath || ""
                     deleteDialog.open()
                 }
                 onOpenFolderRequested: function(index) {
@@ -588,10 +590,11 @@ Window {
         confirmLabel: qsTrId("gamehq.action.delete")
         onConfirmed: {
             sounds.play("confirm")
-            if (overlayWindow.pendingDeleteRow >= 0)
-                app.deleteCaptureFrom(overlayGallery, overlayWindow.pendingDeleteRow)
-            overlayWindow.pendingDeleteRow = -1
+            const row = overlayGallery.rowOf(overlayWindow.pendingDeletePath)
+            if (row >= 0)
+                app.deleteCaptureFrom(overlayGallery, row)
+            overlayWindow.pendingDeletePath = ""
         }
-        onCanceled: overlayWindow.pendingDeleteRow = -1
+        onCanceled: overlayWindow.pendingDeletePath = ""
     }
 }

@@ -609,6 +609,28 @@ gamehq_add_test(tst_capturecommitoutcome
 target_link_libraries(tst_capturecommitoutcome PRIVATE
     Qt6::Sql Qt6::Gui Qt6::Widgets ole32 mfplat mfreadwrite mfuuid mf)
 
+# Library follows the disk: vanished media hidden (never deleted), restored media back.
+gamehq_add_test(tst_capturefilesync
+    tst_capturefilesync.cpp
+    # CaptureDatabase validates preset rows through the shared binding grammar.
+    "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp"
+    "${CMAKE_SOURCE_DIR}/src/ui/GalleryModel.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureScanner.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureFolderWatcher.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/ThumbnailService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/ReplayExporter.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureDatabase.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/CaptureQueries.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameRowRepair.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameMetadataBackfill.cpp"
+    "${CMAKE_SOURCE_DIR}/src/storage/GameIconCache.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/Paths.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/LegacyMigration.cpp"
+    "${CMAKE_SOURCE_DIR}/src/core/GameIdentity.cpp")
+target_link_libraries(tst_capturefilesync PRIVATE
+    Qt6::Sql Qt6::Gui Qt6::Widgets ole32 mfplat mfreadwrite mfuuid mf)
+
 gamehq_add_test(tst_capturedatabaserepair
     tst_capturedatabaserepair.cpp
     # CaptureDatabase validates preset rows through the shared binding grammar.

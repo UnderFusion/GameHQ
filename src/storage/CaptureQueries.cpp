@@ -34,7 +34,8 @@ QVector<CaptureRecord> CaptureQueries::listCaptures(const QSqlDatabase& db,
         "SELECT c.id, c.file_path, c.type, c.game_id, g.display_name, "
         "       c.created_at, c.is_favorite, c.thumbnail_path, c.source "
         "FROM captures c LEFT JOIN games g ON g.id = c.game_id "
-        "WHERE c.deleted_at IS NULL");
+        "WHERE c.deleted_at IS NULL "
+        "AND c.file_path NOT IN (SELECT file_path FROM temp.missing_captures)");
     if (category == QLatin1String("favorites"))
         sql += QStringLiteral(" AND c.is_favorite = 1");
     else if (category == QLatin1String("screenshots"))
@@ -102,7 +103,8 @@ bool CaptureQueries::hasCapturesForGame(const QSqlDatabase& db, int gameId)
     QSqlQuery q(db);
     q.prepare(QStringLiteral(
         "SELECT 1 FROM captures "
-        "WHERE deleted_at IS NULL AND game_id = :game LIMIT 1"));
+        "WHERE deleted_at IS NULL AND game_id = :game "
+        "AND file_path NOT IN (SELECT file_path FROM temp.missing_captures) LIMIT 1"));
     q.bindValue(QStringLiteral(":game"), gameId);
     if (!q.exec()) {
         qWarning() << "DB: hasCapturesForGame failed:" << q.lastError().text();
@@ -118,6 +120,7 @@ QVector<GameEntry> CaptureQueries::listGames(const QSqlDatabase& db)
         "SELECT g.id, g.display_name, g.icon_path, g.executable_path, "
         "MAX(c.created_at) AS last_used FROM games g "
         "JOIN captures c ON c.game_id = g.id AND c.deleted_at IS NULL "
+        "AND c.file_path NOT IN (SELECT file_path FROM temp.missing_captures) "
         "GROUP BY g.id, g.display_name, g.icon_path, g.executable_path "
         "ORDER BY last_used DESC"), db);
     while (q.next())

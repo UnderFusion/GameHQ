@@ -1085,10 +1085,12 @@ ApplicationWindow {
     }
 
     // ───────────────────────── Delete confirmation ─────────────────────────
-    property int pendingDeleteRow: -1
+    // Keyed by file path, not row: the gallery follows the disk live, so rows
+    // can shift while the confirmation is open.
+    property string pendingDeletePath: ""
 
     function askDelete(row, name, date) {
-        window.pendingDeleteRow = row
+        window.pendingDeletePath = app.gallery.get(row).filePath || ""
         //% "%1 · %2\nThis permanently deletes the file."
         deleteDialog.message = qsTrId("gamehq.gallery.delete_capture.message").arg(name).arg(date)
         deleteDialog.open()
@@ -1105,10 +1107,12 @@ ApplicationWindow {
         confirmLabel: qsTrId("gamehq.action.delete")
         onConfirmed: {
             sounds.play("confirm")
-            app.deleteCapture(window.pendingDeleteRow)
-            window.pendingDeleteRow = -1
+            const row = app.gallery.rowOf(window.pendingDeletePath)
+            if (row >= 0)
+                app.deleteCapture(row)
+            window.pendingDeletePath = ""
         }
-        onCanceled: window.pendingDeleteRow = -1
+        onCanceled: window.pendingDeletePath = ""
     }
 
     ConfirmDialog {

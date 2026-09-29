@@ -99,8 +99,19 @@ Item {
     Connections {
         target: root.galleryModel
         function onModelReset() { root._modelRevision += 1; root._clampIndex() }
-        function onRowsInserted() { root._modelRevision += 1 }
-        function onRowsRemoved() { root._modelRevision += 1; root._clampIndex() }
+        // Live disk sync inserts/removes rows around the open capture; shift
+        // the index so the viewer keeps showing the same one.
+        function onRowsInserted(parent, first, last) {
+            if (root.open && first <= root.index)
+                root.index += last - first + 1
+            root._modelRevision += 1
+        }
+        function onRowsRemoved(parent, first, last) {
+            if (root.open && last < root.index)
+                root.index -= last - first + 1
+            root._modelRevision += 1
+            root._clampIndex()
+        }
         function onRowsMoved() { root._modelRevision += 1 }
         function onDataChanged() { root._modelRevision += 1 }
     }

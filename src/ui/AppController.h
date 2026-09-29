@@ -13,6 +13,7 @@
 
 class CaptureDatabase;
 class CaptureScanner;
+class CaptureFolderWatcher;
 class SoundEngine;
 class CaptureLocations;
 class ConfigManager;
@@ -241,9 +242,13 @@ private:
     // it can be validated against.
     void restoreGalleryFilter();
     QList<int> knownGameIds() const;
+    // Folder-watcher path: indexes new files, hides vanished ones and brings
+    // restored ones back, then updates both galleries without a reset.
+    void onCaptureFoldersChanged(const QStringList& roots);
 
     CaptureDatabase* m_db;
     CaptureScanner* m_scanner;
+    CaptureFolderWatcher* m_folderWatcher = nullptr;
     GalleryModel* m_gallery;
     GalleryModel* m_overlayGallery;
     ConfigManager* m_config;

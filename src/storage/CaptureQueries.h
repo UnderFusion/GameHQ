@@ -7,6 +7,9 @@
 #include <QString>
 #include <QVector>
 
+// Listings (captures and games) skip rows in temp.missing_captures: media the
+// scanner found gone from disk. That table lives only in this connection, so
+// hiding a vanished file never writes to gamehq.db (see docs/database.md).
 namespace CaptureQueries
 {
 QVector<CaptureRecord> listCaptures(const QSqlDatabase& db, const QString& category, int gameId);

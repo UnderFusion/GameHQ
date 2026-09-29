@@ -114,6 +114,7 @@ qt_add_executable(GameHQ
     sound/SoundLoadTracker.cpp  sound/SoundLoadTracker.h
     storage/CaptureDatabase.cpp storage/CaptureDatabase.h
     storage/CaptureQueries.cpp storage/CaptureQueries.h
+    storage/CaptureFolderWatcher.cpp storage/CaptureFolderWatcher.h
     storage/CaptureScanner.cpp  storage/CaptureScanner.h
     storage/GameIconCache.cpp storage/GameIconCache.h
     storage/GameMetadataBackfill.cpp storage/GameMetadataBackfill.h

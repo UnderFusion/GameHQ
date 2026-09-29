@@ -2,6 +2,7 @@
 
 #include <QDateTime>
 #include <QLocale>
+#include <QSet>
 #include <QUrl>
 
 QString GalleryModel::formattedDate(const QString& isoDate)
@@ -67,6 +68,57 @@ void GalleryModel::refresh()
     beginResetModel();
     m_items = m_db->listCaptures(m_category, m_gameId);
     endResetModel();
+}
+
+void GalleryModel::sync()
+{
+    const QVector<CaptureRecord> next = m_db->listCaptures(m_category, m_gameId);
+    QSet<int> nextIds;
+    for (const CaptureRecord& r : next)
+        nextIds.insert(r.id);
+    QSet<int> currentIds;
+    for (const CaptureRecord& r : m_items)
+        currentIds.insert(r.id);
+
+    // Rows present in both lists must keep their relative order, otherwise a
+    // remove/insert diff cannot express the change.
+    QVector<int> survivorsNow;
+    for (const CaptureRecord& r : m_items) {
+        if (nextIds.contains(r.id))
+            survivorsNow.append(r.id);
+    }
+    QVector<int> survivorsNext;
+    for (const CaptureRecord& r : next) {
+        if (currentIds.contains(r.id))
+            survivorsNext.append(r.id);
+    }
+    if (survivorsNow != survivorsNext) {
+        refresh();
+        return;
+    }
+
+    for (int row = m_items.size() - 1; row >= 0; --row) {
+        if (nextIds.contains(m_items.at(row).id))
+            continue;
+        beginRemoveRows({}, row, row);
+        m_items.removeAt(row);
+        endRemoveRows();
+    }
+    for (int row = 0; row < next.size(); ++row) {
+        const CaptureRecord& r = next.at(row);
+        if (row < m_items.size() && m_items.at(row).id == r.id) {
+            CaptureRecord& current = m_items[row];
+            if (current.thumbnailPath != r.thumbnailPath || current.isFavorite != r.isFavorite
+                || current.gameName != r.gameName) {
+                current = r;
+                emit dataChanged(index(row), index(row));
+            }
+            continue;
+        }
+        beginInsertRows({}, row, row);
+        m_items.insert(row, r);
+        endInsertRows();
+    }
 }
 
 void GalleryModel::retranslate()
