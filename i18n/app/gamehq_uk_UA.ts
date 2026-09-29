@@ -105,7 +105,7 @@
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="435"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
@@ -116,7 +116,7 @@
       <location filename="src/ui/qml/Main.qml" line="1156"></location>
       <location filename="src/ui/qml/Main.qml" line="1175"></location>
       <location filename="src/ui/qml/Main.qml" line="1213"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="663"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="679"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -520,9 +520,9 @@
       <translation>Відновити</translation>
     </message>
     <message id="gamehq.action.restore_defaults">
-      <location filename="src/ui/qml/SettingsView.qml" line="498"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="515"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="529"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="501"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="518"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="532"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="224"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="475"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="857"></location>
@@ -1379,7 +1379,7 @@ This permanently deletes the file.</source>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1154"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="661"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="677"></location>
       <source>Delete capture?</source>
       <translation>Видалити медіафайл?</translation>
     </message>
@@ -2811,12 +2811,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Ігри з білого списку</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="222"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="204"></location>
       <source>Choose the clips folder</source>
       <translation>Виберіть папку для кліпів</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="215"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
       <source>Choose the screenshots folder</source>
       <translation>Виберіть папку для знімків екрана</translation>
     </message>
@@ -2851,12 +2851,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Захоплення</translation>
     </message>
     <message id="gamehq.settings.category.about">
-      <location filename="src/ui/qml/SettingsView.qml" line="27"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="29"></location>
       <source>About</source>
       <translation>Про програму</translation>
     </message>
     <message id="gamehq.settings.category.advanced">
-      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="27"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="10"></location>
       <source>Advanced</source>
       <translation>Додатково</translation>
@@ -2875,27 +2875,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Загальні</translation>
     </message>
     <message id="gamehq.settings.category.input">
-      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="245"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="9"></location>
       <source>Input</source>
       <translation>Введення</translation>
     </message>
     <message id="gamehq.settings.category.library">
-      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
       <source>Library</source>
       <translation>Бібліотека</translation>
     </message>
     <message id="gamehq.settings.category.notifications_sound">
-      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
       <source>Notifications &amp; sound</source>
       <translation>Сповіщення та звук</translation>
     </message>
     <message id="gamehq.settings.category.replay">
-      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="229"></location>
       <source>Replay</source>
       <translation>Повтори</translation>
+    </message>
+    <message id="gamehq.settings.category.sharing">
+      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
+      <source>Sharing</source>
+      <translation type="unfinished"></translation>
     </message>
     <message id="gamehq.settings.disclosure.default">
       <location filename="src/ui/qml/components/SettingsDisclosure.qml" line="9"></location>
@@ -3528,12 +3533,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Одна кнопка — кілька жестів</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="513"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="516"></location>
       <source>All controller, keyboard, and mouse overrides return to their built-in defaults.</source>
       <translation>Усі перевизначення для контролера, клавіатури та миші повернуться до вбудованих типових значень.</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="511"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="514"></location>
       <source>Restore all input bindings?</source>
       <translation>Відновити всі прив’язки введення?</translation>
     </message>
@@ -3853,22 +3858,22 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Бібліотека</translation>
     </message>
     <message id="gamehq.settings.portable_import.confirm">
-      <location filename="src/ui/qml/SettingsView.qml" line="478"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="481"></location>
       <source>Import and restart</source>
       <translation>Імпортувати й перезапустити</translation>
     </message>
     <message id="gamehq.settings.portable_import.failed">
-      <location filename="src/ui/qml/SettingsView.qml" line="483"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="486"></location>
       <source>Portable import failed</source>
       <translation>Не вдалося імпортувати портативний профіль</translation>
     </message>
     <message id="gamehq.settings.portable_import.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="476"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="479"></location>
       <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
       <translation>Імпорт можливий лише в чистий встановлений профіль. Портативні записи залишаються на місці, джерело не змінюється, а GameHQ перезапускається, щоб завершити імпорт.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="474"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="477"></location>
       <source>Import this portable profile?</source>
       <translation>Імпортувати цей портативний профіль?</translation>
     </message>
@@ -4399,24 +4404,94 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Повтор</translation>
     </message>
     <message id="gamehq.settings.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="496"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="499"></location>
       <source>Window preferences, capture behavior, replay options, notifications, and sound settings return to defaults. Captures and library data are not deleted.</source>
       <translation>Налаштування вікна, поведінка запису, параметри повторів, сповіщення та звуки повернуться до типових значень. Записи та дані бібліотеки не видаляються.</translation>
     </message>
     <message id="gamehq.settings.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="494"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="497"></location>
       <source>Restore all settings?</source>
       <translation>Відновити всі налаштування?</translation>
     </message>
     <message id="gamehq.settings.restore_category.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="527"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="530"></location>
       <source>%1 options return to defaults. Captures and library data are not deleted.</source>
       <translation>Параметри «%1» буде повернуто до типових значень. Медіафайли та дані бібліотеки не видаляються.</translation>
     </message>
     <message id="gamehq.settings.restore_category.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="525"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="528"></location>
       <source>Restore %1 settings?</source>
       <translation>Відновити налаштування «%1»?</translation>
+    </message>
+    <message id="gamehq.settings.sharing.auth.connected">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="25"></location>
+      <source>Connected</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.auth.connecting">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="28"></location>
+      <source>Connecting…</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.auth.disconnected">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="34"></location>
+      <source>Not connected</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.auth.error">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="31"></location>
+      <source>Connection problem</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.description">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="16"></location>
+      <source>Choose where captures can be shared. Nothing is ever sent without you picking a capture and a destination.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.disconnect.action">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="102"></location>
+      <source>Disconnect</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.disconnect.description">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
+      <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.disconnect.label">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
+      <source>Disconnect and remove the saved session</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.master.description">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="50"></location>
+      <source>Turns the Share option on or off everywhere: gallery, lightbox and overlay.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.master.label">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="48"></location>
+      <source>Enable Sharing</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.master.title">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="45"></location>
+      <source>Sharing</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.providers.description">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
+      <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.providers.title">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
+      <source>Destinations</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.title">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="14"></location>
+      <source>Sharing</source>
+      <translation type="unfinished"></translation>
     </message>
     <message id="gamehq.settings.theme.blue.description">
       <location filename="src/ui/qml/themes/Skin.qml" line="22"></location>
@@ -4540,17 +4615,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Синтвейв</translation>
     </message>
     <message id="gamehq.share.addons.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="203"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="122"></location>
       <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
       <translation>Інші програми, запущені від вашого імені на цьому комп’ютері, зможуть пропонувати місця для поширення й отримувати медіафайли, якими ви вирішили поділитися. За замовчуванням вимкнено. Перезапустіть GameHQ, щоб застосувати.</translation>
     </message>
     <message id="gamehq.share.addons.label">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="201"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="120"></location>
       <source>Allow add-ons from other programs</source>
       <translation>Дозволити додатки інших програм</translation>
     </message>
     <message id="gamehq.share.addons.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="198"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="117"></location>
       <source>Share add-ons</source>
       <translation>Додатки для поширення</translation>
     </message>
@@ -4595,32 +4670,42 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Цього медіафайлу більше немає на диску.</translation>
     </message>
     <message id="gamehq.share.error.generic">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="229"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="235"></location>
       <source>This capture could not be shared.</source>
       <translation>Не вдалося поділитися цим медіафайлом.</translation>
     </message>
     <message id="gamehq.share.error.network_error">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="226"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="232"></location>
       <source>GameHQ couldn't reach the service. Check your connection.</source>
       <translation>GameHQ не вдалося зв’язатися зі службою. Перевірте підключення.</translation>
     </message>
     <message id="gamehq.share.error.not_connected">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="219"></location>
       <source>Connect this account in Settings first.</source>
       <translation>Спершу підключіть цей обліковий запис у налаштуваннях.</translation>
     </message>
-    <message id="gamehq.share.error.rate_limited">
+    <message id="gamehq.share.error.provider_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
+      <source>That destination is turned off in Settings &gt; Sharing.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.share.error.rate_limited">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="222"></location>
       <source>Discord is limiting uploads right now. Wait a moment and try again.</source>
       <translation>Discord зараз обмежує завантаження. Зачекайте трохи й повторіть спробу.</translation>
     </message>
+    <message id="gamehq.share.error.sharing_disabled">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
+      <source>Sharing is turned off. Turn it on in Settings &gt; Sharing.</source>
+      <translation type="unfinished"></translation>
+    </message>
     <message id="gamehq.share.error.too_large">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="219"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="225"></location>
       <source>This capture is too large for that channel.</source>
       <translation>Цей медіафайл завеликий для цього каналу.</translation>
     </message>
     <message id="gamehq.share.error.webhook_revoked">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="223"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="229"></location>
       <source>That channel's webhook no longer works. Remove it in Settings and add it again.</source>
       <translation>Вебхук цього каналу більше не працює. Вилучіть його в налаштуваннях і додайте знову.</translation>
     </message>
@@ -4695,7 +4780,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Ви вже ділилися тут цим медіафайлом. Поділитися знову?</translation>
     </message>
     <message id="gamehq.share.sending">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="237"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="243"></location>
       <source>Sharing…</source>
       <translation>Надсилання…</translation>
     </message>
@@ -4755,7 +4840,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Відкриває Telegram, щоб ви вибрали чат. GameHQ ніколи не входить у Telegram.</translation>
     </message>
     <message id="gamehq.share.title">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="341"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="347"></location>
       <source>Share</source>
       <translation>Поділитися</translation>
     </message>

@@ -36,6 +36,9 @@ public:
     virtual Capabilities capabilities() const = 0;
     virtual AuthState authState() const { return AuthState::NotRequired; }
     virtual Availability availability() const { return Availability::Available; }
+    // Whether Settings > Sharing offers an on/off switch for it. Always-on
+    // helpers (clipboard) and providers governed elsewhere return false.
+    virtual bool userToggleable() const { return true; }
     // Localized, user-safe reason when availability() != Available.
     virtual QString availabilityReason() const { return {}; }
     // Privacy boundary (t11): what the provider can reach and a short,

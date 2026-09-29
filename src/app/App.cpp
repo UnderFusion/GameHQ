@@ -803,6 +803,7 @@ bool App::init()
     // One Share flow for gallery, lightbox and overlay; providers register
     // into its registry and never need their own QML.
     m_share = std::make_unique<share::Service>();
+    m_share->setConfig(m_config.get());
     // Registration order is the order the Share dialog lists destinations.
     m_share->registry()->add(new share::TelegramDesktopProvider(m_share.get()));
     m_share->registry()->add(new share::DiscordDesktopProvider(

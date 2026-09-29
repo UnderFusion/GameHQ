@@ -105,7 +105,7 @@
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="435"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
@@ -116,7 +116,7 @@
       <location filename="src/ui/qml/Main.qml" line="1156"></location>
       <location filename="src/ui/qml/Main.qml" line="1175"></location>
       <location filename="src/ui/qml/Main.qml" line="1213"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="663"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="679"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -520,9 +520,9 @@
       <translation>복원</translation>
     </message>
     <message id="gamehq.action.restore_defaults">
-      <location filename="src/ui/qml/SettingsView.qml" line="498"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="515"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="529"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="501"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="518"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="532"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="224"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="475"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="857"></location>
@@ -1375,7 +1375,7 @@ This permanently deletes the file.</source>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1154"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="661"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="677"></location>
       <source>Delete capture?</source>
       <translation>캡처를 삭제할까요?</translation>
     </message>
@@ -2801,12 +2801,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>허용 목록의 게임</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="222"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="204"></location>
       <source>Choose the clips folder</source>
       <translation>클립 폴더 선택</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="215"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
       <source>Choose the screenshots folder</source>
       <translation>스크린샷 폴더 선택</translation>
     </message>
@@ -2841,12 +2841,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>캡처</translation>
     </message>
     <message id="gamehq.settings.category.about">
-      <location filename="src/ui/qml/SettingsView.qml" line="27"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="29"></location>
       <source>About</source>
       <translation>정보</translation>
     </message>
     <message id="gamehq.settings.category.advanced">
-      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="27"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="10"></location>
       <source>Advanced</source>
       <translation>고급</translation>
@@ -2865,27 +2865,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>일반</translation>
     </message>
     <message id="gamehq.settings.category.input">
-      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="245"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="9"></location>
       <source>Input</source>
       <translation>입력</translation>
     </message>
     <message id="gamehq.settings.category.library">
-      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
       <source>Library</source>
       <translation>라이브러리</translation>
     </message>
     <message id="gamehq.settings.category.notifications_sound">
-      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
       <source>Notifications &amp; sound</source>
       <translation>알림 및 소리</translation>
     </message>
     <message id="gamehq.settings.category.replay">
-      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="229"></location>
       <source>Replay</source>
       <translation>리플레이</translation>
+    </message>
+    <message id="gamehq.settings.category.sharing">
+      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
+      <source>Sharing</source>
+      <translation type="unfinished"></translation>
     </message>
     <message id="gamehq.settings.disclosure.default">
       <location filename="src/ui/qml/components/SettingsDisclosure.qml" line="9"></location>
@@ -3518,12 +3523,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>하나의 버튼, 여러 제스처</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="513"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="516"></location>
       <source>All controller, keyboard, and mouse overrides return to their built-in defaults.</source>
       <translation>모든 컨트롤러, 키보드 및 마우스 사용자 지정이 기본값으로 돌아갑니다.</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="511"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="514"></location>
       <source>Restore all input bindings?</source>
       <translation>모든 입력 바인딩을 복원할까요?</translation>
     </message>
@@ -3839,22 +3844,22 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>라이브러리</translation>
     </message>
     <message id="gamehq.settings.portable_import.confirm">
-      <location filename="src/ui/qml/SettingsView.qml" line="478"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="481"></location>
       <source>Import and restart</source>
       <translation>가져오고 다시 시작</translation>
     </message>
     <message id="gamehq.settings.portable_import.failed">
-      <location filename="src/ui/qml/SettingsView.qml" line="483"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="486"></location>
       <source>Portable import failed</source>
       <translation>포터블 가져오기 실패</translation>
     </message>
     <message id="gamehq.settings.portable_import.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="476"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="479"></location>
       <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
       <translation>설치된 프로필이 비어 있을 때만 가져올 수 있습니다. 포터블 캡처는 원래 위치에 유지되고 원본은 변경되지 않으며, 가져오기를 완료하기 위해 GameHQ가 다시 시작됩니다.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="474"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="477"></location>
       <source>Import this portable profile?</source>
       <translation>이 포터블 프로필을 가져올까요?</translation>
     </message>
@@ -4385,24 +4390,94 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>리플레이</translation>
     </message>
     <message id="gamehq.settings.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="496"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="499"></location>
       <source>Window preferences, capture behavior, replay options, notifications, and sound settings return to defaults. Captures and library data are not deleted.</source>
       <translation>창 환경 설정, 캡처 동작, 리플레이 옵션, 알림 및 소리 설정이 기본값으로 돌아갑니다. 캡처와 라이브러리 데이터는 삭제되지 않습니다.</translation>
     </message>
     <message id="gamehq.settings.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="494"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="497"></location>
       <source>Restore all settings?</source>
       <translation>모든 설정을 복원할까요?</translation>
     </message>
     <message id="gamehq.settings.restore_category.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="527"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="530"></location>
       <source>%1 options return to defaults. Captures and library data are not deleted.</source>
       <translation>%1 옵션이 기본값으로 돌아갑니다. 캡처와 라이브러리 데이터는 삭제되지 않습니다.</translation>
     </message>
     <message id="gamehq.settings.restore_category.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="525"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="528"></location>
       <source>Restore %1 settings?</source>
       <translation>%1 설정을 복원할까요?</translation>
+    </message>
+    <message id="gamehq.settings.sharing.auth.connected">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="25"></location>
+      <source>Connected</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.auth.connecting">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="28"></location>
+      <source>Connecting…</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.auth.disconnected">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="34"></location>
+      <source>Not connected</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.auth.error">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="31"></location>
+      <source>Connection problem</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.description">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="16"></location>
+      <source>Choose where captures can be shared. Nothing is ever sent without you picking a capture and a destination.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.disconnect.action">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="102"></location>
+      <source>Disconnect</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.disconnect.description">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
+      <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.disconnect.label">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
+      <source>Disconnect and remove the saved session</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.master.description">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="50"></location>
+      <source>Turns the Share option on or off everywhere: gallery, lightbox and overlay.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.master.label">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="48"></location>
+      <source>Enable Sharing</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.master.title">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="45"></location>
+      <source>Sharing</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.providers.description">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
+      <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.providers.title">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
+      <source>Destinations</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.title">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="14"></location>
+      <source>Sharing</source>
+      <translation type="unfinished"></translation>
     </message>
     <message id="gamehq.settings.theme.blue.description">
       <location filename="src/ui/qml/themes/Skin.qml" line="22"></location>
@@ -4526,17 +4601,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>신스웨이브</translation>
     </message>
     <message id="gamehq.share.addons.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="203"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="122"></location>
       <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
       <translation>켜면 이 PC에서 내 계정으로 실행되는 다른 프로그램이 공유 대상을 제공하고, 공유하려고 선택한 캡처를 받을 수 있습니다. 기본값은 꺼짐입니다. 적용하려면 GameHQ를 다시 시작하세요.</translation>
     </message>
     <message id="gamehq.share.addons.label">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="201"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="120"></location>
       <source>Allow add-ons from other programs</source>
       <translation>다른 프로그램의 애드온 허용</translation>
     </message>
     <message id="gamehq.share.addons.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="198"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="117"></location>
       <source>Share add-ons</source>
       <translation>공유 애드온</translation>
     </message>
@@ -4581,32 +4656,42 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>이 캡처가 더 이상 디스크에 없습니다.</translation>
     </message>
     <message id="gamehq.share.error.generic">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="229"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="235"></location>
       <source>This capture could not be shared.</source>
       <translation>이 캡처를 공유할 수 없습니다.</translation>
     </message>
     <message id="gamehq.share.error.network_error">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="226"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="232"></location>
       <source>GameHQ couldn't reach the service. Check your connection.</source>
       <translation>GameHQ가 서비스에 연결하지 못했습니다. 연결 상태를 확인하세요.</translation>
     </message>
     <message id="gamehq.share.error.not_connected">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="219"></location>
       <source>Connect this account in Settings first.</source>
       <translation>먼저 설정에서 이 계정을 연결하세요.</translation>
     </message>
-    <message id="gamehq.share.error.rate_limited">
+    <message id="gamehq.share.error.provider_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
+      <source>That destination is turned off in Settings &gt; Sharing.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.share.error.rate_limited">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="222"></location>
       <source>Discord is limiting uploads right now. Wait a moment and try again.</source>
       <translation>Discord에서 현재 업로드를 제한하고 있습니다. 잠시 후 다시 시도하세요.</translation>
     </message>
+    <message id="gamehq.share.error.sharing_disabled">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
+      <source>Sharing is turned off. Turn it on in Settings &gt; Sharing.</source>
+      <translation type="unfinished"></translation>
+    </message>
     <message id="gamehq.share.error.too_large">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="219"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="225"></location>
       <source>This capture is too large for that channel.</source>
       <translation>이 캡처는 해당 채널에 올리기에는 너무 큽니다.</translation>
     </message>
     <message id="gamehq.share.error.webhook_revoked">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="223"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="229"></location>
       <source>That channel's webhook no longer works. Remove it in Settings and add it again.</source>
       <translation>해당 채널의 웹훅이 더 이상 작동하지 않습니다. 설정에서 삭제한 뒤 다시 추가하세요.</translation>
     </message>
@@ -4681,7 +4766,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>이미 이 캡처를 여기에 공유했습니다. 다시 공유할까요?</translation>
     </message>
     <message id="gamehq.share.sending">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="237"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="243"></location>
       <source>Sharing…</source>
       <translation>공유하는 중…</translation>
     </message>
@@ -4741,7 +4826,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Telegram을 열어 채팅을 선택합니다. GameHQ는 Telegram에 로그인하지 않습니다.</translation>
     </message>
     <message id="gamehq.share.title">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="341"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="347"></location>
       <source>Share</source>
       <translation>공유</translation>
     </message>

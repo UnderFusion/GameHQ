@@ -12,6 +12,7 @@
 #include <QVector>
 
 class QTimer;
+class ConfigManager;
 
 namespace share
 {
@@ -42,6 +43,7 @@ class Service : public QObject
     Q_PROPERTY(QVariantMap lastResult READ lastResult NOTIFY lastResultChanged)
     Q_PROPERTY(QString targetsProviderId READ targetsProviderId NOTIFY targetsChanged)
     Q_PROPERTY(bool targetsLoading READ targetsLoading NOTIFY targetsChanged)
+    Q_PROPERTY(bool sharingEnabled READ sharingEnabled NOTIFY enablementChanged)
 
 public:
     enum class Phase { Idle, Choosing, Sending, Finished };
@@ -50,6 +52,20 @@ public:
     ~Service() override;
 
     ProviderRegistry* registry() const { return m_registry; }
+
+    // Settings > Sharing. Without a config every provider is enabled, which
+    // keeps tests and tools that build a bare Service unchanged.
+    void setConfig(ConfigManager* config);
+    bool sharingEnabled() const;
+    // Master switch AND the provider's own switch. External add-ons are
+    // governed by the host (share.external_providers), never by this switch.
+    bool providerEnabled(const QString& providerId) const;
+    // One row per switchable provider, registry order:
+    // { id, name, enabled, available, availability, reason, auth, access,
+    //   privacy, canDisconnect }. Disabled providers are included.
+    Q_INVOKABLE QVariantList providerSettings() const;
+    Q_INVOKABLE void setProviderEnabled(const QString& providerId, bool enabled);
+    Q_INVOKABLE void setSharingEnabled(bool enabled);
 
     // Opens a session for one capture. Fails (false, lastError set) for a
     // missing/unsupported file; any previous finished session is replaced.
@@ -109,6 +125,7 @@ signals:
     void lastResultChanged();
     void targetsChanged();
     void providersChanged();
+    void enablementChanged();
     void finished(const QVariantMap& result);
 
 private:
@@ -131,6 +148,7 @@ private:
     QString dedupeKey(const QString& providerId, const QString& targetId) const;
 
     ProviderRegistry* m_registry;
+    ConfigManager* m_config = nullptr;
     Request m_request;
     Phase m_phase = Phase::Idle;
     QString m_lastError;

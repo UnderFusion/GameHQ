@@ -69,6 +69,13 @@ inline constexpr QLatin1StringView NotificationsEnabled{ "notifications.enabled"
 // through the Share Provider API (docs/share-provider-api-v1.md). Off by
 // default; read once at startup.
 inline constexpr QLatin1StringView ShareExternalProviders{ "share.external_providers" };
+// Master switch and per-provider switches (Settings > Sharing). Turning one
+// off only hides that destination: credentials, sessions and saved
+// destinations stay until the user disconnects or removes them explicitly.
+// A provider's key is ShareProviderPrefix + provider id + ShareProviderSuffix.
+inline constexpr QLatin1StringView ShareEnabled{ "share.enabled" };
+inline constexpr QLatin1StringView ShareProviderPrefix{ "share.provider." };
+inline constexpr QLatin1StringView ShareProviderSuffix{ ".enabled" };
 
 // ui.* — application presentation preferences. The explicit value "system"
 // is retained so first-run bootstrap can distinguish it from an absent key.

@@ -45,6 +45,7 @@ constexpr std::array liveKeys{
     ConfigKeys::TrayMinimizeToTray,
     ConfigKeys::NotificationsEnabled,
     ConfigKeys::ShareExternalProviders,
+    ConfigKeys::ShareEnabled,
     ConfigKeys::UiLanguage,
     ConfigKeys::UiPage,
     ConfigKeys::UiSettingsCategory,

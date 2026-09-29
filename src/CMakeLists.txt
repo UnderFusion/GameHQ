@@ -247,6 +247,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/SettingsDisclosure.qml
         ui/qml/settings/GeneralSettingsPage.qml
         ui/qml/settings/CaptureSettingsPage.qml
+        ui/qml/settings/SharingSettingsPage.qml
         ui/qml/settings/ReplaySettingsPage.qml
         ui/qml/settings/InputSettingsPage.qml
         ui/qml/settings/MappingPresetSection.qml
