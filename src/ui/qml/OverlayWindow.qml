@@ -57,6 +57,7 @@ Window {
             content.rememberSelection()
             content.menuOpen = false
             content.menuIndex = 0
+            viewer.close()
             content.stopVideoFocus()
         } else if (!content.restoreSelection()) {
             content.selectDefaultSection()
@@ -146,7 +147,11 @@ Window {
         property int sidebarIndex: 0
         property int menuIndex: 0
         property bool videoFocused: false   // X (Cross) enters clip-player mode in the big preview
-        onVideoFocusedChanged: input.setPlaybackActive(content.videoFocused)
+        // Playback bindings (Cross = play/pause, D-pad = seek, Share = frame
+        // grab) apply to the inline clip and to a clip shown full screen.
+        readonly property bool playbackActive: content.videoFocused
+            || (viewer.open && viewer.currentIsVideo)
+        onPlaybackActiveChanged: input.setPlaybackActive(content.playbackActive)
         property var categories: SidebarCategories.categories(app.currentGameAvailable)
         function totalSidebarCount() { return content.categories.length + app.games.length }
 
@@ -227,12 +232,6 @@ Window {
             content.selectSidebarEntryAt(idx, "nav_tick")
         }
 
-        function toggleMenu() {
-            content.menuOpen = !content.menuOpen
-            if (content.menuOpen)
-                content.menuIndex = 0
-        }
-
         function menuStep(direction) {
             content.menuIndex = (content.menuIndex + direction + 2) % 2
             sounds.play("nav_tick")
@@ -255,6 +254,13 @@ Window {
         function revealVideoControls() {
             if (content.videoFocused)
                 previewStage.revealControls()
+        }
+
+        function revealControls() {
+            if (viewer.open)
+                viewer.revealControls()
+            else
+                content.revealVideoControls()
         }
 
         function seekVideo(deltaMs) {
@@ -288,6 +294,10 @@ Window {
         // pad gesture that switches items â€” see the user request that L1/R1
         // and d-pad seek must be two independent controls.
         function handleCaptureStep(direction) {
+            if (viewer.open) {
+                viewer.step(direction)
+                return
+            }
             if (content.menuOpen)
                 return
             if (direction < 0)
@@ -300,6 +310,10 @@ Window {
         // when no clip is in focus (e.g. on a screenshot, or before X has
         // been pressed on a video) â€” d-pad never flips captures.
         function handleSeekStep(direction) {
+            if (viewer.open) {
+                viewer.seekVideo(direction * viewer.seekStepMs)
+                return
+            }
             if (content.menuOpen)
                 return
             if (!content.videoFocused)
@@ -308,6 +322,8 @@ Window {
         }
 
         function handleNavigateVertical(direction) {
+            if (viewer.open)
+                return   // the sidebar filter behind the viewer stays put
             if (content.menuOpen)
                 content.menuStep(direction)
             else
@@ -319,11 +335,37 @@ Window {
                 content.menuConfirm()
                 return
             }
-            // X (Cross) is reserved for playing a video clip in the big preview
-            // pane itself. Screenshots are already shown there on selection, so
-            // X only does something for videos.
+            if (viewer.open) {
+                viewer.toggleVideoPlayback()
+                return
+            }
+            // X (Cross) plays a clip inline in the big preview pane, and opens a
+            // screenshot in the full-screen viewer.
             var item = overlayGallery.get(strip.currentIndex)
             if (item && item.captureType === "video")
+                content.toggleVideoPlayback()
+            else if (item && item.filePath)
+                content.openViewer()
+        }
+
+        function openViewer() {
+            content.stopVideoFocus()
+            viewer.openAt(strip.currentIndex)
+            sounds.play("confirm")
+        }
+
+        function toggleMenu() {
+            if (viewer.open)
+                return
+            content.menuOpen = !content.menuOpen
+            if (content.menuOpen)
+                content.menuIndex = 0
+        }
+
+        function togglePlayback() {
+            if (viewer.open)
+                viewer.toggleVideoPlayback()
+            else
                 content.toggleVideoPlayback()
         }
 
@@ -331,11 +373,13 @@ Window {
             if (content.menuOpen)
                 return
             sounds.play("favorite")
-            overlayGallery.toggleFavorite(strip.currentIndex)
+            overlayGallery.toggleFavorite(viewer.open ? viewer.index : strip.currentIndex)
         }
 
         function handleBack() {
-            if (content.menuOpen)
+            if (viewer.open)
+                viewer.close()   // Circle leaves full screen before anything else
+            else if (content.menuOpen)
                 content.menuOpen = false
             else if (content.videoFocused) {
                 content.revealVideoControls()
@@ -347,8 +391,7 @@ Window {
 
         Keys.onPressed: (event) => {
             overlayWindow.usingGamepad = false
-            if (content.videoFocused)
-                content.revealVideoControls()
+            content.revealControls()
             event.accepted = input.handleKeyPressed(event.key, event.modifiers,
                                                     event.isAutoRepeat)
         }
@@ -373,22 +416,22 @@ Window {
             }
             function onOverlayNavigateVertical(direction) {
                 overlayWindow.usingGamepad = true
-                content.revealVideoControls()
+                content.revealControls()
                 content.handleNavigateVertical(direction)
             }
             function onOverlayConfirm() {
                 overlayWindow.usingGamepad = true
-                content.revealVideoControls()
+                content.revealControls()
                 content.handleConfirm()
             }
             function onOverlayFavorite() {
                 overlayWindow.usingGamepad = true
-                content.revealVideoControls()
+                content.revealControls()
                 content.handleFavorite()
             }
             function onOverlayMenu() {
                 overlayWindow.usingGamepad = true
-                content.revealVideoControls()
+                content.revealControls()
                 content.toggleMenu()
             }
             // L1/R1: the ONLY pad path that flips between captures in the
@@ -397,27 +440,30 @@ Window {
             // above), so the two stay fully independent.
             function onOverlayGameStep(direction) {
                 overlayWindow.usingGamepad = true
-                content.revealVideoControls()
+                content.revealControls()
                 content.handleCaptureStep(direction)
             }
             function onOverlayHideRequested() {
                 overlayWindow.usingGamepad = true
-                content.revealVideoControls()
+                content.revealControls()
                 content.handleBack()
             }
             function onPlaybackPlayPause() {
                 overlayWindow.usingGamepad = true
-                content.toggleVideoPlayback()
+                content.togglePlayback()
             }
             function onPlaybackSeek(direction) {
                 overlayWindow.usingGamepad = true
-                content.seekVideo(direction * previewStage.seekStepMs)
+                content.handleSeekStep(direction)
             }
             // Share while a clip is focused: grab the on-screen frame as a
             // screenshot instead of the global foreground screenshot.
             function onFrameGrabRequested() {
                 overlayWindow.usingGamepad = true
-                previewStage.saveCurrentFrame()
+                if (viewer.open)
+                    viewer.saveCurrentFrame()
+                else
+                    previewStage.saveCurrentFrame()
             }
         }
 
@@ -494,6 +540,22 @@ Window {
             usingGamepad: overlayWindow.usingGamepad
             menuOpen: content.menuOpen
             videoFocused: content.videoFocused
+        }
+    }
+
+    // Full-screen viewer (Cross on a screenshot). Above the panels, below the
+    // focus warning so that stays readable.
+    OverlayViewer {
+        parent: uiSurface.contentItem
+        id: viewer
+        anchors.fill: parent
+        z: 5
+        galleryModel: overlayGallery
+        usingGamepad: overlayWindow.usingGamepad
+        onClosed: function(lastIndex) {
+            // Return to the strip on the capture the viewer ended on.
+            if (lastIndex >= 0 && lastIndex < overlayGallery.rowCount())
+                strip.currentIndex = lastIndex
         }
     }
 
