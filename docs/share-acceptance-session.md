@@ -31,7 +31,7 @@ Get-FileHash build\GameHQ.exe -Algorithm SHA256   # should equal the out\GameHQ.
 
 **Telegram Integrated (section 4.7) is not runnable on this build.** It needs
 two things only you can supply: the optional TDLib runtime (build it with
-`tools	dlibuild-tdjson.ps1`, then record its SHA-256 in
+`tools\tdlib\build-tdjson.ps1`, then record its SHA-256 in
 `src/telegram/TdRuntimePin.h`, which produces a new commit and build) and a
 Telegram `api_id`/`api_hash` for GameHQ from my.telegram.org (typed into
 Settings > Sharing, never pasted into chat or committed). Until then GameHQ
@@ -172,7 +172,7 @@ Prerequisite: the runtime build and your GameHQ API ID/hash (see section 0).
 | I5 | Lightbox, **controller**: Share the **MP4** to the same chat. | **Sent.**; it arrives as a playable video (note whether the aspect ratio looks right). |
 | I6 | Overlay, **controller**: Share the **JPG**. | Works with D-pad/Cross/Circle only; focus returns to the game/overlay. |
 | I7 | Restart GameHQ, share again without logging in; also wait more than 5 minutes idle, then share. | It resumes the saved session with no prompts. |
-| I8 | Turn **Telegram account** off (S2-style): the session must remain. Then use **Disconnect** on its row. | Off only hides it (still connected when re-enabled). Disconnect signs out (Telegram > Settings > Devices no longer lists GameHQ) and `build\gamehq-data\share\sessions	elegram.integrated` is gone. |
+| I8 | Turn **Telegram account** off (S2-style): the session must remain. Then use **Disconnect** on its row. | Off only hides it (still connected when re-enabled). Disconnect signs out (Telegram > Settings > Devices no longer lists GameHQ) and `build\gamehq-data\share\sessions\telegram.integrated` is gone. |
 | I9 | During I2-I8 watch GameHQ. | It never shows chats, messages, unread counts or Telegram notifications. Your Telegram status is not "online" because of GameHQ. |
 
 ### 4.6 Cross-cutting
