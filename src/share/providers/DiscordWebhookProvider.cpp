@@ -80,7 +80,7 @@ QVector<Provider::SavedDestination> DiscordWebhookProvider::savedDestinations() 
 {
     QVector<SavedDestination> out;
     for (const DiscordWebhookStore::Destination& d : m_store->list())
-        out.append({ d.id, d.name });
+        out.append({ d.id, d.name, d.pinned });
     return out;
 }
 
@@ -98,6 +98,22 @@ bool DiscordWebhookProvider::removeSavedDestination(const QString& id)
     if (removed)
         emit stateChanged();
     return removed;
+}
+
+QString DiscordWebhookProvider::renameSavedDestination(const QString& id, const QString& name)
+{
+    const QString code = m_store->rename(id, name);
+    if (code.isEmpty())
+        emit stateChanged();
+    return code;
+}
+
+bool DiscordWebhookProvider::setSavedDestinationPinned(const QString& id, bool pinned)
+{
+    const bool ok = m_store->setPinned(id, pinned);
+    if (ok)
+        emit stateChanged();
+    return ok;
 }
 
 void DiscordWebhookProvider::requestTargets(const QString& queryId, const Request& request,
@@ -130,8 +146,9 @@ void DiscordWebhookProvider::start(const Job& job, const Request& request, const
         finish(r);
     };
 
-    if (request.sizeBytes() > m_maxUploadBytes)
-        return fail("too_large");
+    // No local size limit: the upload is streamed (no memory reason for one)
+    // and Discord's real limit depends on the server, so its 413 is the
+    // authority.
     const QString url = m_store->webhookUrl(target.id);
     if (url.isEmpty())
         return fail("webhook_missing");   // secret deleted behind our back

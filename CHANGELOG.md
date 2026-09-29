@@ -6,7 +6,7 @@ Public release history and the current local release candidate.
 
 ### Added
 
-- Share: post a screenshot or clip straight to a Discord channel. Add channels with a webhook link in Settings > Capture; the post appears as the webhook, not as your Discord account, and the link is stored in Windows Credential Manager.
+- Share: post a screenshot or clip straight to a Discord channel. Add channels with a webhook link in Settings > Capture and pin the ones you use most; the post appears as the webhook, not as your Discord account, and the link is stored in Windows Credential Manager.
 - Share: new Discord destination. It copies the screenshot or clip, opens Discord, and you paste it into a chat. GameHQ never signs in to Discord.
 - Share for saved screenshots and clips: press Square on a capture and choose *Share*, click the new Share icon on a capture tile, or use the Share button in the full-screen viewer. It works the same in the gallery, the viewer and the overlay, and is fully usable with a controller (Cross selects, Circle goes back). Destinations so far: *Telegram*, which opens Telegram Desktop's own chat picker with that one file (GameHQ never signs in to Telegram), and *Copy to clipboard*. Discord follows. GameHQ only says "Sent" when a service confirms delivery, and asks before sharing the same capture to the same place twice. The capture button on the controller is unchanged.
 - Overlay: Cross on a screenshot opens it full screen. L1/R1 step through screenshots and clips (clips play full screen), and Circle returns to the capture strip on the item you ended on. Cross on a clip still plays it in the preview.

@@ -352,25 +352,157 @@ private slots:
         QCOMPARE(s.lastResult().value("errorCode").toString(), QStringLiteral("network_error"));
     }
 
-    void oversizedMediaIsRefusedBeforeAnyUpload()
+    void noLocalSizeCapTheServerDecides()
     {
+        // GameHQ enforces no size limit of its own: a large clip is streamed
+        // and Discord's answer (413 above) is the authority.
         FakeDiscord server;
         QVERIFY(server.listen(QHostAddress::LocalHost));
         DiscordWebhookStore store = makeStore();
         QVERIFY(store.add("Clips", webhookUrl(server)).isEmpty());
         DiscordWebhookProvider p(&store);
-        p.setMaxUploadBytes(10);
         Service s;
         s.registry()->add(&p);
-        QVERIFY(s.open(capture("e.mp4", QByteArray(64, 'x'))));
+        const QByteArray big(6 * 1024 * 1024, 'v');
+        QVERIFY(s.open(capture("big.mp4", big)));
         QVERIFY(s.requestTargets("discord.webhook"));
         QSignalSpy done(&s, &Service::finished);
-        s.share("discord.webhook", s.targets().first().toMap().value("id").toString());
-        if (done.isEmpty())
-            QVERIFY(done.wait(5000));
-        QCOMPARE(s.lastResult().value("outcome").toString(), QStringLiteral("failed"));
-        QCOMPARE(s.lastResult().value("errorCode").toString(), QStringLiteral("too_large"));
-        QCOMPARE(server.requests, 0);
+        QVERIFY(!s.share("discord.webhook", s.targets().first().toMap().value("id").toString()).isEmpty());
+        QVERIFY(done.wait(20000));
+        QCOMPARE(s.lastResult().value("outcome").toString(), QStringLiteral("sent"));
+        QVERIFY(server.requestBody.size() > big.size());
+        QVERIFY(server.requestBody.contains(big));
+    }
+
+    void pinnedDestinationsSortFirstThenRecentThenAddOrder()
+    {
+        FakeDiscord server;
+        QVERIFY(server.listen(QHostAddress::LocalHost));
+        DiscordWebhookStore store = makeStore();
+        QString a, b, c, d;
+        QVERIFY(store.add("A", webhookUrl(server), &a).isEmpty());
+        QVERIFY(store.add("B", webhookUrl(server), &b).isEmpty());
+        QVERIFY(store.add("C", webhookUrl(server), &c).isEmpty());
+        QVERIFY(store.add("D", webhookUrl(server), &d).isEmpty());
+        const auto names = [&store] {
+            QStringList out;
+            for (const auto& x : store.list())
+                out << x.name;
+            return out;
+        };
+        QCOMPARE(names(), (QStringList{ "A", "B", "C", "D" }));   // add order
+
+        store.markUsed(c);
+        QTest::qWait(5);
+        store.markUsed(d);   // D is the most recent
+        QCOMPARE(names(), (QStringList{ "D", "C", "A", "B" }));
+
+        QVERIFY(store.setPinned(b, true));
+        QCOMPARE(names(), (QStringList{ "B", "D", "C", "A" }));   // pinned first
+        QVERIFY(store.setPinned(a, true));
+        // Two pinned, neither used: add order; then the recent ones.
+        QCOMPARE(names(), (QStringList{ "A", "B", "D", "C" }));
+
+        // Using a pinned one moves it up inside the pinned group only.
+        QTest::qWait(5);
+        store.markUsed(b);
+        QCOMPARE(names(), (QStringList{ "B", "A", "D", "C" }));
+
+        QVERIFY(store.setPinned(b, false));
+        QCOMPARE(names(), (QStringList{ "A", "B", "D", "C" }));   // B is recent, unpinned
+        QVERIFY(!store.setPinned("0123456789abcdef0123456789abcdef", true));
+    }
+
+    void pinStatePersistsAndCarriesNoSecrets()
+    {
+        FakeDiscord server;
+        QVERIFY(server.listen(QHostAddress::LocalHost));
+        QString id;
+        {
+            DiscordWebhookStore store = makeStore();
+            QVERIFY(store.add("Pinned one", webhookUrl(server), &id).isEmpty());
+            QVERIFY(store.add("Other", webhookUrl(server)).isEmpty());
+            QVERIFY(store.setPinned(id, true));
+        }
+        DiscordWebhookStore reopened = makeStore();   // a new process would read the same file
+        QCOMPARE(reopened.list().first().id, id);
+        QVERIFY(reopened.list().first().pinned);
+        QVERIFY(!reopened.list().last().pinned);
+        QCOMPARE(reopened.webhookUrl(id), webhookUrl(server));
+
+        QByteArray json;
+        {
+            QFile f(m_dir.filePath("share/discord-webhooks.json"));
+            QVERIFY(f.open(QIODevice::ReadOnly));
+            json = f.readAll();
+        }
+        QVERIFY(json.contains("\"pinned\": true"));
+        QVERIFY(!json.contains(m_token.toUtf8()));
+        QVERIFY(!json.contains("127.0.0.1"));
+        QVERIFY(!json.contains("webhooks"));
+    }
+
+    void renameAndRemoveKeepPinsSecretsAndOrderConsistent()
+    {
+        FakeDiscord server;
+        QVERIFY(server.listen(QHostAddress::LocalHost));
+        DiscordWebhookStore store = makeStore();
+        QString a, b, c;
+        QVERIFY(store.add("A", webhookUrl(server), &a).isEmpty());
+        QVERIFY(store.add("B", webhookUrl(server), &b).isEmpty());
+        QVERIFY(store.add("C", webhookUrl(server), &c).isEmpty());
+        QVERIFY(store.setPinned(c, true));
+
+        // Rename keeps the id, the secret, the pin and the position.
+        QCOMPARE(store.rename(c, "  Team   clips "), QString());
+        QCOMPARE(store.list().first().id, c);
+        QCOMPARE(store.list().first().name, QStringLiteral("Team clips"));
+        QVERIFY(store.list().first().pinned);
+        QCOMPARE(store.webhookUrl(c), webhookUrl(server));
+        QCOMPARE(store.rename(c, "   "), QStringLiteral("invalid_name"));
+        QCOMPARE(store.rename(c, QString(DiscordWebhookStore::kMaxNameLength + 1, 'x')),
+                 QStringLiteral("invalid_name"));
+        QCOMPARE(store.rename("0123456789abcdef0123456789abcdef", "x"), QStringLiteral("not_found"));
+        QCOMPARE(store.list().first().name, QStringLiteral("Team clips"));   // failed renames changed nothing
+
+        // Removing the pinned one drops its secret; the others keep order.
+        QVERIFY(store.remove(c));
+        QVERIFY(store.webhookUrl(c).isEmpty());
+        QCOMPARE(store.list().size(), 2);
+        QCOMPARE(store.list().first().id, a);
+        QVERIFY(!store.setPinned(c, false));   // gone
+        QVERIFY(store.webhookUrl(a) == webhookUrl(server));
+    }
+
+    void pinningAndRenamingWorkThroughTheGenericService()
+    {
+        FakeDiscord server;
+        QVERIFY(server.listen(QHostAddress::LocalHost));
+        DiscordWebhookStore store = makeStore();
+        DiscordWebhookProvider p(&store);
+        Service s;
+        s.registry()->add(&p);
+        QVERIFY(s.addSavedDestination("discord.webhook", "First", webhookUrl(server)).isEmpty());
+        QVERIFY(s.addSavedDestination("discord.webhook", "Second", webhookUrl(server)).isEmpty());
+        const auto dests = [&s] {
+            return s.savedDestinationProviders().first().toMap().value("destinations").toList();
+        };
+        const QString second = dests().at(1).toMap().value("id").toString();
+
+        QVERIFY(s.setSavedDestinationPinned("discord.webhook", second, true));
+        QCOMPARE(dests().first().toMap().value("id").toString(), second);
+        QCOMPARE(dests().first().toMap().value("pinned").toBool(), true);
+        QCOMPARE(s.renameSavedDestination("discord.webhook", second, "Renamed"), QString());
+        QCOMPARE(dests().first().toMap().value("name").toString(), QStringLiteral("Renamed"));
+        QCOMPARE(s.renameSavedDestination("discord.webhook", second, ""), QStringLiteral("invalid_name"));
+        QCOMPARE(s.renameSavedDestination("telegram.desktop", second, "x"), QStringLiteral("unknown_provider"));
+        QVERIFY(!s.setSavedDestinationPinned("telegram.desktop", second, true));
+
+        // Share lists the same order, so a pinned channel is the first target.
+        QVERIFY(s.open(capture("pin.png")));
+        QVERIFY(s.requestTargets("discord.webhook"));
+        QCOMPARE(s.targets().first().toMap().value("id").toString(), second);
+        QCOMPARE(s.targets().first().toMap().value("name").toString(), QStringLiteral("Renamed"));
     }
 
     void cancellingAfterTheWholeUploadIsUnconfirmedNotCancelled()

@@ -1740,7 +1740,7 @@
         },
         {
           "file": "src/ui/qml/components/ShareDestinationsSection.qml",
-          "line": 85
+          "line": 98
         },
         {
           "file": "src/ui/qml/settings/LibrarySettingsPage.qml",
@@ -1857,7 +1857,7 @@
         },
         {
           "file": "src/ui/qml/components/ShareDestinationsSection.qml",
-          "line": 155
+          "line": 168
         }
       ],
       "plural": false,
@@ -14240,7 +14240,7 @@
         },
         {
           "file": "src/ui/qml/components/ShareDestinationsSection.qml",
-          "line": 96
+          "line": 109
         }
       ],
       "plural": false,
@@ -16219,6 +16219,23 @@
       "source_hash": "8b1094ebbfd3cb27c0ee67edc9c4a5e5ed3f6c66e1524682caf3425460af73fb"
     },
     {
+      "id": "gamehq.share.settings.pin",
+      "source": "Pin",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDestinationsSection.qml",
+          "line": 89
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529"
+    },
+    {
       "id": "gamehq.share.settings.title",
       "source": "Share destinations",
       "context": "ID",
@@ -16236,6 +16253,23 @@
       "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728"
     },
     {
+      "id": "gamehq.share.settings.unpin",
+      "source": "Unpin",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDestinationsSection.qml",
+          "line": 87
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9"
+    },
+    {
       "id": "gamehq.share.settings.webhook_label",
       "source": "Webhook link",
       "context": "ID",
@@ -16243,7 +16277,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDestinationsSection.qml",
-          "line": 119
+          "line": 132
         }
       ],
       "plural": false,

@@ -219,14 +219,19 @@ post to its one channel and nothing else.
 - **Storage:** the webhook URL is a credential and lives only in Windows
   Credential Manager (`GameHQ.Share/discord.webhook/dest-<id>`). The metadata
   file `gamehq-data/share/discord-webhooks.json` holds ids, names and a
-  last-used time only. Up to 20 channels; most recently used first. Disconnect
-  removes every channel and secret. The URL is validated (https, a Discord
+  last-used time and a pinned flag only. Up to 20 channels. Order: pinned first,
+  then the rest; inside each group the most recently used first, and channels
+  never used keep the order they were added in. Renaming changes only the
+  label (id, secret, pin and position stay). Disconnect removes every channel
+  and secret. The URL is validated (https, a Discord
   host, `/api[/vN]/webhooks/<id>/<token>`, no query/port/userinfo) before it is
   stored.
 - **Settings UI:** generic. `Service::savedDestinationProviders()` /
   `addSavedDestination()` / `removeSavedDestination()` and the `Provider`
   `savedDestinations()` hooks serve any provider with `SavedTargets`; the
-  section is hidden when none exists. The link field is masked and cleared
+  section is hidden when none exists. Each channel has Pin/Unpin and Remove;
+  rename is available on the service/provider API
+  (`renameSavedDestination`) but has no Settings control yet. The link field is masked and cleared
   after saving. The Share dialog needs no Discord-specific code; with no
   channel configured the destination shows as unavailable ("Add a Discord
   channel in Settings first.").
@@ -247,12 +252,12 @@ post to its one channel and nothing else.
   was still incomplete. Nothing is retried.
 - **Secrecy:** the URL never appears in logs, error codes, results or the
   metadata file (asserted by the test).
-- **Size:** Discord's per-upload limit is not in the webhook reference and
-  varies with the server, so the server's 413 is authoritative; a local
-  100 MiB ceiling only avoids absurd uploads. Time-sensitive.
-- **Not done:** pinned destinations (only most-recent-first ordering), and
-  the OAuth `webhook.incoming` setup flow (needs a backend to keep the client
-  secret). **Manual check pending (owner):** send a screenshot and a clip to a
+- **Size:** GameHQ enforces no upload size limit of its own. The file is
+  streamed in 64 KiB chunks (no memory reason for a cap), and Discord's limit
+  is not in the webhook reference and varies with the server, so Discord's
+  413 / code 40005 answer (`too_large`) is authoritative.
+- **Not done:** the OAuth `webhook.incoming` setup flow (needs a backend to
+  keep the client secret) and a rename control in Settings. **Manual check pending (owner):** send a screenshot and a clip to a
   real channel over real TLS from the overlay.
 
 ### Copy to clipboard (`clipboard`)

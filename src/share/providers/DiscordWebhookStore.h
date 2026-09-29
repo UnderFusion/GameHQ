@@ -23,6 +23,7 @@ public:
         QString id;
         QString name;
         qint64 lastUsedMs = 0;   // 0 = never used
+        bool pinned = false;
     };
     // Decides whether a pasted URL may be stored and later posted to.
     using UrlValidator = std::function<bool(const QString& url)>;
@@ -32,12 +33,17 @@ public:
 
     DiscordWebhookStore(QString metadataPath, SecretStore secrets, UrlValidator validator);
 
-    // Most recently used first, then by name; never-used ones keep add order.
+    // Pinned first, then the rest; inside each group most recently used
+    // first, and never-used ones keep the order they were added in.
     QVector<Destination> list() const;
     // "" on success (and *id set), else "invalid_name", "invalid_secret",
     // "too_many" or "storage_failed".
     QString add(const QString& name, const QString& url, QString* id = nullptr);
     bool remove(const QString& id);
+    // "" on success, else "invalid_name" or "not_found". Only the label
+    // changes; the id, the secret and the pin state stay.
+    QString rename(const QString& id, const QString& name);
+    bool setPinned(const QString& id, bool pinned);
     int removeAll();
     // Empty when the destination or its secret is gone.
     QString webhookUrl(const QString& id) const;

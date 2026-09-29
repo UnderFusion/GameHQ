@@ -68,6 +68,7 @@ QVector<DiscordWebhookStore::Destination> DiscordWebhookStore::load() const
         d.id = o.value(QStringLiteral("id")).toString();
         d.name = o.value(QStringLiteral("name")).toString();
         d.lastUsedMs = static_cast<qint64>(o.value(QStringLiteral("lastUsedMs")).toDouble());
+        d.pinned = o.value(QStringLiteral("pinned")).toBool();
         if (kId.match(d.id).hasMatch() && !d.name.isEmpty())
             out.append(d);
     }
@@ -80,7 +81,8 @@ bool DiscordWebhookStore::save(const QVector<Destination>& all) const
     for (const Destination& d : all)
         array.append(QJsonObject{ { QStringLiteral("id"), d.id },
                                   { QStringLiteral("name"), d.name },
-                                  { QStringLiteral("lastUsedMs"), static_cast<double>(d.lastUsedMs) } });
+                                  { QStringLiteral("lastUsedMs"), static_cast<double>(d.lastUsedMs) },
+                                  { QStringLiteral("pinned"), d.pinned } });
     QDir().mkpath(QFileInfo(m_path).absolutePath());
     QSaveFile file(m_path);
     if (!file.open(QIODevice::WriteOnly))
@@ -94,8 +96,11 @@ bool DiscordWebhookStore::save(const QVector<Destination>& all) const
 QVector<DiscordWebhookStore::Destination> DiscordWebhookStore::list() const
 {
     QVector<Destination> all = load();
-    // Stable: never-used destinations keep their add order at the end.
+    // Stable: never-used destinations keep their add order at the end of
+    // their group.
     std::stable_sort(all.begin(), all.end(), [](const Destination& a, const Destination& b) {
+        if (a.pinned != b.pinned)
+            return a.pinned;
         return a.lastUsedMs > b.lastUsedMs;
     });
     return all;
@@ -138,6 +143,35 @@ bool DiscordWebhookStore::remove(const QString& id)
     all.erase(it);
     m_secrets.remove(kProviderId, secretName(id));
     return save(all);
+}
+
+QString DiscordWebhookStore::rename(const QString& id, const QString& name)
+{
+    const QString cleanName = name.simplified();
+    if (cleanName.isEmpty() || cleanName.size() > kMaxNameLength)
+        return QStringLiteral("invalid_name");
+    QVector<Destination> all = load();
+    for (Destination& d : all) {
+        if (d.id == id) {
+            d.name = cleanName;
+            return save(all) ? QString() : QStringLiteral("storage_failed");
+        }
+    }
+    return QStringLiteral("not_found");
+}
+
+bool DiscordWebhookStore::setPinned(const QString& id, bool pinned)
+{
+    QVector<Destination> all = load();
+    for (Destination& d : all) {
+        if (d.id == id) {
+            if (d.pinned == pinned)
+                return true;
+            d.pinned = pinned;
+            return save(all);
+        }
+    }
+    return false;
 }
 
 int DiscordWebhookStore::removeAll()

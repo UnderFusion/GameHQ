@@ -499,7 +499,7 @@
     </message>
     <message id="gamehq.action.remove">
       <location filename="src/ui/qml/components/BindingCard.qml" line="151"></location>
-      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="85"></location>
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="98"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="108"></location>
       <source>Remove</source>
       <translation>Remove</translation>
@@ -532,7 +532,7 @@
     <message id="gamehq.action.save">
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="629"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="26"></location>
-      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="155"></location>
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="168"></location>
       <source>Save</source>
       <translation>Save</translation>
     </message>
@@ -4088,7 +4088,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.presets.name_label">
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="22"></location>
-      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="96"></location>
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="109"></location>
       <source>Name</source>
       <translation>Name</translation>
     </message>
@@ -4673,13 +4673,23 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>You have reached the limit of saved channels.</source>
       <translation>You have reached the limit of saved channels.</translation>
     </message>
+    <message id="gamehq.share.settings.pin">
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="89"></location>
+      <source>Pin</source>
+      <translation>Pin</translation>
+    </message>
     <message id="gamehq.share.settings.title">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="39"></location>
       <source>Share destinations</source>
       <translation>Share destinations</translation>
     </message>
+    <message id="gamehq.share.settings.unpin">
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="87"></location>
+      <source>Unpin</source>
+      <translation>Unpin</translation>
+    </message>
     <message id="gamehq.share.settings.webhook_label">
-      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="119"></location>
+      <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="132"></location>
       <source>Webhook link</source>
       <translation>Webhook link</translation>
     </message>

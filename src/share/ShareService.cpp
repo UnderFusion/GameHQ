@@ -346,7 +346,8 @@ QVariantList Service::savedDestinationProviders() const
         QVariantList destinations;
         for (const Provider::SavedDestination& d : p->savedDestinations())
             destinations.append(QVariantMap{ { QStringLiteral("id"), d.id },
-                                             { QStringLiteral("name"), d.name } });
+                                             { QStringLiteral("name"), d.name },
+                                             { QStringLiteral("pinned"), d.pinned } });
         out.append(QVariantMap{ { QStringLiteral("id"), p->id() },
                                 { QStringLiteral("name"), p->displayName() },
                                 { QStringLiteral("privacy"), p->privacyNotice() },
@@ -381,6 +382,31 @@ bool Service::removeSavedDestination(const QString& providerId, const QString& i
     qInfo() << "Share: remove destination for" << providerId << (removed ? "ok" : "not found");
     emit providersChanged();
     return removed;
+}
+
+QString Service::renameSavedDestination(const QString& providerId, const QString& id,
+                                        const QString& name)
+{
+    Provider* p = m_registry->find(providerId);
+    if (!p || !p->capabilities().testFlag(Capability::SavedTargets))
+        return QStringLiteral("unknown_provider");
+    if (m_hasActive && m_active.job.providerId == providerId)
+        return QStringLiteral("busy");
+    const QString code = sanitizedCode(p->renameSavedDestination(id, name));
+    emit providersChanged();
+    return code;
+}
+
+bool Service::setSavedDestinationPinned(const QString& providerId, const QString& id, bool pinned)
+{
+    Provider* p = m_registry->find(providerId);
+    if (!p || !p->capabilities().testFlag(Capability::SavedTargets))
+        return false;
+    if (m_hasActive && m_active.job.providerId == providerId)
+        return false;
+    const bool ok = p->setSavedDestinationPinned(id, pinned);
+    emit providersChanged();
+    return ok;
 }
 
 void Service::onJobProgress(Provider* provider, const QString& jobId, JobState state,

@@ -81,6 +81,19 @@ SettingsSection {
                     label: modelData.name
                     compact: true
                     AccentButton {
+                        // Pinned destinations are listed first in Share.
+                        label: modelData.pinned
+                               //% "Unpin"
+                               ? qsTrId("gamehq.share.settings.unpin")
+                               //% "Pin"
+                               : qsTrId("gamehq.share.settings.pin")
+                        onClicked: {
+                            shareService.setSavedDestinationPinned(
+                                provider.modelData.id, modelData.id, !modelData.pinned)
+                            sounds.play("confirm")
+                        }
+                    }
+                    AccentButton {
                         //% "Remove"
                         label: qsTrId("gamehq.action.remove")
                         onClicked: {
