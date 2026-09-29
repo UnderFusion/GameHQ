@@ -155,6 +155,32 @@ dialog tracks an explicit `isOpen` state rather than item visibility. Hiding
 the overlay closes an idle dialog; a running send keeps going and its result
 is shown on the next open.
 
+## Providers
+
+### Telegram Desktop (`telegram.desktop`, t12)
+
+`src/share/providers/TelegramDesktopProvider.{h,cpp}`, tests
+`tests/tst_sharetelegramdesktop.cpp`. No Telegram login in GameHQ
+(`access: none`).
+
+- **Detection:** the registered `tg` URL handler
+  (`HKCU`, then `HKLM` `Software\Classes	g\shell\open\command`), else
+  `%APPDATA%\Telegram Desktop\Telegram.exe`. Only an existing `Telegram.exe`
+  counts; otherwise the destination is listed as unavailable ("Telegram Desktop
+  isn't installed."). The Microsoft Store build does not register a classic
+  handler and is not detected.
+- **Hand-off:** `Telegram.exe [-workdir <dir>] -sendpath <capture>`. The
+  `-workdir` pair is copied from the registered handler so a portable/custom
+  profile gets the file; the `-- %1` URL placeholder is dropped. Telegram shows
+  its own "choose a chat" box for that one file; the user picks and sends
+  there. `AllowSetForegroundWindow(ASFW_ANY)` lets an already-running
+  Telegram come to the front.
+- **Result:** `handed_off` when the process starts, `failed`/`launch_failed`
+  when it does not, never `sent`. In the overlay a hand-off closes the dialog
+  and hides the overlay so Telegram's window is visible.
+
+### Copy to clipboard (`clipboard`)
+
 Built-in provider: `share::ClipboardShareProvider` (`clipboard`) puts the file
 on the clipboard (plus image data for screenshots). Result: `copied`.
 

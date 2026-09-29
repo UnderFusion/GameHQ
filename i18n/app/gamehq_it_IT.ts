@@ -116,7 +116,7 @@
       <location filename="src/ui/qml/Main.qml" line="1156"></location>
       <location filename="src/ui/qml/Main.qml" line="1175"></location>
       <location filename="src/ui/qml/Main.qml" line="1213"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="652"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="663"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -970,7 +970,7 @@
       <translation>È già in corso un'altra importazione di profilo portatile.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="663"></location>
+      <location filename="src/app/App.cpp" line="664"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>L'aggiornamento è stato annullato perché le operazioni di acquisizione non si sono concluse in sicurezza in tempo.</translation>
     </message>
@@ -1221,7 +1221,7 @@
       <translation>GameHQ non è riuscito a rendere definitiva la transazione di aggiornamento.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="638"></location>
+      <location filename="src/app/App.cpp" line="639"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ non è riuscito ad avviare la manutenzione di aggiornamento: %1</translation>
     </message>
@@ -1375,7 +1375,7 @@ Questa operazione elimina il file in modo definitivo.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1154"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="650"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="661"></location>
       <source>Delete capture?</source>
       <translation>Eliminare l'acquisizione?</translation>
     </message>
@@ -2136,107 +2136,107 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Sostieni GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="483"></location>
+      <location filename="src/app/App.cpp" line="484"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Impossibile eliminare alcuni file. Potrebbero essere in uso da altri programmi. Chiudi i programmi che li stanno usando e riprova.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="490"></location>
+      <location filename="src/app/App.cpp" line="491"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Impossibile eliminare il file. Potrebbe essere in uso da un altro programma. Chiudi il programma che lo sta usando e riprova.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="496"></location>
+      <location filename="src/app/App.cpp" line="497"></location>
       <source>Couldn't delete</source>
       <translation>Impossibile eliminare</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="289"></location>
+      <location filename="src/app/App.cpp" line="290"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>Non è stata aggiunta alla libreria e il file non è presente sul disco.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="283"></location>
+      <location filename="src/app/App.cpp" line="284"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>Il file si trova nella cartella delle acquisizioni, ma non è stato possibile aggiungerlo alla libreria.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="273"></location>
+      <location filename="src/app/App.cpp" line="274"></location>
       <source>Saved to disk, not in library</source>
       <translation>Salvato su disco, non in libreria</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="395"></location>
+      <location filename="src/app/App.cpp" line="396"></location>
       <source>Capture request received</source>
       <translation>Richiesta di cattura ricevuta</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="458"></location>
+      <location filename="src/app/App.cpp" line="459"></location>
       <source>Reason: %1</source>
       <translation>Motivo: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="76"></location>
+      <location filename="src/app/App.cpp" line="77"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>Il buffer di replay non ha funzionato; nessuna clip è stata salvata</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="70"></location>
+      <location filename="src/app/App.cpp" line="71"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>Il buffer di replay sta raccogliendo il materiale; riprova a salvare tra qualche secondo</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="88"></location>
+      <location filename="src/app/App.cpp" line="89"></location>
       <source>Replay buffer is empty</source>
       <translation>Il buffer di replay è vuoto</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="82"></location>
+      <location filename="src/app/App.cpp" line="83"></location>
       <source>Replay buffer is not running</source>
       <translation>Il buffer di replay non è in esecuzione</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="64"></location>
+      <location filename="src/app/App.cpp" line="65"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>Il buffer di replay è in avvio; riprova a salvare tra qualche secondo</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="305"></location>
+      <location filename="src/app/App.cpp" line="306"></location>
       <source>Replay failed</source>
       <translation>Replay non riuscito</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="390"></location>
+      <location filename="src/app/App.cpp" line="391"></location>
       <source>Replay save requested</source>
       <translation>Salvataggio del replay richiesto</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="439"></location>
+      <location filename="src/app/App.cpp" line="440"></location>
       <source>Replay saved</source>
       <translation>Replay salvato</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="298"></location>
+      <location filename="src/app/App.cpp" line="299"></location>
       <source>Screenshot failed</source>
       <translation>Screenshot non riuscito</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="340"></location>
+      <location filename="src/app/App.cpp" line="341"></location>
       <source>Screenshot saved</source>
       <translation>Screenshot salvato</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="541"></location>
+      <location filename="src/app/App.cpp" line="542"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ è stato avviato con le impostazioni predefinite. Il file delle impostazioni precedenti è stato conservato, quindi non è andato perso nulla.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="536"></location>
+      <location filename="src/app/App.cpp" line="537"></location>
       <source>Settings could not be read</source>
       <translation>Impossibile leggere le impostazioni</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="705"></location>
+      <location filename="src/app/App.cpp" line="706"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Alcuni suoni dell’interfaccia non sono disponibili</translation>
     </message>
@@ -4613,6 +4613,16 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <location filename="src/ui/qml/components/ShareDialog.qml" line="221"></location>
       <source>Sharing…</source>
       <translation>Condivisione in corso…</translation>
+    </message>
+    <message id="gamehq.share.telegram_desktop.not_installed">
+      <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="123"></location>
+      <source>Telegram Desktop isn't installed.</source>
+      <translation>Telegram Desktop non è installato.</translation>
+    </message>
+    <message id="gamehq.share.telegram_desktop.privacy">
+      <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="132"></location>
+      <source>Opens Telegram to choose the chat. GameHQ never signs in to Telegram.</source>
+      <translation>Apre Telegram per scegliere la chat. GameHQ non accede mai a Telegram.</translation>
     </message>
     <message id="gamehq.share.title">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="325"></location>

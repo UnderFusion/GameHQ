@@ -412,7 +412,7 @@
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 652
+          "line": 663
         },
         {
           "file": "src/ui/qml/components/ConfirmDialog.qml",
@@ -3381,7 +3381,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 663
+          "line": 664
         }
       ],
       "plural": false,
@@ -4291,7 +4291,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 638
+          "line": 639
         }
       ],
       "plural": false,
@@ -4849,7 +4849,7 @@
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 650
+          "line": 661
         }
       ],
       "plural": false,
@@ -7459,7 +7459,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 483
+          "line": 484
         }
       ],
       "plural": false,
@@ -7476,7 +7476,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 490
+          "line": 491
         }
       ],
       "plural": false,
@@ -7493,7 +7493,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 496
+          "line": 497
         }
       ],
       "plural": false,
@@ -7510,7 +7510,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 289
+          "line": 290
         }
       ],
       "plural": false,
@@ -7527,7 +7527,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 283
+          "line": 284
         }
       ],
       "plural": false,
@@ -7544,7 +7544,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 273
+          "line": 274
         }
       ],
       "plural": false,
@@ -7561,7 +7561,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 395
+          "line": 396
         }
       ],
       "plural": false,
@@ -7578,7 +7578,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 458
+          "line": 459
         }
       ],
       "plural": false,
@@ -7597,7 +7597,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 76
+          "line": 77
         }
       ],
       "plural": false,
@@ -7614,7 +7614,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 70
+          "line": 71
         }
       ],
       "plural": false,
@@ -7631,7 +7631,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 88
+          "line": 89
         }
       ],
       "plural": false,
@@ -7648,7 +7648,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 82
+          "line": 83
         }
       ],
       "plural": false,
@@ -7665,7 +7665,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 64
+          "line": 65
         }
       ],
       "plural": false,
@@ -7682,7 +7682,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 305
+          "line": 306
         }
       ],
       "plural": false,
@@ -7699,7 +7699,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 390
+          "line": 391
         }
       ],
       "plural": false,
@@ -7716,7 +7716,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 439
+          "line": 440
         }
       ],
       "plural": false,
@@ -7733,7 +7733,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 298
+          "line": 299
         }
       ],
       "plural": false,
@@ -7750,7 +7750,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 340
+          "line": 341
         }
       ],
       "plural": false,
@@ -7767,7 +7767,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 541
+          "line": 542
         }
       ],
       "plural": false,
@@ -7786,7 +7786,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 536
+          "line": 537
         }
       ],
       "plural": false,
@@ -7803,7 +7803,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 705
+          "line": 706
         }
       ],
       "plural": false,
@@ -15942,6 +15942,42 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "88e325e8b6489d45a1ccfeebb017f13b3e90a7155524e93b4d6817d1ed5cda6b"
+    },
+    {
+      "id": "gamehq.share.telegram_desktop.not_installed",
+      "source": "Telegram Desktop isn't installed.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/providers/TelegramDesktopProvider.cpp",
+          "line": 123
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5"
+    },
+    {
+      "id": "gamehq.share.telegram_desktop.privacy",
+      "source": "Opens Telegram to choose the chat. GameHQ never signs in to Telegram.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/providers/TelegramDesktopProvider.cpp",
+          "line": 132
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1"
     },
     {
       "id": "gamehq.share.title",
