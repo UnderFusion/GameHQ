@@ -9765,6 +9765,28 @@
           },
           "updated_at": null
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -10747,7 +10769,7 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
+          "total": 978,
           "current": 0,
           "missing": [
             "gamehq.about.enjoying_gamehq",
@@ -11637,6 +11659,8 @@
             "gamehq.share.resend_confirm",
             "gamehq.share.resend_question",
             "gamehq.share.sending",
+            "gamehq.share.telegram_desktop.not_installed",
+            "gamehq.share.telegram_desktop.privacy",
             "gamehq.share.title",
             "gamehq.startup.portable_import.failed_title",
             "gamehq.startup.portable_import.installed_copy_required",
@@ -21505,6 +21529,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "ed0b3d839756dbcc5eeb18b12e1f705283abd54cba7ebde808eb08956a42afaf",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "bf510a1912583ff3ae6020191398abf96f5941451325f7bb871d1c61d60adc41",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -22487,8 +22533,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -32268,6 +32314,28 @@
           },
           "updated_at": null
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "c27b586e91a6923b0c1e84ef3b46bfd30dd1944666f34a84f89b62bd945aa986",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "6992f03eafe1b1cfcd5471011224058aa4a3f94342cd303421a330fabdc385d5",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -33250,8 +33318,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -43031,6 +43099,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "f9cb4b4a2948c5fb1c1c1dd5f0c21a37de94c4f4d7fbc66a9c8e1a491bb56d17",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "dac541567de2f22383746bd517dea4b39d38a973921ecf1b3f435d3835541fc6",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -44013,8 +44103,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -53794,6 +53884,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "f9cb4b4a2948c5fb1c1c1dd5f0c21a37de94c4f4d7fbc66a9c8e1a491bb56d17",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "dac541567de2f22383746bd517dea4b39d38a973921ecf1b3f435d3835541fc6",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -54776,8 +54888,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -64557,6 +64669,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "ec352cf08e91c62f5d8a3a8565a0b7bfa784829ab2d0ccc7c42395aebb1ed1c1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "314504705d9859262864376196bf1a5c63fd175912e425a63554d043ce07c98d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -65539,8 +65673,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -75320,6 +75454,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "2192e4d22bc97c6a7211cd4d6f54645d7e4097141173f545b098ef656e952947",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "0bd874500740884437d08f18e4b6f2d5ea1e56fef040bdc94ae4277f7f78eaa1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -76302,8 +76458,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -86083,6 +86239,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "c7ee0e1084589668480c1da8f1991126454b6fadb63ffe879e839a22294d4d24",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "ab30677e988f494b5fe7b1e649fc73e9dd0c11acc91a5fd43a03dc29849d0a0e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -87065,8 +87243,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -96846,6 +97024,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "7991ac3438b2d1eed24cecccf1632e436a5c2c440fccd6f73a7982beb2a55ad0",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "d98021cb109c5c1995b7dc4ff32510609f0abd344b2a7bb8474b141ac280769d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -97828,8 +98028,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -107609,6 +107809,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "812d2f9061cee550fc6fbb16a8590aee23f174ace676e1fefc11aa6ecf59088d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "061cdbb0ff3611f5e76a0b500d13888bb9fb30f78848a94553bbdc55fc2a05b7",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -108591,8 +108813,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -118372,6 +118594,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "8fed7ca3b7f5512db2db6ce70dfe3cc780d225fa30fe47368ae005faf59b30ba",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "278e4dd5abe1b4451783a1db6bbd34ff272acf1a3bddd8f6ffa16d7b633cb24e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -119354,8 +119598,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -129135,6 +129379,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "32ac8629de4685d7c6de5cbc6adf85b4f90ac6fc868cb4e43d8f4c33a08e7568",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "f9cdd5d2bbd5995f30d00b391b81f56189b647df890ce86603763e9531a38919",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -130117,8 +130383,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -139898,6 +140164,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "b5495c37957b8accb198ee4c087d2a0ea6bfe6f8532662945ebed1da6e6a6347",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "f296b30d035579b9355e818bd87b284c41bcd25f2590c2789dace34a82da98d3",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -140880,8 +141168,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -150661,6 +150949,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "5bca40aa1906b966aac692657fa6bb794cc16991408db9e241f62a85f818a082",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "2f0199bec64607bc21378be9850c3b2c92761c8e64dbdf98eacf826fc0e13ab1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -151643,8 +151953,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -161424,6 +161734,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "eeb1f85f355f11caa0fbf8bf5978f777b7e81e4d86e8b74cae94c69ef660f066",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "a2f4ec8fde788cf1ebdbd7d176c8d009ef21ea05079f645a14dd91cc3334b554",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -162406,8 +162738,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -172187,6 +172519,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "c42ca0b8c5417811fa7efd5286e92feb87e5febe4156257f1092d5d79f398976",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "a27caf7818992842effc267a987fe0e35888defc9f9aaec20b8bc59edaca4e61",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -173169,8 +173523,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },
@@ -182950,6 +183304,28 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.share.telegram_desktop.not_installed": {
+          "domain": "application",
+          "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+          "translation_hash": "e0e46f3a4bed9993f54e669ef38bbe1c06b8e2d61d8793b28460704d42ccc4f9",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
+        "gamehq.share.telegram_desktop.privacy": {
+          "domain": "application",
+          "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+          "translation_hash": "9234d5e931a522e45cffb92efc6faca400a27446d52aa91265fdcc4830a1e54f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-share-t12-contextual"
+          },
+          "updated_at": "2026-09-29T19:00:00Z"
+        },
         "gamehq.share.title": {
           "domain": "application",
           "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
@@ -183932,8 +184308,8 @@
       },
       "completeness": {
         "application": {
-          "total": 976,
-          "current": 976,
+          "total": 978,
+          "current": 978,
           "missing": [],
           "stale": []
         },

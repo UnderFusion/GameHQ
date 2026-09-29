@@ -638,6 +638,17 @@ Window {
         id: overlayShare
         onClosed: content.forceActiveFocus()
     }
+    // A hand-off (e.g. Telegram's "choose a chat" box) needs the screen: the
+    // overlay is topmost over the game, so step aside once the app has the file.
+    Connections {
+        target: shareService
+        function onFinished(result) {
+            if (!overlayShare.isOpen || result.outcome !== "handed_off")
+                return
+            overlayShare.close()
+            overlay.hide()
+        }
+    }
 
     // Mouse delete confirmation. Above the action menu in z-order so it stays
     // usable no matter which path opened it.
