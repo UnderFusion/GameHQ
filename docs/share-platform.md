@@ -265,7 +265,8 @@ post to its one channel and nothing else.
 Out-of-process providers register over a dedicated same-user pipe
 (`GameHQ.Share.Provider.v1`) and appear in Share like any built-in one. The
 whole contract, trust model and honest limits (it is not an OS sandbox) are in
-[share-provider-api-v1.md](share-provider-api-v1.md). Code: `src/share/external/`
+[share-provider-api-v1.md](share-provider-api-v1.md); a runnable sample and walkthrough
+are in `integrations/share-provider/`. Code: `src/share/external/`
 (protocol codec, `ExternalProvider`, `ExternalProviderHost`). Opt-in through
 `share.external_providers` (off by default, read at startup); GameHQ never
 launches or discovers providers.

@@ -992,6 +992,23 @@ gamehq_add_test(tst_shareexternalprovider
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderHost.cpp")
 target_link_libraries(tst_shareexternalprovider PRIVATE Qt6::Network advapi32)
 
+# Share Provider API v1 conformance (t19): launches the sample provider as a
+# separate process and talks to the real host over the real pipe. Skips itself
+# when no Python 3 is installed (GAMEHQ_SHARE_PYTHON selects the interpreter).
+gamehq_add_test(tst_shareexternalconformance
+    tst_shareexternalconformance.cpp
+    "${CMAKE_SOURCE_DIR}/src/share/ShareTypes.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProvider.h"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderProtocol.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProvider.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderHost.cpp")
+target_link_libraries(tst_shareexternalconformance PRIVATE Qt6::Network advapi32)
+target_compile_definitions(tst_shareexternalconformance PRIVATE
+    GAMEHQ_SHARE_SAMPLE_PATH="${CMAKE_SOURCE_DIR}/integrations/share-provider/sample_provider.py")
+
 gamehq_add_test(tst_captureborderstate
     tst_captureborderstate.cpp
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"

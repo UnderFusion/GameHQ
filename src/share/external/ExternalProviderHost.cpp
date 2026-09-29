@@ -60,8 +60,7 @@ void ExternalProviderHost::acceptConnections()
     while (QLocalSocket* socket = m_server.nextPendingConnection()) {
         if (m_conns.size() >= kMaxConnections) {
             sendError(socket, QString::fromLatin1(ErrorCode::TooManyProviders), {});
-            socket->abort();
-            socket->deleteLater();
+            lingerThenClose(socket);
             continue;
         }
         auto conn = std::make_shared<Conn>();
@@ -71,8 +70,8 @@ void ExternalProviderHost::acceptConnections()
         conn->handshakeTimer->setSingleShot(true);
         conn->handshakeTimer->setInterval(m_handshakeTimeoutMs);
         connect(conn->handshakeTimer, &QTimer::timeout, this, [this, socket] {
-            sendError(socket, QString::fromLatin1(ErrorCode::HandshakeTimeout), {});
-            closeConnection(socket, QStringLiteral("handshake timeout"));
+            failConnection(socket, QString::fromLatin1(ErrorCode::HandshakeTimeout), {},
+                           QStringLiteral("handshake timeout"));
         });
         conn->handshakeTimer->start();
         m_conns.insert(socket, conn);
@@ -110,8 +109,8 @@ void ExternalProviderHost::dispatch(const std::shared_ptr<Conn>& conn, const QJs
 
     if (!conn->handshaken) {
         if (type != QLatin1String("hello")) {
-            sendError(conn->socket, QString::fromLatin1(ErrorCode::NotHandshaken), requestId);
-            closeConnection(conn->socket, QStringLiteral("message before handshake"));
+            failConnection(conn->socket, QString::fromLatin1(ErrorCode::NotHandshaken), requestId,
+                           QStringLiteral("message before handshake"));
             return;
         }
         handleHello(conn, message);
@@ -140,8 +139,7 @@ void ExternalProviderHost::handleHello(const std::shared_ptr<Conn>& conn, const 
     Manifest manifest;
     QString code;
     if (!parseHello(message, &manifest, &code)) {
-        sendError(conn->socket, code, requestId);
-        closeConnection(conn->socket, QStringLiteral("hello rejected: ") + code);
+        failConnection(conn->socket, code, requestId, QStringLiteral("hello rejected: ") + code);
         return;
     }
 
@@ -153,8 +151,8 @@ void ExternalProviderHost::handleHello(const std::shared_ptr<Conn>& conn, const 
         delete provider;
         // One live provider per identity: the newcomer loses, the running one
         // keeps working (a hijack attempt cannot displace it).
-        sendError(socket, QString::fromLatin1(ErrorCode::DuplicateProvider), requestId);
-        closeConnection(socket, QStringLiteral("duplicate provider identity"));
+        failConnection(socket, QString::fromLatin1(ErrorCode::DuplicateProvider), requestId,
+                       QStringLiteral("duplicate provider identity"));
         return;
     }
     conn->provider = provider;
@@ -186,8 +184,8 @@ void ExternalProviderHost::violation(const std::shared_ptr<Conn>& conn, const QS
 {
     sendError(conn->socket, code, requestId);
     if (++conn->violations >= kMaxViolations) {
-        sendError(conn->socket, QString::fromLatin1(ErrorCode::TooManyViolations), {});
-        closeConnection(conn->socket, QStringLiteral("too many protocol violations"));
+        failConnection(conn->socket, QString::fromLatin1(ErrorCode::TooManyViolations), {},
+                       QStringLiteral("too many protocol violations"));
     }
 }
 
@@ -225,6 +223,19 @@ bool ExternalProviderHost::sendTo(QLocalSocket* socket, const QJsonObject& messa
     return true;
 }
 
+void ExternalProviderHost::releaseProvider(const std::shared_ptr<Conn>& conn)
+{
+    if (!conn->provider)
+        return;
+    const QString id = conn->provider->id();
+    // Ends any running job as unconfirmed before the provider disappears.
+    conn->provider->connectionLost();
+    m_registry->remove(id);
+    conn->provider->deleteLater();
+    conn->provider = nullptr;
+    emit providerRemoved(id);
+}
+
 void ExternalProviderHost::closeConnection(QLocalSocket* socket, const QString& reason)
 {
     const auto it = m_conns.find(socket);
@@ -233,18 +244,60 @@ void ExternalProviderHost::closeConnection(QLocalSocket* socket, const QString& 
     const std::shared_ptr<Conn> conn = *it;
     m_conns.erase(it);
     qInfo() << "Share provider connection closed:" << reason;
-    if (conn->provider) {
-        const QString id = conn->provider->id();
-        // Ends any running job as unconfirmed before the provider disappears.
-        conn->provider->connectionLost();
-        m_registry->remove(id);
-        conn->provider->deleteLater();
-        conn->provider = nullptr;
-        emit providerRemoved(id);
-    }
+    releaseProvider(conn);
     socket->disconnect(this);
     socket->abort();
     socket->deleteLater();
+}
+
+void ExternalProviderHost::failConnection(QLocalSocket* socket, const QString& code,
+                                          const QString& requestId, const QString& reason)
+{
+    sendError(socket, code, requestId);
+    const auto it = m_conns.find(socket);
+    if (it == m_conns.end()) {
+        lingerThenClose(socket);
+        return;
+    }
+    const std::shared_ptr<Conn> conn = *it;
+    m_conns.erase(it);
+    qInfo() << "Share provider connection closed:" << reason;
+    // The registration ends now; only the pipe waits, so the error is readable.
+    releaseProvider(conn);
+    socket->disconnect(this);
+    lingerThenClose(socket);
+}
+
+void ExternalProviderHost::lingerThenClose(QLocalSocket* socket)
+{
+    if (m_lingering >= kMaxLingering) {
+        // Someone is opening and abusing connections faster than the grace
+        // allows: skip the courtesy rather than hold resources.
+        socket->abort();
+        socket->deleteLater();
+        return;
+    }
+    ++m_lingering;
+    auto finish = [this, socket] {
+        --m_lingering;
+        socket->abort();
+        socket->deleteLater();
+    };
+    // Whichever comes first: the peer read the error and hung up, or the grace
+    // ran out. The context object is the socket, so a deleted socket cancels both.
+    auto done = std::make_shared<bool>(false);
+    connect(socket, &QLocalSocket::disconnected, socket, [finish, done] {
+        if (!*done) {
+            *done = true;
+            finish();
+        }
+    });
+    QTimer::singleShot(kCloseGraceMs, socket, [finish, done] {
+        if (!*done) {
+            *done = true;
+            finish();
+        }
+    });
 }
 
 } // namespace share::external

@@ -12,6 +12,8 @@ nothing depends on GameHQ's internal classes.
 - Pipe: **`GameHQ.Share.Provider.v1`**
 - Status: stable for the fields marked *stable*; see [Stability](#stability)
 - Implementation: `src/share/external/`, tests `tests/tst_shareexternalprovider.cpp`
+  (protocol) and `tests/tst_shareexternalconformance.cpp` (a real separate process)
+- Sample provider and walkthrough: [`integrations/share-provider/`](../integrations/share-provider/README.md)
 - Related: [share-platform.md](share-platform.md) (the in-process contract this
   maps onto), [integration-protocol.md](integration-protocol.md) (a different
   channel: `GameHQ.Local.v1` is for Playnite/app signals, not for Share)
@@ -303,6 +305,12 @@ ends it.
 Violations are counted per connection; the **5th** disconnects you. A broken
 frame (section 2) disconnects immediately with no `error`.
 
+**Delivery of a final error.** For every "disconnect" above GameHQ removes your
+registration at once, but keeps the pipe open for a short grace period (about
+300 ms) so you can read the `error` before it closes. Tearing down the server end
+of a Windows pipe discards unread data, so a provider that is not reading at that
+instant would otherwise see only a bare disconnect. Read until the pipe closes.
+
 ## 5. Jobs and file access
 
 - **One job at a time** across all of Share. A job exists only after a
@@ -347,16 +355,45 @@ other providers.
 
 ## Stability
 
-*Stable in v1* (will not change without a protocol bump): the pipe name; framing;
-all message types and fields shown above; the error codes; the outcome names;
-the capability names listed as declarable; the limits in `hello.ack.limits`
-(their *values* may grow, never shrink below what is documented here).
+What GameHQ promises to keep working for a v1 provider, and what it does not.
 
-*Not part of the contract*: GameHQ's internal C++ types, log lines, the order of
-targets it displays, and any behaviour not written here. There is no promise
-about UI presentation (icons, colours, sorting).
+**Stable in v1.** Changing any of these needs a new protocol version
+(`protocolMax` 2); an old provider then gets a clean `protocol_incompatible`
+instead of a silent malfunction.
+
+| Area | Stable |
+|---|---|
+| Transport | Pipe name `GameHQ.Share.Provider.v1`; same-user access; framing (4-byte LE length + UTF-8 JSON object); 64 KiB frame limit. |
+| Messages | The message types in section 4 and the meaning and type of every field shown there. |
+| Manifest | `provider.id` rules (`ext.` prefix), `name`, `version`, `privacy`, `access` (`none`/`share_token`/`full_account`), `jobTimeoutMs`, `capabilities`. |
+| Capabilities | `image`, `video`, `contacts`, `groups`, `channels`, `target_search`, `direct_send`, `external_handoff`. |
+| Outcomes | `sent`, `handed_off`, `copied`, `failed`, `cancelled`, `unconfirmed` and their meanings, including "`sent` needs `direct_send`". |
+| Errors | Every code in section 4.9 and whether it disconnects you. |
+| Job rules | One job at a time; `jobId` + `token` on every job message; the token dies with the job; `job.start` is the only message that names a file, and only the selected capture. |
+| Limits | The documented values are **floors**: GameHQ may raise them but will not lower them within v1 (5 s handshake, 10 s target answer, 200 targets, 8 connections, 5 violations, 1-600 s job timeout range). Read `hello.ack.limits` rather than hard-coding. |
+| Compatibility | Unknown fields are ignored; unknown capabilities are ignored and reported in `ignoredCapabilities`; a provider range overlapping v1 is served at v1. |
+
+**Experimental: may change in any GameHQ release without a protocol bump.**
+Do not build behaviour on these.
+
+| Area | Experimental |
+|---|---|
+| `caption` capability | Accepted and echoed back, but has no effect in v1. |
+| Presentation | Where and how `name`, `privacy`, `subtitle`, `detail` and progress are shown; sorting and grouping of targets; icons. |
+| `hello.ack.appVersion` | Informational; do not parse or gate on it (use `protocolSelected`). |
+| Timing details | The exact length of the grace period before a rejected connection closes (only "the final error can be read" is promised), polling intervals, and log wording. |
+| Anything not in this document | Including undocumented fields, message types or behaviour observed in a particular build. |
+
+*Not part of the contract at all*: GameHQ's internal C++ types and classes (there
+is no ABI to link against), its file layout, and its own settings and storage.
 
 ## 8. Minimal provider (Python, no dependencies)
+
+This loop reads and writes from one thread and only writes in reply to a
+message, which is why a plain blocking read is safe here. A provider that also
+sends progress while it listens for a cancel needs non-blocking reads (a blocked
+read on a Windows pipe handle blocks writes on that handle too); see
+`integrations/share-provider/sample_provider.py`, which polls `PeekNamedPipe`.
 
 ```python
 import json, struct

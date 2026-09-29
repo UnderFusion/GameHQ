@@ -32,6 +32,11 @@ public:
     static constexpr int kMaxConnections = 8;
     static constexpr int kMaxViolations = 5;
     static constexpr int kDefaultHandshakeTimeoutMs = 5000;
+    // After a final `error`, the pipe stays open this long so the peer can
+    // read it: tearing down the server end of a Windows pipe discards unread
+    // data, which would turn "protocol_incompatible" into a bare disconnect.
+    static constexpr int kCloseGraceMs = 300;
+    static constexpr int kMaxLingering = 16;
 
     explicit ExternalProviderHost(ProviderRegistry* registry, QObject* parent = nullptr);
     ~ExternalProviderHost() override;
@@ -69,7 +74,14 @@ private:
     void violation(const std::shared_ptr<Conn>& conn, const QString& code, const QString& requestId);
     bool sendTo(QLocalSocket* socket, const QJsonObject& message);
     void sendError(QLocalSocket* socket, const QString& code, const QString& requestId);
+    // Immediate teardown: the peer is gone, the stream is broken, or we stop.
     void closeConnection(QLocalSocket* socket, const QString& reason);
+    // Sends a final error, drops the provider now, and closes the pipe after
+    // a short grace so the error can be read.
+    void failConnection(QLocalSocket* socket, const QString& code, const QString& requestId,
+                        const QString& reason);
+    void releaseProvider(const std::shared_ptr<Conn>& conn);
+    void lingerThenClose(QLocalSocket* socket);
 
     ProviderRegistry* m_registry;
     QLocalServer m_server;
@@ -77,6 +89,7 @@ private:
     QString m_appVersion;
     int m_handshakeTimeoutMs = kDefaultHandshakeTimeoutMs;
     int m_targetsTimeoutMs = 10000;
+    int m_lingering = 0;
 };
 
 } // namespace share::external

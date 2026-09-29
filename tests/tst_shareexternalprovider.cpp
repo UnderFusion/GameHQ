@@ -63,7 +63,9 @@ public:
 
     void pump(int ms)
     {
-        if (socket.waitForReadyRead(ms)) {
+        // Data may already sit in the socket's buffer (it shares this event
+        // loop), where waitForReadyRead would never see it as "new".
+        if (socket.bytesAvailable() > 0 || socket.waitForReadyRead(ms)) {
             QList<QJsonObject> got;
             QString error;
             decoder.append(socket.readAll(), got, error);
@@ -298,6 +300,26 @@ private slots:
         QCOMPARE(e.value("requestId").toString(), QStringLiteral("q9"));
         QVERIFY(peer.waitClosed());
         QVERIFY(s.registry()->providers().isEmpty());
+    }
+
+    void theFinalErrorSurvivesASlowReader()
+    {
+        // A provider that is busy (or simply polling) when it is rejected must
+        // still learn why: closing the server end of a Windows pipe discards
+        // unread data, so the host lets the error be read before it closes.
+        Service s;
+        ExternalProviderHost host(s.registry());
+        QString err;
+        QVERIFY(host.start(err, m_pipe));
+        Peer peer;
+        QVERIFY(peer.connectTo(m_pipe));
+        peer.send(Peer::hello("ext.toonew", { "image" }, 2, 3));
+        QTest::qWait(120);   // not reading yet: the host has already rejected us
+        QCOMPARE(host.providerCount(), 0);
+        QCOMPARE(host.connectionCount(), 0);   // registration state is already gone
+        const QJsonObject e = peer.waitFor("error");
+        QCOMPARE(e.value("code").toString(), QStringLiteral("protocol_incompatible"));
+        QVERIFY(peer.waitClosed());
     }
 
     void aSilentPeerIsDroppedAtTheHandshakeTimeout()
