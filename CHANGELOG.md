@@ -10,6 +10,10 @@ Public release history and the current local release candidate.
 - Overlay: D-pad left/right flips between screenshots and clips again, like L1/R1. Once Cross is playing a clip, left/right seeks it instead.
 - Settings › Input › Steam Input: when a Steam game is running and a GameHQ controller shortcut uses Create / Share or PS, GameHQ explains that Steam Input may also send that button to the game, and offers buttons that open the game's Steam controller layout or Steam's controller settings. Guidance only: GameHQ never reads or changes Steam's controller settings. On by default; it can be switched off or hidden per game.
 
+### Changed
+
+- Screenshots are saved as JPEG at 90% quality by default instead of PNG, so each file is several times smaller. If you never changed the format, you get JPEG automatically; PNG is still available in Settings › Capture.
+
 ### Fixed
 
 - Gallery and overlay follow the capture folders live. A screenshot or clip deleted in Explorer disappears right away, and it comes back when restored from the Recycle Bin, still marked as a favorite if it was one. New files copied into a capture folder show up without *Rescan*. Nothing is deleted from GameHQ's library in the process: a missing file is only hidden while it is gone. An open viewer stays on the capture it shows, and a delete confirmation always deletes the capture it named, even if the list changed meanwhile.
