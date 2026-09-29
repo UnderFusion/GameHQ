@@ -102,4 +102,5 @@ Built-in trigger defaults live in `src/input/BindingResolver`, never in the data
 
 - **Favorites (`is_favorite = 1`) are never auto-deleted** — cleanup queries must always include `AND is_favorite = 0`.
 - Deletes from GameHQ UI are soft (`deleted_at`) first; file removal is a separate confirmed step.
+- Media missing on disk is never tombstoned. `CaptureScanner` lists it in the connection-local `temp.missing_captures` table, which every capture/game listing excludes; the row, its favorite flag and metadata stay in `gamehq.db`, and the key leaves the table as soon as the file is back (Recycle Bin restore, drive reconnected). Full scans (startup, *Rescan*) rebuild it; `CaptureFolderWatcher` (one subtree change notification per capture root, file/dir names only, 600 ms debounce) triggers `CaptureScanner::reconcile()` for just the changed roots. Files modified in the last 3 s are left for a recheck so a capture GameHQ is still committing keeps its executable metadata.
 - Imported folders' files are never modified/deleted unless the user explicitly enables it.

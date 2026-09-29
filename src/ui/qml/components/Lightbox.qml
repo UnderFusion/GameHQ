@@ -42,8 +42,49 @@ Window {
     // hint pills can render the matching label (L1/R1 for gamepad,
     // ←/→ for keyboard/mouse). Set from padStep() and Keys handlers.
     property bool usingGamepad: false
-    readonly property var current: root.index >= 0 && root.galleryModel
-        ? root.galleryModel.get(root.index) : ({})
+    property int _modelRevision: 0
+    readonly property var current: {
+        root._modelRevision
+        return root.index >= 0 && root.galleryModel && root.index < root.galleryModel.rowCount()
+            ? root.galleryModel.get(root.index) : ({})
+    }
+
+    // The gallery follows the disk live: keep showing the same capture when
+    // rows around it come and go, move on when it is the one that vanished,
+    // and close once nothing is left.
+    Connections {
+        target: root.galleryModel
+        enabled: root.visible && root.index >= 0
+        function onRowsInserted(parent, first, last) {
+            if (first <= root.index)
+                root.index += last - first + 1
+            root._modelRevision += 1
+        }
+        function onRowsRemoved(parent, first, last) {
+            if (last < root.index)
+                root.index -= last - first + 1
+            root._clampIndex()
+        }
+        // A reset (new capture committed, filter refresh) re-finds the shown
+        // capture by path; `current` still holds it until the revision bumps.
+        function onModelReset() {
+            const row = root.galleryModel.rowOf(root.current.filePath || "")
+            if (row >= 0)
+                root.index = row
+            root._clampIndex()
+        }
+        function onDataChanged() { root._modelRevision += 1 }
+    }
+    function _clampIndex() {
+        const count = root.galleryModel ? root.galleryModel.rowCount() : 0
+        if (count <= 0) {
+            root.close()
+            return
+        }
+        if (root.index >= count)
+            root.index = count - 1
+        root._modelRevision += 1
+    }
 
     // The stage's double buffer lives in MediaStage.qml; `_targetUrl` is this
     // window's rule for it. A clip decodes its THUMBNAIL, which the still layer

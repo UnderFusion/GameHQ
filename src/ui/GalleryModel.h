@@ -33,6 +33,11 @@ public:
     // from QML instead of through AppController.
     Q_INVOKABLE void setFilter(const QString& category, int gameId = -1);
     Q_INVOKABLE void refresh();
+    // Re-reads the same filter and applies only the difference as row
+    // removes/inserts, so a file vanishing from disk does not reset the view:
+    // selection, scroll position and the overlay's current capture survive.
+    // Falls back to refresh() when the surviving rows changed order.
+    void sync();
     Q_INVOKABLE void retranslate();
     Q_INVOKABLE void toggleFavorite(int row);
     const CaptureRecord* record(int row) const;

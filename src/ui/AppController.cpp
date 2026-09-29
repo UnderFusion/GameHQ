@@ -16,6 +16,7 @@
 #include "storage/CaptureDatabase.h"
 #include "sound/SoundEngine.h"
 #include "sound/SoundLevels.h"
+#include "storage/CaptureFolderWatcher.h"
 #include "storage/CaptureScanner.h"
 #include "ui/CaptureLibraryService.h"
 #include "ui/CurrentGameService.h"
@@ -94,6 +95,11 @@ AppController::AppController(CaptureDatabase* db, CaptureScanner* scanner,
             this, &AppController::configGroupReset);
     connect(m_locations, &CaptureLocations::locationsChanged,
             this, &AppController::captureLocationsChanged);
+
+    // Armed by rescan(), which runs whenever the set of capture roots can change.
+    m_folderWatcher = new CaptureFolderWatcher(this);
+    connect(m_folderWatcher, &CaptureFolderWatcher::rootsChanged,
+            this, &AppController::onCaptureFoldersChanged);
 
     // Qt's screen topology signals do not fire when Windows' per-display HDR
     // toggle changes. Poll only the lightweight DXGI/DisplayConfig snapshot;
@@ -726,13 +732,35 @@ void AppController::updateReplayBufferState(ReplayBufferState::State state, cons
 void AppController::rescan()
 {
     m_lastScanAdded = m_scanner->scanAll();
+    QStringList roots;
+    for (const CaptureScanner::Root& root : m_scanner->roots())
+        roots.append(root.path);
+    m_folderWatcher->setRoots(roots);
     m_gallery->refresh();
+    if (m_overlayGallery)
+        m_overlayGallery->sync();
     emit gamesChanged();
     emit lastScanChanged();
     if (!m_navigationRestored) {
         m_navigationRestored = true;
         restoreGalleryFilter();
     }
+}
+
+void AppController::onCaptureFoldersChanged(const QStringList& roots)
+{
+    // A capture GameHQ just wrote is committed by its own service with the
+    // game's executable path; give that commit time to land first.
+    constexpr qint64 kSettleMs = 3000;
+    const CaptureScanner::Delta delta = m_scanner->reconcile(roots, kSettleMs);
+    if (delta.deferred)
+        m_folderWatcher->recheckLater(roots, kSettleMs + 500);
+    if (!delta.changed())
+        return;
+    m_gallery->sync();
+    if (m_overlayGallery)
+        m_overlayGallery->sync();
+    emit gamesChanged();
 }
 
 void AppController::toggleFavorite(int row)

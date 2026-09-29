@@ -42,6 +42,15 @@ bool CaptureDatabase::open()
         return false;
     }
     QSqlQuery(QStringLiteral("PRAGMA foreign_keys = ON"), m_db);
+    // Session-only: the capture listings exclude these paths, so the table
+    // must exist before the first query. TEMP never touches the database file.
+    QSqlQuery missing(m_db);
+    if (!missing.exec(QStringLiteral(
+            "CREATE TEMP TABLE IF NOT EXISTS missing_captures (file_path TEXT PRIMARY KEY)"))) {
+        qCritical() << "DB: could not create the missing-captures table:"
+                    << missing.lastError().text();
+        return false;
+    }
     return migrate();
 }
 
@@ -333,6 +342,36 @@ bool CaptureDatabase::deleteCapture(int captureId)
         return false;
     }
     return true;
+}
+
+QSet<QString> CaptureDatabase::missingCaptureKeys() const
+{
+    QSet<QString> out;
+    QSqlQuery q(QStringLiteral("SELECT file_path FROM temp.missing_captures"), m_db);
+    while (q.next())
+        out.insert(q.value(0).toString());
+    return out;
+}
+
+int CaptureDatabase::setCapturesMissing(const QStringList& storedKeys, bool missing)
+{
+    if (storedKeys.isEmpty())
+        return 0;
+    QSqlQuery q(m_db);
+    q.prepare(missing
+        ? QStringLiteral("INSERT OR IGNORE INTO temp.missing_captures (file_path) VALUES (:p)")
+        : QStringLiteral("DELETE FROM temp.missing_captures WHERE file_path = :p"));
+    int changed = 0;
+    m_db.transaction();
+    for (const QString& key : storedKeys) {
+        q.bindValue(QStringLiteral(":p"), key);
+        if (q.exec())
+            changed += q.numRowsAffected() > 0 ? 1 : 0;
+        else
+            qWarning() << "DB: setCapturesMissing failed:" << q.lastError().text();
+    }
+    m_db.commit();
+    return changed;
 }
 
 QVector<GameEntry> CaptureDatabase::listGames() const

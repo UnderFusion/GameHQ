@@ -1,6 +1,7 @@
 #pragma once
 #include <QHash>
 #include <QObject>
+#include <QSet>
 #include <QSqlDatabase>
 #include <QString>
 #include <QStringList>
@@ -160,6 +161,15 @@ public:
     QString thumbnailForCapture(const QString& filePath) const;
     bool setThumbnailForCapture(const QString& filePath, const QString& thumbnailPath);
     bool deleteCapture(int captureId);   // removes the DB row (file handled by caller)
+
+    // Media the scanner found missing on disk, keyed by stored path. Kept in a
+    // connection-local TEMP table, never in gamehq.db: a file deleted or moved
+    // outside GameHQ drops out of every listing, and comes back the moment it
+    // reappears (Recycle Bin restore, drive reconnected) with its favorite
+    // flag and metadata intact. Nothing here is a delete.
+    QSet<QString> missingCaptureKeys() const;
+    // Adds/removes keys; returns how many rows actually changed state.
+    int setCapturesMissing(const QStringList& storedKeys, bool missing);
 
     // Games (only those that have captures), alphabetical.
     QVector<GameEntry> listGames() const;
