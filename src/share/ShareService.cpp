@@ -1,4 +1,5 @@
 #include "share/ShareService.h"
+#include "share/ShareSecurity.h"
 
 #include <QDebug>
 #include <QRegularExpression>
@@ -155,6 +156,8 @@ QVariantList Service::providers() const
         m.insert(QStringLiteral("reason"), p->availabilityReason());
         m.insert(QStringLiteral("auth"), authStateName(p->authState()));
         m.insert(QStringLiteral("capabilities"), capabilityNames(p->capabilities()));
+        m.insert(QStringLiteral("access"), accountAccessName(p->accountAccess()));
+        m.insert(QStringLiteral("privacy"), p->privacyNotice());
         out.append(m);
     }
     return out;
@@ -317,6 +320,23 @@ void Service::cancel()
     finishActive(r);
 }
 
+bool Service::disconnectProvider(const QString& providerId)
+{
+    Provider* p = m_registry->find(providerId);
+    if (!p) {
+        setLastError(QStringLiteral("unknown_provider"));
+        return false;
+    }
+    if (m_hasActive && m_active.job.providerId == providerId) {
+        setLastError(QStringLiteral("busy"));
+        return false;
+    }
+    qInfo() << "Share: disconnecting provider" << providerId;
+    p->disconnectAccount();
+    emit providersChanged();
+    return true;
+}
+
 void Service::onJobProgress(Provider* provider, const QString& jobId, JobState state,
                             double progress)
 {
@@ -356,6 +376,8 @@ void Service::finishActive(Result result)
     result.errorCode = sanitizedCode(result.errorCode);
     if (result.errorCode == QLatin1String("provider_error"))
         result.detail.clear();
+    // The detail is shown to the user and may echo server text.
+    result.detail = redactSecrets(result.detail);
     m_history.insert(m_active.dedupeKey, result.outcome);
     m_active.job.state = JobState::Finished;
     m_lastResult = resultToVariant(result);

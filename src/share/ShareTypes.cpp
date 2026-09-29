@@ -138,6 +138,16 @@ QString targetKindName(TargetKind kind)
     return QStringLiteral("external");
 }
 
+QString accountAccessName(AccountAccess access)
+{
+    switch (access) {
+    case AccountAccess::None:               return QStringLiteral("none");
+    case AccountAccess::ShareToken:         return QStringLiteral("share_token");
+    case AccountAccess::FullAccountSession: return QStringLiteral("full_account_session");
+    }
+    return QStringLiteral("full_account_session");
+}
+
 bool isValidProviderId(const QString& id)
 {
     static const QRegularExpression kPattern(QStringLiteral("^[a-z][a-z0-9._-]{1,63}$"));

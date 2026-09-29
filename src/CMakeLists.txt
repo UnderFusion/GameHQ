@@ -116,6 +116,7 @@ qt_add_executable(GameHQ
     share/ShareProvider.h
     share/ShareProviderRegistry.cpp share/ShareProviderRegistry.h
     share/ShareService.cpp share/ShareService.h
+    share/ShareSecurity.cpp share/ShareSecurity.h
     share/providers/ClipboardShareProvider.cpp share/providers/ClipboardShareProvider.h
     storage/CaptureDatabase.cpp storage/CaptureDatabase.h
     storage/CaptureQueries.cpp storage/CaptureQueries.h
@@ -361,6 +362,8 @@ target_link_libraries(GameHQ PRIVATE
     d3dcompiler
     # 0.5 Step 4 H.264 encode via Media Foundation SinkWriter (fragmented MP4).
     mfplat mfreadwrite mfuuid mf avrt ksuser mmdevapi
+    # Share Platform secrets in the Windows Credential Manager (ShareSecurity).
+    advapi32
 )
 
 set_target_properties(GameHQ PROPERTIES

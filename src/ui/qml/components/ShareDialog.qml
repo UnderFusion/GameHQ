@@ -112,7 +112,7 @@ Item {
         for (let i = 0; i < providers.length; ++i) {
             const p = providers[i]
             list.push({ id: "provider:" + p.id, kind: "provider", providerId: p.id,
-                        label: p.name, icon: p.icon, detail: p.available ? "" : p.reason,
+                        label: p.name, icon: p.icon, detail: p.available ? p.privacy : p.reason,
                         enabled: p.available })
         }
         //% "No share destinations are available yet."
