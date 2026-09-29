@@ -1,14 +1,12 @@
-> **SUPERSEDED (2026-09-30).** Settings > Sharing (t21) and Telegram Integrated
-> (t22-t24) change the final product, so this session is not to be run. A new
-> acceptance session is generated against the final build.
-
 <!-- SPDX-License-Identifier: MIT -->
 
 # Share acceptance session (owner)
 
-One manual session that closes the pending Share checks together: Telegram
-Desktop (t12), Discord Desktop (t14), Discord channel webhook (t17) and the
-end-to-end matrix (t20). About 40 minutes. It launches GameHQ, Telegram and
+One manual session that closes the pending Share checks together: Settings >
+Sharing (t21), Telegram Desktop (t12), Telegram Integrated (t13), Discord
+Desktop (t14), Discord Channels (t17), add-ons (t18/t19) and the end-to-end
+matrix (t20). It replaces the earlier session written before Settings > Sharing
+and Telegram Integrated existed. About 50 minutes. It launches GameHQ, Telegram and
 Discord windows, so pick a time you are not in the middle of something.
 
 Nothing here is pre-filled as passing. Automated tests cover the protocol and
@@ -19,9 +17,9 @@ controller and real screen can show.
 
 | | |
 |---|---|
-| Code commit | **`598a7fa`** on `dev` (`fix(share): keep the Discord paste step readable in the overlay`). Later commits that only touch `docs/` do not change the app. |
+| Code commit | **`af58f81`** on `dev` (`feat(telegram): add Telegram Integrated account session, recipient search and native media sending`). Later commits that only touch `docs/` do not change the app. |
 | Version | `0.7.9` (`VERSION`) |
-| Build | Debug build from `out\`. `out\GameHQ.exe` SHA-256 = `45ba9fdc2d415fd1df75cd1b4d9ac7e5e7209f93d889d1fc2fd49beff5ac6d26` (`out\GameHQLauncher.exe` = `787e2e7b1b5f870cb956974db122c8d017812d951471904de7f8ab96f010642f`) |
+| Build | Debug build from `out\`. `out\GameHQ.exe` SHA-256 = `58358c41230e147eb2deaadf824cdb416b609129394391c0e6eaf9f482e8be44` (`out\GameHQLauncher.exe` = `787e2e7b1b5f870cb956974db122c8d017812d951471904de7f8ab96f010642f`) |
 | How to run | `start.bat` in the repo root: rebuilds `out\`, assembles a clean package in `build\`, keeps your data, and launches `build\GameHQ.exe`. **It stops any running `GameHQ.exe` first, including the installed copy.** |
 | Data / log | `build\gamehq-data\` (separate from the installed copy). Log: `build\gamehq-data\logs\gamehq.log` |
 
@@ -31,11 +29,17 @@ Confirm the identity before you start:
 Get-FileHash build\GameHQ.exe -Algorithm SHA256   # should equal the out\GameHQ.exe hash above
 ```
 
-Not part of this session (not available yet, so they are **not** expected to
-appear in Share): **Telegram integrated (TDLib, t13)** waits for a Telegram
-`api_id`/`api_hash`; **Discord integrated (Social SDK, t16)** waits for a Discord
-application and Comms Access, and the SDK cannot send media at all
-(`docs/share-discord-social-sdk-feasibility.md`).
+**Telegram Integrated (section 4.7) is not runnable on this build.** It needs
+two things only you can supply: the optional TDLib runtime (build it with
+`tools	dlibuild-tdjson.ps1`, then record its SHA-256 in
+`src/telegram/TdRuntimePin.h`, which produces a new commit and build) and a
+Telegram `api_id`/`api_hash` for GameHQ from my.telegram.org (typed into
+Settings > Sharing, never pasted into chat or committed). Until then GameHQ
+shows it as "The optional Telegram component is not installed." Run 4.7 on the
+follow-up build; everything else can run now.
+
+**Discord integrated (Social SDK, t16) is deferred** by owner decision
+(2026-09-30): the SDK cannot send media, so it is not in Settings or in Share.
 
 ## 1. Destinations and what each may report
 
@@ -44,13 +48,13 @@ application and Comms Access, and the SDK cannot send media at all
 | Copy to clipboard | built in | none | **Copied** | "Copied. Paste it wherever you want to share it." |
 | Telegram | Telegram Desktop on this PC | none (Telegram must be installed) | **Handed off** | "Opened in Telegram. Finish sending there." |
 | Discord (Desktop) | Discord Desktop on this PC | none (Discord must be installed) | **Handed off** | "Copied and opened Discord. Paste it into a chat to send it." |
-| Discord channel | webhook you add | Settings > Capture > Share destinations | **Sent** (only after Discord returns the created message) | "Sent." |
-| Sample folder | add-on process (optional) | Settings > Capture > Share add-ons, then run the sample | **Copied** | "Copied. Paste it wherever ..." |
+| Telegram account | your Telegram account, signed in inside GameHQ (section 4.7) | Settings > Sharing > Telegram account | **Sent** (only after Telegram confirms the outgoing message) | "Sent." |
+| Discord channel | webhook you add | Settings > Sharing > Share destinations | **Sent** (only after Discord returns the created message) | "Sent." |
+| Sample folder | add-on process (optional) | Settings > Sharing > Share add-ons, then run the sample | **Copied** | "Copied. Paste it wherever ..." |
 
 Rules to hold GameHQ to throughout:
 
-* Only the Discord channel (and a future integrated provider) may ever say
-  **Sent**. Telegram and Discord Desktop must say **Handed off**; the clipboard
+* Only the Discord channel and Telegram account may ever say **Sent**. Telegram and Discord Desktop must say **Handed off**; the clipboard
   and the sample must say **Copied**. Any "Sent." from those is a **fail**.
 * An uncertain end must say "GameHQ couldn't confirm whether it was sent. Check
   before sharing again." and must never be retried automatically.
@@ -71,10 +75,10 @@ Rules to hold GameHQ to throughout:
 3. Discord: make a private test channel, then *Channel settings > Integrations >
    Webhooks > New Webhook*, **Copy Webhook URL**. Make **two** webhooks (A and B)
    in that channel or two channels.
-4. GameHQ: *Settings > Capture > Share destinations*: add **A** ("Test A") and
+4. GameHQ: *Settings > Sharing*: add **A** ("Test A") and
    **B** ("Test B") by pasting the link (the field is masked) and pressing Save.
    Press **Pin** on B.
-5. GameHQ: *Settings > Capture > Share add-ons* > switch on **Allow add-ons from
+5. GameHQ: *Settings > Sharing > Share add-ons* > switch on **Allow add-ons from
    other programs**. Then **quit GameHQ from the tray and run `start.bat` again**
    (add-ons are read at start-up).
 6. In a terminal, start the sample provider and leave it running:
@@ -100,6 +104,17 @@ keyboard.
 
 Mark each row Pass / Fail / Not run and note anything odd. "Dialog text" means
 the message in the Share dialog.
+
+### 4.0 Settings > Sharing (closes t21)
+
+| ID | Do | Expect |
+|---|---|---|
+| S1 | Open Settings and look for **Sharing** between Capture and Replay. Nothing Share-related is left under Capture. | A Sharing page with Enable Sharing, a Destinations list (Telegram, Telegram account, Discord, Discord channel), Telegram account setup, channel destinations and Share add-ons. No Discord Social SDK / integrated Discord entry anywhere. |
+| S2 | Switch **Discord** off, open Share on a capture. | Discord is not offered. Switch it back on: it returns. |
+| S3 | Add channel **A** (section 2), switch **Discord channel** off, share, switch back on. | While off it is hidden; when on again channel **A** is still there and still works without re-adding it (disabling never deletes destinations). |
+| S4 | Switch **Enable Sharing** off, then try Share from the gallery, lightbox and overlay. | Each says "Sharing is turned off. Turn it on in Settings > Sharing." Switch it on: Share works again. |
+| S5 | Restart GameHQ with a provider switched off. | It stays off (the switches persist). |
+| S6 | Settings > Advanced > Restore all settings. | Sharing and all providers return to on. |
 
 ### 4.1 Clipboard (control)
 
@@ -143,6 +158,22 @@ the message in the Share dialog.
 | A1 | Share the PNG to *Sample folder > Archive* (try searching "arch"). | Dialog **Copied**; the file is in `C:\Temp\ShareSample\archive\`. The line under the destination says it is an **add-on from another program**. |
 | A2 | Close the sample (Ctrl+C). | *Sample folder* disappears from Share. |
 | A3 | With add-ons **off** (switch off, restart) start the sample. | It exits with code 4 ("are Share add-ons enabled?"). |
+
+### 4.7 Telegram account (closes t13/t22-t24; needs the follow-up build)
+
+Prerequisite: the runtime build and your GameHQ API ID/hash (see section 0).
+
+| ID | Do | Expect |
+|---|---|---|
+| I1 | Settings > Sharing > Telegram account: enter API ID and hash, Save. | Fields clear; the credentials are not shown again. `cmdkey /list` shows `GameHQ.Share/telegram.integrated/api-id` and `api-hash`. |
+| I2 | **Connect Telegram**, enter the phone, then the code (and your two-step password if you have one). | Each step is asked once; wrong phone/code/password shows a clear message and lets you retry; ends "Connected". |
+| I3 | Gallery, **mouse**: Share a **PNG** to *Telegram account*; search a contact by name. | The list shows contacts and groups (no channels, bots or secret chats); the search finds people by name. |
+| I4 | Send it to a test chat. | "Sending..." then **Sent.** only once Telegram shows the message in that chat as **a photo**, from your account, exactly the picked file. |
+| I5 | Lightbox, **controller**: Share the **MP4** to the same chat. | **Sent.**; it arrives as a playable video (note whether the aspect ratio looks right). |
+| I6 | Overlay, **controller**: Share the **JPG**. | Works with D-pad/Cross/Circle only; focus returns to the game/overlay. |
+| I7 | Restart GameHQ, share again without logging in; also wait more than 5 minutes idle, then share. | It resumes the saved session with no prompts. |
+| I8 | Turn **Telegram account** off (S2-style): the session must remain. Then use **Disconnect** on its row. | Off only hides it (still connected when re-enabled). Disconnect signs out (Telegram > Settings > Devices no longer lists GameHQ) and `build\gamehq-data\share\sessions	elegram.integrated` is gone. |
+| I9 | During I2-I8 watch GameHQ. | It never shows chats, messages, unread counts or Telegram notifications. Your Telegram status is not "online" because of GameHQ. |
 
 ### 4.6 Cross-cutting
 
@@ -195,13 +226,14 @@ Copy this into your reply (or a file). One line per row you ran; unlisted rows c
 
 ```
 Session date:            
-Code commit / exe SHA-256 checked:   598a7fa / <first 16 chars of the hash you computed>
+Code commit / exe SHA-256 checked:   af58f81 / <first 16 chars of the hash you computed>
 Windows build:           
 Controller model:        
 Telegram Desktop version:            Discord Desktop version:
 
 ID   Result (Pass/Fail/Not run)   Capture   Destination   Observed result text   Notes
 C1
+S1
 T1
 ...
 F1
@@ -218,11 +250,12 @@ Pass is recorded against the gate named below.
 
 | Rows | Closes |
 |---|---|
+| S1-S6 | t21 (Settings > Sharing and per-provider enablement) |
+| I1-I9 | t13, t22, t23, t24 (Telegram Integrated end to end; follow-up build) |
 | T1-T4 | t12 (Telegram Desktop hand-off: PNG/JPG/MP4, running and closed) |
 | D1-D4 | t14 (Discord Desktop hand-off: image and clip, no GameHQ login) |
 | W1-W6, F1-F4 | t17 (real channel over real TLS from the overlay: screenshot and clip) |
 | A1-A3, F8 | confirms t18/t19 outside the automated suite |
 | C1, X1-X4, F5-F7, P1-P3 | t20 (controller/mouse navigation, focus, privacy and resilience) |
 
-t13 (Telegram integrated) and t16 (Discord integrated) remain blocked on
-credentials/access and are outside this session.
+t16 (Discord integrated) is deferred by owner decision and is outside this session.
