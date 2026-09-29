@@ -29,7 +29,7 @@ nothing depends on GameHQ's internal classes.
   own process; it connects. There is no manifest file GameHQ reads from disk
   and no executable path in any message. (This is deliberate: provider
   discovery would be part of the attack surface.)
-- **Off by default.** The user enables *Settings > Capture > Share add-ons >
+- **Off by default.** The user enables *Settings > Sharing > Share add-ons >
   Allow add-ons from other programs* (`share.external_providers`) and restarts
   GameHQ. While it is off, nothing listens on the pipe.
 - **Same user only.** The pipe is created with the same-user access option;

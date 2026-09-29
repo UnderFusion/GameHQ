@@ -56,6 +56,10 @@ public:
     // Idempotent: a failure is remembered, not retried silently.
     Status load();
     Status status() const { return m_status; }
+    // Cheap answer for "can this ever work here?" without hashing or loading
+    // anything: Unpinned / NotInstalled, else the current status (NotLoaded
+    // means "present, not yet verified").
+    Status quickStatus() const;
     bool isReady() const { return m_status == Status::Ready; }
     const TdJsonApi& api() const { return m_api; }
     // Version the library reported (only after a successful load).

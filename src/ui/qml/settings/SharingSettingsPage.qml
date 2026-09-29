@@ -110,6 +110,8 @@ SettingsPage {
         }
     }
 
+    TelegramAccountSection { }
+
     ShareDestinationsSection { }
 
     SettingsSection {
