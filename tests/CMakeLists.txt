@@ -1652,3 +1652,19 @@ gamehq_add_test(tst_telegramprovider
     "${CMAKE_SOURCE_DIR}/src/share/providers/TelegramIntegratedProvider.cpp")
 target_link_libraries(tst_telegramprovider PRIVATE advapi32)
 set_tests_properties(tst_telegramprovider PROPERTIES TIMEOUT 180)
+
+# Telegram Integrated must not be reachable from a standard build (t25): the
+# wiring helper is compiled exactly as in the app, with the same gate.
+gamehq_add_test(tst_telegramgate
+    tst_telegramgate.cpp
+    "${CMAKE_SOURCE_DIR}/src/share/TelegramWiring.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/providers/TelegramDesktopProvider.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareTypes.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProvider.h"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp")
+target_compile_definitions(tst_telegramgate PRIVATE
+    GAMEHQ_TELEGRAM_INTEGRATED_BUILD=$<BOOL:${GAMEHQ_TELEGRAM_INTEGRATED}>)
+target_link_libraries(tst_telegramgate PRIVATE advapi32 shell32 user32)

@@ -116,6 +116,7 @@ qt_add_executable(GameHQ
     share/ShareProvider.h
     share/ShareProviderRegistry.cpp share/ShareProviderRegistry.h
     share/ShareService.cpp share/ShareService.h
+    share/TelegramWiring.cpp share/TelegramWiring.h
     share/ShareSecurity.cpp share/ShareSecurity.h
     share/providers/TelegramDesktopProvider.cpp share/providers/TelegramDesktopProvider.h
     share/providers/TelegramIntegratedProvider.cpp share/providers/TelegramIntegratedProvider.h
@@ -361,6 +362,7 @@ target_include_directories(GameHQ PRIVATE
 
 target_compile_definitions(GameHQ PRIVATE
     GAMEHQ_VERSION="${GAMEHQ_VERSION_FULL}"
+    GAMEHQ_TELEGRAM_INTEGRATED_BUILD=$<BOOL:${GAMEHQ_TELEGRAM_INTEGRATED}>
     UNICODE _UNICODE
 )
 

@@ -1,6 +1,6 @@
 # TDLib runtime for Telegram Integrated
 
-Telegram Integrated is currently switched off (owner decision, plan t25; `share.telegram_integrated`, default false); the runtime and code are kept ready. It (Share to Telegram without leaving GameHQ) uses TDLib, Telegram's
+Telegram Integrated is deferred by the owner (plans t13/t25). It is dormant: standard builds do not register it, show no account UI and never load this runtime, and no config value can turn it on. A developer can build it in with `-DGAMEHQ_TELEGRAM_INTEGRATED=ON`. The code stays ready for a future decision. It (Share to Telegram without leaving GameHQ) uses TDLib, Telegram's
 official client library. GameHQ does **not** bundle a third-party binary: the runtime is
 built from the official source at a pinned revision and shipped as an *optional* file.
 
