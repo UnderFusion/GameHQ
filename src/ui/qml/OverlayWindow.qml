@@ -18,10 +18,9 @@ import "helpers/SidebarCategories.js" as SidebarCategories
 // design-system Â§5.
 //
 // Navigation: Up/Down (D-pad or left stick) always steps the sidebar and
-// applies its filter immediately; Left/Right (D-pad or stick) ALWAYS seeks
-// the focused clip (no-op on a screenshot). Flipping between captures is
-// L1/R1 only â€” these are two fully independent pad controls. The only
-// modal state is the action menu (Square/M).
+// applies its filter immediately; Left/Right (D-pad or stick) flips between
+// captures like L1/R1, and seeks instead once X is playing a clip. L1/R1
+// always flips. The only modal state is the action menu (Square/M).
 Window {
     id: overlayWindow
 
@@ -306,18 +305,23 @@ Window {
                 strip.incrementCurrentIndex()
         }
 
-        // D-pad left/right pad path: ALWAYS seeks the focused clip. No-op
-        // when no clip is in focus (e.g. on a screenshot, or before X has
-        // been pressed on a video) â€” d-pad never flips captures.
+        // D-pad left/right pad path: seeks a clip that is playing (inline after
+        // X, or shown in the full-screen viewer); otherwise it flips captures
+        // exactly like L1/R1.
         function handleSeekStep(direction) {
             if (viewer.open) {
-                viewer.seekVideo(direction * viewer.seekStepMs)
+                if (viewer.currentIsVideo)
+                    viewer.seekVideo(direction * viewer.seekStepMs)
+                else
+                    viewer.step(direction)
                 return
             }
             if (content.menuOpen)
                 return
-            if (!content.videoFocused)
+            if (!content.videoFocused) {
+                content.handleCaptureStep(direction)
                 return
+            }
             content.seekVideo(direction * previewStage.seekStepMs)
         }
 
@@ -405,11 +409,8 @@ Window {
         // DpadUp/Down/Left/Right edges (see DualSenseDevice::parseReport).
         Connections {
             target: input
-            // D-pad left/right is the SEEK path: only meaningful when a clip
-            // is focused (X entered clip-player mode). On a screenshot or
-            // before X has been pressed, it's an intentional no-op â€” d-pad
-            // never flips captures. That job belongs to L1/R1 below, so the
-            // two gestures stay independent per the user's spec.
+            // D-pad left/right flips captures like L1/R1 while browsing, and
+            // seeks once a clip is playing (see handleSeekStep).
             function onOverlayNavigate(direction) {
                 overlayWindow.usingGamepad = true
                 content.handleSeekStep(direction)
