@@ -76,6 +76,14 @@ values above. Uninstall removes a value only when it still points to the same
 installation, and removes the `GameHQ` autostart value only when it is owned by
 that installation. It never removes unrelated values or user data.
 
+Installed, portable and development copies share that one Run value but keep
+separate settings (`StartupManager`). A copy removes it only when the value
+launches that copy, and the launch-time reconcile (`syncOnLaunch`) never takes
+it over from another copy whose executable still exists; only turning the
+setting on in Settings moves it. Before 0.7.9 any copy started with autostart
+off deleted the installed copy's entry, and any copy started with it on took
+the entry over.
+
 Discovery never scans disks. A consumer checks an established
 `GameHQ.Local.v1` connection, a manually selected launcher, `InstallLocation`,
 App Paths, the current-user Run value, then the default installed root. A valid
