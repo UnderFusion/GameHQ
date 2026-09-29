@@ -17,9 +17,9 @@ controller and real screen can show.
 
 | | |
 |---|---|
-| Code commit | **`4dae02b`** on `dev` (`feat(share): hide deferred providers from the Sharing UI`). Later commits that only touch `docs/` do not change the app. |
+| Code commit | **`748ff8c`** on `dev` (`fix(share): gate Telegram Integrated at compile time so no config can enable it`). Later commits that only touch `docs/` do not change the app. |
 | Version | `0.7.9` (`VERSION`) |
-| Build | Debug build from `out\`. `out\GameHQ.exe` SHA-256 = `e866e8efcea4997eadccc8381cb5053feaf9253454a007a33ea368c8cd5cdf51` (`out\GameHQLauncher.exe` = `787e2e7b1b5f870cb956974db122c8d017812d951471904de7f8ab96f010642f`) |
+| Build | Debug build from `out\`. `out\GameHQ.exe` SHA-256 = `df6c3617db5eee5bed8295f2218c5ffadb8e0cb12bf60797f75c354cd9aa83d0` (`out\GameHQLauncher.exe` = `787e2e7b1b5f870cb956974db122c8d017812d951471904de7f8ab96f010642f`) |
 | How to run | `start.bat` in the repo root: rebuilds `out\`, assembles a clean package in `build\`, keeps your data, and launches `build\GameHQ.exe`. **It stops any running `GameHQ.exe` first, including the installed copy.** |
 | Data / log | `build\gamehq-data\` (separate from the installed copy). Log: `build\gamehq-data\logs\gamehq.log` |
 
@@ -200,7 +200,7 @@ Copy this into your reply (or a file). One line per row you ran; unlisted rows c
 
 ```
 Session date:            
-Code commit / exe SHA-256 checked:   4dae02b / <first 16 chars of the hash you computed>
+Code commit / exe SHA-256 checked:   748ff8c / <first 16 chars of the hash you computed>
 Windows build:           
 Controller model:        
 Telegram Desktop version:            Discord Desktop version:
