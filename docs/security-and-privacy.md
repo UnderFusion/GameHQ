@@ -28,6 +28,16 @@ buttons open their visible GitHub URLs. The optional Playnite plugin communicate
 with GameHQ through the local `GameHQ.Local.v1` named pipe and does not send game
 activity to GameHQ servers; there is no GameHQ server.
 
+Share sends a capture only when you choose a destination for one specific
+screenshot or clip. Desktop hand-offs (Telegram, Discord, clipboard) give the
+file to an app already on your PC and never sign GameHQ in to a service. A
+Discord channel destination uploads the capture directly to the webhook you
+added, which posts as that webhook rather than as your Discord account; the
+webhook link is stored only in Windows Credential Manager. Optional add-ons
+from other programs are off by default and can only receive the capture you
+explicitly share to them (see [Share Provider API v1](share-provider-api-v1.md)
+for what that does and does not protect).
+
 ## Controller access and elevation
 
 GameHQ reads Windows controller APIs. It does not inject into or modify games.

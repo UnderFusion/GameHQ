@@ -31,6 +31,7 @@
 #include "storage/CaptureScanner.h"
 #include "share/ShareService.h"
 #include "share/providers/ClipboardShareProvider.h"
+#include "share/external/ExternalProviderHost.h"
 #include "share/providers/DiscordDesktopProvider.h"
 #include "share/providers/DiscordWebhookProvider.h"
 #include "share/providers/TelegramDesktopProvider.h"
@@ -814,6 +815,16 @@ bool App::init()
             share::SecretStore(), share::DiscordWebhookStore::UrlValidator()),
         m_share.get()));
     m_share->registry()->add(new share::ClipboardShareProvider(m_share.get()));
+    // Third-party providers are opt-in: with the switch off nothing listens.
+    if (m_config->value(ConfigKeys::ShareExternalProviders, false).toBool()) {
+        m_shareProviders = std::make_unique<share::external::ExternalProviderHost>(m_share->registry());
+        m_shareProviders->setAppVersion(QStringLiteral(GAMEHQ_VERSION));
+        QString providerHostError;
+        if (!m_shareProviders->start(providerHostError)) {
+            qWarning() << "Share provider host could not start:" << providerHostError;
+            m_shareProviders.reset();
+        }
+    }
     m_engine.rootContext()->setContextProperty(QStringLiteral("shareService"), m_share.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlayGallery"), m_overlayGallery.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlay"), m_overlay.get());

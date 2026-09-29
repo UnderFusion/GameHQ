@@ -193,6 +193,22 @@ SettingsPage {
 
     ShareDestinationsSection { }
 
+    SettingsSection {
+        //% "Share add-ons"
+        title: qsTrId("gamehq.share.addons.title")
+        SettingsRow {
+            //% "Allow add-ons from other programs"
+            label: qsTrId("gamehq.share.addons.label")
+            //% "Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply."
+            description: qsTrId("gamehq.share.addons.description")
+            showDivider: false
+            SettingsToggle {
+                configKey: "share.external_providers"
+                defaultValue: false
+            }
+        }
+    }
+
     FolderDialog {
         id: screenshotFolderDialog
         //% "Choose the screenshots folder"

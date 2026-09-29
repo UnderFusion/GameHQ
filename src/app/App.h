@@ -12,6 +12,7 @@ class StartupManager;
 class CaptureDatabase;
 class CaptureScanner;
 namespace share { class Service; }
+namespace share::external { class ExternalProviderHost; }
 class GalleryModel;
 class AppController;
 class TrayIcon;
@@ -84,6 +85,9 @@ private:
     std::unique_ptr<UpdateService> m_updates;
     std::unique_ptr<IntegrationService> m_integration;
     std::unique_ptr<share::Service> m_share;   // Share Platform (docs/share-platform.md)
+    // Out-of-process Share providers (docs/share-provider-api-v1.md). Declared
+    // after m_share so it is destroyed first and unregisters its providers.
+    std::unique_ptr<share::external::ExternalProviderHost> m_shareProviders;
     // Wakes periodically to see if the 24h automatic-check window has passed
     // (see the update-check policy block in init()). Manual checkNow() from
     // QML bypasses this entirely.
