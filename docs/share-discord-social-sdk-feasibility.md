@@ -49,8 +49,10 @@ the Share workstream. Discord Desktop hand-off (t14) stays the media path.
 
 - **Confirmed.** `Client::GetRelationships` and `GetRelationshipsByGroup`
   read relationships. It needs the default presence scopes.
-- **Confirmed.** Discord friendships are limited to 1,000 and persist across
-  Discord; game friendships exist only inside the application.
+- **Confirmed.** Discord friendships persist across Discord and are limited to
+  1,000 accepted friends per account. That is an account limit, not a
+  documented cap on what `GetRelationships` returns. Game friendships exist
+  only inside the application.
 - **Limitation.** The guide requires explicit user consent for any friend
   request; requests must never be sent or accepted automatically. Share only
   needs to read.
@@ -63,8 +65,10 @@ the Share workstream. Discord Desktop hand-off (t14) stays the media path.
 - **Limitation.** Messages between provisional accounts or non-friends are
   ephemeral and do not persist. DM history needs both players to have played
   the application.
-- **Limitation.** Rate limit before approval: 100 DMs per 2 hours per
-  application (not per user). Higher limits need Discord approval.
+- **Limitation.** Unapproved applications are rate limited. The pages read on
+  2026-09-29 (communication features and the DM guide) state 100 DMs per
+  2 hours per application, not per user; treat that exact number as
+  time-sensitive and re-check it. Higher limits need Discord approval.
 
 ### OAuth and scopes
 
