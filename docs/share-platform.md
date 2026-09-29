@@ -262,7 +262,7 @@ post to its one channel and nothing else.
 
 ### Telegram account (`telegram.integrated`, t13/t22-t24)
 
-Optional. `share::TelegramIntegratedProvider` sends the picked capture natively
+**Owner-deferred (plan t25):** built and tested, but registered only when `share.telegram_integrated` is true (default false, read at start-up, not in Settings), so users see no login option. Optional. `share::TelegramIntegratedProvider` sends the picked capture natively
 through the user's own Telegram account using TDLib (`docs/tdlib-runtime.md`
 for the pinned runtime). Layers:
 

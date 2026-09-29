@@ -74,6 +74,11 @@ inline constexpr QLatin1StringView ShareExternalProviders{ "share.external_provi
 // destinations stay until the user disconnects or removes them explicitly.
 // A provider's key is ShareProviderPrefix + provider id + ShareProviderSuffix.
 inline constexpr QLatin1StringView ShareEnabled{ "share.enabled" };
+// Telegram Integrated (TDLib) is built and tested but owner-deferred for the
+// current product (plan t25): with this off, read once at startup, the
+// provider is not registered and Settings shows no login option. Not exposed
+// in Settings; a developer turns it on in config.json to work on it.
+inline constexpr QLatin1StringView ShareTelegramIntegrated{ "share.telegram_integrated" };
 inline constexpr QLatin1StringView ShareProviderPrefix{ "share.provider." };
 inline constexpr QLatin1StringView ShareProviderSuffix{ ".enabled" };
 

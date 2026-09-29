@@ -810,7 +810,9 @@ bool App::init()
     m_share->setConfig(m_config.get());
     // Registration order is the order the Share dialog lists destinations.
     m_share->registry()->add(new share::TelegramDesktopProvider(m_share.get()));
-    {
+    // Owner-deferred (plan t25): built and tested, but neither registered nor
+    // shown unless a developer opts in.
+    if (m_config->value(ConfigKeys::ShareTelegramIntegrated, false).toBool()) {
         // Optional TDLib runtime: located now, hashed and loaded only when the
         // user connects. Without it the provider reports "not installed".
         m_tdRuntime = telegram::TdRuntime::forInstalledApp(QCoreApplication::applicationDirPath());
@@ -853,6 +855,8 @@ bool App::init()
             m_shareProviders.reset();
         }
     }
+    if (!m_telegramAccount)
+        m_engine.rootContext()->setContextProperty(QStringLiteral("telegramAccount"), QVariant());
     m_engine.rootContext()->setContextProperty(QStringLiteral("shareService"), m_share.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlayGallery"), m_overlayGallery.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlay"), m_overlay.get());

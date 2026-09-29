@@ -46,6 +46,7 @@ constexpr std::array liveKeys{
     ConfigKeys::NotificationsEnabled,
     ConfigKeys::ShareExternalProviders,
     ConfigKeys::ShareEnabled,
+    ConfigKeys::ShareTelegramIntegrated,
     ConfigKeys::UiLanguage,
     ConfigKeys::UiPage,
     ConfigKeys::UiSettingsCategory,

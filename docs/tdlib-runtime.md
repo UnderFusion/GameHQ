@@ -1,6 +1,6 @@
 # TDLib runtime for Telegram Integrated
 
-Telegram Integrated (Share to Telegram without leaving GameHQ) uses TDLib, Telegram's
+Telegram Integrated is currently switched off (owner decision, plan t25; `share.telegram_integrated`, default false); the runtime and code are kept ready. It (Share to Telegram without leaving GameHQ) uses TDLib, Telegram's
 official client library. GameHQ does **not** bundle a third-party binary: the runtime is
 built from the official source at a pinned revision and shipped as an *optional* file.
 
