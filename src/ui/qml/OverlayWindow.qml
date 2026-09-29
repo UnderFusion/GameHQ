@@ -636,15 +636,31 @@ Window {
     ShareDialog {
         parent: uiSurface.contentItem
         id: overlayShare
-        onClosed: content.forceActiveFocus()
+        // Set when the user still has a step to read before the overlay may
+        // step aside (see the Connections below).
+        property bool hideOverlayOnClose: false
+        onClosed: {
+            content.forceActiveFocus()
+            if (hideOverlayOnClose) {
+                hideOverlayOnClose = false
+                overlay.hide()
+            }
+        }
     }
     // A hand-off (e.g. Telegram's "choose a chat" box) needs the screen: the
     // overlay is topmost over the game, so step aside once the app has the file.
+    // The exception is a hand-off that ends with something for the user to do
+    // (Discord: paste into a chat). That instruction must be readable, so the
+    // dialog stays until the user confirms it and only then the overlay hides.
     Connections {
         target: shareService
         function onFinished(result) {
             if (!overlayShare.isOpen || result.outcome !== "handed_off")
                 return
+            if (result.detail === "paste") {
+                overlayShare.hideOverlayOnClose = true
+                return
+            }
             overlayShare.close()
             overlay.hide()
         }
