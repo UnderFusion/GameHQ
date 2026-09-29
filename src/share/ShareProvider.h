@@ -45,6 +45,28 @@ public:
     // Called on Disconnect: drop the session, secrets and local session data.
     // Providers without an account need nothing here.
     virtual void disconnectAccount() {}
+    // Providers with Capability::SavedTargets keep user-configured
+    // destinations (webhooks, folders). The Settings UI manages them through
+    // these three calls only; `secret` never comes back out. The return value
+    // of add is "" on success, else a stable code ("invalid_name",
+    // "invalid_secret", "too_many", "storage_failed").
+    struct SavedDestination
+    {
+        QString id;
+        QString name;
+    };
+    virtual QVector<SavedDestination> savedDestinations() const { return {}; }
+    virtual QString addSavedDestination(const QString& name, const QString& secret)
+    {
+        Q_UNUSED(name);
+        Q_UNUSED(secret);
+        return QStringLiteral("unsupported");
+    }
+    virtual bool removeSavedDestination(const QString& id)
+    {
+        Q_UNUSED(id);
+        return false;
+    }
     // How long a started job may stay silent before the service ends it as
     // Unconfirmed. Hand-offs are quick; uploads get longer.
     virtual int jobTimeoutMs() const { return 120000; }

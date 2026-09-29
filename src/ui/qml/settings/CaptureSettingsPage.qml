@@ -191,6 +191,8 @@ SettingsPage {
         }
     }
 
+    ShareDestinationsSection { }
+
     FolderDialog {
         id: screenshotFolderDialog
         //% "Choose the screenshots folder"

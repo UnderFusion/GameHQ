@@ -206,6 +206,55 @@ depend on it.
   with Discord running and closed; large clips are subject to the account's
   upload limit.
 
+### Discord channel (`discord.webhook`, t17)
+
+`src/share/providers/DiscordWebhook{Provider,Store,Upload}.{h,cpp}`, tests
+`tests/tst_sharediscordwebhook.cpp`. The user adds named channels (incoming
+webhooks) in Settings > Capture > Share destinations; Share then uploads the
+capture natively (multipart file, no link, no third-party host). The post
+appears under the **webhook's identity, not the user's personal Discord
+account**, and the privacy notice says so. `access: share_token`: a webhook can
+post to its one channel and nothing else.
+
+- **Storage:** the webhook URL is a credential and lives only in Windows
+  Credential Manager (`GameHQ.Share/discord.webhook/dest-<id>`). The metadata
+  file `gamehq-data/share/discord-webhooks.json` holds ids, names and a
+  last-used time only. Up to 20 channels; most recently used first. Disconnect
+  removes every channel and secret. The URL is validated (https, a Discord
+  host, `/api[/vN]/webhooks/<id>/<token>`, no query/port/userinfo) before it is
+  stored.
+- **Settings UI:** generic. `Service::savedDestinationProviders()` /
+  `addSavedDestination()` / `removeSavedDestination()` and the `Provider`
+  `savedDestinations()` hooks serve any provider with `SavedTargets`; the
+  section is hidden when none exists. The link field is masked and cleared
+  after saving. The Share dialog needs no Discord-specific code; with no
+  channel configured the destination shows as unavailable ("Add a Discord
+  channel in Settings first.").
+- **Upload:** `POST <webhook>?wait=true`, multipart `payload_json`
+  (`allowed_mentions.parse = []`, one attachment) plus `files[0]`, streamed in
+  64 KiB chunks so a clip never sits in memory and the UI thread never blocks.
+  `DiscordWebhookUpload` is a small single-shot HTTP client on `QSslSocket`
+  instead of `QNetworkAccessManager`, because Qt silently re-sends a POST whose
+  connection drops before the answer (seen in testing: two requests), which
+  could post a capture twice. It never retries, never follows redirects, does
+  not use an ambient proxy, and does not ignore certificate errors.
+- **Outcomes:** `sent` only for a 2xx whose body carries the created message
+  id. `failed`: 401/403/404 `webhook_revoked`, 429 `rate_limited`, 413 or
+  Discord code 40005 `too_large`, other 4xx `rejected`, connect/TLS errors
+  `network_error`. `unconfirmed`: 5xx `server_error`, a 2xx without a message id
+  `unexpected_response`, a dropped connection or a cancel after the whole body
+  left (`network_error` / `cancelled_late`). `cancelled` only when the upload
+  was still incomplete. Nothing is retried.
+- **Secrecy:** the URL never appears in logs, error codes, results or the
+  metadata file (asserted by the test).
+- **Size:** Discord's per-upload limit is not in the webhook reference and
+  varies with the server, so the server's 413 is authoritative; a local
+  100 MiB ceiling only avoids absurd uploads. Time-sensitive.
+- **Not done:** pinned destinations (only most-recent-first ordering), and
+  the OAuth `webhook.incoming` setup flow (needs a backend to keep the client
+  secret). **Manual check pending (owner):** send a screenshot and a clip to a
+  real channel over real TLS from the overlay.
+
 ### Copy to clipboard (`clipboard`)
 
 Built-in provider: `share::ClipboardShareProvider` (`clipboard`) puts the file

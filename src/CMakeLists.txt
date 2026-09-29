@@ -120,6 +120,9 @@ qt_add_executable(GameHQ
     share/providers/TelegramDesktopProvider.cpp share/providers/TelegramDesktopProvider.h
     share/providers/ClipboardShareProvider.cpp share/providers/ClipboardShareProvider.h
     share/providers/DiscordDesktopProvider.cpp share/providers/DiscordDesktopProvider.h
+    share/providers/DiscordWebhookProvider.cpp share/providers/DiscordWebhookProvider.h
+    share/providers/DiscordWebhookStore.cpp share/providers/DiscordWebhookStore.h
+    share/providers/DiscordWebhookUpload.cpp share/providers/DiscordWebhookUpload.h
     storage/CaptureDatabase.cpp storage/CaptureDatabase.h
     storage/CaptureQueries.cpp storage/CaptureQueries.h
     storage/CaptureFolderWatcher.cpp storage/CaptureFolderWatcher.h
@@ -236,6 +239,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/SettingsLinkRow.qml
         ui/qml/components/SettingsStatusStrip.qml
         ui/qml/components/SettingsActionTile.qml
+        ui/qml/components/ShareDestinationsSection.qml
         ui/qml/components/SettingsEmptyState.qml
         ui/qml/components/SettingsDisclosure.qml
         ui/qml/settings/GeneralSettingsPage.qml

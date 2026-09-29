@@ -964,6 +964,20 @@ gamehq_add_test(tst_sharediscorddesktop
     "${CMAKE_SOURCE_DIR}/src/share/providers/DiscordDesktopProvider.cpp")
 target_link_libraries(tst_sharediscorddesktop PRIVATE advapi32 shell32 user32)
 
+# Discord channel (webhook) provider (t17): multipart upload, sent only from the
+# response, failure/rate-limit/revoked codes, secrets out of files and logs.
+gamehq_add_test(tst_sharediscordwebhook
+    tst_sharediscordwebhook.cpp
+    "${CMAKE_SOURCE_DIR}/src/share/ShareTypes.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProvider.h"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/providers/DiscordWebhookStore.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/providers/DiscordWebhookUpload.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/providers/DiscordWebhookProvider.cpp")
+target_link_libraries(tst_sharediscordwebhook PRIVATE Qt6::Network advapi32)
+
 gamehq_add_test(tst_captureborderstate
     tst_captureborderstate.cpp
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
