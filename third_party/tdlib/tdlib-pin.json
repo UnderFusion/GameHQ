@@ -1,0 +1,13 @@
+{
+  "name": "TDLib (Telegram Database Library)",
+  "repository": "https://github.com/tdlib/td",
+  "version": "1.8.67",
+  "commit": "bc9c263e2bfee06aaab41e82db51a103376030bc",
+  "commitNote": "\"Update version to 1.8.67.\" on tdlib/td master, 2026-08-24 (resolved via the GitHub API on 2026-09-30).",
+  "license": "BSL-1.0",
+  "licenseFile": "licenses/TDLib-BSL-1.0.txt",
+  "runtimeFile": "runtime/tdlib/tdjson.dll",
+  "runtimeSha256": "",
+  "runtimeSha256Note": "Empty until tools/tdlib/build-tdjson.ps1 has been run and its hash recorded here and in src/telegram/TdRuntimePin.h. While empty GameHQ refuses to load any TDLib runtime.",
+  "buildTriplet": "x64-windows-static"
+}

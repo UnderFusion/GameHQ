@@ -1612,3 +1612,18 @@ add_dependencies(tst_inputreceiver gamehq_input_receiver)
 # The live case spends about fifteen seconds in real phases on top of three
 # window/focus transitions; two minutes is the honest budget for it.
 set_tests_properties(tst_inputreceiver PROPERTIES TIMEOUT 300)
+
+# Telegram Integrated runtime loader (t22). The fake DLLs stand in for
+# tdjson.dll and are placed next to the test exe, so the loader is exercised
+# against real LoadLibrary behaviour without shipping any TDLib code.
+foreach(_variant IN ITEMS ok oldver partial)
+    add_library(fake_tdjson_${_variant} SHARED fake_tdjson.cpp)
+    set_target_properties(fake_tdjson_${_variant} PROPERTIES PREFIX "")
+    target_link_options(fake_tdjson_${_variant} PRIVATE -static)
+endforeach()
+target_compile_definitions(fake_tdjson_oldver PRIVATE FAKE_TD_VERSION="1.0.0")
+target_compile_definitions(fake_tdjson_partial PRIVATE FAKE_TD_OMIT_SEND)
+gamehq_add_test(tst_tdruntime
+    tst_tdruntime.cpp
+    "${CMAKE_SOURCE_DIR}/src/telegram/TdRuntime.cpp")
+add_dependencies(tst_tdruntime fake_tdjson_ok fake_tdjson_oldver fake_tdjson_partial)

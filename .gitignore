@@ -76,3 +76,7 @@ dist/
 # Agent scratch directories (never committed)
 .codex-tmp/
 .claude-gui-temp/
+
+# Self-built TDLib runtime and its build tree (t22)
+/tools/tdlib/work-*/
+/tools/tdlib/[0-9]*/

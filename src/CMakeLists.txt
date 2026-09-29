@@ -126,6 +126,7 @@ qt_add_executable(GameHQ
     share/external/ExternalProvider.cpp share/external/ExternalProvider.h
     share/external/ExternalProviderHost.cpp share/external/ExternalProviderHost.h
     share/providers/DiscordWebhookUpload.cpp share/providers/DiscordWebhookUpload.h
+    telegram/TdRuntime.cpp telegram/TdRuntime.h telegram/TdRuntimePin.h
     storage/CaptureDatabase.cpp storage/CaptureDatabase.h
     storage/CaptureQueries.cpp storage/CaptureQueries.h
     storage/CaptureFolderWatcher.cpp storage/CaptureFolderWatcher.h
