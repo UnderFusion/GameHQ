@@ -169,19 +169,22 @@ Item {
         root.view = "result"
         const outcome = result.outcome || "failed"
         root.resultIsError = outcome === "failed" || outcome === "unconfirmed"
-        root.message = root.outcomeText(outcome, result.errorCode || "")
+        root.message = root.outcomeText(outcome, result.errorCode || "", result.detail || "")
         root.setRows([
             //% "Done"
             { id: "done", kind: "done", label: qsTrId("gamehq.action.done"), enabled: true }
         ])
     }
 
-    function outcomeText(outcome, code) {
+    function outcomeText(outcome, code, detail) {
         switch (outcome) {
         case "sent":
             //% "Sent."
             return qsTrId("gamehq.share.outcome.sent")
         case "handed_off":
+            if (detail === "paste")
+                //% "Copied and opened %1. Paste it into a chat to send it."
+                return qsTrId("gamehq.share.outcome.handed_off_paste").arg(root.providerName)
             //% "Opened in %1. Finish sending there."
             return qsTrId("gamehq.share.outcome.handed_off").arg(root.providerName)
         case "copied":

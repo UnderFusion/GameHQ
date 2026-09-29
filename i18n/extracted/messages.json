@@ -371,7 +371,7 @@
         },
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 419
+          "line": 422
         },
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
@@ -3381,7 +3381,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 664
+          "line": 665
         }
       ],
       "plural": false,
@@ -4291,7 +4291,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 639
+          "line": 640
         }
       ],
       "plural": false,
@@ -7459,7 +7459,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 484
+          "line": 485
         }
       ],
       "plural": false,
@@ -7476,7 +7476,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 491
+          "line": 492
         }
       ],
       "plural": false,
@@ -7493,7 +7493,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 497
+          "line": 498
         }
       ],
       "plural": false,
@@ -7510,7 +7510,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 290
+          "line": 291
         }
       ],
       "plural": false,
@@ -7527,7 +7527,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 284
+          "line": 285
         }
       ],
       "plural": false,
@@ -7544,7 +7544,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 274
+          "line": 275
         }
       ],
       "plural": false,
@@ -7561,7 +7561,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 396
+          "line": 397
         }
       ],
       "plural": false,
@@ -7578,7 +7578,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 459
+          "line": 460
         }
       ],
       "plural": false,
@@ -7597,7 +7597,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 77
+          "line": 78
         }
       ],
       "plural": false,
@@ -7614,7 +7614,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 71
+          "line": 72
         }
       ],
       "plural": false,
@@ -7631,7 +7631,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 89
+          "line": 90
         }
       ],
       "plural": false,
@@ -7648,7 +7648,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 83
+          "line": 84
         }
       ],
       "plural": false,
@@ -7665,7 +7665,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 65
+          "line": 66
         }
       ],
       "plural": false,
@@ -7682,7 +7682,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 306
+          "line": 307
         }
       ],
       "plural": false,
@@ -7699,7 +7699,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 391
+          "line": 392
         }
       ],
       "plural": false,
@@ -7716,7 +7716,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 440
+          "line": 441
         }
       ],
       "plural": false,
@@ -7733,7 +7733,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 299
+          "line": 300
         }
       ],
       "plural": false,
@@ -7750,7 +7750,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 341
+          "line": 342
         }
       ],
       "plural": false,
@@ -7767,7 +7767,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 542
+          "line": 543
         }
       ],
       "plural": false,
@@ -7786,7 +7786,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 537
+          "line": 538
         }
       ],
       "plural": false,
@@ -7803,7 +7803,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 706
+          "line": 707
         }
       ],
       "plural": false,
@@ -15668,6 +15668,42 @@
       "source_hash": "ef942900eb24e0c15f68d8a5184d08d04a998f4344933fe7feb8db846f22fd78"
     },
     {
+      "id": "gamehq.share.discord_desktop.not_installed",
+      "source": "Discord Desktop isn't installed.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/providers/DiscordDesktopProvider.cpp",
+          "line": 125
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "e09d1853e76f14cbaad34480d20ba2e172b60ee8e11ce7f937cae57392816453"
+    },
+    {
+      "id": "gamehq.share.discord_desktop.privacy",
+      "source": "Copies the file and opens Discord so you can paste it. GameHQ never signs in to Discord.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/providers/DiscordDesktopProvider.cpp",
+          "line": 134
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "b18da0a7c4d431420a2d00bbb3cedeeab39594ac7c99e5ed5ad4e8ff8b035b31"
+    },
+    {
       "id": "gamehq.share.error.capture_changed",
       "source": "This capture changed on disk after you opened Share. Open Share again.",
       "context": "ID",
@@ -15675,7 +15711,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 207
+          "line": 210
         }
       ],
       "plural": false,
@@ -15692,7 +15728,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 204
+          "line": 207
         }
       ],
       "plural": false,
@@ -15709,7 +15745,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 213
+          "line": 216
         }
       ],
       "plural": false,
@@ -15726,7 +15762,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 210
+          "line": 213
         }
       ],
       "plural": false,
@@ -15794,7 +15830,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 192
+          "line": 195
         }
       ],
       "plural": false,
@@ -15811,7 +15847,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 189
+          "line": 192
         }
       ],
       "plural": false,
@@ -15828,7 +15864,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 186
+          "line": 189
         }
       ],
       "plural": false,
@@ -15838,6 +15874,25 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "6846079c9310ac8744ef813bd4256fdccefb595d54a763ea5d023f6ec9cb898e"
+    },
+    {
+      "id": "gamehq.share.outcome.handed_off_paste",
+      "source": "Copied and opened %1. Paste it into a chat to send it.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/ShareDialog.qml",
+          "line": 187
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "78b010544f9e818955e5a5e8f10464a1bc0b87ce70cfc133fc0e14124470cfff"
     },
     {
       "id": "gamehq.share.outcome.sent",
@@ -15864,7 +15919,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 195
+          "line": 198
         }
       ],
       "plural": false,
@@ -15934,7 +15989,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 221
+          "line": 224
         }
       ],
       "plural": false,
@@ -15987,7 +16042,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/ShareDialog.qml",
-          "line": 325
+          "line": 328
         }
       ],
       "plural": false,

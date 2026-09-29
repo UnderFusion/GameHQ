@@ -119,6 +119,7 @@ qt_add_executable(GameHQ
     share/ShareSecurity.cpp share/ShareSecurity.h
     share/providers/TelegramDesktopProvider.cpp share/providers/TelegramDesktopProvider.h
     share/providers/ClipboardShareProvider.cpp share/providers/ClipboardShareProvider.h
+    share/providers/DiscordDesktopProvider.cpp share/providers/DiscordDesktopProvider.h
     storage/CaptureDatabase.cpp storage/CaptureDatabase.h
     storage/CaptureQueries.cpp storage/CaptureQueries.h
     storage/CaptureFolderWatcher.cpp storage/CaptureFolderWatcher.h
