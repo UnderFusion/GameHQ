@@ -54,6 +54,7 @@ public:
     {
         QString id;
         QString name;
+        bool pinned = false;   // pinned destinations are listed first
     };
     virtual QVector<SavedDestination> savedDestinations() const { return {}; }
     virtual QString addSavedDestination(const QString& name, const QString& secret)
@@ -65,6 +66,20 @@ public:
     virtual bool removeSavedDestination(const QString& id)
     {
         Q_UNUSED(id);
+        return false;
+    }
+    // Rename returns "" on success, else a stable code ("invalid_name",
+    // "not_found"). Pinning keeps the secret and id untouched.
+    virtual QString renameSavedDestination(const QString& id, const QString& name)
+    {
+        Q_UNUSED(id);
+        Q_UNUSED(name);
+        return QStringLiteral("unsupported");
+    }
+    virtual bool setSavedDestinationPinned(const QString& id, bool pinned)
+    {
+        Q_UNUSED(id);
+        Q_UNUSED(pinned);
         return false;
     }
     // How long a started job may stay silent before the service ends it as

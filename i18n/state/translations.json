@@ -9930,9 +9930,31 @@
           },
           "updated_at": null
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -10956,7 +10978,7 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
+          "total": 997,
           "current": 0,
           "missing": [
             "gamehq.about.enjoying_gamehq",
@@ -11861,7 +11883,9 @@
             "gamehq.share.settings.error.invalid_secret",
             "gamehq.share.settings.error.storage_failed",
             "gamehq.share.settings.error.too_many",
+            "gamehq.share.settings.pin",
             "gamehq.share.settings.title",
+            "gamehq.share.settings.unpin",
             "gamehq.share.settings.webhook_label",
             "gamehq.share.telegram_desktop.not_installed",
             "gamehq.share.telegram_desktop.privacy",
@@ -21898,6 +21922,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "96ae83a6bd99726aa55a2a779bdeb43ee36cbc60b523202e21c3a8412a2ef1d2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -21908,6 +21943,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "62d07e3dd622622a3c97fb89df16fcdbb2fec8489aea2d2a6bcf5362e3d636de",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -22924,8 +22970,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -32870,10 +32916,32 @@
           },
           "updated_at": null
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "82ca26517b16be2adab27cfa1cd33bddb264954aeb57013b8cae9fadf4d8e166",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
           "translation_hash": "a47f0efb3f0cdf4423c4e76435df34334465e1644c588789ad77b84e72dc3a28",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "51edd88307ba24b0698b4faa6eff1b47c17ef89d665b0a69e4955500d5e1866e",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -33896,8 +33964,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -43842,6 +43910,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "04a1cbc9c84da2f95d5e4378e02806e20a21ff875c32214acd58660ec3f6e4eb",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -43852,6 +43931,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "eca373316421ba5366169a0145a0a2f3e28a6a808de2e1043d66dac6d3c8c0f2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -44868,8 +44958,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -54814,6 +54904,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "04a1cbc9c84da2f95d5e4378e02806e20a21ff875c32214acd58660ec3f6e4eb",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -54824,6 +54925,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "eca373316421ba5366169a0145a0a2f3e28a6a808de2e1043d66dac6d3c8c0f2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -55840,8 +55952,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -65786,6 +65898,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "73c43f164095e69ec76406ceacbc867f99c6cb1491659eb18062770f3dcec9d2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -65796,6 +65919,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "aef2dbeff38b6a718aca39defa724342e157adb20712593e24841b38e1e08e88",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -66812,8 +66946,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -76758,6 +76892,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "3906f735dbb9c16b1a0cc043b266c52af8975f24a45f3614e8d596ae3f80d20d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -76768,6 +76913,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "9a832501f9988096f1710609cca1bdc70188914c5236cfa3b7afe91dc43ac759",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -77784,8 +77940,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -87730,6 +87886,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "6d5dfd7a5507689940a8bf3509f5e5b98324d9668d7aa9a002fc587d6e8fb830",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -87740,6 +87907,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "6363cc6e339004bf7af524c80e37ca338defe636de4e0cddb675b513ee26b4df",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -88756,8 +88934,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -98702,6 +98880,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "9d9bf65fb309404de4ea880b410f8eb3f49f43e73793b98310720b3f196a860f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -98712,6 +98901,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "aaa74bd0ff9ddf6f3c1ea7815be9899037b97b771827db3b0b4bc7d2ad60e773",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -99728,8 +99928,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -109674,6 +109874,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "a1ef483bb00ff18bd98d925b0832fc537f0b587c0200c4d678b0ee01e58e581f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -109684,6 +109895,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "3e50c5346b48ab1ab8157ee9282c68517ddebc18974dd9568eebb3e20a9e43ba",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -110700,8 +110922,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -120646,6 +120868,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "0ca6b5d6f5837f3af3cb49033e7e49dbb3de38b0ec00cdce85c11666d7e5a5fb",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -120656,6 +120889,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "30fdf57839c2da1366192f96bcdd8ed9716c29c62e50ac286a8351799d5335c3",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -121672,8 +121916,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -131618,6 +131862,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "ebebecd8db02d7823e7cd3b85947ff814e88b0138a826b0713ba8433b79ef7df",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -131628,6 +131883,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "8bf2d7e9b062db941c13e1d3d0f8adc377818c8a4b31d4cbd5fd5c1badad4d96",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -132644,8 +132910,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -142590,6 +142856,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "4b7052f5c101a2d1ae0838a6860f7cf908fcd6bfc4292c3bd14904852852f5d2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -142600,6 +142877,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "11639b1d4ae78f088bc6a9c70484fa5c1fc65e3981f5765c6adaaa48e0667caa",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -143616,8 +143904,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -153562,6 +153850,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "1ac6877e6a206206e94026bdfe07799911bc753401a4ada051186ee29bb2c000",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -153572,6 +153871,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "38c5a42ccae2571e448f8110d5ab4a0d28dd83a7b7fa7ef5e009c62f3c3a1869",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -154588,8 +154898,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -164534,6 +164844,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "1ab22cedb14b24386946c6141ea830d6028e75a2ddec3dbae635fa47120973fb",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -164544,6 +164865,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "1e8b1217d75d09b3b00cd2957cef3a8c334d0f6eb7eb981294c73804ebadacb1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -165560,8 +165892,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -175506,6 +175838,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "113eaaaaaa44c4145a639eff1afc92030f577f310cc36bafb649f50e14456c14",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -175516,6 +175859,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "206c15ec106d178ab3c6df1fe0f8c7616a42c7f9967178dd2f3d1c8fb90078a0",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -176532,8 +176886,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },
@@ -186478,6 +186832,17 @@
           },
           "updated_at": "2026-09-29T23:00:00Z"
         },
+        "gamehq.share.settings.pin": {
+          "domain": "application",
+          "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+          "translation_hash": "e4f5412c03e54b6813030fa56cdb45a40ee6084b193f350a800967a32e098410",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
+        },
         "gamehq.share.settings.title": {
           "domain": "application",
           "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
@@ -186488,6 +186853,17 @@
             "actor": "claude-sonnet-5-5-share-t17-contextual"
           },
           "updated_at": "2026-09-29T23:00:00Z"
+        },
+        "gamehq.share.settings.unpin": {
+          "domain": "application",
+          "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+          "translation_hash": "f6ca2b9d60010d81fbda6139b30f71f01156d83f13172c61965b310fae47943d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-sonnet-5-5-share-t17-contextual"
+          },
+          "updated_at": "2026-09-29T23:30:00Z"
         },
         "gamehq.share.settings.webhook_label": {
           "domain": "application",
@@ -187504,8 +187880,8 @@
       },
       "completeness": {
         "application": {
-          "total": 995,
-          "current": 995,
+          "total": 997,
+          "current": 997,
           "missing": [],
           "stale": []
         },

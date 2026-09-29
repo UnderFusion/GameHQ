@@ -28,11 +28,6 @@ class DiscordWebhookProvider : public Provider
 {
     Q_OBJECT
 public:
-    // Local sanity ceiling only. Discord's real per-upload limit is not in the
-    // webhook reference and changes with the server, so the server's 413 is
-    // the authority; this just avoids uploading something absurd.
-    static constexpr qint64 kSanityLimitBytes = 100LL * 1024 * 1024;
-
     explicit DiscordWebhookProvider(DiscordWebhookStore* store, QObject* parent = nullptr);
     // Production form: the provider owns its store.
     explicit DiscordWebhookProvider(std::unique_ptr<DiscordWebhookStore> store,
@@ -56,13 +51,13 @@ public:
     QVector<SavedDestination> savedDestinations() const override;
     QString addSavedDestination(const QString& name, const QString& secret) override;
     bool removeSavedDestination(const QString& id) override;
+    QString renameSavedDestination(const QString& id, const QString& name) override;
+    bool setSavedDestinationPinned(const QString& id, bool pinned) override;
 
     void requestTargets(const QString& queryId, const Request& request,
                         const QString& query) override;
     void start(const Job& job, const Request& request, const Target& target) override;
     void cancel(const QString& jobId) override;
-
-    void setMaxUploadBytes(qint64 bytes) { m_maxUploadBytes = bytes; }
 
 private:
     void finish(const Result& result);
@@ -73,7 +68,6 @@ private:
 
     std::unique_ptr<DiscordWebhookStore> m_ownedStore;
     DiscordWebhookStore* m_store;
-    qint64 m_maxUploadBytes = kSanityLimitBytes;
 
     // One job at a time (the service enforces it).
     QString m_jobId;

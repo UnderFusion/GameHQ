@@ -82,6 +82,11 @@ public:
     Q_INVOKABLE QString addSavedDestination(const QString& providerId, const QString& name,
                                             const QString& secret);
     Q_INVOKABLE bool removeSavedDestination(const QString& providerId, const QString& id);
+    // "" on success, else "invalid_name", "not_found", "busy", ...
+    Q_INVOKABLE QString renameSavedDestination(const QString& providerId, const QString& id,
+                                               const QString& name);
+    Q_INVOKABLE bool setSavedDestinationPinned(const QString& providerId, const QString& id,
+                                               bool pinned);
 
     bool active() const { return m_request.isValid(); }
     QString fileName() const { return m_request.fileName(); }
