@@ -76,6 +76,10 @@ FetchContent_MakeAvailable(monocypher)
 # trust: the TEST-ONLY signing key lives in a separate trust library that only
 # test targets link, so one build tree is both shippable and testable.
 option(GAMEHQ_BUILD_TESTS "Build the automated test target" OFF)
+# Telegram Integrated (TDLib account sharing) is owner-deferred (plan t13/t25).
+# Developer-only: a standard build never registers it, whatever config.json says.
+option(GAMEHQ_TELEGRAM_INTEGRATED
+    "Build Telegram Integrated into the Share providers (developer only, default OFF)" OFF)
 option(GAMEHQ_ENABLE_PSEUDO_LOCALES
     "Expose development-only en-XA and ar-XB pseudo-locales"
     OFF)

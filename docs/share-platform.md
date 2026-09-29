@@ -262,7 +262,7 @@ post to its one channel and nothing else.
 
 ### Telegram account (`telegram.integrated`, t13/t22-t24)
 
-**Owner-deferred (plan t25):** built and tested, but registered only when `share.telegram_integrated` is true (default false, read at start-up, not in Settings), so users see no login option. Optional. `share::TelegramIntegratedProvider` sends the picked capture natively
+**Deferred and dormant (owner, plans t13/t25):** registered only in a developer build (`-DGAMEHQ_TELEGRAM_INTEGRATED=ON`, compile-time gate in `share/TelegramWiring.h`); a standard build never registers it, creates its UI or instantiates TDLib, whatever `config.json` says (`tst_telegramgate`). Optional. `share::TelegramIntegratedProvider` sends the picked capture natively
 through the user's own Telegram account using TDLib (`docs/tdlib-runtime.md`
 for the pinned runtime). Layers:
 

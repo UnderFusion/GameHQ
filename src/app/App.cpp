@@ -30,15 +30,12 @@
 #include "storage/CaptureDatabase.h"
 #include "storage/CaptureScanner.h"
 #include "share/ShareService.h"
+#include "share/TelegramWiring.h"
 #include "share/providers/ClipboardShareProvider.h"
 #include "share/external/ExternalProviderHost.h"
 #include "share/providers/DiscordDesktopProvider.h"
 #include "share/providers/DiscordWebhookProvider.h"
 #include "share/providers/TelegramDesktopProvider.h"
-#include "share/providers/TelegramIntegratedProvider.h"
-#include "telegram/TdJsonTransport.h"
-#include "telegram/TdRuntime.h"
-#include "telegram/TelegramAccount.h"
 #include "tray/TrayIcon.h"
 #include "ui/AppController.h"
 #include "ui/GalleryModel.h"
@@ -809,32 +806,12 @@ bool App::init()
     m_share = std::make_unique<share::Service>();
     m_share->setConfig(m_config.get());
     // Registration order is the order the Share dialog lists destinations.
-    m_share->registry()->add(new share::TelegramDesktopProvider(m_share.get()));
-    // Owner-deferred (plan t25): built and tested, but neither registered nor
-    // shown unless a developer opts in.
-    if (m_config->value(ConfigKeys::ShareTelegramIntegrated, false).toBool()) {
-        // Optional TDLib runtime: located now, hashed and loaded only when the
-        // user connects. Without it the provider reports "not installed".
-        m_tdRuntime = telegram::TdRuntime::forInstalledApp(QCoreApplication::applicationDirPath());
-        telegram::TdRuntime* runtime = m_tdRuntime.get();
-        telegram::Account::Config accountConfig{
-            share::SecretStore(),
-            Paths::dataDir() + QStringLiteral("/share/sessions"),
-            [runtime]() -> std::unique_ptr<telegram::TdTransport> {
-                if (runtime->load() != telegram::TdRuntime::Status::Ready)
-                    return nullptr;
-                return std::make_unique<telegram::TdJsonTransport>(runtime);
-            },
-            [runtime] { return telegram::TdRuntime::statusCode(runtime->quickStatus()); },
-            QStringLiteral(GAMEHQ_VERSION),
-            QLocale::system().name().left(2),
-            5 * 60 * 1000 };
-        m_telegramAccount = std::make_unique<telegram::Account>(std::move(accountConfig));
-        m_share->registry()->add(new share::TelegramIntegratedProvider(
-            m_telegramAccount.get(), runtime, m_share.get()));
-        m_engine.rootContext()->setContextProperty(QStringLiteral("telegramAccount"),
-                                                   m_telegramAccount.get());
-    }
+    // Telegram Desktop always; Telegram Integrated only in a developer build
+    // (compile-time gate, see share/TelegramWiring.h).
+    m_telegramWiring = std::make_unique<share::TelegramWiring>(share::registerTelegramProviders(
+        m_share.get(), QCoreApplication::applicationDirPath(), Paths::dataDir()));
+    m_engine.rootContext()->setContextProperty(
+        QStringLiteral("telegramAccount"), m_telegramWiring->accountObject);
     m_share->registry()->add(new share::DiscordDesktopProvider(
         &share::DiscordDesktopProvider::locateInstalled,
         &share::DiscordDesktopProvider::startDetached,
@@ -855,8 +832,6 @@ bool App::init()
             m_shareProviders.reset();
         }
     }
-    if (!m_telegramAccount)
-        m_engine.rootContext()->setContextProperty(QStringLiteral("telegramAccount"), QVariant());
     m_engine.rootContext()->setContextProperty(QStringLiteral("shareService"), m_share.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlayGallery"), m_overlayGallery.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlay"), m_overlay.get());
