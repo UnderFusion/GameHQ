@@ -209,7 +209,7 @@ bool App::init()
     m_locations = std::make_unique<CaptureLocations>(m_config.get());
     m_startup = std::make_unique<StartupManager>();
     const bool startupEnabled = m_config->value(ConfigKeys::StartupEnabled, false).toBool();
-    if (!m_startup->setEnabled(startupEnabled) && startupEnabled) {
+    if (!m_startup->syncOnLaunch(startupEnabled) && startupEnabled) {
         m_config->setValue(ConfigKeys::StartupEnabled, false);
         m_config->save();
     }

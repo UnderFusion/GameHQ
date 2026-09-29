@@ -113,6 +113,11 @@ gamehq_add_test(tst_steaminputadvice
     "${CMAKE_SOURCE_DIR}/src/input/ControlId.cpp")
 target_link_libraries(tst_steaminputadvice PRIVATE Qt6::Sql)
 
+# Autostart ownership: a copy only removes the shared Run value it owns.
+gamehq_add_test(tst_startupmanager
+    tst_startupmanager.cpp
+    "${CMAKE_SOURCE_DIR}/src/app/StartupManager.cpp")
+
 # Pure model test: the trigger/gesture specs, their canonical serialization and
 # the validation that guards the parse boundary. No database, no device.
 gamehq_add_test(tst_bindingpattern
