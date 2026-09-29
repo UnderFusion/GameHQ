@@ -911,6 +911,14 @@ gamehq_add_test(tst_framepumpservice
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayBufferState.h")
 
 # Capture-border verdict (p4-2): pure derivation, no WinRT and no capture device.
+# Share Platform core (t9): provider contract, target/job/result rules.
+gamehq_add_test(tst_sharecore
+    tst_sharecore.cpp
+    "${CMAKE_SOURCE_DIR}/src/share/ShareTypes.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProvider.h"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp")
+
 gamehq_add_test(tst_captureborderstate
     tst_captureborderstate.cpp
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
