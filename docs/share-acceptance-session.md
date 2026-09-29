@@ -3,7 +3,7 @@
 # Share acceptance session (owner)
 
 One manual session that closes the pending Share checks together: Settings >
-Sharing (t21), Telegram Desktop (t12), Telegram Integrated (t13), Discord
+Sharing (t21), Telegram Desktop (t12), Discord
 Desktop (t14), Discord Channels (t17), add-ons (t18/t19) and the end-to-end
 matrix (t20). It replaces the earlier session written before Settings > Sharing
 and Telegram Integrated existed. About 50 minutes. It launches GameHQ, Telegram and
@@ -29,7 +29,9 @@ Confirm the identity before you start:
 Get-FileHash build\GameHQ.exe -Algorithm SHA256   # should equal the out\GameHQ.exe hash above
 ```
 
-**Telegram Integrated (section 4.7) is not runnable on this build.** It needs
+**Telegram Integrated (section 4.7) is out of this session.** The owner declined it for the
+current product (plan t25): it is built and tested but switched off (`share.telegram_integrated`,
+default off), so it is not in Settings or Share. If it is ever re-enabled it needs
 two things only you can supply: the optional TDLib runtime (build it with
 `tools\tdlib\build-tdjson.ps1`, then record its SHA-256 in
 `src/telegram/TdRuntimePin.h`, which produces a new commit and build) and a
@@ -48,13 +50,12 @@ follow-up build; everything else can run now.
 | Copy to clipboard | built in | none | **Copied** | "Copied. Paste it wherever you want to share it." |
 | Telegram | Telegram Desktop on this PC | none (Telegram must be installed) | **Handed off** | "Opened in Telegram. Finish sending there." |
 | Discord (Desktop) | Discord Desktop on this PC | none (Discord must be installed) | **Handed off** | "Copied and opened Discord. Paste it into a chat to send it." |
-| Telegram account | your Telegram account, signed in inside GameHQ (section 4.7) | Settings > Sharing > Telegram account | **Sent** (only after Telegram confirms the outgoing message) | "Sent." |
 | Discord channel | webhook you add | Settings > Sharing > Share destinations | **Sent** (only after Discord returns the created message) | "Sent." |
 | Sample folder | add-on process (optional) | Settings > Sharing > Share add-ons, then run the sample | **Copied** | "Copied. Paste it wherever ..." |
 
 Rules to hold GameHQ to throughout:
 
-* Only the Discord channel and Telegram account may ever say **Sent**. Telegram and Discord Desktop must say **Handed off**; the clipboard
+* Only the Discord channel may ever say **Sent**. Telegram and Discord Desktop must say **Handed off**; the clipboard
   and the sample must say **Copied**. Any "Sent." from those is a **fail**.
 * An uncertain end must say "GameHQ couldn't confirm whether it was sent. Check
   before sharing again." and must never be retried automatically.
@@ -109,7 +110,7 @@ the message in the Share dialog.
 
 | ID | Do | Expect |
 |---|---|---|
-| S1 | Open Settings and look for **Sharing** between Capture and Replay. Nothing Share-related is left under Capture. | A Sharing page with Enable Sharing, a Destinations list (Telegram, Telegram account, Discord, Discord channel), Telegram account setup, channel destinations and Share add-ons. No Discord Social SDK / integrated Discord entry anywhere. |
+| S1 | Open Settings and look for **Sharing** between Capture and Replay. Nothing Share-related is left under Capture. | A Sharing page with Enable Sharing, a Destinations list (Telegram, Discord, Discord channel), channel destinations and Share add-ons. No Discord Social SDK / integrated Discord entry anywhere. |
 | S2 | Switch **Discord** off, open Share on a capture. | Discord is not offered. Switch it back on: it returns. |
 | S3 | Add channel **A** (section 2), switch **Discord channel** off, share, switch back on. | While off it is hidden; when on again channel **A** is still there and still works without re-adding it (disabling never deletes destinations). |
 | S4 | Switch **Enable Sharing** off, then try Share from the gallery, lightbox and overlay. | Each says "Sharing is turned off. Turn it on in Settings > Sharing." Switch it on: Share works again. |
@@ -159,7 +160,7 @@ the message in the Share dialog.
 | A2 | Close the sample (Ctrl+C). | *Sample folder* disappears from Share. |
 | A3 | With add-ons **off** (switch off, restart) start the sample. | It exits with code 4 ("are Share add-ons enabled?"). |
 
-### 4.7 Telegram account (closes t13/t22-t24; needs the follow-up build)
+### 4.7 Telegram account (NOT RUN: owner-deferred, plan t25)
 
 Prerequisite: the runtime build and your GameHQ API ID/hash (see section 0).
 
@@ -251,7 +252,7 @@ Pass is recorded against the gate named below.
 | Rows | Closes |
 |---|---|
 | S1-S6 | t21 (Settings > Sharing and per-provider enablement) |
-| I1-I9 | t13, t22, t23, t24 (Telegram Integrated end to end; follow-up build) |
+| I1-I9 | only if Telegram Integrated is ever re-enabled (t13); not part of this session |
 | T1-T4 | t12 (Telegram Desktop hand-off: PNG/JPG/MP4, running and closed) |
 | D1-D4 | t14 (Discord Desktop hand-off: image and clip, no GameHQ login) |
 | W1-W6, F1-F4 | t17 (real channel over real TLS from the overlay: screenshot and clip) |

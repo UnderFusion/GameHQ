@@ -110,7 +110,13 @@ SettingsPage {
         }
     }
 
-    TelegramAccountSection { }
+    // Telegram Integrated is owner-deferred (plan t25): the section only
+    // exists when the app registered it.
+    Loader {
+        active: !!telegramAccount
+        Layout.fillWidth: true
+        sourceComponent: Component { TelegramAccountSection { } }
+    }
 
     ShareDestinationsSection { }
 
