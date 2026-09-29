@@ -112,6 +112,10 @@ qt_add_executable(GameHQ
     sound/SoundEngine.cpp  sound/SoundEngine.h
     sound/SoundLevels.cpp  sound/SoundLevels.h
     sound/SoundLoadTracker.cpp  sound/SoundLoadTracker.h
+    share/ShareTypes.cpp share/ShareTypes.h
+    share/ShareProvider.h
+    share/ShareProviderRegistry.cpp share/ShareProviderRegistry.h
+    share/ShareService.cpp share/ShareService.h
     storage/CaptureDatabase.cpp storage/CaptureDatabase.h
     storage/CaptureQueries.cpp storage/CaptureQueries.h
     storage/CaptureFolderWatcher.cpp storage/CaptureFolderWatcher.h

@@ -29,6 +29,7 @@
 #include "sound/SoundEngine.h"
 #include "storage/CaptureDatabase.h"
 #include "storage/CaptureScanner.h"
+#include "share/ShareService.h"
 #include "tray/TrayIcon.h"
 #include "ui/AppController.h"
 #include "ui/GalleryModel.h"
@@ -794,6 +795,10 @@ bool App::init()
                                      "CaptureBorder", QStringLiteral("Capture border API states"));
     m_engine.rootContext()->setContextProperty(QStringLiteral("framePump"), m_framePump.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("app"), m_controller.get());
+    // One Share flow for gallery, lightbox and overlay; providers register
+    // into its registry and never need their own QML.
+    m_share = std::make_unique<share::Service>();
+    m_engine.rootContext()->setContextProperty(QStringLiteral("shareService"), m_share.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlayGallery"), m_overlayGallery.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("overlay"), m_overlay.get());
     m_engine.rootContext()->setContextProperty(QStringLiteral("sounds"), m_sounds.get());

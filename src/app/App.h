@@ -11,6 +11,7 @@ class CaptureLocations;
 class StartupManager;
 class CaptureDatabase;
 class CaptureScanner;
+namespace share { class Service; }
 class GalleryModel;
 class AppController;
 class TrayIcon;
@@ -82,6 +83,7 @@ private:
     std::unique_ptr<SteamInputHelper> m_steamInput;
     std::unique_ptr<UpdateService> m_updates;
     std::unique_ptr<IntegrationService> m_integration;
+    std::unique_ptr<share::Service> m_share;   // Share Platform (docs/share-platform.md)
     // Wakes periodically to see if the 24h automatic-check window has passed
     // (see the update-check policy block in init()). Manual checkNow() from
     // QML bypasses this entirely.
