@@ -1,6 +1,9 @@
 #include "share/ShareService.h"
 #include "share/ShareSecurity.h"
 
+#include "config/ConfigKeys.h"
+#include "config/ConfigManager.h"
+
 #include <QDebug>
 #include <QRegularExpression>
 #include <QTimer>
@@ -39,6 +42,90 @@ QString sanitizedCode(const QString& code)
     return QStringLiteral("provider_error");
 }
 } // namespace
+
+void Service::setConfig(ConfigManager* config)
+{
+    if (m_config)
+        disconnect(m_config, nullptr, this, nullptr);
+    m_config = config;
+    if (!m_config)
+        return;
+    connect(m_config, &ConfigManager::valueChanged, this, [this](const QString& key) {
+        if (!key.startsWith(QLatin1String("share.")))
+            return;
+        emit enablementChanged();
+        emit providersChanged();
+    });
+    connect(m_config, &ConfigManager::groupReset, this, [this] {
+        emit enablementChanged();
+        emit providersChanged();
+    });
+}
+
+bool Service::sharingEnabled() const
+{
+    return !m_config || m_config->value(ConfigKeys::ShareEnabled, true).toBool();
+}
+
+bool Service::providerEnabled(const QString& providerId) const
+{
+    if (!sharingEnabled())
+        return false;
+    // Out-of-process add-ons are switched as a group by the host at startup.
+    if (!m_config || providerId.startsWith(QLatin1String("ext.")))
+        return true;
+    Provider* p = m_registry->find(providerId);
+    if (p && !p->userToggleable())
+        return true;
+    const QString key = QString(ConfigKeys::ShareProviderPrefix) + providerId
+                        + QString(ConfigKeys::ShareProviderSuffix);
+    return m_config->value(key, true).toBool();
+}
+
+void Service::setProviderEnabled(const QString& providerId, bool enabled)
+{
+    Provider* p = m_registry->find(providerId);
+    if (!m_config || !p || !p->userToggleable())
+        return;
+    const QString key = QString(ConfigKeys::ShareProviderPrefix) + providerId
+                        + QString(ConfigKeys::ShareProviderSuffix);
+    m_config->setValue(key, enabled);
+    qInfo() << "Share: provider" << providerId << (enabled ? "enabled" : "disabled");
+}
+
+void Service::setSharingEnabled(bool enabled)
+{
+    if (!m_config)
+        return;
+    m_config->setValue(ConfigKeys::ShareEnabled, enabled);
+    qInfo() << "Share: sharing" << (enabled ? "enabled" : "disabled");
+}
+
+QVariantList Service::providerSettings() const
+{
+    QVariantList out;
+    for (Provider* p : m_registry->providers()) {
+        if (!p->userToggleable() || p->id().startsWith(QLatin1String("ext.")))
+            continue;
+        QVariantMap m;
+        m.insert(QStringLiteral("id"), p->id());
+        m.insert(QStringLiteral("name"), p->displayName());
+        m.insert(QStringLiteral("enabled"), m_config
+                     ? m_config->value(QString(ConfigKeys::ShareProviderPrefix) + p->id()
+                                           + QString(ConfigKeys::ShareProviderSuffix), true).toBool()
+                     : true);
+        m.insert(QStringLiteral("available"), p->availability() == Availability::Available);
+        m.insert(QStringLiteral("availability"), availabilityName(p->availability()));
+        m.insert(QStringLiteral("reason"), p->availabilityReason());
+        m.insert(QStringLiteral("auth"), authStateName(p->authState()));
+        m.insert(QStringLiteral("access"), accountAccessName(p->accountAccess()));
+        m.insert(QStringLiteral("privacy"), p->privacyNotice());
+        m.insert(QStringLiteral("requiresAccount"),
+                 p->capabilities().testFlag(Capability::RequiresAccount));
+        out.append(m);
+    }
+    return out;
+}
 
 Service::Service(QObject* parent)
     : QObject(parent)
@@ -101,6 +188,10 @@ void Service::attach(Provider* provider)
 
 bool Service::open(const QString& filePath, const QString& gameName)
 {
+    if (!sharingEnabled()) {
+        setLastError(QStringLiteral("sharing_disabled"));
+        return false;
+    }
     if (busy()) {
         setLastError(QStringLiteral("busy"));
         return false;
@@ -147,6 +238,8 @@ QVariantList Service::providers() const
 {
     QVariantList out;
     for (Provider* p : m_registry->providersFor(m_request)) {
+        if (!providerEnabled(p->id()))
+            continue;
         QVariantMap m;
         m.insert(QStringLiteral("id"), p->id());
         m.insert(QStringLiteral("name"), p->displayName());
@@ -172,6 +265,10 @@ bool Service::requestTargets(const QString& providerId, const QString& query)
     }
     if (!p) {
         setLastError(QStringLiteral("unknown_provider"));
+        return false;
+    }
+    if (!providerEnabled(providerId)) {
+        setLastError(QStringLiteral("provider_disabled"));
         return false;
     }
     if (p->availability() != Availability::Available) {
@@ -249,6 +346,8 @@ QString Service::share(const QString& providerId, const QString& targetId, bool 
     Provider* p = m_registry->find(providerId);
     if (!p)
         return refuse("unknown_provider");
+    if (!providerEnabled(providerId))
+        return refuse("provider_disabled");
     if (p->availability() != Availability::Available)
         return refuse("unavailable");
     if (!p->capabilities().testFlag(m_request.requiredCapability()))

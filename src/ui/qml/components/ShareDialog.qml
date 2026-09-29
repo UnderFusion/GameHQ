@@ -208,6 +208,12 @@ Item {
         case "capture_changed":
             //% "This capture changed on disk after you opened Share. Open Share again."
             return qsTrId("gamehq.share.error.capture_changed")
+        case "sharing_disabled":
+            //% "Sharing is turned off. Turn it on in Settings > Sharing."
+            return qsTrId("gamehq.share.error.sharing_disabled")
+        case "provider_disabled":
+            //% "That destination is turned off in Settings > Sharing."
+            return qsTrId("gamehq.share.error.provider_disabled")
         case "not_connected":
             //% "Connect this account in Settings first."
             return qsTrId("gamehq.share.error.not_connected")

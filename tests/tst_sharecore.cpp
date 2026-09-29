@@ -1,5 +1,6 @@
 #include "share/ShareProvider.h"
 #include "share/ShareProviderRegistry.h"
+#include "config/ConfigManager.h"
 #include "share/ShareService.h"
 
 #include <QFile>
@@ -28,6 +29,7 @@ public:
     AuthState authState() const override { return auth; }
     Availability availability() const override { return availabilityValue; }
     int jobTimeoutMs() const override { return timeoutMs; }
+    bool userToggleable() const override { return toggleable; }
 
     void requestTargets(const QString& queryId, const Request&, const QString&) override
     {
@@ -64,6 +66,7 @@ public:
     AuthState auth = AuthState::NotRequired;
     Availability availabilityValue = Availability::Available;
     int timeoutMs = 120000;
+    bool toggleable = true;
     bool answerTargets = true;
     std::optional<Outcome> finishWith;
     QString errorCode;
@@ -319,6 +322,63 @@ private slots:
         ready(s, p, writeFile("e.png"));
         s.share("prov", "a");
         QCOMPARE(s.lastResult().value("errorCode").toString(), QStringLiteral("provider_error"));
+    }
+
+    // t21: switches hide a provider without touching what it stores.
+    void enablementHidesProvidersButKeepsThem()
+    {
+        QTemporaryDir cfgDir;
+        ConfigManager config(cfgDir.filePath("config.json"));
+        Service s;
+        s.setConfig(&config);
+        FakeProvider a(QStringLiteral("a.one"), Capability::Image | Capability::DirectSend);
+        FakeProvider b(QStringLiteral("b.two"), Capability::Image | Capability::DirectSend);
+        FakeProvider always(QStringLiteral("always"), Capability::Image | Capability::DirectSend);
+        always.toggleable = false;
+        a.targets = { target("t") };
+        s.registry()->add(&a);
+        s.registry()->add(&b);
+        s.registry()->add(&always);
+        QVERIFY(s.sharingEnabled());
+        QCOMPARE(s.providerSettings().size(), 2);   // "always" has no switch
+        QVERIFY(s.open(writeFile("e.png")));
+        QCOMPARE(s.providers().size(), 3);
+
+        QSignalSpy providersSpy(&s, &Service::providersChanged);
+        s.setProviderEnabled(QStringLiteral("a.one"), false);
+        QVERIFY(providersSpy.count() >= 1);
+        QVERIFY(!s.providerEnabled(QStringLiteral("a.one")));
+        QCOMPARE(s.providers().size(), 2);
+        QVERIFY(s.registry()->find(QStringLiteral("a.one")));   // kept, only hidden
+        QVERIFY(!s.requestTargets(QStringLiteral("a.one")));
+        QCOMPARE(s.lastError(), QStringLiteral("provider_disabled"));
+        QVERIFY(s.share(QStringLiteral("a.one"), QStringLiteral("t")).isEmpty());
+        QCOMPARE(s.lastError(), QStringLiteral("provider_disabled"));
+        const QVariantList rows = s.providerSettings();
+        QVERIFY(!rows.first().toMap().value("enabled").toBool());
+
+        s.setProviderEnabled(QStringLiteral("a.one"), true);
+        QCOMPARE(s.providers().size(), 3);
+        QVERIFY(s.requestTargets(QStringLiteral("a.one")));
+
+        // The always-on provider ignores its own key.
+        s.setProviderEnabled(QStringLiteral("always"), false);
+        QVERIFY(s.providerEnabled(QStringLiteral("always")));
+
+        // Master switch: no new session, every provider hidden.
+        s.close();
+        s.setSharingEnabled(false);
+        QVERIFY(!s.sharingEnabled());
+        QVERIFY(!s.open(writeFile("m.png")));
+        QCOMPARE(s.lastError(), QStringLiteral("sharing_disabled"));
+        QVERIFY(!s.providerEnabled(QStringLiteral("always")));
+        s.setSharingEnabled(true);
+        QVERIFY(s.open(writeFile("m.png")));
+
+        // Reset all restores the defaults: everything back on.
+        s.setProviderEnabled(QStringLiteral("b.two"), false);
+        config.resetAll();
+        QVERIFY(s.providerEnabled(QStringLiteral("b.two")));
     }
 
     void providerRemovedMidJob()

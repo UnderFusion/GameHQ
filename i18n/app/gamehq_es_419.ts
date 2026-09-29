@@ -105,7 +105,7 @@
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="33"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="24"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="435"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
@@ -116,7 +116,7 @@
       <location filename="src/ui/qml/Main.qml" line="1156"></location>
       <location filename="src/ui/qml/Main.qml" line="1175"></location>
       <location filename="src/ui/qml/Main.qml" line="1213"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="663"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="679"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -520,9 +520,9 @@
       <translation>Restaurar</translation>
     </message>
     <message id="gamehq.action.restore_defaults">
-      <location filename="src/ui/qml/SettingsView.qml" line="498"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="515"></location>
-      <location filename="src/ui/qml/SettingsView.qml" line="529"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="501"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="518"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="532"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="224"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="475"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="857"></location>
@@ -1377,7 +1377,7 @@ Esto eliminará el archivo de forma permanente.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1154"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="661"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="677"></location>
       <source>Delete capture?</source>
       <translation>¿Eliminar la captura?</translation>
     </message>
@@ -2806,12 +2806,12 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Juegos permitidos</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_clips">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="222"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="204"></location>
       <source>Choose the clips folder</source>
       <translation>Elegir la carpeta de clips</translation>
     </message>
     <message id="gamehq.settings.capture.storage.choose_screenshots">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="215"></location>
+      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="197"></location>
       <source>Choose the screenshots folder</source>
       <translation>Elegir la carpeta de capturas de pantalla</translation>
     </message>
@@ -2846,12 +2846,12 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Captura</translation>
     </message>
     <message id="gamehq.settings.category.about">
-      <location filename="src/ui/qml/SettingsView.qml" line="27"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="29"></location>
       <source>About</source>
       <translation>Acerca de</translation>
     </message>
     <message id="gamehq.settings.category.advanced">
-      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="27"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="10"></location>
       <source>Advanced</source>
       <translation>Avanzado</translation>
@@ -2870,27 +2870,32 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>General</translation>
     </message>
     <message id="gamehq.settings.category.input">
-      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="245"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="9"></location>
       <source>Input</source>
       <translation>Controles</translation>
     </message>
     <message id="gamehq.settings.category.library">
-      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
       <source>Library</source>
       <translation>Biblioteca</translation>
     </message>
     <message id="gamehq.settings.category.notifications_sound">
-      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
       <source>Notifications &amp; sound</source>
       <translation>Notificaciones y sonido</translation>
     </message>
     <message id="gamehq.settings.category.replay">
-      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="229"></location>
       <source>Replay</source>
       <translation>Repetición</translation>
+    </message>
+    <message id="gamehq.settings.category.sharing">
+      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
+      <source>Sharing</source>
+      <translation type="unfinished"></translation>
     </message>
     <message id="gamehq.settings.disclosure.default">
       <location filename="src/ui/qml/components/SettingsDisclosure.qml" line="9"></location>
@@ -3523,12 +3528,12 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Un botón, varios gestos</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="513"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="516"></location>
       <source>All controller, keyboard, and mouse overrides return to their built-in defaults.</source>
       <translation>Todas las personalizaciones de control, teclado y mouse vuelven a sus valores integrados.</translation>
     </message>
     <message id="gamehq.settings.input.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="511"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="514"></location>
       <source>Restore all input bindings?</source>
       <translation>¿Restablecer todas las asignaciones de controles?</translation>
     </message>
@@ -3846,22 +3851,22 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Biblioteca</translation>
     </message>
     <message id="gamehq.settings.portable_import.confirm">
-      <location filename="src/ui/qml/SettingsView.qml" line="478"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="481"></location>
       <source>Import and restart</source>
       <translation>Importar y reiniciar</translation>
     </message>
     <message id="gamehq.settings.portable_import.failed">
-      <location filename="src/ui/qml/SettingsView.qml" line="483"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="486"></location>
       <source>Portable import failed</source>
       <translation>Error al importar el perfil portátil</translation>
     </message>
     <message id="gamehq.settings.portable_import.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="476"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="479"></location>
       <source>Import is available only into a clean installed profile. Portable captures stay where they are, the source is never modified, and GameHQ restarts to complete the import.</source>
       <translation>La importación solo está disponible en un perfil instalado limpio. Las capturas portátiles permanecen donde están, el origen nunca se modifica y GameHQ se reinicia para completar la importación.</translation>
     </message>
     <message id="gamehq.settings.portable_import.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="474"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="477"></location>
       <source>Import this portable profile?</source>
       <translation>¿Importar este perfil portátil?</translation>
     </message>
@@ -4392,24 +4397,94 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Repetición</translation>
     </message>
     <message id="gamehq.settings.restore_all.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="496"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="499"></location>
       <source>Window preferences, capture behavior, replay options, notifications, and sound settings return to defaults. Captures and library data are not deleted.</source>
       <translation>Las preferencias de ventana, el comportamiento de captura, las opciones de repetición, las notificaciones y el sonido vuelven a sus valores predeterminados. No se eliminan las capturas ni los datos de la biblioteca.</translation>
     </message>
     <message id="gamehq.settings.restore_all.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="494"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="497"></location>
       <source>Restore all settings?</source>
       <translation>¿Restablecer toda la configuración?</translation>
     </message>
     <message id="gamehq.settings.restore_category.message">
-      <location filename="src/ui/qml/SettingsView.qml" line="527"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="530"></location>
       <source>%1 options return to defaults. Captures and library data are not deleted.</source>
       <translation>Las opciones de %1 vuelven a los valores predeterminados. No se borran las capturas y los datos de la biblioteca.</translation>
     </message>
     <message id="gamehq.settings.restore_category.title">
-      <location filename="src/ui/qml/SettingsView.qml" line="525"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="528"></location>
       <source>Restore %1 settings?</source>
       <translation>¿Restablecer la configuración de %1?</translation>
+    </message>
+    <message id="gamehq.settings.sharing.auth.connected">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="25"></location>
+      <source>Connected</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.auth.connecting">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="28"></location>
+      <source>Connecting…</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.auth.disconnected">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="34"></location>
+      <source>Not connected</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.auth.error">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="31"></location>
+      <source>Connection problem</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.description">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="16"></location>
+      <source>Choose where captures can be shared. Nothing is ever sent without you picking a capture and a destination.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.disconnect.action">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="102"></location>
+      <source>Disconnect</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.disconnect.description">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
+      <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.disconnect.label">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
+      <source>Disconnect and remove the saved session</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.master.description">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="50"></location>
+      <source>Turns the Share option on or off everywhere: gallery, lightbox and overlay.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.master.label">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="48"></location>
+      <source>Enable Sharing</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.master.title">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="45"></location>
+      <source>Sharing</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.providers.description">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
+      <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.providers.title">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
+      <source>Destinations</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.settings.sharing.title">
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="14"></location>
+      <source>Sharing</source>
+      <translation type="unfinished"></translation>
     </message>
     <message id="gamehq.settings.theme.blue.description">
       <location filename="src/ui/qml/themes/Skin.qml" line="22"></location>
@@ -4533,17 +4608,17 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Synthwave</translation>
     </message>
     <message id="gamehq.share.addons.description">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="203"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="122"></location>
       <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
       <translation>Otros programas que se ejecutan con tu cuenta en esta PC podrán ofrecer destinos en Compartir y recibir las capturas que elijas compartir. Desactivado de forma predeterminada. Reinicia GameHQ para aplicarlo.</translation>
     </message>
     <message id="gamehq.share.addons.label">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="201"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="120"></location>
       <source>Allow add-ons from other programs</source>
       <translation>Permitir complementos de otros programas</translation>
     </message>
     <message id="gamehq.share.addons.title">
-      <location filename="src/ui/qml/settings/CaptureSettingsPage.qml" line="198"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="117"></location>
       <source>Share add-ons</source>
       <translation>Complementos de Compartir</translation>
     </message>
@@ -4588,32 +4663,42 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Esta captura ya no está en el disco.</translation>
     </message>
     <message id="gamehq.share.error.generic">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="229"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="235"></location>
       <source>This capture could not be shared.</source>
       <translation>No se pudo compartir esta captura.</translation>
     </message>
     <message id="gamehq.share.error.network_error">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="226"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="232"></location>
       <source>GameHQ couldn't reach the service. Check your connection.</source>
       <translation>GameHQ no pudo conectarse al servicio. Revisa tu conexión.</translation>
     </message>
     <message id="gamehq.share.error.not_connected">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="219"></location>
       <source>Connect this account in Settings first.</source>
       <translation>Primero conecta esta cuenta en Configuración.</translation>
     </message>
-    <message id="gamehq.share.error.rate_limited">
+    <message id="gamehq.share.error.provider_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
+      <source>That destination is turned off in Settings &gt; Sharing.</source>
+      <translation type="unfinished"></translation>
+    </message>
+    <message id="gamehq.share.error.rate_limited">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="222"></location>
       <source>Discord is limiting uploads right now. Wait a moment and try again.</source>
       <translation>Discord está limitando las subidas en este momento. Espera un momento e inténtalo de nuevo.</translation>
     </message>
+    <message id="gamehq.share.error.sharing_disabled">
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
+      <source>Sharing is turned off. Turn it on in Settings &gt; Sharing.</source>
+      <translation type="unfinished"></translation>
+    </message>
     <message id="gamehq.share.error.too_large">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="219"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="225"></location>
       <source>This capture is too large for that channel.</source>
       <translation>Esta captura es demasiado grande para ese canal.</translation>
     </message>
     <message id="gamehq.share.error.webhook_revoked">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="223"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="229"></location>
       <source>That channel's webhook no longer works. Remove it in Settings and add it again.</source>
       <translation>El webhook de ese canal ya no funciona. Elimínalo en Ajustes y vuelve a agregarlo.</translation>
     </message>
@@ -4688,7 +4773,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Ya compartiste esta captura aquí. ¿Quieres compartirla de nuevo?</translation>
     </message>
     <message id="gamehq.share.sending">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="237"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="243"></location>
       <source>Sharing…</source>
       <translation>Compartiendo…</translation>
     </message>
@@ -4748,7 +4833,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Abre Telegram para elegir el chat. GameHQ nunca inicia sesión en Telegram.</translation>
     </message>
     <message id="gamehq.share.title">
-      <location filename="src/ui/qml/components/ShareDialog.qml" line="341"></location>
+      <location filename="src/ui/qml/components/ShareDialog.qml" line="347"></location>
       <source>Share</source>
       <translation>Compartir</translation>
     </message>

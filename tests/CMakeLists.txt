@@ -918,7 +918,8 @@ gamehq_add_test(tst_sharecore
     "${CMAKE_SOURCE_DIR}/src/share/ShareProvider.h"
     "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
-    "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp")
+    "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp")
 target_link_libraries(tst_sharecore PRIVATE advapi32)
 
 # Share Platform UI (t10): the real ShareDialog.qml driven by pad calls.
@@ -928,7 +929,8 @@ gamehq_add_test(tst_sharedialog
     "${CMAKE_SOURCE_DIR}/src/share/ShareProvider.h"
     "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
-    "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp")
+    "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp")
 target_link_libraries(tst_sharedialog PRIVATE Qt6::Gui Qt6::Qml Qt6::Quick advapi32)
 target_compile_definitions(tst_sharedialog PRIVATE
     GAMEHQ_QML_SOURCE_DIR="${CMAKE_SOURCE_DIR}/src"
@@ -950,6 +952,7 @@ gamehq_add_test(tst_sharetelegramdesktop
     "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/providers/TelegramDesktopProvider.cpp")
 target_link_libraries(tst_sharetelegramdesktop PRIVATE advapi32 shell32 user32)
 
@@ -961,6 +964,7 @@ gamehq_add_test(tst_sharediscorddesktop
     "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/providers/DiscordDesktopProvider.cpp")
 target_link_libraries(tst_sharediscorddesktop PRIVATE advapi32 shell32 user32)
 
@@ -973,6 +977,7 @@ gamehq_add_test(tst_sharediscordwebhook
     "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/providers/DiscordWebhookStore.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/providers/DiscordWebhookUpload.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/providers/DiscordWebhookProvider.cpp")
@@ -987,6 +992,7 @@ gamehq_add_test(tst_shareexternalprovider
     "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderProtocol.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProvider.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderHost.cpp")
@@ -1002,6 +1008,7 @@ gamehq_add_test(tst_shareexternalconformance
     "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderProtocol.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProvider.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderHost.cpp")

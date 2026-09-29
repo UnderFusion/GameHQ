@@ -24,6 +24,7 @@ const QStringList& NavigationState::settingsCategoryKeys()
     static const QStringList kCategories = {
         QStringLiteral("general"),
         QStringLiteral("capture"),
+        QStringLiteral("sharing"),
         QStringLiteral("replay"),
         QStringLiteral("input"),
         QStringLiteral("library"),
@@ -64,7 +65,14 @@ void NavigationState::migrateLegacyKeys()
 
     bool numeric = false;
     const int index = stored.toInt(&numeric);
-    const QStringList& keys = settingsCategoryKeys();
+    // The pre-0.7.11 index counted the pages as they were then, before
+    // "sharing" joined the list.
+    static const QStringList keys = {
+        QStringLiteral("general"), QStringLiteral("capture"), QStringLiteral("replay"),
+        QStringLiteral("input"), QStringLiteral("library"),
+        QStringLiteral("notifications_sound"), QStringLiteral("advanced"),
+        QStringLiteral("about"),
+    };
     const QString migrated = (numeric && index >= 0 && index < keys.size())
         ? keys.at(index) : keys.first();
     m_config->setValue(ConfigKeys::UiSettingsCategory, migrated);

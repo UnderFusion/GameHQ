@@ -13,6 +13,8 @@ Item {
         { label: qsTrId("gamehq.settings.category.general"), icon: "\u2699" },
         //% "Capture"
         { label: qsTrId("gamehq.settings.category.capture"), icon: "\u25A3" },
+        //% "Sharing"
+        { label: qsTrId("gamehq.settings.category.sharing"), icon: "\u21AA" },
         //% "Replay"
         { label: qsTrId("gamehq.settings.category.replay"), icon: "\u21BA" },
         //% "Input"
@@ -29,7 +31,7 @@ Item {
     // Stable keys, in the same order as `categories`. The persisted value is a
     // key, not an index, so reordering or inserting a page never reopens the
     // wrong one (AppController migrates the pre-0.7.11 index once).
-    readonly property var categoryKeys: ["general", "capture", "replay", "input",
+    readonly property var categoryKeys: ["general", "capture", "sharing", "replay", "input",
                                          "library", "notifications_sound",
                                          "advanced", "about"]
     property int currentCategory: Math.max(0, categoryKeys.indexOf(app.settingsCategory()))
@@ -38,8 +40,8 @@ Item {
         const categoryIndex = ({
             "General": 0,
             "Capture": 1,
-            "Replay": 2,
-            "Notifications & Sound": 5
+            "Replay": 3,
+            "Notifications & Sound": 6
         })[category]
         return categoryIndex === undefined ? category : categories[categoryIndex].label
     }
@@ -445,6 +447,7 @@ Item {
             currentIndex: root.currentCategory
             GeneralSettingsPage {}
             CaptureSettingsPage {}
+            SharingSettingsPage {}
             ReplaySettingsPage {}
             InputSettingsPage {}
             LibrarySettingsPage {}
