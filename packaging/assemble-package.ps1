@@ -105,6 +105,20 @@ New-Item -ItemType Directory -Path $app -Force | Out-Null
 # subdirectories to live in one deployment tree.
 Copy-Item -LiteralPath $realExe -Destination $app
 Copy-Item -LiteralPath $gameInputRuntime -Destination $app
+# Optional Telegram Integrated runtime (t22): shipped only when the pinned,
+# self-built tdjson.dll exists. GameHQ loads it lazily and refuses any DLL whose
+# SHA-256 differs from src/telegram/TdRuntimePin.h, so a missing file just means
+# Telegram Integrated reports 'runtime not installed'.
+$tdPin = Get-Content (Join-Path $root 'third_party\tdlib\tdlib-pin.json') -Raw | ConvertFrom-Json
+$tdRuntime = Join-Path $root "tools\tdlib\$($tdPin.version)\tdjson.dll"
+if (Test-Path -LiteralPath $tdRuntime -PathType Leaf) {
+    $tdTarget = Join-Path $app 'runtime\tdlib'
+    New-Item -ItemType Directory -Path $tdTarget -Force | Out-Null
+    Copy-Item -LiteralPath $tdRuntime -Destination $tdTarget
+    Write-Host "[package] optional TDLib runtime $($tdPin.version) included"
+} else {
+    Write-Host '[package] optional TDLib runtime not built; Telegram Integrated will report it as not installed'
+}
 & $deployTool --verbose 0 --qmldir (Join-Path $root 'src\ui\qml') --compiler-runtime (Join-Path $app 'GameHQ.exe')
 if ($LASTEXITCODE -ne 0) {
     throw "windeployqt failed ($LASTEXITCODE)"

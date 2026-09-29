@@ -15,6 +15,7 @@ and Playnite integration package. This is engineering evidence, not legal advice
 | Monocypher | 4.0.3 statically linked | BSD-2-Clause selected from BSD-2-Clause OR CC0-1.0 | Official archive and SHA-512 are pinned; source headers and shipped notice agree. | Compatible |
 | Mesa llvmpipe | `opengl32sw.dll` | MIT/permissive upstream components | Qt identifies the fallback and publishes attribution; notice link added to `THIRD_PARTY_NOTICES.md`. | Compatible |
 | Microsoft D3DCompiler | `D3Dcompiler_47.dll` | Microsoft redistributable | Microsoft documents side-by-side redistribution; file retains Microsoft version metadata and is never signed as GameHQ. | Compatible system runtime |
+| TDLib (optional) | 1.8.67 `tdjson.dll`, built by us from the pinned official source; loaded lazily by Telegram Integrated only | BSL-1.0 | Commit and SHA-256 are pinned (`docs/tdlib-runtime.md`); license text ships as `licenses/TDLib-BSL-1.0.txt`. Never replaced by a third-party prebuilt DLL. | Compatible, optional |
 
 The inspected payload contains 46 DLLs and one application executable in
 `app/`; the wider deployment contains Qt QML, plugins, translations, SPDX
