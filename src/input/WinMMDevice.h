@@ -4,7 +4,8 @@
 #include <climits>
 #include <windows.h>
 
-#include <atomic>
+#include <chrono>
+#include <condition_variable>
 #include <mutex>
 #include <thread>
 #include <vector>
@@ -18,19 +19,19 @@ class QTimer;
 //
 // While disconnected, slots are scanned only on rescan() — driven by the
 // Raw Input backend's device-topology hint — plus a slow safety-net timer,
-// because probing all 16 empty slots at poll rate is wasted work. The
-// discovery sweep itself runs on a short-lived worker thread: asking the
-// driver stack about up to 16 mostly absent devices was measured at 161 ms
-// on a real machine, far too slow for the GUI thread (and repeating every
-// 2 s on machines with no joystick at all). Only the result is marshalled
-// back to the owning thread; all state, timers and signals stay there.
-// While connected, the active slot is sampled on its own worker thread and
-// only state CHANGES are handed to the owning thread, in order. joyGetPosEx
-// reports "is it down right now", so sampling on the GUI thread lost every
-// tap that started and ended inside a GUI stall (50-200 ms stalls are common
-// while the overlay animates) — the user had to press twice. A change is now
-// delivered late at worst, never dropped. On unplug the held buttons are
-// released before the disconnect is reported, then arrival scanning resumes.
+// because probing all 16 empty slots at poll rate is wasted work. While
+// connected, the active slot is sampled every few ms and only state CHANGES
+// are handed to the owning thread, in order, so a tap that starts and ends
+// inside a GUI stall is delivered late rather than dropped.
+//
+// Every joy* call runs on ONE long-lived worker thread, one call at a time:
+// the legacy WinMM/DirectInput stack is not safe to drive from several or
+// short-lived threads, and touching it right after a joystick disappears
+// corrupted the process heap (three field crashes, 2026-09-30, each on the
+// first WinMM call ~0.5 s after an unplug). So after an unplug or a device
+// topology change the worker also stays away from WinMM for a quiet period
+// before it scans again. Only results are marshalled back to the owning
+// thread; all state, timers and signals stay there.
 class WinMMDevice : public Gamepad
 {
     Q_OBJECT
@@ -48,6 +49,9 @@ public:
 
 public slots:
     void rescan();   // kick a background scan for a newly arrived joystick
+    // A HID device arrived or left: hold off WinMM for the quiet period, then
+    // scan. The stack is still tearing the old device down at this point.
+    void rescanAfterTopologyChange();
 
 private:
     // What the worker thread found; everything Qt-visible happens in
@@ -61,6 +65,7 @@ private:
     };
     // Worker thread; touches no members.
     static ScanResult scanSlots();
+    void workerLoop();   // the only code that calls into WinMM
     void applyScanResult(const ScanResult& result);
     // One sampled reading; `result` is the joyGetPosEx code.
     struct Sample {
@@ -76,9 +81,17 @@ private:
     void emitEdges(quint32 buttons);
 
     QTimer* m_rescanTimer = nullptr;   // slow safety net while disconnected
-    std::thread m_scanThread;          // joined before reuse and in the dtor
-    std::thread m_sampleThread;        // runs only while connected
-    std::atomic<bool> m_sampleStop{false};
+    std::thread m_worker;              // started in start(), joined in the dtor
+    // Worker requests, guarded by m_workerMutex.
+    std::mutex m_workerMutex;
+    std::condition_variable m_workerCv;
+    bool m_quit = false;
+    bool m_scanRequested = false;
+    UINT m_sampleId = UINT_MAX;        // slot to sample, UINT_MAX = none
+    bool m_sampleDs4 = false;
+    quint64 m_sampleGen = 0;           // bumped on every start/stop request
+    quint64 m_workerGen = 0;           // generation the worker has adopted
+    std::chrono::steady_clock::time_point m_quietUntil{};
     std::mutex m_sampleMutex;          // guards the two members below
     std::vector<Sample> m_samples;
     bool m_drainPosted = false;
