@@ -484,7 +484,7 @@ ApplicationWindow {
 
     // ───────────────── Flat sidebar list helpers (sidebarFocused mode) ─────────────────
     function sidebarFlatCount() {
-        return window.sidebarCategories.length + app.games.length + 5  // +Settings +Help +About +mode +language
+        return window.sidebarCategories.length + app.games.length + 6  // +Settings +Help +About +Support +mode +language
     }
 
     function refreshSidebarHoverIndex() {
@@ -555,7 +555,11 @@ ApplicationWindow {
         } else if (i === catCount + gameCount + 2) {  // About / What's New is a modal over the current page.
             window.openAbout(false)
             return
-        } else if (i === catCount + gameCount + 3) {  // Sidebar mode toggle: the cursor stays on it.
+        } else if (i === catCount + gameCount + 3) {  // Support: opens the donation page; the cursor stays.
+            sounds.play("confirm")
+            desktopSidebar.openSupport()
+            return
+        } else if (i === catCount + gameCount + 4) {  // Sidebar mode toggle: the cursor stays on it.
             window.cycleSidebarMode()
             return
         } else {  // Language: open its list; the pad walks it until Cross or Circle.
