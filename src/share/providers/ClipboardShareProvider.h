@@ -16,7 +16,6 @@ public:
     explicit ClipboardShareProvider(QObject* parent = nullptr);
 
     QString id() const override { return QStringLiteral("clipboard"); }
-    bool userToggleable() const override { return false; }
     QString displayName() const override;
     QString iconSource() const override { return QStringLiteral(""); }   // Segoe Fluent: Copy
     Capabilities capabilities() const override

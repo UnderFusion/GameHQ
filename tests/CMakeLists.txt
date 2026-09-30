@@ -1668,3 +1668,23 @@ gamehq_add_test(tst_telegramgate
 target_compile_definitions(tst_telegramgate PRIVATE
     GAMEHQ_TELEGRAM_INTEGRATED_BUILD=$<BOOL:${GAMEHQ_TELEGRAM_INTEGRATED}>)
 target_link_libraries(tst_telegramgate PRIVATE advapi32 shell32 user32)
+
+# Sharing as a first-class Settings page (t26): navigation, Capture free of
+# Share controls, per-method toggles and configuration surviving disable.
+gamehq_add_test(tst_sharesettings
+    tst_sharesettings.cpp
+    "${CMAKE_SOURCE_DIR}/src/ui/NavigationState.cpp"
+    "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareTypes.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProvider.h"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareProviderRegistry.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareSecurity.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/ShareService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/providers/TelegramDesktopProvider.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/providers/DiscordDesktopProvider.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/providers/DiscordWebhookProvider.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/providers/DiscordWebhookStore.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/providers/DiscordWebhookUpload.cpp"
+    "${CMAKE_SOURCE_DIR}/src/share/providers/ClipboardShareProvider.cpp")
+target_compile_definitions(tst_sharesettings PRIVATE GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
+target_link_libraries(tst_sharesettings PRIVATE Qt6::Gui Qt6::Network advapi32 shell32 user32)
