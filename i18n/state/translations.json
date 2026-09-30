@@ -4727,6 +4727,28 @@
           },
           "updated_at": null
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -4763,6 +4785,138 @@
         "gamehq.overlay.hint.video.keyboard": {
           "domain": "application",
           "source_hash": "fa251b58d7c3c8ddd8fbb75e4abb928ecd10defc8c5ea0b84b242d8e0d269c86",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
           "translation_hash": null,
           "status": "missing",
           "provenance": {
@@ -11583,7 +11737,7 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
+          "total": 1066,
           "current": 0,
           "missing": [
             "gamehq.about.enjoying_gamehq",
@@ -12015,10 +12169,24 @@
             "gamehq.overlay.focus_warning",
             "gamehq.overlay.hint.browse.gamepad",
             "gamehq.overlay.hint.browse.keyboard",
+            "gamehq.overlay.hint.layout.gamepad",
+            "gamehq.overlay.hint.layout.keyboard",
             "gamehq.overlay.hint.menu.gamepad",
             "gamehq.overlay.hint.menu.keyboard",
             "gamehq.overlay.hint.video.gamepad",
             "gamehq.overlay.hint.video.keyboard",
+            "gamehq.overlay.layout.hints",
+            "gamehq.overlay.layout.interface_size",
+            "gamehq.overlay.layout.margin_bottom",
+            "gamehq.overlay.layout.margin_left",
+            "gamehq.overlay.layout.margin_right",
+            "gamehq.overlay.layout.margin_top",
+            "gamehq.overlay.layout.off",
+            "gamehq.overlay.layout.on",
+            "gamehq.overlay.layout.px",
+            "gamehq.overlay.layout.reset",
+            "gamehq.overlay.layout.thumbnail_size",
+            "gamehq.overlay.layout.title",
             "gamehq.overlay.window_title",
             "gamehq.player.position_duration",
             "gamehq.release_notes.title",
@@ -17379,6 +17547,28 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "8043df409a0b8bcaf07ecc8b4601cf7ddbdc976a82a90079201bdb314a285a84",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "d1704f8af42736a3260b8d3082e706e5b115009f4faf45fa068f9610494ec2d9",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -17422,6 +17612,138 @@
             "actor": "codex-gpt-5-contextual-de-de-review"
           },
           "updated_at": "2026-09-04T12:00:00Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "23707dc3e701df5e6add4f454c8a8cc909fbc3ff99b3b1fef0d52d4d643af7fb",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "bd0f6a169b6e73bc0899f83e88b8cb673738b0ccee89a7eb422600ec93f8beb2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "8bdc6bb7a7fcc913119a6e438e36fbbeb86350013d653823f0f9f6211eec125d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "6ad0912aca46316a1bd33104b2fa61940289a8772a7465b3b390051d6a8a2746",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "f75fea3f2e435ac1dedeceb093f545c1577ccc5915ceee1c68c2fe01799cbb7b",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "c05892f5e69073c7d4eb3ee31f66e6886c82bb2c380778c3fc703800af9344ea",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "2ee6720fd45d39dd3bd41c7af7d73b4b0b52647fa5da7d91c6c4c28f97cd539f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "df568be9f7840118ade647a40698c2f2182d4bca34ce540dab705169c07cc874",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "03ca610298ec75c0cb718757aca430b72c21dfabb28d34e82f5bef5b9cb44469",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "2922601057f13e42981aacb74e1001264b3b38355c9b36a013f3db3c22c4a278",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "b9b31a835b510263b4d51bcf2d789ed03b70887e4d1a7c8c737a3aa6e969e4b8",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "60327462c3c6ff8ee4aa920419b75e5f00bb9740f6619f6ae0cbc0bb0cf5eef1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -24235,8 +24557,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -28978,6 +29300,28 @@
           },
           "updated_at": null
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "3262eed605889734aa71906802d2209e47ace2ebd656379ca4fa67f9bcdd449b",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "e367fada9193b002f5a6159d7fc4586329b4531c6bd860f5d906d2c3b09f4441",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -29015,6 +29359,138 @@
           "domain": "application",
           "source_hash": "fa251b58d7c3c8ddd8fbb75e4abb928ecd10defc8c5ea0b84b242d8e0d269c86",
           "translation_hash": "b78f320d1f93f1f1cc2a4468058296bb8f73ad837eb2d197da0f3f3e219ffecd",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "50e9f94849055b3600103351d868827a5903389ea288cbfeabbf60c88a51e72c",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "5239026f3e2f74531858463e3fd0d4dcf30a8b56becdfceebfebc0abffd73b56",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "569e46d973286edcf4808d6168449e740b4df88a92fa40acab5a88c78192a555",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "6c40e780b3fb8930a784b09282ea4bcfe41d296b092f9b119f917aac9a1312c9",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "cc0c766a2adea3ada25109cdb9cd40e301fe6c4d5edfbd4b96b233e4665557cc",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "5aa962a26b29ee07f0ee381ace7404ae9421630b91a45df0ead3319a361b55b6",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "f9091adccb4d6b5204783c411f91ead5413331a1da561f065613ff9ffd205054",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "bf408c2a3b3d8e3e2c498bed63a4c1aa11e442a3650e52bc8a7d310215f39117",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "03ca610298ec75c0cb718757aca430b72c21dfabb28d34e82f5bef5b9cb44469",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "add2f36fedecdc799a4629388007bcfa0fbde7dc84e72a44ce4bfa770c3ce0c7",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "79db93190ab49a7aea22e1b85f7de8fea18dda023c47d41b2ae89c6a1dde0707",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "d2937c03207e66c88de88ba068e0e75d5354dfd0b2d2cc915a70178abe1d6212",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -35834,8 +36310,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -40577,6 +41053,28 @@
           },
           "updated_at": "2026-09-30T04:21:46+02:00"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "82431f3a9a85da8c2d6a48d1cb76b600490432caf02f55decc2c1bc21bd49782",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "50478d6aa094b0965c1e75603500355ed7189ad57e432d9600b6e38d18df5816",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -40620,6 +41118,138 @@
             "actor": "codex-gpt-5-contextual-es-419"
           },
           "updated_at": "2026-09-04T20:00:00Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "d368d373ee4f78797b3b970e0e737b207d8fa255704e8f935ae27a70c9855dae",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "6dfbb43ff102a2a5a523c445faefc35010886b0e61e0480ebca681907cfda82d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "12277803f314ab981251b730ae6586b6d21889c046f84c917b7646a982848af5",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "7a5663a964366bc810963e3f482a7884d5b273238895bb4a536871ccc80c908a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "7c791c00cbf850496ccb67d2a15a4424df2efddd75d6d09056cd7f5805ad8a05",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "cbe7769e46bab728e192ff1a6f663c4d7fa4523183704fbb265fc77c4779a5c6",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "9731711127f21874d149bbf538049ca16023ec3312d4a7535267d500156d1fde",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "82ac5c276748bff0a0f834646c135f42cd7b47bf7162c5efffb41504655c278a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "03ca610298ec75c0cb718757aca430b72c21dfabb28d34e82f5bef5b9cb44469",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "ca6bc10982b8ea0c1c2bdb10da9d6315359015ccbb9ecbfd8ca56ea3bf39cf19",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "71019fe3940352209ea451aa97d9fed1167385899625651083afd0997bec065f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "c16285d6940b0a75922db5d0271fa572ec3c6516a2f6fd5ab9886de7be83b2b6",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -47433,8 +48063,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -52176,6 +52806,28 @@
           },
           "updated_at": "2026-09-30T04:21:46+02:00"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "82431f3a9a85da8c2d6a48d1cb76b600490432caf02f55decc2c1bc21bd49782",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "50478d6aa094b0965c1e75603500355ed7189ad57e432d9600b6e38d18df5816",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -52219,6 +52871,138 @@
             "actor": "codex-gpt-5-contextual-es-es-review"
           },
           "updated_at": "2026-09-04T02:45:50Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "d368d373ee4f78797b3b970e0e737b207d8fa255704e8f935ae27a70c9855dae",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "6dfbb43ff102a2a5a523c445faefc35010886b0e61e0480ebca681907cfda82d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "12277803f314ab981251b730ae6586b6d21889c046f84c917b7646a982848af5",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "7a5663a964366bc810963e3f482a7884d5b273238895bb4a536871ccc80c908a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "7c791c00cbf850496ccb67d2a15a4424df2efddd75d6d09056cd7f5805ad8a05",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "cbe7769e46bab728e192ff1a6f663c4d7fa4523183704fbb265fc77c4779a5c6",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "9731711127f21874d149bbf538049ca16023ec3312d4a7535267d500156d1fde",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "82ac5c276748bff0a0f834646c135f42cd7b47bf7162c5efffb41504655c278a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "03ca610298ec75c0cb718757aca430b72c21dfabb28d34e82f5bef5b9cb44469",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "ca6bc10982b8ea0c1c2bdb10da9d6315359015ccbb9ecbfd8ca56ea3bf39cf19",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "71019fe3940352209ea451aa97d9fed1167385899625651083afd0997bec065f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "c16285d6940b0a75922db5d0271fa572ec3c6516a2f6fd5ab9886de7be83b2b6",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -59032,8 +59816,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -63775,6 +64559,28 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "d944d1080464bd6109c14ea7a3699b57f13477e6b18f4a00e34a36b040048218",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "92d1627c27f619cdc601b2226878554c8d69a3552094b63c132ae8bb7a7a7aaf",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -63818,6 +64624,138 @@
             "actor": "codex-gpt-5-contextual-fr-fr"
           },
           "updated_at": "2026-09-04T16:30:00Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "0925b930a8723b313f6d3d611936bbba7fb541c806a71d9e7b17ba305dd93cea",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "77edbba2f88d607bc7dfa08e52157d2768837ffe4c0e2e988109c34c500989d4",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "be9affe6e917e4e9fca9cdd1b004a8f98027ff42db7339efd15c14bbd1bb941b",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "eb106f797a151dd77749840f4b004df61048375928c0057d3af5ad1db7a882c7",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "b89f75f20bc5e40367cbadc2865e6132aee7c93d5399639b9478867c76bd2e18",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "13c69f4da206a54003091a488d18907a1e872b31fe679932821971a32cb4878a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "628b0f2158e8f63b37cfe8b72e169be7ef08d9136a9b6798c8cb00339ba5d5cc",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "7f4da86f8d691f50f4025880605e0de49c44f7b9d7640174a29238a8223953bd",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "03ca610298ec75c0cb718757aca430b72c21dfabb28d34e82f5bef5b9cb44469",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "61047012ed5dfa8adb390bef4110802a754e623724f6bcd12508a0ba82955c29",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "da63cdbef0243181a65f3841f3c817f8b4391d27ec34985233c30effe4dd3cb5",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "3ed162efcc3d9ccf0b4c65d3a9bcf204fc10a9ec0b89656a86c32b0d77878aee",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -70631,8 +71569,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -75374,6 +76312,28 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "64edc084445cd8a18bf009d864f14f4d2bea11a3bceac8ee0db5217f992398c8",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "a46777147525357a66e5f59ef97c839b85b960c43271660fc6a5a3adb22112ad",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -75417,6 +76377,138 @@
             "actor": "claude-opus-5-contextual-it-it-review"
           },
           "updated_at": "2026-09-04T13:20:00Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "454a62849fd982266dd1771ec1c7a728984780c7eae636a5bef6444736aa02f1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "a35a3ffca6b45ab9f4f658117555b7b3795e5106918790a192a82cd345698a81",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "9a5a393438b4dcb8dfc5b4df25e8057d55e283e3e3a1a9b9b1fe3e896c0d8037",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "f242fd0d609232cd07037f9b5c2dcb5e61bf88b050e5c771e1e6d219b549caf7",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "0f1b71187b5c53b0efca40eca9522f9bb549609805ca5ae2485b1e963ad6ca25",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "b78ea866c3b5b72314b91dd6bd63c7500ee2457850db994581de7ae1704f1d6b",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "45d01aa1be566fe63ec94fe68a39181cbba6df59a37c469f5ab85824e00209e7",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "bec796c121e48fba1da05dbaec4ccabe460d65af0b5ea2f26b75e6764804a28b",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "03ca610298ec75c0cb718757aca430b72c21dfabb28d34e82f5bef5b9cb44469",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "a3116abc8cc9902f9b6e55d1a67b02f9a0f37c11d054421e9dbf5af6fe9724bb",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "bde64a8ec12660d51607acc87f2c8d2b2a8aedf4c2aa3c94961e8d0bc2f925d4",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "afc0ddc8c4e32e6056731ba181163f2e4642f049eb7e2c1468051fe8bf3c48f8",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -82230,8 +83322,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -86973,6 +88065,28 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "bdfef00413e239a6340b8ee204d1f6b62a3ee627623a9a671d0dbe93605500a2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "79295c0a6e48a5262ee2cfc4f2eaaf6d7d0002a8c19b82290bb2a68853f89159",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -87016,6 +88130,138 @@
             "actor": "codex-gpt-5-contextual-ja-jp"
           },
           "updated_at": "2026-09-04T14:30:00Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "59c49a0e7a07d5a791759f0a573d399e0d6affd7335611605389e44af4b509e5",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "3c9367489dbb472a0f7a2d4b6bec295e71802eab4d11420de953e8dd9a108807",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "824e7fcd440f9b258923c3bbcc159b25613f83a0e940a5ac0c26e0c87daab174",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "f957fb05e8bd3f910cbb81cd3aaa4c7da5aedc6b782dc082ef961c3049ee33ab",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "589135f7a86be8d4e80ccd71d139e325f77139622631b29590f6eafdbeb1dc29",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "e5b36ef8e030d99ed3c83c112e4362010be672a6137d4b19e149d29a6fbed734",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "25b5900655b5dfd85c3af9eb6b265bf9ee13b42129aef7898970fdee42567021",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "14ba498e3776e83a97535a3fcbce876045d9a548933f99c946c6d67295e12fb6",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "03ca610298ec75c0cb718757aca430b72c21dfabb28d34e82f5bef5b9cb44469",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "cb91060d70d5548e8cff2d9d4c47a58cfb045869628733749186744cc0854ad9",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "aadbcc6041931ff205e5129bea1181989cf1bb4b8d9f5aa86d0ae102f6eb0fa3",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "0f02f45fee5dfc501efb23882e60bc115631cae6f5bb72bd9313fb1614002bb7",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -93829,8 +95075,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -98572,6 +99818,28 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "9f0986e50ec0b2cc1a528f7dcb417279eb15469188c4cd8572451695960e3562",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "e4a71b9d7e6e955358cf4293be60353b4ba66aa45aebb041a2af7eebfd81f7b9",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -98615,6 +99883,138 @@
             "actor": "codex-gpt-5-contextual-ko-kr"
           },
           "updated_at": "2026-09-04T20:00:00Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "911ee33b857ecd69ba7d9dbec781a09056ba83ac3c683d57584f96cb83c08545",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "1aadf670d82732fa1dc1346c65ac78d4e839e14828086a0af6ac01b137887c38",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "95422414f0bf6c1958f6b1032daa5c77f90952202c9459b5ad2e1034405cebcf",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "8542285efd1d2aa995ac09611de41122cc6fbc01a5a32a7f59f8d77b4e332c9c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "71cdbc1a8414537694e7b29292e60327e6f7e2e938171895fcd33e5a07fbd30f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "0f2d6ec40b3cf471ac22f9f885ebb8361b1d8dcf6e4b0a116f77d789f1525c44",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "469d5d09f1a33ec7a69c1f21554cc3717207a5ee98736da5d18621f55ff0688c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "308a6489c088f4927341fdd5346f9452d24524ec89bcd982619cda63a4081c77",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "03ca610298ec75c0cb718757aca430b72c21dfabb28d34e82f5bef5b9cb44469",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "c048e1302715e4ee38a68d380b8c6eb8520447722044a903b701585d7c2a299c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "8c2d6574d13158a28d2c94d19a7f7da326f54b219a01b7f89eb9ad214b940124",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "bda618235cc9f8bfaade3e74b75c13bf1f4629b5eb73f68894feaf02b4607c5e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -105428,8 +106828,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -110171,6 +111571,28 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "a4e9e99ed890bd62d26db907a96b952dd1942b7e5c479053b8b5af5c88ec5732",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "73e59598035c32adab9dcad98ecfea2a3730add118f1a1eba1f2c04d110e065e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -110214,6 +111636,138 @@
             "actor": "codex-gpt-5-contextual-pl-review"
           },
           "updated_at": "2026-09-03T22:45:00Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "3c78228a12ea7b1ca9ae628caf546424cbf29e6ba6784114b4afd8bf21ed73f3",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "224b37e74ace65742786d56317e387cfcdda6c9d1015e7525365c449e66a1c98",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "3509f94007e6ae4b4c5ad9ba90503f4a44d65565fd4f2598492d30a61e174dfa",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "28831d23ccd39fb881921023010ceb6148ab61624cf89e7289c9855694740468",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "fe6ccf06ecb13b431e2156bb3210dc0926a7ffddcdcc61e781edab57e4774257",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "85bb9935780ccf7dfb530815b5e026e45356b9f94ecfd64a7222510bedd68f6c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "7d4181e50b90885e90a9155cd764a0b02927bdb62f0034b4b8c010858c349002",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "3303e3f658e073462f778cca3971965d736fa37477229a6ea4ced3662af800b8",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "03ca610298ec75c0cb718757aca430b72c21dfabb28d34e82f5bef5b9cb44469",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "db8d9d0c5554898a9fded4a5deeba76947b983c32c3da87f588a75bf2b17774f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "83d4a3d1d247d4d50838092007665253c4965ef4f06ee5b23de1bc5af0e5f072",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "270ed816dcb34fc5ceced36fa7f0eb40838a302e7e2e396e0af2c97f84348dc0",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -117027,8 +118581,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -121770,6 +123324,28 @@
           },
           "updated_at": "2026-09-30T04:21:46+02:00"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "08c75c5187bc54a2924230cd4bde785c745f1cd838cf60548629ee119ae9ec33",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "c938ac13da653aa69bda6098b1a0f2d7bce6780ddda766be8dfe1fe4a529eadb",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -121813,6 +123389,138 @@
             "actor": "codex-gpt-5-contextual-pt-br-review"
           },
           "updated_at": "2026-09-04T03:19:03Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "f2adbf05d1d9684b6316c66233a193404efaf821a25226e4201e8699f025d51b",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "8d0c1b1210bf676d0af17a050ced5c42f5c20d42c8d7bd316e3c8f6f4c9d4bd2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "c2b0a781f708096d15aef4219a243d3e8fa971201f55ae4593dd5842e38fe0c5",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "31c71e25404c6f11f430c05753f0958abdc4427521f894c019d76961c5c24858",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "ad93a98ff8d270550e3c54a4c56977bb1ece8cceb4baa38ac41753ff9de7633d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "ac1b00158dea77704c7f3754ddc435d31865d6528d94d99739721eed59b8e4e1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "fd52a11e41c8ba44d79a783c4f54d1e01a7e7884a5d748034a8eeaed608a607e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "6e507d7538260e348c4e1fea2adb030cafef6231161f1de5ed20cd0584c42c96",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "03ca610298ec75c0cb718757aca430b72c21dfabb28d34e82f5bef5b9cb44469",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "3070ef97476bfdc4548f72a34527bfa224775e56a47b57e1e6e6f3c5d3a06e4d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "df420c885e4f8dcf763b603bb6c34f92ad061588f95e85962811ef2a88a3c529",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "0b841f4d7a5e2a5815fca460dd30b61e560c3f5f47df1c63c99242abaaece31e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -128626,8 +130334,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -133369,6 +135077,28 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "b92e54e80fd4d3ef041fd707bab6ce043397439bd7ba1889864a5fa9d0147611",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "532a4c3726cd6726b1a2bd2af36f6d00f256ad03c5035606dc88b692066c83ff",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -133412,6 +135142,138 @@
             "actor": "claude-opus-5-contextual-ru-review"
           },
           "updated_at": "2026-09-04T04:00:00Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "b3fa77c23165d560717f9cfe9021e5c7b92a5e6d18fe99918a5841dd3370c015",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "e448503a4aaa580f3a562fcca4375fa69abb06c7a0b69ce3a54357a8741928a7",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "9b373462ee18f2fbd4df6358838d7557b9ac55c71e369a6daf000e5bea7db6c2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "7647100129b76970cfea06941d6b38eb501174ad73601455668af9cab1eb4a51",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "f523799860f76ae46ac0850ee04ba19663d94ace19790a505f01af2c8e0581a5",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "1d00f98e0edfc4256becbdf13b846663bb42b9996396ebedf403bc42ba20d11e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "939c13a76543e764dd4627cf6af28369f67e4da60ca8f3717193100561f162b2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "b9c2420ecae1ef0c3a9f102645519116d6fe6c692188776d19cd14c02382bbf1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "6eac2bcc1b1645e6f2d035b69f75fa976f7eebf100b88bc383990f9bf4e5df7e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "0a9460b1e1d0d6bb6ef16e5b521caa58a6e613fbc91a9981d2da97a88d67ffcc",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "f109e1b5f7002bc2399f2b37bd4bc554f194be0e4bcb160c8f02a7f92214195e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "2737a6678f5cba735a04265dd3770083d736259a7e6d1ad21cdc535cb63a6924",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -140225,8 +142087,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -144968,6 +146830,28 @@
           },
           "updated_at": "2026-09-30T04:21:46+02:00"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "d21d59a6cd81556f058d82b1f04e079dddb31ec2eb66861e1195fd260540f126",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "ddb3e3e5c8e55b8567015d0ae3b4c3bca53709c32d18793211760c954bf8e3ec",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -145011,6 +146895,138 @@
             "actor": "codex-gpt-5-contextual-th-th"
           },
           "updated_at": "2026-09-04T17:00:00Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "c1ad2f60591b5a3822a93981a2b48cdb403a516d3549a19022da977da0b1252c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "2cfd4b508e53de01c7ea596850bf78e5f3ce81bc9e3c7fd7c208220ed786e9af",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "73592cc908501f7f4aeae37feecfb6244c4f5123efc55f1e398ac498b581c730",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "d182d147fe6d8a7e274aaeb04bfc845a5482d7b96da4145a150d910a3bbb1022",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "b35606f7139760bffc91fdba5af0f44a9f45e02754051db615d823b142638197",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "61d2c6ca330ba953616da4246bb8a57f2dc352000f446432b45d63c4b094091f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "a71801c6f8954c30862e2e6e10420effd2dfd4f0a0b85f7f642c4f9918a1db56",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "dd4d8ccfa30466fd310dd82ec1e720578757e579bf667e1538f7b7e9c6016e8f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "03ca610298ec75c0cb718757aca430b72c21dfabb28d34e82f5bef5b9cb44469",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "1f6d4aee88653d6e4aa41a646f6eecc1d93b3f7d1e99b967fa5753231890c282",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "ddc89f60b2d43e24e76e56c98b749ba8ee507f115f48eb5bcc91e80effdcc3f5",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "d635cc7254f58e01260d12e805790589543650a52019ded53dfe182d426f0d84",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -151824,8 +153840,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -156567,6 +158583,28 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "ebc4184a5647c6fe1e11321b4937eb8e97982fa62fa1943dab015808353d3dc2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "8b4c055516496bcdbe96b91b9d0a9a6e2168ab51677e5e258354c77a7ac9e241",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -156610,6 +158648,138 @@
             "actor": "codex-gpt-5-contextual-tr-tr"
           },
           "updated_at": "2026-09-04T08:11:57Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "56b0d4157c47546eeba05d576e9d6d4183f5daf80d328b53d083ba53640548e0",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "ab1f45d984b0263f965b0c3d3d64ff57949fc64a8d5a159ca684ee2816266f84",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "26be733f864d0b43707797845fdc1f6ac9ddd7c2150f0e9b9d412fb6514a3497",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "2c5f8e685cf0dabd28ad29002f29eee7d193169d1b8d8f4fab8c398d660c84f5",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "001b56be1bbcde0c3b5e21363ee225a3c5c05cb70e0eadfd4d8f1b185dbddb67",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "688eaaa6de95bc61b3a3991049513a1a39962d85f6d5ef776f922d5c29c0b590",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "d5c5aa6c096cfe90d8be8f14d70348fcc86c6e58a7c31cd2f43ad7ebed5d83f0",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "04ae1759f9fc7621e3b2cbf02c83ded7fdff1df59068273e69c346b5eb1ae67a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "03ca610298ec75c0cb718757aca430b72c21dfabb28d34e82f5bef5b9cb44469",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "3ca3998fbf6d391d45b433e7e7d33fa81868a2d18be75df0cc1aa62a39760ab8",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "17122a7bf7781721ce52a8986f65452af56d042f047b445996ef040ba1aaa750",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "e2bc69999e2e661327fbbdedd204beb79060de9d9de84155dc5184623766b151",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -163423,8 +165593,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -168166,6 +170336,28 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "adad7db8888463f60b461ed25bb541d68ff041efe06b9d5b6564c6eb13211ca2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "017cbf1ea70dab713a44e16aae25500a8d1d31b7892b5cbf6d105b360e611003",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -168209,6 +170401,138 @@
             "actor": "codex-gpt-5-contextual-uk-UA"
           },
           "updated_at": "2026-09-04T11:59:30Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "349ab276d964e45f9f52fb9bb295c0412070da3a8bcdef4b9e3b12eff5742589",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "f8a4b8fb1598f207ba4cbf9a4def1af079f5cedd32250e7e67a64b9fa5c7c774",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "072aa974f466d118c58e288ece25befa3d848cb6fc553e20738ba5f5c6c1560a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "d755e5b43e115fe032bc07ea01eb99a17ea03526a2489366b5d330d2458be2f1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "2d777dda0d0bffaa4cbe1f74c4d8d822fad0876f55c79abb2e28ee240d880d20",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "4c455c2dcce1c95a5afec6c3690f3baa7f72ae0f79688f442139dbade05a58c3",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "8f20cf01ee8ac6d37362b83bbac46952ecb7de20a3570a5d986477451c0a839e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "241b1696d61990bb1109a5a76a4f5a378863503e8cf375901cd7ddcccaf8f2ca",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "6eac2bcc1b1645e6f2d035b69f75fa976f7eebf100b88bc383990f9bf4e5df7e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "b36737f38bb76e8adc27f244ec506754c394d51cb194b849221f22b0d7c0b20e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "c0643fa872f78fa19550e45cb9fd38e49fef3d0bbc09dd02e2f752bf1b55d229",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "e57a48ddf30527f0bd1fa56defc9198f35da12c1eaa16d1463f27fa65fe62370",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -175022,8 +177346,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -179765,6 +182089,28 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "514a0eb2fd3b3a827e445b5b0b0f86184771f6faa571d6ca0a8e456793fa1278",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "f656c7fe5721ad2c3a26e12a9424f4684183ab308a88bae8b527d9cb7ddf3767",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -179808,6 +182154,138 @@
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
           "updated_at": "2026-09-04T03:10:00Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "475be175a2d0d9882094b631467b816f1c7bbaf048775cb11cd01271a9c4e0ae",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "44699f944aacded2ac4242f2856a531de00f1f69d00696637c6b7d290b018500",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "cf2184a0abe75185ef1413f2e52a29fe97401ef60882e37c52975fe2bcf75916",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "772a87670cdbba4544630866a381a2bea32379cb598bcb16deb89e4a4a1a590f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "92e82ab2cdea5fd1047a12e9cafdfc82e66093a18bffc6a4bc01f6b073b1c828",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "a69f4eb0f01d444a9d498af7dcaa5c852415970a986a3b8acf480d6ec9f44076",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "feda3387ec022beb550128f16b89a194ae9e201c8b8387d1105691d748aba8cd",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "c3a14041ed1ae62b6d7f04bc215164dcbdd836ea5ec5eef23bce4999e6216dfc",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "485e0b544ef97a295ed9c34c231e2d726672df62b044a90f2002c541422eaf9b",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "584d2fc2db51345b52a1a180a653c9fca1b0905584fee372cdc9250578cd7a82",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "fecc832211339477e5647e156726e48194fe1e2c1d9025f398edc4763dec4698",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "2c7e3667a2a2e2f40fa6835dea144288ef690d69f9f52a2a368234b9bba8dac5",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -186621,8 +189099,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },
@@ -191364,6 +193842,28 @@
           },
           "updated_at": "2026-09-21T00:00:00Z"
         },
+        "gamehq.overlay.hint.layout.gamepad": {
+          "domain": "application",
+          "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+          "translation_hash": "db4af263d40bef2579e20b3ed188a96af31cfa0a81ef50d793f540b6bc298d6a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.hint.layout.keyboard": {
+          "domain": "application",
+          "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+          "translation_hash": "5b93e5662cb08f5d1fb705154f3d5ff5e105f8b6557df3780258176e42fa7648",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
         "gamehq.overlay.hint.menu.gamepad": {
           "domain": "application",
           "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
@@ -191407,6 +193907,138 @@
             "actor": "codex-gpt-5-contextual-zh-hant"
           },
           "updated_at": "2026-09-04T06:45:28Z"
+        },
+        "gamehq.overlay.layout.hints": {
+          "domain": "application",
+          "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+          "translation_hash": "475be175a2d0d9882094b631467b816f1c7bbaf048775cb11cd01271a9c4e0ae",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.interface_size": {
+          "domain": "application",
+          "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+          "translation_hash": "e665cfa107c0e6b19de6ff1582497fc1f615405fadb2a1c2d3d10ff7ec5c565d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_bottom": {
+          "domain": "application",
+          "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+          "translation_hash": "57fce358fffa68dc24d6620b9968095eede865cbbd5cf2ac5861b4cdec017376",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_left": {
+          "domain": "application",
+          "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+          "translation_hash": "0cdb3bc7f45e5413ac04557ebe61a10321504550c95088b0070b178ff5b98fcd",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_right": {
+          "domain": "application",
+          "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+          "translation_hash": "7183ee1b077ca02e590e37a73116ec031ca6091066288749dbc22466e09f332e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.margin_top": {
+          "domain": "application",
+          "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+          "translation_hash": "faab229f94e930a368bca41aecf391a3bff27014f6951871912791b34f2fd312",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.off": {
+          "domain": "application",
+          "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+          "translation_hash": "0e59b5b468cdb32c6039901a44c47e27c24c2c0a8900715f419a55ee784c1699",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.on": {
+          "domain": "application",
+          "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+          "translation_hash": "f96bc5bf47d6cc392ec34738dd8b9691eae61cf7d55313773cdd4273c178a2e6",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.px": {
+          "domain": "application",
+          "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+          "translation_hash": "485e0b544ef97a295ed9c34c231e2d726672df62b044a90f2002c541422eaf9b",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.reset": {
+          "domain": "application",
+          "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+          "translation_hash": "2c2d799ed9f32eb54b52215da8bbe6eb6eda2f08ddf4999ccabd86dd735df61d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.thumbnail_size": {
+          "domain": "application",
+          "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+          "translation_hash": "9c5bc75d4290f5ad8f67d246b03f7a858920be6633d43595176c02f7a5d37bd4",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.title": {
+          "domain": "application",
+          "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+          "translation_hash": "8bf0042fa70c74d46f30104d6dc47362aca843236f57dffd54e98d812fe8e895",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T17:40:00Z"
         },
         "gamehq.overlay.window_title": {
           "domain": "application",
@@ -198220,8 +200852,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1052,
-          "current": 1052,
+          "total": 1066,
+          "current": 1066,
           "missing": [],
           "stale": []
         },

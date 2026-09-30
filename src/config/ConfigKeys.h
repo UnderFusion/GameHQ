@@ -96,6 +96,15 @@ inline constexpr QLatin1StringView UiOverlayFilterPrefix{ "ui.overlay_filter." }
 // collapsed. Auto's momentary open/closed state is never written.
 inline constexpr QLatin1StringView UiMainSidebarMode{ "ui.main_sidebar_mode" };
 inline constexpr QLatin1StringView UiOverlaySidebarMode{ "ui.overlay_sidebar_mode" };
+// Overlay layout options: control-hint footer, outer margin per edge in
+// logical px (0-96, step 8) and capture-strip thumbnail size in percent
+// (70-140, step 10). Interface size stays theme.overlay_scale.
+inline constexpr QLatin1StringView UiOverlayShowHints{ "ui.overlay_show_hints" };
+inline constexpr QLatin1StringView UiOverlayMarginLeft{ "ui.overlay_margin_left" };
+inline constexpr QLatin1StringView UiOverlayMarginTop{ "ui.overlay_margin_top" };
+inline constexpr QLatin1StringView UiOverlayMarginRight{ "ui.overlay_margin_right" };
+inline constexpr QLatin1StringView UiOverlayMarginBottom{ "ui.overlay_margin_bottom" };
+inline constexpr QLatin1StringView UiOverlayThumbnailScale{ "ui.overlay_thumbnail_scale" };
 // Desktop window geometry, written debounced while the user moves or resizes.
 // x/y default to WindowPlacement::kUnsetCoordinate ("never placed"), so a
 // monitor left of or above the primary keeps its negative coordinates instead

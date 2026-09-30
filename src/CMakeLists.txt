@@ -206,6 +206,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/DesktopEmptyState.qml
         ui/qml/components/OverlaySidebar.qml
         ui/qml/components/OverlayCaptureStrip.qml
+        ui/qml/components/OverlayLayoutPanel.qml
         ui/qml/components/OverlayPreview.qml
         ui/qml/components/OverlayFooter.qml
         ui/qml/components/OverlayViewer.qml

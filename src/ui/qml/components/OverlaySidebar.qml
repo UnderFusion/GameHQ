@@ -11,6 +11,10 @@ Rectangle {
     property string mode: "expanded"
     property bool expanded: true
     property bool modeFocused: false
+    // Overlay options gear: `optionsOpen` while its panel shows,
+    // `optionsFocused` when the pad cursor sits on it.
+    property bool optionsOpen: false
+    property bool optionsFocused: false
     // Labels follow the animated width (see DesktopSidebar.compact).
     readonly property bool compact: root.width < Theme.overlaySidebarWidth * 0.75
     readonly property alias pointerInside: sidebarHover.hovered
@@ -33,6 +37,7 @@ Rectangle {
 
     signal entrySelected(int index)
     signal modeCycleRequested()
+    signal optionsRequested()
 
     width: root.expanded ? Theme.overlaySidebarWidth : Theme.sidebarRailWidth
     Behavior on width { NumberAnimation { duration: Theme.durNormal; easing.type: Easing.OutCubic } }
@@ -87,8 +92,26 @@ Rectangle {
         }
     }
 
-    // Mode toggle directly above the brand; in the rail it is the only
-    // bottom element left.
+    // Options gear, then the mode toggle directly above the brand; in the
+    // rail these two icons are the only bottom elements left.
+    SidebarItem {
+        id: optionsButton
+        objectName: "overlayOptionsButton"
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: modeButton.top
+        anchors.leftMargin: root.compact ? Theme.s8 : Theme.s12
+        anchors.rightMargin: root.compact ? Theme.s8 : Theme.s12
+        anchors.bottomMargin: Theme.s4
+        //% "Overlay options"
+        label: qsTrId("gamehq.overlay.layout.title")
+        glyph: "⚙"
+        active: root.optionsOpen
+        sidebarHovered: root.optionsFocused
+        compact: root.compact
+        onClicked: root.optionsRequested()
+    }
+
     SidebarModeButton {
         id: modeButton
         objectName: "overlaySidebarModeButton"

@@ -7,6 +7,7 @@ Text {
     property bool usingGamepad: false
     property bool menuOpen: false
     property bool videoFocused: false
+    property bool layoutPanelOpen: false
 
     width: Math.min(parent.width, implicitWidth)
     leftPadding: Theme.s16
@@ -31,6 +32,14 @@ Text {
 
     text: {
         const pad = root.usingGamepad
+        if (root.layoutPanelOpen) {
+            if (pad) {
+                //% "D-pad Up/Down — choose | D-pad Left/Right — adjust | Cross — toggle | Circle — close options"
+                return qsTrId("gamehq.overlay.hint.layout.gamepad")
+            }
+            //% "Up/Down — choose | Left/Right — adjust | Enter — toggle | Esc/Backspace — close options"
+            return qsTrId("gamehq.overlay.hint.layout.keyboard")
+        }
         if (root.menuOpen) {
             if (pad) {
                 //% "D-pad Up/Down — choose | Cross — confirm | Circle — close menu"

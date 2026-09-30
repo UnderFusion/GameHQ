@@ -8,6 +8,10 @@ Rectangle {
     property var model
     property bool usingGamepad: false
     property bool videoFocused: false
+    // Thumbnail size from the overlay options (1.0 = 100%). The strip height
+    // follows the tiles, so smaller thumbnails give the preview more room.
+    property real thumbScale: 1.0
+    readonly property real tileWidth: Math.round(Theme.overlayThumbWidth * root.thumbScale)
 
     // Mouse path for the per-tile hover icons. The strip owns no capture
     // actions itself — it moves the selection to the tile that was clicked
@@ -21,7 +25,7 @@ Rectangle {
     function decrementCurrentIndex() { strip.decrementCurrentIndex() }
     function incrementCurrentIndex() { strip.incrementCurrentIndex() }
 
-    height: 132 + Theme.s16 * 2
+    height: Math.round(root.tileWidth * 9 / 16) + Theme.overlayThumbCaptionHeight + Theme.s16 * 2
     radius: Theme.radiusL
     color: Theme.panelTint
     border.width: root.videoFocused ? 1 : 2
@@ -110,7 +114,7 @@ Rectangle {
         highlightMoveDuration: Theme.durFast
 
         delegate: Item {
-            width: 180 + Theme.s16
+            width: root.tileWidth + Theme.s16
             height: strip.height
 
             CaptureTile {
