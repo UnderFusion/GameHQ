@@ -31,6 +31,7 @@ qt_add_executable(GameHQ
     core/UpdateMaintenance.cpp core/UpdateMaintenance.h
     core/UpdaterHandshake.cpp core/UpdaterHandshake.h
     core/WindowPlacement.cpp core/WindowPlacement.h
+    core/GamePins.cpp core/GamePins.h
     diagnostics/Logger.cpp diagnostics/Logger.h
     gameinput/GameInputEvent.h
     gameinput/IGameInputApi.h
@@ -200,6 +201,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/SidebarItem.qml
         ui/qml/components/SidebarModeButton.qml
         ui/qml/components/SidebarResizeHandle.qml
+        ui/qml/components/PinGlyph.qml
         ui/qml/components/DesktopSidebar.qml
         ui/qml/components/DesktopGalleryHeader.qml
         ui/qml/components/DesktopGalleryFooter.qml

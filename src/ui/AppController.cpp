@@ -7,6 +7,7 @@
 #include "config/SettingsCategories.h"
 #include "config/SettingsApplyPolicy.h"
 #include "config/Paths.h"
+#include "core/GamePins.h"
 #include "core/ProcessIdentity.h"
 #include "core/WindowPlacement.h"
 #include "diagnostics/Logger.h"
@@ -29,6 +30,7 @@
 #include <QDir>
 #include <QDebug>
 #include <QGuiApplication>
+#include <QSet>
 #include <QHash>
 #include <QImage>
 #include <QFileInfo>
@@ -532,18 +534,45 @@ int AppController::overlayGameId() const
     return m_currentGame->currentGameId();
 }
 
+// Most recently captured first, with pinned games lifted above the rest.
 QVariantList AppController::games() const
 {
-    QVariantList out;
     const auto entries = m_db->listGames();
-    for (const GameEntry& g : entries) {
+    const QStringList pinned = m_config->value(ConfigKeys::UiPinnedGames).toStringList();
+    QStringList keys;
+    keys.reserve(entries.size());
+    for (const GameEntry& g : entries)
+        keys.append(GamePins::key(g.id, g.executablePath));
+    const QSet<QString> pinSet(pinned.cbegin(), pinned.cend());
+
+    QVariantList out;
+    for (int row : GamePins::pinnedFirst(keys, pinned)) {
+        const GameEntry& g = entries.at(row);
         QVariantMap item;
         item.insert(QStringLiteral("id"), g.id);
         item.insert(QStringLiteral("name"), g.name);
         item.insert(QStringLiteral("iconPath"), g.iconPath);
+        item.insert(QStringLiteral("pinned"), pinSet.contains(keys.at(row)));
         out.append(item);
     }
     return out;
+}
+
+void AppController::setGamePinned(int gameId, bool pinned)
+{
+    for (const GameEntry& g : m_db->listGames()) {
+        if (g.id != gameId)
+            continue;
+        const QStringList before = m_config->value(ConfigKeys::UiPinnedGames).toStringList();
+        const QStringList after = GamePins::withPin(before, GamePins::key(g.id, g.executablePath), pinned);
+        if (after == before)
+            return;
+        m_config->setValue(ConfigKeys::UiPinnedGames, after);
+        m_config->save();
+        qInfo() << "Games:" << (pinned ? "pinned" : "unpinned") << g.name;
+        emit gamesChanged();
+        return;
+    }
 }
 
 void AppController::applyFilter(const QString& category, int gameId,

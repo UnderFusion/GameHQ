@@ -306,9 +306,15 @@ Rectangle {
                         && !(app.currentGameAvailable && app.currentGameId === modelData.id)
                 sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.categories.length + index
                 compact: root.compact
+                pinnable: true
+                pinned: modelData.pinned === true
                 onClicked: {
                     root.pageClosed()
                     app.setGame(modelData.id)
+                }
+                onPinToggled: {
+                    sounds.play("favorite")
+                    app.setGamePinned(modelData.id, !modelData.pinned)
                 }
             }
         }

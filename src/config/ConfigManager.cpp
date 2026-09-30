@@ -6,6 +6,7 @@
 
 #include <QDateTime>
 #include <QFile>
+#include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonValue>
 #include <QSaveFile>
@@ -79,6 +80,7 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::UiMainSidebarWidth,      220 },
         { ConfigKeys::UiOverlaySidebarWidth,   260 },
         { ConfigKeys::UiMainToolsCollapsed,    false },
+        { ConfigKeys::UiPinnedGames,           QJsonArray() },
         { ConfigKeys::UiOverlayShowHints,      true },
         { ConfigKeys::UiOverlayMarginLeft,     48 },
         { ConfigKeys::UiOverlayMarginTop,      48 },

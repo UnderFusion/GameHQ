@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-uk-UA; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review",
+    "actor": "codex-gpt-5-contextual-uk-UA; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review",
     "method": "complete_source_location_context_review_plus_targeted_recovery",
     "draft_provider": "protected-token-safe Ukrainian draft followed by complete contextual senior review and manual high-risk audit",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-30T20:05:00Z"
+    "recorded_at": "2026-09-30T21:00:00Z"
   },
   "baseline": {
     "path": "git:01b0ea8a8cdc0d2f6ee13b911195061b693a048c:i18n/app/gamehq_uk_UA.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_uk_UA.ts",
-    "sha256": "d1b2291a5efdc8495daaa5ec05011cab75f9a5d3e0f64d30d25b3d454fa363d7",
-    "message_count": 1076
+    "sha256": "2383cacbdba6f33a6f04c50aa9f492823126d4706c1bfdd5378504dc7a0bed81",
+    "message_count": 1078
   },
   "coverage": [
     {
@@ -3672,6 +3672,24 @@
         "src/ui/qml/components/OverlaySidebar.qml:17"
       ],
       "decision": "corrected"
+    },
+    {
+      "id": "gamehq.navigation.game.pin",
+      "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+      "translation_hash": "6a2dc8545e7458ac96f48ac5555a20590ea2c5193e59ca048f3447c8b990f7a8",
+      "locations": [
+        "src/ui/qml/components/SidebarItem.qml:224"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.navigation.game.unpin",
+      "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+      "translation_hash": "fe5233211382b98ea8a6314b32cf5450a6a8c4d07cb40e92f02fbaed83153168",
+      "locations": [
+        "src/ui/qml/components/SidebarItem.qml:226"
+      ],
+      "decision": "accepted"
     },
     {
       "id": "gamehq.navigation.games",
@@ -16712,8 +16730,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_uk_UA.ts",
-      "sha256": "d1b2291a5efdc8495daaa5ec05011cab75f9a5d3e0f64d30d25b3d454fa363d7",
-      "reviewed_units": 1076
+      "sha256": "2383cacbdba6f33a6f04c50aa9f492823126d4706c1bfdd5378504dc7a0bed81",
+      "reviewed_units": 1078
     },
     {
       "surface": "installer",

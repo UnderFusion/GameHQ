@@ -109,9 +109,9 @@
       <translation>キャンセル</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1288"></location>
-      <location filename="src/ui/qml/Main.qml" line="1307"></location>
-      <location filename="src/ui/qml/Main.qml" line="1345"></location>
+      <location filename="src/ui/qml/Main.qml" line="1304"></location>
+      <location filename="src/ui/qml/Main.qml" line="1323"></location>
+      <location filename="src/ui/qml/Main.qml" line="1361"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
@@ -644,7 +644,7 @@
       <translation>選択したフォルダーは無効です。</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="368"></location>
+      <location filename="src/ui/AppController.cpp" line="370"></location>
       <source>Choose a local folder.</source>
       <translation>ローカルフォルダーを選択してください。</translation>
     </message>
@@ -664,8 +664,8 @@
       <translation>GameHQ は選択したフォルダーを保存できませんでした。</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="362"></location>
-      <location filename="src/ui/AppController.cpp" line="384"></location>
+      <location filename="src/ui/AppController.cpp" line="364"></location>
+      <location filename="src/ui/AppController.cpp" line="386"></location>
       <source>The capture type is invalid.</source>
       <translation>キャプチャの種類が無効です。</translation>
     </message>
@@ -822,7 +822,7 @@
       <translation>%1 のハッシュを計算できません。</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="206"></location>
+      <location filename="src/ui/AppController.cpp" line="208"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>ポータブルプロファイルをインポートできるのは、インストール版 GameHQ だけです。</translation>
     </message>
@@ -847,12 +847,12 @@
       <translation>復旧済みのポータブルインポートジャーナルを削除できませんでした。</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="212"></location>
+      <location filename="src/ui/AppController.cpp" line="214"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>ポータブル版 GameHQ を含むローカルフォルダーを選択してください。</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="221"></location>
+      <location filename="src/ui/AppController.cpp" line="223"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>選択したフォルダーは GameHQ ポータブルパッケージではありません。</translation>
     </message>
@@ -882,12 +882,12 @@
       <translation>portable:/ パスが選択したパッケージルートの外を指しています。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="232"></location>
+      <location filename="src/ui/AppController.cpp" line="234"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ はインポート用に自身のプロセスを特定できませんでした。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="242"></location>
+      <location filename="src/ui/AppController.cpp" line="244"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ はポータブルインポートプロセスを開始できませんでした。</translation>
     </message>
@@ -1334,19 +1334,19 @@
       <translation>フォルダーを追加…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1347"></location>
+      <location filename="src/ui/qml/Main.qml" line="1363"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>一括選択</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1341"></location>
+      <location filename="src/ui/qml/Main.qml" line="1357"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>共有</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1343"></location>
+      <location filename="src/ui/qml/Main.qml" line="1359"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>フォルダーで表示</translation>
@@ -1359,14 +1359,14 @@
       <translation>%1 ・ %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1276"></location>
+      <location filename="src/ui/qml/Main.qml" line="1292"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 ・ %2
 ファイルは完全に削除されます。</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1286"></location>
+      <location filename="src/ui/qml/Main.qml" line="1302"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1018"></location>
       <source>Delete capture?</source>
       <translation>キャプチャを削除しますか？</translation>
@@ -1381,7 +1381,7 @@ This cannot be undone.</source>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1305"></location>
+      <location filename="src/ui/qml/Main.qml" line="1321"></location>
       <source>Delete selected captures?</source>
       <translation>選択したキャプチャを削除しますか？</translation>
     </message>
@@ -1433,27 +1433,27 @@ This cannot be undone.</source>
       <translation>%1 ビューアー</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="350"></location>
+      <location filename="src/ui/AppController.cpp" line="352"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>各モニターの現在のHDR状態を確認します。</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="336"></location>
+      <location filename="src/ui/AppController.cpp" line="338"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDRは有効です</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="341"></location>
+      <location filename="src/ui/AppController.cpp" line="343"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDRは無効です</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="330"></location>
+      <location filename="src/ui/AppController.cpp" line="332"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>グラフィックスドライバーからモニターが報告されていません</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="324"></location>
+      <location filename="src/ui/AppController.cpp" line="326"></location>
       <source>Not checked yet</source>
       <translation>未確認</translation>
     </message>
@@ -2044,7 +2044,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 を共有：%2 = %3、%4 = %5。</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1256"></location>
+      <location filename="src/ui/qml/Main.qml" line="1272"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>監視するフォルダーを選択</translation>
@@ -2053,7 +2053,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="174"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="206"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="184"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="429"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="435"></location>
       <source>About</source>
       <translation>GameHQについて</translation>
     </message>
@@ -2100,6 +2100,16 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Screenshots</source>
       <translation>スクリーンショット</translation>
     </message>
+    <message id="gamehq.navigation.game.pin">
+      <location filename="src/ui/qml/components/SidebarItem.qml" line="224"></location>
+      <source>Pin game</source>
+      <translation>ゲームをピン留め</translation>
+    </message>
+    <message id="gamehq.navigation.game.unpin">
+      <location filename="src/ui/qml/components/SidebarItem.qml" line="226"></location>
+      <source>Unpin game</source>
+      <translation>ピン留めを外す</translation>
+    </message>
     <message id="gamehq.navigation.games">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="276"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="115"></location>
@@ -2107,13 +2117,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>ゲーム</translation>
     </message>
     <message id="gamehq.navigation.help">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="416"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="422"></location>
       <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
       <source>Help</source>
       <translation>ヘルプ</translation>
     </message>
     <message id="gamehq.navigation.settings">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="405"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="411"></location>
       <source>Settings</source>
       <translation>設定</translation>
     </message>
@@ -2135,17 +2145,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.navigation.support_gamehq">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="176"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="208"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="448"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="454"></location>
       <source>Support GameHQ</source>
       <translation>GameHQ を支援</translation>
     </message>
     <message id="gamehq.navigation.tools.hide">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="351"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="357"></location>
       <source>Hide tools</source>
       <translation>ツールを隠す</translation>
     </message>
     <message id="gamehq.navigation.tools.show">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="349"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="355"></location>
       <source>Show tools</source>
       <translation>ツールを表示</translation>
     </message>
@@ -2552,7 +2562,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>モニター状態を更新</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.title">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="392"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="398"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="108"></location>
       <source>Tools</source>
       <translation>ツール</translation>
@@ -3836,7 +3846,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>変更は GameHQ 全体へすぐに適用されます。</translation>
     </message>
     <message id="gamehq.settings.language.system">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="498"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="504"></location>
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="40"></location>
       <source>System language</source>
       <translation>システムの言語</translation>
@@ -5567,7 +5577,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>スクリーンショット</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="124"></location>
+      <location filename="src/ui/AppController.cpp" line="126"></location>
       <source>Release notes</source>
       <translation>リリースノート</translation>
     </message>
