@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-tr-tr; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review",
+    "actor": "codex-gpt-5-contextual-tr-tr; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review; claude-opus-5-5-hidden-controller-banner-contextual-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "Google Translate draft from product-owned English followed by complete contextual Turkish review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-30T21:00:00Z"
+    "recorded_at": "2026-09-30T23:30:00Z"
   },
   "baseline": {
     "path": "git:1d04b6a5d5b5b41279d027aff302a154d8952c64:i18n/app/gamehq_tr_TR.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_tr_TR.ts",
-    "sha256": "5f64fbe78678721a8db10957f466f758eb590e92b4c109571676e7b1dabdef61",
-    "message_count": 1078
+    "sha256": "4c3466fb5c9169fc71bf38fc3894393d68c7527c47c267abed730e675f25c483",
+    "message_count": 1084
   },
   "coverage": [
     {
@@ -3398,6 +3398,60 @@
         "src/ui/qml/components/BindingAssignmentDialog.qml:476"
       ],
       "decision": "corrected"
+    },
+    {
+      "id": "gamehq.input.hidden.filter",
+      "source_hash": "6cc011948114213ff4d6a38a88d5dafa01d08d456af12c7eac5481ea1c585e74",
+      "translation_hash": "406389e890159fc41cab9dd71d76aa221740f0e2bd987010734d56d8a99d42a2",
+      "locations": [
+        "src/input/InputEngine.cpp:459"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.input.hidden.fix_applying",
+      "source_hash": "952adecc7a4cc4d28234ce9dd09456298e86f79c2f3c7b8d91d8fbb98812d49a",
+      "translation_hash": "03561f93fee39c7aa67f9c13791476923bdcd1319c33b648fa14322933a4e31a",
+      "locations": [
+        "src/input/InputEngine.cpp:1690"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.input.hidden.fix_declined",
+      "source_hash": "d928d8b4f117dad14dacf5d4452479511f7801b2643b8aad1cefaf8398a5d68b",
+      "translation_hash": "bf165a9a1c9226a7ae5714cb008c74f93d38932575a4c94cb798f19e41dd96a5",
+      "locations": [
+        "src/input/InputEngine.cpp:1680"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.input.hidden.fix_done",
+      "source_hash": "655b909eb5a52a56855e15ed4b4cbd279808073d8efc6b6034ce37837e50664c",
+      "translation_hash": "fe0bb86ec0500a4b8a71535a8a4b057fe3e82a5497873586fc1f5defeb380c99",
+      "locations": [
+        "src/input/InputEngine.cpp:1711"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.input.hidden.fix_failed",
+      "source_hash": "7fe925e0cfe27ca65887c9e16a240a3bf00ce2467c7a7c5148b42efb074f87be",
+      "translation_hash": "86d3338700308b60d1ff88e7e03468b7f0d968325ed1303f5b7b8ff5392c6173",
+      "locations": [
+        "src/input/InputEngine.cpp:1722"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.input.hidden.hidhide",
+      "source_hash": "fc71a02610567fe81ec3aea2e391c3f6aaae3d0598edeb698ae361ffa7799efc",
+      "translation_hash": "ee580aed1ebc4d164450b449f25476c9f306376241c16f1bcb3a453d0ec37d9a",
+      "locations": [
+        "src/input/InputEngine.cpp:450"
+      ],
+      "decision": "accepted"
     },
     {
       "id": "gamehq.input.model.capture.controller",
@@ -15990,8 +16044,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_tr_TR.ts",
-      "sha256": "5f64fbe78678721a8db10957f466f758eb590e92b4c109571676e7b1dabdef61",
-      "reviewed_units": 1078
+      "sha256": "4c3466fb5c9169fc71bf38fc3894393d68c7527c47c267abed730e675f25c483",
+      "reviewed_units": 1084
     },
     {
       "surface": "installer",

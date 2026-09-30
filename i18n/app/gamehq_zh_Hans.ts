@@ -114,9 +114,9 @@
       <translation>取消</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1304"></location>
-      <location filename="src/ui/qml/Main.qml" line="1323"></location>
-      <location filename="src/ui/qml/Main.qml" line="1361"></location>
+      <location filename="src/ui/qml/Main.qml" line="1348"></location>
+      <location filename="src/ui/qml/Main.qml" line="1367"></location>
+      <location filename="src/ui/qml/Main.qml" line="1405"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
@@ -342,6 +342,7 @@
       <translation>切换游戏内叠加层</translation>
     </message>
     <message id="gamehq.action.not_now">
+      <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="108"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="182"></location>
       <source>Not now</source>
       <translation>以后再说</translation>
@@ -654,7 +655,7 @@
       <translation>所选文件夹无效。</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="370"></location>
+      <location filename="src/ui/AppController.cpp" line="374"></location>
       <source>Choose a local folder.</source>
       <translation>请选择一个本地文件夹。</translation>
     </message>
@@ -674,8 +675,8 @@
       <translation>GameHQ 无法保存所选文件夹。</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="364"></location>
-      <location filename="src/ui/AppController.cpp" line="386"></location>
+      <location filename="src/ui/AppController.cpp" line="368"></location>
+      <location filename="src/ui/AppController.cpp" line="390"></location>
       <source>The capture type is invalid.</source>
       <translation>捕获类型无效。</translation>
     </message>
@@ -832,7 +833,7 @@
       <translation>无法计算 %1 的哈希值。</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="208"></location>
+      <location filename="src/ui/AppController.cpp" line="212"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>便携配置文件只能由已安装的 GameHQ 副本导入。</translation>
     </message>
@@ -857,12 +858,12 @@
       <translation>无法删除已恢复的便携导入日志。</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="214"></location>
+      <location filename="src/ui/AppController.cpp" line="218"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>请选择包含便携版 GameHQ 的本地文件夹。</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="223"></location>
+      <location filename="src/ui/AppController.cpp" line="227"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>所选文件夹不是 GameHQ 便携包。</translation>
     </message>
@@ -892,12 +893,12 @@
       <translation>portable:/ 路径超出了所选的包根目录。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="234"></location>
+      <location filename="src/ui/AppController.cpp" line="238"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ 无法为导入识别自身进程。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="244"></location>
+      <location filename="src/ui/AppController.cpp" line="248"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ 无法启动便携导入进程。</translation>
     </message>
@@ -1332,8 +1333,8 @@
       <translation>%1 MB</translation>
     </message>
     <message id="gamehq.format.version_short">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="175"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="181"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="207"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="213"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="216"></location>
       <source>v%1</source>
       <translation>v%1</translation>
@@ -1344,19 +1345,19 @@
       <translation>添加文件夹…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1363"></location>
+      <location filename="src/ui/qml/Main.qml" line="1407"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>批量选择</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1357"></location>
+      <location filename="src/ui/qml/Main.qml" line="1401"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>分享</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1359"></location>
+      <location filename="src/ui/qml/Main.qml" line="1403"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>在文件夹中显示</translation>
@@ -1369,20 +1370,20 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1292"></location>
+      <location filename="src/ui/qml/Main.qml" line="1336"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 这将永久删除该文件。</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1302"></location>
+      <location filename="src/ui/qml/Main.qml" line="1346"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1018"></location>
       <source>Delete capture?</source>
       <translation>删除该捕获内容？</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="477"></location>
+      <location filename="src/ui/qml/Main.qml" line="492"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
@@ -1391,7 +1392,7 @@ This cannot be undone.</source>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1321"></location>
+      <location filename="src/ui/qml/Main.qml" line="1365"></location>
       <source>Delete selected captures?</source>
       <translation>删除选中的捕获内容？</translation>
     </message>
@@ -1443,27 +1444,27 @@ This cannot be undone.</source>
       <translation>%1 查看器</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="352"></location>
+      <location filename="src/ui/AppController.cpp" line="356"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>检查每个显示器的当前 HDR 状态。</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="338"></location>
+      <location filename="src/ui/AppController.cpp" line="342"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR 已启用</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="343"></location>
+      <location filename="src/ui/AppController.cpp" line="347"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR 未启用</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="332"></location>
+      <location filename="src/ui/AppController.cpp" line="336"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>图形驱动程序未报告任何显示器</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="326"></location>
+      <location filename="src/ui/AppController.cpp" line="330"></location>
       <source>Not checked yet</source>
       <translation>尚未检查</translation>
     </message>
@@ -1952,6 +1953,36 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Triple tap</source>
       <translation>三击</translation>
     </message>
+    <message id="gamehq.input.hidden.filter">
+      <location filename="src/input/InputEngine.cpp" line="459"></location>
+      <source>%1 is connected to Windows but invisible to applications — a HID filter driver is hiding it.</source>
+      <translation>%1 已连接到 Windows，但被 HID 筛选驱动程序隐藏，应用无法看到它。</translation>
+    </message>
+    <message id="gamehq.input.hidden.fix_applying">
+      <location filename="src/input/InputEngine.cpp" line="1690"></location>
+      <source>Applying the fix (administrator prompt)...</source>
+      <translation>正在应用修复（管理员提示）...</translation>
+    </message>
+    <message id="gamehq.input.hidden.fix_declined">
+      <location filename="src/input/InputEngine.cpp" line="1680"></location>
+      <source>Administrator approval was declined — the controller stays hidden. You can whitelist GameHQ manually in the HidHide Configuration Client.</source>
+      <translation>未获得管理员批准，控制器仍处于隐藏状态。请在 HidHide Configuration Client 中手动允许 GameHQ。</translation>
+    </message>
+    <message id="gamehq.input.hidden.fix_done">
+      <location filename="src/input/InputEngine.cpp" line="1711"></location>
+      <source>GameHQ is now whitelisted in HidHide. Unplug and replug the controller if it does not appear within a few seconds.</source>
+      <translation>GameHQ 现已在 HidHide 中获得允许。如果几秒内仍未出现控制器，请拔下后重新连接。</translation>
+    </message>
+    <message id="gamehq.input.hidden.fix_failed">
+      <location filename="src/input/InputEngine.cpp" line="1722"></location>
+      <source>Automatic whitelisting failed (code %1). Add GameHQ.exe on the Applications tab of the HidHide Configuration Client instead.</source>
+      <translation>自动允许失败（代码 %1）。请改为在 HidHide Configuration Client 的“Applications”选项卡中添加 GameHQ.exe。</translation>
+    </message>
+    <message id="gamehq.input.hidden.hidhide">
+      <location filename="src/input/InputEngine.cpp" line="450"></location>
+      <source>%1 is connected but hidden from applications by the HidHide driver (installed with DSX, DS4Windows, or reWASD).</source>
+      <translation>%1 已连接，但被 HidHide 驱动程序（随 DSX、DS4Windows 或 reWASD 安装）对应用隐藏。</translation>
+    </message>
     <message id="gamehq.input.model.capture.controller">
       <location filename="src/input/BindingEditorModel.cpp" line="398"></location>
       <source>Press a controller button for %1 · Slot %2 · %3</source>
@@ -2054,7 +2085,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 已共享：%2 = %3，%4 = %5。</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1272"></location>
+      <location filename="src/ui/qml/Main.qml" line="1316"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>选择要监视的文件夹</translation>
@@ -2062,50 +2093,50 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.navigation.about">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="174"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="206"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="184"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="435"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="216"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="496"></location>
       <source>About</source>
       <translation>关于</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="200"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="128"></location>
+      <location filename="src/ui/qml/Main.qml" line="205"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="160"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
       <source>All</source>
       <translation>全部</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="208"></location>
+      <location filename="src/ui/qml/Main.qml" line="213"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="39"></location>
       <source>Clips</source>
       <translation>片段</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="204"></location>
+      <location filename="src/ui/qml/Main.qml" line="209"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="35"></location>
       <source>Favorites</source>
       <translation>收藏</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="210"></location>
+      <location filename="src/ui/qml/Main.qml" line="215"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="41"></location>
       <source>Game</source>
       <translation>游戏</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="212"></location>
+      <location filename="src/ui/qml/Main.qml" line="217"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="43"></location>
       <source>Game favorites</source>
       <translation>游戏收藏</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="202"></location>
+      <location filename="src/ui/qml/Main.qml" line="207"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="33"></location>
       <source>Recent</source>
       <translation>最近</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="206"></location>
+      <location filename="src/ui/qml/Main.qml" line="211"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="37"></location>
       <source>Screenshots</source>
       <translation>截图</translation>
@@ -2121,19 +2152,20 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>取消置顶</translation>
     </message>
     <message id="gamehq.navigation.games">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="276"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="308"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="115"></location>
       <source>Games</source>
       <translation>游戏</translation>
     </message>
     <message id="gamehq.navigation.help">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="422"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="478"></location>
       <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
       <source>Help</source>
       <translation>帮助</translation>
     </message>
     <message id="gamehq.navigation.settings">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="411"></location>
+      <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="101"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="467"></location>
       <source>Settings</source>
       <translation>设置</translation>
     </message>
@@ -2155,17 +2187,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.navigation.support_gamehq">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="176"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="208"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="454"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="524"></location>
       <source>Support GameHQ</source>
       <translation>支持 GameHQ</translation>
     </message>
     <message id="gamehq.navigation.tools.hide">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="357"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="406"></location>
       <source>Hide tools</source>
       <translation>隐藏工具</translation>
     </message>
     <message id="gamehq.navigation.tools.show">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="355"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="404"></location>
       <source>Show tools</source>
       <translation>显示工具</translation>
     </message>
@@ -2411,7 +2443,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="126"></location>
+      <location filename="src/ui/AppController.cpp" line="130"></location>
       <source>Release notes</source>
       <translation>发布说明</translation>
     </message>
@@ -2577,7 +2609,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>刷新显示器状态</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.title">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="398"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="454"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="108"></location>
       <source>Tools</source>
       <translation>工具</translation>
@@ -3479,12 +3511,14 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>注意</translation>
     </message>
     <message id="gamehq.settings.input.hidden.fix">
+      <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="94"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="106"></location>
       <source>Fix automatically</source>
       <translation>自动修复</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
       <location filename="src/ui/qml/Main.qml" line="171"></location>
+      <location filename="src/ui/qml/components/ControllerWarningBanner.qml" line="69"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Controller hidden</source>
       <translation>手柄被隐藏</translation>
@@ -3861,7 +3895,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>更改会立即应用到整个 GameHQ。</translation>
     </message>
     <message id="gamehq.settings.language.system">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="504"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="579"></location>
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="40"></location>
       <source>System language</source>
       <translation>系统语言</translation>
@@ -4036,7 +4070,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.presets.action.new">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="481"></location>
       <source>New preset</source>
-      <oldsource>New</oldsource>
       <translation>新建预设</translation>
     </message>
     <message id="gamehq.settings.presets.action.rename">
@@ -4070,7 +4103,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="254"></location>
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="362"></location>
       <source>Assigned preset</source>
-      <oldsource>Mappings used by this device</oldsource>
       <translation>已分配的预设</translation>
     </message>
     <message id="gamehq.settings.presets.assignment.missing_description">
@@ -4141,7 +4173,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.presets.description">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="32"></location>
       <source>Presets are reusable mapping profiles. A device or game can be assigned to a preset.</source>
-      <oldsource>Presets are global: a game never owns mappings, it only has an assignment.</oldsource>
       <translation>预设是可重复使用的映射配置。可以为设备或游戏分配一个预设。</translation>
     </message>
     <message id="gamehq.settings.presets.duplicate.message">
@@ -4359,7 +4390,6 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.presets.select.label">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="382"></location>
       <source>Editing preset</source>
-      <oldsource>Preset</oldsource>
       <translation>正在编辑的预设</translation>
     </message>
     <message id="gamehq.settings.presets.select.managing">
@@ -5528,7 +5558,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.status.update_available">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="163"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="179"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="211"></location>
       <source>Update available</source>
       <translation>有可用更新</translation>
     </message>
