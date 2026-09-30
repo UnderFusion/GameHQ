@@ -53,6 +53,7 @@ Window {
     // deletes a capture with no menu visibly just having been opened.
     onVisibleChanged: {
         if (!overlayWindow.visible) {
+            content.keyboardDriving = false
             content.rememberSelection()
             content.menuOpen = false
             content.menuIndex = 0
@@ -66,13 +67,21 @@ Window {
         }
     }
 
-    // Tracks which input source was used last so the footer hint can show
-    // matching labels (keyboard glyphs vs DualSense button names). Flipped to
-    // true on any pad input, false on any key press — but this window is
-    // created WindowDoesNotAcceptFocus, so the pad is the only input it can
-    // really receive: it starts on the gamepad labels rather than promising a
-    // keyboard route that cannot reach it.
+    // Tracks which input source was used last so the footer, strip and
+    // full-screen viewer show matching hints (keyboard glyphs vs DualSense
+    // button names). True on pad input; false on a key press or a real mouse
+    // move. Starts on the pad labels because the pad is what opens it.
     property bool usingGamepad: true
+
+    // Keyboard input reaches QML through input.handleKeyPressed(), which
+    // emits the SAME overlay* signals as the pad (and keeps emitting them
+    // from the nav-repeat timer while a key is held). Those handlers must not
+    // flip the hints back to the pad while a key is what drives them.
+    function notePadInput() {
+        if (!content.keyboardDriving)
+            overlayWindow.usingGamepad = true
+    }
+    onActiveChanged: if (!overlayWindow.active) content.keyboardDriving = false
 
     // Row queued by the mouse delete path until the confirm dialog answers.
     // Keyed by file path, not row: the gallery follows the disk live, so rows
@@ -151,6 +160,8 @@ Window {
         property int sidebarIndex: 0
         property int menuIndex: 0
         property bool videoFocused: false   // X (Cross) enters clip-player mode in the big preview
+        // A non-repeat key is down; see overlayWindow.notePadInput().
+        property bool keyboardDriving: false
         // Playback bindings (Cross = play/pause, D-pad = seek, Share = frame
         // grab) apply to the inline clip and to a clip shown full screen.
         readonly property bool playbackActive: content.videoFocused
@@ -449,11 +460,15 @@ Window {
 
         Keys.onPressed: (event) => {
             overlayWindow.usingGamepad = false
+            if (!event.isAutoRepeat)
+                content.keyboardDriving = true
             content.revealControls()
             event.accepted = input.handleKeyPressed(event.key, event.modifiers,
                                                     event.isAutoRepeat)
         }
         Keys.onReleased: (event) => {
+            if (!event.isAutoRepeat)
+                content.keyboardDriving = false
             event.accepted = input.handleKeyReleased(event.key, event.modifiers)
         }
 
@@ -466,26 +481,26 @@ Window {
             // D-pad left/right flips captures like L1/R1 while browsing, and
             // seeks once a clip is playing (see handleSeekStep).
             function onOverlayNavigate(direction) {
-                overlayWindow.usingGamepad = true
+                overlayWindow.notePadInput()
                 content.handleSeekStep(direction)
             }
             function onOverlayNavigateVertical(direction) {
-                overlayWindow.usingGamepad = true
+                overlayWindow.notePadInput()
                 content.revealControls()
                 content.handleNavigateVertical(direction)
             }
             function onOverlayConfirm() {
-                overlayWindow.usingGamepad = true
+                overlayWindow.notePadInput()
                 content.revealControls()
                 content.handleConfirm()
             }
             function onOverlayFavorite() {
-                overlayWindow.usingGamepad = true
+                overlayWindow.notePadInput()
                 content.revealControls()
                 content.handleFavorite()
             }
             function onOverlayMenu() {
-                overlayWindow.usingGamepad = true
+                overlayWindow.notePadInput()
                 content.revealControls()
                 content.toggleMenu()
             }
@@ -494,27 +509,27 @@ Window {
             // playing. Video seeking is d-pad/analog's job (onOverlayNavigate
             // above), so the two stay fully independent.
             function onOverlayGameStep(direction) {
-                overlayWindow.usingGamepad = true
+                overlayWindow.notePadInput()
                 content.revealControls()
                 content.handleCaptureStep(direction)
             }
             function onOverlayHideRequested() {
-                overlayWindow.usingGamepad = true
+                overlayWindow.notePadInput()
                 content.revealControls()
                 content.handleBack()
             }
             function onPlaybackPlayPause() {
-                overlayWindow.usingGamepad = true
+                overlayWindow.notePadInput()
                 content.togglePlayback()
             }
             function onPlaybackSeek(direction) {
-                overlayWindow.usingGamepad = true
+                overlayWindow.notePadInput()
                 content.handleSeekStep(direction)
             }
             // Share while a clip is focused: grab the on-screen frame as a
             // screenshot instead of the global foreground screenshot.
             function onFrameGrabRequested() {
-                overlayWindow.usingGamepad = true
+                overlayWindow.notePadInput()
                 if (overlayShare.isOpen)
                     return
                 if (viewer.open)
@@ -600,6 +615,33 @@ Window {
             usingGamepad: overlayWindow.usingGamepad
             menuOpen: content.menuOpen
             videoFocused: content.videoFocused
+        }
+    }
+
+    // A real mouse move switches the hints to keyboard/mouse glyphs. Topmost
+    // and non-blocking, so every panel below still gets its own hover. The
+    // first point after the cursor enters (the overlay appearing under a
+    // resting cursor) only sets the baseline; it is not a move.
+    Item {
+        parent: uiSurface.contentItem
+        anchors.fill: parent
+        z: 1000
+        HoverHandler {
+            id: mouseActivity
+            property point _last
+            property bool _hasLast: false
+            enabled: overlayWindow.visible
+            blocking: false
+            onHoveredChanged: mouseActivity._hasLast = false
+            onPointChanged: {
+                const p = mouseActivity.point.position
+                if (mouseActivity._hasLast
+                        && Math.abs(p.x - mouseActivity._last.x)
+                           + Math.abs(p.y - mouseActivity._last.y) >= Theme.s4)
+                    overlayWindow.usingGamepad = false
+                mouseActivity._last = p
+                mouseActivity._hasLast = true
+            }
         }
     }
 
