@@ -114,10 +114,10 @@
       <translation>Abbrechen</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1156"></location>
-      <location filename="src/ui/qml/Main.qml" line="1175"></location>
-      <location filename="src/ui/qml/Main.qml" line="1213"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="679"></location>
+      <location filename="src/ui/qml/Main.qml" line="1208"></location>
+      <location filename="src/ui/qml/Main.qml" line="1227"></location>
+      <location filename="src/ui/qml/Main.qml" line="1265"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="804"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -1334,9 +1334,9 @@
       <translation>%1 MB</translation>
     </message>
     <message id="gamehq.format.version_short">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="99"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="105"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="117"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="121"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="127"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="151"></location>
       <source>v%1</source>
       <translation>v%1</translation>
     </message>
@@ -1346,19 +1346,19 @@
       <translation>Ordner hinzufügen…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1215"></location>
+      <location filename="src/ui/qml/Main.qml" line="1267"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Massenauswahl</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1209"></location>
+      <location filename="src/ui/qml/Main.qml" line="1261"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>Teilen</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1211"></location>
+      <location filename="src/ui/qml/Main.qml" line="1263"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Im Ordner anzeigen</translation>
@@ -1371,20 +1371,20 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1144"></location>
+      <location filename="src/ui/qml/Main.qml" line="1196"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 Dadurch wird die Datei dauerhaft gelöscht.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1154"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="677"></location>
+      <location filename="src/ui/qml/Main.qml" line="1206"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="802"></location>
       <source>Delete capture?</source>
       <translation>Aufnahme löschen?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="431"></location>
+      <location filename="src/ui/qml/Main.qml" line="469"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
@@ -1395,7 +1395,7 @@ Dieser Vorgang kann nicht rückgängig gemacht werden.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1173"></location>
+      <location filename="src/ui/qml/Main.qml" line="1225"></location>
       <source>Delete selected captures?</source>
       <translation>Ausgewählte Aufnahmen löschen?</translation>
     </message>
@@ -2059,7 +2059,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>%1 wird gemeinsam verwendet: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1124"></location>
+      <location filename="src/ui/qml/Main.qml" line="1176"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Zu überwachenden Ordner auswählen</translation>
@@ -2067,75 +2067,90 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.navigation.about">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="174"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="206"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="108"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="284"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="130"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="312"></location>
       <source>About</source>
       <translation>Info</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="189"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="57"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="11"></location>
+      <location filename="src/ui/qml/Main.qml" line="193"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="74"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="19"></location>
       <source>All</source>
       <translation>Alle</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="197"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="19"></location>
+      <location filename="src/ui/qml/Main.qml" line="201"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="27"></location>
       <source>Clips</source>
       <translation>Clips</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="193"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="15"></location>
+      <location filename="src/ui/qml/Main.qml" line="197"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
       <source>Favorites</source>
       <translation>Favoriten</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="199"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="21"></location>
+      <location filename="src/ui/qml/Main.qml" line="203"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="29"></location>
       <source>Game</source>
       <translation>Spiel</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="201"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
+      <location filename="src/ui/qml/Main.qml" line="205"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
       <source>Game favorites</source>
       <translation>Spielfavoriten</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="191"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="13"></location>
+      <location filename="src/ui/qml/Main.qml" line="195"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="21"></location>
       <source>Recent</source>
       <translation>Neueste</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="195"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="17"></location>
+      <location filename="src/ui/qml/Main.qml" line="199"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="25"></location>
       <source>Screenshots</source>
       <translation>Screenshots</translation>
     </message>
     <message id="gamehq.navigation.games">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="198"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="54"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="222"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="68"></location>
       <source>Games</source>
       <translation>Spiele</translation>
     </message>
     <message id="gamehq.navigation.help">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="273"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="300"></location>
       <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
       <source>Help</source>
       <translation>Hilfe</translation>
     </message>
     <message id="gamehq.navigation.settings">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="263"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="289"></location>
       <source>Settings</source>
       <translation>Einstellungen</translation>
+    </message>
+    <message id="gamehq.navigation.sidebar_mode.auto">
+      <location filename="src/ui/qml/components/SidebarModeButton.qml" line="22"></location>
+      <source>Sidebar: Auto</source>
+      <translation>Seitenleiste: Automatisch</translation>
+    </message>
+    <message id="gamehq.navigation.sidebar_mode.collapsed">
+      <location filename="src/ui/qml/components/SidebarModeButton.qml" line="26"></location>
+      <source>Sidebar: Collapsed</source>
+      <translation>Seitenleiste: Eingeklappt</translation>
+    </message>
+    <message id="gamehq.navigation.sidebar_mode.expanded">
+      <location filename="src/ui/qml/components/SidebarModeButton.qml" line="24"></location>
+      <source>Sidebar: Expanded</source>
+      <translation>Seitenleiste: Ausgeklappt</translation>
     </message>
     <message id="gamehq.navigation.support_gamehq">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="176"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="208"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="300"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="329"></location>
       <source>Support GameHQ</source>
       <translation>GameHQ unterstützen</translation>
     </message>
@@ -2255,7 +2270,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Aufnahmeaktionen</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="136"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="147"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>Das Spiel ist weiterhin fokussiert und kann auf Controller-Eingaben reagieren</translation>
     </message>
@@ -2466,7 +2481,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Monitorstatus aktualisieren</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.title">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="250"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="276"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="108"></location>
       <source>Tools</source>
       <translation>Werkzeuge</translation>
@@ -3343,7 +3358,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Automatisch beheben</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
-      <location filename="src/ui/qml/Main.qml" line="160"></location>
+      <location filename="src/ui/qml/Main.qml" line="164"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Controller hidden</source>
       <translation>Controller ausgeblendet</translation>
@@ -3720,7 +3735,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
       <translation>Änderungen gelten sofort im gesamten GameHQ.</translation>
     </message>
     <message id="gamehq.settings.language.system">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="326"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="370"></location>
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="36"></location>
       <source>System language</source>
       <translation>Systemsprache</translation>
@@ -5389,7 +5404,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     </message>
     <message id="gamehq.update.status.update_available">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="163"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="103"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="125"></location>
       <source>Update available</source>
       <translation>Update verfügbar</translation>
     </message>

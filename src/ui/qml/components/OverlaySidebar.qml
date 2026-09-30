@@ -6,6 +6,14 @@ Rectangle {
 
     property var categories: []
     property int sidebarIndex: 0
+    // Presentation: `mode` labels the toggle, `expanded` is the effective state
+    // OverlayWindow resolves, `modeFocused` puts the pad cursor on the toggle.
+    property string mode: "auto"
+    property bool expanded: true
+    property bool modeFocused: false
+    // Labels follow the animated width (see DesktopSidebar.compact).
+    readonly property bool compact: root.width < Theme.overlaySidebarWidth * 0.75
+    readonly property alias pointerInside: sidebarHover.hovered
     readonly property var categoryLabels: ({
         //% "All"
         "all": qsTrId("gamehq.navigation.category.all"),
@@ -24,18 +32,22 @@ Rectangle {
     })
 
     signal entrySelected(int index)
+    signal modeCycleRequested()
 
-    width: 260
+    width: root.expanded ? Theme.overlaySidebarWidth : Theme.sidebarRailWidth
+    Behavior on width { NumberAnimation { duration: Theme.durNormal; easing.type: Easing.OutCubic } }
+    clip: true
     radius: Theme.radiusL
     color: Theme.panelTint
     border.width: 1
     border.color: Theme.stroke
 
     MouseArea { anchors.fill: parent }
+    HoverHandler { id: sidebarHover }
 
     Column {
         anchors.fill: parent
-        anchors.margins: Theme.s12
+        anchors.margins: root.compact ? Theme.s8 : Theme.s12
         spacing: Theme.s4
 
         Repeater {
@@ -45,11 +57,13 @@ Rectangle {
                 label: root.categoryLabels[modelData.key] || modelData.label
                 glyph: modelData.glyph
                 active: root.sidebarIndex === index
+                compact: root.compact
                 onClicked: root.entrySelected(index)
             }
         }
 
         Text {
+            visible: !root.compact
             //% "Games"
             text: qsTrId("gamehq.navigation.games").toUpperCase()
             color: Theme.textFaint
@@ -67,12 +81,32 @@ Rectangle {
                 label: modelData.name
                 iconSource: modelData.iconPath ? ("file:///" + modelData.iconPath.replace(/\\/g, "/")) : ""
                 active: root.sidebarIndex === (root.categories.length + index)
+                compact: root.compact
                 onClicked: root.entrySelected(root.categories.length + index)
             }
         }
     }
 
+    // Mode toggle directly above the brand; in the rail it is the only
+    // bottom element left.
+    SidebarModeButton {
+        id: modeButton
+        objectName: "overlaySidebarModeButton"
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: brandBlock.visible ? brandBlock.top : parent.bottom
+        anchors.leftMargin: root.compact ? Theme.s8 : Theme.s12
+        anchors.rightMargin: root.compact ? Theme.s8 : Theme.s12
+        anchors.bottomMargin: brandBlock.visible ? Theme.s16 : Theme.s8
+        mode: root.mode
+        compact: root.compact
+        padHovered: root.modeFocused
+        onClicked: root.modeCycleRequested()
+    }
+
     Item {
+        id: brandBlock
+        visible: !root.compact
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom

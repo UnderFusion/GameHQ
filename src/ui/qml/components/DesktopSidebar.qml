@@ -15,12 +15,23 @@ Rectangle {
     property string availableVersion: ""
     property bool sidebarFocused: false
     property int sidebarHoverIndex: 0
+    // Presentation: the persisted mode drives the toggle label; `expanded` is
+    // the effective state Main resolves from the mode, focus and hover.
+    property string mode: "auto"
+    property bool expanded: true
+    // Flat pad index of the mode toggle (the last controller row).
+    readonly property int modeRowIndex: root.categories.length + app.games.length + 3
+    // Labels follow the animated width, so they appear once there is room
+    // for them and vanish before the rail clips them.
+    readonly property bool compact: root.width < Theme.sidebarWidth * 0.75
+    readonly property alias pointerInside: sidebarHover.hovered
     property var externalUrlOpener: function(url) { return Qt.openUrlExternally(url) }
 
     signal settingsRequested()
     signal helpRequested()
     signal aboutRequested()
     signal pageClosed()
+    signal modeCycleRequested()
 
     // The games list is the sidebar's only clipped region: keep the pad
     // cursor visible while it walks rows that sit outside the viewport.
@@ -30,21 +41,27 @@ Rectangle {
             gamesList.positionViewAtIndex(gameIndex, ListView.Contain)
     }
 
-    Layout.preferredWidth: 220
+    Layout.preferredWidth: root.expanded ? Theme.sidebarWidth : Theme.sidebarRailWidth
     Layout.fillHeight: true
+    Behavior on Layout.preferredWidth { NumberAnimation { duration: Theme.durNormal; easing.type: Easing.OutCubic } }
+    clip: true
     radius: Theme.radiusL
     color: Theme.surface
     border.width: 1
     border.color: Theme.stroke
 
+    HoverHandler { id: sidebarHover }
+
     ColumnLayout {
         anchors.fill: parent
-        anchors.margins: Theme.s12
+        anchors.margins: root.compact ? Theme.s8 : Theme.s12
         spacing: Theme.s4 / 2
 
         RowLayout {
             Layout.fillWidth: true
-            Layout.margins: Theme.s8
+            Layout.margins: root.compact ? 0 : Theme.s8
+            Layout.topMargin: Theme.s8
+            Layout.bottomMargin: Theme.s8
             spacing: Theme.s8
 
             RowLayout {
@@ -58,6 +75,9 @@ Rectangle {
 
                 Image {
                     source: "qrc:/icons/gamehq.svg"
+                    Layout.alignment: root.compact ? Qt.AlignHCenter : Qt.AlignLeft
+                    Layout.fillWidth: root.compact
+                    fillMode: Image.PreserveAspectFit
                     Layout.preferredWidth: Theme.fontTitle
                     Layout.preferredHeight: Theme.fontTitle
                     sourceSize.width: Theme.fontTitle
@@ -69,6 +89,7 @@ Rectangle {
                     // this header row's minimum width exceed the column and pushed
                     // every fillWidth row past the right padding.
                     Layout.fillWidth: true
+                    visible: !root.compact
                     text: Brand.name
                     elide: Text.ElideRight
                     color: Theme.text
@@ -95,6 +116,7 @@ Rectangle {
             Rectangle {
                 id: versionPill
                 objectName: "sidebarVersionPill"
+                visible: !root.compact
                 //% "v%1"
                 readonly property string versionLabel: qsTrId("gamehq.format.version_short").arg(app.version)
                 // Reuse the reviewed update-status string shipped by every locale.
@@ -175,6 +197,7 @@ Rectangle {
                                 && app.gameId === app.currentGameId && app.category === "favorites")
                             || (modelData.key !== "game" && app.category === modelData.key && app.gameId < 0))
                 sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === index
+                compact: root.compact
                 onClicked: {
                     root.pageClosed()
                     const f = SidebarCategories.resolveFilter(modelData.key, app.currentGameId)
@@ -194,6 +217,7 @@ Rectangle {
         }
 
         Text {
+            visible: !root.compact
             //% "Games"
             text: qsTrId("gamehq.navigation.games").toUpperCase()
             color: Theme.textFaint
@@ -227,6 +251,7 @@ Rectangle {
                 active: !root.settingsOpen && !root.helpOpen && app.gameId === modelData.id
                         && !(app.currentGameAvailable && app.currentGameId === modelData.id)
                 sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.categories.length + index
+                compact: root.compact
                 onClicked: {
                     root.pageClosed()
                     app.setGame(modelData.id)
@@ -245,6 +270,7 @@ Rectangle {
         }
 
         Text {
+            visible: !root.compact
             // Reuse the reviewed Tools translation already shipped by every locale.
             //% "Tools"
             text: qsTrId("gamehq.settings.advanced.diagnostics.title").toUpperCase()
@@ -264,6 +290,7 @@ Rectangle {
             glyph: "\u2699"
             active: root.settingsOpen
             sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.categories.length + app.games.length
+            compact: root.compact
             onClicked: root.settingsRequested()
         }
 
@@ -274,6 +301,7 @@ Rectangle {
             glyph: "?"
             active: root.helpOpen
             sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.categories.length + app.games.length + 1
+            compact: root.compact
             onClicked: root.helpRequested()
         }
 
@@ -287,6 +315,7 @@ Rectangle {
             active: false
             sidebarHovered: root.sidebarFocused
                             && root.sidebarHoverIndex === root.categories.length + app.games.length + 2
+            compact: root.compact
             onClicked: root.aboutRequested()
         }
 
@@ -305,6 +334,7 @@ Rectangle {
             glyphColor: Theme.danger
             labelColor: Theme.danger
             active: false
+            compact: root.compact
             Accessible.name: localizedLabel
             ToolTip.text: localizedLabel
             ToolTip.visible: supportButton.hovered
@@ -312,8 +342,22 @@ Rectangle {
             onClicked: root.externalUrlOpener(Brand.supportUrl)
         }
 
+        SidebarModeButton {
+            id: sidebarModeButton
+            objectName: "sidebarModeButton"
+            Layout.fillWidth: true
+            Layout.topMargin: Theme.s8
+            mode: root.mode
+            compact: root.compact
+            padHovered: root.sidebarFocused && root.sidebarHoverIndex === root.modeRowIndex
+            onClicked: root.modeCycleRequested()
+        }
+
         SettingsCombo {
             id: sidebarLanguageCombo
+            // Hidden (and so non-interactive) in the rail; only the mode
+            // toggle stays reachable there.
+            visible: !root.compact
             objectName: "sidebarLanguageSelector"
             Layout.fillWidth: true
             Layout.leftMargin: Theme.s4

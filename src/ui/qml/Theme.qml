@@ -232,6 +232,15 @@ QtObject {
     readonly property int s32: 32
     readonly property int s48: 48
 
+    // Left sidebars: full width per surface, the shared compact rail, how long
+    // an Auto overlay sidebar stays open after the last Up/Down, and the grace
+    // before an Auto sidebar closes once the mouse leaves it.
+    readonly property int sidebarWidth: 220
+    readonly property int overlaySidebarWidth: 260
+    readonly property int sidebarRailWidth: 56
+    readonly property int sidebarAutoCollapseMs: 1800
+    readonly property int sidebarHoverGraceMs: 350
+
     // Modal dialogs
     readonly property int dialogWidth: 440
 
