@@ -9,9 +9,11 @@ Item {
     required property real minimumContentWidth
     required property real minimumContentHeight
     property int requestedPercent: 100
-    // Interface-size presets shared with the settings combos and the overlay
-    // options panel; anything else falls back to 100%.
-    readonly property var presets: [75, 90, 100, 125, 150, 175, 200]
+    // Accepted interface-size presets; anything else falls back to 100%. The
+    // overlay adds its smaller 75% and 90% steps (overlayPresets).
+    readonly property var standardPresets: [100, 125, 150, 175, 200]
+    readonly property var overlayPresets: [75, 90, 100, 125, 150, 175, 200]
+    property var presets: standardPresets
     readonly property real effectiveScale: Math.max(0.1, Math.min(
         requestedPercent / 100, width / minimumContentWidth, height / minimumContentHeight))
     default property alias contentData: viewport.data
@@ -27,6 +29,7 @@ Item {
     }
     Component.onCompleted: refresh()
     onConfigKeyChanged: if (settings) refresh()
+    onPresetsChanged: if (settings) refresh()
 
     readonly property Connections configWatch: Connections {
         target: root.settings

@@ -117,7 +117,7 @@
       <location filename="src/ui/qml/Main.qml" line="1209"></location>
       <location filename="src/ui/qml/Main.qml" line="1228"></location>
       <location filename="src/ui/qml/Main.qml" line="1266"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1016"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1015"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -1377,7 +1377,7 @@ Bu işlem dosyayı kalıcı olarak siler.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1207"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1014"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1013"></location>
       <source>Delete capture?</source>
       <translation>Çekim silinsin mi?</translation>
     </message>
@@ -2265,7 +2265,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Çekim eylemleri</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="273"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="272"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>Odak hâlâ oyunda; oyun kumanda girişine tepki verebilir</translation>
     </message>
@@ -2376,7 +2376,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Oyun içi arayüz seçenekleri</translation>
     </message>
     <message id="gamehq.overlay.window_title">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="47"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="48"></location>
       <source>%1 Overlay</source>
       <translation>%1 Oyun içi arayüz</translation>
     </message>
@@ -3141,133 +3141,133 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Bildirimler</translation>
     </message>
     <message id="gamehq.settings.general.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="14"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="18"></location>
       <source>Appearance, startup, and window behavior.</source>
       <translation>Görünüm, başlangıç ve pencere davranışı.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.close_to_tray.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="162"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="166"></location>
       <source>Keep capture and replay services running; when disabled, Close exits %1.</source>
       <translation>Çekim ve anında tekrar hizmetleri çalışmayı sürdürür; bu seçenek kapalıysa Kapat eylemi %1 uygulamasından çıkar.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.close_to_tray.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="160"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="164"></location>
       <source>Close to tray</source>
       <translation>Bildirim alanına kapat</translation>
     </message>
     <message id="gamehq.settings.general.desktop.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="150"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="154"></location>
       <source>Choose what happens when the main window is minimized or closed.</source>
       <translation>Ana pencere küçültüldüğünde veya kapatıldığında ne olacağını seçin.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="146"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="150"></location>
       <source>Desktop</source>
       <translation>Masaüstü</translation>
     </message>
     <message id="gamehq.settings.general.desktop.minimize_to_tray.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="155"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="159"></location>
       <source>Minimizing the window sends it straight to the tray instead of the taskbar.</source>
       <translation>Pencereyi küçültmek, pencereyi görev çubuğu yerine doğrudan bildirim alanına gönderir.</translation>
     </message>
     <message id="gamehq.settings.general.desktop.minimize_to_tray.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="153"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="157"></location>
       <source>Minimize to tray</source>
       <translation>Bildirim alanına küçült</translation>
     </message>
     <message id="gamehq.settings.general.desktop.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="148"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="152"></location>
       <source>Window and tray behavior</source>
       <translation>Pencere ve bildirim alanı davranışı</translation>
     </message>
     <message id="gamehq.settings.general.interface_scale.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="86"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="90"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="102"></location>
       <source>Enlarge text, icons, and controls. Applies immediately; reduced automatically when space is limited.</source>
       <translation>Metinleri, simgeleri ve denetimleri büyütür. Hemen uygulanır; alan sınırlıysa boyut otomatik olarak küçültülür.</translation>
     </message>
     <message id="gamehq.settings.general.main_scale.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="84"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="88"></location>
       <source>Main interface size</source>
       <translation>Ana arayüz boyutu</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="110"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="114"></location>
       <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
       <translation>Oyun içi arayüzün arkasındaki oyunu ne kadar karartacağını belirler. 100% temanın kendi karartma düzeyidir; daha düşük değerler oyunu daha görünür tutar.</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="108"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="112"></location>
       <source>Overlay dimming</source>
       <translation>Oyun içi arayüz karartması</translation>
     </message>
     <message id="gamehq.settings.general.overlay_scale.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="96"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="100"></location>
       <source>Overlay interface size</source>
       <translation>Oyun içi arayüz boyutu</translation>
     </message>
     <message id="gamehq.settings.general.personalization.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="57"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="61"></location>
       <source>Choose the visual style and in-game overlay strength.</source>
       <translation>Görsel stili ve oyun içi arayüzün karartma düzeyini seçin.</translation>
     </message>
     <message id="gamehq.settings.general.personalization.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="53"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="57"></location>
       <source>Personalization</source>
       <translation>Kişiselleştirme</translation>
     </message>
     <message id="gamehq.settings.general.personalization.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="55"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="59"></location>
       <source>Look and feel</source>
       <translation>Görünüm ve kullanım</translation>
     </message>
     <message id="gamehq.settings.general.startup.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="127"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="131"></location>
       <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
       <translation>GameHQ'nun Windows'ta oturum açıldığında başlatılıp bildirim alanında küçültülmüş olarak açılıp açılmayacağını seçin.</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="123"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="127"></location>
       <source>Startup</source>
       <translation>Başlangıç</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="139"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="143"></location>
       <source>Launch directly in the system tray without opening the main window.</source>
       <translation>Ana pencereyi açmadan doğrudan bildirim alanında başlatın.</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="137"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="141"></location>
       <source>Launch minimized</source>
       <translation>Küçültülmüş başlat</translation>
     </message>
     <message id="gamehq.settings.general.startup.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="125"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="129"></location>
       <source>How %1 starts</source>
       <translation>%1 nasıl başlar?</translation>
     </message>
     <message id="gamehq.settings.general.startup.windows.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="132"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="136"></location>
       <source>Register %1 for the current Windows user; no administrator access is required.</source>
       <translation>Geçerli Windows kullanıcısı için başlangıç kaydı oluşturur: %1. Yönetici erişimi gerekmez.</translation>
     </message>
     <message id="gamehq.settings.general.startup.windows.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="130"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="134"></location>
       <source>Start with Windows</source>
       <translation>Windows ile başlat</translation>
     </message>
     <message id="gamehq.settings.general.theme.fallback">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="72"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="76"></location>
       <source>Choose how %1 looks.</source>
       <translation>Uygulamanın görünümünü seçin: %1.</translation>
     </message>
     <message id="gamehq.settings.general.theme.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="61"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="65"></location>
       <source>Theme</source>
       <translation>Tema</translation>
     </message>
     <message id="gamehq.settings.general.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="12"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="16"></location>
       <source>General</source>
       <translation>Genel</translation>
     </message>
@@ -3786,33 +3786,33 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Test et ve geri yükle</translation>
     </message>
     <message id="gamehq.settings.language.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="22"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="26"></location>
       <source>Choose the language GameHQ uses.</source>
       <translation>GameHQ tarafından kullanılan dili seçin.</translation>
     </message>
     <message id="gamehq.settings.language.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="18"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="22"></location>
       <source>Language</source>
       <translation>Dil</translation>
     </message>
     <message id="gamehq.settings.language.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="26"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="30"></location>
       <source>Display language</source>
       <translation>Ekran dili</translation>
     </message>
     <message id="gamehq.settings.language.row_description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="28"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="32"></location>
       <source>Changes apply immediately throughout GameHQ.</source>
       <translation>Değişiklikler GameHQ genelinde hemen uygulanır.</translation>
     </message>
     <message id="gamehq.settings.language.system">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="370"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="36"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="376"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="40"></location>
       <source>System language</source>
       <translation>Sistem dili</translation>
     </message>
     <message id="gamehq.settings.language.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="20"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="24"></location>
       <source>Interface language</source>
       <translation>Arayüz dili</translation>
     </message>

@@ -88,7 +88,7 @@ TestCase {
         overlay.surface.configKey = "theme.overlay_scale"
         tryCompare(main.surface, "width", 3840)
         tryCompare(overlay.surface, "width", 3840)
-        for (const percent of [75, 90, 100, 125, 150, 175, 200]) {
+        for (const percent of [100, 125, 150, 175, 200]) {
             mockSettings.setConfig("theme.main_scale", percent)
             compare(main.surface.effectiveScale, percent / 100)
             compare(main.surface.contentItem.width, 3840 / (percent / 100))
@@ -98,6 +98,16 @@ TestCase {
         mockSettings.setConfig("theme.overlay_scale", 150)
         compare(main.surface.effectiveScale, 2)
         compare(overlay.surface.effectiveScale, 1.5)
+        // 75% and 90% are overlay-only presets.
+        mockSettings.setConfig("theme.main_scale", 75)
+        compare(main.surface.requestedPercent, 100)
+        overlay.surface.presets = overlay.surface.overlayPresets
+        for (const small of [75, 90]) {
+            mockSettings.setConfig("theme.overlay_scale", small)
+            compare(overlay.surface.effectiveScale, small / 100)
+            compare(overlay.surface.contentItem.width, 3840 / (small / 100))
+        }
+        mockSettings.setConfig("theme.main_scale", 200)
         mockSettings.values = ({})
         mockSettings.configGroupReset("theme")
         compare(main.surface.effectiveScale, 1)

@@ -4,7 +4,11 @@ import "../components"
 
 SettingsPage {
     id: generalPage
-    readonly property var scaleOptions: [75, 90, 100, 125, 150, 175, 200].map(function(value) {
+    // The overlay also offers 75% and 90% to leave more room for the preview.
+    readonly property var scaleOptions: [100, 125, 150, 175, 200].map(function(value) {
+        return { label: value + "%", value: value }
+    })
+    readonly property var overlayScaleOptions: [75, 90, 100, 125, 150, 175, 200].map(function(value) {
         return { label: value + "%", value: value }
     })
 
@@ -100,7 +104,7 @@ SettingsPage {
                 objectName: "overlayInterfaceScale"
                 configKey: "theme.overlay_scale"
                 defaultValue: 100
-                options: generalPage.scaleOptions
+                options: generalPage.overlayScaleOptions
             }
         }
         SettingsRow {

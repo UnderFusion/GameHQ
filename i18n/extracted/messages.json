@@ -416,7 +416,7 @@
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 1016
+          "line": 1015
         },
         {
           "file": "src/ui/qml/components/ConfirmDialog.qml",
@@ -4865,7 +4865,7 @@
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 1014
+          "line": 1013
         }
       ],
       "plural": false,
@@ -7923,7 +7923,7 @@
       "locations": [
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 273
+          "line": 272
         }
       ],
       "plural": false,
@@ -8303,7 +8303,7 @@
       "locations": [
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 47
+          "line": 48
         }
       ],
       "plural": false,
@@ -10937,7 +10937,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 14
+          "line": 18
         }
       ],
       "plural": false,
@@ -10954,7 +10954,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 162
+          "line": 166
         }
       ],
       "plural": false,
@@ -10973,7 +10973,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 160
+          "line": 164
         }
       ],
       "plural": false,
@@ -10990,7 +10990,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 150
+          "line": 154
         }
       ],
       "plural": false,
@@ -11007,7 +11007,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 146
+          "line": 150
         }
       ],
       "plural": false,
@@ -11024,7 +11024,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 155
+          "line": 159
         }
       ],
       "plural": false,
@@ -11041,7 +11041,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 153
+          "line": 157
         }
       ],
       "plural": false,
@@ -11058,7 +11058,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 148
+          "line": 152
         }
       ],
       "plural": false,
@@ -11075,11 +11075,11 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 86
+          "line": 90
         },
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 98
+          "line": 102
         }
       ],
       "plural": false,
@@ -11096,7 +11096,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 84
+          "line": 88
         }
       ],
       "plural": false,
@@ -11113,7 +11113,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 110
+          "line": 114
         }
       ],
       "plural": false,
@@ -11130,7 +11130,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 108
+          "line": 112
         }
       ],
       "plural": false,
@@ -11147,7 +11147,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 96
+          "line": 100
         }
       ],
       "plural": false,
@@ -11164,7 +11164,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 57
+          "line": 61
         }
       ],
       "plural": false,
@@ -11181,7 +11181,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 53
+          "line": 57
         }
       ],
       "plural": false,
@@ -11198,7 +11198,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 55
+          "line": 59
         }
       ],
       "plural": false,
@@ -11215,7 +11215,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 127
+          "line": 131
         }
       ],
       "plural": false,
@@ -11234,7 +11234,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 123
+          "line": 127
         }
       ],
       "plural": false,
@@ -11251,7 +11251,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 139
+          "line": 143
         }
       ],
       "plural": false,
@@ -11268,7 +11268,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 137
+          "line": 141
         }
       ],
       "plural": false,
@@ -11285,7 +11285,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 125
+          "line": 129
         }
       ],
       "plural": false,
@@ -11304,7 +11304,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 132
+          "line": 136
         }
       ],
       "plural": false,
@@ -11323,7 +11323,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 130
+          "line": 134
         }
       ],
       "plural": false,
@@ -11340,7 +11340,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 72
+          "line": 76
         }
       ],
       "plural": false,
@@ -11359,7 +11359,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 61
+          "line": 65
         }
       ],
       "plural": false,
@@ -11376,7 +11376,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 12
+          "line": 16
         }
       ],
       "plural": false,
@@ -13167,7 +13167,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 22
+          "line": 26
         }
       ],
       "plural": false,
@@ -13186,7 +13186,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 18
+          "line": 22
         }
       ],
       "plural": false,
@@ -13203,7 +13203,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 26
+          "line": 30
         }
       ],
       "plural": false,
@@ -13220,7 +13220,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 28
+          "line": 32
         }
       ],
       "plural": false,
@@ -13239,11 +13239,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 370
+          "line": 376
         },
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 36
+          "line": 40
         }
       ],
       "plural": false,
@@ -13260,7 +13260,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
-          "line": 20
+          "line": 24
         }
       ],
       "plural": false,
