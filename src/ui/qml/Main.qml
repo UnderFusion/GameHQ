@@ -238,12 +238,13 @@ ApplicationWindow {
     //   catCount+gameCount+3                             → Sidebar mode toggle
     property int sidebarHoverIndex: 0
 
-    // Sidebar presentation (ui.main_sidebar_mode): auto | expanded | collapsed.
+    // Sidebar presentation (ui.main_sidebar_mode): expanded (default) | auto |
+    // collapsed.
     // Auto shows the icon rail while the grid is in use and opens the full
     // sidebar while the controller cursor is in it, while the mouse is over it
     // and on pages without a gallery (Settings, Help, an empty result). Only
     // the chosen mode is persisted, never Auto's momentary state.
-    property string sidebarMode: window.normalizedSidebarMode(app.config("ui.main_sidebar_mode", "auto"))
+    property string sidebarMode: window.normalizedSidebarMode(app.config("ui.main_sidebar_mode", "expanded"))
     property bool sidebarPointerHold: false
     readonly property bool sidebarExpanded: window.sidebarMode === "expanded"
         || (window.sidebarMode === "auto"
@@ -251,7 +252,7 @@ ApplicationWindow {
                 || window.settingsOpen || window.helpOpen || grid.count === 0))
 
     function normalizedSidebarMode(value) {
-        return value === "expanded" || value === "collapsed" ? value : "auto"
+        return value === "auto" || value === "collapsed" ? value : "expanded"
     }
 
     function cycleSidebarMode() {
@@ -262,7 +263,7 @@ ApplicationWindow {
     }
 
     function nextSidebarMode(current) {
-        return current === "auto" ? "expanded" : current === "expanded" ? "collapsed" : "auto"
+        return current === "expanded" ? "auto" : current === "auto" ? "collapsed" : "expanded"
     }
 
     Timer {

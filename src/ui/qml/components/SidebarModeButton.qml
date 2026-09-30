@@ -11,7 +11,7 @@ import GameHQ
 Rectangle {
     id: root
 
-    property string mode: "auto"
+    property string mode: "expanded"
     property bool compact: false
     // Controller/keyboard cursor, mirroring SidebarItem.sidebarHovered.
     property bool padHovered: false
@@ -29,9 +29,9 @@ Rectangle {
                                   : root.autoLabel
 
     function nextMode(current) {
-        return current === "auto" ? "expanded"
-             : current === "expanded" ? "collapsed"
-             : "auto"
+        return current === "expanded" ? "auto"
+             : current === "auto" ? "collapsed"
+             : "expanded"
     }
 
     implicitWidth: 200

@@ -172,15 +172,15 @@ Window {
         property var categories: SidebarCategories.categories(app.currentGameAvailable)
         function totalSidebarCount() { return content.categories.length + app.games.length }
 
-        // Sidebar presentation (ui.overlay_sidebar_mode): auto | expanded |
-        // collapsed. Auto opens on the icon rail, widens while Up/Down walks
+        // Sidebar presentation (ui.overlay_sidebar_mode): expanded (default) |
+        // auto | collapsed. Auto opens on the icon rail, widens while Up/Down walks
         // the sidebar or the mouse is over it, and narrows again after a short
         // pause or as soon as the captures are used. The mode toggle sits one
         // step past the last game: moving onto it only highlights it (the
         // filter stays put) and Cross/Enter cycles the mode.
         property string sidebarMode: {
-            const v = app.config("ui.overlay_sidebar_mode", "auto")
-            return v === "expanded" || v === "collapsed" ? v : "auto"
+            const v = app.config("ui.overlay_sidebar_mode", "expanded")
+            return v === "auto" || v === "collapsed" ? v : "expanded"
         }
         property bool sidebarNavActive: false
         property bool sidebarPointerHold: false
@@ -190,9 +190,9 @@ Window {
                 && (content.sidebarNavActive || content.sidebarPointerHold))
 
         function cycleSidebarMode() {
-            const next = content.sidebarMode === "auto" ? "expanded"
-                       : content.sidebarMode === "expanded" ? "collapsed"
-                       : "auto"
+            const next = content.sidebarMode === "expanded" ? "auto"
+                       : content.sidebarMode === "auto" ? "collapsed"
+                       : "expanded"
             content.sidebarMode = next
             app.setConfig("ui.overlay_sidebar_mode", next)
             sounds.play("confirm")
