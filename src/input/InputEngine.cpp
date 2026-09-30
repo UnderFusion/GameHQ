@@ -380,7 +380,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
     connect(m_sonyPad, &DualSenseDevice::deviceTopologyChanged, this, [this] {
         qInfo() << "Input: device topology changed — rescanning fallback backends";
         m_xinputPad->rescan();
-        m_winmmPad->rescanAfterTopologyChange();
+        m_winmmPad->rescan();
         updateXInputIdentity();
     });
 
