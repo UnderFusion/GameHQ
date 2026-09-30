@@ -17,7 +17,7 @@ Rectangle {
     property int sidebarHoverIndex: 0
     // Presentation: the persisted mode drives the toggle label; `expanded` is
     // the effective state Main resolves from the mode, focus and hover.
-    property string mode: "auto"
+    property string mode: "expanded"
     property bool expanded: true
     // Flat pad index of the mode toggle (the last controller row).
     readonly property int modeRowIndex: root.categories.length + app.games.length + 3

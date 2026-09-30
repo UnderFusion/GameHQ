@@ -8,7 +8,7 @@ Rectangle {
     property int sidebarIndex: 0
     // Presentation: `mode` labels the toggle, `expanded` is the effective state
     // OverlayWindow resolves, `modeFocused` puts the pad cursor on the toggle.
-    property string mode: "auto"
+    property string mode: "expanded"
     property bool expanded: true
     property bool modeFocused: false
     // Labels follow the animated width (see DesktopSidebar.compact).
