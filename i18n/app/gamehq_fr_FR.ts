@@ -112,7 +112,7 @@
       <location filename="src/ui/qml/Main.qml" line="1209"></location>
       <location filename="src/ui/qml/Main.qml" line="1228"></location>
       <location filename="src/ui/qml/Main.qml" line="1266"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="995"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1016"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -1369,7 +1369,7 @@ Cette action supprime définitivement le fichier.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1207"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="993"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1014"></location>
       <source>Delete capture?</source>
       <translation>Supprimer la capture ?</translation>
     </message>
@@ -2260,7 +2260,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Actions de capture</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="259"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="273"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>Le jeu a toujours le focus et peut réagir aux entrées de la manette</translation>
     </message>
@@ -2310,7 +2310,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Aide des commandes</translation>
     </message>
     <message id="gamehq.overlay.layout.interface_size">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="35"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="37"></location>
       <source>Interface size</source>
       <translation>Taille de l’interface</translation>
     </message>
@@ -2335,32 +2335,37 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
       <translation>Marge supérieure</translation>
     </message>
     <message id="gamehq.overlay.layout.off">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="50"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="52"></location>
       <source>Off</source>
       <translation>Désactivé</translation>
     </message>
     <message id="gamehq.overlay.layout.on">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="48"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="50"></location>
       <source>On</source>
       <translation>Activé</translation>
     </message>
     <message id="gamehq.overlay.layout.px">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="52"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="54"></location>
       <source>%1 px</source>
       <translation>%1 px</translation>
     </message>
     <message id="gamehq.overlay.layout.reset">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="39"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="41"></location>
       <source>Reset overlay layout</source>
       <translation>Réinitialiser la disposition de la superposition</translation>
     </message>
+    <message id="gamehq.overlay.layout.spacing">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="35"></location>
+      <source>Spacing between panels</source>
+      <translation>Espacement entre les panneaux</translation>
+    </message>
     <message id="gamehq.overlay.layout.thumbnail_size">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="37"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="39"></location>
       <source>Thumbnail size</source>
       <translation>Taille des miniatures</translation>
     </message>
     <message id="gamehq.overlay.layout.title">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="98"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="100"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="107"></location>
       <source>Overlay options</source>
       <translation>Options de la superposition</translation>

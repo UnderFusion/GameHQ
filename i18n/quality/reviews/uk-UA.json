@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review_plus_targeted_recovery",
     "draft_provider": "protected-token-safe Ukrainian draft followed by complete contextual senior review and manual high-risk audit",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-30T17:40:00Z"
+    "recorded_at": "2026-09-30T18:10:00Z"
   },
   "baseline": {
     "path": "git:01b0ea8a8cdc0d2f6ee13b911195061b693a048c:i18n/app/gamehq_uk_UA.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_uk_UA.ts",
-    "sha256": "392a72c13927c18dbac40de8bc606795a51b5a88a746e3a0c6673aad3e5373a2",
-    "message_count": 1066
+    "sha256": "54439e03424ce0b5a8ad0784452a99f077c9d5b0b02348a93f98e8bfa3f7596d",
+    "message_count": 1067
   },
   "coverage": [
     {
@@ -4115,6 +4115,15 @@
       "translation_hash": "b36737f38bb76e8adc27f244ec506754c394d51cb194b849221f22b0d7c0b20e",
       "locations": [
         "src/ui/qml/components/OverlayLayoutPanel.qml:39"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.spacing",
+      "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+      "translation_hash": "bd287677ef2d98ad1fc6fb30fd0aa9a6bf322d7f6b4a0774c5a7f15ad2e3155b",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:35"
       ],
       "decision": "accepted"
     },
@@ -16622,8 +16631,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_uk_UA.ts",
-      "sha256": "392a72c13927c18dbac40de8bc606795a51b5a88a746e3a0c6673aad3e5373a2",
-      "reviewed_units": 1066
+      "sha256": "54439e03424ce0b5a8ad0784452a99f077c9d5b0b02348a93f98e8bfa3f7596d",
+      "reviewed_units": 1067
     },
     {
       "surface": "installer",

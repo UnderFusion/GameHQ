@@ -4903,6 +4903,17 @@
           },
           "updated_at": null
         },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
           "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
@@ -11737,7 +11748,7 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
+          "total": 1067,
           "current": 0,
           "missing": [
             "gamehq.about.enjoying_gamehq",
@@ -12185,6 +12196,7 @@
             "gamehq.overlay.layout.on",
             "gamehq.overlay.layout.px",
             "gamehq.overlay.layout.reset",
+            "gamehq.overlay.layout.spacing",
             "gamehq.overlay.layout.thumbnail_size",
             "gamehq.overlay.layout.title",
             "gamehq.overlay.window_title",
@@ -17722,6 +17734,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "d215789818731def69cd716504a068ef84f72750fd7bc796424ebf0e4357f064",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -24557,8 +24580,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -29469,6 +29492,17 @@
           "domain": "application",
           "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
           "translation_hash": "add2f36fedecdc799a4629388007bcfa0fbde7dc84e72a44ce4bfa770c3ce0c7",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "f931846f1d1bfdada09694cf08379460e19146d839a55bf3d277f04e19122303",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -36310,8 +36344,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -41228,6 +41262,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "39994cfceaf91067b3aace70360f63d96434f1d52d4c15626d41a0be5ebf2263",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -48063,8 +48108,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -52981,6 +53026,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "39994cfceaf91067b3aace70360f63d96434f1d52d4c15626d41a0be5ebf2263",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -59816,8 +59872,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -64734,6 +64790,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "1b3bd5ecbb240db04565ad11b8df9f4c16cb70b369f9acb81f9062f82425060c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -71569,8 +71636,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -76487,6 +76554,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "edc6bd989993ccc14b2339abb7100eedd067bcc8235ec80d5cd9364351a53085",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -83322,8 +83400,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -88240,6 +88318,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "21eddf15326033acdb9c27b2acc5a6fc4bb4ec85cdac041736d312633354d5d7",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -95075,8 +95164,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -99993,6 +100082,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "0e5c4862888445bf67303a0c0c4ee30919dc46770651f4daf24e21f2f4a46faa",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -106828,8 +106928,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -111746,6 +111846,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "997b0ef3730c6989b8a58a8d1b53032263d000a410fe9ed01d966a4cdeaf7167",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -118581,8 +118692,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -123499,6 +123610,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "999cb02bfaa9da5ac8d909c9f4fcee03b80bb296aa6f50042a7d38215207c85e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -130334,8 +130456,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -135252,6 +135374,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "1455d8d5281805a0ca64ec696f97ac4c481ae3b8d429de944faffb1e6a260c19",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -142087,8 +142220,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -147005,6 +147138,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "59d87281dc33b3802c18c71ac422913ed0fb32c9e37cad8b45651d1e508c6b3b",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -153840,8 +153984,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -158758,6 +158902,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "90171ee5101c4b611b47ae1e555cf03152dc77a03969ef83838e7bfa48649ceb",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -165593,8 +165748,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -170511,6 +170666,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "bd287677ef2d98ad1fc6fb30fd0aa9a6bf322d7f6b4a0774c5a7f15ad2e3155b",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -177346,8 +177512,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -182264,6 +182430,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "9b8b478097237516361bc128834bda01c73dad824900beb4e0cf6ceb04e47a8a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -189099,8 +189276,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },
@@ -194017,6 +194194,17 @@
             "actor": "claude-opus-5-5-overlay-layout-contextual-review"
           },
           "updated_at": "2026-09-30T17:40:00Z"
+        },
+        "gamehq.overlay.layout.spacing": {
+          "domain": "application",
+          "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+          "translation_hash": "d40dc5b70b207f2435b0179c4f2824ebcae7277d16014110c5723a08d68ab833",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-overlay-layout-contextual-review"
+          },
+          "updated_at": "2026-09-30T18:10:00Z"
         },
         "gamehq.overlay.layout.thumbnail_size": {
           "domain": "application",
@@ -200852,8 +201040,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1066,
-          "current": 1066,
+          "total": 1067,
+          "current": 1067,
           "missing": [],
           "stale": []
         },

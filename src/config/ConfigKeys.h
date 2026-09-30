@@ -105,6 +105,8 @@ inline constexpr QLatin1StringView UiOverlayMarginTop{ "ui.overlay_margin_top" }
 inline constexpr QLatin1StringView UiOverlayMarginRight{ "ui.overlay_margin_right" };
 inline constexpr QLatin1StringView UiOverlayMarginBottom{ "ui.overlay_margin_bottom" };
 inline constexpr QLatin1StringView UiOverlayThumbnailScale{ "ui.overlay_thumbnail_scale" };
+// Gap between overlay panels in logical px (0-64, step 8).
+inline constexpr QLatin1StringView UiOverlaySpacing{ "ui.overlay_spacing" };
 // Desktop window geometry, written debounced while the user moves or resizes.
 // x/y default to WindowPlacement::kUnsetCoordinate ("never placed"), so a
 // monitor left of or above the primary keeps its negative coordinates instead

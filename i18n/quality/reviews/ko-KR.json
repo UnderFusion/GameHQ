@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "offline machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-30T17:40:00Z"
+    "recorded_at": "2026-09-30T18:10:00Z"
   },
   "baseline": {
     "path": "git:0f1362ce8b13fb1594079b0a7896c554f3886aa4:i18n/app/gamehq_ko_KR.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_ko_KR.ts",
-    "sha256": "74f253315ac4c57d2a901d5512bfe138ad3205636613d6541dcfcd05d578dce6",
-    "message_count": 1066
+    "sha256": "72379a98aae7ff942564323cf082bd5d0203385f5028c9031331f6caacd27cec",
+    "message_count": 1067
   },
   "coverage": [
     {
@@ -4115,6 +4115,15 @@
       "translation_hash": "c048e1302715e4ee38a68d380b8c6eb8520447722044a903b701585d7c2a299c",
       "locations": [
         "src/ui/qml/components/OverlayLayoutPanel.qml:39"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.spacing",
+      "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+      "translation_hash": "0e5c4862888445bf67303a0c0c4ee30919dc46770651f4daf24e21f2f4a46faa",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:35"
       ],
       "decision": "accepted"
     },
@@ -15827,8 +15836,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_ko_KR.ts",
-      "sha256": "74f253315ac4c57d2a901d5512bfe138ad3205636613d6541dcfcd05d578dce6",
-      "reviewed_units": 1066
+      "sha256": "72379a98aae7ff942564323cf082bd5d0203385f5028c9031331f6caacd27cec",
+      "reviewed_units": 1067
     },
     {
       "surface": "installer",

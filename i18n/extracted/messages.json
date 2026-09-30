@@ -416,7 +416,7 @@
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 995
+          "line": 1016
         },
         {
           "file": "src/ui/qml/components/ConfirmDialog.qml",
@@ -4865,7 +4865,7 @@
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 993
+          "line": 1014
         }
       ],
       "plural": false,
@@ -7923,7 +7923,7 @@
       "locations": [
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 259
+          "line": 273
         }
       ],
       "plural": false,
@@ -8093,7 +8093,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
-          "line": 35
+          "line": 37
         }
       ],
       "plural": false,
@@ -8178,7 +8178,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
-          "line": 50
+          "line": 52
         }
       ],
       "plural": false,
@@ -8195,7 +8195,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
-          "line": 48
+          "line": 50
         }
       ],
       "plural": false,
@@ -8212,7 +8212,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
-          "line": 52
+          "line": 54
         }
       ],
       "plural": false,
@@ -8231,7 +8231,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
-          "line": 39
+          "line": 41
         }
       ],
       "plural": false,
@@ -8241,6 +8241,23 @@
       "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f"
     },
     {
+      "id": "gamehq.overlay.layout.spacing",
+      "source": "Spacing between panels",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
+          "line": 35
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7"
+    },
+    {
       "id": "gamehq.overlay.layout.thumbnail_size",
       "source": "Thumbnail size",
       "context": "ID",
@@ -8248,7 +8265,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
-          "line": 37
+          "line": 39
         }
       ],
       "plural": false,
@@ -8265,7 +8282,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
-          "line": 98
+          "line": 100
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",

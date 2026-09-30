@@ -117,7 +117,7 @@
       <location filename="src/ui/qml/Main.qml" line="1209"></location>
       <location filename="src/ui/qml/Main.qml" line="1228"></location>
       <location filename="src/ui/qml/Main.qml" line="1266"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="995"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1016"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -1377,7 +1377,7 @@ This permanently deletes the file.</source>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1207"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="993"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1014"></location>
       <source>Delete capture?</source>
       <translation>刪除該擷取內容？</translation>
     </message>
@@ -2265,7 +2265,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>擷取操作</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="259"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="273"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>遊戲仍處於焦點狀態，可能會響應控制器輸入</translation>
     </message>
@@ -2315,7 +2315,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>操作提示</translation>
     </message>
     <message id="gamehq.overlay.layout.interface_size">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="35"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="37"></location>
       <source>Interface size</source>
       <translation>介面大小</translation>
     </message>
@@ -2340,32 +2340,37 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>上邊界</translation>
     </message>
     <message id="gamehq.overlay.layout.off">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="50"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="52"></location>
       <source>Off</source>
       <translation>關</translation>
     </message>
     <message id="gamehq.overlay.layout.on">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="48"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="50"></location>
       <source>On</source>
       <translation>開</translation>
     </message>
     <message id="gamehq.overlay.layout.px">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="52"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="54"></location>
       <source>%1 px</source>
       <translation>%1 像素</translation>
     </message>
     <message id="gamehq.overlay.layout.reset">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="39"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="41"></location>
       <source>Reset overlay layout</source>
       <translation>重設覆蓋介面版面配置</translation>
     </message>
+    <message id="gamehq.overlay.layout.spacing">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="35"></location>
+      <source>Spacing between panels</source>
+      <translation>面板間距</translation>
+    </message>
     <message id="gamehq.overlay.layout.thumbnail_size">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="37"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="39"></location>
       <source>Thumbnail size</source>
       <translation>縮圖大小</translation>
     </message>
     <message id="gamehq.overlay.layout.title">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="98"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="100"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="107"></location>
       <source>Overlay options</source>
       <translation>覆蓋介面選項</translation>

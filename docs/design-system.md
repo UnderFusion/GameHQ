@@ -15,7 +15,8 @@ The overlay's gear (Overlay options, `OverlayLayoutPanel.qml`) edits the same
 (the control-hint footer; hiding it gives its height to the preview),
 `ui.overlay_margin_left/top/right/bottom` (0-96 logical px, step 8, default 48)
 and `ui.overlay_thumbnail_scale` (70-140%, step 10; the capture strip height
-follows the tiles). Every change applies live and persists at once; the card
+follows the tiles), plus `ui.overlay_spacing` (0-64 px, step 8, default 32), one
+gap between the sidebar, strip and preview; the preview-to-hints gap is 3/4 of it. Every change applies live and persists at once; the card
 floats beside the sidebar without a scrim so the preview stays visible.
 
 `ScaledSurface.qml` gives each window its own logical canvas and transform,

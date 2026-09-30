@@ -5,8 +5,8 @@ import GameHQ
 // sidebar, with no scrim, so the capture preview stays visible and every
 // change shows live. The host owns the values and applies each change at once;
 // this card only lists the rows, the pad/keyboard cursor and the mouse
-// controls. Rows: control hints (toggle), four outer margins, interface size,
-// thumbnail size and a layout reset.
+// controls. Rows: control hints (toggle), four outer margins, the gap between
+// panels, interface size, thumbnail size and a layout reset.
 Rectangle {
     id: root
 
@@ -31,6 +31,8 @@ Rectangle {
         { key: "margin_right", kind: "px", label: qsTrId("gamehq.overlay.layout.margin_right") },
         //% "Bottom margin"
         { key: "margin_bottom", kind: "px", label: qsTrId("gamehq.overlay.layout.margin_bottom") },
+        //% "Spacing between panels"
+        { key: "spacing", kind: "px", label: qsTrId("gamehq.overlay.layout.spacing") },
         //% "Interface size"
         { key: "scale", kind: "percent", label: qsTrId("gamehq.overlay.layout.interface_size") },
         //% "Thumbnail size"
