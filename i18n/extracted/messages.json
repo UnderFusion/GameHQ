@@ -384,6 +384,10 @@
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
           "line": 615
+        },
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 179
         }
       ],
       "plural": false,
@@ -1858,6 +1862,10 @@
         {
           "file": "src/ui/qml/components/ShareDestinationsSection.qml",
           "line": 168
+        },
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 101
         }
       ],
       "plural": false,
@@ -3389,7 +3397,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 667
+          "line": 668
         }
       ],
       "plural": false,
@@ -4299,7 +4307,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 642
+          "line": 643
         }
       ],
       "plural": false,
@@ -7467,7 +7475,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 487
+          "line": 488
         }
       ],
       "plural": false,
@@ -7484,7 +7492,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 494
+          "line": 495
         }
       ],
       "plural": false,
@@ -7501,7 +7509,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 500
+          "line": 501
         }
       ],
       "plural": false,
@@ -7518,7 +7526,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 293
+          "line": 294
         }
       ],
       "plural": false,
@@ -7535,7 +7543,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 287
+          "line": 288
         }
       ],
       "plural": false,
@@ -7552,7 +7560,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 277
+          "line": 278
         }
       ],
       "plural": false,
@@ -7569,7 +7577,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 399
+          "line": 400
         }
       ],
       "plural": false,
@@ -7586,7 +7594,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 462
+          "line": 463
         }
       ],
       "plural": false,
@@ -7605,7 +7613,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 80
+          "line": 81
         }
       ],
       "plural": false,
@@ -7622,7 +7630,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 74
+          "line": 75
         }
       ],
       "plural": false,
@@ -7639,7 +7647,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 92
+          "line": 93
         }
       ],
       "plural": false,
@@ -7656,7 +7664,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 86
+          "line": 87
         }
       ],
       "plural": false,
@@ -7673,7 +7681,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 68
+          "line": 69
         }
       ],
       "plural": false,
@@ -7690,7 +7698,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 309
+          "line": 310
         }
       ],
       "plural": false,
@@ -7707,7 +7715,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 394
+          "line": 395
         }
       ],
       "plural": false,
@@ -7724,7 +7732,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 443
+          "line": 444
         }
       ],
       "plural": false,
@@ -7741,7 +7749,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 302
+          "line": 303
         }
       ],
       "plural": false,
@@ -7758,7 +7766,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 344
+          "line": 345
         }
       ],
       "plural": false,
@@ -7775,7 +7783,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 545
+          "line": 546
         }
       ],
       "plural": false,
@@ -7794,7 +7802,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 540
+          "line": 541
         }
       ],
       "plural": false,
@@ -7811,7 +7819,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 709
+          "line": 710
         }
       ],
       "plural": false,
@@ -9989,7 +9997,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 21
+          "line": 19
         },
         {
           "file": "src/ui/qml/components/BindingAssignmentDialog.qml",
@@ -10014,7 +10022,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 23
+          "line": 21
         }
       ],
       "plural": false,
@@ -10031,7 +10039,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 25
+          "line": 23
         }
       ],
       "plural": false,
@@ -10048,7 +10056,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 19
+          "line": 17
         },
         {
           "file": "src/ui/qml/settings/AdvancedSettingsPage.qml",
@@ -10069,7 +10077,7 @@
       "locations": [
         {
           "file": "src/ui/qml/SettingsView.qml",
-          "line": 17
+          "line": 25
         }
       ],
       "plural": false,
@@ -15508,6 +15516,463 @@
       "source_hash": "d7845e8eaeb4b0fa0f0a4191ada884f6a815d2dd3acbee800a2f721882d6b7b2"
     },
     {
+      "id": "gamehq.settings.telegram.api_hash",
+      "source": "API hash",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 97
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "dc7545f0b6862acf8cdd9c6ce86105d246f9be3fb32803b2664d9b3cfb9caedf"
+    },
+    {
+      "id": "gamehq.settings.telegram.api_id",
+      "source": "API ID",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 91
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "fd28ca87d7a96b9b82e52cf200e8958ddae8a2a90c69d44183fd5e204ba4a11a"
+    },
+    {
+      "id": "gamehq.settings.telegram.ask_code",
+      "source": "Telegram sent you a code. Enter it here.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 155
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9e763a0a4c0f1ec306bbb91f189af331470215b0f91ff035e357c5d57f78f489"
+    },
+    {
+      "id": "gamehq.settings.telegram.ask_password",
+      "source": "Enter your Telegram two-step verification password.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 157
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5dd9d4ba58a24049d79789bf92d47dac15d31c58f47bce6bab52010cd8ad4ecc"
+    },
+    {
+      "id": "gamehq.settings.telegram.ask_phone",
+      "source": "Enter the phone number of your Telegram account.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 152
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "24e9647948d5a8931982a0442399ad9a8fa24ea1107d8f90aaecf1201ba1a734"
+    },
+    {
+      "id": "gamehq.settings.telegram.connect",
+      "source": "Connect Telegram",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 120
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "51d111b5ae3f453a59d862955510fc2c775e2015b604192aff22a829097231de"
+    },
+    {
+      "id": "gamehq.settings.telegram.connected_help",
+      "source": "Connected. To sign out and delete GameHQ's saved Telegram session, use Disconnect in the list above.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 210
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "9e4ccfc44550e7b6d4104527224871b5f7f2c62efaf2c9ec5e63b354cafd38aa"
+    },
+    {
+      "id": "gamehq.settings.telegram.continue",
+      "source": "Continue",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 173
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "22eb90d1c3d7189e72ded7779716d6019acedf3eb46ad0d3f57c782e7ad6e98b"
+    },
+    {
+      "id": "gamehq.settings.telegram.credentials_help",
+      "source": "Create an API ID and API hash for GameHQ at my.telegram.org (API development tools), then enter them here. They are kept in Windows Credential Manager, never in GameHQ's settings.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 81
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ",
+        "GameHQ",
+        "my.telegram.org"
+      ],
+      "source_hash": "18076d144b1128b7f0ea6da68c17ec4e7347aec1c1eea05efc55c40b81c793e1"
+    },
+    {
+      "id": "gamehq.settings.telegram.description",
+      "source": "Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 71
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ",
+        "GameHQ"
+      ],
+      "source_hash": "9e9ef8ce0ec37df9286d6468c353c00d8087f1b59466f519879e4da77ebb8963"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.bad_runtime",
+      "source": "The Telegram component is not the version GameHQ expects, so it was not loaded.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 33
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "e995d75bbe8d2eea46af0a9f5ac453c54e94c6a81c5f1bd36afdc5438a54ff5b"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.code_expired",
+      "source": "That code has expired. Cancel and start again to get a new one.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 42
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "8680474d18e0e91f962adef5d8b63be34b4394cff6d840d9dfc898d055be41a8"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.code_invalid",
+      "source": "That code is not correct.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 39
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "520142adab0bb93c5736707073c550f16e20b0545215d12fa88f2835fc592417"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.credentials_rejected",
+      "source": "Telegram rejected the API ID or API hash.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 51
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "88e3e9134a941685a7e05f88f2fea370d59a40966be35a113482df7c03b77cee"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.generic",
+      "source": "Couldn't connect to Telegram. Check your connection and try again.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 63
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "5249ad342d11ad128055fe3ab2bde2b901572c17948d15ebb041741654077b44"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.invalid_api_hash",
+      "source": "The API hash is 32 letters and digits.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 60
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "09bcc2178fc952b46679da0078b68f39905936f96ee54c7a9cfcd87928810c41"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.invalid_api_id",
+      "source": "The API ID is a number.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 57
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "96feea660fa53af8ce2ca42411a57b4eb8c8d854f89e9a67e957d7a96e25378e"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.no_credentials",
+      "source": "Enter the API ID and API hash first.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 24
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c4babe22c6d22f8594dfcaa33b762fcd864005970bb35f99865054ff11eaf679"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.no_runtime",
+      "source": "The optional Telegram component is not installed in this GameHQ.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 28
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "b8234e2cc926452d3881bc12d707c4a7aab91d157d0596a4e21943aa5c64f01c"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.password_invalid",
+      "source": "That password is not correct.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 45
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "0b923d56472d43d3e3bdaf607815e0dff38a0bbe66683b3862d8571e6a669cd5"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.phone_invalid",
+      "source": "Telegram does not accept that phone number. Use the international format, for example +48 123 456 789.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 36
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "221e7397429e30c81ea1cf973af0b8ff8939d333dc43ba4ddce3dd6196361a71"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.rate_limited",
+      "source": "Telegram asks you to wait before trying again.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 48
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "828a5a4d553ce621671d9db054c4e0a22fb87eaa36f4053b460a6e29bdcf0486"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.unsupported_auth",
+      "source": "This account needs a sign-in step GameHQ does not support. Use Telegram Desktop sharing instead.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 54
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "5a869d826d40d584ad1977ba21955e46e2be262a069301459dd90b98db7e5842"
+    },
+    {
+      "id": "gamehq.settings.telegram.forget",
+      "source": "Forget API ID and hash",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 129
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c559267294f7e0aa431d5eba1e86fcf17a7eaccd4394bd6389752af736c82b70"
+    },
+    {
+      "id": "gamehq.settings.telegram.title",
+      "source": "Telegram account",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 69
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2a3681e48e3fd3e30a1ac141981d53d7187a2a8981375fa0da59917012507511"
+    },
+    {
+      "id": "gamehq.settings.telegram.working",
+      "source": "Working…",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/TelegramAccountSection.qml",
+          "line": 137
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a2b5c5185c8ff01b8bfd70360b4cbbcf44cb96b7cda5427140af390f5896b95d"
+    },
+    {
       "id": "gamehq.settings.theme.blue.description",
       "source": "Deep navy surfaces with violet-to-blue accents.",
       "context": "ID",
@@ -15927,7 +16392,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/SharingSettingsPage.qml",
-          "line": 122
+          "line": 130
         }
       ],
       "plural": false,
@@ -15946,7 +16411,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/SharingSettingsPage.qml",
-          "line": 120
+          "line": 128
         }
       ],
       "plural": false,
@@ -15963,7 +16428,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/SharingSettingsPage.qml",
-          "line": 117
+          "line": 125
         }
       ],
       "plural": false,
@@ -16699,6 +17164,79 @@
         "GameHQ"
       ],
       "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1"
+    },
+    {
+      "id": "gamehq.share.telegram_integrated.bad_runtime",
+      "source": "The optional Telegram component is not the version GameHQ expects.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/providers/TelegramIntegratedProvider.cpp",
+          "line": 149
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "a6966724586c0f3aebdb45570a7a1d6c2bbbbde7e81ec612fd7edf116069419d"
+    },
+    {
+      "id": "gamehq.share.telegram_integrated.name",
+      "source": "Telegram account",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/providers/TelegramIntegratedProvider.cpp",
+          "line": 91
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2a3681e48e3fd3e30a1ac141981d53d7187a2a8981375fa0da59917012507511"
+    },
+    {
+      "id": "gamehq.share.telegram_integrated.no_runtime",
+      "source": "The optional Telegram component is not installed.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/providers/TelegramIntegratedProvider.cpp",
+          "line": 144
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "933d9dfdd4a42d293341fada2d04e2ad7631c39704ffcddcfe48c5ce312967b2"
+    },
+    {
+      "id": "gamehq.share.telegram_integrated.privacy",
+      "source": "Signs in to your Telegram account inside GameHQ. GameHQ only sends the capture you pick and never shows your chats or messages.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/share/providers/TelegramIntegratedProvider.cpp",
+          "line": 158
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ",
+        "GameHQ"
+      ],
+      "source_hash": "5e53f4f0e2ddf9fd0a844cd83b6999385a200c006b36fe15dbfb6f58b888c1ef"
     },
     {
       "id": "gamehq.share.title",

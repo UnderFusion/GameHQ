@@ -325,7 +325,7 @@ void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndTranslated
     const auto english = readTsCatalog(
         QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/gamehq_en_US.ts"), &error);
     QVERIFY2(error.isEmpty(), qPrintable(error));
-    QCOMPARE(english.size(), 1002);
+    QCOMPARE(english.size(), 1049);
     const QSet<QString> activeIds = activeProductionIds();
 
     for (const QString& catalogName : promotedLaunchCatalogs()) {
@@ -371,7 +371,7 @@ void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
     // Main.qml and SettingsView.qml also contribute feature/dialog IDs owned
     // by adjacent localization units to this shared source-file set, and the
     // sidebar's Tools heading reuses the Advanced diagnostics title.
-    QCOMPARE(ids.size(), 225);
+    QCOMPARE(ids.size(), 226);
     for (const QString &catalogName : translatedCatalogs()) {
         QString error;
         const auto catalog = readTsCatalog(
@@ -394,7 +394,7 @@ void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
 void LocalizationCatalogTest::migratedProductionQmlIdsCoverEveryLaunchLocale()
 {
     const QSet<QString> ids = translationIdsIn(productionQmlFiles());
-    QCOMPARE(ids.size(), 709);
+    QCOMPARE(ids.size(), 752);
 
     for (const QString &catalogName : translatedCatalogs()) {
         QString error;
