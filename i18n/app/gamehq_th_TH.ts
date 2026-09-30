@@ -109,6 +109,7 @@
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
       <source>Cancel</source>
       <translation>ยกเลิก</translation>
     </message>
@@ -538,6 +539,7 @@
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="629"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="26"></location>
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="168"></location>
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="101"></location>
       <source>Save</source>
       <translation>บันทึก</translation>
     </message>
@@ -970,7 +972,7 @@
       <translation>กำลังดำเนินการนำเข้าโปรไฟล์แบบพกพาอื่นอยู่แล้ว</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="667"></location>
+      <location filename="src/app/App.cpp" line="668"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>การอัปเดตถูกยกเลิกเนื่องจากงานจับภาพไม่เสร็จสิ้นอย่างปลอดภัยทันเวลา</translation>
     </message>
@@ -1221,7 +1223,7 @@
       <translation>GameHQ ไม่สามารถนำธุรกรรมอัปเดตไปใช้เป็นสถานะสุดท้ายได้</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="642"></location>
+      <location filename="src/app/App.cpp" line="643"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ ไม่สามารถเริ่มการบำรุงรักษาการอัปเดตได้: %1</translation>
     </message>
@@ -2133,107 +2135,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>สนับสนุน GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="487"></location>
+      <location filename="src/app/App.cpp" line="488"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>ไม่สามารถลบไฟล์บางไฟล์ได้ ไฟล์เหล่านี้อาจกำลังถูกใช้งานโดยโปรแกรมอื่น ปิดโปรแกรมที่กำลังใช้ไฟล์เหล่านี้แล้วลองอีกครั้ง</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="494"></location>
+      <location filename="src/app/App.cpp" line="495"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>ไม่สามารถลบไฟล์ได้ ไฟล์อาจกำลังถูกใช้งานโดยโปรแกรมอื่น ปิดโปรแกรมที่กำลังใช้ไฟล์นี้แล้วลองอีกครั้ง</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="500"></location>
+      <location filename="src/app/App.cpp" line="501"></location>
       <source>Couldn't delete</source>
       <translation>ลบไม่สำเร็จ</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="293"></location>
+      <location filename="src/app/App.cpp" line="294"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>ไม่ได้เพิ่มลงในคลังสื่อ และไม่พบไฟล์บนดิสก์</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="287"></location>
+      <location filename="src/app/App.cpp" line="288"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>ไฟล์อยู่ในโฟลเดอร์การจับภาพของคุณ แต่ไม่สามารถเพิ่มลงในคลังสื่อได้</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="277"></location>
+      <location filename="src/app/App.cpp" line="278"></location>
       <source>Saved to disk, not in library</source>
       <translation>บันทึกลงดิสก์แล้ว แต่ไม่อยู่ในคลังสื่อ</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="399"></location>
+      <location filename="src/app/App.cpp" line="400"></location>
       <source>Capture request received</source>
       <translation>ได้รับคำขอจับภาพแล้ว</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="462"></location>
+      <location filename="src/app/App.cpp" line="463"></location>
       <source>Reason: %1</source>
       <translation>เหตุผล: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="80"></location>
+      <location filename="src/app/App.cpp" line="81"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>บัฟเฟอร์รีเพลย์ทำงานผิดพลาด ไม่ได้บันทึกคลิปใด ๆ</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="74"></location>
+      <location filename="src/app/App.cpp" line="75"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>บัฟเฟอร์รีเพลย์กำลังรวบรวมภาพวิดีโอ โปรดลองบันทึกอีกครั้งในอีกไม่กี่วินาที</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="92"></location>
+      <location filename="src/app/App.cpp" line="93"></location>
       <source>Replay buffer is empty</source>
       <translation>บัฟเฟอร์รีเพลย์ว่างเปล่า</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="86"></location>
+      <location filename="src/app/App.cpp" line="87"></location>
       <source>Replay buffer is not running</source>
       <translation>บัฟเฟอร์รีเพลย์ไม่ได้ทำงานอยู่</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="68"></location>
+      <location filename="src/app/App.cpp" line="69"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>บัฟเฟอร์รีเพลย์กำลังเริ่มทำงาน โปรดลองบันทึกอีกครั้งในอีกไม่กี่วินาที</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="309"></location>
+      <location filename="src/app/App.cpp" line="310"></location>
       <source>Replay failed</source>
       <translation>รีเพลย์ล้มเหลว</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="394"></location>
+      <location filename="src/app/App.cpp" line="395"></location>
       <source>Replay save requested</source>
       <translation>ส่งคำขอบันทึกรีเพลย์แล้ว</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="443"></location>
+      <location filename="src/app/App.cpp" line="444"></location>
       <source>Replay saved</source>
       <translation>บันทึกการรีเพลย์แล้ว</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="302"></location>
+      <location filename="src/app/App.cpp" line="303"></location>
       <source>Screenshot failed</source>
       <translation>จับภาพหน้าจอไม่สำเร็จ</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="344"></location>
+      <location filename="src/app/App.cpp" line="345"></location>
       <source>Screenshot saved</source>
       <translation>บันทึกภาพหน้าจอแล้ว</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="545"></location>
+      <location filename="src/app/App.cpp" line="546"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ เริ่มด้วยการตั้งค่าเริ่มต้น โดยเก็บไฟล์การตั้งค่าก่อนหน้าไว้ จึงไม่มีข้อมูลสูญหาย</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="540"></location>
+      <location filename="src/app/App.cpp" line="541"></location>
       <source>Settings could not be read</source>
       <translation>ไม่สามารถอ่านการตั้งค่าได้</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="709"></location>
+      <location filename="src/app/App.cpp" line="710"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>เสียงอินเทอร์เฟซบางรายการใช้งานไม่ได้</translation>
     </message>
@@ -2865,32 +2867,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>ทั่วไป</translation>
     </message>
     <message id="gamehq.settings.category.input">
-      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="245"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="9"></location>
       <source>Input</source>
       <translation>อินพุต</translation>
     </message>
     <message id="gamehq.settings.category.library">
-      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
       <source>Library</source>
       <translation>คลังสื่อ</translation>
     </message>
     <message id="gamehq.settings.category.notifications_sound">
-      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
       <source>Notifications &amp; sound</source>
       <translation>การแจ้งเตือนและเสียง</translation>
     </message>
     <message id="gamehq.settings.category.replay">
-      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="229"></location>
       <source>Replay</source>
       <translation>รีเพลย์</translation>
     </message>
     <message id="gamehq.settings.category.sharing">
-      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
       <source>Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>การแชร์</translation>
     </message>
     <message id="gamehq.settings.disclosure.default">
       <location filename="src/ui/qml/components/SettingsDisclosure.qml" line="9"></location>
@@ -4412,72 +4414,202 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.auth.connected">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="25"></location>
       <source>Connected</source>
-      <translation type="unfinished"></translation>
+      <translation>เชื่อมต่อแล้ว</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.connecting">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="28"></location>
       <source>Connecting…</source>
-      <translation type="unfinished"></translation>
+      <translation>กำลังเชื่อมต่อ…</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.disconnected">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="34"></location>
       <source>Not connected</source>
-      <translation type="unfinished"></translation>
+      <translation>ยังไม่ได้เชื่อมต่อ</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.error">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="31"></location>
       <source>Connection problem</source>
-      <translation type="unfinished"></translation>
+      <translation>มีปัญหาในการเชื่อมต่อ</translation>
     </message>
     <message id="gamehq.settings.sharing.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="16"></location>
       <source>Choose where captures can be shared. Nothing is ever sent without you picking a capture and a destination.</source>
-      <translation type="unfinished"></translation>
+      <translation>เลือกปลายทางที่จะแชร์รายการสื่อ ระบบจะไม่ส่งอะไรเลยจนกว่าคุณจะเลือกรายการสื่อและปลายทาง</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.action">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="102"></location>
       <source>Disconnect</source>
-      <translation type="unfinished"></translation>
+      <translation>ตัดการเชื่อมต่อ</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
       <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
-      <translation type="unfinished"></translation>
+      <translation>ออกจากระบบ GameHQ และลบเซสชันในเครื่อง การปิดปลายทางไม่ได้ทำเช่นนี้</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
       <source>Disconnect and remove the saved session</source>
-      <translation type="unfinished"></translation>
+      <translation>ตัดการเชื่อมต่อและลบเซสชันที่บันทึกไว้</translation>
     </message>
     <message id="gamehq.settings.sharing.master.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="50"></location>
       <source>Turns the Share option on or off everywhere: gallery, lightbox and overlay.</source>
-      <translation type="unfinished"></translation>
+      <translation>เปิดหรือปิดตัวเลือกการแชร์ทุกที่: แกลเลอรี ตัวดู และโอเวอร์เลย์</translation>
     </message>
     <message id="gamehq.settings.sharing.master.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="48"></location>
       <source>Enable Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>เปิดใช้การแชร์</translation>
     </message>
     <message id="gamehq.settings.sharing.master.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="45"></location>
       <source>Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>การแชร์</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation type="unfinished"></translation>
+      <translation>การปิดปลายทางเป็นเพียงการซ่อนเท่านั้น บัญชีและช่องที่บันทึกไว้จะยังอยู่จนกว่าคุณจะตัดการเชื่อมต่อหรือลบออก</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
       <source>Destinations</source>
-      <translation type="unfinished"></translation>
+      <translation>ปลายทาง</translation>
     </message>
     <message id="gamehq.settings.sharing.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="14"></location>
       <source>Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>การแชร์</translation>
+    </message>
+    <message id="gamehq.settings.telegram.api_hash">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="97"></location>
+      <source>API hash</source>
+      <translation>แฮช API</translation>
+    </message>
+    <message id="gamehq.settings.telegram.api_id">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="91"></location>
+      <source>API ID</source>
+      <translation>API ID</translation>
+    </message>
+    <message id="gamehq.settings.telegram.ask_code">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="155"></location>
+      <source>Telegram sent you a code. Enter it here.</source>
+      <translation>Telegram ส่งรหัสให้คุณแล้ว โปรดป้อนรหัสที่นี่</translation>
+    </message>
+    <message id="gamehq.settings.telegram.ask_password">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="157"></location>
+      <source>Enter your Telegram two-step verification password.</source>
+      <translation>โปรดป้อนรหัสผ่านการยืนยันแบบสองขั้นตอนของ Telegram</translation>
+    </message>
+    <message id="gamehq.settings.telegram.ask_phone">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="152"></location>
+      <source>Enter the phone number of your Telegram account.</source>
+      <translation>โปรดป้อนหมายเลขโทรศัพท์ของบัญชี Telegram ของคุณ</translation>
+    </message>
+    <message id="gamehq.settings.telegram.connect">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="120"></location>
+      <source>Connect Telegram</source>
+      <translation>เชื่อมต่อ Telegram</translation>
+    </message>
+    <message id="gamehq.settings.telegram.connected_help">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="210"></location>
+      <source>Connected. To sign out and delete GameHQ's saved Telegram session, use Disconnect in the list above.</source>
+      <translation>เชื่อมต่อแล้ว หากต้องการออกจากระบบและลบเซสชัน Telegram ที่ GameHQ บันทึกไว้ ให้ใช้ตัดการเชื่อมต่อในรายการด้านบน</translation>
+    </message>
+    <message id="gamehq.settings.telegram.continue">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="173"></location>
+      <source>Continue</source>
+      <translation>ดำเนินการต่อ</translation>
+    </message>
+    <message id="gamehq.settings.telegram.credentials_help">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="81"></location>
+      <source>Create an API ID and API hash for GameHQ at my.telegram.org (API development tools), then enter them here. They are kept in Windows Credential Manager, never in GameHQ's settings.</source>
+      <translation>สร้าง API ID และแฮช API สำหรับ GameHQ ที่ my.telegram.org (เครื่องมือพัฒนา API) แล้วป้อนที่นี่ ค่าเหล่านี้จะถูกเก็บไว้ใน Windows Credential Manager ไม่ใช่ในการตั้งค่าของ GameHQ</translation>
+    </message>
+    <message id="gamehq.settings.telegram.description">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
+      <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
+      <translation>ส่งรายการสื่อจาก GameHQ ไปยังผู้ติดต่อ Telegram ของคุณโดยตรง GameHQ จะไม่แสดงแชทหรือข้อความ และจะไม่ส่งสิ่งที่คุณไม่ได้เลือก การทำงานนี้จะลงชื่อเข้าใช้บัญชี Telegram ของคุณทั้งบัญชี ดังนั้นโปรดเชื่อมต่อเฉพาะบัญชีที่คุณสบายใจ</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.bad_runtime">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
+      <source>The Telegram component is not the version GameHQ expects, so it was not loaded.</source>
+      <translation>คอมโพเนนต์ Telegram ไม่ใช่เวอร์ชันที่ GameHQ ต้องการ จึงไม่ได้โหลด</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.code_expired">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="42"></location>
+      <source>That code has expired. Cancel and start again to get a new one.</source>
+      <translation>รหัสนี้หมดอายุแล้ว ยกเลิกแล้วเริ่มใหม่เพื่อรับรหัสใหม่</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.code_invalid">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="39"></location>
+      <source>That code is not correct.</source>
+      <translation>รหัสไม่ถูกต้อง</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.credentials_rejected">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="51"></location>
+      <source>Telegram rejected the API ID or API hash.</source>
+      <translation>Telegram ปฏิเสธ API ID หรือแฮช API</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.generic">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="63"></location>
+      <source>Couldn't connect to Telegram. Check your connection and try again.</source>
+      <translation>เชื่อมต่อกับ Telegram ไม่ได้ โปรดตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.invalid_api_hash">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="60"></location>
+      <source>The API hash is 32 letters and digits.</source>
+      <translation>แฮช API มีตัวอักษรและตัวเลข 32 ตัว</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.invalid_api_id">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="57"></location>
+      <source>The API ID is a number.</source>
+      <translation>API ID เป็นตัวเลข</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.no_credentials">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="24"></location>
+      <source>Enter the API ID and API hash first.</source>
+      <translation>โปรดป้อน API ID และแฮช API ก่อน</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.no_runtime">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
+      <source>The optional Telegram component is not installed in this GameHQ.</source>
+      <translation>ไม่ได้ติดตั้งคอมโพเนนต์เสริมของ Telegram ใน GameHQ นี้</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.password_invalid">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
+      <source>That password is not correct.</source>
+      <translation>รหัสผ่านไม่ถูกต้อง</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.phone_invalid">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="36"></location>
+      <source>Telegram does not accept that phone number. Use the international format, for example +48 123 456 789.</source>
+      <translation>Telegram ไม่รับหมายเลขโทรศัพท์นี้ โปรดใช้รูปแบบสากล เช่น +48 123 456 789</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.rate_limited">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="48"></location>
+      <source>Telegram asks you to wait before trying again.</source>
+      <translation>Telegram ขอให้รอสักครู่ก่อนลองอีกครั้ง</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.unsupported_auth">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="54"></location>
+      <source>This account needs a sign-in step GameHQ does not support. Use Telegram Desktop sharing instead.</source>
+      <translation>บัญชีนี้ต้องใช้ขั้นตอนการลงชื่อเข้าใช้ที่ GameHQ ไม่รองรับ โปรดใช้การแชร์ผ่าน Telegram Desktop แทน</translation>
+    </message>
+    <message id="gamehq.settings.telegram.forget">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="129"></location>
+      <source>Forget API ID and hash</source>
+      <translation>ลืม API ID และแฮช</translation>
+    </message>
+    <message id="gamehq.settings.telegram.title">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="69"></location>
+      <source>Telegram account</source>
+      <translation>บัญชี Telegram</translation>
+    </message>
+    <message id="gamehq.settings.telegram.working">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="137"></location>
+      <source>Working…</source>
+      <translation>กำลังดำเนินการ…</translation>
     </message>
     <message id="gamehq.settings.theme.blue.description">
       <location filename="src/ui/qml/themes/Skin.qml" line="22"></location>
@@ -4601,17 +4733,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>ซินธ์เวฟ</translation>
     </message>
     <message id="gamehq.share.addons.description">
-      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="122"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="130"></location>
       <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
       <translation>โปรแกรมอื่นที่ทำงานภายใต้บัญชีของคุณบนพีซีเครื่องนี้จะเสนอปลายทางการแชร์และรับรายการสื่อที่คุณเลือกแชร์ได้ ปิดไว้ตามค่าเริ่มต้น เริ่ม GameHQ ใหม่เพื่อให้มีผล</translation>
     </message>
     <message id="gamehq.share.addons.label">
-      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="128"></location>
       <source>Allow add-ons from other programs</source>
       <translation>อนุญาตส่วนเสริมจากโปรแกรมอื่น</translation>
     </message>
     <message id="gamehq.share.addons.title">
-      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="117"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="125"></location>
       <source>Share add-ons</source>
       <translation>ส่วนเสริมสำหรับการแชร์</translation>
     </message>
@@ -4673,7 +4805,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.error.provider_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
       <source>That destination is turned off in Settings &gt; Sharing.</source>
-      <translation type="unfinished"></translation>
+      <translation>ปลายทางนี้ถูกปิดอยู่ในการตั้งค่า &gt; การแชร์</translation>
     </message>
     <message id="gamehq.share.error.rate_limited">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="222"></location>
@@ -4683,7 +4815,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.error.sharing_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
       <source>Sharing is turned off. Turn it on in Settings &gt; Sharing.</source>
-      <translation type="unfinished"></translation>
+      <translation>การแชร์ถูกปิดอยู่ โปรดเปิดในการตั้งค่า &gt; การแชร์</translation>
     </message>
     <message id="gamehq.share.error.too_large">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="225"></location>
@@ -4824,6 +4956,26 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="132"></location>
       <source>Opens Telegram to choose the chat. GameHQ never signs in to Telegram.</source>
       <translation>เปิด Telegram เพื่อเลือกแชต GameHQ จะไม่ลงชื่อเข้าใช้ Telegram</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.bad_runtime">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="149"></location>
+      <source>The optional Telegram component is not the version GameHQ expects.</source>
+      <translation>คอมโพเนนต์เสริมของ Telegram ไม่ใช่เวอร์ชันที่ GameHQ ต้องการ</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.name">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="91"></location>
+      <source>Telegram account</source>
+      <translation>บัญชี Telegram</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.no_runtime">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="144"></location>
+      <source>The optional Telegram component is not installed.</source>
+      <translation>ไม่ได้ติดตั้งคอมโพเนนต์เสริมของ Telegram</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.privacy">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="158"></location>
+      <source>Signs in to your Telegram account inside GameHQ. GameHQ only sends the capture you pick and never shows your chats or messages.</source>
+      <translation>ลงชื่อเข้าใช้บัญชี Telegram ของคุณภายใน GameHQ โดย GameHQ จะส่งเฉพาะรายการสื่อที่คุณเลือก และจะไม่แสดงแชทหรือข้อความของคุณ</translation>
     </message>
     <message id="gamehq.share.title">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="347"></location>

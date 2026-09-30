@@ -109,6 +109,7 @@
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
       <source>Cancel</source>
       <translation>취소</translation>
     </message>
@@ -538,6 +539,7 @@
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="629"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="26"></location>
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="168"></location>
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="101"></location>
       <source>Save</source>
       <translation>저장</translation>
     </message>
@@ -970,7 +972,7 @@
       <translation>다른 포터블 프로필 가져오기가 이미 실행 중입니다.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="667"></location>
+      <location filename="src/app/App.cpp" line="668"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>캡처 작업이 제한 시간 내에 안전하게 완료되지 않아 업데이트가 취소되었습니다.</translation>
     </message>
@@ -1221,7 +1223,7 @@
       <translation>GameHQ에서 업데이트 트랜잭션을 최종 상태로 반영할 수 없습니다.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="642"></location>
+      <location filename="src/app/App.cpp" line="643"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ에서 업데이트 유지 관리 작업을 시작할 수 없습니다: %1</translation>
     </message>
@@ -2133,107 +2135,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ 후원</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="487"></location>
+      <location filename="src/app/App.cpp" line="488"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>일부 파일을 삭제하지 못했습니다. 다른 프로그램에서 사용 중일 수 있습니다. 해당 파일을 사용 중인 프로그램을 모두 닫고 다시 시도하세요.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="494"></location>
+      <location filename="src/app/App.cpp" line="495"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>파일을 삭제하지 못했습니다. 다른 프로그램에서 사용 중일 수 있습니다. 이 파일을 사용 중인 프로그램을 닫고 다시 시도하세요.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="500"></location>
+      <location filename="src/app/App.cpp" line="501"></location>
       <source>Couldn't delete</source>
       <translation>삭제하지 못했습니다</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="293"></location>
+      <location filename="src/app/App.cpp" line="294"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>라이브러리에 추가되지 않았고 파일도 디스크에 없습니다.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="287"></location>
+      <location filename="src/app/App.cpp" line="288"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>파일은 캡처 폴더에 있지만 라이브러리에 추가하지 못했습니다.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="277"></location>
+      <location filename="src/app/App.cpp" line="278"></location>
       <source>Saved to disk, not in library</source>
       <translation>디스크에 저장됨, 라이브러리에는 없음</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="399"></location>
+      <location filename="src/app/App.cpp" line="400"></location>
       <source>Capture request received</source>
       <translation>캡처 요청을 받았습니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="462"></location>
+      <location filename="src/app/App.cpp" line="463"></location>
       <source>Reason: %1</source>
       <translation>원인: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="80"></location>
+      <location filename="src/app/App.cpp" line="81"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>리플레이 버퍼에 오류가 발생하여 클립이 저장되지 않았습니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="74"></location>
+      <location filename="src/app/App.cpp" line="75"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>리플레이 버퍼가 영상을 수집하는 중입니다. 몇 초 후에 다시 저장해 보세요</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="92"></location>
+      <location filename="src/app/App.cpp" line="93"></location>
       <source>Replay buffer is empty</source>
       <translation>리플레이 버퍼가 비어 있습니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="86"></location>
+      <location filename="src/app/App.cpp" line="87"></location>
       <source>Replay buffer is not running</source>
       <translation>리플레이 버퍼가 실행 중이 아닙니다</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="68"></location>
+      <location filename="src/app/App.cpp" line="69"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>리플레이 버퍼를 시작하는 중입니다. 몇 초 후에 다시 저장해 보세요</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="309"></location>
+      <location filename="src/app/App.cpp" line="310"></location>
       <source>Replay failed</source>
       <translation>리플레이 실패</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="394"></location>
+      <location filename="src/app/App.cpp" line="395"></location>
       <source>Replay save requested</source>
       <translation>리플레이 저장을 요청했습니다</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="443"></location>
+      <location filename="src/app/App.cpp" line="444"></location>
       <source>Replay saved</source>
       <translation>리플레이 저장됨</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="302"></location>
+      <location filename="src/app/App.cpp" line="303"></location>
       <source>Screenshot failed</source>
       <translation>스크린샷 실패</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="344"></location>
+      <location filename="src/app/App.cpp" line="345"></location>
       <source>Screenshot saved</source>
       <translation>스크린샷 저장됨</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="545"></location>
+      <location filename="src/app/App.cpp" line="546"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ가 기본 설정으로 시작되었습니다. 이전 설정 파일은 그대로 보관되어 손실된 항목이 없습니다.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="540"></location>
+      <location filename="src/app/App.cpp" line="541"></location>
       <source>Settings could not be read</source>
       <translation>설정을 읽을 수 없습니다</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="709"></location>
+      <location filename="src/app/App.cpp" line="710"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>일부 인터페이스 소리를 사용할 수 없습니다</translation>
     </message>
@@ -2865,32 +2867,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>일반</translation>
     </message>
     <message id="gamehq.settings.category.input">
-      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="245"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="9"></location>
       <source>Input</source>
       <translation>입력</translation>
     </message>
     <message id="gamehq.settings.category.library">
-      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
       <source>Library</source>
       <translation>라이브러리</translation>
     </message>
     <message id="gamehq.settings.category.notifications_sound">
-      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
       <source>Notifications &amp; sound</source>
       <translation>알림 및 소리</translation>
     </message>
     <message id="gamehq.settings.category.replay">
-      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="229"></location>
       <source>Replay</source>
       <translation>리플레이</translation>
     </message>
     <message id="gamehq.settings.category.sharing">
-      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
       <source>Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>공유</translation>
     </message>
     <message id="gamehq.settings.disclosure.default">
       <location filename="src/ui/qml/components/SettingsDisclosure.qml" line="9"></location>
@@ -4412,72 +4414,202 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.auth.connected">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="25"></location>
       <source>Connected</source>
-      <translation type="unfinished"></translation>
+      <translation>연결됨</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.connecting">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="28"></location>
       <source>Connecting…</source>
-      <translation type="unfinished"></translation>
+      <translation>연결하는 중…</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.disconnected">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="34"></location>
       <source>Not connected</source>
-      <translation type="unfinished"></translation>
+      <translation>연결되지 않음</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.error">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="31"></location>
       <source>Connection problem</source>
-      <translation type="unfinished"></translation>
+      <translation>연결 문제</translation>
     </message>
     <message id="gamehq.settings.sharing.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="16"></location>
       <source>Choose where captures can be shared. Nothing is ever sent without you picking a capture and a destination.</source>
-      <translation type="unfinished"></translation>
+      <translation>캡처를 공유할 위치를 선택하세요. 캡처와 공유 대상을 직접 선택하지 않으면 아무것도 전송되지 않습니다.</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.action">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="102"></location>
       <source>Disconnect</source>
-      <translation type="unfinished"></translation>
+      <translation>연결 해제</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
       <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
-      <translation type="unfinished"></translation>
+      <translation>GameHQ에서 로그아웃하고 로컬 세션을 삭제합니다. 공유 대상을 끄는 것만으로는 삭제되지 않습니다.</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
       <source>Disconnect and remove the saved session</source>
-      <translation type="unfinished"></translation>
+      <translation>연결 해제 및 저장된 세션 제거</translation>
     </message>
     <message id="gamehq.settings.sharing.master.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="50"></location>
       <source>Turns the Share option on or off everywhere: gallery, lightbox and overlay.</source>
-      <translation type="unfinished"></translation>
+      <translation>갤러리, 뷰어, 오버레이 어디서든 공유 옵션을 켜거나 끕니다.</translation>
     </message>
     <message id="gamehq.settings.sharing.master.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="48"></location>
       <source>Enable Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>공유 사용</translation>
     </message>
     <message id="gamehq.settings.sharing.master.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="45"></location>
       <source>Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>공유</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation type="unfinished"></translation>
+      <translation>공유 대상을 끄면 숨겨지기만 합니다. 저장된 계정과 채널은 연결을 해제하거나 제거하기 전까지 유지됩니다.</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
       <source>Destinations</source>
-      <translation type="unfinished"></translation>
+      <translation>공유 대상</translation>
     </message>
     <message id="gamehq.settings.sharing.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="14"></location>
       <source>Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>공유</translation>
+    </message>
+    <message id="gamehq.settings.telegram.api_hash">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="97"></location>
+      <source>API hash</source>
+      <translation>API 해시</translation>
+    </message>
+    <message id="gamehq.settings.telegram.api_id">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="91"></location>
+      <source>API ID</source>
+      <translation>API ID</translation>
+    </message>
+    <message id="gamehq.settings.telegram.ask_code">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="155"></location>
+      <source>Telegram sent you a code. Enter it here.</source>
+      <translation>Telegram에서 코드를 보냈습니다. 여기에 입력하세요.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.ask_password">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="157"></location>
+      <source>Enter your Telegram two-step verification password.</source>
+      <translation>Telegram 2단계 인증 비밀번호를 입력하세요.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.ask_phone">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="152"></location>
+      <source>Enter the phone number of your Telegram account.</source>
+      <translation>Telegram 계정의 전화번호를 입력하세요.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.connect">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="120"></location>
+      <source>Connect Telegram</source>
+      <translation>Telegram 연결</translation>
+    </message>
+    <message id="gamehq.settings.telegram.connected_help">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="210"></location>
+      <source>Connected. To sign out and delete GameHQ's saved Telegram session, use Disconnect in the list above.</source>
+      <translation>연결되었습니다. 로그아웃하고 GameHQ에 저장된 Telegram 세션을 삭제하려면 위 목록에서 연결 해제를 사용하세요.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.continue">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="173"></location>
+      <source>Continue</source>
+      <translation>계속</translation>
+    </message>
+    <message id="gamehq.settings.telegram.credentials_help">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="81"></location>
+      <source>Create an API ID and API hash for GameHQ at my.telegram.org (API development tools), then enter them here. They are kept in Windows Credential Manager, never in GameHQ's settings.</source>
+      <translation>my.telegram.org(API 개발 도구)에서 GameHQ에서 사용할 API ID와 API 해시를 만든 다음 여기에 입력하세요. 두 값은 Windows 자격 증명 관리자에 저장되며 GameHQ 설정에는 저장되지 않습니다.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.description">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
+      <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
+      <translation>GameHQ에서 Telegram 연락처로 캡처를 바로 보냅니다. GameHQ는 채팅이나 메시지를 표시하지 않으며 선택하지 않은 항목은 보내지 않습니다. 이 기능은 Telegram 계정 전체에 로그인하므로 신뢰할 수 있는 계정만 연결하세요.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.bad_runtime">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
+      <source>The Telegram component is not the version GameHQ expects, so it was not loaded.</source>
+      <translation>Telegram 구성 요소가 GameHQ에서 요구하는 버전이 아니므로 불러오지 않았습니다.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.code_expired">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="42"></location>
+      <source>That code has expired. Cancel and start again to get a new one.</source>
+      <translation>이 코드는 만료되었습니다. 취소한 후 다시 시작하여 새 코드를 받으세요.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.code_invalid">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="39"></location>
+      <source>That code is not correct.</source>
+      <translation>코드가 올바르지 않습니다.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.credentials_rejected">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="51"></location>
+      <source>Telegram rejected the API ID or API hash.</source>
+      <translation>Telegram에서 API ID 또는 API 해시를 거부했습니다.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.generic">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="63"></location>
+      <source>Couldn't connect to Telegram. Check your connection and try again.</source>
+      <translation>Telegram에 연결할 수 없습니다. 연결 상태를 확인하고 다시 시도하세요.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.invalid_api_hash">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="60"></location>
+      <source>The API hash is 32 letters and digits.</source>
+      <translation>API 해시는 영문자와 숫자 32자입니다.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.invalid_api_id">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="57"></location>
+      <source>The API ID is a number.</source>
+      <translation>API ID는 숫자입니다.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.no_credentials">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="24"></location>
+      <source>Enter the API ID and API hash first.</source>
+      <translation>먼저 API ID와 API 해시를 입력하세요.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.no_runtime">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
+      <source>The optional Telegram component is not installed in this GameHQ.</source>
+      <translation>선택 사항인 Telegram 구성 요소가 이 GameHQ에 설치되어 있지 않습니다.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.password_invalid">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
+      <source>That password is not correct.</source>
+      <translation>비밀번호가 올바르지 않습니다.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.phone_invalid">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="36"></location>
+      <source>Telegram does not accept that phone number. Use the international format, for example +48 123 456 789.</source>
+      <translation>Telegram에서 이 전화번호를 허용하지 않습니다. 국제 형식으로 입력하세요(예: +48 123 456 789).</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.rate_limited">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="48"></location>
+      <source>Telegram asks you to wait before trying again.</source>
+      <translation>Telegram에서 잠시 기다렸다가 다시 시도하라고 합니다.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.unsupported_auth">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="54"></location>
+      <source>This account needs a sign-in step GameHQ does not support. Use Telegram Desktop sharing instead.</source>
+      <translation>이 계정은 GameHQ가 지원하지 않는 로그인 단계가 필요합니다. 대신 Telegram Desktop 공유를 사용하세요.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.forget">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="129"></location>
+      <source>Forget API ID and hash</source>
+      <translation>API ID 및 해시 삭제</translation>
+    </message>
+    <message id="gamehq.settings.telegram.title">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="69"></location>
+      <source>Telegram account</source>
+      <translation>Telegram 계정</translation>
+    </message>
+    <message id="gamehq.settings.telegram.working">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="137"></location>
+      <source>Working…</source>
+      <translation>처리하는 중…</translation>
     </message>
     <message id="gamehq.settings.theme.blue.description">
       <location filename="src/ui/qml/themes/Skin.qml" line="22"></location>
@@ -4601,17 +4733,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>신스웨이브</translation>
     </message>
     <message id="gamehq.share.addons.description">
-      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="122"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="130"></location>
       <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
       <translation>켜면 이 PC에서 내 계정으로 실행되는 다른 프로그램이 공유 대상을 제공하고, 공유하려고 선택한 캡처를 받을 수 있습니다. 기본값은 꺼짐입니다. 적용하려면 GameHQ를 다시 시작하세요.</translation>
     </message>
     <message id="gamehq.share.addons.label">
-      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="128"></location>
       <source>Allow add-ons from other programs</source>
       <translation>다른 프로그램의 애드온 허용</translation>
     </message>
     <message id="gamehq.share.addons.title">
-      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="117"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="125"></location>
       <source>Share add-ons</source>
       <translation>공유 애드온</translation>
     </message>
@@ -4673,7 +4805,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.error.provider_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
       <source>That destination is turned off in Settings &gt; Sharing.</source>
-      <translation type="unfinished"></translation>
+      <translation>이 공유 대상은 설정 &gt; 공유에서 꺼져 있습니다.</translation>
     </message>
     <message id="gamehq.share.error.rate_limited">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="222"></location>
@@ -4683,7 +4815,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.error.sharing_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
       <source>Sharing is turned off. Turn it on in Settings &gt; Sharing.</source>
-      <translation type="unfinished"></translation>
+      <translation>공유가 꺼져 있습니다. 설정 &gt; 공유에서 켜세요.</translation>
     </message>
     <message id="gamehq.share.error.too_large">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="225"></location>
@@ -4824,6 +4956,26 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="132"></location>
       <source>Opens Telegram to choose the chat. GameHQ never signs in to Telegram.</source>
       <translation>Telegram을 열어 채팅을 선택합니다. GameHQ는 Telegram에 로그인하지 않습니다.</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.bad_runtime">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="149"></location>
+      <source>The optional Telegram component is not the version GameHQ expects.</source>
+      <translation>선택 사항인 Telegram 구성 요소가 GameHQ에서 요구하는 버전이 아닙니다.</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.name">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="91"></location>
+      <source>Telegram account</source>
+      <translation>Telegram 계정</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.no_runtime">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="144"></location>
+      <source>The optional Telegram component is not installed.</source>
+      <translation>선택 사항인 Telegram 구성 요소가 설치되어 있지 않습니다.</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.privacy">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="158"></location>
+      <source>Signs in to your Telegram account inside GameHQ. GameHQ only sends the capture you pick and never shows your chats or messages.</source>
+      <translation>GameHQ 안에서 Telegram 계정에 로그인합니다. GameHQ는 선택한 캡처만 보내며 채팅이나 메시지는 절대 표시하지 않습니다.</translation>
     </message>
     <message id="gamehq.share.title">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="347"></location>

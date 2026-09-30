@@ -109,6 +109,7 @@
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
       <source>Cancel</source>
       <translation>Отменить</translation>
     </message>
@@ -538,6 +539,7 @@
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="629"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="26"></location>
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="168"></location>
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="101"></location>
       <source>Save</source>
       <translation>Сохранить</translation>
     </message>
@@ -974,7 +976,7 @@
       <translation>Импорт другого портативного профиля уже выполняется.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="667"></location>
+      <location filename="src/app/App.cpp" line="668"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Обновление отменено: захват не удалось безопасно завершить вовремя.</translation>
     </message>
@@ -1225,7 +1227,7 @@
       <translation>GameHQ не удалось опубликовать транзакцию обновления.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="642"></location>
+      <location filename="src/app/App.cpp" line="643"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ не удалось начать обслуживание обновления: %1</translation>
     </message>
@@ -2143,107 +2145,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Поддержать GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="487"></location>
+      <location filename="src/app/App.cpp" line="488"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Некоторые файлы не удалось удалить. Возможно, они используются другими программами. Закройте программы, которые их используют, и повторите попытку.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="494"></location>
+      <location filename="src/app/App.cpp" line="495"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Не удалось удалить файл. Возможно, он используется другой программой. Закройте программу, которая его использует, и повторите попытку.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="500"></location>
+      <location filename="src/app/App.cpp" line="501"></location>
       <source>Couldn't delete</source>
       <translation>Не удалось удалить</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="293"></location>
+      <location filename="src/app/App.cpp" line="294"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>Он не добавлен в библиотеку, и файла нет на диске.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="287"></location>
+      <location filename="src/app/App.cpp" line="288"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>Файл находится в папке захвата, но его не удалось добавить в библиотеку.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="277"></location>
+      <location filename="src/app/App.cpp" line="278"></location>
       <source>Saved to disk, not in library</source>
       <translation>Сохранено на диск, но не в библиотеку</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="399"></location>
+      <location filename="src/app/App.cpp" line="400"></location>
       <source>Capture request received</source>
       <translation>Запрос на захват получен</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="462"></location>
+      <location filename="src/app/App.cpp" line="463"></location>
       <source>Reason: %1</source>
       <translation>Причина: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="80"></location>
+      <location filename="src/app/App.cpp" line="81"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>Сбой буфера повтора; клип не сохранён</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="74"></location>
+      <location filename="src/app/App.cpp" line="75"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>Буфер повтора накапливает материал; повторите сохранение через несколько секунд</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="92"></location>
+      <location filename="src/app/App.cpp" line="93"></location>
       <source>Replay buffer is empty</source>
       <translation>Буфер повтора пуст</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="86"></location>
+      <location filename="src/app/App.cpp" line="87"></location>
       <source>Replay buffer is not running</source>
       <translation>Буфер повтора не запущен</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="68"></location>
+      <location filename="src/app/App.cpp" line="69"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>Буфер повтора запускается; повторите сохранение через несколько секунд</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="309"></location>
+      <location filename="src/app/App.cpp" line="310"></location>
       <source>Replay failed</source>
       <translation>Не удалось сохранить повтор</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="394"></location>
+      <location filename="src/app/App.cpp" line="395"></location>
       <source>Replay save requested</source>
       <translation>Запрошено сохранение повтора</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="443"></location>
+      <location filename="src/app/App.cpp" line="444"></location>
       <source>Replay saved</source>
       <translation>Повтор сохранён</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="302"></location>
+      <location filename="src/app/App.cpp" line="303"></location>
       <source>Screenshot failed</source>
       <translation>Не удалось сделать снимок экрана</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="344"></location>
+      <location filename="src/app/App.cpp" line="345"></location>
       <source>Screenshot saved</source>
       <translation>Снимок экрана сохранён</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="545"></location>
+      <location filename="src/app/App.cpp" line="546"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ запущен с настройками по умолчанию. Предыдущий файл настроек сохранён, поэтому ничего не потеряно.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="540"></location>
+      <location filename="src/app/App.cpp" line="541"></location>
       <source>Settings could not be read</source>
       <translation>Не удалось прочитать настройки</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="709"></location>
+      <location filename="src/app/App.cpp" line="710"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Некоторые звуки интерфейса недоступны</translation>
     </message>
@@ -2875,32 +2877,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Общие</translation>
     </message>
     <message id="gamehq.settings.category.input">
-      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="245"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="9"></location>
       <source>Input</source>
       <translation>Ввод</translation>
     </message>
     <message id="gamehq.settings.category.library">
-      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
       <source>Library</source>
       <translation>Библиотека</translation>
     </message>
     <message id="gamehq.settings.category.notifications_sound">
-      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
       <source>Notifications &amp; sound</source>
       <translation>Уведомления и звук</translation>
     </message>
     <message id="gamehq.settings.category.replay">
-      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="229"></location>
       <source>Replay</source>
       <translation>Повтор</translation>
     </message>
     <message id="gamehq.settings.category.sharing">
-      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
       <source>Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>Отправка</translation>
     </message>
     <message id="gamehq.settings.disclosure.default">
       <location filename="src/ui/qml/components/SettingsDisclosure.qml" line="9"></location>
@@ -4426,72 +4428,202 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.auth.connected">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="25"></location>
       <source>Connected</source>
-      <translation type="unfinished"></translation>
+      <translation>Подключено</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.connecting">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="28"></location>
       <source>Connecting…</source>
-      <translation type="unfinished"></translation>
+      <translation>Подключение…</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.disconnected">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="34"></location>
       <source>Not connected</source>
-      <translation type="unfinished"></translation>
+      <translation>Не подключено</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.error">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="31"></location>
       <source>Connection problem</source>
-      <translation type="unfinished"></translation>
+      <translation>Проблема с подключением</translation>
     </message>
     <message id="gamehq.settings.sharing.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="16"></location>
       <source>Choose where captures can be shared. Nothing is ever sent without you picking a capture and a destination.</source>
-      <translation type="unfinished"></translation>
+      <translation>Выберите, куда можно отправлять записи. Ничего не отправляется, пока вы не выберете запись и место назначения.</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.action">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="102"></location>
       <source>Disconnect</source>
-      <translation type="unfinished"></translation>
+      <translation>Отключить</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
       <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
-      <translation type="unfinished"></translation>
+      <translation>Выполняет выход GameHQ и удаляет локальный сеанс. Отключение места назначения этого не делает.</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
       <source>Disconnect and remove the saved session</source>
-      <translation type="unfinished"></translation>
+      <translation>Отключить и удалить сохранённый сеанс</translation>
     </message>
     <message id="gamehq.settings.sharing.master.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="50"></location>
       <source>Turns the Share option on or off everywhere: gallery, lightbox and overlay.</source>
-      <translation type="unfinished"></translation>
+      <translation>Включает или отключает отправку везде: в галерее, просмотре и оверлее.</translation>
     </message>
     <message id="gamehq.settings.sharing.master.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="48"></location>
       <source>Enable Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>Включить отправку</translation>
     </message>
     <message id="gamehq.settings.sharing.master.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="45"></location>
       <source>Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>Отправка</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation type="unfinished"></translation>
+      <translation>Отключение места назначения лишь скрывает его. Сохранённые учётные записи и каналы остаются, пока вы не отключите или не удалите их.</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
       <source>Destinations</source>
-      <translation type="unfinished"></translation>
+      <translation>Места назначения</translation>
     </message>
     <message id="gamehq.settings.sharing.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="14"></location>
       <source>Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>Отправка</translation>
+    </message>
+    <message id="gamehq.settings.telegram.api_hash">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="97"></location>
+      <source>API hash</source>
+      <translation>Хеш API</translation>
+    </message>
+    <message id="gamehq.settings.telegram.api_id">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="91"></location>
+      <source>API ID</source>
+      <translation>ID API</translation>
+    </message>
+    <message id="gamehq.settings.telegram.ask_code">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="155"></location>
+      <source>Telegram sent you a code. Enter it here.</source>
+      <translation>Telegram отправил вам код. Введите его здесь.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.ask_password">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="157"></location>
+      <source>Enter your Telegram two-step verification password.</source>
+      <translation>Введите пароль двухэтапной проверки Telegram.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.ask_phone">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="152"></location>
+      <source>Enter the phone number of your Telegram account.</source>
+      <translation>Введите номер телефона вашей учётной записи Telegram.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.connect">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="120"></location>
+      <source>Connect Telegram</source>
+      <translation>Подключить Telegram</translation>
+    </message>
+    <message id="gamehq.settings.telegram.connected_help">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="210"></location>
+      <source>Connected. To sign out and delete GameHQ's saved Telegram session, use Disconnect in the list above.</source>
+      <translation>Подключено. Чтобы выйти и удалить сохранённый сеанс Telegram в GameHQ, используйте «Отключить» в списке выше.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.continue">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="173"></location>
+      <source>Continue</source>
+      <translation>Продолжить</translation>
+    </message>
+    <message id="gamehq.settings.telegram.credentials_help">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="81"></location>
+      <source>Create an API ID and API hash for GameHQ at my.telegram.org (API development tools), then enter them here. They are kept in Windows Credential Manager, never in GameHQ's settings.</source>
+      <translation>Создайте ID API и хеш API для GameHQ на my.telegram.org (инструменты разработчика API) и введите их здесь. Они хранятся в диспетчере учётных данных Windows, а не в настройках GameHQ.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.description">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
+      <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
+      <translation>Отправляйте записи из GameHQ прямо своим контактам в Telegram. GameHQ не показывает чаты и сообщения и не отправляет ничего, что вы не выбрали. Это выполняет вход в вашу учётную запись Telegram целиком, поэтому подключайте только ту учётную запись, с которой вам комфортно.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.bad_runtime">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
+      <source>The Telegram component is not the version GameHQ expects, so it was not loaded.</source>
+      <translation>Компонент Telegram не той версии, которую ожидает GameHQ, поэтому он не был загружен.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.code_expired">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="42"></location>
+      <source>That code has expired. Cancel and start again to get a new one.</source>
+      <translation>Срок действия кода истёк. Отмените и начните заново, чтобы получить новый.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.code_invalid">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="39"></location>
+      <source>That code is not correct.</source>
+      <translation>Неверный код.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.credentials_rejected">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="51"></location>
+      <source>Telegram rejected the API ID or API hash.</source>
+      <translation>Telegram отклонил ID API или хеш API.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.generic">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="63"></location>
+      <source>Couldn't connect to Telegram. Check your connection and try again.</source>
+      <translation>Не удалось подключиться к Telegram. Проверьте подключение и повторите попытку.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.invalid_api_hash">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="60"></location>
+      <source>The API hash is 32 letters and digits.</source>
+      <translation>Хеш API состоит из 32 букв и цифр.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.invalid_api_id">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="57"></location>
+      <source>The API ID is a number.</source>
+      <translation>ID API — это число.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.no_credentials">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="24"></location>
+      <source>Enter the API ID and API hash first.</source>
+      <translation>Сначала введите ID API и хеш API.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.no_runtime">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
+      <source>The optional Telegram component is not installed in this GameHQ.</source>
+      <translation>Необязательный компонент Telegram не установлен в этой версии GameHQ.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.password_invalid">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
+      <source>That password is not correct.</source>
+      <translation>Неверный пароль.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.phone_invalid">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="36"></location>
+      <source>Telegram does not accept that phone number. Use the international format, for example +48 123 456 789.</source>
+      <translation>Telegram не принимает этот номер телефона. Используйте международный формат, например +48 123 456 789.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.rate_limited">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="48"></location>
+      <source>Telegram asks you to wait before trying again.</source>
+      <translation>Telegram просит подождать перед повторной попыткой.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.unsupported_auth">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="54"></location>
+      <source>This account needs a sign-in step GameHQ does not support. Use Telegram Desktop sharing instead.</source>
+      <translation>Для этой учётной записи нужен шаг входа, который GameHQ не поддерживает. Используйте вместо этого отправку через Telegram Desktop.</translation>
+    </message>
+    <message id="gamehq.settings.telegram.forget">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="129"></location>
+      <source>Forget API ID and hash</source>
+      <translation>Забыть ID API и хеш</translation>
+    </message>
+    <message id="gamehq.settings.telegram.title">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="69"></location>
+      <source>Telegram account</source>
+      <translation>Учётная запись Telegram</translation>
+    </message>
+    <message id="gamehq.settings.telegram.working">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="137"></location>
+      <source>Working…</source>
+      <translation>Выполняется…</translation>
     </message>
     <message id="gamehq.settings.theme.blue.description">
       <location filename="src/ui/qml/themes/Skin.qml" line="22"></location>
@@ -4615,17 +4747,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Synthwave</translation>
     </message>
     <message id="gamehq.share.addons.description">
-      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="122"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="130"></location>
       <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
       <translation>Другие программы, запущенные от вашего имени на этом компьютере, смогут предлагать места для отправки и получать записи, которыми вы решили поделиться. По умолчанию выключено. Перезапустите GameHQ, чтобы применить.</translation>
     </message>
     <message id="gamehq.share.addons.label">
-      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="128"></location>
       <source>Allow add-ons from other programs</source>
       <translation>Разрешить дополнения из других программ</translation>
     </message>
     <message id="gamehq.share.addons.title">
-      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="117"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="125"></location>
       <source>Share add-ons</source>
       <translation>Дополнения для отправки</translation>
     </message>
@@ -4687,7 +4819,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.error.provider_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
       <source>That destination is turned off in Settings &gt; Sharing.</source>
-      <translation type="unfinished"></translation>
+      <translation>Это место назначения отключено в разделе «Настройки» &gt; «Отправка».</translation>
     </message>
     <message id="gamehq.share.error.rate_limited">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="222"></location>
@@ -4697,7 +4829,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.error.sharing_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
       <source>Sharing is turned off. Turn it on in Settings &gt; Sharing.</source>
-      <translation type="unfinished"></translation>
+      <translation>Отправка отключена. Включите её в разделе «Настройки» &gt; «Отправка».</translation>
     </message>
     <message id="gamehq.share.error.too_large">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="225"></location>
@@ -4838,6 +4970,26 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="132"></location>
       <source>Opens Telegram to choose the chat. GameHQ never signs in to Telegram.</source>
       <translation>Открывает Telegram, чтобы вы выбрали чат. GameHQ никогда не входит в Telegram.</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.bad_runtime">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="149"></location>
+      <source>The optional Telegram component is not the version GameHQ expects.</source>
+      <translation>Необязательный компонент Telegram не той версии, которую ожидает GameHQ.</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.name">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="91"></location>
+      <source>Telegram account</source>
+      <translation>Учётная запись Telegram</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.no_runtime">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="144"></location>
+      <source>The optional Telegram component is not installed.</source>
+      <translation>Необязательный компонент Telegram не установлен.</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.privacy">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="158"></location>
+      <source>Signs in to your Telegram account inside GameHQ. GameHQ only sends the capture you pick and never shows your chats or messages.</source>
+      <translation>Выполняет вход в вашу учётную запись Telegram внутри GameHQ. GameHQ отправляет только выбранную вами запись и никогда не показывает ваши чаты и сообщения.</translation>
     </message>
     <message id="gamehq.share.title">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="347"></location>

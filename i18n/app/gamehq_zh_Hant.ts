@@ -109,6 +109,7 @@
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
       <source>Cancel</source>
       <translation>取消</translation>
     </message>
@@ -538,6 +539,7 @@
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="629"></location>
       <location filename="src/ui/qml/components/MappingPresetNameDialog.qml" line="26"></location>
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="168"></location>
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="101"></location>
       <source>Save</source>
       <translation>儲存</translation>
     </message>
@@ -970,7 +972,7 @@
       <translation>已有另一個可攜式設定檔匯入正在執行。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="667"></location>
+      <location filename="src/app/App.cpp" line="668"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>由於擷取任務未能及時安全完成，更新已取消。</translation>
     </message>
@@ -1221,7 +1223,7 @@
       <translation>GameHQ 無法完成更新交易。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="642"></location>
+      <location filename="src/app/App.cpp" line="643"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ 無法開始更新維護：%1</translation>
     </message>
@@ -2133,107 +2135,107 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>支援 GameHQ</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="487"></location>
+      <location filename="src/app/App.cpp" line="488"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>部分檔案無法刪除。它們可能正被其他程式使用。請關閉正在使用這些檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="494"></location>
+      <location filename="src/app/App.cpp" line="495"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>無法刪除該檔案。它可能正被其他程式使用。請關閉正在使用該檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="500"></location>
+      <location filename="src/app/App.cpp" line="501"></location>
       <source>Couldn't delete</source>
       <translation>無法刪除</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="293"></location>
+      <location filename="src/app/App.cpp" line="294"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>未加入媒體庫，磁碟上也沒有該檔案。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="287"></location>
+      <location filename="src/app/App.cpp" line="288"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>檔案位於您的擷取資料夾中，但無法加入媒體庫。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="277"></location>
+      <location filename="src/app/App.cpp" line="278"></location>
       <source>Saved to disk, not in library</source>
       <translation>已儲存至磁碟，未加入媒體庫</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="399"></location>
+      <location filename="src/app/App.cpp" line="400"></location>
       <source>Capture request received</source>
       <translation>已收到擷取請求</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="462"></location>
+      <location filename="src/app/App.cpp" line="463"></location>
       <source>Reason: %1</source>
       <translation>原因：%1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
-      <location filename="src/app/App.cpp" line="80"></location>
+      <location filename="src/app/App.cpp" line="81"></location>
       <source>Replay buffer failed; no clip was saved</source>
       <translation>重播緩衝區發生錯誤，未儲存任何短片</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_collecting">
-      <location filename="src/app/App.cpp" line="74"></location>
+      <location filename="src/app/App.cpp" line="75"></location>
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>重播緩衝區正在收集畫面，請於幾秒後再試著儲存</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="92"></location>
+      <location filename="src/app/App.cpp" line="93"></location>
       <source>Replay buffer is empty</source>
       <translation>重播緩衝區是空的</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="86"></location>
+      <location filename="src/app/App.cpp" line="87"></location>
       <source>Replay buffer is not running</source>
       <translation>重播緩衝區未在執行</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_starting">
-      <location filename="src/app/App.cpp" line="68"></location>
+      <location filename="src/app/App.cpp" line="69"></location>
       <source>Replay buffer is starting; try saving again in a few seconds</source>
       <translation>重播緩衝區正在啟動，請於幾秒後再試著儲存</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="309"></location>
+      <location filename="src/app/App.cpp" line="310"></location>
       <source>Replay failed</source>
       <translation>重播失敗</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="394"></location>
+      <location filename="src/app/App.cpp" line="395"></location>
       <source>Replay save requested</source>
       <translation>已請求儲存重播</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="443"></location>
+      <location filename="src/app/App.cpp" line="444"></location>
       <source>Replay saved</source>
       <translation>重播已儲存</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="302"></location>
+      <location filename="src/app/App.cpp" line="303"></location>
       <source>Screenshot failed</source>
       <translation>螢幕截圖失敗</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="344"></location>
+      <location filename="src/app/App.cpp" line="345"></location>
       <source>Screenshot saved</source>
       <translation>螢幕截圖已儲存</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="545"></location>
+      <location filename="src/app/App.cpp" line="546"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 已使用預設設定啟動。系統保留了之前的設定檔案，因此沒有遺失任何內容。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="540"></location>
+      <location filename="src/app/App.cpp" line="541"></location>
       <source>Settings could not be read</source>
       <translation>無法讀取設定</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="709"></location>
+      <location filename="src/app/App.cpp" line="710"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>部分介面音效無法使用</translation>
     </message>
@@ -2865,32 +2867,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>一般</translation>
     </message>
     <message id="gamehq.settings.category.input">
-      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
       <location filename="src/ui/qml/components/BindingAssignmentDialog.qml" line="245"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="9"></location>
       <source>Input</source>
       <translation>輸入</translation>
     </message>
     <message id="gamehq.settings.category.library">
-      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="21"></location>
       <source>Library</source>
       <translation>媒體庫</translation>
     </message>
     <message id="gamehq.settings.category.notifications_sound">
-      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="23"></location>
       <source>Notifications &amp; sound</source>
       <translation>通知與聲音</translation>
     </message>
     <message id="gamehq.settings.category.replay">
-      <location filename="src/ui/qml/SettingsView.qml" line="19"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="229"></location>
       <source>Replay</source>
       <translation>重播</translation>
     </message>
     <message id="gamehq.settings.category.sharing">
-      <location filename="src/ui/qml/SettingsView.qml" line="17"></location>
+      <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
       <source>Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>分享</translation>
     </message>
     <message id="gamehq.settings.disclosure.default">
       <location filename="src/ui/qml/components/SettingsDisclosure.qml" line="9"></location>
@@ -4412,72 +4414,202 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.auth.connected">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="25"></location>
       <source>Connected</source>
-      <translation type="unfinished"></translation>
+      <translation>已連結</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.connecting">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="28"></location>
       <source>Connecting…</source>
-      <translation type="unfinished"></translation>
+      <translation>正在連結…</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.disconnected">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="34"></location>
       <source>Not connected</source>
-      <translation type="unfinished"></translation>
+      <translation>未連結</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.error">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="31"></location>
       <source>Connection problem</source>
-      <translation type="unfinished"></translation>
+      <translation>連結問題</translation>
     </message>
     <message id="gamehq.settings.sharing.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="16"></location>
       <source>Choose where captures can be shared. Nothing is ever sent without you picking a capture and a destination.</source>
-      <translation type="unfinished"></translation>
+      <translation>選擇可分享擷取內容的位置。在您選擇擷取內容和分享目標之前，不會傳送任何內容。</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.action">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="102"></location>
       <source>Disconnect</source>
-      <translation type="unfinished"></translation>
+      <translation>中斷連結</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
       <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
-      <translation type="unfinished"></translation>
+      <translation>讓 GameHQ 登出並刪除其本機工作階段。關閉分享目標並不會執行此操作。</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
       <source>Disconnect and remove the saved session</source>
-      <translation type="unfinished"></translation>
+      <translation>中斷連結並移除已儲存的工作階段</translation>
     </message>
     <message id="gamehq.settings.sharing.master.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="50"></location>
       <source>Turns the Share option on or off everywhere: gallery, lightbox and overlay.</source>
-      <translation type="unfinished"></translation>
+      <translation>在所有位置開啟或關閉分享選項：圖庫、檢視器和遊戲內嵌介面。</translation>
     </message>
     <message id="gamehq.settings.sharing.master.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="48"></location>
       <source>Enable Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>啟用分享</translation>
     </message>
     <message id="gamehq.settings.sharing.master.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="45"></location>
       <source>Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>分享</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation type="unfinished"></translation>
+      <translation>關閉分享目標只會將其隱藏。已儲存的帳戶和頻道會一直保留，直到您中斷連結或將其移除。</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
       <source>Destinations</source>
-      <translation type="unfinished"></translation>
+      <translation>分享目標</translation>
     </message>
     <message id="gamehq.settings.sharing.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="14"></location>
       <source>Sharing</source>
-      <translation type="unfinished"></translation>
+      <translation>分享</translation>
+    </message>
+    <message id="gamehq.settings.telegram.api_hash">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="97"></location>
+      <source>API hash</source>
+      <translation>API 雜湊</translation>
+    </message>
+    <message id="gamehq.settings.telegram.api_id">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="91"></location>
+      <source>API ID</source>
+      <translation>API ID</translation>
+    </message>
+    <message id="gamehq.settings.telegram.ask_code">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="155"></location>
+      <source>Telegram sent you a code. Enter it here.</source>
+      <translation>Telegram 已向您傳送驗證碼。請在此輸入。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.ask_password">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="157"></location>
+      <source>Enter your Telegram two-step verification password.</source>
+      <translation>請輸入您的 Telegram 兩步驟驗證密碼。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.ask_phone">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="152"></location>
+      <source>Enter the phone number of your Telegram account.</source>
+      <translation>請輸入您 Telegram 帳戶所綁定的手機號碼。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.connect">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="120"></location>
+      <source>Connect Telegram</source>
+      <translation>連結 Telegram</translation>
+    </message>
+    <message id="gamehq.settings.telegram.connected_help">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="210"></location>
+      <source>Connected. To sign out and delete GameHQ's saved Telegram session, use Disconnect in the list above.</source>
+      <translation>已連結。若要登出並刪除 GameHQ 儲存的 Telegram 工作階段，請使用上方清單中的「中斷連結」。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.continue">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="173"></location>
+      <source>Continue</source>
+      <translation>繼續</translation>
+    </message>
+    <message id="gamehq.settings.telegram.credentials_help">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="81"></location>
+      <source>Create an API ID and API hash for GameHQ at my.telegram.org (API development tools), then enter them here. They are kept in Windows Credential Manager, never in GameHQ's settings.</source>
+      <translation>請在 my.telegram.org（API 開發工具）為 GameHQ 建立 API ID 和 API 雜湊，然後在此輸入。它們儲存在 Windows 認證管理員中，絕不會儲存在 GameHQ 的設定裡。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.description">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
+      <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
+      <translation>直接從 GameHQ 將擷取內容傳送給您的 Telegram 聯絡人。GameHQ 不會顯示聊天或訊息，也不會傳送您沒有選擇的任何內容。這會登入您的整個 Telegram 帳戶，因此請只連結您信任的帳戶。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.bad_runtime">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
+      <source>The Telegram component is not the version GameHQ expects, so it was not loaded.</source>
+      <translation>Telegram 元件不是 GameHQ 所需的版本，因此未載入。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.code_expired">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="42"></location>
+      <source>That code has expired. Cancel and start again to get a new one.</source>
+      <translation>該驗證碼已過期。請取消並重新開始以取得新的驗證碼。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.code_invalid">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="39"></location>
+      <source>That code is not correct.</source>
+      <translation>驗證碼不正確。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.credentials_rejected">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="51"></location>
+      <source>Telegram rejected the API ID or API hash.</source>
+      <translation>Telegram 拒絕了該 API ID 或 API 雜湊。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.generic">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="63"></location>
+      <source>Couldn't connect to Telegram. Check your connection and try again.</source>
+      <translation>無法連線到 Telegram。請檢查網路連線後重試。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.invalid_api_hash">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="60"></location>
+      <source>The API hash is 32 letters and digits.</source>
+      <translation>API 雜湊由 32 個字母和數字組成。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.invalid_api_id">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="57"></location>
+      <source>The API ID is a number.</source>
+      <translation>API ID 是一個數字。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.no_credentials">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="24"></location>
+      <source>Enter the API ID and API hash first.</source>
+      <translation>請先輸入 API ID 和 API 雜湊。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.no_runtime">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
+      <source>The optional Telegram component is not installed in this GameHQ.</source>
+      <translation>此 GameHQ 中未安裝選用的 Telegram 元件。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.password_invalid">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
+      <source>That password is not correct.</source>
+      <translation>密碼不正確。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.phone_invalid">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="36"></location>
+      <source>Telegram does not accept that phone number. Use the international format, for example +48 123 456 789.</source>
+      <translation>Telegram 不接受該手機號碼。請使用國際格式，例如 +48 123 456 789。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.rate_limited">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="48"></location>
+      <source>Telegram asks you to wait before trying again.</source>
+      <translation>Telegram 要求您稍候片刻後再重試。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.error.unsupported_auth">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="54"></location>
+      <source>This account needs a sign-in step GameHQ does not support. Use Telegram Desktop sharing instead.</source>
+      <translation>此帳戶需要 GameHQ 不支援的登入步驟。請改用透過 Telegram Desktop 分享。</translation>
+    </message>
+    <message id="gamehq.settings.telegram.forget">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="129"></location>
+      <source>Forget API ID and hash</source>
+      <translation>忘記 API ID 和雜湊</translation>
+    </message>
+    <message id="gamehq.settings.telegram.title">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="69"></location>
+      <source>Telegram account</source>
+      <translation>Telegram 帳戶</translation>
+    </message>
+    <message id="gamehq.settings.telegram.working">
+      <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="137"></location>
+      <source>Working…</source>
+      <translation>正在處理…</translation>
     </message>
     <message id="gamehq.settings.theme.blue.description">
       <location filename="src/ui/qml/themes/Skin.qml" line="22"></location>
@@ -4601,17 +4733,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Synthwave</translation>
     </message>
     <message id="gamehq.share.addons.description">
-      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="122"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="130"></location>
       <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
       <translation>開啟後，在此電腦上以您的身分執行的其他程式可以提供分享目標，並接收您選擇分享的擷取內容。預設為關閉。重新啟動 GameHQ 後生效。</translation>
     </message>
     <message id="gamehq.share.addons.label">
-      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="128"></location>
       <source>Allow add-ons from other programs</source>
       <translation>允許來自其他程式的附加元件</translation>
     </message>
     <message id="gamehq.share.addons.title">
-      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="117"></location>
+      <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="125"></location>
       <source>Share add-ons</source>
       <translation>分享附加元件</translation>
     </message>
@@ -4673,7 +4805,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.error.provider_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
       <source>That destination is turned off in Settings &gt; Sharing.</source>
-      <translation type="unfinished"></translation>
+      <translation>該分享目標已在「設定」&gt;「分享」中關閉。</translation>
     </message>
     <message id="gamehq.share.error.rate_limited">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="222"></location>
@@ -4683,7 +4815,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.error.sharing_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
       <source>Sharing is turned off. Turn it on in Settings &gt; Sharing.</source>
-      <translation type="unfinished"></translation>
+      <translation>分享已關閉。請在「設定」&gt;「分享」中開啟。</translation>
     </message>
     <message id="gamehq.share.error.too_large">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="225"></location>
@@ -4824,6 +4956,26 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/share/providers/TelegramDesktopProvider.cpp" line="132"></location>
       <source>Opens Telegram to choose the chat. GameHQ never signs in to Telegram.</source>
       <translation>開啟 Telegram 以選擇聊天。GameHQ 從不登入 Telegram。</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.bad_runtime">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="149"></location>
+      <source>The optional Telegram component is not the version GameHQ expects.</source>
+      <translation>選用的 Telegram 元件不是 GameHQ 所需的版本。</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.name">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="91"></location>
+      <source>Telegram account</source>
+      <translation>Telegram 帳戶</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.no_runtime">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="144"></location>
+      <source>The optional Telegram component is not installed.</source>
+      <translation>未安裝選用的 Telegram 元件。</translation>
+    </message>
+    <message id="gamehq.share.telegram_integrated.privacy">
+      <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="158"></location>
+      <source>Signs in to your Telegram account inside GameHQ. GameHQ only sends the capture you pick and never shows your chats or messages.</source>
+      <translation>在 GameHQ 內登入您的 Telegram 帳戶。GameHQ 只會傳送您選擇的擷取內容，絕不會顯示您的聊天或訊息。</translation>
     </message>
     <message id="gamehq.share.title">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="347"></location>
