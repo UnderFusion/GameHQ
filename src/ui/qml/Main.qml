@@ -164,7 +164,8 @@ ApplicationWindow {
             if (text.length === 0 || text === window.lastControllerWarningToast)
                 return
             window.lastControllerWarningToast = text
-            if (!app.config("notifications.enabled", true))
+            if (!app.config("notifications.enabled", true)
+                    || !app.config("notifications.controller_hidden", true))
                 return
             //% "Controller hidden"
             notifications.post(qsTrId("gamehq.settings.input.hidden.title"), text, "", "warning")

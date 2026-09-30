@@ -383,6 +383,7 @@ bool App::init()
         const bool sound = m_config->value(replay ? ConfigKeys::ReplayClipSound
                                                  : ConfigKeys::CaptureScreenshotSound, true).toBool();
         const bool toast = m_config->value(ConfigKeys::NotificationsEnabled, true).toBool()
+            && m_config->value(ConfigKeys::NotificationsCaptureReceived, true).toBool()
             && m_config->value(replay ? ConfigKeys::ReplayClipNotify
                                      : ConfigKeys::CaptureScreenshotNotify, true).toBool();
         if (sound)
@@ -785,7 +786,8 @@ bool App::init()
         return QDesktopServices::openUrl(QUrl(url));
     };
     steamProviders.notify = [this](const QString& title, const QString& body) {
-        if (m_config->value(ConfigKeys::NotificationsEnabled, true).toBool())
+        if (m_config->value(ConfigKeys::NotificationsEnabled, true).toBool()
+            && m_config->value(ConfigKeys::NotificationsSteamInput, true).toBool())
             m_notify->post(title, body, {}, QStringLiteral("warning"));
     };
     m_steamInput = std::make_unique<SteamInputHelper>(m_config.get(), std::move(steamProviders));

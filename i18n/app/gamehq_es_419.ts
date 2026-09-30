@@ -114,9 +114,9 @@
       <translation>Cancelar</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1287"></location>
-      <location filename="src/ui/qml/Main.qml" line="1306"></location>
-      <location filename="src/ui/qml/Main.qml" line="1344"></location>
+      <location filename="src/ui/qml/Main.qml" line="1288"></location>
+      <location filename="src/ui/qml/Main.qml" line="1307"></location>
+      <location filename="src/ui/qml/Main.qml" line="1345"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
@@ -974,7 +974,7 @@
       <translation>Otra importación de perfil portátil ya está en ejecución.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="668"></location>
+      <location filename="src/app/App.cpp" line="669"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>La actualización se canceló porque las tareas de captura no terminaron de forma segura a tiempo.</translation>
     </message>
@@ -1225,7 +1225,7 @@
       <translation>GameHQ no pudo aplicar la transacción de actualización al estado final.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="643"></location>
+      <location filename="src/app/App.cpp" line="644"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ no pudo iniciar el mantenimiento de la actualización: %1</translation>
     </message>
@@ -1346,19 +1346,19 @@
       <translation>Agregar carpeta…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1346"></location>
+      <location filename="src/ui/qml/Main.qml" line="1347"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Selección múltiple</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1340"></location>
+      <location filename="src/ui/qml/Main.qml" line="1341"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>Compartir</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1342"></location>
+      <location filename="src/ui/qml/Main.qml" line="1343"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Mostrar en carpeta</translation>
@@ -1371,20 +1371,20 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1275"></location>
+      <location filename="src/ui/qml/Main.qml" line="1276"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 Esto eliminará el archivo de forma permanente.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1285"></location>
+      <location filename="src/ui/qml/Main.qml" line="1286"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1018"></location>
       <source>Delete capture?</source>
       <translation>¿Eliminar la captura?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="476"></location>
+      <location filename="src/ui/qml/Main.qml" line="477"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
@@ -1395,7 +1395,7 @@ Esta acción no se puede deshacer.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1304"></location>
+      <location filename="src/ui/qml/Main.qml" line="1305"></location>
       <source>Delete selected captures?</source>
       <translation>¿Eliminar las capturas seleccionadas?</translation>
     </message>
@@ -2059,7 +2059,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>%1 se comparte: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1255"></location>
+      <location filename="src/ui/qml/Main.qml" line="1256"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Elegir una carpeta para supervisar</translation>
@@ -2073,44 +2073,44 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Acerca de</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="199"></location>
+      <location filename="src/ui/qml/Main.qml" line="200"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="128"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
       <source>All</source>
       <translation>Todos</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="207"></location>
+      <location filename="src/ui/qml/Main.qml" line="208"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="39"></location>
       <source>Clips</source>
       <translation>Clips</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="203"></location>
+      <location filename="src/ui/qml/Main.qml" line="204"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="35"></location>
       <source>Favorites</source>
       <translation>Favoritos</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="209"></location>
+      <location filename="src/ui/qml/Main.qml" line="210"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="41"></location>
       <source>Game</source>
       <translation>Juego</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="211"></location>
+      <location filename="src/ui/qml/Main.qml" line="212"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="43"></location>
       <source>Game favorites</source>
       <translation>Favoritos del juego</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="201"></location>
+      <location filename="src/ui/qml/Main.qml" line="202"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="33"></location>
       <source>Recent</source>
       <translation>Recientes</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="205"></location>
+      <location filename="src/ui/qml/Main.qml" line="206"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="37"></location>
       <source>Screenshots</source>
       <translation>Capturas de pantalla</translation>
@@ -2165,17 +2165,17 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Mostrar herramientas</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="488"></location>
+      <location filename="src/app/App.cpp" line="489"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>No se pudieron eliminar algunos archivos. Puede que otros programas los estén usando. Cierra los programas que los estén usando y vuelve a intentarlo.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="495"></location>
+      <location filename="src/app/App.cpp" line="496"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>No se pudo eliminar el archivo. Puede que otro programa lo esté usando. Cierra el programa que lo esté usando y vuelve a intentarlo.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="501"></location>
+      <location filename="src/app/App.cpp" line="502"></location>
       <source>Couldn't delete</source>
       <translation>No se pudo eliminar</translation>
     </message>
@@ -2195,12 +2195,12 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Guardado en el disco, no en la biblioteca</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="400"></location>
+      <location filename="src/app/App.cpp" line="401"></location>
       <source>Capture request received</source>
       <translation>Solicitud de captura recibida</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="463"></location>
+      <location filename="src/app/App.cpp" line="464"></location>
       <source>Reason: %1</source>
       <translation>Motivo: %1</translation>
     </message>
@@ -2235,12 +2235,12 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Error al guardar la repetición</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="395"></location>
+      <location filename="src/app/App.cpp" line="396"></location>
       <source>Replay save requested</source>
       <translation>Guardado de repetición solicitado</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="444"></location>
+      <location filename="src/app/App.cpp" line="445"></location>
       <source>Replay saved</source>
       <translation>Repetición guardada</translation>
     </message>
@@ -2255,19 +2255,24 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Captura de pantalla guardada</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="546"></location>
+      <location filename="src/app/App.cpp" line="547"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ se inició con la configuración predeterminada. Se conservó el archivo de configuración anterior para que no se perdiera nada.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="541"></location>
+      <location filename="src/app/App.cpp" line="542"></location>
       <source>Settings could not be read</source>
       <translation>No se pudo leer la configuración</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="710"></location>
+      <location filename="src/app/App.cpp" line="711"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Algunos sonidos de la interfaz no están disponibles</translation>
+    </message>
+    <message id="gamehq.notifications.close">
+      <location filename="src/ui/qml/components/Toast.qml" line="92"></location>
+      <source>Close notification</source>
+      <translation>Cerrar notificación</translation>
     </message>
     <message id="gamehq.notifications.window_title">
       <location filename="src/ui/qml/ToastWindow.qml" line="18"></location>
@@ -3016,52 +3021,52 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Mostrar</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.capture_volume">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="93"></location>
       <source>Capture volume</source>
       <translation>Volumen de captura</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.capture_volume.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="71"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
       <source>Level for the screenshot, clip and capture-received sounds heard over a game.</source>
       <translation>Nivel de los sonidos de captura de pantalla, clip y captura recibida que se oyen sobre un juego.</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="47"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="71"></location>
       <source>Set the master sound switch, volume, and event-specific feedback.</source>
       <translation>Configurar el sonido general, el volumen y la respuesta de cada evento.</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.enabled.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="53"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="77"></location>
       <source>Play navigation and action feedback sounds.</source>
       <translation>Reproducir sonidos de respuesta para la navegación y las acciones.</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.enabled.label">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="51"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="75"></location>
       <source>UI sounds</source>
       <translation>Sonidos de la interfaz de usuario</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.eyebrow">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="43"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="67"></location>
       <source>Audio feedback</source>
       <translation>Respuesta sonora</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.replay">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="111"></location>
       <source>Replay saved sound</source>
       <translation>Sonido al guardar una repetición</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.screenshot">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="106"></location>
       <source>Screenshot sound</source>
       <translation>Sonido de la captura de pantalla</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="45"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
       <source>Sound</source>
       <translation>Sonido</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.volume">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="58"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
       <source>Volume</source>
       <translation>Volumen</translation>
     </message>
@@ -3071,47 +3076,47 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Elegir cómo confirma GameHQ las capturas, los clips y la navegación.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.capture_sound">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="150"></location>
       <source>Play capture sound</source>
       <translation>Reproducir sonido de captura</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="100"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="124"></location>
       <source>Preview notifications and sounds without creating a capture.</source>
       <translation>Previsualizar notificaciones y sonidos sin crear una captura.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="119"></location>
       <source>Preview</source>
       <translation>Vista previa</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.label">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="103"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="127"></location>
       <source>Preview feedback</source>
       <translation>Vista previa de avisos</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="108"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="132"></location>
       <source>Show test notification</source>
       <translation>Mostrar notificación de prueba</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_body">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="114"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="138"></location>
       <source>Notifications are working.</source>
       <translation>Las notificaciones están funcionando.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="112"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="136"></location>
       <source>%1 notification</source>
       <translation>Notificación de %1</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.sound">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="144"></location>
       <source>Play test sound</source>
       <translation>Reproducir sonido de prueba</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="97"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="121"></location>
       <source>Test the current feedback settings</source>
       <translation>Probar la configuración actual de respuesta</translation>
     </message>
@@ -3119,6 +3124,26 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="7"></location>
       <source>Notifications &amp; Sound</source>
       <translation>Notificaciones y sonido</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.capture_received">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="41"></location>
+      <source>Capture request received</source>
+      <translation>Solicitud de captura recibida</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.capture_received.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="43"></location>
+      <source>Shown the moment a screenshot or clip is requested, before the result arrives.</source>
+      <translation>Aparece en cuanto se solicita una captura de pantalla o un clip, antes de que llegue el resultado.</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.controller_hidden">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="57"></location>
+      <source>Controller hidden</source>
+      <translation>Control oculto</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.controller_hidden.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="59"></location>
+      <source>Warns when another program hides your controller from GameHQ.</source>
+      <translation>Avisa cuando otro programa oculta tu control a GameHQ.</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="17"></location>
@@ -3149,6 +3174,16 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="29"></location>
       <source>Screenshot captured</source>
       <translation>Captura de pantalla realizada</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.steam_input">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="49"></location>
+      <source>Steam Input conflict</source>
+      <translation>Conflicto con Steam Input</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.steam_input.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="51"></location>
+      <source>Warns in-game when Steam Input may also receive a GameHQ shortcut. The help in Input settings stays available.</source>
+      <translation>Avisa durante el juego cuando Steam Input también puede recibir un atajo de GameHQ. La ayuda de la sección Controles sigue disponible.</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="15"></location>
@@ -3444,7 +3479,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Corregir automáticamente</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
-      <location filename="src/ui/qml/Main.qml" line="170"></location>
+      <location filename="src/ui/qml/Main.qml" line="171"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Controller hidden</source>
       <translation>Control oculto</translation>

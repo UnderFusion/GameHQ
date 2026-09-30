@@ -18,6 +18,12 @@ Window {
     title: qsTrId("gamehq.notifications.window_title").arg(Brand.name)
 
     Binding { target: notifications; property: "visibleLimit"; value: Theme.toastVisibleLimit }
+    // Where the cards are, so C++ takes clicks only over them.
+    Binding {
+        target: notifications
+        property: "stackRect"
+        value: Qt.rect(stack.x, stack.y, stack.width, stack.height)
+    }
 
     Column {
         id: stack
@@ -43,6 +49,8 @@ Window {
                 isVideo: model.isVideo
                 pending: model.pending
                 contentRevision: model.revision
+                closable: notifications.pointerActive
+                paused: notifications.pointerInside
                 onDismissed: notifications.dismiss(model.toastKey, model.revision)
             }
         }

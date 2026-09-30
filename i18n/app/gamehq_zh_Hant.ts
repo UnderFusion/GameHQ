@@ -114,9 +114,9 @@
       <translation>取消</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1287"></location>
-      <location filename="src/ui/qml/Main.qml" line="1306"></location>
-      <location filename="src/ui/qml/Main.qml" line="1344"></location>
+      <location filename="src/ui/qml/Main.qml" line="1288"></location>
+      <location filename="src/ui/qml/Main.qml" line="1307"></location>
+      <location filename="src/ui/qml/Main.qml" line="1345"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
@@ -972,7 +972,7 @@
       <translation>已有另一個可攜式設定檔匯入正在執行。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="668"></location>
+      <location filename="src/app/App.cpp" line="669"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>由於擷取任務未能及時安全完成，更新已取消。</translation>
     </message>
@@ -1223,7 +1223,7 @@
       <translation>GameHQ 無法完成更新交易。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="643"></location>
+      <location filename="src/app/App.cpp" line="644"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ 無法開始更新維護：%1</translation>
     </message>
@@ -1344,19 +1344,19 @@
       <translation>新增資料夾…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1346"></location>
+      <location filename="src/ui/qml/Main.qml" line="1347"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>批次選擇</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1340"></location>
+      <location filename="src/ui/qml/Main.qml" line="1341"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>分享</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1342"></location>
+      <location filename="src/ui/qml/Main.qml" line="1343"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>在資料夾中顯示</translation>
@@ -1369,20 +1369,20 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1275"></location>
+      <location filename="src/ui/qml/Main.qml" line="1276"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 這將永久刪除該檔案。</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1285"></location>
+      <location filename="src/ui/qml/Main.qml" line="1286"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1018"></location>
       <source>Delete capture?</source>
       <translation>刪除該擷取內容？</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="476"></location>
+      <location filename="src/ui/qml/Main.qml" line="477"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
@@ -1391,7 +1391,7 @@ This cannot be undone.</source>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1304"></location>
+      <location filename="src/ui/qml/Main.qml" line="1305"></location>
       <source>Delete selected captures?</source>
       <translation>刪除選取的擷取內容？</translation>
     </message>
@@ -2054,7 +2054,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 已共享：%2 = %3，%4 = %5。</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1255"></location>
+      <location filename="src/ui/qml/Main.qml" line="1256"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>選擇要監看的資料夾</translation>
@@ -2068,44 +2068,44 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>關於</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="199"></location>
+      <location filename="src/ui/qml/Main.qml" line="200"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="128"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
       <source>All</source>
       <translation>全部</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="207"></location>
+      <location filename="src/ui/qml/Main.qml" line="208"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="39"></location>
       <source>Clips</source>
       <translation>短片</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="203"></location>
+      <location filename="src/ui/qml/Main.qml" line="204"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="35"></location>
       <source>Favorites</source>
       <translation>收藏</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="209"></location>
+      <location filename="src/ui/qml/Main.qml" line="210"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="41"></location>
       <source>Game</source>
       <translation>遊戲</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="211"></location>
+      <location filename="src/ui/qml/Main.qml" line="212"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="43"></location>
       <source>Game favorites</source>
       <translation>遊戲收藏</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="201"></location>
+      <location filename="src/ui/qml/Main.qml" line="202"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="33"></location>
       <source>Recent</source>
       <translation>最近</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="205"></location>
+      <location filename="src/ui/qml/Main.qml" line="206"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="37"></location>
       <source>Screenshots</source>
       <translation>截圖</translation>
@@ -2160,17 +2160,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>顯示工具</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="488"></location>
+      <location filename="src/app/App.cpp" line="489"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>部分檔案無法刪除。它們可能正被其他程式使用。請關閉正在使用這些檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="495"></location>
+      <location filename="src/app/App.cpp" line="496"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>無法刪除該檔案。它可能正被其他程式使用。請關閉正在使用該檔案的程式後再試一次。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="501"></location>
+      <location filename="src/app/App.cpp" line="502"></location>
       <source>Couldn't delete</source>
       <translation>無法刪除</translation>
     </message>
@@ -2190,12 +2190,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>已儲存至磁碟，未加入媒體庫</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="400"></location>
+      <location filename="src/app/App.cpp" line="401"></location>
       <source>Capture request received</source>
       <translation>已收到擷取請求</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="463"></location>
+      <location filename="src/app/App.cpp" line="464"></location>
       <source>Reason: %1</source>
       <translation>原因：%1</translation>
     </message>
@@ -2230,12 +2230,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>重播失敗</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="395"></location>
+      <location filename="src/app/App.cpp" line="396"></location>
       <source>Replay save requested</source>
       <translation>已請求儲存重播</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="444"></location>
+      <location filename="src/app/App.cpp" line="445"></location>
       <source>Replay saved</source>
       <translation>重播已儲存</translation>
     </message>
@@ -2250,19 +2250,24 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>螢幕截圖已儲存</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="546"></location>
+      <location filename="src/app/App.cpp" line="547"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 已使用預設設定啟動。系統保留了之前的設定檔案，因此沒有遺失任何內容。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="541"></location>
+      <location filename="src/app/App.cpp" line="542"></location>
       <source>Settings could not be read</source>
       <translation>無法讀取設定</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="710"></location>
+      <location filename="src/app/App.cpp" line="711"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>部分介面音效無法使用</translation>
+    </message>
+    <message id="gamehq.notifications.close">
+      <location filename="src/ui/qml/components/Toast.qml" line="92"></location>
+      <source>Close notification</source>
+      <translation>關閉通知</translation>
     </message>
     <message id="gamehq.notifications.window_title">
       <location filename="src/ui/qml/ToastWindow.qml" line="18"></location>
@@ -3011,52 +3016,52 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>顯示</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.capture_volume">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="93"></location>
       <source>Capture volume</source>
       <translation>擷取音量</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.capture_volume.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="71"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
       <source>Level for the screenshot, clip and capture-received sounds heard over a game.</source>
       <translation>在遊戲中聽到的螢幕截圖、短片與擷取受理音效的音量。</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="47"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="71"></location>
       <source>Set the master sound switch, volume, and event-specific feedback.</source>
       <translation>設定聲音總開關、音量以及針對具體事件的回饋。</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.enabled.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="53"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="77"></location>
       <source>Play navigation and action feedback sounds.</source>
       <translation>播放導覽和操作的回饋音效。</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.enabled.label">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="51"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="75"></location>
       <source>UI sounds</source>
       <translation>介面音效</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.eyebrow">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="43"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="67"></location>
       <source>Audio feedback</source>
       <translation>音訊回饋</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.replay">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="111"></location>
       <source>Replay saved sound</source>
       <translation>重播儲存提示音</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.screenshot">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="106"></location>
       <source>Screenshot sound</source>
       <translation>螢幕截圖聲音</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="45"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
       <source>Sound</source>
       <translation>聲音</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.volume">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="58"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
       <source>Volume</source>
       <translation>音量</translation>
     </message>
@@ -3066,47 +3071,47 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>選擇 GameHQ 如何確認擷取、短片和導覽操作。</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.capture_sound">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="150"></location>
       <source>Play capture sound</source>
       <translation>播放擷取音效</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="100"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="124"></location>
       <source>Preview notifications and sounds without creating a capture.</source>
       <translation>在不建立擷取內容的情況下預覽通知和聲音。</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="119"></location>
       <source>Preview</source>
       <translation>預覽</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.label">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="103"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="127"></location>
       <source>Preview feedback</source>
       <translation>預覽回饋</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="108"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="132"></location>
       <source>Show test notification</source>
       <translation>顯示測試通知</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_body">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="114"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="138"></location>
       <source>Notifications are working.</source>
       <translation>通知功能正常。</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="112"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="136"></location>
       <source>%1 notification</source>
       <translation>%1 通知</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.sound">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="144"></location>
       <source>Play test sound</source>
       <translation>播放測試聲音</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="97"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="121"></location>
       <source>Test the current feedback settings</source>
       <translation>測試目前的回饋設定</translation>
     </message>
@@ -3114,6 +3119,26 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="7"></location>
       <source>Notifications &amp; Sound</source>
       <translation>通知與聲音</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.capture_received">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="41"></location>
+      <source>Capture request received</source>
+      <translation>已收到擷取請求</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.capture_received.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="43"></location>
+      <source>Shown the moment a screenshot or clip is requested, before the result arrives.</source>
+      <translation>在請求螢幕截圖或短片後立即顯示，早於結果。</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.controller_hidden">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="57"></location>
+      <source>Controller hidden</source>
+      <translation>控制器被隱藏</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.controller_hidden.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="59"></location>
+      <source>Warns when another program hides your controller from GameHQ.</source>
+      <translation>當其他程式對 GameHQ 隱藏您的控制器時發出警告。</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="17"></location>
@@ -3144,6 +3169,16 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="29"></location>
       <source>Screenshot captured</source>
       <translation>已擷取螢幕截圖</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.steam_input">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="49"></location>
+      <source>Steam Input conflict</source>
+      <translation>Steam Input 衝突</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.steam_input.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="51"></location>
+      <source>Warns in-game when Steam Input may also receive a GameHQ shortcut. The help in Input settings stays available.</source>
+      <translation>當 Steam Input 也可能收到 GameHQ 快速鍵時，在遊戲中發出警告。輸入設定中的說明仍可使用。</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="15"></location>
@@ -3439,7 +3474,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>自動修復</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
-      <location filename="src/ui/qml/Main.qml" line="170"></location>
+      <location filename="src/ui/qml/Main.qml" line="171"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Controller hidden</source>
       <translation>控制器被隱藏</translation>

@@ -17,6 +17,15 @@ Item {
     property int lifespan: pending ? Theme.toastPendingLifespan
                          : alert ? Theme.toastWarningLifespan : Theme.toastLifespan
     property bool pending: false
+    // closable: the mouse moved recently, so offer an X. paused: the pointer is
+    // over the stack, so hold the card until it leaves.
+    property bool closable: false
+    property bool paused: false
+    onPausedChanged: {
+        if (!ready || exit.running) return
+        if (paused) lifetime.stop()
+        else lifetime.restart()
+    }
     property int contentRevision: 0
     property bool ready: false
     onContentRevisionChanged: {
@@ -60,6 +69,46 @@ Item {
             anchors.topMargin: card.border.width      // sit inside the border, no overrun
             anchors.bottomMargin: card.border.width
             color: root.accentColor()
+        }
+
+        Rectangle {                       // close button, mouse only
+            id: closeButton
+            width: Theme.s24
+            height: Theme.s24
+            radius: width / 2
+            anchors.top: parent.top
+            anchors.right: parent.right
+            anchors.topMargin: Theme.s8
+            anchors.rightMargin: Theme.s8 + 4          // clear of the accent bar
+            z: 1
+            visible: opacity > 0
+            opacity: root.closable ? 1 : 0
+            Behavior on opacity { NumberAnimation { duration: Theme.durFast } }
+            color: closeArea.containsMouse ? Theme.surfaceAlt : "transparent"
+            border.width: closeArea.containsMouse ? 1 : 0
+            border.color: Theme.stroke
+            Accessible.role: Accessible.Button
+            //% "Close notification"
+            Accessible.name: qsTrId("gamehq.notifications.close")
+            Text {
+                anchors.centerIn: parent
+                text: "✕"
+                color: closeArea.containsMouse ? Theme.text : Theme.textMuted
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontCaption
+            }
+            MouseArea {
+                id: closeArea
+                anchors.fill: parent
+                enabled: root.closable
+                hoverEnabled: true
+                cursorShape: Qt.PointingHandCursor
+                onClicked: {
+                    if (exit.running) return
+                    lifetime.stop()
+                    exit.start()
+                }
+            }
         }
 
         Row {
@@ -124,7 +173,8 @@ Item {
                        - (badge.visible ? badge.width + bodyRow.spacing : 0)
                 spacing: 2
                 Text {
-                    width: parent.width
+                    // Leave room for the close button when it shows.
+                    width: parent.width - (root.closable ? Theme.s24 : 0)
                     text: root.title
                     color: Theme.text
                     font.family: Theme.fontFamily
