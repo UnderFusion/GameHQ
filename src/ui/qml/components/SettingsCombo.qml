@@ -17,6 +17,12 @@ QC.ComboBox {
     property string configKey: ""
     property var defaultValue: undefined
     property bool frameVisible: true
+    // Icon-only presentation (the collapsed sidebar rail): the closed control
+    // shows `iconText` centred instead of the value, and the list still opens
+    // at `popupMinimumWidth` so its entries stay readable.
+    property bool iconOnly: false
+    property string iconText: ""
+    property real popupMinimumWidth: 0
     signal valueCommitted(var value)
 
     model: options
@@ -76,13 +82,14 @@ QC.ComboBox {
     }
 
     contentItem: Text {
-        text: combo.displayText
-        color: Theme.text
+        text: combo.iconOnly ? combo.iconText : combo.displayText
+        color: combo.iconOnly && !(combo.hovered || combo.popup.visible) ? Theme.textMuted : Theme.text
         font: combo.font
         verticalAlignment: Text.AlignVCenter
-        leftPadding: Theme.s12
-        rightPadding: Theme.s24
-        elide: Text.ElideRight
+        horizontalAlignment: combo.iconOnly ? Text.AlignHCenter : Text.AlignLeft
+        leftPadding: combo.iconOnly ? 0 : Theme.s12
+        rightPadding: combo.iconOnly ? 0 : Theme.s24
+        elide: combo.iconOnly ? Text.ElideNone : Text.ElideRight
     }
     background: Rectangle {
         implicitHeight: Theme.fontBody + Theme.s16
@@ -98,6 +105,7 @@ QC.ComboBox {
         Behavior on border.color { ColorAnimation { duration: Theme.durFast } }
     }
     indicator: Text {
+        visible: !combo.iconOnly
         x: combo.width - width - Theme.s12
         y: (combo.height - height) / 2
         text: "▾"
@@ -106,7 +114,7 @@ QC.ComboBox {
     }
     popup: QC.Popup {
         y: combo.height + Theme.s4
-        width: combo.width
+        width: Math.max(combo.width, combo.popupMinimumWidth)
         implicitHeight: Math.min(contentItem.implicitHeight, Theme.s48 * 6)
         padding: 1
         // `clip: true` on the ListView only clips to the plain bounding box — it
@@ -157,7 +165,7 @@ QC.ComboBox {
     }
     delegate: QC.ItemDelegate {
         id: optionDelegate
-        width: combo.width
+        width: combo.popup.width - 2
         checked: combo.currentIndex === index
         highlighted: combo.padHighlight >= 0 ? combo.padHighlight === index
                                              : combo.highlightedIndex === index
