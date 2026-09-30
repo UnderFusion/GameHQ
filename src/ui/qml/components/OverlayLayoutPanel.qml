@@ -163,8 +163,9 @@ Rectangle {
                     Text {
                         anchors.left: parent.left
                         anchors.leftMargin: Theme.s12
-                        anchors.right: controls.left
-                        anchors.rightMargin: Theme.s8
+                        // Action rows have no controls, so their label spans the row.
+                        anchors.right: controls.visible ? controls.left : parent.right
+                        anchors.rightMargin: controls.visible ? Theme.s8 : Theme.s12
                         anchors.verticalCenter: parent.verticalCenter
                         text: row.modelData.label
                         elide: Text.ElideRight
