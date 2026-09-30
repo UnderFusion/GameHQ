@@ -19,7 +19,8 @@ Rectangle {
     // the effective state Main resolves from the mode, focus and hover.
     property string mode: "expanded"
     property bool expanded: true
-    // Tools group: the divider toggle collapses Settings/Help/About/Support
+    // Tools group: the divider toggle collapses Help/About/Support and the
+    // language selector; Settings and the sidebar mode toggle stay
     // (Main owns and persists the state).
     property bool toolsCollapsed: false
     // Flat pad rows after the games: the tools toggle, Settings, Help, About,
@@ -270,7 +271,7 @@ Rectangle {
         }
 
         // Divider with the tools toggle in its middle: a flat chevron that
-        // points down while the tools are hidden and up while they show.
+        // points up while the tools are hidden and down while they show.
         Item {
             Layout.fillWidth: true
             Layout.leftMargin: Theme.s8
@@ -319,7 +320,7 @@ Rectangle {
                 Text {
                     anchors.centerIn: parent
                     text: "\u25be"
-                    rotation: root.toolsCollapsed ? 0 : 180
+                    rotation: root.toolsCollapsed ? 180 : 0
                     color: toolsToggleMouse.containsMouse || toolsToggle.padHovered
                            ? Theme.text : Theme.textMuted
                     font.family: Theme.fontFamily
@@ -360,7 +361,6 @@ Rectangle {
             //% "Settings"
             label: qsTrId("gamehq.navigation.settings")
             glyph: "\u2699"
-            visible: !root.toolsCollapsed
             active: root.settingsOpen
             sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.toolsToggleIndex + 1
             compact: root.compact
@@ -434,6 +434,7 @@ Rectangle {
             id: sidebarLanguageCombo
             // Stays in place in the rail as a language icon (so nothing jumps
             // when the sidebar narrows); the list opens at the full width.
+            visible: !root.toolsCollapsed
             iconOnly: root.compact
             padFocused: root.sidebarFocused && root.sidebarHoverIndex === root.languageRowIndex
             iconText: "\u6587A"
