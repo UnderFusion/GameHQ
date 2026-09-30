@@ -10,6 +10,7 @@
 #include <windows.h>
 #include <mmsystem.h>
 
+#include <algorithm>
 #include <chrono>
 
 namespace {
@@ -21,6 +22,11 @@ constexpr int kSampleMs = 8;
 constexpr size_t kMaxQueuedSamples = 512;
 constexpr int kRescanMs = 2000;
 constexpr UINT kMaxSlots = 16;
+// How long WinMM is left alone after an unplug or a device topology change.
+// Every field crash hit the first WinMM call ~0.5 s after an unplug, while the
+// stack was still tearing the old device down; three seconds covers that with
+// a wide margin and still finds a newly arrived pad within one rescan tick.
+constexpr int kQuietMs = 3000;
 
 quint32 mapWinMMState(const JOYINFOEX& info, bool ds4Layout)
 {
@@ -112,9 +118,13 @@ WinMMDevice::WinMMDevice(QObject* parent)
 
 WinMMDevice::~WinMMDevice()
 {
-    stopSampler();
-    if (m_scanThread.joinable())
-        m_scanThread.join();
+    {
+        std::lock_guard<std::mutex> lock(m_workerMutex);
+        m_quit = true;
+    }
+    m_workerCv.notify_all();
+    if (m_worker.joinable())
+        m_worker.join();   // at most one WinMM call plus a scan
 }
 
 bool WinMMDevice::start()
@@ -123,6 +133,8 @@ bool WinMMDevice::start()
     // turn later at the earliest; the safety-net timer runs until then and
     // applyScanResult() stops it on success.
     qInfo() << "Gamepad: WinMM scanning for joysticks in the background";
+    if (!m_worker.joinable())
+        m_worker = std::thread([this] { workerLoop(); });
     m_rescanTimer->start();
     rescan();
     return true;
@@ -162,16 +174,96 @@ void WinMMDevice::rescan()
     // message to every top-level window, the game included. A pad that
     // changes transport is picked up by the Sony Raw Input backend instead.
     m_scanInFlight = true;
-    if (m_scanThread.joinable())
-        m_scanThread.join();   // the previous worker already posted its result
-    m_scanThread = std::thread([this] {
-        const ScanResult result = scanSlots();
-        // Queued metacall onto the owning thread. The destructor joins this
-        // worker, so `this` outlives the call; a metacall posted to an
-        // object that is destroyed before delivery is discarded by Qt.
-        QMetaObject::invokeMethod(
-            this, [this, result] { applyScanResult(result); }, Qt::QueuedConnection);
-    });
+    {
+        std::lock_guard<std::mutex> lock(m_workerMutex);
+        m_scanRequested = true;
+    }
+    m_workerCv.notify_all();
+}
+
+void WinMMDevice::rescanAfterTopologyChange()
+{
+    {
+        std::lock_guard<std::mutex> lock(m_workerMutex);
+        m_quietUntil = std::max(m_quietUntil,
+                                std::chrono::steady_clock::now() + std::chrono::milliseconds(kQuietMs));
+    }
+    rescan();   // deferred by the worker until the quiet period ends
+}
+
+void WinMMDevice::workerLoop()
+{
+    using Clock = std::chrono::steady_clock;
+    std::unique_lock<std::mutex> lock(m_workerMutex);
+    UINT activeId = UINT_MAX;
+    bool ds4 = false;
+    bool first = true;
+    quint32 last = 0;
+    while (!m_quit) {
+        if (m_workerGen != m_sampleGen) {
+            m_workerGen = m_sampleGen;
+            activeId = m_sampleId;
+            ds4 = m_sampleDs4;
+            first = true;
+            m_workerCv.notify_all();   // stopSampler() waits for this adoption
+        }
+
+        if (activeId != UINT_MAX) {
+            const quint64 gen = m_workerGen;
+            lock.unlock();
+            JOYINFOEX info{};
+            info.dwSize = sizeof(info);
+            info.dwFlags = JOY_RETURNALL;
+            QElapsedTimer call;
+            call.start();
+            const MMRESULT result = joyGetPosEx(activeId, &info);
+            PerfTrace::reportSlow("WinMM joyGetPosEx poll", call.nsecsElapsed() / 1000);
+            if (result == JOYERR_UNPLUGGED) {
+                pushSample({result, 0});
+            } else if (result == JOYERR_NOERROR) {
+                const quint32 state = mapWinMMState(info, ds4);
+                if (first || state != last) {
+                    pushSample({result, state});
+                    last = state;
+                    first = false;
+                }
+            }   // other errors are transient: keep the slot, skip this sample
+            lock.lock();
+            if (result == JOYERR_UNPLUGGED) {
+                // Never touch a vanished slot again, and leave the whole
+                // stack alone while it finishes removing the device.
+                activeId = UINT_MAX;
+                m_quietUntil = std::max(m_quietUntil,
+                                        Clock::now() + std::chrono::milliseconds(kQuietMs));
+                continue;
+            }
+            m_workerCv.wait_for(lock, std::chrono::milliseconds(kSampleMs),
+                                [this, gen] { return m_quit || m_sampleGen != gen; });
+            continue;
+        }
+
+        if (m_scanRequested) {
+            if (Clock::now() < m_quietUntil) {
+                const quint64 gen = m_sampleGen;
+                m_workerCv.wait_until(lock, m_quietUntil,
+                                      [this, gen] { return m_quit || m_sampleGen != gen; });
+                continue;
+            }
+            m_scanRequested = false;
+            lock.unlock();
+            const ScanResult result = scanSlots();
+            // Queued metacall onto the owning thread. The destructor joins
+            // this thread, so `this` outlives the call; a metacall posted to
+            // an object destroyed before delivery is discarded by Qt.
+            QMetaObject::invokeMethod(
+                this, [this, result] { applyScanResult(result); }, Qt::QueuedConnection);
+            lock.lock();
+            continue;
+        }
+
+        const quint64 gen = m_sampleGen;
+        m_workerCv.wait(lock, [this, gen] { return m_quit || m_scanRequested || m_sampleGen != gen; });
+    }
 }
 
 WinMMDevice::ScanResult WinMMDevice::scanSlots()
@@ -243,44 +335,27 @@ void WinMMDevice::applyScanResult(const ScanResult& result)
 void WinMMDevice::startSampler()
 {
     stopSampler();
-    m_sampleStop = false;
-    const UINT id = m_activeId;
-    const bool ds4 = m_ds4Layout;
-    m_sampleThread = std::thread([this, id, ds4] {
-        bool first = true;
-        quint32 last = 0;
-        while (!m_sampleStop.load()) {
-            JOYINFOEX info{};
-            info.dwSize = sizeof(info);
-            info.dwFlags = JOY_RETURNALL;
-
-            QElapsedTimer call;
-            call.start();
-            const MMRESULT result = joyGetPosEx(id, &info);
-            PerfTrace::reportSlow("WinMM joyGetPosEx poll", call.nsecsElapsed() / 1000);
-
-            if (result == JOYERR_UNPLUGGED) {
-                pushSample({result, 0});
-                return;
-            }
-            if (result == JOYERR_NOERROR) {
-                const quint32 state = mapWinMMState(info, ds4);
-                if (first || state != last) {
-                    pushSample({result, state});
-                    last = state;
-                    first = false;
-                }
-            }   // other errors are transient: keep the slot, skip this sample
-            std::this_thread::sleep_for(std::chrono::milliseconds(kSampleMs));
-        }
-    });
+    {
+        std::lock_guard<std::mutex> lock(m_workerMutex);
+        m_sampleId = m_activeId;
+        m_sampleDs4 = m_ds4Layout;
+        ++m_sampleGen;
+    }
+    m_workerCv.notify_all();
 }
 
 void WinMMDevice::stopSampler()
 {
-    m_sampleStop = true;
-    if (m_sampleThread.joinable())
-        m_sampleThread.join();   // at most one sample interval
+    {
+        std::unique_lock<std::mutex> lock(m_workerMutex);
+        m_sampleId = UINT_MAX;
+        const quint64 gen = ++m_sampleGen;
+        m_workerCv.notify_all();
+        // Wait until the worker has adopted the stop (at most one sample
+        // interval), so no reading from the old slot is queued afterwards.
+        if (m_worker.joinable())
+            m_workerCv.wait(lock, [this, gen] { return m_quit || m_workerGen == gen; });
+    }
     std::lock_guard<std::mutex> lock(m_sampleMutex);
     m_samples.clear();
 }
