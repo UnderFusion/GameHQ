@@ -355,15 +355,21 @@ Rectangle {
 
         SettingsCombo {
             id: sidebarLanguageCombo
-            // Hidden (and so non-interactive) in the rail; only the mode
-            // toggle stays reachable there.
-            visible: !root.compact
+            // Stays in place in the rail as a language icon (so nothing jumps
+            // when the sidebar narrows); the list opens at the full width.
+            iconOnly: root.compact
+            iconText: "\u6587A"
+            popupMinimumWidth: Theme.sidebarWidth - Theme.s24
             objectName: "sidebarLanguageSelector"
             Layout.fillWidth: true
-            Layout.leftMargin: Theme.s4
-            Layout.rightMargin: Theme.s4
+            Layout.leftMargin: root.compact ? 0 : Theme.s4
+            Layout.rightMargin: root.compact ? 0 : Theme.s4
             Layout.topMargin: Theme.s8
             frameVisible: false
+            ToolTip.text: sidebarLanguageCombo.displayText
+            ToolTip.visible: root.compact && sidebarLanguageCombo.hovered
+                                && !sidebarLanguageCombo.popup.visible
+            ToolTip.delay: 400
             defaultValue: languageManager.requestedLanguage
             options: [{
                 //% "System language"
