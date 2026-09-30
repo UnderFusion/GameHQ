@@ -8,6 +8,7 @@ The `v0.7.9-beta4` prerelease includes these changes and enables the read-only S
 
 ### Added
 
+- Controller hidden: when a hidden-controller driver (HidHide, installed with DSX, DS4Windows or reWASD) hides your controller from GameHQ, a warning bar now appears across the top of the main window with *Fix automatically*, *Settings* and *Not now*, instead of only in Settings > Input. The warning text is now translated.
 - Pinned games: hover a game in the main sidebar and click the pin to keep it at the top of the Games list (or move the controller cursor onto it and press Triangle). Pinned games stay above the others in both the main window and the overlay, each group still ordered by most recent capture. Pins are remembered; rows move smoothly when pinned or unpinned, with a subtle navigation sound.
 - Notifications: Settings > Notifications & Sound now has separate switches for the *Capture request received*, *Steam Input conflict* and *Controller hidden* notices (the Steam Input help in Settings stays available). When you move the mouse, notifications show an X in their top-right corner to close them early; hovering a notification keeps it on screen. Nothing changes for controller-only play, and a game that hides the cursor never gets the X.
 - Overlay options: a gear above the overlay sidebar toggle opens a small panel to hide the control hints, change the four outer margins (down to 0), the overlay interface size (the overlay now also offers 75% and 90%), the thumbnail size and the spacing between the sidebar, the thumbnails and the preview. Changes show live on the preview and are remembered; *Reset overlay layout* restores the defaults. Works with the mouse, the controller and the keyboard.
@@ -27,6 +28,7 @@ The `v0.7.9-beta4` prerelease includes these changes and enables the read-only S
 
 ### Fixed
 
+- A DualSense connected over Bluetooth and hidden by HidHide is now detected and reported, like a USB one.
 - Restoring settings defaults immediately restores the Main sidebar mode, Tools visibility and game pin order, even after changing them during the current session.
 - Connecting or disconnecting a controller no longer reloads the legacy controller subsystem, avoiding the crash seen during in-game capture.
 - Overlay: with the capture menu open over a clip, Cross now picks the highlighted entry instead of playing the clip behind it, and the clip pauses while the menu is open. The same applies to Share and Overlay options.

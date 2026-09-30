@@ -404,15 +404,15 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1304
+          "line": 1348
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1323
+          "line": 1367
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1361
+          "line": 1405
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
@@ -1186,6 +1186,10 @@
       "context": "ID",
       "domain": "application",
       "locations": [
+        {
+          "file": "src/ui/qml/components/ControllerWarningBanner.qml",
+          "line": 108
+        },
         {
           "file": "src/ui/qml/components/UpdateBanner.qml",
           "line": 182
@@ -2269,7 +2273,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 370
+          "line": 374
         }
       ],
       "plural": false,
@@ -2341,11 +2345,11 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 364
+          "line": 368
         },
         {
           "file": "src/ui/AppController.cpp",
-          "line": 386
+          "line": 390
         }
       ],
       "plural": false,
@@ -2902,7 +2906,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 208
+          "line": 212
         }
       ],
       "plural": false,
@@ -2989,7 +2993,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 214
+          "line": 218
         }
       ],
       "plural": false,
@@ -3008,7 +3012,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 223
+          "line": 227
         }
       ],
       "plural": false,
@@ -3112,7 +3116,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 234
+          "line": 238
         }
       ],
       "plural": false,
@@ -3131,7 +3135,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 244
+          "line": 248
         }
       ],
       "plural": false,
@@ -4706,11 +4710,11 @@
       "locations": [
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 175
+          "line": 207
         },
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 181
+          "line": 213
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -4750,7 +4754,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1363
+          "line": 1407
         },
         {
           "file": "src/ui/qml/components/DesktopGalleryHeader.qml",
@@ -4771,7 +4775,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1357
+          "line": 1401
         },
         {
           "file": "src/ui/qml/components/OverlayActionMenu.qml",
@@ -4792,7 +4796,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1359
+          "line": 1403
         },
         {
           "file": "src/ui/qml/components/OverlayActionMenu.qml",
@@ -4841,7 +4845,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1292
+          "line": 1336
         }
       ],
       "plural": false,
@@ -4861,7 +4865,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1302
+          "line": 1346
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
@@ -4882,7 +4886,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 477
+          "line": 492
         }
       ],
       "plural": true,
@@ -4901,7 +4905,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1321
+          "line": 1365
         }
       ],
       "plural": false,
@@ -5075,7 +5079,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 352
+          "line": 356
         }
       ],
       "plural": false,
@@ -5092,7 +5096,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 338
+          "line": 342
         }
       ],
       "plural": false,
@@ -5109,7 +5113,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 343
+          "line": 347
         }
       ],
       "plural": false,
@@ -5126,7 +5130,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 332
+          "line": 336
         }
       ],
       "plural": false,
@@ -5143,7 +5147,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 326
+          "line": 330
         }
       ],
       "plural": false,
@@ -6809,6 +6813,122 @@
       "source_hash": "7321c01862585054f28be951e16d94c50a32513dd3b48a1e9f4acc973ad25e49"
     },
     {
+      "id": "gamehq.input.hidden.filter",
+      "source": "%1 is connected to Windows but invisible to applications — a HID filter driver is hiding it.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/InputEngine.cpp",
+          "line": 459
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6cc011948114213ff4d6a38a88d5dafa01d08d456af12c7eac5481ea1c585e74"
+    },
+    {
+      "id": "gamehq.input.hidden.fix_applying",
+      "source": "Applying the fix (administrator prompt)...",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/InputEngine.cpp",
+          "line": 1690
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "952adecc7a4cc4d28234ce9dd09456298e86f79c2f3c7b8d91d8fbb98812d49a"
+    },
+    {
+      "id": "gamehq.input.hidden.fix_declined",
+      "source": "Administrator approval was declined — the controller stays hidden. You can whitelist GameHQ manually in the HidHide Configuration Client.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/InputEngine.cpp",
+          "line": 1680
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "d928d8b4f117dad14dacf5d4452479511f7801b2643b8aad1cefaf8398a5d68b"
+    },
+    {
+      "id": "gamehq.input.hidden.fix_done",
+      "source": "GameHQ is now whitelisted in HidHide. Unplug and replug the controller if it does not appear within a few seconds.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/InputEngine.cpp",
+          "line": 1711
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ"
+      ],
+      "source_hash": "655b909eb5a52a56855e15ed4b4cbd279808073d8efc6b6034ce37837e50664c"
+    },
+    {
+      "id": "gamehq.input.hidden.fix_failed",
+      "source": "Automatic whitelisting failed (code %1). Add GameHQ.exe on the Applications tab of the HidHide Configuration Client instead.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/InputEngine.cpp",
+          "line": 1722
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [
+        "GameHQ",
+        "GameHQ.exe",
+        "GameHQ.exe"
+      ],
+      "source_hash": "7fe925e0cfe27ca65887c9e16a240a3bf00ce2467c7a7c5148b42efb074f87be"
+    },
+    {
+      "id": "gamehq.input.hidden.hidhide",
+      "source": "%1 is connected but hidden from applications by the HidHide driver (installed with DSX, DS4Windows, or reWASD).",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/input/InputEngine.cpp",
+          "line": 450
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "fc71a02610567fe81ec3aea2e391c3f6aaae3d0598edeb698ae361ffa7799efc"
+    },
+    {
       "id": "gamehq.input.model.capture.controller",
       "source": "Press a controller button for %1 · Slot %2 · %3",
       "context": "ID",
@@ -7188,7 +7308,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1272
+          "line": 1316
         },
         {
           "file": "src/ui/qml/settings/LibrarySettingsPage.qml",
@@ -7217,11 +7337,11 @@
         },
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 184
+          "line": 216
         },
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 435
+          "line": 496
         }
       ],
       "plural": false,
@@ -7238,11 +7358,11 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 200
+          "line": 205
         },
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 128
+          "line": 160
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7263,7 +7383,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 208
+          "line": 213
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7284,7 +7404,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 204
+          "line": 209
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7305,7 +7425,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 210
+          "line": 215
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7326,7 +7446,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 212
+          "line": 217
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7347,7 +7467,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 202
+          "line": 207
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7368,7 +7488,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 206
+          "line": 211
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7423,7 +7543,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 276
+          "line": 308
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
@@ -7444,7 +7564,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 422
+          "line": 478
         },
         {
           "file": "src/ui/qml/components/HelpDialog.qml",
@@ -7464,8 +7584,12 @@
       "domain": "application",
       "locations": [
         {
+          "file": "src/ui/qml/components/ControllerWarningBanner.qml",
+          "line": 101
+        },
+        {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 411
+          "line": 467
         }
       ],
       "plural": false,
@@ -7541,7 +7665,7 @@
         },
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 454
+          "line": 524
         }
       ],
       "plural": false,
@@ -7560,7 +7684,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 357
+          "line": 406
         }
       ],
       "plural": false,
@@ -7577,7 +7701,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 355
+          "line": 404
         }
       ],
       "plural": false,
@@ -8427,7 +8551,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 126
+          "line": 130
         }
       ],
       "plural": false,
@@ -9002,7 +9126,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 398
+          "line": 454
         },
         {
           "file": "src/ui/qml/settings/AdvancedSettingsPage.qml",
@@ -12106,6 +12230,10 @@
       "domain": "application",
       "locations": [
         {
+          "file": "src/ui/qml/components/ControllerWarningBanner.qml",
+          "line": 94
+        },
+        {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
           "line": 106
         }
@@ -12125,6 +12253,10 @@
         {
           "file": "src/ui/qml/Main.qml",
           "line": 171
+        },
+        {
+          "file": "src/ui/qml/components/ControllerWarningBanner.qml",
+          "line": 69
         },
         {
           "file": "src/ui/qml/settings/InputSettingsPage.qml",
@@ -13430,7 +13562,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 504
+          "line": 579
         },
         {
           "file": "src/ui/qml/settings/GeneralSettingsPage.qml",
@@ -19213,7 +19345,7 @@
         },
         {
           "file": "src/ui/qml/components/DesktopSidebar.qml",
-          "line": 179
+          "line": 211
         }
       ],
       "plural": false,

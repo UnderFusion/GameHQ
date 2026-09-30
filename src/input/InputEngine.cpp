@@ -20,6 +20,7 @@
 #include "input/MouseMonitorPolicy.h"
 #include "input/OverlayInputPolicy.h"
 #include "input/WinMMDevice.h"
+#include "localization/NativeText.h"
 #include "input/XInputDevice.h"
 #include "input/SelectiveRawHidFallback.h"
 #include "input/RawHidBindingCatalog.h"
@@ -444,14 +445,20 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 const QString names = pads.join(QStringLiteral(", "));
                 if (hidHidePresent) {
                     setControllerWarning(
-                        tr("%1 is connected but hidden from applications by the "
-                           "HidHide driver (installed with DSX, DS4Windows, or "
-                           "reWASD).").arg(names),
+                        //: Hidden-controller warning; %1 lists the hidden controllers.
+                        //% "%1 is connected but hidden from applications by the HidHide driver (installed with DSX, DS4Windows, or reWASD)."
+                        NativeText::get(QT_TRID_NOOP("gamehq.input.hidden.hidhide"),
+                                        "%1 is connected but hidden from applications by the "
+                                        "HidHide driver (installed with DSX, DS4Windows, or "
+                                        "reWASD).").arg(names),
                         true);
                 } else {
                     setControllerWarning(
-                        tr("%1 is connected to Windows but invisible to "
-                           "applications — a HID filter driver is hiding it.")
+                        //: Hidden-controller warning; %1 lists the hidden controllers.
+                        //% "%1 is connected to Windows but invisible to applications — a HID filter driver is hiding it."
+                        NativeText::get(QT_TRID_NOOP("gamehq.input.hidden.filter"),
+                                        "%1 is connected to Windows but invisible to "
+                                        "applications — a HID filter driver is hiding it.")
                             .arg(names),
                         false);
                 }
@@ -1668,14 +1675,21 @@ void InputEngine::fixHiddenController()
     void* process = HidCloakMonitor::launchElevatedWhitelistHelper();
     if (!process) {
         setControllerWarning(
-            tr("Administrator approval was declined — the controller stays "
-               "hidden. You can whitelist GameHQ manually in the HidHide "
-               "Configuration Client."),
+            //: Hidden-controller fix result when the UAC prompt is declined.
+            //% "Administrator approval was declined — the controller stays hidden. You can whitelist GameHQ manually in the HidHide Configuration Client."
+            NativeText::get(QT_TRID_NOOP("gamehq.input.hidden.fix_declined"),
+                            "Administrator approval was declined — the controller stays "
+                            "hidden. You can whitelist GameHQ manually in the HidHide "
+                            "Configuration Client."),
             true);
         return;
     }
     m_fixProcess = process;
-    setControllerWarning(tr("Applying the fix (administrator prompt)..."), false);
+    //: Hidden-controller fix in progress while the UAC prompt is shown.
+    //% "Applying the fix (administrator prompt)..."
+    setControllerWarning(NativeText::get(QT_TRID_NOOP("gamehq.input.hidden.fix_applying"),
+                                         "Applying the fix (administrator prompt)..."),
+                         false);
 
     if (!m_fixWatch) {
         m_fixWatch = new QTimer(this);
@@ -1692,17 +1706,23 @@ void InputEngine::fixHiddenController()
             if (code == 0) {
                 qInfo() << "Input: GameHQ whitelisted in HidHide";
                 setControllerWarning(
-                    tr("GameHQ is now whitelisted in HidHide. Unplug and replug "
-                       "the controller if it does not appear within a few "
-                       "seconds."),
+                    //: Hidden-controller fix succeeded.
+                    //% "GameHQ is now whitelisted in HidHide. Unplug and replug the controller if it does not appear within a few seconds."
+                    NativeText::get(QT_TRID_NOOP("gamehq.input.hidden.fix_done"),
+                                    "GameHQ is now whitelisted in HidHide. Unplug and replug "
+                                    "the controller if it does not appear within a few "
+                                    "seconds."),
                     false);
                 m_sonyPad->rescan();
             } else {
                 qWarning() << "Input: HidHide whitelist helper failed, code" << code;
                 setControllerWarning(
-                    tr("Automatic whitelisting failed (code %1). Add GameHQ.exe "
-                       "on the Applications tab of the HidHide Configuration "
-                       "Client instead.").arg(code),
+                    //: Hidden-controller fix failed; %1 is the helper exit code.
+                    //% "Automatic whitelisting failed (code %1). Add GameHQ.exe on the Applications tab of the HidHide Configuration Client instead."
+                    NativeText::get(QT_TRID_NOOP("gamehq.input.hidden.fix_failed"),
+                                    "Automatic whitelisting failed (code %1). Add GameHQ.exe "
+                                    "on the Applications tab of the HidHide Configuration "
+                                    "Client instead.").arg(code),
                     true);
             }
         });

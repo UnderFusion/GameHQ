@@ -997,7 +997,8 @@ ApplicationWindow {
         } else if (window.menuOpen) {
             window.menuOpen = false
         } else if (lightbox.visible) {
-            lightbox.close()
+            if (lightbox.visible)
+                lightbox.close()
         }
     }
 
@@ -1142,10 +1143,38 @@ ApplicationWindow {
         }
     }
 
+    // ─────────────────────── Controller warning ───────────────────────
+    // In-flow above sidebar + content (not floating) so it never covers
+    // anything; its height animates to zero when there is nothing to report.
+    ControllerWarningBanner {
+        id: controllerBanner
+        parent: uiSurface.contentItem
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.margins: Theme.s16
+        anchors.bottomMargin: 0
+        // Settings > Input already shows the same card in place.
+        suppressed: window.settingsOpen
+                    && settingsView.categoryKeys[settingsView.currentCategory] === "input"
+        onSettingsRequested: {
+            if (lightbox.visible)
+                lightbox.close()
+            window.helpOpen = false
+            window.settingsOpen = true
+            window.sidebarFocused = false
+            settingsView.selectCategory(settingsView.categoryKeys.indexOf("input"), false)
+        }
+    }
+
     RowLayout {
         parent: uiSurface.contentItem
-        anchors.fill: parent
+        anchors.top: controllerBanner.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
         anchors.margins: Theme.s16
+        anchors.topMargin: controllerBanner.height > 0 ? Theme.s12 : 0
         spacing: Theme.s16
 
         // ───────────────────────── Sidebar ─────────────────────────
@@ -1273,7 +1302,7 @@ ApplicationWindow {
     UpdateBanner {
         parent: uiSurface.contentItem
         id: updateBanner
-        anchors.top: parent.top
+        anchors.top: controllerBanner.height > 0 ? controllerBanner.bottom : parent.top
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.margins: Theme.s16
