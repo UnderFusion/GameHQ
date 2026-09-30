@@ -11,9 +11,12 @@
 #include <QStringList>
 #include <QtGlobal>
 
+#include <functional>
+#include <map>
 #include <memory>
 
 class QTimer;
+class SonyHidReaderHandle;
 
 // Sony pad reader over Win32 Raw Input. Handles DualSense, DualSense Edge,
 // DS4, and DSX/ViGEm virtual DS4 reports.
@@ -82,6 +85,28 @@ public:
     void onRawInput(void* hRawInput);
     void onDeviceChange(bool arrived, void* deviceHandle);
 
+    // Direct HID reader spike (bt-ds02). Off unless GAMEHQ_SONY_HID_READER=1
+    // (production constructor) or a test installs a factory. When enabled,
+    // every tracked Sony endpoint also gets a read-only HID reader keyed by
+    // its RIDI device path; while that reader is healthy it is the ONLY
+    // source for that endpoint and the Raw Input payload is not read. Raw
+    // Input takes over again the moment the reader fails or goes quiet while
+    // Raw Input still delivers. Handles are never compared across the two
+    // APIs — a Raw Input hDevice and a CreateFile HANDLE are unrelated.
+    //
+    // The factory returns an owning handle (null = could not open, with
+    // `error` set); `readerId` is the fence both delivery calls below carry.
+    using HidReaderFactory = std::function<std::unique_ptr<SonyHidReaderHandle>(
+        const QString& devicePath, bool ds4, quint64 readerId, QString* error)>;
+    void setHidReaderFactory(HidReaderFactory factory);
+    bool hidReaderEnabled() const { return bool(m_hidReaderFactory); }
+    int hidReaderCount() const { return int(m_hidReaders.size()); }
+    // GUI-thread delivery (the production factory queues into these). A
+    // report or failure from a reader that has since been replaced or stopped
+    // is dropped by its readerId.
+    void onHidReport(quint64 readerId, const QByteArray& report);
+    void onHidReaderFailed(quint64 readerId, const QString& reason);
+
 signals:
     // Debounced hint that the HID device topology changed (any arrival or
     // removal, including XInput/unsupported devices — Windows re-enumerates
@@ -121,6 +146,11 @@ private:
         qint64 lastChangeMs = 0;    // last real button/stick edge, not idle traffic
         bool reported = false;      // produced at least one valid report
         int reportShape = -1;       // (report id << 16) | length last logged
+        // Direct HID reader arbitration (spike; all zero/false when disabled).
+        quint64 hidReaderId = 0;    // live reader for this endpoint, 0 = none
+        bool hidPreferred = false;  // reader delivered and is the only source
+        qint64 lastHidMs = 0;       // last report forwarded by the reader
+        qint64 rawWhileHidQuietMs = 0; // first Raw Input report the reader has not matched
     };
 
     bool registerRawInput(bool remove = false);
@@ -140,7 +170,13 @@ private:
     void reconcileDevices();                  // debounced full-list sync (prune stale handles)
     void failoverOrScheduleDisconnect();
     void finishDisconnect();
-    void parseReport(void* handle, DeviceState& st, const unsigned char* data, int len);
+    void parseReport(void* handle, DeviceState& st, const unsigned char* data, int len,
+                     const char* provider = "Sony Raw Input");
+    void startHidReader(void* handle, DeviceState& st);
+    void stopHidReader(void* handle, DeviceState& st, const char* why);
+    // Reader lost the endpoint: stop preferring it and release whatever it
+    // held so no button stays logically pressed across the source change.
+    void demoteHidSource(void* handle, DeviceState& st, const char* why);
     // parseReport stages, in call order. The decoders are pure (static);
     // routeReport owns the active-pad selection/steal side effects.
     static quint32 decodeStickNav(const DeviceState& st, const unsigned char* d, int axisBase, int len);
@@ -192,6 +228,11 @@ private:
     qint64 m_lastReceiptMs = 0;
     bool m_silenceFollowupPending = false;
     QStringList m_lastHiddenPads;            // last cloak-scan result (change detection)
+
+    HidReaderFactory m_hidReaderFactory;     // empty = spike disabled
+    std::map<quint64, std::unique_ptr<SonyHidReaderHandle>> m_hidReaders;
+    quint64 m_nextHidReaderId = 1;
+    QSet<QString> m_hidOpenFailuresLogged;   // lower-case paths, one log line each
 
     // Selective Raw HID fallback state. Eligibility is cached per handle and
     // keyed to SelectiveRawHidFallback::generation() so binding edits and

@@ -77,6 +77,7 @@ gamehq_add_test(tst_providercontrolmap
     "${CMAKE_SOURCE_DIR}/src/input/WinMMDevice.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/XInputDevice.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/SonyHidReader.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputRateMonitor.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/RawInputApi.cpp"
@@ -351,6 +352,7 @@ gamehq_add_test(tst_rawinputflood
     # the header is listed here explicitly.
     "${CMAKE_SOURCE_DIR}/src/input/Gamepad.h"
     "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/SonyHidReader.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputRateMonitor.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/RawInputApi.cpp"

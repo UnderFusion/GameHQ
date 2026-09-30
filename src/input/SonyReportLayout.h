@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QtGlobal>
+
 namespace SonyReportLayout
 {
 enum class Family {
@@ -51,5 +53,26 @@ inline Offsets locate(unsigned char reportId, Family family, int len)
     if (reportId == 0x31 && !ds4)
         return {2, 9, "dualsense-bt-full"};
     return {};
+}
+
+// The bytes a state report contributes to decoded controls — report id, the
+// four stick axes and the three button bytes — packed into one value. Sensor,
+// counter and battery bytes are excluded, so an idle pad streaming at 250+ Hz
+// keeps the same signature. 0 = not a state report we parse. Used by the
+// direct HID reader to forward only control changes (plus a heartbeat) to the
+// GUI thread; decoding itself stays in DualSenseDevice::parseReport.
+inline quint64 controlSignature(const unsigned char* d, int len, Family family)
+{
+    if (!d || len < 1)
+        return 0;
+    const Offsets o = locate(d[0], family, len);
+    if (!o.valid() || o.axes < 1 || len < o.buttons + 3 || len < o.axes + 4)
+        return 0;
+    quint64 sig = d[0];
+    for (int i = 0; i < 4; ++i)
+        sig = (sig << 8) | d[o.axes + i];
+    for (int i = 0; i < 3; ++i)
+        sig = (sig << 8) | d[o.buttons + i];
+    return sig;
 }
 } // namespace SonyReportLayout

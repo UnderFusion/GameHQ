@@ -4,6 +4,7 @@
 #include "input/ControllerIdentity.h"
 #include "input/InputDiagnostics.h"
 #include "input/SelectiveRawHidFallback.h"
+#include "input/SonyHidReader.h"
 #include "input/SonyReportLayout.h"
 #include "input/StickNav.h"
 
@@ -46,6 +47,15 @@ constexpr int kTopologyDebounceMs = 400;
 // lines a second and the diagnostic would become the outage.
 constexpr int kRateSampleMs = 5000;
 constexpr int kSilenceFollowupMs = 15000;
+// Direct HID reader arbitration. The reader forwards a heartbeat at least
+// every SonyHidReader::kHeartbeatMs while the pad streams, so a reader that
+// forwarded something this recently is healthy and Raw Input is dropped.
+constexpr qint64 kHidFreshMs = 250;
+// Raw Input kept delivering this long without the reader matching it: the
+// reader is stuck, Raw Input becomes the source again. The grace also covers
+// the ordinary race where WM_INPUT for a report is dispatched before the
+// reader's queued copy of the same report.
+constexpr qint64 kHidFailoverMs = 300;
 
 enum ReportLayout {
     LayoutUnknown = 0,
@@ -131,6 +141,32 @@ LRESULT CALLBACK rawInputWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
 DualSenseDevice::DualSenseDevice(QObject* parent)
     : DualSenseDevice(RawInputApi::createSystem(), parent)
 {
+    // bt-ds02 spike: opt-in only until a real USB -> Bluetooth receipt
+    // justifies it. Tests install their own factory via the seam instead.
+    if (qEnvironmentVariableIntValue("GAMEHQ_SONY_HID_READER") != 1)
+        return;
+    setHidReaderFactory([this](const QString& path, bool ds4, quint64 readerId,
+                               QString* error) -> std::unique_ptr<SonyHidReaderHandle> {
+        SonyHidReader::Callbacks callbacks;
+        // Worker thread -> GUI thread. Posted events for a destroyed device
+        // are discarded by Qt; the reader itself is joined before that.
+        callbacks.report = [this, readerId](const QByteArray& report) {
+            QMetaObject::invokeMethod(this, [this, readerId, report] {
+                onHidReport(readerId, report);
+            }, Qt::QueuedConnection);
+        };
+        callbacks.failed = [this, readerId](const QString& reason) {
+            QMetaObject::invokeMethod(this, [this, readerId, reason] {
+                onHidReaderFailed(readerId, reason);
+            }, Qt::QueuedConnection);
+        };
+        return SonyHidReader::open(path,
+                                   ds4 ? SonyReportLayout::Family::Ds4
+                                       : SonyReportLayout::Family::DualSense,
+                                   std::move(callbacks), error);
+    });
+    qInfo() << "Gamepad: direct HID reader spike enabled (GAMEHQ_SONY_HID_READER=1,"
+            << "read-only, Raw Input remains the fallback)";
 }
 
 DualSenseDevice::DualSenseDevice(RawInputApi* api, QObject* parent)
@@ -164,6 +200,9 @@ DualSenseDevice::DualSenseDevice(RawInputApi* api, QObject* parent)
 
 DualSenseDevice::~DualSenseDevice()
 {
+    // Join every reader worker before anything they could post to goes away.
+    m_hidReaders.clear();
+
     // Unregister so Windows stops routing WM_INPUT to a dead window.
     registerRawInput(true);
 
@@ -297,6 +336,7 @@ DualSenseDevice::DeviceState* DualSenseDevice::probeDevice(void* handle)
     InputDiagnostics::instance().noteDevice(
         id, InputDiagnostics::redactDevicePath(path.value),
         QStringLiteral("tracked (%1)").arg(QString::fromLatin1(padName(layout))));
+    startHidReader(handle, inserted.value());
     return &inserted.value();
 }
 
@@ -517,6 +557,7 @@ void DualSenseDevice::removeDevice(void* handle)
 
     const int layout = it->layout;
     const bool wasActive = (handle == m_activeHandle);
+    stopHidReader(handle, it.value(), "endpoint removed");
     m_devices.erase(it);
     m_rates.forget(handle);
     qInfo() << "Gamepad:" << padName(layout) << "removed"
@@ -572,8 +613,15 @@ void DualSenseDevice::reconcileDevices()
             m_activeHandle = nullptr;
             lostActive = true;
         }
+        stopHidReader(it.key(), it.value(), "endpoint pruned");
         m_rates.forget(it.key());
         it = m_devices.erase(it);
+    }
+    // A reader that failed to open or died is retried once per topology pass
+    // (never per report), e.g. after another tool released exclusive access.
+    for (auto it = m_devices.begin(); it != m_devices.end(); ++it) {
+        if (!it->hidReaderId)
+            startHidReader(it.key(), it.value());
     }
     if (lostActive)
         failoverOrScheduleDisconnect();
@@ -706,6 +754,23 @@ void DualSenseDevice::onRawInput(void* hRawInputV)
     }
     noteEvent(handle, false);
 
+    // Explicit per-endpoint source arbitration: while this endpoint's direct
+    // HID reader is healthy it is the only source, and the Raw Input copy of
+    // the same report is dropped before its payload is read, so no edge can
+    // be produced twice. This picks a source; it does not de-duplicate by time.
+    if (st->hidPreferred) {
+        const qint64 now = m_clock.elapsed();
+        if (now - st->lastHidMs <= kHidFreshMs) {
+            st->rawWhileHidQuietMs = 0;
+            return;
+        }
+        if (!st->rawWhileHidQuietMs)
+            st->rawWhileHidQuietMs = now;
+        if (now - st->rawWhileHidQuietMs < kHidFailoverMs)
+            return;
+        demoteHidSource(handle, *st, "reader silent while Raw Input delivers");
+    }
+
     RawInputApi::Payload payload;
     if (!m_api->readPayload(hRawInputV, payload)) {
         ++m_payloadFailures;
@@ -714,6 +779,120 @@ void DualSenseDevice::onRawInput(void* hRawInputV)
 
     for (int i = 0; i < payload.reportCount; ++i)
         parseReport(handle, *st, payload.reports + i * payload.reportSize, payload.reportSize);
+}
+
+void DualSenseDevice::setHidReaderFactory(HidReaderFactory factory)
+{
+    m_hidReaderFactory = std::move(factory);
+    if (!m_hidReaderFactory)
+        return;
+    for (auto it = m_devices.begin(); it != m_devices.end(); ++it) {
+        if (!it->hidReaderId)
+            startHidReader(it.key(), it.value());
+    }
+}
+
+void DualSenseDevice::startHidReader(void* handle, DeviceState& st)
+{
+    Q_UNUSED(handle)
+    if (!m_hidReaderFactory || st.hidReaderId || st.path.isEmpty())
+        return;
+    // One reader per endpoint path. Two live Raw Input handles for one path
+    // only overlap briefly during re-enumeration; the second one waits.
+    for (auto it = m_devices.cbegin(); it != m_devices.cend(); ++it) {
+        if (it->hidReaderId && it->path.compare(st.path, Qt::CaseInsensitive) == 0)
+            return;
+    }
+    const quint64 id = m_nextHidReaderId++;
+    QString error;
+    std::unique_ptr<SonyHidReaderHandle> reader =
+        m_hidReaderFactory(st.path, st.layout == LayoutDs4, id, &error);
+    const QString identity = deviceIdentity(st.vendorId, st.productId);
+    const QString pathKey = st.path.toLower();
+    if (!reader) {
+        if (!m_hidOpenFailuresLogged.contains(pathKey)) {
+            m_hidOpenFailuresLogged.insert(pathKey);
+            qInfo().noquote() << QStringLiteral(
+                "Gamepad: direct HID reader unavailable for %1 %2 (%3), Raw Input stays the source")
+                .arg(QString::fromLatin1(padName(st.layout)), identity, error);
+        }
+        return;
+    }
+    m_hidOpenFailuresLogged.remove(pathKey);
+    m_hidReaders.emplace(id, std::move(reader));
+    st.hidReaderId = id;
+    st.hidPreferred = false;
+    st.lastHidMs = 0;
+    st.rawWhileHidQuietMs = 0;
+    qInfo().noquote() << QStringLiteral("Gamepad: direct HID reader opened for %1 %2 (read-only)")
+                             .arg(QString::fromLatin1(padName(st.layout)), identity);
+}
+
+void DualSenseDevice::stopHidReader(void* handle, DeviceState& st, const char* why)
+{
+    if (!st.hidReaderId)
+        return;
+    const quint64 id = st.hidReaderId;
+    demoteHidSource(handle, st, why);
+    st.hidReaderId = 0;
+    // Destruction cancels the pending read and joins the worker; queued
+    // deliveries still carrying `id` find no owner and are dropped.
+    m_hidReaders.erase(id);
+    qInfo().noquote() << QStringLiteral("Gamepad: direct HID reader closed for %1 (%2)")
+                             .arg(deviceIdentity(st.vendorId, st.productId),
+                                  QLatin1String(why));
+}
+
+void DualSenseDevice::demoteHidSource(void* handle, DeviceState& st, const char* why)
+{
+    if (!st.hidPreferred)
+        return;
+    st.hidPreferred = false;
+    st.rawWhileHidQuietMs = 0;
+    qInfo().noquote() << QStringLiteral(
+        "Gamepad: direct HID reader no longer the source for %1 (%2), Raw Input takes over")
+        .arg(deviceIdentity(st.vendorId, st.productId), QLatin1String(why));
+    // Release everything this endpoint held; the next report from the new
+    // source presses again whatever is still physically down.
+    st.buttons = 0;
+    st.stick = 0;
+    if (handle == m_activeHandle)
+        emitEdges(0);
+}
+
+void DualSenseDevice::onHidReport(quint64 readerId, const QByteArray& report)
+{
+    if (!readerId || report.isEmpty())
+        return;
+    for (auto it = m_devices.begin(); it != m_devices.end(); ++it) {
+        if (it->hidReaderId != readerId)
+            continue;
+        DeviceState& st = it.value();
+        st.lastHidMs = m_clock.elapsed();
+        st.rawWhileHidQuietMs = 0;
+        if (!st.hidPreferred) {
+            st.hidPreferred = true;
+            qInfo().noquote() << QStringLiteral(
+                "Gamepad: direct HID reader is now the source for %1 (Raw Input payloads skipped)")
+                .arg(deviceIdentity(st.vendorId, st.productId));
+        }
+        parseReport(it.key(), st, reinterpret_cast<const unsigned char*>(report.constData()),
+                    int(report.size()), "Sony direct HID");
+        return;
+    }
+    // Stale delivery: the reader was replaced or its endpoint removed.
+}
+
+void DualSenseDevice::onHidReaderFailed(quint64 readerId, const QString& reason)
+{
+    for (auto it = m_devices.begin(); it != m_devices.end(); ++it) {
+        if (it->hidReaderId != readerId)
+            continue;
+        qInfo().noquote() << QStringLiteral("Gamepad: direct HID reader failed for %1: %2")
+                                 .arg(deviceIdentity(it->vendorId, it->productId), reason);
+        stopHidReader(it.key(), it.value(), "reader failed");
+        return;
+    }
 }
 
 // Count the event and make sure the sampler is running. Deliberately the only
@@ -1003,7 +1182,7 @@ quint32 DualSenseDevice::decodeStickNav(const DeviceState& st, const unsigned ch
 }
 
 void DualSenseDevice::parseReport(void* handle, DeviceState& st,
-                                  const unsigned char* d, int len)
+                                  const unsigned char* d, int len, const char* provider)
 {
     if (len < 1)
         return;
@@ -1024,12 +1203,13 @@ void DualSenseDevice::parseReport(void* handle, DeviceState& st,
     if (shape != st.reportShape) {
         st.reportShape = shape;
         qInfo().noquote() << QStringLiteral(
-            "Gamepad: input layout %1 provider=Sony Raw Input report_id=0x%2 length=%3 "
+            "Gamepad: input layout %1 provider=%7 report_id=0x%2 length=%3 "
             "variant=%4 axes=%5 buttons=%6")
             .arg(deviceIdentity(st.vendorId, st.productId))
             .arg(reportId, 2, 16, QLatin1Char('0'))
             .arg(len).arg(QLatin1String(layout.variant))
-            .arg(layout.axes).arg(layout.buttons);
+            .arg(layout.axes).arg(layout.buttons)
+            .arg(QLatin1String(provider));
     }
 
     st.reported = true;
