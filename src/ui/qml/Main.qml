@@ -1005,6 +1005,7 @@ ApplicationWindow {
             window.usingGamepad = true
             if (lightbox.visible) {
                 lightbox.padReveal()
+                lightbox.toggleFavorite()
                 return
             }
             window.padFavorite()

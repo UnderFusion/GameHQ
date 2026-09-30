@@ -678,8 +678,12 @@ Window {
                 return
             if (content.menuOpen || content.layoutPanelOpen)
                 return
+            if (viewer.open) {
+                viewer.toggleFavorite()
+                return
+            }
             sounds.play("favorite")
-            overlayGallery.toggleFavorite(viewer.open ? viewer.index : strip.currentIndex)
+            overlayGallery.toggleFavorite(strip.currentIndex)
         }
 
         function handleBack() {

@@ -114,10 +114,10 @@
       <translation>Отменить</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1286"></location>
-      <location filename="src/ui/qml/Main.qml" line="1305"></location>
-      <location filename="src/ui/qml/Main.qml" line="1343"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1016"></location>
+      <location filename="src/ui/qml/Main.qml" line="1287"></location>
+      <location filename="src/ui/qml/Main.qml" line="1306"></location>
+      <location filename="src/ui/qml/Main.qml" line="1344"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -1348,40 +1348,40 @@
       <translation>Добавить папку…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1345"></location>
+      <location filename="src/ui/qml/Main.qml" line="1346"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Множественный выбор</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1339"></location>
+      <location filename="src/ui/qml/Main.qml" line="1340"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>Поделиться</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1341"></location>
+      <location filename="src/ui/qml/Main.qml" line="1342"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Показать в папке</translation>
     </message>
     <message id="gamehq.gallery.capture_caption">
       <location filename="src/ui/qml/components/CaptureTile.qml" line="185"></location>
-      <location filename="src/ui/qml/components/Lightbox.qml" line="270"></location>
+      <location filename="src/ui/qml/components/Lightbox.qml" line="279"></location>
       <location filename="src/ui/qml/components/OverlayViewer.qml" line="179"></location>
       <source>%1 · %2</source>
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1274"></location>
+      <location filename="src/ui/qml/Main.qml" line="1275"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 Файл будет удалён без возможности восстановления.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1284"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1014"></location>
+      <location filename="src/ui/qml/Main.qml" line="1285"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1018"></location>
       <source>Delete capture?</source>
       <translation>Удалить запись?</translation>
     </message>
@@ -1399,7 +1399,7 @@ This cannot be undone.</source>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1303"></location>
+      <location filename="src/ui/qml/Main.qml" line="1304"></location>
       <source>Delete selected captures?</source>
       <translation>Удалить выбранные записи?</translation>
     </message>
@@ -2064,7 +2064,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 используется совместно: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1254"></location>
+      <location filename="src/ui/qml/Main.qml" line="1255"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Выберите папку для отслеживания</translation>
