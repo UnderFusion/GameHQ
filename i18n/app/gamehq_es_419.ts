@@ -4476,7 +4476,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation>Desactivar un destino solo lo oculta. Las cuentas y los canales guardados se conservan hasta que los desconectes o los elimines.</translation>
+      <translation>Desactivar un destino solo lo oculta. Las cuentas guardadas se conservan hasta que las desconectes y los canales guardados hasta que los elimines.</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
@@ -4536,7 +4536,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.settings.telegram.description">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
       <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
-      <translation>Envía capturas desde GameHQ directamente a tus contactos de Telegram. GameHQ no muestra chats ni mensajes y no envía nada que no hayas elegido. Esto inicia sesión en toda tu cuenta de Telegram, así que conecta solo una cuenta con la que te sientas cómodo.</translation>
+      <translation>Envía capturas desde GameHQ directamente a tus contactos de Telegram. GameHQ no muestra chats ni mensajes y solo envía la captura que elijas. Esta función crea en la aplicación una sesión completa de tu cuenta de Telegram; conecta solo una cuenta si aceptas ese nivel de acceso.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.bad_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
@@ -4581,7 +4581,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.settings.telegram.error.no_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
       <source>The optional Telegram component is not installed in this GameHQ.</source>
-      <translation>El componente opcional de Telegram no está instalado en este GameHQ.</translation>
+      <translation>El componente opcional de Telegram no está instalado en esta instalación de GameHQ.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.password_invalid">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
@@ -4601,12 +4601,12 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.settings.telegram.error.unsupported_auth">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="54"></location>
       <source>This account needs a sign-in step GameHQ does not support. Use Telegram Desktop sharing instead.</source>
-      <translation>Esta cuenta necesita un paso de inicio de sesión que GameHQ no admite. Usa en su lugar Compartir mediante Telegram Desktop.</translation>
+      <translation>Esta cuenta necesita un paso de inicio de sesión que GameHQ no admite. En su lugar, usa Telegram Desktop para compartir.</translation>
     </message>
     <message id="gamehq.settings.telegram.forget">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="129"></location>
       <source>Forget API ID and hash</source>
-      <translation>Olvidar ID y hash de API</translation>
+      <translation>Eliminar ID y hash de API</translation>
     </message>
     <message id="gamehq.settings.telegram.title">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="69"></location>
@@ -4742,7 +4742,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.share.addons.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="130"></location>
       <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
-      <translation>Otros programas que se ejecutan con tu cuenta en esta PC podrán ofrecer destinos en Compartir y recibir las capturas que elijas compartir. Desactivado de forma predeterminada. Reinicia GameHQ para aplicarlo.</translation>
+      <translation>Otros programas que se ejecutan con tu cuenta en esta PC podrán ofrecer destinos para compartir y recibir las capturas que elijas compartir. Desactivado de forma predeterminada. Reinicia GameHQ para aplicarlo.</translation>
     </message>
     <message id="gamehq.share.addons.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="128"></location>
@@ -4752,7 +4752,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.share.addons.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="125"></location>
       <source>Share add-ons</source>
-      <translation>Complementos de Compartir</translation>
+      <translation>Complementos para compartir</translation>
     </message>
     <message id="gamehq.share.close">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="164"></location>
@@ -4777,12 +4777,12 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.share.discord_webhook.not_configured">
       <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="60"></location>
       <source>Add a Discord channel in Settings first.</source>
-      <translation>Primero agrega un canal de Discord en Ajustes.</translation>
+      <translation>Primero agrega un canal de Discord en Configuración.</translation>
     </message>
     <message id="gamehq.share.discord_webhook.privacy">
       <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="69"></location>
       <source>Posts to the channel as a webhook, not as your Discord account. Everyone in the channel can see it.</source>
-      <translation>Publica en el canal como webhook, no como tu cuenta de Discord. Todos en el canal pueden verlo.</translation>
+      <translation>Publica en el canal mediante un webhook, no desde tu cuenta de Discord. Todos los miembros del canal pueden verlo.</translation>
     </message>
     <message id="gamehq.share.error.capture_changed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
@@ -4822,7 +4822,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.share.error.sharing_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
       <source>Sharing is turned off. Turn it on in Settings &gt; Sharing.</source>
-      <translation>Compartir está desactivado. Actívalo en Configuración &gt; Compartir.</translation>
+      <translation>La función Compartir está desactivada. Actívala en Configuración &gt; Compartir.</translation>
     </message>
     <message id="gamehq.share.error.too_large">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="225"></location>
@@ -4832,7 +4832,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.share.error.webhook_revoked">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="229"></location>
       <source>That channel's webhook no longer works. Remove it in Settings and add it again.</source>
-      <translation>El webhook de ese canal ya no funciona. Elimínalo en Ajustes y vuelve a agregarlo.</translation>
+      <translation>El webhook de ese canal ya no funciona. Elimínalo en Configuración y vuelve a agregarlo.</translation>
     </message>
     <message id="gamehq.share.external.not_running">
       <location filename="src/share/external/ExternalProvider.cpp" line="89"></location>
@@ -4862,7 +4862,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.share.outcome.cancelled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="195"></location>
       <source>Sharing cancelled. Nothing was sent.</source>
-      <translation>Se canceló el envío. No se envió nada.</translation>
+      <translation>Se canceló la acción de compartir. No se envió nada.</translation>
     </message>
     <message id="gamehq.share.outcome.copied">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="192"></location>
@@ -4912,7 +4912,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.share.settings.description">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="41"></location>
       <source>Channels that Share can post to. Webhook links are kept in Windows Credential Manager, not in GameHQ's settings.</source>
-      <translation>Canales en los que puedes publicar con Compartir. Los enlaces de webhook se guardan en el Administrador de credenciales de Windows, no en los ajustes de GameHQ.</translation>
+      <translation>Canales en los que puedes publicar mediante Compartir. Los enlaces de webhook se guardan en el Administrador de credenciales de Windows, no en la configuración de GameHQ.</translation>
     </message>
     <message id="gamehq.share.settings.error.invalid_name">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="25"></location>

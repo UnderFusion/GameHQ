@@ -2902,7 +2902,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.category.sharing">
       <location filename="src/ui/qml/SettingsView.qml" line="25"></location>
       <source>Sharing</source>
-      <translation>Отправка</translation>
+      <translation>Поделиться</translation>
     </message>
     <message id="gamehq.settings.disclosure.default">
       <location filename="src/ui/qml/components/SettingsDisclosure.qml" line="9"></location>
@@ -4458,7 +4458,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.disconnect.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
       <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
-      <translation>Выполняет выход GameHQ и удаляет локальный сеанс. Отключение места назначения этого не делает.</translation>
+      <translation>Выполняет выход из подключённой учётной записи в GameHQ и удаляет локальный сеанс. Простое отключение места назначения этого не делает.</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
@@ -4473,17 +4473,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.master.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="48"></location>
       <source>Enable Sharing</source>
-      <translation>Включить отправку</translation>
+      <translation>Включить функцию «Поделиться»</translation>
     </message>
     <message id="gamehq.settings.sharing.master.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="45"></location>
       <source>Sharing</source>
-      <translation>Отправка</translation>
+      <translation>Поделиться</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation>Отключение места назначения лишь скрывает его. Сохранённые учётные записи и каналы остаются, пока вы не отключите или не удалите их.</translation>
+      <translation>Отключение места назначения лишь скрывает его. Сохранённые учётные записи остаются, пока вы их не отключите, а каналы — пока не удалите.</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
@@ -4493,7 +4493,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="14"></location>
       <source>Sharing</source>
-      <translation>Отправка</translation>
+      <translation>Поделиться</translation>
     </message>
     <message id="gamehq.settings.telegram.api_hash">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="97"></location>
@@ -4543,7 +4543,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.description">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
       <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
-      <translation>Отправляйте записи из GameHQ прямо своим контактам в Telegram. GameHQ не показывает чаты и сообщения и не отправляет ничего, что вы не выбрали. Это выполняет вход в вашу учётную запись Telegram целиком, поэтому подключайте только ту учётную запись, с которой вам комфортно.</translation>
+      <translation>Отправляйте записи из GameHQ прямо своим контактам в Telegram. GameHQ не показывает чаты и сообщения и отправляет только выбранную вами запись. Эта функция создаёт в приложении полноценный сеанс вашей учётной записи Telegram, поэтому подключайте только ту учётную запись, для которой вы принимаете такой уровень доступа.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.bad_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
@@ -4588,7 +4588,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.error.no_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
       <source>The optional Telegram component is not installed in this GameHQ.</source>
-      <translation>Необязательный компонент Telegram не установлен в этой версии GameHQ.</translation>
+      <translation>Необязательный компонент Telegram не установлен в этой установке GameHQ.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.password_invalid">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
@@ -4613,7 +4613,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.forget">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="129"></location>
       <source>Forget API ID and hash</source>
-      <translation>Забыть ID API и хеш</translation>
+      <translation>Удалить ID API и хеш</translation>
     </message>
     <message id="gamehq.settings.telegram.title">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="69"></location>
@@ -4789,7 +4789,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.discord_webhook.privacy">
       <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="69"></location>
       <source>Posts to the channel as a webhook, not as your Discord account. Everyone in the channel can see it.</source>
-      <translation>Публикует в канале как вебхук, а не от вашего аккаунта Discord. Запись увидят все участники канала.</translation>
+      <translation>Публикует в канале через вебхук, а не от имени вашей учётной записи Discord. Публикацию увидят все участники канала.</translation>
     </message>
     <message id="gamehq.share.error.capture_changed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
@@ -4819,7 +4819,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.error.provider_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
       <source>That destination is turned off in Settings &gt; Sharing.</source>
-      <translation>Это место назначения отключено в разделе «Настройки» &gt; «Отправка».</translation>
+      <translation>Это место назначения отключено в разделе «Настройки» &gt; «Поделиться».</translation>
     </message>
     <message id="gamehq.share.error.rate_limited">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="222"></location>
@@ -4829,7 +4829,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.error.sharing_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
       <source>Sharing is turned off. Turn it on in Settings &gt; Sharing.</source>
-      <translation>Отправка отключена. Включите её в разделе «Настройки» &gt; «Отправка».</translation>
+      <translation>Функция «Поделиться» отключена. Включите её в разделе «Настройки» &gt; «Поделиться».</translation>
     </message>
     <message id="gamehq.share.error.too_large">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="225"></location>
@@ -4869,7 +4869,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.outcome.cancelled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="195"></location>
       <source>Sharing cancelled. Nothing was sent.</source>
-      <translation>Отправка отменена. Ничего не отправлено.</translation>
+      <translation>Действие «Поделиться» отменено. Ничего не отправлено.</translation>
     </message>
     <message id="gamehq.share.outcome.copied">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="192"></location>
@@ -4884,7 +4884,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.outcome.handed_off_paste">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="187"></location>
       <source>Copied and opened %1. Paste it into a chat to send it.</source>
-      <translation>Скопировано, %1 открыт. Вставьте запись в чат, чтобы отправить её.</translation>
+      <translation>Скопировано и открыто приложение %1. Вставьте запись в чат, чтобы отправить её.</translation>
     </message>
     <message id="gamehq.share.outcome.sent">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="183"></location>

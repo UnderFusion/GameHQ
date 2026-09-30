@@ -4444,7 +4444,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.disconnect.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
       <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
-      <translation>GameHQ에서 로그아웃하고 로컬 세션을 삭제합니다. 공유 대상을 끄는 것만으로는 삭제되지 않습니다.</translation>
+      <translation>GameHQ에서 로그아웃하고 로컬 세션을 삭제합니다. 공유 대상을 끄기만 해서는 로그아웃되거나 세션이 삭제되지 않습니다.</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
@@ -4469,7 +4469,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation>공유 대상을 끄면 숨겨지기만 합니다. 저장된 계정과 채널은 연결을 해제하거나 제거하기 전까지 유지됩니다.</translation>
+      <translation>공유 대상을 끄면 숨겨지기만 합니다. 저장된 계정은 연결을 해제할 때까지, 저장된 채널은 제거할 때까지 유지됩니다.</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
@@ -4529,7 +4529,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.description">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
       <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
-      <translation>GameHQ에서 Telegram 연락처로 캡처를 바로 보냅니다. GameHQ는 채팅이나 메시지를 표시하지 않으며 선택하지 않은 항목은 보내지 않습니다. 이 기능은 Telegram 계정 전체에 로그인하므로 신뢰할 수 있는 계정만 연결하세요.</translation>
+      <translation>GameHQ에서 Telegram 연락처로 캡처를 바로 보냅니다. GameHQ는 채팅이나 메시지를 표시하지 않으며 선택한 캡처만 보냅니다. 이 기능은 Telegram 계정 자체에 로그인하므로, 이 용도로 사용해도 되는 계정만 연결하세요.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.bad_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
@@ -4574,7 +4574,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.error.no_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
       <source>The optional Telegram component is not installed in this GameHQ.</source>
-      <translation>선택 사항인 Telegram 구성 요소가 이 GameHQ에 설치되어 있지 않습니다.</translation>
+      <translation>선택 사항인 Telegram 구성 요소가 이 GameHQ 설치에 설치되어 있지 않습니다.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.password_invalid">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
@@ -4865,7 +4865,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.outcome.handed_off">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="189"></location>
       <source>Opened in %1. Finish sending there.</source>
-      <translation>%1에서 열었습니다. 보내기는 그곳에서 마치세요.</translation>
+      <translation>%1에서 열었습니다. 전송은 그곳에서 완료하세요.</translation>
     </message>
     <message id="gamehq.share.outcome.handed_off_paste">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="187"></location>
@@ -4905,7 +4905,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.settings.description">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="41"></location>
       <source>Channels that Share can post to. Webhook links are kept in Windows Credential Manager, not in GameHQ's settings.</source>
-      <translation>공유로 게시할 수 있는 채널입니다. 웹훅 링크는 GameHQ 설정이 아닌 Windows 자격 증명 관리자에 저장됩니다.</translation>
+      <translation>공유 기능으로 게시할 수 있는 채널입니다. 웹훅 링크는 GameHQ 설정이 아닌 Windows 자격 증명 관리자에 저장됩니다.</translation>
     </message>
     <message id="gamehq.share.settings.error.invalid_name">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="25"></location>

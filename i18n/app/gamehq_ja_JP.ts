@@ -4429,7 +4429,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.disconnect.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
       <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
-      <translation>GameHQ をサインアウトし、ローカルセッションを削除します。共有先をオフにしてもこの操作は行われません。</translation>
+      <translation>GameHQ からサインアウトし、ローカルセッションを削除します。共有先をオフにするだけでは、この操作は行われません。</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
@@ -4454,7 +4454,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation>共有先をオフにしても非表示になるだけです。保存済みのアカウントとチャンネルは、切断または削除するまで保持されます。</translation>
+      <translation>共有先をオフにしても非表示になるだけです。保存済みのアカウントは接続を解除するまで、保存済みのチャンネルは削除するまで保持されます。</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
@@ -4514,7 +4514,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.description">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
       <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
-      <translation>GameHQ から Telegram の連絡先へ直接キャプチャを送信します。GameHQ はチャットやメッセージを表示せず、選択していないものを送信することもありません。この操作では Telegram アカウント全体にサインインするため、問題ないと思えるアカウントだけを接続してください。</translation>
+      <translation>GameHQ から Telegram の連絡先へ直接キャプチャを送信します。GameHQ はチャットやメッセージを表示せず、選択したキャプチャ以外は送信しません。この機能では Telegram アカウントそのものにサインインするため、この用途で使用してもよいアカウントだけを接続してください。</translation>
     </message>
     <message id="gamehq.settings.telegram.error.bad_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
@@ -4720,7 +4720,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.addons.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="130"></location>
       <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
-      <translation>有効にすると、このPC上であなたとして実行されている他のプログラムが共有先を追加し、共有するために選んだキャプチャを受け取れるようになります。既定ではオフです。適用するには GameHQ を再起動してください。</translation>
+      <translation>有効にすると、この PC であなたのユーザーアカウントとして実行されている他のプログラムが共有先を提供し、共有対象として選んだキャプチャを受け取れるようになります。既定ではオフです。適用するには GameHQ を再起動してください。</translation>
     </message>
     <message id="gamehq.share.addons.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="128"></location>
@@ -4745,7 +4745,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.discord_desktop.privacy">
       <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="134"></location>
       <source>Copies the file and opens Discord so you can paste it. GameHQ never signs in to Discord.</source>
-      <translation>ファイルをコピーして Discord を開くので、貼り付けて送れます。GameHQ が Discord にサインインすることはありません。</translation>
+      <translation>ファイルをコピーして Discord を開き、貼り付けられるようにします。GameHQ が Discord にサインインすることはありません。</translation>
     </message>
     <message id="gamehq.share.discord_webhook.name">
       <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="45"></location>
@@ -4820,7 +4820,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.external.privacy">
       <location filename="src/share/external/ExternalProvider.cpp" line="99"></location>
       <source>Add-on from another program on this PC. It receives the capture you choose to share.</source>
-      <translation>このPC上の別のプログラムによるアドオンです。共有するために選んだキャプチャを受け取ります。</translation>
+      <translation>この PC 上の別のプログラムによるアドオンです。共有対象として選んだキャプチャを受け取ります。</translation>
     </message>
     <message id="gamehq.share.loading">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="134"></location>

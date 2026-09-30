@@ -4448,7 +4448,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.sharing.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="16"></location>
       <source>Choose where captures can be shared. Nothing is ever sent without you picking a capture and a destination.</source>
-      <translation>Wybierz, dokąd można udostępniać materiały. Nic nie jest wysyłane, dopóki nie wybierzesz materiału i miejsca docelowego.</translation>
+      <translation>Wybierz, gdzie można udostępniać materiały. Nic nie zostanie wysłane, dopóki nie wybierzesz materiału i miejsca docelowego.</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.action">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="102"></location>
@@ -4458,7 +4458,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.sharing.disconnect.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
       <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
-      <translation>Wylogowuje GameHQ i usuwa lokalną sesję. Wyłączenie miejsca docelowego tego nie robi.</translation>
+      <translation>Wylogowuje konto z GameHQ i usuwa zapisaną lokalnie sesję. Samo wyłączenie miejsca docelowego tego nie robi.</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
@@ -4483,7 +4483,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation>Wyłączenie miejsca docelowego tylko je ukrywa. Zapisane konta i kanały są zachowywane, dopóki ich nie rozłączysz lub nie usuniesz.</translation>
+      <translation>Wyłączenie miejsca docelowego tylko je ukrywa. Zapisane konta i kanały pozostają zachowane, dopóki nie rozłączysz konta lub nie usuniesz zapisanej pozycji.</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
@@ -4543,7 +4543,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.telegram.description">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
       <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
-      <translation>Wysyłaj materiały z GameHQ prosto do kontaktów w Telegramie. GameHQ nie pokazuje czatów ani wiadomości i nie wysyła niczego, co nie zostało przez Ciebie wybrane. Ta opcja loguje do całego Twojego konta Telegram, więc łącz tylko takie konto, z którym czujesz się komfortowo.</translation>
+      <translation>Wysyłaj materiały z GameHQ prosto do kontaktów w Telegramie. GameHQ nie pokazuje czatów ani wiadomości i wysyła tylko materiał, który wybierzesz. Ta opcja tworzy w tej aplikacji pełną sesję Twojego konta Telegram, więc połącz tylko konto, dla którego akceptujesz taki zakres dostępu.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.bad_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
@@ -4573,7 +4573,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.telegram.error.invalid_api_hash">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="60"></location>
       <source>The API hash is 32 letters and digits.</source>
-      <translation>Hash API to 32 litery i cyfry.</translation>
+      <translation>Hash API musi mieć 32 znaki: litery i cyfry.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.invalid_api_id">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="57"></location>
@@ -4588,7 +4588,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.telegram.error.no_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
       <source>The optional Telegram component is not installed in this GameHQ.</source>
-      <translation>Opcjonalny składnik Telegrama nie jest zainstalowany w tym GameHQ.</translation>
+      <translation>Opcjonalny składnik Telegrama nie jest zainstalowany w tej instalacji GameHQ.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.password_invalid">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
@@ -4603,7 +4603,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.telegram.error.rate_limited">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="48"></location>
       <source>Telegram asks you to wait before trying again.</source>
-      <translation>Telegram prosi o odczekanie przed ponowną próbą.</translation>
+      <translation>Telegram wymaga odczekania przed ponowną próbą.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.unsupported_auth">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="54"></location>
@@ -4819,7 +4819,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.share.error.provider_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
       <source>That destination is turned off in Settings &gt; Sharing.</source>
-      <translation>To miejsce docelowe jest wyłączone w Ustawienia &gt; Udostępnianie.</translation>
+      <translation>To miejsce docelowe jest wyłączone w sekcji Ustawienia &gt; Udostępnianie.</translation>
     </message>
     <message id="gamehq.share.error.rate_limited">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="222"></location>
@@ -4829,7 +4829,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.share.error.sharing_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="213"></location>
       <source>Sharing is turned off. Turn it on in Settings &gt; Sharing.</source>
-      <translation>Udostępnianie jest wyłączone. Włącz je w Ustawienia &gt; Udostępnianie.</translation>
+      <translation>Udostępnianie jest wyłączone. Włącz je w sekcji Ustawienia &gt; Udostępnianie.</translation>
     </message>
     <message id="gamehq.share.error.too_large">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="225"></location>
@@ -4894,7 +4894,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.share.outcome.unconfirmed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="198"></location>
       <source>GameHQ couldn't confirm whether it was sent. Check before sharing again.</source>
-      <translation>GameHQ nie może potwierdzić, czy wysłano. Sprawdź to, zanim udostępnisz ponownie.</translation>
+      <translation>GameHQ nie mógł potwierdzić, czy materiał został wysłany. Sprawdź to, zanim udostępnisz go ponownie.</translation>
     </message>
     <message id="gamehq.share.provider.clipboard">
       <location filename="src/share/providers/ClipboardShareProvider.cpp" line="24"></location>
@@ -4919,7 +4919,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.share.settings.description">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="41"></location>
       <source>Channels that Share can post to. Webhook links are kept in Windows Credential Manager, not in GameHQ's settings.</source>
-      <translation>Kanały, na których Udostępnij może publikować. Linki webhooków są przechowywane w Menedżerze poświadczeń systemu Windows, a nie w ustawieniach GameHQ.</translation>
+      <translation>Kanały, na których można publikować przez funkcję Udostępnij. Linki webhooków są przechowywane w Menedżerze poświadczeń systemu Windows, a nie w ustawieniach GameHQ.</translation>
     </message>
     <message id="gamehq.share.settings.error.invalid_name">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="25"></location>

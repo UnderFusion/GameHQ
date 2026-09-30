@@ -4461,7 +4461,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.settings.sharing.master.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="50"></location>
       <source>Turns the Share option on or off everywhere: gallery, lightbox and overlay.</source>
-      <translation>Schaltet die Teilen-Option überall ein oder aus: Galerie, Ansicht und Overlay.</translation>
+      <translation>Schaltet die Teilen-Option überall ein oder aus: Galerie, Lightbox und Overlay.</translation>
     </message>
     <message id="gamehq.settings.sharing.master.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="48"></location>
@@ -4476,7 +4476,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation>Das Ausschalten eines Ziels blendet es nur aus. Gespeicherte Konten und Kanäle bleiben erhalten, bis Sie sie trennen oder entfernen.</translation>
+      <translation>Das Ausschalten eines Ziels blendet es nur aus. Gespeicherte Konten und Kanäle bleiben erhalten, bis Sie ein Konto trennen oder einen gespeicherten Eintrag entfernen.</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
@@ -4536,7 +4536,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.settings.telegram.description">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
       <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
-      <translation>Senden Sie Aufnahmen aus GameHQ direkt an Ihre Telegram-Kontakte. GameHQ zeigt keine Chats oder Nachrichten an und sendet nichts, was Sie nicht ausgewählt haben. Dabei wird Ihr gesamtes Telegram-Konto angemeldet – verbinden Sie daher nur ein Konto, bei dem Sie sich wohlfühlen.</translation>
+      <translation>Senden Sie Aufnahmen aus GameHQ direkt an Ihre Telegram-Kontakte. GameHQ zeigt keine Chats oder Nachrichten an und sendet nur die Aufnahme, die Sie ausgewählt haben. Dabei wird in dieser App eine vollständige Sitzung Ihres Telegram-Kontos erstellt; verbinden Sie daher nur ein Konto, für das Sie diesen Zugriff akzeptieren.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.bad_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
@@ -4752,7 +4752,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.share.addons.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="125"></location>
       <source>Share add-ons</source>
-      <translation>Erweiterungen für Teilen</translation>
+      <translation>Erweiterungen zum Teilen</translation>
     </message>
     <message id="gamehq.share.close">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="164"></location>
@@ -4782,7 +4782,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.share.discord_webhook.privacy">
       <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="69"></location>
       <source>Posts to the channel as a webhook, not as your Discord account. Everyone in the channel can see it.</source>
-      <translation>Postet im Kanal als Webhook, nicht als Ihr Discord-Konto. Alle im Kanal können es sehen.</translation>
+      <translation>Veröffentlicht im Kanal über einen Webhook und nicht über Ihr Discord-Konto. Alle im Kanal können den Beitrag sehen.</translation>
     </message>
     <message id="gamehq.share.error.capture_changed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
@@ -4872,7 +4872,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.share.outcome.handed_off">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="189"></location>
       <source>Opened in %1. Finish sending there.</source>
-      <translation>In %1 geöffnet. Schließen Sie das Senden dort ab.</translation>
+      <translation>In %1 geöffnet. Schließen Sie den Versand dort ab.</translation>
     </message>
     <message id="gamehq.share.outcome.handed_off_paste">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="187"></location>
@@ -4887,7 +4887,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.share.outcome.unconfirmed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="198"></location>
       <source>GameHQ couldn't confirm whether it was sent. Check before sharing again.</source>
-      <translation>GameHQ konnte nicht bestätigen, ob gesendet wurde. Prüfen Sie das, bevor Sie erneut teilen.</translation>
+      <translation>GameHQ konnte nicht bestätigen, ob die Aufnahme gesendet wurde. Prüfen Sie das, bevor Sie sie erneut teilen.</translation>
     </message>
     <message id="gamehq.share.provider.clipboard">
       <location filename="src/share/providers/ClipboardShareProvider.cpp" line="24"></location>
@@ -4912,7 +4912,7 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     <message id="gamehq.share.settings.description">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="41"></location>
       <source>Channels that Share can post to. Webhook links are kept in Windows Credential Manager, not in GameHQ's settings.</source>
-      <translation>Kanäle, in die Sie per Teilen posten können. Webhook-Links werden in der Windows-Anmeldeinformationsverwaltung gespeichert, nicht in den GameHQ-Einstellungen.</translation>
+      <translation>Kanäle, in denen Sie über „Teilen“ posten können. Webhook-Links werden in der Windows-Anmeldeinformationsverwaltung gespeichert, nicht in den GameHQ-Einstellungen.</translation>
     </message>
     <message id="gamehq.share.settings.error.invalid_name">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="25"></location>

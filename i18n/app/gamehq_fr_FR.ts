@@ -4516,12 +4516,12 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.settings.telegram.credentials_help">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="81"></location>
       <source>Create an API ID and API hash for GameHQ at my.telegram.org (API development tools), then enter them here. They are kept in Windows Credential Manager, never in GameHQ's settings.</source>
-      <translation>Créez un ID d’API et un hash d’API pour GameHQ sur my.telegram.org (outils de développement d’API), puis saisissez-les ici. Ils sont conservés dans le Gestionnaire d’identification de Windows, jamais dans les paramètres de GameHQ.</translation>
+      <translation>Créez un ID d’API et un hash d’API pour GameHQ sur my.telegram.org (outils de développement d’API), puis saisissez-les ici. Ils sont conservés dans le Gestionnaire d’informations d’identification Windows, jamais dans les paramètres de GameHQ.</translation>
     </message>
     <message id="gamehq.settings.telegram.description">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
       <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
-      <translation>Envoyez des captures depuis GameHQ directement à vos contacts Telegram. GameHQ n’affiche aucune conversation ni aucun message et n’envoie rien que vous n’ayez choisi. Cela connecte l’ensemble de votre compte Telegram : ne connectez donc qu’un compte avec lequel vous êtes à l’aise.</translation>
+      <translation>Envoyez des captures depuis GameHQ directement à vos contacts Telegram. GameHQ n’affiche aucune conversation ni aucun message et n’envoie que la capture que vous choisissez. Cela ouvre dans cette application une session complète de votre compte Telegram ; ne connectez donc qu’un compte pour lequel vous acceptez ce niveau d’accès.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.bad_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
@@ -4566,7 +4566,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.settings.telegram.error.no_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
       <source>The optional Telegram component is not installed in this GameHQ.</source>
-      <translation>Le composant facultatif Telegram n’est pas installé dans ce GameHQ.</translation>
+      <translation>Le composant facultatif Telegram n’est pas installé dans cette installation de GameHQ.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.password_invalid">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
@@ -4872,7 +4872,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.share.outcome.unconfirmed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="198"></location>
       <source>GameHQ couldn't confirm whether it was sent. Check before sharing again.</source>
-      <translation>GameHQ n’a pas pu confirmer l’envoi. Vérifiez avant de partager à nouveau.</translation>
+      <translation>GameHQ n’a pas pu confirmer si l’envoi a abouti. Vérifiez avant de partager à nouveau.</translation>
     </message>
     <message id="gamehq.share.provider.clipboard">
       <location filename="src/share/providers/ClipboardShareProvider.cpp" line="24"></location>
@@ -4897,7 +4897,7 @@ Pour utiliser également %1 pour %3, GameHQ doit remplacer l’« Appui » de 
     <message id="gamehq.share.settings.description">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="41"></location>
       <source>Channels that Share can post to. Webhook links are kept in Windows Credential Manager, not in GameHQ's settings.</source>
-      <translation>Canaux dans lesquels Partager peut publier. Les liens de webhook sont conservés dans le Gestionnaire d’identification Windows, et non dans les paramètres de GameHQ.</translation>
+      <translation>Canaux dans lesquels vous pouvez publier via Partager. Les liens de webhook sont conservés dans le Gestionnaire d’informations d’identification Windows, et non dans les paramètres de GameHQ.</translation>
     </message>
     <message id="gamehq.share.settings.error.invalid_name">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="25"></location>
