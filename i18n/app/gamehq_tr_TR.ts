@@ -114,9 +114,9 @@
       <translation>İptal</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1287"></location>
-      <location filename="src/ui/qml/Main.qml" line="1306"></location>
-      <location filename="src/ui/qml/Main.qml" line="1344"></location>
+      <location filename="src/ui/qml/Main.qml" line="1288"></location>
+      <location filename="src/ui/qml/Main.qml" line="1307"></location>
+      <location filename="src/ui/qml/Main.qml" line="1345"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
@@ -972,7 +972,7 @@
       <translation>Başka bir taşınabilir profil içe aktarma işlemi zaten çalışıyor.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="668"></location>
+      <location filename="src/app/App.cpp" line="669"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Çekim işlemleri güvenli biçimde zamanında tamamlanamadığı için güncelleme iptal edildi.</translation>
     </message>
@@ -1223,7 +1223,7 @@
       <translation>GameHQ, güncelleme işlemini son durumuna uygulayamadı.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="643"></location>
+      <location filename="src/app/App.cpp" line="644"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ güncelleme bakımına başlayamadı: %1</translation>
     </message>
@@ -1344,19 +1344,19 @@
       <translation>Klasör ekle…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1346"></location>
+      <location filename="src/ui/qml/Main.qml" line="1347"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Toplu seçim</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1340"></location>
+      <location filename="src/ui/qml/Main.qml" line="1341"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>Paylaş</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1342"></location>
+      <location filename="src/ui/qml/Main.qml" line="1343"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Klasörde göster</translation>
@@ -1369,20 +1369,20 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1275"></location>
+      <location filename="src/ui/qml/Main.qml" line="1276"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 Bu işlem dosyayı kalıcı olarak siler.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1285"></location>
+      <location filename="src/ui/qml/Main.qml" line="1286"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1018"></location>
       <source>Delete capture?</source>
       <translation>Çekim silinsin mi?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="476"></location>
+      <location filename="src/ui/qml/Main.qml" line="477"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
@@ -1391,7 +1391,7 @@ Bu işlem geri alınamaz.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1304"></location>
+      <location filename="src/ui/qml/Main.qml" line="1305"></location>
       <source>Delete selected captures?</source>
       <translation>Seçili çekimler silinsin mi?</translation>
     </message>
@@ -2054,7 +2054,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>%1 paylaşılır: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1255"></location>
+      <location filename="src/ui/qml/Main.qml" line="1256"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>İzlenecek bir klasör seçin</translation>
@@ -2068,44 +2068,44 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Hakkında</translation>
     </message>
     <message id="gamehq.navigation.category.all">
-      <location filename="src/ui/qml/Main.qml" line="199"></location>
+      <location filename="src/ui/qml/Main.qml" line="200"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="128"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
       <source>All</source>
       <translation>Tümü</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
-      <location filename="src/ui/qml/Main.qml" line="207"></location>
+      <location filename="src/ui/qml/Main.qml" line="208"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="39"></location>
       <source>Clips</source>
       <translation>Klipler</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
-      <location filename="src/ui/qml/Main.qml" line="203"></location>
+      <location filename="src/ui/qml/Main.qml" line="204"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="35"></location>
       <source>Favorites</source>
       <translation>Favoriler</translation>
     </message>
     <message id="gamehq.navigation.category.game">
-      <location filename="src/ui/qml/Main.qml" line="209"></location>
+      <location filename="src/ui/qml/Main.qml" line="210"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="41"></location>
       <source>Game</source>
       <translation>Oyun</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
-      <location filename="src/ui/qml/Main.qml" line="211"></location>
+      <location filename="src/ui/qml/Main.qml" line="212"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="43"></location>
       <source>Game favorites</source>
       <translation>Oyun favorileri</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
-      <location filename="src/ui/qml/Main.qml" line="201"></location>
+      <location filename="src/ui/qml/Main.qml" line="202"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="33"></location>
       <source>Recent</source>
       <translation>En yeniler</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
-      <location filename="src/ui/qml/Main.qml" line="205"></location>
+      <location filename="src/ui/qml/Main.qml" line="206"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="37"></location>
       <source>Screenshots</source>
       <translation>Ekran görüntüleri</translation>
@@ -2160,17 +2160,17 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Araçları göster</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="488"></location>
+      <location filename="src/app/App.cpp" line="489"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Bazı dosyalar silinemedi. Başka programlar tarafından kullanılıyor olabilir. Bu dosyaları kullanan programları kapatıp tekrar deneyin.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="495"></location>
+      <location filename="src/app/App.cpp" line="496"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Dosya silinemedi. Başka bir program tarafından kullanılıyor olabilir. Dosyayı kullanan programı kapatıp tekrar deneyin.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="501"></location>
+      <location filename="src/app/App.cpp" line="502"></location>
       <source>Couldn't delete</source>
       <translation>Silinemedi</translation>
     </message>
@@ -2190,12 +2190,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Diske kaydedildi, kitaplıkta yok</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="400"></location>
+      <location filename="src/app/App.cpp" line="401"></location>
       <source>Capture request received</source>
       <translation>Yakalama isteği alındı</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="463"></location>
+      <location filename="src/app/App.cpp" line="464"></location>
       <source>Reason: %1</source>
       <translation>Sebep: %1</translation>
     </message>
@@ -2230,12 +2230,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Anında tekrar başarısız</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="395"></location>
+      <location filename="src/app/App.cpp" line="396"></location>
       <source>Replay save requested</source>
       <translation>Tekrar kaydetme isteği gönderildi</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="444"></location>
+      <location filename="src/app/App.cpp" line="445"></location>
       <source>Replay saved</source>
       <translation>Anında tekrar kaydedildi</translation>
     </message>
@@ -2250,19 +2250,24 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Ekran görüntüsü kaydedildi</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="546"></location>
+      <location filename="src/app/App.cpp" line="547"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ varsayılan ayarlarla başladı. Önceki ayarlar dosyanız saklandığından hiçbir şey kaybolmadı.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="541"></location>
+      <location filename="src/app/App.cpp" line="542"></location>
       <source>Settings could not be read</source>
       <translation>Ayarlar okunamadı</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="710"></location>
+      <location filename="src/app/App.cpp" line="711"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Bazı arayüz sesleri kullanılamıyor</translation>
+    </message>
+    <message id="gamehq.notifications.close">
+      <location filename="src/ui/qml/components/Toast.qml" line="92"></location>
+      <source>Close notification</source>
+      <translation>Bildirimi kapat</translation>
     </message>
     <message id="gamehq.notifications.window_title">
       <location filename="src/ui/qml/ToastWindow.qml" line="18"></location>
@@ -3011,52 +3016,52 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Göster</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.capture_volume">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="93"></location>
       <source>Capture volume</source>
       <translation>Çekim ses düzeyi</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.capture_volume.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="71"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
       <source>Level for the screenshot, clip and capture-received sounds heard over a game.</source>
       <translation>Oyun sırasında duyulan ekran görüntüsü, klip ve çekim isteği alındı seslerinin düzeyi.</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="47"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="71"></location>
       <source>Set the master sound switch, volume, and event-specific feedback.</source>
       <translation>Ana ses anahtarını, ses seviyesini ve etkinliğe özel geri bildirimi ayarlayın.</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.enabled.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="53"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="77"></location>
       <source>Play navigation and action feedback sounds.</source>
       <translation>Gezinme ve eylem geri bildirim seslerini çalın.</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.enabled.label">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="51"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="75"></location>
       <source>UI sounds</source>
       <translation>Arayüz sesleri</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.eyebrow">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="43"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="67"></location>
       <source>Audio feedback</source>
       <translation>Sesli geri bildirim</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.replay">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="87"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="111"></location>
       <source>Replay saved sound</source>
       <translation>Anında tekrar kaydetme sesi</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.screenshot">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="106"></location>
       <source>Screenshot sound</source>
       <translation>Ekran görüntüsü sesi</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="45"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="69"></location>
       <source>Sound</source>
       <translation>Ses</translation>
     </message>
     <message id="gamehq.settings.feedback.audio.volume">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="58"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="82"></location>
       <source>Volume</source>
       <translation>Ses düzeyi</translation>
     </message>
@@ -3066,47 +3071,47 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>GameHQ'nun çekimleri, klipleri ve gezinmeyi nasıl onaylayacağını seçin.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.capture_sound">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="150"></location>
       <source>Play capture sound</source>
       <translation>Çekim sesini çal</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.description">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="100"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="124"></location>
       <source>Preview notifications and sounds without creating a capture.</source>
       <translation>Çekim oluşturmadan bildirimleri ve sesleri önizleyin.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.eyebrow">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="95"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="119"></location>
       <source>Preview</source>
       <translation>Önizleme</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.label">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="103"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="127"></location>
       <source>Preview feedback</source>
       <translation>Geri bildirimi önizleyin</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="108"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="132"></location>
       <source>Show test notification</source>
       <translation>Test bildirimini göster</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_body">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="114"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="138"></location>
       <source>Notifications are working.</source>
       <translation>Bildirimler çalışıyor.</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.notification_title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="112"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="136"></location>
       <source>%1 notification</source>
       <translation>%1 bildirimi</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.sound">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="120"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="144"></location>
       <source>Play test sound</source>
       <translation>Test sesini çal</translation>
     </message>
     <message id="gamehq.settings.feedback.preview.title">
-      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="97"></location>
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="121"></location>
       <source>Test the current feedback settings</source>
       <translation>Mevcut geri bildirim ayarlarını test edin</translation>
     </message>
@@ -3114,6 +3119,26 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="7"></location>
       <source>Notifications &amp; Sound</source>
       <translation>Bildirimler ve ses</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.capture_received">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="41"></location>
+      <source>Capture request received</source>
+      <translation>Yakalama isteği alındı</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.capture_received.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="43"></location>
+      <source>Shown the moment a screenshot or clip is requested, before the result arrives.</source>
+      <translation>Bir ekran görüntüsü veya klip istendiği anda, sonuç gelmeden önce gösterilir.</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.controller_hidden">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="57"></location>
+      <source>Controller hidden</source>
+      <translation>Kumanda gizlendi</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.controller_hidden.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="59"></location>
+      <source>Warns when another program hides your controller from GameHQ.</source>
+      <translation>Başka bir program kumandanızı GameHQ'dan gizlediğinde sizi uyarır.</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.description">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="17"></location>
@@ -3144,6 +3169,16 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="29"></location>
       <source>Screenshot captured</source>
       <translation>Ekran görüntüsü alındı</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.steam_input">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="49"></location>
+      <source>Steam Input conflict</source>
+      <translation>Steam Input çakışması</translation>
+    </message>
+    <message id="gamehq.settings.feedback.visual.steam_input.description">
+      <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="51"></location>
+      <source>Warns in-game when Steam Input may also receive a GameHQ shortcut. The help in Input settings stays available.</source>
+      <translation>Steam Input bir GameHQ kısayolunu da alabileceğinde oyun sırasında sizi uyarır. Giriş ayarlarındaki yardım kullanılabilir olmaya devam eder.</translation>
     </message>
     <message id="gamehq.settings.feedback.visual.title">
       <location filename="src/ui/qml/settings/FeedbackSettingsPage.qml" line="15"></location>
@@ -3439,7 +3474,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Otomatik olarak düzelt</translation>
     </message>
     <message id="gamehq.settings.input.hidden.title">
-      <location filename="src/ui/qml/Main.qml" line="170"></location>
+      <location filename="src/ui/qml/Main.qml" line="171"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="99"></location>
       <source>Controller hidden</source>
       <translation>Kumanda gizlendi</translation>

@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-ko-kr-final-spacing-recovery; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review",
+    "actor": "codex-gpt-5-contextual-ko-kr-final-spacing-recovery; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "offline machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-30T19:10:00Z"
+    "recorded_at": "2026-09-30T20:05:00Z"
   },
   "baseline": {
     "path": "git:0f1362ce8b13fb1594079b0a7896c554f3886aa4:i18n/app/gamehq_ko_KR.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_ko_KR.ts",
-    "sha256": "5cba45b85b0aa0da2d2ddd10f0aa5547edd9b0e0c71033342d7dea7bfd777c6f",
-    "message_count": 1069
+    "sha256": "a9774628b0caef6aa034e8dfabcd76b134338be9d12522a986af9245e60fed66",
+    "message_count": 1076
   },
   "coverage": [
     {
@@ -3948,6 +3948,15 @@
       "decision": "accepted"
     },
     {
+      "id": "gamehq.notifications.close",
+      "source_hash": "230f7c8119ed0c476e33e20140cb58208102d30b6f5448ac5766b725a94c4ce1",
+      "translation_hash": "d90e640bb5f4d48cfff761bc9564d68773ea7eaa7e43779e29ff37995af08b29",
+      "locations": [
+        "src/ui/qml/components/Toast.qml:92"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.notifications.window_title",
       "source_hash": "666bf9ff43e2219003616dcc1355b7a80f73d792bf880b261d60c7b8cac24f94",
       "translation_hash": "972a24b9a820c5591fc1042ad120ec2aeb8aefce226925eaca9f855b88bd5f7c",
@@ -5471,6 +5480,42 @@
       "decision": "corrected"
     },
     {
+      "id": "gamehq.settings.feedback.visual.capture_received",
+      "source_hash": "f5a508cd116c4ab3b6a707c6a7ce2ae6baa636e8ee6090a66a64077fb0373555",
+      "translation_hash": "b6598868fc7e13d2689bd2c26463a7781bbdb0779fbcba718502cbecdae5b9fd",
+      "locations": [
+        "src/ui/qml/settings/FeedbackSettingsPage.qml:41"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.feedback.visual.capture_received.description",
+      "source_hash": "54f2a40f51eb30746f734e70b38740b06cdded7713397b533751eeea7cec2bdf",
+      "translation_hash": "3dba2fdf238b9e52b95531009e47effabba8fdbff12324f080fa6f1491b4e455",
+      "locations": [
+        "src/ui/qml/settings/FeedbackSettingsPage.qml:43"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.feedback.visual.controller_hidden",
+      "source_hash": "d4f723e72d138c06ee78c2ab0e67f07674d5e6aa4532b7a67ee3bf299801501e",
+      "translation_hash": "d6a9780e460e2e2e484a8f4b52e4ef880f06d1a19f1995cfc57967b4b8c29dff",
+      "locations": [
+        "src/ui/qml/settings/FeedbackSettingsPage.qml:57"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.feedback.visual.controller_hidden.description",
+      "source_hash": "96860080035a5e29774e0b6115e4a9cd696fe47dab4af60ebe8add02e787676d",
+      "translation_hash": "6cc38628d11509c9154ab7dd43b61efcd9b643cefb6273e4f2afaa6523830d05",
+      "locations": [
+        "src/ui/qml/settings/FeedbackSettingsPage.qml:59"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.settings.feedback.visual.description",
       "source_hash": "caf288bf8f8335af2e7c43e92e3efcc8e0cf768f4ef83e717a917a531466d626",
       "translation_hash": "cbdef9127cc51025f9774d1592e3ea0c8ff5f89fed04f1502d70a0c63149abdd",
@@ -5523,6 +5568,24 @@
         "src/ui/qml/settings/FeedbackSettingsPage.qml:29"
       ],
       "decision": "corrected"
+    },
+    {
+      "id": "gamehq.settings.feedback.visual.steam_input",
+      "source_hash": "78dcb73abbe868b970f44e10056a4fd2b3c0ef552ae4d2f751764db1feb64708",
+      "translation_hash": "29de30aabc21565382c35e5f590e9bfdc1ab6077561d1755e629eda2be8b1c9f",
+      "locations": [
+        "src/ui/qml/settings/FeedbackSettingsPage.qml:49"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.feedback.visual.steam_input.description",
+      "source_hash": "3f745c730612c65f6977a5fe2bbbb6d1f309ece90a768efc07084a9eab49cdd6",
+      "translation_hash": "985239e11b92d58accad724a5ba2a1ee82172e97a7f05d98e895311db4fdf2bd",
+      "locations": [
+        "src/ui/qml/settings/FeedbackSettingsPage.qml:51"
+      ],
+      "decision": "accepted"
     },
     {
       "id": "gamehq.settings.feedback.visual.title",
@@ -15854,8 +15917,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_ko_KR.ts",
-      "sha256": "5cba45b85b0aa0da2d2ddd10f0aa5547edd9b0e0c71033342d7dea7bfd777c6f",
-      "reviewed_units": 1069
+      "sha256": "a9774628b0caef6aa034e8dfabcd76b134338be9d12522a986af9245e60fed66",
+      "reviewed_units": 1076
     },
     {
       "surface": "installer",

@@ -1,5 +1,6 @@
 #include "notify/NotificationCenter.h"
 
+#include <QCursor>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickWindow>
@@ -14,6 +15,66 @@ NotificationCenter::NotificationCenter(QQmlApplicationEngine* engine, QObject* p
     , m_toasts(this)
     , m_engine(engine)
 {
+    // Cheap cursor sampling while cards are on screen; no mouse hook needed.
+    m_pointerPoll.setInterval(100);
+    connect(&m_pointerPoll, &QTimer::timeout, this, &NotificationCenter::pollPointer);
+    m_pointerIdle.setSingleShot(true);
+    m_pointerIdle.setInterval(3000);
+    connect(&m_pointerIdle, &QTimer::timeout, this, [this] {
+        if (!m_pointerInside)
+            setPointerState(false, false);
+    });
+}
+
+void NotificationCenter::setStackRect(const QRectF& rect)
+{
+    if (rect == m_stackRect) return;
+    m_stackRect = rect;
+    emit stackRectChanged();
+}
+
+void NotificationCenter::pollPointer()
+{
+    if (!m_window || !m_window->isVisible()) return;
+    CURSORINFO info{};
+    info.cbSize = sizeof(info);
+    // A game that hides the cursor (mouse-look) never gets close buttons:
+    // movement there steers the camera, it is not someone reaching for a card.
+    const bool shown = GetCursorInfo(&info) && (info.flags & CURSOR_SHOWING);
+    const QPoint pos = QCursor::pos();
+    const bool moved = pos != m_lastCursor;
+    m_lastCursor = pos;
+    bool active = m_pointerActive;
+    if (!shown)
+        active = false;
+    else if (moved) {
+        active = true;
+        m_pointerIdle.start();
+    }
+    const bool inside = active && m_stackRect.contains(QPointF(m_window->mapFromGlobal(pos)));
+    if (m_pointerInside && !inside && active)
+        m_pointerIdle.start();   // leaving the stack starts the fade-out grace
+    setPointerState(active, inside);
+}
+
+void NotificationCenter::setPointerState(bool active, bool inside)
+{
+    if (inside != m_pointerInside && m_window) {
+        // Toggle only WS_EX_TRANSPARENT: the window keeps WS_EX_NOACTIVATE, so
+        // a click on a card never takes focus from the game.
+        const HWND hwnd = reinterpret_cast<HWND>(m_window->winId());
+        const LONG_PTR ex = GetWindowLongPtrW(hwnd, GWL_EXSTYLE);
+        SetWindowLongPtrW(hwnd, GWL_EXSTYLE,
+                          inside ? (ex & ~LONG_PTR(WS_EX_TRANSPARENT)) : (ex | WS_EX_TRANSPARENT));
+    }
+    if (active != m_pointerActive) {
+        m_pointerActive = active;
+        emit pointerActiveChanged();
+    }
+    if (inside != m_pointerInside) {
+        m_pointerInside = inside;
+        emit pointerInsideChanged();
+    }
 }
 
 bool NotificationCenter::ensureLoaded()
@@ -63,8 +124,12 @@ void NotificationCenter::positionAndShow()
     m_window->setX(area.right() - m_window->width() + 1);
     m_window->setY(area.bottom() - m_window->height() + 1);
 
-    if (!m_window->isVisible())
+    if (!m_window->isVisible()) {
         m_window->show();   // SW_SHOWNOACTIVATE via WindowDoesNotAcceptFocus
+        // A cursor that has not moved since the stack appeared does not count.
+        m_lastCursor = QCursor::pos();
+        m_pointerPoll.start();
+    }
     m_window->raise();      // stay above the game for subsequent toasts
 }
 
@@ -114,6 +179,9 @@ void NotificationCenter::dismiss(const QString& key, int revision)
 
 void NotificationCenter::hideWindow()
 {
+    m_pointerPoll.stop();
+    m_pointerIdle.stop();
+    setPointerState(false, false);   // back to click-through before hiding
     if (m_window && m_window->isVisible())
         m_window->hide();
 }

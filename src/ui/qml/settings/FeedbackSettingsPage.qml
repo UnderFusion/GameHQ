@@ -33,8 +33,32 @@ SettingsPage {
             icon: "\u21BA"
             //% "Replay saved"
             label: qsTrId("gamehq.settings.feedback.visual.replay")
-            showDivider: false
             SettingsToggle { configKey: "replay.clip_notify"; defaultValue: true }
+        }
+        SettingsRow {
+            icon: "◎"
+            //% "Capture request received"
+            label: qsTrId("gamehq.settings.feedback.visual.capture_received")
+            //% "Shown the moment a screenshot or clip is requested, before the result arrives."
+            description: qsTrId("gamehq.settings.feedback.visual.capture_received.description")
+            SettingsToggle { configKey: "notifications.capture_received"; defaultValue: true }
+        }
+        SettingsRow {
+            icon: "⚠"
+            //% "Steam Input conflict"
+            label: qsTrId("gamehq.settings.feedback.visual.steam_input")
+            //% "Warns in-game when Steam Input may also receive a GameHQ shortcut. The help in Input settings stays available."
+            description: qsTrId("gamehq.settings.feedback.visual.steam_input.description")
+            SettingsToggle { configKey: "notifications.steam_input"; defaultValue: true }
+        }
+        SettingsRow {
+            icon: "⚠"
+            //% "Controller hidden"
+            label: qsTrId("gamehq.settings.feedback.visual.controller_hidden")
+            //% "Warns when another program hides your controller from GameHQ."
+            description: qsTrId("gamehq.settings.feedback.visual.controller_hidden.description")
+            showDivider: false
+            SettingsToggle { configKey: "notifications.controller_hidden"; defaultValue: true }
         }
     }
 

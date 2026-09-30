@@ -65,6 +65,12 @@ inline constexpr QLatin1StringView SoundsCaptureVolume{ "sounds.capture_volume" 
 inline constexpr QLatin1StringView TrayCloseToTray{ "tray.close_to_tray" };
 inline constexpr QLatin1StringView TrayMinimizeToTray{ "tray.minimize_to_tray" };
 inline constexpr QLatin1StringView NotificationsEnabled{ "notifications.enabled" };
+// Per-notice switches under the master switch. They mute a card, never the
+// feature behind it: the Steam Input help panel and the Settings controller
+// warning stay visible when their toasts are off.
+inline constexpr QLatin1StringView NotificationsCaptureReceived{ "notifications.capture_received" };
+inline constexpr QLatin1StringView NotificationsSteamInput{ "notifications.steam_input" };
+inline constexpr QLatin1StringView NotificationsControllerHidden{ "notifications.controller_hidden" };
 // share.* — whether other programs on this PC may register Share destinations
 // through the Share Provider API (docs/share-provider-api-v1.md). Off by
 // default; read once at startup.
