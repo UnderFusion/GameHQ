@@ -13,9 +13,9 @@ Nothing here is pre-filled as passing.
 
 | | |
 |---|---|
-| Code commit | `f644065` on `dev` (later commits only touch `docs/`) |
-| Build | `out\GameHQ.exe` SHA-256 `8f6329df31ceace31f9d98f8445343e5a9f23375432521bbc2a0627075cbf780` |
-| Run | `start.bat` (stops any running GameHQ, including the installed copy) |
+| Code commit | Use the exact HEAD in the local candidate report, `dist/rc079-hardening/RELEASE-CANDIDATE.md`; the old `f644065` receipt is historical. |
+| Build | Fresh Release build from `out-rc079`; compare the real `app/GameHQ.exe` with the SHA-256 in that report. |
+| Run | Extract the candidate portable archive to its own folder and run its root `GameHQ.exe`. Keep the extracted folder's data/log separate from other copies. |
 
 Have one saved screenshot in the gallery. Telegram Desktop and Discord Desktop
 must be installed for rows 5 and 6. Row 7 needs a Discord channel webhook added

@@ -23,6 +23,11 @@ Rectangle {
     // language selector; Settings and the sidebar mode toggle stay
     // (Main owns and persists the state).
     property bool toolsCollapsed: false
+    // Keep outgoing rows in the layout until their slide/fade has finished.
+    property real toolsReveal: toolsCollapsed ? 0 : 1
+    Behavior on toolsReveal {
+        NumberAnimation { duration: Theme.durNormal; easing.type: Easing.OutCubic }
+    }
     // Flat pad rows after the games: the tools toggle, Settings, Help, About,
     // Support, the mode toggle and last the language selector.
     readonly property int toolsToggleIndex: root.categories.length + app.games.length
@@ -357,7 +362,7 @@ Rectangle {
                     app.setGame(model.gameId)
                 }
                 onPinToggled: {
-                    sounds.play("favorite")
+                    sounds.play("nav_tick")
                     app.setGamePinned(model.gameId, !model.pinned)
                 }
             }
@@ -414,6 +419,9 @@ Rectangle {
                     anchors.centerIn: parent
                     text: "\u25be"
                     rotation: root.toolsCollapsed ? 180 : 0
+                    Behavior on rotation {
+                        NumberAnimation { duration: Theme.durNormal; easing.type: Easing.OutCubic }
+                    }
                     color: toolsToggleMouse.containsMouse || toolsToggle.padHovered
                            ? Theme.text : Theme.textMuted
                     font.family: Theme.fontFamily
@@ -436,7 +444,11 @@ Rectangle {
         }
 
         Text {
-            visible: !root.compact && !root.toolsCollapsed
+            visible: !root.compact && root.toolsReveal > 0
+            opacity: root.toolsReveal
+            Layout.preferredHeight: implicitHeight * root.toolsReveal
+            Layout.maximumHeight: Layout.preferredHeight
+            clip: true
             // Reuse the reviewed Tools translation already shipped by every locale.
             //% "Tools"
             text: qsTrId("gamehq.settings.advanced.diagnostics.title").toUpperCase()
@@ -446,7 +458,7 @@ Rectangle {
             font.letterSpacing: Theme.letterSpacingWide
             Layout.leftMargin: Theme.s8
             Layout.rightMargin: Theme.s8
-            Layout.bottomMargin: Theme.s4
+            Layout.bottomMargin: Theme.s4 * root.toolsReveal
         }
 
         SidebarItem {
@@ -465,7 +477,12 @@ Rectangle {
             //% "Help"
             label: qsTrId("gamehq.navigation.help")
             glyph: "?"
-            visible: !root.toolsCollapsed
+            visible: root.toolsReveal > 0
+            enabled: !root.toolsCollapsed
+            opacity: root.toolsReveal
+            Layout.preferredHeight: implicitHeight * root.toolsReveal
+            Layout.maximumHeight: Layout.preferredHeight
+            clip: true
             active: root.helpOpen
             sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.toolsToggleIndex + 2
             compact: root.compact
@@ -479,7 +496,12 @@ Rectangle {
             label: qsTrId("gamehq.navigation.about")
             glyph: "\u24d8"
             trailingGlyph: root.updateAvailable || root.aboutUnread ? "\u25cf" : ""
-            visible: !root.toolsCollapsed
+            visible: root.toolsReveal > 0
+            enabled: !root.toolsCollapsed
+            opacity: root.toolsReveal
+            Layout.preferredHeight: implicitHeight * root.toolsReveal
+            Layout.maximumHeight: Layout.preferredHeight
+            clip: true
             active: false
             sidebarHovered: root.sidebarFocused
                             && root.sidebarHoverIndex === root.toolsToggleIndex + 3
@@ -490,9 +512,13 @@ Rectangle {
         SidebarItem {
             id: supportButton
             objectName: "supportGameHqButton"
-            visible: !root.toolsCollapsed
+            visible: root.toolsReveal > 0
+            enabled: !root.toolsCollapsed
+            opacity: root.toolsReveal
+            Layout.preferredHeight: implicitHeight * root.toolsReveal
+            Layout.maximumHeight: Layout.preferredHeight
+            clip: true
             Layout.fillWidth: true
-            Layout.preferredHeight: Theme.s32
 
             //% "Support GameHQ"
             readonly property string localizedLabel: qsTrId("gamehq.navigation.support_gamehq")
@@ -527,7 +553,12 @@ Rectangle {
             id: sidebarLanguageCombo
             // Stays in place in the rail as a language icon (so nothing jumps
             // when the sidebar narrows); the list opens at the full width.
-            visible: !root.toolsCollapsed
+            visible: root.toolsReveal > 0
+            enabled: !root.toolsCollapsed
+            opacity: root.toolsReveal
+            Layout.preferredHeight: implicitHeight * root.toolsReveal
+            Layout.maximumHeight: Layout.preferredHeight
+            clip: true
             iconOnly: root.compact
             padFocused: root.sidebarFocused && root.sidebarHoverIndex === root.languageRowIndex
             iconText: "\u6587A"
@@ -536,7 +567,7 @@ Rectangle {
             Layout.fillWidth: true
             Layout.leftMargin: root.compact ? 0 : Theme.s4
             Layout.rightMargin: root.compact ? 0 : Theme.s4
-            Layout.topMargin: Theme.s8
+            Layout.topMargin: Theme.s8 * root.toolsReveal
             frameVisible: false
             ToolTip.text: sidebarLanguageCombo.displayText
             ToolTip.visible: root.compact && sidebarLanguageCombo.hovered

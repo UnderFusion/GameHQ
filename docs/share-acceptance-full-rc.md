@@ -22,16 +22,17 @@ controller and real screen can show.
 
 | | |
 |---|---|
-| Code commit | **`f644065`** on `dev` (`feat(share): place Sharing in the Settings navigation after Notifications and make Clipboard switchable`). Later commits that only touch `docs/` do not change the app. |
+| Code commit | Use the exact HEAD in the local candidate report, `dist/rc079-hardening/RELEASE-CANDIDATE.md`. The former `f644065` context is historical, not evidence for this candidate. |
 | Version | `0.7.9` (`VERSION`) |
-| Build | Debug build from `out\`. `out\GameHQ.exe` SHA-256 = `8f6329df31ceace31f9d98f8445343e5a9f23375432521bbc2a0627075cbf780` (`out\GameHQLauncher.exe` = `787e2e7b1b5f870cb956974db122c8d017812d951471904de7f8ab96f010642f`) |
-| How to run | `start.bat` in the repo root: rebuilds `out\`, assembles a clean package in `build\`, keeps your data, and launches `build\GameHQ.exe`. **It stops any running `GameHQ.exe` first, including the installed copy.** |
-| Data / log | `build\gamehq-data\` (separate from the installed copy). Log: `build\gamehq-data\logs\gamehq.log` |
+| Build | Fresh Release build from `out-rc079`; the candidate report records the packaged `app/GameHQ.exe`, installer and portable archive hashes. |
+| How to run | Extract the candidate portable archive to a separate folder and run its root `GameHQ.exe`. Avoid rebuilding with `start.bat`, which would replace the candidate identity. |
+| Data / log | `<extracted-folder>\gamehq-data\`; log: `<extracted-folder>\gamehq-data\logs\gamehq.log`. Keep this separate from installed data. |
 
 Confirm the identity before you start:
 
 ```powershell
-Get-FileHash build\GameHQ.exe -Algorithm SHA256   # should equal the out\GameHQ.exe hash above
+Get-FileHash <extracted-folder>\app\GameHQ.exe -Algorithm SHA256
+# Compare the real app, rather than the root launcher, with the candidate report.
 ```
 
 Scope: only the providers a user can see in this build: Telegram Desktop, Discord
@@ -58,7 +59,7 @@ Rules to hold GameHQ to throughout:
 
 ## 2. Setup (once, about 10 minutes)
 
-1. Run `start.bat`. Check the version on the About page is `0.7.9` and compare the
+1. Run the extracted candidate. Check the version on the About page is `0.7.9` and compare the
    hash (section 0).
 2. Make test captures (any game, or the desktop, whichever your capture mode
    allows):
@@ -205,7 +206,7 @@ Copy this into your reply (or a file). One line per row you ran; unlisted rows c
 
 ```
 Session date:            
-Code commit / exe SHA-256 checked:   f644065 / <first 16 chars of the hash you computed>
+Code commit / exe SHA-256 checked:   <candidate report HEAD> / <hash you computed>
 Windows build:           
 Controller model:        
 Telegram Desktop version:            Discord Desktop version:
@@ -235,4 +236,3 @@ Pass is recorded against the gate named below.
 | W1-W6, F1-F4 | t17 (real channel over real TLS from the overlay: screenshot and clip) |
 | A1-A3, F8 | confirms t18/t19 outside the automated suite |
 | C1, X1-X4, F5-F7, P1-P3 | t20 (controller/mouse navigation, focus, privacy and resilience) |
-

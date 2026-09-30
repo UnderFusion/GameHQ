@@ -665,7 +665,7 @@ Window {
         }
 
         function togglePlayback() {
-            if (overlayShare.isOpen || content.layoutPanelOpen)
+            if (overlayShare.isOpen || content.layoutPanelOpen || content.menuOpen)
                 return
             if (viewer.open)
                 viewer.toggleVideoPlayback()
