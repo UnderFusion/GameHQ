@@ -21,7 +21,7 @@ set "NEED_CONFIG=0"
 if not exist "out\build.ninja" set "NEED_CONFIG=1"
 if not exist "out\CMakeCache.txt" set "NEED_CONFIG=1"
 if exist "out\CMakeCache.txt" (
-    findstr /L /C:"CMAKE_HOME_DIRECTORY:INTERNAL=%CD:\=/%" "out\CMakeCache.txt" >nul 2>&1
+    findstr /I /L /C:"CMAKE_HOME_DIRECTORY:INTERNAL=%CD:\=/%" "out\CMakeCache.txt" >nul 2>&1
     if errorlevel 1 set "NEED_CONFIG=1"
     findstr /L /C:"GAMEHQ_ENABLE_PSEUDO_LOCALES:BOOL=ON" "out\CMakeCache.txt" >nul 2>&1
     if errorlevel 1 set "NEED_CONFIG=1"
