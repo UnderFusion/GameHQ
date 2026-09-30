@@ -404,19 +404,19 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1286
+          "line": 1287
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1305
+          "line": 1306
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1343
+          "line": 1344
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 1016
+          "line": 1020
         },
         {
           "file": "src/ui/qml/components/ConfirmDialog.qml",
@@ -4750,7 +4750,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1345
+          "line": 1346
         },
         {
           "file": "src/ui/qml/components/DesktopGalleryHeader.qml",
@@ -4771,7 +4771,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1339
+          "line": 1340
         },
         {
           "file": "src/ui/qml/components/OverlayActionMenu.qml",
@@ -4792,7 +4792,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1341
+          "line": 1342
         },
         {
           "file": "src/ui/qml/components/OverlayActionMenu.qml",
@@ -4817,7 +4817,7 @@
         },
         {
           "file": "src/ui/qml/components/Lightbox.qml",
-          "line": 270
+          "line": 279
         },
         {
           "file": "src/ui/qml/components/OverlayViewer.qml",
@@ -4841,7 +4841,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1274
+          "line": 1275
         }
       ],
       "plural": false,
@@ -4861,11 +4861,11 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1284
+          "line": 1285
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 1014
+          "line": 1018
         }
       ],
       "plural": false,
@@ -4901,7 +4901,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1303
+          "line": 1304
         }
       ],
       "plural": false,
@@ -7188,7 +7188,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1254
+          "line": 1255
         },
         {
           "file": "src/ui/qml/settings/LibrarySettingsPage.qml",

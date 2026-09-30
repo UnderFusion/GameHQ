@@ -236,8 +236,46 @@ Item {
         }
     }
 
+    // Triangle (routed by OverlayWindow) and the heart pill: favorite the
+    // shown capture. dataChanged bumps `current`, so the heart refills live.
+    function toggleFavorite() {
+        if (!root.open || !root.galleryModel)
+            return
+        sounds.play("favorite")
+        root.galleryModel.toggleFavorite(root.index)
+    }
+
+    // Favorite heart (outline or filled), left of the close pill.
+    Rectangle {
+        anchors.top: closePill.top
+        anchors.right: closePill.left
+        anchors.rightMargin: Theme.s12
+        width: Theme.s48
+        height: Theme.s48
+        radius: Theme.radiusPill
+        color: Theme.text
+        visible: root.open
+        opacity: favoriteMouse.containsMouse ? 1.0 : 0.92
+        Text {
+            anchors.centerIn: parent
+            text: root.current.favorite ? "" : ""   // HeartFill : Heart
+            color: Theme.bg0
+            font.family: "Segoe Fluent Icons"
+            font.pixelSize: Theme.fontTitle
+        }
+        MouseArea {
+            id: favoriteMouse
+            anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
+            hoverEnabled: true
+            onClicked: root.toggleFavorite()
+        }
+        Behavior on opacity { NumberAnimation { duration: Theme.durFast } }
+    }
+
     // Close pill (top-right): a Circle glyph on the pad path, an X for mouse.
     Rectangle {
+        id: closePill
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.topMargin: Theme.s12

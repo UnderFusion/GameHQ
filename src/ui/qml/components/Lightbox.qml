@@ -189,6 +189,15 @@ Window {
         lightboxShare.openFor(root.current.filePath, root.current.gameName)
     }
 
+    // Triangle (or its rebinding) and the heart pill: favorite the shown
+    // capture. dataChanged bumps `current`, so the heart refills live.
+    function toggleFavorite() {
+        if (root.index < 0 || !root.galleryModel)
+            return
+        sounds.play("favorite")
+        root.galleryModel.toggleFavorite(root.index)
+    }
+
     function padReveal() {
         if (root.current.captureType === "video")
             playerControls.revealControls()
@@ -346,6 +355,36 @@ Window {
                     cursorShape: Qt.PointingHandCursor
                     hoverEnabled: true
                     onClicked: root.openShare()
+                }
+                Behavior on opacity { NumberAnimation { duration: Theme.durFast } }
+            }
+
+            // Favorite heart: outline or filled, next to Share.
+            Rectangle {
+                id: favoritePill
+                anchors.top: closePill.top
+                anchors.right: sharePill.left
+                anchors.rightMargin: Theme.s12
+                width: Theme.s48
+                height: Theme.s48
+                radius: Theme.radiusPill
+                color: Theme.text
+                visible: root.index >= 0
+                opacity: favoriteMouse.containsMouse ? 1.0 : 0.92
+                Text {
+                    anchors.centerIn: parent
+                    text: root.current.favorite ? "" : ""   // HeartFill : Heart
+                    color: Theme.bg0
+                    font.family: "Segoe Fluent Icons"
+                    font.pixelSize: Theme.fontTitle
+                }
+                MouseArea {
+                    id: favoriteMouse
+                    anchors.fill: parent
+                    acceptedButtons: Qt.LeftButton
+                    cursorShape: Qt.PointingHandCursor
+                    hoverEnabled: true
+                    onClicked: root.toggleFavorite()
                 }
                 Behavior on opacity { NumberAnimation { duration: Theme.durFast } }
             }
