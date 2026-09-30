@@ -17,9 +17,9 @@ controller and real screen can show.
 
 | | |
 |---|---|
-| Code commit | **`748ff8c`** on `dev` (`fix(share): gate Telegram Integrated at compile time so no config can enable it`). Later commits that only touch `docs/` do not change the app. |
+| Code commit | **`f644065`** on `dev` (`feat(share): place Sharing in the Settings navigation after Notifications and make Clipboard switchable`). Later commits that only touch `docs/` do not change the app. |
 | Version | `0.7.9` (`VERSION`) |
-| Build | Debug build from `out\`. `out\GameHQ.exe` SHA-256 = `df6c3617db5eee5bed8295f2218c5ffadb8e0cb12bf60797f75c354cd9aa83d0` (`out\GameHQLauncher.exe` = `787e2e7b1b5f870cb956974db122c8d017812d951471904de7f8ab96f010642f`) |
+| Build | Debug build from `out\`. `out\GameHQ.exe` SHA-256 = `8f6329df31ceace31f9d98f8445343e5a9f23375432521bbc2a0627075cbf780` (`out\GameHQLauncher.exe` = `787e2e7b1b5f870cb956974db122c8d017812d951471904de7f8ab96f010642f`) |
 | How to run | `start.bat` in the repo root: rebuilds `out\`, assembles a clean package in `build\`, keeps your data, and launches `build\GameHQ.exe`. **It stops any running `GameHQ.exe` first, including the installed copy.** |
 | Data / log | `build\gamehq-data\` (separate from the installed copy). Log: `build\gamehq-data\logs\gamehq.log` |
 
@@ -99,8 +99,8 @@ the message in the Share dialog.
 
 | ID | Do | Expect |
 |---|---|---|
-| S1 | Open Settings and look for **Sharing** between Capture and Replay. Nothing Share-related is left under Capture. | A Sharing page with Enable Sharing, a Destinations list (Telegram, Discord, Discord channel), channel destinations and Share add-ons. |
-| S2 | Switch **Discord** off, open Share on a capture. | Discord is not offered. Switch it back on: it returns. |
+| S1 | Open Settings and look for **Sharing** in the left menu between Notifications & sound and Advanced. Nothing Share-related is left under Capture. | A Sharing page with Enable Sharing, a Destinations list (Telegram, Discord, Discord channel, Copy to clipboard), channel destinations and Share add-ons. |
+| S2 | Switch **Discord** off, open Share on a capture. Repeat for **Copy to clipboard**, **Telegram** and **Discord channel** one at a time. | Only the switched-off method is missing from Share; switching it back on returns it. |
 | S3 | Add channel **A** (section 2), switch **Discord channel** off, share, switch back on. | While off it is hidden; when on again channel **A** is still there and still works without re-adding it (disabling never deletes destinations). |
 | S4 | Switch **Enable Sharing** off, then try Share from the gallery, lightbox and overlay. | Each says "Sharing is turned off. Turn it on in Settings > Sharing." Switch it on: Share works again. |
 | S5 | Restart GameHQ with a provider switched off. | It stays off (the switches persist). |
@@ -200,7 +200,7 @@ Copy this into your reply (or a file). One line per row you ran; unlisted rows c
 
 ```
 Session date:            
-Code commit / exe SHA-256 checked:   748ff8c / <first 16 chars of the hash you computed>
+Code commit / exe SHA-256 checked:   f644065 / <first 16 chars of the hash you computed>
 Windows build:           
 Controller model:        
 Telegram Desktop version:            Discord Desktop version:
