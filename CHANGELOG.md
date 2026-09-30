@@ -4,6 +4,8 @@ Public release history and the current local release candidate.
 
 ## [Unreleased]
 
+The `v0.7.9-beta4` prerelease includes these changes and enables the read-only Sony HID input path by build default for external DualSense USB-to-Bluetooth testing. Normal builds remain OFF by default; explicit `GAMEHQ_SONY_HID_READER=0/1` overrides are available. This does not decide the final 0.7.9 production default. See [Beta 4 notes](docs/releases/0.7.9-beta4.md).
+
 ### Added
 
 - Pinned games: hover a game in the main sidebar and click the pin to keep it at the top of the Games list (or move the controller cursor onto it and press Triangle). Pinned games stay above the others in both the main window and the overlay, each group still ordered by most recent capture. Pins are remembered; rows move smoothly when pinned or unpinned, with a subtle navigation sound.

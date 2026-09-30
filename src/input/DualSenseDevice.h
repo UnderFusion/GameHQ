@@ -85,7 +85,7 @@ public:
     void onRawInput(void* hRawInput);
     void onDeviceChange(bool arrived, void* deviceHandle);
 
-    // Direct HID reader spike (bt-ds02). Off unless GAMEHQ_SONY_HID_READER=1
+    // Direct HID reader spike (bt-ds02). Normal builds OFF; explicit 0/1 overrides the channel build default
     // (production constructor) or a test installs a factory. When enabled,
     // every tracked Sony endpoint also gets a read-only HID reader keyed by
     // its RIDI device path; while that reader is healthy it is the ONLY

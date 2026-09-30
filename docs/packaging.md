@@ -358,3 +358,13 @@ reappears.
   keep the SVG for crisp scaling.
 - The top-level CMake file locates MinGW's `windres.exe` beside the configured
   C++ compiler before enabling resource compilation.
+
+### Beta 4 Sony HID build default
+
+Only `v0.7.9-beta4` packaging sets `-DGAMEHQ_SONY_HID_READER_DEFAULT=ON`.
+The CMake option defaults to OFF for normal/dev/final builds. No environment
+variable is installed or persisted. `GAMEHQ_SONY_HID_READER=0` forces OFF and
+`=1` forces ON for the launched process; absent or invalid values use the build
+default. Startup logs the effective state and its source. This beta decision
+does not approve a final-production default change. Read-only access, endpoint
+arbitration, stale-reader fencing, Raw Input failover and Sony mappings stay unchanged.

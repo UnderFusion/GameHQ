@@ -43,6 +43,7 @@ Technical and product documentation for contributors and maintainers.
 | [roadmap.md](roadmap.md) | Product direction |
 | [technical-audit.md](technical-audit.md) | Architecture risks and improvement areas |
 | [versioning.md](versioning.md) | Version and release rules |
+| [Beta 4 notes](releases/0.7.9-beta4.md) | External controller testing prerelease |
 | [code-signing-policy.md](code-signing-policy.md) | signing roles, key handling, and Beta/Stable gates |
 | [release-manifest-security-review.md](release-manifest-security-review.md) | approved Ed25519 dependencies, verification contract, and trust boundary |
 | [signpath-application.md](signpath-application.md) | prepared open-source signing application evidence |

@@ -459,3 +459,7 @@ target_include_directories(GameInputRuntimeProbe PRIVATE
     ${CMAKE_SOURCE_DIR}/third_party/gameinput/include)
 target_compile_definitions(GameInputRuntimeProbe PRIVATE UNICODE _UNICODE)
 target_link_options(GameInputRuntimeProbe PRIVATE -static)
+
+# Keep this channel choice private to the shipped application, not test fixtures.
+target_compile_definitions(GameHQ PRIVATE
+    GAMEHQ_SONY_HID_READER_DEFAULT=$<BOOL:${GAMEHQ_SONY_HID_READER_DEFAULT}>)
