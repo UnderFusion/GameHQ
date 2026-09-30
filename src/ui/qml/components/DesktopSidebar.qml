@@ -53,6 +53,33 @@ Rectangle {
     signal modeCycleRequested()
     signal toolsToggleRequested()
 
+    // app.games as a ListModel updated with move/insert/remove, so ListView
+    // can animate a pinned game sliding to its new place. Order and indexes
+    // stay identical to app.games, which Main's pad navigation relies on.
+    ListModel { id: gamesModel }
+    function syncGames() {
+        const games = app.games
+        for (let i = 0; i < games.length; ++i) {
+            const g = games[i]
+            let j = i
+            while (j < gamesModel.count && gamesModel.get(j).gameId !== g.id) ++j
+            const row = { gameId: g.id, name: g.name, iconPath: g.iconPath || "", pinned: g.pinned === true }
+            if (j >= gamesModel.count) {
+                gamesModel.insert(i, row)
+            } else {
+                if (j !== i) gamesModel.move(j, i, 1)
+                gamesModel.set(i, row)
+            }
+        }
+        if (gamesModel.count > games.length)
+            gamesModel.remove(games.length, gamesModel.count - games.length)
+    }
+    Component.onCompleted: syncGames()
+    Connections {
+        target: app
+        function onGamesChanged() { root.syncGames() }
+    }
+
     // The games list is the sidebar's only clipped region: keep the pad
     // cursor visible while it walks rows that sit outside the viewport.
     onSidebarHoverIndexChanged: {
@@ -291,7 +318,24 @@ Rectangle {
             clip: true
             spacing: Theme.s4
             boundsBehavior: Flickable.StopAtBounds
-            model: app.games
+            model: gamesModel
+            // Pinning moves a row: slide it and the rows it displaces
+            // instead of snapping the whole list.
+            move: Transition {
+                NumberAnimation { properties: "y"; duration: Theme.durNormal; easing.type: Easing.OutCubic }
+            }
+            moveDisplaced: Transition {
+                NumberAnimation { properties: "y"; duration: Theme.durNormal; easing.type: Easing.OutCubic }
+            }
+            add: Transition {
+                NumberAnimation { property: "opacity"; from: 0; to: 1; duration: Theme.durFast }
+            }
+            addDisplaced: Transition {
+                NumberAnimation { properties: "y"; duration: Theme.durNormal; easing.type: Easing.OutCubic }
+            }
+            removeDisplaced: Transition {
+                NumberAnimation { properties: "y"; duration: Theme.durNormal; easing.type: Easing.OutCubic }
+            }
             ScrollBar.vertical: AppScrollBar {
                 id: gamesScrollBar
                 anchors.right: parent.right
@@ -300,21 +344,21 @@ Rectangle {
                 width: ListView.view.width
                         - (gamesScrollBar.visible && gamesScrollBar.size < 1
                            ? gamesScrollBar.width + Theme.s4 : 0)
-                label: modelData.name
-                iconSource: modelData.iconPath ? ("file:///" + modelData.iconPath.replace(/\\/g, "/")) : ""
-                active: !root.settingsOpen && !root.helpOpen && app.gameId === modelData.id
-                        && !(app.currentGameAvailable && app.currentGameId === modelData.id)
+                label: model.name
+                iconSource: model.iconPath ? ("file:///" + model.iconPath.replace(/\\/g, "/")) : ""
+                active: !root.settingsOpen && !root.helpOpen && app.gameId === model.gameId
+                        && !(app.currentGameAvailable && app.currentGameId === model.gameId)
                 sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.categories.length + index
                 compact: root.compact
                 pinnable: true
-                pinned: modelData.pinned === true
+                pinned: model.pinned
                 onClicked: {
                     root.pageClosed()
-                    app.setGame(modelData.id)
+                    app.setGame(model.gameId)
                 }
                 onPinToggled: {
                     sounds.play("favorite")
-                    app.setGamePinned(modelData.id, !modelData.pinned)
+                    app.setGamePinned(model.gameId, !model.pinned)
                 }
             }
         }
