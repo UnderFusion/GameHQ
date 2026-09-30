@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "claude-opus-5-contextual-it-it-review; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review",
+    "actor": "claude-opus-5-contextual-it-it-review; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-30T16:30:00Z"
+    "recorded_at": "2026-09-30T17:40:00Z"
   },
   "baseline": {
     "path": "git:e912cc8f358eae9ed767533f71284959808b13df:i18n/app/gamehq_it_IT.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_it_IT.ts",
-    "sha256": "67f48f3c027f2d905b728b5a0ce7f14c9fde23ed6b72c5ccc17390580bb056b4",
-    "message_count": 1052
+    "sha256": "eab716ccd67df35eca4663c9ef80b7a03a1451e696c03db5971d7de3271c2300",
+    "message_count": 1066
   },
   "coverage": [
     {
@@ -3975,6 +3975,24 @@
       "decision": "corrected"
     },
     {
+      "id": "gamehq.overlay.hint.layout.gamepad",
+      "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
+      "translation_hash": "64edc084445cd8a18bf009d864f14f4d2bea11a3bceac8ee0db5217f992398c8",
+      "locations": [
+        "src/ui/qml/components/OverlayFooter.qml:38"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.hint.layout.keyboard",
+      "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
+      "translation_hash": "a46777147525357a66e5f59ef97c839b85b960c43271660fc6a5a3adb22112ad",
+      "locations": [
+        "src/ui/qml/components/OverlayFooter.qml:41"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.overlay.hint.menu.gamepad",
       "source_hash": "be17b90e1f09ade9bae7f3d872f11d8ee34ef82773a3df0bea06550dfda5e496",
       "translation_hash": "a73aa26609c4338c00f3e02c9a840f63b7dcf6193bea93c22b7946d826d51c5b",
@@ -4009,6 +4027,115 @@
         "src/ui/qml/components/OverlayFooter.qml:30"
       ],
       "decision": "corrected"
+    },
+    {
+      "id": "gamehq.overlay.layout.hints",
+      "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034",
+      "translation_hash": "454a62849fd982266dd1771ec1c7a728984780c7eae636a5bef6444736aa02f1",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:25"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.interface_size",
+      "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83",
+      "translation_hash": "a35a3ffca6b45ab9f4f658117555b7b3795e5106918790a192a82cd345698a81",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:35"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.margin_bottom",
+      "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d",
+      "translation_hash": "9a5a393438b4dcb8dfc5b4df25e8057d55e283e3e3a1a9b9b1fe3e896c0d8037",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:33"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.margin_left",
+      "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03",
+      "translation_hash": "f242fd0d609232cd07037f9b5c2dcb5e61bf88b050e5c771e1e6d219b549caf7",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:27"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.margin_right",
+      "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57",
+      "translation_hash": "0f1b71187b5c53b0efca40eca9522f9bb549609805ca5ae2485b1e963ad6ca25",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:31"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.margin_top",
+      "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a",
+      "translation_hash": "b78ea866c3b5b72314b91dd6bd63c7500ee2457850db994581de7ae1704f1d6b",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:29"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.off",
+      "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+      "translation_hash": "45d01aa1be566fe63ec94fe68a39181cbba6df59a37c469f5ab85824e00209e7",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:50"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.on",
+      "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2",
+      "translation_hash": "bec796c121e48fba1da05dbaec4ccabe460d65af0b5ea2f26b75e6764804a28b",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:48"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.px",
+      "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271",
+      "translation_hash": "03ca610298ec75c0cb718757aca430b72c21dfabb28d34e82f5bef5b9cb44469",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:52"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.reset",
+      "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f",
+      "translation_hash": "a3116abc8cc9902f9b6e55d1a67b02f9a0f37c11d054421e9dbf5af6fe9724bb",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:39"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.thumbnail_size",
+      "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce",
+      "translation_hash": "bde64a8ec12660d51607acc87f2c8d2b2a8aedf4c2aa3c94961e8d0bc2f925d4",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:37"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.title",
+      "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093",
+      "translation_hash": "afc0ddc8c4e32e6056731ba181163f2e4642f049eb7e2c1468051fe8bf3c48f8",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:98",
+        "src/ui/qml/components/OverlaySidebar.qml:107"
+      ],
+      "decision": "accepted"
     },
     {
       "id": "gamehq.overlay.window_title",
@@ -15279,8 +15406,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_it_IT.ts",
-      "sha256": "67f48f3c027f2d905b728b5a0ce7f14c9fde23ed6b72c5ccc17390580bb056b4",
-      "reviewed_units": 1052
+      "sha256": "eab716ccd67df35eca4663c9ef80b7a03a1451e696c03db5971d7de3271c2300",
+      "reviewed_units": 1066
     },
     {
       "surface": "installer",

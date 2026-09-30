@@ -1,0 +1,3 @@
+module GameHQ
+singleton Theme 1.0 ../../../../src/ui/qml/Theme.qml
+singleton Brand 1.0 ../../../../src/ui/qml/Brand.qml

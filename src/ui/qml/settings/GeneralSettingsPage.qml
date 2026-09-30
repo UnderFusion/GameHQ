@@ -4,7 +4,7 @@ import "../components"
 
 SettingsPage {
     id: generalPage
-    readonly property var scaleOptions: [100, 125, 150, 175, 200].map(function(value) {
+    readonly property var scaleOptions: [75, 90, 100, 125, 150, 175, 200].map(function(value) {
         return { label: value + "%", value: value }
     })
 

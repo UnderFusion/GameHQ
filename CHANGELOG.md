@@ -6,6 +6,7 @@ Public release history and the current local release candidate.
 
 ### Added
 
+- Overlay options: a gear above the overlay sidebar toggle opens a small panel to hide the control hints, change the four outer margins (down to 0), the overlay interface size (now also 75% and 90%) and the thumbnail size. Changes show live on the preview and are remembered; *Reset overlay layout* restores the defaults. Works with the mouse, the controller and the keyboard.
 - Collapsible sidebar in the main window and the overlay, so screenshots get more room. A button above the language selector (main window) or above the GameHQ logo (overlay) switches between *Auto*, *Expanded* and *Collapsed*; it works with the mouse, the controller and the keyboard. *Auto* shows a narrow icon rail while you browse captures and opens the full sidebar when you move into it or hover it. Each window remembers its own choice.
 - Share: other programs on your PC can add their own Share destinations through a documented add-on interface (Share Provider API v1, with a sample provider and a conformance suite in `integrations/share-provider/`). It is off by default: turn on "Allow add-ons from other programs" in Settings > Capture and restart GameHQ.
 - Share: post a screenshot or clip straight to a Discord channel. Add channels with a webhook link in Settings > Capture and pin the ones you use most; the post appears as the webhook, not as your Discord account, and the link is stored in Windows Credential Manager.

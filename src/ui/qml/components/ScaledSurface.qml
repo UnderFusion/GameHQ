@@ -9,6 +9,9 @@ Item {
     required property real minimumContentWidth
     required property real minimumContentHeight
     property int requestedPercent: 100
+    // Interface-size presets shared with the settings combos and the overlay
+    // options panel; anything else falls back to 100%.
+    readonly property var presets: [75, 90, 100, 125, 150, 175, 200]
     readonly property real effectiveScale: Math.max(0.1, Math.min(
         requestedPercent / 100, width / minimumContentWidth, height / minimumContentHeight))
     default property alias contentData: viewport.data
@@ -20,7 +23,7 @@ Item {
 
     function refresh() {
         const value = Number(settings.config(configKey, 100))
-        requestedPercent = [100, 125, 150, 175, 200].indexOf(value) >= 0 ? value : 100
+        requestedPercent = presets.indexOf(value) >= 0 ? value : 100
     }
     Component.onCompleted: refresh()
     onConfigKeyChanged: if (settings) refresh()

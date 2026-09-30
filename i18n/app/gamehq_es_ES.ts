@@ -114,10 +114,10 @@
       <translation>Cancelar</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1208"></location>
-      <location filename="src/ui/qml/Main.qml" line="1227"></location>
-      <location filename="src/ui/qml/Main.qml" line="1265"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="804"></location>
+      <location filename="src/ui/qml/Main.qml" line="1209"></location>
+      <location filename="src/ui/qml/Main.qml" line="1228"></location>
+      <location filename="src/ui/qml/Main.qml" line="1266"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="995"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -1336,7 +1336,7 @@
     <message id="gamehq.format.version_short">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="121"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="127"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="151"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="174"></location>
       <source>v%1</source>
       <translation>v%1</translation>
     </message>
@@ -1346,19 +1346,19 @@
       <translation>Añadir carpeta…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1267"></location>
+      <location filename="src/ui/qml/Main.qml" line="1268"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Selección múltiple</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1261"></location>
+      <location filename="src/ui/qml/Main.qml" line="1262"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>Compartir</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1263"></location>
+      <location filename="src/ui/qml/Main.qml" line="1264"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Mostrar en carpeta</translation>
@@ -1371,20 +1371,20 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1196"></location>
+      <location filename="src/ui/qml/Main.qml" line="1197"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 Esto eliminará el archivo de forma permanente.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1206"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="802"></location>
+      <location filename="src/ui/qml/Main.qml" line="1207"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="993"></location>
       <source>Delete capture?</source>
       <translation>¿Eliminar la captura?</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
-      <location filename="src/ui/qml/Main.qml" line="469"></location>
+      <location filename="src/ui/qml/Main.qml" line="470"></location>
       <source>%n capture will be permanently deleted.
 This cannot be undone.</source>
       <translation>
@@ -1395,7 +1395,7 @@ Esta acción no se puede deshacer.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1225"></location>
+      <location filename="src/ui/qml/Main.qml" line="1226"></location>
       <source>Delete selected captures?</source>
       <translation>¿Eliminar las capturas seleccionadas?</translation>
     </message>
@@ -2059,7 +2059,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>%1 se comparte: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1176"></location>
+      <location filename="src/ui/qml/Main.qml" line="1177"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Elegir una carpeta para supervisar</translation>
@@ -2075,49 +2075,49 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.navigation.category.all">
       <location filename="src/ui/qml/Main.qml" line="193"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="74"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="19"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
       <source>All</source>
       <translation>Todos</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
       <location filename="src/ui/qml/Main.qml" line="201"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="27"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
       <source>Clips</source>
       <translation>Clips</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
       <location filename="src/ui/qml/Main.qml" line="197"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="27"></location>
       <source>Favorites</source>
       <translation>Favoritos</translation>
     </message>
     <message id="gamehq.navigation.category.game">
       <location filename="src/ui/qml/Main.qml" line="203"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="29"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="33"></location>
       <source>Game</source>
       <translation>Juego</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
       <location filename="src/ui/qml/Main.qml" line="205"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="35"></location>
       <source>Game favorites</source>
       <translation>Favoritos del juego</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
       <location filename="src/ui/qml/Main.qml" line="195"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="21"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="25"></location>
       <source>Recent</source>
       <translation>Recientes</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
       <location filename="src/ui/qml/Main.qml" line="199"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="25"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="29"></location>
       <source>Screenshots</source>
       <translation>Capturas de pantalla</translation>
     </message>
     <message id="gamehq.navigation.games">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="222"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="68"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="73"></location>
       <source>Games</source>
       <translation>Juegos</translation>
     </message>
@@ -2270,39 +2270,110 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Acciones de captura</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="147"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="259"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>El juego sigue activo y puede responder a las entradas del mando</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="52"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="61"></location>
       <source>L1/R1 — captures | D-pad Up/Down — categories/games | Cross — open | Triangle — favorite | Square — menu | Circle — back to game</source>
       <translation>L1/R1 — capturas | Cruceta arriba/abajo — categorías/juegos | Cruz — abrir | Triángulo — favorito | Cuadrado — menú | Círculo — volver al juego</translation>
     </message>
     <message id="gamehq.overlay.hint.browse.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="58"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="67"></location>
       <source>Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
       <translation>Arriba/Abajo — categorías/juegos | Enter — abrir | F — favorito | M — menú | Esc — volver al juego</translation>
     </message>
+    <message id="gamehq.overlay.hint.layout.gamepad">
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="38"></location>
+      <source>D-pad Up/Down — choose | D-pad Left/Right — adjust | Cross — toggle | Circle — close options</source>
+      <translation>Cruceta arriba/abajo — elegir | Cruceta izquierda/derecha — ajustar | Cruz — activar/desactivar | Círculo — cerrar opciones</translation>
+    </message>
+    <message id="gamehq.overlay.hint.layout.keyboard">
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="41"></location>
+      <source>Up/Down — choose | Left/Right — adjust | Enter — toggle | Esc/Backspace — close options</source>
+      <translation>Up/Down — elegir | Left/Right — ajustar | Enter — activar/desactivar | Esc/Backspace — cerrar opciones</translation>
+    </message>
     <message id="gamehq.overlay.hint.menu.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="46"></location>
       <source>D-pad Up/Down — choose | Cross — confirm | Circle — close menu</source>
       <translation>Cruceta arriba/abajo — elegir | Cruz — confirmar | Círculo — cerrar menú</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="40"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="49"></location>
       <source>Up/Down — choose | Enter — confirm | Esc/Backspace — close menu</source>
       <translation>Up/Down — elegir | Enter — confirmar | Esc/Backspace — cerrar menú</translation>
     </message>
     <message id="gamehq.overlay.hint.video.gamepad">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="45"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="54"></location>
       <source>D-pad Left/Right — scrub | Cross — play/pause | Circle — back to captures</source>
       <translation>Cruceta izquierda/derecha — recorrer | Cruz — reproducir/pausar | Círculo — volver a las capturas</translation>
     </message>
     <message id="gamehq.overlay.hint.video.keyboard">
-      <location filename="src/ui/qml/components/OverlayFooter.qml" line="48"></location>
+      <location filename="src/ui/qml/components/OverlayFooter.qml" line="57"></location>
       <source>Left/Right — scrub clip | Enter — play/pause | Esc/Backspace — back to captures</source>
       <translation>Left/Right — recorrer el clip | Enter — reproducir/pausar | Esc/Backspace — volver a las capturas</translation>
+    </message>
+    <message id="gamehq.overlay.layout.hints">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="25"></location>
+      <source>Control hints</source>
+      <translation>Indicaciones de controles</translation>
+    </message>
+    <message id="gamehq.overlay.layout.interface_size">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="35"></location>
+      <source>Interface size</source>
+      <translation>Tamaño de la interfaz</translation>
+    </message>
+    <message id="gamehq.overlay.layout.margin_bottom">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="33"></location>
+      <source>Bottom margin</source>
+      <translation>Margen inferior</translation>
+    </message>
+    <message id="gamehq.overlay.layout.margin_left">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="27"></location>
+      <source>Left margin</source>
+      <translation>Margen izquierdo</translation>
+    </message>
+    <message id="gamehq.overlay.layout.margin_right">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="31"></location>
+      <source>Right margin</source>
+      <translation>Margen derecho</translation>
+    </message>
+    <message id="gamehq.overlay.layout.margin_top">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="29"></location>
+      <source>Top margin</source>
+      <translation>Margen superior</translation>
+    </message>
+    <message id="gamehq.overlay.layout.off">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="50"></location>
+      <source>Off</source>
+      <translation>Desactivado</translation>
+    </message>
+    <message id="gamehq.overlay.layout.on">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="48"></location>
+      <source>On</source>
+      <translation>Activado</translation>
+    </message>
+    <message id="gamehq.overlay.layout.px">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="52"></location>
+      <source>%1 px</source>
+      <translation>%1 px</translation>
+    </message>
+    <message id="gamehq.overlay.layout.reset">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="39"></location>
+      <source>Reset overlay layout</source>
+      <translation>Restablecer el diseño de la superposición</translation>
+    </message>
+    <message id="gamehq.overlay.layout.thumbnail_size">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="37"></location>
+      <source>Thumbnail size</source>
+      <translation>Tamaño de las miniaturas</translation>
+    </message>
+    <message id="gamehq.overlay.layout.title">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="98"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="107"></location>
+      <source>Overlay options</source>
+      <translation>Opciones de la superposición</translation>
     </message>
     <message id="gamehq.overlay.window_title">
       <location filename="src/ui/qml/OverlayWindow.qml" line="47"></location>

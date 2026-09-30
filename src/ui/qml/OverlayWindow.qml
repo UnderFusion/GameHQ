@@ -57,6 +57,8 @@ Window {
             content.rememberSelection()
             content.menuOpen = false
             content.menuIndex = 0
+            content.layoutPanelOpen = false
+            content.optionsToggleFocused = false
             // A finished or unstarted Share never survives a hide; a send in
             // flight keeps running and shows its result on the next open.
             overlayShare.close()
@@ -122,6 +124,116 @@ Window {
         }
     }
 
+    // Overlay options (gear panel). Each value is read from config and written
+    // straight back on change, so the layout follows live and persists. The
+    // interface size is the same theme.overlay_scale the General settings edit.
+    QtObject {
+        id: layoutPrefs
+        property bool showHints: true
+        property int marginLeft: Theme.overlayMarginDefault
+        property int marginTop: Theme.overlayMarginDefault
+        property int marginRight: Theme.overlayMarginDefault
+        property int marginBottom: Theme.overlayMarginDefault
+        property int uiScale: scaledViewport.requestedPercent
+        property int thumbScale: 100
+        readonly property var marginKeys: ({
+            margin_left: "ui.overlay_margin_left",
+            margin_top: "ui.overlay_margin_top",
+            margin_right: "ui.overlay_margin_right",
+            margin_bottom: "ui.overlay_margin_bottom"
+        })
+
+        function number(key, fallback) {
+            return Number(app.config(key, fallback))
+        }
+        function clampStep(v, lo, hi, step, fallback) {
+            if (!isFinite(v))
+                return fallback
+            return Math.max(lo, Math.min(hi, Math.round(v / step) * step))
+        }
+        function margin(key) {
+            return clampStep(number(key, Theme.overlayMarginDefault), 0, Theme.overlayMarginMax,
+                             Theme.overlayMarginStep, Theme.overlayMarginDefault)
+        }
+        function refresh() {
+            const hints = app.config("ui.overlay_show_hints", true)
+            showHints = !(hints === false || hints === "false" || hints === 0)
+            marginLeft = margin("ui.overlay_margin_left")
+            marginTop = margin("ui.overlay_margin_top")
+            marginRight = margin("ui.overlay_margin_right")
+            marginBottom = margin("ui.overlay_margin_bottom")
+            thumbScale = clampStep(number("ui.overlay_thumbnail_scale", 100),
+                                   Theme.overlayThumbScaleMin, Theme.overlayThumbScaleMax,
+                                   Theme.overlayThumbScaleStep, 100)
+        }
+
+        function adjust(key, direction) {
+            if (key in marginKeys) {
+                const current = margin(marginKeys[key])
+                const next = clampStep(current + direction * Theme.overlayMarginStep, 0,
+                                       Theme.overlayMarginMax, Theme.overlayMarginStep, current)
+                if (next === current)
+                    return
+                app.setConfig(marginKeys[key], next)
+            } else if (key === "scale") {
+                const presets = scaledViewport.presets
+                const at = Math.max(0, presets.indexOf(scaledViewport.requestedPercent))
+                const next = presets[Math.max(0, Math.min(presets.length - 1, at + direction))]
+                if (next === scaledViewport.requestedPercent)
+                    return
+                app.setConfig("theme.overlay_scale", next)
+                scaledViewport.refresh()
+            } else if (key === "thumbs") {
+                const next = clampStep(thumbScale + direction * Theme.overlayThumbScaleStep,
+                                       Theme.overlayThumbScaleMin, Theme.overlayThumbScaleMax,
+                                       Theme.overlayThumbScaleStep, thumbScale)
+                if (next === thumbScale)
+                    return
+                app.setConfig("ui.overlay_thumbnail_scale", next)
+            } else if (key === "hints") {
+                if ((direction > 0) === showHints)
+                    return
+                app.setConfig("ui.overlay_show_hints", direction > 0)
+            } else {
+                return
+            }
+            refresh()
+            sounds.play("nav_tick")
+        }
+
+        function activate(key) {
+            if (key === "hints") {
+                app.setConfig("ui.overlay_show_hints", !showHints)
+            } else if (key === "reset") {
+                // Back to the shipped layout, sidebar included (Expanded).
+                app.setConfig("ui.overlay_show_hints", true)
+                for (const k in marginKeys)
+                    app.setConfig(marginKeys[k], Theme.overlayMarginDefault)
+                app.setConfig("theme.overlay_scale", 100)
+                app.setConfig("ui.overlay_thumbnail_scale", 100)
+                app.setConfig("ui.overlay_sidebar_mode", "expanded")
+                content.sidebarMode = "expanded"
+                scaledViewport.refresh()
+            } else {
+                return
+            }
+            refresh()
+            sounds.play("confirm")
+        }
+
+        Component.onCompleted: refresh()
+    }
+    Connections {
+        target: app
+        function onConfigChanged(key, value) {
+            if (key.startsWith("ui.overlay_"))
+                layoutPrefs.refresh()
+        }
+        function onConfigGroupReset(prefix) {
+            layoutPrefs.refresh()
+        }
+    }
+
     // Also shown during the non-activating experiment: the game deliberately
     // keeps foreground and may receive the same controller input.
     Rectangle {
@@ -155,7 +267,10 @@ Window {
         parent: uiSurface.contentItem
         id: content
         anchors.fill: parent
-        anchors.margins: Theme.s48
+        anchors.leftMargin: layoutPrefs.marginLeft
+        anchors.topMargin: layoutPrefs.marginTop
+        anchors.rightMargin: layoutPrefs.marginRight
+        anchors.bottomMargin: layoutPrefs.marginBottom
         focus: true
 
         property bool menuOpen: false
@@ -185,9 +300,14 @@ Window {
         property bool sidebarNavActive: false
         property bool sidebarPointerHold: false
         property bool modeToggleFocused: false
+        property bool optionsToggleFocused: false
+        // Overlay options card (gear): open state and its row cursor.
+        property bool layoutPanelOpen: false
+        property int layoutIndex: 0
         readonly property bool sidebarExpanded: content.sidebarMode === "expanded"
             || (content.sidebarMode === "auto"
-                && (content.sidebarNavActive || content.sidebarPointerHold))
+                && (content.sidebarNavActive || content.sidebarPointerHold
+                    || content.layoutPanelOpen))
 
         function cycleSidebarMode() {
             const next = content.sidebarMode === "expanded" ? "auto"
@@ -207,6 +327,23 @@ Window {
             sidebarAutoCollapse.stop()
             content.sidebarNavActive = false
             content.modeToggleFocused = false
+            content.optionsToggleFocused = false
+        }
+
+        function toggleLayoutPanel() {
+            content.layoutPanelOpen = !content.layoutPanelOpen
+            if (content.layoutPanelOpen) {
+                content.menuOpen = false
+                content.stopVideoFocus()
+                content.layoutIndex = 0
+            }
+            sounds.play("confirm")
+        }
+
+        function layoutStep(direction) {
+            const count = layoutPanel.rows.length
+            content.layoutIndex = (content.layoutIndex + direction + count) % count
+            sounds.play("nav_tick")
         }
 
         Timer {
@@ -294,15 +431,17 @@ Window {
             if (count <= 0)
                 return
             content.noteSidebarNavigation()
-            const slots = count + 1   // + the mode toggle
-            const current = content.modeToggleFocused ? count : content.sidebarIndex
+            const slots = count + 2   // + the options gear and the mode toggle
+            const current = content.optionsToggleFocused ? count
+                          : content.modeToggleFocused ? count + 1
+                          : content.sidebarIndex
             const idx = (current + direction + slots) % slots
-            if (idx === count) {
-                content.modeToggleFocused = true
+            content.optionsToggleFocused = idx === count
+            content.modeToggleFocused = idx === count + 1
+            if (idx >= count) {
                 sounds.play("nav_tick")
                 return
             }
-            content.modeToggleFocused = false
             content.selectSidebarEntryAt(idx, "nav_tick")
         }
 
@@ -397,7 +536,7 @@ Window {
                 viewer.step(direction)
                 return
             }
-            if (content.menuOpen)
+            if (content.menuOpen || content.layoutPanelOpen)
                 return
             content.collapseAutoSidebar()
             if (direction < 0)
@@ -412,6 +551,10 @@ Window {
         function handleSeekStep(direction) {
             if (overlayShare.isOpen)
                 return
+            if (content.layoutPanelOpen) {
+                layoutPrefs.adjust(layoutPanel.currentKey(), direction)
+                return
+            }
             if (viewer.open) {
                 if (viewer.currentIsVideo)
                     viewer.seekVideo(direction * viewer.seekStepMs)
@@ -435,7 +578,9 @@ Window {
             }
             if (viewer.open)
                 return   // the sidebar filter behind the viewer stays put
-            if (content.menuOpen)
+            if (content.layoutPanelOpen)
+                content.layoutStep(direction)
+            else if (content.menuOpen)
                 content.menuStep(direction)
             else
                 content.sidebarStep(direction)
@@ -446,12 +591,20 @@ Window {
                 overlayShare.padConfirm()
                 return
             }
+            if (content.layoutPanelOpen) {
+                layoutPrefs.activate(layoutPanel.currentKey())
+                return
+            }
             if (content.menuOpen) {
                 content.menuConfirm()
                 return
             }
             if (viewer.open) {
                 viewer.toggleVideoPlayback()
+                return
+            }
+            if (content.optionsToggleFocused) {
+                content.toggleLayoutPanel()
                 return
             }
             if (content.modeToggleFocused) {
@@ -484,13 +637,15 @@ Window {
                 content.openShare(overlayGallery.get(viewer.index))
                 return
             }
+            if (content.layoutPanelOpen)
+                return
             content.menuOpen = !content.menuOpen
             if (content.menuOpen)
                 content.menuIndex = 0
         }
 
         function togglePlayback() {
-            if (overlayShare.isOpen)
+            if (overlayShare.isOpen || content.layoutPanelOpen)
                 return
             if (viewer.open)
                 viewer.toggleVideoPlayback()
@@ -501,7 +656,7 @@ Window {
         function handleFavorite() {
             if (overlayShare.isOpen)
                 return
-            if (content.menuOpen)
+            if (content.menuOpen || content.layoutPanelOpen)
                 return
             sounds.play("favorite")
             overlayGallery.toggleFavorite(viewer.open ? viewer.index : strip.currentIndex)
@@ -514,7 +669,9 @@ Window {
             }
             if (viewer.open)
                 viewer.close()   // Circle leaves full screen before anything else
-            else if (content.modeToggleFocused)
+            else if (content.layoutPanelOpen)
+                content.toggleLayoutPanel()
+            else if (content.modeToggleFocused || content.optionsToggleFocused)
                 content.collapseAutoSidebar()
             else if (content.menuOpen)
                 content.menuOpen = false
@@ -614,8 +771,9 @@ Window {
         Item {
             id: body
             anchors.top: parent.top
-            anchors.bottom: footer.top
-            anchors.bottomMargin: Theme.s24
+            // Hidden hints hand their height back to the preview.
+            anchors.bottom: layoutPrefs.showHints ? footer.top : parent.bottom
+            anchors.bottomMargin: layoutPrefs.showHints ? Theme.s24 : 0
             anchors.left: parent.left
             anchors.right: parent.right
 
@@ -629,8 +787,12 @@ Window {
                 mode: content.sidebarMode
                 expanded: content.sidebarExpanded
                 modeFocused: content.modeToggleFocused
+                optionsOpen: content.layoutPanelOpen
+                optionsFocused: content.optionsToggleFocused
+                onOptionsRequested: content.toggleLayoutPanel()
                 onEntrySelected: function(index) {
                     content.modeToggleFocused = false
+                    content.optionsToggleFocused = false
                     content.selectSidebarEntryAt(index, "confirm")
                 }
                 onModeCycleRequested: content.cycleSidebarMode()
@@ -653,6 +815,7 @@ Window {
                 model: overlayGallery
                 usingGamepad: overlayWindow.usingGamepad
                 videoFocused: content.videoFocused
+                thumbScale: layoutPrefs.thumbScale / 100
                 onDeleteRequested: function(index) {
                     overlayWindow.pendingDeletePath = overlayGallery.get(index).filePath || ""
                     deleteDialog.open()
@@ -691,12 +854,40 @@ Window {
                     content.stopVideoFocus()
                 }
             }
+
+            // Beside the sidebar, over the captures, with no scrim: the
+            // preview behind it resizes live while values change.
+            OverlayLayoutPanel {
+                id: layoutPanel
+                objectName: "overlayLayoutPanel"
+                anchors.left: sidebarPane.right
+                anchors.leftMargin: Theme.s16
+                anchors.bottom: parent.bottom
+                z: 50
+                open: content.layoutPanelOpen
+                currentIndex: content.layoutIndex
+                values: ({
+                    hints: layoutPrefs.showHints,
+                    margin_left: layoutPrefs.marginLeft,
+                    margin_top: layoutPrefs.marginTop,
+                    margin_right: layoutPrefs.marginRight,
+                    margin_bottom: layoutPrefs.marginBottom,
+                    scale: layoutPrefs.uiScale,
+                    thumbs: layoutPrefs.thumbScale
+                })
+                onCloseRequested: content.toggleLayoutPanel()
+                onRowHovered: function(index) { content.layoutIndex = index }
+                onAdjustRequested: function(key, direction) { layoutPrefs.adjust(key, direction) }
+                onActivateRequested: function(key) { layoutPrefs.activate(key) }
+            }
         }
 
         OverlayFooter {
             id: footer
+            visible: layoutPrefs.showHints
             usingGamepad: overlayWindow.usingGamepad
             menuOpen: content.menuOpen
+            layoutPanelOpen: content.layoutPanelOpen
             videoFocused: content.videoFocused
         }
     }

@@ -404,19 +404,19 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1208
+          "line": 1209
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1227
+          "line": 1228
         },
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1265
+          "line": 1266
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 804
+          "line": 995
         },
         {
           "file": "src/ui/qml/components/ConfirmDialog.qml",
@@ -4714,7 +4714,7 @@
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
-          "line": 151
+          "line": 174
         }
       ],
       "plural": false,
@@ -4750,7 +4750,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1267
+          "line": 1268
         },
         {
           "file": "src/ui/qml/components/DesktopGalleryHeader.qml",
@@ -4771,7 +4771,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1261
+          "line": 1262
         },
         {
           "file": "src/ui/qml/components/OverlayActionMenu.qml",
@@ -4792,7 +4792,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1263
+          "line": 1264
         },
         {
           "file": "src/ui/qml/components/OverlayActionMenu.qml",
@@ -4841,7 +4841,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1196
+          "line": 1197
         }
       ],
       "plural": false,
@@ -4861,11 +4861,11 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1206
+          "line": 1207
         },
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 802
+          "line": 993
         }
       ],
       "plural": false,
@@ -4882,7 +4882,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 469
+          "line": 470
         }
       ],
       "plural": true,
@@ -4901,7 +4901,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1225
+          "line": 1226
         }
       ],
       "plural": false,
@@ -7188,7 +7188,7 @@
       "locations": [
         {
           "file": "src/ui/qml/Main.qml",
-          "line": 1176
+          "line": 1177
         },
         {
           "file": "src/ui/qml/settings/LibrarySettingsPage.qml",
@@ -7246,7 +7246,7 @@
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
-          "line": 19
+          "line": 23
         }
       ],
       "plural": false,
@@ -7267,7 +7267,7 @@
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
-          "line": 27
+          "line": 31
         }
       ],
       "plural": false,
@@ -7288,7 +7288,7 @@
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
-          "line": 23
+          "line": 27
         }
       ],
       "plural": false,
@@ -7309,7 +7309,7 @@
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
-          "line": 29
+          "line": 33
         }
       ],
       "plural": false,
@@ -7330,7 +7330,7 @@
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
-          "line": 31
+          "line": 35
         }
       ],
       "plural": false,
@@ -7351,7 +7351,7 @@
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
-          "line": 21
+          "line": 25
         }
       ],
       "plural": false,
@@ -7372,7 +7372,7 @@
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
-          "line": 25
+          "line": 29
         }
       ],
       "plural": false,
@@ -7393,7 +7393,7 @@
         },
         {
           "file": "src/ui/qml/components/OverlaySidebar.qml",
-          "line": 68
+          "line": 73
         }
       ],
       "plural": false,
@@ -7923,7 +7923,7 @@
       "locations": [
         {
           "file": "src/ui/qml/OverlayWindow.qml",
-          "line": 147
+          "line": 259
         }
       ],
       "plural": false,
@@ -7940,7 +7940,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 52
+          "line": 61
         }
       ],
       "plural": false,
@@ -7957,7 +7957,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 58
+          "line": 67
         }
       ],
       "plural": false,
@@ -7967,6 +7967,40 @@
       "source_hash": "6cac6907703787a707b081740f91c1fe23d25141250abdaaba6c7331a75a65a0"
     },
     {
+      "id": "gamehq.overlay.hint.layout.gamepad",
+      "source": "D-pad Up/Down — choose | D-pad Left/Right — adjust | Cross — toggle | Circle — close options",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayFooter.qml",
+          "line": 38
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498"
+    },
+    {
+      "id": "gamehq.overlay.hint.layout.keyboard",
+      "source": "Up/Down — choose | Left/Right — adjust | Enter — toggle | Esc/Backspace — close options",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayFooter.qml",
+          "line": 41
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6"
+    },
+    {
       "id": "gamehq.overlay.hint.menu.gamepad",
       "source": "D-pad Up/Down — choose | Cross — confirm | Circle — close menu",
       "context": "ID",
@@ -7974,7 +8008,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 37
+          "line": 46
         }
       ],
       "plural": false,
@@ -7991,7 +8025,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 40
+          "line": 49
         }
       ],
       "plural": false,
@@ -8008,7 +8042,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 45
+          "line": 54
         }
       ],
       "plural": false,
@@ -8025,7 +8059,7 @@
       "locations": [
         {
           "file": "src/ui/qml/components/OverlayFooter.qml",
-          "line": 48
+          "line": 57
         }
       ],
       "plural": false,
@@ -8033,6 +8067,216 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "fa251b58d7c3c8ddd8fbb75e4abb928ecd10defc8c5ea0b84b242d8e0d269c86"
+    },
+    {
+      "id": "gamehq.overlay.layout.hints",
+      "source": "Control hints",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
+          "line": 25
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bb3f57a7a2b67187ffa21f11189b36243b69bc0e0a7bf1716e64f4ec1d717034"
+    },
+    {
+      "id": "gamehq.overlay.layout.interface_size",
+      "source": "Interface size",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
+          "line": 35
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "db881260f35d4fa146e97a99858ac12f669f3b6411b20a9f04172a76ea370d83"
+    },
+    {
+      "id": "gamehq.overlay.layout.margin_bottom",
+      "source": "Bottom margin",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
+          "line": 33
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "01622555cbb4f1be5fd01aa685dc2f951bd8d155a5ad7ee6eb652f226bb46a9d"
+    },
+    {
+      "id": "gamehq.overlay.layout.margin_left",
+      "source": "Left margin",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
+          "line": 27
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2d139039d0726873c6addda20525f5a1dab0974de8954a22cfee7b5f0ee6ac03"
+    },
+    {
+      "id": "gamehq.overlay.layout.margin_right",
+      "source": "Right margin",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
+          "line": 31
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "658d93f01babd06b176b5d177e028605d571c63ea11467818754e914e3582b57"
+    },
+    {
+      "id": "gamehq.overlay.layout.margin_top",
+      "source": "Top margin",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
+          "line": 29
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "bb7410fd227da491f423dcb2b3d0b17ffa30136b713b308000ad6832e68a221a"
+    },
+    {
+      "id": "gamehq.overlay.layout.off",
+      "source": "Off",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
+          "line": 50
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa"
+    },
+    {
+      "id": "gamehq.overlay.layout.on",
+      "source": "On",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
+          "line": 48
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d11a5421568253df255e9b439f28c98b2262a61c4e200f88c045f85ebfab28d2"
+    },
+    {
+      "id": "gamehq.overlay.layout.px",
+      "source": "%1 px",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
+          "line": 52
+        }
+      ],
+      "plural": false,
+      "placeholders": [
+        "%1"
+      ],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9c8a7065c82ce7792df5d42443af8a0e455c507ba1d793f2cf9829fc966d8271"
+    },
+    {
+      "id": "gamehq.overlay.layout.reset",
+      "source": "Reset overlay layout",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
+          "line": 39
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "62866025d0422fe7167b02ed2fb9cae6cc43eab7a13319ef5c1f821885caa02f"
+    },
+    {
+      "id": "gamehq.overlay.layout.thumbnail_size",
+      "source": "Thumbnail size",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
+          "line": 37
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "96ab64ac3d8f448e790ae927874df3e6a84dedc39969fd8c178a0733fe995bce"
+    },
+    {
+      "id": "gamehq.overlay.layout.title",
+      "source": "Overlay options",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/components/OverlayLayoutPanel.qml",
+          "line": 98
+        },
+        {
+          "file": "src/ui/qml/components/OverlaySidebar.qml",
+          "line": 107
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "201ebcb846dd81c88a9ade2932a275990efb59724e6b8013b95e6fb7bd264093"
     },
     {
       "id": "gamehq.overlay.window_title",

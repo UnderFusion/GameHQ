@@ -73,6 +73,12 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::UiGalleryFilterGame,     -1 },
         { ConfigKeys::UiMainSidebarMode,       "expanded" },
         { ConfigKeys::UiOverlaySidebarMode,    "expanded" },
+        { ConfigKeys::UiOverlayShowHints,      true },
+        { ConfigKeys::UiOverlayMarginLeft,     48 },
+        { ConfigKeys::UiOverlayMarginTop,      48 },
+        { ConfigKeys::UiOverlayMarginRight,    48 },
+        { ConfigKeys::UiOverlayMarginBottom,   48 },
+        { ConfigKeys::UiOverlayThumbnailScale, 100 },
         // Window geometry. The unset sentinel means "never placed" and makes
         // reset-all reopen centred, the way a fresh profile does.
         { ConfigKeys::UiWindowX,               WindowPlacement::kUnsetCoordinate },
