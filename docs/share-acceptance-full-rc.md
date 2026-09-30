@@ -1,6 +1,11 @@
 <!-- SPDX-License-Identifier: MIT -->
 
-# Share acceptance session (owner)
+# Share full acceptance matrix (final 0.7.9 release candidate)
+
+> **Not run per beta.** The current beta only needs the short check in
+> [share-smoke-check.md](share-smoke-check.md). This full matrix is kept for the
+> final 0.7.9 release-candidate validation; update its build identity (section 0)
+> to the release-candidate build before running it.
 
 One manual session that closes the pending Share checks together: Settings >
 Sharing (t21), Telegram Desktop (t12), Discord
