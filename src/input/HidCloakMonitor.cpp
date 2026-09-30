@@ -33,6 +33,27 @@ QString vidPidToken(quint32 vid, quint32 pid)
         .arg(pid, 4, 16, QLatin1Char('0'));
 }
 
+// Bluetooth HID devnodes and Raw Input paths spell the IDs differently:
+// "{00001124-...}_vid&0002054c_pid&0ce6" (0002 = USB-IF vendor source,
+// 0001 = Bluetooth SIG). Without these a Bluetooth pad never matched.
+QStringList vidPidTokens(quint32 vid, quint32 pid)
+{
+    const QString v = QStringLiteral("%1").arg(vid, 4, 16, QLatin1Char('0'));
+    const QString p = QStringLiteral("%1").arg(pid, 4, 16, QLatin1Char('0'));
+    return { vidPidToken(vid, pid),
+             QStringLiteral("vid&0002%1_pid&%2").arg(v, p),
+             QStringLiteral("vid&0001%1_pid&%2").arg(v, p) };
+}
+
+bool containsAny(const QString& haystack, const QStringList& tokens)
+{
+    for (const QString& t : tokens) {
+        if (haystack.contains(t))
+            return true;
+    }
+    return false;
+}
+
 // HidHide control-device interface (github.com/nefarius/HidHide, HidHideApi.h).
 // CTL_CODE(32769, function, METHOD_BUFFERED, FILE_READ_DATA) — the driver uses
 // FILE_READ_DATA for both getters and setters.
@@ -115,7 +136,8 @@ HidCloakMonitor::ScanResult HidCloakMonitor::scan(const QSet<QString>& visibleRa
 
     for (const auto& pad : kKnownPads) {
         const QString token = vidPidToken(pad.vid, pad.pid);
-        if (pnpJoined.contains(token) && !rawJoined.contains(token))
+        const QStringList tokens = vidPidTokens(pad.vid, pad.pid);
+        if (containsAny(pnpJoined, tokens) && !containsAny(rawJoined, tokens))
             r.hiddenPads << QStringLiteral("%1 (%2)")
                                 .arg(QLatin1String(pad.name), token.toUpper());
     }
