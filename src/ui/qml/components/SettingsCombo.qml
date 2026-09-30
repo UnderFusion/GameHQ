@@ -23,6 +23,9 @@ QC.ComboBox {
     property bool iconOnly: false
     property string iconText: ""
     property real popupMinimumWidth: 0
+    // Controller cursor on a frameless combo (the sidebar language selector),
+    // which has no focus frame of its own to light.
+    property bool padFocused: false
     signal valueCommitted(var value)
 
     model: options
@@ -97,10 +100,10 @@ QC.ComboBox {
         color: Theme.surfaceAlt
         border.width: combo.frameVisible
                       ? (combo.activeFocus ? Theme.borderWidth + 1 : Theme.borderWidth)
-                      : 0
+                      : (combo.padFocused || combo.popup.visible ? Theme.borderWidth + 1 : 0)
         // activeFocus matters as much as pressed/open: a pad or Tab lands here
         // without ever pressing it, and an unlit control reads as unreachable.
-        border.color: (combo.pressed || combo.popup.visible || combo.activeFocus)
+        border.color: (combo.pressed || combo.popup.visible || combo.activeFocus || combo.padFocused)
                       ? Theme.accent : Theme.stroke
         Behavior on border.color { ColorAnimation { duration: Theme.durFast } }
     }

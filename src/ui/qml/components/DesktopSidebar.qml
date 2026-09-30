@@ -21,6 +21,9 @@ Rectangle {
     property bool expanded: true
     // Flat pad index of the mode toggle (the last controller row).
     readonly property int modeRowIndex: root.categories.length + app.games.length + 3
+    // Last controller row: the language selector below the mode toggle.
+    readonly property int languageRowIndex: root.modeRowIndex + 1
+    readonly property alias languageCombo: sidebarLanguageCombo
     // Labels follow the animated width, so they appear once there is room
     // for them and vanish before the rail clips them.
     readonly property bool compact: root.width < Theme.sidebarWidth * 0.75
@@ -358,6 +361,7 @@ Rectangle {
             // Stays in place in the rail as a language icon (so nothing jumps
             // when the sidebar narrows); the list opens at the full width.
             iconOnly: root.compact
+            padFocused: root.sidebarFocused && root.sidebarHoverIndex === root.languageRowIndex
             iconText: "\u6587A"
             popupMinimumWidth: Theme.sidebarWidth - Theme.s24
             objectName: "sidebarLanguageSelector"
