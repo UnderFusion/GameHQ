@@ -1,51 +1,61 @@
 import QtQuick
 import GameHQ
 
-// Flat push-pin drawn from shapes (no icon font): a head, a collar and a
-// needle, tilted like a pin stuck into the board. Filled when pinned,
-// outlined otherwise.
+// Minimal outline push-pin (24-unit line-icon grid). Unpinned it leans over
+// and stays an outline; pinned it stands upright and fills in, both animated.
 Item {
     id: root
     property bool filled: false
     property color color: Theme.textMuted
-    readonly property real stroke: Math.max(1, Theme.borderWidth) * 1.5
 
     implicitWidth: Theme.s16
     implicitHeight: Theme.s16
 
-    Item {
-        id: pin
-        width: root.width * 0.5
-        height: root.height
-        anchors.centerIn: parent
-        rotation: 45
+    property real fillAmount: root.filled ? 1 : 0
+    Behavior on fillAmount { NumberAnimation { duration: Theme.durFast } }
 
-        Rectangle {                     // head
-            id: head
-            width: parent.width
-            height: parent.height * 0.42
-            anchors.top: parent.top
-            anchors.horizontalCenter: parent.horizontalCenter
-            radius: width * 0.3
-            color: root.filled ? root.color : "transparent"
-            border.width: root.stroke
-            border.color: root.color
-        }
-        Rectangle {                     // collar
-            width: parent.width * 1.5
-            height: root.stroke * 1.4
-            anchors.top: head.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            radius: height / 2
-            color: root.color
-        }
-        Rectangle {                     // needle
-            width: root.stroke
-            anchors.top: head.bottom
-            anchors.bottom: parent.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            radius: width / 2
-            color: root.color
+    rotation: root.filled ? 0 : 45
+    Behavior on rotation { NumberAnimation { duration: Theme.durNormal; easing.type: Easing.OutBack } }
+
+    onFillAmountChanged: canvas.requestPaint()
+    onColorChanged: canvas.requestPaint()
+
+    Canvas {
+        id: canvas
+        anchors.fill: parent
+        antialiasing: true
+        onWidthChanged: requestPaint()
+        onHeightChanged: requestPaint()
+        onPaint: {
+            const ctx = getContext("2d")
+            ctx.reset()
+            const s = Math.min(width, height) / 24
+            ctx.scale(s, s)
+            ctx.lineWidth = 1.75
+            ctx.lineCap = "round"
+            ctx.lineJoin = "round"
+            ctx.strokeStyle = root.color
+            // Body: rounded cap, tapered shaft, flared collar.
+            ctx.beginPath()
+            ctx.moveTo(9, 3.5)
+            ctx.lineTo(15, 3.5)
+            ctx.lineTo(14, 10)
+            ctx.lineTo(17.5, 14.5)
+            ctx.lineTo(6.5, 14.5)
+            ctx.lineTo(10, 10)
+            ctx.closePath()
+            if (root.fillAmount > 0) {
+                ctx.globalAlpha = root.fillAmount
+                ctx.fillStyle = root.color
+                ctx.fill()
+                ctx.globalAlpha = 1
+            }
+            ctx.stroke()
+            // Needle.
+            ctx.beginPath()
+            ctx.moveTo(12, 14.5)
+            ctx.lineTo(12, 20.5)
+            ctx.stroke()
         }
     }
 }
