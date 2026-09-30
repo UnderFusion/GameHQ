@@ -20,7 +20,9 @@ Rectangle {
     property string mode: "expanded"
     property bool expanded: true
     // Flat pad index of the mode toggle (the last controller row).
-    readonly property int modeRowIndex: root.categories.length + app.games.length + 3
+    // Controller rows after About: Support, the mode toggle, the language.
+    readonly property int supportRowIndex: root.categories.length + app.games.length + 3
+    readonly property int modeRowIndex: root.supportRowIndex + 1
     // Last controller row: the language selector below the mode toggle.
     readonly property int languageRowIndex: root.modeRowIndex + 1
     readonly property alias languageCombo: sidebarLanguageCombo
@@ -342,6 +344,7 @@ Rectangle {
             ToolTip.text: localizedLabel
             ToolTip.visible: supportButton.hovered
             ToolTip.delay: 500
+            sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.supportRowIndex
             onClicked: root.externalUrlOpener(Brand.supportUrl)
         }
 
@@ -387,6 +390,11 @@ Rectangle {
                 sidebarLanguageCombo.refresh()
             }
         }
+    }
+
+    // Pad Cross on the Support row: same link as a click.
+    function openSupport() {
+        root.externalUrlOpener(Brand.supportUrl)
     }
 
     function focusAboutLauncher() {
