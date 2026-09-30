@@ -117,7 +117,7 @@
       <location filename="src/ui/qml/Main.qml" line="1209"></location>
       <location filename="src/ui/qml/Main.qml" line="1228"></location>
       <location filename="src/ui/qml/Main.qml" line="1266"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="995"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1016"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -1379,7 +1379,7 @@ Esto eliminará el archivo de forma permanente.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1207"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="993"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1014"></location>
       <source>Delete capture?</source>
       <translation>¿Eliminar la captura?</translation>
     </message>
@@ -2270,7 +2270,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Acciones de captura</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="259"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="273"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>El juego sigue teniendo el foco y puede responder a las entradas del control</translation>
     </message>
@@ -2320,7 +2320,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Indicaciones de controles</translation>
     </message>
     <message id="gamehq.overlay.layout.interface_size">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="35"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="37"></location>
       <source>Interface size</source>
       <translation>Tamaño de la interfaz</translation>
     </message>
@@ -2345,32 +2345,37 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Margen superior</translation>
     </message>
     <message id="gamehq.overlay.layout.off">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="50"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="52"></location>
       <source>Off</source>
       <translation>Desactivado</translation>
     </message>
     <message id="gamehq.overlay.layout.on">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="48"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="50"></location>
       <source>On</source>
       <translation>Activado</translation>
     </message>
     <message id="gamehq.overlay.layout.px">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="52"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="54"></location>
       <source>%1 px</source>
       <translation>%1 px</translation>
     </message>
     <message id="gamehq.overlay.layout.reset">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="39"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="41"></location>
       <source>Reset overlay layout</source>
       <translation>Restablecer el diseño de la superposición</translation>
     </message>
+    <message id="gamehq.overlay.layout.spacing">
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="35"></location>
+      <source>Spacing between panels</source>
+      <translation>Espacio entre paneles</translation>
+    </message>
     <message id="gamehq.overlay.layout.thumbnail_size">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="37"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="39"></location>
       <source>Thumbnail size</source>
       <translation>Tamaño de las miniaturas</translation>
     </message>
     <message id="gamehq.overlay.layout.title">
-      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="98"></location>
+      <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="100"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="107"></location>
       <source>Overlay options</source>
       <translation>Opciones de la superposición</translation>

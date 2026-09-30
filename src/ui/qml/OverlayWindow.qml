@@ -136,6 +136,10 @@ Window {
         property int marginBottom: Theme.overlayMarginDefault
         property int uiScale: scaledViewport.requestedPercent
         property int thumbScale: 100
+        // One gap between the panels (sidebar | captures, strip | preview); the
+        // preview-to-hints gap follows it at 3/4, which keeps the shipped 24.
+        property int spacing: Theme.overlaySpacingDefault
+        readonly property int footerGap: Math.round(spacing * 3 / 4)
         readonly property var marginKeys: ({
             margin_left: "ui.overlay_margin_left",
             margin_top: "ui.overlay_margin_top",
@@ -162,6 +166,9 @@ Window {
             marginTop = margin("ui.overlay_margin_top")
             marginRight = margin("ui.overlay_margin_right")
             marginBottom = margin("ui.overlay_margin_bottom")
+            spacing = clampStep(number("ui.overlay_spacing", Theme.overlaySpacingDefault), 0,
+                                Theme.overlaySpacingMax, Theme.overlayMarginStep,
+                                Theme.overlaySpacingDefault)
             thumbScale = clampStep(number("ui.overlay_thumbnail_scale", 100),
                                    Theme.overlayThumbScaleMin, Theme.overlayThumbScaleMax,
                                    Theme.overlayThumbScaleStep, 100)
@@ -183,6 +190,12 @@ Window {
                     return
                 app.setConfig("theme.overlay_scale", next)
                 scaledViewport.refresh()
+            } else if (key === "spacing") {
+                const next = clampStep(spacing + direction * Theme.overlayMarginStep, 0,
+                                       Theme.overlaySpacingMax, Theme.overlayMarginStep, spacing)
+                if (next === spacing)
+                    return
+                app.setConfig("ui.overlay_spacing", next)
             } else if (key === "thumbs") {
                 const next = clampStep(thumbScale + direction * Theme.overlayThumbScaleStep,
                                        Theme.overlayThumbScaleMin, Theme.overlayThumbScaleMax,
@@ -211,6 +224,7 @@ Window {
                     app.setConfig(marginKeys[k], Theme.overlayMarginDefault)
                 app.setConfig("theme.overlay_scale", 100)
                 app.setConfig("ui.overlay_thumbnail_scale", 100)
+                app.setConfig("ui.overlay_spacing", Theme.overlaySpacingDefault)
                 app.setConfig("ui.overlay_sidebar_mode", "expanded")
                 content.sidebarMode = "expanded"
                 scaledViewport.refresh()
@@ -281,8 +295,11 @@ Window {
         property bool keyboardDriving: false
         // Playback bindings (Cross = play/pause, D-pad = seek, Share = frame
         // grab) apply to the inline clip and to a clip shown full screen.
-        readonly property bool playbackActive: content.videoFocused
-            || (viewer.open && viewer.currentIsVideo)
+        // A menu, the options card or Share over the clip takes the pad:
+        // Cross must pick their entry, not play/pause the clip behind them.
+        readonly property bool playbackActive: !content.menuOpen
+            && !content.layoutPanelOpen && !overlayShare.isOpen
+            && (content.videoFocused || (viewer.open && viewer.currentIsVideo))
         onPlaybackActiveChanged: input.setPlaybackActive(content.playbackActive)
         property var categories: SidebarCategories.categories(app.currentGameAvailable)
         function totalSidebarCount() { return content.categories.length + app.games.length }
@@ -640,8 +657,11 @@ Window {
             if (content.layoutPanelOpen)
                 return
             content.menuOpen = !content.menuOpen
-            if (content.menuOpen)
+            if (content.menuOpen) {
                 content.menuIndex = 0
+                if (previewStage.isPlaying)
+                    previewStage.pauseVideo()
+            }
         }
 
         function togglePlayback() {
@@ -773,7 +793,7 @@ Window {
             anchors.top: parent.top
             // Hidden hints hand their height back to the preview.
             anchors.bottom: layoutPrefs.showHints ? footer.top : parent.bottom
-            anchors.bottomMargin: layoutPrefs.showHints ? Theme.s24 : 0
+            anchors.bottomMargin: layoutPrefs.showHints ? layoutPrefs.footerGap : 0
             anchors.left: parent.left
             anchors.right: parent.right
 
@@ -810,7 +830,7 @@ Window {
                 id: strip
                 anchors.top: parent.top
                 anchors.left: sidebarPane.right
-                anchors.leftMargin: Theme.s32
+                anchors.leftMargin: layoutPrefs.spacing
                 anchors.right: parent.right
                 model: overlayGallery
                 usingGamepad: overlayWindow.usingGamepad
@@ -835,10 +855,10 @@ Window {
             OverlayPreview {
                 id: previewStage
                 anchors.top: strip.bottom
-                anchors.topMargin: Theme.s32
+                anchors.topMargin: layoutPrefs.spacing
                 anchors.bottom: parent.bottom
                 anchors.left: sidebarPane.right
-                anchors.leftMargin: Theme.s32
+                anchors.leftMargin: layoutPrefs.spacing
                 anchors.right: parent.right
                 galleryModel: overlayGallery
                 currentIndex: strip.currentIndex
@@ -872,6 +892,7 @@ Window {
                     margin_top: layoutPrefs.marginTop,
                     margin_right: layoutPrefs.marginRight,
                     margin_bottom: layoutPrefs.marginBottom,
+                    spacing: layoutPrefs.spacing,
                     scale: layoutPrefs.uiScale,
                     thumbs: layoutPrefs.thumbScale
                 })

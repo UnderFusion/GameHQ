@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "canonical repository English followed by complete contextual source review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-30T17:40:00Z"
+    "recorded_at": "2026-09-30T18:10:00Z"
   },
   "baseline": {
     "path": "git:7accd39fa37db9d9b729d42855a5d687b1735b98:i18n/app/gamehq_en_US.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_en_US.ts",
-    "sha256": "676c9ad8931660d1646735375c5be9e6dbde3ac2be076036a57fd82f7c96aa2c",
-    "message_count": 1066
+    "sha256": "09ae5459d1661b1a7715fe9d93366c522014ee7277a9f09acea9fc43b15f7711",
+    "message_count": 1067
   },
   "coverage": [
     {
@@ -4115,6 +4115,15 @@
       "translation_hash": "add2f36fedecdc799a4629388007bcfa0fbde7dc84e72a44ce4bfa770c3ce0c7",
       "locations": [
         "src/ui/qml/components/OverlayLayoutPanel.qml:39"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.overlay.layout.spacing",
+      "source_hash": "84fd5b3b9200627b13800a9c48ae7264c2869b56352a55a6270f06bc8ff05de7",
+      "translation_hash": "f931846f1d1bfdada09694cf08379460e19146d839a55bf3d277f04e19122303",
+      "locations": [
+        "src/ui/qml/components/OverlayLayoutPanel.qml:35"
       ],
       "decision": "accepted"
     },
@@ -10022,8 +10031,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_en_US.ts",
-      "sha256": "676c9ad8931660d1646735375c5be9e6dbde3ac2be076036a57fd82f7c96aa2c",
-      "reviewed_units": 1066
+      "sha256": "09ae5459d1661b1a7715fe9d93366c522014ee7277a9f09acea9fc43b15f7711",
+      "reviewed_units": 1067
     },
     {
       "surface": "installer",

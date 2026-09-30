@@ -242,11 +242,14 @@ QtObject {
     readonly property int sidebarHoverGraceMs: 350
 
     // Overlay layout options (OverlayLayoutPanel): per-edge outer margin and
-    // thumbnail size bounds, the capture-strip tile at 100% and the caption
-    // room below its 16:9 image, and the floating options card width.
+    // the gap between panels (both in 8 px steps), thumbnail size bounds, the
+    // capture-strip tile at 100% and the caption room below its 16:9 image,
+    // and the floating options card width.
     readonly property int overlayMarginDefault: 48
     readonly property int overlayMarginMax: 96
     readonly property int overlayMarginStep: 8
+    readonly property int overlaySpacingDefault: 32
+    readonly property int overlaySpacingMax: 64
     readonly property int overlayThumbScaleMin: 70
     readonly property int overlayThumbScaleMax: 140
     readonly property int overlayThumbScaleStep: 10

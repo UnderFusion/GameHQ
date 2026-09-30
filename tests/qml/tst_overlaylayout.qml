@@ -49,20 +49,20 @@ TestCase {
         const host = createTemporaryObject(panelComponent, this)
         verify(host)
         const panel = host.panel
-        compare(panel.rows.length, 8)
+        compare(panel.rows.length, 9)
         compare(panel.rows.map(r => r.key),
                 ["hints", "margin_left", "margin_top", "margin_right", "margin_bottom",
-                 "scale", "thumbs", "reset"])
-        panel.currentIndex = 5
+                 "spacing", "scale", "thumbs", "reset"])
+        panel.currentIndex = 6
         compare(panel.currentKey(), "scale")
         panel.currentIndex = 99
         compare(panel.currentKey(), "")
         panel.values = { hints: false, margin_left: 0, margin_top: 48, margin_right: 48,
-                         margin_bottom: 48, scale: 75, thumbs: 100 }
+                         margin_bottom: 48, spacing: 32, scale: 75, thumbs: 100 }
         compare(panel.valueText(panel.rows[0]), panel.offLabel)
         compare(panel.valueText(panel.rows[1]), panel.pxFormat.arg(0))
-        compare(panel.valueText(panel.rows[5]), "75%")
-        compare(panel.valueText(panel.rows[7]), "")
+        compare(panel.valueText(panel.rows[6]), "75%")
+        compare(panel.valueText(panel.rows[8]), "")
         verify(panel.height <= host.height)
     }
 
