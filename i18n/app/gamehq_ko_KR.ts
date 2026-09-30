@@ -4224,7 +4224,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.presets.sharing.both">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="163"></location>
       <source>Used by %1 target(s) and %2 game(s). Editing it changes all of them.</source>
-      <translation>대상 %1개와 게임 %2개에서 사용 중입니다. 이 프리셋을 편집하면 변경 내용이 이 모든 대상과 게임에 적용됩니다.</translation>
+      <translation>할당 %1개와 게임 %2개에서 사용 중입니다. 이 프리셋을 편집하면 변경 내용이 이 모든 할당과 게임에 적용됩니다.</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.duplicate">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="448"></location>
@@ -4244,7 +4244,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.presets.sharing.targets">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="170"></location>
       <source>Used by %1 target(s). Editing it changes all of them, or duplicate it for this controller.</source>
-      <translation>대상 %1개에서 사용 중입니다. 편집하면 모두 변경되며, 이 컨트롤러용으로 복제할 수도 있습니다.</translation>
+      <translation>할당 %1개에서 사용 중입니다. 편집하면 모두 변경되며, 이 컨트롤러용으로 복제할 수도 있습니다.</translation>
     </message>
     <message id="gamehq.settings.presets.title">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="30"></location>

@@ -2267,7 +2267,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.overlay.hint.browse.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="58"></location>
       <source>Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
-      <translation>Up/Down — categorias/jogos | Enter — abrir | F — favorito | M — menu | Esc — voltar ao jogo</translation>
+      <translation>Para cima/Para baixo — categorias/jogos | Enter — abrir | F — favorito | M — menu | Esc — voltar ao jogo</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>

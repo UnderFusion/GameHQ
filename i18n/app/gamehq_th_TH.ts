@@ -2262,7 +2262,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.overlay.hint.browse.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="58"></location>
       <source>Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
-      <translation>Up/Down — หมวดหมู่/เกม | Enter — เปิด | F — รายการโปรด | M — เมนู | Esc — กลับไปยังเกม</translation>
+      <translation>ขึ้น/ลง — หมวดหมู่/เกม | Enter — เปิด | F — รายการโปรด | M — เมนู | Esc — กลับไปยังเกม</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>
@@ -3950,7 +3950,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.presets.badge.shared">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="384"></location>
       <source>Shared</source>
-      <translation>แชร์อยู่</translation>
+      <translation>ใช้ร่วมกัน</translation>
     </message>
     <message id="gamehq.settings.presets.badge.this_device">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="257"></location>
@@ -4224,7 +4224,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.presets.sharing.both">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="163"></location>
       <source>Used by %1 target(s) and %2 game(s). Editing it changes all of them.</source>
-      <translation>ใช้โดยปลายทาง %1 แห่งและเกม %2 เกม การแก้ไขพรีเซ็ตนี้จะมีผลกับปลายทางและเกมเหล่านี้ทั้งหมด</translation>
+      <translation>ใช้โดยการกำหนด %1 รายการและเกม %2 เกม การแก้ไขพรีเซ็ตนี้จะมีผลกับการกำหนดและเกมเหล่านี้ทั้งหมด</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.duplicate">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="448"></location>
@@ -4239,12 +4239,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.presets.sharing.label">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="444"></location>
       <source>Shared preset</source>
-      <translation>พรีเซ็ตที่แชร์</translation>
+      <translation>พรีเซ็ตที่ใช้ร่วมกัน</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.targets">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="170"></location>
       <source>Used by %1 target(s). Editing it changes all of them, or duplicate it for this controller.</source>
-      <translation>ใช้โดยปลายทาง %1 แห่ง การแก้ไขจะเปลี่ยนทั้งหมด หรือทำสำเนาสำหรับคอนโทรลเลอร์นี้</translation>
+      <translation>ใช้โดยการกำหนด %1 รายการ การแก้ไขจะเปลี่ยนทั้งหมด หรือทำสำเนาสำหรับคอนโทรลเลอร์นี้</translation>
     </message>
     <message id="gamehq.settings.presets.title">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="30"></location>
