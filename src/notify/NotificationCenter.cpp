@@ -60,12 +60,12 @@ void NotificationCenter::pollPointer()
 void NotificationCenter::setPointerState(bool active, bool inside)
 {
     if (inside != m_pointerInside && m_window) {
-        // Toggle only WS_EX_TRANSPARENT: the window keeps WS_EX_NOACTIVATE, so
-        // a click on a card never takes focus from the game.
-        const HWND hwnd = reinterpret_cast<HWND>(m_window->winId());
-        const LONG_PTR ex = GetWindowLongPtrW(hwnd, GWL_EXSTYLE);
-        SetWindowLongPtrW(hwnd, GWL_EXSTYLE,
-                          inside ? (ex & ~LONG_PTR(WS_EX_TRANSPARENT)) : (ex | WS_EX_TRANSPARENT));
+        // Toggle click-through through Qt, not raw WS_EX_TRANSPARENT: Qt skips
+        // windows flagged WindowTransparentForInput when resolving the window
+        // under the pointer, so hover, clicks and the cursor shape never reach
+        // the cards otherwise. WindowDoesNotAcceptFocus stays set, so a click
+        // on a card never takes focus from the game.
+        m_window->setFlag(Qt::WindowTransparentForInput, !inside);
     }
     if (active != m_pointerActive) {
         m_pointerActive = active;
