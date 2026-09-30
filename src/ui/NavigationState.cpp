@@ -24,11 +24,11 @@ const QStringList& NavigationState::settingsCategoryKeys()
     static const QStringList kCategories = {
         QStringLiteral("general"),
         QStringLiteral("capture"),
-        QStringLiteral("sharing"),
         QStringLiteral("replay"),
         QStringLiteral("input"),
         QStringLiteral("library"),
         QStringLiteral("notifications_sound"),
+        QStringLiteral("sharing"),
         QStringLiteral("advanced"),
         QStringLiteral("about"),
     };
