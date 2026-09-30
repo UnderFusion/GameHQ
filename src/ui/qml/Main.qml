@@ -484,7 +484,7 @@ ApplicationWindow {
 
     // ───────────────── Flat sidebar list helpers (sidebarFocused mode) ─────────────────
     function sidebarFlatCount() {
-        return window.sidebarCategories.length + app.games.length + 4  // +Settings +Help +About +mode
+        return window.sidebarCategories.length + app.games.length + 5  // +Settings +Help +About +mode +language
     }
 
     function refreshSidebarHoverIndex() {
@@ -555,14 +555,34 @@ ApplicationWindow {
         } else if (i === catCount + gameCount + 2) {  // About / What's New is a modal over the current page.
             window.openAbout(false)
             return
-        } else {  // Sidebar mode toggle: the cursor stays on it.
+        } else if (i === catCount + gameCount + 3) {  // Sidebar mode toggle: the cursor stays on it.
             window.cycleSidebarMode()
+            return
+        } else {  // Language: open its list; the pad walks it until Cross or Circle.
+            window.openSidebarLanguageList()
             return
         }
         sounds.play("nav_tick")
         // Gallery pages return to the grid only when it has captures; an empty
         // result keeps the visible controller cursor in the sidebar.
         Qt.callLater(window.focusGalleryOrSidebar)
+    }
+
+    // Sidebar language list driven by the pad (see padNavigateVertical,
+    // padConfirm and padBack): nothing changes until Cross picks a row.
+    function sidebarLanguageListOpen() {
+        return desktopSidebar.languageCombo.popup.visible
+    }
+    function openSidebarLanguageList() {
+        const combo = desktopSidebar.languageCombo
+        combo.popup.open()
+        combo.padBeginHighlight()
+        sounds.play("confirm")
+    }
+    function closeSidebarLanguageList() {
+        const combo = desktopSidebar.languageCombo
+        combo.padHighlight = -1
+        combo.popup.close()
     }
 
     function sidebarStepVertical(direction) {
@@ -580,6 +600,8 @@ ApplicationWindow {
     }
 
     function padTabStep(direction) {
+        if (window.sidebarLanguageListOpen())
+            return
         if (helpDialog.visible)
             return
         if (aboutDialog.visible) {
@@ -618,6 +640,8 @@ ApplicationWindow {
     }
 
     function padNavigate(direction) {
+        if (window.sidebarLanguageListOpen())
+            return
         if (helpDialog.visible)
             return
         if (aboutDialog.visible) {
@@ -689,6 +713,11 @@ ApplicationWindow {
     }
 
     function padNavigateVertical(direction) {
+        if (window.sidebarLanguageListOpen()) {
+            desktopSidebar.languageCombo.padStep(direction)
+            sounds.play("nav_tick")
+            return
+        }
         if (helpDialog.visible) {
             helpDialog.padScroll(direction)
             return
@@ -767,6 +796,11 @@ ApplicationWindow {
     }
 
     function padConfirm() {
+        if (window.sidebarLanguageListOpen()) {
+            sounds.play("confirm")
+            desktopSidebar.languageCombo.padCommitHighlighted()
+            return
+        }
         if (helpDialog.visible) { helpDialog.padConfirm(); return }
         if (aboutDialog.visible) { aboutDialog.padConfirm(); return }
         if (deleteDialog.visible) { deleteDialog.confirmed(); deleteDialog.close(); return }
@@ -869,6 +903,7 @@ ApplicationWindow {
     }
 
     function padBack() {
+        if (window.sidebarLanguageListOpen()) { window.closeSidebarLanguageList(); return }
         if (helpDialog.visible) { helpDialog.close(); return }
         if (aboutDialog.visible) { aboutDialog.close(); return }
         if (deleteDialog.visible) { deleteDialog.canceled(); deleteDialog.close(); return }
