@@ -99,12 +99,18 @@ ApplicationWindow {
         pendingPostUpdateVersion = ""
     }
 
+    // Flat sidebar rows after the games: tools toggle (T), Settings T+1,
+    // Help T+2, About T+3, Support T+4, mode T+5, language T+6.
+    function toolsToggleIndex() {
+        return window.sidebarCategories.length + app.games.length
+    }
+
     function aboutSidebarIndex() {
-        return window.sidebarCategories.length + app.games.length + 2
+        return window.toolsToggleIndex() + 3
     }
 
     function sidebarModeIndex() {
-        return window.sidebarCategories.length + app.games.length + 3
+        return window.toolsToggleIndex() + 5
     }
 
     function openAbout(asPostUpdateGreeting) {
@@ -484,16 +490,16 @@ ApplicationWindow {
 
     // ───────────────── Flat sidebar list helpers (sidebarFocused mode) ─────────────────
     function sidebarFlatCount() {
-        return window.sidebarCategories.length + app.games.length + 6  // +Settings +Help +About +Support +mode +language
+        return window.toolsToggleIndex() + 7  // +tools toggle +Settings +Help +About +Support +mode +language
     }
 
     function refreshSidebarHoverIndex() {
         // Snap the cursor to the row that's currently active so entering the
         // sidebar always lands on the row the user is already looking at.
         if (window.settingsOpen) {
-            window.sidebarHoverIndex = window.sidebarCategories.length + app.games.length
+            window.sidebarHoverIndex = window.toolsToggleIndex() + (window.toolsCollapsed ? 0 : 1)
         } else if (window.helpOpen) {
-            window.sidebarHoverIndex = window.sidebarCategories.length + app.games.length + 1
+            window.sidebarHoverIndex = window.toolsToggleIndex() + (window.toolsCollapsed ? 0 : 2)
         } else {
             window.sidebarHoverIndex = window.currentTabIndex()
         }
@@ -547,19 +553,22 @@ ApplicationWindow {
         } else if (i < catCount + gameCount) {
             window.settingsOpen = false; window.helpOpen = false
             app.setGame(app.games[i - catCount].id)
-        } else if (i === catCount + gameCount) {
-            window.helpOpen = false; window.settingsOpen = true
+        } else if (i === catCount + gameCount) {  // Tools toggle: the cursor stays on it.
+            window.toggleTools()
+            return
         } else if (i === catCount + gameCount + 1) {
+            window.helpOpen = false; window.settingsOpen = true
+        } else if (i === catCount + gameCount + 2) {
             window.openHelp()
             return
-        } else if (i === catCount + gameCount + 2) {  // About / What's New is a modal over the current page.
+        } else if (i === catCount + gameCount + 3) {  // About / What's New is a modal over the current page.
             window.openAbout(false)
             return
-        } else if (i === catCount + gameCount + 3) {  // Support: opens the donation page; the cursor stays.
+        } else if (i === catCount + gameCount + 4) {  // Support: opens the donation page; the cursor stays.
             sounds.play("confirm")
             desktopSidebar.openSupport()
             return
-        } else if (i === catCount + gameCount + 4) {  // Sidebar mode toggle: the cursor stays on it.
+        } else if (i === catCount + gameCount + 5) {  // Sidebar mode toggle: the cursor stays on it.
             window.cycleSidebarMode()
             return
         } else {  // Language: open its list; the pad walks it until Cross or Circle.
@@ -593,7 +602,28 @@ ApplicationWindow {
         const total = window.sidebarFlatCount()
         if (total <= 0)
             return
-        window.sidebarHoverIndex = (window.sidebarHoverIndex + direction + total) % total
+        let next = (window.sidebarHoverIndex + direction + total) % total
+        // Collapsed tools: Settings/Help/About/Support are hidden, skip them.
+        const first = window.toolsToggleIndex() + 1
+        while (window.toolsCollapsed && next >= first && next <= first + 3)
+            next = (next + direction + total) % total
+        window.sidebarHoverIndex = next
+        sounds.play("nav_tick")
+    }
+
+    // Tools group (Settings, Help, About, Support) collapsed behind the
+    // divider toggle; persisted as ui.main_tools_collapsed.
+    property bool toolsCollapsed: {
+        const v = app.config("ui.main_tools_collapsed", false)
+        return v === true || v === "true"
+    }
+    function toggleTools() {
+        window.toolsCollapsed = !window.toolsCollapsed
+        app.setConfig("ui.main_tools_collapsed", window.toolsCollapsed)
+        const first = window.toolsToggleIndex() + 1
+        if (window.toolsCollapsed && window.sidebarHoverIndex >= first
+                && window.sidebarHoverIndex <= first + 3)
+            window.sidebarHoverIndex = window.toolsToggleIndex()
         sounds.play("nav_tick")
     }
 
@@ -1095,7 +1125,9 @@ ApplicationWindow {
             sidebarHoverIndex: window.sidebarHoverIndex
             mode: window.sidebarMode
             expanded: window.sidebarExpanded
+            toolsCollapsed: window.toolsCollapsed
             onModeCycleRequested: window.cycleSidebarMode()
+            onToolsToggleRequested: window.toggleTools()
             onPointerInsideChanged: {
                 if (pointerInside) {
                     sidebarPointerGrace.stop()
