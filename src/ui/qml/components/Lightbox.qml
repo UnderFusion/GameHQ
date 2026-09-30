@@ -8,7 +8,7 @@ import "."
 // Full-screen image viewer, styled after OverlayWindow.qml: a separate
 // top-level frameless window (NOT the main app window resized) that covers
 // the whole monitor with a dimmed scrim and shows the current capture at
-// ~80% of that screen. Left/Right cycles through the gallery model, Esc —
+// ~90% of that screen. Left/Right cycles through the gallery model, Esc —
 // or a click on the dimmed area — closes. Opened from a single left click
 // on a CaptureTile (see Main.qml).
 Window {
@@ -229,8 +229,8 @@ Window {
 
         Item {
             id: stage
-            width: content.width * 0.8
-            height: content.height * 0.8
+            width: content.width * 0.9
+            height: content.height * 0.9
             anchors.centerIn: parent
 
             MouseArea {
