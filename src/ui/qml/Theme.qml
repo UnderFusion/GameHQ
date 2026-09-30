@@ -240,6 +240,14 @@ QtObject {
     readonly property int sidebarRailWidth: 56
     readonly property int sidebarAutoCollapseMs: 1800
     readonly property int sidebarHoverGraceMs: 350
+    // Mouse-resizable expanded widths (SidebarResizeHandle), per surface, and
+    // the rail-relative width below which a sidebar shows its compact rows.
+    readonly property int sidebarMinWidth: 160
+    readonly property int sidebarMaxWidth: 360
+    readonly property int overlaySidebarMinWidth: 200
+    readonly property int overlaySidebarMaxWidth: 420
+    readonly property int sidebarResizeHandleWidth: 8
+    readonly property int sidebarCompactBelow: sidebarRailWidth + s48
 
     // Overlay layout options (OverlayLayoutPanel): per-edge outer margin and
     // the gap between panels (both in 8 px steps), thumbnail size bounds, the

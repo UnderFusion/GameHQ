@@ -199,6 +199,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/BulkSelection.qml
         ui/qml/components/SidebarItem.qml
         ui/qml/components/SidebarModeButton.qml
+        ui/qml/components/SidebarResizeHandle.qml
         ui/qml/components/DesktopSidebar.qml
         ui/qml/components/DesktopGalleryHeader.qml
         ui/qml/components/DesktopGalleryFooter.qml

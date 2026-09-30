@@ -96,6 +96,9 @@ inline constexpr QLatin1StringView UiOverlayFilterPrefix{ "ui.overlay_filter." }
 // collapsed. Auto's momentary open/closed state is never written.
 inline constexpr QLatin1StringView UiMainSidebarMode{ "ui.main_sidebar_mode" };
 inline constexpr QLatin1StringView UiOverlaySidebarMode{ "ui.overlay_sidebar_mode" };
+// Mouse-resized expanded sidebar widths in logical px (main 160-360, overlay 200-420).
+inline constexpr QLatin1StringView UiMainSidebarWidth{ "ui.main_sidebar_width" };
+inline constexpr QLatin1StringView UiOverlaySidebarWidth{ "ui.overlay_sidebar_width" };
 // Main-window sidebar: Help/About/Support and the language selector folded behind the divider toggle.
 inline constexpr QLatin1StringView UiMainToolsCollapsed{ "ui.main_tools_collapsed" };
 // Overlay layout options: control-hint footer, outer margin per edge in

@@ -33,8 +33,17 @@ Rectangle {
     readonly property alias languageCombo: sidebarLanguageCombo
     // Labels follow the animated width, so they appear once there is room
     // for them and vanish before the rail clips them.
-    readonly property bool compact: root.width < Theme.sidebarWidth * 0.75
-    readonly property alias pointerInside: sidebarHover.hovered
+    readonly property bool compact: root.width < Theme.sidebarCompactBelow
+    // Expanded width, mouse-resizable (ui.main_sidebar_width).
+    property int expandedWidth: root.savedWidth()
+    function savedWidth() {
+        const v = Number(app.config("ui.main_sidebar_width", Theme.sidebarWidth))
+        return isFinite(v) ? Math.round(Math.max(Theme.sidebarMinWidth, Math.min(Theme.sidebarMaxWidth, v)))
+                           : Theme.sidebarWidth
+    }
+    // A drag that leaves the sidebar still counts as inside, so Auto never
+    // collapses under the pointer mid-resize.
+    readonly property bool pointerInside: sidebarHover.hovered || resizeHandle.pressed
     property var externalUrlOpener: function(url) { return Qt.openUrlExternally(url) }
 
     signal settingsRequested()
@@ -52,9 +61,12 @@ Rectangle {
             gamesList.positionViewAtIndex(gameIndex, ListView.Contain)
     }
 
-    Layout.preferredWidth: root.expanded ? Theme.sidebarWidth : Theme.sidebarRailWidth
+    Layout.preferredWidth: root.expanded ? root.expandedWidth : Theme.sidebarRailWidth
     Layout.fillHeight: true
-    Behavior on Layout.preferredWidth { NumberAnimation { duration: Theme.durNormal; easing.type: Easing.OutCubic } }
+    Behavior on Layout.preferredWidth {
+        enabled: !resizeHandle.pressed
+        NumberAnimation { duration: Theme.durNormal; easing.type: Easing.OutCubic }
+    }
     clip: true
     radius: Theme.radiusL
     color: Theme.surface
@@ -62,6 +74,33 @@ Rectangle {
     border.color: Theme.stroke
 
     HoverHandler { id: sidebarHover }
+
+    // Mouse-only resize of the expanded width; saved on release, restored to
+    // the default by a double-click. Hidden in the rail.
+    SidebarResizeHandle {
+        id: resizeHandle
+        visible: root.expanded
+        currentWidth: root.expandedWidth
+        minimumWidth: Theme.sidebarMinWidth
+        maximumWidth: Theme.sidebarMaxWidth
+        onWidthDragged: function(width) { root.expandedWidth = width }
+        onWidthCommitted: function(width) { app.setConfig("ui.main_sidebar_width", width) }
+        onResetRequested: {
+            root.expandedWidth = Theme.sidebarWidth
+            app.setConfig("ui.main_sidebar_width", Theme.sidebarWidth)
+        }
+    }
+
+    Connections {
+        target: app
+        function onConfigChanged(key, value) {
+            if (key === "ui.main_sidebar_width" && !resizeHandle.pressed)
+                root.expandedWidth = root.savedWidth()
+        }
+        function onConfigGroupReset(prefix) {
+            root.expandedWidth = root.savedWidth()
+        }
+    }
 
     ColumnLayout {
         anchors.fill: parent

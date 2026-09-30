@@ -53,6 +53,8 @@ constexpr std::array liveKeys{
     ConfigKeys::UiGalleryFilterGame,
     ConfigKeys::UiMainSidebarMode,
     ConfigKeys::UiOverlaySidebarMode,
+    ConfigKeys::UiMainSidebarWidth,
+    ConfigKeys::UiOverlaySidebarWidth,
     ConfigKeys::UiMainToolsCollapsed,
     ConfigKeys::UiOverlayShowHints,
     ConfigKeys::UiOverlayMarginLeft,
