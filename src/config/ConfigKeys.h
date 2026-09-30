@@ -105,6 +105,9 @@ inline constexpr QLatin1StringView UiOverlaySidebarMode{ "ui.overlay_sidebar_mod
 // Mouse-resized expanded sidebar widths in logical px (main 160-360, overlay 200-420).
 inline constexpr QLatin1StringView UiMainSidebarWidth{ "ui.main_sidebar_width" };
 inline constexpr QLatin1StringView UiOverlaySidebarWidth{ "ui.overlay_sidebar_width" };
+// Games pinned to the top of the sidebars: GamePins keys (canonical executable
+// or "id:<n>"), in pin order. Never pruned automatically.
+inline constexpr QLatin1StringView UiPinnedGames{ "ui.pinned_games" };
 // Main-window sidebar: Help/About/Support and the language selector folded behind the divider toggle.
 inline constexpr QLatin1StringView UiMainToolsCollapsed{ "ui.main_tools_collapsed" };
 // Overlay layout options: control-hint footer, outer margin per edge in

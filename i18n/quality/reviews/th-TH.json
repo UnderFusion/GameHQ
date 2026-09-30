@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-th-th; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review",
+    "actor": "codex-gpt-5-contextual-th-th; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "Google Translate draft from product-owned English followed by complete contextual Thai review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-30T20:05:00Z"
+    "recorded_at": "2026-09-30T21:00:00Z"
   },
   "baseline": {
     "path": "git:afd86d57bb31b3868519de2c86a27fa89403957f:i18n/app/gamehq_th_TH.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_th_TH.ts",
-    "sha256": "054cc7cbb19d6581efabf4a15b2d32682aa1e59f33dae0049d91a40a1495e97f",
-    "message_count": 1076
+    "sha256": "583c3201d0dd52e149b2e493b7ade483e979b953fab700f7ad3336910320f88d",
+    "message_count": 1078
   },
   "coverage": [
     {
@@ -3672,6 +3672,24 @@
         "src/ui/qml/components/OverlaySidebar.qml:17"
       ],
       "decision": "corrected"
+    },
+    {
+      "id": "gamehq.navigation.game.pin",
+      "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+      "translation_hash": "b465e246f9670e541939a596de38bba20f403d1128dd2f90bafff04e85e956ed",
+      "locations": [
+        "src/ui/qml/components/SidebarItem.qml:224"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.navigation.game.unpin",
+      "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+      "translation_hash": "40e0bcf78c9492e6e62baa73767ac06b1aebbef0833224a129c3f5b5062aa26d",
+      "locations": [
+        "src/ui/qml/components/SidebarItem.qml:226"
+      ],
+      "decision": "accepted"
     },
     {
       "id": "gamehq.navigation.games",
@@ -16505,8 +16523,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_th_TH.ts",
-      "sha256": "054cc7cbb19d6581efabf4a15b2d32682aa1e59f33dae0049d91a40a1495e97f",
-      "reviewed_units": 1076
+      "sha256": "583c3201d0dd52e149b2e493b7ade483e979b953fab700f7ad3336910320f88d",
+      "reviewed_units": 1078
     },
     {
       "surface": "installer",

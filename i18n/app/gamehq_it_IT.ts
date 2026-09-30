@@ -114,9 +114,9 @@
       <translation>Annulla</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1288"></location>
-      <location filename="src/ui/qml/Main.qml" line="1307"></location>
-      <location filename="src/ui/qml/Main.qml" line="1345"></location>
+      <location filename="src/ui/qml/Main.qml" line="1304"></location>
+      <location filename="src/ui/qml/Main.qml" line="1323"></location>
+      <location filename="src/ui/qml/Main.qml" line="1361"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
@@ -656,7 +656,7 @@
       <translation>La cartella selezionata non è valida.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="368"></location>
+      <location filename="src/ui/AppController.cpp" line="370"></location>
       <source>Choose a local folder.</source>
       <translation>Scegli una cartella locale.</translation>
     </message>
@@ -676,8 +676,8 @@
       <translation>GameHQ non è riuscito a salvare la cartella selezionata.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="362"></location>
-      <location filename="src/ui/AppController.cpp" line="384"></location>
+      <location filename="src/ui/AppController.cpp" line="364"></location>
+      <location filename="src/ui/AppController.cpp" line="386"></location>
       <source>The capture type is invalid.</source>
       <translation>Il tipo di acquisizione non è valido.</translation>
     </message>
@@ -834,7 +834,7 @@
       <translation>Impossibile calcolare l'hash di %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="206"></location>
+      <location filename="src/ui/AppController.cpp" line="208"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>I profili portatili possono essere importati solo da una copia installata di GameHQ.</translation>
     </message>
@@ -859,12 +859,12 @@
       <translation>Impossibile rimuovere il journal dell'importazione portatile recuperata.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="212"></location>
+      <location filename="src/ui/AppController.cpp" line="214"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>Seleziona una cartella locale che contenga GameHQ in versione portatile.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="221"></location>
+      <location filename="src/ui/AppController.cpp" line="223"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>La cartella selezionata non è un pacchetto portatile di GameHQ.</translation>
     </message>
@@ -894,12 +894,12 @@
       <translation>Un percorso portable:/ esce dalla radice del pacchetto selezionato.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="232"></location>
+      <location filename="src/ui/AppController.cpp" line="234"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ non è riuscito a identificare il proprio processo per l'importazione.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="242"></location>
+      <location filename="src/ui/AppController.cpp" line="244"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ non è riuscito ad avviare il processo di importazione portatile.</translation>
     </message>
@@ -1346,19 +1346,19 @@
       <translation>Aggiungi cartella…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1347"></location>
+      <location filename="src/ui/qml/Main.qml" line="1363"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Selezione multipla</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1341"></location>
+      <location filename="src/ui/qml/Main.qml" line="1357"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>Condividi</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1343"></location>
+      <location filename="src/ui/qml/Main.qml" line="1359"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Mostra nella cartella</translation>
@@ -1371,14 +1371,14 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1276"></location>
+      <location filename="src/ui/qml/Main.qml" line="1292"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 Questa operazione elimina il file in modo definitivo.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1286"></location>
+      <location filename="src/ui/qml/Main.qml" line="1302"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1018"></location>
       <source>Delete capture?</source>
       <translation>Eliminare l'acquisizione?</translation>
@@ -1395,7 +1395,7 @@ Questa operazione non può essere annullata.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1305"></location>
+      <location filename="src/ui/qml/Main.qml" line="1321"></location>
       <source>Delete selected captures?</source>
       <translation>Eliminare le acquisizioni selezionate?</translation>
     </message>
@@ -1448,27 +1448,27 @@ Questa operazione non può essere annullata.</numerusform>
       <translation>Visualizzatore di %1</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="350"></location>
+      <location filename="src/ui/AppController.cpp" line="352"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Controlla lo stato HDR attuale di ogni schermo.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="336"></location>
+      <location filename="src/ui/AppController.cpp" line="338"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR è attivo</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="341"></location>
+      <location filename="src/ui/AppController.cpp" line="343"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR è inattivo</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="330"></location>
+      <location filename="src/ui/AppController.cpp" line="332"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>Nessuno schermo segnalato dal driver grafico</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="324"></location>
+      <location filename="src/ui/AppController.cpp" line="326"></location>
       <source>Not checked yet</source>
       <translation>Non ancora controllato</translation>
     </message>
@@ -2059,7 +2059,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>%1 è condiviso: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1256"></location>
+      <location filename="src/ui/qml/Main.qml" line="1272"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>Scegli una cartella da monitorare</translation>
@@ -2068,7 +2068,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="174"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="206"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="184"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="429"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="435"></location>
       <source>About</source>
       <translation>Informazioni</translation>
     </message>
@@ -2115,6 +2115,16 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <source>Screenshots</source>
       <translation>Screenshot</translation>
     </message>
+    <message id="gamehq.navigation.game.pin">
+      <location filename="src/ui/qml/components/SidebarItem.qml" line="224"></location>
+      <source>Pin game</source>
+      <translation>Fissa gioco</translation>
+    </message>
+    <message id="gamehq.navigation.game.unpin">
+      <location filename="src/ui/qml/components/SidebarItem.qml" line="226"></location>
+      <source>Unpin game</source>
+      <translation>Rimuovi fissaggio</translation>
+    </message>
     <message id="gamehq.navigation.games">
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="276"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="115"></location>
@@ -2122,13 +2132,13 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Giochi</translation>
     </message>
     <message id="gamehq.navigation.help">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="416"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="422"></location>
       <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
       <source>Help</source>
       <translation>Aiuto</translation>
     </message>
     <message id="gamehq.navigation.settings">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="405"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="411"></location>
       <source>Settings</source>
       <translation>Impostazioni</translation>
     </message>
@@ -2150,17 +2160,17 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.navigation.support_gamehq">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="176"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="208"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="448"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="454"></location>
       <source>Support GameHQ</source>
       <translation>Sostieni GameHQ</translation>
     </message>
     <message id="gamehq.navigation.tools.hide">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="351"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="357"></location>
       <source>Hide tools</source>
       <translation>Nascondi strumenti</translation>
     </message>
     <message id="gamehq.navigation.tools.show">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="349"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="355"></location>
       <source>Show tools</source>
       <translation>Mostra strumenti</translation>
     </message>
@@ -2406,7 +2416,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="124"></location>
+      <location filename="src/ui/AppController.cpp" line="126"></location>
       <source>Release notes</source>
       <translation>Note di rilascio</translation>
     </message>
@@ -2572,7 +2582,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Aggiorna lo stato dello schermo</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.title">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="392"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="398"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="108"></location>
       <source>Tools</source>
       <translation>Strumenti</translation>
@@ -3856,7 +3866,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
       <translation>Le modifiche si applicano subito in tutto GameHQ.</translation>
     </message>
     <message id="gamehq.settings.language.system">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="498"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="504"></location>
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="40"></location>
       <source>System language</source>
       <translation>Lingua di sistema</translation>

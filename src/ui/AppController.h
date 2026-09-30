@@ -134,6 +134,8 @@ public:
     Q_INVOKABLE void persistNavigationState(const QString& page);
     Q_INVOKABLE void rescan();
     Q_INVOKABLE void toggleFavorite(int row);
+    // Pins a game above the unpinned ones in both sidebars (ui.pinned_games).
+    Q_INVOKABLE void setGamePinned(int gameId, bool pinned);
     Q_INVOKABLE void deleteCapture(int row);     // removes file + thumbnail, tombstones DB row
     Q_INVOKABLE void deleteCaptures(const QVariantList& rows);  // bulk: sorts desc, single refresh
     Q_INVOKABLE void openCapture(int row);       // default app (viewer/player)

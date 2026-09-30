@@ -33,7 +33,14 @@ Rectangle {
     property color labelColor: active ? Theme.text : Theme.textMuted
     property color glyphColor: active ? Theme.accent : Theme.textMuted
     readonly property alias hovered: mouse.containsMouse
+    // Game rows: a pin button at the trailing edge, shown on mouse or pad
+    // hover and kept visible while the game is pinned.
+    property bool pinnable: false
+    property bool pinned: false
+    readonly property bool pinShown: root.pinnable && !root.compact
+                                     && (root.pinned || rowHover.hovered || root.sidebarHovered)
     signal clicked()
+    signal pinToggled()
 
     implicitWidth: 200
     implicitHeight: Theme.s32
@@ -65,7 +72,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.leftMargin: root.compact ? Math.max(0, (root.width - root.leadingSize) / 2) : Theme.s8
-        anchors.rightMargin: root.compact ? 0 : Theme.s8
+        anchors.rightMargin: root.compact ? 0 : Theme.s8 + (root.pinnable ? pinButton.width + Theme.s4 : 0)
         spacing: Theme.s8
 
         Rectangle {
@@ -191,10 +198,54 @@ Rectangle {
     ToolTip.visible: root.compact && mouse.containsMouse
     ToolTip.delay: 400
 
+    HoverHandler { id: rowHover }
+
     MouseArea {
         id: mouse
         anchors.fill: parent
         hoverEnabled: true
         onClicked: root.clicked()
+    }
+
+    Rectangle {                         // pin button, above the row's click area
+        id: pinButton
+        objectName: "sidebarPinButton"
+        visible: root.pinnable && !root.compact
+        opacity: root.pinShown ? 1 : 0
+        Behavior on opacity { NumberAnimation { duration: Theme.durFast } }
+        width: Theme.s24
+        height: Theme.s24
+        radius: Theme.radiusS
+        anchors.right: parent.right
+        anchors.rightMargin: Theme.s4
+        anchors.verticalCenter: parent.verticalCenter
+        color: pinMouse.containsMouse ? Theme.hoverTint : "transparent"
+        //% "Pin game"
+        readonly property string pinLabel: qsTrId("gamehq.navigation.game.pin")
+        //% "Unpin game"
+        readonly property string unpinLabel: qsTrId("gamehq.navigation.game.unpin")
+        Accessible.role: Accessible.Button
+        Accessible.name: root.pinned ? unpinLabel : pinLabel
+
+        PinGlyph {
+            anchors.centerIn: parent
+            width: Theme.s16
+            height: Theme.s16
+            filled: root.pinned
+            color: root.pinned || pinMouse.containsMouse ? Theme.accent : Theme.textMuted
+        }
+
+        MouseArea {
+            id: pinMouse
+            anchors.fill: parent
+            enabled: root.pinShown
+            hoverEnabled: true
+            cursorShape: Qt.PointingHandCursor
+            onClicked: root.pinToggled()
+        }
+
+        ToolTip.text: root.pinned ? unpinLabel : pinLabel
+        ToolTip.visible: pinMouse.containsMouse
+        ToolTip.delay: 400
     }
 }

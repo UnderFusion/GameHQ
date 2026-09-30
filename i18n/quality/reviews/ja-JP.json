@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-ja-jp-recovery; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review",
+    "actor": "codex-gpt-5-contextual-ja-jp-recovery; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "offline machine draft followed by complete contextual review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-30T20:05:00Z"
+    "recorded_at": "2026-09-30T21:00:00Z"
   },
   "baseline": {
     "path": "git:15537ded4f29ac6f7943004c31a773111a77cbe7:i18n/app/gamehq_ja_JP.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_ja_JP.ts",
-    "sha256": "10ec32960e49b3a495ffabbccba94cb44645ce5c0dfe777890d4d616dc68a54b",
-    "message_count": 1076
+    "sha256": "121ce94373a3becad3ea1785403fa56bd529816f883f74f8c22276bc89ef44ce",
+    "message_count": 1078
   },
   "coverage": [
     {
@@ -3670,6 +3670,24 @@
       "locations": [
         "src/ui/qml/Main.qml:159",
         "src/ui/qml/components/OverlaySidebar.qml:17"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.navigation.game.pin",
+      "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+      "translation_hash": "6a38877f3aff21bf738f345a21782d6bc0850f58dfeb2ccff8fb610cf97d3bdd",
+      "locations": [
+        "src/ui/qml/components/SidebarItem.qml:224"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.navigation.game.unpin",
+      "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+      "translation_hash": "ae7bf320021fea439f013062a754f1b97668061023693713de23fb387bf3fb6a",
+      "locations": [
+        "src/ui/qml/components/SidebarItem.qml:226"
       ],
       "decision": "accepted"
     },
@@ -16269,8 +16287,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_ja_JP.ts",
-      "sha256": "10ec32960e49b3a495ffabbccba94cb44645ce5c0dfe777890d4d616dc68a54b",
-      "reviewed_units": 1076
+      "sha256": "121ce94373a3becad3ea1785403fa56bd529816f883f74f8c22276bc89ef44ce",
+      "reviewed_units": 1078
     },
     {
       "surface": "installer",

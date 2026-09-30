@@ -543,6 +543,20 @@ ApplicationWindow {
         window.focusGalleryOrSidebar()
     }
 
+    // Triangle on a game row pins/unpins it; the cursor follows the game to
+    // its new place in the list.
+    function toggleSidebarGamePin(i) {
+        const gi = i - window.sidebarCategories.length
+        if (gi < 0 || gi >= app.games.length)
+            return
+        const game = app.games[gi]
+        sounds.play("favorite")
+        app.setGamePinned(game.id, !game.pinned)
+        const moved = app.games.findIndex(g => g.id === game.id)
+        if (moved >= 0)
+            window.sidebarHoverIndex = window.sidebarCategories.length + moved
+    }
+
     function activateSidebarRow(i) {
         const catCount = window.sidebarCategories.length
         const gameCount = app.games.length
@@ -876,8 +890,10 @@ ApplicationWindow {
     function padFavorite() {
         if (aboutDialog.visible || window.menuOpen || window.settingsOpen || window.helpOpen)
             return
-        if (window.sidebarFocused)
-            return  // favorites only act on a grid tile
+        if (window.sidebarFocused) {
+            window.toggleSidebarGamePin(window.sidebarHoverIndex)
+            return  // on other sidebar rows Triangle does nothing
+        }
         if (window.bulkMode) {
             window.bulkSelectAll()
             return

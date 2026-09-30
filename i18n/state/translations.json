@@ -4364,6 +4364,28 @@
           },
           "updated_at": null
         },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.navigation.games": {
           "domain": "application",
           "source_hash": "068d54db7700efc207534b91d10ad96e9393ae1af2c10bface847aec99edca88",
@@ -11847,7 +11869,7 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
+          "total": 1078,
           "current": 0,
           "missing": [
             "gamehq.about.enjoying_gamehq",
@@ -12246,6 +12268,8 @@
             "gamehq.navigation.category.game_favorites",
             "gamehq.navigation.category.recent",
             "gamehq.navigation.category.screenshots",
+            "gamehq.navigation.game.pin",
+            "gamehq.navigation.game.unpin",
             "gamehq.navigation.games",
             "gamehq.navigation.help",
             "gamehq.navigation.settings",
@@ -17303,6 +17327,28 @@
             "actor": "codex-gpt-5-contextual-de-de-review"
           },
           "updated_at": "2026-09-04T12:00:00Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "022887eba6ab091ad8adece0321403e386be91004e0f9bd6c40ab4465d9b89d0",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "023a8992e156a7373404f707e7413abfaeff7a5890049ff7fdabe770ecba9278",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -24787,8 +24833,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -29160,6 +29206,28 @@
           "domain": "application",
           "source_hash": "113704fa1f2848c9a11659f5056c4a62d40ca521edb625276cb4280fb9d9702c",
           "translation_hash": "d3385916db7feaa05d90d0a39e5642be61bbf726f5a08a721afefba171354a09",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "0856eb3b4aa45d68970743a69718f308be60353b7afe4f8c1ea142890d91f01a",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "d5f788f0ad8345ed0b7e06944d0b76c9d62168e7f89f773570872b5d165b6eef",
           "status": "human_reviewed",
           "provenance": {
             "kind": "source",
@@ -36650,8 +36718,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -41029,6 +41097,28 @@
             "actor": "codex-gpt-5-contextual-es-419"
           },
           "updated_at": "2026-09-04T20:00:00Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "5ccbc10a252f1677b3febc3c23b854da74c1420680584edfbe090339ff370bbb",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "8022945e6fd28a0480ed4d9e359c41985d926a43e3f5f66cb911a7b60a273e9d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -48513,8 +48603,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -52892,6 +52982,28 @@
             "actor": "codex-gpt-5-contextual-es-es-review"
           },
           "updated_at": "2026-09-04T02:45:50Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "5ccbc10a252f1677b3febc3c23b854da74c1420680584edfbe090339ff370bbb",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "8022945e6fd28a0480ed4d9e359c41985d926a43e3f5f66cb911a7b60a273e9d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -60376,8 +60488,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -64755,6 +64867,28 @@
             "actor": "codex-gpt-5-contextual-fr-fr"
           },
           "updated_at": "2026-09-04T16:30:00Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "f3737bdf98ab33d610b7cef483f8b05245bf196098326a063c392a7d113b93e1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "37736574f31e9eecf262a4c5ab269490abfd0b3639aa2c5e6f67e248428e9737",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -72239,8 +72373,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -76618,6 +76752,28 @@
             "actor": "claude-opus-5-contextual-it-it-review"
           },
           "updated_at": "2026-09-04T13:20:00Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "4a0f6a7928092aefbe37b1de904ef6a3115713b118392fd0c033f97f3d3748fc",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "5ee6e9484808a1de98e5c0602602971137f71a61f809f82b84125423ebe479a1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -84102,8 +84258,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -88481,6 +88637,28 @@
             "actor": "codex-gpt-5-contextual-ja-jp"
           },
           "updated_at": "2026-09-04T14:30:00Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "6a38877f3aff21bf738f345a21782d6bc0850f58dfeb2ccff8fb610cf97d3bdd",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "ae7bf320021fea439f013062a754f1b97668061023693713de23fb387bf3fb6a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -95965,8 +96143,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -100344,6 +100522,28 @@
             "actor": "codex-gpt-5-contextual-ko-kr"
           },
           "updated_at": "2026-09-04T20:00:00Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "9bc2d697d8ff86a95fa5e9844da93b68cea240652bb98202ca2f61501b5a819a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "7ad13e8b489812409afcac7ef2c8e2c93e2ae12d953538021008a7b13eae005c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -107828,8 +108028,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -112207,6 +112407,28 @@
             "actor": "codex-gpt-5-contextual-pl-review"
           },
           "updated_at": "2026-09-03T22:45:00Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "f8d34d99f15c748c3b6a65617e8d1ae005bd7ba9025c9533f16a926af181cefa",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "0128c483588d929b714186ea6634f885172f7305e18736c9ebd260ce68a5de00",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -119691,8 +119913,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -124070,6 +124292,28 @@
             "actor": "codex-gpt-5-contextual-pt-br-review"
           },
           "updated_at": "2026-09-04T03:19:03Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "335a8b471c397aacee2f89a8fe1cdad98fe0feba7a6762816d7d03c931c9d57d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "3c3854725351fd82439fb6304777eb16679fdd2ddef2d406b95b0d93611526e3",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -131554,8 +131798,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -135933,6 +136177,28 @@
             "actor": "claude-opus-5-contextual-ru-review"
           },
           "updated_at": "2026-09-04T04:00:00Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "8289615e0cbc8bddda35cfdee58dcb8074fd7db729af54ffe5550f30be12fc23",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "674ef04f6c318e6dda0c4564dceb573810448ebd914635570708c7dfa71a1609",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -143417,8 +143683,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -147796,6 +148062,28 @@
             "actor": "codex-gpt-5-contextual-th-th"
           },
           "updated_at": "2026-09-04T17:00:00Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "b465e246f9670e541939a596de38bba20f403d1128dd2f90bafff04e85e956ed",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "40e0bcf78c9492e6e62baa73767ac06b1aebbef0833224a129c3f5b5062aa26d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -155280,8 +155568,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -159659,6 +159947,28 @@
             "actor": "codex-gpt-5-contextual-tr-tr"
           },
           "updated_at": "2026-09-04T08:11:57Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "06d93f88c36d325cdf051ab0f1762286ffef9d78d630f687f65321340662dd36",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "a5f875323b634c3e92b16bce91329b278f14620c4f41a4aa335c5543fa70d7cd",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -167143,8 +167453,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -171522,6 +171832,28 @@
             "actor": "codex-gpt-5-contextual-uk-UA"
           },
           "updated_at": "2026-09-04T11:59:30Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "6a2dc8545e7458ac96f48ac5555a20590ea2c5193e59ca048f3447c8b990f7a8",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "fe5233211382b98ea8a6314b32cf5450a6a8c4d07cb40e92f02fbaed83153168",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -179006,8 +179338,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -183385,6 +183717,28 @@
             "actor": "claude-opus-5-contextual-zh-hans-review"
           },
           "updated_at": "2026-09-04T03:10:00Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "8d4127e4bbbae12dc51f141e06c508026a461146322828fba4f55a22e8d3120a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "206c15ec106d178ab3c6df1fe0f8c7616a42c7f9967178dd2f3d1c8fb90078a0",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -190869,8 +191223,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
@@ -195248,6 +195602,28 @@
             "actor": "codex-gpt-5-contextual-zh-hant"
           },
           "updated_at": "2026-09-04T06:45:28Z"
+        },
+        "gamehq.navigation.game.pin": {
+          "domain": "application",
+          "source_hash": "cfe4174c70f83162a5bfd7a9df5cb247625b63da8c1cb3e64042f31a13c6aac8",
+          "translation_hash": "41dffe98f426be97f63199e714293af5f6f52b6b8a1a2d36feac320ff3535a0f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
+        },
+        "gamehq.navigation.game.unpin": {
+          "domain": "application",
+          "source_hash": "8fc5b6beacb2173477238e97ca7ac5cc37184eb007b6bfba9d575c0c91e09b23",
+          "translation_hash": "f6ca2b9d60010d81fbda6139b30f71f01156d83f13172c61965b310fae47943d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-5-game-pins-contextual-review"
+          },
+          "updated_at": "2026-09-30T21:00:00Z"
         },
         "gamehq.navigation.games": {
           "domain": "application",
@@ -202732,8 +203108,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1076,
-          "current": 1076,
+          "total": 1078,
+          "current": 1078,
           "missing": [],
           "stale": []
         },
