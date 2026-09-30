@@ -1336,9 +1336,9 @@
       <translation>%1 МБ</translation>
     </message>
     <message id="gamehq.format.version_short">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="171"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="177"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="212"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="175"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="181"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="216"></location>
       <source>v%1</source>
       <translation>v%1</translation>
     </message>
@@ -2072,14 +2072,14 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.navigation.about">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="174"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="206"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="180"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="425"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="184"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="429"></location>
       <source>About</source>
       <translation>О программе</translation>
     </message>
     <message id="gamehq.navigation.category.all">
       <location filename="src/ui/qml/Main.qml" line="199"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="124"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="128"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
       <source>All</source>
       <translation>Все</translation>
@@ -2121,19 +2121,19 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Снимки экрана</translation>
     </message>
     <message id="gamehq.navigation.games">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="272"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="111"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="276"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="115"></location>
       <source>Games</source>
       <translation>Игры</translation>
     </message>
     <message id="gamehq.navigation.help">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="412"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="416"></location>
       <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
       <source>Help</source>
       <translation>Помощь</translation>
     </message>
     <message id="gamehq.navigation.settings">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="401"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="405"></location>
       <source>Settings</source>
       <translation>Настройки</translation>
     </message>
@@ -2155,17 +2155,17 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.navigation.support_gamehq">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="176"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="208"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="444"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="448"></location>
       <source>Support GameHQ</source>
       <translation>Поддержать GameHQ</translation>
     </message>
     <message id="gamehq.navigation.tools.hide">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="347"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="351"></location>
       <source>Hide tools</source>
       <translation>Скрыть инструменты</translation>
     </message>
     <message id="gamehq.navigation.tools.show">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="345"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="349"></location>
       <source>Show tools</source>
       <translation>Показать инструменты</translation>
     </message>
@@ -2391,7 +2391,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.overlay.layout.title">
       <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="100"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="145"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="149"></location>
       <source>Overlay options</source>
       <translation>Параметры оверлея</translation>
     </message>
@@ -2572,7 +2572,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Обновить состояние дисплеев</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.title">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="388"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="392"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="108"></location>
       <source>Tools</source>
       <translation>Инструменты</translation>
@@ -3826,7 +3826,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>Изменения сразу применяются во всём GameHQ.</translation>
     </message>
     <message id="gamehq.settings.language.system">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="494"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="498"></location>
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="40"></location>
       <source>System language</source>
       <translation>Язык системы</translation>
@@ -5497,7 +5497,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.status.update_available">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="163"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="175"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="179"></location>
       <source>Update available</source>
       <translation>Обновление доступно</translation>
     </message>

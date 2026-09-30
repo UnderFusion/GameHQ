@@ -81,6 +81,10 @@ Rectangle {
         id: resizeHandle
         visible: root.expanded
         currentWidth: root.expandedWidth
+        pointerAtEdge: sidebarHover.hovered
+                       && (root.LayoutMirroring.enabled
+                           ? sidebarHover.point.position.x <= Theme.sidebarResizeHandleWidth
+                           : sidebarHover.point.position.x >= root.width - Theme.sidebarResizeHandleWidth)
         minimumWidth: Theme.sidebarMinWidth
         maximumWidth: Theme.sidebarMaxWidth
         onWidthDragged: function(width) { root.expandedWidth = width }
