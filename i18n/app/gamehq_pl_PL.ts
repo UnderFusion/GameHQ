@@ -3964,7 +3964,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.presets.badge.shared">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="384"></location>
       <source>Shared</source>
-      <translation>Udostępniony</translation>
+      <translation>Współdzielony</translation>
     </message>
     <message id="gamehq.settings.presets.badge.this_device">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="257"></location>
@@ -4253,7 +4253,7 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     <message id="gamehq.settings.presets.sharing.label">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="444"></location>
       <source>Shared preset</source>
-      <translation>Preset udostępniony</translation>
+      <translation>Współdzielony preset</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.targets">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="170"></location>

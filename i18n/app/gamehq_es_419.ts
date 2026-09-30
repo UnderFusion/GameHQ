@@ -2267,7 +2267,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.overlay.hint.browse.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="58"></location>
       <source>Up/Down — categories/games | Enter — open | F — favorite | M — menu | Esc — back to game</source>
-      <translation>Up/Down — categorías/juegos | Enter — abrir | F — favorito | M — menú | Esc — volver al juego</translation>
+      <translation>Arriba/Abajo — categorías/juegos | Enter — abrir | F — favorito | M — menú | Esc — volver al juego</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="37"></location>

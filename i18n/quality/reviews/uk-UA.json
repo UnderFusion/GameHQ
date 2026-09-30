@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-uk-UA; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review",
+    "actor": "codex-gpt-5-contextual-uk-UA; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review",
     "method": "complete_source_location_context_review_plus_targeted_recovery",
     "draft_provider": "protected-token-safe Ukrainian draft followed by complete contextual senior review and manual high-risk audit",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-12T16:22:27.038746Z"
+    "recorded_at": "2026-09-30T02:22:13.000000Z"
   },
   "baseline": {
     "path": "git:01b0ea8a8cdc0d2f6ee13b911195061b693a048c:i18n/app/gamehq_uk_UA.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_uk_UA.ts",
-    "sha256": "8cf14b6e30293a09dacc5be020a5275c0ad874acfbbb5be85ea0abedd071cc6c",
-    "message_count": 857
+    "sha256": "5a4d55623a5a98029165e25afd3164e4e6569910a5cf72848324bee6ad98064d",
+    "message_count": 1049
   },
   "coverage": [
     {
@@ -2374,6 +2374,16 @@
       "decision": "corrected"
     },
     {
+      "id": "gamehq.gallery.action.share",
+      "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
+      "translation_hash": "65fc8cd89b06c6b0b7a57f252c5ff9255a2212b0cb0bdf16130f73ed9990ea67",
+      "locations": [
+        "src/ui/qml/Main.qml:1209",
+        "src/ui/qml/components/OverlayActionMenu.qml:15"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.gallery.action.show_in_folder",
       "source_hash": "a5aba3b31aac37525488e0d1b3b9d34a18cf32b5b7531b3ae0f6acdfda4b1f65",
       "translation_hash": "f878193625cb971ce4e82730d4d3728fb33862be1afaa2c852498a4d5f0c353d",
@@ -2811,8 +2821,8 @@
     },
     {
       "id": "gamehq.help.gamepad.square_action",
-      "source_hash": "ee1ea22ea88a307c5552976e3065364a704dff745c46175f4e0ef11aa448ce0e",
-      "translation_hash": "7e640e99c0f584ed5c8a2ee937843d48b7960308b3ec204af171e771049e39b8",
+      "source_hash": "90b7de9853a53200bdf4355ff3a2f72ceec56f9b4668b59433387317e37e4d3d",
+      "translation_hash": "03759caf04de2106eb1c7eaa35772dc02c23186651d69a0d15d867f5db738c50",
       "locations": [
         "src/ui/qml/HelpView.qml:222"
       ],
@@ -3776,6 +3786,51 @@
       "decision": "corrected"
     },
     {
+      "id": "gamehq.notification.replay_failed.reason_buffer_failed",
+      "source_hash": "dc859d868d5b382daeb3213ecc28d0fe5473b37463b7a4aeb3172d5dcb154dbe",
+      "translation_hash": "73233133ca2b47d8f138aa4d4b9704ff78d337520fdbc89b1d528f9258f469de",
+      "locations": [
+        "src/app/App.cpp:81"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_collecting",
+      "source_hash": "91d2dfd1bd809733d933cc096f08b1bf0703faa6b4cb6e6ea03b405792e995b3",
+      "translation_hash": "fa1441e6ec543c5bb5897d43b77a0032e36111002d05fa9f927b4c512722ce52",
+      "locations": [
+        "src/app/App.cpp:75"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_empty",
+      "source_hash": "6ae16902e0117b3d363219386368e72ecff2301942819100b62b8ff66d6af182",
+      "translation_hash": "15cb57bc2c489bf6d9cd2f12383c48c7a0f270a982de78e3e67e20ca8efd92ac",
+      "locations": [
+        "src/app/App.cpp:93"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_not_running",
+      "source_hash": "6c6956d0e486f5f8991e45a9da1dd1bb451ef4fffe8a14c322686e85113a0080",
+      "translation_hash": "a911e726124106e87c9f6659ea3daa6c84a1c98ea0023b2ca9eb9866fb822935",
+      "locations": [
+        "src/app/App.cpp:87"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_starting",
+      "source_hash": "31ad76835b430f39144432cd0679793eec93a84118095c13d3ea858874b0b9c6",
+      "translation_hash": "ee712e80f3fb9b11a2b657830246501aaeb3673c800f25ddfdf731c7c13fdd95",
+      "locations": [
+        "src/app/App.cpp:69"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.notification.replay_failed.title",
       "source_hash": "24027af1461f776395f7cb1b22b0fbd39e73873acf6d2c67aeff45a8590528a2",
       "translation_hash": "579ea61915f7358668abcac01b343bed3216ec2ca3752dbd3eb3e304292782b2",
@@ -3885,10 +3940,10 @@
     },
     {
       "id": "gamehq.overlay.hint.browse.keyboard",
-      "source_hash": "b7a17bf9c00058307af3800bb1d4b6233577ab8ecc36f32a4181a53873c0e240",
-      "translation_hash": "549605eefa6bd4ee0cec9de7581ca57ead05cf7eb63a42e0c238c35e7cecdce0",
+      "source_hash": "6cac6907703787a707b081740f91c1fe23d25141250abdaaba6c7331a75a65a0",
+      "translation_hash": "e5627368efdda913967adb9c4c9404923bed5e62622579ca7df9d106c6e2256b",
       "locations": [
-        "src/ui/qml/components/OverlayFooter.qml:37"
+        "src/ui/qml/components/OverlayFooter.qml:58"
       ],
       "decision": "corrected"
     },
@@ -5008,6 +5063,15 @@
         "src/ui/qml/settings/AdvancedSettingsPage.qml:229"
       ],
       "decision": "corrected"
+    },
+    {
+      "id": "gamehq.settings.category.sharing",
+      "source_hash": "d7845e8eaeb4b0fa0f0a4191ada884f6a815d2dd3acbee800a2f721882d6b7b2",
+      "translation_hash": "8a399679666a586b06ad0c9f0a7a0367e407f0c8a11257d268261e42652d111c",
+      "locations": [
+        "src/ui/qml/SettingsView.qml:25"
+      ],
+      "decision": "accepted"
     },
     {
       "id": "gamehq.settings.disclosure.default",
@@ -6175,6 +6239,168 @@
       "decision": "corrected"
     },
     {
+      "id": "gamehq.settings.input.steam.capture.description",
+      "source_hash": "7eeb735056ad0b8ae9bf8b183c127a22e21a9c783479ba5776989526320682fc",
+      "translation_hash": "4a7f49f6acaba86610d10de59b3e4f6d35e7879e8249587c1f8b9bcc3e9e16e9",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:698"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.capture.open",
+      "source_hash": "2994e5948e542e2c580a7325426d18a677fdb00aacb5d7733c82822d7a1e6e69",
+      "translation_hash": "92b96d3640e03f7f8c6c6f5ee79e72fb83ba2a6fd2cb68a37e5473e7ba1351ef",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:701"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.description",
+      "source_hash": "0a06d3b26a9ba5cae9573af2d5c5f925bc25cce495b2a46c2ed258d3078bc13b",
+      "translation_hash": "fe5e0245c86a17538ea622a886df56a3298801f9f39ea20670559a27ee54b9ac",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:662"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.eyebrow",
+      "source_hash": "571f948833fbc74db5886c372e62e02c1e8337141d09949b3fcc363dcaba845c",
+      "translation_hash": "e61ffa8d2a31906273d6969e76db686aecef9c0e6d6ddc4315c4eecfe6e9bb29",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:658"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.game.label",
+      "source_hash": "982755b5c6920c050f691914f97d42e9833a69e312c8523d0f6cc766d35a7fd4",
+      "translation_hash": "669cb8d48f2bc02f641d881ed3e3e85bea7942707c44785e78eabd0940afa43e",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:675"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.game.none",
+      "source_hash": "3c4f549c013fe916f45f52c9b7f8006536b59b9289318cfbde1bf04f546ca870",
+      "translation_hash": "d4ff6a815ab90abb3819b9c709e833a386bd65c67f9e8547b12817247588154c",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:680"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.game.pending",
+      "source_hash": "656bd30fb52a459a4de56a660487a64669337dd6622d611fdb1d38919a9bc796",
+      "translation_hash": "577ef93a550e5384264ca1eaf70c2c365b518109c8247ac3bd6573effef3ec59",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:688"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.game.reviewed",
+      "source_hash": "8cd5c12348c32f07b1e11fe6dae7ad4c8c66234deb4a867f206baf1afebe4c9b",
+      "translation_hash": "bf01da1ad680253e67734f6118f70d6765133ddc428991892715ed7d7a4c17ec",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:691"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.game.unbound",
+      "source_hash": "125a0ff806d423b1c37056ac4c83000628943a2edaf1f2a8b5fe8aaf14add12b",
+      "translation_hash": "8bf3ddf0444e26b50e6c45b24054d3617aebde46051f3514b2c3ae5cacfe7b90",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:684"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.guide.description",
+      "source_hash": "d1c0d841032f36c32e260e54bf437cf68dd25c15e953273f247d2045cd114de6",
+      "translation_hash": "1e9f90c7a7c886717cda6b44d6f38d25a92163b7d110e2b4d5024976b2a989f6",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:710"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.guide.open",
+      "source_hash": "5707f4019d5309c39a8ea2d841b95fd3731c77f2a3811acd721a0ae9b6497e45",
+      "translation_hash": "7e087cf1540a4fcde8ba7f63fdc78fdf1c6b495ca299d826353c5169f761c1b0",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:713"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.help.description",
+      "source_hash": "eec6e5d99f2431b359fbda37267b6c9c1d6fa2c751d1d5199208f6bf0abcde5a",
+      "translation_hash": "a9c92a2de1da63c08c868854a111660a02507d1d118a84f0eef6f6b894b08acb",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:669"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.help.label",
+      "source_hash": "322c10daf57a5d4315539e31280ddbcb5518e3f0af919cff80776a8c7e21e92d",
+      "translation_hash": "8765ce99dac847bd7432e1603e0432588d51b4cc09bea27791477ef0a9df3688",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:667"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.review.description",
+      "source_hash": "90d017d0ad5e7fd09fe4363af2cc763222d4e17ad7f4761e898a991c8e3efb89",
+      "translation_hash": "be9e73b30b9e4f54a7968a7293538670e3faf62db013adaf210a20112a064464",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:724"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.review.done",
+      "source_hash": "1fe0e8da8598342751773bf29ab3245c7c7ae3471d5885b540f1307a18fccc2a",
+      "translation_hash": "29763c8b63b43dd05931a8eb8acdfb70a8e0fabac521b47833cffc3615e5839d",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:729"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.review.hide",
+      "source_hash": "0b49ca90dcd9124fcb7590fc0bacf7ad3f352e1fb8ea119b89ec81141b174f2c",
+      "translation_hash": "90f16e1129f4821d8579239f1dbde945591992d816d6ecf57f3129fb0ce14b3e",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:735"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.review.label",
+      "source_hash": "0efa0c542a4cf2c3f7974f1bdc453771e752554715ab9c01d527ded1a829cd09",
+      "translation_hash": "ed2f7f436d18f00cbeaf61c59e15c3534ba744928712674cd10c88eabdcccd37",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:722"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.input.steam.title",
+      "source_hash": "9515cd06e491287d92c6f0bda9b67252875b4f16d4a47bb2b8e15475dbf54ffd",
+      "translation_hash": "7b8b07d0dc651c06ccc1ca314c9b635d2b0ce065771a83342653159a8efd391a",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:660"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.settings.input.test.adopt_bindings",
       "source_hash": "563ef11e7f1d51d747c7e57505d23bda249664d19b61210defcbcb4675918ea7",
       "translation_hash": "90461ef7e44f24d6a429312837dec9d3f7d3c916f13dd88ebd8238d898d23671",
@@ -6582,6 +6808,670 @@
       "decision": "corrected"
     },
     {
+      "id": "gamehq.settings.presets.action.assign_to_device",
+      "source_hash": "c797690e5231d91cb4586dd39ad6a23d927b554dd8d9a14f68d3193688ab1c04",
+      "translation_hash": "79e4d968afaa636993aa8bc5687144e8de55443f8c94a06328fdbdd881244cae",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:432"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.action.delete",
+      "source_hash": "a2e10c435dfed8812d4c500638275e96120dbf17d6e3ea9d29edc2bc7d1ef8c6",
+      "translation_hash": "7011220ab0024a71a9eb39cbcb403382a6aec93886abe15159cddbb64485a599",
+      "locations": [
+        "src/ui/qml/components/MappingPresetActionsDialog.qml:33",
+        "src/ui/qml/settings/MappingPresetSection.qml:508"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.action.duplicate",
+      "source_hash": "8c538fe45e16b56d09f60aa0e2341331a127677484b39d65b7abfec9dd7dff38",
+      "translation_hash": "d4d62b0955da854c039cd97a4bc952c9273d30250c4d7a1a11846cc49203efa6",
+      "locations": [
+        "src/ui/qml/components/MappingPresetActionsDialog.qml:31",
+        "src/ui/qml/settings/MappingPresetSection.qml:506"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.action.more",
+      "source_hash": "8838d49cdbb576fa54aeaca1e39932f7e367de84aa6d08b00e525d6444a39b04",
+      "translation_hash": "349e9444285f93be1538aa6248ec1be0d3174e4f9ef6d843e75265e75af0f6f4",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:493"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.action.new",
+      "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+      "translation_hash": "dba6e62ee723c079d8b7145aa80aaf1667a3026d2ffc28847a4c443538904916",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:481"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.action.rename",
+      "source_hash": "f96ad990bc742b2b66b38748284d6b8c23b7e9d8f552d7c46486d1c989732c4b",
+      "translation_hash": "d21cfa969a86a82621c18ba9a7d6193d1cec95f80b313b228dd77b576157ff72",
+      "locations": [
+        "src/ui/qml/components/MappingPresetActionsDialog.qml:29",
+        "src/ui/qml/settings/MappingPresetSection.qml:504"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.assignment.builtin",
+      "source_hash": "8ff08d2faf211e1ddb4e54d666c53ff83f49480350cfcac3ca7cd2a1c890a49b",
+      "translation_hash": "ff5fe69f1883845b94d11e2230406e35266f0c6dadb6ec991292605bf75820cb",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:72",
+        "src/ui/qml/settings/MappingPresetSection.qml:130"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.assignment.builtin_description",
+      "source_hash": "0c2771c9b7139e77efbe5e689143b3ab721250bafa0b529ac809316295732747",
+      "translation_hash": "8389e22f1b73c7c5f234704c7bee8f6f59c98a664567e13148ef47edd8081015",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:268"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.assignment.fallback",
+      "source_hash": "68cfd2c5c44cb03941f8bde4dd2099a5a2f6ee506e439b28efd2fddc9506fbab",
+      "translation_hash": "45c42c4db35ad7f3c68069aa6fcae0fe466dfd6343e37daf9d358812303a383d",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:67"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.assignment.fallback_description",
+      "source_hash": "79d2c279843ec7e80d4af1f6411a3fe59dbfae09a91e0b680658a6ff372c4b7d",
+      "translation_hash": "df398ac86a06555ef1c58cd85e82cc32d0f1f85bb22219e6f3b08837131cccfa",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:264"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.assignment.label",
+      "source_hash": "2b4e81237f0c89d6a418f3e7d2140985014cbc5792196535cd1823f4ff5d074e",
+      "translation_hash": "59ab3427c019d5bd2142385abbbe41b9d8ebbe93faed993b0759a15c2b60ca7c",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:254",
+        "src/ui/qml/settings/MappingPresetSection.qml:362"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.assignment.missing_description",
+      "source_hash": "a217eba6509c3bdc89508d17535b8b43bf61d85ebe1d5f966d339d4e79cf4e82",
+      "translation_hash": "359fd2c7372a49fc3eeed86c44f96ea16b5b660953bf1771872c32975470e4be",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:272"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.assignment.preset_description",
+      "source_hash": "1d2d863e9c970e93c068e2352ffe5f43ff38df4f6c4b5a655c78df08093ecc25",
+      "translation_hash": "77b3352ccafc2d4c5b63c645d66a0a4d31b4e564d8508978c069ebb3f6cfa9b4",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:275"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.assignment.unavailable_unknown",
+      "source_hash": "6d2ca1884aacd430565348cdb3f3e8d2e973f49e9de1ac5ae8687337a83184ce",
+      "translation_hash": "bd2b359e60a63f3132ef74532a165773b6674c90c161db1ff54f2e67df8d61f0",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:154"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.assignment.unavailable_weak",
+      "source_hash": "35eaed8e93ebf4656d04ac3f58a5e9329111a3f68574a243f5f16ad4de649f71",
+      "translation_hash": "8d19f3a2244c35bb5638c6bcee3e8f00e5592f1b9607947e8424e3b2d327e79b",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:151"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.badge.shared",
+      "source_hash": "0b9ae4dfcb10f65e269aa438f7999ce196e924bf9a19de81c412d5fb442a258c",
+      "translation_hash": "daf75fe8b009e03f23b75baf95873779f627fd2bc54099306494136ccabb7e4c",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:384"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.badge.this_device",
+      "source_hash": "5930e5757a6fd6714e5def94224f9e0fc495788d75f162a5f6c2189ef2230993",
+      "translation_hash": "c272ac0325d47e1109ac8327216d60625c8dd84aeefd66ced1a599b93591bc7b",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:257"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.builtin_label",
+      "source_hash": "8ff08d2faf211e1ddb4e54d666c53ff83f49480350cfcac3ca7cd2a1c890a49b",
+      "translation_hash": "ff5fe69f1883845b94d11e2230406e35266f0c6dadb6ec991292605bf75820cb",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:112"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.delete.confirm",
+      "source_hash": "6e1bdfacdf87e1c1f906eaf58aaa059e50e19ec6c5f3f68b78a9806a5d1116d8",
+      "translation_hash": "26b08f080a2f2caaa58e837d0a0384fca54ab6a91bb244cadd9cfde97bfa4dac",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:395"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.delete.in_use",
+      "source_hash": "63d430ec3881359ab4f201c6fb28c5345c87423c88c3228968e5319cf914c0f5",
+      "translation_hash": "34ca6fb99bef54cecb06810522e9c5318ac6c15aeb24bddd5b227b93e7adf1cf",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:392"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.delete.migration_blocked",
+      "source_hash": "f26551d79b5ec411fc767ad36867380743cc89febc55b4d6d62173bd71788f4a",
+      "translation_hash": "1c6cde797bd649278228ecfab11959109fe66a67118774e217a54e592f6c6a6e",
+      "locations": [
+        "src/ui/qml/components/MappingPresetDeleteDialog.qml:29"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.delete.move_label",
+      "source_hash": "a4bb55b6f857ad7c69a98460ebacd822d80cd4a52323978e316f8ba077a3f3f6",
+      "translation_hash": "e827314adcb9cd50f302ee497e3482ff46c213f817975da18dba264cbb8fb48a",
+      "locations": [
+        "src/ui/qml/components/MappingPresetDeleteDialog.qml:27"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.delete.no_candidate",
+      "source_hash": "795585b82207ee785d90d75365dedb750e627382974d9f855a7e3885ca977d98",
+      "translation_hash": "c8b7c58f150d9bf42b85846c9ac327ac93788e2ee8b349bb6e9cc01dcc89f552",
+      "locations": [
+        "src/ui/qml/components/MappingPresetDeleteDialog.qml:31"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.delete.title",
+      "source_hash": "5654e5f323b2e6827a41ea9a4626e3143e905a0b2a48f644634476418964af07",
+      "translation_hash": "0b15b47cccd6c1d5d442d0d67a56dc111f586d0f537387efdb82516a664a87f2",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:389"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.description",
+      "source_hash": "f6b86a331e2385572e74b38e11638ae21c0929d9b6860ad070eaacbbd44c6b5c",
+      "translation_hash": "e563247e9689665dff923fe4efcc6bc5615dcf0b1eec11fe4a1570839e9d64ae",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:32"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.duplicate.message",
+      "source_hash": "20f882afc682708bc40f13fe7fce10c65445006b36dbc1d087380fba6a6f276c",
+      "translation_hash": "22a66643affcf12c968306e15d443ec16a799105c33dbe2f79abe2901900ad60",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:361"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.duplicate.title",
+      "source_hash": "f43703be9001fd2a9498ab810464410585dbfccb30e30e1a07ea6e74f21e5957",
+      "translation_hash": "23622fdfd60d047b955a2fe9813aa1769d9f4e8f1647955c4c1cb09722c05fe5",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:359"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.duplicate_target.message",
+      "source_hash": "ce913f47c802ec78d114f732b0c3fdf7ff6b68f7a376d076a61e68aaa1d35195",
+      "translation_hash": "787ba55557ccd37315a980348e4c9633d365c208097fd9e65c321e1ae54965f4",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:371"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.duplicate_target.title",
+      "source_hash": "82d54c2d62805f5d78ac872ac0e53587dc22a4d45664c71845654e1a309d965c",
+      "translation_hash": "e353d024208384bd33ba7d63721ddb7a5a64a990e1d618e92dc69c1bf91278a1",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:369"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.editing.helper",
+      "source_hash": "1eaff4268f3de786a2b343713184657c9f25656be934eaf99a36c468c1bc95d8",
+      "translation_hash": "58a14aa69a6f5af96acac7e0cdb4ab5b3e60e57d2726debeb417e6a4222fc632",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:400"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.editing.unassigned",
+      "source_hash": "8b66c13223320d930c6570582392ed1f3b4f3aedd09e2514dda498e0a58aa760",
+      "translation_hash": "4a01016a50b967ccbdd40d1a53e40e94c6bbb22f4a64e7f32defbbf780aa52c1",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:429"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.eyebrow",
+      "source_hash": "e87fa7acd92ff33f7db5d206e089012ad61cc4a22a4fc89d691e6c301a5e70c0",
+      "translation_hash": "37493767db55cbfa488d4efb5420cb04edf72742c9b3161bfecb8ccf98415f0f",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:28"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.game.builtin_description",
+      "source_hash": "3dbd8a732235d75adb7819801cd2476af2343815caff0660b4a25b0c64b60969",
+      "translation_hash": "c0183dd29209166d5e1e31f0a7ef6682a9011dc3315cd1fb0c4ae653c52383c1",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:326"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.game.fallback",
+      "source_hash": "553d806affccf0894342b3862fa497110b36d752fd051182608afd0fb1afa6ae",
+      "translation_hash": "8a327494a589469c700877d4f19f114cf0e91867fb05d0fd44360974f2810620",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:125"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.game.fallback_description",
+      "source_hash": "d061c62c0791ab899de1236bb46e4fc048eea24ff956de05795d1ae45b479777",
+      "translation_hash": "0f7bb2f886adf4b7d10bcbdf6e1cb375e872f9fe7cedf518fee49b278643d512",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:321"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.game.label",
+      "source_hash": "134737cae046a05a0740207cb941e8f9b7f656960f4158ab4ea4144675fd3dc7",
+      "translation_hash": "9143afa6330c29eeb0f0bd14a2396cdeceacc839fbae0323bc542415ddd0cdb6",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:304"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.game.missing_description",
+      "source_hash": "2ff8b384a876f72ffcfe41c7b6216685e1eae396a8a604364681da9dbe3f2314",
+      "translation_hash": "07a81caa558cd9e84c657bd773e8ba324f64e05919b05d59e48b3a6e34103aaf",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:331"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.game.missing_option",
+      "source_hash": "aa0d08c1d7f2ac34de548529f8337042c68a94181bd7d21639ad395c2c8f50a5",
+      "translation_hash": "02aefa07a12debf020c19f4a8411cc8dcf5831850dc3195ae67e56a4f70caa88",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:141"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.game.preset_description",
+      "source_hash": "16be5d3d0cebe29641957f50e48073db27b1a6c6983306d91723e67e496981ff",
+      "translation_hash": "1d8423d9b5478bc1a0c960b507c41a3f3ecfdd59caa866d45a189010c3829efe",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:338"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.game.wrong_group_description",
+      "source_hash": "0772c22ae6311c6d75818d11b762f4951345012a192e20f9b446a02fb288ac8d",
+      "translation_hash": "15a0bd57bcf4ab56a3a6365dd0a9eb422fd19bcb955abad470dc1435d7f54d2b",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:335"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.library.empty",
+      "source_hash": "3d7eb8f4249517ae1b9c49c6f9f24c90a4129c9a3d8e744b1fbbde2cbcfb4560",
+      "translation_hash": "77a35286e6947c277d5223f559572ddb6bdc0f33d0a433a034fba817de7d434d",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:393",
+        "src/ui/qml/settings/MappingPresetSection.qml:471"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.library.helper",
+      "source_hash": "7a03dcd81f19d397bdde44fac2fea6dc9d0349e1c326123869b0caab2e33ffd5",
+      "translation_hash": "f33352b062f00b8ad13e1dbed7bd1fd3014aad9287fbcd0e901529510c621c45",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:474"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.library.label",
+      "source_hash": "910eb10bb20a088fedb5eced3e52cbaba09a64247eaa32ff36390769d73e629c",
+      "translation_hash": "50870d51f9e8a5659bad9dc9ce913a1ceb9d465fa966ed039427d876dbb2d4b1",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:466"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.library.pending_edit",
+      "source_hash": "75f9f1d3365cdfe20310b58bf631f84ef1e84ca8773049b0f0087d194ec772fe",
+      "translation_hash": "05425daba07568292d7d82f17edd997481f7635cc51b4b066e59e6a2832dbe65",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:397"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.more.message",
+      "source_hash": "8887441b73b2fe3ad26393aa78956cbd297ba821137c4cf70c6972c627b425f6",
+      "translation_hash": "586a06a3e99965e842f645031abb55575fb586e60e257fa5a0ab754323871a57",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:331"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.more.title",
+      "source_hash": "679566046e90705754598dd93488569f6691d1d93b87451f3f0e81652d3ae463",
+      "translation_hash": "a73dc7c1133ccb539bb80726d99b7de12cd9d9dcdbd6cd344fa4e0c86eed742a",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:329"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.name_label",
+      "source_hash": "3e0deccc1459bdd81a9eac0b67ca67092332ec770d1601857c04fa11a4aafc8b",
+      "translation_hash": "5f768ffb70e04517fd76e87c8722529d1aff28abacf1e99cde2f43abfe4c1b43",
+      "locations": [
+        "src/ui/qml/components/MappingPresetNameDialog.qml:22",
+        "src/ui/qml/components/ShareDestinationsSection.qml:109"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.new.message",
+      "source_hash": "f8d07b7ff7e6b343ed7e4f8055b98ae0559ce2c90a7b4593d4ddcc9239e8b191",
+      "translation_hash": "dd0001aebb1f578fe45f81281e453c85181a658c0c75c1af2f105fb7d3570339",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:341"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.new.suggested",
+      "source_hash": "d499ebe75f41d643a3d91a612f4ef623145de6503500b5bfff36a68309fdc26d",
+      "translation_hash": "018996484e71ee7628e7f052d9468f05f2e6a9f1fe52616e866c423e3b560b24",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:344"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.new.title",
+      "source_hash": "928461d04ffcf72264f7f47840b798e57b55246abc9b804f793b3393d0581794",
+      "translation_hash": "dba6e62ee723c079d8b7145aa80aaf1667a3026d2ffc28847a4c443538904916",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:339"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.builtin_read_only",
+      "source_hash": "fb01e88966982cae4d26f40772b4f50e766edbbc98a96a2e7bfb0a3066173df8",
+      "translation_hash": "5cf24fb62793f5cae2494634df00b1885427856dbb42e8480b1c146cc45e7122",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:83"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.delete_failed",
+      "source_hash": "bf689459ebcbfa24a5380e8dece2d6072f4b4b1730a1e4e5060e55e989e86052",
+      "translation_hash": "0702744b610ad05e084329b850055b4a45f29ab82885a93be8f03e3e2904476d",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:62"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.delete_in_use",
+      "source_hash": "dbf8c20c16ed04a522dfd2f9757852b37c0e0debf90b9404b5a7c78375e86f68",
+      "translation_hash": "3f92446446971b0d56b19426521e4edcb8567e14660498076268bfdb6ab641cf",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:54"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.edit_invalid",
+      "source_hash": "29bf2eaed1f18081d2d9583dbd4452dcfd4719fac5c975bef88dd5a9ecfd02ad",
+      "translation_hash": "f025b42092230f04c5070b80790f8dfa64ae1e3fe6665c2d2b019327fb4f9ed1",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:98"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.game_unavailable",
+      "source_hash": "a47daf0f68fe3ba6aee3e352ee3ea595843ce10c0832ee13cfd2ea5c97b90f16",
+      "translation_hash": "4000dae07567b04d4372bff22698a0d72200a2e75438a95fa20f96ad120036cb",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:90"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.invalid_name",
+      "source_hash": "d14cd232be13e3b1d219f4751d5e37540161dc6a303f25cfae1f477e156dbeb3",
+      "translation_hash": "38035d5f9f5b0f6a04dbfd2efe0397c15c725f43859c9622c70971b3dfc33ec9",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:105"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.label",
+      "source_hash": "b8e752a49efcd31016fa0ef1baee567016712e69bcf3be94eb26e56fc31b385a",
+      "translation_hash": "30a16fa712b36c8729d4d10c66725bccbc5f86f06516f48d7b32ba74f1948e54",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:529"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.name_taken",
+      "source_hash": "29f9622aebe99979598bf84b69de22aeb4e95c032c004643b7bdf172278ce66b",
+      "translation_hash": "d15c7cecd03e886ddc9965a5355630e68211b9b270e8ac12c1ae85f11016a025",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:25"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.nothing_selected",
+      "source_hash": "c84006577b5126ae35f054aa25d91a4f60b4de5dee554e2d7459ea6c452bb26a",
+      "translation_hash": "3a71e27e4da7ce40e16eab14827186da31bec439060ba0ee0765112ffc4f9305",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:32"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.pending_edit",
+      "source_hash": "0f3991393752513f2ec49c215ad266090a9acc503ff6867db56b523caf037e97",
+      "translation_hash": "5eb5494ff8efaa309858bf34f2851baf96e896f175c69bd22c119fabe155863b",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:39"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.rename_failed",
+      "source_hash": "d442f106cad95ec4f91543542d58bb61ac49ace77367ffce6c80adc3a64c38ae",
+      "translation_hash": "dab964e6703fd8508d403b560143f50f9a1e7221dfc34816bdd755f443ef6abd",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:69"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.target_unavailable",
+      "source_hash": "441ca6cf8b59d06481485f99b263a34267374b000af02c3668e94469c0069a41",
+      "translation_hash": "0eb5f2148f2dd6bb4d3bdb422ced586bf76d39ea596979c4dfcab7ea1af7ba45",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:46"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.unknown_preset",
+      "source_hash": "2639ea37eb73319b76caee446dd5bd4341da4f38ad9df7fc061d09d61302ca49",
+      "translation_hash": "1e085e6bd9e68e313b643392b2d3d756f9b08c86ffc5c751cb10c097942f410c",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:76"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.notice.write_failed",
+      "source_hash": "a56e6e9c78cf4123ec1f614a30a5c7a0911b16a7e9e27f7e5a4fd3d6ef8d1206",
+      "translation_hash": "ccacf5168c497c38861f6187cec0d7fde3efd4d61b6c55251691ef8e3c53a5d3",
+      "locations": [
+        "src/input/MappingPresetModel.cpp:18"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.rename.message",
+      "source_hash": "1a4abf1ae3a4dc9d496461d5acf96d1642dfdf53c7fc654bc4a848b2f5166b6d",
+      "translation_hash": "a441362c217c77b9821a7fb4dad5906bc0bad8f3fae864dbb899354264c045ff",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:352"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.rename.title",
+      "source_hash": "9ca0e9db997108ece670c308389aed9e57c0f0fc6aa0d1945447c9a02e418dbc",
+      "translation_hash": "4e130b73bf9a9656c946cbdcd2f19950362f06ac79fea1c6d353d39550e6c609",
+      "locations": [
+        "src/ui/qml/settings/InputSettingsPage.qml:350"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.select.label",
+      "source_hash": "3b972063ec5e96bab47d80fd8063c052866004e8c7542d81563d788be32dd0f8",
+      "translation_hash": "8440d2a74c631cc05b7ec8ce53407fd17b6abe907e2ac02f472f58cd87478ed2",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:382"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.sharing.both",
+      "source_hash": "3621d51e615d15fc6c113cd5df090b74012133786a52476eb7269ddb2196d444",
+      "translation_hash": "c2f90390cc9097785ae32f114bff29d8e4fba757fa9fc257eef4ce889aa3c4cc",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:163"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.sharing.duplicate",
+      "source_hash": "82d54c2d62805f5d78ac872ac0e53587dc22a4d45664c71845654e1a309d965c",
+      "translation_hash": "e353d024208384bd33ba7d63721ddb7a5a64a990e1d618e92dc69c1bf91278a1",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:448"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.sharing.games",
+      "source_hash": "f62674060920d7111625b138054afe478f59d02ab818889d7fb5a28f0dfc023e",
+      "translation_hash": "595bb8b716c5f2ea4906006022dd3592dca23ec9dcaa1e799e4a7d0e60374573",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:167"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.sharing.label",
+      "source_hash": "70c9ee27ff1c97dc7f8efa3c0dd34f5814e74cd539ebe6c41c873f75838f88aa",
+      "translation_hash": "39f91a3a097cd9a438b053ad2510d59d8a668088b8e5ce0604198eccb84b5a38",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:444"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.sharing.targets",
+      "source_hash": "a82be395c8b8587bd4db517d38579e7ab080e83341bd1c3f088df6addb9b1695",
+      "translation_hash": "6048f56c315a2e2297b657ae7ba729f84e6dfcd4026ebe0dc4361e46115c86ba",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:170"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.presets.title",
+      "source_hash": "f87eaed9ed9eadbbcc0477cdde404a235474437d903422b6a70ae684e4eb1dd5",
+      "translation_hash": "616dd6748b80466c39b22441d68a1a0ae9c213635ad8df88180dfe41ec22707d",
+      "locations": [
+        "src/ui/qml/settings/MappingPresetSection.qml:30"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.settings.replay.buffer.description",
       "source_hash": "edff852fe7817bcac1934464ade2a81ae0bce0e5139c813aaaa0e58b2caceb87",
       "translation_hash": "1275079ffd1f0969e3ec0b86eb2ea0f0eb1105e8b1b4968b79af11a9f3ea7ad5",
@@ -6870,6 +7760,366 @@
       "decision": "corrected"
     },
     {
+      "id": "gamehq.settings.sharing.auth.connected",
+      "source_hash": "ef84505a860c279a95b6ac08da88873cef00d3e8f62d5fbf6c1995501add844d",
+      "translation_hash": "526200fcb808ace534c678c04cf17648f49d250292903beccf759c8f9fdc7bbc",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:25"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.sharing.auth.connecting",
+      "source_hash": "cdaf87735ddba062c29514e423da21dd68b840c8bb488a1437ff59f1a265d705",
+      "translation_hash": "2d895fcd5ebe0a5637604e60b02f07ed4548994fa3b251b9cbc6b55d52914ff1",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:28"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.sharing.auth.disconnected",
+      "source_hash": "0c5beafa8647eef052d2b88dce4f2bcc6e224af1c868db2e341ea8e25e2eb6c7",
+      "translation_hash": "ed8fb58be7a5724d34abb8fc5f941946908785df7386b05b61d36775493f0a08",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:34"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.sharing.auth.error",
+      "source_hash": "f3ac810cf5e88569e8db0e88f7a0df4ab1e0a15d12829036c35cc95adac3bd7d",
+      "translation_hash": "17ffbdb1411787110792b337ab83b2e95b99de1703e4982a9399dd2efa046af5",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:31"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.sharing.description",
+      "source_hash": "df474a82ee981f543b9e79c820b119b5fcf6acb53bc4f0a630d99a446a46a522",
+      "translation_hash": "e0149fac79d0404cc74da724d3c5e0eede1cd69a43d9709170661e94c757f9b1",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:16"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.sharing.disconnect.action",
+      "source_hash": "aa45cdca0bc7b5bd8423dadc3590b50ca3a638a109118a11d2731f2e91262e1f",
+      "translation_hash": "d98fc2b2c025c96abb50a9172b8c06d0ffffc3aa6578d121064062d6276fd43b",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:102"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.sharing.disconnect.description",
+      "source_hash": "c8e2cd250bd80ecedb4165d61f99d4720170011428e6d31b00e5a32ce7559903",
+      "translation_hash": "294d2cf552f1c24dbd639a7032069d9629d3b6a7efbb0a57ec16a39eaf2555ec",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:97"
+      ],
+      "decision": "corrected"
+    },
+    {
+      "id": "gamehq.settings.sharing.disconnect.label",
+      "source_hash": "286045eacce94836967804ab4b84ab15a4335787fc4cb978f54183884fe6f5ca",
+      "translation_hash": "1a05c7ec0a02b7d09fb74c95d1e1fc8c520f2915c1e49a2d64d6c7cc21881a87",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:95"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.sharing.master.description",
+      "source_hash": "6fe31555dd01cc2b8b449e0452d2af2005661d32edc48a1c69bd513a2d76303a",
+      "translation_hash": "e171c18ab8e65d4d6825d0aab47c745cdb23ac6db30a4d46f644d7d7a41282b4",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:50"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.sharing.master.label",
+      "source_hash": "a177e0bba1c897594b4f4e8c3257e2746064b559d0440ec55c82a8238834a45e",
+      "translation_hash": "5986881da33da2f3235a3981999acee2e845439357af9ac3b9cdc9fd78b7bc00",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:48"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.sharing.master.title",
+      "source_hash": "d7845e8eaeb4b0fa0f0a4191ada884f6a815d2dd3acbee800a2f721882d6b7b2",
+      "translation_hash": "8a399679666a586b06ad0c9f0a7a0367e407f0c8a11257d268261e42652d111c",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:45"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.sharing.providers.description",
+      "source_hash": "2733f8781cf947539b0923ad91775976a0ee5ec78645ece72166691a6aa00db5",
+      "translation_hash": "3a90c7d55c8309130af91cbfef698b874fcfb618b9232bc16767a78e66eedccb",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:65"
+      ],
+      "decision": "corrected"
+    },
+    {
+      "id": "gamehq.settings.sharing.providers.title",
+      "source_hash": "997b395b03bd7afda1bce934ecbd6abb19ccd1c30ca57cfe1945afb1bf3793f6",
+      "translation_hash": "cb35578cdcbd2cb4af28d0414c397b5af8bf507b98add85de6153e1bd78d973d",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:63"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.sharing.title",
+      "source_hash": "d7845e8eaeb4b0fa0f0a4191ada884f6a815d2dd3acbee800a2f721882d6b7b2",
+      "translation_hash": "8a399679666a586b06ad0c9f0a7a0367e407f0c8a11257d268261e42652d111c",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:14"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.api_hash",
+      "source_hash": "dc7545f0b6862acf8cdd9c6ce86105d246f9be3fb32803b2664d9b3cfb9caedf",
+      "translation_hash": "be023bfc6b16bc5217254aa6c7ed1469abda7c071e9cf90fab5d5b700f4a1ffc",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:97"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.api_id",
+      "source_hash": "fd28ca87d7a96b9b82e52cf200e8958ddae8a2a90c69d44183fd5e204ba4a11a",
+      "translation_hash": "7c89f9faf6d7f623d2ae5d2761349ca84aff6d9f8580e34d3079c9a1ab81c435",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:91"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.ask_code",
+      "source_hash": "9e763a0a4c0f1ec306bbb91f189af331470215b0f91ff035e357c5d57f78f489",
+      "translation_hash": "f614f83a3ad7084e8193398883a8b94894f7e2a71a69bf60c077631238de8ee0",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:155"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.ask_password",
+      "source_hash": "5dd9d4ba58a24049d79789bf92d47dac15d31c58f47bce6bab52010cd8ad4ecc",
+      "translation_hash": "3f736030c141317ec1e2de48b3a097c45e9d5dcebfbc27ba152a605477ec1a6f",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:157"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.ask_phone",
+      "source_hash": "24e9647948d5a8931982a0442399ad9a8fa24ea1107d8f90aaecf1201ba1a734",
+      "translation_hash": "0d50900b9ca09aabd3607c7851712341f30ad2d3b10e3085d34e30c572fcba3e",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:152"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.connect",
+      "source_hash": "51d111b5ae3f453a59d862955510fc2c775e2015b604192aff22a829097231de",
+      "translation_hash": "0e856da3398463c13c61886494eefbb24d471ce7b84f510d06e8d0db1d54b476",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:120"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.connected_help",
+      "source_hash": "9e4ccfc44550e7b6d4104527224871b5f7f2c62efaf2c9ec5e63b354cafd38aa",
+      "translation_hash": "a891b0a93bdc88824084bc6a736809892f3fe759abeeab8e594ac7ab4f3898fc",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:210"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.continue",
+      "source_hash": "22eb90d1c3d7189e72ded7779716d6019acedf3eb46ad0d3f57c782e7ad6e98b",
+      "translation_hash": "a4228fdbf7d9da688feb89a538b971bc88f0b569c68d5ec2b55e9fdd0803edc3",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:173"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.credentials_help",
+      "source_hash": "18076d144b1128b7f0ea6da68c17ec4e7347aec1c1eea05efc55c40b81c793e1",
+      "translation_hash": "9d7eb8923e8754cd7bb023d834e32824be7de6b381f2fe5b040d6fb4e6e4f104",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:81"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.description",
+      "source_hash": "9e9ef8ce0ec37df9286d6468c353c00d8087f1b59466f519879e4da77ebb8963",
+      "translation_hash": "985d579f5de3e24b0264ec63b8852adf32d5921e6a9abb038fca076caf9d7590",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:71"
+      ],
+      "decision": "corrected"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.bad_runtime",
+      "source_hash": "e995d75bbe8d2eea46af0a9f5ac453c54e94c6a81c5f1bd36afdc5438a54ff5b",
+      "translation_hash": "ac6192df6fc7a0cd2bb5633eb704634b1a98c4601cec7aa74993490e691887da",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:33"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.code_expired",
+      "source_hash": "8680474d18e0e91f962adef5d8b63be34b4394cff6d840d9dfc898d055be41a8",
+      "translation_hash": "898c364f09f73b7cce80f8476774f452c87a4629870edab8edc2bfc9f173fc01",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:42"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.code_invalid",
+      "source_hash": "520142adab0bb93c5736707073c550f16e20b0545215d12fa88f2835fc592417",
+      "translation_hash": "72eea0bef83f17c86535bd05927234581818167b207d843e3129e8d25aeb9277",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:39"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.credentials_rejected",
+      "source_hash": "88e3e9134a941685a7e05f88f2fea370d59a40966be35a113482df7c03b77cee",
+      "translation_hash": "7fe89890b6ddb30e1fd673a221c1f37b169f00883405da72a0e26b2ed7c20a92",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:51"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.generic",
+      "source_hash": "5249ad342d11ad128055fe3ab2bde2b901572c17948d15ebb041741654077b44",
+      "translation_hash": "c8b8d0922106c9f3ac48fabc8ee2a7622eaabc9b73e783d80b1607fcdf8781df",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:63"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.invalid_api_hash",
+      "source_hash": "09bcc2178fc952b46679da0078b68f39905936f96ee54c7a9cfcd87928810c41",
+      "translation_hash": "17df9ec481bf594bb484210d4e8de06a0d28d17e9e6e503e1da510f20cfc49a7",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:60"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.invalid_api_id",
+      "source_hash": "96feea660fa53af8ce2ca42411a57b4eb8c8d854f89e9a67e957d7a96e25378e",
+      "translation_hash": "eb1793b8fa74085a59cc6433e5f59ac5eb727e9d57f2bd91ef11c19e55c1f4cf",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:57"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.no_credentials",
+      "source_hash": "c4babe22c6d22f8594dfcaa33b762fcd864005970bb35f99865054ff11eaf679",
+      "translation_hash": "3dfab8bdd58fd5a7be2da1473bb5891330ab3cbf2e0c1e737fcd39ee6c42b01b",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:24"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.no_runtime",
+      "source_hash": "b8234e2cc926452d3881bc12d707c4a7aab91d157d0596a4e21943aa5c64f01c",
+      "translation_hash": "77c8d6582469253cecb5a23c09e7c13a5ab3ea531bad9ae6dce7ded82064dded",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:28"
+      ],
+      "decision": "corrected"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.password_invalid",
+      "source_hash": "0b923d56472d43d3e3bdaf607815e0dff38a0bbe66683b3862d8571e6a669cd5",
+      "translation_hash": "eafe0468fe9ea39c2c428e1f04beb09f99b49f6c69ab39c6c9d98d363b55faf8",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:45"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.phone_invalid",
+      "source_hash": "221e7397429e30c81ea1cf973af0b8ff8939d333dc43ba4ddce3dd6196361a71",
+      "translation_hash": "6717d2a3f261d3731167a33d71ae764c50613574a1c3ad325e10dd7877ca69ec",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:36"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.rate_limited",
+      "source_hash": "828a5a4d553ce621671d9db054c4e0a22fb87eaa36f4053b460a6e29bdcf0486",
+      "translation_hash": "1b254f060674e45603d74cd20078e83b9254069a3b682aaab68b2efce347dd02",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:48"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.error.unsupported_auth",
+      "source_hash": "5a869d826d40d584ad1977ba21955e46e2be262a069301459dd90b98db7e5842",
+      "translation_hash": "46347d58f037c595a576de7cf128d95732defb981d821b4a4509514052ecb2af",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:54"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.forget",
+      "source_hash": "c559267294f7e0aa431d5eba1e86fcf17a7eaccd4394bd6389752af736c82b70",
+      "translation_hash": "66177d2ca56ea94a154826c37edd2230a9effa3451c99db485ea67cc6b8a12f1",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:129"
+      ],
+      "decision": "corrected"
+    },
+    {
+      "id": "gamehq.settings.telegram.title",
+      "source_hash": "2a3681e48e3fd3e30a1ac141981d53d7187a2a8981375fa0da59917012507511",
+      "translation_hash": "123053010068b37ad6ee7725c742834bb15a2eae49e79c5ab5059b600ee064e6",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:69"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.telegram.working",
+      "source_hash": "a2b5c5185c8ff01b8bfd70360b4cbbcf44cb96b7cda5427140af390f5896b95d",
+      "translation_hash": "1a10f4fd09499d84bba4fc907c7db7069044a982a0659de160c00218e491ccef",
+      "locations": [
+        "src/ui/qml/settings/TelegramAccountSection.qml:137"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.settings.theme.blue.description",
       "source_hash": "f0938fcd8bc7d4f92a07c4c36f164a06cd0dec6e75af8de12d2b676d2f95405c",
       "translation_hash": "d5b6e4412870e2d7daa54263af5c9d9c25ef4eb37317d26e3809a70f2e294f15",
@@ -7087,6 +8337,456 @@
       "decision": "corrected"
     },
     {
+      "id": "gamehq.share.addons.description",
+      "source_hash": "f3a379ad643734a609f6db4a6fa6128e345155572e3e902332db619c1c3c34f2",
+      "translation_hash": "be3526e49bed68c8fb58920ded704c43bce125923cdd6dc06bbcdead834758a5",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:130"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.addons.label",
+      "source_hash": "d2e793d4499281373f915f1656c2f4d88e8a91b30870dc6e2d457eef856581ce",
+      "translation_hash": "8c1c80f3fed991061bf71bf5534ccfc5487409a3055949dbb5e39fe9f6a48bea",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:128"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.addons.title",
+      "source_hash": "d8464d3f87322e19a49f3f1acde9ffa9b87e0972beda90177322a22d2214d3e3",
+      "translation_hash": "0c4f9f6be5eaca18aaa6802c78d833f5bfde268b0df1deb1a415b1d42ffaf4b3",
+      "locations": [
+        "src/ui/qml/settings/SharingSettingsPage.qml:125"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.close",
+      "source_hash": "ef942900eb24e0c15f68d8a5184d08d04a998f4344933fe7feb8db846f22fd78",
+      "translation_hash": "3bc9cd5092f1b4a2a785d8256f10d7aaeda00e8841d5d7a27dbd4b0744f67cbe",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:164"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.discord_desktop.not_installed",
+      "source_hash": "e09d1853e76f14cbaad34480d20ba2e172b60ee8e11ce7f937cae57392816453",
+      "translation_hash": "46d00d7701d0afd1f263ccbec3293b5bd04663ec83583f3b777be07b7b4063b7",
+      "locations": [
+        "src/share/providers/DiscordDesktopProvider.cpp:125"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.discord_desktop.privacy",
+      "source_hash": "b18da0a7c4d431420a2d00bbb3cedeeab39594ac7c99e5ed5ad4e8ff8b035b31",
+      "translation_hash": "a7a04b2a5f0453a90a3a6d019c4c7e5b15e559308a31c1a22622d79f53bb887e",
+      "locations": [
+        "src/share/providers/DiscordDesktopProvider.cpp:134"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.discord_webhook.name",
+      "source_hash": "059fd717d08c78ac258e54ef78360a8eb55b5d2b3a0e8678b355dec66dd309a9",
+      "translation_hash": "e630a9c77cfb529926eaedf0c3b32543a0424725c8d58ef6e8319aba3e94ae11",
+      "locations": [
+        "src/share/providers/DiscordWebhookProvider.cpp:45"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.discord_webhook.not_configured",
+      "source_hash": "2b4d4eb43099527e54c89e34949413ceda4762c101faad9f0d45be42355931c3",
+      "translation_hash": "5d5a893cb67b635ec1ed4a80d0db275f9e5a0199b41f48e1b1308542e06d78c1",
+      "locations": [
+        "src/share/providers/DiscordWebhookProvider.cpp:60"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.discord_webhook.privacy",
+      "source_hash": "50005cc6dc3c2f317e9e50a8796037ed349cae5e77d2a6eb6b2036d3bcefe318",
+      "translation_hash": "63b1dfe2a05218aa9d8909c3194dc2a0ccd1bf87d970d152f0835630fdc3f415",
+      "locations": [
+        "src/share/providers/DiscordWebhookProvider.cpp:69"
+      ],
+      "decision": "corrected"
+    },
+    {
+      "id": "gamehq.share.error.capture_changed",
+      "source_hash": "bd139d76fcdcefebc045ffb3ba1f4208f75472958f167ff7afcfe012c95411ac",
+      "translation_hash": "a522adb873c88be4e03b536d9e050a884261e7a3f96c20840a9fd8b719ad5a51",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:210"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.error.capture_missing",
+      "source_hash": "589f1a3c25981b79ea2201bfaefc419c3e119836cf841e3a61851f2decc71c80",
+      "translation_hash": "8f71cfcaaafea1920129d7e7123cf9548a2e67c79c7d22dd4acf3be0d980838a",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:207"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.error.generic",
+      "source_hash": "fa2e67eaddbec06aa70d6b47fcb46b94bbbda5b8c4b4929bbe88884b098e9af3",
+      "translation_hash": "d65077439cb1d24ab68fb1757cb02a1db7e8b32cd65e98d0dfceb683c2592909",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:235"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.error.network_error",
+      "source_hash": "5cdc633d567928f2cb5e38175f6a9a4e6ba5a1d52d9334a457f1c6766d7bb3b0",
+      "translation_hash": "072361f6a2c33dd123333f78a253fa8e9612dabcbf51ed4c0b828935eb4a226f",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:232"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.error.not_connected",
+      "source_hash": "519839a8b9e171be4fd82282d527ef3334ad763e04a2f5a78aa0096f5260c0f4",
+      "translation_hash": "0c830ba79ad1e3ee696e1da601669842dd3bfcd373fb71767cefc581dbc45521",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:219"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.error.provider_disabled",
+      "source_hash": "7e9356064b139cbb49b66e205d4529fa16f6f0154dc5878ec6d3f7ff0ad3d5eb",
+      "translation_hash": "17f7e0fe52e9dc1057da37720f66689cad54041704b40ce0f124c4fcc3fc3385",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:216"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.error.rate_limited",
+      "source_hash": "3adc6e840d78c5c444b86a8b8cb07b1ec04a2c865b25015baa04e22003f2c909",
+      "translation_hash": "85d1bb111190e4898e8484f4e78af137af6de470206604aaa5b33409aa4264a6",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:222"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.error.sharing_disabled",
+      "source_hash": "341f6b55fdd88ce6b2df3d7316923fed68bd651af4131952f8c81fd2b45ebf3d",
+      "translation_hash": "ff2bdef541270c6b702d6b0c239e8c4749a9ca6e1e5c01a119b01d89ecce2b00",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:213"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.error.too_large",
+      "source_hash": "4e9c20c15e4bb414c3f1d2f5280847511ed545095127d153ab7a1cb5638e59fd",
+      "translation_hash": "7fdb61abca89113af0af3da716eb413d57cfd97625ab47974e0184df39a77786",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:225"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.error.webhook_revoked",
+      "source_hash": "216e5fb0a28f6bd13ba10ed8cc139e837e361d439d555249507a4386d73c5f2a",
+      "translation_hash": "bb727ebadf06724323525b2ca881ce04e7f3385a968f302ff61d7287a47c9161",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:229"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.external.not_running",
+      "source_hash": "dd60364f03e445a15be82c76eb6f48696962ad72440768226fceb6e88cde67a9",
+      "translation_hash": "338db5fe339332f828cf4eb9481f7a7b616195dab2cbdc26222a9c3257593c1b",
+      "locations": [
+        "src/share/external/ExternalProvider.cpp:89"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.external.privacy",
+      "source_hash": "8fe50db1f6fdd7c9317bf492a4d31c709d18ef07934bbf86886502c7960293e8",
+      "translation_hash": "071240bfc7127be300fbc458a155c9f63a4b7f09be390ccf05c49d0eaae2bfb0",
+      "locations": [
+        "src/share/external/ExternalProvider.cpp:99"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.loading",
+      "source_hash": "ed6336bf05e33f8c776114810c5df49692f3a71ada90fbce25bcfabe4350520f",
+      "translation_hash": "3103f73f76495d5dca877b3545449a43f26654f74652b2ff67835a9dedd27dd1",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:134"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.no_destinations",
+      "source_hash": "118661dc8588bfb5fcdfa315bb04731a7f091b915155df9743bb6adf71ff3b87",
+      "translation_hash": "53eac283a63cbedc50594f5f06f2ba50fd82460589acf0f42d79791c15d1a73f",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:119"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.no_targets",
+      "source_hash": "ad6b5c1aa8322845ad89fcfce0f3b376cdb529381ff9e3b90ca19f03c77cf67b",
+      "translation_hash": "0d06fe02c658b68f16b661ca4d31ce9eb70247538ca4a783a7ea0741e887b8fb",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:137"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.outcome.cancelled",
+      "source_hash": "81877d47e2243c13af024e67f0dd2a02a69e4ec06db176c4ba335e05d6172ff0",
+      "translation_hash": "38d927b6e596f1909444b379db8fc4bf57476f4831c04a00d8bc9d2721232787",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:195"
+      ],
+      "decision": "corrected"
+    },
+    {
+      "id": "gamehq.share.outcome.copied",
+      "source_hash": "7ee262e98bd18923d3141db794c891392a64539e3cfac78e55633dcb0f7a01b0",
+      "translation_hash": "9d3fa2d4fcd79a6f29196e5525622b821b5ec3e524c73fe528aed2930176c6e5",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:192"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.outcome.handed_off",
+      "source_hash": "6846079c9310ac8744ef813bd4256fdccefb595d54a763ea5d023f6ec9cb898e",
+      "translation_hash": "cdae6a83deb64a24c27d94bb7964ea83e9b7df6476b398e905238073218b5df6",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:189"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.outcome.handed_off_paste",
+      "source_hash": "78b010544f9e818955e5a5e8f10464a1bc0b87ce70cfc133fc0e14124470cfff",
+      "translation_hash": "55af67bf8574cc2381461b93b4b1640f1c20d5e39da4d639a69bc7613d834590",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:187"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.outcome.sent",
+      "source_hash": "e3da632171819214144ae063742046c458116e3a183ee0bac3578e0fa29c18bf",
+      "translation_hash": "d627e948bb960436917ee2057fbc4c46699f391c127f9b33a4ec73fa9e5c3609",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:183"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.outcome.unconfirmed",
+      "source_hash": "a230b50ed90fa0935474958ef395ad517ba756713ac9704a557218a5d81d6b41",
+      "translation_hash": "74f4ed16b89723608c6a33bbf154c5b15d717f29c506fc52d1cb02b30d34bbc9",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:198"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.provider.clipboard",
+      "source_hash": "7879729e7ad7372f177e0e12a98aa1349021452ce9ab56d62ef63f254a5540bf",
+      "translation_hash": "2133b604cd97a95c508315b3a5fae5f4261324d1ab5cd93faf90d8d6b1a11481",
+      "locations": [
+        "src/share/providers/ClipboardShareProvider.cpp:24"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.resend_confirm",
+      "source_hash": "cfc131a6b874609f29bc6f4295b550a4367f886b7583af9d6c6d669abfce4c13",
+      "translation_hash": "2cb45a3c9383d23616f30f12cdb8b4343223e77cf861a5fd91b547ef105b831f",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:150"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.resend_question",
+      "source_hash": "a32bbb2e55d5b2b9479e15805749a8b3388442d6a9cc1ed852b354d82bff103f",
+      "translation_hash": "a820036633eca1cae9347782c30c615b301a4bfe2816f6d0daa68431f220a27d",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:147"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.sending",
+      "source_hash": "88e325e8b6489d45a1ccfeebb017f13b3e90a7155524e93b4d6817d1ed5cda6b",
+      "translation_hash": "7e875ea46d016b58dccc04e2ff3d35ff0e4853e205404c7cd2e471a680386c57",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:243"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.settings.description",
+      "source_hash": "6da5d5a17a6f9f0d58585044d96dda5968aae7a59dfb3995b165823aaf707457",
+      "translation_hash": "81d75e58c0911387bec8b4a272251fdb509a2f401383fb59e348c20f72f41685",
+      "locations": [
+        "src/ui/qml/components/ShareDestinationsSection.qml:41"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.settings.error.invalid_name",
+      "source_hash": "aea801f1e39f3e1ef3c7a30fb6cc181cd125cadb01975d00f522606917833ff1",
+      "translation_hash": "631d2e55d4da573516dae550c6ec8c2f980e078e5868a333ab9a93ffd8fce1e3",
+      "locations": [
+        "src/ui/qml/components/ShareDestinationsSection.qml:25"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.settings.error.invalid_secret",
+      "source_hash": "bf70dee5ad649b48ba1925763988716f606619fb8532e66f091320326f02d6df",
+      "translation_hash": "1638e9fe5f54bb0f30723ec539a8d3a2125c444f7cff1efe729a92e4cd6ef802",
+      "locations": [
+        "src/ui/qml/components/ShareDestinationsSection.qml:28"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.settings.error.storage_failed",
+      "source_hash": "68ca4dc1d9a46ef04d6095935f3421b9e5e37155b22b81f2531ad82a8aabebaa",
+      "translation_hash": "f0cd12ad60c9e5d062a98f7b5eb20e33d37377004a7d84fdec5d542e55b3bd7c",
+      "locations": [
+        "src/ui/qml/components/ShareDestinationsSection.qml:34"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.settings.error.too_many",
+      "source_hash": "8b1094ebbfd3cb27c0ee67edc9c4a5e5ed3f6c66e1524682caf3425460af73fb",
+      "translation_hash": "aa361224ad4b7b726fec4a1e433be56779d4089659ea255f27cc803eec3c0bac",
+      "locations": [
+        "src/ui/qml/components/ShareDestinationsSection.qml:31"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.settings.pin",
+      "source_hash": "9be810ddadde49775a3fee9671c28d8461e9596f10577c4d4610b0cb73317529",
+      "translation_hash": "1ab22cedb14b24386946c6141ea830d6028e75a2ddec3dbae635fa47120973fb",
+      "locations": [
+        "src/ui/qml/components/ShareDestinationsSection.qml:89"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.settings.title",
+      "source_hash": "2b2e5022505275605d80683cf3421cedf19cbbc8aee981ff90ad7b44f576b728",
+      "translation_hash": "adf28428ce94a65b59b5dd87a30e8cf54a5d5a3121155e6738027b5dffaa12d9",
+      "locations": [
+        "src/ui/qml/components/ShareDestinationsSection.qml:39"
+      ],
+      "decision": "corrected"
+    },
+    {
+      "id": "gamehq.share.settings.unpin",
+      "source_hash": "234b4287a3d6cab1c42d6cf7c9518cc062fd7754b634c6b9486519437a9c81c9",
+      "translation_hash": "1e8b1217d75d09b3b00cd2957cef3a8c334d0f6eb7eb981294c73804ebadacb1",
+      "locations": [
+        "src/ui/qml/components/ShareDestinationsSection.qml:87"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.settings.webhook_label",
+      "source_hash": "9979db98c40d835d3dfe0ade685f3f78026322bc57145fbacdbce2136606aa98",
+      "translation_hash": "bf2e7c0d930393648d061521df60088c9710cf31b9ea8a0ef788411cc6b20970",
+      "locations": [
+        "src/ui/qml/components/ShareDestinationsSection.qml:132"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.telegram_desktop.not_installed",
+      "source_hash": "b8ccc6cc429d4836ea70f44c9cae05f406a0b6dde2341690816e2ddf0520f8a5",
+      "translation_hash": "eeb1f85f355f11caa0fbf8bf5978f777b7e81e4d86e8b74cae94c69ef660f066",
+      "locations": [
+        "src/share/providers/TelegramDesktopProvider.cpp:123"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.telegram_desktop.privacy",
+      "source_hash": "a9973d2a3aa53a5905cd932eb2c089793d83ec1edd826066ed5e11ddf7e844f1",
+      "translation_hash": "a2f4ec8fde788cf1ebdbd7d176c8d009ef21ea05079f645a14dd91cc3334b554",
+      "locations": [
+        "src/share/providers/TelegramDesktopProvider.cpp:132"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.telegram_integrated.bad_runtime",
+      "source_hash": "a6966724586c0f3aebdb45570a7a1d6c2bbbbde7e81ec612fd7edf116069419d",
+      "translation_hash": "b8731da3e7358e2eecbfaaf1d80afc0b94d7179eafa4ef219b036ea8de8c2a28",
+      "locations": [
+        "src/share/providers/TelegramIntegratedProvider.cpp:149"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.telegram_integrated.name",
+      "source_hash": "2a3681e48e3fd3e30a1ac141981d53d7187a2a8981375fa0da59917012507511",
+      "translation_hash": "123053010068b37ad6ee7725c742834bb15a2eae49e79c5ab5059b600ee064e6",
+      "locations": [
+        "src/share/providers/TelegramIntegratedProvider.cpp:91"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.telegram_integrated.no_runtime",
+      "source_hash": "933d9dfdd4a42d293341fada2d04e2ad7631c39704ffcddcfe48c5ce312967b2",
+      "translation_hash": "e32089df9e244cdf19680869ef463015a8f1383e975056ec86485e124123c6b7",
+      "locations": [
+        "src/share/providers/TelegramIntegratedProvider.cpp:144"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.telegram_integrated.privacy",
+      "source_hash": "5e53f4f0e2ddf9fd0a844cd83b6999385a200c006b36fe15dbfb6f58b888c1ef",
+      "translation_hash": "43d758313ba3c4a4920a10193b8da8b03f666a0a34e2d701aff84ac561a2a488",
+      "locations": [
+        "src/share/providers/TelegramIntegratedProvider.cpp:158"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.share.title",
+      "source_hash": "c3c50d7c18e0f0173e1b81913bef5b14ccef0489bc3eca4408587d98135ee134",
+      "translation_hash": "65fc8cd89b06c6b0b7a57f252c5ff9255a2212b0cb0bdf16130f73ed9990ea67",
+      "locations": [
+        "src/ui/qml/components/ShareDialog.qml:347"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.startup.portable_import.failed_title",
       "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
       "translation_hash": "198492d2fcb90540a3448573ef026a611c2640c293f90d1efcbba0f2b4a3e667",
@@ -7158,6 +8858,42 @@
         "src/main.cpp:199"
       ],
       "decision": "corrected"
+    },
+    {
+      "id": "gamehq.steam_input.control.capture",
+      "source_hash": "e7658b6654974089fa21103af59aefa84ac79792d43e22d851eb8d7248837c8e",
+      "translation_hash": "ccb275cacfcf92d6f08e07f146ee6ea403c17a156a17d85028099969ca2c4aaf",
+      "locations": [
+        "src/ui/SteamInputHelper.cpp:57"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.steam_input.control.guide",
+      "source_hash": "822b370b70ff9181b812aea0830c9ea0983ba551bcbb25df2fedcd4ca89133a6",
+      "translation_hash": "1b138d6c757e1f1a9f0c318938481a4c8b1c3b3d258b8bbd57567d6eb8629666",
+      "locations": [
+        "src/ui/SteamInputHelper.cpp:51"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.steam_input.notice.body",
+      "source_hash": "c168dd0a28df871d4a177b56d26385655b09543b34dbff53fc28c768ff957697",
+      "translation_hash": "7cc53a3bf45b2b3165c38128ede1ff6507cad1fc24431233f8f88fac9406c87f",
+      "locations": [
+        "src/ui/SteamInputHelper.cpp:106"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.steam_input.notice.title",
+      "source_hash": "eee351f9081f1e261bfbcfbe8b2c04e4db4dfd696238160aac6a2d84e42e1101",
+      "translation_hash": "7d51bc630505b1cd37412e2e50d24f49aebff8b8b8eed70d7d8995b69e1735bb",
+      "locations": [
+        "src/ui/SteamInputHelper.cpp:101"
+      ],
+      "decision": "accepted"
     },
     {
       "id": "gamehq.tray.exit",
@@ -10414,7 +12150,9 @@
       "id": "gamehq.help.gamepad.square_action",
       "surface": "application",
       "before": "Меню дії (Показати в папці / Видалити)",
-      "after": "Меню дій (Показати в папці / Видалити)",
+      "after": [
+        "Меню дій (Поділитися / Показати в папці / Видалити)"
+      ],
       "category": "natural_ui_register",
       "reason": "Uses natural Ukrainian appropriate to the current English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the uk-UA style guide, termbase, and product behavior contract."
@@ -11251,7 +12989,9 @@
       "id": "gamehq.overlay.hint.browse.keyboard",
       "surface": "application",
       "before": "Ліворуч — захоплення вгору/Down — категорії/games Эн — улюблений M — меню Esc — назад до гри",
-      "after": "Вліво/Вправо — медіафайли | Вгору/Вниз — категорії/ігри | Enter — відкрити | F — в обране | M — меню | Esc — назад до гри",
+      "after": [
+        "Вгору/Вниз — категорії/ігри | Enter — відкрити | F — в обране | M — меню | Esc — назад до гри"
+      ],
       "category": "natural_ui_register",
       "reason": "Uses natural Ukrainian appropriate to the current English meaning, UI location, and control role.",
       "terminology_decision": "The reviewed wording follows the uk-UA style guide, termbase, and product behavior contract."
@@ -14477,6 +16217,136 @@
       "terminology_decision": "The reviewed wording follows the uk-UA style guide, termbase, and product behavior contract."
     },
     {
+      "id": "gamehq.notification.capture_delete_failed.body_one",
+      "surface": "application",
+      "before": [
+        "Файл відкрито в іншій програмі. Закрийте її та спробуйте ще раз."
+      ],
+      "after": [
+        "Не вдалося видалити файл. Можливо, його використовує інша програма. Закрийте програму, яка його використовує, і спробуйте ще раз."
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
+      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
+    },
+    {
+      "id": "gamehq.notification.capture_delete_failed.body_many",
+      "surface": "application",
+      "before": [
+        "Деякі файли відкрито в інших програмах. Закрийте їх та спробуйте ще раз."
+      ],
+      "after": [
+        "Деякі файли не вдалося видалити. Можливо, їх використовують інші програми. Закрийте програми, які їх використовують, і спробуйте ще раз."
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
+      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
+    },
+    {
+      "id": "gamehq.settings.sharing.disconnect.description",
+      "surface": "application",
+      "before": [
+        "Виконує вихід GameHQ і видаляє локальний сеанс. Вимкнення місця призначення цього не робить."
+      ],
+      "after": [
+        "Виконує вихід із підключеного облікового запису в GameHQ і видаляє локальний сеанс. Саме вимкнення місця призначення цього не робить."
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Corrected after an independent reviewer pass over the Share, Sharing settings and Telegram account strings against the English source and UI context.",
+      "terminology_decision": "Share, connect/disconnect, credential-store and add-on terminology matched to the existing locale catalog."
+    },
+    {
+      "id": "gamehq.settings.sharing.providers.description",
+      "surface": "application",
+      "before": [
+        "Вимкнення місця призначення лише приховує його. Збережені облікові записи й канали зберігаються, доки ви їх не від’єднаєте або не видалите."
+      ],
+      "after": [
+        "Вимкнення місця призначення лише приховує його. Збережені облікові записи залишаються, доки ви їх не від’єднаєте, а канали — доки не видалите."
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Corrected after an independent reviewer pass over the Share, Sharing settings and Telegram account strings against the English source and UI context.",
+      "terminology_decision": "Share, connect/disconnect, credential-store and add-on terminology matched to the existing locale catalog."
+    },
+    {
+      "id": "gamehq.settings.telegram.description",
+      "surface": "application",
+      "before": [
+        "Надсилайте медіафайли з GameHQ просто своїм контактам у Telegram. GameHQ не показує чати й повідомлення та не надсилає нічого, що ви не вибрали. Це виконує вхід у весь ваш обліковий запис Telegram, тому підключайте лише той обліковий запис, з яким вам комфортно."
+      ],
+      "after": [
+        "Надсилайте медіафайли з GameHQ прямо своїм контактам у Telegram. GameHQ не показує чатів чи повідомлень і надсилає лише вибраний вами медіафайл. Ця функція створює в цій програмі повний сеанс вашого облікового запису Telegram, тому підключайте лише той обліковий запис, для якого ви приймаєте такий рівень доступу."
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Corrected after an independent reviewer pass over the Share, Sharing settings and Telegram account strings against the English source and UI context.",
+      "terminology_decision": "Share, connect/disconnect, credential-store and add-on terminology matched to the existing locale catalog."
+    },
+    {
+      "id": "gamehq.settings.telegram.error.no_runtime",
+      "surface": "application",
+      "before": [
+        "Необов’язковий компонент Telegram не встановлено в цьому GameHQ."
+      ],
+      "after": [
+        "Необов’язковий компонент Telegram не встановлено в цій інсталяції GameHQ."
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Corrected after an independent reviewer pass over the Share, Sharing settings and Telegram account strings against the English source and UI context.",
+      "terminology_decision": "Share, connect/disconnect, credential-store and add-on terminology matched to the existing locale catalog."
+    },
+    {
+      "id": "gamehq.settings.telegram.forget",
+      "surface": "application",
+      "before": [
+        "Забути ID API і хеш"
+      ],
+      "after": [
+        "Видалити ID API і хеш"
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Corrected after an independent reviewer pass over the Share, Sharing settings and Telegram account strings against the English source and UI context.",
+      "terminology_decision": "Share, connect/disconnect, credential-store and add-on terminology matched to the existing locale catalog."
+    },
+    {
+      "id": "gamehq.share.discord_webhook.privacy",
+      "surface": "application",
+      "before": [
+        "Публікує в каналі як вебхук, а не від вашого облікового запису Discord. Матеріал бачитимуть усі в каналі."
+      ],
+      "after": [
+        "Публікує в каналі через вебхук, а не від імені вашого облікового запису Discord. Матеріал бачитимуть усі учасники каналу."
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Corrected after an independent reviewer pass over the Share, Sharing settings and Telegram account strings against the English source and UI context.",
+      "terminology_decision": "Share, connect/disconnect, credential-store and add-on terminology matched to the existing locale catalog."
+    },
+    {
+      "id": "gamehq.share.outcome.cancelled",
+      "surface": "application",
+      "before": [
+        "Надсилання скасовано. Нічого не надіслано."
+      ],
+      "after": [
+        "Поширення скасовано. Нічого не надіслано."
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Corrected after an independent reviewer pass over the Share, Sharing settings and Telegram account strings against the English source and UI context.",
+      "terminology_decision": "Share, connect/disconnect, credential-store and add-on terminology matched to the existing locale catalog."
+    },
+    {
+      "id": "gamehq.share.settings.title",
+      "surface": "application",
+      "before": [
+        "Куди поділитися"
+      ],
+      "after": [
+        "Місця для поширення"
+      ],
+      "category": "independent_reviewer_correction",
+      "reason": "Corrected after an independent reviewer pass over the Share, Sharing settings and Telegram account strings against the English source and UI context.",
+      "terminology_decision": "Share, connect/disconnect, credential-store and add-on terminology matched to the existing locale catalog."
+    },
+    {
       "id": "GameHQNothingRemoved",
       "surface": "installer",
       "before": "Нічого не видалено — установлена копія лишилася без змін.",
@@ -14592,40 +16462,14 @@
       "category": "natural_ui_register",
       "reason": "Uses natural, consistent Ukrainian appropriate to this auxiliary UI surface.",
       "terminology_decision": "Auxiliary wording follows the same Ukrainian terminology and neutral register as the application."
-    },
-    {
-      "id": "gamehq.notification.capture_delete_failed.body_one",
-      "surface": "application",
-      "before": [
-        "Файл відкрито в іншій програмі. Закрийте її та спробуйте ще раз."
-      ],
-      "after": [
-        "Не вдалося видалити файл. Можливо, його використовує інша програма. Закрийте програму, яка його використовує, і спробуйте ще раз."
-      ],
-      "category": "independent_reviewer_correction",
-      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
-      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
-    },
-    {
-      "id": "gamehq.notification.capture_delete_failed.body_many",
-      "surface": "application",
-      "before": [
-        "Деякі файли відкрито в інших програмах. Закрийте їх та спробуйте ще раз."
-      ],
-      "after": [
-        "Деякі файли не вдалося видалити. Можливо, їх використовують інші програми. Закрийте програми, які їх використовують, і спробуйте ще раз."
-      ],
-      "category": "independent_reviewer_correction",
-      "reason": "Reworded after independent review: the first wording asserted that the file was open in another program, but the delete can also fail on permissions, read-only files or antivirus hold-offs. The text now offers that cause as a possibility and names the action to try.",
-      "terminology_decision": "Keep the tentative modality of the English source and make the object of ‘close’ unambiguously the program, not the file."
     }
   ],
   "surfaces": [
     {
       "surface": "application",
       "path": "i18n/app/gamehq_uk_UA.ts",
-      "sha256": "8cf14b6e30293a09dacc5be020a5275c0ad874acfbbb5be85ea0abedd071cc6c",
-      "reviewed_units": 857
+      "sha256": "5a4d55623a5a98029165e25afd3164e4e6569910a5cf72848324bee6ad98064d",
+      "reviewed_units": 1049
     },
     {
       "surface": "installer",

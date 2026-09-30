@@ -4041,7 +4041,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.presets.game.fallback">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="125"></location>
       <source>Follow the chain below the game</source>
-      <translation>跟隨遊戲之下的鏈</translation>
+      <translation>跟隨遊戲之下的遞補鏈</translation>
     </message>
     <message id="gamehq.settings.presets.game.fallback_description">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="321"></location>
@@ -4087,7 +4087,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.presets.library.label">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="466"></location>
       <source>Preset library</source>
-      <translation>預設資料庫</translation>
+      <translation>預設庫</translation>
     </message>
     <message id="gamehq.settings.presets.library.pending_edit">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="397"></location>

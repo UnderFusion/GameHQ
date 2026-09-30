@@ -4041,7 +4041,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.presets.game.fallback">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="125"></location>
       <source>Follow the chain below the game</source>
-      <translation>跟随游戏之下的链条</translation>
+      <translation>跟随游戏之下的回退链</translation>
     </message>
     <message id="gamehq.settings.presets.game.fallback_description">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="321"></location>
@@ -4224,7 +4224,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.presets.sharing.both">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="163"></location>
       <source>Used by %1 target(s) and %2 game(s). Editing it changes all of them.</source>
-      <translation>已被 %1 个目标和 %2 款游戏使用。对此预设的修改将应用到所有这些目标和游戏。</translation>
+      <translation>已被 %1 项分配和 %2 款游戏使用。对此预设的修改将应用到所有这些分配和游戏。</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.duplicate">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="448"></location>
@@ -4244,7 +4244,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.presets.sharing.targets">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="170"></location>
       <source>Used by %1 target(s). Editing it changes all of them, or duplicate it for this controller.</source>
-      <translation>已被 %1 个目标使用。编辑后这些都会改变，也可以为此手柄复制一份。</translation>
+      <translation>已被 %1 项分配使用。编辑后这些都会改变，也可以为此手柄复制一份。</translation>
     </message>
     <message id="gamehq.settings.presets.title">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="30"></location>

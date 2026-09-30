@@ -4224,7 +4224,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.presets.sharing.both">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="163"></location>
       <source>Used by %1 target(s) and %2 game(s). Editing it changes all of them.</source>
-      <translation>%1 hedef ve %2 oyun tarafından kullanılıyor. Bu ön ayardaki değişiklikler tüm bu hedeflere ve oyunlara uygulanır.</translation>
+      <translation>%1 atama ve %2 oyun tarafından kullanılıyor. Bu ön ayardaki değişiklikler tüm bu atamalara ve oyunlara uygulanır.</translation>
     </message>
     <message id="gamehq.settings.presets.sharing.duplicate">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="448"></location>
@@ -4244,7 +4244,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.presets.sharing.targets">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="170"></location>
       <source>Used by %1 target(s). Editing it changes all of them, or duplicate it for this controller.</source>
-      <translation>%1 hedef tarafından kullanılıyor. Düzenlemek hepsini değiştirir veya bu kumanda için çoğaltın.</translation>
+      <translation>%1 atama tarafından kullanılıyor. Düzenlemek hepsini değiştirir; ya da bu kumanda için çoğaltabilirsiniz.</translation>
     </message>
     <message id="gamehq.settings.presets.title">
       <location filename="src/ui/qml/settings/MappingPresetSection.qml" line="30"></location>
