@@ -114,9 +114,9 @@
       <translation>İptal</translation>
     </message>
     <message id="gamehq.action.delete">
-      <location filename="src/ui/qml/Main.qml" line="1280"></location>
-      <location filename="src/ui/qml/Main.qml" line="1299"></location>
-      <location filename="src/ui/qml/Main.qml" line="1337"></location>
+      <location filename="src/ui/qml/Main.qml" line="1286"></location>
+      <location filename="src/ui/qml/Main.qml" line="1305"></location>
+      <location filename="src/ui/qml/Main.qml" line="1343"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1015"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
@@ -1332,8 +1332,8 @@
       <translation>%1 MB</translation>
     </message>
     <message id="gamehq.format.version_short">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="131"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="137"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="132"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="138"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="174"></location>
       <source>v%1</source>
       <translation>v%1</translation>
@@ -1344,19 +1344,19 @@
       <translation>Klasör ekle…</translation>
     </message>
     <message id="gamehq.gallery.action.bulk_select">
-      <location filename="src/ui/qml/Main.qml" line="1339"></location>
+      <location filename="src/ui/qml/Main.qml" line="1345"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="40"></location>
       <source>Bulk select</source>
       <translation>Toplu seçim</translation>
     </message>
     <message id="gamehq.gallery.action.share">
-      <location filename="src/ui/qml/Main.qml" line="1333"></location>
+      <location filename="src/ui/qml/Main.qml" line="1339"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="15"></location>
       <source>Share</source>
       <translation>Paylaş</translation>
     </message>
     <message id="gamehq.gallery.action.show_in_folder">
-      <location filename="src/ui/qml/Main.qml" line="1335"></location>
+      <location filename="src/ui/qml/Main.qml" line="1341"></location>
       <location filename="src/ui/qml/components/OverlayActionMenu.qml" line="17"></location>
       <source>Show in folder</source>
       <translation>Klasörde göster</translation>
@@ -1369,14 +1369,14 @@
       <translation>%1 · %2</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.message">
-      <location filename="src/ui/qml/Main.qml" line="1268"></location>
+      <location filename="src/ui/qml/Main.qml" line="1274"></location>
       <source>%1 · %2
 This permanently deletes the file.</source>
       <translation>%1 · %2
 Bu işlem dosyayı kalıcı olarak siler.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
-      <location filename="src/ui/qml/Main.qml" line="1278"></location>
+      <location filename="src/ui/qml/Main.qml" line="1284"></location>
       <location filename="src/ui/qml/OverlayWindow.qml" line="1013"></location>
       <source>Delete capture?</source>
       <translation>Çekim silinsin mi?</translation>
@@ -1391,7 +1391,7 @@ Bu işlem geri alınamaz.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
-      <location filename="src/ui/qml/Main.qml" line="1297"></location>
+      <location filename="src/ui/qml/Main.qml" line="1303"></location>
       <source>Delete selected captures?</source>
       <translation>Seçili çekimler silinsin mi?</translation>
     </message>
@@ -2054,7 +2054,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>%1 paylaşılır: %2 = %3, %4 = %5.</translation>
     </message>
     <message id="gamehq.library.folder_dialog.title">
-      <location filename="src/ui/qml/Main.qml" line="1248"></location>
+      <location filename="src/ui/qml/Main.qml" line="1254"></location>
       <location filename="src/ui/qml/settings/LibrarySettingsPage.qml" line="149"></location>
       <source>Choose a folder to watch</source>
       <translation>İzlenecek bir klasör seçin</translation>
@@ -2062,14 +2062,14 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.navigation.about">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="174"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="206"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="140"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="141"></location>
       <location filename="src/ui/qml/components/DesktopSidebar.qml" line="386"></location>
       <source>About</source>
       <translation>Hakkında</translation>
     </message>
     <message id="gamehq.navigation.category.all">
       <location filename="src/ui/qml/Main.qml" line="199"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="84"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="85"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
       <source>All</source>
       <translation>Tümü</translation>
@@ -2111,7 +2111,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Ekran görüntüleri</translation>
     </message>
     <message id="gamehq.navigation.games">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="232"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="233"></location>
       <location filename="src/ui/qml/components/OverlaySidebar.qml" line="73"></location>
       <source>Games</source>
       <translation>Oyunlar</translation>
@@ -2123,7 +2123,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Yardım</translation>
     </message>
     <message id="gamehq.navigation.settings">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="361"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="362"></location>
       <source>Settings</source>
       <translation>Ayarlar</translation>
     </message>
@@ -2150,12 +2150,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>GameHQ'yu destekle</translation>
     </message>
     <message id="gamehq.navigation.tools.hide">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="307"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="308"></location>
       <source>Hide tools</source>
       <translation>Araçları gizle</translation>
     </message>
     <message id="gamehq.navigation.tools.show">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="305"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="306"></location>
       <source>Show tools</source>
       <translation>Araçları göster</translation>
     </message>
@@ -2562,7 +2562,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Ekran durumunu yenile</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.title">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="348"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="349"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="108"></location>
       <source>Tools</source>
       <translation>Araçlar</translation>
@@ -3816,7 +3816,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Değişiklikler GameHQ genelinde hemen uygulanır.</translation>
     </message>
     <message id="gamehq.settings.language.system">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="454"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="455"></location>
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="40"></location>
       <source>System language</source>
       <translation>Sistem dili</translation>
@@ -5483,7 +5483,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     </message>
     <message id="gamehq.update.status.update_available">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="163"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="135"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="136"></location>
       <source>Update available</source>
       <translation>Güncelleme mevcut</translation>
     </message>

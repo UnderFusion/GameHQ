@@ -497,7 +497,7 @@ ApplicationWindow {
         // Snap the cursor to the row that's currently active so entering the
         // sidebar always lands on the row the user is already looking at.
         if (window.settingsOpen) {
-            window.sidebarHoverIndex = window.toolsToggleIndex() + (window.toolsCollapsed ? 0 : 1)
+            window.sidebarHoverIndex = window.toolsToggleIndex() + 1
         } else if (window.helpOpen) {
             window.sidebarHoverIndex = window.toolsToggleIndex() + (window.toolsCollapsed ? 0 : 2)
         } else {
@@ -603,27 +603,33 @@ ApplicationWindow {
         if (total <= 0)
             return
         let next = (window.sidebarHoverIndex + direction + total) % total
-        // Collapsed tools: Settings/Help/About/Support are hidden, skip them.
-        const first = window.toolsToggleIndex() + 1
-        while (window.toolsCollapsed && next >= first && next <= first + 3)
+        // Collapsed tools: Help/About/Support and the language row are hidden.
+        while (window.isFoldedToolRow(next))
             next = (next + direction + total) % total
         window.sidebarHoverIndex = next
         sounds.play("nav_tick")
     }
 
-    // Tools group (Settings, Help, About, Support) collapsed behind the
+    // Tools group (Help, About, Support, language; Settings stays) collapsed behind the
     // divider toggle; persisted as ui.main_tools_collapsed.
     property bool toolsCollapsed: {
         const v = app.config("ui.main_tools_collapsed", false)
         return v === true || v === "true"
     }
+    // Rows the folded tools group hides: Help, About, Support (T+2..T+4) and
+    // the language selector (T+6). Settings (T+1) and the mode toggle stay.
+    function isFoldedToolRow(i) {
+        const t = window.toolsToggleIndex()
+        return window.toolsCollapsed && ((i >= t + 2 && i <= t + 4) || i === t + 6)
+    }
+
     function toggleTools() {
         window.toolsCollapsed = !window.toolsCollapsed
         app.setConfig("ui.main_tools_collapsed", window.toolsCollapsed)
-        const first = window.toolsToggleIndex() + 1
-        if (window.toolsCollapsed && window.sidebarHoverIndex >= first
-                && window.sidebarHoverIndex <= first + 3)
+        if (window.isFoldedToolRow(window.sidebarHoverIndex))
             window.sidebarHoverIndex = window.toolsToggleIndex()
+        if (window.toolsCollapsed && window.sidebarLanguageListOpen())
+            window.closeSidebarLanguageList()
         sounds.play("nav_tick")
     }
 
