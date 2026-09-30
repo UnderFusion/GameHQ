@@ -39,6 +39,7 @@
 #include <QtTest>
 #include <QAbstractListModel>
 #include <QGuiApplication>
+#include <QCursor>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQuickItem>
@@ -51,6 +52,7 @@
 #include <memory>
 
 #include "input/InputDiagnostics.h"
+#include "notify/NotificationCenter.h"
 #include "overlay/ForegroundAcquirer.h"
 #include "overlay/ForegroundApi.h"
 #include "overlay/OverlayManager.h"
@@ -353,17 +355,18 @@ public:
     };
 
     using QAbstractListModel::QAbstractListModel;
+    QList<int> rows{0, 1, 2};
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override
     {
-        return parent.isValid() ? 0 : 3;
+        return parent.isValid() ? 0 : rows.size();
     }
 
     QVariant data(const QModelIndex& index, int role) const override
     {
-        if (!index.isValid() || index.row() < 0 || index.row() > 2)
+        if (!index.isValid() || index.row() < 0 || index.row() >= rows.size())
             return QVariant();
-        const bool isVideo = index.row() < 2;
+        const bool isVideo = rows.at(index.row()) < 2;
         switch (role) {
         case ThumbnailRole:
             return QString();
@@ -390,14 +393,21 @@ public:
     }
 
     Q_INVOKABLE void setFilter(const QString&, int = -1) {}
-    Q_INVOKABLE void toggleFavorite(int) {}
+    Q_INVOKABLE void toggleFavorite(int row) {
+        if (row < 0 || row >= rows.size()) return;
+        // This fixture represents the Favorites filter: unpinning removes a row.
+        beginRemoveRows({}, row, row);
+        rows.removeAt(row);
+        endRemoveRows();
+    }
 
     Q_INVOKABLE QVariantMap get(int row) const
     {
-        if (row < 0 || row > 2)
+        if (row < 0 || row >= rows.size())
             return QVariantMap();
-        const bool isVideo = row < 2;
+        const bool isVideo = rows.at(row) < 2;
         QVariantMap record;
+        record.insert(QStringLiteral("filePath"), QStringLiteral("fixture-%1").arg(rows.at(row)));
         record.insert(QStringLiteral("fileUrl"), QVariant());
         record.insert(QStringLiteral("captureType"),
                       isVideo ? QStringLiteral("video") : QStringLiteral("screenshot"));
@@ -406,6 +416,11 @@ public:
         record.insert(QStringLiteral("thumbnail"), QString());
         record.insert(QStringLiteral("favorite"), false);
         return record;
+    }
+    Q_INVOKABLE int rowOf(const QString& path) const {
+        for (int row = 0; row < rows.size(); ++row)
+            if (get(row).value(QStringLiteral("filePath")).toString() == path) return row;
+        return -1;
     }
 };
 
@@ -450,6 +465,7 @@ public:
     Qt::LayoutDirection layoutDirection() const { return Qt::LeftToRight; }
     int translationRevision() const { return 0; }
     Q_INVOKABLE QString formatDuration(int) const { return QStringLiteral("0:00"); }
+    Q_INVOKABLE QString formatDateTime(const QDateTime&) const { return QStringLiteral("2026-09-30"); }
 };
 
 // ---------------------------------------------------------------------------
@@ -604,6 +620,20 @@ private:
 // ---------------------------------------------------------------------------
 // The overlay under test: shipped manager + presenter + QML.
 // ---------------------------------------------------------------------------
+class StubShareService : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(bool busy READ busy CONSTANT)
+    Q_PROPERTY(QString fileName READ fileName CONSTANT)
+public:
+    bool busy() const { return false; }
+    QString fileName() const { return {}; }
+    Q_INVOKABLE void close() {}
+signals:
+    void targetsChanged();
+    void finished(const QVariantMap& result);
+};
+
 struct OverlayHarness
 {
     // Declaration order is destruction order, reversed: the stubs must outlive
@@ -613,6 +643,7 @@ struct OverlayHarness
     StubInput input;
     StubSounds sounds;
     StubLanguageManager language;
+    StubShareService share;
     std::unique_ptr<OverlayManager> manager;
     QQmlApplicationEngine engine;
 
@@ -681,6 +712,8 @@ private slots:
     void nativeHandleRecreationIsRepairedByTheShowPath();
     void destroyedTargetHandlesAreNeverReused();
     void targetKeepsWorkingWhileTheOverlayIsOpen();
+    void notificationsTakeClicksWithoutTakingForeground();
+    void unfavoritingTheShownCaptureKeepsTheViewerValid();
     void overlayFollowsAGameOnAnotherScreenWhenOneExists();
     // cpo-o06c
     void exclusiveGameInputPolicyIsScopedToTheInteractiveOverlay();
@@ -707,6 +740,7 @@ private:
         harness->engine.rootContext()->setContextProperty(QStringLiteral("sounds"), &harness->sounds);
         harness->engine.rootContext()->setContextProperty(QStringLiteral("languageManager"),
                                                           &harness->language);
+        harness->engine.rootContext()->setContextProperty(QStringLiteral("shareService"), &harness->share);
         harness->manager = std::make_unique<OverlayManager>(&harness->engine, foregroundApi);
         harness->engine.rootContext()->setContextProperty(QStringLiteral("overlay"),
                                                           harness->manager.get());
@@ -1181,6 +1215,86 @@ void NativeOverlayTest::targetKeepsWorkingWhileTheOverlayIsOpen()
     QTRY_VERIFY_WITH_TIMEOUT(!harness->manager->isVisible(), 5000);
     expectTargetForeground();
     expectTargetStillOnScreen();
+}
+
+void NativeOverlayTest::unfavoritingTheShownCaptureKeepsTheViewerValid()
+{
+    if (!m_fixture.forceTargetForeground())
+        QSKIP("this session cannot put the fixture window in the foreground");
+    auto harness = makeHarness();
+    showOverlay(*harness);
+    auto* viewer = findItemByClass(harness->window()->contentItem(), "OverlayViewer");
+    QVERIFY(viewer);
+    QVERIFY(QMetaObject::invokeMethod(viewer, "openAt", Q_ARG(QVariant, QVariant(1))));
+    QVERIFY(viewer->property("open").toBool());
+    QVERIFY(QMetaObject::invokeMethod(viewer, "toggleFavorite"));
+    QCOMPARE(harness->gallery.rowCount(), 2);
+    QCOMPARE(viewer->property("index").toInt(), 1);
+    QVERIFY(!viewer->property("currentIsVideo").toBool()); // next remaining capture
+    QVERIFY(QMetaObject::invokeMethod(viewer, "toggleFavorite"));
+    QCOMPARE(viewer->property("index").toInt(), 0); // last row clamps backward
+    QVERIFY(QMetaObject::invokeMethod(viewer, "toggleFavorite"));
+    QCOMPARE(harness->gallery.rowCount(), 0);
+    QVERIFY(!viewer->property("open").toBool());
+    harness->manager->hide();
+    expectTargetForeground();
+}
+
+void NativeOverlayTest::notificationsTakeClicksWithoutTakingForeground()
+{
+    if (!m_fixture.forceTargetForeground())
+        QSKIP("this session cannot put the fixture window in the foreground");
+    CURSORINFO cursorInfo{};
+    cursorInfo.cbSize = sizeof(cursorInfo);
+    if (!GetCursorInfo(&cursorInfo) || !(cursorInfo.flags & CURSOR_SHOWING))
+        QSKIP("the mouse-close path needs a visible desktop cursor");
+    struct RestoreCursor {
+        QPoint position = QCursor::pos();
+        ~RestoreCursor() { QCursor::setPos(position); }
+    } restoreCursor;
+    QCursor::setPos(QGuiApplication::primaryScreen()->availableGeometry().topLeft() + QPoint(10, 10));
+    StubAppController app;
+    StubLanguageManager language;
+    std::unique_ptr<NotificationCenter> notificationOwner;
+    QQmlApplicationEngine engine;
+    notificationOwner = std::make_unique<NotificationCenter>(&engine);
+    auto& notifications = *notificationOwner;
+    engine.addImportPath(QStringLiteral(":/qt/qml"));
+    engine.rootContext()->setContextProperty(QStringLiteral("app"), &app);
+    engine.rootContext()->setContextProperty(QStringLiteral("languageManager"), &language);
+    engine.rootContext()->setContextProperty(QStringLiteral("notifications"), &notifications);
+    notifications.post(42, QStringLiteral("Native close regression"));
+    QQuickWindow* toastWindow = nullptr;
+    for (auto* root : engine.rootObjects())
+        if (root->objectName() == QStringLiteral("gamehqToasts"))
+            toastWindow = qobject_cast<QQuickWindow*>(root);
+    QVERIFY(toastWindow);
+    QTRY_VERIFY(toastWindow->isVisible());
+    QVERIFY(toastWindow->flags().testFlag(Qt::WindowTransparentForInput));
+    QVERIFY(toastWindow->flags().testFlag(Qt::WindowDoesNotAcceptFocus));
+    expectTargetForeground();
+    QTRY_VERIFY(notifications.stackRect().height() > 0);
+    QCursor::setPos(toastWindow->mapToGlobal(notifications.stackRect().center().toPoint()));
+    QTRY_VERIFY(notifications.pointerInside());
+    QVERIFY(!toastWindow->flags().testFlag(Qt::WindowTransparentForInput));
+    QVERIFY(toastWindow->flags().testFlag(Qt::WindowDoesNotAcceptFocus));
+    expectTargetForeground();
+    // Leaving restores native click-through, and entering again enables the X.
+    QCursor::setPos(toastWindow->mapToGlobal(QPoint(1, 1)));
+    QTRY_VERIFY(!notifications.pointerInside());
+    QVERIFY(toastWindow->flags().testFlag(Qt::WindowTransparentForInput));
+    expectTargetForeground();
+    QCursor::setPos(toastWindow->mapToGlobal(notifications.stackRect().center().toPoint()));
+    QTRY_VERIFY(notifications.pointerInside());
+    auto* closeArea = findItemByClass(toastWindow->contentItem(), "MouseArea");
+    QVERIFY(closeArea);
+    QTRY_VERIFY(closeArea->isVisible() && closeArea->isEnabled());
+    QTest::mouseClick(toastWindow, Qt::LeftButton, Qt::NoModifier,
+                     closeArea->mapToScene(QPointF(closeArea->width() / 2, closeArea->height() / 2)).toPoint());
+    QTRY_COMPARE(notifications.visibleToasts()->rowCount(), 0);
+    QVERIFY(!toastWindow->isVisible());
+    QVERIFY(toastWindow->flags().testFlag(Qt::WindowTransparentForInput));
+    expectTargetForeground();
 }
 
 void NativeOverlayTest::overlayFollowsAGameOnAnotherScreenWhenOneExists()

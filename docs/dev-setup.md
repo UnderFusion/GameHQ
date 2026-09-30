@@ -152,6 +152,16 @@ payload-read counter — not the allocation count — is the primary evidence.
 
 ## MSVC note
 
+For a release hardening pass, configure a new build directory with
+`GAMEHQ_BUILD_TESTS=ON`, build its default target (the application and every
+test executable), then run `ctest --test-dir <build-directory> --output-on-failure`.
+The normal CTest run includes the QML interface-scaling and overlay-layout
+suites. `tst_recentui` executes the shipped sidebar and modal-routing functions;
+`tst_overlaynative` loads the shipped overlay, viewer and toast QML against a
+separate Win32 target process. Native tests use the interactive desktop and
+temporarily move focus and the cursor. Physical controller delivery and the
+cross-monitor case on a single-screen machine remain separate evidence.
+
 The production project currently uses the MinGW raw-ABI path for Windows
 Graphics Capture and Media Foundation. CMake remains compiler-agnostic if a
 future migration to an MSVC Qt kit becomes useful.

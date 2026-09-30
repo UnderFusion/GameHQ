@@ -32,6 +32,21 @@ not passed. See [the evidence and focused DSX retest](testing/dsx-switching-0.7.
 
 ## Windows implementation
 
+The Main and Overlay sidebars each remember their own mode and expanded width.
+The default mode is Expanded; the button cycles Expanded, Auto, Collapsed.
+Main widths are bounded to 160–360 logical pixels; Overlay widths to 200–420.
+Dragging commits the width on release and double-clicking restores 220/260.
+Restoring settings defaults updates the Main mode, folded Tools group and game
+pin order immediately, without restarting the application.
+
+Overlay options apply and persist live: outer margins 0–96 in steps of 8,
+panel spacing 0–64 in steps of 8, thumbnail scale 70–140% in steps of 10, and
+interface presets 75/90/100/125/150/175/200%. Panel spacing affects only
+sidebar-to-content and strip-to-preview gaps; hiding hints reclaims the footer
+height. An open options panel keeps Auto expanded. Capture menus, Share and
+options own the input while open, including any queued playback command;
+closing them never resumes a paused video automatically.
+
 `OverlayManager` uses `Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint`. `Qt::WindowDoesNotAcceptFocus` was dropped in `cpo-o06b`: it would make Qt refuse keyboard focus even after Windows had handed the overlay the foreground, and the non-activating guarantee never depended on it — `WS_EX_NOACTIVATE` plus `SWP_NOACTIVATE` carry it, applied by the presenter on every present and reassert. `Qt::Tool` stays, so the overlay is out of the taskbar and the Alt-Tab list.
 
 Every production path that shows, positions or raises the overlay goes through one primitive, `OverlayPresenter` (`src/overlay/OverlayPresenter.{h,cpp}`), so no call site re-derives the guarantee. It applies two independent protections on every presentation:

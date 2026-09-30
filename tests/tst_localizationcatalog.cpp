@@ -697,7 +697,9 @@ void LocalizationCatalogTest::sidebarFooterStringsAndExternalLinkAreReleaseReady
     QVERIFY(supportSource.contains(QStringLiteral("Layout.fillWidth: true")));
     QVERIFY(sidebarSource.contains(QStringLiteral("glyph: \"\\u24d8\"")));
     QVERIFY(sidebarSource.contains(QStringLiteral("objectName: \"supportGameHqButton\"")));
-    QVERIFY(sidebarSource.contains(QStringLiteral("Layout.preferredHeight: Theme.s32")));
+    // Folded Tools keeps language in the same row while animating its height.
+    QVERIFY(sidebarSource.contains(QStringLiteral("Layout.preferredHeight: implicitHeight * root.toolsReveal")));
+    QVERIFY(sidebarSource.contains(QStringLiteral("enabled: !root.toolsCollapsed")));
     QVERIFY(sidebarSource.contains(QStringLiteral("Accessible.name: localizedLabel")));
     QVERIFY(sidebarSource.contains(QStringLiteral("ToolTip.text: localizedLabel")));
     // Support is a sidebar row like Settings/Help/About: identical

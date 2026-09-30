@@ -335,8 +335,8 @@ void OverlayInputTest::noDoubleDeliveryInShippedDefaults()
     QVERIFY(stackedActions.contains(QStringLiteral("global.screenshot")));
 }
 
-// The overlay shell's half of the contract: left/right (pad or arrow keys) only
-// ever seeks a focused clip, and L1/R1 is the only route that moves the strip.
+// Left/right seeks a focused clip and browses captures otherwise. L1/R1 always
+// browses captures; both paths remain blocked while a modal panel is open.
 // The real window cannot be instantiated here, so the shipped QML is audited as
 // source - the same approach the lifetime suite uses for the shell.
 void OverlayInputTest::overlayShellKeepsSeekAndCaptureIndependent()
@@ -353,8 +353,8 @@ void OverlayInputTest::overlayShellKeepsSeekAndCaptureIndependent()
              "left/right must be gated on a focused clip");
     QVERIFY2(seek.contains(QLatin1String("content.seekVideo(")),
              "a focused clip is still seekable");
-    QVERIFY2(!seek.contains(QLatin1String("Capture")),
-             "left/right without a focused clip must stay a no-op");
+    QVERIFY2(seek.contains(QLatin1String("content.handleCaptureStep(direction)")),
+             "left/right without a focused clip must browse captures");
 
     const QString gameStep = functionBody(
         source, QStringLiteral("function onOverlayGameStep(direction) {"));
@@ -362,9 +362,8 @@ void OverlayInputTest::overlayShellKeepsSeekAndCaptureIndependent()
     QVERIFY2(gameStep.contains(QLatin1String("content.handleCaptureStep(direction)")),
              "L1/R1 remains the capture switch");
 
-    // Exactly one call site each: nothing else in the shell can step the strip.
-    QVERIFY2(source.count(QLatin1String("content.handleCaptureStep(")) == 1,
-             "the capture step is called from one place only");
+    // Left/right delegates to the same bounded strip route as L1/R1.
+    QCOMPARE(source.count(QLatin1String("content.handleCaptureStep(")), 2);
     QVERIFY2(source.count(QLatin1String("strip.incrementCurrentIndex()")) == 1,
              "only handleCaptureStep steps the strip forward");
     QVERIFY2(source.count(QLatin1String("strip.decrementCurrentIndex()")) == 1,

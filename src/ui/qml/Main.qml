@@ -175,12 +175,17 @@ ApplicationWindow {
     Connections {
         target: app
         function onConfigChanged(key, value) {
+            if (key === "ui.main_sidebar_mode" || key === "ui.main_tools_collapsed")
+                window.refreshSidebarPreferences()
             if (key === "internal.updates.pending_post_update_version") {
                 window.pendingPostUpdateVersion = value
                 window.maybeShowPostUpdateGreeting()
             } else if (key === "internal.ui.whats_new_seen_version") {
                 window.whatsNewSeenVersion = value
             }
+        }
+        function onConfigGroupReset(prefix) {
+            window.refreshSidebarPreferences()
         }
     }
 
@@ -260,6 +265,16 @@ ApplicationWindow {
 
     function normalizedSidebarMode(value) {
         return value === "auto" || value === "collapsed" ? value : "expanded"
+    }
+
+    function refreshSidebarPreferences() {
+        window.sidebarMode = window.normalizedSidebarMode(app.config("ui.main_sidebar_mode", "expanded"))
+        const folded = app.config("ui.main_tools_collapsed", false)
+        window.toolsCollapsed = folded === true || folded === "true"
+        if (window.isFoldedToolRow(window.sidebarHoverIndex))
+            window.sidebarHoverIndex = window.toolsToggleIndex()
+        if (window.toolsCollapsed && window.sidebarLanguageListOpen())
+            window.closeSidebarLanguageList()
     }
 
     function cycleSidebarMode() {
@@ -550,7 +565,7 @@ ApplicationWindow {
         if (gi < 0 || gi >= app.games.length)
             return
         const game = app.games[gi]
-        sounds.play("favorite")
+        sounds.play("nav_tick")
         app.setGamePinned(game.id, !game.pinned)
         const moved = app.games.findIndex(g => g.id === game.id)
         if (moved >= 0)

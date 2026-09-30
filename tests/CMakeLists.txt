@@ -8,6 +8,7 @@
 find_package(Qt6 REQUIRED COMPONENTS Test)
 find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
 
+
 function(gamehq_add_test name)
     add_executable(${name} ${ARGN})
     target_include_directories(${name} PRIVATE
@@ -32,6 +33,20 @@ function(gamehq_add_test name)
         TIMEOUT 120
         ENVIRONMENT_MODIFICATION "PATH=path_list_prepend:$<TARGET_FILE_DIR:Qt6::Core>")
 endfunction()
+
+# Execute recent sidebar navigation and layout guards from production QML.
+gamehq_add_test(tst_recentui tst_recentui.cpp)
+target_link_libraries(tst_recentui PRIVATE Qt6::Qml)
+target_compile_definitions(tst_recentui PRIVATE GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
+
+# Include the existing QML layout suites in the complete CTest run.
+find_program(GAMEHQ_QMLTESTRUNNER NAMES qmltestrunner HINTS "${CMAKE_PREFIX_PATH}/bin" REQUIRED)
+foreach(suite IN ITEMS interfacescaling overlaylayout)
+    add_test(NAME tst_${suite}
+        COMMAND "${GAMEHQ_QMLTESTRUNNER}" -input "${CMAKE_SOURCE_DIR}/tests/qml/tst_${suite}.qml"
+                -import "${CMAKE_SOURCE_DIR}/tests/qml/imports" -platform offscreen)
+    set_tests_properties(tst_${suite} PROPERTIES TIMEOUT 120)
+endforeach()
 
 gamehq_add_test(tst_gameidentity
     tst_gameidentity.cpp
@@ -386,11 +401,11 @@ foreach(unit IN ITEMS
     MappingPresetMaterializer MappingAssignmentResolver MappingPresetModel
     BindingPattern BindingRelation ContextOverrideCatalog InputPatternRecognizer
     ActionCatalog ControlId ControllerIdentity GestureTiming HotkeyManager
-    DualSenseDevice XInputDevice WinMMDevice RawInputApi HidCloakMonitor
+    DualSenseDevice SonyHidReader XInputDevice WinMMDevice RawInputApi HidCloakMonitor
     SelectiveRawHidFallback RawHidBindingCatalog ProviderIntegration
     PhysicalControllerRegistry CapabilityEventRouter ExtraButtonCatalog
     InputDiagnostics InputRateMonitor PerfTrace EventLoopStallMonitor
-    DefaultBindings OverlayInputPolicy)
+    DefaultBindings OverlayInputPolicy SteamInputAdvice)
     target_sources(tst_inputengineshutdown PRIVATE "${CMAKE_SOURCE_DIR}/src/input/${unit}.cpp")
 endforeach()
 foreach(unit IN ITEMS GameInputRouter ProductionGameInputApi GameInputWrapper
@@ -1496,6 +1511,8 @@ set_target_properties(overlay_target_fixture PROPERTIES WIN32_EXECUTABLE TRUE)
 
 gamehq_add_test(tst_overlaynative
     tst_overlaynative.cpp
+    "${CMAKE_SOURCE_DIR}/src/notify/NotificationCenter.cpp"
+    "${CMAKE_SOURCE_DIR}/src/notify/ToastModel.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/ForegroundAcquirer.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/ForegroundApi.cpp"
     "${CMAKE_SOURCE_DIR}/src/overlay/OverlayFocusTrace.cpp"
@@ -1519,7 +1536,7 @@ set_tests_properties(tst_overlaynative PROPERTIES TIMEOUT 600)
 # an explicit resource tree, with the qmldir listing the module's singletons.
 file(GENERATE
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/overlay_qml_module/qmldir"
-    CONTENT "module GameHQ\nsingleton Theme 1.0 Theme.qml\nsingleton Brand 1.0 Brand.qml\nOverlayWindow 1.0 OverlayWindow.qml\n")
+    CONTENT "module GameHQ\nsingleton Theme 1.0 Theme.qml\nsingleton Brand 1.0 Brand.qml\nOverlayWindow 1.0 OverlayWindow.qml\nToastWindow 1.0 ToastWindow.qml\n")
 qt_add_resources(tst_overlaynative "overlay_qml_module"
     PREFIX "/qt/qml/GameHQ"
     BASE "${CMAKE_CURRENT_BINARY_DIR}/overlay_qml_module"
@@ -1529,6 +1546,11 @@ qt_add_resources(tst_overlaynative "overlay_qml"
     BASE "${CMAKE_SOURCE_DIR}/src/ui/qml"
     FILES
         "${CMAKE_SOURCE_DIR}/src/ui/qml/OverlayWindow.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/ToastWindow.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/Toast.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/ShareDialog.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/OverlayViewer.qml"
+        "${CMAKE_SOURCE_DIR}/src/ui/qml/components/PinGlyph.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/Theme.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/Brand.qml"
         "${CMAKE_SOURCE_DIR}/src/ui/qml/components/ScaledSurface.qml"

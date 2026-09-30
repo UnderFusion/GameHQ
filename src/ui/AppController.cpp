@@ -93,6 +93,10 @@ AppController::AppController(CaptureDatabase* db, CaptureScanner* scanner,
         qWarning() << "Release notes:" << releaseNotesError;
     connect(m_config, &ConfigManager::valueChanged,
             this, &AppController::configChanged);
+    connect(m_config, &ConfigManager::valueChanged, this, [this](const QString& key) {
+        if (key == ConfigKeys::UiPinnedGames)
+            emit gamesChanged();
+    });
     connect(m_config, &ConfigManager::groupReset,
             this, &AppController::configGroupReset);
     connect(m_locations, &CaptureLocations::locationsChanged,
@@ -570,7 +574,6 @@ void AppController::setGamePinned(int gameId, bool pinned)
         m_config->setValue(ConfigKeys::UiPinnedGames, after);
         m_config->save();
         qInfo() << "Games:" << (pinned ? "pinned" : "unpinned") << g.name;
-        emit gamesChanged();
         return;
     }
 }

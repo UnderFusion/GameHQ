@@ -57,6 +57,13 @@ or gallery updates. A final result for an evicted row is not shown again.
 
 ## Validation
 
+`tst_overlaynative::notificationsTakeClicksWithoutTakingForeground` loads the
+production toast window, moves the visible cursor into and out of the stack,
+checks that Qt click-through toggles both ways while the fixture game keeps
+foreground, and clicks the actual close control. It also verifies that the
+empty stack hides and restores click-through. This native case requires an
+interactive desktop with a visible cursor.
+
 `tst_notificationcenter` checks row-preserving updates, large ids, duplicates,
 unknown/evicted ids, stale dismissals, ordinary posts and a 20-post burst under a
 configurable cap. `tst_captureacknowledgement` also verifies request ids on gated
