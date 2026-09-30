@@ -21,10 +21,6 @@ constexpr int kSampleMs = 8;
 constexpr size_t kMaxQueuedSamples = 512;
 constexpr int kRescanMs = 2000;
 constexpr UINT kMaxSlots = 16;
-// Scans after a topology change that reload the WinMM joystick list. A
-// Bluetooth pad can take several seconds after arrival to start reporting,
-// so the reload is repeated on the next safety-net ticks (~6 s in total).
-constexpr int kConfigReloadScans = 3;
 
 quint32 mapWinMMState(const JOYINFOEX& info, bool ds4Layout)
 {
@@ -151,34 +147,25 @@ ControlId::DeviceProfile WinMMDevice::profile() const
     };
 }
 
-void WinMMDevice::rescanAfterTopologyChange()
-{
-    if (!m_connected)
-        m_configReloadScans = kConfigReloadScans;
-    rescan();
-}
-
 void WinMMDevice::rescan()
 {
-    if (m_connected) {
-        m_configReloadScans = 0;
+    if (m_connected || m_scanInFlight)
         return;
-    }
-    if (m_scanInFlight)
-        return;
-    const bool reloadConfig = m_configReloadScans > 0;
-    if (reloadConfig)
-        --m_configReloadScans;
 
     // The sweep asks the driver stack about up to 16 mostly absent devices —
     // measured at 161 ms on a real machine, far too slow for the GUI thread.
     // The safety-net timer and all state stay on this thread; only the
     // joyGetNumDevs/joyGetPosEx/joyGetDevCaps work runs on the worker.
+    // joyConfigChanged() is deliberately never called: reloading the joystick
+    // list in-process right after a pad was unplugged crashed GameHQ with heap
+    // corruption inside WinMM/DirectInput (2026-09-30), and it broadcasts a
+    // message to every top-level window, the game included. A pad that
+    // changes transport is picked up by the Sony Raw Input backend instead.
     m_scanInFlight = true;
     if (m_scanThread.joinable())
         m_scanThread.join();   // the previous worker already posted its result
-    m_scanThread = std::thread([this, reloadConfig] {
-        const ScanResult result = scanSlots(reloadConfig);
+    m_scanThread = std::thread([this] {
+        const ScanResult result = scanSlots();
         // Queued metacall onto the owning thread. The destructor joins this
         // worker, so `this` outlives the call; a metacall posted to an
         // object that is destroyed before delivery is discarded by Qt.
@@ -187,13 +174,11 @@ void WinMMDevice::rescan()
     });
 }
 
-WinMMDevice::ScanResult WinMMDevice::scanSlots(bool reloadConfig)
+WinMMDevice::ScanResult WinMMDevice::scanSlots()
 {
     ScanResult result;
     QElapsedTimer pass;
     pass.start();
-    if (reloadConfig)
-        result.reloadedConfig = joyConfigChanged(0) == JOYERR_NOERROR;
     const UINT numDevs = joyGetNumDevs();
     for (UINT id = 0; id < numDevs && id < kMaxSlots; ++id) {
         JOYINFOEX info{};
@@ -249,9 +234,7 @@ void WinMMDevice::applyScanResult(const ScanResult& result)
     m_productId = result.pid;
     qInfo() << "Gamepad: WinMM joystick connected (JOYSTICKID" << (result.id + 1)
             << ") VID" << Qt::hex << result.mid << "PID" << result.pid << Qt::dec
-            << (m_ds4Layout ? "— Sony button layout" : "— Xbox button layout")
-            << (result.reloadedConfig ? "(after joystick list reload)" : "");
-    m_configReloadScans = 0;
+            << (m_ds4Layout ? "— Sony button layout" : "— Xbox button layout");
     m_rescanTimer->stop();
     startSampler();
     emit connected(true);
