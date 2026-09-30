@@ -71,6 +71,8 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::UiSettingsCategory,      "general" },
         { ConfigKeys::UiGalleryFilterCategory, "all" },
         { ConfigKeys::UiGalleryFilterGame,     -1 },
+        { ConfigKeys::UiMainSidebarMode,       "auto" },
+        { ConfigKeys::UiOverlaySidebarMode,    "auto" },
         // Window geometry. The unset sentinel means "never placed" and makes
         // reset-all reopen centred, the way a fresh profile does.
         { ConfigKeys::UiWindowX,               WindowPlacement::kUnsetCoordinate },

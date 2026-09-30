@@ -8,11 +8,11 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-en-review; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review",
+    "actor": "codex-gpt-5-contextual-en-review; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "canonical repository English followed by complete contextual source review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-30T02:22:13.000000Z"
+    "recorded_at": "2026-09-30T16:30:00Z"
   },
   "baseline": {
     "path": "git:7accd39fa37db9d9b729d42855a5d687b1735b98:i18n/app/gamehq_en_US.ts",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_en_US.ts",
-    "sha256": "f04910946ad6a8b9d516cf2bc100f08c52cf6addd58d6a74968ffb02d4c20214",
-    "message_count": 1049
+    "sha256": "34e296ffcbc68e2309304844277defca22b585b672a1d46e919e719982b14d1c",
+    "message_count": 1052
   },
   "coverage": [
     {
@@ -3699,6 +3699,33 @@
       "translation_hash": "736508c4f46ba788f813afca4b0907e1aa8ae8cb1332fd9b95a79ef329ce95a9",
       "locations": [
         "src/ui/qml/components/DesktopSidebar.qml:263"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.navigation.sidebar_mode.auto",
+      "source_hash": "bf2e69afa2a61e39eca149a979d15585ea9e6bae4b3837c4cdb01c80745fdc78",
+      "translation_hash": "42299c882776989f4c0338c9814e802a0acd358ee1151321b8ddabf09823f86f",
+      "locations": [
+        "src/ui/qml/components/SidebarModeButton.qml:22"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.navigation.sidebar_mode.collapsed",
+      "source_hash": "048c4b026cec296c802c9e452bb248910eb95cd1eb6fdbfaa76172a9bcc6e63e",
+      "translation_hash": "95f5361d26ce15f7b9c7d61c44d41f96c4ea1c818480aacec840bb603a7362a3",
+      "locations": [
+        "src/ui/qml/components/SidebarModeButton.qml:26"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.navigation.sidebar_mode.expanded",
+      "source_hash": "65563449bbe5b8dd505c2f7fbe0b0bd5b9e65d6cb4e3db9f040dc4f7936ed124",
+      "translation_hash": "1f59bfca9d7a713c61f87b4fdae80e831e0cc7c5580c0f5364abebd8d692bedc",
+      "locations": [
+        "src/ui/qml/components/SidebarModeButton.qml:24"
       ],
       "decision": "accepted"
     },
@@ -9868,8 +9895,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_en_US.ts",
-      "sha256": "f04910946ad6a8b9d516cf2bc100f08c52cf6addd58d6a74968ffb02d4c20214",
-      "reviewed_units": 1049
+      "sha256": "34e296ffcbc68e2309304844277defca22b585b672a1d46e919e719982b14d1c",
+      "reviewed_units": 1052
     },
     {
       "surface": "installer",

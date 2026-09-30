@@ -327,6 +327,7 @@ public:
     Q_INVOKABLE QString overlayCategory(int) const { return QStringLiteral("all"); }
 
     Q_INVOKABLE QVariant config(const QString&, const QVariant& fallback) const { return fallback; }
+    Q_INVOKABLE void setConfig(const QString&, const QVariant&) {}
     Q_INVOKABLE void setOverlayCategory(const QString&, const QString&) {}
     Q_INVOKABLE void deleteCaptureFrom(QObject*, int) {}
     Q_INVOKABLE void saveVideoFrame(QObject*, const QString&) {}

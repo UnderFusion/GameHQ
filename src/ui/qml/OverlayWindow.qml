@@ -62,6 +62,8 @@ Window {
             overlayShare.close()
             viewer.close()
             content.stopVideoFocus()
+            content.collapseAutoSidebar()
+            content.sidebarPointerHold = false
         } else if (!content.restoreSelection()) {
             content.selectDefaultSection()
         }
@@ -170,6 +172,54 @@ Window {
         property var categories: SidebarCategories.categories(app.currentGameAvailable)
         function totalSidebarCount() { return content.categories.length + app.games.length }
 
+        // Sidebar presentation (ui.overlay_sidebar_mode): auto | expanded |
+        // collapsed. Auto opens on the icon rail, widens while Up/Down walks
+        // the sidebar or the mouse is over it, and narrows again after a short
+        // pause or as soon as the captures are used. The mode toggle sits one
+        // step past the last game: moving onto it only highlights it (the
+        // filter stays put) and Cross/Enter cycles the mode.
+        property string sidebarMode: {
+            const v = app.config("ui.overlay_sidebar_mode", "auto")
+            return v === "expanded" || v === "collapsed" ? v : "auto"
+        }
+        property bool sidebarNavActive: false
+        property bool sidebarPointerHold: false
+        property bool modeToggleFocused: false
+        readonly property bool sidebarExpanded: content.sidebarMode === "expanded"
+            || (content.sidebarMode === "auto"
+                && (content.sidebarNavActive || content.sidebarPointerHold))
+
+        function cycleSidebarMode() {
+            const next = content.sidebarMode === "auto" ? "expanded"
+                       : content.sidebarMode === "expanded" ? "collapsed"
+                       : "auto"
+            content.sidebarMode = next
+            app.setConfig("ui.overlay_sidebar_mode", next)
+            sounds.play("confirm")
+        }
+
+        function noteSidebarNavigation() {
+            content.sidebarNavActive = true
+            sidebarAutoCollapse.restart()
+        }
+
+        function collapseAutoSidebar() {
+            sidebarAutoCollapse.stop()
+            content.sidebarNavActive = false
+            content.modeToggleFocused = false
+        }
+
+        Timer {
+            id: sidebarAutoCollapse
+            interval: Theme.sidebarAutoCollapseMs
+            onTriggered: content.sidebarNavActive = false
+        }
+        Timer {
+            id: sidebarPointerGrace
+            interval: Theme.sidebarHoverGraceMs
+            onTriggered: content.sidebarPointerHold = false
+        }
+
         // Moves the highlight AND applies the filter immediately â€” same
         // instant-feedback feel as Left/Right on the strip.
         function selectSidebarEntryAt(idx, playSound) {
@@ -243,7 +293,16 @@ Window {
             const count = content.totalSidebarCount()
             if (count <= 0)
                 return
-            const idx = (content.sidebarIndex + direction + count) % count
+            content.noteSidebarNavigation()
+            const slots = count + 1   // + the mode toggle
+            const current = content.modeToggleFocused ? count : content.sidebarIndex
+            const idx = (current + direction + slots) % slots
+            if (idx === count) {
+                content.modeToggleFocused = true
+                sounds.play("nav_tick")
+                return
+            }
+            content.modeToggleFocused = false
             content.selectSidebarEntryAt(idx, "nav_tick")
         }
 
@@ -340,6 +399,7 @@ Window {
             }
             if (content.menuOpen)
                 return
+            content.collapseAutoSidebar()
             if (direction < 0)
                 strip.decrementCurrentIndex()
             else
@@ -394,6 +454,12 @@ Window {
                 viewer.toggleVideoPlayback()
                 return
             }
+            if (content.modeToggleFocused) {
+                content.cycleSidebarMode()
+                content.noteSidebarNavigation()
+                return
+            }
+            content.collapseAutoSidebar()
             // X (Cross) plays a clip inline in the big preview pane, and opens a
             // screenshot in the full-screen viewer.
             var item = overlayGallery.get(strip.currentIndex)
@@ -448,6 +514,8 @@ Window {
             }
             if (viewer.open)
                 viewer.close()   // Circle leaves full screen before anything else
+            else if (content.modeToggleFocused)
+                content.collapseAutoSidebar()
             else if (content.menuOpen)
                 content.menuOpen = false
             else if (content.videoFocused) {
@@ -558,7 +626,22 @@ Window {
                 anchors.left: parent.left
                 categories: content.categories
                 sidebarIndex: content.sidebarIndex
-                onEntrySelected: function(index) { content.selectSidebarEntryAt(index, "confirm") }
+                mode: content.sidebarMode
+                expanded: content.sidebarExpanded
+                modeFocused: content.modeToggleFocused
+                onEntrySelected: function(index) {
+                    content.modeToggleFocused = false
+                    content.selectSidebarEntryAt(index, "confirm")
+                }
+                onModeCycleRequested: content.cycleSidebarMode()
+                onPointerInsideChanged: {
+                    if (pointerInside) {
+                        sidebarPointerGrace.stop()
+                        content.sidebarPointerHold = true
+                    } else {
+                        sidebarPointerGrace.restart()
+                    }
+                }
             }
 
             OverlayCaptureStrip {

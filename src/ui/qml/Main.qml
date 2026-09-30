@@ -103,6 +103,10 @@ ApplicationWindow {
         return window.sidebarCategories.length + app.games.length + 2
     }
 
+    function sidebarModeIndex() {
+        return window.sidebarCategories.length + app.games.length + 3
+    }
+
     function openAbout(asPostUpdateGreeting) {
         if (lightbox.visible || helpDialog.visible)
             return
@@ -231,7 +235,41 @@ ApplicationWindow {
     //   catCount+gameCount                               → Settings
     //   catCount+gameCount+1                             → Help
     //   catCount+gameCount+2                             → About / What's New
+    //   catCount+gameCount+3                             → Sidebar mode toggle
     property int sidebarHoverIndex: 0
+
+    // Sidebar presentation (ui.main_sidebar_mode): auto | expanded | collapsed.
+    // Auto shows the icon rail while the grid is in use and opens the full
+    // sidebar while the controller cursor is in it, while the mouse is over it
+    // and on pages without a gallery (Settings, Help, an empty result). Only
+    // the chosen mode is persisted, never Auto's momentary state.
+    property string sidebarMode: window.normalizedSidebarMode(app.config("ui.main_sidebar_mode", "auto"))
+    property bool sidebarPointerHold: false
+    readonly property bool sidebarExpanded: window.sidebarMode === "expanded"
+        || (window.sidebarMode === "auto"
+            && (window.sidebarFocused || window.sidebarPointerHold
+                || window.settingsOpen || window.helpOpen || grid.count === 0))
+
+    function normalizedSidebarMode(value) {
+        return value === "expanded" || value === "collapsed" ? value : "auto"
+    }
+
+    function cycleSidebarMode() {
+        const next = nextSidebarMode(window.sidebarMode)
+        window.sidebarMode = next
+        app.setConfig("ui.main_sidebar_mode", next)
+        sounds.play("nav_tick")
+    }
+
+    function nextSidebarMode(current) {
+        return current === "auto" ? "expanded" : current === "expanded" ? "collapsed" : "auto"
+    }
+
+    Timer {
+        id: sidebarPointerGrace
+        interval: Theme.sidebarHoverGraceMs
+        onTriggered: window.sidebarPointerHold = false
+    }
 
     // Gallery zoom target — the *ideal* tile size in px (160 → 480). The actual
     // cellWidth is grid.width / columns so tiles always fill the full width with
@@ -445,7 +483,7 @@ ApplicationWindow {
 
     // ───────────────── Flat sidebar list helpers (sidebarFocused mode) ─────────────────
     function sidebarFlatCount() {
-        return window.sidebarCategories.length + app.games.length + 3  // +Settings +Help +About
+        return window.sidebarCategories.length + app.games.length + 4  // +Settings +Help +About +mode
     }
 
     function refreshSidebarHoverIndex() {
@@ -513,8 +551,11 @@ ApplicationWindow {
         } else if (i === catCount + gameCount + 1) {
             window.openHelp()
             return
-        } else {  // About / What's New is a modal over the current page.
+        } else if (i === catCount + gameCount + 2) {  // About / What's New is a modal over the current page.
             window.openAbout(false)
+            return
+        } else {  // Sidebar mode toggle: the cursor stays on it.
+            window.cycleSidebarMode()
             return
         }
         sounds.play("nav_tick")
@@ -1012,6 +1053,17 @@ ApplicationWindow {
             availableVersion: updates.latestVersion
             sidebarFocused: window.sidebarFocused
             sidebarHoverIndex: window.sidebarHoverIndex
+            mode: window.sidebarMode
+            expanded: window.sidebarExpanded
+            onModeCycleRequested: window.cycleSidebarMode()
+            onPointerInsideChanged: {
+                if (pointerInside) {
+                    sidebarPointerGrace.stop()
+                    window.sidebarPointerHold = true
+                } else {
+                    sidebarPointerGrace.restart()
+                }
+            }
             onPageClosed: {
                 window.settingsOpen = false
                 window.helpOpen = false

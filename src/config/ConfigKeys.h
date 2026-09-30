@@ -92,6 +92,10 @@ inline constexpr QLatin1StringView UiGalleryFilterGame{ "ui.gallery_filter_game"
 // (ui.overlay_filter.12). Dynamic keys cannot live in defaults(); NavigationState
 // treats an absent or unknown entry as "all".
 inline constexpr QLatin1StringView UiOverlayFilterPrefix{ "ui.overlay_filter." };
+// Left sidebar presentation, one preference per surface: auto | expanded |
+// collapsed. Auto's momentary open/closed state is never written.
+inline constexpr QLatin1StringView UiMainSidebarMode{ "ui.main_sidebar_mode" };
+inline constexpr QLatin1StringView UiOverlaySidebarMode{ "ui.overlay_sidebar_mode" };
 // Desktop window geometry, written debounced while the user moves or resizes.
 // x/y default to WindowPlacement::kUnsetCoordinate ("never placed"), so a
 // monitor left of or above the primary keeps its negative coordinates instead

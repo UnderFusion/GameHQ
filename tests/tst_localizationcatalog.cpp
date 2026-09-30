@@ -325,7 +325,7 @@ void LocalizationCatalogTest::promotedLaunchCatalogsAreSynchronizedAndTranslated
     const auto english = readTsCatalog(
         QStringLiteral(GAMEHQ_SOURCE_DIR "/i18n/app/gamehq_en_US.ts"), &error);
     QVERIFY2(error.isEmpty(), qPrintable(error));
-    QCOMPARE(english.size(), 1049);
+    QCOMPARE(english.size(), 1052);
     const QSet<QString> activeIds = activeProductionIds();
 
     for (const QString& catalogName : promotedLaunchCatalogs()) {
@@ -394,7 +394,7 @@ void LocalizationCatalogTest::migratedP4OneIdsCoverEveryLaunchLocale()
 void LocalizationCatalogTest::migratedProductionQmlIdsCoverEveryLaunchLocale()
 {
     const QSet<QString> ids = translationIdsIn(productionQmlFiles());
-    QCOMPARE(ids.size(), 752);
+    QCOMPARE(ids.size(), 755);
 
     for (const QString &catalogName : translatedCatalogs()) {
         QString error;
@@ -658,7 +658,8 @@ void LocalizationCatalogTest::sidebarFooterStringsAndExternalLinkAreReleaseReady
         sidebarSource.indexOf(QStringLiteral("SidebarItem {\n            id: supportButton"));
     QVERIFY(aboutIndex >= 0 && supportIndex > aboutIndex);
     const QString supportSource = sidebarSource.mid(supportIndex);
-    QVERIFY(sidebarSource.contains(QStringLiteral("Layout.preferredWidth: 220")));
+    QVERIFY(sidebarSource.contains(
+        QStringLiteral("Layout.preferredWidth: root.expanded ? Theme.sidebarWidth : Theme.sidebarRailWidth")));
     QVERIFY(!sidebarItemSource.contains(
         QStringLiteral("width: parent ? parent.width : implicitWidth")));
     const qsizetype versionIndex = sidebarSource.indexOf(

@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls.Basic
 import QtQuick.Effects
 import GameHQ
 
@@ -18,6 +19,15 @@ Rectangle {
     readonly property real gameIconSize: Theme.s12 * 1.2
     property bool active: false
     property bool sidebarHovered: false
+    // Collapsed-rail presentation: only the icon/glyph stays, centred, and the
+    // label moves into a tooltip. A game without an icon falls back to its
+    // initial so every row keeps a visible target.
+    property bool compact: false
+    readonly property string shownGlyph: root.glyph !== "" ? root.glyph
+                                       : root.compact && root.iconSource === "" && root.label !== ""
+                                         ? root.label.charAt(0).toUpperCase() : ""
+    readonly property real leadingSize: root.iconSource !== "" ? root.gameIconSize
+                                      : root.shownGlyph !== "" ? Theme.s24 : 0
     // Rows that carry their own accent (Support) override these; the defaults
     // keep every navigation row on the standard muted/active palette.
     property color labelColor: active ? Theme.text : Theme.textMuted
@@ -54,8 +64,8 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.leftMargin: Theme.s8
-        anchors.rightMargin: Theme.s8
+        anchors.leftMargin: root.compact ? Math.max(0, (root.width - root.leadingSize) / 2) : Theme.s8
+        anchors.rightMargin: root.compact ? 0 : Theme.s8
         spacing: Theme.s8
 
         Rectangle {
@@ -96,24 +106,25 @@ Rectangle {
         }
 
         Item {
-            visible: root.glyph !== "" && root.iconSource === ""
+            visible: root.shownGlyph !== "" && root.iconSource === ""
             width: Theme.s24
             height: Theme.s24
             anchors.verticalCenter: parent.verticalCenter
 
             Text {
                 anchors.centerIn: parent
-                text: root.glyph
+                text: root.shownGlyph
                 color: root.glyphColor
                 font.pixelSize: Theme.fontBody
             }
         }
         Text {
             id: labelText
+            visible: !root.compact
             text: root.label
             readonly property real leadingWidth: root.iconSource !== ""
                                                  ? root.gameIconSize + contentRow.spacing
-                                                 : root.glyph !== ""
+                                                 : root.shownGlyph !== ""
                                                    ? Theme.s24 + contentRow.spacing
                                                    : 0
             readonly property real trailingWidth: trailing.visible
@@ -129,7 +140,7 @@ Rectangle {
 
         Row {
             id: trailing
-            visible: root.trailingText !== "" || root.trailingGlyph !== ""
+            visible: !root.compact && (root.trailingText !== "" || root.trailingGlyph !== "")
             spacing: Theme.s8
             anchors.verticalCenter: parent.verticalCenter
 
@@ -163,6 +174,22 @@ Rectangle {
         border.width: (root.activeFocus || root.sidebarHovered) ? 2 : 0
         border.color: Theme.accent
     }
+
+    // Compact rows keep their unread/update dot as a corner badge.
+    Text {
+        visible: root.compact && root.trailingGlyph !== ""
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.margins: Theme.s4 / 2
+        text: root.trailingGlyph
+        color: root.trailingGlyphColor
+        font.family: Theme.fontFamily
+        font.pixelSize: Theme.fontCaption
+    }
+
+    ToolTip.text: root.label
+    ToolTip.visible: root.compact && mouse.containsMouse
+    ToolTip.delay: 400
 
     MouseArea {
         id: mouse
