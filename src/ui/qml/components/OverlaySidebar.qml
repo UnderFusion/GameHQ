@@ -16,8 +16,16 @@ Rectangle {
     property bool optionsOpen: false
     property bool optionsFocused: false
     // Labels follow the animated width (see DesktopSidebar.compact).
-    readonly property bool compact: root.width < Theme.overlaySidebarWidth * 0.75
-    readonly property alias pointerInside: sidebarHover.hovered
+    readonly property bool compact: root.width < Theme.sidebarCompactBelow
+    // Expanded width, mouse-resizable (ui.overlay_sidebar_width).
+    property int expandedWidth: root.savedWidth()
+    function savedWidth() {
+        const v = Number(app.config("ui.overlay_sidebar_width", Theme.overlaySidebarWidth))
+        return isFinite(v) ? Math.round(Math.max(Theme.overlaySidebarMinWidth,
+                                                 Math.min(Theme.overlaySidebarMaxWidth, v)))
+                           : Theme.overlaySidebarWidth
+    }
+    readonly property bool pointerInside: sidebarHover.hovered || resizeHandle.pressed
     readonly property var categoryLabels: ({
         //% "All"
         "all": qsTrId("gamehq.navigation.category.all"),
@@ -39,8 +47,11 @@ Rectangle {
     signal modeCycleRequested()
     signal optionsRequested()
 
-    width: root.expanded ? Theme.overlaySidebarWidth : Theme.sidebarRailWidth
-    Behavior on width { NumberAnimation { duration: Theme.durNormal; easing.type: Easing.OutCubic } }
+    width: root.expanded ? root.expandedWidth : Theme.sidebarRailWidth
+    Behavior on width {
+        enabled: !resizeHandle.pressed
+        NumberAnimation { duration: Theme.durNormal; easing.type: Easing.OutCubic }
+    }
     clip: true
     radius: Theme.radiusL
     color: Theme.panelTint
@@ -49,6 +60,33 @@ Rectangle {
 
     MouseArea { anchors.fill: parent }
     HoverHandler { id: sidebarHover }
+
+    // Mouse-only resize of the expanded width; saved on release, restored to
+    // the default by a double-click. Hidden in the rail.
+    SidebarResizeHandle {
+        id: resizeHandle
+        visible: root.expanded
+        currentWidth: root.expandedWidth
+        minimumWidth: Theme.overlaySidebarMinWidth
+        maximumWidth: Theme.overlaySidebarMaxWidth
+        onWidthDragged: function(width) { root.expandedWidth = width }
+        onWidthCommitted: function(width) { app.setConfig("ui.overlay_sidebar_width", width) }
+        onResetRequested: {
+            root.expandedWidth = Theme.overlaySidebarWidth
+            app.setConfig("ui.overlay_sidebar_width", Theme.overlaySidebarWidth)
+        }
+    }
+
+    Connections {
+        target: app
+        function onConfigChanged(key, value) {
+            if (key === "ui.overlay_sidebar_width" && !resizeHandle.pressed)
+                root.expandedWidth = root.savedWidth()
+        }
+        function onConfigGroupReset(prefix) {
+            root.expandedWidth = root.savedWidth()
+        }
+    }
 
     Column {
         anchors.fill: parent

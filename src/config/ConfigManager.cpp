@@ -73,6 +73,8 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::UiGalleryFilterGame,     -1 },
         { ConfigKeys::UiMainSidebarMode,       "expanded" },
         { ConfigKeys::UiOverlaySidebarMode,    "expanded" },
+        { ConfigKeys::UiMainSidebarWidth,      220 },
+        { ConfigKeys::UiOverlaySidebarWidth,   260 },
         { ConfigKeys::UiMainToolsCollapsed,    false },
         { ConfigKeys::UiOverlayShowHints,      true },
         { ConfigKeys::UiOverlayMarginLeft,     48 },

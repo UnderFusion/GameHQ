@@ -225,6 +225,7 @@ Window {
                 app.setConfig("ui.overlay_thumbnail_scale", 100)
                 app.setConfig("ui.overlay_spacing", Theme.overlaySpacingDefault)
                 app.setConfig("ui.overlay_sidebar_mode", "expanded")
+                app.setConfig("ui.overlay_sidebar_width", Theme.overlaySidebarWidth)
                 content.sidebarMode = "expanded"
                 scaledViewport.refresh()
             } else {

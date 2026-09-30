@@ -659,7 +659,7 @@ void LocalizationCatalogTest::sidebarFooterStringsAndExternalLinkAreReleaseReady
     QVERIFY(aboutIndex >= 0 && supportIndex > aboutIndex);
     const QString supportSource = sidebarSource.mid(supportIndex);
     QVERIFY(sidebarSource.contains(
-        QStringLiteral("Layout.preferredWidth: root.expanded ? Theme.sidebarWidth : Theme.sidebarRailWidth")));
+        QStringLiteral("Layout.preferredWidth: root.expanded ? root.expandedWidth : Theme.sidebarRailWidth")));
     QVERIFY(!sidebarItemSource.contains(
         QStringLiteral("width: parent ? parent.width : implicitWidth")));
     const qsizetype versionIndex = sidebarSource.indexOf(

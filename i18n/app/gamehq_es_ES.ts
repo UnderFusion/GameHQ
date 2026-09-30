@@ -117,7 +117,7 @@
       <location filename="src/ui/qml/Main.qml" line="1286"></location>
       <location filename="src/ui/qml/Main.qml" line="1305"></location>
       <location filename="src/ui/qml/Main.qml" line="1343"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1015"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1016"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -1334,9 +1334,9 @@
       <translation>%1 MB</translation>
     </message>
     <message id="gamehq.format.version_short">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="132"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="138"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="174"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="171"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="177"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="212"></location>
       <source>v%1</source>
       <translation>v%1</translation>
     </message>
@@ -1379,7 +1379,7 @@ Esto eliminará el archivo de forma permanente.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1284"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1013"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1014"></location>
       <source>Delete capture?</source>
       <translation>¿Eliminar la captura?</translation>
     </message>
@@ -2067,68 +2067,68 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.navigation.about">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="174"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="206"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="141"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="386"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="180"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="425"></location>
       <source>About</source>
       <translation>Acerca de</translation>
     </message>
     <message id="gamehq.navigation.category.all">
       <location filename="src/ui/qml/Main.qml" line="199"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="85"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="23"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="124"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
       <source>All</source>
       <translation>Todos</translation>
     </message>
     <message id="gamehq.navigation.category.clips">
       <location filename="src/ui/qml/Main.qml" line="207"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="31"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="39"></location>
       <source>Clips</source>
       <translation>Clips</translation>
     </message>
     <message id="gamehq.navigation.category.favorites">
       <location filename="src/ui/qml/Main.qml" line="203"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="27"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="35"></location>
       <source>Favorites</source>
       <translation>Favoritos</translation>
     </message>
     <message id="gamehq.navigation.category.game">
       <location filename="src/ui/qml/Main.qml" line="209"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="33"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="41"></location>
       <source>Game</source>
       <translation>Juego</translation>
     </message>
     <message id="gamehq.navigation.category.game_favorites">
       <location filename="src/ui/qml/Main.qml" line="211"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="35"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="43"></location>
       <source>Game favorites</source>
       <translation>Favoritos del juego</translation>
     </message>
     <message id="gamehq.navigation.category.recent">
       <location filename="src/ui/qml/Main.qml" line="201"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="25"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="33"></location>
       <source>Recent</source>
       <translation>Recientes</translation>
     </message>
     <message id="gamehq.navigation.category.screenshots">
       <location filename="src/ui/qml/Main.qml" line="205"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="29"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="37"></location>
       <source>Screenshots</source>
       <translation>Capturas de pantalla</translation>
     </message>
     <message id="gamehq.navigation.games">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="233"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="73"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="272"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="111"></location>
       <source>Games</source>
       <translation>Juegos</translation>
     </message>
     <message id="gamehq.navigation.help">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="373"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="412"></location>
       <location filename="src/ui/qml/components/HelpDialog.qml" line="96"></location>
       <source>Help</source>
       <translation>Ayuda</translation>
     </message>
     <message id="gamehq.navigation.settings">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="362"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="401"></location>
       <source>Settings</source>
       <translation>Configuración</translation>
     </message>
@@ -2150,17 +2150,17 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     <message id="gamehq.navigation.support_gamehq">
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="176"></location>
       <location filename="src/app/PackagedLocalizationProbe.cpp" line="208"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="405"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="444"></location>
       <source>Support GameHQ</source>
       <translation>Apoyar a GameHQ</translation>
     </message>
     <message id="gamehq.navigation.tools.hide">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="308"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="347"></location>
       <source>Hide tools</source>
       <translation>Ocultar herramientas</translation>
     </message>
     <message id="gamehq.navigation.tools.show">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="306"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="345"></location>
       <source>Show tools</source>
       <translation>Mostrar herramientas</translation>
     </message>
@@ -2280,7 +2280,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Acciones de captura</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="272"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="273"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>El juego sigue activo y puede responder a las entradas del mando</translation>
     </message>
@@ -2386,7 +2386,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     </message>
     <message id="gamehq.overlay.layout.title">
       <location filename="src/ui/qml/components/OverlayLayoutPanel.qml" line="100"></location>
-      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="107"></location>
+      <location filename="src/ui/qml/components/OverlaySidebar.qml" line="145"></location>
       <source>Overlay options</source>
       <translation>Opciones de la superposición</translation>
     </message>
@@ -2567,7 +2567,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Actualizar el estado de la pantalla</translation>
     </message>
     <message id="gamehq.settings.advanced.diagnostics.title">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="349"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="388"></location>
       <location filename="src/ui/qml/settings/AdvancedSettingsPage.qml" line="108"></location>
       <source>Tools</source>
       <translation>Herramientas</translation>
@@ -3821,7 +3821,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
       <translation>Los cambios se aplican de inmediato en todo GameHQ.</translation>
     </message>
     <message id="gamehq.settings.language.system">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="455"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="494"></location>
       <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="40"></location>
       <source>System language</source>
       <translation>Idioma del sistema</translation>
@@ -5490,7 +5490,7 @@ A partir de entonces, %2 se activará al soltar el botón y podrá esperar hasta
     </message>
     <message id="gamehq.update.status.update_available">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="163"></location>
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="136"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="175"></location>
       <source>Update available</source>
       <translation>Actualización disponible</translation>
     </message>
