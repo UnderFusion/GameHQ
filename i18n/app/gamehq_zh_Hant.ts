@@ -4414,42 +4414,42 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.auth.connected">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="25"></location>
       <source>Connected</source>
-      <translation>已連結</translation>
+      <translation>已連線</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.connecting">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="28"></location>
       <source>Connecting…</source>
-      <translation>正在連結…</translation>
+      <translation>正在連線…</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.disconnected">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="34"></location>
       <source>Not connected</source>
-      <translation>未連結</translation>
+      <translation>未連線</translation>
     </message>
     <message id="gamehq.settings.sharing.auth.error">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="31"></location>
       <source>Connection problem</source>
-      <translation>連結問題</translation>
+      <translation>連線問題</translation>
     </message>
     <message id="gamehq.settings.sharing.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="16"></location>
       <source>Choose where captures can be shared. Nothing is ever sent without you picking a capture and a destination.</source>
-      <translation>選擇可分享擷取內容的位置。在您選擇擷取內容和分享目標之前，不會傳送任何內容。</translation>
+      <translation>選擇擷取內容的分享目標。只有在您選擇擷取內容和分享目標後，才會傳送內容。</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.action">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="102"></location>
       <source>Disconnect</source>
-      <translation>中斷連結</translation>
+      <translation>中斷連線</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
       <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
-      <translation>讓 GameHQ 登出並刪除其本機工作階段。關閉分享目標並不會執行此操作。</translation>
+      <translation>使 GameHQ 登出並刪除本機工作階段。僅關閉分享目標不會執行這些操作。</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
       <source>Disconnect and remove the saved session</source>
-      <translation>中斷連結並移除已儲存的工作階段</translation>
+      <translation>中斷連線並移除已儲存的工作階段</translation>
     </message>
     <message id="gamehq.settings.sharing.master.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="50"></location>
@@ -4469,7 +4469,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation>關閉分享目標只會將其隱藏。已儲存的帳戶和頻道會一直保留，直到您中斷連結或將其移除。</translation>
+      <translation>關閉分享目標只會將其隱藏。已儲存的帳戶會保留到您中斷帳戶連線，已儲存的頻道會保留到您將其移除。</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
@@ -4509,12 +4509,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.connect">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="120"></location>
       <source>Connect Telegram</source>
-      <translation>連結 Telegram</translation>
+      <translation>連線 Telegram</translation>
     </message>
     <message id="gamehq.settings.telegram.connected_help">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="210"></location>
       <source>Connected. To sign out and delete GameHQ's saved Telegram session, use Disconnect in the list above.</source>
-      <translation>已連結。若要登出並刪除 GameHQ 儲存的 Telegram 工作階段，請使用上方清單中的「中斷連結」。</translation>
+      <translation>已連線。若要登出並刪除 GameHQ 儲存的 Telegram 工作階段，請使用上方清單中的「中斷連線」。</translation>
     </message>
     <message id="gamehq.settings.telegram.continue">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="173"></location>
@@ -4529,7 +4529,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.description">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
       <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
-      <translation>直接從 GameHQ 將擷取內容傳送給您的 Telegram 聯絡人。GameHQ 不會顯示聊天或訊息，也不會傳送您沒有選擇的任何內容。這會登入您的整個 Telegram 帳戶，因此請只連結您信任的帳戶。</translation>
+      <translation>直接從 GameHQ 將擷取內容傳送給您的 Telegram 聯絡人。GameHQ 不會顯示聊天或訊息，也只會傳送您選擇的擷取內容。此功能需要登入您的整個 Telegram 帳戶，因此只應連線您願意用於此功能的帳戶。</translation>
     </message>
     <message id="gamehq.settings.telegram.error.bad_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
@@ -4574,7 +4574,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.error.no_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
       <source>The optional Telegram component is not installed in this GameHQ.</source>
-      <translation>此 GameHQ 中未安裝選用的 Telegram 元件。</translation>
+      <translation>目前的 GameHQ 安裝中未安裝選用的 Telegram 元件。</translation>
     </message>
     <message id="gamehq.settings.telegram.error.password_invalid">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
@@ -4594,12 +4594,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.error.unsupported_auth">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="54"></location>
       <source>This account needs a sign-in step GameHQ does not support. Use Telegram Desktop sharing instead.</source>
-      <translation>此帳戶需要 GameHQ 不支援的登入步驟。請改用透過 Telegram Desktop 分享。</translation>
+      <translation>此帳戶需要 GameHQ 不支援的登入步驟。請改用 Telegram Desktop 分享。</translation>
     </message>
     <message id="gamehq.settings.telegram.forget">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="129"></location>
       <source>Forget API ID and hash</source>
-      <translation>忘記 API ID 和雜湊</translation>
+      <translation>刪除 API ID 和雜湊</translation>
     </message>
     <message id="gamehq.settings.telegram.title">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="69"></location>
@@ -4735,7 +4735,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.addons.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="130"></location>
       <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
-      <translation>開啟後，在此電腦上以您的身分執行的其他程式可以提供分享目標，並接收您選擇分享的擷取內容。預設為關閉。重新啟動 GameHQ 後生效。</translation>
+      <translation>開啟後，在此電腦上以您的使用者帳戶執行的其他程式可以提供分享目標，並接收您選擇分享的擷取內容。預設為關閉。重新啟動 GameHQ 後生效。</translation>
     </message>
     <message id="gamehq.share.addons.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="128"></location>
@@ -4760,7 +4760,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.discord_desktop.privacy">
       <location filename="src/share/providers/DiscordDesktopProvider.cpp" line="134"></location>
       <source>Copies the file and opens Discord so you can paste it. GameHQ never signs in to Discord.</source>
-      <translation>複製檔案並開啟 Discord，以便您貼上。GameHQ 從不登入 Discord。</translation>
+      <translation>複製檔案並開啟 Discord，讓您可以貼上檔案。GameHQ 從不登入 Discord。</translation>
     </message>
     <message id="gamehq.share.discord_webhook.name">
       <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="45"></location>
@@ -4775,7 +4775,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.discord_webhook.privacy">
       <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="69"></location>
       <source>Posts to the channel as a webhook, not as your Discord account. Everyone in the channel can see it.</source>
-      <translation>以 Webhook 身分張貼到頻道，而非您的 Discord 帳號。頻道中的所有人都看得到。</translation>
+      <translation>透過 Webhook 張貼到頻道，而不是以您的 Discord 帳戶身分張貼。頻道中的所有人都能看到該內容。</translation>
     </message>
     <message id="gamehq.share.error.capture_changed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
@@ -4800,7 +4800,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.error.not_connected">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="219"></location>
       <source>Connect this account in Settings first.</source>
-      <translation>請先在設定中連結此帳戶。</translation>
+      <translation>請先在設定中連線此帳戶。</translation>
     </message>
     <message id="gamehq.share.error.provider_disabled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="216"></location>
@@ -4835,7 +4835,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.external.privacy">
       <location filename="src/share/external/ExternalProvider.cpp" line="99"></location>
       <source>Add-on from another program on this PC. It receives the capture you choose to share.</source>
-      <translation>來自此電腦上其他程式的附加元件。它會收到您選擇分享的擷取內容。</translation>
+      <translation>來自此電腦上其他程式的附加元件。它會接收您選擇分享的擷取內容。</translation>
     </message>
     <message id="gamehq.share.loading">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="134"></location>
@@ -4905,7 +4905,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.settings.description">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="41"></location>
       <source>Channels that Share can post to. Webhook links are kept in Windows Credential Manager, not in GameHQ's settings.</source>
-      <translation>「分享」可張貼到的頻道。Webhook 連結儲存在 Windows 認證管理員中，而非 GameHQ 的設定中。</translation>
+      <translation>可透過「分享」張貼內容的頻道。Webhook 連結儲存在 Windows 認證管理員中，而非 GameHQ 的設定中。</translation>
     </message>
     <message id="gamehq.share.settings.error.invalid_name">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="25"></location>

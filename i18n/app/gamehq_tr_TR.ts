@@ -4434,7 +4434,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.sharing.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="16"></location>
       <source>Choose where captures can be shared. Nothing is ever sent without you picking a capture and a destination.</source>
-      <translation>Çekimlerin nereye paylaşılabileceğini seçin. Siz bir çekim ve bir hedef seçmeden hiçbir şey gönderilmez.</translation>
+      <translation>Çekimlerin nerelerde paylaşılabileceğini seçin. Siz bir çekim ve hedef seçmeden hiçbir şey gönderilmez.</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.action">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="102"></location>
@@ -4454,7 +4454,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.sharing.master.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="50"></location>
       <source>Turns the Share option on or off everywhere: gallery, lightbox and overlay.</source>
-      <translation>Paylaşım seçeneğini her yerde açar veya kapatır: galeri, önizleme ve oyun içi arayüz.</translation>
+      <translation>Paylaşım seçeneğini her yerde açar veya kapatır: galeri, Görüntüleyici ve oyun içi arayüz.</translation>
     </message>
     <message id="gamehq.settings.sharing.master.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="48"></location>
@@ -4469,7 +4469,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation>Bir hedefi kapatmak onu yalnızca gizler. Kayıtlı hesaplar ve kanallar, bağlantısını kesene veya kaldırana kadar korunur.</translation>
+      <translation>Bir hedefi kapatmak onu yalnızca gizler. Kayıtlı hesaplar siz bağlantılarını kesene, kayıtlı kanallar da siz kaldırana kadar korunur.</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
@@ -4514,7 +4514,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.telegram.connected_help">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="210"></location>
       <source>Connected. To sign out and delete GameHQ's saved Telegram session, use Disconnect in the list above.</source>
-      <translation>Bağlandı. Oturumu kapatmak ve GameHQ'nun kayıtlı Telegram oturumunu silmek için yukarıdaki listeden Bağlantıyı kes'i kullanın.</translation>
+      <translation>Bağlandı. Oturumu kapatmak ve GameHQ'nun kayıtlı Telegram oturumunu silmek için yukarıdaki listeden “Bağlantıyı kes” seçeneğini kullanın.</translation>
     </message>
     <message id="gamehq.settings.telegram.continue">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="173"></location>
@@ -4529,7 +4529,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.telegram.description">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
       <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
-      <translation>GameHQ'dan çekimleri doğrudan Telegram kişilerinize gönderin. GameHQ hiçbir sohbeti veya mesajı göstermez ve seçmediğiniz hiçbir şeyi göndermez. Bu, Telegram hesabınızın tamamında oturum açar; bu yüzden yalnızca güvendiğiniz bir hesabı bağlayın.</translation>
+      <translation>GameHQ'dan çekimleri doğrudan Telegram kişilerinize gönderin. GameHQ hiçbir sohbeti veya mesajı göstermez ve yalnızca seçtiğiniz çekimi gönderir. Bu özellik Telegram hesabınızla tam oturum açar; bu nedenle yalnızca bu amaçla kullanmaya uygun gördüğünüz bir hesabı bağlayın.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.bad_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
@@ -4574,7 +4574,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.settings.telegram.error.no_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
       <source>The optional Telegram component is not installed in this GameHQ.</source>
-      <translation>İsteğe bağlı Telegram bileşeni bu GameHQ'da yüklü değil.</translation>
+      <translation>İsteğe bağlı Telegram bileşeni bu GameHQ kurulumunda yüklü değil.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.password_invalid">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
@@ -4735,7 +4735,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.share.addons.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="130"></location>
       <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
-      <translation>Bu bilgisayarda sizin hesabınızla çalışan diğer programlar paylaşım hedefleri sunabilir ve paylaşmayı seçtiğiniz çekimleri alabilir. Varsayılan olarak kapalıdır. Uygulamak için GameHQ'yu yeniden başlatın.</translation>
+      <translation>Bu bilgisayarda kullanıcı hesabınızla çalışan diğer programlar paylaşım hedefleri sunabilir ve paylaşmayı seçtiğiniz çekimleri alabilir. Varsayılan olarak kapalıdır. Uygulamak için GameHQ'yu yeniden başlatın.</translation>
     </message>
     <message id="gamehq.share.addons.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="128"></location>
@@ -4775,12 +4775,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.share.discord_webhook.privacy">
       <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="69"></location>
       <source>Posts to the channel as a webhook, not as your Discord account. Everyone in the channel can see it.</source>
-      <translation>Kanala Discord hesabınızla değil, webhook olarak gönderir. Kanaldaki herkes görebilir.</translation>
+      <translation>Kanala Discord hesabınız üzerinden değil, webhook aracılığıyla gönderir. Kanaldaki herkes görebilir.</translation>
     </message>
     <message id="gamehq.share.error.capture_changed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
       <source>This capture changed on disk after you opened Share. Open Share again.</source>
-      <translation>Paylaş'ı açtıktan sonra bu çekim diskte değişti. Paylaş'ı yeniden açın.</translation>
+      <translation>Paylaş penceresini açtıktan sonra bu çekim diskte değişti. Paylaş penceresini yeniden açın.</translation>
     </message>
     <message id="gamehq.share.error.capture_missing">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="207"></location>
@@ -4865,7 +4865,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.share.outcome.handed_off">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="189"></location>
       <source>Opened in %1. Finish sending there.</source>
-      <translation>%1 içinde açıldı. Gönderme işlemini orada tamamlayın.</translation>
+      <translation>%1 uygulamasında açıldı. Gönderme işlemini orada tamamlayın.</translation>
     </message>
     <message id="gamehq.share.outcome.handed_off_paste">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="187"></location>
@@ -4895,7 +4895,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.share.resend_question">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="147"></location>
       <source>You already shared this capture here. Share it again?</source>
-      <translation>Bu çekimi burada zaten paylaştınız. Yeniden paylaşılsın mı?</translation>
+      <translation>Bu çekimi burada zaten paylaştınız. Yeniden paylaşmak ister misiniz?</translation>
     </message>
     <message id="gamehq.share.sending">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="243"></location>
@@ -4905,7 +4905,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.share.settings.description">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="41"></location>
       <source>Channels that Share can post to. Webhook links are kept in Windows Credential Manager, not in GameHQ's settings.</source>
-      <translation>Paylaş'ın gönderi yapabildiği kanallar. Webhook bağlantıları GameHQ ayarlarında değil, Windows Kimlik Bilgileri Yöneticisi'nde saklanır.</translation>
+      <translation>Paylaş özelliğiyle gönderi paylaşabileceğiniz kanallar. Webhook bağlantıları GameHQ ayarlarında değil, Windows Kimlik Bilgileri Yöneticisi'nde saklanır.</translation>
     </message>
     <message id="gamehq.share.settings.error.invalid_name">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="25"></location>
@@ -4975,7 +4975,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     <message id="gamehq.share.telegram_integrated.privacy">
       <location filename="src/share/providers/TelegramIntegratedProvider.cpp" line="158"></location>
       <source>Signs in to your Telegram account inside GameHQ. GameHQ only sends the capture you pick and never shows your chats or messages.</source>
-      <translation>Telegram hesabınızda GameHQ içinde oturum açar. GameHQ yalnızca seçtiğiniz çekimi gönderir ve sohbetlerinizi veya mesajlarınızı asla göstermez.</translation>
+      <translation>GameHQ içinde Telegram hesabınızla oturum açar. GameHQ yalnızca seçtiğiniz çekimi gönderir ve sohbetlerinizi veya mesajlarınızı asla göstermez.</translation>
     </message>
     <message id="gamehq.share.title">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="347"></location>

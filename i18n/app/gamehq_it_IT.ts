@@ -4451,7 +4451,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.settings.sharing.disconnect.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
       <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
-      <translation>Disconnette GameHQ ed elimina la sessione locale. Disattivare la destinazione non fa questo.</translation>
+      <translation>Disconnette GameHQ dall'account e elimina la sessione locale. Disattivare la destinazione non esegue questa operazione.</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
@@ -4476,7 +4476,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation>Disattivare una destinazione la nasconde soltanto. Gli account e i canali salvati restano finché non li scolleghi o li rimuovi.</translation>
+      <translation>Disattivare una destinazione la nasconde soltanto. Gli account salvati restano finché non li scolleghi, mentre i canali restano finché non li rimuovi.</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
@@ -4536,7 +4536,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.settings.telegram.description">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
       <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
-      <translation>Invia le acquisizioni da GameHQ direttamente ai tuoi contatti Telegram. GameHQ non mostra chat né messaggi e non invia nulla che tu non abbia scelto. Questo accede all'intero account Telegram, quindi collega solo un account con cui ti senti a tuo agio.</translation>
+      <translation>Invia le acquisizioni da GameHQ direttamente ai tuoi contatti Telegram. GameHQ non mostra chat né messaggi e invia solo l'acquisizione che scegli. Questa funzione crea nell'app una sessione completa del tuo account Telegram; collega quindi solo un account per cui accetti questo livello di accesso.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.bad_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
@@ -4581,7 +4581,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.settings.telegram.error.no_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
       <source>The optional Telegram component is not installed in this GameHQ.</source>
-      <translation>Il componente facoltativo Telegram non è installato in questo GameHQ.</translation>
+      <translation>Questa installazione di GameHQ non include il componente facoltativo Telegram.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.password_invalid">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
@@ -4606,7 +4606,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.settings.telegram.forget">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="129"></location>
       <source>Forget API ID and hash</source>
-      <translation>Dimentica ID e hash API</translation>
+      <translation>Rimuovi ID e hash API</translation>
     </message>
     <message id="gamehq.settings.telegram.title">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="69"></location>
@@ -4742,7 +4742,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.share.addons.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="130"></location>
       <source>Other programs running as you on this PC can then offer Share destinations and receive the captures you choose to share. Off by default. Restart GameHQ to apply.</source>
-      <translation>Altri programmi in esecuzione con il tuo account su questo PC potranno offrire destinazioni in Condividi e ricevere le acquisizioni che scegli di condividere. Disattivato per impostazione predefinita. Riavvia GameHQ per applicare.</translation>
+      <translation>Altri programmi in esecuzione con il tuo account su questo PC potranno offrire destinazioni di condivisione e ricevere le acquisizioni che scegli di condividere. Disattivato per impostazione predefinita. Riavvia GameHQ per applicare.</translation>
     </message>
     <message id="gamehq.share.addons.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="128"></location>
@@ -4752,7 +4752,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.share.addons.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="125"></location>
       <source>Share add-ons</source>
-      <translation>Componenti aggiuntivi di Condividi</translation>
+      <translation>Componenti aggiuntivi per la condivisione</translation>
     </message>
     <message id="gamehq.share.close">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="164"></location>
@@ -4782,7 +4782,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.share.discord_webhook.privacy">
       <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="69"></location>
       <source>Posts to the channel as a webhook, not as your Discord account. Everyone in the channel can see it.</source>
-      <translation>Pubblica nel canale come webhook, non come il tuo account Discord. Tutti nel canale possono vederlo.</translation>
+      <translation>Pubblica nel canale tramite un webhook, non tramite il tuo account Discord. Tutti nel canale possono vedere il contenuto.</translation>
     </message>
     <message id="gamehq.share.error.capture_changed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
@@ -4842,7 +4842,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.share.external.privacy">
       <location filename="src/share/external/ExternalProvider.cpp" line="99"></location>
       <source>Add-on from another program on this PC. It receives the capture you choose to share.</source>
-      <translation>Componente aggiuntivo di un altro programma su questo PC. Riceve l’acquisizione che scegli di condividere.</translation>
+      <translation>Componente aggiuntivo di un altro programma su questo PC. Riceve l'acquisizione che scegli di condividere.</translation>
     </message>
     <message id="gamehq.share.loading">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="134"></location>
@@ -4872,7 +4872,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.share.outcome.handed_off">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="189"></location>
       <source>Opened in %1. Finish sending there.</source>
-      <translation>Aperta in %1. Completa l’invio lì.</translation>
+      <translation>Aperta in %1. Completa l'invio lì.</translation>
     </message>
     <message id="gamehq.share.outcome.handed_off_paste">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="187"></location>
@@ -4887,7 +4887,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.share.outcome.unconfirmed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="198"></location>
       <source>GameHQ couldn't confirm whether it was sent. Check before sharing again.</source>
-      <translation>GameHQ non è riuscito a confermare l’invio. Controlla prima di condividerla di nuovo.</translation>
+      <translation>GameHQ non è riuscito a confermare l'invio. Controlla prima di condividerla di nuovo.</translation>
     </message>
     <message id="gamehq.share.provider.clipboard">
       <location filename="src/share/providers/ClipboardShareProvider.cpp" line="24"></location>
@@ -4912,7 +4912,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.share.settings.description">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="41"></location>
       <source>Channels that Share can post to. Webhook links are kept in Windows Credential Manager, not in GameHQ's settings.</source>
-      <translation>Canali in cui Condividi può pubblicare. I link dei webhook sono conservati in Gestione credenziali di Windows, non nelle impostazioni di GameHQ.</translation>
+      <translation>Canali in cui puoi pubblicare tramite Condividi. I link dei webhook sono conservati in Gestione credenziali di Windows, non nelle impostazioni di GameHQ.</translation>
     </message>
     <message id="gamehq.share.settings.error.invalid_name">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="25"></location>
@@ -4947,7 +4947,7 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     <message id="gamehq.share.settings.unpin">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="87"></location>
       <source>Unpin</source>
-      <translation>Non fissare</translation>
+      <translation>Rimuovi fissaggio</translation>
     </message>
     <message id="gamehq.share.settings.webhook_label">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="132"></location>

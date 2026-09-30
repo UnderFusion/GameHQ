@@ -4458,7 +4458,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.disconnect.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
       <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
-      <translation>Виконує вихід GameHQ і видаляє локальний сеанс. Вимкнення місця призначення цього не робить.</translation>
+      <translation>Виконує вихід із підключеного облікового запису в GameHQ і видаляє локальний сеанс. Саме вимкнення місця призначення цього не робить.</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
@@ -4483,7 +4483,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation>Вимкнення місця призначення лише приховує його. Збережені облікові записи й канали зберігаються, доки ви їх не від’єднаєте або не видалите.</translation>
+      <translation>Вимкнення місця призначення лише приховує його. Збережені облікові записи залишаються, доки ви їх не від’єднаєте, а канали — доки не видалите.</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
@@ -4543,7 +4543,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.description">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
       <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
-      <translation>Надсилайте медіафайли з GameHQ просто своїм контактам у Telegram. GameHQ не показує чати й повідомлення та не надсилає нічого, що ви не вибрали. Це виконує вхід у весь ваш обліковий запис Telegram, тому підключайте лише той обліковий запис, з яким вам комфортно.</translation>
+      <translation>Надсилайте медіафайли з GameHQ прямо своїм контактам у Telegram. GameHQ не показує чатів чи повідомлень і надсилає лише вибраний вами медіафайл. Ця функція створює в цій програмі повний сеанс вашого облікового запису Telegram, тому підключайте лише той обліковий запис, для якого ви приймаєте такий рівень доступу.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.bad_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
@@ -4588,7 +4588,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.error.no_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
       <source>The optional Telegram component is not installed in this GameHQ.</source>
-      <translation>Необов’язковий компонент Telegram не встановлено в цьому GameHQ.</translation>
+      <translation>Необов’язковий компонент Telegram не встановлено в цій інсталяції GameHQ.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.password_invalid">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
@@ -4613,7 +4613,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.forget">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="129"></location>
       <source>Forget API ID and hash</source>
-      <translation>Забути ID API і хеш</translation>
+      <translation>Видалити ID API і хеш</translation>
     </message>
     <message id="gamehq.settings.telegram.title">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="69"></location>
@@ -4789,7 +4789,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.discord_webhook.privacy">
       <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="69"></location>
       <source>Posts to the channel as a webhook, not as your Discord account. Everyone in the channel can see it.</source>
-      <translation>Публікує в каналі як вебхук, а не від вашого облікового запису Discord. Матеріал бачитимуть усі в каналі.</translation>
+      <translation>Публікує в каналі через вебхук, а не від імені вашого облікового запису Discord. Матеріал бачитимуть усі учасники каналу.</translation>
     </message>
     <message id="gamehq.share.error.capture_changed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
@@ -4869,7 +4869,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.outcome.cancelled">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="195"></location>
       <source>Sharing cancelled. Nothing was sent.</source>
-      <translation>Надсилання скасовано. Нічого не надіслано.</translation>
+      <translation>Поширення скасовано. Нічого не надіслано.</translation>
     </message>
     <message id="gamehq.share.outcome.copied">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="192"></location>
@@ -4949,7 +4949,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.settings.title">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="39"></location>
       <source>Share destinations</source>
-      <translation>Куди поділитися</translation>
+      <translation>Місця для поширення</translation>
     </message>
     <message id="gamehq.share.settings.unpin">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="87"></location>

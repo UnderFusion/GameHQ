@@ -4444,7 +4444,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.disconnect.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="97"></location>
       <source>Signs GameHQ out and deletes its local session. Turning the destination off does not do this.</source>
-      <translation>ออกจากระบบ GameHQ และลบเซสชันในเครื่อง การปิดปลายทางไม่ได้ทำเช่นนี้</translation>
+      <translation>ออกจากบัญชีที่เชื่อมต่อใน GameHQ และลบเซสชันในเครื่อง การปิดปลายทางเพียงอย่างเดียวจะไม่ทำเช่นนี้</translation>
     </message>
     <message id="gamehq.settings.sharing.disconnect.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="95"></location>
@@ -4454,7 +4454,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.master.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="50"></location>
       <source>Turns the Share option on or off everywhere: gallery, lightbox and overlay.</source>
-      <translation>เปิดหรือปิดตัวเลือกการแชร์ทุกที่: แกลเลอรี ตัวดู และโอเวอร์เลย์</translation>
+      <translation>เปิดหรือปิดตัวเลือกการแชร์ทุกที่: แกลเลอรี ไลท์บ็อกซ์ และโอเวอร์เลย์</translation>
     </message>
     <message id="gamehq.settings.sharing.master.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="48"></location>
@@ -4469,7 +4469,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation>การปิดปลายทางเป็นเพียงการซ่อนเท่านั้น บัญชีและช่องที่บันทึกไว้จะยังอยู่จนกว่าคุณจะตัดการเชื่อมต่อหรือลบออก</translation>
+      <translation>การปิดปลายทางจะเพียงซ่อนปลายทางนั้นเท่านั้น บัญชีที่บันทึกไว้จะยังคงอยู่จนกว่าคุณจะตัดการเชื่อมต่อ และช่องที่บันทึกไว้จะยังคงอยู่จนกว่าคุณจะลบออก</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
@@ -4514,7 +4514,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.connected_help">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="210"></location>
       <source>Connected. To sign out and delete GameHQ's saved Telegram session, use Disconnect in the list above.</source>
-      <translation>เชื่อมต่อแล้ว หากต้องการออกจากระบบและลบเซสชัน Telegram ที่ GameHQ บันทึกไว้ ให้ใช้ตัดการเชื่อมต่อในรายการด้านบน</translation>
+      <translation>เชื่อมต่อแล้ว หากต้องการออกจากระบบและลบเซสชัน Telegram ที่ GameHQ บันทึกไว้ ให้เลือก “ตัดการเชื่อมต่อ” จากรายการด้านบน</translation>
     </message>
     <message id="gamehq.settings.telegram.continue">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="173"></location>
@@ -4529,7 +4529,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.description">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
       <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
-      <translation>ส่งรายการสื่อจาก GameHQ ไปยังผู้ติดต่อ Telegram ของคุณโดยตรง GameHQ จะไม่แสดงแชทหรือข้อความ และจะไม่ส่งสิ่งที่คุณไม่ได้เลือก การทำงานนี้จะลงชื่อเข้าใช้บัญชี Telegram ของคุณทั้งบัญชี ดังนั้นโปรดเชื่อมต่อเฉพาะบัญชีที่คุณสบายใจ</translation>
+      <translation>ส่งรายการสื่อจาก GameHQ ไปยังผู้ติดต่อ Telegram ของคุณโดยตรง GameHQ จะไม่แสดงแชทหรือข้อความ และจะส่งเฉพาะรายการสื่อที่คุณเลือก ฟีเจอร์นี้จะเข้าสู่ระบบบัญชี Telegram ของคุณแบบเต็ม ดังนั้นควรเชื่อมต่อเฉพาะบัญชีที่คุณยอมรับการเข้าถึงในระดับนี้</translation>
     </message>
     <message id="gamehq.settings.telegram.error.bad_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
@@ -4574,7 +4574,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.telegram.error.no_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
       <source>The optional Telegram component is not installed in this GameHQ.</source>
-      <translation>ไม่ได้ติดตั้งคอมโพเนนต์เสริมของ Telegram ใน GameHQ นี้</translation>
+      <translation>การติดตั้ง GameHQ นี้ไม่มีคอมโพเนนต์เสริมของ Telegram</translation>
     </message>
     <message id="gamehq.settings.telegram.error.password_invalid">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
@@ -4905,7 +4905,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.share.settings.description">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="41"></location>
       <source>Channels that Share can post to. Webhook links are kept in Windows Credential Manager, not in GameHQ's settings.</source>
-      <translation>ช่องที่ "แชร์" โพสต์ได้ ลิงก์ Webhook จะเก็บไว้ในตัวจัดการข้อมูลรับรองของ Windows ไม่ใช่ในการตั้งค่า GameHQ</translation>
+      <translation>ช่องที่คุณสามารถโพสต์ผ่านฟีเจอร์ “แชร์” ได้ ลิงก์ Webhook จะเก็บไว้ในตัวจัดการข้อมูลรับรองของ Windows ไม่ใช่ในการตั้งค่า GameHQ</translation>
     </message>
     <message id="gamehq.share.settings.error.invalid_name">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="25"></location>

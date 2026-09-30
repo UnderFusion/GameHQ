@@ -4461,7 +4461,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.settings.sharing.master.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="50"></location>
       <source>Turns the Share option on or off everywhere: gallery, lightbox and overlay.</source>
-      <translation>Ativa ou desativa a opção de compartilhar em todos os lugares: galeria, visualizador e sobreposição.</translation>
+      <translation>Ativa ou desativa o recurso de compartilhamento em todos os lugares: galeria, visualizador e sobreposição.</translation>
     </message>
     <message id="gamehq.settings.sharing.master.label">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="48"></location>
@@ -4476,7 +4476,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.settings.sharing.providers.description">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="65"></location>
       <source>Turning a destination off only hides it. Saved accounts and channels are kept until you disconnect or remove them.</source>
-      <translation>Desativar um destino apenas o oculta. Contas e canais salvos são mantidos até você desconectá-los ou removê-los.</translation>
+      <translation>Desativar um destino apenas o oculta. Contas e canais salvos são mantidos até você desconectar uma conta ou remover um item salvo.</translation>
     </message>
     <message id="gamehq.settings.sharing.providers.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="63"></location>
@@ -4536,7 +4536,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.settings.telegram.description">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="71"></location>
       <source>Send captures from GameHQ straight to your Telegram contacts. GameHQ shows no chats or messages and sends nothing you did not pick. This signs in to your whole Telegram account, so only connect an account you are comfortable with.</source>
-      <translation>Envie capturas do GameHQ diretamente para seus contatos do Telegram. O GameHQ não mostra conversas nem mensagens e não envia nada que você não tenha escolhido. Isso conecta toda a sua conta do Telegram, então conecte apenas uma conta com a qual você se sinta à vontade.</translation>
+      <translation>Envie capturas do GameHQ diretamente para seus contatos do Telegram. O GameHQ não mostra conversas nem mensagens e envia apenas a captura que você escolher. Isso cria neste aplicativo uma sessão completa da sua conta do Telegram; conecte apenas uma conta se você aceitar esse nível de acesso.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.bad_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="33"></location>
@@ -4581,7 +4581,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.settings.telegram.error.no_runtime">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="28"></location>
       <source>The optional Telegram component is not installed in this GameHQ.</source>
-      <translation>O componente opcional do Telegram não está instalado neste GameHQ.</translation>
+      <translation>O componente opcional do Telegram não está instalado nesta instalação do GameHQ.</translation>
     </message>
     <message id="gamehq.settings.telegram.error.password_invalid">
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="45"></location>
@@ -4752,7 +4752,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.share.addons.title">
       <location filename="src/ui/qml/settings/SharingSettingsPage.qml" line="125"></location>
       <source>Share add-ons</source>
-      <translation>Complementos de Compartilhar</translation>
+      <translation>Complementos de compartilhamento</translation>
     </message>
     <message id="gamehq.share.close">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="164"></location>
@@ -4782,7 +4782,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.share.discord_webhook.privacy">
       <location filename="src/share/providers/DiscordWebhookProvider.cpp" line="69"></location>
       <source>Posts to the channel as a webhook, not as your Discord account. Everyone in the channel can see it.</source>
-      <translation>Publica no canal como webhook, não como sua conta do Discord. Todos no canal podem ver.</translation>
+      <translation>Publica no canal por meio de um webhook, não pela sua conta do Discord. Todos no canal podem ver a publicação.</translation>
     </message>
     <message id="gamehq.share.error.capture_changed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="210"></location>
@@ -4872,12 +4872,12 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.share.outcome.handed_off">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="189"></location>
       <source>Opened in %1. Finish sending there.</source>
-      <translation>Aberta no %1. Conclua o envio por lá.</translation>
+      <translation>O arquivo foi aberto em %1. Conclua o envio por lá.</translation>
     </message>
     <message id="gamehq.share.outcome.handed_off_paste">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="187"></location>
       <source>Copied and opened %1. Paste it into a chat to send it.</source>
-      <translation>Copiada e aberta no %1. Cole em uma conversa para enviar.</translation>
+      <translation>O arquivo foi copiado e %1 foi aberto. Cole-o em uma conversa para enviá-lo.</translation>
     </message>
     <message id="gamehq.share.outcome.sent">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="183"></location>
@@ -4887,7 +4887,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.share.outcome.unconfirmed">
       <location filename="src/ui/qml/components/ShareDialog.qml" line="198"></location>
       <source>GameHQ couldn't confirm whether it was sent. Check before sharing again.</source>
-      <translation>O GameHQ não conseguiu confirmar se foi enviada. Verifique antes de compartilhar de novo.</translation>
+      <translation>O GameHQ não conseguiu confirmar se o arquivo foi enviado. Verifique antes de compartilhar novamente.</translation>
     </message>
     <message id="gamehq.share.provider.clipboard">
       <location filename="src/share/providers/ClipboardShareProvider.cpp" line="24"></location>
@@ -4912,7 +4912,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.share.settings.description">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="41"></location>
       <source>Channels that Share can post to. Webhook links are kept in Windows Credential Manager, not in GameHQ's settings.</source>
-      <translation>Canais em que o Compartilhar pode publicar. Os links de webhook ficam no Gerenciador de Credenciais do Windows, não nas configurações do GameHQ.</translation>
+      <translation>Canais em que você pode publicar pelo recurso Compartilhar. Os links de webhook ficam no Gerenciador de Credenciais do Windows, não nas configurações do GameHQ.</translation>
     </message>
     <message id="gamehq.share.settings.error.invalid_name">
       <location filename="src/ui/qml/components/ShareDestinationsSection.qml" line="25"></location>
