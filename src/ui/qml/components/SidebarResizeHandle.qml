@@ -14,6 +14,10 @@ MouseArea {
     property real minimumWidth: 0
     property real maximumWidth: 0
     property Item reference: parent ? parent.parent : null
+    // Host confirmation that the pointer really is at this edge. The overlay
+    // window can miss the MouseArea's hover-leave, which left the line lit;
+    // the host's own HoverHandler reliably tracks the pointer there.
+    property bool pointerAtEdge: true
     readonly property bool mirrored: LayoutMirroring.enabled
 
     signal widthDragged(real width)
@@ -62,7 +66,7 @@ MouseArea {
         width: 2
         radius: 1
         color: Theme.accent
-        opacity: root.pressed ? 0.9 : root.containsMouse ? 0.5 : 0
+        opacity: root.pressed ? 0.9 : root.containsMouse && root.pointerAtEdge ? 0.5 : 0
         Behavior on opacity { NumberAnimation { duration: Theme.durFast } }
     }
 }

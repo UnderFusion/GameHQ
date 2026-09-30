@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_uk_UA.ts",
-    "sha256": "92aa8f0614fc3c9b3f7608f1942846ae341ed47d2cd38d1e1cb0d1b5790fdd19",
+    "sha256": "28b6fdbf8de5fc349cd0527f44c10bf338535ee15229f7fe46e4d54c17761bea",
     "message_count": 1069
   },
   "coverage": [
@@ -16649,7 +16649,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_uk_UA.ts",
-      "sha256": "92aa8f0614fc3c9b3f7608f1942846ae341ed47d2cd38d1e1cb0d1b5790fdd19",
+      "sha256": "28b6fdbf8de5fc349cd0527f44c10bf338535ee15229f7fe46e4d54c17761bea",
       "reviewed_units": 1069
     },
     {
