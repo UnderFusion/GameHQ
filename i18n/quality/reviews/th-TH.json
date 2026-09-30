@@ -12,7 +12,7 @@
     "method": "complete_source_location_context_review",
     "draft_provider": "Google Translate draft from product-owned English followed by complete contextual Thai review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
-    "recorded_at": "2026-09-30T18:10:00Z"
+    "recorded_at": "2026-09-30T18:40:00Z"
   },
   "baseline": {
     "path": "git:afd86d57bb31b3868519de2c86a27fa89403957f:i18n/app/gamehq_th_TH.ts",
@@ -20,7 +20,7 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_th_TH.ts",
-    "sha256": "26d2bc49a9425e647d0b0833f3a1e11fee19112c50a62f944c87609d592cdf25",
+    "sha256": "0c57b3e11506fa91262feb27defb8efb705bb2d77fb774f88ffd33ebdd26e52e",
     "message_count": 1067
   },
   "coverage": [
@@ -3977,7 +3977,7 @@
     {
       "id": "gamehq.overlay.hint.layout.gamepad",
       "source_hash": "404a240ffbca18c84e47e3b6d4f0462f295f3bd121711725a86ad90d73fe7498",
-      "translation_hash": "d21d59a6cd81556f058d82b1f04e079dddb31ec2eb66861e1195fd260540f126",
+      "translation_hash": "1d8ac7886c3405b8fbc51d11746587a515b5142b97441a6d229af8cfb13d847e",
       "locations": [
         "src/ui/qml/components/OverlayFooter.qml:38"
       ],
@@ -3986,7 +3986,7 @@
     {
       "id": "gamehq.overlay.hint.layout.keyboard",
       "source_hash": "3da37b1fc744b033a452d743b65c1394c9f5ecbe38856a81c12472d2eacad7c6",
-      "translation_hash": "ddb3e3e5c8e55b8567015d0ae3b4c3bca53709c32d18793211760c954bf8e3ec",
+      "translation_hash": "a7125a1094c3bfc4b5ce9a5c403904583767b06ea6edea3c7d2a71e8b60650e0",
       "locations": [
         "src/ui/qml/components/OverlayFooter.qml:41"
       ],
@@ -16424,7 +16424,7 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_th_TH.ts",
-      "sha256": "26d2bc49a9425e647d0b0833f3a1e11fee19112c50a62f944c87609d592cdf25",
+      "sha256": "0c57b3e11506fa91262feb27defb8efb705bb2d77fb774f88ffd33ebdd26e52e",
       "reviewed_units": 1067
     },
     {

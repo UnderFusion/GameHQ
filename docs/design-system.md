@@ -5,8 +5,9 @@
 ## Interface size
 
 General → Look and feel has separate Main interface size and Overlay interface
-size presets: 75%, 90%, 100%, 125%, 150%, 175%, and 200%. Both default to 100%,
-apply live, and persist as `theme.main_scale` and `theme.overlay_scale`.
+size presets: 100%, 125%, 150%, 175%, and 200%, and the overlay also offers 75%
+and 90% (`ScaledSurface.overlayPresets`). Both default to 100%, apply live, and
+persist as `theme.main_scale` and `theme.overlay_scale`.
 General/category reset restores both defaults. The fullscreen capture viewer uses
 the main setting.
 
@@ -16,7 +17,7 @@ The overlay's gear (Overlay options, `OverlayLayoutPanel.qml`) edits the same
 `ui.overlay_margin_left/top/right/bottom` (0-96 logical px, step 8, default 48)
 and `ui.overlay_thumbnail_scale` (70-140%, step 10; the capture strip height
 follows the tiles), plus `ui.overlay_spacing` (0-64 px, step 8, default 32), one
-gap between the sidebar, strip and preview; the preview-to-hints gap is 3/4 of it. Every change applies live and persists at once; the card
+gap between the sidebar and the captures and between the strip and the preview. Every change applies live and persists at once; the card
 floats beside the sidebar without a scrim so the preview stays visible.
 
 `ScaledSurface.qml` gives each window its own logical canvas and transform,

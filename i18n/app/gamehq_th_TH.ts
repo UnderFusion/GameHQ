@@ -117,7 +117,7 @@
       <location filename="src/ui/qml/Main.qml" line="1209"></location>
       <location filename="src/ui/qml/Main.qml" line="1228"></location>
       <location filename="src/ui/qml/Main.qml" line="1266"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1016"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1015"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -1377,7 +1377,7 @@ This permanently deletes the file.</source>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1207"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1014"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1013"></location>
       <source>Delete capture?</source>
       <translation>ลบรายการสื่อนี้หรือไม่</translation>
     </message>
@@ -2265,7 +2265,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>การทำงานกับสื่อ</translation>
     </message>
     <message id="gamehq.overlay.focus_warning">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="273"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="272"></location>
       <source>The game still has focus and may react to controller input</source>
       <translation>เกมยังมีโฟกัสและอาจตอบสนองต่ออินพุตจากคอนโทรลเลอร์</translation>
     </message>
@@ -2282,12 +2282,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.overlay.hint.layout.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="38"></location>
       <source>D-pad Up/Down — choose | D-pad Left/Right — adjust | Cross — toggle | Circle — close options</source>
-      <translation>D-pad ขึ้น/ลง — เลือก | D-pad Left/Right — ปรับ | Cross — เปิด/ปิด | Circle — ปิดตัวเลือก</translation>
+      <translation>D-pad ขึ้น/ลง — เลือก | D-pad ซ้าย/ขวา — ปรับ | Cross — เปิด/ปิด | Circle — ปิดตัวเลือก</translation>
     </message>
     <message id="gamehq.overlay.hint.layout.keyboard">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="41"></location>
       <source>Up/Down — choose | Left/Right — adjust | Enter — toggle | Esc/Backspace — close options</source>
-      <translation>ขึ้น/ลง — เลือก | Left/Right — ปรับ | Enter — เปิด/ปิด | Esc/Backspace — ปิดตัวเลือก</translation>
+      <translation>ขึ้น/ลง — เลือก | ซ้าย/ขวา — ปรับ | Enter — เปิด/ปิด | Esc/Backspace — ปิดตัวเลือก</translation>
     </message>
     <message id="gamehq.overlay.hint.menu.gamepad">
       <location filename="src/ui/qml/components/OverlayFooter.qml" line="46"></location>
@@ -2376,7 +2376,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>ตัวเลือกโอเวอร์เลย์</translation>
     </message>
     <message id="gamehq.overlay.window_title">
-      <location filename="src/ui/qml/OverlayWindow.qml" line="47"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="48"></location>
       <source>%1 Overlay</source>
       <translation>โอเวอร์เลย์ %1</translation>
     </message>
@@ -3141,133 +3141,133 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>การแจ้งเตือน</translation>
     </message>
     <message id="gamehq.settings.general.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="14"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="18"></location>
       <source>Appearance, startup, and window behavior.</source>
       <translation>ลักษณะที่ปรากฏ การเริ่มต้น และลักษณะการทำงานของหน้าต่าง</translation>
     </message>
     <message id="gamehq.settings.general.desktop.close_to_tray.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="162"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="166"></location>
       <source>Keep capture and replay services running; when disabled, Close exits %1.</source>
       <translation>ให้บริการจับภาพและรีเพลย์ทำงานต่อไป เมื่อปิดตัวเลือกนี้ การกด ปิด จะออกจาก %1</translation>
     </message>
     <message id="gamehq.settings.general.desktop.close_to_tray.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="160"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="164"></location>
       <source>Close to tray</source>
       <translation>ปิดไปยังพื้นที่แจ้งเตือน</translation>
     </message>
     <message id="gamehq.settings.general.desktop.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="150"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="154"></location>
       <source>Choose what happens when the main window is minimized or closed.</source>
       <translation>เลือกสิ่งที่จะเกิดขึ้นเมื่อมีการย่อหรือปิดหน้าต่างหลัก</translation>
     </message>
     <message id="gamehq.settings.general.desktop.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="146"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="150"></location>
       <source>Desktop</source>
       <translation>เดสก์ท็อป</translation>
     </message>
     <message id="gamehq.settings.general.desktop.minimize_to_tray.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="155"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="159"></location>
       <source>Minimizing the window sends it straight to the tray instead of the taskbar.</source>
       <translation>การย่อขนาดหน้าต่างจะส่งตรงไปที่พื้นที่แจ้งเตือนแทนทาสก์บาร์</translation>
     </message>
     <message id="gamehq.settings.general.desktop.minimize_to_tray.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="153"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="157"></location>
       <source>Minimize to tray</source>
       <translation>ย่อไปยังพื้นที่แจ้งเตือน</translation>
     </message>
     <message id="gamehq.settings.general.desktop.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="148"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="152"></location>
       <source>Window and tray behavior</source>
       <translation>ลักษณะหน้าต่างและพื้นที่แจ้งเตือน</translation>
     </message>
     <message id="gamehq.settings.general.interface_scale.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="86"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="98"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="90"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="102"></location>
       <source>Enlarge text, icons, and controls. Applies immediately; reduced automatically when space is limited.</source>
       <translation>ขยายข้อความ ไอคอน และส่วนควบคุม มีผลทันที และจะลดขนาดโดยอัตโนมัติเมื่อมีพื้นที่ไม่เพียงพอ</translation>
     </message>
     <message id="gamehq.settings.general.main_scale.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="84"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="88"></location>
       <source>Main interface size</source>
       <translation>ขนาดอินเทอร์เฟซหลัก</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="110"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="114"></location>
       <source>How strongly the in-game overlay darkens the game behind it. 100% is the theme's own dimming; lower values keep more of the game visible.</source>
       <translation>โอเวอร์เลย์ในเกมจะทำให้เกมด้านหลังมืดลงเพียงใด 100% เป็นการหรี่แสงของธีมเอง ค่าที่ต่ำกว่าจะทำให้มองเห็นเกมได้มากขึ้น</translation>
     </message>
     <message id="gamehq.settings.general.overlay_dimming.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="108"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="112"></location>
       <source>Overlay dimming</source>
       <translation>การหรี่แสงซ้อน</translation>
     </message>
     <message id="gamehq.settings.general.overlay_scale.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="96"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="100"></location>
       <source>Overlay interface size</source>
       <translation>ขนาดอินเทอร์เฟซโอเวอร์เลย์</translation>
     </message>
     <message id="gamehq.settings.general.personalization.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="57"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="61"></location>
       <source>Choose the visual style and in-game overlay strength.</source>
       <translation>เลือกสไตล์ภาพและระดับความมืดของโอเวอร์เลย์ในเกม</translation>
     </message>
     <message id="gamehq.settings.general.personalization.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="53"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="57"></location>
       <source>Personalization</source>
       <translation>การปรับแต่ง</translation>
     </message>
     <message id="gamehq.settings.general.personalization.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="55"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="59"></location>
       <source>Look and feel</source>
       <translation>รูปลักษณ์</translation>
     </message>
     <message id="gamehq.settings.general.startup.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="127"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="131"></location>
       <source>Choose whether GameHQ starts when you sign in to Windows and opens quietly.</source>
       <translation>เลือกว่าจะเริ่ม GameHQ เมื่อลงชื่อเข้าใช้ Windows และเปิดไว้ในพื้นที่แจ้งเตือนหรือไม่</translation>
     </message>
     <message id="gamehq.settings.general.startup.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="123"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="127"></location>
       <source>Startup</source>
       <translation>การเริ่มต้น</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="139"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="143"></location>
       <source>Launch directly in the system tray without opening the main window.</source>
       <translation>เปิดโดยตรงในพื้นที่แจ้งเตือนโดยไม่แสดงหน้าต่างหลัก</translation>
     </message>
     <message id="gamehq.settings.general.startup.minimized.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="137"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="141"></location>
       <source>Launch minimized</source>
       <translation>เปิดแบบย่อ</translation>
     </message>
     <message id="gamehq.settings.general.startup.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="125"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="129"></location>
       <source>How %1 starts</source>
       <translation>%1 เริ่มต้นอย่างไร</translation>
     </message>
     <message id="gamehq.settings.general.startup.windows.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="132"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="136"></location>
       <source>Register %1 for the current Windows user; no administrator access is required.</source>
       <translation>ลงทะเบียน %1 สำหรับผู้ใช้ Windows ปัจจุบัน ไม่จำเป็นต้องมีการเข้าถึงของผู้ดูแลระบบ</translation>
     </message>
     <message id="gamehq.settings.general.startup.windows.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="130"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="134"></location>
       <source>Start with Windows</source>
       <translation>เริ่มต้นด้วย Windows</translation>
     </message>
     <message id="gamehq.settings.general.theme.fallback">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="72"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="76"></location>
       <source>Choose how %1 looks.</source>
       <translation>เลือกรูปลักษณ์ของ %1</translation>
     </message>
     <message id="gamehq.settings.general.theme.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="61"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="65"></location>
       <source>Theme</source>
       <translation>ธีม</translation>
     </message>
     <message id="gamehq.settings.general.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="12"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="16"></location>
       <source>General</source>
       <translation>ทั่วไป</translation>
     </message>
@@ -3786,33 +3786,33 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>ทดสอบและกู้คืน</translation>
     </message>
     <message id="gamehq.settings.language.description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="22"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="26"></location>
       <source>Choose the language GameHQ uses.</source>
       <translation>เลือกภาษาที่ GameHQ ใช้</translation>
     </message>
     <message id="gamehq.settings.language.eyebrow">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="18"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="22"></location>
       <source>Language</source>
       <translation>ภาษา</translation>
     </message>
     <message id="gamehq.settings.language.label">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="26"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="30"></location>
       <source>Display language</source>
       <translation>ภาษาที่แสดง</translation>
     </message>
     <message id="gamehq.settings.language.row_description">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="28"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="32"></location>
       <source>Changes apply immediately throughout GameHQ.</source>
       <translation>การเปลี่ยนแปลงมีผลทันทีตลอดทั้ง GameHQ</translation>
     </message>
     <message id="gamehq.settings.language.system">
-      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="370"></location>
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="36"></location>
+      <location filename="src/ui/qml/components/DesktopSidebar.qml" line="376"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="40"></location>
       <source>System language</source>
       <translation>ภาษาของระบบ</translation>
     </message>
     <message id="gamehq.settings.language.title">
-      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="20"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="24"></location>
       <source>Interface language</source>
       <translation>ภาษาอินเทอร์เฟซ</translation>
     </message>

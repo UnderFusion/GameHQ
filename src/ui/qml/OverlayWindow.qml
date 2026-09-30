@@ -31,6 +31,7 @@ Window {
         anchors.fill: parent
         settings: app
         configKey: "theme.overlay_scale"
+        presets: overlayPresets
         minimumContentWidth: Theme.minimumUiWidth
         minimumContentHeight: Theme.minimumUiHeight
         // A close stays invisible while the controller handoff finishes.
@@ -136,10 +137,8 @@ Window {
         property int marginBottom: Theme.overlayMarginDefault
         property int uiScale: scaledViewport.requestedPercent
         property int thumbScale: 100
-        // One gap between the panels (sidebar | captures, strip | preview); the
-        // preview-to-hints gap follows it at 3/4, which keeps the shipped 24.
+        // One gap between the panels: sidebar | captures and strip | preview.
         property int spacing: Theme.overlaySpacingDefault
-        readonly property int footerGap: Math.round(spacing * 3 / 4)
         readonly property var marginKeys: ({
             margin_left: "ui.overlay_margin_left",
             margin_top: "ui.overlay_margin_top",
@@ -793,7 +792,7 @@ Window {
             anchors.top: parent.top
             // Hidden hints hand their height back to the preview.
             anchors.bottom: layoutPrefs.showHints ? footer.top : parent.bottom
-            anchors.bottomMargin: layoutPrefs.showHints ? layoutPrefs.footerGap : 0
+            anchors.bottomMargin: layoutPrefs.showHints ? Theme.s24 : 0
             anchors.left: parent.left
             anchors.right: parent.right
 
