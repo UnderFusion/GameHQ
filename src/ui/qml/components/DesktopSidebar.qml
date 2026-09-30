@@ -19,9 +19,13 @@ Rectangle {
     // the effective state Main resolves from the mode, focus and hover.
     property string mode: "expanded"
     property bool expanded: true
-    // Flat pad index of the mode toggle (the last controller row).
-    // Controller rows after About: Support, the mode toggle, the language.
-    readonly property int supportRowIndex: root.categories.length + app.games.length + 3
+    // Tools group: the divider toggle collapses Settings/Help/About/Support
+    // (Main owns and persists the state).
+    property bool toolsCollapsed: false
+    // Flat pad rows after the games: the tools toggle, Settings, Help, About,
+    // Support, the mode toggle and last the language selector.
+    readonly property int toolsToggleIndex: root.categories.length + app.games.length
+    readonly property int supportRowIndex: root.toolsToggleIndex + 4
     readonly property int modeRowIndex: root.supportRowIndex + 1
     // Last controller row: the language selector below the mode toggle.
     readonly property int languageRowIndex: root.modeRowIndex + 1
@@ -37,6 +41,7 @@ Rectangle {
     signal aboutRequested()
     signal pageClosed()
     signal modeCycleRequested()
+    signal toolsToggleRequested()
 
     // The games list is the sidebar's only clipped region: keep the pad
     // cursor visible while it walks rows that sit outside the viewport.
@@ -264,18 +269,80 @@ Rectangle {
             }
         }
 
-        Rectangle {
+        // Divider with the tools toggle in its middle: a flat chevron that
+        // points down while the tools are hidden and up while they show.
+        Item {
             Layout.fillWidth: true
             Layout.leftMargin: Theme.s8
             Layout.rightMargin: Theme.s8
             Layout.topMargin: Theme.s4
             Layout.bottomMargin: Theme.s4
-            Layout.preferredHeight: Math.max(1, Theme.borderWidth)
-            color: Theme.divider
+            Layout.preferredHeight: toolsToggle.height
+
+            Rectangle {
+                anchors.left: parent.left
+                anchors.right: toolsToggle.left
+                anchors.rightMargin: Theme.s4
+                anchors.verticalCenter: parent.verticalCenter
+                height: Math.max(1, Theme.borderWidth)
+                color: Theme.divider
+            }
+            Rectangle {
+                anchors.left: toolsToggle.right
+                anchors.leftMargin: Theme.s4
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                height: Math.max(1, Theme.borderWidth)
+                color: Theme.divider
+            }
+
+            Rectangle {
+                id: toolsToggle
+                objectName: "sidebarToolsToggle"
+                readonly property bool padHovered: root.sidebarFocused
+                                                   && root.sidebarHoverIndex === root.toolsToggleIndex
+                //% "Show tools"
+                readonly property string showLabel: qsTrId("gamehq.navigation.tools.show")
+                //% "Hide tools"
+                readonly property string hideLabel: qsTrId("gamehq.navigation.tools.hide")
+                anchors.centerIn: parent
+                width: Theme.s24
+                height: Theme.s16 + Theme.s4
+                radius: height / 2
+                color: toolsToggleMouse.containsMouse || toolsToggle.padHovered
+                       ? Theme.surfaceAlt : "transparent"
+                border.width: toolsToggle.padHovered ? 2 : 1
+                border.color: toolsToggle.padHovered ? Theme.accent : Theme.divider
+                Accessible.role: Accessible.Button
+                Accessible.name: root.toolsCollapsed ? toolsToggle.showLabel : toolsToggle.hideLabel
+
+                Text {
+                    anchors.centerIn: parent
+                    text: "\u25be"
+                    rotation: root.toolsCollapsed ? 0 : 180
+                    color: toolsToggleMouse.containsMouse || toolsToggle.padHovered
+                           ? Theme.text : Theme.textMuted
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontCaption
+                    Behavior on rotation { NumberAnimation { duration: Theme.durFast } }
+                }
+
+                MouseArea {
+                    id: toolsToggleMouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: root.toolsToggleRequested()
+                }
+
+                ToolTip.text: toolsToggle.Accessible.name
+                ToolTip.visible: toolsToggleMouse.containsMouse
+                ToolTip.delay: 400
+            }
         }
 
         Text {
-            visible: !root.compact
+            visible: !root.compact && !root.toolsCollapsed
             // Reuse the reviewed Tools translation already shipped by every locale.
             //% "Tools"
             text: qsTrId("gamehq.settings.advanced.diagnostics.title").toUpperCase()
@@ -293,8 +360,9 @@ Rectangle {
             //% "Settings"
             label: qsTrId("gamehq.navigation.settings")
             glyph: "\u2699"
+            visible: !root.toolsCollapsed
             active: root.settingsOpen
-            sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.categories.length + app.games.length
+            sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.toolsToggleIndex + 1
             compact: root.compact
             onClicked: root.settingsRequested()
         }
@@ -304,8 +372,9 @@ Rectangle {
             //% "Help"
             label: qsTrId("gamehq.navigation.help")
             glyph: "?"
+            visible: !root.toolsCollapsed
             active: root.helpOpen
-            sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.categories.length + app.games.length + 1
+            sidebarHovered: root.sidebarFocused && root.sidebarHoverIndex === root.toolsToggleIndex + 2
             compact: root.compact
             onClicked: root.helpRequested()
         }
@@ -317,9 +386,10 @@ Rectangle {
             label: qsTrId("gamehq.navigation.about")
             glyph: "\u24d8"
             trailingGlyph: root.updateAvailable || root.aboutUnread ? "\u25cf" : ""
+            visible: !root.toolsCollapsed
             active: false
             sidebarHovered: root.sidebarFocused
-                            && root.sidebarHoverIndex === root.categories.length + app.games.length + 2
+                            && root.sidebarHoverIndex === root.toolsToggleIndex + 3
             compact: root.compact
             onClicked: root.aboutRequested()
         }
@@ -327,6 +397,7 @@ Rectangle {
         SidebarItem {
             id: supportButton
             objectName: "supportGameHqButton"
+            visible: !root.toolsCollapsed
             Layout.fillWidth: true
             Layout.preferredHeight: Theme.s32
 
