@@ -10,6 +10,7 @@
 #include "input/InputDiagnostics.h"
 #include "input/RawInputApi.h"
 #include "input/SelectiveRawHidFallback.h"
+#include "input/SonyHidReader.h"
 
 // Allocation counter. Replacing the global operator new is the only way to
 // answer "did this path allocate?" for code compiled into this executable.
@@ -259,6 +260,56 @@ public:
             ++parserInvalidations;
     }
 };
+// Stands in for the Win32 direct HID reader (bt-ds02 spike). Records which
+// endpoint paths hold a live reader so leaks and stale endpoints are visible;
+// tests deliver reports through DualSenseDevice::onHidReport exactly as the
+// production factory's queued callback would.
+struct FakeHidReaders {
+    struct Reader final : SonyHidReaderHandle {
+        FakeHidReaders* owner = nullptr;
+        quint64 id = 0;
+        ~Reader() override
+        {
+            owner->alive.remove(id);
+            ++owner->destroyed;
+        }
+    };
+
+    QHash<quint64, QString> alive;   // reader id -> endpoint path
+    int created = 0;
+    int destroyed = 0;
+    bool failOpen = false;
+
+    DualSenseDevice::HidReaderFactory factory()
+    {
+        return [this](const QString& path, bool, quint64 id,
+                      QString* error) -> std::unique_ptr<SonyHidReaderHandle> {
+            if (failOpen) {
+                *error = QStringLiteral("CreateFile failed (error 32)");
+                return nullptr;
+            }
+            ++created;
+            alive.insert(id, path);
+            auto reader = std::make_unique<Reader>();
+            reader->owner = this;
+            reader->id = id;
+            return reader;
+        };
+    }
+
+    quint64 idFor(const QString& path) const
+    {
+        for (auto it = alive.cbegin(); it != alive.cend(); ++it) {
+            if (it.value() == path)
+                return it.key();
+        }
+        return 0;
+    }
+};
+
+const QString kUsbPath = QStringLiteral("\\\\?\\HID#VID_054C&PID_0CE6&MI_03#usb-endpoint");
+const QString kBtPath = QStringLiteral(
+    "\\\\?\\HID#{00001124-0000-1000-8000-00805f9b34fb}_VID&0002054c_PID&0ce6#bt-endpoint");
 } // namespace
 
 class RawInputFloodTest : public QObject
@@ -1057,6 +1108,272 @@ private slots:
         QCOMPARE(api->parserInvalidations, 1);
 
         fallback.setBoundControls({});
+    }
+
+    // --- bt-ds02: direct HID reader spike --------------------------------
+
+    void hidReaderIsOffByDefault()
+    {
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        void* usb = handle(0x8201);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad, kUsbPath);
+        device.report = dsReport(DsTransport::Usb, 0x08);
+        api->devices.insert(usb, device);
+
+        pad.onRawInput(usb);
+        QVERIFY(!pad.hidReaderEnabled());
+        QCOMPARE(pad.hidReaderCount(), 0);
+        QCOMPARE(api->payloadReads, 1);
+    }
+
+    // Test 1: USB endpoint removed, Bluetooth endpoint arrives in the same
+    // process. The USB reader is closed, a new reader serves the Bluetooth
+    // path, and a late report from the old reader is fenced off.
+    void hidReaderRebindsFromUsbToBluetoothWithoutRestart()
+    {
+        FakeHidReaders readers;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory());
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+
+        void* usb = handle(0x8211);
+        api->devices.insert(usb, FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid,
+                                                            kUsageGamepad, kUsbPath));
+        pad.onDeviceChange(true, usb);
+        const quint64 usbReader = readers.idFor(kUsbPath);
+        QVERIFY(usbReader != 0);
+        pad.onHidReport(usbReader, dsReport(DsTransport::Usb, 0x08));
+        pad.onHidReport(usbReader, dsReport(DsTransport::Usb, 0x08, 0x10));   // Create
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+        pad.onHidReport(usbReader, dsReport(DsTransport::Usb, 0x08));
+
+        api->devices.remove(usb);
+        pad.onDeviceChange(false, usb);
+        QCOMPARE(readers.alive.size(), 0);   // the USB endpoint is never retained
+
+        void* bt = handle(0x8212);
+        api->devices.insert(bt, FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid,
+                                                           kUsageGamepad, kBtPath));
+        pad.onDeviceChange(true, bt);
+        QCOMPARE(readers.alive.values(), QStringList{kBtPath});
+        const quint64 btReader = readers.idFor(kBtPath);
+        QVERIFY(btReader != usbReader);
+
+        pressed.clear();
+        pad.onHidReport(usbReader, dsReport(DsTransport::Usb, 0x08, 0x10));
+        QVERIFY2(pressed.isEmpty(), "a closed reader's queued report was delivered");
+
+        pad.onHidReport(btReader, dsReport(DsTransport::BtFull, 0x08));
+        pad.onHidReport(btReader, dsReport(DsTransport::BtFull, 0x08, 0x10));
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+        QCOMPARE(pad.profile().family, ControlId::ControllerFamily::PlayStation);
+    }
+
+    // Tests 2 and 6: both paths deliver the same physical Create press (in
+    // both orders, plus idle heartbeats). The endpoint has one source, so the
+    // press and release each surface exactly once and the Raw Input payload
+    // is never read while the reader is healthy.
+    void rawInputAndHidCopiesOfOnePressProduceOneEdge()
+    {
+        FakeHidReaders readers;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory());
+        void* bt = handle(0x8221);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad, kBtPath);
+        device.report = dsReport(DsTransport::BtFull, 0x08);
+        api->devices.insert(bt, device);
+
+        pad.onRawInput(bt);   // tracked through Raw Input; reader opened
+        const quint64 reader = readers.idFor(kBtPath);
+        QVERIFY(reader != 0);
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08));   // reader proves itself
+
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        QSignalSpy released(&pad, &Gamepad::controlReleased);
+        api->resetCounters();
+        const QByteArray down = dsReport(DsTransport::BtFull, 0x08, 0x10);
+        const QByteArray up = dsReport(DsTransport::BtFull, 0x08);
+
+        api->devices[bt].report = down;
+        pad.onRawInput(bt);            // WM_INPUT dispatched first
+        pad.onHidReport(reader, down);
+        pad.onRawInput(bt);
+        pad.onHidReport(reader, down); // heartbeat while held
+        api->devices[bt].report = up;
+        pad.onHidReport(reader, up);   // reader first this time
+        pad.onRawInput(bt);
+        pad.onHidReport(reader, up);
+
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+        QCOMPARE(controlIds(released), QStringList{ControlId::Capture});
+        QCOMPARE(api->payloadReads, 0);
+    }
+
+    // Test 3a: the reader reports a failure (Bluetooth drop, unplug, handle
+    // revoked); Raw Input is the source again on its very next report.
+    void hidReaderFailureHandsTheEndpointBackToRawInput()
+    {
+        FakeHidReaders readers;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory());
+        void* bt = handle(0x8231);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad, kBtPath);
+        device.report = dsReport(DsTransport::BtFull, 0x08);
+        api->devices.insert(bt, device);
+        pad.onRawInput(bt);
+        const quint64 reader = readers.idFor(kBtPath);
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08));
+
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        pad.onHidReaderFailed(reader, QStringLiteral("ReadFile completion failed (error 1167)"));
+        QCOMPARE(readers.alive.size(), 0);
+        QCOMPARE(pad.hidReaderCount(), 0);
+
+        api->resetCounters();
+        api->devices[bt].report = dsReport(DsTransport::BtFull, 0x08, 0x10);
+        pad.onRawInput(bt);
+        QCOMPARE(api->payloadReads, 1);
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+    }
+
+    // Test 3b: the reader stays open but stops forwarding while Raw Input
+    // keeps delivering. After the grace window Raw Input takes over; inside
+    // it, the Raw Input copy is still dropped (it may just have beaten the
+    // reader's queued copy of the same report).
+    void silentHidReaderFailsOverToRawInput()
+    {
+        FakeHidReaders readers;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory());
+        void* bt = handle(0x8241);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad, kBtPath);
+        device.report = dsReport(DsTransport::BtFull, 0x08);
+        api->devices.insert(bt, device);
+        pad.onRawInput(bt);
+        const quint64 reader = readers.idFor(kBtPath);
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08));
+
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        api->resetCounters();
+        QTest::qWait(300);   // past the freshness window, reader forwarded nothing
+        api->devices[bt].report = dsReport(DsTransport::BtFull, 0x08, 0x10);
+        pad.onRawInput(bt);
+        QCOMPARE(api->payloadReads, 0);
+        QVERIFY(pressed.isEmpty());
+
+        QTest::qWait(350);   // past the failover grace
+        pad.onRawInput(bt);
+        QCOMPARE(api->payloadReads, 1);
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+    }
+
+    // Test 4: a button held through a source change is released, whether the
+    // reader failed (Raw Input silent, e.g. game foreground) or the endpoint
+    // itself was removed.
+    void heldButtonIsReleasedWhenTheSourceGoesAway()
+    {
+        FakeHidReaders readers;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory());
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        QSignalSpy released(&pad, &Gamepad::controlReleased);
+
+        void* first = handle(0x8251);
+        api->devices.insert(first, FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid,
+                                                              kUsageGamepad, kBtPath));
+        pad.onDeviceChange(true, first);
+        quint64 reader = readers.idFor(kBtPath);
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08));
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08, 0x10));
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+        pad.onHidReaderFailed(reader, QStringLiteral("ReadFile completion failed (error 1167)"));
+        QCOMPARE(controlIds(released), QStringList{ControlId::Capture});
+
+        api->devices.remove(first);
+        pad.onDeviceChange(false, first);
+        void* second = handle(0x8252);
+        api->devices.insert(second, FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid,
+                                                               kUsageGamepad, kUsbPath));
+        pad.onDeviceChange(true, second);
+        reader = readers.idFor(kUsbPath);
+        pressed.clear();
+        released.clear();
+        pad.onHidReport(reader, dsReport(DsTransport::Usb, 0x08));
+        pad.onHidReport(reader, dsReport(DsTransport::Usb, 0x08, 0x10));
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+        api->devices.remove(second);
+        pad.onDeviceChange(false, second);   // unplugged while held
+        QCOMPARE(controlIds(released), QStringList{ControlId::Capture});
+        QCOMPARE(readers.alive.size(), 0);
+    }
+
+    // Test 5: repeated USB <-> Bluetooth switching in one process. Every
+    // endpoint gets exactly one reader, every reader is destroyed with its
+    // endpoint, and each cycle's press surfaces once.
+    void repeatedUsbBluetoothSwitchingLeaksNoReaders()
+    {
+        FakeHidReaders readers;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory());
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        QSignalSpy released(&pad, &Gamepad::controlReleased);
+
+        constexpr int kCycles = 20;
+        for (int i = 0; i < kCycles; ++i) {
+            const bool usbTurn = (i % 2) == 0;
+            const QString path = usbTurn ? kUsbPath : kBtPath;
+            const DsTransport t = usbTurn ? DsTransport::Usb : DsTransport::BtFull;
+            void* h = handle(0x8300 + quintptr(i));
+            api->devices.insert(h, FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid,
+                                                              kUsageGamepad, path));
+            pad.onDeviceChange(true, h);
+            QCOMPARE(readers.alive.values(), QStringList{path});
+            const quint64 reader = readers.idFor(path);
+            pad.onHidReport(reader, dsReport(t, 0x08));
+            pad.onHidReport(reader, dsReport(t, 0x08, 0x10));
+            pad.onHidReport(reader, dsReport(t, 0x08));
+            api->devices.remove(h);
+            pad.onDeviceChange(false, h);
+            QCOMPARE(readers.alive.size(), 0);
+        }
+        QCOMPARE(readers.created, kCycles);
+        QCOMPARE(readers.destroyed, kCycles);
+        QCOMPARE(pad.hidReaderCount(), 0);
+        QCOMPARE(pressed.size(), kCycles);
+        QCOMPARE(released.size(), kCycles);
+    }
+
+    // A reader that cannot open (exclusive access, HidHide) leaves Raw Input
+    // as the source and is retried on the next topology pass, not per report.
+    void unopenableHidReaderLeavesRawInputInCharge()
+    {
+        FakeHidReaders readers;
+        readers.failOpen = true;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory());
+        void* usb = handle(0x8261);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad, kUsbPath);
+        device.report = dsReport(DsTransport::Usb, 0x08);
+        api->devices.insert(usb, device);
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+
+        pad.onRawInput(usb);
+        api->devices[usb].report = dsReport(DsTransport::Usb, 0x08, 0x10);
+        pad.onRawInput(usb);
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+        QCOMPARE(pad.hidReaderCount(), 0);
+
+        readers.failOpen = false;
+        pad.rescan();
+        QTRY_COMPARE(pad.hidReaderCount(), 1);
     }
 };
 

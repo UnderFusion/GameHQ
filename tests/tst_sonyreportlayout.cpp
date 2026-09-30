@@ -72,6 +72,29 @@ private slots:
         QCOMPARE(StickNav::bits(kNav, report[axisBase], report[axisBase + 1]), quint32(0));
         QVERIFY(StickNav::bits(kNav, report[1], report[2]) & bit(Gamepad::DpadLeft));
     }
+
+    // The direct HID reader forwards only when this changes: sensor/counter
+    // bytes must not count, sticks and buttons must.
+    void controlSignatureIgnoresSensorBytesOnly()
+    {
+        unsigned char r[78] = {};
+        r[0] = 0x31;
+        for (int i = 2; i <= 5; ++i)
+            r[i] = 128;
+        r[9] = 0x08;
+        const quint64 idle = SonyReportLayout::controlSignature(r, 78, Family::DualSense);
+        QVERIFY(idle != 0);
+        r[1] = 0x20;    // sequence tag
+        r[20] = 0x7F;   // gyro
+        QCOMPARE(SonyReportLayout::controlSignature(r, 78, Family::DualSense), idle);
+        r[10] = 0x10;   // Create
+        QVERIFY(SonyReportLayout::controlSignature(r, 78, Family::DualSense) != idle);
+        r[10] = 0;
+        r[3] = 0;       // LY up
+        QVERIFY(SonyReportLayout::controlSignature(r, 78, Family::DualSense) != idle);
+        QCOMPARE(SonyReportLayout::controlSignature(r, 78, Family::Ds4), quint64(0));
+        QCOMPARE(SonyReportLayout::controlSignature(r, 4, Family::DualSense), quint64(0));
+    }
 };
 
 QTEST_APPLESS_MAIN(SonyReportLayoutTest)

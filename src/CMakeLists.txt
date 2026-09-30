@@ -82,6 +82,7 @@ qt_add_executable(GameHQ
     input/RawInputApi.cpp input/RawInputApi.h
     input/PnpDeviceApi.cpp input/PnpDeviceApi.h
     input/DualSenseDevice.cpp input/DualSenseDevice.h
+    input/SonyHidReader.cpp input/SonyHidReader.h
     input/HidCloakMonitor.cpp input/HidCloakMonitor.h
     input/XInputDevice.cpp input/XInputDevice.h
     input/WinMMDevice.cpp input/WinMMDevice.h
