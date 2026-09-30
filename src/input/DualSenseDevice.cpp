@@ -1,3 +1,4 @@
+#include "input/SonyHidReaderPolicy.h"
 #include "input/DualSenseDevice.h"
 
 #include "input/ControllerArbitration.h"
@@ -141,9 +142,11 @@ LRESULT CALLBACK rawInputWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
 DualSenseDevice::DualSenseDevice(QObject* parent)
     : DualSenseDevice(RawInputApi::createSystem(), parent)
 {
-    // bt-ds02 spike: opt-in only until a real USB -> Bluetooth receipt
-    // justifies it. Tests install their own factory via the seam instead.
-    if (qEnvironmentVariableIntValue("GAMEHQ_SONY_HID_READER") != 1)
+    const auto hidPolicy = SonyHidReaderPolicy::resolve(qgetenv("GAMEHQ_SONY_HID_READER"));
+    qInfo().noquote() << QStringLiteral("Sony HID reader: %1 (%2)")
+        .arg(hidPolicy.enabled ? QStringLiteral("enabled") : QStringLiteral("disabled"),
+             QString::fromLatin1(hidPolicy.reason));
+    if (!hidPolicy.enabled)
         return;
     setHidReaderFactory([this](const QString& path, bool ds4, quint64 readerId,
                                QString* error) -> std::unique_ptr<SonyHidReaderHandle> {
@@ -165,7 +168,7 @@ DualSenseDevice::DualSenseDevice(QObject* parent)
                                        : SonyReportLayout::Family::DualSense,
                                    std::move(callbacks), error);
     });
-    qInfo() << "Gamepad: direct HID reader spike enabled (GAMEHQ_SONY_HID_READER=1,"
+    qInfo() << "Gamepad: direct HID reader enabled ("
             << "read-only, Raw Input remains the fallback)";
 }
 

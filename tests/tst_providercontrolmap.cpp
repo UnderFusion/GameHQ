@@ -1,3 +1,4 @@
+#include "input/SonyHidReaderPolicy.h"
 // cpo-c01 / cpo-c02: one physical controller, three APIs, one canonical
 // control per button.
 //
@@ -73,6 +74,20 @@ class TestProviderControlMap : public QObject
     Q_OBJECT
 
 private slots:
+    void sonyHidBuildDefaultAndOverrides()
+    {
+        using SonyHidReaderPolicy::resolve;
+        QVERIFY(!resolve(QByteArray{}, false).enabled);
+        QVERIFY(resolve(QByteArray{}, true).enabled);
+        QVERIFY(!resolve("0", true).enabled);
+        QVERIFY(resolve("1", false).enabled);
+        QVERIFY(!resolve("invalid", false).enabled);
+        QVERIFY(resolve("invalid", true).enabled);
+        QCOMPARE(QByteArray(resolve("0", true).reason), QByteArray("environment override"));
+        QCOMPARE(QByteArray(resolve(QByteArray{}, true).reason), QByteArray("beta build default"));
+        QVERIFY(!resolve(QByteArray{}).enabled); // Ordinary fixture compile default stays OFF.
+    }
+
     // The regression the reporter hit: L2/R2 over WinMM used to be
     // gamepad.button.0/1 while every other backend called them
     // gamepad.trigger_left/right.

@@ -1720,3 +1720,11 @@ gamehq_add_test(tst_sharesettings
     "${CMAKE_SOURCE_DIR}/src/share/providers/ClipboardShareProvider.cpp")
 target_compile_definitions(tst_sharesettings PRIVATE GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
 target_link_libraries(tst_sharesettings PRIVATE Qt6::Gui Qt6::Network advapi32 shell32 user32)
+
+# Compile the exact production policy under both channel defaults.
+foreach(hid_default IN ITEMS 0 1)
+    gamehq_add_test(tst_sonyhidpolicy_${hid_default} tst_sonyhidpolicy.cpp)
+    target_compile_definitions(tst_sonyhidpolicy_${hid_default} PRIVATE
+        GAMEHQ_SONY_HID_READER_DEFAULT=${hid_default}
+        GAMEHQ_EXPECTED_HID_DEFAULT=${hid_default})
+endforeach()
