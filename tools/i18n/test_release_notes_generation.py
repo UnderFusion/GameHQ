@@ -649,6 +649,8 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
             manifest = GEN.read_json(source_root / "manifest.json")
             manifest["releases"][0]["source_integrity"] = "sha256:" + "2" * 64
             manifest["releases"][0]["original_source_integrity"] = "sha256:" + "2" * 64
+            # Isolate the stale-integrity check from any recorded correction.
+            manifest["releases"][0]["correction"] = None
             GEN.write_json(source_root / "manifest.json", manifest)
             self.assert_contract_error(
                 lambda: GEN.load_contract(source_root),

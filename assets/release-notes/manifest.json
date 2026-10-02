@@ -31,12 +31,16 @@
   "releases": [
     {
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "status": "released",
       "localization_policy": "complete",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "original_source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
-      "correction": null
+      "correction": {
+        "reason": "Stable 0.7.9 replaces the Beta 1 hotfix note with the consolidated release note.",
+        "approved_by": "owner",
+        "corrected_at": "2026-10-02"
+      }
     },
     {
       "version": "0.7.8",

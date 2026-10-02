@@ -3,29 +3,257 @@
   "schema_version": 2,
   "version": "0.7.9",
   "locale": "en-US",
-  "date": "2026-09-25",
+  "date": "2026-10-02",
   "sections": [
     {
-      "id": "fixes",
-      "title": "Fixes",
+      "id": "highlights",
+      "title": "Highlights",
       "items": [
         {
-          "id": "bluetooth-dualsense",
-          "text": "DualSense over Bluetooth: the sticks and buttons are now read correctly in GameHQ menus. Before, pushing the left stick up or down could register as left or right, and some buttons did not respond. USB was not affected."
+          "id": "highlights-01",
+          "text": "Share your captures. Send a screenshot or clip from the gallery, the full-screen viewer or the overlay to Telegram Desktop, Discord, a Discord channel or the clipboard, without signing in to anything through GameHQ."
         },
         {
-          "id": "stick-clicks",
-          "text": "L3 and R3 (pressing the sticks in) now work on DualSense and DualShock 4 controllers connected directly to GameHQ."
+          "id": "highlights-02",
+          "text": "Reliable DualSense over USB and Bluetooth. Bluetooth buttons and sticks are read correctly, switching between cable and Bluetooth no longer needs a restart, and unplugging the controller during a game no longer crashes GameHQ. DualSense and DualShock 4 controllers hidden by HidHide can still be used once GameHQ is allowed through HidHide."
+        },
+        {
+          "id": "highlights-03",
+          "text": "An overlay you can shape. A live Overlay options panel sets margins, spacing, thumbnail size, interface size and control hints, and the sidebar can be expanded, collapsed, set to Auto or resized."
+        },
+        {
+          "id": "highlights-04",
+          "text": "Full-screen viewing in the overlay. Open a screenshot full screen over your game, step through screenshots and clips with L1/R1, and mark favorites from the viewer."
+        },
+        {
+          "id": "highlights-05",
+          "text": "A gallery that follows your files. Captures deleted, restored or copied in Explorer appear and disappear right away, and games can be pinned to the top of the list."
+        },
+        {
+          "id": "highlights-06",
+          "text": "Smaller screenshot files. JPEG at 90% quality is now the default, while PNG remains available."
+        },
+        {
+          "id": "highlights-07",
+          "text": "More control over notifications. Capture-request, Steam Input conflict and controller-hidden notices can be controlled individually, and mouse users can dismiss notifications early."
+        },
+        {
+          "id": "highlights-08",
+          "text": "More of the interface works with a controller, including the language selector, Support, Tools and every Share step."
         }
       ]
     },
     {
-      "id": "diagnostics",
-      "title": "Diagnostics",
+      "id": "sharing",
+      "title": "Sharing",
       "items": [
         {
-          "id": "input-layout-log",
-          "text": "The log now notes which report format each Sony controller sends, which makes controller problems easier to diagnose."
+          "id": "sharing-01",
+          "text": "Share any saved screenshot or clip: press Square on a capture and choose Share, click the Share icon on a capture tile, or use the Share button in the full-screen viewer. It works the same in the gallery, the viewer and the overlay, and is fully usable with a controller (Cross selects, Circle goes back)."
+        },
+        {
+          "id": "sharing-02",
+          "text": "Telegram Desktop opens its own chat picker with that one file. GameHQ never signs in to Telegram."
+        },
+        {
+          "id": "sharing-03",
+          "text": "Discord copies the capture, opens Discord and lets you paste it into any chat. GameHQ never signs in to Discord."
+        },
+        {
+          "id": "sharing-04",
+          "text": "Discord channels post a capture straight to a channel through a webhook link added in Settings › Sharing. Pin the channels you use most. The post appears as the webhook, not as your Discord account, and the link is kept in Windows Credential Manager."
+        },
+        {
+          "id": "sharing-05",
+          "text": "Copy to clipboard is available as its own destination."
+        },
+        {
+          "id": "sharing-06",
+          "text": "When you share from the overlay, Telegram or Discord comes to the front over your game so you can finish sending."
+        },
+        {
+          "id": "sharing-07",
+          "text": "GameHQ only says Sent when a service confirms delivery, and asks before sharing the same capture to the same place twice."
+        },
+        {
+          "id": "sharing-08",
+          "text": "Settings › Sharing is a new page with a switch for each destination; turning one off keeps its configuration."
+        },
+        {
+          "id": "sharing-09",
+          "text": "Other programs on your PC can add their own Share destinations. This is off by default: turn on Allow add-ons from other programs in Settings › Sharing and restart GameHQ."
+        }
+      ]
+    },
+    {
+      "id": "overlay",
+      "title": "Overlay",
+      "items": [
+        {
+          "id": "overlay-01",
+          "text": "Cross on a screenshot opens it full screen. L1/R1 or D-pad left/right step through screenshots and clips (clips play full screen), and Circle returns to the capture strip on the item you ended on. Cross on a clip still plays it in the preview, and left/right then seek it."
+        },
+        {
+          "id": "overlay-02",
+          "text": "A gear above the sidebar toggle opens Overlay options: control hints on or off, the four outer margins (down to 0), interface size (now including 75% and 90%), thumbnail size and the spacing between the sidebar, thumbnails and preview. Changes show live and are remembered; Reset overlay layout restores the defaults. Works with the controller, mouse and keyboard."
+        }
+      ]
+    },
+    {
+      "id": "gallery",
+      "title": "Gallery & Interface",
+      "items": [
+        {
+          "id": "gallery-01",
+          "text": "Pin games: hover a game in the sidebar and click the pin, or move the controller cursor onto it and press Triangle. Pinned games stay at the top of the list in both the main window and the overlay."
+        },
+        {
+          "id": "gallery-02",
+          "text": "In the full-screen viewer, Triangle (or the button you assigned to favorites) marks the shown screenshot or clip as a favorite and removes it again. A heart shows the state and can be clicked."
+        },
+        {
+          "id": "gallery-03",
+          "text": "Collapsible sidebar in the main window and the overlay. A button cycles through Expanded (the default), Auto and Collapsed. Auto shows a narrow icon rail while you browse and opens the full sidebar when you move into it. Each window remembers its own choice."
+        },
+        {
+          "id": "gallery-04",
+          "text": "Drag the sidebar's edge to make it narrower or wider; double-click the edge to restore the default width."
+        },
+        {
+          "id": "gallery-05",
+          "text": "A small arrow above Tools folds Help, About, Support and the language selector away, leaving Settings and the sidebar mode button."
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "title": "Changes & Improvements",
+      "items": [
+        {
+          "id": "changes-01",
+          "text": "Screenshots are saved as JPEG at 90% quality by default instead of PNG, so each file is several times smaller. If you never changed the format you get JPEG automatically; PNG is still available in Settings › Capture."
+        },
+        {
+          "id": "changes-02",
+          "text": "The gallery and overlay follow your capture folders live. A capture deleted in Explorer disappears right away, and when it is restored from the Recycle Bin it comes back with its favorite mark and history intact. New files copied into a capture folder appear without Rescan. An open viewer stays on the capture it shows, and a delete confirmation always deletes the capture it named."
+        },
+        {
+          "id": "changes-03",
+          "text": "Settings › Notifications & Sound has separate switches for the Capture request received, Steam Input conflict and Controller hidden notices."
+        },
+        {
+          "id": "changes-04",
+          "text": "When you use the mouse, notifications show an X to close them early, and hovering one keeps it on screen. Nothing changes for controller-only play, and a game that hides the cursor never shows the X."
+        },
+        {
+          "id": "changes-05",
+          "text": "Warning notifications stay on screen for 10 seconds and carry a caution icon."
+        },
+        {
+          "id": "changes-06",
+          "text": "The new Sharing, interface, controller and notification text has been reviewed in all supported interface languages."
+        },
+        {
+          "id": "changes-07",
+          "text": "The main window's full-screen viewer uses half the margins, so captures appear larger."
+        },
+        {
+          "id": "changes-08",
+          "text": "Full-screen viewer hints switch to arrow and Esc keys as soon as you use the keyboard or mouse."
+        },
+        {
+          "id": "changes-09",
+          "text": "The language selector, Support GameHQ and the Tools group in the main sidebar can be reached with the controller. In the collapsed sidebar the language selector stays available as an icon."
+        },
+        {
+          "id": "changes-10",
+          "text": "Capture menus, Share and Overlay options now take priority over video playback in the overlay, so Cross selects the menu entry instead of playing the clip behind it."
+        }
+      ]
+    },
+    {
+      "id": "fixes",
+      "title": "Bug Fixes",
+      "items": [
+        {
+          "id": "fixes-01",
+          "text": "DualSense over Bluetooth: sticks and buttons are read correctly in GameHQ. Bluetooth reports were read one byte off, so stick up/down registered as left/right and buttons were misread. USB was not affected."
+        },
+        {
+          "id": "fixes-02",
+          "text": "L3 and R3 (stick clicks) now work on DualSense and DualShock 4 controllers read directly by GameHQ."
+        },
+        {
+          "id": "fixes-03",
+          "text": "Switching a controller between USB and Bluetooth while GameHQ is running no longer leaves it unresponsive."
+        },
+        {
+          "id": "fixes-04",
+          "text": "Unplugging a controller during in-game capture no longer crashes GameHQ."
+        },
+        {
+          "id": "fixes-05",
+          "text": "Quick taps on controllers that use the Windows joystick fallback are no longer dropped."
+        },
+        {
+          "id": "fixes-06",
+          "text": "Closing the overlay no longer stalls when a button was already held before it opened."
+        },
+        {
+          "id": "fixes-07",
+          "text": "Settings › Input › Mapping presets: the Assignments list now shows and edits the preset chosen under Editing preset. Before, presets used by a game or not assigned to this controller could not be edited, and custom mappings such as a double tap could not be removed or reverted."
+        },
+        {
+          "id": "fixes-08",
+          "text": "Start with Windows: another GameHQ copy (a portable build, or a copy with its own settings) no longer removes or takes over the installed copy's startup entry, which could stop the installed GameHQ from starting after a restart."
+        }
+      ]
+    },
+    {
+      "id": "compatibility",
+      "title": "Controller & Compatibility",
+      "items": [
+        {
+          "id": "compatibility-01",
+          "text": "Sony controllers are read through the standard Windows input path, as before."
+        },
+        {
+          "id": "compatibility-02",
+          "text": "A DualSense or DualShock 4 hidden by HidHide, over USB or Bluetooth, is detected and reported. Once GameHQ is allowed in HidHide (Fix automatically does this), GameHQ reads the controller directly, the same way DSX does, while it stays hidden from games."
+        },
+        {
+          "id": "compatibility-03",
+          "text": "When a hidden-controller driver (HidHide, installed with DSX, DS4Windows or reWASD) hides your controller from GameHQ, a bar across the top of the main window explains it and offers Fix automatically, Settings and Not now."
+        },
+        {
+          "id": "compatibility-04",
+          "text": "GameHQ does not install or remove HidHide and does not change which controllers it hides. If you choose Fix automatically, it only adds GameHQ to HidHide's allowed applications."
+        },
+        {
+          "id": "compatibility-05",
+          "text": "Steam Input guidance: when a Steam game is running and a GameHQ shortcut uses Create / Share or PS, GameHQ explains that Steam Input may also send that button to the game and offers buttons that open the game's Steam controller layout or Steam's controller settings. GameHQ never reads or changes Steam's settings. It can be switched off or hidden per game."
+        }
+      ]
+    },
+    {
+      "id": "limitations",
+      "title": "Known Limitations",
+      "items": [
+        {
+          "id": "limitations-01",
+          "text": "Whether the overlay keeps controller input away from the game depends on the game and how it reads the controller. A wired DualSense using GameInput is well tested; it isn't guaranteed for XInput, Raw Input, direct HID, Steam Input or virtual controllers."
+        },
+        {
+          "id": "limitations-02",
+          "text": "With Telegram Desktop and Discord, GameHQ opens the app and you finish sending there; it can't see whether you actually sent the capture, so it never reports Sent for them. With Discord you paste the capture into a chat yourself."
+        },
+        {
+          "id": "limitations-03",
+          "text": "Discord channel uploads are limited by the server's file size limit."
+        },
+        {
+          "id": "limitations-04",
+          "text": "Some games pause or react when they lose focus, for example when Telegram or Discord comes to the front after sharing. Windows or another capture app may keep the yellow recording border visible."
         }
       ]
     }
