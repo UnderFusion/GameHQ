@@ -18,7 +18,7 @@ overlay, and Settings - can be driven from the controller alone.</p>
   &nbsp;
   <a href="https://github.com/underfusion/GameHQ/releases/latest"><img src="docs/assets/download-portable.svg" width="230" alt="Download GameHQ Portable ZIP"></a>
 </p>
-<p align="center"><sub>Windows 10+ &middot; Latest Beta &middot; GPL-3.0 &middot; No telemetry</sub></p>
+<p align="center"><sub>Windows 10+ &middot; Latest stable &middot; GPL-3.0 &middot; No telemetry</sub></p>
 <p align="center"><sub>Using Playnite? <a href="https://github.com/underfusion/GameHQ/releases/download/playnite-v0.4.12/GameHQ_Playnite_Integration_0_4_12.pext">Get the GameHQ Integration &rarr;</a></sub></p>
 <!-- public-downloads:end -->
 
@@ -37,17 +37,34 @@ overlay, and Settings - can be driven from the controller alone.</p>
 - **Save recent gameplay after it happens** - the rolling buffer turns the
   previous configurable minutes into a normal MP4 with system audio.
 - **Instant screenshots and frame capture** - save PNG or JPEG images, including
-  the exact displayed frame from a recorded clip.
+  the exact displayed frame from a recorded clip. JPEG at 90% quality is the
+  default for smaller files; PNG remains available.
+- **Share captures from anywhere** - share a screenshot or clip from the
+  gallery, full-screen viewer, or overlay. Open Telegram Desktop's chat picker,
+  copy a capture and open Discord to paste it into a chat, upload directly to a
+  Discord channel through a configured webhook, or copy to the clipboard.
+  Telegram and Discord Desktop let you finish sending in the app; confirmed
+  webhook uploads can report *Sent*. No account sign-in through GameHQ.
 - **In-game overlay over borderless games** - browse, play, favorite, reveal,
   and delete captures without leaving your game. The overlay stays above a
   visible borderless game, and on supported GameInput paths overlay navigation
   doesn't also control the game underneath.
+- **Shape the overlay to fit your game** - adjust margins, spacing, thumbnail
+  size, interface size, and control hints live. Expand, collapse, resize, or
+  use Auto mode for the sidebar; your layout is remembered.
+- **Full-screen viewing over your game** - open screenshots full screen,
+  browse screenshots and clips with L1/R1, and mark favorites from the viewer.
 - **Controller-first everywhere** - the whole interface is pad-navigable:
   gallery, overlay, dialogs, and Settings, with follow-scroll, right-stick
   scrolling, and visible scrollbars. Keyboard and mouse work everywhere too.
 - **Modern controller support** - app-local GameInput, true Share/Guide, extra
   buttons, and safe legacy fallback ([getting started](docs/getting-started.md),
   [compatibility guide](docs/controller-compatibility.md)).
+- **Dependable Sony controller input** - DualSense support over USB and
+  Bluetooth, with reconnecting and switching between them without a restart.
+  Supported DualSense and DualShock 4 controllers hidden by HidHide remain
+  usable once GameHQ is allowed through HidHide. *Fix automatically* only adds
+  GameHQ to its allowed applications; it does not change which pads are hidden.
 - **Mapping presets** - save controller layouts as named presets, then assign
   them per controller and per game; the preset for the game you're running is
   picked automatically.
@@ -56,7 +73,9 @@ overlay, and Settings - can be driven from the controller alone.</p>
 - **Summon GameHQ with the pad** - hold PS for two seconds to bring the window
   over your game; hold again to send it back and return focus to the game.
 - **One organized library** - GameHQ captures alongside watched Steam, Game Bar,
-  NVIDIA, and OBS folders.
+  NVIDIA, and OBS folders. The gallery follows files copied, deleted, or
+  restored in Explorer live, and pinned games stay at the top of the desktop
+  and overlay sidebars.
 - **Speaks your language** - 16 interface languages across the app, overlay,
   Settings, tray, installer, and release notes. GameHQ follows your Windows
   language on first start, and switching language applies immediately without a
@@ -67,8 +86,6 @@ overlay, and Settings - can be driven from the controller alone.</p>
 - **Private and portable** - no account, telemetry, background service, or
   game-process injection.
 - Configurable replay duration, quality, frame rate, and resolution.
-- Detection of Sony controllers hidden by HidHide, with safe GameHQ allow-list
-  setup.
 - Thirteen themes, live theme switching, textured backdrops, and adjustable
   overlay dimming.
 - Thumbnail zoom and controller-friendly bulk selection in the capture library.
@@ -76,6 +93,11 @@ overlay, and Settings - can be driven from the controller alone.</p>
   after recording starts, using the footage captured so far.
 - Immediate gallery refresh after new captures, with instant saved or failed
   feedback.
+- Separate switches for capture-request, Steam Input conflict, and
+  controller-hidden notices, plus early dismissal with the mouse.
+
+See [what's new in 0.7.9](https://github.com/underfusion/GameHQ/releases/tag/v0.7.9)
+for the full release notes and links to all 16 reviewed translations.
 
 ## Languages
 
@@ -130,8 +152,9 @@ Using Playnite? Install the
 [GameHQ Integration](https://github.com/underfusion/GameHQ/releases/download/playnite-v0.4.12/GameHQ_Playnite_Integration_0_4_12.pext)
 by opening the downloaded `.pext` file with Playnite.
 
-> **Unsigned Beta:** Windows may show an Unknown publisher warning. Download
-> GameHQ only from this repository and do not disable Windows Security.
+> **Unsigned Windows binaries:** Windows may show Unknown Publisher or
+> SmartScreen warnings. Download GameHQ only from this repository, verify the
+> published hashes, and do not disable Windows Security.
 
 <details>
 <summary><strong>Portable, installed, and uninstall behavior</strong></summary>
@@ -158,9 +181,10 @@ Unknown publisher warning: do not bypass it or disable Windows Security. See
 [Download verification](docs/download-verification.md) and
 [Security & privacy](docs/security-and-privacy.md).
 
-GameHQ's [Code signing policy](docs/code-signing-policy.md) defines release
-roles, signed-file scope, manual approval, and verification. Current Beta
-downloads remain unsigned.
+Current releases include a production Ed25519 release manifest and signature,
+SHA-256 checksums, and corresponding source. The manifest authenticates update
+artifacts and their hashes; Windows binaries are currently not
+Authenticode-signed. See the [Code signing policy](docs/code-signing-policy.md).
 
 </details>
 
