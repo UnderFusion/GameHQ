@@ -20,6 +20,7 @@ public:
     explicit ForegroundAcquirer(QObject* parent = nullptr);
     // Test seam: takes ownership of `api`.
     explicit ForegroundAcquirer(ForegroundApi* api, QObject* parent = nullptr);
+    ForegroundApi& api() const { return *m_api; }
     ~ForegroundAcquirer() override;
 
     // Begin acquiring for `phase` ("overlay show" / "overlay hide"). A new
