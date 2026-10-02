@@ -100,6 +100,13 @@ public:
     // was not visible) so the caller can restore focus there later.
     void* hideForDesktopHandoff();
 
+    // Share hand-off (Telegram/Discord desktop): hide WITHOUT returning focus
+    // to the game, then raise the receiving app's window once it exists. The
+    // overlay never owns the foreground, so the app's own launch cannot take
+    // it from the game (Windows' foreground lock) - GameHQ raises it instead.
+    // `targetId` is the share target ("telegram-desktop", "discord-desktop").
+    Q_INVOKABLE void hideForExternalApp(const QString& targetId);
+
     // Called from the WinEvent hook callback (see .cpp) whenever the OS
     // foreground window changes to something other than the overlay itself
     // while the overlay is visible — Win key (Start menu), Alt-Tab, the task
@@ -201,6 +208,11 @@ private:
     // with no source or no policy still records why no handoff ran — and owned
     // here, because the overlay is the one that closes.
     std::unique_ptr<ModernInput::NeutralHandoffRunner> m_releaseHandoff;
+    // Bounded poll that raises the share app's window (hideForExternalApp).
+    class QTimer* m_raiseTimer = nullptr;
+    QStringList m_raiseExeNames;   // lower-case image names, e.g. "telegram.exe"
+    int m_raiseElapsedMs = 0;
+    void raiseExternalAppTick();
     CloseStage m_closeStage = CloseStage::Idle;
     bool m_closing = false;
     // Time of the last toggle that was acted on; see toggle().

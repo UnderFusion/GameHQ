@@ -980,11 +980,12 @@ Window {
         // Set when the user still has a step to read before the overlay may
         // step aside (see the Connections below).
         property bool hideOverlayOnClose: false
+        property string handoffTargetId: ""
         onClosed: {
             content.forceActiveFocus()
             if (hideOverlayOnClose) {
                 hideOverlayOnClose = false
-                overlay.hide()
+                overlay.hideForExternalApp(handoffTargetId)
             }
         }
     }
@@ -1000,10 +1001,11 @@ Window {
                 return
             if (result.detail === "paste") {
                 overlayShare.hideOverlayOnClose = true
+                overlayShare.handoffTargetId = result.targetId
                 return
             }
             overlayShare.close()
-            overlay.hide()
+            overlay.hideForExternalApp(result.targetId)
         }
     }
 
