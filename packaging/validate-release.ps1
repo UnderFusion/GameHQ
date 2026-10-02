@@ -3,7 +3,7 @@ param(
     [string]$ReleaseDirectory = 'dist\releases',
     [string]$GitTag = '',
     [Parameter(Mandatory = $true)]
-    [ValidateSet('unsigned-beta', 'signed')]
+    [ValidateSet('unsigned-beta', 'unsigned-stable', 'signed')]
     [string]$TrustMode,
     [ValidateSet('none', 'test', 'production')]
     [string]$ManifestMode = 'none',
@@ -13,6 +13,9 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+if ($TrustMode -eq 'unsigned-stable' -and $ManifestMode -ne 'production') {
+    throw 'unsigned-stable requires the production Ed25519 release manifest.'
+}
 $root = [System.IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 . (Join-Path $PSScriptRoot 'resolve-build-directory.ps1')
 # Resolved before any other work and regardless of -SkipTests: an unusable build
@@ -85,7 +88,7 @@ if ($ManifestMode -in @('test', 'production')) {
     & dotnet run --project $tool --configuration Release --no-restore -- @verifyArguments
     if ($LASTEXITCODE -ne 0) { throw "$ManifestMode release manifest verification failed." }
 } elseif ($TrustMode -eq 'signed') {
-    throw 'Signed/Stable validation requires the production manifest mode, which is intentionally gated by t48.'
+    throw 'Signed validation requires a release manifest.'
 }
 $setupInfo = (Get-Item -LiteralPath $setup).VersionInfo
 if ($setupInfo.ProductVersion.Trim() -ne $version -or
@@ -106,10 +109,10 @@ $signatures = @($gamehqBuilt | ForEach-Object {
     [pscustomobject]@{ Path = $_; Status = [string]$signature.Status;
         Subject = if ($signature.SignerCertificate) { $signature.SignerCertificate.Subject } else { '' } }
 })
-if ($TrustMode -eq 'unsigned-beta') {
+if ($TrustMode -in @('unsigned-beta', 'unsigned-stable')) {
     $unexpected = @($signatures | Where-Object Status -ne 'NotSigned')
     if ($unexpected.Count -ne 0) {
-        throw 'unsigned-beta mode requires every GameHQ-built artifact to be consistently unsigned.'
+        throw "$TrustMode mode requires every GameHQ-built artifact to be consistently unsigned."
     }
 } else {
     $invalid = @($signatures | Where-Object Status -ne 'Valid')
@@ -250,11 +253,11 @@ if ($ManifestMode -in @('test', 'production')) {
     }
 }
 # The packaged binaries are plain copies out of the selected build tree, so in
-# unsigned-beta mode identical hashes prove that the tested build and the
+# unsigned modes identical hashes prove that the tested build and the
 # packaged candidate are the same bytes. Signing rewrites the files, so signed
 # mode records the same evidence without demanding equality.
 $binaryIdentity = Get-CandidateBinaryIdentity -BuildDirectory $buildRoot -PayloadRoot $payloadRoot
-if ($TrustMode -eq 'unsigned-beta') {
+if ($TrustMode -in @('unsigned-beta', 'unsigned-stable')) {
     $divergent = @($binaryIdentity | Where-Object { -not $_.identical })
     if ($divergent.Count -ne 0) {
         throw ("Packaged binaries do not come from the validated build directory ${buildRoot}: " +

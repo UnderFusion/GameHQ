@@ -47,7 +47,7 @@ installing or operating it. A user may explicitly enable bounded GitHub release
 checks; the complete behavior is described in
 [Security & Privacy](security-and-privacy.md).
 
-## Signing order
+## Authenticode signing order (when available)
 
 1. Build from the reviewed tag with pinned toolchains.
 2. Generate and validate the mandatory corresponding-source archive and
@@ -67,12 +67,19 @@ signed release manifest.
 
 ## Beta and Stable policy
 
-An unsigned build may be published only as an explicitly labelled
-`unsigned-beta` release with honest Unknown-publisher guidance. An unsigned
-artifact must never be described as Stable. Stable requires the expected
-publisher, valid RFC 3161 timestamps, a signed uninstaller, verified final bytes,
-and the clean-Windows trust matrix. SmartScreen reputation can still take time
-to develop and is not represented as a cryptographic guarantee.
+Stable releases currently use `unsigned-stable` packaging: the production
+Ed25519 release manifest and its signature, SHA-256 hashes, exact corresponding
+source, and package validation are mandatory. Windows binaries are not
+Authenticode-signed; the release must disclose that Windows may show Unknown
+Publisher or SmartScreen warnings and must not claim code-signed binaries.
+Beta releases retain the `unsigned-beta` mode and explicit Beta labelling.
+
+Authenticode/SignPath is a preferred future trust layer when a certificate or
+approved production workflow becomes available, not a blocker for the current
+stable release. Releases advertised as Authenticode-signed must have the
+expected publisher, valid RFC 3161 timestamps, a signed uninstaller, verified
+final bytes, and the clean-Windows trust matrix. SmartScreen reputation is not
+represented as a cryptographic guarantee.
 
 Signing-provider enrollment and production-key activation are separately
 reviewed operations. Revoked publisher certificates or Ed25519 key IDs stop

@@ -61,14 +61,15 @@ Require `Status: Valid`, the publisher stated in that release's security notes,
 and a timestamp. Do not continue when the signature is invalid, absent from a
 release advertised as signed, or names an unexpected publisher.
 
-## Unsigned Beta builds
+## Currently unsigned Windows binaries
 
-An unsigned Beta can show **Unknown publisher** even when downloaded from the
-official repository. Before proceeding, confirm the official Releases URL,
+Current stable and Beta Windows binaries are not Authenticode-signed. Windows
+may show **Unknown publisher** or a **SmartScreen** warning even when downloaded
+from the official repository. Before proceeding, confirm the official Releases URL,
 exact version and filename, and every published hash or manifest. Do not use a
 generic mirror. Never bypass a specific Defender malware/PUA detection; follow
 [Troubleshooting](troubleshooting.md) and report it privately.
 
-The Ed25519 release-manifest verifier is not yet active. Until it is shipped,
-the release page and SHA-256 files cannot protect against a compromised release
-account; this limitation is intentional and documented rather than hidden.
+The production Ed25519 release-manifest signature authorises the update
+artifacts and their hashes. It does not provide Windows publisher identity or
+make these executables Authenticode-signed.

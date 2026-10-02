@@ -8,9 +8,9 @@
 
 ## Notes
 
-- Trust mode: `unsigned-beta` or `signed` (must match release evidence).
+- Trust mode: `unsigned-stable`, `unsigned-beta` or `signed` (must match release evidence).
 - Unsigned Beta wording: **Open-source Beta · Not yet code-signed; Windows may show an Unknown publisher warning.**
-- Never describe an unsigned release as Stable.
+- Unsigned stable wording: **Windows binaries are not Authenticode-signed; Windows may show Unknown Publisher or SmartScreen warnings. The production Ed25519 release manifest, SHA-256 hashes and corresponding source are published for verification.**
 - Setup is the recommended download; Portable is the explicit no-install alternative.
 - State that the GameHQ core uses GPL-3.0-only while the Playnite integration
   and public protocol remain under MIT.

@@ -6,7 +6,7 @@
 param(
     [switch]$SkipTests,
     [string]$BuildDirectory = 'out',
-    [ValidateSet('unsigned-beta', 'signed')]
+    [ValidateSet('unsigned-beta', 'unsigned-stable', 'signed')]
     [string]$TrustMode = $env:RELEASE_TRUST_MODE,
     [ValidateSet('none', 'test', 'production')]
     [string]$ManifestMode = 'none',
@@ -15,6 +15,9 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+if ($TrustMode -eq 'unsigned-stable' -and $ManifestMode -ne 'production') {
+    throw 'unsigned-stable requires the production Ed25519 release manifest.'
+}
 $root = [System.IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 $version = (Get-Content (Join-Path $root 'VERSION') -Raw).Trim()
 $minimumUpdaterVersion = (Get-Content (Join-Path $PSScriptRoot 'minimum-updater-version.txt') -Raw).Trim()

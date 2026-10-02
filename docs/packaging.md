@@ -227,6 +227,13 @@ contains the corresponding public key and key ID only.
 
 ### Production release-manifest signing
 
+Current stable releases use `-TrustMode unsigned-stable -ManifestMode production`.
+This mode requires the production Ed25519 manifest and exact built/packaged
+binary hashes, while recording that the Windows binaries lack Authenticode.
+The release body must disclose Unknown Publisher / SmartScreen warnings.
+Authenticode signing remains a future preferred layer; see
+[Code-Signing Policy](code-signing-policy.md).
+
 Every public GameHQ release must use the existing production key and production
 manifest mode:
 
