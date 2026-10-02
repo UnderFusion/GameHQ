@@ -41,7 +41,8 @@ void IntegrationClientTest::forwardsActivation()
     fixture.setArguments({ name });
     fixture.start();
     QVERIFY(fixture.waitForStarted(1000));
-    QVERIFY(fixture.waitForReadyRead(1000));
+    // Output can arrive in chunks; wait for the complete readiness line.
+    QTRY_VERIFY_WITH_TIMEOUT(fixture.canReadLine(), 1000);
     QCOMPARE(fixture.readLine().trimmed(), QByteArray("READY"));
 
     QString error;
