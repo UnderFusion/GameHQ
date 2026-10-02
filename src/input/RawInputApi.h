@@ -91,6 +91,21 @@ public:
 
     virtual CloakScan scanHiddenPads(const QSet<QString>& visibleRawPathsLower) = 0;
 
+    // Physical Sony pad HID interfaces present in Windows PnP but absent from
+    // Raw Input (HidHide-cloaked). Raw Input stays blind to them even after
+    // GameHQ is whitelisted, because the system opens Raw Input devices, not
+    // this process; only a direct CreateFile from GameHQ passes the whitelist.
+    struct HiddenInterface {
+        QString path;          // HID device interface path ("\\?\HID#...")
+        quint32 vendorId = 0;
+        quint32 productId = 0;
+    };
+    virtual QList<HiddenInterface> hiddenPadInterfaces(const QSet<QString>& visibleRawPathsLower)
+    {
+        Q_UNUSED(visibleRawPathsLower)
+        return {};
+    }
+
     using ButtonUsageVisitor = void (*)(void* context,
                                         const QList<quint32>& pressedUsages);
 

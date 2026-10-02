@@ -229,6 +229,9 @@ public:
 
     CloakScan scanHiddenPads(const QSet<QString>&) override { return {}; }
 
+    QList<HiddenInterface> hidden;   // HidHide-cloaked pads PnP still lists
+    QList<HiddenInterface> hiddenPadInterfaces(const QSet<QString>&) override { return hidden; }
+
     // Selective Raw HID fallback: the fake "parses" the report descriptor by
     // returning the pressed usages staged on the device.
     int usageParses = 0;
@@ -1348,6 +1351,47 @@ private slots:
         QCOMPARE(pad.hidReaderCount(), 0);
         QCOMPARE(pressed.size(), kCycles);
         QCOMPARE(released.size(), kCycles);
+    }
+
+    // HidHide cloaks the pad from Raw Input even after GameHQ is whitelisted
+    // (the system opens Raw Input devices, not GameHQ). With the reader limited
+    // to hidden pads, a cloaked pad is read directly, a Raw-Input-visible pad
+    // is not, and a failed reader or a vanished interface drops the pad.
+    void cloakedPadIsReadDirectlyWhenRawInputCannotSeeIt()
+    {
+        FakeHidReaders readers;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory(), /*forVisibleEndpoints=*/false);
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        QSignalSpy connected(&pad, &Gamepad::connected);
+
+        void* usb = handle(0x8271);
+        api->devices.insert(usb, FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid,
+                                                            kUsageGamepad, kUsbPath));
+        pad.onDeviceChange(true, usb);
+        QCOMPARE(pad.hidReaderCount(), 0);   // visible pad keeps Raw Input
+        api->devices.remove(usb);
+        pad.onDeviceChange(false, usb);
+
+        api->hidden = { { kBtPath, kSonyVid, kDualSensePid } };
+        pad.onPnpInterfaceChange();
+        QTRY_COMPARE(readers.alive.values(), QStringList{kBtPath});
+        const quint64 reader = readers.idFor(kBtPath);
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08));
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08, 0x10));
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+        QVERIFY(!connected.isEmpty() && connected.last().first().toBool());
+
+        pad.onHidReaderFailed(reader, QStringLiteral("ReadFile failed"));
+        QCOMPARE(pad.hidReaderCount(), 0);
+        pad.rescan();   // interface still listed: reopened on the next pass
+        QTRY_COMPARE(pad.hidReaderCount(), 1);
+
+        api->hidden.clear();   // unpaired
+        pad.rescan();
+        QTRY_COMPARE(pad.hidReaderCount(), 0);
+        QCOMPARE(readers.created, readers.destroyed);
     }
 
     // A reader that cannot open (exclusive access, HidHide) leaves Raw Input

@@ -1,4 +1,5 @@
 #pragma once
+#include <QList>
 #include <QSet>
 #include <QString>
 #include <QStringList>
@@ -21,6 +22,13 @@ struct ScanResult {
 // visibleRawPathsLower: RIDI_DEVICENAME of every HID device Raw Input
 // currently lists, lowercased by the caller.
 ScanResult scan(const QSet<QString>& visibleRawPathsLower);
+
+// Device interface paths of physical Sony pads (DualSense, Edge, DS4) that
+// PnP lists but Raw Input does not. Virtual DSX pads are excluded: they
+// mirror the physical pad and would only duplicate its input. IG_ (XInput)
+// collections are excluded too.
+struct HiddenInterface { QString path; quint32 vendorId = 0; quint32 productId = 0; };
+QList<HiddenInterface> hiddenPadInterfaces(const QSet<QString>& visibleRawPathsLower);
 
 // True if the HidHide upper filter is registered on the HID device class
 // (plain registry read, no admin rights needed).

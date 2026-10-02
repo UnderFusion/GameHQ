@@ -138,6 +138,14 @@ public:
         return CloakScan{ result.hiddenPads, result.hidHidePresent };
     }
 
+    QList<HiddenInterface> hiddenPadInterfaces(const QSet<QString>& visibleRawPathsLower) override
+    {
+        QList<HiddenInterface> out;
+        for (const auto& i : HidCloakMonitor::hiddenPadInterfaces(visibleRawPathsLower))
+            out.append({ i.path, i.vendorId, i.productId });
+        return out;
+    }
+
     bool visitButtonUsageReports(void* deviceHandle, const Payload& payload, void* context,
                                  const ButtonUsageVisitor& visitor) override
     {
