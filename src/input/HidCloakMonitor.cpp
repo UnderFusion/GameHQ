@@ -144,6 +144,40 @@ HidCloakMonitor::ScanResult HidCloakMonitor::scan(const QSet<QString>& visibleRa
     return r;
 }
 
+QList<HidCloakMonitor::HiddenInterface>
+HidCloakMonitor::hiddenPadInterfaces(const QSet<QString>& visibleRawPathsLower)
+{
+    // GUID_DEVINTERFACE_HID, spelled out to avoid an initguid.h dependency.
+    static const GUID kHidInterface =
+        { 0x4D1E55B2, 0xF16F, 0x11CF, { 0x88, 0xCB, 0x00, 0x11, 0x11, 0x00, 0x00, 0x30 } };
+    QList<HiddenInterface> out;
+    ULONG chars = 0;
+    GUID guid = kHidInterface;
+    if (CM_Get_Device_Interface_List_SizeW(&chars, &guid, nullptr,
+                                           CM_GET_DEVICE_INTERFACE_LIST_PRESENT) != CR_SUCCESS
+        || chars <= 1)
+        return out;
+    QVarLengthArray<wchar_t, 4096> buf(static_cast<int>(chars));
+    if (CM_Get_Device_Interface_ListW(&guid, nullptr, buf.data(), chars,
+                                      CM_GET_DEVICE_INTERFACE_LIST_PRESENT) != CR_SUCCESS)
+        return out;
+    for (const wchar_t* p = buf.constData(); *p; p += wcslen(p) + 1) {
+        const QString path = QString::fromWCharArray(p);
+        const QString lower = path.toLower();
+        if (lower.contains(QLatin1String("ig_")) || visibleRawPathsLower.contains(lower))
+            continue;
+        for (const auto& pad : kKnownPads) {
+            if (pad.vid != 0x054C)
+                continue;   // physical Sony hardware only
+            if (containsAny(lower, vidPidTokens(pad.vid, pad.pid))) {
+                out.append({ path, pad.vid, pad.pid });
+                break;
+            }
+        }
+    }
+    return out;
+}
+
 int HidCloakMonitor::applyWhitelistSelfElevated()
 {
     const QString mine = ownImageNtPath();

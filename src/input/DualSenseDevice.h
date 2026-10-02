@@ -84,6 +84,9 @@ public:
     void noteWmInput(bool sink) { ++(sink ? m_wmInputSink : m_wmInputForeground); }
     void onRawInput(void* hRawInput);
     void onDeviceChange(bool arrived, void* deviceHandle);
+    // WM_DEVICECHANGE for a HID interface. Raw Input sends no arrival for a
+    // cloaked pad, so this is what notices it being plugged in or paired.
+    void onPnpInterfaceChange();
 
     // Direct HID reader spike (bt-ds02). Normal builds OFF; explicit 0/1 overrides the channel build default
     // (production constructor) or a test installs a factory. When enabled,
@@ -98,7 +101,10 @@ public:
     // `error` set); `readerId` is the fence both delivery calls below carry.
     using HidReaderFactory = std::function<std::unique_ptr<SonyHidReaderHandle>(
         const QString& devicePath, bool ds4, quint64 readerId, QString* error)>;
-    void setHidReaderFactory(HidReaderFactory factory);
+    // forVisibleEndpoints=false limits readers to HID-only endpoints: pads
+    // HidHide cloaks from Raw Input, which have no other source (see
+    // RawInputApi::hiddenPadInterfaces). Raw-Input-visible pads keep Raw Input.
+    void setHidReaderFactory(HidReaderFactory factory, bool forVisibleEndpoints = true);
     bool hidReaderEnabled() const { return bool(m_hidReaderFactory); }
     int hidReaderCount() const { return int(m_hidReaders.size()); }
     // GUI-thread delivery (the production factory queues into these). A
@@ -151,6 +157,7 @@ private:
         bool hidPreferred = false;  // reader delivered and is the only source
         qint64 lastHidMs = 0;       // last report forwarded by the reader
         qint64 rawWhileHidQuietMs = 0; // first Raw Input report the reader has not matched
+        bool hidOnly = false;       // cloaked from Raw Input; keyed by a synthetic handle
     };
 
     bool registerRawInput(bool remove = false);
@@ -173,6 +180,9 @@ private:
     void parseReport(void* handle, DeviceState& st, const unsigned char* data, int len,
                      const char* provider = "Sony Raw Input");
     void startHidReader(void* handle, DeviceState& st);
+    // Track/prune HID-only endpoints against the current PnP view. Returns
+    // true if the active pad was pruned.
+    bool syncHiddenInterfaces(const QSet<QString>& rawPathsLower);
     void stopHidReader(void* handle, DeviceState& st, const char* why);
     // Reader lost the endpoint: stop preferring it and release whatever it
     // held so no button stays logically pressed across the source change.
@@ -230,6 +240,9 @@ private:
     QStringList m_lastHiddenPads;            // last cloak-scan result (change detection)
 
     HidReaderFactory m_hidReaderFactory;     // empty = spike disabled
+    bool m_hidReaderForVisible = true;       // false = HID-only (cloaked) endpoints only
+    quint64 m_nextHidOnlyKey = 1;            // synthetic m_devices keys for HID-only pads
+    void* m_devNotify = nullptr;             // HDEVNOTIFY for HID interface changes
     std::map<quint64, std::unique_ptr<SonyHidReaderHandle>> m_hidReaders;
     quint64 m_nextHidReaderId = 1;
     QSet<QString> m_hidOpenFailuresLogged;   // lower-case paths, one log line each

@@ -14,6 +14,7 @@
 #include <QVarLengthArray>
 
 #include <windows.h>
+#include <dbt.h>
 
 namespace
 {
@@ -109,6 +110,12 @@ int devicePriority(quint32 vendorId, quint32 productId)
     return 1;
 }
 
+// m_devices keys for HID-only endpoints. Raw Input hDevice values are kernel
+// handle values far below this tag, so the two key spaces never collide, and
+// synthetic keys never reach a Raw Input API call.
+constexpr quintptr kHidOnlyKeyTag = quintptr(0xC10A) << 48;
+void* hidOnlyKey(quint64 n) { return reinterpret_cast<void*>(kHidOnlyKeyTag | quintptr(n)); }
+
 QString deviceIdentity(quint32 vendorId, quint32 productId)
 {
     return QString::asprintf("%04x:%04x", vendorId, productId);
@@ -129,6 +136,14 @@ LRESULT CALLBACK rawInputWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
         if (GET_RAWINPUT_CODE_WPARAM(wParam) == RIM_INPUT)
             return DefWindowProcW(hwnd, msg, wParam, lParam);
         return 0;
+    case WM_DEVICECHANGE:
+        if ((wParam == DBT_DEVICEARRIVAL || wParam == DBT_DEVICEREMOVECOMPLETE) && lParam
+            && reinterpret_cast<const DEV_BROADCAST_HDR*>(lParam)->dbch_devicetype
+                   == DBT_DEVTYP_DEVICEINTERFACE) {
+            if (auto* dev = deviceFor(hwnd))
+                dev->onPnpInterfaceChange();
+        }
+        return TRUE;
     case WM_INPUT_DEVICE_CHANGE:
         if (auto* dev = deviceFor(hwnd))
             dev->onDeviceChange(wParam == GIDC_ARRIVAL, reinterpret_cast<void*>(lParam));
@@ -146,7 +161,11 @@ DualSenseDevice::DualSenseDevice(QObject* parent)
     qInfo().noquote() << QStringLiteral("Sony HID reader: %1 (%2)")
         .arg(hidPolicy.enabled ? QStringLiteral("enabled") : QStringLiteral("disabled"),
              QString::fromLatin1(hidPolicy.reason));
-    if (!hidPolicy.enabled)
+    // An explicit "0" turns the reader off everywhere. Otherwise it is always
+    // installed for pads HidHide cloaks from Raw Input: those have no other
+    // source, and a whitelisted GameHQ can still open them directly, as DSX
+    // does. The policy decides only whether Raw-Input-visible pads use it.
+    if (qgetenv("GAMEHQ_SONY_HID_READER") == "0")
         return;
     setHidReaderFactory([this](const QString& path, bool ds4, quint64 readerId,
                                QString* error) -> std::unique_ptr<SonyHidReaderHandle> {
@@ -167,9 +186,10 @@ DualSenseDevice::DualSenseDevice(QObject* parent)
                                    ds4 ? SonyReportLayout::Family::Ds4
                                        : SonyReportLayout::Family::DualSense,
                                    std::move(callbacks), error);
-    });
-    qInfo() << "Gamepad: direct HID reader enabled ("
-            << "read-only, Raw Input remains the fallback)";
+    }, hidPolicy.enabled);
+    qInfo() << (hidPolicy.enabled
+                    ? "Gamepad: direct HID reader enabled (read-only, Raw Input remains the fallback)"
+                    : "Gamepad: direct HID reader limited to pads hidden from Raw Input (read-only)");
 }
 
 DualSenseDevice::DualSenseDevice(RawInputApi* api, QObject* parent)
@@ -208,6 +228,8 @@ DualSenseDevice::~DualSenseDevice()
 
     // Unregister so Windows stops routing WM_INPUT to a dead window.
     registerRawInput(true);
+    if (m_devNotify)
+        UnregisterDeviceNotification(static_cast<HDEVNOTIFY>(m_devNotify));
 
     if (m_hwnd)
         DestroyWindow(static_cast<HWND>(m_hwnd));
@@ -253,6 +275,14 @@ bool DualSenseDevice::start()
         return false;
     }
     qInfo() << "Gamepad: Raw Input registered (Sony HID optional - none required to run)";
+    if (m_hidReaderFactory) {
+        DEV_BROADCAST_DEVICEINTERFACE_W filter{};
+        filter.dbcc_size = sizeof(filter);
+        filter.dbcc_devicetype = DBT_DEVTYP_DEVICEINTERFACE;
+        filter.dbcc_classguid =   // GUID_DEVINTERFACE_HID
+            { 0x4D1E55B2, 0xF16F, 0x11CF, { 0x88, 0xCB, 0x00, 0x11, 0x11, 0x00, 0x00, 0x30 } };
+        m_devNotify = RegisterDeviceNotificationW(hwnd, &filter, DEVICE_NOTIFY_WINDOW_HANDLE);
+    }
     logDeliveryReceipt("registered");
     // RIDEV_DEVNOTIFY also delivers arrival messages for already-connected
     // devices, but do one synchronous scan so startup logs the initial set.
@@ -552,6 +582,12 @@ void DualSenseDevice::onDeviceChange(bool arrived, void* deviceHandle)
     m_topologyTimer->start();
 }
 
+void DualSenseDevice::onPnpInterfaceChange()
+{
+    m_reconcileTimer->start();
+    m_topologyTimer->start();
+}
+
 void DualSenseDevice::removeDevice(void* handle)
 {
     auto it = m_devices.find(handle);
@@ -606,7 +642,7 @@ void DualSenseDevice::reconcileDevices()
 
     bool lostActive = false;
     for (auto it = m_devices.begin(); it != m_devices.end();) {
-        if (present.contains(it.key())) {
+        if (it->hidOnly || present.contains(it.key())) {   // HID-only: syncHiddenInterfaces
             ++it;
             continue;
         }
@@ -626,6 +662,8 @@ void DualSenseDevice::reconcileDevices()
         if (!it->hidReaderId)
             startHidReader(it.key(), it.value());
     }
+    if (syncHiddenInterfaces(rawPathsLower))
+        lostActive = true;
     if (lostActive)
         failoverOrScheduleDisconnect();
 
@@ -653,7 +691,7 @@ void DualSenseDevice::reconcileDevices()
                                ? "HidHide filter driver detected; whitelist GameHQ or disable hiding"
                                : "a HID filter driver is cloaking it");
         } else if (!m_lastHiddenPads.isEmpty()) {
-            qInfo() << "Gamepad: previously hidden pad(s) now visible to Raw Input";
+            qInfo() << "Gamepad: previously hidden pad(s) now readable";
         }
         m_lastHiddenPads = cloak.hiddenPads;
         InputDiagnostics::instance().setCloakStatus(cloak.hiddenPads,
@@ -784,9 +822,67 @@ void DualSenseDevice::onRawInput(void* hRawInputV)
         parseReport(handle, *st, payload.reports + i * payload.reportSize, payload.reportSize);
 }
 
-void DualSenseDevice::setHidReaderFactory(HidReaderFactory factory)
+bool DualSenseDevice::syncHiddenInterfaces(const QSet<QString>& rawPathsLower)
+{
+    if (!m_hidReaderFactory)
+        return false;
+    QHash<QString, RawInputApi::HiddenInterface> hidden;   // lower-case path -> interface
+    for (const auto& i : m_api->hiddenPadInterfaces(rawPathsLower))
+        hidden.insert(i.path.toLower(), i);
+
+    // Prune HID-only endpoints that left PnP or became visible to Raw Input
+    // (the Raw Input entry then takes the path over).
+    bool lostActive = false;
+    for (auto it = m_devices.begin(); it != m_devices.end();) {
+        const QString key = it->path.toLower();
+        if (!it->hidOnly || (hidden.contains(key) && !rawPathsLower.contains(key))) {
+            ++it;
+            continue;
+        }
+        qInfo() << "Gamepad:" << padName(it->layout) << "(direct HID) no longer hidden-only";
+        if (it.key() == m_activeHandle) {
+            m_activeHandle = nullptr;
+            lostActive = true;
+        }
+        stopHidReader(it.key(), it.value(), "endpoint pruned");
+        m_rates.forget(it.key());
+        it = m_devices.erase(it);
+    }
+
+    for (auto h = hidden.cbegin(); h != hidden.cend(); ++h) {
+        bool tracked = false;
+        for (auto it = m_devices.cbegin(); it != m_devices.cend() && !tracked; ++it)
+            tracked = it->path.compare(h->path, Qt::CaseInsensitive) == 0;
+        const int layout = supportedReportLayout(h->vendorId, h->productId);
+        if (tracked || layout == LayoutUnknown)
+            continue;
+        void* key = hidOnlyKey(m_nextHidOnlyKey++);
+        DeviceState st;
+        st.layout = layout;
+        st.vendorId = h->vendorId;
+        st.productId = h->productId;
+        st.path = h->path;
+        st.hidOnly = true;
+        auto inserted = m_devices.insert(key, st);
+        startHidReader(key, inserted.value());
+        if (!inserted->hidReaderId) {   // not whitelisted, or not a gamepad collection
+            m_devices.erase(inserted);
+            continue;
+        }
+        qInfo() << "Gamepad: tracking" << padName(layout) << "hidden from Raw Input via direct HID"
+                << "VID" << Qt::hex << h->vendorId << "PID" << h->productId << Qt::dec;
+        InputDiagnostics::instance().noteDevice(
+            deviceIdentity(h->vendorId, h->productId),
+            InputDiagnostics::redactDevicePath(h->path),
+            QStringLiteral("tracked via direct HID (hidden from Raw Input)"));
+    }
+    return lostActive;
+}
+
+void DualSenseDevice::setHidReaderFactory(HidReaderFactory factory, bool forVisibleEndpoints)
 {
     m_hidReaderFactory = std::move(factory);
+    m_hidReaderForVisible = forVisibleEndpoints;
     if (!m_hidReaderFactory)
         return;
     for (auto it = m_devices.begin(); it != m_devices.end(); ++it) {
@@ -799,6 +895,8 @@ void DualSenseDevice::startHidReader(void* handle, DeviceState& st)
 {
     Q_UNUSED(handle)
     if (!m_hidReaderFactory || st.hidReaderId || st.path.isEmpty())
+        return;
+    if (!st.hidOnly && !m_hidReaderForVisible)
         return;
     // One reader per endpoint path. Two live Raw Input handles for one path
     // only overlap briefly during re-enumeration; the second one waits.
@@ -893,7 +991,10 @@ void DualSenseDevice::onHidReaderFailed(quint64 readerId, const QString& reason)
             continue;
         qInfo().noquote() << QStringLiteral("Gamepad: direct HID reader failed for %1: %2")
                                  .arg(deviceIdentity(it->vendorId, it->productId), reason);
-        stopHidReader(it.key(), it.value(), "reader failed");
+        if (it->hidOnly)
+            removeDevice(it.key());   // no other source: the endpoint is gone
+        else
+            stopHidReader(it.key(), it.value(), "reader failed");
         return;
     }
 }
