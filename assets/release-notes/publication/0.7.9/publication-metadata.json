@@ -2,15 +2,15 @@
   "schema_version": 1,
   "kind": "release-publication",
   "version": "0.7.9",
-  "date": "2026-09-25",
+  "date": "2026-10-02",
   "source_locale": "en-US",
   "default_locale": "en-US",
   "localization_policy": "complete",
-  "release_source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+  "release_source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
   "release_body": {
     "filename": "RELEASE_BODY.md",
-    "size": 1693,
-    "sha256": "329b8f3f76e72f8075fba1d8692b5015428428fc03ab5c6c85c252ede04bed80"
+    "size": 10517,
+    "sha256": "1b228baf62e534cbdaea630c4cb83d588d4934b084ab1d2afeb3abef0787e902"
   },
   "distribution": {
     "localized_documents": "repository",
@@ -28,23 +28,101 @@
       "language_english_name": "English (United States)",
       "language_native_name": "English",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.en-US.md",
-      "size": 515,
-      "sha256": "510075921ef21e0833136d3690838bc97a98ecdfb06409d1d79ae7e76033f5a7",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 9339,
+      "sha256": "0c457c2cd03d440bd631a71b092bf978bddf2694ed30f8145e1524f239891034",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -59,23 +137,101 @@
       "language_english_name": "Chinese (Simplified)",
       "language_native_name": "简体中文",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.zh-Hans.md",
-      "size": 464,
-      "sha256": "157d69ed77977ca60bd8c94518023076a5c2a9dbc9fee2adc2975647f53b81ab",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 9668,
+      "sha256": "d7b7df1fcbb5b4cf2dfbf775bf4c23d75ee0af9e10af98a5847b4559aac883c1",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -90,23 +246,101 @@
       "language_english_name": "Russian",
       "language_native_name": "Русский",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.ru-RU.md",
-      "size": 910,
-      "sha256": "7c628ab335b237f5976341edb7b83feff56ad434ca4443ce5658cf41f540ea14",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 18850,
+      "sha256": "5a1783a2460f54cf90f583460ba18dc9fb26263d2ef09e16eef0715bc5095bf7",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -121,23 +355,101 @@
       "language_english_name": "Spanish",
       "language_native_name": "Español",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.es-ES.md",
-      "size": 580,
-      "sha256": "98b7cc11da65fa70ea62aa22878057f21ba1620d727590b0a87bc2e25e249f0c",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 11503,
+      "sha256": "2ffa873668b1cb09dcfb5ec6b368d8898cdb0b858ff14f236f201df4149c9ecd",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -152,23 +464,101 @@
       "language_english_name": "Portuguese (Brazil)",
       "language_native_name": "Português (Brasil)",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.pt-BR.md",
-      "size": 585,
-      "sha256": "a6034d0e2688acec986c4e535d331d0eaa48cb1c3acd7838611ebb92a7819122",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 11197,
+      "sha256": "cc9afebe91ce27f6567aa00c769127bb65329a8ef68b81cf5ed45b5dfc742c3d",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -183,23 +573,101 @@
       "language_english_name": "German",
       "language_native_name": "Deutsch",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.de-DE.md",
-      "size": 602,
-      "sha256": "f717b9750f896084602201401e7eaaf2eec00462f5a29d15f118b59cfbb75717",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 11720,
+      "sha256": "955ab8a7b46efd665b3b234bea9009e772436366529fd17e3324f45d1abce71f",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -214,23 +682,101 @@
       "language_english_name": "Japanese",
       "language_native_name": "日本語",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.ja-JP.md",
-      "size": 750,
-      "sha256": "9c7a1592b9991d167bc9aca6a3f921fe36c563b44228e1289954f4b0f28767c0",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 15025,
+      "sha256": "8fbf87fcfb5ec0dcbc37dc98f0f6a71e679e3e9481c6449ec488e492bebeefb8",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -245,23 +791,101 @@
       "language_english_name": "French",
       "language_native_name": "Français",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.fr-FR.md",
-      "size": 636,
-      "sha256": "98a927606310d3db8dbcb84d13662e6c50bef245a70aa84878c896dfae037712",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 12186,
+      "sha256": "0c7854d0c215de3d31831a2c8cc6ef7d466767dfd841aa64a69206944d1f171f",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -276,23 +900,101 @@
       "language_english_name": "Polish",
       "language_native_name": "Polski",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.pl-PL.md",
-      "size": 593,
-      "sha256": "fbf24958c9953e2b30d87be1d6f6674e24fc7fa96e30bd5502d2047c9563027f",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 11341,
+      "sha256": "112f413af7d52c5d0f4b909357338a9acc46bf1c5218992c876430b2faf34328",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -307,23 +1009,101 @@
       "language_english_name": "Korean",
       "language_native_name": "한국어",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.ko-KR.md",
-      "size": 644,
-      "sha256": "a983f0cb00204ce611686e5e5bdc395c70ab2b37199977a973a431a330cbee16",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 12354,
+      "sha256": "1ccd8d45992d038a8247e98875fcea095bd58111462212d91ce83e407e13319b",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -338,23 +1118,101 @@
       "language_english_name": "Chinese (Traditional)",
       "language_native_name": "繁體中文",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.zh-Hant.md",
-      "size": 473,
-      "sha256": "e6c962cb56fc8e6b2d65c4ed351109f2a965e7d4af33b7bd4f82680c7bf9b57e",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 10001,
+      "sha256": "37c7be1ddafacb81028a8c47c4ea933d91dff3bb544a53be52a0eec3e8f3bb84",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -369,23 +1227,101 @@
       "language_english_name": "Turkish",
       "language_native_name": "Türkçe",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.tr-TR.md",
-      "size": 615,
-      "sha256": "30169f451e263c4410c0b9ad750490ad3106bdf3154c844f1daaa7c53f213d85",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 11626,
+      "sha256": "d206d45d11d7cd516f15bdd7c5dda74e3b992db9c66a2490155be636b90f3b1d",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -400,23 +1336,101 @@
       "language_english_name": "Thai",
       "language_native_name": "ไทย",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.th-TH.md",
-      "size": 1212,
-      "sha256": "e8905927e0f74e0b8d5132a2a76d46cddc1e420287b95f088be3a6762051c76f",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 24361,
+      "sha256": "3a92089f2a5abb9b4dce8840e2ebc664e441d62f2800d38eb632316d98beadc8",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -431,23 +1445,101 @@
       "language_english_name": "Spanish (Latin America)",
       "language_native_name": "Español (Latinoamérica)",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.es-419.md",
-      "size": 590,
-      "sha256": "f0461a2b5c0729656e4a7c41d8419a8f03ea2d950e17a6793509add41f65a744",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 11579,
+      "sha256": "4a614e70913c6b8eb340ca7446a8ca5f2150f2dd44d684be481510d2d86006f8",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -462,23 +1554,101 @@
       "language_english_name": "Ukrainian",
       "language_native_name": "Українська",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.uk-UA.md",
-      "size": 874,
-      "sha256": "3535d9f9dc169f511541d3cd9dd4c9c1de4d9120df788f9b1dca084e8ec2dd25",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 18923,
+      "sha256": "2451bb68e40b7f00f44dd09ce4b6e289dc86e00c8a706710263d039b8ac2ad0c",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
@@ -493,23 +1663,101 @@
       "language_english_name": "Italian",
       "language_native_name": "Italiano",
       "version": "0.7.9",
-      "date": "2026-09-25",
+      "date": "2026-10-02",
       "filename": "release-notes.it-IT.md",
-      "size": 592,
-      "sha256": "e9270c8c150ebed41bc0b0d83888c9a325ff952ad85050cd1ad9bea0032093cc",
-      "source_integrity": "sha256:5c6fec00f87d7fa685083c0fa6bdedd199a43123ffb7fe65ee2478df1ad566e1",
+      "size": 11426,
+      "sha256": "286a68f030afdb685402487c01ee5fa09b80f338aa361d386d037c185b35c9b9",
+      "source_integrity": "sha256:e6949d36cc24a4c0e251b4609ba926e664a729893f8ecc351354b02318c05bbc",
       "structure": [
         {
-          "section_id": "fixes",
+          "section_id": "highlights",
           "item_ids": [
-            "bluetooth-dualsense",
-            "stick-clicks"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05",
+            "highlights-06",
+            "highlights-07",
+            "highlights-08"
           ]
         },
         {
-          "section_id": "diagnostics",
+          "section_id": "sharing",
           "item_ids": [
-            "input-layout-log"
+            "sharing-01",
+            "sharing-02",
+            "sharing-03",
+            "sharing-04",
+            "sharing-05",
+            "sharing-06",
+            "sharing-07",
+            "sharing-08",
+            "sharing-09"
+          ]
+        },
+        {
+          "section_id": "overlay",
+          "item_ids": [
+            "overlay-01",
+            "overlay-02"
+          ]
+        },
+        {
+          "section_id": "gallery",
+          "item_ids": [
+            "gallery-01",
+            "gallery-02",
+            "gallery-03",
+            "gallery-04",
+            "gallery-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03",
+            "changes-04",
+            "changes-05",
+            "changes-06",
+            "changes-07",
+            "changes-08",
+            "changes-09",
+            "changes-10"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08"
+          ]
+        },
+        {
+          "section_id": "compatibility",
+          "item_ids": [
+            "compatibility-01",
+            "compatibility-02",
+            "compatibility-03",
+            "compatibility-04",
+            "compatibility-05"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
           ]
         }
       ]
