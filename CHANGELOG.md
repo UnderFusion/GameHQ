@@ -4,7 +4,7 @@ Public release history and the current local release candidate.
 
 ## [Unreleased]
 
-## [0.7.9] - <release date>
+## [0.7.9] - 2026-10-02
 
 GameHQ 0.7.9 adds sharing, makes DualSense controllers much more dependable over USB and Bluetooth, and gives you far more control over how the overlay looks.
 
