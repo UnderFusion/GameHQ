@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 using GameHQ.Playnite.Localization;
 using GameHQ.Playnite.Protocol;
 using GameHQ.Playnite.Settings;
@@ -24,7 +26,8 @@ namespace GameHQ.Playnite
 
         private readonly GameHQIntegrationSettingsViewModel _settingsViewModel;
         private readonly GameLifecycleForwarder _lifecycle;
-        private bool _launchAttempted;
+        private readonly GameHQStartupSupervisor _startup;
+        private static readonly ILogger Logger = LogManager.GetLogger(nameof(GameHQPlugin));
 
         public GameHQPlugin(IPlayniteAPI api) : base(api)
         {
@@ -40,6 +43,13 @@ namespace GameHQ.Playnite
             Client = new IntegrationClient(version);
             _lifecycle = new GameLifecycleForwarder(api, Client);
             _settingsViewModel = new GameHQIntegrationSettingsViewModel(this, api);
+            _startup = new GameHQStartupSupervisor(
+                () => Client.State == IntegrationConnectionState.Connected,
+                IsGameHQRunning,
+                LaunchGameHQ,
+                (delay, action) => Task.Delay(delay).ContinueWith(_ => action()),
+                message => Logger.Info(message),
+                message => Logger.Warn(message));
             Client.Start();
         }
 
@@ -59,40 +69,44 @@ namespace GameHQ.Playnite
                 return;
             }
 
+            LaunchGameHQ();
+        }
+
+        private bool LaunchGameHQ()
+        {
             var exePath = GameHQLocator.Locate(Settings.ExePath);
-            if (exePath != null)
-                GameHQProcessLauncher.TryLaunch(exePath);
+            return exePath != null && GameHQProcessLauncher.TryLaunch(exePath);
+        }
+
+        // The root launcher and app\GameHQ.exe share this process name.
+        private static bool IsGameHQRunning()
+        {
+            var processes = Process.GetProcessesByName("GameHQ");
+            foreach (var process in processes) process.Dispose();
+            return processes.Length > 0;
         }
 
         public override void OnApplicationStarted(OnApplicationStartedEventArgs args)
         {
-            // One best-effort launch if GameHQ isn't reachable yet; the
-            // client's own background loop keeps retrying the connection
-            // regardless, so a failed launch here is never fatal.
-            if (_launchAttempted || !Settings.StartWithPlaynite || Client.State == IntegrationConnectionState.Connected) return;
-            _launchAttempted = true;
-
-            var exePath = GameHQLocator.Locate(Settings.ExePath);
-            if (exePath != null)
-                GameHQProcessLauncher.TryLaunch(exePath);
+            // Bounded launch-and-verify: Xbox mode can defer GameHQ's own
+            // autostart, and Playnite may be the only thing started at boot.
+            if (Settings.StartWithPlaynite)
+                _startup.Ensure("Playnite started");
         }
 
         public override void OnApplicationStopped(OnApplicationStoppedEventArgs args)
         {
             // Never close GameHQ here — it may be tray-resident, exporting a
             // clip, or used standalone without Playnite at all.
+            _startup.Stop();
             _lifecycle.ApplicationStopping();
             Client.Stop();
         }
 
         public override void OnGameStarting(OnGameStartingEventArgs args)
         {
-            if (Settings.StartOnGameLaunchIfNotRunning && Client.State != IntegrationConnectionState.Connected)
-            {
-                var exePath = GameHQLocator.Locate(Settings.ExePath);
-                if (exePath != null)
-                    GameHQProcessLauncher.TryLaunch(exePath);
-            }
+            if (Settings.StartOnGameLaunchIfNotRunning)
+                _startup.Ensure("game starting: " + args.Game.Name);
 
             _lifecycle.GameStarting(args.Game);
         }

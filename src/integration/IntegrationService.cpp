@@ -59,6 +59,8 @@ void IntegrationService::onDisconnected(quint64 clientId)
     const Client client = m_clients.take(clientId);
     if (!client.handshaken || client.name != QStringLiteral("GameHQ.Playnite"))
         return;
+    qInfo() << "Playnite integration disconnected" << clientId
+            << "- its game context expires unless it reconnects";
     // Playnite can reconnect before its previous socket reports the
     // disconnect. The replacement's handshake already cancelled the expiry, so
     // scheduling a new one here would wipe the live client's state a few
@@ -108,6 +110,8 @@ bool IntegrationService::handleHello(quint64 clientId,
     it->protocol = selected;
     if (clientName == QStringLiteral("GameHQ.Playnite"))
         m_context.cancelSourceExpiry(clientName);
+    qInfo().noquote() << "Integration client" << clientId << "handshake:" << clientName
+                      << clientVersion;
 
     QJsonObject reply {
         { QStringLiteral("type"), QStringLiteral("hello.ack") },

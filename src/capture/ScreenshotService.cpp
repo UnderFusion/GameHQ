@@ -96,6 +96,20 @@ void ScreenshotService::capture(const CaptureRequest& request)
         }
     }
 
+    if (g.viaShellFallback) {
+        // The GDI grab copies the screen, so it is only the game when nothing
+        // (the Xbox shell, Game Bar) sits on top of it.
+        const POINT center{g.x + g.w / 2, g.y + g.h / 2};
+        if (GetAncestor(WindowFromPoint(center), GA_ROOT) != static_cast<HWND>(g.hwnd)) {
+            reject(QStringLiteral("the Xbox shell is covering the game (process=%1)")
+                       .arg(g.processName));
+            return;
+        }
+        qInfo().noquote() << QStringLiteral("Screenshot[%1]: Xbox shell foreground - "
+                                            "capturing the verified Playnite game")
+                                 .arg(chain);
+    }
+
     QElapsedTimer t;
     t.start();
     const QImage img = grabRect(g.hwnd, g.x, g.y, g.w, g.h);

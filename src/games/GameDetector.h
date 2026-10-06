@@ -15,6 +15,7 @@ struct ForegroundGame
     bool isFullscreen = false;   // window rect == monitor rect
     bool isExcludedProcess = false; // shell/system/GameHQ surfaces are never games
     bool hasExternalIdentity = false;
+    bool viaShellFallback = false; // Xbox shell in front; target is the verified Playnite game
     QString externalSource;
     QString externalId;
     QString processName;         // e.g. "Cyberpunk2077.exe"
