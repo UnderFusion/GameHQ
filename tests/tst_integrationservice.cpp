@@ -17,6 +17,7 @@ private slots:
     void incompatibleHandshakeCloses();
     void lifecycleSyncAndDisconnectExpiry();
     void externalIdentityRequiresProcessOrSafeGamePath();
+    void xboxShellFallbackStaysNarrow();
     void overlappingPlayniteReconnectKeepsLiveState();
     void handlerDisconnectDuringBufferedFramesIsSafe();
 };
@@ -223,6 +224,37 @@ void IntegrationServiceTest::externalIdentityRequiresProcessOrSafeGamePath()
     QCOMPARE(crossDrive.confidence, integration::MatchConfidence::None);
 }
 
+void IntegrationServiceTest::xboxShellFallbackStaysNarrow()
+{
+    // Only Xbox mode surfaces may hand the capture gate to a Playnite game.
+    QVERIFY(integration::isXboxShellSurface(QStringLiteral("XboxPcApp.exe"), {}));
+    QVERIFY(integration::isXboxShellSurface(QStringLiteral("GameBar.exe"), {}));
+    QVERIFY(integration::isXboxShellSurface(QStringLiteral("ApplicationFrameHost.exe"),
+                                            QStringLiteral("XBOX")));
+    QVERIFY(!integration::isXboxShellSurface(QStringLiteral("ApplicationFrameHost.exe"),
+                                             QStringLiteral("Calculator")));
+    QVERIFY(!integration::isXboxShellSurface(QStringLiteral("explorer.exe"), {}));
+    QVERIFY(!integration::isXboxShellSurface(QStringLiteral("brave.exe"),
+                                             QStringLiteral("Xbox")));
+
+    // Only started sessions with a launched process id can be verified.
+    integration::ExternalGameContext context;
+    QString error;
+    QVERIFY(context.upsert(QStringLiteral("GameHQ.Playnite"), {
+        { QStringLiteral("sessionId"), QStringLiteral("launched") },
+        { QStringLiteral("startedProcessId"), 55 }
+    }, QStringLiteral("started"), error));
+    QVERIFY(context.upsert(QStringLiteral("GameHQ.Playnite"), {
+        { QStringLiteral("sessionId"), QStringLiteral("no-pid") }
+    }, QStringLiteral("started"), error));
+    QVERIFY(context.upsert(QStringLiteral("GameHQ.Playnite"), {
+        { QStringLiteral("sessionId"), QStringLiteral("starting") },
+        { QStringLiteral("startedProcessId"), 77 }
+    }, QStringLiteral("starting"), error));
+    const QList<integration::ExternalGameSession> launched = context.launchedSessions();
+    QCOMPARE(launched.size(), 1);
+    QCOMPARE(launched.first().sessionId, QStringLiteral("launched"));
+}
 
 void IntegrationServiceTest::overlappingPlayniteReconnectKeepsLiveState()
 {

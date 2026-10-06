@@ -42,6 +42,11 @@ struct ExternalGameMatch
     }
 };
 
+// Xbox full screen experience surfaces (the Xbox app home, Game Bar) that can
+// hold the foreground while a game launched from Playnite is running. Only
+// these may hand the capture gate over to a verified Playnite game window.
+bool isXboxShellSurface(const QString &processName, const QString &windowTitle);
+
 class ExternalGameContext final : public QObject
 {
     Q_OBJECT
@@ -59,6 +64,9 @@ public:
 
     QList<ExternalGameSession> sessions() const;
     int sessionCount() const;
+    // Started sessions whose launched process id is known: the only ones whose
+    // windows can be verified by process identity rather than by name or path.
+    QList<ExternalGameSession> launchedSessions() const;
     ExternalGameMatch matchForeground(
         quint32 foregroundPid, const QString &executablePath, bool alreadyGame,
         const std::function<bool(quint32, quint32)> &isDescendant) const;

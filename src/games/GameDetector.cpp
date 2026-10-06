@@ -9,6 +9,7 @@
 #include <QMutex>
 #include <QMutexLocker>
 #include <QRegularExpression>
+#include <QSet>
 
 #include <windows.h>
 #include <tlhelp32.h>
@@ -61,6 +62,10 @@ bool isShellProcess(const QString& exeLower)
         QStringLiteral("textinputhost.exe"),
         QStringLiteral("dwm.exe"),
         QStringLiteral("lockapp.exe"),
+        // Xbox full screen experience home and Game Bar: full-screen shells,
+        // never the game (see integration::isXboxShellSurface).
+        QStringLiteral("xboxpcapp.exe"),
+        QStringLiteral("gamebar.exe"),
         QStringLiteral("gamehq.exe"),   // never screenshot ourselves / the overlay
         // The Snipping Tool's screen-clip layer covers the whole monitor, so the
         // fullscreen test below took it for a game and armed the replay buffer on
@@ -317,13 +322,10 @@ QString resolveTitle(unsigned long pid, const QString& exe,
 }
 } // namespace
 
-ForegroundGame GameDetector::current()
+namespace
 {
-    ForegroundGame g;
-
-    HWND hwnd = GetForegroundWindow();
-    if (!hwnd)
-        return g;
+void describeWindow(HWND hwnd, ForegroundGame& g)
+{
     g.hwnd = hwnd;
     g.valid = true;
 
@@ -367,8 +369,152 @@ ForegroundGame GameDetector::current()
     // "Covers the monitor" alone is not a game: it also matches every overlay,
     // which is how the replay buffer ended up recording the desktop.
     g.isGame = g.isFullscreen && !g.isExcludedProcess && !isOverlayWindow(hwnd);
+}
+
+// The launched process plus every descendant, from one process snapshot.
+QSet<DWORD> processTree(DWORD rootPid)
+{
+    QSet<DWORD> tree{rootPid};
+    HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    if (snapshot == INVALID_HANDLE_VALUE)
+        return tree;
+    std::unordered_map<DWORD, DWORD> parents;
+    PROCESSENTRY32W entry = {};
+    entry.dwSize = sizeof(entry);
+    if (Process32FirstW(snapshot, &entry)) {
+        do {
+            parents.emplace(entry.th32ProcessID, entry.th32ParentProcessID);
+        } while (Process32NextW(snapshot, &entry));
+    }
+    CloseHandle(snapshot);
+    // Launchers are shallow; a few passes reach every grandchild.
+    for (int depth = 0; depth < 16; ++depth) {
+        const qsizetype before = tree.size();
+        for (const auto& [pid, parent] : parents) {
+            if (pid != parent && tree.contains(parent))
+                tree.insert(pid);
+        }
+        if (tree.size() == before)
+            break;
+    }
+    return tree;
+}
+
+bool isCloaked(HWND hwnd)
+{
+    // Resolved at runtime so every target linking this file needs no dwmapi.
+    using DwmGetWindowAttributeFn = HRESULT(WINAPI*)(HWND, DWORD, PVOID, DWORD);
+    static const auto getAttribute = [] {
+        HMODULE dwm = LoadLibraryW(L"dwmapi.dll");
+        return dwm ? reinterpret_cast<DwmGetWindowAttributeFn>(
+                         GetProcAddress(dwm, "DwmGetWindowAttribute"))
+                   : nullptr;
+    }();
+    constexpr DWORD kDwmwaCloaked = 14; // DWMWA_CLOAKED
+    DWORD cloaked = 0;
+    return getAttribute
+        && SUCCEEDED(getAttribute(hwnd, kDwmwaCloaked, &cloaked, sizeof(cloaked)))
+        && cloaked != 0;
+}
+
+struct WindowSearch
+{
+    QSet<DWORD> pids;
+    HWND best = nullptr;
+    long long bestArea = 0;
+};
+
+BOOL CALLBACK collectGameWindow(HWND hwnd, LPARAM param)
+{
+    auto* search = reinterpret_cast<WindowSearch*>(param);
+    DWORD pid = 0;
+    GetWindowThreadProcessId(hwnd, &pid);
+    if (!search->pids.contains(pid) || !IsWindowVisible(hwnd) || IsIconic(hwnd)
+        || GetWindow(hwnd, GW_OWNER) || isOverlayWindow(hwnd) || isCloaked(hwnd)) {
+        return TRUE;
+    }
+    RECT r = {};
+    GetWindowRect(hwnd, &r);
+    const long long area = static_cast<long long>(r.right - r.left) * (r.bottom - r.top);
+    if (area > search->bestArea) {
+        search->best = hwnd;
+        search->bestArea = area;
+    }
+    return TRUE;
+}
+
+// Xbox mode can keep its own shell window in front of a game Playnite
+// launched. Hand capture to that game only when Windows confirms the window
+// belongs to the launched process tree and covers its monitor; anything
+// weaker keeps the normal "not a game" answer.
+bool playniteGameBehindShell(const integration::ExternalGameContext& context,
+                             ForegroundGame& out)
+{
+    for (const integration::ExternalGameSession& session : context.launchedSessions()) {
+        WindowSearch search;
+        search.pids = processTree(static_cast<DWORD>(session.startedProcessId));
+        EnumWindows(collectGameWindow, reinterpret_cast<LPARAM>(&search));
+        if (!search.best)
+            continue;
+        ForegroundGame candidate;
+        candidate.valid = true;
+        describeWindow(search.best, candidate);
+        if (!candidate.isGame)
+            continue;
+        candidate.viaShellFallback = true;
+        candidate.hasExternalIdentity = true;
+        candidate.externalSource = session.sourceId;
+        candidate.externalId = session.playniteGameId;
+        if (!session.name.isEmpty())
+            candidate.gameName = session.name;
+        out = candidate;
+        return true;
+    }
+    return false;
+}
+
+// current() runs on every capture tick; log only when the outcome changes.
+std::atomic<quintptr> g_lastShellOutcome{0};
+
+void logShellOutcome(const ForegroundGame& shell, const ForegroundGame* game)
+{
+    const quintptr key = game ? reinterpret_cast<quintptr>(game->hwnd) : 1;
+    if (g_lastShellOutcome.exchange(key) == key)
+        return;
+    if (game) {
+        qInfo().noquote() << "GameDetector: Xbox shell foreground" << shell.processName
+                          << "- using verified Playnite game" << game->processName
+                          << "(pid" << game->pid << ")";
+    } else {
+        qInfo().noquote() << "GameDetector: Xbox shell foreground" << shell.processName
+                          << "and no verified fullscreen Playnite game window;"
+                          << "capture stays gated";
+    }
+}
+} // namespace
+
+ForegroundGame GameDetector::current()
+{
+    ForegroundGame g;
+
+    HWND hwnd = GetForegroundWindow();
+    if (!hwnd)
+        return g;
+    g.valid = true;
+    describeWindow(hwnd, g);
 
     const integration::ExternalGameContext *context = g_externalContext.load();
+    if (context && !g.isGame
+        && integration::isXboxShellSurface(g.processName, g.windowTitle)) {
+        ForegroundGame game;
+        if (playniteGameBehindShell(*context, game)) {
+            logShellOutcome(g, &game);
+            return game;
+        }
+        logShellOutcome(g, nullptr);
+    } else if (context) {
+        g_lastShellOutcome.store(0);
+    }
     if (context && !g.isExcludedProcess && !isOverlayWindow(hwnd)) {
         const integration::ExternalGameMatch match = context->matchForeground(
             static_cast<quint32>(g.pid), g.executablePath, g.isGame,

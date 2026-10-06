@@ -27,6 +27,7 @@
          file depends on Playnite.SDK or System.Web.Extensions. -->
     <Compile Include="..\..\src\GameHQ.Playnite\Protocol\PipeFraming.cs" Link="Sources\PipeFraming.cs" />
     <Compile Include="..\..\src\GameHQ.Playnite\GameHQLocator.cs" Link="Sources\GameHQLocator.cs" />
+    <Compile Include="..\..\src\GameHQ.Playnite\GameHQStartupSupervisor.cs" Link="Sources\GameHQStartupSupervisor.cs" />
     <Compile Include="..\..\src\GameHQ.Playnite\Security\ReleaseTrust.cs" Link="Sources\ReleaseTrust.cs" />
     <Compile Include="..\..\src\GameHQ.Playnite\Localization\PluginLocalization.cs" Link="Sources\PluginLocalization.cs" />
   </ItemGroup>

@@ -50,6 +50,17 @@ bool pathInside(const QString &candidate, const QString &directory)
 
 namespace integration
 {
+bool isXboxShellSurface(const QString &processName, const QString &windowTitle)
+{
+    const QString exe = processName.toLower();
+    if (exe == QStringLiteral("xboxpcapp.exe") || exe == QStringLiteral("gamebar.exe"))
+        return true;
+    // ApplicationFrameHost hosts every packaged app; only its Xbox window
+    // counts, never Calculator, Settings or any other app it frames.
+    return exe == QStringLiteral("applicationframehost.exe")
+        && windowTitle.trimmed().compare(QStringLiteral("Xbox"), Qt::CaseInsensitive) == 0;
+}
+
 ExternalGameContext::ExternalGameContext(QObject *parent)
     : QObject(parent)
 {
@@ -238,6 +249,16 @@ int ExternalGameContext::sessionCount() const
 {
     QReadLocker locker(&m_lock);
     return m_sessions.size();
+}
+
+QList<ExternalGameSession> ExternalGameContext::launchedSessions() const
+{
+    QList<ExternalGameSession> launched;
+    for (const ExternalGameSession &session : sessions()) {
+        if (session.startedProcessId != 0 && session.phase == QStringLiteral("started"))
+            launched.push_back(session);
+    }
+    return launched;
 }
 
 ExternalGameMatch ExternalGameContext::matchForeground(
