@@ -42,8 +42,15 @@ if ($minimumUpdaterVersion -notmatch '^\d+\.\d+\.\d+$' `
     -or [version]$minimumUpdaterVersion -gt [version]$version) {
     throw 'minimum-updater-version.txt must contain a valid version no newer than VERSION.'
 }
-if ($GitTag -and $GitTag.TrimStart('v') -ne $version) {
-    throw "Git tag $GitTag does not match VERSION $version."
+if ($GitTag) {
+    # Stable tags are v<VERSION>; prereleases are v<VERSION>-betaN and may only
+    # carry beta trust, so a beta build can never be validated as stable.
+    if ($GitTag -notmatch '^v(?<version>\d+\.\d+\.\d+)(?<beta>-beta[1-9][0-9]*)?$' -or $Matches.version -ne $version) {
+        throw "Git tag $GitTag does not match VERSION $version."
+    }
+    if ($Matches.beta -and $TrustMode -ne 'unsigned-beta') {
+        throw "Beta tag $GitTag requires -TrustMode unsigned-beta."
+    }
 }
 if ($GitTag -and $ManifestMode -eq 'test') {
     throw 'Test-key manifests are local/CI evidence only and can never validate a publishable Git tag.'

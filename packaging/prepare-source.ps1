@@ -31,7 +31,10 @@ if ($LASTEXITCODE -ne 0 -or $revisionVersion -ne $version) {
     throw "Source revision VERSION '$revisionVersion' does not match $version."
 }
 if ($GitTag) {
-    if ($GitTag -ne "v$version") { throw "Source tag $GitTag does not match VERSION $version." }
+    # A prerelease is tagged v<VERSION>-betaN; VERSION itself never carries the suffix.
+    if ($GitTag -notmatch '^v(?<version>\d+\.\d+\.\d+)(-beta[1-9][0-9]*)?$' -or $Matches.version -ne $version) {
+        throw "Source tag $GitTag does not match VERSION $version."
+    }
     $tagCommit = (& git -C $root rev-parse --verify "$GitTag`^{commit}").Trim()
     if ($LASTEXITCODE -ne 0 -or $tagCommit -ne $commit) {
         throw "Source tag $GitTag does not resolve to $commit."
