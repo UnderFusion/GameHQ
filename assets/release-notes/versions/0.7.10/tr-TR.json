@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.10",
+  "locale": "tr-TR",
+  "date": "2026-10-08",
+  "mode": "localized",
+  "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "Hata düzeltmeleri",
+      "items": [
+        {
+          "id": "fixes-01",
+          "text": "Ekran görüntüleri artık önceki ekran görüntüsünün kaydedildiğini bildiren uyarı gibi GameHQ'nun kendi bildirimlerini içermiyor. Bildirimler ekranınızda görünmeye devam eder."
+        },
+        {
+          "id": "fixes-02",
+          "text": "Playnite ile Windows Xbox modu (tam ekran deneyimi): Windows etkin pencere olarak Playnite'tan başlatılan oyun yerine Xbox uygulamasını bildirdiğinde GameHQ oyunu yine de tanır, böylece ekran görüntüleri ve klipler çalışır. GameHQ Playnite Integration 0.4.13 ile birlikte kullanın."
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "title": "Değişiklikler ve iyileştirmeler",
+      "items": [
+        {
+          "id": "changes-01",
+          "text": "Tüm ekranı yakalayan kayıt ve yayın uygulamaları da artık GameHQ bildirimlerini göstermiyor."
+        }
+      ]
+    },
+    {
+      "id": "limitations",
+      "title": "Bilinen sınırlamalar",
+      "items": [
+        {
+          "id": "limitations-01",
+          "text": "Windows, Steam veya Discord bildirimleri gibi diğer uygulamaların açılır pencereleri ekran görüntülerinde hâlâ görünebilir."
+        },
+        {
+          "id": "limitations-02",
+          "text": "Xbox modu desteği yenidir ve henüz Xbox modunda çalışan bir bilgisayarda doğrulanmamıştır."
+        }
+      ]
+    }
+  ]
+}

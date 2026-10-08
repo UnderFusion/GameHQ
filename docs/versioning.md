@@ -1,6 +1,8 @@
 # Versioning & Documentation Rules
 
-> **Owner policy (2026-09-25):** 0.7.8 is published. The Bluetooth DualSense hotfix is **0.7.9**, shipped first as the `v0.7.9-beta1` GitHub pre-release. `VERSION` stays plain `MAJOR.MINOR.PATCH` (the updater and release-note schema reject suffixes); a beta is identified by its tag and release title only. Internal implementation slices do not increment the product version.
+> **Owner policy (2026-10-08):** 0.7.9 is the published stable release. `VERSION` is **0.7.10**, shipped first as the `v0.7.10-beta1` GitHub pre-release (Xbox mode with Playnite, notifications kept out of screenshots).
+>
+> **Earlier owner policy (2026-09-25):** 0.7.8 is published. The Bluetooth DualSense hotfix is **0.7.9**, shipped first as the `v0.7.9-beta1` GitHub pre-release. `VERSION` stays plain `MAJOR.MINOR.PATCH` (the updater and release-note schema reject suffixes); a beta is identified by its tag and release title only. Internal implementation slices do not increment the product version.
 
 ## Scheme
 
@@ -37,7 +39,7 @@ local files does not publish or tag a release.
 
 ## Release Checklist
 
-1. Use the owner-designated release version in `VERSION` (currently 0.7.9); never add a `-betaN` suffix to it.
+1. Use the owner-designated release version in `VERSION` (currently 0.7.10); never add a `-betaN` suffix to it. A beta is packaged with `-GitTag v<VERSION>-betaN -TrustMode unsigned-beta`; the source offer and release validation accept that tag form only with beta trust.
 2. Add a `CHANGELOG.md` entry with Added/Changed/Fixed/Removed sections as needed.
 3. Update affected docs in `docs/` when code changes behavior, architecture, storage, setup, capture, overlay, input, or UI rules.
 4. Update `docs/README.md` if a doc is added, renamed, or its purpose changes.

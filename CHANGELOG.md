@@ -4,6 +4,20 @@ Public release history and the current local release candidate.
 
 ## [Unreleased]
 
+## [0.7.10] - 2026-10-08
+
+First shipped as the `v0.7.10-beta1` pre-release for confirmation by the reporters.
+
+### Fixed
+
+- Screenshots no longer include GameHQ's own notifications, such as the notice that the previous screenshot was saved. Only the notification window is excluded from capture (`WDA_EXCLUDEFROMCAPTURE`); the overlay and the main window are unchanged.
+- Windows Xbox mode (full screen experience) with Playnite: when the Xbox shell holds the foreground, GameHQ uses the verified game started from Playnite for screenshots and clips. The Playnite Integration 0.4.13 also checks that GameHQ is running and connected after Playnite starts and when a game starts.
+
+### Changed
+
+- Screen recorders and streaming apps that capture the whole screen no longer show GameHQ notifications either.
+- Packaging accepts prerelease tags of the form `v<VERSION>-betaN`, and only with beta trust.
+
 ## [0.7.9] - 2026-10-02
 
 GameHQ 0.7.9 adds sharing, makes DualSense controllers much more dependable over USB and Bluetooth, and gives you far more control over how the overlay looks.

@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.10",
+  "locale": "de-DE",
+  "date": "2026-10-08",
+  "mode": "localized",
+  "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "Fehlerbehebungen",
+      "items": [
+        {
+          "id": "fixes-01",
+          "text": "Screenshots enthalten keine eigenen GameHQ-Benachrichtigungen mehr, etwa den Hinweis, dass der vorherige Screenshot gespeichert wurde. Auf deinem Bildschirm erscheinen die Benachrichtigungen weiterhin."
+        },
+        {
+          "id": "fixes-02",
+          "text": "Windows-Xbox-Modus (Vollbildmodus) mit Playnite: Wenn Windows statt eines aus Playnite gestarteten Spiels die Xbox-App als aktives Fenster meldet, erkennt GameHQ das Spiel trotzdem, sodass Screenshots und Clips funktionieren. Zusammen mit GameHQ Playnite Integration 0.4.13 verwenden."
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "title": "Änderungen und Verbesserungen",
+      "items": [
+        {
+          "id": "changes-01",
+          "text": "Bildschirmrekorder und Streaming-Apps, die den ganzen Bildschirm aufnehmen, zeigen GameHQ-Benachrichtigungen ebenfalls nicht mehr."
+        }
+      ]
+    },
+    {
+      "id": "limitations",
+      "title": "Bekannte Einschränkungen",
+      "items": [
+        {
+          "id": "limitations-01",
+          "text": "Pop-ups anderer Apps, etwa Benachrichtigungen von Windows, Steam oder Discord, können weiterhin in Screenshots erscheinen."
+        },
+        {
+          "id": "limitations-02",
+          "text": "Die Unterstützung für den Xbox-Modus ist neu und wurde noch nicht auf einem PC im Xbox-Modus bestätigt."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../i18n/schema/release-note-document.schema.json",
+  "schema_version": 2,
+  "version": "0.7.10",
+  "locale": "it-IT",
+  "date": "2026-10-08",
+  "mode": "localized",
+  "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",
+  "sections": [
+    {
+      "id": "fixes",
+      "title": "Correzioni di bug",
+      "items": [
+        {
+          "id": "fixes-01",
+          "text": "Gli screenshot non includono più le notifiche di GameHQ, come l'avviso che lo screenshot precedente è stato salvato. Le notifiche continuano ad apparire sullo schermo."
+        },
+        {
+          "id": "fixes-02",
+          "text": "Modalità Xbox di Windows (esperienza a schermo intero) con Playnite: quando Windows indica come finestra attiva l'app Xbox invece di un gioco avviato da Playnite, GameHQ riconosce comunque il gioco, quindi screenshot e clip funzionano. Da usare insieme a GameHQ Playnite Integration 0.4.13."
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "title": "Modifiche e miglioramenti",
+      "items": [
+        {
+          "id": "changes-01",
+          "text": "Anche le app di registrazione e streaming che catturano l'intero schermo non mostrano più le notifiche di GameHQ."
+        }
+      ]
+    },
+    {
+      "id": "limitations",
+      "title": "Limitazioni note",
+      "items": [
+        {
+          "id": "limitations-01",
+          "text": "I pop-up di altre app, come le notifiche di Windows, Steam o Discord, possono ancora comparire negli screenshot."
+        },
+        {
+          "id": "limitations-02",
+          "text": "Il supporto per la modalità Xbox è nuovo e non è ancora stato confermato su un PC in modalità Xbox."
+        }
+      ]
+    }
+  ]
+}
