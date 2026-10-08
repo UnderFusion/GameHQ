@@ -16,6 +16,9 @@ class QQuickWindow;
 // steals focus from the game. The QML side stacks Toast cards that auto-dismiss;
 // it calls hideWindow() when the last one is gone.
 //
+// The window is excluded from screen capture (WDA_EXCLUDEFROMCAPTURE), so a
+// toast stays visible to the player but never lands in a GameHQ screenshot.
+//
 // Reusable: any subsystem can call post(title, body, imagePath, kind).
 class NotificationCenter : public QObject
 {
@@ -59,6 +62,9 @@ public:
 
     Q_INVOKABLE void hideWindow();   // QML calls this once the stack empties
 
+    // Native toast window, for diagnostics and tests (null until first post).
+    QQuickWindow* toastWindow() const { return m_window; }
+
 signals:
     void visibleLimitChanged();
     void pointerActiveChanged();
@@ -69,8 +75,12 @@ signals:
                 const QString& imageUrl, const QString& kind,
                 const QDateTime& when, bool isVideo);
 
+protected:
+    bool eventFilter(QObject* watched, QEvent* event) override;
+
 private:
     bool ensureLoaded();
+    void applyCaptureExclusion();
     void positionAndShow();
     void pollPointer();
     void setPointerState(bool active, bool inside);
@@ -85,4 +95,5 @@ private:
     QRectF m_stackRect;
     bool m_pointerActive = false;
     bool m_pointerInside = false;
+    quintptr m_reportedHwnd = 0;     // last HWND whose exclusion result was logged
 };
