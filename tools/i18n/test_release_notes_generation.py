@@ -637,7 +637,10 @@ class ReleaseNotesGenerationTest(unittest.TestCase):
 
     def test_released_history_requires_explicit_correction_metadata(self) -> None:
         manifest = copy.deepcopy(self.manifest)
-        manifest["releases"][1]["source_integrity"] = "sha256:" + "1" * 64
+        # An already corrected entry legitimately differs from its original;
+        # tamper with released history that carries no correction record.
+        released = next(r for r in manifest["releases"][1:] if r.get("correction") is None)
+        released["source_integrity"] = "sha256:" + "1" * 64
         self.assert_contract_error(
             lambda: GEN.validate_manifest(manifest, self.locales),
             "without explicit correction metadata",
