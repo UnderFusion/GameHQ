@@ -1,6 +1,7 @@
 #include "notify/NotificationCenter.h"
 
 #include <QCursor>
+#include <QPlatformSurfaceEvent>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickWindow>
@@ -9,6 +10,10 @@
 #include <QDebug>
 
 #include <windows.h>
+
+#ifndef WDA_EXCLUDEFROMCAPTURE
+#define WDA_EXCLUDEFROMCAPTURE 0x00000011   // Windows 10 2004 (build 19041)+
+#endif
 
 NotificationCenter::NotificationCenter(QQmlApplicationEngine* engine, QObject* parent)
     : QObject(parent)
@@ -66,6 +71,7 @@ void NotificationCenter::setPointerState(bool active, bool inside)
         // the cards otherwise. WindowDoesNotAcceptFocus stays set, so a click
         // on a card never takes focus from the game.
         m_window->setFlag(Qt::WindowTransparentForInput, !inside);
+        applyCaptureExclusion();   // a flag change may have replaced the HWND
     }
     if (active != m_pointerActive) {
         m_pointerActive = active;
@@ -99,7 +105,45 @@ bool NotificationCenter::ensureLoaded()
     m_window->setFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
                        | Qt::Tool | Qt::WindowDoesNotAcceptFocus
                        | Qt::WindowTransparentForInput);
+    // Qt creates the HWND lazily and may recreate it; every new surface gets
+    // the capture exclusion again (affinity belongs to the HWND, not the QWindow).
+    m_window->installEventFilter(this);
     return true;
+}
+
+bool NotificationCenter::eventFilter(QObject* watched, QEvent* event)
+{
+    if (watched == m_window && event->type() == QEvent::PlatformSurface
+        && static_cast<QPlatformSurfaceEvent*>(event)->surfaceEventType()
+               == QPlatformSurfaceEvent::SurfaceCreated)
+        applyCaptureExclusion();
+    return QObject::eventFilter(watched, event);
+}
+
+// Keep toasts out of screenshots: the SDR path BitBlts the screen with
+// CAPTUREBLT, which would otherwise copy this topmost layered window, including
+// the "capture request received" card posted just before the grab. Only this
+// window is excluded; the player still sees it. Older Windows rejects the flag:
+// toasts then keep working and may still be captured, which is logged once.
+void NotificationCenter::applyCaptureExclusion()
+{
+    if (!m_window || !m_window->handle())
+        return;   // no native window yet; SurfaceCreated will call back
+    const HWND hwnd = reinterpret_cast<HWND>(m_window->winId());
+    DWORD affinity = WDA_NONE;
+    if (GetWindowDisplayAffinity(hwnd, &affinity) && affinity == WDA_EXCLUDEFROMCAPTURE)
+        return;
+    const bool ok = SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE);
+    const DWORD error = ok ? 0 : GetLastError();
+    const quintptr key = reinterpret_cast<quintptr>(hwnd);
+    if (key == m_reportedHwnd)
+        return;
+    m_reportedHwnd = key;
+    if (ok)
+        qInfo() << "Notifications: toast window excluded from capture, hwnd" << Qt::hex << key;
+    else
+        qWarning() << "Notifications: capture exclusion unavailable (needs Windows 10 2004+),"
+                   << "toasts may appear in screenshots; SetWindowDisplayAffinity error" << error;
 }
 
 void NotificationCenter::positionAndShow()
@@ -125,6 +169,8 @@ void NotificationCenter::positionAndShow()
     m_window->setY(area.bottom() - m_window->height() + 1);
 
     if (!m_window->isVisible()) {
+        m_window->create();
+        applyCaptureExclusion();   // before the first frame reaches the screen
         m_window->show();   // SW_SHOWNOACTIVATE via WindowDoesNotAcceptFocus
         // A cursor that has not moved since the stack appeared does not count.
         m_lastCursor = QCursor::pos();

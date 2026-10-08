@@ -1499,6 +1499,26 @@ target_link_libraries(tst_notificationcenter PRIVATE Qt6::Quick user32)
 target_compile_definitions(tst_notificationcenter PRIVATE
     GAMEHQ_APP_SOURCE="${CMAKE_SOURCE_DIR}/src/app/App.cpp")
 
+# Toast capture exclusion: the real NotificationCenter drives a solid-colour
+# stub ToastWindow and the test judges screen-DC BitBlt pixels. Never activates.
+gamehq_add_test(tst_toastcaptureexclusion tst_toastcaptureexclusion.cpp
+    "${CMAKE_SOURCE_DIR}/src/notify/NotificationCenter.cpp"
+    "${CMAKE_SOURCE_DIR}/src/notify/ToastModel.cpp")
+target_link_libraries(tst_toastcaptureexclusion PRIVATE Qt6::Quick Qt6::Qml user32 gdi32)
+file(GENERATE
+    OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/toast_capture_module/qmldir"
+    CONTENT "module GameHQ
+ToastWindow 1.0 ToastWindow.qml
+")
+qt_add_resources(tst_toastcaptureexclusion "toast_capture_module"
+    PREFIX "/qt/qml/GameHQ"
+    BASE "${CMAKE_CURRENT_BINARY_DIR}/toast_capture_module"
+    FILES "${CMAKE_CURRENT_BINARY_DIR}/toast_capture_module/qmldir")
+qt_add_resources(tst_toastcaptureexclusion "toast_capture_qml"
+    PREFIX "/qt/qml/GameHQ"
+    BASE "${CMAKE_SOURCE_DIR}/tests/fixtures/toast-capture"
+    FILES "${CMAKE_SOURCE_DIR}/tests/fixtures/toast-capture/ToastWindow.qml")
+
 # cpo-o05: native overlay acceptance. The overlay window, manager and presenter
 # are the shipped sources (OverlayManager, OverlayPresenter, OverlayLifetimePolicy,
 # ForegroundApi) and the QML is embedded from src/ui/qml unchanged; the other
