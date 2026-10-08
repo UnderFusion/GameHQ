@@ -10,6 +10,9 @@
 param(
     [string]$Configuration = "Release",
     [switch]$LegacyAttachedToAppRelease,
+    # Package a GitHub pre-release: the public InstallerManifest.yaml and
+    # AddonManifest.yaml stay exactly as on main, so Playnite never offers it.
+    [switch]$Prerelease,
     [switch]$Publish,
     [switch]$ApprovePublication
 )
@@ -28,7 +31,17 @@ $installerPath = Join-Path $pluginRoot "InstallerManifest.yaml"
 $addonPath = Join-Path $pluginRoot "AddonManifest.yaml"
 $manifest = Get-Content $installerPath -Raw -Encoding UTF8
 $versionEntries = @([regex]::Matches($manifest, '(?m)^\s*-\s+Version:\s*(?<version>\d+\.\d+\.\d+)\s*$'))
-if ($versionEntries.Count -eq 0 -or $versionEntries[0].Groups["version"].Value -ne $version) {
+$expectedFutureUrl =
+    "https://github.com/underfusion/GameHQ/releases/download/$tag/$assetName"
+if ($Prerelease) {
+    if ($LegacyAttachedToAppRelease -or $Publish) {
+        throw "Pre-release packages are published by hand with --prerelease --latest=false"
+    }
+    foreach ($public in @("InstallerManifest.yaml", "AddonManifest.yaml")) {
+        git -C $repoRoot diff --quiet origin/main -- "integrations/playnite/$public"
+        if ($LASTEXITCODE -ne 0) { throw "$public must stay identical to origin/main for a pre-release" }
+    }
+} elseif ($versionEntries.Count -eq 0 -or $versionEntries[0].Groups["version"].Value -ne $version) {
     throw "The first Packages entry must match VERSION $version"
 }
 if (($versionEntries | ForEach-Object { $_.Groups["version"].Value } | Select-Object -Unique).Count -ne
@@ -36,6 +49,9 @@ if (($versionEntries | ForEach-Object { $_.Groups["version"].Value } | Select-Ob
     throw "InstallerManifest.yaml contains duplicate package versions"
 }
 
+if ($Prerelease) {
+    $packageUrl = $expectedFutureUrl
+} else {
 $urlMatch = [regex]::Match(
     $manifest,
     "(?ms)^\s*-\s+Version:\s*$([regex]::Escape($version))\s*$.*?^\s+PackageUrl:\s*[""']?(?<url>https://\S+?)[""']?\s*$"
@@ -44,11 +60,10 @@ if (-not $urlMatch.Success) {
     throw "No PackageUrl exists for $version"
 }
 $packageUrl = $urlMatch.Groups["url"].Value
+}
 if ($packageUrl -match '/releases/latest(?:/|$)') {
     throw "Plugin PackageUrl cannot use /releases/latest"
 }
-$expectedFutureUrl =
-    "https://github.com/underfusion/GameHQ/releases/download/$tag/$assetName"
 if (-not $LegacyAttachedToAppRelease -and $packageUrl -cne $expectedFutureUrl) {
     throw "PackageUrl must be the immutable $tag release asset: $expectedFutureUrl"
 }
@@ -59,7 +74,8 @@ if ($Publish -and -not $ApprovePublication) {
     throw "Publication requires both -Publish and -ApprovePublication"
 }
 
-& (Join-Path $PSScriptRoot "verify.ps1")
+& (Join-Path $PSScriptRoot "verify.ps1") -Prerelease:$Prerelease
+if ($LASTEXITCODE -ne 0) { throw "verify.ps1 failed with exit code $LASTEXITCODE" }
 
 $testProject = Join-Path $pluginRoot "tests\GameHQ.Playnite.Tests\GameHQ.Playnite.Tests.csproj"
 dotnet restore $testProject --locked-mode
@@ -87,6 +103,11 @@ if ($LegacyAttachedToAppRelease) {
     }
 }
 
+# The pre-release leaves both public manifests byte-identical to main, where
+# Toolbox already validated them; there is nothing new for Toolbox to check.
+$installerOutput = "skipped: pre-release, public manifests identical to origin/main"
+$addonOutput = $installerOutput
+if (-not $Prerelease) {
 $toolboxCandidates = @(
     (Join-Path $env:LOCALAPPDATA "Playnite\Toolbox.exe"),
     (Join-Path $env:ProgramFiles "Playnite\Toolbox.exe")
@@ -99,6 +120,7 @@ $installerOutput = (& $toolbox verify installer $installerPath 2>&1 | Out-String
 if ($LASTEXITCODE -ne 0) { throw "Toolbox installer verification failed: $installerOutput" }
 $addonOutput = (& $toolbox verify addon $addonPath 2>&1 | Out-String).Trim()
 if ($LASTEXITCODE -ne 0) { throw "Toolbox add-on verification failed: $addonOutput" }
+}
 
 $distDir = Join-Path $pluginRoot "dist"
 $notesPath = Join-Path $distDir "release-notes.md"
@@ -121,6 +143,7 @@ $evidence = [ordered]@{
     sha256 = $packageHash
     commit = $commit
     makeLatest = $false
+    prerelease = [bool]$Prerelease
     remoteSha256 = $remotePackageHash
     installerToolbox = $installerOutput
     addonToolbox = $addonOutput

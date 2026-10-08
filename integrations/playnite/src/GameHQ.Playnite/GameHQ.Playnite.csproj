@@ -4,7 +4,7 @@
     <TargetFramework>net462</TargetFramework>
     <RootNamespace>GameHQ.Playnite</RootNamespace>
     <AssemblyName>GameHQ.Playnite</AssemblyName>
-    <Version>0.4.12</Version>
+    <Version>0.4.13</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
