@@ -262,7 +262,10 @@ Windows runner for pull requests and pushes to `dev` or `main`. Before upload,
 recomputes every size and SHA-256 value recorded in `release-evidence.json`.
 The uploaded bundle is short-lived CI evidence, not a GitHub Release. A
 separate negative step proves that a publishable tag cannot validate while the
-public test key is selected. Production signing remains isolated from ordinary
+public test key is selected. A publishable tag is either `v<VERSION>` or, for a
+GitHub pre-release, `v<VERSION>-betaN`; `prepare-source.ps1` and
+`validate-release.ps1` reject any other form, and a beta tag validates only with
+`-TrustMode unsigned-beta`. The in-app updater skips pre-releases. Production signing remains isolated from ordinary
 CI; Authenticode is a separate release gate.
 
 Installed builds expose **Settings > Advanced > Portable profile**. Import is
