@@ -6,10 +6,12 @@ Public release history and the current local release candidate.
 
 ## [0.7.10] - 2026-10-08
 
-First shipped as the `v0.7.10-beta1` pre-release for confirmation by the reporters.
+First shipped as the `v0.7.10-beta1` pre-release for confirmation by the reporters; `v0.7.10-beta2` adds the controller fix below.
 
 ### Fixed
 
+- Controller shortcuts in games launched outside Steam (for example a local game started from Playnite): when Windows stops delivering a still-connected DualSense to GameHQ while the game has focus, GameHQ reads that pad directly over HID (read-only) and hands it back to Raw Input once Raw Input delivers steadily again. `GAMEHQ_SONY_HID_READER=0` turns this off.
+- Playnite games whose process Playnite cannot identify are no longer dropped from GameHQ's game list.
 - Screenshots no longer include GameHQ's own notifications, such as the notice that the previous screenshot was saved. Only the notification window is excluded from capture (`WDA_EXCLUDEFROMCAPTURE`); the overlay and the main window are unchanged.
 - Windows Xbox mode (full screen experience) with Playnite: when the Xbox shell holds the foreground, GameHQ uses the verified game started from Playnite for screenshots and clips. The Playnite Integration 0.4.13 also checks that GameHQ is running and connected after Playnite starts and when a game starts.
 

@@ -45,6 +45,7 @@ Technical and product documentation for contributors and maintainers.
 | [versioning.md](versioning.md) | Version and release rules |
 | [Beta 4 notes](releases/0.7.9-beta4.md) | External controller testing prerelease |
 | [0.7.10 Beta 1 notes](releases/0.7.10-beta1.md) | Xbox mode with Playnite and screenshot notification prerelease |
+| [0.7.10 Beta 2 notes](releases/0.7.10-beta2.md) | Controller shortcuts in non-Steam games prerelease |
 | [code-signing-policy.md](code-signing-policy.md) | signing roles, key handling, and Beta/Stable gates |
 | [release-manifest-security-review.md](release-manifest-security-review.md) | approved Ed25519 dependencies, verification contract, and trust boundary |
 | [signpath-application.md](signpath-application.md) | prepared open-source signing application evidence |
