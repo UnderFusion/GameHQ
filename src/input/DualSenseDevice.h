@@ -112,6 +112,11 @@ public:
     // is dropped by its readerId.
     void onHidReport(quint64 readerId, const QByteArray& report);
     void onHidReaderFailed(quint64 readerId, const QString& reason);
+    // Called by the rate sampler when a tracked pad's Raw Input stream stops
+    // while the pad is still present; public for tests. Some games launched
+    // outside Steam stop WM_INPUT reaching background apps, so the read-only
+    // direct HID reader takes over that endpoint.
+    void onRawInputStreamSilent(void* handle);
 
 signals:
     // Debounced hint that the HID device topology changed (any arrival or
@@ -179,7 +184,9 @@ private:
     void finishDisconnect();
     void parseReport(void* handle, DeviceState& st, const unsigned char* data, int len,
                      const char* provider = "Sony Raw Input");
-    void startHidReader(void* handle, DeviceState& st);
+    // `rescue` opens a reader for a Raw-Input-visible endpoint even when
+    // readers are limited to hidden pads (see onRawInputStreamSilent).
+    void startHidReader(void* handle, DeviceState& st, bool rescue = false);
     // Track/prune HID-only endpoints against the current PnP view. Returns
     // true if the active pad was pruned.
     bool syncHiddenInterfaces(const QSet<QString>& rawPathsLower);
