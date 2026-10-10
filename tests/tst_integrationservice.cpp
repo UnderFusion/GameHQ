@@ -17,6 +17,7 @@ private slots:
     void incompatibleHandshakeCloses();
     void lifecycleSyncAndDisconnectExpiry();
     void externalIdentityRequiresProcessOrSafeGamePath();
+    void unknownStartedProcessIdKeepsTheSession();
     void xboxShellFallbackStaysNarrow();
     void overlappingPlayniteReconnectKeepsLiveState();
     void handlerDisconnectDuringBufferedFramesIsSafe();
@@ -179,6 +180,39 @@ void IntegrationServiceTest::lifecycleSyncAndDisconnectExpiry()
     QTRY_COMPARE_WITH_TIMEOUT(service.externalContext()->sessionCount(), 1, 1000);
     client.abort();
     QTRY_COMPARE_WITH_TIMEOUT(service.externalContext()->sessionCount(), 0, 1000);
+}
+
+// Playnite reports PID 0 when it cannot identify the started process; the
+// session must survive (and authorize nothing by PID), not reject the message.
+void IntegrationServiceTest::unknownStartedProcessIdKeepsTheSession()
+{
+    integration::ExternalGameContext context;
+    QString error;
+    QVERIFY2(context.upsert(QStringLiteral("GameHQ.Playnite"), {
+        { QStringLiteral("sessionId"), QStringLiteral("session-zero") },
+        { QStringLiteral("name"), QStringLiteral("Local Exe Game") },
+        { QStringLiteral("installDirectory"), QStringLiteral("C:/Games/LocalExe") },
+        { QStringLiteral("startedProcessId"), 0 }
+    }, QStringLiteral("started"), error), qPrintable(error));
+    QCOMPARE(context.sessionCount(), 1);
+    QVERIFY(context.launchedSessions().isEmpty());
+    auto noDescendant = [](quint32, quint32) { return false; };
+    QCOMPARE(context.matchForeground(0, QString(), false, noDescendant).confidence,
+             integration::MatchConfidence::None);
+    QCOMPARE(context.matchForeground(42, QStringLiteral("C:/Games/LocalExe/game.exe"),
+                                     true, noDescendant).confidence,
+             integration::MatchConfidence::InstallDirectory);
+
+    QVERIFY2(context.replaceSource(QStringLiteral("GameHQ.Playnite"), QJsonArray{
+        QJsonObject{ { QStringLiteral("sessionId"), QStringLiteral("s1") },
+                     { QStringLiteral("startedProcessId"), 0 } },
+        QJsonObject{ { QStringLiteral("sessionId"), QStringLiteral("s2") },
+                     { QStringLiteral("startedProcessId"), 77 } } }, error),
+             qPrintable(error));
+    QCOMPARE(context.sessionCount(), 2);
+    QVERIFY(!context.upsert(QStringLiteral("GameHQ.Playnite"), {
+        { QStringLiteral("sessionId"), QStringLiteral("bad") },
+        { QStringLiteral("startedProcessId"), -1 } }, QStringLiteral("started"), error));
 }
 
 void IntegrationServiceTest::externalIdentityRequiresProcessOrSafeGamePath()

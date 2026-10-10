@@ -891,12 +891,24 @@ void DualSenseDevice::setHidReaderFactory(HidReaderFactory factory, bool forVisi
     }
 }
 
-void DualSenseDevice::startHidReader(void* handle, DeviceState& st)
+void DualSenseDevice::onRawInputStreamSilent(void* handle)
+{
+    const auto it = m_devices.find(handle);
+    if (it == m_devices.end() || it->hidOnly || it->hidReaderId || !m_hidReaderFactory)
+        return;
+    qInfo().noquote() << QStringLiteral(
+        "Gamepad: Raw Input went silent for %1 while it is still present, "
+        "trying the read-only direct HID reader")
+        .arg(deviceIdentity(it->vendorId, it->productId));
+    startHidReader(handle, it.value(), /*rescue=*/true);
+}
+
+void DualSenseDevice::startHidReader(void* handle, DeviceState& st, bool rescue)
 {
     Q_UNUSED(handle)
     if (!m_hidReaderFactory || st.hidReaderId || st.path.isEmpty())
         return;
-    if (!st.hidOnly && !m_hidReaderForVisible)
+    if (!st.hidOnly && !m_hidReaderForVisible && !rescue)
         return;
     // One reader per endpoint path. Two live Raw Input handles for one path
     // only overlap briefly during re-enumeration; the second one waits.
@@ -1130,6 +1142,7 @@ void DualSenseDevice::logInputRates()
                 << QStringLiteral("Gamepad: Raw Input stream from %1 stopped").arg(what);
             if (!s.ignored) {
                 logDeliveryReceipt("stream-silent");
+                onRawInputStreamSilent(s.handle);
                 // One follow-up shows whether WM_INPUT resumed, kept arriving
                 // but failing, or stayed absent. Never more than one pending.
                 if (!m_silenceFollowupPending) {

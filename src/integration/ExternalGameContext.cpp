@@ -111,11 +111,14 @@ bool ExternalGameContext::parseSession(const QString &sourceId, const QJsonObjec
     const QJsonValue processId = object.value(QStringLiteral("startedProcessId"));
     if (!processId.isUndefined()) {
         const double value = processId.toDouble(-1);
-        if (!processId.isDouble() || value <= 0 || std::floor(value) != value
+        if (!processId.isDouble() || value < 0 || std::floor(value) != value
             || value > std::numeric_limits<quint32>::max()) {
             error = QStringLiteral("startedProcessId is invalid");
             return false;
         }
+        // Playnite reports 0 when it could not identify the started process
+        // (folder- or script-tracked launches). That is "unknown", not a
+        // reason to drop the whole lifecycle message or state snapshot.
         session.startedProcessId = static_cast<quint32>(value);
     }
 

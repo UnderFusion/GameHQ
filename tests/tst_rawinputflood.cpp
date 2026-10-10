@@ -1394,6 +1394,38 @@ private slots:
         QCOMPARE(readers.created, readers.destroyed);
     }
 
+    // A visible pad whose Raw Input stream stops while it is still present
+    // (observed while a non-Steam game held focus) gets a read-only reader
+    // even when readers are limited to hidden pads, and the reader then
+    // carries the Share press Raw Input no longer delivers.
+    void silentRawInputStreamIsRescuedByHidReader()
+    {
+        FakeHidReaders readers;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory(), /*forVisibleEndpoints=*/false);
+        void* bt = handle(0x8281);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad, kBtPath);
+        device.report = dsReport(DsTransport::BtFull, 0x08);
+        api->devices.insert(bt, device);
+        pad.onRawInput(bt);
+        QCOMPARE(pad.hidReaderCount(), 0);
+
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        pad.onRawInputStreamSilent(bt);
+        QCOMPARE(readers.alive.values(), QStringList{kBtPath});
+        pad.onRawInputStreamSilent(bt);   // idempotent
+        QCOMPARE(pad.hidReaderCount(), 1);
+
+        const quint64 reader = readers.idFor(kBtPath);
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08));
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08, 0x10));
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+
+        pad.onRawInputStreamSilent(handle(0x8282));   // untracked: no-op
+        QCOMPARE(pad.hidReaderCount(), 1);
+    }
+
     // A reader that cannot open (exclusive access, HidHide) leaves Raw Input
     // as the source and is retried on the next topology pass, not per report.
     void unopenableHidReaderLeavesRawInputInCharge()
