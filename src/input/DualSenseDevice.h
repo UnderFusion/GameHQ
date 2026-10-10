@@ -163,6 +163,9 @@ private:
         qint64 lastHidMs = 0;       // last report forwarded by the reader
         qint64 rawWhileHidQuietMs = 0; // first Raw Input report the reader has not matched
         bool hidOnly = false;       // cloaked from Raw Input; keyed by a synthetic handle
+        bool hidRescue = false;     // reader opened only because Raw Input went silent
+        qint64 rawResumeMs = 0;     // start of the current unbroken Raw Input run (rescue)
+        qint64 lastRawMs = 0;       // last Raw Input report seen while rescued
     };
 
     bool registerRawInput(bool remove = false);
@@ -187,6 +190,9 @@ private:
     // `rescue` opens a reader for a Raw-Input-visible endpoint even when
     // readers are limited to hidden pads (see onRawInputStreamSilent).
     void startHidReader(void* handle, DeviceState& st, bool rescue = false);
+    // Raw Input delivers steadily again: close the rescue reader and keep the
+    // decoded state, so held controls neither release nor press twice.
+    void endHidRescue(DeviceState& st);
     // Track/prune HID-only endpoints against the current PnP view. Returns
     // true if the active pad was pruned.
     bool syncHiddenInterfaces(const QSet<QString>& rawPathsLower);

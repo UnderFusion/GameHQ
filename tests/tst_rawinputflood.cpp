@@ -1426,6 +1426,91 @@ private slots:
         QCOMPARE(pad.hidReaderCount(), 1);
     }
 
+    // Raw Input stays preferred: once it streams steadily again the rescue
+    // reader closes. A Share held across the handoff is pressed once and
+    // released once — no duplicate press, no phantom release.
+    void rescueHandsBackToRawInputWhenItResumes()
+    {
+        FakeHidReaders readers;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory(), /*forVisibleEndpoints=*/false);
+        void* bt = handle(0x8291);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad, kBtPath);
+        device.report = dsReport(DsTransport::BtFull, 0x08);
+        api->devices.insert(bt, device);
+        pad.onRawInput(bt);
+        pad.onRawInputStreamSilent(bt);
+        const quint64 reader = readers.idFor(kBtPath);
+
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        QSignalSpy released(&pad, &Gamepad::controlReleased);
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08, 0x10));   // Share down
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+
+        // A single stray WM_INPUT does not hand back.
+        api->devices[bt].report = dsReport(DsTransport::BtFull, 0x08, 0x10);
+        pad.onRawInput(bt);
+        QCOMPARE(pad.hidReaderCount(), 1);
+
+        // Steady Raw Input for over a second (reader still fresh) hands back.
+        QElapsedTimer steady;
+        steady.start();
+        while (pad.hidReaderCount() == 1 && steady.elapsed() < 3000) {
+            pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08, 0x10));
+            pad.onRawInput(bt);
+            QTest::qWait(40);
+        }
+        QCOMPARE(pad.hidReaderCount(), 0);
+        QCOMPARE(readers.created, readers.destroyed);
+        QCOMPARE(pressed.size(), 1);
+        QCOMPARE(released.size(), 0);
+
+        pad.onHidReport(reader, dsReport(DsTransport::BtFull, 0x08));   // fenced late delivery
+        QCOMPARE(released.size(), 0);
+        api->devices[bt].report = dsReport(DsTransport::BtFull, 0x08);   // Share up via Raw Input
+        pad.onRawInput(bt);
+        QCOMPARE(pressed.size(), 1);
+        QCOMPARE(controlIds(released), QStringList{ControlId::Capture});
+    }
+
+    // GAMEHQ_SONY_HID_READER=0 installs no factory at all (production
+    // constructor), so the rescue has nothing to open.
+    void rescueIsOffWithoutAReaderFactory()
+    {
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        void* usb = handle(0x82a1);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad, kUsbPath);
+        device.report = dsReport(DsTransport::Usb, 0x08);
+        api->devices.insert(usb, device);
+        pad.onRawInput(usb);
+        pad.onRawInputStreamSilent(usb);
+        QVERIFY(!pad.hidReaderEnabled());
+        QCOMPARE(pad.hidReaderCount(), 0);
+    }
+
+    // A rescue that cannot open the pad leaves Raw Input driving it.
+    void failedRescueOpenLeavesRawInputInCharge()
+    {
+        FakeHidReaders readers;
+        readers.failOpen = true;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory(), /*forVisibleEndpoints=*/false);
+        void* usb = handle(0x82b1);
+        auto device = FakeRawInputApi::hidDevice(kSonyVid, kDualSensePid, kUsageGamepad, kUsbPath);
+        device.report = dsReport(DsTransport::Usb, 0x08);
+        api->devices.insert(usb, device);
+        QSignalSpy pressed(&pad, &Gamepad::controlPressed);
+        pad.onRawInput(usb);
+        pad.onRawInputStreamSilent(usb);
+        QCOMPARE(pad.hidReaderCount(), 0);
+        api->devices[usb].report = dsReport(DsTransport::Usb, 0x08, 0x10);
+        pad.onRawInput(usb);
+        QCOMPARE(controlIds(pressed), QStringList{ControlId::Capture});
+    }
+
     // A reader that cannot open (exclusive access, HidHide) leaves Raw Input
     // as the source and is retried on the next topology pass, not per report.
     void unopenableHidReaderLeavesRawInputInCharge()

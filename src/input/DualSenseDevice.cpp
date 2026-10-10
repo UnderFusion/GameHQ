@@ -58,6 +58,11 @@ constexpr qint64 kHidFreshMs = 250;
 // the ordinary race where WM_INPUT for a report is dispatched before the
 // reader's queued copy of the same report.
 constexpr qint64 kHidFailoverMs = 300;
+// A rescue reader hands the endpoint back once Raw Input has delivered for
+// this long without a gap above kRescueRawGapMs; a stray late WM_INPUT
+// must not bounce the pad back to a source that is still mostly silent.
+constexpr qint64 kRescueHandbackMs = 1000;
+constexpr qint64 kRescueRawGapMs = 250;
 
 enum ReportLayout {
     LayoutUnknown = 0,
@@ -795,6 +800,17 @@ void DualSenseDevice::onRawInput(void* hRawInputV)
     }
     noteEvent(handle, false);
 
+    // Raw Input stays the preferred source: a reader opened only to cover a
+    // silent stream gives the endpoint back once Raw Input is steady again.
+    if (st->hidRescue && st->hidReaderId) {
+        const qint64 now = m_clock.elapsed();
+        if (!st->rawResumeMs || now - st->lastRawMs > kRescueRawGapMs)
+            st->rawResumeMs = now;
+        st->lastRawMs = now;
+        if (now - st->rawResumeMs >= kRescueHandbackMs)
+            endHidRescue(*st);
+    }
+
     // Explicit per-endpoint source arbitration: while this endpoint's direct
     // HID reader is healthy it is the only source, and the Raw Input copy of
     // the same report is dropped before its payload is read, so no edge can
@@ -934,6 +950,8 @@ void DualSenseDevice::startHidReader(void* handle, DeviceState& st, bool rescue)
     m_hidOpenFailuresLogged.remove(pathKey);
     m_hidReaders.emplace(id, std::move(reader));
     st.hidReaderId = id;
+    st.hidRescue = rescue && !st.hidOnly && !m_hidReaderForVisible;
+    st.rawResumeMs = 0;
     st.hidPreferred = false;
     st.lastHidMs = 0;
     st.rawWhileHidQuietMs = 0;
@@ -948,12 +966,30 @@ void DualSenseDevice::stopHidReader(void* handle, DeviceState& st, const char* w
     const quint64 id = st.hidReaderId;
     demoteHidSource(handle, st, why);
     st.hidReaderId = 0;
+    st.hidRescue = false;
     // Destruction cancels the pending read and joins the worker; queued
     // deliveries still carrying `id` find no owner and are dropped.
     m_hidReaders.erase(id);
     qInfo().noquote() << QStringLiteral("Gamepad: direct HID reader closed for %1 (%2)")
                              .arg(deviceIdentity(st.vendorId, st.productId),
                                   QLatin1String(why));
+}
+
+void DualSenseDevice::endHidRescue(DeviceState& st)
+{
+    const quint64 id = st.hidReaderId;
+    st.hidReaderId = 0;
+    st.hidPreferred = false;
+    st.hidRescue = false;
+    st.rawResumeMs = 0;
+    st.rawWhileHidQuietMs = 0;
+    // Same DeviceState, same decoder: the next Raw Input report is diffed
+    // against what the reader last delivered. Late reader deliveries carry
+    // `id` and are dropped.
+    m_hidReaders.erase(id);
+    qInfo().noquote() << QStringLiteral(
+        "Gamepad: Raw Input resumed for %1, closing the rescue HID reader")
+        .arg(deviceIdentity(st.vendorId, st.productId));
 }
 
 void DualSenseDevice::demoteHidSource(void* handle, DeviceState& st, const char* why)
