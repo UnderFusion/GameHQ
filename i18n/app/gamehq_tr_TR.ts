@@ -107,7 +107,7 @@
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="197"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
       <source>Cancel</source>
@@ -117,7 +117,7 @@
       <location filename="src/ui/qml/Main.qml" line="1348"></location>
       <location filename="src/ui/qml/Main.qml" line="1367"></location>
       <location filename="src/ui/qml/Main.qml" line="1405"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1022"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -302,7 +302,7 @@
       <translation>Bitti</translation>
     </message>
     <message id="gamehq.action.download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="209"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="210"></location>
       <source>Download</source>
       <translation>İndir</translation>
     </message>
@@ -973,22 +973,22 @@
       <translation>Başka bir taşınabilir profil içe aktarma işlemi zaten çalışıyor.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="669"></location>
+      <location filename="src/app/App.cpp" line="686"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Çekim işlemleri güvenli biçimde zamanında tamamlanamadığı için güncelleme iptal edildi.</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="380"></location>
+      <location filename="src/updates/UpdateService.cpp" line="420"></location>
       <source>Update check failed: %1</source>
       <translation>Güncelleme kontrolü başarısız oldu: %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="143"></location>
+      <location filename="src/updates/UpdateService.cpp" line="182"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub güncelleme kontrollerini geçici olarak sınırladı. GameHQ daha sonra tekrar deneyecek.</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="137"></location>
+      <location filename="src/updates/UpdateService.cpp" line="176"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub güncelleme denetimlerini geçici olarak sınırladı. %1 sonrasında GameHQ yeniden deneyecek.</translation>
     </message>
@@ -1224,7 +1224,7 @@
       <translation>GameHQ, güncelleme işlemini son durumuna uygulayamadı.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="644"></location>
+      <location filename="src/app/App.cpp" line="661"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ güncelleme bakımına başlayamadı: %1</translation>
     </message>
@@ -1274,27 +1274,27 @@
       <translation>GameHQ bu kurulumda güncelleme dosyalarını güvenli bir şekilde yazamıyor.</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="268"></location>
+      <location filename="src/updates/UpdateService.cpp" line="308"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>Sürüm indirildikten sonra değişti. Kurulumdan önce tekrar kontrol edin.</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="328"></location>
+      <location filename="src/updates/UpdateService.cpp" line="368"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>İndirilen sürüm kurulumdan önce geri çekildi.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="372"></location>
+      <location filename="src/updates/UpdateService.cpp" line="412"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>Sürüm yeniden doğrulanamadı: %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="297"></location>
+      <location filename="src/updates/UpdateService.cpp" line="337"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>Sürüm, kurulumdan hemen önce yeniden doğrulanamadı.</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="350"></location>
+      <location filename="src/updates/UpdateService.cpp" line="390"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub bu sürümü kurulumdan önce yeniden doğrulayamadı. Daha sonra tekrar deneyin.</translation>
     </message>
@@ -1378,7 +1378,7 @@ Bu işlem dosyayı kalıcı olarak siler.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1346"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1018"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
       <source>Delete capture?</source>
       <translation>Çekim silinsin mi?</translation>
     </message>
@@ -1954,32 +1954,32 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Üç kez basma</translation>
     </message>
     <message id="gamehq.input.hidden.filter">
-      <location filename="src/input/InputEngine.cpp" line="459"></location>
+      <location filename="src/input/InputEngine.cpp" line="463"></location>
       <source>%1 is connected to Windows but invisible to applications — a HID filter driver is hiding it.</source>
       <translation>%1 Windows’a bağlı, ancak uygulamalar onu göremiyor: bir HID filtre sürücüsü onu gizliyor.</translation>
     </message>
     <message id="gamehq.input.hidden.fix_applying">
-      <location filename="src/input/InputEngine.cpp" line="1690"></location>
+      <location filename="src/input/InputEngine.cpp" line="1694"></location>
       <source>Applying the fix (administrator prompt)...</source>
       <translation>Düzeltme uygulanıyor (yönetici istemi)...</translation>
     </message>
     <message id="gamehq.input.hidden.fix_declined">
-      <location filename="src/input/InputEngine.cpp" line="1680"></location>
+      <location filename="src/input/InputEngine.cpp" line="1684"></location>
       <source>Administrator approval was declined — the controller stays hidden. You can whitelist GameHQ manually in the HidHide Configuration Client.</source>
       <translation>Yönetici onayı reddedildi; oyun kumandası gizli kalıyor. GameHQ’ya HidHide Configuration Client üzerinden elle izin verebilirsiniz.</translation>
     </message>
     <message id="gamehq.input.hidden.fix_done">
-      <location filename="src/input/InputEngine.cpp" line="1711"></location>
+      <location filename="src/input/InputEngine.cpp" line="1715"></location>
       <source>GameHQ is now whitelisted in HidHide. Unplug and replug the controller if it does not appear within a few seconds.</source>
       <translation>GameHQ’ya artık HidHide’da izin veriliyor. Oyun kumandası birkaç saniye içinde görünmezse çıkarıp yeniden takın.</translation>
     </message>
     <message id="gamehq.input.hidden.fix_failed">
-      <location filename="src/input/InputEngine.cpp" line="1722"></location>
+      <location filename="src/input/InputEngine.cpp" line="1726"></location>
       <source>Automatic whitelisting failed (code %1). Add GameHQ.exe on the Applications tab of the HidHide Configuration Client instead.</source>
       <translation>Otomatik izin verme başarısız oldu (kod %1). Bunun yerine GameHQ.exe’yi HidHide Configuration Client’taki “Applications” sekmesine ekleyin.</translation>
     </message>
     <message id="gamehq.input.hidden.hidhide">
-      <location filename="src/input/InputEngine.cpp" line="450"></location>
+      <location filename="src/input/InputEngine.cpp" line="454"></location>
       <source>%1 is connected but hidden from applications by the HidHide driver (installed with DSX, DS4Windows, or reWASD).</source>
       <translation>%1 bağlı, ancak HidHide sürücüsü (DSX, DS4Windows veya reWASD ile yüklenir) onu uygulamalardan gizliyor.</translation>
     </message>
@@ -2302,7 +2302,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Ayarlar okunamadı</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="711"></location>
+      <location filename="src/app/App.cpp" line="728"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Bazı arayüz sesleri kullanılamıyor</translation>
     </message>
@@ -2453,7 +2453,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Uygulama</translation>
     </message>
     <message id="gamehq.settings.about.community.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="290"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="291"></location>
       <source>Community</source>
       <translation>Topluluk</translation>
     </message>
@@ -2463,12 +2463,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Sürüm, güncelleme durumu, proje kaynakları ve yardım yolları.</translation>
     </message>
     <message id="gamehq.settings.about.github_source">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="252"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="253"></location>
       <source>Source on GitHub</source>
       <translation>GitHub'daki kaynak</translation>
     </message>
     <message id="gamehq.settings.about.license">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="281"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="282"></location>
       <source>GNU GPL v3 License</source>
       <translation>GNU GPL v3 Lisansı</translation>
     </message>
@@ -2483,7 +2483,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Bakım</translation>
     </message>
     <message id="gamehq.settings.about.open_source.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="237"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="238"></location>
       <source>Open source</source>
       <translation>Açık kaynak</translation>
     </message>
@@ -2498,12 +2498,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Taşınabilir profil</translation>
     </message>
     <message id="gamehq.settings.about.project.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="241"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="242"></location>
       <source>Open official GameHQ resources in your default browser.</source>
       <translation>Resmi GameHQ kaynaklarını varsayılan tarayıcınızda açın.</translation>
     </message>
     <message id="gamehq.settings.about.project.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="239"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="240"></location>
       <source>Project</source>
       <translation>Proje</translation>
     </message>
@@ -2513,38 +2513,38 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>GameHQ hazır</translation>
     </message>
     <message id="gamehq.settings.about.releases">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="259"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="260"></location>
       <source>Releases</source>
       <translation>Sürümler</translation>
     </message>
     <message id="gamehq.settings.about.report_issue">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="266"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="267"></location>
       <source>Report an issue</source>
       <translation>Bir sorunu bildirin</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="806"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="274"></location>
       <source>Security &amp; privacy</source>
       <translation>Güvenlik ve gizlilik</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="275"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="276"></location>
       <source>Verification, local data, network use, and private reporting</source>
       <translation>Doğrulama, yerel veriler, ağ kullanımı ve özel raporlama</translation>
     </message>
     <message id="gamehq.settings.about.support.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="295"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="296"></location>
       <source>Enjoying %1? A GitHub star helps more players discover the project.</source>
       <translation>Uygulamadan memnun musunuz? GitHub'da verilen bir yıldız, daha fazla oyuncunun %1 projesini keşfetmesine yardımcı olur.</translation>
     </message>
     <message id="gamehq.settings.about.support.star_on_github">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="298"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="299"></location>
       <source>Star %1 on GitHub</source>
       <translation>GitHub'da yıldız ver: %1</translation>
     </message>
     <message id="gamehq.settings.about.support.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="292"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="293"></location>
       <source>Support the project</source>
       <translation>Projeyi destekleyin</translation>
     </message>
@@ -2555,11 +2555,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     </message>
     <message id="gamehq.settings.about.updates.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="68"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="173"></location>
       <source>Updates</source>
       <translation>Güncellemeler</translation>
     </message>
     <message id="gamehq.settings.about.website">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="246"></location>
       <source>Website</source>
       <translation>Web sitesi</translation>
     </message>
@@ -5245,12 +5246,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Ekran görüntüsü al</translation>
     </message>
     <message id="gamehq.update.applying_and_restarting">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="184"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="185"></location>
       <source>GameHQ is applying the update and will restart.</source>
       <translation>GameHQ güncellemeyi uyguluyor ve yeniden başlatılacak.</translation>
     </message>
     <message id="gamehq.update.available_version_short">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="127"></location>
       <source>%1 available</source>
       <translation>%1 mevcut</translation>
     </message>
@@ -5305,7 +5306,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Çekim işlemlerinin güvenli biçimde tamamlanması bekleniyor.</translation>
     </message>
     <message id="gamehq.update.beta_download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="166"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="167"></location>
       <source>Beta update download</source>
       <translation>Beta güncelleme indirme</translation>
     </message>
@@ -5321,24 +5322,26 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     </message>
     <message id="gamehq.update.check.label">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="245"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="122"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="123"></location>
       <source>Check for updates</source>
       <translation>Güncellemeleri denetle</translation>
     </message>
     <message id="gamehq.update.check_again">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="239"></location>
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1075"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="204"></location>
       <source>Check again</source>
       <translation>Yeniden denetle</translation>
     </message>
     <message id="gamehq.update.check_automatically.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="117"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="178"></location>
       <source>At most once every 24 hours, in the background.</source>
       <translation>Arka planda, 24 saatte en fazla bir kez.</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="115"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="176"></location>
       <source>Check automatically</source>
       <translation>Otomatik olarak kontrol et</translation>
     </message>
@@ -5348,13 +5351,13 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Güncelleme kontrolü başarısız oldu</translation>
     </message>
     <message id="gamehq.update.check_now">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="139"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="140"></location>
       <source>Check now</source>
       <translation>Şimdi denetle</translation>
     </message>
     <message id="gamehq.update.checking">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="219"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="137"></location>
       <source>Checking...</source>
       <translation>Denetleniyor...</translation>
     </message>
@@ -5374,7 +5377,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Kurulum zamanını seçin: %1 %2.</translation>
     </message>
     <message id="gamehq.update.download_progress">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="155"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="156"></location>
       <source>Download progress</source>
       <translation>İndirme ilerlemesi</translation>
     </message>
@@ -5403,21 +5406,31 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <source>GameHQ can check GitHub for newer stable releases.</source>
       <translation>GameHQ, daha yeni kararlı sürümleri GitHub üzerinden denetleyebilir.</translation>
     </message>
+    <message id="gamehq.update.include_betas.description">
+      <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="10"></location>
+      <source>Also offer test pre-releases. They get new fixes sooner but may be less stable.</source>
+      <translation>Test amaçlı ön sürümleri de sunar. Düzeltmeleri daha erken alırlar ancak daha az kararlı olabilirler.</translation>
+    </message>
+    <message id="gamehq.update.include_betas.label">
+      <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="8"></location>
+      <source>Include beta versions</source>
+      <translation>Beta sürümlerini dahil et</translation>
+    </message>
     <message id="gamehq.update.install_and_restart">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="228"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="172"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="199"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="200"></location>
       <source>Install and restart</source>
       <translation>Yükle ve yeniden başlat</translation>
     </message>
     <message id="gamehq.update.installed_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="130"></location>
       <source>Installed: %1</source>
       <translation>Yüklendi: %1</translation>
     </message>
     <message id="gamehq.update.installing">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="177"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="163"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="164"></location>
       <source>Installing</source>
       <translation>Yükleniyor</translation>
     </message>
@@ -5473,7 +5486,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     </message>
     <message id="gamehq.update.progress_percent">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="75"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="173"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="174"></location>
       <source>%1% complete</source>
       <translation>%1% tamamlandı</translation>
     </message>
@@ -5484,7 +5497,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     </message>
     <message id="gamehq.update.ready_to_install">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="170"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="159"></location>
       <source>Ready to install</source>
       <translation>Kuruluma hazır</translation>
     </message>
@@ -5504,13 +5517,13 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Daha sonra hatırlat</translation>
     </message>
     <message id="gamehq.update.restart_to_apply">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="178"></location>
       <source>GameHQ will restart to apply the update.</source>
       <translation>GameHQ güncellemeyi uygulamak için yeniden başlatılacak.</translation>
     </message>
     <message id="gamehq.update.retry_download">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="242"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="206"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="207"></location>
       <source>Retry download</source>
       <translation>İndirmeyi yeniden dene</translation>
     </message>
@@ -5525,7 +5538,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Güncelleme ayarları</translation>
     </message>
     <message id="gamehq.update.sha256_limit_warning">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="187"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="188"></location>
       <source>SHA-256 detects corruption, but not a compromised GitHub account.</source>
       <translation>SHA-256 veri bozulmasını algılar ancak ele geçirilmiş bir GitHub hesabını algılayamaz.</translation>
     </message>
@@ -5599,7 +5612,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Sürümler</translation>
     </message>
     <message id="gamehq.update.view_release_notes">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="228"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="229"></location>
       <source>View release notes</source>
       <translation>Sürüm notlarını görüntüle</translation>
     </message>
@@ -5609,7 +5622,7 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Güncellemeyi görüntüle</translation>
     </message>
     <message id="gamehq.update.waiting_for_capture">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="182"></location>
       <source>Waiting for capture work to finish safely...</source>
       <translation>Çekim işlemlerinin güvenli biçimde tamamlanması bekleniyor...</translation>
     </message>

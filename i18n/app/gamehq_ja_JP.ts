@@ -102,7 +102,7 @@
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="197"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
       <source>Cancel</source>
@@ -112,7 +112,7 @@
       <location filename="src/ui/qml/Main.qml" line="1348"></location>
       <location filename="src/ui/qml/Main.qml" line="1367"></location>
       <location filename="src/ui/qml/Main.qml" line="1405"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1022"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -297,7 +297,7 @@
       <translation>完了</translation>
     </message>
     <message id="gamehq.action.download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="209"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="210"></location>
       <source>Download</source>
       <translation>ダウンロード</translation>
     </message>
@@ -963,22 +963,22 @@
       <translation>別のポータブルプロファイルのインポートが既に実行中です。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="669"></location>
+      <location filename="src/app/App.cpp" line="686"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>キャプチャ処理が時間内に安全に完了しなかったため、更新をキャンセルしました。</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="380"></location>
+      <location filename="src/updates/UpdateService.cpp" line="420"></location>
       <source>Update check failed: %1</source>
       <translation>更新の確認に失敗しました：%1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="143"></location>
+      <location filename="src/updates/UpdateService.cpp" line="182"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHubにより更新確認が一時的に制限されています。GameHQ は後でもう一度試します。</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="137"></location>
+      <location filename="src/updates/UpdateService.cpp" line="176"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHubにより更新確認が一時的に制限されています。GameHQ は %1 以降にもう一度試します。</translation>
     </message>
@@ -1214,7 +1214,7 @@
       <translation>GameHQ は更新トランザクションを公開できませんでした。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="644"></location>
+      <location filename="src/app/App.cpp" line="661"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ は更新メンテナンスを開始できませんでした：%1</translation>
     </message>
@@ -1264,27 +1264,27 @@
       <translation>GameHQ はこのインストール先に更新ファイルを安全に書き込めません。</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="268"></location>
+      <location filename="src/updates/UpdateService.cpp" line="308"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>ダウンロード後にリリースが変更されました。インストール前にもう一度確認してください。</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="328"></location>
+      <location filename="src/updates/UpdateService.cpp" line="368"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>ダウンロードしたリリースはインストール前に取り下げられました。</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="372"></location>
+      <location filename="src/updates/UpdateService.cpp" line="412"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>リリースを再検証できませんでした：%1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="297"></location>
+      <location filename="src/updates/UpdateService.cpp" line="337"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>インストール前にリリースを新たに再検証できませんでした。</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="350"></location>
+      <location filename="src/updates/UpdateService.cpp" line="390"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHubの制限により、インストール前にこのリリースを再検証できませんでした。後でもう一度お試しください。</translation>
     </message>
@@ -1368,7 +1368,7 @@ This permanently deletes the file.</source>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1346"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1018"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
       <source>Delete capture?</source>
       <translation>キャプチャを削除しますか？</translation>
     </message>
@@ -1944,32 +1944,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>3回押し</translation>
     </message>
     <message id="gamehq.input.hidden.filter">
-      <location filename="src/input/InputEngine.cpp" line="459"></location>
+      <location filename="src/input/InputEngine.cpp" line="463"></location>
       <source>%1 is connected to Windows but invisible to applications — a HID filter driver is hiding it.</source>
       <translation>%1 は Windows に接続されていますが、HID フィルタードライバーによって隠され、アプリからは見えません。</translation>
     </message>
     <message id="gamehq.input.hidden.fix_applying">
-      <location filename="src/input/InputEngine.cpp" line="1690"></location>
+      <location filename="src/input/InputEngine.cpp" line="1694"></location>
       <source>Applying the fix (administrator prompt)...</source>
       <translation>修正を適用しています（管理者の確認）...</translation>
     </message>
     <message id="gamehq.input.hidden.fix_declined">
-      <location filename="src/input/InputEngine.cpp" line="1680"></location>
+      <location filename="src/input/InputEngine.cpp" line="1684"></location>
       <source>Administrator approval was declined — the controller stays hidden. You can whitelist GameHQ manually in the HidHide Configuration Client.</source>
       <translation>管理者の承認が得られなかったため、コントローラーは隠れたままです。HidHide Configuration Client で GameHQ を手動で許可してください。</translation>
     </message>
     <message id="gamehq.input.hidden.fix_done">
-      <location filename="src/input/InputEngine.cpp" line="1711"></location>
+      <location filename="src/input/InputEngine.cpp" line="1715"></location>
       <source>GameHQ is now whitelisted in HidHide. Unplug and replug the controller if it does not appear within a few seconds.</source>
       <translation>GameHQ が HidHide で許可されました。数秒たってもコントローラーが表示されない場合は、一度抜いてから接続し直してください。</translation>
     </message>
     <message id="gamehq.input.hidden.fix_failed">
-      <location filename="src/input/InputEngine.cpp" line="1722"></location>
+      <location filename="src/input/InputEngine.cpp" line="1726"></location>
       <source>Automatic whitelisting failed (code %1). Add GameHQ.exe on the Applications tab of the HidHide Configuration Client instead.</source>
       <translation>自動での許可に失敗しました（コード %1）。代わりに HidHide Configuration Client の「Applications」タブで GameHQ.exe を追加してください。</translation>
     </message>
     <message id="gamehq.input.hidden.hidhide">
-      <location filename="src/input/InputEngine.cpp" line="450"></location>
+      <location filename="src/input/InputEngine.cpp" line="454"></location>
       <source>%1 is connected but hidden from applications by the HidHide driver (installed with DSX, DS4Windows, or reWASD).</source>
       <translation>%1 は接続されていますが、HidHide ドライバー（DSX、DS4Windows、reWASD と一緒にインストールされます）によってアプリから隠されています。</translation>
     </message>
@@ -2292,7 +2292,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>設定を読み取れませんでした</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="711"></location>
+      <location filename="src/app/App.cpp" line="728"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>一部のインターフェース音を利用できません</translation>
     </message>
@@ -2438,7 +2438,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>アプリケーション</translation>
     </message>
     <message id="gamehq.settings.about.community.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="290"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="291"></location>
       <source>Community</source>
       <translation>コミュニティ</translation>
     </message>
@@ -2448,12 +2448,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>バージョン、更新状態、プロジェクト情報、支援方法。</translation>
     </message>
     <message id="gamehq.settings.about.github_source">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="252"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="253"></location>
       <source>Source on GitHub</source>
       <translation>GitHubのソースコード</translation>
     </message>
     <message id="gamehq.settings.about.license">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="281"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="282"></location>
       <source>GNU GPL v3 License</source>
       <translation>GNU GPL v3 ライセンス</translation>
     </message>
@@ -2468,7 +2468,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>メンテナンス</translation>
     </message>
     <message id="gamehq.settings.about.open_source.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="237"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="238"></location>
       <source>Open source</source>
       <translation>オープンソース</translation>
     </message>
@@ -2483,12 +2483,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>ポータブル版プロファイル</translation>
     </message>
     <message id="gamehq.settings.about.project.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="241"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="242"></location>
       <source>Open official GameHQ resources in your default browser.</source>
       <translation>GameHQ の公式情報を既定のブラウザーで開きます。</translation>
     </message>
     <message id="gamehq.settings.about.project.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="239"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="240"></location>
       <source>Project</source>
       <translation>プロジェクト</translation>
     </message>
@@ -2498,38 +2498,38 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ は準備完了です</translation>
     </message>
     <message id="gamehq.settings.about.releases">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="259"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="260"></location>
       <source>Releases</source>
       <translation>リリース</translation>
     </message>
     <message id="gamehq.settings.about.report_issue">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="266"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="267"></location>
       <source>Report an issue</source>
       <translation>問題を報告</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="806"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="274"></location>
       <source>Security &amp; privacy</source>
       <translation>セキュリティとプライバシー</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="275"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="276"></location>
       <source>Verification, local data, network use, and private reporting</source>
       <translation>検証、ローカルデータ、ネットワーク利用、非公開の問題報告</translation>
     </message>
     <message id="gamehq.settings.about.support.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="295"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="296"></location>
       <source>Enjoying %1? A GitHub star helps more players discover the project.</source>
       <translation>%1 を気に入っていただけましたか？GitHubでスターを付けると、より多くのプレイヤーがこのプロジェクトを見つけやすくなります。</translation>
     </message>
     <message id="gamehq.settings.about.support.star_on_github">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="298"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="299"></location>
       <source>Star %1 on GitHub</source>
       <translation>GitHubで %1 にスターを付ける</translation>
     </message>
     <message id="gamehq.settings.about.support.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="292"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="293"></location>
       <source>Support the project</source>
       <translation>プロジェクトを支援</translation>
     </message>
@@ -2540,11 +2540,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.about.updates.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="68"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="173"></location>
       <source>Updates</source>
       <translation>更新</translation>
     </message>
     <message id="gamehq.settings.about.website">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="246"></location>
       <source>Website</source>
       <translation>Webサイト</translation>
     </message>
@@ -5225,12 +5226,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>スクリーンショットを撮影</translation>
     </message>
     <message id="gamehq.update.applying_and_restarting">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="184"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="185"></location>
       <source>GameHQ is applying the update and will restart.</source>
       <translation>GameHQ は更新を適用して再起動します。</translation>
     </message>
     <message id="gamehq.update.available_version_short">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="127"></location>
       <source>%1 available</source>
       <translation>%1 が利用可能</translation>
     </message>
@@ -5285,7 +5286,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>キャプチャ処理が安全に完了するのを待っています。</translation>
     </message>
     <message id="gamehq.update.beta_download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="166"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="167"></location>
       <source>Beta update download</source>
       <translation>ベータ版更新のダウンロード</translation>
     </message>
@@ -5301,24 +5302,26 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.check.label">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="245"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="122"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="123"></location>
       <source>Check for updates</source>
       <translation>更新を確認</translation>
     </message>
     <message id="gamehq.update.check_again">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="239"></location>
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1075"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="204"></location>
       <source>Check again</source>
       <translation>もう一度確認</translation>
     </message>
     <message id="gamehq.update.check_automatically.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="117"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="178"></location>
       <source>At most once every 24 hours, in the background.</source>
       <translation>バックグラウンドで24時間に1回まで確認します。</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="115"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="176"></location>
       <source>Check automatically</source>
       <translation>自動的に確認</translation>
     </message>
@@ -5328,13 +5331,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>更新の確認に失敗しました</translation>
     </message>
     <message id="gamehq.update.check_now">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="139"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="140"></location>
       <source>Check now</source>
       <translation>今すぐ確認</translation>
     </message>
     <message id="gamehq.update.checking">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="219"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="137"></location>
       <source>Checking...</source>
       <translation>確認中…</translation>
     </message>
@@ -5354,7 +5357,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 %2 をインストールするタイミングを選択してください。</translation>
     </message>
     <message id="gamehq.update.download_progress">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="155"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="156"></location>
       <source>Download progress</source>
       <translation>ダウンロードの進行状況</translation>
     </message>
@@ -5383,21 +5386,31 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>GameHQ can check GitHub for newer stable releases.</source>
       <translation>GameHQ はGitHubで新しい安定版を確認できます。</translation>
     </message>
+    <message id="gamehq.update.include_betas.description">
+      <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="10"></location>
+      <source>Also offer test pre-releases. They get new fixes sooner but may be less stable.</source>
+      <translation>テスト用のプレリリース版も提供します。修正を早く受け取れますが、安定性が低い場合があります。</translation>
+    </message>
+    <message id="gamehq.update.include_betas.label">
+      <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="8"></location>
+      <source>Include beta versions</source>
+      <translation>ベータ版を含める</translation>
+    </message>
     <message id="gamehq.update.install_and_restart">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="228"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="172"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="199"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="200"></location>
       <source>Install and restart</source>
       <translation>インストールして再起動</translation>
     </message>
     <message id="gamehq.update.installed_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="130"></location>
       <source>Installed: %1</source>
       <translation>インストール済み：%1</translation>
     </message>
     <message id="gamehq.update.installing">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="177"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="163"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="164"></location>
       <source>Installing</source>
       <translation>インストール中</translation>
     </message>
@@ -5453,7 +5466,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.progress_percent">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="75"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="173"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="174"></location>
       <source>%1% complete</source>
       <translation>%1% 完了</translation>
     </message>
@@ -5464,7 +5477,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.ready_to_install">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="170"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="159"></location>
       <source>Ready to install</source>
       <translation>インストール準備完了</translation>
     </message>
@@ -5484,13 +5497,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>後で通知</translation>
     </message>
     <message id="gamehq.update.restart_to_apply">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="178"></location>
       <source>GameHQ will restart to apply the update.</source>
       <translation>更新を適用するため GameHQ を再起動します。</translation>
     </message>
     <message id="gamehq.update.retry_download">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="242"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="206"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="207"></location>
       <source>Retry download</source>
       <translation>ダウンロードを再試行</translation>
     </message>
@@ -5505,7 +5518,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>更新設定</translation>
     </message>
     <message id="gamehq.update.sha256_limit_warning">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="187"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="188"></location>
       <source>SHA-256 detects corruption, but not a compromised GitHub account.</source>
       <translation>SHA-256はデータ破損を検出できますが、GitHubアカウントの侵害は検出できません。</translation>
     </message>
@@ -5579,7 +5592,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>バージョン</translation>
     </message>
     <message id="gamehq.update.view_release_notes">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="228"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="229"></location>
       <source>View release notes</source>
       <translation>リリースノートを表示</translation>
     </message>
@@ -5589,7 +5602,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>更新を表示</translation>
     </message>
     <message id="gamehq.update.waiting_for_capture">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="182"></location>
       <source>Waiting for capture work to finish safely...</source>
       <translation>キャプチャ処理が安全に完了するのを待っています…</translation>
     </message>

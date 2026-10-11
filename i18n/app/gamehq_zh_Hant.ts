@@ -107,7 +107,7 @@
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="197"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
       <source>Cancel</source>
@@ -117,7 +117,7 @@
       <location filename="src/ui/qml/Main.qml" line="1348"></location>
       <location filename="src/ui/qml/Main.qml" line="1367"></location>
       <location filename="src/ui/qml/Main.qml" line="1405"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1022"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -302,7 +302,7 @@
       <translation>完成</translation>
     </message>
     <message id="gamehq.action.download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="209"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="210"></location>
       <source>Download</source>
       <translation>下載</translation>
     </message>
@@ -973,22 +973,22 @@
       <translation>已有另一個可攜式設定檔匯入正在執行。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="669"></location>
+      <location filename="src/app/App.cpp" line="686"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>由於擷取任務未能及時安全完成，更新已取消。</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="380"></location>
+      <location filename="src/updates/UpdateService.cpp" line="420"></location>
       <source>Update check failed: %1</source>
       <translation>更新檢查失敗：%1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="143"></location>
+      <location filename="src/updates/UpdateService.cpp" line="182"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub 暫時限制了更新檢查。GameHQ 將稍後重試。</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="137"></location>
+      <location filename="src/updates/UpdateService.cpp" line="176"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub 暫時限制了更新檢查。GameHQ 將在 %1 後重試。</translation>
     </message>
@@ -1224,7 +1224,7 @@
       <translation>GameHQ 無法完成更新交易。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="644"></location>
+      <location filename="src/app/App.cpp" line="661"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ 無法開始更新維護：%1</translation>
     </message>
@@ -1274,27 +1274,27 @@
       <translation>GameHQ 無法在此安裝中安全地寫入更新檔案。</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="268"></location>
+      <location filename="src/updates/UpdateService.cpp" line="308"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>下載後該發行版本已變更。請在安裝前重新檢查。</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="328"></location>
+      <location filename="src/updates/UpdateService.cpp" line="368"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>已下載的發行版本在安裝前被撤回。</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="372"></location>
+      <location filename="src/updates/UpdateService.cpp" line="412"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>無法重新驗證該發行版本：%1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="297"></location>
+      <location filename="src/updates/UpdateService.cpp" line="337"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>無法在安裝前對該發行版本完成最新的重新驗證。</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="350"></location>
+      <location filename="src/updates/UpdateService.cpp" line="390"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub 無法在安裝前重新驗證此發行版本。請稍後重試。</translation>
     </message>
@@ -1378,7 +1378,7 @@ This permanently deletes the file.</source>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1346"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1018"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
       <source>Delete capture?</source>
       <translation>刪除該擷取內容？</translation>
     </message>
@@ -1954,32 +1954,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>按三下</translation>
     </message>
     <message id="gamehq.input.hidden.filter">
-      <location filename="src/input/InputEngine.cpp" line="459"></location>
+      <location filename="src/input/InputEngine.cpp" line="463"></location>
       <source>%1 is connected to Windows but invisible to applications — a HID filter driver is hiding it.</source>
       <translation>%1 已連接到 Windows，但被 HID 篩選驅動程式隱藏，應用程式無法看到它。</translation>
     </message>
     <message id="gamehq.input.hidden.fix_applying">
-      <location filename="src/input/InputEngine.cpp" line="1690"></location>
+      <location filename="src/input/InputEngine.cpp" line="1694"></location>
       <source>Applying the fix (administrator prompt)...</source>
       <translation>正在套用修正（系統管理員提示）...</translation>
     </message>
     <message id="gamehq.input.hidden.fix_declined">
-      <location filename="src/input/InputEngine.cpp" line="1680"></location>
+      <location filename="src/input/InputEngine.cpp" line="1684"></location>
       <source>Administrator approval was declined — the controller stays hidden. You can whitelist GameHQ manually in the HidHide Configuration Client.</source>
       <translation>未取得系統管理員核准，控制器仍處於隱藏狀態。請在 HidHide Configuration Client 中手動允許 GameHQ。</translation>
     </message>
     <message id="gamehq.input.hidden.fix_done">
-      <location filename="src/input/InputEngine.cpp" line="1711"></location>
+      <location filename="src/input/InputEngine.cpp" line="1715"></location>
       <source>GameHQ is now whitelisted in HidHide. Unplug and replug the controller if it does not appear within a few seconds.</source>
       <translation>GameHQ 現已在 HidHide 中獲得允許。如果幾秒內仍未出現控制器，請拔除後重新連接。</translation>
     </message>
     <message id="gamehq.input.hidden.fix_failed">
-      <location filename="src/input/InputEngine.cpp" line="1722"></location>
+      <location filename="src/input/InputEngine.cpp" line="1726"></location>
       <source>Automatic whitelisting failed (code %1). Add GameHQ.exe on the Applications tab of the HidHide Configuration Client instead.</source>
       <translation>自動允許失敗（代碼 %1）。請改為在 HidHide Configuration Client 的「Applications」索引標籤中新增 GameHQ.exe。</translation>
     </message>
     <message id="gamehq.input.hidden.hidhide">
-      <location filename="src/input/InputEngine.cpp" line="450"></location>
+      <location filename="src/input/InputEngine.cpp" line="454"></location>
       <source>%1 is connected but hidden from applications by the HidHide driver (installed with DSX, DS4Windows, or reWASD).</source>
       <translation>%1 已連接，但被 HidHide 驅動程式（隨 DSX、DS4Windows 或 reWASD 安裝）對應用程式隱藏。</translation>
     </message>
@@ -2302,7 +2302,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>無法讀取設定</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="711"></location>
+      <location filename="src/app/App.cpp" line="728"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>部分介面音效無法使用</translation>
     </message>
@@ -2453,7 +2453,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>應用程式</translation>
     </message>
     <message id="gamehq.settings.about.community.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="290"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="291"></location>
       <source>Community</source>
       <translation>社群</translation>
     </message>
@@ -2463,12 +2463,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>版本、更新狀態、專案資源與協助專案的方式。</translation>
     </message>
     <message id="gamehq.settings.about.github_source">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="252"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="253"></location>
       <source>Source on GitHub</source>
       <translation>在 GitHub 上檢視原始碼</translation>
     </message>
     <message id="gamehq.settings.about.license">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="281"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="282"></location>
       <source>GNU GPL v3 License</source>
       <translation>GNU GPL v3 授權</translation>
     </message>
@@ -2483,7 +2483,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>維護</translation>
     </message>
     <message id="gamehq.settings.about.open_source.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="237"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="238"></location>
       <source>Open source</source>
       <translation>開放原始碼</translation>
     </message>
@@ -2498,12 +2498,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>可攜式設定檔</translation>
     </message>
     <message id="gamehq.settings.about.project.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="241"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="242"></location>
       <source>Open official GameHQ resources in your default browser.</source>
       <translation>在預設瀏覽器中開啟 GameHQ 官方資源。</translation>
     </message>
     <message id="gamehq.settings.about.project.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="239"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="240"></location>
       <source>Project</source>
       <translation>專案</translation>
     </message>
@@ -2513,38 +2513,38 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ 已準備就緒</translation>
     </message>
     <message id="gamehq.settings.about.releases">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="259"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="260"></location>
       <source>Releases</source>
       <translation>版本</translation>
     </message>
     <message id="gamehq.settings.about.report_issue">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="266"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="267"></location>
       <source>Report an issue</source>
       <translation>報告問題</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="806"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="274"></location>
       <source>Security &amp; privacy</source>
       <translation>安全與隱私</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="275"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="276"></location>
       <source>Verification, local data, network use, and private reporting</source>
       <translation>驗證、本機資料、網路使用與私密報告</translation>
     </message>
     <message id="gamehq.settings.about.support.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="295"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="296"></location>
       <source>Enjoying %1? A GitHub star helps more players discover the project.</source>
       <translation>喜歡 %1 嗎？在 GitHub 上給予星號，能讓更多玩家發現這個專案。</translation>
     </message>
     <message id="gamehq.settings.about.support.star_on_github">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="298"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="299"></location>
       <source>Star %1 on GitHub</source>
       <translation>在 GitHub 上為 %1 給予星號</translation>
     </message>
     <message id="gamehq.settings.about.support.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="292"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="293"></location>
       <source>Support the project</source>
       <translation>支援該專案</translation>
     </message>
@@ -2555,11 +2555,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.about.updates.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="68"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="173"></location>
       <source>Updates</source>
       <translation>更新</translation>
     </message>
     <message id="gamehq.settings.about.website">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="246"></location>
       <source>Website</source>
       <translation>網站</translation>
     </message>
@@ -5245,12 +5246,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>擷取螢幕截圖</translation>
     </message>
     <message id="gamehq.update.applying_and_restarting">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="184"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="185"></location>
       <source>GameHQ is applying the update and will restart.</source>
       <translation>GameHQ 正在套用更新，隨後將重新啟動。</translation>
     </message>
     <message id="gamehq.update.available_version_short">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="127"></location>
       <source>%1 available</source>
       <translation>%1 可用</translation>
     </message>
@@ -5305,7 +5306,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>正在等待擷取任務安全完成。</translation>
     </message>
     <message id="gamehq.update.beta_download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="166"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="167"></location>
       <source>Beta update download</source>
       <translation>測試版更新下載</translation>
     </message>
@@ -5321,24 +5322,26 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.check.label">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="245"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="122"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="123"></location>
       <source>Check for updates</source>
       <translation>檢查更新</translation>
     </message>
     <message id="gamehq.update.check_again">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="239"></location>
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1075"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="204"></location>
       <source>Check again</source>
       <translation>重新檢查</translation>
     </message>
     <message id="gamehq.update.check_automatically.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="117"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="178"></location>
       <source>At most once every 24 hours, in the background.</source>
       <translation>在背景執行，每 24 小時最多檢查一次。</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="115"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="176"></location>
       <source>Check automatically</source>
       <translation>自動檢查</translation>
     </message>
@@ -5348,13 +5351,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>更新檢查失敗</translation>
     </message>
     <message id="gamehq.update.check_now">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="139"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="140"></location>
       <source>Check now</source>
       <translation>立即檢查</translation>
     </message>
     <message id="gamehq.update.checking">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="219"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="137"></location>
       <source>Checking...</source>
       <translation>正在檢查…</translation>
     </message>
@@ -5374,7 +5377,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>選擇何時安裝 %1 %2。</translation>
     </message>
     <message id="gamehq.update.download_progress">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="155"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="156"></location>
       <source>Download progress</source>
       <translation>下載進度</translation>
     </message>
@@ -5403,21 +5406,31 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>GameHQ can check GitHub for newer stable releases.</source>
       <translation>GameHQ 可在 GitHub 上檢查較新的穩定版本。</translation>
     </message>
+    <message id="gamehq.update.include_betas.description">
+      <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="10"></location>
+      <source>Also offer test pre-releases. They get new fixes sooner but may be less stable.</source>
+      <translation>同時提供測試預先發行版本。它們會更早取得修正，但可能較不穩定。</translation>
+    </message>
+    <message id="gamehq.update.include_betas.label">
+      <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="8"></location>
+      <source>Include beta versions</source>
+      <translation>包含測試版</translation>
+    </message>
     <message id="gamehq.update.install_and_restart">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="228"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="172"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="199"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="200"></location>
       <source>Install and restart</source>
       <translation>安裝並重新啟動</translation>
     </message>
     <message id="gamehq.update.installed_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="130"></location>
       <source>Installed: %1</source>
       <translation>已安裝：%1</translation>
     </message>
     <message id="gamehq.update.installing">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="177"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="163"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="164"></location>
       <source>Installing</source>
       <translation>正在安裝</translation>
     </message>
@@ -5473,7 +5486,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.progress_percent">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="75"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="173"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="174"></location>
       <source>%1% complete</source>
       <translation>%1% 完成</translation>
     </message>
@@ -5484,7 +5497,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.ready_to_install">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="170"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="159"></location>
       <source>Ready to install</source>
       <translation>可以安裝</translation>
     </message>
@@ -5504,13 +5517,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>稍後提醒我</translation>
     </message>
     <message id="gamehq.update.restart_to_apply">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="178"></location>
       <source>GameHQ will restart to apply the update.</source>
       <translation>GameHQ 將重新啟動以套用更新。</translation>
     </message>
     <message id="gamehq.update.retry_download">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="242"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="206"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="207"></location>
       <source>Retry download</source>
       <translation>重試下載</translation>
     </message>
@@ -5525,7 +5538,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>更新設定</translation>
     </message>
     <message id="gamehq.update.sha256_limit_warning">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="187"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="188"></location>
       <source>SHA-256 detects corruption, but not a compromised GitHub account.</source>
       <translation>SHA-256 可偵測檔案損壞，但無法偵測 GitHub 帳戶是否遭到入侵。</translation>
     </message>
@@ -5599,7 +5612,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>版本</translation>
     </message>
     <message id="gamehq.update.view_release_notes">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="228"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="229"></location>
       <source>View release notes</source>
       <translation>檢視版本資訊</translation>
     </message>
@@ -5609,7 +5622,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>檢視更新</translation>
     </message>
     <message id="gamehq.update.waiting_for_capture">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="182"></location>
       <source>Waiting for capture work to finish safely...</source>
       <translation>正在等待擷取任務安全完成…</translation>
     </message>

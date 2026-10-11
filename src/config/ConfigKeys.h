@@ -142,6 +142,8 @@ inline constexpr QLatin1StringView ThemeOverlayScrimStrength{ "theme.overlay_scr
 // updates.* — automatic update-check policy (docs/updater.md "Discovery").
 inline constexpr QLatin1StringView UpdatesCheckAutomatically{ "updates.check_automatically" };
 inline constexpr QLatin1StringView UpdatesSkippedVersion{ "updates.skipped_version" };
+// Opt-in: also offer GitHub beta pre-releases (vX.Y.Z-betaN). Off by default.
+inline constexpr QLatin1StringView UpdatesIncludeBetas{ "updates.include_betas" };
 
 // internal.* — safety metadata, never shown in the UI and deliberately absent
 // from ConfigManager::defaults(). ConfigManager preserves internal.* across a

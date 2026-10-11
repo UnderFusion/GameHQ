@@ -11492,6 +11492,28 @@
           },
           "updated_at": null
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -11935,7 +11957,7 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
+          "total": 1086,
           "current": 0,
           "missing": [
             "gamehq.about.enjoying_gamehq",
@@ -12982,6 +13004,8 @@
             "gamehq.update.downloading_percent",
             "gamehq.update.downloading_version_progress",
             "gamehq.update.github_check_description",
+            "gamehq.update.include_betas.description",
+            "gamehq.update.include_betas.label",
             "gamehq.update.install_and_restart",
             "gamehq.update.installed_version",
             "gamehq.update.installing",
@@ -24528,6 +24552,28 @@
           },
           "updated_at": "2026-09-04T12:00:00Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "2e798718527f1359191630cbf6e4d796bd68155b2d311ade1be81345fdf1e473",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "adfa30b2693c03e7064543fa1db32c6c5202533b789d2b3cd0349750cf006422",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -24971,8 +25017,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -36479,6 +36525,28 @@
           },
           "updated_at": null
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "90395a72f0f1509e07dfeced5612ca7fa8909c0c118c2961a0be71741bed8ad5",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "4d503e4e87f2c3667beefad9b658069c0f86d22ee37c2d0906ea88c2b0ef26a3",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -36922,8 +36990,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -48430,6 +48498,28 @@
           },
           "updated_at": "2026-09-04T20:00:00Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "d95173031de2fd68be44d1d39615b9d10739272f8f7893cf9d91e4ee263480e1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "faa2ce0d104186398b44a43860cd37533388b330b56d7683e364c4ba8cce61d2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -48873,8 +48963,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -60381,6 +60471,28 @@
           },
           "updated_at": "2026-09-04T02:45:50Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "d95173031de2fd68be44d1d39615b9d10739272f8f7893cf9d91e4ee263480e1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "faa2ce0d104186398b44a43860cd37533388b330b56d7683e364c4ba8cce61d2",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -60824,8 +60936,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -72332,6 +72444,28 @@
           },
           "updated_at": "2026-09-04T16:30:00Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "29c18c3e867275376f66df532eec84bc1bc5687aafbed761459d6ce6b7a75e7a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "7def3de8e2ee42550f532019e653769aee0e0ad4e2faab86d437bd19697c41cf",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -72775,8 +72909,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -84283,6 +84417,28 @@
           },
           "updated_at": "2026-09-04T13:20:00Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "a8c22dd5d92186f2e60a0cd287812ea23d96b8c21ae88f08996a6d14479350ad",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "813697867b285e8320a0247fb4a60576d3be8301f86d98704c778bd54a396e00",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -84726,8 +84882,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -96234,6 +96390,28 @@
           },
           "updated_at": "2026-09-04T14:30:00Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "9d606f99126c0315d32afda891ce7a1dd26233e232ad6674f1baf415a09b0d14",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "13fa279c35f3bb32556443a551c7c010dbb9057a4a21f69319dbbbadceef1054",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -96677,8 +96855,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -108185,6 +108363,28 @@
           },
           "updated_at": "2026-09-04T21:00:00Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "f17ea16e6c24c19fce67fabb079040c0336be375c9edd5780efa643277fdaa77",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "2fb1aae499d0d90a17bd34fabc6cbc654e6b607ffdc7eb45ef8779020f56336a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -108628,8 +108828,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -120136,6 +120336,28 @@
           },
           "updated_at": "2026-09-03T22:45:00Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "ac1b9677616a7b3f7e18e75c8916457f698b2ce68b837e566b207877c5b5b22c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "674a4287937920c2a7f40f601b463cdee183dcffb82983331d0183d23ff315dd",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -120579,8 +120801,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -132087,6 +132309,28 @@
           },
           "updated_at": "2026-09-04T03:19:03Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "592fb181869d92b7fc767c4069e6ad75096bfb24368832ddcac21d582d3d11d9",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "0e03e21e6bea126e612be3f69d56cbe06aa22e2d88022e1febaf6ac2783dc334",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -132530,8 +132774,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -144038,6 +144282,28 @@
           },
           "updated_at": "2026-09-04T04:00:00Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "69f69e4c1e0fc9f1b2bb5c937658d6a83f7fb4f73a3462aebf55effa1a5b7412",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "f8bf6976e624ec5110ce51ff27498694ee77a72f653dd8b544787864d6b18992",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -144481,8 +144747,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -155989,6 +156255,28 @@
           },
           "updated_at": "2026-09-04T17:00:00Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "4f044c0516bb4fc3dba9606c8083cacd8c23394be7da396a58c8026e934289e8",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "add182a0dbd69ea7e9c1af744706bd86630f08021f1c84ea40179039862b5ce9",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -156432,8 +156720,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -167940,6 +168228,28 @@
           },
           "updated_at": "2026-09-04T08:11:57Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "b894351c47529f6afc91c6080bbdc820233ad018b85fcf58f8b64f0dc183fb8d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "573f7975a8301ba1a96f2670061c8e13b9787f3c2aa07a1a671c33feae28a519",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -168383,8 +168693,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -179891,6 +180201,28 @@
           },
           "updated_at": "2026-09-04T11:59:30Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "2e1468f95c5eee422a34b3a004c5159053cb2ce1e198eb5295f85fffdb4ad734",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "5eb9f239c97e8cab1ffd73244d844b0073f6b971929f6067fb172862053babc1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -180334,8 +180666,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -191842,6 +192174,28 @@
           },
           "updated_at": "2026-09-04T03:10:00Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "a6b19ee6b78eecca4b2a74cb90db333f3c4504dd798303116a16884dd7f81f09",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "c49c1d62305b0ebc00452d5a236c2b25c011b0621431c35cc3385e14ec11f84a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -192285,8 +192639,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },
@@ -203793,6 +204147,28 @@
           },
           "updated_at": "2026-09-04T06:45:28Z"
         },
+        "gamehq.update.include_betas.description": {
+          "domain": "application",
+          "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+          "translation_hash": "aebf235d771ae5dbf2fe97d6fc06982fbfd9706ad644ad1d04efd09b627e3544",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
+        "gamehq.update.include_betas.label": {
+          "domain": "application",
+          "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+          "translation_hash": "de112920392e81e32a81bd59596356020fd9d794c91c379af8817eac202c921f",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-opus-5-contextual-beta-channel"
+          },
+          "updated_at": "2026-10-11T12:00:00Z"
+        },
         "gamehq.update.install_and_restart": {
           "domain": "application",
           "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
@@ -204236,8 +204612,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1084,
-          "current": 1084,
+          "total": 1086,
+          "current": 1086,
           "missing": [],
           "stale": []
         },

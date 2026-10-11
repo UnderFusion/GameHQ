@@ -98,6 +98,16 @@ identical after any update, successful or rolled back.
    Discovery only locates candidate URLs; it never establishes trust. A release
    that does not publish both `gamehq-release.json` and `gamehq-release.sig`
    is skipped, because nothing could authorise it.
+   **Beta channel:** `updates.include_betas` (default off; Settings → General
+   and Settings → About) also admits GitHub pre-releases tagged
+   `v<VERSION>-betaN`. A pre-release with any other tag, or a `-betaN` tag
+   published as a full release, is never offered on either channel. Releases
+   are ranked by identity, not `VERSION` alone: `0.7.10-beta1 < 0.7.10-beta2 <
+   0.7.10`. The installed identity is `VERSION` plus the build's
+   `GAMEHQ_PRERELEASE` suffix, so a beta install sees the next beta and the
+   final stable release. Turning the channel on checks immediately; turning it
+   off withdraws an offered (not yet downloading) beta. Betas use the same
+   production manifest key, so they install through the normal trust path.
 
    The page-reading half lives in `updates/ReleaseCatalog.{h,cpp}` so it can be
    tested without a network (`tst_releasecatalog`):

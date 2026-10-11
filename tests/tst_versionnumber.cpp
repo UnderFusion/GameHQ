@@ -111,6 +111,29 @@ private slots:
         QVERIFY(version.has_value());
         QCOMPARE(version->toString(), QStringLiteral("1.2.3"));
     }
+
+    void releaseIdentity_ranksBetasBelowTheirStableRelease()
+    {
+        const auto beta1 = ReleaseIdentity::parse(QStringLiteral("v0.7.10-beta1"));
+        const auto beta2 = ReleaseIdentity::parse(QStringLiteral("0.7.10-beta2"));
+        const auto beta10 = ReleaseIdentity::parse(QStringLiteral("0.7.10-beta10"));
+        const auto stable = ReleaseIdentity::parse(QStringLiteral("0.7.10"));
+        const auto next = ReleaseIdentity::parse(QStringLiteral("0.7.11-beta1"));
+        QVERIFY(beta1 && beta2 && beta10 && stable && next);
+        QVERIFY(*beta1 < *beta2);
+        QVERIFY(*beta2 < *beta10);
+        QVERIFY(*beta10 < *stable);
+        QVERIFY(*stable < *next);
+        QVERIFY(*ReleaseIdentity::parse(QStringLiteral("0.7.9")) < *beta1);
+        QCOMPARE(beta2->toString(), QStringLiteral("0.7.10-beta2"));
+        QCOMPARE(stable->toString(), QStringLiteral("0.7.10"));
+        QVERIFY(!stable->isBeta());
+
+        QVERIFY(!ReleaseIdentity::parse(QStringLiteral("0.7.10-beta0")));
+        QVERIFY(!ReleaseIdentity::parse(QStringLiteral("0.7.10-beta01")));
+        QVERIFY(!ReleaseIdentity::parse(QStringLiteral("0.7.10-rc1")));
+        QVERIFY(!ReleaseIdentity::parse(QStringLiteral("0.7.10-beta")));
+    }
 };
 
 QTEST_APPLESS_MAIN(TestVersionNumber)

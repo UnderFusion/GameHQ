@@ -24,6 +24,8 @@ public:
     // Pass back the ETag from a previous succeeded() to allow a cheap
     // "304 Not Modified" short-circuit via unchanged().
     void checkLatest(const QString &ifNoneMatchEtag = QString());
+    // Whether beta pre-releases may be returned (ReleaseCatalog::selectBest).
+    void setIncludeBetas(bool include) { m_includeBetas = include; }
 
 Q_SIGNALS:
     void succeeded(const ReleaseInfo &release, const QString &etag);
@@ -43,6 +45,7 @@ private:
     QNetworkAccessManager *m_network;
     QString m_owner;
     QString m_repo;
+    bool m_includeBetas = false;
     // Best candidate found so far in this checkLatest() call, and the ETag of
     // the first page - the only page a conditional request may be made against.
     std::optional<ReleaseInfo> m_best;

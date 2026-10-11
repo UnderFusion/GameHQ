@@ -77,6 +77,7 @@ constexpr std::array liveKeys{
     ConfigKeys::ThemeOverlayScrimStrength,
     ConfigKeys::UpdatesCheckAutomatically,
     ConfigKeys::UpdatesSkippedVersion,
+    ConfigKeys::UpdatesIncludeBetas,
 };
 
 template<std::size_t Size>

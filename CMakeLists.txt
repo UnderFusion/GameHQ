@@ -78,6 +78,14 @@ FetchContent_MakeAvailable(monocypher)
 option(GAMEHQ_BUILD_TESTS "Build the automated test target" OFF)
 # Explicitly enabled only by the Beta 4 packaging build; normal builds stay OFF.
 option(GAMEHQ_SONY_HID_READER_DEFAULT "Enable the bounded Sony HID reader by build default" OFF)
+# Beta number of a GitHub pre-release build ("beta3" for tag v<VERSION>-beta3),
+# empty for stable and development builds. VERSION never carries it; the
+# updater needs it to tell betas of one version apart. validate-release.ps1
+# requires it to match the tag being packaged.
+set(GAMEHQ_PRERELEASE "" CACHE STRING "Pre-release suffix of this build, e.g. beta3; empty for stable")
+if(NOT GAMEHQ_PRERELEASE STREQUAL "" AND NOT GAMEHQ_PRERELEASE MATCHES "^beta[1-9][0-9]*$")
+    message(FATAL_ERROR "GAMEHQ_PRERELEASE must be empty or betaN, got '${GAMEHQ_PRERELEASE}'")
+endif()
 # Telegram Integrated (TDLib account sharing) is owner-deferred (plan t13/t25).
 # Developer-only: a standard build never registers it, whatever config.json says.
 option(GAMEHQ_TELEGRAM_INTEGRATED

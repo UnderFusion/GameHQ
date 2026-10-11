@@ -241,6 +241,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/MediaStage.qml
         ui/qml/components/PlayerControls.qml
         ui/qml/components/NavRepeat.qml
+        ui/qml/components/BetaUpdatesRow.qml
         ui/qml/components/SettingsCombo.qml
         ui/qml/components/SettingsPage.qml
         ui/qml/components/SettingsPageHeader.qml
@@ -369,6 +370,7 @@ target_include_directories(GameHQ PRIVATE
 
 target_compile_definitions(GameHQ PRIVATE
     GAMEHQ_VERSION="${GAMEHQ_VERSION_FULL}"
+    GAMEHQ_PRERELEASE="${GAMEHQ_PRERELEASE}"
     GAMEHQ_TELEGRAM_INTEGRATED_BUILD=$<BOOL:${GAMEHQ_TELEGRAM_INTEGRATED}>
     UNICODE _UNICODE
 )

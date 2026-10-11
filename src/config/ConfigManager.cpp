@@ -100,6 +100,7 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::ThemeOverlayScrimStrength, 100 },   // percent, 25-150
         { ConfigKeys::UpdatesCheckAutomatically, true },
         { ConfigKeys::UpdatesSkippedVersion,   "" },
+        { ConfigKeys::UpdatesIncludeBetas,     false },
     };
 }
 

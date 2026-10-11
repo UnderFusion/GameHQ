@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_uk_UA.ts",
-    "sha256": "add7f77fc6a94861b0f28394c04e1c8eaf158fb4457eb9906eb848ca6305694f",
-    "message_count": 1084
+    "sha256": "8384673bc99ce10acb1ba3f5ec85607a1de5cd4de92cd5426ffb6a1c32c17e69",
+    "message_count": 1086
   },
   "coverage": [
     {
@@ -9539,6 +9539,24 @@
       "decision": "corrected"
     },
     {
+      "id": "gamehq.update.include_betas.description",
+      "source_hash": "5d4b7f6d2e1735528d3825a7a94673808bfc8730d484c4e51daf05fb2b0334ef",
+      "translation_hash": "2e1468f95c5eee422a34b3a004c5159053cb2ce1e198eb5295f85fffdb4ad734",
+      "locations": [
+        "src/ui/qml/components/BetaUpdatesRow.qml:10"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.update.include_betas.label",
+      "source_hash": "20592498916081a53834c6b4783a5f72eacc507cec92748d89d144726baeaf65",
+      "translation_hash": "5eb9f239c97e8cab1ffd73244d844b0073f6b971929f6067fb172862053babc1",
+      "locations": [
+        "src/ui/qml/components/BetaUpdatesRow.qml:8"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.update.install_and_restart",
       "source_hash": "c84e2cc4ddd431606aa777c3b2d3c91348a5ad8ebf687ca42124fb60300516ad",
       "translation_hash": "ce7e42d19b259616ccbe5c81551eb7cea916231b37c916473068e4f17a4c5b8c",
@@ -16784,8 +16802,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_uk_UA.ts",
-      "sha256": "add7f77fc6a94861b0f28394c04e1c8eaf158fb4457eb9906eb848ca6305694f",
-      "reviewed_units": 1084
+      "sha256": "8384673bc99ce10acb1ba3f5ec85607a1de5cd4de92cd5426ffb6a1c32c17e69",
+      "reviewed_units": 1086
     },
     {
       "surface": "installer",

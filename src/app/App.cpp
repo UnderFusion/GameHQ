@@ -551,7 +551,9 @@ bool App::init()
                        false);
     }
     m_updates = std::make_unique<UpdateService>(QStringLiteral("underfusion"), QStringLiteral("GameHQ"),
-                                                 QStringLiteral(GAMEHQ_VERSION),
+                                                 QStringLiteral(GAMEHQ_PRERELEASE).isEmpty()
+                                                     ? QStringLiteral(GAMEHQ_VERSION)
+                                                     : QStringLiteral(GAMEHQ_VERSION "-" GAMEHQ_PRERELEASE),
                                                  Paths::packageRoot() + QStringLiteral("/.update/downloads"),
                                                  Paths::dataDir() + QStringLiteral("/release-trust-state.json"),
                                                  nullptr);
@@ -571,7 +573,22 @@ bool App::init()
     m_updates->primeNextAllowedCheck(QDateTime::fromString(
         m_config->value(ConfigKeys::InternalUpdatesNextAllowedCheckUtc, QString()).toString(),
         Qt::ISODate).toUTC());
+    m_updates->setIncludeBetas(m_config->value(ConfigKeys::UpdatesIncludeBetas, false).toBool());
     m_updates->restoreCachedRelease();
+    connect(m_config.get(), &ConfigManager::valueChanged, this,
+            [this](const QString& key, const QVariant& value) {
+        if (key != ConfigKeys::UpdatesIncludeBetas)
+            return;
+        m_updates->setIncludeBetas(value.toBool());
+        // Opting in is a request to see betas now, not after the daily gate -
+        // unless an update is already downloading or installing.
+        const UpdateService::State state = m_updates->state();
+        if (value.toBool()
+            && (state == UpdateService::State::Idle || state == UpdateService::State::UpToDate
+                || state == UpdateService::State::UpdateAvailable
+                || state == UpdateService::State::Failed))
+            m_updates->checkNow();
+    });
     connect(m_updates.get(), &UpdateService::nextAllowedCheckChanged, this,
             [this](const QDateTime& when) {
         m_config->setValue(ConfigKeys::InternalUpdatesNextAllowedCheckUtc,

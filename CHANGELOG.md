@@ -4,6 +4,15 @@ Public release history and the current local release candidate.
 
 ## [Unreleased]
 
+### Added
+
+- Optional beta updates: a new "Include beta versions" switch (Settings → General and About, off by default) lets the updater offer GitHub beta pre-releases.
+
+### Fixed
+
+- Settings no longer jumps back to the top while scrolling with the mouse after the window regains focus.
+- A controller navigation repeat no longer keeps running when its release arrives through GameInput or the pad is unplugged mid-hold.
+
 ## [0.7.10] - 2026-10-08
 
 First shipped as the `v0.7.10-beta1` pre-release for confirmation by the reporters; `v0.7.10-beta2` adds the controller fix below.

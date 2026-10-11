@@ -70,7 +70,7 @@ public:
     State state() const { return m_state; }
     QString stateName() const;
     QString installedVersion() const { return m_installedVersion; }
-    QString latestVersion() const { return m_release ? m_release->version : QString(); }
+    QString latestVersion() const { return m_release ? identityOf(*m_release) : QString(); }
     QString releaseName() const { return m_release ? m_release->name : QString(); }
     QString notes() const;
     bool notesLoading() const;
@@ -88,6 +88,10 @@ public:
     // Config-key persistence (updates.skipped_version, internal.updates.etag,
     // ...) is owned by the caller; these let it prime/read this instance.
     void restoreCachedRelease();
+    // Opt-in beta channel. Call before restoreCachedRelease(); a later change
+    // drops a cached answer that belongs to the other channel.
+    void setIncludeBetas(bool include);
+    bool includeBetas() const { return m_includeBetas; }
     void primeCachedEtag(const QString &etag) { m_etag = etag; }
     void primeSkippedVersion(const QString &version) { m_skippedVersion = version; }
     // Without this the persisted timestamp was never read back, so the "at most
@@ -133,6 +137,9 @@ private:
     void setNextAllowedCheck(const QDateTime &when);
     QString cooldownMessage() const;
     bool releaseIsNewerThanInstalled(const ReleaseInfo &release) const;
+    bool channelAccepts(const ReleaseInfo &release) const;
+    // "0.7.10" or "0.7.10-beta2"; what the user sees, skips and compares.
+    static QString identityOf(const ReleaseInfo &release);
     State fallbackAfterCheck() const;
     void applyRelease(const ReleaseInfo &release);
     void onSucceeded(const ReleaseInfo &release, const QString &etag);
@@ -147,6 +154,7 @@ private:
     UpdateDownloader *m_downloader;
     QString m_installedVersion;
     QString m_skippedVersion;
+    bool m_includeBetas = false;
     State m_state = State::Idle;
     std::optional<ReleaseInfo> m_release;
     int m_progress = 0;

@@ -105,17 +105,56 @@ void UpdateService::setState(State state)
 
 bool UpdateService::releaseIsNewerThanInstalled(const ReleaseInfo &release) const
 {
-    const auto latest = VersionNumber::parse(release.version);
-    const auto installed = VersionNumber::parse(m_installedVersion);
+    // The installed identity carries the build's beta number, so Beta 2 is
+    // newer than an installed Beta 1 of the same VERSION, and the stable
+    // release is newer than both.
+    const auto latest = ReleaseIdentity::parse(identityOf(release));
+    const auto installed = ReleaseIdentity::parse(m_installedVersion);
     return latest.has_value() && installed.has_value() && *latest > *installed;
+}
+
+bool UpdateService::channelAccepts(const ReleaseInfo &release) const
+{
+    return !release.draft && (!release.prerelease || m_includeBetas);
+}
+
+QString UpdateService::identityOf(const ReleaseInfo &release)
+{
+    return release.identity.isEmpty() ? release.version : release.identity;
+}
+
+void UpdateService::setIncludeBetas(bool include)
+{
+    if (m_includeBetas == include)
+        return;
+    m_includeBetas = include;
+    m_source->setIncludeBetas(include);
+    // The cached ETag answered for the other channel: a 304 would keep its
+    // result, so the next check must be unconditional.
+    if (!m_etag.isEmpty()) {
+        m_etag.clear();
+        Q_EMIT etagUpdated(m_etag);
+    }
+    // A download or install in flight finishes as chosen; only a beta that is
+    // merely being offered disappears when the channel closes.
+    if (include || !m_release.has_value() || !m_release->prerelease)
+        return;
+    if (m_state != State::UpdateAvailable && m_state != State::UpToDate
+        && m_state != State::Failed && m_state != State::Idle)
+        return;
+    QFile::remove(m_releaseCachePath);
+    m_release.reset();
+    Q_EMIT releaseChanged();
+    setState(State::UpToDate);
 }
 
 // A check that produced nothing usable never disturbs the last known-good
 // result; fall back to whatever that result still justifies.
 UpdateService::State UpdateService::fallbackAfterCheck() const
 {
-    return m_release.has_value() && releaseIsNewerThanInstalled(*m_release)
-            && m_release->version != m_skippedVersion
+    return m_release.has_value() && channelAccepts(*m_release)
+            && releaseIsNewerThanInstalled(*m_release)
+            && identityOf(*m_release) != m_skippedVersion
         ? State::UpdateAvailable
         : State::UpToDate;
 }
@@ -186,7 +225,7 @@ void UpdateService::restoreCachedRelease()
     if (!cached.open(QIODevice::ReadOnly) || cached.size() > 1024 * 1024)
         return;
     const auto release = ReleaseCatalog::restoreSnapshot(cached.readAll());
-    if (!release || !releaseIsNewerThanInstalled(*release))
+    if (!release || !channelAccepts(*release) || !releaseIsNewerThanInstalled(*release))
         return;
     // ETag and snapshot are persisted separately. The first refresh must be
     // unconditional so an interrupted write cannot bind an ETag to old notes.
@@ -201,13 +240,13 @@ void UpdateService::applyRelease(const ReleaseInfo &release)
         setState(State::UpToDate);
         return;
     }
-    if (release.prerelease) {
-        qInfo() << "UpdateService: ignoring prerelease" << release.version;
+    if (release.prerelease && !m_includeBetas) {
+        qInfo() << "UpdateService: ignoring prerelease" << identityOf(release);
         setState(State::UpToDate);
         return;
     }
     if (!releaseIsNewerThanInstalled(release)) {
-        qInfo() << "UpdateService: latest release" << release.version
+        qInfo() << "UpdateService: latest release" << identityOf(release)
                  << "is not newer than installed" << m_installedVersion;
         QFile::remove(m_releaseCachePath);
         m_release.reset();
@@ -215,8 +254,8 @@ void UpdateService::applyRelease(const ReleaseInfo &release)
         setState(State::UpToDate);
         return;
     }
-    if (release.version == m_skippedVersion) {
-        qInfo() << "UpdateService: release" << release.version << "was skipped by the user";
+    if (identityOf(release) == m_skippedVersion) {
+        qInfo() << "UpdateService: release" << identityOf(release) << "was skipped by the user";
         m_release = release;
         Q_EMIT releaseChanged();
         setState(State::UpToDate);
@@ -240,8 +279,7 @@ void UpdateService::onSucceeded(const ReleaseInfo &release, const QString &etag)
     // check: skip the ETag (a cached one would answer 304 forever and hide the
     // finished assets) and leave lastChecked stale so the hourly automatic
     // wake retries instead of waiting out the 24h gate.
-    const bool offerable = !release.draft && !release.prerelease
-        && releaseIsNewerThanInstalled(release);
+    const bool offerable = channelAccepts(release) && releaseIsNewerThanInstalled(release);
     const bool incomplete = offerable && !release.hasCompleteUpdateAssets();
     m_retriedWithoutCache = false;
     setNextAllowedCheck({});   // GitHub answered, so any cooldown is over
@@ -255,7 +293,9 @@ void UpdateService::onSucceeded(const ReleaseInfo &release, const QString &etag)
     }
     if (m_revalidatingInstall) {
         m_revalidatingInstall = false;
-        const bool unchanged = m_release.has_value() && !release.draft && !release.prerelease
+        const bool unchanged = m_release.has_value() && channelAccepts(release)
+            && release.prerelease == m_release->prerelease
+            && identityOf(release) == identityOf(*m_release)
             && release.version == m_release->version
             && release.zipName == m_release->zipName
             && release.zipUrl == m_release->zipUrl
@@ -463,7 +503,7 @@ void UpdateService::skipVersion()
 {
     if (!m_release.has_value())
         return;
-    m_skippedVersion = m_release->version;
+    m_skippedVersion = identityOf(*m_release);
     Q_EMIT versionSkipped(m_skippedVersion);
     setState(State::UpToDate);
 }

@@ -107,7 +107,7 @@
       <location filename="src/ui/qml/components/ShareDialog.qml" line="152"></location>
       <location filename="src/ui/qml/components/ShareDialog.qml" line="441"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="169"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="196"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="197"></location>
       <location filename="src/ui/qml/settings/InputSettingsPage.qml" line="615"></location>
       <location filename="src/ui/qml/settings/TelegramAccountSection.qml" line="179"></location>
       <source>Cancel</source>
@@ -117,7 +117,7 @@
       <location filename="src/ui/qml/Main.qml" line="1348"></location>
       <location filename="src/ui/qml/Main.qml" line="1367"></location>
       <location filename="src/ui/qml/Main.qml" line="1405"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1022"></location>
       <location filename="src/ui/qml/components/ConfirmDialog.qml" line="16"></location>
       <location filename="src/ui/qml/components/DesktopGalleryHeader.qml" line="73"></location>
       <location filename="src/ui/qml/components/MappingPresetDeleteDialog.qml" line="35"></location>
@@ -302,7 +302,7 @@
       <translation>เสร็จแล้ว</translation>
     </message>
     <message id="gamehq.action.download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="209"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="210"></location>
       <source>Download</source>
       <translation>ดาวน์โหลด</translation>
     </message>
@@ -973,22 +973,22 @@
       <translation>กำลังดำเนินการนำเข้าโปรไฟล์แบบพกพาอื่นอยู่แล้ว</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="669"></location>
+      <location filename="src/app/App.cpp" line="686"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>การอัปเดตถูกยกเลิกเนื่องจากงานจับภาพไม่เสร็จสิ้นอย่างปลอดภัยทันเวลา</translation>
     </message>
     <message id="gamehq.error.update.check_failed">
-      <location filename="src/updates/UpdateService.cpp" line="380"></location>
+      <location filename="src/updates/UpdateService.cpp" line="420"></location>
       <source>Update check failed: %1</source>
       <translation>การตรวจสอบการอัปเดตล้มเหลว: %1</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="143"></location>
+      <location filename="src/updates/UpdateService.cpp" line="182"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again later.</source>
       <translation>GitHub จำกัดการตรวจสอบอัปเดตชั่วคราว GameHQ จะลองอีกครั้งภายหลัง</translation>
     </message>
     <message id="gamehq.error.update.check_rate_limited_until">
-      <location filename="src/updates/UpdateService.cpp" line="137"></location>
+      <location filename="src/updates/UpdateService.cpp" line="176"></location>
       <source>GitHub temporarily limited update checks. GameHQ will try again after %1.</source>
       <translation>GitHub จำกัดการตรวจสอบอัปเดตชั่วคราว GameHQ จะลองอีกครั้งหลัง %1</translation>
     </message>
@@ -1224,7 +1224,7 @@
       <translation>GameHQ ไม่สามารถนำธุรกรรมอัปเดตไปใช้เป็นสถานะสุดท้ายได้</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="644"></location>
+      <location filename="src/app/App.cpp" line="661"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ ไม่สามารถเริ่มการบำรุงรักษาการอัปเดตได้: %1</translation>
     </message>
@@ -1274,27 +1274,27 @@
       <translation>GameHQ ไม่สามารถเขียนไฟล์อัปเดตได้อย่างปลอดภัยในการติดตั้งนี้</translation>
     </message>
     <message id="gamehq.error.update.release_changed">
-      <location filename="src/updates/UpdateService.cpp" line="268"></location>
+      <location filename="src/updates/UpdateService.cpp" line="308"></location>
       <source>The release changed after download. Check again before installing.</source>
       <translation>รุ่นเผยแพร่เปลี่ยนแปลงหลังดาวน์โหลด ตรวจสอบอีกครั้งก่อนติดตั้ง</translation>
     </message>
     <message id="gamehq.error.update.release_withdrawn">
-      <location filename="src/updates/UpdateService.cpp" line="328"></location>
+      <location filename="src/updates/UpdateService.cpp" line="368"></location>
       <source>The downloaded release was withdrawn before installation.</source>
       <translation>รุ่นที่ดาวน์โหลดถูกถอนออกก่อนการติดตั้ง</translation>
     </message>
     <message id="gamehq.error.update.revalidation_failed">
-      <location filename="src/updates/UpdateService.cpp" line="372"></location>
+      <location filename="src/updates/UpdateService.cpp" line="412"></location>
       <source>The release could not be revalidated: %1</source>
       <translation>ไม่สามารถตรวจสอบความถูกต้องของรุ่นอีกครั้งได้: %1</translation>
     </message>
     <message id="gamehq.error.update.revalidation_not_fresh">
-      <location filename="src/updates/UpdateService.cpp" line="297"></location>
+      <location filename="src/updates/UpdateService.cpp" line="337"></location>
       <source>The release could not be freshly revalidated before installation.</source>
       <translation>ไม่สามารถตรวจสอบความถูกต้องของรุ่นอีกครั้งด้วยข้อมูลล่าสุดก่อนติดตั้ง</translation>
     </message>
     <message id="gamehq.error.update.revalidation_rate_limited">
-      <location filename="src/updates/UpdateService.cpp" line="350"></location>
+      <location filename="src/updates/UpdateService.cpp" line="390"></location>
       <source>GitHub could not revalidate this release before installation. Try again later.</source>
       <translation>GitHub ไม่สามารถตรวจสอบความถูกต้องของรุ่นนี้อีกครั้งก่อนติดตั้ง ลองอีกครั้งภายหลัง</translation>
     </message>
@@ -1378,7 +1378,7 @@ This permanently deletes the file.</source>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1346"></location>
-      <location filename="src/ui/qml/OverlayWindow.qml" line="1018"></location>
+      <location filename="src/ui/qml/OverlayWindow.qml" line="1020"></location>
       <source>Delete capture?</source>
       <translation>ลบรายการสื่อนี้หรือไม่</translation>
     </message>
@@ -1954,32 +1954,32 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>กดสามครั้ง</translation>
     </message>
     <message id="gamehq.input.hidden.filter">
-      <location filename="src/input/InputEngine.cpp" line="459"></location>
+      <location filename="src/input/InputEngine.cpp" line="463"></location>
       <source>%1 is connected to Windows but invisible to applications — a HID filter driver is hiding it.</source>
       <translation>%1 เชื่อมต่อกับ Windows แล้ว แต่แอปมองไม่เห็น เพราะไดรเวอร์ตัวกรอง HID ซ่อนไว้</translation>
     </message>
     <message id="gamehq.input.hidden.fix_applying">
-      <location filename="src/input/InputEngine.cpp" line="1690"></location>
+      <location filename="src/input/InputEngine.cpp" line="1694"></location>
       <source>Applying the fix (administrator prompt)...</source>
       <translation>กำลังแก้ไข (ข้อความขอสิทธิ์ผู้ดูแลระบบ)...</translation>
     </message>
     <message id="gamehq.input.hidden.fix_declined">
-      <location filename="src/input/InputEngine.cpp" line="1680"></location>
+      <location filename="src/input/InputEngine.cpp" line="1684"></location>
       <source>Administrator approval was declined — the controller stays hidden. You can whitelist GameHQ manually in the HidHide Configuration Client.</source>
       <translation>ไม่ได้รับการอนุมัติจากผู้ดูแลระบบ คอนโทรลเลอร์จึงยังถูกซ่อนอยู่ คุณสามารถอนุญาต GameHQ ด้วยตนเองใน HidHide Configuration Client</translation>
     </message>
     <message id="gamehq.input.hidden.fix_done">
-      <location filename="src/input/InputEngine.cpp" line="1711"></location>
+      <location filename="src/input/InputEngine.cpp" line="1715"></location>
       <source>GameHQ is now whitelisted in HidHide. Unplug and replug the controller if it does not appear within a few seconds.</source>
       <translation>HidHide อนุญาต GameHQ แล้ว หากคอนโทรลเลอร์ไม่ปรากฏภายในไม่กี่วินาที ให้ถอดแล้วเสียบใหม่</translation>
     </message>
     <message id="gamehq.input.hidden.fix_failed">
-      <location filename="src/input/InputEngine.cpp" line="1722"></location>
+      <location filename="src/input/InputEngine.cpp" line="1726"></location>
       <source>Automatic whitelisting failed (code %1). Add GameHQ.exe on the Applications tab of the HidHide Configuration Client instead.</source>
       <translation>อนุญาตอัตโนมัติไม่สำเร็จ (รหัส %1) โปรดเพิ่ม GameHQ.exe ในแท็บ "Applications" ของ HidHide Configuration Client แทน</translation>
     </message>
     <message id="gamehq.input.hidden.hidhide">
-      <location filename="src/input/InputEngine.cpp" line="450"></location>
+      <location filename="src/input/InputEngine.cpp" line="454"></location>
       <source>%1 is connected but hidden from applications by the HidHide driver (installed with DSX, DS4Windows, or reWASD).</source>
       <translation>%1 เชื่อมต่ออยู่ แต่ไดรเวอร์ HidHide (ติดตั้งมากับ DSX, DS4Windows หรือ reWASD) ซ่อนไว้จากแอป</translation>
     </message>
@@ -2302,7 +2302,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>ไม่สามารถอ่านการตั้งค่าได้</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="711"></location>
+      <location filename="src/app/App.cpp" line="728"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>เสียงอินเทอร์เฟซบางรายการใช้งานไม่ได้</translation>
     </message>
@@ -2453,7 +2453,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>แอปพลิเคชัน</translation>
     </message>
     <message id="gamehq.settings.about.community.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="290"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="291"></location>
       <source>Community</source>
       <translation>ชุมชน</translation>
     </message>
@@ -2463,12 +2463,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>เวอร์ชัน สถานะการอัปเดต ทรัพยากรของโครงการ และวิธีการช่วยเหลือ</translation>
     </message>
     <message id="gamehq.settings.about.github_source">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="252"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="253"></location>
       <source>Source on GitHub</source>
       <translation>ซอร์สโค้ดบน GitHub</translation>
     </message>
     <message id="gamehq.settings.about.license">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="281"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="282"></location>
       <source>GNU GPL v3 License</source>
       <translation>ใบอนุญาต GNU GPL v3</translation>
     </message>
@@ -2483,7 +2483,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>การบำรุงรักษา</translation>
     </message>
     <message id="gamehq.settings.about.open_source.eyebrow">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="237"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="238"></location>
       <source>Open source</source>
       <translation>โอเพ่นซอร์ส</translation>
     </message>
@@ -2498,12 +2498,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>โปรไฟล์แบบพกพา</translation>
     </message>
     <message id="gamehq.settings.about.project.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="241"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="242"></location>
       <source>Open official GameHQ resources in your default browser.</source>
       <translation>เปิดแหล่งข้อมูลทางการของ GameHQ ในเบราว์เซอร์เริ่มต้น</translation>
     </message>
     <message id="gamehq.settings.about.project.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="239"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="240"></location>
       <source>Project</source>
       <translation>โครงการ</translation>
     </message>
@@ -2513,38 +2513,38 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>GameHQ พร้อมแล้ว</translation>
     </message>
     <message id="gamehq.settings.about.releases">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="259"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="260"></location>
       <source>Releases</source>
       <translation>รุ่นเผยแพร่</translation>
     </message>
     <message id="gamehq.settings.about.report_issue">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="266"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="267"></location>
       <source>Report an issue</source>
       <translation>รายงานปัญหา</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="806"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="273"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="274"></location>
       <source>Security &amp; privacy</source>
       <translation>ความปลอดภัยและความเป็นส่วนตัว</translation>
     </message>
     <message id="gamehq.settings.about.security_privacy.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="275"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="276"></location>
       <source>Verification, local data, network use, and private reporting</source>
       <translation>การตรวจสอบ ข้อมูลภายในเครื่อง การใช้เครือข่าย และการรายงานส่วนตัว</translation>
     </message>
     <message id="gamehq.settings.about.support.description">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="295"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="296"></location>
       <source>Enjoying %1? A GitHub star helps more players discover the project.</source>
       <translation>เพลิดเพลินกับ %1 ไหม? ดาว GitHub ช่วยให้ผู้เล่นค้นพบโปรเจ็กต์ได้มากขึ้น</translation>
     </message>
     <message id="gamehq.settings.about.support.star_on_github">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="298"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="299"></location>
       <source>Star %1 on GitHub</source>
       <translation>ติดดาว %1 บน GitHub</translation>
     </message>
     <message id="gamehq.settings.about.support.title">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="292"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="293"></location>
       <source>Support the project</source>
       <translation>สนับสนุนโครงการ</translation>
     </message>
@@ -2555,11 +2555,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.settings.about.updates.title">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="68"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="173"></location>
       <source>Updates</source>
       <translation>อัปเดต</translation>
     </message>
     <message id="gamehq.settings.about.website">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="245"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="246"></location>
       <source>Website</source>
       <translation>เว็บไซต์</translation>
     </message>
@@ -5245,12 +5246,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>จับภาพหน้าจอ</translation>
     </message>
     <message id="gamehq.update.applying_and_restarting">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="184"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="185"></location>
       <source>GameHQ is applying the update and will restart.</source>
       <translation>GameHQ กำลังใช้การอัปเดตและจะรีสตาร์ท</translation>
     </message>
     <message id="gamehq.update.available_version_short">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="126"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="127"></location>
       <source>%1 available</source>
       <translation>%1 พร้อมใช้งาน</translation>
     </message>
@@ -5305,7 +5306,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>กำลังรอให้งานจับภาพเสร็จสิ้นอย่างปลอดภัย</translation>
     </message>
     <message id="gamehq.update.beta_download">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="166"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="167"></location>
       <source>Beta update download</source>
       <translation>ดาวน์โหลดอัปเดตเบต้า</translation>
     </message>
@@ -5321,24 +5322,26 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.check.label">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="245"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="122"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="123"></location>
       <source>Check for updates</source>
       <translation>ตรวจสอบการอัปเดต</translation>
     </message>
     <message id="gamehq.update.check_again">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="239"></location>
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="1075"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="203"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="204"></location>
       <source>Check again</source>
       <translation>ตรวจสอบอีกครั้ง</translation>
     </message>
     <message id="gamehq.update.check_automatically.description">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="117"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="178"></location>
       <source>At most once every 24 hours, in the background.</source>
       <translation>ตรวจสอบเบื้องหลังได้สูงสุดหนึ่งครั้งต่อ 24 ชั่วโมง</translation>
     </message>
     <message id="gamehq.update.check_automatically.label">
       <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="115"></location>
+      <location filename="src/ui/qml/settings/GeneralSettingsPage.qml" line="176"></location>
       <source>Check automatically</source>
       <translation>ตรวจสอบอัตโนมัติ</translation>
     </message>
@@ -5348,13 +5351,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>การตรวจสอบการอัปเดตล้มเหลว</translation>
     </message>
     <message id="gamehq.update.check_now">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="139"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="140"></location>
       <source>Check now</source>
       <translation>ตรวจสอบตอนนี้</translation>
     </message>
     <message id="gamehq.update.checking">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="219"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="137"></location>
       <source>Checking...</source>
       <translation>กำลังตรวจสอบ...</translation>
     </message>
@@ -5374,7 +5377,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>เลือกเวลาที่จะติดตั้ง %1 %2</translation>
     </message>
     <message id="gamehq.update.download_progress">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="155"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="156"></location>
       <source>Download progress</source>
       <translation>ความคืบหน้าการดาวน์โหลด</translation>
     </message>
@@ -5403,21 +5406,31 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>GameHQ can check GitHub for newer stable releases.</source>
       <translation>GameHQ สามารถตรวจสอบ GitHub เพื่อดูรุ่นที่เสถียรกว่า</translation>
     </message>
+    <message id="gamehq.update.include_betas.description">
+      <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="10"></location>
+      <source>Also offer test pre-releases. They get new fixes sooner but may be less stable.</source>
+      <translation>เสนอรุ่นทดสอบก่อนเปิดตัวด้วย ซึ่งจะได้รับการแก้ไขเร็วกว่า แต่อาจมีความเสถียรน้อยกว่า</translation>
+    </message>
+    <message id="gamehq.update.include_betas.label">
+      <location filename="src/ui/qml/components/BetaUpdatesRow.qml" line="8"></location>
+      <source>Include beta versions</source>
+      <translation>รวมเวอร์ชันเบต้า</translation>
+    </message>
     <message id="gamehq.update.install_and_restart">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="228"></location>
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="172"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="199"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="200"></location>
       <source>Install and restart</source>
       <translation>ติดตั้งและรีสตาร์ท</translation>
     </message>
     <message id="gamehq.update.installed_version">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="129"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="130"></location>
       <source>Installed: %1</source>
       <translation>ติดตั้งแล้ว: %1</translation>
     </message>
     <message id="gamehq.update.installing">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="177"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="163"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="164"></location>
       <source>Installing</source>
       <translation>กำลังติดตั้ง</translation>
     </message>
@@ -5473,7 +5486,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.progress_percent">
       <location filename="src/ui/qml/components/UpdateBanner.qml" line="75"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="173"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="174"></location>
       <source>%1% complete</source>
       <translation>%1% เสร็จสมบูรณ์</translation>
     </message>
@@ -5484,7 +5497,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.update.ready_to_install">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="170"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="158"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="159"></location>
       <source>Ready to install</source>
       <translation>พร้อมติดตั้ง</translation>
     </message>
@@ -5504,13 +5517,13 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>เตือนภายหลัง</translation>
     </message>
     <message id="gamehq.update.restart_to_apply">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="177"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="178"></location>
       <source>GameHQ will restart to apply the update.</source>
       <translation>GameHQ จะรีสตาร์ทเพื่อใช้การอัปเดต</translation>
     </message>
     <message id="gamehq.update.retry_download">
       <location filename="src/ui/qml/components/AboutWhatsNewDialog.qml" line="242"></location>
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="206"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="207"></location>
       <source>Retry download</source>
       <translation>ลองดาวน์โหลดอีกครั้ง</translation>
     </message>
@@ -5525,7 +5538,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>การตั้งค่าอัปเดต</translation>
     </message>
     <message id="gamehq.update.sha256_limit_warning">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="187"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="188"></location>
       <source>SHA-256 detects corruption, but not a compromised GitHub account.</source>
       <translation>SHA-256 ตรวจพบความเสียหายของข้อมูล แต่ตรวจไม่พบบัญชี GitHub ที่ถูกบุกรุก</translation>
     </message>
@@ -5599,7 +5612,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>รุ่นต่างๆ</translation>
     </message>
     <message id="gamehq.update.view_release_notes">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="228"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="229"></location>
       <source>View release notes</source>
       <translation>ดูบันทึกประจำรุ่น</translation>
     </message>
@@ -5609,7 +5622,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>ดูการอัปเดต</translation>
     </message>
     <message id="gamehq.update.waiting_for_capture">
-      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="181"></location>
+      <location filename="src/ui/qml/settings/AboutSettingsPage.qml" line="182"></location>
       <source>Waiting for capture work to finish safely...</source>
       <translation>กำลังรอให้งานจับภาพเสร็จสิ้นอย่างปลอดภัย…</translation>
     </message>

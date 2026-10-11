@@ -13,6 +13,7 @@ struct ReleaseInfo
 {
     QString version;      // Tag name, expected to equal the VERSION file exactly.
     QString tag;           // Exact GitHub tag for version-pinned presentation content.
+    QString identity;      // "0.7.10" or, for a beta pre-release, "0.7.10-beta2".
     QString name;          // Release title.
     QString notes;         // Release body (raw Markdown/plain text from GitHub).
     QDateTime publishedAt;

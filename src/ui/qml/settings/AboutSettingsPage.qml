@@ -14,7 +14,7 @@ SettingsPage {
         eyebrow: qsTrId("gamehq.settings.about.application.eyebrow")
         title: Brand.name
         //% "Version %1"
-        status: qsTrId("gamehq.about.version").arg(app.version)
+        status: qsTrId("gamehq.about.version").arg(updates.installedVersion)
         description: {
             if (app.portableMode) {
                 //% "Portable profile"
@@ -117,6 +117,7 @@ SettingsPage {
             description: qsTrId("gamehq.update.check_automatically.description")
             SettingsToggle { configKey: "updates.check_automatically"; defaultValue: true }
         }
+        BetaUpdatesRow {}
         SettingsRow {
             //% "Check for updates"
             label: qsTrId("gamehq.update.check.label")
@@ -126,7 +127,7 @@ SettingsPage {
                     return qsTrId("gamehq.update.available_version_short").arg(updates.latestVersion)
                 }
                 //% "Installed: %1"
-                return qsTrId("gamehq.update.installed_version").arg(app.version)
+                return qsTrId("gamehq.update.installed_version").arg(updates.installedVersion)
             }
             AccentButton {
                 id: checkButton

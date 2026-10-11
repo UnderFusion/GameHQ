@@ -20,10 +20,12 @@ namespace ReleaseCatalog
 inline constexpr int kPageSize = 100;
 inline constexpr int kMaxPages = 3;
 
-// The highest non-draft, non-prerelease release whose tag is an exact vX.Y.Z
-// app version and which carries the assets this app knows how to install.
+// The highest non-draft release whose tag is an exact vX.Y.Z app version and
+// which carries the assets this app knows how to install. Pre-releases are
+// considered only with includeBetas, and only when tagged vX.Y.Z-betaN; a
+// stable release still outranks every beta of its own version.
 // Nothing here establishes trust - it only locates candidate URLs.
-std::optional<ReleaseInfo> selectBest(const QJsonArray &releases);
+std::optional<ReleaseInfo> selectBest(const QJsonArray &releases, bool includeBetas = false);
 // Bounded discovery snapshot only; package trust is still checked separately.
 QByteArray cacheSnapshot(const ReleaseInfo &release);
 std::optional<ReleaseInfo> restoreSnapshot(const QByteArray &bytes);

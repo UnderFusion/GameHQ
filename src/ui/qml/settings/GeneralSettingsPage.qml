@@ -167,4 +167,17 @@ SettingsPage {
             SettingsToggle { configKey: "tray.close_to_tray"; defaultValue: true }
         }
     }
+
+    SettingsSection {
+        //% "Updates"
+        eyebrow: qsTrId("gamehq.settings.about.updates.title")
+        SettingsRow {
+            //% "Check automatically"
+            label: qsTrId("gamehq.update.check_automatically.label")
+            //% "At most once every 24 hours, in the background."
+            description: qsTrId("gamehq.update.check_automatically.description")
+            SettingsToggle { configKey: "updates.check_automatically"; defaultValue: true }
+        }
+        BetaUpdatesRow {}
+    }
 }

@@ -51,6 +51,15 @@ if ($GitTag) {
     if ($Matches.beta -and $TrustMode -ne 'unsigned-beta') {
         throw "Beta tag $GitTag requires -TrustMode unsigned-beta."
     }
+    # The binary must know which beta it is, or the in-app beta channel would
+    # offer this build to itself (or never offer the next beta).
+    $expectedPrerelease = if ($Matches.beta) { $Matches.beta.Substring(1) } else { '' }
+    $cacheLine = Select-String -LiteralPath (Join-Path $buildRoot 'CMakeCache.txt') `
+        -Pattern '^GAMEHQ_PRERELEASE:STRING=(.*)$' | Select-Object -First 1
+    $builtPrerelease = if ($cacheLine) { $cacheLine.Matches[0].Groups[1].Value.Trim() } else { '' }
+    if ($builtPrerelease -ne $expectedPrerelease) {
+        throw "Git tag $GitTag needs a build configured with -DGAMEHQ_PRERELEASE=$expectedPrerelease (found '$builtPrerelease')."
+    }
 }
 if ($GitTag -and $ManifestMode -eq 'test') {
     throw 'Test-key manifests are local/CI evidence only and can never validate a publishable Git tag.'

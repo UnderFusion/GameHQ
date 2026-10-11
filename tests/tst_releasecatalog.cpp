@@ -44,6 +44,17 @@ private:
         };
     }
 
+    // A GitHub pre-release: every beta of one version ships the same
+    // version-named update archive, so the archive name drops the -betaN tag.
+    static QJsonObject betaRelease(const QString& tag, bool prerelease = true)
+    {
+        const QString version = tag.mid(1).section(QLatin1Char('-'), 0, 0);
+        QJsonObject release = appRelease(QStringLiteral("v") + version);
+        release[QStringLiteral("tag_name")] = tag;
+        release[QStringLiteral("prerelease")] = prerelease;
+        return release;
+    }
+
     static QJsonObject pluginRelease(const QString& tag)
     {
         return QJsonObject{
@@ -91,6 +102,58 @@ private slots:
                                pluginRelease(QStringLiteral("playnite-v9.9.6")),
                                appRelease(QStringLiteral("v0.6.1")) };
         QCOMPARE(ReleaseCatalog::selectBest(page)->version, QStringLiteral("0.6.1"));
+    }
+
+    void betasAreOfferedOnlyAfterOptingIn()
+    {
+        const QJsonArray page{ betaRelease(QStringLiteral("v0.7.10-beta2")),
+                               appRelease(QStringLiteral("v0.7.9")) };
+        QCOMPARE(ReleaseCatalog::selectBest(page)->identity, QStringLiteral("0.7.9"));
+
+        const auto beta = ReleaseCatalog::selectBest(page, /*includeBetas=*/true);
+        QVERIFY(beta.has_value());
+        QCOMPARE(beta->identity, QStringLiteral("0.7.10-beta2"));
+        QCOMPARE(beta->version, QStringLiteral("0.7.10"));   // what the signed manifest says
+        QCOMPARE(beta->zipName, QStringLiteral("GameHQ-0.7.10-win64-update.zip"));
+        QVERIFY(beta->prerelease);
+        QVERIFY(beta->hasCompleteUpdateAssets());
+    }
+
+    void aStableReleaseOutranksEveryBetaOfItsVersion()
+    {
+        const QJsonArray betas{ betaRelease(QStringLiteral("v0.7.10-beta9")),
+                                betaRelease(QStringLiteral("v0.7.10-beta10")),
+                                appRelease(QStringLiteral("v0.7.9")) };
+        QCOMPARE(ReleaseCatalog::selectBest(betas, true)->identity,
+                 QStringLiteral("0.7.10-beta10"));   // numeric, not text
+
+        QJsonArray withStable = betas;
+        withStable.append(appRelease(QStringLiteral("v0.7.10")));
+        const auto best = ReleaseCatalog::selectBest(withStable, true);
+        QCOMPARE(best->identity, QStringLiteral("0.7.10"));
+        QVERIFY(!best->prerelease);
+    }
+
+    void aMislabelledReleaseNeverCrossesChannels()
+    {
+        // A pre-release with a stable-looking tag, and a beta tag published as
+        // a full release: neither may be offered on either channel.
+        const QJsonArray page{ betaRelease(QStringLiteral("v9.9.9"), /*prerelease=*/true),
+                               betaRelease(QStringLiteral("v9.9.8-beta1"), /*prerelease=*/false),
+                               appRelease(QStringLiteral("v0.6.1")) };
+        QCOMPARE(ReleaseCatalog::selectBest(page)->identity, QStringLiteral("0.6.1"));
+        QCOMPARE(ReleaseCatalog::selectBest(page, true)->identity, QStringLiteral("0.6.1"));
+    }
+
+    void aCachedBetaSurvivesTheSnapshotRoundTrip()
+    {
+        const auto beta = ReleaseCatalog::selectBest(
+            QJsonArray{ betaRelease(QStringLiteral("v0.7.10-beta3")) }, true);
+        QVERIFY(beta.has_value());
+        const auto restored = ReleaseCatalog::restoreSnapshot(ReleaseCatalog::cacheSnapshot(*beta));
+        QVERIFY(restored.has_value());
+        QCOMPARE(restored->identity, QStringLiteral("0.7.10-beta3"));
+        QVERIFY(restored->prerelease);
     }
 
     void aPageWithoutAnAppReleaseYieldsNothing()

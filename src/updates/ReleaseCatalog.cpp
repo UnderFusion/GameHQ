@@ -26,25 +26,27 @@ QString updateZipChecksumName(const QString &normalizedVersion)
 
 namespace ReleaseCatalog
 {
-std::optional<ReleaseInfo> selectBest(const QJsonArray &releases)
+std::optional<ReleaseInfo> selectBest(const QJsonArray &releases, bool includeBetas)
 {
     // The repo also publishes playnite-v* plugin releases, so /releases/latest
     // cannot be trusted to name the app. Scan the page and keep the highest
     // version that is actually installable; a release without both manifest
     // assets is skipped because there would be nothing to verify it with.
-    std::optional<VersionNumber> bestVersion;
+    std::optional<ReleaseIdentity> bestIdentity;
     std::optional<ReleaseInfo> best;
 
     for (const QJsonValue &releaseValue : releases) {
         const QJsonObject obj = releaseValue.toObject();
-        if (obj.value(QStringLiteral("draft")).toBool()
-            || obj.value(QStringLiteral("prerelease")).toBool())
+        const bool prerelease = obj.value(QStringLiteral("prerelease")).toBool();
+        if (obj.value(QStringLiteral("draft")).toBool() || (prerelease && !includeBetas))
             continue;
 
-        const auto version = VersionNumber::parse(obj.value(QStringLiteral("tag_name")).toString());
-        if (!version.has_value())
+        // A pre-release must be tagged as a beta and a stable release must
+        // not be, so a mislabelled release can never cross channels.
+        const auto identity = ReleaseIdentity::parse(obj.value(QStringLiteral("tag_name")).toString());
+        if (!identity.has_value() || identity->isBeta() != prerelease)
             continue;
-        const QString normalizedVersion = version->toString();
+        const QString normalizedVersion = identity->version().toString();
 
         const QString expectedZip = updateZipName(normalizedVersion);
         const QString expectedChecksum = updateZipChecksumName(normalizedVersion);
@@ -68,10 +70,11 @@ std::optional<ReleaseInfo> selectBest(const QJsonArray &releases)
             || candidate.signatureUrl.isEmpty())
             continue;   // not an installable app release (or assets still uploading)
 
-        if (bestVersion.has_value() && *version <= *bestVersion)
+        if (bestIdentity.has_value() && *identity <= *bestIdentity)
             continue;
 
         candidate.version = normalizedVersion;
+        candidate.identity = identity->toString();
         candidate.tag = obj.value(QStringLiteral("tag_name")).toString();
         candidate.name = obj.value(QStringLiteral("name")).toString();
         candidate.notes = obj.value(QStringLiteral("body")).toString();
@@ -79,10 +82,10 @@ std::optional<ReleaseInfo> selectBest(const QJsonArray &releases)
             obj.value(QStringLiteral("published_at")).toString(), Qt::ISODate);
         candidate.webUrl = obj.value(QStringLiteral("html_url")).toString();
         candidate.zipName = expectedZip;
-        candidate.prerelease = false;
+        candidate.prerelease = prerelease;
         candidate.draft = false;
 
-        bestVersion = version;
+        bestIdentity = identity;
         best = candidate;
     }
     return best;
@@ -141,7 +144,8 @@ std::optional<ReleaseInfo> ReleaseCatalog::restoreSnapshot(const QByteArray &byt
     const QJsonDocument doc = QJsonDocument::fromJson(bytes);
     if (!doc.isArray() || doc.array().size() != 1)
         return std::nullopt;
-    const auto release = selectBest(doc.array());
+    // The cache may hold a beta; UpdateService drops it when betas are off.
+    const auto release = selectBest(doc.array(), true);
     if (!release || !release->hasCompleteUpdateAssets())
         return std::nullopt;
     return release;
