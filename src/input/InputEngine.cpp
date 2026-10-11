@@ -330,6 +330,8 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 m_held.noteReleased(gameInputDeviceKey(logicalId), control);
                 m_runtime->release(QStringLiteral("controller"), gameInputProfile(logicalId),
                                    control);
+                if (control == m_repeatTrigger)
+                    stopNavRepeat();
             });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::sessionFallback,
             this, [this](const QString& reason) {
@@ -431,6 +433,8 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 const QStringList releases = m_providers.removeRawHid(identity);
                 for (const QString& control : releases) {
                     m_runtime->release(QStringLiteral("controller"), logicalId, control);
+                    if (control == m_repeatTrigger)
+                        stopNavRepeat();
                 }
             });
 
