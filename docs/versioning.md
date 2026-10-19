@@ -1,6 +1,8 @@
 # Versioning & Documentation Rules
 
-> **Owner policy (2026-10-08):** 0.7.9 is the published stable release. `VERSION` is **0.7.10**, shipped first as the `v0.7.10-beta1` GitHub pre-release (Xbox mode with Playnite, notifications kept out of screenshots), then `v0.7.10-beta2` (controller shortcuts in non-Steam games). Betas of one version share its in-app release notes and release sequence.
+> **Owner policy (2026-10-19):** 0.7.9 remains the published stable release. The next development line is **0.8.0**, starting with `v0.8.0-beta1` for the silent-clip audio repair. Its release notes collect changes since stable 0.7.9, including the 0.7.10 betas, and begin with thanks to the reporter. Stable 0.8.0 is a later release decision; preparing Beta 1 does not promote it to stable.
+>
+> **Earlier owner policy (2026-10-08):** 0.7.10 shipped first as `v0.7.10-beta1` (Xbox mode with Playnite, notifications kept out of screenshots), then `v0.7.10-beta2` (controller shortcuts in non-Steam games). Betas of one version share its in-app release notes, but every published build requires a fresh release sequence.
 >
 > **Earlier owner policy (2026-09-25):** 0.7.8 is published. The Bluetooth DualSense hotfix is **0.7.9**, shipped first as the `v0.7.9-beta1` GitHub pre-release. `VERSION` stays plain `MAJOR.MINOR.PATCH` (the updater and release-note schema reject suffixes); a beta is identified by its tag and release title only. Internal implementation slices do not increment the product version.
 
@@ -12,7 +14,7 @@ GameHQ uses Semantic Versioning as plain `MAJOR.MINOR.PATCH`.
 - `MINOR` - active development line or roadmap milestone family.
 - `PATCH` - advances for an owner-designated product release, not each internal change.
 
-Current development line: `0.7.x`.
+Current development line: `0.8.x`.
 
 On 2026-09-22, `git ls-remote --tags origin 'v0.7.*'` and `gh release list`
 confirmed v0.7.7 as the latest published GameHQ version (2026-09-07).
@@ -39,7 +41,7 @@ local files does not publish or tag a release.
 
 ## Release Checklist
 
-1. Use the owner-designated release version in `VERSION` (currently 0.7.10); never add a `-betaN` suffix to it. A beta is packaged with `-GitTag v<VERSION>-betaN -TrustMode unsigned-beta`; the source offer and release validation accept that tag form only with beta trust.
+1. Use the owner-designated release version in `VERSION` (currently 0.8.0); never add a `-betaN` suffix to it. A beta is packaged with `-GitTag v<VERSION>-betaN -TrustMode unsigned-beta`; the source offer and release validation accept that tag form only with beta trust.
    The build must be configured with `-DGAMEHQ_PRERELEASE=betaN` (empty for a stable tag); `validate-release.ps1` refuses a mismatch, because the in-app beta channel ranks installs by that suffix.
    Every published build, beta or stable, needs a new `packaging/release-sequence.txt` value. Betas of one version used to share a sequence (Beta 1 and Beta 2 of 0.7.10 both used 34); the updater rejects a reused sequence with different manifest bytes, so in-app beta-to-beta updates require a fresh one.
 2. Add a `CHANGELOG.md` entry with Added/Changed/Fixed/Removed sections as needed.

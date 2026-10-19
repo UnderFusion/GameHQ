@@ -12,6 +12,37 @@ class TestFramePumpService : public QObject
 {
     Q_OBJECT
 private slots:
+    void audioRearmsAreBoundedForCaptureAndEncoderFailures()
+    {
+        // One budget serves both failure kinds: a repeating AAC encoder drop
+        // must stop after three re-arms just like a failing WASAPI stream.
+        ReplayBufferState::AudioRearmBudget budget;
+        QVERIFY(budget.allow(1000));      // capture read failure
+        QVERIFY(budget.allow(5000));      // encoder lost audio
+        QVERIFY(budget.allow(9000));      // encoder lost audio
+        QVERIFY(!budget.allow(13000));    // fourth in the window: fail
+        QVERIFY(!budget.allow(60000));
+        // A quiet window restores recovery.
+        QVERIFY(budget.allow(13000 + ReplayBufferState::AudioRearmBudget::kWindowMs + 1));
+    }
+    void audioFailureStaysTheSaveAnswerAcrossRearm()
+    {
+        ReplayBufferState buffer;
+        quint64 generation = buffer.requestStart(QStringLiteral("Game"));
+        QVERIFY(buffer.confirm(generation, ReplayBufferState::Failed,
+                               ReplayBufferState::audioFailure()));
+        QCOMPARE(buffer.saveRejection(), ReplayBufferState::audioFailure());
+        // A save on a failed buffer re-arms it; the user must still learn why.
+        generation = buffer.requestStart(QStringLiteral("Game"));
+        QCOMPARE(buffer.saveRejection(), ReplayBufferState::audioFailure());
+        QVERIFY(buffer.confirm(generation, ReplayBufferState::Recording));
+        QCOMPARE(buffer.saveRejection(),
+                 ReplayBufferState::saveRejection(ReplayBufferState::Recording));
+        QVERIFY(buffer.confirm(generation, ReplayBufferState::Failed, "recorder failed"));
+        QCOMPARE(buffer.saveRejection(),
+                 ReplayBufferState::saveRejection(ReplayBufferState::Failed));
+    }
+
     void manualColdArmBecomesReadyAndSaves()
     {
         ReplayBufferState buffer;

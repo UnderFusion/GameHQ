@@ -3401,7 +3401,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 686
+          "line": 692
         }
       ],
       "plural": false,
@@ -4311,7 +4311,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 661
+          "line": 667
         }
       ],
       "plural": false,
@@ -7718,7 +7718,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 489
+          "line": 495
         }
       ],
       "plural": false,
@@ -7735,7 +7735,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 496
+          "line": 502
         }
       ],
       "plural": false,
@@ -7752,7 +7752,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 502
+          "line": 508
         }
       ],
       "plural": false,
@@ -7769,7 +7769,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 294
+          "line": 300
         }
       ],
       "plural": false,
@@ -7786,7 +7786,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 288
+          "line": 294
         }
       ],
       "plural": false,
@@ -7803,7 +7803,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 278
+          "line": 284
         }
       ],
       "plural": false,
@@ -7820,7 +7820,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 401
+          "line": 407
         }
       ],
       "plural": false,
@@ -7837,7 +7837,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 464
+          "line": 470
         }
       ],
       "plural": false,
@@ -7847,6 +7847,23 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "a5cadb8e899f7085ce4c5d89a59153e9260d60a119c1cb944889bfda65a3de2d"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_audio",
+      "source": "System audio could not be recorded, so no clip was saved. Check the Windows sound output or turn off System audio in Replay settings",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 87
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "1c6ae1e9f21f8e6021552aa56cbc174c32d5293ff58f8fcc1e59be3ac936d992"
     },
     {
       "id": "gamehq.notification.replay_failed.reason_buffer_failed",
@@ -7890,7 +7907,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 93
+          "line": 99
         }
       ],
       "plural": false,
@@ -7907,7 +7924,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 87
+          "line": 93
         }
       ],
       "plural": false,
@@ -7941,7 +7958,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 310
+          "line": 316
         }
       ],
       "plural": false,
@@ -7958,7 +7975,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 396
+          "line": 402
         }
       ],
       "plural": false,
@@ -7975,7 +7992,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 445
+          "line": 451
         }
       ],
       "plural": false,
@@ -7992,7 +8009,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 303
+          "line": 309
         }
       ],
       "plural": false,
@@ -8009,7 +8026,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 345
+          "line": 351
         }
       ],
       "plural": false,
@@ -8026,7 +8043,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 547
+          "line": 553
         }
       ],
       "plural": false,
@@ -8045,7 +8062,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 542
+          "line": 548
         }
       ],
       "plural": false,
@@ -8062,7 +8079,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 728
+          "line": 734
         }
       ],
       "plural": false,

@@ -8,7 +8,7 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-th-th; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review; claude-opus-5-5-hidden-controller-banner-contextual-review",
+    "actor": "codex-gpt-5-contextual-th-th; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review; claude-opus-5-5-hidden-controller-banner-contextual-review; claude-opus-5-5-replay-audio-failure-contextual-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "Google Translate draft from product-owned English followed by complete contextual Thai review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_th_TH.ts",
-    "sha256": "47516bb73d1692a3c27d0232fbd496a9f08c6e5f88a3424e57911a2e395cfdec",
-    "message_count": 1086
+    "sha256": "ee95df92b858db80168f7445bc0f0301c1b934c8529511572d5ed6966730415c",
+    "message_count": 1087
   },
   "coverage": [
     {
@@ -3899,6 +3899,15 @@
       "translation_hash": "9521747ed1e9c1c50df1c0a53f75dc84eb744ab244efcba369d51bf4b0b3a8c8",
       "locations": [
         "src/app/App.cpp:280"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_audio",
+      "source_hash": "1c6ae1e9f21f8e6021552aa56cbc174c32d5293ff58f8fcc1e59be3ac936d992",
+      "translation_hash": "b1e16ed3afdeb6e40c10e40e337e01ce975b0c582a31a4eed59951879e1008a8",
+      "locations": [
+        "src/app/App.cpp:87"
       ],
       "decision": "accepted"
     },
@@ -16595,8 +16604,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_th_TH.ts",
-      "sha256": "47516bb73d1692a3c27d0232fbd496a9f08c6e5f88a3424e57911a2e395cfdec",
-      "reviewed_units": 1086
+      "sha256": "ee95df92b858db80168f7445bc0f0301c1b934c8529511572d5ed6966730415c",
+      "reviewed_units": 1087
     },
     {
       "surface": "installer",

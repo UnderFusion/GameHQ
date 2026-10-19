@@ -56,7 +56,7 @@ private slots:
         // scaling, PNG encoding and publication, not an empty callback.
         QVERIFY(QMetaObject::invokeMethod(worker, [&, worker, clip, thumb, segment, timer] {
             worker->runExport(SegmentLease({segment}), clip, thumb,
-                              "Fixture game", "fixture.exe", "thumbnail-test", 17);
+                              "Fixture game", "fixture.exe", "thumbnail-test", 17, false);
             QMetaObject::invokeMethod(worker, [&, timer] {
                 elapsed = timer.elapsed();
                 returned.release();

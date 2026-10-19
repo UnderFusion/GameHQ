@@ -461,20 +461,36 @@ void FramePumpWorker::attachRecorder(Pipeline* pipe, unsigned long pid, int srcW
                                      int encodeWidth, int encodeHeight, int fps, int bitrateMbps,
                                      int segmentSeconds, int lengthSeconds, bool audioEnabled)
 {
-    // Audio (Step 7) is opt-in: untested WASAPI code crashed the worker thread on
-    // every game-arm in dev.74. Gate behind config "audio.enabled" (default false)
-    // so video capture stays stable; audio only starts when explicitly enabled.
+    // Capture desktop audio by default; a saved audio.enabled=false remains an
+    // explicit opt-out. AudioCapture normalizes the endpoint to an AAC-compatible
+    // format before the recorder is created. When audio is wanted it is never
+    // silently dropped: a clip without the requested audio track looks like a
+    // success to the user, so a start that keeps failing fails the replay
+    // buffer with a reason the save notification can show.
     if (audioEnabled) {
-        pipe->audio = new AudioCapture();
-        if (pipe->audio->start(pid)) {
-            const unsigned frames = pipe->audio->sampleRate() / 10;
-            pipe->audioBuf.resize(int(frames * pipe->audio->channels()));
-            qInfo() << "FramePump: audio attached";
-        } else {
-            delete pipe->audio;
-            pipe->audio = nullptr;
-            qInfo() << "FramePump: audio start failed — continuing video-only";
+        constexpr int kAudioStartAttempts = 3;
+        for (int attempt = 1; attempt <= kAudioStartAttempts && !pipe->audio; ++attempt) {
+            auto* audio = new AudioCapture();
+            if (audio->start(pid)) {
+                pipe->audio = audio;
+                break;
+            }
+            delete audio;
+            qWarning().noquote() << QStringLiteral("FramePump: audio start failed (attempt %1/%2)")
+                                        .arg(attempt).arg(kAudioStartAttempts);
+            if (attempt < kAudioStartAttempts)
+                QThread::msleep(250);   // endpoint switches settle within a few hundred ms
         }
+        if (!pipe->audio) {
+            qWarning() << "FramePump: system audio is enabled but cannot be captured — "
+                          "replay buffer fails instead of recording video-only";
+            reportBufferState(ReplayBufferState::Failed, ReplayBufferState::audioFailure());
+            pipe->encClock.start();
+            pipe->encStartQpc100ns = qpcNow100ns();
+            return;
+        }
+        pipe->audioBuf.resize(int(pipe->audio->bufferFrames() * pipe->audio->channels()));
+        qInfo() << "FramePump: audio attached";
     }
     const QSize encodeSize = fitInsideEven(QSize(srcW, srcH), QSize(encodeWidth, encodeHeight));
     QString cacheProfile = QStringLiteral("%1-%2x%3-%4fps")
@@ -502,6 +518,13 @@ void FramePumpWorker::attachRecorder(Pipeline* pipe, unsigned long pid, int srcW
         pipe->recorder = nullptr;
         reportBufferState(ReplayBufferState::Failed,
                           QStringLiteral("Replay recorder could not start"));
+    } else if (pipe->audio && !pipe->recorder->hasAudio()) {
+        // The AAC encoder refused the audio input; the recorder would carry on
+        // video-only, which is exactly the silent clip this must prevent.
+        qWarning() << "FramePump: recorder has no audio track although system audio is enabled";
+        delete pipe->recorder;
+        pipe->recorder = nullptr;
+        reportBufferState(ReplayBufferState::Failed, ReplayBufferState::audioFailure());
     }
     pipe->encClock.start();
     pipe->encStartQpc100ns = qpcNow100ns();   // A/V share this epoch
@@ -728,6 +751,7 @@ void FramePumpWorker::reportBufferState(ReplayBufferState::State state, const QS
     if (m_bufferState == state)
         return;
     m_bufferState = state;
+    m_audioFailed = state == ReplayBufferState::Failed && reason == ReplayBufferState::audioFailure();
     emit bufferStateChanged(m_pumpGeneration, state, reason);
 }
 
@@ -788,18 +812,54 @@ void FramePumpWorker::poll()
                              - m_pipe->encStartQpc100ns;
             m_pipe->recorder->writeAudio(m_pipe->audioBuf.constData(), got, rel);
         }
-        if (m_pipe->audio->deviceInvalidated()) {
+        if (m_pipe->audio->deviceInvalidated() || m_pipe->audio->failed()) {
             // A Windows HDR/display-mode switch can rebuild the HDMI/DP audio
-            // endpoint. Stop this timer immediately so the invalid HRESULT is
-            // not logged every 16 ms, drop the now-incomplete A/V segment, and
-            // let the GUI-thread service rebuild both WGC and WASAPI.
+            // endpoint; other read errors can leave the stream dead. Stop this
+            // timer immediately so the error is not logged every 16 ms, drop
+            // the now-incomplete A/V segment, and let the GUI-thread service
+            // rebuild both WGC and WASAPI. A re-arm that cannot start audio
+            // again fails the buffer explicitly (attachRecorder).
             if (m_pipe->timer)
                 m_pipe->timer->stop();
             m_pipe->recorder->discardCurrentSegment();
-            qWarning() << "FramePump: audio endpoint was invalidated — requesting clean re-arm";
-            emit restartRequested(m_pumpGeneration, QStringLiteral("Windows audio endpoint changed"));
+            const bool invalidated = m_pipe->audio->deviceInvalidated();
+            // A stream that dies again right after every re-arm would loop
+            // forever; past the budget, fail explicitly.
+            if (!invalidated && !m_audioRearmBudget.allow(qpcNow100ns() / 10000)) {
+                qWarning() << "FramePump: audio capture keeps failing — replay buffer stopped";
+                reportBufferState(ReplayBufferState::Failed, ReplayBufferState::audioFailure());
+                return;
+            }
+            qWarning() << "FramePump: audio capture" << (invalidated ? "endpoint was invalidated"
+                                                                     : "stopped delivering")
+                       << "— requesting clean re-arm";
+            emit restartRequested(m_pumpGeneration, invalidated
+                ? QStringLiteral("Windows audio endpoint changed")
+                : QStringLiteral("Windows audio capture failed"));
             return;
         }
+        // Nothing playing is not a failure: keep the AAC track continuous with
+        // digital silence, leaving packet latency headroom so late real
+        // packets are not overtaken.
+        constexpr qint64 kAudioLatencyHeadroom100ns = 2000000;   // 200 ms
+        m_pipe->recorder->padAudioSilence(qpcNow100ns() - m_pipe->encStartQpc100ns
+                                          - kAudioLatencyHeadroom100ns);
+    } else if (m_pipe->audio && m_pipe->recorder && m_pipe->recorder->audioLost()) {
+        // The encoder dropped the audio track mid-session; never keep recording
+        // video-only segments while system audio is enabled.
+        if (m_pipe->timer)
+            m_pipe->timer->stop();
+        m_pipe->recorder->discardCurrentSegment();
+        // Same budget as read failures: an encoder that keeps dropping audio
+        // must end in the explicit audio failure, not endless re-arms.
+        if (!m_audioRearmBudget.allow(qpcNow100ns() / 10000)) {
+            qWarning() << "FramePump: audio encoder keeps failing — replay buffer stopped";
+            reportBufferState(ReplayBufferState::Failed, ReplayBufferState::audioFailure());
+            return;
+        }
+        qWarning() << "FramePump: recorder lost its audio track — requesting clean re-arm";
+        emit restartRequested(m_pumpGeneration, QStringLiteral("Replay audio encoder failed"));
+        return;
     }
 
     // Drain EVERY frame buffered since the last tick, not just one. With one
@@ -920,7 +980,9 @@ bool FramePumpWorker::saveGuard(const QString& saveId)
 {
     checkReplayReadiness();
     if (!ReplayBufferState::canSave(m_bufferState)) {
-        emit clipFailed(QStringLiteral("Replay"), ReplayBufferState::saveRejection(m_bufferState));
+        emit clipFailed(QStringLiteral("Replay"), m_audioFailed
+                            ? ReplayBufferState::audioFailure()
+                            : ReplayBufferState::saveRejection(m_bufferState));
         return false;
     }
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: request begin pipe=%2 recorder=%3 active=%4")
@@ -1013,7 +1075,7 @@ void FramePumpWorker::runExport(SegmentLease lease,
                                 const CapturePublisher::Reservation& reservation,
                                 const QString& thumbPath,
                                 const QString& game, const QString& exePath,
-                                const QString& saveId, quint64 requestId)
+                                const QString& saveId, quint64 requestId, bool requireAudio)
 {
     const QString outPath = reservation.finalPath;
     const QString partialPath = reservation.pendingPath;
@@ -1027,7 +1089,7 @@ void FramePumpWorker::runExport(SegmentLease lease,
     const quint64 generation = ++m_exportGeneration;
 
     m_exportTask = std::make_unique<ReplayExportTask>(std::move(lease),
-        [reservation, outPath, partialPath, thumbPath, saveId, result]
+        [reservation, outPath, partialPath, thumbPath, saveId, result, requireAudio]
         (const QStringList& segs) {
             const auto discardOnFailure = qScopeGuard([&] {
                 if (!result->ok)
@@ -1047,7 +1109,9 @@ void FramePumpWorker::runExport(SegmentLease lease,
                 result->finalThumb = instantThumbnail(segs.last(), thumbPath, saveId);
             // The reserved .part already exists and the MP4 sink writer
             // truncates it, so the name stays claimed for the whole export.
-            if (ReplayExporter::concat(segs, partialPath, saveId)) { // remux, no re-encode
+            if (ReplayExporter::concat(segs, partialPath, saveId, // remux, no re-encode
+                                       requireAudio ? ReplayExporter::Audio::Required
+                                                    : ReplayExporter::Audio::Any)) {
                 qInfo().noquote() << QStringLiteral(
                     "ReplaySave[%1]: remux ok output=%2 segments=%3 elapsedMs=%4 bytes=%5")
                     .arg(saveId).arg(partialPath).arg(segs.size()).arg(t.elapsed())
@@ -1185,8 +1249,11 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot, quint64 g
     // announce that export started; clipSaved delivers the completed thumbnail.
     emit clipSaving(game, QString(), m_pipe->executablePath);
 
+    // A recorder with an audio track must export one; the exporter refuses
+    // any frozen segment that lacks it instead of saving a silent clip.
     runExport(std::move(lease), reservation, thumbPath,
-              game, m_pipe->executablePath, saveId, requestId);
+              game, m_pipe->executablePath, saveId, requestId,
+              m_pipe->audio && m_pipe->recorder->hasAudio());
     handedToExport = true;
     qInfo().noquote() << QStringLiteral("ReplaySave[%1]: exporting totalSoFarMs=%2")
                              .arg(saveId).arg(saveTimer.elapsed());
@@ -1358,7 +1425,7 @@ void FramePumpService::saveReplay(const CaptureRequest& request)
         // A cold arm keeps its owner until the next save or bounded idle expiry.
         // No pending save is silently deferred until readiness.
         reject(m_buffer.gameName().isEmpty() ? QStringLiteral("Replay") : m_buffer.gameName(),
-               ReplayBufferState::saveRejection(m_buffer.state()));
+               m_buffer.saveRejection());
         return;
     }
     m_owners.beginSave(requestId);
@@ -1538,7 +1605,7 @@ void FramePumpService::startBuffer(bool rearm)
                  : QStringLiteral("1920x1080"),
         QSize(1920, 1080));
     const bool audioRequested = m_config
-        ? m_config->value(ConfigKeys::AudioEnabled, false).toBool() : false;
+        ? m_config->value(ConfigKeys::AudioEnabled, true).toBool() : true;
     const bool audioOn = audioRequested;
     // t24: hidden, default-on — see ConfigKeys::InternalCaptureExperimentalHdr.
     const bool hdrExperimentalEnabled = m_config

@@ -127,7 +127,7 @@ SettingsPage {
             //% "Include desktop audio in newly recorded replay segments."
             description: qsTrId("gamehq.settings.replay.encoding.system_audio.description")
             showDivider: false
-            SettingsToggle { configKey: "audio.enabled"; defaultValue: false }
+            SettingsToggle { configKey: "audio.enabled"; defaultValue: true }
         }
     }
 

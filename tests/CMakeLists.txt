@@ -919,13 +919,16 @@ gamehq_add_test(tst_capturepublisher
     "${CMAKE_SOURCE_DIR}/src/capture/CapturePublisher.cpp")
 
 # Recorder restore/trim and export-task lifetime with file fixtures, plus
-# partial-segment encoding with a synthetic D3D texture (no capture device).
+# partial-segment encoding/remux with synthetic video and audio, plus a bounded
+# default-output WASAPI initialization check (no window or playback).
 gamehq_add_test(tst_segmentrecorder
     tst_segmentrecorder.cpp
+    "${CMAKE_SOURCE_DIR}/src/capture/AudioCapture.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/ReplayExporter.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentRecorder.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentLease.cpp")
 target_link_libraries(tst_segmentrecorder PRIVATE
-    d3d11 dxguid ole32 mfplat mfreadwrite mfuuid)
+    Qt6::Gui d3d11 dxguid ole32 oleaut32 mfplat mfreadwrite mfuuid uuid ksuser mmdevapi)
 
 gamehq_add_test(tst_framepumpservice
     tst_framepumpservice.cpp

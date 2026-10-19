@@ -4,14 +4,30 @@ Public release history and the current local release candidate.
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-10-19
+
+Thank you to the community member who reported silent clips recorded while playing through Playnite, and to everyone helping test the beta fixes.
+
+Published first as the `v0.8.0-beta1` pre-release. This section collects changes since stable 0.7.9, including the 0.7.10 betas.
+
 ### Added
 
 - Optional beta updates: a new "Include beta versions" switch (Settings → General and About, off by default) lets the updater offer GitHub beta pre-releases.
 
 ### Fixed
 
+- Fixed silent clips caused by desktop audio recording being disabled by default under an old internal workaround. An explicitly saved disabled setting remains respected.
+- Windows playback formats are converted to a standard stereo format supported by the recording encoder.
+- With System audio on, an audio capture that cannot start or keeps failing now fails the replay buffer with a localized reason instead of silently recording video-only clips.
+- Quiet stretches (when Windows sends no audio) are recorded as silence, keeping the audio track continuous and in sync.
+- Saving refuses a clip whose buffered segments disagree on audio, in either order, instead of exporting missing audio.
 - Settings no longer jumps back to the top while scrolling with the mouse after the window regains focus.
 - A controller navigation repeat no longer keeps running when its release arrives through GameInput or the pad is unplugged mid-hold.
+- Includes the 0.7.10 beta fixes: controller shortcuts in games launched outside Steam, Playnite games with no identified process, Xbox mode capture, and GameHQ notifications excluded from captures.
+
+### Changed
+
+- Each published beta has its own update identity and release sequence, so a newer beta can be offered to users who opt in.
 
 ## [0.7.10] - 2026-10-08
 

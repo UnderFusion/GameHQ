@@ -52,7 +52,7 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::InputChordWindowMs,      300 },    // 120-1000
         { ConfigKeys::InputModernControllerSupport, "auto" },
         { ConfigKeys::InputSteamConflictHelp,  true },
-        { ConfigKeys::AudioEnabled,            false },
+        { ConfigKeys::AudioEnabled,            true },
         { ConfigKeys::StorageScreenshotsRoot,  "" },
         { ConfigKeys::StorageClipsRoot,        "" },
         { ConfigKeys::StartupEnabled,          false },

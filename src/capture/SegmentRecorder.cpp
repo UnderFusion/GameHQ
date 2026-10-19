@@ -16,7 +16,9 @@
 #include <QFile>
 #include <QFileInfo>
 
+#include <algorithm>
 #include <cstring>
+#include <vector>
 #include <string>
 
 namespace {
@@ -101,6 +103,7 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
     if (m_keepSegments < 1) m_keepSegments = 1;
     m_audioRate     = audioRateHz;
     m_audioChannels = audioChannels;
+    m_audioLost     = false;
     m_segments.clear();
     m_curPath.clear();
     m_lastClosedMediaPath.clear();
@@ -507,6 +510,7 @@ bool SegmentRecorder::openSegment()
     // rejected — stay video-only for the rest of this recorder.
     if (m_audioRate > 0 && pw.audioStream == 0) {
         qWarning() << "SegmentRecorder: audio disabled for this session (input rejected)";
+        m_audioLost = true;
         m_audioRate = 0;
         m_audioChannels = 0;
     }
@@ -590,6 +594,7 @@ SegmentLease SegmentRecorder::snapshotForSave()
         return {};
     // Finalize the in-flight segment so its frames are on disk + in the ring,
     // snapshot the whole ring, then reopen a new segment to keep recording.
+    fillSilentAudioTail();
     QElapsedTimer rollTimer;
     rollTimer.start();
     closeSegment();
@@ -613,6 +618,7 @@ void SegmentRecorder::rollIfDue()
         return;
     if (m_lastGlobalPts - m_segStartPts < m_segTicks)
         return;
+    fillSilentAudioTail();
     QElapsedTimer rollTimer;
     rollTimer.start();
     closeSegment();
@@ -783,17 +789,63 @@ void SegmentRecorder::writeAudio(const float* samples, unsigned numFrames, qint6
     // audible/visible as the clip "pausing" every few seconds. The clock
     // anchors on the first packet, advances by exactly numFrames/rate per
     // packet, and re-anchors only on real drift (device stall > 0.5 s).
+    // A forward gap is real silence (loopback sends nothing while no stream
+    // renders) and is filled with zeros so the track stays continuous.
     if (m_audioClockPts < 0) {
         m_audioClockPts = wall;
-    } else if (qAbs(wall - m_audioClockPts) > 5000000LL) {
+    } else if (wall - m_audioClockPts > kAudioGapFill100ns) {
+        fillAudioSilence(wall);
+    } else if (m_audioClockPts - wall > 5000000LL) {
         qInfo() << "SegmentRecorder: audio clock re-anchored, drift was"
                 << (wall - m_audioClockPts) / 10000 << "ms";
         m_audioClockPts = wall;
     }
+    writeAudioAt(samples, numFrames);
+}
+
+void SegmentRecorder::padAudioSilence(qint64 audioTime100ns)
+{
+    if (!m_active || !m_writer || m_audioStream == 0 || m_audioRate == 0 || m_originTime < 0)
+        return;
+    const long long wall = audioTime100ns - m_originTime;
+    if (wall <= 0)
+        return;
+    if (m_audioClockPts < 0)
+        m_audioClockPts = 0;   // silent from the first video frame
+    if (wall - m_audioClockPts > kAudioGapFill100ns)
+        fillAudioSilence(wall);
+}
+
+// During a silent stretch the padded audio trails the video by the latency
+// headroom. Fill it up to the segment boundary before closing; written after
+// the roll it would count as too late and be dropped, leaving a hole.
+void SegmentRecorder::fillSilentAudioTail()
+{
+    if (m_audioStream > 0 && m_audioRate > 0 && m_audioClockPts >= 0
+        && m_lastGlobalPts - m_audioClockPts > kAudioGapFill100ns)
+        fillAudioSilence(m_lastGlobalPts, false);
+}
+
+void SegmentRecorder::fillAudioSilence(long long untilPts, bool allowRoll)
+{
+    constexpr unsigned kChunkFrames = 4800;   // 100 ms at 48 kHz
+    std::vector<float> zeros(size_t(kChunkFrames) * m_audioChannels, 0.0f);
+    while (m_writer && untilPts > m_audioClockPts) {
+        const long long frames = (untilPts - m_audioClockPts) * m_audioRate / 10000000LL;
+        if (frames <= 0)
+            break;
+        writeAudioAt(zeros.data(), unsigned(std::min<long long>(frames, kChunkFrames)),
+                     allowRoll);
+    }
+}
+
+void SegmentRecorder::writeAudioAt(const float* samples, unsigned numFrames, bool allowRoll)
+{
     const long long gpts = m_audioClockPts;
     m_audioClockPts += (static_cast<long long>(numFrames) * 10000000LL) / m_audioRate;
 
-    rollIfDue();
+    if (allowRoll)
+        rollIfDue();
     if (!m_writer)
         return;
 

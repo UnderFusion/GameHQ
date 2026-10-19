@@ -973,7 +973,7 @@
       <translation>已有另一个便携配置文件导入正在运行。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="686"></location>
+      <location filename="src/app/App.cpp" line="692"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>由于捕获任务未能及时安全完成，更新已取消。</translation>
     </message>
@@ -1224,7 +1224,7 @@
       <translation>GameHQ 无法发布更新事务。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="661"></location>
+      <location filename="src/app/App.cpp" line="667"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ 无法开始更新维护：%1</translation>
     </message>
@@ -2202,44 +2202,49 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>显示工具</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="489"></location>
+      <location filename="src/app/App.cpp" line="495"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>部分文件无法删除。它们可能正被其他程序使用。请关闭正在使用这些文件的程序后重试。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="496"></location>
+      <location filename="src/app/App.cpp" line="502"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>无法删除该文件。它可能正被其他程序使用。请关闭正在使用该文件的程序后重试。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="502"></location>
+      <location filename="src/app/App.cpp" line="508"></location>
       <source>Couldn't delete</source>
       <translation>无法删除</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="294"></location>
+      <location filename="src/app/App.cpp" line="300"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>未添加到媒体库，磁盘上也没有该文件。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="288"></location>
+      <location filename="src/app/App.cpp" line="294"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>文件位于你的捕获文件夹中，但无法添加到媒体库。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="278"></location>
+      <location filename="src/app/App.cpp" line="284"></location>
       <source>Saved to disk, not in library</source>
       <translation>已保存到磁盘，未加入媒体库</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="401"></location>
+      <location filename="src/app/App.cpp" line="407"></location>
       <source>Capture request received</source>
       <translation>已收到捕获请求</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="464"></location>
+      <location filename="src/app/App.cpp" line="470"></location>
       <source>Reason: %1</source>
       <translation>原因：%1</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason_audio">
+      <location filename="src/app/App.cpp" line="87"></location>
+      <source>System audio could not be recorded, so no clip was saved. Check the Windows sound output or turn off System audio in Replay settings</source>
+      <translation>无法录制系统音频，因此未保存片段。请检查 Windows 声音输出设备，或在回放设置中关闭系统音频</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
       <location filename="src/app/App.cpp" line="81"></location>
@@ -2252,12 +2257,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>回放缓冲区正在收集画面，请几秒后再尝试保存</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="93"></location>
+      <location filename="src/app/App.cpp" line="99"></location>
       <source>Replay buffer is empty</source>
       <translation>回放缓冲区为空</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="87"></location>
+      <location filename="src/app/App.cpp" line="93"></location>
       <source>Replay buffer is not running</source>
       <translation>回放缓冲区未运行</translation>
     </message>
@@ -2267,42 +2272,42 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>回放缓冲区正在启动，请几秒后再尝试保存</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="310"></location>
+      <location filename="src/app/App.cpp" line="316"></location>
       <source>Replay failed</source>
       <translation>回放失败</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="396"></location>
+      <location filename="src/app/App.cpp" line="402"></location>
       <source>Replay save requested</source>
       <translation>已请求保存回放</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="445"></location>
+      <location filename="src/app/App.cpp" line="451"></location>
       <source>Replay saved</source>
       <translation>回放已保存</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="303"></location>
+      <location filename="src/app/App.cpp" line="309"></location>
       <source>Screenshot failed</source>
       <translation>屏幕截图失败</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="345"></location>
+      <location filename="src/app/App.cpp" line="351"></location>
       <source>Screenshot saved</source>
       <translation>屏幕截图已保存</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="547"></location>
+      <location filename="src/app/App.cpp" line="553"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 已使用默认设置启动。系统保留了之前的设置文件，因此没有丢失任何内容。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="542"></location>
+      <location filename="src/app/App.cpp" line="548"></location>
       <source>Settings could not be read</source>
       <translation>无法读取设置</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="728"></location>
+      <location filename="src/app/App.cpp" line="734"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>部分界面声音不可用</translation>
     </message>

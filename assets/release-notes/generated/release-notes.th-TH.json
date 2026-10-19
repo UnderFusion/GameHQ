@@ -1,29 +1,78 @@
 {
-  "version": "0.7.10",
-  "date": "2026-10-08",
+  "version": "0.8.0",
+  "date": "2026-10-19",
   "sections": [
     {
-      "title": "การแก้ไขข้อบกพร่อง",
+      "title": "Thank You",
       "items": [
-        "ภาพหน้าจอจะไม่มีการแจ้งเตือนของ GameHQ เอง เช่น การแจ้งว่าบันทึกภาพหน้าจอก่อนหน้าแล้ว ติดมาอีกต่อไป การแจ้งเตือนยังคงแสดงบนหน้าจอของคุณตามปกติ",
-        "โหมด Xbox ของ Windows (ประสบการณ์แบบเต็มหน้าจอ) กับ Playnite: เมื่อ Windows รายงานว่าแอป Xbox เป็นหน้าต่างที่ใช้งานอยู่แทนเกมที่เปิดจาก Playnite GameHQ จะยังคงจดจำเกมได้ ภาพหน้าจอและคลิปจึงทำงานได้ ใช้ร่วมกับ GameHQ Playnite Integration 0.4.13"
+        "Thank you to the community member who reported silent clips recorded while playing through Playnite, and to everyone helping test the beta fixes.",
+        "This release collects all changes since stable 0.7.9, including the 0.7.10 betas."
       ]
     },
     {
-      "title": "การเปลี่ยนแปลงและการปรับปรุง",
+      "title": "Clip Audio Repair",
       "items": [
-        "แอปบันทึกหน้าจอและแอปสตรีมที่จับภาพทั้งหน้าจอจะไม่แสดงการแจ้งเตือนของ GameHQ อีกต่อไปเช่นกัน"
+        "Desktop audio recording starts by default. An old internal workaround left System audio off by default, so clips could contain video only. The setting remains available in Settings > Replay, and an explicitly saved disabled setting remains respected.",
+        "Windows playback formats are converted to a standard stereo format supported by the recording encoder instead of losing the audio track.",
+        "If System audio is on but Windows audio cannot be captured, GameHQ retries and then reports why no clip was saved, instead of saving a clip without sound. Turning System audio off still records video-only clips on purpose.",
+        "Quiet moments are recorded as silence, so the audio track stays complete and sound after a quiet stretch stays in sync with the picture.",
+        "Desktop audio includes sound playing through the default Windows output device, which can include other apps. It does not record the microphone. Audio missing from an older clip cannot be recovered."
       ]
     },
     {
-      "title": "ข้อจำกัดที่ทราบ",
+      "title": "Changes and Improvements",
       "items": [
-        "ป๊อปอัปจากแอปอื่น เช่น การแจ้งเตือนของ Windows, Steam หรือ Discord อาจยังปรากฏในภาพหน้าจอได้",
-        "การรองรับโหมด Xbox เป็นฟีเจอร์ใหม่และยังไม่ได้รับการยืนยันบนพีซีที่ใช้โหมด Xbox"
+        "Optional beta updates: turn on Include beta versions in Settings > General or About to receive beta releases. It is off by default. Each beta has its own update identity so the updater can offer the next one.",
+        "Controller shortcuts work more reliably in games launched outside Steam, including games started from Playnite, when Windows stops delivering a connected DualSense through its normal input path. GameHQ temporarily reads the controller directly and returns to normal delivery when it recovers.",
+        "Windows Xbox mode with Playnite can use the verified game session for screenshots and clips when the Xbox shell holds the foreground. Use GameHQ Playnite Integration 0.4.13; no new plugin build is required."
+      ]
+    },
+    {
+      "title": "Other Bug Fixes",
+      "items": [
+        "Settings mouse scrolling no longer jumps back to the focused control when the window or a popup returns focus.",
+        "Controller navigation repeats stop when GameInput reports the release or the controller is unplugged while a direction is held.",
+        "Playnite games remain recognized when Playnite cannot identify the game process.",
+        "GameHQ notifications stay visible to you but are excluded from screenshots and whole-screen recordings. Notifications from other apps may still appear."
+      ]
+    },
+    {
+      "title": "Known Limitations",
+      "items": [
+        "System audio records the default Windows output device. A game assigned to a different output in Windows sound settings is not included in clips.",
+        "A game that takes exclusive control of a controller may still prevent background shortcuts.",
+        "Windows binaries are not Authenticode-signed; Windows SmartScreen may show an Unknown Publisher warning.",
+        "New release-note text uses complete English fallback where a reviewed translation is not yet available. Existing interface translations are unchanged."
       ]
     }
   ],
   "history": [
+    {
+      "version": "0.7.10",
+      "date": "2026-10-08",
+      "sections": [
+        {
+          "title": "การแก้ไขข้อบกพร่อง",
+          "items": [
+            "ภาพหน้าจอจะไม่มีการแจ้งเตือนของ GameHQ เอง เช่น การแจ้งว่าบันทึกภาพหน้าจอก่อนหน้าแล้ว ติดมาอีกต่อไป การแจ้งเตือนยังคงแสดงบนหน้าจอของคุณตามปกติ",
+            "โหมด Xbox ของ Windows (ประสบการณ์แบบเต็มหน้าจอ) กับ Playnite: เมื่อ Windows รายงานว่าแอป Xbox เป็นหน้าต่างที่ใช้งานอยู่แทนเกมที่เปิดจาก Playnite GameHQ จะยังคงจดจำเกมได้ ภาพหน้าจอและคลิปจึงทำงานได้ ใช้ร่วมกับ GameHQ Playnite Integration 0.4.13"
+          ]
+        },
+        {
+          "title": "การเปลี่ยนแปลงและการปรับปรุง",
+          "items": [
+            "แอปบันทึกหน้าจอและแอปสตรีมที่จับภาพทั้งหน้าจอจะไม่แสดงการแจ้งเตือนของ GameHQ อีกต่อไปเช่นกัน"
+          ]
+        },
+        {
+          "title": "ข้อจำกัดที่ทราบ",
+          "items": [
+            "ป๊อปอัปจากแอปอื่น เช่น การแจ้งเตือนของ Windows, Steam หรือ Discord อาจยังปรากฏในภาพหน้าจอได้",
+            "การรองรับโหมด Xbox เป็นฟีเจอร์ใหม่และยังไม่ได้รับการยืนยันบนพีซีที่ใช้โหมด Xbox"
+          ]
+        }
+      ]
+    },
     {
       "version": "0.7.9",
       "date": "2026-10-02",
@@ -399,6 +448,13 @@
     "requested_locale": "th-TH",
     "source_locale": "en-US",
     "documents": [
+      {
+        "version": "0.8.0",
+        "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+        "resolved_locale": "en-US",
+        "fallback": true,
+        "fallback_reason": "declared-en-US-fallback"
+      },
       {
         "version": "0.7.10",
         "source_integrity": "sha256:23953f637dc52ae3ed61ab99f278df7b724ec0521f2c627c545776c2c86903c4",

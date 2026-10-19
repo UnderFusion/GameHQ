@@ -24,6 +24,29 @@ public:
     static bool canSave(State state) { return isRecording(state); }
     static bool isRecording(State state) { return state == Recording || state == Ready; }
     static QString saveRejection(State state);
+    // Worker failure reason when system audio was requested but cannot be
+    // recorded. Clips must not silently fall back to video-only.
+    static QString audioFailure();
+    // Why the next save must be refused. A save on a failed buffer re-arms it,
+    // so an audio failure stays the answer until a generation records again.
+    QString saveRejection() const;
+
+    // Audio recovery budget shared by capture-read and encoder failures: at
+    // most kMax re-arms per kWindowMs, then the caller fails the buffer.
+    struct AudioRearmBudget {
+        static constexpr int kMax = 3;
+        static constexpr qint64 kWindowMs = 120000;
+        int used = 0;
+        qint64 windowStartMs = 0;
+        bool allow(qint64 nowMs)
+        {
+            if (used == 0 || nowMs - windowStartMs > kWindowMs) {
+                windowStartMs = nowMs;
+                used = 0;
+            }
+            return ++used <= kMax;
+        }
+    };
 
     quint64 requestStart(const QString& gameName);
     quint64 requestStop();
@@ -39,4 +62,5 @@ private:
     State m_state = Stopped;
     quint64 m_generation = 0;
     QString m_gameName;
+    bool m_audioFailed = false;
 };

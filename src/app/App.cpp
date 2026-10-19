@@ -80,6 +80,12 @@ QString localizedReplayReason(const QString& reason)
             //% "Replay buffer failed; no clip was saved"
             QT_TRID_NOOP("gamehq.notification.replay_failed.reason_buffer_failed"),
             "Replay buffer failed; no clip was saved");
+    if (reason == ReplayBufferState::audioFailure())
+        return NativeText::get(
+            //: Replay failure reason: system audio recording is on but Windows audio cannot be captured.
+            //% "System audio could not be recorded, so no clip was saved. Check the Windows sound output or turn off System audio in Replay settings"
+            QT_TRID_NOOP("gamehq.notification.replay_failed.reason_audio"),
+            "System audio could not be recorded, so no clip was saved. Check the Windows sound output or turn off System audio in Replay settings");
     if (reason == ReplayBufferState::saveRejection(ReplayBufferState::Stopped))
         return NativeText::get(
             //: Replay failure reason: the replay buffer is turned off.

@@ -973,7 +973,7 @@
       <translation>Başka bir taşınabilir profil içe aktarma işlemi zaten çalışıyor.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="686"></location>
+      <location filename="src/app/App.cpp" line="692"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>Çekim işlemleri güvenli biçimde zamanında tamamlanamadığı için güncelleme iptal edildi.</translation>
     </message>
@@ -1224,7 +1224,7 @@
       <translation>GameHQ, güncelleme işlemini son durumuna uygulayamadı.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="661"></location>
+      <location filename="src/app/App.cpp" line="667"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ güncelleme bakımına başlayamadı: %1</translation>
     </message>
@@ -2202,44 +2202,49 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Araçları göster</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="489"></location>
+      <location filename="src/app/App.cpp" line="495"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Bazı dosyalar silinemedi. Başka programlar tarafından kullanılıyor olabilir. Bu dosyaları kullanan programları kapatıp tekrar deneyin.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="496"></location>
+      <location filename="src/app/App.cpp" line="502"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Dosya silinemedi. Başka bir program tarafından kullanılıyor olabilir. Dosyayı kullanan programı kapatıp tekrar deneyin.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="502"></location>
+      <location filename="src/app/App.cpp" line="508"></location>
       <source>Couldn't delete</source>
       <translation>Silinemedi</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="294"></location>
+      <location filename="src/app/App.cpp" line="300"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>Kitaplığa eklenmedi ve dosya diskte yok.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="288"></location>
+      <location filename="src/app/App.cpp" line="294"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>Dosya çekim klasörünüzde, ancak kitaplığa eklenemedi.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="278"></location>
+      <location filename="src/app/App.cpp" line="284"></location>
       <source>Saved to disk, not in library</source>
       <translation>Diske kaydedildi, kitaplıkta yok</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="401"></location>
+      <location filename="src/app/App.cpp" line="407"></location>
       <source>Capture request received</source>
       <translation>Yakalama isteği alındı</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="464"></location>
+      <location filename="src/app/App.cpp" line="470"></location>
       <source>Reason: %1</source>
       <translation>Sebep: %1</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason_audio">
+      <location filename="src/app/App.cpp" line="87"></location>
+      <source>System audio could not be recorded, so no clip was saved. Check the Windows sound output or turn off System audio in Replay settings</source>
+      <translation>Sistem sesi kaydedilemediği için klip kaydedilmedi. Windows ses çıkışını kontrol edin veya Anında tekrar ayarlarında Sistem sesi seçeneğini kapatın</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
       <location filename="src/app/App.cpp" line="81"></location>
@@ -2252,12 +2257,12 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Anında tekrar arabelleği görüntü topluyor; birkaç saniye sonra yeniden kaydetmeyi deneyin</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="93"></location>
+      <location filename="src/app/App.cpp" line="99"></location>
       <source>Replay buffer is empty</source>
       <translation>Anında tekrar arabelleği boş</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_not_running">
-      <location filename="src/app/App.cpp" line="87"></location>
+      <location filename="src/app/App.cpp" line="93"></location>
       <source>Replay buffer is not running</source>
       <translation>Anında tekrar arabelleği çalışmıyor</translation>
     </message>
@@ -2267,42 +2272,42 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
       <translation>Anında tekrar arabelleği başlatılıyor; birkaç saniye sonra yeniden kaydetmeyi deneyin</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="310"></location>
+      <location filename="src/app/App.cpp" line="316"></location>
       <source>Replay failed</source>
       <translation>Anında tekrar başarısız</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="396"></location>
+      <location filename="src/app/App.cpp" line="402"></location>
       <source>Replay save requested</source>
       <translation>Tekrar kaydetme isteği gönderildi</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="445"></location>
+      <location filename="src/app/App.cpp" line="451"></location>
       <source>Replay saved</source>
       <translation>Anında tekrar kaydedildi</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="303"></location>
+      <location filename="src/app/App.cpp" line="309"></location>
       <source>Screenshot failed</source>
       <translation>Ekran görüntüsü başarısız</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="345"></location>
+      <location filename="src/app/App.cpp" line="351"></location>
       <source>Screenshot saved</source>
       <translation>Ekran görüntüsü kaydedildi</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="547"></location>
+      <location filename="src/app/App.cpp" line="553"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ varsayılan ayarlarla başladı. Önceki ayarlar dosyanız saklandığından hiçbir şey kaybolmadı.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="542"></location>
+      <location filename="src/app/App.cpp" line="548"></location>
       <source>Settings could not be read</source>
       <translation>Ayarlar okunamadı</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="728"></location>
+      <location filename="src/app/App.cpp" line="734"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Bazı arayüz sesleri kullanılamıyor</translation>
     </message>

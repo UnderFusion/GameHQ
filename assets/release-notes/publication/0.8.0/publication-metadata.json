@@ -1,0 +1,998 @@
+{
+  "schema_version": 1,
+  "kind": "release-publication",
+  "version": "0.8.0",
+  "date": "2026-10-19",
+  "source_locale": "en-US",
+  "default_locale": "en-US",
+  "localization_policy": "fallback-allowed",
+  "release_source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+  "release_body": {
+    "filename": "RELEASE_BODY.md",
+    "size": 4534,
+    "sha256": "2db841c8a9dd5df664aa571fbd2d6fa0adda3f302ad628921b423a1f43f7e6ea"
+  },
+  "distribution": {
+    "localized_documents": "repository",
+    "github_release_assets": false,
+    "localized_documents_url": "https://github.com/underfusion/GameHQ/tree/v0.8.0/assets/release-notes/publication/0.8.0"
+  },
+  "localized_documents": [
+    {
+      "canonical_locale": "en-US",
+      "requested_locale": "en-US",
+      "effective_locale": "en-US",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
+      "language_english_name": "English (United States)",
+      "language_native_name": "English",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.en-US.md",
+      "size": 3026,
+      "sha256": "2b40f8c0029491b40791c20ea696a9ce545b1ea4f7797790dbef90fb3a761bf9",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hans",
+      "requested_locale": "zh-Hans",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Simplified)",
+      "language_native_name": "简体中文",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.zh-Hans.md",
+      "size": 3216,
+      "sha256": "07cd42f72890b1ea220f64e165778fd59c2d0e8aaa8c471dd96c0a0d71beea8f",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ru-RU",
+      "requested_locale": "ru-RU",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Russian",
+      "language_native_name": "Русский",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.ru-RU.md",
+      "size": 3203,
+      "sha256": "2860fd8e48f9c699546b7bcde40ee1f2bbde9ed3a61797462bca9cbca813ca5d",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-ES",
+      "requested_locale": "es-ES",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish",
+      "language_native_name": "Español",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.es-ES.md",
+      "size": 3203,
+      "sha256": "61c77689725337a767b84d74edb402121f8d6d3e498740c8541c89d43be00ca1",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pt-BR",
+      "requested_locale": "pt-BR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Portuguese (Brazil)",
+      "language_native_name": "Português (Brasil)",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.pt-BR.md",
+      "size": 3215,
+      "sha256": "1cf98398f0f4675d99e16b22c6098ab3e0ae6edee291c7a0b43159bbe9f28382",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "de-DE",
+      "requested_locale": "de-DE",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "German",
+      "language_native_name": "Deutsch",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.de-DE.md",
+      "size": 3202,
+      "sha256": "913e2c6ee8e507f9b1810a387bcc320e8f3751204438d35f87051a100ed91de6",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ja-JP",
+      "requested_locale": "ja-JP",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Japanese",
+      "language_native_name": "日本語",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.ja-JP.md",
+      "size": 3204,
+      "sha256": "9be53fe1038a93a1eb8bb7c65425c4c0a3c4bb33257217edbd9680819e53b555",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "fr-FR",
+      "requested_locale": "fr-FR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "French",
+      "language_native_name": "Français",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.fr-FR.md",
+      "size": 3202,
+      "sha256": "1c5e2f76bec70704c8cfaa82930705dfda2e0d8dbc7fdb96089e65d3ef050392",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "pl-PL",
+      "requested_locale": "pl-PL",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Polish",
+      "language_native_name": "Polski",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.pl-PL.md",
+      "size": 3202,
+      "sha256": "9224aa86e1b9ece2bea7c678abd71f2f8ee51b80684801e550ed83d309a532a8",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "ko-KR",
+      "requested_locale": "ko-KR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Korean",
+      "language_native_name": "한국어",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.ko-KR.md",
+      "size": 3202,
+      "sha256": "88827a20ca914eff53793365f8f326ba3f28da6a12f56245d8b8c77037ae6b0b",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "zh-Hant",
+      "requested_locale": "zh-Hant",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Chinese (Traditional)",
+      "language_native_name": "繁體中文",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.zh-Hant.md",
+      "size": 3217,
+      "sha256": "d6fbee14bc8edc48797207a8c8d8b05aa03a3e821039d9160a3d0c65f58b8dac",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "tr-TR",
+      "requested_locale": "tr-TR",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Turkish",
+      "language_native_name": "Türkçe",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.tr-TR.md",
+      "size": 3203,
+      "sha256": "2c73be345e45ab3c2eac7531eecd4f8fa77b7abb1a5d5a24259f8069742d6091",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "th-TH",
+      "requested_locale": "th-TH",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Thai",
+      "language_native_name": "ไทย",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.th-TH.md",
+      "size": 3200,
+      "sha256": "9194e5838f67b346156678baf8ea1699073d3a06292ddb54ee193a1379494844",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "es-419",
+      "requested_locale": "es-419",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Spanish (Latin America)",
+      "language_native_name": "Español (Latinoamérica)",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.es-419.md",
+      "size": 3219,
+      "sha256": "fe84a8772b859c0219e87397f35163b19bddc2b37b3ef8d3ae8613336efae255",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "uk-UA",
+      "requested_locale": "uk-UA",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Ukrainian",
+      "language_native_name": "Українська",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.uk-UA.md",
+      "size": 3205,
+      "sha256": "65d906a11d610c5ef80f500df6fbda6314c8c099c0437af09216214ad1793667",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_locale": "it-IT",
+      "requested_locale": "it-IT",
+      "effective_locale": "en-US",
+      "fallback": true,
+      "fallback_state": "whole-document-fallback",
+      "fallback_reason": "declared-en-US-fallback",
+      "language_english_name": "Italian",
+      "language_native_name": "Italiano",
+      "version": "0.8.0",
+      "date": "2026-10-19",
+      "filename": "release-notes.it-IT.md",
+      "size": 3203,
+      "sha256": "2d33f47a9e23edc9e25910e215e0bb1ac19fd2f6addca3b189b86dc3bebf9349",
+      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "structure": [
+        {
+          "section_id": "thanks",
+          "item_ids": [
+            "thanks-01",
+            "thanks-02"
+          ]
+        },
+        {
+          "section_id": "audio",
+          "item_ids": [
+            "audio-01",
+            "audio-02",
+            "audio-03",
+            "audio-04",
+            "audio-05"
+          ]
+        },
+        {
+          "section_id": "changes",
+          "item_ids": [
+            "changes-01",
+            "changes-02",
+            "changes-03"
+          ]
+        },
+        {
+          "section_id": "fixes",
+          "item_ids": [
+            "fixes-01",
+            "fixes-02",
+            "fixes-03",
+            "fixes-04"
+          ]
+        },
+        {
+          "section_id": "limitations",
+          "item_ids": [
+            "limitations-01",
+            "limitations-02",
+            "limitations-03",
+            "limitations-04"
+          ]
+        }
+      ]
+    }
+  ]
+}

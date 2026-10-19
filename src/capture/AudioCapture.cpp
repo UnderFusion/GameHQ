@@ -7,9 +7,11 @@
 #include <mmdeviceapi.h>
 #include <avrt.h>
 #include <propidl.h>
+#include <propsys.h>
 
 #include <QDebug>
 #include <algorithm>
+#include <cmath>
 #include <cstring>
 
 namespace {
@@ -22,6 +24,47 @@ bool ok(const char* what, HRESULT hr)
 long long qpc100nsNow()
 {
     return CaptureUtil::qpcNow100ns();
+}
+
+// PKEY_Device_FriendlyName, spelled out so no devpkey import library is needed.
+const PROPERTYKEY kDeviceFriendlyName = {
+    { 0xa45c254e, 0xdf1c, 0x4efd, { 0x80, 0x20, 0x67, 0xd1, 0x46, 0xa8, 0x50, 0xe0 } }, 14 };
+
+// Unexpected read errors tolerated in a row before the stream counts as failed
+// (~0.5 s at the 16 ms poll cadence). Endpoint invalidation fails immediately.
+constexpr int kMaxConsecutiveReadErrors = 30;
+
+bool isEndpointInvalidation(HRESULT hr)
+{
+    return hr == AUDCLNT_E_DEVICE_INVALIDATED
+        || hr == AUDCLNT_E_RESOURCES_INVALIDATED
+        || hr == AUDCLNT_E_SERVICE_NOT_RUNNING;
+}
+
+QString endpointId(IMMDevice* device)
+{
+    LPWSTR id = nullptr;
+    if (!device || FAILED(device->GetId(&id)) || !id)
+        return {};
+    const QString out = QString::fromWCharArray(id);
+    CoTaskMemFree(id);
+    return out;
+}
+
+QString endpointFriendlyName(IMMDevice* device)
+{
+    IPropertyStore* props = nullptr;
+    if (!device || FAILED(device->OpenPropertyStore(STGM_READ, &props)) || !props)
+        return {};
+    PROPVARIANT value;
+    PropVariantInit(&value);
+    QString out;
+    if (SUCCEEDED(props->GetValue(kDeviceFriendlyName, &value)) && value.vt == VT_LPWSTR
+        && value.pwszVal)
+        out = QString::fromWCharArray(value.pwszVal);
+    PropVariantClear(&value);
+    props->Release();
+    return out;
 }
 
 class AudioActivateHandler : public IActivateAudioInterfaceCompletionHandler
@@ -122,6 +165,11 @@ bool AudioCapture::start(unsigned long targetPid)
     if (m_active)
         return true;
     m_deviceInvalidated = false;
+    m_failed = false;
+    m_consecutiveErrors = 0;
+    m_packets = m_frames = m_silentPackets = m_discontinuities = m_readErrors = 0;
+    m_peak = 0.0f;
+    m_firstPacketQpc100ns = 0;
 
     // NOTE: AvSetMmThreadCharacteristicsW removed — passing nullptr as the
     // task-index pointer is UB and the suspected trigger of the dev.74/76
@@ -168,6 +216,24 @@ bool AudioCapture::initDesktopLoopbackInner()
     if (!ok("GetDefaultAudioEndpoint(eRender)", hr))
         return false;
 
+    // Games normally render to the default endpoint. A game routed elsewhere
+    // (Windows per-app output, or a different Multimedia-role default) is not
+    // heard by this loopback, so name the endpoint in the log.
+    m_endpointName = endpointFriendlyName(m_device);
+    const QString consoleId = endpointId(m_device);
+    QString multimediaNote;
+    IMMDevice* multimedia = nullptr;
+    if (SUCCEEDED(m_enumerator->GetDefaultAudioEndpoint(eRender, eMultimedia, &multimedia))
+        && multimedia) {
+        if (endpointId(multimedia) != consoleId)
+            multimediaNote = QStringLiteral(" (multimedia default differs: \"%1\")")
+                                 .arg(endpointFriendlyName(multimedia));
+        multimedia->Release();
+    }
+    qInfo().noquote() << QStringLiteral("AudioCapture: capturing default output \"%1\"%2")
+        .arg(m_endpointName.isEmpty() ? QStringLiteral("unknown") : m_endpointName,
+             multimediaNote);
+
     qInfo() << "AudioCapture: Activate(IAudioClient)";
     hr = m_device->Activate(IID_IAudioClient, CLSCTX_ALL, nullptr,
                             reinterpret_cast<void**>(&m_client));
@@ -182,23 +248,26 @@ bool AudioCapture::initDesktopLoopbackInner()
     qInfo().nospace() << "AudioCapture: mix format " << mix->nSamplesPerSec
                       << "Hz " << mix->nChannels << "ch " << mix->wBitsPerSample << "b";
 
+    // AAC accepts 44.1/48 kHz, while render endpoints may use 96/192 kHz or
+    // surround layouts. Ask the shared audio engine to convert to one stable
+    // recording format instead of passing the endpoint format to the encoder.
     WAVEFORMATEXTENSIBLE want{};
     want.Format.wFormatTag = WAVE_FORMAT_EXTENSIBLE;
-    want.Format.nChannels = mix->nChannels;
-    want.Format.nSamplesPerSec = mix->nSamplesPerSec;
+    want.Format.nChannels = 2;
+    want.Format.nSamplesPerSec = 48000;
     want.Format.wBitsPerSample = 32;
     want.Format.nBlockAlign = WORD(want.Format.nChannels * sizeof(float));
     want.Format.nAvgBytesPerSec = want.Format.nSamplesPerSec * want.Format.nBlockAlign;
     want.Format.cbSize = sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX);
     want.Samples.wValidBitsPerSample = 32;
-    want.dwChannelMask = mix->nChannels == 2
-        ? (SPEAKER_FRONT_LEFT | SPEAKER_FRONT_RIGHT)
-        : SPEAKER_FRONT_CENTER;
+    want.dwChannelMask = SPEAKER_FRONT_LEFT | SPEAKER_FRONT_RIGHT;
     want.SubFormat = KSDATAFORMAT_SUBTYPE_IEEE_FLOAT;
     CoTaskMemFree(mix);
 
     qInfo() << "AudioCapture: Initialize(LOOPBACK)";
-    hr = m_client->Initialize(AUDCLNT_SHAREMODE_SHARED, AUDCLNT_STREAMFLAGS_LOOPBACK,
+    const DWORD flags = AUDCLNT_STREAMFLAGS_LOOPBACK | AUDCLNT_STREAMFLAGS_AUTOCONVERTPCM
+                      | AUDCLNT_STREAMFLAGS_SRC_DEFAULT_QUALITY;
+    hr = m_client->Initialize(AUDCLNT_SHAREMODE_SHARED, flags,
                               10000000LL, 0, &want.Format, nullptr);
     if (!ok("Initialize(LOOPBACK)", hr))
         return false;
@@ -318,8 +387,54 @@ bool AudioCapture::initProcessLoopback(unsigned long pid)
 
 void AudioCapture::stop()
 {
+    if (m_capture)
+        logSummary();
     m_active = false;
     release();
+}
+
+// One bounded line per capture session: counters and a peak level only.
+void AudioCapture::logSummary() const
+{
+    const double seconds = m_sampleRate ? double(m_frames) / m_sampleRate : 0.0;
+    const QString peak = m_peak > 0.0f
+        ? QStringLiteral("%1 dBFS").arg(20.0 * std::log10(double(m_peak)), 0, 'f', 1)
+        : QStringLiteral("silent");
+    const QString firstPacket = m_firstPacketQpc100ns > 0
+        ? QStringLiteral("%1 ms").arg((m_firstPacketQpc100ns - m_startQpc100ns) / 10000)
+        : QStringLiteral("never");
+    qInfo().noquote() << QStringLiteral(
+        "AudioCapture: summary endpoint=\"%1\" packets=%2 audio=%3s silentPackets=%4 "
+        "discontinuities=%5 readErrors=%6 firstPacket=%7 peak=%8 invalidated=%9 failed=%10")
+        .arg(m_endpointName).arg(m_packets).arg(seconds, 0, 'f', 1).arg(m_silentPackets)
+        .arg(m_discontinuities).arg(m_readErrors).arg(firstPacket, peak)
+        .arg(m_deviceInvalidated ? QStringLiteral("yes") : QStringLiteral("no"),
+             m_failed ? QStringLiteral("yes") : QStringLiteral("no"));
+}
+
+void AudioCapture::noteReadError(const char* call, long hr)
+{
+    ++m_readErrors;
+    if (isEndpointInvalidation(hr)) {
+        m_active = false;
+        m_deviceInvalidated = true;
+        qWarning().nospace()
+            << "AudioCapture: render endpoint changed during " << call
+            << " (hr=0x" << Qt::hex << quint32(hr) << Qt::dec
+            << ") — replay capture must re-arm";
+        return;
+    }
+    // Log only the first error of a run; a stuck stream would otherwise write
+    // one line per poll tick.
+    if (m_consecutiveErrors == 0)
+        qWarning().nospace() << "AudioCapture: " << call << " hr=0x" << Qt::hex << quint32(hr);
+    if (++m_consecutiveErrors >= kMaxConsecutiveReadErrors) {
+        m_active = false;
+        m_failed = true;
+        qWarning().nospace() << "AudioCapture: " << m_consecutiveErrors
+                             << " consecutive read errors (last hr=0x" << Qt::hex
+                             << quint32(hr) << ") — audio stream failed";
+    }
 }
 
 void AudioCapture::release()
@@ -346,44 +461,24 @@ unsigned AudioCapture::poll(float* outBuf, unsigned maxFrames, long long* outTim
 
     UINT32 packetFrames = 0;
     HRESULT hr = m_capture->GetNextPacketSize(&packetFrames);
-    if (FAILED(hr) || packetFrames == 0) {
-        if (FAILED(hr)) {
-            if (hr == AUDCLNT_E_DEVICE_INVALIDATED
-                || hr == AUDCLNT_E_RESOURCES_INVALIDATED
-                || hr == AUDCLNT_E_SERVICE_NOT_RUNNING) {
-                m_active = false;
-                m_deviceInvalidated = true;
-                qWarning().nospace()
-                    << "AudioCapture: render endpoint changed during GetNextPacketSize "
-                       "(hr=0x" << Qt::hex << quint32(hr) << Qt::dec
-                    << ") — replay capture must re-arm";
-            } else {
-                qWarning().nospace() << "AudioCapture: GetNextPacketSize hr=0x"
-                                     << Qt::hex << quint32(hr);
-            }
-        }
+    if (FAILED(hr)) {
+        noteReadError("GetNextPacketSize", hr);
         return 0;
     }
+    // No packet is legitimate silence: loopback delivers nothing while no
+    // stream renders to the endpoint. It is not an error.
+    m_consecutiveErrors = 0;
+    if (packetFrames == 0)
+        return 0;
 
     BYTE* data = nullptr;
     DWORD flags = 0;
-    hr = m_capture->GetBuffer(&data, &packetFrames, &flags, nullptr, nullptr);
-    if (FAILED(hr) || packetFrames == 0) {
-        if (FAILED(hr) && hr != AUDCLNT_S_BUFFER_EMPTY) {
-            if (hr == AUDCLNT_E_DEVICE_INVALIDATED
-                || hr == AUDCLNT_E_RESOURCES_INVALIDATED
-                || hr == AUDCLNT_E_SERVICE_NOT_RUNNING) {
-                m_active = false;
-                m_deviceInvalidated = true;
-                qWarning().nospace()
-                    << "AudioCapture: render endpoint changed during GetBuffer "
-                       "(hr=0x" << Qt::hex << quint32(hr) << Qt::dec
-                    << ") — replay capture must re-arm";
-            } else {
-                qWarning().nospace() << "AudioCapture: GetBuffer hr=0x"
-                                     << Qt::hex << quint32(hr);
-            }
-        }
+    UINT64 qpcPosition = 0;
+    hr = m_capture->GetBuffer(&data, &packetFrames, &flags, nullptr, &qpcPosition);
+    if (hr == AUDCLNT_S_BUFFER_EMPTY || (SUCCEEDED(hr) && packetFrames == 0))
+        return 0;
+    if (FAILED(hr)) {
+        noteReadError("GetBuffer", hr);
         return 0;
     }
 
@@ -393,17 +488,33 @@ unsigned AudioCapture::poll(float* outBuf, unsigned maxFrames, long long* outTim
                    << (packetFrames - maxFrames) << "of" << packetFrames
                    << "frames dropped (buffer stall?)";
     const size_t bytes = size_t(copied) * m_frameSize;
-    if (flags & AUDCLNT_BUFFERFLAGS_SILENT)
+    if (flags & AUDCLNT_BUFFERFLAGS_SILENT) {
         memset(outBuf, 0, bytes);
-    else
+        ++m_silentPackets;
+    } else {
         memcpy(outBuf, data, bytes);
+        const unsigned samples = copied * m_channels;
+        for (unsigned i = 0; i < samples; ++i)
+            m_peak = std::max(m_peak, std::fabs(outBuf[i]));
+    }
+    if (flags & AUDCLNT_BUFFERFLAGS_DATA_DISCONTINUITY)
+        ++m_discontinuities;
 
+    // The device QPC position stays exact when a stalled poll drains several
+    // packets at once; poll time is only the fallback if Windows omits it.
+    const long long now = qpc100nsNow();
+    const long long position = static_cast<long long>(qpcPosition);
+    const long long packetQpc = (position > 0 && position <= now) ? position : now;
+    if (m_firstPacketQpc100ns == 0)
+        m_firstPacketQpc100ns = packetQpc;
+    ++m_packets;
+    m_frames += copied;
     if (outTimestamp100ns)
-        *outTimestamp100ns = qpc100nsNow() - m_startQpc100ns;
+        *outTimestamp100ns = packetQpc - m_startQpc100ns;
 
     hr = m_capture->ReleaseBuffer(packetFrames);
     if (FAILED(hr))
-        qWarning().nospace() << "AudioCapture: ReleaseBuffer hr=0x" << Qt::hex << quint32(hr);
+        noteReadError("ReleaseBuffer", hr);
 
     return copied;
 }

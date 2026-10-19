@@ -121,6 +121,36 @@ private slots:
         QVERIFY(reset.value(ConfigKeys::CaptureHideBorder).toBool());
     }
 
+    void replayAudioDefaultsAndPersistedOptOut()
+    {
+        ConfigManager fresh(path());
+        QVERIFY(fresh.load());
+        QVERIFY(fresh.value(ConfigKeys::AudioEnabled).toBool());
+        QVERIFY(fresh.isDefault(ConfigKeys::AudioEnabled));
+        fresh.setValue(ConfigKeys::ReplayFps, 60);
+        QVERIFY(fresh.save());
+        QVERIFY(!readFile().contains(ConfigKeys::AudioEnabled));
+
+        // Existing profiles that omit the old default gain recorded sound.
+        ConfigManager upgraded(path());
+        QVERIFY(upgraded.load());
+        QVERIFY(upgraded.value(ConfigKeys::AudioEnabled).toBool());
+        QCOMPARE(upgraded.value(ConfigKeys::ReplayFps).toInt(), 60);
+
+        // A persisted false (including a legacy full config) remains an opt-out.
+        upgraded.setValue(ConfigKeys::AudioEnabled, false);
+        QVERIFY(upgraded.save());
+        QVERIFY(readFile().contains(ConfigKeys::AudioEnabled));
+        ConfigManager disabled(path());
+        QVERIFY(disabled.load());
+        QVERIFY(!disabled.value(ConfigKeys::AudioEnabled).toBool());
+        QVERIFY(disabled.hasExplicitValue(ConfigKeys::AudioEnabled));
+        resetCategory(disabled, QStringLiteral("Replay"));
+        QVERIFY(disabled.value(ConfigKeys::AudioEnabled).toBool());
+        QVERIFY(disabled.save());
+        QVERIFY(!readFile().contains(ConfigKeys::AudioEnabled));
+    }
+
     void unknownKeyFallsBackToTheCallersValue()
     {
         ConfigManager cfg(path());

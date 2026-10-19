@@ -109,7 +109,8 @@ private:
                              const QString& saveId);
     void runExport(SegmentLease lease, const CapturePublisher::Reservation& reservation,
                    const QString& thumbPath,
-                   const QString& game, const QString& exePath, const QString& saveId, quint64 requestId);
+                   const QString& game, const QString& exePath, const QString& saveId,
+                   quint64 requestId, bool requireAudio);
 
     Pipeline* m_pipe = nullptr;
     bool m_apartmentReady = false;
@@ -122,6 +123,10 @@ private:
     quint64 m_updateGeneration = 0; // request may follow a GUI-side start rejection
     bool m_hdrScreenshotPending = false;
     quint64 m_hdrRequestId = 0;
+    // Runtime audio read failures that already forced a re-arm, in a short
+    // window; past the limit the buffer fails instead of re-arming forever.
+    bool m_audioFailed = false;      // current Failed state is the audio failure
+    ReplayBufferState::AudioRearmBudget m_audioRearmBudget;
 };
 
 // GUI-thread owner: constructs the worker on a dedicated thread and relays toggle().
