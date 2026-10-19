@@ -6,11 +6,11 @@
   "source_locale": "en-US",
   "default_locale": "en-US",
   "localization_policy": "fallback-allowed",
-  "release_source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+  "release_source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
   "release_body": {
     "filename": "RELEASE_BODY.md",
-    "size": 4534,
-    "sha256": "2db841c8a9dd5df664aa571fbd2d6fa0adda3f302ad628921b423a1f43f7e6ea"
+    "size": 4287,
+    "sha256": "ca3512b66e8f955c98f845b68158e3bc84c8d09fcc93688ec7267ea9528e3453"
   },
   "distribution": {
     "localized_documents": "repository",
@@ -30,17 +30,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.en-US.md",
-      "size": 3026,
-      "sha256": "2b40f8c0029491b40791c20ea696a9ce545b1ea4f7797790dbef90fb3a761bf9",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2779,
+      "sha256": "a814787ae8493a082e8d312d43580d26065f124d2d44fb0ebbd87ab7e7c6b202",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -91,17 +84,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.zh-Hans.md",
-      "size": 3216,
-      "sha256": "07cd42f72890b1ea220f64e165778fd59c2d0e8aaa8c471dd96c0a0d71beea8f",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2969,
+      "sha256": "9b910ecc943b89ed5f64d09fd8d3be4f1aebb0db3855bf8908513e6a2bc983d2",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -152,17 +138,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.ru-RU.md",
-      "size": 3203,
-      "sha256": "2860fd8e48f9c699546b7bcde40ee1f2bbde9ed3a61797462bca9cbca813ca5d",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2956,
+      "sha256": "c7a673322a031afabef7a6d6270ada13e0944330874440d811757fcd92a51d99",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -213,17 +192,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.es-ES.md",
-      "size": 3203,
-      "sha256": "61c77689725337a767b84d74edb402121f8d6d3e498740c8541c89d43be00ca1",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2956,
+      "sha256": "c422222e046f0923789592398acfda4ad894053bfac66dcc0ac8e5ab4a164637",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -274,17 +246,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.pt-BR.md",
-      "size": 3215,
-      "sha256": "1cf98398f0f4675d99e16b22c6098ab3e0ae6edee291c7a0b43159bbe9f28382",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2968,
+      "sha256": "a7446654a2a9cc4fcdfc8c110e6cf8ff2b4de72fbfca7153c4f807819c41e2f3",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -335,17 +300,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.de-DE.md",
-      "size": 3202,
-      "sha256": "913e2c6ee8e507f9b1810a387bcc320e8f3751204438d35f87051a100ed91de6",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2955,
+      "sha256": "afb7e6d7b06ecde5f7fa038f1f526b4caaa6e595fe64f4161f4889f535c3a45d",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -396,17 +354,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.ja-JP.md",
-      "size": 3204,
-      "sha256": "9be53fe1038a93a1eb8bb7c65425c4c0a3c4bb33257217edbd9680819e53b555",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2957,
+      "sha256": "4cc09915d5bc49f908e22b05458dc8542a390b12b29c1c063c5e5a0c77724d2e",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -457,17 +408,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.fr-FR.md",
-      "size": 3202,
-      "sha256": "1c5e2f76bec70704c8cfaa82930705dfda2e0d8dbc7fdb96089e65d3ef050392",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2955,
+      "sha256": "60ee60b67821462a16e5e16410b6dc8458e5014969f7f9a416718d49205fb2bd",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -518,17 +462,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.pl-PL.md",
-      "size": 3202,
-      "sha256": "9224aa86e1b9ece2bea7c678abd71f2f8ee51b80684801e550ed83d309a532a8",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2955,
+      "sha256": "9c9f08a3385c67bef622914deabc6ff93b2ca84fee42b1ceb6833102305934bd",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -579,17 +516,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.ko-KR.md",
-      "size": 3202,
-      "sha256": "88827a20ca914eff53793365f8f326ba3f28da6a12f56245d8b8c77037ae6b0b",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2955,
+      "sha256": "e824fe07c84d08271d7ae4ab91c17110464d2e7b6ee68de4fcae7fa9fc8967d5",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -640,17 +570,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.zh-Hant.md",
-      "size": 3217,
-      "sha256": "d6fbee14bc8edc48797207a8c8d8b05aa03a3e821039d9160a3d0c65f58b8dac",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2970,
+      "sha256": "dfc3d4946b1ed973dacf6d023a72d35c6b1d9bdfd656d754515e56b6ebfb45ee",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -701,17 +624,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.tr-TR.md",
-      "size": 3203,
-      "sha256": "2c73be345e45ab3c2eac7531eecd4f8fa77b7abb1a5d5a24259f8069742d6091",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2956,
+      "sha256": "1b352d0df49cdad07519800b171ecc57f965aa6bf97eabc9b70f64c9ab0b86ad",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -762,17 +678,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.th-TH.md",
-      "size": 3200,
-      "sha256": "9194e5838f67b346156678baf8ea1699073d3a06292ddb54ee193a1379494844",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2953,
+      "sha256": "b0a2b5867a60136a75490b79689c0f9df54e2e26f4487d1426ca0e87646cfd5f",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -823,17 +732,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.es-419.md",
-      "size": 3219,
-      "sha256": "fe84a8772b859c0219e87397f35163b19bddc2b37b3ef8d3ae8613336efae255",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2972,
+      "sha256": "c78bde3065475cd651f0ef7343c044a82fbee5b4b0ec5e5f338156f64bdd02d8",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -884,17 +786,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.uk-UA.md",
-      "size": 3205,
-      "sha256": "65d906a11d610c5ef80f500df6fbda6314c8c099c0437af09216214ad1793667",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2958,
+      "sha256": "5a47be118fb562dfc901b5ffd3f40d4a7e69883238698e02e1b3f519dfb2cda1",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [
@@ -945,17 +840,10 @@
       "version": "0.8.0",
       "date": "2026-10-19",
       "filename": "release-notes.it-IT.md",
-      "size": 3203,
-      "sha256": "2d33f47a9e23edc9e25910e215e0bb1ac19fd2f6addca3b189b86dc3bebf9349",
-      "source_integrity": "sha256:ec02aafe1ccfd3913d1c89dd9dc452fad907fa34bc9a0ea6a5e74be9447957e8",
+      "size": 2956,
+      "sha256": "03678c40bcf0278413366c245b01e3a21fb8ee9bfb614c03b964d754cf875608",
+      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
       "structure": [
-        {
-          "section_id": "thanks",
-          "item_ids": [
-            "thanks-01",
-            "thanks-02"
-          ]
-        },
         {
           "section_id": "audio",
           "item_ids": [

@@ -6,20 +6,6 @@
   "date": "2026-10-19",
   "sections": [
     {
-      "id": "thanks",
-      "title": "Thank You",
-      "items": [
-        {
-          "id": "thanks-01",
-          "text": "Thank you to the community member who reported silent clips recorded while playing through Playnite, and to everyone helping test the beta fixes."
-        },
-        {
-          "id": "thanks-02",
-          "text": "This release collects all changes since stable 0.7.9, including the 0.7.10 betas."
-        }
-      ]
-    },
-    {
       "id": "audio",
       "title": "Clip Audio Repair",
       "items": [

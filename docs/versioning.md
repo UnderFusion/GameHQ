@@ -1,6 +1,6 @@
 # Versioning & Documentation Rules
 
-> **Owner policy (2026-10-19):** 0.7.9 remains the published stable release. The next development line is **0.8.0**, starting with `v0.8.0-beta1` for the silent-clip audio repair. Its release notes collect changes since stable 0.7.9, including the 0.7.10 betas, and begin with thanks to the reporter. Stable 0.8.0 is a later release decision; preparing Beta 1 does not promote it to stable.
+> **Owner policy (2026-10-19):** 0.7.9 remains the published stable release. The next development line is **0.8.0**, starting with `v0.8.0-beta1` for the silent-clip audio repair. Its release notes collect changes since stable 0.7.9, including the 0.7.10 betas, with the reporter thank-you reserved for stable 0.8.0. Stable 0.8.0 is a later release decision; preparing Beta 1 does not promote it to stable.
 >
 > **Earlier owner policy (2026-10-08):** 0.7.10 shipped first as `v0.7.10-beta1` (Xbox mode with Playnite, notifications kept out of screenshots), then `v0.7.10-beta2` (controller shortcuts in non-Steam games). Betas of one version share its in-app release notes, but every published build requires a fresh release sequence.
 >

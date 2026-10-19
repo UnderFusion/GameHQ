@@ -2,11 +2,6 @@
 
 > This document is the original **English (en-US)** release note. No reviewed Chinese (Traditional) translation exists for this version, so the complete English text is published unchanged.
 
-## Thank You
-
-- Thank you to the community member who reported silent clips recorded while playing through Playnite, and to everyone helping test the beta fixes.
-- This release collects all changes since stable 0.7.9, including the 0.7.10 betas.
-
 ## Clip Audio Repair
 
 - Desktop audio recording starts by default. An old internal workaround left System audio off by default, so clips could contain video only. The setting remains available in Settings > Replay, and an explicitly saved disabled setting remains respected.

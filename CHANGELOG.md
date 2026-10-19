@@ -6,8 +6,6 @@ Public release history and the current local release candidate.
 
 ## [0.8.0] - 2026-10-19
 
-Thank you to the community member who reported silent clips recorded while playing through Playnite, and to everyone helping test the beta fixes.
-
 Published first as the `v0.8.0-beta1` pre-release. This section collects changes since stable 0.7.9, including the 0.7.10 betas.
 
 ### Added
