@@ -710,6 +710,8 @@ ApplicationWindow {
     }
 
     function padNavigate(direction) {
+        if (deleteDialog.visible) { deleteDialog.padHorizontal(direction); return }
+        if (bulkDeleteDialog.visible) { bulkDeleteDialog.padHorizontal(direction); return }
         if (window.sidebarLanguageListOpen())
             return
         if (helpDialog.visible)
@@ -737,8 +739,6 @@ ApplicationWindow {
             return
         }
         if (window.menuOpen || window.helpOpen)
-            return
-        if (deleteDialog.visible || bulkDeleteDialog.visible)
             return
         if (window.sidebarFocused) {
             // RIGHT returns to the grid — the mirror of LEFT-at-the-edge
@@ -783,6 +783,8 @@ ApplicationWindow {
     }
 
     function padNavigateVertical(direction) {
+        if (deleteDialog.visible) { deleteDialog.padStep(direction); return }
+        if (bulkDeleteDialog.visible) { bulkDeleteDialog.padStep(direction); return }
         if (window.sidebarLanguageListOpen()) {
             desktopSidebar.languageCombo.padStep(direction)
             sounds.play("nav_tick")
@@ -805,8 +807,6 @@ ApplicationWindow {
             return
         }
         if (window.helpOpen)
-            return
-        if (deleteDialog.visible || bulkDeleteDialog.visible)
             return
         if (window.menuOpen) {
             const menuCount = padMenu.entries.length
@@ -866,6 +866,8 @@ ApplicationWindow {
     }
 
     function padConfirm() {
+        if (deleteDialog.visible) { deleteDialog.padConfirm(); return }
+        if (bulkDeleteDialog.visible) { bulkDeleteDialog.padConfirm(); return }
         if (window.sidebarLanguageListOpen()) {
             sounds.play("confirm")
             desktopSidebar.languageCombo.padCommitHighlighted()
@@ -873,8 +875,6 @@ ApplicationWindow {
         }
         if (helpDialog.visible) { helpDialog.padConfirm(); return }
         if (aboutDialog.visible) { aboutDialog.padConfirm(); return }
-        if (deleteDialog.visible) { deleteDialog.confirmed(); deleteDialog.close(); return }
-        if (bulkDeleteDialog.visible) { window.bulkConfirmDelete(); bulkDeleteDialog.close(); return }
         if (window.settingsOpen) {
             // On the sidebar, Cross still activates the sidebar row (it is the
             // app's nav, not a settings control).
@@ -975,11 +975,11 @@ ApplicationWindow {
     }
 
     function padBack() {
+        if (deleteDialog.visible) { deleteDialog.padBack(); return }
+        if (bulkDeleteDialog.visible) { bulkDeleteDialog.padBack(); return }
         if (window.sidebarLanguageListOpen()) { window.closeSidebarLanguageList(); return }
         if (helpDialog.visible) { helpDialog.close(); return }
         if (aboutDialog.visible) { aboutDialog.close(); return }
-        if (deleteDialog.visible) { deleteDialog.canceled(); deleteDialog.close(); return }
-        if (bulkDeleteDialog.visible) { bulkDeleteDialog.canceled(); bulkDeleteDialog.close(); return }
         if (window.settingsOpen) {
             // Circle unwinds one step at a time: dropdown → options →
             // categories → out of Settings entirely.

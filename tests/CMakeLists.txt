@@ -39,6 +39,12 @@ gamehq_add_test(tst_recentui tst_recentui.cpp)
 target_link_libraries(tst_recentui PRIVATE Qt6::Qml)
 target_compile_definitions(tst_recentui PRIVATE GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
 
+# Main-window controller routing with the real delete confirmation and focus.
+gamehq_add_test(tst_maindeleteui tst_maindeleteui.cpp)
+target_link_libraries(tst_maindeleteui PRIVATE Qt6::Quick Qt6::Qml)
+target_compile_definitions(tst_maindeleteui PRIVATE GAMEHQ_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
+set_tests_properties(tst_maindeleteui PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen;QT_QUICK_BACKEND=software")
+
 # Include the existing QML layout suites in the complete CTest run.
 find_program(GAMEHQ_QMLTESTRUNNER NAMES qmltestrunner HINTS "${CMAKE_PREFIX_PATH}/bin" REQUIRED)
 foreach(suite IN ITEMS interfacescaling overlaylayout)
