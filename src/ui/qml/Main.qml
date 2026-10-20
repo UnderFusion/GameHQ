@@ -429,7 +429,15 @@ ApplicationWindow {
         return bulkSelection.allSelected()
     }
 
+    // A delete confirmation owns all input while it is visible: nothing behind
+    // it may change the selection, open menus or switch pages.
+    function confirmDialogOpen() {
+        return deleteDialog.visible || bulkDeleteDialog.visible
+    }
+
     function bulkToggle(index, extendRange) {
+        if (window.confirmDialogOpen())
+            return
         if (bulkSelection.toggle(index, extendRange))
             sounds.play("nav_tick")
     }
@@ -469,6 +477,8 @@ ApplicationWindow {
     }
 
     function padBulkToggle() {
+        if (window.confirmDialogOpen())
+            return
         if (window.bulkMode)
             window.bulkExit()
         else
@@ -477,6 +487,8 @@ ApplicationWindow {
     }
 
     function bulkSelectAll() {
+        if (window.confirmDialogOpen())
+            return
         sounds.play(bulkSelection.selectAll() ? "nav_tick" : "favorite")
     }
 
@@ -484,17 +496,36 @@ ApplicationWindow {
         return bulkSelection.rows()
     }
 
+    // The files the open bulk confirmation listed, frozen by path when it
+    // opened. Confirm deletes exactly these, re-resolved to current rows, so a
+    // selection change or gallery refresh behind the dialog cannot widen it.
+    property var pendingBulkDeletePaths: []
+
     function bulkAskDelete() {
-        var n = window.bulkCount()
+        if (window.confirmDialogOpen())
+            return
+        var rows = window.bulkRows()
+        var paths = []
+        for (var i = 0; i < rows.length; ++i)
+            paths.push(app.gallery.get(rows[i]).filePath)
+        var n = paths.length
         if (n === 0)
             return
+        window.pendingBulkDeletePaths = paths
         //% "%n capture will be permanently deleted.\nThis cannot be undone."
         bulkDeleteDialog.message = qsTrId("gamehq.gallery.delete_selected.message", n)
         bulkDeleteDialog.open()
     }
 
     function bulkConfirmDelete() {
-        var rows = window.bulkRows()
+        var paths = window.pendingBulkDeletePaths
+        window.pendingBulkDeletePaths = []
+        var rows = []
+        for (var i = 0; i < paths.length; ++i) {
+            var row = app.gallery.rowOf(paths[i])
+            if (row >= 0)
+                rows.push(row)
+        }
         if (rows.length === 0) {
             window.bulkExit()
             return
@@ -670,6 +701,8 @@ ApplicationWindow {
     }
 
     function padTabStep(direction) {
+        if (window.confirmDialogOpen())
+            return
         if (window.sidebarLanguageListOpen())
             return
         if (helpDialog.visible)
@@ -903,6 +936,8 @@ ApplicationWindow {
     }
 
     function padFavorite() {
+        if (window.confirmDialogOpen())
+            return
         if (aboutDialog.visible || window.menuOpen || window.settingsOpen || window.helpOpen)
             return
         if (window.sidebarFocused) {
@@ -918,6 +953,8 @@ ApplicationWindow {
     }
 
     function padToggleMenu() {
+        if (window.confirmDialogOpen())
+            return
         if (aboutDialog.visible || helpDialog.visible || window.settingsOpen || grid.count === 0)
             return
         if (window.sidebarFocused)
@@ -1071,14 +1108,16 @@ ApplicationWindow {
         function onDesktopSettings() {
             if (window.activeShareDialog()) return   // Share is modal
             window.usingGamepad = true
-            if (lightbox.visible || aboutDialog.visible || helpDialog.visible)
+            if (lightbox.visible || aboutDialog.visible || helpDialog.visible
+                    || window.confirmDialogOpen())
                 return
             window.openSettings()
         }
         function onDesktopZoom(direction) {
             if (window.activeShareDialog()) return   // Share is modal
             window.usingGamepad = true
-            if (lightbox.visible || aboutDialog.visible || window.settingsOpen || window.helpOpen)
+            if (lightbox.visible || aboutDialog.visible || window.settingsOpen || window.helpOpen
+                    || window.confirmDialogOpen())
                 return
             if (direction > 0)
                 window.zoomIn()
@@ -1366,6 +1405,7 @@ ApplicationWindow {
         //% "Delete"
         confirmLabel: qsTrId("gamehq.action.delete")
         onConfirmed: window.bulkConfirmDelete()
+        onCanceled: window.pendingBulkDeletePaths = []
     }
 
     AboutWhatsNewDialog {
