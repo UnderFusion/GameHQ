@@ -33,7 +33,8 @@ const PROPERTYKEY kDeviceFriendlyName = {
     { 0xa45c254e, 0xdf1c, 0x4efd, { 0x80, 0x20, 0x67, 0xd1, 0x46, 0xa8, 0x50, 0xe0 } }, 14 };
 
 // Unexpected read errors tolerated in a row before the stream counts as failed
-// (~0.5 s at the 16 ms poll cadence). Endpoint invalidation fails immediately.
+// (~0.5 s at the 16 ms poll cadence, ~0.6 s at the drain thread's 20 ms wait).
+// Endpoint invalidation fails immediately.
 constexpr int kMaxConsecutiveReadErrors = 30;
 
 bool isEndpointInvalidation(HRESULT hr)
@@ -182,6 +183,10 @@ bool AudioCapture::start(Mode mode, unsigned long targetPid)
 {
     if (m_active)
         return true;
+    // A stream that failed on the drain thread is inactive but not torn
+    // down; restarting over it would assign to a joinable std::thread.
+    if (m_drainThread.joinable() || m_client)
+        stop();
     m_deviceInvalidated = false;
     m_failed = false;
     m_consecutiveErrors = 0;
@@ -433,8 +438,18 @@ void AudioCapture::stop()
     // Join first: the drain thread owns the capture client while it runs.
     m_active = false;
     stopDrainThread();
-    if (m_capture)
+    if (m_capture) {
         logSummary();
+        // Application loopback follows the window owner's process tree. A
+        // game that renders sound from another process (some launchers or
+        // wrappers) records valid silence; say so for the diagnostics log.
+        if (m_mode == Mode::Game && m_peak == 0.0f && m_sampleRate
+            && m_frames >= quint64(m_sampleRate) * 30)
+            qWarning().noquote() << QStringLiteral(
+                "AudioCapture: game audio for PID %1 was silent for %2 s — if the game was "
+                "audible, its sound comes from another process; Desktop audio records it")
+                .arg(m_targetPid).arg(m_frames / m_sampleRate);
+    }
     release();
     std::lock_guard<std::mutex> lock(m_fifoMutex);
     m_fifo.clear();
@@ -454,7 +469,9 @@ void AudioCapture::startDrainThread()
         std::vector<float> scratch(size_t(std::max(m_bufFrames, m_sampleRate / 10)) * m_channels);
         const unsigned scratchFrames = unsigned(scratch.size() / m_channels);
         while (!m_stopDrain.load() && m_active.load()) {
-            WaitForSingleObject(static_cast<HANDLE>(m_event), 100);
+            // The event normally wakes this every ~10 ms; the short timeout
+            // keeps read-error detection as fast as the poll path's.
+            WaitForSingleObject(static_cast<HANDLE>(m_event), 20);
             while (!m_stopDrain.load() && m_active.load()) {
                 long long timestamp = 0;
                 const unsigned got = readPacket(scratch.data(), scratchFrames, &timestamp);
