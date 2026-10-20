@@ -743,8 +743,13 @@ void SegmentRecorder::writeFrame(ID3D11Texture2D* tex, ID3D11Device* dev,
 
     if (built) {
         const long long segPts = gpts - m_segStartPts;
-        long long dur = (m_lastSegPts >= 0 && segPts > m_lastSegPts)
-                            ? segPts - m_lastSegPts : m_frameInterval;
+        // Nominal duration, never "time since the previous frame": after a
+        // capture gap (worker stall, loading screen, WGC sending no frames)
+        // the H.264 encoder already holds the previous frame across the gap
+        // in its timestamps. Stamping the next frame with the gap length as
+        // well made it count the gap twice, so the segment's video ran longer
+        // than real time and drifted behind the audio until the next roll.
+        const long long dur = m_frameInterval;
         sample->SetSampleTime(segPts);
         sample->SetSampleDuration(dur);
         if (ok("WriteSample(video)", m_writer->WriteSample(DWORD(m_videoStream), sample))) {

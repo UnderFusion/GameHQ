@@ -680,7 +680,14 @@ private slots:
         QElapsedTimer clock;
         clock.start();
         int frame = 0;
+        bool workerStalled = false;
         while (clock.elapsed() < 3000) {
+            // One 400 ms busy-worker gap mid-clip: game audio must neither lose
+            // samples nor fall out of sync with the held video frame.
+            if (!workerStalled && clock.elapsed() > 1500) {
+                workerStalled = true;
+                QTest::qSleep(400);
+            }
             // FramePumpWorker::poll order: drain audio, then the next frame,
             // so a stall's audio lands before that frame can roll the segment.
             for (;;) {
@@ -783,6 +790,57 @@ private slots:
         QVERIFY2(capturedMs >= spannedMs - 25.0, "Game audio lost samples across a worker stall");
         QVERIFY2(capturedMs >= 900.0, "Game audio stopped delivering during a worker stall");
         stalled.stop();
+    }
+
+    // A capture gap (worker stall, loading screen, WGC sending no frames)
+    // must not lengthen the saved video: the encoder holds the last frame
+    // across the gap, and the clip must still match real time so it stays in
+    // sync with the audio. Synthetic timestamps keep this deterministic.
+    void captureGapKeepsTheVideoTimeline()
+    {
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-gap-XXXXXX");
+        QVERIFY(dir.isValid());
+        VideoFixture video;
+        QVERIFY(makeVideo(video));
+        SegmentRecorder recorder;
+        QVERIFY(recorder.begin(320, 180, 320, 180, 30, 2, 1, 10, dir.path(),
+                               video.device.Get(), video.context.Get()));
+        const auto finish = qScopeGuard([&] {
+            recorder.discardCurrentSegment();
+            recorder.end();
+        });
+        constexpr long long kFrame = 10000000LL / 30;
+        // 0-1.5 s, a 400 ms gap inside the second segment, then up to 3 s.
+        for (long long t = 0; t <= 30000000LL; t += kFrame) {
+            if (t > 15000000LL && t < 19000000LL)
+                continue;
+            recorder.writeFrame(video.texture.Get(), video.device.Get(), video.context.Get(), t);
+        }
+        const SegmentLease saved = recorder.snapshotForSave();
+        QCOMPARE(saved.paths().size(), qsizetype(3));
+        const QString clip = dir.path() + "/gap.mp4";
+        QVERIFY(ReplayExporter::concat(saved.paths(), clip, QStringLiteral("gap"),
+                                       ReplayExporter::Audio::Any));
+
+        using Microsoft::WRL::ComPtr;
+        QVERIFY(SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE)));
+        const auto mf = qScopeGuard([] { MFShutdown(); });
+        ComPtr<IMFSourceReader> reader;
+        QVERIFY(SUCCEEDED(MFCreateSourceReaderFromURL(
+            reinterpret_cast<LPCWSTR>(clip.utf16()), nullptr, reader.GetAddressOf())));
+        PROPVARIANT duration;
+        PropVariantInit(&duration);
+        QVERIFY(SUCCEEDED(reader->GetPresentationAttribute(
+            DWORD(MF_SOURCE_READER_MEDIASOURCE), MF_PD_DURATION, &duration)));
+        const double seconds = double(duration.uhVal.QuadPart) / 1e7;
+        PropVariantClear(&duration);
+        qInfo().noquote() << QStringLiteral("capture gap: clip lasts %1 s for 3.0 s of capture")
+                                 .arg(seconds, 0, 'f', 3);
+        // Before the fix the 400 ms gap was counted twice: ~3.37 s.
+        QVERIFY2(seconds > 2.9 && seconds < 3.1, "Saved video length does not match real time");
     }
 
     void earlySnapshot_data()

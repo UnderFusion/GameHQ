@@ -117,6 +117,7 @@ and idle expiry without releasing other owners.
 ### Media clocks
 
 - **Video PTS**: schedule-anchored throttle on the capture clock; each segment's first frame is rebased to exactly t=0 (IDR), export concat advances the timeline by each segment's max sample end.
+- **Video duration**: every frame is written with the nominal `1/fps` duration. The H.264 encoder holds the previous frame across a timestamp gap by itself; a duration equal to the gap counted it a second time and stretched the segment (a 400 ms gap made a 3.0 s capture save as 3.33 s, video drifting behind audio). `captureGapKeepsTheVideoTimeline` pins this.
 - **Audio PTS**: a continuous **sample-count clock** — anchored on the first packet after the first video frame (or at 0 when silence is padded first), advanced by `numFrames/rate` per packet. A forward gap over 100 ms is real silence and is zero-filled; the clock re-anchors only when it runs >0.5 s ahead of the packet time. Never derived from poll timestamps: after any pump stall the drained packet burst carries near-identical poll times, which previously caused ~350 ms audio holes at every segment boundary (clips visibly "pausing" every 5 s).
 - **Segment rolls**: the next segment's sink writer is pre-built on a side thread and adopted at roll time (`segment roll took N ms (pre-built)` in the log; ~30 ms vs ~300 ms inline). Diagnose clips with `python tools/analyze_mp4_timing.py <clip.mp4> [gap_ms]`.
 

@@ -14,6 +14,7 @@ Planned for the `v0.8.0-beta2` pre-release.
 ### Fixed
 
 - If game audio cannot be recorded, GameHQ does not switch to desktop audio on its own: the replay buffer stops with a localized reason that names the audio source to choose instead.
+- After a pause in captured frames (a loading screen, a paused game or a busy moment), saved clips no longer play their video too slowly and out of sync with the sound until the next 5-second segment.
 
 ## [0.8.0] - 2026-10-19
 
