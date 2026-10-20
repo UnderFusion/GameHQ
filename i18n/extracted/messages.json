@@ -2273,7 +2273,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 374
+          "line": 376
         }
       ],
       "plural": false,
@@ -2345,11 +2345,11 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 368
+          "line": 370
         },
         {
           "file": "src/ui/AppController.cpp",
-          "line": 390
+          "line": 392
         }
       ],
       "plural": false,
@@ -2906,7 +2906,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 212
+          "line": 214
         }
       ],
       "plural": false,
@@ -2993,7 +2993,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 218
+          "line": 220
         }
       ],
       "plural": false,
@@ -3012,7 +3012,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 227
+          "line": 229
         }
       ],
       "plural": false,
@@ -3116,7 +3116,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 238
+          "line": 240
         }
       ],
       "plural": false,
@@ -3135,7 +3135,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 248
+          "line": 250
         }
       ],
       "plural": false,
@@ -3401,7 +3401,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 692
+          "line": 704
         }
       ],
       "plural": false,
@@ -4311,7 +4311,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 667
+          "line": 679
         }
       ],
       "plural": false,
@@ -5079,7 +5079,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 356
+          "line": 358
         }
       ],
       "plural": false,
@@ -5096,7 +5096,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 342
+          "line": 344
         }
       ],
       "plural": false,
@@ -5113,7 +5113,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 347
+          "line": 349
         }
       ],
       "plural": false,
@@ -5130,7 +5130,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 336
+          "line": 338
         }
       ],
       "plural": false,
@@ -5147,7 +5147,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 330
+          "line": 332
         }
       ],
       "plural": false,
@@ -7718,7 +7718,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 495
+          "line": 507
         }
       ],
       "plural": false,
@@ -7735,7 +7735,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 502
+          "line": 514
         }
       ],
       "plural": false,
@@ -7752,7 +7752,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 508
+          "line": 520
         }
       ],
       "plural": false,
@@ -7769,7 +7769,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 300
+          "line": 312
         }
       ],
       "plural": false,
@@ -7786,7 +7786,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 294
+          "line": 306
         }
       ],
       "plural": false,
@@ -7803,7 +7803,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 284
+          "line": 296
         }
       ],
       "plural": false,
@@ -7820,7 +7820,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 407
+          "line": 419
         }
       ],
       "plural": false,
@@ -7837,7 +7837,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 470
+          "line": 482
         }
       ],
       "plural": false,
@@ -7847,23 +7847,6 @@
       "markup_signature": [],
       "protected_tokens": [],
       "source_hash": "a5cadb8e899f7085ce4c5d89a59153e9260d60a119c1cb944889bfda65a3de2d"
-    },
-    {
-      "id": "gamehq.notification.replay_failed.reason_audio",
-      "source": "System audio could not be recorded, so no clip was saved. Check the Windows sound output or turn off System audio in Replay settings",
-      "context": "ID",
-      "domain": "application",
-      "locations": [
-        {
-          "file": "src/app/App.cpp",
-          "line": 87
-        }
-      ],
-      "plural": false,
-      "placeholders": [],
-      "markup_signature": [],
-      "protected_tokens": [],
-      "source_hash": "1c6ae1e9f21f8e6021552aa56cbc174c32d5293ff58f8fcc1e59be3ac936d992"
     },
     {
       "id": "gamehq.notification.replay_failed.reason_buffer_failed",
@@ -7900,8 +7883,59 @@
       "source_hash": "91d2dfd1bd809733d933cc096f08b1bf0703faa6b4cb6e6ea03b405792e995b3"
     },
     {
+      "id": "gamehq.notification.replay_failed.reason_desktop_audio",
+      "source": "Desktop audio could not be recorded, so no clip was saved. Check the Windows sound output or change the audio source in Replay settings",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 87
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "2ff38415d72f5b04d96d41e8dd83a4327ed7062907b04f3cf612deda93db4630"
+    },
+    {
       "id": "gamehq.notification.replay_failed.reason_empty",
       "source": "Replay buffer is empty",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 111
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "6ae16902e0117b3d363219386368e72ecff2301942819100b62b8ff66d6af182"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_game_audio",
+      "source": "Game audio could not be recorded, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/app/App.cpp",
+          "line": 93
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "9ccdc7978dd0e4a6eca85483c87a1fd9dcc18ea5a428eb4ad521adc8e90aa5d2"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_game_audio_unsupported",
+      "source": "Game audio needs Windows 11, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings",
       "context": "ID",
       "domain": "application",
       "locations": [
@@ -7914,7 +7948,7 @@
       "placeholders": [],
       "markup_signature": [],
       "protected_tokens": [],
-      "source_hash": "6ae16902e0117b3d363219386368e72ecff2301942819100b62b8ff66d6af182"
+      "source_hash": "4e6e1bdfd75e07ff4edc62b276a7e8d9519ae37528f7185a0421da527ae820c8"
     },
     {
       "id": "gamehq.notification.replay_failed.reason_not_running",
@@ -7924,7 +7958,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 93
+          "line": 105
         }
       ],
       "plural": false,
@@ -7958,7 +7992,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 316
+          "line": 328
         }
       ],
       "plural": false,
@@ -7975,7 +8009,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 402
+          "line": 414
         }
       ],
       "plural": false,
@@ -7992,7 +8026,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 451
+          "line": 463
         }
       ],
       "plural": false,
@@ -8009,7 +8043,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 309
+          "line": 321
         }
       ],
       "plural": false,
@@ -8026,7 +8060,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 351
+          "line": 363
         }
       ],
       "plural": false,
@@ -8043,7 +8077,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 553
+          "line": 565
         }
       ],
       "plural": false,
@@ -8062,7 +8096,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 548
+          "line": 560
         }
       ],
       "plural": false,
@@ -8079,7 +8113,7 @@
       "locations": [
         {
           "file": "src/app/App.cpp",
-          "line": 734
+          "line": 746
         }
       ],
       "plural": false,
@@ -8568,7 +8602,7 @@
       "locations": [
         {
           "file": "src/ui/AppController.cpp",
-          "line": 130
+          "line": 132
         }
       ],
       "plural": false,
@@ -15499,6 +15533,159 @@
       "source_hash": "13c49d95e9c7afd5d81ce6b3c7cd811c8869ed0c700dc203136c2bda9a2d4588"
     },
     {
+      "id": "gamehq.settings.replay.encoding.audio_source.desktop",
+      "source": "Desktop audio",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
+          "line": 162
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d90b2bfffe53523f630106ed8ddfb827c7699242bc7ef5876ab09f16f3a63b17"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.desktop_description",
+      "source": "Records everything on the default Windows output, including chat and music apps.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
+          "line": 143
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "22dff4ef28748eb51ee9a4657d1bf544745b832bdf3477f3fc17d59b71ddc45e"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.game",
+      "source": "Game audio",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
+          "line": 156
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "c5e61650db6cecdccd09395524a8b588b621c191fe9afcebbf9aca210eeb5f32"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.game_description",
+      "source": "Records only the current game, whichever output device it plays on.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
+          "line": 146
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d6a918d673fa271f68e7a7674780cae1113a9cf8e13c46edb7a728b063d17e3b"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.game_unsupported",
+      "source": "Game audio (needs Windows 11)",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
+          "line": 158
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a2539d9e2e4acae57dcc09e51990833fb68c1f69d469792f69d89e23daf78a5c"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.label",
+      "source": "Audio source",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
+          "line": 131
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "298f23aa5d84283e6c4dd606bde31560cc8bf67bb9ab7b51bacdf392681d1059"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.off",
+      "source": "Off",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
+          "line": 164
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.off_description",
+      "source": "Replay clips are saved without sound.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
+          "line": 135
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "d66bdfa74b682bf09797e468c027ccc27ec0321a495478592dbaba1f158a94ce"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.unsupported_description",
+      "source": "Game audio needs Windows 11. Desktop audio records everything on the default Windows output.",
+      "context": "ID",
+      "domain": "application",
+      "locations": [
+        {
+          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
+          "line": 139
+        }
+      ],
+      "plural": false,
+      "placeholders": [],
+      "markup_signature": [],
+      "protected_tokens": [],
+      "source_hash": "a94bcc395e7f9909efc6af37e8be4583de24634f2a975b66aa60ae67009e9ba4"
+    },
+    {
       "id": "gamehq.settings.replay.encoding.bitrate",
       "source": "Video bitrate",
       "context": "ID",
@@ -15601,40 +15788,6 @@
       "source_hash": "91fd9bcc41bd3875bec6d5631af6f26c2cd27b5c543881356a905a57068d3f94"
     },
     {
-      "id": "gamehq.settings.replay.encoding.system_audio.description",
-      "source": "Include desktop audio in newly recorded replay segments.",
-      "context": "ID",
-      "domain": "application",
-      "locations": [
-        {
-          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 128
-        }
-      ],
-      "plural": false,
-      "placeholders": [],
-      "markup_signature": [],
-      "protected_tokens": [],
-      "source_hash": "f0eac29d91db9e00995b559a9a6a70df22684ddb761cad9dfe716edde0d8a2f6"
-    },
-    {
-      "id": "gamehq.settings.replay.encoding.system_audio.label",
-      "source": "System audio",
-      "context": "ID",
-      "domain": "application",
-      "locations": [
-        {
-          "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 126
-        }
-      ],
-      "plural": false,
-      "placeholders": [],
-      "markup_signature": [],
-      "protected_tokens": [],
-      "source_hash": "9d6918f89df6705c345d325cb7a1fdcd505640e17eb8b4a75633451b9cdec2df"
-    },
-    {
       "id": "gamehq.settings.replay.encoding.title",
       "source": "Recording quality",
       "context": "ID",
@@ -15659,7 +15812,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 140
+          "line": 188
         }
       ],
       "plural": false,
@@ -15678,7 +15831,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 136
+          "line": 184
         }
       ],
       "plural": false,
@@ -15695,7 +15848,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 148
+          "line": 196
         }
       ],
       "plural": false,
@@ -15712,7 +15865,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 143
+          "line": 191
         }
       ],
       "plural": false,
@@ -15729,7 +15882,7 @@
       "locations": [
         {
           "file": "src/ui/qml/settings/ReplaySettingsPage.qml",
-          "line": 138
+          "line": 186
         }
       ],
       "plural": false,

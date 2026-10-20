@@ -48,7 +48,10 @@ inline constexpr QLatin1StringView InputModernControllerSupport{ "input.modern_c
 // ("gamepad.capture,gamepad.guide") or "*" when hidden for that game.
 inline constexpr QLatin1StringView InputSteamConflictHelp{ "input.steam_conflict_help" };
 inline constexpr QLatin1StringView InputSteamConflictAckPrefix{ "input.steam_conflict_ack." };
+// Legacy on/off switch; still honoured as "off" while audio.source is "auto".
 inline constexpr QLatin1StringView AudioEnabled{ "audio.enabled" };
+// auto | game | desktop | off — see capture/AudioSourcePolicy.h.
+inline constexpr QLatin1StringView AudioSource{ "audio.source" };
 
 // storage.* — empty means "use the managed default root" (see CaptureLocations).
 inline constexpr QLatin1StringView StorageScreenshotsRoot{ "storage.screenshots_root" };

@@ -24,9 +24,13 @@ public:
     static bool canSave(State state) { return isRecording(state); }
     static bool isRecording(State state) { return state == Recording || state == Ready; }
     static QString saveRejection(State state);
-    // Worker failure reason when system audio was requested but cannot be
-    // recorded. Clips must not silently fall back to video-only.
+    // Worker failure reasons when audio was requested but cannot be recorded.
+    // Clips must not silently fall back to video-only, and game audio must not
+    // silently become desktop audio. audioFailure() is the desktop source.
     static QString audioFailure();
+    static QString gameAudioFailure();
+    static QString gameAudioUnsupported();
+    static bool isAudioFailure(const QString& reason);
     // Why the next save must be refused. A save on a failed buffer re-arms it,
     // so an audio failure stays the answer until a generation records again.
     QString saveRejection() const;
@@ -62,5 +66,5 @@ private:
     State m_state = Stopped;
     quint64 m_generation = 0;
     QString m_gameName;
-    bool m_audioFailed = false;
+    QString m_audioFailure;   // set while the current Failed state is an audio failure
 };

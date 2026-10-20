@@ -24,9 +24,9 @@ bool ReplayBufferState::confirm(quint64 generation, State state, const QString& 
     if (!allowed)
         return false;
     if (state == Recording)
-        m_audioFailed = false;
+        m_audioFailure.clear();
     else if (state == Failed)
-        m_audioFailed = reason == audioFailure();
+        m_audioFailure = isAudioFailure(reason) ? reason : QString();
     setState(state, m_gameName);
     if (state == Failed)
         emit failed(reason.isEmpty() ? saveRejection(Failed) : reason);
@@ -67,13 +67,31 @@ QString ReplayBufferState::saveRejection(State state)
 
 QString ReplayBufferState::audioFailure()
 {
-    return QStringLiteral("System audio could not be recorded, so no clip was saved. "
-                          "Check the Windows sound output or turn off System audio in Replay settings");
+    return QStringLiteral("Desktop audio could not be recorded, so no clip was saved. "
+                          "Check the Windows sound output or change the audio source in Replay settings");
+}
+
+QString ReplayBufferState::gameAudioFailure()
+{
+    return QStringLiteral("Game audio could not be recorded, so no clip was saved. "
+                          "Choose Desktop audio or Off as the audio source in Replay settings");
+}
+
+QString ReplayBufferState::gameAudioUnsupported()
+{
+    return QStringLiteral("Game audio needs Windows 11, so no clip was saved. "
+                          "Choose Desktop audio or Off as the audio source in Replay settings");
+}
+
+bool ReplayBufferState::isAudioFailure(const QString& reason)
+{
+    return reason == audioFailure() || reason == gameAudioFailure()
+        || reason == gameAudioUnsupported();
 }
 
 QString ReplayBufferState::saveRejection() const
 {
-    if (m_audioFailed && (m_state == Failed || m_state == Starting))
-        return audioFailure();
+    if (!m_audioFailure.isEmpty() && (m_state == Failed || m_state == Starting))
+        return m_audioFailure;
     return saveRejection(m_state);
 }

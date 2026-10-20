@@ -82,10 +82,22 @@ QString localizedReplayReason(const QString& reason)
             "Replay buffer failed; no clip was saved");
     if (reason == ReplayBufferState::audioFailure())
         return NativeText::get(
-            //: Replay failure reason: system audio recording is on but Windows audio cannot be captured.
-            //% "System audio could not be recorded, so no clip was saved. Check the Windows sound output or turn off System audio in Replay settings"
-            QT_TRID_NOOP("gamehq.notification.replay_failed.reason_audio"),
-            "System audio could not be recorded, so no clip was saved. Check the Windows sound output or turn off System audio in Replay settings");
+            //: Replay failure reason: the Desktop audio source is selected but the default Windows output cannot be captured.
+            //% "Desktop audio could not be recorded, so no clip was saved. Check the Windows sound output or change the audio source in Replay settings"
+            QT_TRID_NOOP("gamehq.notification.replay_failed.reason_desktop_audio"),
+            "Desktop audio could not be recorded, so no clip was saved. Check the Windows sound output or change the audio source in Replay settings");
+    if (reason == ReplayBufferState::gameAudioFailure())
+        return NativeText::get(
+            //: Replay failure reason: the Game audio source is selected but Windows could not capture the game's own audio.
+            //% "Game audio could not be recorded, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings"
+            QT_TRID_NOOP("gamehq.notification.replay_failed.reason_game_audio"),
+            "Game audio could not be recorded, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings");
+    if (reason == ReplayBufferState::gameAudioUnsupported())
+        return NativeText::get(
+            //: Replay failure reason: the Game audio source is selected on a Windows version without per-app audio capture.
+            //% "Game audio needs Windows 11, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings"
+            QT_TRID_NOOP("gamehq.notification.replay_failed.reason_game_audio_unsupported"),
+            "Game audio needs Windows 11, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings");
     if (reason == ReplayBufferState::saveRejection(ReplayBufferState::Stopped))
         return NativeText::get(
             //: Replay failure reason: the replay buffer is turned off.

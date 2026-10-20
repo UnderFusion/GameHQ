@@ -203,6 +203,10 @@ public:
     Q_INVOKABLE void resetConfig(const QString& key);
     Q_INVOKABLE void resetConfigGroup(const QString& prefix);
     Q_INVOKABLE void resetAllConfig();
+    // Replay audio source: whether this Windows build can record one game's
+    // audio, and the concrete game/desktop/off choice a stored value means.
+    Q_INVOKABLE bool gameAudioSupported() const;
+    Q_INVOKABLE QString audioSourceSelection() const;
 
     // Wired after construction: App builds SoundEngine long after the
     // controller, and the preview is the only thing here that needs it.

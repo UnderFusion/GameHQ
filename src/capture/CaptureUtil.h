@@ -53,4 +53,23 @@ inline QString uniqueTimestampedPath(const QString& dir, const QString& stampFor
     return path;
 }
 
+// Real OS build, not the marketing version: GetVersionEx() lies to unmanifested
+// processes, RtlGetVersion() does not. 0 means "could not read it".
+inline unsigned long windowsBuildNumber()
+{
+    static const unsigned long build = []() -> unsigned long {
+        using PfnRtlGetVersion = LONG (WINAPI*)(PRTL_OSVERSIONINFOW);
+        const HMODULE ntdll = GetModuleHandleW(L"ntdll.dll");
+        const auto pfn = ntdll ? reinterpret_cast<PfnRtlGetVersion>(
+                                     reinterpret_cast<void*>(GetProcAddress(ntdll, "RtlGetVersion")))
+                               : nullptr;
+        RTL_OSVERSIONINFOW info{};
+        info.dwOSVersionInfoSize = sizeof(info);
+        if (!pfn || pfn(&info) != 0)
+            return 0;
+        return info.dwBuildNumber;
+    }();
+    return build;
+}
+
 } // namespace CaptureUtil

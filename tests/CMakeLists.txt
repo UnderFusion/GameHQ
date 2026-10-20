@@ -919,19 +919,30 @@ gamehq_add_test(tst_capturepublisher
     "${CMAKE_SOURCE_DIR}/src/capture/CapturePublisher.cpp")
 
 # Recorder restore/trim and export-task lifetime with file fixtures, plus
-# partial-segment encoding/remux with synthetic video and audio, plus a bounded
-# default-output WASAPI initialization check (no window or playback).
+# partial-segment encoding/remux with synthetic video and audio, plus bounded
+# desktop and game-audio WASAPI initialization checks (no window or playback).
 gamehq_add_test(tst_segmentrecorder
     tst_segmentrecorder.cpp
     "${CMAKE_SOURCE_DIR}/src/capture/AudioCapture.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/AudioSourcePolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayExporter.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentRecorder.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentLease.cpp")
 target_link_libraries(tst_segmentrecorder PRIVATE
     Qt6::Gui d3d11 dxguid ole32 oleaut32 mfplat mfreadwrite mfuuid uuid ksuser mmdevapi)
+# Separate tone-playing process for the opt-in game-audio test: process
+# loopback must capture it on any output device and nothing else.
+add_executable(audio_tone_fixture audio_tone_fixture.cpp)
+target_link_options(audio_tone_fixture PRIVATE -static -municode)
+target_link_libraries(audio_tone_fixture PRIVATE ole32 uuid ksuser)
+set_target_properties(audio_tone_fixture PROPERTIES WIN32_EXECUTABLE FALSE)
+target_compile_definitions(tst_segmentrecorder PRIVATE
+    AUDIO_TONE_FIXTURE="$<TARGET_FILE:audio_tone_fixture>")
+add_dependencies(tst_segmentrecorder audio_tone_fixture)
 
 gamehq_add_test(tst_framepumpservice
     tst_framepumpservice.cpp
+    "${CMAKE_SOURCE_DIR}/src/capture/AudioSourcePolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayBufferState.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayBufferState.h")
 
@@ -1391,6 +1402,7 @@ gamehq_add_test(tst_captureacknowledgement
     "${CMAKE_SOURCE_DIR}/src/capture/hdr/GpuToneMapper.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/hdr/HdrToneMapMath.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/AudioCapture.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/AudioSourcePolicy.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentRecorder.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/SegmentLease.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ReplayExporter.cpp"

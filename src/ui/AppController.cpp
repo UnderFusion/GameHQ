@@ -1,5 +1,7 @@
 #include "ui/AppController.h"
 #include "app/StartupManager.h"
+#include "capture/AudioSourcePolicy.h"
+#include "capture/CaptureUtil.h"
 #include "capture/ScreenshotService.h"
 #include "config/CaptureLocations.h"
 #include "config/ConfigKeys.h"
@@ -426,6 +428,18 @@ void AppController::setConfig(const QString& key, const QVariant& value)
     m_config->save();
     if (SettingsApplyPolicy::requiresReplayBufferRestart(key))
         emit replaySettingsChanged();
+}
+
+bool AppController::gameAudioSupported() const
+{
+    return AudioSourcePolicy::isProcessLoopbackBuild(CaptureUtil::windowsBuildNumber());
+}
+
+QString AppController::audioSourceSelection() const
+{
+    return AudioSourcePolicy::effectiveSelection(
+        m_config->value(ConfigKeys::AudioSource, QStringLiteral("auto")).toString(),
+        m_config->value(ConfigKeys::AudioEnabled, true).toBool(), gameAudioSupported());
 }
 
 QVariant AppController::configDefault(const QString& key, const QVariant& fallback) const

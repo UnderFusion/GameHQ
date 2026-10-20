@@ -53,6 +53,7 @@ QJsonObject ConfigManager::defaults()
         { ConfigKeys::InputModernControllerSupport, "auto" },
         { ConfigKeys::InputSteamConflictHelp,  true },
         { ConfigKeys::AudioEnabled,            true },
+        { ConfigKeys::AudioSource,             "auto" },
         { ConfigKeys::StorageScreenshotsRoot,  "" },
         { ConfigKeys::StorageClipsRoot,        "" },
         { ConfigKeys::StartupEnabled,          false },

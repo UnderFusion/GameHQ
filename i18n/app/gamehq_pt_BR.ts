@@ -657,7 +657,7 @@
       <translation>A pasta selecionada não é válida.</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="374"></location>
+      <location filename="src/ui/AppController.cpp" line="376"></location>
       <source>Choose a local folder.</source>
       <translation>Escolha uma pasta local.</translation>
     </message>
@@ -677,8 +677,8 @@
       <translation>O GameHQ não conseguiu salvar a pasta selecionada.</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="368"></location>
-      <location filename="src/ui/AppController.cpp" line="390"></location>
+      <location filename="src/ui/AppController.cpp" line="370"></location>
+      <location filename="src/ui/AppController.cpp" line="392"></location>
       <source>The capture type is invalid.</source>
       <translation>O tipo de captura não é válido.</translation>
     </message>
@@ -835,7 +835,7 @@
       <translation>Não foi possível calcular o hash de %1.</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="212"></location>
+      <location filename="src/ui/AppController.cpp" line="214"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>Perfis portáteis só podem ser importados por uma cópia instalada do GameHQ.</translation>
     </message>
@@ -860,12 +860,12 @@
       <translation>Não foi possível remover o registro recuperado da importação portátil.</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="218"></location>
+      <location filename="src/ui/AppController.cpp" line="220"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>Selecione uma pasta local que contenha a versão portátil do GameHQ.</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="227"></location>
+      <location filename="src/ui/AppController.cpp" line="229"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>A pasta selecionada não é um pacote portátil do GameHQ.</translation>
     </message>
@@ -895,12 +895,12 @@
       <translation>Um caminho portable:/ aponta para fora da raiz do pacote selecionado.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="238"></location>
+      <location filename="src/ui/AppController.cpp" line="240"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>O GameHQ não conseguiu identificar o próprio processo para a importação.</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="248"></location>
+      <location filename="src/ui/AppController.cpp" line="250"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>O GameHQ não conseguiu iniciar o processo de importação portátil.</translation>
     </message>
@@ -975,7 +975,7 @@
       <translation>Outra importação de perfil portátil já está em andamento.</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="692"></location>
+      <location filename="src/app/App.cpp" line="704"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>A atualização foi cancelada porque as tarefas de captura não foram concluídas com segurança a tempo.</translation>
     </message>
@@ -1226,7 +1226,7 @@
       <translation>O GameHQ não conseguiu publicar a transação da atualização.</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="667"></location>
+      <location filename="src/app/App.cpp" line="679"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>O GameHQ não conseguiu iniciar a manutenção da atualização: %1</translation>
     </message>
@@ -1449,27 +1449,27 @@ Esta ação não pode ser desfeita.</numerusform>
       <translation>%1 — Visualizador</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="356"></location>
+      <location filename="src/ui/AppController.cpp" line="358"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>Verificar o estado HDR atual de cada tela.</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="342"></location>
+      <location filename="src/ui/AppController.cpp" line="344"></location>
       <source>Windows HDR is active</source>
       <translation>O HDR do Windows está ativo</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="347"></location>
+      <location filename="src/ui/AppController.cpp" line="349"></location>
       <source>Windows HDR is inactive</source>
       <translation>O HDR do Windows está inativo</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="336"></location>
+      <location filename="src/ui/AppController.cpp" line="338"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>O driver gráfico não informou nenhum monitor</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="330"></location>
+      <location filename="src/ui/AppController.cpp" line="332"></location>
       <source>Not checked yet</source>
       <translation>Ainda não verificado</translation>
     </message>
@@ -2207,49 +2207,49 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
       <translation>Mostrar ferramentas</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="495"></location>
+      <location filename="src/app/App.cpp" line="507"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>Não foi possível excluir alguns arquivos. Talvez eles estejam sendo usados por outros programas. Feche os programas que estiverem usando esses arquivos e tente novamente.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="502"></location>
+      <location filename="src/app/App.cpp" line="514"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>Não foi possível excluir o arquivo. Talvez ele esteja sendo usado por outro programa. Feche o programa que estiver usando o arquivo e tente novamente.</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="508"></location>
+      <location filename="src/app/App.cpp" line="520"></location>
       <source>Couldn't delete</source>
       <translation>Não foi possível excluir</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="300"></location>
+      <location filename="src/app/App.cpp" line="312"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>Não foi adicionada à biblioteca e o arquivo não está no disco.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="294"></location>
+      <location filename="src/app/App.cpp" line="306"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>O arquivo está na sua pasta de capturas, mas não foi possível adicioná-lo à biblioteca.</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="284"></location>
+      <location filename="src/app/App.cpp" line="296"></location>
       <source>Saved to disk, not in library</source>
       <translation>Salvo no disco, fora da biblioteca</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="407"></location>
+      <location filename="src/app/App.cpp" line="419"></location>
       <source>Capture request received</source>
       <translation>Solicitação de captura recebida</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="470"></location>
+      <location filename="src/app/App.cpp" line="482"></location>
       <source>Reason: %1</source>
       <translation>Motivo: %1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_audio">
       <location filename="src/app/App.cpp" line="87"></location>
       <source>System audio could not be recorded, so no clip was saved. Check the Windows sound output or turn off System audio in Replay settings</source>
-      <translation>Não foi possível gravar o áudio do sistema, então nenhum clipe foi salvo. Verifique a saída de som do Windows ou desative Áudio do sistema nas configurações de Replay</translation>
+      <translation type="vanished">Não foi possível gravar o áudio do sistema, então nenhum clipe foi salvo. Verifique a saída de som do Windows ou desative Áudio do sistema nas configurações de Replay</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
       <location filename="src/app/App.cpp" line="81"></location>
@@ -2261,13 +2261,28 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>O buffer de replay está reunindo imagens; tente salvar de novo em alguns segundos</translation>
     </message>
+    <message id="gamehq.notification.replay_failed.reason_desktop_audio">
+      <location filename="src/app/App.cpp" line="87"></location>
+      <source>Desktop audio could not be recorded, so no clip was saved. Check the Windows sound output or change the audio source in Replay settings</source>
+      <translation>Não foi possível gravar o áudio da área de trabalho, então nenhum clipe foi salvo. Verifique a saída de som do Windows ou altere a fonte de áudio nas configurações de Replay</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="99"></location>
+      <location filename="src/app/App.cpp" line="111"></location>
       <source>Replay buffer is empty</source>
       <translation>O buffer de replay está vazio</translation>
     </message>
-    <message id="gamehq.notification.replay_failed.reason_not_running">
+    <message id="gamehq.notification.replay_failed.reason_game_audio">
       <location filename="src/app/App.cpp" line="93"></location>
+      <source>Game audio could not be recorded, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings</source>
+      <translation>Não foi possível gravar o áudio do jogo, então nenhum clipe foi salvo. Escolha Áudio da área de trabalho ou Desativado como fonte de áudio nas configurações de Replay</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason_game_audio_unsupported">
+      <location filename="src/app/App.cpp" line="99"></location>
+      <source>Game audio needs Windows 11, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings</source>
+      <translation>O áudio do jogo requer Windows 11, então nenhum clipe foi salvo. Escolha Áudio da área de trabalho ou Desativado como fonte de áudio nas configurações de Replay</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason_not_running">
+      <location filename="src/app/App.cpp" line="105"></location>
       <source>Replay buffer is not running</source>
       <translation>O buffer de replay não está em execução</translation>
     </message>
@@ -2277,42 +2292,42 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
       <translation>O buffer de replay está iniciando; tente salvar de novo em alguns segundos</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="316"></location>
+      <location filename="src/app/App.cpp" line="328"></location>
       <source>Replay failed</source>
       <translation>Falha no replay</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="402"></location>
+      <location filename="src/app/App.cpp" line="414"></location>
       <source>Replay save requested</source>
       <translation>Salvamento do replay solicitado</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="451"></location>
+      <location filename="src/app/App.cpp" line="463"></location>
       <source>Replay saved</source>
       <translation>Replay salvo</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="309"></location>
+      <location filename="src/app/App.cpp" line="321"></location>
       <source>Screenshot failed</source>
       <translation>Falha na captura de tela</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="351"></location>
+      <location filename="src/app/App.cpp" line="363"></location>
       <source>Screenshot saved</source>
       <translation>Captura de tela salva</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="553"></location>
+      <location filename="src/app/App.cpp" line="565"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>O GameHQ iniciou com as configurações padrão. Seu arquivo de configurações anterior foi mantido para que nada fosse perdido.</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="548"></location>
+      <location filename="src/app/App.cpp" line="560"></location>
       <source>Settings could not be read</source>
       <translation>Não foi possível ler as configurações</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="734"></location>
+      <location filename="src/app/App.cpp" line="746"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>Alguns sons da interface estão indisponíveis</translation>
     </message>
@@ -2453,7 +2468,7 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="130"></location>
+      <location filename="src/ui/AppController.cpp" line="132"></location>
       <source>Release notes</source>
       <translation>Notas da versão</translation>
     </message>
@@ -4475,6 +4490,51 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
       <source>Manage the rolling buffer used for instant replay clips.</source>
       <translation>Gerenciar o buffer contínuo usado para clipes de replay instantâneo.</translation>
     </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.desktop">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="162"></location>
+      <source>Desktop audio</source>
+      <translation>Áudio da área de trabalho</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.desktop_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="143"></location>
+      <source>Records everything on the default Windows output, including chat and music apps.</source>
+      <translation>Grava tudo o que toca na saída padrão do Windows, incluindo apps de chat e música.</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.game">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="156"></location>
+      <source>Game audio</source>
+      <translation>Áudio do jogo</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.game_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="146"></location>
+      <source>Records only the current game, whichever output device it plays on.</source>
+      <translation>Grava só o jogo atual, em qualquer dispositivo de saída em que ele toque.</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.game_unsupported">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="158"></location>
+      <source>Game audio (needs Windows 11)</source>
+      <translation>Áudio do jogo (requer Windows 11)</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.label">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="131"></location>
+      <source>Audio source</source>
+      <translation>Fonte de áudio</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.off">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="164"></location>
+      <source>Off</source>
+      <translation>Desativado</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.off_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="135"></location>
+      <source>Replay clips are saved without sound.</source>
+      <translation>Os clipes de Replay são salvos sem som.</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.unsupported_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="139"></location>
+      <source>Game audio needs Windows 11. Desktop audio records everything on the default Windows output.</source>
+      <translation>O áudio do jogo requer Windows 11. O áudio da área de trabalho grava tudo o que toca na saída padrão do Windows.</translation>
+    </message>
     <message id="gamehq.settings.replay.encoding.bitrate">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="107"></location>
       <source>Video bitrate</source>
@@ -4508,12 +4568,12 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
     <message id="gamehq.settings.replay.encoding.system_audio.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="128"></location>
       <source>Include desktop audio in newly recorded replay segments.</source>
-      <translation>Incluir o áudio da área de trabalho em novos segmentos gravados de replay.</translation>
+      <translation type="vanished">Incluir o áudio da área de trabalho em novos segmentos gravados de replay.</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.system_audio.label">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="126"></location>
       <source>System audio</source>
-      <translation>Áudio do sistema</translation>
+      <translation type="vanished">Áudio do sistema</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="77"></location>
@@ -4521,27 +4581,27 @@ Para usar %1 também com %3, o GameHQ precisa alterar %2 de Pressionar para Pres
       <translation>Qualidade da gravação</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="140"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="188"></location>
       <source>Saved replays go to %1. Failures always notify you.</source>
       <translation>Replays salvos vão para %1. Falhas sempre geram uma notificação.</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="184"></location>
       <source>Feedback</source>
       <translation>Feedback</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.notification">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="148"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="196"></location>
       <source>Clip saved notification</source>
       <translation>Notificação de clipe salvo</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.sound">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="143"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="191"></location>
       <source>Clip saved sound</source>
       <translation>Som de clipe salvo</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.title">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="186"></location>
       <source>After saving a clip</source>
       <translation>Depois de salvar um clipe</translation>
     </message>

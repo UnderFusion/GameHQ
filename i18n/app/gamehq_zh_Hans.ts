@@ -655,7 +655,7 @@
       <translation>所选文件夹无效。</translation>
     </message>
     <message id="gamehq.error.capture_location.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="374"></location>
+      <location filename="src/ui/AppController.cpp" line="376"></location>
       <source>Choose a local folder.</source>
       <translation>请选择一个本地文件夹。</translation>
     </message>
@@ -675,8 +675,8 @@
       <translation>GameHQ 无法保存所选文件夹。</translation>
     </message>
     <message id="gamehq.error.capture_location.type_invalid">
-      <location filename="src/ui/AppController.cpp" line="368"></location>
-      <location filename="src/ui/AppController.cpp" line="390"></location>
+      <location filename="src/ui/AppController.cpp" line="370"></location>
+      <location filename="src/ui/AppController.cpp" line="392"></location>
       <source>The capture type is invalid.</source>
       <translation>捕获类型无效。</translation>
     </message>
@@ -833,7 +833,7 @@
       <translation>无法计算 %1 的哈希值。</translation>
     </message>
     <message id="gamehq.error.portable_import.installed_copy_required">
-      <location filename="src/ui/AppController.cpp" line="212"></location>
+      <location filename="src/ui/AppController.cpp" line="214"></location>
       <source>Portable profiles can only be imported by an installed copy of GameHQ.</source>
       <translation>便携配置文件只能由已安装的 GameHQ 副本导入。</translation>
     </message>
@@ -858,12 +858,12 @@
       <translation>无法删除已恢复的便携导入日志。</translation>
     </message>
     <message id="gamehq.error.portable_import.local_folder_required">
-      <location filename="src/ui/AppController.cpp" line="218"></location>
+      <location filename="src/ui/AppController.cpp" line="220"></location>
       <source>Select a local folder containing portable GameHQ.</source>
       <translation>请选择包含便携版 GameHQ 的本地文件夹。</translation>
     </message>
     <message id="gamehq.error.portable_import.package_invalid">
-      <location filename="src/ui/AppController.cpp" line="227"></location>
+      <location filename="src/ui/AppController.cpp" line="229"></location>
       <source>The selected folder is not a GameHQ portable package.</source>
       <translation>所选文件夹不是 GameHQ 便携包。</translation>
     </message>
@@ -893,12 +893,12 @@
       <translation>portable:/ 路径超出了所选的包根目录。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_identity_failed">
-      <location filename="src/ui/AppController.cpp" line="238"></location>
+      <location filename="src/ui/AppController.cpp" line="240"></location>
       <source>GameHQ could not identify its own process for the import.</source>
       <translation>GameHQ 无法为导入识别自身进程。</translation>
     </message>
     <message id="gamehq.error.portable_import.process_start_failed">
-      <location filename="src/ui/AppController.cpp" line="248"></location>
+      <location filename="src/ui/AppController.cpp" line="250"></location>
       <source>GameHQ could not start the portable import process.</source>
       <translation>GameHQ 无法启动便携导入进程。</translation>
     </message>
@@ -973,7 +973,7 @@
       <translation>已有另一个便携配置文件导入正在运行。</translation>
     </message>
     <message id="gamehq.error.update.capture_quiescence_timeout">
-      <location filename="src/app/App.cpp" line="692"></location>
+      <location filename="src/app/App.cpp" line="704"></location>
       <source>The update was canceled because capture work did not finish safely in time.</source>
       <translation>由于捕获任务未能及时安全完成，更新已取消。</translation>
     </message>
@@ -1224,7 +1224,7 @@
       <translation>GameHQ 无法发布更新事务。</translation>
     </message>
     <message id="gamehq.error.update.maintenance_handoff_failed">
-      <location filename="src/app/App.cpp" line="667"></location>
+      <location filename="src/app/App.cpp" line="679"></location>
       <source>GameHQ could not begin update maintenance: %1</source>
       <translation>GameHQ 无法开始更新维护：%1</translation>
     </message>
@@ -1444,27 +1444,27 @@ This cannot be undone.</source>
       <translation>%1 查看器</translation>
     </message>
     <message id="gamehq.hdr.detail.not_checked">
-      <location filename="src/ui/AppController.cpp" line="356"></location>
+      <location filename="src/ui/AppController.cpp" line="358"></location>
       <source>Check the current HDR state of every display.</source>
       <translation>检查每个显示器的当前 HDR 状态。</translation>
     </message>
     <message id="gamehq.hdr.status.active">
-      <location filename="src/ui/AppController.cpp" line="342"></location>
+      <location filename="src/ui/AppController.cpp" line="344"></location>
       <source>Windows HDR is active</source>
       <translation>Windows HDR 已启用</translation>
     </message>
     <message id="gamehq.hdr.status.inactive">
-      <location filename="src/ui/AppController.cpp" line="347"></location>
+      <location filename="src/ui/AppController.cpp" line="349"></location>
       <source>Windows HDR is inactive</source>
       <translation>Windows HDR 未启用</translation>
     </message>
     <message id="gamehq.hdr.status.no_displays">
-      <location filename="src/ui/AppController.cpp" line="336"></location>
+      <location filename="src/ui/AppController.cpp" line="338"></location>
       <source>No displays reported by the graphics driver</source>
       <translation>图形驱动程序未报告任何显示器</translation>
     </message>
     <message id="gamehq.hdr.status.not_checked">
-      <location filename="src/ui/AppController.cpp" line="330"></location>
+      <location filename="src/ui/AppController.cpp" line="332"></location>
       <source>Not checked yet</source>
       <translation>尚未检查</translation>
     </message>
@@ -2202,49 +2202,49 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>显示工具</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_many">
-      <location filename="src/app/App.cpp" line="495"></location>
+      <location filename="src/app/App.cpp" line="507"></location>
       <source>Some files couldn't be deleted. They may be in use by other programs. Close any programs using them and try again.</source>
       <translation>部分文件无法删除。它们可能正被其他程序使用。请关闭正在使用这些文件的程序后重试。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.body_one">
-      <location filename="src/app/App.cpp" line="502"></location>
+      <location filename="src/app/App.cpp" line="514"></location>
       <source>The file couldn't be deleted. It may be in use by another program. Close any program using it and try again.</source>
       <translation>无法删除该文件。它可能正被其他程序使用。请关闭正在使用该文件的程序后重试。</translation>
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
-      <location filename="src/app/App.cpp" line="508"></location>
+      <location filename="src/app/App.cpp" line="520"></location>
       <source>Couldn't delete</source>
       <translation>无法删除</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
-      <location filename="src/app/App.cpp" line="300"></location>
+      <location filename="src/app/App.cpp" line="312"></location>
       <source>It was not added to the library and the file is not on disk.</source>
       <translation>未添加到媒体库，磁盘上也没有该文件。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.body">
-      <location filename="src/app/App.cpp" line="294"></location>
+      <location filename="src/app/App.cpp" line="306"></location>
       <source>The file is in your captures folder, but it could not be added to the library.</source>
       <translation>文件位于你的捕获文件夹中，但无法添加到媒体库。</translation>
     </message>
     <message id="gamehq.notification.capture_media_only.title">
-      <location filename="src/app/App.cpp" line="284"></location>
+      <location filename="src/app/App.cpp" line="296"></location>
       <source>Saved to disk, not in library</source>
       <translation>已保存到磁盘，未加入媒体库</translation>
     </message>
     <message id="gamehq.notification.capture_requested.title">
-      <location filename="src/app/App.cpp" line="407"></location>
+      <location filename="src/app/App.cpp" line="419"></location>
       <source>Capture request received</source>
       <translation>已收到捕获请求</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason">
-      <location filename="src/app/App.cpp" line="470"></location>
+      <location filename="src/app/App.cpp" line="482"></location>
       <source>Reason: %1</source>
       <translation>原因：%1</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_audio">
       <location filename="src/app/App.cpp" line="87"></location>
       <source>System audio could not be recorded, so no clip was saved. Check the Windows sound output or turn off System audio in Replay settings</source>
-      <translation>无法录制系统音频，因此未保存片段。请检查 Windows 声音输出设备，或在回放设置中关闭系统音频</translation>
+      <translation type="vanished">无法录制系统音频，因此未保存片段。请检查 Windows 声音输出设备，或在回放设置中关闭系统音频</translation>
     </message>
     <message id="gamehq.notification.replay_failed.reason_buffer_failed">
       <location filename="src/app/App.cpp" line="81"></location>
@@ -2256,13 +2256,28 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Replay buffer is collecting footage; try saving again in a few seconds</source>
       <translation>回放缓冲区正在收集画面，请几秒后再尝试保存</translation>
     </message>
+    <message id="gamehq.notification.replay_failed.reason_desktop_audio">
+      <location filename="src/app/App.cpp" line="87"></location>
+      <source>Desktop audio could not be recorded, so no clip was saved. Check the Windows sound output or change the audio source in Replay settings</source>
+      <translation>无法录制桌面音频，因此未保存片段。请检查 Windows 声音输出设备，或在回放设置中更改音频来源</translation>
+    </message>
     <message id="gamehq.notification.replay_failed.reason_empty">
-      <location filename="src/app/App.cpp" line="99"></location>
+      <location filename="src/app/App.cpp" line="111"></location>
       <source>Replay buffer is empty</source>
       <translation>回放缓冲区为空</translation>
     </message>
-    <message id="gamehq.notification.replay_failed.reason_not_running">
+    <message id="gamehq.notification.replay_failed.reason_game_audio">
       <location filename="src/app/App.cpp" line="93"></location>
+      <source>Game audio could not be recorded, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings</source>
+      <translation>无法录制游戏音频，因此未保存片段。请在回放设置中将音频来源设为桌面音频或关闭</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason_game_audio_unsupported">
+      <location filename="src/app/App.cpp" line="99"></location>
+      <source>Game audio needs Windows 11, so no clip was saved. Choose Desktop audio or Off as the audio source in Replay settings</source>
+      <translation>游戏音频需要 Windows 11，因此未保存片段。请在回放设置中将音频来源设为桌面音频或关闭</translation>
+    </message>
+    <message id="gamehq.notification.replay_failed.reason_not_running">
+      <location filename="src/app/App.cpp" line="105"></location>
       <source>Replay buffer is not running</source>
       <translation>回放缓冲区未运行</translation>
     </message>
@@ -2272,42 +2287,42 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>回放缓冲区正在启动，请几秒后再尝试保存</translation>
     </message>
     <message id="gamehq.notification.replay_failed.title">
-      <location filename="src/app/App.cpp" line="316"></location>
+      <location filename="src/app/App.cpp" line="328"></location>
       <source>Replay failed</source>
       <translation>回放失败</translation>
     </message>
     <message id="gamehq.notification.replay_requested.title">
-      <location filename="src/app/App.cpp" line="402"></location>
+      <location filename="src/app/App.cpp" line="414"></location>
       <source>Replay save requested</source>
       <translation>已请求保存回放</translation>
     </message>
     <message id="gamehq.notification.replay_saved.title">
-      <location filename="src/app/App.cpp" line="451"></location>
+      <location filename="src/app/App.cpp" line="463"></location>
       <source>Replay saved</source>
       <translation>回放已保存</translation>
     </message>
     <message id="gamehq.notification.screenshot_failed.title">
-      <location filename="src/app/App.cpp" line="309"></location>
+      <location filename="src/app/App.cpp" line="321"></location>
       <source>Screenshot failed</source>
       <translation>屏幕截图失败</translation>
     </message>
     <message id="gamehq.notification.screenshot_saved.title">
-      <location filename="src/app/App.cpp" line="351"></location>
+      <location filename="src/app/App.cpp" line="363"></location>
       <source>Screenshot saved</source>
       <translation>屏幕截图已保存</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.body">
-      <location filename="src/app/App.cpp" line="553"></location>
+      <location filename="src/app/App.cpp" line="565"></location>
       <source>GameHQ started with default settings. Your previous settings file was kept so nothing was lost.</source>
       <translation>GameHQ 已使用默认设置启动。系统保留了之前的设置文件，因此没有丢失任何内容。</translation>
     </message>
     <message id="gamehq.notification.settings_quarantined.title">
-      <location filename="src/app/App.cpp" line="548"></location>
+      <location filename="src/app/App.cpp" line="560"></location>
       <source>Settings could not be read</source>
       <translation>无法读取设置</translation>
     </message>
     <message id="gamehq.notification.sounds_unavailable.title">
-      <location filename="src/app/App.cpp" line="734"></location>
+      <location filename="src/app/App.cpp" line="746"></location>
       <source>Some interface sounds are unavailable</source>
       <translation>部分界面声音不可用</translation>
     </message>
@@ -2448,7 +2463,7 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>%1 / %2</translation>
     </message>
     <message id="gamehq.release_notes.title">
-      <location filename="src/ui/AppController.cpp" line="130"></location>
+      <location filename="src/ui/AppController.cpp" line="132"></location>
       <source>Release notes</source>
       <translation>发布说明</translation>
     </message>
@@ -4468,6 +4483,51 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <source>Manage the rolling buffer used for instant replay clips.</source>
       <translation>管理用于即时回放片段的滚动缓冲区。</translation>
     </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.desktop">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="162"></location>
+      <source>Desktop audio</source>
+      <translation>桌面音频</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.desktop_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="143"></location>
+      <source>Records everything on the default Windows output, including chat and music apps.</source>
+      <translation>录制 Windows 默认输出设备上的所有声音，包括聊天和音乐应用。</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.game">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="156"></location>
+      <source>Game audio</source>
+      <translation>游戏音频</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.game_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="146"></location>
+      <source>Records only the current game, whichever output device it plays on.</source>
+      <translation>只录制当前游戏的声音，无论它在哪个输出设备上播放。</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.game_unsupported">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="158"></location>
+      <source>Game audio (needs Windows 11)</source>
+      <translation>游戏音频（需要 Windows 11）</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.label">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="131"></location>
+      <source>Audio source</source>
+      <translation>音频来源</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.off">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="164"></location>
+      <source>Off</source>
+      <translation>关闭</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.off_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="135"></location>
+      <source>Replay clips are saved without sound.</source>
+      <translation>回放片段将不含声音保存。</translation>
+    </message>
+    <message id="gamehq.settings.replay.encoding.audio_source.unsupported_description">
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="139"></location>
+      <source>Game audio needs Windows 11. Desktop audio records everything on the default Windows output.</source>
+      <translation>游戏音频需要 Windows 11。桌面音频会录制 Windows 默认输出设备上的所有声音。</translation>
+    </message>
     <message id="gamehq.settings.replay.encoding.bitrate">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="107"></location>
       <source>Video bitrate</source>
@@ -4501,12 +4561,12 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     <message id="gamehq.settings.replay.encoding.system_audio.description">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="128"></location>
       <source>Include desktop audio in newly recorded replay segments.</source>
-      <translation>在新录制的回放片段中包含桌面音频。</translation>
+      <translation type="vanished">在新录制的回放片段中包含桌面音频。</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.system_audio.label">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="126"></location>
       <source>System audio</source>
-      <translation>系统音频</translation>
+      <translation type="vanished">系统音频</translation>
     </message>
     <message id="gamehq.settings.replay.encoding.title">
       <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="77"></location>
@@ -4514,27 +4574,27 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
       <translation>录制质量</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.description">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="140"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="188"></location>
       <source>Saved replays go to %1. Failures always notify you.</source>
       <translation>保存的回放会存到 %1。发生故障时始终会通知你。</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.eyebrow">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="136"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="184"></location>
       <source>Feedback</source>
       <translation>反馈</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.notification">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="148"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="196"></location>
       <source>Clip saved notification</source>
       <translation>片段保存通知</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.sound">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="143"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="191"></location>
       <source>Clip saved sound</source>
       <translation>片段保存声音</translation>
     </message>
     <message id="gamehq.settings.replay.feedback.title">
-      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="138"></location>
+      <location filename="src/ui/qml/settings/ReplaySettingsPage.qml" line="186"></location>
       <source>After saving a clip</source>
       <translation>保存片段之后</translation>
     </message>

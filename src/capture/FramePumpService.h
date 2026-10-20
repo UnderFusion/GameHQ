@@ -44,7 +44,7 @@ public slots:
     void startPump(quint64 generation, qulonglong hwnd, unsigned long pid, int encodeWidth, int encodeHeight,
                    int fps, int bitrateMbps, int segmentSeconds, int lengthSeconds,
                    const QString& gameName, const QString& executablePath,
-                   bool audioEnabled,
+                   int audioSource,          // AudioSourcePolicy::Source
                    bool hdrExperimentalEnabled = false,
                    CaptureBorder::SessionPolicy borderPolicy = CaptureBorder::SessionPolicy{}); // build pipeline + start polling/encoding
     void stopPump();                 // stop polling + tear down the pipeline
@@ -97,7 +97,7 @@ private:
     bool createCaptureItem(Pipeline* pipe, void* hwnd, int* outW, int* outH);
     void attachRecorder(Pipeline* pipe, unsigned long pid, int srcW, int srcH,
                         int encodeWidth, int encodeHeight, int fps, int bitrateMbps,
-                        int segmentSeconds, int lengthSeconds, bool audioEnabled);
+                        int segmentSeconds, int lengthSeconds, int audioSource);
     bool createSession(Pipeline* pipe, void* hwnd, int srcW, int srcH,
                        bool hdrExperimentalEnabled,
                        const CaptureBorder::SessionPolicy& borderPolicy); // frame pool + session
@@ -125,7 +125,7 @@ private:
     quint64 m_hdrRequestId = 0;
     // Runtime audio read failures that already forced a re-arm, in a short
     // window; past the limit the buffer fails instead of re-arming forever.
-    bool m_audioFailed = false;      // current Failed state is the audio failure
+    QString m_audioFailure;          // reason while the current Failed state is an audio failure
     ReplayBufferState::AudioRearmBudget m_audioRearmBudget;
 };
 

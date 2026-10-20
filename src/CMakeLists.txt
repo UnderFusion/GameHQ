@@ -16,6 +16,7 @@ qt_add_executable(GameHQ
     capture/hdr/HdrToneMapMath.cpp capture/hdr/HdrToneMapMath.h
     capture/hdr/GpuToneMapper.cpp capture/hdr/GpuToneMapper.h
     capture/AudioCapture.cpp capture/AudioCapture.h capture/wasapi_shims.h
+    capture/AudioSourcePolicy.cpp capture/AudioSourcePolicy.h
     capture/SegmentRecorder.cpp capture/SegmentRecorder.h
     capture/SegmentLease.cpp capture/SegmentLease.h capture/ReplayExportTask.h
     capture/ReplayExporter.cpp capture/ReplayExporter.h

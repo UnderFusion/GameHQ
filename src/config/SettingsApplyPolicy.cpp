@@ -16,6 +16,7 @@ constexpr std::array restartKeys{
     ConfigKeys::ReplaySegmentSeconds,
     ConfigKeys::ReplayAuto,
     ConfigKeys::AudioEnabled,
+    ConfigKeys::AudioSource,
 };
 
 constexpr std::array liveKeys{

@@ -8,7 +8,7 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-th-th; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review; claude-opus-5-5-hidden-controller-banner-contextual-review; claude-opus-5-5-replay-audio-failure-contextual-review",
+    "actor": "codex-gpt-5-contextual-th-th; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review; claude-opus-5-5-hidden-controller-banner-contextual-review; claude-opus-5-5-replay-audio-failure-contextual-review; claude-opus-5-5-game-audio-source-contextual-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "Google Translate draft from product-owned English followed by complete contextual Thai review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_th_TH.ts",
-    "sha256": "ee95df92b858db80168f7445bc0f0301c1b934c8529511572d5ed6966730415c",
-    "message_count": 1087
+    "sha256": "b6e0c6b1f5d09d7b61692a8562020e0cc1edfbfbf7f867360646b8e5879329b5",
+    "message_count": 1096
   },
   "coverage": [
     {
@@ -1704,7 +1704,7 @@
       "source_hash": "2c86b23ae3ce4b9cb92e1f2f6679382b868c4aa8569efb1b849c0265c2ae5759",
       "translation_hash": "6d2c2bd53413e63dc13b5ea1fbda88e42f4df1be89403037ee80a53b3b9d05ce",
       "locations": [
-        "src/app/App.cpp:446"
+        "src/app/App.cpp:704"
       ],
       "decision": "corrected"
     },
@@ -2155,7 +2155,7 @@
       "source_hash": "d13a77a909956618b777ac6e562156e518bbb69b6f5871e95d9ee9dca8f4737b",
       "translation_hash": "5967f74bfaaf6117fcc111abc3c8e7c67dc2c375e0a2f072b7a2a99b1d758778",
       "locations": [
-        "src/app/App.cpp:421"
+        "src/app/App.cpp:679"
       ],
       "decision": "corrected"
     },
@@ -3835,7 +3835,7 @@
       "source_hash": "aa4add4b1083c0fe73ae5514a72cde225191944026d367ead5c47df5acbc98ce",
       "translation_hash": "c03c2b3e15cb4eb54b25c7437d230df8787b915a48d2c56e68f1aebd0b26f45c",
       "locations": [
-        "src/app/App.cpp:310"
+        "src/app/App.cpp:507"
       ],
       "decision": "corrected"
     },
@@ -3844,7 +3844,7 @@
       "source_hash": "8ffdd9e9327ade134102cf98b3e7cd3969a8b007288bb658eb8f0eff16b17247",
       "translation_hash": "628d0868a8ee1c0a613c204934e84214139887042f7ca83fee6b48343c7aec0c",
       "locations": [
-        "src/app/App.cpp:317"
+        "src/app/App.cpp:514"
       ],
       "decision": "corrected"
     },
@@ -3853,7 +3853,7 @@
       "source_hash": "21d8d5429f00e9e3563b1803f381b14f771ed7aa21a7ac58cfff64ab5824520c",
       "translation_hash": "b0d8f18dd2b99e4b4d91bff074a117b13754d023616d0834e744adc4b2a04c56",
       "locations": [
-        "src/app/App.cpp:323"
+        "src/app/App.cpp:520"
       ],
       "decision": "accepted"
     },
@@ -3862,7 +3862,7 @@
       "source_hash": "70f15a1f370f36b7ae94c36f7554d7f52a2851b84bd9ec34f651d0f0db3ba819",
       "translation_hash": "46ceaf75365057d00c15d5946f8ed81553c56fb7c0c34ba9c53eec6a04cc1385",
       "locations": [
-        "src/app/App.cpp:238"
+        "src/app/App.cpp:312"
       ],
       "decision": "accepted"
     },
@@ -3871,7 +3871,7 @@
       "source_hash": "24172ec755fb25eba2e71647ce6cb1c03c19b1ae3169fe820e0e10e2f2181e54",
       "translation_hash": "df91107e4496e9d27fdcd3c89affb95890407de5b458581e4fbeda4e8cccdd5e",
       "locations": [
-        "src/app/App.cpp:232"
+        "src/app/App.cpp:306"
       ],
       "decision": "accepted"
     },
@@ -3880,7 +3880,7 @@
       "source_hash": "325239770a27469c01e08ea81ff86629b5cb52ce27d016b2fc1b1c79a29a202d",
       "translation_hash": "d4a49c693d3378c99ee2c83d7c1a202bf818a2a1aa88d8b7225247065e46af86",
       "locations": [
-        "src/app/App.cpp:222"
+        "src/app/App.cpp:296"
       ],
       "decision": "accepted"
     },
@@ -3889,7 +3889,7 @@
       "source_hash": "f5a508cd116c4ab3b6a707c6a7ce2ae6baa636e8ee6090a66a64077fb0373555",
       "translation_hash": "956f2c897720f86c49d847ef9811f1b6e57891fd6d0cbf71ee8407800c4aa123",
       "locations": [
-        "src/app/App.cpp:260"
+        "src/app/App.cpp:419"
       ],
       "decision": "accepted"
     },
@@ -3898,16 +3898,7 @@
       "source_hash": "a5cadb8e899f7085ce4c5d89a59153e9260d60a119c1cb944889bfda65a3de2d",
       "translation_hash": "9521747ed1e9c1c50df1c0a53f75dc84eb744ab244efcba369d51bf4b0b3a8c8",
       "locations": [
-        "src/app/App.cpp:280"
-      ],
-      "decision": "accepted"
-    },
-    {
-      "id": "gamehq.notification.replay_failed.reason_audio",
-      "source_hash": "1c6ae1e9f21f8e6021552aa56cbc174c32d5293ff58f8fcc1e59be3ac936d992",
-      "translation_hash": "b1e16ed3afdeb6e40c10e40e337e01ce975b0c582a31a4eed59951879e1008a8",
-      "locations": [
-        "src/app/App.cpp:87"
+        "src/app/App.cpp:482"
       ],
       "decision": "accepted"
     },
@@ -3930,11 +3921,38 @@
       "decision": "accepted"
     },
     {
+      "id": "gamehq.notification.replay_failed.reason_desktop_audio",
+      "source_hash": "2ff38415d72f5b04d96d41e8dd83a4327ed7062907b04f3cf612deda93db4630",
+      "translation_hash": "cf1da088e7c721839ab6a320230d2c6bf1df1ee14bd84957bdfd2c161b844fd0",
+      "locations": [
+        "src/app/App.cpp:87"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.notification.replay_failed.reason_empty",
       "source_hash": "6ae16902e0117b3d363219386368e72ecff2301942819100b62b8ff66d6af182",
       "translation_hash": "bce14e2021f2bd6859936a00431b15acddd0828c5efabd11bfd98b406f162c26",
       "locations": [
+        "src/app/App.cpp:111"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_game_audio",
+      "source_hash": "9ccdc7978dd0e4a6eca85483c87a1fd9dcc18ea5a428eb4ad521adc8e90aa5d2",
+      "translation_hash": "b36578d97355f82f001f6e3f258833a4f855d1010888d3a4b03ee31a2af8712c",
+      "locations": [
         "src/app/App.cpp:93"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.replay_failed.reason_game_audio_unsupported",
+      "source_hash": "4e6e1bdfd75e07ff4edc62b276a7e8d9519ae37528f7185a0421da527ae820c8",
+      "translation_hash": "2aa3913e33dcc762fc7343fde868c3263638f3a03e84f79ec2d3b3eb3e8d3f18",
+      "locations": [
+        "src/app/App.cpp:99"
       ],
       "decision": "accepted"
     },
@@ -3943,7 +3961,7 @@
       "source_hash": "6c6956d0e486f5f8991e45a9da1dd1bb451ef4fffe8a14c322686e85113a0080",
       "translation_hash": "52e09bd4b4b1bc8642495db859fec99e88e98b6ebd5868361d397a8cf613f021",
       "locations": [
-        "src/app/App.cpp:87"
+        "src/app/App.cpp:105"
       ],
       "decision": "accepted"
     },
@@ -3961,7 +3979,7 @@
       "source_hash": "24027af1461f776395f7cb1b22b0fbd39e73873acf6d2c67aeff45a8590528a2",
       "translation_hash": "156ca8a6b5e1b83e610326aee257e1be1e07d7f0da93f655e261bd5c9e7bb6d6",
       "locations": [
-        "src/app/App.cpp:286"
+        "src/app/App.cpp:328"
       ],
       "decision": "corrected"
     },
@@ -3970,7 +3988,7 @@
       "source_hash": "6f61bb786cd7ac2c687dc8bf5d27725786abb51e8e56033209c19650b6b91202",
       "translation_hash": "9e90ecf7f9f0445b1ddf37eae2ab81389bb6cdc28e4c0e345993afb9025c1c72",
       "locations": [
-        "src/app/App.cpp:255"
+        "src/app/App.cpp:414"
       ],
       "decision": "accepted"
     },
@@ -3979,7 +3997,7 @@
       "source_hash": "51884f334bd43b288a81f4d1380315616704f3104e581b63941881a6f406cdd4",
       "translation_hash": "da31653cb134838cb92f27909d928f8f719afe4b9a24afad69398df056b67d00",
       "locations": [
-        "src/app/App.cpp:266"
+        "src/app/App.cpp:463"
       ],
       "decision": "corrected"
     },
@@ -3988,7 +4006,7 @@
       "source_hash": "f60cb0e0cb16f7a2b36b4f0e6c64a2057b6aa27d22f91e9d5a3e8cc31558171c",
       "translation_hash": "3bbb8da199ed4806da4d33b81c0f49ba988990e7c2b92fff64b2a4e5052597d2",
       "locations": [
-        "src/app/App.cpp:247"
+        "src/app/App.cpp:321"
       ],
       "decision": "accepted"
     },
@@ -3997,7 +4015,7 @@
       "source_hash": "1af428084c0f9ec0675945efff01910d599ea64c5f35a42ba7e23cc5015ce702",
       "translation_hash": "40e8082610c90d81d7ec635fe7f1c197e948cb36346d06935c74a24ffecc6b61",
       "locations": [
-        "src/app/App.cpp:218"
+        "src/app/App.cpp:363"
       ],
       "decision": "corrected"
     },
@@ -4006,7 +4024,7 @@
       "source_hash": "827bad6a8e7fc94ea5c4f6b7993ff178eb0dc445e6468ab83c68caa3d37d6df8",
       "translation_hash": "62450ad8813415e2b20157f17f71a0e28a5a22a20f28ad291abb2c6ca3b29af8",
       "locations": [
-        "src/app/App.cpp:329"
+        "src/app/App.cpp:565"
       ],
       "decision": "corrected"
     },
@@ -4015,7 +4033,7 @@
       "source_hash": "c1df9e7b183b26b477a5ec92c3cc871804461f3dceaf1c724992bb57e1569645",
       "translation_hash": "0d39b659d1984e8696b00f91b54e5960bb03ffd881e34daaa2433bab488e2f0b",
       "locations": [
-        "src/app/App.cpp:324"
+        "src/app/App.cpp:560"
       ],
       "decision": "accepted"
     },
@@ -4024,7 +4042,7 @@
       "source_hash": "93765a287f99a8bc20fc02edb929763b4728cde1bec39f6362dcba20cc3760a0",
       "translation_hash": "69a094198925c80dd09e949165438ec6722d8276b3fb54a01983022e7b72a890",
       "locations": [
-        "src/app/App.cpp:644"
+        "src/app/App.cpp:746"
       ],
       "decision": "accepted"
     },
@@ -7860,6 +7878,87 @@
       "decision": "corrected"
     },
     {
+      "id": "gamehq.settings.replay.encoding.audio_source.desktop",
+      "source_hash": "d90b2bfffe53523f630106ed8ddfb827c7699242bc7ef5876ab09f16f3a63b17",
+      "translation_hash": "ea96c53b42fa3de151e9bce48a2114350e82f371cca145f08cde565df6f1c819",
+      "locations": [
+        "src/ui/qml/settings/ReplaySettingsPage.qml:162"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.desktop_description",
+      "source_hash": "22dff4ef28748eb51ee9a4657d1bf544745b832bdf3477f3fc17d59b71ddc45e",
+      "translation_hash": "89d67d446377d9095f80dd0587b291095a14cd4445e1aa72a9e62ececd0de9fa",
+      "locations": [
+        "src/ui/qml/settings/ReplaySettingsPage.qml:143"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.game",
+      "source_hash": "c5e61650db6cecdccd09395524a8b588b621c191fe9afcebbf9aca210eeb5f32",
+      "translation_hash": "e3a2c7aa197e2ec8505314a1eb16d4df08189a58d596b1542732208d7aa984cf",
+      "locations": [
+        "src/ui/qml/settings/ReplaySettingsPage.qml:156"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.game_description",
+      "source_hash": "d6a918d673fa271f68e7a7674780cae1113a9cf8e13c46edb7a728b063d17e3b",
+      "translation_hash": "a75453ab07c2f147d379106c4cf74ac71827719b1664a7676199f2ff49fb4c58",
+      "locations": [
+        "src/ui/qml/settings/ReplaySettingsPage.qml:146"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.game_unsupported",
+      "source_hash": "a2539d9e2e4acae57dcc09e51990833fb68c1f69d469792f69d89e23daf78a5c",
+      "translation_hash": "0fd5bc552f207bbc750ef736359dc89e2783e35afb083db62d9c27ad900bcab7",
+      "locations": [
+        "src/ui/qml/settings/ReplaySettingsPage.qml:158"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.label",
+      "source_hash": "298f23aa5d84283e6c4dd606bde31560cc8bf67bb9ab7b51bacdf392681d1059",
+      "translation_hash": "7eb3b8dd47db07c8d9ed8769ce393ee1c4ae0b07ae63188ae57e0c46b32ff15c",
+      "locations": [
+        "src/ui/qml/settings/ReplaySettingsPage.qml:131"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.off",
+      "source_hash": "ffe7742215c4a5c314f3ba717781a8a103b00ef731fa2c5d7cf1c3e48d8025fa",
+      "translation_hash": "a71801c6f8954c30862e2e6e10420effd2dfd4f0a0b85f7f642c4f9918a1db56",
+      "locations": [
+        "src/ui/qml/settings/ReplaySettingsPage.qml:164"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.off_description",
+      "source_hash": "d66bdfa74b682bf09797e468c027ccc27ec0321a495478592dbaba1f158a94ce",
+      "translation_hash": "f1b053ee4381dcb214605914737ba925c98e3060fb114ed4e0ce2357df5bee89",
+      "locations": [
+        "src/ui/qml/settings/ReplaySettingsPage.qml:135"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.settings.replay.encoding.audio_source.unsupported_description",
+      "source_hash": "a94bcc395e7f9909efc6af37e8be4583de24634f2a975b66aa60ae67009e9ba4",
+      "translation_hash": "8037d4d08681243f41abca0e5e949754fa9a9c647be6ab55cbc23dbb82ccdadf",
+      "locations": [
+        "src/ui/qml/settings/ReplaySettingsPage.qml:139"
+      ],
+      "decision": "accepted"
+    },
+    {
       "id": "gamehq.settings.replay.encoding.bitrate",
       "source_hash": "6bc2b26df8e6cc63abefd6fc9e81fc123785b934fe67d6247c44197a4d5e1d45",
       "translation_hash": "518d26dc5e23a8e5001e9a2adb9ce0b0fc44c2083ff36a4a7655eb28fd563688",
@@ -7914,24 +8013,6 @@
       "decision": "accepted"
     },
     {
-      "id": "gamehq.settings.replay.encoding.system_audio.description",
-      "source_hash": "f0eac29d91db9e00995b559a9a6a70df22684ddb761cad9dfe716edde0d8a2f6",
-      "translation_hash": "8edd413a7bfe730efa8e2fa5a3e05dabd2dffd5b63c27d868460ae08399d61b1",
-      "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:128"
-      ],
-      "decision": "corrected"
-    },
-    {
-      "id": "gamehq.settings.replay.encoding.system_audio.label",
-      "source_hash": "9d6918f89df6705c345d325cb7a1fdcd505640e17eb8b4a75633451b9cdec2df",
-      "translation_hash": "18647ae698c9868e86f5538864422dbc2ddae9c0d61f4a9008adeaa7e5fbc057",
-      "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:126"
-      ],
-      "decision": "corrected"
-    },
-    {
       "id": "gamehq.settings.replay.encoding.title",
       "source_hash": "06aa2c6577cddc0cd59da304067a43a8686883d61f2412c5bde96da27c375a37",
       "translation_hash": "8b04c93e37951720a715a0aeeac775408ea119f704cca101b292f788efcca160",
@@ -7945,7 +8026,7 @@
       "source_hash": "dd87a2f68e1e0196b5b8fa7837877be6bebed249632d5f5ffe9d265e9097d13d",
       "translation_hash": "857df9bc00d5f6b66604f9ffec5ba000c87feb5a8a5b112032042fe0d9d99912",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:140"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:188"
       ],
       "decision": "corrected"
     },
@@ -7954,7 +8035,7 @@
       "source_hash": "1933b110d76d7853546120eb1dba8f58525b28e4d105dbc7c32bbfcd792c2ec0",
       "translation_hash": "3edeae7d273d3932cb903324fa470d47e1be0170056351c03b20abf00c156034",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:136"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:184"
       ],
       "decision": "corrected"
     },
@@ -7963,7 +8044,7 @@
       "source_hash": "c4c42e6712e20d9d162ccb9e258a63bb305f040a2806d6bbab479338b562b5bf",
       "translation_hash": "b1e8e95d7a91f64c7b5e9a8e0e396793c1bb651cf0be6c7e5523bfc1698a0500",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:148"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:196"
       ],
       "decision": "corrected"
     },
@@ -7972,7 +8053,7 @@
       "source_hash": "8056b6922984ffb5af187a1f2cf33598d222ac323cb50d8dab54fb1af175c24b",
       "translation_hash": "cd80c6ec843c577e871ee2ca49df614aa13ad2eb27e33fb7ac1ce9fd6f997010",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:143"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:191"
       ],
       "decision": "corrected"
     },
@@ -7981,7 +8062,7 @@
       "source_hash": "d15adab55c8d3e1be8cc6f6c903f9f2773ea4f4f89cd89abfce172325f26bb4d",
       "translation_hash": "091d64268056e78525441beea829044513c1bfd3c35a23d7110a6f8b0aecf53d",
       "locations": [
-        "src/ui/qml/settings/ReplaySettingsPage.qml:138"
+        "src/ui/qml/settings/ReplaySettingsPage.qml:186"
       ],
       "decision": "corrected"
     },
@@ -15342,24 +15423,6 @@
       "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
     },
     {
-      "id": "gamehq.settings.replay.encoding.system_audio.description",
-      "surface": "application",
-      "before": "รวมเสียงพื้นที่ทํางานที่บันทึกไว้ใหม่",
-      "after": "รวมเสียงเดสก์ท็อปในส่วนรีเพลย์ที่บันทึกไว้ใหม่",
-      "category": "product_terminology",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
-    },
-    {
-      "id": "gamehq.settings.replay.encoding.system_audio.label",
-      "surface": "application",
-      "before": "เสียงของระบบ",
-      "after": "ระบบเสียง",
-      "category": "product_terminology",
-      "reason": "Uses natural Thai appropriate to the UI role while preserving the corrected English meaning.",
-      "terminology_decision": "The reviewed wording follows the th-TH style guide, termbase, and product behavior contract."
-    },
-    {
       "id": "gamehq.settings.replay.feedback.description",
       "surface": "application",
       "before": "บันทึกการเล่นซ้ําไป %1 ความล้มเหลวบอกคุณเสมอ",
@@ -16604,8 +16667,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_th_TH.ts",
-      "sha256": "ee95df92b858db80168f7445bc0f0301c1b934c8529511572d5ed6966730415c",
-      "reviewed_units": 1087
+      "sha256": "b6e0c6b1f5d09d7b61692a8562020e0cc1edfbfbf7f867360646b8e5879329b5",
+      "reviewed_units": 1096
     },
     {
       "surface": "installer",

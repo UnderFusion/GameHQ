@@ -8,6 +8,7 @@
 #include <QDir>
 #include <QElapsedTimer>
 #include <QFile>
+#include <QProcess>
 #include <QScopeGuard>
 #include <QSemaphore>
 #include <QTemporaryDir>
@@ -567,6 +568,221 @@ private slots:
         QVERIFY2(level > 1e-4, "Saved clip audio is silent although a tone was playing");
         QVERIFY2(toneLevel > amplitude * 0.5, "Controlled tone is missing from the saved clip");
         QVERIFY2(toneLevel > offTone * 20.0, "Saved clip audio is not the controlled tone");
+    }
+
+    // Game audio (application loopback) activation, the path that crashed the
+    // capture worker in dev.74. Targets this silent test process, so nothing
+    // plays; repeated start/stop covers activation, event and COM lifetime.
+    void gameAudioStartsAndStopsCleanly()
+    {
+        if (!AudioCapture::processLoopbackSupported())
+            QSKIP("Per-process audio capture needs Windows build 20348 or later");
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        {
+            AudioCapture noTarget;
+            QVERIFY(!noTarget.start(AudioCapture::Mode::Game, 0));
+            QVERIFY(!noTarget.isActive());
+        }
+        for (int round = 0; round < 3; ++round) {
+            AudioCapture audio;
+            QVERIFY(audio.start(AudioCapture::Mode::Game, GetCurrentProcessId()));
+            QVERIFY(audio.isActive());
+            QCOMPARE(audio.mode(), AudioCapture::Mode::Game);
+            QCOMPARE(audio.sampleRate(), 48000u);
+            QCOMPARE(audio.channels(), 2u);
+            QVERIFY(audio.bufferFrames() > 0);
+            std::vector<float> samples(size_t(audio.bufferFrames()) * audio.channels());
+            for (int i = 0; i < 5; ++i) {
+                QTest::qSleep(20);
+                long long timestamp = 0;
+                const unsigned frames = audio.poll(samples.data(), audio.bufferFrames(), &timestamp);
+                QVERIFY(frames <= audio.bufferFrames());
+                QVERIFY(!audio.failed());
+                QVERIFY(!audio.deviceInvalidated());
+                for (unsigned sample = 0; sample < frames * 2; ++sample) {
+                    QVERIFY(std::isfinite(samples[sample]));
+                    QCOMPARE(samples[sample], 0.0f);   // this process renders nothing
+                }
+            }
+            if (round == 2)
+                continue;   // the last round is released by the destructor alone
+            audio.stop();
+            QVERIFY(!audio.isActive());
+        }
+    }
+
+    // End-to-end game audio with the real Windows audio engine: a "game"
+    // process plays 1 kHz on an output that is NOT the Windows default (when
+    // the machine has one), an unrelated "chat" process plays 1.5 kHz on the
+    // default output. Capturing the game's PID must record the game's tone
+    // into the saved, decoded MP4 and nothing of the other app. Opt-in
+    // because it plays two faint tones: set GAMEHQ_AUDIO_E2E=1.
+    void realGameAudioRecordsOnlyTheGame()
+    {
+        if (qEnvironmentVariableIntValue("GAMEHQ_AUDIO_E2E") != 1)
+            QSKIP("Plays two quiet tones; set GAMEHQ_AUDIO_E2E=1");
+        if (!AudioCapture::processLoopbackSupported())
+            QSKIP("Per-process audio capture needs Windows build 20348 or later");
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+
+        constexpr double gameHz = 1000.0;
+        constexpr double otherHz = 1500.0;
+        constexpr float amplitude = 0.00316f;   // -50 dBFS
+        const auto launch = [](QProcess& process, double hz, const char* endpoint) {
+            process.setProgram(QStringLiteral(AUDIO_TONE_FIXTURE));
+            process.setArguments({ QString::number(hz), QStringLiteral("8000"),
+                                   QString::fromLatin1(endpoint),
+                                   QString::number(double(amplitude)) });
+            process.start();
+            if (!process.waitForStarted(5000) || !process.waitForReadyRead(5000))
+                return QString();
+            return QString::fromLocal8Bit(process.readAllStandardOutput()).trimmed();
+        };
+        QProcess game, other;
+        const auto stopFixtures = qScopeGuard([&] {
+            for (QProcess* p : { &game, &other }) {
+                p->kill();
+                p->waitForFinished(3000);
+            }
+        });
+        const QString gameReady = launch(game, gameHz, "nondefault");
+        if (gameReady.isEmpty() && game.waitForFinished(2000) && game.exitCode() == 5)
+            QSKIP("The chosen output is held in exclusive mode");
+        QVERIFY2(gameReady.startsWith(QStringLiteral("ready")), qPrintable(gameReady));
+        const QString otherReady = launch(other, otherHz, "default");
+        QVERIFY2(otherReady.startsWith(QStringLiteral("ready")), qPrintable(otherReady));
+        const bool gameOnOtherDevice = gameReady.endsWith(QStringLiteral("default=0"));
+        qInfo().noquote() << "game audio e2e: game" << gameReady << "| other" << otherReady;
+
+        AudioCapture audio;
+        QVERIFY(audio.start(AudioCapture::Mode::Game, DWORD(game.processId())));
+        QTemporaryDir dir(QDir::currentPath() + "/segment-gameaudio-XXXXXX");
+        QVERIFY(dir.isValid());
+        VideoFixture video;
+        QVERIFY(makeVideo(video));
+        SegmentRecorder recorder;
+        QVERIFY(recorder.begin(320, 180, 320, 180, 30, 2, 1, 10, dir.path(),
+                               video.device.Get(), video.context.Get(),
+                               audio.sampleRate(), audio.channels()));
+        const auto finish = qScopeGuard([&] {
+            recorder.discardCurrentSegment();
+            recorder.end();
+            audio.stop();
+        });
+        QVERIFY(recorder.hasAudio());
+
+        std::vector<float> buffer(size_t(audio.bufferFrames()) * audio.channels());
+        const long long epoch = CaptureUtil::qpcNow100ns();
+        QElapsedTimer clock;
+        clock.start();
+        int frame = 0;
+        while (clock.elapsed() < 3000) {
+            // FramePumpWorker::poll order: drain audio, then the next frame,
+            // so a stall's audio lands before that frame can roll the segment.
+            for (;;) {
+                long long t100 = 0;
+                const unsigned got = audio.poll(buffer.data(), audio.bufferFrames(), &t100);
+                if (got == 0)
+                    break;
+                recorder.writeAudio(buffer.data(), got, audio.startQpc100ns() + t100 - epoch);
+            }
+            const long long now = CaptureUtil::qpcNow100ns() - epoch;
+            recorder.writeFrame(video.texture.Get(), video.device.Get(), video.context.Get(), now);
+            QVERIFY(!audio.failed());
+            QVERIFY(!audio.deviceInvalidated());
+            recorder.padAudioSilence(now - 2000000);
+            ++frame;
+            QTest::qSleep(16);
+        }
+        QVERIFY(frame > 60);
+        const SegmentLease saved = recorder.snapshotForSave();
+        QVERIFY(!saved.paths().isEmpty());
+        const QString clip = dir.path() + "/gameaudio.mp4";
+        QVERIFY(ReplayExporter::concat(saved.paths(), clip, QStringLiteral("gameaudio-e2e"),
+                                       ReplayExporter::Audio::Required));
+
+        std::vector<float> mono;
+        std::vector<char> covered;
+        QVERIFY(decodeAudio(clip, mono, covered));
+        const size_t from = 24000, to = std::min<size_t>(mono.size(), 120000);
+        QVERIFY2(to > from + 24000, "Saved clip holds too little audio");
+        size_t hole = 0, longestHole = 0, holeEnd = 0;
+        for (size_t i = from; i < to && i < covered.size(); ++i) {
+            hole = covered[i] ? 0 : hole + 1;
+            if (hole > longestHole) {
+                longestHole = hole;
+                holeEnd = i;
+            }
+        }
+        double weakest = 1.0;   // quietest 100 ms window: a dropout shows here
+        for (size_t at = from; at + 4800 <= to; at += 4800)
+            weakest = std::min(weakest, toneAmplitude(mono, at, at + 4800, gameHz));
+        const auto medianTone = [&](double hz) {
+            std::vector<double> levels;
+            for (size_t at = from; at + 4800 <= to; at += 4800)
+                levels.push_back(toneAmplitude(mono, at, at + 4800, hz));
+            std::sort(levels.begin(), levels.end());
+            return levels.empty() ? 0.0 : levels[levels.size() / 2];
+        };
+        const double gameLevel = medianTone(gameHz);
+        const double otherLevel = medianTone(otherHz);
+        const double offTone = medianTone(2300.0);
+        qInfo().noquote() << QStringLiteral(
+            "game audio e2e: game=%1 weakest=%2 other=%3 offTone=%4 longestHole=%5 "
+            "(ends at sample %8 of %9) gameOnOtherDevice=%6 (rendered %7)")
+            .arg(gameLevel, 0, 'g', 3).arg(weakest, 0, 'g', 3).arg(otherLevel, 0, 'g', 3)
+            .arg(offTone, 0, 'g', 3).arg(longestHole)
+            .arg(gameOnOtherDevice ? "yes" : "no").arg(double(amplitude), 0, 'g', 3)
+            .arg(holeEnd).arg(mono.size());
+        QVERIFY2(longestHole <= 2048, "Game audio track has a hole");
+        QVERIFY2(weakest > amplitude * 0.2, "Game audio drops out in the saved clip");
+        QVERIFY2(gameLevel > amplitude * 0.5, "The game's tone is missing from the saved clip");
+        QVERIFY2(gameLevel > otherLevel * 20.0, "Another app's audio leaked into game audio");
+        QVERIFY2(gameLevel > offTone * 20.0, "Saved clip audio is not the game's tone");
+        if (!gameOnOtherDevice)
+            qWarning("Only one active output: the non-default-device case was not exercised");
+
+        // A busy capture worker: one 400 ms gap between polls, far beyond the
+        // ~10 ms Windows buffers for an application-loopback stream. The
+        // drain thread must keep every packet, back to back.
+        AudioCapture stalled;
+        QVERIFY(stalled.start(AudioCapture::Mode::Game, DWORD(game.processId())));
+        long long first = -1, expectedNext = -1, worstJump = 0;
+        unsigned long long frames = 0;
+        QElapsedTimer span;
+        span.start();
+        const auto drain = [&] {
+            for (;;) {
+                long long t100 = 0;
+                const unsigned got = stalled.poll(buffer.data(), stalled.bufferFrames(), &t100);
+                if (got == 0)
+                    return;
+                if (first < 0)
+                    first = t100;
+                if (expectedNext >= 0)
+                    worstJump = std::max(worstJump, std::llabs(t100 - expectedNext));
+                expectedNext = t100 + (long long)got * 10000000LL / 48000;
+                frames += got;
+            }
+        };
+        while (span.elapsed() < 300) { drain(); QTest::qSleep(16); }
+        QTest::qSleep(400);
+        while (span.elapsed() < 1100) { drain(); QTest::qSleep(16); }
+        drain();
+        const double capturedMs = double(frames) / 48.0;
+        const double spannedMs = double(expectedNext - first) / 10000.0;
+        qInfo().noquote() << QStringLiteral("game audio stall: captured=%1ms spanned=%2ms "
+                                            "worstJump=%3ms")
+            .arg(capturedMs, 0, 'f', 1).arg(spannedMs, 0, 'f', 1).arg(worstJump / 10000.0, 0, 'f', 1);
+        QVERIFY(!stalled.failed());
+        QVERIFY2(worstJump <= 200000, "Game audio skipped packets across a worker stall");
+        QVERIFY2(capturedMs >= spannedMs - 25.0, "Game audio lost samples across a worker stall");
+        QVERIFY2(capturedMs >= 900.0, "Game audio stopped delivering during a worker stall");
+        stalled.stop();
     }
 
     void earlySnapshot_data()

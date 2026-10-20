@@ -4,6 +4,17 @@ Public release history and the current local release candidate.
 
 ## [Unreleased]
 
+Planned for the `v0.8.0-beta2` pre-release.
+
+### Added
+
+- Game audio: replay clips now record only the current game's sound, whichever output device it plays on (headphones, Bluetooth, HDMI or speakers), and leave out other apps such as Discord or Spotify. It uses Windows' own per-app audio capture, needs Windows 11, and never touches the game process.
+- Settings → Replay → Audio source offers Game audio (default on Windows 11), Desktop audio (everything on the default Windows output, the default on older Windows) and Off. An earlier saved "System audio off" stays off.
+
+### Fixed
+
+- If game audio cannot be recorded, GameHQ does not switch to desktop audio on its own: the replay buffer stops with a localized reason that names the audio source to choose instead.
+
 ## [0.8.0] - 2026-10-19
 
 Published first as the `v0.8.0-beta1` pre-release. This section collects changes since stable 0.7.9, including the 0.7.10 betas.
