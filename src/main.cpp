@@ -25,6 +25,7 @@
 #include "core/PathContainment.h"
 #include "core/ProcessIdentity.h"
 #include "core/UpdateMaintenance.h"
+#include "diagnostics/Logger.h"
 #include "security/ReleaseTrust.h"
 
 #include <cstring>
@@ -72,6 +73,32 @@ void cleanCompletedUpdateArtifacts()
                                  QStringLiteral("transaction.phase"),
                                  QStringLiteral("transaction.json") })
         QFile::remove(update + QLatin1Char('/') + name);
+}
+
+// A start that cannot continue used to exit with no word at all. Record why,
+// flush the early log buffer to disk so the reason survives, and - unless an
+// automated caller (smoke test, the updater's post-update run) is waiting on
+// this process - tell the user where to look. The dialog text is English-only
+// on purpose: these rare paths have no catalog strings yet, and adding IDs
+// needs the full translation chain (docs/localization/CONTRIBUTING.md).
+int failStartup(int exitCode, const QString& reason, bool interactive,
+                QMessageBox::Icon icon = QMessageBox::Critical,
+                const QString& extraLog = {})
+{
+    qCritical().noquote() << "Startup:" << reason << "(exit code" << exitCode << ')';
+    Logger::install(Paths::logsDir());
+    if (!interactive)
+        return exitCode;
+    QString text = reason
+        + (extraLog.isEmpty() ? QStringLiteral("\n\nDetails are in the log file:\n")
+                              : QStringLiteral("\n\nDetails are in these log files:\n"))
+        + QDir::toNativeSeparators(Logger::filePath(Paths::logsDir()));
+    if (!extraLog.isEmpty())
+        text += QLatin1Char('\n') + QDir::toNativeSeparators(extraLog);
+    QMessageBox box(icon, QString::fromLatin1(Brand::Name), text, QMessageBox::Ok);
+    box.setTextInteractionFlags(Qt::TextSelectableByMouse);
+    box.exec();
+    return exitCode;
 }
 
 bool waitForParentProcess(const QStringList& arguments, QString& error)
@@ -169,6 +196,12 @@ int main(int argc, char* argv[])
             return HidCloakMonitor::applyWhitelistSelfElevated();
     }
 
+    // Capture every message from here on. The file is opened only once this
+    // process owns the instance lock (or must exit): portable import replaces
+    // the data folder that holds the log, and a rejected second instance must
+    // not write into the running instance's log.
+    Logger::beginBuffering();
+
     QApplication qtApp(argc, argv);
     QApplication::setApplicationName(QString::fromLatin1(Brand::Name));
     QApplication::setOrganizationName(QString::fromLatin1(Brand::Name));
@@ -248,24 +281,38 @@ int main(int argc, char* argv[])
     }
     const qsizetype postUpdateAt = arguments.indexOf(QStringLiteral("--post-update"));
     if (postUpdateAt >= 0) {
+        // Only the updater passes --post-update and it judges the outcome
+        // itself, so these exits are logged but never block on a dialog.
         if (postUpdateAt + 2 >= arguments.size())
-            return 2;
+            return failStartup(2, QStringLiteral("The post-update arguments are incomplete."),
+                               false);
         postUpdateVersion = arguments.at(postUpdateAt + 1);
         postUpdateToken = arguments.at(postUpdateAt + 2);
         if (postUpdateVersion != QStringLiteral(GAMEHQ_VERSION)
             || !isPostUpdateTokenPath(postUpdateToken))
-            return 2;
+            return failStartup(2, QStringLiteral("The post-update arguments do not match this build."),
+                               false);
         postUpdateValidation = true;
     }
 
     if (!postUpdateValidation && interruptedUpdateExists()) {
         const QString helper = Paths::packageRoot() + QStringLiteral("/GameHQUpdater.exe");
         const QString transaction = Paths::packageRoot() + QStringLiteral("/.update/transaction.json");
-        if (!QFileInfo(helper).isExecutable() || !QFileInfo(transaction).isFile())
-            return 3;
+        const QString updaterLog = Paths::packageRoot() + QStringLiteral("/.update/updater.log");
+        const QString recoveryFailed = QStringLiteral(
+            "GameHQ could not finish recovering from an interrupted update, so it cannot start.");
+        if (!QFileInfo(helper).isExecutable() || !QFileInfo(transaction).isFile()) {
+            qCritical() << "Startup: interrupted update found but the updater helper or its"
+                           " transaction is missing";
+            return failStartup(3, recoveryFailed, !smokeTest, QMessageBox::Critical, updaterLog);
+        }
         // Recovery restarts the previous version itself. Run before taking the
         // app lock so that restarted process is not rejected as a duplicate.
-        return QProcess::execute(helper, { QStringLiteral("--recover"), transaction }) == 0 ? 0 : 3;
+        const int recovery = QProcess::execute(helper, { QStringLiteral("--recover"), transaction });
+        if (recovery == 0)
+            return 0;
+        qCritical() << "Startup: update recovery helper exited with" << recovery;
+        return failStartup(3, recoveryFailed, !smokeTest, QMessageBox::Critical, updaterLog);
     }
     const QString phaseAtStart = updatePhase();
     const bool completedUpdateAtStart = !postUpdateValidation
@@ -276,7 +323,10 @@ int main(int argc, char* argv[])
         const maintenance::Info state = maintenance::inspect(
             Paths::packageRoot().toStdWString());
         if (state.state == maintenance::State::Active)
-            return 4;
+            return failStartup(4, QStringLiteral(
+                                   "A GameHQ update is being installed. Start GameHQ again "
+                                   "when it has finished."),
+                               !smokeTest, QMessageBox::Information);
     }
 
     // QLockFile remains the source of truth. A rejected second process only
@@ -292,13 +342,19 @@ int main(int argc, char* argv[])
         }
         return 0;
     }
+    // This copy owns the instance lock, so the log file is now ours to write;
+    // everything buffered since startup goes out first.
+    Logger::install(Paths::logsDir());
 
     // Setup and Uninstall observe this process-lifetime mutex. It is acquired
     // only after QLockFile accepts this copy, so rejected second instances do
     // not make the installer think GameHQ is still running.
     ApplicationMutex applicationMutex;
     if (!applicationMutex.acquired())
-        return 5;
+        return failStartup(5, QStringLiteral(
+                               "GameHQ cannot start while another copy of GameHQ or its "
+                               "installer is running."),
+                           !smokeTest && !postUpdateValidation);
 
     // The session marker says "this run never reached an orderly shutdown".
     // It goes only after App and everything it owns are destroyed, so a crash
@@ -308,12 +364,14 @@ int main(int argc, char* argv[])
         return exitCode;
     };
     int exitCode = 0;
+    bool initFailed = false;
     {
         App app;
         app.setPostUpdateValidation(postUpdateValidation);
         // A failed init still tears App down before the marker goes.
         if (!app.init()) {
             exitCode = 1;
+            initFailed = true;
         } else {
             // Local/CI packaged-layout acceptance: exercise normal initialization,
             // enter the Qt event loop, then take the same orderly teardown path as the
@@ -349,5 +407,10 @@ int main(int argc, char* argv[])
             exitCode = qtApp.exec();
         }
     }
+    // Reported only after App and its windows are gone; init() has already
+    // logged the specific reason.
+    if (initFailed)
+        failStartup(exitCode, QStringLiteral("GameHQ could not start."),
+                    !smokeTest && !postUpdateValidation);
     return finish(exitCode);
 }

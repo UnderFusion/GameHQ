@@ -12,7 +12,19 @@ namespace Logger
     inline constexpr qint64 kMaxLogBytes = 8LL * 1024 * 1024;
     inline constexpr int kRetainedLogs = 3;
 
+    // Captures messages in memory until install() picks a log directory, so
+    // what main() reports before the data folder is safe to touch (portable
+    // import, update recovery, the single-instance check) is not lost. The
+    // buffer is bounded; a process that never installs simply drops it.
+    void beginBuffering();
+
+    // Writes to <logsDir>/gamehq.log, first flushing anything buffered since
+    // beginBuffering(). Installing again for the directory already in use is a
+    // no-op.
     void install(const QString& logsDir);
+
+    // Full path of the active log file for the given logs directory.
+    QString filePath(const QString& logsDir);
 
     // True when the log file is open. A failed open is not fatal — messages go
     // to stderr instead — but the diagnostics summary should say so.
