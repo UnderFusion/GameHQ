@@ -1,5 +1,6 @@
 #include "storage/CaptureDatabase.h"
 
+#include <QFile>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
@@ -294,6 +295,59 @@ private slots:
         QCOMPARE(iconPathFor(check.db, gameId), QStringLiteral("C:/gamehq-data/icons/celeste.png"));
         QCOMPARE(settingValue(check.db, QStringLiteral("internal.repairs_v1_done")),
                  QStringLiteral("1"));
+    }
+
+    // Two case variants of one capture collapse to the canonical spelling. If
+    // the winner is the variant that does not already hold it, the loser's
+    // tombstone still does, and the UNIQUE file_path used to abort startup on
+    // every launch.
+    void aCaseVariantCollapseNeverBlocksStartup()
+    {
+        QTemporaryDir tempDir;
+        QVERIFY(tempDir.isValid());
+        const QString dbPath = tempDir.filePath(QStringLiteral("collide.db"));
+        QVERIFY(prepareDatabase(dbPath));
+
+        const QString lower = tempDir.filePath(QStringLiteral("shot.png"));
+        const QString upper = tempDir.filePath(QStringLiteral("SHOT.png"));
+        const QString thumb = tempDir.filePath(QStringLiteral("thumb.png"));
+        {
+            QFile file(thumb);
+            QVERIFY(file.open(QIODevice::WriteOnly));
+            file.write("png");
+        }
+        int lowerId = -1;
+        int upperId = -1;
+        {
+            RawConnection raw(dbPath);
+            QVERIFY(raw.db.open());
+            lowerId = insertCapture(raw.db, lower, -1);
+            upperId = insertCapture(raw.db, upper, -1);
+            QVERIFY(lowerId > 0 && upperId > 0);
+            // The thumbnail makes the second row the winner.
+            QVERIFY(exec(raw.db, QStringLiteral("UPDATE captures SET thumbnail_path = '%1', "
+                                                "is_favorite = 0 WHERE id = %2")
+                                     .arg(thumb).arg(upperId)));
+            QVERIFY(exec(raw.db, QStringLiteral("UPDATE captures SET is_favorite = 1 WHERE id = %1")
+                                     .arg(lowerId)));
+        }
+
+        for (int launch = 0; launch < 2; ++launch) {
+            CaptureDatabase db(dbPath);
+            QVERIFY2(db.open(), qPrintable(QStringLiteral("launch %1").arg(launch)));
+        }
+
+        RawConnection check(dbPath);
+        QVERIFY(check.db.open());
+        QSqlQuery q(check.db);
+        QVERIFY(q.exec(QStringLiteral(
+            "SELECT id, file_path, is_favorite, thumbnail_path FROM captures WHERE deleted_at IS NULL")));
+        QVERIFY(q.next());
+        QCOMPARE(q.value(0).toInt(), upperId);
+        QCOMPARE(q.value(1).toString().compare(lower, Qt::CaseInsensitive), 0);
+        QCOMPARE(q.value(2).toInt(), 1);   // the loser's favorite survives the merge
+        QVERIFY(!q.value(3).toString().isEmpty());
+        QVERIFY(!q.next());
     }
 };
 

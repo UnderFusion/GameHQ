@@ -173,6 +173,23 @@ bool CaptureDatabase::migrate()
                 return abortRepair(QStringLiteral("could not tombstone a duplicate capture: ")
                                    + tombstone.lastError().text());
         }
+        // file_path is UNIQUE (case-sensitive), and the canonical spelling can
+        // still be held by a tombstone: a duplicate tombstoned just above, a
+        // case variant, or a capture deleted earlier. The live winner is the
+        // capture's current state and already carries the merged favorite and
+        // thumbnail, so such a tombstone is superseded and goes. A live row
+        // cannot hold it: it would have been grouped and tombstoned here.
+        QSqlQuery clearTombstone(m_db);
+        clearTombstone.prepare(QStringLiteral(
+            "DELETE FROM captures WHERE file_path = :path AND id != :id AND deleted_at IS NOT NULL"));
+        clearTombstone.bindValue(QStringLiteral(":path"), canonicalPath);
+        clearTombstone.bindValue(QStringLiteral(":id"), rows[winnerIndex].id);
+        if (!clearTombstone.exec())
+            return abortRepair(QStringLiteral("could not clear a superseded capture tombstone: ")
+                               + clearTombstone.lastError().text());
+        if (clearTombstone.numRowsAffected() > 0)
+            qInfo() << "DB: startup repair merged" << clearTombstone.numRowsAffected()
+                    << "superseded tombstone(s) into" << canonicalPath;
         QSqlQuery update(m_db);
         update.prepare(QStringLiteral(
             "UPDATE captures SET file_path = :path, thumbnail_path = :thumb, is_favorite = :favorite WHERE id = :id"));
@@ -202,6 +219,36 @@ bool CaptureDatabase::migrate()
             const QString newValue = Paths::toStoredPath(Paths::repairMovedPath(oldValue));
             if (newValue == oldValue)
                 continue;
+            // folders.path is UNIQUE: when the repaired path is already
+            // registered, this row is the same folder under its old spelling.
+            // Keep the existing row (watch state included) and drop this one.
+            if (qstrcmp(spec.table, "folders") == 0) {
+                QSqlQuery existing(m_db);
+                existing.prepare(QStringLiteral("SELECT id, is_watched FROM folders WHERE path = :path AND id != :id"));
+                existing.bindValue(QStringLiteral(":path"), newValue);
+                existing.bindValue(QStringLiteral(":id"), select.value(0));
+                if (!existing.exec())
+                    return abortRepair(QStringLiteral("could not check a repaired folder: ")
+                                       + existing.lastError().text());
+                if (existing.next()) {
+                    const QVariant keeperId = existing.value(0);
+                    existing.finish();
+                    QSqlQuery merge(m_db);
+                    merge.prepare(QStringLiteral(
+                        "UPDATE folders SET is_watched = MAX(is_watched, "
+                        "(SELECT is_watched FROM folders WHERE id = :old)) WHERE id = :keep"));
+                    merge.bindValue(QStringLiteral(":old"), select.value(0));
+                    merge.bindValue(QStringLiteral(":keep"), keeperId);
+                    QSqlQuery drop(m_db);
+                    drop.prepare(QStringLiteral("DELETE FROM folders WHERE id = :id"));
+                    drop.bindValue(QStringLiteral(":id"), select.value(0));
+                    if (!merge.exec() || !drop.exec())
+                        return abortRepair(QStringLiteral("could not merge a repaired folder: ")
+                                           + merge.lastError().text() + drop.lastError().text());
+                    qInfo() << "DB: startup repair merged folder" << oldValue << "into" << newValue;
+                    continue;
+                }
+            }
             QSqlQuery update(m_db);
             update.prepare(QStringLiteral("UPDATE %1 SET %2 = :path WHERE %3 = :id")
                                .arg(QString::fromLatin1(spec.table), QString::fromLatin1(spec.column),
