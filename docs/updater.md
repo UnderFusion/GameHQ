@@ -243,8 +243,12 @@ different stage count or a temp-located helper.
    records `productId`, package root, staging and backup directories, and the
    durable phase marker (`download_verified` at handoff), and the writing
    process id (`callerPid`) the helper must wait out before mutating files.
-   Every path is canonicalized and must remain below the package root. The
-   helper uses a per-transaction Windows mutex to reject a competing updater,
+   Every path is canonicalized and must remain below the package root,
+   compared component by component (another drive or share never counts as
+   inside). `dataDir` must be a GameHQ data location: below the package root
+   (portable) or below the user's AppData (installed), never covering the
+   program files or `.update`. A target version older than the helper's own
+   (the installed release) is refused. The helper uses a per-transaction Windows mutex to reject a competing updater,
    then prints the full verify/extract/backup/install/restart operation list
    in dry-run mode without creating staging, backup or lock files. Outside
    dry-run every helper outcome is also appended with a timestamp to
@@ -255,7 +259,10 @@ different stage count or a temp-located helper.
    different drive, so the final move can be atomic where possible).
    Extraction is hardened against zip-slip: absolute paths, drive-letter
    paths, `..` traversal, entries that escape the staging root after
-   canonicalization, and symlinks/reparse points are all rejected. Total
+   canonicalization, reserved Windows names (`CON`, `NUL`, `COM1`, ...) and
+   names ending in a dot or space, and symlinks/reparse points are all
+   rejected. The package is opened once with writers denied; the SHA-256
+   check and every ZIP read use that same handle. Total
    uncompressed size and file count are capped. `portable.flag`, if present
    in the archive, is stripped from staging before anything else runs.
 3. **Quiescence barrier** — the app only starts the handoff once no game is

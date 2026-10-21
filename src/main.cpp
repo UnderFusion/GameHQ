@@ -21,6 +21,7 @@
 #include "localization/NativeText.h"
 #include "localization/StartupLocalization.h"
 #include "core/ApplicationMutex.h"
+#include "core/PathContainment.h"
 #include "core/ProcessIdentity.h"
 #include "core/UpdateMaintenance.h"
 #include "security/ReleaseTrust.h"
@@ -36,10 +37,9 @@ bool isPostUpdateTokenPath(const QString& path)
     const QString updateRoot = QFileInfo(Paths::packageRoot()
         + QStringLiteral("/.update")).absoluteFilePath();
     const QString token = QFileInfo(path).absoluteFilePath();
-    const QString relative = QDir(updateRoot).relativeFilePath(token);
-    return relative != QStringLiteral("..")
-        && !relative.startsWith(QStringLiteral("../"))
-        && relative != QStringLiteral(".");
+    // QDir::relativeFilePath answers with an absolute path across drives or
+    // shares, which a parent-prefix test accepted; compare components instead.
+    return path_containment::isWithinRoot(updateRoot.toStdWString(), token.toStdWString());
 }
 
 QString updatePhase()

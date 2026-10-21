@@ -20,6 +20,7 @@
 #include "updater/UpdaterRecovery.h"
 #include "launcher/UpdaterPromotion.h"
 #include "core/UpdateMaintenance.h"
+#include "core/PathContainment.h"
 #include <windows.h>
 
 class UpdaterTransactionTest : public QObject
@@ -41,6 +42,10 @@ private Q_SLOTS:
     void missingHealthTokenTimesOut();
     void exitedApplicationFailsWithoutWaitingOutTheDeadline();
     void recoveryKeepsAnUpdateThatAlreadyReportedHealth();
+    void withinRootHelperRejectsEscapes();
+    void rejectsReservedWindowsNames();
+    void stagingHoldsTheVerifiedPackageAgainstWriters();
+    void refusesOlderVersionAndForeignDataDir();
     void failedHealthRollbackRestoresProgramAndData();
     void interruptedMixedSwapRecoversPreviousProgram();
     void rejectsPackageRequiringNewerUpdater();
@@ -649,6 +654,141 @@ void UpdaterTransactionTest::recoveryKeepsAnUpdateThatAlreadyReportedHealth()
     QVERIFY(phase.open(QIODevice::ReadOnly)); QCOMPARE(phase.readAll().trimmed(), QByteArray("rolled_back"));
     QVERIFY(config.open(QIODevice::ReadOnly)); QCOMPARE(config.readAll(), QByteArray("old config"));
     QVERIFY(program.open(QIODevice::ReadOnly)); QCOMPARE(program.readAll(), QByteArray("old program"));
+}
+
+void UpdaterTransactionTest::withinRootHelperRejectsEscapes()
+{
+    using path_containment::isWithinRoot;
+    const std::wstring root = L"C:\\GameHQ\\.update";
+    QVERIFY(isWithinRoot(root, L"C:\\GameHQ\\.update\\healthy.token"));
+    QVERIFY(isWithinRoot(root, L"c:/gamehq/.UPDATE/staging/app"));          // case + separators
+    QVERIFY(isWithinRoot(root, L"C:\\GameHQ\\.update\\a\\..\\healthy.token"));
+    QVERIFY(isWithinRoot(L"C:\\GameHQ\\.update\\", L"C:\\GameHQ\\.update\\x"));
+    QVERIFY(!isWithinRoot(root, root));
+    QVERIFY(isWithinRoot(root, root, true));
+    QVERIFY(!isWithinRoot(root, L"C:\\GameHQ\\.update\\..\\escaped.token"));
+    QVERIFY(!isWithinRoot(root, L"C:/GameHQ/.update/../../Windows/x"));
+    QVERIFY(!isWithinRoot(root, L"C:\\GameHQ\\.update2\\healthy.token"));  // name prefix only
+    QVERIFY(!isWithinRoot(root, L"D:\\GameHQ\\.update\\healthy.token"));   // other drive
+    QVERIFY(!isWithinRoot(root, L"\\\\server\\share\\GameHQ\\.update\\x")); // UNC
+    QVERIFY(!isWithinRoot(root, L"\\\\?\\C:\\GameHQ\\.update\\..\\x"));    // unnormalised device path
+    QVERIFY(!isWithinRoot(root, L"GameHQ\\.update\\x"));                   // relative
+    QVERIFY(!isWithinRoot(root, L"C:GameHQ\\.update\\x"));                 // drive-relative
+    QVERIFY(!isWithinRoot(root, L""));
+    const std::wstring share = L"\\\\server\\share\\GameHQ";
+    QVERIFY(isWithinRoot(share, L"\\\\SERVER\\share\\GameHQ\\app\\GameHQ.exe"));
+    QVERIFY(!isWithinRoot(share, L"\\\\other\\share\\GameHQ\\app"));
+    QVERIFY(!isWithinRoot(share, L"C:\\GameHQ\\app"));
+}
+
+void UpdaterTransactionTest::rejectsReservedWindowsNames()
+{
+    const QByteArray manifest = R"({"schemaVersion":1,"productId":"underfusion.gamehq","appVersion":"9.8.7","layoutVersion":1,"minimumUpdaterVersion":"0.6.10"})";
+    for (const QByteArray &hostile : { QByteArray("app/CON"), QByteArray("app/nul.txt"),
+                                       QByteArray("app/Com1.dll"), QByteArray("app/LPT9"),
+                                       QByteArray("app/GameHQ.exe."), QByteArray("app/x "),
+                                       QByteArray("app/a*b"), QByteArray("app/AUX /x") }) {
+        QTemporaryDir dir(QDir::current().filePath(QStringLiteral("tst-updater-reserved-XXXXXX")));
+        QVERIFY(dir.isValid());
+        const QString transaction = writeFixture(
+            dir.path(), QDir(dir.path()).filePath(QStringLiteral(".update/backup")));
+        const QString package = QDir(dir.path()).filePath(
+            QStringLiteral(".update/downloads/GameHQ-9.8.7-win64-update.zip"));
+        QVERIFY(writeZip(package, {{"GameHQ.exe", "launcher"}, {"app/GameHQ.exe", "application"},
+                                   {"update-package.json", manifest}, {hostile, "hostile"}}));
+        QVERIFY(syncTransactionHash(transaction, package));
+        QScopedPointer<QProcess> process(runHelper(QStringLiteral("--stage"), transaction, this));
+        QVERIFY(process->waitForFinished(10000));
+        QVERIFY2(process->exitCode() != 0, hostile.constData());
+        QVERIFY2(process->readAllStandardError().contains("reserved or invalid Windows file name"),
+                 hostile.constData());
+        QVERIFY(!QFileInfo::exists(QDir(dir.path()).filePath(QStringLiteral(".update/staging"))));
+    }
+}
+
+void UpdaterTransactionTest::stagingHoldsTheVerifiedPackageAgainstWriters()
+{
+    QTemporaryDir dir(QDir::current().filePath(QStringLiteral("tst-updater-handle-XXXXXX")));
+    QVERIFY(dir.isValid());
+    const QString transaction = writeFixture(
+        dir.path(), QDir(dir.path()).filePath(QStringLiteral(".update/backup")));
+    const QString package = QDir(dir.path()).filePath(
+        QStringLiteral(".update/downloads/GameHQ-9.8.7-win64-update.zip"));
+    const QByteArray manifest = R"({"schemaVersion":1,"productId":"underfusion.gamehq","appVersion":"9.8.7","layoutVersion":1,"minimumUpdaterVersion":"0.6.10"})";
+    QVERIFY(writeZip(package, {{"GameHQ.exe", "launcher"}, {"app/GameHQ.exe", "application"},
+                               {"update-package.json", manifest}}));
+    QVERIFY(syncTransactionHash(transaction, package));
+    // Verification and extraction read one handle that denies writers, so a
+    // package another process can still write to is refused outright.
+    QFile writer(package);
+    QVERIFY(writer.open(QIODevice::ReadWrite));
+    QScopedPointer<QProcess> blocked(runHelper(QStringLiteral("--stage"), transaction, this));
+    QVERIFY(blocked->waitForFinished(10000));
+    QVERIFY(blocked->exitCode() != 0);
+    QVERIFY(blocked->readAllStandardError().contains("exclusively"));
+    QVERIFY(!QFileInfo::exists(QDir(dir.path()).filePath(QStringLiteral(".update/staging"))));
+    writer.close();
+    QScopedPointer<QProcess> staged(runHelper(QStringLiteral("--stage"), transaction, this));
+    QVERIFY(staged->waitForFinished(10000));
+    QCOMPARE(staged->exitCode(), 0);
+    QFile app(QDir(dir.path()).filePath(QStringLiteral(".update/staging/app/GameHQ.exe")));
+    QVERIFY(app.open(QIODevice::ReadOnly));
+    QCOMPARE(app.readAll(), QByteArray("application"));
+}
+
+void UpdaterTransactionTest::refusesOlderVersionAndForeignDataDir()
+{
+    // An older, validly signed release is refused by the installed floor.
+    {
+        QTemporaryDir dir(QDir::current().filePath(QStringLiteral("tst-updater-floor-XXXXXX")));
+        QVERIFY(dir.isValid());
+        const QString transaction = writeFixture(
+            dir.path(), QDir(dir.path()).filePath(QStringLiteral(".update/backup")));
+        const QString package = QDir(dir.path()).filePath(
+            QStringLiteral(".update/downloads/GameHQ-0.0.1-win64-update.zip"));
+        const QByteArray manifest = R"({"schemaVersion":1,"productId":"underfusion.gamehq","appVersion":"0.0.1","layoutVersion":1,"minimumUpdaterVersion":"0.0.1"})";
+        QVERIFY(writeZip(package, {{"GameHQ.exe", "launcher"}, {"app/GameHQ.exe", "application"},
+                                   {"update-package.json", manifest}}));
+        QFile file(transaction);
+        QVERIFY(file.open(QIODevice::ReadOnly));
+        QJsonObject object = QJsonDocument::fromJson(file.readAll()).object();
+        file.close();
+        object.insert(QStringLiteral("expectedVersion"), QStringLiteral("0.0.1"));
+        object.insert(QStringLiteral("packagePath"), QDir::toNativeSeparators(package));
+        QVERIFY(file.open(QIODevice::WriteOnly | QIODevice::Truncate));
+        QVERIFY(file.write(QJsonDocument(object).toJson(QJsonDocument::Compact)) > 0);
+        file.close();
+        QVERIFY(syncTransactionHash(transaction, package));
+        QScopedPointer<QProcess> process(runHelper(QStringLiteral("--stage"), transaction, this));
+        QVERIFY(process->waitForFinished(10000));
+        QVERIFY(process->exitCode() != 0);
+        QVERIFY(process->readAllStandardError().contains("older than the installed version"));
+        QVERIFY(!QFileInfo::exists(QDir(dir.path()).filePath(QStringLiteral(".update/staging"))));
+    }
+    // dataDir is snapshotted and restored, so it must be a GameHQ data
+    // location, never an arbitrary folder or one covering the program files.
+    QTemporaryDir dir(QDir::current().filePath(QStringLiteral("tst-updater-datadir-XXXXXX")));
+    QVERIFY(dir.isValid());
+    const QString transaction = writeFixture(
+        dir.path(), QDir(dir.path()).filePath(QStringLiteral(".update/backup")));
+    QFile file(transaction);
+    QVERIFY(file.open(QIODevice::ReadOnly));
+    const QJsonObject original = QJsonDocument::fromJson(file.readAll()).object();
+    file.close();
+    const QString sibling = QFileInfo(dir.path()).absolutePath() + QStringLiteral("/elsewhere");
+    for (const QString &dataDir : { sibling, dir.path(),
+                                    QDir(dir.path()).filePath(QStringLiteral(".update/data")) }) {
+        QJsonObject object = original;
+        object.insert(QStringLiteral("dataDir"), QDir::toNativeSeparators(QDir::cleanPath(dataDir)));
+        QVERIFY(file.open(QIODevice::WriteOnly | QIODevice::Truncate));
+        QVERIFY(file.write(QJsonDocument(object).toJson(QJsonDocument::Compact)) > 0);
+        file.close();
+        QProcess process;
+        process.start(QStringLiteral(UPDATER_EXE), { QStringLiteral("--dry-run"), transaction });
+        QVERIFY(process.waitForFinished(10000));
+        QVERIFY2(process.exitCode() != 0, qPrintable(dataDir));
+        QVERIFY2(process.readAllStandardError().contains("not a GameHQ data location"), qPrintable(dataDir));
+    }
 }
 
 void UpdaterTransactionTest::failedHealthRollbackRestoresProgramAndData()

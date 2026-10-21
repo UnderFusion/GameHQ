@@ -429,7 +429,7 @@ set(GAMEHQ_UPDATER_SOURCES
 )
 add_executable(GameHQUpdater ${GAMEHQ_UPDATER_SOURCES})
 target_include_directories(GameHQUpdater PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(GameHQUpdater PRIVATE miniz bcrypt)
+target_link_libraries(GameHQUpdater PRIVATE miniz bcrypt shell32 ole32)
 target_link_libraries(GameHQUpdater PRIVATE gamehq_release_trust)
 target_link_options(GameHQUpdater PRIVATE -static -municode)
 target_compile_definitions(GameHQUpdater PRIVATE
@@ -445,7 +445,7 @@ if(GAMEHQ_BUILD_TESTS)
     gamehq_add_release_trust_library(gamehq_release_trust_testkeys ON)
     add_executable(updater_test_trust_fixture ${GAMEHQ_UPDATER_SOURCES})
     target_include_directories(updater_test_trust_fixture PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-    target_link_libraries(updater_test_trust_fixture PRIVATE miniz bcrypt)
+    target_link_libraries(updater_test_trust_fixture PRIVATE miniz bcrypt shell32 ole32)
     target_link_libraries(updater_test_trust_fixture PRIVATE gamehq_release_trust_testkeys)
     target_link_options(updater_test_trust_fixture PRIVATE -static -municode)
     target_compile_definitions(updater_test_trust_fixture PRIVATE

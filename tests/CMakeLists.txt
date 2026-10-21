@@ -1146,7 +1146,7 @@ gamehq_add_test(tst_updateinstaller
     "${CMAKE_SOURCE_DIR}/src/updates/UpdateDownloader.cpp"
     "${CMAKE_SOURCE_DIR}/src/updater/UpdaterTransaction.cpp"
     "${CMAKE_SOURCE_DIR}/src/core/UpdaterHandshake.cpp")
-target_link_libraries(tst_updateinstaller PRIVATE Qt6::Network gamehq_test_release_signer)
+target_link_libraries(tst_updateinstaller PRIVATE Qt6::Network gamehq_test_release_signer shell32 ole32)
 
 gamehq_add_test(tst_updatertransaction
     tst_updatertransaction.cpp
@@ -1171,7 +1171,7 @@ target_compile_definitions(tst_updatertransaction PRIVATE
     GAMEHQ_UPDATER_VERSION="${GAMEHQ_VERSION_FULL}")
 add_dependencies(tst_updatertransaction GameHQUpdater updater_test_trust_fixture
                  updater_health_fixture)
-target_link_libraries(tst_updatertransaction PRIVATE miniz bcrypt Qt6::Sql gamehq_test_release_signer)
+target_link_libraries(tst_updatertransaction PRIVATE miniz bcrypt shell32 ole32 Qt6::Sql gamehq_test_release_signer)
 
 # The end-to-end updater tests drive real child processes through swap,
 # rollback and recovery, so they need more than the default bound - especially
