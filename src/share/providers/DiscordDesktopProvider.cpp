@@ -32,16 +32,13 @@ QStringList splitCommandLine(const QString& command)
     return out;
 }
 
-// Stable, PTB and Canary use the "Update.exe" launcher; newer builds may
-// register the app executable (Discord*.exe) directly.
-bool isDiscordLauncher(const QString& path)
+// "--processStart" names the app Update.exe starts from its own folder: a
+// bare executable name such as Discord.exe, DiscordPTB.exe or DiscordCanary.exe.
+bool isPlainExecutableName(const QString& name)
 {
-    const QFileInfo info(path);
-    if (!info.isFile())
-        return false;
-    const QString name = info.fileName();
-    return name.compare(QLatin1String("Update.exe"), Qt::CaseInsensitive) == 0
-        || name.startsWith(QLatin1String("Discord"), Qt::CaseInsensitive);
+    return !name.isEmpty() && QFileInfo(name).fileName() == name
+        && !name.contains(QLatin1Char('\\'))
+        && name.endsWith(QLatin1String(".exe"), Qt::CaseInsensitive);
 }
 } // namespace
 
@@ -65,11 +62,26 @@ DiscordDesktopProvider::Installation DiscordDesktopProvider::parseHandlerCommand
     // The URL placeholder after --process-start-args must not be passed on.
     for (int i = 1; i + 1 < args.size(); ++i) {
         if (args.at(i) == QLatin1String("--processStart")) {
-            out.launchArgs << args.at(i) << args.at(i + 1);
+            if (isPlainExecutableName(args.at(i + 1)))
+                out.launchArgs << args.at(i) << args.at(i + 1);
             break;
         }
     }
     return out;
+}
+
+// Stable, PTB and Canary use the "Update.exe" launcher; newer builds may
+// register the app executable (Discord*.exe) directly.
+bool DiscordDesktopProvider::isDiscordLauncher(const QString& path)
+{
+    const QFileInfo info(path);
+    if (path.isEmpty() || !info.isAbsolute() || !info.isFile())
+        return false;
+    const QString name = info.fileName();
+    if (!name.endsWith(QLatin1String(".exe"), Qt::CaseInsensitive))
+        return false;
+    return name.compare(QLatin1String("Update.exe"), Qt::CaseInsensitive) == 0
+        || name.startsWith(QLatin1String("Discord"), Qt::CaseInsensitive);
 }
 
 DiscordDesktopProvider::Installation DiscordDesktopProvider::locateInstalled()

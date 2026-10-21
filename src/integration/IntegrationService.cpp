@@ -1,5 +1,6 @@
 #include "integration/IntegrationService.h"
 
+#include <QFileInfo>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QTimer>
@@ -27,6 +28,15 @@ bool boundedRequiredString(const QJsonObject &object, const QString &key, int ma
     value = field.toString();
     return true;
 }
+}
+
+bool IntegrationService::isExpectedPlayniteHost(const QString &executablePath)
+{
+    // The add-on runs inside Playnite itself: Playnite.DesktopApp.exe or
+    // Playnite.FullscreenApp.exe, wherever the user installed it.
+    const QString name = QFileInfo(executablePath).fileName();
+    return name.startsWith(QStringLiteral("Playnite."), Qt::CaseInsensitive)
+        && name.endsWith(QStringLiteral(".exe"), Qt::CaseInsensitive);
 }
 
 IntegrationService::IntegrationService(QString appVersion, QObject *parent,
@@ -110,8 +120,19 @@ bool IntegrationService::handleHello(quint64 clientId,
     it->protocol = selected;
     if (clientName == QStringLiteral("GameHQ.Playnite"))
         m_context.cancelSourceExpiry(clientName);
+    const integration::LocalPeer peer = m_server.clientPeer(clientId);
     qInfo().noquote() << "Integration client" << clientId << "handshake:" << clientName
-                      << clientVersion;
+                      << clientVersion << "from" << integration::describeLocalPeer(peer);
+    // Same-user pipe: a program can claim any client name, so the name is
+    // only checked against the program that sent it and the mismatch logged.
+    // Not refused: a portable or renamed Playnite, or an unreadable process,
+    // must keep working, and the lifecycle state it can send is bounded.
+    if (clientName == QStringLiteral("GameHQ.Playnite")
+        && !isExpectedPlayniteHost(peer.executablePath)) {
+        qWarning().noquote() << "Integration client" << clientId
+                             << "claims to be Playnite but runs as"
+                             << integration::describeLocalPeer(peer);
+    }
 
     QJsonObject reply {
         { QStringLiteral("type"), QStringLiteral("hello.ack") },

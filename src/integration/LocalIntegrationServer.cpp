@@ -62,6 +62,9 @@ void LocalIntegrationServer::acceptConnections()
         }
         ClientState state;
         state.id = m_nextClientId++;
+        state.peer = integration::identifyLocalPeer(socket);
+        qInfo().noquote() << "Integration client" << state.id << "is"
+                          << integration::describeLocalPeer(state.peer);
         m_clients.insert(socket, state);
         emit clientConnected(state.id);
         connect(socket, &QLocalSocket::readyRead, this,
@@ -76,6 +79,15 @@ void LocalIntegrationServer::acceptConnections()
             socket->deleteLater();
         });
     }
+}
+
+integration::LocalPeer LocalIntegrationServer::clientPeer(quint64 clientId) const
+{
+    for (auto it = m_clients.cbegin(); it != m_clients.cend(); ++it) {
+        if (it->id == clientId)
+            return it->peer;
+    }
+    return {};
 }
 
 void LocalIntegrationServer::disconnectClient(quint64 clientId)

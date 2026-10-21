@@ -21,6 +21,10 @@ public:
     integration::ExternalGameContext *externalContext() { return &m_context; }
     int clientCount() const { return m_server.clientCount(); }
 
+    // True when the executable is a Playnite host process that legitimately
+    // carries the GameHQ.Playnite add-on.
+    static bool isExpectedPlayniteHost(const QString &executablePath);
+
     void broadcastMaintenance(int retryAfterSeconds);
     void cancelMaintenance() { m_maintenance = false; }
 

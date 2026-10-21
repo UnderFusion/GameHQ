@@ -36,7 +36,10 @@ QByteArray decodeChunked(const QByteArray& raw, bool* complete)
             break;
         bool ok = false;
         const qint64 size = raw.mid(pos, eol - pos).split(';').first().trimmed().toLongLong(&ok, 16);
-        if (!ok || size < 0)
+        // The whole response is capped at kMaxResponseBytes, so a larger
+        // chunk is malformed; bounding it also keeps `pos + size` from
+        // overflowing on a hostile size line.
+        if (!ok || size < 0 || size > kMaxResponseBytes)
             break;
         if (size == 0) {
             *complete = true;

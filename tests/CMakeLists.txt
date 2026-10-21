@@ -523,6 +523,7 @@ gamehq_add_test(tst_applicationmutex
 gamehq_add_test(tst_integrationprotocol
     tst_integrationprotocol.cpp
     "${CMAKE_SOURCE_DIR}/src/integration/IntegrationProtocol.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/LocalPeer.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.h")
 target_link_libraries(tst_integrationprotocol PRIVATE Qt6::Network)
@@ -530,6 +531,7 @@ target_link_libraries(tst_integrationprotocol PRIVATE Qt6::Network)
 gamehq_add_test(tst_integrationservice
     tst_integrationservice.cpp
     "${CMAKE_SOURCE_DIR}/src/integration/IntegrationProtocol.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/LocalPeer.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.h"
     "${CMAKE_SOURCE_DIR}/src/integration/ExternalGameContext.cpp"
@@ -541,6 +543,7 @@ target_link_libraries(tst_integrationservice PRIVATE Qt6::Network)
 add_executable(integration_server_fixture
     integration_server_fixture.cpp
     "${CMAKE_SOURCE_DIR}/src/integration/IntegrationProtocol.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/LocalPeer.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.cpp"
     "${CMAKE_SOURCE_DIR}/src/integration/LocalIntegrationServer.h"
     "${CMAKE_SOURCE_DIR}/src/integration/ExternalGameContext.cpp"
@@ -1037,6 +1040,7 @@ gamehq_add_test(tst_shareexternalprovider
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderProtocol.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProvider.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/LocalPeer.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderHost.cpp")
 target_link_libraries(tst_shareexternalprovider PRIVATE Qt6::Network advapi32)
 
@@ -1053,6 +1057,7 @@ gamehq_add_test(tst_shareexternalconformance
     "${CMAKE_SOURCE_DIR}/src/config/ConfigManager.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderProtocol.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProvider.cpp"
+    "${CMAKE_SOURCE_DIR}/src/integration/LocalPeer.cpp"
     "${CMAKE_SOURCE_DIR}/src/share/external/ExternalProviderHost.cpp")
 target_link_libraries(tst_shareexternalconformance PRIVATE Qt6::Network advapi32)
 target_compile_definitions(tst_shareexternalconformance PRIVATE

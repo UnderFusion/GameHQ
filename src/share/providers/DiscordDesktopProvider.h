@@ -57,6 +57,10 @@ public:
     // Production locator: HKCU/HKLM `discord` handler, then the default
     // per-user install folder. Only accepts an existing Discord launcher.
     static Installation locateInstalled();
+    // A launcher GameHQ may start: an existing absolute .exe named Update.exe
+    // or Discord*.exe. The URL handler lives in HKCU, which any program of the
+    // user can rewrite, so its target is checked rather than run blindly.
+    static bool isDiscordLauncher(const QString& path);
     static bool startDetached(const QString& program, const QStringList& args);
 
 private:

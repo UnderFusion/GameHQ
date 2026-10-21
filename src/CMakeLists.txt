@@ -90,6 +90,7 @@ qt_add_executable(GameHQ
     input/WinMMDevice.cpp input/WinMMDevice.h
     integration/IntegrationMessage.h
     integration/IntegrationProtocol.cpp integration/IntegrationProtocol.h
+    integration/LocalPeer.cpp integration/LocalPeer.h
     integration/LocalIntegrationServer.cpp integration/LocalIntegrationServer.h
     integration/ExternalGameContext.cpp integration/ExternalGameContext.h
     integration/IntegrationService.cpp integration/IntegrationService.h

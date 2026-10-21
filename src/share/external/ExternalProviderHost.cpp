@@ -1,5 +1,7 @@
 #include "share/external/ExternalProviderHost.h"
 
+#include "integration/LocalPeer.h"
+
 #include <QDebug>
 #include <QJsonArray>
 #include <QLocalSocket>
@@ -65,6 +67,10 @@ void ExternalProviderHost::acceptConnections()
         }
         auto conn = std::make_shared<Conn>();
         conn->socket = socket;
+        // Add-ons are third-party programs, so there is no executable to
+        // insist on; the path makes every provider attributable instead.
+        conn->peer = integration::describeLocalPeer(integration::identifyLocalPeer(socket));
+        qInfo().noquote() << "Share provider connection from" << conn->peer;
         // A peer that never introduces itself does not hold a slot forever.
         conn->handshakeTimer = new QTimer(socket);
         conn->handshakeTimer->setSingleShot(true);
@@ -151,6 +157,8 @@ void ExternalProviderHost::handleHello(const std::shared_ptr<Conn>& conn, const 
         delete provider;
         // One live provider per identity: the newcomer loses, the running one
         // keeps working (a hijack attempt cannot displace it).
+        qWarning().noquote() << "Share provider" << manifest.id << "is already registered;"
+                             << "refusing the second claim from" << conn->peer;
         failConnection(socket, QString::fromLatin1(ErrorCode::DuplicateProvider), requestId,
                        QStringLiteral("duplicate provider identity"));
         return;
@@ -175,7 +183,8 @@ void ExternalProviderHost::handleHello(const std::shared_ptr<Conn>& conn, const 
         { QStringLiteral("jobTimeoutMs"), manifest.jobTimeoutMs },
     });
     sendTo(socket, ack);
-    qInfo() << "Share provider registered:" << manifest.id << "protocol" << manifest.selectedProtocol;
+    qInfo().noquote() << "Share provider registered:" << manifest.id << "protocol"
+                      << manifest.selectedProtocol << "from" << conn->peer;
     emit providerRegistered(manifest.id);
 }
 

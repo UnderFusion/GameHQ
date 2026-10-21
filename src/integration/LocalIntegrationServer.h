@@ -1,6 +1,7 @@
 #pragma once
 
 #include "integration/IntegrationProtocol.h"
+#include "integration/LocalPeer.h"
 
 #include <QHash>
 #include <QLocalServer>
@@ -25,6 +26,9 @@ public:
     void disconnectClient(quint64 clientId);
     void broadcast(const QJsonObject &message);
     int clientCount() const { return m_clients.size(); }
+    // The process behind a connected client, read from the pipe when it was
+    // accepted; empty for an unknown id.
+    integration::LocalPeer clientPeer(quint64 clientId) const;
 
 signals:
     void clientConnected(quint64 clientId);
@@ -36,6 +40,7 @@ private:
     {
         quint64 id = 0;
         integration::FrameDecoder decoder;
+        integration::LocalPeer peer;
     };
 
     void acceptConnections();

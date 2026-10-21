@@ -35,8 +35,10 @@ QStringList splitCommandLine(const QString& command)
 
 bool isTelegramExecutable(const QString& path)
 {
+    // The tg:// handler lives in HKCU, which any program of the user can
+    // rewrite: only an existing, absolute Telegram.exe is ever started.
     const QFileInfo info(path);
-    return info.isFile()
+    return !path.isEmpty() && info.isAbsolute() && info.isFile()
         && info.fileName().compare(QLatin1String("Telegram.exe"), Qt::CaseInsensitive) == 0;
 }
 } // namespace
