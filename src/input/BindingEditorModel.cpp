@@ -1146,6 +1146,21 @@ void BindingEditorModel::setControllerProfile(const ControlId::DeviceProfile& pr
         rebuildRows();
 }
 
+void BindingEditorModel::rekeyController(const QString& previousFingerprint,
+                                         const QString& fingerprint)
+{
+    // The pin (cpo-c05) is the pad the user chose, not the id string it had:
+    // without this the pin kept the dead id and setControllerProfile refused
+    // the new one, so edits landed on a controller that no longer exists.
+    if (previousFingerprint.isEmpty() || fingerprint.isEmpty()
+        || previousFingerprint == fingerprint || m_controllerFingerprint != previousFingerprint)
+        return;
+    m_controllerFingerprint = fingerprint;
+    emit controllerProfileChanged();
+    if (m_deviceGroup == QLatin1String("controller"))
+        rebuildRows();
+}
+
 void BindingEditorModel::setLastFiredAction(const QString& actionId)
 {
     m_lastFiredActionId = actionId;

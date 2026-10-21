@@ -210,6 +210,9 @@ public:
     // backend that can tell the difference arrives with the GameInput work.
     void reportUnsupportedInput(const QString& displayLabel);
     void setControllerProfile(const ControlId::DeviceProfile& profile);
+    // The same physical controller was re-identified under a new logical id.
+    // A pin on the old id follows it; any other pin is left alone.
+    void rekeyController(const QString& previousFingerprint, const QString& fingerprint);
     void setLastFiredAction(const QString& actionId);
 
 public slots:

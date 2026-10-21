@@ -1,4 +1,5 @@
 #include "input/InputEngine.h"
+#include "input/BindingPattern.h"
 #include "input/XInputDevice.h"
 #include "input/WinMMDevice.h"
 #include "input/DualSenseDevice.h"
@@ -100,6 +101,8 @@ private slots:
 
     void holdAcrossSwitchIsCancelledAndGated();
     void tapCandidateAcrossSwitchNeverArrives();
+    void releasingTheModifierFirstEndsAKeyboardHold();
+    void releasingEitherChordPartEndsTheRepeat();
     void chordPartlyHeldAcrossSwitchCannotComplete();
     void pendingProviderPressIsClearedAndNeverReplays();
     void pendingProviderPressAlreadyReleasedLeavesNoGate();
@@ -991,6 +994,50 @@ void PresetSwitchTest::keyboardGestureSurvivesControllerSwitch()
     QTest::qWait(150);   // past the multi-tap window
     QCoreApplication::processEvents();
     QCOMPARE(shots.count(), 1);   // the keyboard tap still completed
+}
+
+// aud-b4: the release used to be rebuilt from the release-time modifiers, so
+// letting go of Ctrl before F9 released "F9" - which matched nothing - and the
+// "Ctrl+F9" hold stayed down and fired after the user had let go of both.
+void PresetSwitchTest::releasingTheModifierFirstEndsAKeyboardHold()
+{
+    addDeviceRow(kKeyboard, QString(), QStringLiteral("global.screenshot"),
+                 QStringLiteral("Ctrl+F9"), QStringLiteral("hold"));
+    QSignalSpy shots(engine.get(), &InputEngine::screenshotRequested);
+    QVERIFY(engine->handleKeyPressed(Qt::Key_F9, Qt::ControlModifier));
+    engine->handleKeyReleased(Qt::Key_Control, 0);   // Ctrl up first
+    engine->handleKeyReleased(Qt::Key_F9, 0);
+    QTest::qWait(2600);   // past the 2000 ms hold threshold
+    QCoreApplication::processEvents();
+    QCOMPARE(shots.count(), 0);
+
+    // The ordinary order still works: held long enough, it fires once.
+    QVERIFY(engine->handleKeyPressed(Qt::Key_F9, Qt::ControlModifier));
+    QTRY_COMPARE_WITH_TIMEOUT(shots.count(), 1, 3000);
+    engine->handleKeyReleased(Qt::Key_F9, Qt::ControlModifier);
+    engine->handleKeyReleased(Qt::Key_Control, 0);
+}
+
+// aud-b4: a chord repeat is keyed on the serialized "chord:v1:A+B" trigger, but
+// releases arrive per control. Neither part ever matched, so it never stopped.
+void PresetSwitchTest::releasingEitherChordPartEndsTheRepeat()
+{
+    const QString chord = TriggerSpec::orderedChord(ControlId::ShoulderLeft,
+                                                    ControlId::DpadLeft).serialize();
+    for (const QString& released : {ControlId::ShoulderLeft, ControlId::DpadLeft}) {
+        int steps = 0;
+        engine->startNavRepeat(chord, -1, [&steps](int) { ++steps; });
+        QCOMPARE(steps, 1);
+        QVERIFY(engine->m_repeatTick->isActive());
+        engine->stopNavRepeatOnRelease(ControlId::FaceSouth);   // unrelated
+        QVERIFY(engine->m_repeatTick->isActive());
+        engine->stopNavRepeatOnRelease(released);
+        QVERIFY(!engine->m_repeatTick->isActive());
+    }
+    // A single-control repeat still ends on its own release.
+    engine->startNavRepeat(ControlId::DpadLeft, -1, [](int) {});
+    engine->stopNavRepeatOnRelease(ControlId::DpadLeft);
+    QVERIFY(!engine->m_repeatTick->isActive());
 }
 
 // The buffered provider candidate is resolved per route too: another route's

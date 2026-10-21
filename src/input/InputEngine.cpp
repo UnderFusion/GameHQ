@@ -7,6 +7,7 @@
 #include "input/ControllerArbitration.h"
 #include "input/ControllerIdentity.h"
 #include "input/BindingEditorModel.h"
+#include "input/BindingPattern.h"
 #include "input/DualSenseDevice.h"
 #include "input/GestureTiming.h"
 #include "input/Gamepad.h"
@@ -245,8 +246,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 // unpressed control is a safe no-op, dropping a real one
                 // risks a stuck control.
                 m_runtime->release(QStringLiteral("mouse"), {}, code);
-                if (code == m_repeatTrigger)
-                    stopNavRepeat();
+                stopNavRepeatOnRelease(code);
             });
     // Capturing a first mouse binding must see the buttons before any mouse
     // binding exists, so the hook follows the editor's capture state too.
@@ -330,8 +330,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 m_held.noteReleased(gameInputDeviceKey(logicalId), control);
                 m_runtime->release(QStringLiteral("controller"), gameInputProfile(logicalId),
                                    control);
-                if (control == m_repeatTrigger)
-                    stopNavRepeat();
+                stopNavRepeatOnRelease(control);
             });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::sessionFallback,
             this, [this](const QString& reason) {
@@ -357,6 +356,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 m_held.noteDeviceGone(gameInputDeviceKey(previous));
                 m_held.noteDevicePresent(gameInputDeviceKey(logicalId));
                 configureLogicalProfile(logicalId, {previous});
+                m_bindingEditor->rekeyController(previous, logicalId);
                 traceProviderLifecycle(QStringLiteral("rekey"));
             });
     connect(m_gameInput.get(), &ModernInput::GameInputRouter::statusChanged,
@@ -422,8 +422,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                                      primaryScope(), fallbackScope());
                 } else {
                     m_runtime->release(QStringLiteral("controller"), logicalId, control);
-                    if (control == m_repeatTrigger)
-                        stopNavRepeat();
+                    stopNavRepeatOnRelease(control);
                 }
             });
     connect(m_sonyPad, &DualSenseDevice::rawHidDeviceRemoved, this,
@@ -433,8 +432,7 @@ InputEngine::InputEngine(ConfigManager* config, CaptureDatabase* db,
                 const QStringList releases = m_providers.removeRawHid(identity);
                 for (const QString& control : releases) {
                     m_runtime->release(QStringLiteral("controller"), logicalId, control);
-                    if (control == m_repeatTrigger)
-                        stopNavRepeat();
+                    stopNavRepeatOnRelease(control);
                 }
             });
 
@@ -648,16 +646,44 @@ bool InputEngine::handleKeyPressed(int key, int modifiers, bool autoRepeat)
         }
         return false;
     }
+    m_heldKeyTriggers.insert(key, { trigger, modifiers });
     return m_runtime->press(QStringLiteral("keyboard"), {}, trigger,
                             primaryScope(), fallbackScope());
 }
 
 bool InputEngine::handleKeyReleased(int key, int modifiers)
 {
-    const QString trigger = keyboardTrigger(key, modifiers);
-    const bool handled = m_runtime->release(QStringLiteral("keyboard"), {}, trigger);
-    if (trigger == m_repeatTrigger)
-        stopNavRepeat();
+    // Release exactly what this key pressed. Rebuilt from the release-time
+    // modifiers, Ctrl let go before the arrow turned "Ctrl+Left" into "Left",
+    // which matched nothing: the shortcut stayed held and kept repeating.
+    const HeldKeyTrigger held = m_heldKeyTriggers.take(key);
+    const QString trigger = held.trigger.isEmpty() ? keyboardTrigger(key, modifiers) : held.trigger;
+    bool handled = false;
+    if (!trigger.isEmpty()) {
+        handled = m_runtime->release(QStringLiteral("keyboard"), {}, trigger);
+        stopNavRepeatOnRelease(trigger);
+    }
+    // A modifier released first ends every shortcut that needed it; the key
+    // still down does not start its unmodified binding (it was never pressed).
+    int modifier = 0;
+    switch (key) {
+    case Qt::Key_Control: modifier = Qt::ControlModifier; break;
+    case Qt::Key_Shift:   modifier = Qt::ShiftModifier; break;
+    case Qt::Key_Alt:     modifier = Qt::AltModifier; break;
+    case Qt::Key_Meta:    modifier = Qt::MetaModifier; break;
+    default: break;
+    }
+    if (modifier) {
+        for (auto it = m_heldKeyTriggers.begin(); it != m_heldKeyTriggers.end();) {
+            if (!(it->modifiers & modifier)) {
+                ++it;
+                continue;
+            }
+            handled = m_runtime->release(QStringLiteral("keyboard"), {}, it->trigger) || handled;
+            stopNavRepeatOnRelease(it->trigger);
+            it = m_heldKeyTriggers.erase(it);
+        }
+    }
     return handled;
 }
 
@@ -955,8 +981,7 @@ void InputEngine::replayPendingPress(const PendingPress& press)
         m_runtime->release(QStringLiteral("controller"),
                            canonicalProfile(press.source, press.fingerprint),
                            press.controlId);
-        if (press.controlId == m_repeatTrigger)
-            stopNavRepeat();
+        stopNavRepeatOnRelease(press.controlId);
     }
 }
 
@@ -1437,8 +1462,7 @@ void InputEngine::onControlReleased(const QString& controlId, int, const QString
     if (controlId == ControlId::ViewBack
         && m_legacyViewFallbackHeld.remove(logicalProfile))
         m_runtime->release(QStringLiteral("controller"), logicalProfile, ControlId::Capture);
-    if (controlId == m_repeatTrigger)
-        stopNavRepeat();
+    stopNavRepeatOnRelease(controlId);
 }
 
 void InputEngine::startNavRepeat(const QString& triggerCode, int direction,
@@ -1448,6 +1472,11 @@ void InputEngine::startNavRepeat(const QString& triggerCode, int direction,
     emitter(direction);
     // Record what we're now repeating — stopNavRepeat() uses m_repeatButton.
     m_repeatTrigger = triggerCode;
+    // A chord trigger serializes both controls, but releases arrive one
+    // control at a time: letting go of either part must end the repeat.
+    const auto parsed = TriggerSpec::parse(triggerCode);
+    m_repeatControls = parsed.ok && parsed.trigger.isChord()
+        ? parsed.trigger.controls : QStringList{triggerCode};
     // ...and which mapping route it belongs to: a cpo-p05 switch may only end
     // the repeat of the route whose table it actually replaced. The origin is
     // the dispatch in progress (m_dispatchGroup/m_dispatchProfile); a repeat
@@ -1466,10 +1495,17 @@ void InputEngine::startNavRepeat(const QString& triggerCode, int direction,
     m_repeatTick->start();
 }
 
+void InputEngine::stopNavRepeatOnRelease(const QString& control)
+{
+    if (!control.isEmpty() && m_repeatControls.contains(control))
+        stopNavRepeat();
+}
+
 void InputEngine::stopNavRepeat()
 {
     m_repeatTick->stop();
     m_repeatTrigger.clear();
+    m_repeatControls.clear();
     m_repeatRouteGroup.clear();
     m_repeatRouteProfile.clear();
     m_repeatDirection = 0;

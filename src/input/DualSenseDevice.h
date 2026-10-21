@@ -199,7 +199,8 @@ private:
     void stopHidReader(void* handle, DeviceState& st, const char* why);
     // Reader lost the endpoint: stop preferring it and release whatever it
     // held so no button stays logically pressed across the source change.
-    void demoteHidSource(void* handle, DeviceState& st, const char* why);
+    void demoteHidSource(void* handle, DeviceState& st, const char* why,
+                         bool releaseHeld = true);
     // parseReport stages, in call order. The decoders are pure (static);
     // routeReport owns the active-pad selection/steal side effects.
     static quint32 decodeStickNav(const DeviceState& st, const unsigned char* d, int axisBase, int len);

@@ -825,7 +825,9 @@ void DualSenseDevice::onRawInput(void* hRawInputV)
             st->rawWhileHidQuietMs = now;
         if (now - st->rawWhileHidQuietMs < kHidFailoverMs)
             return;
-        demoteHidSource(handle, *st, "reader silent while Raw Input delivers");
+        // This Raw Input report carries the pad's current state, so the
+        // buttons still down stay down instead of a release+press pair.
+        demoteHidSource(handle, *st, "reader silent while Raw Input delivers", false);
     }
 
     RawInputApi::Payload payload;
@@ -992,7 +994,8 @@ void DualSenseDevice::endHidRescue(DeviceState& st)
         .arg(deviceIdentity(st.vendorId, st.productId));
 }
 
-void DualSenseDevice::demoteHidSource(void* handle, DeviceState& st, const char* why)
+void DualSenseDevice::demoteHidSource(void* handle, DeviceState& st, const char* why,
+                                      bool releaseHeld)
 {
     if (!st.hidPreferred)
         return;
@@ -1001,8 +1004,10 @@ void DualSenseDevice::demoteHidSource(void* handle, DeviceState& st, const char*
     qInfo().noquote() << QStringLiteral(
         "Gamepad: direct HID reader no longer the source for %1 (%2), Raw Input takes over")
         .arg(deviceIdentity(st.vendorId, st.productId), QLatin1String(why));
-    // Release everything this endpoint held; the next report from the new
-    // source presses again whatever is still physically down.
+    if (!releaseHeld)
+        return;   // the caller parses the new source's report right away
+    // No report from the new source is at hand: release everything this
+    // endpoint held; the next report presses again whatever is still down.
     st.buttons = 0;
     st.stick = 0;
     if (handle == m_activeHandle)
