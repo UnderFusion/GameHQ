@@ -130,7 +130,7 @@ int runTransaction(const std::filesystem::path &transactionPath, const std::wstr
         return 0;
     }
     if (mode == L"--wait-health") {
-        if (!updater::launchAndWaitForHealth(transaction, 30000, error))
+        if (!updater::launchAndWaitForHealth(transaction, updater::kHealthTimeoutMs, error))
             return failWith(error, 9);
         note("UPDATED APPLICATION HEALTHY");
         return 0;
@@ -173,7 +173,7 @@ int runTransaction(const std::filesystem::path &transactionPath, const std::wstr
                         : "the wait for the running application failed");
             }
         }
-        if (!updater::applyUpdate(transaction, 30000, error))
+        if (!updater::applyUpdate(transaction, updater::kHealthTimeoutMs, error))
             return failWith(error, 10);
         note("UPDATE APPLIED AND HEALTHY");
         return 0;

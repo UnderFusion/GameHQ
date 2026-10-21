@@ -306,7 +306,11 @@ bool extractAndValidatePackage(const Transaction &tx, std::string &error)
         OutputFile output{std::ofstream(target, std::ios::binary | std::ios::trunc)};
         if (!output.stream || !mz_zip_reader_extract_to_callback(&zip, index, writeExtracted, &output, 0))
             return reject("archive extraction failed");
+        // close() flushes the last buffered bytes; a failure there (disk
+        // full, AV lock) would otherwise leave a silently truncated file.
         output.stream.close();
+        if (!output.stream)
+            return reject("could not finish writing archive entry '" + name + "' to staging");
         const DWORD attributes = GetFileAttributesW(target.c_str());
         if (attributes == INVALID_FILE_ATTRIBUTES || (attributes & FILE_ATTRIBUTE_REPARSE_POINT))
             return reject("staged output became a reparse point");

@@ -1,4 +1,5 @@
 #include "updater/UpdaterRecovery.h"
+#include "core/DurableFile.h"
 #include "core/UpdateMaintenance.h"
 #include "updater/UpdaterDataSnapshot.h"
 #include "updater/UpdaterHealth.h"
@@ -47,6 +48,23 @@ std::wstring quoteArgument(const std::wstring &value)
     return quoted;
 }
 
+// The updated application writes this token only after it has run healthy for
+// several seconds, and the helper deletes any stale copy before launching it.
+// A matching token is therefore proof the update itself succeeded.
+bool healthTokenConfirms(const updater::Transaction &tx)
+{
+    std::error_code ec;
+    const auto size = std::filesystem::file_size(tx.healthTokenPath, ec);
+    if (ec || size == 0 || size > 64)
+        return false;
+    std::ifstream input(tx.healthTokenPath, std::ios::binary);
+    std::string token;
+    std::getline(input, token);
+    if (!token.empty() && token.back() == '\r')
+        token.pop_back();
+    return !token.empty() && token == tx.expectedVersion;
+}
+
 bool launchPrevious(const updater::Transaction &tx, std::string &error)
 {
     std::wstring command = quoteArgument(tx.restartExecutable.wstring());
@@ -57,7 +75,7 @@ bool launchPrevious(const updater::Transaction &tx, std::string &error)
     PROCESS_INFORMATION process{};
     if (!CreateProcessW(tx.restartExecutable.c_str(), mutableCommand.data(), nullptr, nullptr,
                         FALSE, 0, nullptr, tx.packageRoot.c_str(), &startup, &process)) {
-        error = "rollback completed but the previous application could not be restarted (Windows error "
+        error = "recovery completed but the application could not be restarted (Windows error "
             + std::to_string(GetLastError()) + ")";
         return false;
     }
@@ -103,25 +121,24 @@ bool writeTransactionPhase(const Transaction &tx, const std::string &phase,
     partial += L".partial";
     std::error_code ec;
     std::filesystem::create_directories(path.parent_path(), ec);
-    std::ofstream output(partial, std::ios::binary | std::ios::trunc);
-    if (ec || !output) {
+    if (ec) {
         error = "could not create the update phase marker";
         return false;
     }
-    output << phase << '\n';
-    output.flush();
-    if (!output) {
+    switch (durable_file::replace(path, partial, phase + '\n')) {
+    case durable_file::WriteResult::Written:
+        return true;
+    case durable_file::WriteResult::CreateFailed:
+        error = "could not create the update phase marker";
+        return false;
+    case durable_file::WriteResult::WriteFailed:
         error = "could not finish the update phase marker";
         return false;
+    case durable_file::WriteResult::PublishFailed:
+        break;
     }
-    output.close();
-    if (!MoveFileExW(partial.c_str(), path.c_str(),
-                     MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH)) {
-        std::filesystem::remove(partial, ec);
-        error = "could not publish the update phase marker";
-        return false;
-    }
-    return true;
+    error = "could not publish the update phase marker";
+    return false;
 }
 
 bool applyUpdate(const Transaction &tx, int healthTimeoutMs, std::string &error)
@@ -134,6 +151,13 @@ bool applyUpdate(const Transaction &tx, int healthTimeoutMs, std::string &error)
     }
     std::error_code ec;
     std::filesystem::remove(phasePath(tx), ec);
+    // Recovery treats a matching token as proof of health, so none may survive
+    // from an earlier attempt.
+    std::filesystem::remove(tx.healthTokenPath, ec);
+    if (ec) {
+        error = "could not remove a stale health token";
+        return false;
+    }
     // With no journal/snapshot there is no live mutation to recover. A staging
     // directory is therefore only an abandoned extraction and is safe to purge.
     std::filesystem::remove_all(tx.stagingDir, ec);
@@ -175,9 +199,22 @@ bool applyUpdate(const Transaction &tx, int healthTimeoutMs, std::string &error)
         return failAndRollback(error);
     if (!launchAndWaitForHealth(tx, healthTimeoutMs, error))
         return failAndRollback(error);
-    if (!writeTransactionPhase(tx, "healthy", error))
-        return failAndRollback(error);
+    // From here the updated application is running and has proven itself
+    // healthy. Rolling back now would move program files and restore data
+    // underneath that live process and start a second copy, so a phase that
+    // cannot be recorded is retried and then reported, never rolled back.
+    // Recovery accepts the published health token for exactly this case.
+    bool recorded = false;
+    for (const DWORD delayMs : {0, 250, 1000, 2000}) {
+        Sleep(delayMs);
+        if ((recorded = writeTransactionPhase(tx, "healthy", error)))
+            break;
+    }
     maintenance::finish(tx.packageRoot);
+    if (!recorded) {
+        error = "the updated application is healthy but its phase could not be recorded: " + error;
+        return false;
+    }
     return true;
 }
 
@@ -189,6 +226,15 @@ bool recoverInterruptedUpdate(const Transaction &tx, std::string &error)
     if (phase.empty() && !hasProgramSwapJournal(tx)
         && !std::filesystem::is_directory(tx.dataSnapshotDir))
         return true;
+    if (phase == "validating" && healthTokenConfirms(tx)) {
+        // The updated application reported health but the helper never
+        // recorded it (crash, power loss or a failed phase write). Keep the
+        // update; the second healthy start cleans the rollback material.
+        if (!writeTransactionPhase(tx, "healthy", error))
+            return false;
+        maintenance::finish(tx.packageRoot);
+        return launchPrevious(tx, error);
+    }
     if (!rollbackAll(tx, error))
         return false;
     std::error_code ec;

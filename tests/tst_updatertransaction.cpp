@@ -1,5 +1,6 @@
 #include <QCryptographicHash>
 #include <QDir>
+#include <QElapsedTimer>
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -38,6 +39,8 @@ private Q_SLOTS:
     void lockedFileAbortsAndRollsBack();
     void healthyStartPublishesToken();
     void missingHealthTokenTimesOut();
+    void exitedApplicationFailsWithoutWaitingOutTheDeadline();
+    void recoveryKeepsAnUpdateThatAlreadyReportedHealth();
     void failedHealthRollbackRestoresProgramAndData();
     void interruptedMixedSwapRecoversPreviousProgram();
     void rejectsPackageRequiringNewerUpdater();
@@ -566,10 +569,86 @@ void UpdaterTransactionTest::missingHealthTokenTimesOut()
     tx.packageRoot = dir.path().toStdWString();
     tx.restartExecutable = QStringLiteral(HEALTH_FIXTURE_EXE).toStdWString();
     tx.healthTokenPath = QDir(dir.path()).filePath(QStringLiteral("healthy.token")).toStdWString();
-    tx.expectedVersion = "9.9.8";
+    tx.expectedVersion = "9.9.7";
     std::string error;
     QVERIFY(!updater::launchAndWaitForHealth(tx, 500, error));
     QVERIFY(QString::fromStdString(error).contains(QStringLiteral("timed out")));
+}
+
+void UpdaterTransactionTest::exitedApplicationFailsWithoutWaitingOutTheDeadline()
+{
+    // The deadline is a generous bound for slow first starts; an application
+    // that already exited must still be reported at once.
+    QTemporaryDir dir(QDir::current().filePath(QStringLiteral("tst-updater-exited-XXXXXX")));
+    QVERIFY(dir.isValid());
+    updater::Transaction tx;
+    tx.packageRoot = dir.path().toStdWString();
+    tx.restartExecutable = QStringLiteral(HEALTH_FIXTURE_EXE).toStdWString();
+    tx.healthTokenPath = QDir(dir.path()).filePath(QStringLiteral("healthy.token")).toStdWString();
+    tx.expectedVersion = "9.9.8";
+    std::string error;
+    QElapsedTimer timer;
+    timer.start();
+    QVERIFY(!updater::launchAndWaitForHealth(tx, updater::kHealthTimeoutMs, error));
+    QVERIFY2(timer.elapsed() < 15000, QByteArray::number(timer.elapsed()).constData());
+    QVERIFY2(QString::fromStdString(error).contains(QStringLiteral("exited without")), error.c_str());
+}
+
+void UpdaterTransactionTest::recoveryKeepsAnUpdateThatAlreadyReportedHealth()
+{
+    QTemporaryDir dir(QDir::current().filePath(QStringLiteral("tst-updater-keep-XXXXXX")));
+    QVERIFY(dir.isValid());
+    const QString update = QDir(dir.path()).filePath(QStringLiteral(".update"));
+    const QString staging = QDir(update).filePath(QStringLiteral("staging"));
+    const QString backup = QDir(update).filePath(QStringLiteral("backup"));
+    const QString snapshot = QDir(update).filePath(QStringLiteral("data-snapshot"));
+    const QString data = QDir(dir.path()).filePath(QStringLiteral("gamehq-data"));
+    QDir().mkpath(staging);
+    QDir().mkpath(data);
+    auto write = [](const QString &path, const QByteArray &bytes) {
+        QFile file(path); return file.open(QIODevice::WriteOnly | QIODevice::Truncate)
+            && file.write(bytes) == bytes.size();
+    };
+    const QString liveExe = QDir(dir.path()).filePath(QStringLiteral("GameHQ.exe"));
+    QVERIFY(write(liveExe, "old program"));
+    QVERIFY(write(QDir(staging).filePath(QStringLiteral("GameHQ.exe")), "new program"));
+    QVERIFY(write(QDir(data).filePath(QStringLiteral("config.json")), "old config"));
+    std::string error;
+    QVERIFY2(updater::createDataSnapshot(data.toStdWString(), snapshot.toStdWString(), error), error.c_str());
+    QVERIFY(write(QDir(data).filePath(QStringLiteral("config.json")), "migrated config"));
+    updater::Transaction tx;
+    tx.packageRoot = dir.path().toStdWString(); tx.stagingDir = staging.toStdWString();
+    tx.backupDir = backup.toStdWString(); tx.dataDir = data.toStdWString();
+    tx.dataSnapshotDir = snapshot.toStdWString();
+    tx.healthTokenPath = QDir(update).filePath(QStringLiteral("healthy.token")).toStdWString();
+    tx.restartExecutable = QStringLiteral(HEALTH_FIXTURE_EXE).toStdWString();
+    tx.expectedVersion = "9.8.7";
+    QVERIFY2(updater::swapProgramFiles(tx, error), error.c_str());
+    QVERIFY2(updater::writeTransactionPhase(tx, "validating", error), error.c_str());
+    // The new application published health, then the helper stopped before it
+    // could record the "healthy" phase.
+    QVERIFY(write(QString::fromStdWString(tx.healthTokenPath.wstring()), "9.8.7\n"));
+    QVERIFY2(updater::recoverInterruptedUpdate(tx, error), error.c_str());
+    QTRY_VERIFY_WITH_TIMEOUT(QFileInfo::exists(
+        QDir(dir.path()).filePath(QStringLiteral("previous-started.token"))), 2000);
+    QFile program(liveExe); QVERIFY(program.open(QIODevice::ReadOnly));
+    QCOMPARE(program.readAll(), QByteArray("new program"));
+    QFile config(QDir(data).filePath(QStringLiteral("config.json")));
+    QVERIFY(config.open(QIODevice::ReadOnly)); QCOMPARE(config.readAll(), QByteArray("migrated config"));
+    QFile phase(QDir(update).filePath(QStringLiteral("transaction.phase")));
+    QVERIFY(phase.open(QIODevice::ReadOnly)); QCOMPARE(phase.readAll().trimmed(), QByteArray("healthy"));
+
+    // A token naming another version proves nothing: that still rolls back.
+    QFile::remove(QDir(dir.path()).filePath(QStringLiteral("previous-started.token")));
+    phase.close();
+    config.close();
+    program.close();
+    QVERIFY2(updater::writeTransactionPhase(tx, "validating", error), error.c_str());
+    QVERIFY(write(QString::fromStdWString(tx.healthTokenPath.wstring()), "9.8.6\n"));
+    QVERIFY2(updater::recoverInterruptedUpdate(tx, error), error.c_str());
+    QVERIFY(phase.open(QIODevice::ReadOnly)); QCOMPARE(phase.readAll().trimmed(), QByteArray("rolled_back"));
+    QVERIFY(config.open(QIODevice::ReadOnly)); QCOMPARE(config.readAll(), QByteArray("old config"));
+    QVERIFY(program.open(QIODevice::ReadOnly)); QCOMPARE(program.readAll(), QByteArray("old program"));
 }
 
 void UpdaterTransactionTest::failedHealthRollbackRestoresProgramAndData()

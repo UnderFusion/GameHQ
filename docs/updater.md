@@ -316,8 +316,12 @@ different stage count or a temp-located helper.
    a post-update validation flag. The new process performs its normal
    `App::init()` sequence (database, migrations, QML engine, services, event
    loop), stays alive 5-10 seconds inside the running event loop, and only
-   then writes its success token; the helper waits up to about 30 seconds for
-   that token. The backup and pre-update snapshot are retained until the *next* successful
+   then writes its success token. The helper waits up to two minutes for
+   that token so a slow first start (antivirus scanning the new binaries,
+   migrations, a cold disk) is not mistaken for a failure, but stops waiting
+   at once if the whole new process tree has already exited. Once the token
+   is seen the update is never rolled back: if the helper then fails to record
+   the `healthy` phase, recovery accepts the matching token instead. The backup and pre-update snapshot are retained until the *next* successful
    start, not deleted at the first token, in case the freshly started
    version later crashes.
 7. **Rollback and interrupted recovery** — if the health token is not seen in

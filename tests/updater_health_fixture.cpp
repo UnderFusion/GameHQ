@@ -18,6 +18,11 @@ int wmain(int argc, wchar_t **argv)
     const std::wstring version(argv[2]);
     if (version == L"9.9.8")
         return 0;
+    if (version == L"9.9.7") {
+        // Alive but never healthy: only the helper's deadline ends this.
+        std::this_thread::sleep_for(std::chrono::seconds(60));
+        return 0;
+    }
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
     HANDLE file = CreateFileW(argv[3], GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS,
                               FILE_ATTRIBUTE_NORMAL, nullptr);
