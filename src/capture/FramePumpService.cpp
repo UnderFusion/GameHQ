@@ -505,10 +505,17 @@ void FramePumpWorker::attachRecorder(Pipeline* pipe, unsigned long pid, int srcW
                             .arg(pipe->audio->channels());
     }
     const QString cacheDir = Paths::replayCacheDir() + QLatin1Char('/')
-                             + GameIdentity::folderName(pipe->gameName) + QLatin1Char('/')
+                             + GameIdentity::pathComponent(pipe->gameName) + QLatin1Char('/')
                              + cacheProfile;
-    pipe->recorder = new SegmentRecorder();
-    if (!pipe->recorder->begin(srcW, srcH, encodeSize.width(), encodeSize.height(),
+    // restoreRing() and pruning work inside this folder, so it must never
+    // resolve outside the replay cache.
+    if (!GameIdentity::isInsideRoot(Paths::replayCacheDir(), cacheDir)) {
+        qWarning() << "FramePump: refusing a replay cache folder outside the cache root"
+                   << cacheDir << "— capture-only";
+        reportBufferState(ReplayBufferState::Failed,
+                          QStringLiteral("Replay recorder could not start"));
+    } else if (pipe->recorder = new SegmentRecorder();
+               !pipe->recorder->begin(srcW, srcH, encodeSize.width(), encodeSize.height(),
                                fps, bitrateMbps, segmentSeconds, lengthSeconds, cacheDir,
                                pipe->d3dDevice, pipe->d3dCtx,
                                pipe->audio ? pipe->audio->sampleRate() : 0,
@@ -1225,7 +1232,11 @@ void FramePumpWorker::saveReplayOnWorker(const QString& clipsBaseRoot, quint64 g
                                                     : m_pipe->gameName;
 
     const QString clipsDir = clipsBaseRoot + QLatin1Char('/')
-                             + GameIdentity::folderName(game) + QStringLiteral("/Clips");
+                             + GameIdentity::pathComponent(game) + QStringLiteral("/Clips");
+    if (!GameIdentity::isInsideRoot(clipsBaseRoot, clipsDir)) {
+        emit clipFailed(game, QStringLiteral("The game's clips folder would be outside the clips root"));
+        return;
+    }
     if (!QDir().mkpath(clipsDir)) {
         emit clipFailed(game, QStringLiteral("Could not create the selected clips folder"));
         return;
