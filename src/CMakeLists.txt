@@ -136,6 +136,8 @@ qt_add_executable(GameHQ
     telegram/TdTransport.h telegram/TdJsonTransport.cpp telegram/TdJsonTransport.h
     telegram/TelegramAccount.cpp telegram/TelegramAccount.h
     storage/CaptureDatabase.cpp storage/CaptureDatabase.h
+    storage/CaptureDatabase_Migrations.cpp storage/CaptureDatabase_Bindings.cpp
+    storage/CaptureDatabase_MappingPresets.cpp storage/SqlTransaction.h
     storage/CaptureQueries.cpp storage/CaptureQueries.h
     storage/CaptureFolderWatcher.cpp storage/CaptureFolderWatcher.h
     storage/CaptureScanner.cpp  storage/CaptureScanner.h
