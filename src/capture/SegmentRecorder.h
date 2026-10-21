@@ -110,6 +110,10 @@ private:
     friend class TestSegmentRecorder;
     // Forward audio gaps longer than this are real silence and get zero-filled.
     static constexpr long long kAudioGapFill100ns = 1000000;   // 100 ms
+    // Past this a gap is not silence to fill but a stall (sleep, a frozen
+    // capture, a suspended process): the audio clock re-anchors instead, or
+    // waking from hours of sleep would encode hours of zeros in one call.
+    static constexpr long long kAudioMaxGapFill100ns = 20000000;   // 2 s
     void fillSilentAudioTail();
     void fillAudioSilence(long long untilPts, bool allowRoll = true);
     void writeAudioAt(const float* samples, unsigned numFrames, bool allowRoll = true);

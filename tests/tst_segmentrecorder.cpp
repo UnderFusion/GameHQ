@@ -374,6 +374,62 @@ private slots:
     // Loopback sends no packets while nothing plays. The recorder must fill
     // that stretch with silence: the AAC track stays continuous across every
     // segment and audio after the quiet part stays in sync with the video.
+    // Waking from sleep (or any multi-hour stall) used to fill the whole gap
+    // with encoded silence in one call: hours of AAC on the capture worker.
+    // A gap past the fill bound re-anchors the clock; the clip stays short.
+    void aLongStallReanchorsAudioInsteadOfFilling()
+    {
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-stall-XXXXXX");
+        QVERIFY(dir.isValid());
+        VideoFixture video;
+        QVERIFY(makeVideo(video));
+        SegmentRecorder recorder;
+        QVERIFY(recorder.begin(320, 180, 320, 180, 30, 2, 1, 10, dir.path(),
+                               video.device.Get(), video.context.Get(), 48000, 2));
+        const auto finish = qScopeGuard([&] {
+            recorder.discardCurrentSegment();
+            recorder.end();
+        });
+        constexpr unsigned audioFrames = 48000 / 30;
+        std::array<float, audioFrames * 2> tone{};
+        for (unsigned i = 0; i < audioFrames; ++i)
+            tone[i * 2] = tone[i * 2 + 1] = float(0.3 * std::sin(6.283185307 * 440.0 * i / 48000.0));
+        const auto run = [&](qint64 start, int frames) {
+            for (int frame = 0; frame < frames; ++frame) {
+                const qint64 timestamp = start + frame * 10000000LL / 30;
+                recorder.writeFrame(video.texture.Get(), video.device.Get(), video.context.Get(),
+                                    timestamp);
+                recorder.writeAudio(tone.data(), audioFrames, timestamp);
+            }
+        };
+        run(10000000LL, 45);
+        const qint64 threeHours = 3LL * 3600 * 10000000LL;
+        QElapsedTimer timer;
+        timer.start();
+        recorder.padAudioSilence(10000000LL + threeHours);   // the first tick after waking
+        run(10000000LL + threeHours, 45);
+        QVERIFY2(timer.elapsed() < 5000, qPrintable(QString::number(timer.elapsed())));
+
+        const SegmentLease saved = recorder.snapshotForSave();
+        QVERIFY(!saved.isEmpty());
+        const QString clip = dir.path() + "/after-stall.mp4";
+        QVERIFY(ReplayExporter::concat(saved.paths(), clip, QStringLiteral("stall-regression"),
+                                       ReplayExporter::Audio::Required));
+        using Microsoft::WRL::ComPtr;
+        ComPtr<IMFSourceReader> reader;
+        QVERIFY(SUCCEEDED(MFCreateSourceReaderFromURL(
+            reinterpret_cast<LPCWSTR>(clip.utf16()), nullptr, reader.GetAddressOf())));
+        PROPVARIANT duration{};
+        const auto clearDuration = qScopeGuard([&] { PropVariantClear(&duration); });
+        QVERIFY(SUCCEEDED(reader->GetPresentationAttribute(
+            MF_SOURCE_READER_MEDIASOURCE, MF_PD_DURATION, &duration)));
+        QVERIFY2(duration.uhVal.QuadPart < 200000000ULL,   // well under 20 s, not 3 h
+                 qPrintable(QString::number(duration.uhVal.QuadPart / 10000)));
+    }
+
     void silentStretchKeepsAudioContinuousAndInSync()
     {
         const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);

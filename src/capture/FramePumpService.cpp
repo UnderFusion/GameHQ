@@ -1649,10 +1649,12 @@ void FramePumpService::startBuffer(bool rearm)
     m_targetGame = g;
     m_targetHwnd = qulonglong(reinterpret_cast<quintptr>(g.hwnd));
     m_noGameTicks = 0;
-    const int fps  = m_config ? m_config->value(ConfigKeys::ReplayFps, 30).toInt() : 30;
-    const int mbps = m_config ? m_config->value(ConfigKeys::ReplayBitrateMbps, 14).toInt() : 14;
-    const int seg  = m_config ? m_config->value(ConfigKeys::ReplaySegmentSeconds, 5).toInt() : 5;
-    const int len  = m_config ? m_config->value(ConfigKeys::ReplayLengthSeconds, 300).toInt() : 300;
+    // Hand-edited config must not reach the encoder unchecked: bitrate is
+    // multiplied by 1e6 into an unsigned, and segment/length drive the ring.
+    const int fps  = qBound(1, m_config ? m_config->value(ConfigKeys::ReplayFps, 30).toInt() : 30, 240);
+    const int mbps = qBound(1, m_config ? m_config->value(ConfigKeys::ReplayBitrateMbps, 14).toInt() : 14, 500);
+    const int seg  = qBound(1, m_config ? m_config->value(ConfigKeys::ReplaySegmentSeconds, 5).toInt() : 5, 60);
+    const int len  = qBound(5, m_config ? m_config->value(ConfigKeys::ReplayLengthSeconds, 300).toInt() : 300, 7200);
     const QSize res = parseResolution(
         m_config ? m_config->value(ConfigKeys::ReplayResolution,
                                    QStringLiteral("1920x1080")).toString()

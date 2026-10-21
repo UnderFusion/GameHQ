@@ -873,6 +873,12 @@ void SegmentRecorder::fillSilentAudioTail()
 
 void SegmentRecorder::fillAudioSilence(long long untilPts, bool allowRoll)
 {
+    if (untilPts - m_audioClockPts > kAudioMaxGapFill100ns) {
+        qInfo() << "SegmentRecorder: audio clock re-anchored after a"
+                << (untilPts - m_audioClockPts) / 10000 << "ms stall instead of filling it";
+        m_audioClockPts = untilPts;
+        return;
+    }
     constexpr unsigned kChunkFrames = 4800;   // 100 ms at 48 kHz
     std::vector<float> zeros(size_t(kChunkFrames) * m_audioChannels, 0.0f);
     while (m_writer && untilPts > m_audioClockPts) {
@@ -902,6 +908,11 @@ void SegmentRecorder::writeAudioAt(const float* samples, unsigned numFrames, boo
             return;
         segPts = 0;
     }
+    // After a stall the re-anchored audio can run ahead of a segment whose
+    // video has not rolled yet. Written there it would stretch the segment
+    // across the whole stall; the next video frame rolls and rebases.
+    if (segPts > m_segTicks + kAudioMaxGapFill100ns)
+        return;
 
     const DWORD numSamples = DWORD(numFrames) * m_audioChannels;
     const DWORD bytes = numSamples * sizeof(short);   // PCM-16 for the AAC encoder
