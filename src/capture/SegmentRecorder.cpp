@@ -109,6 +109,8 @@ bool SegmentRecorder::begin(int sourceWidth, int sourceHeight, int encodeWidth, 
     m_curPath.clear();
     m_lastClosedMediaPath.clear();
     m_discardCurrentSegment = false;
+    m_segmentWriteFailed = false;
+    m_failedSegmentsInARow = 0;
     m_cacheDir = cacheDir;
     m_segIndex = 0;
     m_originTime = -1;
@@ -549,14 +551,21 @@ void SegmentRecorder::closeSegment()
     if (!m_writer)
         return;
 
+    const bool writeFailed = m_segmentWriteFailed;
+    m_segmentWriteFailed = false;
+    if (writeFailed) {
+        m_discardCurrentSegment = true;
+        ++m_failedSegmentsInARow;
+    }
     if (m_discardCurrentSegment) {
         m_writer->Release();
         m_writer = nullptr;
         m_videoStream = 0;
         m_audioStream = 0;
         qWarning().noquote()
-            << QStringLiteral("SegmentRecorder: discarded in-flight segment after capture "
-                              "discontinuity: %1")
+            << QStringLiteral("SegmentRecorder: discarded in-flight segment after %1: %2")
+                   .arg(writeFailed ? QStringLiteral("a write failure")
+                                    : QStringLiteral("capture discontinuity"))
                    .arg(QDir(m_cacheDir).relativeFilePath(m_curPath));
         if (!m_curPath.isEmpty())
             QFile::remove(m_curPath);
@@ -582,6 +591,7 @@ void SegmentRecorder::closeSegment()
         return;
     }
 
+    m_failedSegmentsInARow = 0;
     if (!m_curPath.isEmpty()) {
         m_segments.append(m_curPath);
         if (m_segVideoFrames > 0)
@@ -607,13 +617,19 @@ SegmentLease SegmentRecorder::snapshotForSave()
         return {};
     // Finalize the in-flight segment so its frames are on disk + in the ring,
     // snapshot the whole ring, then reopen a new segment to keep recording.
-    fillSilentAudioTail();
+    // A poisoned segment is discarded by closeSegment() and never in the clip.
+    if (!m_segmentWriteFailed)
+        fillSilentAudioTail();
     QElapsedTimer rollTimer;
     rollTimer.start();
     closeSegment();
     // Older leased files can remain in m_segments, but are not part of a new
     // save. Acquire before reopening/returning to the worker event loop.
     SegmentLease clip(m_segments.last(qMin(qsizetype(m_keepSegments), m_segments.size())));
+    if (m_failedSegmentsInARow >= kMaxFailedSegmentsInARow) {
+        m_active = false;
+        return clip;
+    }
     ++m_segIndex;
     if (!openSegment()) { m_active = false; return clip; }
     m_segStartPts = m_lastGlobalPts;   // provisional base until the next frame
@@ -629,12 +645,21 @@ void SegmentRecorder::rollIfDue()
 {
     if (!m_active || !m_writer)
         return;
-    if (m_lastGlobalPts - m_segStartPts < m_segTicks)
+    // A poisoned segment rolls at once instead of waiting out its window.
+    if (!m_segmentWriteFailed && m_lastGlobalPts - m_segStartPts < m_segTicks)
         return;
-    fillSilentAudioTail();
+    if (!m_segmentWriteFailed)
+        fillSilentAudioTail();
     QElapsedTimer rollTimer;
     rollTimer.start();
     closeSegment();
+    if (m_failedSegmentsInARow >= kMaxFailedSegmentsInARow) {
+        qCritical().noquote() << QStringLiteral(
+            "SegmentRecorder: %1 segments in a row failed to write - stopping the replay buffer")
+            .arg(m_failedSegmentsInARow);
+        m_active = false;
+        return;
+    }
     ++m_segIndex;
     if (!openSegment()) { m_active = false; return; }
     m_segStartPts = m_lastGlobalPts;   // provisional base until the next frame
@@ -765,7 +790,7 @@ void SegmentRecorder::writeFrame(ID3D11Texture2D* tex, ID3D11Device* dev,
         const long long dur = m_frameInterval;
         sample->SetSampleTime(segPts);
         sample->SetSampleDuration(dur);
-        if (ok("WriteSample(video)", m_writer->WriteSample(DWORD(m_videoStream), sample))) {
+        if (ok("WriteSample(video)", writeSample(DWORD(m_videoStream), sample))) {
             m_lastSegPts = segPts;
             ++m_segVideoFrames;
             // Schedule-anchored cadence: advance by exactly one interval so
@@ -776,6 +801,8 @@ void SegmentRecorder::writeFrame(ID3D11Texture2D* tex, ID3D11Device* dev,
             m_nextDuePts += m_frameInterval;
             if (m_nextDuePts <= gpts)
                 m_nextDuePts = gpts + m_frameInterval;
+        } else {
+            noteWriteFailure("video");
         }
     }
 
@@ -905,12 +932,38 @@ void SegmentRecorder::writeAudioAt(const float* samples, unsigned numFrames, boo
         const long long dur = (static_cast<long long>(numFrames) * 10000000LL) / m_audioRate;
         sample->SetSampleTime(segPts);
         sample->SetSampleDuration(dur);
-        if (ok("WriteSample(audio)", m_writer->WriteSample(DWORD(m_audioStream), sample)))
+        if (ok("WriteSample(audio)", writeSample(DWORD(m_audioStream), sample)))
             ++m_segAudioPackets;
+        else
+            noteWriteFailure("audio");
+    } else {
+        // The audio clock already advanced past this packet: without it the
+        // segment's audio is short and drifts against the video.
+        noteWriteFailure("audio buffer");
     }
 
     if (buffer) buffer->Release();
     if (sample) sample->Release();
+}
+
+long SegmentRecorder::writeSample(unsigned long stream, IMFSample* sample)
+{
+    if (m_injectWriteFailures > 0) {
+        --m_injectWriteFailures;
+        return E_FAIL;
+    }
+    return m_writer->WriteSample(DWORD(stream), sample);
+}
+
+void SegmentRecorder::noteWriteFailure(const char* what)
+{
+    if (m_segmentWriteFailed)
+        return;   // one report per segment
+    m_segmentWriteFailed = true;
+    qWarning().noquote() << QStringLiteral(
+        "SegmentRecorder: %1 write failed - segment %2 will be discarded, not saved")
+        .arg(QString::fromLatin1(what))
+        .arg(QDir(m_cacheDir).relativeFilePath(m_curPath));
 }
 
 void SegmentRecorder::trimRing()

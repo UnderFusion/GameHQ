@@ -20,6 +20,7 @@ struct ID3D11VideoProcessor;
 struct ID3D11VideoProcessorEnumerator;
 struct ID3D11VideoProcessorOutputView;
 struct IMFSinkWriter;
+struct IMFSample;
 
 // 0.5 Step 4/7 — rolling H.264+AAC / fragmented-MP4 replay segment writer.
 //
@@ -166,6 +167,17 @@ private:
     bool (*m_segmentProbe)(const QString&) = nullptr;
     bool        m_discardCurrentSegment = false;
     QString     m_lastClosedMediaPath;
+    // A failed sample write leaves a hole the segment can never recover from
+    // (missing video, or audio that drifts out of sync). The segment is
+    // poisoned: the next roll comes at once and discards it, so it never
+    // reaches a clip. Consecutive poisoned segments stop the recorder, which
+    // the replay buffer state reports as failed.
+    static constexpr int kMaxFailedSegmentsInARow = 3;
+    bool        m_segmentWriteFailed = false;
+    int         m_failedSegmentsInARow = 0;
+    int         m_injectWriteFailures = 0;   // tests: fail the next N writes
+    long        writeSample(unsigned long stream, IMFSample* sample);
+    void        noteWriteFailure(const char* what);
 
     // current segment
     IMFSinkWriter* m_writer = nullptr;

@@ -997,6 +997,73 @@ private slots:
         QVERIFY(ReplayExporter::concat(restored.paths(), out, QStringLiteral("restore-check")));
     }
 
+    // A sample write that fails mid-recording used to be logged and ignored,
+    // so the segment with the hole still went into the next clip. It is now
+    // discarded at once and recording continues in a fresh segment.
+    void aWriteFailureNeverReachesASavedClip()
+    {
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-writefail-XXXXXX");
+        QVERIFY(dir.isValid());
+        VideoFixture video;
+        QVERIFY(makeVideo(video));
+        SegmentRecorder recorder;
+        QVERIFY(recorder.begin(320, 180, 320, 180, 30, 2, 5, 30,
+                               dir.path(), video.device.Get(), video.context.Get()));
+        const auto finish = qScopeGuard([&] {
+            recorder.discardCurrentSegment();
+            recorder.end();
+        });
+        int frame = 0;
+        const auto writeFrames = [&](int count) {
+            for (int i = 0; i < count; ++i, ++frame)
+                recorder.writeFrame(video.texture.Get(), video.device.Get(), video.context.Get(),
+                                    10000000LL + frame * 10000000LL / 30);
+        };
+        writeFrames(180);   // one full 5 s segment closes, the next is in flight
+        QVERIFY(recorder.hasClosedMedia());
+        const QString poisoned = recorder.m_curPath;
+        QVERIFY(!poisoned.isEmpty());
+        writeFrames(10);
+        recorder.m_injectWriteFailures = 1;
+        writeFrames(30);   // the failure, then the forced roll, then recovery
+        QVERIFY(recorder.isActive());
+        QVERIFY(!QFileInfo::exists(poisoned));
+
+        const SegmentLease clip = recorder.snapshotForSave();
+        QVERIFY(!clip.isEmpty());
+        QVERIFY(!clip.paths().contains(poisoned));
+        for (const QString& path : clip.paths())
+            QVERIFY2(ReplayExporter::hasReadableVideo(path), qPrintable(path));
+        QVERIFY(ReplayExporter::concat(clip.paths(), dir.path() + "/after-failure.mp4",
+                                       QStringLiteral("write-failure")));
+    }
+
+    void repeatedWriteFailuresStopTheRecorder()
+    {
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-writefail-XXXXXX");
+        QVERIFY(dir.isValid());
+        VideoFixture video;
+        QVERIFY(makeVideo(video));
+        SegmentRecorder recorder;
+        QVERIFY(recorder.begin(320, 180, 320, 180, 30, 2, 5, 30,
+                               dir.path(), video.device.Get(), video.context.Get()));
+        const auto finish = qScopeGuard([&] { recorder.end(); });
+        recorder.m_injectWriteFailures = 1000;
+        for (int i = 0; i < 30 && recorder.isActive(); ++i)
+            recorder.writeFrame(video.texture.Get(), video.device.Get(), video.context.Get(),
+                                10000000LL + i * 10000000LL / 30);
+        // Bounded retry: a writer that keeps failing ends as a visible failure
+        // (FramePump reports "recorder not active"), never as a silent loop.
+        QVERIFY(!recorder.isActive());
+        QVERIFY(!recorder.hasClosedMedia());
+    }
+
     void readinessRequiresConfirmedMediaInTheNormalWindow()
     {
         SegmentRecorder recorder;
