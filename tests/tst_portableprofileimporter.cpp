@@ -320,6 +320,84 @@ private slots:
                  qPrintable(error));
     }
 
+    static QByteArray trustState(int sequence)
+    {
+        return QByteArray("{\"schemaVersion\":1,\"highestReleaseSequence\":")
+            + QByteArray::number(sequence) + QByteArray(",\"manifestSha256\":\"")
+            + QByteArray(64, 'a') + QByteArray("\"}");
+    }
+
+    static int trustSequence(const QString& path)
+    {
+        const QByteArray text = readFile(path);
+        const int start = text.indexOf("\"highestReleaseSequence\":") + 25;
+        return text.mid(start, text.indexOf(',', start) - start).toInt();
+    }
+
+    // What an installed GameHQ writes on its own before the user ever reaches
+    // Import: release notes cache, an empty share/, the crash marker, a
+    // quarantined config and the anti-rollback state. None of it is library
+    // data, so the import proceeds; the trust state and the quarantined
+    // config are kept, the per-run files are not.
+    void acceptsAnInstalledProfileWithAppGeneratedState()
+    {
+        Fixture fixture;
+        const QString dest = fixture.destination;
+        QVERIFY(writeFile(dest + QStringLiteral("/release-notes-cache/discovery.json"), "{\"x\":1}"));
+        QVERIFY(writeFile(dest + QStringLiteral("/share/discord-webhooks.json"), "{}"));
+        QVERIFY(writeFile(dest + QStringLiteral("/session.marker"), "pid"));
+        QVERIFY(writeFile(dest + QStringLiteral("/config.json.corrupt-20261020-101010.json"), "{broken"));
+        QVERIFY(writeFile(dest + QStringLiteral("/release-trust-state.json"), trustState(7)));
+        PortableProfileImporter::Result result;
+        QString error;
+        QVERIFY2(PortableProfileImporter::importProfile(fixture.options(), result, error),
+                 qPrintable(error));
+        QCOMPARE(trustSequence(dest + QStringLiteral("/release-trust-state.json")), 7);
+        QCOMPARE(readFile(dest + QStringLiteral("/config.json.corrupt-20261020-101010.json")),
+                 QByteArray("{broken"));
+        QVERIFY(!QFileInfo::exists(dest + QStringLiteral("/session.marker")));
+    }
+
+    // Import must never lower update protection: the stricter (higher)
+    // release sequence of the two profiles wins.
+    void keepsTheStricterReleaseTrustState()
+    {
+        for (const auto& [installed, portable] : { std::pair{ 3, 9 }, std::pair{ 9, 3 } }) {
+            Fixture fixture;
+            QVERIFY(writeFile(fixture.destination + QStringLiteral("/release-trust-state.json"),
+                              trustState(installed)));
+            QVERIFY(writeFile(fixture.source + QStringLiteral("/gamehq-data/release-trust-state.json"),
+                              trustState(portable)));
+            PortableProfileImporter::Result result;
+            QString error;
+            QVERIFY2(PortableProfileImporter::importProfile(fixture.options(), result, error),
+                     qPrintable(error));
+            QCOMPARE(trustSequence(fixture.destination + QStringLiteral("/release-trust-state.json")), 9);
+        }
+        {
+            // Unreadable protection state is never silently replaced.
+            Fixture fixture;
+            QVERIFY(writeFile(fixture.destination + QStringLiteral("/release-trust-state.json"), "garbage"));
+            PortableProfileImporter::Result result;
+            QString error;
+            QVERIFY(!PortableProfileImporter::importProfile(fixture.options(), result, error));
+            QCOMPARE(readFile(fixture.destination + QStringLiteral("/release-trust-state.json")),
+                     QByteArray("garbage"));
+        }
+    }
+
+    void refusesAShareFolderHoldingUserData()
+    {
+        Fixture fixture;
+        const QByteArray hooks = "{\"hooks\":[{\"name\":\"clips\"}]}";
+        QVERIFY(writeFile(fixture.destination + QStringLiteral("/share/discord-webhooks.json"), hooks));
+        PortableProfileImporter::Result result;
+        QString error;
+        QVERIFY(!PortableProfileImporter::importProfile(fixture.options(), result, error));
+        QVERIFY2(error.contains(QStringLiteral("share")), qPrintable(error));
+        QCOMPARE(readFile(fixture.destination + QStringLiteral("/share/discord-webhooks.json")), hooks);
+    }
+
     void rejectsPortableGameExecutableAndDatabaseSetting()
     {
         for (const QString& statement : {

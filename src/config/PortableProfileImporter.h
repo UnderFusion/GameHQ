@@ -28,6 +28,9 @@ public:
         int watchedFolders = 0;
         int copiedSounds = 0;
         QString evidencePath;
+        // Set when the import succeeded but leftover cleanup did not; the
+        // next start finishes it.
+        QString warning;
     };
 
     // Imports an immutable portable profile into a new/empty installed profile.
