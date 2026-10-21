@@ -227,10 +227,21 @@ public:
         return out;
     }
 
-    CloakScan scanHiddenPads(const QSet<QString>&) override { return {}; }
+    // PnP scans run on a worker thread; record where so a test can prove it.
+    std::atomic<QThread*> scanThread{nullptr};
+    CloakScan cloak;
+    CloakScan scanHiddenPads(const QSet<QString>&) override
+    {
+        scanThread = QThread::currentThread();
+        return cloak;
+    }
 
     QList<HiddenInterface> hidden;   // HidHide-cloaked pads PnP still lists
-    QList<HiddenInterface> hiddenPadInterfaces(const QSet<QString>&) override { return hidden; }
+    QList<HiddenInterface> hiddenPadInterfaces(const QSet<QString>&) override
+    {
+        scanThread = QThread::currentThread();
+        return hidden;
+    }
 
     // Selective Raw HID fallback: the fake "parses" the report descriptor by
     // returning the pressed usages staged on the device.
@@ -1391,6 +1402,37 @@ private slots:
         api->hidden.clear();   // unpaired
         pad.rescan();
         QTRY_COMPARE(pad.hidReaderCount(), 0);
+        QCOMPARE(readers.created, readers.destroyed);
+    }
+
+    // The CfgMgr cross-check is slow, so it runs off the GUI thread; the
+    // verdict and every device-state change land back on the GUI thread.
+    void pnpCloakScanRunsOffTheGuiThread()
+    {
+        FakeHidReaders readers;
+        auto* api = new FakeRawInputApi;
+        DualSenseDevice pad(api);
+        pad.setHidReaderFactory(readers.factory(), /*forVisibleEndpoints=*/false);
+        QSignalSpy hiddenPads(&pad, &DualSenseDevice::hiddenPadsChanged);
+        QThread* signalThread = nullptr;
+        connect(&pad, &DualSenseDevice::hiddenPadsChanged, &pad,
+                [&signalThread] { signalThread = QThread::currentThread(); },
+                Qt::DirectConnection);
+
+        api->hidden = { { kBtPath, kSonyVid, kDualSensePid } };
+        api->cloak.hiddenPads = { QStringLiteral("DualSense (VID_054C&PID_0CE6)") };
+        pad.rescan();
+        QTRY_COMPARE(pad.hidReaderCount(), 1);
+        QVERIFY(api->scanThread.load() != nullptr);
+        QVERIFY(api->scanThread.load() != QThread::currentThread());
+        // A pad is tracked (via direct HID), so the cloak is not alarming.
+        QCOMPARE(hiddenPads.size(), 0);
+
+        api->hidden.clear();
+        pad.rescan();
+        QTRY_COMPARE(pad.hidReaderCount(), 0);
+        QTRY_COMPARE(hiddenPads.size(), 1);
+        QCOMPARE(signalThread, QThread::currentThread());
         QCOMPARE(readers.created, readers.destroyed);
     }
 

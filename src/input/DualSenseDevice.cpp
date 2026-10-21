@@ -10,8 +10,11 @@
 #include "input/StickNav.h"
 
 #include <QDebug>
+#include <QThreadPool>
 #include <QTimer>
 #include <QVarLengthArray>
+
+#include <utility>
 
 #include <windows.h>
 #include <dbt.h>
@@ -204,8 +207,10 @@ DualSenseDevice::DualSenseDevice(RawInputApi* api, QObject* parent)
     , m_reconcileTimer(new QTimer(this))
     , m_topologyTimer(new QTimer(this))
     , m_rateTimer(new QTimer(this))
+    , m_pnpScanPool(std::make_unique<QThreadPool>())
 {
     m_clock.start();
+    m_pnpScanPool->setMaxThreadCount(1);
 
     m_disconnectTimer->setSingleShot(true);
     m_disconnectTimer->setInterval(kDisconnectDebounceMs);
@@ -228,6 +233,10 @@ DualSenseDevice::DualSenseDevice(RawInputApi* api, QObject* parent)
 
 DualSenseDevice::~DualSenseDevice()
 {
+    // A PnP scan in flight still uses m_api; its queued result is dropped
+    // with this object's posted events.
+    m_pnpScanPool->waitForDone();
+
     // Join every reader worker before anything they could post to goes away.
     m_hidReaders.clear();
 
@@ -667,19 +676,59 @@ void DualSenseDevice::reconcileDevices()
         if (!it->hidReaderId)
             startHidReader(it.key(), it.value());
     }
-    if (syncHiddenInterfaces(rawPathsLower))
-        lostActive = true;
     if (lostActive)
         failoverOrScheduleDisconnect();
-
-    if (m_devices.isEmpty())
-        qInfo() << "Gamepad: no Sony/DS4 Raw Input devices present";
 
     // Cross-check Windows PnP against what Raw Input just enumerated: a
     // supported pad present in PnP but absent here is being cloaked by a HID
     // filter driver (HidHide, installed with DSX/DS4Windows/reWASD) — the app
     // can't read it, but it CAN tell the user exactly what is wrong.
-    auto cloak = m_api->scanHiddenPads(rawPathsLower);
+    requestPnpScan(rawPathsLower);
+}
+
+void DualSenseDevice::requestPnpScan(const QSet<QString>& rawPathsLower)
+{
+    if (m_pnpScanRunning) {
+        // The running scan's snapshot is already outdated; rescan with this
+        // one as soon as it returns.
+        m_pnpScanQueued = true;
+        m_queuedRawPaths = rawPathsLower;
+        return;
+    }
+    m_pnpScanRunning = true;
+    RawInputApi* api = m_api.get();
+    const bool wantInterfaces = bool(m_hidReaderFactory);
+    m_pnpScanPool->start([this, api, rawPathsLower, wantInterfaces] {
+        PnpScan scan;
+        scan.rawPathsLower = rawPathsLower;
+        scan.interfacesScanned = wantInterfaces;
+        if (wantInterfaces)
+            scan.hidden = api->hiddenPadInterfaces(rawPathsLower);
+        scan.cloak = api->scanHiddenPads(rawPathsLower);
+        QMetaObject::invokeMethod(this, [this, scan] { applyPnpScan(scan); },
+                                  Qt::QueuedConnection);
+    });
+}
+
+void DualSenseDevice::applyPnpScan(const PnpScan& scan)
+{
+    m_pnpScanRunning = false;
+    if (m_pnpScanQueued) {
+        // A newer topology pass superseded this snapshot: never apply a
+        // result older than the Raw Input view it would be compared with.
+        m_pnpScanQueued = false;
+        requestPnpScan(std::exchange(m_queuedRawPaths, {}));
+        return;
+    }
+
+    if (scan.interfacesScanned && m_hidReaderFactory
+        && syncHiddenInterfaces(scan.hidden, scan.rawPathsLower))
+        failoverOrScheduleDisconnect();
+
+    if (m_devices.isEmpty())
+        qInfo() << "Gamepad: no Sony/DS4 Raw Input devices present";
+
+    auto cloak = scan.cloak;
     // Only alarm the user when the cloak explains an actual absence: with a
     // working pad tracked, hidden *additional* devices (e.g. DSX's parked
     // virtual pads) are expected and not worth a Settings warning.
@@ -840,12 +889,14 @@ void DualSenseDevice::onRawInput(void* hRawInputV)
         parseReport(handle, *st, payload.reports + i * payload.reportSize, payload.reportSize);
 }
 
-bool DualSenseDevice::syncHiddenInterfaces(const QSet<QString>& rawPathsLower)
+bool DualSenseDevice::syncHiddenInterfaces(
+    const QList<RawInputApi::HiddenInterface>& hiddenInterfaces,
+    const QSet<QString>& rawPathsLower)
 {
     if (!m_hidReaderFactory)
         return false;
     QHash<QString, RawInputApi::HiddenInterface> hidden;   // lower-case path -> interface
-    for (const auto& i : m_api->hiddenPadInterfaces(rawPathsLower))
+    for (const auto& i : hiddenInterfaces)
         hidden.insert(i.path.toLower(), i);
 
     // Prune HID-only endpoints that left PnP or became visible to Raw Input

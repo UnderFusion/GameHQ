@@ -15,6 +15,7 @@
 #include <map>
 #include <memory>
 
+class QThreadPool;
 class QTimer;
 class SonyHidReaderHandle;
 
@@ -183,6 +184,18 @@ private:
     QString deviceLabel(void* handle, bool ignored) const;
     void removeDevice(void* handle);
     void reconcileDevices();                  // debounced full-list sync (prune stale handles)
+    // Windows PnP cross-check (HidHide cloak detection + hidden HID-only
+    // interfaces). CfgMgr enumeration is slow, so it runs on m_pnpScanPool
+    // against a snapshot of the Raw Input paths; the result comes back as a
+    // queued call and every device-state change stays on the GUI thread.
+    struct PnpScan {
+        QSet<QString> rawPathsLower;
+        bool interfacesScanned = false;
+        QList<RawInputApi::HiddenInterface> hidden;
+        RawInputApi::CloakScan cloak;
+    };
+    void requestPnpScan(const QSet<QString>& rawPathsLower);
+    void applyPnpScan(const PnpScan& scan);
     void failoverOrScheduleDisconnect();
     void finishDisconnect();
     void parseReport(void* handle, DeviceState& st, const unsigned char* data, int len,
@@ -195,7 +208,8 @@ private:
     void endHidRescue(DeviceState& st);
     // Track/prune HID-only endpoints against the current PnP view. Returns
     // true if the active pad was pruned.
-    bool syncHiddenInterfaces(const QSet<QString>& rawPathsLower);
+    bool syncHiddenInterfaces(const QList<RawInputApi::HiddenInterface>& hiddenInterfaces,
+                              const QSet<QString>& rawPathsLower);
     void stopHidReader(void* handle, DeviceState& st, const char* why);
     // Reader lost the endpoint: stop preferring it and release whatever it
     // held so no button stays logically pressed across the source change.
@@ -252,6 +266,10 @@ private:
     qint64 m_lastReceiptMs = 0;
     bool m_silenceFollowupPending = false;
     QStringList m_lastHiddenPads;            // last cloak-scan result (change detection)
+    std::unique_ptr<QThreadPool> m_pnpScanPool;   // one PnP scan at a time, off the GUI thread
+    bool m_pnpScanRunning = false;
+    bool m_pnpScanQueued = false;            // a newer reconcile arrived while scanning
+    QSet<QString> m_queuedRawPaths;          // its Raw Input path snapshot
 
     HidReaderFactory m_hidReaderFactory;     // empty = spike disabled
     bool m_hidReaderForVisible = true;       // false = HID-only (cloaked) endpoints only
