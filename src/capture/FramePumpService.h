@@ -127,6 +127,8 @@ private:
     // window; past the limit the buffer fails instead of re-arming forever.
     QString m_audioFailure;          // reason while the current Failed state is an audio failure
     ReplayBufferState::AudioRearmBudget m_audioRearmBudget;
+    // Same bound for a frame pool that keeps failing after re-arms.
+    ReplayBufferState::AudioRearmBudget m_captureRearmBudget;
 };
 
 // GUI-thread owner: constructs the worker on a dedicated thread and relays toggle().

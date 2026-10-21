@@ -164,6 +164,12 @@ struct FramePumpWorker::Pipeline
     UINT lastW = 0, lastH = 0;
     int  lastFmt = 0;
     bool firstFrameLogged = false;
+    // The pool is created for the window's size at arm time. A game that
+    // changes resolution keeps delivering frames at the old pool size, so a
+    // content size that differs (and has settled) re-arms the pipeline.
+    INT32 poolW = 0, poolH = 0;
+    WgcSizeInt32 pendingContentSize{ 0, 0 };
+    QElapsedTimer pendingContentClock;
 
     ~Pipeline()
     {
@@ -622,6 +628,8 @@ bool FramePumpWorker::createSession(Pipeline* pipe, void* hwndVoid, int srcW, in
     poolStatics2->Release();
     if (FAILED(hr) || !pipe->framePool)
         return failStep("CreateFreeThreaded", hr);
+    pipe->poolW = srcW;
+    pipe->poolH = srcH;
     pipe->hdrToneMapActive = (pipe->hdrToneMapper != nullptr);
 
     hr = pipe->framePool->CreateCaptureSession(pipe->item, &pipe->session);
@@ -879,11 +887,44 @@ void FramePumpWorker::poll()
         IDirect3D11CaptureFrame* frame = nullptr;
         const HRESULT hr = m_pipe->framePool->TryGetNextFrame(&frame);
         if (FAILED(hr)) {
+            // Keeping the 16 ms timer running here logged this every tick.
+            // Stop it and rebuild; a pool that keeps failing ends as an
+            // explicit failure instead of an endless re-arm loop.
+            if (m_pipe->timer)
+                m_pipe->timer->stop();
             failStep("TryGetNextFrame", hr);
+            if (m_captureRearmBudget.allow(qpcNow100ns() / 10000))
+                emit restartRequested(m_pumpGeneration,
+                                      QStringLiteral("Windows capture stopped delivering frames"));
             return;
         }
         if (!frame)          // pool drained — nothing more this tick
             break;
+
+        WgcSizeInt32 content{ 0, 0 };
+        if (SUCCEEDED(frame->get_ContentSize(&content)) && content.Width > 0 && content.Height > 0
+            && (content.Width != m_pipe->poolW || content.Height != m_pipe->poolH)) {
+            // A window being dragged changes size every frame; wait for the
+            // new size to hold before paying for a re-arm.
+            constexpr qint64 kContentSizeSettleMs = 500;
+            if (content.Width != m_pipe->pendingContentSize.Width
+                || content.Height != m_pipe->pendingContentSize.Height) {
+                m_pipe->pendingContentSize = content;
+                m_pipe->pendingContentClock.start();
+            } else if (m_pipe->pendingContentClock.elapsed() >= kContentSizeSettleMs) {
+                frame->Release();
+                if (m_pipe->timer)
+                    m_pipe->timer->stop();
+                qInfo().noquote() << QStringLiteral(
+                    "FramePump: capture content changed from %1x%2 to %3x%4 — re-arming")
+                    .arg(m_pipe->poolW).arg(m_pipe->poolH)
+                    .arg(content.Width).arg(content.Height);
+                emit restartRequested(m_pumpGeneration, QStringLiteral("Game resolution changed"));
+                return;
+            }
+        } else {
+            m_pipe->pendingContentSize = { 0, 0 };
+        }
 
         IDirect3DSurface* surface = nullptr;
         if (SUCCEEDED(frame->get_Surface(&surface)) && surface) {
