@@ -35,6 +35,13 @@ CaptureScanner::CaptureScanner(CaptureDatabase* db, CaptureLocations* locations,
     , m_locations(locations)
     , m_thumbnailsDir(std::move(thumbnailsDir))
 {
+    m_pool.setMaxThreadCount(1);
+}
+
+CaptureScanner::~CaptureScanner()
+{
+    // The worker posts its result to this object; finish it before going.
+    m_pool.waitForDone();
 }
 
 QVector<CaptureScanner::Root> CaptureScanner::roots() const
@@ -63,17 +70,45 @@ int CaptureScanner::scanAll()
 {
     // One snapshot of the captures table up front; the walk below then diffs
     // against memory instead of issuing two queries per file on disk.
-    QHash<QString, CaptureIndexEntry> index = m_db->captureIndex();
-    QSet<QString> seen;
-
+    const WalkResult result = walk(roots(), m_db->captureIndex(), 0, m_thumbnailsDir);
     Delta delta;
-    for (const Root& root : roots())
-        delta.added += scanFolder(root.path, root.source, index, seen, 0, nullptr);
-    refreshMissing(index, seen, {}, delta);
-    qInfo() << "Scan: finished," << delta.added << "new capture(s), indexed" << index.size()
-            << "known path(s)," << m_db->missingCaptureKeys().size() << "missing on disk";
+    apply(result, {}, delta);
+    qInfo() << "Scan: finished," << delta.added << "new capture(s),"
+            << m_db->missingCaptureKeys().size() << "missing on disk";
     emit scanFinished(delta.added);
     return delta.added;
+}
+
+void CaptureScanner::scanAllAsync()
+{
+    if (m_asyncRunning) {
+        m_asyncQueued = true;
+        return;
+    }
+    m_asyncRunning = true;
+    const QVector<Root> scanRoots = roots();
+    const QHash<QString, CaptureIndexEntry> index = m_db->captureIndex();
+    const QString thumbnailsDir = m_thumbnailsDir;
+    m_pool.start([this, scanRoots, index, thumbnailsDir] {
+        const WalkResult result = walk(scanRoots, index, 0, thumbnailsDir);
+        // Queued onto this object's thread; dropped if it is gone by then.
+        QMetaObject::invokeMethod(this, [this, result] { finishAsyncScan(result); },
+                                  Qt::QueuedConnection);
+    });
+}
+
+void CaptureScanner::finishAsyncScan(const WalkResult& result)
+{
+    Delta delta;
+    apply(result, {}, delta);
+    qInfo() << "Scan: finished in the background," << delta.added << "new capture(s),"
+            << m_db->missingCaptureKeys().size() << "missing on disk";
+    m_asyncRunning = false;
+    emit scanFinished(delta.added);
+    if (m_asyncQueued) {
+        m_asyncQueued = false;
+        scanAllAsync();
+    }
 }
 
 CaptureScanner::Delta CaptureScanner::reconcile(const QStringList& rootPaths, qint64 settleMs)
@@ -81,18 +116,19 @@ CaptureScanner::Delta CaptureScanner::reconcile(const QStringList& rootPaths, qi
     Delta delta;
     if (rootPaths.isEmpty())
         return delta;
-    QHash<QString, CaptureIndexEntry> index = m_db->captureIndex();
-    QSet<QString> seen;
+    QVector<Root> scoped;
     QStringList scope;
     for (const Root& root : roots()) {
         if (!rootPaths.contains(root.path, Qt::CaseInsensitive))
             continue;
+        scoped.append(root);
         scope.append(root.path);
-        delta.added += scanFolder(root.path, root.source, index, seen, settleMs, &delta.deferred);
     }
     if (scope.isEmpty())
         return delta;
-    refreshMissing(index, seen, scope, delta);
+    const WalkResult result = walk(scoped, m_db->captureIndex(), settleMs, m_thumbnailsDir);
+    delta.deferred = result.deferred;
+    apply(result, scope, delta);
     if (delta.changed()) {
         qInfo() << "Scan: folder change," << delta.added << "added," << delta.hidden
                 << "missing," << delta.restored << "back on disk";
@@ -132,56 +168,80 @@ void CaptureScanner::refreshMissing(const QHash<QString, CaptureIndexEntry>& ind
     delta.restored += m_db->setCapturesMissing(nowPresent, false);
 }
 
-int CaptureScanner::scanFolder(const QString& root, const QString& source,
-                               QHash<QString, CaptureIndexEntry>& index, QSet<QString>& seen,
-                               qint64 settleMs, bool* deferred)
+CaptureScanner::WalkResult CaptureScanner::walk(const QVector<Root>& roots,
+                                                const QHash<QString, CaptureIndexEntry>& index,
+                                                qint64 settleMs, const QString& thumbnailsDir)
 {
-    if (root.isEmpty() || !QDir(root).exists())
-        return 0;
-
+    WalkResult result;
+    QSet<QString> foundKeys;   // a path reachable from two roots is found once
     const QDateTime settledBefore = QDateTime::currentDateTimeUtc().addMSecs(-settleMs);
-    int added = 0;
-    QDirIterator it(root, QDir::Files, QDirIterator::Subdirectories);
-    while (it.hasNext()) {
-        const QString path = QDir::cleanPath(it.next());
-        const QFileInfo info(path);
-        const QString type = typeForSuffix(info.suffix().toLower());
-        if (type.isEmpty())
+    for (const Root& root : roots) {
+        if (root.path.isEmpty() || !QDir(root.path).exists())
             continue;
+        QDirIterator it(root.path, QDir::Files, QDirIterator::Subdirectories);
+        while (it.hasNext()) {
+            const QString path = QDir::cleanPath(it.next());
+            const QFileInfo info(path);
+            const QString type = typeForSuffix(info.suffix().toLower());
+            if (type.isEmpty())
+                continue;
 
-        const QString key = CaptureDatabase::storedPathKey(path);
-        seen.insert(key);
-        const auto known = index.constFind(key);
-        if (known != index.constEnd()) {
-            if (!known->deleted && !ThumbnailService::isUsableThumbnail(known->thumbnailPath)) {
-                const QString thumb = ThumbnailService::ensureThumbnail(path, type, m_thumbnailsDir);
-                if (!thumb.isEmpty() && m_db->setThumbnailForCapture(path, thumb))
-                    index[key].thumbnailPath = thumb;
+            const QString key = CaptureDatabase::storedPathKey(path);
+            result.seen.insert(key);
+            const auto known = index.constFind(key);
+            if (known != index.constEnd()) {
+                if (!known->deleted && !ThumbnailService::isUsableThumbnail(known->thumbnailPath)) {
+                    const QString thumb = ThumbnailService::ensureThumbnail(path, type, thumbnailsDir);
+                    if (!thumb.isEmpty())
+                        result.thumbnailFixes.append({ path, thumb });
+                }
+                continue;
             }
-            continue;
-        }
+            if (foundKeys.contains(key))
+                continue;
 
-        if (settleMs > 0 && info.lastModified().toUTC() > settledBefore) {
-            if (deferred)
-                *deferred = true;
-            continue;
-        }
+            if (settleMs > 0 && info.lastModified().toUTC() > settledBefore) {
+                result.deferred = true;
+                continue;
+            }
 
-        const QString game = GameIdentity::inferFromPath(root, path);
-        const QString createdAt =
-            info.birthTime().isValid() ? info.birthTime().toUTC().toString(Qt::ISODate)
-                                       : info.lastModified().toUTC().toString(Qt::ISODate);
-        const int id = m_db->insertCapture(path, type, game, createdAt, source);
+            FoundCapture capture;
+            capture.path = path;
+            capture.key = key;
+            capture.type = type;
+            capture.game = GameIdentity::inferFromPath(root.path, path);
+            capture.createdAt =
+                info.birthTime().isValid() ? info.birthTime().toUTC().toString(Qt::ISODate)
+                                           : info.lastModified().toUTC().toString(Qt::ISODate);
+            capture.source = root.source;
+            capture.thumbnail = ThumbnailService::ensureThumbnail(path, type, thumbnailsDir);
+            foundKeys.insert(key);
+            result.found.append(capture);
+        }
+    }
+    return result;
+}
+
+int CaptureScanner::apply(const WalkResult& result, const QStringList& scope, Delta& delta)
+{
+    QHash<QString, CaptureIndexEntry> index = m_db->captureIndex();
+    for (const auto& fix : result.thumbnailFixes)
+        m_db->setThumbnailForCapture(fix.first, fix.second);
+
+    int added = 0;
+    for (const FoundCapture& capture : result.found) {
+        if (index.contains(capture.key))
+            continue;   // committed by its own service or another pass meanwhile
+        const int id = m_db->insertCapture(capture.path, capture.type, capture.game,
+                                           capture.createdAt, capture.source);
         if (id < 0)
             continue;
-
-        const QString thumb = ThumbnailService::ensureThumbnail(path, type, m_thumbnailsDir);
-        if (!thumb.isEmpty())
-            m_db->setThumbnail(id, thumb);
-        // Keep the snapshot authoritative for the rest of the walk, so a path
-        // reachable from two roots is not inserted twice.
-        index.insert(key, { thumb, false });
+        if (!capture.thumbnail.isEmpty())
+            m_db->setThumbnail(id, capture.thumbnail);
+        index.insert(capture.key, { capture.thumbnail, false });
         ++added;
     }
+    delta.added += added;
+    refreshMissing(index, result.seen, scope, delta);
     return added;
 }

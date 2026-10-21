@@ -104,6 +104,7 @@ AppController::AppController(CaptureDatabase* db, CaptureScanner* scanner,
     connect(m_locations, &CaptureLocations::locationsChanged,
             this, &AppController::captureLocationsChanged);
 
+    connect(m_scanner, &CaptureScanner::scanFinished, this, &AppController::onScanFinished);
     // Armed by rescan(), which runs whenever the set of capture roots can change.
     m_folderWatcher = new CaptureFolderWatcher(this);
     connect(m_folderWatcher, &CaptureFolderWatcher::rootsChanged,
@@ -778,11 +779,18 @@ void AppController::updateReplayBufferState(ReplayBufferState::State state, cons
 
 void AppController::rescan()
 {
-    m_lastScanAdded = m_scanner->scanAll();
+    // The roots can change right now (a folder added or removed); the watcher
+    // follows at once, the walk itself runs in the background.
     QStringList roots;
     for (const CaptureScanner::Root& root : m_scanner->roots())
         roots.append(root.path);
     m_folderWatcher->setRoots(roots);
+    m_scanner->scanAllAsync();
+}
+
+void AppController::onScanFinished(int added)
+{
+    m_lastScanAdded = added;
     m_gallery->refresh();
     if (m_overlayGallery)
         m_overlayGallery->sync();

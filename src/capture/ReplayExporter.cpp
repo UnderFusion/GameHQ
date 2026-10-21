@@ -400,8 +400,13 @@ bool grabThumbnailImpl(const std::wstring& file, QImage& out)
 {
     const bool startedMf = SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE));
 
+    // The scanner feeds this any video file in a watched folder, so every
+    // step is checked and nothing trusts the file's own sizes.
     IMFAttributes* rattr = nullptr;
-    MFCreateAttributes(&rattr, 1);
+    if (FAILED(MFCreateAttributes(&rattr, 1)) || !rattr) {
+        if (startedMf) MFShutdown();
+        return false;
+    }
     rattr->SetUINT32(MF_SOURCE_READER_ENABLE_ADVANCED_VIDEO_PROCESSING, TRUE);
 
     IMFSourceReader* reader = nullptr;
@@ -413,7 +418,11 @@ bool grabThumbnailImpl(const std::wstring& file, QImage& out)
     reader->SetStreamSelection((DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM, TRUE);
 
     IMFMediaType* want = nullptr;
-    MFCreateMediaType(&want);
+    if (FAILED(MFCreateMediaType(&want)) || !want) {
+        reader->Release();
+        if (startedMf) MFShutdown();
+        return false;
+    }
     want->SetGUID(MF_MT_MAJOR_TYPE, MFMediaType_Video);
     want->SetGUID(MF_MT_SUBTYPE,    MFVideoFormat_RGB32);
     hr = reader->SetCurrentMediaType((DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM, nullptr, want);
@@ -432,10 +441,16 @@ bool grabThumbnailImpl(const std::wstring& file, QImage& out)
             MFGetStrideForBitmapInfoHeader(MFVideoFormat_RGB32.Data1, width, &defStride);
         cur->Release();
     }
-    if (width == 0 || height == 0) { reader->Release(); if (startedMf) MFShutdown(); return false; }
+    constexpr UINT32 kMaxDimension = 16384;
+    if (width == 0 || height == 0 || width > kMaxDimension || height > kMaxDimension) {
+        reader->Release();
+        if (startedMf) MFShutdown();
+        return false;
+    }
 
+    // A stream of empty reads (format changes, gaps) must not spin forever.
     IMFSample* sample = nullptr;
-    for (;;) {
+    for (int attempt = 0; attempt < 64; ++attempt) {
         DWORD    flags = 0;
         LONGLONG ts    = 0;
         hr = reader->ReadSample((DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM,
@@ -455,18 +470,25 @@ bool grabThumbnailImpl(const std::wstring& file, QImage& out)
     if (SUCCEEDED(buf->QueryInterface(IID_IMF2DBuffer, (void**)&buf2d)) && buf2d) {
         BYTE* scan0 = nullptr;
         LONG  pitch = 0;
+        DWORD contiguous = 0;
+        buf->GetCurrentLength(&contiguous);
         if (SUCCEEDED(buf2d->Lock2D(&scan0, &pitch))) {
             QImage img((int)width, (int)height, QImage::Format_RGB32);
             const bool bottomUp = pitch < 0;
             const LONG absPitch = pitch < 0 ? -pitch : pitch;
-            for (UINT y = 0; y < height; ++y) {
+            const quint64 needed = quint64(absPitch) * (height - 1) + quint64(width) * 4;
+            const bool fits = !img.isNull() && quint64(absPitch) >= quint64(width) * 4
+                && (contiguous == 0 || needed <= contiguous);
+            for (UINT y = 0; fits && y < height; ++y) {
                 const BYTE* srcRow = bottomUp
                     ? scan0 - (LONG)y * absPitch
                     : scan0 + (LONG)y * absPitch;
                 memcpy(img.scanLine((int)y), srcRow, (size_t)width * 4);
             }
-            out = img.copy();                                // detach before Unlock
-            okResult = true;
+            if (fits) {
+                out = img.copy();                            // detach before Unlock
+                okResult = true;
+            }
             buf2d->Unlock2D();
         }
         buf2d->Release();
@@ -476,12 +498,17 @@ bool grabThumbnailImpl(const std::wstring& file, QImage& out)
             const bool bottomUp = defStride < 0;
             const LONG absStride = defStride < 0 ? -defStride : (defStride ? defStride : (LONG)width * 4);
             QImage img((int)width, (int)height, QImage::Format_RGB32);
-            for (UINT y = 0; y < height; ++y) {
+            const quint64 needed = quint64(absStride) * (height - 1) + quint64(width) * 4;
+            const bool fits = !img.isNull() && quint64(absStride) >= quint64(width) * 4
+                && needed <= len;
+            for (UINT y = 0; fits && y < height; ++y) {
                 const UINT srcY = bottomUp ? (height - 1 - y) : y;
                 memcpy(img.scanLine((int)y), data + (size_t)srcY * absStride, (size_t)width * 4);
             }
-            out = img.copy();
-            okResult = true;
+            if (fits) {
+                out = img.copy();
+                okResult = true;
+            }
             buf->Unlock();
         }
     }

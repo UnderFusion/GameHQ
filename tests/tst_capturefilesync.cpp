@@ -64,6 +64,28 @@ private:
     };
 
 private slots:
+    // aud-b3: the full scan used to run on the GUI thread, thumbnail decoding
+    // included. The background scan returns at once, indexes the same files,
+    // and folds a second request into one follow-up pass.
+    void backgroundScanIndexesWithoutBlocking()
+    {
+        Library lib;
+        QVERIFY(lib.open());
+        QVERIFY(!lib.writeShot(QStringLiteral("a.png")).isEmpty());
+        QVERIFY(!lib.writeShot(QStringLiteral("b.png")).isEmpty());
+        QSignalSpy finished(lib.scanner.get(), &CaptureScanner::scanFinished);
+        lib.scanner->scanAllAsync();
+        QVERIFY(lib.scanner->scanInProgress());
+        lib.scanner->scanAllAsync();   // folded into one follow-up
+        QTRY_COMPARE(finished.count(), 2);
+        QCOMPARE(finished.at(0).at(0).toInt(), 2);
+        QCOMPARE(finished.at(1).at(0).toInt(), 0);   // nothing new the second time
+        QVERIFY(!lib.scanner->scanInProgress());
+        QCOMPARE(lib.db->listCaptures(QStringLiteral("all")).size(), 2);
+        for (const CaptureRecord& r : lib.db->listCaptures(QStringLiteral("all")))
+            QVERIFY2(!r.thumbnailPath.isEmpty(), qPrintable(r.filePath));
+    }
+
     void vanishedFileIsHiddenAndComesBackWithItsFavorite()
     {
         Library lib;

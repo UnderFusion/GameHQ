@@ -252,6 +252,7 @@ private:
     // Folder-watcher path: indexes new files, hides vanished ones and brings
     // restored ones back, then updates both galleries without a reset.
     void onCaptureFoldersChanged(const QStringList& roots);
+    void onScanFinished(int added);
 
     CaptureDatabase* m_db;
     CaptureScanner* m_scanner;
