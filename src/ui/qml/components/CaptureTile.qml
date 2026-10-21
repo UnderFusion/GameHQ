@@ -62,6 +62,9 @@ Item {
                 anchors.fill: parent
                 source: root.thumbnail !== "" ? "file:///" + root.thumbnail : ""
                 fillMode: Image.PreserveAspectCrop
+                // A fixed bound, not the tile width: re-decoding on every
+                // zoom step would flash the placeholder.
+                sourceSize.width: Theme.thumbnailDecodeWidth
                 asynchronous: true
                 visible: status === Image.Ready
             }

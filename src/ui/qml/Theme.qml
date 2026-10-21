@@ -265,6 +265,11 @@ QtObject {
     readonly property int overlayThumbCaptionHeight: 31
     readonly property int overlayLayoutPanelWidth: 360
 
+    // Upper bound for decoding a gallery thumbnail: twice the 480 px zoom
+    // target so HiDPI stays sharp. Generated thumbnails are 640 px wide and
+    // decode unchanged; only an oversized file is scaled down on load.
+    readonly property int thumbnailDecodeWidth: 960
+
     // Modal dialogs: the standard card, the narrower two-button confirmation,
     // and the upper bounds of the Help card.
     readonly property int dialogWidth: 440
