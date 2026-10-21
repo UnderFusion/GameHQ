@@ -135,7 +135,15 @@ QStringList p4ThreeSourceFiles()
     return {
         root + QStringLiteral("main.cpp"),
         root + QStringLiteral("app/App.cpp"),
+        root + QStringLiteral("app/App_CaptureWiring.cpp"),
+        root + QStringLiteral("app/App_InputWiring.cpp"),
+        root + QStringLiteral("app/App_ShareWiring.cpp"),
+        root + QStringLiteral("app/App_UpdateWiring.cpp"),
         root + QStringLiteral("ui/AppController.cpp"),
+        root + QStringLiteral("ui/AppController_Hdr.cpp"),
+        root + QStringLiteral("ui/AppController_Navigation.cpp"),
+        root + QStringLiteral("ui/AppController_Profile.cpp"),
+        root + QStringLiteral("ui/AppController_Settings.cpp"),
         root + QStringLiteral("config/CaptureLocations.cpp"),
         root + QStringLiteral("config/PortableProfileImporter.cpp"),
         root + QStringLiteral("updates/UpdateService.cpp"),
@@ -154,6 +162,10 @@ QStringList p4FourSourceFiles()
         root + QStringLiteral("input/BindingPattern.cpp"),
         root + QStringLiteral("tray/TrayIcon.cpp"),
         root + QStringLiteral("ui/AppController.cpp"),
+        root + QStringLiteral("ui/AppController_Hdr.cpp"),
+        root + QStringLiteral("ui/AppController_Navigation.cpp"),
+        root + QStringLiteral("ui/AppController_Profile.cpp"),
+        root + QStringLiteral("ui/AppController_Settings.cpp"),
     };
 }
 
@@ -587,7 +599,8 @@ void LocalizationCatalogTest::p4FourCachedPresentationIsIdDriven()
     const QString actionCatalog = readSource(QStringLiteral("input/ActionCatalog.cpp"));
     const QString tray = readSource(QStringLiteral("tray/TrayIcon.cpp"));
     const QString editorHeader = readSource(QStringLiteral("input/BindingEditorModel.h"));
-    const QString controller = readSource(QStringLiteral("ui/AppController.cpp"));
+    const QString controller = readSource(QStringLiteral("ui/AppController.cpp"))
+        + readSource(QStringLiteral("ui/AppController_Hdr.cpp"));
     QVERIFY(!actionCatalog.isEmpty());
     QVERIFY(actionCatalog.contains(QStringLiteral("PresentationSpec")));
     QVERIFY(!actionCatalog.contains(QStringLiteral("QStringLiteral(\"Screenshot\")")));
