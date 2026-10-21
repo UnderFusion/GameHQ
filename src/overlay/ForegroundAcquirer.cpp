@@ -37,6 +37,19 @@ void ForegroundAcquirer::cancel()
 
 void ForegroundAcquirer::attempt()
 {
+    // A frozen window is skipped outright, before and between retries: every
+    // focus call against it risks blocking the GUI thread, and it could not
+    // take the foreground anyway.
+    if (m_api->isHung(m_target)) {
+        m_lastAcquired = false;
+        qWarning().noquote() << QStringLiteral("Overlay: %1 foreground skipped after %2 attempt(s)"
+                                               " - the target window is not responding")
+                                    .arg(m_phase, QString::number(m_attempts));
+        InputDiagnostics::instance().noteForeground(m_phase, false);
+        emit finished(m_phase, m_target, false, m_attempts);
+        return;
+    }
+
     const int attemptGeneration = m_generation;
     ++m_attempts;
     const bool reported = m_api->forceForeground(m_target);

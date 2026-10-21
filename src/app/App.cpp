@@ -987,8 +987,15 @@ void App::toggleDesktopWindow()
         qInfo() << "Desktop summon: hiding the window, returning focus";
         window->hide();
         if (m_desktopReturnTarget) {
-            m_desktopFocus->acquire(m_desktopReturnTarget, QStringLiteral("desktop hide"));
+            // The window may have closed (and its HWND been recycled) while
+            // the desktop window was up; only hand focus to the same one.
+            if (isSameWindow(*m_foregroundApi, m_desktopReturnTarget, m_desktopReturnPid))
+                m_desktopFocus->acquire(m_desktopReturnTarget, QStringLiteral("desktop hide"));
+            else
+                qInfo() << "Desktop summon: return window" << m_desktopReturnTarget
+                        << "is gone, leaving focus alone";
             m_desktopReturnTarget = nullptr;
+            m_desktopReturnPid = 0;
         }
         return;
     }
@@ -1004,8 +1011,10 @@ void App::toggleDesktopWindow()
         if (current && current != reinterpret_cast<void*>(window->winId()))
             origin = current;
     }
-    if (origin)
+    if (origin) {
         m_desktopReturnTarget = origin;
+        m_desktopReturnPid = m_foregroundApi->windowProcessId(origin);
+    }
     qInfo() << "Desktop summon: showing the window, focus taken from" << m_desktopReturnTarget;
     showWindow();
     m_desktopFocus->acquire(reinterpret_cast<void*>(window->winId()),

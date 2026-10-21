@@ -827,9 +827,23 @@ void OverlayManager::raiseExternalAppTick()
     EnumWindows(findAppWindow, reinterpret_cast<LPARAM>(&search));
     if (!search.found)
         return;   // not started yet; poll again
+    ForegroundApi& api = m_focusAcquirer->api();
+    // A share app that stopped responding would block every forced attempt
+    // for as long as it is frozen; give up instead of retrying for 8 s.
+    if (api.isHung(search.found)) {
+        qWarning() << "Overlay: share app window is not responding - stopped raising it";
+        m_raiseTimer->stop();
+        return;
+    }
     if (IsIconic(search.found))
         ShowWindow(search.found, SW_RESTORE);
-    m_focusAcquirer->api().forceForeground(search.found);
+    api.forceForeground(search.found);
+    // Stop as soon as the foreground actually moved rather than re-forcing
+    // it on the next tick.
+    if (api.foregroundWindow() == search.found) {
+        qInfo() << "Overlay: share app is in the foreground after" << m_raiseElapsedMs << "ms";
+        m_raiseTimer->stop();
+    }
 }
 
 void OverlayManager::hideInternal(ForegroundReturn returnPolicy)

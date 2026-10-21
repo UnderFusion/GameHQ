@@ -107,9 +107,11 @@ private:
     bool m_pendingOpenGallery = false;
     // Hold-PS desktop summon: the foreground reader, the retrying focus
     // acquirer, and the window the foreground was taken from ("return
-    // address" for the second hold).
+    // address" for the second hold, validated by pid before it is used).
     std::unique_ptr<ForegroundApi> m_foregroundApi;
     ForegroundAcquirer* m_desktopFocus = nullptr;
     void* m_desktopReturnTarget = nullptr;
+    // Owning process of m_desktopReturnTarget, checked before reuse.
+    unsigned long m_desktopReturnPid = 0;
     QQmlApplicationEngine m_engine;
 };

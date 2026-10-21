@@ -12,7 +12,8 @@ class ForegroundApi;
 // retries (50 ms, 150 ms) — SetForegroundWindow denials are often transient
 // (the shell finishing its own transition), but a persistent retry loop
 // would fight the shell, so the budget is fixed and small. There is no
-// busy-wait; between attempts the GUI thread runs normally.
+// busy-wait; between attempts the GUI thread runs normally. A hung
+// (not responding) target is never touched.
 class ForegroundAcquirer : public QObject
 {
     Q_OBJECT
@@ -37,7 +38,8 @@ public:
     static constexpr int kRetryDelaysMs[2] = {50, 150};
 
 signals:
-    // attempts = how many were actually made (1..3).
+    // attempts = how many were actually made (0..3; 0 when the target was
+    // already hung, which is reported as not acquired without touching it).
     void finished(const QString& phase, void* target, bool acquired, int attempts);
 
 private:
