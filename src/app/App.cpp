@@ -4,6 +4,7 @@
 #include "capture/FramePumpService.h"
 #include "capture/ReplayBufferState.h"
 #include "capture/ScreenshotService.h"
+#include "capture/CapturePublisher.h"
 #include "config/CaptureLocations.h"
 #include "config/Paths.h"
 #include "config/ConfigManager.h"
@@ -232,6 +233,8 @@ bool App::init()
             this, [] { ActionCatalog::retranslate(); });
 
     m_locations = std::make_unique<CaptureLocations>(m_config.get());
+    CapturePublisher::setOwnershipJournal(Paths::dataDir()
+                                          + QStringLiteral("/pending-captures.journal"));
     m_startup = std::make_unique<StartupManager>();
     const bool startupEnabled = m_config->value(ConfigKeys::StartupEnabled, false).toBool();
     if (!m_startup->syncOnLaunch(startupEnabled) && startupEnabled) {
