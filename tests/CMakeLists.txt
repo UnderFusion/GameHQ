@@ -966,6 +966,11 @@ gamehq_add_test(tst_logrotation
     tst_logrotation.cpp
     "${CMAKE_SOURCE_DIR}/src/diagnostics/Logger.cpp")
 
+# Crash-dump naming and retention (pure helpers; nothing crashes here).
+gamehq_add_test(tst_crashdump
+    tst_crashdump.cpp
+    "${CMAKE_SOURCE_DIR}/src/diagnostics/CrashDump.cpp")
+
 add_executable(process_identity_fixture process_identity_fixture.cpp)
 target_link_options(process_identity_fixture PRIVATE -static -municode)
 set_target_properties(process_identity_fixture PROPERTIES WIN32_EXECUTABLE FALSE)

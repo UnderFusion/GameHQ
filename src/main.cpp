@@ -25,6 +25,7 @@
 #include "core/PathContainment.h"
 #include "core/ProcessIdentity.h"
 #include "core/UpdateMaintenance.h"
+#include "diagnostics/CrashDump.h"
 #include "diagnostics/Logger.h"
 #include "security/ReleaseTrust.h"
 
@@ -345,6 +346,8 @@ int main(int argc, char* argv[])
     // This copy owns the instance lock, so the log file is now ours to write;
     // everything buffered since startup goes out first.
     Logger::install(Paths::logsDir());
+    // From here an unhandled crash leaves a small local minidump next to the log.
+    CrashDump::install(Paths::logsDir());
 
     // Setup and Uninstall observe this process-lifetime mutex. It is acquired
     // only after QLockFile accepts this copy, so rejected second instances do
