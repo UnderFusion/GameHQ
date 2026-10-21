@@ -79,20 +79,25 @@ void cleanCompletedUpdateArtifacts()
 // A start that cannot continue used to exit with no word at all. Record why,
 // flush the early log buffer to disk so the reason survives, and - unless an
 // automated caller (smoke test, the updater's post-update run) is waiting on
-// this process - tell the user where to look. The dialog text is English-only
-// on purpose: these rare paths have no catalog strings yet, and adding IDs
-// needs the full translation chain (docs/localization/CONTRIBUTING.md).
-int failStartup(int exitCode, const QString& reason, bool interactive,
-                QMessageBox::Icon icon = QMessageBox::Critical,
+// this process - tell the user where to look. `reason` goes to the log in
+// English; `message` is the localized dialog text. Every interactive caller
+// runs after StartupLocalization is initialized, and NativeText falls back to
+// English if the embedded catalogs could not be loaded.
+int failStartup(int exitCode, const QString& reason, const QString& message,
+                bool interactive, QMessageBox::Icon icon = QMessageBox::Critical,
                 const QString& extraLog = {})
 {
     qCritical().noquote() << "Startup:" << reason << "(exit code" << exitCode << ')';
     Logger::install(Paths::logsDir());
     if (!interactive)
         return exitCode;
-    QString text = reason
-        + (extraLog.isEmpty() ? QStringLiteral("\n\nDetails are in the log file:\n")
-                              : QStringLiteral("\n\nDetails are in these log files:\n"))
+    QString text = message + QStringLiteral("\n\n")
+        + NativeText::get(
+            //: Fatal start-up dialog; one or more log file paths follow on the next lines.
+            //% "For details, see:"
+            QT_TRID_NOOP("gamehq.startup.fatal.details_hint"),
+            "For details, see:")
+        + QLatin1Char('\n')
         + QDir::toNativeSeparators(Logger::filePath(Paths::logsDir()));
     if (!extraLog.isEmpty())
         text += QLatin1Char('\n') + QDir::toNativeSeparators(extraLog);
@@ -286,13 +291,13 @@ int main(int argc, char* argv[])
         // itself, so these exits are logged but never block on a dialog.
         if (postUpdateAt + 2 >= arguments.size())
             return failStartup(2, QStringLiteral("The post-update arguments are incomplete."),
-                               false);
+                               {}, false);
         postUpdateVersion = arguments.at(postUpdateAt + 1);
         postUpdateToken = arguments.at(postUpdateAt + 2);
         if (postUpdateVersion != QStringLiteral(GAMEHQ_VERSION)
             || !isPostUpdateTokenPath(postUpdateToken))
             return failStartup(2, QStringLiteral("The post-update arguments do not match this build."),
-                               false);
+                               {}, false);
         postUpdateValidation = true;
     }
 
@@ -302,10 +307,16 @@ int main(int argc, char* argv[])
         const QString updaterLog = Paths::packageRoot() + QStringLiteral("/.update/updater.log");
         const QString recoveryFailed = QStringLiteral(
             "GameHQ could not finish recovering from an interrupted update, so it cannot start.");
+        const QString recoveryFailedMessage = NativeText::get(
+            //: Fatal start-up dialog shown when an interrupted update cannot be recovered.
+            //% "GameHQ could not finish recovering from an interrupted update, so it cannot start."
+            QT_TRID_NOOP("gamehq.startup.fatal.update_recovery_failed"),
+            "GameHQ could not finish recovering from an interrupted update, so it cannot start.");
         if (!QFileInfo(helper).isExecutable() || !QFileInfo(transaction).isFile()) {
             qCritical() << "Startup: interrupted update found but the updater helper or its"
                            " transaction is missing";
-            return failStartup(3, recoveryFailed, !smokeTest, QMessageBox::Critical, updaterLog);
+            return failStartup(3, recoveryFailed, recoveryFailedMessage, !smokeTest,
+                               QMessageBox::Critical, updaterLog);
         }
         // Recovery restarts the previous version itself. Run before taking the
         // app lock so that restarted process is not rejected as a duplicate.
@@ -313,7 +324,8 @@ int main(int argc, char* argv[])
         if (recovery == 0)
             return 0;
         qCritical() << "Startup: update recovery helper exited with" << recovery;
-        return failStartup(3, recoveryFailed, !smokeTest, QMessageBox::Critical, updaterLog);
+        return failStartup(3, recoveryFailed, recoveryFailedMessage, !smokeTest,
+                           QMessageBox::Critical, updaterLog);
     }
     const QString phaseAtStart = updatePhase();
     const bool completedUpdateAtStart = !postUpdateValidation
@@ -325,6 +337,12 @@ int main(int argc, char* argv[])
             Paths::packageRoot().toStdWString());
         if (state.state == maintenance::State::Active)
             return failStartup(4, QStringLiteral(
+                                   "A GameHQ update is being installed. Start GameHQ again "
+                                   "when it has finished."),
+                               NativeText::get(
+                                   //: Start-up dialog shown while the updater is replacing files.
+                                   //% "A GameHQ update is being installed. Start GameHQ again when it has finished."
+                                   QT_TRID_NOOP("gamehq.startup.fatal.update_in_progress"),
                                    "A GameHQ update is being installed. Start GameHQ again "
                                    "when it has finished."),
                                !smokeTest, QMessageBox::Information);
@@ -355,6 +373,12 @@ int main(int argc, char* argv[])
     ApplicationMutex applicationMutex;
     if (!applicationMutex.acquired())
         return failStartup(5, QStringLiteral(
+                               "GameHQ cannot start while another copy of GameHQ or its "
+                               "installer is running."),
+                           NativeText::get(
+                               //: Fatal start-up dialog; another GameHQ copy or Setup/Uninstall holds the application mutex.
+                               //% "GameHQ cannot start while another copy of GameHQ or its installer is running."
+                               QT_TRID_NOOP("gamehq.startup.fatal.another_copy_running"),
                                "GameHQ cannot start while another copy of GameHQ or its "
                                "installer is running."),
                            !smokeTest && !postUpdateValidation);
@@ -414,6 +438,11 @@ int main(int argc, char* argv[])
     // logged the specific reason.
     if (initFailed)
         failStartup(exitCode, QStringLiteral("GameHQ could not start."),
+                    NativeText::get(
+                        //: Fatal start-up dialog shown when application initialization fails.
+                        //% "GameHQ could not start."
+                        QT_TRID_NOOP("gamehq.startup.fatal.init_failed"),
+                        "GameHQ could not start."),
                     !smokeTest && !postUpdateValidation);
     return finish(exitCode);
 }

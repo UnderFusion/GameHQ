@@ -11074,6 +11074,61 @@
           },
           "updated_at": null
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": null,
+          "status": "missing",
+          "provenance": {
+            "kind": "none",
+            "actor": null
+          },
+          "updated_at": null
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -12067,7 +12122,7 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
+          "total": 1101,
           "current": 0,
           "missing": [
             "gamehq.about.enjoying_gamehq",
@@ -13076,6 +13131,11 @@
             "gamehq.share.telegram_integrated.no_runtime",
             "gamehq.share.telegram_integrated.privacy",
             "gamehq.share.title",
+            "gamehq.startup.fatal.another_copy_running",
+            "gamehq.startup.fatal.details_hint",
+            "gamehq.startup.fatal.init_failed",
+            "gamehq.startup.fatal.update_in_progress",
+            "gamehq.startup.fatal.update_recovery_failed",
             "gamehq.startup.portable_import.failed_title",
             "gamehq.startup.portable_import.installed_copy_required",
             "gamehq.startup.portable_import.instance_running",
@@ -24254,6 +24314,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "11393cb89314412e9bcb062372cef5dfeb9a14e3e5bdeb922ac7f9a41ef57d18",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "0376735ff5498261b66cf24e2ed54876af7b0ecfd5a93cafe474b0af7062ff52",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "344ee14b67a60a9e580e41706f1d494b03676f84146c4cc7d18b3abd0e5cdbc8",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "5e7e7435f4b6928dbbde39fa84971ba2dfb88c6ebba285b73504188c141c9ec0",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "ed9f65107b57153f86f08d16fef8102bd1440d3d4998f8775875adb9ccc66711",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -25247,8 +25362,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -36337,6 +36452,61 @@
           },
           "updated_at": null
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "48c03944ad827dd438eb350a5e2afa49d38dfd67218258b89a6a42668c868e77",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "fa90791c3fa01e99236fcaf47c52f68a996c4fc1121df32c7eb38f0a8c0a52e6",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "7d2c0c6543885ac65a3a275ac440be748240a3d1c27a102c73ae20d96b3a5fb6",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "c88938448832494a7b63abcd3a92674bfa9e2d65ee14842a2bf05139352a35e3",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "b20aee2f178d2885832b5ed26b3345fd7b3f4a49a3eb308bd384370c1ebd809e",
+          "status": "human_reviewed",
+          "provenance": {
+            "kind": "source",
+            "actor": "repository"
+          },
+          "updated_at": null
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -37330,8 +37500,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -48420,6 +48590,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "41b430f103a1616097e2b4661cc96897e6eed1aefe1c071dbdc50b59b08908f1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "1e683032c719ab344cf6750faf2e88325717f286084fc085688d9bb7bb066f88",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "4fb552150989267d43f8c137fade97521a0c575cc6cc87470118c695825d46ca",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "f4eed3e6be5708b879fc53888e3631d58a4881a940288303711a23707d997415",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "dfdce3cb398fd1e5ebd34f14246af6f86b5d0dba1dcf578fc42b7b8b927c1a26",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -49413,8 +49638,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -60503,6 +60728,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "41b430f103a1616097e2b4661cc96897e6eed1aefe1c071dbdc50b59b08908f1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "1e683032c719ab344cf6750faf2e88325717f286084fc085688d9bb7bb066f88",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "4fb552150989267d43f8c137fade97521a0c575cc6cc87470118c695825d46ca",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "f4eed3e6be5708b879fc53888e3631d58a4881a940288303711a23707d997415",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "dfdce3cb398fd1e5ebd34f14246af6f86b5d0dba1dcf578fc42b7b8b927c1a26",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -61496,8 +61776,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -72586,6 +72866,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "0162725c28c190c8d5dce1969b58a262daab9cb62b0b6870cf01b183030fd9ad",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "953c86da94e61c0476b42948da6fb50736224e6f139c95f847235f9355421dfc",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "ea37aa657d4f1563077d871ace379802b14b037116ea80928f553537e4002b18",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "6d74d1d69046e3114e65a98f4a5e78b8b975c1a317c2dfe43e1b52ce054fd4d4",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "5481d89c7636e63d9504569e0d2d9b007d2ca8a0a31b1fc4dbddaa7b3ab322de",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -73579,8 +73914,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -84669,6 +85004,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "9b39769bf73fdb71d28685c80639fb9674eae88c42d8f734f90da42103aa7219",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "e4c485ccc014cb623aba850d5ba0c446f1aa2ca0efc19e6251b7274b22addcc6",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "8cf944ecbed56cfdc95c861026417ca9518b28765db2989e5d57df46e68b1421",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "204a3eb55876e1871c8a1f3ba61feaa100c5b9f4c1f32249c5400a74402319dd",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "6caa8e38ecb426b324dcc7e079519b399e64f24e990aa237a53919de4d8d1cc0",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -85662,8 +86052,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -96752,6 +97142,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "1739533db191f7e5aebccd4bfb302b451d2ab1d93cbc4b831bebbf938512a80a",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "242306c519d0564a984f60e8d11cea6ee37506f1fc05b9e400b31571b73d3420",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "d7f67ed85a40f79a5c53db605ed28813151f085021791b7e7d57111547213419",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "c9fa7650a9d6189eb044d11a533d970bda7eaaf5a89bbdd9c7abde0c55b83954",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "87f61520a9d2b68ea71d1e41185e0ab245eb6d808191434e9b5e2877f2612e7d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -97745,8 +98190,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -108835,6 +109280,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "1f252184679171f669ca7530714706f39a79b887e0859eca11c36f73a1105782",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "b56ef73409b4190daf33d0e7e8fe432899f5729fbc7870accbb7d1d7c2129ecf",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "7a98e485d9b0545fb78d75491e0971719a559c8d54507eeb8006685f20cd8602",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "545c72318f07bc525c0b9d46670f4d9d489d6172cb3b63152b8ad555f132a16e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "1ea6a97975444318f467a6907b6f26f5239476113121525b61fbe104c794f57e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -109828,8 +110328,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -120918,6 +121418,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "2a99723bc7fb26ea7719e5f550bb346e1b98b26d9f5b729749be48977828bf30",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "2a7ad0989bf334436d48235ad3bd140f70f9ac50bd6da9b7a46edbe94daba80b",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "44a1a80987ad8f4463cafd65e0b00435240b0eae8bdf391536e8300a13d652e3",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "10cd98861ecc13c9ade31db1ad17f92a08b7a97bafcd4d65219f4930922751f1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "d8f95c49942df890369b5564401a36f63ac1d39aca44224d0de6a63eb56a7995",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -121911,8 +122466,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -133001,6 +133556,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "d0d0407f449397ba85c3ccc7be28a4b3010a0c3340ba00541296716c1f0d5385",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "e8a643610bc05cbae2280ee3b53b1fbc24a411202a7f31d9228e4da0bc2919c1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "76f517e5173cf88a24e2bd70c4a027e55c8f9fc1bd6ef74d2ac15d74426fd471",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "be19bf37e6dc4d6f49b14d4a6e663aac825758241a633a6eccf8b65ed73434d0",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "d79bbba524a3e2b2e037b5b10ef54cbcfdfdc8c1c2bce1811608783bee503f93",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -133994,8 +134604,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -145084,6 +145694,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "0e1ea1017d871af66dc87bab692b3bc739b3e08e21e3862c51eddb332cf258ec",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "c4b0a8c126ae521d97d99c7f29a7309e09abccfd216125713610999291a1d8a4",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "71dca234d5c8235a9e11a970b2b0a31549f2d2d9ec1d5b7a1210135a56101056",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "7a1ef9cdd086c8e750e3af8290bd09a9f666a0ec52e22b9498026bb4bc7b123b",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "98972785fb15b0a136ee96be307760fb0449c02e565516f793634091de2547b6",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -146077,8 +146742,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -157167,6 +157832,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "ae89c99372daaa746e89bb04e39208c09d58bfdc84acbe34cdcd3bc89e9fef92",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "491d39f4c4cae9776a88e5bb703632f500c5d8d2865d2b40c07f43b8d011b446",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "ef692138a43bf9c3b38bc205100fcec009104c5b760379aaf486d23ebbd649d9",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "8d6131107204fa4fb23b7d316e4cc298371fd3b89014e59c8c5623bf65d53680",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "88cb15d5f2ab2c2e12de4f95fb6e2d6640983c5db31db9d4eb41d680deda6020",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -158160,8 +158880,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -169250,6 +169970,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "b5baa834cedab8284b1f86ef2e48efa887020f05579e5c064ae3b91460086561",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "5ef6b8232c665e2f366935f86e7fe75130f996986c4ec464bc757cdea7c8eeee",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "df7b24d372b9b246acca643fc54ba5822c7e471d5100336b5c78eb20ed6279d5",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "90cf0d2362114d00264f2ea3216d2c07b5d8481ef782afe3d16800ad2761c3ec",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "f32ff3d7447bbc5197351df44854b463a2034531d289f0c1e1cf9e8e567fbc67",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -170243,8 +171018,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -181333,6 +182108,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "f0fcca24f25d140167a2cca20381414e78246f390ccc9915f87985567749a0c1",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "a1ca8fc30144b8a4d3a673c4d970c926179e2960d2288ff6c2879924b6b3c947",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "603d01d36d383b42f67f9383e8d186ad8979b0b0edacf8ab04fd4a71a722e503",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "c9f4e8e37a9e5822001df68cd32dabb80e99fd3480831957ae87e2831dc52e29",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "7f2f4e65c1f0094b122b8339e7fa75fb8aa0f2795735350da1a84d5a67879d2c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -182326,8 +183156,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -193416,6 +194246,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "42eac9ab8604c170161c3f5750268795af4a9ad845d2e55a9e134a1f74a3af84",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "60972c6e96ee5fbef99c2a1b3faf62bf45781e7bf7f4e633ccf6be4b3fab5664",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "f11560ae92cff431a2638754814eca11e298d25f25cb1e6f0fc4d3ccb596f47c",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "946bf8058896ee6302bb8613d3bd48b60da0d59f9b3f618c93ce8797c9cf6dce",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "9f8d41a517149b9ee712052327d7508ee83a30f8d68ca20f8728360c71847a9e",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -194409,8 +195294,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
@@ -205499,6 +206384,61 @@
           },
           "updated_at": "2026-09-29T18:00:00Z"
         },
+        "gamehq.startup.fatal.another_copy_running": {
+          "domain": "application",
+          "source_hash": "703a9e1c69c6264ffd40783b441d7aecc0a26a607885daec64e37a3e93c82c4d",
+          "translation_hash": "ce76538ba572e403a4ed69d7fd13870d68f99415469d33632cb873f4a4093f97",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.details_hint": {
+          "domain": "application",
+          "source_hash": "0b529d1d315c9cb721cb420632f985df1ddb0a7014100ebcd809ac44f3417f17",
+          "translation_hash": "3da511b4b69a5c33ef6cd0bac284297f49765c82f6faf2b342d3a4f74559f0aa",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.init_failed": {
+          "domain": "application",
+          "source_hash": "098af9d9558a4f40cafefee55accc5ab67a56b94cfe320890a3f10e9d47ed993",
+          "translation_hash": "716cd4ef30250b1790ce6f49b351163ef5092d0b6890ec3fa3aca082a480b59d",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_in_progress": {
+          "domain": "application",
+          "source_hash": "7110fc0898a1d199850c0a61a83b7893f20d1ac12b50d3356a66ea28542073e5",
+          "translation_hash": "b7f65d9da33dbba0b6bc90cd5cc4a3889ceea4f765555692f2d82a948393dc20",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        "gamehq.startup.fatal.update_recovery_failed": {
+          "domain": "application",
+          "source_hash": "ec03bac8b10ec33ab5a3703d7cf7c97d5ec92569dbff9aabb21d13bddc2a32ae",
+          "translation_hash": "51b5ffea983d9b404ba47c81b1dbaa085570ab0f17ac293290663b903a92f915",
+          "status": "contextually_reviewed",
+          "provenance": {
+            "kind": "agent",
+            "actor": "claude-aud-review-startup-dialogs"
+          },
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
         "gamehq.startup.portable_import.failed_title": {
           "domain": "application",
           "source_hash": "9a8dc74fb7ef66307eb413ad809dd8614868ad3981cdc24e1f12aae6fc92c90c",
@@ -206492,8 +207432,8 @@
       },
       "completeness": {
         "application": {
-          "total": 1096,
-          "current": 1096,
+          "total": 1101,
+          "current": 1101,
           "missing": [],
           "stale": []
         },
