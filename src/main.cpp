@@ -297,41 +297,54 @@ int main(int argc, char* argv[])
     if (!applicationMutex.acquired())
         return 5;
 
-    App app;
-    app.setPostUpdateValidation(postUpdateValidation);
-    if (!app.init())
-        return 1;
+    // The session marker says "this run never reached an orderly shutdown".
+    // It goes only after App and everything it owns are destroyed, so a crash
+    // anywhere in teardown still shows up as a crash on the next launch.
+    const auto finish = [](int exitCode) {
+        QFile::remove(Paths::dataDir() + QStringLiteral("/session.marker"));
+        return exitCode;
+    };
+    int exitCode = 0;
+    {
+        App app;
+        app.setPostUpdateValidation(postUpdateValidation);
+        // A failed init still tears App down before the marker goes.
+        if (!app.init()) {
+            exitCode = 1;
+        } else {
+            // Local/CI packaged-layout acceptance: exercise normal initialization,
+            // enter the Qt event loop, then take the same orderly teardown path as the
+            // tray Exit action. The session marker and log prove destruction ran.
+            if (smokeTest)
+                QTimer::singleShot(2000, &qtApp, &QCoreApplication::quit);
 
-    // Local/CI packaged-layout acceptance: exercise normal initialization,
-    // enter the Qt event loop, then take the same orderly teardown path as the
-    // tray Exit action. The session marker and log prove destruction ran.
-    if (smokeTest)
-        QTimer::singleShot(2000, &qtApp, &QCoreApplication::quit);
-
-    if (postUpdateValidation) {
-        QTimer::singleShot(7000, &app, [&app, postUpdateVersion, postUpdateToken] {
-            // Persist the one-time greeting before publishing health: a token
-            // means all post-update bookkeeping is durable too.
-            app.recordPostUpdateSuccess(postUpdateVersion);
-            QSaveFile token(postUpdateToken);
-            const QByteArray contents = postUpdateVersion.toUtf8() + '\n';
-            if (!token.open(QIODevice::WriteOnly)
-                || token.write(contents) != contents.size()
-                || !token.commit()) {
-                qCritical() << "Post-update validation could not publish its health token";
-                return;
+            if (postUpdateValidation) {
+                QTimer::singleShot(7000, &app, [&app, postUpdateVersion, postUpdateToken] {
+                    // Persist the one-time greeting before publishing health: a token
+                    // means all post-update bookkeeping is durable too.
+                    app.recordPostUpdateSuccess(postUpdateVersion);
+                    QSaveFile token(postUpdateToken);
+                    const QByteArray contents = postUpdateVersion.toUtf8() + '\n';
+                    if (!token.open(QIODevice::WriteOnly)
+                        || token.write(contents) != contents.size()
+                        || !token.commit()) {
+                        qCritical() << "Post-update validation could not publish its health token";
+                        return;
+                    }
+                    qInfo() << "Post-update validation succeeded for" << postUpdateVersion;
+                    app.completePostUpdateValidation();
+                });
+            } else if (completedUpdateAtStart) {
+                // Retain rollback material through the first validation run. Only a
+                // subsequent start that also survives seven seconds may discard it.
+                QTimer::singleShot(7000, &app, [] {
+                    cleanCompletedUpdateArtifacts();
+                    qInfo() << "Previous update recovery artifacts cleaned after a second healthy start";
+                });
             }
-            qInfo() << "Post-update validation succeeded for" << postUpdateVersion;
-            app.completePostUpdateValidation();
-        });
-    } else if (completedUpdateAtStart) {
-        // Retain rollback material through the first validation run. Only a
-        // subsequent start that also survives seven seconds may discard it.
-        QTimer::singleShot(7000, &app, [] {
-            cleanCompletedUpdateArtifacts();
-            qInfo() << "Previous update recovery artifacts cleaned after a second healthy start";
-        });
-    }
 
-    return qtApp.exec();
+            exitCode = qtApp.exec();
+        }
+    }
+    return finish(exitCode);
 }

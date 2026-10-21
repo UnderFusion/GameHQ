@@ -123,9 +123,18 @@ App::App(QObject* parent)
 
 App::~App()
 {
+    // Teardown runs in a fixed order. Members are destroyed in reverse
+    // declaration order, so the input engine and capture go before the
+    // overlay; anything that points across that boundary is detached here.
+    // 1. No new events from the game detector's external context.
     GameDetector::setExternalContext(nullptr);
-    // Orderly teardown reached: the next launch should not report a crash.
-    QFile::remove(Paths::dataDir() + QStringLiteral("/session.marker"));
+    // 2. Finish the overlay's close handoff while the input engine it
+    //    quiesced is still alive, and detach it so ~OverlayManager cannot
+    //    reach the destroyed engine.
+    if (m_overlay)
+        m_overlay->setNeutralHandoffSource(nullptr);
+    // 3. Input and capture stop in their own destructors. The session marker
+    //    is removed by main() only after all of this has finished.
 }
 
 void App::setPostUpdateValidation(bool enabled)

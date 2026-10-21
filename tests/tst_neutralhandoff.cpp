@@ -142,6 +142,7 @@ private slots:
     void aWaitStopsWhenAnotherPathRestoresThePolicy();
     void aRepeatedBeginNeverRestartsTheWait();
     void cancelStopsTheWaitWithoutReleasingThePolicy();
+    void detachingTheSourceEndsTheWaitAndNeverReachesItAgain();
 };
 
 void NeutralHandoffTest::init()
@@ -551,6 +552,38 @@ void NeutralHandoffTest::cancelStopsTheWaitWithoutReleasingThePolicy()
 
     // ... and the input layer is not left quiesced by a close that went away.
     QVERIFY(source.quiescedOnThenOff());
+}
+
+// Shutdown detaches the input engine before destroying it. A close still
+// waiting must end on the old source, and nothing may reach it afterwards.
+void NeutralHandoffTest::detachingTheSourceEndsTheWaitAndNeverReachesItAgain()
+{
+    CountingFocusSink sink;
+    sink.requestExclusiveForeground(QStringLiteral("test"));
+    ScriptedSource source;
+    source.attachSink(&sink);
+    source.setSample(1, QStringLiteral("gamepad.cross"));
+
+    NeutralHandoffRunner runner;
+    runner.setBoundForTesting(2000, 5);
+    runner.setPolicySink(&sink);
+    runner.setSource(&source);
+
+    runner.begin(QStringLiteral("the overlay closed"));
+    QVERIFY(runner.running());
+
+    runner.setSource(nullptr);
+    QVERIFY(!runner.running());
+    QVERIFY(source.quiescedOnThenOff());
+    const int samples = source.samples();
+
+    // What ~OverlayManager does later, and any stray timer tick.
+    runner.cancel();
+    QTest::qWait(30);
+    runner.begin(QStringLiteral("a close after detach"));
+    QVERIFY(!runner.running());
+    QCOMPARE(source.quiescedCalls().size(), 2);
+    QCOMPARE(source.samples(), samples);
 }
 
 QTEST_MAIN(NeutralHandoffTest)
