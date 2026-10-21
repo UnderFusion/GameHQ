@@ -7,6 +7,8 @@
 #include <QTemporaryDir>
 #include <QTest>
 
+#include <windows.h>
+
 using telegram::TdRuntime;
 
 // t22: the optional TDLib runtime is only ever loaded when it is the pinned
@@ -66,6 +68,25 @@ private slots:
         QCOMPARE(rt.api().createClientId(), 1);
         // Idempotent.
         QCOMPARE(rt.load(), TdRuntime::Status::Ready);
+    }
+
+    // aud-b9 follow-up: a transport worker can still be inside td_receive
+    // after its transport and runtime are gone. A Ready runtime pins the
+    // module, so even unbalanced FreeLibrary calls cannot unmap it.
+    void readyRuntimeStaysMappedAfterDestructionAndFree()
+    {
+        const QString path = fake("fake_tdjson_ok");
+        {
+            TdRuntime rt(path, TdRuntime::sha256OfFile(path), QStringLiteral("1.8.67"));
+            QCOMPARE(rt.load(), TdRuntime::Status::Ready);
+        }
+        const std::wstring native = QDir::toNativeSeparators(path).toStdWString();
+        HMODULE module = GetModuleHandleW(native.c_str());
+        QVERIFY(module);
+        for (int i = 0; i < 16; ++i)
+            FreeLibrary(module);
+        QCOMPARE(GetModuleHandleW(native.c_str()), module);
+        QVERIFY(GetProcAddress(module, "td_receive"));
     }
 
     void wrongVersionIsIncompatible()
