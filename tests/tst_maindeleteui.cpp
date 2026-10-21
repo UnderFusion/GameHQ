@@ -1,5 +1,6 @@
 // Focused harness: extract Main.qml input and bulk-delete handlers into a
-// synthetic window with the real ConfirmDialog and BulkSelection. This is not a
+// synthetic window with the real ConfirmDialog, BulkSelection and
+// DesktopPadRouter (which routes the controller signals). This is not a
 // full Main.qml integration test. The application/gallery boundary is stubbed;
 // delete effects use files.
 #include <QFile>
@@ -50,6 +51,11 @@ signals:
     void desktopSettings();
     void desktopZoom(int direction);
     void desktopBulkToggle();
+    // Routed by DesktopPadRouter too; declared so it connects to every handler.
+    void desktopScroll(int direction);
+    void playbackPlayPause();
+    void playbackSeek(int direction);
+    void frameGrabRequested();
 };
 
 class MainDeleteUiTest : public QObject
@@ -211,7 +217,8 @@ Window {
     }
 )qml";
         for (const auto& name : {"padNavigate", "padNavigateVertical", "padConfirm", "padBack",
-                                 "confirmDialogOpen", "bulkCount", "bulkIsChecked", "bulkAllSelected",
+                                 "activeConfirmDialog", "confirmDialogOpen", "activeModal",
+                                 "bulkCount", "bulkIsChecked", "bulkAllSelected",
                                  "bulkToggle", "bulkClear", "bulkEnter", "bulkExit", "openSettings",
                                  "padBulkToggle", "bulkSelectAll", "bulkRows", "bulkAskDelete",
                                  "bulkConfirmDelete", "padTabStep", "padFavorite", "padToggleMenu"}) {
@@ -219,15 +226,9 @@ Window {
             QVERIFY2(!function.isEmpty(), name);
             harness += function.toUtf8() + '\n';
         }
-        harness += "Connections { target: boundary\n";
-        for (const auto& name : {"onDesktopNavigate", "onDesktopNavigateVertical", "onDesktopConfirm",
-                                 "onDesktopBack", "onDesktopFavorite", "onDesktopMenu", "onDesktopTabStep",
-                                 "onDesktopSettings", "onDesktopZoom", "onDesktopBulkToggle"}) {
-            const QString function = productionFunction(source, QString::fromUtf8(name));
-            QVERIFY2(!function.isEmpty(), name);
-            harness += function.toUtf8() + '\n';
-        }
-        harness += "}\n}";
+        // The production router, wired the way Main.qml wires it.
+        QVERIFY(source.contains(QStringLiteral("DesktopPadRouter {")));
+        harness += "DesktopPadRouter { target: boundary; host: window; viewer: lightbox }\n}";
         m_engine.addImportPath(QStringLiteral(GAMEHQ_SOURCE_DIR "/tests/qml/imports"));
         m_engine.rootContext()->setContextProperty(QStringLiteral("boundary"), &m_boundary);
         m_engine.rootContext()->setContextProperty(QStringLiteral("sounds"), &m_boundary);

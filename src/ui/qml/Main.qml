@@ -432,8 +432,27 @@ ApplicationWindow {
 
     // A delete confirmation owns all input while it is visible: nothing behind
     // it may change the selection, open menus or switch pages.
+    function activeConfirmDialog() {
+        if (deleteDialog.visible)
+            return deleteDialog
+        return bulkDeleteDialog.visible ? bulkDeleteDialog : null
+    }
+
     function confirmDialogOpen() {
-        return deleteDialog.visible || bulkDeleteDialog.visible
+        return window.activeConfirmDialog() !== null
+    }
+
+    // The in-window modal that owns pad input, or null: a delete
+    // confirmation, then Help, then About / What's New. Background shortcuts
+    // are dropped while one is up. Share and the lightbox are routed before
+    // any of this runs (DesktopPadRouter).
+    function activeModal() {
+        const confirm = window.activeConfirmDialog()
+        if (confirm)
+            return confirm
+        if (helpDialog.visible)
+            return helpDialog
+        return aboutDialog.visible ? aboutDialog : null
     }
 
     function bulkToggle(index, extendRange) {
@@ -744,8 +763,8 @@ ApplicationWindow {
     }
 
     function padNavigate(direction) {
-        if (deleteDialog.visible) { deleteDialog.padHorizontal(direction); return }
-        if (bulkDeleteDialog.visible) { bulkDeleteDialog.padHorizontal(direction); return }
+        const confirm = window.activeConfirmDialog()
+        if (confirm) { confirm.padHorizontal(direction); return }
         if (window.sidebarLanguageListOpen())
             return
         if (helpDialog.visible)
@@ -817,8 +836,8 @@ ApplicationWindow {
     }
 
     function padNavigateVertical(direction) {
-        if (deleteDialog.visible) { deleteDialog.padStep(direction); return }
-        if (bulkDeleteDialog.visible) { bulkDeleteDialog.padStep(direction); return }
+        const confirm = window.activeConfirmDialog()
+        if (confirm) { confirm.padStep(direction); return }
         if (window.sidebarLanguageListOpen()) {
             desktopSidebar.languageCombo.padStep(direction)
             sounds.play("nav_tick")
@@ -887,7 +906,7 @@ ApplicationWindow {
                 aboutDialog.padVertical(direction)
             return
         }
-        if (deleteDialog.visible || bulkDeleteDialog.visible)
+        if (window.confirmDialogOpen())
             return
         if (window.settingsOpen) {
             settingsView.padScroll(direction)
@@ -900,8 +919,8 @@ ApplicationWindow {
     }
 
     function padConfirm() {
-        if (deleteDialog.visible) { deleteDialog.padConfirm(); return }
-        if (bulkDeleteDialog.visible) { bulkDeleteDialog.padConfirm(); return }
+        const confirm = window.activeConfirmDialog()
+        if (confirm) { confirm.padConfirm(); return }
         if (window.sidebarLanguageListOpen()) {
             sounds.play("confirm")
             desktopSidebar.languageCombo.padCommitHighlighted()
@@ -937,9 +956,7 @@ ApplicationWindow {
     }
 
     function padFavorite() {
-        if (window.confirmDialogOpen())
-            return
-        if (aboutDialog.visible || window.menuOpen || window.settingsOpen || window.helpOpen)
+        if (window.activeModal() || window.menuOpen || window.settingsOpen || window.helpOpen)
             return
         if (window.sidebarFocused) {
             window.toggleSidebarGamePin(window.sidebarHoverIndex)
@@ -954,9 +971,7 @@ ApplicationWindow {
     }
 
     function padToggleMenu() {
-        if (window.confirmDialogOpen())
-            return
-        if (aboutDialog.visible || helpDialog.visible || window.settingsOpen || grid.count === 0)
+        if (window.activeModal() || window.settingsOpen || grid.count === 0)
             return
         if (window.sidebarFocused)
             return  // action menu only acts on a grid tile
@@ -1013,8 +1028,8 @@ ApplicationWindow {
     }
 
     function padBack() {
-        if (deleteDialog.visible) { deleteDialog.padBack(); return }
-        if (bulkDeleteDialog.visible) { bulkDeleteDialog.padBack(); return }
+        const confirm = window.activeConfirmDialog()
+        if (confirm) { confirm.padBack(); return }
         if (window.sidebarLanguageListOpen()) { window.closeSidebarLanguageList(); return }
         if (helpDialog.visible) { helpDialog.close(); return }
         if (aboutDialog.visible) { aboutDialog.close(); return }
@@ -1035,126 +1050,16 @@ ApplicationWindow {
         } else if (window.menuOpen) {
             window.menuOpen = false
         } else if (lightbox.visible) {
-            if (lightbox.visible)
-                lightbox.close()
+            lightbox.close()
         }
     }
 
-    Connections {
+    // Controller commands: Share, then the lightbox, then the pad* handlers
+    // above (see DesktopPadRouter).
+    DesktopPadRouter {
         target: input
-        function onDesktopNavigate(direction) {
-            if (window.activeShareDialog()) { window.usingGamepad = true; return }
-            window.usingGamepad = true
-            if (lightbox.visible) {
-                lightbox.padNavigate(direction)
-                return
-            }
-            window.padNavigate(direction)
-        }
-        function onDesktopNavigateVertical(direction) {
-            const share = window.activeShareDialog()
-            if (share) { window.usingGamepad = true; share.padNavigate(direction); return }
-            window.usingGamepad = true
-            if (lightbox.visible) {
-                lightbox.padReveal()
-                return
-            }
-            window.padNavigateVertical(direction)
-        }
-        function onDesktopConfirm() {
-            const share = window.activeShareDialog()
-            if (share) { window.usingGamepad = true; share.padConfirm(); return }
-            window.usingGamepad = true
-            if (lightbox.visible) {
-                lightbox.padConfirm()
-                return
-            }
-            window.padConfirm()
-        }
-        function onDesktopFavorite() {
-            if (window.activeShareDialog()) return   // Share is modal
-            window.usingGamepad = true
-            if (lightbox.visible) {
-                lightbox.padReveal()
-                lightbox.toggleFavorite()
-                return
-            }
-            window.padFavorite()
-        }
-        function onDesktopMenu() {
-            window.usingGamepad = true
-            if (window.activeShareDialog())
-                return   // Share is modal
-            if (lightbox.visible) {
-                lightbox.openShare()
-                return
-            }
-            window.padToggleMenu()
-        }
-        function onDesktopTabStep(direction) {
-            if (window.activeShareDialog()) return   // Share is modal
-            window.usingGamepad = true
-            if (lightbox.visible) {
-                lightbox.padStep(direction)
-                return
-            }
-            window.padTabStep(direction)
-        }
-        function onDesktopBack() {
-            window.usingGamepad = true
-            const share = window.activeShareDialog()
-            if (share) { share.padBack(); return }
-            window.padBack()
-        }
-        function onDesktopSettings() {
-            if (window.activeShareDialog()) return   // Share is modal
-            window.usingGamepad = true
-            if (lightbox.visible || aboutDialog.visible || helpDialog.visible
-                    || window.confirmDialogOpen())
-                return
-            window.openSettings()
-        }
-        function onDesktopZoom(direction) {
-            if (window.activeShareDialog()) return   // Share is modal
-            window.usingGamepad = true
-            if (lightbox.visible || aboutDialog.visible || window.settingsOpen || window.helpOpen
-                    || window.confirmDialogOpen())
-                return
-            if (direction > 0)
-                window.zoomIn()
-            else
-                window.zoomOut()
-        }
-        function onDesktopScroll(direction) {
-            if (window.activeShareDialog()) return   // Share is modal
-            window.usingGamepad = true
-            if (lightbox.visible)
-                return
-            window.padScroll(direction)
-        }
-        function onDesktopBulkToggle() {
-            if (window.activeShareDialog()) return   // Share is modal
-            window.usingGamepad = true
-            if (lightbox.visible || aboutDialog.visible || window.settingsOpen || window.helpOpen)
-                return
-            window.padBulkToggle()
-        }
-        function onPlaybackPlayPause() {
-            if (window.activeShareDialog()) return   // Share is modal
-            if (lightbox.visible)
-                lightbox.toggleVideoPlayback()
-        }
-        function onPlaybackSeek(direction) {
-            if (window.activeShareDialog()) return   // Share is modal
-            if (lightbox.visible)
-                lightbox.padNavigate(direction)
-        }
-        // Share on a focused clip in the lightbox: save the on-screen frame.
-        function onFrameGrabRequested() {
-            if (window.activeShareDialog()) return   // Share is modal
-            if (lightbox.visible)
-                lightbox.saveCurrentFrame()
-        }
+        host: window
+        viewer: lightbox
     }
 
     Connections {

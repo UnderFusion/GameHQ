@@ -61,7 +61,9 @@ private slots:
         QJSEngine js;
         js.evaluate(QStringLiteral(
             "var events=[]; var window={sidebarLanguageListOpen:function(){return true;},"
-            "closeSidebarLanguageList:function(){events.push('close');}};"
+            "closeSidebarLanguageList:function(){events.push('close');},"
+            // No delete confirmation is up; it would outrank the list (aud-a10).
+            "activeConfirmDialog:function(){return null;},confirmDialogOpen:function(){return false;}};"
             "var desktopSidebar={languageCombo:{padStep:function(d){events.push(d);},"
             "padCommitHighlighted:function(){events.push('commit');}}}; var sounds={play:function(){}};"));
         const auto main = source("src/ui/qml/Main.qml");

@@ -225,6 +225,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/DesktopGalleryHeader.qml
         ui/qml/components/DesktopGalleryFooter.qml
         ui/qml/components/DesktopGalleryGrid.qml
+        ui/qml/components/DesktopPadRouter.qml
         ui/qml/components/DesktopEmptyState.qml
         ui/qml/components/OverlaySidebar.qml
         ui/qml/components/OverlayCaptureStrip.qml
