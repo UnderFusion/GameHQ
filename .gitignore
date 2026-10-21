@@ -26,6 +26,8 @@ Clips/
 *.sqlite
 *.sqlite3
 *.mp4
+# Synthetic 64x64 test clip (see tests/fixtures/replay-thumbnail.txt), not a recording.
+!tests/fixtures/replay-thumbnail.mp4
 *.mkv
 *.mov
 *.avi
