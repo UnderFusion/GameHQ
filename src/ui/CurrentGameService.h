@@ -28,7 +28,11 @@ public:
     QString currentGameName() const;
 
     bool syncToForegroundGame();
-    bool update(const QString& gameName, const QString& executablePath);
+    // Three separate questions: what is in the foreground (gameName), is it a
+    // game (recognizedGame: heuristic or external identity), and is it already
+    // a library game (a row with that identity). Only a recognized game may
+    // create a row; a browser or editor in front never does.
+    bool update(const QString& gameName, const QString& executablePath, bool recognizedGame);
 
 private:
     static constexpr int kClearAfterMisses = 3;

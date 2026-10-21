@@ -1564,7 +1564,8 @@ void FramePumpService::autoTick()
     const ForegroundGame g = GameDetector::current();
     const bool isGame = GameDetector::shouldCapture(g, mode);
     if (g.valid && !g.isExcludedProcess)
-        emit foregroundGameDetected(g.gameName, g.executablePath);
+        emit foregroundGameDetected(g.gameName, g.executablePath,
+                                    g.isGame || g.hasExternalIdentity);
     if (m_autoEnabled && isGame) {
         m_noGameTicks = 0;
         if (!m_owners.owns(ReplayBufferOwners::Auto)) {
@@ -1581,7 +1582,7 @@ void FramePumpService::autoTick()
         }
     } else {
         if (!g.valid || g.isExcludedProcess)
-            emit foregroundGameDetected(QString(), QString());
+            emit foregroundGameDetected(QString(), QString(), false);
         if (m_owners.owns(ReplayBufferOwners::Auto) && ++m_noGameTicks >= 2) {
             m_owners.setAuto(false);
             ownersChanged("auto released after foreground grace");

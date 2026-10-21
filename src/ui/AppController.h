@@ -190,7 +190,8 @@ public:
                                     const QString& thumbnailPath,
                                     const QString& executablePath = QString());
     void rememberGameExecutable(const QString& gameName, const QString& executablePath);
-    void updateForegroundGame(const QString& gameName, const QString& executablePath);
+    void updateForegroundGame(const QString& gameName, const QString& executablePath,
+                              bool recognizedGame);
     // Confirmed replay state; the compatibility bool is derived from this enum.
     void updateReplayBufferState(ReplayBufferState::State state, const QString& gameName);
     void retranslate();

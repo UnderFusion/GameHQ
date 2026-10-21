@@ -174,7 +174,11 @@ signals:
     void hdrScreenshotReady(const QImage& image, const QString& gameName,
                             const QString& executablePath, quint64 operationId = 0);
     void hdrScreenshotFailed(const QString& reason, quint64 operationId = 0);
-    void foregroundGameDetected(const QString& gameName, const QString& executablePath);
+    // Every valid, non-excluded foreground window. `recognizedGame` says
+    // whether it passes the game heuristic or has an external game identity;
+    // only such a window may become a new library game row.
+    void foregroundGameDetected(const QString& gameName, const QString& executablePath,
+                                bool recognizedGame);
     // Rolling buffer armed/disarmed — drives the Settings "buffer state" row.
     void recordingStateChanged(bool active, const QString& gameName);
     void bufferStateChanged(ReplayBufferState::State state, const QString& gameName);

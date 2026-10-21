@@ -754,9 +754,10 @@ void AppController::saveVideoFrame(QObject* videoSink, const QString& gameName,
     m_screenshots->saveImage(frame, gameName, executablePath);
 }
 
-void AppController::updateForegroundGame(const QString& gameName, const QString& executablePath)
+void AppController::updateForegroundGame(const QString& gameName, const QString& executablePath,
+                                         bool recognizedGame)
 {
-    const bool stateChanged = m_currentGame->update(gameName, executablePath);
+    const bool stateChanged = m_currentGame->update(gameName, executablePath, recognizedGame);
     if (stateChanged) {
         emit currentGameChanged();
         emit overlayGameChanged();
@@ -861,7 +862,8 @@ CaptureCommitOutcome AppController::commitCapture(const QString& filePath, const
 {
     const CaptureCommitOutcome outcome =
         m_captureLibrary->commitCapture(filePath, type, gameName, executablePath);
-    const bool stateChanged = m_currentGame->update(gameName, executablePath);
+    // The capture just made this a library game, so it may own a row.
+    const bool stateChanged = m_currentGame->update(gameName, executablePath, true);
     if (stateChanged) {
         emit currentGameChanged();
         emit overlayGameChanged();
@@ -876,7 +878,8 @@ CaptureCommitOutcome AppController::commitClip(const QString& filePath, const QS
 {
     const CaptureCommitOutcome outcome =
         m_captureLibrary->commitClip(filePath, gameName, thumbnailPath, executablePath);
-    const bool stateChanged = m_currentGame->update(gameName, executablePath);
+    // The capture just made this a library game, so it may own a row.
+    const bool stateChanged = m_currentGame->update(gameName, executablePath, true);
     if (stateChanged) {
         emit currentGameChanged();
         emit overlayGameChanged();

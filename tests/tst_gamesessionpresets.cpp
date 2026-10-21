@@ -216,6 +216,7 @@ private slots:
     void missingGameAssignmentIsVisibleInSettings();
     void sessionRefreshNeverSwitchesOnItsOwn();
     void sameGameLearnsItsExecutableWithoutATransition();
+    void anUnrecognizedForegroundWindowNeverBecomesAGame();
     void diagnosticsExportCarriesTheLiveMappingState();
 };
 
@@ -288,20 +289,20 @@ void GameSessionPresetTest::sessionKeyFollowsTheRunningGame()
     QCOMPARE(session->currentGameExecutableKey(), QString());
     QCOMPARE(session->currentGameName(), QString());
 
-    QVERIFY(session->update(QStringLiteral("Alpha"), alpha));
+    QVERIFY(session->update(QStringLiteral("Alpha"), alpha, true));
     QCOMPARE(session->currentGameExecutableKey(),
              MappingAssignmentResolver::canonicalGameKey(alpha));
     QCOMPARE(session->currentGameName(), QStringLiteral("Alpha"));
 
-    QVERIFY(session->update(QStringLiteral("Beta"), beta));
+    QVERIFY(session->update(QStringLiteral("Beta"), beta, true));
     QCOMPARE(session->currentGameExecutableKey(),
              MappingAssignmentResolver::canonicalGameKey(beta));
 
     // Back to no game in the foreground, and the game is not running either: the
     // session clears after the documented foreground-miss grace.
-    QVERIFY(!session->update(QString(), QString()));
-    QVERIFY(!session->update(QString(), QString()));
-    QVERIFY(session->update(QString(), QString()));
+    QVERIFY(!session->update(QString(), QString(), false));
+    QVERIFY(!session->update(QString(), QString(), false));
+    QVERIFY(session->update(QString(), QString(), false));
     QCOMPARE(session->currentGameExecutableKey(), QString());
     QCOMPARE(session->currentGameName(), QString());
 }
@@ -323,7 +324,7 @@ void GameSessionPresetTest::overlayOpenKeepsTheGameContext()
     QVERIFY(!groupPreset.isEmpty());
     assignGroupDefault(kController, groupPreset);
 
-    QVERIFY(session->update(QStringLiteral("SelfGame"), self));
+    QVERIFY(session->update(QStringLiteral("SelfGame"), self, true));
     syncSession();
     QCOMPARE(engine->runningGameKey(), MappingAssignmentResolver::canonicalGameKey(self));
     QCOMPARE(engine->mappingEffectiveSource(kController, profile), QStringLiteral("game"));
@@ -334,7 +335,7 @@ void GameSessionPresetTest::overlayOpenKeepsTheGameContext()
     // user browses. The game process is still running.
     engine->setOverlayVisible(true);
     for (int tick = 0; tick < 6; ++tick) {
-        session->update(QString(), QString());
+        session->update(QString(), QString(), false);
         syncSession();
         QCOMPARE(engine->runningGameKey(), MappingAssignmentResolver::canonicalGameKey(self));
         QCOMPARE(engine->mappingEffectiveSource(kController, profile), QStringLiteral("game"));
@@ -360,7 +361,7 @@ void GameSessionPresetTest::diagnosticsExportCarriesTheLiveMappingState()
                                                  ControlId::FaceSouth);
     QVERIFY(!gamePreset.isEmpty());
 
-    QVERIFY(session->update(QStringLiteral("SelfGame"), self));
+    QVERIFY(session->update(QStringLiteral("SelfGame"), self, true));
     syncSession();
     QCOMPARE(engine->mappingEffectiveSource(kController, profile), QStringLiteral("game"));
 
@@ -395,7 +396,7 @@ void GameSessionPresetTest::gameChangeSwitchesAtTheSeam()
                                                  ControlId::FaceSouth);
     QVERIFY(!betaPreset.isEmpty());
 
-    QVERIFY(session->update(QStringLiteral("Alpha"), alpha));
+    QVERIFY(session->update(QStringLiteral("Alpha"), alpha, true));
     syncSession();
     QCOMPARE(engine->mappingInstalledPresetId(kController, profile), alphaPreset);
     QVERIFY(tableBinds(kController, profile, QStringLiteral("global.screenshot"),
@@ -404,7 +405,7 @@ void GameSessionPresetTest::gameChangeSwitchesAtTheSeam()
     // A press held while the game changes is gated: it must not act under the new
     // game's table (the switch boundary, not a table swap).
     pad->buttons(1u << Gamepad::Cross);
-    QVERIFY(session->update(QStringLiteral("Beta"), beta));
+    QVERIFY(session->update(QStringLiteral("Beta"), beta, true));
     syncSession();
     QCOMPARE(engine->mappingInstalledPresetId(kController, profile), betaPreset);
     QCOMPARE(engine->mappingEffectiveSource(kController, profile), QStringLiteral("game"));
@@ -430,20 +431,20 @@ void GameSessionPresetTest::gameExitRevealsTheLowerWinner()
     QVERIFY(!groupPreset.isEmpty());
     assignGroupDefault(kController, groupPreset);
 
-    QVERIFY(session->update(QStringLiteral("Alpha"), alpha));
+    QVERIFY(session->update(QStringLiteral("Alpha"), alpha, true));
     syncSession();
     QCOMPARE(engine->mappingEffectiveSource(kController, profile), QStringLiteral("game"));
     QCOMPARE(engine->mappingInstalledPresetId(kController, profile), gamePreset);
 
     // The game exits: the foreground leaves it and the process is gone.
-    QVERIFY(!session->update(QString(), QString()));
+    QVERIFY(!session->update(QString(), QString(), false));
     syncSession();
     QCOMPARE(engine->runningGameKey(), MappingAssignmentResolver::canonicalGameKey(alpha));
     QCOMPARE(engine->mappingInstalledPresetId(kController, profile), gamePreset);
 
-    QVERIFY(!session->update(QString(), QString()));
+    QVERIFY(!session->update(QString(), QString(), false));
     syncSession();
-    QVERIFY(session->update(QString(), QString()));
+    QVERIFY(session->update(QString(), QString(), false));
     syncSession();
     QCOMPARE(session->currentGameExecutableKey(), QString());
     QCOMPARE(engine->runningGameKey(), QString());
@@ -477,13 +478,13 @@ void GameSessionPresetTest::gameExitRevealsTheTypedControllerAssignment()
     QVERIFY(db->setMappingAssignment(kController, QStringLiteral("legacy_slot"),
                                      QStringLiteral("xinput.slot0"), slotPreset));
 
-    QVERIFY(session->update(QStringLiteral("Alpha"), alpha));
+    QVERIFY(session->update(QStringLiteral("Alpha"), alpha, true));
     syncSession();
     QCOMPARE(engine->mappingInstalledPresetId(kController, profile), gamePreset);
 
-    session->update(QString(), QString());
-    session->update(QString(), QString());
-    session->update(QString(), QString());
+    session->update(QString(), QString(), false);
+    session->update(QString(), QString(), false);
+    session->update(QString(), QString(), false);
     syncSession();
     QCOMPARE(session->currentGameExecutableKey(), QString());
     QCOMPARE(engine->mappingEffectiveSource(kController, profile), QStringLiteral("controller"));
@@ -507,7 +508,7 @@ void GameSessionPresetTest::brokenGameAssignmentFallsThroughAndReportsStale()
     QVERIFY(!groupPreset.isEmpty());
     assignGroupDefault(kController, groupPreset);
 
-    QVERIFY(session->update(QStringLiteral("Alpha"), alpha));
+    QVERIFY(session->update(QStringLiteral("Alpha"), alpha, true));
     syncSession();
     QCOMPARE(engine->mappingInstalledPresetId(kController, profile), gamePreset);
 
@@ -550,7 +551,7 @@ void GameSessionPresetTest::missingGameAssignmentIsVisibleInSettings()
     QVERIFY(!model->gameAvailable());
     QVERIFY(model->gameAssignedToFallback());
 
-    QVERIFY(session->update(QStringLiteral("Alpha"), alpha));
+    QVERIFY(session->update(QStringLiteral("Alpha"), alpha, true));
     model->refreshGameTarget();
     QVERIFY(model->gameAvailable());
     QCOMPARE(model->gameLabel(), QStringLiteral("Alpha"));
@@ -587,7 +588,7 @@ void GameSessionPresetTest::sessionRefreshNeverSwitchesOnItsOwn()
 
     int refreshes = 0;
     model->setRuntimeRefresh([&refreshes] { ++refreshes; });
-    QVERIFY(session->update(QStringLiteral("Alpha"), alpha));
+    QVERIFY(session->update(QStringLiteral("Alpha"), alpha, true));
     model->refreshGameTarget();
     syncSession();
     QCOMPARE(refreshes, 0);
@@ -638,7 +639,7 @@ void GameSessionPresetTest::sameGameLearnsItsExecutableWithoutATransition()
 
     // Session enters the game: a real transition, but the row still carries no
     // executable, so there is no game key - and no game context in the engine.
-    const bool entered = session->update(QStringLiteral("Alpha"), QString());
+    const bool entered = session->update(QStringLiteral("Alpha"), QString(), true);
     QVERIFY(entered);
     sessionSignals.publish(entered, session->lastUpdateChangedGameMetadata());
     QCOMPARE(engine->runningGameKey(), QString());
@@ -646,7 +647,7 @@ void GameSessionPresetTest::sameGameLearnsItsExecutableWithoutATransition()
 
     // The row learns its executable. Same game id, same capture state: NOT a
     // transition - update() says so, and only the metadata flag moves.
-    const bool transitioned = session->update(QStringLiteral("Alpha"), alpha);
+    const bool transitioned = session->update(QStringLiteral("Alpha"), alpha, true);
     QVERIFY(!transitioned);
     QVERIFY(session->lastUpdateChangedGameMetadata());
 
@@ -668,7 +669,7 @@ void GameSessionPresetTest::sameGameLearnsItsExecutableWithoutATransition()
     // still no transition, still gamesChanged() alone - the key follows the row,
     // and the old key's assignment must stop serving.
     const QString moved = offlineGameExecutable(QStringLiteral("Alpha-Moved"));
-    const bool relocated = session->update(QStringLiteral("Alpha"), moved);
+    const bool relocated = session->update(QStringLiteral("Alpha"), moved, true);
     QVERIFY(!relocated);
     QVERIFY(session->lastUpdateChangedGameMetadata());
     sessionSignals.publish(relocated, session->lastUpdateChangedGameMetadata());
@@ -688,6 +689,41 @@ void GameSessionPresetTest::sameGameLearnsItsExecutableWithoutATransition()
     sessionSignals.publish(false, true);
     QCOMPARE(engine->runningGameKey(), MappingAssignmentResolver::canonicalGameKey(moved));
     QCOMPARE(refreshes, 0);
+}
+
+// aud-a4: every valid foreground window reaches the session, but only one
+// recognized as a game may create a library row. A browser or editor in
+// front must leave no game behind.
+void GameSessionPresetTest::anUnrecognizedForegroundWindowNeverBecomesAGame()
+{
+    const QString editor = offlineGameExecutable(QStringLiteral("Editor"));
+    const QString gamma = offlineGameExecutable(QStringLiteral("Gamma"));
+    session->update(QStringLiteral("Editor"), editor, false);
+    session->update(QStringLiteral("Gamma"), gamma, true);
+
+    // A later capture creates or reuses the row; only a row created from the
+    // foreground carries the executable it learned there.
+    QVERIFY(capturedGame(QStringLiteral("Editor"), QString()) > 0);
+    QVERIFY(capturedGame(QStringLiteral("Gamma"), QString()) > 0);
+    QString editorExe = QStringLiteral("<missing>");
+    QString gammaExe = QStringLiteral("<missing>");
+    for (const GameEntry& game : db->listGames()) {
+        if (game.name == QStringLiteral("Editor"))
+            editorExe = game.executablePath;
+        else if (game.name == QStringLiteral("Gamma"))
+            gammaExe = game.executablePath;
+    }
+    QCOMPARE(editorExe, QString());
+    QCOMPARE(GameIdentity::executableKey(gammaExe), GameIdentity::executableKey(gamma));
+
+    // An existing library game still learns its executable, recognized or not.
+    const QString moved = offlineGameExecutable(QStringLiteral("EditorMoved"));
+    session->update(QStringLiteral("Editor"), moved, false);
+    for (const GameEntry& game : db->listGames()) {
+        if (game.name == QStringLiteral("Editor"))
+            QCOMPARE(GameIdentity::executableKey(game.executablePath),
+                     GameIdentity::executableKey(moved));
+    }
 }
 
 QTEST_MAIN(GameSessionPresetTest)

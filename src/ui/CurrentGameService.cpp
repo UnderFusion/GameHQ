@@ -45,11 +45,14 @@ CurrentGameService::CurrentGameService(CaptureDatabase* db)
 bool CurrentGameService::syncToForegroundGame()
 {
     const ForegroundGame foreground = GameDetector::current();
-    return update(foreground.valid && !foreground.isExcludedProcess ? foreground.gameName : QString(),
-                  foreground.valid && !foreground.isExcludedProcess ? foreground.executablePath : QString());
+    const bool usable = foreground.valid && !foreground.isExcludedProcess;
+    return update(usable ? foreground.gameName : QString(),
+                  usable ? foreground.executablePath : QString(),
+                  usable && (foreground.isGame || foreground.hasExternalIdentity));
 }
 
-bool CurrentGameService::update(const QString& gameName, const QString& executablePath)
+bool CurrentGameService::update(const QString& gameName, const QString& executablePath,
+                                bool recognizedGame)
 {
     m_lastUpdateChangedGameMetadata = false;
     int gameId = -1;
@@ -87,7 +90,9 @@ bool CurrentGameService::update(const QString& gameName, const QString& executab
         m_currentGameHasCaptures = hasCaptures;
     }
 
-    if (!gameName.isEmpty() && (matchedCapturedGame || gameId < 0))
+    // A library game learns its executable; a new row is only ever created
+    // for a window that is recognized as a game.
+    if (!gameName.isEmpty() && (matchedCapturedGame || (gameId < 0 && recognizedGame)))
         m_lastUpdateChangedGameMetadata = m_db->rememberGameExecutable(gameName, executablePath);
 
     return stateChanged;
