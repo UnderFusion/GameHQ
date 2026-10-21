@@ -9,6 +9,7 @@ qt_add_executable(GameHQ
       capture/HdrCapabilities.cpp capture/HdrCapabilities.h capture/hdr/HdrStateResolver.h
     capture/ScreenshotService.cpp capture/ScreenshotService.h
     capture/FramePumpService.cpp capture/FramePumpService.h capture/wgc_shims.h
+    capture/FramePumpPipeline.cpp capture/FramePumpPipeline.h capture/ReplaySaveCoordinator.cpp
     capture/CaptureBorderState.cpp capture/CaptureBorderState.h
     capture/CaptureRequest.cpp  capture/CaptureRequest.h
     capture/ReplayBufferState.cpp capture/ReplayBufferState.h

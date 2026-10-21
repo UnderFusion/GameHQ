@@ -1452,6 +1452,8 @@ set_tests_properties(tst_i18nlocalelifecycle PROPERTIES TIMEOUT 180)
 gamehq_add_test(tst_captureacknowledgement
     tst_captureacknowledgement.cpp
     "${CMAKE_SOURCE_DIR}/src/capture/FramePumpService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/FramePumpPipeline.cpp"
+    "${CMAKE_SOURCE_DIR}/src/capture/ReplaySaveCoordinator.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/ScreenshotService.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureRequest.cpp"
     "${CMAKE_SOURCE_DIR}/src/capture/CaptureBorderState.cpp"

@@ -30,7 +30,7 @@ class ReplayExportTask;
 // thread is initialised as an STA, which is incompatible with RoInitialize(MTA) and
 // the free-threaded frame pool. FramePumpService is the GUI-thread front-end.
 
-// Runs on its own thread; owns all WGC/D3D state (opaque Pipeline, defined in the .cpp).
+// Runs on its own thread; owns all WGC/D3D state (opaque Pipeline, defined in FramePumpPipeline.h).
 class FramePumpWorker : public QObject
 {
     Q_OBJECT
@@ -83,7 +83,7 @@ signals:
 
 private:
     friend class TestReplayThumbnail;
-    struct Pipeline;                 // all WGC/D3D pointers + timer + fps state (.cpp)
+    struct Pipeline;                 // all WGC/D3D pointers + timer + fps state (FramePumpPipeline.h)
     void teardown();                 // delete m_pipe (releases everything, reverse order)
     void finishExport();             // join before worker/apartment shutdown
     bool failStep(const char* step, long hr);
@@ -92,7 +92,7 @@ private:
 
     // startPump bring-up, one phase per step, in call order. Each reports its own
     // failure via failStep() and returns false; startPump owns the single
-    // `delete pipe` cleanup, so no phase frees anything it did not create.
+    // cleanup of the half-built pipe, so no phase frees anything it did not create.
     bool createDevices(Pipeline* pipe);                        // D3D11 + WinRT bridge
     bool createCaptureItem(Pipeline* pipe, void* hwnd, int* outW, int* outH);
     void attachRecorder(Pipeline* pipe, unsigned long pid, int srcW, int srcH,
