@@ -363,6 +363,39 @@ bool remuxConcatImpl(const std::vector<std::wstring>& inFiles, const std::wstrin
 }
 
 // Decode the first frame of an MP4 to RGB32 (== BGRA == QImage::Format_RGB32).
+bool hasReadableVideoImpl(const std::wstring& path)
+{
+    if (QFileInfo(fromWide(path)).size() <= 0)
+        return false;   // the empty fMP4 a crash leaves behind
+    const HRESULT hrCo = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+    const bool startedMf = SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE));
+    bool readable = false;
+    SegmentSource src;
+    if (openSegment(path, 0, QStringLiteral("restore-check"), src)) {
+        // The first reads can be stream ticks or format changes without a
+        // sample; a few attempts are enough to reach a frame or the end.
+        for (int attempt = 0; attempt < 8 && !readable; ++attempt) {
+            DWORD flags = 0;
+            LONGLONG timestamp = 0;
+            IMFSample* sample = nullptr;
+            const HRESULT hr = src.reader->ReadSample((DWORD)MF_SOURCE_READER_FIRST_VIDEO_STREAM,
+                                                      0, nullptr, &flags, &timestamp, &sample);
+            if (sample) {
+                readable = SUCCEEDED(hr);
+                sample->Release();
+            }
+            if (FAILED(hr) || (flags & (MF_SOURCE_READERF_ENDOFSTREAM | MF_SOURCE_READERF_ERROR)))
+                break;
+        }
+        src.release();
+    }
+    if (startedMf)
+        MFShutdown();
+    if (SUCCEEDED(hrCo))
+        CoUninitialize();
+    return readable;
+}
+
 bool grabThumbnailImpl(const std::wstring& file, QImage& out)
 {
     const bool startedMf = SUCCEEDED(MFStartup(MF_VERSION, MFSTARTUP_LITE));
@@ -477,6 +510,11 @@ bool concat(const QStringList& inputFiles, const QString& outputFile, const QStr
 bool grabThumbnail(const QString& file, QImage& out)
 {
     return grabThumbnailImpl(file.toStdWString(), out);
+}
+
+bool hasReadableVideo(const QString& file)
+{
+    return hasReadableVideoImpl(file.toStdWString());
 }
 
 } // namespace ReplayExporter

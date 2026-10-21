@@ -161,6 +161,9 @@ private:
     QStringList m_segments;
     QString     m_curPath;                   // current in-flight segment file
     int         m_keepSegments = 12;         // ceil(lengthSeconds / segmentSeconds)
+    // Vets a segment found on disk before restoreRing() admits it; null means
+    // ReplayExporter::hasReadableVideo. Tests with placeholder files swap it.
+    bool (*m_segmentProbe)(const QString&) = nullptr;
     bool        m_discardCurrentSegment = false;
     QString     m_lastClosedMediaPath;
 

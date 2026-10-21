@@ -25,4 +25,8 @@ namespace ReplayExporter
     bool concat(const QStringList& inputFiles, const QString& outputFile,
                 const QString& traceId = QString(), Audio audio = Audio::Any);
     bool grabThumbnail(const QString& file, QImage& out);
+    // True when `file` opens as a segment and yields at least one video
+    // sample. Used to vet segments left on disk before they rejoin the ring;
+    // concat() itself stays strict and refuses any bad input.
+    bool hasReadableVideo(const QString& file);
 }

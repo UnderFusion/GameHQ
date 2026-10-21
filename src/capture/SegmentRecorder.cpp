@@ -1,4 +1,5 @@
 #include "capture/SegmentRecorder.h"
+#include "capture/ReplayExporter.h"
 #include "capture/CaptureUtil.h"
 
 #include <windows.h>
@@ -176,6 +177,18 @@ void SegmentRecorder::restoreRing()
             const qint64 ageSecs = nowSecs - QFileInfo(full).lastModified().toSecsSinceEpoch();
             if (ageSecs > staleSecs && SegmentLease::removeIfUnleased(full))
                 continue;
+            // A crash can leave an empty or truncated segment (the prepared
+            // writer's file, a segment cut mid-write). The exporter refuses
+            // any bad input, so admitting one would fail every save until the
+            // ring rolled past it. Only segments with real video rejoin.
+            const auto probe = m_segmentProbe ? m_segmentProbe : &ReplayExporter::hasReadableVideo;
+            if (!probe(full)) {
+                qWarning().noquote() << QStringLiteral(
+                    "SegmentRecorder: not restoring unreadable segment %1 (bytes=%2)")
+                    .arg(full).arg(QFileInfo(full).size());
+                SegmentLease::removeIfUnleased(full);
+                continue;
+            }
             m_segments.append(full);
         }
         // entryList already sorted chronologically; trim oldest if over capacity.

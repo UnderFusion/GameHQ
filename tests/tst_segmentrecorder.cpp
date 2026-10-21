@@ -48,6 +48,9 @@ class TestSegmentRecorder : public QObject
     {
         recorder.m_cacheDir = dir;
         recorder.m_keepSegments = keep;
+        // The fixtures are placeholders, not media: these tests are about
+        // leases and trimming, so every file counts as a readable segment.
+        recorder.m_segmentProbe = [](const QString&) { return true; };
         recorder.restoreRing(); // the same disk restore/prune used by begin()
     }
 
@@ -914,6 +917,84 @@ private slots:
         QVERIFY(SUCCEEDED(reader->ReadSample(MF_SOURCE_READER_FIRST_VIDEO_STREAM,
             0, nullptr, &flags, &timestamp, sample.GetAddressOf())));
         QVERIFY(sample.Get() != nullptr); // finalized file really contains video
+    }
+
+    // A crash leaves an empty or garbage *_clip.mp4 in the cache. Restoring it
+    // used to make every save fail (the exporter is strict) until the ring
+    // rolled past it. Only segments with real video may rejoin the ring.
+    void restoreRingAdmitsOnlyReadableSegments()
+    {
+        using Microsoft::WRL::ComPtr;
+        const HRESULT com = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        QVERIFY(SUCCEEDED(com));
+        const auto apartment = qScopeGuard([] { CoUninitialize(); });
+        QTemporaryDir dir(QDir::currentPath() + "/segment-restore-XXXXXX");
+        QVERIFY(dir.isValid());
+        ComPtr<ID3D11Device> device;
+        ComPtr<ID3D11DeviceContext> context;
+        QVERIFY(SUCCEEDED(D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_WARP, nullptr, 0,
+            nullptr, 0, D3D11_SDK_VERSION, device.GetAddressOf(), nullptr,
+            context.GetAddressOf())));
+        D3D11_TEXTURE2D_DESC desc{};
+        desc.Width = 320;
+        desc.Height = 180;
+        desc.MipLevels = desc.ArraySize = desc.SampleDesc.Count = 1;
+        desc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
+        desc.Usage = D3D11_USAGE_DEFAULT;
+        const QByteArray pixels(320 * 180 * 4, char(0x80));
+        D3D11_SUBRESOURCE_DATA data{};
+        data.pSysMem = pixels.constData();
+        data.SysMemPitch = 320 * 4;
+        ComPtr<ID3D11Texture2D> texture;
+        QVERIFY(SUCCEEDED(device->CreateTexture2D(&desc, &data, texture.GetAddressOf())));
+
+        QStringList realSegments;
+        {
+            SegmentRecorder first;
+            QVERIFY(first.begin(320, 180, 320, 180, 30, 2, 5, 30,
+                                dir.path(), device.Get(), context.Get()));
+            for (int i = 0; i < 30; ++i)
+                first.writeFrame(texture.Get(), device.Get(), context.Get(),
+                                 10000000LL + i * 10000000LL / 30);
+            const SegmentLease clip = first.snapshotForSave();
+            QVERIFY(!clip.isEmpty());
+            realSegments = clip.paths();
+            first.discardCurrentSegment();
+            first.end();
+        }
+        for (const QString& path : realSegments)
+            QVERIFY(ReplayExporter::hasReadableVideo(path));
+
+        // Sorted after the real segment, so it would be the newest in the ring.
+        const QString empty = dir.path() + "/2999-01-01_00-00-00-000_clip.mp4";
+        const QString garbage = dir.path() + "/2999-01-01_00-00-01-000_clip.mp4";
+        {
+            QFile file(empty);
+            QVERIFY(file.open(QIODevice::WriteOnly));
+        }
+        {
+            QFile file(garbage);
+            QVERIFY(file.open(QIODevice::WriteOnly));
+            file.write(QByteArray(4096, 'x'));
+        }
+        QVERIFY(!ReplayExporter::hasReadableVideo(empty));
+        QVERIFY(!ReplayExporter::hasReadableVideo(garbage));
+
+        SegmentRecorder second;
+        QVERIFY(second.begin(320, 180, 320, 180, 30, 2, 5, 30,
+                             dir.path(), device.Get(), context.Get()));
+        const auto finish = qScopeGuard([&] {
+            second.discardCurrentSegment();
+            second.end();
+        });
+        QVERIFY(!QFileInfo::exists(empty));
+        QVERIFY(!QFileInfo::exists(garbage));
+        const SegmentLease restored = second.snapshotForSave();
+        QVERIFY(!restored.isEmpty());
+        for (const QString& path : realSegments)
+            QVERIFY(restored.paths().contains(path));
+        const QString out = dir.path() + "/restored-export.mp4";
+        QVERIFY(ReplayExporter::concat(restored.paths(), out, QStringLiteral("restore-check")));
     }
 
     void readinessRequiresConfirmedMediaInTheNormalWindow()
