@@ -1701,6 +1701,13 @@ gamehq_add_test(tst_tdruntime
     "${CMAKE_SOURCE_DIR}/src/telegram/TdRuntime.cpp")
 add_dependencies(tst_tdruntime fake_tdjson_ok fake_tdjson_oldver fake_tdjson_partial)
 
+# TDLib receive-thread ownership: a late td_receive must not outlive stop()
+# unsafely (aud-b9).
+gamehq_add_test(tst_tdjsontransport
+    tst_tdjsontransport.cpp
+    "${CMAKE_SOURCE_DIR}/src/telegram/TdTransport.h"
+    "${CMAKE_SOURCE_DIR}/src/telegram/TdJsonTransport.cpp")
+
 # Telegram Integrated auth/session lifecycle (t23) against a scripted TDLib.
 gamehq_add_test(tst_telegramaccount
     tst_telegramaccount.cpp
