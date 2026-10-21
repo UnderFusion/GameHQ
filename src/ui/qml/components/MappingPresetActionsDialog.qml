@@ -1,6 +1,5 @@
 import QtQuick
 import GameHQ
-import "../helpers/PadNav.js" as PadNav
 
 // "More actions" for the mapping-preset library.
 //
@@ -13,9 +12,9 @@ import "../helpers/PadNav.js" as PadNav
 // declares, and the model keeps every refusal (an open draft, a preset that
 // cannot be deleted) exactly where it was.
 //
-// Pad contract (see SettingsPage.padOverlay): Up/Down moves between the rows,
-// Cross runs the focused one, Circle closes.
-Item {
+// Pad contract (see SettingsPage.padOverlay and DialogShell): Up/Down moves
+// between the rows, Cross runs the focused one, Circle or Esc closes.
+DialogShell {
     id: root
 
     property string title: ""
@@ -37,148 +36,76 @@ Item {
     signal renameRequested()
     signal duplicateRequested()
     signal deleteRequested()
-    signal canceled()
 
-    visible: false
-    opacity: 0
+    landingItem: renameButton
+    padAxis: "vertical"
+    escapeCancels: true
+    // A menu under its button rather than a centred modal: the page stays
+    // undimmed and the card opens below the anchor (above it without room).
+    scrimColor: "transparent"
+    cardWidth: Math.min(width - Theme.s16, Theme.s48 * 5)
+    cardPadding: Theme.s8
+    cardRadius: Theme.radiusM
+    cardBorderColor: Theme.borderLight
+    contentSpacing: Theme.s4
+    cardX: root.anchorItem
+           ? Math.max(Theme.s8, Math.min(root.width - root.cardWidth - Theme.s8,
+                                        root.anchorPosition.x + root.anchorItem.width - root.cardWidth))
+           : Math.max(Theme.s8, (root.width - root.cardWidth) / 2)
+    cardY: root.anchorItem
+           ? Math.max(Theme.s8,
+                      root.anchorPosition.y + root.anchorItem.height + Theme.s4 + root.cardHeight < root.height - Theme.s8
+                      ? root.anchorPosition.y + root.anchorItem.height + Theme.s4
+                      : root.anchorPosition.y - root.cardHeight - Theme.s4)
+           : Math.max(Theme.s8, (root.height - root.cardHeight) / 2)
 
     function open(anchor) {
         anchorItem = anchor || null
         anchorPosition = anchorItem ? anchorItem.mapToItem(root, 0, 0) : Qt.point(0, 0)
-        visible = true
-        Qt.callLater(function() {
-            if (!root.visible)
-                return
-            renameButton.forceActiveFocus()
-        })
-    }
-    function close() { visible = false }
-    function padStep(direction) { padVertical(direction) }
-    function padVertical(direction) {
-        const active = Window.window ? Window.window.activeFocusItem : null
-        if (!active || !PadNav.isInside(active, root)) {
-            renameButton.forceActiveFocus()
-            sounds.play("nav_tick")
-            return
-        }
-        const target = PadNav.verticalTarget(root, active, direction)
-        if (target) {
-            target.forceActiveFocus()
-            sounds.play("nav_tick")
-        }
-    }
-    function padHorizontal(direction) {
-        const active = Window.window ? Window.window.activeFocusItem : null
-        if (!active || !PadNav.isInside(active, root)) {
-            renameButton.forceActiveFocus()
-            sounds.play("nav_tick")
-            return
-        }
-        const target = PadNav.horizontalTarget(root, active, direction)
-        if (target) {
-            target.forceActiveFocus()
-            sounds.play("nav_tick")
-        }
-    }
-    function padConfirm() {
-        const active = Window.window ? Window.window.activeFocusItem : null
-        // A disabled row (delete while an edit is open) must not fire through
-        // the pad either.
-        if (active && active.enabled !== false && PadNav.isInside(active, root) && active.clicked)
-            active.clicked()
-    }
-    function padBack() {
-        root.canceled()
-        root.close()
+        root.present()
     }
 
-    Keys.onEscapePressed: padBack()
     Keys.onUpPressed: padVertical(-1)
     Keys.onDownPressed: padVertical(1)
     onWidthChanged: if (visible) close()
     onHeightChanged: if (visible) close()
 
-    Behavior on opacity { NumberAnimation { duration: Theme.durFast } }
-    states: State {
-        when: root.visible
-        PropertyChanges { target: root; opacity: 1 }
-    }
-
-    Rectangle {
-        anchors.fill: parent
-        color: "transparent"
-        MouseArea {
-            anchors.fill: parent
-            onClicked: { root.canceled(); root.close() }
+    Column {
+        width: parent.width
+        spacing: Theme.s8
+        AccentButton {
+            id: renameButton
+            objectName: "presetActionRename"
+            width: parent.width
+            quiet: true
+            quietIdleBorderColor: "transparent"
+            borderColor: "transparent"
+            label: root.renameLabel
+            onClicked: { root.close(); root.renameRequested() }
         }
-    }
-
-    Rectangle {
-        id: dialog
-        x: root.anchorItem
-           ? Math.max(Theme.s8, Math.min(root.width - width - Theme.s8,
-                                        root.anchorPosition.x + root.anchorItem.width - width))
-           : Math.max(Theme.s8, (root.width - width) / 2)
-        y: root.anchorItem
-           ? Math.max(Theme.s8,
-                      root.anchorPosition.y + root.anchorItem.height + Theme.s4 + height < root.height - Theme.s8
-                      ? root.anchorPosition.y + root.anchorItem.height + Theme.s4
-                      : root.anchorPosition.y - height - Theme.s4)
-           : Math.max(Theme.s8, (root.height - height) / 2)
-        width: Math.min(parent.width - Theme.s16, Theme.s48 * 5)
-        implicitHeight: card.implicitHeight + Theme.s8 * 2
-        radius: Theme.radiusM
-        color: Theme.surface
-        border.width: Theme.borderWidth
-        border.color: Theme.borderLight
-
-        MouseArea { anchors.fill: parent }
-
-        Column {
-            id: card
-            anchors.fill: parent
-            anchors.margins: Theme.s8
-            spacing: Theme.s4
-
-            Column {
-                width: parent.width
-                spacing: Theme.s8
-                AccentButton {
-                    id: renameButton
-                    objectName: "presetActionRename"
-                    width: parent.width
-                    quiet: true
-                    quietIdleBorderColor: "transparent"
-                    borderColor: "transparent"
-                    label: root.renameLabel
-                    onClicked: { root.close(); root.renameRequested() }
-                }
-                AccentButton {
-                    objectName: "presetActionDuplicate"
-                    width: parent.width
-                    quiet: true
-                    quietIdleBorderColor: "transparent"
-                    borderColor: "transparent"
-                    label: root.duplicateLabel
-                    onClicked: { root.close(); root.duplicateRequested() }
-                }
-                AccentButton {
-                    objectName: "presetActionDelete"
-                    width: parent.width
-                    quiet: true
-                    quietIdleBorderColor: "transparent"
-                    borderColor: "transparent"
-                    enabled: root.deleteEnabled
-                    label: root.deleteLabel
-                    onClicked: {
-                        if (!enabled)
-                            return
-                        root.close()
-                        root.deleteRequested()
-                    }
-                }
+        AccentButton {
+            objectName: "presetActionDuplicate"
+            width: parent.width
+            quiet: true
+            quietIdleBorderColor: "transparent"
+            borderColor: "transparent"
+            label: root.duplicateLabel
+            onClicked: { root.close(); root.duplicateRequested() }
+        }
+        AccentButton {
+            objectName: "presetActionDelete"
+            width: parent.width
+            quiet: true
+            quietIdleBorderColor: "transparent"
+            borderColor: "transparent"
+            enabled: root.deleteEnabled
+            label: root.deleteLabel
+            onClicked: {
+                if (!enabled)
+                    return
+                root.close()
+                root.deleteRequested()
             }
-
         }
     }
 }

@@ -265,8 +265,16 @@ QtObject {
     readonly property int overlayThumbCaptionHeight: 31
     readonly property int overlayLayoutPanelWidth: 360
 
-    // Modal dialogs
+    // Modal dialogs: the standard card, the narrower two-button confirmation,
+    // and the upper bounds of the Help card.
     readonly property int dialogWidth: 440
+    readonly property int confirmDialogWidth: 400
+    readonly property int helpDialogMaxWidth: 760
+    readonly property int helpDialogMaxHeight: 660
+
+    // Update banner app badge: the tinted tile and the logo inside it.
+    readonly property int updateBannerBadge: 40
+    readonly property int updateBannerLogo: 26
 
     // Video player controls
     readonly property int playerButtonSize: 44

@@ -511,12 +511,17 @@ void OverlayLifetimeTest::overlayPopupsRemainInWindow()
     QVERIFY(shellDeclarations.first().contains(QLatin1String("Window {")));
 
     // Both popups are in-window items, so their lifetime is the overlay's own.
+    // ConfirmDialog is built on DialogShell, whose root is a FocusScope item.
     for (const QString& relative : { QStringLiteral("ui/qml/components/ConfirmDialog.qml"),
+                                     QStringLiteral("ui/qml/components/DialogShell.qml"),
                                      QStringLiteral("ui/qml/components/OverlayActionMenu.qml") }) {
         const QString source = readSource(relative);
         QVERIFY2(!source.isEmpty(), qPrintable(relative));
         QVERIFY2(topLevelWindowDeclarations(source).isEmpty(), qPrintable(relative));
-        QVERIFY2(rootElement(source).startsWith(QLatin1String("Item")), qPrintable(relative));
+        const QString root = rootElement(source);
+        QVERIFY2(root.startsWith(QLatin1String("Item")) || root.startsWith(QLatin1String("FocusScope"))
+                     || root.startsWith(QLatin1String("DialogShell")),
+                 qPrintable(relative));
     }
 
     // ... and the overlay actually instantiates them, so the in-window audit is

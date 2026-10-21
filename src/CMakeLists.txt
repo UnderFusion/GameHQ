@@ -244,6 +244,7 @@ qt_add_qml_module(GameHQ
         ui/qml/components/BindingAssignmentDialog.qml
         ui/qml/components/BindingConflictDialog.qml
         ui/qml/components/BindingCompatibilityDialog.qml
+        ui/qml/components/DialogShell.qml
         ui/qml/components/ConfirmDialog.qml
         ui/qml/components/ShareDialog.qml
         ui/qml/components/MappingPresetNameDialog.qml

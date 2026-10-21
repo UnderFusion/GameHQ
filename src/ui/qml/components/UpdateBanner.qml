@@ -112,18 +112,18 @@ Rectangle {
         spacing: Theme.s12
 
         Rectangle {
-            Layout.preferredWidth: 40
-            Layout.preferredHeight: 40
+            Layout.preferredWidth: Theme.updateBannerBadge
+            Layout.preferredHeight: Theme.updateBannerBadge
             radius: Theme.radiusM
             color: Theme.hoverTint
 
             Image {
                 anchors.centerIn: parent
-                width: 26
-                height: 26
+                width: Theme.updateBannerLogo
+                height: Theme.updateBannerLogo
                 source: "qrc:/icons/gamehq.svg"
-                sourceSize.width: 26
-                sourceSize.height: 26
+                sourceSize.width: Theme.updateBannerLogo
+                sourceSize.height: Theme.updateBannerLogo
             }
         }
 
