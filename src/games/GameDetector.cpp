@@ -405,7 +405,7 @@ bool isCloaked(HWND hwnd)
     // Resolved at runtime so every target linking this file needs no dwmapi.
     using DwmGetWindowAttributeFn = HRESULT(WINAPI*)(HWND, DWORD, PVOID, DWORD);
     static const auto getAttribute = [] {
-        HMODULE dwm = LoadLibraryW(L"dwmapi.dll");
+        HMODULE dwm = LoadLibraryExW(L"dwmapi.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
         return dwm ? reinterpret_cast<DwmGetWindowAttributeFn>(
                          GetProcAddress(dwm, "DwmGetWindowAttribute"))
                    : nullptr;

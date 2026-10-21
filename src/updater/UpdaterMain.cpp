@@ -5,6 +5,7 @@
 #include "updater/UpdaterHealth.h"
 #include "updater/UpdaterRecovery.h"
 #include "core/UpdaterHandshake.h"
+#include "core/DllSearchPolicy.h"
 #include "core/UpdateMaintenance.h"
 #include "security/ReleaseTrust.h"
 #include "security/ReleaseManifest.h"
@@ -193,6 +194,7 @@ int runTransaction(const std::filesystem::path &transactionPath, const std::wstr
 
 int wmain(int argc, wchar_t **argv)
 {
+    dll_search::restrictSearchPath();
     const std::wstring mode = argc >= 2 ? std::wstring(argv[1]) : std::wstring();
     if (argc == 2 && mode == L"--self-test") {
         std::cout << "GameHQUpdater " GAMEHQ_UPDATER_VERSION " ready\n";

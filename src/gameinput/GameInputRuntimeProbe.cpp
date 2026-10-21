@@ -26,6 +26,8 @@
 
 #include <GameInput.h>
 
+#include "core/DllSearchPolicy.h"
+
 namespace {
 
 std::wstring executableDirectory()
@@ -94,8 +96,12 @@ int probeAppLocalOnly()
                                  HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND));
     }
 
-    const HMODULE dll =
-        LoadLibraryExW(dllPath.c_str(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
+    // Same flags as ProductionGameInputApi: dependencies come from the DLL's
+    // own folder and System32, never from the CWD or PATH that
+    // LOAD_WITH_ALTERED_SEARCH_PATH would still search.
+    const HMODULE dll = LoadLibraryExW(dllPath.c_str(), nullptr,
+                                       LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR
+                                           | LOAD_LIBRARY_SEARCH_SYSTEM32);
     if (dll == nullptr)
         return reportUnavailable("app-local LoadLibraryExW failed",
                                  HRESULT_FROM_WIN32(GetLastError()));
@@ -125,6 +131,7 @@ int probeAppLocalOnly()
 
 int main(int argc, char** argv)
 {
+    dll_search::restrictSearchPath();
     const bool appLocalOnly = argc > 1 && std::strcmp(argv[1], "--app-local-only") == 0;
     return appLocalOnly ? probeAppLocalOnly() : probeOfficialLoader();
 }

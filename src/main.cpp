@@ -21,6 +21,7 @@
 #include "localization/NativeText.h"
 #include "localization/StartupLocalization.h"
 #include "core/ApplicationMutex.h"
+#include "core/DllSearchPolicy.h"
 #include "core/PathContainment.h"
 #include "core/ProcessIdentity.h"
 #include "core/UpdateMaintenance.h"
@@ -124,6 +125,8 @@ bool waitForParentProcess(const QStringList& arguments, QString& error)
 
 int main(int argc, char* argv[])
 {
+    dll_search::restrictSearchPath();
+
     // Parse this packaging probe from the raw Windows command line. GUI-
     // subsystem CRT wrappers are not consistent about populating narrow argv
     // before QApplication exists.

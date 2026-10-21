@@ -461,6 +461,7 @@ add_executable(GameInputRuntimeProbe
     ${CMAKE_SOURCE_DIR}/third_party/gameinput/src/GameInput.cpp
 )
 target_include_directories(GameInputRuntimeProbe PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/third_party/gameinput/include)
 target_compile_definitions(GameInputRuntimeProbe PRIVATE UNICODE _UNICODE)
 target_link_options(GameInputRuntimeProbe PRIVATE -static)

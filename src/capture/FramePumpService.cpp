@@ -389,7 +389,8 @@ bool FramePumpWorker::createDevices(Pipeline* pipe)
     // Resolved once per process (function-local static) — the previous per-arm
     // LoadLibraryW leaked a module reference on every start.
     static const auto pfnBridge = []() -> PFN_CreateDirect3D11DeviceFromDXGIDevice {
-        const HMODULE d3dll = LoadLibraryW(L"d3d11.dll");
+        const HMODULE d3dll = LoadLibraryExW(L"d3d11.dll", nullptr,
+                                             LOAD_LIBRARY_SEARCH_SYSTEM32);
         return d3dll ? reinterpret_cast<PFN_CreateDirect3D11DeviceFromDXGIDevice>(
                            GetProcAddress(d3dll, "CreateDirect3D11DeviceFromDXGIDevice"))
                      : nullptr;

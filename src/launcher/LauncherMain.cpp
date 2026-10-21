@@ -10,6 +10,7 @@
 #include "launcher/LauncherLocalization.h"
 #include "launcher/LauncherResources.h"
 #include "launcher/UpdaterPromotion.h"
+#include "core/DllSearchPolicy.h"
 #include "core/UpdateMaintenance.h"
 
 namespace
@@ -47,6 +48,7 @@ void showMessage(HINSTANCE instance, LANGID language, unsigned int messageId, UI
 
 int WINAPI WinMain(HINSTANCE instance, HINSTANCE, LPSTR, int)
 {
+    dll_search::restrictSearchPath();
     std::wstring launcherPath;
     if (!modulePath(launcherPath))
         return 1;
