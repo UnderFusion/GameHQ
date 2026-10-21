@@ -967,9 +967,19 @@ gamehq_add_test(tst_logrotation
     "${CMAKE_SOURCE_DIR}/src/diagnostics/Logger.cpp")
 
 # Crash-dump naming and retention (pure helpers; nothing crashes here).
+# Child process that installs CrashDump and then really crashes.
+add_executable(crashdump_fixture crashdump_fixture.cpp
+    "${CMAKE_SOURCE_DIR}/src/diagnostics/CrashDump.cpp")
+target_include_directories(crashdump_fixture PRIVATE "${CMAKE_SOURCE_DIR}/src")
+target_link_libraries(crashdump_fixture PRIVATE Qt6::Core)
+set_target_properties(crashdump_fixture PROPERTIES WIN32_EXECUTABLE FALSE)
+
 gamehq_add_test(tst_crashdump
     tst_crashdump.cpp
     "${CMAKE_SOURCE_DIR}/src/diagnostics/CrashDump.cpp")
+target_compile_definitions(tst_crashdump PRIVATE
+    CRASHDUMP_FIXTURE="$<TARGET_FILE:crashdump_fixture>")
+add_dependencies(tst_crashdump crashdump_fixture)
 
 add_executable(process_identity_fixture process_identity_fixture.cpp)
 target_link_options(process_identity_fixture PRIVATE -static -municode)
