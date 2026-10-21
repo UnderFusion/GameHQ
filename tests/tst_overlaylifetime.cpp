@@ -11,7 +11,7 @@
 #endif
 
 // cpo-o03: the overlay's lifetime/focus rules, with every Win32 query replaced
-// by the fact it would resolve to. src/overlay/OverlayManager.cpp is the only
+// by the fact it would resolve to. src/overlay/OverlayManager*.cpp are the only
 // place those facts come from real Windows; the point here is that the rules
 // themselves — which foreground changes keep the overlay open, which rebind it
 // to a replaced game window, and which dismiss it — are decided in exactly one
@@ -392,8 +392,8 @@ void OverlayLifetimeTest::noForegroundWindowReachesThePolicy()
     // The manager's half of the contract: it routes the event through the
     // admission helper instead of dropping a null foreground early — that
     // early return is exactly what made the Hide rule unreachable.
-    const QString manager = readSource(QStringLiteral("overlay/OverlayManager.cpp"));
-    QVERIFY2(!manager.isEmpty(), "OverlayManager.cpp must be readable through GAMEHQ_SOURCE_DIR");
+    const QString manager = readSource(QStringLiteral("overlay/OverlayManager_GameWindow.cpp"));
+    QVERIFY2(!manager.isEmpty(), "OverlayManager_GameWindow.cpp must be readable through GAMEHQ_SOURCE_DIR");
     QVERIFY(manager.contains(
         QLatin1String("OverlayLifetime::isCurrentForegroundEvent(newForeground")));
     QVERIFY2(!manager.contains(QLatin1String("!foreground ||")),

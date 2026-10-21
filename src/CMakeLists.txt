@@ -121,7 +121,9 @@ qt_add_executable(GameHQ
     overlay/ForegroundApi.cpp overlay/ForegroundApi.h
     overlay/OverlayFocusTrace.cpp overlay/OverlayFocusTrace.h
     overlay/OverlayLifetimePolicy.cpp overlay/OverlayLifetimePolicy.h
-    overlay/OverlayManager.cpp overlay/OverlayManager.h
+    overlay/OverlayManager.cpp overlay/OverlayManager.h overlay/OverlayManagerInternal.h
+    overlay/OverlayManager_Close.cpp overlay/OverlayManager_ExternalApp.cpp
+    overlay/OverlayManager_GameWindow.cpp overlay/OverlayManager_Probe.cpp
     overlay/OverlayPresenter.cpp overlay/OverlayPresenter.h
     sound/SoundEngine.cpp  sound/SoundEngine.h
     sound/SoundLevels.cpp  sound/SoundLevels.h
