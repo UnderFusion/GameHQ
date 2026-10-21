@@ -1,7 +1,8 @@
 # Named mapping presets — semantics contract
 
-Status: **draft for review (rev 3)** — produced by plan item `cpo-p01` (investigation, no storage,
-UI or migration is implemented here). Rev 2 applied review round 1: alias-complete migration
+Status: **implemented contract (rev 3)** — written by plan item `cpo-p01` as the investigation
+before any code existed; the leaves listed below have since landed (see *Implementation status*).
+Sections 1-10 keep the original contract wording. Rev 2 applied review round 1: alias-complete migration
 equivalence (bounded compatibility phase), game identity without row-id fallback, typed
 assignment targets, and per-row portability. Rev 3 applies review round 2: historical opaque
 `controller-…` keys are unverified migration sources (never durable assignments without runtime
@@ -13,6 +14,31 @@ UI), `cpo-p07` (game sessions).
 Terminology note: the product already uses "preset" for capture/encoder quality presets
 (SettingsCombo, tray tooltip). A mapping preset must always be called a **mapping preset** in
 UI text and code (`MappingPreset`), never bare "preset".
+
+## Implementation status
+
+What exists in `src/` today:
+
+- **Storage (`cpo-p02`)** — schema v8 (`CaptureDatabase::applyV8()`): `mapping_presets`,
+  `mapping_preset_rows`, `mapping_assignments` and `mapping_preset_sources` (section 11).
+- **Migration (`cpo-p03`)** — offline data conversion of legacy `binding_overrides` rows at
+  schema v9 (`CaptureDatabase::applyV9()`, one transaction, `user_version = 9` as completion
+  marker), plus the runtime compatibility/materialization phase in
+  `MappingPresetMaterializer` (a chain keeps legacy resolution until its preset is proven
+  equal; weak identities never cause a persistent write).
+- **Assignment resolution (`cpo-p04`)** — `MappingAssignmentResolver` (section 12).
+- **Switching (`cpo-p05`)** — the switch transaction in section 5b, driven from `InputEngine`.
+- **Settings UI (`cpo-p06`)** — `MappingPresetModel` + `MappingPresetSection` in
+  Settings → Input: select, create, duplicate, rename, delete (with optional reassignment),
+  assign to the current target, and assign to the game in session (section 7b).
+- **Game sessions (`cpo-p07`)** — `GameSessionPresetBinder` feeds the session's executable key
+  into `InputEngine::setRunningGameKey()` (section 7c).
+- **Diagnostics (`cpo-x01`)** — mapping route winners and skipped assignment rows in the copied
+  diagnostic summary (section 7d).
+
+Not implemented: cross-provider following of one physical pad (each provider's view stays a
+separate logical controller, finding 1 and `docs/controller-input.md`), preset import/export or
+sharing between machines, and a preset-switch hotkey (finding 5).
 
 ## 1. The model this must fit (evidence)
 

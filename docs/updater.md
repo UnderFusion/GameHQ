@@ -14,7 +14,8 @@ are never touched. This document is the design reference; see
   marker, and a failed update always rolls back to a working install.
 - The updater never touches a game in progress and never blocks capture.
 - Out of scope for v1: auto-download without consent, delta patching,
-  multiple release channels, elevation/UAC, non-Windows targets.
+  release channels beyond stable plus the opt-in beta channel, elevation/UAC,
+  non-Windows targets.
 
 ## Canonical identifiers
 
@@ -247,7 +248,8 @@ different stage count or a temp-located helper.
    then prints the full verify/extract/backup/install/restart operation list
    in dry-run mode without creating staging, backup or lock files. Outside
    dry-run every helper outcome is also appended with a timestamp to
-   `.update/updater.log`, which survives the post-update artifact cleanup.
+   `.update/updater.log` (see Diagnostics), which survives the post-update
+   artifact cleanup.
 2. **Staging extraction and validation** — the helper extracts the update zip
    into a staging directory on the same volume as the install (never a
    different drive, so the final move can be atomic where possible).
@@ -348,22 +350,50 @@ different stage count or a temp-located helper.
 
 ## Diagnostics
 
-The helper writes its own persistent log at `.update/update.log`,
-independent of the application process (which may not be running for parts
-of the swap). After a successful start, GameHQ attaches that log to its
-normal diagnostics so a failed or rolled-back update is visible from inside
-the app, not only on disk.
+The helper (`GameHQUpdater.exe`) appends timestamped outcomes to its own
+persistent log at `.update/updater.log` (next to the transaction file),
+independent of the application process, which may not be running for parts
+of the swap. Dry-run never opens it. GameHQ's cleanup of completed update
+artifacts deliberately keeps `updater.log`; the application's own log
+(`gamehq-data/logs/gamehq.log`) is a separate file and does not include it.
 
-## Authenticity limit
+## Authenticity
 
-The `.sha256` file hosted beside the release zip protects against corrupted
-or incomplete downloads. It does **not** protect against a compromised
-GitHub repository or account — anyone who could tamper with the zip could
-equally tamper with its checksum file. The stronger Ed25519 release manifest
-and Authenticode publisher identity are separate pending release gates. Until
-both are active, an unsigned one-click updater ships only as a clearly labelled
-Beta, and this limit is stated here, in the in-app Updates UI, and in
-[Download Verification](download-verification.md).
+Trust comes from a signed release manifest, not from GitHub or the checksum
+file (`src/security/`, shared by the app and the static helper; design notes
+in [release-manifest-security-review.md](release-manifest-security-review.md)):
+
+- **Signature.** Each release publishes `gamehq-release.json` and a detached
+  `gamehq-release.sig`. The signature is Ed25519 (Monocypher) over the exact
+  downloaded manifest bytes; JSON is parsed only after it verifies.
+- **Compiled keys.** The trusted public key comes from
+  `packaging/release-trust.json` (public material only) and is compiled into
+  both `GameHQ.exe` and `GameHQUpdater.exe`. A manifest can never add, promote
+  or restore a key, and its `keyId` must name the key that actually verified.
+  The RFC 8032 test key is compiled into the shipped table only through the
+  `GAMEHQ_RELEASE_TRUST_TEST_KEYS` escape hatch (default OFF);
+  `GameHQUpdater.exe --release-trust-self-test` reports the table as
+  `production` or `test-only`.
+- **Anti-rollback.** Each key has a minimum release sequence. The highest
+  accepted `releaseSequence` and the manifest's SHA-256 are stored atomically in
+  `release-trust-state.json` in the user data root. A lower sequence is
+  rejected as rollback; the same sequence with different manifest bytes is
+  rejected as equivocation.
+- **Artifact binding.** The manifest must name this product, schema, version
+  and update zip; the downloaded zip is accepted only when its size and
+  SHA-256 equal the signed artifact record, and the helper re-verifies the
+  manifest before touching the archive (see Download and Swap above).
+- **Checksum file.** The `.sha256` asset beside the zip is only for manual
+  verification ([Download Verification](download-verification.md)); it is
+  never a trust root.
+- **Betas.** Beta pre-releases are verified with the same production key and
+  the same rules; there is no weaker beta trust path.
+- **Publisher identity.** Authenticode is a separate layer. Release
+  validation (`packaging/validate-release.ps1`) has `unsigned-beta`,
+  `unsigned-stable` and `signed` trust modes; `unsigned-stable` requires the
+  production Ed25519 manifest, and a `-betaN` tag requires `unsigned-beta`.
+  [Download Verification](download-verification.md) states the current
+  signing status.
 
 ## Unsupported locations
 
