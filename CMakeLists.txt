@@ -153,6 +153,19 @@ endif()
 configure_file(src/security/ReleaseTrustConfig.h.in
     generated/ReleaseTrustConfig.h @ONLY)
 
+# Compiler warnings for GameHQ's own targets (never -Werror). Applied per
+# target and to C++ only, so the FetchContent dependencies (miniz, the
+# monocypher C sources compiled into the trust library) and third_party code
+# keep their upstream flags. Two cosmetic categories stay off:
+#  - missing-field-initializers: aggregate initializers deliberately leave the
+#    trailing QString members of structs like ControlId::DeviceProfile empty;
+#  - cast-function-type: the FARPROC casts of the GetProcAddress idiom.
+function(gamehq_enable_warnings target)
+    target_compile_options(${target} PRIVATE
+        $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:GNU,Clang>>:-Wall -Wextra
+            -Wno-missing-field-initializers -Wno-cast-function-type>)
+endfunction()
+
 # One definition of the trust library, instantiated at most twice from the same
 # sources: the shipped gamehq_release_trust, and - only in a test build - the
 # TEST-ONLY gamehq_release_trust_testkeys (src/CMakeLists.txt). Keeping both on
@@ -172,6 +185,7 @@ function(gamehq_add_release_trust_library target trust_test_keys)
                 "${GAMEHQ_MONOCYPHER_SOURCE_DIR}/src"
                 "${GAMEHQ_MONOCYPHER_SOURCE_DIR}/src/optional")
     target_link_libraries(${target} PUBLIC bcrypt)
+    gamehq_enable_warnings(${target})
     if(trust_test_keys)
         target_compile_definitions(${target} PUBLIC GAMEHQ_RELEASE_TRUST_TEST_KEYS)
     endif()

@@ -80,7 +80,7 @@ const GUID kIidAgileObject = {
 // Completion handler for process-loopback activation. Reference counted: the
 // async operation holds its own reference, so a late completion after a
 // timed-out wait touches a live object, never freed memory.
-class AudioActivateHandler : public IActivateAudioInterfaceCompletionHandler
+class AudioActivateHandler final : public IActivateAudioInterfaceCompletionHandler
 {
 public:
     AudioActivateHandler()

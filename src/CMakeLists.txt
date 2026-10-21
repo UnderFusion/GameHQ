@@ -485,6 +485,18 @@ target_include_directories(GameInputRuntimeProbe PRIVATE
 target_compile_definitions(GameInputRuntimeProbe PRIVATE UNICODE _UNICODE)
 target_link_options(GameInputRuntimeProbe PRIVATE -static)
 
+# The vendored GameInput loader is upstream code compiled into the probe; keep
+# its diagnostics silent instead of patching third_party/.
+set_source_files_properties(
+    ${CMAKE_SOURCE_DIR}/third_party/gameinput/src/GameInput.cpp
+    PROPERTIES COMPILE_OPTIONS "-w")
+foreach(gamehq_warning_target GameHQ GameHQLauncher GameHQUpdater GameInputRuntimeProbe)
+    gamehq_enable_warnings(${gamehq_warning_target})
+endforeach()
+if(GAMEHQ_BUILD_TESTS)
+    gamehq_enable_warnings(updater_test_trust_fixture)
+endif()
+
 # Keep this channel choice private to the shipped application, not test fixtures.
 target_compile_definitions(GameHQ PRIVATE
     GAMEHQ_SONY_HID_READER_DEFAULT=$<BOOL:${GAMEHQ_SONY_HID_READER_DEFAULT}>)
