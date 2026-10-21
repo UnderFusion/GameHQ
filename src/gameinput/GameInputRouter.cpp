@@ -145,6 +145,7 @@ void GameInputRouter::detachFromRegistry(const QString& reason)
     }
     m_heldSystemControls.clear();
     m_deviceLogicalIds.clear();
+    m_observedDescriptors.clear();
     m_deviceExtraStates.clear();
     m_deviceExtraControls.clear();
     m_deviceStandardButtons.clear();
@@ -155,16 +156,26 @@ void GameInputRouter::setMode(SupportMode mode)
     if (m_mode == mode)
         return;
     m_mode = mode;
-    if (mode == SupportMode::Off)
+    if (mode == SupportMode::Off) {
         shutdown();
-    else
+        // Switching modern support off ends the failed runtime session too:
+        // the next Auto is a fresh session that may retry the runtime
+        // instead of staying on the legacy fallback until restart.
+        if (m_failedForSession) {
+            m_failedForSession = false;
+            m_runtimeStatus = QStringLiteral("Off");
+            emit statusChanged();
+        }
+    } else {
         start();
+    }
 }
 
 QString GameInputRouter::observeDevice(const GameInputDeviceDescriptor& device)
 {
     if (device.deviceId.isEmpty())
         return {};
+    ++m_deviceObservations;
     ProviderObservation observation;
     observation.provider = ControllerProvider::GameInput;
     observation.providerDeviceId = device.deviceId;
@@ -221,6 +232,7 @@ QString GameInputRouter::observeDevice(const GameInputDeviceDescriptor& device)
         emit logicalControllerRekeyed(rekeyedFrom, logicalId);
     }
     m_deviceLogicalIds.insert(device.deviceId, logicalId);
+    m_observedDescriptors.insert(device.deviceId, device);
     m_deviceNames.insert(device.deviceId, device.displayName);
     const bool firstObservation = !m_descriptors.contains(logicalId);
     m_descriptors.insert(logicalId, device);
@@ -233,6 +245,57 @@ QString GameInputRouter::observeDevice(const GameInputDeviceDescriptor& device)
     if (firstObservation)
         emit statusChanged();
     return logicalId;
+}
+
+namespace {
+bool sameDescriptor(const GameInputDeviceDescriptor& left,
+                    const GameInputDeviceDescriptor& right)
+{
+    if (left.deviceId != right.deviceId || left.rootId != right.rootId
+        || left.containerId != right.containerId || left.displayName != right.displayName
+        || left.vendorId != right.vendorId || left.productId != right.productId
+        || left.supportedInput != right.supportedInput
+        || left.supportedSystemButtons != right.supportedSystemButtons
+        || left.extraButtonCount != right.extraButtonCount
+        || left.buttons.size() != right.buttons.size())
+        return false;
+    // Readings carry an implicitly shared copy of the lifecycle-cached
+    // descriptor, so this is normally one pointer compare.
+    if (left.buttons.constData() == right.buttons.constData())
+        return true;
+    for (int i = 0; i < left.buttons.size(); ++i) {
+        const auto& a = left.buttons.at(i);
+        const auto& b = right.buttons.at(i);
+        if (a.rawLabel != b.rawLabel || a.normalizedLabel != b.normalizedLabel
+            || a.classification != b.classification)
+            return false;
+    }
+    return true;
+}
+}
+
+// Readings and system-button edges arrive at controller report rate and carry
+// the same cached descriptor every time. Re-observing on each of them rebuilt
+// the registry observation (control set, diagnostics note) for nothing, so
+// only lifecycle events, a changed descriptor, or an attachment the registry
+// no longer maps the way we last saw it trigger observeDevice().
+bool GameInputRouter::needsObservation(const GameInputEvent& event) const
+{
+    if (event.kind != GameInputEventKind::Reading
+        && event.kind != GameInputEventKind::SystemButtonPressed
+        && event.kind != GameInputEventKind::SystemButtonReleased)
+        return true;
+    const auto observed = m_observedDescriptors.constFind(event.deviceId);
+    if (observed == m_observedDescriptors.cend()
+        || !sameDescriptor(*observed, event.device))
+        return true;
+    const QString logicalId = m_deviceLogicalIds.value(event.deviceId);
+    if (logicalId.isEmpty()
+        || registry().logicalIdFor(ControllerProvider::GameInput, event.deviceId) != logicalId)
+        return true;
+    // A weak identity may still be upgraded by a later observation.
+    const auto* logical = registry().controller(logicalId);
+    return !logical || logical->confidence == IdentityConfidence::Weak;
 }
 
 void GameInputRouter::handleBatch(const GameInputEventBatch& batch)
@@ -257,7 +320,7 @@ void GameInputRouter::handleBatch(const GameInputEventBatch& batch)
                 || event.kind == GameInputEventKind::SystemButtonReleased))
             continue;
         QString logicalId = m_deviceLogicalIds.value(event.deviceId);
-        if (!event.device.deviceId.isEmpty())
+        if (!event.device.deviceId.isEmpty() && needsObservation(event))
             logicalId = observeDevice(event.device);
         switch (event.kind) {
         case GameInputEventKind::DeviceAdded: {
@@ -288,6 +351,7 @@ void GameInputRouter::handleBatch(const GameInputEventBatch& batch)
             }
             if (event.kind == GameInputEventKind::DeviceRemoved) {
                 m_removedDevices.insert(event.deviceId);
+                m_observedDescriptors.remove(event.deviceId);
                 registryRef().removeProvider(ControllerProvider::GameInput, event.deviceId);
                 emit deviceDisconnected(logicalId);
             }
