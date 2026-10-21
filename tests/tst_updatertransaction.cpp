@@ -654,6 +654,10 @@ void UpdaterTransactionTest::recoveryKeepsAnUpdateThatAlreadyReportedHealth()
     QVERIFY(phase.open(QIODevice::ReadOnly)); QCOMPARE(phase.readAll().trimmed(), QByteArray("rolled_back"));
     QVERIFY(config.open(QIODevice::ReadOnly)); QCOMPARE(config.readAll(), QByteArray("old config"));
     QVERIFY(program.open(QIODevice::ReadOnly)); QCOMPARE(program.readAll(), QByteArray("old program"));
+    // The rollback restarted the fixture: wait for its token so it is not
+    // written after the temporary directory is gone (a stray folder in cwd).
+    QTRY_VERIFY_WITH_TIMEOUT(QFileInfo::exists(
+        QDir(dir.path()).filePath(QStringLiteral("previous-started.token"))), 2000);
 }
 
 void UpdaterTransactionTest::withinRootHelperRejectsEscapes()
