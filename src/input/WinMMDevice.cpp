@@ -2,6 +2,7 @@
 
 #include "input/PerfTrace.h"
 #include "input/StickNav.h"
+#include "input/SupportedPads.h"
 
 #include <QDebug>
 #include <QElapsedTimer>
@@ -319,9 +320,7 @@ void WinMMDevice::applyScanResult(const ScanResult& result)
     m_prevButtons = 0;
     m_baselinePending = true;
 
-    m_ds4Layout = (result.mid == 0x054C)
-        || (result.mid == 0x11FF && result.pid == 0x0847)
-        || (result.mid == 0x3670 && result.pid == 0x0902);
+    m_ds4Layout = SupportedPads::usesSonyButtonLayout(result.mid, result.pid);
     m_vendorId = result.mid;
     m_productId = result.pid;
     qInfo() << "Gamepad: WinMM joystick connected (JOYSTICKID" << (result.id + 1)

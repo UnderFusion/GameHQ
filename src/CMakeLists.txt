@@ -71,6 +71,8 @@ qt_add_executable(GameHQ
     input/InputPatternRecognizer.cpp input/InputPatternRecognizer.h
     input/GestureTiming.cpp input/GestureTiming.h
     input/BindingEditorModel.cpp input/BindingEditorModel.h
+    input/BindingEditorModel_Persistence.cpp input/BindingEditorModel_AssignmentEditor.cpp
+    input/BindingEditorModelInternal.h
     input/ControlId.cpp input/ControlId.h
     input/SteamInputAdvice.cpp input/SteamInputAdvice.h
     input/ControllerIdentity.cpp input/ControllerIdentity.h
@@ -85,6 +87,9 @@ qt_add_executable(GameHQ
     input/RawInputApi.cpp input/RawInputApi.h
     input/PnpDeviceApi.cpp input/PnpDeviceApi.h
     input/DualSenseDevice.cpp input/DualSenseDevice.h
+    input/DualSenseDevice_RawInputWindow.cpp input/DualSenseDevice_SourceArbitration.cpp
+    input/DualSenseDevice_ReportDecoding.cpp input/DualSenseDeviceInternal.h
+    input/SupportedPads.h
     input/SonyHidReader.cpp input/SonyHidReader.h
     input/HidCloakMonitor.cpp input/HidCloakMonitor.h
     input/XInputDevice.cpp input/XInputDevice.h
@@ -106,6 +111,8 @@ qt_add_executable(GameHQ
     input/PerfTrace.cpp input/PerfTrace.h
     input/EventLoopStallMonitor.cpp input/EventLoopStallMonitor.h
     input/InputEngine.cpp input/InputEngine.h
+    input/InputEngine_Arbitration.cpp input/InputEngine_HidHide.cpp
+    input/InputEngine_Mapping.cpp
     notify/NotificationCenter.cpp notify/NotificationCenter.h
     notify/ToastModel.cpp notify/ToastModel.h
     overlay/ForegroundAcquirer.cpp overlay/ForegroundAcquirer.h

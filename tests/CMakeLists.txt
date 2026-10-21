@@ -98,6 +98,9 @@ gamehq_add_test(tst_providercontrolmap
     "${CMAKE_SOURCE_DIR}/src/input/WinMMDevice.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/XInputDevice.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice_RawInputWindow.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice_SourceArbitration.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice_ReportDecoding.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/SonyHidReader.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputRateMonitor.cpp"
@@ -379,6 +382,9 @@ gamehq_add_test(tst_rawinputflood
     # the header is listed here explicitly.
     "${CMAKE_SOURCE_DIR}/src/input/Gamepad.h"
     "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice_RawInputWindow.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice_SourceArbitration.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/DualSenseDevice_ReportDecoding.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/SonyHidReader.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputRateMonitor.cpp"
@@ -409,11 +415,14 @@ gamehq_add_test(tst_inputengineshutdown
     tst_inputengineshutdown.cpp
     "${CMAKE_SOURCE_DIR}/src/input/Gamepad.h")
 foreach(unit IN ITEMS
-    InputEngine MouseHookDevice BindingRuntime BindingEditorModel BindingResolver
+    InputEngine InputEngine_Arbitration InputEngine_HidHide InputEngine_Mapping
+    MouseHookDevice BindingRuntime BindingEditorModel BindingResolver
+    BindingEditorModel_Persistence BindingEditorModel_AssignmentEditor
     MappingPresetMaterializer MappingAssignmentResolver MappingPresetModel
     BindingPattern BindingRelation ContextOverrideCatalog InputPatternRecognizer
     ActionCatalog ControlId ControllerIdentity GestureTiming HotkeyManager
-    DualSenseDevice SonyHidReader XInputDevice WinMMDevice RawInputApi HidCloakMonitor
+    DualSenseDevice DualSenseDevice_RawInputWindow DualSenseDevice_SourceArbitration
+    DualSenseDevice_ReportDecoding SonyHidReader XInputDevice WinMMDevice RawInputApi HidCloakMonitor
     SelectiveRawHidFallback RawHidBindingCatalog ProviderIntegration
     PhysicalControllerRegistry CapabilityEventRouter ExtraButtonCatalog
     InputDiagnostics InputRateMonitor PerfTrace EventLoopStallMonitor
@@ -706,6 +715,8 @@ gamehq_add_test(tst_bindingeditor
     "${CMAKE_SOURCE_DIR}/src/input/ActionCatalog.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputPatternRecognizer.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingEditorModel.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingEditorModel_Persistence.cpp"
+    "${CMAKE_SOURCE_DIR}/src/input/BindingEditorModel_AssignmentEditor.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingPattern.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/InputDiagnostics.cpp"
     "${CMAKE_SOURCE_DIR}/src/input/BindingResolver.cpp"

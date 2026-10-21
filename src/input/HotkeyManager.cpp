@@ -22,46 +22,6 @@ HotkeyManager::~HotkeyManager()
         app->removeNativeEventFilter(this);
 }
 
-bool HotkeyManager::registerDefault(const QString& actionId, quint32 modifiers, quint32 vk,
-                                    const QString& chordLabel, const QString& description)
-{
-    // Thread-global hotkey (no HWND): WM_HOTKEY lands in this thread's queue.
-    const int id = m_nextId++;
-    if (!RegisterHotKey(nullptr, id, modifiers, vk)) {
-        qWarning().noquote() << QStringLiteral("Hotkey: RegisterHotKey %1 failed (in use by another app?)").arg(chordLabel);
-        return false;
-    }
-    Binding& b = m_bindings[actionId];
-    b.actionId = actionId;
-    b.modifiers = modifiers;
-    b.vk = vk;
-    b.hotkeyId = id;
-    m_idToAction[id] = actionId;
-    qInfo().noquote() << QStringLiteral("Hotkey: %1 registered (%2)").arg(chordLabel, description);
-    return true;
-}
-
-bool HotkeyManager::registerOverlayToggle()
-{
-    return registerDefault(QStringLiteral("global.toggle_overlay"),
-                           MOD_CONTROL | MOD_SHIFT | MOD_NOREPEAT, 'G',
-                           QStringLiteral("Ctrl+Shift+G"), QStringLiteral("overlay toggle"));
-}
-
-bool HotkeyManager::registerScreenshot()
-{
-    return registerDefault(QStringLiteral("global.screenshot"),
-                           MOD_CONTROL | MOD_SHIFT | MOD_NOREPEAT, 'S',
-                           QStringLiteral("Ctrl+Shift+S"), QStringLiteral("screenshot"));
-}
-
-bool HotkeyManager::registerSaveReplay()
-{
-    return registerDefault(QStringLiteral("global.save_replay"),
-                           MOD_CONTROL | MOD_SHIFT | MOD_NOREPEAT, 'E',
-                           QStringLiteral("Ctrl+Shift+E"), QStringLiteral("save replay"));
-}
-
 HotkeyManager::ParsedChord HotkeyManager::parseChord(const QString& text)
 {
     ParsedChord result;
@@ -171,7 +131,7 @@ bool HotkeyManager::clearBinding(const QString& actionId)
     bool ok = true;
     for (int slot = 1; slot <= 2; ++slot)
         ok = clearBindingSlot(actionId, slot) && ok;
-    // Compatibility with registrations created by registerDefault().
+    // Compatibility with whole-action keys (the retired registerDefault() path).
     auto it = m_bindings.find(actionId);
     if (it == m_bindings.end() || it->hotkeyId == 0)
         return ok;
