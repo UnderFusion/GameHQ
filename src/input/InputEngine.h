@@ -258,6 +258,12 @@ private:
     ModernInput::ControllerProvider providerFor(const Gamepad* pad) const;
     void observeLegacyBackend(Gamepad* pad, const ControlId::DeviceProfile& profile);
     void removeLegacyBackend(Gamepad* pad, const QString& providerDeviceId = {});
+    // Forget weak logical controllers that disconnected and can never be
+    // matched again (each replug of such a pad mints a new id), together with
+    // the per-route state this engine kept for them. Bounded by design: the
+    // pinned profile, the live route, a buffered candidate's route and any
+    // route still holding a control are always kept.
+    void pruneStaleControllers();
     QString canonicalProfile(Gamepad* pad, const QString& providerDeviceId) const;
     void configureLogicalProfile(const QString& logicalId,
                                  const QStringList& migrationAliases = {});

@@ -794,6 +794,35 @@ void InputEngine::removeLegacyBackend(Gamepad* pad, const QString& providerDevic
     if (m_legacyObservedIds.value(pad).isEmpty())
         m_legacyObservedIds.remove(pad);
     traceProviderLifecycle(QStringLiteral("legacy-removed"));
+    pruneStaleControllers();
+}
+
+void InputEngine::pruneStaleControllers()
+{
+    if (m_shuttingDown || m_mappingSwitchRunning)
+        return;   // never reshape the tracked chains mid-switch or in teardown
+    const QString controller = QStringLiteral("controller");
+    const QString pinned = m_bindingEditor->pinnedProfile();
+    const QString pendingProfile = m_pending.source
+        ? canonicalProfile(m_pending.source, m_pending.fingerprint) : QString();
+    const QStringList pruned = m_providers.registry().pruneUnreachable(
+        [&](const QString& logicalId) {
+            return logicalId == pinned || logicalId == m_lastControllerRoute
+                || logicalId == pendingProfile
+                || !m_runtime->downControls(controller, logicalId).isEmpty();
+        });
+    for (const QString& logicalId : pruned) {
+        m_profileMigrationAliases.remove(logicalId);
+        m_legacyViewFallbackHeld.remove(logicalId);
+        // Nothing can press this route again, so a table installed for it
+        // would only be re-planned on every refresh forever.
+        const auto chain = m_mappingChains.constFind(mappingChainKey(controller, logicalId));
+        if (chain != m_mappingChains.cend()) {
+            if (chain->owned)
+                m_runtime->uninstallPresetTable(controller, logicalId);
+            m_mappingChains.erase(chain);
+        }
+    }
 }
 
 QString InputEngine::canonicalProfile(Gamepad* pad, const QString& providerDeviceId) const

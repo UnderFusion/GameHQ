@@ -341,6 +341,44 @@ private slots:
                     .testFlag(ControllerCapability::SystemShare));
     }
 
+    void pruneDropsOnlyUnreachableDisconnectedWeakControllers()
+    {
+        PhysicalControllerRegistry registry;
+        ProviderObservation weak{ControllerProvider::XInput, QStringLiteral("xinput:0")};
+        weak.modelFingerprint = QStringLiteral("045e:028e");
+        weak.capabilities = ControllerCapability::StandardControls;
+        ProviderObservation strong{ControllerProvider::SonyRaw, QStringLiteral("raw-1")};
+        strong.containerId = QStringLiteral("container-a");
+        strong.capabilities = ControllerCapability::StandardControls;
+
+        // Every reconnect of a weak pad mints a new logical id.
+        const QString firstWeak = registry.observe(weak);
+        registry.removeProvider(weak.provider, weak.providerDeviceId);
+        const QString secondWeak = registry.observe(weak);
+        QVERIFY(firstWeak != secondWeak);
+        registry.removeProvider(weak.provider, weak.providerDeviceId);
+        const QString liveWeak = registry.observe(weak);
+        const QString strongId = registry.observe(strong);
+        registry.removeProvider(strong.provider, strong.providerDeviceId);
+        QCOMPARE(registry.controllers().size(), 4);
+
+        // A retained (pinned / live-route) id survives; connected and strong
+        // controllers are never candidates.
+        const QStringList pruned = registry.pruneUnreachable(
+            [&](const QString& id) { return id == secondWeak; });
+        QCOMPARE(pruned, QStringList{firstWeak});
+        QVERIFY(!registry.controller(firstWeak));
+        QVERIFY(registry.controller(secondWeak));
+        QVERIFY(registry.controller(liveWeak));
+        QVERIFY(registry.controller(strongId));
+        QCOMPARE(registry.logicalIdFor(weak.provider, weak.providerDeviceId), liveWeak);
+
+        QCOMPARE(registry.pruneUnreachable(), QStringList{secondWeak});
+        // The disconnected strong identity still restores its profile.
+        QCOMPARE(registry.observe(strong), strongId);
+        QVERIFY(registry.pruneUnreachable().isEmpty());
+    }
+
     void providerRemovalKeepsRemainingLogicalController()
     {
         PhysicalControllerRegistry registry;

@@ -363,6 +363,38 @@ MatchEvidence PhysicalControllerRegistry::matchEvidence(
     return MatchEvidence::NewIdentity;
 }
 
+QStringList PhysicalControllerRegistry::pruneUnreachable(
+    const std::function<bool(const QString&)>& retain)
+{
+    QStringList pruned;
+    for (auto it = m_controllers.begin(); it != m_controllers.end();) {
+        const LogicalController& logical = it.value();
+        // findMatch() only ever matches on these keys; with all of them empty
+        // nothing can reattach to this controller.
+        const bool unreachable = !logical.connected()
+            && logical.confidence == IdentityConfidence::Weak
+            && logical.appLocalDeviceId.isEmpty() && logical.endpointId.isEmpty()
+            && logical.containerId.isEmpty() && logical.topologyRoot.isEmpty();
+        if (!unreachable || (retain && retain(it.key()))) {
+            ++it;
+            continue;
+        }
+        pruned.append(it.key());
+        it = m_controllers.erase(it);
+    }
+    if (!pruned.isEmpty()) {
+        // A disconnected controller has no attachments; this only guards the
+        // invariant that no attachment ever points at a missing controller.
+        for (auto it = m_attachmentToLogical.begin(); it != m_attachmentToLogical.end();) {
+            if (pruned.contains(it.value()))
+                it = m_attachmentToLogical.erase(it);
+            else
+                ++it;
+        }
+    }
+    return pruned;
+}
+
 bool PhysicalControllerRegistry::addProviderControl(
     ControllerProvider provider, const QString& providerDeviceId,
     const QString& controlId)
