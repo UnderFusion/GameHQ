@@ -1,21 +1,26 @@
 import QtQuick
 import QtQuick.Layouts
 import GameHQ
+import "../helpers/UpdateUi.js" as UpdateUi
 
 // Compact desktop-only notice. AboutWhatsNewDialog owns release summaries,
 // full notes, and update choices so the app never maintains two changelog UIs.
 Rectangle {
     id: root
 
-    property bool dismissed: false
+    // "Not now" hides the banner for the release and state it was showing.
+    // A different version or a new state (download finished, install failed)
+    // brings it back; a background re-check landing on the same state does not.
+    readonly property string noticeKey: updates.latestVersion + "|" + updates.stateName
+    property string dismissedKey: ""
+    readonly property bool dismissed: root.dismissedKey !== "" && root.dismissedKey === root.noticeKey
     signal detailsRequested()
 
-    onVisibleChanged: if (visible) root.dismissed = false
+    function dismiss() {
+        root.dismissedKey = root.noticeKey
+    }
 
-    visible: updates.latestVersion !== ""
-             && ["UpdateAvailable", "Downloading", "ReadyToInstall", "PreparingForUpdate",
-                 "Quiescent", "Installing", "Failed"].includes(updates.stateName)
-             && !root.dismissed
+    visible: UpdateUi.releaseVisible(updates) && !root.dismissed
     height: visible ? implicitHeight : 0
     implicitHeight: content.implicitHeight + Theme.s12 * 2
     color: Theme.surface
@@ -180,7 +185,7 @@ Rectangle {
                      || updates.stateName === "ReadyToInstall"
             //% "Not now"
             label: qsTrId("gamehq.action.not_now")
-            onClicked: root.dismissed = true
+            onClicked: root.dismiss()
         }
     }
 }

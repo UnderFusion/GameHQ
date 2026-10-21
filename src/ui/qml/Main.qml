@@ -6,6 +6,7 @@ import QtQuick.Window
 import GameHQ
 import "components"
 import "helpers/SidebarCategories.js" as SidebarCategories
+import "helpers/UpdateUi.js" as UpdateUi
 
 // Desktop gallery window: dark gradient background,
 // thin display type, sidebar → grid → preview.
@@ -1223,10 +1224,7 @@ ApplicationWindow {
             settingsOpen: window.settingsOpen
             helpOpen: window.helpOpen
             aboutUnread: window.whatsNewSeenVersion !== app.version
-            updateAvailable: updates.latestVersion !== ""
-                             && ["UpdateAvailable", "Downloading", "ReadyToInstall",
-                                 "PreparingForUpdate", "Quiescent", "Installing",
-                                 "Failed"].includes(updates.stateName)
+            updateAvailable: UpdateUi.releaseVisible(updates)
             availableVersion: updates.latestVersion
             sidebarFocused: window.sidebarFocused
             sidebarHoverIndex: window.sidebarHoverIndex
@@ -1415,7 +1413,7 @@ ApplicationWindow {
         z: 500
         onClosed: window.finishAbout()
         onUpdateSettingsRequested: window.openAboutSettings()
-        onUpdateDeferred: updateBanner.dismissed = true
+        onUpdateDeferred: updateBanner.dismiss()
     }
 
     HelpDialog {

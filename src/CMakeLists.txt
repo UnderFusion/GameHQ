@@ -200,6 +200,7 @@ qt_add_qml_module(GameHQ
         ui/qml/Brand.qml
         ui/qml/helpers/SidebarCategories.js
         ui/qml/helpers/PadNav.js
+        ui/qml/helpers/UpdateUi.js
         ui/qml/themes/Skin.qml
         ui/qml/themes/DarkSkin.qml
         ui/qml/themes/LightSkin.qml

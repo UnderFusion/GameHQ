@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import GameHQ
 import "../components"
+import "../helpers/UpdateUi.js" as UpdateUi
 
 SettingsPage {
     //% "About"
@@ -139,16 +140,14 @@ SettingsPage {
                     //% "Check now"
                     return qsTrId("gamehq.update.check_now")
                 }
-                primary: !["UpdateAvailable", "Downloading", "ReadyToInstall", "PreparingForUpdate",
-                           "Quiescent", "Installing", "Failed"].includes(updates.stateName)
+                primary: !UpdateUi.hasRelease(updates.stateName)
                 quiet: !primary
                 enabled: updates.stateName !== "Checking" && updates.stateName !== "Downloading"
                 onClicked: updates.checkNow()
             }
         }
         SettingsRow {
-            visible: ["UpdateAvailable", "Downloading", "ReadyToInstall", "PreparingForUpdate",
-                      "Quiescent", "Installing", "Failed"].includes(updates.stateName)
+            visible: UpdateUi.hasRelease(updates.stateName)
             label: {
                 switch (updates.stateName) {
                 case "Downloading":
@@ -189,7 +188,7 @@ SettingsPage {
                 }
             }
             AccentButton {
-                visible: !["PreparingForUpdate", "Quiescent", "Installing"].includes(updates.stateName)
+                visible: !UpdateUi.installing(updates.stateName)
                 label: {
                     switch (updates.stateName) {
                     case "Downloading":
