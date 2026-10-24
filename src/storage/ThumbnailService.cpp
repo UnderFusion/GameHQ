@@ -29,6 +29,18 @@ bool isUsableThumbnail(const QString& thumbnailPath)
     return reader.canRead();
 }
 
+bool isCurrentThumbnail(const QString& thumbnailPath, const QString& filePath,
+                        const QString& type)
+{
+    if (!isUsableThumbnail(thumbnailPath))
+        return false;
+    if (type != QLatin1String("screenshot"))
+        return true;
+    const QFileInfo source(filePath);
+    return !source.exists()
+        || QFileInfo(thumbnailPath).lastModified() >= source.lastModified();
+}
+
 bool saveThumbnail(const QImage& image, const QString& thumbnailPath,
                    const QByteArray& format, int quality)
 {
@@ -61,7 +73,7 @@ QString ensureThumbnail(const QString& filePath, const QString& type,
         QCryptographicHash::hash(filePath.toUtf8(), QCryptographicHash::Md5).toHex());
     const QString thumbPath = thumbnailsDir + QLatin1Char('/') + hash + QLatin1String(".jpg");
 
-    if (isUsableThumbnail(thumbPath))
+    if (isCurrentThumbnail(thumbPath, filePath, type))
         return thumbPath;
     if (QFileInfo::exists(thumbPath))
         QFile::remove(thumbPath);

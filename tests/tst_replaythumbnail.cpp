@@ -83,6 +83,36 @@ private slots:
         QVERIFY(sentinel.open(QIODevice::ReadOnly));
         QCOMPARE(sentinel.readAll(), QByteArray("existing clip"));
     }
+
+    void replacedScreenshotRegeneratesItsThumbnail()
+    {
+        QTemporaryDir dir(QCoreApplication::applicationDirPath() + "/thumbnail-XXXXXX");
+        QVERIFY(dir.isValid());
+        const QString shot = dir.path() + "/shot.png";
+        const QString thumbs = dir.path() + "/thumbs";
+        QImage red(64, 64, QImage::Format_RGB32);
+        red.fill(Qt::red);
+        QVERIFY(red.save(shot));
+        const QString thumb = ThumbnailService::ensureThumbnail(shot, "screenshot", thumbs);
+        QVERIFY(!thumb.isEmpty());
+        QVERIFY(QImage(thumb).pixelColor(32, 32).red() > 200);
+        QVERIFY(ThumbnailService::isCurrentThumbnail(thumb, shot, "screenshot"));
+
+        // Same path, new picture, newer than the cached preview.
+        QImage blue(64, 64, QImage::Format_RGB32);
+        blue.fill(Qt::blue);
+        QVERIFY(blue.save(shot));
+        QFile thumbFile(thumb);
+        QVERIFY(thumbFile.open(QIODevice::ReadWrite));
+        QVERIFY(thumbFile.setFileTime(QDateTime::currentDateTime().addSecs(-60),
+                                      QFileDevice::FileModificationTime));
+        thumbFile.close();
+        QVERIFY(!ThumbnailService::isCurrentThumbnail(thumb, shot, "screenshot"));
+
+        QCOMPARE(ThumbnailService::ensureThumbnail(shot, "screenshot", thumbs), thumb);
+        QVERIFY(QImage(thumb).pixelColor(32, 32).blue() > 200);
+        QVERIFY(ThumbnailService::isCurrentThumbnail(thumb, shot, "screenshot"));
+    }
 };
 QTEST_GUILESS_MAIN(TestReplayThumbnail)
 #include "tst_replaythumbnail.moc"

@@ -190,7 +190,7 @@ CaptureScanner::WalkResult CaptureScanner::walk(const QVector<Root>& roots,
             result.seen.insert(key);
             const auto known = index.constFind(key);
             if (known != index.constEnd()) {
-                if (!known->deleted && !ThumbnailService::isUsableThumbnail(known->thumbnailPath)) {
+                if (!known->deleted && !ThumbnailService::isCurrentThumbnail(known->thumbnailPath, path, type)) {
                     const QString thumb = ThumbnailService::ensureThumbnail(path, type, thumbnailsDir);
                     if (!thumb.isEmpty())
                         result.thumbnailFixes.append({ path, thumb });
