@@ -49,6 +49,7 @@ struct FramePumpWorker::Pipeline
     capture::hdr::GpuToneMapper*  hdrToneMapper     = nullptr;
     bool                          hdrToneMapActive  = false;
     bool                          hdrToneMapWarned  = false;  // log a failed apply() once, not per-frame
+    bool                          hdrHasFrame       = false;  // mapper output holds a real tone-mapped frame
 
     QElapsedTimer fpsClock;
     QElapsedTimer encClock;   // monotonic PTS source for the recorder

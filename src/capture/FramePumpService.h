@@ -54,6 +54,7 @@ public slots:
     void saveReplayOnWorker(const QString& clipsBaseRoot, quint64 generation,
                             quint64 requestId, quint64 chainId);
     void captureScreenshotOnWorker(quint64 generation, quint64 requestId);
+    void cancelHdrScreenshotOnWorker(quint64 requestId);
     void prepareForUpdate(quint64 generation);
     void cancelUpdatePreparation();
 
@@ -89,6 +90,7 @@ private:
     bool failStep(const char* step, long hr);
     void reportBufferState(ReplayBufferState::State state, const QString& reason = {});
     void checkReplayReadiness();     // low-frequency lifecycle check, outside poll()
+    void resolveStaleHdrScreenshot(); // static scene: WGC sends no new frame, use the last one
 
     // startPump bring-up, one phase per step, in call order. Each reports its own
     // failure via failStep() and returns false; startPump owns the single
@@ -123,6 +125,7 @@ private:
     quint64 m_updateGeneration = 0; // request may follow a GUI-side start rejection
     bool m_hdrScreenshotPending = false;
     quint64 m_hdrRequestId = 0;
+    QElapsedTimer m_hdrPendingClock;
     // Runtime audio read failures that already forced a re-arm, in a short
     // window; past the limit the buffer fails instead of re-arming forever.
     QString m_audioFailure;          // reason while the current Failed state is an audio failure

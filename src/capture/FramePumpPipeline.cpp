@@ -856,6 +856,8 @@ void FramePumpWorker::poll()
                     bool skipFrame = false;
                     if (m_pipe->hdrToneMapActive) {
                         encodeTex = m_pipe->hdrToneMapper->apply(tex);
+                        if (encodeTex)
+                            m_pipe->hdrHasFrame = true;
                         if (!encodeTex) {
                             skipFrame = true;
                             if (!m_pipe->hdrToneMapWarned) {
@@ -900,6 +902,7 @@ void FramePumpWorker::poll()
         frame->Release();
         ++m_pipe->frameCount;
     }
+    resolveStaleHdrScreenshot();
     if (m_pipe->fpsClock.elapsed() >= 1000) {
         qInfo().noquote() << QStringLiteral("FramePump: %1x%2 DXGI_FORMAT=%3 fps=%4")
                                  .arg(m_pipe->lastW).arg(m_pipe->lastH)
@@ -927,4 +930,35 @@ void FramePumpWorker::captureScreenshotOnWorker(quint64 generation, quint64 requ
     }
     m_hdrRequestId = requestId;
     m_hdrScreenshotPending = true;
+    m_hdrPendingClock.start();
+}
+
+void FramePumpWorker::cancelHdrScreenshotOnWorker(quint64 requestId)
+{
+    if (m_hdrScreenshotPending && m_hdrRequestId == requestId)
+        m_hdrScreenshotPending = false;
+}
+
+void FramePumpWorker::resolveStaleHdrScreenshot()
+{
+    // Windows Graphics Capture only delivers a frame when the window content
+    // changes. A paused game or a static menu sends nothing, so a request that
+    // waits for "the next frame" would never finish and block every later one.
+    // After a short wait, the last tone-mapped frame IS what is on screen.
+    constexpr qint64 kStaleFrameWaitMs = 250;
+    if (!m_hdrScreenshotPending || !m_pipe || !m_pipe->hdrToneMapActive
+        || !m_pipe->hdrHasFrame || m_hdrPendingClock.elapsed() < kStaleFrameWaitMs)
+        return;
+    m_hdrScreenshotPending = false;
+    const QImage image = readBgraTexture(m_pipe->hdrToneMapper->lastOutput(),
+                                         m_pipe->d3dDevice, m_pipe->d3dCtx);
+    if (image.isNull()) {
+        emit hdrScreenshotFailed(m_pumpGeneration, m_hdrRequestId,
+            QStringLiteral("could not read back the tone-mapped HDR frame"));
+        return;
+    }
+    qInfo() << "Screenshot: captured last tone-mapped HDR frame (static scene)"
+            << image.width() << "x" << image.height();
+    emit hdrScreenshotReady(m_pumpGeneration, m_hdrRequestId, image, m_pipe->gameName,
+                            m_pipe->executablePath);
 }

@@ -47,6 +47,10 @@ public:
     // mid-session.
     ID3D11Texture2D* apply(ID3D11Texture2D* fp16Src);
 
+    // The persistent output texture, holding the last frame apply() rendered.
+    // Only meaningful after at least one successful apply().
+    ID3D11Texture2D* lastOutput() const { return m_valid ? m_outputTex : nullptr; }
+
     // True when 'device' can use R16G16B16A16_FLOAT as a sampleable 2D
     // texture. Call before init() to decide whether the experimental HDR
     // path is even worth attempting on this GPU.

@@ -269,7 +269,21 @@ void FramePumpService::captureHdrScreenshot(qulonglong hwnd, quint64 operationId
         m_activeHdrOperation = 0;
         ownersChanged("HDR dispatch failed", requestId);
         emit hdrScreenshotFailed(QStringLiteral("could not dispatch HDR capture"), operationId);
+        return;
     }
+    // Backstop: a capture that never produces a frame (stopped pump, fresh
+    // session with nothing presented yet) must not hold the lease forever,
+    // or every later press reports "already pending".
+    constexpr int kHdrScreenshotTimeoutMs = 5000;
+    QTimer::singleShot(kHdrScreenshotTimeoutMs, this, [this, requestId] {
+        if (!m_owners.finishHdr(requestId))
+            return;
+        QMetaObject::invokeMethod(m_worker, "cancelHdrScreenshotOnWorker", Qt::QueuedConnection,
+                                  Q_ARG(quint64, requestId));
+        const auto operationId = std::exchange(m_activeHdrOperation, 0);
+        ownersChanged("HDR timed out", requestId);
+        emit hdrScreenshotFailed(QStringLiteral("the game did not provide a frame in time"), operationId);
+    });
 }
 
 void FramePumpService::prepareForUpdate()
