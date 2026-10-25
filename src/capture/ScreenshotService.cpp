@@ -239,7 +239,10 @@ void ScreenshotService::encodeAndSave(const QImage& img, const QString& gameName
 
         qInfo() << "Screenshot: saved" << reservation.finalPath
                 << "(" << img.width() << "x" << img.height()
-                << ") encode+write" << et.elapsed() << "ms";
+                << ")" << (jpeg ? QStringLiteral("JPEG q%1").arg(jpegQuality)
+                                : QStringLiteral("PNG"))
+                << QFileInfo(reservation.finalPath).size() << "bytes"
+                << "encode+write" << et.elapsed() << "ms";
         emit captured(reservation.finalPath, gameName, executablePath, operationId);
     }));
 }
