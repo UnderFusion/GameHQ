@@ -8,7 +8,7 @@
     "state": "contextually_reviewed",
     "authority": "p8-3",
     "reviewer_kind": "agent",
-    "actor": "codex-gpt-5-contextual-en-review; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review; claude-opus-5-5-hidden-controller-banner-contextual-review; claude-opus-5-5-replay-audio-failure-contextual-review; claude-opus-5-5-game-audio-source-contextual-review; claude-aud-review-startup-dialogs",
+    "actor": "codex-gpt-5-contextual-en-review; claude-opus-5-capture-delete-notification-review; claude-opus-5-t1-localization-debt; codex-t2a-hold-hint-contextual-review; codex-ui-scaling-contextual-review; claude-sonnet-5-5-t27-share-and-preset-contextual-review; claude-opus-5-5-sidebar-mode-contextual-review; claude-opus-5-5-overlay-layout-contextual-review; claude-opus-5-5-sidebar-tools-contextual-review; claude-opus-5-5-notification-controls-contextual-review; claude-opus-5-5-game-pins-contextual-review; claude-opus-5-5-hidden-controller-banner-contextual-review; claude-opus-5-5-replay-audio-failure-contextual-review; claude-opus-5-5-game-audio-source-contextual-review; claude-aud-review-startup-dialogs; claude-opus-5-5-aud-c4-delete-policy-contextual-review",
     "method": "complete_source_location_context_review",
     "draft_provider": "canonical repository English followed by complete contextual source review",
     "privacy": "product-owned English source only; no user data, telemetry, secrets, credentials, prompts, responses, or conversation contents",
@@ -20,8 +20,8 @@
   },
   "reviewed": {
     "path": "i18n/app/gamehq_en_US.ts",
-    "sha256": "998e84c5a637842d58498906ce33056a466198e70cae28bbb7b129c34e3cb1b3",
-    "message_count": 1101
+    "sha256": "a051c950e199454c290c2cda3619484027df58b36d492895582cf5fc4cf1ff5d",
+    "message_count": 1103
   },
   "coverage": [
     {
@@ -2405,10 +2405,10 @@
     },
     {
       "id": "gamehq.gallery.delete_capture.message",
-      "source_hash": "6f3c02588087a1e459c2dad5f3a4dc89bbaaf1a6b03916c3788b487d4e975065",
-      "translation_hash": "0a01311a95c43f24aa81873731edc0c800f83d755c2c7a1ee0bca99c7a167573",
+      "source_hash": "78ec4fedffd6a94965727328871a1fb8a9b0a4ef0b8621024ada89cd87cb89a2",
+      "translation_hash": "1653314f7cc2244b6aca83025187112b756357e98b1e29660d90b5e47863ebcf",
       "locations": [
-        "src/ui/qml/Main.qml:1040"
+        "src/ui/qml/Main.qml:1278"
       ],
       "decision": "accepted"
     },
@@ -2424,10 +2424,10 @@
     },
     {
       "id": "gamehq.gallery.delete_selected.message",
-      "source_hash": "a4723f90ece0e494ed0e41264277bd5d126c8fc8201b2a8f713fb01a1b95c645",
-      "translation_hash": "eb5b34e4ff9b9737cc90d5df080035e01976b4f41736a3b0be0aa2c40f957c4c",
+      "source_hash": "8d82e4e85db8ae65f31e33d5fd48188a644aeb2bd9684840f9c7ac4c124734de",
+      "translation_hash": "dd056f347ef909f781c43d7a8d78aaa90cd08e6b2591ca65f2a94fd4a7538092",
       "locations": [
-        "src/ui/qml/Main.qml:382"
+        "src/ui/qml/Main.qml:536"
       ],
       "decision": "accepted"
     },
@@ -3854,6 +3854,24 @@
       "translation_hash": "483d6ad599ba90014a6a7cd813729bd4408eff0a67d7fd07f8ab2a6729b5d19a",
       "locations": [
         "src/app/App.cpp:520"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.capture_delete_kept_imported.body_many",
+      "source_hash": "845e80a39da710f549cb3abf2de7510c0a6fda671968968bdc6419dd1307deca",
+      "translation_hash": "6f7836a217a7a0495e4720bb4ef6e1aed59e74dda02463759da70e57073dd54f",
+      "locations": [
+        "src/app/App_CaptureWiring.cpp:352"
+      ],
+      "decision": "accepted"
+    },
+    {
+      "id": "gamehq.notification.capture_delete_kept_imported.body_one",
+      "source_hash": "8c6cad7d11c45f59071df17e5c6069878384d35e24a9bf256d68098828da0461",
+      "translation_hash": "8d7fe69aa35744b966490be435ccfe833a7d745c36fb1c75bbf36bec8539868a",
+      "locations": [
+        "src/app/App_CaptureWiring.cpp:359"
       ],
       "decision": "accepted"
     },
@@ -10337,8 +10355,8 @@
     {
       "surface": "application",
       "path": "i18n/app/gamehq_en_US.ts",
-      "sha256": "998e84c5a637842d58498906ce33056a466198e70cae28bbb7b129c34e3cb1b3",
-      "reviewed_units": 1101
+      "sha256": "a051c950e199454c290c2cda3619484027df58b36d492895582cf5fc4cf1ff5d",
+      "reviewed_units": 1103
     },
     {
       "surface": "installer",

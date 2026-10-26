@@ -1379,9 +1379,11 @@
     <message id="gamehq.gallery.delete_capture.message">
       <location filename="src/ui/qml/Main.qml" line="1278"></location>
       <source>%1 · %2
-This permanently deletes the file.</source>
+The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
+      <oldsource>%1 · %2
+The file will be moved to the Recycle Bin. Files in imported folders are left untouched.</oldsource>
       <translation>%1 · %2
-Questa operazione elimina il file in modo definitivo.</translation>
+Il file verrà spostato nel Cestino. I file nelle cartelle monitorate non vengono modificati.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1288"></location>
@@ -1391,13 +1393,15 @@ Questa operazione elimina il file in modo definitivo.</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
       <location filename="src/ui/qml/Main.qml" line="536"></location>
-      <source>%n capture will be permanently deleted.
-This cannot be undone.</source>
+      <source>%n capture will be moved to the Recycle Bin.
+Files in watched folders are left untouched.</source>
+      <oldsource>%n capture will be moved to the Recycle Bin.
+Files in imported folders are left untouched.</oldsource>
       <translation>
-        <numerusform>%n acquisizione verrà eliminata definitivamente.
-Questa operazione non può essere annullata.</numerusform>
-        <numerusform>%n acquisizioni verranno eliminate definitivamente.
-Questa operazione non può essere annullata.</numerusform>
+        <numerusform>%n acquisizione verrà spostata nel Cestino.
+I file nelle cartelle monitorate non vengono modificati.</numerusform>
+        <numerusform>%n acquisizioni verranno spostate nel Cestino.
+I file nelle cartelle monitorate non vengono modificati.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
@@ -2223,8 +2227,21 @@ Per usare %1 anche per %3, GameHQ deve cambiare %2 da Pressione a Pressione brev
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
       <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
       <source>Couldn't delete</source>
       <translation>Impossibile eliminare</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_many">
+      <location filename="src/app/App_CaptureWiring.cpp" line="352"></location>
+      <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
+      <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
+      <translation>Alcuni file si trovano in cartelle monitorate. GameHQ non elimina gli originali in queste cartelle, quindi non sono stati modificati.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_one">
+      <location filename="src/app/App_CaptureWiring.cpp" line="359"></location>
+      <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
+      <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
+      <translation>Questo file si trova in una cartella monitorata. GameHQ non elimina gli originali in queste cartelle, quindi non è stato modificato.</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
       <location filename="src/app/App_CaptureWiring.cpp" line="126"></location>

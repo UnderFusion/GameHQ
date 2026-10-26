@@ -532,7 +532,7 @@ ApplicationWindow {
         if (n === 0)
             return
         window.pendingBulkDeletePaths = paths
-        //% "%n capture will be permanently deleted.\nThis cannot be undone."
+        //% "%n capture will be moved to the Recycle Bin.\nFiles in watched folders are left untouched."
         bulkDeleteDialog.message = qsTrId("gamehq.gallery.delete_selected.message", n)
         bulkDeleteDialog.open()
     }
@@ -1274,7 +1274,7 @@ ApplicationWindow {
 
     function askDelete(row, name, date) {
         window.pendingDeletePath = app.gallery.get(row).filePath || ""
-        //% "%1 · %2\nThis permanently deletes the file."
+        //% "%1 · %2\nThe file will be moved to the Recycle Bin. Files in watched folders are left untouched."
         deleteDialog.message = qsTrId("gamehq.gallery.delete_capture.message").arg(name).arg(date)
         deleteDialog.open()
     }

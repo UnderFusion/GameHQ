@@ -1381,9 +1381,11 @@
     <message id="gamehq.gallery.delete_capture.message">
       <location filename="src/ui/qml/Main.qml" line="1278"></location>
       <source>%1 · %2
-This permanently deletes the file.</source>
+The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
+      <oldsource>%1 · %2
+The file will be moved to the Recycle Bin. Files in imported folders are left untouched.</oldsource>
       <translation>%1 · %2
-Це назавжди видалить файл.</translation>
+Файл буде переміщено до кошика. Файли у відстежуваних папках не змінюються.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1288"></location>
@@ -1393,15 +1395,17 @@ This permanently deletes the file.</source>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
       <location filename="src/ui/qml/Main.qml" line="536"></location>
-      <source>%n capture will be permanently deleted.
-This cannot be undone.</source>
+      <source>%n capture will be moved to the Recycle Bin.
+Files in watched folders are left untouched.</source>
+      <oldsource>%n capture will be moved to the Recycle Bin.
+Files in imported folders are left untouched.</oldsource>
       <translation>
-        <numerusform>%n медіафайл буде видалено назавжди.
-Цю дію не можна скасувати.</numerusform>
-        <numerusform>%n медіафайли буде видалено назавжди.
-Цю дію не можна скасувати.</numerusform>
-        <numerusform>%n медіафайлів буде видалено назавжди.
-Цю дію не можна скасувати.</numerusform>
+        <numerusform>%n медіафайл буде переміщено до кошика.
+Файли у відстежуваних папках не змінюються.</numerusform>
+        <numerusform>%n медіафайли буде переміщено до кошика.
+Файли у відстежуваних папках не змінюються.</numerusform>
+        <numerusform>%n медіафайлів буде переміщено до кошика.
+Файли у відстежуваних папках не змінюються.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
@@ -2228,8 +2232,21 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
       <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
       <source>Couldn't delete</source>
       <translation>Не вдалося видалити</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_many">
+      <location filename="src/app/App_CaptureWiring.cpp" line="352"></location>
+      <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
+      <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
+      <translation>Деякі файли розташовані у відстежуваних папках. GameHQ не видаляє звідти оригінали, тому їх не змінено.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_one">
+      <location filename="src/app/App_CaptureWiring.cpp" line="359"></location>
+      <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
+      <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
+      <translation>Цей файл розташований у відстежуваній папці. GameHQ не видаляє звідти оригінали, тому його не змінено.</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
       <location filename="src/app/App_CaptureWiring.cpp" line="126"></location>

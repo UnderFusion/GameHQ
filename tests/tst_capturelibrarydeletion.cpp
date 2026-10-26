@@ -21,6 +21,8 @@
 //
 // Filesystem failures are injected through CaptureFileOps rather than by
 // locking real files, so the outcome does not depend on Windows lock timing.
+// The Recycle Bin move is simulated by a plain remove: these tests pin the
+// policy, and must not fill the real Recycle Bin of the machine running them.
 // The database failure is a real one: a SQLite trigger that aborts the
 // tombstone UPDATE.
 class TestCaptureLibraryDeletion : public QObject
@@ -78,7 +80,7 @@ private:
 
         // Returns the capture id, or -1.
         int addCapture(const QString& mediaName, const QString& thumbName, QString* mediaPath,
-                       QString* thumbPath)
+                       QString* thumbPath, const QString& source = QStringLiteral("GameHQ"))
         {
             const QString media = writeFile(mediaName);
             if (media.isEmpty())
@@ -86,7 +88,7 @@ private:
             const int id = db->insertCapture(media, QStringLiteral("screenshot"),
                                              QStringLiteral("Test Game"),
                                              QStringLiteral("2026-09-06T10:00:00"),
-                                             QStringLiteral("manual"));
+                                             source);
             if (id <= 0)
                 return -1;
             QString thumb;
@@ -126,17 +128,29 @@ private:
     }
 
     // File ops that behave like the real filesystem except for the paths whose
-    // removal is told to fail.
-    static CaptureFileOps failingRemovals(const QStringList& failing)
+    // removal or Recycle Bin move is told to fail. Every trashed path is recorded.
+    static CaptureFileOps failingRemovals(const QStringList& failing,
+                                          QStringList* trashed = nullptr)
     {
+        const auto removeUnlessFailing = [failing](const QString& path) {
+            if (failing.contains(path))
+                return false;
+            return QFile::remove(path);
+        };
         return CaptureFileOps{
             [](const QString& path) { return QFile::exists(path); },
-            [failing](const QString& path) {
-                if (failing.contains(path))
-                    return false;
-                return QFile::remove(path);
+            removeUnlessFailing,
+            [removeUnlessFailing, trashed](const QString& path) {
+                if (trashed)
+                    trashed->append(path);
+                return removeUnlessFailing(path);
             },
         };
+    }
+
+    static CaptureFileOps localOps(QStringList* trashed = nullptr)
+    {
+        return failingRemovals({}, trashed);
     }
 
 private slots:
@@ -152,10 +166,12 @@ private slots:
                                       &media, &thumb);
         QVERIFY(id > 0);
 
+        QStringList trashed;
         CaptureLibraryService service(lib.db.get(), lib.model.get(), nullptr,
-                                      CaptureFileOps::systemOps());
+                                      localOps(&trashed));
         const CaptureDeletionResult r = service.deleteCapture(lib.model.get(), lib.rowOf(id));
 
+        QCOMPARE(trashed, QStringList{ media });   // media to the Recycle Bin, thumbnail removed
         QCOMPARE(r.requested, 1);
         QCOMPARE(r.removed, 1);
         QCOMPARE(r.failed, 0);
@@ -179,9 +195,10 @@ private slots:
         QVERIFY(id > 0);
         QVERIFY(QFile::remove(media));
 
-        // Any remove() call here would be for a file that is not there any more.
+        // Any remove() or trash() call here would be for a file that is not there any more.
         CaptureFileOps ops{
             [](const QString& path) { return QFile::exists(path); },
+            [](const QString&) { return false; },
             [](const QString&) { return false; },
         };
         CaptureLibraryService service(lib.db.get(), lib.model.get(), nullptr, ops);
@@ -241,7 +258,7 @@ private slots:
                  qPrintable(trigger.lastError().text()));
 
         CaptureLibraryService service(lib.db.get(), lib.model.get(), nullptr,
-                                      CaptureFileOps::systemOps());
+                                      localOps());
         const CaptureDeletionResult r = service.deleteCapture(lib.model.get(), lib.rowOf(id));
 
         QCOMPARE(r.removed, 0);
@@ -346,6 +363,90 @@ private slots:
         RawConnection raw(lib.dbPath());
         QVERIFY(stillInLibrary(raw.db, firstId));
         QVERIFY(stillInLibrary(raw.db, secondId));
+    }
+
+    // Owner policy: a file found in an imported or watched folder is the user's
+    // original. Delete leaves the file, its thumbnail and its library row alone
+    // and says so, instead of removing or trashing anything.
+    void importedOriginalIsNeverTouched()
+    {
+        Library lib;
+        QVERIFY(lib.open());
+        QString media;
+        QString thumb;
+        const int id = lib.addCapture(QStringLiteral("steam.png"), QStringLiteral("steam.thumb.jpg"),
+                                      &media, &thumb, QStringLiteral("Imported"));
+        QVERIFY(id > 0);
+
+        QStringList trashed;
+        CaptureLibraryService service(lib.db.get(), lib.model.get(), nullptr, localOps(&trashed));
+        const CaptureDeletionResult r = service.deleteCapture(lib.model.get(), lib.rowOf(id));
+
+        QCOMPARE(r.requested, 1);
+        QCOMPARE(r.keptImported, 1);
+        QCOMPARE(r.removed, 0);
+        QCOMPARE(r.failed, 0);
+        QVERIFY(!r.libraryChanged());
+        QVERIFY(trashed.isEmpty());
+        QVERIFY(QFile::exists(media));
+        QVERIFY(QFile::exists(thumb));
+        RawConnection raw(lib.dbPath());
+        QVERIFY(stillInLibrary(raw.db, id));
+    }
+
+    // A Recycle Bin move that fails is a failure. There is no fallback to a
+    // permanent delete, even though a plain remove would have worked.
+    void failedTrashNeverFallsBackToPermanentDelete()
+    {
+        Library lib;
+        QVERIFY(lib.open());
+        QString media;
+        QString unused;
+        const int id = lib.addCapture(QStringLiteral("nobin.png"), QString(), &media, &unused);
+        QVERIFY(id > 0);
+
+        CaptureFileOps ops{
+            [](const QString& path) { return QFile::exists(path); },
+            [](const QString& path) { return QFile::remove(path); },
+            [](const QString&) { return false; },
+        };
+        CaptureLibraryService service(lib.db.get(), lib.model.get(), nullptr, ops);
+        const CaptureDeletionResult r = service.deleteCapture(lib.model.get(), lib.rowOf(id));
+
+        QCOMPARE(r.failed, 1);
+        QCOMPARE(r.removed, 0);
+        QVERIFY(QFile::exists(media));
+        RawConnection raw(lib.dbPath());
+        QVERIFY(stillInLibrary(raw.db, id));
+    }
+
+    // A mixed bulk selection trashes only GameHQ's own capture.
+    void bulkKeepsImportedAndTrashesOwn()
+    {
+        Library lib;
+        QVERIFY(lib.open());
+        QString ownMedia;
+        QString importedMedia;
+        QString unused;
+        const int ownId = lib.addCapture(QStringLiteral("own.png"), QString(), &ownMedia, &unused);
+        const int importedId = lib.addCapture(QStringLiteral("nvidia.png"), QString(),
+                                              &importedMedia, &unused, QStringLiteral("Imported"));
+        QVERIFY(ownId > 0 && importedId > 0);
+
+        QStringList trashed;
+        CaptureLibraryService service(lib.db.get(), lib.model.get(), nullptr, localOps(&trashed));
+        const QVariantList rows{ lib.rowOf(ownId), lib.rowOf(importedId) };
+        const CaptureDeletionResult r = service.deleteCaptures(lib.model.get(), rows);
+
+        QCOMPARE(r.requested, 2);
+        QCOMPARE(r.removed, 1);
+        QCOMPARE(r.keptImported, 1);
+        QCOMPARE(r.failed, 0);
+        QCOMPARE(trashed, QStringList{ ownMedia });
+        QVERIFY(QFile::exists(importedMedia));
+        RawConnection raw(lib.dbPath());
+        QVERIFY(!stillInLibrary(raw.db, ownId));
+        QVERIFY(stillInLibrary(raw.db, importedId));
     }
 };
 

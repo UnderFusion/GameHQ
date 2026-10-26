@@ -1377,9 +1377,11 @@
     <message id="gamehq.gallery.delete_capture.message">
       <location filename="src/ui/qml/Main.qml" line="1278"></location>
       <source>%1 · %2
-This permanently deletes the file.</source>
+The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
+      <oldsource>%1 · %2
+The file will be moved to the Recycle Bin. Files in imported folders are left untouched.</oldsource>
       <translation>%1 · %2
-这将永久删除该文件。</translation>
+该文件将被移到回收站。监视文件夹中的文件不会被改动。</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1288"></location>
@@ -1389,11 +1391,13 @@ This permanently deletes the file.</source>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
       <location filename="src/ui/qml/Main.qml" line="536"></location>
-      <source>%n capture will be permanently deleted.
-This cannot be undone.</source>
+      <source>%n capture will be moved to the Recycle Bin.
+Files in watched folders are left untouched.</source>
+      <oldsource>%n capture will be moved to the Recycle Bin.
+Files in imported folders are left untouched.</oldsource>
       <translation>
-        <numerusform>将永久删除 %n 个捕获内容。
-此操作无法撤销。</numerusform>
+        <numerusform>%n 个捕获内容将被移到回收站。
+监视文件夹中的文件不会被改动。</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
@@ -2218,8 +2222,21 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
       <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
       <source>Couldn't delete</source>
       <translation>无法删除</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_many">
+      <location filename="src/app/App_CaptureWiring.cpp" line="352"></location>
+      <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
+      <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
+      <translation>部分文件位于监视文件夹中。GameHQ 不会删除这些文件夹中的原始文件，因此未对其做任何改动。</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_one">
+      <location filename="src/app/App_CaptureWiring.cpp" line="359"></location>
+      <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
+      <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
+      <translation>此文件位于监视文件夹中。GameHQ 不会删除这些文件夹中的原始文件，因此未对其做任何改动。</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
       <location filename="src/app/App_CaptureWiring.cpp" line="126"></location>

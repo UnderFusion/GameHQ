@@ -1377,9 +1377,11 @@
     <message id="gamehq.gallery.delete_capture.message">
       <location filename="src/ui/qml/Main.qml" line="1278"></location>
       <source>%1 · %2
-This permanently deletes the file.</source>
+The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
+      <oldsource>%1 · %2
+The file will be moved to the Recycle Bin. Files in imported folders are left untouched.</oldsource>
       <translation>%1 · %2
-파일이 영구적으로 삭제됩니다.</translation>
+파일이 휴지통으로 이동됩니다. 감시 폴더의 파일은 변경되지 않습니다.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1288"></location>
@@ -1389,11 +1391,13 @@ This permanently deletes the file.</source>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
       <location filename="src/ui/qml/Main.qml" line="536"></location>
-      <source>%n capture will be permanently deleted.
-This cannot be undone.</source>
+      <source>%n capture will be moved to the Recycle Bin.
+Files in watched folders are left untouched.</source>
+      <oldsource>%n capture will be moved to the Recycle Bin.
+Files in imported folders are left untouched.</oldsource>
       <translation>
-        <numerusform>%n개의 캡처가 영구적으로 삭제됩니다.
-이 작업은 실행 취소할 수 없습니다.</numerusform>
+        <numerusform>%n개의 캡처가 휴지통으로 이동됩니다.
+감시 폴더의 파일은 변경되지 않습니다.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
@@ -2218,8 +2222,21 @@ To also use %1 for %3, GameHQ must change %2 from Press to Single tap.
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
       <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
       <source>Couldn't delete</source>
       <translation>삭제하지 못했습니다</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_many">
+      <location filename="src/app/App_CaptureWiring.cpp" line="352"></location>
+      <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
+      <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
+      <translation>일부 파일이 감시 폴더에 있습니다. GameHQ는 감시 폴더의 원본을 삭제하지 않으므로 해당 파일은 변경되지 않았습니다.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_one">
+      <location filename="src/app/App_CaptureWiring.cpp" line="359"></location>
+      <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
+      <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
+      <translation>이 파일은 감시 폴더에 있습니다. GameHQ는 감시 폴더의 원본을 삭제하지 않으므로 이 파일은 변경되지 않았습니다.</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
       <location filename="src/app/App_CaptureWiring.cpp" line="126"></location>

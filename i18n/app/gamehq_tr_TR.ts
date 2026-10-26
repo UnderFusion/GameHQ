@@ -1377,9 +1377,11 @@
     <message id="gamehq.gallery.delete_capture.message">
       <location filename="src/ui/qml/Main.qml" line="1278"></location>
       <source>%1 · %2
-This permanently deletes the file.</source>
+The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
+      <oldsource>%1 · %2
+The file will be moved to the Recycle Bin. Files in imported folders are left untouched.</oldsource>
       <translation>%1 · %2
-Bu işlem dosyayı kalıcı olarak siler.</translation>
+Dosya Geri Dönüşüm Kutusu'na taşınacak. İzlenen klasörlerdeki dosyalara dokunulmaz.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1288"></location>
@@ -1389,11 +1391,13 @@ Bu işlem dosyayı kalıcı olarak siler.</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
       <location filename="src/ui/qml/Main.qml" line="536"></location>
-      <source>%n capture will be permanently deleted.
-This cannot be undone.</source>
+      <source>%n capture will be moved to the Recycle Bin.
+Files in watched folders are left untouched.</source>
+      <oldsource>%n capture will be moved to the Recycle Bin.
+Files in imported folders are left untouched.</oldsource>
       <translation>
-        <numerusform>%n çekim kalıcı olarak silinecek.
-Bu işlem geri alınamaz.</numerusform>
+        <numerusform>%n çekim Geri Dönüşüm Kutusu'na taşınacak.
+İzlenen klasörlerdeki dosyalara dokunulmaz.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
@@ -2218,8 +2222,21 @@ Bu değişiklikten sonra %2 eylemi düğme bırakıldığında etkinleşir ve %3
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
       <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
       <source>Couldn't delete</source>
       <translation>Silinemedi</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_many">
+      <location filename="src/app/App_CaptureWiring.cpp" line="352"></location>
+      <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
+      <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
+      <translation>Bazı dosyalar izlenen klasörlerde. GameHQ bu klasörlerdeki orijinalleri silmez, bu nedenle bu dosyalara dokunulmadı.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_one">
+      <location filename="src/app/App_CaptureWiring.cpp" line="359"></location>
+      <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
+      <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
+      <translation>Bu dosya izlenen bir klasörde. GameHQ bu klasörlerdeki orijinalleri silmez, bu nedenle bu dosyaya dokunulmadı.</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
       <location filename="src/app/App_CaptureWiring.cpp" line="126"></location>

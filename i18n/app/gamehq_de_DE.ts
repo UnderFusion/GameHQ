@@ -1379,9 +1379,11 @@
     <message id="gamehq.gallery.delete_capture.message">
       <location filename="src/ui/qml/Main.qml" line="1278"></location>
       <source>%1 · %2
-This permanently deletes the file.</source>
+The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
+      <oldsource>%1 · %2
+The file will be moved to the Recycle Bin. Files in imported folders are left untouched.</oldsource>
       <translation>%1 · %2
-Dadurch wird die Datei dauerhaft gelöscht.</translation>
+Die Datei wird in den Papierkorb verschoben. Dateien in überwachten Ordnern bleiben unverändert.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1288"></location>
@@ -1391,13 +1393,15 @@ Dadurch wird die Datei dauerhaft gelöscht.</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
       <location filename="src/ui/qml/Main.qml" line="536"></location>
-      <source>%n capture will be permanently deleted.
-This cannot be undone.</source>
+      <source>%n capture will be moved to the Recycle Bin.
+Files in watched folders are left untouched.</source>
+      <oldsource>%n capture will be moved to the Recycle Bin.
+Files in imported folders are left untouched.</oldsource>
       <translation>
-        <numerusform>%n Aufnahme wird dauerhaft gelöscht.
-Dieser Vorgang kann nicht rückgängig gemacht werden.</numerusform>
-        <numerusform>%n Aufnahmen werden dauerhaft gelöscht.
-Dieser Vorgang kann nicht rückgängig gemacht werden.</numerusform>
+        <numerusform>%n Aufnahme wird in den Papierkorb verschoben.
+Dateien in überwachten Ordnern bleiben unverändert.</numerusform>
+        <numerusform>%n Aufnahmen werden in den Papierkorb verschoben.
+Dateien in überwachten Ordnern bleiben unverändert.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
@@ -2223,8 +2227,21 @@ Um %1 auch für %3 zu verwenden, muss GameHQ %2 von Drücken auf Kurz drücken �
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
       <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
       <source>Couldn't delete</source>
       <translation>Löschen fehlgeschlagen</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_many">
+      <location filename="src/app/App_CaptureWiring.cpp" line="352"></location>
+      <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
+      <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
+      <translation>Einige Dateien liegen in überwachten Ordnern. GameHQ löscht dort keine Originale, daher wurden sie nicht verändert.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_one">
+      <location filename="src/app/App_CaptureWiring.cpp" line="359"></location>
+      <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
+      <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
+      <translation>Diese Datei liegt in einem überwachten Ordner. GameHQ löscht dort keine Originale, daher wurde sie nicht verändert.</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
       <location filename="src/app/App_CaptureWiring.cpp" line="126"></location>

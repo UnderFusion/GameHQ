@@ -1381,9 +1381,11 @@
     <message id="gamehq.gallery.delete_capture.message">
       <location filename="src/ui/qml/Main.qml" line="1278"></location>
       <source>%1 · %2
-This permanently deletes the file.</source>
+The file will be moved to the Recycle Bin. Files in watched folders are left untouched.</source>
+      <oldsource>%1 · %2
+The file will be moved to the Recycle Bin. Files in imported folders are left untouched.</oldsource>
       <translation>%1 · %2
-Spowoduje to trwałe usunięcie pliku.</translation>
+Plik zostanie przeniesiony do Kosza. Pliki w obserwowanych folderach pozostają nienaruszone.</translation>
     </message>
     <message id="gamehq.gallery.delete_capture.title">
       <location filename="src/ui/qml/Main.qml" line="1288"></location>
@@ -1393,15 +1395,17 @@ Spowoduje to trwałe usunięcie pliku.</translation>
     </message>
     <message id="gamehq.gallery.delete_selected.message" numerus="yes">
       <location filename="src/ui/qml/Main.qml" line="536"></location>
-      <source>%n capture will be permanently deleted.
-This cannot be undone.</source>
+      <source>%n capture will be moved to the Recycle Bin.
+Files in watched folders are left untouched.</source>
+      <oldsource>%n capture will be moved to the Recycle Bin.
+Files in imported folders are left untouched.</oldsource>
       <translation>
-        <numerusform>%n materiał zostanie trwale usunięty.
-Tej operacji nie można cofnąć.</numerusform>
-        <numerusform>%n materiały zostaną trwale usunięte.
-Tej operacji nie można cofnąć.</numerusform>
-        <numerusform>%n materiałów zostanie trwale usuniętych.
-Tej operacji nie można cofnąć.</numerusform>
+        <numerusform>%n materiał zostanie przeniesiony do Kosza.
+Pliki w obserwowanych folderach pozostają nienaruszone.</numerusform>
+        <numerusform>%n materiały zostaną przeniesione do Kosza.
+Pliki w obserwowanych folderach pozostają nienaruszone.</numerusform>
+        <numerusform>%n materiałów zostanie przeniesionych do Kosza.
+Pliki w obserwowanych folderach pozostają nienaruszone.</numerusform>
       </translation>
     </message>
     <message id="gamehq.gallery.delete_selected.title">
@@ -2228,8 +2232,21 @@ Akcja %2 będzie wtedy uruchamiana po zwolnieniu przycisku i może czekać do %4
     </message>
     <message id="gamehq.notification.capture_delete_failed.title">
       <location filename="src/app/App_CaptureWiring.cpp" line="334"></location>
+      <location filename="src/app/App_CaptureWiring.cpp" line="365"></location>
       <source>Couldn't delete</source>
       <translation>Nie udało się usunąć</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_many">
+      <location filename="src/app/App_CaptureWiring.cpp" line="352"></location>
+      <source>Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.</source>
+      <oldsource>Some files are in imported folders. GameHQ doesn't delete originals there, so they were left untouched.</oldsource>
+      <translation>Niektóre pliki znajdują się w obserwowanych folderach. GameHQ nie usuwa z nich oryginałów, więc pozostały nienaruszone.</translation>
+    </message>
+    <message id="gamehq.notification.capture_delete_kept_imported.body_one">
+      <location filename="src/app/App_CaptureWiring.cpp" line="359"></location>
+      <source>This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.</source>
+      <oldsource>This file is in an imported folder. GameHQ doesn't delete originals there, so it was left untouched.</oldsource>
+      <translation>Ten plik znajduje się w obserwowanym folderze. GameHQ nie usuwa z niego oryginałów, więc pozostał nienaruszony.</translation>
     </message>
     <message id="gamehq.notification.capture_lost.body">
       <location filename="src/app/App_CaptureWiring.cpp" line="126"></location>

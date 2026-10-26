@@ -336,6 +336,37 @@ void App::wireCaptureFeedback()
                     body, QString(), QStringLiteral("error"), QDateTime::currentDateTime(), false);
             });
 
+    // Delete never touches files in imported or watched folders. Without a word
+    // the capture would just stay put, which reads as a failed delete.
+    connect(m_controller.get(), &AppController::captureDeletionKeptImported, this,
+            [this](int count) {
+                m_sounds->play(QStringLiteral("error"));
+                if (!m_config->value(ConfigKeys::NotificationsEnabled, true).toBool())
+                    return;
+                const QString body = count > 1
+                    ? NativeText::get(
+                          //: Body of the notification shown when a delete reached several
+                          //: captures that live in imported folders. GameHQ never deletes
+                          //: originals there, so those files stay on disk and in the library.
+                          //% "Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched."
+                          QT_TRID_NOOP("gamehq.notification.capture_delete_kept_imported.body_many"),
+                          "Some files are in watched folders. GameHQ doesn't delete originals there, so they were left untouched.")
+                    : NativeText::get(
+                          //: Body of the notification shown when a delete reached a capture
+                          //: that lives in an imported folder. GameHQ never deletes originals
+                          //: there, so the file stays on disk and in the library.
+                          //% "This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched."
+                          QT_TRID_NOOP("gamehq.notification.capture_delete_kept_imported.body_one"),
+                          "This file is in a watched folder. GameHQ doesn't delete originals there, so it was left untouched.");
+                m_notify->post(
+                    NativeText::get(
+                        //: Title of the notification shown when a capture could not be deleted.
+                        //% "Couldn't delete"
+                        QT_TRID_NOOP("gamehq.notification.capture_delete_failed.title"),
+                        "Couldn't delete"),
+                    body, QString(), QStringLiteral("error"), QDateTime::currentDateTime(), false);
+            });
+
     // Settings changed a replay.* key (fps/resolution/length): re-arm a
     // running buffer so it records with the new parameters immediately.
     connect(m_controller.get(), &AppController::replaySettingsChanged,

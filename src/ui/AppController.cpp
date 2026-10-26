@@ -363,10 +363,13 @@ void AppController::deleteCaptureFrom(GalleryModel* model, int row)
 // A kept row is the recovery, not the explanation: without this the delete
 // looks like it did nothing at all. Only the "file still in use" case is
 // user-actionable; an inconsistent row is a rescan matter and stays in the log.
+// Imported originals kept by policy get their own explanation.
 void AppController::reportDeletionFailures(const CaptureDeletionResult& result)
 {
     if (result.failed > 0)
         emit captureDeletionFailed(result.failed);
+    if (result.keptImported > 0)
+        emit captureDeletionKeptImported(result.keptImported);
 }
 
 void AppController::openCaptureFrom(GalleryModel* model, int row)

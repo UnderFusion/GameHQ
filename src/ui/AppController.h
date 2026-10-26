@@ -136,7 +136,7 @@ public:
     Q_INVOKABLE void toggleFavorite(int row);
     // Pins a game above the unpinned ones in both sidebars (ui.pinned_games).
     Q_INVOKABLE void setGamePinned(int gameId, bool pinned);
-    Q_INVOKABLE void deleteCapture(int row);     // removes file + thumbnail, tombstones DB row
+    Q_INVOKABLE void deleteCapture(int row);     // GameHQ capture to the Recycle Bin, tombstones DB row
     Q_INVOKABLE void deleteCaptures(const QVariantList& rows);  // bulk: sorts desc, single refresh
     Q_INVOKABLE void openCapture(int row);       // default app (viewer/player)
     Q_INVOKABLE void showInFolder(int row);      // Explorer with file selected
@@ -237,6 +237,9 @@ signals:
     // At least one capture could not be deleted: its media file survived, so the
     // row stayed. Carries how many failed, so the UI can word it for one or many.
     void captureDeletionFailed(int count);
+    // Delete reached captures from imported folders and left them untouched by
+    // policy, so the user learns why they are still in the library.
+    void captureDeletionKeptImported(int count);
 
 private:
     void pollHdrStatus();
