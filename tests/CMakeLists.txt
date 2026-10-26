@@ -957,6 +957,22 @@ gamehq_add_test(tst_updateschedule
     tst_updateschedule.cpp
     "${CMAKE_SOURCE_DIR}/src/updates/UpdateSchedule.cpp")
 
+# Discovery end to end: a local HTTP fixture stands in for GitHub, and the test
+# asserts the UpdateService state the banner and About bind to.
+gamehq_add_test(tst_updatediscovery
+    tst_updatediscovery.cpp
+    "${CMAKE_SOURCE_DIR}/src/updates/UpdateService.cpp"
+    "${CMAKE_SOURCE_DIR}/src/updates/GitHubReleaseSource.cpp"
+    "${CMAKE_SOURCE_DIR}/src/updates/ReleaseCatalog.cpp"
+    "${CMAKE_SOURCE_DIR}/src/updates/VersionNumber.cpp"
+    "${CMAKE_SOURCE_DIR}/src/updates/RemoteReleaseNotes.cpp"
+    "${CMAKE_SOURCE_DIR}/src/updates/UpdateDownloader.cpp"
+    "${CMAKE_SOURCE_DIR}/src/updates/UpdatePreflight.cpp"
+    "${CMAKE_SOURCE_DIR}/src/updates/UpdateSchedule.cpp"
+    "${CMAKE_SOURCE_DIR}/src/app/ReleaseNotes.cpp"
+    "${CMAKE_SOURCE_DIR}/src/localization/LocaleRegistry.cpp")
+target_link_libraries(tst_updatediscovery PRIVATE Qt6::Network Qt6::Gui gamehq_test_release_signer)
+
 gamehq_add_test(tst_releasecatalog
     tst_releasecatalog.cpp
     "${CMAKE_SOURCE_DIR}/src/updates/ReleaseCatalog.cpp"

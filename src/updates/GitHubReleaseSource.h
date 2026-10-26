@@ -26,6 +26,8 @@ public:
     void checkLatest(const QString &ifNoneMatchEtag = QString());
     // Whether beta pre-releases may be returned (ReleaseCatalog::selectBest).
     void setIncludeBetas(bool include) { m_includeBetas = include; }
+    // Tests point discovery at a local fixture server; production keeps GitHub.
+    void setApiBase(const QString &base) { m_apiBase = base; }
 
 Q_SIGNALS:
     void succeeded(const ReleaseInfo &release, const QString &etag);
@@ -45,6 +47,7 @@ private:
     QNetworkAccessManager *m_network;
     QString m_owner;
     QString m_repo;
+    QString m_apiBase = QStringLiteral("https://api.github.com");
     bool m_includeBetas = false;
     // Best candidate found so far in this checkLatest() call, and the ETag of
     // the first page - the only page a conditional request may be made against.

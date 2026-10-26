@@ -17,6 +17,7 @@ private:
     }
 
     static constexpr qint64 kNow = 1'700'000'000;
+    static constexpr qint64 kHour = 60 * 60;
     static constexpr qint64 kDay = 24 * 60 * 60;
 
 private slots:
@@ -25,16 +26,29 @@ private slots:
         QVERIFY(UpdateSchedule::automaticCheckAllowed(QDateTime(), QDateTime(), at(kNow)));
     }
 
-    void theDailyIntervalIsHonoured()
+    void startupDoesNotWaitForARecentSuccessfulCheck()
     {
-        QVERIFY(!UpdateSchedule::automaticCheckAllowed(at(kNow - kDay + 60), QDateTime(), at(kNow)));
-        QVERIFY(UpdateSchedule::automaticCheckAllowed(at(kNow - kDay), QDateTime(), at(kNow)));
-        QVERIFY(UpdateSchedule::automaticCheckAllowed(at(kNow - 2 * kDay), QDateTime(), at(kNow)));
+        // A release can be published immediately after the previous check.
+        QVERIFY(UpdateSchedule::automaticCheckAllowed(at(kNow - 60), QDateTime(), at(kNow), 0));
+        QVERIFY(UpdateSchedule::automaticCheckAllowed(at(kNow), QDateTime(), at(kNow), 0));
+    }
+
+    void startupStillHonoursThePersistedGitHubCooldown()
+    {
+        QVERIFY(!UpdateSchedule::automaticCheckAllowed(at(kNow - 60), at(kNow + 600), at(kNow), 0));
+        QVERIFY(UpdateSchedule::automaticCheckAllowed(at(kNow - 60), at(kNow), at(kNow), 0));
+    }
+
+    void periodicChecksRunAfterOneHourRatherThanOneDay()
+    {
+        QVERIFY(!UpdateSchedule::automaticCheckAllowed(at(kNow - kHour + 1), QDateTime(), at(kNow)));
+        QVERIFY(UpdateSchedule::automaticCheckAllowed(at(kNow - kHour), QDateTime(), at(kNow)));
+        QVERIFY(UpdateSchedule::automaticCheckAllowed(at(kNow - 2 * kHour), QDateTime(), at(kNow)));
     }
 
     void aCooldownOutranksADueCheck()
     {
-        // Long overdue by the daily rule, but GitHub said not yet. Asking
+        // Long overdue by the hourly rule, but GitHub said not yet. Asking
         // anyway just spends quota that is already gone.
         QVERIFY(!UpdateSchedule::automaticCheckAllowed(at(kNow - 30 * kDay), at(kNow + 600),
                                                        at(kNow)));
@@ -70,6 +84,55 @@ private slots:
                  at(kNow + UpdateSchedule::kDefaultCooldownSecs));
         QCOMPARE(UpdateSchedule::cooldownUntil(at(kNow), at(kNow)),
                  at(kNow + UpdateSchedule::kDefaultCooldownSecs));
+    }
+
+    void startupRequestsEvenFiveMinutesAfterTheLastCheck()
+    {
+        using namespace UpdateSchedule;
+        QCOMPARE(decideAutomaticCheck(Trigger::Startup, true, false, at(kNow - 300), QDateTime(),
+                                      at(kNow)),
+                 AutomaticDecision::Request);
+        // The same wake on the hourly timer would wait.
+        QCOMPARE(decideAutomaticCheck(Trigger::Periodic, true, false, at(kNow - 300), QDateTime(),
+                                      at(kNow)),
+                 AutomaticDecision::RecentCheck);
+    }
+
+    void anHourlyWakeSlightlyEarlyStillRequests()
+    {
+        using namespace UpdateSchedule;
+        // The timer restarts when a check completes, so it can wake a moment
+        // before the stored timestamp is a full hour old.
+        QCOMPARE(decideAutomaticCheck(Trigger::Periodic, true, false, at(kNow - kHour + 5),
+                                      QDateTime(), at(kNow)),
+                 AutomaticDecision::Request);
+        QCOMPARE(decideAutomaticCheck(Trigger::Periodic, true, false, at(kNow - kHour / 2),
+                                      QDateTime(), at(kNow)),
+                 AutomaticDecision::RecentCheck);
+    }
+
+    void disabledAutomaticChecksNeverRequest()
+    {
+        using namespace UpdateSchedule;
+        for (const Trigger trigger : {Trigger::Startup, Trigger::Periodic})
+            QCOMPARE(decideAutomaticCheck(trigger, false, false, QDateTime(), QDateTime(), at(kNow)),
+                     AutomaticDecision::Disabled);
+    }
+
+    void aBusyServiceIsNotInterrupted()
+    {
+        using namespace UpdateSchedule;
+        QCOMPARE(decideAutomaticCheck(Trigger::Periodic, true, true, at(kNow - kDay), QDateTime(),
+                                      at(kNow)),
+                 AutomaticDecision::Busy);
+    }
+
+    void startupWaitsForAGitHubCooldown()
+    {
+        using namespace UpdateSchedule;
+        QCOMPARE(decideAutomaticCheck(Trigger::Startup, true, false, at(kNow - kDay),
+                                      at(kNow + 600), at(kNow)),
+                 AutomaticDecision::Cooldown);
     }
 
     void aClockThatWentBackwardsDoesNotLockCheckingOut()

@@ -21,6 +21,24 @@ bool automaticCheckAllowed(const QDateTime &lastChecked, const QDateTime &nextAl
     return lastChecked.secsTo(now) >= intervalSecs;
 }
 
+AutomaticDecision decideAutomaticCheck(Trigger trigger, bool enabled, bool busy,
+                                       const QDateTime &lastChecked,
+                                       const QDateTime &nextAllowed, const QDateTime &now)
+{
+    if (!enabled)
+        return AutomaticDecision::Disabled;
+    if (busy)
+        return AutomaticDecision::Busy;
+    if (inCooldown(nextAllowed, now))
+        return AutomaticDecision::Cooldown;
+    const qint64 interval = trigger == Trigger::Startup
+        ? 0
+        : kAutomaticIntervalSecs - kPeriodicSlackSecs;
+    return automaticCheckAllowed(lastChecked, nextAllowed, now, interval)
+        ? AutomaticDecision::Request
+        : AutomaticDecision::RecentCheck;
+}
+
 QDateTime cooldownUntil(const QDateTime &resetAt, const QDateTime &now, qint64 defaultCooldownSecs)
 {
     const QDateTime fallback = now.addSecs(defaultCooldownSecs);
