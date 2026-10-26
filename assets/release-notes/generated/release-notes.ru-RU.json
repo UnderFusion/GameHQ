@@ -1,41 +1,91 @@
 {
   "version": "0.8.0",
-  "date": "2026-10-19",
+  "date": "2026-10-26",
   "sections": [
     {
-      "title": "Clip Audio Repair",
+      "title": "Особая благодарность",
       "items": [
-        "Desktop audio recording starts by default. An old internal workaround left System audio off by default, so clips could contain video only. The setting remains available in Settings > Replay, and an explicitly saved disabled setting remains respected.",
-        "Windows playback formats are converted to a standard stereo format supported by the recording encoder instead of losing the audio track.",
-        "If System audio is on but Windows audio cannot be captured, GameHQ retries and then reports why no clip was saved, instead of saving a clip without sound. Turning System audio off still records video-only clips on purpose.",
-        "Quiet moments are recorded as silence, so the audio track stays complete and sound after a quiet stretch stays in sync with the picture.",
-        "Desktop audio includes sound playing through the default Windows output device, which can include other apps. It does not record the microphone. Audio missing from an older clip cannot be recovered."
+        "Огромное спасибо [@galcn10](https://github.com/galcn10), автору [Console Overlay for Playnite](https://github.com/galcn10/ConsoleOverlay), за тестирование GameHQ, ценные отзывы и отличную интеграцию с Playnite. Ваша поддержка помогла сделать GameHQ 0.8.0 лучше!"
       ]
     },
     {
-      "title": "Changes and Improvements",
+      "title": "Главное",
       "items": [
-        "Optional beta updates: turn on Include beta versions in Settings > General or About to receive beta releases. It is off by default. Each beta has its own update identity so the updater can offer the next one.",
-        "Controller shortcuts work more reliably in games launched outside Steam, including games started from Playnite, when Windows stops delivering a connected DualSense through its normal input path. GameHQ temporarily reads the controller directly and returns to normal delivery when it recovers.",
-        "Windows Xbox mode with Playnite can use the verified game session for screenshots and clips when the Xbox shell holds the foreground. Use GameHQ Playnite Integration 0.4.13; no new plugin build is required."
+        "Клипы могут записывать звук самой игры. С новым источником «Звук игры» GameHQ записывает игру на любом устройстве, через которое она воспроизводит звук (наушники, Bluetooth, HDMI или колонки), и не захватывает другие приложения, например Discord или Spotify.",
+        "Проблемы с записью звука теперь обнаруживаются, и GameHQ сообщает о них. Если выбранный источник звука не удаётся записать, буфер повтора останавливается и сообщает причину и какой источник выбрать вместо него, а не сохраняет молча клипы без звука. GameHQ никогда не меняет источник звука самостоятельно.",
+        "Звук и изображение остаются синхронными. Клипы, сохранённые после экрана загрузки, паузы или долгого зависания, сохраняют правильную синхронизацию по времени, а буфер повтора сам перезапускается, когда игра меняет разрешение.",
+        "Снимки экрана в HDR больше не зависают. Снимок экрана игры на паузе или статичного меню в HDR сохраняется сразу. Если не поступает ни одного кадра, попытка через несколько секунд корректно завершается ошибкой, и следующее нажатие срабатывает.",
+        "Более безопасное удаление с геймпада. Крест в подтверждении удаления теперь нажимает выделенную кнопку, а Круг отменяет. Раньше Крест мог удалить файл, даже когда была выделена кнопка «Отменить»."
       ]
     },
     {
-      "title": "Other Bug Fixes",
+      "title": "Что нового",
       "items": [
-        "Settings mouse scrolling no longer jumps back to the focused control when the window or a popup returns focus.",
-        "Controller navigation repeats stop when GameInput reports the release or the controller is unplugged while a direction is held.",
-        "Playnite games remain recognized when Playnite cannot identify the game process.",
-        "GameHQ notifications stay visible to you but are excluded from screenshots and whole-screen recordings. Notifications from other apps may still appear."
+        "В «Настройки › Повтор › Источник звука» доступны варианты «Звук игры», «Звук рабочего стола» и «Выключено». «Звук игры» используется по умолчанию в Windows 11. «Звук рабочего стола» записывает всё, что выводится на устройство вывода Windows по умолчанию, включая другие приложения, и используется по умолчанию в более старых версиях Windows.",
+        "«Звук игры» использует встроенный в Windows захват звука отдельных приложений и никогда не вмешивается в процесс игры. Если в предыдущей версии вы намеренно выключили системный звук, он останется выключенным.",
+        "Необязательные бета-обновления: новый переключатель «Включать бета-версии» в «Настройки › Общие» и в разделе «О программе» позволяет средству обновления предлагать бета-версии. По умолчанию он выключен, поэтому стабильные установки получают только стабильные обновления.",
+        "При сбое GameHQ пытается сохранить небольшой аварийный дамп в своей папке журналов, чтобы помочь диагностировать проблему. Ничего никуда не отправляется. Некоторые сбои, например когда Windows немедленно завершает программу, по-прежнему могут закрыть GameHQ без дампа.",
+        "В журнал записывается больше сведений о сохранённых снимках экрана и ошибках запуска, поэтому одного файла журнала чаще хватает, чтобы разобраться в сообщении о проблеме."
       ]
     },
     {
-      "title": "Known Limitations",
+      "title": "Исправления и улучшения",
       "items": [
-        "System audio records the default Windows output device. A game assigned to a different output in Windows sound settings is not included in clips.",
-        "A game that takes exclusive control of a controller may still prevent background shortcuts.",
-        "Windows binaries are not Authenticode-signed; Windows SmartScreen may show an Unknown Publisher warning.",
-        "New release-note text uses complete English fallback where a reviewed translation is not yet available. Existing interface translations are unchanged."
+        "Клипы больше не получаются беззвучными из-за старой внутренней настройки, которая по умолчанию отключала звук рабочего стола.",
+        "Звук в любом формате воспроизведения Windows преобразуется правильно, и звуковая дорожка больше не теряется.",
+        "Тихие моменты записываются как тишина, поэтому звук после тихого отрезка остаётся синхронным с изображением.",
+        "Запись звука игры надёжнее перезапускается, когда игра перезапускается или вы переключаетесь на другую игру.",
+        "Части буфера повтора, которые не удалось сохранить или невозможно прочитать обратно, пропускаются, поэтому они не могут испортить сохранённый клип.",
+        "Собственные уведомления GameHQ, например о сохранении снимка экрана, больше не попадают на ваши снимки экрана, а также в записи и трансляции всего экрана.",
+        "Снимок экрана, заменённый другим изображением с тем же именем файла, получает новую миниатюру при следующем сканировании библиотеки.",
+        "Папки записей сканируются в фоновом режиме, поэтому GameHQ остаётся отзывчивым даже с большими коллекциями.",
+        "Браузеры, редакторы и другие окна, которые не являются играми, больше не появляются в библиотеке как игры.",
+        "При массовом удалении выделение не меняется, пока открыто подтверждение, поэтому фоновые действия геймпада не могут изменить набор удаляемых файлов.",
+        "Диалог удаления в оверлее перехватывает ввод с геймпада, пока он открыт, и закрывается, когда оверлей скрывается.",
+        "Оверлей пропускает окна, которые перестали отвечать, вместо того чтобы их ждать.",
+        "Настройки больше не перескакивают в начало, когда вы прокручиваете их мышью после возврата в GameHQ.",
+        "Выбор «Встроенные значения по умолчанию» или удаление пресета в редакторе раскладок геймпада больше не блокирует выбор пресета."
+      ]
+    },
+    {
+      "title": "Геймпады и Playnite",
+      "items": [
+        "Сочетания кнопок геймпада продолжают работать в играх, запущенных не через Steam, например в локальной игре, запущенной из Playnite. Когда Windows перестаёт передавать GameHQ подключённый DualSense, пока игра находится в фокусе, GameHQ считывает геймпад напрямую, только для чтения, и возвращается к обычному вводу, как только Windows снова начинает его передавать.",
+        "Сочетания и повторы при удержании кнопки всегда завершаются при отпускании того же нажатия, в том числе когда об отпускании сообщает GameInput и когда геймпад отключают при зажатой кнопке.",
+        "Данные о навсегда отключённых геймпадах очищаются, проверка HidHide больше не замедляет интерфейс, а устройства GameInput повторно проверяются только при каких-либо изменениях.",
+        "Игры из Playnite остаются распознанными, даже если Playnite не может определить процесс игры.",
+        "Полноэкранный режим Xbox в Windows: когда оболочка Xbox находится на переднем плане, GameHQ использует для снимков экрана и клипов игру, запущенную из Playnite. GameHQ Playnite Integration 0.4.13, которая доступна отдельно в виде предварительной версии, также запускает GameHQ, когда режим Xbox задерживает его запуск при входе в систему."
+      ]
+    },
+    {
+      "title": "Стабильность и надёжность",
+      "items": [
+        "Очистка незавершённых записей удаляет только временные файлы, созданные самим GameHQ.",
+        "Папки записей отдельных игр всегда остаются внутри вашей папки записей.",
+        "Запуск больше не завершается ошибкой, если библиотека содержит повторяющиеся пути к папкам; вместо этого такие записи объединяются.",
+        "Если GameHQ не может запуститься, он объясняет причину на вашем языке и сохраняет её в журнале.",
+        "Импорт портативного профиля в установленный GameHQ теперь работает, даже если установленная копия уже запускалась.",
+        "Усиленная защита: более безопасная загрузка DLL, более строгие проверки локальных подключений интеграций и более безопасная обработка файлов обновлений.",
+        "Средство обновления лучше справляется с медленным первым запуском и сохраняет свои записи в целости, если его работа прерывается.",
+        "Функция отправки в Telegram безопаснее завершает работу."
+      ]
+    },
+    {
+      "title": "Установка и обновление",
+      "items": [
+        "Обновление с 0.7.9: встроенное средство обновления предлагает 0.8.0, или можно запустить установщик поверх текущей установки. Ваши настройки, библиотека и записи сохраняются.",
+        "Установщик: устанавливает программу для текущего пользователя и заменяет установленную версию 0.7.9 или более раннюю бету.",
+        "Портативная версия: распакуйте ZIP в новую папку и запустите GameHQ.exe.",
+        "Если вы тестировали 0.8.0 Beta 2, 3 или 4, установите 0.8.0 с помощью установщика или нового портативного ZIP, потому что эти беты не предлагались через средство обновления."
+      ]
+    },
+    {
+      "title": "Известные ограничения",
+      "items": [
+        "Для «Звука игры» требуется Windows 11. В более старых версиях Windows GameHQ использует «Звук рабочего стола», который также записывает другие приложения, воспроизводящие звук на устройстве вывода по умолчанию.",
+        "Игра, которая получает монопольный доступ к геймпаду, по-прежнему может блокировать фоновые сочетания кнопок.",
+        "Поддержка полноэкранного режима Xbox в Windows пока не подтверждена тестировщиками на ПК, где он используется.",
+        "Исполняемые файлы для Windows не подписаны Authenticode; Windows SmartScreen может показать предупреждение «Неизвестный издатель»."
       ]
     }
   ],
@@ -443,10 +493,10 @@
     "documents": [
       {
         "version": "0.8.0",
-        "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
-        "resolved_locale": "en-US",
-        "fallback": true,
-        "fallback_reason": "declared-en-US-fallback"
+        "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
+        "resolved_locale": "ru-RU",
+        "fallback": false,
+        "fallback_reason": null
       },
       {
         "version": "0.7.10",

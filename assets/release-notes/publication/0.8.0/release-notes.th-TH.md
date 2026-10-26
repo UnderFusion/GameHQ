@@ -1,31 +1,71 @@
-# GameHQ 0.8.0 (2026-10-19)
+# GameHQ 0.8.0 (2026-10-26)
 
-> This document is the original **English (en-US)** release note. No reviewed Thai translation exists for this version, so the complete English text is published unchanged.
+## ขอขอบคุณเป็นพิเศษ
 
-## Clip Audio Repair
+- ขอขอบคุณ [@galcn10](https://github.com/galcn10) ผู้สร้าง [Console Overlay for Playnite](https://github.com/galcn10/ConsoleOverlay) เป็นอย่างยิ่ง ที่ช่วยทดสอบ GameHQ แบ่งปันความคิดเห็นอันมีค่า และสร้างการผสานรวมกับ Playnite ที่ยอดเยี่ยม การสนับสนุนของคุณช่วยให้ GameHQ 0.8.0 ดียิ่งขึ้น!
 
-- Desktop audio recording starts by default. An old internal workaround left System audio off by default, so clips could contain video only. The setting remains available in Settings > Replay, and an explicitly saved disabled setting remains respected.
-- Windows playback formats are converted to a standard stereo format supported by the recording encoder instead of losing the audio track.
-- If System audio is on but Windows audio cannot be captured, GameHQ retries and then reports why no clip was saved, instead of saving a clip without sound. Turning System audio off still records video-only clips on purpose.
-- Quiet moments are recorded as silence, so the audio track stays complete and sound after a quiet stretch stays in sync with the picture.
-- Desktop audio includes sound playing through the default Windows output device, which can include other apps. It does not record the microphone. Audio missing from an older clip cannot be recovered.
+## ไฮไลต์
 
-## Changes and Improvements
+- คลิปบันทึกเสียงของตัวเกมเองได้แล้ว ด้วยแหล่งเสียงใหม่ เสียงเกม GameHQ จะบันทึกเสียงเกมไม่ว่าเกมจะเล่นเสียงผ่านอุปกรณ์ใด (หูฟัง, Bluetooth, HDMI หรือลำโพง) และไม่รวมเสียงจากแอปอื่น เช่น Discord หรือ Spotify
+- ตรวจพบและรายงานปัญหาการบันทึกเสียงแล้ว หากไม่สามารถบันทึกแหล่งเสียงที่เลือกได้ บัฟเฟอร์การรีเพลย์จะหยุดทำงานและแจ้งสาเหตุ รวมถึงแหล่งเสียงที่ควรเลือกแทน แทนที่จะบันทึกคลิปที่ไม่มีเสียงไปเงียบ ๆ GameHQ จะไม่เปลี่ยนแหล่งเสียงเองโดยพลการ
+- เสียงและภาพตรงกันเสมอ คลิปที่บันทึกหลังหน้าจอโหลด การหยุดชั่วคราว หรือการค้างเป็นเวลานานจะมีจังหวะเวลาที่ถูกต้อง และบัฟเฟอร์การรีเพลย์จะเริ่มใหม่เองเมื่อเกมเปลี่ยนความละเอียด
+- ภาพหน้าจอ HDR ไม่ค้างอีกต่อไป ภาพหน้าจอ HDR ของเกมที่หยุดชั่วคราวหรือเมนูที่หยุดนิ่งจะถูกบันทึกทันที หากไม่มีเฟรมเข้ามาเลย การจับภาพครั้งนั้นจะล้มเหลวอย่างเรียบร้อยภายในไม่กี่วินาที และการกดครั้งถัดไปจะทำงานได้ตามปกติ
+- ลบด้วยคอนโทรลเลอร์ได้ปลอดภัยขึ้น ในหน้ายืนยันการลบ Cross จะกดปุ่มที่ไฮไลต์อยู่ และ Circle จะยกเลิก ก่อนหน้านี้ Cross อาจลบไฟล์ได้แม้ปุ่ม ยกเลิก จะถูกไฮไลต์อยู่
 
-- Optional beta updates: turn on Include beta versions in Settings > General or About to receive beta releases. It is off by default. Each beta has its own update identity so the updater can offer the next one.
-- Controller shortcuts work more reliably in games launched outside Steam, including games started from Playnite, when Windows stops delivering a connected DualSense through its normal input path. GameHQ temporarily reads the controller directly and returns to normal delivery when it recovers.
-- Windows Xbox mode with Playnite can use the verified game session for screenshots and clips when the Xbox shell holds the foreground. Use GameHQ Playnite Integration 0.4.13; no new plugin build is required.
+## มีอะไรใหม่
 
-## Other Bug Fixes
+- การตั้งค่า › รีเพลย์ › แหล่งเสียง มีตัวเลือก เสียงเกม, เสียงเดสก์ท็อป และ ปิด โดย เสียงเกม เป็นค่าเริ่มต้นบน Windows 11 ส่วน เสียงเดสก์ท็อป จะบันทึกทุกเสียงจากเอาต์พุตเริ่มต้นของ Windows รวมถึงแอปอื่น และเป็นค่าเริ่มต้นบน Windows เวอร์ชันเก่ากว่า
+- เสียงเกม ใช้การจับเสียงแยกตามแอปของ Windows เอง และไม่แตะต้องโปรเซสของเกมเลย หากคุณตั้งใจปิดเสียงระบบไว้ในเวอร์ชันก่อนหน้า เสียงระบบจะยังคงปิดอยู่
+- อัปเดตเบต้าแบบเลือกได้: สวิตช์ รวมเวอร์ชันเบต้า ใหม่ใน การตั้งค่า › ทั่วไป และใน เกี่ยวกับ ช่วยให้ตัวอัปเดตเสนอรุ่นเบต้าได้ สวิตช์นี้ปิดไว้โดยค่าเริ่มต้น การติดตั้งรุ่นเสถียรจึงได้รับเฉพาะอัปเดตรุ่นเสถียรเท่านั้น
+- เมื่อ GameHQ ขัดข้อง จะพยายามบันทึกไฟล์ดัมป์ข้อขัดข้องขนาดเล็กไว้ในโฟลเดอร์ล็อกของตัวเองเพื่อช่วยวิเคราะห์ปัญหา โดยไม่มีการอัปโหลดใด ๆ การขัดข้องบางกรณี เช่น กรณีที่ Windows ปิดโปรแกรมทันที ยังอาจทำให้ GameHQ ปิดไปโดยไม่มีไฟล์ดัมป์
+- ไฟล์ล็อกบันทึกรายละเอียดเกี่ยวกับภาพหน้าจอที่บันทึกไว้และความล้มเหลวในการเริ่มต้นมากขึ้น ไฟล์ล็อกเพียงไฟล์เดียวจึงเพียงพอต่อการทำความเข้าใจรายงานปัญหาได้บ่อยขึ้น
 
-- Settings mouse scrolling no longer jumps back to the focused control when the window or a popup returns focus.
-- Controller navigation repeats stop when GameInput reports the release or the controller is unplugged while a direction is held.
-- Playnite games remain recognized when Playnite cannot identify the game process.
-- GameHQ notifications stay visible to you but are excluded from screenshots and whole-screen recordings. Notifications from other apps may still appear.
+## การแก้ไขและการปรับปรุง
 
-## Known Limitations
+- คลิปไม่ไร้เสียงอีกต่อไปจากการตั้งค่าภายในแบบเก่าที่ปิดเสียงเดสก์ท็อปไว้โดยค่าเริ่มต้น
+- เสียงในรูปแบบการเล่นของ Windows ทุกรูปแบบจะถูกแปลงอย่างถูกต้อง แทนที่แทร็กเสียงจะหายไป
+- ช่วงที่เงียบจะถูกบันทึกเป็นความเงียบ เสียงหลังช่วงเงียบจึงยังคงตรงกับภาพ
+- การบันทึกเสียงเกมจะเริ่มใหม่ได้อย่างน่าเชื่อถือมากขึ้นเมื่อเกมรีสตาร์ทหรือคุณสลับเกม
+- ส่วนของบัฟเฟอร์การรีเพลย์ที่บันทึกไม่สำเร็จหรืออ่านกลับไม่ได้จะถูกตัดออก จึงไม่ทำให้คลิปที่บันทึกไว้เสียหาย
+- การแจ้งเตือนของ GameHQ เอง เช่น การแจ้งว่าบันทึกภาพหน้าจอแล้ว จะไม่ปรากฏในภาพหน้าจอ หรือในการบันทึกและสตรีมแบบทั้งหน้าจออีกต่อไป
+- ภาพหน้าจอที่ถูกแทนที่ด้วยภาพอื่นที่มีชื่อไฟล์เดียวกันจะได้ภาพย่อใหม่ในการสแกนคลังสื่อครั้งถัดไป
+- โฟลเดอร์จับภาพจะถูกสแกนในเบื้องหลัง GameHQ จึงยังตอบสนองได้ดีแม้มีคอลเลกชันขนาดใหญ่
+- เบราว์เซอร์ โปรแกรมแก้ไข และหน้าต่างอื่นที่ไม่ใช่เกม จะไม่ปรากฏเป็นเกมในคลังสื่อของคุณอีกต่อไป
+- ระหว่างการลบหลายรายการพร้อมกัน รายการที่เลือกจะคงที่ขณะที่หน้ายืนยันเปิดอยู่ การกระทำของคอนโทรลเลอร์ในเบื้องหลังจึงไม่สามารถเปลี่ยนไฟล์ที่จะถูกลบได้
+- กล่องโต้ตอบการลบของโอเวอร์เลย์จะรับอินพุตจากคอนโทรลเลอร์ขณะเปิดอยู่ และจะปิดเมื่อโอเวอร์เลย์ถูกซ่อน
+- โอเวอร์เลย์จะข้ามหน้าต่างที่หยุดตอบสนอง แทนที่จะรอหน้าต่างเหล่านั้น
+- หน้า การตั้งค่า จะไม่กระโดดกลับไปด้านบนอีกต่อไปเมื่อคุณเลื่อนด้วยเมาส์หลังจากสลับกลับมาที่ GameHQ
+- การเลือก ค่าเริ่มต้นในตัว หรือการลบพรีเซ็ตในตัวแก้ไขการแมปคอนโทรลเลอร์ จะไม่ทำให้การเลือกพรีเซ็ตค้างอีกต่อไป
 
-- System audio records the default Windows output device. A game assigned to a different output in Windows sound settings is not included in clips.
-- A game that takes exclusive control of a controller may still prevent background shortcuts.
-- Windows binaries are not Authenticode-signed; Windows SmartScreen may show an Unknown Publisher warning.
-- New release-note text uses complete English fallback where a reviewed translation is not yet available. Existing interface translations are unchanged.
+## คอนโทรลเลอร์และ Playnite
+
+- ปุ่มลัดของคอนโทรลเลอร์ยังคงใช้งานได้ในเกมที่เปิดจากภายนอก Steam เช่น เกมในเครื่องที่เปิดจาก Playnite เมื่อ Windows หยุดส่ง DualSense ที่เชื่อมต่ออยู่ให้ GameHQ ขณะที่เกมมีโฟกัส GameHQ จะอ่านค่าคอนโทรลเลอร์โดยตรงแบบอ่านอย่างเดียว และกลับไปใช้อินพุตตามปกติเมื่อ Windows ส่งให้อีกครั้ง
+- ปุ่มลัดและการทำซ้ำเมื่อกดปุ่มค้างจะสิ้นสุดเมื่อปล่อยปุ่มของการกดครั้งเดียวกันเสมอ รวมถึงการปล่อยปุ่มที่รายงานผ่าน GameInput และคอนโทรลเลอร์ที่ถูกถอดออกขณะกดปุ่มค้างไว้
+- คอนโทรลเลอร์ที่ตัดการเชื่อมต่อถาวรจะถูกล้างออก การตรวจสอบ HidHide จะไม่ทำให้อินเทอร์เฟซช้าลงอีกต่อไป และอุปกรณ์ GameInput จะถูกตรวจสอบอีกครั้งเฉพาะเมื่อมีการเปลี่ยนแปลงเท่านั้น
+- เกมจาก Playnite จะยังคงได้รับการจดจำ แม้ Playnite จะระบุโปรเซสของเกมไม่ได้
+- ประสบการณ์แบบเต็มหน้าจอของ Xbox บน Windows: เมื่อเชลล์ Xbox อยู่ด้านหน้า GameHQ จะใช้เกมที่เปิดจาก Playnite สำหรับภาพหน้าจอและคลิป นอกจากนี้ GameHQ Playnite Integration 0.4.13 ซึ่งมีให้แยกต่างหากในรุ่นก่อนเผยแพร่ ยังจะเปิด GameHQ เมื่อโหมด Xbox ทำให้ GameHQ เริ่มทำงานล่าช้าตอนลงชื่อเข้าใช้
+
+## ความเสถียรและความน่าเชื่อถือ
+
+- การล้างการบันทึกที่ไม่เสร็จสมบูรณ์จะลบเฉพาะไฟล์ชั่วคราวที่ GameHQ สร้างขึ้นเองเท่านั้น
+- โฟลเดอร์จับภาพของเกมจะอยู่ภายในโฟลเดอร์จับภาพของคุณเสมอ
+- การเริ่มต้นจะไม่ล้มเหลวอีกต่อไปเมื่อคลังสื่อมีพาธโฟลเดอร์ซ้ำกัน โดยจะรวมรายการเหล่านั้นเข้าด้วยกันแทน
+- หาก GameHQ เริ่มทำงานไม่ได้ จะอธิบายสาเหตุเป็นภาษาของคุณและเก็บสาเหตุไว้ในไฟล์ล็อก
+- การนำเข้าโปรไฟล์แบบพกพาไปยัง GameHQ ที่ติดตั้งไว้ใช้งานได้แล้ว แม้ชุดที่ติดตั้งไว้จะเคยเปิดใช้งานมาแล้วก็ตาม
+- เสริมความปลอดภัย: การโหลด DLL ที่ปลอดภัยขึ้น การตรวจสอบการเชื่อมต่อการผสานรวมในเครื่องที่เข้มงวดขึ้น และการจัดการไฟล์อัปเดตที่ปลอดภัยขึ้น
+- ตัวอัปเดตรับมือกับการเริ่มทำงานครั้งแรกที่ช้าได้ดีขึ้น และรักษาบันทึกของตัวเองให้สมบูรณ์หากถูกขัดจังหวะ
+- การแชร์ไปยัง Telegram ปิดการทำงานได้อย่างปลอดภัยขึ้น
+
+## การติดตั้งและการอัปเดต
+
+- อัปเดตจาก 0.7.9: ตัวอัปเดตในตัวจะเสนอ 0.8.0 หรือคุณจะเรียกใช้ตัวติดตั้งทับการติดตั้งปัจจุบันก็ได้ การตั้งค่า คลังสื่อ และรายการสื่อที่จับไว้ของคุณจะยังคงอยู่
+- ตัวติดตั้ง: ติดตั้งสำหรับผู้ใช้ปัจจุบัน และแทนที่ 0.7.9 หรือรุ่นเบต้าก่อนหน้าที่ติดตั้งไว้
+- แบบพกพา: แตกไฟล์ ZIP ไปยังโฟลเดอร์ใหม่ แล้วเรียกใช้ GameHQ.exe
+- หากคุณเคยทดสอบ 0.8.0 Beta 2, 3 หรือ 4 ให้ติดตั้ง 0.8.0 ด้วยตัวติดตั้งหรือ ZIP แบบพกพาชุดใหม่ เนื่องจากรุ่นเบต้าเหล่านั้นไม่ได้ถูกเสนอผ่านตัวอัปเดต
+
+## ข้อจำกัดที่ทราบ
+
+- เสียงเกม ต้องใช้ Windows 11 บน Windows เวอร์ชันเก่ากว่า GameHQ จะใช้ เสียงเดสก์ท็อป ซึ่งจะบันทึกแอปอื่นที่เล่นเสียงผ่านเอาต์พุตเริ่มต้นด้วย
+- เกมที่ควบคุมคอนโทรลเลอร์แบบเอกสิทธิ์อาจยังคงขัดขวางปุ่มลัดในเบื้องหลังได้
+- การรองรับประสบการณ์แบบเต็มหน้าจอของ Xbox บน Windows ยังไม่ได้รับการยืนยันจากผู้ทดสอบบนพีซีที่ใช้งานโหมดนี้
+- ไบนารีของ Windows ไม่ได้ลงนามด้วย Authenticode และ Windows SmartScreen อาจแสดงคำเตือน Unknown Publisher

@@ -3,8 +3,241 @@
   "schema_version": 2,
   "version": "0.8.0",
   "locale": "pt-BR",
-  "date": "2026-10-19",
-  "mode": "fallback",
-  "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
-  "fallback_locale": "en-US"
+  "date": "2026-10-26",
+  "mode": "localized",
+  "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
+  "sections": [
+    {
+      "id": "thanks",
+      "title": "Agradecimentos especiais",
+      "items": [
+        {
+          "id": "thanks-01",
+          "text": "Um grande obrigado a [@galcn10](https://github.com/galcn10), criador do [Console Overlay for Playnite](https://github.com/galcn10/ConsoleOverlay), por testar o GameHQ, compartilhar feedback valioso e criar uma ótima integração com o Playnite. Seu apoio ajudou a melhorar o GameHQ 0.8.0!"
+        }
+      ]
+    },
+    {
+      "id": "highlights",
+      "title": "Destaques",
+      "items": [
+        {
+          "id": "highlights-01",
+          "text": "Os clipes podem gravar o som do próprio jogo. Com a nova fonte Áudio do jogo, o GameHQ grava o jogo em qualquer dispositivo pelo qual ele toque (fones de ouvido, Bluetooth, HDMI ou alto-falantes) e deixa de fora outros aplicativos, como o Discord ou o Spotify."
+        },
+        {
+          "id": "highlights-02",
+          "text": "Problemas na gravação de áudio agora são detectados e informados. Se a fonte de áudio selecionada não puder ser gravada, o buffer de replay para e explica o motivo e qual fonte escolher no lugar, em vez de salvar clipes sem som sem avisar. O GameHQ nunca troca a fonte de áudio por conta própria."
+        },
+        {
+          "id": "highlights-03",
+          "text": "Som e imagem ficam sincronizados. Clipes salvos depois de uma tela de carregamento, uma pausa ou um travamento longo mantêm o tempo correto, e o buffer de replay reinicia sozinho quando um jogo muda de resolução."
+        },
+        {
+          "id": "highlights-04",
+          "text": "Capturas de tela em HDR não travam mais. Uma captura de tela de um jogo pausado ou de um menu estático em HDR é salva na hora. Se nenhum quadro chegar, a tentativa falha de forma limpa após alguns segundos e o próximo acionamento funciona."
+        },
+        {
+          "id": "highlights-05",
+          "text": "Exclusão mais segura com o controle. Na confirmação de exclusão, Cruz agora pressiona o botão destacado e Círculo cancela. Antes, Cruz podia excluir o arquivo mesmo com Cancelar destacado."
+        }
+      ]
+    },
+    {
+      "id": "new",
+      "title": "Novidades",
+      "items": [
+        {
+          "id": "new-01",
+          "text": "Configurações › Replay › Fonte de áudio oferece Áudio do jogo, Áudio da área de trabalho e Desativado. Áudio do jogo é o padrão no Windows 11. Áudio da área de trabalho grava tudo na saída padrão do Windows, incluindo outros aplicativos, e é o padrão em versões mais antigas do Windows."
+        },
+        {
+          "id": "new-02",
+          "text": "Áudio do jogo usa a captura de áudio por aplicativo do próprio Windows e nunca mexe no processo do jogo. Se você desativou o áudio do sistema de propósito em uma versão anterior, ele continua desativado."
+        },
+        {
+          "id": "new-03",
+          "text": "Atualizações beta opcionais: a nova opção Incluir versões beta em Configurações › Geral e em Sobre permite que o atualizador ofereça versões beta. Ela vem desativada por padrão, então instalações estáveis recebem apenas atualizações estáveis."
+        },
+        {
+          "id": "new-04",
+          "text": "Quando o GameHQ falha, ele tenta salvar um pequeno despejo de memória na pasta de logs para ajudar a diagnosticar o problema. Nada é enviado. Algumas falhas, como as que o Windows encerra imediatamente, ainda podem fechar o GameHQ sem gerar um despejo."
+        },
+        {
+          "id": "new-05",
+          "text": "O log registra mais detalhes sobre capturas de tela salvas e falhas na inicialização, então um único arquivo de log basta com mais frequência para entender um relato de problema."
+        }
+      ]
+    },
+    {
+      "id": "fixes",
+      "title": "Correções e melhorias",
+      "items": [
+        {
+          "id": "fixes-01",
+          "text": "Os clipes não ficam mais sem som por causa de uma configuração interna antiga que deixava o áudio da área de trabalho desativado por padrão."
+        },
+        {
+          "id": "fixes-02",
+          "text": "O áudio em qualquer formato de reprodução do Windows é convertido corretamente, em vez de a faixa de áudio ser perdida."
+        },
+        {
+          "id": "fixes-03",
+          "text": "Momentos silenciosos são gravados como silêncio, então o som depois de um trecho silencioso continua alinhado com a imagem."
+        },
+        {
+          "id": "fixes-04",
+          "text": "A gravação do áudio do jogo reinicia com mais confiabilidade quando um jogo é reiniciado ou quando você troca de jogo."
+        },
+        {
+          "id": "fixes-05",
+          "text": "Partes do buffer de replay que não puderam ser salvas ou não podem ser lidas de volta são deixadas de fora, para que não estraguem um clipe salvo."
+        },
+        {
+          "id": "fixes-06",
+          "text": "As notificações do próprio GameHQ, como o aviso de que uma captura de tela foi salva, não aparecem mais nas suas capturas de tela nem em gravações e transmissões da tela inteira."
+        },
+        {
+          "id": "fixes-07",
+          "text": "Uma captura de tela substituída por outra imagem com o mesmo nome de arquivo ganha uma miniatura nova na próxima verificação da biblioteca."
+        },
+        {
+          "id": "fixes-08",
+          "text": "As pastas de captura são verificadas em segundo plano, então o GameHQ continua respondendo bem com coleções grandes."
+        },
+        {
+          "id": "fixes-09",
+          "text": "Navegadores, editores e outras janelas que não são jogos não aparecem mais como jogos na sua biblioteca."
+        },
+        {
+          "id": "fixes-10",
+          "text": "Durante uma exclusão em massa, a seleção fica fixa enquanto a confirmação está aberta, então ações do controle em segundo plano não podem mudar quais arquivos serão excluídos."
+        },
+        {
+          "id": "fixes-11",
+          "text": "A caixa de diálogo de exclusão da sobreposição recebe a entrada do controle enquanto está aberta e fecha quando a sobreposição é ocultada."
+        },
+        {
+          "id": "fixes-12",
+          "text": "A sobreposição ignora janelas que pararam de responder em vez de esperar por elas."
+        },
+        {
+          "id": "fixes-13",
+          "text": "A tela Configurações não volta mais ao topo quando você rola com o mouse depois de voltar ao GameHQ."
+        },
+        {
+          "id": "fixes-14",
+          "text": "Escolher Padrões integrados ou remover uma predefinição no editor de mapeamento do controle não trava mais a seleção de predefinição."
+        }
+      ]
+    },
+    {
+      "id": "controllers",
+      "title": "Controles e Playnite",
+      "items": [
+        {
+          "id": "controllers-01",
+          "text": "Os atalhos do controle continuam funcionando em jogos iniciados fora da Steam, como um jogo local aberto pelo Playnite. Quando o Windows deixa de entregar ao GameHQ um DualSense conectado enquanto o jogo está em foco, o GameHQ lê o controle diretamente, somente para leitura, e volta à entrada normal assim que o Windows volta a entregá-lo."
+        },
+        {
+          "id": "controllers-02",
+          "text": "Atalhos e repetições de botão mantido pressionado sempre terminam quando o mesmo pressionamento é solto, inclusive quando a liberação é informada pelo GameInput e quando o controle é desconectado com um botão pressionado."
+        },
+        {
+          "id": "controllers-03",
+          "text": "Os controles desconectados de vez são limpos, a verificação do HidHide não deixa mais a interface lenta e os dispositivos GameInput só são verificados de novo quando algo muda."
+        },
+        {
+          "id": "controllers-04",
+          "text": "Os jogos do Playnite continuam sendo reconhecidos mesmo quando o Playnite não consegue identificar o processo do jogo."
+        },
+        {
+          "id": "controllers-05",
+          "text": "Experiência de tela cheia do Xbox no Windows: quando a interface do Xbox está em primeiro plano, o GameHQ usa o jogo iniciado pelo Playnite para capturas de tela e clipes. O GameHQ Playnite Integration 0.4.13, disponível separadamente como pré-lançamento, também inicia o GameHQ quando o modo Xbox atrasa a inicialização dele ao entrar na conta."
+        }
+      ]
+    },
+    {
+      "id": "stability",
+      "title": "Estabilidade e confiabilidade",
+      "items": [
+        {
+          "id": "stability-01",
+          "text": "A limpeza de gravações não concluídas remove apenas arquivos temporários criados pelo próprio GameHQ."
+        },
+        {
+          "id": "stability-02",
+          "text": "As pastas de captura dos jogos sempre ficam dentro da sua pasta de capturas."
+        },
+        {
+          "id": "stability-03",
+          "text": "A inicialização não falha mais quando a biblioteca contém caminhos de pasta duplicados; em vez disso, as entradas são mescladas."
+        },
+        {
+          "id": "stability-04",
+          "text": "Se o GameHQ não conseguir iniciar, ele explica o motivo no seu idioma e registra o motivo no log."
+        },
+        {
+          "id": "stability-05",
+          "text": "Importar um perfil portátil para um GameHQ instalado agora funciona quando a cópia instalada já foi iniciada."
+        },
+        {
+          "id": "stability-06",
+          "text": "Segurança reforçada: carregamento de DLL mais seguro, verificações mais rigorosas nas conexões de integração locais e tratamento mais seguro dos arquivos de atualização."
+        },
+        {
+          "id": "stability-07",
+          "text": "O atualizador lida melhor com uma primeira inicialização lenta e mantém seus registros intactos se for interrompido."
+        },
+        {
+          "id": "stability-08",
+          "text": "O compartilhamento pelo Telegram é encerrado de forma mais segura."
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "title": "Instalação e atualização",
+      "items": [
+        {
+          "id": "install-01",
+          "text": "Atualizando a partir da 0.7.9: o atualizador integrado oferece a 0.8.0, ou você pode executar o instalador sobre a instalação atual. Suas configurações, sua biblioteca e suas capturas são mantidas."
+        },
+        {
+          "id": "install-02",
+          "text": "Instalador: instala para o usuário atual e substitui uma 0.7.9 instalada ou uma beta anterior."
+        },
+        {
+          "id": "install-03",
+          "text": "Portátil: extraia o ZIP em uma pasta nova e execute o GameHQ.exe."
+        },
+        {
+          "id": "install-04",
+          "text": "Se você testou a 0.8.0 Beta 2, 3 ou 4, instale a 0.8.0 com o instalador ou um ZIP portátil novo, porque essas betas não foram oferecidas pelo atualizador."
+        }
+      ]
+    },
+    {
+      "id": "limitations",
+      "title": "Limitações conhecidas",
+      "items": [
+        {
+          "id": "limitations-01",
+          "text": "Áudio do jogo requer o Windows 11. Em versões mais antigas do Windows, o GameHQ usa Áudio da área de trabalho, que também grava outros aplicativos tocando na saída padrão."
+        },
+        {
+          "id": "limitations-02",
+          "text": "Um jogo que assume o uso exclusivo de um controle ainda pode impedir os atalhos em segundo plano."
+        },
+        {
+          "id": "limitations-03",
+          "text": "O suporte à experiência de tela cheia do Xbox no Windows ainda não foi confirmado por testadores em um PC que a utilize."
+        },
+        {
+          "id": "limitations-04",
+          "text": "Os binários para Windows não são assinados com Authenticode; o Windows SmartScreen pode mostrar um aviso de Editor desconhecido."
+        }
+      ]
+    }
+  ]
 }

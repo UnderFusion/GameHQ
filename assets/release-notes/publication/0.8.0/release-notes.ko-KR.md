@@ -1,31 +1,71 @@
-# GameHQ 0.8.0 (2026-10-19)
+# GameHQ 0.8.0 (2026-10-26)
 
-> This document is the original **English (en-US)** release note. No reviewed Korean translation exists for this version, so the complete English text is published unchanged.
+## 특별 감사
 
-## Clip Audio Repair
+- GameHQ를 테스트하고 소중한 피드백을 공유해 주시고 훌륭한 Playnite 통합을 만들어 주신 [Console Overlay for Playnite](https://github.com/galcn10/ConsoleOverlay) 제작자 [@galcn10](https://github.com/galcn10) 님께 깊이 감사드립니다. 보내 주신 지원 덕분에 GameHQ 0.8.0이 더 좋아졌습니다!
 
-- Desktop audio recording starts by default. An old internal workaround left System audio off by default, so clips could contain video only. The setting remains available in Settings > Replay, and an explicitly saved disabled setting remains respected.
-- Windows playback formats are converted to a standard stereo format supported by the recording encoder instead of losing the audio track.
-- If System audio is on but Windows audio cannot be captured, GameHQ retries and then reports why no clip was saved, instead of saving a clip without sound. Turning System audio off still records video-only clips on purpose.
-- Quiet moments are recorded as silence, so the audio track stays complete and sound after a quiet stretch stays in sync with the picture.
-- Desktop audio includes sound playing through the default Windows output device, which can include other apps. It does not record the microphone. Audio missing from an older clip cannot be recovered.
+## 주요 변경 사항
 
-## Changes and Improvements
+- 이제 클립에 게임 자체의 소리를 녹음할 수 있습니다. 새로운 ‘게임 오디오’ 소스를 사용하면 GameHQ는 게임이 어떤 장치(헤드폰, Bluetooth, HDMI, 스피커)로 재생되든 게임 소리를 녹음하고, Discord나 Spotify 같은 다른 앱의 소리는 제외합니다.
+- 이제 오디오 녹음 문제를 감지하고 알려 줍니다. 선택한 오디오 소스를 녹음할 수 없으면 소리 없는 클립을 조용히 저장하는 대신 리플레이 버퍼가 중지되고, 그 이유와 대신 선택할 소스를 알려 줍니다. GameHQ는 오디오 소스를 임의로 바꾸지 않습니다.
+- 소리와 화면이 동기화된 상태로 유지됩니다. 로딩 화면, 일시 정지, 긴 멈춤 이후에 저장한 클립도 타이밍이 올바르게 유지되며, 게임이 해상도를 바꾸면 리플레이 버퍼가 자동으로 다시 시작됩니다.
+- HDR 스크린샷이 더 이상 멈추지 않습니다. 일시 정지된 게임이나 정지된 메뉴를 HDR로 찍은 스크린샷이 즉시 저장됩니다. 프레임이 전혀 들어오지 않으면 몇 초 후 시도가 깔끔하게 실패로 끝나며, 다음에 누르면 정상적으로 작동합니다.
+- 컨트롤러로 더 안전하게 삭제. 이제 삭제 확인 창에서 Cross를 누르면 강조 표시된 버튼이 눌리고, Circle을 누르면 취소됩니다. 이전에는 ‘취소’가 강조 표시되어 있어도 Cross로 파일이 삭제될 수 있었습니다.
 
-- Optional beta updates: turn on Include beta versions in Settings > General or About to receive beta releases. It is off by default. Each beta has its own update identity so the updater can offer the next one.
-- Controller shortcuts work more reliably in games launched outside Steam, including games started from Playnite, when Windows stops delivering a connected DualSense through its normal input path. GameHQ temporarily reads the controller directly and returns to normal delivery when it recovers.
-- Windows Xbox mode with Playnite can use the verified game session for screenshots and clips when the Xbox shell holds the foreground. Use GameHQ Playnite Integration 0.4.13; no new plugin build is required.
+## 새로운 기능
 
-## Other Bug Fixes
+- 설정 › 리플레이 › 오디오 소스에서 ‘게임 오디오’, ‘데스크톱 오디오’, ‘끔’을 선택할 수 있습니다. Windows 11에서는 ‘게임 오디오’가 기본값입니다. ‘데스크톱 오디오’는 다른 앱을 포함해 Windows 기본 출력의 모든 소리를 녹음하며, 이전 Windows 버전에서는 이것이 기본값입니다.
+- ‘게임 오디오’는 Windows 자체의 앱별 오디오 캡처를 사용하며 게임 프로세스를 절대 건드리지 않습니다. 이전 버전에서 시스템 오디오를 일부러 껐다면 계속 꺼진 상태로 유지됩니다.
+- 선택적 베타 업데이트: 설정 › 일반과 정보에 새로 추가된 ‘베타 버전 포함’ 스위치를 사용하면 업데이터가 베타 릴리스를 제공할 수 있습니다. 기본적으로 꺼져 있으므로 안정 버전 설치에는 안정 버전 업데이트만 제공됩니다.
+- GameHQ가 충돌하면 문제 진단에 도움이 되도록 로그 폴더에 작은 크래시 덤프를 저장하려고 시도합니다. 아무것도 업로드되지 않습니다. Windows가 즉시 종료하는 경우 같은 일부 충돌에서는 여전히 덤프 없이 GameHQ가 종료될 수 있습니다.
+- 저장된 스크린샷과 시작 실패에 대한 자세한 정보가 로그에 더 많이 기록되므로, 로그 파일 하나만으로 문제 보고를 파악할 수 있는 경우가 더 많아집니다.
 
-- Settings mouse scrolling no longer jumps back to the focused control when the window or a popup returns focus.
-- Controller navigation repeats stop when GameInput reports the release or the controller is unplugged while a direction is held.
-- Playnite games remain recognized when Playnite cannot identify the game process.
-- GameHQ notifications stay visible to you but are excluded from screenshots and whole-screen recordings. Notifications from other apps may still appear.
+## 수정 및 개선 사항
 
-## Known Limitations
+- 데스크톱 오디오를 기본적으로 꺼 두던 오래된 내부 설정 때문에 클립에 소리가 녹음되지 않던 문제가 해결되었습니다.
+- 어떤 Windows 재생 형식의 오디오든 올바르게 변환되어 더 이상 오디오 트랙이 사라지지 않습니다.
+- 조용한 순간은 무음으로 녹음되므로 조용한 구간 이후의 소리도 화면과 맞게 유지됩니다.
+- 게임이 다시 시작되거나 다른 게임으로 전환할 때 게임 오디오 녹음이 더 안정적으로 다시 시작됩니다.
+- 리플레이 버퍼에서 저장에 실패했거나 다시 읽을 수 없는 부분은 제외되므로 저장된 클립이 손상되지 않습니다.
+- 스크린샷 저장 알림 같은 GameHQ 자체 알림이 더 이상 스크린샷이나 전체 화면 녹화 및 방송에 나타나지 않습니다.
+- 스크린샷이 같은 파일 이름의 다른 이미지로 바뀌면 다음 라이브러리 검색 때 새 썸네일이 만들어집니다.
+- 캡처 폴더를 백그라운드에서 검색하므로 컬렉션이 커도 GameHQ가 원활하게 반응합니다.
+- 브라우저, 편집기 등 게임이 아닌 창이 더 이상 라이브러리에 게임으로 표시되지 않습니다.
+- 일괄 삭제 중에는 확인 창이 열려 있는 동안 선택 항목이 고정되므로, 백그라운드 컨트롤러 동작으로 삭제할 파일이 바뀌지 않습니다.
+- 오버레이의 삭제 대화 상자는 열려 있는 동안 컨트롤러 입력을 받고, 오버레이가 숨겨지면 닫힙니다.
+- 오버레이는 응답하지 않는 창을 기다리지 않고 건너뜁니다.
+- GameHQ로 돌아온 뒤 마우스로 스크롤해도 설정이 더 이상 맨 위로 이동하지 않습니다.
+- 컨트롤러 매핑 편집기에서 ‘내장 기본값’을 선택하거나 프리셋을 제거해도 더 이상 프리셋 선택이 멈추지 않습니다.
 
-- System audio records the default Windows output device. A game assigned to a different output in Windows sound settings is not included in clips.
-- A game that takes exclusive control of a controller may still prevent background shortcuts.
-- Windows binaries are not Authenticode-signed; Windows SmartScreen may show an Unknown Publisher warning.
-- New release-note text uses complete English fallback where a reviewed translation is not yet available. Existing interface translations are unchanged.
+## 컨트롤러 및 Playnite
+
+- Playnite에서 시작한 로컬 게임처럼 Steam 외부에서 실행한 게임에서도 컨트롤러 단축키가 계속 작동합니다. 게임에 포커스가 있는 동안 Windows가 연결된 DualSense를 GameHQ에 더 이상 전달하지 않으면, GameHQ는 컨트롤러를 읽기 전용으로 직접 읽고 Windows가 다시 전달하면 일반 입력으로 돌아갑니다.
+- 단축키와 버튼을 누르고 있을 때의 반복 입력은 GameInput을 통해 보고된 버튼 놓기와 버튼을 누른 채 컨트롤러를 분리한 경우를 포함해 항상 같은 누름의 놓기에서 끝납니다.
+- 완전히 연결이 끊긴 컨트롤러는 정리되고, HidHide 확인 때문에 더 이상 인터페이스가 느려지지 않으며, GameInput 장치는 변경 사항이 있을 때만 다시 확인합니다.
+- Playnite가 게임 프로세스를 식별하지 못하더라도 Playnite 게임이 계속 인식됩니다.
+- Windows Xbox 전체 화면 환경: Xbox 셸이 앞에 있을 때 GameHQ는 스크린샷과 클립에 Playnite에서 시작한 게임을 사용합니다. 또한 별도의 프리릴리스로 제공되는 GameHQ Playnite Integration 0.4.13은 로그인 시 Xbox 모드 때문에 GameHQ 시작이 지연되는 경우에도 GameHQ를 시작합니다.
+
+## 안정성 및 신뢰성
+
+- 완료되지 않은 녹화를 정리할 때는 GameHQ가 직접 만든 임시 파일만 제거합니다.
+- 게임 캡처 폴더는 항상 캡처 폴더 안에 있습니다.
+- 라이브러리에 중복된 폴더 경로가 있어도 더 이상 시작에 실패하지 않으며, 대신 해당 항목이 병합됩니다.
+- GameHQ를 시작할 수 없으면 사용자의 언어로 이유를 설명하고 그 이유를 로그에 남깁니다.
+- 이제 설치된 사본을 이미 실행한 적이 있어도 설치된 GameHQ로 포터블 프로필을 가져올 수 있습니다.
+- 보안 강화: 더 안전한 DLL 로드, 로컬 통합 연결에 대한 더 엄격한 확인, 더 안전한 업데이트 파일 처리.
+- 업데이터가 첫 시작이 느린 경우에 더 잘 대처하고, 중단되더라도 기록을 온전하게 유지합니다.
+- Telegram 공유가 더 안전하게 종료됩니다.
+
+## 설치 및 업데이트
+
+- 0.7.9에서 업데이트: 내장 업데이터에서 0.8.0을 제공하며, 현재 설치 위에 설치 프로그램을 실행해도 됩니다. 설정, 라이브러리, 캡처는 그대로 유지됩니다.
+- 설치 프로그램: 현재 사용자용으로 설치되며, 설치된 0.7.9 또는 이전 베타를 대체합니다.
+- 포터블: ZIP을 새 폴더에 압축 해제한 뒤 GameHQ.exe를 실행하세요.
+- 0.8.0 Beta 2, 3 또는 4를 테스트했다면 설치 프로그램이나 새 포터블 ZIP으로 0.8.0을 설치하세요. 해당 베타는 업데이터를 통해 제공되지 않았기 때문입니다.
+
+## 알려진 제한 사항
+
+- ‘게임 오디오’에는 Windows 11이 필요합니다. 이전 Windows 버전에서는 GameHQ가 ‘데스크톱 오디오’를 사용하므로 기본 출력에서 재생되는 다른 앱 소리도 녹음됩니다.
+- 컨트롤러를 독점적으로 제어하는 게임에서는 여전히 백그라운드 단축키가 작동하지 않을 수 있습니다.
+- Windows Xbox 전체 화면 환경 지원은 아직 이를 실행하는 PC에서 테스터가 확인하지 않았습니다.
+- Windows 바이너리는 Authenticode 서명이 되어 있지 않으며, Windows SmartScreen에 ‘알 수 없는 게시자’ 경고가 표시될 수 있습니다.

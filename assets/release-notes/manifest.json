@@ -31,12 +31,16 @@
   "releases": [
     {
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "status": "released",
-      "localization_policy": "fallback-allowed",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "localization_policy": "complete",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "original_source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
-      "correction": null
+      "correction": {
+        "reason": "Stable 0.8.0 replaces the Beta 1 audio-repair note with the consolidated release note.",
+        "approved_by": "owner",
+        "corrected_at": "2026-10-26"
+      }
     },
     {
       "version": "0.7.10",

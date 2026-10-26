@@ -2,15 +2,15 @@
   "schema_version": 1,
   "kind": "release-publication",
   "version": "0.8.0",
-  "date": "2026-10-19",
+  "date": "2026-10-26",
   "source_locale": "en-US",
   "default_locale": "en-US",
-  "localization_policy": "fallback-allowed",
-  "release_source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+  "localization_policy": "complete",
+  "release_source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
   "release_body": {
     "filename": "RELEASE_BODY.md",
-    "size": 4287,
-    "sha256": "ca3512b66e8f955c98f845b68158e3bc84c8d09fcc93688ec7267ea9528e3453"
+    "size": 8087,
+    "sha256": "beda7bc7a039848c2086d43122c6a5a2739fc1d850f1ed90b8070d9c11d83af5"
   },
   "distribution": {
     "localized_documents": "repository",
@@ -28,28 +28,36 @@
       "language_english_name": "English (United States)",
       "language_native_name": "English",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.en-US.md",
-      "size": 2779,
-      "sha256": "a814787ae8493a082e8d312d43580d26065f124d2d44fb0ebbd87ab7e7c6b202",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 6909,
+      "sha256": "8e13a1043df3255dbafee72229ed71cec5626aa26f0fcb5f96ed8335bab6e9a1",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -58,7 +66,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -75,35 +125,43 @@
     {
       "canonical_locale": "zh-Hans",
       "requested_locale": "zh-Hans",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "zh-Hans",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "Chinese (Simplified)",
       "language_native_name": "简体中文",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.zh-Hans.md",
-      "size": 2969,
-      "sha256": "9b910ecc943b89ed5f64d09fd8d3be4f1aebb0db3855bf8908513e6a2bc983d2",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 6840,
+      "sha256": "15d37a476b1623b686c26ce3fcea613f0e981c48f0d0cd3de26e2bf76e13f8fb",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -112,7 +170,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -129,35 +229,43 @@
     {
       "canonical_locale": "ru-RU",
       "requested_locale": "ru-RU",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "ru-RU",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "Russian",
       "language_native_name": "Русский",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.ru-RU.md",
-      "size": 2956,
-      "sha256": "c7a673322a031afabef7a6d6270ada13e0944330874440d811757fcd92a51d99",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 13801,
+      "sha256": "a9c1f27cfe503bfb8086fa19d7d3e1a6e118c5c51d7596b7deb13fff9d0fe06d",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -166,7 +274,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -183,35 +333,43 @@
     {
       "canonical_locale": "es-ES",
       "requested_locale": "es-ES",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "es-ES",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "Spanish",
       "language_native_name": "Español",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.es-ES.md",
-      "size": 2956,
-      "sha256": "c422222e046f0923789592398acfda4ad894053bfac66dcc0ac8e5ab4a164637",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 8459,
+      "sha256": "5780159efce1d0e3633501d8c8184393001c0537cb9f223f07e553c6c9b67e37",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -220,7 +378,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -237,35 +437,43 @@
     {
       "canonical_locale": "pt-BR",
       "requested_locale": "pt-BR",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "pt-BR",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "Portuguese (Brazil)",
       "language_native_name": "Português (Brasil)",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.pt-BR.md",
-      "size": 2968,
-      "sha256": "a7446654a2a9cc4fcdfc8c110e6cf8ff2b4de72fbfca7153c4f807819c41e2f3",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 8155,
+      "sha256": "7b65b023056a51f2bfae969232f0d0931ece8e567ddf3dd46393598c1ba04011",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -274,7 +482,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -291,35 +541,43 @@
     {
       "canonical_locale": "de-DE",
       "requested_locale": "de-DE",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "de-DE",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "German",
       "language_native_name": "Deutsch",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.de-DE.md",
-      "size": 2955,
-      "sha256": "afb7e6d7b06ecde5f7fa038f1f526b4caaa6e595fe64f4161f4889f535c3a45d",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 8664,
+      "sha256": "4614059e5bf84dd3efb326b40f732eb00061ea51b6f22c778e9ff570940721fa",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -328,7 +586,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -345,35 +645,43 @@
     {
       "canonical_locale": "ja-JP",
       "requested_locale": "ja-JP",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "ja-JP",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "Japanese",
       "language_native_name": "日本語",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.ja-JP.md",
-      "size": 2957,
-      "sha256": "4cc09915d5bc49f908e22b05458dc8542a390b12b29c1c063c5e5a0c77724d2e",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 10686,
+      "sha256": "26e4bae79662d672fce870a36ce4ebe2b237ee6050140995bd5a4bd3ea0aec2c",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -382,7 +690,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -399,35 +749,43 @@
     {
       "canonical_locale": "fr-FR",
       "requested_locale": "fr-FR",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "fr-FR",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "French",
       "language_native_name": "Français",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.fr-FR.md",
-      "size": 2955,
-      "sha256": "60ee60b67821462a16e5e16410b6dc8458e5014969f7f9a416718d49205fb2bd",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 9054,
+      "sha256": "bcf7a77769e47811b2009385850293aa477027fd00f2fc8da5b128195281d51d",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -436,7 +794,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -453,35 +853,43 @@
     {
       "canonical_locale": "pl-PL",
       "requested_locale": "pl-PL",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "pl-PL",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "Polish",
       "language_native_name": "Polski",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.pl-PL.md",
-      "size": 2955,
-      "sha256": "9c9f08a3385c67bef622914deabc6ff93b2ca84fee42b1ceb6833102305934bd",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 8342,
+      "sha256": "780e1850274ec878a52eafa95ff4598b419f63c00893b280cc9b6d00882e7b57",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -490,7 +898,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -507,35 +957,43 @@
     {
       "canonical_locale": "ko-KR",
       "requested_locale": "ko-KR",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "ko-KR",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "Korean",
       "language_native_name": "한국어",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.ko-KR.md",
-      "size": 2955,
-      "sha256": "e824fe07c84d08271d7ae4ab91c17110464d2e7b6ee68de4fcae7fa9fc8967d5",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 8931,
+      "sha256": "2f483a96e1ae89cb6fc08179f042005320c649282c8b212140fe393c89ab6bf7",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -544,7 +1002,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -561,35 +1061,43 @@
     {
       "canonical_locale": "zh-Hant",
       "requested_locale": "zh-Hant",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "zh-Hant",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "Chinese (Traditional)",
       "language_native_name": "繁體中文",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.zh-Hant.md",
-      "size": 2970,
-      "sha256": "dfc3d4946b1ed973dacf6d023a72d35c6b1d9bdfd656d754515e56b6ebfb45ee",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 6988,
+      "sha256": "ef8687babf63222dc4255a54d701ffe78c140b55b73e075fa010c0809732b4d0",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -598,7 +1106,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -615,35 +1165,43 @@
     {
       "canonical_locale": "tr-TR",
       "requested_locale": "tr-TR",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "tr-TR",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "Turkish",
       "language_native_name": "Türkçe",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.tr-TR.md",
-      "size": 2956,
-      "sha256": "1b352d0df49cdad07519800b171ecc57f965aa6bf97eabc9b70f64c9ab0b86ad",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 8241,
+      "sha256": "f5cd6f586b735926ee2a2caa24aa6b2ffe6b48d021dd2d4fbe361394125a8c27",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -652,7 +1210,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -669,35 +1269,43 @@
     {
       "canonical_locale": "th-TH",
       "requested_locale": "th-TH",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "th-TH",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "Thai",
       "language_native_name": "ไทย",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.th-TH.md",
-      "size": 2953,
-      "sha256": "b0a2b5867a60136a75490b79689c0f9df54e2e26f4487d1426ca0e87646cfd5f",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 17526,
+      "sha256": "a7af34e22e6469a329ee67fa5165958a803593bd5e6399fb39f77958fe3d4677",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -706,7 +1314,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -723,35 +1373,43 @@
     {
       "canonical_locale": "es-419",
       "requested_locale": "es-419",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "es-419",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "Spanish (Latin America)",
       "language_native_name": "Español (Latinoamérica)",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.es-419.md",
-      "size": 2972,
-      "sha256": "c78bde3065475cd651f0ef7343c044a82fbee5b4b0ec5e5f338156f64bdd02d8",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 8490,
+      "sha256": "f9a61a63a5ea88e073c1ad61e3d40cc2b03ffd8b29443f4dadef136e9b6a818d",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -760,7 +1418,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -777,35 +1477,43 @@
     {
       "canonical_locale": "uk-UA",
       "requested_locale": "uk-UA",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "uk-UA",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "Ukrainian",
       "language_native_name": "Українська",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.uk-UA.md",
-      "size": 2958,
-      "sha256": "5a47be118fb562dfc901b5ffd3f40d4a7e69883238698e02e1b3f519dfb2cda1",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 13526,
+      "sha256": "f8c2d8c31095ae4624335033ddc5372bf0f445968b0a4013e81150936a1fa926",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -814,7 +1522,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {
@@ -831,35 +1581,43 @@
     {
       "canonical_locale": "it-IT",
       "requested_locale": "it-IT",
-      "effective_locale": "en-US",
-      "fallback": true,
-      "fallback_state": "whole-document-fallback",
-      "fallback_reason": "declared-en-US-fallback",
+      "effective_locale": "it-IT",
+      "fallback": false,
+      "fallback_state": "authored",
+      "fallback_reason": null,
       "language_english_name": "Italian",
       "language_native_name": "Italiano",
       "version": "0.8.0",
-      "date": "2026-10-19",
+      "date": "2026-10-26",
       "filename": "release-notes.it-IT.md",
-      "size": 2956,
-      "sha256": "03678c40bcf0278413366c245b01e3a21fb8ee9bfb614c03b964d754cf875608",
-      "source_integrity": "sha256:8dfa13f519fd2392bf137dab9402f14f2fbfb63bf8ef4ff1cc9ec077e1277712",
+      "size": 8464,
+      "sha256": "f7d0f2ed54aefd898bec66a2c37f378317bfe66b6bc69d389d6b678f9efaf856",
+      "source_integrity": "sha256:7023bfb02df536597c8f570c21b6ab1161fd8e5280340fa6eeb3634250fb743a",
       "structure": [
         {
-          "section_id": "audio",
+          "section_id": "thanks",
           "item_ids": [
-            "audio-01",
-            "audio-02",
-            "audio-03",
-            "audio-04",
-            "audio-05"
+            "thanks-01"
           ]
         },
         {
-          "section_id": "changes",
+          "section_id": "highlights",
           "item_ids": [
-            "changes-01",
-            "changes-02",
-            "changes-03"
+            "highlights-01",
+            "highlights-02",
+            "highlights-03",
+            "highlights-04",
+            "highlights-05"
+          ]
+        },
+        {
+          "section_id": "new",
+          "item_ids": [
+            "new-01",
+            "new-02",
+            "new-03",
+            "new-04",
+            "new-05"
           ]
         },
         {
@@ -868,7 +1626,49 @@
             "fixes-01",
             "fixes-02",
             "fixes-03",
-            "fixes-04"
+            "fixes-04",
+            "fixes-05",
+            "fixes-06",
+            "fixes-07",
+            "fixes-08",
+            "fixes-09",
+            "fixes-10",
+            "fixes-11",
+            "fixes-12",
+            "fixes-13",
+            "fixes-14"
+          ]
+        },
+        {
+          "section_id": "controllers",
+          "item_ids": [
+            "controllers-01",
+            "controllers-02",
+            "controllers-03",
+            "controllers-04",
+            "controllers-05"
+          ]
+        },
+        {
+          "section_id": "stability",
+          "item_ids": [
+            "stability-01",
+            "stability-02",
+            "stability-03",
+            "stability-04",
+            "stability-05",
+            "stability-06",
+            "stability-07",
+            "stability-08"
+          ]
+        },
+        {
+          "section_id": "install",
+          "item_ids": [
+            "install-01",
+            "install-02",
+            "install-03",
+            "install-04"
           ]
         },
         {

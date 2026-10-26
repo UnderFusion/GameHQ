@@ -3,71 +3,215 @@
   "schema_version": 2,
   "version": "0.8.0",
   "locale": "en-US",
-  "date": "2026-10-19",
+  "date": "2026-10-26",
   "sections": [
     {
-      "id": "audio",
-      "title": "Clip Audio Repair",
+      "id": "thanks",
+      "title": "Special Thanks",
       "items": [
         {
-          "id": "audio-01",
-          "text": "Desktop audio recording starts by default. An old internal workaround left System audio off by default, so clips could contain video only. The setting remains available in Settings > Replay, and an explicitly saved disabled setting remains respected."
-        },
-        {
-          "id": "audio-02",
-          "text": "Windows playback formats are converted to a standard stereo format supported by the recording encoder instead of losing the audio track."
-        },
-        {
-          "id": "audio-03",
-          "text": "If System audio is on but Windows audio cannot be captured, GameHQ retries and then reports why no clip was saved, instead of saving a clip without sound. Turning System audio off still records video-only clips on purpose."
-        },
-        {
-          "id": "audio-04",
-          "text": "Quiet moments are recorded as silence, so the audio track stays complete and sound after a quiet stretch stays in sync with the picture."
-        },
-        {
-          "id": "audio-05",
-          "text": "Desktop audio includes sound playing through the default Windows output device, which can include other apps. It does not record the microphone. Audio missing from an older clip cannot be recovered."
+          "id": "thanks-01",
+          "text": "A big thank you to [@galcn10](https://github.com/galcn10), creator of [Console Overlay for Playnite](https://github.com/galcn10/ConsoleOverlay), for testing GameHQ, sharing valuable feedback, and building a great Playnite integration. Your support helped make GameHQ 0.8.0 better!"
         }
       ]
     },
     {
-      "id": "changes",
-      "title": "Changes and Improvements",
+      "id": "highlights",
+      "title": "Highlights",
       "items": [
         {
-          "id": "changes-01",
-          "text": "Optional beta updates: turn on Include beta versions in Settings > General or About to receive beta releases. It is off by default. Each beta has its own update identity so the updater can offer the next one."
+          "id": "highlights-01",
+          "text": "Clips can record your game's own sound. With the new Game audio source, GameHQ records the game on whatever device it plays through (headphones, Bluetooth, HDMI or speakers) and leaves out other apps such as Discord or Spotify."
         },
         {
-          "id": "changes-02",
-          "text": "Controller shortcuts work more reliably in games launched outside Steam, including games started from Playnite, when Windows stops delivering a connected DualSense through its normal input path. GameHQ temporarily reads the controller directly and returns to normal delivery when it recovers."
+          "id": "highlights-02",
+          "text": "Audio recording problems are now detected and reported. If the selected audio source cannot be recorded, the replay buffer stops and tells you why, and which source to choose instead, rather than quietly saving clips without sound. GameHQ never switches the audio source on its own."
         },
         {
-          "id": "changes-03",
-          "text": "Windows Xbox mode with Playnite can use the verified game session for screenshots and clips when the Xbox shell holds the foreground. Use GameHQ Playnite Integration 0.4.13; no new plugin build is required."
+          "id": "highlights-03",
+          "text": "Sound and picture stay in sync. Clips saved after a loading screen, a pause or a long stall keep correct timing, and the replay buffer restarts on its own when a game changes resolution."
+        },
+        {
+          "id": "highlights-04",
+          "text": "HDR screenshots no longer get stuck. A screenshot of a paused game or a static menu in HDR is saved right away. If no frame arrives at all, the attempt fails cleanly after a few seconds and the next press works."
+        },
+        {
+          "id": "highlights-05",
+          "text": "Safer deleting with a controller. Cross in a delete confirmation now presses the highlighted button and Circle cancels. Previously, Cross could delete the file even when Cancel was highlighted."
+        }
+      ]
+    },
+    {
+      "id": "new",
+      "title": "What's New",
+      "items": [
+        {
+          "id": "new-01",
+          "text": "Settings › Replay › Audio source offers Game audio, Desktop audio and Off. Game audio is the default on Windows 11. Desktop audio records everything on the default Windows output, including other apps, and is the default on older Windows versions."
+        },
+        {
+          "id": "new-02",
+          "text": "Game audio uses Windows' own per-app audio capture and never touches the game process. If you turned system audio off on purpose in an earlier version, it stays off."
+        },
+        {
+          "id": "new-03",
+          "text": "Optional beta updates: a new Include beta versions switch in Settings › General and in About lets the updater offer beta releases. It is off by default, so stable installations only receive stable updates."
+        },
+        {
+          "id": "new-04",
+          "text": "When GameHQ crashes, it tries to save a small crash dump in its logs folder to help diagnose the problem. Nothing is uploaded. Some crashes, such as ones Windows ends immediately, can still close GameHQ without a dump."
+        },
+        {
+          "id": "new-05",
+          "text": "The log records more detail about saved screenshots and start-up failures, so a single log file is more often enough to understand a problem report."
         }
       ]
     },
     {
       "id": "fixes",
-      "title": "Other Bug Fixes",
+      "title": "Fixes and Improvements",
       "items": [
         {
           "id": "fixes-01",
-          "text": "Settings mouse scrolling no longer jumps back to the focused control when the window or a popup returns focus."
+          "text": "Clips no longer come out silent because of an old internal setting that kept desktop audio off by default."
         },
         {
           "id": "fixes-02",
-          "text": "Controller navigation repeats stop when GameInput reports the release or the controller is unplugged while a direction is held."
+          "text": "Audio in any Windows playback format is converted correctly instead of the audio track being lost."
         },
         {
           "id": "fixes-03",
-          "text": "Playnite games remain recognized when Playnite cannot identify the game process."
+          "text": "Quiet moments are recorded as silence, so sound after a quiet stretch stays aligned with the picture."
         },
         {
           "id": "fixes-04",
-          "text": "GameHQ notifications stay visible to you but are excluded from screenshots and whole-screen recordings. Notifications from other apps may still appear."
+          "text": "Game audio recording restarts more reliably when a game restarts or you switch games."
+        },
+        {
+          "id": "fixes-05",
+          "text": "Parts of the replay buffer that failed to save or cannot be read back are left out, so they cannot break a saved clip."
+        },
+        {
+          "id": "fixes-06",
+          "text": "GameHQ's own notifications, such as the notice that a screenshot was saved, no longer appear in your screenshots or in whole-screen recordings and streams."
+        },
+        {
+          "id": "fixes-07",
+          "text": "A screenshot replaced by another image with the same file name gets a fresh thumbnail on the next library scan."
+        },
+        {
+          "id": "fixes-08",
+          "text": "Capture folders are scanned in the background, so GameHQ stays responsive with large collections."
+        },
+        {
+          "id": "fixes-09",
+          "text": "Browsers, editors and other windows that are not games no longer appear as games in your library."
+        },
+        {
+          "id": "fixes-10",
+          "text": "During a bulk delete, the selection stays fixed while the confirmation is open, so background controller actions cannot change which files are deleted."
+        },
+        {
+          "id": "fixes-11",
+          "text": "The overlay's delete dialog takes the controller's input while it is open and closes when the overlay hides."
+        },
+        {
+          "id": "fixes-12",
+          "text": "The overlay skips windows that have stopped responding instead of waiting on them."
+        },
+        {
+          "id": "fixes-13",
+          "text": "Settings no longer jumps back to the top when you scroll with the mouse after switching back to GameHQ."
+        },
+        {
+          "id": "fixes-14",
+          "text": "Choosing Built-in defaults or removing a preset in the controller mapping editor no longer freezes the preset selection."
+        }
+      ]
+    },
+    {
+      "id": "controllers",
+      "title": "Controllers and Playnite",
+      "items": [
+        {
+          "id": "controllers-01",
+          "text": "Controller shortcuts keep working in games launched outside Steam, such as a local game started from Playnite. When Windows stops delivering a connected DualSense to GameHQ while the game has focus, GameHQ reads the controller directly, read-only, and returns to normal input once Windows delivers it again."
+        },
+        {
+          "id": "controllers-02",
+          "text": "Shortcuts and held-button repeats always end on the release of the same press, including releases reported through GameInput and controllers unplugged while a button is held."
+        },
+        {
+          "id": "controllers-03",
+          "text": "Controllers that were disconnected for good are cleaned up, the HidHide check no longer slows down the interface, and GameInput devices are only checked again when something changes."
+        },
+        {
+          "id": "controllers-04",
+          "text": "Playnite games stay recognized even when Playnite cannot identify the game's process."
+        },
+        {
+          "id": "controllers-05",
+          "text": "Windows Xbox full screen experience: when the Xbox shell is in front, GameHQ uses the game started from Playnite for screenshots and clips. GameHQ Playnite Integration 0.4.13, available separately as a pre-release, also starts GameHQ when Xbox mode delays it at sign-in."
+        }
+      ]
+    },
+    {
+      "id": "stability",
+      "title": "Stability and Reliability",
+      "items": [
+        {
+          "id": "stability-01",
+          "text": "Cleanup of unfinished recordings only removes temporary files that GameHQ itself created."
+        },
+        {
+          "id": "stability-02",
+          "text": "Game capture folders always stay inside your capture folder."
+        },
+        {
+          "id": "stability-03",
+          "text": "Start-up no longer fails when the library contains duplicate folder paths; the entries are merged instead."
+        },
+        {
+          "id": "stability-04",
+          "text": "If GameHQ cannot start, it explains why in your language and keeps the reason in the log."
+        },
+        {
+          "id": "stability-05",
+          "text": "Importing a portable profile into an installed GameHQ now works when the installed copy has already been started."
+        },
+        {
+          "id": "stability-06",
+          "text": "Hardened security: safer DLL loading, stricter checks on local integration connections and safer handling of update files."
+        },
+        {
+          "id": "stability-07",
+          "text": "The updater copes better with a slow first start and keeps its records intact if it is interrupted."
+        },
+        {
+          "id": "stability-08",
+          "text": "Telegram sharing shuts down more safely."
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "title": "Installation and Updating",
+      "items": [
+        {
+          "id": "install-01",
+          "text": "Updating from 0.7.9: the built-in updater offers 0.8.0, or you can run the installer over your current installation. Your settings, library and captures are kept."
+        },
+        {
+          "id": "install-02",
+          "text": "Installer: installs for the current user and replaces an installed 0.7.9 or an earlier beta."
+        },
+        {
+          "id": "install-03",
+          "text": "Portable: extract the ZIP to a new folder and run GameHQ.exe."
+        },
+        {
+          "id": "install-04",
+          "text": "If you tested 0.8.0 Beta 2, 3 or 4, install 0.8.0 with the installer or a fresh portable ZIP, because those betas were not offered through the updater."
         }
       ]
     },
@@ -77,7 +221,7 @@
       "items": [
         {
           "id": "limitations-01",
-          "text": "System audio records the default Windows output device. A game assigned to a different output in Windows sound settings is not included in clips."
+          "text": "Game audio needs Windows 11. On older Windows versions GameHQ uses Desktop audio, which also records other apps playing on the default output."
         },
         {
           "id": "limitations-02",
@@ -85,11 +229,11 @@
         },
         {
           "id": "limitations-03",
-          "text": "Windows binaries are not Authenticode-signed; Windows SmartScreen may show an Unknown Publisher warning."
+          "text": "Support for the Windows Xbox full screen experience has not yet been confirmed by testers on a PC running it."
         },
         {
           "id": "limitations-04",
-          "text": "New release-note text uses complete English fallback where a reviewed translation is not yet available. Existing interface translations are unchanged."
+          "text": "Windows binaries are not Authenticode-signed; Windows SmartScreen may show an Unknown Publisher warning."
         }
       ]
     }
